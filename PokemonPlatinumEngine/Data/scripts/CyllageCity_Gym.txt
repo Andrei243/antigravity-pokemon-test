@@ -1,0 +1,46 @@
+# Cyllage City's Gym (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): Grant, a climber of
+# rock walls, battles for the Cliff Badge, Kalos's second (`givebadge cliff`), and gives a TM. The hall is one room with
+# no puzzle (X and Y's climbing wall is not built). VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes it 18.
+# His team is Kalos's trainers.json's kalos_grant_1; his two trainers are the hall's own.
+
+
+script Grant
+  face grant player
+  speaker kalos_grant "Grant"
+  if badge cliff goto Won
+  scene "Grant"
+  say "So you made the climb. I'm Grant, Leader of the Cyllage Gym."
+  say "On a rock face you look for the next hold, and then the one after it. One mistake and you start again from the bottom."
+  say "A battle is the same. Show me how you climb!"
+  battle self as "kalos_grant_1"
+  say "You never once lost your grip. That's a climb I'd be proud of."
+  say "Here. The Cliff Badge is yours, proof that you reached the top of the Cyllage Gym."
+  givebadge cliff
+  text "{player} received the Cliff Badge from Grant!"
+  setflag FLAG_KALOS_DEFEATED_CYLLAGE_GYM
+  defeat "kalos_hiker_bruno"
+  defeat "kalos_hiker_armand"
+  setvar VAR_KALOS_STORY 18
+  objective kalosFree
+label Tm
+  say "Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down."
+  give "TM39"
+  setflag FLAG_KALOS_RECEIVED_TM_GRANT
+  say "There's more of Kalos to climb. Keep looking for the next hold."
+  endscene
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_GRANT goto Tm
+  say "Every morning I climb this wall and think of our battle. I still haven't found where I slipped."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge cliff goto Won
+  say "Hello there, future Champion! Grant's Rock types shrug off fire and flight. Bring water, grass or a good fist!"
+  end
+label Won
+  say "You beat Grant! You must have hands of iron."
+  end

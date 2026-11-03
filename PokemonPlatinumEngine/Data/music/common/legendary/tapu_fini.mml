@@ -1,13 +1,16 @@
 # Battle against Tapu Fini (Poni's guardian, water): the guardians' tom pattern and horn call over rippling harp,
 # then a slow-moving D-major vibraphone line, clouded by C-major chords, over a misty pad and a dark contrabass:
 # calm on top, dangerous underneath. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Alola: a steel drum doubling the tune, an ukulele chopping on the bass's eighths, congas and bongos.
 title Battle! Tapu Fini
 tempo 156
 meter 4/4
 lowhptempo 1.08
 reverb 0.4
+sound modern
+room hall 1.6
 
-track lead vibraphone lowhp=sawlead vol=0.82 pan=0 rev=0.36
+track lead steeldrum lowhp=sawlead vol=0.82 pan=0 rev=0.36
   r1 | r1 |
   L o5 f+2 e4 d4 | o5 e2. g4 | o5 b2 a4 g4 | o5 a2. r4 |
   o5 f+2 d4 o4 b4 | o5 c2 e4 g4 | o5 b2 a4 g4 | o5 e2 c+4 e4 |
@@ -20,14 +23,14 @@ track horn horn vol=0.48 pan=-0.2 rev=0.36
   L r1 | r1 | r1 | r1 | r1 | r1 | r1 | r1 |
   r1 | r1 | r1 | r1 | r1 | r1 | o4 d8 a4. b8 a8 o5 d4 | o5 d2. r4 |
 
-track harp harp vol=0.4 pan=0.3 rev=0.42
+track harp ukulele vol=0.4 pan=0.3 rev=0.42
   [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
   L [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
   [ o3 b12 o4 d12 f+12 b12 f+12 d12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o4 e12 g12 b12 o5 e12 o4 b12 g12 ]2 | [ o3 a12 o4 c+12 e12 a12 e12 c+12 ]2 |
   [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 e12 g12 b12 o5 e12 o4 b12 g12 ]2 |
   [ o3 b12 o4 d12 f+12 b12 f+12 d12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
 
-track pad pad unless=lowhp vol=0.32 pan=-0.3 rev=0.45
+track pad warmpad unless=lowhp vol=0.32 pan=-0.3 rev=0.45
   r1 | o4 (d f+ a)1 |
   L o4 (d f+ a)1 | (c e g)1 | (d g b)1 | (d f+ a)1 |
   (d f+ b)1 | (c e g)1 | (e g b)1 | (c+ e a)1 |
@@ -51,6 +54,12 @@ track drums kit vol=0.46 rev=0.16
 
 track shaker kit vol=0.34 pan=0.2 rev=0.12
   r1 | r1 | L [ v52 k8 v30 k8 v52 k8 v30 k8 v52 k8 v30 k8 v52 k8 v30 k8 | ]16
+
+# Alola: a steel drum doubling the tune, an ukulele on the bass's eighths, hand drums
+track tunesteel steeldrum unless=lowhp double=lead vol=0.13 pan=-0.35 rev=0.3
+track bassukulele ukulele double=bass beats=8 shift=24 vol=0.16 pan=0.35 rev=0.22
+track handdrums kit vol=0.34 pan=-0.15 rev=0.14
+  r1 | r1 | L [ v80 g8 v50 g8 v90 d8 v50 g8 v80 g8 v50 g8 v90 d8 v60 n16 n16 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.46 pan=0.1 rev=0.08

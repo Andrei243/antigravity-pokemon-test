@@ -218,6 +218,26 @@
         "fourWays": "You always move four ways, a step at a time along the paths, whatever the region allows."
       }
     },
+    "voices": {
+      "label": "Voices",
+      "value": { "Off": "OFF", "Story": "STORY ONLY", "All": "ALL" },
+      "help": {
+        "Off": "Nobody's lines are spoken: the text shows alone, as in the original.",
+        "Story": "The story's named characters speak their lines aloud; everyone else's show as text.",
+        "All": "Everyone who has a voice speaks their lines aloud. Lines without one show as text."
+      }
+    },
+    "voiceVolume": {
+      "label": "Voice volume",
+      "help": "How loud the characters' voices speak. The music and the ambience dip a little while someone speaks."
+    },
+    "letVoicesFinish": {
+      "label": "Let voices finish",
+      "help": {
+        "off": "A on a finished line goes on at once and cuts its voice short.",
+        "on": "A on a finished line waits until its voice has finished speaking."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {
@@ -438,6 +458,22 @@
         "Story": "A corner shows the run's time; splits at every Badge, each Team Galactic commander and the Hall of Fame."
       }
     },
+    "streamFeed": {
+      "label": "Stream feed",
+      "value": { "Off": "Off", "File": "A file", "FileAndSplits": "File + LiveSplit" },
+      "help": {
+        "Off": "Nothing is written for a stream.",
+        "File": "The run is written to stream/state.json beside the save as it changes, for an OBS browser source (stream/overlay.html). Nothing is sent anywhere.",
+        "FileAndSplits": "As a file, and stream/livesplit.lss, a LiveSplit splits file, is kept up as splits are taken."
+      }
+    },
+    "streamSafe": {
+      "label": "Stream-safe",
+      "help": {
+        "off": "Trainer IDs and your folder's name show as they are.",
+        "on": "Trainer IDs are hidden and your folder's name is left out of the log's paths."
+      }
+    },
     "captions": {
       "label": "Captions",
       "help": {
@@ -558,7 +594,8 @@
         "heading": "Slot {slot} was played with packs",
         "body": "Not in use now: {packs}. The game goes on without what they changed; turn them on under OPTIONS, PACKS.",
         "gone": "{name} {version}",
-        "other": "{name} {version} (now {now})"
+        "other": "{name} {version} (now {now})",
+        "region": "The game was saved in {region}, which {pack} adds: without it, the game wakes where it began."
       },
       "crash": {
         "heading": "The game stopped unexpectedly",
@@ -731,6 +768,12 @@
     "kalosRoute4": "Take Route 4 north through the garden to Lumiose City.",
     "kalosLab": "Find Professor Sycamore's laboratory, up the avenue from Lumiose's south gate.",
     "kalosLysandre": "Meet the professor at the café in the north of Lumiose City, past the tower.",
+    "kalosRoute5": "Leave Lumiose City by its west gate and follow Route 5 toward Camphrier Town.",
+    "kalosCamphrier": "Go on along Route 5 into Camphrier Town.",
+    "kalosPalace": "Go north up Route 6 and ask at the palace gate for its flute.",
+    "kalosSnorlax": "Wake the sleeping Snorlax on Route 7, south of Camphrier Town, with the palace's flute.",
+    "kalosCyllage": "Follow Route 7 to the coast and Route 8 north to Cyllage City.",
+    "kalosGrant": "Climb to the Gym at the top of Cyllage City and win the Cliff Badge from Grant.",
     "kalosFree": "That is as far as the road runs for now. Kalos is yours to explore."
   },
 
@@ -758,6 +801,22 @@
       "4": "{name} gazes at you fondly. It would follow you anywhere!"
     },
     "found": "{name} is holding something in its mouth. It wants you to have it!"
+  },
+
+  "marks": {
+    "name": "{word} Mark",
+    "titled": "{pokemon} the {word}",
+    "word": {
+      "rare": "Rare", "rowdy": "Rowdy", "absentMinded": "Dreamy", "jittery": "Jittery", "excited": "Eager",
+      "charismatic": "Dazzling", "calmness": "Calm", "intense": "Intense", "zonedOut": "Faraway", "joyful": "Joyful",
+      "angry": "Cross", "smiley": "Smiling", "teary": "Tearful", "upbeat": "Bright", "peeved": "Grumpy",
+      "intellectual": "Thoughtful", "ferocious": "Wild", "crafty": "Sly", "scowling": "Glaring", "kindly": "Kindly",
+      "flustered": "Flustered", "pumpedUp": "Spirited", "zeroEnergy": "Weary", "prideful": "Proud", "unsure": "Unsure",
+      "humble": "Humble", "thorny": "Prickly", "vigor": "Hardy", "slump": "Glum",
+      "lunchtime": "Peckish", "sleepyTime": "Sleepy", "dusk": "Dusky", "dawn": "Early",
+      "cloudy": "Cloudy", "rainy": "Rain-Soaked", "stormy": "Thunderous", "snowy": "Snowy", "blizzard": "Frosty",
+      "dry": "Sun-Baked", "sandstorm": "Sandy", "misty": "Misty", "fishing": "Hooked", "alpha": "Mighty"
+    }
   },
 
   "dexText": {
@@ -1198,6 +1257,7 @@
       "NoRunning": "No running",
       "SetStyle": "Set battles only",
       "NoLaterMechanics": "No later mechanics",
+      "Remix": "Remix",
       "ShinyOdds": "Shiny odds",
       "RandomSpecies": "Randomise Pokémon",
       "RandomItems": "Randomise items",
@@ -1224,6 +1284,7 @@
       "NoRunning": "You cannot run from wild battles.",
       "SetStyle": "Battle Style is Set, and the Shift offer is never made.",
       "NoLaterMechanics": "Nobody can Mega Evolve, use a Z-Move, Dynamax or Terastallize: not you, and not the trainers you meet.",
+      "Remix": "A second take on Sinnoh, written for this game: the important trainers bring teams of their own and the wild Pokémon change, so far more kinds can be caught before the League. The rules and the story stay the same.",
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
       "RandomSpecies": "Wild Pokémon, trainers' teams, gifts, legends and your partner are other species, the same ones every time for a seed. Evolutions stay in their lines.",
       "RandomItems": "Items on the ground and handed to you are other items. Key items, HMs and anything the story asks for are never changed.",
@@ -2429,6 +2490,7 @@
     "nobody": "Just you, smiling",
     "taken": "{day} {month} {year}",
     "removeAsk": "Throw this photograph away?",
+    "region": { "johto": "JOHTO", "kanto": "KANTO" },
     "hint": { "throwAway": "Throw away", "remove": "Throw it away", "keep": "Keep it" }
   },
   "apricorn": {
@@ -2684,6 +2746,11 @@
       "notInGrass": "The Poké Radar can only be used standing in tall grass.",
       "dry": "The battery has run dry! {steps} more steps to charge it.",
       "quiet": "The grass around stayed quiet..."
+    },
+    "dexNav": {
+      "on": "The DexNav was switched on. It will listen for Pokémon hiding in the grass.",
+      "off": "The DexNav was switched off.",
+      "scared": "The Pokémon hiding in the grass fled!"
     },
     "noMapHere": "There is no map of this place.",
     "noWater": "There's no water here to fish in.",
@@ -3216,6 +3283,9 @@
     "restoredALittleHpUsing": "{pokemon} restored a little HP using its {item}!",
     "lostSomeOfIts": "{pokemon} lost some of its HP!",
     "hungOnUsingIts": "{pokemon} hung on using its {item}!",
+    "affectionHeldOn": "{pokemon} held on, not wanting to let you down!",
+    "affectionShookOff": "{pokemon} shrugged off its {condition} for your sake!",
+    "affectionDodged": "{pokemon} slipped out of the way, keen to impress you!",
     "ateIts": "{pokemon} ate its {item}!",
     "usedItsToGet": "{pokemon} used its {item} to get pumped!",
     "usedItsItem": "{pokemon} used its {item}!",
@@ -3697,6 +3767,10 @@
       "yes": "YES",
       "goBack": "NO, GO BACK"
     },
+    "outfit": {
+      "question": "And what will you set out in? Pick whatever suits you.",
+      "own": "Your own clothes"
+    },
     "sevenLetters": "Seven letters at most. Leave it empty to be called {name}.",
     "key": {
       "delete": "DELETE"
@@ -4010,6 +4084,7 @@
     "coins": "COINS",
     "balls": "BALLS LEFT",
     "wager": "A BALL: {coins} COINS",
+    "wagerOne": "A BALL: 1 COIN",
     "odds": "PAYS x{odds}",
     "place": "Choose a colour, a Pokémon or a square, and place your wager!",
     "hit": "The ball dropped into {square}. It's a hit!",
@@ -5163,6 +5238,69 @@
       }
     }
   },
+  "friends": {
+    "title": "Friends' trainers",
+    "hint": { "do": "Do" },
+    "row": { "ready": "READY", "refused": "REFUSED", "readCode": "READ A CODE", "pasteTeam": "PASTE A TEAM", "send": "Send {name}" },
+    "refused": "REFUSED",
+    "pastedName": "Pasted {n}",
+    "fightBlurb": "Both teams are made afresh and brought to level {level}. Nothing is gained, paid or kept; the trainer thinks with every routine the game's trainers use.",
+    "blurb": {
+      "readCode": "Reads a code from the clipboard. A good one is kept as a trainer file in the trainers folder and stands in the list; a bad one is refused, with its reason.",
+      "pasteTeam": "Reads a team in Pokémon Showdown's text format from the clipboard and keeps it among your teams, if every Pokémon in it can battle here.",
+      "send": "Writes this team as a trainer file in the trainers folder and puts its code on the clipboard, to paste anywhere."
+    },
+    "code": "CODE",
+    "notice": {
+      "refused": "That file can't be used.",
+      "read": "{value} is in the list.",
+      "pasted": "A team of {value} was added to your teams.",
+      "sent": "{value} was written to the trainers folder and its code copied.",
+      "cantWrite": "The file couldn't be written.",
+      "full": "You already keep {value} teams."
+    },
+    "line": {
+      "0": "Let's have a good battle!",
+      "1": "That was fun. Thank you!",
+      "2": "I've been training for this.",
+      "3": "You won't beat my team so easily.",
+      "4": "I hope you brought your best.",
+      "5": "Good game!",
+      "6": "I'll get you next time.",
+      "7": "My team is my pride.",
+      "8": "Ready when you are.",
+      "9": "What a close one!",
+      "10": "Don't hold back.",
+      "11": "I learned a lot from that."
+    }
+  },
+  "paste": {
+    "empty": "There is nothing to read.",
+    "tooLong": "That is too long to be a team.",
+    "tooMany": "Line {value}: a team has six Pokémon at most.",
+    "unknownMove": "Line {value}: the game doesn't know that move.",
+    "unknownNature": "Line {value}: that nature isn't one the game has.",
+    "unknownAbility": "Line {value}: the game doesn't know that ability.",
+    "badLevel": "Line {value}: the level must be 1 to 100.",
+    "badSpread": "Line {value}: those numbers can't be read.",
+    "unknownLine": "Line {value}: that line can't be read.",
+    "unknownSpecies": "Line {value}: the game has no Pokémon by that name.",
+    "unknownItem": "Line {value}: the game doesn't know that item."
+  },
+  "trainerFile": {
+    "refused": {
+      "empty": "There is nothing to read.",
+      "tooBig": "That is too big to be a trainer file.",
+      "shape": "That is not a trainer file.",
+      "checksum": "That file was changed after it was made.",
+      "name": "The trainer's name can't be used.",
+      "class": "The trainer's class isn't one the game has.",
+      "line": "One of the trainer's lines isn't one the game has.",
+      "version": "That trainer was made for other game data. Ask your friend to send it again from this version.",
+      "paste": "The team in it can't be read (line {value}).",
+      "code": "That isn't a trainer code."
+    }
+  },
   "battleRoom": {
     "title": "Battle Room",
     "menu": {
@@ -5170,6 +5308,7 @@
       "gauntlet": "GAUNTLET",
       "streak": "STREAK",
       "puzzles": "PUZZLES",
+      "friends": "FRIENDS' TRAINERS",
       "teamsCount": "{n} kept",
       "gauntletBest": "Best {n}/{of}",
       "streakBest": "Best {n}",
@@ -5179,12 +5318,14 @@
       "teams": "Build teams from nothing: any species, its level, nature, ability, item and four moves it can know. Teams are kept on this machine, apart from every save.",
       "gauntlet": "Take a team against Sinnoh's eight Gym Leaders, the Elite Four and the Champion, one after another, each with the team and levels they have in the story. Your team is made whole before every battle.",
       "streak": "Battle trainers of the Battle Frontier one after another at level 50 for as long as your team keeps winning. Every seven battles they grow stronger.",
-      "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works."
+      "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works.",
+      "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way."
     },
     "clears": "Cleared {n} times",
     "pick": {
       "gauntlet": "Which team takes on the gauntlet?",
       "streak": "Which team starts a streak?",
+      "friend": "Which team takes on this trainer?",
       "speciesTitle": "Choose a species",
       "itemTitle": "Choose an item to hold",
       "moveTitle": "Choose a move"
@@ -5315,5 +5456,92 @@
       "title": "Lullaby",
       "hint": "One Poké Ball, and a Dratini at full health. Make the throw count within two turns."
     }
+  },
+  "joinAvenue": {
+    "visitor": {
+      "0": {
+        "name": "Saskia",
+        "greeting": "I came all the way from Undella Bay just to see this street. It's livelier every time!"
+      },
+      "1": {
+        "name": "Ronan",
+        "greeting": "My Herdier sniffs out the café from three streets away. We always stop here first."
+      },
+      "2": {
+        "name": "Mirela",
+        "greeting": "A friend told me the manager here is a real Trainer. Is that you? Pleased to meet you!"
+      },
+      "3": {
+        "name": "Theo",
+        "greeting": "I'm saving up for the dojo. My Timburr says it's ready, but I'm not so sure about me!"
+      },
+      "4": {
+        "name": "Ines",
+        "greeting": "I stop by on my way to the Gear Station. Shopping first, battles after. That's the rule!"
+      },
+      "5": {
+        "name": "Bartek",
+        "greeting": "When I was young this street was nothing but empty shopfronts. Look at it now!"
+      },
+      "6": {
+        "name": "Cosima",
+        "greeting": "I draw the raffle every day. One day it'll be the top prize, I can feel it."
+      },
+      "7": {
+        "name": "Jonah",
+        "greeting": "I'm a courier. I carry parcels from Castelia to Nimbasa, and this avenue is my break."
+      },
+      "8": {
+        "name": "Lumi",
+        "greeting": "My Minccino loves the salon. It comes out so fluffy it can barely see!"
+      },
+      "9": {
+        "name": "Ezra",
+        "greeting": "Have you tried the antique shop? I found a fossil there older than my grandfather's stories."
+      },
+      "10": {
+        "name": "Paloma",
+        "greeting": "I'm writing a guidebook to Unova. This avenue gets a whole page, thanks to you!"
+      },
+      "11": {
+        "name": "Konstantin",
+        "greeting": "I've lost in the Subway's seventh car twice now. A cold drink here helps with the sting."
+      },
+      "12": {
+        "name": "Nell",
+        "greeting": "I'm here for the nursery. My Egg has been wobbling all week!"
+      },
+      "13": {
+        "name": "Aurel",
+        "greeting": "I'm a street musician. The echo under this roof is the best in the city."
+      },
+      "14": {
+        "name": "Yara",
+        "greeting": "I heard Join Avenue's rank goes up with every visitor. So here I am, doing my part!"
+      },
+      "15": {
+        "name": "Dov",
+        "greeting": "I just moved to Nimbasa. Everyone said to come here first, and now I see why."
+      }
+    }
+  },
+  "linkRoom": {
+    "fault": {
+      "teamSize": "A team of {count} can't be brought.",
+      "tooFew": "The room picks {count}: bring that many.",
+      "egg": "An Egg can't battle.",
+      "unknown": "{species} isn't known to this game.",
+      "notInRules": "{species} isn't in the room's rules.",
+      "speciesClause": "Two of one species (the species clause).",
+      "itemClause": "Two holding the same item (the item clause).",
+      "pickCount": "Pick {count} to go in.",
+      "pickEach": "Pick each of your team once at most."
+    },
+    "refused": {
+      "notAsked": "Nothing is being asked of you.",
+      "stale": "That answers a question no longer asked.",
+      "places": "One choice is wanted for each of your places."
+    },
+    "waiting": "Waiting for {player}…"
   }
 }

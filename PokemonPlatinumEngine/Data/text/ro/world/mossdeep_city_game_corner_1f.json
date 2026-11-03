@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "But it takes friends with their own games to play. Nobody has come by to play in a long while."
         ],
         "text": [
-          "",
-          ""
+          "Jos, antrenorii joacă jocuri împreună cu Pokémonii lor: sărit coarda, cules de fructe...",
+          "Dar e nevoie de prieteni cu propriile jocuri. Nu a mai venit nimeni să joace de multă vreme."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -35,8 +35,8 @@
           "They're all blank. Maybe one day someone will set a score worth writing up!"
         ],
         "text": [
-          "",
-          ""
+          "Panourile de recorduri de pe perete arată cele mai bune scoruri la jocurile de jos.",
+          "Sunt toate goale. Poate într-o zi cineva va face un scor care merită trecut aici!"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     }
@@ -57,7 +57,7 @@
         "Dodrio Berry Picking: the best scores. Nothing has been written up yet."
       ],
       "text": [
-        ""
+        "Culesul de fructe cu Dodrio: cele mai bune scoruri. Încă nu s-a scris nimic."
       ]
     },
     "MossdeepCity_GameCorner_1F_EventScript_PokemonJumpRecords": {
@@ -65,7 +65,7 @@
         "Pokémon Jump: the best scores. Nothing has been written up yet."
       ],
       "text": [
-        ""
+        "Pokémon Jump: cele mai bune scoruri. Încă nu s-a scris nimic."
       ]
     },
     "RS_MysteryEventsHouse_EventScript_Door": {
@@ -73,7 +73,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare încuiată."
       ]
     }
   }

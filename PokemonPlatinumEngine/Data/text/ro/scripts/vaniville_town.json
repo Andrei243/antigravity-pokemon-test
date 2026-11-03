@@ -1,0 +1,136 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Hellooo! Are you the one who just moved in?"
+      ],
+      "text": [
+        "Heeei! Tu ești cel care tocmai s-a mutat?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hi. I'm {rival}, from the house next door. Welcome to Vaniville."
+      ],
+      "text": [
+        "Salut. Sunt {rival}, din casa de alături. Bine ai venit în Vaniville."
+      ]
+    },
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "And I'm Shauna! We came to fetch you. A professor wants to meet some new Trainers, and you're one of them!"
+      ],
+      "text": [
+        "Și eu sunt Shauna! Am venit să te luăm. Un profesor vrea să cunoască niște Antrenori noi, iar tu ești unul dintre ei!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Our friends are waiting at the café in Aquacorde Town. It's just up Route 1, north of here."
+      ],
+      "text": [
+        "Prietenii noștri așteaptă la cafeneaua din Aquacorde Town. E chiar pe Route 1, la nord de aici."
+      ]
+    },
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Don't be long! Something exciting is waiting for you there!"
+      ],
+      "text": [
+        "Nu întârzia! Ceva palpitant te așteaptă acolo!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "She's always like that. I'll see you in Aquacorde, {player}."
+      ],
+      "text": [
+        "Mereu e așa. Ne vedem în Aquacorde, {player}."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Aquacorde Town is just north of here. Our friends are waiting."
+      ],
+      "text": [
+        "Aquacorde Town e chiar la nord de aici. Prietenii noștri așteaptă."
+      ]
+    }
+  ],
+  "Shauna": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Come on, come on! Aquacorde's this way!"
+      ],
+      "text": [
+        "Hai, hai! Aquacorde e pe aici!"
+      ]
+    }
+  ]
+}

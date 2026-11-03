@@ -16,7 +16,7 @@
   ],
   "people": {
     "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_HUMILAU", "still": true },
-    "1": { "name": "Marlon", "npcType": "swimmer_m", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_BEACH", "still": true },
+    "1": { "name": "Marlon", "npcType": "humilau_leader", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_BEACH", "still": true },
     "2": { "name": "Lady", "npcType": "lady", "hiddenBy": "", "dialog": [ "Eek! Hee hee! You'll never catch me!" ] },
     "3": { "name": "Rich Boy", "npcType": "rich_boy", "hiddenBy": "", "dialog": [ "Ha ha! Wait for me! I'm going to catch you!" ] },
     "6": { "name": "Photographer", "npcType": "veteran", "hiddenBy": "", "dialog": [ "A board you put your face through for a picture! I love them. Some people call them photo boards, but they're wrong." ] },

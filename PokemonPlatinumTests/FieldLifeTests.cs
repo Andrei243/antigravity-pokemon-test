@@ -633,7 +633,8 @@ public class FieldLifeTests
     public void TheAtlasHasEveryCellInItsOwnSquareInShadesToBeTinted()
     {
         var atlas = LifeArt.Atlas();
-        Assert.Equal((FieldLife.Cell * FieldLife.Columns, FieldLife.Cell * 2), (atlas.Width, atlas.Height));
+        // Life's pieces are the first two rows; the marks' blocks of two cells by two follow (plan 21 · part r, HoennPartRTests)
+        Assert.Equal((FieldLife.Cell * FieldLife.Columns, FieldLife.Cell * FieldLife.AtlasRows), (atlas.Width, atlas.Height));
         var used = new[]
         {
             FieldLife.Print, FieldLife.Puff, FieldLife.Puff + 1, FieldLife.Puff + 2, FieldLife.Leaf, FieldLife.Leaf + 1,

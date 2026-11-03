@@ -1,0 +1,42 @@
+# Victory over a wild Pokémon of Paldea: a flamenco guitar's flourish in A and a loop that strolls home under
+# the castanets. Original composition for this game (plan 31 · MU6), in the modern sound.
+title Victory! Wild Pokémon (Paldea)
+tempo 136
+meter 4/4
+reverb 0.22
+room hall 1.3
+
+track lead flamencoguitar vol=0.74 pan=0 rev=0.24
+  o5 e8 a8 o6 c+8 e8 a4 e4 | o6 c+2. r4 | L o6 c+4 o5 b8 a8 o6 c+4 e4 | o6 f+4 d8 o5 a8 o6 d4 f+4 |
+  o6 e4 o5 b8 g+8 b4 o6 e4 | o6 c+2 o5 a4 o6 c+4 | o5 a4 o6 c+8 f+8 e8 c+8 o5 a4 | o6 d4 f+8 e8 d4 o5 a4 |
+  o5 b4 o6 e8 d8 o5 b4 g+4 | o5 a2. r4 |
+
+track guitar flamencoguitar vol=0.34 pan=0.3 rev=0.24
+  o3 (a > c+ e)2 r2 | o3 (a > c+ e)2 r2 | L o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (e g+ b)4 (e g+ b)8 (e g+ b)8 r8 (e g+ b)8 (e g+ b)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 | o3 (f+ a > c+)4 (f+ a > c+)8 (f+ a > c+)8 r8 (f+ a > c+)8 (f+ a > c+)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (e g+ b)4 (e g+ b)8 (e g+ b)8 r8 (e g+ b)8 (e g+ b)4 | o3 (a > c+ e)4 (a > c+ e)8 (a > c+ e)8 r8 (a > c+ e)8 (a > c+ e)4 |
+
+track pad strings vol=0.22 pan=-0.3 rev=0.3
+  r1 | r1 | L o4 (a > c+ e)1 | o4 (d f+ a)1 |
+  o4 (e g+ b)1 | o4 (a > c+ e)1 | o4 (f+ a > c+)1 | o4 (d f+ a)1 |
+  o4 (e g+ b)1 | o4 (a > c+ e)1 |
+
+track bass bass vol=0.67 rev=0.08
+  o3 a8 r8 a8 r8 a4 e4 | o3 a8 r8 a8 r8 a4 e4 | L o3 a4 e4 a4 e4 | o3 d4 a4 d4 a4 |
+  o3 e4 b4 e4 b4 | o3 a4 e4 a4 e4 | o3 f+4 c+4 f+4 c+4 | o3 d4 a4 d4 a4 |
+  o3 e4 b4 e4 b4 | o3 a4 e4 a4 e4 |
+
+track cajon cajon vol=0.38 pan=-0.15 rev=0.18
+  r1 | r1 | L o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 |
+  o4 v100 e4 v70 e8 v56 e8 v96 e4 v70 e8 v56 e8 | o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 | o4 v100 f+4 v70 f+8 v56 f+8 v96 f+4 v70 f+8 v56 f+8 | o4 v100 d4 v70 d8 v56 d8 v96 d4 v70 d8 v56 d8 |
+  o4 v100 e4 v70 e8 v56 e8 v96 e4 v70 e8 v56 e8 | o4 v100 a4 v70 a8 v56 a8 v96 a4 v70 a8 v56 a8 |
+
+track castanets castanets vol=0.27 pan=0.25 rev=0.18
+  r1 | r1 | L o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 f+16 f+16 v90 f+8 r4 v60 f+16 f+16 v90 f+8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 |
+
+track drums kit vol=0.34 rev=0.12
+  v88 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 |
+  b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 | b4 v76 x4 v88 b8 b8 v76 x4 |
+  b4 v76 x4 v88 b8 b8 v76 x4 | b4 s4 s16 s16 s16 s16 s8 s8 |

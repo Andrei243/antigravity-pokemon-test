@@ -18,26 +18,34 @@
     },
     {
       "en": [
-        "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+        "Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy."
       ],
       "text": [
-        "Ridicăm ancora! Fă-te comod. Vom ajunge înainte să-ți dai seama."
+        "Ancora sus! Navigăm peste noapte și acostăm dimineața. Cabina ta e pregătită, așa că odihnește-te liniștit."
       ]
     },
     {
       "en": [
-        "The S.S. Aqua sped east across the sea, skimming the waves..."
+        "The S.S. Aqua slipped out of Olivine's harbour and turned east. The lighthouse's beam shrank away behind it..."
       ],
       "text": [
-        "S.S. Aqua a gonit spre est peste mare, plutind peste valuri..."
+        "S.S. Aqua a ieșit din portul din Olivine și a cotit spre est. Fasciculul farului se micșora în urma ei..."
       ]
     },
     {
       "en": [
-        "We've docked at Vermilion City, Kanto! Mind your step on the gangway."
+        "Sailor"
       ],
       "text": [
-        "Am acostat în Orașul Vermilion, Kanto! Ai grijă pe pasarelă."
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Morning! We've docked at Vermilion City, Kanto! Mind your step on the gangway."
+      ],
+      "text": [
+        "Bună dimineața! Am acostat în Vermilion City, Kanto! Ai grijă la pasarelă."
       ]
     },
     {
@@ -45,31 +53,39 @@
         "Welcome aboard the S.S. Aqua! We're bound for Olivine City in Johto. Shall we cast off?"
       ],
       "text": [
-        "Bun venit la bordul S.S. Aqua! Ne îndreptăm spre Orașul Olivine din Johto. Larg amarele?"
+        "Bine ai venit la bordul S.S. Aqua! Mergem spre Olivine City din Johto. Plecăm?"
       ]
     },
     {
       "en": [
-        "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+        "Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy."
       ],
       "text": [
-        "Ridicăm ancora! Fă-te comod. Vom ajunge înainte să-ți dai seama."
+        "Ancora sus! Navigăm peste noapte și acostăm dimineața. Cabina ta e pregătită, așa că odihnește-te liniștit."
       ]
     },
     {
       "en": [
-        "The S.S. Aqua sped west across the sea, skimming the waves..."
+        "The S.S. Aqua slipped out of Vermilion's harbour and turned west, the city's lights low on the water behind it..."
       ],
       "text": [
-        "S.S. Aqua a gonit spre vest peste mare, plutind peste valuri..."
+        "S.S. Aqua a ieșit din portul din Vermilion și a cotit spre vest, cu luminile orașului joase pe apă în urma ei..."
       ]
     },
     {
       "en": [
-        "We've docked at Olivine City, Johto! Mind your step on the gangway."
+        "Sailor"
       ],
       "text": [
-        "Am acostat în Orașul Olivine, Johto! Ai grijă pe pasarelă."
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Morning! We've docked at Olivine City, Johto! Mind your step on the gangway."
+      ],
+      "text": [
+        "Bună dimineața! Am acostat în Olivine City, Johto! Ai grijă la pasarelă."
       ]
     },
     {
@@ -77,7 +93,43 @@
         "No rush. The gangway's behind you, if you'd rather stay ashore a while longer."
       ],
       "text": [
-        "Nicio grabă. Pasarela e în spatele tău, dacă preferi să rămâi pe țărm mai mult."
+        "Fără grabă. Pasarela e în spatele tău, dacă preferi să mai rămâi pe uscat."
+      ]
+    }
+  ],
+  "Night": [
+    {
+      "en": [
+        "{player} was shown to a small cabin. Through the porthole, the last of the sunset sank into the sea."
+      ],
+      "text": [
+        "{player} a fost condus într-o cabină mică. Prin hublou, ultima rază de apus se scufunda în mare."
+      ]
+    },
+    {
+      "en": [
+        "Somewhere along the corridor a passenger laughed, and a door clicked shut. The engines hummed below the floor."
+      ],
+      "text": [
+        "Undeva pe coridor un pasager a râs și o ușă s-a închis cu un clic. Motoarele bâzâiau sub podea."
+      ]
+    },
+    {
+      "en": [
+        "Rocked by the waves, {player} fell asleep..."
+      ],
+      "text": [
+        "Legănat de valuri, {player} a adormit..."
+      ]
+    }
+  ],
+  "Morning": [
+    {
+      "en": [
+        "A long blast of the ship's horn! Morning light poured in through the porthole."
+      ],
+      "text": [
+        "O lungă bătaie de sirenă a corăbiei! Lumina dimineții intra pe hublou."
       ]
     }
   ]

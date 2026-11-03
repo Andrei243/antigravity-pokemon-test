@@ -287,7 +287,7 @@ The baseline is Platinum's own code (`Pokemon_GetEvolutionTargetSpecies`, `Evolu
 | Milcery | The player spins while it holds a Sweet | The same: four quarter turns the same way | Turning takes a step here, so a tight circle counts |
 | Ursaring | Peat Block under a full moon | Peat Block at night | No phases of the moon |
 | Cosmoem | Solgaleo or Lunala by game version | Solgaleo by day, Lunala at night | No versions |
-| (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship |
+| (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship; its perks in battle are read from friendship too (plan 10 · F7, "Affection's perks, marks, the camp and the DexNav") |
 | Sliggoo | Rain in the field | The same; battles' rain doesn't count | Done: the field's weather where the player stands (plan 04 · G9) |
 | Own Tempo Rockruff | Level 25 at dusk, 17:00 to 17:59 | Level 25 in Platinum's evening, 17:00 to 19:59 | Platinum's clock has no dusk of its own; its evening is the nearest of its five times of day |
 | Galarian Farfetch'd | Three critical hits in one battle | The same, evolving as the battle ends (not after one that was lost); B can stop it, as it can a level-up | Evolutions wait for the battle's end here anyway |
@@ -2451,6 +2451,24 @@ What the oracle leaves out, and why (each is the core's before the formula is as
 
 Found on the way, in the data's names rather than the rules: the data names a few forms otherwise than Showdown does, where `CLAUDE.md` says they keep Showdown's spelling. A female's own form is `Pyroar-Female`, `Meowstic-Female`, `Indeedee-Female`, `Basculegion-Female`, `Frillish-Female`, `Jellicent-Female` (Showdown: `-F`, or a look of the species alone); `Aegislash` is Showdown's `Aegislash-Shield` and `Minior` its `Minior-Meteor` (Showdown's `Minior` is the Core); `Necrozma-Dusk`, `Tauros-Paldea-Blaze-Breed`, `Ogerpon-Cornerstone-Mask`, `Darmanitan-Galar-Standard`, `Zygarde-10-Power-Construct` and `Squawkabilly-White-Plumage` are Showdown's `Necrozma-Dusk-Mane`, `Tauros-Paldea-Blaze`, `Ogerpon-Cornerstone`, `Darmanitan-Galar`, `Zygarde-10%` and `Squawkabilly-White`. The oracle takes each as Showdown's (its answers say so in their notes) and the stats agree. Recommended: nothing until a session reads a form by Showdown's name (plan 06 · R29, plan 07's links), which renames them or keeps a table of the two. The calculator doesn't know nine held items with no part in damage (Exp. Share, Smoke Ball, Soothe Bell, Everstone, Lucky Egg, Pure Incense, Luck Incense, Cleanse Tag, Amulet Coin), and works those scenarios out with no item.
 
+### Generation 4: Platinum's rules (2026-11-03, plan 24 · X5)
+
+Platinum's own damage formula (`DamageCalculator.Calculate` under `Ruleset.Platinum`, the baseline) is held against the same calculator's generation 4 (`node oracle.mjs --gen 4`) on 3,000 more scenarios drawn by `PokemonPlatinumTests/Oracle/OracleScenariosGen4.cs` (seed 4): Platinum's 493 species as the data loads them, with Platinum's forms that change a battle (Rotom's appliances, Giratina's Origin Forme, Shaymin's Sky Forme, Deoxys's formes, Wormadam's cloaks), Platinum's 123 abilities the species have and the engine runs, Platinum's held items, damaging moves of Platinum's 467 of one hit run fully, IVs, effort, natures, stages, statuses, sun, rain, a sandstorm and hail, Reflect and Light Screen, critical hits, single and double battles. The calculator treats Diamond, Pearl, Platinum, HeartGold and SoulSilver as one; **the decompilation decides every disagreement** (`src/battle/battle_lib.c` at `Sources.DecompCommit`). The answers were made on the Windows machine with `@smogon/calc` 0.12.0 and are committed (`damage-gen4.json`); `oracle.yml` gives them afresh.
+
+**Found and fixed**: 41 of the first 47 disagreements were one rule of ours. `BattleSystem_ApplyTypeChart` walks its chart, `sTypeMatchupMultipliers`, from the top and applies each line that matches either of the target's types, each step rounded down, so a dual type's two multipliers come in the chart's order, not the target's own: a Ground move on Cradily (Rock and Grass) is halved for the Grass before it is doubled for the Rock, and every roll comes out even. Ours applied them in the order of the target's types. `DamageCalculator.ChartOrder` is now the chart's order (the modern formula multiplies the two at once and is unchanged); no golden battle moved. Test: `OracleGen4Tests.ADualTypesMultipliersComeInTheOrderOfTheOriginalsChart`.
+
+**What is left**, each an entry of `PokemonPlatinumTests/Oracle/known-gen4.json` (`OracleGen4Tests.PlatinumsDamageIsGeneration4s` fails on any other); 2,994 of the 3,000 scenarios agree to the point:
+
+| Disagreement | Scenarios | Owed by | The decompilation |
+| --- | --- | --- | --- |
+| **Simple's doubled stages under a critical hit.** | 1 | the calculator | `BattleSystem_CalcMoveDamage` doubles the attacker's stage for Simple first and only then lets a critical hit pass over a stage below nothing: a Simple user at -2 hits as at 0. Ours does the same; the calculator keeps -4. |
+| **Explosion's halved Defense before its stages.** | 2 | the calculator | `defenseStat = defenseStat / 2` for `BATTLE_EFFECT_HALVE_DEFENSE` before the stage is applied, as ours; the calculator halves at another step, one to three points apart. |
+| **Ice against Fire stands last in the chart.** | 1 | the calculator | The chart lists Ice against Fire after every other matchup of Ice, so an Ice move on a Fire and Flying type is doubled for the Flying first. Ours does so since the fix above; the calculator halves for the Fire first. |
+| **Guts under a burn on a hit of ten thousand.** | 1 | plan 24 · X5's follow-up | A difference of 14 in 12,400 (#1629); not read yet. |
+| **Hustle on a hit of two or three points.** | 1 | plan 24 · X5's follow-up | 3 for us and 2 for the calculator on fifteen rolls (#143); not read yet. |
+
+What the oracle of generation 4 leaves out is what generation 9's leaves out where Platinum has it (above), and the terrains and Aurora Veil, which Platinum lacks.
+
 ## Every species in Sinnoh with nobody else (2026-10-17, plan 03 · D12a)
 
 The user's decision 4 (2026-10-12): a region holds every species of its own games, and the whole Pokédex can be completed with no link. In Sinnoh that is the 493 of Diamond, Pearl and Platinum. `SpeciesSources` (GPU-free) is every way the data and the scripts give, and `SinnohSpeciesTests` holds the 493 to it. The user answered the session's questions on 2026-10-17 (wave 19); the table is as they decided.
@@ -3653,7 +3671,53 @@ link (plan 06's decision 7), ours grows by days. Every number is ours (`Models/J
   Super Repels) and more again from rank 6 (Max Potions, Full Restores, Max Repels); the flower shop adds the Sweet Heart
   from 4; the café adds Old Gateaux, Lava Cookies and Rage Candy Bars from 5; and the two shop girls open shops of their
   own, the evolution stones from rank 7 and the vitamins from rank 9 (`marts.json`'s `join_avenue_*`). Black 2's dojo,
-  salon, nursery and the rest, its shop ranks of their own and the visitors' greetings are not built.
+  salon, nursery and the rest, its shop ranks of their own and the visitors' greetings are not built (since built: "Join
+  Avenue's other shops and its visitors", below).
+
+## Join Avenue's other shops and its visitors (2026-11-03, plan 22 · U11's leftovers)
+
+Black 2's avenue opens the shops of the passers-by who settle there, each with a level of its own; ours has five more shops
+in the street's empty bays, each opening at a rank of the avenue and doing more the higher that rank goes, which stands for
+Black 2's levels of a shop. Every number is ours (`Models/JoinAvenue.cs`), and none of it is a draw but the raffle.
+
+- **The raffle** (from rank 1, the north-west bay): one free ticket a day (`FLAG_DAILY_UNOVA_JOIN_AVENUE_RAFFLE`), drawn on
+  the game's own chance, 0 to 99, moved up three a rank: a Potion from 0, a Great Ball from 35, a Super Potion from 60, an
+  Ultra Ball from 75, a Revive from 85, a PP Up from 93, a Rare Candy from 99.
+- **The dojo** (from rank 2, the east side): $1,000 a session for one Pokémon chosen and one stat, which gains 4 effort at
+  rank 2 and two more a rank (20 at the top), cut to the rules' cap of a stat (252 by the modern rules) and to 510 in all;
+  nothing is charged when it can gain nothing. An Egg is turned away.
+- **The salon** (from rank 3, the west side): $500 a grooming, 10 friendship at rank 3 and three more a rank, never past
+  255, charged only when it does something.
+- **The nursery** (from rank 4, the east side): once a day (`FLAG_DAILY_UNOVA_JOIN_AVENUE_NURSERY`), free, every Egg of the
+  team is brought on by 2 cycles at rank 4 and one more a rank, never under one cycle, so it still hatches by walking.
+- **The antique shop** (from rank 5, more from 8; the east side): fossils, pearls and Stardust for money at the items'
+  prices, then the Skull and Armor Fossils, Big Pearls, Star Pieces and Rare Bones (`marts.json`'s `join_avenue_antiques`
+  and `_2`). Black 2's antique shop sells relics of its own region, which the data doesn't have.
+- **The visitors** (the stand-in for passers-by met over the console's wireless, which plan 06's decision 7 doesn't hold):
+  sixteen people of ours, each a name and a greeting (`ui.json`'s `joinAvenue.visitor.N`), of whom three stand in the
+  street once the player manages the avenue. Which three is the avenue's visitors so far (`JoinAvenue.VisitorAt`), so they
+  change with each day's visitors and never by chance; they only greet. Black 2's visitors who can be invited to open a
+  shop, its shop levels by money spent and its Join Avenue links are not built.
+
+## The Battle Subway's riders, prints and counter (2026-11-03, plan 22 · U11's leftovers)
+
+- **Riders of its own**: Black 2's Subway trainers aren't in the import, so the Frontier's trainers' teams go on riding the
+  cars, drawn by the Battle Tower's rooms as before (no draw moved), but dressed as riders of the Subway's own: twenty riders
+  of Unova's classes (Ace Trainers, Backpackers, Clerks, Depot Agents, Doctors, Nurses, Gentlemen, Ladies, Socialites,
+  Pilots, Pokémon Rangers, Veterans, Scientists, Workers and Musicians), each with eight names of ours (`Data/subway.json`,
+  `Models/Frontier/SubwayRiders.cs`). A Frontier trainer of number *n* rides as the rider *n* modulo twenty, named by *n*
+  divided by twenty, modulo eight; the two of a Multi pair never share a name. The Multi lines' staff partner is a Depot
+  Agent. The Subway Bosses are as before.
+- **Prints** on the Frontier's frame (the states 0 to 4) in a variable of the Subway's own, `VAR_UNOVA_SUBWAY_PRINT_STATE`:
+  Ingo beaten in a 21st car leaves the silver print waiting, and Emmet beaten in a 49th car after it the gold; a Super
+  train's Boss counts the same, and Emmet beaten first (a Super Double Train meets no Ingo) leaves the silver. Any desk
+  hands the print over before its welcome, and the records' board shows it. Black 2's Subway gives no prints; the Subway is
+  no facility of the Frontier's, so its prints count toward none of the Frontier's own (the gold prints' flag, Lilycove's
+  passes, the Villa's bust).
+- **The prize counter**: a clerk at the Gear Station's east end trades the Frontier's Battle Points (one count with the
+  Frontier's, as the Subway's points always were) for prizes of ours, one to a visit as at the Exchange Service Corner:
+  vitamins at 4, the Power items at 16, Rare Candy and PP Up at 24, Weakness Policy and Air Balloon at 32, PP Max, the Choice
+  items, Life Orb, Focus Sash, Assault Vest, Rocky Helmet and Eviolite at 48.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -6136,6 +6200,20 @@ Our own, three more halves of `RandomizerOptions` (`Abilities`, `Moves`, `Types`
 - **Pokémon already made** keep what they had: a save's team keeps its abilities and moves, and a Pokémon made before the swap (none in a game) would keep its ability until it evolves. Wild Pokémon, gifts and the starter are made after it and follow.
 - **Left**: random evolutions; TMs and tutors' lists; a type chart of its own.
 
+### Remix (plan 13 · V15 to V19)
+
+Our own: a second take on Sinnoh's trainers and wild Pokémon, written by us and chosen at NEW GAME (`RunRules.Remix`, a row of the run panel before the randomiser's; off by default and left out of a save's run when off, so no version was raised). Under Normal, and under every run without it, `Remix.For` answers null, no map's `Tables` is ever set and no trainer is copied: the golden battles, `scripts.txt`, `levels.txt` and the saves are as they were.
+
+- **What stays Platinum's**: the rules and formulas, the trainer AI and each trainer's flags and battle items (a Remix team may name its own; none does yet), the slots' weights, the areas' rates and every level, the story and its scripts. A wild slot keeps the area's own level and range slot by slot, and no Remix team's best Pokémon is higher than the table's best for that trainer (decision 8, taken as recommended: Remix is harder by species, moves, natures, items and full teams, not by levels; V3's cap table holds). Remix ships with the game in `Data/remix/sinnoh/` (decision 9, as recommended).
+- **Trainers**: `StartTrainerBattle` lays Remix's team on a copy (`Remix.ForTrainer`) first, before the randomiser's mapping, the crossed levels and the difficulty (V2's `Prepare` raises what Remix wrote and thinks with every routine, but a Remix team is written whole and equipped, so Challenge adds it no member and no item: `Trainer.Remixed`, set on the copy alone), so the trainer of the map keeps the table's team. The rival's first battle is Remix's too; a Master Trainer's is not. A team is found by the trainer's id in `trainers.json` (plan 08 · P7 made every trainer's id the table's), a rival's battle by the id of the starter the player chose.
+- **Wild Pokémon**: `Map.Tables` (an `IWildTables`, null by default) is asked first by `Map.WildAt` and `Map.Fish`, so steps, Sweet Scent, the water, the rods and the Great Marsh read it. The engine sets it on every map as a Remix game starts or loads and on each place come to; a game begun or loaded without Remix takes it away again. **A Remix table is met as written**: the time of day's, a swarm's, the Poké Radar's, the National Pokédex's slots, the dual slot, the Feebas tiles and the species of ours past 100 are the area's own table's and are not laid into it (the later batches may write day and night tables of their own). An area Remix names has every table from Remix: one it leaves out has nothing in it. An area it doesn't name keeps Platinum's.
+- **Built the same every run**: a Remix Pokémon is never shiny, its nature, ability, item, moves, IVs (20 each unless written) and effort the file's, its personality from a generator seeded by its place in the file.
+- **What counts as met before the Hall of Fame**: the grass, caves' floors, the water and the Old and Good Rods. The Super Rod is the post-game's in Platinum, so its Remix tables count for nothing toward the 458. A species counts as reached once it is met or evolves from one met by any of the data's ways (a trade's too, plan 03 · decision 4); a baby must be met itself. `docs/mechanics/remix-coverage.md` is the table, by batch.
+- **The south-west (V16)**: every area plan 01 · M5 opened with tables of its own (seventeen with Route 201) and thirty-two teams: the rival on Route 203 (three), Roark, Commander Mars at the Valley Windworks, the seven grunts of Jubilife City, Floaroma Meadow and the Windworks, and nineteen trainers of Routes 202 to 205, Oreburgh Gate and the mine. Its leader's teams are built round: **Roark**, rock as a wall (Geodude lays Stealth Rock, Rock Tomb slows the challenger, Nosepass and Onix hold with Sturdy, Cranidos breaks through last with Mold Breaker and an Oran Berry; four Pokémon, his ace at the pacing level's 14); **Mars**, poison and pressure (Zubat confuses, Croagunk taunts, Stunky blinds, Glameow sleeps the challenger and strikes). Fuego Ironworks' outside is written now (it is M5's) though it is reached by Surf.
+- **Balance**: `RemixBalance` fights a reference team (plan 02's pacing party made of what Remix's tables offer by then) against a leader's Remix team over twenty seeds, Platinum's AI on both sides, the reference side thinking with the leader's flags (`CoreSetup.PlayerTrainer`, tests and tools only, never in a recorded battle). Roark's reference is a Wooper of 12, a Machop of 13 and a Monferno of 14; its share of wins is held in a band of our own (`RemixGameTests`); the user's play is the last word, and a band that holds but feels unfair is moved, not dropped.
+- **The later batches** (V17 to V19): every area of plan 01 · M6 to M8 with tables that the story reaches before the Hall of Fame has Remix's (Turnback Cave, the Battle Zone, Stark Mountain, Snowpoint Temple and Victory Road's back rooms are the post-game's and keep Platinum's; Solaceon Ruins' rooms with no `habitats.json` key are left alone). Each leader, the Elite Four and Cynthia have a team of one more than the table's (or six), their ace at the pacing level; grunts and a dozen road trainers a batch are drawn from a themed pool at the table's own levels and count (at least two). Reference teams and bands of 4 to 18 wins of twenty are `RemixGameTests.References`. `RemixTests.EverySpeciesCanBeMet` holds all 458 met or evolved before the Hall of Fame: the centre carries Sinnoh's fossils, Unown, Spiritomb, Rotom and the Johto and Hoenn starters left, the east the sea's and the Kanto and Hoenn fossils, the north the snow's.
+- **Left**: the area page's second `Habitats` built from Remix's tables (the Pokédex still shows Platinum's places in a Remix run), and the `ways` mode's shots.
+
 ### New Game+ (2026-10-31, plan 13 · V11)
 
 Our own: Platinum has no New Game+. The user kept V11 on 2026-10-31 (decision 7). `Models/NewGamePlus.cs` says what is carried, `Core/GameEngine.NewGamePlus.cs` lays it over a new game after `InitializeNewGame`.
@@ -6391,11 +6469,41 @@ Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `Mos
 - **What is not here.** The stage rooms (`ContestHall`, `ContestHallBeauty`, `ContestHallCool`, `ContestHallCute`,
   `ContestHallSmart`, `ContestHallTough`): Emerald never lets the player walk in them (its player is hidden and the
   contest's graphics replace the map; they have no warps), so they are a backdrop for the contest and not a place;
-  the contest here is the screen alone. **Emerald's Pokéblock feeders** are not built: the pinned data names their tile
+  the contest here is the screen alone. **Emerald's Pokéblock feeders** (since built: "The Safari Zone's Pokéblock
+  feeders", below) were not built then: the pinned data names their tile
   behaviour (`MB_POKEBLOCK_FEEDER`) and no script or text uses them, and their rules (what a Pokéblock set down does to
   the wild Pokémon round it, for how many steps) are in source (`src/`) that the importer's cache does not hold, so there is
   nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
   is the same (her rules are in source the import does not read); both are left.
+
+## The Safari Zone's Pokéblock feeders (2026-11-03, plan 21 · H11, part d)
+
+Emerald's `src/safari_zone.c`, `PickWildMonNature` of `src/wild_encounter.c` and `EventScript_PokeBlockFeeder` of
+`data/scripts/safari_zone.inc`, read from the pinned commit; the lines are our own. The note under "Hoenn's contests and
+Pokéblocks" that the feeders could not be built is out of date: the source was reachable all along.
+
+- **Where they are.** The eleven tiles of Emerald's Safari Zone whose metatile has `MB_POKEBLOCK_FEEDER` (metatile 0x310
+  of `gTileset_Lilycove`): three in the north-west part, two in the north, one each in the south-west, south and
+  north-east, three in the south-east. The reader's chunks keep no such behaviour, so the zone's overlays read each tile
+  (`readAt`, `common.HoennFeeder`), laid where its part lies on the zone's one map (each part forty tiles square, from
+  the north-west part at nought). The feeder itself is drawn as the blocked metatile it is (a stone stand), not as a
+  box of its own.
+- **Setting one down.** Facing a feeder: one that holds a Pokéblock already says so (`pokeblock feeder`); otherwise the
+  player is asked and may set a Pokéblock of the case down (`pokeblock place`), which leaves the case. Ten may lie in the
+  zone at once (`NUM_POKEBLOCK_FEEDERS`); each lasts a hundred steps of the Safari Game, counted before the game's own
+  steps, and every one is cleared as a game begins, ends or is read back from a save. Nothing of them is saved, as
+  Emerald keeps them in working memory only.
+- **What it does.** While a Pokéblock lies within five steps across and down together of where the player's step ends,
+  in the same part, four wild Pokémon in five take a nature that likes it: the twenty-five natures are shuffled (each
+  pair swapped on a coin, in Emerald's order) and the first whose gain from the Pokéblock is above nothing is taken.
+  This comes before Synchronize, as in Emerald; a Pokéblock no nature likes chooses nothing. It works on every wild
+  Pokémon of the zone, the grass's, the water's and the rocks'.
+- **Emerald's carried difference is kept.** `GetPokeblockFeederWithinRange` subtracts each feeder's tile from what it made
+  of the one before, not from the player's tile again, so with two Pokéblocks in a part the second is found where Emerald
+  finds it (sometimes not when the player stands beside it). It works on each part's own tiles, as Emerald's maps have them.
+- **Not here.** Emerald's Safari battle throws Pokéblocks at the wild Pokémon (POKéBLOCK in place of the Great Marsh's
+  bait and mud); the battle here is still the Great Marsh's, so the Safari Fan Club's count of Pokéblocks thrown is not
+  kept either. A feeder's own picture is not drawn.
 
 ## The Lilycove Lady (2026-11-01, plan 21 · H11, part c)
 
@@ -8149,6 +8257,60 @@ every number, day and tile not said to be HeartGold's is ours.
   (`VAR_JOHTO_BILL_FULL_BOXES`, the full boxes he last rang about). HeartGold's Bill rings for the current box; this
   game's boxes take a catch into the first with room, so it counts full boxes instead.
 
+## Johto's last leftovers, part t: the Enigma Stone, the night aboard, the photographs' scenes, Cameron everywhere (2026-11-03, plan 20, part t)
+
+Built with no screen; every beat, number and tile not said to be HeartGold's is ours.
+
+- *Steven's Enigma Stone and his friend*: HeartGold's was an event a distributed item started; ours needs no item. Once
+  Steven has given his Hoenn starter (`FLAG_JOHTO_GOT_HOENN_STARTER`) he stands in the museum's first place, and spoken
+  to he shows the player the Enigma Stone the museum lent him (a stone he holds, not a key item), goes out
+  (`FLAG_JOHTO_STEVEN_SHOWED_STONE`, ours) and waits in Pewter City by the north houses with his friend, on HeartGold's
+  own objects and hiding flags (`FLAG_HIDE_PEWTER_CITY_STEVEN`, `_LATIAS`, `_LATIOS`, laid by `pewter.txt`'s arrival).
+  His friend is the one of the pair not flying over Hoenn: Latios where Hoenn's Hall of Fame is entered and its
+  television was told red (`VAR_ROAMER_POKEMON` 0), Latias otherwise (HeartGold's own, for a game that hasn't been to
+  Hoenn). Asked and agreed to, it is battled once at level 40 (ours); beaten, caught or run from it goes
+  (`FLAG_JOHTO_MET_STEVENS_EON`, ours), and Steven stands for good in the museum's second place, by the fossils
+  (HeartGold's `FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS`, laid by the museum's arrival). A battle lost leaves both waiting.
+- *The night aboard the S.S. Aqua*: the crewman's crossing, either way, is a short scene of our own (`scene "A night
+  aboard the ship"`, and `"... homeward"`): the harbour left over the dark, a cabin of the south-west rooms (23, 3, the
+  tile inside the east cabin's door), the evening at the porthole, sleep (the team rested, `heal`), the horn in the
+  morning, and the deck again at the head of the gangway (24, 18) with the ship docked. HeartGold's trainers of the
+  night and its sleep's other beats are not copied; the granddaughter's errand stays at the quay (part p).
+- *The photographs' scenes* (`Models/PhotoScenes.cs`, GPU-free): a print is drawn on a scene of the kind of place it was
+  taken in (`PhotoSetting`: a room where the map is indoors, a mountain for Mt. Silver and snowy ground, a cave, a
+  forest by its name, the shore for the sea's routes and the ports, a town where the area's header says so, a route
+  otherwise), each a sky, a ground and a few plain shapes of the kit; the player's figure stands beside the lead in a
+  boy's blue or a girl's red, and a place card in the print's corner names the region (JOHTO, or KANTO for HeartGold's
+  Kanto, `MapArea.InKanto`). Nothing of HeartGold's frames or poses.
+- *Cameron everywhere*: every object HeartGold hides behind `FLAG_HIDE_CAMERON` in an open area of Johto is Cameron of
+  ours (`common.Cameron`, shown by `FLAG_JOHTO_MET_CAMERONS_FATHER`), the twenty-seven part q held back among them (New
+  Bark, Cherrygrove, Route 32, the Ruins of Alph and its hall's two, the Slowpoke Well, Ilex Forest, Routes 34, 35 and
+  39, the National Park, Ecruteak, Olivine, its café and lighthouse, Route 45, the Ice Path, Blackthorn, the Dragon
+  Shrine, Routes 26 and 22, Mt. Silver and its cave, Saffron, Vermilion and Route 12), the photograph with Clair's
+  shrine among them. The two of the Pokéathlon's gate and square that wave 45 gave another part (a man who talks) keep
+  it. A test holds that none cuts off a tile of his map.
+- *Left out still*: the Magnet Train's platform (part o's decision 8) and the Safari Zone's rearranging (decision 5).
+
+## Johto's rooms on the wainscot, part v, and the Ice Path's walk (2026-11-03, plan 20 · J15, part v)
+
+Looked at in the harness's pictures (`JOHTO_FROM=roomsu JOHTO_ROOMS=…`, `jru_*`); what HeartGold's models stand there
+could not be read, so each look is ours, chosen from the kit's.
+
+- *The gates of twelve by twelve* (thirteen: the Ilex Forest, Violet, Ruins of Alph, National Park, Ecruteak and Saffron
+  gates and the four of Kanto's routes 11 to 18): the block between their two front alcoves is a planter bed
+  (`PartitionLook.Hedge`), as the League's reception gate's blocks are; cut to the wainscot it read as a bare brown slab.
+  A test names every gate of that plan, so one opened later can't keep the slab.
+- *The charcoal kiln*: only its two corner blocks are charcoal in crates (two `PartitionPatch`es); a look for the whole
+  room would have turned its back wall come forward into a wall of crates, so the room keeps its wall.
+- *Mahogany's souvenir shop*: counters.
+- *Kept on the wainscot*, since cut low they read as the cabinets they stand for: the Pokémon School's and the houses'
+  blocks of a tile or two, the Underground Path's gates and corridor, the café, the research centre; the Pokémon
+  Centers, Marts and Gyms have looks of their own already.
+- *The Ice Path's walk* (J10's "a streaming fault, not looked into"): timed again, the walk from Mahogany Town through
+  the Ice Path to Blackthorn City waits for no chunk while walking; its nine waits are all on arriving at a floor, behind
+  the warp's fade, where `WorldRenderer.ScenesFor` waits on purpose. J10's count had added the two together before the
+  harness told them apart, so there is no fault.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
@@ -8294,6 +8456,57 @@ Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the op
   laboratory play Santalune's and the cafés Aquacorde's until a later session of plan 31.
 - **The Town Map and Fly**: Route 4 and Lumiose's twenty cells are blocks of `townmap.json`, and Fly lands before
   Lumiose's Pokémon Center (spawn 3) once the city has been come to.
+
+## Central Kalos, drawn by hand: Route 5 to Cyllage City (2026-11-03, plan 23 · Z2, second part)
+
+- **The way west.** Lumiose's road out of the Vert gate opens once Lysandre's café is heard
+  (`VAR_KALOS_LUMIOSE_ROADS` 1, which the café's scene sets and Lumiose's arrival gives an older save past it); the
+  other roads (Routes 13 to 16) are plan 23 · Z4's and go on turning the player back, their triggers repeated on 1.
+  Route 5 (our name, the Skaters' Lane) runs west through meadows to Camphrier Town with a paved square of skaters in
+  its middle; Camphrier Town is a crossroads with its keeper's castle in a moat, a Pokémon Center (the Mart's counter
+  inside) and three houses, built as an old timbered town (`Architecture.OldTimber`); Route 6 (the Palace Avenue)
+  runs north between rows of trees to the palace's railings; Route 7 (the Riverbank Walk) runs south between rocks
+  and then west along a river to the coast; Route 8 (the Cliff Coast Path) runs north along the beach under the cliffs
+  to Cyllage City, a town of three terraces on the cliffs over a bay (`Architecture.Cyllage`: white stucco, ochre
+  hips), its Gym at the head of its main street. All of it is drawn by the same small script of ours as Lumiose (the
+  script is not kept; the drawings are the source). **Ours**: every shape and name of a route; the palace itself is
+  not built (its gate is shut and its butler stands before it); the original's way from Route 7 to the coast runs
+  through the Connecting Cave, which plan 23 · Z3 builds, so until then Route 7's walk reaches Route 8 in the open;
+  Route 8's stretch south to Ambrette Town is shut by a rockfall (a fence and a sign) until Z3 draws it; Cyllage's
+  road north (Route 10) is not drawn; Cyllage's bicycle shop sells nothing yet; the drawings have no heights, so
+  Cyllage's terraces are cliff tiles with steps cut through them on one level.
+- **Wild Pokémon** (tables of ours, twelve slots each, Kalos-Central's species, the coast's Kalos-Coastal's): Route 5
+  9 to 11 (Pancham, Furfrou, Skiddo, Gulpin, Bunnelby, Abra, Doduo, Smeargle), Route 6 10 to 12 (Espurr, Oddish,
+  Sentret, Nincada, Kecleon, Audino, Honedge), Route 7 12 to 14 (Hoppip, Ducklett, Volbeat, Illumise, Roselia,
+  Spritzee, Swirlix, Combee, Croagunk, Smeargle) and Route 8 13 to 15 (Wingull, Spoink, Drifloon, Zubat, Taillow, Absol,
+  Inkay, Starly, Mienfoo). Nobody surfs yet, so the river and the sea have no tables. Ten trainers of ours on the routes,
+  two hikers in the Gym, all in `Data/world/kalos/trainers.json`.
+- **The story** (our words on X and Y's beats as they are publicly told; `VAR_KALOS_STORY` 12 to 18): Tierno and
+  Trevor wait near Route 5's west end and Tierno battles with a new partner (`kalos_tierno_2`; 13); the keeper of
+  Camphrier's castle (Castellan Aubert, a name of ours) meets the player coming into town and tells of a Snorlax asleep
+  across the road south, which only the palace's flute wakes (14); the palace's butler at the gate on Route 6 lends the
+  Poké Flute (15); the flute wakes the Snorlax in the gap between Route 7's rocks, which battles at level 15 and is gone
+  whatever the battle's end (`FLAG_KALOS_HIDE_SNORLAX_ROUTE_7`; 16); the neighbour waits at the foot of Cyllage's main
+  street and battles with a team of three (`kalos_rival_cyllage_*`, the starter strong against the player's evolved;
+  17); and Grant, a climber, battles with Amaura and Tyrunt at 25 for the Cliff Badge, Kalos's second, and gives TM39
+  (18). **Ours**: the flute is lent at the gate by the butler, where X and Y's owner lends it inside the palace after a
+  favour; the castle's keeper meets the player in the street; the neighbour's battle is in Cyllage, not on the way; the
+  Gym's climbing wall is not built (one hall, no puzzle). Nobody new is hidden at the start of a game (everyone of this
+  part is on the map from a new game and taken away by their own scene), so no catch-up script was needed beyond the
+  road's. The objectives go on in Kalos's block (512 to 517), "nothing presses" stays 599.
+- **Rooms**: fifteen more hand-made map files: Lumiose's boutique (its clerk opens the wardrobe on `clothes.json`'s
+  `lumiose` stock, six garments of ours and eight of the classics), a stone shop and two houses by the Pokémon Center;
+  Camphrier's Pokémon Center, castle hall and three houses; Cyllage's Pokémon Center, Gym, bicycle shop and three
+  houses. The other twenty-seven of Lumiose's doors stay shut.
+- **The tower of light** is redrawn: from the field's steep camera the first tower, twelve tiles of dark steel lattice,
+  read as a black block running off the top of the picture. It is now four short stages stepped like a pyramid (128 to
+  44 texels across, 122 tall, a gold crown and a short spire above, four and a half tiles in all), pale steel and lit
+  glass with gold bands, so from the camera it reads as bright decks stepping up to a crown, and stands whole in the
+  picture with the player a tile or two from its foot (style guide, "Props").
+- **Music**: no new songs: Route 5 to 8 play Route 2's, Camphrier and its rooms Aquacorde's, Cyllage and its rooms
+  Santalune's, the Gym the Gym's, the Pokémon Centers the Center's, until plan 31 writes their own.
+- **The Town Map and Fly**: the six places are blocks of `townmap.json`, and Fly lands before Camphrier's (spawn 4) and
+  Cyllage's (spawn 5) Pokémon Centers once each town has been come to.
 
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
@@ -8478,3 +8691,109 @@ so does every region of this game before Kalos.
   `VAR_LILYCOVE_MUSEUM_2F_STATE` is nought): on the first visit to the gallery the curator turns to the player, both look
   at the frames, and he asks for paintings of contest winners; the variable is then 1. *Ours*: an arrival's script in
   place of Emerald's frame script, and a game whose frames already hold a painting is given the variable with no scene.
+
+## Affection's perks, marks, the camp and the DexNav (2026-11-03, plan 10 · F6, F7, F9, F11, F12)
+
+The rules of plan 10's companions that need no picture; what they draw waits (plan 10's Status says what).
+
+- **Affection's perks** (`Models/Affection.cs`, `Ruleset.AffectionPerks`, true under the modern rules alone): Generation 6
+  kept affection beside friendship; Generation 8 read the same favours from friendship, and so does this game, where
+  affection was folded into friendship 220 already (the evolution table's row). Two steps: *affectionate* from friendship
+  220, *devoted* at 255. Only the player's own Pokémon (never a partner's, never in the Battle Frontier) have them:
+  a fifth more EXP (`BattleCore.Give`, before the crossed region's half and Easy's three halves); a hit that would knock it
+  out leaves it 1 HP, 10% affectionate and 25% devoted, after its item and ability had their say (`HoldsOnForTheTrainer`);
+  its status condition shaken off at a turn's end, 10% and 20%, after its item's turn end (`ShakesOffForTheTrainer`); and
+  devoted alone, a move that would have hit dodged 10% of the time (`Hits`, after the accuracy roll) and one stage more
+  for critical hits (`DamageCalculator.RollsCritical`). *Ours*: the chances are our own choice in the spirit of
+  Generation 6's table, and the lines are our own words. Each roll is `RollKind.Affection` on the battle's generator,
+  made only where a perk can be given, so a battle where nobody's friendship reaches 220 draws exactly what it drew
+  (`battles-modern.txt` did not move).
+- **Marks** (`Models/EncounterMarks.cs`): a caught wild Pokémon may carry one mark of the moment it was met, tried in the
+  plan's order (rare 1/1000, personality 1/100 with one of the twenty-eight by personality, time 1/50, weather 1/50,
+  fishing 1/25 for one reeled in). *Ours*: nothing is drawn: each try is read from the personality with a salt of its
+  own (`SplitMix.Mix`), so the same Pokémon met at the same moment carries the same mark on every run, and no roll of
+  the game moves. The time marks follow Platinum's five times of day (morning Dawn, day Lunchtime, evening Dusk, night
+  and late night Sleepy-Time); the weather marks the field's weathers (rain and heavy rain Rainy, a thunderstorm
+  Stormy, snow Snowy, a blizzard and hail Blizzard, Emerald's drought Dry, a sandstorm Sandstorm, fog Misty; ash and a
+  clear sky none). The marks' words and titles are ours. They are kept as `Pokemon.EncounterMarks`, not `Marks`,
+  which are the boxes' markings; an older save's Pokémon has none, with no version raised. The title the player chooses
+  (`Pokemon.Title`, one of its marks) goes into the send-out lines alone ("Go! Starly the Sleepy!"); every other line
+  names it as before. Choosing it on the summary, and the marks' row and glyph, wait for their drawing.
+- **The camp** (`Models/Camp.cs`, `UI/CampScreen.cs`): each Pokémon is petted and fed once a visit, by two events of
+  Platinum's table that Platinum hasn't (`FriendshipEvent.Petted` 3/2/1, `Fed` 5/3/2, with the Luxury Ball's and the
+  Soothe Bell's bonus as any event); a meal is one of the bag's berries (decision 4: no cooking). A visit after a
+  battle cures the team's status conditions (not fainting) once per battle (`CampCare`, not saved). Its screen's logic is
+  built; its stage, models, faces and its START menu entry wait for a session that can look at them, so nothing opens
+  it yet.
+- **The DexNav** (`Overworld/DexNav.cs`, `Core/GameEngine.DexNav.cs`; decision 6's recommendation, a key item): its HERE
+  list is the species of the place the player stands in met now (the grass at this hour, the water and the rods),
+  from `Habitats.At`, the region's habitats by cell, with what the Pokédex knows and each species' search level. Switched
+  on with USE, a step on foot finds a Pokémon hiding in the grass in sight one time in twelve (on the field's generator,
+  from the place's own table as Sweet Scent draws one); Run held then creeps (`Pace.Sneak`, 3 tiles a second), and
+  stepping onto it meets it. A run, a Bicycle or a hop in sight, or a walk within three tiles, scares it off and breaks
+  the chain; walking out of sight forgets it. A find beaten or caught raises its species' search level and its chain.
+  *Ours*: its bonus is perfect IVs, one from search level 10 and two from 50, one more from a chain of 5 and two from
+  10, three at most; and under the modern rules its hidden ability, 5% from level 5, 10% from 25, 15% from 50 and 20%
+  from 100. The rustle is not drawn yet and nobody gives the item yet: both wait for the session that draws them.
+## Battles for two players (2026-11-03, plan 28 · I1 to I5)
+
+What the link battles' rules part was built with, and where it chose. Everything is GPU-free under `Battle/Sim/Link` (with `BattleCore.Link.cs` and `BattleSnapshot.cs` beside the core), and nothing of it is reached by a battle of the game's own, so neither golden file moved.
+
+- **The log keeps its Pokémon; the wire names them** (I1). The plan had every event carry a `PokemonRef` in place of a `Pokemon`, which would have rewritten both golden files. Ruled otherwise: the core's events stay as they are and `BattleWire` turns a Pokémon into a `PokemonRef(Side, Party, Index)` as it writes and back as it reads, through a `BattleRoster` (the whole battle's, `BattleRoster.Of(core)`, or one side's view's). A species goes by its National Pokédex number. The same object model plays a log and a view, and only the text that crosses is plain data. Each value is written as an object of its fields in the order they are declared, in camel case, with its wire name in `"wire"` where a field may hold several kinds; everything is in an envelope with the protocol's version (`BattleWire.Version`, 1), which a reader refuses when it is another. A fraction is refused outright: nothing on the wire is one.
+- **What the determinism scan covers** (I1): the source of `Battle/Sim` for `Random.Shared`, `new Random(`, the system clock, `Environment.TickCount`, `Stopwatch`, `Guid.NewGuid` and `GetHashCode()`. An enumeration of a `HashSet` or `Dictionary` whose order decides something can't be found by reading the source; the golden battles and the replay tests are what hold that.
+- **A foe's HP is the bar** (I2; decision 1 of the plan, its recommended option): exact for one's own Pokémon, and for a foe's the share of Platinum's 48-pixel bar (`SideView.Bar`: none at none, a pixel at the least while it stands), on every event that carries HP, the most HP of a Dynamax, a Terastal form and a form's change included (written as 48).
+- **A foe is a stand-in numbered by the preview** (I2): the view names the foe's Pokémon by their place in the team preview, which is sorted by National Pokédex number, form, level, gender and shininess, never by the order the team was brought or picked. A stand-in (`TeamPreview.StandIn`) is its preview entry alone: no moves, item or ability; its stats are none of the foe's and nothing reads them. Two of one species would be told apart by the order they were brought, which the species clause leaves out of every room.
+- **Moves, items and abilities** (I2): the view drops nothing the log says of them, because the log says a foe's move only as it is used and its item or ability only on the line whose `ItemShown` or `AbilityShown` names it (plan 12 · Q11). The tests hold that rule over every golden battle from both sides: no line names a foe's item or ability before the event that shows it.
+- **What only a Pokémon's own trainer is told** (I2): the other side's `ExpGained`, `LevelRose` and `MoveWanted` are left out of a view. A link battle gives none; the golden battles, viewed from the trainer's side, do.
+- **The lines are the player side's** (I2, left): `Said` is still the English line as the core writes it from side A's point of view ("The foe's Luxio used Spark!"), so side B's screen is told its own Pokémon as "the foe's". Turning the lines round is plan 17's battle keys taking a speaker's side, which I3's screen will need; until then a view's text is A's.
+- **Both sides asked, at the rules' level** (I3): `CoreSetup.EnemyController = null` already made the core ask the other side (and a fainted place's replacement of whichever side it is), so the core needed nothing. `LinkServer` asks each player only their own places (`LinkAsk`, with what each place may answer from the rules' own `WhyNot`: `PlaceOptions`), waits for both before it submits in the question's own order, and sends one player nothing of the other's choice. The screen's half (`BattleEngine.BeginChoosing` asking every place without a controller, the "Waiting for…" line on screen, a `BattleEngine` fed views from outside) and the harness's `link` mode are not built: `LinkClient.WaitingLine` is the line, and plan 13 · V12 or the session after shares the menu change.
+- **The transport** (I3) is `ILinkChannel`, text in and text out; the only one is the in-process `LoopbackLink`, which keeps every text that crossed each way for the tests. Plan 07 · O4 puts its WebSocket behind the same interface.
+- **A link battle's rules** (I4): `CoreSetup.Link` beside `Frontier`, whose rules it takes whole (no EXP, money or bag, every Pokémon obeys, a Soul Dew does nothing, the foe may take an item). RUN is refused (`battle.noThereNoRunning`) and `ChoiceKind.Forfeit` is the way out: taken at any question, alone, whatever else was asked, said with the Frontier's "forfeited the match" line, and kept in the record, so a replay ends where the battle did. In any other battle a forfeit is refused. The Vs. Recorder's file keeps `link` (null for every other battle, so no file written before changed), and a link battle's file replays with nobody choosing inside.
+- **The room** (I4): `LinkRoom` is Platinum's rules at Flat 50, single, six of six, with the species and item clauses: the plan's default. Flat 100 and As is are offered; every team is copies by `LevelScaling` (as is: at its own level, made whole). A room refuses an Egg, a team of none or more than six, fewer than it picks, a species of ours, and under Platinum's rules a species past 493. The sleep clause is **not** built: it is a battle rule (no second sleeper on a side), which needs a line in the core's status path, and is left for the session that offers modern-rules rooms in the game. Mega Evolution, Z-Moves, Dynamax and Terastallization are not offered to a player (the room's players hold no Key Stone or band), so under the modern rules a link battle is the modern rules without the later mechanics.
+- **Team preview and picks** (I4): each side is greeted with the other's six (`LinkHello`) and answers with the positions that go in, in order (`LinkPick`: all six, or three for "pick three of six"). A player brought back after a drop is greeted with the order they picked.
+- **The timer** (I4): the server keeps no clock. Whoever keeps it calls `LinkServer.TimeOut(side)`, which answers that side's places with `BattleCore.DefaultChoice` (the first move it may use, Struggle where it may use none, the first switch where neither, the first able Pokémon for a fainted place, staying in at Battle Style Shift's offer); the third in a row gives the match up for it (`LinkEnding.Timer`). `Disconnect(side)` gives it up as `LinkEnding.Disconnect`, `Rejoin(side, channel)` brings a player back with their whole view so far and the question they owe.
+- **State written out is the record, held to a check** (I5; decision 2 recommended it after plan 07 · O6, and it came here as the cheaper half). A battle's course is one iterator, which no serializer can write, so `BattleSnapshot` is the battle as it began (the Vs. Recorder's own file, with every answer so far) and a check of where it stood (turn, the dice's state and draws, the log's length, the question waited on). `BattleCore.Resume` replays the answers and refuses a snapshot that comes out anywhere else. What it doesn't give: a resume costs the battle's length in replay (milliseconds for a battle of a hundred turns), and the server needs the same build and data as wrote it. A state written field by field, with no replay, would want the course rewritten as a resumable machine; nothing needs it yet.
+
+## The online server (2026-11-03, plan 07 · O4 to O7, the server's halves)
+
+What `server/PokemonPlatinum.Server` and the engine's `Online/` were built with, and where they chose. Plan 07's decisions 10 to 15 are the same rulings in short; nothing of it is reached by the game yet, so no golden file moved.
+
+- **Before the Core library** (plan 07 · O1 isn't done): the server references the engine project, as the tools do, and the protocol lives in the engine's `Online/` so both ends share one set of records. O1 moves `Protocol.cs` and `PokemonCheck.cs` into the library and the server's reference with them.
+- **The protocol**: JSON, a message an object with its kind in `type` (System.Text.Json's discriminators, camel case, enums as names) inside `{"v":1,"msg":...}`; a reader refuses another `v` as `Outdated` before it reads anything else, and the server closes such a connection. A battle's messages cross unchanged inside a `battle` message, so plan 28's wire stays the one its tests hold.
+- **Who a player is**: the install token decides, the address only where there is no token. A known token keeps its friend code and moves it to the address it comes from; a new token is a new player even from a known address (two players behind one router); a game with no token is its address's tokenless player, made on the address's first visit. Tokens and addresses are stored only as HMAC-SHA256 hashes under the server's secret; the program refuses to start without the secret outside `--local`, where it makes one for the run.
+- **Rooms**: a link code is eight digits from the system's cryptographic generator, one open room to a code; it is joined once, expires after ten minutes unjoined, and a code nobody joined goes with its maker's connection. The maker can't join their own; a third gets `RoomFull`. A wrong code counts against the address (`TooManyGuesses` on the tenth in ten minutes, for ten minutes, the right code included). A member comes back only with the same friend code and the same token or address, within 60 seconds; then a battle is lost by `Disconnect` and a trade room closes.
+- **The trade broker**: an offer is checked at once (the data version first, then `PokemonCheck`, then the owners), and a new offer undoes both confirmations. Nothing is written before both have confirmed; then one transaction writes the trade and each Pokémon's new owner, and only then do the receipts go out. A drop before the commit calls the trade off (`TradeCancelled`); after it, the trade is done on the server and goes forward only. Its receipt goes out again in every welcome until acknowledged, and the trade is closed when both have. The server's step names (`TradeSteps`) are where a test kills it.
+- **The game's half of a receipt** (`OnlineClient.Apply` with an `ITradeKeeper`): the received Pokémon already held means the receipt was applied (acknowledge, change nothing); the given one not held means another save (change nothing, acknowledge nothing, the receipt waits); otherwise swap, save, then acknowledge.
+- **Duplicates**: refused are an offer whose id the owners' table gives another friend code, an offer of a Pokémon in a trade not yet closed, and a trade of one id against itself (both games offering copies of one Pokémon). An id never traded through the server is taken on trust once: the server can't know a save's history.
+- **The check** (`PokemonCheck`): the plan's list; a move is allowed by `Legality`, the Pokémon's own level-up list and both rules' (species and form), PP by the larger of the two rules' most; EXP inside its level by its species' growth rate (not for an Egg); a gender by the species' ratio; HP no more than the stats it is made with under the modern rules. A battle's team needs no ids.
+- **The battle host**: the room's maker is side A (the core's player side). Each side has its own turn timer of 60 seconds from the question it is asked (`LinkServer.IsWaitingOn`, `Asking`), which answers with the rules' default; the pick of the order has the same 60 seconds and gives the match up as `Timer` when it runs out. Leaving the room in a battle gives it up as `Forfeit`. The result is stored with the battle's snapshot (plan 28 · I5's record and check) and the seed, and each side gets `BattleRecorded` with the other's friend code, which the game writes into `LinkBattleRecord`. A battle lives in memory: a restart loses it (plan 28 · I5 could resume one; nothing asks it to yet).
+- **Limits of ours** beside the plan's: 200 messages a second on a connection (a bot playing a battle at full speed stays under it), 16 connections and 30 codes in ten minutes from one address, 64 KB a message.
+- **Graceful shutdown**: every game is sent `ServerClosing` and its connection closed after what was queued for it; the open rooms are dropped.
+## Teams and trainers as text; the live feed, the overlay and the splits file (2026-11-03, plan 13 · V22, V24)
+
+Our own: Platinum has neither. `Models/ShowdownPaste.cs`, `Models/TrainerFile.cs`, `UI/FriendsScreen.cs`, `Core/GameEngine.Friends.cs` (V22); `Core/LiveFeed.cs`, `Models/LiveSplitFile.cs`, `Core/StreamSafe.cs`, `Core/GameEngine.Stream.cs`, `Assets/stream/overlay.html`, `docs/stream-feed.md` (V24).
+
+- **A paste** is Showdown's own text for a Pokemon: species (a form by `ShowdownNames`), ` @ item`, `Ability:`, `Level:`, `<Nature> Nature` and `- move` lines. Written, it holds nothing a built Pokemon lacks (no EVs: built Pokemon have none; no IVs: they are 31). Read, nicknames, genders, shininess, happiness, EVs, IVs, Tera Type and a `=== header ===` are checked for their shape and let go; no Level line is Showdown's 100; no Ability line is the species' first. A line that cannot be read is named by its number and a key (`paste.*`), never quoted: a paste may come from anyone. At most six Pokemon and 8,000 characters. A paste that reads is then held to `BuiltTeams.WhyNot`, the one legality check, and to the games' 1,025 (the builder's list).
+- **A trainer file** is text: `PPTRAINER 1`, then `Name`, `Look` (Boy or Girl), `Class`, two `Line` numbers, `Data` (the data version, `GameDataFiles.Version`), `Checksum` (FNV-1a of the file with its checksum zeroed), a `---` line and the paste. Untrusted from its first byte: at most 6,000 characters, exactly this shape, checksum before anything is believed (so one changed character anywhere is refused), then the version (another game's data is refused with the key `trainerFile.refused.version`: the plan's rule), then the name (held to the keyboard's letters, digits and `.-' ` and ten characters), a class from a list of ten (`TrainerFile.Classes`, each a class of `trainers.json`), lines 0 to 11 of the table's `friends.line.*`, then the team's legality. **Nothing of the file's own is shown but the name**: its lines and class are chosen by number from a list of ours, so a stranger's words never reach the screen. The plan's "two lines (plan 08 - P9's phrases)" are these twelve lines of ours (P9's picker is for the story's interview and is not reused). No path in a file is followed; the file written for a trainer is named from its name's letters and digits alone.
+- **A code** is the file text deflated and written in base 32 (A to Z, 2 to 7) in groups of five letters, forty to a line: about a thousand characters for six Pokemon. Read, case, spaces, line breaks and dashes are let go; the inflated text is held to the same 6,000 characters (a zip bomb is refused), then read as a file. A code read on the friends' page is kept as a file of `trainers/` (so it stays in the list), a refused one nowhere.
+- **The folder** `trainers/*.trainer.txt` beside the save is read in ordinal order of file name (capitals before small letters, the same on every machine), at most 40 files, a file over 24,000 bytes refused unread; a file that is not named `.trainer.txt` is left alone.
+- **Where it lives**: there is no VERSUS (V12 is plan 28's): the friends' page is the battle room's fifth row, and a trainer chosen there is fought by one of the room's built teams (RoomChallenge.Friend, "Which team takes on this trainer?"): both sides made afresh at level 50 with `LevelScaling`, the Frontier's rules (no EXP, money or bag), the trainer thinking with Basic, EvalAttack, Expert, SetupFirstTurn, Risky, PrioritizeExtremes, BatonPass, CheckHp, Weather and Harassment (every routine of `AiFlags` a trainer uses; TagStrategy is added by a battle itself), prize 0, and their two lines as the trainer's before and after lines. Nothing is kept, nothing recorded.
+- **Export** is SEND <team> on the same page, not a row of the team builder or an action of `PCScreen` as the plan says (that would make the builder's team page and the PC's menus longer for one use); it writes a file for the team with the player's look Boy, class Ace Trainer and lines 0 and 1, and puts the code on the clipboard. Pasting a Showdown team is PASTE A TEAM, which keeps it as team "Pasted n" in `teams.json`, where the builder can change it.
+- **The live feed** (V24) is a file: `stream/state.json` beside the save, written whole (to `state.json.tmp`, then moved over the old file) when something it holds has changed, at most four times a second of the game's own time (the sum of frames' `dt`), and once a second more while the timer's corner is shown. Changed is decided on the JSON without its write time and without the timer's running seconds. The row off writes, builds and reads nothing. `--safe-mode` turns it off for the run. It never carries a trainer ID, a friend code or a path. Its shape is `docs/stream-feed.md`; the battle section is read from the animator's views (what the log has shown so far), not from the rules a turn ahead. It differs from the plan in one place, decided below.
+- **LiveSplit** (decision, differs from the plan): the plan sent V10's splits to LiveSplit Server over TCP to `127.0.0.1`. This build opens no socket at all: the third value of STREAM FEED also keeps `stream/livesplit.lss`, a LiveSplit splits file (format 1.7.0) with a segment for every split point the timer's category counts and each taken split's time as Personal Best (Real Time the timer's real time, Game Time the game's), rewritten whole whenever a split is taken. LiveSplit opens it from disk. The plan's option stands for a later session if live splitting is wanted; the setting name `StreamFeed` and its three values do not change.
+- **The overlay** is `Assets/stream/overlay.html`, copied by the game beside `state.json` when the feed is on (once per run, only if it differs), so it reads the feed by the relative path `state.json`. It is our own HTML, CSS and script with a transparent background, reads that one file by polling every half second, opens nothing else, and names only fields of the feed (`StreamKitTests` holds it). It interpolates the timer between writes.
+- **Stream-safe** hides the ID where the screens draw it (the Trainer Card, the Hall of Fame's record and ceremony, a Pokemon's trainer memo: `StreamSafe.Id`) and scrubs the user's folder out of the log's lines (`CrashReport.Scrub`, already used by crash reports). The plan's save summary and plan 07's friend and link codes show no ID today, so nothing there changes.
+- **Left**: the friends' hall (V23) and VERSUS's friend opponent in the V12 sense; export from the PC and the builder's own team page; a look, class and lines chosen for an exported trainer; live splitting over a socket; a section in the feed for the Dynamax and triples side by side (the feed lists every place on the field).
+## Free movement over the grid (2026-11-03, plan 30 · FM7 to FM9)
+
+Stage 2 of plan 30, built and proven on test regions; **no region's own file says `Free` yet**. Kalos's stays `Eight` until the plan's gate (Kalos playable to its second Gym) is judged by the user, and Sinnoh to Unova are four-way and unchanged to the bit. A test or a tool walks a region freely through the engine's `RegionMovementOverride` (null in the game). Where a decision was open, the plan's recommended option was taken.
+
+- **One rule of collision.** The body is a circle of radius 0.3 of a tile (`FreeMovement.Radius`, 77 256ths) whose centre is kept in whole 256ths (`Player.SubX`, `SubY`; `Player.Offset` the centre's offset from the counted tile's centre). Whether an edge is a wall is asked of `FieldMovement.Step` from the tile the centre is in (`FreeMovement.Classify`): a plain walk on the same level in the same way of travelling on two plain tiles (no `RefusesDiagonal` behaviour, no slope, no Gym puzzle on the map, no warp beyond) is open; a refusal is a wall; anything else is the grid's. The circle moves a quarter of a tile at a time, each axis stopped against an edge that is not open, then the sides of the new tile and the corners round it pushed out of where FM2's diagonal would be refused. So free movement reaches nothing the grid doesn't (a test walks Kalos's map at random and holds every tile to `WorldWalk`).
+- **Hand-offs.** A push across an edge the grid plays (a ledge, a door's warp, ice, a moving floor, a stair or slope, a deck's end, water's edge, a boulder with Strength, a block of ice, skates refused), within 35° of its normal and with the circle touching it, eases the body onto its tile's centre at the pace walked and plays the grid's own step from there (`Player.Glide`, `TryStep`). On a tile the grid keeps, the stick is the grid's four ways until the body is on a plain tile again. A step of the grid begun off the centre (a surf, a climb) sets out from where the body stands (`Player.startPixelX`), which on the grid is the tile's corner as before.
+- **A step is a tile entered** (decision 7), per axis, once the centre is the body's radius past the edge it came over (`FreeMovement.Counted`): the plan proposed 0.4 of a tile; the radius is taken because a body pressed against a wall in the tile beyond is exactly a radius past the edge, so the counted tile is always one the body can stand on, and back and forth over an edge still counts nothing. A tile entered plays what the end of a grid step plays (`Player.Landed`: the warp, `onArrive`, which is `OnStep`, ice, the grass's roll), so every count `OnStep` keeps matches a cardinal walk over the same tiles (a headless test walks eighteen tiles both ways).
+- **Talking and pressing** read a point three quarters of a tile ahead along the yaw (`FreeMovement.AheadReach`; the plan's 0.7 falls 0.005 of a tile short of the diagonal tile at 45°) and then the tile faced from the centre's tile (`Player.InteractTiles`); `Facing` is the cardinal nearest the way moved.
+- **Everyone else stays on the grid** (decision 9). A script's walk, a tool's grid steering and a trainer walking up first ease the body onto its counted tile's centre (`Move`'s centring, `StandStill`), so every scene, sight line and the skip system's unseen walks keep their tiles. A follower keeps a body's length behind along breadcrumbs dropped every quarter of a tile (`Breadcrumbs`, `Follower.FollowCrumbs`), on the tile that point is in and drawn off it by the rest, and treads tiles again on a grid place or under a script.
+- **Input.** `ActionFrame.MoveX`, `MoveY` are the stick's tilt, −127 to 127, rescaled past the dead zone and quantised where they are read (`StickReader.Tilt`); the keys and the d-pad are a full tilt, 90 an axis on a diagonal (`InputManager.StickOf`). A recording keeps them from format 4; an older one is read from its direction bits. `StateHash` adds the offset to its place only where it is not nought, so the grid's rows are what they were.
+- **Pace** (FM9): where the region's speed is `Analog`, a tilt under half walks slowly (`Pace.Slow`), a full tilt walks, and the run button or a full tilt held a second runs (`FreeMovement.PaceFor`, `FullTilt`, `RunAfterSeconds`); Autorun turns the button round as before. Where the speed is `Paces`, any tilt walks at the grid's pace. Discrete paces, not a continuous speed, so the legs' stride stays a step's.
+- **The save** keeps the offset (`SaveData.PlayerSubX`, `PlayerSubY`, left out when nought; `SaveData.FreePositions` = `SaveVersion` 2, whose `SaveMigration` step stands an older save on its tile's centre). A save moved by `PlaceOn` drops its offset.
+- **Tools.** The playthrough bot steers a stick at the next tile's centre in a free place (`Autoplayer.Walk`, `GameEngine.Stick`), and judges a leg's last step once the body is counted off the tile it set out from; it plays `Itineraries.KalosOpening` in `Eight` and in `Free`. `new FieldFuzzer(seed, stick: true)` draws angles and tilts; without it the fuzzer is the grid's, draw for draw.

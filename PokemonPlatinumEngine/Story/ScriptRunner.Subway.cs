@@ -159,7 +159,7 @@ public sealed partial class ScriptRunner
                     break;
                 }
                 towerFoes = BattleSubway.MakeOpponents(train, battle, Draw);
-                lastFoe = string.Join(" and ", towerFoes.Select(f => $"{f.Record.Class} {f.Record.Name}"));
+                lastFoe = string.Join(" and ", towerFoes.Select(f => $"{f.ShownClass} {f.ShownName}"));
                 host.FrontierAct("opponents", 0, Subject);
                 Result = towerFoes.Count;
                 break;
@@ -228,6 +228,41 @@ public sealed partial class ScriptRunner
                 // run itself is let go of by 'end', after the points are handed over
                 if (wins > story.Var(BattleSubway.Vars.Best(train))) story.SetVar(BattleSubway.Vars.Best(train), wins);
                 story.SetVar(BattleSubway.Vars.Latest(train), wins);
+                break;
+            }
+            case "beaten":
+                // Plan 22 · U11's leftovers: the Boss of the car just won against leaves a print waiting (RESULT 0 none, 1 silver, 2 gold)
+                Result = (int)SubwayRiders.Beaten(story, BattleSubway.BossAt(story.Var(BattleSubway.Vars.Wins) + 1, TrainOfTheRun));
+                break;
+            case "print":
+                // A desk hands over the print that waits (RESULT 0 none, 1 silver, 2 gold)
+                Result = (int)SubwayRiders.HandOver(story);
+                break;
+            case "prize":
+            {
+                // The Gear Station's counter: which of its prizes, with the points shown (RESULT 1, or 0 for none)
+                var stock = SubwayRiders.Prizes;
+                var rows = stock.Select(p => PrizeRow(p.Item, "scriptLines.priceBp", "price", p.Price.ToString()))
+                    .Append(Core.Text.Of("scriptLines.noThanks")).ToList();
+                host.FrontierAct("points", 1, Subject);
+                host.Ask(speakerShown, Core.Text.Of("scriptLines.whichPrize"), rows, cancel: stock.Count);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= stock.Count) { Result = 0; return; }
+                    lastItem = stock[host.Answer].Item;
+                    lastPrice = stock[host.Answer].Price;
+                    lastThing = Data.ItemDatabase.Get(lastItem)?.TeachesMove ?? "";
+                    Result = 1;
+                };
+                break;
+            }
+            case "buy":
+            {
+                // the prize chosen, for its Battle Points (RESULT 1, or 0 with too few)
+                var item = Data.ItemDatabase.Get(lastItem);
+                if (item == null || SubwayRiders.PriceOf(lastItem) != lastPrice || !host.Frontier.SpendPoints(lastPrice)) { Result = 0; break; }
+                host.Bag.AddItem(item, 1);
+                Result = 1;
                 break;
             }
             case "points":

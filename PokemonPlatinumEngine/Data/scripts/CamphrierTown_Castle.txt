@@ -1,0 +1,17 @@
+# Camphrier Town's castle (plan 23 · Z2, second part). The lines are our own: its keeper, Aubert, at home once he has
+# met the player in the street (camphrier_town.txt; he is shown here by FLAG_KALOS_HIDE_CASTELLAN_STREET).
+
+
+script Castellan
+  face castellan player
+  speaker "Castellan Aubert"
+  if var VAR_KALOS_STORY >= 16 goto Woken
+  if var VAR_KALOS_STORY >= 15 goto Flute
+  say "The palace is at the head of the avenue north of town. Its butler keeps the gate. Mention my name!"
+  end
+label Flute
+  say "You have the palace's flute! Then go and play it to our sleeper on Route 7. The whole town will thank you."
+  end
+label Woken
+  say "The road south is open again, and the carts are rolling to the coast. Camphrier owes you a great deal."
+  end

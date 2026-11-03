@@ -1,10 +1,13 @@
 # Battle against Regieleki (the electron golem): the Regis' tapped code (short, short, long) on a pulse, bare
 # parallel fifths, and a frantic F-sharp-minor square lead over a breakbeat. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
 title Battle! Regieleki
 tempo 200
 meter 4/4
 lowhptempo 1.06
 reverb 0.2
+sound modern
+room hall 2.4
 
 track lead square lowhp=sawlead vol=0.6 pan=0 rev=0.18
   r1 | o5 c+8 e8 g+8 b8 o6 c+4 r4 |
@@ -27,7 +30,7 @@ track fifths square vol=0.3 pan=0.25 rev=0.15
   o4 (d a)4. (d a)8 r4 (d a)4 | o4 (e b)4. (e b)8 r4 (e b)4 | o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (b >f+)4. (b >f+)8 r4 (b >f+)4 |
   o4 (d a)4. (d a)8 r4 (d a)4 | o4 (e b)4. (e b)8 r4 (e b)4 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 |
 
-track strings strings unless=lowhp vol=0.28 pan=0.35 rev=0.3
+track strings orchestra unless=lowhp vol=0.28 pan=0.35 rev=0.3
   r1 | r1 |
   L o3 (f+ >c+ f+)1 | o3 (f+ >c+ f+)1 | o3 (d a >d)1 | o3 (e b >e)1 |
   o3 (f+ >c+ f+)1 | o3 (f+ >c+ f+)1 | o3 (b >f+ b)1 | o3 (c+ g+ >c+)1 |
@@ -47,6 +50,11 @@ track drums kit vol=0.5 rev=0.1
 
 track hats kit vol=0.38 pan=0.15 rev=0.08
   r1 | r1 | L [ v70 h8 v45 h8 v60 h8 v45 h8 v70 h8 v45 h8 v60 h8 v45 o8 | ]16
+
+# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
+track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+track crowd kit vol=0.3 pan=0.1 rev=0.3
+  r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08

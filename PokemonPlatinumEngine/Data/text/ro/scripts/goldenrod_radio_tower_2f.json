@@ -67,7 +67,7 @@
         "Buena"
       ],
       "text": [
-        ""
+        "Buena"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "Hi there! I'm Buena. Every evening I host Buena's Password on the radio. Never played? Then this is for you!"
       ],
       "text": [
-        ""
+        "Salut! Sunt Buena. În fiecare seară prezint Buena's Password la radio. N-ai jucat niciodată? Atunci asta e pentru tine!"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Tune in to my show in the evening. Hear tonight's password, then come and tell me. A right answer is a point!"
       ],
       "text": [
-        ""
+        "Ascultă emisiunea mea seara. Aud parola de diseară, apoi vino și spune-mi-o. Un răspuns corect e un punct!"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "My show goes on the air in the evening. Listen in, then come and see me with the password!"
       ],
       "text": [
-        ""
+        "Emisiunea mea merge în eter seara. Ascult-o, apoi vino la mine cu parola!"
       ]
     },
     {
@@ -103,11 +103,11 @@
         "I don't know it"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Salut! Știi parola de diseară?",
+        "{password:1}",
+        "{password:2}",
+        "{password:3}",
+        "Nu o știu"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "That's right! That's one point on your Blue Card, which makes {bluecard}. Come back tomorrow night!"
       ],
       "text": [
-        ""
+        "Corect! Ăsta e un punct pe Blue Card-ul tău, ceea ce face {bluecard}. Revino mâine seară!"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Oh, so close! That isn't tonight's word. Listen to my show tomorrow and try again!"
       ],
       "text": [
-        ""
+        "Oh, aproape! Nu e cuvântul de diseară. Ascultă emisiunea mea mâine și încearcă din nou!"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "Then tune in to Buena's Password! I say the word on the air every evening."
       ],
       "text": [
-        ""
+        "Atunci ascultă Buena's Password! Spun cuvântul în eter în fiecare seară."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "You've played tonight already! Come back tomorrow night with a new password."
       ],
       "text": [
-        ""
+        "Ai jucat deja diseară! Revino mâine seară cu o parolă nouă."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Wow, your Blue Card is full! Go and trade some points for a prize, then come and play again."
       ],
       "text": [
-        ""
+        "Uau, Blue Card-ul tău e plin! Du-te și schimbă niște puncte pe un premiu, apoi vino să joci din nou."
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Team Rocket took over the studio! They won't even let me read my password on the air..."
       ],
       "text": [
-        ""
+        "Team Rocket a ocupat studioul! Nici măcar nu mă lasă să citesc parola în eter..."
       ]
     }
   ],
@@ -165,7 +165,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeie"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "These prizes are for players of Buena's Password. Ask Buena for a Blue Card first!"
       ],
       "text": [
-        ""
+        "Premiile astea sunt pentru jucătorii de la Buena's Password. Cere-i mai întâi lui Buena un Blue Card!"
       ]
     },
     {
@@ -187,13 +187,13 @@
         "Nothing"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Blue Card-ul tău are {bluecard} puncte. Ce premiu dorești?",
+        "Ultra Ball (2)",
+        "Full Heal (2)",
+        "Rare Candy (3)",
+        "Protein (5)",
+        "Nugget (10)",
+        "Nimic"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Come again whenever you've saved some points!"
       ],
       "text": [
-        ""
+        "Revino oricând ai strâns niște puncte!"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Sorry, your card doesn't have enough points for that one yet."
       ],
       "text": [
-        ""
+        "Îmi pare rău, cardul tău nu are încă destule puncte pentru ăsta."
       ]
     }
   ]

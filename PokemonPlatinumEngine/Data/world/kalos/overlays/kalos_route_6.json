@@ -1,0 +1,36 @@
+{
+  // Route 6, the Palace Avenue (plan 23 · Z2, second part): drawn by hand, our words. North from Camphrier Town to the
+  // gates of the palace: a straight avenue between two rows of trees, meadows of tall grass and beds of flowers either
+  // side, and the palace's railings at its head, where its butler keeps the gate (kalos_route_6.txt); the palace
+  // itself is a later session's. It plays Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_6",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "props": [
+    { "type": "Statue", "x": 196, "y": 268, "width": 1, "depth": 1 },
+    { "type": "Statue", "x": 205, "y": 268, "width": 1, "depth": 1 }
+  ],
+  "people": {
+    "butler": { "name": "Butler", "npcType": "Gentleman", "script": "Butler", "still": true },
+    "picnicker": {
+      "name": "Léa",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Léa: Shh! I'm hiding in the grass to watch the palace. Oh, you found me. Battle!",
+        "dialogueAfter": "Picnicker Léa: Some hiding place this turned out to be."
+      }
+    },
+    "backpacker": {
+      "name": "Clément",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Clément: I came to see the palace, but its gates are shut. A battle will cheer me up!",
+        "dialogueAfter": "Backpacker Clément: That didn't cheer me up at all."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 6 · The Palace Avenue\nNorth: the palace\nSouth: Camphrier Town"
+  }
+}

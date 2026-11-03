@@ -762,8 +762,11 @@ public sealed partial class WorldRenderer
         // Where the place's light is strongly coloured, people and Pokémon keep their own colours (style guide,
         // "Climates"); the things of the map, drawn before them, are lit as the rock they stand among is
         if (rig.PeopleWash > 0f) shaders.SetPeopleLight(ArtLook.ForPeople(light, rig.PeopleWash));
+        // In a room the people and the Pokémon stand straight on screen, though the room keeps its perspective
+        if (indoors) shaders.SetUprightCards(ArtLook.FieldUpright, pitchDeg);
         DrawPokemon(CharacterPass.Color);
         DrawPeople(CharacterPass.Color);
+        if (indoors) shaders.SetUprightCards(0f, pitchDeg);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
         // The field's rules as layers, when a developer has turned any on (plan 16 · T18)
@@ -1538,6 +1541,8 @@ public sealed partial class WorldRenderer
             lifeFlat.Clear();
             lifeUpright.Clear();
             Life.Quads(lifeFlat, lifeUpright);
+            // Planks pressed down and Shoal Cave's salt (plan 21 · part r)
+            Life.MarkQuads(map, PeopleInSight(map), lifeFlat, lifeUpright);
             sceneQuads.Clear();
             Life.SceneQuads(sceneQuads);
         }
@@ -1554,9 +1559,11 @@ public sealed partial class WorldRenderer
         foreach (var q in quads)
         {
             // Water thrown up catches the sky: it dims only half as far as the ground does
-            bool wet = q.Cell >= FieldLife.Ring;
+            bool wet = q.Cell >= FieldLife.Ring && !FieldLife.IsMark(q.Cell);
             var tint = Dimmed(q.Tint, wet ? 0.5f + 0.5f * lit : lit);
-            var src = new Rectangle(q.Cell % FieldLife.Columns * cell, q.Cell / FieldLife.Columns * cell, cell, cell);
+            // A mark (plan 21 · part r) is a block of two cells by two
+            float span = FieldLife.IsMark(q.Cell) ? cell * 2 : cell;
+            var src = new Rectangle(q.Cell % FieldLife.Columns * cell, q.Cell / FieldLife.Columns * cell, span, span);
             float cx = q.At.X;
             if (upright)
             {

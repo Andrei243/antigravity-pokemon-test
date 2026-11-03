@@ -134,8 +134,8 @@ public class PackScreenTests
     public void ThePacksRowOpensItsScreenOverTheOptions()
     {
         var rows = Enum.GetValues<OptionRow>();
-        // The row stands before HELP, after the jukebox
-        Assert.Equal(OptionRow.Packs, rows[Array.IndexOf(rows, OptionRow.Help) - 1]);
+        // The row stands after the jukebox, with the streamer kit's two rows between it and HELP
+        Assert.Equal(OptionRow.Packs, rows[Array.IndexOf(rows, OptionRow.Help) - 3]);
         var (label, _, help) = OptionsScreen.Describe(new GameSettings(), OptionRow.Packs);
         Assert.False(string.IsNullOrWhiteSpace(label));
         Assert.False(string.IsNullOrWhiteSpace(help));

@@ -5,7 +5,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You must be {player}. I'm Steven. I came from Hoenn on business with Silph Co., but I've been hearing about you."
       ],
       "text": [
-        ""
+        "Tu trebuie să fii {player}. Sunt Steven. Am venit din Hoenn cu treburi la Silph Co., dar am tot auzit despre tine."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Sixteen Badges, Johto's and Kanto's both. I'd like to see what you could do with a Pokémon from my home."
       ],
       "text": [
-        ""
+        "Șaisprezece Insigne, din Johto și din Kanto. Aș vrea să văd ce poți face cu un Pokémon din ținutul meu."
       ]
     },
     {
@@ -32,10 +32,10 @@
         "Mudkip"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pe care ai vrea să-l crești?",
+        "Treecko",
+        "Torchic",
+        "Mudkip"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "{player} received a Pokémon from Steven!"
       ],
       "text": [
-        ""
+        "{player} a primit un Pokémon de la Steven!"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Take good care of it. I'm off to Pewter City. They say its museum has a stone that fell from space."
       ],
       "text": [
-        ""
+        "Ai grijă de el. Plec spre Pewter City. Se zice că muzeul lui are o piatră căzută din spațiu."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "But your team is full. Make room on it, then come back and talk to me."
       ],
       "text": [
-        ""
+        "Dar echipa ta e plină. Fă loc în ea, apoi revino să vorbești cu mine."
       ]
     }
   ],

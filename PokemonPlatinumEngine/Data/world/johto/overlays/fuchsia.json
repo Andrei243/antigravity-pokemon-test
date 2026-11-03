@@ -3,7 +3,7 @@
   // house, a Pokémon Center and a Mart, with Route 19 south over the sea to Route 20 and Route 15 west. The Safari Zone
   // is gone and Pal Park's gate stands in its place (warps 5 and 6, fuchsia_pal_park_entrance since part o), whose
   // attendant takes the player to the Park, which is Sinnoh's.
-  // Cameron the photographer waits for his session
+  // Cameron the photographer takes pictures here (common.Cameron)
   "area": "fuchsia",
   "bgmTrack": "kanto/fuchsia",
   "people": {

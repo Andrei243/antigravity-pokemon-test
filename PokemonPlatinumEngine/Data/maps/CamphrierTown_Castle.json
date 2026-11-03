@@ -1,0 +1,137 @@
+{
+  "name": "CamphrierTown_Castle",
+  "displayName": "Camphrier Castle",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#...##...##...#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 9,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 214,
+      "targetY": 346,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "castellan",
+      "name": "Castellan Aubert",
+      "npcType": "old_man",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Castellan",
+      "shownBy": "FLAG_KALOS_HIDE_CASTELLAN_STREET"
+    },
+    {
+      "id": "maid",
+      "name": "Maid",
+      "npcType": "Lady",
+      "x": 11,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "The castle is very old and very draughty. I dust the suits of armour every morning, and every morning they are dusty again."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

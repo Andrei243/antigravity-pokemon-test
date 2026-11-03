@@ -128,6 +128,8 @@ public enum GameState
     BattleRoom,
     /// <summary>The battle room's team builder (plan 13 · V13).</summary>
     TeamBuilder,
+    /// <summary>The battle room's friends' page: trainer files and codes, pasted teams, teams sent (plan 13 · V22).</summary>
+    Friends,
     /// <summary>A PC's Poké Jobs board: the boxes' Pokémon sent on jobs while the game is shut (plan 15 · E3).</summary>
     Jobs,
     /// <summary>Cameron's photo album looked through, a script's <c>photo album</c> waiting on it (plan 20, part q).</summary>
@@ -257,7 +259,15 @@ public partial class GameEngine
     /// place's laid over it (<see cref="Map.Movement"/>), then the options' MOVEMENT row (FOUR WAYS makes it the grid's).
     /// Every region before Kalos says nothing, so it is the grid's four ways there whatever the row says.
     /// </summary>
-    public RegionMovement MovementHere => Here.Movement.Under(flow.Map?.Movement).AsChosen(Settings.Movement);
+    public RegionMovement MovementHere => (RegionMovementOverride ?? Here.Movement).Under(flow.Map?.Movement).AsChosen(Settings.Movement);
+
+    /// <summary>
+    /// A test region's word on movement in place of the region's own (plan 30 · FM7 to FM9): what a test or a tool lays
+    /// over every place to walk a region as if its file said <see cref="MovementDirections.Free"/> before the plan's gate
+    /// lets Kalos's say it. A place's own record still wins, and the options' MOVEMENT row still turns it four-way. Null in
+    /// the game.
+    /// </summary>
+    internal RegionMovement? RegionMovementOverride { get; set; }
 
     // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
     // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
@@ -397,7 +407,7 @@ public partial class GameEngine
     /// Starts a new game as the character and under the name chosen in the introduction. Every game is played by the
     /// modern rules (plan 06 · R19): Platinum's are the baseline the code writes them against, and no game's.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, string? rival = null, RunRules? run = null)
+    public void StartNewGame(string? name, PlayerLook look, string? rival = null, RunRules? run = null, Outfit? outfit = null)
     {
         // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
         // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
@@ -431,6 +441,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.DexNav = new();
         flow.Photos.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
@@ -466,7 +477,8 @@ public partial class GameEngine
         // A new game names no other region's rival: forget those of any game played before it
         PlayerIdentity.SetRival(null);
         PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look), NewGameRegionRecord.Id);
-        flow.Wardrobe.Clear();
+        // The clothes chosen in the introduction, given for nothing and worn (plan 11 · C10; none: the look's own)
+        flow.Wardrobe.Start(outfit);
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         flow.TrainerId = fieldRandom.Next(0, 65536);
         // Whose Pokémon are shiny for whom: the card's number and its hidden half (plan 06 · R15)
@@ -474,6 +486,7 @@ public partial class GameEngine
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
+        LayTheRemix();
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         // The run timer begins with the game (plan 13 · V10)
         flow.RunState = new RunState { Timer = new RunTimer() };
@@ -573,7 +586,8 @@ public partial class GameEngine
         GameClock.FixedSeason = Settings.Season;
         TakeTheSeason();
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
-        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
+        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f, Settings.VoiceVolume / 100f);
+        UseVoices();
         AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
         AudioManager.Mono = Settings.Speakers == SpeakerMode.Mono;
         // A battle under way plays on with the scene as the options now have it (plan 08 · P1); the battle style is
@@ -587,6 +601,7 @@ public partial class GameEngine
         Accessibility.Use(Settings.ReduceFlashes, Settings.ReduceMotion);
         UseCaptionsAndHold(); // and sound and holding (plan 12 · Q9, GameEngine.Captions.cs)
         Seeing.Use(Settings.ColourVision, Settings.TextSize, Settings.HighContrast); // and seeing (plan 12 · Q8)
+        StreamSafe.Use(Settings.StreamSafe); // and what a viewer might copy (plan 13 · V24)
         if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
@@ -638,7 +653,11 @@ public partial class GameEngine
         if (idsGiven > 0) Log.Info($"A save of version {savedFrom} was brought up to date: {idsGiven} Pokémon were given ids.");
 
         // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
-        var place = save.PlaceOn(MapDatabase.Get);
+        // (A save made in a region a pack adds, with the pack no longer in use, stands on no map at all: it wakes where
+        // its game began, plan 16 · T14, which the title has said)
+        var place = save.WhereAPackLeftIt(MapDatabase.TryGet) ?? save.PlaceOn(MapDatabase.Get);
+        if (MapDatabase.TryGet(save.Place().Map) == null)
+            Log.Warn($"The save stood on {save.Place().Map}, which no region has now (a pack's region not in use?): it wakes on {place.Map}.");
         flow.Map = MapDatabase.Get(place.Map);
         flow.Player = new Player(place.X, place.Y);
         flow.Player.Facing = place.Facing;
@@ -648,6 +667,9 @@ public partial class GameEngine
         // player was cycling
         flow.Player.Bike = save.Travel == TravelMode.Cycling ? BikeInTheBag() : BikeKind.Bicycle;
         if (save.PlayerHeight is { } standing) flow.Player.SetHeight(standing);
+        // A save made between tiles in a free region wakes where the body stood (plan 30 · FM7), unless it was moved
+        if ((save.PlayerSubX != 0 || save.PlayerSubY != 0) && place.Map == save.CurrentMapName && (place.X, place.Y) == (save.PlayerGridX, save.PlayerGridY))
+            flow.Player.SetOffset(save.PlayerSubX, save.PlayerSubY);
         flow.ExitSpot = save.Exit;
         flow.MapTrail.Restore(save.MapTrail);
         flow.LastDay = save.LastDay;
@@ -676,6 +698,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
@@ -780,6 +803,7 @@ public partial class GameEngine
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
+        LayTheRemix();
         flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
         // A save from before the run timer (plan 13 · V10) begins it now, from its play time, with what it had reached already untimed
@@ -850,6 +874,8 @@ public partial class GameEngine
             PlayerGridX = flow.Player.GridX,
             PlayerGridY = flow.Player.GridY,
             PlayerFacing = flow.Player.Facing,
+            PlayerSubX = flow.Player.Offset.X,
+            PlayerSubY = flow.Player.Offset.Y,
             Travel = flow.Player.Mode,
             PlayerHeight = flow.Player.HeightOn(flow.Map),
             Exit = flow.ExitSpot,
@@ -876,6 +902,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -910,7 +937,7 @@ public partial class GameEngine
             ScenesSeen = flow.Story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
             Heard = AudioManager.Heard.ToList(),
             StoryPhrases = flow.Story.PhrasesToSave(),
-            Packs = PackRecords.InUse(),
+            Packs = PackRecords.InUse(Here),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = flow.Money,
@@ -1097,6 +1124,7 @@ public partial class GameEngine
         KeepTheMedals(dt);
         KeepTheResearch();
         KeepTheTimer(dt);
+        KeepTheStream(dt);
         KeepTheAutosave(dt);
         Accessibility.CaptionsShown.Advance(dt); // plan 12 · Q9
         flow.StartMenu.Animate(dt);
@@ -1225,8 +1253,10 @@ public partial class GameEngine
                 if (flow.IntroScreen.Phase == IntroPhase.Done)
                 {
                     flow.IntroScreen.Close();
-                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName, newGameRun);
+                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName, newGameRun, flow.IntroScreen.Outfit);
                     newGameRun = null;
+                    // The outfits looked at and not chosen are let go of, as the wardrobe's are (plan 11 · C10)
+                    if (!IsHeadless) foreach (string tried in flow.IntroScreen.TakeTried()) CharacterModels.Forget(tried);
                 }
                 break;
             case GameState.Overworld:
@@ -1575,6 +1605,9 @@ public partial class GameEngine
             case GameState.BattleRoom:
                 UpdateBattleRoom(dt);
                 break;
+            case GameState.Friends:
+                UpdateFriends(dt);
+                break;
             case GameState.TeamBuilder:
                 UpdateTeamBuilder(dt);
                 break;
@@ -1705,6 +1738,7 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
+        KeepTheSaltInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
@@ -1726,7 +1760,11 @@ public partial class GameEngine
         if (!flow.Runner.IsRunning && HandOverATrade()) return;
 
         // Whoever travels with the player keeps up, whatever else has the field
-        flow.Along?.Update(fieldDt, flow.Player.Stride);
+        // (in a free region a body's length behind along the player's breadcrumbs, while nobody's script walks them: plan 30 · FM8)
+        if (flow.Along is { } along && flow.Player.Directions == MovementDirections.Free && flow.Map.Follower == along.Who
+            && along.Crumbs.Points.Count > 0 && !flow.Runner.IsRunning)
+            along.FollowCrumbs(flow.Player.SubX, flow.Player.SubY, fieldDt);
+        else flow.Along?.Update(fieldDt, flow.Player.Stride);
         // The lead out of its ball, with the options' FOLLOWER row on (plan 10 · F3)
         KeepTheLeadAlong(fieldDt);
         // Wild Pokémon in sight, with the options' WILD POKéMON row at VISIBLE (plan 10 · F5)
@@ -1877,10 +1915,14 @@ public partial class GameEngine
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party) | FieldHelp.Moves(GrantedMoves);
         flow.Player.Autorun = Settings.Autorun;
         flow.Player.CanSkate = SkateRules.Allowed(Here, flow.Story);
-        flow.Player.Directions = MovementHere.Directions;
-        flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
+        var movement = MovementHere;
+        flow.Player.Directions = movement.Directions;
+        flow.Player.AnalogSpeed = movement.Speed == MovementSpeed.Analog;
+        flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids) is { } lead ? lead with { Feeder = FeederInReach } : null;
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, MeetInTheField, HandleWarp, OnStep);
+        // A tool's stick (plan 30 · FM9: the bot and the fuzzer in a free region): free where the place moves freely
+        else if (Stick is { } held) flow.Player.SteerFreely(dt, flow.Map, held.Way, held.Run, MeetInTheField, HandleWarp, OnStep);
         else flow.Player.Update(dt, flow.Map, MeetInTheField, HandleWarp, OnStep);
         // A snowball the slide broke bursts as it happens (plan 01 · M9, part 2b)
         ShatterSnowball();
@@ -1995,7 +2037,20 @@ public partial class GameEngine
     /// <summary>The player has set off from a tile: whoever walks behind them goes there next.</summary>
     private void TrailBehind()
     {
+        // A tile free movement left (plan 30 · FM8): whoever walks behind treads the tiles the body's centre was counted
+        // on, as they tread the grid's, and the breadcrumbs say where between them the body went
+        var freelyLeft = flow.Player.TakeLeft();
         if (flow.Along == null || flow.Map.Follower != flow.Along.Who) return;
+        if (flow.Player.Directions == MovementDirections.Free)
+        {
+            flow.Along.Crumbs.Drop(flow.Player.SubX, flow.Player.SubY);
+            if (freelyLeft is { } left) flow.Along.PlayerLeft(left.X, left.Y, (flow.Player.GridX, flow.Player.GridY));
+            if (!flow.Player.IsMoving)
+            {
+                partnerHeading = flow.Player.Heading;
+                return;
+            }
+        }
         var head = flow.Player.Heading;
         if (head != (flow.Player.GridX, flow.Player.GridY) && head != partnerHeading) flow.Along.PlayerLeft(flow.Player.GridX, flow.Player.GridY, head);
         partnerHeading = head;
@@ -2063,6 +2118,8 @@ public partial class GameEngine
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
+        // The DexNav's find in the grass stays, flees or is met, or one is found (plan 10 · F12)
+        if (DexNavStep()) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
         if (flow.EncounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
         // The S.S. Tidal comes in by itself after enough steps aboard (plan 21 · H12, part k; Emerald's CountSSTidalStep)
@@ -2343,10 +2400,18 @@ public partial class GameEngine
 
         int targetX = flow.Player.GridX + dx;
         int targetY = flow.Player.GridY + dy;
+        // Free (plan 30 · FM7): the tile ahead along the yaw is asked first, and the tile faced from the centre's tile when
+        // nobody is there, so someone diagonally in front is spoken to
+        float standing = flow.Player.HeightOn(flow.Map);
+        var (aheadTile, facedTile) = flow.Player.InteractTiles();
+        if (aheadTile != (targetX, targetY) || facedTile != (targetX, targetY))
+        {
+            (targetX, targetY) = flow.Map.NpcIn(aheadTile.X, aheadTile.Y, flow.Map.FootingAt(aheadTile.X, aheadTile.Y, standing)) != null
+                || flow.Map.GetSignboardAt(aheadTile.X, aheadTile.Y) != null ? aheadTile : facedTile;
+        }
 
         // Check NPC interaction; reception and shop counters can be talked across
         // Someone on a bridge's deck is out of reach from the ground under it
-        float standing = flow.Player.HeightOn(flow.Map);
         var npc = flow.Map.NpcIn(targetX, targetY, flow.Map.FootingAt(targetX, targetY, standing))
             // Whoever the story hangs over nothing, level with the player (Giratina in the Distortion World, plan 02 · S12)
             ?? flow.Map.NpcIn(targetX, targetY, standing);
@@ -2411,7 +2476,8 @@ public partial class GameEngine
         // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the
         // Fen Badge), as the original offers it
         var walker = new Walker(flow.Player.Mode, standing, Moves: flow.Player.Moves);
-        var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
+        var (standX, standY) = flow.Player.Standing;
+        var spot = FieldMoveRules.SpotOf(flow.Map, standX, standY, flow.Player.Facing, walker) with { Partner = partner != null };
         if (spot.Waterfall && spot.Surfing) StartScript(FieldScripts.Waterfall);
         // (and a whirlpool faced from the water: HeartGold's, plan 20 · J8)
         else if (spot.Whirlpool && spot.Surfing) StartScript(FieldScripts.Whirlpool);
@@ -2510,7 +2576,25 @@ public partial class GameEngine
     /// Walks the player in place of the keys while it is set: the way they are steered each frame (null stands
     /// still) and whether they run. For the story's scripted walks and for the screenshot harness.
     /// </summary>
-    public (Direction? Want, bool Run)? Steering { get; set; }
+    public (Direction? Want, bool Run)? Steering
+    {
+        get => steering;
+        set
+        {
+            steering = value;
+            // A tool that steers by the grid, or stops steering, lets go of the stick too (plan 30 · FM9)
+            Stick = null;
+        }
+    }
+
+    private (Direction? Want, bool Run)? steering;
+
+    /// <summary>
+    /// Steers the player by a stick in place of the keys while it is set (plan 30 · FM9): the way (−1 to 1 on each axis,
+    /// its length the tilt) and the run button. Free where the place moves freely, its eight-way heading elsewhere. For
+    /// the playthrough bot and the field fuzzer in a free region, and tests; <see cref="Steering"/> goes first.
+    /// </summary>
+    public (System.Numerics.Vector2 Way, bool Run)? Stick { get; set; }
 
     /// <summary>Puts a bubble over someone's head for a moment: a person of the map by name, or the player (null).</summary>
     public void ShowEmote(string? npcName, EmoteBubble bubble, float seconds = 0.9f)
@@ -3091,6 +3175,9 @@ public partial class GameEngine
                 break;
             case GameState.BattleRoom:
                 flow.BattleRoomScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Friends:
+                flow.FriendsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TeamBuilder:
                 flow.TeamBuilderScreen.Draw(VirtualWidth, VirtualHeight);

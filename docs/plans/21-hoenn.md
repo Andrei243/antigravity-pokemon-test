@@ -1221,6 +1221,18 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       and the contest lady, the Pokéblock feeders (the Safari Zone's, its other session's), contests and the blender with
       friends (plan 07), the contest's music, cheers, voices and per-move animations, the painting on the wall, the
       museum's first scene.
+    - **Part d built** (2026-11-03; rulings, "The Safari Zone's Pokéblock feeders"): Emerald's eleven **Pokéblock
+      feeders** in Hoenn's Safari Zone, their tiles read from the pinned layouts (`MB_POKEBLOCK_FEEDER`, metatile 0x310)
+      and read by the six parts' overlays (`readAt`, `common.HoennFeeder`); `Models/PokeblockFeeders.cs` (ten places, a
+      hundred steps, the five-step reach with Emerald's carried difference, the nature chosen four times in five before
+      Synchronize), kept by `SafariGame.Feeders` (not saved), handed to the wild Pokémon through `WildLead.Feeder`
+      (`GameEngine.FeederInReach`, by where the step ends); script words `pokeblock feeder|place` and `{feeder}`; Romanian
+      for the four new lines. Tests (`--filter`, run): `HoennFeederTests` (8), `ScriptTests`, Story, Voice, translation,
+      Text, Content, SceneSkip, Romanian, Golden (`scripts.txt` gains `common.HoennFeeder`: accepted), DataFile, Schema,
+      HoennContest, Safari. Shots: `h3l0_safari_feeder_south`, `h3l1_safari_feeder_northwest` (the harness's `hoenn`,
+      `HOENN_FROM=look`, `LOOK_ONLY=h3l`), taken and looked at: the feeders stand as grey stone stands in the grass.
+      **Still left**: Emerald's Safari battle with POKéBLOCK thrown (the Great Marsh's bait and mud stand in), a feeder's
+      own picture, and part c's other leftovers above (the Pokéblock feeders are no longer among them).
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was
@@ -1309,7 +1321,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       **Built**: eight maps (matrices 3, 4, 5, 288 to 292: the sea floors of Routes 129, 105 and 125, Underwater_MarineCave,
       MarineCave_Entrance, MarineCave_End, TerraCave_Entrance, TerraCave_End) in RegionDatabase's Hoenn list; the
       scientist's report after the Hall of Fame drawing one of Emerald's sixteen places (VAR_ABNORMAL_WEATHER_LOCATION,
-      Draw in oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnormalWeatherEnd (sixteen flags
+      Draw in 
+oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnormalWeatherEnd (sixteen flags
       of ours), the eight ways into Terra Cave on Routes 114 to 118 and the eight passages into the Marine Cave's pool on the
       floors of Routes 105 to 129 as overlay doors openedBy those flags, a drought or heavy rain over each route by a zone
       while its flag, Emerald's deep water (abnormal_weather.inc's coordinates) as a new overlay field darkWater
@@ -1520,6 +1533,24 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       (the roulette's wheel is another session's); the Kecleon bridge's and the Fortree bridge's tile swaps, the salt
       piles shrinking, Mew's grass shaking and the cave mouths' and deep water's looks under the abnormal weather (each a
       swap of chunks or a field effect, none drawn).
+    - **Part r** (done 2026-11-03: Hoenn's picture-only leftovers; style guide, "Hoenn's last things"; shots with the
+      harness's `hoenn` mode, `HOENN_FROM=look`, before and after, `h3e4` to `h3e6`, `h3g1`, `h3h0`, `h3h0b`, `h3h1`, `h3h2`,
+      `h3h2b`, `h3i2`, `h3i2b`, `h3i3`, `h3i3b`, `h3i4`, `h3k6`; tests `HoennPartRTests`, run with `--filter`). **Built**:
+      planks pressed down (`FieldLife.Marks.cs`, our own art, the life atlas grown to six rows of which the marks are
+      blocks of two cells by two): under the player on Hoenn's plank bridges (Emerald's Fortree bridge swap) and under the
+      unseen Kecleon on Route 120's bridge until it is gone; Shoal Cave's salt piles whole, then a little left once the
+      day's salt is taken, none under the tide (`Overworld/SaltPiles.cs`); under the abnormal weather a cave's mouth on
+      the Terra Cave's ways (a door opened by `FLAG_HOENN_ABNORMAL_WEATHER_*`) and one patch of deep water to each run of
+      the overlays' `darkWater` (`GameEngine.StoryMarksOn`, told to the field's life when the story or the map changes);
+      the Abandoned Ship's deckhouse and bulwarks as a ship's steel over its rock (`PropType.ShipCabin`, fourteen overlay
+      props over blocked tiles only); the S.S. Tidal's patches of floor among its bulkheads (a run of walls far from the
+      floor that is shut in by partitions is built as partitions, `MapScene.ShutInBetweenPartitions`, which also fills the
+      corridor's middle block); the contest's line-up cards a row along the foot so the stage reads above. **Checked**: a
+      surfer passes under the Seaside Cycling Road at its north end (rows 193 to 197), where Emerald's sea runs under its
+      deck; along its long stretch the sea beside the deck is Emerald's blocked water, kept. **Fixed**: `h3h1` stood the
+      player inside a house (Fortree's shot is now on the upper walkway), `h3h0` in the river. **Left**: the Fortree
+      walkway's planks under the trees south of it are hidden from the camera (the trees' height, as in `h3h1`'s first
+      look); Mew's grass shaking; the cave mouth is one card on the tile, not a hole cut in the rock's face.
     - **Part o** (done 2026-11-02: Mauville's roulette wheel, the contest's stage and the museum's first scene;
       docs/mechanics/rulings.md, "Mauville's roulette wheel, the contest's stage and the museum's first scene"; tests run
       with --filter (HoennPartOTests 12, and Story, Script, Content, Text, Voice, ScriptTranslation, SceneSkip,

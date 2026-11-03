@@ -110,6 +110,30 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=roomsu shoots only plan 20 · J15, part u (jru*): the last rooms' inner walls and part t's people and pictures
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "roomsu")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            game.Party.Add(new PokemonPlatinumEngine.Models.Pokemon(PokemonPlatinumEngine.Data.PokemonDatabase.Get("Typhlosion")!, 80));
+            JohtoRoomShotsU();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
+        // JOHTO_FROM=rooms shoots only plan 20 · J15, part s (jrs*): the rooms' inner walls and part q's and r's places
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "rooms")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            game.Party.Add(new PokemonPlatinumEngine.Models.Pokemon(PokemonPlatinumEngine.Data.PokemonDatabase.Get("Typhlosion")!, 80));
+            JohtoRoomShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=kantoo shoots only plan 20 · J15, part o (jko*), in a new game of Johto of its own, with a team to fight with
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "kantoo")
         {

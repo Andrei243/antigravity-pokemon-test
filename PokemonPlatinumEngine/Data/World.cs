@@ -30,17 +30,18 @@ public sealed class World
         Index = index;
     }
 
-    /// <summary>Every region that has a world folder, in name order.</summary>
+    /// <summary>
+    /// Every region that has a world folder, in name order: the game's, and a region a pack adds (plan 16 · T14), whose
+    /// folder and index are its pack's own.
+    /// </summary>
     public static List<World> LoadAll()
     {
         var worlds = new List<World>();
-        string root = GameDataFiles.PathOf(Folder);
-        if (!Directory.Exists(root)) return worlds;
-        foreach (string dir in Directory.GetDirectories(root).OrderBy(d => d, StringComparer.Ordinal))
+        foreach (string name in DataLayers.FoldersIn(Folder))
         {
-            string relative = Path.Combine(Folder, Path.GetFileName(dir));
+            string relative = Path.Combine(Folder, name);
             if (File.Exists(GameDataFiles.PathOf(Path.Combine(relative, IndexFile))))
-                worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile))));
+                worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile), strict: true)));
         }
         return worlds;
     }
@@ -49,12 +50,21 @@ public sealed class World
     /// A world read from any folder that has the layout of <c>Data/world/&lt;region&gt;/</c>, with the index given
     /// instead of read: how tools look at an import the game doesn't ship (the importer's whole output).
     /// </summary>
-    public static World Open(string folder, WorldIndexFile index) => new(Path.GetFullPath(folder), index);
+    /// <param name="folder">The folder laid out as <c>Data/world/&lt;region&gt;/</c>.</param>
+    /// <param name="index">Its <c>world.json</c>, read already.</param>
+    /// <param name="strictOverlays">False reads the overlays as a tool that tells of a mistyped key itself does (the
+    /// content check, which reports the key and the field meant, and goes on to check the rest).</param>
+    public static World Open(string folder, WorldIndexFile index, bool strictOverlays = true) =>
+        new(Path.GetFullPath(folder), index) { strictOverlays = strictOverlays };
 
-    private T? Optional<T>(string file) where T : class
+    // The overlays are written by hand and read strictly (plan 24 · X4), but where a tool asks otherwise
+    private bool strictOverlays = true;
+
+    // A file written by hand (an overlay) is read strictly (plan 24 · X4); what the importer writes is not
+    private T? Optional<T>(string file, bool strict = false) where T : class
     {
         string relative = Path.Combine(folder, file);
-        return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative) : null;
+        return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative, strict) : null;
     }
 
     // The files read so far are kept for everyone who asks: tests and the chunks' workers ask from several threads at
@@ -122,7 +132,7 @@ public sealed class World
     {
         lock (reading)
         {
-            if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
+            if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"), strictOverlays);
             return overlay;
         }
     }
@@ -316,6 +326,11 @@ public static class WorldMapBuilder
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
         if (room) map.Interior = RoomStyleOf(entry.Name);
+        // A Johto or Hoenn room's inner walls may be something of their own (plan 20 · J15, part s: the Goldenrod Gym's
+        // hedges; plan 21 · part q: the S.S. Tidal's bulkheads)
+        if (room) map.Partitions = WorldModels.PartitionsOf(world.Index.Region, entry.Name);
+        // (and a stretch of one may be something else again: the S.S. Aqua's table among its bulkheads, part u)
+        if (room) map.PartitionPatches = WorldModels.PartitionPatchesOf(world.Index.Region, entry.Name);
         // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
         map.Puzzle = GymPuzzle.Create(entry.Puzzle);
         // A place that keeps its own word on movement inside a free region (plan 30 · FM1)
@@ -558,6 +573,14 @@ public static class WorldMapBuilder
                 if (map.Height < matrix.Height * T)
                     for (int x = 0; x < map.Width; x++)
                         if (!walked[(map.Height - 1) * map.Width + x]) map.SetGroundTile(x, map.Height - 1, beyond, isSolid: true);
+                // Its furniture is laid as a room of one chunk's is (plan 20 · J15, part s: the S.S. Aqua's hold had its
+                // engines' tiles drawn as lawn), each piece cut to the room's floor inside its walls
+                // (Johto's alone so far: Black 2's rooms of several chunks have no catalogue of furniture)
+                int top = Enumerable.Range(0, map.Height).FirstOrDefault(z => Enumerable.Range(0, map.Width).Any(x => walked[z * map.Width + x]));
+                // (the Team Rocket Hideout's chunks stand New Bark Town's turbine model in for its generators, which no
+                // room builds: its blocked tiles stay its walls)
+                if (string.Equals(world.Index.Region, "johto", StringComparison.OrdinalIgnoreCase))
+                    LayFurniture(map, furniture.Where(p => p.Type != PropType.WindTurbine).Select(p => ClippedTo(map, p)).OfType<Prop>().Where(p => p.Y >= top).ToList(), top);
             }
             else if (reach != null)
             {
@@ -947,6 +970,15 @@ public static class WorldMapBuilder
     /// row above <paramref name="wallRow"/>, the floor's foot along the wall, where a piece stands on it; a piece this
     /// game builds a tile at a time is laid a tile at a time.
     /// </summary>
+    /// <summary>A piece cut to the room inside its outer walls, or null where nothing of it is inside them.</summary>
+    internal static Prop? ClippedTo(Map map, Prop p)
+    {
+        int x0 = Math.Max(p.X, 1), z0 = Math.Max(p.Y, 0), x1 = Math.Min(p.X + p.Width, map.Width - 1), z1 = Math.Min(p.Y + p.Depth, map.Height - 1);
+        if (x1 <= x0 || z1 <= z0) return null;
+        return x0 == p.X && z0 == p.Y && x1 == p.X + p.Width && z1 == p.Y + p.Depth ? p
+            : new Prop { Type = p.Type, X = x0, Y = z0, Width = x1 - x0, Depth = z1 - z0, Model = p.Model };
+    }
+
     public static void LayFurniture(Map map, IReadOnlyList<Prop> furniture, int wallRow)
     {
         foreach (var piece in furniture)
@@ -983,6 +1015,13 @@ public static class WorldMapBuilder
                              && map.InBounds(x, behind - 1) && map.GetGroundTile(x, behind - 1) != TileType.Wall; behind--)
                             map.SetGroundTile(x, behind, TileType.Floor, isSolid: true);
                     }
+                    break;
+                // A ship's engines (plan 20 · J15, part s: the S.S. Aqua's hold) stand on the tiles their box blocks, the
+                // walkways the box spans over left open
+                case PropType.ShipEngine:
+                    for (int y = piece.Y; y < piece.Y + piece.Depth; y++)
+                        for (int x = piece.X; x < piece.X + piece.Width; x++)
+                            if (map.InBounds(x, y) && map.IsSolid(x, y)) map.Props.Add(new Prop { Type = piece.Type, X = x, Y = y });
                     break;
                 default:
                     for (int y = piece.Y; y < piece.Y + piece.Depth; y++)

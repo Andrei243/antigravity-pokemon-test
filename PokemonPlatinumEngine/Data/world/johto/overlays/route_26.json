@@ -1,10 +1,11 @@
 {
   // Route 26 (plan 20 · J10, part b): the coast road north from Route 27 to the Pokémon League's reception gate. Its six
-  // trainers by their own records; its Apricorn tree is plan 20 · J6's, and Cameron is held back, as on Route 48
+  // trainers by their own records; its Apricorn tree is plan 20 · J6's, and Cameron the photographer takes pictures here (plan 20, part t, common.Cameron)
   "area": "route_26",
   "bgmTrack": "johto/route26",
   "trees": "Round",
   "people": {
+    "r26_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "r26_fishing_2": {
       "name": "Scott",
       "trainer": {

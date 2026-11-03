@@ -178,3 +178,29 @@ Written 2026-10-06, before any session.
 - [ ] F10 Alphas
 - [ ] F11 What lives here
 - [ ] F12 Rustles and chains
+g moves), R28 (the ingredients F8 cooks); plan 07 · O2 or plan 08 · P3 (the memo page F9's row goes on; F9 adds `Marks` beside whatever ran first); plan 03 · D12 (the post-game zone whose tables carry alphas); plan 05 · A4 (the cries, done).
+- **Gives** plan 02 every stationary Pokémon as a map object with a cry and a script (F1); plan 06 · R16 the walker Amity Square's walk is built on (F3, F4; the square is open, its gates' triggers and the walking Pokémon's object imported and waiting), R17 the title slot (F9), R13 a visible form for swarms and the Poké Radar's shaking grass if it wants one (F5, F12); plan 03 · D12 alphas as a post-game draw (F10); plan 08 · P3 a marks row (F9); plan 07 the save fields of F9 and F10 to validate on its server.
+
+## Decisions for the user
+
+1. **Whose back the surfer rides.** *Recommended:* the party Pokémon whose Surf was used, so the models carry the player as the newest games' rides do (no Generation 4 game does: HeartGold and SoulSilver keep the one swimmer too); `SurfMount` stays as the stand-in. The alternative keeps Platinum's one swimmer for all, which costs nothing and changes no picture.
+2. **Which species get field sprites.** *Recommended:* all of them, baked on demand from whatever model there is, as the menus do. The alternative is the hand-built species only, with a Poké Ball card for the rest, which spares the generated walks.
+3. **Where the follower and visible wild Pokémon are switched on.** *Recommended:* two rows of the options, off, changeable at any time like Battle Style. The alternative ties both to the Modern preset at NEW GAME, which keeps the options short but mixes the field's feel with the battles' rules.
+4. **Cooking.** *Recommended:* since a second check (by fit and by value) judged F8 low value, F8 stays optional and out of the order of work, and the camp feeds berries and R14's Poffins; plan 06 · decision 5 and ruling 5 stand, and F1 to F7 and F9 to F12 lose nothing. The alternative is the plan's first recommendation: F8 in, after the Hall of Fame, as the camp's one activity, with curry alone (sandwiches add a second kitchen for the same powers), which amends plan 06 · decision 5 for the ingredients used.
+5. **Alphas in Platinum's areas.** *Recommended:* none; the post-game zone's tables only. The alternative is a rare slot in every area under the Modern preset, which moves Modern's encounter odds a little.
+6. **The DexNav's home.** *Recommended:* a Key Item that switches it on, given with the National Pokédex as the Poké Radar is, and a page of the Pokédex for the list. The alternative is a Pokétch app, beside the three apps plan 02 · S2's Pokétch runs (`Poketch.Runs`), under plan 06 · R14 with the other apps.
+
+## Status
+
+- [x] F1 Field sprites and the stationary Pokémon
+- [x] F2 Walk cycles
+- [x] F3 The follower
+- [x] F4 Talking to the follower
+- [x] F5 Wild Pokémon in sight
+- [ ] F6 The camp (rules and data done 2026-11-03; its drawing, its state and its menu entry wait)
+- [x] F7 Affection's perks
+- [ ] F8 Cooking (optional: a second check judged it low value)
+- [ ] F9 Marks and titles (rules, save and the send-out line done 2026-11-03; the summary's row, the title's choice and the glyph wait)
+- [ ] F10 Alphas
+- [ ] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; the Pokédex page, its painter and the item's giving wait)
+- [ ] F12 Rustles and chains (rules, the creep and the chain done 2026-11-03; the rustle's drawing and shots wait)

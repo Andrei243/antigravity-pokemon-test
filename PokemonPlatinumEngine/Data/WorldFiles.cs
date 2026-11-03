@@ -706,7 +706,7 @@ public sealed class FeebasTiles
 /// </summary>
 public sealed class WorldIndexFile
 {
-    public string Region { get; set; } = "";
+    [DataRequired] public string Region { get; set; } = "";
 
     /// <summary>
     /// The region's houses are drawn into its tiles, not placed as models (plan 18 · W7: a GBA game's), so the
@@ -1429,10 +1429,27 @@ public sealed class OneLine<T> : JsonConverter<T> where T : class, new()
     {
         using var doc = JsonDocument.ParseValue(ref reader);
         var value = new T();
+        // Read strictly (plan 24 · X4, GameDataFiles.Strict), a key no property has is refused, case and all
+        if (options.UnmappedMemberHandling == JsonUnmappedMemberHandling.Disallow && doc.RootElement.ValueKind == JsonValueKind.Object)
+        {
+            var known = typeof(T).GetProperties().Where(p => p.CanWrite)
+                .Select(p => JsonNamingPolicy.CamelCase.ConvertName(p.Name)).ToHashSet(StringComparer.Ordinal);
+            foreach (var key in doc.RootElement.EnumerateObject())
+                if (!known.Contains(key.Name)) throw new UnknownKeyException(key.Name);
+        }
         foreach (var property in typeof(T).GetProperties().Where(p => p.CanWrite))
         {
-            if (!doc.RootElement.TryGetProperty(JsonNamingPolicy.CamelCase.ConvertName(property.Name), out var element)) continue;
-            property.SetValue(value, element.Deserialize(property.PropertyType, Inner));
+            string name = JsonNamingPolicy.CamelCase.ConvertName(property.Name);
+            if (!doc.RootElement.TryGetProperty(name, out var element)) continue;
+            try
+            {
+                property.SetValue(value, element.Deserialize(property.PropertyType, Inner));
+            }
+            catch (JsonException e)
+            {
+                // The serializer gives the path of the record; the field and what it couldn't take are said here
+                throw new JsonException($"'{name}': {e.Message.Split(" Path: ")[0]}");
+            }
         }
         return value;
     }

@@ -1,0 +1,33 @@
+# A girl of Paldea spots the player (Lasses and their like): a sweet flute in C, skipping up to the octave, over
+# a flamenco guitar and castanets.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title Eyes Meet: Girl (Paldea)
+tempo 136
+meter 4/4
+reverb 0.18
+night none
+room room 1.0
+
+track lead flute vol=0.62 pan=0.05 rev=0.2
+  o5 g8 o6 c8 e8 g8 r2 | L o6 e4 c8 o5 g8 o6 c4 e4 | o6 c4 o5 a8 e8 a4 o6 c4 | o5 a4 f8 a8 o6 c4 f4 |
+  o6 d4 o5 b8 g8 b4 o6 d4 | o6 e4 g8 e8 c4 o5 g4 | o5 b2 g4 d4 |
+
+track guitar flamencoguitar vol=0.28 pan=-0.3 rev=0.18
+  o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | L o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o3 (f a > c)4 (f a > c)8 (f a > c)8 r8 (f a > c)8 (f a > c)4 |
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+
+track pad warmpad vol=0.16 pan=0.25 rev=0.25
+  o4 (c e g)1 | L o4 (c e g)1 | o4 (a > c e)1 | o4 (f a > c)1 |
+  o4 (g b > d)1 | o4 (c e g)1 | o4 (g b > d)1 |
+
+track bass synthbass vol=0.56 rev=0.05
+  [ o2 c8 o3 c8 ]4 | L [ o2 c8 o3 c8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 f8 o3 f8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 g8 o3 g8 ]4 |
+
+track castanets castanets vol=0.2 pan=0.3 rev=0.14
+  o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | L o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 |
+  o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+
+track drums kit vol=0.36 rev=0.1
+  v88 b8 r8 s8 r8 (b c)4 s4 | L b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 |
+  b8 h8 s8 b8 h8 b8 s8 h8 | b8 h8 s8 b8 h8 b8 s8 h8 | v88 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |

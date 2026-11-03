@@ -1,0 +1,120 @@
+{
+  "people": {
+    "shauna": {
+      "name": {
+        "en": [
+          "Shauna"
+        ],
+        "text": [
+          "Shauna"
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pika!"
+        ],
+        "text": [
+          "Pikachu: Pika pika!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Remy"
+        ],
+        "text": [
+          "Remy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Remy: Shh! You'll scare the bugs away! ...Too late. Battle me, then!"
+        ],
+        "text": [
+          "Vânător de insecte Remy: Șșt! Sperii insectele! ...Prea târziu. Atunci luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Remy: My bugs need to grow up a bit. Then we'll see!"
+        ],
+        "text": [
+          "Vânător de insecte Remy: Insectele mele trebuie să mai crească puțin. Apoi vedem!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Bastien"
+        ],
+        "text": [
+          "Bastien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Bastien: I got lost in here an hour ago. Might as well battle while I'm at it!"
+        ],
+        "text": [
+          "Puști Bastien: M-am rătăcit pe aici acum o oră. Pot la fel de bine să lupt cât sunt aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Bastien: Do you know the way out? North, you say? Thanks!"
+        ],
+        "text": [
+          "Puști Bastien: Știi drumul spre ieșire? Spre nord, zici? Mulțumesc!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Amélie"
+        ],
+        "text": [
+          "Amélie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Amélie: I came to see a Pikachu. You'll do instead!"
+        ],
+        "text": [
+          "Domnișoara Amélie: Am venit să văd un Pikachu. Tu o să-ți ții locul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Amélie: Still no Pikachu, and now no win either. What a day."
+        ],
+        "text": [
+          "Domnișoara Amélie: Tot niciun Pikachu, iar acum nici victorie. Ce zi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ForestSign": {
+      "en": [
+        "Santalune Forest\nMind the tall grass: the forest's Pokémon live there."
+      ],
+      "text": [
+        "Pădurea Santalune\nAtenție la iarba înaltă: acolo trăiesc Pokémonii pădurii."
+      ]
+    }
+  }
+}

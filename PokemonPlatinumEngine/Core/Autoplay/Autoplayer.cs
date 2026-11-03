@@ -268,7 +268,7 @@ internal sealed partial class Autoplayer
         {
             // The last step onto a way or a trigger takes it: noted as it is taken (a step the other way first only turns)
             if (plan.Steps.Count == 1 && goal.Kind is GoalKind.Warp or GoalKind.Trigger && player.Facing == plan.Steps[0]) Take(goal);
-            engine.Steering = (plan.Steps[0], player.HasRunningShoes);
+            Walk(plan.Steps[0], player.HasRunningShoes);
             return ActionFrame.None;
         }
         if (goal.IsStepOnto)

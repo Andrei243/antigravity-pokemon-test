@@ -8,12 +8,12 @@
     "                        ",
     "                        ",
     "                        ",
-    "                        ",
-    "          TT.           ",
-    "         TTTT           ",
-    "         TTTT.          ",
-    "         .TTT           ",
-    "          .T.           ",
+    "     ..                 ",
+    "  .T ..   TT.           ",
+    "  TT .T..TTTT           ",
+    "  .. TT.TTTTT.          ",
+    "  ...... .TTT           ",
+    "  .....   .T.           ",
     "          .T            ",
     "         .TT            ",
     "        ..TT            ",
@@ -124,6 +124,152 @@
         "Skitty",
         "Bunnelby",
         "Ralts"
+      ]
+    },
+    {
+      "key": "kalos_route_5",
+      "name": "Route 5",
+      "cells": "7,10 8,10 7,11 8,11",
+      "morning": [
+        "Pancham",
+        "Furfrou",
+        "Skiddo",
+        "Gulpin",
+        "Bunnelby",
+        "Abra",
+        "Doduo",
+        "Smeargle"
+      ],
+      "day": [
+        "Pancham",
+        "Furfrou",
+        "Skiddo",
+        "Gulpin",
+        "Bunnelby",
+        "Abra",
+        "Doduo",
+        "Smeargle"
+      ],
+      "night": [
+        "Pancham",
+        "Furfrou",
+        "Skiddo",
+        "Gulpin",
+        "Bunnelby",
+        "Abra",
+        "Doduo",
+        "Smeargle"
+      ]
+    },
+    {
+      "key": "kalos_route_6",
+      "name": "Route 6",
+      "cells": "5,8 6,8 5,9 6,9",
+      "morning": [
+        "Espurr",
+        "Oddish",
+        "Sentret",
+        "Nincada",
+        "Kecleon",
+        "Audino",
+        "Honedge"
+      ],
+      "day": [
+        "Espurr",
+        "Oddish",
+        "Sentret",
+        "Nincada",
+        "Kecleon",
+        "Audino",
+        "Honedge"
+      ],
+      "night": [
+        "Espurr",
+        "Oddish",
+        "Sentret",
+        "Nincada",
+        "Kecleon",
+        "Audino",
+        "Honedge"
+      ]
+    },
+    {
+      "key": "kalos_route_7",
+      "name": "Route 7",
+      "cells": "4,12 5,12 6,12 4,13 5,13 6,13",
+      "morning": [
+        "Hoppip",
+        "Ducklett",
+        "Volbeat",
+        "Illumise",
+        "Roselia",
+        "Spritzee",
+        "Swirlix",
+        "Combee",
+        "Croagunk",
+        "Smeargle"
+      ],
+      "day": [
+        "Hoppip",
+        "Ducklett",
+        "Volbeat",
+        "Illumise",
+        "Roselia",
+        "Spritzee",
+        "Swirlix",
+        "Combee",
+        "Croagunk",
+        "Smeargle"
+      ],
+      "night": [
+        "Hoppip",
+        "Ducklett",
+        "Volbeat",
+        "Illumise",
+        "Roselia",
+        "Spritzee",
+        "Swirlix",
+        "Combee",
+        "Croagunk",
+        "Smeargle"
+      ]
+    },
+    {
+      "key": "kalos_route_8",
+      "name": "Route 8",
+      "cells": "2,11 3,11 2,12 3,12 2,13 3,13",
+      "morning": [
+        "Wingull",
+        "Spoink",
+        "Drifloon",
+        "Zubat",
+        "Taillow",
+        "Absol",
+        "Inkay",
+        "Starly",
+        "Mienfoo"
+      ],
+      "day": [
+        "Wingull",
+        "Spoink",
+        "Drifloon",
+        "Zubat",
+        "Taillow",
+        "Absol",
+        "Inkay",
+        "Starly",
+        "Mienfoo"
+      ],
+      "night": [
+        "Wingull",
+        "Spoink",
+        "Drifloon",
+        "Zubat",
+        "Taillow",
+        "Absol",
+        "Inkay",
+        "Starly",
+        "Mienfoo"
       ]
     },
     {

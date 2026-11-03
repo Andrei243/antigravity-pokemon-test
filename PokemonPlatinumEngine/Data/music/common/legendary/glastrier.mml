@@ -1,12 +1,15 @@
 # Battle against Glastrier (the wild ice steed): a heavy gallop on low toms, a B-minor theme on massed strings over a
 # stamping tuba, and a celesta glittering like frost. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
 title Battle! Glastrier
 tempo 158
 meter 4/4
 lowhptempo 1.09
 reverb 0.34
+sound modern
+room hall 2.4
 
-track lead strings lowhp=sawlead vol=0.7 pan=0 rev=0.3
+track lead orchestra lowhp=sawlead vol=0.7 pan=0 rev=0.3
   o4 f+2 b2 | o5 c+1 |
   L o5 f+2. e8 d8 | o5 b4. a8 f+4 d4 | o5 g4. a8 b4 o6 d4 | o6 c+2 o5 b4 a4 |
   o5 d4. e8 f+4 b4 | o5 g4. f+8 e4 b4 | o5 a+2 o6 c+4 o5 a+4 | o5 f+2. r4 |
@@ -40,6 +43,12 @@ track gallop kit vol=0.5 rev=0.16
 
 track hats kit vol=0.34 pan=0.15 rev=0.15
   r1 | r1 | L [ v65 h4 v50 o4 v65 h4 v50 h4 | ]16
+
+# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
+track choirorgan organ unless=lowhp double=choir vol=0.12 pan=-0.2 rev=0.4
+track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+track crowd kit vol=0.3 pan=0.1 rev=0.3
+  r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.44 pan=0.1 rev=0.08

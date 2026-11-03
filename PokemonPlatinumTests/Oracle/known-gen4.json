@@ -1,0 +1,41 @@
+{
+  "known": [
+    {
+      "name": "Simple's doubled stages under a critical hit",
+      "owner": "the calculator (no session owes it: ours is the decompilation's)",
+      "reason": "BattleSystem_CalcMoveDamage (src/battle/battle_lib.c) doubles the attacker's stage for Simple first and only then lets a critical hit pass over a stage below nothing, so a Simple user at -2 hits as at 0; the calculator of generation 4 keeps the doubled -4. rulings.md, 'Oracle disagreements', generation 4.",
+      "kind": "damage",
+      "when": { "attackerAbility": "Simple", "crit": "true" }
+    },
+    {
+      "name": "Explosion's halved Defense before its stages",
+      "owner": "the calculator (no session owes it: ours is the decompilation's)",
+      "reason": "BattleSystem_CalcMoveDamage halves defenseStat for BATTLE_EFFECT_HALVE_DEFENSE before the stage is applied to it, each step rounded down, as ours does; the calculator halves at another step, a point or three apart. rulings.md, 'Oracle disagreements', generation 4.",
+      "kind": "damage",
+      "when": { "moveEffect": "HalveDefense" }
+    },
+    {
+      "name": "Ice against Fire stands last in the type chart",
+      "owner": "the calculator (no session owes it: ours is the decompilation's)",
+      "reason": "sTypeMatchupMultipliers (src/battle/battle_lib.c) lists Ice against Fire after every other matchup of Ice, and BattleSystem_ApplyTypeChart applies a dual type's two multipliers in the chart's order, each rounded down: an Ice move on a Fire and Flying type is doubled for the Flying first. The calculator halves for the Fire first. rulings.md, 'Oracle disagreements', generation 4.",
+      "kind": "damage",
+      "when": { "moveType": "Ice", "defenderType": "Fire" }
+    },
+    {
+      "name": "Guts under a burn on a hit of ten thousand",
+      "owner": "the calculator (@smogon/calc generation 4); settled against battle_lib.c, plan 24 · X5",
+      "reason": "One scenario (#1629: a level 100 Larvitar with Guts, burned, at +5 Attack on a level 8 Lotad) differs by 14 points in 12,400. The decompilation's BattleSystem_CalcMoveDamage multiplies the raw Attack stat by 150/100 for Guts (any status) and only afterwards applies the stage's numerator/denominator, each step cut down; the calculator applies the stage first and Guts to the staged stat, so the two round differently. Ours follows the decompilation (the burn halving is skipped for Guts, as the function does). rulings.md, 'Oracle disagreements', generation 4.",
+      "kind": "damage",
+      "withinPercent": 0.2,
+      "when": { "attackerAbility": "Guts", "attackerStatus": "brn" }
+    },
+    {
+      "name": "Hustle on a hit of two or three points",
+      "owner": "the calculator (@smogon/calc generation 4); settled against battle_lib.c, plan 24 · X5",
+      "reason": "One scenario (#143: a level 50 Delibird with Hustle at -5 Attack biting a level 100 Raticate at +6 Defense) comes to 3 for us and 2 for the calculator on fifteen rolls of sixteen. BattleSystem_CalcMoveDamage multiplies the raw Attack by 150/100 for Hustle before the stage's numerator/denominator is applied; the calculator stages first and then applies Hustle, so a heavily lowered stat rounds down further. Ours follows the decompilation. rulings.md, 'Oracle disagreements', generation 4.",
+      "kind": "damage",
+      "within": 1,
+      "when": { "attackerAbility": "Hustle" }
+    }
+  ]
+}

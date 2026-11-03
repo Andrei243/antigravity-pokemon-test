@@ -102,9 +102,6 @@
         "Cu ce tren mergi?",
         "TRENUL SIMPLU",
         "TRENUL SUPER SIMPLU"
-      ],
-      "was": [
-        "În fiecare vagon te așteaptă un Antrenor. Învinge șapte și poți coborî cu Puncte de Luptă sau poți continua cu seria următoare."
       ]
     },
     {
@@ -113,9 +110,6 @@
       ],
       "text": [
         "Trenul Super Simplu! Are cei mai duri antrenori de pe linie, iar Ingo așteaptă în vagonul 49."
-      ],
-      "was": [
-        "Trenul Simplu primește trei Pokémoni, toți de specii diferite și purtând obiecte diferite. Se luptă la Nivelul 50 sau mai jos și nu se poate folosi nimic din Rucsac."
       ]
     },
     {
@@ -124,9 +118,6 @@
       ],
       "text": [
         "În fiecare vagon așteaptă un antrenor. Treci de șapte și poți coborî cu Puncte de Luptă sau poți merge la următorul set."
-      ],
-      "was": [
-        "Șefii Metroului, Ingo și Emmet, îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -135,9 +126,6 @@
       ],
       "text": [
         "Trenul Simplu primește trei Pokémoni, toți de specii diferite și cu obiecte diferite. Luptă la nivelul 50 sau mai jos și nu se folosește nimic din Rucsac."
-      ],
-      "was": [
-        "Cea mai lungă serie a ta în Trenul Simplu este de {number} vagoane."
       ]
     },
     {
@@ -146,9 +134,6 @@
       ],
       "text": [
         "Șefii metroului, Ingo și Emmet, îi așteaptă pe cei care ajung la vagonul 21 și la vagonul 49."
-      ],
-      "was": [
-        "Bun venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe parcurs."
       ]
     },
     {
@@ -227,9 +212,6 @@
         "Cu ce tren mergi?",
         "TRENUL DUBLU",
         "TRENUL SUPER DUBLU"
-      ],
-      "was": [
-        "Fiecare vagon are un Antrenor cu patru Pokémoni, dintre care doi se luptă cu doi de-ai tăi deodată. Învinge șapte vagoane pentru o serie."
       ]
     },
     {
@@ -238,9 +220,6 @@
       ],
       "text": [
         "Trenul Super Dublu! Are cei mai duri antrenori de pe linie, iar Emmet așteaptă în vagonul 49."
-      ],
-      "was": [
-        "Trenul Dublu primește patru Pokémoni, toți de specii diferite și purtând obiecte diferite, la Nivelul 50 sau mai jos."
       ]
     },
     {
@@ -249,9 +228,6 @@
       ],
       "text": [
         "În fiecare vagon e un antrenor cu patru Pokémoni, iar doi dintre ei luptă deodată cu doi de-ai tăi. Treci de șapte vagoane pentru un set."
-      ],
-      "was": [
-        "Șefii Metroului îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -260,9 +236,6 @@
       ],
       "text": [
         "Trenul Dublu primește patru Pokémoni, toți de specii diferite și cu obiecte diferite, la nivelul 50 sau mai jos."
-      ],
-      "was": [
-        "Cea mai lungă serie a ta în Trenul Dublu este de {number} vagoane."
       ]
     },
     {
@@ -271,9 +244,6 @@
       ],
       "text": [
         "Șefii metroului îi așteaptă pe cei care ajung la vagonul 21 și la vagonul 49."
-      ],
-      "was": [
-        "Te rugăm să mai călătorești cu noi!"
       ]
     },
     {
@@ -344,9 +314,6 @@
         "Cu ce tren mergi?",
         "TRENUL MULTIPLU",
         "TRENUL SUPER MULTIPLU"
-      ],
-      "was": [
-        "Aduci doi Pokémoni, iar un partener din personalul nostru aduce alți doi. Fiecare vagon are o pereche de Antrenori."
       ]
     },
     {
@@ -355,9 +322,6 @@
       ],
       "text": [
         "Trenul Super Multiplu! Are cele mai dure perechi de pe linie, iar Ingo și Emmet așteaptă împreună în vagonul 49."
-      ],
-      "was": [
-        "Cei doi Pokémoni trebuie să fie de specii diferite și să poarte obiecte diferite, la Nivelul 50 sau mai jos. Ingo și Emmet călătoresc împreună în vagonul 21 și în vagonul 49."
       ]
     },
     {
@@ -366,9 +330,6 @@
       ],
       "text": [
         "Tu aduci doi Pokémoni, iar un partener mai aduce doi. În fiecare vagon e o pereche de antrenori."
-      ],
-      "was": [
-        "Un partener de la un prieten prin legătură nu este încă disponibil pe linie. Ne pare rău!"
       ]
     },
     {
@@ -377,9 +338,6 @@
       ],
       "text": [
         "Cei doi Pokémoni trebuie să fie de specii diferite și cu obiecte diferite, la nivelul 50 sau mai jos. Ingo și Emmet merg împreună în vagonul 21 și în vagonul 49."
-      ],
-      "was": [
-        "Cea mai lungă serie a ta în Trenul Multiplu este de {number} vagoane."
       ]
     },
     {
@@ -388,9 +346,6 @@
       ],
       "text": [
         "Învinge-i în vagonul 21 și ți se deschide Trenul Super Multiplu, cu perechi mai dure și mai multe Puncte de Luptă."
-      ],
-      "was": [
-        "Te rugăm să mai călătorești cu noi!"
       ]
     },
     {
@@ -555,6 +510,90 @@
       ],
       "text": [
         "Vagoanele Metroului sunt în depou și se pregătesc. Te rog să revii când liniile vor funcționa!"
+      ]
+    }
+  ],
+  "Prints": [
+    {
+      "en": [
+        "Before anything else: the Subway Bosses asked us to hand you this, for beating Ingo on the line."
+      ],
+      "text": [
+        "Înainte de toate: Șefii Metroului ne-au rugat să-ți dăm asta, pentru că l-ai învins pe Ingo pe linie."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Subway's silver print!"
+      ],
+      "text": [
+        "{player} a primit amprenta de argint a Metroului!"
+      ]
+    },
+    {
+      "en": [
+        "Before anything else: Emmet himself asked us to hand you this. Few riders have ever earned it."
+      ],
+      "text": [
+        "Înainte de toate: chiar Emmet ne-a rugat să-ți dăm asta. Puțini călători au meritat-o vreodată."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Subway's gold print!"
+      ],
+      "text": [
+        "{player} a primit amprenta de aur a Metroului!"
+      ]
+    }
+  ],
+  "Exchange": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Funcționar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Subway's prize counter! Battle Points earned on the trains buy what you see here."
+      ],
+      "text": [
+        "Bine ai venit la ghișeul de premii al Metroului de Luptă! Cu Punctele de Luptă din trenuri cumperi ce vezi aici."
+      ]
+    },
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        "{player} a dat {price} PL pentru {item}."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Mind the gap on your way to the platforms."
+      ],
+      "text": [
+        "Mulțumim! Atenție la spațiul dintre tren și peron."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have the Battle Points for that."
+      ],
+      "text": [
+        "Îmi pare rău. Nu ai destule Puncte de Luptă pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "Do come back when you've ridden a few more cars!"
+      ],
+      "text": [
+        "Mai treci pe aici după ce mai străbați câteva vagoane!"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   // Pallet Town as HeartGold has it three years on (plan 20 · J15, part g): Red's house, Blue's house and Professor
   // Oak's laboratory, with Route 1 north to Viridian City and Route 21 south over the sea to Cinnabar Island.
-  // Cameron the photographer waits for his session
+  // Cameron the photographer takes pictures here (common.Cameron)
   "area": "pallet",
   "bgmTrack": "kanto/pallet",
   "architecture": "Clapboard",

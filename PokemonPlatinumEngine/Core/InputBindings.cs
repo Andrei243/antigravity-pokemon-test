@@ -97,6 +97,39 @@ public sealed class StickReader
 
     /// <summary>Lets go: the pad was unplugged, or another one is read.</summary>
     public void Reset() => held = StickDirs.None;
+
+    /// <summary>The most a quantised tilt is on an axis (plan 30 · FM7): full tilt.</summary>
+    public const sbyte FullTilt = 127;
+
+    /// <summary>A key's diagonal on each axis (plan 30 · FM7): 127 / √2, so two keys held are a full tilt slantwise.</summary>
+    public const sbyte KeyDiagonal = 90;
+
+    /// <summary>
+    /// The stick's tilt as free movement reads it (plan 30 · FM7): nothing inside the dead zone, and outside it the
+    /// tilt rescaled so the dead zone's edge is nought and full tilt one, the way kept, each axis quantised to a whole
+    /// number of 127ths. Quantised where it is read, so a recording keeps exactly what the game saw. No hysteresis: the
+    /// direction bits keep theirs (<see cref="Update"/>), and a tilt of nothing is no movement either way.
+    /// </summary>
+    public static (sbyte X, sbyte Y) Tilt(float x, float y, float deadZone)
+    {
+        deadZone = Math.Clamp(deadZone, 0.05f, 0.95f);
+        float length = MathF.Sqrt(x * x + y * y);
+        if (length < deadZone || length <= 0f) return (0, 0);
+        float scaled = Math.Clamp((length - deadZone) / (1f - deadZone), 0f, 1f);
+        static sbyte Q(float v) => (sbyte)Math.Clamp((int)MathF.Round(v * FullTilt), -FullTilt, FullTilt);
+        return (Q(x / length * scaled), Q(y / length * scaled));
+    }
+
+    /// <summary>The eight ways a tilt names, by the same share as <see cref="Update"/> and with no dead zone of its own.</summary>
+    public static StickDirs Ways(float x, float y)
+    {
+        float ax = Math.Abs(x), ay = Math.Abs(y), strongest = Math.Max(ax, ay);
+        var now = StickDirs.None;
+        if (strongest <= 0f) return now;
+        if (ax >= strongest * DiagonalShare) now |= x < 0 ? StickDirs.Left : StickDirs.Right;
+        if (ay >= strongest * DiagonalShare) now |= y < 0 ? StickDirs.Up : StickDirs.Down;
+        return now;
+    }
 }
 
 /// <summary>

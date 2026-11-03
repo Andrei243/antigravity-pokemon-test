@@ -9,7 +9,7 @@
   "arenaType": "Water",
   "heldBack": [ "3", "4", "5", "6" ],
   "people": {
-    "0": { "name": "Marlon", "npcType": "swimmer_m", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_GYM", "still": true, "at": [ 25, 60 ] },
+    "0": { "name": "Marlon", "npcType": "humilau_leader", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_GYM", "still": true, "at": [ 25, 60 ] },
     "1": {
       "name": "Doyle",
       "at": [ 13, 64 ],

@@ -1,12 +1,42 @@
 {
   "people": {
+    "t03_daigo": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          "Steven"
+        ]
+      }
+    },
+    "t03_tsure_poke_static_latias": {
+      "name": {
+        "en": [
+          "Latias"
+        ],
+        "text": [
+          "Latias"
+        ]
+      }
+    },
+    "t03_tsure_poke_static_latios": {
+      "name": {
+        "en": [
+          "Latios"
+        ],
+        "text": [
+          "Latios"
+        ]
+      }
+    },
     "t03_gsmiddleman1": {
       "name": {
         "en": [
           "Cameron"
         ],
         "text": [
-          ""
+          "Cameron"
         ]
       }
     },

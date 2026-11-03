@@ -69,6 +69,12 @@ public class Trainer
     public bool IsDefeated { get; set; } = false;
     public int SightRange { get; set; } = 3; // Tiles of vision for line of sight challenge
 
+    /// <summary>
+    /// The team is Remix's, written whole and equipped (plan 13 · V15, <see cref="Remix.ForTrainer"/>): set on the copy
+    /// alone, so Challenge raises its levels and its AI but adds it no member and no item (decision 8).
+    /// </summary>
+    public bool Remixed { get; set; }
+
     /// <summary>Battles two Pokémon at a time (twins, couples), if the player has two that can fight.</summary>
     public bool DoubleBattle { get; set; }
 

@@ -20,6 +20,12 @@ public sealed class Follower
     private readonly Queue<(int X, int Y)> trail = new();
     private NpcWalk? step;
 
+    /// <summary>
+    /// The player's centre as free movement took it (plan 30 · FM8), a crumb every quarter of a tile: in a free region
+    /// the follower keeps a body's length behind along it (<see cref="FollowCrumbs"/>) instead of treading tiles.
+    /// </summary>
+    public Breadcrumbs Crumbs { get; } = new();
+
     /// <summary>Who walks behind the player on the map: a person, or the thing of the map a Pokémon of the team is dressed as.</summary>
     public NPC Who { get; private set; }
 
@@ -167,6 +173,7 @@ public sealed class Follower
     /// </summary>
     public void Behind(int playerX, int playerY, Direction facing, int? tiles = null)
     {
+        Crumbs.Clear();
         trail.Clear();
         crowded = false;
         playerHeading = null;
@@ -195,14 +202,100 @@ public sealed class Follower
         Who = twin;
     }
 
+    /// <summary>
+    /// A frame of following in a free region (plan 30 · FM8): the follower stands <see cref="Gap"/> tiles behind the
+    /// player's centre (<paramref name="x"/>, <paramref name="y"/>, in 256ths) along the breadcrumbs, on the tile that
+    /// point is in and drawn off it by the rest, facing the way the path runs there. The tile trail is the grid's and is
+    /// let go of; a step of the grid (a ledge, a door) is followed along its crumbs like any other way.
+    /// </summary>
+    public void FollowCrumbs(int x, int y, float dt)
+    {
+        trail.Clear();
+        crowded = false;
+        step?.Finish();
+        step = null;
+        if (Crumbs.Behind(x, y, Gap * FreeMovement.SubTile) is not { } at) return;
+        int tx = FreeMovement.TileOf(at.X), ty = FreeMovement.TileOf(at.Y);
+        float drawX = at.X / (float)FreeMovement.SubTile, drawY = at.Y / (float)FreeMovement.SubTile;
+        float movedX = drawX - Who.DrawX, movedY = drawY - Who.DrawY;
+        float moved = MathF.Sqrt(movedX * movedX + movedY * movedY);
+        (Who.GridX, Who.GridY) = (tx, ty);
+        Who.StepOffsetX = drawX - tx;
+        Who.StepOffsetY = drawY - ty;
+        if (moved > 0.001f)
+        {
+            Who.Facing = FreeMovement.NearestCardinal(new System.Numerics.Vector2(movedX, movedY));
+            Who.WalkCycle += moved * 0.5f;
+        }
+        Who.WalkBlend += ((moved > 0.001f ? 1f : 0f) - Who.WalkBlend) * Math.Min(1f, dt * 12f);
+    }
+
     /// <summary>Ends a step under way where it was going: a script takes them over.</summary>
     public void Settle()
     {
+        Crumbs.Clear();
         trail.Clear();
         crowded = false;
         step?.Finish();
         step = null;
         hopAge = -1f;
         Who.Hop = 0f;
+    }
+}
+
+/// <summary>
+/// Where the player's centre has been in a free region (plan 30 · FM8): a point every <see cref="Spacing"/> 256ths of a
+/// tile it moved, the newest last, as many as a follower two tiles behind needs and a few over. No drawing or input.
+/// </summary>
+public sealed class Breadcrumbs
+{
+    /// <summary>A crumb every quarter of a tile.</summary>
+    public const int Spacing = FreeMovement.SubTile / 4;
+
+    /// <summary>The most kept: four tiles' worth.</summary>
+    public const int Most = 16;
+
+    private readonly List<(int X, int Y)> points = new();
+
+    /// <summary>The crumbs, oldest first.</summary>
+    public IReadOnlyList<(int X, int Y)> Points => points;
+
+    /// <summary>Drops a crumb where the centre is, once it is <see cref="Spacing"/> from the last.</summary>
+    public void Drop(int x, int y)
+    {
+        if (points.Count > 0)
+        {
+            var (lx, ly) = points[^1];
+            long dx = x - lx, dy = y - ly;
+            if (dx * dx + dy * dy < (long)Spacing * Spacing) return;
+        }
+        points.Add((x, y));
+        if (points.Count > Most) points.RemoveAt(0);
+    }
+
+    public void Clear() => points.Clear();
+
+    /// <summary>
+    /// The point <paramref name="distance"/> 256ths back along the path from the centre (<paramref name="x"/>,
+    /// <paramref name="y"/>) through the crumbs, newest first; the oldest crumb where the path is shorter; null with none.
+    /// </summary>
+    public (int X, int Y)? Behind(int x, int y, int distance)
+    {
+        if (points.Count == 0) return null;
+        double left = distance;
+        double ax = x, ay = y;
+        for (int i = points.Count - 1; i >= 0; i--)
+        {
+            var (bx, by) = points[i];
+            double length = Math.Sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay));
+            if (length >= left && length > 0)
+            {
+                double share = left / length;
+                return ((int)Math.Round(ax + (bx - ax) * share), (int)Math.Round(ay + (by - ay) * share));
+            }
+            left -= length;
+            (ax, ay) = (bx, by);
+        }
+        return points[0];
     }
 }

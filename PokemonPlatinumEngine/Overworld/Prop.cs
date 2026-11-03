@@ -297,6 +297,19 @@ public enum PropType
     /// hull rusted (<c>HoennArt.Wreck</c>). An overlay's prop over tiles the import blocks already; it blocks nothing by itself.
     /// </summary>
     Wreck,
+    /// <summary>
+    /// A ship's engines (plan 20 · J15, part s: the S.S. Aqua's hold; our own drawing): a block of machinery a tile at a
+    /// time on the tiles the engines' model blocks, a casing of green-grey steel with a row of cylinder heads and a pipe
+    /// along its top. A room's furniture: the tile blocks by itself.
+    /// </summary>
+    ShipEngine,
+    /// <summary>
+    /// The Abandoned Ship's deckhouse and bulwarks (plan 21 · part r; our own drawing): an overlay's prop over the deck's
+    /// blocked tiles, whose shared metatiles the import lays as rock. Built from the deck below it up to the top of what it
+    /// covers: a white-painted steel wall gone to rust with dark portholes where it stands tall, a bulwark with a rail where
+    /// it stands low, a roof of rusted plate. It blocks nothing by itself.
+    /// </summary>
+    ShipCabin,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

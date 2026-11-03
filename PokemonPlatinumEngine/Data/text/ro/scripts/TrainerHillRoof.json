@@ -1,0 +1,60 @@
+{
+  "Owner": [
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        "Proprietar"
+      ]
+    },
+    {
+      "en": [
+        "Quite a view from up here, isn't it? Climb all four floors and you'll find me waiting with a prize."
+      ],
+      "text": [
+        "Ce priveliște de aici de sus, nu-i așa? Urcă toate cele patru etaje și mă vei găsi așteptând cu un premiu."
+      ]
+    },
+    {
+      "en": [
+        "You made it to the roof! All four floors in {hill:TIME}."
+      ],
+      "text": [
+        "Ai ajuns pe acoperiș! Toate cele patru etaje în {hill:TIME}."
+      ]
+    },
+    {
+      "en": [
+        "A fine climb, though your best for this challenge still stands at {hill:BEST}."
+      ],
+      "text": [
+        "Un urcuș frumos, deși cel mai bun timp al tău pentru această provocare rămâne {hill:BEST}."
+      ]
+    },
+    {
+      "en": [
+        "That's a new record for this challenge! I'll have it put up on the board downstairs."
+      ],
+      "text": [
+        "Ăsta e un record nou pentru această provocare! Îl pun pe tabla de jos."
+      ]
+    },
+    {
+      "en": [
+        "Here, this is for your trouble. The faster you climb, the better the prize."
+      ],
+      "text": [
+        "Ține, asta e pentru osteneală. Cu cât urci mai repede, cu atât premiul e mai bun."
+      ]
+    },
+    {
+      "en": [
+        "Take the lift down whenever you're ready, and come and climb again!"
+      ],
+      "text": [
+        "Ia liftul în jos când ești gata și vino să urci din nou!"
+      ]
+    }
+  ]
+}

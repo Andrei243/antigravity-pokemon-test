@@ -59,8 +59,8 @@ public sealed class BattleRoomRecords
     }
 }
 
-/// <summary>The two challenges of the battle room that are a run of battles.</summary>
-public enum RoomChallenge { Gauntlet, Streak }
+/// <summary>The challenges of the battle room: two are a run of battles, and a friend's trainer (plan 13 · V22) is one battle that is no run.</summary>
+public enum RoomChallenge { Gauntlet, Streak, Friend }
 
 /// <summary>
 /// A run of the battle room (plan 13 · V13; rulings, "The team builder and the gauntlet"): the gauntlet, Sinnoh's Gym Leaders,

@@ -1,0 +1,33 @@
+# The online server as a service (plan 07 · O7; the setup guide's step 7). Copy to
+# /etc/systemd/system/linkserver.service, then
+#   sudo systemctl daemon-reload && sudo systemctl enable --now linkserver
+# The secret that hashes players' addresses is in /etc/linkserver.env (LinkServer__IpHashSecret=...), made once with
+# openssl rand -hex 32, never changed and never shared: without it the program refuses to start.
+
+[Unit]
+Description=Game link server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=linkserver
+WorkingDirectory=/var/lib/linkserver
+ExecStart=/opt/linkserver/PokemonPlatinumServer
+EnvironmentFile=/etc/linkserver.env
+Environment=ASPNETCORE_URLS=http://127.0.0.1:5080
+Environment=LinkServer__Database=/var/lib/linkserver/link.db
+Environment=LinkServer__TrustedProxy=127.0.0.1
+Environment=DOTNET_gcServer=0
+Restart=always
+RestartSec=5
+# A graceful stop tells every game and closes its connection; a trade under way finishes by its receipt next time
+KillSignal=SIGTERM
+TimeoutStopSec=15
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/linkserver
+
+[Install]
+WantedBy=multi-user.target

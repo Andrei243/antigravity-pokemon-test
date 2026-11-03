@@ -45,7 +45,8 @@ public static partial class MapDatabase
         // The game's own rooms and every pack's, a pack's map replacing the game's of the same name (plan 16 · T14)
         foreach (var (key, path) in DataLayers.FilesIn(Folder, "*.json"))
         {
-            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, key));
+            // Written by hand, so read strictly (plan 24 · X4): a mistyped key stops the start with the file and the key
+            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, key), strict: true);
             string expected = Path.GetFileNameWithoutExtension(path);
             if (file.Name != expected)
                 throw new InvalidDataException($"Map file {path} names its map '{file.Name}'; the file must be called {file.Name}.json.");
@@ -63,6 +64,12 @@ public static partial class MapDatabase
         }
         if (!loaded.ContainsKey(StartMap))
             throw new InvalidDataException($"No map is called {StartMap}: the world of Sinnoh is missing from {GameDataFiles.PathOf(World.Folder)}.");
+
+        // A region a pack adds names who takes the player there from the region before it (plan 16 · T14): laid onto
+        // the map they leave from, so the pack never copies a file of the game's region to stand them on it
+        foreach (var link in RegionDatabase.Links)
+            if (link.Attendant is { } who && link.DepartureMap != null && loaded.TryGetValue(link.DepartureMap, out var departure))
+                departure.Add(MapFile.BuildNpc(who, departure.Name));
 
         maps = loaded;
         return loaded;

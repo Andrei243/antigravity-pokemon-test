@@ -149,6 +149,8 @@ public partial class GameEngine
     {
         // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
         TimeTheArrival();
+        // A Remix run's wild tables lie over the place come to, a map made afresh since the game began too (plan 13 · V15)
+        flow.Map.Tables = Remix.For(flow.Run);
         // Coming to a place is the fifth moment of an autosave, written once the place's own script has ended (plan 12 · Q3)
         AutosaveSoon(AutosaveMoment.Arrival);
         // The Pokégear's radio is off once a door has been gone through (plan 20 · J3)
@@ -251,6 +253,9 @@ public partial class GameEngine
     {
         bool cave = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.IsCave ?? flow.Map.IsCave;
         NoteLeaving(cave);
+        // The DexNav's find stays in its own place (plan 10 · F12)
+        rustle = null;
+        flow.Player.SneaksInsteadOfRunning = false;
         // Going anywhere else ends the rematches the Vs. Seeker found (FieldMapChange_UpdateGameData)
         VsSeeker.Reset(flow.Story);
         foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) foreach (var npc in map.Everyone) npc.ReadyForRematch = false;
@@ -514,6 +519,12 @@ public partial class GameEngine
         if (item.FieldUse == "PokeRadar")
         {
             UsePokeRadar();
+            return;
+        }
+        // The DexNav is switched on or off (plan 10 · F12)
+        if (item.FieldUse == "DexNav")
+        {
+            SwitchDexNav();
             return;
         }
         // Honey from the bag draws out a wild Pokémon as Sweet Scent does, and is used up (UseHoneyFromMenu)
@@ -1128,21 +1139,28 @@ public partial class GameEngine
             // A skip's dark keeps the script waiting while it closes and opens, but not the hurry in its middle (plan 12 · Q20)
             || (game.skipPhase != SkipPhase.None && !game.skipRunning);
 
-        public void Say(string? speaker, IReadOnlyList<string> lines)
+        public void Say(string? speaker, IReadOnlyList<string> lines) => Say(speaker, lines, Array.Empty<SpokenLine?>());
+
+        public void Say(string? speaker, IReadOnlyList<string> lines, IReadOnlyList<SpokenLine?> voices)
         {
-            // (In a hurry the lines are dropped unread)
+            // (In a hurry the lines are dropped unread, and nothing of them is heard)
             if (lines.Count == 0 || Skipping) return;
-            game.flow.Dialogue.ShowDialogue(speaker ?? "", lines);
+            game.flow.Dialogue.ShowDialogue(speaker ?? "", lines, voices);
             game.flow.State = GameState.Dialogue;
         }
 
-        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel)
+        /// <summary>Whether the box's voice still speaks (plan 26 · V2: a script's <c>waitvoice</c>); never in a hurry.</summary>
+        public bool VoiceSpeaking => !Skipping && game.flow.Dialogue.Voice.IsSpeaking;
+
+        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel) => Ask(speaker, question, answers, cancel, null);
+
+        public void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel, SpokenLine? voice)
         {
             game.flow.Choice.Dismiss();
             game.flow.PendingAnswers = answers;
             game.flow.PendingCancel = cancel;
             game.flow.ScriptAnswer = Math.Max(0, cancel);
-            game.flow.Dialogue.ShowQuestion(speaker ?? "", question);
+            game.flow.Dialogue.ShowQuestion(speaker ?? "", question, voice);
             game.flow.State = GameState.Dialogue;
         }
 

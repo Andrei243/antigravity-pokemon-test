@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Camphrier Town"
+    ],
+    "text": [
+      "Orașul Camphrier"
+    ]
+  },
+  "people": {
+    "grandma": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother told me the palace up the avenue once belonged to a king. Now it belongs to whoever pays the most."
+        ],
+        "text": [
+          "Bunica mi-a spus că palatul de pe aleea de sus a aparținut cândva unui rege. Acum aparține celui care plătește mai mult."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

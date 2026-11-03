@@ -5,7 +5,7 @@
         "{player} put the Storage Key in the lock and turned it."
       ],
       "text": [
-        ""
+        "{player} a băgat Storage Key în broască și a răsucit-o."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The key stuck fast in the lock, but the door swung open."
       ],
       "text": [
-        ""
+        "Cheia s-a înțepenit în broască, dar ușa s-a deschis."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The door is locked. \"STORAGE\" is painted on it in faded letters."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie „STORAGE” cu litere șterse."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ]

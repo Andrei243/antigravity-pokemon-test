@@ -8,6 +8,7 @@
   "architecture": "Bayside",
   "triggers": [ { "trigger": 0, "script": "GuideGentStops" }, { "trigger": 1, "script": "RivalAmbush" } ],
   "people": {
+    "t21_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t21_gsoldman1": { "name": "Guide Gent", "script": "GuideGent", "still": true },
     "t21_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "Get lost." ] },
     "t21_gsboy1": {

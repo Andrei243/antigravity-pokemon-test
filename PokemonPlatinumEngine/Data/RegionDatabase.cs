@@ -48,6 +48,9 @@ public sealed class Region
     /// <summary>What the region's file holds (plan 18 · W1); null for a region with no file yet.</summary>
     public RegionFile? File { get; init; }
 
+    /// <summary>The pack that adds this region (plan 16 · T14), by its name; null for a region of the game's own.</summary>
+    public string? Pack { get; init; }
+
     /// <summary>The folder of the region's world and music; its lower-cased id when it has no file.</summary>
     public string Folder => File?.Folder is { Length: > 0 } f ? f : Id.ToLowerInvariant();
 
@@ -151,6 +154,12 @@ public sealed class RegionLink
     /// when the link names none, the transport's own (a boat's ship, a plane's plane), and "way" while it is undecided.
     /// </summary>
     public string? Vessel { get; init; }
+
+    /// <summary>
+    /// Who takes the player across, for a link a pack's region names (plan 16 · T14): laid onto <see cref="DepartureMap"/>
+    /// as the maps load (<c>MapDatabase</c>). Null for the game's own links, whose attendants stand in the region's files.
+    /// </summary>
+    public MapFile.NpcRecord? Attendant { get; init; }
 
     /// <summary>The word the attendant's lines use for the way across.</summary>
     public string VesselWord => Vessel is { Length: > 0 } v ? v : Transport switch
@@ -886,6 +895,13 @@ public static class RegionDatabase
                 // Plan 23 · Z2: Lumiose City's rooms
                 "LumioseCity_PokemonCenter_1F", "LumioseCity_SycamoreLab", "LumioseCity_LysandreCafe", "LumioseCity_Cafe",
                 "LumioseCity_SouthHouse",
+                // Plan 23 · Z2, second part: Lumiose's boutique, stone shop and two more houses, and the rooms of Camphrier
+                // Town and Cyllage City
+                "LumioseCity_Boutique", "LumioseCity_StoneEmporium", "LumioseCity_SouthwestHouse", "LumioseCity_SoutheastHouse",
+                "CamphrierTown_PokemonCenter_1F", "CamphrierTown_Castle", "CamphrierTown_NorthwestHouse",
+                "CamphrierTown_SouthwestHouse", "CamphrierTown_SoutheastHouse",
+                "CyllageCity_PokemonCenter_1F", "CyllageCity_Gym", "CyllageCity_NorthHouse", "CyllageCity_WestHouse",
+                "CyllageCity_BikeShop", "CyllageCity_SouthwestHouse",
             }
         },
         new() { Id = Alola, Name = "Alola", Generation = 7 },
@@ -917,24 +933,136 @@ public static class RegionDatabase
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }
     };
 
-    /// <summary>Every region, in the order of the journey: Sinnoh, then generation order from Kanto.</summary>
-    public static IReadOnlyList<Region> All => regions;
+    // The chain as the packs in use make it (plan 16 · T14): worked out again whenever DataLayers.Use puts other packs
+    // in use, and with none it is the arrays above, the very same objects
+    private static (IReadOnlyList<DataLayer> Packs, RegionChain Chain)? current;
+    private static readonly object chaining = new();
 
-    public static IReadOnlyList<RegionLink> Links => links;
+    /// <summary>The chain of the packs in use now (<see cref="DataLayers.Packs"/>): the game's own regions and links with none.</summary>
+    public static RegionChain Chain
+    {
+        get
+        {
+            var packs = DataLayers.Packs;
+            var c = current;
+            if (c is { } known && ReferenceEquals(known.Packs, packs)) return known.Chain;
+            lock (chaining)
+            {
+                if (current is { } again && ReferenceEquals(again.Packs, packs)) return again.Chain;
+                var chain = With(packs);
+                foreach (string problem in chain.Problems) Core.Diagnostics.Log.Warn($"A pack's region: {problem}");
+                current = (packs, chain);
+                return chain;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The chain with the regions these packs add joined to it (plan 16 · T14; docs/packs.md, "A region of your own"):
+    /// a region file a pack carries whose id no region of the game's has is a region of its own, made from what its
+    /// file says (its name, start, arrival and maps). One whose file names the last region with maps in <c>after</c>
+    /// joins the chain right after it, the way from that region to the next going on from the new one instead; one
+    /// that names another, or none, is a region whose maps are its own and that nothing sails to, and it is said in
+    /// <see cref="RegionChain.Problems"/>. With no pack the chain is the game's own.
+    /// </summary>
+    public static RegionChain With(IReadOnlyList<DataLayer> packs)
+    {
+        var problems = new List<string>();
+        if (packs.Count == 0) return new RegionChain(regions, links, problems);
+        var chain = new List<Region>(regions);
+        var ways = new List<RegionLink>(links);
+        var loose = new List<Region>();
+        foreach (var layer in packs)
+            foreach (var (file, path) in PackRegionFiles(layer, problems))
+            {
+                string id = file.Id is { Length: > 0 } named ? named : System.IO.Path.GetFileNameWithoutExtension(path);
+                if (chain.Concat(loose).Any(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase)))
+                {
+                    if (file.After != null || file.Maps != null || file.Start != null)
+                        problems.Add($"{path}: the region {id} is there already; a pack adds a region of a new name.");
+                    continue;
+                }
+                var region = new Region
+                {
+                    Id = id,
+                    Name = file.Name is { Length: > 0 } name ? name : id,
+                    Generation = file.Generation ?? 0,
+                    File = file,
+                    Pack = layer.Pack?.Name,
+                    Start = file.Start?.ToSpot(),
+                    Arrival = file.Arrival?.ToSpot(),
+                    Maps = (IReadOnlyList<string>?)file.Maps ?? Array.Empty<string>()
+                };
+                // The last region with maps: where a new region may join
+                int last = chain.FindLastIndex(r => r.IsBuilt);
+                if (file.After == null)
+                {
+                    problems.Add($"{path}: {id} names no region in \"after\", so nothing sails to it.");
+                    loose.Add(region);
+                    continue;
+                }
+                if (last < 0 || !string.Equals(chain[last].Id, file.After, StringComparison.OrdinalIgnoreCase))
+                {
+                    problems.Add($"{path}: {id} joins after {file.After}, but a region joins only after the last with maps, {(last < 0 ? "none" : chain[last].Id)}.");
+                    loose.Add(region);
+                    continue;
+                }
+                chain.Insert(last + 1, region);
+                string before = chain[last].Id;
+                var onward = ways.FirstOrDefault(l => string.Equals(l.From, before, StringComparison.OrdinalIgnoreCase));
+                int at = onward == null ? ways.Count : ways.IndexOf(onward);
+                if (onward != null) ways.RemoveAt(at);
+                var into = file.Link ?? new RegionLinkFile();
+                ways.Insert(at, new RegionLink
+                {
+                    From = before, To = id, Transport = into.Transport, Vessel = into.Vessel,
+                    DepartureMap = into.DepartureMap, Attendant = into.Attendant
+                });
+                // The way on that left the region before now leaves this one, with nobody to take it yet
+                if (onward != null)
+                    ways.Insert(at + 1, new RegionLink { From = id, To = onward.To, Transport = onward.Transport, Vessel = onward.Vessel });
+            }
+        chain.AddRange(loose);
+        return new RegionChain(chain, ways, problems);
+    }
+
+    /// <summary>The region files a pack carries that are no game region's own (a pack's copy of one replaces the game's file instead).</summary>
+    private static IEnumerable<(RegionFile File, string Path)> PackRegionFiles(DataLayer layer, List<string> problems)
+    {
+        string folder = System.IO.Path.Combine(layer.Root, "regions");
+        if (!System.IO.Directory.Exists(folder)) yield break;
+        foreach (string path in System.IO.Directory.GetFiles(folder, "*.json").OrderBy(p => p, StringComparer.Ordinal))
+        {
+            string name = System.IO.Path.GetFileNameWithoutExtension(path);
+            if (regions.Any(r => string.Equals(r.Id, name, StringComparison.OrdinalIgnoreCase))) continue;
+            RegionFile? file = null;
+            try
+            {
+                file = GameDataFiles.Deserialize<RegionFile>(System.IO.File.ReadAllText(path));
+            }
+            catch (System.Text.Json.JsonException e)
+            {
+                problems.Add($"{path}: it can't be read ({e.Message}).");
+            }
+            if (file != null) yield return (file, path);
+        }
+    }
+
+    /// <summary>Every region, in the order of the journey: Sinnoh, then generation order from Kanto, and a pack's after the last with maps.</summary>
+    public static IReadOnlyList<Region> All => Chain.Regions;
+
+    public static IReadOnlyList<RegionLink> Links => Chain.Links;
 
     /// <summary>The region every new game starts in: the chain's first, Sinnoh. Only a switch or a tool names another (<c>GameEngine.NewGameRegion</c>).</summary>
     public static Region First => regions[0];
 
-    public static Region? Get(string id) =>
-        regions.FirstOrDefault(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase));
+    public static Region? Get(string id) => Chain.Get(id);
 
     /// <summary>The region a map belongs to, or null for a map no region lists.</summary>
-    public static Region? RegionOfMap(string mapName) =>
-        regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
+    public static Region? RegionOfMap(string mapName) => Chain.RegionOfMap(mapName);
 
     /// <summary>The way on from a region to the next one, or null for the last region.</summary>
-    public static RegionLink? LinkFrom(string regionId) =>
-        links.FirstOrDefault(l => string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
+    public static RegionLink? LinkFrom(string regionId) => Chain.LinkFrom(regionId);
 
     /// <summary>Whether the player may take a link now, given what they have done.</summary>
     public static TravelCheck CheckTravel(RegionLink link, StoryState progress)
@@ -985,4 +1113,36 @@ public static class RegionDatabase
             }
         };
     }
+}
+
+/// <summary>
+/// The regions and the ways between them as one set (plan 16 · T14): the game's own, or those with the regions packs
+/// add joined in (<see cref="RegionDatabase.With"/>), and what was wrong with a pack's region file.
+/// </summary>
+public sealed class RegionChain
+{
+    public RegionChain(IReadOnlyList<Region> regions, IReadOnlyList<RegionLink> links, IReadOnlyList<string> problems)
+    {
+        Regions = regions;
+        Links = links;
+        Problems = problems;
+    }
+
+    public IReadOnlyList<Region> Regions { get; }
+    public IReadOnlyList<RegionLink> Links { get; }
+
+    /// <summary>A line for each region file a pack carries that couldn't be joined to the chain, and why.</summary>
+    public IReadOnlyList<string> Problems { get; }
+
+    public Region? Get(string id) =>
+        Regions.FirstOrDefault(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase));
+
+    public Region? RegionOfMap(string mapName) =>
+        Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
+
+    public RegionLink? LinkFrom(string regionId) =>
+        Links.FirstOrDefault(l => string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>The regions packs add, in the chain's order.</summary>
+    public IEnumerable<Region> OfPacks => Regions.Where(r => r.Pack != null);
 }

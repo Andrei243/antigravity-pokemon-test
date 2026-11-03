@@ -27,7 +27,11 @@ public static class StateHash
 
         var map = flow.Map;
         var player = flow.Player;
-        row[1] = map != null && player != null ? Fnv(string.Join(' ', map.Name, Num(player.GridX), Num(player.GridY), player.Facing.ToString())) : 0;
+        // (and where the body stands between tiles in a free region, plan 30 · FM7: nought everywhere else, and left out then,
+        // so the grid's rows are what they were)
+        var offset = player?.Offset ?? (0, 0);
+        string between = offset == (0, 0) ? "" : $" {Num(offset.X)} {Num(offset.Y)}";
+        row[1] = map != null && player != null ? Fnv(string.Join(' ', map.Name, Num(player.GridX), Num(player.GridY), player.Facing.ToString()) + between) : 0;
 
         var team = new StringBuilder();
         foreach (var p in flow.Party.Members)

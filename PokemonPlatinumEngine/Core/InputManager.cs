@@ -194,6 +194,12 @@ public static class InputManager
         bool altEnter = Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter);
         var frame = active.Resolve(key => Raylib.IsKeyDown(key), key => Raylib.IsKeyPressed(key), pad, held, stickPressed);
         if (altEnter) frame = new ActionFrame(frame.Down & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen), frame.Pressed & ~Bit(GameAction.Menu) | Bit(GameAction.Fullscreen));
+        // The stick's tilt, quantised here so that a recording keeps what the game reads (plan 30 · FM7)
+        if (pad.Connected)
+        {
+            var (tiltX, tiltY) = StickReader.Tilt(pad.StickX, pad.StickY, deadZone);
+            frame = frame with { MoveX = tiltX, MoveY = tiltY };
+        }
 
         Captured = ReadCapture(pad);
 
@@ -305,6 +311,27 @@ public static class InputManager
     /// stick's diagonal make a diagonal. Read from the same four bits a recording keeps.
     /// </summary>
     public static Overworld.Heading? GetHeading() => Overworld.Headings.FromVector(GetMovementVector());
+
+    /// <summary>
+    /// The stick as free movement reads it (plan 30 · FM7), −1 to 1 on each axis: the frame's quantised tilt where it has
+    /// one (<see cref="ActionFrame.MoveX"/>), otherwise the direction actions held, a full tilt each way and
+    /// <see cref="StickReader.KeyDiagonal"/> on each axis of a diagonal, so the keyboard and the d-pad walk at a full
+    /// tilt's pace in eight ways. Never read outside a place that moves freely.
+    /// </summary>
+    public static Vector2 GetStick() => StickOf(fed);
+
+    /// <summary>What <see cref="GetStick"/> makes of a frame: its tilt, or its direction bits as a full tilt.</summary>
+    public static Vector2 StickOf(ActionFrame? frame)
+    {
+        if (frame is { } f && (f.MoveX != 0 || f.MoveY != 0)) return new Vector2(f.MoveX, f.MoveY) / StickReader.FullTilt;
+        var v = frame is { } bits
+            ? new Vector2((bits.IsDown(GameAction.Right) ? 1f : 0f) - (bits.IsDown(GameAction.Left) ? 1f : 0f),
+                (bits.IsDown(GameAction.Down) ? 1f : 0f) - (bits.IsDown(GameAction.Up) ? 1f : 0f))
+            : GetMovementVector();
+        if (v == Vector2.Zero) return v;
+        float each = v.X != 0f && v.Y != 0f ? StickReader.KeyDiagonal : StickReader.FullTilt;
+        return v * each / StickReader.FullTilt;
+    }
 
     public static Vector2 GetMovementVector()
     {

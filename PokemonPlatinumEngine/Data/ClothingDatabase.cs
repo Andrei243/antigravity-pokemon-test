@@ -58,11 +58,30 @@ public sealed class Garment
     }
 }
 
-/// <summary>What <c>clothes.json</c> holds: every garment, and what each boutique sells by its key.</summary>
+/// <summary>
+/// A set offered in the new-game introduction (plan 11 · C10): garments of the list, one to a slot, a slot left out
+/// being the look's own; <see cref="For"/> keeps it to the boy or the girl (null: both).
+/// </summary>
+public sealed class OutfitSet
+{
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public List<string> Garments { get; set; } = new();
+    public PlayerLook? For { get; set; }
+
+    /// <summary>The outfit the set is: each garment in its own slot (garments the data doesn't know are left off).</summary>
+    public Outfit Outfit =>
+        Garments.Select(ClothingDatabase.Get).OfType<Garment>().Aggregate(Outfit.Own, (o, g) => o.With(g.Slot, g.Id));
+
+    public bool Suits(PlayerLook look) => For == null || For == look;
+}
+
+/// <summary>What <c>clothes.json</c> holds: every garment, what each boutique sells by its key, and the introduction's sets.</summary>
 public sealed class ClothingData
 {
     public List<Garment> Garments { get; set; } = new();
     public Dictionary<string, List<string>> Boutiques { get; set; } = new();
+    public List<OutfitSet> Sets { get; set; } = new();
 }
 
 /// <summary>
@@ -88,4 +107,10 @@ public static class ClothingDatabase
 
     /// <summary>The free garments: everyone's from the start.</summary>
     public static IEnumerable<Garment> Free => Data.Garments.Where(g => g.IsFree);
+
+    /// <summary>Every set of the introduction, in the file's order.</summary>
+    public static IReadOnlyList<OutfitSet> Sets => Data.Sets;
+
+    /// <summary>The sets offered to <paramref name="look"/>, in the file's order.</summary>
+    public static List<OutfitSet> SetsFor(PlayerLook look) => Data.Sets.Where(s => s.Suits(look)).ToList();
 }

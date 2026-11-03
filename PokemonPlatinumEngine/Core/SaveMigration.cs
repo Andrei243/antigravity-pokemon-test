@@ -29,6 +29,13 @@ public static class SaveMigration
             given = PokemonIds.Give(Owned(save), p => p.Id ?? Guid.Empty, (p, id) => p.Id = id, TrainerNumberOf(save), ref next);
             save.PokemonIdsIssued = next;
         }
+        if (save.SaveVersion < SaveData.FreePositions)
+        {
+            // Version 2 (plan 30 · FM7): a save keeps the body's place between tiles in a region that moves freely; every
+            // save from before stood on its tile's centre, which is an offset of nought
+            save.PlayerSubX = 0;
+            save.PlayerSubY = 0;
+        }
         save.SaveVersion = Math.Max(save.SaveVersion, SaveData.CurrentSave);
         return given;
     }

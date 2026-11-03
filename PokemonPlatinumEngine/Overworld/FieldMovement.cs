@@ -42,7 +42,9 @@ public enum Pace
     Slow,
     Walk,
     Fast,
-    Fastest
+    Fastest,
+    /// <summary>Creeping up on a Pokémon the DexNav found in the grass (plan 10 · F12): slower than a walk, so it stays.</summary>
+    Sneak
 }
 
 /// <summary>What the party's Pokémon can do in the field that changes where one can go.</summary>
@@ -120,7 +122,7 @@ public enum Obstacle
 /// </summary>
 public readonly record struct Walker(
     TravelMode Mode = TravelMode.OnFoot, float Height = 0f, bool Running = false, bool FastGear = false, FieldMoves Moves = FieldMoves.None,
-    bool Climbing = false, BikeKind Bike = BikeKind.Bicycle)
+    bool Climbing = false, BikeKind Bike = BikeKind.Bicycle, bool Sneaking = false)
 {
     /// <summary>
     /// Whether a rider goes at a bicycle's top speed: Platinum's Bicycle in its fast gear, or the Mach Bike, which has
@@ -548,7 +550,7 @@ public static class FieldMovement
             TileBehavior.DeepestSnow => Pace.Slowest,
             TileBehavior.DeeperSnow or TileBehavior.DeepMud or TileBehavior.DeepMarshGrass => Pace.Slow,
             TileBehavior.DeepSnow or TileBehavior.Mud or TileBehavior.MarshGrass => Pace.Walk,
-            _ => walker.Running ? Pace.Fast : Pace.Walk
+            _ => walker.Sneaking ? Pace.Sneak : walker.Running ? Pace.Fast : Pace.Walk
         }
     };
 
@@ -559,6 +561,7 @@ public static class FieldMovement
         Pace.Slow => 2.25f,
         Pace.Walk => 4.5f,
         Pace.Fast => 8f,
+        Pace.Sneak => 3f,
         _ => 12f
     };
 

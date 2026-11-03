@@ -446,7 +446,7 @@ public sealed partial class BattleCore
     }
 
     private string SentOutLine(Battler place, Pokemon incoming) =>
-        place.Trainer == null ? Text.Of("battle.go", ("pokemon", ShownAs(place, incoming))) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", ShownAs(place, incoming)));
+        place.Trainer == null ? Text.Of("battle.go", ("pokemon", GoesOutAs(place, incoming))) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", ShownAs(place, incoming)));
 
     /// <summary>
     /// A Pokémon leaves by its own move once the move is done: U-turn brings it back (Pursuit can catch it), Baton

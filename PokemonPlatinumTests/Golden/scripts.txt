@@ -1277,6 +1277,10 @@ way -
   Old Man> You'll have seen the Psyduck huddled across the road outside, youngster?
   Old Man> Psyduck are plagued by headaches that never quite leave them, poor things.
   Old Man> I'm afraid there's nothing for it but to wait until they feel better.
+=== CamphrierTown_Castle.Castellan
+from Castellan Aubert at 7,4 of CamphrierTown_Castle
+way -
+  Castellan Aubert> The palace is at the head of the avenue north of town. Its butler keeps the gate. Mention my name!
 === CanalaveCityEastHouse.Deleter
 from Move Deleter at 2,6 of CanalaveCityEastHouse
 way 0.0.0
@@ -2441,6 +2445,43 @@ way -
   Boy> It's hard to win without one. Still, if you're set on it, I won't stop you.
   Boy> You could always practise at the counter on the right.
   + FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+=== CyllageCity_Gym.Grant
+from Grant at 6,4 of CyllageCity_Gym
+way 0
+  Grant> So you made the climb. I'm Grant, Leader of the Cyllage Gym.
+  Grant> On a rock face you look for the next hold, and then the one after it. One mistake and you start again from the bottom.
+  Grant> A battle is the same. Show me how you climb!
+  Grant> You never once lost your grip. That's a climb I'd be proud of.
+  Grant> Here. The Cliff Badge is yours, proof that you reached the top of the Cyllage Gym.
+  > Lucas received the Cliff Badge from Grant!
+  Grant> Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down.
+  > Lucas received the TM39!
+  > TM39 holds the move Rock Tomb.
+  > Lucas put it away in the TMs & HMs pocket.
+  Grant> There's more of Kalos to climb. Keep looking for the next hold.
+  * scene CyllageCity_Gym.Grant
+  * battle kalos_grant_1 Won
+  * fanfare FanfareBadge
+  * defeat kalos_hiker_bruno
+  * defeat kalos_hiker_armand
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_DEFEATED_CYLLAGE_GYM
+  + FLAG_KALOS_RECEIVED_TM_GRANT
+  = VAR_KALOS_STORY 0 -> 18
+  = VAR_OBJECTIVE 0 -> 599
+  + beaten kalos_grant_1
+  + beaten kalos_hiker_armand
+  + beaten kalos_hiker_bruno
+  = badges Kalos 0 -> 10
+  + seen CyllageCity_Gym.Grant
+way 1, from answer 1
+  * battle kalos_grant_1 Lost
+  * scene over, unseen
+=== CyllageCity_Gym.GymGuide
+from Gym Guide at 9,15 of CyllageCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Grant's Rock types shrug off fire and flight. Bring water, grass or a good fist!
 === DriftveilCity_Gym.Clay
 from Clay at 10,3 of DriftveilCity_Gym
 way 0
@@ -3246,6 +3287,89 @@ way 1, from answer 1
   Depot Agent> The Subway Bosses wait for those who ride on to the 21st car and the 49th.
   Depot Agent> Beat the Boss in the 21st car and the Super Double Train opens to you, with tougher trainers and more Battle Points.
   ? What would you like to do? = INFO
+=== GearStation.Exchange
+from Clerk at 21,5 of GearStation
+way 0
+  Clerk> Welcome to the Battle Subway's prize counter! Battle Points earned on the trains buy what you see here.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = HP Up   4 BP
+  * frontier points 1
+way 25, from answer 1
+  Clerk> Do come back when you've ridden a few more cars!
+  ? Which prize would you like? = No thanks
+way 24, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Air Balloon   32 BP
+way 23, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Weakness Policy   32 BP
+way 22, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Eviolite   48 BP
+way 21, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rocky Helmet   48 BP
+way 20, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Assault Vest   48 BP
+way 19, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Sash   48 BP
+way 18, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Life Orb   48 BP
+way 17, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Specs   48 BP
+way 16, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Scarf   48 BP
+way 15, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Band   48 BP
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Anklet   16 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Band   16 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Lens   16 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Belt   16 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Bracer   16 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Weight   16 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = PP Max   48 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = PP Up   24 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rare Candy   24 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Carbos   4 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Zinc   4 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Calcium   4 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Iron   4 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Protein   4 BP
 === GearStation.MultiTrain
 from Depot Agent at 11,3 of GearStation
 way 0
@@ -3572,6 +3696,13 @@ way -
 from Old Woman at 8,9 of LostTower5F
 way -
   Old Woman> Ohh... Who's there? I can hardly see a thing in this fog.
+=== LumioseCity_Boutique.Clerk
+from Clerk at 7,6 of LumioseCity_Boutique
+way -
+  Clerk> Bienvenue! Welcome to the boutique. Everything here was made in Lumiose this season.
+  Clerk> Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish.
+  Clerk> Merci! Do come back when the new season arrives.
+  * open Wardrobe lumiose
 === LumioseCity_LysandreCafe.Lysandre
 from Lysandre at 6,5 of LumioseCity_LysandreCafe
 way -
@@ -8165,6 +8296,21 @@ way -
   = VAR_UNK_4079 0 -> 2
   = VAR_UNK_40A1 0 -> 1
   + seen burned_tower_b1f.The three beasts wake
+=== camphrier_town.Castellan
+from Castellan Aubert at 218,356 of Kalos
+from the trigger at 222,357 of Kalos
+way -
+  Castellan Aubert> Ah, a Trainer! Welcome to Camphrier. I am Aubert, keeper of the old castle you see behind me.
+  Castellan Aubert> You'll be wanting the road south to the coast, I expect. I'm sorry to say a Snorlax has gone to sleep right across it.
+  Castellan Aubert> Nothing wakes it. We've tried singing, shouting, a brass band... It only rolled over.
+  Castellan Aubert> But the palace at the head of the avenue north keeps an old flute, and its tune is said to wake any sleeper.
+  Castellan Aubert> Go up Route 6 and ask at the palace gate. Tell them Aubert sent you.
+  * scene camphrier_town.The castle's keeper
+  * endscene
+  + FLAG_KALOS_HIDE_CASTELLAN_STREET
+  = VAR_KALOS_STORY 0 -> 14
+  = VAR_OBJECTIVE 0 -> 514
+  + seen camphrier_town.The castle's keeper
 === canalave_city.AceTrainer
 from Trainer at 33,730 of Sinnoh
 way -
@@ -11329,6 +11475,14 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+=== common.HoennFeeder
+from a trainer with lines of their own
+way 0
+  Anyone> It's a little feeder for wild Pokémon. Set a Pokéblock down on it?
+  Anyone> You haven't got a single Pokéblock to set down.
+  ? It's a little feeder for wild Pokémon. Set a Pokéblock down on it? = Yes
+way 1, from answer 1
+  ? It's a little feeder for wild Pokémon. Set a Pokéblock down on it? = No
 === common.HoennKecleonFound
 from a Kecleon seen through the Devon Scope
 way 0
@@ -14331,6 +14485,35 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== cyllage_city.Neighbour
+from the trigger at 102,358 of Kalos
+way 0
+  Barry> Lucas! You woke that Snorlax? I heard it snoring from the coast. I took the long way round.
+  Barry> The Gym here is at the very top of the town. Its Leader climbs rock walls, and his Pokémon are as hard as the cliffs.
+  Barry> Before you go up, let's see what you've learned since Santalune.
+  Barry> You're climbing faster than I am. Good. Then I know who I'm racing.
+  Barry> Water and Grass get the better of stone, they say. Good luck with the climb.
+  * scene cyllage_city.The neighbour in Cyllage
+  * battle kalos_rival_cyllage_chespin Won
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_CYLLAGE
+  = VAR_KALOS_STORY 0 -> 17
+  = VAR_OBJECTIVE 0 -> 517
+  + beaten kalos_rival_cyllage_chespin
+  + seen cyllage_city.The neighbour in Cyllage
+way 1, from answer 1
+  Barry> Close. Very close. Rock-type Pokémon won't be as kind to you as I was, though.
+  Barry> Water and Grass get the better of stone, they say. Good luck with the climb.
+  * battle kalos_rival_cyllage_chespin Lost
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_CYLLAGE
+  = VAR_KALOS_STORY 0 -> 17
+  = VAR_OBJECTIVE 0 -> 517
+  + seen cyllage_city.The neighbour in Cyllage
+=== cyllage_city.Rival
+from {rival} at 104,354 of Kalos
+way -
+  Barry> The Gym is up the steps, right at the top.
 === desert_resort_2.SoftSand
 from Archaeologist at 75,48 of DesertResort
 way -
@@ -18448,6 +18631,14 @@ way 1, from answer 1
 from Bugsy at 25,71 of Viridian_Forest
 way -
   Bugsy> Oh, hi! I come to Viridian Forest on Fridays. The bug Pokémon here are so different from Ilex Forest's!
+=== join_avenue.Antiques
+from Antique Dealer at 24,64 of JoinAvenue
+way -
+  Antique Dealer> My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!
+=== join_avenue.AntiquesSign
+from the tile read at 23,63 of JoinAvenue
+way -
+  > Join Avenue Antiques\nFossils and curios of old.
 === join_avenue.Cafe
 from Waitress at 6,42 of JoinAvenue
 way -
@@ -18458,6 +18649,14 @@ way -
 from the tile read at 7,41 of JoinAvenue
 way -
   > Join Avenue Café\nCold drinks all day long.
+=== join_avenue.Dojo
+from Dojo Master at 24,35 of JoinAvenue
+way -
+  Dojo Master> The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!
+=== join_avenue.DojoSign
+from the tile read at 23,34 of JoinAvenue
+way -
+  > Join Avenue Dojo\nTraining for tough Pokémon.
 === join_avenue.Flowers
 from Florist at 24,21 of JoinAvenue
 way -
@@ -18478,6 +18677,14 @@ way -
 from the tile read at 7,27 of JoinAvenue
 way -
   > Join Avenue Market\nEverything for the road ahead!
+=== join_avenue.Nursery
+from Nursery Aide at 24,48 of JoinAvenue
+way -
+  Nursery Aide> The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!
+=== join_avenue.NurserySign
+from the tile read at 23,47 of JoinAvenue
+way -
+  > Join Avenue Nursery\nA warm corner for Eggs.
 === join_avenue.Owner
 from Owner at 15,70 of JoinAvenue
 way 0
@@ -18493,10 +18700,47 @@ way 0
 way 1, from answer 1
   Owner> No? Well, the offer stands. Come and see me if you change your mind.
   ? You have the look of a Trainer people follow. Will you be Join Avenue's manager? = No
+=== join_avenue.Raffle
+from Raffle Clerk at 6,13 of JoinAvenue
+way 0
+  Raffle Clerk> Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's?
+  > Lucas received the Super Potion!
+  > Lucas put it away in the Medicine pocket.
+  Raffle Clerk> Congratulations! Come back tomorrow for another ticket.
+  ? Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's? = Yes
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_JOIN_AVENUE_RAFFLE
+way 1, from answer 1
+  Raffle Clerk> No? Your ticket will wait until the end of the day.
+  ? Welcome to the raffle! One free ticket a day, and the busier the avenue, the better the prizes. Draw today's? = No
+=== join_avenue.RaffleSign
+from the tile read at 7,12 of JoinAvenue
+way -
+  > Join Avenue Raffle\nOne free ticket a day!
+=== join_avenue.Salon
+from Stylist at 6,56 of JoinAvenue
+way -
+  Stylist> The salon isn't open yet. We're waiting for the avenue to bring the customers in!
+=== join_avenue.SalonSign
+from the tile read at 7,55 of JoinAvenue
+way -
+  > Join Avenue Salon\nGrooming for happy Pokémon.
 === join_avenue.Stones
 from Shop Girl at 16,70 of JoinAvenue
 way -
   Shop Girl> Our shop isn't open yet. Come back once the avenue's up and running!
+=== join_avenue.Visitor1
+from Visitor at 12,31 of JoinAvenue
+way -
+  Saskia> I came all the way from Undella Bay just to see this street. It's livelier every time!
+=== join_avenue.Visitor2
+from Visitor at 19,45 of JoinAvenue
+way -
+  Ronan> My Herdier sniffs out the café from three streets away. We always stop here first.
+=== join_avenue.Visitor3
+from Visitor at 14,59 of JoinAvenue
+way -
+  Mirela> A friend told me the manager here is a real Trainer. Is that you? Pleased to meet you!
 === join_avenue.Vitamins
 from Shop Girl at 14,70 of JoinAvenue
 way -
@@ -18740,6 +18984,49 @@ way -
 from Trevor at 268,528 of Kalos
 way -
   Trevor> Um. Hello again.
+=== kalos_route_5.Friends
+from the trigger at 278,358 of Kalos
+way 0
+  Tierno> Hey, Lucas! We skated all the way from Lumiose. Did you see the square back there? The skaters spin like dancers!
+  Trevor> I counted four kinds of Pokémon I'd never seen in the grass along here. Four!
+  Tierno> I caught a new partner on the way, and we've worked out a routine. Battle us and see!
+  Tierno> You're getting really strong! I'll need a brand new routine to keep up with you.
+  Trevor> Camphrier Town is just ahead. They say a big Pokémon has been asleep on the road south of it for days.
+  Tierno> Let's go and see it! Maybe it likes dancing.
+  * scene kalos_route_5.Tierno and Trevor on Route 5
+  * battle kalos_tierno_2 Won
+  * endscene
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_5
+  = VAR_KALOS_STORY 0 -> 13
+  = VAR_OBJECTIVE 0 -> 513
+  + beaten kalos_tierno_2
+  + seen kalos_route_5.Tierno and Trevor on Route 5
+way 1, from answer 1
+  Tierno> Ta-da! But honestly, your team kept perfect time with ours. That was fun.
+  Trevor> Camphrier Town is just ahead. They say a big Pokémon has been asleep on the road south of it for days.
+  Tierno> Let's go and see it! Maybe it likes dancing.
+  * battle kalos_tierno_2 Lost
+  * endscene
+  + FLAG_KALOS_HIDE_FRIENDS_ROUTE_5
+  = VAR_KALOS_STORY 0 -> 13
+  = VAR_OBJECTIVE 0 -> 513
+  + seen kalos_route_5.Tierno and Trevor on Route 5
+=== kalos_route_5.Tierno
+from Tierno at 277,357 of Kalos
+way -
+  Tierno> Ready to see our routine?
+=== kalos_route_5.Trevor
+from Trevor at 276,357 of Kalos
+way -
+  Trevor> Um. Four new kinds. I wrote them all down.
+=== kalos_route_6.Butler
+from Butler at 201,268 of Kalos
+way -
+  Butler> Good day. The palace is closed to visitors this week. The master is entertaining, you understand.
+=== kalos_route_7.Snorlax
+from Snorlax at 202,392 of Kalos
+way -
+  > A huge Pokémon lies asleep across the lane, snoring like distant thunder.
 === kanto_victory_road_1f.Barrier
 from Rock barrier at 12,14 of VictoryRoad_1F
 from Rock barrier at 12,15 of VictoryRoad_1F
@@ -20315,14 +20602,18 @@ way -
   Dexio> Lumiose is a big city. The avenues all lead back to the tower, if you ever lose your way.
 === lumiose_city.NotYetEast
 from the trigger at 418,358 of Kalos
+from the trigger at 418,358 of Kalos
 way -
   > The road beyond is closed for repairs. It will open again soon.
 === lumiose_city.NotYetNorth
 from the trigger at 358,301 of Kalos
+from the trigger at 358,301 of Kalos
+from the trigger at 391,301 of Kalos
 from the trigger at 391,301 of Kalos
 way -
   > The road beyond is closed for repairs. It will open again soon.
 === lumiose_city.NotYetSouth
+from the trigger at 391,418 of Kalos
 from the trigger at 391,418 of Kalos
 way -
   > The road beyond is closed for repairs. It will open again soon.
@@ -23254,6 +23545,45 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_RECEIVED_MIRACLE_SEED
+=== pewter.Eon
+from Latias at 1039,83 of Johto
+from Latios at 1039,83 of Johto
+way -
+  > It watches Lucas closely, as if it already knows who you are.
+=== pewter.Steven
+from Steven at 1044,81 of Johto
+way 0.0
+  Steven> There you are, Lucas. This is the friend I told you about. It came all this way for the stone, and now it's curious about you.
+  Steven> It won't settle for words, though. It wants to feel your strength for itself.
+  Steven> Will you face Steven's friend?
+  Steven> I thought you might. Don't hold back. It wouldn't thank you for it.
+  > Latias rose from Steven's side with a bright cry!
+  > Steven's friend wheeled once over the rooftops and was gone into the sky.
+  Steven> Ha! It's never let anyone get that close. It'll be back in Hoenn's skies by nightfall, I expect.
+  Steven> I'll be in the museum a while longer. The stone has to go back where it belongs.
+  ? Will you face Steven's friend? = Yes
+  * scene pewter.Latias rises from Steven's side
+  * letterbox on
+  * camera Pan 1039 83
+  * camera Zoom 1.4
+  * effect Sparkles 1039 83
+  * effect Ripple 1039 83
+  * cry Latias
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Latias 40 Won
+  + FLAG_HIDE_PEWTER_CITY_LATIAS
+  + FLAG_HIDE_PEWTER_CITY_LATIOS
+  + FLAG_HIDE_PEWTER_CITY_STEVEN
+  + FLAG_JOHTO_MET_STEVENS_EON
+  + seen pewter.Latias rises from Steven's side
+way 0.1, from answer 2
+  * wildbattle Latias 40 Lost
+  + seen pewter.Latias rises from Steven's side
+way 1, from answer 1
+  Steven> No? Then we'll wait. It's patient, in its way. Come back when you're ready.
+  ? Will you face Steven's friend? = No
 === pewter_city.GymGuide
 from Boy at 90,80 of Kanto
 from the trigger at 90,81 of Kanto
@@ -23406,8 +23736,18 @@ way -
 === pewter_museum_of_science.Steven
 from Steven at 23,7 of Pewter_Museum
 way -
-  Steven> This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars.
-  Steven> I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!
+  Steven> Lucas! Good timing. The museum let me hold one of its stones for a moment. Come and look.
+  > Steven held out a smooth, pale stone. Deep inside it, something like an eye seemed to glint.
+  Steven> They call it the Enigma Stone. Nobody knows where it came from. But my travelling friend felt it from far away.
+  Steven> My friend is a Pokémon of the skies over Hoenn. I think it would like to meet you, too.
+  Steven> I'll go and fetch it. Meet us outside, by the houses at the north of the city.
+  + FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  + FLAG_JOHTO_STEVEN_SHOWED_STONE
+=== pewter_museum_of_science.StevenAfter
+from Steven at 16,4 of Pewter_Museum
+way -
+  Steven> I gave the Enigma Stone back to the museum. Some stones are meant to be looked at, not kept.
+  Steven> Old bones and fallen stars under one roof. I could spend a whole day in here.
 === plasma_frigate_2.Barrier
 from the trigger at 9,7 of PlasmaFrigate_Hold
 way -
@@ -30028,13 +30368,24 @@ way -
 from Sailor at 25,18 of SSAqua_1F
 way 0
   Sailor> Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?
-  Sailor> Anchors aweigh! Make yourself at home. We'll be there before you know it.
-  > The S.S. Aqua sped east across the sea, skimming the waves...
-  Sailor> We've docked at Vermilion City, Kanto! Mind your step on the gangway.
+  Sailor> Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy.
+  > The S.S. Aqua slipped out of Olivine's harbour and turned east. The lighthouse's beam shrank away behind it...
+  > Lucas was shown to a small cabin. Through the porthole, the last of the sunset sank into the sea.
+  > Somewhere along the corridor a passenger laughed, and a door clicked shut. The engines hummed below the floor.
+  > Rocked by the waves, Lucas fell asleep...
+  > A long blast of the ship's horn! Morning light poured in through the porthole.
+  Sailor> Morning! We've docked at Vermilion City, Kanto! Mind your step on the gangway.
   ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = Yes
+  * scene ss_aqua_1f.A night aboard the ship
   * fade out
+  * warp SSAqua_1F_SouthwestRooms 23 3
   * fade in
+  * fade out
+  * warp SSAqua_1F 24 18
+  * fade in
+  * endscene
   + FLAG_JOHTO_SS_AQUA_AT_VERMILION
+  + seen ss_aqua_1f.A night aboard the ship
 way 1, from answer 1
   Sailor> No rush. The gangway's behind you, if you'd rather stay ashore a while longer.
   ? Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off? = No

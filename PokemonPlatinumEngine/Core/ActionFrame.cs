@@ -10,6 +10,29 @@ public readonly record struct ActionFrame(uint Down, uint Pressed)
     /// <summary>A frame with nothing held.</summary>
     public static readonly ActionFrame None = new(0, 0);
 
+    /// <summary>
+    /// The stick's tilt across, −127 (full left) to 127 (full right), after the dead zone and quantised where it is read
+    /// (plan 30 · FM7, <see cref="StickReader.Tilt"/>): what a recording keeps (format 4), so the game sees exactly the
+    /// same numbers played back. Nought for a frame with no stick (the keyboard's, a test's); then the direction bits say
+    /// the way (<see cref="InputManager.GetStick"/>). Only free movement reads it.
+    /// </summary>
+    public sbyte MoveX { get; init; }
+
+    /// <summary>The stick's tilt down, −127 (full up) to 127 (full down), as <see cref="MoveX"/>.</summary>
+    public sbyte MoveY { get; init; }
+
+    /// <summary>A frame of free movement's stick (plan 30 · FM7): the direction bits the stick's eight ways set, and the tilt itself.</summary>
+    public static ActionFrame Stick(sbyte x, sbyte y)
+    {
+        var held = new System.Collections.Generic.List<GameAction>();
+        var dirs = StickReader.Ways(x / 127f, y / 127f);
+        if ((dirs & StickDirs.Left) != 0) held.Add(GameAction.Left);
+        if ((dirs & StickDirs.Right) != 0) held.Add(GameAction.Right);
+        if ((dirs & StickDirs.Up) != 0) held.Add(GameAction.Up);
+        if ((dirs & StickDirs.Down) != 0) held.Add(GameAction.Down);
+        return None.Next(held.ToArray()) with { MoveX = x, MoveY = y };
+    }
+
     private static uint Bit(GameAction action) => 1u << (int)action;
 
     /// <summary>Whether the action is held this frame.</summary>

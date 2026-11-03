@@ -44,7 +44,7 @@ partial class Harness
             if (mode != TravelMode.OnFoot) game.Player.SetMode(mode);
             game.ArriveOnMap();
             // On a bridge the player stands on its deck, as one who came onto it would
-            if (game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
+            if (mode != TravelMode.Surfing && game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
             game.LocationSign.Hide();
             Frames(30);
             Console.WriteLine($"{name}: {game.Map.Name} ({game.Player.GridX}, {game.Player.GridY}), {game.Map.NPCs.Count} people, "
@@ -101,7 +101,7 @@ partial class Harness
         game.Story.Set("FLAG_HOENN_ALTERING_CAVE_OPEN");
         Look("h3e2_altering_cave", "AlteringCave", 9, 16, Direction.Up);
         Look("h3e3_faraway_island_grass", "FarawayIsland_Interior", 13, 16, Direction.Up);
-        Look("h3e4_ss_tidal_corridor", "SSTidalCorridor", 4, 8, Direction.Up);
+        Look("h3e4_ss_tidal_corridor", "SSTidalCorridor", 6, 11, Direction.Up);
         Look("h3e5_ss_tidal_cabins", "SSTidalRooms", 6, 13, Direction.Up);
         Look("h3e6_ss_tidal_hold", "SSTidalLowerDeck", 15, 6, Direction.Up);
 
@@ -114,11 +114,114 @@ partial class Harness
         Look("h3g2_mechadolls", "Route110_TrickHousePuzzle5", 4, 20, Direction.Up);
 
         // ---- The bridges, the salt, cave mouths, deep water and the triangle
-        Look("h3h0_route120_kecleon_bridge", "Hoenn", 373, 17, Direction.Up);
-        Look("h3h1_fortree_bridge", "Hoenn", 330, 12, Direction.Up);
-        Look("h3h2_shoal_cave_salt", "ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up);
+        // Plan 21 · part r: the player on Route 120's bridge beside the Kecleon nobody sees, whose plank is pressed down,
+        // and the bridge once it is gone; Fortree's walkway with the player's own plank pressed down
+        Look("h3h0_route120_kecleon_bridge", "Hoenn", 369, 16, Direction.Right);
+        if (Wants("h3h0"))
+        {
+            game.Story.Set("FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE");
+            Look("h3h0b_route120_kecleon_gone", "Hoenn", 369, 16, Direction.Right);
+            game.Story.Unset("FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE");
+        }
+        Look("h3h1_fortree_bridge", "Hoenn", 331, 4, Direction.Right);
+        // Shoal Cave's first pile of salt, whole and then with the day's salt taken
+        Look("h3h2_shoal_cave_salt", "ShoalCave_LowTideInnerRoom", 31, 10, Direction.Up);
+        if (Wants("h3h2"))
+        {
+            game.Story.Set("FLAG_DAILY_RECEIVED_SHOAL_SALT_1");
+            Look("h3h2b_shoal_cave_salt_taken", "ShoalCave_LowTideInnerRoom", 31, 10, Direction.Up);
+            game.Story.Unset("FLAG_DAILY_RECEIVED_SHOAL_SALT_1");
+        }
         Look("h3i0_granite_cave_mouth", "Hoenn", 117, 330, Direction.Up);
         Look("h3i1_route124_deep_water", "Hoenn", 500, 140, Direction.Up, TravelMode.Surfing);
+        // The abnormal weather's cave mouth on Route 114 and its deep water on Route 105, before and while it is there
+        if (Wants("h3i2"))
+        {
+            Look("h3i2_route114_terra_cave_shut", "Hoenn", 46, 50, Direction.Up);
+            game.Story.Set("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH");
+            Look("h3i2b_route114_terra_cave_mouth", "Hoenn", 46, 50, Direction.Up);
+            game.Story.Unset("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH");
+        }
+        if (Wants("h3i3"))
+        {
+            Look("h3i3_route105_sea", "Hoenn", 11, 295, Direction.Up, TravelMode.Surfing);
+            game.Story.Set("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH");
+            Look("h3i3b_route105_deep_water", "Hoenn", 11, 295, Direction.Up, TravelMode.Surfing);
+            game.Story.Unset("FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH");
+        }
+        // A surfer under the Seaside Cycling Road, where Emerald's sea runs under its deck
+        Look("h3i4_cycling_road_surfer_under", "Hoenn", 210, 196, Direction.Right, TravelMode.Surfing);
         Look("h3j0_birth_island_triangle", "BirthIsland_Exterior", 15, 17, Direction.Up);
+
+        // ---- Plan 21 · part q: what parts k, n and o built that nobody had seen. The Seaside Cycling Road ridden (its
+        // deck under the wheels), Mauville's roulette wheel, the contest's stage behind the panels and the museum's first scene
+        if (Wants("h3k0"))
+        {
+            Look("h3k0_cycling_road_ridden", "Hoenn", 217, 222, Direction.Up);
+            game.Player.SetMode(TravelMode.Cycling);
+            if (game.Map.DeckAt(217, 222) is { } deck) game.Player.SetHeight(deck);
+            Frames(20);
+            Shot("h3k0_cycling_road_ridden");
+        }
+        Look("h3k1_cycling_road_north", "Hoenn", 212, 200, Direction.Down);
+        Look("h3k8_route119_small_bridge", "Hoenn", 334, 85, Direction.Up);
+        Look("h3k9_route119_bridge_west", "Hoenn", 302, 83, Direction.Up);
+        // ---- The Safari Zone's Pokéblock feeders (plan 21 · H11, part d): the south part's, two steps before it, and the
+        // north-west part's by its pond
+        Look("h3l0_safari_feeder_south", "HoennSafariZone", 64, 72, Direction.Up);
+        Look("h3l1_safari_feeder_northwest", "HoennSafariZone", 33, 17, Direction.Up);
+        if (Wants("h3l"))
+            foreach (var (fx, fy) in new[] { (64, 70), (33, 15) })
+            {
+                var zone = PokemonPlatinumEngine.Data.MapDatabase.Get("HoennSafariZone");
+                Console.WriteLine($"h3l*: feeder ({fx}, {fy}): behaviour {zone.BehaviourAt(fx, fy)}, walkable {zone.IsWalkable(fx, fy)}, script {zone.TileScripts.GetValueOrDefault((fx, fy))}");
+            }
+        if (Wants("h3k2"))
+        {
+            At("MauvilleCity_GameCorner", 4, 9, Direction.Up);
+            party.Add(new Pokemon(PokemonDatabase.Get("Shroomish")!, 20));
+            game.Roulette.Open(1, 500, 14, hasShroomish: true, hasTaillow: false, new Random(11));
+            game.State = GameState.RouletteTable;
+            Frames(40);
+            Shot("h3k2_roulette_board");
+            game.Roulette.Press(RouletteKeys.Right);
+            game.Roulette.Frames(8);
+            game.Roulette.Press(RouletteKeys.Confirm);
+            game.Roulette.Frames(4);
+            Frames(30);
+            Shot("h3k3_roulette_wager");
+            for (int i = 0; i < 12 && game.Roulette.IsActive; i++) { game.Roulette.Press(RouletteKeys.Confirm); game.Roulette.Frames(20); }
+            Frames(60);
+            Shot("h3k4_roulette_rolling");
+            game.Roulette.Frames(240);
+            Frames(10);
+            Shot("h3k5_roulette_landed");
+            Console.WriteLine($"h3k*: the wheel's phase {game.Roulette.Wheel?.Phase}, coins {game.Roulette.Wheel?.Coins}");
+            game.State = GameState.Overworld;
+            party.Remove(party.Members[^1]);
+        }
+        if (Wants("h3k6"))
+        {
+            var screen = game.AppealScreen;
+            game.State = GameState.Appeals;
+            foreach (var quality in new[] { ContestStat.Cool, ContestStat.Smart })
+            {
+                screen.Begin(party.Members[0], "Brendan", quality, PokemonPlatinumEngine.Models.Contest.AppealRank.Master, afterTheGame: true, new Random(5));
+                foreach (var a in screen.Round!.Appealers) PokemonPlatinumEngine.Graphics.PokemonSprites.Request(a.Pokemon.ModelName);
+                Frames(60);
+                Shot($"h3k6_contest_stage_{quality.ToString().ToLowerInvariant()}");
+            }
+            game.State = GameState.Overworld;
+        }
+        if (Wants("h3k7"))
+        {
+            game.Story.SetVar("VAR_LILYCOVE_MUSEUM_2F_STATE", 0);
+            At("LilycoveCity_LilycoveMuseum_2F", 11, 7, Direction.Up);
+            game.ArriveOnMap();
+            game.LocationSign.Hide();
+            Frames(60);
+            Shot("h3k7_museum_first_scene");
+            Console.WriteLine($"h3k7: the script {game.ScriptNow ?? "none"}, the museum's state {game.Story.Var("VAR_LILYCOVE_MUSEUM_2F_STATE")}");
+        }
     }
 }

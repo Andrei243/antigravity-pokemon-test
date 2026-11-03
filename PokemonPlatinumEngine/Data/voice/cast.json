@@ -30,6 +30,10 @@
       "note": "first spoken at nimbasa_city_gym.txt(74)",
       "provisional": true
     },
+    "antique_dealer": {
+      "note": "first spoken at join_avenue.txt(258)",
+      "provisional": true
+    },
     "archaeologist": {
       "note": "first spoken at desert_resort_2.txt(9)",
       "provisional": true
@@ -204,6 +208,10 @@
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
       "provisional": true
     },
+    "castellan_aubert": {
+      "note": "first spoken at CamphrierTown_Castle.txt(7)",
+      "provisional": true
+    },
     "catherine": {
       "note": "first spoken at phone.txt(315)",
       "provisional": true
@@ -351,6 +359,10 @@
     },
     "dock": {
       "note": "first spoken at slateport_city_sterns_shipyard_1f.txt(11)",
+      "provisional": true
+    },
+    "dojo_master": {
+      "note": "first spoken at join_avenue.txt(138)",
       "provisional": true
     },
     "dome_owner": {
@@ -506,6 +518,10 @@
     },
     "glass_worker": {
       "note": "first spoken at route_113_glass_workshop.txt(17)",
+      "provisional": true
+    },
+    "kalos_grant": {
+      "note": "first spoken at CyllageCity_Gym.txt(10)",
       "provisional": true
     },
     "grimsley": {
@@ -1046,6 +1062,10 @@
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
       "provisional": true
     },
+    "raffle_clerk": {
+      "note": "first spoken at join_avenue.txt(121)",
+      "provisional": true
+    },
     "ralph": {
       "note": "first spoken at phone.txt(99)",
       "provisional": true
@@ -1259,6 +1279,10 @@
     },
     "studio_hand": {
       "note": "first spoken at virbank_city.txt(72)",
+      "provisional": true
+    },
+    "stylist": {
+      "note": "first spoken at join_avenue.txt(206)",
       "provisional": true
     },
     "sunny": {
@@ -1480,6 +1504,7 @@
     "Alice": "alice",
     "Ampère": "ampere",
     "Announcer": "look:announcer",
+    "Antique Dealer": "antique_dealer",
     "Apprentice": "look:apprentice",
     "Archaeologist": "archaeologist",
     "Archer": "archer",
@@ -1530,6 +1555,7 @@
     "Candice": "candice",
     "Captain": "captain",
     "Captain Stern": "captain_stern",
+    "Castellan Aubert": "castellan_aubert",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
     "Celio": "celio",
@@ -1575,6 +1601,7 @@
     "Dexio": "dexio",
     "Director": "director",
     "Dock": "dock",
+    "Dojo Master": "dojo_master",
     "Dome Owner": "dome_owner",
     "Dragon Tamer": "dragon_tamer",
     "Drake": "drake",
@@ -1775,6 +1802,7 @@
     "Psychic": "psychic",
     "Quinn": "quinn",
     "Quiz Lady": "quiz_lady",
+    "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
@@ -1832,6 +1860,7 @@
     "Steven": "steven",
     "Storyteller": "storyteller",
     "Studio Hand": "studio_hand",
+    "Stylist": "stylist",
     "Sunny": "sunny",
     "Tabitha": "tabitha",
     "Tate": "tate",

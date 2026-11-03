@@ -280,6 +280,13 @@ public static class GbaCover
             ["gTileset_Facility"] = new (int, int, TerrainCover)[]
             {
                 (0x2C3, 0x2C5, TerrainCover.Path), (0x2CB, 0x2CD, TerrainCover.Path),
+                // Plan 21 · part q: the Abandoned Ship's deck, which no other layout of the tileset uses (the Aqua
+                // Hideout's and Stern's shipyard's are other metatiles): its walked planks, and the rails, posts and hull
+                // sides between them, which stood up as grey stone wherever nothing named them (all planks: a fence stands on
+                // lawn, which a ship has none of)
+                (0x2BE, 0x2BF, TerrainCover.Bridge), (0x2CE, 0x2CF, TerrainCover.Bridge), (0x333, 0x333, TerrainCover.Bridge),
+                (0x3CC, 0x3CD, TerrainCover.Bridge),
+                (0x3C8, 0x3CB, TerrainCover.Bridge), (0x35D, 0x35D, TerrainCover.Bridge), (0x3B3, 0x3B3, TerrainCover.Bridge),
             },
             // Plan 21 · H2, part b: Rusturf Tunnel's floor (its walls are the cave's rock wherever nobody walks)
             ["gTileset_RusturfTunnel"] = new (int, int, TerrainCover)[]

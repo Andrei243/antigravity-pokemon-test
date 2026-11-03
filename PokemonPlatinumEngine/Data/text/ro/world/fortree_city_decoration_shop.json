@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -35,8 +35,8 @@
           "I wish they'd send me home the same way. It's a long walk across those bridges."
         ],
         "text": [
-          "",
-          ""
+          "Orice cumperi aici e trimis direct pe PC-ul tău. Minunat!",
+          "Aș vrea să mă trimită și pe mine acasă la fel. E un drum lung peste podurile alea."
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -55,8 +55,8 @@
           "If they sit on the floor of my secret base, they'll get dusty, or catch splinters!"
         ],
         "text": [
-          "",
-          ""
+          "Îmi cumpăr un birou frumos pe care să-mi pun păpușile.",
+          "Dacă stau pe podeaua bazei mele secrete, se umplu de praf sau se aleg cu așchii!"
         ]
       }
     }

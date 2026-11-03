@@ -207,7 +207,10 @@
     { "x": 4, "z": 30, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
     { "x": 5, "z": 30, "width": 9, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 },
     { "x": 3, "z": 31, "width": 1, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": 1.4 },
-    { "x": 4, "z": 31, "width": 10, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 }
+    { "x": 4, "z": 31, "width": 10, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 },
+    { "x": 0, "z": 5, "width": 1, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 5, "width": 1, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 6, "width": 1, "depth": 1, "height": 3.8, "slopeX": 0, "slopeZ": 0 }
   ],
   "props": []
 }

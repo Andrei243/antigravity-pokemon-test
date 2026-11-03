@@ -15,7 +15,7 @@ namespace PokemonPlatinumEngine.Data;
 /// </summary>
 public sealed class MapFile
 {
-    public string Name { get; set; } = string.Empty;
+    [DataRequired] public string Name { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
     public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
@@ -54,11 +54,11 @@ public sealed class MapFile
     /// <summary>True for a room that refuses the start menu's BOXES (plan 12 · Q13): a place where reaching the PC would be wrong (a Battle Frontier challenge's rooms); left out for every other.</summary>
     public bool? NoBoxLink { get; set; }
 
-    public int Width { get; set; }
-    public int Height { get; set; }
+    [DataRequired] public int Width { get; set; }
+    [DataRequired] public int Height { get; set; }
 
     /// <summary>Ground tiles, one string per row, one <see cref="TileCodes"/> character per tile.</summary>
-    public List<string> Ground { get; set; } = new();
+    [DataRequired] public List<string> Ground { get; set; } = new();
 
     /// <summary>Blocked tiles: '#' is solid, '.' is open. Furniture props are already marked here.</summary>
     public List<string> Solid { get; set; } = new();

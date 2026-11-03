@@ -1155,6 +1155,7 @@ internal sealed class MapScene
         bool Jog(int x, int y) => BackWallJog(Map, x, y);
         // (a wall with nothing beyond it to the south is the room's front there: the front wall's kerb)
         bool Low(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 2 && Map.GetGroundTile(x, y) == TileType.Wall && Nothing(x, y + 1) && !Jog(x, y);
+        var shutIn = Map.Partitions != PartitionLook.Wall ? ShutInBetweenPartitions(Map.Width, Map.Height, (x, y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) == TileType.Wall, Floor) : null;
         for (int ty = by; ty < h - 1; ty++)
             for (int tx = lx; tx < w - 1; tx++)
             {
@@ -1170,6 +1171,29 @@ internal sealed class MapScene
                 }
                 // (beside a kerb a wall's side shows, as it does beside the floor)
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty) || Low(tx - 1, ty), e = Floor(tx + 1, ty) || Low(tx + 1, ty);
+                // A room whose inner walls stand for something of their own (plan 20 · J15, part s: the Goldenrod Gym's
+                // hedges, the S.S. Aqua's bulkheads) builds that, low enough to be seen over, never the back wall come forward
+                var partition = Map.PartitionAt(tx, ty);
+                if (partition != PartitionLook.Wall)
+                {
+                    // (a tile with no floor within two tiles is the solid between the room's halls, not a partition: it is the
+                    // room's dark at the floor's level, as beyond a house's plan, so no hall of floor shows where nobody walks)
+                    // (but a run of such tiles shut in by partitions all round, which never reaches the room's edge, is the
+                    // inside of one block of them: built as partitions too, or it showed as a patch of floor among them)
+                    if (!PartitionNearFloor(Floor, tx, ty) && !(shutIn?[tx, ty] ?? false))
+                    {
+                        var dark = kit.Face("partition.beyond", T, T, c => c.Rect(0, 0, T, T, new Color(30, 26, 38, 255)));
+                        kit.Origin = Vector3.Zero;
+                        kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, 1, dark);
+                        continue;
+                    }
+                    kit.Origin = new Vector3(0f, Map.HasRelief ? InnerWallFoot(tx, ty) : 0f, 0f);
+                    // (a run of one look reads as one piece: beside a patch of another look the side shows)
+                    bool Other(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1
+                        && Map.GetGroundTile(x, y) == TileType.Wall && Map.PartitionAt(x, y) != partition;
+                    PartitionArt.Build(kit, partition, tx, ty, n || Other(tx, ty - 1), s || Other(tx, ty + 1), wst || Other(tx - 1, ty), e || Other(tx + 1, ty));
+                    continue;
+                }
                 if (Jog(tx, ty))
                 {
                     jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
@@ -1288,6 +1312,48 @@ internal sealed class MapScene
     }
 
     /// <summary>The drawn height an inner wall stands at: the highest of the floor round it.</summary>
+    /// <summary>Whether an inner wall of a room of partitions has floor within two tiles of it: a partition, not the solid between halls.</summary>
+    internal static bool PartitionNearFloor(Func<int, int, bool> floor, int tx, int ty)
+    {
+        for (int dy = -2; dy <= 2; dy++)
+            for (int dx = -2; dx <= 2; dx++)
+                if (floor(tx + dx, ty + dy)) return true;
+        return false;
+    }
+
+    /// <summary>
+    /// The inner walls of a room of partitions that have no floor within two tiles but are shut in by partitions all
+    /// round (plan 21 · part r: the S.S. Tidal's corridor's middle and the walls between its cabins): each run of such
+    /// tiles that never reaches the edge of the room's walls is the inside of one block of partitions, and is built as
+    /// one. Runs that do reach it are the solid between the room's halls, left dark. No GPU calls.
+    /// </summary>
+    internal static bool[,] ShutInBetweenPartitions(int width, int height, Func<int, int, bool> wall, Func<int, int, bool> floor)
+    {
+        var shut = new bool[width, height];
+        var seen = new bool[width, height];
+        var run = new List<(int X, int Y)>();
+        bool Far(int x, int y) => x >= 0 && y >= 0 && x < width && y < height && wall(x, y) && !PartitionNearFloor(floor, x, y);
+        for (int y = 0; y < height; y++)
+            for (int x = 0; x < width; x++)
+            {
+                if (seen[x, y] || !Far(x, y)) continue;
+                run.Clear();
+                run.Add((x, y));
+                seen[x, y] = true;
+                bool edge = false;
+                for (int i = 0; i < run.Count; i++)
+                    foreach (var (nx, ny) in new[] { (run[i].X + 1, run[i].Y), (run[i].X - 1, run[i].Y), (run[i].X, run[i].Y + 1), (run[i].X, run[i].Y - 1) })
+                    {
+                        // Beyond the room's walls is the edge: a run that touches it is no block's inside
+                        if (nx < 0 || ny < 0 || nx >= width || ny >= height || !wall(nx, ny) && !floor(nx, ny)) { edge = true; continue; }
+                        if (Far(nx, ny) && !seen[nx, ny]) { seen[nx, ny] = true; run.Add((nx, ny)); }
+                    }
+                if (edge) continue;
+                foreach (var (rx, ry) in run) shut[rx, ry] = true;
+            }
+        return shut;
+    }
+
     private float InnerWallFoot(int tx, int ty)
     {
         float foot = 0f;

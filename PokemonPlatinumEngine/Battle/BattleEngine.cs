@@ -203,6 +203,7 @@ public partial class BattleEngine
 
     private readonly PcBoxes? pcBoxStorage;
     private readonly string? place;
+    private readonly Models.MarkMoment? encounter;
     private readonly List<Pokemon> leveledUpPokemon = new();
 
     // What is still to be shown: lines that wait to be read, and things that happen between them
@@ -276,6 +277,7 @@ public partial class BattleEngine
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
         place = setup.Place;
+        encounter = setup.Encounter;
         Trainers = setup.Trainers;
 
         Kind = setup.Kind;
@@ -1137,6 +1139,13 @@ public partial class BattleEngine
                 mine.Ball = caught.Ball;
                 // Where, when and at what level it was met (Pokemon_SetCatchData)
                 mine.Met(place, GameClock.Today);
+                // ...and the mark the moment gave it, if any (plan 10 · F9), read from its personality alone
+                // (on the rules' copy too, which the screen's takes everything over from as a menu is published)
+                if (encounter is { } moment && !Watching)
+                {
+                    Models.EncounterMarks.Give(mine, moment);
+                    if (caught.Pokemon != mine) Models.EncounterMarks.Give(caught.Pokemon, moment);
+                }
                 // A Pokémon caught in Pal Park stays the Catching Show's until the show is over (plan 06 · R16b)
                 if (Kind == BattleKind.PalPark) break;
                 // ...and one caught in the Bug-Catching Contest the contest's, until it is judged (plan 15 · E5)

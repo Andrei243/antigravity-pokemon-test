@@ -68,6 +68,7 @@ public sealed class GameContent
         content.ReadScripts();
         content.ReadRooms();
         content.ReadWorlds();
+        content.ReadSoundMap();
         return content;
     }
 
@@ -103,6 +104,7 @@ public sealed class GameContent
             try
             {
                 source = GameDataFiles.Deserialize<MapFile>(text);
+                Strictly<MapFile>(text, file, name);
                 if (source.Name != name)
                     unreadable.Add(new Finding(Kind.Unreadable, file, name, $"the file names its map '{source.Name}': the game stops on a map file that isn't called after its map"));
                 map = source.ToMap();
@@ -128,7 +130,11 @@ public sealed class GameContent
             World world;
             try
             {
-                world = World.Open(dir, GameDataFiles.Deserialize<WorldIndexFile>(File.ReadAllText(indexPath)));
+                string indexText = File.ReadAllText(indexPath);
+                // Built with the overlays read leniently, so a mistyped key is told of as itself (JsonShape) and the
+                // rest of the checks still have the region's maps; the game reads them strictly and would stop
+                world = World.Open(dir, GameDataFiles.Deserialize<WorldIndexFile>(indexText), strictOverlays: false);
+                Strictly<WorldIndexFile>(indexText, Relative(indexPath), World.IndexFile);
             }
             catch (JsonException e)
             {
@@ -146,6 +152,7 @@ public sealed class GameContent
                 try
                 {
                     overlay = GameDataFiles.Deserialize<WorldOverlayFile>(text);
+                    Strictly<WorldOverlayFile>(text, Relative(path), key);
                 }
                 catch (JsonException e)
                 {
@@ -170,6 +177,33 @@ public sealed class GameContent
                 }
             }
             regions.Add(new Region(folder, world, overlays, built));
+        }
+    }
+
+    private void ReadSoundMap()
+    {
+        string path = Path.Combine(Root, SoundMap.FileName);
+        if (File.Exists(path)) Strictly<SoundMapFile>(File.ReadAllText(path), Relative(path), "sound map");
+    }
+
+    /// <summary>
+    /// A hand-written file read as the game reads it, strictly (plan 24 · X4, <see cref="GameDataFiles.Strict"/>): a
+    /// value of the wrong type or a required field missing stops the game, and is told of here with its JSON path. A
+    /// key no field has stops it too, but is told of by <see cref="JsonShape"/>, which also names the field meant.
+    /// </summary>
+    private void Strictly<T>(string text, string file, string name)
+    {
+        try
+        {
+            GameDataFiles.ReadStrict<T>(text, file);
+        }
+        catch (InvalidDataException e) when (e.InnerException is JsonException json && !GameDataFiles.IsUnknownKey(json))
+        {
+            unreadable.Add(new Finding(Kind.Unreadable, file, name, "the game stops on it: " + e.Message[(file.Length + 2)..]));
+        }
+        catch (InvalidDataException)
+        {
+            // An unknown key: JsonShape's finding
         }
     }
 }

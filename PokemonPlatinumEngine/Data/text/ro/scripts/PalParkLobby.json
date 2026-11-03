@@ -379,7 +379,7 @@
         "Kanto Attendant"
       ],
       "text": [
-        ""
+        "Însoțitor Kanto"
       ]
     },
     {
@@ -387,7 +387,7 @@
         "I look after the way between Pal Park and its gate in Fuchsia City, in Kanto."
       ],
       "text": [
-        ""
+        "Eu mă ocup de drumul dintre Pal Park și poarta lui din Fuchsia City, în Kanto."
       ]
     },
     {
@@ -395,7 +395,7 @@
         "Shall I take you back to Fuchsia City?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi în Fuchsia City?"
       ]
     },
     {
@@ -403,7 +403,7 @@
         "Right this way, please. Mind the step!"
       ],
       "text": [
-        ""
+        "Pe aici, te rog. Ai grijă la treaptă!"
       ]
     },
     {
@@ -411,7 +411,7 @@
         "{player} was shown back along the long way to Fuchsia City..."
       ],
       "text": [
-        ""
+        "{player} a fost condus înapoi pe drumul lung spre Fuchsia City..."
       ]
     },
     {
@@ -419,7 +419,7 @@
         "Take your time. I'll be here whenever you'd like to go back."
       ],
       "text": [
-        ""
+        "Nu te grăbi. Voi fi aici oricând vrei să te întorci."
       ]
     }
   ]

@@ -1,0 +1,32 @@
+# Route 7, the Riverbank Walk (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): a Snorlax
+# sleeps in the gap between the rocks on the lane south of Camphrier Town. Only the palace's flute (kalos_route_6.txt)
+# wakes it; woken, it is cross and battles (level 15), and once the battle is over, won, caught or run from, it is gone
+# from the lane (FLAG_KALOS_HIDE_SNORLAX_ROUTE_7). VAR_KALOS_STORY is vaniville_town.txt's count: the flute's 15
+# becomes 16 here.
+
+
+script Snorlax
+  speaker none
+  if item "Poké Flute" goto Flute
+  text "A huge Pokémon lies asleep across the lane, snoring like distant thunder."
+  end
+label Flute
+  ask "A huge Pokémon lies asleep across the lane. Play the palace's flute?"
+  if no end
+  scene "Snorlax on Route 7"
+  text "{player} played the palace's flute."
+  wait 2
+  cry "Snorlax"
+  text "Snorlax woke up! It doesn't look pleased about it..."
+  wildbattle "Snorlax" 15
+  setflag FLAG_KALOS_HIDE_SNORLAX_ROUTE_7
+  hide self
+  if result == 2 text "Snorlax lumbered off to find a quieter place to sleep."
+  if result == 1 text "Snorlax yawned, and wandered off down the riverbank."
+  if var VAR_KALOS_STORY >= 16 goto Done
+  setvar VAR_KALOS_STORY 16
+  objective kalosCyllage
+label Done
+  endscene
+  end

@@ -14500,6 +14500,19 @@
     "cantBeTossed": true
   },
   {
+    "id": 9530,
+    "name": "DexNav",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A device that tells what lives nearby and finds Pokémon hiding in tall grass. Switch it on to search.",
+    "cantBeTossed": true,
+    "fieldUse": "DexNav"
+  },
+  {
     "id": 9571,
     "name": "Liberty Pass",
     "pocket": "KeyItems",

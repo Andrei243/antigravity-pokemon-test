@@ -5,6 +5,7 @@
     "coins": "FISE",
     "balls": "BILE RĂMASE",
     "wager": "O BILĂ: {coins} FISE",
+    "wagerOne": "O BILĂ: 1 FISĂ",
     "odds": "PLĂTEȘTE x{odds}",
     "place": "Alege o culoare, un Pokémon sau un pătrat și pune-ți miza!",
     "hit": "Bila a căzut în {square}. Ai nimerit!",
@@ -370,6 +371,26 @@
         "fourWays": "Te miști mereu în patru direcții, câte un pas pe cărări, orice ar permite regiunea."
       }
     },
+    "voices": {
+      "label": "Voci",
+      "value": { "Off": "OPRITE", "Story": "DOAR POVESTEA", "All": "TOATE" },
+      "help": {
+        "Off": "Replicile nu sunt rostite de nimeni: textul apare singur, ca în original.",
+        "Story": "Personajele cu nume ale poveștii își rostesc replicile cu voce tare; ale celorlalți apar doar ca text.",
+        "All": "Toți cei care au o voce își rostesc replicile cu voce tare. Replicile fără voce apar ca text."
+      }
+    },
+    "voiceVolume": {
+      "label": "Volumul vocilor",
+      "help": "Cât de tare vorbesc vocile personajelor. Muzica și sunetele din jur se coboară puțin cât vorbește cineva."
+    },
+    "letVoicesFinish": {
+      "label": "Lasă vocile să termine",
+      "help": {
+        "off": "A pe o replică terminată trece mai departe pe loc și oprește vocea.",
+        "on": "A pe o replică terminată așteaptă până termină vocea de vorbit."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {
@@ -451,6 +472,22 @@
         "HallOfFame": "Un colț arată timpul jocului; splits.json de lângă salvare cronometrează doar Sala Faimei.",
         "Badges": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă și la Sala Faimei.",
         "Story": "Un colț arată timpul jocului; timpi parțiali la fiecare Insignă, fiecare comandant Galactic și Sala Faimei."
+      }
+    },
+    "streamFeed": {
+      "label": "Flux pentru stream",
+      "value": { "Off": "Oprit", "File": "Un fișier", "FileAndSplits": "Fișier + LiveSplit" },
+      "help": {
+        "Off": "Nu se scrie nimic pentru stream.",
+        "File": "Jocul este scris în stream/state.json de lângă salvare pe măsură ce se schimbă, pentru o sursă browser OBS (stream/overlay.html). Nu se trimite nimic nicăieri.",
+        "FileAndSplits": "Ca un fișier, iar stream/livesplit.lss, un fișier de timpi LiveSplit, e ținut la zi pe măsură ce se iau timpii."
+      }
+    },
+    "streamSafe": {
+      "label": "Sigur pentru stream",
+      "help": {
+        "off": "ID-urile antrenorilor și numele dosarului tău se văd ca atare.",
+        "on": "ID-urile antrenorilor sunt ascunse, iar numele dosarului tău este scos din căile din jurnal."
       }
     },
     "captions": {
@@ -578,7 +615,8 @@
         "heading": "Slotul {slot} a fost jucat cu pachete",
         "body": "Nefolosite acum: {packs}. Jocul merge mai departe fără ce au schimbat ele; pornește-le din OPȚIUNI, PACHETE.",
         "gone": "{name} {version}",
-        "other": "{name} {version} (acum {now})"
+        "other": "{name} {version} (acum {now})",
+        "region": "Jocul a fost salvat în {region}, regiunea pe care o adaugă {pack}: fără ea, se trezește acolo unde a început."
       },
       "crash": {
         "heading": "Jocul s-a oprit pe neașteptate",
@@ -707,6 +745,7 @@
       "NoRunning": "Fără fugă",
       "SetStyle": "Doar lupte Fixe",
       "NoLaterMechanics": "Fără mecanici noi",
+      "Remix": "Remix",
       "ShinyOdds": "Șansa de shiny",
       "RandomSpecies": "Pokémoni amestecați",
       "RandomItems": "Obiecte amestecate",
@@ -733,6 +772,7 @@
       "NoRunning": "Nu poți fugi din luptele cu Pokémoni sălbatici.",
       "SetStyle": "Stilul de luptă este Fix, iar schimbarea nu e oferită niciodată.",
       "NoLaterMechanics": "Nimeni nu poate face Mega Evoluție, Mișcare Z, Dynamax sau Terastalizare: nici tu, nici antrenorii pe care îi întâlnești.",
+      "Remix": "O a doua versiune a regiunii Sinnoh, scrisă pentru acest joc: antrenorii importanți au echipe noi și Pokémonii sălbatici se schimbă, așa că poți prinde mult mai multe specii înainte de Ligă. Regulile și povestea rămân aceleași.",
       "ShinyOdds": "Cât de des e un Pokémon shiny. „După reguli” este șansa obișnuită a jocului.",
       "RandomSpecies": "Pokémonii sălbatici, echipele antrenorilor, darurile, legendele și partenerul tău sunt alte specii, aceleași de fiecare dată pentru o sămânță. Evoluțiile rămân în liniile lor.",
       "RandomItems": "Obiectele de pe jos și cele primite sunt alte obiecte. Obiectele cheie, HM-urile și tot ce cere povestea nu se schimbă niciodată.",
@@ -1128,7 +1168,12 @@
     "kalosRoute4": "Ia Drumul 4 spre nord, prin grădină, până în Lumiose City.",
     "kalosLab": "Găsește laboratorul profesorului Sycamore, în susul bulevardului de la poarta de sud a orașului Lumiose.",
     "kalosLysandre": "Întâlnește-l pe profesor la cafeneaua din nordul orașului Lumiose, dincolo de turn.",
-    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
+    "kalosRoute5": "Ieși din orașul Lumiose pe poarta de vest și urmează Drumul 5 spre orășelul Camphrier.",
+    "kalosCamphrier": "Mergi mai departe pe Drumul 5 până în orășelul Camphrier.",
+    "kalosPalace": "Urcă spre nord pe Drumul 6 și cere la poarta palatului flautul acestuia.",
+    "kalosSnorlax": "Trezește-l cu flautul palatului pe Snorlax-ul adormit pe Drumul 7, la sud de Camphrier.",
+    "kalosCyllage": "Urmează Drumul 7 până la coastă și Drumul 8 spre nord, până în orașul Cyllage.",
+    "kalosGrant": "Urcă la Sala din vârful orașului Cyllage și câștigă de la Grant Insigna Stâncii.",    "kalosFree": "Până aici merge drumul deocamdată. Kalos îți stă deschis."
   },
 
   "close": {
@@ -1155,6 +1200,22 @@
       "4": "{name} te privește cu drag. Te-ar urma oriunde!"
     },
     "found": "{name} ține ceva în gură. Vrea să ți-l dea!"
+  },
+
+  "marks": {
+    "name": "Semnul: {word}",
+    "titled": "{pokemon} cel {word}",
+    "word": {
+      "rare": "Rar", "rowdy": "Gălăgios", "absentMinded": "Visător", "jittery": "Agitat", "excited": "Nerăbdător",
+      "charismatic": "Strălucitor", "calmness": "Calm", "intense": "Intens", "zonedOut": "Absent", "joyful": "Vesel",
+      "angry": "Supărat", "smiley": "Zâmbitor", "teary": "Lăcrimos", "upbeat": "Luminos", "peeved": "Morocănos",
+      "intellectual": "Gânditor", "ferocious": "Sălbatic", "crafty": "Viclean", "scowling": "Încruntat", "kindly": "Blând",
+      "flustered": "Fâstâcit", "pumpedUp": "Înflăcărat", "zeroEnergy": "Obosit", "prideful": "Mândru", "unsure": "Nesigur",
+      "humble": "Modest", "thorny": "Țepos", "vigor": "Viguros", "slump": "Abătut",
+      "lunchtime": "Flămând", "sleepyTime": "Somnoros", "dusk": "Crepuscular", "dawn": "Matinal",
+      "cloudy": "Înnorat", "rainy": "Plouat", "stormy": "Tunător", "snowy": "Înzăpezit", "blizzard": "Înghețat",
+      "dry": "Pârjolit", "sandstorm": "Nisipos", "misty": "Încețoșat", "fishing": "Pescuit", "alpha": "Puternic"
+    }
   },
 
   "dexText": {
@@ -2574,6 +2635,7 @@
     "nobody": "Doar tu, zâmbind",
     "taken": "{day} {month} {year}",
     "removeAsk": "Arunci fotografia aceasta?",
+    "region": { "johto": "JOHTO", "kanto": "KANTO" },
     "hint": { "throwAway": "Aruncă", "remove": "Arunc-o", "keep": "Păstreaz-o" }
   },
   "apricorn": {
@@ -2837,6 +2899,11 @@
       "notInGrass": "Poké Radarul poate fi folosit doar stând în iarba înaltă.",
       "dry": "Bateria s-a descărcat! Încă {steps} pași ca să se încarce.",
       "quiet": "Iarba din jur a rămas liniștită..."
+    },
+    "dexNav": {
+      "on": "DexNav-ul a fost pornit. Va asculta după Pokémoni ascunși în iarbă.",
+      "off": "DexNav-ul a fost oprit.",
+      "scared": "Pokémonul ascuns în iarbă a fugit!"
     },
     "noMapHere": "Nu există o hartă a acestui loc.",
     "noWater": "Nu e apă aici în care să pescuiești.",
@@ -3375,6 +3442,9 @@
     "restoredALittleHpUsing": "{pokemon} și-a refăcut puțin HP cu {item}!",
     "lostSomeOfIts": "{pokemon} și-a pierdut o parte din HP!",
     "hungOnUsingIts": "{pokemon} a rezistat cu ajutorul obiectului {item}!",
+    "affectionHeldOn": "{pokemon} a rezistat, ca să nu te dezamăgească!",
+    "affectionShookOff": "{pokemon} a scăpat de {condition} de dragul tău!",
+    "affectionDodged": "{pokemon} s-a ferit, dornic să te impresioneze!",
     "ateIts": "{pokemon} a mâncat {item}!",
     "usedItsToGet": "{pokemon} a folosit {item} și s-a încărcat de energie!",
     "usedItsItem": "{pokemon} a folosit obiectul {item}!",
@@ -3852,6 +3922,10 @@
       "blurb": "Așa vei fi de-a lungul întregii aventuri.",
       "yes": "DA",
       "goBack": "NU, ÎNAPOI"
+    },
+    "outfit": {
+      "question": "Și cu ce haine pornești la drum? Alege ce ți se potrivește.",
+      "own": "Hainele tale"
     },
     "sevenLetters": "Cel mult șapte litere. Lasă gol ca să te numești {name}.",
     "key": {
@@ -5457,6 +5531,69 @@
       }
     }
   },
+  "friends": {
+    "title": "Antrenori prieteni",
+    "hint": { "do": "Fă" },
+    "row": { "ready": "GATA", "refused": "REFUZAT", "readCode": "CITEȘTE UN COD", "pasteTeam": "LIPEȘTE O ECHIPĂ", "send": "Trimite {name}" },
+    "refused": "REFUZAT",
+    "pastedName": "Lipită {n}",
+    "fightBlurb": "Ambele echipe sunt refăcute și aduse la nivelul {level}. Nu se câștigă, nu se plătește și nu se păstrează nimic; antrenorul gândește cu toate rutinele antrenorilor jocului.",
+    "blurb": {
+      "readCode": "Citește un cod din clipboard. Unul bun e păstrat ca fișier de antrenor în dosarul trainers și apare în listă; unul prost e refuzat, cu motivul.",
+      "pasteTeam": "Citește din clipboard o echipă în formatul text Pokémon Showdown și o păstrează printre echipele tale, dacă fiecare Pokémon din ea poate lupta aici.",
+      "send": "Scrie această echipă ca fișier de antrenor în dosarul trainers și pune codul ei în clipboard, ca să-l lipești oriunde."
+    },
+    "code": "COD",
+    "notice": {
+      "refused": "Fișierul acesta nu poate fi folosit.",
+      "read": "{value} e în listă.",
+      "pasted": "O echipă de {value} a fost adăugată la echipele tale.",
+      "sent": "{value} a fost scrisă în dosarul trainers și codul ei a fost copiat.",
+      "cantWrite": "Fișierul nu a putut fi scris.",
+      "full": "Păstrezi deja {value} echipe."
+    },
+    "line": {
+      "0": "Să avem o luptă bună!",
+      "1": "A fost distractiv. Mulțumesc!",
+      "2": "M-am antrenat pentru asta.",
+      "3": "Nu-mi vei învinge echipa atât de ușor.",
+      "4": "Sper că ai adus ce ai mai bun.",
+      "5": "Joc bun!",
+      "6": "Data viitoare te bat.",
+      "7": "Echipa mea e mândria mea.",
+      "8": "Sunt gata când ești și tu.",
+      "9": "Ce luptă strânsă!",
+      "10": "Nu te abține.",
+      "11": "Am învățat multe din asta."
+    }
+  },
+  "paste": {
+    "empty": "Nu e nimic de citit.",
+    "tooLong": "Este prea lung pentru o echipă.",
+    "tooMany": "Linia {value}: o echipă are cel mult șase Pokémon.",
+    "unknownMove": "Linia {value}: jocul nu cunoaște acest atac.",
+    "unknownNature": "Linia {value}: jocul nu are această fire.",
+    "unknownAbility": "Linia {value}: jocul nu cunoaște această abilitate.",
+    "badLevel": "Linia {value}: nivelul trebuie să fie între 1 și 100.",
+    "badSpread": "Linia {value}: numerele acestea nu pot fi citite.",
+    "unknownLine": "Linia {value}: linia aceasta nu poate fi citită.",
+    "unknownSpecies": "Linia {value}: jocul nu are niciun Pokémon cu acest nume.",
+    "unknownItem": "Linia {value}: jocul nu cunoaște acest obiect."
+  },
+  "trainerFile": {
+    "refused": {
+      "empty": "Nu e nimic de citit.",
+      "tooBig": "Este prea mare pentru un fișier de antrenor.",
+      "shape": "Acesta nu este un fișier de antrenor.",
+      "checksum": "Fișierul a fost schimbat după ce a fost făcut.",
+      "name": "Numele antrenorului nu poate fi folosit.",
+      "class": "Clasa antrenorului nu există în joc.",
+      "line": "Una dintre replicile antrenorului nu există în joc.",
+      "version": "Antrenorul acesta a fost făcut pentru alte date ale jocului. Roagă-ți prietenul să-l trimită din nou din această versiune.",
+      "paste": "Echipa din el nu poate fi citită (linia {value}).",
+      "code": "Acesta nu este un cod de antrenor."
+    }
+  },
   "battleRoom": {
     "title": "Sala de luptă",
     "menu": {
@@ -5464,6 +5601,7 @@
       "gauntlet": "ÎNCERCAREA",
       "streak": "ȘIRUL",
       "puzzles": "ENIGME",
+      "friends": "ANTRENORI PRIETENI",
       "teamsCount": "{n} păstrate",
       "gauntletBest": "Record {n}/{of}",
       "streakBest": "Record {n}",
@@ -5473,12 +5611,14 @@
       "teams": "Construiește echipe de la zero: orice specie, cu nivelul, firea, abilitatea, obiectul și patru atacuri pe care le poate ști. Echipele sunt păstrate pe acest calculator, separat de orice salvare.",
       "gauntlet": "Du o echipă împotriva celor opt lideri de sală din Sinnoh, a Celor Patru și a Campioanei, unul după altul, fiecare cu echipa și nivelurile din poveste. Echipa ta e refăcută înaintea fiecărei lupte.",
       "streak": "Luptă cu antrenorii Frontierei de Luptă unul după altul, la nivelul 50, cât timp echipa ta continuă să câștige. La fiecare șapte lupte devin mai puternici.",
-      "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge."
+      "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge.",
+      "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel."
     },
     "clears": "Terminată de {n} ori",
     "pick": {
       "gauntlet": "Ce echipă înfruntă încercarea?",
       "streak": "Ce echipă începe un șir?",
+      "friend": "Ce echipă înfruntă acest antrenor?",
       "speciesTitle": "Alege o specie",
       "itemTitle": "Alege un obiect de ținut",
       "moveTitle": "Alege un atac"
@@ -5609,5 +5749,92 @@
       "title": "Cântec de leagăn",
       "hint": "Un singur Poké Ball și un Dratini cu viața plină. Fă aruncarea să conteze în două ture."
     }
+  },
+  "joinAvenue": {
+    "visitor": {
+      "0": {
+        "name": "Saskia",
+        "greeting": "Am venit tocmai din Golful Undella ca să văd strada asta. E tot mai vie de fiecare dată!"
+      },
+      "1": {
+        "name": "Ronan",
+        "greeting": "Herdier-ul meu simte cafeneaua de la trei străzi distanță. Mereu ne oprim întâi aici."
+      },
+      "2": {
+        "name": "Mirela",
+        "greeting": "O prietenă mi-a zis că administratorul de aici e un Antrenor adevărat. Tu ești? Încântată!"
+      },
+      "3": {
+        "name": "Theo",
+        "greeting": "Strâng bani pentru dojo. Timburr-ul meu zice că e gata, dar eu nu sunt prea sigur de mine!"
+      },
+      "4": {
+        "name": "Ines",
+        "greeting": "Trec pe aici în drum spre Stația Gear. Întâi cumpărături, apoi lupte. Asta e regula!"
+      },
+      "5": {
+        "name": "Bartek",
+        "greeting": "Când eram tânăr, strada asta era numai vitrine goale. Ia uite-o acum!"
+      },
+      "6": {
+        "name": "Cosima",
+        "greeting": "Trag la tombolă în fiecare zi. Într-o zi o să iasă premiul cel mare, simt asta."
+      },
+      "7": {
+        "name": "Jonah",
+        "greeting": "Sunt curier. Duc colete din Castelia în Nimbasa, iar Join Avenue e pauza mea."
+      },
+      "8": {
+        "name": "Lumi",
+        "greeting": "Minccino-ul meu adoră salonul. Iese atât de pufos că abia mai vede!"
+      },
+      "9": {
+        "name": "Ezra",
+        "greeting": "Ai încercat anticariatul? Am găsit acolo o fosilă mai veche decât poveștile bunicului meu."
+      },
+      "10": {
+        "name": "Paloma",
+        "greeting": "Scriu un ghid al regiunii Unova. Join Avenue primește o pagină întreagă, datorită ție!"
+      },
+      "11": {
+        "name": "Konstantin",
+        "greeting": "Am pierdut de două ori în al șaptelea vagon al Metroului. O băutură rece aici mai alină durerea."
+      },
+      "12": {
+        "name": "Nell",
+        "greeting": "Am venit pentru creșă. Oul meu s-a tot clătinat toată săptămâna!"
+      },
+      "13": {
+        "name": "Aurel",
+        "greeting": "Sunt muzician stradal. Ecoul de sub acoperișul ăsta e cel mai bun din oraș."
+      },
+      "14": {
+        "name": "Yara",
+        "greeting": "Am auzit că rangul lui Join Avenue crește cu fiecare vizitator. Așa că iată-mă, îmi fac partea!"
+      },
+      "15": {
+        "name": "Dov",
+        "greeting": "Tocmai m-am mutat în Nimbasa. Toată lumea mi-a zis să vin întâi aici, și acum văd de ce."
+      }
+    }
+  },
+  "linkRoom": {
+    "fault": {
+      "teamSize": "O echipă de {count} nu poate fi adusă.",
+      "tooFew": "Camera alege {count}: adu pe atâția.",
+      "egg": "Un Ou nu poate lupta.",
+      "unknown": "{species} nu este cunoscut în acest joc.",
+      "notInRules": "{species} nu este în regulile camerei.",
+      "speciesClause": "Doi din aceeași specie (clauza de specie).",
+      "itemClause": "Doi care țin același obiect (clauza de obiect).",
+      "pickCount": "Alege {count} care să intre.",
+      "pickEach": "Alege fiecare membru al echipei cel mult o dată."
+    },
+    "refused": {
+      "notAsked": "Nu ți se cere nimic.",
+      "stale": "Aceasta răspunde la o întrebare care nu mai e pusă.",
+      "places": "Se așteaptă câte o alegere pentru fiecare dintre locurile tale."
+    },
+    "waiting": "Se așteaptă {player}…"
   }
 }

@@ -56,6 +56,10 @@ public partial class GameEngine
         public Journal Journal { get => game.flow.Journal; set => game.flow.Journal = value; }
         public Wardrobe Wardrobe => game.flow.Wardrobe;
         public Poketch Poketch => game.flow.Poketch;
+        /// <summary>Cameron's photo album, and the album opened as his father opens it (plan 20, part u).</summary>
+        public PhotoAlbum Photos => game.flow.Photos;
+        public PhotoAlbumScreen PhotoAlbumScreen => game.flow.PhotoAlbumScreen;
+        public void OpenPhotoAlbum() => game.OpenPhotoAlbum();
         /// <summary>The Great Marsh's Safari Game (plan 01 · M7; its catches, plan 01 · M11, part b).</summary>
         public SafariGame Safari => game.flow.Safari;
         /// <summary>The National Park's Bug-Catching Contest, and its board of results (plan 15 · E5).</summary>

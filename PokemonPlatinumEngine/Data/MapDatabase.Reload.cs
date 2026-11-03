@@ -27,7 +27,7 @@ public static partial class MapDatabase
                 foreach (string path in only)
                 {
                     // (GameDataFiles reads a full path as it is)
-                    var file = GameDataFiles.Load<MapFile>(path);
+                    var file = GameDataFiles.Load<MapFile>(path, strict: true);
                     string expected = Path.GetFileNameWithoutExtension(path);
                     if (file.Name != expected)
                         throw new InvalidDataException($"Map file {path} names its map '{file.Name}'; the file must be called {file.Name}.json.");

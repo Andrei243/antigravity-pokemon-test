@@ -321,6 +321,14 @@ public sealed class Ruleset
     /// </summary>
     public bool Rotations { get; private init; }
 
+    /// <summary>
+    /// Affection's perks in battle (plan 10 · F7, <see cref="Models.Affection"/>): a Pokémon of the player's at
+    /// friendship 220 or more gains a fifth more EXP, may hold on at 1 HP or shake off a status, and at 255 may dodge a
+    /// move and lands critical hits a stage more often. Platinum has no affection, so under its rules nothing of it is
+    /// asked and <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool AffectionPerks { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -386,7 +394,8 @@ public sealed class Ruleset
         BackStrikes = true,
         Triples = true,
         Rotations = true,
-        MegaDynamax = true
+        MegaDynamax = true,
+        AffectionPerks = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

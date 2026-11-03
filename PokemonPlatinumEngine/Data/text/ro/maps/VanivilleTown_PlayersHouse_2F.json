@@ -1,0 +1,45 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "1,4": {
+      "en": [
+        "A note is stuck to the computer in Mom's writing: \"Unpack your boxes before you go exploring!\""
+      ],
+      "text": [
+        "E lipit un bilet pe calculator, cu scrisul mamei: „Despachetează-ți cutiile înainte să pleci la explorat!”"
+      ]
+    },
+    "3,4": {
+      "en": [
+        "Books about Kalos: its old castles, its long rivers and the Pokémon that live along them."
+      ],
+      "text": [
+        "Cărți despre Kalos: castelele lui vechi, râurile lungi și Pokémonii care trăiesc pe malurile lor."
+      ]
+    },
+    "5,4": {
+      "en": [
+        "It's your wardrobe. Most of your clothes are still in the moving boxes."
+      ],
+      "text": [
+        "E garderoba ta. Cele mai multe haine sunt încă în cutiile de mutare."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "A map of Kalos is pinned up over the desk. Vaniville Town is circled in red."
+      ],
+      "text": [
+        "O hartă a regiunii Kalos e prinsă deasupra biroului. Orașul Vaniville e încercuit cu roșu."
+      ]
+    }
+  }
+}

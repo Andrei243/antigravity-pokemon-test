@@ -230,7 +230,15 @@ public static class Objectives
         (509, "kalosRoute4", AtLeast("VAR_KALOS_STORY", 10), false),
         (510, "kalosLab", AtLeast("VAR_KALOS_STORY", 11), false),
         (511, "kalosLysandre", AtLeast("VAR_KALOS_STORY", 12), false),
-        // What comes after the café is a later session's
+        // Plan 23 · Z2, second part: west to Camphrier Town, the palace's flute, the Snorlax on Route 7, the neighbour in
+        // Cyllage City and Grant's Cliff Badge
+        (512, "kalosRoute5", AtLeast("VAR_KALOS_STORY", 13), false),
+        (513, "kalosCamphrier", AtLeast("VAR_KALOS_STORY", 14), false),
+        (514, "kalosPalace", AtLeast("VAR_KALOS_STORY", 15), false),
+        (515, "kalosSnorlax", AtLeast("VAR_KALOS_STORY", 16), false),
+        (516, "kalosCyllage", AtLeast("VAR_KALOS_STORY", 17), false),
+        (517, "kalosGrant", s => s.Var("VAR_KALOS_STORY") >= 18 || s.HasBadge(RegionDatabase.Kalos, "Cliff"), false),
+        // What comes after the Cliff Badge is a later session's
         (599, "kalosFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

@@ -146,6 +146,7 @@ public sealed partial class ScriptRunner
         ownFromSubject = own == null && subject != null;
         speaker = subject?.Name;
         speakerShown = ShownNameOf(subject);
+        StartVoices();
         waiting = 0f;
         waitingForWalks = false;
         afterBusy = null;
@@ -212,11 +213,17 @@ public sealed partial class ScriptRunner
                 waiting = 0f;
                 if (waitingForWalks) host.Arrive();
                 waitingForWalks = false;
+                waitingForVoice = false;
             }
             if (waitingForWalks)
             {
                 if (host.Walking) return;
                 waitingForWalks = false;
+            }
+            if (waitingForVoice)
+            {
+                if (host.VoiceSpeaking) return;
+                waitingForVoice = false;
             }
             if (waiting > 0f) return;
 
@@ -331,6 +338,8 @@ public sealed partial class ScriptRunner
         Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
+        // A voice is never heard in a hurry, so there is none to wait for (plan 26 · V2)
+        Op.WaitVoice => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker or Op.Photograph => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
@@ -394,7 +403,7 @@ public sealed partial class ScriptRunner
         Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
         // Hoenn's contests: the contest and the blender are the player's to play; the rest only asks and changes (plan 21 · H11)
         Op.Appeals => i.Name is "enter" or "view",
-        Op.Pokeblock => i.Name == "blend",
+        Op.Pokeblock => i.Name is "blend" or "place",
         // The Battle Dome opens screens, asks the Frontier and battles on most of its words, as the facilities do: none is hurried through (plan 14 · B8)
         Op.Bracket => true,
         // So do the Battle Palace and the Battle Arena (plan 14 · B9)
@@ -466,14 +475,29 @@ public sealed partial class ScriptRunner
             case Op.Say:
             case Op.Text:
             {
-                // Lines one after another are one talk: the box doesn't close between them
+                // Lines one after another are one talk: the box doesn't close between them. Each carries its voice
+                // beside it (plan 26 · V2): a script's 'say' is its speaker's, 'text' is the game's own and nobody's
                 var lines = new List<string>(Spoken(i));
-                while (at < script!.Code.Count && script.Code[at].Op == i.Op) lines.AddRange(Spoken(script.Code[at++]));
-                host.Say(i.Op == Op.Say ? speakerShown : null, lines.Select(Fill).ToList());
+                var voices = new List<SpokenLine?>();
+                void Voices(Instruction said)
+                {
+                    for (int k = 0; k < said.Lines.Count; k++) voices.Add(said.Op == Op.Say ? ScriptVoice(said, k) : null);
+                }
+                Voices(i);
+                while (at < script!.Code.Count && script.Code[at].Op == i.Op)
+                {
+                    Voices(script.Code[at]);
+                    lines.AddRange(Spoken(script.Code[at++]));
+                }
+                host.Say(i.Op == Op.Say ? speakerShown : null, lines.Select(Fill).ToList(), voices);
                 break;
             }
             case Op.SayOwn:
-                if (ownLines.Count > 0) host.Say(speakerShown, OwnSpoken().Select(Fill).ToList());
+                if (ownLines.Count > 0) host.Say(speakerShown, OwnSpoken().Select(Fill).ToList(), OwnVoices());
+                break;
+            case Op.WaitVoice:
+                // Waits for the last line's voice to end, for a scene timed to speech; nothing to wait for in a hurry or with no voices
+                waitingForVoice = !Hurrying;
                 break;
             case Op.TrainerLine:
             {
@@ -487,20 +511,21 @@ public sealed partial class ScriptRunner
                 string? title = said.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) || line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal)
                     ? trainer.FullTitle : whose == Subject ? speakerShown : ShownNameOf(whose);
                 if (Result == 1)
-                    host.Say(title, new[] { Fill(said) });
+                    host.Say(title, new[] { Fill(said) }, new[] { PersonVoice(whose, i.Option ? PersonField.After : PersonField.Before, 0, line) });
                 break;
             }
             case Op.Speaker:
                 speaker = i.Option ? Subject?.Name : i.Name.Length > 0 ? i.Name : null;
                 speakerShown = i.Option ? ShownNameOf(Subject) : i.Name.Length > 0 ? Text.Line(script!.FullName, i.TextIndex, 0, i.Words) : null;
+                SpeakerVoice(i);
                 break;
             case Op.Ask:
-                host.Ask(speakerShown, Fill(Spoken(i)[0]), YesNo, cancel: 1);
+                host.Ask(speakerShown, Fill(Spoken(i)[0]), YesNo, cancel: 1, ScriptVoice(i, 0));
                 afterBusy = () => Result = host.Answer == 0 ? 1 : 0;
                 break;
             case Op.Choose:
                 // Backing out of a menu picks its last answer, which is where a script puts its way out
-                host.Ask(speakerShown, Fill(Spoken(i)[0]), Spoken(i).Skip(1).Select(Fill).ToList(), cancel: i.Lines.Count - 2);
+                host.Ask(speakerShown, Fill(Spoken(i)[0]), Spoken(i).Skip(1).Select(Fill).ToList(), cancel: i.Lines.Count - 2, ScriptVoice(i, 0));
                 afterBusy = () => Result = host.Answer;
                 break;
 
@@ -2525,6 +2550,8 @@ public sealed partial class ScriptRunner
             "wall" => lastWinner,
             "wallmon" => lastWinnerMon,
             "taste" => lastTaste,
+            // Hoenn's Safari Zone's feeders (plan 21 · H11, part d): the Pokéblock lying on the one before the player
+            "feeder" => lastFeeder,
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

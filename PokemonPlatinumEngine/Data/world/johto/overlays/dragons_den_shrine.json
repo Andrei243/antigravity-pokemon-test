@@ -6,6 +6,7 @@
   "area": "dragons_den_shrine",
   "bgmTrack": "johto/dragons_den",
   "people": {
+    "d44r0103_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d44r0103_chourou": { "name": "Elder", "npcType": "dragon_elder", "script": "Elder", "still": true },
     "d44r0103_gsleader8": { "name": "Clair", "still": true, "hiddenBy": "FLAG_HIDE_DRAGON_SHRINE_CLAIR", "dialog": [ "..." ] },
     "d44r0103_gsoldman1": {

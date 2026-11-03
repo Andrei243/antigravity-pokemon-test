@@ -35,6 +35,12 @@ public sealed class SafariGame
     /// <summary>A game under way that no step will end: started with <see cref="NoStepLimit"/>, and so read back from a save.</summary>
     public bool Endless => Active && Steps <= 0;
 
+    /// <summary>
+    /// The Pokéblocks set down on the feeders of Hoenn's Safari Zone (plan 21 · H11, part d): emptied as a game begins,
+    /// ends or is read back from a save, and a step nearer gone with each step of the game. Not saved, as Emerald's aren't.
+    /// </summary>
+    public PokeblockFeeders Feeders { get; } = new();
+
     public void Start() => Start(StartSteps);
 
     /// <summary>A game of so many steps: Platinum's five hundred, or another game's own (FireRed's six hundred).</summary>
@@ -44,6 +50,7 @@ public sealed class SafariGame
         Balls = StartBalls;
         Steps = steps;
         Caught = 0;
+        Feeders.Clear();
     }
 
     public void End()
@@ -51,6 +58,7 @@ public sealed class SafariGame
         Active = false;
         Balls = 0;
         Steps = 0;
+        Feeders.Clear();
     }
 
     /// <summary>A game read back from a save.</summary>
@@ -60,12 +68,16 @@ public sealed class SafariGame
         Balls = balls;
         Steps = steps;
         Caught = caught;
+        Feeders.Clear();
     }
 
     /// <summary>One step in the marsh; true when it was the last.</summary>
     public bool Step()
     {
-        if (!Active || Steps <= 0) return false;
+        if (!Active) return false;
+        // Emerald's feeders count down before the game's own steps (SafariZoneTakeStep)
+        Feeders.Step();
+        if (Steps <= 0) return false;
         Steps--;
         return Steps == 0;
     }

@@ -1,4 +1,7 @@
 # Shell scripts keep LF line endings, so a Windows checkout runs them in Git Bash (plan 16 · T16)
 *.sh text eol=lf
+# The online server's deployment files are copied to a Linux server as they are (plan 07 · O7)
+*.service text eol=lf
+docs/online/Caddyfile text eol=lf
 
 *.glb binary

@@ -97,6 +97,10 @@ public partial class GameEngine
 
     // How often the Poké Radar's patches and a honey tree that Pokémon have come to stir, by the field's own clock
     private const double StirEvery = 0.6;
+
+    // Who hides in the grass within this many tiles of the player stirs it, and the list they are gathered in
+    private const int HiddenStirReach = 16;
+    private readonly List<Overworld.NPC> hidden = new();
     private double nextStir;
 
     /// <summary>
@@ -110,10 +114,17 @@ public partial class GameEngine
         world.Stirring.Clear();
         foreach (var patch in flow.Radar.Patches.Where(p => p.Active))
             world.Stirring.Add((patch.X, patch.Y, patch.Shake == PatchShake.Hard));
+        // Someone the map keeps out of sight in tall grass (plan 21 · part q: Faraway Island's Mew, until it is found)
+        // stirs the grass it hides in, as the radar's patches do, so the player has something to walk up to
+        hidden.Clear();
+        flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, HiddenStirReach, hidden);
+        hidden.RemoveAll(n => !n.OutOfSight || !flow.Map.IsTallGrass(n.GridX, n.GridY));
+        foreach (var npc in hidden) world.Stirring.Add((npc.GridX, npc.GridY, false));
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
         foreach (var patch in flow.Radar.Patches.Where(p => p.Active))
             life.Rustle(flow.Map, patch.X, patch.Y, patch.Shake == PatchShake.Hard, patch.Shiny);
+        foreach (var npc in hidden) life.Rustle(flow.Map, npc.GridX, npc.GridY, false, false);
         int px = flow.Player.GridX, py = flow.Player.GridY;
         foreach (var tree in flow.Map.Props)
         {
@@ -180,6 +191,10 @@ public partial class GameEngine
     {
         bool field = flow.FieldEncounter;
         flow.FieldEncounter = flow.Hooked = false;
+        // The DexNav's chain goes on or breaks (plan 10 · F12)
+        DexNavAfterBattle(fought, defeat);
+        // ...and the camp may cure the team once more (plan 10 · F6)
+        flow.CampCare.BattleEnded();
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)

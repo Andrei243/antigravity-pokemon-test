@@ -6,7 +6,7 @@
           "Vincent"
         ],
         "text": [
-          ""
+          "Vincent"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Cooltrainer Vincent: The floor here is slick as glass. Slide too far and you start all over!"
         ],
         "text": [
-          ""
+          "Antrenor As Vincent: Podeaua de aici e lunecoasă ca sticla. Aluneci prea departe și o iei de la capăt!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Cooltrainer Vincent: I slid straight into a loss."
         ],
         "text": [
-          ""
+          "Antrenor As Vincent: Am alunecat direct într-o înfrângere."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Leroy"
         ],
         "text": [
-          ""
+          "Leroy"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Cooltrainer Leroy: The last of the Trick Master's puzzles. Only the best get this far."
         ],
         "text": [
-          ""
+          "Antrenor As Leroy: Ultimul dintre puzzle-urile Maestrului Trucurilor. Doar cei mai buni ajung până aici."
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Cooltrainer Leroy: And you're the best, it seems."
         ],
         "text": [
-          ""
+          "Antrenor As Leroy: Și tu ești cel mai bun, se pare."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Keira"
         ],
         "text": [
-          ""
+          "Keira"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Cooltrainer Keira: I've been skating round this room for an hour. Battle me while I find my feet!"
         ],
         "text": [
-          ""
+          "Antrenor As Keira: Patinez prin camera asta de o oră. Luptă cu mine cât îmi găsesc echilibrul!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Cooltrainer Keira: Still a little wobbly."
         ],
         "text": [
-          ""
+          "Antrenor As Keira: Încă mă clatin puțin."
         ]
       }
     }

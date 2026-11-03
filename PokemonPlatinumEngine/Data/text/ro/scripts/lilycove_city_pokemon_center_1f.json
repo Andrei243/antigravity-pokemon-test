@@ -139,7 +139,7 @@
         "Quiz Lady"
       ],
       "text": [
-        ""
+        "Doamna Quiz"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "I'm the Quiz Lady! I adore quizzes, and anyone who answers mine correctly wins a prize."
       ],
       "text": [
-        ""
+        "Sunt Doamna Quiz! Ador quizurile, iar cine răspunde corect la ale mele câștigă un premiu."
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Will you take on today's quiz?"
       ],
       "text": [
-        ""
+        "Încerci quizul de azi?"
       ]
     },
     {
@@ -166,10 +166,10 @@
         "A Flying type"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pe care dintre ăștia îl lovește de două ori mai tare o mișcare de tip Iarbă?",
+        "Un tip Apă",
+        "Un tip Foc",
+        "Un tip Zburător"
       ]
     },
     {
@@ -180,10 +180,10 @@
         "She trains it"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce face asistenta unui Pokémon Center pentru echipa ta?",
+        "Îi vinde obiecte",
+        "O vindecă",
+        "O antrenează"
       ]
     },
     {
@@ -194,10 +194,10 @@
         "Eight"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Câte Insigne are nevoie un Antrenor ca să intre în Ligă?",
+        "Șase",
+        "Șapte",
+        "Opt"
       ]
     },
     {
@@ -208,10 +208,10 @@
         "Zigzagoon"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care dintre acești Pokémoni poate zbura?",
+        "Wurmple",
+        "Wingull",
+        "Zigzagoon"
       ]
     },
     {
@@ -222,10 +222,10 @@
         "Green"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce culoare de Pokéblock e plin de gust picant?",
+        "Roșu",
+        "Albastru",
+        "Verde"
       ]
     },
     {
@@ -236,10 +236,10 @@
         "Surf"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care mișcare de teren te duce peste apă?",
+        "Cut",
+        "Flash",
+        "Surf"
       ]
     },
     {
@@ -250,10 +250,10 @@
         "A Rawst Berry"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care Berry vindecă un Pokémon de otrăvire?",
+        "Un Cheri Berry",
+        "Un Pecha Berry",
+        "Un Rawst Berry"
       ]
     },
     {
@@ -264,10 +264,10 @@
         "Flying"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce tip nu primește nimic de la mișcările Electrice?",
+        "Pământ",
+        "Apă",
+        "Zburător"
       ]
     },
     {
@@ -278,10 +278,10 @@
         "Torchic"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care dintre acești Pokémoni este de tip Foc?",
+        "Mudkip",
+        "Treecko",
+        "Torchic"
       ]
     },
     {
@@ -292,10 +292,10 @@
         "Electrike"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "În ce se transformă Pikachu cu un Thunder Stone?",
+        "Raichu",
+        "Plusle",
+        "Electrike"
       ]
     },
     {
@@ -306,10 +306,10 @@
         "Eight"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Câți Pokémoni pot merge cu tine în echipă?",
+        "Patru",
+        "Șase",
+        "Opt"
       ]
     },
     {
@@ -320,10 +320,10 @@
         "Its speed"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce face mulțimea unui concurs să aclame cel mai tare?",
+        "Greutatea unui Pokémon",
+        "Apelurile lui",
+        "Viteza lui"
       ]
     },
     {
@@ -334,10 +334,10 @@
         "A Super Rod"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Cu ce uzi un copac cu Berry?",
+        "Un Wailmer Pail",
+        "Un Soot Sack",
+        "Un Super Rod"
       ]
     },
     {
@@ -348,10 +348,10 @@
         "It raises its level"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce face un Rare Candy pentru un Pokémon?",
+        "Îl vindecă",
+        "Îl calmează",
+        "Îi ridică nivelul"
       ]
     },
     {
@@ -362,10 +362,10 @@
         "Spinda"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care dintre acești Pokémoni trăiește în mare?",
+        "Wailmer",
+        "Numel",
+        "Spinda"
       ]
     },
     {
@@ -376,10 +376,10 @@
         "A Soot Sack"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce ține Pokéblock-urile pe care le faci cu Berry Blender?",
+        "Un Coin Case",
+        "Un Pokéblock Case",
+        "Un Soot Sack"
       ]
     },
     {
@@ -387,7 +387,7 @@
         "Oh dear, that's not it! I'm afraid the prize stays with me this time."
       ],
       "text": [
-        ""
+        "Vai, nu e asta! Mă tem că premiul rămâne la mine de data asta."
       ]
     },
     {
@@ -395,7 +395,7 @@
         "That's right! Splendid! You've won my prize. Here you are!"
       ],
       "text": [
-        ""
+        "Corect! Splendid! Ai câștigat premiul meu. Ține!"
       ]
     },
     {
@@ -403,7 +403,7 @@
         "Now I must think up a new quiz. Come back tomorrow and try it!"
       ],
       "text": [
-        ""
+        "Acum trebuie să născocesc un quiz nou. Revino mâine și încearcă-l!"
       ]
     },
     {
@@ -411,7 +411,7 @@
         "Oh, how dull! Do come back if you change your mind."
       ],
       "text": [
-        ""
+        "Oh, ce plictiseală! Revino dacă te răzgândești."
       ]
     },
     {
@@ -419,7 +419,7 @@
         "I'm still thinking up my next quiz. Come back tomorrow!"
       ],
       "text": [
-        ""
+        "Încă mă gândesc la următorul quiz. Revino mâine!"
       ]
     }
   ],
@@ -429,7 +429,7 @@
         "Contest Lady"
       ],
       "text": [
-        ""
+        "Doamna Concurs"
       ]
     },
     {
@@ -437,7 +437,7 @@
         "I'm the Contest Lady! My partner and I are getting ready for a contest."
       ],
       "text": [
-        ""
+        "Sunt Doamna Concurs! Eu și partenerul meu ne pregătim pentru un concurs."
       ]
     },
     {
@@ -445,7 +445,7 @@
         "My Zigzagoon is going to show everyone how cool it is. A spicy Pokéblock would do wonders!"
       ],
       "text": [
-        ""
+        "Zigzagoon-ul meu o să arate tuturor cât e de cool. Un Pokéblock picant ar face minuni!"
       ]
     },
     {
@@ -453,7 +453,7 @@
         "My Skitty is going to dazzle everyone with its beauty. A dry Pokéblock would do wonders!"
       ],
       "text": [
-        ""
+        "Skitty-ul meu o să orbească pe toți cu frumusețea lui. Un Pokéblock sec ar face minuni!"
       ]
     },
     {
@@ -461,7 +461,7 @@
         "My Poochyena is going to charm everyone with how cute it is. A sweet Pokéblock would do wonders!"
       ],
       "text": [
-        ""
+        "Poochyena-ul meu o să fermece pe toți cu cât e de drăgălaș. Un Pokéblock dulce ar face minuni!"
       ]
     },
     {
@@ -469,7 +469,7 @@
         "My Kecleon is going to show everyone how clever it is. A bitter Pokéblock would do wonders!"
       ],
       "text": [
-        ""
+        "Kecleon-ul meu o să arate tuturor cât e de isteț. Un Pokéblock amar ar face minuni!"
       ]
     },
     {
@@ -477,7 +477,7 @@
         "My Pikachu is going to show everyone how tough it is. A sour Pokéblock would do wonders!"
       ],
       "text": [
-        ""
+        "Pikachu-ul meu o să arate tuturor cât e de dur. Un Pokéblock acru ar face minuni!"
       ]
     },
     {
@@ -485,7 +485,7 @@
         "Could you spare a Pokéblock for my partner?"
       ],
       "text": [
-        ""
+        "Ai putea să-mi dai un Pokéblock pentru partenerul meu?"
       ]
     },
     {
@@ -493,7 +493,7 @@
         "Thank you! Here you go, eat up..."
       ],
       "text": [
-        ""
+        "Mulțumesc! Ține, mănâncă..."
       ]
     },
     {
@@ -501,7 +501,7 @@
         "Look how happy it is! That Pokéblock really brought out its best. Thank you!"
       ],
       "text": [
-        ""
+        "Uită-te cât e de fericit! Pokéblock-ul ăla chiar i-a scos la iveală tot ce are mai bun. Mulțumesc!"
       ]
     },
     {
@@ -509,7 +509,7 @@
         "Hmm... it ate it, but nothing seems to have changed. Thank you all the same."
       ],
       "text": [
-        ""
+        "Hmm... l-a mâncat, dar nu pare să se fi schimbat nimic. Mulțumesc oricum."
       ]
     },
     {
@@ -517,7 +517,7 @@
         "With all the Pokéblocks we've been given, we're ready to enter contests at last! Next time it'll be another contest."
       ],
       "text": [
-        ""
+        "Cu toate Pokéblock-urile primite, suntem în sfârșit gata să intrăm în concursuri! Data viitoare va fi alt concurs."
       ]
     },
     {
@@ -525,7 +525,7 @@
         "Oh, you haven't any Pokéblocks to share? Never mind. Good luck in your own contests!"
       ],
       "text": [
-        ""
+        "Oh, nu ai Pokéblock-uri de dat? Nu-i nimic. Noroc la concursurile tale!"
       ]
     },
     {
@@ -533,7 +533,7 @@
         "Not even one? How stingy!"
       ],
       "text": [
-        ""
+        "Nici măcar unul? Ce zgârcit!"
       ]
     },
     {
@@ -541,7 +541,7 @@
         "Thank you for the Pokéblock the other day! Come and see us again tomorrow."
       ],
       "text": [
-        ""
+        "Mulțumesc pentru Pokéblock-ul de zilele trecute! Mai treci pe la noi mâine."
       ]
     }
   ],
@@ -551,7 +551,7 @@
         "It's practising its poses for the contest."
       ],
       "text": [
-        ""
+        "Își exersează pozițiile pentru concurs."
       ]
     }
   ]

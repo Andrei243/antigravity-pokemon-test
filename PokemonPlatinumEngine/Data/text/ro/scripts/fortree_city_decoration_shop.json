@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționar"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome! Our desks will hold up any doll or ornament in your secret base."
       ],
       "text": [
-        ""
+        "Bine ai venit! Birourile noastre țin orice păpușă sau podoabă din baza ta secretă."
       ]
     },
     {
@@ -27,13 +27,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl dorești?",
+        "SMALL DESK  3,000",
+        "POKéMON DESK  3,000",
+        "HEAVY DESK  6,000",
+        "RAGGED DESK  6,000",
+        "MAI MULTE",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -47,13 +47,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl dorești?",
+        "COMFORT DESK  6,000",
+        "BRICK DESK  9,000",
+        "CAMP DESK  9,000",
+        "HARD DESK  9,000",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai vino pe la noi!"
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționar"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Welcome! Every secret base needs somewhere to sit. Have a look at our chairs."
       ],
       "text": [
-        ""
+        "Bine ai venit! Orice bază secretă are nevoie de un loc de stat. Uită-te la scaunele noastre."
       ]
     },
     {
@@ -93,13 +93,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl dorești?",
+        "SMALL CHAIR  2,000",
+        "POKéMON CHAIR  2,000",
+        "HEAVY CHAIR  2,000",
+        "RAGGED CHAIR  2,000",
+        "MAI MULTE",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -113,13 +113,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl dorești?",
+        "COMFORT CHAIR  2,000",
+        "BRICK CHAIR  2,000",
+        "CAMP CHAIR  2,000",
+        "HARD CHAIR  2,000",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai vino pe la noi!"
       ]
     }
   ],
@@ -137,7 +137,7 @@
         "Thank you very much! The {thing} has been sent to your decoration PC."
       ],
       "text": [
-        ""
+        "Vă mulțumim mult! {thing} a fost trimis la PC-ul tău de decorațiuni."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "I'm terribly sorry, but you haven't enough money for that."
       ],
       "text": [
-        ""
+        "Îmi pare foarte rău, dar nu ai destui bani pentru asta."
       ]
     },
     {
@@ -153,7 +153,7 @@
         "I'm sorry, but your decoration PC has no more room for things of that kind."
       ],
       "text": [
-        ""
+        "Îmi pare rău, dar PC-ul tău de decorațiuni nu mai are loc pentru lucruri de felul ăsta."
       ]
     }
   ]

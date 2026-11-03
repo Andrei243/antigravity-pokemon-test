@@ -1,11 +1,14 @@
 # Battle against Zacian (the hero of the sword, a wolf with a blade in its jaws): a trumpet's call over trembling
 # violin, then the heroes' knightly fanfare, a dotted leap up a fourth, carried by a sharp E-minor violin over strings
 # and a marching snare. Original composition for this game.
+# Arranged again for the modern sound (plan 31 · MU7) on the instruments of Galar: a string orchestra, a stadium organ under the choir, a cornet-bright trumpet on the tune and the crowd's claps.
 title Battle! Zacian
 tempo 178
 meter 4/4
 lowhptempo 1.08
 reverb 0.3
+sound modern
+room hall 2.4
 
 track lead violin lowhp=sawlead vol=0.86 pan=0 rev=0.28
   [ o5 e16 ]16 | [ o5 d+16 ]16 |
@@ -21,7 +24,7 @@ track trumpet trumpet vol=0.55 pan=-0.25 rev=0.3
   r2 o4 e8. e16 g4 | r2 o4 f+8. f+16 a4 | r2 o4 d8. d16 g4 | r2 o4 e8. e16 g4 |
   r2 o4 e8. e16 a4 | r2 o4 d8. d16 f+4 | r2 o4 e8. e16 g4 | r2 o4 b8. b16 o5 d+4 |
 
-track strings strings unless=lowhp vol=0.38 pan=0.3 rev=0.35
+track strings orchestra unless=lowhp vol=0.38 pan=0.3 rev=0.35
   o4 (e g b)1 | o4 (d+ f+ b)1 |
   L o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (d+ f+ b)1 |
   o4 (e g b)1 | o4 (d g b)1 | o4 (c e a)1 | o4 (d+ f+ b)1 |
@@ -41,6 +44,11 @@ track drums kit vol=0.46 rev=0.14
 
 track hats kit vol=0.64 pan=0.15 rev=0.1
   r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 o8 | ]16
+
+# Galar: a stadium organ under the choir, a bright trumpet on the tune, the crowd's claps
+track tunetrumpet trumpet unless=lowhp double=lead vol=0.12 pan=0.3 rev=0.3
+track crowd kit vol=0.3 pan=0.1 rev=0.3
+  r1 | r1 | L [ r4 v85 x4 r4 v85 x4 | ]16
 
 # Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08

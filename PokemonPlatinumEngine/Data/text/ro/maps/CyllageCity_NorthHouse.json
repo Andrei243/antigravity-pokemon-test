@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Cyllage City"
+    ],
+    "text": [
+      "Orașul Cyllage"
+    ]
+  },
+  "people": {
+    "climber": {
+      "name": {
+        "en": [
+          "Climber"
+        ],
+        "text": [
+          "Cățărătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From up here you can see the whole bay. Climb high enough and every town looks like a toy."
+        ],
+        "text": [
+          "De aici de sus se vede tot golful. Urcă destul de sus și orice oraș pare o jucărie."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

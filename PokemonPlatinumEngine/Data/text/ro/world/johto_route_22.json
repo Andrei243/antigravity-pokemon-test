@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "r22_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      }
+    }
+  },
   "signs": {
     "R22_002+1": {
       "en": [

@@ -25,6 +25,11 @@ public enum IntroPhase
     AboutYou,
     ChooseLook,
     ConfirmLook,
+    /// <summary>
+    /// The clothes to set out in (plan 11 · C10): the look's own first, then the sets of <c>clothes.json</c> for that
+    /// look, so a press goes on in the clothes the game always gave.
+    /// </summary>
+    ChooseOutfit,
     AskName,
     EnterName,
     ConfirmName,
@@ -111,6 +116,26 @@ public class IntroScreen
     /// <summary>The character the cursor is on, and then the one chosen.</summary>
     public PlayerLook Look { get; private set; }
 
+    /// <summary>
+    /// The outfits offered for <see cref="Look"/>: the look's own clothes first (<see cref="Outfit.Own"/>), then each
+    /// set of <c>clothes.json</c> that suits it.
+    /// </summary>
+    public IReadOnlyList<Outfit> Outfits => outfits;
+    private List<Outfit> outfits = new() { Outfit.Own };
+
+    /// <summary>The names over <see cref="Outfits"/>, in the same order.</summary>
+    public IReadOnlyList<string> OutfitNames => outfitNames;
+    private List<string> outfitNames = new() { "" };
+
+    /// <summary>The outfit the cursor is on, and then the one chosen.</summary>
+    public int OutfitIndex { get; private set; }
+
+    /// <summary>The outfit chosen (the look's own unless another was picked), which the new game is begun in.</summary>
+    public Outfit Outfit => outfits[Math.Clamp(OutfitIndex, 0, outfits.Count - 1)];
+
+    /// <summary>The character the player is drawn as from the outfit's choice on: the look, dressed as chosen.</summary>
+    public string Dressed => Outfit.Dress(PlayerIdentity.CharacterOf(Look), Outfit);
+
     /// <summary>The answer the cursor is on while a question is up ("Is that right?"): yes comes first.</summary>
     public bool AnswerYes { get; private set; } = true;
 
@@ -142,6 +167,7 @@ public class IntroScreen
         IsActive = true;
         time = 0f;
         Look = PlayerLook.Boy;
+        OfferOutfits();
         AnswerYes = true;
         Entry = null;
         RivalEntry = null;
@@ -209,6 +235,20 @@ public class IntroScreen
 
     private void Say(string speaker, IEnumerable<string> lines, Action then) => talk.ShowDialogue(speaker, lines, then);
 
+    /// <summary>The outfits for the look chosen, the cursor back on its own clothes.</summary>
+    private void OfferOutfits()
+    {
+        var sets = ClothingDatabase.SetsFor(Look);
+        outfits = new List<Outfit> { Outfit.Own };
+        outfits.AddRange(sets.Select(s => s.Outfit));
+        outfitNames = new List<string> { Text.Of("intro.outfit.own") };
+        outfitNames.AddRange(sets.Select(s => s.Name));
+        OutfitIndex = 0;
+    }
+
+    /// <summary>The question asked while the clothes are chosen, shown under the choice.</summary>
+    public string WhichClothes => Text.Of("intro.outfit.question");
+
     // ------------------------------------------------------------------ what the buttons do
 
     /// <summary>Runs the clocks: the lines being written and the phases that play out by themselves.</summary>
@@ -258,7 +298,12 @@ public class IntroScreen
                 break;
             case IntroPhase.ConfirmLook:
                 AudioManager.PlaySound(AnswerYes ? "select" : "cancel");
-                Enter(AnswerYes ? IntroPhase.AskName : IntroPhase.ChooseLook);
+                if (AnswerYes) OfferOutfits();
+                Enter(AnswerYes ? IntroPhase.ChooseOutfit : IntroPhase.ChooseLook);
+                break;
+            case IntroPhase.ChooseOutfit:
+                AudioManager.PlaySound("select");
+                Enter(IntroPhase.AskName);
                 break;
             case IntroPhase.EnterName:
                 var key = Entry!.Press();
@@ -294,6 +339,7 @@ public class IntroScreen
         switch (Phase)
         {
             case IntroPhase.ConfirmLook:
+            case IntroPhase.ChooseOutfit:
                 AudioManager.PlaySound("cancel");
                 Enter(IntroPhase.ChooseLook);
                 break;
@@ -342,6 +388,9 @@ public class IntroScreen
                 return null;
             case IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival:
                 return UiPointer.Hit(ModernUi.PromptButtons(sw, sh, 2), at);
+            case IntroPhase.ChooseOutfit:
+                // The card (a click takes the outfit on it; the arrows change it)
+                return UiPointer.Inside(ModernUi.IntroOutfitCard(sw), at) ? 0 : null;
             case IntroPhase.EnterName or IntroPhase.EnterRival when (Phase == IntroPhase.EnterName ? Entry : RivalEntry) is { } entry:
                 return ModernUi.HitRow(ModernUi.KeyboardKeys(ModernUi.NameBoardRect(sw), entry), at);
             default:
@@ -375,6 +424,11 @@ public class IntroScreen
         {
             case IntroPhase.ChooseLook when dx != 0:
                 Look = dx > 0 ? PlayerLook.Girl : PlayerLook.Boy;
+                AudioManager.PlaySound("cursor");
+                break;
+            case IntroPhase.ChooseOutfit when dx != 0 && outfits.Count > 1:
+                // Round and round: past the last set is the look's own clothes again
+                OutfitIndex = ((OutfitIndex + Math.Sign(dx)) % outfits.Count + outfits.Count) % outfits.Count;
                 AudioManager.PlaySound("cursor");
                 break;
             case IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival when dx != 0:
@@ -413,7 +467,7 @@ public class IntroScreen
     {
         float t = phaseTime;
         bool withPokemon = Phase is IntroPhase.BallOpens or IntroPhase.Alongside or IntroPhase.BallCloses;
-        bool choosing = Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook;
+        bool choosing = Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ChooseOutfit;
         bool naming = Phase is IntroPhase.EnterName or IntroPhase.ConfirmName;
 
         float backdrop = Phase == IntroPhase.FadeIn ? UiMotion.EaseInOut(Ramp(t, 0.2f, 0.9f)) : 1f;
@@ -421,7 +475,7 @@ public class IntroScreen
         {
             IntroPhase.FadeIn => UiMotion.EaseInOut(Ramp(t, 0.5f, FadeInTime)),
             IntroPhase.ChooseLook => 1f - Ramp(t, 0f, 0.25f),
-            IntroPhase.ConfirmLook or IntroPhase.EnterName or IntroPhase.ConfirmName or IntroPhase.EnterRival or IntroPhase.ConfirmRival => 0f,
+            IntroPhase.ConfirmLook or IntroPhase.ChooseOutfit or IntroPhase.EnterName or IntroPhase.ConfirmName or IntroPhase.EnterRival or IntroPhase.ConfirmRival => 0f,
             IntroPhase.AskName or IntroPhase.AskRival => Ramp(t, 0f, 0.3f),
             IntroPhase.SendOff => 1f - Ramp(t, 0f, 0.5f),
             IntroPhase.Done => 0f,
@@ -453,7 +507,8 @@ public class IntroScreen
             IntroPhase.BallCloses => 1f - UiMotion.EaseIn(Ramp(t, 0.05f, 0.3f)),
             _ => 1f
         };
-        float choice = choosing ? UiMotion.EaseOut(Phase == IntroPhase.ChooseLook ? Ramp(t, 0.1f, 0.45f) : 1f) : 0f;
+        // The outfit's card rises in as the two cards did; the two give way to it at once
+        float choice = choosing ? UiMotion.EaseOut(Phase is IntroPhase.ChooseLook or IntroPhase.ChooseOutfit ? Ramp(t, 0.1f, 0.45f) : 1f) : 0f;
         float dark = Phase switch
         {
             IntroPhase.SendOff => Ramp(t, 0.3f, 0.9f),
@@ -502,7 +557,27 @@ public class IntroScreen
             else if (Phase == IntroPhase.Farewell && phaseTime < CharacterAnimation.Duration(Emote.Nod)) (pose.Emote, pose.EmoteTime) = (Emote.Nod, phaseTime);
             CharacterStudio.Render(context, ProfessorLook, professorPicture, pose, yaw: look.ProfessorShift * -0.35f);
         }
-        if (look.Choice > 0.01f)
+        if (Phase == IntroPhase.ChooseOutfit)
+        {
+            // The look chosen in the outfit under the cursor: one not built yet is started in the background and the
+            // last one shown stays meanwhile (the look's own clothes, built for the choice before), as at the wardrobe
+            string wanted = Dressed;
+            tried.Add(wanted);
+            string plain = PlayerIdentity.CharacterOf(Look);
+            if (CharacterModels.TryGet(wanted, context.Shaders) != null) shownOutfit = wanted;
+            else if (shownOutfit == null || !shownOutfit.StartsWith(plain, StringComparison.Ordinal)
+                     || CharacterModels.TryGet(shownOutfit, context.Shaders) == null)
+                shownOutfit = CharacterModels.TryGet(plain, context.Shaders) != null ? plain : null;
+            if (shownOutfit != null)
+            {
+                float wave = CharacterAnimation.Duration(Emote.Wave);
+                var pose = new CharacterPose { Time = time, Blink = (time + 0.5f) % 3.3f < 0.12f };
+                (pose.Emote, pose.EmoteTime) = (Emote.Wave, phaseTime % (wave + 1.6f));
+                if (pose.EmoteTime >= wave) pose.Emote = Emote.None;
+                CharacterStudio.Render(context, shownOutfit, Look == PlayerLook.Girl ? girlPicture : boyPicture, pose);
+            }
+        }
+        else if (look.Choice > 0.01f)
         {
             foreach (var (picture, which) in new[] { (boyPicture, PlayerLook.Boy), (girlPicture, PlayerLook.Girl) })
             {
@@ -533,7 +608,27 @@ public class IntroScreen
         if (Phase is IntroPhase.EnterRival or IntroPhase.ConfirmRival)
             sprite = CharacterSprites.Portrait(context, Rival);
         else if (Phase is IntroPhase.EnterName or IntroPhase.ConfirmName or IntroPhase.Farewell or IntroPhase.SendOff)
-            sprite = CharacterSprites.Portrait(context, PlayerIdentity.CharacterOf(Look));
+            sprite = CharacterSprites.Portrait(context, Dressed);
+    }
+
+    // The looks the outfit's choice asked to be built, and the one on show
+    private readonly HashSet<string> tried = new(StringComparer.OrdinalIgnoreCase);
+    private string? shownOutfit;
+
+    /// <summary>True while the figure on the outfit's card isn't yet the outfit under the cursor (it is being made).</summary>
+    public bool Dressing => !string.Equals(shownOutfit, Dressed, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The dressed looks the choice built and the game didn't keep, for the engine to let go of once the introduction
+    /// is over (as the wardrobe's, <see cref="WardrobeScreen.TakeTried"/>); asking empties the list.
+    /// </summary>
+    public IEnumerable<string> TakeTried()
+    {
+        string kept = Dressed;
+        var left = tried.Where(t => !t.Equals(kept, StringComparison.OrdinalIgnoreCase) && t.Contains('@')).ToList();
+        tried.Clear();
+        shownOutfit = null;
+        return left;
     }
 
     public void Draw(int sw, int sh)

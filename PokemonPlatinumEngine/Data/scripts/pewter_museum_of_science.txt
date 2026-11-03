@@ -1,27 +1,55 @@
 # The Pewter Museum of Science in HeartGold's Kanto (plan 20, part q). docs/scripts.md describes the language; the lines
 # are our own, on HeartGold's beats (scr_seq_T03R0101).
 #
-# Steven's second visit: once he has given his gift in Silph Co.'s lobby (FLAG_JOHTO_GOT_HOENN_STARTER, ours,
-# saffron_silph_co_hq.txt) he stands before the space wing's stone and talks of stones. HeartGold's
-# FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS waits on the Latias and Latios that aren't built, so the museum's arrival lays
-# him by a flag of ours, FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN.
+# Steven's visits (plan 20, parts q and t; the rulings' "Johto's last leftovers, part t"): once he has given his gift in
+# Silph Co.'s lobby (FLAG_JOHTO_GOT_HOENN_STARTER, ours, saffron_silph_co_hq.txt) he stands before the space wing's stone
+# in HeartGold's first place. Spoken to, he shows the player the Enigma Stone the museum lent him (a stone he holds, not
+# an item of the bag: HeartGold's was a gift of an event of its own) and goes out to fetch the friend who travels with
+# him (FLAG_JOHTO_STEVEN_SHOWED_STONE, ours), who waits in Pewter City (pewter.txt). Once the player has met it
+# (FLAG_JOHTO_MET_STEVENS_EON, ours) he stands in HeartGold's second place, by the fossils, for good: HeartGold's
+# FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS, laid here. The first place's own flag stays ours,
+# FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN, since HeartGold's FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS waits on its event.
 
 
 script OnEnter
   setflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
-  if flag FLAG_JOHTO_GOT_HOENN_STARTER clearflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
+  if not flag FLAG_JOHTO_GOT_HOENN_STARTER end
+  if flag FLAG_JOHTO_MET_STEVENS_EON goto After
+  if flag FLAG_JOHTO_STEVEN_SHOWED_STONE end
+  clearflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  end
+label After
+  clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
   end
 
 
-# Steven before the space wing (ours)
+# Steven before the space wing (ours): the Enigma Stone shown, and his friend fetched
 script Steven
   face t03r0101_daigo player
   speaker "Steven"
+  say "{player}! Good timing. The museum let me hold one of its stones for a moment. Come and look."
+  speaker none
+  text "Steven held out a smooth, pale stone. Deep inside it, something like an eye seemed to glint."
+  speaker "Steven"
+  say "They call it the Enigma Stone. Nobody knows where it came from. But my travelling friend felt it from far away."
+  say "My friend is a Pokémon of the skies over Hoenn. I think it would like to meet you, too."
+  say "I'll go and fetch it. Meet us outside, by the houses at the north of the city."
+  setflag FLAG_JOHTO_STEVEN_SHOWED_STONE
+  setflag FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN
+  hide self
+  end
+
+
+# Steven by the fossils, after his friend has met the player (ours)
+script StevenAfter
+  face t03r0101_daigo_2 player
+  speaker "Steven"
   random 2
   if result == 1 goto Two
-  say "This stone fell from the sky long ago. In Hoenn, people say stones like it carry something of the space between stars."
-  say "I collect rare stones, you see. Some people find that dull. I find it endlessly exciting!"
+  say "I gave the Enigma Stone back to the museum. Some stones are meant to be looked at, not kept."
+  say "Old bones and fallen stars under one roof. I could spend a whole day in here."
   end
 label Two
-  say "How is the Pokémon I gave you? A Pokémon from far away sees everything with fresh eyes. So does its Trainer."
+  say "Hoenn's skies are wide, {player}. If you ever cross the sea that way, look up now and then."
   end

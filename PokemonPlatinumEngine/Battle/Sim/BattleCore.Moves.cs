@@ -911,7 +911,15 @@ public sealed partial class BattleCore
         if (Field.Gravity) rate = rate * 10 / 6;
         rate = LaterAccuracy(use, target, rate);
 
-        return rng.Roll(RollKind.Accuracy, 100) < rate;
+        if (rng.Roll(RollKind.Accuracy, 100) >= rate) return false;
+        // A Pokémon of the player's devoted to it may dodge what would have hit (plan 10 · F7); rolled only where it can
+        int dodge = Models.Affection.DodgeChance(Models.Affection.In(target, Rules));
+        if (dodge > 0 && target != user && rng.Roll(RollKind.Affection, 100) < dodge)
+        {
+            Say(Text.Of("battle.affectionDodged", ("pokemon", target.Name)));
+            return false;
+        }
+        return true;
     }
 
     /// <summary>The held item's effect, unless an Embargo or Klutz has put it out of use.</summary>
@@ -1114,6 +1122,8 @@ public sealed partial class BattleCore
             {
                 var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
                 hit.Notes.AddRange(Capture(() => endured = guards.Any(e => e.EnduresHit(this, t, dealt))));
+                // A Pokémon of the player's that loves it may hold on for its sake (plan 10 · F7), after its item and ability
+                if (!endured) hit.Notes.AddRange(Capture(() => endured = HoldsOnForTheTrainer(t)));
                 if (endured) hit.Endured = true;
             }
             if (endured) dealt = p.CurrentHP - 1;

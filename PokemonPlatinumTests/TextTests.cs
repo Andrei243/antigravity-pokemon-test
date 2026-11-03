@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Battle.Sim;
@@ -59,6 +59,8 @@ public class TextTests
     private static readonly Dictionary<string, string> NotOnTheTable = new()
     {
         ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
+        ["Core/LiveFeed.cs"] = "the stream feed's JSON, written for an OBS overlay to read, in English (plan 13 · V24)",
+        ["Core/GameEngine.Stream.cs"] = "the files of the streamer kit and the date format its feed writes (plan 13 · V24)",
         ["Core/SavePaths.cs"] = "--where, said to the terminal",
         ["Core/MigrationOut.cs"] = "the extensions of the files it writes, not words on a screen",
         ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
@@ -89,6 +91,8 @@ public class TextTests
     {
         ["UI/TitleScreen.cs"] = new[] { "Sinnoh", "Giratina", "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
+        // A name of the story's flags, which is data and no word (plan 21 · H12)
+        ["Core/GameEngine.Salt.cs"] = new[] { "FLAG_HOENN_ABNORMAL_WEATHER_" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)
         ["Core/Text.Lines.cs"] = new[] { "script:{script}#{index}.{k}" },
         // The text box's markup problems, which ScriptLibrary.Problems and the content check tell whoever writes a line, never the screen (plan 09 · L3)
@@ -263,7 +267,9 @@ public class TextTests
         // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
         ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant", "Rival:" },
         // What the tests hear of a cry, never on screen
-        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}", "cry {name} shaped {shape.Clamped().Key}", "music {song.Id}{(night ? ", ")}{(lowHp ? ", ")}{(giant ? ", "bed {b}", "fanfare {role}" },
+        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}", "cry {name} shaped {shape.Clamped().Key}", "music {song.Id}{(night ? ", ")}{(lowHp ? ", ")}{(giant ? ", "bed {b}", "fanfare {role}",
+            // What a test hears of the voices (plan 26 · V2): a line asked for, a take begun, one cut
+            "voice {line.Key} {line.Voice ?? ", "voice play", "voice cut" },
         // Plan 17 · N2. The Pokémon the professor shows, the looks he and the rival are drawn as, and the ball's art
         ["UI/IntroScreen.cs"] = new[] { "Buneary", "RIVAL", "ROWAN", "Poké Ball" },
         // The keyboard's case key, which shows the letters it turns to (plan 17 · N5 gives each language its keyboard)
@@ -500,7 +506,9 @@ public class TextTests
         ["Battle/Sim/BattleCore.Abilities.cs"] = new[] { "Good as Gold" },
         // The rest of them (plan 06 · R27b): Showdown's lists by name, and Receiver's kin
         ["Battle/Effects/LaterAbilityEffects2.cs"] = new[] { "Zero to Hero", "Power of Alchemy" },
-        ["Battle/Sim/BattleCore.Abilities2.cs"] = new[] { "Power of Alchemy" }
+        ["Battle/Sim/BattleCore.Abilities2.cs"] = new[] { "Power of Alchemy" },
+        // The class a player stands as in a link battle, a class of the data's table (plan 28 · I4)
+        ["Battle/Sim/Link/LinkSetup.cs"] = new[] { "Pokémon Trainer" }
     };
 
     [Fact]
@@ -692,7 +700,7 @@ public class TextTests
                     }
                     intro.PressConfirm();
                 }
-                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
+                else if (intro.Phase is IntroPhase.ChooseLook or IntroPhase.ConfirmLook or IntroPhase.ChooseOutfit or IntroPhase.ConfirmName or IntroPhase.ConfirmRival)
                     intro.PressConfirm();
                 else if (intro.Phase is IntroPhase.EnterName or IntroPhase.EnterRival)
                 {

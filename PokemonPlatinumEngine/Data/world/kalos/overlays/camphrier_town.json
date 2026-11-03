@@ -1,0 +1,50 @@
+{
+  // Camphrier Town (plan 23 · Z2, second part): drawn by hand, our words. An old town of timber and stone round a
+  // crossroads: the castle of its keeper in a moat in the north-east, the Pokémon Center (with the Mart's counter
+  // inside) and three houses; the boulevard east to Route 5, the street north to Route 6 and the palace and south to
+  // Route 7. The castle's keeper meets the player as they come into town (camphrier_town.txt). Its houses are built
+  // as an old timbered town's are (OldTimber), and it plays Aquacorde's song until plan 31 writes it its own
+  "area": "camphrier_town",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "doors": [
+    { "warp": 0, "map": "CamphrierTown_NorthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "CamphrierTown_Castle", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 2, "map": "CamphrierTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 3, "map": "CamphrierTown_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "CamphrierTown_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Castellan", "x": 222, "z": 357, "width": 1, "depth": 6, "variable": "VAR_KALOS_STORY", "value": 13 }
+  ],
+  "props": [
+    { "type": "Fountain", "x": 189, "y": 362, "width": 3, "depth": 3 },
+    { "type": "LampPost", "x": 199, "y": 356, "width": 1, "depth": 1 },
+    { "type": "LampPost", "x": 204, "y": 363, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 194, "y": 356, "width": 2, "depth": 1 }
+  ],
+  "people": {
+    "castellan": { "name": "Castellan Aubert", "npcType": "old_man", "script": "Castellan", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_CASTELLAN_STREET" },
+    "gardener": {
+      "name": "Gardener",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [ "The road north runs between two rows of plane trees all the way to the palace gates. Lovely in the autumn." ]
+    },
+    "girl": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "There's a huge Pokémon asleep on the road south! It's been snoring there for three days!" ]
+    },
+    "woman": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "still": true,
+      "dialog": [ "The castle's keeper is a kind old man. He looks after the town as if it were his own garden." ]
+    }
+  },
+  "signs": {
+    "TownSign": "Camphrier Town\nAn old town of stone beneath its castle."
+  }
+}

@@ -1495,6 +1495,10 @@ unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
 === region Kalos
 levels 2 → 185, 68 → 205, 76 → 222
 caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
+kalos_grant_1 192 (25) [Amaura → Aurorus, Tyrunt → Tyrantrum]
+kalos_rival_cyllage_chespin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Quilladin → Chesnaught]
+kalos_rival_cyllage_fennekin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Braixen → Delphox]
+kalos_rival_cyllage_froakie 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Frogadier → Greninja]
 kalos_rival_santalune_chespin 187 (8) [Fletchling → Talonflame, Chespin → Chesnaught]
 kalos_rival_santalune_fennekin 187 (8) [Fletchling → Talonflame, Fennekin → Delphox]
 kalos_rival_santalune_froakie 187 (8) [Fletchling → Talonflame, Froakie → Greninja]
@@ -1503,7 +1507,11 @@ kalos_shauna_2 186 (5) [Chespin → Chesnaught]
 kalos_shauna_3 186 (5) [Fennekin → Delphox]
 kalos_sycamore_1 187 (10) [Bulbasaur → Venusaur, Charmander → Charizard, Squirtle → Blastoise]
 kalos_tierno_1 186 (6) [Corphish → Crayronin]
+kalos_tierno_2 188 (12) [Corphish → Crayronin, Pancham → Pangoro]
 kalos_viola_1 188 (12) [Surskit → Ocellwing]
+=== CyllageCity_Gym
+Cyllage Gym, Kalos
+trainers 2, 190 (own 19-20): kalos_hiker_armand 190 (19) [Roggenrola → Gigalith, Binacle → Barbaracle], kalos_hiker_bruno 190 (20) [Onix → Ironwyrm]
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]
@@ -2294,6 +2302,22 @@ trainers 3, 186 (own 5-6): kalos_lass_colette 186 (6) [Fletchling → Talonflame
 Route 4, Kalos
 grass 187 (own 7-9)
 trainers 3, 187 (own 7-8): kalos_lass_elodie 187 (8) [Flabébé → Florges], kalos_picnicker_margaux 187 (8) [Budew → Roserade, Combee → Hivempress], kalos_youngster_theo 187 (8) [Ledyba → Coccinova, Bunnelby → Diggersby]
+=== kalos_route_5
+Route 5, Kalos
+grass 187-188 (own 9-11)
+trainers 3, 187-188 (own 10-11): kalos_backpacker_gaspard 187 (10) [Doduo → Tripluma, Gulpin → Gulpgorge], kalos_lass_noemie 188 (11), kalos_youngster_julien 187 (10) [Pancham → Pangoro, Skiddo → Gogoat]
+=== kalos_route_6
+Route 6, Kalos
+grass 187-188 (own 10-12)
+trainers 2, 188 (own 11-12): kalos_backpacker_clement 188 (12) [Sentret → Ermilong, Honedge → Aegislash], kalos_picnicker_lea 188 (11) [Espurr → Meowstic, Oddish → Gloom]
+=== kalos_route_7
+Route 7, Kalos
+grass 188-189 (own 12-14)
+trainers 3, 188-189 (own 13-14): kalos_fisherman_rene 188 (13) [Goldeen → Sabrefin, Psyduck → Psyduke], kalos_lass_sylvie 189 (14) [Spritzee → Aromatisse], kalos_youngster_adrien 188 (13) [Hoppip → Jumpluff, Croagunk → Venomsensei]
+=== kalos_route_8
+Route 8, Kalos
+grass 188-189 (own 13-15)
+trainers 2, 189 (own 14-15): kalos_fisherman_yves 189 (14) [Tentacool → Medusarch, Wingull → Pelicaptain], kalos_hiker_marcel 189 (15) [Roggenrola → Gigalith, Nosepass → Lodestarch]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)

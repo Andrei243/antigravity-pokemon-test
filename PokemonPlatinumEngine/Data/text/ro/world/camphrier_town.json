@@ -1,0 +1,78 @@
+{
+  "people": {
+    "castellan": {
+      "name": {
+        "en": [
+          "Castellan Aubert"
+        ],
+        "text": [
+          "Castelanul Aubert"
+        ]
+      }
+    },
+    "gardener": {
+      "name": {
+        "en": [
+          "Gardener"
+        ],
+        "text": [
+          "Grădinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road north runs between two rows of plane trees all the way to the palace gates. Lovely in the autumn."
+        ],
+        "text": [
+          "Drumul spre nord merge între două rânduri de platani până la porțile palatului. Frumos toamna."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a huge Pokémon asleep on the road south! It's been snoring there for three days!"
+        ],
+        "text": [
+          "Un Pokémon uriaș doarme pe drumul din sud! Sforăie acolo de trei zile!"
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The castle's keeper is a kind old man. He looks after the town as if it were his own garden."
+        ],
+        "text": [
+          "Păzitorul castelului e un bătrân bun. Are grijă de oraș de parcă ar fi grădina lui."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Camphrier Town\nAn old town of stone beneath its castle."
+      ],
+      "text": [
+        "Orașul Camphrier\nUn oraș vechi de piatră, sub castelul său."
+      ]
+    }
+  }
+}

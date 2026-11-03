@@ -49,10 +49,17 @@ public sealed record TitleNotice(string Heading, string Body)
     /// What the title says of a slot whose game was played with packs that aren't in use now (plan 16 · T15): each named,
     /// gone or at another version. Null when every pack it was played with is here.
     /// </summary>
-    public static TitleNotice? ForPacks(int slot, IReadOnlyList<Data.MissingPack> missing) => missing.Count == 0 ? null
-        : new(Text.Of("title.notice.packs.heading", ("slot", slot)), Text.Of("title.notice.packs.body", ("packs", string.Join(", ", missing.Select(m =>
+    public static TitleNotice? ForPacks(int slot, IReadOnlyList<Data.MissingPack> missing)
+    {
+        if (missing.Count == 0) return null;
+        string body = Text.Of("title.notice.packs.body", ("packs", string.Join(", ", missing.Select(m =>
             m.NowVersion == null ? Text.Of("title.notice.packs.gone", ("name", m.Name), ("version", m.Version))
-                : Text.Of("title.notice.packs.other", ("name", m.Name), ("version", m.Version), ("now", m.NowVersion)))))));
+                : Text.Of("title.notice.packs.other", ("name", m.Name), ("version", m.Version), ("now", m.NowVersion))))));
+        // The save stands in a region a pack adds, and that pack is gone (plan 16 · T14): the game wakes where it began
+        if (missing.FirstOrDefault(m => m.NowVersion == null && m.Region != null) is { } left)
+            body += " " + Text.Of("title.notice.packs.region", ("region", left.Region!), ("pack", left.Name));
+        return new(Text.Of("title.notice.packs.heading", ("slot", slot)), body);
+    }
 
     /// <summary>What the title says of a lone save as it was read: slot 1's notice.</summary>
     public static TitleNotice? ForSave(SaveLoad load) => ForSlot(1, load);

@@ -1,0 +1,44 @@
+# The academy: its great hall, classrooms and courtyard, a string orchestra and a piano in B flat with a horn
+# answering, stately but bright; at night a celesta and a softer orchestra.
+# Original composition for this game (plan 31 · MU6), in the modern sound.
+title Academy (Paldea)
+tempo 100
+meter 4/4
+reverb 0.32
+nighttempo 0.92
+room hall 2.0
+
+track lead piano night=celesta vol=0.70 pan=0.05 rev=0.3
+  o5 b-2. r4 | L o5 f4 b-8 o6 d8 f4 d4 | o5 g4 b-8 o6 d8 g4 d4 | o5 g4. b-8 o6 e-4 o5 b-4 |
+  o5 a2 o6 c4 o5 f4 | o5 d4 f8 b-8 o6 d4 f4 | o6 d4 c8 o5 b-8 g4 d4 | o5 e-4 g8 o6 c8 e-4 c4 |
+  o5 a2. r4 | o5 b-4 o6 e-8 g8 e-4 o5 b-4 | o6 d4 o5 b-8 f8 b-4 o6 d4 | o6 c4 e-8 c8 o5 g4 o6 c4 |
+  o6 c2 o5 a4 f4 | o5 g4 b-8 o6 e-8 g4 e-4 | o6 f4 c8 o5 a8 o6 c4 f4 | o6 d4 o5 b-8 f8 d4 f4 |
+  o5 b-2. r4 |
+
+track pad orchestra night=warmpad vol=0.33 pan=-0.25 rev=0.42
+  o4 (b- > d f)1 | L o4 (b- > d f)1 | o4 (g b- > d)1 | o4 (e- g b-)1 |
+  o4 (f a > c)1 | o4 (b- > d f)1 | o4 (g b- > d)1 | o4 (c e- g)1 |
+  o4 (f a > c)1 | o4 (e- g b-)1 | o4 (b- > d f)1 | o4 (c e- g)1 |
+  o4 (f a > c)1 | o4 (e- g b-)1 | o4 (f a > c)1 | o4 (b- > d f)1 |
+  o4 (b- > d f)1 |
+
+track horn horn vol=0.33 pan=0.3 rev=0.36
+  o4 d1 | L r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | o4 g1 | o4 d1 | o4 e-1 |
+  o4 a1 | o4 g1 | o4 a1 | o4 d1 |
+  o4 d1 |
+
+track bass contrabass vol=0.58 rev=0.1
+  o3 b-2 f2 | L o3 b-2 f2 | o3 g2 d2 | o3 e-2 b-2 |
+  o3 f2 c2 | o3 b-2 f2 | o3 g2 d2 | o3 c2 g2 |
+  o3 f2 c2 | o3 e-2 b-2 | o3 b-2 f2 | o3 c2 g2 |
+  o3 f2 c2 | o3 e-2 b-2 | o3 f2 c2 | o3 b-2 f2 |
+  o3 b-2 f2 |
+
+track drums kit vol=0.2 pan=0.1 rev=0.2
+  v56 b4 v40 h4 v50 s4 v40 h4 | L v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 |
+  v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 |
+  v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 |
+  v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 | v56 b4 v40 h4 v50 s4 v40 h4 |
+  v56 b4 v40 h4 v50 s4 v40 h4 |

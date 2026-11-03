@@ -31,23 +31,54 @@ script Crewman
   if flag FLAG_JOHTO_SS_AQUA_AT_VERMILION goto ToOlivine
   ask "Welcome aboard the S.S. Aqua! We're bound for Vermilion City in Kanto. Shall we cast off?"
   if no goto Wait
-  say "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+  say "Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy."
+  scene "A night aboard the ship"
   fade out 0.8
-  text "The S.S. Aqua sped east across the sea, skimming the waves..."
+  text "The S.S. Aqua slipped out of Olivine's harbour and turned east. The lighthouse's beam shrank away behind it..."
+  call Night
   setflag FLAG_JOHTO_SS_AQUA_AT_VERMILION
-  fade in 0.8
-  say "We've docked at Vermilion City, Kanto! Mind your step on the gangway."
+  call Morning
+  endscene
+  speaker "Sailor"
+  say "Morning! We've docked at Vermilion City, Kanto! Mind your step on the gangway."
   end
 label ToOlivine
   ask "Welcome aboard the S.S. Aqua! We're bound for Olivine City in Johto. Shall we cast off?"
   if no goto Wait
-  say "Anchors aweigh! Make yourself at home. We'll be there before you know it."
+  say "Anchors aweigh! We sail overnight and dock in the morning. Your cabin's made up, so rest easy."
+  scene "A night aboard the ship homeward"
   fade out 0.8
-  text "The S.S. Aqua sped west across the sea, skimming the waves..."
+  text "The S.S. Aqua slipped out of Vermilion's harbour and turned west, the city's lights low on the water behind it..."
+  call Night
   clearflag FLAG_JOHTO_SS_AQUA_AT_VERMILION
-  fade in 0.8
-  say "We've docked at Olivine City, Johto! Mind your step on the gangway."
+  call Morning
+  endscene
+  speaker "Sailor"
+  say "Morning! We've docked at Olivine City, Johto! Mind your step on the gangway."
   end
 label Wait
   say "No rush. The gangway's behind you, if you'd rather stay ashore a while longer."
   end
+
+
+# The night aboard (plan 20, part t; the rulings' "Johto's last leftovers, part t"): HeartGold's voyage is a night in a
+# cabin; ours is told in a few beats of our own, over the dark and in the south-west cabins (SSAqua_1F_SouthwestRooms,
+# the tile inside the east cabin's door): the evening at the porthole, the ship's sounds, the team rested as a bed rests
+# it, and the horn in the morning. Nothing in it waits for the player but the lines.
+script Night
+  warp "SSAqua_1F_SouthwestRooms" 23 3 down
+  fade in 0.8
+  speaker none
+  text "{player} was shown to a small cabin. Through the porthole, the last of the sunset sank into the sea."
+  text "Somewhere along the corridor a passenger laughed, and a door clicked shut. The engines hummed below the floor."
+  fade out 1.2
+  text "Rocked by the waves, {player} fell asleep..."
+  heal
+  return
+
+
+script Morning
+  text "A long blast of the ship's horn! Morning light poured in through the porthole."
+  warp "SSAqua_1F" 24 18 down
+  fade in 0.8
+  return

@@ -1,0 +1,42 @@
+{
+  "key": "tidemark_town",
+  "index": 0,
+  "name": "Tidemark Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "TIDEMARK",
+  "nightMusic": "TIDEMARK",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 6, "z": 7, "to": "TidemarkTown_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 15, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_WADE" }
+  ],
+  "signs": [
+    { "x": 11, "z": 7, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Wingull", "level": 3 },
+    { "species": "Shellos", "level": 3 },
+    { "species": "Wingull", "level": 4 },
+    { "species": "Corphish", "level": 3 },
+    { "species": "Shellos", "level": 4 },
+    { "species": "Wingull", "level": 5 },
+    { "species": "Corphish", "level": 4 },
+    { "species": "Shellos", "level": 5 },
+    { "species": "Krabby", "level": 3 },
+    { "species": "Krabby", "level": 4 },
+    { "species": "Wingull", "level": 6 },
+    { "species": "Corphish", "level": 5 }
+  ],
+  "landRate": 20
+}

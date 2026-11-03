@@ -21,7 +21,7 @@
     "3": { "name": "Rhona", "npcType": "veteran", "script": "Veteran3", "still": true, "at": [ 18, 16 ] },
     "4": { "name": "Jerry", "npcType": "veteran", "script": "Veteran4", "still": true, "at": [ 14, 28 ] },
     "5": { "name": "Lucius", "npcType": "veteran", "script": "Veteran5", "still": true, "at": [ 12, 21 ] },
-    "6": { "name": "Drayden", "npcType": "dragon_elder", "script": "Drayden", "hiddenBy": "", "still": true, "at": [ 15, 22 ] }
+    "6": { "name": "Drayden", "npcType": "opelucid_leader", "script": "Drayden", "hiddenBy": "", "still": true, "at": [ 15, 22 ] }
   },
   "signs": {
     "14": "Opelucid Pokémon Gym\nLeader: Drayden\nCertified Trainers: {player}"

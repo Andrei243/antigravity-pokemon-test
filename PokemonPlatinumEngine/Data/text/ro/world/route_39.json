@@ -1,12 +1,22 @@
 {
   "people": {
+    "r39_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      }
+    },
     "r39_gsleader9": {
       "name": {
         "en": [
           "Lt. Surge"
         ],
         "text": [
-          ""
+          "Lt. Surge"
         ]
       }
     },

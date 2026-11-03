@@ -121,6 +121,18 @@ public sealed class SavePaths
     /// <summary>The run timer's splits (plan 13 · V10, <see cref="Models.RunTimer"/>), written while the options' RUN TIMER row is on, in a plain shape a spreadsheet or an autosplitter reads.</summary>
     public const string SplitsName = "splits.json";
 
+    /// <summary>
+    /// The streamer kit's folder (plan 13 · V24, <see cref="LiveFeed"/>): <c>state.json</c> (the live feed), <c>overlay.html</c>
+    /// (copied beside it for an OBS browser source) and <c>livesplit.lss</c> (a LiveSplit splits file). Written only while the options' STREAM FEED row is on.
+    /// </summary>
+    public const string StreamName = "stream";
+
+    /// <summary>The feed's file, the overlay and the splits file, inside <see cref="StreamName"/>.</summary>
+    public const string FeedFileName = "state.json", OverlayFileName = "overlay.html", LiveSplitFileName = "livesplit.lss";
+
+    /// <summary>The folder a friend's trainer files are read from and written to (plan 13 · V22, <see cref="Models.TrainerFile"/>).</summary>
+    public const string TrainersName = "trainers";
+
     /// <summary>The Home box (plan 12 · Q29, <see cref="Models.HomeBank"/>): boxes of Pokémon every slot shares, with its own receipts and backup.</summary>
     public const string HomeBoxName = "home.json";
 
@@ -160,6 +172,8 @@ public sealed class SavePaths
     public string Replays => Path.Combine(Folder, ReplaysName);
     public string Migrate => Path.Combine(Folder, MigrateName);
     public string Splits => Path.Combine(Folder, SplitsName);
+    public string Stream => Path.Combine(Folder, StreamName);
+    public string Trainers => Path.Combine(Folder, TrainersName);
 
     /// <summary>A battle suspended beside a slot (plan 12 · Q25, <see cref="BattleSuspension"/>): <c>suspend2.json</c>.</summary>
     public static string SuspendName(int slot) => IsSlot(slot) ? $"suspend{slot}.json" : throw new ArgumentOutOfRangeException(nameof(slot), slot, $"The slots are 1 to {Slots}.");
@@ -247,6 +261,8 @@ public sealed class SavePaths
         Row(CrashReport.SaveName, "the game as it stood the last time it did");
         Row($"{ReplaysName}/", "the battles kept on the Vs. Recorder");
         Row(SplitsName, "the run timer's splits, while its option is on");
+        Row($"{StreamName}/", "the streamer kit's files, while its option is on: the live feed, an overlay and a LiveSplit file");
+        Row($"{TrainersName}/", "friends' trainer files for the battle room, read (and written when you export one)");
         Row($"{MigrateName}/", "your own saves and Pokémon files, for the migration: read, never written");
         text.Append($"\nAn old {OldSaveName} found there becomes the first empty slot's save, slot 1 unless that is taken, the next time the game starts.\n");
         text.Append($"--save <folder> names another folder; --portable, or an empty {PortableMarker} beside the game, keeps everything beside the game.");

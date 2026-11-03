@@ -5,7 +5,7 @@
         "Clefairy are dancing in a ring under the moon!"
       ],
       "text": [
-        ""
+        "Clefairy dansează în cerc sub lună!"
       ]
     },
     {
@@ -14,8 +14,8 @@
         "They scattered into the dark!"
       ],
       "text": [
-        "",
-        ""
+        "Clefairy l-au observat pe {player}!",
+        "S-au risipit în întuneric!"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "Something was left where the Clefairy had danced..."
       ],
       "text": [
-        ""
+        "Ceva a rămas acolo unde dansaseră Clefairy..."
       ]
     }
   ]

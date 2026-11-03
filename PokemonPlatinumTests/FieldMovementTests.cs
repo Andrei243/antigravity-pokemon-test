@@ -754,7 +754,9 @@ public class FieldMovementTests
         Assert.Equal(Pace.Slowest, Step(map, 5, 4, East).Pace);
 
         float last = 0f;
-        foreach (var pace in Enum.GetValues<Pace>())
+        // (the DexNav's creep, plan 10 · F12, came at the enum's end: it lies between a slow step and a walk)
+        Assert.InRange(FieldMovement.TilesPerSecond(Pace.Sneak), FieldMovement.TilesPerSecond(Pace.Slow), FieldMovement.TilesPerSecond(Pace.Walk));
+        foreach (var pace in Enum.GetValues<Pace>().Where(p => p != Pace.Sneak))
         {
             Assert.True(FieldMovement.TilesPerSecond(pace) > last);
             last = FieldMovement.TilesPerSecond(pace);

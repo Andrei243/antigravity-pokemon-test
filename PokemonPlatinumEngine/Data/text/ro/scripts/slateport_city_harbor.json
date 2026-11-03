@@ -113,7 +113,7 @@
         "Oh? {player}, is that a Scanner you've got there? That would be a great help to our explorations!"
       ],
       "text": [
-        ""
+        "Oh? {player}, ăla e un Scanner? Ne-ar ajuta enorm în explorările noastre!"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Would you trade it to me? I could give you a Deep Sea Tooth or a Deep Sea Scale for it."
       ],
       "text": [
-        ""
+        "Mi-l dai la schimb? Ți-aș da în schimb un Deep Sea Tooth sau un Deep Sea Scale."
       ]
     },
     {
@@ -132,10 +132,10 @@
         "NO THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl dorești?",
+        "DEEP SEA TOOTH",
+        "DEEP SEA SCALE",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "I see. If you change your mind, I'll still be glad of it."
       ],
       "text": [
-        ""
+        "Înțeleg. Dacă te răzgândești, tot l-aș primi bucuros."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "The Deep Sea Tooth for the Scanner, then?"
       ],
       "text": [
-        ""
+        "Deep Sea Tooth pentru Scanner, atunci?"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "The Deep Sea Scale for the Scanner, then?"
       ],
       "text": [
-        ""
+        "Deep Sea Scale pentru Scanner, atunci?"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "{player} handed the Scanner to Captain Stern."
       ],
       "text": [
-        ""
+        "{player} i-a dat Scanner-ul Căpitanului Stern."
       ]
     },
     {
@@ -175,7 +175,7 @@
         "Thank you! With this, the sea floor won't keep its secrets from us much longer."
       ],
       "text": [
-        ""
+        "Mulțumesc! Cu asta, fundul mării nu-și va mai ține secretele mult de acum."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "Then which one would you like?"
       ],
       "text": [
-        ""
+        "Atunci pe care dorești?"
       ]
     }
   ],

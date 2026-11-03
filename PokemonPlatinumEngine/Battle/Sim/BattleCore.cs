@@ -33,6 +33,13 @@ public sealed class CoreSetup
     /// <summary>Who chooses for the player's side from inside the core; null when the choices come from outside.</summary>
     public IBattleController? PlayerController { get; init; }
 
+    /// <summary>
+    /// The trainer the player's side thinks as when <see cref="PlayerController"/> is the trainer AI (plan 13 · V15,
+    /// tests and tools only: Remix's balance check plays a reference team with a trainer's flags). Null, the player's
+    /// side thinks with nothing and draws its moves at random, as ever; a recorded battle doesn't keep it.
+    /// </summary>
+    public Trainer? PlayerTrainer { get; init; }
+
     /// <summary>Who chooses for the other side; left out, the opponents' own chooser (<see cref="TrainerAi"/>).</summary>
     public IBattleController? EnemyController { get; init; } = TrainerAi.Instance;
 
@@ -158,6 +165,14 @@ public sealed class CoreSetup
     /// not switch, and the next in the team's order comes in. 0 for none, which changes nothing. A record keeps it.
     /// </summary>
     public int TurnLimit { get; init; }
+
+    /// <summary>
+    /// A battle between two players (plan 28 · I4): both sides answered from outside, either of whom may give the match
+    /// up at any question (<see cref="ChoiceKind.Forfeit"/>) and neither of whom may run. Made by
+    /// <see cref="Link.LinkSetup"/> beside <see cref="Frontier"/>, whose rules it takes whole. Off unless given, which
+    /// changes nothing; a record of the battle keeps it.
+    /// </summary>
+    public bool Link { get; init; }
 }
 
 /// <summary>
@@ -221,6 +236,9 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>The trainer beside the player in a tag battle, whose Pokémon stand in the player's second place.</summary>
     public Trainer? Partner { get; }
+
+    /// <summary>Whom the player's own places think as under the trainer AI (<see cref="CoreSetup.PlayerTrainer"/>); null for nobody.</summary>
+    public Trainer? PlayerTrainer { get; }
 
     /// <summary>The player can't run from this battle.</summary>
     public bool CannotFlee { get; }
@@ -306,9 +324,11 @@ public sealed partial class BattleCore : IBattleContext
         enemyController = Palace ? PalaceController.Instance : setup.EnemyController;
         partnerController = setup.PartnerController;
         Kind = setup.Kind;
+        PlayerTrainer = setup.PlayerTrainer;
         CannotFlee = setup.CannotFlee;
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
+        Link = setup.Link;
         NoRewards = setup.NoRewards;
         OffersSwitch = setup.OffersSwitch;
         MegaMaxDen = setup.MegaMaxDen;
@@ -399,6 +419,12 @@ public sealed partial class BattleCore : IBattleContext
 
     public void Submit(IReadOnlyList<BattleChoice> choices)
     {
+        // A player of a link battle gives the match up at any question (plan 28 · I4)
+        if (choices.FirstOrDefault(c => c.Kind == ChoiceKind.Forfeit) is { } giving)
+        {
+            Forfeit(giving);
+            return;
+        }
         switch (Request)
         {
             case null:
@@ -673,7 +699,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // A partner sends theirs out with their own line
         var own = mine.Where(b => b.Trainer == null).ToList();
-        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => ShownAs(b, b.Pokemon!))))));
+        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => GoesOutAs(b, b.Pokemon!))))));
         foreach (var b in own)
         {
             OnEntered(b, opening: true);
@@ -1389,6 +1415,8 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
+        // A Pokémon of the player's that loves it gains a fifth more (plan 10 · F7), before everything after the formula
+        exp = WithAffection(p, exp);
         // A crossed region's foes give half as much again (plan 18 · W4b-3), after the formula and before Easy's three halves
         if (CrossedExp) exp = LevelCaps.CrossedExp(exp);
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is

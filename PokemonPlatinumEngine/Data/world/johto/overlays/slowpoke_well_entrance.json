@@ -5,6 +5,7 @@
   "area": "slowpoke_well_entrance",
   "bgmTrack": "johto/union_cave",
   "people": {
+    "d26r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d26r0101_gantetsu": {
       "name": "Kurt",
       "script": "Kurt",

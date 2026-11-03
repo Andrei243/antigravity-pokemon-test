@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționar"
       ]
     },
     {
@@ -16,10 +16,10 @@
         "Nothing"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Bine ai venit la Prize Corner! Ai {coins} monede. Ce dorești?",
+        "Un obiect",
+        "Un Pokémon",
+        "Nimic"
       ]
     },
     {
@@ -27,7 +27,7 @@
         "The {item} for {price} coins?"
       ],
       "text": [
-        ""
+        "{item} pentru {price} monede?"
       ]
     },
     {
@@ -35,7 +35,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai vino pe la noi!"
       ]
     },
     {
@@ -55,11 +55,11 @@
         "Nothing"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care Pokémon? Ai {coins} monede.",
+        "Mr. Mime (3,333)",
+        "Eevee (6,666)",
+        "Porygon (9,999)",
+        "Nimic"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "{player} received Mr. Mime!"
       ],
       "text": [
-        ""
+        "{player} a primit Mr. Mime!"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "{player} received Eevee!"
       ],
       "text": [
-        ""
+        "{player} a primit Eevee!"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "{player} received Porygon!"
       ],
       "text": [
-        ""
+        "{player} a primit Porygon!"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Prizes are exchanged for coins. The Game Corner next door will give you a Coin Case."
       ],
       "text": [
-        ""
+        "Premiile se schimbă pe monede. Game Corner de alături îți dă un Coin Case."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "I'm sorry, you don't have enough coins."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destule monede."
       ]
     }
   ]

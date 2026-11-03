@@ -1,6 +1,7 @@
 // The voice catalogue (plan 26 · V1). See tools/VoiceTool/README.md.
 
 using System.Text;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Data;
 
 string? repo = FindRepository();
@@ -16,12 +17,64 @@ string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 var words = args.Where(a => !a.StartsWith("--", StringComparison.Ordinal)).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
-if (words.Count == 0 || words[0] is not ("catalogue" or "export"))
+if (words.Count == 0 || words[0] is not ("catalogue" or "export" or "manifest" or "check" or "vowels"))
 {
-    Console.Error.WriteLine("Say catalogue [--add-missing] [--check], or export <voice> [file].");
+    Console.Error.WriteLine("Say catalogue [--add-missing] [--check], export <voice> [file], manifest [folder] [--language en], check [folder], or vowels [folder] [--voice <id>] [--all].");
     return 2;
 }
-return words[0] == "catalogue" ? Catalogue() : Export();
+return words[0] switch
+{
+    "catalogue" => Catalogue(),
+    "export" => Export(),
+    "manifest" => Manifest(),
+    "check" => Check(),
+    _ => Vowels()
+};
+
+// ------------------------------------------------------------------ voice packs (plan 26 · V2)
+
+string LanguageOf() => args.SkipWhile(a => a != "--language").Skip(1).FirstOrDefault() ?? "en";
+
+// A pack's folder: the one named, or voice/<language> at the repository's root (git ignores it, as the game's own beside it)
+string PackFolder() => words.Count > 1 ? Path.GetFullPath(words[1]) : Path.Combine(repo, "voice", LanguageOf());
+
+int Manifest()
+{
+    string folder = PackFolder();
+    if (!Directory.Exists(folder)) { Console.Error.WriteLine($"{folder} is no folder."); return 2; }
+    var catalogue = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+    var pack = VoicePacks.Manifest(folder, catalogue, LanguageOf());
+    File.WriteAllText(Path.Combine(folder, VoiceLibrary.PackFileName), GameDataFiles.Serialize(pack));
+    Console.WriteLine($"{pack.Lines.Count} takes listed in {Path.Combine(folder, VoiceLibrary.PackFileName)}, each stamped with its line's English as the catalogue has it now.");
+    int loose = Directory.GetFiles(folder, "*", SearchOption.AllDirectories).Count(f => Path.GetFileName(f) != VoiceLibrary.PackFileName) - pack.Lines.Count;
+    if (loose > 0) Console.WriteLine($"{loose} files name no line of the catalogue (or have no decoder) and were left out: a take is <voice>/<key>.wav, the key's colon written '+'.");
+    return 0;
+}
+
+int Check()
+{
+    string folder = PackFolder();
+    var pack = VoiceLibrary.Open(folder);
+    if (pack == null) { Console.WriteLine($"No pack at {folder} (no pack.json): nothing to check."); return 0; }
+    var catalogue = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+    var (wrong, stale) = VoicePacks.Check(pack, catalogue);
+    foreach (var f in wrong.Take(200)) Console.WriteLine($"wrong: {f.Key}: {f.What}");
+    if (wrong.Count > 200) Console.WriteLine($"... and {wrong.Count - 200} more");
+    List("stale (made from English that has changed since: the game never plays them until they are made again)", stale);
+    Console.WriteLine($"{pack.Entries.Count} takes: {wrong.Count} wrong, {stale.Count} stale.");
+    return wrong.Count > 0 ? 1 : 0;
+}
+
+int Vowels()
+{
+    string folder = PackFolder();
+    string? voice = args.SkipWhile(a => a != "--voice").Skip(1).FirstOrDefault();
+    if (voice == null && !switches.Contains("--all")) { Console.Error.WriteLine("vowels needs --voice <id> (rival, rowan, look:lass#2) or --all."); return 2; }
+    var catalogue = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+    int n = VoicePacks.WriteStandIns(folder, catalogue, LanguageOf(), (_, v) => voice == null || v == voice || v.StartsWith(voice + "#", StringComparison.Ordinal));
+    Console.WriteLine($"{n} stand-in takes of synthesised vowels and their pack.json written in {folder}. Turn VOICES on in the options to hear them.");
+    return 0;
+}
 
 int Catalogue()
 {

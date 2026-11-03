@@ -108,6 +108,18 @@ public class SaveData
     public int PlayerGridY { get; set; } = 886;
     public Direction PlayerFacing { get; set; } = Direction.Down;
 
+    /// <summary>
+    /// Where the body's centre stood off its tile's centre, in 256ths of a tile (plan 30 · FM7): only a region that moves
+    /// freely leaves it anything but nought, and nought is left out of the file. A save from before
+    /// <see cref="FreePositions"/> stands on its tile's centre (<see cref="SaveMigration"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int PlayerSubX { get; set; }
+
+    /// <inheritdoc cref="PlayerSubX"/>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int PlayerSubY { get; set; }
+
     /// <summary>How the player was getting about: a save made while surfing loads out on the water.</summary>
     public PokemonPlatinumEngine.Overworld.TravelMode Travel { get; set; }
 
@@ -279,6 +291,9 @@ public class SaveData
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
     public Models.ApricornSave? Apricorns { get; set; }
 
+    /// <summary>The DexNav (plan 10 · F11, F12): switched on or not, the search levels and the chain. Null while it has never been used, and in older saves.</summary>
+    public Overworld.DexNavSave? DexNav { get; set; }
+
     /// <summary>Cameron's photo album (plan 20, part q); null while empty, so an older save needs nothing.</summary>
     public List<Models.Photo>? Photos { get; set; }
 
@@ -319,8 +334,14 @@ public class SaveData
     /// </summary>
     public const int PokemonIdsGiven = 1;
 
+    /// <summary>
+    /// The <see cref="SaveVersion"/> from which a save keeps where the player's body stood between tiles (plan 30 · FM7,
+    /// <see cref="PlayerSubX"/>): a save from before stands on its tile's centre.
+    /// </summary>
+    public const int FreePositions = 2;
+
     /// <summary>The <see cref="SaveVersion"/> of saves made today.</summary>
-    public const int CurrentSave = PokemonIdsGiven;
+    public const int CurrentSave = FreePositions;
 
     /// <summary>
     /// The version of the save's own records, beside <see cref="WorldVersion"/> (where its player stands) and
@@ -421,6 +442,18 @@ public class SaveData
     /// tile it begins on: a game saved in the player's bedroom before the first step wakes there, where the scene
     /// that the first step starts finds it.
     /// </summary>
+    /// <summary>
+    /// Where a save wakes that stands on a map no region has now (plan 16 · T14): one made in a region a pack adds, the
+    /// pack gone or turned off. It wakes where the region its game began in begins (Sinnoh's room for most), with
+    /// everything else of it as it was; null for a save whose map is there, which <see cref="PlaceOn"/> places.
+    /// </summary>
+    public MapSpot? WhereAPackLeftIt(Func<string, Map?> tryGet)
+    {
+        if (tryGet(Place().Map) != null) return null;
+        var began = Data.RegionDatabase.Get(BeganInOrHere());
+        return (began?.IsBuilt == true ? began.Start : null) ?? Data.RegionDatabase.First.Start;
+    }
+
     public MapSpot PlaceOn(Func<string, Map?> maps)
     {
         var spot = Place();
@@ -719,6 +752,12 @@ public class SavedPokemonData
     /// <summary>The ribbons it has won (plan 06 · R17a), by the original's names; left out for one with none.</summary>
     public List<string>? Ribbons { get; set; }
 
+    /// <summary>The marks it carries from its encounter (plan 10 · F9), by name; left out for one with none, which is every Pokémon of an older save.</summary>
+    public List<string>? EncounterMarks { get; set; }
+
+    /// <summary>The mark chosen as its title (plan 10 · F9); left out for none.</summary>
+    public string? Title { get; set; }
+
     /// <summary>The Ball Capsule on its ball (plan 06 · R17b): its number among the case's twelve and its Seals; left out for one with none.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int CapsuleId { get; set; }
@@ -793,6 +832,8 @@ public class SavedPokemonData
             Language = p.Language,
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null,
             Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
+            EncounterMarks = p.EncounterMarks.Count > 0 ? p.EncounterMarks.ToList() : null,
+            Title = p.Title,
             CapsuleId = p.CapsuleId,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
@@ -866,6 +907,9 @@ public class SavedPokemonData
         if (Personality is { } personality) p.Personality = personality;
         foreach (var (key, count) in EvolutionProgress ?? new()) p.EvolutionProgress[key] = count;
         if (Ribbons != null) p.Ribbons.UnionWith(Ribbons);
+        if (EncounterMarks != null) p.EncounterMarks.UnionWith(EncounterMarks);
+        // A title is one of its marks or nothing
+        p.Title = Title != null && p.EncounterMarks.Contains(Title) ? Title : null;
         if (CapsuleId is > 0 and <= SealCase.Capsules)
         {
             p.CapsuleId = CapsuleId;

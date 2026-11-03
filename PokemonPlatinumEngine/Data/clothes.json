@@ -34,7 +34,15 @@
     { "id": "blue_backpack", "name": "Blue Backpack", "slot": "Bag", "price": 2000, "color": "#4a7ad8", "description": "A roomy blue backpack." },
     { "id": "green_backpack", "name": "Green Backpack", "slot": "Bag", "price": 2000, "color": "#58a868", "description": "A green backpack, the colour of Route 201." },
     { "id": "black_backpack", "name": "Black Backpack", "slot": "Bag", "price": 2000, "color": "#30303a", "description": "A black backpack that goes with anything." },
-    { "id": "pink_backpack", "name": "Pink Backpack", "slot": "Bag", "price": 2000, "color": "#ee88aa", "description": "A pink backpack, cute and practical." }
+    { "id": "pink_backpack", "name": "Pink Backpack", "slot": "Bag", "price": 2000, "color": "#ee88aa", "description": "A pink backpack, cute and practical." },
+
+    // Lumiose City's boutique (plan 23 · Z2, second part): our own, in the colours of its boulevards
+    { "id": "cream_beret", "name": "Cream Beret", "slot": "Hat", "price": 1600, "hat": "Beret", "color": "#efe4c8", "accent": "#2c3458", "description": "A cream beret with a navy band, worn tilted in Lumiose." },
+    { "id": "rouge_beret", "name": "Rouge Beret", "slot": "Hat", "price": 1600, "hat": "Beret", "color": "#b8323e", "accent": "#f2ead8", "description": "A deep red beret, the colour of Rouge Plaza at dusk." },
+    { "id": "boulevard_tee", "name": "Boulevard Tee", "slot": "Top", "price": 1400, "color": "#f4f2ec", "accent": "#2c3458", "shortSleeves": true, "stripes": true, "description": "A cream tee with navy stripes, as worn on every café terrace." },
+    { "id": "trench_coat", "name": "Trench Coat", "slot": "Top", "price": 4200, "color": "#c8a66e", "accent": "#5a3a2a", "coat": true, "description": "A long sand trench coat for rainy evenings by the tower." },
+    { "id": "grey_skirt", "name": "Grey Skirt", "slot": "Bottoms", "price": 1800, "color": "#6a6c78", "skirt": true, "description": "A pleated skirt in city grey." },
+    { "id": "tan_brogues", "name": "Tan Brogues", "slot": "Shoes", "price": 2200, "color": "#a8683a", "accent": "#5a3a24", "description": "Polished tan shoes, made for cobbled streets." }
   ],
   "boutiques": {
     // Jubilife City's boutique, in the building the original never used (Data/maps/JubilifeBoutique.json)
@@ -44,6 +52,26 @@
       "denim_jeans", "black_trousers", "khaki_shorts", "red_skirt", "navy_skirt",
       "white_sneakers", "red_sneakers", "green_runners", "black_boots",
       "blue_backpack", "green_backpack", "black_backpack", "pink_backpack"
+    ],
+    // Lumiose City's boutique (plan 23 · Z2, second part; Data/maps/LumioseCity_Boutique.json): the city's own and a few of the classics
+    "lumiose": [
+      "cream_beret", "rouge_beret", "navy_beret", "plum_beret",
+      "boulevard_tee", "trench_coat", "black_jacket", "rose_coat",
+      "grey_skirt", "black_trousers", "navy_skirt",
+      "tan_brogues", "black_boots",
+      "black_backpack"
     ]
-  }
+  },
+  // The sets offered in the introduction (plan 11 · C10; style guide, "The new-game introduction"), after the look's
+  // own clothes, which come first so that a press goes on as before. A set is garments of the list above, a slot left
+  // out being the look's own; "for" keeps a set to the boy or the girl (left out: both). Choosing one gives its
+  // garments for nothing, and they are the player's to wear from then on.
+  "sets": [
+    { "id": "trail", "name": "Trail Set", "garments": [ "red_cap", "forest_hoodie", "khaki_shorts", "green_runners", "green_backpack" ] },
+    { "id": "city", "name": "City Set", "garments": [ "black_cap", "black_jacket", "denim_jeans", "white_sneakers", "black_backpack" ] },
+    { "id": "sunny", "name": "Sunny Set", "garments": [ "blue_cap", "striped_tee", "khaki_shorts", "red_sneakers", "blue_backpack" ], "for": "Boy" },
+    { "id": "snow", "name": "Snow Set", "garments": [ "navy_beret", "winter_coat", "black_trousers", "black_boots" ] },
+    { "id": "beret", "name": "Beret Set", "garments": [ "plum_beret", "sunny_tee", "red_skirt", "white_sneakers", "pink_backpack" ], "for": "Girl" },
+    { "id": "rose", "name": "Rose Set", "garments": [ "mint_beret", "rose_coat", "navy_skirt", "white_sneakers" ], "for": "Girl" }
+  ]
 }

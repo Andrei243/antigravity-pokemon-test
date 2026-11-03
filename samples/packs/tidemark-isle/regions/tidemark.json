@@ -1,0 +1,64 @@
+{
+  // The sample pack's region (plan 16 · T14; docs/packs.md, "A region of your own"): a region the game has no code for,
+  // so this file says everything the game's own regions keep in RegionDatabase as well as what their files hold
+  "id": "Tidemark",
+  "name": "Tidemark",
+  "folder": "tidemark",
+  // Its houses are drawn into its tiles, as Kalos's are, so it looks its props up in Kalos's catalogue
+  "models": "kalos",
+  "map": "Tidemark",
+  "nationalUnlock": "HallOfFame",
+  // A new game begun here (--region Tidemark) starts as a game with no story does: a Pokémon and a few items, in the house
+  "hasStory": false,
+  "rival": "Wren",
+  "starters": [ "Wingull", "Shellos", "Corphish" ],
+  "badges": [],
+  "gates": {},
+  "professor": {
+    "name": "Prof. Marram",
+    "look": "ROWAN",
+    "species": "Wingull",
+    "lines": {
+      "hello": "Ah, there you are. Mind the nets on the way in.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Marram. I study the Pokémon that come and go with the tides.",
+      "world": "On Tidemark the sea is never far: Pokémon nest in the dunes, fish in the shallows and ride the wind over the harbour.",
+      "oneOfThem": "This one follows the ferry in every morning. Say hello!",
+      "liveAlongside": "Out here everyone helps everyone, people and Pokémon alike.",
+      "study": "I keep a log of who comes ashore with each tide.",
+      "enough": "But that's enough about the sea. Tell me about yourself.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what shall I call you?",
+      "nextDoor": "There's a young Trainer on the island who has been waiting for someone to battle.",
+      "neverStill": "They're down at the harbour from dawn to dusk.",
+      "fineName": "{name}! A good name for an islander.",
+      "ofCourse": "I expect you'll be friends soon enough.",
+      "story": "{name}, your story begins in Tidemark Town, the only town on the island.",
+      "offYouGo": "Off you go. The tide waits for no one!"
+    }
+  },
+  "spawns": [
+    { "id": 1, "area": "tidemark_town", "x": 6, "y": 8, "room": "TidemarkTown_House" }
+  ],
+  // Its place in the chain: after the last region with maps, Kalos; a ferry from Vaniville Town, whose ferryman stands by
+  // the town's sign (laid onto Kalos's map by the game, so the pack copies none of Kalos's files)
+  "generation": 0,
+  "start": { "map": "TidemarkTown_House", "x": 4, "y": 7, "facing": "Up" },
+  "arrival": { "map": "Tidemark", "x": 14, "y": 23, "facing": "Up" },
+  "maps": [ "Tidemark", "TidemarkTown_House" ],
+  "after": "Kalos",
+  "link": {
+    "transport": "Boat",
+    "vessel": "ferry",
+    "departureMap": "Kalos",
+    "attendant": {
+      "id": "tidemark_ferryman",
+      "name": "Ferryman",
+      "npcType": "sailor",
+      "x": 259,
+      "y": 709,
+      "facing": "Down",
+      "isTransportAttendant": true
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Orașul Lumiose"
+    ]
+  },
+  "people": {
+    "student": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elevul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to Lumiose to study under Professor Sycamore. He says I must first learn to make a decent cup of coffee."
+        ],
+        "text": [
+          "Am venit la Lumiose să studiez la Profesorul Sycamore. Zice că mai întâi trebuie să învăț să fac o cafea cum se cuvine."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Espurr stares at the wall for hours. I am sure it sees something there that I do not."
+        ],
+        "text": [
+          "Espurr-ul meu se holbează la perete ore întregi. Sunt sigur că vede acolo ceva ce eu nu văd."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

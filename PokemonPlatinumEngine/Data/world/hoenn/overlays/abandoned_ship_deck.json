@@ -4,5 +4,24 @@
   // first deck's corridors and the door at the bow into the captain's office (Emerald's AbandonedShip_Deck)
   "area": "abandoned_ship_deck",
   "bgmTrack": "hoenn/abandoned_ship",
-  "trees": "Round"
+  "trees": "Round",
+  // The deckhouse along the deck's north side, its west end and its bulwarks (plan 21 · part r): Emerald's metatiles for
+  // them are shared with the Aqua Hideout and Stern's shipyard and are laid as rock, so a ship's steel stands over them,
+  // from the deck below each up to the top of the blocked tiles it covers (HoennArt.ShipCabin; the tiles block as before)
+  "props": [
+    { "type": "ShipCabin", "x": 0, "y": 0, "width": 8, "depth": 6 },
+    { "type": "ShipCabin", "x": 8, "y": 0, "width": 6, "depth": 4 },
+    { "type": "ShipCabin", "x": 14, "y": 0, "width": 18, "depth": 6 },
+    { "type": "ShipCabin", "x": 0, "y": 6, "width": 4, "depth": 4 },
+    { "type": "ShipCabin", "x": 4, "y": 6, "width": 3, "depth": 2 },
+    { "type": "ShipCabin", "x": 14, "y": 6, "width": 1, "depth": 2 },
+    { "type": "ShipCabin", "x": 7, "y": 7, "width": 3, "depth": 1 },
+    { "type": "ShipCabin", "x": 12, "y": 7, "width": 2, "depth": 1 },
+    { "type": "ShipCabin", "x": 0, "y": 10, "width": 3, "depth": 3 },
+    { "type": "ShipCabin", "x": 3, "y": 11, "width": 4, "depth": 2 },
+    { "type": "ShipCabin", "x": 7, "y": 12, "width": 6, "depth": 1 },
+    { "type": "ShipCabin", "x": 15, "y": 12, "width": 8, "depth": 1 },
+    { "type": "ShipCabin", "x": 12, "y": 13, "width": 1, "depth": 3 },
+    { "type": "ShipCabin", "x": 15, "y": 13, "width": 1, "depth": 3 }
+  ]
 }

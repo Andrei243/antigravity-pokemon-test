@@ -9,6 +9,7 @@
   // Suicune's first Kanto stop (part o, vermilion.txt): HeartGold's two triggers either side of it, on VAR_UNK_4070 1
   "triggers": [ { "trigger": 0, "script": "SuicuneByTheHarbour" }, { "trigger": 2, "script": "SuicuneByTheHarbour" } ],
   "people": {
+    "t06_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t06_minaki": { "name": "Eusine", "script": "EusineByTheHarbour", "still": true },
     "t06_minaki_2": { "name": "Eusine", "script": "EusineOnTheTrail", "still": true },
     "t06_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "script": "SuicuneByTheHarbour", "still": true },

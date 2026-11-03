@@ -29,11 +29,20 @@ public sealed class FieldFuzzer : IFuzzer
     };
 
     private readonly Random random;
+    private readonly bool stick;
     private ActionFrame frame = ActionFrame.None;
     private GameAction[] held = Array.Empty<GameAction>();
+    private (sbyte X, sbyte Y) tilt;
     private int holdFor;
 
     public FieldFuzzer(int seed) => random = new Random(seed);
+
+    /// <summary>
+    /// A fuzzer that steers a stick (plan 30 · FM9), for a region that moves freely: a way is an angle of sixteen and a
+    /// tilt of a quarter to full, drawn from the seed, handed over as the frame's tilt with the direction bits the stick's
+    /// eight ways set. With <paramref name="stick"/> false it is the grid's fuzzer, draw for draw.
+    /// </summary>
+    public FieldFuzzer(int seed, bool stick) : this(seed) => this.stick = stick;
 
     public ActionFrame Next()
     {
@@ -43,6 +52,16 @@ public sealed class FieldFuzzer : IFuzzer
             if (roll < 6)
             {
                 // A way, for one to four tiles' worth of frames, sometimes running
+                if (stick)
+                {
+                    double angle = random.Next(16) * Math.PI / 8;
+                    float share = random.Next(2, 9) / 8f;
+                    tilt = ((sbyte)Math.Round(Math.Sin(angle) * share * 127), (sbyte)Math.Round(Math.Cos(angle) * share * 127));
+                    held = random.Next(2) == 0 ? new[] { GameAction.Run } : Array.Empty<GameAction>();
+                    holdFor = random.Next(8, 8 + 16 * 4);
+                    frame = Stir(frame, held, tilt);
+                    return frame;
+                }
                 var way = Ways[random.Next(Ways.Length)];
                 held = random.Next(2) == 0 ? new[] { way, GameAction.Run } : new[] { way };
                 holdFor = random.Next(8, 8 + 16 * 4);
@@ -50,17 +69,28 @@ public sealed class FieldFuzzer : IFuzzer
             else if (roll < 9)
             {
                 // Something else, pressed for a moment, and let go
+                tilt = (0, 0);
                 held = new[] { Others[random.Next(Others.Length)] };
                 holdFor = random.Next(2, 6);
             }
             else
             {
+                tilt = (0, 0);
                 held = Array.Empty<GameAction>();
                 holdFor = random.Next(4, 30);
             }
         }
-        frame = frame.Next(held);
+        frame = stick ? Stir(frame, held, tilt) : frame.Next(held);
         return frame;
+    }
+
+    // The frame after another with actions held and a stick's tilt: its eight ways' bits added to what is held
+    private static ActionFrame Stir(ActionFrame before, GameAction[] held, (sbyte X, sbyte Y) tilt)
+    {
+        var bits = ActionFrame.Stick(tilt.X, tilt.Y);
+        var next = before.Next(held);
+        uint down = next.Down | bits.Down;
+        return new ActionFrame(down, down & ~before.Down) { MoveX = tilt.X, MoveY = tilt.Y };
     }
 
     /// <summary>

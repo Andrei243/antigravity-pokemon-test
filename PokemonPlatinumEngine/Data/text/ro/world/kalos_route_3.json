@@ -1,0 +1,130 @@
+{
+  "people": {
+    "tierno": {
+      "name": {
+        "en": [
+          "Tierno"
+        ],
+        "text": [
+          "Tierno"
+        ]
+      }
+    },
+    "trevor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          "Trevor"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Hugo"
+        ],
+        "text": [
+          "Hugo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Hugo: Out of the forest at last? Then you're ready for a real battle!"
+        ],
+        "text": [
+          "Puști Hugo: În sfârșit ai ieșit din pădure? Atunci ești gata pentru o luptă adevărată!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Hugo: That was a real battle all right. A real loss, too."
+        ],
+        "text": [
+          "Puști Hugo: A fost o luptă adevărată, într-adevăr. Și o înfrângere adevărată."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Colette"
+        ],
+        "text": [
+          "Colette"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Colette: Off to the Gym in Santalune? Let me see if you're ready for it!"
+        ],
+        "text": [
+          "Domnișoara Colette: Te duci la Arena din Santalune? Hai să văd dacă ești pregătit!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Colette: I think you're ready. Viola had better watch out!"
+        ],
+        "text": [
+          "Domnișoara Colette: Cred că ești pregătit. Viola să se ferească!"
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Inès"
+        ],
+        "text": [
+          "Inès"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Inès: My lunch can wait. A battle can't!"
+        ],
+        "text": [
+          "Excursionistă Inès: Prânzul meu poate aștepta. Lupta nu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Inès: I lost my appetite and my battle. Oh well."
+        ],
+        "text": [
+          "Excursionistă Inès: Mi-am pierdut și pofta de mâncare, și lupta. Na."
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Marill and Azurill play in this pond all day. Cast a line and you'll pull up something much grumpier."
+        ],
+        "text": [
+          "Marill și Azurill se joacă în iazul ăsta toată ziua. Aruncă o undiță și vei scoate ceva mult mai îmbufnat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 3 · Ouvert Way\nEast: Santalune City\nSouth: Santalune Forest"
+      ],
+      "text": [
+        "Ruta 3 · Calea Ouvert\nEst: Orașul Santalune\nSud: Pădurea Santalune"
+      ]
+    }
+  }
+}

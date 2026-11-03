@@ -28,7 +28,12 @@ string region = args[0];
 bool check = args.Contains("--check");
 string root = Repository.Root();
 string source = Path.Combine(root, "tools", "MapDraw", region);
-string target = Path.Combine(root, "PokemonPlatinumEngine", "Data", "world", region);
+// --out <world folder>: the files written elsewhere than the game's own Data (the sample pack's region, plan 16 · T14:
+// `-- tidemark --out samples/packs/tidemark-isle/world/tidemark`), a path from the repository's root
+int outAt = Array.IndexOf(args, "--out");
+string target = outAt >= 0 && outAt + 1 < args.Length
+    ? Path.GetFullPath(Path.Combine(root, args[outAt + 1]))
+    : Path.Combine(root, "PokemonPlatinumEngine", "Data", "world", region);
 var files = Repository.Files(source, target);
 int differs = 0;
 foreach (var (path, text) in files)

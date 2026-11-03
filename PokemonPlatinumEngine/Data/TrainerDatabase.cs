@@ -123,11 +123,33 @@ public static class TrainerDatabase
     /// 19 · K2: Kanto's, from FireRed), by the region's folder name. Their ids carry the region's name before them
     /// (<c>kanto_youngster_ben</c>), so they never meet Platinum's in the list of trainers beaten.
     /// </summary>
-    private static readonly Dictionary<string, List<TrainerRecord>> RegionLists = LoadRegions();
+    private static Dictionary<string, List<TrainerRecord>> RegionLists => Tables.Regions;
 
-    private static readonly Dictionary<string, TrainerRecord> Trainers = Index(
-        new[] { (FileName, Platinum), (MastersFileName, MasterList), (OursFileName, OurList) }
-            .Concat(RegionLists.Select(r => (Path.Combine(World.Folder, r.Key, FileName), r.Value))));
+    private static Dictionary<string, TrainerRecord> Trainers => Tables.Index;
+
+    // The regions' tables and the index of every trainer, read for the packs in use (plan 16 · T14: a region a pack adds
+    // brings its own trainers.json) and read again only when DataLayers.Use puts other packs in use
+    private static (IReadOnlyList<DataLayer> Packs, Dictionary<string, List<TrainerRecord>> Regions, Dictionary<string, TrainerRecord> Index)? tables;
+    private static readonly object reading = new();
+
+    private static (IReadOnlyList<DataLayer> Packs, Dictionary<string, List<TrainerRecord>> Regions, Dictionary<string, TrainerRecord> Index) Tables
+    {
+        get
+        {
+            var packs = DataLayers.Packs;
+            if (tables is { } known && ReferenceEquals(known.Packs, packs)) return known;
+            lock (reading)
+            {
+                if (tables is { } again && ReferenceEquals(again.Packs, packs)) return again;
+                var regions = LoadRegions();
+                var index = Index(new[] { (FileName, Platinum), (MastersFileName, MasterList), (OursFileName, OurList) }
+                    .Concat(regions.Select(r => (Path.Combine(World.Folder, r.Key, FileName), r.Value))));
+                var made = (packs, regions, index);
+                tables = made;
+                return made;
+            }
+        }
+    }
 
     /// <summary>
     /// Every file's trainers in one table by id. An id is one trainer's across every file (a region's prefix is what
@@ -149,23 +171,26 @@ public static class TrainerDatabase
         return table;
     }
 
-    private static Dictionary<string, List<TrainerRecord>> LoadRegions()
+    /// <summary>
+    /// The trainers of each region's world folder, by the folder's name: the game's and, across the layers (plan 16 ·
+    /// T14), those of a region a pack adds. <paramref name="over"/> names packs to read through in place of those in use
+    /// (a test's, which never puts a pack in use for the whole process).
+    /// </summary>
+    internal static Dictionary<string, List<TrainerRecord>> LoadRegions(IReadOnlyList<DataLayer>? over = null)
     {
         var lists = new Dictionary<string, List<TrainerRecord>>(StringComparer.OrdinalIgnoreCase);
-        string root = GameDataFiles.PathOf(World.Folder);
-        if (!Directory.Exists(root)) return lists;
-        foreach (string dir in Directory.GetDirectories(root).OrderBy(d => d, StringComparer.Ordinal))
+        foreach (string name in DataLayers.FoldersIn(World.Folder, over))
         {
-            string relative = Path.Combine(World.Folder, Path.GetFileName(dir), FileName);
-            if (File.Exists(GameDataFiles.PathOf(relative)))
+            string relative = Path.Combine(World.Folder, name, FileName);
+            if (File.Exists(DataLayers.PathOf(relative, over)))
             {
-                var list = GameDataFiles.Load<List<TrainerRecord>>(relative);
-                lists[Path.GetFileName(dir)] = list;
+                var list = GameDataFiles.Deserialize<List<TrainerRecord>>(DataLayers.ReadPatched(relative, over));
+                lists[name] = list;
                 // A region's rematch rows written by hand (plan 21 · H9, part c), beside the generated file the importer
                 // rewrites: trainer id to the ids of the teams they bring, whose records are the game's own (our-trainers.json)
-                string rows = Path.Combine(World.Folder, Path.GetFileName(dir), "rematches.json");
-                if (File.Exists(GameDataFiles.PathOf(rows)))
-                    foreach (var (id, row) in GameDataFiles.Load<Dictionary<string, List<string?>>>(rows))
+                string rows = Path.Combine(World.Folder, name, "rematches.json");
+                if (File.Exists(DataLayers.PathOf(rows, over)))
+                    foreach (var (id, row) in GameDataFiles.Deserialize<Dictionary<string, List<string?>>>(File.ReadAllText(DataLayers.PathOf(rows, over))))
                         if (list.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase)) is { } who) who.Rematches = row;
             }
         }

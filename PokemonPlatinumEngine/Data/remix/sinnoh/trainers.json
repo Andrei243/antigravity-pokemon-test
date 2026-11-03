@@ -1,0 +1,1511 @@
+{
+  "trainers": [
+    {
+      "id": "rival_route_201_piplup",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Turtwig", "level": 5, "nature": "Docile", "moves": ["Tackle", "Withdraw"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_201_turtwig",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Chimchar", "level": 5, "nature": "Docile", "moves": ["Scratch", "Leer"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_201_chimchar",
+      "batch": "V15",
+      "note": "The first battle stays a fair lesson: the starter alone, as the rival chose it, with a steady nature.",
+      "party": [
+        {"species": "Piplup", "level": 5, "nature": "Docile", "moves": ["Pound", "Growl"], "ivs": [10,10,10,10,10,10]}
+      ]
+    },
+    {
+      "id": "rival_route_203_piplup",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Turtwig with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Turtwig", "level": 9, "nature": "Adamant", "item": "Oran Berry", "moves": ["Tackle", "Withdraw", "Absorb"]}
+      ]
+    },
+    {
+      "id": "rival_route_203_turtwig",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Chimchar with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Chimchar", "level": 9, "nature": "Hasty", "item": "Oran Berry", "moves": ["Scratch", "Leer", "Ember", "Taunt"]}
+      ]
+    },
+    {
+      "id": "rival_route_203_chimchar",
+      "batch": "V16",
+      "note": "Speed into the starter: a Starly that strikes first, a Buneary that endures, then Piplup with the type it chose to beat yours.",
+      "party": [
+        {"species": "Starly", "level": 7, "nature": "Jolly", "moves": ["Tackle", "Growl", "Quick Attack"]},
+        {"species": "Buneary", "level": 7, "nature": "Impish", "moves": ["Pound", "Defense Curl", "Endure", "Foresight"]},
+        {"species": "Piplup", "level": 9, "nature": "Modest", "item": "Oran Berry", "moves": ["Pound", "Growl", "Bubble"]}
+      ]
+    },
+    {
+      "id": "leader_roark",
+      "batch": "V16",
+      "note": "Rock as a wall: Geodude lays Stealth Rock and Rock Tomb slows the challenger, Nosepass and Onix hold on with Sturdy, and Cranidos breaks through last with Mold Breaker. His ace stays at the pacing level of 14.",
+      "party": [
+        {"species": "Geodude", "level": 12, "nature": "Impish", "ability": "Sturdy", "moves": ["Stealth Rock", "Rock Throw", "Defense Curl", "Rock Polish"]},
+        {"species": "Nosepass", "level": 12, "nature": "Bold", "ability": "Sturdy", "moves": ["Rock Tomb", "Harden", "Thunder Wave", "Tackle"]},
+        {"species": "Onix", "level": 12, "nature": "Careful", "ability": "Sturdy", "moves": ["Rock Throw", "Screech", "Bind", "Rock Tomb"]},
+        {"species": "Cranidos", "level": 14, "nature": "Adamant", "ability": "Mold Breaker", "item": "Oran Berry", "moves": ["Headbutt", "Pursuit", "Rock Tomb", "Leer"]}
+      ]
+    },
+    {
+      "id": "commander_mars_valley_windworks",
+      "batch": "V16",
+      "note": "Poison and pressure: Zubat confuses, Croagunk taunts, Stunky blinds and Glameow puts the challenger to sleep before it strikes.",
+      "party": [
+        {"species": "Zubat", "level": 15, "nature": "Timid", "moves": ["Leech Life", "Supersonic", "Astonish", "Bite"]},
+        {"species": "Croagunk", "level": 15, "nature": "Adamant", "ability": "Dry Skin", "moves": ["Mud-Slap", "Poison Sting", "Taunt", "Pursuit"]},
+        {"species": "Stunky", "level": 15, "nature": "Jolly", "ability": "Aftermath", "moves": ["Poison Gas", "Screech", "Fury Swipes", "Smokescreen"]},
+        {"species": "Glameow", "level": 17, "nature": "Jolly", "ability": "Limber", "item": "Oran Berry", "moves": ["Fake Out", "Scratch", "Hypnosis", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_jubilife_city_1",
+      "batch": "V16",
+      "note": "A grunt of two poison types.",
+      "party": [
+        {"species": "Stunky", "level": 10, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Croagunk", "level": 11, "nature": "Brave", "moves": ["Astonish", "Mud-Slap", "Poison Sting", "Taunt"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_jubilife_city_2",
+      "batch": "V16",
+      "note": "A grunt who strikes first.",
+      "party": [
+        {"species": "Glameow", "level": 10, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Zubat", "level": 11, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_floaroma_meadow_1",
+      "batch": "V16",
+      "note": "A grunt with a scorpion that knocks items away.",
+      "party": [
+        {"species": "Stunky", "level": 12, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Skorupi", "level": 13, "nature": "Adamant", "moves": ["Bite", "Poison Sting", "Leer", "Knock Off"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_floaroma_meadow_2",
+      "batch": "V16",
+      "note": "A grunt of fumes and fangs.",
+      "party": [
+        {"species": "Zubat", "level": 11, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]},
+        {"species": "Koffing", "level": 11, "nature": "Bold", "moves": ["Tackle", "Poison Gas", "Smog", "Smokescreen"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_1",
+      "batch": "V16",
+      "note": "A grunt who strikes first, then poisons.",
+      "party": [
+        {"species": "Glameow", "level": 12, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Croagunk", "level": 13, "nature": "Brave", "moves": ["Mud-Slap", "Poison Sting", "Taunt", "Astonish"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_2",
+      "batch": "V16",
+      "note": "A grunt of dark wings.",
+      "party": [
+        {"species": "Zubat", "level": 12, "nature": "Hasty", "moves": ["Leech Life", "Supersonic", "Astonish"]},
+        {"species": "Murkrow", "level": 13, "nature": "Naughty", "moves": ["Peck", "Astonish", "Pursuit", "Haze"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valley_windworks_3",
+      "batch": "V16",
+      "note": "A grunt with three: the door's last guard before Mars.",
+      "party": [
+        {"species": "Glameow", "level": 11, "nature": "Hasty", "moves": ["Fake Out", "Scratch", "Growl"]},
+        {"species": "Stunky", "level": 11, "nature": "Naughty", "moves": ["Scratch", "Poison Gas", "Screech", "Fury Swipes"]},
+        {"species": "Houndour", "level": 11, "nature": "Rash", "moves": ["Leer", "Ember", "Howl", "Smog"]}
+      ]
+    },
+    {
+      "id": "youngster_tristan",
+      "batch": "V16",
+      "note": "Two birds of the first route.",
+      "party": [
+        {"species": "Starly", "level": 4, "nature": "Hardy", "moves": ["Tackle", "Growl"]},
+        {"species": "Pidgey", "level": 5, "nature": "Jolly", "moves": ["Tackle", "Sand Attack"]}
+      ]
+    },
+    {
+      "id": "lass_natalie",
+      "batch": "V16",
+      "note": "A strike first and a sturdy beaver.",
+      "party": [
+        {"species": "Bidoof", "level": 4, "nature": "Relaxed", "moves": ["Tackle"]},
+        {"species": "Skitty", "level": 5, "nature": "Jolly", "moves": ["Fake Out", "Growl", "Tail Whip", "Tackle"]}
+      ]
+    },
+    {
+      "id": "youngster_logan",
+      "batch": "V16",
+      "note": "Two bugs that wait.",
+      "party": [
+        {"species": "Burmy", "level": 4, "nature": "Bold", "moves": ["Protect"]},
+        {"species": "Kricketot", "level": 5, "nature": "Relaxed", "moves": ["Growl", "Bide"]}
+      ]
+    },
+    {
+      "id": "youngster_michael",
+      "batch": "V16",
+      "note": "Bugs of the cave road.",
+      "party": [
+        {"species": "Kricketot", "level": 6, "nature": "Relaxed", "moves": ["Growl", "Bide"]},
+        {"species": "Nincada", "level": 7, "nature": "Adamant", "moves": ["Scratch", "Harden", "Leech Life"]}
+      ]
+    },
+    {
+      "id": "youngster_dallas",
+      "batch": "V16",
+      "note": "Two electric dogs.",
+      "party": [
+        {"species": "Shinx", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Leer"]},
+        {"species": "Electrike", "level": 8, "nature": "Jolly", "moves": ["Tackle", "Thunder Wave"]}
+      ]
+    },
+    {
+      "id": "youngster_sebastian",
+      "batch": "V16",
+      "note": "Two fighters.",
+      "party": [
+        {"species": "Makuhita", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Focus Energy", "Sand Attack", "Arm Thrust"]},
+        {"species": "Machop", "level": 8, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy"]}
+      ]
+    },
+    {
+      "id": "lass_madeline",
+      "batch": "V16",
+      "note": "Charm, then water.",
+      "party": [
+        {"species": "Azurill", "level": 7, "nature": "Calm", "moves": ["Splash", "Charm", "Tail Whip"]},
+        {"species": "Psyduck", "level": 8, "nature": "Modest", "moves": ["Water Sport", "Scratch", "Tail Whip"]}
+      ]
+    },
+    {
+      "id": "lass_sarah",
+      "batch": "V16",
+      "note": "A small spark and a bigger one.",
+      "party": [
+        {"species": "Pichu", "level": 6, "nature": "Timid", "moves": ["Thunder Shock", "Charm", "Tail Whip"]},
+        {"species": "Shinx", "level": 7, "nature": "Adamant", "moves": ["Tackle", "Leer"]}
+      ]
+    },
+    {
+      "id": "youngster_tyler",
+      "batch": "V16",
+      "note": "The pond's three.",
+      "party": [
+        {"species": "Magikarp", "level": 6, "nature": "Hardy", "moves": ["Splash"]},
+        {"species": "Goldeen", "level": 7, "nature": "Adamant", "moves": ["Peck", "Tail Whip", "Water Sport", "Supersonic"]},
+        {"species": "Poliwag", "level": 8, "nature": "Modest", "moves": ["Water Sport", "Bubble"]}
+      ]
+    },
+    {
+      "id": "bug_catcher_brandon",
+      "batch": "V16",
+      "note": "A cocoon to wear the challenger down, then two that strike.",
+      "party": [
+        {"species": "Silcoon", "level": 10, "nature": "Bold", "moves": ["Harden"]},
+        {"species": "Nincada", "level": 10, "nature": "Adamant", "moves": ["Scratch", "Harden", "Leech Life"]},
+        {"species": "Kricketune", "level": 11, "nature": "Adamant", "moves": ["Growl", "Bide", "Fury Cutter"]}
+      ]
+    },
+    {
+      "id": "twins_liv_and_liz",
+      "batch": "V16",
+      "note": "A pair that helps each other: Plus and Minus.",
+      "party": [
+        {"species": "Plusle", "level": 11, "nature": "Timid", "ability": "Plus", "moves": ["Growl", "Thunder Wave", "Quick Attack", "Helping Hand"]},
+        {"species": "Minun", "level": 11, "nature": "Timid", "ability": "Minus", "moves": ["Growl", "Thunder Wave", "Quick Attack", "Helping Hand"]}
+      ]
+    },
+    {
+      "id": "aroma_lady_taylor",
+      "batch": "V16",
+      "note": "Spores and seeds.",
+      "party": [
+        {"species": "Budew", "level": 10, "nature": "Calm", "moves": ["Absorb", "Growth", "Water Sport", "Stun Spore"]},
+        {"species": "Oddish", "level": 10, "nature": "Modest", "moves": ["Absorb", "Sweet Scent", "Acid"]},
+        {"species": "Cherubi", "level": 11, "nature": "Bold", "moves": ["Tackle", "Growth", "Leech Seed"]}
+      ]
+    },
+    {
+      "id": "camper_curtis",
+      "batch": "V16",
+      "note": "Two diggers of the gate.",
+      "party": [
+        {"species": "Diglett", "level": 7, "nature": "Jolly", "moves": ["Scratch", "Sand Attack", "Growl", "Astonish"]},
+        {"species": "Sandshrew", "level": 7, "nature": "Impish", "moves": ["Scratch", "Defense Curl", "Sand Attack"]}
+      ]
+    },
+    {
+      "id": "picnicker_diana",
+      "batch": "V16",
+      "note": "A picnic by the water.",
+      "party": [
+        {"species": "Bidoof", "level": 8, "nature": "Relaxed", "moves": ["Tackle", "Growl"]},
+        {"species": "Wooper", "level": 9, "nature": "Relaxed", "moves": ["Water Gun", "Tail Whip", "Mud Sport", "Mud Shot"]}
+      ]
+    },
+    {
+      "id": "worker_colin",
+      "batch": "V16",
+      "note": "The mine's rock, steel and muscle.",
+      "party": [
+        {"species": "Geodude", "level": 7, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Mud Sport"]},
+        {"species": "Magnemite", "level": 7, "nature": "Modest", "moves": ["Metal Sound", "Tackle", "Thunder Shock"]},
+        {"species": "Machop", "level": 8, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy"]}
+      ]
+    },
+    {
+      "id": "worker_mason",
+      "batch": "V16",
+      "note": "A wall of rock.",
+      "party": [
+        {"species": "Onix", "level": 8, "nature": "Impish", "moves": ["Tackle", "Harden", "Bind", "Screech"]},
+        {"species": "Geodude", "level": 9, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Mud Sport", "Rock Polish"]}
+      ]
+    },
+    {
+      "id": "hiker_daniel",
+      "batch": "V16",
+      "note": "Three of rock and steel, each a step up.",
+      "party": [
+        {"species": "Geodude", "level": 11, "nature": "Impish", "moves": ["Tackle", "Defense Curl", "Rock Polish", "Rock Throw"]},
+        {"species": "Nosepass", "level": 11, "nature": "Bold", "moves": ["Tackle", "Harden"]},
+        {"species": "Aron", "level": 12, "nature": "Adamant", "moves": ["Tackle", "Harden", "Mud-Slap", "Headbutt"]}
+      ]
+    },
+    {
+      "id": "picnicker_siena",
+      "batch": "V16",
+      "note": "Charm and a spark.",
+      "party": [
+        {"species": "Azurill", "level": 12, "nature": "Calm", "moves": ["Splash", "Charm", "Tail Whip", "Bubble"]},
+        {"species": "Pachirisu", "level": 12, "nature": "Jolly", "moves": ["Growl", "Bide", "Quick Attack", "Charm"]}
+      ]
+    },
+    {
+      "id": "camper_zackary",
+      "batch": "V16",
+      "note": "A tail that passes the baton to a fist.",
+      "party": [
+        {"species": "Aipom", "level": 13, "nature": "Jolly", "moves": ["Scratch", "Tail Whip", "Astonish", "Baton Pass"]},
+        {"species": "Mankey", "level": 14, "nature": "Adamant", "moves": ["Scratch", "Low Kick", "Fury Swipes", "Karate Chop"]}
+      ]
+    },
+    {
+      "id": "battle_girl_kelsey",
+      "batch": "V16",
+      "note": "Mind and body.",
+      "party": [
+        {"species": "Meditite", "level": 14, "nature": "Adamant", "moves": ["Bide", "Meditate", "Confusion", "Detect"]},
+        {"species": "Machop", "level": 15, "nature": "Brave", "moves": ["Low Kick", "Leer", "Focus Energy", "Karate Chop"]}
+      ]
+    },
+    {
+      "id": "leader_gardenia",
+      "batch": "V17",
+      "note": "Grass that does not wait: Cherubi's Leech Seed and Roselia's Stun Spore wear the challenger down, Shroomish's spores and Tangela's Ingrain hold the line, and Turtwig's line comes last with Razor Leaf.",
+      "party": [
+        {"species": "Cherubi", "level": 19, "nature": "Calm", "ability": "Chlorophyll", "moves": ["Leech Seed", "Magical Leaf", "Growth", "Tackle"]},
+        {"species": "Tangela", "level": 20, "nature": "Bold", "moves": ["Ingrain", "Mega Drain", "Bind", "Sleep Powder"]},
+        {"species": "Shroomish", "level": 21, "nature": "Adamant", "ability": "Effect Spore", "moves": ["Leech Seed", "Mega Drain", "Headbutt", "Stun Spore"]},
+        {"species": "Roselia", "level": 21, "nature": "Modest", "ability": "Natural Cure", "moves": ["Magical Leaf", "Stun Spore", "Leech Seed", "Poison Sting"]},
+        {"species": "Grotle", "level": 22, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Razor Leaf", "Bite", "Withdraw", "Curse"]}
+      ]
+    },
+    {
+      "id": "leader_fantina",
+      "batch": "V17",
+      "note": "Ghosts that disappear: Gastly's Hypnosis and Drifloon's Minimize buy turns, Misdreavus and Duskull curse and spite, and Haunter strikes last from the shadows.",
+      "party": [
+        {"species": "Drifloon", "level": 24, "nature": "Bold", "ability": "Unburden", "moves": ["Minimize", "Ominous Wind", "Stockpile", "Focus Energy"]},
+        {"species": "Duskull", "level": 24, "nature": "Impish", "moves": ["Will-O-Wisp", "Night Shade", "Confuse Ray", "Pursuit"]},
+        {"species": "Misdreavus", "level": 25, "nature": "Timid", "moves": ["Psybeam", "Confuse Ray", "Astonish", "Mean Look"]},
+        {"species": "Shuppet", "level": 24, "nature": "Adamant", "ability": "Insomnia", "moves": ["Shadow Sneak", "Will-O-Wisp", "Feint Attack", "Curse"]},
+        {"species": "Haunter", "level": 26, "nature": "Timid", "item": "Sitrus Berry", "moves": ["Hypnosis", "Shadow Punch", "Curse", "Night Shade"]}
+      ]
+    },
+    {
+      "id": "commander_jupiter_team_galactic_eterna_building",
+      "batch": "V17",
+      "note": "Smoke and poison: Golbat and Gulpin wear down, Croagunk taunts, and Stunky blinds and breaks through last.",
+      "party": [
+        {"species": "Golbat", "level": 22, "nature": "Jolly", "moves": ["Astonish", "Bite", "Wing Attack", "Confuse Ray"]},
+        {"species": "Gulpin", "level": 21, "nature": "Bold", "moves": ["Yawn", "Poison Gas", "Sludge", "Amnesia"]},
+        {"species": "Croagunk", "level": 21, "nature": "Adamant", "ability": "Dry Skin", "moves": ["Poison Sting", "Taunt", "Pursuit", "Feint Attack"]},
+        {"species": "Stunky", "level": 23, "nature": "Adamant", "item": "Oran Berry", "moves": ["Fury Swipes", "Smokescreen", "Feint", "Slash"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_team_galactic_eterna_building_1f_1",
+      "batch": "V17",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 17, "nature": "Jolly", "moves": ["Scratch", "Growl", "Hypnosis", "Feint Attack"]},
+        {"species": "Houndour", "level": 17, "nature": "Modest", "moves": ["Howl", "Smog", "Roar", "Bite"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_team_galactic_eterna_building_1f_2",
+      "batch": "V17",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Croagunk", "level": 16, "nature": "Careful", "moves": ["Mud-Slap", "Poison Sting", "Taunt", "Pursuit"]},
+        {"species": "Murkrow", "level": 18, "nature": "Rash", "moves": ["Astonish", "Pursuit", "Haze", "Wing Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_team_galactic_eterna_building_2f_1",
+      "batch": "V17",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Bronzor", "level": 18, "nature": "Modest", "moves": ["Confusion", "Hypnosis", "Imprison", "Confuse Ray"]},
+        {"species": "Seviper", "level": 19, "nature": "Adamant", "moves": ["Lick", "Bite", "Poison Tail", "Screech"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_team_galactic_eterna_building_2f_2",
+      "batch": "V17",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 18, "nature": "Rash", "moves": ["Scratch", "Growl", "Hypnosis", "Feint Attack"]},
+        {"species": "Houndour", "level": 19, "nature": "Hardy", "moves": ["Howl", "Smog", "Roar", "Bite"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_team_galactic_eterna_building_3f",
+      "batch": "V17",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Seviper", "level": 16, "nature": "Calm", "moves": ["Wrap", "Lick", "Bite", "Poison Tail"]},
+        {"species": "Skorupi", "level": 16, "nature": "Bold", "moves": ["Poison Sting", "Leer", "Knock Off", "Pin Missile"]},
+        {"species": "Gulpin", "level": 16, "nature": "Impish", "moves": ["Pound", "Yawn", "Poison Gas", "Sludge"]}
+      ]
+    },
+    {
+      "id": "rival_route_209_piplup",
+      "batch": "V17",
+      "note": "Hurry, and a Heracross: Staravia comes in with Intimidate, Buizel and Ponyta strike fast, Heracross hits hard, and Grotle finishes.",
+      "party": [
+        {"species": "Staravia", "level": 25, "nature": "Jolly", "ability": "Intimidate", "moves": ["Wing Attack", "Double Team", "Endeavor", "Whirlwind"]},
+        {"species": "Buizel", "level": 23, "nature": "Jolly", "moves": ["Water Gun", "Pursuit", "Swift", "Aqua Jet"]},
+        {"species": "Ponyta", "level": 23, "nature": "Jolly", "moves": ["Tail Whip", "Ember", "Flame Wheel", "Stomp"]},
+        {"species": "Heracross", "level": 24, "nature": "Adamant", "ability": "Guts", "moves": ["Endure", "Fury Attack", "Aerial Ace", "Brick Break"]},
+        {"species": "Grotle", "level": 27, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Razor Leaf", "Curse", "Bite", "Mega Drain"]}
+      ]
+    },
+    {
+      "id": "rival_route_209_turtwig",
+      "batch": "V17",
+      "note": "Hurry, and a Heracross: Staravia comes in with Intimidate, Buizel and Roselia strike fast, Heracross hits hard, and Monferno finishes.",
+      "party": [
+        {"species": "Staravia", "level": 25, "nature": "Jolly", "ability": "Intimidate", "moves": ["Wing Attack", "Double Team", "Endeavor", "Whirlwind"]},
+        {"species": "Buizel", "level": 23, "nature": "Jolly", "moves": ["Water Gun", "Pursuit", "Swift", "Aqua Jet"]},
+        {"species": "Roselia", "level": 23, "nature": "Modest", "moves": ["Mega Drain", "Leech Seed", "Magical Leaf", "Grass Whistle"]},
+        {"species": "Heracross", "level": 24, "nature": "Adamant", "ability": "Guts", "moves": ["Endure", "Fury Attack", "Aerial Ace", "Brick Break"]},
+        {"species": "Monferno", "level": 27, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Mach Punch", "Fury Swipes", "Flame Wheel", "Feint"]}
+      ]
+    },
+    {
+      "id": "rival_route_209_chimchar",
+      "batch": "V17",
+      "note": "Hurry, and a Heracross: Staravia comes in with Intimidate, Roselia and Ponyta strike fast, Heracross hits hard, and Prinplup finishes.",
+      "party": [
+        {"species": "Staravia", "level": 25, "nature": "Jolly", "ability": "Intimidate", "moves": ["Wing Attack", "Double Team", "Endeavor", "Whirlwind"]},
+        {"species": "Roselia", "level": 23, "nature": "Timid", "moves": ["Mega Drain", "Leech Seed", "Magical Leaf", "Grass Whistle"]},
+        {"species": "Ponyta", "level": 23, "nature": "Jolly", "moves": ["Tail Whip", "Ember", "Flame Wheel", "Stomp"]},
+        {"species": "Heracross", "level": 24, "nature": "Adamant", "ability": "Guts", "moves": ["Endure", "Fury Attack", "Aerial Ace", "Brick Break"]},
+        {"species": "Prinplup", "level": 27, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Peck", "Metal Claw", "Bubble Beam", "Bide"]}
+      ]
+    },
+    {
+      "id": "bug_catcher_jack",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Gligar", "level": 11, "nature": "Jolly", "moves": ["Poison Sting", "Sand Attack", "Harden"]},
+        {"species": "Starly", "level": 13, "nature": "Modest", "moves": ["Growl", "Quick Attack", "Wing Attack", "Double Team"]},
+        {"species": "Skarmory", "level": 15, "nature": "Adamant", "moves": ["Peck", "Sand Attack", "Swift", "Agility"]}
+      ]
+    },
+    {
+      "id": "psychic_kody",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Kricketune", "level": 16, "nature": "Brave", "moves": ["Growl", "Bide", "Fury Cutter", "Leech Life"]},
+        {"species": "Meditite", "level": 17, "nature": "Naughty", "moves": ["Meditate", "Confusion", "Detect", "Hidden Power"]}
+      ]
+    },
+    {
+      "id": "cyclist_axel",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Machop", "level": 20, "nature": "Timid", "moves": ["Focus Energy", "Karate Chop", "Foresight", "Seismic Toss"]},
+        {"species": "Cacnea", "level": 21, "nature": "Calm", "moves": ["Growth", "Leech Seed", "Sand Attack", "Pin Missile"]}
+      ]
+    },
+    {
+      "id": "cyclist_megan",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Lunatone", "level": 20, "nature": "Hardy", "moves": ["Confusion", "Rock Throw", "Hypnosis", "Rock Polish"]},
+        {"species": "Bibarel", "level": 21, "nature": "Brave", "moves": ["Defense Curl", "Rollout", "Water Gun", "Headbutt"]}
+      ]
+    },
+    {
+      "id": "camper_anthony",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Miltank", "level": 21, "nature": "Hardy", "moves": ["Stomp", "Milk Drink", "Bide", "Rollout"]},
+        {"species": "Chingling", "level": 22, "nature": "Brave", "moves": ["Astonish", "Confusion", "Uproar", "Last Resort"]}
+      ]
+    },
+    {
+      "id": "hiker_justin",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Bibarel", "level": 20, "nature": "Jolly", "moves": ["Defense Curl", "Rollout", "Water Gun", "Headbutt"]},
+        {"species": "Cranidos", "level": 20, "nature": "Modest", "moves": ["Focus Energy", "Pursuit", "Take Down", "Scary Face"]}
+      ]
+    },
+    {
+      "id": "hiker_robert",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Shieldon", "level": 21, "nature": "Naughty", "moves": ["Taunt", "Metal Sound", "Take Down", "Iron Defense"]},
+        {"species": "Kricketune", "level": 22, "nature": "Jolly", "moves": ["Fury Cutter", "Leech Life", "Sing", "Focus Energy"]}
+      ]
+    },
+    {
+      "id": "black_belt_kyle",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Lunatone", "level": 22, "nature": "Adamant", "moves": ["Confusion", "Rock Throw", "Hypnosis", "Rock Polish"]},
+        {"species": "Bibarel", "level": 23, "nature": "Timid", "moves": ["Rollout", "Water Gun", "Headbutt", "Hyper Fang"]}
+      ]
+    },
+    {
+      "id": "breeder_albert",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Meditite", "level": 20, "nature": "Careful", "moves": ["Confusion", "Detect", "Hidden Power", "Mind Reader"]},
+        {"species": "Solrock", "level": 20, "nature": "Rash", "moves": ["Confusion", "Rock Throw", "Fire Spin", "Rock Polish"]},
+        {"species": "Roselia", "level": 20, "nature": "Hardy", "moves": ["Stun Spore", "Mega Drain", "Leech Seed", "Magical Leaf"]},
+        {"species": "Gulpin", "level": 20, "nature": "Brave", "moves": ["Yawn", "Poison Gas", "Sludge", "Amnesia"]}
+      ]
+    },
+    {
+      "id": "cowgirl_shelley",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Chingling", "level": 22, "nature": "Hardy", "moves": ["Astonish", "Confusion", "Uproar", "Last Resort"]},
+        {"species": "Shieldon", "level": 23, "nature": "Brave", "moves": ["Taunt", "Metal Sound", "Take Down", "Iron Defense"]}
+      ]
+    },
+    {
+      "id": "ninja_boy_fabian",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Roselia", "level": 31, "nature": "Impish", "moves": ["Grass Whistle", "Giga Drain", "Toxic Spikes", "Sweet Scent"]},
+        {"species": "Gulpin", "level": 31, "nature": "Careful", "moves": ["Sludge", "Amnesia", "Encore", "Toxic"]}
+      ]
+    },
+    {
+      "id": "hiker_louis",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Bidoof", "level": 14, "nature": "Hardy", "moves": ["Tackle", "Growl", "Defense Curl", "Rollout"]},
+        {"species": "Cranidos", "level": 18, "nature": "Brave", "moves": ["Leer", "Focus Energy", "Pursuit", "Take Down"]}
+      ]
+    },
+    {
+      "id": "camper_diego",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Ponyta", "level": 21, "nature": "Impish", "moves": ["Tail Whip", "Ember", "Flame Wheel", "Stomp"]},
+        {"species": "Machop", "level": 22, "nature": "Careful", "moves": ["Karate Chop", "Foresight", "Seismic Toss", "Revenge"]}
+      ]
+    },
+    {
+      "id": "picnicker_tori",
+      "batch": "V17",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Cranidos", "level": 21, "nature": "Adamant", "moves": ["Focus Energy", "Pursuit", "Take Down", "Scary Face"]},
+        {"species": "Ponyta", "level": 22, "nature": "Timid", "moves": ["Tail Whip", "Ember", "Flame Wheel", "Stomp"]}
+      ]
+    },
+    {
+      "id": "leader_maylene",
+      "batch": "V18",
+      "note": "Fighting that reads the challenger: Meditite and Machoke break defences, Hitmontop hits first with Fake Out and Mach Punch, Monferno's Mach Punch follows, and Riolu's line, now Lucario, finishes with Force Palm and its aura.",
+      "party": [
+        {"species": "Meditite", "level": 28, "nature": "Jolly", "ability": "Pure Power", "moves": ["Force Palm", "Confusion", "Detect", "Feint"]},
+        {"species": "Machoke", "level": 29, "nature": "Adamant", "ability": "Guts", "moves": ["Karate Chop", "Seismic Toss", "Revenge", "Foresight"]},
+        {"species": "Hitmontop", "level": 29, "nature": "Impish", "ability": "Intimidate", "moves": ["Fake Out", "Rapid Spin", "Mach Punch", "Pursuit"]},
+        {"species": "Croagunk", "level": 30, "nature": "Adamant", "ability": "Dry Skin", "moves": ["Revenge", "Poison Jab", "Feint Attack", "Taunt"]},
+        {"species": "Lucario", "level": 32, "nature": "Jolly", "ability": "Inner Focus", "item": "Sitrus Berry", "moves": ["Force Palm", "Metal Claw", "Quick Attack", "Counter"]}
+      ]
+    },
+    {
+      "id": "leader_wake",
+      "batch": "V18",
+      "note": "Water at full stream: Quagsire stands on Water Absorb, Gyarados frightens with Intimidate, Pelipper calls the rain with Rain Dance, and Floatzel's Swift Swim finishes in it.",
+      "party": [
+        {"species": "Quagsire", "level": 34, "nature": "Relaxed", "ability": "Water Absorb", "moves": ["Mud Shot", "Amnesia", "Water Pulse", "Yawn"]},
+        {"species": "Pelipper", "level": 33, "nature": "Modest", "moves": ["Rain Dance", "Water Pulse", "Wing Attack", "Mist"]},
+        {"species": "Gyarados", "level": 33, "nature": "Adamant", "ability": "Intimidate", "moves": ["Bite", "Dragon Rage", "Ice Fang", "Twister"]},
+        {"species": "Floatzel", "level": 37, "nature": "Jolly", "ability": "Swift Swim", "item": "Sitrus Berry", "moves": ["Aqua Jet", "Crunch", "Pursuit", "Agility"]}
+      ]
+    },
+    {
+      "id": "leader_byron",
+      "batch": "V18",
+      "note": "Steel that will not fall: Bronzor reflects, Skarmory lays Spikes, Magneton shocks, Steelix crushes, and Bastiodon stands to the last with Sturdy and Metal Burst.",
+      "party": [
+        {"species": "Bronzor", "level": 37, "nature": "Relaxed", "ability": "Levitate", "moves": ["Hypnosis", "Confuse Ray", "Extrasensory", "Safeguard"]},
+        {"species": "Skarmory", "level": 37, "nature": "Impish", "ability": "Keen Eye", "moves": ["Spikes", "Steel Wing", "Air Cutter", "Swift"]},
+        {"species": "Magneton", "level": 37, "nature": "Modest", "ability": "Sturdy", "moves": ["Thunder Wave", "Spark", "Mirror Shot", "Sonic Boom"]},
+        {"species": "Steelix", "level": 38, "nature": "Adamant", "ability": "Sturdy", "moves": ["Iron Tail", "Crunch", "Rock Tomb", "Screech"]},
+        {"species": "Bastiodon", "level": 41, "nature": "Relaxed", "ability": "Sturdy", "item": "Sitrus Berry", "moves": ["Metal Burst", "Iron Defense", "Ancient Power", "Taunt"]}
+      ]
+    },
+    {
+      "id": "galactic_boss_cyrus_celestic_town_ruins",
+      "batch": "V18",
+      "note": "Cold and dark: Sneasel strikes first, Golbat confuses, Kadabra disables, and Murkrow ends it with Feint Attack and Night Shade.",
+      "party": [
+        {"species": "Sneasel", "level": 34, "nature": "Jolly", "moves": ["Feint Attack", "Fury Swipes", "Agility", "Icy Wind"]},
+        {"species": "Golbat", "level": 34, "nature": "Jolly", "moves": ["Wing Attack", "Confuse Ray", "Air Cutter", "Mean Look"]},
+        {"species": "Kadabra", "level": 34, "nature": "Timid", "moves": ["Psybeam", "Reflect", "Recover", "Psycho Cut"]},
+        {"species": "Murkrow", "level": 36, "nature": "Naughty", "item": "Sitrus Berry", "moves": ["Night Shade", "Assurance", "Taunt", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "commander_saturn_valor_cavern",
+      "batch": "V18",
+      "note": "Precise and poisonous: Bronzor reflects, Golbat confuses, Skuntank smokes and Toxicroak breaks through.",
+      "party": [
+        {"species": "Golbat", "level": 38, "nature": "Jolly", "moves": ["Wing Attack", "Confuse Ray", "Air Cutter", "Mean Look"]},
+        {"species": "Bronzor", "level": 38, "nature": "Relaxed", "moves": ["Iron Defense", "Safeguard", "Gyro Ball", "Future Sight"]},
+        {"species": "Skuntank", "level": 38, "nature": "Adamant", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]},
+        {"species": "Toxicroak", "level": 40, "nature": "Adamant", "ability": "Dry Skin", "item": "Sitrus Berry", "moves": ["Swagger", "Mud Bomb", "Sucker Punch", "Nasty Plot"]}
+      ]
+    },
+    {
+      "id": "commander_mars_lake_verity",
+      "batch": "V18",
+      "note": "Pressure on the lake: Golbat and Bronzor wear down, Drapion's Pursuit and Purugly's Fake Out finish.",
+      "party": [
+        {"species": "Golbat", "level": 38, "nature": "Jolly", "moves": ["Wing Attack", "Confuse Ray", "Air Cutter", "Mean Look"]},
+        {"species": "Bronzor", "level": 38, "nature": "Bold", "moves": ["Iron Defense", "Safeguard", "Gyro Ball", "Future Sight"]},
+        {"species": "Skorupi", "level": 38, "nature": "Adamant", "moves": ["Acupressure", "Scary Face", "Toxic Spikes", "Bug Bite"]},
+        {"species": "Purugly", "level": 40, "nature": "Jolly", "ability": "Thick Fat", "item": "Sitrus Berry", "moves": ["Assist", "Captivate", "Slash", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_veilstone_city_1",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Golbat", "level": 24, "nature": "Hardy", "moves": ["Astonish", "Bite", "Wing Attack", "Confuse Ray"]},
+        {"species": "Glameow", "level": 26, "nature": "Brave", "moves": ["Hypnosis", "Feint Attack", "Fury Swipes", "Charm"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_veilstone_city_2",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Crobat", "level": 24, "nature": "Calm", "moves": ["Astonish", "Bite", "Wing Attack", "Confuse Ray"]},
+        {"species": "Croagunk", "level": 26, "nature": "Bold", "moves": ["Pursuit", "Feint Attack", "Revenge", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_celestic_town",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Houndoom", "level": 32, "nature": "Careful", "moves": ["Bite", "Odor Sleuth", "Beat Up", "Fire Fang"]},
+        {"species": "Haunter", "level": 30, "nature": "Rash", "moves": ["Confuse Ray", "Sucker Punch", "Shadow Punch", "Payback"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_valor_lakefront",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Croagunk", "level": 30, "nature": "Naughty", "moves": ["Feint Attack", "Revenge", "Swagger", "Mud Bomb"]},
+        {"species": "Murkrow", "level": 31, "nature": "Jolly", "moves": ["Wing Attack", "Night Shade", "Assurance", "Taunt"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_iron_island_1",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 34, "nature": "Jolly", "moves": ["Fury Swipes", "Charm", "Assist", "Captivate"]},
+        {"species": "Houndoom", "level": 34, "nature": "Modest", "moves": ["Bite", "Odor Sleuth", "Beat Up", "Fire Fang"]},
+        {"species": "Haunter", "level": 34, "nature": "Adamant", "moves": ["Sucker Punch", "Shadow Punch", "Payback", "Shadow Ball"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_iron_island_2",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Croagunk", "level": 34, "nature": "Careful", "moves": ["Revenge", "Swagger", "Mud Bomb", "Sucker Punch"]},
+        {"species": "Murkrow", "level": 34, "nature": "Rash", "moves": ["Wing Attack", "Night Shade", "Assurance", "Taunt"]},
+        {"species": "Kadabra", "level": 34, "nature": "Hardy", "moves": ["Psybeam", "Reflect", "Recover", "Psycho Cut"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_valor_1",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 36, "nature": "Calm", "moves": ["Fury Swipes", "Charm", "Assist", "Captivate"]},
+        {"species": "Houndoom", "level": 37, "nature": "Bold", "moves": ["Bite", "Odor Sleuth", "Beat Up", "Fire Fang"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_valor_2",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Croagunk", "level": 33, "nature": "Naughty", "moves": ["Revenge", "Swagger", "Mud Bomb", "Sucker Punch"]},
+        {"species": "Murkrow", "level": 33, "nature": "Jolly", "moves": ["Wing Attack", "Night Shade", "Assurance", "Taunt"]},
+        {"species": "Kadabra", "level": 33, "nature": "Modest", "moves": ["Miracle Eye", "Psybeam", "Reflect", "Recover"]},
+        {"species": "Honchkrow", "level": 33, "nature": "Adamant", "moves": ["Pursuit", "Haze", "Wing Attack", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_valor_3",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Skuntank", "level": 35, "nature": "Impish", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]},
+        {"species": "Bronzong", "level": 35, "nature": "Careful", "moves": ["Extrasensory", "Iron Defense", "Safeguard", "Block"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_verity_1",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Bronzong", "level": 36, "nature": "Bold", "moves": ["Extrasensory", "Iron Defense", "Safeguard", "Block"]},
+        {"species": "Seviper", "level": 37, "nature": "Impish", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_verity_2",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 33, "nature": "Jolly", "moves": ["Fury Swipes", "Charm", "Assist", "Captivate"]},
+        {"species": "Houndoom", "level": 33, "nature": "Modest", "moves": ["Bite", "Odor Sleuth", "Beat Up", "Fire Fang"]},
+        {"species": "Haunter", "level": 36, "nature": "Adamant", "moves": ["Sucker Punch", "Shadow Punch", "Payback", "Shadow Ball"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_verity_3",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Croagunk", "level": 35, "nature": "Careful", "moves": ["Revenge", "Swagger", "Mud Bomb", "Sucker Punch"]},
+        {"species": "Murkrow", "level": 35, "nature": "Rash", "moves": ["Night Shade", "Assurance", "Taunt", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_lake_verity_4",
+      "batch": "V18",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Skuntank", "level": 34, "nature": "Adamant", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]},
+        {"species": "Bronzong", "level": 36, "nature": "Timid", "moves": ["Extrasensory", "Iron Defense", "Safeguard", "Block"]}
+      ]
+    },
+    {
+      "id": "rival_pastoria_city_piplup",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Grotle last.",
+      "party": [
+        {"species": "Staravia", "level": 33, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 34, "nature": "Adamant", "ability": "Guts", "moves": ["Aerial Ace", "Brick Break", "Counter", "Take Down"]},
+        {"species": "Floatzel", "level": 32, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]},
+        {"species": "Ponyta", "level": 32, "nature": "Jolly", "moves": ["Flame Wheel", "Stomp", "Fire Spin", "Take Down"]},
+        {"species": "Grotle", "level": 36, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Curse", "Bite", "Mega Drain", "Leech Seed"]}
+      ]
+    },
+    {
+      "id": "rival_pastoria_city_turtwig",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Monferno last.",
+      "party": [
+        {"species": "Staravia", "level": 33, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 34, "nature": "Adamant", "ability": "Guts", "moves": ["Aerial Ace", "Brick Break", "Counter", "Take Down"]},
+        {"species": "Floatzel", "level": 32, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]},
+        {"species": "Roselia", "level": 32, "nature": "Modest", "moves": ["Grass Whistle", "Giga Drain", "Toxic Spikes", "Sweet Scent"]},
+        {"species": "Monferno", "level": 36, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Flame Wheel", "Feint", "Torment", "Close Combat"]}
+      ]
+    },
+    {
+      "id": "rival_pastoria_city_chimchar",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Prinplup last.",
+      "party": [
+        {"species": "Staravia", "level": 33, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 34, "nature": "Adamant", "ability": "Guts", "moves": ["Aerial Ace", "Brick Break", "Counter", "Take Down"]},
+        {"species": "Roselia", "level": 32, "nature": "Timid", "moves": ["Grass Whistle", "Giga Drain", "Toxic Spikes", "Sweet Scent"]},
+        {"species": "Ponyta", "level": 32, "nature": "Jolly", "moves": ["Flame Wheel", "Stomp", "Fire Spin", "Take Down"]},
+        {"species": "Prinplup", "level": 36, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Bubble Beam", "Bide", "Fury Attack", "Brine"]}
+      ]
+    },
+    {
+      "id": "rival_canalave_city_piplup",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Torterra last, with a Snorlax to wall.",
+      "party": [
+        {"species": "Staravia", "level": 36, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 37, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Floatzel", "level": 35, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]},
+        {"species": "Ponyta", "level": 35, "nature": "Jolly", "moves": ["Stomp", "Fire Spin", "Take Down", "Agility"]},
+        {"species": "Snorlax", "level": 36, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Torterra", "level": 38, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Bite", "Mega Drain", "Earthquake", "Leech Seed"]}
+      ]
+    },
+    {
+      "id": "rival_canalave_city_turtwig",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Infernape last, with a Snorlax to wall.",
+      "party": [
+        {"species": "Staravia", "level": 36, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 37, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Floatzel", "level": 35, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]},
+        {"species": "Roselia", "level": 35, "nature": "Modest", "moves": ["Giga Drain", "Toxic Spikes", "Sweet Scent", "Ingrain"]},
+        {"species": "Snorlax", "level": 36, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Infernape", "level": 38, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Fury Swipes", "Flame Wheel", "Feint", "Punishment"]}
+      ]
+    },
+    {
+      "id": "rival_canalave_city_chimchar",
+      "batch": "V18",
+      "note": "The rival grows: Intimidate first, Heracross's Guts, a fast third and Empoleon last, with a Snorlax to wall.",
+      "party": [
+        {"species": "Staravia", "level": 36, "nature": "Jolly", "ability": "Intimidate", "moves": ["Endeavor", "Whirlwind", "Aerial Ace", "Take Down"]},
+        {"species": "Heracross", "level": 37, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Roselia", "level": 35, "nature": "Timid", "moves": ["Giga Drain", "Toxic Spikes", "Sweet Scent", "Ingrain"]},
+        {"species": "Ponyta", "level": 35, "nature": "Jolly", "moves": ["Stomp", "Fire Spin", "Take Down", "Agility"]},
+        {"species": "Snorlax", "level": 36, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Empoleon", "level": 38, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Swagger", "Fury Attack", "Brine", "Aqua Jet"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_ernest",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Noctowl", "level": 32, "nature": "Timid", "moves": ["Reflect", "Confusion", "Take Down", "Air Slash"]},
+        {"species": "Absol", "level": 31, "nature": "Calm", "moves": ["Razor Wind", "Pursuit", "Swords Dance", "Bite"]},
+        {"species": "Graveler", "level": 34, "nature": "Bold", "moves": ["Self-Destruct", "Rollout", "Rock Blast", "Earthquake"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_alyssa",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Houndour", "level": 32, "nature": "Modest", "moves": ["Bite", "Odor Sleuth", "Beat Up", "Fire Fang"]},
+        {"species": "Gastrodon", "level": 32, "nature": "Adamant", "moves": ["Mud Bomb", "Hidden Power", "Rain Dance", "Body Slam"]},
+        {"species": "Machoke", "level": 33, "nature": "Timid", "moves": ["Seismic Toss", "Revenge", "Vital Throw", "Submission"]}
+      ]
+    },
+    {
+      "id": "black_belt_sean",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Lanturn", "level": 31, "nature": "Naughty", "moves": ["Stockpile", "Swallow", "Spit Up", "Bubble Beam"]},
+        {"species": "Hippopotas", "level": 31, "nature": "Jolly", "moves": ["Yawn", "Take Down", "Sand Tomb", "Crunch"]},
+        {"species": "Kricketune", "level": 31, "nature": "Modest", "moves": ["Sing", "Focus Energy", "Slash", "X-Scissor"]}
+      ]
+    },
+    {
+      "id": "bird_keeper_alexandra",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Kadabra", "level": 17, "nature": "Modest", "moves": ["Teleport", "Kinesis", "Confusion"]},
+        {"species": "Tentacool", "level": 17, "nature": "Adamant", "moves": ["Supersonic", "Constrict", "Acid", "Toxic Spikes"]}
+      ]
+    },
+    {
+      "id": "rich_boy_jason",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Noctowl", "level": 26, "nature": "Hardy", "moves": ["Peck", "Uproar", "Reflect", "Confusion"]},
+        {"species": "Absol", "level": 27, "nature": "Brave", "moves": ["Quick Attack", "Razor Wind", "Pursuit", "Swords Dance"]}
+      ]
+    },
+    {
+      "id": "fisherman_juan",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Tentacool", "level": 28, "nature": "Calm", "moves": ["Toxic Spikes", "Bubble Beam", "Wrap", "Barrier"]},
+        {"species": "Houndour", "level": 29, "nature": "Bold", "moves": ["Roar", "Bite", "Odor Sleuth", "Beat Up"]}
+      ]
+    },
+    {
+      "id": "swimmer_sheltin",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Psyduck", "level": 32, "nature": "Impish", "moves": ["Confusion", "Water Pulse", "Fury Swipes", "Screech"]},
+        {"species": "Floatzel", "level": 32, "nature": "Careful", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]},
+        {"species": "Staravia", "level": 32, "nature": "Rash", "moves": ["Double Team", "Endeavor", "Whirlwind", "Aerial Ace"]}
+      ]
+    },
+    {
+      "id": "pi_carlos",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Meditite", "level": 29, "nature": "Rash", "moves": ["Mind Reader", "Feint", "Calm Mind", "Force Palm"]},
+        {"species": "Pelipper", "level": 30, "nature": "Hardy", "moves": ["Mist", "Water Pulse", "Payback", "Protect"]}
+      ]
+    },
+    {
+      "id": "black_belt_derek",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Kricketune", "level": 25, "nature": "Naughty", "moves": ["Fury Cutter", "Leech Life", "Sing", "Focus Energy"]},
+        {"species": "Meditite", "level": 26, "nature": "Jolly", "moves": ["Hidden Power", "Mind Reader", "Feint", "Calm Mind"]}
+      ]
+    },
+    {
+      "id": "guitarist_tony",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Graveler", "level": 33, "nature": "Hardy", "moves": ["Self-Destruct", "Rollout", "Rock Blast", "Earthquake"]},
+        {"species": "Golduck", "level": 33, "nature": "Brave", "moves": ["Confusion", "Water Pulse", "Fury Swipes", "Screech"]}
+      ]
+    },
+    {
+      "id": "swimmer_erik",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Hippopotas", "level": 34, "nature": "Adamant", "moves": ["Yawn", "Take Down", "Sand Tomb", "Crunch"]},
+        {"species": "Kricketune", "level": 35, "nature": "Timid", "moves": ["Focus Energy", "Slash", "X-Scissor", "Screech"]}
+      ]
+    },
+    {
+      "id": "collector_ivan",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Golduck", "level": 34, "nature": "Impish", "moves": ["Confusion", "Water Pulse", "Fury Swipes", "Screech"]},
+        {"species": "Floatzel", "level": 35, "nature": "Careful", "moves": ["Swift", "Aqua Jet", "Crunch", "Agility"]}
+      ]
+    },
+    {
+      "id": "hiker_damon",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Kricketune", "level": 35, "nature": "Naughty", "moves": ["Focus Energy", "Slash", "X-Scissor", "Screech"]},
+        {"species": "Meditite", "level": 33, "nature": "Jolly", "moves": ["Feint", "Calm Mind", "Force Palm", "High Jump Kick"]},
+        {"species": "Pelipper", "level": 34, "nature": "Modest", "moves": ["Water Pulse", "Payback", "Protect", "Roost"]}
+      ]
+    },
+    {
+      "id": "worker_noel",
+      "batch": "V18",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Kadabra", "level": 34, "nature": "Modest", "moves": ["Psybeam", "Reflect", "Recover", "Psycho Cut"]},
+        {"species": "Tentacruel", "level": 36, "nature": "Adamant", "moves": ["Wrap", "Barrier", "Water Pulse", "Poison Jab"]}
+      ]
+    },
+    {
+      "id": "leader_candice",
+      "batch": "V19",
+      "note": "Ice with a plan: Snover calls the hail, Sneasel and Piloswine hit in it, Glalie bites, Sealeo shrugs the cold off with Thick Fat, and Abomasnow comes last behind its own blizzard.",
+      "party": [
+        {"species": "Snover", "level": 40, "nature": "Modest", "ability": "Snow Warning", "moves": ["Ice Shard", "Razor Leaf", "Mist", "Ingrain"]},
+        {"species": "Sneasel", "level": 40, "nature": "Jolly", "ability": "Inner Focus", "moves": ["Ice Shard", "Feint Attack", "Slash", "Agility"]},
+        {"species": "Piloswine", "level": 41, "nature": "Adamant", "ability": "Oblivious", "moves": ["Ice Fang", "Mud Bomb", "Take Down", "Mist"]},
+        {"species": "Glalie", "level": 42, "nature": "Adamant", "moves": ["Ice Fang", "Crunch", "Headbutt", "Double Team"]},
+        {"species": "Sealeo", "level": 42, "nature": "Modest", "ability": "Thick Fat", "moves": ["Aurora Beam", "Body Slam", "Encore", "Rest"]},
+        {"species": "Abomasnow", "level": 44, "nature": "Quiet", "ability": "Snow Warning", "item": "Sitrus Berry", "moves": ["Wood Hammer", "Ice Shard", "Blizzard", "Ingrain"]}
+      ]
+    },
+    {
+      "id": "leader_volkner",
+      "batch": "V19",
+      "note": "Lightning everywhere: Electrike and Raichu strike fast, Lanturn soaks water, Magneton freezes in place with Thunder Wave, Jolteon pins, and Luxray roars last with Intimidate and Crunch.",
+      "party": [
+        {"species": "Raichu", "level": 46, "nature": "Timid", "moves": ["Thunderbolt", "Quick Attack", "Thunder Wave", "Agility"]},
+        {"species": "Lanturn", "level": 46, "nature": "Modest", "ability": "Volt Absorb", "moves": ["Spark", "Bubble Beam", "Confuse Ray", "Take Down"]},
+        {"species": "Magneton", "level": 47, "nature": "Modest", "ability": "Sturdy", "moves": ["Thunderbolt", "Thunder Wave", "Mirror Shot", "Tri Attack"]},
+        {"species": "Manectric", "level": 47, "nature": "Timid", "ability": "Lightning Rod", "moves": ["Thunder Fang", "Bite", "Quick Attack", "Roar"]},
+        {"species": "Jolteon", "level": 48, "nature": "Timid", "ability": "Volt Absorb", "moves": ["Thunderbolt", "Pin Missile", "Double Kick", "Agility"]},
+        {"species": "Luxray", "level": 50, "nature": "Adamant", "ability": "Intimidate", "item": "Sitrus Berry", "moves": ["Thunder Fang", "Crunch", "Ice Fang", "Fire Fang"]}
+      ]
+    },
+    {
+      "id": "commander_saturn_galactic_hq",
+      "batch": "V19",
+      "note": "Precise and poisonous at home: Golbat, Bronzong, Skuntank, and Toxicroak's Poison Jab.",
+      "party": [
+        {"species": "Golbat", "level": 42, "nature": "Jolly", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Bronzong", "level": 42, "nature": "Relaxed", "moves": ["Iron Defense", "Safeguard", "Block", "Gyro Ball"]},
+        {"species": "Skuntank", "level": 42, "nature": "Adamant", "moves": ["Toxic", "Night Slash", "Flamethrower", "Memento"]},
+        {"species": "Toxicroak", "level": 44, "nature": "Adamant", "ability": "Dry Skin", "item": "Sitrus Berry", "moves": ["Mud Bomb", "Sucker Punch", "Nasty Plot", "Poison Jab"]}
+      ]
+    },
+    {
+      "id": "galactic_boss_cyrus_galactic_hq",
+      "batch": "V19",
+      "note": "Dark and cold: Sneasel strikes, Crobat confuses, Kadabra disables, and Honchkrow ends it.",
+      "party": [
+        {"species": "Sneasel", "level": 44, "nature": "Jolly", "moves": ["Icy Wind", "Slash", "Beat Up", "Metal Claw"]},
+        {"species": "Crobat", "level": 44, "nature": "Jolly", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Kadabra", "level": 44, "nature": "Timid", "moves": ["Psycho Cut", "Role Play", "Psychic", "Future Sight"]},
+        {"species": "Honchkrow", "level": 46, "nature": "Naughty", "item": "Sitrus Berry", "moves": ["Wing Attack", "Swagger", "Nasty Plot", "Night Slash"]}
+      ]
+    },
+    {
+      "id": "commander_mars_spear_pillar",
+      "batch": "V19",
+      "note": "Mars beside Jupiter, a pair: Bronzong and Golbat, and Purugly's Fake Out.",
+      "party": [
+        {"species": "Bronzong", "level": 44, "nature": "Bold", "moves": ["Safeguard", "Block", "Gyro Ball", "Future Sight"]},
+        {"species": "Golbat", "level": 44, "nature": "Jolly", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Purugly", "level": 46, "nature": "Jolly", "ability": "Thick Fat", "item": "Sitrus Berry", "moves": ["Captivate", "Slash", "Swagger", "Body Slam"]}
+      ]
+    },
+    {
+      "id": "commander_jupiter_spear_pillar",
+      "batch": "V19",
+      "note": "Jupiter beside Mars: Bronzong and Golbat, and Skuntank's smoke.",
+      "party": [
+        {"species": "Bronzong", "level": 44, "nature": "Relaxed", "moves": ["Safeguard", "Block", "Gyro Ball", "Future Sight"]},
+        {"species": "Golbat", "level": 44, "nature": "Jolly", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Skuntank", "level": 46, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Toxic", "Night Slash", "Flamethrower", "Memento"]}
+      ]
+    },
+    {
+      "id": "galactic_boss_cyrus_distortion_world",
+      "batch": "V19",
+      "note": "The new world's ruler: Houndoom burns, Gyarados frightens, Crobat confuses, Honchkrow presses and Weavile ends it.",
+      "party": [
+        {"species": "Houndoom", "level": 45, "nature": "Timid", "ability": "Flash Fire", "moves": ["Beat Up", "Fire Fang", "Feint Attack", "Embargo"]},
+        {"species": "Gyarados", "level": 46, "nature": "Adamant", "ability": "Intimidate", "moves": ["Aqua Tail", "Rain Dance", "Hydro Pump", "Dragon Dance"]},
+        {"species": "Crobat", "level": 46, "nature": "Jolly", "moves": ["Air Cutter", "Mean Look", "Poison Fang", "Haze"]},
+        {"species": "Honchkrow", "level": 47, "nature": "Naughty", "moves": ["Wing Attack", "Swagger", "Nasty Plot", "Night Slash"]},
+        {"species": "Sneasel", "level": 46, "nature": "Jolly", "moves": ["Icy Wind", "Slash", "Beat Up", "Metal Claw"]},
+        {"species": "Weavile", "level": 48, "nature": "Jolly", "item": "Sitrus Berry", "moves": ["Icy Wind", "Night Slash", "Fling", "Metal Claw"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_1f",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Bronzong", "level": 40, "nature": "Modest", "moves": ["Iron Defense", "Safeguard", "Block", "Gyro Ball"]},
+        {"species": "Seviper", "level": 41, "nature": "Adamant", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_2f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Glameow", "level": 37, "nature": "Jolly", "moves": ["Charm", "Assist", "Captivate", "Slash"]},
+        {"species": "Houndoom", "level": 38, "nature": "Modest", "moves": ["Odor Sleuth", "Beat Up", "Fire Fang", "Feint Attack"]},
+        {"species": "Haunter", "level": 39, "nature": "Adamant", "moves": ["Shadow Punch", "Payback", "Shadow Ball", "Dream Eater"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_2f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Toxicroak", "level": 40, "nature": "Careful", "moves": ["Swagger", "Mud Bomb", "Sucker Punch", "Nasty Plot"]},
+        {"species": "Murkrow", "level": 38, "nature": "Rash", "moves": ["Night Shade", "Assurance", "Taunt", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_2f_3",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Skuntank", "level": 39, "nature": "Adamant", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]},
+        {"species": "Bronzong", "level": 39, "nature": "Timid", "moves": ["Iron Defense", "Safeguard", "Block", "Gyro Ball"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_3f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Bronzong", "level": 40, "nature": "Modest", "moves": ["Iron Defense", "Safeguard", "Block", "Gyro Ball"]},
+        {"species": "Seviper", "level": 41, "nature": "Adamant", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_3f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Purugly", "level": 39, "nature": "Rash", "moves": ["Assist", "Captivate", "Slash", "Swagger"]},
+        {"species": "Houndoom", "level": 39, "nature": "Hardy", "moves": ["Odor Sleuth", "Beat Up", "Fire Fang", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_3f_3",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Toxicroak", "level": 38, "nature": "Timid", "moves": ["Swagger", "Mud Bomb", "Sucker Punch", "Nasty Plot"]},
+        {"species": "Murkrow", "level": 40, "nature": "Calm", "moves": ["Night Shade", "Assurance", "Taunt", "Feint Attack"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_3f_4",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Skuntank", "level": 38, "nature": "Brave", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]},
+        {"species": "Bronzong", "level": 38, "nature": "Naughty", "moves": ["Iron Defense", "Safeguard", "Block", "Gyro Ball"]},
+        {"species": "Seviper", "level": 38, "nature": "Jolly", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_b2f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Honchkrow", "level": 40, "nature": "Jolly", "moves": ["Haze", "Wing Attack", "Swagger", "Nasty Plot"]},
+        {"species": "Magneton", "level": 41, "nature": "Modest", "moves": ["Lock-On", "Magnet Bomb", "Screech", "Discharge"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_galactic_hq_b2f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Skorupi", "level": 38, "nature": "Careful", "moves": ["Acupressure", "Scary Face", "Toxic Spikes", "Bug Bite"]},
+        {"species": "Swalot", "level": 40, "nature": "Rash", "moves": ["Toxic", "Stockpile", "Spit Up", "Swallow"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_3f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Drapion", "level": 42, "nature": "Naughty", "moves": ["Scary Face", "Toxic Spikes", "Bug Bite", "Poison Fang"]},
+        {"species": "Swalot", "level": 43, "nature": "Jolly", "moves": ["Toxic", "Stockpile", "Spit Up", "Swallow"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_3f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Haunter", "level": 42, "nature": "Impish", "moves": ["Shadow Punch", "Payback", "Shadow Ball", "Dream Eater"]},
+        {"species": "Sneasel", "level": 43, "nature": "Careful", "moves": ["Icy Wind", "Slash", "Beat Up", "Metal Claw"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_4f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Honchkrow", "level": 40, "nature": "Rash", "moves": ["Haze", "Wing Attack", "Swagger", "Nasty Plot"]},
+        {"species": "Magneton", "level": 40, "nature": "Hardy", "moves": ["Lock-On", "Magnet Bomb", "Screech", "Discharge"]},
+        {"species": "Skuntank", "level": 40, "nature": "Brave", "moves": ["Slash", "Toxic", "Night Slash", "Flamethrower"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_4f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Drapion", "level": 42, "nature": "Timid", "moves": ["Scary Face", "Toxic Spikes", "Bug Bite", "Poison Fang"]},
+        {"species": "Swalot", "level": 40, "nature": "Calm", "moves": ["Toxic", "Stockpile", "Spit Up", "Swallow"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_5f_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Sneasel", "level": 41, "nature": "Hardy", "moves": ["Agility", "Icy Wind", "Slash", "Beat Up"]},
+        {"species": "Crobat", "level": 41, "nature": "Brave", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_5f_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Honchkrow", "level": 40, "nature": "Calm", "moves": ["Haze", "Wing Attack", "Swagger", "Nasty Plot"]},
+        {"species": "Magneton", "level": 42, "nature": "Bold", "moves": ["Lock-On", "Magnet Bomb", "Screech", "Discharge"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_6f",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Crobat", "level": 39, "nature": "Rash", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Toxicroak", "level": 40, "nature": "Hardy", "moves": ["Swagger", "Mud Bomb", "Sucker Punch", "Nasty Plot"]},
+        {"species": "Murkrow", "level": 41, "nature": "Brave", "moves": ["Assurance", "Taunt", "Feint Attack", "Mean Look"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_tunnel_room_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Haunter", "level": 38, "nature": "Impish", "moves": ["Sucker Punch", "Shadow Punch", "Payback", "Shadow Ball"]},
+        {"species": "Sneasel", "level": 40, "nature": "Careful", "moves": ["Agility", "Icy Wind", "Slash", "Beat Up"]},
+        {"species": "Crobat", "level": 42, "nature": "Rash", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_tunnel_room_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Kadabra", "level": 42, "nature": "Modest", "moves": ["Psycho Cut", "Role Play", "Psychic", "Future Sight"]},
+        {"species": "Honchkrow", "level": 43, "nature": "Adamant", "moves": ["Haze", "Wing Attack", "Swagger", "Nasty Plot"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_mt_coronet_tunnel_room_3",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Seviper", "level": 39, "nature": "Rash", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]},
+        {"species": "Drapion", "level": 42, "nature": "Hardy", "moves": ["Scary Face", "Toxic Spikes", "Bug Bite", "Poison Fang"]},
+        {"species": "Swalot", "level": 39, "nature": "Brave", "moves": ["Toxic", "Stockpile", "Spit Up", "Swallow"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_spear_pillar_1",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Kadabra", "level": 39, "nature": "Bold", "moves": ["Reflect", "Recover", "Psycho Cut", "Role Play"]},
+        {"species": "Honchkrow", "level": 43, "nature": "Impish", "moves": ["Haze", "Wing Attack", "Swagger", "Nasty Plot"]}
+      ]
+    },
+    {
+      "id": "galactic_grunt_spear_pillar_2",
+      "batch": "V19",
+      "note": "A grunt of Team Galactic's poisons and shadows, at the table's own levels.",
+      "party": [
+        {"species": "Seviper", "level": 41, "nature": "Jolly", "moves": ["Glare", "Crunch", "Poison Fang", "Swagger"]},
+        {"species": "Drapion", "level": 41, "nature": "Modest", "moves": ["Scary Face", "Toxic Spikes", "Bug Bite", "Poison Fang"]}
+      ]
+    },
+    {
+      "id": "rival_spear_pillar_piplup",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Torterra last.",
+      "party": [
+        {"species": "Snorlax", "level": 40, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Staraptor", "level": 42, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Floatzel", "level": 40, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Aqua Jet", "Crunch", "Agility", "Whirlpool"]},
+        {"species": "Heracross", "level": 42, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Rapidash", "level": 40, "nature": "Jolly", "moves": ["Take Down", "Agility", "Fire Blast", "Fury Attack"]},
+        {"species": "Torterra", "level": 44, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Mega Drain", "Earthquake", "Leech Seed", "Synthesis"]}
+      ]
+    },
+    {
+      "id": "rival_spear_pillar_turtwig",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Infernape last.",
+      "party": [
+        {"species": "Snorlax", "level": 40, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Staraptor", "level": 42, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Floatzel", "level": 40, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Aqua Jet", "Crunch", "Agility", "Whirlpool"]},
+        {"species": "Heracross", "level": 42, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Roserade", "level": 40, "nature": "Modest", "moves": ["Poison Sting", "Mega Drain", "Magical Leaf", "Sweet Scent"]},
+        {"species": "Infernape", "level": 44, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Flame Wheel", "Feint", "Punishment", "Close Combat"]}
+      ]
+    },
+    {
+      "id": "rival_spear_pillar_chimchar",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Empoleon last.",
+      "party": [
+        {"species": "Snorlax", "level": 40, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Snore", "Sleep Talk", "Body Slam", "Block"]},
+        {"species": "Staraptor", "level": 42, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Roserade", "level": 40, "nature": "Timid", "moves": ["Poison Sting", "Mega Drain", "Magical Leaf", "Sweet Scent"]},
+        {"species": "Heracross", "level": 42, "nature": "Adamant", "ability": "Guts", "moves": ["Brick Break", "Counter", "Take Down", "Close Combat"]},
+        {"species": "Rapidash", "level": 40, "nature": "Jolly", "moves": ["Take Down", "Agility", "Fire Blast", "Fury Attack"]},
+        {"species": "Empoleon", "level": 44, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Fury Attack", "Brine", "Aqua Jet", "Whirlpool"]}
+      ]
+    },
+    {
+      "id": "rival_pokemon_league_piplup",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Torterra last.",
+      "party": [
+        {"species": "Snorlax", "level": 48, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Body Slam", "Block", "Rollout", "Crunch"]},
+        {"species": "Staraptor", "level": 48, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Floatzel", "level": 47, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Aqua Jet", "Crunch", "Agility", "Whirlpool"]},
+        {"species": "Heracross", "level": 48, "nature": "Adamant", "ability": "Guts", "moves": ["Counter", "Take Down", "Close Combat", "Reversal"]},
+        {"species": "Rapidash", "level": 49, "nature": "Jolly", "moves": ["Agility", "Fire Blast", "Fury Attack", "Bounce"]},
+        {"species": "Torterra", "level": 51, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Leech Seed", "Synthesis", "Crunch", "Giga Drain"]}
+      ]
+    },
+    {
+      "id": "rival_pokemon_league_turtwig",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Infernape last.",
+      "party": [
+        {"species": "Snorlax", "level": 48, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Body Slam", "Block", "Rollout", "Crunch"]},
+        {"species": "Staraptor", "level": 48, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Floatzel", "level": 47, "nature": "Jolly", "ability": "Swift Swim", "moves": ["Aqua Jet", "Crunch", "Agility", "Whirlpool"]},
+        {"species": "Heracross", "level": 48, "nature": "Adamant", "ability": "Guts", "moves": ["Counter", "Take Down", "Close Combat", "Reversal"]},
+        {"species": "Roserade", "level": 49, "nature": "Modest", "moves": ["Poison Sting", "Mega Drain", "Magical Leaf", "Sweet Scent"]},
+        {"species": "Infernape", "level": 51, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Feint", "Punishment", "Close Combat", "Fire Spin"]}
+      ]
+    },
+    {
+      "id": "rival_pokemon_league_chimchar",
+      "batch": "V19",
+      "note": "The rival at his best: Snorlax walls, Staraptor's Intimidate, Heracross's Guts, and Empoleon last.",
+      "party": [
+        {"species": "Snorlax", "level": 48, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Body Slam", "Block", "Rollout", "Crunch"]},
+        {"species": "Staraptor", "level": 48, "nature": "Jolly", "ability": "Intimidate", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]},
+        {"species": "Roserade", "level": 47, "nature": "Timid", "moves": ["Poison Sting", "Mega Drain", "Magical Leaf", "Sweet Scent"]},
+        {"species": "Heracross", "level": 48, "nature": "Adamant", "ability": "Guts", "moves": ["Counter", "Take Down", "Close Combat", "Reversal"]},
+        {"species": "Rapidash", "level": 49, "nature": "Jolly", "moves": ["Agility", "Fire Blast", "Fury Attack", "Bounce"]},
+        {"species": "Empoleon", "level": 51, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Brine", "Aqua Jet", "Whirlpool", "Mist"]}
+      ]
+    },
+    {
+      "id": "elite_four_aaron",
+      "batch": "V19",
+      "note": "Bugs that hit back: Yanma's line is Yanmega's speed, Scizor's Bullet Punch, Vespiquen's orders, Heracross's horn, and Drapion's armour last.",
+      "party": [
+        {"species": "Yanmega", "level": 49, "nature": "Modest", "ability": "Speed Boost", "moves": ["Feint", "Slash", "Screech", "U-turn"]},
+        {"species": "Scizor", "level": 49, "nature": "Adamant", "ability": "Technician", "moves": ["Iron Defense", "X-Scissor", "Night Slash", "Double Hit"]},
+        {"species": "Vespiquen", "level": 50, "nature": "Bold", "moves": ["Captivate", "Attack Order", "Swagger", "Destiny Bond"]},
+        {"species": "Armaldo", "level": 50, "nature": "Adamant", "moves": ["Protect", "Ancient Power", "Fury Cutter", "Slash"]},
+        {"species": "Heracross", "level": 51, "nature": "Jolly", "ability": "Guts", "moves": ["Take Down", "Close Combat", "Reversal", "Feint"]},
+        {"species": "Drapion", "level": 53, "nature": "Adamant", "ability": "Battle Armor", "item": "Sitrus Berry", "moves": ["Toxic Spikes", "Bug Bite", "Poison Fang", "Crunch"]}
+      ]
+    },
+    {
+      "id": "elite_four_bertha",
+      "batch": "V19",
+      "note": "Ground that swallows: Whiscash and Quagsire soak, Gliscor flies over, Hippowdon raises the sand, Golem stands and Rhyperior's line, here Rhydon, ends it.",
+      "party": [
+        {"species": "Quagsire", "level": 50, "nature": "Relaxed", "ability": "Water Absorb", "moves": ["Earthquake", "Rain Dance", "Mist", "Haze"]},
+        {"species": "Whiscash", "level": 50, "nature": "Adamant", "moves": ["Rest", "Snore", "Aqua Tail", "Earthquake"]},
+        {"species": "Gliscor", "level": 52, "nature": "Impish", "moves": ["Swords Dance", "U-turn", "X-Scissor", "Guillotine"]},
+        {"species": "Hippowdon", "level": 52, "nature": "Impish", "ability": "Sand Stream", "moves": ["Sand Tomb", "Crunch", "Earthquake", "Double-Edge"]},
+        {"species": "Golem", "level": 52, "nature": "Adamant", "ability": "Sturdy", "moves": ["Earthquake", "Explosion", "Double-Edge", "Stone Edge"]},
+        {"species": "Rhydon", "level": 55, "nature": "Adamant", "ability": "Lightning Rod", "item": "Sitrus Berry", "moves": ["Horn Drill", "Hammer Arm", "Stone Edge", "Earthquake"]}
+      ]
+    },
+    {
+      "id": "elite_four_flint",
+      "batch": "V19",
+      "note": "Fire from every side: Houndoom and Rapidash run, Torkoal sets the pace, Magmar burns, Flareon hits hard and Infernape ends it.",
+      "party": [
+        {"species": "Houndoom", "level": 52, "nature": "Timid", "ability": "Flash Fire", "moves": ["Fire Fang", "Feint Attack", "Embargo", "Flamethrower"]},
+        {"species": "Rapidash", "level": 53, "nature": "Jolly", "ability": "Flash Fire", "moves": ["Agility", "Fire Blast", "Fury Attack", "Bounce"]},
+        {"species": "Torkoal", "level": 52, "nature": "Bold", "ability": "White Smoke", "moves": ["Lava Plume", "Iron Defense", "Amnesia", "Flail"]},
+        {"species": "Magmar", "level": 54, "nature": "Modest", "moves": ["Lava Plume", "Flamethrower", "Sunny Day", "Fire Blast"]},
+        {"species": "Flareon", "level": 55, "nature": "Adamant", "ability": "Flash Fire", "moves": ["Bite", "Fire Spin", "Fire Fang", "Last Resort"]},
+        {"species": "Infernape", "level": 57, "nature": "Jolly", "item": "Sitrus Berry", "moves": ["Close Combat", "Fire Spin", "Calm Mind", "Flare Blitz"]}
+      ]
+    },
+    {
+      "id": "elite_four_lucian",
+      "batch": "V19",
+      "note": "The mind's reach: Mr. Mime's screens, Bronzong's walls, Espeon's sight, Medicham's power, Alakazam's speed and Gallade's blade last.",
+      "party": [
+        {"species": "Mr. Mime", "level": 53, "nature": "Timid", "ability": "Filter", "moves": ["Psychic", "Role Play", "Baton Pass", "Safeguard"]},
+        {"species": "Bronzong", "level": 54, "nature": "Relaxed", "ability": "Levitate", "moves": ["Block", "Gyro Ball", "Future Sight", "Feint Attack"]},
+        {"species": "Espeon", "level": 55, "nature": "Timid", "moves": ["Swift", "Psybeam", "Future Sight", "Last Resort"]},
+        {"species": "Medicham", "level": 55, "nature": "Jolly", "ability": "Pure Power", "moves": ["Psych Up", "Power Trick", "Reversal", "Recover"]},
+        {"species": "Alakazam", "level": 56, "nature": "Timid", "moves": ["Calm Mind", "Psychic", "Future Sight", "Trick"]},
+        {"species": "Gallade", "level": 59, "nature": "Adamant", "item": "Sitrus Berry", "moves": ["Feint", "False Swipe", "Protect", "Close Combat"]}
+      ]
+    },
+    {
+      "id": "champion_cynthia",
+      "batch": "V19",
+      "note": "The Champion's balance: Spiritomb with no weakness, Roserade's poison, Togekiss's grace, Lucario's aura, Milotic's beauty and Garchomp's sand last.",
+      "party": [
+        {"species": "Spiritomb", "level": 58, "nature": "Calm", "ability": "Pressure", "moves": ["Sucker Punch", "Nasty Plot", "Memento", "Dark Pulse"]},
+        {"species": "Roserade", "level": 58, "nature": "Timid", "ability": "Natural Cure", "moves": ["Poison Sting", "Mega Drain", "Magical Leaf", "Sweet Scent"]},
+        {"species": "Togekiss", "level": 60, "nature": "Calm", "ability": "Serene Grace", "moves": ["Sky Attack", "Extreme Speed", "Aura Sphere", "Air Slash"]},
+        {"species": "Lucario", "level": 60, "nature": "Jolly", "ability": "Inner Focus", "moves": ["Aura Sphere", "Close Combat", "Dragon Pulse", "Extreme Speed"]},
+        {"species": "Milotic", "level": 58, "nature": "Bold", "ability": "Marvel Scale", "moves": ["Hydro Pump", "Attract", "Safeguard", "Aqua Ring"]},
+        {"species": "Garchomp", "level": 62, "nature": "Jolly", "ability": "Sand Veil", "item": "Sitrus Berry", "moves": ["Dragon Claw", "Dig", "Crunch", "Dragon Rush"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_blake",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Rhyhorn", "level": 39, "nature": "Jolly", "moves": ["Scary Face", "Rock Blast", "Take Down", "Horn Drill"]},
+        {"species": "Golbat", "level": 40, "nature": "Modest", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_laura",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Snover", "level": 41, "nature": "Impish", "moves": ["Ice Shard", "Ingrain", "Wood Hammer", "Blizzard"]},
+        {"species": "Piloswine", "level": 42, "nature": "Careful", "moves": ["Ice Fang", "Take Down", "Fury Attack", "Earthquake"]}
+      ]
+    },
+    {
+      "id": "skier_shawn",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Golbat", "level": 35, "nature": "Hardy", "moves": ["Wing Attack", "Confuse Ray", "Air Cutter", "Mean Look"]},
+        {"species": "Staraptor", "level": 36, "nature": "Brave", "moves": ["Whirlwind", "Aerial Ace", "Take Down", "Close Combat"]},
+        {"species": "Machoke", "level": 37, "nature": "Naughty", "moves": ["Revenge", "Vital Throw", "Submission", "Wake-Up Slap"]}
+      ]
+    },
+    {
+      "id": "skier_lexie",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Absol", "level": 37, "nature": "Bold", "moves": ["Swords Dance", "Bite", "Double Team", "Slash"]},
+        {"species": "Steelix", "level": 37, "nature": "Impish", "moves": ["Sandstorm", "Slam", "Rock Polish", "Dragon Breath"]}
+      ]
+    },
+    {
+      "id": "fisherman_brett",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Rhydon", "level": 43, "nature": "Jolly", "moves": ["Rock Blast", "Take Down", "Horn Drill", "Hammer Arm"]},
+        {"species": "Golbat", "level": 42, "nature": "Modest", "moves": ["Confuse Ray", "Air Cutter", "Mean Look", "Poison Fang"]},
+        {"species": "Staraptor", "level": 42, "nature": "Adamant", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]}
+      ]
+    },
+    {
+      "id": "swimmer_wesley",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Altaria", "level": 43, "nature": "Careful", "moves": ["Take Down", "Natural Gift", "Dragon Breath", "Dragon Dance"]},
+        {"species": "Medicham", "level": 43, "nature": "Rash", "moves": ["Force Palm", "High Jump Kick", "Psych Up", "Power Trick"]}
+      ]
+    },
+    {
+      "id": "psychic_bryce",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Rhydon", "level": 43, "nature": "Impish", "moves": ["Rock Blast", "Take Down", "Horn Drill", "Hammer Arm"]},
+        {"species": "Golbat", "level": 46, "nature": "Careful", "moves": ["Air Cutter", "Mean Look", "Poison Fang", "Haze"]},
+        {"species": "Staraptor", "level": 46, "nature": "Rash", "moves": ["Aerial Ace", "Take Down", "Close Combat", "Agility"]}
+      ]
+    },
+    {
+      "id": "black_belt_miles",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Altaria", "level": 47, "nature": "Modest", "moves": ["Natural Gift", "Dragon Breath", "Dragon Dance", "Refresh"]},
+        {"species": "Medicham", "level": 48, "nature": "Adamant", "moves": ["Force Palm", "High Jump Kick", "Psych Up", "Power Trick"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_omar",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Snover", "level": 45, "nature": "Impish", "moves": ["Ice Shard", "Ingrain", "Wood Hammer", "Blizzard"]},
+        {"species": "Piloswine", "level": 46, "nature": "Careful", "moves": ["Ice Fang", "Take Down", "Fury Attack", "Earthquake"]},
+        {"species": "Rhydon", "level": 48, "nature": "Rash", "moves": ["Take Down", "Horn Drill", "Hammer Arm", "Stone Edge"]}
+      ]
+    },
+    {
+      "id": "veteran_clayton",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Altaria", "level": 47, "nature": "Modest", "moves": ["Natural Gift", "Dragon Breath", "Dragon Dance", "Refresh"]},
+        {"species": "Medicham", "level": 47, "nature": "Adamant", "moves": ["Force Palm", "High Jump Kick", "Psych Up", "Power Trick"]}
+      ]
+    },
+    {
+      "id": "dragon_tamer_ondrej",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Glalie", "level": 45, "nature": "Careful", "moves": ["Ice Fang", "Crunch", "Ice Beam", "Hail"]},
+        {"species": "Luxio", "level": 47, "nature": "Rash", "moves": ["Swagger", "Thunder Fang", "Crunch", "Scary Face"]}
+      ]
+    },
+    {
+      "id": "ace_trainer_henry",
+      "batch": "V19",
+      "note": "A trainer of the road, written to stand in the way with what Remix's tables offer by then.",
+      "party": [
+        {"species": "Electabuzz", "level": 47, "nature": "Bold", "moves": ["Light Screen", "Thunder Punch", "Discharge", "Thunderbolt"]},
+        {"species": "Gabite", "level": 48, "nature": "Impish", "moves": ["Sand Tomb", "Slash", "Dragon Claw", "Dig"]}
+      ]
+    }
+  ]
+}

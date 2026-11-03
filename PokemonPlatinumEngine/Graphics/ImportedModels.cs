@@ -92,11 +92,32 @@ internal sealed class ImportOptions
         Hide is { Count: > 0 } words && words.Any(w => w.Length > 0 &&
             ((nodeName?.Contains(w, StringComparison.OrdinalIgnoreCase) ?? false) || (meshName?.Contains(w, StringComparison.OrdinalIgnoreCase) ?? false)));
 
+    // Any case, as a person writes them, but a key no setting has is refused (plan 24 · X4)
+    private static readonly JsonSerializerOptions Options = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        AllowTrailingCommas = true,
+        ReadCommentHandling = JsonCommentHandling.Skip,
+        UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Disallow
+    };
+
+    /// <summary>
+    /// A model's settings. A key no setting has, or a value of the wrong type, is reported through
+    /// <see cref="ImportedModels.Report"/> with the file and the key, and none of the file's settings are used: a
+    /// misspelt <c>yaw</c> would otherwise leave the model facing the wrong way without a word (plan 24 · X4).
+    /// </summary>
     public static ImportOptions Read(string path)
     {
         if (!File.Exists(path)) return new ImportOptions();
-        return JsonSerializer.Deserialize<ImportOptions>(File.ReadAllText(path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true, AllowTrailingCommas = true })
-               ?? new ImportOptions();
+        try
+        {
+            return JsonSerializer.Deserialize<ImportOptions>(File.ReadAllText(path), Options) ?? new ImportOptions();
+        }
+        catch (JsonException e)
+        {
+            ImportedModels.Report(PokemonPlatinumEngine.Data.GameDataFiles.Finding(Path.GetFileName(path), e) + "; the file's settings are not used");
+            return new ImportOptions();
+        }
     }
 }
 

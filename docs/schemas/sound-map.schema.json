@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The sound map (Data/audio/sound-map.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "comment": {
+      "type": "string"
+    },
+    "eyeThemes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "battleThemes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "eyeSongs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

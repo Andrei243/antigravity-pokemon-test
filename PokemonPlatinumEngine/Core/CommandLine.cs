@@ -92,6 +92,8 @@ public sealed record LaunchOptions
             settings.SetForThisRun(nameof(GameSettings.Quality), GraphicsQuality.Low);
             settings.SetForThisRun(nameof(GameSettings.WindowWidth), GameSettings.WindowSizes[0].Width);
             settings.SetForThisRun(nameof(GameSettings.WindowHeight), GameSettings.WindowSizes[0].Height);
+            // Nothing leaves the game's own folder but what the player asked for: the streamer kit is off (plan 13 · V24)
+            settings.SetForThisRun(nameof(GameSettings.StreamFeed), StreamFeedMode.Off);
         }
         if (SafeMode || Windowed) settings.SetForThisRun(nameof(GameSettings.Fullscreen), false);
         if (Fullscreen) settings.SetForThisRun(nameof(GameSettings.Fullscreen), true);
@@ -149,7 +151,7 @@ public static class CommandLine
         new("--windowed", null, "Open in a window this time, whatever the options say.", (o, _) => o with { Windowed = true }),
         new("--fullscreen", null, "Open full screen this time, whatever the options say.", (o, _) => o with { Fullscreen = true }),
         new("--safe-mode", null, "Start as plainly as the game can, this time: the Low preset in a 1280x720 window, every model meshed afresh instead of read from the cache, "
-            + "and nothing read from overrides/ (packs, once there are any, will stay off too). Slow to start. The options are saved as they were unless you change them.",
+            + "and nothing read from overrides/ (packs, once there are any, will stay off too), and the streamer kit's feed and splits files not written. Slow to start. The options are saved as they were unless you change them.",
             (o, _) => o with { SafeMode = true }),
         new("--verify", null, $"Check the game's files against {Manifest.FileName} and exit: {Manifest.AsShipped} when all are as shipped, {Manifest.Differs} when a file is missing or changed, "
             + $"{Manifest.NoManifest} when there is no {Manifest.FileName} (only a release build has one; none is made yet).",

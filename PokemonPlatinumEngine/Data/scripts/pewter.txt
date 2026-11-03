@@ -1,0 +1,103 @@
+# Pewter City in HeartGold's Kanto (plan 20, part t). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beat of Steven and the Pokémon he travels with (scr_seq_T03; the rulings' "Johto's last leftovers, part t").
+#
+# Once Steven has shown the player the Enigma Stone in the museum (FLAG_JOHTO_STEVEN_SHOWED_STONE, ours,
+# pewter_museum_of_science.txt) he waits by the north houses with his friend, HeartGold's own objects and their own
+# hiding flags (FLAG_HIDE_PEWTER_CITY_STEVEN, _LATIAS, _LATIOS), laid by the city's arrival until the player has met it
+# (FLAG_JOHTO_MET_STEVENS_EON, ours). His friend is the one of the pair that isn't flying over Hoenn: Latios where the
+# player told Hoenn's television it saw red (VAR_ROAMER_POKEMON 0, Latias roams there) and Latias otherwise, which is
+# HeartGold's own for a game that hasn't been to Hoenn yet. It is battled once, at level 40 (ours); beaten, caught or
+# run from, it is gone, and Steven goes back to the museum. A battle lost leaves them both waiting.
+
+
+script OnEnter
+  setflag FLAG_HIDE_PEWTER_CITY_STEVEN
+  setflag FLAG_HIDE_PEWTER_CITY_LATIAS
+  setflag FLAG_HIDE_PEWTER_CITY_LATIOS
+  if not flag FLAG_JOHTO_STEVEN_SHOWED_STONE end
+  if flag FLAG_JOHTO_MET_STEVENS_EON end
+  clearflag FLAG_HIDE_PEWTER_CITY_STEVEN
+  if not flag HoennHallOfFame goto Latias
+  if var VAR_ROAMER_POKEMON == 0 goto Latios
+label Latias
+  clearflag FLAG_HIDE_PEWTER_CITY_LATIAS
+  end
+label Latios
+  clearflag FLAG_HIDE_PEWTER_CITY_LATIOS
+  end
+
+
+# Steven by the north houses with his friend (ours)
+script Steven
+  face t03_daigo player
+  speaker "Steven"
+  say "There you are, {player}. This is the friend I told you about. It came all this way for the stone, and now it's curious about you."
+  say "It won't settle for words, though. It wants to feel your strength for itself."
+  ask "Will you face Steven's friend?"
+  if no goto Later
+  say "I thought you might. Don't hold back. It wouldn't thank you for it."
+  if flag FLAG_HIDE_PEWTER_CITY_LATIAS goto Latios
+  scene "Latias rises from Steven's side"
+  letterbox on 0.4
+  camera pan 1039 83 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 1039 83
+  effect ripple 1039 83
+  cry "Latias"
+  speaker none
+  text "Latias rose from Steven's side with a bright cry!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Latias" 40
+  if result == 3 goto Caught
+  goto Gone
+label Latios
+  scene "Latios rises from Steven's side"
+  letterbox on 0.4
+  camera pan 1039 83 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 1039 83
+  effect ripple 1039 83
+  cry "Latios"
+  speaker none
+  text "Latios rose from Steven's side with a sharp cry!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Latios" 40
+  if result == 3 goto Caught
+label Gone
+  setflag FLAG_JOHTO_MET_STEVENS_EON
+  setflag FLAG_HIDE_PEWTER_CITY_LATIAS
+  setflag FLAG_HIDE_PEWTER_CITY_LATIOS
+  hide t03_tsure_poke_static_latias
+  hide t03_tsure_poke_static_latios
+  speaker none
+  text "Steven's friend wheeled once over the rooftops and was gone into the sky."
+  speaker "Steven"
+  say "Ha! It's never let anyone get that close. It'll be back in Hoenn's skies by nightfall, I expect."
+  goto Leave
+label Caught
+  setflag FLAG_JOHTO_MET_STEVENS_EON
+  setflag FLAG_HIDE_PEWTER_CITY_LATIAS
+  setflag FLAG_HIDE_PEWTER_CITY_LATIOS
+  hide t03_tsure_poke_static_latias
+  hide t03_tsure_poke_static_latios
+  speaker "Steven"
+  say "It chose to go with you. I've never seen it do that for anyone. Look after it, {player}."
+label Leave
+  say "I'll be in the museum a while longer. The stone has to go back where it belongs."
+  setflag FLAG_HIDE_PEWTER_CITY_STEVEN
+  hide self
+  end
+label Later
+  say "No? Then we'll wait. It's patient, in its way. Come back when you're ready."
+  end
+
+
+# Steven's friend spoken to (ours): it only looks back, and Steven speaks for it
+script Eon
+  speaker none
+  text "It watches {player} closely, as if it already knows who you are."
+  end

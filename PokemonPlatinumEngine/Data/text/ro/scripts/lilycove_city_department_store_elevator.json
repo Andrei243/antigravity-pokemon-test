@@ -5,7 +5,7 @@
         "Lift Attendant"
       ],
       "text": [
-        ""
+        "Liftier"
       ]
     },
     {
@@ -19,13 +19,13 @@
         "Exit"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Bine ai venit la Lilycove Department Store. La ce etaj dorești să mergi?",
+        "5F",
+        "4F",
+        "3F",
+        "2F",
+        "1F",
+        "Ieșire"
       ]
     },
     {
@@ -33,7 +33,7 @@
         "Here we are. Please enjoy your shopping!"
       ],
       "text": [
-        ""
+        "Am ajuns. Cumpărături plăcute!"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "We're on that floor now. Please enjoy your shopping!"
       ],
       "text": [
-        ""
+        "Suntem acum la etajul ăsta. Cumpărături plăcute!"
       ]
     },
     {
@@ -49,7 +49,7 @@
         "Please take your time."
       ],
       "text": [
-        ""
+        "Nu te grăbi."
       ]
     }
   ]

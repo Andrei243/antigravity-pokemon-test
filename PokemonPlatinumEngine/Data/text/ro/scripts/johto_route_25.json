@@ -63,7 +63,7 @@
         "Eusine"
       ],
       "text": [
-        ""
+        "Eusine"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "{player}! So you followed it here too. Suicune went all the way to the end of the cape, and it won't move from there."
       ],
       "text": [
-        ""
+        "{player}! Deci l-ai urmărit și tu până aici. Suicune a mers până la capătul promontoriului și nu se mișcă de acolo."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "I think it's waiting for someone. And I'm beginning to believe that someone is you."
       ],
       "text": [
-        ""
+        "Cred că așteaptă pe cineva. Și încep să cred că acel cineva ești tu."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Go on. It's what you came for. I'll watch from here."
       ],
       "text": [
-        ""
+        "Du-te. Pentru asta ai venit. Mă uit de aici."
       ]
     }
   ],
@@ -97,7 +97,7 @@
         "Eusine"
       ],
       "text": [
-        ""
+        "Eusine"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "I saw it all from here, {player}. Suicune chose you. I chased it for ten years, and it chose you."
       ],
       "text": [
-        ""
+        "Am văzut totul de aici, {player}. Suicune te-a ales pe tine. L-am urmărit zece ani, și te-a ales pe tine."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "I'm not bitter. Well... a little. But I'm glad it was someone who followed it as far as I did."
       ],
       "text": [
-        ""
+        "Nu sunt amărât. Ei bine... puțin. Dar mă bucur că a fost cineva care l-a urmărit atât de departe ca mine."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "I'll keep studying the legendary Pokémon. Perhaps one of them is waiting for me somewhere. Farewell!"
       ],
       "text": [
-        ""
+        "Voi continua să studiez Pokémonii legendari. Poate că unul dintre ei mă așteaptă undeva. Rămas-bun!"
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Eusine"
       ],
       "text": [
-        ""
+        "Eusine"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "Suicune is waiting at the end of the cape. Go to it, {player}."
       ],
       "text": [
-        ""
+        "Suicune așteaptă la capătul promontoriului. Du-te la el, {player}."
       ]
     }
   ],
@@ -149,7 +149,7 @@
         "The wind off the sea fell still as Suicune turned to face {player}!"
       ],
       "text": [
-        ""
+        "Vântul dinspre mare s-a potolit când Suicune s-a întors spre {player}!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Suicune bounded away over the sea!"
       ],
       "text": [
-        ""
+        "Suicune a sărit peste mare!"
       ]
     }
   ]

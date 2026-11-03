@@ -5,6 +5,7 @@
   "area": "ice_path_1f",
   "bgmTrack": "johto/ice_path",
   "people": {
+    "d39r0101_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "d39r0101_gsmiddleman1": { "name": "Man", "script": "Man", "still": true },
     "d39r0101_dancer": { "name": "Kimono Girl", "script": "KimonoGirl", "still": true }
   },

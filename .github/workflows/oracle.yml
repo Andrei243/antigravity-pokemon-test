@@ -1,7 +1,7 @@
 name: Damage oracle
 
 # Plan 24 · X6: Pokémon Showdown's damage calculator answers the scenarios the tests draw. The answers are committed
-# (PokemonPlatinumTests/Oracle/damage-gen9.json) and the tests read them, so no other job runs node. This one gives
+# (PokemonPlatinumTests/Oracle/damage-gen9.json, and since X5 damage-gen4.json for Platinum's rules) and the tests read them, so no other job runs node. This one gives
 # the answers afresh with the pinned calculator and fails when they are not what is committed; the answers it gave
 # are kept as the run's artifact, ready to be committed. Plan 16 · T4's nightly calls it too.
 
@@ -12,13 +12,13 @@ on:
     branches: [main]
     paths:
       - "tools/CalcOracle/**"
-      - "PokemonPlatinumTests/Oracle/scenarios-gen9.json"
-      - "PokemonPlatinumTests/Oracle/damage-gen9.json"
+      - "PokemonPlatinumTests/Oracle/scenarios-gen*.json"
+      - "PokemonPlatinumTests/Oracle/damage-gen*.json"
   pull_request:
     paths:
       - "tools/CalcOracle/**"
-      - "PokemonPlatinumTests/Oracle/scenarios-gen9.json"
-      - "PokemonPlatinumTests/Oracle/damage-gen9.json"
+      - "PokemonPlatinumTests/Oracle/scenarios-gen*.json"
+      - "PokemonPlatinumTests/Oracle/damage-gen*.json"
 
 jobs:
   oracle:
@@ -36,15 +36,20 @@ jobs:
       - name: Install the pinned calculator
         run: npm ci
 
-      - name: Answer the scenarios
+      - name: Answer the scenarios of generation 9 (X6)
         run: node oracle.mjs
+
+      - name: Answer the scenarios of generation 4 (X5, Platinum's rules)
+        run: node oracle.mjs --gen 4
 
       - name: Keep the answers
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: damage-gen9
-          path: PokemonPlatinumTests/Oracle/damage-gen9.json
+          name: damage
+          path: |
+            PokemonPlatinumTests/Oracle/damage-gen9.json
+            PokemonPlatinumTests/Oracle/damage-gen4.json
 
       - name: The committed answers are the calculator's
-        run: git diff --exit-code -- ../../PokemonPlatinumTests/Oracle/damage-gen9.json
+        run: git diff --exit-code -- ../../PokemonPlatinumTests/Oracle/damage-gen9.json ../../PokemonPlatinumTests/Oracle/damage-gen4.json

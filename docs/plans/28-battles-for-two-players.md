@@ -104,8 +104,18 @@ Each session builds the solution, the harness and `tools/MusicRender`, runs the 
 
 ## Status
 
-- [ ] I1 The log on the wire
-- [ ] I2 What each side may see
-- [ ] I3 Both sides asked
-- [ ] I4 A link battle's setup
-- [ ] I5 State written out
+- [x] I1 The log on the wire (2026-11-03; the events keep their Pokémon, the wire names them: notes below)
+- [x] I2 What each side may see (2026-11-03)
+- [ ] I3 Both sides asked: the rules' half done 2026-11-03 (server, loopback, both sides asked, the bench); the screen's half and the harness's `link` mode left. Looked at again on 2026-11-03 for a CPU-only pass: what is left is the battle's face (`BeginChoosing`, `Commit`, `CancelChoice` and the HUD keyed to `PlayerSlots` throughout, a `BattleEngine` that plays a `SideView` with no core of its own, the waiting line drawn), which is screen work shared with plan 13 · V12 and judged by shots, so it goes with V12's session rather than as a rules pass. *Owed shots*: the `link` mode, both players' screens on the same turn and the waiting line
+- [x] I4 A link battle's setup (2026-11-03; but the sleep clause)
+- [x] I5 State written out (2026-11-03, as the record held to a check: notes below)
+
+## Notes from the sessions
+
+Taken on 2026-11-03, all five at once, CPU only (`docs/mechanics/rulings.md`, "Battles for two players", has each ruling). The decisions for the user went the recommended way: the foe's HP is the bar (decision 1), and I5 came here only as its cheap half (decision 2).
+
+- **I1 moved no golden battle.** The session ruled against putting a `PokemonRef` in every event: the core keeps its events and `Battle/Sim/Link/BattleWire.cs` names each Pokémon as a `PokemonRef(Side, Party, Index)` through a `BattleRoster` as it writes, and back as it reads. Every event, question, choice and message has a wire name (`BattleWire.EventTypes`, `RequestTypes`, `MessageTypes`; `LinkWireTests` fails on a new one without), and all 200 golden logs cross the wire and come back to the same text, on the same teams and on a second copy of them. The determinism scan is `LinkWireTests.TheRulesDrawFromNothingButTheirDice`.
+- **I2** is `SideView` (`Battle/Sim/Link/SideView.cs`): a streaming filter (`Filter`, `Request`), with `TeamPreview` and the stand-ins. `LinkViewTests` holds every golden battle's two views to the rules (no foe EXP, levels or moves learned; foe HP in 48ths; foes as stand-ins; no item or ability of a foe named before its event) and holds both views' fainted and winner to the rules'. **The lines are still side A's English**, so side B is told its own Pokémon as "the foe's": plan 17's battle keys taking a speaker's side are what I3's screen needs.
+- **I3, the rules' half**: nothing in the core changed to ask both sides (a null `EnemyController` already did). `LinkServer` runs the core and asks each player only their own places with what each may answer (`PlaceOptions`), `LinkClient` holds what it was sent (`ViewState`) and its `WaitingLine`, `ILinkChannel` is the transport with `LoopbackLink` as the only one, `SeededChooser` answers for the tests. `LinkBattleBenchTests` play 48 whole battles (single and double) over the loopback and read every text each player was sent: only its own places asked, a foe's HP in 48ths, a foe named by its preview place, no unused move or unshown item or ability of the foe's anywhere in it, nothing sent while the other player chooses. **Left**: `BattleEngine.BeginChoosing` asking every place without a controller and a `BattleEngine` playing a view fed from outside (shared with plan 13 · V12), the waiting line on screen, and the harness's `link` mode.
+- **I4** is `LinkRoom`, `LinkSetup` (`Bring` checks the clauses, `Copies` levels by `LevelScaling`, `Battle` makes the `CoreSetup` with `Frontier` and the new `CoreSetup.Link`), `ChoiceKind.Forfeit` (taken at any question, refused in any other battle), `BattleCore.DefaultChoice`, `LinkServer.TimeOut`, `Disconnect`, `Rejoin`, and `LinkResult`. The Vs. Recorder's file keeps `link` and replays a link battle with nobody choosing inside. **Left**: the sleep clause (a rule of the core's status path, for when the game offers a modern-rules room), and the later mechanics for players (no room gives a Key Stone or band).
+- **I5** is `BattleSnapshot` and `BattleCore.Resume`: the Vs. Recorder's file with the answers so far, and a check (turn, dice, log length, question) that a resume must meet. `LinkSnapshotTests` snapshots twelve link battles after every question, writes each out, reads it, resumes and finishes it to the same log. **Not** a field-by-field state: the course is an iterator, and a state with no replay would want it rewritten as a resumable machine, which nothing needs while a replay takes milliseconds.

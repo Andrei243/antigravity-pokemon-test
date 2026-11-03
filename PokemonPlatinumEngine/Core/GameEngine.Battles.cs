@@ -219,6 +219,8 @@ public partial class GameEngine
                 Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(),
+                // When, under what sky and how it was met, for a catch's mark (plan 10 · F9)
+                Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked),
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
@@ -481,6 +483,15 @@ public partial class GameEngine
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
+        // A Remix run's trainers bring Remix's teams, on copies, before anything else is laid on them (plan 13 · V15):
+        // the randomiser maps what Remix wrote and the difficulty raises it. The rival's first battle too; a Master
+        // Trainer's one species stays
+        if (Remix.For(flow.Run) is { } remix && terms?.Alone == null)
+        {
+            trainers = trainers.Select(remix.ForTrainer).ToList();
+            trainer = trainers[0];
+            if (partner != null) partner = remix.ForTrainer(partner);
+        }
         // A randomised run's trainers bring the species theirs go to, on copies (plan 13 · V6), the rival's first battle
         // included, so his team is the one the starter taken names, mapped; a Master Trainer's one species stays
         // (and with abilities or moves randomised, the copies are taught others and given their line's abilities: plan 13 · V7)

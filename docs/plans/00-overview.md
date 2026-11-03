@@ -22,7 +22,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 08 · Platinum's details | P1, P5, P6, P7, P12, P13, P14 | 12 | P3's met data and markings came with R12; P20–P23 (migration, the second slot) were dropped on 2026-10-12 |
 | 09 · Looks | L2, L4, L11, L12, L13, L14, L15 | 8 | |
 | 10 · Companions | F1 | 11 | F8 optional |
-| 11 · People | C1, C5, C6, C11, C12 (C9, C10 in part) | 8 | the looks are a table, `characters.json` |
+| 11 · People | C1, C5, C6, C11, C12, C9, C10 (finished 2026-11-03; the `intro` shots owed) | 8 | the looks are a table, `characters.json` |
 | 12 · Quality of life | Q1, Q2, Q10, Q11, Q20 | 25 | Q20 wrapped the scenes of every chapter, S4 to S15 (124 scenes) |
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |
 | 14 · Battle formats | B1, B14 | 13 | B2, B13 optional |

@@ -188,6 +188,7 @@ public class RegionRecordTests
         For(intro, IntroPhase.ChooseLook);
         intro.PressConfirm();
         intro.PressConfirm();
+        intro.PressConfirm(); // the look's own clothes (plan 11 · C10)
         For(intro, IntroPhase.EnterName);
         intro.PressStart();
         intro.PressConfirm();

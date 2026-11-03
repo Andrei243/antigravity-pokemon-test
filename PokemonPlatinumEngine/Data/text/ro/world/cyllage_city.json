@@ -1,0 +1,96 @@
+{
+  "people": {
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "climber": {
+      "name": {
+        "en": [
+          "Climber"
+        ],
+        "text": [
+          "Cățărătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym up there is a wall of rock inside! Its Leader climbs it every morning before breakfast."
+        ],
+        "text": [
+          "Gym-ul de acolo sus e un perete de stâncă și pe dinăuntru! Liderul lui se cațără pe el în fiecare dimineață, înainte de micul dejun."
+        ]
+      }
+    },
+    "swimmer": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          "Înotătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea here is cold, but the beach is the best in Kalos. Ask anyone from Cyllage!"
+        ],
+        "text": [
+          "Marea de aici e rece, dar plaja e cea mai frumoasă din Kalos. Întreabă pe oricine din Cyllage!"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentleman"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every street in this town goes up or down. I've lived here sixty years and my knees still complain."
+        ],
+        "text": [
+          "Fiecare stradă din orașul ăsta urcă sau coboară. Locuiesc aici de șaizeci de ani și tot mă dor genunchii."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The bicycle shop is closed. The owner says he's waiting for the parts from Lumiose."
+        ],
+        "text": [
+          "Magazinul de biciclete e închis. Proprietarul zice că așteaptă piesele de la Lumiose."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Cyllage City\nA town of terraces between the cliffs and the sea."
+      ],
+      "text": [
+        "Orașul Cyllage\nUn oraș de terase între stânci și mare."
+      ]
+    }
+  }
+}

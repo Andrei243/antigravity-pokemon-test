@@ -9,6 +9,7 @@
   "architecture": "Seaport",
   "triggers": [ { "trigger": 0, "script": "RivalAtTheGym" } ],
   "people": {
+    "t26_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     "t26_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "..." ] },
     "t26_seaman_2": {
       "name": "Sailor",

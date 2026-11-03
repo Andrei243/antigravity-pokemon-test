@@ -1,0 +1,1039 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The importer's patch of species.json (tools/DataImporter/Overrides/species.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "dexNumber": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "sinnohNumber": {
+        "anyOf": [
+          {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "dexNumbers": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "category": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "generation": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "legendary": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "mythical": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "genderDifferences": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "primaryType": {
+        "anyOf": [
+          {
+            "enum": [
+              "Normal",
+              "Fire",
+              "Water",
+              "Grass",
+              "Electric",
+              "Ice",
+              "Fighting",
+              "Poison",
+              "Ground",
+              "Flying",
+              "Psychic",
+              "Bug",
+              "Rock",
+              "Ghost",
+              "Dragon",
+              "Steel",
+              "Dark",
+              "Fairy"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "secondaryType": {
+        "anyOf": [
+          {
+            "enum": [
+              "Normal",
+              "Fire",
+              "Water",
+              "Grass",
+              "Electric",
+              "Ice",
+              "Fighting",
+              "Poison",
+              "Ground",
+              "Flying",
+              "Psychic",
+              "Bug",
+              "Rock",
+              "Ghost",
+              "Dragon",
+              "Steel",
+              "Dark",
+              "Fairy",
+              null
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseHP": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseAttack": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseDefense": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseSpAttack": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseSpDefense": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseSpeed": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "evYield": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "hp": {
+                "type": "integer"
+              },
+              "attack": {
+                "type": "integer"
+              },
+              "defense": {
+                "type": "integer"
+              },
+              "spAttack": {
+                "type": "integer"
+              },
+              "spDefense": {
+                "type": "integer"
+              },
+              "speed": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "catchRate": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseExpYield": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "growthRate": {
+        "anyOf": [
+          {
+            "enum": [
+              "Fast",
+              "MediumFast",
+              "MediumSlow",
+              "Slow",
+              "Erratic",
+              "Fluctuating"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "genderRatio": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "eggGroups": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "hatchCycles": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "baseFriendship": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "safariFleeRate": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "palPark": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "landArea": {
+                "type": "integer"
+              },
+              "waterArea": {
+                "type": "integer"
+              },
+              "rarity": {
+                "type": "integer"
+              },
+              "catchingPoints": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "wildItems": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "common": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rare": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "height": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "weight": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "color": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "shape": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "dexEntry": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "learnset": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "level": {
+                  "type": "integer"
+                },
+                "moveName": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "tmMoves": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "tutorMoves": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "offspring": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "eggMoves": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "evolutions": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "method": {
+                  "enum": [
+                    "Level",
+                    "Friendship",
+                    "FriendshipDay",
+                    "FriendshipNight",
+                    "LevelDay",
+                    "LevelNight",
+                    "LevelMale",
+                    "LevelFemale",
+                    "LevelAttackHigher",
+                    "LevelAttackEqual",
+                    "LevelDefenseHigher",
+                    "LevelPersonalityLow",
+                    "LevelPersonalityHigh",
+                    "LevelNinjask",
+                    "LevelShedinja",
+                    "LevelHoldingItemDay",
+                    "LevelHoldingItemNight",
+                    "LevelHoldingItem",
+                    "LevelKnowsMove",
+                    "LevelKnowsMoveType",
+                    "LevelWithSpeciesInParty",
+                    "LevelWithTypeInParty",
+                    "LevelAtLocation",
+                    "LevelInRain",
+                    "LevelUpsideDown",
+                    "Beauty",
+                    "Affection",
+                    "UseItem",
+                    "UseItemMale",
+                    "UseItemFemale",
+                    "Trade",
+                    "TradeHoldingItem",
+                    "TradeWithSpecies",
+                    "Other",
+                    "UseItemNight",
+                    "LevelAfterSteps",
+                    "LevelAfterMoveUses",
+                    "LevelAfterDefeating",
+                    "LevelWithItemsInBag",
+                    "SpinHoldingItem",
+                    "LevelDusk",
+                    "CriticalHits",
+                    "LevelAfterDamage",
+                    "LevelAfterRecoil"
+                  ]
+                },
+                "targetSpecies": {
+                  "type": "string"
+                },
+                "level": {
+                  "type": "integer"
+                },
+                "item": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "move": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "enum": [
+                    "Normal",
+                    "Fire",
+                    "Water",
+                    "Grass",
+                    "Electric",
+                    "Ice",
+                    "Fighting",
+                    "Poison",
+                    "Ground",
+                    "Flying",
+                    "Psychic",
+                    "Bug",
+                    "Rock",
+                    "Ghost",
+                    "Dragon",
+                    "Steel",
+                    "Dark",
+                    "Fairy",
+                    null
+                  ]
+                },
+                "species": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "anyOfSpecies": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "location": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": "integer"
+                },
+                "needsFriendship": {
+                  "type": "boolean"
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "fromForm": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "targetForm": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "region": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "abilities": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "hiddenAbility": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "forms": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "Look",
+                    "Alternate",
+                    "Regional",
+                    "Battle",
+                    "Mega",
+                    "Primal",
+                    "Gigantamax",
+                    "MegaDynamax"
+                  ]
+                },
+                "types": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "enum": [
+                      "Normal",
+                      "Fire",
+                      "Water",
+                      "Grass",
+                      "Electric",
+                      "Ice",
+                      "Fighting",
+                      "Poison",
+                      "Ground",
+                      "Flying",
+                      "Psychic",
+                      "Bug",
+                      "Rock",
+                      "Ghost",
+                      "Dragon",
+                      "Steel",
+                      "Dark",
+                      "Fairy"
+                    ]
+                  }
+                },
+                "baseStats": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "hp": {
+                      "type": "integer"
+                    },
+                    "attack": {
+                      "type": "integer"
+                    },
+                    "defense": {
+                      "type": "integer"
+                    },
+                    "spAttack": {
+                      "type": "integer"
+                    },
+                    "spDefense": {
+                      "type": "integer"
+                    },
+                    "speed": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "abilities": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "hiddenAbility": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "height": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "weight": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "baseExpYield": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "evYield": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "hp": {
+                      "type": "integer"
+                    },
+                    "attack": {
+                      "type": "integer"
+                    },
+                    "defense": {
+                      "type": "integer"
+                    },
+                    "spAttack": {
+                      "type": "integer"
+                    },
+                    "spDefense": {
+                      "type": "integer"
+                    },
+                    "speed": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "catchRate": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "learnset": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "$ref": "#/properties/learnset/items"
+                  }
+                },
+                "color": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "modern": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "types": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "enum": [
+                          "Normal",
+                          "Fire",
+                          "Water",
+                          "Grass",
+                          "Electric",
+                          "Ice",
+                          "Fighting",
+                          "Poison",
+                          "Ground",
+                          "Flying",
+                          "Psychic",
+                          "Bug",
+                          "Rock",
+                          "Ghost",
+                          "Dragon",
+                          "Steel",
+                          "Dark",
+                          "Fairy"
+                        ]
+                      }
+                    },
+                    "baseStats": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "hp": {
+                          "type": "integer"
+                        },
+                        "attack": {
+                          "type": "integer"
+                        },
+                        "defense": {
+                          "type": "integer"
+                        },
+                        "spAttack": {
+                          "type": "integer"
+                        },
+                        "spDefense": {
+                          "type": "integer"
+                        },
+                        "speed": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "learnset": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "$ref": "#/properties/learnset/items"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "modern": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "types": {
+                "$ref": "#/properties/forms/items/properties/modern/properties/types"
+              },
+              "baseStats": {
+                "$ref": "#/properties/forms/items/properties/modern/properties/baseStats"
+              },
+              "learnset": {
+                "$ref": "#/properties/forms/items/properties/modern/properties/learnset"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "new": {
+        "type": "boolean",
+        "description": "An entry the import has none of by this name: added only when it says so, so a misspelt name stops the importer."
+      }
+    },
+    "additionalProperties": false
+  }
+}

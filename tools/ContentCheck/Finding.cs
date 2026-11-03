@@ -7,7 +7,7 @@ public enum Kind
     Unreadable,
     /// <summary>A room's file that isn't what the game would write of the map it makes: something in it is lost on the way.</summary>
     RoundTrip,
-    /// <summary>A field the file's format doesn't have: a slip of the pen the reader passes over without a word.</summary>
+    /// <summary>A field the file's format doesn't have: a slip of the pen the game's strict reading refuses (plan 24 · X4).</summary>
     UnknownField,
     /// <summary>An overlay for an area that isn't open, or whose <c>area</c> isn't its file's name.</summary>
     Misplaced,

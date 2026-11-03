@@ -158,6 +158,7 @@ public class ScriptTests
           fade out 0.2
           fade in
           wait 0.5
+          waitvoice
           camera pan 3 4 0.5
           camera release
           camera shake
@@ -563,12 +564,23 @@ public class ScriptTests
           subway partner staff
           subway partner cheren
           subway partner again
+          subway beaten
+          subway print
+          subway prize
+          subway buy
           subway end
           joinavenue visit
           joinavenue rank
           joinavenue visitors
           joinavenue next
           joinavenue shop market
+          joinavenue shop antiques
+          joinavenue open dojo
+          joinavenue dojo attack
+          joinavenue salon
+          joinavenue nursery
+          joinavenue raffle
+          joinavenue visitor 2
           trainerhill begin expert
           trainerhill active
           trainerhill mode
@@ -655,6 +667,8 @@ public class ScriptTests
           pokeblock blend 2
           pokeblock count
           pokeblock full
+          pokeblock feeder
+          pokeblock place
           bracket enough
           bracket choose
           bracket check

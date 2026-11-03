@@ -1,0 +1,190 @@
+{
+  "Sycamore": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Bonjour, {player}! At last! I'm Sycamore. Thank you for coming all this way to see me."
+      ],
+      "text": [
+        "Bonjour, {player}! În sfârșit! Sunt Sycamore. Îți mulțumesc că ai venit până aici să mă vezi."
+      ]
+    },
+    {
+      "en": [
+        "I asked you and your friends to travel Kalos because I want to know Pokémon, all of them, through your eyes."
+      ],
+      "text": [
+        "Ți-am cerut ție și prietenilor tăi să călătoriți prin Kalos pentru că vreau să cunosc Pokémonii, pe toți, prin ochii voștri."
+      ]
+    },
+    {
+      "en": [
+        "And the best way for me to understand you and your partner is... a battle, of course! Shall we?"
+      ],
+      "text": [
+        "Iar cel mai bun mod de a vă înțelege pe tine și pe partenerul tău este... o luptă, desigur! Începem?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Magnifique! You and your Pokémon already move as one. That's exactly what I hoped to see."
+      ],
+      "text": [
+        "Magnifique! Tu și Pokémonul tău vă mișcați deja ca unul. Exact asta speram să văd."
+      ]
+    },
+    {
+      "en": [
+        "The three Pokémon I used came all the way from Kanto. I'd like one of them to travel with you. Choose!"
+      ],
+      "text": [
+        "Cei trei Pokémoni pe care i-am folosit au venit tocmai din Kanto. Aș vrea ca unul dintre ei să călătorească cu tine. Alege!"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you take?",
+        "Bulbasaur",
+        "Charmander",
+        "Squirtle"
+      ],
+      "text": [
+        "Pe care Pokémon îl iei?",
+        "Bulbasaur",
+        "Charmander",
+        "Squirtle"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Squirtle!"
+      ],
+      "text": [
+        "{player} a primit Squirtle!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Bulbasaur!"
+      ],
+      "text": [
+        "{player} a primit Bulbasaur!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Charmander!"
+      ],
+      "text": [
+        "{player} a primit Charmander!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Take good care of each other. One day I'll tell you about the strange change some Pokémon go through. Not today!"
+      ],
+      "text": [
+        "Aveți grijă unul de altul. Într-o zi am să-ți povestesc despre ciudata schimbare prin care trec unii Pokémoni. Nu astăzi!"
+      ]
+    },
+    {
+      "en": [
+        "Now, there's someone I'd like you to meet. Come to the café in the north of the city, past the tower. I'll go on ahead."
+      ],
+      "text": [
+        "Acum, e cineva pe care aș vrea să-l cunoști. Vino la cafeneaua din nordul orașului, dincolo de turn. Eu merg înainte."
+      ]
+    },
+    {
+      "en": [
+        "Ah, a visitor! Do look around, but please don't touch the machines."
+      ],
+      "text": [
+        "Ah, un vizitator! Uită-te prin jur, dar te rog nu atinge aparatele."
+      ]
+    },
+    {
+      "en": [
+        "The café is north of the tower. I'll meet you there!"
+      ],
+      "text": [
+        "Cafeneaua e la nord de turn. Ne vedem acolo!"
+      ]
+    },
+    {
+      "en": [
+        "Kalos is a big region, {player}. Go and see all of it, and come back and tell me everything!"
+      ],
+      "text": [
+        "Kalos e o regiune mare, {player}. Mergi și vezi-o toată, apoi vino și spune-mi tot!"
+      ]
+    }
+  ],
+  "Sina": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "The professor's been looking forward to this all week. He's just over there!"
+      ],
+      "text": [
+        "Profesorul așteaptă asta de toată săptămâna. E chiar acolo!"
+      ]
+    },
+    {
+      "en": [
+        "Kanto's first three are very rare in Kalos. Yours is very lucky to have you!"
+      ],
+      "text": [
+        "Primii trei din Kanto sunt foarte rari în Kalos. Al tău e foarte norocos că te are!"
+      ]
+    }
+  ],
+  "Dexio": [
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "Our research is on a change some Pokémon go through. The professor calls it the greatest mystery of Kalos."
+      ],
+      "text": [
+        "Cercetarea noastră e despre o schimbare prin care trec unii Pokémoni. Profesorul o numește cel mai mare mister din Kalos."
+      ]
+    }
+  ]
+}

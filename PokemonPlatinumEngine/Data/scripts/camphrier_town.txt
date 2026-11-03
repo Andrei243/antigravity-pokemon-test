@@ -1,0 +1,27 @@
+# Camphrier Town (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): the keeper of the town's castle
+# meets the player coming in from Route 5, tells of the great Pokémon asleep across the road south (Route 7) and sends
+# them up the avenue north to the palace, whose flute wakes it (Route 6). VAR_KALOS_STORY is vaniville_town.txt's
+# count: 13, Tierno's battle on Route 5 had, becomes 14 here.
+#
+# The people: castellan (FLAG_KALOS_HIDE_CASTELLAN_STREET once his scene is over, after which he is at home in the
+# castle, CamphrierTown_Castle.txt).
+
+
+# Into town from Route 5 (the trigger across the boulevard by the east way in, on VAR_KALOS_STORY 13)
+script Castellan
+  scene "The castle's keeper"
+  face castellan player
+  speaker "Castellan Aubert"
+  say "Ah, a Trainer! Welcome to Camphrier. I am Aubert, keeper of the old castle you see behind me."
+  say "You'll be wanting the road south to the coast, I expect. I'm sorry to say a Snorlax has gone to sleep right across it."
+  say "Nothing wakes it. We've tried singing, shouting, a brass band... It only rolled over."
+  say "But the palace at the head of the avenue north keeps an old flute, and its tune is said to wake any sleeper."
+  say "Go up Route 6 and ask at the palace gate. Tell them Aubert sent you."
+  walk castellan up 1
+  hide castellan
+  setflag FLAG_KALOS_HIDE_CASTELLAN_STREET
+  setvar VAR_KALOS_STORY 14
+  objective kalosPalace
+  endscene
+  end

@@ -122,6 +122,13 @@ public static class DifficultyRules
         }
         if (difficulty == Difficulty.Easy) return copy;
 
+        // A Remix team is written whole and equipped: Challenge adds it no member and no item (plan 13 · V15, decision 8)
+        if (trainer.Remixed)
+        {
+            copy.Ai |= EveryRoutine;
+            copy.PrizeMoney = PrizeMoney(copy.PrizeMoney, difficulty);
+            return copy;
+        }
         var extra = tier == Tier.Chief ? AddFromTheRematch(copy, trainer.Id) : null;
         // In a crossed region the one more takes the stage its level allows, as the rest of the team has (plan 18 · W4b-2)
         if (crossed && extra != null) OursGrowth.GrowTrainers(extra, Ruleset.Platinum.LevelCap);

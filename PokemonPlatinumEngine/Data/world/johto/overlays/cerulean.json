@@ -3,7 +3,7 @@
   // Route 5 from Saffron City. Its Gym gives Kanto's Cascade Badge once Misty is home from Route 25's cape
   // (cerulean_gym.txt, johto_route_25.txt). Cerulean Cave (warp 7, johto_cerulean_cave_1f since part o) is open, and the man
   // HeartGold keeps before it (FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE) stands aside once Red has been beaten on Mt.
-  // Silver (cerulean.txt). Cameron the photographer waits for his session
+  // Silver (cerulean.txt). Cameron the photographer takes pictures here (common.Cameron)
   "area": "cerulean",
   "bgmTrack": "kanto/fuchsia",
   "trees": "Round",

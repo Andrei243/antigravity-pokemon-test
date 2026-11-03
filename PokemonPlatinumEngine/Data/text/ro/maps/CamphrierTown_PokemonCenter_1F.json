@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centru Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătorul: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In Camphrier we take life slowly. Even the nurse hums while she works. Heal up, and stay a while!"
+        ],
+        "text": [
+          "În Camphrier ne luăm viața pe îndelete. Până și asistenta fredonează când lucrează. Vindecă-ți Pokémonii și rămâi o vreme!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road out of town goes on and on. I always rest here before setting off again."
+        ],
+        "text": [
+          "Drumul din oraș ține și ține. Mă odihnesc mereu aici înainte să pornesc din nou."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

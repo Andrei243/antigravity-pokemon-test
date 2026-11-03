@@ -190,8 +190,8 @@
             { "trainer": "unova_leader_elesa_2", "look": "elesa" },
             { "trainer": "unova_leader_clay_2", "look": "clay" },
             { "trainer": "unova_leader_skyla_2", "look": "skyla" },
-            { "trainer": "unova_leader_drayden_2", "look": "dragon_tamer" },
-            { "trainer": "unova_leader_marlon_2", "look": "swimmer_m" }
+            { "trainer": "unova_leader_drayden_2", "look": "opelucid_leader" },
+            { "trainer": "unova_leader_marlon_2", "look": "humilau_leader" }
           ],
           "kind": "leaders"
         },
@@ -212,8 +212,8 @@
             { "trainer": "unova_leader_elesa_2", "look": "elesa" },
             { "trainer": "unova_leader_clay_2", "look": "clay" },
             { "trainer": "unova_leader_skyla_2", "look": "skyla" },
-            { "trainer": "unova_leader_drayden_2", "look": "dragon_tamer" },
-            { "trainer": "unova_leader_marlon_2", "look": "swimmer_m" }
+            { "trainer": "unova_leader_drayden_2", "look": "opelucid_leader" },
+            { "trainer": "unova_leader_marlon_2", "look": "humilau_leader" }
           ],
           "kind": "league",
           "after": "unovaLeaders"

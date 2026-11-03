@@ -167,6 +167,8 @@ public enum Op
     Photo,
     // Join Avenue's growth (plan 22 · U11): the day's visitors, the avenue's rank and its shops' stock by it
     JoinAvenue,
+    // The last line's voice waited for to its end, for a scene timed to speech (plan 26 · V2)
+    WaitVoice,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

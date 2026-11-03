@@ -8,7 +8,8 @@
     "w21_gsbigman"
   ],
   "people": {
-    "w21_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
+    // (HeartGold's tile for him is the sea at the sandbar's foot here, where he stood in the water: he stands on the sand, plan 20 · part u)
+    "w21_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER", "at": [ 1044, 413 ] },
     "w21_fishing_2": {
       "name": "Arnold",
       "trainer": {

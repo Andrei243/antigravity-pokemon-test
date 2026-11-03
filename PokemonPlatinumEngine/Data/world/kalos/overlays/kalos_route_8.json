@@ -1,0 +1,31 @@
+{
+  // Route 8, the Cliff Coast Path, its northern stretch (plan 23 · Z2, second part): drawn by hand, our words. Along
+  // the sea between the cliffs and the shore: a sandy beach, a path north to Cyllage City and the way in from Route 7
+  // in the east; south of the way in the path is shut by a rockfall, where Ambrette Town and the rest of the coast are
+  // plan 23 · Z3's. It plays Route 2's song until plan 31 writes it its own
+  "area": "kalos_route_8",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "fisherman": {
+      "name": "Yves",
+      "npcType": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Yves: The sea's too rough for fishing today. A battle will have to do!",
+        "dialogueAfter": "Fisherman Yves: Rough sea, rough luck."
+      }
+    },
+    "hiker": {
+      "name": "Marcel",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Marcel: I climb these cliffs every morning. Strong legs, strong Pokémon!",
+        "dialogueAfter": "Hiker Marcel: My legs are fine. My Pokémon need more climbing."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+  }
+}

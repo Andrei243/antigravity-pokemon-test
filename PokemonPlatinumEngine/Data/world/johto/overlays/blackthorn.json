@@ -8,6 +8,7 @@
   "trees": "Round",
   "architecture": "Dragonstone",
   "people": {
+    "t30_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
     // Santos of Saturday, one of the week's seven siblings, here on Saturdays alone (blackthorn.txt, plan 20 · J13)
     "t30_gsboy2": { "name": "Santos", "script": "Santos" },
     "t30_gsman1": { "name": "Man", "script": "GymGuard", "still": true },

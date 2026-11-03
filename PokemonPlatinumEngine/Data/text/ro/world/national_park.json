@@ -1,12 +1,22 @@
 {
   "people": {
+    "d22r0101_gsmiddleman1_3": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      }
+    },
     "d22r0101_gsleader2": {
       "name": {
         "en": [
           "Bugsy"
         ],
         "text": [
-          ""
+          "Bugsy"
         ]
       }
     },
