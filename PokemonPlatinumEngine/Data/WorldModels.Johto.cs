@@ -622,6 +622,25 @@ public static partial class WorldModels
         ["Viridian_Route1Gate"] = PartitionLook.Counter,
         // Goldenrod's flower shop: its beds
         ["Goldenrod_FlowerShop"] = PartitionLook.Hedge,
+
+        // ---- plan 20 · J15, part v: the rooms part u left on the wainscot, looked at (JOHTO_ROOMS=…, jru_*)
+        // The gates of twelve by twelve: the block between their two alcoves at the front is a planter bed, as the
+        // League's reception gate's blocks are, where the wall cut low read as a bare brown slab
+        ["Azalea_IlexForestGate"] = PartitionLook.Hedge,
+        ["Route11_Route12Gate"] = PartitionLook.Hedge,
+        ["Route15_FuchsiaGate"] = PartitionLook.Hedge,
+        ["Route16_CyclingGate"] = PartitionLook.Hedge,
+        ["Route18_CyclingGate"] = PartitionLook.Hedge,
+        ["Route31_VioletGate"] = PartitionLook.Hedge,
+        ["Route32_RuinsOfAlphGate"] = PartitionLook.Hedge,
+        ["Route36_NationalParkGate"] = PartitionLook.Hedge,
+        ["Route38_EcruteakGate"] = PartitionLook.Hedge,
+        ["Route42_EcruteakGate"] = PartitionLook.Hedge,
+        ["Route7_SaffronGate"] = PartitionLook.Hedge,
+        ["Route8_SaffronGate"] = PartitionLook.Hedge,
+        ["Violet_Route36Gate"] = PartitionLook.Hedge,
+        // Mahogany's souvenir shop: the saleswoman's counter and the shop's stands
+        ["Mahogany_SouvenirShop"] = PartitionLook.Counter,
     };
 
     /// <summary>
@@ -631,6 +650,9 @@ public static partial class WorldModels
     private static readonly Dictionary<string, PartitionPatch[]> JohtoPatches = new(StringComparer.Ordinal)
     {
         ["SSAqua_B1F"] = new[] { new PartitionPatch(32, 6, 3, 5, PartitionLook.Table) },
+        // (part v) The charcoal kiln's two corner blocks are its charcoal in crates; the rest of its inner walls are the
+        // back wall come forward, which a look for the whole room would have turned into a wall of crates
+        ["Azalea_CharcoalKiln"] = new[] { new PartitionPatch(1, 8, 1, 2, PartitionLook.Crate), new PartitionPatch(11, 7, 1, 1, PartitionLook.Crate) },
     };
 
     /// <summary>The stretches of an imported room whose inner walls have a look of their own, by its region and map.</summary>
