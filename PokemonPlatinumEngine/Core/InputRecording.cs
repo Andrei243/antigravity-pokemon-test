@@ -24,7 +24,7 @@ public sealed record MovieCheckpoint(int Frame, double Seconds, uint[] Hash);
 public sealed class InputRecording
 {
     /// <summary>The file's shape; a file of a newer one is refused.</summary>
-    public const int FormatVersion = 3; // 2: each frame keeps the mouse's too (plan 12 · Q6); 3: the packs in use and the first run (plan 16 · T14, T24)
+    public const int FormatVersion = 4; // 2: each frame keeps the mouse's too (plan 12 · Q6); 3: the packs in use and the first run (plan 16 · T14, T24); 4: the stick's tilt (plan 30 · FM7)
 
     private const string Magic = "PPMOVIE";
 
@@ -145,6 +145,11 @@ public sealed class InputRecording
                 w.Write((byte)f.Pointer.Buttons);
                 w.Write(f.Pointer.Wheel);
             }
+            if (Format >= 4)
+            {
+                w.Write(f.Actions.MoveX);
+                w.Write(f.Actions.MoveY);
+            }
         }
         w.Write(Checkpoints.Count);
         foreach (var c in Checkpoints)
@@ -202,6 +207,8 @@ public sealed class InputRecording
         {
             var frame = new InputFrame(r.ReadSingle(), r.ReadInt64(), new ActionFrame(r.ReadUInt32(), r.ReadUInt32()), (WindowEvents)r.ReadByte());
             if (format >= 2) frame = frame with { Pointer = new PointerFrame(r.ReadSingle(), r.ReadSingle(), (PointerButtons)r.ReadByte(), r.ReadSingle()) };
+            // (an older shape has no tilt: its stick is read from the direction bits, as the keyboard's, InputManager.StickOf)
+            if (format >= 4) frame = frame with { Actions = frame.Actions with { MoveX = r.ReadSByte(), MoveY = r.ReadSByte() } };
             recording.Frames.Add(frame);
         }
         int checkpoints = r.ReadInt32();

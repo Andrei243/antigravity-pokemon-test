@@ -324,8 +324,27 @@ internal sealed partial class Autoplayer
 
         var way = route![at];
         if (at == route.Count - 1 && player.Facing == way && !detoured) onLastStep?.Invoke();
-        engine.Steering = (way, player.HasRunningShoes);
+        Walk(way, player.HasRunningShoes);
         return ActionFrame.None;
+    }
+
+    /// <summary>
+    /// A step of a route (plan 30 · FM9): by the grid's steering where the place is walked a tile at a time, and in a free
+    /// region by the stick, aimed from the body's centre at the centre of the next tile, so the bot walks as a player with
+    /// a stick does and the grid's hand-offs (a ledge, a door) are pushed into as theirs are.
+    /// </summary>
+    private void Walk(Direction way, bool run)
+    {
+        var player = game.Player;
+        if (!player.MovesFreely(game.Map))
+        {
+            engine.Steering = (way, run);
+            return;
+        }
+        var (dx, dy) = FieldMovement.Delta(way);
+        var aim = new System.Numerics.Vector2(FreeMovement.CentreOf(player.GridX + dx) - player.SubX, FreeMovement.CentreOf(player.GridY + dy) - player.SubY);
+        engine.Steering = null;
+        engine.Stick = (aim == System.Numerics.Vector2.Zero ? new System.Numerics.Vector2(dx, dy) : System.Numerics.Vector2.Normalize(aim), run);
     }
 
     private bool Plan(Map map, int x, int y, Func<int, int, bool> goal, int tx, int ty, StepTrigger? mine)

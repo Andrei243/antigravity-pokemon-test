@@ -218,6 +218,25 @@ public class Player
     private int targetGridX = 0;
     private int targetGridY = 0;
 
+    // Free movement (plan 30 · FM7): the body's centre as an offset from the counted tile's centre, in 256ths of a
+    // tile (FreeMovement.SubTile). Nought on the grid, always: only a free region's steering, and a save made in one,
+    // moves it off the centre
+    private int offX, offY;
+    // Where a step of the grid sets out from, in pixels: the tile's corner on the grid, and wherever the body stood in a
+    // free region (a hand-off begins from the centre, a surf or a climb from wherever the player was)
+    private float startPixelX, startPixelY;
+    // A hand-off under way: the body eases onto the centre of its tile, then the grid's step this way is played
+    private Direction? handOff;
+    // The way a free body last moved, and the cardinal it was facing then: the yaw is eased to that way while the
+    // facing is still that cardinal (a script that turns the player turns them to the cardinal again)
+    private (float Yaw, Direction Facing)? freeYaw;
+    // The height of the tile the free centre is in, as the grid's step onto it gave it
+    private float standing = float.NaN;
+    // How long a full tilt has been held (a full tilt held a second runs, FM9)
+    private float fullTiltFor;
+    // The counted tile left this frame by free movement, for whoever walks behind
+    private (int X, int Y)? leftTile;
+
     // The step being taken: how much of it passes each second, how fast the legs go, the heights it goes
     // between, how high it arcs, which way it goes and how the player travels once it ends
     private float stepRate = 4.5f;
@@ -251,7 +270,80 @@ public class Player
     public bool JustRodeOut { get; private set; }
 
     /// <summary>The tile a step in progress is taking the player to; where they stand, between steps.</summary>
-    public (int X, int Y) Heading => IsMoving ? (targetGridX, targetGridY) : (GridX, GridY);
+    public (int X, int Y) Heading => IsMoving ? (targetGridX, targetGridY) : Standing;
+
+    /// <summary>
+    /// The tile the body's centre is in (plan 30 · FM7): the tile stood on, on the grid; in a free region it may be one
+    /// the centre has crossed into and not yet gone far enough into to count (<see cref="FreeMovement.Counted"/>).
+    /// </summary>
+    public (int X, int Y) Standing => IsMoving || (offX == 0 && offY == 0) ? (GridX, GridY)
+        : (FreeMovement.TileOf(FreeMovement.CentreOf(GridX) + offX), FreeMovement.TileOf(FreeMovement.CentreOf(GridY) + offY));
+
+    /// <summary>
+    /// The body's centre in 256ths of a tile (plan 30 · FM7): a tile's centre is its number × 256. On the grid it is the
+    /// tile's centre between steps; free, wherever the stick has taken it.
+    /// </summary>
+    public int SubX => IsMoving ? (int)MathF.Round(PixelX * (FreeMovement.SubTile / (float)TileSize)) : FreeMovement.CentreOf(GridX) + offX;
+
+    /// <inheritdoc cref="SubX"/>
+    public int SubY => IsMoving ? (int)MathF.Round(PixelY * (FreeMovement.SubTile / (float)TileSize)) : FreeMovement.CentreOf(GridY) + offY;
+
+    /// <summary>
+    /// How far the body's centre stands off the counted tile's centre, in 256ths (plan 30 · FM7): what a save keeps.
+    /// Always nought on the grid and in the middle of a step.
+    /// </summary>
+    public (int X, int Y) Offset => IsMoving ? (0, 0) : (offX, offY);
+
+    /// <summary>
+    /// Puts the body's centre off its tile's centre by an offset in 256ths (a save made in a free region, a test): the
+    /// tile stays the counted one. An offset that would count another tile is cut to the most this one keeps.
+    /// </summary>
+    public void SetOffset(int x, int y)
+    {
+        int most = FreeMovement.Half + FreeMovement.Hysteresis - 1;
+        offX = Math.Clamp(x, -most, most);
+        offY = Math.Clamp(y, -most, most);
+        PlaceFromSub();
+    }
+
+    // The pixel place from the free centre: eight 256ths to a texel
+    private void PlaceFromSub()
+    {
+        PixelX = (FreeMovement.CentreOf(GridX) + offX) / (float)(FreeMovement.SubTile / TileSize);
+        PixelY = (FreeMovement.CentreOf(GridY) + offY) / (float)(FreeMovement.SubTile / TileSize);
+    }
+
+    /// <summary>Whether the body moved freely this frame (plan 30 · FM7): the legs walk, though no step of the grid is under way.</summary>
+    public bool IsGliding { get; private set; }
+
+    /// <summary>
+    /// Whether the region's speed is the stick's tilt (plan 30 · FM9, <see cref="MovementSpeed.Analog"/>); the engine
+    /// sets it every frame from <c>GameEngine.MovementHere</c>.
+    /// </summary>
+    public bool AnalogSpeed { get; set; }
+
+    /// <summary>The tile free movement left this frame, once (plan 30 · FM8): whoever walks behind goes there.</summary>
+    public (int X, int Y)? TakeLeft()
+    {
+        var left = leftTile;
+        leftTile = null;
+        return left;
+    }
+
+    /// <summary>
+    /// What talking and pressing ask in a free region (plan 30 · FM7): the tile <see cref="FreeMovement.AheadReach"/> ahead
+    /// of the centre along the yaw, and the tile beside the centre's in the cardinal faced, which is asked next when the
+    /// first has nobody. On the grid both are the tile faced.
+    /// </summary>
+    public ((int X, int Y) Ahead, (int X, int Y) Faced) InteractTiles()
+    {
+        var (dx, dy) = FieldMovement.Delta(Facing);
+        if (Directions != MovementDirections.Free || IsMoving) return ((GridX + dx, GridY + dy), (GridX + dx, GridY + dy));
+        var (sx, sy) = Standing;
+        var faced = (sx + dx, sy + dy);
+        var ahead = FreeMovement.AheadTile(SubX, SubY, Yaw);
+        return (ahead == Standing ? faced : ahead, faced);
+    }
 
     /// <summary>The pace of the step under way, in tiles a second: what someone walking behind keeps up with.</summary>
     public float Stride => stride;
@@ -347,6 +439,13 @@ public class Player
         moveProgress = 0f;
         height = float.NaN;
         settled = false;
+        offX = offY = 0;
+        handOff = null;
+        freeYaw = null;
+        standing = float.NaN;
+        fullTiltFor = 0f;
+        leftTile = null;
+        IsGliding = false;
         Yaw = YawOf(facing);
         WalkBlend = 0f;
         Encounters.Reset();
@@ -438,6 +537,12 @@ public class Player
     /// <summary>One frame of the player's movement, steered by the keys held.</summary>
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
     {
+        // Free movement (plan 30 · FM7): the stick's tilt, or the keys' eight ways at a full tilt, steers the body
+        if (MovesFreely(map))
+        {
+            SteerFreely(dt, map, InputManager.GetStick(), InputManager.IsActionDown(GameAction.Run) != Autorun, onWildEncounter, onWarpTrigger, onArrive);
+            return;
+        }
         Vector2 dir = InputManager.GetMovementVector();
         // The eight ways the keys or the stick hold (plan 30 · FM1): two directions held at once are a diagonal, read
         // here from the frame's four direction actions and nowhere else. Where the place moves four ways the grid's
@@ -460,9 +565,38 @@ public class Player
     public void Steer(float dt, Map map, PokemonPlatinumEngine.Overworld.Heading? want, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
     {
         if (want is { } heading && heading.IsDiagonal() && Directions != MovementDirections.Four)
-            Move(dt, map, null, heading, run, onWildEncounter, onWarpTrigger, onArrive);
+            Move(dt, map, null, heading, null, run, onWildEncounter, onWarpTrigger, onArrive);
         else
             Advance(dt, map, want is { } h ? h.Cardinal() ?? h.Parts().Vertical : null, run, onWildEncounter, onWarpTrigger, onArrive);
+    }
+
+    /// <summary>
+    /// Whether the body moves freely here (plan 30 · FM7): the place moves <see cref="MovementDirections.Free"/> and no
+    /// Gym's puzzle is laid on the map (a puzzle's rooms are walked a cardinal step at a time, as they refuse diagonals).
+    /// </summary>
+    public bool MovesFreely(Map map) => Directions == MovementDirections.Free && map.Puzzle == null;
+
+    /// <summary>
+    /// One frame of free movement (plan 30 · FM7), steered by a stick as a tool, a test or <see cref="Update"/> hands it
+    /// (−1 to 1 on each axis, x right and y down; its length the tilt). <paramref name="run"/> is the run button (with
+    /// Autorun already turned round); where the speed is analog a full tilt held a second runs too (FM9). Where the place
+    /// doesn't move freely the stick is its eight-way heading, steered as <see cref="Steer"/> steers.
+    /// </summary>
+    public void SteerFreely(float dt, Map map, Vector2 stick, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
+    {
+        if (!MovesFreely(map))
+        {
+            // (the eight ways the stick's tilt names, by the stick reader's own share)
+            var ways = StickReader.Ways(stick.X, stick.Y);
+            var bits = new Vector2(((ways & StickDirs.Right) != 0 ? 1f : 0f) - ((ways & StickDirs.Left) != 0 ? 1f : 0f),
+                ((ways & StickDirs.Down) != 0 ? 1f : 0f) - ((ways & StickDirs.Up) != 0 ? 1f : 0f));
+            Steer(dt, map, Headings.FromVector(bits), run, onWildEncounter, onWarpTrigger, onArrive);
+            return;
+        }
+        float tilt = Math.Min(1f, stick.Length());
+        fullTiltFor = AnalogSpeed && tilt >= FreeMovement.FullTilt ? fullTiltFor + dt : 0f;
+        bool running = run || (AnalogSpeed && fullTiltFor >= FreeMovement.RunAfterSeconds);
+        Move(dt, map, null, null, tilt > 0f ? stick : null, running, onWildEncounter, onWarpTrigger, onArrive);
     }
 
     /// <summary>
@@ -506,14 +640,16 @@ public class Player
     /// <param name="onWildEncounter">Null for a walk nothing may interrupt (a script's): no wild Pokémon appears.</param>
     /// <param name="onWarpTrigger">Null for a walk that takes no door: stepping onto one only stands on it.</param>
     public void Advance(float dt, Map map, Direction? want, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
-        => Move(dt, map, want, null, run, onWildEncounter, onWarpTrigger, onArrive);
+        => Move(dt, map, want, null, null, run, onWildEncounter, onWarpTrigger, onArrive);
 
     // A frame of movement steered by a cardinal (want) or, where eight ways are walked, a diagonal (slant); never both
-    private void Move(float dt, Map map, Direction? want, PokemonPlatinumEngine.Overworld.Heading? slant, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
+    // (or, free, by a stick: plan 30 · FM7)
+    private void Move(float dt, Map map, Direction? want, PokemonPlatinumEngine.Overworld.Heading? slant, Vector2? stick, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
         PushedAgainst = false;
+        IsGliding = false;
 
         // Leaning into a boulder as it slides: the player walks on the spot until it has come to rest
         if (pushing > 0f)
@@ -544,6 +680,16 @@ public class Player
             else if (Mode == TravelMode.Diving) Mode = map.IsDeepWater(GridX, GridY) ? TravelMode.Surfing : TravelMode.OnFoot;
         }
 
+        // Off the tile's centre where the grid is to step (a script's walk, a tool's steering, a place on the grid; plan
+        // 30 · FM8): the body eases onto the centre first, then the steps are the grid's own. Never on the grid itself,
+        // where the body is always on its centre between steps
+        if (!IsMoving && carried == null && (offX != 0 || offY != 0) && (want != null || slant != null || !MovesFreely(map)))
+        {
+            EaseToCentre(dt, GridX, GridY, FieldMovement.TilesPerSecond(Pace.Walk));
+            Settle(dt, walking: true);
+            return;
+        }
+
         if (IsMoving)
         {
             moveProgress += stepRate * dt;
@@ -556,8 +702,8 @@ public class Player
             else
             {
                 // Smooth interpolation
-                float startX = GridX * TileSize;
-                float startY = GridY * TileSize;
+                float startX = startPixelX;
+                float startY = startPixelY;
                 float endX = targetGridX * TileSize;
                 float endY = targetGridY * TileSize;
 
@@ -581,7 +727,7 @@ public class Player
                 else { IsSliding = false; spinning = null; }
             }
         }
-        else if (Mode == TravelMode.Skating && want == null && slant == null && !coasted
+        else if (Mode == TravelMode.Skating && want == null && slant == null && stick == null && !coasted
                  && FieldMovement.Coast(map, GridX, GridY, Facing, WalkerOn(map)) is { } glide)
         {
             // Skates let go of glide a tile on (plan 23 · Z1)
@@ -594,12 +740,22 @@ public class Player
             IsSliding = false;
             skating = CanSkate && run && Mode is TravelMode.OnFoot or TravelMode.Skating;
             // Standing still, or the button let go, the skates are off (plan 23 · Z1)
-            if (Mode == TravelMode.Skating && ((want == null && slant == null) || !skating)) Mode = TravelMode.OnFoot;
+            if (Mode == TravelMode.Skating && ((want == null && slant == null && stick == null) || !skating)) Mode = TravelMode.OnFoot;
             // With the DexNav's find nearby, the run button creeps instead (plan 10 · F12)
             IsSneaking = Mode == TravelMode.OnFoot && run && SneaksInsteadOfRunning && !skating;
             IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes && !skating && !IsSneaking;
 
-            if (slant is { } diagonal)
+            if (stick is { } freely)
+            {
+                // Free movement (plan 30 · FM7)
+                walkingInPlace = Glide(dt, map, freely, onWildEncounter, onWarpTrigger, onArrive);
+                if (walkingInPlace)
+                {
+                    PushedAgainst = true;
+                    WalkCycle += dt * 1.1f;
+                }
+            }
+            else if (slant is { } diagonal)
             {
                 // A diagonal (plan 30 · FM2): turned to neither of its parts, the player turns first, as to a cardinal
                 var face = DiagonalFacing(diagonal, Facing);
@@ -650,7 +806,7 @@ public class Player
             }
         }
 
-        Settle(dt, (IsMoving && !IsSliding && Mode == TravelMode.OnFoot) || walkingInPlace);
+        Settle(dt, (IsMoving && !IsSliding && Mode == TravelMode.OnFoot) || walkingInPlace || (IsGliding && Mode == TravelMode.OnFoot));
     }
 
     /// <summary>Ends a step on its tile. True if something there took over: a warp, or a wild Pokémon.</summary>
@@ -669,8 +825,19 @@ public class Player
         mounting = false;
         moveProgress = 0f;
         height = toHeight;
+        standing = toHeight;
         Mode = modeAfter;
+        offX = offY = 0;
+        return Landed(map, onWildEncounter, onWarpTrigger, onArrive);
+    }
 
+    /// <summary>
+    /// What a tile entered does, once the player is counted on it: its warp, a trainer's eye (<paramref name="onArrive"/>),
+    /// what carries them on, the grass and its wild Pokémon. The end of a step of the grid, and a tile entered by free
+    /// movement (plan 30 · FM7, decision 7), alike. True if something took over.
+    /// </summary>
+    private bool Landed(Map map, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
+    {
         var warp = map.GetWarpAt(GridX, GridY);
         if (warp != null && onWarpTrigger != null)
         {
@@ -723,6 +890,15 @@ public class Player
     public void StandStill(float dt)
     {
         IsRunning = false;
+        IsGliding = false;
+        // Held by something else in a free region (a script, a trainer walking up): the body settles onto its tile's
+        // centre, which is where every scene, sight line and walk of the grid expects it (plan 30 · FM8)
+        if (!IsMoving && (offX != 0 || offY != 0) && Directions == MovementDirections.Free)
+        {
+            EaseToCentre(dt, GridX, GridY, FieldMovement.TilesPerSecond(Pace.Walk));
+            Settle(dt, walking: true);
+            return;
+        }
         Settle(dt, walking: false);
     }
 
@@ -730,7 +906,7 @@ public class Player
     private void Settle(float dt, bool walking)
     {
         WalkBlend += ((walking ? 1f : 0f) - WalkBlend) * Math.Min(1f, dt * 12f);
-        float turn = YawOf(Facing) - Yaw;
+        float turn = (freeYaw is { } free && free.Facing == Facing ? free.Yaw : YawOf(Facing)) - Yaw;
         turn = MathF.IEEERemainder(turn, MathF.Tau);
         Yaw += turn * Math.Min(1f, dt * 18f);
 
@@ -826,6 +1002,173 @@ public class Player
     }
 
     /// <summary>
+    /// A frame of free movement steered by a stick (plan 30 · FM7, FM8; <see cref="FreeMovement"/>): the body turns to the
+    /// stick's way, faces the cardinal nearest it, and moves its centre at the pace the ground, the way of travelling and
+    /// the tilt give, the circle stopped against every edge the grid's own step refuses. An edge that is more than a plain
+    /// walk (a ledge, a door, ice, a stair, water's edge, a boulder) pushed across within 35° of its normal is handed to the
+    /// grid: the body eases onto its tile's centre and the grid's step is taken from there, as it is on the grid. A tile
+    /// counted as entered runs everything a step does (<see cref="Landed"/>). True when the body pushes against something
+    /// and doesn't move: it walks on the spot.
+    /// </summary>
+    private bool Glide(float dt, Map map, Vector2 stick, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
+    {
+        float tilt = Math.Min(1f, stick.Length());
+        var way = stick / stick.Length();
+        var face = FreeMovement.NearestCardinal(way);
+        Facing = face;
+        freeYaw = (FreeMovement.YawOf(way), face);
+        if (float.IsNaN(standing)) standing = HeightOn(map);
+
+        int sx = SubX, sy = SubY;
+        int gx = FreeMovement.TileOf(sx), gy = FreeMovement.TileOf(sy);
+
+        // On a tile the grid keeps (a stair, a ramp, the Cycling Road's pull: the body was handed there by the grid and
+        // stands on its centre), the grid's own four ways step on from it
+        if (!FreeMovement.Plain(map, gx, gy))
+        {
+            if ((gx, gy) != (GridX, GridY) || offX != 0 || offY != 0)
+            {
+                var (cx, cy) = TowardCentre(dt, gx, gy, FieldMovement.TilesPerSecond(Pace.Walk));
+                MoveCentreTo(map, cx, cy, onWildEncounter, onWarpTrigger, onArrive);
+                return false;
+            }
+            TryStep(face, map);
+            return !IsMoving;
+        }
+
+        // A hand-off under way goes on while the stick still points across its edge
+        if (handOff is { } going && Vector2.Dot(way, Unit(going)) < FreeMovement.HandOffCone) handOff = null;
+
+        var walker = WalkerOn(map) with { Height = standing };
+        bool pushes = PushesBoulders && Mode == TravelMode.OnFoot;
+        var pace = FreeMovement.PaceFor(tilt, AnalogSpeed, map.BehaviourAt(gx, gy), walker);
+        float speed = FieldMovement.TilesPerSecond(pace);
+        int dx = (int)MathF.Round(way.X * speed * dt * FreeMovement.SubTile);
+        int dy = (int)MathF.Round(way.Y * speed * dt * FreeMovement.SubTile);
+
+        if (handOff == null)
+        {
+            // A push across an edge the grid plays (a ledge, a door, a stair, ice, water's edge, a boulder)
+            foreach (var (part, component, along, move) in new[]
+                     {
+                         (way.X < 0 ? Direction.Left : Direction.Right, MathF.Abs(way.X), sx, dx),
+                         (way.Y < 0 ? Direction.Up : Direction.Down, MathF.Abs(way.Y), sy, dy)
+                     })
+            {
+                if (component < FreeMovement.HandOffCone) continue;
+                int sign = part is Direction.Right or Direction.Down ? 1 : -1;
+                int tile = FreeMovement.TileOf(along);
+                int gap = (FreeMovement.CentreOf(tile) + sign * FreeMovement.Half - along) * sign - FreeMovement.Radius;
+                if (gap > Math.Abs(move) + 1) continue;
+                if (FreeMovement.Classify(map, gx, gy, part, walker, pushes, out _) == FreeMovement.Edge.HandOff) handOff = part;
+                break;
+            }
+        }
+
+        if (handOff is { } handed)
+        {
+            if ((sx, sy) != (FreeMovement.CentreOf(gx), FreeMovement.CentreOf(gy)))
+            {
+                // Onto the tile's centre line first, at the pace walked (a hand-off's quarter of a second at most)
+                var (cx, cy) = TowardCentre(dt, gx, gy, Math.Max(speed, FieldMovement.TilesPerSecond(Pace.Walk)));
+                IsGliding = true;
+                WalkCycle += speed * dt * 0.5f;
+                if (MoveCentreTo(map, cx, cy, onWildEncounter, onWarpTrigger, onArrive)) return false;
+                if ((cx, cy) != (FreeMovement.CentreOf(gx), FreeMovement.CentreOf(gy))) return false;
+            }
+            if (IsMoving || (GridX, GridY) != (gx, gy)) return false;
+            // On the centre: the grid's step, exactly as on the grid (a hop, a door, a push, a bump)
+            handOff = null;
+            Facing = handed;
+            freeYaw = null;
+            TryStep(handed, map);
+            return !IsMoving && pushing <= 0f;
+        }
+
+        var (nx, ny) = FreeMovement.Resolve(map, sx, sy, dx, dy, walker, pushes, ref standing);
+        bool moved = (nx, ny) != (sx, sy);
+        if (!moved)
+        {
+            Bump();
+            return true;
+        }
+        IsGliding = true;
+        WalkCycle += speed * dt * 0.5f;
+        stride = speed;
+        MoveCentreTo(map, nx, ny, onWildEncounter, onWarpTrigger, onArrive);
+        return false;
+    }
+
+    /// <summary>A cardinal as a unit vector on the map (x right, y down).</summary>
+    private static Vector2 Unit(Direction way)
+    {
+        var (x, y) = FieldMovement.Delta(way);
+        return new Vector2(x, y);
+    }
+
+    /// <summary>
+    /// Puts the free centre at (<paramref name="x"/>, <paramref name="y"/>) in 256ths, counts the tile it is now on
+    /// (<see cref="FreeMovement.Counted"/>), and plays a tile entered as a step's end. True if something there took over
+    /// (a trainer's eye, a wild Pokémon, a warp), which stops the body.
+    /// </summary>
+    private bool MoveCentreTo(Map map, int x, int y, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
+    {
+        int countedX = FreeMovement.Counted(GridX, x), countedY = FreeMovement.Counted(GridY, y);
+        bool entered = (countedX, countedY) != (GridX, GridY);
+        if (entered) leftTile = (GridX, GridY);
+        GridX = targetGridX = countedX;
+        GridY = targetGridY = countedY;
+        offX = x - FreeMovement.CentreOf(GridX);
+        offY = y - FreeMovement.CentreOf(GridY);
+        PlaceFromSub();
+        // The height underfoot eases to the ground the centre is over, as a step of the grid eases it
+        height = float.IsNaN(height) ? standing : height + (standing - height) * 0.35f;
+        if (!entered) return false;
+        movingDir = Facing;
+        slipping = false;
+        JustLanded = false;
+        JustRodeOut = false;
+        if (Landed(map, onWildEncounter, onWarpTrigger, onArrive))
+        {
+            IsGliding = false;
+            handOff = null;
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Where the free centre comes to this frame, easing toward a tile's centre at a pace (plan 30 · FM8: before a
+    /// hand-off, a script's walk or a step of the grid). The caller puts it there.
+    /// </summary>
+    private (int X, int Y) TowardCentre(float dt, int tx, int ty, float tilesPerSecond)
+    {
+        int x = SubX, y = SubY;
+        int toX = FreeMovement.CentreOf(tx) - x, toY = FreeMovement.CentreOf(ty) - y;
+        float reach = Math.Max(1f, tilesPerSecond * dt * FreeMovement.SubTile);
+        float length = MathF.Sqrt((float)toX * toX + (float)toY * toY);
+        if (length > reach)
+        {
+            toX = (int)MathF.Round(toX * reach / length);
+            toY = (int)MathF.Round(toY * reach / length);
+        }
+        return (x + toX, y + toY);
+    }
+
+    /// <summary>
+    /// Eases the free centre onto the centre of the tile counted as stood on (plan 30 · FM8), where nothing new is
+    /// entered: a script's walk, a trainer walking up, a step of the grid about to be taken.
+    /// </summary>
+    private void EaseToCentre(float dt, int tx, int ty, float tilesPerSecond)
+    {
+        var (x, y) = TowardCentre(dt, tx, ty, tilesPerSecond);
+        offX = x - FreeMovement.CentreOf(GridX);
+        offY = y - FreeMovement.CentreOf(GridY);
+        PlaceFromSub();
+        WalkCycle += tilesPerSecond * dt * 0.5f;
+    }
+
+    /// <summary>
     /// The next step on ice (<see cref="IceSlide"/>): a snowball ahead breaks if the slide is fast enough, then the
     /// tile's tilt says whether the player slides on, faster or slower, slips back down, or stands.
     /// </summary>
@@ -862,6 +1205,13 @@ public class Player
         int tiles = Math.Max(1, Math.Abs(step.X - GridX) + Math.Abs(step.Y - GridY));
         float speed = tilesPerSecond ?? FieldMovement.TilesPerSecond(sliding ? Pace.Fast : step.Pace);
         DiagonalStep = diagonal;
+        // A step of the grid sets out from where the body stands: the tile's corner on the grid (the offset is nought
+        // there), and wherever a free body was (plan 30 · FM7)
+        startPixelX = (FreeMovement.CentreOf(GridX) + offX) / (float)(FreeMovement.SubTile / TileSize);
+        startPixelY = (FreeMovement.CentreOf(GridY) + offY) / (float)(FreeMovement.SubTile / TileSize);
+        offX = offY = 0;
+        handOff = null;
+        freeYaw = null;
 
         targetGridX = step.X;
         targetGridY = step.Y;
