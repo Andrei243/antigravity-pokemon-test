@@ -97,10 +97,10 @@ keep in code said in the file itself:
   "start": { "map": "TidemarkTown_House", "x": 4, "y": 7, "facing": "Up" },
   "arrival": { "map": "Tidemark", "x": 14, "y": 23, "facing": "Up" },
   "maps": [ "Tidemark", "TidemarkTown_House" ],
-  "after": "Kalos",
+  "after": "Alola",
   "link": {
-    "transport": "Boat", "vessel": "ferry", "departureMap": "Kalos",
-    "attendant": { "id": "tidemark_ferryman", "name": "Ferryman", "npcType": "sailor", "x": 259, "y": 709, "facing": "Down", "isTransportAttendant": true }
+    "transport": "Boat", "vessel": "ferry", "departureMap": "Melemele",
+    "attendant": { "id": "tidemark_ferryman", "name": "Ferryman", "npcType": "sailor", "x": 274, "y": 177, "facing": "Down", "isTransportAttendant": true }
   }
 }
 ```
@@ -161,9 +161,9 @@ and exits with 1 when there is something.
 lines, a script for the cyclist, Veteran Grant's team patched and a short tune of its own. The game never loads it
 unless it is copied into a `packs` folder; the tests check it passes `--validate-packs`.
 
-`samples/packs/tidemark-isle` adds a region of its own, Tidemark, after Kalos: one town drawn by hand (its drawing is
+`samples/packs/tidemark-isle` adds a region of its own, Tidemark, after Alola: one town drawn by hand (its drawing is
 `tools/MapDraw/tidemark`, written into the pack with `dotnet run --project tools/MapDraw -- tidemark --out
 samples/packs/tidemark-isle/world/tidemark`), one house, a fisherman who battles with a team of the region's own
-`trainers.json`, a Town Map, a tune, and a ferryman laid onto Vaniville Town who takes a Champion of Kalos across. The
-tests load it (its maps built, its ways held to the region, the ferryman in Kalos, a save made there), and it passes
+`trainers.json`, a Town Map, a tune, and a ferryman laid onto Hau'oli City's beach who takes a Champion of Alola across. The
+tests load it (its maps built, its ways held to the region, the ferryman in Alola, a save made there), and it passes
 `--validate-packs` and adds nothing to the content check.

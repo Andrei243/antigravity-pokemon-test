@@ -1,0 +1,42 @@
+# The Mahalo Trail, Melemele Island (plan 23 · Z5). The lines are our own, on Sun and Moon's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Alola's first chapter"): the girl at the old bridge, her little Pokémon caught
+# by a flock of Spearow, the planks giving way and the island's guardian sweeping down. VAR_ALOLA_STORY is
+# alola_route_1.txt's count.
+#
+# The people: lillie at the bridge's foot (FLAG_ALOLA_HIDE_LILLIE_TRAIL, cleared by the professor in Iki Town).
+
+
+# Up to the gorge: the girl at the bridge
+script Bridge
+  scene "The guardian at the bridge"
+  speaker "Lillie"
+  say "Oh! Please, could you help? My little one jumped out of my bag and ran onto the bridge!"
+  face lillie player
+  say "There are Spearow all around it, and I... I can't make myself step onto those planks."
+  text "{player} hurried past her, out onto the old bridge."
+  text "A flock of Spearow came diving down on the little Pokémon in the middle of the bridge!"
+  shake player 4
+  text "With a crack, the old planks gave way!"
+  fade out
+  cry "Tapu Koko"
+  seen "Tapu Koko"
+  text "Something swept out of the sky in a flash of yellow and caught them both before they fell!"
+  fade in
+  speaker "Lillie"
+  say "That was... the island's guardian! It saved you. Thank you, thank you so much for helping."
+  say "Please, don't tell anyone you saw my little one. It's a secret. I should go back down now."
+  fade out
+  hide lillie
+  fade in
+  setflag FLAG_ALOLA_HIDE_LILLIE_TRAIL
+  setvar VAR_ALOLA_STORY 4
+  objective alolaKahuna
+  endscene
+  end
+
+
+# The girl, should she be spoken to while she stands there (she leaves in the same scene)
+script Lillie
+  speaker "Lillie"
+  say "Please be careful on the bridge. The planks are very old."
+  end

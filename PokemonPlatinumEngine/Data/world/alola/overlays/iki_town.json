@@ -1,0 +1,45 @@
+{
+  // Iki Town (plan 23 · Z5, first part): drawn by hand, our words. A village on its hill round a stage of stone where
+  // the island's festival is held, the kahuna's house to the north-west and the way north up the Mahalo Trail to the
+  // guardian's ruins. The first chapter's scenes (iki_town.txt): Professor Kukui finding the kahuna out the first time
+  // the player comes up from Route 1, and the kahuna's return from the trail, the three Pokémon, Hau and the first
+  // battle. Kukui, Hala and Hau are hidden by flags of ours until their scenes
+  "area": "iki_town",
+  "bgmTrack": "alola/iki_town",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "IkiTown_HalasHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "IkiTown_NortheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "IkiTown_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "IkiTown_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "KahunaAway", "x": 248, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 2 },
+    { "script": "KahunaHome", "x": 248, "z": 113, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 4 }
+  ],
+  "people": {
+    "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_IKI" },
+    "hala": { "name": "Hala", "npcType": "hala", "script": "Hala", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_HALA_IKI" },
+    "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_HAU_IKI" },
+    "elder": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [ "This stage has seen a festival every year since I was a little girl. We dance for the island's guardian." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "Up the trail there's an old rope bridge over the gorge. My mum won't let me cross it!" ]
+    },
+    "vendor": {
+      "name": "Vendor",
+      "npcType": "Clerk",
+      "still": true,
+      "dialog": [ "Fresh fruit, flower garlands, carvings of the guardian! Everything for the festival, right here." ]
+    }
+  },
+  "signs": {
+    "TownSign": "Iki Town\nA village on the hill, where the island's guardian is honoured."
+  }
+}

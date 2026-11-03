@@ -1,0 +1,42 @@
+{
+  // Hau'oli City, its west end (plan 23 · Z5, first part): drawn by hand, our words. The island's city on its beach: the
+  // Pokémon Center (with the Mart's counter inside, as Alola's centres have) and two houses along the promenade, the
+  // road in from the Hau'oli Outskirts in the west. Its shopping streets, the marina, the city hall and the Trainers'
+  // School to the east are a later session's
+  "area": "hauoli_city",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    { "warp": 0, "map": "HauoliCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "HauoliCity_WestHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "HauoliCity_EastHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "props": [
+    { "type": "Bench", "x": 284, "y": 169, "width": 2, "depth": 1 },
+    { "type": "Planter", "x": 296, "y": 169, "width": 1, "depth": 1 },
+    { "type": "Planter", "x": 304, "y": 169, "width": 1, "depth": 1 }
+  ],
+  "people": {
+    "tourist": {
+      "name": "Tourist",
+      "npcType": "Lady",
+      "dialog": [ "I came for a week and I've stayed a month. The sea here is the bluest I've ever seen!" ]
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "fisherman",
+      "still": true,
+      "dialog": [ "The Wishiwashi out there look tiny on their own. Wait till you see a whole school of them, though." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "still": true,
+      "dialog": [ "The Trainers' School is further along the promenade. Everyone on Melemele learns to battle there!" ]
+    }
+  },
+  "signs": {
+    "CitySign": "Hau'oli City\nThe city of the island's beaches and shops."
+  }
+}

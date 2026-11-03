@@ -27,6 +27,7 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- Alola opens: once you are Champion of Kalos, an airline attendant in Lumiose City's Pokémon Center flies you to Melemele Island, and a new game can begin there too (`--region Alola`). Wake in your new home on Route 1, meet Professor Kukui, go up to Iki Town and the Mahalo Trail, choose Rowlet, Litten or Popplio from the kahuna, battle his grandson Hau, collect your Pokédex at the lab on the beach and walk on into Hau'oli City.
 - The battle room has a DAILY RUN: a round of the Battle Factory drawn from today's date, the same six rentals and seven trainers for everyone that day, harder as the week goes on. The day's first run is kept on this machine, with your best.
 - A friend can play beside you: with the new FRIEND AS PARTNER option on, the game asks before every battle fought beside a partner whether a friend will choose for them, and on yes the friend picks the partner's moves and switches through the same menus (a second controller answers their turns), with a pill saying whose turn it is.
 - Friends' trainers stand upstairs in Jubilife City's Pokémon Center: every trainer file in the `trainers` folder beside your save (up to eight) waits there to battle at level 50, with nothing won or used up, and can be beaten once a day.

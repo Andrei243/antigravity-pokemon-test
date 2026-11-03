@@ -1,0 +1,20 @@
+{
+  // The Mahalo Trail (plan 23 · Z5, first part): drawn by hand, our words. A wooded path north of Iki Town up to a gorge
+  // crossed by an old plank bridge, and beyond it the ring of stones round the island guardian's ruins, whose doors are
+  // a later session's. The first chapter's scene at the bridge (mahalo_trail.txt): a girl and the little Pokémon she
+  // keeps in her bag, a flock of Spearow, the planks giving way and the guardian sweeping down. The girl is hidden by a
+  // flag of ours outside her scene
+  "area": "mahalo_trail",
+  "bgmTrack": "alola/iki_town",
+  "trees": "Round",
+  "architecture": "Islander",
+  "triggers": [
+    { "script": "Bridge", "x": 247, "z": 85, "width": 6, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 3 }
+  ],
+  "people": {
+    "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_LILLIE_TRAIL" }
+  },
+  "signs": {
+    "TrailSign": "Mahalo Trail\nNorth: the Ruins of Conflict\nSouth: Iki Town"
+  }
+}

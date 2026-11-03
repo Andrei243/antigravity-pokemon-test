@@ -536,8 +536,16 @@
       "note": "first spoken at goldenrod.txt(163)",
       "provisional": true
     },
+    "hala": {
+      "note": "first spoken at iki_town.txt(40)",
+      "provisional": true
+    },
     "harlequin": {
       "note": "first spoken at CasteliaCity.txt(22)",
+      "provisional": true
+    },
+    "hau": {
+      "note": "first spoken at iki_town.txt(50)",
       "provisional": true
     },
     "herbalist": {
@@ -707,6 +715,10 @@
     },
     "lift_attendant": {
       "note": "first spoken at lilycove_city_department_store_elevator.txt(13)",
+      "provisional": true
+    },
+    "lillie": {
+      "note": "first spoken at mahalo_trail.txt(12)",
       "provisional": true
     },
     "linda": {
@@ -1035,6 +1047,10 @@
     },
     "prof_juniper": {
       "note": "first spoken at regions/Unova.json",
+      "provisional": true
+    },
+    "prof_kukui": {
+      "note": "first spoken at AlolaRoute1_KukuiLab.txt(8)",
       "provisional": true
     },
     "prof_oak": {},
@@ -1665,7 +1681,9 @@
     "Gurkinn": "gurkinn",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
+    "Hala": "hala",
     "Harlequin": "harlequin",
+    "Hau": "hau",
     "Herbalist": "herbalist",
     "Herdier": "herdier",
     "Hiker": "look:hiker",
@@ -1711,6 +1729,7 @@
     "Lass": "look:lass",
     "Librarian": "librarian",
     "Lift Attendant": "lift_attendant",
+    "Lillie": "lillie",
     "Linda": "linda",
     "Little Boy": "little_boy",
     "Little Girl": "look:little_girl",
@@ -1801,6 +1820,7 @@
     "Prof. Cozmo": "prof_cozmo",
     "Prof. Elm": "prof_elm",
     "Prof. Juniper": "prof_juniper",
+    "Prof. Kukui": "prof_kukui",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
     "Prof. Sycamore": "prof_sycamore",

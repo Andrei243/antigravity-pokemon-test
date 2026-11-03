@@ -1499,6 +1499,12 @@ kalos_sycamore_1 187 (10) [Bulbasaur → Venusaur, Charmander → Charizard, Squ
 kalos_tierno_1 186 (6) [Corphish → Crayronin]
 kalos_tierno_2 188 (12) [Corphish → Crayronin, Pancham → Pangoro]
 kalos_viola_1 188 (12) [Surskit → Ocellwing]
+=== region Alola
+levels 2 → 205, 58 → 224, 70 → 238
+caps 209 213 218 223 224 (own 15 27 39 54 58)
+alola_hau_1 206 (5) [Litten → Incineroar]
+alola_hau_2 206 (5) [Popplio → Primarina]
+alola_hau_3 206 (5) [Rowlet → Decidueye]
 === CyllageCity_Gym
 Cyllage Gym, Kalos
 trainers 2, 190 (own 19-20): kalos_hiker_armand 190 (19) [Roggenrola → Gigalith, Binacle → Barbaracle], kalos_hiker_bruno 190 (20) [Onix → Ironwyrm]
@@ -1541,6 +1547,10 @@ grass 174-176 (own 32-36)
 surf 171-177 (own 25-40)
 super rod 177-194 (own 40-70)
 trainers 4, 176-177 (own 37-39): unova_lass_lurleen 177 (39) [Deerling → Seasonstag, Zangoose → Ravagoose], unova_twins_rae_ula 177 (38) [Swablu → Nimbusong, Swablu → Nimbusong], unova_youngster_jaye 176 (37) [Karrablast → Lancelier, Shelmet → Velocigor, Joltik → Voltarantula], unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
+=== alola_route_1
+Route 1, Alola
+grass 205-206 (own 2-4)
+trainers 1, 205 (own 3): alola_youngster_keoni 205 (3) [Yungoos → Gumshoos]
 === altering_cave
 Altering Cave, Hoenn
 grass 138-143 (own 6-16)
@@ -1976,6 +1986,10 @@ Giant Chasm, Unova
 grass 179-180 (own 44-47)
 surf 175-181 (own 35-50)
 super rod 177-194 (own 40-70)
+=== glittering_cave
+Glittering Cave, Kalos
+grass 190-191 (own 20-22)
+trainers 2, 190-191 (own 20-21): kalos_backpacker_solene 191 (21) [Magnemite → Magnezone], kalos_hiker_hilaire 191 (21) [Machop → Machamp, Onix → Ironwyrm, Geodude → Golem]
 === goldenrod_gym
 Goldenrod City, Johto
 trainers 4, 109-114 (own 9-17): johto_beauty_samantha 113 (16) [Meowth → Regalynx, Meowth → Regalynx], johto_beauty_victoria 113 (16) [Sentret → Ermilong, Sentret → Ermilong, Sentret → Ermilong], johto_lass_carrie 114 (17) [Snubbull → Mastiffang], johto_lass_cathy 113 (15) [Jigglypuff → Wigglytuff, Jigglypuff → Wigglytuff, Jigglypuff → Wigglytuff]
@@ -2400,6 +2414,9 @@ grass 148-150 (own 27-33)
 Magma Hideout, Hoenn
 grass 148-150 (own 27-33)
 trainers 4, 147-150 (own 26-33): hoenn_grunt_magma_hideout_11 149 (29) [Baltoy → Claydol], hoenn_grunt_magma_hideout_12 149 (29) [Numel → Camerupt], hoenn_grunt_magma_hideout_13 149 (29) [Zubat → Crobat], hoenn_tabitha_magma_hideout 150 (33) [Numel → Camerupt, Mightyena → Hyaenarch, Zubat → Crobat, Camerupt → Volcamel]
+=== mahalo_trail
+Mahalo Trail, Alola
+grass 205-206 (own 3-5)
 === mahogany_gym_leader_room
 Mahogany Town, Johto
 trainers 3, 119-122 (own 25-29): johto_boarder_deandre 120 (26) [Seel → Glacitusk, Dewgong → Glacitusk, Seel → Glacitusk], johto_boarder_gerardo 120 (26) [Shellder → Cloyster, Cloyster → Clamspire, Seel → Glacitusk], johto_skier_jill 122 (29) [Dewgong → Glacitusk]
@@ -2792,6 +2809,10 @@ trainers 3, 76-79 (own 23-26): kanto_team_rocket_grunt_19 78 (25) [Zubat → Cro
 === power_plant
 Power Plant, Kanto
 grass 76-85 (own 22-35)
+=== reflection_cave
+Reflection Cave, Kalos
+grass 190 (own 18-20)
+trainers 2, 190 (own 18-19): kalos_lass_perrine 190 (19) [Sableye → Gemwraith, Mawile → Deceivore], kalos_youngster_ambroise 190 (19) [Roggenrola → Gigalith]
 === relic_castle
 Relic Castle, Unova
 grass 168-170 (own 18-21)

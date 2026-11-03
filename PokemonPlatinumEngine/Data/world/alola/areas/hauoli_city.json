@@ -1,0 +1,31 @@
+{
+  "key": "hauoli_city",
+  "index": 3,
+  "name": "Hau'oli City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HAUOLI",
+  "nightMusic": "HAUOLI",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 281, "z": 165, "to": "HauoliCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 290, "z": 165, "to": "HauoliCity_WestHouse", "toWarp": 0 },
+    { "x": 302, "z": 165, "to": "HauoliCity_EastHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "tourist", "looks": "lady", "movement": "wander_around", "x": 292, "z": 170, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 300, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "look_west", "x": 286, "z": 173, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 297, "z": 175, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,33 @@
+# The player's new home on Route 1, Melemele Island (plan 23 · Z5), where a new game in Alola begins. The lines are our
+# own, on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Alola's first chapter"): no
+# script of the original is read. VAR_ALOLA_STORY is alola_route_1.txt's count.
+
+
+# On the way to the door on the first morning: Mom says the professor is waiting outside
+script MomCalls
+  scene "Mom on the first morning"
+  face player up
+  speaker "Mom"
+  say "Oh, you're up! Did you sleep with all those boxes still everywhere?"
+  say "Professor Kukui came by while you were asleep. He said he'd take you up to Iki Town to meet the island's kahuna."
+  say "He's waiting just outside. Off you go, and say alola for me!"
+  # Sun and Moon's player runs from the start: no shoes are handed over in Alola
+  setflag FLAG_HAS_RUNNING_SHOES
+  setvar VAR_ALOLA_STORY 1
+  objective alolaDoor
+  endscene
+  end
+
+
+# Mom: a rest once the first Pokémon is home
+script Mom
+  if party > 0 goto Rest
+  speaker "Mom"
+  say "Professor Kukui is waiting outside, dear. Don't keep him standing in the sun!"
+  end
+label Rest
+  sayown
+  heal
+  fanfare heal
+  call NextHint
+  end

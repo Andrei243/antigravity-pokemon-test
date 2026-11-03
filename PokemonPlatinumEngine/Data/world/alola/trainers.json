@@ -1,0 +1,74 @@
+[
+  {
+    "id": "alola_hau_1",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Litten",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 5120331
+      }
+    ]
+  },
+  {
+    "id": "alola_hau_2",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Popplio",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 8833107
+      }
+    ]
+  },
+  {
+    "id": "alola_hau_3",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Rowlet",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 2264509
+      }
+    ]
+  },
+  {
+    "id": "alola_youngster_keoni",
+    "name": "Keoni",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 48,
+    "party": [
+      {
+        "species": "Yungoos",
+        "level": 3,
+        "ivScale": 0,
+        "personality": 6640217
+      }
+    ]
+  }
+]

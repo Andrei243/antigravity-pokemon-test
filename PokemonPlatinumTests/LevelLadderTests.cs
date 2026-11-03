@@ -121,8 +121,8 @@ public class LevelLadderTests
         Assert.Equal(new[] { 14, 22, 26, 32, 37, 41, 44, 50, 62 }, LevelCaps.TableOf(RegionDatabase.Sinnoh));
         Assert.Equal(LevelCaps.TableOf(RegionDatabase.Sinnoh), LevelCaps.TableOf(RegionDatabase.Sinnoh, crossed: true));
         // A region with no table yet has none either way
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Alola));
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Alola, crossed: true));
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Galar));
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Galar, crossed: true));
     }
 
     [Fact]

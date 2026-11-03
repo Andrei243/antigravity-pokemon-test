@@ -1,0 +1,157 @@
+{
+  "name": "AlolaRoute1_KukuiLab",
+  "displayName": "Pokémon Research Lab",
+  "bgmTrack": "alola/route1",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##.##.....##.##",
+    "#.............#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "LabDesk",
+      "x": 11,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Melemele",
+      "targetX": 236,
+      "targetY": 173,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kukui",
+      "name": "Prof. Kukui",
+      "npcType": "kukui",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Kukui",
+      "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_LAB"
+    },
+    {
+      "id": "rockruff",
+      "name": "Rockruff",
+      "npcType": "Pokemon",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "script": "Rockruff",
+      "species": "Rockruff"
+    }
+  ],
+  "wildEncounters": []
+}

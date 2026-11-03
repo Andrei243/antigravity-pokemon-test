@@ -158,6 +158,9 @@ internal static partial class BuildingArt
             // Cyllage (plan 23 · Z2, second part): white stucco under sun-baked ochre hips with shutters and flower boxes,
             // the seaside town of terraces on the cliffs
             Architecture.Cyllage => Pitched(WallKind.Stucco, Rgb(204, 142, 66), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
+            // Alola (plan 23 · Z5): Iki Town's weathered boards under thatch-brown hips, Hau'oli's pastel clapboard under coral hips
+            Architecture.Islander => Pitched(WallKind.Boards, Rgb(146, 112, 70), RoofShape.Hip) with { Shutters = true },
+            Architecture.Shoreline => Pitched(WallKind.Clapboard, Rgb(226, 120, 104), RoofShape.Hip) with { FlowerBoxes = true },
             Architecture.Crater =>Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

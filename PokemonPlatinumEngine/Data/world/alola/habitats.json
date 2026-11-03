@@ -1,0 +1,71 @@
+{
+  "map": [
+    "                ",
+    "                ",
+    "       ..       ",
+    "       ..       ",
+    "       ..       ",
+    "       ..T      ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                ",
+    "                "
+  ],
+  "areas": [
+    {
+      "key": "alola_route_1",
+      "name": "Route 1",
+      "cells": "7,4 8,4 7,5 8,5",
+      "morning": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Grubbin",
+        "Ledyba"
+      ],
+      "day": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Grubbin",
+        "Ledyba"
+      ],
+      "night": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Grubbin",
+        "Ledyba"
+      ]
+    },
+    {
+      "key": "mahalo_trail",
+      "name": "Mahalo Trail",
+      "cells": "7,2 8,2",
+      "morning": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Ledyba"
+      ],
+      "day": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Ledyba"
+      ],
+      "night": [
+        "Pikipek",
+        "Yungoos",
+        "Caterpie",
+        "Ledyba"
+      ]
+    }
+  ]
+}

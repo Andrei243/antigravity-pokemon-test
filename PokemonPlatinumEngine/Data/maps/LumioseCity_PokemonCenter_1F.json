@@ -265,6 +265,16 @@
       ],
       "movement": "wander_around",
       "rangeX": 1
+    },
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "x": 13,
+      "y": 10,
+      "facing": "Left",
+      "isTransportAttendant": true,
+      "shownBy": "KalosHallOfFame"
     }
   ],
   "wildEncounters": []

@@ -1,0 +1,22 @@
+{
+  // What is built of Alola so far (plan 23 · Z5, first part). Sun and Moon have no decompilation that holds their maps and
+  // no dump is read, so Alola is drawn by hand on the tile grid as Kalos is (the user's decision of 2026-11-02): the
+  // drawings are tools/MapDraw/alola, and `dotnet run --project tools/MapDraw -- alola` writes the chunks, the matrix and
+  // the habitats here from them. The area files, the overlays and this index are written by hand. The rooms are
+  // hand-made map files (Data/maps), reached by the overlays' doors. Alola's keys are the places' names in lower case,
+  // a route's taking the region's name, since Kanto's and Kalos's routes have the same numbers (alola_route_1).
+  "region": "Alola",
+  // The houses are drawn into the tiles, each found at its door (WorldMapBuilder.BuildingsAtDoors), as Kalos's are
+  "buildingsAtDoors": true,
+  "maps": [
+    // Melemele Island, the first of the four islands (each a matrix of its own, plan 23's Alola decisions): 16 chunks by
+    // 16, Iki Town on its hill near the middle
+    { "name": "Melemele", "matrix": 0, "trees": "Round" }
+  ],
+  "areas": [
+    "alola_route_1",
+    "iki_town",
+    "mahalo_trail",
+    "hauoli_city"
+  ]
+}

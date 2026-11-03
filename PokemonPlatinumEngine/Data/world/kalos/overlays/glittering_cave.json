@@ -19,7 +19,7 @@
       "name": "Solène",
       "npcType": "backpacker_f",
       "trainer": {
-        "dialogueBefore": "Backpacker Solène: Shh! Do you hear the Magnemite humming? ...Oh. You've seen me. Battle!",
+        "dialogueBefore": "Backpacker Solène: Shh! Do you hear the Magnezone humming? ...Oh. You've seen me. Battle!",
         "dialogueAfter": "Backpacker Solène: The humming was louder than I thought."
       }
     }
