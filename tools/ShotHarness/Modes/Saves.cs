@@ -75,6 +75,14 @@ partial class Harness
         PastTheOpening();
         Write("past-the-opening");
 
+        // ---- standing between tiles where the place moves freely (plan 30 · FM7: a test region's record, since no
+        // region's own file says Free yet), which only a save of SaveVersion 2 on keeps
+        engine.RegionMovementOverride = new RegionMovement { Directions = MovementDirections.Free, Speed = MovementSpeed.Analog };
+        game.Player.SetOffset(40, -30);
+        Write("between-tiles");
+        engine.RegionMovementOverride = null;
+        game.Player.SetOffset(0, 0);
+
         // ---- out on Twinleaf Town's pond, on the back of a Pokémon that knows Surf
         var swimmer = new Pokemon(PokemonDatabase.Get("Bibarel")!, 30);
         while (swimmer.Moves.Count >= 4) swimmer.Moves.RemoveAt(swimmer.Moves.Count - 1);

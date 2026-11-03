@@ -38,6 +38,10 @@ internal sealed partial class Autoplayer
     private int healingLevel = -1;
     private readonly Dictionary<(string, string), string?> nextMaps = new();
     private bool detoured;
+    // Free (plan 30 · FM9): the last step of a leg is a glide that lands a few frames after it is steered, so the leg is
+    // judged once the body is counted off the tile it set out from (or after a second)
+    private (int X, int Y)? takenFrom;
+    private float takenWait;
 
     /// <summary>The team as it stands, a line each: the species and the level.</summary>
     public IEnumerable<string> Team => game.Party.Members.Select(p => $"{p.Species.Name} {p.Level} ({p.CurrentHP}/{p.MaxHP} HP)");
@@ -56,6 +60,13 @@ internal sealed partial class Autoplayer
         }
 
         // A leg whose thing was done: over once what it started is over, or tried again if nothing started
+        if (it.Taken && takenFrom is { } from && player.MovesFreely(map) && (player.GridX, player.GridY) == from && takenWait < 1f)
+        {
+            takenWait += dt;
+            return ActionFrame.None;
+        }
+        takenFrom = null;
+        takenWait = 0f;
         if (it.Taken)
         {
             it.Taken = false;
@@ -323,7 +334,11 @@ internal sealed partial class Autoplayer
         }
 
         var way = route![at];
-        if (at == route.Count - 1 && player.Facing == way && !detoured) onLastStep?.Invoke();
+        if (at == route.Count - 1 && player.Facing == way && !detoured && onLastStep != null)
+        {
+            onLastStep();
+            if (player.MovesFreely(map)) takenFrom = (px, py);
+        }
         Walk(way, player.HasRunningShoes);
         return ActionFrame.None;
     }

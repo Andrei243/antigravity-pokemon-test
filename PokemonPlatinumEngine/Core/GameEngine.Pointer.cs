@@ -60,7 +60,7 @@ public partial class GameEngine
         }
         // The button kept down after a click is the A button kept down (a dangerous answer's hold, plan 12 · Q9)
         uint down = clickHeld ? Bit(GameAction.Confirm) : 0u;
-        if ((pressed | down) != 0) InputManager.Feed(new ActionFrame(actions.Down | down | pressed, actions.Pressed | pressed));
+        if ((pressed | down) != 0) InputManager.Feed(new ActionFrame(actions.Down | down | pressed, actions.Pressed | pressed) { MoveX = actions.MoveX, MoveY = actions.MoveY });
     }
 
     internal sealed partial class Driver
