@@ -1648,6 +1648,9 @@ oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnorma
       Island (`h2d2`), a chunk baking while the island's swap changed the map's props, which `Map.Hide`, `Reveal` and the
       season's swap now do under the list's lock and `OutdoorProps.Add` reads from a copy taken under it (`h2d2` and
       `h2d3` taken after the fix). The harness stood
-      the player three tiles short of each Regi and away from the Weather Institute's scientist, so their battles and
-      report never came (`!! never happened`); it now stands them before each. **Left to pictures only**: the Fortree
+      the player three tiles short of each Regi, and shot the Weather Institute with Team Aqua still in it (the scientist
+      at his held post), so the battles and the report never came (`!! never happened`); it now stands the player before
+      each Regi and clears Team Aqua first, and `h254`, `h25a`, `h260` and `h2a1` were taken again with the battles and the
+      report. The Devon researcher's question is still not seen there (the chain had already revived a fossil). **Left to
+      pictures only**: the Fortree
       walkway under the trees south of it (part r), Mew's grass shaking, the cave mouth as a card.
