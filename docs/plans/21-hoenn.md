@@ -1546,3 +1546,27 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Lady's television show and a player's own quiz for others (record mixing); Emerald's service-day roulette rate and
       its record of roulette wins in a row; and pictures only, as after part k, with Mauville's machine and roulette, the
       contest's stage, the museum's scene and the two basements unshot.
+    - **Part q** (done 2026-11-03: Hoenn's pictures finished, shots looked at; the harness's `hoenn` mode with
+      `HOENN_FROM=look`, `LOOK_ONLY=h3k` for the new shots `h3k0` to `h3k9`; tests `HoennPartQTests`, run with --filter
+      beside HoennPartK, P, O, JohtoTests, Text and Content). **Fixed in the importer** (`--game emerald --data` rerun):
+      the Seaside Cycling Road is a deck: Emerald keeps its planks at elevation 4 with a surfable behaviour over Route
+      110's sea, so the reader now takes such a tile (`GbaWorld.Heights`, its `Road`) for a bridge's deck at its level over
+      the sea's, the sea round it no longer takes the road's level for its own (it had stood at the road's height and drawn
+      over it, the cyclists waist-deep), the sea under its rails is the sea's, and a bridge that bends (the road's raised
+      ends of elevation 15) takes its whole span's deck where its straight ways end in water (Route 119's two small bridges
+      gained decks the same way); the Abandoned Ship's deck is planks (a `GbaCover.HoennRanges` row for the deck's own
+      metatiles, which no other layout of `gTileset_Facility` uses, and on a ship's deck the tileset's path rows are
+      planks too: its rails and hull sides had stood as grey stone, and fences on lawn). **Fixed in the engine**: the
+      S.S. Tidal's three rooms are walled by bulkheads (`WorldModels.PartitionsOf`, a Hoenn table beside Johto's; style
+      guide, "Partitions of their own"): their cabins' walls had run from the back wall to the front and stood their full
+      height as the back wall come forward; someone a map keeps out of sight in tall grass stirs it (Faraway Island's
+      Mew, `GameEngine.TickEncounters`); the roulette's ball rests in its slot (Emerald's distances laid on our larger
+      wheel, `ModernUi.Roulette.OnOurWheel`: it had rested on the hub) and a one-coin table says "1 COIN"
+      (`rouletteTable.wagerOne`, Romanian too). **Looked at and right**: Mauville's roulette through a round (board,
+      wager, rolling, landed), the contest's stage behind the line-up at the Master Rank, the museum's first scene with
+      its curator, the cycling road ridden, the S.S. Tidal's corridor, cabins and hold, the ship's deck.
+    - **What of Hoenn's pictures is left after part q**: the Abandoned Ship's cabins and rails on its deck stand as grey
+      stone (their metatiles are shared with the Aqua Hideout and Stern's shipyard, and a fence stands on lawn); the
+      Kecleon bridge's and the Fortree bridge's tile swaps, the salt piles shrinking, and the cave mouths' and deep
+      water's looks under the abnormal weather (each a swap of chunks or a field effect, none drawn); the Fortree shot
+      `h3h1` does not show the player (the spot wants checking); the contest stage is mostly behind the line-up's cards.
