@@ -1,0 +1,10 @@
+# The online server's front (plan 07 · O7; the setup guide's step 5). Copy over /etc/caddy/Caddyfile and replace the
+# name with your own (a DuckDNS name or a subdomain with an A record and no AAAA record), then
+#   sudo systemctl reload caddy
+# Caddy gets and renews the HTTPS certificate by itself, passes the game's WebSocket through to the server program on
+# 127.0.0.1:5080 and sets X-Forwarded-For to the player's own address, which the server believes from 127.0.0.1 alone
+# (LinkServer__TrustedProxy in linkserver.service).
+
+sinnoh-link.duckdns.org {
+    reverse_proxy 127.0.0.1:5080
+}

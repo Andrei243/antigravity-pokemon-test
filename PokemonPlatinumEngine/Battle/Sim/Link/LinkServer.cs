@@ -270,7 +270,17 @@ public sealed class LinkServer
     /// <summary>A player's link dropped and didn't come back in time: the match is theirs to lose.</summary>
     public void Disconnect(BattleSide side) => GiveUp(side, LinkEnding.Disconnect);
 
-    private void GiveUp(BattleSide side, LinkEnding how)
+    /// <summary>Whether the side owes an answer to the question standing now (plan 07 · O6's turn timer reads it).</summary>
+    public bool IsWaitingOn(BattleSide side) => Result == null && waitingOn.Contains(side);
+
+    /// <summary>The number of the question standing now, which a turn timer starts again on.</summary>
+    public int Asking => asking;
+
+    /// <summary>
+    /// The match is given up for a side as <paramref name="how"/> (plan 07 · O6: a pick not made in time, a player who
+    /// left the room); before the first turn the other side wins the match, after it the battle is forfeited.
+    /// </summary>
+    public void GiveUp(BattleSide side, LinkEnding how)
     {
         if (Result != null) return;
         ending = how;
