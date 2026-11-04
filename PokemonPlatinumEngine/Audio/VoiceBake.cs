@@ -147,6 +147,7 @@ public static class VoiceBake
         double lowSum = 0, allSum = 0;
         var lowRing = new double[size];
         var allRing = new double[size];
+        var gains = new float[x.Length];
         for (int i = 0; i < x.Length; i++)
         {
             double l = low[i] * (double)low[i], a = x[i] * (double)x[i];
@@ -158,7 +159,23 @@ public static class VoiceBake
             float want = 1f;
             if (lowDb > -24 && share > 0.6) want = MathF.Max(most, (float)(1 - (share - 0.6) / 0.4 * (1 - most)));
             gain += (want - gain) * (want < gain ? attack : release);
-            x[i] -= low[i] * (1f - gain);
+            gains[i] = gain;
+        }
+        // The gain is taken from a little ahead, so the thump's first swing is caught too
+        int ahead = Math.Max(1, rate / 100);
+        // The least gain of the next 'ahead' samples, kept by a queue of rising gains
+        var queue = new LinkedList<int>();
+        int added = 0;
+        for (int i = 0; i < x.Length; i++)
+        {
+            int until = Math.Min(x.Length - 1, i + ahead);
+            for (; added <= until; added++)
+            {
+                while (queue.Count > 0 && gains[queue.Last!.Value] >= gains[added]) queue.RemoveLast();
+                queue.AddLast(added);
+            }
+            while (queue.First!.Value < i) queue.RemoveFirst();
+            x[i] -= low[i] * (1f - gains[queue.First.Value]);
         }
     }
 

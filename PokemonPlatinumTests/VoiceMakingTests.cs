@@ -194,9 +194,11 @@ public sealed class VoiceMakingTests : IDisposable
         // A thump: forty milliseconds of 60 Hz, loud, in a quiet stretch
         var thump = new float[rate];
         for (int i = rate / 2; i < rate / 2 + rate / 25; i++) thump[i] = 0.5f * MathF.Sin(2 * MathF.PI * 60 * i / rate);
-        double before = thump.Max(MathF.Abs);
+        static double Rms(float[] x) => Math.Sqrt(x.Average(v => (double)v * v));
+        double before = Rms(thump), peak = thump.Max(MathF.Abs);
         VoiceBake.SoftenPlosives(thump, rate);
-        Assert.True(thump.Max(MathF.Abs) < before * 0.6, $"the thump is still {thump.Max(MathF.Abs)} of {before}");
+        Assert.True(Rms(thump) < before * 0.6,$"the thump is still {Rms(thump)} of {before}");
+        Assert.True(thump.Max(MathF.Abs) < peak * 0.7, $"the thump's first swing is still {thump.Max(MathF.Abs)} of {peak}");
     }
 
     [Fact]

@@ -192,10 +192,14 @@ public static class VoiceSamples
 
         var levels = Levels(wave.Mono, wave.Rate);
         double floor = Percentile(levels, 0.1);
-        if (floor > TooNoisyFloor) Error($"the room's noise is {floor:0} dB: the clone copies it into every line (a quieter room, or the microphone closer)");
+        // A take with no quiet in it has no room's noise to measure: its quietest windows are the voice's own, which rise and
+        // fall from one to the next where a room's noise holds steady
+        bool noQuiet = floor > levels.Max() - 25 && Unsteady(levels);
+        if (noQuiet) Warn("there is no quiet in it to tell the room's noise by: leave half a second before the voice and after it");
+        else if (floor > TooNoisyFloor) Error($"the room's noise is {floor:0} dB: the clone copies it into every line (a quieter room, or the microphone closer)");
         else if (floor > NoisyFloor) Warn($"the room's noise is {floor:0} dB: under {NoisyFloor} dB is better");
 
-        double threshold = Math.Max(floor + 12, peak - 40);
+        double threshold = noQuiet ? double.NegativeInfinity : Math.Max(floor + 12, peak - 40);
         int first = levels.FindIndex(l => l > threshold), last = levels.FindLastIndex(l => l > threshold);
         double lead = first < 0 ? seconds : first * Window, tail = last < 0 ? seconds : seconds - (last + 1) * Window;
         if (first >= 0)
@@ -229,6 +233,14 @@ public static class VoiceSamples
         }
         if (levels.Count == 0) levels.Add(Loudness.Db(0));
         return levels;
+    }
+
+    /// <summary>Whether the quietest windows differ by more than 2 dB from one another (the voice's own), not steady like a room's noise.</summary>
+    private static bool Unsteady(List<double> levels)
+    {
+        var quietest = levels.OrderBy(v => v).Take(Math.Max(2, levels.Count * 8 / 100)).ToList();
+        double mean = quietest.Average();
+        return Math.Sqrt(quietest.Average(v => (v - mean) * (v - mean))) > 2;
     }
 
     private static double Percentile(List<double> values, double share)
