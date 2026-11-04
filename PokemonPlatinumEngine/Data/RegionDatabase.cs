@@ -835,7 +835,7 @@ public static class RegionDatabase
                 "AspertiaCity_House2_2F", "AspertiaCity_House3_1F", "AspertiaCity_House3_2F", "AspertiaCity_TrainerSchool",
                 "AspertiaCity_Gym", "AspertiaCity_PokemonCenter", "AspertiaGate",
                 "FloccesyTown_AldersHouse", "FloccesyTown_House1", "FloccesyTown_House2", "FloccesyTown_PokemonCenter",
-                "FloccesyRanch",
+                "FloccesyRanch", "CaveOfBeing", "AbyssalRuins",
                 // Plan 22 · U5, part b: Virbank City's gate, rooms, ship terminal and club, the gate to Pokéstar Studios
                 // and the Virbank Complex
                 "VirbankGate", "VirbankCity_House1", "VirbankCity_House2", "VirbankCity_House3", "VirbankCity_Terminal",

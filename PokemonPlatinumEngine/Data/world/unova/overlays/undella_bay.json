@@ -6,6 +6,9 @@
   // the water are the bay's own
   "area": "undella_bay",
   "bgmTrack": "unova/undella",
+  // Plan 22 · U10, the last part: the bay's four dark patches (Black 2's tile class 0x43) are where Dive goes down, into the
+  // Abyssal Ruins' halls at their north door (Black 2's swim to the doors is a 3D scene with no grid)
+  "diveTo": { "area": "abyssal_ruins_5", "x": 87, "z": 22, "facing": "Up" },
   "people": {
     "0": {
       "name": "Summer",

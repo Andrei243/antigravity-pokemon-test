@@ -37,6 +37,11 @@
     { "name": "FloccesyTown_House2", "matrix": 261, "area": "floccesy_town_4", "trees": "Round", "setting": "Indoors" },
     { "name": "FloccesyTown_PokemonCenter", "matrix": 13, "area": "floccesy_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "FloccesyRanch", "matrix": 255, "area": "floccesy_ranch_2", "trees": "Round" },
+    // Plan 22 · U10, the last part: the Cave of Being on its island in Route 20's pond, reached by Surf
+    { "name": "CaveOfBeing", "matrix": 310, "area": "cave_of_being", "trees": "Round", "setting": "Cave" },
+    // Plan 22 · U10, the last part: the Abyssal Ruins under Undella Bay, dived to from its dark patches (Black 2's swim down
+    // to its doors is a 3D scene with no grid, so the dive comes out in the ruins' halls)
+    { "name": "AbyssalRuins", "matrix": 247, "area": "abyssal_ruins_5", "trees": "Round", "setting": "Cave" },
     // Plan 22 · U5, part b: Virbank City's gate from Route 20, its rooms, the ship terminal, Roxie's club in two rooms,
     // the gate towards Pokéstar Studios and the Virbank Complex's own field
     { "name": "VirbankGate", "matrix": 50, "area": "virbank_gate", "trees": "Round", "setting": "Indoors" },
@@ -376,7 +381,7 @@
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
     "aspertia_city_7", "aspertia_city_8", "aspertia_city_9", "aspertia_city_gym", "aspertia_city_pokemon_center",
     "aspertia_gate", "unova_route_19", "floccesy_town", "floccesy_town_2", "floccesy_town_3", "floccesy_town_4",
-    "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2",
+    "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2", "cave_of_being", "abyssal_ruins_5",
     "virbank_gate", "virbank_city", "virbank_city_2", "virbank_city_3", "virbank_city_4", "virbank_city_5",
     "virbank_city_gym", "virbank_city_gym_2", "virbank_city_pokemon_center", "virbank_gate_gate", "virbank_complex",
     "virbank_complex_2",

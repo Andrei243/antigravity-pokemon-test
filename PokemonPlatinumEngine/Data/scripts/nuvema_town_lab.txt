@@ -1,0 +1,21 @@
+# Professor Juniper's lab in Nuvema Town (plan 22 · U10, the last part). docs/scripts.md describes the language; the lines
+# are our own. Once Unova's Hall of Fame is entered she is back at her desk, glad of the Champion's visit; what she says
+# follows what the game knows: whether the Pokédex is the National one, and whether her father's Cave of Being has been seen.
+
+
+script Juniper
+  face self player
+  speaker "Prof. Juniper"
+  say "{player}! The new Champion, in my own lab! Come in, come in."
+  if nationaldex goto National
+  say "Keep filling in your Pokédex. Every page tells me a little more about where Pokémon came from."
+  goto Cave
+label National
+  say "And the National Pokédex too! You're seeing Pokémon from regions I've only read about."
+label Cave
+  if var VAR_UNOVA_CAVE_OF_BEING == 1 goto Seen
+  say "My father has gone off to some cave on Route 20 again. He says something sleeps there. He always says that!"
+  end
+label Seen
+  say "Dad says you saw three Pokémon fly out of his cave. Three! He hasn't stopped talking about it."
+  end

@@ -1018,6 +1018,14 @@ public sealed class WorldOverlayFile
     /// game keeps them with <see cref="Overworld.Map.ApplyDoors"/>. Only the rectangle and the flag of each are read.
     /// </summary>
     public List<OverlayZone>? DarkWater { get; set; }
+
+    /// <summary>
+    /// Tiles of the area laid as the open water beside them (plan 22 · U10, the last part): where Black 2's channel joins two
+    /// stretches of its water only at a corner (Route 20's stream into the Cave of Being's pond), a blocked corner of the
+    /// bank the field can't pass. Only the rectangle of each is read; the water's behaviour and height are the nearest
+    /// open water's.
+    /// </summary>
+    public List<OverlayZone>? Water { get; set; }
 }
 
 /// <summary>A tile of an imported area (its key, and a tile of its matrix), facing a way (<see cref="WorldOverlayFile.DiveTo"/>).</summary>

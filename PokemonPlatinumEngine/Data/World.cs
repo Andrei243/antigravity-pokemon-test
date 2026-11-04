@@ -2996,6 +2996,22 @@ public static class WorldMapBuilder
                         map.FlaggedDarkWater[(x, z)] = (flag, map.BehaviourAt(x, z));
                         map.SetBehaviour(x, z, TileBehavior.DiveWater);
                     }
+        // Corners of a bank laid as the water beside them, where the original joins two stretches only at a corner (plan 22 · U10)
+        foreach (var wet in overlay?.Water ?? new())
+            for (int z = wet.Z; z < wet.Z + wet.Depth; z++)
+                for (int x = wet.X; x < wet.X + wet.Width; x++)
+                {
+                    if (!map.InBounds(x, z)) continue;
+                    foreach (var (dx, dz) in new[] { (0, -1), (-1, 0), (1, 0), (0, 1) })
+                    {
+                        int nx = x + dx, nz = z + dz;
+                        if (!map.InBounds(nx, nz) || map.IsSolid(nx, nz) || !TileBehaviors.IsSurfable(map.BehaviourAt(nx, nz))) continue;
+                        map.SetBehaviour(x, z, map.BehaviourAt(nx, nz));
+                        map.SetGroundTile(x, z, map.GetGroundTile(nx, nz), isSolid: false);
+                        map.SetHeight(x, z, map.HeightAt(nx, nz));
+                        break;
+                    }
+                }
         foreach (var prop in overlay?.Props ?? new())
         {
             var placed = map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);

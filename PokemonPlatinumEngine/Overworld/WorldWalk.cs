@@ -134,7 +134,8 @@ internal static class WorldWalk
                 var spot = map.DiveTargetAt(x, y)!;
                 var below = mapOf(spot.Map);
                 if (below.InBounds(spot.X, spot.Y) && !below.IsSolid(spot.X, spot.Y))
-                    Visit(below, spot.X, spot.Y, TravelMode.Diving, below.HeightAt(spot.X, spot.Y), arrived: false);
+                    // (a place below that is no sea floor, Black 2's Abyssal Ruins' halls, is walked in, as the player settles there: plan 22 · U10)
+                    Visit(below, spot.X, spot.Y, below.IsUnderwater ? TravelMode.Diving : TravelMode.OnFoot, below.HeightAt(spot.X, spot.Y), arrived: false);
             }
             if (mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y))
             {

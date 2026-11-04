@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10403 | 9934 | 469 | 17 | 0 |
+| Scripts (`script:`) | 10413 | 9944 | 469 | 17 | 0 |
 | People of the world (`world:`) | 7676 | 7614 | 62 | 4 | 0 |
-| **All** | 19678 | 19102 | 576 | 22 | 0 |
+| **All** | 19688 | 19112 | 576 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -25,7 +25,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 784 |
 | a sign | 1672 |
 | the game's own voice (speaker none) | 285 |
-| the game's own voice (text) | 1693 |
+| the game's own voice (text) | 1695 |
 
 ## The cast
 
@@ -94,12 +94,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `ace_trainer` | 77 | 0 |
 | `class:swimmer (any)` | 76 | 0 |
 | `class:pokémon_ranger (any)` | 72 | 0 |
+| `prof_juniper` | 67 | 0 |
 | `class:biker (any)` | 64 | 0 |
 | `class:sailor (any)` | 64 | 0 |
 | `lance` | 64 | 0 |
 | `prof_elm` | 63 | 1 |
 | `class:worker (any)` | 62 | 0 |
-| `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `class:veteran (any)` | 60 | 0 |

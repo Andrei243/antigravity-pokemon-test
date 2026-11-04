@@ -3299,6 +3299,49 @@ public class UnovaStoryTests
         Assert.Null(game.Present("n", "ns_castle_5"));
     }
 
+    // Plan 22 · U10, the last part: the Cave of Being, surfed to on Route 20's pond; after the Hall of Fame Cedric Juniper waits
+    // there and the first step into its heart shows the three of the lakes rising and flying off, once
+    [Fact]
+    public void TheCaveOfBeingShowsTheThreeOfTheLakesOnceAfterTheHallOfFame()
+    {
+        var before = new Game();
+        before.Arrive("CaveOfBeing", 18, 29);
+        Assert.Null(before.Present("cedric", "cave_of_being"));
+        before.Step("TheThree");
+        Assert.Equal(0, before.Story.Var("VAR_UNOVA_CAVE_OF_BEING"));
+
+        var game = new Game();
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("CaveOfBeing", 18, 29);
+        Assert.NotNull(game.Present("cedric", "cave_of_being"));
+        Assert.Null(game.Present("uxie", "cave_of_being"));
+        var scene = game.Step("TheThree");
+        Assert.Contains(scene.Log, l => l.Contains("Uxie"));
+        Assert.Contains(scene.Transcript, l => l.Speaker == "Prof. Cedric Juniper" && l.Text.Contains("Route 23"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_CAVE_OF_BEING"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_CAVE_OF_BEING_FLOWN"));
+        Assert.False(game.Fires("TheThree"));
+        game.Arrive("CaveOfBeing", 18, 29);
+        Assert.Null(game.Present("azelf", "cave_of_being"));
+        Assert.Contains(game.Talk("cedric", "cave_of_being").Transcript, l => l.Text.Contains("all three"));
+    }
+
+    // Plan 22 · U10, the last part: Professor Juniper back in her lab after the Hall of Fame, her words following her father's cave
+    [Fact]
+    public void ProfessorJuniperIsBackInHerLabAfterTheHallOfFame()
+    {
+        var before = new Game();
+        before.Arrive("NuvemaTown_Lab", 8, 10);
+        Assert.Null(before.Present("0", "nuvema_town_lab"));
+
+        var game = new Game();
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("NuvemaTown_Lab", 8, 10);
+        Assert.Contains(game.Talk("0", "nuvema_town_lab").Transcript, l => l.Speaker == "Prof. Juniper" && l.Text.Contains("Route 20"));
+        game.Story.SetVar("VAR_UNOVA_CAVE_OF_BEING", 1);
+        Assert.Contains(game.Talk("0", "nuvema_town_lab").Transcript, l => l.Text.Contains("three Pokémon"));
+    }
+
     private static HeadlessScriptHost Climb(Game game) => game.Played.Last(p => p.Script.Contains("Desk")).Host;
 
     [Fact]

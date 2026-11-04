@@ -1,8 +1,13 @@
 {
-  // Professor Juniper's lab in Nuvema Town (plan 22 · U10, part f), Black 2's, our words. Black 2's people of the lab's scenes
-  // (0 to 3) are left out: the professor is in Aspertia City's story and in Kalos's crossing; its signs read as the lab's things
+  // Professor Juniper's lab in Nuvema Town (plan 22 · U10, part f), Black 2's, our words. Since U10's last part the professor
+  // (0) is back at her desk once Unova's Hall of Fame is entered, and talks of the Pokédex and of her father's cave; the
+  // other people of Black 2's lab scenes (1 to 3) are left out. Its signs read as the lab's things
   "area": "nuvema_town_lab",
   "bgmTrack": "unova/nuvema",
+  "heldBack": [ "1", "2", "3" ],
+  "people": {
+    "0": { "name": "Prof. Juniper", "npcType": "prof_juniper", "script": "Juniper", "still": true, "shownBy": "UnovaHallOfFame" }
+  },
   "signs": {
     "1": "A shelf of books on Pokémon origins. Professor Juniper wrote some of them.",
     "2": "A machine for studying Pokémon. Its lights are blinking.",

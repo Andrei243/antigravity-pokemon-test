@@ -1,0 +1,31 @@
+{
+  "key": "cave_of_being",
+  "index": 517,
+  "name": "Cave Of Being",
+  "matrix": 310,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_UMA",
+  "nightMusic": "BGM_SW_D_UMA",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 18, "z": 30, "to": "unova_route_20", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "105", "movement": "none", "x": 18, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0395", "script": "3" },
+    { "id": "1", "looks": "pokemon_azelf", "movement": "none", "x": 27, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0394", "script": "2000" },
+    { "id": "2", "looks": "pokemon_uxie", "movement": "none", "x": 17, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0394", "script": "2000" },
+    { "id": "3", "looks": "pokemon_mesprit", "movement": "none", "x": 9, "z": 16, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0394", "script": "2000" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 16, "z": 22, "width": 5, "depth": 1, "script": "1", "variable": "VAR_UNOVA_0x4115", "value": "2" },
+    { "x": 14, "z": 20, "width": 9, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4115", "value": "3" }
+  ]
+}

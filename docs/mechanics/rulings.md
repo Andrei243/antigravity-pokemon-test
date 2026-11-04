@@ -9177,3 +9177,52 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **The Contest Lady's programme** stands for Emerald's record-mixed show of her: when her Pokémon is ready (five good Pokéblocks, or five of any), the condition it trained for and whether the good ones made it ready go on the air at home (`VAR_HOENN_CONTEST_LADY_SHOW`, `_SHOW_GOOD`), shown first once and then drawn among the rest in Hoenn. Nothing of record mixing is built: a player's own quiz for others, contests and the blender with friends and the link receptionist's records are plan 07's.
 - **The orbs given back** (Emerald's `MtPyre_Summit_EventScript_ArchieMaxieBeginReturnOrbs`, lines ours): as the leaders leave Sootopolis (`sootopolis_city.LeadersLeave`) `VAR_MT_PYRE_STATE` becomes 2 and they stand at Mt. Pyre's summit, Maxie a tile west of Archie (the import stands both on one tile); the area's three triggers on the row below the shrine play the scene, which hides them for good and sets the state to 3; the old woman's word changes after it. A save whose leaders had left before this was written is given state 2 by the summit's arrival.
 - **Left, and decided**: Emerald's service-day roulette rate and its record of roulette wins in a row are not built (no part of the game reads either); everything that needs another player is plan 07's.
+
+## The last of Unova's old roads: Twist Mountain's winter, Wellspring Cave, the Skyarrow Bridge, the Black Tower, N's Castle, the Cave of Being and the Abyssal Ruins (2026-11-04, plan 22 · U10, the last part)
+
+- **Twist Mountain's pockets are winter's.** Its floors' ladders stand in rings and pockets that no slope or ledge joins in spring's,
+  summer's or autumn's chunks: in Black 2 the ice that fills the great hall in winter (`winter0701_*`, laid by the season) is what
+  joins them. Nothing of the reader changed for it; the walk of the whole game is made a third time with winter laid, and the
+  warps walked then count (`PokemonTests.WholeWalk`). The floor's `yuka` textures are its earth (`Bw2Cover`, Twist Mountain's
+  chunks alone), not a street's slabs. The lifts (`elboard`) stay the floor they stand on.
+- **Water behind Black 2's water's edge is reached.** A cave's flood of what can be come to passes over `SurfEdge`, which a surfer
+  rides over: Wellspring Cave's pool had been taken for rock, and with it the floor past it. Its lower floor
+  (`WellspringCave_B1F`, Black 2's trainers, our words) is surfed to on the upper floor's pool.
+- **The Skyarrow Bridge** stands on Black 2's rails, with no ground, so it is a map of ours, as Castelia's avenue is: a deck of
+  planks over the bay, three tiles wide between railings and lamps (`Data/maps/SkyarrowBridge.json`), from Pinwheel Forest's gate
+  (its north door, warps 1, 4 and 5) to Castelia's (`SkyarrowGate_Castelia`, Black 2's `bridge_gate_gate`). Castelia's gate opens
+  on an alley at the avenue's west end (column 2, opened for it), since Black 2's gate stands on the avenue's rails. The worker
+  who stands in the bridge's doorway in Black 2 is left out: the bridge is open from the start. Its song is ours
+  (`unova/skyarrow_bridge`).
+- **The Black Tower** lends R18's rules as the Battle Subway does (`Models/Frontier/BlackTower.cs`, the command `blacktower`): three
+  Pokémon of different species holding different items go up as copies at Level 50, whole again before every battle, with nothing
+  from the Bag; five areas of three Frontier trainers each, drawn by the Battle Tower's rooms one area to a room and dressed as the
+  Subway's riders; a question after each area; the fifteenth battle is Benga's (Black 2's own team, at 50) once Unova's Hall of
+  Fame is entered, and the room's boss of the table before it. A Battle Point for each area cleared and ten for the top. Black 2's
+  areas are places with their own looks and its climb's rewards are items; ours is told over the dark from the lobby's desk, a
+  battle after another, as the Subway's cars are, and pays the Frontier's points. A climb is the story's own variables
+  (`VAR_UNOVA_BLACK_TOWER_*`). The lobby's other three clerks, Black 2's dealings, only talk.
+- **N's Castle** opens off Victory Road's summit once Unova's Hall of Fame is entered (the summit's warp 6, `openedBy`): the way up
+  (`UnovaVictoryRoad_CastleWay`), the hall, N's room (its toys read in our words), the corridor and the throne room. N waits there
+  with Zekrom (Black 2's; Reshiram is White 2's); Zekrom is battled at level 70 and gone once caught or beaten
+  (`FLAG_UNOVA_FOUGHT_ZEKROM`), back if run from; N says his farewell afterwards and leaves (`FLAG_UNOVA_HIDE_N_CASTLE`). The
+  Shadow Triad and the Zoroark of Black 2's scenes are left out.
+- **The Cave of Being** is surfed to on Route 20's pond: Black 2's stream meets the pond's stretch only at a corner of its bank, a
+  blocked tile the field can't pass, which the overlay's new `water` lays as the water beside it (`WorldOverlayFile.Water`). Once
+  Unova's Hall of Fame is entered Cedric Juniper waits inside, and the first step into the cave's heart shows Uxie, Mesprit and
+  Azelf rising and flying off (`VAR_UNOVA_CAVE_OF_BEING`), our stand-in for Black 2's scene in which they are set free; part a's
+  ruling stands for where they are met (Azelf on Route 23, Mesprit over the Celestial Tower). Uxie has no place of ours yet.
+- **The Abyssal Ruins.** Black 2's tile class 0x43 has no tiles but Undella Bay's four dark patches of three by three round the
+  ruins, and is read as `DiveWater`; the bay's overlay names the ruins' halls (`abyssal_ruins_5`, the map `AbyssalRuins`) as the
+  place Dive goes down to, at the north door's passage. Black 2's swim from the patches to the ruins' four doors is a 3D scene with
+  no terrain grid (`abyssal_ruins` to `_4` have none), so the dive comes out in the halls and each of the four doors brings the
+  player back up on Undella's beach (772, 296), as a door does, on foot. The deeper rooms (`_6` to `_8`, opened by Black 2's
+  scripted doors) and the relics (not in the game's data) are left out. No badge is asked for Dive in Unova, whose file names
+  none; only a Pokémon that knows it.
+- **Juniper's lab.** Professor Juniper is back at her desk once Unova's Hall of Fame is entered, with words that follow the
+  National Pokédex and her father's cave; the lab's other people of Black 2's scenes are left out.
+- **The songs** of the Moor of Icirrus, the Tubeline Bridge, Pinwheel Forest, the Dreamyard, Wellspring Cave, Routes 8, 14, 15, 17
+  and 18, the Marvelous Bridge, the Nature Preserve and the Skyarrow Bridge are our own compositions in place of the stand-ins.
+- **Black City's blocks** are dark slate panels with a band of the accent along their tops (the style guide's row first): the
+  pale panels of part h read as a pale town. The Moor of Icirrus's `sp_o11m` textures are its mud, so a blocked tile of it no
+  longer grows a pine in the water.

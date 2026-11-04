@@ -32,6 +32,9 @@ public static class Bw2Cover
         ("^17wood", TerrainCover.Bridge),                       // the boards over them
         ("^c3_baypole", TerrainCover.Lamp),                     // the piers' posts
         ("^gake_michi", TerrainCover.Path),                     // the path along the foot of a cliff
+        // (plan 22 · U10, the last part, judged with --chunk on Black City's four chunks: its road and its ground, bc_michi01
+        // and bc_jimen01, are the city's pavement, not earth; read as a path, the dark city lay on sand)
+        ("^bc_(michi|jimen)", TerrainCover.Paving),
         // (plan 22, wave 48: Nimbasa City, Join Avenue and the Nimbasa Gym, judged with --chunk) Nimbasa's floor is
         // out7yuk01 and the park's out36yuk1, yuk a floor's (yuka) and never snow's (yuki): read as snow, they made the
         // city snow country and its battles snowfields

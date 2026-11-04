@@ -28,7 +28,7 @@ Thirty-two plans, each worked through over several sessions. Plans 01 to 07 buil
 | [19 · Kanto](finished/19-kanto.md) | The region after Sinnoh, in full from FireRed and LeafGreen, in place of the stand-in Pallet Town | K1 | 9 sessions |
 | [20 · Johto](finished/20-johto.md) | Johto from HeartGold and SoulSilver with the same importer, the Pokégear and Apricorns | J1 | 15 sessions |
 | [21 · Hoenn](finished/21-hoenn.md) | Hoenn from Emerald: Dive and the sea floor, Secret Bases, its contests and its own Frontier | H1 | 12 sessions |
-| [22 · Unova](22-unova.md) | The first region with no decompilation, from Black 2 and White 2, with its seasons | U1 | 12 sessions |
+| [22 · Unova](finished/22-unova.md) | The first region with no decompilation, from Black 2 and White 2, with its seasons | U1 | 12 sessions |
 | [23 · The later regions](23-later-regions.md) | Kalos, Alola, Hisui as Sinnoh's past and Legends: Z-A's Lumiose, on the tile grid (Galar and Paldea moved to plans 33 and 34 on 2026-11-04) | Z1 | 16 sessions |
 | [24 · Guards](finished/24-guards.md) | What must not move, checked by machine: CLAUDE.md's rules as build errors, golden battles, scripts, teams and saves, strict data loading with schemas, and a damage oracle against Showdown's calculator | X1 | 6 sessions |
 | [25 · Battle presentation, second pass](finished/25-battle-presentation.md) | The field's state drawn on the stage (weather, the Substitute, hazards, screens), each Pokémon's own ball, body language, and a picture and a sound of its own for every move | Y1 | 15 sessions |

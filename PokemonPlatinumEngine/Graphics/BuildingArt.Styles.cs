@@ -217,6 +217,8 @@ internal static partial class BuildingArt
             {
                 Architecture.Brick => brickBlock with { Balconies = false, Accent = Rgb(92, 94, 108) },
                 Architecture.Townhouse => brickBlock with { Wall = WallKind.Plaster, Accent = Rgb(150, 98, 150) },
+                // Black City's dark blocks are its houses' slate, three storeys high (plan 22 · U10, the last part)
+                Architecture.Nightfall => house with { Storeys = 3 },
                 _ => brickBlock
             },
 
@@ -245,6 +247,8 @@ internal static partial class BuildingArt
             BuildingKind.Museum => block with { Wall = WallKind.Stone, Window = WindowKind.Arched, Accent = Rgb(120, 98, 84), Gear = RoofGear.Skylight },
             BuildingKind.Library => brickBlock with { Balconies = false, Home = false, GlassDoor = true, Accent = Rgb(84, 104, 140) },
             // A shop is its town's house with its name over the door; a store of several storeys is a block
+            // (and Black City's market stalls are its slate with a shop's glass, plan 22 · U10, the last part)
+            BuildingKind.Shop when town == Architecture.Nightfall => house with { Home = false, GlassDoor = true, Window = WindowKind.Shop },
             BuildingKind.Shop => b.Storeys >= 3
                 ? block with { Accent = Rgb(214, 96, 72), Gear = RoofGear.Vents | RoofGear.Skylight }
                 : house.Pitched ? house with { Home = false, Portal = 52, Chimney = false } : block with { Accent = house.Accent },
@@ -308,6 +312,12 @@ internal static partial class BuildingArt
             {
                 Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Window = WindowKind.Ribbon, GlassDoor = true,
                 Band = true, Accent = MetropolisBlue, Shaft = 160, StageCount = 3, FlatTop = true, Gear = RoofGear.Vents
+            },
+            // The Black Tower (plan 22 · U10, the last part): Castelia's shaft in Black City's slate under its night grey
+            BuildingKind.Tower when town == Architecture.Nightfall => new BuildingStyle
+            {
+                Wall = WallKind.DarkPanel, Roof = RoofShape.Flat, RoofColor = Rgb(66, 62, 82), Window = WindowKind.Ribbon, GlassDoor = true,
+                Band = true, Accent = Rgb(52, 48, 72), Shaft = 160, StageCount = 3, FlatTop = true, Gear = RoofGear.Vents
             },
             // Lavender Town's Pokémon Tower (plan 19 · K5): grey stone under a lilac cap, the town's own colour, its narrow
             // windows arched as a chapel's

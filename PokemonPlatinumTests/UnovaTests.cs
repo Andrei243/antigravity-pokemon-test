@@ -697,6 +697,21 @@ public class UnovaTests
         Assert.Contains(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap == "SkyarrowBridge" && !w.Shut);
     }
 
+    // Plan 22 · U10, the last part: the Cave of Being is surfed to on Route 20's pond (the corner of the stream's bank laid as
+    // water), and the Abyssal Ruins' halls are dived to from Undella Bay's dark patches and left on Undella's beach
+    [Fact]
+    public void TheCaveOfBeingAndTheAbyssalRuinsAreComeTo()
+    {
+        var walked = Walked.Value;
+        Assert.Contains(walked.Keys, m => m.Name == "CaveOfBeing");
+        Assert.Contains((145, 674), walked[Overworld]);
+        Assert.Equal(TileBehavior.DiveWater, Overworld.BehaviourAt(786, 290));
+        var ruins = walked.Single(kv => kv.Key.Name == "AbyssalRuins");
+        Assert.Contains((87, 22), ruins.Value);
+        Assert.All(ruins.Key.Warps, w => Assert.Equal("Unova", w.TargetMap));
+        Assert.Contains((86, 23), ruins.Value);
+    }
+
     // Plan 22 · U10, the last part: the Skyarrow Bridge, a deck of ours over the bay, joins Castelia City's west alley and its
     // gate to Pinwheel Forest's gate, both ways
     [Fact]
