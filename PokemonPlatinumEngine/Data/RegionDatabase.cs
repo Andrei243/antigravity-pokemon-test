@@ -919,6 +919,8 @@ public static class RegionDatabase
             // the player's room in Vaniville Town; a Champion come across stands before the house's door
             Start = new MapSpot("VanivilleTown_PlayersHouse_2F", 4, 6, Direction.Down),
             Arrival = new MapSpot("Kalos", 242, 722, Direction.Down),
+            // Where a return from Alola lands: beside the airline attendant of Lumiose City's Pokémon Center (plan 18 · W8)
+            Harbour = new MapSpot("LumioseCity_PokemonCenter_1F", 12, 10, Direction.Right),
             Maps = new[]
             {
                 "Kalos",
