@@ -226,7 +226,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - **Johto**: 20 · J1 right after W6 (the same importer); J2 on after W1 to W4. J3 and J5 can share a wave; J14 can go any time after J2.
   - **Hoenn** (21) after K1 and K2. H5 (Dive) comes after H7, because the sea floor's way in is through Lilycove.
   - **Unova** (22): a decompilation of Black 2 and White 2 was found on 2026-10-20 (fuddlesworth/pokebw2, GPL v3.0), so by the rule above Unova is read from it as Johto is, not drawn, and follows Black 2's story (the user's choice): U1 after 20 · J1's DS reader; the user chose on 2026-10-20 to import its maps, events, wild Pokémon and trainers as well (plan 22's decision 2).
-  - **The later regions** (23): Z1 (Kalos) and Z9 (Galar) once U1 has shown how a drawn region goes, side by side, drawn the same way. Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) come after Paldea, behind the rift.
+  - **The later regions** (23): Z1 (Kalos) once U1 has shown how a drawn region goes. Galar (plan 33) and Paldea (plan 34) wait for plan 32's open-world engine, whose OW0 prototype gate comes first. Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) come after Paldea, behind the rift.
   - A region chapter that adds a Pokétch, a phone, a bicycle or a field power keeps to its region's files where it can. The hot files in the table below are merged by its rules.
 - **Ways to play (13).**
   - V1, after 18 · W10. No region is chosen any more, so V1 needs only the title's phases as W10 leaves them. Then V2, V3 (its cap and scaling are what W4's level curve is built on).
@@ -396,7 +396,7 @@ Each plan's next session fixes its own.
   - "Where we are" stops at R10.
   - R20 counts 92 Mega Stones (the data has 89).
   - R24–R26's "919 of 919".
-  - The optional raids in R22 and R23 are also 23 · Z10's and Z15's.
+  - The optional raids in R22 and R23 are also plan 33 · GL3's and plan 34 · PD7's.
 - **08**
   - P3's fields exist (R12).
   - P7 counts 30 overlays (now 40).
