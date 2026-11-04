@@ -149,7 +149,11 @@ internal static partial class Landmarks
                 return true;
             }
             case PropType.Drums:
-                kit.Sprite(kit.Face("drums", 42, 40, PaintDrums), w / 2f, d / 2f + 8);
+                {
+                // Never wider than its tiles: a drum kit on one tile of a Unova room is the tile's width (plan 22 · U10)
+                int dw = Math.Min(42, w);
+                kit.Sprite(kit.Face(dw == 42 ? "drums" : $"drums.{dw}", dw, 40, PaintDrums), w / 2f, d / 2f + 8);
+            }
                 return true;
             case PropType.PrismTower:
             {

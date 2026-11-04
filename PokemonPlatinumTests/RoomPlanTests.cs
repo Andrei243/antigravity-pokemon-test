@@ -1208,7 +1208,7 @@ public class RoomPlanTests
             string name = Path.GetFileNameWithoutExtension(path);
             var map = Room(name);
             if (!map.IsIndoors || rebuilt.Contains(name) || map.Interior == InteriorStyle.Gym) continue; // Gyms: GymTests
-            if (RegionDatabase.RegionOfMap(name)?.Id == "Kalos") continue; // Kalos's rooms are drawn by hand to their own scale (plan 23 · Z1, plan 30)
+            if (RegionDatabase.RegionOfMap(name)?.Id is "Kalos" or "Alola") continue; // Kalos and Alola's rooms are drawn by hand to their own scale (plan 23 · Z1, plan 30)
             Assert.True((1, 2) == map.RoomCorner(), $"{name}: {map.RoomCorner()}");
             // No hand-made room has walls of its own inside it
             for (int ty = 2; ty < map.Height - 1; ty++)
