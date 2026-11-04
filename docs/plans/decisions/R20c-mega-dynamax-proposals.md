@@ -699,7 +699,7 @@ The move menu's item button (`ToggleLaterMechanic`) arms, in turn, whatever the 
 11. **An option to turn it off.** *Default*: **none**: `Ruleset.MegaDynamax` in the modern rules, and nobody but the player's choice and the trainers with the band ever use it. *Alternative*: an options row before `OptionRow.Help`, "MEGA DYNAMAX: ON/OFF", which hides the menu's step and the trainers' bands.
 12. **The battle log.** *Default*: **R22's events** (`Dynamaxed` with the `-Mmax` form, `DynamaxEnded` back to the Mega), no event of its own (1.5). *Alternative*: a `MegaDynamaxed` event at `BattleLog.cs`'s end.
 13. **Sizes.** *Default*: the **rule** of "How to read this" (12 × the Mega's height, 20 to 60 m, over a Gigantamax form by 2 m). *Alternative*: heights set by hand per form.
-14. **Max Raid dens** (plan 23 · Z10). *Default*: **no Mega Dynamax raid boss**. *Alternative*: a post-game den in Galar where a Mega Dynamax boss is met (a wild Pokémon may then do it there alone).
+14. **Max Raid dens** (plan 33 · GL3). *Default*: **no Mega Dynamax raid boss**. *Alternative*: a post-game den in Galar where a Mega Dynamax boss is met (a wild Pokémon may then do it there alone).
 
 ## The table to answer
 

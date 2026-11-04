@@ -1,0 +1,178 @@
+# Plan 32 · The open-world engine, for Galar and Paldea
+
+Written 2026-11-04, before any session, at the user's request.
+
+**Goal**: a second field engine beside the tile grid, for the regions whose originals are fully 3D: Galar ([plan 33](33-galar.md)) and Paldea ([plan 34](34-paldea.md)). The world is described in metres, not tiles. The ground is a surface that can fold over itself, so a cave can run under walkable land with no warp between them. The player is a capsule that moves continuously. People and Pokémon walk a navigation mesh. Triggers, encounters and sight lines are volumes. The camera orbits behind the player. The scene renders at 1080p and the interface stays at 4K. Sinnoh, Kanto, Johto, Hoenn, Unova, Kalos and Alola keep the grid engine, and their saves, scripts and shots don't move.
+
+The user chose this on 2026-11-04 over two other options: keeping the grid's rules under a new renderer, or waiting for plan 27's move to Unity. The reason was the originals' continuous caves with walkable ground above them, which a grid with one height per tile can't hold. The same day the user ruled that the regions are **hand-built, taking inspiration from the original games** (decision 1), that determinism is done **as this plan recommends** (decision 2), and that frame time is judged at **1080p, not 4K**, for these regions (decision 5).
+
+## Where we are
+
+- **The field is a grid.** A `Map` is tile layers, a solid grid, `TileBehavior`s, `HeightPlate`s and props. `FieldMovement.Step` decides every step. Plan 30 · FM7 to FM9 gave a free region a circle that moves in 256ths of a tile, but every wall it meets is still `Step`'s refusal at a tile's edge. Triggers (`StepTrigger`), warps, `Map.NpcIn`, `TrainerApproach.CanSee`, `Wandering`, `Follower`, `WorldWalk`, `Policy.Route`, `FieldFuzzer`, `ContentCheck` and the harness's `At` all speak in tiles.
+- **Drawing assumes the grid and Platinum's camera.** `PixelGround` bakes 32 texels a tile per chunk, `Relief` turns heights into slopes and faces, and the vertex shader straightens upright things (`SetUpright`) for a fixed pitch. People are billboards (`CharacterSprites`) or plan 30's live rigs. `WorldRenderer.ScenesFor` keeps three chunks by three, and there is one shadow map.
+- **What the new engine can reuse as it is.** The SDF kit (`SdfModel`, `SdfMesher`'s surface nets, `SdfCache`) already meshes closed shapes with overhangs. The building kit (`KitBuilder`, `BuildingArt`, `BuildingModels`) makes buildings from boxes. Also reusable: `NatureArt` and `TreeModels`; the scenery's sway and the grass's parting (`MeshPass.Ground`); `SkyPainter` and `ArtLook`'s rigs; `RenderContext`'s post passes; and `BeginScene()` with `ResolutionStep`, which can render the scene into part of the target (plan 16 · T23). Plan 30 · FM3 to FM6 add grown live rigs and their level of detail. Plan 10 · F5 adds `FieldPokemon`, wild Pokémon seen in the field. Movie format 4 carries the stick's tilt (`ActionFrame.MoveX`, `MoveY`), and `StateHash` hashes the game for recorded play.
+- **Everything above the field carries over.** That is the battle core and its face, data, story state, the script runner, menus, audio, Pokémon and character models, the crossing (`GameEngine.CrossTo`), saves and their migrations. A battle is started from a `Pokemon` by `MeetWildPokemon` or from a trainer by `StartTrainerBattle`, and neither cares where the player stands.
+
+## Design
+
+### The setting: a word in the region's file
+
+`Data/regions/<id>.json` gains `"field": "open"` (default `"grid"`), read as `Region.File.Field` and asked through `GameEngine.Here`. Only Galar and Paldea say `open`. A region's **outdoors and its continuous caves** are open maps. **Its rooms stay grid maps**: houses, Pokémon Centers, gyms' inner rooms, labs. They are hand-made map files walked with plan 30's free movement, since a room has no overhang and the grid's every tool already works there (decision 6). A door in the open world is a warp into a room and back out to a marker, so `ArriveOnMap`, the fade and the arrival scripts work as they always have.
+
+### What an open map is (GPU-free, `OpenWorld/`)
+
+- **`OpenMap`** is the open counterpart of `Map`, not a subclass. It has the region's chunks (32 m by 32 m columns, any height), its areas (the name, music, weather, calendar, `WildVisible` and encounter tables a `MapArea` has, now bounded by polygons with a height range instead of chunks), its volumes, markers, doors, people and props.
+- **Positions are whole millimetres** (`OpenPos`: three `int`s, ±2,147 km), with a yaw in 65,536ths of a turn, as Platinum kept its positions in fixed point. Velocities are millimetres per tick. The field's rules advance at a **fixed 120 ticks a second** (`OpenClock`), however fast the frame. The renderer draws between the last two ticks, so a recording, a test and the harness see the same positions on any machine (decision 2).
+- **Collision** is our own, single-threaded, against triangle meshes. The terrain's mesh comes from the baker (below), and the boxes of buildings and props come from the kit. A query works in `double` and its answer is rounded to millimetres before it is kept, so nothing builds up from one tick to the next. No third-party physics engine is used, because each has random tie-breaks or threads of its own.
+- **The navigation mesh** is the walkable triangles of the collision mesh: slope under 40°, a capsule's clearance above, merged into convex polygons. It is layered, so a cave's floor and the hill over it are different polygons over the same ground. It is **built offline by the baker and committed as data** (`navmesh.bin` beside the chunks), so the game never builds one at run time and two machines never disagree. A path is A* over the polygons with a funnel through their shared edges (`OpenWorld/NavPath.cs`). Edges carry flags for what can cross them: walking, swimming, a drop, a climb, a glide. Plan 34's mount reads those flags.
+- **Volumes** replace `StepTrigger`s, and each is a box or an upright cylinder. A trigger runs its script as the capsule's centre enters it, and its variable and value gate it as before. An **encounter zone** is a polygon with a height range, a table, a density and a cap. A **sight cone** is a trainer's: a length, an angle, and a ray against the collision mesh that must reach the player's chest. A **water volume** is where the capsule swims or surfs. A **marker** (`OpenMarker`: a name, a position, a yaw) is what a script, a door and the harness name.
+
+### Movement (`OpenWorld/OpenMovement.cs`)
+
+- A capsule of the grown body's size (plan 30 · FM6's scale: about 1.6 m tall, 0.35 m radius) is steered by the stick's tilt or the keys. It walks at 1.5 m/s and runs at 4.5 m/s on Ruleset-free numbers of ours, and steps up 0.35 m without a jump.
+- It slides along walls (the collide-and-slide loop, at most four planes a tick), snaps to the ground going down slopes, and falls off a drop of more than 1 m with a landing.
+- It swims in water volumes once the region grants it (Galar's Rotom Bike upgrade, Paldea's mount), and stops at the edge otherwise.
+- A ledge is a one-way drop that the navigation mesh marks, so `OpenWalk` knows the way back is elsewhere.
+- **There is no hop, no ice and no puzzle floor** in the open world. A gym's puzzle is a grid room (decision 6), as every puzzle of the earlier regions already is.
+- What the region's file grants (the Rotom Bike's speed and water, the mount's sprint, swim, jump, glide and climb) is a `MovementGrants` value. It is asked of `StoryState.Grants(region)` (plan 23's `grant` and `granted`, built by whichever region needs it first).
+
+### What the rest of the game sees
+
+- **`GameEngine`** keeps one field at a time: `currentMap` for a grid map, `openMap` for an open one. `UpdateOverworld` and `Draw` dispatch on which is in force. Everything above the field (text, menus, battles, transitions, scripts) is shared. `Driver` gains `OpenMap`, `OpenPlayer`, `PlaceOpen(marker or position, yaw)` and `Stick` already exists.
+- **Scripts** gain marker forms of the place commands: `walkto <who> <marker>`, `placeat <who> <marker>`, `faceto <who> <marker|who>`, `warpto "<map>" <marker>`, `camera look <marker>`. In an open map the tile forms (`walk`, `place`, `warp … X Y`) are a problem that `ScriptLibrary.Problems` and `ContentCheck` name with the file and line. `IScriptHost` gains the same as default members, and `HeadlessScriptHost` plays them at once, as it plays walks. `docs/scripts.md` gets a section, and `ScriptTests.EveryCommand` gets a line each. A scene skipped (plan 12 · Q20) walks its walkers to their markers, as the grid's `Arrive` does.
+- **The save** keeps `SaveData.OpenPlace` (the map's name, the position in millimetres, the yaw) beside the grid's place. It raises `SaveVersion`, gets its fixture in the save corpus, and a migration that leaves every older save as it was.
+- **Recorded play and the hash**: `StateHash` hashes the open position, the tick count and the field Pokémon's positions. `RecordingTests` records ten minutes in an open test region and plays them back twice.
+- **Encounters**: the tables are the area files' shape (`Land`, `Water`, the rods). A zone draws its table through `EncounterSlots` with the `EncounterMoment` of the place, and `WildLead`'s rules and `LevelHere` apply as they always have. In an open map **every wild Pokémon is seen** (plan 10 · F5's `FieldPokemon`, whatever `OptionRow.WildPokemon` says), as the originals do. There are no random encounters in tall grass. A Pokémon spawns in its zone out of the camera's view, wanders on the navigation mesh by its kind (shy, curious, aggressive, the originals' three temperaments, ours by species' data), and is met by touch through `MeetWildPokemon`. A spawner draws from `Dice` on the field's own tick, so two runs place the same Pokémon (decision 7).
+- **Trainers** stand on their markers, look along their cone, and walk up the navigation mesh to talk when it sees the player. `TrainerApproach`'s rules (one at a time, a pair together, beaten never again) are kept and asked of the cone instead of the line.
+- **People** wander within a polygon around their marker (`PersonMovement`'s kinds, given a radius in metres). **Followers** (plan 10 · F3) and **partners** (`Follower`) walk a breadcrumb trail of positions half a second behind.
+- **`OpenWalk`** (`OpenWorld/OpenWalk.cs`, beside `WorldWalk`) answers what can be come to: a flood over the navigation mesh's polygons through their edges, doors, scripted warps and the edges a grant opens. `WorldWalk` calls it for an open map, so the tests that walk the whole game take open regions as they take grid ones.
+- **The bot and the fuzzer**: `Policy.Route` over the navigation mesh for an open map, `Autoplayer` steering the stick at each corner of the funnel, and `FieldFuzzer` drawing stick angles from its seed (plan 30 · FM9's form).
+
+### The world described, and baked (`tools/OpenWorldBake`)
+
+The user ruled that the regions are hand-built, taking inspiration from the originals (decision 1). The project's rule holds as it always has: **the shape, the order of the places and the landmarks are taken from public descriptions and from memory of play, never a model, a texture, a traced picture, a line of text or a script's text.** Claude can't sculpt in a window, and Python is written only in `tools/BlenderAnim/blender/`, so a region is **written as data** and baked by a tool of ours into what the game loads.
+
+- **`Data/world3d/<region>/`** holds hand-written files:
+  - `world.json`: the region's extent, its chunks' size, its areas and the maps it makes.
+  - `terrain/*.json`: the land as a **height grid of control points** a few metres apart, interpolated smoothly, with **brushes** over it (a plateau, a ridge, a crater, a river's bed, a road graded along its spline).
+  - `carve/*.json`: what is cut out of the land as signed-distance shapes (tunnels as capsule chains, caverns as ellipsoids, arches, overhangs, cliff notches), and what is added (a sea stack, a rock bridge).
+  - `water.json`: sea, lakes and rivers as surfaces at heights.
+  - `roads.json`: splines with a width and a surface.
+  - `places/<key>.json`: what stands in a place (buildings by the kit's kinds and styles with a footprint and storeys, props, people, markers, volumes, zones, doors into rooms), an overlay's role at metre scale.
+- **The ground is one signed-distance field per chunk**: the height field as a surface, the carves subtracted, the additions joined. `SdfMesher`'s surface nets mesh it at 0.5 m cells near the player and coarser for the far rings (below). The terrain therefore folds over itself wherever a carve says, and a cave under a hill is the same surface as the hill. A chunk's **cover** (grass, rock, sand, snow, path, mud) is painted per vertex from rules (slope, height, the nearest road, a brush's own) and from paint brushes in the files, as `TerrainCover` is named today.
+- **The baker** (`dotnet run --project tools/OpenWorldBake -- <region> [--chunk x,z] [--check]`) writes, per chunk, the mesh at three levels of detail, its collision mesh, its part of the navigation mesh and the chunk's cover, into `Data/world3d/<region>/baked/`. Those are generated files, never edited by hand. `--check` writes nothing and ends with 1 where the baked files differ from the descriptions. **The bake is deterministic and the same on any machine**: the meshers are ours, single-threaded per chunk, and they round to millimetres, which `OpenWorldBakeTests` holds by baking a chunk twice.
+- **Looking without a window**: `--plan <out dir> <area>` draws an area from above on the CPU (heights shaded, cover, roads, water, buildings' footprints, markers, volumes, zones, the navigation mesh's polygons, each tagged and named in a key), as `ContentCheck --plan` does for a grid room. `--section <out dir> <area> <x1,z1> <x2,z2>` draws a vertical cut along a line, which is how a cave under a hill is seen without the harness.
+- **`ContentCheck`** gains the open world's rules: a marker, door or volume inside solid ground; a door whose room doesn't exist; a script naming a marker the place lacks; a zone with no navigation mesh inside it; a trainer whose cone sees nothing; a place nobody can come to.
+
+### Rendering (`Graphics/OpenWorld/`)
+
+The style guide gets an "Open world" section before any code: the cover materials, the camera, the light rigs, the trees' distances and the fog.
+
+- **The scene renders at 1920×1080** in an open region on every preset (decision 5), through `RenderContext.BeginScene()` at a `ResolutionStep` of one half of the 4K target. The 2D interface stays in 1920×1080 layout units drawn into the 4K virtual screen, so text and menus are as sharp as anywhere. Dynamic resolution (plan 16 · T23) may go below that and never above.
+- **The camera orbits** behind the player (`OpenWorld/OrbitCamera.cs`, GPU-free): the right stick or the mouse turns it, and it is held off walls by a spring arm cast against the collision mesh. A lens of about 50° is used; Platinum's 16° belongs to the grid. It eases behind the player while walking, and a script's camera commands drive it as `CameraRig` drives the grid's. There is no upright straightening (`SetUpright` is 0), since nothing is a billboard near the camera.
+- **The terrain** is a mesh per chunk with **cover blended on the GPU** (triplanar for rock, so cliffs and cave walls aren't stretched), in the field's own style: flat colours and few texels, the pixel-art feel kept by a small texture per cover at 16 texels a metre, sampled point-filtered near and mip-mapped far.
+- **Streaming rings**: three chunks by three at full detail, then a ring to 300 m at the second level, and a ring to the horizon at the third, with fog closing it. A chunk is baked offline, so streaming only loads and uploads. That uses the same worker thread and per-frame upload budget as `MapScene.Uploads`.
+- **Trees, grass and props**: trees are instanced meshes from `TreeModels` near and **impostors** (eight-way billboards baked once, as plan 30's crowd impostors are) past 120 m. Grass tufts are instanced near the player only, parting round walkers as the grid's grass does. Buildings are the kit's boxes at metre scale, with `BuildingArt`'s façades and new styles per region.
+- **Shadows**: three cascades (`RenderContext` gains a shadow array; the grid keeps its one map), the nearest a 4,096 texel square over 40 m.
+- **Water**: planes with the grid water shader's look, the mirror (plan 09 · L10) on High and Medium only.
+- **Light**: `ArtLook`'s five times of day as rigs for the open world, its weathers (`FieldWeather`) drawn as volumes of particles round the camera, and caves with a rig of their own that eases in as the camera goes under rock (a ray up from the camera: rock overhead within 30 m).
+- **People and Pokémon** are live rigs: plan 30's grown kit with its level of detail (twelve live, the rest impostors), and the Pokémon models with a level of detail of their own, three meshes per species past 40 m and 120 m, made by the mesher at coarser cells.
+- **Budget**: **8 ms a frame at 1080p on High** on the GTX 970, judged by the floor (the 10th percentile, CLAUDE.md's rule), in the busiest scene each session adds. `FrameProfiler` laps for terrain, shadows, foliage, characters and Pokémon. `profile` gets open-world scenes, and `budgets.json` gets the baker's time per chunk.
+
+### Battles
+
+Battles keep their stages (decision 3): a meeting in the open world fades into `BattleRenderer`'s arena, picked by the ground under the player as `GameEngine.TerrainAt` picks it. That ground is the cover under the capsule, mapped to a `BattleTerrain`. The original's battles on the field itself would need the battle renderer to draw the open world and every move effect to fit any slope; that is left for later and is not built.
+
+### The tools
+
+- **The harness**: a mode `open` (not part of `all`, `Modes/Open.cs`) on a test world the harness bakes itself (`BuildOpenLab`). It has a hill with a cave under it, a ledge, a river, a road, a village of three houses with a door, two people, a trainer's cone, a zone of wild Pokémon, a follower, and a cliff marked climbable for plan 34. The mode shoots each feature by day and after dark, from four camera yaws, and prints the position, tick, yaw, area, zone and frame time at each. `Driver.PlaceOpen`, scenarios' `at3 <map> <marker>` and `at3 <map> x y z yaw`, and `look <yaw> <pitch>` for the camera.
+- **Debug layers** (plan 16 · T18) for an open map: the navigation mesh, collision, volumes, zones, sight cones, markers and chunks' levels of detail, drawn in the 3D pass.
+- **`OpenWorldBake --plan` and `--section`** (above), and `ContentCheck`'s open rules.
+- **`PlaythroughBotTests` and `FieldFuzzTests`** run in the open test world (`FieldFuzzer.OpenSpots`).
+
+## Decisions for the user
+
+1. **Where the regions' shape comes from** (*answered 2026-11-04*): hand-built, taking inspiration from the original games. The places, their order and their landmarks come from public descriptions and memory of play, built in our own geometry, never a traced picture, model, texture or text. *How it is written:* as data and signed-distance carves baked by a tool of ours (above). *The alternative*, modelling in Blender and exporting glTF, would need Python outside `tools/BlenderAnim` and a person at Blender's window, which Claude can't be. The user judges the first town of each region before the rest is built.
+2. **Determinism** (*answered 2026-11-04: as recommended*): positions in whole millimetres, a fixed 120 ticks a second, our own single-threaded collision and navigation, the navigation mesh built offline and committed, the spawner on `Dice` and the field's tick. *The alternative*, a physics engine (BepuPhysics, Jolt through a binding), would be faster to write and would not replay.
+3. **Battles on stages or on the field.** *Recommended:* on stages, as every region's are, with the stage chosen by the ground underfoot. The alternative, the original's battles where the player stands, is a second battle renderer.
+4. **The camera.** *Recommended:* a free orbit with the right stick and the mouse, eased behind a walking player, with an option to keep it behind always. The alternative is a fixed high three-quarter camera that only turns in steps, which looks nearer to the grid regions and hides less, but fights a cave's ceiling.
+5. **Frame time** (*answered 2026-11-04*): judged at 1080p for these regions. The scene renders at half the 4K target's size and the interface stays at 4K.
+6. **Rooms on the grid.** *Recommended:* every room of Galar and Paldea (houses, Pokémon Centers, shops, labs, the gyms' inner halls and their puzzles, the academy's classrooms) is a grid room walked by plan 30's free movement, reached by a door from the open world. The alternative builds rooms in the open world too, which costs every room the baker's work for nothing a room needs.
+7. **Wild Pokémon.** *Recommended:* in an open map every wild Pokémon is seen and none is met at random, as in the originals, with Pokémon of the tables spawned in their zones out of view. The alternative keeps the grid's random encounters in marked grass beside the seen ones.
+8. **Hisui and Lumiose's era.** *Recommended:* left on plan 23 as they are, and asked again when their time comes. Both originals are open worlds, and this engine would suit them, but neither is in the order of work.
+9. **Plan 27 (Unity).** *Recommended:* build this in raylib now. Its rules are GPU-free and its data is plain, so plan 27 carries them over as it carries the rest, and its renderer is one more of the renderers that plan rebuilds. The alternative is to wait for Unity before Galar and Paldea, which puts both at the end of the project.
+
+## Sessions
+
+Each session: the rule in a GPU-free class with its tests, the open test world grown by what is new, shots in `open`, a `profile` line where something new is on screen, and nothing of the grid regions moved (`diff` of their modes empty, the golden files unmoved but where the session says why).
+
+### OW0 · The prototype gate (1 to 2 sessions; first)
+- Nothing of it in the game: a harness-only scene, as plan 30 · FM0 was. It has one hill 60 m across with a tunnel through it and a cavern under its top, baked by a first cut of the baker. There is a capsule walked through the tunnel, up the hill and over the cavern, the orbit camera, one trigger, one wild Pokémon standing in a zone, one person, trees near and impostors far, by day and after dark, at 1080p.
+- Prints positions, ticks and frame times. Shots `ow00` to `ow09`, a vertical section of the hill (`--section`), and `profile`'s `open_prototype` scene.
+- **Done when** the user judges the look from the shots, and the floor is under 8 ms at 1080p on High on the Windows machine. If it isn't, the plan is changed before anything else is built.
+
+### OW1 · The region's word, positions, ticks and the save (1 session)
+- `Region.File.Field`, `OpenMap` (empty of terrain), `OpenPos`, `OpenClock`, `GameEngine`'s dispatch between the two fields, `SaveData.OpenPlace` with its version, fixture and migration, `StateHash`, the `Driver`'s members.
+- Tests: a region with no word is `grid`; an open save round-trips to the millimetre; a ten-second recording in an empty open test region replays; Sinnoh's saves are unchanged (`saves.txt`).
+
+### OW2 · The baker and the terrain (2 sessions)
+- `tools/OpenWorldBake`: the files' formats (`docs/data-files.md`, "Open worlds", and their schemas in `docs/schemas/`, read strictly), height control points and brushes, carves and additions, water, roads, the chunk's field meshed at three levels, cover by rule and paint, `--plan`, `--section`, `--check`. `OpenWorldBakeTests`: a chunk baked twice is the same to the byte, a carve makes a hole the mesh has both sides of, a road is graded along its spline.
+- **Done when** the open test world's hill and cave are baked and drawn from above and in section.
+
+### OW3 · Collision and the capsule (1 to 2 sessions)
+- `OpenMovement`: walk, run, the stick's analog speed, step-up, slope limit, slide along walls, snap down, drops and landings, water volumes and swimming behind a grant, the collision mesh from the baker and the kit's boxes.
+- Tests: a corridor 0.8 m wide passes and 0.6 m doesn't; a 0.3 m kerb is stepped and a 0.5 m wall isn't; a slope of 45° is slid down; the same frames played twice end on the same millimetre; nothing tunnels through a wall at the run's speed with a frame of a tenth of a second.
+
+### OW4 · The navigation mesh, paths and what can be come to (1 to 2 sessions)
+- Built by the baker, layered, with edge flags; `NavPath` (A* and funnel); `OpenWalk`; `WorldWalk` and `Policy.Route` asking it for an open map.
+- Tests: a path through the tunnel and one over the hill both exist and differ; a ledge is a way down only; a cave's floor and the hill's top are different polygons over the same ground; `OpenWalk` reaches every marker of the test world.
+
+### OW5 · Volumes, markers, doors and scripts (1 to 2 sessions)
+- Triggers, markers, water and encounter zones as data of a place, doors into grid rooms and back out to markers, the marker forms of the script commands in both hosts, scene skips, `ContentCheck`'s open rules, `docs/scripts.md`.
+- Tests: a trigger runs once as the centre crosses it; a door's round trip lands on its marker; every new command in `ScriptTests.EveryCommand`; a scene skipped leaves its walkers on their markers.
+
+### OW6 · People, trainers and followers (1 to 2 sessions)
+- Wandering in a polygon on the navigation mesh, `TrainerApproach` on cones with the collision ray, the walk up, pairs, the follower's and the partner's breadcrumbs, `Wandering.Reach` in metres, the people's index (`PeopleList`'s squares at 8 m).
+- Tests: a trainer behind a wall doesn't see; one at the cone's edge does; a pair walks up together; a follower never cuts a corner through a wall.
+
+### OW7 · Wild Pokémon in the field (1 to 2 sessions; after plan 10 · F5)
+- The spawner per zone (density, cap, out of view, despawn far away, on `Dice` and the tick), the three temperaments, the touch into `MeetWildPokemon`, `WildLead` and `LevelHere` through the zone, the field's back strike (`BattleConditions.Surprised`) where plan 10 has it, and the ground under the player mapped to `BattleTerrain`.
+- Tests: two runs place the same Pokémon; a zone never holds more than its cap; a Pokémon of the night's table only spawns at night; a battle begun on sand is fought on the beach's stage.
+
+### OW8 · The renderer I: ground, water, sky, camera and shadows (2 sessions; after OW2)
+- The 1080p scene, the cover materials (the style guide's "Open world" section first), water, `ArtLook`'s open rigs and weathers, the orbit camera with its spring arm and the script's camera commands, three shadow cascades, the cave's rig easing in.
+- Shots of the test world from four yaws by day, after dark, in rain and in the cave; `profile` against 8 ms.
+
+### OW9 · The renderer II: trees, grass, buildings, people and the rings (2 sessions; after OW8 and plan 30 · FM3 to FM6)
+- Instanced trees and impostors, near grass that parts, the building kit at metre scale, live rigs with their level of detail, Pokémon with three levels, the streaming rings to the horizon, fog.
+- Shots and `profile` with thirty people, twelve field Pokémon and the village in view. **Done when** the floor is under 8 ms at 1080p on High.
+
+### OW10 · The tools, whole (1 session)
+- The harness's `open` mode complete, scenarios' `at3` and `look`, debug layers, the bot and the fuzzer in the open test world, `RecordingTests` in it, `budgets.json`'s bake times, the Town Map's picture of an open region drawn from above by the baker (`RegionMapArt`'s open half), and Fly's places as markers.
+- **Done when** `PlaythroughBotTests` walks the open test world from its door to its cave's far end and back, and the fuzzer runs a minute there with no finding.
+
+## Risks
+
+- **The frame.** An open world with a horizon on a GTX 970 is the hard part, even at 1080p. OW0 is the gate. If the floor is over budget, the far ring loses its trees before anything else, then the second ring's distance is halved.
+- **Building a region by hand is a great deal of work.** A region is several square kilometres, written as data. The first town of each region is judged by the user before the rest, and plans 33 and 34 keep each region smaller than its original (their decisions).
+- **Two field engines** are two of everything that walks. The rule that keeps it bearable is that everything above the field is shared, and every rule of the open world is a GPU-free class with tests, as the grid's are.
+- **Claude can't see the world while building it.** The baker's top-down plans and sections, the harness's shots from four yaws and the debug layers are how every session looks at what it built, and a session isn't done until it has looked.
+
+## Needs and gives
+
+- **Needs** plan 30 · FM3 to FM6 (grown rigs and their scale; OW9) and FM7 to FM9 (free movement in the grid rooms), plan 10 · F3 and F5 (followers, `FieldPokemon`; OW6, OW7), plan 16 · T23's partial scene target (OW8), plan 18 · W1 (the region's file) and W5 (the crossing).
+- **Gives** plans 33 and 34 the engine they are built on, plan 30 · FM12 to FM14 the open world the mount moves in (plan 34 moves them there), and plan 27 one more renderer to rebuild and a set of GPU-free rules to carry.
+
+## Status
+
+- [ ] OW0 The prototype gate
+- [ ] OW1 The region's word, positions, ticks and the save
+- [ ] OW2 The baker and the terrain
+- [ ] OW3 Collision and the capsule
+- [ ] OW4 The navigation mesh, paths and what can be come to
+- [ ] OW5 Volumes, markers, doors and scripts
+- [ ] OW6 People, trainers and followers
+- [ ] OW7 Wild Pokémon in the field
+- [ ] OW8 The renderer I: ground, water, sky, camera and shadows
+- [ ] OW9 The renderer II: trees, grass, buildings, people and the rings
+- [ ] OW10 The tools, whole
