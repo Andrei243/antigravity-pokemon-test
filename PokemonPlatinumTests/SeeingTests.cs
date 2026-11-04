@@ -38,7 +38,7 @@ public class SeeingTests : IDisposable
         Assert.Equal(size + 1, Array.IndexOf(rows, OptionRow.ColourVision));
         Assert.Equal(size + 2, Array.IndexOf(rows, OptionRow.HighContrast));
         Assert.Equal(size + 3, Array.IndexOf(rows, OptionRow.Tips));
-        Assert.Equal(size + 11, Array.IndexOf(rows, OptionRow.Controls));
+        Assert.Equal(size + 12, Array.IndexOf(rows, OptionRow.Controls));
 
         // The first start's page takes them by their names, after the language (plan 16 · T24)
         var page = FirstStartScreen.RowsThatExist(FirstStartScreen.Wanted);

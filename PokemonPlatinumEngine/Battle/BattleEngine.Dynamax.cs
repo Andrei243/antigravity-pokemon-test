@@ -140,7 +140,8 @@ public partial class BattleEngine
         if (TrainerLines.GiantFor(speaker.Id) is not { } said) return;
         bool second = Trainers.Count > 1 && (ReferenceEquals(Trainers[1], speaker) || Trainers[1].Id == speaker.Id && Trainers[0].Id != speaker.Id);
         Action? stepBack = Scene ? () => Anim.StepBack(second, said.Face, said.Gesture) : null;
-        interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name)));
+        interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name),
+            VoiceCatalogue.BattleLine(VoiceCast.Default, speaker.Id, VoiceCatalogue.GiantMoment, said.Text, speaker.Name, speaker.TrainerClass)));
         if (Scene) interlude.Enqueue(new Happening(Anim.SendOffSpeaker));
     }
 

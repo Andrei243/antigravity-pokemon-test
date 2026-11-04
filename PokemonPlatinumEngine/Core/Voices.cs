@@ -21,6 +21,58 @@ public sealed record SpokenLine(string Key, string English, string? Voice)
 }
 
 /// <summary>
+/// A mouth that moves with a voice (plan 26 · V6), GPU-free: open while the voice is loud, shut in its gaps, with a gap
+/// between the two levels so it doesn't chatter on a level that hovers, and held at least <see cref="Hold"/> in each
+/// state, so it moves at most about seven times a second however the voice moves (a texel mouth flickering at the rate
+/// of syllables reads as noise). Told the voice's level by <see cref="Hear"/> and the time by <see cref="Advance"/>.
+/// </summary>
+public sealed class MouthFlap
+{
+    /// <summary>The window the voice's level is read over, in seconds.</summary>
+    public const float Window = 0.04f;
+
+    /// <summary>The level (RMS, of full scale) that opens the mouth, and the lower one that shuts it: about −32 and −40 dB.</summary>
+    public const float OpenAt = 0.025f, ShutAt = 0.01f;
+
+    /// <summary>The least time in one state.</summary>
+    public const float Hold = 0.07f;
+
+    public bool Open { get; private set; }
+
+    /// <summary>How long the mouth has been as it is.</summary>
+    public float Held { get; private set; } = Hold;
+
+    /// <summary>How many times the mouth has opened since it was last reset: what a test counts.</summary>
+    public int Opened { get; private set; }
+
+    public void Reset()
+    {
+        Open = false;
+        Held = Hold;
+        Opened = 0;
+    }
+
+    public void Advance(float dt) => Held += dt;
+
+    /// <summary>The voice's level now: the mouth opens or shuts if the level says so and it has been as it is long enough.</summary>
+    public void Hear(float level)
+    {
+        if (Held < Hold) return;
+        if (!Open && level >= OpenAt)
+        {
+            Open = true;
+            Opened++;
+            Held = 0f;
+        }
+        else if (Open && level < ShutAt)
+        {
+            Open = false;
+            Held = 0f;
+        }
+    }
+}
+
+/// <summary>
 /// The voices of one text box (plan 26 · V2): the line that speaks now and how long it has left, started as the box
 /// shows its line and cut as the box moves on. GPU-free and free of the audio device: a take's length is counted down by
 /// the frames handed to <see cref="Advance"/>, so a test or the harness holds the same box the game does, and what is
@@ -79,6 +131,9 @@ public sealed class VoiceTalk
         if (sample == null || sample.Samples.Length == 0) return;
         Speaking = line;
         Left = (float)sample.Duration;
+        heard = sample.Samples;
+        Mouth.Reset();
+        Mouth.Hear(LevelNow);
         AudioManager.PlayVoice(sample);
     }
 
@@ -87,7 +142,15 @@ public sealed class VoiceTalk
     {
         if (Speaking == null) return;
         Left = MathF.Max(0f, Left - dt);
-        if (Left <= 0f) Speaking = null;
+        if (Left <= 0f)
+        {
+            Speaking = null;
+            heard = null;
+            Mouth.Reset();
+            return;
+        }
+        Mouth.Advance(dt);
+        Mouth.Hear(LevelNow);
     }
 
     /// <summary>Cuts the voice speaking now (a box that moves on, closes or is skipped). Nothing when none speaks.</summary>
@@ -96,7 +159,37 @@ public sealed class VoiceTalk
         if (Speaking == null) return;
         Speaking = null;
         Left = 0f;
+        heard = null;
+        Mouth.Reset();
         AudioManager.StopVoice();
+    }
+
+    // The samples of the take speaking now, which the mouth is read from (plan 26 · V6)
+    private float[]? heard;
+
+    /// <summary>The speaker's mouth, moved by the take as it plays (plan 26 · V6): shut whenever no voice speaks.</summary>
+    public MouthFlap Mouth { get; } = new();
+
+    /// <summary>Whether the speaker's mouth is open this frame: only while a voice speaks, and with its syllables.</summary>
+    public bool MouthOpen => IsSpeaking && Mouth.Open;
+
+    /// <summary>
+    /// How loud the take is where it has got to: the RMS of the <see cref="MouthFlap.Window"/> before the place it is
+    /// playing, read from the take's own samples (so a test or the harness, with no sound card, sees what a player hears).
+    /// </summary>
+    public float LevelNow
+    {
+        get
+        {
+            if (heard == null || heard.Length == 0) return 0f;
+            int at = Math.Clamp((int)((heard.Length / (double)Synthesizer.DsRate - Left) * Synthesizer.DsRate), 0, heard.Length);
+            int size = (int)(MouthFlap.Window * Synthesizer.DsRate);
+            int from = Math.Max(0, at - size);
+            if (at <= from) return 0f;
+            double sum = 0;
+            for (int i = from; i < at; i++) sum += heard[i] * (double)heard[i];
+            return (float)Math.Sqrt(sum / (at - from));
+        }
     }
 
     /// <summary>

@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "voice": "rival",
+  "rate": 48000,
+  "passages": [
+    {
+      "id": "01_calm_morning",
+      "mood": "calm",
+      "text": "Hey, morning! You're up early. Mom says the lake's calm today, so I figured we'd walk out there together. No rush. Well, a little rush.",
+      "direction": "Friendly, easy, a smile in it. The pace of someone chatting at a door. The last two words a touch quicker, as if he can't help it."
+    },
+    {
+      "id": "02_calm_professor",
+      "mood": "calm",
+      "text": "Professor Rowan studies how Pokémon change as they grow. He's strict, sure, but he knows more about Sinnoh than anybody, from Twinleaf all the way north.",
+      "direction": "Explaining something he's proud to know. Even pace, clear names. Lean a little on 'strict'."
+    },
+    {
+      "id": "03_calm_thanks",
+      "mood": "calm",
+      "text": "Thanks for waiting. Seriously. I know I'm always running ahead, but it's good to have someone to run back to.",
+      "direction": "Warm and a little shy. Slower than his usual. A real pause after 'Seriously.'"
+    },
+    {
+      "id": "04_excited_briefcase",
+      "mood": "excited",
+      "text": "Did you see that? Turtwig, Chimchar and Piplup, all three, right there in the briefcase! I'm taking Piplup. No, wait. Okay, yes. Piplup!",
+      "direction": "Fast and bright, words tumbling over each other. The three names clear. The 'No, wait' a real change of mind, then the last 'Piplup!' decided."
+    },
+    {
+      "id": "05_excited_road",
+      "mood": "excited",
+      "text": "Come on, come on, come on! Sandgem Town is just past the tall grass, and then Jubilife City, and then Oreburgh, and then everywhere!",
+      "direction": "Impatient, bouncing on his toes. Speed up through the list of places and land big on 'everywhere'."
+    },
+    {
+      "id": "06_excited_badges",
+      "mood": "excited",
+      "text": "First badge, second badge, third badge! I'm going to win all eight before lunch. Okay, before dinner. Before next week, tops!",
+      "direction": "Showing off, counting on his fingers. Each correction a step down in confidence but not in energy."
+    },
+    {
+      "id": "07_excited_promise",
+      "mood": "excited",
+      "text": "You and me, we're going to be the strongest trainers in the whole region. Champion strong! Shake on it. Right now!",
+      "direction": "Fired up and sincere. Build to 'Champion strong!' and hold a hand out on 'Shake on it'."
+    },
+    {
+      "id": "08_shouting_wait",
+      "mood": "shouting",
+      "text": "Hey! Over here! Wait up! You can't just walk off while I'm in the middle of telling you something!",
+      "direction": "Calling across a street, not screaming into the microphone: step back a little or turn your head aside, and keep the input where it was. Loud and offended."
+    },
+    {
+      "id": "09_shouting_fine",
+      "mood": "shouting",
+      "text": "That's it, you're getting a fine! A thousand Poké Dollars! No, a million! Pay up the next time I see you!",
+      "direction": "Big, mock-furious, enjoying it. The number goes up and so does the voice. Same distance as the last one."
+    },
+    {
+      "id": "10_frustrated_lost",
+      "mood": "frustrated",
+      "text": "What? I lost? How did I lose? I had a plan. It was a good plan. It just didn't work.",
+      "direction": "Stung, then sulking. Quick and sharp at first, slowing down and falling flat by the last sentence."
+    },
+    {
+      "id": "11_frustrated_blocked",
+      "mood": "frustrated",
+      "text": "The road's blocked again? Seriously? Every single time I'm in a hurry, something is sitting right in the way.",
+      "direction": "Exasperated, through his teeth, almost a groan on 'Seriously?'. Not shouting."
+    },
+    {
+      "id": "12_quiet_father",
+      "mood": "quiet",
+      "text": "My dad's a famous trainer, you know. Everyone expects me to be just like him. Sometimes I don't know if I can be.",
+      "direction": "Low and honest, nearly to himself. Slow. Let the last sentence trail off."
+    },
+    {
+      "id": "13_quiet_lakes",
+      "mood": "quiet",
+      "text": "The lakes... something's wrong out there. I can feel it. Let's be careful, okay? Just this once, let's actually be careful.",
+      "direction": "Serious, uneasy, the energy held down. A real pause after 'The lakes'. Quiet but not whispered: keep your usual distance."
+    },
+    {
+      "id": "14_quiet_promise",
+      "mood": "quiet",
+      "text": "I wasn't strong enough to stop them. I keep thinking about it. Next time, I won't freeze up. I promise.",
+      "direction": "Ashamed, then resolved. The last two words firm and slow."
+    },
+    {
+      "id": "15_laughing_bidoof",
+      "mood": "laughing",
+      "text": "Ha! Ha ha! Did you see its face? The Bidoof just sat down in the middle of the battle! Best day ever!",
+      "direction": "Real laughter if you can find it: think of something funny first. The words come out through the laugh."
+    },
+    {
+      "id": "16_laughing_fountain",
+      "mood": "laughing",
+      "text": "Okay, okay, I'll admit it, that was pretty funny. Me, falling into the fountain. Don't tell anyone. Ha!",
+      "direction": "Embarrassed giggling, laughing at himself. A short laugh to end on."
+    },
+    {
+      "id": "17_question_center",
+      "mood": "calm",
+      "text": "Which way's the Pokémon Center? Left? Right? Is it the one with the red roof? Why is every roof in this town red?",
+      "direction": "Puzzled questions, each one rising at its end. Getting faster and more baffled toward the last."
+    },
+    {
+      "id": "18_question_pokedex",
+      "mood": "excited",
+      "text": "So what did the Professor say? Did he give you a Pokédex too? Can I see it? Just for a second?",
+      "direction": "Eager questions, leaning in. Rising ends, and a wheedling 'Just for a second?'."
+    },
+    {
+      "id": "19_exclaiming_geodude",
+      "mood": "excited",
+      "text": "Whoa! Look at the size of that Geodude! No way! Is that thing even allowed to be that big?",
+      "direction": "Amazed, eyes wide. Exclamations falling at their ends, the last question rising."
+    },
+    {
+      "id": "20_calm_bridge",
+      "mood": "calm",
+      "text": "Past the foggy path, the judge's lodge sits by the azure bridge. Measure twice, cut once, they say. I usually measure zero times.",
+      "direction": "A tongue-twister he's reading off a sign, then his own joke. Careful and clear on every sound; the joke deadpan."
+    },
+    {
+      "id": "21_calm_towns",
+      "mood": "calm",
+      "text": "Twinleaf, Sandgem, Jubilife, Oreburgh, Floaroma, Eterna, Hearthome, Solaceon, Veilstone, Pastoria, Celestic, Canalave, Snowpoint, Sunyshore. I'm going to see every one.",
+      "direction": "A list read off a map, each name clear and separate, as the pronunciation guide says. Proud on the last sentence."
+    }
+  ]
+}

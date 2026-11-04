@@ -69,6 +69,9 @@ public sealed class VoiceLibrary
 
     public const string PackFileName = "pack.json";
 
+    /// <summary>The language whose pack a language with none may speak under its translation (the options' ENGLISH VOICES).</summary>
+    public const string English = "en";
+
     /// <summary>
     /// The decoders by extension. WAV (16- or 24-bit PCM or 32-bit float, any rate, mono or stereo) and Ogg Vorbis
     /// (<see cref="OggVoiceDecoder"/>, NVorbis) are built in. A take whose extension has no decoder counts as missing.
@@ -122,6 +125,13 @@ public sealed class VoiceLibrary
         yield return Path.Combine(AppContext.BaseDirectory, "voice", language);
         yield return Path.Combine(Directory.GetCurrentDirectory(), "voice", language);
     }
+
+    /// <summary>
+    /// The pack a language speaks with: its own, else (with the options' ENGLISH VOICES) English's, whose takes are found
+    /// by the same keys and English hashes under the translated text; null for none.
+    /// </summary>
+    public static VoiceLibrary? Choose(string language, bool englishVoices, Func<string, VoiceLibrary?> find) =>
+        find(language) ?? (englishVoices && language != English ? find(English) : null);
 
     /// <summary>The first pack of <paramref name="language"/> found where the game looks, or null.</summary>
     public static VoiceLibrary? Find(string language)
@@ -235,11 +245,30 @@ public sealed class WavDecoder : IVoiceDecoder
 {
     public float[] Decode(byte[] file)
     {
+        var wave = Read(file);
+        return wave.Rate == Synthesizer.DsRate ? wave.Mono : Resample(wave.Mono, wave.Rate, Synthesizer.DsRate);
+    }
+
+    /// <summary>
+    /// A WAVE file as it was recorded (plan 26 · V3, the user's samples): its format, channels, rate and bit depth, its
+    /// two channels averaged into one at its own rate, and the loudest any channel reached (a clip shows there, which
+    /// the average can hide).
+    /// </summary>
+    public sealed record Wave(int Format, int Channels, int Rate, int Bits, float[] Mono, float Peak, int ClippedSamples)
+    {
+        public double Seconds => Mono.Length / (double)Rate;
+    }
+
+    /// <summary>Reads a WAVE file without changing its rate (<see cref="Decode"/> takes it to the DS's).</summary>
+    public static Wave Read(byte[] file)
+    {
         if (file.Length < 12 || file[0] != 'R' || file[1] != 'I' || file[2] != 'F' || file[3] != 'F' || file[8] != 'W' || file[9] != 'A' || file[10] != 'V' || file[11] != 'E')
             throw new InvalidDataException("not a RIFF WAVE file");
         int format = 0, channels = 0, rate = 0, bits = 0;
         int at = 12;
         float[]? mono = null;
+        float peak = 0f;
+        int clipped = 0;
         while (at + 8 <= file.Length)
         {
             string id = System.Text.Encoding.ASCII.GetString(file, at, 4);
@@ -267,9 +296,13 @@ public sealed class WavDecoder : IVoiceDecoder
                     for (int c = 0; c < channels; c++)
                     {
                         int p = body + (f * channels + c) * width;
-                        sum += format == 3 ? BitConverter.ToSingle(file, p)
+                        float x = format == 3 ? BitConverter.ToSingle(file, p)
                             : bits == 16 ? BitConverter.ToInt16(file, p) / 32768f
                             : ((file[p] | file[p + 1] << 8 | (sbyte)file[p + 2] << 16) / 8388608f);
+                        float a = MathF.Abs(x);
+                        if (a > peak) peak = a;
+                        if (a >= ClipLevel) clipped++;
+                        sum += x;
                     }
                     mono[f] = sum / channels;
                 }
@@ -277,8 +310,11 @@ public sealed class WavDecoder : IVoiceDecoder
             at = body + size + (size & 1);
         }
         if (mono == null) throw new InvalidDataException("a WAVE file with no data");
-        return rate == Synthesizer.DsRate ? mono : Resample(mono, rate, Synthesizer.DsRate);
+        return new Wave(format, channels, rate, bits, mono, peak, clipped);
     }
+
+    /// <summary>A sample this close to full scale counts as clipped (about −0.03 dBFS).</summary>
+    public const float ClipLevel = 0.9965f;
 
     /// <summary>Straight interpolation from one rate to another.</summary>
     public static float[] Resample(float[] input, int from, int to)
@@ -299,25 +335,40 @@ public sealed class WavDecoder : IVoiceDecoder
     }
 
     /// <summary>Writes mono samples as a 16-bit PCM WAVE file at <paramref name="rate"/> (a test's stand-in take, the tool's bake).</summary>
-    public static byte[] Encode(ReadOnlySpan<float> samples, int rate = Synthesizer.DsRate)
+    public static byte[] Encode(ReadOnlySpan<float> samples, int rate = Synthesizer.DsRate) => Encode(samples, rate, 16, 1);
+
+    /// <summary>Writes samples as a PCM WAVE file of 16 or 24 bits, interleaved when <paramref name="channels"/> is 2 (the tests' stand-ins for the user's recordings).</summary>
+    public static byte[] Encode(ReadOnlySpan<float> samples, int rate, int bits, int channels)
     {
-        var bytes = new byte[44 + samples.Length * 2];
+        if (bits is not (16 or 24)) throw new ArgumentException("16 or 24 bits", nameof(bits));
+        int width = bits / 8, data = samples.Length * width;
+        var bytes = new byte[44 + data];
         void Ascii(int at, string s) { for (int i = 0; i < 4; i++) bytes[at + i] = (byte)s[i]; }
         Ascii(0, "RIFF");
-        BitConverter.TryWriteBytes(bytes.AsSpan(4), 36 + samples.Length * 2);
+        BitConverter.TryWriteBytes(bytes.AsSpan(4), 36 + data);
         Ascii(8, "WAVE");
         Ascii(12, "fmt ");
         BitConverter.TryWriteBytes(bytes.AsSpan(16), 16);
         BitConverter.TryWriteBytes(bytes.AsSpan(20), (short)1);
-        BitConverter.TryWriteBytes(bytes.AsSpan(22), (short)1);
+        BitConverter.TryWriteBytes(bytes.AsSpan(22), (short)channels);
         BitConverter.TryWriteBytes(bytes.AsSpan(24), rate);
-        BitConverter.TryWriteBytes(bytes.AsSpan(28), rate * 2);
-        BitConverter.TryWriteBytes(bytes.AsSpan(32), (short)2);
-        BitConverter.TryWriteBytes(bytes.AsSpan(34), (short)16);
+        BitConverter.TryWriteBytes(bytes.AsSpan(28), rate * width * channels);
+        BitConverter.TryWriteBytes(bytes.AsSpan(32), (short)(width * channels));
+        BitConverter.TryWriteBytes(bytes.AsSpan(34), (short)bits);
         Ascii(36, "data");
-        BitConverter.TryWriteBytes(bytes.AsSpan(40), samples.Length * 2);
+        BitConverter.TryWriteBytes(bytes.AsSpan(40), data);
         for (int i = 0; i < samples.Length; i++)
-            BitConverter.TryWriteBytes(bytes.AsSpan(44 + i * 2), (short)Math.Clamp((int)MathF.Round(samples[i] * 32767f), -32768, 32767));
+        {
+            int at = 44 + i * width;
+            if (bits == 16) BitConverter.TryWriteBytes(bytes.AsSpan(at), (short)Math.Clamp((int)MathF.Round(samples[i] * 32767f), -32768, 32767));
+            else
+            {
+                int v = Math.Clamp((int)MathF.Round(samples[i] * 8388607f), -8388608, 8388607);
+                bytes[at] = (byte)v;
+                bytes[at + 1] = (byte)(v >> 8);
+                bytes[at + 2] = (byte)(v >> 16);
+            }
+        }
         return bytes;
     }
 }

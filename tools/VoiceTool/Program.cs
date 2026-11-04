@@ -15,11 +15,16 @@ string linesFile = Path.Combine(engine, "Data", "voice", "lines.json");
 string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
-var words = args.Where(a => !a.StartsWith("--", StringComparison.Ordinal)).ToList();
+// The words of the command, leaving out the switches and the values of those that take one
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top" };
+var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
-if (words.Count == 0 || words[0] is not ("catalogue" or "export" or "manifest" or "check" or "vowels"))
+string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
+string lexiconPath = Path.Combine(engine, "Data", "voice", "lexicon.json");
+string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon" };
+if (words.Count == 0 || !commands.Contains(words[0]))
 {
-    Console.Error.WriteLine("Say catalogue [--add-missing] [--check], export <voice> [file], manifest [folder] [--language en], check [folder], or vowels [folder] [--voice <id>] [--all].");
+    Console.Error.WriteLine("Say one of: " + string.Join(", ", commands) + ". tools/VoiceTool/README.md says what each does.");
     return 2;
 }
 return words[0] switch
@@ -28,8 +33,186 @@ return words[0] switch
     "export" => Export(),
     "manifest" => Manifest(),
     "check" => Check(),
+    "check-samples" => CheckSamples(),
+    "bake-samples" => BakeSamples(),
+    "bake" => Bake(),
+    "jobs" => Jobs(),
+    "generate" => Generate(),
+    "reroll" => Reroll(),
+    "trial" => Trial(),
+    "reel" => Reel(),
+    "lexicon" => Lexicon(),
     _ => Vowels()
 };
+
+string? Option(string name) => args.SkipWhile(a => a != name).Skip(1).FirstOrDefault();
+
+// ------------------------------------------------------------------ the user's samples (plan 26 · V3)
+
+string SamplesFolder(string voice) => words.Count > 1 ? Path.GetFullPath(words[1]) : Path.Combine(samplesRoot, voice);
+
+SamplesFile ScriptOf(string voice)
+{
+    string own = Path.Combine(SamplesFolder(voice), "samples.json");
+    return SamplesFile.Read(File.Exists(own) ? own : Path.Combine(samplesRoot, voice, "samples.json"));
+}
+
+int CheckSamples()
+{
+    string voice = Option("--voice") ?? VoiceCast.Rival;
+    string folder = SamplesFolder(voice);
+    var script = ScriptOf(voice);
+    var report = VoiceSamples.Check(folder, script);
+    Console.WriteLine($"{script.Passages.Count} passages of {voice}'s samples in {folder}:");
+    foreach (var m in report.Measures)
+        Console.WriteLine($"  {m.Passage,-26} {m.Seconds,5:0.0} s  peak {m.PeakDb,6:0.0} dB  room {m.FloorDb,4:0} dB  quiet {m.LeadSeconds:0.00}/{m.TailSeconds:0.00} s  {m.WordsPerSecond:0.0} words/s  {m.Rate} Hz {m.Bits}-bit {(m.Channels == 1 ? "mono" : "stereo")}");
+    if (report.Missing.Count > 0) Console.WriteLine($"not recorded yet ({report.Missing.Count}): " + string.Join(", ", report.Missing));
+    foreach (var f in report.Findings) Console.WriteLine($"{(f.Severity == VoiceSamples.Severity.Error ? "error" : "warning")}: {f.Passage}: {f.What}");
+    Console.WriteLine($"{report.Measures.Count} takes, {report.TotalSeconds:0} seconds in all: {report.Errors} errors, {report.Findings.Count - report.Errors} warnings, {report.Missing.Count} missing.");
+    return report.Errors > 0 || report.Missing.Count > 0 ? 1 : 0;
+}
+
+int BakeSamples()
+{
+    string voice = Option("--voice") ?? VoiceCast.Rival;
+    string folder = SamplesFolder(voice);
+    string output = Option("--out") is { } o ? Path.GetFullPath(o) : Path.Combine(repo, "voice", "samples-clean", voice);
+    var script = ScriptOf(voice);
+    Directory.CreateDirectory(output);
+    int n = 0;
+    foreach (var passage in script.Passages)
+    {
+        string path = Path.Combine(folder, passage.Id + ".wav");
+        if (!File.Exists(path)) continue;
+        var wave = WavDecoder.Read(File.ReadAllBytes(path));
+        var clean = VoiceBake.Clean(wave.Mono, wave.Rate, passage.Text, outRate: wave.Rate, level: false);
+        File.WriteAllBytes(Path.Combine(output, passage.Id + ".wav"), WavDecoder.Encode(clean.Samples, clean.Rate, 24, 1));
+        foreach (string f in clean.Findings) Console.WriteLine($"{passage.Id}: {f}");
+        n++;
+    }
+    File.Copy(Path.Combine(samplesRoot, voice, "samples.json"), Path.Combine(output, "samples.json"), true);
+    Console.WriteLine($"{n} samples cleaned into {output} (trimmed, rumble and plosives softened, at their own rate and loudness): what an engine clones from.");
+    return 0;
+}
+
+// ------------------------------------------------------------------ generating and baking (plan 26 · V3, V4)
+
+VoiceFile CatalogueNow() => VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+
+VoiceLibrary? PackNow() => VoiceLibrary.Open(Option("--pack") is { } p ? Path.GetFullPath(p) : Path.Combine(repo, "voice", LanguageOf()));
+
+string PackFolderOption() => Option("--pack") is { } p ? Path.GetFullPath(p) : Path.Combine(repo, "voice", LanguageOf());
+
+Func<string, string, (string Path, string Text)?>? SamplesFor(string voice)
+{
+    var cast = GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath));
+    if (!cast.Voices.TryGetValue(voice, out var v) || v.Clone == null) return null;
+    string folder = Path.Combine(repo, "voice", "samples-clean", voice);
+    if (!Directory.Exists(folder)) folder = Path.Combine(engine, v.Clone);
+    string script = Path.Combine(engine, v.Clone, "samples.json");
+    return File.Exists(script) ? VoiceGeneration.SamplesOf(folder, SamplesFile.Read(script), repo) : null;
+}
+
+int Bake()
+{
+    if (words.Count < 2 || Option("--voice") is not { } voice) { Console.Error.WriteLine("bake <folder of takes> --voice <id> [--pack <folder>] [--engine <name>]: each take named <key>.wav, the key's colon written '+'."); return 2; }
+    var from = new VoiceGeneration.FolderEngine(Path.GetFullPath(words[1]), Option("--engine") ?? "by hand");
+    var jobs = VoiceGeneration.Plan(CatalogueNow(), voice, null, VoiceGeneration.Which.All, LanguageOf(), takes: 1);
+    jobs.Jobs.RemoveAll(j => !from.Has(j.Key));
+    var (kept, failed) = VoiceGeneration.Generate(jobs, from, PackFolderOption());
+    foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
+    Console.WriteLine($"{kept.Count} takes baked into {PackFolderOption()}; {failed.Count} with findings.");
+    return 0;
+}
+
+int Jobs()
+{
+    if (words.Count < 2) { Console.Error.WriteLine("jobs <voice> [--which missing|stale|all] [--out <file>]"); return 2; }
+    var which = Enum.TryParse<VoiceGeneration.Which>(Option("--which") ?? "missing", true, out var w) ? w : VoiceGeneration.Which.Missing;
+    var jobs = VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), which, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default);
+    string output = Option("--out") ?? Path.Combine(repo, "voice", "jobs", VoicePacks.FileNameOf(words[1]) + ".json");
+    Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
+    File.WriteAllText(output, GameDataFiles.Serialize(jobs));
+    Console.WriteLine($"{jobs.Jobs.Count} lines of {words[1]} ({which.ToString().ToLowerInvariant()}), {jobs.Jobs.Count(j => j.Guessed)} with a guessed direction, written to {output}.");
+    return 0;
+}
+
+int Generate()
+{
+    string config = Path.Combine(repo, "tools", "VoiceGen", "engine.json");
+    VoiceJobFile? jobs = Option("--jobs") is { } file ? GameDataFiles.Deserialize<VoiceJobFile>(File.ReadAllText(file))
+        : words.Count > 1 ? VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default) : null;
+    if (jobs == null) { Console.Error.WriteLine("generate <voice> | --jobs <file>"); return 2; }
+    if (!File.Exists(config))
+    {
+        Console.WriteLine($"No engine yet: {config} is not there. Plan 26's trials choose one (V3 for the rival, V4 for the rest), with your OK for its licence and download; tools/VoiceGen/README.md says how to set it up. {jobs.Jobs.Count} lines wait.");
+        return 2;
+    }
+    var command = CommandEngine.Read(config, repo);
+    var (kept, failed) = VoiceGeneration.Generate(jobs, command, PackFolderOption(), Console.WriteLine);
+    foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
+    Console.WriteLine($"{kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");
+    return failed.Count > 0 ? 1 : 0;
+}
+
+int Reroll()
+{
+    if (words.Count < 2) { Console.Error.WriteLine("reroll <key>"); return 2; }
+    var catalogue = CatalogueNow();
+    string lineKey = words[1].Contains('~') ? words[1][..words[1].IndexOf('~')] : words[1];
+    string voice = catalogue.Lines.FirstOrDefault(l => l.Key == lineKey)?.Voice ?? "";
+    var jobs = VoiceGeneration.Reroll(catalogue, words[1], PackNow(), SamplesFor(voice), VoiceLexicon.Default);
+    string output = Path.Combine(repo, "voice", "jobs", "reroll.json");
+    Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+    File.WriteAllText(output, GameDataFiles.Serialize(jobs));
+    Console.WriteLine($"New seeds for {words[1]} ({string.Join(", ", jobs.Jobs[0].Seeds)}) in {output}; run generate --jobs {output}.");
+    return 0;
+}
+
+int Trial()
+{
+    var voices = words.Skip(1).ToList();
+    if (voices.Count == 0) { Console.Error.WriteLine("trial <voice>... (trial rival; trial rowan mom rival_mom assistant_boy assistant_girl looker cheryl roark mars)"); return 2; }
+    var catalogue = CatalogueNow();
+    var lines = VoiceGeneration.TrialLines(catalogue, voices, int.TryParse(Option("--count"), out int c) ? c : 20);
+    var jobs = VoiceGeneration.Plan(new VoiceFile { Lines = lines }, "all", null, VoiceGeneration.Which.All, LanguageOf(), voices.Count == 1 ? SamplesFor(voices[0]) : null, VoiceLexicon.Default, takes: 1);
+    string folder = Path.Combine(repo, "voice", "trial");
+    Directory.CreateDirectory(folder);
+    string name = string.Join("_", voices.Select(VoicePacks.FileNameOf));
+    File.WriteAllText(Path.Combine(folder, name + ".json"), GameDataFiles.Serialize(jobs));
+    var sb = new StringBuilder($"# Trial lines: {string.Join(", ", voices)}\n\nThe same lines for every engine. Listen to each engine's takes of them and choose by ear.\n\n");
+    foreach (var j in jobs.Jobs) sb.Append($"- `{j.Key}` ({j.Voice}, {j.Direction}{(j.Guessed ? ", guessed" : "")}): {j.Text}\n");
+    File.WriteAllText(Path.Combine(folder, name + ".md"), sb.ToString());
+    Console.WriteLine($"{jobs.Jobs.Count} trial lines in {Path.Combine(folder, name + ".json")} (and .md). For each engine: generate --jobs <that file> --pack voice/trial/<engine>.");
+    return 0;
+}
+
+int Reel()
+{
+    if (words.Count < 2) { Console.Error.WriteLine("reel <key prefix> [--pack <folder>] [--out <file.wav>] (reel world:jubilife_city.)"); return 2; }
+    var pack = PackNow();
+    if (pack == null) { Console.WriteLine("No pack to make a reel from."); return 2; }
+    var (samples, keys) = VoiceGeneration.Reel(pack, CatalogueNow(), words[1]);
+    string output = Option("--out") ?? Path.Combine(repo, "voice", "reels", VoicePacks.FileNameOf(words[1].TrimEnd('.')) + ".wav");
+    Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
+    File.WriteAllBytes(output, WavDecoder.Encode(samples));
+    File.WriteAllLines(Path.ChangeExtension(output, ".txt"), keys);
+    Console.WriteLine($"{keys.Count} takes, {samples.Length / (double)Synthesizer.DsRate:0} seconds, in {output} (their keys in order beside it).");
+    return 0;
+}
+
+int Lexicon()
+{
+    var lexicon = VoiceLexicon.Default;
+    foreach (var e in lexicon.File.Entries.Where(e => !VoiceLexicon.WellMade(e.Say))) Console.WriteLine($"wrong: {e.Name}'s respelling '{e.Say}' is not syllables of letters with one in capitals");
+    var cast = GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath));
+    var candidates = PokemonPlatinumEngine.Data.PokemonDatabase.Everyone().Select(s => s.Name)
+        .Concat(cast.Names.Where(n => !VoiceCast.IsArchetype(n.Value) && !n.Key.Contains('{') && !n.Key.Contains(' ')).Select(n => n.Key));
+    var missing = lexicon.Missing(CatalogueNow(), candidates);
+    Console.WriteLine($"{lexicon.File.Entries.Count} names in the list; {missing.Count} names the lines say are not, the most said first:");
+    foreach (var (name, lines) in missing.Take(int.TryParse(Option("--top"), out int top) ? top : 60)) Console.WriteLine($"  {name} ({lines} lines)");
+    return 0;
+}
 
 // ------------------------------------------------------------------ voice packs (plan 26 · V2)
 

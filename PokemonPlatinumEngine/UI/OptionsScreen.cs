@@ -43,7 +43,7 @@ public enum OptionRow
     RetryBattles,
     Follower, WildPokemon,
     Movement,
-    Voices, VoiceVolume, LetVoicesFinish,
+    Voices, VoiceVolume, LetVoicesFinish, EnglishVoices,
     Controls,
     Jukebox,
     Packs,
@@ -481,6 +481,9 @@ public class OptionsScreen
             case OptionRow.LetVoicesFinish:
                 s.LetVoicesFinish = !s.LetVoicesFinish;
                 break;
+            case OptionRow.EnglishVoices:
+                s.EnglishVoices = !s.EnglishVoices;
+                break;
             case OptionRow.Tips:
                 // Off, as the rules have it, On (plan 12 · Q23), and round again
                 s.Tips = (RulesDefault)Wrap((int)s.Tips + step, 3);
@@ -649,6 +652,7 @@ public class OptionsScreen
         OptionRow.Voices => (Text.Of("options.voices.label"), Text.Of($"options.voices.value.{s.Voices}"), Text.Of($"options.voices.help.{s.Voices}")),
         OptionRow.VoiceVolume => (Text.Of("options.voiceVolume.label"), Percent(s.VoiceVolume), Text.Of("options.voiceVolume.help")),
         OptionRow.LetVoicesFinish => (Text.Of("options.letVoicesFinish.label"), OnOff(s.LetVoicesFinish), Text.Of(s.LetVoicesFinish ? "options.letVoicesFinish.help.on" : "options.letVoicesFinish.help.off")),
+        OptionRow.EnglishVoices => (Text.Of("options.englishVoices.label"), OnOff(s.EnglishVoices), Text.Of(s.EnglishVoices ? "options.englishVoices.help.on" : "options.englishVoices.help.off")),
         OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),

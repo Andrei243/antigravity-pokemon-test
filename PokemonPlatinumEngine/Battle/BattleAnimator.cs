@@ -1791,4 +1791,7 @@ public sealed class SpeakingTrainer
 
     /// <summary>Seconds into their gesture, which begins as they arrive (negative before).</summary>
     public float GestureAge => Age - BattleAnimator.TrainerBackTime;
+
+    /// <summary>Their mouth open with a syllable of their voice (plan 26 · V6), as the battle's box says it is.</summary>
+    public bool MouthOpen { get; set; }
 }

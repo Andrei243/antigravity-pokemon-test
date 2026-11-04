@@ -44,7 +44,7 @@ public class AccessibilityTests : IDisposable
         // (and Q22's WHAT IS LEFT HERE after that)
         // (and Q21's REQUESTS after that, and Q8's three rows of seeing after it, and Q23's TIPS after those)
         // (and plan 12 · Q15b's RETRY BATTLES, plan 10's FOLLOWER and WILD POKéMON, plan 30's MOVEMENT and plan 26's three voice rows)
-        Assert.Equal(motion + 20, Array.IndexOf(rows, OptionRow.Controls));
+        Assert.Equal(motion + 21, Array.IndexOf(rows, OptionRow.Controls));
         Assert.True(motion < Array.IndexOf(rows, OptionRow.Help));
     }
 

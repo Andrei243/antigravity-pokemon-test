@@ -391,6 +391,13 @@
         "on": "A pe o replică terminată așteaptă până termină vocea de vorbit."
       }
     },
+    "englishVoices": {
+      "label": "Voci în engleză",
+      "help": {
+        "off": "Într-o limbă fără voci proprii, replicile apar doar ca text.",
+        "on": "Într-o limbă fără voci proprii, personajele vorbesc în engleză sub textul tradus."
+      }
+    },
     "areaChecklist": {
       "label": "Ce a mai rămas aici",
       "help": {

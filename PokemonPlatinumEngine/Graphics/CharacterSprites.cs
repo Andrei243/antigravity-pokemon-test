@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Graphics;
 internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh, Sit, SitGround, Lie, Swim, Fish, Tug }
 
 /// <summary>One baked sprite frame: a character type, facing, strip, frame, and its face.</summary>
-internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAnim Anim, int Frame, bool Blink, Expression Expression);
+internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAnim Anim, int Frame, bool Blink, Expression Expression, bool Open = false);
 
 /// <summary>
 /// HD-2D characters: each 3D rig is rendered once per facing and animation frame into a small pixel-art sprite (at
@@ -95,26 +95,26 @@ internal static class CharacterSprites
                 Overworld.Stance.Tug => (int)(Fraction(pose.Time / Overworld.Seats.TugSeconds) * TugFrames) % TugFrames,
                 _ => MathF.Sin(pose.Time * MathF.Tau / BreathPeriod) > 0f ? 1 : 0
             };
-            return new SpriteKey(rig, facing, StripOf(pose.Stance), frame, pose.Blink, expression);
+            return new SpriteKey(rig, facing, StripOf(pose.Stance), frame, pose.Blink, expression, pose.MouthOpen);
         }
         if (pose.Hop > 0f && pose.Hop < 1f)
-            return new SpriteKey(rig, facing, SpriteAnim.Hop, Math.Clamp((int)(pose.Hop * HopFrames), 0, HopFrames - 1), pose.Blink, expression);
+            return new SpriteKey(rig, facing, SpriteAnim.Hop, Math.Clamp((int)(pose.Hop * HopFrames), 0, HopFrames - 1), pose.Blink, expression, pose.MouthOpen);
 
         float duration = CharacterAnimation.Duration(pose.Emote);
         if (pose.Emote != Emote.None && pose.EmoteTime < duration)
         {
             int f = Math.Clamp((int)(pose.EmoteTime / duration * EmoteFrames), 0, EmoteFrames - 1);
-            return new SpriteKey(rig, facing, StripOf(pose.Emote), f, pose.Blink, expression);
+            return new SpriteKey(rig, facing, StripOf(pose.Emote), f, pose.Blink, expression, pose.MouthOpen);
         }
 
         if (pose.WalkBlend >= 0.5f)
         {
             int f = (int)MathF.Floor(Fraction(pose.Walk) * WalkFrames) % WalkFrames;
-            return new SpriteKey(rig, facing, pose.Running ? SpriteAnim.Run : SpriteAnim.Walk, f, pose.Blink, expression);
+            return new SpriteKey(rig, facing, pose.Running ? SpriteAnim.Run : SpriteAnim.Walk, f, pose.Blink, expression, pose.MouthOpen);
         }
 
         int breath = MathF.Sin(pose.Time * MathF.Tau / BreathPeriod) > 0f ? 1 : 0;
-        return new SpriteKey(rig, facing, SpriteAnim.Idle, breath, pose.Blink, expression);
+        return new SpriteKey(rig, facing, SpriteAnim.Idle, breath, pose.Blink, expression, pose.MouthOpen);
     }
 
     private static float Fraction(float x) => ((x % 1f) + 1f) % 1f;
@@ -171,7 +171,7 @@ internal static class CharacterSprites
     /// <summary>The representative pose a frame is baked from: the middle of its slice of the clip.</summary>
     public static CharacterPose BakePose(SpriteKey key)
     {
-        var pose = new CharacterPose { Blink = key.Blink, Expression = key.Expression };
+        var pose = new CharacterPose { Blink = key.Blink, Expression = key.Expression, MouthOpen = key.Open };
         switch (key.Anim)
         {
             case SpriteAnim.Idle:
@@ -218,7 +218,7 @@ internal static class CharacterSprites
     /// <summary>The file a hand-drawn frame is looked for under (in the character type's folder).</summary>
     public static string OverrideName(SpriteKey key) =>
         $"{(key.Facing switch { 0 => "down", 1 => "right", 2 => "up", _ => "left" })}_{key.Anim.ToString().ToLowerInvariant()}_{key.Frame}" +
-        (key.Blink ? "_blink" : "") + (key.Expression != Expression.Neutral ? "_" + key.Expression.ToString().ToLowerInvariant() : "") + ".png";
+        (key.Blink ? "_blink" : "") + (key.Expression != Expression.Neutral ? "_" + key.Expression.ToString().ToLowerInvariant() : "") + (key.Open ? "_open" : "") + ".png";
 
     /// <summary>Bakes the sprite this pose needs, if it isn't cached yet. Call outside any texture mode.</summary>
     public static void Prepare(RenderContext context, CharacterRig rig, CharacterPose pose, float yaw) => Bake(context, KeyOf(rig, pose, yaw));
@@ -318,7 +318,7 @@ internal static class CharacterSprites
             var d = anchor - look;
             var up = new Vector3(0, MathF.Cos(pitch), -MathF.Sin(pitch));
             var px = new Vector2(SpriteW / 2f + d.X * TexelsPerUnit, SpriteH / 2f - Vector3.Dot(d, up) * TexelsPerUnit);
-            CharacterFaces.Stamp(canvas, px, key.Facing, rig.Style, key.Expression, key.Blink);
+            CharacterFaces.Stamp(canvas, px, key.Facing, rig.Style, key.Expression, key.Blink, key.Open);
         }
         // A swimmer is what shows above the water: nothing below the shoulders' line (plan 11 · C8)
         if (key.Anim == SpriteAnim.Swim)

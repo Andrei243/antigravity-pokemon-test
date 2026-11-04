@@ -1304,6 +1304,7 @@ public partial class GameEngine
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
                     flow.Battle.AutoOn = Settings.AutoBattle; // plan 12 · Q12
+                    UseVoices(flow.Battle.Voice); // plan 26 · V6
                     flow.Battle.Update(dt * Pace);
                     // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
@@ -3054,6 +3055,8 @@ public partial class GameEngine
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
         {
+            // Whose mouth is open is read as the frame is drawn, after the box's voice has moved on (plan 26 · V6)
+            world.Talking = SpeakerNow();
             world.Render(flow.Map, flow.Player);
         }
         else if (showBattle)

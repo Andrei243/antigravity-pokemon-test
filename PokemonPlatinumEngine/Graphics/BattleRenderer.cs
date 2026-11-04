@@ -461,7 +461,8 @@ public sealed class BattleRenderer
         {
             Time = time + (speaking.Second ? 0.6f : 1.3f),
             Blink = time % 3.7f < 0.12f,
-            Expression = CharacterAnimation.ExpressionOf(speaking.Mood)
+            Expression = CharacterAnimation.ExpressionOf(speaking.Mood),
+            MouthOpen = speaking.MouthOpen
         };
         var feet = BattleStage.SpeakerSpot(speaking.Second) + new Vector3(0, platformTop, 0);
         float back = speaking.Back;

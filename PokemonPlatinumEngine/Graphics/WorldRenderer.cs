@@ -444,6 +444,9 @@ public sealed partial class WorldRenderer
     /// </summary>
     public CameraRig Camera { get; } = new();
 
+    /// <summary>The person whose mouth is open with a syllable of their voice this frame (plan 26 · V6), or nobody.</summary>
+    public NPC? Talking { get; set; }
+
     // The camera's clock, which the game runs while the field is on screen: at the clock's own pace whatever the
     // field's is, so slow motion slows nothing a scene's camera does
     private double cameraClock, lastCameraTime;
@@ -1264,6 +1267,8 @@ public sealed partial class WorldRenderer
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
             // A gesture and a face a script gave them (plan 11 · C11)
             float jump = Acted(ref pose, npc.Gesture, npc.GestureAge, npc.Mood);
+            // Their mouth opens with the syllables of their voice (plan 26 · V6)
+            pose.MouthOpen = ReferenceEquals(npc, Talking);
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
                 // A trainer who has just spotted the player starts, under the "!"

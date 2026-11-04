@@ -336,11 +336,29 @@ every chapter from the first scene to the Pokémon League and after.
 - [x] V1 The catalogue, the cast and the keys
 - [x] V2 Playing a voice
 - [ ] V3 The samples and Barry's first chapter
+  - [x] the sample script (`docs/voice/samples.md`, `Data/voice/samples/rival/samples.json`), `docs/voice/recording.md` and the booth page
+  - [x] `check-samples`, `bake-samples`, `bake`, `jobs`, `generate` (its engine-free half), `reroll`, `trial rival`, tested with synthesised stand-ins
+  - [ ] **the user records the 21 passages** into `PokemonPlatinumEngine/Data/voice/samples/rival/` and they are committed
+  - [ ] the cloning trial: the user approves each engine's licence and download, listens to `trial rival` from each, and chooses
+  - [ ] the speech-to-text check (whisper.cpp: its own licence and download to approve)
+  - [ ] Barry's lines generated with their variants, listened to in the game, rerolled where wanted
 - [ ] V4 The synthesised cast, the trial
+  - [x] `Data/voice/lexicon.json` (50 names, Sinnoh's first places, people and species) and `VoiceTool lexicon` for the rest
+  - [x] voice design briefs for the first chapter's named cast (`cast.json`'s `brief`), `trial <voices>` for their twenty lines
+  - [ ] the engines' trial and the user's choice of engine and of each character's voice (downloads and licences to approve)
+  - [ ] the first chapter generated
 - [ ] V5 Everyone else
+  - [x] `reel <prefix>`: a town's takes one after another for spot listening; `jobs`/`generate` take an archetype (`look:lass`) for all its voices
+  - [ ] the archetypes' voices designed and generated (needs V4's engine)
 - [ ] V6 The face and the stage
+  - [x] mouths in the field, in battle and in the introduction, moved by the take's own level (`MouthFlap`); Rowan's introduction voiced
+  - [x] plan 11 · C12's battle lines (and plan 25 · YD6's giant lines) catalogued and voiced; auto-advance waits for a voice in battle as in the field
+  - [x] the harness's `voices` mode shows a mouth open and shut (stand-in takes)
+  - [ ] the scenes of plan 02 retimed with `waitvoice` (needs real takes to judge by ear)
 - [ ] V7 onward: each chapter as it is written
 - [ ] V8 Other languages
+  - [x] the options' ENGLISH VOICES row: a language with no pack speaks English's under its translation
+  - [ ] a pack per language
 
 ## V1 as built (2026-10-24)
 
@@ -358,3 +376,84 @@ every chapter from the first scene to the Pokémon League and after.
 - Ogg Vorbis is decoded by `Audio/OggVoiceDecoder.cs` over NVorbis 0.10.5 (MIT, approved by the user 2026-11-03), registered as `.ogg` in `VoiceLibrary.Decoders`; any rate, mono or stereo, taken to mono at the DS's rate like WAV. A damaged file is a take that can't be read (null), never a crash.
 - `VoicePlaybackTests.AnOggTakeIsDecodedToMonoAtTheDsRateAndPlaysFromAPack` makes its Ogg in memory from the synthesised vowels with `OggVorbisEncoder` 1.2.2 (MIT), referenced by the test project alone; no audio is in the repository. (A new test-only package: the user may prefer another way to produce a test file.)
 - The three options rows (VOICES, VOICE VOLUME, LET VOICES FINISH), `waitvoice`, the bus and its dip, the keys on `Say` and `Listen`'s voice lines were already in place.
+
+## V3 to V6 without a recording (2026-11-04)
+
+Everything of V3 to V6 that needs neither the user's voice nor a download, built and tested with synthesised stand-ins
+(`VoicePacks.Vowels`, `VoiceSamples.StandIn`: vowels over room noise, nobody's voice). The boxes left open above are
+the user's.
+
+- **The recording kit** (V3). `docs/voice/samples.md` is the script: 21 passages in Barry's manner, our own words, six
+  moods at least twice each (calm, excited, shouting, frustrated, quiet, laughing), questions and exclamations, the
+  names the game says most and a passage for the sounds the others lack ("path", "judge", "azure", "measure"), with a
+  pronunciation guide that is `Data/voice/lexicon.json`'s. Nothing in it names or describes the user. The same passages
+  are `PokemonPlatinumEngine/Data/voice/samples/rival/samples.json` (id, mood, text, direction), which the tools read and
+  `VoiceMakingTests` holds the page to. `docs/voice/recording.md` is the how-to (gear, room, 48 kHz mono 24-bit WAV, the
+  half second of quiet each end, naming, the folder, `check-samples`, committing). `tools/VoiceBooth/booth.html` is the
+  booth page: it reads `samples.json` from the folder chosen (Chrome/Edge's folder access; a download elsewhere), records
+  at 48 kHz with the browser's processing off, keeps three takes and writes the best as 24-bit WAV. No test runs it (a
+  browser page); the user is the first to open it.
+- **`check-samples`** (`Audio/VoiceSamples.cs`, GPU-free): errors a clone would copy (missing file, not WAV, not 48 kHz,
+  clipping, a peak under −24 dB, the room's noise over −40 dB, under 3 or over 35 s, no voice to be told from noise) and
+  warnings to look at (stereo, 16-bit, a peak over −3 dB, noise over −50 dB, less than 0.3 s or more than 3 s of quiet at
+  an end, a pace outside 1 to 5.5 words a second, a DC offset, a loose file, under 90 or over 300 s in all, a mood with
+  no take). A take with no quiet in it is told apart from a noisy room by whether its quietest windows hold steady.
+  `WavDecoder.Read` gives a file's own rate, depth, channels and peak (`Decode` is built on it).
+- **The bake** (`Audio/VoiceBake.cs`, no Python): DC off, an 80 Hz Butterworth high-pass, a plosive softener (the band
+  under 200 Hz turned down by up to 9 dB where it carries most of a loud moment, looking 10 ms ahead), the silence
+  trimmed to 0.08 s before and 0.15 s after, the mixer's band-limited resampler (plan 31) to the DS's rate, levelled to
+  the middle of the voice bus's window, a look-ahead limiter at −1.5 dB, 6 ms fades. Findings: a clip, a noisy floor, a
+  limiter that left the line under the window, a length that doesn't fit the words (0.8 to 6 words a second). **Packs are
+  written as 16-bit WAV at 32,768 Hz** for now: about 230 MB an hour, against the plan's 20 MB as Ogg (decision 5 below).
+- **Generation without an engine** (`Audio/VoiceGeneration.cs`): `Plan` lists a voice's missing, stale or all lines as
+  `VoiceJob`s (spoken text, its respelling, the direction written or guessed by `VoiceMoods.Guess`, the sample of the
+  matching mood spread over a mood's samples by the key's hash, three seeds); `SeedOf(key, round, take)` makes the same
+  seeds on every machine and a reroll takes the next round's (`RoundOf` reads a kept seed's round); `Generate` runs any
+  `IVoiceEngine` (the tool's `CommandEngine` over `tools/VoiceGen/engine.json`, the tests' vowels, or `FolderEngine`,
+  takes made by hand) and keeps the best baked take (fewest findings, then the pace nearest 2.8 words a second), stamping
+  `pack.json` with the engine, seed and sample. A line said by whoever is spoken to (`@self`) is left out of a plan: its
+  voices are V5's archetypes, decided at run time. `TrialLines` picks a trial's twenty lines (five to thirty words, no
+  placeholder, spread over directions, the same every run); `Reel` strings a place's current takes together.
+- **The lexicon and the briefs** (V4): `Data/voice/lexicon.json` respells 50 names in plain letters with the stressed
+  syllable in capitals (`VoiceLexicon.Respell` hands an engine that reads text the respelled line; the engine chosen may
+  want phonemes beside them). `cast.json`'s voices gained a `brief` (register, age, pitch, pace, manner), written for the
+  first chapter's named cast (Rowan, both mothers, Lucas and Dawn as the assistant, Looker, Cheryl, Roark, Mars, the
+  grunts); the rival has none, being the user's.
+- **The mouth** (V6): `MouthFlap` (`Core/Voices.cs`) opens at about −32 dB RMS of a 40 ms window and shuts under −40,
+  held at least 70 ms each way, read from the take's own samples where it is playing (`VoiceTalk.LevelNow`), so tests and
+  the harness see it with no sound card. A face has an open mouth for every expression (`CharacterFaces.Paint(...,
+  mouthOpen)`, painted under a moustache too; the battle's textures are made the first time a speaker needs one,
+  `CharacterRig.FaceMaterial(expression, blink, open)`), and the field's pixel face a two-texel dark mouth
+  (`Stamp(..., mouthOpen)`, `SpriteKey.Open`, baked apart). Whose mouth: in the field the person spoken to when the line
+  is theirs, else the nearest person within 12 tiles whose voice the line is (`GameEngine.SpeakerNow`, read as the frame
+  is drawn); in battle the trainer standing back on the platform (`SpeakingTrainer.MouthOpen`); in the introduction the
+  professor.
+- **Rowan's introduction voiced**: `IntroScreen.Voices` gives each line the catalogue's `intro:<region>.<line>.0` key
+  (`VoiceCatalogue.IntroKey`, `IntroVoice`), and the game sets the introduction's box by the same option rows.
+- **Battle lines**: every set of `trainer-lines.json` is in the catalogue as `battle:<set key>.<moment>.0` (lastPokemon,
+  firstDown, lowHp, giant; a stem's key keeps its `*`), voiced by `VoiceCatalogue.BattleVoice` (the rival's class is the
+  rival, a Leader by name, else the class's archetype); `BattleEngine.Voice` speaks them as their line appears, a press
+  cuts one (LET VOICES FINISH holds it), auto-advance waits for it. 122 lines; the few that say `{player}` where it can't
+  be dropped are shown only until a spoken text is written by hand. "Wake" was added to the cast's names (Crasher Wake).
+- **ENGLISH VOICES** (V8's first piece): a row after LET VOICES FINISH, off unless chosen; `VoiceLibrary.Choose` gives a
+  language with no pack English's, whose keys and hashes are the same under every translation.
+- **The harness's `voices` mode** (not part of `all`) writes stand-in takes for the introduction and the nurse into its
+  out dir and shoots the professor and a Pokémon Center's nurse with the mouth open and shut (`vo01`, `vo02`, `vo10`,
+  `vo11`); looked at on the Windows machine, the open mouth showing under Rowan's moustache and on the nurse's sprite.
+
+### What the user decides or supplies (left open)
+
+1. **Record the 21 passages** of `docs/voice/samples.md` as `docs/voice/recording.md` says, into
+   `PokemonPlatinumEngine/Data/voice/samples/rival/`, run `check-samples` until it reports no error, and commit them (or
+   say so and a session commits them). The repository is public: this is decision 5 as already made.
+2. **The cloning engine** (V3): approve, one at a time, the licence and download of each candidate to try (Chatterbox,
+   F5-TTS, OpenVoice V2), then listen to each one's `trial rival` and choose. Its install goes in `tools/VoiceGen/env/`
+   and `engine.json` (`tools/VoiceGen/README.md`).
+3. **The synthesised voices' engine** (V4, decision 6): the same for Kokoro, Piper or the clone's own engine, and approve
+   or change each brief in `cast.json` by ear.
+4. **The speech-to-text check**: whether to download whisper.cpp (MIT) and a model for it.
+5. **The pack's format**: Ogg Vorbis needs an encoder in `VoiceTool` (OggVorbisEncoder 1.2.2, MIT, is already used by
+   the tests; using it in the tool is a new use to approve), or packs stay WAV, about eleven times larger.
+6. **Decision 4, voices on by default**: still off; the recommendation stands (Story only once chapter 1 is voiced).
+7. Kanto's champion's battle lines (`kanto_champion_megamax_*`) are spoken by a Champion archetype, since the cast has
+   no voice for Kanto's rival apart from Barry's; a `people` entry or a voice of his own would change it.

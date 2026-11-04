@@ -133,6 +133,7 @@ if (h.Run("terrain")) h.TerrainMode();
 if (h.Run("buildings")) h.BuildingsMode();
 if (mode == "rooms") h.RoomsMode();
 if (mode == "gyms") h.GymsMode();
+if (mode == "voices") h.VoicesMode();
 if (mode == "area") h.AreaMode();
 if (mode == "cities") h.CitiesMode();
 if (h.Run("life")) h.LifeMode();
