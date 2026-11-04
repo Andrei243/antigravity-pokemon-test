@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
 | Scripts (`script:`) | 10378 | 9913 | 465 | 17 | 0 |
-| People of the world (`world:`) | 7661 | 7599 | 62 | 4 | 0 |
-| **All** | 19638 | 19066 | 572 | 22 | 0 |
+| People of the world (`world:`) | 7669 | 7607 | 62 | 4 | 0 |
+| **All** | 19646 | 19074 | 572 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -66,8 +66,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:lass (any)` | 128 | 0 |
 | `class:picnicker (any)` | 128 | 0 |
 | `class:swimmer_m (any)` | 126 | 0 |
+| `class:black_belt (any)` | 124 | 0 |
 | `mom` | 122 | 7 |
-| `class:black_belt (any)` | 120 | 0 |
 | `look:man (any)` | 118 | 4 |
 | `class:psychic (any)` | 116 | 0 |
 | `assistant` | 115 | 5 |
@@ -101,11 +101,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:worker (any)` | 62 | 0 |
 | `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
+| `class:battle_girl (any)` | 60 | 0 |
+| `class:veteran (any)` | 60 | 0 |
 | `artist` | 59 | 1 |
 | `beauty` | 59 | 4 |
-| `class:battle_girl (any)` | 58 | 0 |
 | `class:scientist (any)` | 58 | 0 |
-| `class:veteran (any)` | 58 | 0 |
 | `archie` | 55 | 3 |
 | `bill` | 53 | 2 |
 | `cheren` | 53 | 1 |

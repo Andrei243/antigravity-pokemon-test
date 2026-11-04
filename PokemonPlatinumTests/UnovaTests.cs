@@ -690,7 +690,7 @@ public class UnovaTests
         foreach (var key in new[] { "unova_route_1", "nuvema_town", "accumula_town", "unova_route_2", "striaton_city", "unova_route_3", "nacrene_city", "pinwheel_forest" })
             Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
         foreach (var name in new[] { "Route1Gate", "NuvemaTown_Lab", "AccumulaTown_PokemonCenter", "StriatonCity_Room9", "Dreamyard_Basement",
-            "WellspringCave_1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
+            "WellspringCave_1F", "WellspringCave_B1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
             Assert.Contains(walked.Keys, m => m.Name == name);
         Assert.Contains(MapNamed("PinwheelForest_Inside").Everyone, n => n.TrainerData?.Id == "unova_nursery_aide_ethel");
         // the bridge itself stands on rails in Black 2, with no ground: its west gate leads nowhere yet

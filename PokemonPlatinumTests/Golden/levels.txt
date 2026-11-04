@@ -3790,6 +3790,12 @@ grass 55-58
 surf 45-60
 super rod 50-70
 trainers 2, 61-62: unova_battle_girl_maggie 62, unova_hiker_zaiem 61
+=== wellspring_cave_2
+Wellspring Cave
+grass 55-58
+surf 45-60
+super rod 50-70
+trainers 4, 62: unova_battle_girl_xiao 62, unova_black_belt_edward 62, unova_black_belt_thomas 62, unova_veteran_shaun 62
 === whirl_islands_1f
 Whirl Islands
 grass 22-24

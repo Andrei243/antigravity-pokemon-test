@@ -1301,7 +1301,9 @@ public static class WorldMapBuilder
         var open = new Queue<(int X, int Z)>();
         void Reach(int x, int z)
         {
-            if (!map.InBounds(x, z) || reached[z * w + x] || map.IsSolid(x, z)) return;
+            // (Black 2's water's edge is blocked to a walker and ridden over by a surfer, plan 22 · U7: the pool behind it is
+            // reached all the same, or Wellspring Cave's pool and the floors past it were rock, plan 22 · U10)
+            if (!map.InBounds(x, z) || reached[z * w + x] || map.IsSolid(x, z) && map.BehaviourAt(x, z) != TileBehavior.SurfEdge) return;
             reached[z * w + x] = true;
             open.Enqueue((x, z));
         }

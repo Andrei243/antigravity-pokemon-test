@@ -1012,7 +1012,6 @@ unova_backpacker_roland 170 (21) [Riolu → Aurasage, Timburr → Conkeldurr]
 unova_baker_chris 178 (42) [Heatmor → Pyrovore]
 unova_baker_lilly 187 (61) [Torkoal → Smeltortoise, Miltank → Pastorine]
 unova_battle_girl_janie 188 (63) [Hitmonchan → Pugilord]
-unova_battle_girl_xiao 188 (62) [Primeape → Annihilape, Hitmonchan → Pugilord, Scrafty → Brawlhood]
 unova_beauty_amp_re 172 (27) [Blitzle → Stormstrika, Elekid → Electivire]
 unova_beauty_december 171 (24) [Flaaffy → Ampharos]
 unova_beauty_fleming 172 (27) [Flaaffy → Ampharos, Blitzle → Stormstrika]
@@ -1023,13 +1022,11 @@ unova_bianca_3 190 (65) [Musharna → Somnarna, Mienshao → Mienshifu, Simipour
 unova_bianca_4 190 (65) [Musharna → Somnarna, Mienshao → Mienshifu, Simisage → Simisylvan]
 unova_black_belt_andrey 167 (15) [Timburr → Conkeldurr]
 unova_black_belt_donny 167 (15) [Scraggy → Scrafty]
-unova_black_belt_edward 188 (62) [Throh → Throjutsu, Hitmontop → Gyrodrill]
 unova_black_belt_gordon 167 (15) [Scraggy → Scrafty]
 unova_black_belt_grigor 167 (15) [Riolu → Aurasage]
 unova_black_belt_lao 187 (61) [Mankey → Annihilape, Heracross → Atlascross]
 unova_black_belt_mathis 167 (15) [Timburr → Conkeldurr]
 unova_black_belt_rodrigo 167 (15) [Riolu → Aurasage]
-unova_black_belt_thomas 188 (62) [Sawk → Sawkendo, Breloom → Sporepugil]
 unova_boss_trainer_abed 183 (53) [Boldore → Gigalith, Pawniard → Kingambit]
 unova_boss_trainer_abigail 183 (53) [Watchog → Beaconwatch, Whirlipede → Scolipede, Golett → Colossurk]
 unova_boss_trainer_benga 203 (80) [Volcarona → Helioptera]
@@ -1387,7 +1384,6 @@ unova_veteran_lucius 180 (46) [Fraxure → Haxorus]
 unova_veteran_rhona 179 (45) [Fraxure → Haxorus]
 unova_veteran_ron 179 (44) [Fraxure → Haxorus, Axew → Haxorus]
 unova_veteran_sayuri 188 (63) [Relicanth → Aeonfin, Magcargo → Calderon, Glaceon → Borealeon]
-unova_veteran_shaun 188 (62) [Gyarados → Typhonarch, Excadrill → Excavarch, Druddigon → Drudrakon, Snorlax → Dozemount]
 unova_veteran_wain 186 (60)
 unova_waiter_clint 186 (60) [Glameow → Brutabby]
 unova_waitress_aurora 171 (24) [Swadloon → Leavanny]
@@ -4267,6 +4263,12 @@ grass 183-185 (own 55-58)
 surf 179-186 (own 45-60)
 super rod 181-194 (own 50-70)
 trainers 2, 187-188 (own 61-62): unova_battle_girl_maggie 188 (62) [Medicham → Ascetrance, Hitmonlee → Savateur, Mienshao → Mienshifu], unova_hiker_zaiem 187 (61) [Hippowdon → Behemowdon, Rhydon → Rhyperior, Marowak → Ossugard]
+=== wellspring_cave_2
+Wellspring Cave, Unova
+grass 183-185 (own 55-58)
+surf 179-186 (own 45-60)
+super rod 181-194 (own 50-70)
+trainers 4, 188 (own 62): unova_battle_girl_xiao 188 (62) [Primeape → Annihilape, Hitmonchan → Pugilord, Scrafty → Brawlhood], unova_black_belt_edward 188 (62) [Throh → Throjutsu, Hitmontop → Gyrodrill], unova_black_belt_thomas 188 (62) [Sawk → Sawkendo, Breloom → Sporepugil], unova_veteran_shaun 188 (62) [Gyarados → Typhonarch, Excadrill → Excavarch, Druddigon → Drudrakon, Snorlax → Dozemount]
 === whirl_islands_1f
 Whirl Islands, Johto
 grass 117-119 (own 22-24)
