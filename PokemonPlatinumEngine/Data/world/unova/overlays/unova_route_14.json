@@ -6,7 +6,7 @@
   // which is not open, and stays shut. Black 2's trigger by the falls (715, 352) belongs to a scene of the old roads and
   // has no script here
   "area": "unova_route_14",
-  "bgmTrack": "unova/route13",
+  "bgmTrack": "unova/route14",
   "people": {
     "0": { "name": "Glinda", "trainer": { "dialogueBefore": "I train by running the length of this valley every morning. You're my warm-down!", "dialogueAfter": "Some warm-down. I'm the one who's beaten." } },
     "1": { "name": "Sid", "trainer": { "dialogueBefore": "The water off the falls is full of fight. So am I. Battle?", "dialogueAfter": "I'll go back to fishing. The fish lose to me sometimes." } },

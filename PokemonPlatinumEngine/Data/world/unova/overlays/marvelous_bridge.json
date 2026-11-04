@@ -2,7 +2,7 @@
   // The Marvelous Bridge (plan 22 · U10, part g): Black 2's bridge between Route 15's gate and Route 16's, our words. Its people
   // and triggers of scenes are left out
   "area": "marvelous_bridge",
-  "bgmTrack": "unova/village_bridge",
+  "bgmTrack": "unova/marvelous_bridge",
   "people": {
     "0": { "name": "Poké Fan", "npcType": "pokefan_m", "dialog": [ "From the middle of the bridge you can see Black City's towers in one direction and Nimbasa's wheel in the other." ] },
     "4": { "name": "Backers", "dialog": [ "We walk the bridge to cheer at Nimbasa's stadiums. It's quicker than the train!" ] }

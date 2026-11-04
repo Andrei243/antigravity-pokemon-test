@@ -3,7 +3,7 @@
   // Moor of Icirrus, its trainers, balls and hidden things read by the importer, our words. Black 2's fisherman of a scene (1) is
   // left out
   "area": "unova_route_8",
-  "bgmTrack": "unova/route6",
+  "bgmTrack": "unova/route8",
   "people": {
     "0": { "name": "Parasol Lady", "dialog": [ "The puddles here are deeper than they look. My boots learned that the hard way." ] },
     "5": { "name": "Astor", "trainer": { "dialogueBefore": "I'm the toughest kid in Icirrus! Want to see?", "dialogueAfter": "Okay, maybe the second toughest." } },

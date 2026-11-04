@@ -3,7 +3,7 @@
   // trainers, two Strength boulders (0, 1), balls and hidden things read by the importer, our words. The way into the Poké
   // Transfer Lab (Black 2's link with older games) stays shut
   "area": "unova_route_15",
-  "bgmTrack": "unova/route13",
+  "bgmTrack": "unova/route15",
   "people": {
     "4": { "name": "Elliot", "trainer": { "dialogueBefore": "My Pokémon is the cutest in Unova. And the strongest! Battle!", "dialogueAfter": "Still the cutest, at least." } },
     "5": { "name": "Marie", "trainer": { "dialogueBefore": "I study the canyon's rocks. And the Trainers who cross them!", "dialogueAfter": "My study is complete. I lose." } },

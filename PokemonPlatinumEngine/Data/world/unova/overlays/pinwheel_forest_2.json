@@ -5,7 +5,7 @@
   "area": "pinwheel_forest_2",
   // (an item this game's data hasn't is held back)
   "heldBack": [ "8047" ],
-  "bgmTrack": "unova/lostlorn_forest",
+  "bgmTrack": "unova/pinwheel_forest",
   "people": {
     "7": { "name": "Amy", "trainer": { "dialogueBefore": "We're Amy and May! We battle together, so you'll battle us both!", "dialogueAfter": "We lost together too." } },
     "8": { "name": "May", "trainer": { "dialogueBefore": "We're Amy and May! We battle together, so you'll battle us both!", "dialogueAfter": "We lost together too." } },

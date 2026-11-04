@@ -2,7 +2,7 @@
   // The Tubeline Bridge (plan 22 · U10, part e): Black 2's long bridge over the water between Route 8's gate and Route 9's, its
   // people read by the importer, our words. Black 2's backers of a scene (3) are left out
   "area": "tubeline_bridge",
-  "bgmTrack": "unova/village_bridge",
+  "bgmTrack": "unova/tubeline_bridge",
   "people": {
     "0": { "name": "Poké Fan", "dialog": [ "The trains run underneath us, inside the bridge. You can feel them hum through your shoes." ] },
     "1": { "name": "Old Man", "npcType": "old_man", "dialog": [ "I walk the bridge every day for my health. Opelucid at one end, Icirrus at the other. A good stretch." ] },

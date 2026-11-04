@@ -1,0 +1,42 @@
+# Marvelous Bridge (a floating bridge of light): a synth lead in F# minor over a choir, a pulsing square figure, a synth bass and an electronic beat.
+# Original composition for this game (plan 22 · Unova, wave 49).
+title Marvelous Bridge
+tempo 116
+meter 4/4
+reverb 0.34
+nighttempo 0.94
+
+track lead sawlead night=square vol=0.65 pan=0.06 rev=0.3
+  L o5 c+4 f+4 a4 o6 c+4 | o6 d4 o5 a4 f+4 a4 | o6 e4 c+4 o5 a4 o6 c+4 | o5 b4 g+4 e4 g+4 |
+  o5 a4 o6 c+4 f+4 c+4 | o6 d4 f+4 a4 f+4 | o6 e4 g+4 b4 g+4 | o6 e2 o5 b4 g+4 |
+  o6 f+4 a4 f+4 d4 | o6 e4 a4 e4 c+4 | o5 b4 o6 e4 g+4 e4 | o6 c+4 f+4 c+4 o5 a4 |
+  o6 a4 f+4 d4 f+4 | o6 c+4 e4 a4 e4 | o6 g+4 b4 g+4 e4 | o6 e1 |
+  o5 c+4 f+4 a4 o6 c+4 | o6 d4 o5 a4 f+4 a4 | o6 e4 c+4 o5 a4 o6 c+4 | o5 b4 g+4 e4 g+4 |
+  o5 a4 o6 c+4 f+4 c+4 | o6 d4 f+4 a4 f+4 | o6 e4 g+4 b4 g+4 | o6 e2 o5 b4 g+4 |
+
+track pad choir night=pad vol=0.35 pan=-0.22 rev=0.34
+  L o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (e a- b)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (e a- b)1 | o4 (e a- b)1 |
+  o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (e a- b)1 | o4 (f+ a >c+)1 |
+  o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (e a- b)1 | o4 (e a- b)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (e a- b)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (e a- b)1 | o4 (e a- b)1 |
+
+track arp pulse night=square vol=0.33 pan=0.22 rev=0.22
+  L o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 a16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 | o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 a16 o5 c+16 o5 e16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 o5 e16 o5 a16 o6 c+16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 |
+  o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 a16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 | o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 |
+  o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 a16 o5 c+16 o5 e16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 o5 e16 o5 a16 o6 c+16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 | o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 a16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 |
+  o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 a16 o5 c+16 o5 e16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 o5 e16 o5 a16 o6 c+16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 |
+  o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 a16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 | o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 a16 o5 c+16 o5 e16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 o5 e16 o5 a16 o6 c+16 o5 a16 o5 e16 o5 c+16 o4 a16 o5 c+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 |
+  o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 o5 c+16 o5 f+16 o5 a16 o5 f+16 o5 c+16 o4 a16 o4 f+16 o4 a16 | o4 d16 o4 f+16 o4 a16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 o4 a16 o5 d16 o5 f+16 o5 d16 o4 a16 o4 f+16 o4 d16 o4 f+16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 | o4 e16 o4 a-16 o4 b16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 o4 b16 o5 e16 o5 a-16 o5 e16 o4 b16 o4 a-16 o4 e16 o4 a-16 |
+
+track bass synthbass vol=0.69 rev=0.08
+  L o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+  o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+  o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 |
+  o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+  o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+  o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 o2 f+8 o3 f+8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+
+track drums kit vol=0.5
+  L v70 [ b8 h8 x8 h8 b8 h8 x8 h8 | ]23 b8 h8 x8 h8 b8 h8 x8 h8 |

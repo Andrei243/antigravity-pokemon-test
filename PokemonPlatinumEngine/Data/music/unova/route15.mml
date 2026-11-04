@@ -1,0 +1,42 @@
+# Route 15 (a road beside a dry, sandy quarry): an accordion in C mixolydian over organ, strummed guitar and a shuffling beat.
+# Original composition for this game (plan 22 · Unova, wave 49).
+title Route 15
+tempo 124
+meter 4/4
+reverb 0.2
+nighttempo 0.92
+
+track lead accordion night=clarinet vol=0.69 pan=0.06 rev=0.3
+  L o5 e8 g8 o6 c4 e4 d8 c8 | o6 d4 c8 o5 b-8 f4 b-4 | o5 a8 o6 c8 f4 e8 f8 g4 | o6 e4 c4 o5 g4 e4 |
+  o5 e8 g8 o6 c4 e4 g4 | o6 f4 d8 f8 o5 b-4 o6 d4 | o5 b8 o6 d8 g4 f8 d8 o5 b4 | o5 g2 b4 o6 d4 |
+  o5 a4 o6 c4 f4 a4 | o6 g4 e4 c4 e4 | o5 b4 o6 d4 g4 b4 | o6 g4 e8 g8 e4 c4 |
+  o5 a4 o6 c4 f4 c4 | o6 d4 f4 d4 o5 b-4 | o5 b4 o6 d4 g4 d4 | o6 c2 e4 g4 |
+  o5 e8 g8 o6 c4 e4 d8 c8 | o6 d4 c8 o5 b-8 f4 b-4 | o5 a8 o6 c8 f4 e8 f8 g4 | o6 e4 c4 o5 g4 e4 |
+  o5 e8 g8 o6 c4 e4 g4 | o6 f4 d8 f8 o5 b-4 o6 d4 | o5 b8 o6 d8 g4 f8 d8 o5 b4 | o5 g2 b4 o6 d4 |
+
+track pad organ night=pad vol=0.23 pan=-0.22 rev=0.34
+  L o4 (c e g)1 | o4 (b- >d f)1 | o4 (f a >c)1 | o4 (c e g)1 |
+  o4 (c e g)1 | o4 (b- >d f)1 | o4 (g b >d)1 | o4 (g b >d)1 |
+  o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 | o4 (c e g)1 |
+  o4 (f a >c)1 | o4 (b- >d f)1 | o4 (g b >d)1 | o4 (c e g)1 |
+  o4 (c e g)1 | o4 (b- >d f)1 | o4 (f a >c)1 | o4 (c e g)1 |
+  o4 (c e g)1 | o4 (b- >d f)1 | o4 (g b >d)1 | o4 (g b >d)1 |
+
+track arp guitar night=pizzicato vol=0.39 pan=0.22 rev=0.22
+  L r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 | r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 | r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 | r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 |
+  r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 | r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 |
+  r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 | r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 | r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 |
+  r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 | r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 | r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 |
+  r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 | r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 | r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 r8 o4 (f a >c)8 | r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 |
+  r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 r8 o4 (c e g)8 | r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 r8 o4 (b- >d f)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 | r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 r8 o4 (g b >d)8 |
+
+track bass bass vol=0.67 rev=0.08
+  L o2 c4 o2 g4 o2 c4 o2 g4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 f4 o3 c4 o2 f4 o3 c4 | o2 c4 o2 g4 o2 c4 o2 g4 |
+  o2 c4 o2 g4 o2 c4 o2 g4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 g4 o3 d4 o2 g4 o3 d4 |
+  o2 f4 o3 c4 o2 f4 o3 c4 | o2 c4 o2 g4 o2 c4 o2 g4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 c4 o2 g4 o2 c4 o2 g4 |
+  o2 f4 o3 c4 o2 f4 o3 c4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 c4 o2 g4 o2 c4 o2 g4 |
+  o2 c4 o2 g4 o2 c4 o2 g4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 f4 o3 c4 o2 f4 o3 c4 | o2 c4 o2 g4 o2 c4 o2 g4 |
+  o2 c4 o2 g4 o2 c4 o2 g4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 g4 o3 d4 o2 g4 o3 d4 |
+
+track drums kit vol=0.46
+  L v76 [ b8 k8 h8 k8 s8 k8 h8 k8 | ]23 b8 k8 h8 k8 s8 k8 h8 k8 |

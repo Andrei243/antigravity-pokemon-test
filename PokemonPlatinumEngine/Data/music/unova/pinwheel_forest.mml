@@ -1,0 +1,42 @@
+# Pinwheel Forest (a deep wood of turning plants): a curious oboe in E minor over a marimba figure, soft strings and a woodblock tread.
+# Original composition for this game (plan 22 · Unova, wave 49).
+title Pinwheel Forest
+tempo 96
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead oboe night=clarinet vol=0.66 pan=0.06 rev=0.3
+  L o5 e8 g8 b4 g8 e8 g4 | o5 f+8 a8 o6 d4 o5 a8 f+8 a4 | o5 e8 g8 o6 c4 o5 g8 e8 g4 | o5 a8 f+8 d4 f+4 a4 |
+  o5 g8 b8 o6 e4 o5 b8 g8 b4 | o5 b8 o6 d8 g4 d8 o5 b8 g4 | o6 e8 d8 c8 o5 b8 g4 e4 | o5 a2 f+4 a4 |
+  o6 c4 e4 g4 e4 | o5 b4 o6 d4 g4 d4 | o5 a4 o6 c4 e4 c4 | o5 g4 b4 o6 e4 o5 b4 |
+  o5 a4 o6 c4 f4 c4 | o6 e4 g4 e8 d8 c4 | o5 a4 o6 d4 f+4 d4 | o5 a2. r4 |
+  o5 e8 g8 b4 g8 e8 g4 | o5 f+8 a8 o6 d4 o5 a8 f+8 a4 | o5 e8 g8 o6 c4 o5 g8 e8 g4 | o5 a8 f+8 d4 f+4 a4 |
+  o5 g8 b8 o6 e4 o5 b8 g8 b4 | o5 b8 o6 d8 g4 d8 o5 b8 g4 | o6 e8 d8 c8 o5 b8 g4 e4 | o5 a2 f+4 a4 |
+
+track pad strings night=pad vol=0.24 pan=-0.22 rev=0.34
+  L o4 (e g b)1 | o4 (d f+ a)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (g b >d)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (c e g)1 | o4 (g b >d)1 | o4 (a >c e)1 | o4 (e g b)1 |
+  o4 (f a >c)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (d f+ a)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (g b >d)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+
+track arp marimba night=harp vol=0.4 pan=0.22 rev=0.22
+  L o4 e8 o4 g8 o4 b8 o4 g8 o5 e8 o4 g8 o4 b8 o4 g8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 | o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 e8 o4 g8 o4 b8 o4 g8 o5 e8 o4 g8 o4 b8 o4 g8 | o4 g8 o4 b8 o5 d8 o4 b8 o5 g8 o4 b8 o5 d8 o4 b8 | o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 g8 o4 b8 o5 d8 o4 b8 o5 g8 o4 b8 o5 d8 o4 b8 | o4 a8 o5 c8 o5 e8 o5 c8 o5 a8 o5 c8 o5 e8 o5 c8 | o4 e8 o4 g8 o4 b8 o4 g8 o5 e8 o4 g8 o4 b8 o4 g8 |
+  o4 f8 o4 a8 o5 c8 o4 a8 o5 f8 o4 a8 o5 c8 o4 a8 | o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 e8 o4 g8 o4 b8 o4 g8 o5 e8 o4 g8 o4 b8 o4 g8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 | o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 e8 o4 g8 o4 b8 o4 g8 o5 e8 o4 g8 o4 b8 o4 g8 | o4 g8 o4 b8 o5 d8 o4 b8 o5 g8 o4 b8 o5 d8 o4 b8 | o4 c8 o4 e8 o4 g8 o4 e8 o5 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o5 d8 o4 f+8 o4 a8 o4 f+8 |
+
+track bass bass vol=0.61 rev=0.08
+  L o2 e4 o2 e8 o3 e8 o2 b4 o2 e4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 | o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 |
+  o2 e4 o2 e8 o3 e8 o2 b4 o2 e4 | o2 g4 o2 g8 o3 g8 o3 d4 o2 g4 | o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 |
+  o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 g4 o2 g8 o3 g8 o3 d4 o2 g4 | o2 a4 o2 a8 o3 a8 o3 e4 o2 a4 | o2 e4 o2 e8 o3 e8 o2 b4 o2 e4 |
+  o2 f4 o2 f8 o3 f8 o3 c4 o2 f4 | o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 |
+  o2 e4 o2 e8 o3 e8 o2 b4 o2 e4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 | o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 |
+  o2 e4 o2 e8 o3 e8 o2 b4 o2 e4 | o2 g4 o2 g8 o3 g8 o3 d4 o2 g4 | o2 c4 o2 c8 o3 c8 o2 g4 o2 c4 | o2 d4 o2 d8 o3 d8 o2 a4 o2 d4 |
+
+track drums kit vol=0.37
+  L v54 [ b4 w8 k8 w4 k8 w8 | ]23 b4 w8 k8 w4 k8 w8 |

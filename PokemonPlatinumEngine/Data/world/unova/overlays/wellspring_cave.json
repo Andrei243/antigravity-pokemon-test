@@ -2,7 +2,7 @@
   // Wellspring Cave's upper floor (plan 22 · U10, part f): Black 2's dripping cave off Route 3, its trainers and balls read by
   // the importer, our words
   "area": "wellspring_cave",
-  "bgmTrack": "unova/seaside_cave",
+  "bgmTrack": "unova/wellspring_cave",
   "battleArena": "Cave",
   "people": {
     "2": { "name": "Zaiem", "trainer": { "dialogueBefore": "The water here drips all day. My patience drips too. Battle!", "dialogueAfter": "My patience has run dry." } },
