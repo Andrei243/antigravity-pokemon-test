@@ -1,0 +1,32 @@
+{
+  "key": "ns_castle_4",
+  "index": 277,
+  "name": "Ns Castle",
+  "matrix": 174,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_D_N_CASTLE",
+  "nightMusic": "BGM_SW_D_N_CASTLE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 42, "z": 14, "to": "ns_castle_2", "toWarp": 1 },
+    { "x": 23, "z": 8, "to": "ns_castle_5", "toWarp": 0 },
+    { "x": 42, "z": 15, "to": "ns_castle_2", "toWarp": 1 },
+    { "x": 42, "z": 16, "to": "ns_castle_2", "toWarp": 1 },
+    { "x": 24, "z": 8, "to": "ns_castle_5", "toWarp": 0 },
+    { "x": 25, "z": 8, "to": "ns_castle_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "103", "movement": "none", "x": 42, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ad", "script": "2000" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 30, "z": 17, "width": 1, "depth": 3, "script": "3", "variable": "VAR_UNOVA_0x411d", "value": "1" }
+  ]
+}

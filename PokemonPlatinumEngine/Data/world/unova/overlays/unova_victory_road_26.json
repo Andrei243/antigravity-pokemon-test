@@ -1,0 +1,9 @@
+{
+  // The way from Victory Road's summit up into N's Castle (plan 22 · U10, the last part): Black 2's crumbling cave, opened by
+  // the summit's door once Unova's Hall of Fame is entered. Its scene's figure (0) and trigger are left out
+  "area": "unova_victory_road_26",
+  "name": "Victory Road",
+  "bgmTrack": "unova/victory_road",
+  "battleArena": "Cave",
+  "heldBack": [ "0" ]
+}

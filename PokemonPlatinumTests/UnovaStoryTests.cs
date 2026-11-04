@@ -3269,6 +3269,36 @@ public class UnovaStoryTests
         return game;
     }
 
+    // Plan 22 · U10, the last part: N's Castle, off Victory Road's summit once the Hall of Fame is entered; N and Zekrom wait in
+    // its throne room, Zekrom battled at 70 and gone once fought, N leaving with a word afterwards
+    [Fact]
+    public void NWaitsWithZekromAtTheTopOfHisCastleAfterTheHallOfFame()
+    {
+        var before = new Game();
+        before.Arrive("UnovaVictoryRoad_Summit", 35, 30);
+        Assert.Contains(before.Map.Warps, w => w.TargetMap == "UnovaVictoryRoad_CastleWay" && w.OpenedBy == "UnovaHallOfFame");
+        Assert.True(before.Map.IsSolid(35, 31));
+        before.Arrive("NsCastle_ThroneRoom", 16, 58);
+        Assert.Null(before.Present("n", "ns_castle_5"));
+
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 70));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("UnovaVictoryRoad_Summit", 35, 30);
+        Assert.False(game.Map.IsSolid(35, 31));
+        game.Arrive("NsCastle_ThroneRoom", 16, 58);
+        Assert.NotNull(game.Present("n", "ns_castle_5"));
+        Assert.NotNull(game.Present("zekrom", "ns_castle_5"));
+        Assert.Contains(game.Talk("n", "ns_castle_5").Transcript, l => l.Speaker == "N" && l.Text.Contains("Zekrom"));
+        var dragon = game.Talk("zekrom", "ns_castle_5");
+        Assert.Contains(dragon.Log, l => l.StartsWith("wildbattle Zekrom 70"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_FOUGHT_ZEKROM"));
+        Assert.Null(game.Present("zekrom", "ns_castle_5"));
+        game.Talk("n", "ns_castle_5");
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_N_CASTLE"));
+        Assert.Null(game.Present("n", "ns_castle_5"));
+    }
+
     private static HeadlessScriptHost Climb(Game game) => game.Played.Last(p => p.Script.Contains("Desk")).Host;
 
     [Fact]

@@ -4186,6 +4186,9 @@ trainers 6, 183 (own 54-55): unova_ace_trainer_caroll 183 (55) [Fraxure → Haxo
 Victory Road, Unova
 grass 180-181 (own 47-50)
 trainers 1, 183 (own 54): unova_veteran_hugo 183 (54) [Fraxure → Haxorus, Zweilous → Hydreigon]
+=== unova_victory_road_26
+Victory Road, Unova
+grass 180-181 (own 47-50)
 === vermilion
 Vermilion City, Johto
 surf 123-126 (own 30-35)

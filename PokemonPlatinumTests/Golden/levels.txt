@@ -3659,6 +3659,9 @@ Victory Road
 grass 47-50
 ours Drudrakon 180-184
 trainers 1, 54: unova_veteran_hugo 54
+=== unova_victory_road_26
+Victory Road
+grass 47-50
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

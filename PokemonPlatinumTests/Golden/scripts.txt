@@ -22908,6 +22908,12 @@ way 0
 way 1, from answer 1
   * battle unova_beauty_nikola Lost
   * scene over, unseen
+=== ns_castle_5.N
+from N at 16,39 of NsCastle_ThroneRoom
+way -
+=== ns_castle_5.Zekrom
+from Zekrom at 16,37 of NsCastle_ThroneRoom
+way -
 === oldale_town.BlockedPath
 from the trigger at 120,252 of Hoenn
 way -

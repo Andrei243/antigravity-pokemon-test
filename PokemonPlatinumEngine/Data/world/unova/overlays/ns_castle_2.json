@@ -1,0 +1,7 @@
+{
+  // N's Castle's hall (plan 22 · U10, the last part): Black 2's ruined hall, its balls read by the importer. Black 2's Shadow
+  // Triad (0) belongs to a scene that isn't built and is left out; its two triggers do nothing
+  "area": "ns_castle_2",
+  "bgmTrack": "unova/giant_chasm",
+  "heldBack": [ "0" ]
+}

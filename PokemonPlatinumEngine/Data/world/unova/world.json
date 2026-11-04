@@ -244,6 +244,13 @@
     { "name": "UnovaVictoryRoad_Summit", "matrix": 387, "area": "unova_victory_road_22", "trees": "Round" },
     { "name": "UnovaVictoryRoad_Hollow", "matrix": 388, "area": "unova_victory_road_23", "trees": "Round", "setting": "Cave" },
     { "name": "UnovaVictoryRoad_Tunnel", "matrix": 198, "area": "unova_victory_road_16", "trees": "Round", "setting": "Cave" },
+    // Plan 22 · U10, the last part: N's Castle in its ruins off Victory Road's summit, its way in, its hall, N's room, the
+    // corridor and the throne room where N waits with his dragon after the Hall of Fame
+    { "name": "UnovaVictoryRoad_CastleWay", "matrix": 391, "area": "unova_victory_road_26", "trees": "Round", "setting": "Cave" },
+    { "name": "NsCastle_Hall", "matrix": 171, "area": "ns_castle_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_NsRoom", "matrix": 163, "area": "ns_castle_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_Corridor", "matrix": 174, "area": "ns_castle_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_ThroneRoom", "matrix": 212, "area": "ns_castle_5", "trees": "Round", "setting": "Indoors" },
     { "name": "UnovaPokemonLeague", "matrix": 87, "area": "unova_pokemon_league", "trees": "Round" },
     { "name": "UnovaPokemonLeague_PokemonCenter", "matrix": 54, "area": "unova_pokemon_league_11", "trees": "Round", "setting": "Indoors" },
     // Plan 22 · U9, part c: the League's hall, the Elite Four's four rooms, the way down to the Champion's room, her room and
@@ -406,7 +413,7 @@
     // plan 22 · U9, part a
     "giant_chasm", "giant_chasm_2", "giant_chasm_3", "giant_chasm_4", "giant_chasm_5", "giant_chasm_6", "plasma_frigate_6",
     // plan 22 · U9, part b
-    "unova_route_23", "unova_route_23_2", "unova_route_23_3", "unova_victory_road", "unova_victory_road_27", "unova_victory_road_17", "unova_victory_road_18", "unova_victory_road_19", "unova_victory_road_20", "unova_victory_road_21", "unova_victory_road_22", "unova_victory_road_23", "unova_victory_road_16", "unova_pokemon_league", "unova_pokemon_league_11",
+    "unova_route_23", "unova_route_23_2", "unova_route_23_3", "unova_victory_road", "unova_victory_road_27", "unova_victory_road_17", "unova_victory_road_18", "unova_victory_road_19", "unova_victory_road_20", "unova_victory_road_21", "unova_victory_road_22", "unova_victory_road_23", "unova_victory_road_16", "unova_victory_road_26", "ns_castle_2", "ns_castle_3", "ns_castle_4", "ns_castle_5", "unova_pokemon_league", "unova_pokemon_league_11",
     // plan 22 · U9, part c
     "unova_pokemon_league_2", "unova_pokemon_league_5", "unova_pokemon_league_6", "unova_pokemon_league_7", "unova_pokemon_league_8", "unova_pokemon_league_3", "unova_pokemon_league_9", "unova_pokemon_league_10",
     // plan 22 · U10, part b
