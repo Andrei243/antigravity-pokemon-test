@@ -1,0 +1,42 @@
+# Skyarrow Bridge (a grand suspension bridge into the city): a brass theme in E-flat over strings, a bright piano and a striding bass with a marching beat.
+# Original composition for this game (plan 22 · Unova, wave 49).
+title Skyarrow Bridge
+tempo 116
+meter 4/4
+reverb 0.34
+nighttempo 0.94
+
+track lead brass night=horn vol=0.65 pan=0.06 rev=0.3
+  L o5 g2. b-4 | o6 d2. f4 | o6 e-2 c4 o5 g4 | o5 a-2 o6 c4 e-4 |
+  o6 g2. e-4 | o6 d2 f4 d4 | o6 c2 e-4 c4 | o6 f2 d2 |
+  o6 e-2 c4 o5 a-4 | o5 b-2 o6 e-2 | o6 d2 f2 | o6 c2 o5 a4 f4 |
+  o6 c4 e-4 g2 | o6 c2 e-2 | o6 d4 f4 b-2 | o6 g2 e-2 |
+  o5 g2. b-4 | o6 d2. f4 | o6 e-2 c4 o5 g4 | o5 a-2 o6 c4 e-4 |
+  o6 g2. e-4 | o6 d2 f4 d4 | o6 c2 e-4 c4 | o6 f2 d2 |
+
+track pad strings night=pad vol=0.28 pan=-0.22 rev=0.34
+  L o4 (e- g b-)1 | o4 (b- >d f)1 | o4 (c e- g)1 | o4 (a- >c e-)1 |
+  o4 (e- g b-)1 | o4 (b- >d f)1 | o4 (a- >c e-)1 | o4 (b- >d f)1 |
+  o4 (a- >c e-)1 | o4 (e- g b-)1 | o4 (b- >d f)1 | o4 (f a >c)1 |
+  o4 (c e- g)1 | o4 (a- >c e-)1 | o4 (b- >d f)1 | o4 (e- g b-)1 |
+  o4 (e- g b-)1 | o4 (b- >d f)1 | o4 (c e- g)1 | o4 (a- >c e-)1 |
+  o4 (e- g b-)1 | o4 (b- >d f)1 | o4 (a- >c e-)1 | o4 (b- >d f)1 |
+
+track arp piano night=harp vol=0.35 pan=0.22 rev=0.22
+  L o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 c8 o4 e-8 o4 g8 o4 e-8 o5 c8 o4 e-8 o4 g8 o4 e-8 | o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 |
+  o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 |
+  o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 | o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 f8 o4 a8 o5 c8 o4 a8 o5 f8 o4 a8 o5 c8 o4 a8 |
+  o4 c8 o4 e-8 o4 g8 o4 e-8 o5 c8 o4 e-8 o4 g8 o4 e-8 | o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 |
+  o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 c8 o4 e-8 o4 g8 o4 e-8 o5 c8 o4 e-8 o4 g8 o4 e-8 | o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 |
+  o4 e-8 o4 g8 o4 b-8 o4 g8 o5 e-8 o4 g8 o4 b-8 o4 g8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 | o4 a-8 o5 c8 o5 e-8 o5 c8 o5 a-8 o5 c8 o5 e-8 o5 c8 | o4 b-8 o5 d8 o5 f8 o5 d8 o5 b-8 o5 d8 o5 f8 o5 d8 |
+
+track bass bass vol=0.65 rev=0.08
+  L o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 |
+  o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 |
+  o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 | o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 |
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 |
+  o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 |
+  o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 o2 a-8 o3 a-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 |
+
+track drums kit vol=0.48
+  L v78 [ b4 h8 h8 s4 h8 h8 | ]23 b4 h8 h8 s4 h8 h8 |

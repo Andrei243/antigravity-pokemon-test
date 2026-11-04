@@ -690,10 +690,41 @@ public class UnovaTests
         foreach (var key in new[] { "unova_route_1", "nuvema_town", "accumula_town", "unova_route_2", "striaton_city", "unova_route_3", "nacrene_city", "pinwheel_forest" })
             Assert.Contains(walked[Overworld], t => Overworld.AreaAt(t.X, t.Y)?.Key == key);
         foreach (var name in new[] { "Route1Gate", "NuvemaTown_Lab", "AccumulaTown_PokemonCenter", "StriatonCity_Room9", "Dreamyard_Basement",
-            "WellspringCave_1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
+            "WellspringCave_1F", "WellspringCave_B1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
             Assert.Contains(walked.Keys, m => m.Name == name);
         Assert.Contains(MapNamed("PinwheelForest_Inside").Everyone, n => n.TrainerData?.Id == "unova_nursery_aide_ethel");
-        // the bridge itself stands on rails in Black 2, with no ground: its west gate leads nowhere yet
-        Assert.DoesNotContain(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap.StartsWith("SkyarrowBridge", StringComparison.Ordinal) && w.TargetMap != "SkyarrowBridge_WestEnd" && !w.Shut);
+        // the bridge itself stands on rails in Black 2, with no ground: it is a map of ours, which the west gate leads onto
+        Assert.Contains(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap == "SkyarrowBridge" && !w.Shut);
+    }
+
+    // Plan 22 · U10, the last part: the Cave of Being is surfed to on Route 20's pond (the corner of the stream's bank laid as
+    // water), and the Abyssal Ruins' halls are dived to from Undella Bay's dark patches and left on Undella's beach
+    [Fact]
+    public void TheCaveOfBeingAndTheAbyssalRuinsAreComeTo()
+    {
+        var walked = Walked.Value;
+        Assert.Contains(walked.Keys, m => m.Name == "CaveOfBeing");
+        Assert.Contains((145, 674), walked[Overworld]);
+        Assert.Equal(TileBehavior.DiveWater, Overworld.BehaviourAt(786, 290));
+        var ruins = walked.Single(kv => kv.Key.Name == "AbyssalRuins");
+        Assert.Contains((87, 22), ruins.Value);
+        Assert.All(ruins.Key.Warps, w => Assert.Equal("Unova", w.TargetMap));
+        Assert.Contains((86, 23), ruins.Value);
+    }
+
+    // Plan 22 · U10, the last part: the Skyarrow Bridge, a deck of ours over the bay, joins Castelia City's west alley and its
+    // gate to Pinwheel Forest's gate, both ways
+    [Fact]
+    public void TheSkyarrowBridgeJoinsCasteliaCityToPinwheelForest()
+    {
+        var walked = Walked.Value;
+        var bridge = walked.Single(kv => kv.Key.Name == "SkyarrowBridge");
+        Assert.Contains((1, 4), bridge.Value);
+        Assert.Contains((78, 4), bridge.Value);
+        Assert.Contains(walked.Keys, m => m.Name == "SkyarrowGate_Castelia");
+        Assert.Contains(bridge.Key.Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
+        Assert.Contains(bridge.Key.Warps, w => w.TargetMap == "SkyarrowGate_Pinwheel");
+        Assert.Contains(MapNamed("SkyarrowGate_Castelia").Warps, w => w.TargetMap == "CasteliaCity" && !w.Shut);
+        Assert.Contains(MapNamed("CasteliaCity").Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
     }
 }

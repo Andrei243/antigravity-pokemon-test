@@ -1,0 +1,7 @@
+{
+  // N's Castle's corridor to the throne room (plan 22 · U10, the last part): Black 2's, its Shadow Triad (0) left out with its
+  // scene's trigger
+  "area": "ns_castle_4",
+  "bgmTrack": "unova/giant_chasm",
+  "heldBack": [ "0" ]
+}

@@ -2,7 +2,7 @@
   // The Dreamyard's basement (plan 22 · U10, part f): Black 2's ruined floor below the grounds, its trainers read by the
   // importer, our words
   "area": "dreamyard_2",
-  "bgmTrack": "unova/relic_passage",
+  "bgmTrack": "unova/dreamyard",
   "battleArena": "Cave",
   "people": {
     "3": { "name": "Athena", "trainer": { "dialogueBefore": "We study the old laboratory down here. You're interrupting my research!", "dialogueAfter": "Research on losing: complete." } },

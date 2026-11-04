@@ -1,0 +1,16 @@
+{
+  // N's room in his castle (plan 22 · U10, the last part): Black 2's room of toys, our words for what is read in it
+  "area": "ns_castle_3",
+  "bgmTrack": "unova/strange_house",
+  "signs": {
+    "1": "A toy train set. The little engine is worn smooth where small hands pushed it round and round.",
+    "2": "A basketball hoop on the wall. The ball sits underneath it, a little flat.",
+    "3": "A model plane hangs from the ceiling. It sways in a draught nobody can feel.",
+    "4": "A row of building blocks, stacked and knocked down so often that their corners are round.",
+    "5": "Building blocks, sorted by colour with great care.",
+    "6": "A skateboard rests against the wall. Its wheels still spin.",
+    "7": "A dartboard. Every dart is stuck dead in the middle.",
+    "8": "The track of the toy train runs all round the floor. Someone laid it with a lot of patience.",
+    "9": "A soft cushion shaped like a Pokémon. It has been hugged a great deal."
+  }
+}

@@ -1,11 +1,12 @@
 {
   // Victory Road's summit (plan 22 · U9, part b): Black 2's high ground under the League, its balls and hidden things in the area
-  // file; our words. Black 2's Zoroark (9) that guards the way to N's Castle, the way itself (to unova_victory_road_26) and its two
-  // triggers are plan 22 · U10's
+  // file; our words. The way to N's Castle (warp 6, to unova_victory_road_26) opens once Unova's Hall of Fame is entered (plan
+  // 22 · U10, the last part); Black 2's Zoroark (9) that leads there in its scene is left out
   "area": "unova_victory_road_22",
   "name": "Victory Road",
   "bgmTrack": "unova/victory_road",
   "heldBack": [ "9" ],
+  "doors": [ { "warp": 6, "map": "UnovaVictoryRoad_CastleWay", "x": 4, "y": 22, "facing": "Up", "openedBy": "UnovaHallOfFame" } ],
   "people": {
     "0": { "name": "Sterling", "trainer": { "dialogueBefore": "The League's in sight from up here. So is your defeat!", "dialogueAfter": "I misjudged the view." } },
     "1": { "name": "Caroll", "trainer": { "dialogueBefore": "Last stretch! Let's make it a battle to remember!", "dialogueAfter": "I'll remember it, all right." } },

@@ -5,7 +5,7 @@
   // (nature_preserve.txt). Black 2's shiny Haxorus (1) waits by the lake once Unova's Hall of Fame is entered, level 60, gone once
   // fought (FLAG_UNOVA_FOUGHT_HAXORUS). A Big Nugget's ball (3) is held back, the item not being in the game's data
   "area": "nature_preserve",
-  "bgmTrack": "unova/lostlorn_forest",
+  "bgmTrack": "unova/nature_preserve",
   "heldBack": [ "3" ],
   "people": {
     "0": { "name": "Pilot", "npcType": "pilot", "script": "Pilot", "still": true },

@@ -1,0 +1,12 @@
+{
+  // N's Castle's throne room (plan 22 · U10, the last part): Black 2's room at the castle's top, our words. After the Hall
+  // of Fame N waits there with Zekrom (Black 2's own: Reshiram is White 2's), shown by UnovaHallOfFame until the dragon has
+  // been battled (FLAG_UNOVA_FOUGHT_ZEKROM); Black 2's Shadow Triad (0) belongs to a scene that isn't built and is left out
+  "area": "ns_castle_5",
+  "bgmTrack": "unova/giant_chasm",
+  "heldBack": [ "0", "1", "2" ],
+  "npcs": [
+    { "id": "n", "name": "N", "npcType": "n", "x": 16, "y": 39, "facing": "Down", "script": "N", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_HIDE_N_CASTLE" },
+    { "id": "zekrom", "name": "Zekrom", "npcType": "Pokemon", "species": "Zekrom", "x": 16, "y": 37, "facing": "Down", "script": "Zekrom", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_ZEKROM" }
+  ]
+}

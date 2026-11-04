@@ -254,7 +254,9 @@ public class PokemonTests
             // (and the Battle Tents' corridors and battle rooms, left by the round's own script, plan 21 · H3)
             && !mapName.Contains("_BattleTent")
             // (and Black 2's hidden grotto, left by reading its tunnel mouth, plan 22 · U11)
-            && mapName != "HiddenGrotto")
+            && mapName != "HiddenGrotto"
+            // (and the Nature Preserve, flown to and from by the pilots' scripts, plan 22 · U10, part h)
+            && mapName != "NaturePreserve")
             Assert.True(map.Warps.Count > 0, $"{mapName} has no warps");
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
@@ -341,6 +343,13 @@ public class PokemonTests
         foreach (var (map, tiles) in WorldWalk.FromEveryStart(flooded))
             if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
             else reached[maps(map.Name)] = tiles;
+        // Twist Mountain's pockets are winter's (plan 22 · U10): in Black 2 the ice that fills its great hall in winter is
+        // what joins its rings and pockets and the ladders in them, so the walk is made again with winter's chunks laid
+        var winter = MapDatabase.Fresh();
+        foreach (string name in MapDatabase.MapNames) winter(name).ApplySeason(PokemonPlatinumEngine.Core.Season.Winter);
+        foreach (var (map, tiles) in WorldWalk.FromEveryStart(winter))
+            if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
+            else reached[maps(map.Name)] = tiles;
         return (maps, reached);
     }, true);
 
@@ -367,9 +376,6 @@ public class PokemonTests
                     && other.TargetMap == warp.TargetMap && other.TargetX == warp.TargetX && other.TargetY == warp.TargetY
                     && Math.Abs(other.SourceX - warp.SourceX) + Math.Abs(other.SourceY - warp.SourceY) == 1
                     && tiles.Contains((other.SourceX, other.SourceY)))) continue;
-                // Twist Mountain's floors: their ladders stand in rings and pockets the import cuts off
-                // from the hall (the original's slopes are read as walls, plan 22 - U10, 'Left of U10')
-                if (name.StartsWith("TwistMountain_")) continue;
                 Assert.True(tiles.Contains((warp.SourceX, warp.SourceY)),
                     $"{name}: the warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) can't be reached from where the game starts");
             }

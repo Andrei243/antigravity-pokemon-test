@@ -1,0 +1,51 @@
+# The Cave of Being on Route 20 (plan 22 · U10, the last part). docs/scripts.md describes the language; the lines are our own,
+# on Black 2's beats (the three of the lakes rising out of the cave and away, with a Juniper there to see it).
+#
+# Once Unova's Hall of Fame is entered Cedric Juniper waits in the cave. The first step into its heart plays the scene once
+# (VAR_UNOVA_CAVE_OF_BEING 0 to 1): Uxie, Mesprit and Azelf rise, cry and fly off, and he tells where they have gone, which
+# is where they are met: Azelf on Route 23 and Mesprit over the Celestial Tower (plan 22 · U10, part a), and Uxie, which no
+# place of ours holds yet, nowhere the player can follow. Before the Hall of Fame the cave is quiet.
+
+
+script TheThree
+  if not flag UnovaHallOfFame end
+  scene "The lakes' three in the Cave of Being"
+  music stop
+  setflag FLAG_UNOVA_CAVE_OF_BEING_RISING
+  show uxie
+  show mesprit
+  show azelf
+  letterbox on 0.4
+  effect sparkles 17 7
+  cry "Uxie"
+  effect sparkles 9 16
+  cry "Mesprit"
+  effect sparkles 27 18
+  cry "Azelf"
+  speaker none
+  text "Three small Pokémon rise out of the cave's dark, glowing!"
+  effect burst 18 14
+  setflag FLAG_UNOVA_CAVE_OF_BEING_FLOWN
+  hide uxie
+  hide mesprit
+  hide azelf
+  text "In a flash of light they are gone!"
+  letterbox off 0.3
+  setvar VAR_UNOVA_CAVE_OF_BEING 1
+  speaker "Prof. Cedric Juniper"
+  say "Did you see that? Uxie, Mesprit and Azelf! They have slept in this cave since long before any of us."
+  say "They've scattered over Unova now. Azelf toward Route 23, Mesprit up to the Celestial Tower, and Uxie... somewhere far off."
+  say "If you go looking, be gentle with them. They feel everything people feel."
+  endscene
+  end
+
+
+script Cedric
+  face self player
+  speaker "Prof. Cedric Juniper"
+  if var VAR_UNOVA_CAVE_OF_BEING == 1 goto After
+  say "Shh! Something lives deep in this cave. Walk in slowly and see."
+  end
+label After
+  say "My daughter will never believe I saw all three at once. Good thing you were here to back me up!"
+  end

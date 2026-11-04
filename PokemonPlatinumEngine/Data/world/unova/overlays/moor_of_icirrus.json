@@ -2,7 +2,7 @@
   // The Moor of Icirrus (plan 22 · U10, part e): Black 2's marsh off Route 8, its trainers, balls and the Strength boulder (1) read by
   // the importer, our words. Black 2's artist of a scene (0) is left out
   "area": "moor_of_icirrus",
-  "bgmTrack": "unova/lostlorn_forest",
+  "bgmTrack": "unova/moor",
   "people": {
     "2": { "name": "Eustace", "trainer": { "dialogueBefore": "The moor's pools hold all sorts. Including Trainers who fish for battles!", "dialogueAfter": "Reeled in and released. By you." } },
     "4": { "name": "Parker", "trainer": { "dialogueBefore": "I keep the moor safe. Part of that is testing who comes in!", "dialogueAfter": "You pass. The moor is in safe hands." } },

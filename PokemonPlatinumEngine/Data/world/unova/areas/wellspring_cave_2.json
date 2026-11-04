@@ -1,0 +1,99 @@
+{
+  "key": "wellspring_cave_2",
+  "index": 325,
+  "name": "Wellspring Cave",
+  "matrix": 109,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_WELLSPRING_CAVE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 55 },
+    { "species": "Woobat", "level": 55 },
+    { "species": "Boldore", "level": 56 },
+    { "species": "Woobat", "level": 56 },
+    { "species": "Boldore", "level": 57 },
+    { "species": "Woobat", "level": 57 },
+    { "species": "Boldore", "level": 58 },
+    { "species": "Woobat", "level": 58 },
+    { "species": "Boldore", "level": 58 },
+    { "species": "Woobat", "level": 58 },
+    { "species": "Boldore", "level": 58 },
+    { "species": "Woobat", "level": 58 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 60, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 55 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 56 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 57 },
+    { "species": "Excadrill", "level": 58 },
+    { "species": "Excadrill", "level": 58 },
+    { "species": "Excadrill", "level": 58 },
+    { "species": "Excadrill", "level": 58 },
+    { "species": "Excadrill", "level": 58 },
+    { "species": "Excadrill", "level": 58 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 45, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 50, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 60, "maxLevel": 60, "weight": 5 },
+    { "species": "Poliwrath", "level": 60, "maxLevel": 60, "weight": 4 },
+    { "species": "Poliwrath", "level": 60, "maxLevel": 60, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 2, "z": 58, "to": "wellspring_cave", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 25, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0566", "item": "Protector", "script": "7282" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 27, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0567", "item": "Max Revive", "script": "7283" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 16, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0568", "item": "TM52", "script": "7284" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 15, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x056b", "item": "TM47", "script": "7287" },
+    { "id": "4", "looks": "battle_girl", "movement": "none", "x": 14, "z": 34, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BATTLE_GIRL_XIAO" },
+    { "id": "5", "looks": "black_belt", "movement": "look_west_and_east", "x": 18, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BLACK_BELT_EDWARD" },
+    { "id": "6", "looks": "black_belt", "movement": "none", "x": 22, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BLACK_BELT_THOMAS" },
+    { "id": "7", "looks": "veteran_m", "movement": "none", "x": 17, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_VETERAN_SHAUN" }
+  ],
+  "signs": [
+    { "x": 26, "z": 42, "type": 2, "script": "8134", "item": "Carbos", "flag": "FLAG_UNOVA_0x0b8a" },
+    { "x": 22, "z": 5, "type": 2, "script": "8135", "item": "Max Revive", "flag": "FLAG_UNOVA_0x0b8b" },
+    { "x": 10, "z": 11, "type": 2, "script": "8136", "item": "Ultra Ball", "flag": "FLAG_UNOVA_0x0b8c" }
+  ],
+  "triggers": []
+}

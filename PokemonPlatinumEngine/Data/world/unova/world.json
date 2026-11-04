@@ -37,6 +37,11 @@
     { "name": "FloccesyTown_House2", "matrix": 261, "area": "floccesy_town_4", "trees": "Round", "setting": "Indoors" },
     { "name": "FloccesyTown_PokemonCenter", "matrix": 13, "area": "floccesy_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "FloccesyRanch", "matrix": 255, "area": "floccesy_ranch_2", "trees": "Round" },
+    // Plan 22 · U10, the last part: the Cave of Being on its island in Route 20's pond, reached by Surf
+    { "name": "CaveOfBeing", "matrix": 310, "area": "cave_of_being", "trees": "Round", "setting": "Cave" },
+    // Plan 22 · U10, the last part: the Abyssal Ruins under Undella Bay, dived to from its dark patches (Black 2's swim down
+    // to its doors is a 3D scene with no grid, so the dive comes out in the ruins' halls)
+    { "name": "AbyssalRuins", "matrix": 247, "area": "abyssal_ruins_5", "trees": "Round", "setting": "Cave" },
     // Plan 22 · U5, part b: Virbank City's gate from Route 20, its rooms, the ship terminal, Roxie's club in two rooms,
     // the gate towards Pokéstar Studios and the Virbank Complex's own field
     { "name": "VirbankGate", "matrix": 50, "area": "virbank_gate", "trees": "Round", "setting": "Indoors" },
@@ -244,6 +249,13 @@
     { "name": "UnovaVictoryRoad_Summit", "matrix": 387, "area": "unova_victory_road_22", "trees": "Round" },
     { "name": "UnovaVictoryRoad_Hollow", "matrix": 388, "area": "unova_victory_road_23", "trees": "Round", "setting": "Cave" },
     { "name": "UnovaVictoryRoad_Tunnel", "matrix": 198, "area": "unova_victory_road_16", "trees": "Round", "setting": "Cave" },
+    // Plan 22 · U10, the last part: N's Castle in its ruins off Victory Road's summit, its way in, its hall, N's room, the
+    // corridor and the throne room where N waits with his dragon after the Hall of Fame
+    { "name": "UnovaVictoryRoad_CastleWay", "matrix": 391, "area": "unova_victory_road_26", "trees": "Round", "setting": "Cave" },
+    { "name": "NsCastle_Hall", "matrix": 171, "area": "ns_castle_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_NsRoom", "matrix": 163, "area": "ns_castle_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_Corridor", "matrix": 174, "area": "ns_castle_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "NsCastle_ThroneRoom", "matrix": 212, "area": "ns_castle_5", "trees": "Round", "setting": "Indoors" },
     { "name": "UnovaPokemonLeague", "matrix": 87, "area": "unova_pokemon_league", "trees": "Round" },
     { "name": "UnovaPokemonLeague_PokemonCenter", "matrix": 54, "area": "unova_pokemon_league_11", "trees": "Round", "setting": "Indoors" },
     // Plan 22 · U9, part c: the League's hall, the Elite Four's four rooms, the way down to the Champion's room, her room and
@@ -306,6 +318,7 @@
     // and Wellspring Cave, Striaton City and the Dreamyard, Route 2 and Accumula Town to Route 1 and Nuvema Town
     { "name": "SkyarrowBridge_WestEnd", "matrix": 41, "area": "bridge_gate", "trees": "Round" },
     { "name": "SkyarrowGate_Pinwheel", "matrix": 137, "area": "bridge_gate_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SkyarrowGate_Castelia", "matrix": 138, "area": "bridge_gate_gate", "trees": "Round", "setting": "Indoors" },
     { "name": "PinwheelForest_Inside", "matrix": 16, "area": "pinwheel_forest_2", "trees": "Round" },
     { "name": "NacreneGate", "matrix": 50, "area": "nacrene_gate", "trees": "Round", "setting": "Indoors" },
     { "name": "NacreneCity_PokemonCenter", "matrix": 13, "area": "nacrene_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
@@ -321,6 +334,7 @@
     { "name": "Route3_House", "matrix": 53, "area": "unova_route_3_2", "trees": "Round", "setting": "Indoors" },
     { "name": "Route3_DayCare", "matrix": 28, "area": "unova_route_3_3", "trees": "Round", "setting": "Indoors" },
     { "name": "WellspringCave_1F", "matrix": 108, "area": "wellspring_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "WellspringCave_B1F", "matrix": 109, "area": "wellspring_cave_2", "trees": "Round", "setting": "Cave" },
     { "name": "StriatonCity_PokemonCenter", "matrix": 13, "area": "striaton_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "StriatonCity_Room2", "matrix": 374, "area": "striaton_city_2", "trees": "Round", "setting": "Indoors" },
     { "name": "StriatonCity_House1_1F", "matrix": 26, "area": "striaton_city_3", "trees": "Round", "setting": "Indoors" },
@@ -367,7 +381,7 @@
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
     "aspertia_city_7", "aspertia_city_8", "aspertia_city_9", "aspertia_city_gym", "aspertia_city_pokemon_center",
     "aspertia_gate", "unova_route_19", "floccesy_town", "floccesy_town_2", "floccesy_town_3", "floccesy_town_4",
-    "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2",
+    "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2", "cave_of_being", "abyssal_ruins_5",
     "virbank_gate", "virbank_city", "virbank_city_2", "virbank_city_3", "virbank_city_4", "virbank_city_5",
     "virbank_city_gym", "virbank_city_gym_2", "virbank_city_pokemon_center", "virbank_gate_gate", "virbank_complex",
     "virbank_complex_2",
@@ -404,7 +418,7 @@
     // plan 22 · U9, part a
     "giant_chasm", "giant_chasm_2", "giant_chasm_3", "giant_chasm_4", "giant_chasm_5", "giant_chasm_6", "plasma_frigate_6",
     // plan 22 · U9, part b
-    "unova_route_23", "unova_route_23_2", "unova_route_23_3", "unova_victory_road", "unova_victory_road_27", "unova_victory_road_17", "unova_victory_road_18", "unova_victory_road_19", "unova_victory_road_20", "unova_victory_road_21", "unova_victory_road_22", "unova_victory_road_23", "unova_victory_road_16", "unova_pokemon_league", "unova_pokemon_league_11",
+    "unova_route_23", "unova_route_23_2", "unova_route_23_3", "unova_victory_road", "unova_victory_road_27", "unova_victory_road_17", "unova_victory_road_18", "unova_victory_road_19", "unova_victory_road_20", "unova_victory_road_21", "unova_victory_road_22", "unova_victory_road_23", "unova_victory_road_16", "unova_victory_road_26", "ns_castle_2", "ns_castle_3", "ns_castle_4", "ns_castle_5", "unova_pokemon_league", "unova_pokemon_league_11",
     // plan 22 · U9, part c
     "unova_pokemon_league_2", "unova_pokemon_league_5", "unova_pokemon_league_6", "unova_pokemon_league_7", "unova_pokemon_league_8", "unova_pokemon_league_3", "unova_pokemon_league_9", "unova_pokemon_league_10",
     // plan 22 · U10, part b
@@ -423,7 +437,7 @@
     "dragonspiral_tower", "dragonspiral_tower_2", "dragonspiral_tower_3", "dragonspiral_tower_4",
     "dragonspiral_tower_6", "dragonspiral_tower_8", "dragonspiral_tower_9",
     // plan 22 · U10, part f: the Skyarrow Bridge to Nuvema Town
-    "bridge_gate", "bridge_gate_2", "pinwheel_forest_2", "nacrene_gate", "nacrene_city_pokemon_center", "nacrene_city_2", "nacrene_city_3", "nacrene_city_4", "nacrene_city_5", "nacrene_city_6", "nacrene_city_7", "nacrene_city_8", "nacrene_city_9", "nacrene_city_10", "unova_route_3_2", "unova_route_3_3", "wellspring_cave", "striaton_city_pokemon_center", "striaton_city_2", "striaton_city_3", "striaton_city_4", "striaton_city_5", "striaton_city_6", "striaton_city_7", "striaton_city_8", "striaton_city_9", "dreamyard", "dreamyard_2", "accumula_gate", "accumula_town_pokemon_center", "accumula_town_2", "accumula_town_3", "accumula_town_4", "accumula_town_5", "accumula_town_6", "accumula_town_7", "accumula_town_8", "nuvema_town_2", "nuvema_town_3", "nuvema_town_4", "nuvema_town_5", "nuvema_town_6", "nuvema_town_7", "nuvema_town_lab", "pinwheel_forest", "nacrene_city", "unova_route_3", "striaton_city", "unova_route_2", "accumula_town", "unova_route_1", "nuvema_town", "unova_route_gate_gate",
+    "bridge_gate", "bridge_gate_2", "bridge_gate_gate", "pinwheel_forest_2", "nacrene_gate", "nacrene_city_pokemon_center", "nacrene_city_2", "nacrene_city_3", "nacrene_city_4", "nacrene_city_5", "nacrene_city_6", "nacrene_city_7", "nacrene_city_8", "nacrene_city_9", "nacrene_city_10", "unova_route_3_2", "unova_route_3_3", "wellspring_cave", "wellspring_cave_2", "striaton_city_pokemon_center", "striaton_city_2", "striaton_city_3", "striaton_city_4", "striaton_city_5", "striaton_city_6", "striaton_city_7", "striaton_city_8", "striaton_city_9", "dreamyard", "dreamyard_2", "accumula_gate", "accumula_town_pokemon_center", "accumula_town_2", "accumula_town_3", "accumula_town_4", "accumula_town_5", "accumula_town_6", "accumula_town_7", "accumula_town_8", "nuvema_town_2", "nuvema_town_3", "nuvema_town_4", "nuvema_town_5", "nuvema_town_6", "nuvema_town_7", "nuvema_town_lab", "pinwheel_forest", "nacrene_city", "unova_route_3", "striaton_city", "unova_route_2", "accumula_town", "unova_route_1", "nuvema_town", "unova_route_gate_gate",
     // plan 22 · U10, part g: Black City, Route 15 and the Marvelous Bridge
     "black_gate", "black_gate_gate", "black_city", "black_city_2", "black_city_5", "black_city_pokemon_center", "unova_route_15_2", "marvelous_bridge", "bridge_gate_gate_6", "bridge_gate_gate_7", "unova_route_15",
     // plan 22 · U10, part h: the Nature Preserve

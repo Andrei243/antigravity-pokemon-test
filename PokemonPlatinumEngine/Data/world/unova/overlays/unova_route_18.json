@@ -5,7 +5,7 @@
   // belong to scenes of the old roads not written yet, and are held back. The cave's mouth at its north (warp 0) leads into
   // a room of Twist Mountain's that is not open, and stays shut.
   "area": "unova_route_18",
-  "bgmTrack": "unova/route13",
+  "bgmTrack": "unova/route18",
   "heldBack": [ "2", "10", "8190" ],
   "locked": [ 0 ],
   "people": {

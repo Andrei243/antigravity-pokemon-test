@@ -359,12 +359,15 @@ public static partial class WorldModels
         Built("bc_build_s1", BuildingKind.Apartments, "a dark tower of Black City", Architecture.Nightfall),
         Built("bc_house_s1", BuildingKind.House, "a house of Black City", Architecture.Nightfall),
         Built("bc_shop_s1", BuildingKind.Shop, "a shop of Black City's market street", Architecture.Nightfall),
-        Built("bc_mugen_s1", BuildingKind.Tower, "the Black Tower, whose challenge is not open", Architecture.Nightfall),
+        Built("bc_mugen_s1", BuildingKind.Tower, "the Black Tower, whose climb its lobby's desk runs", Architecture.Nightfall),
         Built("palpark", BuildingKind.Lab, "the Poké Transfer Lab on Route 15, shut", Architecture.Storehouse),
         Ground("door_h5_in", "a door of the Black Tower's lobby (the warp's tile draws it)"),
         Ground("h05_elevator", "the Black Tower's lift in its lobby, not running (no model of its own)"),
         Ground("h05_light", "a light of the Black Tower's lobby (no model of its own)"),
         Ground("h05_panel", "a panel of the Black Tower's lobby (no model of its own)"),
+        // ---------------------------------------------------------------- N's Castle (plan 22 · U10, the last part)
+        Ground("in39_den", "the toy train's track round N's room, laid on the floor (the floor's own tiles; read as a sign)"),
+        Ground("in39_hiko", "the model plane hung over N's room (no model of its own; read as a sign)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

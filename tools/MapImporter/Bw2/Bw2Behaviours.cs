@@ -49,7 +49,9 @@ public static class Bw2Behaviours
         [0x3E] = ("Water that is surfed, of a second kind", TileBehavior.River),
         [0x3F] = ("The sea", TileBehavior.Sea),
         [0x42] = ("The sea, of a second kind", TileBehavior.Sea),
-        [0x43] = ("The sea, of a third kind", TileBehavior.Sea),
+        // (plan 22 · U10, the last part: its only tiles are four patches of three by three in Undella Bay round the Abyssal Ruins,
+        // where Black 2's Dive goes down: dark water)
+        [0x43] = ("The sea where Dive goes down (Undella Bay's dark patches)", TileBehavior.DiveWater),
         [0x40] = ("A waterfall", TileBehavior.Waterfall),
         [0x41] = ("The water's edge, where Surf begins", TileBehavior.SurfEdge),
         [0x44] = ("The water's edge, of a second kind", TileBehavior.SurfEdge),

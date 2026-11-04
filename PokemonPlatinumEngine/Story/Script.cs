@@ -173,6 +173,8 @@ public enum Op
     Friend,
     // The Global Link counter (plan 07 · O5, O7): whether a server is set (RESULT), and the counter's screen opened
     GlobalLink,
+    // Black City's Black Tower (plan 22 · U10, the last part): a climb of five areas with the Frontier's rules lent, Benga at its top
+    BlackTower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

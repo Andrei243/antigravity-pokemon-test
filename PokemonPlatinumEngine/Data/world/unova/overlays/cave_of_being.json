@@ -1,0 +1,19 @@
+{
+  // The Cave of Being (plan 22 · U10, the last part): Black 2's cave on its island in Route 20's pond, surfed to. Once Unova's
+  // Hall of Fame is entered Cedric Juniper waits inside, and the first step into the cave's heart (Black 2's trigger 1,
+  // our script) shows the three of the lakes rising and flying off to the places they are met (cave_of_being.txt). Black 2's
+  // own four objects are left out: ours stand in their places
+  "area": "cave_of_being",
+  "bgmTrack": "unova/strange_house",
+  "battleArena": "Cave",
+  "heldBack": [ "0", "1", "2", "3" ],
+  "triggers": [
+    { "script": "TheThree", "x": 16, "z": 22, "width": 5, "depth": 1, "variable": "VAR_UNOVA_CAVE_OF_BEING", "value": 0 }
+  ],
+  "npcs": [
+    { "id": "cedric", "name": "Prof. Cedric Juniper", "npcType": "cedric_juniper", "x": 18, "y": 18, "facing": "Up", "script": "Cedric", "shownBy": "UnovaHallOfFame" },
+    { "id": "uxie", "name": "Uxie", "npcType": "Pokemon", "species": "Uxie", "x": 17, "y": 7, "facing": "Down", "shownBy": "FLAG_UNOVA_CAVE_OF_BEING_RISING", "hiddenBy": "FLAG_UNOVA_CAVE_OF_BEING_FLOWN" },
+    { "id": "mesprit", "name": "Mesprit", "npcType": "Pokemon", "species": "Mesprit", "x": 9, "y": 16, "facing": "Right", "shownBy": "FLAG_UNOVA_CAVE_OF_BEING_RISING", "hiddenBy": "FLAG_UNOVA_CAVE_OF_BEING_FLOWN" },
+    { "id": "azelf", "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "x": 27, "y": 18, "facing": "Left", "shownBy": "FLAG_UNOVA_CAVE_OF_BEING_RISING", "hiddenBy": "FLAG_UNOVA_CAVE_OF_BEING_FLOWN" }
+  ]
+}

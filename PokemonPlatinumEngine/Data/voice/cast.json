@@ -126,6 +126,10 @@
       "note": "first spoken at goldenrod_radio_tower_4f.txt(52)",
       "provisional": true
     },
+    "benga": {
+      "note": "first spoken at black_city_5.txt(86)",
+      "provisional": true
+    },
     "benjamin": {
       "note": "first spoken at phone.txt(245)",
       "provisional": true
@@ -1626,6 +1630,7 @@
     "Barry": "barry",
     "Beauty": "beauty",
     "Ben": "ben",
+    "Benga": "benga",
     "Benjamin": "benjamin",
     "Berry Master": "berry_master",
     "Bertha": "bertha",
@@ -2001,6 +2006,7 @@
     "Wade": "wade",
     "Waiter": "waiter",
     "Waitress": "waitress",
+    "Wake": "crasher_wake",
     "Wallace": "wallace",
     "Wally": "wally",
     "Wally's Aunt": "wallys_aunt",
@@ -2010,7 +2016,6 @@
     "Walter": "walter",
     "Wanda": "wanda",
     "Warden": "warden",
-    "Wake": "crasher_wake",
     "Wattson": "wattson",
     "Wesley": "wesley",
     "Whitney": "whitney",

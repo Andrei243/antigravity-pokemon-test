@@ -5,6 +5,9 @@
   "area": "unova_route_20",
   "bgmTrack": "unova/route19",
   "trees": "Round",
+  // Plan 22 · U10, the last part: the stream that runs down into the Cave of Being's pond meets its lower stretch only at a
+  // corner of the bank in Black 2's data; that corner is laid as water, so the pond and its island are surfed to
+  "water": [ { "x": 145, "z": 674 } ],
   // Plan 22 · U5: the hiker who wants a Badge before he lets anyone east, and Cheren with Hugh past him
   // (unova_route_20.txt)
   "triggers": [

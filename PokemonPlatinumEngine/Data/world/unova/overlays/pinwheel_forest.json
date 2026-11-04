@@ -2,7 +2,7 @@
   // Pinwheel Forest's edge (plan 22 · U10, part f): Black 2's clearing south of Nacrene City, its trainers, balls and hidden
   // things read by the importer, our words
   "area": "pinwheel_forest",
-  "bgmTrack": "unova/lostlorn_forest",
+  "bgmTrack": "unova/pinwheel_forest",
   "people": {
     "5": { "name": "Kentaro", "trainer": { "dialogueBefore": "The forest is my dojo! Show me your fighting spirit!", "dialogueAfter": "My spirit wavered. Yours didn't." } },
     "6": { "name": "Lee", "trainer": { "dialogueBefore": "I punch the air in the clearing every morning. Today I'll punch through you!", "dialogueAfter": "Well, the air never punched back." } },

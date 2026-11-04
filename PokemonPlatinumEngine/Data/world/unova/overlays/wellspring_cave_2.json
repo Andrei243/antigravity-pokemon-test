@@ -1,0 +1,13 @@
+{
+  // Wellspring Cave's lower floor (plan 22 · U10, the last part): Black 2's flooded hollow under the upper floor, reached
+  // by surfing the upper floor's pool to its stairs down; its trainers and balls read by the importer, our words
+  "area": "wellspring_cave_2",
+  "bgmTrack": "unova/wellspring_cave",
+  "battleArena": "Cave",
+  "people": {
+    "4": { "name": "Xiao", "trainer": { "dialogueBefore": "The drips keep time for my kicks. Let me show you the rhythm!", "dialogueAfter": "I lost the beat." } },
+    "5": { "name": "Edward", "trainer": { "dialogueBefore": "Down here nobody hears me shout. Hyah! Battle me!", "dialogueAfter": "Even my shout went quiet." } },
+    "6": { "name": "Thomas", "trainer": { "dialogueBefore": "I came down for the cold water and stayed for the battles!", "dialogueAfter": "Back into the cold water I go." } },
+    "7": { "name": "Shaun", "trainer": { "dialogueBefore": "I have walked this cave since before the steps were worn. Show me what you've learned.", "dialogueAfter": "You've learned plenty." } }
+  }
+}

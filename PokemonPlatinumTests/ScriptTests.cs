@@ -570,6 +570,20 @@ public class ScriptTests
           subway print
           subway prize
           subway buy
+          blacktower enough
+          blacktower begin
+          blacktower choose
+          blacktower check
+          blacktower active
+          blacktower next
+          blacktower area
+          blacktower top
+          blacktower opponent
+          blacktower battle
+          blacktower won
+          blacktower finish
+          blacktower best
+          blacktower cleared
           friend beaten
           friend before
           friend after

@@ -1295,6 +1295,48 @@
         },
         "additionalProperties": false
       }
+    },
+    "water": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "weather": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bgmTrack": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "while": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

@@ -33,7 +33,7 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 19 · Kanto | — | 9 | |
 | 20 · Johto | — | 15 | J15 optional |
 | 21 · Hoenn | H1 to H12 (finished 2026-11-04) | 12 | the sea floor's timing (H5) is the user's to read on the GTX 970 |
-| 22 · Unova | — | 12 | |
+| 22 · Unova | U1, U3 to U12 (finished 2026-11-04) | 12 | U2's frame on High (the `profile` mode's Unova scenes) is the user's to time on the GTX 970 |
 | 23 · Later regions | — | 24 | drawn by hand; Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) are wanted since 2026-10-12, through a rift after the last region |
 | 24 · Guards | X1, X2, X3 | 3 | |
 | 25 · Battle presentation | Y1, Y2, Y3, Y4, Y5, Y6 | 10 | |

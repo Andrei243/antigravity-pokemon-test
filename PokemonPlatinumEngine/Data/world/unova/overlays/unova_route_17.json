@@ -3,7 +3,7 @@
   // end, its zone, trainers, balls and hidden things read by the importer, our words. Its trainers swim or fish where
   // Black 2 stands them. The gate house at its east end leads to Route 1 (open since plan 22 · U10, part f).
   "area": "unova_route_17",
-  "bgmTrack": "unova/route13",
+  "bgmTrack": "unova/route17",
   // (its ball of a Pearl String is an item this game's data hasn't)
   "heldBack": [ "8" ],
   "people": {
