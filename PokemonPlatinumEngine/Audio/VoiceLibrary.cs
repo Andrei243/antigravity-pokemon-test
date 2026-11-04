@@ -69,6 +69,9 @@ public sealed class VoiceLibrary
 
     public const string PackFileName = "pack.json";
 
+    /// <summary>The language whose pack a language with none may speak under its translation (the options' ENGLISH VOICES).</summary>
+    public const string English = "en";
+
     /// <summary>
     /// The decoders by extension. WAV (16- or 24-bit PCM or 32-bit float, any rate, mono or stereo) and Ogg Vorbis
     /// (<see cref="OggVoiceDecoder"/>, NVorbis) are built in. A take whose extension has no decoder counts as missing.
@@ -122,6 +125,13 @@ public sealed class VoiceLibrary
         yield return Path.Combine(AppContext.BaseDirectory, "voice", language);
         yield return Path.Combine(Directory.GetCurrentDirectory(), "voice", language);
     }
+
+    /// <summary>
+    /// The pack a language speaks with: its own, else (with the options' ENGLISH VOICES) English's, whose takes are found
+    /// by the same keys and English hashes under the translated text; null for none.
+    /// </summary>
+    public static VoiceLibrary? Choose(string language, bool englishVoices, Func<string, VoiceLibrary?> find) =>
+        find(language) ?? (englishVoices && language != English ? find(English) : null);
 
     /// <summary>The first pack of <paramref name="language"/> found where the game looks, or null.</summary>
     public static VoiceLibrary? Find(string language)

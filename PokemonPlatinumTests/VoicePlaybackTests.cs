@@ -436,7 +436,8 @@ public sealed class VoicePlaybackTests : IDisposable
         Assert.Equal(rows.IndexOf(OptionRow.Movement) + 1, rows.IndexOf(OptionRow.Voices));
         Assert.Equal(rows.IndexOf(OptionRow.Voices) + 1, rows.IndexOf(OptionRow.VoiceVolume));
         Assert.Equal(rows.IndexOf(OptionRow.VoiceVolume) + 1, rows.IndexOf(OptionRow.LetVoicesFinish));
-        Assert.Equal(rows.IndexOf(OptionRow.LetVoicesFinish) + 1, rows.IndexOf(OptionRow.Controls));
+        Assert.Equal(rows.IndexOf(OptionRow.LetVoicesFinish) + 1, rows.IndexOf(OptionRow.EnglishVoices));
+        Assert.Equal(rows.IndexOf(OptionRow.EnglishVoices) + 1, rows.IndexOf(OptionRow.Controls));
 
         var s = new GameSettings();
         Assert.Equal(VoiceMode.Off, s.Voices);

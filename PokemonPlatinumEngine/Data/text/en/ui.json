@@ -238,6 +238,13 @@
         "on": "A on a finished line waits until its voice has finished speaking."
       }
     },
+    "englishVoices": {
+      "label": "English voices",
+      "help": {
+        "off": "In a language with no voices of its own, the lines show as text alone.",
+        "on": "In a language with no voices of its own, the characters speak English under the translated text."
+      }
+    },
     "areaChecklist": {
       "label": "What is left here",
       "help": {

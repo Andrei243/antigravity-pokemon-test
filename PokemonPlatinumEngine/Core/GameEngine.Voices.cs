@@ -85,10 +85,11 @@ public partial class GameEngine
         }
         // The pack is looked for once a language (headless and tool runs look in the same places and find none)
         string language = Text.Language.Tag;
-        if (voicePackLanguage != language)
+        string wanted = language + (Settings.EnglishVoices ? "+" + VoiceLibrary.English : "");
+        if (voicePackLanguage != wanted)
         {
-            voicePackLanguage = language;
-            voicePack = VoiceLibrary.Find(language);
+            voicePackLanguage = wanted;
+            voicePack = VoiceLibrary.Choose(language, Settings.EnglishVoices, VoiceLibrary.Find);
         }
         talk.Library = voicePack;
     }

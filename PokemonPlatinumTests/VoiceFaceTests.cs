@@ -154,6 +154,29 @@ public sealed class VoiceFaceTests : IDisposable
         Assert.DoesNotContain("_open", CharacterSprites.OverrideName(shut));
     }
 
+    // ------------------------------------------------------------------ a language with no voices of its own
+
+    [Fact]
+    public void ALanguageWithNoPackSpeaksEnglishsOnlyWhenTheOptionsSaySo()
+    {
+        var english = new VoiceLibrary(folder, new VoicePackFile { Language = "en" });
+        VoiceLibrary? Find(string language) => language == "en" ? english : null;
+        Assert.Null(VoiceLibrary.Choose("ro", false, Find));
+        Assert.Same(english, VoiceLibrary.Choose("ro", true, Find));
+        Assert.Same(english, VoiceLibrary.Choose("en", false, Find));
+        var s = new GameSettings();
+        Assert.False(s.EnglishVoices);
+        OptionsScreen.Change(s, OptionRow.EnglishVoices, 1);
+        Assert.True(s.EnglishVoices);
+        var (label, _, help) = OptionsScreen.Describe(s, OptionRow.EnglishVoices);
+        Assert.Equal("English voices", label);
+        Assert.Contains("English under the translated text", help);
+        // The row stands with the voices' own, before the help
+        var rows = Enum.GetValues<OptionRow>();
+        Assert.Equal(Array.IndexOf(rows, OptionRow.LetVoicesFinish) + 1, Array.IndexOf(rows, OptionRow.EnglishVoices));
+        Assert.True(Array.IndexOf(rows, OptionRow.EnglishVoices) < Array.IndexOf(rows, OptionRow.Help));
+    }
+
     // ------------------------------------------------------------------ the introduction
 
     [Fact]
