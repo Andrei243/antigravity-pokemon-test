@@ -1056,6 +1056,11 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
             }
 
+            // Black City's Black Tower (plan 22 · U10, the last part)
+            case "blacktower":
+                return new Instruction { Op = Op.BlackTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "next", "area",
+                    "top", "opponent", "battle", "won", "finish", "best", "cleared") };
+
             // The Trainer Hill's climb (plan 21, part l)
             case "trainerhill":
             {

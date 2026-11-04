@@ -8177,6 +8177,43 @@ way 0
 way 1, from answer 1
   Sailor> As you like. I'll be here when you're ready.
   ? Shall we sail back to Lilycove? = No
+=== black_city_5.Desk
+from Receptionist at 22,6 of BlackCity_Room5
+way 0
+  Receptionist> Welcome to the Black Tower! Trainers climb through its five areas, battling whoever waits on the way, all the way to the top.
+  Receptionist> What would you like to do?
+  Receptionist> You need three Pokémon of different species, holding different items, to climb. certain rare Pokémon may not go up.
+  ? What would you like to do? = CLIMB
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 3, from answer 1
+  Receptionist> We hope to see you climb soon!
+  ? What would you like to do? = EXIT
+way 2, from answer 1
+  Receptionist> The most areas you have cleared in one climb: 0.
+  Receptionist> Times you have reached the top: 0.
+  ? What would you like to do? = RECORD
+way 1, from answer 1
+  Receptionist> The tower has five areas, and three Trainers wait in each. Win them all and you reach the top.
+  Receptionist> Three Pokémon go up, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used.
+  Receptionist> Every area cleared earns a Battle Point, and the top earns ten more.
+  ? What would you like to do? = INFO
 === blackthorn.DenGuard
 from Old Man at 672,133 of Johto
 way -

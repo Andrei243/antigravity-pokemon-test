@@ -371,7 +371,7 @@ public sealed partial class ScriptRunner
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
         // battle on most of their words: none of them is hurried through
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
-        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
         Op.Tutor or Op.Amity => true,
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
@@ -1417,6 +1417,10 @@ public sealed partial class ScriptRunner
             // The Battle Subway (plan 22 · U6, part d)
             case Op.Subway:
                 Subway(i);
+                break;
+            // Black City's Black Tower (plan 22 · U10, the last part)
+            case Op.BlackTower:
+                BlackTowerCommand(i);
                 break;
             // A friend's trainer of the friends' hall (plan 13 · V23)
             case Op.Friend:

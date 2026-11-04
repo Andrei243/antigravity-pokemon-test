@@ -1,17 +1,22 @@
 {
-  // The Black Tower's lobby (plan 22 · U10, part g): Black 2's hall at the foot of the tower, our words. Its clerks (0 to 3)
-  // belong to the facility, which is not open: the tower's way up stays shut
+  // The Black Tower's lobby (plan 22 · U10, part g): Black 2's hall at the foot of the tower, our words. Since U10's last
+  // part its first clerk (0) is the desk of the climb (black_city_5.txt, Models/Frontier/BlackTower.cs); the other three
+  // belong to Black 2's Treasure Hunt and dealings, which have no stand-in, and only talk
   "area": "black_city_5",
   "bgmTrack": "unova/black_city",
   "people": {
-    "4": { "name": "Gentleman", "dialog": [ "The Black Tower tests Trainers floor by floor. Its doors are closed today." ] },
+    "0": { "name": "Receptionist", "npcType": "worker", "script": "Desk", "still": true },
+    "1": { "name": "Clerk", "dialog": [ "Climbers come down tired but smiling. Most of them, anyway." ] },
+    "2": { "name": "Clerk", "dialog": [ "The tower's areas change all the time. No two climbs are quite the same." ] },
+    "3": { "name": "Clerk", "dialog": [ "Battle Points earned in the tower spend just as well at the Battle Frontier." ] },
+    "4": { "name": "Gentleman", "dialog": [ "The Black Tower tests Trainers area by area. Only the strongest see the top." ] },
     "5": { "name": "Rich Boy", "dialog": [ "I've climbed to the top three times. Well, twice. Well, once." ] },
-    "6": { "name": "Old Man", "npcType": "old_man", "dialog": [ "The tower's challenge is closed for repairs. Come back another time." ] },
+    "6": { "name": "Old Man", "npcType": "old_man", "dialog": [ "I climbed this tower when it was half as tall. My knees remember." ] },
     "7": { "name": "Backers", "dialog": [ "We cheer for whoever reaches the top. Nobody's come down a winner yet today." ] },
     "8": { "name": "Poké Fan", "dialog": [ "My Pokémon want to climb the tower. I'm still saving up my courage." ] },
     "9": { "name": "Poké Fan", "npcType": "pokefan_m", "dialog": [ "They say the boss at the top is barely older than you!" ] },
-    "10": { "name": "Roughneck", "dialog": [ "The tower's closed. I'll battle anyone out here instead!" ] },
-    "11": { "name": "Nursery Aide", "dialog": [ "The children are on a trip to see the tower. They're very disappointed." ] },
+    "10": { "name": "Roughneck", "dialog": [ "I made it to the third area once. The fourth one sent me right back down." ] },
+    "11": { "name": "Nursery Aide", "dialog": [ "The children are on a trip to see the tower. They want to climb it when they're older." ] },
     "12": { "name": "Artist", "dialog": [ "I'm painting the lobby. The tower's lights make every colour shine." ] }
   }
 }

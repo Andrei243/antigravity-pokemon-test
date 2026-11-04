@@ -3256,4 +3256,56 @@ public class UnovaStoryTests
     }
 
     private static string SeasonCell(MatrixSeason season, int x, int y) => season.Chunks[y].Split(' ', StringSplitOptions.RemoveEmptyEntries)[x];
+
+    // Plan 22 · U10, the last part: the Black Tower's climb, the Frontier's rules lent as the Subway lends them: five areas of
+    // three, a question after each area, Benga at the top once the Hall of Fame is entered, a Battle Point an area and ten for the top
+    private static Game Climber(bool champion)
+    {
+        var game = new Game();
+        foreach (string species in new[] { "Snivy", "Lillipup", "Pidove", "Roggenrola" })
+            game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 40));
+        if (champion) game.Story.Set(BattleSubway.FriendsFlag);
+        game.Arrive("BlackCity_Room5", 22, 8);
+        return game;
+    }
+
+    private static HeadlessScriptHost Climb(Game game) => game.Played.Last(p => p.Script.Contains("Desk")).Host;
+
+    [Fact]
+    public void TheBlackTowerIsClimbedAreaByAreaToBengaAtTheTop()
+    {
+        var game = Climber(champion: true);
+        // CLIMB, and yes after each of the four areas before the top
+        game.Answers.AddRange(new[] { 0, 0, 0, 0, 0 });
+        game.Talk("0", "black_city_5");
+        var climb = Climb(game);
+        Assert.Equal(BlackTower.Battles, climb.FrontierBattles.Count);
+        Assert.All(climb.FrontierBattles, b => Assert.Equal(BlackTower.PartySize, b.Team.Count));
+        Assert.All(climb.FrontierBattles, b => Assert.All(b.Team.Members, p => Assert.True(p.Level <= 50)));
+        Assert.Equal(BlackTower.BengaId, Assert.Single(climb.FrontierBattles[^1].Foes).Id);
+        Assert.All(climb.FrontierBattles.Take(BlackTower.Battles - 1), b => Assert.StartsWith("subway_rider_", Assert.Single(b.Foes).Id));
+        Assert.Equal(BlackTower.Areas + 10, climb.Frontier.BattlePoints);
+        Assert.Equal(BlackTower.Areas, game.Story.Var(BlackTower.Vars.Best));
+        Assert.Equal(1, game.Story.Var(BlackTower.Vars.Cleared));
+        Assert.Equal(0, game.Story.Var(BlackTower.Vars.State));
+    }
+
+    [Fact]
+    public void BeforeTheHallOfFameTheTopIsTheTablesAndALossEndsTheClimb()
+    {
+        var game = Climber(champion: false);
+        game.Answers.AddRange(new[] { 0, 0, 0, 0, 0 });
+        game.Talk("0", "black_city_5");
+        Assert.DoesNotContain(Climb(game).FrontierBattles, b => b.Foes.Any(f => f.Id == BlackTower.BengaId));
+        Assert.Equal(BlackTower.Battles, Climb(game).FrontierBattles.Count);
+
+        // lost in the second area: one area cleared, one Battle Point
+        var lost = Climber(champion: true);
+        lost.LoseAt = 5;
+        lost.Answers.AddRange(new[] { 0, 0 });
+        lost.Talk("0", "black_city_5");
+        Assert.Equal(5, Climb(lost).FrontierBattles.Count);
+        Assert.Equal(1, Climb(lost).Frontier.BattlePoints);
+        Assert.Equal(1, lost.Story.Var(BlackTower.Vars.Best));
+    }
 }
