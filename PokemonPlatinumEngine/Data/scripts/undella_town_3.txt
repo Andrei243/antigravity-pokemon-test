@@ -5,3 +5,27 @@
 script OnEnter
   call UnovaCatchUpB
   end
+
+
+# Cynthia (1; plan 22 · U10, part h): once Unova's Hall of Fame is entered she spends her holidays here, in the socialite's (6)
+# place, and battles once a day with Black 2's team (unova_cynthia, levels 76 and 78), as Black 2's does in her villa
+# (undella_town_3.s, read for the order alone). Won or lost, she battles again the next day (FLAG_DAILY_UNOVA_CYNTHIA).
+script Cynthia
+  face 1 player
+  speaker "Cynthia"
+  if flag FLAG_DAILY_UNOVA_CYNTHIA goto Tomorrow
+  say "Oh, it's you. The new Champion of Unova! I come to Undella every year to rest, but I never really stop thinking about battles."
+  ask "Would you battle me? I'd like to see how far you and your Pokémon have come."
+  if no goto Later
+  battle self as "unova_cynthia" canlose
+  setflag FLAG_DAILY_UNOVA_CYNTHIA
+  speaker "Cynthia"
+  say "Thank you. A battle like that clears the mind better than any holiday."
+  say "Come back tomorrow, if you like. I'll be here, looking at the sea."
+  end
+label Later
+  say "Of course. The sea isn't going anywhere, and neither am I."
+  end
+label Tomorrow
+  say "One good battle a day is plenty. Let's have another tomorrow."
+  end

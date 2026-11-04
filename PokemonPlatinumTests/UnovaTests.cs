@@ -99,6 +99,42 @@ public class UnovaTests
             && Overworld.BehaviourAt(t.X, t.Y) == TileBehavior.TallGrass) >= 50, "Route 19's grass isn't walked");
     }
 
+    // Plan 22 · U10's "done when": every open area of Unova is walked in every season, each season's chunks laid in place of
+    // spring's (Route 20's autumn, the north-west's winter, Icirrus City's frozen marsh, the east coast's), on maps of its own
+    [Theory]
+    [InlineData(Season.Spring)]
+    [InlineData(Season.Summer)]
+    [InlineData(Season.Autumn)]
+    [InlineData(Season.Winter)]
+    public void EveryOpenAreaAndRoomIsWalkedInEverySeason(Season season)
+    {
+        var maps = Unova.BuildMaps().ToDictionary(m => m.Name);
+        foreach (var map in maps.Values) map.ApplySeason(season);
+        Map Named(string name) => maps.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
+        var walked = WorldWalk.From(Named, RegionDatabase.Get(RegionDatabase.Unova)!.Start!);
+        foreach (var entry in Unova.Index.Maps)
+            Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name} in {season}");
+        var outside = walked.Single(kv => kv.Key.Name == "Unova").Value;
+        var overworld = maps["Unova"];
+        var areas = outside.Select(t => overworld.AreaAt(t.X, t.Y)?.Key).ToHashSet();
+        foreach (string key in Unova.Index.Areas.Where(k => overworld.FindArea(k) != null))
+            Assert.True(areas.Contains(key), $"{key} isn't walked in {season}");
+    }
+
+    // Plan 22 · U10, part h: the Seaside Cave's north chamber, behind a one-tile wall of the original's data, is come to through
+    // the gap in the rock, and its stairs lead down to the lower floor's north end, where Rich stands
+    [Fact]
+    public void TheSeasideCavesNorthChamberIsComeToThroughTheGapAndLeadsDownToTheLowerFloorsNorthEnd()
+    {
+        var walked = Walked.Value;
+        var upper = walked.Single(kv => kv.Key.Name == "SeasideCave_1F");
+        Assert.Contains((10, 4), upper.Value);
+        Assert.Contains((22, 7), upper.Value);
+        var lower = walked.Single(kv => kv.Key.Name == "SeasideCave_B1F");
+        Assert.Contains((19, 6), lower.Value);
+        Assert.Contains(lower.Key.Everyone, n => n.Key == "3" && n.IsTrainer);
+    }
+
     [Fact]
     public void RouteNineteenMeetsPatratAndPurrloinAtTheStartOfTheJourney()
     {

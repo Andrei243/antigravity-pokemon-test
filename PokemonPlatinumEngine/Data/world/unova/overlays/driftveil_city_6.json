@@ -28,5 +28,10 @@
     },
     "8": { "name": "Former Member", "npcType": "plasma_former_m", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_HOME" },
     "12": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE" }
-  }
+  },
+  // Plan 22 · U10, part h: once Unova's Hall of Fame is entered Hugh (hugh_home) helps Rood's people here, finding the Pokémon
+  // Team Plasma left behind their own Trainers, and battles the player once a day (driftveil_city_6.txt, HughRematch)
+  "npcs": [
+    { "id": "hugh_home", "name": "{rival}", "npcType": "hugh", "x": 5, "y": 20, "facing": "Down", "script": "HughRematch", "shownBy": "UnovaHallOfFame" }
+  ]
 }

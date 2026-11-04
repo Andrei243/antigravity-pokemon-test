@@ -12,6 +12,29 @@ script OnEnter
   end
 
 
+# The gap in the rock (plan 22 · U10, part h): the chamber north of the way through, with its TM and the stairs down to the
+# lower floor's north end, is joined to the rest by a one-tile wall of the original's data that the import keeps blocked. A
+# gap is squeezed through from the head of the west passage (10, 10) to the chamber (10, 8), and back from the chamber's west
+# end (9, 8) to the passage (9, 10)
+script GapNorth
+  speaker none
+  ask "There's a narrow gap in the rock to the north. Squeeze through?"
+  if no end
+  fade out 0.3
+  place player 10 8 up
+  fade in
+  end
+
+script GapSouth
+  speaker none
+  ask "There's a narrow gap in the rock to the south. Squeeze through?"
+  if no end
+  fade out 0.3
+  place player 9 10 down
+  fade in
+  end
+
+
 script Rocky
   face 12 player
   speaker black_belt "Rocky"

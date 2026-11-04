@@ -164,6 +164,18 @@ internal static partial class BuildingArt
             Architecture.Crater =>Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },
+            // Unova's old roads (plan 22 · U10, part h)
+            Architecture.Seabreeze => Pitched(WallKind.Plaster, Rgb(62, 140, 120)) with { Chimney = true, FlowerBoxes = true },
+            Architecture.Plaza => Pitched(WallKind.Stucco, Rgb(176, 72, 56), RoofShape.Hip) with { Shutters = true },
+            Architecture.Teahouse => Pitched(WallKind.Brick, Rgb(54, 104, 72), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
+            Architecture.Gallery => Pitched(WallKind.Brick, Rgb(156, 66, 46)) with { Chimney = true },
+            Architecture.Mire => Pitched(WallKind.Planks, Rgb(108, 116, 100), RoofShape.Hip) with { Chimney = true },
+            // Black City's blocks: Castelia's panel blocks in the dark, their ribbon windows lit
+            Architecture.Nightfall => new BuildingStyle
+            {
+                Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = Rgb(66, 62, 82), Storeys = 2, Window = WindowKind.Ribbon,
+                Home = true, Accent = roof ?? Rgb(52, 48, 72), Gear = RoofGear.Vents
+            },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

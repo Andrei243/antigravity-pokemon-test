@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10364 | 9899 | 465 | 17 | 0 |
-| People of the world (`world:`) | 7663 | 7601 | 62 | 4 | 0 |
-| **All** | 19504 | 18935 | 569 | 22 | 0 |
+| Scripts (`script:`) | 10378 | 9913 | 465 | 17 | 0 |
+| People of the world (`world:`) | 7661 | 7599 | 62 | 4 | 0 |
+| **All** | 19516 | 18947 | 569 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,9 +21,9 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 250 |
-| a question's answers | 783 |
+| a question's answers | 780 |
 | a sign | 1663 |
-| the game's own voice (speaker none) | 283 |
+| the game's own voice (speaker none) | 285 |
 | the game's own voice (text) | 1684 |
 
 ## The cast
@@ -41,21 +41,21 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 |---|---|---|
 | `@self` | 1898 | 138 |
 | `look:gentleman (any)` | 732 | 15 |
-| `rival` | 605 | 18 |
+| `rival` | 612 | 18 |
 | `look:grunt (any)` | 587 | 0 |
 | `look:lady (any)` | 444 | 1 |
 | `look:youngster (any)` | 417 | 21 |
 | `look:clerk (any)` | 401 | 10 |
 | `look:lass (any)` | 343 | 11 |
-| `look:attendant (any)` | 325 | 12 |
+| `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 261 | 0 |
 | `look:gym_guide (any)` | 203 | 1 |
 | `look:scientist (any)` | 201 | 4 |
+| `cynthia` | 163 | 1 |
 | `class:ace_trainer (any)` | 160 | 0 |
 | `class:fisherman (any)` | 160 | 0 |
 | `look:receptionist (any)` | 159 | 19 |
 | `class:hiker (any)` | 158 | 0 |
-| `cynthia` | 157 | 1 |
 | `look:sailor (any)` | 151 | 0 |
 | `class:youngster (any)` | 150 | 0 |
 | `look:old_man (any)` | 148 | 4 |
@@ -129,9 +129,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `backers` | 42 | 0 |
 | `buck` | 42 | 1 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
-| `look:pokefan_f (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
 | `flint` | 41 | 1 |
+| `look:pokefan_f (any)` | 41 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `volkner` | 40 | 1 |
 | `collector` | 39 | 0 |

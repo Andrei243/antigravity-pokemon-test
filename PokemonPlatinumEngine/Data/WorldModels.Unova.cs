@@ -291,29 +291,29 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- Icirrus City and Twist Mountain (plan 22 · U10, part e)
         // Icirrus's houses are built as Pastoria's: boards under reed-green roofs, a marsh town's (the rulings' "The old roads round
         // Icirrus City" say why no row of its own yet)
-        Built("c7_house", BuildingKind.House, "a house of Icirrus City, the Pokémon Center's and the Fan Club's among them", Architecture.Marsh),
+        Built("c7_house", BuildingKind.House, "a house of Icirrus City, the Pokémon Center's and the Fan Club's among them", Architecture.Mire),
         Ground("elboard_test", "a lift's platform in Twist Mountain's great hall, walked on (the floor's own tiles; the lift doesn't run)"),
         Ground("elboard2_test", "a lift's landing in Twist Mountain's great hall, walked on (the floor's own tiles)"),
         Ground("mugenobj06", "a winch post of Twist Mountain's lifts, against the rock (no model of its own: the rock face draws it)"),
         Ground("mugenobj07", "a winch post of Twist Mountain's lifts, against the rock (no model of its own: the rock face draws it)"),
 
         // ---------------------------------------------------------------- the Skyarrow Bridge to Nuvema Town (plan 22 · U10, part f)
-        // Striaton's houses are Hearthome's townhouses, Nacrene's warehouses Driftveil's brick, Accumula's and Nuvema's houses
-        // Floccesy's bellfield (the rulings' "The old roads from the Skyarrow Bridge to Nuvema Town" say why no rows of their own yet)
-        Built("c1_build", BuildingKind.House, "a house of Striaton City", Architecture.Townhouse),
-        Built("c1_rest", BuildingKind.Shop, "Striaton's restaurant, where the three brothers cook", Architecture.Townhouse, sign: "RESTAURANT"),
-        Built("c1_school", BuildingKind.School, "Striaton City's Trainers' School", Architecture.Townhouse),
+        // Striaton, Nacrene, Accumula and Nuvema have ways of building of their own since part h (Teahouse, Gallery, Plaza,
+        // Seabreeze); the Day Care's house stays Floccesy's bellfield
+        Built("c1_build", BuildingKind.House, "a house of Striaton City", Architecture.Teahouse),
+        Built("c1_rest", BuildingKind.Shop, "Striaton's restaurant, where the three brothers cook", Architecture.Teahouse, sign: "RESTAURANT"),
+        Built("c1_school", BuildingKind.School, "Striaton City's Trainers' School", Architecture.Teahouse),
         Ground("c1_gateway", "the gateway from Striaton City into the Dreamyard, walked through (the warp's tiles draw it)"),
         Ground("c01arch", "an arch over Striaton's plaza, walked under (no model of its own: the way through is open ground)"),
         Thing("c01fountain", PropType.Fountain, "a fountain of Striaton's plaza"),
         Thing("c01thicket", PropType.Hedge, "a thicket by Striaton's fountains"),
-        Built("c2_build", BuildingKind.Warehouse, "a warehouse of Nacrene City, its studios and houses among them", Architecture.Storehouse),
-        Built("c2_cafe", BuildingKind.Shop, "the Café Warehouse of Nacrene City", Architecture.Storehouse, sign: "CAFE"),
-        Built("c2_museum", BuildingKind.Museum, "the Nacrene Museum", Architecture.Storehouse, sign: "MUSEUM"),
-        Built("t1_house", BuildingKind.House, "a house of Nuvema Town", Architecture.Bellfield),
-        Built("t1_labo", BuildingKind.Lab, "Professor Juniper's lab in Nuvema Town", Architecture.Bellfield, sign: "JUNIPER LAB"),
-        Built("t2_house01", BuildingKind.House, "a house of Accumula Town", Architecture.Hillside),
-        Built("t2_build01", BuildingKind.House, "a larger house of Accumula Town, its Pokémon Center's neighbours", Architecture.Hillside),
+        Built("c2_build", BuildingKind.Warehouse, "a warehouse of Nacrene City, its studios and houses among them", Architecture.Gallery),
+        Built("c2_cafe", BuildingKind.Shop, "the Café Warehouse of Nacrene City", Architecture.Gallery, sign: "CAFE"),
+        Built("c2_museum", BuildingKind.Museum, "the Nacrene Museum", Architecture.Gallery, sign: "MUSEUM"),
+        Built("t1_house", BuildingKind.House, "a house of Nuvema Town", Architecture.Seabreeze),
+        Built("t1_labo", BuildingKind.Lab, "Professor Juniper's lab in Nuvema Town", Architecture.Seabreeze, sign: "JUNIPER LAB"),
+        Built("t2_house01", BuildingKind.House, "a house of Accumula Town", Architecture.Plaza),
+        Built("t2_build01", BuildingKind.House, "a larger house of Accumula Town, its Pokémon Center's neighbours", Architecture.Plaza),
         Built("sodateya", BuildingKind.House, "the Day Care and the Pokémon Nursery on Route 3", Architecture.Bellfield),
         Thing("r3fence", PropType.Fence, "a fence of Route 3's nursery yard"),
         Thing("slide", PropType.Statue, "a slide in Route 3's nursery yard"),
@@ -355,11 +355,11 @@ public static partial class WorldModels
         Furniture("d1shelf01", PropType.Bookshelf, "a shelf of the Dreamyard's ruined laboratory"),
 
         // ---------------------------------------------------------------- Black City and Route 15 (plan 22 · U10, part g)
-        // Black City is built as Castelia's towers (Metropolis), until a row of the style guide's "Buildings" is written for it
-        Built("bc_build_s1", BuildingKind.Apartments, "a dark tower of Black City", Architecture.Metropolis),
-        Built("bc_house_s1", BuildingKind.House, "a house of Black City", Architecture.Metropolis),
-        Built("bc_shop_s1", BuildingKind.Shop, "a shop of Black City's market street", Architecture.Metropolis),
-        Built("bc_mugen_s1", BuildingKind.Tower, "the Black Tower, whose challenge is not open", Architecture.Metropolis),
+        // Black City's dark blocks are its own way of building (Nightfall, plan 22 · U10, part h)
+        Built("bc_build_s1", BuildingKind.Apartments, "a dark tower of Black City", Architecture.Nightfall),
+        Built("bc_house_s1", BuildingKind.House, "a house of Black City", Architecture.Nightfall),
+        Built("bc_shop_s1", BuildingKind.Shop, "a shop of Black City's market street", Architecture.Nightfall),
+        Built("bc_mugen_s1", BuildingKind.Tower, "the Black Tower, whose challenge is not open", Architecture.Nightfall),
         Built("palpark", BuildingKind.Lab, "the Poké Transfer Lab on Route 15, shut", Architecture.Storehouse),
         Ground("door_h5_in", "a door of the Black Tower's lobby (the warp's tile draws it)"),
         Ground("h05_elevator", "the Black Tower's lift in its lobby, not running (no model of its own)"),

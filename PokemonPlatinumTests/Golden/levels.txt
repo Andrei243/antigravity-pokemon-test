@@ -2937,7 +2937,7 @@ trainers 5, 44-47: unova_battle_girl_tia 47, unova_black_belt_drago 47, unova_bl
 === seaside_cave_2
 Seaside Cave
 grass 39-42
-trainers 1, 47: unova_battle_girl_maki 47
+trainers 2, 47: unova_battle_girl_maki 47, unova_black_belt_rich 47
 === sendoff_spring
 Sendoff Spring
 grass 37-40

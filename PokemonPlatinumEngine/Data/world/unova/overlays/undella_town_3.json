@@ -1,7 +1,8 @@
 {
   // The visitors' house of Undella Town (plan 22 · U7, part b): Black 2 fills it with holiday-makers who change with the season and
   // the day, our words. Four of them are here every day (0 to 3), the three of the other seasons' draw (4 to 6) are not
-  // (FLAG_UNOVA_HIDE_UNDELLA_SPARE)
+  // (FLAG_UNOVA_HIDE_UNDELLA_SPARE). Once Unova's Hall of Fame is entered Cynthia (1) holidays here in the socialite's (6) place and
+  // battles once a day (undella_town_3.txt; plan 22 · U10, part h)
   "area": "undella_town_3",
   "bgmTrack": "unova/undella",
   "people": {
@@ -13,11 +14,11 @@
       ]
     },
     "1": {
-      "name": "Socialite",
-      "npcType": "socialite",
-      "dialog": [
-        "Everyone who is anyone holidays in Undella Town. Don't you agree?"
-      ]
+      "name": "Cynthia",
+      "npcType": "cynthia",
+      "script": "Cynthia",
+      "shownBy": "UnovaHallOfFame",
+      "still": true
     },
     "2": {
       "name": "Boy",
@@ -50,11 +51,11 @@
       ]
     },
     "6": {
-      "name": "Tourist",
-      "npcType": "pokefan_f",
-      "hiddenBy": "FLAG_UNOVA_HIDE_UNDELLA_SPARE",
+      "name": "Socialite",
+      "npcType": "socialite",
+      "hiddenBy": "UnovaHallOfFame",
       "dialog": [
-        "Winter is quiet in Undella. I like it that way."
+        "Everyone who is anyone holidays in Undella Town. Don't you agree?"
       ]
     }
   }

@@ -83,6 +83,16 @@
           "{rival}"
         ]
       }
+    },
+    "hugh_home": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
     }
   },
   "signs": {}
