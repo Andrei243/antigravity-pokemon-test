@@ -173,7 +173,7 @@ internal static partial class BuildingArt
             // Black City's blocks: Castelia's panel blocks in the dark, their ribbon windows lit
             Architecture.Nightfall => new BuildingStyle
             {
-                Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = Rgb(66, 62, 82), Storeys = 2, Window = WindowKind.Ribbon,
+                Wall = WallKind.DarkPanel, Roof = RoofShape.Flat, RoofColor = Rgb(66, 62, 82), Storeys = 2, Window = WindowKind.Ribbon, Band = true,
                 Home = true, Accent = roof ?? Rgb(52, 48, 72), Gear = RoofGear.Vents
             },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }

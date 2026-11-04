@@ -59,7 +59,9 @@ public static class Bw2Cover
         // pillars of the League's rooms were planks too. A pillar says nothing of the ground it stands on)
         ("hasira|hashira", null),
         ("^taki|^sea_zanami|^sea_simi|^shore|^ike\\d|^mizu|kawa|gawa|^sea_|nagare|asase|_zan\\d|mizo|suimon|foun", TerrainCover.Water),   // falls, surf, ponds, rivers, shallows, the sea, ditches, sluices, fountains
-        ("marsh", TerrainCover.Marsh),
+        // (plan 22 · U10, the last part, judged with --chunk on the Moor of Icirrus's four chunks: sp_o11m and its kin are the moor's
+        // mud and its pools; blocked and nameless they were taken for trees, and a pine stood in the moor's water)
+        ("marsh|^sp_o11m", TerrainCover.Marsh),
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock
         ("^\\d*ki\\d|_ki\\d|^mori|plant", TerrainCover.Tree),    // the trees of every kind (ki02, ki03, the battle's 54ki, C12_ki02), woods, plants
         ("^iwa|_iwa|ishi|isi\\d", TerrainCover.Boulder),          // rocks and stones
@@ -181,6 +183,7 @@ public static class Bw2Cover
         bool piers = chunk.StartsWith("castelia_", StringComparison.Ordinal) || chunk.StartsWith("plasma_frigate", StringComparison.Ordinal)
             || chunk.StartsWith("anville_town", StringComparison.Ordinal);
         bool frigate = chunk.StartsWith("plasma_frigate", StringComparison.Ordinal);
+        bool twist = chunk.Contains("_m_dun070", StringComparison.Ordinal) || chunk.StartsWith("winter070", StringComparison.Ordinal);
 
         // Tiles under a building's box (a room has none: its props are its furniture, numbered as the rooms' are)
         var buildings = new bool[w * h];
@@ -224,6 +227,9 @@ public static class Bw2Cover
                 // unnamed tiles took the lawn of the nearest ground)
                 // (and its walls, out70_kabe, are its bulwarks, not railings on a lawn)
                 if (frigate && pick == TerrainCover.Fence) pick = TerrainCover.Building;
+                // (and Twist Mountain's floor, `yuka_001` and `yuka_002`, is the cave's own earth, not a street's slabs: plan 22 ·
+                // U10, the last part, judged with --chunk on its chunks alone, spring's dun07 and winter's winter07)
+                if (twist && pick == TerrainCover.Paving) pick = TerrainCover.CaveFloor;
                 result[i] = pick ?? (frigate ? TerrainCover.Paving : TerrainCover.Unknown);
             }
         return result;
