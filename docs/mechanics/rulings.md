@@ -3689,6 +3689,23 @@ or beaten (`FLAG_UNOVA_FOUGHT_<SPECIES>`), back the next time its place is come 
   (Accumula), Driftveil (Nacrene), Route 19 (Routes 1 and 2), Route 4 (Route 3), Lostlorn Forest (Pinwheel Forest), the Relic
   Passage (the Dreamyard) and the Seaside Cave (Wellspring Cave), until plan 05 writes `nuvema`, `accumula`, `striaton`, `nacrene`.
 
+## Black City, Route 15 and the Marvelous Bridge (2026-11-04, plan 22 · U10, part g)
+
+- **The version.** Black 2's: Black City stands beyond Route 14's gate, and White 2's White Forest is not in the game, as the
+  plan's decision 4 recommends and every chapter since U2 has read Black 2 wherever the two differ.
+- **What is open.** Route 14's gate to Black City (warp unlocked) and Black 2's two gate houses round the city (`black_gate`,
+  `black_gate_gate`); Black City's street, one of its houses, its Pokémon Center and the Black Tower's lobby; Route 15 with its
+  house, its trainers (Black 2's teams) and its two Strength boulders; the Marvelous Bridge with its two gate houses
+  (`bridge_gate_gate_6` and `_7`), on to Route 16, whose gate east now leads on. All open from the start, as Black 2's are. The
+  walk of the whole game finds them from Undella Town by Route 14 and from Nimbasa City by Route 16.
+- **What stays shut.** The Black Tower beyond its lobby (Black 2's facility, whose clerks are left out and whose way up leads
+  nowhere until its challenge is built), the Poké Transfer Lab off Route 15 (Black 2's link with the older games, which this game
+  has no cartridge for), and Black City's other rooms. Black 2's people of scenes (the gate house's crowd of backers, two of the
+  street's) are left out.
+- **Buildings and songs.** Black City's towers, houses and shops are Castelia's (`Architecture.Metropolis`), as the city's dark
+  towers come nearest to them, until a row of the style guide's "Buildings" is written for it. The songs stand in: Castelia's for
+  the city and its rooms, Undella's for the gates, Route 13's for Route 15 and the Village Bridge's for the Marvelous Bridge.
+
 ## The Hidden Grottoes (2026-11-02, plan 22 · U11)
 
 Black 2's Hidden Grottoes are hollows in the trees that hold one thing at a time. The decompilation has the grotto's own room
