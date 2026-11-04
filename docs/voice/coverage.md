@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10356 | 9891 | 465 | 17 | 0 |
+| Scripts (`script:`) | 10364 | 9899 | 465 | 17 | 0 |
 | People of the world (`world:`) | 7663 | 7601 | 62 | 4 | 0 |
-| **All** | 19496 | 18927 | 569 | 22 | 0 |
+| **All** | 19504 | 18935 | 569 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,16 +21,16 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 250 |
-| a question's answers | 780 |
+| a question's answers | 783 |
 | a sign | 1663 |
 | the game's own voice (speaker none) | 283 |
-| the game's own voice (text) | 1677 |
+| the game's own voice (text) | 1684 |
 
 ## The cast
 
-- Named characters: 400 voices (363 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 401 voices (364 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
-- Archetypes in use: 241, with 728 voices to cast (V5).
+- Archetypes in use: 240, with 725 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1898.
 
 ## Lines by voice
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:youngster (any)` | 417 | 21 |
 | `look:clerk (any)` | 401 | 10 |
 | `look:lass (any)` | 343 | 11 |
-| `look:attendant (any)` | 321 | 12 |
+| `look:attendant (any)` | 325 | 12 |
 | `look:nurse (any)` | 261 | 0 |
 | `look:gym_guide (any)` | 203 | 1 |
 | `look:scientist (any)` | 201 | 4 |

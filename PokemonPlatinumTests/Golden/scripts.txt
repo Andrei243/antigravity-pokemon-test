@@ -22387,6 +22387,29 @@ way 1, from answer 1
 from Bugsy at 58,39 of NationalPark
 way -
   Bugsy> Sundays there's no contest, so I get the whole park to myself. Well, me and every Bug Pokémon in the grass.
+=== nature_preserve.Haxorus
+from Haxorus at 41,35 of NaturePreserve
+way -
+=== nature_preserve.Pilot
+from Pilot at 19,34 of NaturePreserve
+way 0
+  Pilot> This island's kept wild on purpose. Nobody lives here, so the Pokémon grow as they please.
+  Pilot> Shall I fly you back to Mistralton City?
+  Pilot> Buckle up! Mistralton Cargo Service, homeward bound.
+  > The plane lifts off the island's strip and swings out over the sea...
+  > The preserve's woods shrink behind the tail, and Mistralton's runway comes up to meet the wheels.
+  ? Shall I fly you back to Mistralton City? = Yes
+  * scene nature_preserve.The flight home from the Nature Preserve
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp Unova 108 305
+  * fade in
+  + seen nature_preserve.The flight home from the Nature Preserve
+way 1, from answer 1
+  Pilot> Take your time. I'll wait by the plane.
+  ? Shall I fly you back to Mistralton City? = No
 === navel_rock_bottom.Lugia
 from Lugia at 11,13 of NavelRock_Bottom
 way 0

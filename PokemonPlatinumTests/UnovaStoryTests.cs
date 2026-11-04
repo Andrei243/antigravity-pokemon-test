@@ -3016,6 +3016,7 @@ public class UnovaStoryTests
     [InlineData("CelestialTower_Summit", 16, 23, "0", "celestial_tower", "Mesprit", 65)]
     [InlineData("GiantChasm_Cavern", 15, 18, "kyurem_rest", "giant_chasm_6", "Kyurem", 70)]
     [InlineData("AbundantShrine", 22, 16, "landorus", "abundant_shrine", "Landorus", 70)]
+    [InlineData("NaturePreserve", 41, 36, "1", "nature_preserve", "Haxorus", 60)]
     public void ALegendaryWaitsOnItsRoadOnceTheHallOfFameIsEnteredAndIsGoneOnceFought(string map, int x, int y, string key, string area, string species, int level)
     {
         var game = PastTheChasm();
@@ -3038,6 +3039,34 @@ public class UnovaStoryTests
         Assert.True(game.Story.Has(fought));
         game.Arrive(map, x, y);
         Assert.Null(game.Present(key, area));
+    }
+
+    // ---- Plan 22 · U10, part h: the Nature Preserve, by the Cargo Service's plane ------------------------------------------
+
+    [Fact]
+    public void TheCargoServiceFliesAChampionToTheNaturePreserveAndItsPilotFliesThemBack()
+    {
+        var game = PastTheChasm();
+        game.Story.SetVar("VAR_UNOVA_MISTRALTON", 4);
+        // before the Hall of Fame the counter sells Lentimas Town alone
+        game.Arrive("MistraltonCity_CargoHall", 14, 19);
+        game.Answers.Add(1);
+        var before = game.Talk("6", "mistralton_city_3");
+        Assert.DoesNotContain(before.Log, l => l.StartsWith("warp NaturePreserve"));
+        // a Champion is asked where to, and the preserve is the second answer
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("MistraltonCity_CargoHall", 14, 19);
+        game.Answers.Add(1);
+        var there = game.Talk("6", "mistralton_city_3");
+        Assert.Contains(there.Log, l => l.StartsWith("warp NaturePreserve 19 33"));
+        Assert.Equal("NaturePreserve", game.Map.Name);
+        Assert.False(game.Map.IsSolid(19, 33));
+        Assert.NotNull(game.Present("1", "nature_preserve"));
+        // the pilot by the plane flies them home to Mistralton City
+        game.Answers.Add(0);
+        var home = game.Talk("0", "nature_preserve");
+        Assert.Contains(home.Log, l => l.StartsWith("warp Unova 108 305"));
+        Assert.Equal("Unova", game.Map.Name);
     }
 
     [Fact]

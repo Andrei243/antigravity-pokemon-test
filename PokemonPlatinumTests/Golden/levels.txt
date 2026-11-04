@@ -1550,6 +1550,11 @@ trainers 4, 30-32: hoenn_grunt_mt_pyre_1 32, hoenn_grunt_mt_pyre_2 32, hoenn_gru
 National Park
 grass 10-14
 trainers 4, 12-17: johto_lass_krise 17, johto_pokefan_beverly 16, johto_pokefan_m_william 16, johto_school_kid_m_jack 15
+=== nature_preserve
+Nature Preserve
+grass 56-59
+surf 45-60
+super rod 1-100
 === new_bark
 New Bark Town
 surf 10-25
