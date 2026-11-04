@@ -214,7 +214,13 @@ public partial class BattleEngine
     // What is still to be shown: lines that wait to be read, and things that happen between them
     private abstract record Step;
     /// <param name="Speaker">Who says the line, named on a pill over it (a trainer's line in battle, plan 11 · C12); null for the battle's own.</param>
-    private sealed record Line(string Text, Action? OnShow, string? Speaker = null) : Step;
+    private sealed record Line(string Text, Action? OnShow, string? Speaker = null, SpokenLine? Voice = null) : Step;
+
+    /// <summary>
+    /// The voices of the battle's message box (plan 26 · V6): a trainer's line in their voice (plan 11 · C12's), the
+    /// battle's own lines in nobody's. The game sets its mode and pack from the options; off, nothing is heard.
+    /// </summary>
+    public VoiceTalk Voice { get; } = new();
     private sealed record Happening(Action Do) : Step;
     private readonly Queue<Step> steps = new();
     private bool playingTheLog;
@@ -631,6 +637,8 @@ public partial class BattleEngine
                     currentMessage = line.Text;
                     CurrentSpeaker = line.Speaker;
                     waitingForMessageConfirm = true;
+                    // A trainer's line starts its voice as it appears (plan 26 · V6); the battle's own lines are nobody's
+                    Voice.Start(line.Voice);
                     HUD.MenuState = BattleMenuState.Message;
                     line.OnShow?.Invoke();
                     // Battle Style Shift's line is its question: Yes and No come up beside it as it is written, with
@@ -1186,7 +1194,8 @@ public partial class BattleEngine
                     // again once it has been read (plan 11 · C13): the second of two trainers at their own edge
                     bool second = Trainers.Count > 1 && (ReferenceEquals(Trainers[1], speaker) || Trainers[1].Id == speaker.Id && Trainers[0].Id != speaker.Id);
                     Action? stepBack = Scene ? () => Anim.StepBack(second, said.Face, said.Gesture) : null;
-                    interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name)));
+                    interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name),
+                        VoiceCatalogue.BattleLine(VoiceCast.Default, speaker.Id, VoiceCatalogue.MomentOf(reacts.Cue), said.Text, speaker.Name, speaker.TrainerClass)));
                     if (Scene) interlude.Enqueue(new Happening(Anim.SendOffSpeaker));
                 }
                 break;
@@ -1240,6 +1249,9 @@ public partial class BattleEngine
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);
+        // A trainer's line is spoken in their voice, and their mouth moves with it (plan 26 · V6)
+        Voice.Advance(dt);
+        if (Anim.Speaking is { } speaking) speaking.MouthOpen = Voice.MouthOpen;
 
         // AUTO plays the battle for the player while it runs (plan 12 · Q12); a press still reads a line on
         if (AutoRunning && waitingForMessageConfirm && ConfirmPressed)
@@ -1261,7 +1273,7 @@ public partial class BattleEngine
             {
                 ConfirmMessage();
             }
-            else if (AutoAdvanceAfter is { } pause && HUD.LevelUp == null)
+            else if (AutoAdvanceAfter is { } pause && HUD.LevelUp == null && !Voice.IsSpeaking)
             {
                 // A whole line goes on by itself after its pause (plan 08 · P2); a level's panel and a question wait to be read
                 autoAdvanceWaited += dt;
@@ -1321,6 +1333,9 @@ public partial class BattleEngine
             return;
         }
         if (!waitingForMessageConfirm) return;
+        // LET VOICES FINISH holds a spoken line until its voice has said it (plan 26 · V6); otherwise the press cuts it
+        if (Voice.LetFinish && Voice.IsSpeaking) return;
+        Voice.Cut();
 
         // A growth still playing (its trainer's call included) holds the lines until it is over (plan 25 · YD6): the
         // line read stays in the box, and its sound, cry and form keep their own beats through the hold

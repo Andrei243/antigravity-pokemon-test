@@ -48,18 +48,29 @@ public sealed partial class ScriptRunner
     /// character's, the rival's class, their class's or look's archetype by a hash of where they stand. Nobody for a
     /// Pokémon (its cry is its voice) or for no one.
     /// </summary>
-    private string? VoiceOfPerson(NPC? who)
+    private string? VoiceOfPerson(NPC? who) => VoiceOf(who, place, CastNow);
+
+    /// <summary>The place the script runs in, which a person whose lines name none of their own is cast by.</summary>
+    public string Place => place;
+
+    /// <summary>
+    /// A person's voice as the runner gives it (plan 26 · V6 asks it of whoever stands on the map, to find whose mouth
+    /// moves): <paramref name="place"/> is where they are when their lines name no place of their own.
+    /// </summary>
+    public static string? VoiceOf(NPC? who, string place, VoiceCast cast)
     {
         if (who == null || who.NpcType == NPC.PokemonType || who.IsThing) return null;
         string? trainerClass = who.TrainerData is { } t && t.TrainerClass is { Length: > 0 } c && c != "Trainer" ? c : null;
-        return Settle(CastNow.ForPerson(who.LinesPlace ?? place, who.LinesKey ?? who.Key ?? "", who.Name, who.TrainerData?.Name, trainerClass,
+        return Settle(cast, cast.ForPerson(who.LinesPlace ?? place, who.LinesKey ?? who.Key ?? "", who.Name, who.TrainerData?.Name, trainerClass,
             who.NpcType, trainerClass != null && TrainerDatabase.IsRival(trainerClass)));
     }
 
     /// <summary>A voice that chooses at run time (the assistant: the boy or the girl the player isn't) settled now.</summary>
-    private string? Settle(string? voice)
+    private string? Settle(string? voice) => Settle(CastNow, voice);
+
+    private static string? Settle(VoiceCast cast, string? voice)
     {
-        if (voice == null || !CastNow.File.Voices.TryGetValue(voice, out var entry) || entry.Chooses is not { Count: >= 2 } two) return voice;
+        if (voice == null || !cast.File.Voices.TryGetValue(voice, out var entry) || entry.Chooses is not { Count: >= 2 } two) return voice;
         return PlayerIdentity.Look == PlayerLook.Boy ? two[1] : two[0];
     }
 

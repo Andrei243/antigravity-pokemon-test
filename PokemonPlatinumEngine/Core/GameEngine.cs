@@ -1158,6 +1158,8 @@ public partial class GameEngine
             // The titans' clash turns its weather by the field's own clock (plan 21 · H8, part b)
             flow.Map.WeatherClock = world.Life.Now;
             world.RunCamera(dt);
+            // A speaker's mouth moves with the syllables of their voice (plan 26 · V6)
+            world.Talking = SpeakerNow();
             // The set pieces playing are heard as they go, by the field's own clock (plan 09 · L12)
             RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
@@ -1304,6 +1306,7 @@ public partial class GameEngine
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
                     flow.Battle.AutoOn = Settings.AutoBattle; // plan 12 · Q12
+                    UseVoices(flow.Battle.Voice); // plan 26 · V6
                     flow.Battle.Update(dt * Pace);
                     // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);

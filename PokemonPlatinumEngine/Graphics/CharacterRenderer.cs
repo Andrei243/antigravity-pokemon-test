@@ -30,7 +30,7 @@ internal static class CharacterRenderer
                 // A layered look's clothes, a mesh of their own over the body
                 rig.ClothesBody?.Draw(context.ToonSkinned, rig.Skin, model);
                 if (drawFace && rig.FaceModel != null && rig.FaceMaterials.Length > 0)
-                    rig.FaceModel.Draw(rig.FaceMaterial(CharacterAnimation.ExpressionOf(pose), pose.Blink), rig.Skin, model);
+                    rig.FaceModel.Draw(rig.FaceMaterial(CharacterAnimation.ExpressionOf(pose), pose.Blink, pose.MouthOpen), rig.Skin, model);
                 break;
             case CharacterPass.Outline:
                 // A shell round the body, showing only its inside: a rim round the silhouette

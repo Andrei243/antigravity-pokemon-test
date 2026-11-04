@@ -207,7 +207,7 @@ int Lexicon()
     foreach (var e in lexicon.File.Entries.Where(e => !VoiceLexicon.WellMade(e.Say))) Console.WriteLine($"wrong: {e.Name}'s respelling '{e.Say}' is not syllables of letters with one in capitals");
     var cast = GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath));
     var candidates = PokemonPlatinumEngine.Data.PokemonDatabase.Everyone().Select(s => s.Name)
-        .Concat(cast.Names.Keys.Where(n => !n.Contains('{') && !n.Contains(' ')));
+        .Concat(cast.Names.Where(n => !VoiceCast.IsArchetype(n.Value) && !n.Key.Contains('{') && !n.Key.Contains(' ')).Select(n => n.Key));
     var missing = lexicon.Missing(CatalogueNow(), candidates);
     Console.WriteLine($"{lexicon.File.Entries.Count} names in the list; {missing.Count} names the lines say are not, the most said first:");
     foreach (var (name, lines) in missing.Take(int.TryParse(Option("--top"), out int top) ? top : 60)) Console.WriteLine($"  {name} ({lines} lines)");

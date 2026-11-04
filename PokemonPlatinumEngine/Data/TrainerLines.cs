@@ -70,12 +70,15 @@ public static class TrainerLines
     public static bool IsStem(string key) => key.EndsWith('*');
 
     /// <summary>The set of lines of a trainer by their id: their own, or the longest stem their id begins with; null for none.</summary>
-    public static TrainerLineSet? SetOf(string? id)
+    public static TrainerLineSet? SetOf(string? id) => KeyOf(id) is { } key ? File.Value[key] : null;
+
+    /// <summary>The file's key a trainer's lines are found under (their id, or the longest stem it begins with), or null: what plan 26's voice keys are made of.</summary>
+    public static string? KeyOf(string? id)
     {
         if (string.IsNullOrEmpty(id)) return null;
-        if (File.Value.TryGetValue(id, out var own)) return own;
-        return File.Value.Where(e => IsStem(e.Key) && id.StartsWith(e.Key[..^1], StringComparison.OrdinalIgnoreCase))
-            .OrderByDescending(e => e.Key.Length).Select(e => e.Value).FirstOrDefault();
+        if (File.Value.ContainsKey(id)) return File.Value.Keys.First(k => string.Equals(k, id, StringComparison.OrdinalIgnoreCase));
+        return File.Value.Keys.Where(k => IsStem(k) && id.StartsWith(k[..^1], StringComparison.OrdinalIgnoreCase))
+            .OrderByDescending(k => k.Length).FirstOrDefault();
     }
 
     /// <summary>What a trainer says at a moment, or null when they have nothing to say then.</summary>

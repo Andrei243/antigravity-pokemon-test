@@ -72,7 +72,8 @@ public sealed class VoiceTests
         var seen = new HashSet<string>(StringComparer.Ordinal);
         // (a person's id may hold a dot of its own: Unova's overlays name a room's people by the room, aspertia_city_2.Mom;
         // and an introduction's region is its id, Sinnoh)
-        var key = new Regex(@"^(script:[^#]+#\d+\.\d+|(world|map):[^.]+\..+\.(dialog|before|after)\.\d+|intro:[A-Za-z]+\.[A-Za-z]+\.0)$");
+        // (and since plan 26 · V6 a trainer's line in battle, by trainer-lines.json's key, which may be a stem with its *)
+        var key = new Regex(@"^(script:[^#]+#\d+\.\d+|(world|map):[^.]+\..+\.(dialog|before|after)\.\d+|intro:[A-Za-z]+\.[A-Za-z]+\.0|battle:[a-z0-9_]+\*?\.(lastPokemon|firstDown|lowHp|giant)\.0)$");
         foreach (var line in Game.Value.Built.Lines)
         {
             Assert.True(seen.Add(line.Key), $"two lines are keyed {line.Key}");

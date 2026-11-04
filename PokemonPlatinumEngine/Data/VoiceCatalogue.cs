@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Story;
 
@@ -185,11 +186,21 @@ public static class VoiceCatalogue
         foreach (var region in RegionDatabase.All)
         {
             if (region.Professor is not { Name.Length: > 0 } professor) continue;
-            string? voice = cast.ForSpeaker("", professor.Name, "intro/" + region.Id);
+            string? voice = IntroVoice(cast, professor.Name, region.Id);
             if (voice == null) { voice = VoiceCast.Self; result.Unlisted.TryAdd(professor.Name, $"regions/{region.Id}.json"); }
             foreach (var property in typeof(RegionIntroLines).GetProperties())
                 if (property.GetValue(professor.Lines) is string { Length: > 0 } line)
-                    result.Lines.Add(Make($"intro:{region.Id}.{property.Name}.0", voice, professor.Name, line, _ => null));
+                    result.Lines.Add(Make(IntroKey(region.Id, property.Name), voice, professor.Name, line, _ => null));
+        }
+
+        // What trainers say in battle (plan 11 · C12; plan 26 · V6): each set of trainer-lines.json, a line to a moment
+        foreach (var (setKey, set) in TrainerLines.All.OrderBy(e => e.Key, StringComparer.Ordinal))
+        {
+            var trainer = TrainerFor(setKey);
+            string voice = BattleVoice(cast, setKey, trainer?.Name, trainer?.Class);
+            foreach (var (moment, line) in new[] { ("lastPokemon", set.LastPokemon), ("firstDown", set.FirstDown), ("lowHp", set.LowHp), ("giant", set.Giant) })
+                if (line is { Text.Length: > 0 })
+                    result.Lines.Add(Make(BattleKey(setKey, moment), voice, trainer?.Name, line.Text, _ => null));
         }
 
         CountSigns(result);
@@ -210,6 +221,54 @@ public static class VoiceCatalogue
         if (made.Variants.Count > 0) line.Variants = made.Variants.Select(v => new VoiceVariant { Key = v.Key, Spoken = v.Spoken }).ToList();
         return line;
     }
+
+    /// <summary>The key of a trainer's line in battle: <c>battle:leader_roark.lowHp.0</c>, by trainer-lines.json's key (an id, or a stem with its <c>*</c>) and the moment.</summary>
+    public static string BattleKey(string setKey, string moment) => $"battle:{setKey}.{moment}.0";
+
+    /// <summary>The moment of a Champion's words as their Pokémon grows into a giant (plan 25 · YD6).</summary>
+    public const string GiantMoment = "giant";
+
+    /// <summary>The moment's name a battle key is made with.</summary>
+    public static string MomentOf(TrainerCue cue) => cue switch
+    {
+        TrainerCue.LastPokemon => "lastPokemon",
+        TrainerCue.FirstDown => "firstDown",
+        _ => "lowHp"
+    };
+
+    /// <summary>
+    /// The voice of a trainer's lines in battle: the rival's for the rival's class, a named character's by their name
+    /// (Roark is <c>roark</c>), else their class's archetype, by the lines' key, the same in every battle they fight.
+    /// </summary>
+    public static string BattleVoice(VoiceCast cast, string setKey, string? trainerName, string? trainerClass)
+    {
+        string? cls = trainerClass is { Length: > 0 } c && c != "Trainer" ? c : null;
+        return cast.ForPerson("battle", setKey, "", trainerName, cls, null, cls != null && TrainerDatabase.IsRival(cls));
+    }
+
+    /// <summary>A trainer's line as the battle's box speaks it (plan 26 · V6), or null where the lines name no set.</summary>
+    public static SpokenLine? BattleLine(VoiceCast cast, string? trainerId, string moment, string english, string? trainerName, string? trainerClass)
+    {
+        if (TrainerLines.KeyOf(trainerId) is not { } setKey) return null;
+        // The voice is the set's, as the catalogue gave it: a stem's trainers are one voice whoever of them is fought
+        var trainer = TrainerFor(setKey);
+        return new SpokenLine(BattleKey(setKey, moment), english, BattleVoice(cast, setKey, trainer?.Name ?? trainerName, trainer?.Class ?? trainerClass));
+    }
+
+    /// <summary>The trainer a set of lines is for: its id's, or the first whose id its stem begins.</summary>
+    private static TrainerRecord? TrainerFor(string setKey)
+    {
+        if (!TrainerLines.IsStem(setKey)) return TrainerDatabase.Get(setKey);
+        string stem = setKey[..^1];
+        return TrainerDatabase.All.Concat(TrainerDatabase.Ours).Where(t => t.Id.StartsWith(stem, StringComparison.OrdinalIgnoreCase))
+            .OrderBy(t => t.Id, StringComparer.Ordinal).FirstOrDefault();
+    }
+
+    /// <summary>The key of a line of a region's introduction: <c>intro:Sinnoh.World.0</c> (the region file's property's name).</summary>
+    public static string IntroKey(string region, string line) => $"intro:{region}.{line}.0";
+
+    /// <summary>The voice of a region's professor in its introduction, by name; null where the cast has none.</summary>
+    public static string? IntroVoice(VoiceCast cast, string professor, string region) => cast.ForSpeaker("", professor, "intro/" + region);
 
     /// <summary>Eight hexadecimal digits of the line's English (<see cref="VoiceCast.Hash32"/>).</summary>
     public static string HashOf(string english) => VoiceCast.Hash32(english).ToString("x8");

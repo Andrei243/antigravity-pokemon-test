@@ -42,6 +42,9 @@ internal struct CharacterPose
 
     public Expression Expression;
 
+    /// <summary>The mouth open with a syllable of the speaker's voice (plan 26 · V6), in whatever face <see cref="Expression"/> gives.</summary>
+    public bool MouthOpen;
+
     /// <summary>How they are set (plan 11 · C7): standing, sitting on a seat or on the ground, or lying; nobody walks, hops or plays a gesture but standing.</summary>
     public Overworld.Stance Stance;
 }
@@ -115,6 +118,19 @@ internal sealed class CharacterRig
 
     /// <summary>The face material for an expression, eyes open or shut.</summary>
     public Material FaceMaterial(Expression expression, bool blink) => FaceMaterials[(int)expression * 2 + (blink ? 1 : 0)];
+
+    // The faces with the mouth open (plan 26 · V6), painted the first time a speaker asks for one, so a rig nobody hears speak pays nothing
+    internal Material?[] OpenFaceMaterials = Array.Empty<Material?>();
+    internal FieldShaders? FaceShaders;
+
+    /// <summary>The face material for an expression, eyes open or shut, the mouth open with a syllable or as the face has it.</summary>
+    public Material FaceMaterial(Expression expression, bool blink, bool mouthOpen)
+    {
+        if (!mouthOpen || FaceShaders == null) return FaceMaterial(expression, blink);
+        if (OpenFaceMaterials.Length == 0) OpenFaceMaterials = new Material?[FaceMaterials.Length];
+        int at = (int)expression * 2 + (blink ? 1 : 0);
+        return OpenFaceMaterials[at] ??= CharacterFaces.FaceMaterialOf(this, FaceShaders, expression, blink, true);
+    }
 }
 
 /// <summary>
@@ -188,13 +204,14 @@ internal static class CharacterModels
         rig.ClothesBody?.Unload();
         rig.ClothesOutline?.Unload();
         rig.FaceModel?.Unload();
-        foreach (var material in rig.FaceMaterials)
+        foreach (var material in rig.FaceMaterials.Concat(rig.OpenFaceMaterials.Where(m => m != null).Select(m => m!.Value)))
         {
             Gpu.Unload(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(material.Maps);
         }
         rig.Body = rig.Outline = rig.ClothesBody = rig.ClothesOutline = rig.FaceModel = null;
         rig.FaceMaterials = Array.Empty<Material>();
+        rig.OpenFaceMaterials = Array.Empty<Material?>();
         rig.Uploaded = false;
     }
 
@@ -265,6 +282,7 @@ internal static class CharacterModels
         {
             rig.FaceModel = SkinnedModel.Upload(rig.FacePatch, rig.Skeleton.Count, rig.FaceUVs, _ => Color.White);
             rig.FaceMaterials = CharacterFaces.Materials(rig, shaders);
+            rig.FaceShaders = shaders;
         }
         rig.Uploaded = true;
     }

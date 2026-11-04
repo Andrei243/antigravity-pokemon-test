@@ -21,13 +21,17 @@ internal static class CharacterFaces
         var result = new Material[Enum.GetValues<Expression>().Length * 2];
         foreach (var expression in Enum.GetValues<Expression>())
             foreach (bool blink in new[] { false, true })
-            {
-                var tex = Paint(rig.Style, rig.Face, expression, blink).ToTexture();
-                Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
-                Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
-                result[(int)expression * 2 + (blink ? 1 : 0)] = RenderContext.MaterialFor(shaders.CharacterSkinned, tex);
-            }
+                result[(int)expression * 2 + (blink ? 1 : 0)] = FaceMaterialOf(rig, shaders, expression, blink, false);
         return result;
+    }
+
+    /// <summary>One face texture uploaded as a skinned character material.</summary>
+    public static Material FaceMaterialOf(CharacterRig rig, FieldShaders shaders, Expression expression, bool blink, bool mouthOpen)
+    {
+        var tex = Paint(rig.Style, rig.Face, expression, blink, mouthOpen).ToTexture();
+        Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
+        Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
+        return RenderContext.MaterialFor(shaders.CharacterSkinned, tex);
     }
 
     // ------------------------------------------------------------------ smooth faces (battle)
@@ -36,7 +40,13 @@ internal static class CharacterFaces
     /// Paints a face texture. It covers the square <see cref="FaceLayout.TextureCenter"/> ± half its size on the
     /// front of the head, in model units; features are placed from the face's anchor between the eyes.
     /// </summary>
-    public static PixelCanvas Paint(CharacterStyle s, FaceLayout face, Expression expression, bool blink)
+    public static PixelCanvas Paint(CharacterStyle s, FaceLayout face, Expression expression, bool blink) => Paint(s, face, expression, blink, false);
+
+    /// <summary>
+    /// A face texture with the mouth open (plan 26 · V6) or as the expression has it: a speaker's mouth opens with each
+    /// syllable of their voice, in whatever face the line gave them.
+    /// </summary>
+    public static PixelCanvas Paint(CharacterStyle s, FaceLayout face, Expression expression, bool blink, bool mouthOpen)
     {
         const int S = TextureSize;
         var canvas = new PixelCanvas(S, S);
@@ -122,6 +132,29 @@ internal static class CharacterFaces
         // Mouth (under the moustache, if there is one)
         var m = Px(0, eyeY - (adult ? 0.085f : 0.095f) - (s.Mustache ? 0.035f : 0f));
         float mw = (adult ? 0.026f : 0.03f) * k;
+        if (mouthOpen)
+        {
+            // Speaking: an opening shaped by the face, a lip round it and the dark of the mouth inside, the tongue's
+            // light at its foot; under a moustache too, which hides a shut mouth but not an open one
+            var inside = new Color(78, 26, 40, 255);
+            var tongue = new Color(214, 104, 116, 255);
+            var (w, h, drop) = expression switch
+            {
+                Expression.Happy => (mw * 1.05f, mw * 0.8f, mw * 0.1f),
+                Expression.Surprised => (mw * 0.65f, mw * 0.85f, 0f),
+                Expression.Sad => (mw * 0.5f, mw * 0.38f, mw * 0.25f),
+                Expression.Angry => (mw * 0.95f, mw * 0.42f, 0f),
+                _ => (mw * 0.62f, mw * 0.5f, mw * 0.05f)
+            };
+            var at = m + new Vector2(0, drop);
+            AaPaint.Ellipse(canvas, at, w * 1.12f, h * 1.12f, lip);
+            AaPaint.Ellipse(canvas, at, w, h, inside);
+            AaPaint.Ellipse(canvas, at + new Vector2(0, h * 0.55f), w * 0.55f, h * 0.32f, tongue);
+            if (expression == Expression.Angry)
+                // Gritted: the top teeth's edge across the opening
+                AaPaint.Line(canvas, at + new Vector2(-w * 0.8f, -h * 0.45f), at + new Vector2(w * 0.8f, -h * 0.45f), 1.6f, Color.White);
+            return canvas;
+        }
         switch (expression)
         {
             case Expression.Happy:
@@ -154,12 +187,13 @@ internal static class CharacterFaces
     /// 3 facing left. Eyes are two texels wide and three tall with a highlight on the upper left; the mouth is
     /// a texel or three.
     /// </summary>
-    public static void Stamp(PixelCanvas sprite, Vector2 anchor, int facing, CharacterStyle s, Expression expression, bool blink)
+    public static void Stamp(PixelCanvas sprite, Vector2 anchor, int facing, CharacterStyle s, Expression expression, bool blink, bool mouthOpen = false)
     {
         if (facing == 2) return;
         var lash = PixelCanvas.Mix(s.Eyes, Ink, 0.6f);
         var iris = PixelCanvas.Light1(s.Eyes, 0.15f);
         var lip = new Color(150, 64, 70, 255);
+        var open = new Color(78, 26, 40, 255);
         int cx = (int)MathF.Floor(anchor.X);
         int ey = (int)MathF.Round(anchor.Y) - 1;
         int mouthY = ey + 5;
@@ -218,6 +252,13 @@ internal static class CharacterFaces
                 sprite.SetRaw(cx - 4, ey, lash);
                 sprite.SetRaw(cx + 4, ey, lash);
             }
+            if (mouthOpen)
+            {
+                // Speaking (plan 26 · V6): the mouth's dark, two texels tall (one, under a moustache), the eyes as the face has them
+                if (!s.Mustache) sprite.SetRaw(cx, mouthY, open);
+                sprite.SetRaw(cx, mouthY + 1, open);
+                return;
+            }
             if (s.Mustache) return;
             switch (expression)
             {
@@ -254,6 +295,11 @@ internal static class CharacterFaces
         }
         Eye(eyeX, !right);
         if (s.Lashes && !blink) sprite.SetRaw(right ? eyeX - 1 : eyeX + 2, ey, lash);
-        if (!s.Mustache) sprite.SetRaw(right ? cx - 1 : cx + 1, mouthY, lip);
+        if (mouthOpen)
+        {
+            if (!s.Mustache) sprite.SetRaw(right ? cx - 1 : cx + 1, mouthY, open);
+            sprite.SetRaw(right ? cx - 1 : cx + 1, mouthY + 1, open);
+        }
+        else if (!s.Mustache) sprite.SetRaw(right ? cx - 1 : cx + 1, mouthY, lip);
     }
 }

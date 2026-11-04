@@ -190,16 +190,17 @@ public class IntroScreen
             case IntroPhase.Greeting:
                 // He hasn't said who he is until the last line of his greeting
                 var greeting = Greeting;
-                Say("", new[] { greeting[0], greeting[1] }, () => Say(Professor, new[] { greeting[2] }, () => Enter(IntroPhase.World)));
+                Say("", new[] { greeting[0], greeting[1] }, Voices(nameof(RegionIntroLines.Hello), nameof(RegionIntroLines.Welcome)),
+                    () => Say(Professor, new[] { greeting[2] }, Voices(nameof(RegionIntroLines.MyName)), () => Enter(IntroPhase.World)));
                 break;
             case IntroPhase.World:
-                Say(Professor, World, () => Enter(IntroPhase.BallOpens));
+                Say(Professor, World, Voices(nameof(RegionIntroLines.World)), () => Enter(IntroPhase.BallOpens));
                 break;
             case IntroPhase.Alongside:
-                Say(Professor, Alongside, () => Enter(IntroPhase.BallCloses));
+                Say(Professor, Alongside, Voices(nameof(RegionIntroLines.OneOfThem), nameof(RegionIntroLines.LiveAlongside), nameof(RegionIntroLines.Study)), () => Enter(IntroPhase.BallCloses));
                 break;
             case IntroPhase.AboutYou:
-                Say(Professor, AboutYou, () => Enter(IntroPhase.ChooseLook));
+                Say(Professor, AboutYou, Voices(nameof(RegionIntroLines.Enough), nameof(RegionIntroLines.BoyOrGirl)), () => Enter(IntroPhase.ChooseLook));
                 break;
             case IntroPhase.ConfirmLook:
             case IntroPhase.ConfirmName:
@@ -207,14 +208,15 @@ public class IntroScreen
                 AnswerYes = true;
                 break;
             case IntroPhase.AskName:
-                Say(Professor, AskName, () => Enter(IntroPhase.EnterName));
+                Say(Professor, AskName, Voices(nameof(RegionIntroLines.AskName)), () => Enter(IntroPhase.EnterName));
                 break;
             case IntroPhase.EnterName:
                 if (Entry == null) Entry = new NameEntry();
                 else Entry.Reopen();
                 break;
             case IntroPhase.AskRival:
-                Say(Professor, new[] { Fill(Said.FineName) }.Concat(AboutRival), () => Enter(IntroPhase.EnterRival));
+                Say(Professor, new[] { Fill(Said.FineName) }.Concat(AboutRival),
+                    Voices(nameof(RegionIntroLines.FineName), nameof(RegionIntroLines.NextDoor), nameof(RegionIntroLines.NeverStill)), () => Enter(IntroPhase.EnterRival));
                 break;
             case IntroPhase.EnterRival:
                 if (RivalEntry == null) RivalEntry = new NameEntry();
@@ -222,10 +224,13 @@ public class IntroScreen
                 break;
             case IntroPhase.Farewell:
                 var parting = new List<string>();
-                if (NamesARival) parting.Add(Fill(Said.OfCourse));
+                var partingVoices = new List<string>();
+                if (NamesARival) { parting.Add(Fill(Said.OfCourse)); partingVoices.Add(nameof(RegionIntroLines.OfCourse)); }
                 parting.Add(Fill(Said.Story));
                 parting.Add(Shown(Said.OffYouGo));
-                Say(Professor, parting, () => Enter(IntroPhase.SendOff));
+                partingVoices.Add(nameof(RegionIntroLines.Story));
+                partingVoices.Add(nameof(RegionIntroLines.OffYouGo));
+                Say(Professor, parting, Voices(partingVoices.ToArray()), () => Enter(IntroPhase.SendOff));
                 break;
             case IntroPhase.Done:
                 IsActive = false;
@@ -233,7 +238,22 @@ public class IntroScreen
         }
     }
 
-    private void Say(string speaker, IEnumerable<string> lines, Action then) => talk.ShowDialogue(speaker, lines, then);
+    private void Say(string speaker, IEnumerable<string> lines, IReadOnlyList<SpokenLine?> voices, Action then) => talk.ShowDialogue(speaker, lines, voices, then);
+
+    /// <summary>The voices of the introduction's box (plan 26 · V6): the game sets their mode and pack as it does the field's.</summary>
+    public VoiceTalk Voice => talk.Voice;
+
+    /// <summary>
+    /// The professor's lines as the voices know them (plan 26 · V6): <c>intro:&lt;region&gt;.&lt;line&gt;.0</c>, the catalogue's
+    /// keys, the English of the region's file and the cast's voice of the professor by name.
+    /// </summary>
+    public IReadOnlyList<SpokenLine?> Voices(params string[] lines)
+    {
+        string? voice = VoiceCatalogue.IntroVoice(VoiceCast.Default, Who.Name, Region.Id);
+        return lines.Select(name => typeof(RegionIntroLines).GetProperty(name)?.GetValue(Said) is string { Length: > 0 } english
+            ? new SpokenLine(VoiceCatalogue.IntroKey(Region.Id, name), english, voice)
+            : null).ToList();
+    }
 
     /// <summary>The outfits for the look chosen, the cursor back on its own clothes.</summary>
     private void OfferOutfits()
@@ -258,6 +278,7 @@ public class IntroScreen
         time += dt;
         phaseTime += dt;
         if (talk.IsActive) talk.Type(dt);
+        talk.Voice.Advance(dt);
 
         switch (Phase)
         {
@@ -552,7 +573,8 @@ public class IntroScreen
         if (look.Professor > 0.01f)
         {
             // He waves as he says hello, and nods at the player's name
-            var pose = new CharacterPose { Time = time, Blink = blink };
+            // His mouth moves with his voice (plan 26 · V6)
+            var pose = new CharacterPose { Time = time, Blink = blink, MouthOpen = talk.Voice.MouthOpen };
             if (Phase == IntroPhase.Greeting && phaseTime < CharacterAnimation.Duration(Emote.Wave)) (pose.Emote, pose.EmoteTime) = (Emote.Wave, phaseTime);
             else if (Phase == IntroPhase.Farewell && phaseTime < CharacterAnimation.Duration(Emote.Nod)) (pose.Emote, pose.EmoteTime) = (Emote.Nod, phaseTime);
             CharacterStudio.Render(context, ProfessorLook, professorPicture, pose, yaw: look.ProfessorShift * -0.35f);
