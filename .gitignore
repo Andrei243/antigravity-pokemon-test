@@ -46,6 +46,9 @@ overrides/
 
 # Voice packs (plan 26 · V2): voice/<language>/ at the repository's root or beside the game, a separate download, never in git
 /voice/
+# The voice engine chosen by plan 26's trials: its own folder and settings on the user's machine, never in git
+/tools/VoiceGen/engine.json
+/tools/VoiceGen/env/
 
 # The data importer's hand corrections are part of the repository
 !tools/DataImporter/Overrides/

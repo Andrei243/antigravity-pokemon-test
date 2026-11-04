@@ -42,6 +42,36 @@ public sealed class CastVoice
 
     /// <summary>A voice added by <c>VoiceTool catalogue --add-missing</c> for a name nobody has cast yet: it has its own id, and nothing about how it should sound.</summary>
     public bool? Provisional { get; set; }
+
+    /// <summary>How the voice should sound (plan 26 · V4's voice design), whatever engine makes it: the brief a designed voice is chosen or tuned to.</summary>
+    public CastBrief? Brief { get; set; }
+}
+
+/// <summary>
+/// A voice's design brief (plan 26 · V4), in words any engine's settings can be chosen by: who it is, how high, how fast,
+/// and the manner. Nothing in it names or imitates a real performer.
+/// </summary>
+public sealed class CastBrief
+{
+    /// <summary>man, woman, boy or girl (a voice's register, not who the character is).</summary>
+    public string Register { get; set; } = "";
+
+    /// <summary>child, teen, young, adult, middle-aged or elder.</summary>
+    public string Age { get; set; } = "";
+
+    /// <summary>low, middle or high, for the register.</summary>
+    public string Pitch { get; set; } = "middle";
+
+    /// <summary>slow, even or quick.</summary>
+    public string Pace { get; set; } = "even";
+
+    /// <summary>The manner in a few words: "warm, dry humour, careful with words".</summary>
+    public string Manner { get; set; } = "";
+
+    public static IReadOnlyList<string> Registers { get; } = new[] { "man", "woman", "boy", "girl" };
+    public static IReadOnlyList<string> Ages { get; } = new[] { "child", "teen", "young", "adult", "middle-aged", "elder" };
+    public static IReadOnlyList<string> Pitches { get; } = new[] { "low", "middle", "high" };
+    public static IReadOnlyList<string> Paces { get; } = new[] { "slow", "even", "quick" };
 }
 
 public sealed class CastArchetype

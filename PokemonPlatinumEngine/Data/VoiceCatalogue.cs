@@ -33,7 +33,7 @@ public sealed class VoiceLine
 
     public string Status { get; set; } = StatusSpoken;
 
-    /// <summary>calm, excited, shouting, whispering, sad or smug; written by hand.</summary>
+    /// <summary>One of <c>Audio.VoiceMoods.Directions</c> (calm, excited, shouting, frustrated, quiet, laughing, whispering, sad, smug); written by hand.</summary>
     public string? Direction { get; set; }
     public string? Notes { get; set; }
 

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The sample booth (plan 26 · V3)</title>
+<!-- The sample booth (plan 26 · V3; docs/voice/recording.md). One page, opened from the file, no server. It reads the
+     passages from samples.json in the folder chosen, records from the microphone at 48 kHz in one channel with every
+     browser's processing off, keeps up to three takes of a passage, and writes the one marked best into the folder as
+     <passage>.wav (24-bit PCM). Nothing is sent anywhere. -->
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2em auto; padding: 0 1em; background: #1d1b26; color: #eee; }
+  h1 { font-size: 1.4em; } h2 { font-size: 1.1em; margin: 0; }
+  button { font: inherit; padding: .45em 1em; margin: .2em .3em .2em 0; border-radius: 6px; border: 1px solid #777; background: #33304a; color: #eee; cursor: pointer; }
+  button:disabled { opacity: .4; cursor: default; }
+  button.rec { background: #8a2a3a; } button.best { background: #2f6a3e; }
+  .passage { background: #2a2738; padding: 1em 1.2em; border-radius: 10px; margin: 1em 0; }
+  .text { font-size: 1.35em; line-height: 1.5; margin: .6em 0; }
+  .direction { color: #bbb; font-style: italic; }
+  .mood { display: inline-block; padding: .1em .6em; border-radius: 1em; background: #4a4570; font-size: .85em; margin-left: .5em; }
+  #meter { height: 14px; background: #333; border-radius: 7px; overflow: hidden; margin: .6em 0; }
+  #bar { height: 100%; width: 0; background: linear-gradient(90deg, #3c9 0%, #3c9 70%, #ec4 85%, #e44 100%); }
+  .take { margin: .3em 0; } .note { color: #aaa; font-size: .9em; }
+  #list span { display: inline-block; margin: .15em; padding: .1em .45em; border-radius: 4px; background: #333; cursor: pointer; font-size: .85em; }
+  #list span.done { background: #2f6a3e; } #list span.here { outline: 2px solid #eee; }
+</style>
+</head>
+<body>
+<h1>The rival's sample booth</h1>
+<p class="note">Read <code>docs/voice/recording.md</code> first. Chrome or Edge write straight into the folder; other
+browsers download each take for you to move there. Nothing leaves this computer.</p>
+<p>
+  <button id="folder">Choose the samples folder</button>
+  <label class="note">or open samples.json: <input type="file" id="json" accept=".json"></label>
+</p>
+<div id="list"></div>
+<div id="booth" hidden>
+  <div class="passage">
+    <h2><span id="pid"></span><span class="mood" id="pmood"></span></h2>
+    <div class="text" id="ptext"></div>
+    <div class="direction" id="pdir"></div>
+  </div>
+  <div id="meter"><div id="bar"></div></div>
+  <div class="note" id="level">Level: -</div>
+  <p>
+    <button id="prev">&larr; Previous</button>
+    <button id="record" class="rec">Record</button>
+    <button id="next">Next &rarr;</button>
+  </p>
+  <div id="takes"></div>
+  <p class="note" id="status"></p>
+</div>
+<script>
+"use strict";
+const Rate = 48000, MostTakes = 3;
+let dir = null, passages = [], at = 0, ctx = null, stream = null, recording = null, takes = {}, saved = {};
+
+const $ = id => document.getElementById(id);
+const say = text => $("status").textContent = text;
+
+$("folder").onclick = async () => {
+  if (!window.showDirectoryPicker) { say("This browser can't open a folder: open samples.json instead, and move the downloads into the folder."); return; }
+  dir = await window.showDirectoryPicker({ mode: "readwrite" });
+  const file = await (await dir.getFileHandle("samples.json")).getFile();
+  await begin(JSON.parse(await file.text()));
+  for (const p of passages) { try { await dir.getFileHandle(p.id + ".wav"); saved[p.id] = true; } catch (_) {} }
+  show();
+};
+$("json").onchange = async e => { await begin(JSON.parse(await e.target.files[0].text())); show(); };
+
+async function begin(script) {
+  passages = script.passages;
+  if (script.rate !== Rate) say("samples.json asks " + script.rate + " Hz; the booth records " + Rate + " Hz.");
+  stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, sampleRate: Rate, echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+  ctx = new AudioContext({ sampleRate: Rate });
+  const source = ctx.createMediaStreamSource(stream);
+  const node = ctx.createScriptProcessor(4096, 1, 1);
+  node.onaudioprocess = e => {
+    const input = e.inputBuffer.getChannelData(0);
+    let peak = 0;
+    for (let i = 0; i < input.length; i++) peak = Math.max(peak, Math.abs(input[i]));
+    const db = 20 * Math.log10(Math.max(peak, 1e-6));
+    $("bar").style.width = Math.max(0, Math.min(100, (db + 60) / 60 * 100)) + "%";
+    $("level").textContent = "Level: " + db.toFixed(1) + " dB (aim for about -12 at the loudest; never 0)";
+    if (recording) recording.push(new Float32Array(input));
+  };
+  source.connect(node);
+  node.connect(ctx.destination);
+  $("booth").hidden = false;
+}
+
+function show() {
+  const p = passages[at];
+  $("pid").textContent = p.id; $("pmood").textContent = p.mood;
+  $("ptext").textContent = p.text; $("pdir").textContent = p.direction || "";
+  $("list").innerHTML = "";
+  passages.forEach((q, i) => {
+    const s = document.createElement("span");
+    s.textContent = q.id; s.className = (saved[q.id] ? "done " : "") + (i === at ? "here" : "");
+    s.onclick = () => { at = i; show(); };
+    $("list").appendChild(s);
+  });
+  const mine = takes[p.id] || [];
+  $("takes").innerHTML = "";
+  mine.forEach((t, i) => {
+    const row = document.createElement("div"); row.className = "take";
+    const play = document.createElement("button"); play.textContent = "Play take " + (i + 1) + " (" + (t.length / Rate).toFixed(1) + " s)";
+    play.onclick = () => { const b = ctx.createBuffer(1, t.length, Rate); b.copyToChannel(t, 0); const s = ctx.createBufferSource(); s.buffer = b; s.connect(ctx.destination); s.start(); };
+    const best = document.createElement("button"); best.className = "best"; best.textContent = "Keep as best";
+    best.onclick = () => keep(p.id, t);
+    row.append(play, best); $("takes").appendChild(row);
+  });
+  $("record").disabled = mine.length >= MostTakes && !recording;
+  $("record").textContent = recording ? "Stop" : (mine.length >= MostTakes ? "Three takes: keep one" : "Record");
+}
+
+$("record").onclick = () => {
+  const p = passages[at];
+  if (!recording) { recording = []; say("Recording: half a second of quiet, the passage, half a second of quiet, then Stop."); show(); return; }
+  const parts = recording; recording = null;
+  let n = 0; parts.forEach(b => n += b.length);
+  const all = new Float32Array(n); let o = 0; parts.forEach(b => { all.set(b, o); o += b.length; });
+  (takes[p.id] = takes[p.id] || []).push(all);
+  say("Take " + takes[p.id].length + " of " + p.id + ": " + (n / Rate).toFixed(1) + " s.");
+  show();
+};
+$("prev").onclick = () => { at = Math.max(0, at - 1); show(); };
+$("next").onclick = () => { at = Math.min(passages.length - 1, at + 1); show(); };
+
+async function keep(id, samples) {
+  const wav = encode(samples);
+  if (dir) {
+    const w = await (await dir.getFileHandle(id + ".wav", { create: true })).createWritable();
+    await w.write(wav); await w.close();
+    say(id + ".wav written into the folder.");
+  } else {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([wav], { type: "audio/wav" })); a.download = id + ".wav"; a.click();
+    say(id + ".wav downloaded: move it into PokemonPlatinumEngine/Data/voice/samples/rival/.");
+  }
+  saved[id] = true; show();
+}
+
+// A RIFF WAVE file of 24-bit PCM, one channel, at 48 kHz
+function encode(samples) {
+  const data = samples.length * 3, buf = new ArrayBuffer(44 + data), v = new DataView(buf);
+  const ascii = (o, s) => { for (let i = 0; i < 4; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  ascii(0, "RIFF"); v.setUint32(4, 36 + data, true); ascii(8, "WAVE"); ascii(12, "fmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, Rate, true);
+  v.setUint32(28, Rate * 3, true); v.setUint16(32, 3, true); v.setUint16(34, 24, true); ascii(36, "data"); v.setUint32(40, data, true);
+  for (let i = 0; i < samples.length; i++) {
+    const x = Math.max(-8388608, Math.min(8388607, Math.round(samples[i] * 8388607)));
+    v.setUint8(44 + i * 3, x & 255); v.setUint8(45 + i * 3, (x >> 8) & 255); v.setUint8(46 + i * 3, (x >> 16) & 255);
+  }
+  return buf;
+}
+</script>
+</body>
+</html>

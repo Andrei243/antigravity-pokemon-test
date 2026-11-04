@@ -71,10 +71,24 @@
       "provisional": true
     },
     "assistant_boy": {
-      "note": "Lucas as the assistant (the player is Dawn)."
+      "note": "Lucas as the assistant (the player is Dawn).",
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "polite and keen, a little formal, proud of his Pokédex work; never loud"
+      }
     },
     "assistant_girl": {
-      "note": "Dawn as the assistant (the player is Lucas)."
+      "note": "Dawn as the assistant (the player is Lucas).",
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "bright and friendly, helpful, a little bossy about the Pokédex; a laugh close at hand"
+      }
     },
     "avery": {
       "note": "first spoken at cinnabar_island_gym.txt(38)",
@@ -237,7 +251,15 @@
       "note": "first spoken at aspertia_city.txt(286)",
       "provisional": true
     },
-    "cheryl": {},
+    "cheryl": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "gentle and soothing, a healer's calm; a soft smile in every line"
+      }
+    },
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
       "provisional": true
@@ -493,7 +515,14 @@
     },
     "galactic_grunts": {
       "note": "first spoken at GalacticHQHall.txt(61)",
-      "provisional": true
+      "provisional": true,
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a crowd of grunts in chorus: smug, a bit nasal, more bluster than menace"
+      }
     },
     "gardenia": {},
     "ghetsis": {
@@ -741,7 +770,15 @@
       "note": "first spoken at phone.txt(231)",
       "provisional": true
     },
-    "looker": {},
+    "looker": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a detective who takes himself very seriously; hushed, theatrical, slightly odd in his phrasing"
+      }
+    },
     "lorelei": {
       "note": "first spoken at four_island_icefall_cave_back.txt(23)",
       "provisional": true
@@ -820,7 +857,15 @@
       "note": "first spoken at humilau_city.txt(54)",
       "provisional": true
     },
-    "mars": {},
+    "mars": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a Team Galactic commander: sharp, impatient, cheerfully cruel, a sing-song sneer"
+      }
+    },
     "marshal": {
       "note": "first spoken at unova_pokemon_league_7.txt(12)",
       "provisional": true
@@ -883,7 +928,14 @@
       "provisional": true
     },
     "mom": {
-      "note": "The player's mother."
+      "note": "The player's mother.",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "warm and easy-going, gently teasing, proud without fuss"
+      }
     },
     "monica": {
       "note": "first spoken at route_40.txt(19)",
@@ -1124,13 +1176,28 @@
       "clone": "Data/voice/samples/rival"
     },
     "rival_mom": {
-      "note": "The rival's mother."
+      "note": "The rival's mother.",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "brisk and fond, a little exasperated by her son; talks as she hurries"
+      }
     },
     "rivals_sister": {
       "note": "first spoken at aspertia_city.txt(51)",
       "provisional": true
     },
-    "roark": {},
+    "roark": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a miner and Gym Leader: confident, plain-spoken, steady, with a friendly challenge in it"
+      }
+    },
     "robert": {
       "note": "first spoken at phone.txt(322)",
       "provisional": true
@@ -1160,7 +1227,14 @@
       "provisional": true
     },
     "rowan": {
-      "note": "Professor Rowan, also the introduction's professor."
+      "note": "Professor Rowan, also the introduction's professor.",
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "stern and deliberate, few words, gruff with a kindness under it; a scholar's precision"
+      }
     },
     "roxanne": {
       "note": "first spoken at rustboro_city_gym.txt(12)",
