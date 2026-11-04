@@ -46,13 +46,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:grunt (any)` | 587 | 0 |
 | `look:lady (any)` | 444 | 1 |
 | `look:youngster (any)` | 417 | 21 |
-| `look:clerk (any)` | 402 | 10 |
+| `look:clerk (any)` | 403 | 10 |
 | `look:lass (any)` | 343 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 261 | 0 |
 | `look:gym_guide (any)` | 203 | 1 |
 | `look:scientist (any)` | 201 | 4 |
-| `look:receptionist (any)` | 177 | 23 |
+| `look:receptionist (any)` | 179 | 23 |
 | `cynthia` | 170 | 2 |
 | `class:ace_trainer (any)` | 160 | 0 |
 | `class:fisherman (any)` | 160 | 0 |
@@ -120,13 +120,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:backpacker (any)` | 48 | 0 |
 | `maxie` | 48 | 1 |
 | `drayden` | 46 | 0 |
-| `look:trainer (any)` | 46 | 0 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `flint` | 44 | 1 |
 | `jasmine` | 43 | 0 |
+| `look:trainer (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
 | `volkner` | 43 | 1 |
 | `backers` | 42 | 0 |
