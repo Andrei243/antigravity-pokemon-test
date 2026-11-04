@@ -1,7 +1,13 @@
 {
-  // The Skyarrow Bridge's gate on Pinwheel Forest's side (plan 22 · U10, part f), Black 2's, our words
+  // The Skyarrow Bridge's gate on Pinwheel Forest's side (plan 22 · U10, part f), Black 2's, our words. Its north door leads
+  // onto the bridge, a map of ours (Black 2's deck stands on rails), since plan 22 · U10's last part
   "area": "bridge_gate_2",
   "bgmTrack": "unova/castelia",
+  "doors": [
+    { "warp": 1, "map": "SkyarrowBridge", "x": 1, "y": 4, "facing": "Right" },
+    { "warp": 4, "map": "SkyarrowBridge", "x": 1, "y": 4, "facing": "Right" },
+    { "warp": 5, "map": "SkyarrowBridge", "x": 1, "y": 4, "facing": "Right" }
+  ],
   "people": {
     "0": { "name": "Gate Guard", "npcType": "worker", "dialog": [ "Pinwheel Forest is just outside. Keep to the path, or you'll be turned around in no time." ] },
     "1": { "name": "Clerk", "dialog": [ "The bridge's lights come on after dark. From the forest they look like a string of pearls." ] },

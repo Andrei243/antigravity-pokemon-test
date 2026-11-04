@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
 | Scripts (`script:`) | 10378 | 9913 | 465 | 17 | 0 |
-| People of the world (`world:`) | 7669 | 7607 | 62 | 4 | 0 |
-| **All** | 19646 | 19074 | 572 | 22 | 0 |
+| People of the world (`world:`) | 7673 | 7611 | 62 | 4 | 0 |
+| **All** | 19650 | 19078 | 572 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -46,7 +46,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:grunt (any)` | 587 | 0 |
 | `look:lady (any)` | 444 | 1 |
 | `look:youngster (any)` | 417 | 21 |
-| `look:clerk (any)` | 401 | 10 |
+| `look:clerk (any)` | 402 | 10 |
 | `look:lass (any)` | 343 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 261 | 0 |
@@ -79,8 +79,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `black_belt` | 99 | 14 |
 | `look:old_woman (any)` | 95 | 5 |
 | `cyrus` | 92 | 7 |
+| `look:worker (any)` | 91 | 0 |
 | `looker` | 91 | 1 |
-| `look:worker (any)` | 90 | 0 |
 | `prof_oak` | 90 | 3 |
 | `steven` | 89 | 1 |
 | `class:bug_catcher (any)` | 88 | 0 |

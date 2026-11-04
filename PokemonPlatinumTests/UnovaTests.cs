@@ -693,7 +693,23 @@ public class UnovaTests
             "WellspringCave_1F", "WellspringCave_B1F", "NacreneCity_Museum2F", "PinwheelForest_Inside", "SkyarrowGate_Pinwheel" })
             Assert.Contains(walked.Keys, m => m.Name == name);
         Assert.Contains(MapNamed("PinwheelForest_Inside").Everyone, n => n.TrainerData?.Id == "unova_nursery_aide_ethel");
-        // the bridge itself stands on rails in Black 2, with no ground: its west gate leads nowhere yet
-        Assert.DoesNotContain(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap.StartsWith("SkyarrowBridge", StringComparison.Ordinal) && w.TargetMap != "SkyarrowBridge_WestEnd" && !w.Shut);
+        // the bridge itself stands on rails in Black 2, with no ground: it is a map of ours, which the west gate leads onto
+        Assert.Contains(MapNamed("SkyarrowGate_Pinwheel").Warps, w => w.TargetMap == "SkyarrowBridge" && !w.Shut);
+    }
+
+    // Plan 22 · U10, the last part: the Skyarrow Bridge, a deck of ours over the bay, joins Castelia City's west alley and its
+    // gate to Pinwheel Forest's gate, both ways
+    [Fact]
+    public void TheSkyarrowBridgeJoinsCasteliaCityToPinwheelForest()
+    {
+        var walked = Walked.Value;
+        var bridge = walked.Single(kv => kv.Key.Name == "SkyarrowBridge");
+        Assert.Contains((1, 4), bridge.Value);
+        Assert.Contains((78, 4), bridge.Value);
+        Assert.Contains(walked.Keys, m => m.Name == "SkyarrowGate_Castelia");
+        Assert.Contains(bridge.Key.Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
+        Assert.Contains(bridge.Key.Warps, w => w.TargetMap == "SkyarrowGate_Pinwheel");
+        Assert.Contains(MapNamed("SkyarrowGate_Castelia").Warps, w => w.TargetMap == "CasteliaCity" && !w.Shut);
+        Assert.Contains(MapNamed("CasteliaCity").Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
     }
 }

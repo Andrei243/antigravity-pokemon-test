@@ -1,0 +1,23 @@
+{
+  // The Skyarrow Bridge's gate on Castelia City's side (plan 22 · U10, the last part): Black 2's room, our words. Its north
+  // door leads onto the bridge (a map of ours, as Castelia's avenue is: Black 2's deck stands on rails); its west door into
+  // the alley at the avenue's west end. The worker who stands in the bridge's doorway in Black 2 is left out: the bridge is
+  // open from the start
+  "area": "bridge_gate_gate",
+  "bgmTrack": "unova/castelia",
+  "heldBack": [ "1" ],
+  "doors": [
+    { "warp": 0, "map": "SkyarrowBridge", "x": 78, "y": 4, "facing": "Left" },
+    { "warp": 2, "map": "SkyarrowBridge", "x": 78, "y": 4, "facing": "Left" },
+    { "warp": 3, "map": "SkyarrowBridge", "x": 78, "y": 4, "facing": "Left" },
+    { "warp": 1, "map": "CasteliaCity", "x": 2, "y": 1, "facing": "Down" },
+    { "warp": 4, "map": "CasteliaCity", "x": 2, "y": 1, "facing": "Down" },
+    { "warp": 5, "map": "CasteliaCity", "x": 2, "y": 1, "facing": "Down" }
+  ],
+  "people": {
+    "0": { "name": "Gate Guard", "npcType": "worker", "dialog": [ "The Skyarrow Bridge is just through there. It's the longest bridge in Unova, so pace yourself!" ] },
+    "2": { "name": "Backer", "dialog": [ "I cheer for everyone who crosses. Go, go, go!" ] },
+    "3": { "name": "Clerk", "dialog": [ "Ships pass right under the bridge. From the deck they look like toys." ] },
+    "4": { "name": "Harlequin", "dialog": [ "I juggle on the bridge for the people walking by. The wind steals a ball now and then." ] }
+  }
+}
