@@ -1,7 +1,7 @@
 {
   // Twist Mountain's south floor (plan 22 · U10, part e), from the mouth on the mountain's foot, Black 2's, our words
   "area": "twist_mountain_3",
-  "bgmTrack": "unova/reversal_cave",
+  "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "people": {
     "1": { "name": "Cairn", "trainer": { "dialogueBefore": "Hold it! Nobody passes my rail cart without a battle!", "dialogueAfter": "Fine, pass. Mind the cart." } },

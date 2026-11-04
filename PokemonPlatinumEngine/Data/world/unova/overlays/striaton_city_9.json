@@ -1,7 +1,7 @@
 {
   // The Trainers' School of Striaton City (plan 22 · U10, part f), Black 2's, our words
   "area": "striaton_city_9",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/striaton",
   "people": {
     "0": { "name": "Ace Trainer", "dialog": [ "I teach the battle class. Today's lesson: types, types, types!" ] },
     "1": { "name": "Teacher", "npcType": "gentleman", "dialog": [ "Welcome to the Trainers' School. We teach the basics to every new Trainer." ] },

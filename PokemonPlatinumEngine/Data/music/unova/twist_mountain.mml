@@ -1,0 +1,26 @@
+# Twist Mountain (a mine wound round inside a mountain, carts and lifts and cold air): a marimba picking its way in
+# G minor over strings, with a low bass under it. It plays the same by day and by night, as the original's caves do.
+# Original composition for this game (plan 22 · U10).
+title Twist Mountain
+tempo 104
+meter 4/4
+reverb 0.4
+night none
+
+track lead marimba vol=0.72 pan=0.14 rev=0.38
+  L o4 g8 r8 b-8 r8 o5 d8 r8 o4 b-8 r8 | o5 d8 r8 c8 r8 o4 b-8 r8 g8 r8 | o4 g8 r8 b-8 r8 o5 e-8 r8 o4 b-8 r8 | o4 a8 r8 f+8 r8 d8 r8 f+8 r8 |
+  o4 g8 r8 b-8 r8 o5 d8 r8 g8 r8 | o5 e-8 r8 c8 r8 o4 g8 r8 o5 c8 r8 | o5 d8 r8 o4 a8 r8 f+8 r8 a8 r8 | o4 g4 d4 g2 |
+  o5 e-8 r8 o4 b-8 r8 g8 r8 b-8 r8 | o5 d8 r8 o4 b-8 r8 f8 r8 b-8 r8 | o5 c8 r8 e-8 r8 g8 r8 e-8 r8 | o5 f+8 r8 d8 r8 o4 a8 r8 o5 d8 r8 |
+  o5 g8 r8 d8 r8 o4 b-8 r8 o5 d8 r8 | o5 e-8 r8 o4 b-8 r8 g8 r8 b-8 r8 | o4 a8 r8 o5 d8 r8 f+8 r8 d8 r8 | o4 g4 d4 g2 |
+
+track pad strings vol=0.34 pan=-0.2 rev=0.42
+  L o3 (g b- >d)1 | o3 (g b- >d)1 | o3 (e- g b-)1 | o3 (d f+ a)1 |
+  o3 (g b- >d)1 | o3 (c e- g)1 | o3 (d f+ a)1 | o3 (g b- >d)1 |
+  o3 (e- g b-)1 | o3 (b- >d f)1 | o3 (c e- g)1 | o3 (d f+ a)1 |
+  o3 (g b- >d)1 | o3 (e- g b-)1 | o3 (d f+ a)1 | o3 (g b- >d)1 |
+
+track low contrabass vol=0.74 rev=0.2
+  L o2 g2 o3 d2 | o2 g2 o3 d2 | o2 e-2 o2 b-2 | o2 d2 o2 a2 |
+  o2 g2 o3 d2 | o2 c2 o2 g2 | o2 d2 o2 a2 | o2 g2 o3 d2 |
+  o2 e-2 o2 b-2 | o2 b-2 o3 f2 | o2 c2 o2 g2 | o2 d2 o2 a2 |
+  o2 g2 o3 d2 | o2 e-2 o2 b-2 | o2 d2 o2 a2 | o2 g2 o3 d2 |

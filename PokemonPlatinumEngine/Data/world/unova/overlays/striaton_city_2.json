@@ -2,7 +2,7 @@
   // Striaton's restaurant (plan 22 · U10, part f): Black 2's dining room, our words. The brothers' workers of scenes, its
   // Pokémon and its trigger are left out
   "area": "striaton_city_2",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/striaton",
   "people": {
     "0": { "name": "Backers", "dialog": [ "The food here is wonderful. The battles are even better." ] },
     "6": { "name": "Waitress", "dialog": [ "Welcome! The three brothers are in the kitchen. Please have a seat!" ] },

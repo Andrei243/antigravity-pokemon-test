@@ -4,7 +4,7 @@
   // Its Comet Shard's ball (0) is held back, the item not being in the game's data
   "area": "dragonspiral_tower_8",
   "heldBack": [ "0" ],
-  "bgmTrack": "unova/celestial_tower",
+  "bgmTrack": "unova/dragonspiral_tower",
   "battleArena": "Cave",
   "doors": [
     { "warp": 0, "map": "DragonspiralTower_4F", "x": 15, "y": 7, "facing": "Down" }

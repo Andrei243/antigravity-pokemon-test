@@ -3,7 +3,7 @@
   // importer, our words. Its people of scenes (3, 6) are left out; the Black Tower beyond its lobby (Black 2's facility) is not
   // open
   "area": "black_city",
-  "bgmTrack": "unova/castelia",
+  "bgmTrack": "unova/black_city",
   "people": {
     "0": { "name": "Roughneck", "dialog": [ "This city never sleeps. Every street has a Trainer looking for a fight." ] },
     "1": { "name": "Battle Girl", "dialog": [ "I came to Black City to climb the Black Tower. Its battles are the best training there is." ] },

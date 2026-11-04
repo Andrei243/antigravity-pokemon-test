@@ -4,7 +4,7 @@
   // winter the town's marsh freezes over (the seasons' chunks of its cells). The house in the south-east (warp 6) has its door on
   // the trees' side, which no way reaches, and stays shut
   "area": "icirrus_city",
-  "bgmTrack": "unova/lacunosa",
+  "bgmTrack": "unova/icirrus",
   "people": {
     "0": { "name": "Lass", "dialog": [ "In spring the whole town turns to marsh. In winter you can skate from one end to the other!" ] },
     "1": { "name": "Parasol Lady", "dialog": [ "I carry my parasol in every season here. Rain, snow, the odd hailstone... you never know." ] },

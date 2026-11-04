@@ -1,0 +1,33 @@
+# The Dragonspiral Tower (the oldest building in Unova, cold stone climbing to where a dragon once slept): a horn in
+# C minor over a choir and a low string line, steps up a stair that never ends. It plays the same by day and by night, as the
+# original's dungeons do.
+# Original composition for this game (plan 22 · U10).
+title Dragonspiral Tower
+tempo 72
+meter 4/4
+reverb 0.46
+night none
+
+track lead horn vol=0.62 pan=0.08 rev=0.42
+  L o4 g2 o5 c2 | o5 e-2 d4 c4 | o5 c2 e-2 | o4 b2 o5 d2 |
+  o5 c4 e-4 g4 e-4 | o5 f4 a-4 c4 a-4 | o5 e-4 c4 o4 a-4 o5 c4 | o5 d2. r4 |
+  o5 a-2 f2 | o5 g2 e-2 | o5 a-4 e-4 c4 e-4 | o5 g2 b-2 |
+  o5 a-4 f4 c4 f4 | o4 b4 o5 d4 g4 d4 | o5 e-2 c2 | o5 c1 |
+
+track pad choir vol=0.34 pan=-0.18 rev=0.46
+  L o4 (c e- g)1 | o4 (c e- g)1 | o4 (a- >c e-)1 | o4 (g b >d)1 |
+  o4 (c e- g)1 | o4 (f a- >c)1 | o4 (a- >c e-)1 | o4 (g b >d)1 |
+  o4 (f a- >c)1 | o4 (c e- g)1 | o4 (a- >c e-)1 | o4 (e- g b-)1 |
+  o4 (f a- >c)1 | o4 (g b >d)1 | o4 (c e- g)1 | o4 (c e- g)1 |
+
+track arp harp vol=0.28 pan=0.24 rev=0.4
+  L o4 c4 e-4 g4 e-4 | o4 c4 e-4 g4 e-4 | o4 a-4 o5 c4 e-4 c4 | o4 g4 b4 o5 d4 o4 b4 |
+  o4 c4 e-4 g4 e-4 | o4 f4 a-4 o5 c4 o4 a-4 | o4 a-4 o5 c4 e-4 c4 | o4 g4 b4 o5 d4 o4 b4 |
+  o4 f4 a-4 o5 c4 o4 a-4 | o4 c4 e-4 g4 e-4 | o4 a-4 o5 c4 e-4 c4 | o4 e-4 g4 b-4 g4 |
+  o4 f4 a-4 o5 c4 o4 a-4 | o4 g4 b4 o5 d4 o4 b4 | o4 c4 e-4 g4 e-4 | o4 c4 e-4 g4 e-4 |
+
+track low contrabass vol=0.62 rev=0.22
+  L o2 c1 | o2 c1 | o2 a-1 | o2 g1 |
+  o2 c1 | o2 f1 | o2 a-1 | o2 g1 |
+  o2 f1 | o2 c1 | o2 a-1 | o2 e-1 |
+  o2 f1 | o2 g1 | o2 c1 | o2 c1 |

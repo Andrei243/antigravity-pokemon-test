@@ -1,7 +1,7 @@
 {
   // The upper floor of a house of Nuvema Town (plan 22 · U10, part f), Black 2's
   "area": "nuvema_town_5",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/nuvema",
   "signs": {
     "1": "A bookshelf of travel guides. Every page has a note in the margin."
   }

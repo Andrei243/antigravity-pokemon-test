@@ -2,7 +2,7 @@
   // Route 1 (plan 22 · U10, part f): Black 2's road from Nuvema Town north to Accumula Town, with the gate west to Route 17, its
   // trainers, balls and hidden things read by the importer, our words. Its trigger of a scene is left out
   "area": "unova_route_1",
-  "bgmTrack": "unova/route19",
+  "bgmTrack": "unova/route1",
   "people": {
     "0": { "name": "Jill", "trainer": { "dialogueBefore": "I've walked all of Unova with my backpack. Let's see how far you've come!", "dialogueAfter": "Further than me, apparently." } },
     "1": { "name": "Shane", "trainer": { "dialogueBefore": "Route 1 is where my journey began. Let's make it where yours gets tough!", "dialogueAfter": "Tough for me, at least." } },

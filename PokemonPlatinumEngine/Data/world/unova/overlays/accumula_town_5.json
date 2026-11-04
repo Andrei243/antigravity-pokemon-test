@@ -1,7 +1,7 @@
 {
   // The upper floor of a house of Accumula Town (plan 22 · U10, part f), Black 2's, our words. Its Pokémon (0) is left out
   "area": "accumula_town_5",
-  "bgmTrack": "unova/aspertia",
+  "bgmTrack": "unova/accumula",
   "people": {
     "1": { "name": "Lady", "npcType": "lady", "dialog": [ "From up here you can see all the way to the sea." ] },
     "2": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "My husband is out fishing. He'll be back for supper." ] },

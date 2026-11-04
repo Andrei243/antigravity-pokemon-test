@@ -1,0 +1,36 @@
+# Black City (dark towers lit all night, shops that never shut and Trainers on every corner): a saw lead in C minor
+# over a synth pad, an electric piano running in sixteenths, a pumping synth bass and a hard beat. The city never sleeps, so it
+# plays the same by day and by night.
+# Original composition for this game (plan 22 · U10).
+title Black City
+tempo 124
+meter 4/4
+reverb 0.22
+night none
+
+track lead sawlead vol=0.64 pan=0.06 rev=0.2
+  L o5 c4 e-4 g4 e-4 | o5 c4 e-4 a-4 e-4 | o5 b-4 g4 e-4 g4 | o5 f4 b-4 d4 f4 |
+  o5 g4 o6 c4 o5 g4 e-4 | o5 a-4 o6 c4 o5 a-4 e-4 | o5 f4 a-4 o6 c4 o5 a-4 | o5 g4 b4 o6 d4 o5 b4 |
+  o6 c4 o5 a-8 g8 e-4 c4 | o5 b-4 g4 e-4 b-4 | o5 a-4 f4 c4 f4 | o5 g2 e-2 |
+  o5 a-4 o6 c4 e-4 c4 | o6 d4 o5 b-4 f4 b-4 | o5 b4 o6 d4 o5 g4 b4 | o6 c1 |
+
+track pad pad vol=0.3 pan=-0.2 rev=0.26
+  L o4 (c e- g)1 | o4 (a- >c e-)1 | o4 (e- g b-)1 | o4 (b- >d f)1 |
+  o4 (c e- g)1 | o4 (a- >c e-)1 | o4 (f a- >c)1 | o4 (g b >d)1 |
+  o4 (a- >c e-)1 | o4 (e- g b-)1 | o4 (f a- >c)1 | o4 (c e- g)1 |
+  o4 (a- >c e-)1 | o4 (b- >d f)1 | o4 (g b >d)1 | o4 (c e- g)1 |
+
+track arp epiano vol=0.3 pan=0.24 rev=0.16
+  L [ o4 c16 e-16 g16 e-16 ]4 | [ o4 a-16 o5 c16 e-16 c16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 b-16 o5 d16 f16 d16 ]4 |
+  [ o4 c16 e-16 g16 e-16 ]4 | [ o4 a-16 o5 c16 e-16 c16 ]4 | [ o4 f16 a-16 o5 c16 o4 a-16 ]4 | [ o4 g16 b16 o5 d16 o4 b16 ]4 |
+  [ o4 a-16 o5 c16 e-16 c16 ]4 | [ o4 e-16 g16 b-16 g16 ]4 | [ o4 f16 a-16 o5 c16 o4 a-16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 |
+  [ o4 a-16 o5 c16 e-16 c16 ]4 | [ o4 b-16 o5 d16 f16 d16 ]4 | [ o4 g16 b16 o5 d16 o4 b16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 |
+
+track low synthbass vol=0.72 rev=0.04
+  L [ o2 c8 o3 c8 ]4 | [ o2 a-8 o3 a-8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 b-8 o3 b-8 ]4 |
+  [ o2 c8 o3 c8 ]4 | [ o2 a-8 o3 a-8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 g8 o3 g8 ]4 |
+  [ o2 a-8 o3 a-8 ]4 | [ o2 e-8 o3 e-8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 a-8 o3 a-8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 |
+
+track drums kit vol=0.5 rev=0.08
+  L v84 [ b8 h8 s8 h8 b8 b8 s8 h8 | ]15 b8 h8 s8 h8 b8 s16 s16 s8 s8 |

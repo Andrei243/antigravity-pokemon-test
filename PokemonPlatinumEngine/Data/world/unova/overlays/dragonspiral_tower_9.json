@@ -3,6 +3,6 @@
   // its hidden Comet Shard (8072) is held back, the item not being in the game's data
   "area": "dragonspiral_tower_9",
   "heldBack": [ "8072" ],
-  "bgmTrack": "unova/celestial_tower",
+  "bgmTrack": "unova/dragonspiral_tower",
   "battleArena": "Cave"
 }

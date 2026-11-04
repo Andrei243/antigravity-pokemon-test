@@ -2,7 +2,7 @@
   // Striaton City (plan 22 · U10, part f): Black 2's city of the school and the restaurant by the Dreamyard, its people, balls and
   // signs read by the importer, our words. Black 2's objects of its scenes (4 to 11, 23) are left out
   "area": "striaton_city",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/striaton",
   "people": {
     "0": { "name": "Fisherman", "dialog": [ "The fountain's water comes all the way from Wellspring Cave. It's the cleanest in Unova." ] },
     "1": { "name": "Pokémon Breeder", "npcType": "pokemon_breeder_f", "dialog": [ "Striaton is a quiet city. Perfect for raising Pokémon." ] },

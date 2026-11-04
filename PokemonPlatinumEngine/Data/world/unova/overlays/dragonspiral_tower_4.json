@@ -3,7 +3,7 @@
   // lead onto Black 2's walk round the tower's outside, which stands on rails and has no ground here, so they lead straight on to the
   // fourth floor, where that walk comes in
   "area": "dragonspiral_tower_4",
-  "bgmTrack": "unova/celestial_tower",
+  "bgmTrack": "unova/dragonspiral_tower",
   "battleArena": "Cave",
   "doors": [
     { "warp": 1, "map": "DragonspiralTower_4F", "x": 27, "y": 15, "facing": "Left" },

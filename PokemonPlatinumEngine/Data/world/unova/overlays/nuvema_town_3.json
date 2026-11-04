@@ -2,7 +2,7 @@
   // The upper floor of a house of Nuvema Town (plan 22 · U10, part f), Black 2's, our words. Black 2's objects of its scenes are
   // left out; its signs read as the room's things
   "area": "nuvema_town_3",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/nuvema",
   "signs": {
     "2": "A bookshelf full of Pokémon books.",
     "3": "A game console. Someone left it on.",

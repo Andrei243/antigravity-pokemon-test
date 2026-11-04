@@ -1,0 +1,32 @@
+# Nacrene City (old warehouses turned into studios and a museum of fossils): a violin tune in E minor over strings,
+# a guitar picking each chord out and a low bass. At night a clarinet takes the tune, slower.
+# Original composition for this game (plan 22 · U10).
+title Nacrene City
+tempo 92
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead violin night=clarinet vol=0.62 pan=0.08 rev=0.3
+  L o5 b4 g4 e4 g4 | o5 g4 e4 c4 e4 | o5 d4 g4 b4 g4 | o5 a4 f+4 d2 |
+  o5 e4 g8 a8 b4 g4 | o6 c4 o5 a4 e4 a4 | o5 b4 d+4 f+4 b4 | o5 e2. r4 |
+  o5 e4 g4 o6 c4 o5 g4 | o5 d4 g4 b4 o6 d4 | o6 c4 o5 b8 a8 e4 a4 | o5 g4 b4 e4 g4 |
+  o5 c4 e4 g4 o6 c4 | o6 d4 o5 a4 f+4 d4 | o5 d+4 f+4 b4 f+4 | o5 e1 |
+
+track pad strings night=pad vol=0.24 pan=-0.22 rev=0.32
+  L o4 (e g b)1 | o4 (c e g)1 | o4 (g b >d)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (a >c e)1 | o4 (b >d+ f+)1 | o4 (e g b)1 |
+  o4 (c e g)1 | o4 (g b >d)1 | o4 (a >c e)1 | o4 (e g b)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (b >d+ f+)1 | o4 (e g b)1 |
+
+track arp guitar vol=0.36 pan=0.22 rev=0.2
+  L [ o4 e8 g8 b8 g8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 |
+  [ o4 e8 g8 b8 g8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 b8 o5 d+8 f+8 d+8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 b8 o5 d+8 f+8 d+8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+
+track low contrabass vol=0.6 rev=0.16
+  L o2 e2 o2 b2 | o2 c2 o2 g2 | o2 g2 o3 d2 | o2 d2 o2 a2 |
+  o2 e2 o2 b2 | o2 a2 o3 e2 | o2 b2 o3 f+2 | o2 e2 o2 b2 |
+  o2 c2 o2 g2 | o2 g2 o3 d2 | o2 a2 o3 e2 | o2 e2 o2 b2 |
+  o2 c2 o2 g2 | o2 d2 o2 a2 | o2 b2 o3 f+2 | o2 e2 o2 b2 |

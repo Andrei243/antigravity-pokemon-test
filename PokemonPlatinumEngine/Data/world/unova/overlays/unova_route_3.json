@@ -4,7 +4,7 @@
   "area": "unova_route_3",
   // (an item this game's data hasn't is held back)
   "heldBack": [ "9" ],
-  "bgmTrack": "unova/route4",
+  "bgmTrack": "unova/route1",
   "people": {
     "0": { "name": "Artist", "dialog": [ "I paint the pond in every season. Today the light is just right." ] },
     "1": { "name": "Marsha", "trainer": { "dialogueBefore": "We have a test on Pokémon battles tomorrow. Help me practise!", "dialogueAfter": "I think I'll fail the test too." } },

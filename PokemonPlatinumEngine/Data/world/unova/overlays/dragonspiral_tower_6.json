@@ -3,7 +3,7 @@
   // Both its ways (warps 0 and 1) lead onto Black 2's walks round the outside, which stand on rails, so they lead straight on to the
   // floors those walks join: down to the third floor and up to the fifth
   "area": "dragonspiral_tower_6",
-  "bgmTrack": "unova/celestial_tower",
+  "bgmTrack": "unova/dragonspiral_tower",
   "battleArena": "Cave",
   "doors": [
     { "warp": 0, "map": "DragonspiralTower_3F", "x": 2, "y": 14, "facing": "Right" },

@@ -1,7 +1,7 @@
 {
   // A house of Striaton City (plan 22 · U10, part f), Black 2's, our words
   "area": "striaton_city_5",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/striaton",
   "people": {
     "0": { "name": "Artist", "dialog": [ "I paint the Dreamyard's ruins. They seem to change every time I look." ] },
     "1": { "name": "Youngster", "npcType": "youngster", "dialog": [ "My big brother is a Trainer. He's in Driftveil right now." ] },

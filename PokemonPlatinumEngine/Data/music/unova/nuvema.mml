@@ -1,0 +1,32 @@
+# Nuvema Town (a quiet seaside village where journeys begin, the professor's lab at its edge): a warm flute tune in
+# G major over strings, a harp turning slowly like a page and a soft bass. At night an ocarina takes the tune, slower.
+# Original composition for this game (plan 22 · U10).
+title Nuvema Town
+tempo 96
+meter 4/4
+reverb 0.28
+nighttempo 0.9
+
+track lead flute night=ocarina vol=0.66 pan=0.08 rev=0.28
+  L o5 b4 a8 g8 d4 g4 | o5 e4 g4 c4 e4 | o5 f+4 a4 d4 f+8 a8 | o5 g2. d4 |
+  o5 e4 g4 b4 g4 | o5 e4 g4 o6 c4 o5 g4 | o5 a4 o6 c8 o5 b8 a4 e4 | o5 f+4 a4 d2 |
+  o6 d4 o5 b8 o6 c8 d4 o5 g4 | o6 e4 d8 c8 o5 g4 e4 | o5 d4 g4 b4 o6 d4 | o6 e4 d8 o5 b8 g4 e4 |
+  o5 e4 g4 o6 c4 e4 | o6 d4 o5 a4 f+4 a4 | o5 b4 o6 d4 o5 g4 b4 | o5 g1 |
+
+track pad strings night=pad vol=0.26 pan=-0.2 rev=0.3
+  L o4 (g b >d)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (g b >d)1 |
+  o4 (e g b)1 | o4 (c e g)1 | o4 (a >c e)1 | o4 (d f+ a)1 |
+  o4 (g b >d)1 | o4 (c e g)1 | o4 (g b >d)1 | o4 (e g b)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (g b >d)1 | o4 (g b >d)1 |
+
+track arp harp vol=0.36 pan=0.24 rev=0.3
+  L [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 |
+  [ o4 e8 g8 b8 g8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 |
+  [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 |
+
+track low contrabass vol=0.6 rev=0.16
+  L o2 g2 o3 d2 | o2 c2 o2 g2 | o2 d2 o2 a2 | o2 g2 o3 d2 |
+  o2 e2 o2 b2 | o2 c2 o2 g2 | o2 a2 o3 e2 | o2 d2 o2 a2 |
+  o2 g2 o3 d2 | o2 c2 o2 g2 | o2 g2 o3 d2 | o2 e2 o2 b2 |
+  o2 c2 o2 g2 | o2 d2 o2 a2 | o2 g2 o3 d2 | o2 g2 o3 d2 |

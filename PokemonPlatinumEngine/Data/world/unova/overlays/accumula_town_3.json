@@ -1,7 +1,7 @@
 {
   // The upper floor of a house of Accumula Town (plan 22 · U10, part f), Black 2's, our words
   "area": "accumula_town_3",
-  "bgmTrack": "unova/aspertia",
+  "bgmTrack": "unova/accumula",
   "people": {
     "0": { "name": "Lady", "npcType": "lady", "dialog": [ "Upstairs is where we practise. The walls are very thick." ] },
     "1": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "I conduct the town's little orchestra. We play every Sunday." ] },

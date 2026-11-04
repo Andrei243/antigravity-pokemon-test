@@ -1,7 +1,7 @@
 {
   // A house of Striaton City (plan 22 · U10, part f), Black 2's, our words
   "area": "striaton_city_7",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/striaton",
   "people": {
     "0": { "name": "Youngster", "dialog": [ "My grandma tells stories about the Dreamyard. Something about dreams and smoke." ] },
     "1": { "name": "Old Woman", "npcType": "old_woman", "dialog": [ "Munna eat dreams, they say. I've never had a bad one in this town." ] },

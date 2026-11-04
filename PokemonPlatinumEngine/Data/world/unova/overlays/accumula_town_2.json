@@ -1,7 +1,7 @@
 {
   // A house of Accumula Town (plan 22 · U10, part f), Black 2's, our words. Its Pokémon (3) is left out
   "area": "accumula_town_2",
-  "bgmTrack": "unova/aspertia",
+  "bgmTrack": "unova/accumula",
   "people": {
     "0": { "name": "Lady", "npcType": "lady", "dialog": [ "Welcome! Our house is the one with the best view of the plaza." ] },
     "1": { "name": "Lass", "dialog": [ "I'm learning the piano. The neighbours are very patient." ] },

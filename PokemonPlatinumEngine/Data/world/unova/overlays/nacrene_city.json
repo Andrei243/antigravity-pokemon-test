@@ -2,7 +2,7 @@
   // Nacrene City (plan 22 · U10, part f): Black 2's city of warehouses turned to studios, its people, balls and signs read
   // by the importer, our words. Uxie's object (0) and the trigger by the museum belong to scenes and are left out
   "area": "nacrene_city",
-  "bgmTrack": "unova/driftveil",
+  "bgmTrack": "unova/nacrene",
   "people": {
     "1": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "The warehouses were all turned into studios. Now the whole city smells of paint." ] },
     "2": { "name": "Old Man", "npcType": "old_man", "dialog": [ "The museum's dragon skeleton has stood in its hall since before I was born." ] },

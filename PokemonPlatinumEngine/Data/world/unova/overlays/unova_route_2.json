@@ -2,7 +2,7 @@
   // Route 2 (plan 22 · U10, part f): Black 2's road from Accumula Town's gate to Striaton City, its trainers, balls, the Strength
   // boulder (0) and hidden things read by the importer, our words. Its object of a scene (1) and its worker (9) are left out
   "area": "unova_route_2",
-  "bgmTrack": "unova/route19",
+  "bgmTrack": "unova/route1",
   "people": {
     "2": { "name": "Rayne", "trainer": { "dialogueBefore": "I've walked this road a thousand times. Battle me, and make it a thousand and one!", "dialogueAfter": "A thousand and one losses, it feels like." } },
     "3": { "name": "Jimmy", "trainer": { "dialogueBefore": "This is my road! Battle me if you want to pass!", "dialogueAfter": "It's your road now." } },

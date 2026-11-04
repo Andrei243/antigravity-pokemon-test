@@ -1,0 +1,32 @@
+# Icirrus City (a town on a marsh, mist on the water and the Dragonspiral Tower over the trees): a slow oboe tune in
+# A minor over a soft choir, a harp like drops falling into still water and a deep held bass. At night an ocarina.
+# Original composition for this game (plan 22 · U10).
+title Icirrus City
+tempo 76
+meter 4/4
+reverb 0.4
+nighttempo 0.92
+
+track lead oboe night=ocarina vol=0.62 pan=0.1 rev=0.38
+  L o5 e2 a4 e4 | o5 f2 a4 c4 | o5 g2 e4 c4 | o5 d2. r4 |
+  o5 c4 e4 a4 e4 | o5 d4 f4 a4 f4 | o5 g+4 b4 e4 g+4 | o5 a2. r4 |
+  o5 a4 o6 c4 o5 a4 f4 | o5 g4 e4 c4 e4 | o5 f4 a4 o6 d4 o5 a4 | o5 e2 c2 |
+  o5 c4 f4 a4 f4 | o5 b4 g4 d4 g4 | o5 e4 g+4 b4 g+4 | o5 a1 |
+
+track pad choir vol=0.3 pan=-0.2 rev=0.42
+  L o4 (a >c e)1 | o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 |
+  o4 (a >c e)1 | o4 (d f a)1 | o4 (e g+ b)1 | o4 (a >c e)1 |
+  o4 (f a >c)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (a >c e)1 |
+  o4 (f a >c)1 | o4 (g b >d)1 | o4 (e g+ b)1 | o4 (a >c e)1 |
+
+track arp harp vol=0.36 pan=0.26 rev=0.36
+  L [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 |
+  [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 d8 f8 a8 f8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 |
+  [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f8 a8 f8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 |
+  [ o4 f8 a8 o5 c8 o4 a8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 |
+
+track low contrabass vol=0.6 rev=0.2
+  L o2 a1 | o2 f1 | o2 c1 | o2 g1 |
+  o2 a1 | o2 d1 | o2 e1 | o2 a1 |
+  o2 f1 | o2 c1 | o2 d1 | o2 a1 |
+  o2 f1 | o2 g1 | o2 e1 | o2 a1 |
