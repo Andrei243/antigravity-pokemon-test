@@ -173,6 +173,19 @@ partial class Harness
                 Frames(40); Profile("route 119 in the rain");
                 Room("FortreeCity_Gym", "fortree gym, the rotating gates");
             }
+            // Unova (plan 22 · U2's and U3's "done when", to be timed on the Windows machine): Aspertia City and Route 19 where
+            // a game there begins, Castelia's towers, and Route 19 and Icirrus City with winter's snow lying over them
+            {
+                Place("aspertia_city", "aspertia city");
+                Place("unova_route_19", "unova route 19");
+                Place("castelia_city_6", "castelia street's towers");
+                engine.Settings.Season = Season.Winter;
+                engine.ApplySettings(window: false);
+                Place("unova_route_19", "unova route 19 in winter's snow");
+                Place("icirrus_city", "icirrus city in winter");
+                engine.Settings.Season = Season.Spring;
+                engine.ApplySettings(window: false);
+            }
             game.Map = MapDatabase.Get("Sinnoh");
 
             engine.Settings.TimeOfDay = TimeOfDay.Night;
