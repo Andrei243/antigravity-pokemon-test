@@ -2,7 +2,7 @@
   // Twist Mountain's great hall (plan 22 · U10, part e): Black 2's floor of mine roads and ladders, its trainers, balls and
   // hidden things read by the importer, our words. Black 2's worker of the old roads' scene (0) is left out
   "area": "twist_mountain_2",
-  "bgmTrack": "unova/reversal_cave",
+  "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "people": {
     "5": { "name": "Cliff", "trainer": { "dialogueBefore": "My shift's over, but a battle's never over. Let's go!", "dialogueAfter": "Back to the pick for me, then." } },

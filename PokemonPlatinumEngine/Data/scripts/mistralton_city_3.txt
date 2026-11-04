@@ -89,3 +89,37 @@ script TheFlight
   warp "Unova" 616 308 down
   fade in
   return
+
+
+# The pilot in the hall (5; plan 22 · U10, part h): once Unova's Hall of Fame is entered he flies a Champion over to the
+# Nature Preserve, Black 2's island nobody walks to (nature_preserve.txt's pilot flies them back)
+script PreservePilot
+  face 5 player
+  speaker "Pilot"
+  if flag UnovaHallOfFame goto Champion
+  say "We pilots think the Ace Pilot Medal is the coolest of all. If you ever win one, come and show me!"
+  end
+label Champion
+  say "You're the Champion everyone's talking about! I fly supplies out to the Nature Preserve, an island of woods nobody lives on."
+  ask "There's a seat free. Would you like to come along?"
+  if no goto Declined
+  say "Great! Strap in, Champion."
+  call NaturePreserveFlight
+  end
+label Declined
+  say "Another time, then. The island isn't going anywhere."
+  end
+
+
+# The flight to the Nature Preserve: the fade and lines over the dark, landing by the island's plane
+script NaturePreserveFlight
+  scene "The flight to the Nature Preserve"
+  fade out 0.8
+  music stop
+  sound "crossing_engine"
+  text "The plane climbs out over the sea and turns away from the mainland..."
+  text "An island of deep woods and a still lake rises out of the water, with a short strip of sand to land on."
+  endscene
+  warp "NaturePreserve" 19 33 down
+  fade in
+  return

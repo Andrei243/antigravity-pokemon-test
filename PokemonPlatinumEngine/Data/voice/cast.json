@@ -1069,6 +1069,10 @@
       "note": "first spoken at route_218.txt(35)",
       "provisional": true
     },
+    "pilot": {
+      "note": "first spoken at nature_preserve.txt(11)",
+      "provisional": true
+    },
     "policeman": {
       "note": "first spoken at cerulean_city.txt(127)",
       "provisional": true
@@ -1886,6 +1890,7 @@
     "Pharmacist": "pharmacist",
     "Phoebe": "phoebe",
     "Pikachu": "pikachu",
+    "Pilot": "pilot",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
     "President": "president",

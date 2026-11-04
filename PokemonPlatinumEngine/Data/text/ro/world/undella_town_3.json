@@ -21,18 +21,10 @@
     "1": {
       "name": {
         "en": [
-          "Socialite"
+          "Cynthia"
         ],
         "text": [
-          "Mondena"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Everyone who is anyone holidays in Undella Town. Don't you agree?"
-        ],
-        "text": [
-          "Toți cei care contează își petrec vacanța în Undella Town. Nu crezi?"
+          "Cynthia"
         ]
       }
     },
@@ -111,18 +103,18 @@
     "6": {
       "name": {
         "en": [
-          "Tourist"
+          "Socialite"
         ],
         "text": [
-          "Turist"
+          "Mondena"
         ]
       },
       "dialog": {
         "en": [
-          "Winter is quiet in Undella. I like it that way."
+          "Everyone who is anyone holidays in Undella Town. Don't you agree?"
         ],
         "text": [
-          "Iarna e liniște în Undella. Îmi place așa."
+          "Toți cei care contează își petrec vacanța în Undella Town. Nu crezi?"
         ]
       }
     }

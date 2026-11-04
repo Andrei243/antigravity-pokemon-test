@@ -200,5 +200,73 @@
         "Apoi avionul se înclină peste partea îndepărtată a muntelui, iar Lentimas Town îi iese în întâmpinare."
       ]
     }
+  ],
+  "PreservePilot": [
+    {
+      "en": [
+        "Pilot"
+      ],
+      "text": [
+        "Pilot"
+      ]
+    },
+    {
+      "en": [
+        "We pilots think the Ace Pilot Medal is the coolest of all. If you ever win one, come and show me!"
+      ],
+      "text": [
+        "Noi, piloții, credem că Medalia Pilotului Ace este cea mai tare dintre toate. Dacă ai câștiga vreodată una, vino să mi-o arăți!"
+      ]
+    },
+    {
+      "en": [
+        "You're the Champion everyone's talking about! I fly supplies out to the Nature Preserve, an island of woods nobody lives on."
+      ],
+      "text": [
+        "Tu ești Campionul despre care vorbește toată lumea! Duc provizii cu avionul la Rezervația Naturală, o insulă cu păduri pe care nu locuiește nimeni."
+      ]
+    },
+    {
+      "en": [
+        "There's a seat free. Would you like to come along?"
+      ],
+      "text": [
+        "Mai e un loc liber. Vrei să vii cu mine?"
+      ]
+    },
+    {
+      "en": [
+        "Great! Strap in, Champion."
+      ],
+      "text": [
+        "Grozav! Pune-ți centura, Campionule."
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The island isn't going anywhere."
+      ],
+      "text": [
+        "Altă dată, atunci. Insula nu pleacă nicăieri."
+      ]
+    }
+  ],
+  "NaturePreserveFlight": [
+    {
+      "en": [
+        "The plane climbs out over the sea and turns away from the mainland..."
+      ],
+      "text": [
+        "Avionul urcă deasupra mării și se îndepărtează de uscat..."
+      ]
+    },
+    {
+      "en": [
+        "An island of deep woods and a still lake rises out of the water, with a short strip of sand to land on."
+      ],
+      "text": [
+        "Din apă se ridică o insulă cu păduri dese și un lac liniștit, cu o fâșie scurtă de nisip pe care să aterizeze."
+      ]
+    }
   ]
 }

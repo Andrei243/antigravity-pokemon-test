@@ -2,7 +2,7 @@
   // Accumula Town (plan 22 · U10, part f): Black 2's hillside town of music between Route 1 and Route 2, its people, balls and
   // signs read by the importer, our words. Its Pokémon and objects (4, 10) are left out
   "area": "accumula_town",
-  "bgmTrack": "unova/aspertia",
+  "bgmTrack": "unova/accumula",
   "people": {
     "0": { "name": "Youngster", "dialog": [ "The town's plaza is where Team Plasma once gave their speeches. It's peaceful now." ] },
     "1": { "name": "Lady", "npcType": "lady", "dialog": [ "There's music in the plaza most evenings. Everyone comes out to listen." ] },

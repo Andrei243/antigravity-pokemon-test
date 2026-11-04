@@ -2,7 +2,7 @@
   // The Nacrene Museum (plan 22 · U10, part f): Black 2's hall of fossils and treasures, our words. Its people of scenes and
   // its triggers are left out
   "area": "nacrene_city_2",
-  "bgmTrack": "unova/driftveil",
+  "bgmTrack": "unova/nacrene",
   "people": {
     "0": { "name": "Guard", "npcType": "worker", "dialog": [ "Welcome to the Nacrene Museum! Please don't touch the exhibits." ] },
     "1": { "name": "Guard", "npcType": "worker", "dialog": [ "The great skeleton in the middle is a dragon Pokémon's. Nobody has found another like it." ] },

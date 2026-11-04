@@ -1028,7 +1028,6 @@ unova_black_belt_gordon 167 (15) [Scraggy → Scrafty]
 unova_black_belt_grigor 167 (15) [Riolu → Aurasage]
 unova_black_belt_lao 187 (61) [Mankey → Annihilape, Heracross → Atlascross]
 unova_black_belt_mathis 167 (15) [Timburr → Conkeldurr]
-unova_black_belt_rich 180 (47) [Gurdurr → Conkeldurr]
 unova_black_belt_rodrigo 167 (15) [Riolu → Aurasage]
 unova_black_belt_thomas 188 (62) [Sawk → Sawkendo, Breloom → Sporepugil]
 unova_boss_trainer_abed 183 (53) [Boldore → Gigalith, Pawniard → Kingambit]
@@ -2612,6 +2611,11 @@ trainers 4, 149-150 (own 30-32): hoenn_grunt_mt_pyre_1 150 (32) [Zubat → Croba
 National Park, Johto
 grass 109-112 (own 10-14)
 trainers 4, 111-114 (own 12-17): johto_lass_krise 114 (17) [Oddish → Gloom, Cubone → Ossugard], johto_pokefan_beverly 113 (16) [Snubbull → Mastiffang], johto_pokefan_m_william 113 (16), johto_school_kid_m_jack 113 (15) [Oddish → Gloom, Voltorb → Dynamorb]
+=== nature_preserve
+Nature Preserve, Unova
+grass 184-185 (own 56-59)
+surf 179-186 (own 45-60)
+super rod 162-220 (own 1-100)
 === new_bark
 New Bark Town, Johto
 surf 109-119 (own 10-25)
@@ -3662,7 +3666,7 @@ trainers 5, 179-180 (own 44-47): unova_battle_girl_tia 180 (47) [Heracross → A
 === seaside_cave_2
 Seaside Cave, Unova
 grass 177-178 (own 39-42)
-trainers 1, 180 (own 47): unova_battle_girl_maki 180 (47) [Mienfoo → Mienshifu]
+trainers 2, 180 (own 47): unova_battle_girl_maki 180 (47) [Mienfoo → Mienshifu], unova_black_belt_rich 180 (47) [Gurdurr → Conkeldurr]
 === seven_island_sevault_canyon
 Sevault Canyon, Kanto
 grass 71-98 (own 15-54)

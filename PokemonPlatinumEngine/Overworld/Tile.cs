@@ -334,7 +334,21 @@ public enum Architecture
     /// <summary>Weathered boards under deep thatch-brown hip roofs with shutters: the island village on its hill and the homes along Route 1 (Iki Town, plan 23 · Z5).</summary>
     Islander,
     /// <summary>Pastel clapboard under coral hip roofs with flower boxes: the city of the beaches and shops (Hau'oli, plan 23 · Z5).</summary>
-    Shoreline
+    Shoreline,
+
+    // Unova's old roads (plan 22 · U10, part h): each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>White plaster under sea-green gable roofs with a chimney and flower boxes: the quiet village by the sea where journeys begin (Nuvema).</summary>
+    Seabreeze,
+    /// <summary>Honey stucco under brick-red hip roofs with shutters: the hill town round its square (Accumula).</summary>
+    Plaza,
+    /// <summary>Red brick under bottle-green hip roofs with shutters and flower boxes: the city of the café and the Trainers' School (Striaton).</summary>
+    Teahouse,
+    /// <summary>Dark brick under rust-red gable roofs with a chimney: the warehouses turned into studios and a museum (Nacrene).</summary>
+    Gallery,
+    /// <summary>Weathered planks under moss-grey hip roofs with a chimney: the town on the marsh under the tower (Icirrus).</summary>
+    Mire,
+    /// <summary>Dark panel blocks under flat roofs with ribbon windows lit all night: the city that never sleeps (Black City).</summary>
+    Nightfall
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

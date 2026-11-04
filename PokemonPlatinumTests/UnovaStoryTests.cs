@@ -3016,6 +3016,7 @@ public class UnovaStoryTests
     [InlineData("CelestialTower_Summit", 16, 23, "0", "celestial_tower", "Mesprit", 65)]
     [InlineData("GiantChasm_Cavern", 15, 18, "kyurem_rest", "giant_chasm_6", "Kyurem", 70)]
     [InlineData("AbundantShrine", 22, 16, "landorus", "abundant_shrine", "Landorus", 70)]
+    [InlineData("NaturePreserve", 41, 36, "1", "nature_preserve", "Haxorus", 60)]
     public void ALegendaryWaitsOnItsRoadOnceTheHallOfFameIsEnteredAndIsGoneOnceFought(string map, int x, int y, string key, string area, string species, int level)
     {
         var game = PastTheChasm();
@@ -3038,6 +3039,62 @@ public class UnovaStoryTests
         Assert.True(game.Story.Has(fought));
         game.Arrive(map, x, y);
         Assert.Null(game.Present(key, area));
+    }
+
+    // ---- Plan 22 · U10, part h: the Nature Preserve, by the Cargo Service's plane ------------------------------------------
+
+    [Fact]
+    public void TheCargoServiceFliesAChampionToTheNaturePreserveAndItsPilotFliesThemBack()
+    {
+        var game = PastTheChasm();
+        game.Story.SetVar("VAR_UNOVA_MISTRALTON", 4);
+        // before the Hall of Fame the hall's pilot only talks
+        game.Arrive("MistraltonCity_CargoHall", 23, 21);
+        var before = game.Talk("5", "mistralton_city_3");
+        Assert.DoesNotContain(before.Log, l => l.StartsWith("warp NaturePreserve"));
+        // a Champion is offered the seat
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("MistraltonCity_CargoHall", 23, 21);
+        game.Answers.Add(0);
+        var there = game.Talk("5", "mistralton_city_3");
+        Assert.Contains(there.Log, l => l.StartsWith("warp NaturePreserve 19 33"));
+        Assert.Equal("NaturePreserve", game.Map.Name);
+        Assert.False(game.Map.IsSolid(19, 33));
+        Assert.NotNull(game.Present("1", "nature_preserve"));
+        // the pilot by the plane flies them home to Mistralton City
+        game.Answers.Add(0);
+        var home = game.Talk("0", "nature_preserve");
+        Assert.Contains(home.Log, l => l.StartsWith("warp Unova 108 305"));
+        Assert.Equal("Unova", game.Map.Name);
+    }
+
+    [Fact]
+    public void CynthiaInUndellaAndHughInDriftveilBattleAChampionOnceADay()
+    {
+        var game = PastTheChasm();
+        // before the Hall of Fame a socialite stands where Cynthia will
+        game.Arrive("UndellaTown_House2", 6, 7);
+        Assert.Null(game.Present("1", "undella_town_3"));
+        Assert.NotNull(game.Present("6", "undella_town_3"));
+        Assert.Null(game.Present("hugh_home", "driftveil_city_6"));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("UndellaTown_House2", 6, 7);
+        Assert.NotNull(game.Present("1", "undella_town_3"));
+        Assert.Null(game.Present("6", "undella_town_3"));
+        game.Answers.Add(0);
+        var cynthia = game.Talk("1", "undella_town_3");
+        Assert.Contains(cynthia.Log, l => l.StartsWith("battle unova_cynthia "));
+        Assert.True(game.Story.Has("FLAG_DAILY_UNOVA_CYNTHIA"));
+        var again = game.Talk("1", "undella_town_3");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle"));
+        // Hugh helps Rood's people, and battles with the team against the player's starter
+        game.Arrive("DriftveilCity_PlasmaHouse", 5, 21);
+        Assert.NotNull(game.Present("hugh_home", "driftveil_city_6"));
+        game.Answers.Add(0);
+        var hugh = game.Talk("hugh_home", "driftveil_city_6");
+        Assert.Contains(hugh.Log, l => l.StartsWith("battle unova_rival_2"));
+        Assert.True(game.Story.Has("FLAG_DAILY_UNOVA_HUGH"));
+        Assert.DoesNotContain(game.Talk("hugh_home", "driftveil_city_6").Log, l => l.StartsWith("battle"));
     }
 
     [Fact]

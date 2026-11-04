@@ -37,9 +37,9 @@
     "5": {
       "name": "Pilot",
       "npcType": "pilot",
-      "dialog": [
-        "We pilots think the Ace Pilot Medal is the coolest of all. If you ever win one, come and show me!"
-      ]
+      // flies a Champion of Unova to the Nature Preserve (plan 22 · U10, part h)
+      "script": "PreservePilot",
+      "still": true
     },
     "6": {
       "name": "Attendant",

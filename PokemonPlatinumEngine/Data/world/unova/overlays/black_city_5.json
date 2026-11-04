@@ -2,7 +2,7 @@
   // The Black Tower's lobby (plan 22 · U10, part g): Black 2's hall at the foot of the tower, our words. Its clerks (0 to 3)
   // belong to the facility, which is not open: the tower's way up stays shut
   "area": "black_city_5",
-  "bgmTrack": "unova/castelia",
+  "bgmTrack": "unova/black_city",
   "people": {
     "4": { "name": "Gentleman", "dialog": [ "The Black Tower tests Trainers floor by floor. Its doors are closed today." ] },
     "5": { "name": "Rich Boy", "dialog": [ "I've climbed to the top three times. Well, twice. Well, once." ] },

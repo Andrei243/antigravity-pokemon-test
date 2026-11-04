@@ -2,7 +2,7 @@
   // Twist Mountain's middle floor (plan 22 · U10, part e), Black 2's, our words. The ice blocks of Black 2's winter (0) wait
   // for a session that lays the season's ice in the caves
   "area": "twist_mountain_4",
-  "bgmTrack": "unova/reversal_cave",
+  "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "people": {
     "4": { "name": "Chloris", "trainer": { "dialogueBefore": "I've battled in every cave in Unova. This one has the best echo. Listen!", "dialogueAfter": "That echo will be my defeat ringing for a while." } },

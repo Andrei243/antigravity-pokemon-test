@@ -15308,6 +15308,26 @@ way -
 from {rival} at 5,20 of DriftveilCity_PlasmaHouse
 way -
   Barry> Former members or not, it's Team Plasma. I'll hear him out. For now.
+=== driftveil_city_6.HughRematch
+from {rival} at 5,20 of DriftveilCity_PlasmaHouse
+way 0.0
+  Barry> Hey, Champion! Team Plasma left a lot of Pokémon behind when they ran. I'm helping Rood find their real Trainers.
+  Barry> Liepard's warming up to me, too. My sister says it purrs now. ...Anyway! Since you're here, battle me!
+  Barry> Ready?
+  Barry> That's what I'm talking about! Battling you always shows me how much further I can go.
+  Barry> Come by again tomorrow. I'll be stronger. Count on it!
+  ? Ready? = Yes
+  * battle unova_rival_24 Won
+  + FLAG_DAILY_UNOVA_HUGH
+  + beaten unova_rival_24
+way 0.1, from answer 2
+  Barry> That's what I'm talking about! Battling you always shows me how much further I can go.
+  Barry> Come by again tomorrow. I'll be stronger. Count on it!
+  * battle unova_rival_24 Lost
+  + FLAG_DAILY_UNOVA_HUGH
+way 1, from answer 1
+  Barry> Huh? Fine. I'll be here, keeping these Pokémon company.
+  ? Ready? = No
 === driftveil_city_6.Rood
 from Rood at 7,18 of DriftveilCity_PlasmaHouse
 way -
@@ -21490,6 +21510,10 @@ way -
 from Prof. Juniper at 18,19 of MistraltonCity_CargoHall
 way -
   Prof. Juniper> Hi there! Did I keep you waiting? I'm sorry! Shall we let Skyla show us her flying?
+=== mistralton_city_3.PreservePilot
+from Pilot at 24,21 of MistraltonCity_CargoHall
+way -
+  Pilot> We pilots think the Ace Pilot Medal is the coolest of all. If you ever win one, come and show me!
 === mistralton_city_3.SkylaInTheHall
 from Skyla at 17,19 of MistraltonCity_CargoHall
 way 0
@@ -22387,6 +22411,29 @@ way 1, from answer 1
 from Bugsy at 58,39 of NationalPark
 way -
   Bugsy> Sundays there's no contest, so I get the whole park to myself. Well, me and every Bug Pokémon in the grass.
+=== nature_preserve.Haxorus
+from Haxorus at 41,35 of NaturePreserve
+way -
+=== nature_preserve.Pilot
+from Pilot at 19,34 of NaturePreserve
+way 0
+  Pilot> This island's kept wild on purpose. Nobody lives here, so the Pokémon grow as they please.
+  Pilot> Shall I fly you back to Mistralton City?
+  Pilot> Buckle up! Mistralton Cargo Service, homeward bound.
+  > The plane lifts off the island's strip and swings out over the sea...
+  > The preserve's woods shrink behind the tail, and Mistralton's runway comes up to meet the wheels.
+  ? Shall I fly you back to Mistralton City? = Yes
+  * scene nature_preserve.The flight home from the Nature Preserve
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp Unova 108 305
+  * fade in
+  + seen nature_preserve.The flight home from the Nature Preserve
+way 1, from answer 1
+  Pilot> Take your time. I'll wait by the plane.
+  ? Shall I fly you back to Mistralton City? = No
 === navel_rock_bottom.Lugia
 from Lugia at 11,13 of NavelRock_Bottom
 way 0
@@ -29086,6 +29133,24 @@ way -
 from Crustle at 29,10 of SeasideCave_1F
 way -
   > A great boulder blocks the way. It doesn't look as if any Pokémon could move it...
+=== seaside_cave.GapNorth
+from the trigger at 10,10 of SeasideCave_1F
+way 0
+  > There's a narrow gap in the rock to the north. Squeeze through?
+  ? There's a narrow gap in the rock to the north. Squeeze through? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  ? There's a narrow gap in the rock to the north. Squeeze through? = No
+=== seaside_cave.GapSouth
+from the trigger at 9,8 of SeasideCave_1F
+way 0
+  > There's a narrow gap in the rock to the south. Squeeze through?
+  ? There's a narrow gap in the rock to the south. Squeeze through? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  ? There's a narrow gap in the rock to the south. Squeeze through? = No
 === seaside_cave.Rocky
 from Rocky at 6,53 of SeasideCave_1F
 way 0
@@ -31649,6 +31714,25 @@ way 0
 way 1, from answer 1
   * battle unova_rival_12 Lost
   * scene over, unseen
+=== undella_town_3.Cynthia
+from Cynthia at 6,5 of UndellaTown_House2
+way 0.0
+  Cynthia> Oh, it's you. The new Champion of Unova! I come to Undella every year to rest, but I never really stop thinking about battles.
+  Cynthia> Would you battle me? I'd like to see how far you and your Pokémon have come.
+  Cynthia> Thank you. A battle like that clears the mind better than any holiday.
+  Cynthia> Come back tomorrow, if you like. I'll be here, looking at the sea.
+  ? Would you battle me? I'd like to see how far you and your Pokémon have come. = Yes
+  * battle unova_cynthia Won
+  + FLAG_DAILY_UNOVA_CYNTHIA
+  + beaten unova_cynthia
+way 0.1, from answer 2
+  Cynthia> Thank you. A battle like that clears the mind better than any holiday.
+  Cynthia> Come back tomorrow, if you like. I'll be here, looking at the sea.
+  * battle unova_cynthia Lost
+  + FLAG_DAILY_UNOVA_CYNTHIA
+way 1, from answer 1
+  Cynthia> Of course. The sea isn't going anywhere, and neither am I.
+  ? Would you battle me? I'd like to see how far you and your Pokémon have come. = No
 === underground.HikerGoods
 from Hiker at 175,279 of Underground
 from Hiker at 200,185 of Underground

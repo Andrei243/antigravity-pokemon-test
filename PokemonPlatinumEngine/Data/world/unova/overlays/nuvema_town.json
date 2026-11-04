@@ -2,7 +2,7 @@
   // Nuvema Town (plan 22 · U10, part f): Black 2's town by the sea where Professor Juniper's lab stands, its people, balls and
   // signs read by the importer, our words
   "area": "nuvema_town",
-  "bgmTrack": "unova/floccesy",
+  "bgmTrack": "unova/nuvema",
   "people": {
     "0": { "name": "Backers", "dialog": [ "Every new Trainer from Nuvema gets a cheer from us when they set off!" ] },
     "1": { "name": "Twins", "npcType": "twin", "dialog": [ "The professor's lab is the biggest building in town!" ] },

@@ -182,5 +182,79 @@
         "Foști membri sau nu, tot Echipa Plasma sunt. Îl ascult. Deocamdată."
       ]
     }
+  ],
+  "HughRematch": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, Champion! Team Plasma left a lot of Pokémon behind when they ran. I'm helping Rood find their real Trainers."
+      ],
+      "text": [
+        "Hei, Campionule! Team Plasma a lăsat în urmă o mulțime de Pokémoni când a fugit. Îl ajut pe Rood să le găsească adevărații Antrenori."
+      ]
+    },
+    {
+      "en": [
+        "Liepard's warming up to me, too. My sister says it purrs now. ...Anyway! Since you're here, battle me!"
+      ],
+      "text": [
+        "Și Liepard începe să se apropie de mine. Sora mea zice că acum toarce. ...Oricum! Dacă tot ești aici, luptă cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "Ready?"
+      ],
+      "text": [
+        "Gata?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "That's what I'm talking about! Battling you always shows me how much further I can go."
+      ],
+      "text": [
+        "Asta zic și eu luptă! O luptă cu tine îmi arată mereu cât de departe mai pot ajunge."
+      ]
+    },
+    {
+      "en": [
+        "Come by again tomorrow. I'll be stronger. Count on it!"
+      ],
+      "text": [
+        "Mai treci și mâine. Voi fi mai puternic. Pe cuvânt!"
+      ]
+    },
+    {
+      "en": [
+        "Huh? Fine. I'll be here, keeping these Pokémon company."
+      ],
+      "text": [
+        "Hm? Bine. Rămân aici, să le țin de urât Pokémonilor ăstora."
+      ]
+    },
+    {
+      "en": [
+        "One battle a day, or I'd never get any work done! Come back tomorrow."
+      ],
+      "text": [
+        "O luptă pe zi, altfel n-aș mai face nimic! Revino mâine."
+      ]
+    }
   ]
 }

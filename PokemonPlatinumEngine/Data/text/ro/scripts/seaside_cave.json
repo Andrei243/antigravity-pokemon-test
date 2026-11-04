@@ -1,4 +1,24 @@
 {
+  "GapNorth": [
+    {
+      "en": [
+        "There's a narrow gap in the rock to the north. Squeeze through?"
+      ],
+      "text": [
+        "E o crăpătură îngustă în stâncă, spre nord. Te strecori prin ea?"
+      ]
+    }
+  ],
+  "GapSouth": [
+    {
+      "en": [
+        "There's a narrow gap in the rock to the south. Squeeze through?"
+      ],
+      "text": [
+        "E o crăpătură îngustă în stâncă, spre sud. Te strecori prin ea?"
+      ]
+    }
+  ],
   "Rocky": [
     {
       "en": [

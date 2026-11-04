@@ -2,7 +2,7 @@
   // Twist Mountain's deepest tunnel (plan 22 · U10, part e): the way through to Clay Tunnel and the chamber behind the rubble,
   // Black 2's, our words. Its eight signs are the old mine's notices
   "area": "twist_mountain_6",
-  "bgmTrack": "unova/reversal_cave",
+  "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "signs": {
     "1": "A worn notice nailed to a beam:\n\"Clay Tunnel works this way. Keep to the lit side.\""

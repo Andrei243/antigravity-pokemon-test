@@ -4,7 +4,7 @@
   // the item not being in the game's data
   "area": "twist_mountain_5",
   "heldBack": [ "3" ],
-  "bgmTrack": "unova/reversal_cave",
+  "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "people": {
     "2": { "name": "Worker", "dialog": [ "Icirrus City is just through there. The cold hits you the moment you step out." ] },

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Pilot"
+        ],
+        "text": [
+          "Pilot"
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Haxorus"
+        ],
+        "text": [
+          "Haxorus"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

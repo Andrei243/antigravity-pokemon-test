@@ -1,0 +1,22 @@
+{
+  // The Nature Preserve (plan 22 · U10, part h): Black 2's wild island of woods and a lake, its zone, chunks (matrix 372, the map
+  // NaturePreserve), wild Pokémon and balls read by the importer, our words. No way leads there on foot: the Cargo Service's plane
+  // flies a Champion of Unova over from Mistralton (mistralton_city_3.txt) and the pilot by the landing strip (0) flies them back
+  // (nature_preserve.txt). Black 2's shiny Haxorus (1) waits by the lake once Unova's Hall of Fame is entered, level 60, gone once
+  // fought (FLAG_UNOVA_FOUGHT_HAXORUS). A Big Nugget's ball (3) is held back, the item not being in the game's data
+  "area": "nature_preserve",
+  "bgmTrack": "unova/lostlorn_forest",
+  "heldBack": [ "3" ],
+  "people": {
+    "0": { "name": "Pilot", "npcType": "pilot", "script": "Pilot", "still": true },
+    "1": {
+      "name": "Haxorus",
+      "npcType": "Pokemon",
+      "species": "Haxorus",
+      "hiddenBy": "FLAG_UNOVA_FOUGHT_HAXORUS",
+      "shownBy": "UnovaHallOfFame",
+      "script": "Haxorus",
+      "still": true
+    }
+  }
+}

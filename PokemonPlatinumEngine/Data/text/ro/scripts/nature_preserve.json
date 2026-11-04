@@ -1,0 +1,88 @@
+{
+  "Pilot": [
+    {
+      "en": [
+        "Pilot"
+      ],
+      "text": [
+        "Pilot"
+      ]
+    },
+    {
+      "en": [
+        "This island's kept wild on purpose. Nobody lives here, so the Pokémon grow as they please."
+      ],
+      "text": [
+        "Insula asta e lăsată sălbatică intenționat. Nu locuiește nimeni aici, așa că Pokémonii cresc cum vor ei."
+      ]
+    },
+    {
+      "en": [
+        "Shall I fly you back to Mistralton City?"
+      ],
+      "text": [
+        "Să te duc înapoi în Mistralton City?"
+      ]
+    },
+    {
+      "en": [
+        "Buckle up! Mistralton Cargo Service, homeward bound."
+      ],
+      "text": [
+        "Pune-ți centura! Mistralton Cargo Service, spre casă."
+      ]
+    },
+    {
+      "en": [
+        "Take your time. I'll wait by the plane."
+      ],
+      "text": [
+        "Nu te grăbi. Te aștept lângă avion."
+      ]
+    }
+  ],
+  "FlightHome": [
+    {
+      "en": [
+        "The plane lifts off the island's strip and swings out over the sea..."
+      ],
+      "text": [
+        "Avionul se desprinde de pe pista insulei și se întoarce deasupra mării..."
+      ]
+    },
+    {
+      "en": [
+        "The preserve's woods shrink behind the tail, and Mistralton's runway comes up to meet the wheels."
+      ],
+      "text": [
+        "Pădurile rezervației se micșorează în urma cozii, iar pista din Mistralton vine în întâmpinarea roților."
+      ]
+    }
+  ],
+  "Haxorus": [
+    {
+      "en": [
+        "The Haxorus's scales flash gold in the light!\nIt bares its tusks and charges!"
+      ],
+      "text": [
+        "Solzii lui Haxorus strălucesc aurii în lumină!\nÎși arată colții și atacă!"
+      ]
+    },
+    {
+      "en": [
+        "The clearing is quiet again. Only the wind moves in the trees..."
+      ],
+      "text": [
+        "Poiana e din nou liniștită. Doar vântul mai mișcă printre copaci..."
+      ]
+    },
+    {
+      "en": [
+        "The Haxorus crashed off into the trees..."
+      ],
+      "text": [
+        "Haxorus s-a năpustit printre copaci și a dispărut..."
+      ]
+    }
+  ]
+}

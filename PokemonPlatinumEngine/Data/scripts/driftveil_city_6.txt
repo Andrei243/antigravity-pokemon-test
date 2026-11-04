@@ -58,3 +58,37 @@ script Hugh
   speaker "{rival}"
   say "Former members or not, it's Team Plasma. I'll hear him out. For now."
   end
+
+
+# Hugh after Unova's Hall of Fame (hugh_home; plan 22 · U10, part h): he helps Rood's people find the Trainers of the Pokémon
+# Team Plasma left behind, and battles the player once a day with Black 2's last team for the starter he chose against
+# (unova_rival_22 to _24, levels 65 and 67; driftveil_city_6.s, read for the order alone). FLAG_DAILY_UNOVA_HUGH.
+script HughRematch
+  face hugh_home player
+  speaker "{rival}"
+  if flag FLAG_DAILY_UNOVA_HUGH goto Tomorrow
+  say "Hey, Champion! Team Plasma left a lot of Pokémon behind when they ran. I'm helping Rood find their real Trainers."
+  say "Liepard's warming up to me, too. My sister says it purrs now. ...Anyway! Since you're here, battle me!"
+  ask "Ready?"
+  if no goto Later
+  if starter "Snivy" goto AgainstSnivy
+  if starter "Tepig" goto AgainstTepig
+  battle hugh_home as "unova_rival_24" canlose
+  goto Fought
+label AgainstSnivy
+  battle hugh_home as "unova_rival_22" canlose
+  goto Fought
+label AgainstTepig
+  battle hugh_home as "unova_rival_23" canlose
+label Fought
+  setflag FLAG_DAILY_UNOVA_HUGH
+  speaker "{rival}"
+  say "That's what I'm talking about! Battling you always shows me how much further I can go."
+  say "Come by again tomorrow. I'll be stronger. Count on it!"
+  end
+label Later
+  say "Huh? Fine. I'll be here, keeping these Pokémon company."
+  end
+label Tomorrow
+  say "One battle a day, or I'd never get any work done! Come back tomorrow."
+  end

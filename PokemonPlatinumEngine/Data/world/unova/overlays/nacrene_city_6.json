@@ -1,7 +1,7 @@
 {
   // A warehouse studio of Nacrene City (plan 22 · U10, part f), Black 2's, our words
   "area": "nacrene_city_6",
-  "bgmTrack": "unova/driftveil",
+  "bgmTrack": "unova/nacrene",
   "people": {
     "0": { "name": "Old Man", "npcType": "middle_aged_man", "dialog": [ "I turned this warehouse into my studio. The high ceilings are perfect for big canvases." ] },
     "1": { "name": "School Kid", "dialog": [ "My dad makes sculptures. I'm not allowed to touch any of them!" ] },

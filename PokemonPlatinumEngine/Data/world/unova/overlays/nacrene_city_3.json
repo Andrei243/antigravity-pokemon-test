@@ -1,7 +1,7 @@
 {
   // The Nacrene Museum's upper floor and library (plan 22 · U10, part f), Black 2's, our words. Its shelves read as books
   "area": "nacrene_city_3",
-  "bgmTrack": "unova/driftveil",
+  "bgmTrack": "unova/nacrene",
   "people": {
     "0": { "name": "Librarian", "npcType": "gym_guide", "dialog": [ "This is the museum's library. Every book here is about Unova's past." ] },
     "1": { "name": "School Kid", "dialog": [ "I'm reading about the dragon in the tower up north. It's a scary story." ] },

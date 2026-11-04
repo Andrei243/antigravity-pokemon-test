@@ -2,7 +2,7 @@
   // Icirrus City's Pokémon Fan Club (plan 22 · U10, part e): Black 2's room of Pokémon and their admirers, our words. The
   // chairman (2) talks of his favourites; the four Pokémon about the room are ours to choose
   "area": "icirrus_city_6",
-  "bgmTrack": "unova/lacunosa",
+  "bgmTrack": "unova/icirrus",
   "people": {
     "0": { "name": "Backers", "dialog": [ "I joined the club for the chairman's stories. I stayed for the Pokémon." ] },
     "1": { "name": "Lillipup", "npcType": "Pokemon", "species": "Lillipup", "script": "Pokemon", "dialog": [ "Lillipup wags its tail at everyone who comes in." ] },
