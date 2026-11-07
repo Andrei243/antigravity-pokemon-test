@@ -65,3 +65,7 @@ migrate/
 # What Python leaves beside tools/BlenderAnim's scripts when Blender imports one from another
 __pycache__/
 tools/GeminiArt/.cache/
+
+# The bake of the baker's own test worlds (plan 32 · OW2): made again by `dotnet run --project tools/OpenWorldBake -- lab`;
+# a region of the game commits its bake (PokemonPlatinumEngine/Data/world3d/<region>/baked)
+tools/OpenWorldBake/worlds/*/baked/

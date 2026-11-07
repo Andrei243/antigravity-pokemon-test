@@ -1,0 +1,19 @@
+{
+  // The open test world (plan 32 · OW2): OW0's hill, with its tunnel and the cavern under its top, on a meadow
+  // 128 m across, written as files. A river with a rock bridge over it on the south, a pond with a stack in it in the
+  // north-east, a ledge of a plateau in the north-west, and two roads graded to the tunnel's mouths. Nothing of it is
+  // taken from any game; it is the baker's test bed and the harness's.
+  "region": "lab",
+  "chunks": [-2, -2, 1, 1],
+  "baseHeight": 0,
+  "cover": { "shore": 0.6 },
+  "areas": [
+    { "key": "lab_meadow", "name": "Test Meadow", "polygon": [[-64, -64], [64, -64], [64, 64], [-64, 64]] },
+    { "key": "lab_hill", "name": "Test Hill", "polygon": [[-32, -20], [32, -20], [32, 20], [-32, 20]], "minY": 4 },
+    { "key": "lab_cave", "name": "Test Cave", "polygon": [[-42, -13], [42, -13], [42, 13], [-42, 13]], "minY": -2, "maxY": 4 },
+    { "key": "lab_river", "name": "Test River", "polygon": [[-64, 30], [64, 30], [64, 58], [-64, 58]] }
+  ],
+  "maps": [
+    { "name": "OpenLab", "areas": ["lab_meadow", "lab_hill", "lab_cave", "lab_river"] }
+  ]
+}

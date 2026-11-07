@@ -1,0 +1,8 @@
+{
+  "roads": [
+    // From the south-west meadow to the tunnel's west mouth, graded down to the tunnel's floor there
+    { "name": "the west road", "points": [[-62, 1.2, 28], [-50, 8], [-36, 0, 0]], "width": 3.2, "shoulder": 3 },
+    // From the tunnel's east mouth round the ridge's foot to the pond
+    { "name": "the east road", "points": [[36, 0, 0], [46, -4], [52, -8], [56, 4]], "width": 3.2, "shoulder": 3 }
+  ]
+}
