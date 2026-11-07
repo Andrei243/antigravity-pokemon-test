@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The importer's patch of the later sets, by set id (tools/DataImporter/Overrides/facility-sets.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "species": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "moves": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "evFlags": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "nature": {
+        "anyOf": [
+          {
+            "enum": [
+              "Hardy",
+              "Lonely",
+              "Brave",
+              "Adamant",
+              "Naughty",
+              "Bold",
+              "Docile",
+              "Relaxed",
+              "Impish",
+              "Lax",
+              "Timid",
+              "Hasty",
+              "Serious",
+              "Jolly",
+              "Naive",
+              "Modest",
+              "Mild",
+              "Quiet",
+              "Bashful",
+              "Rash",
+              "Calm",
+              "Gentle",
+              "Sassy",
+              "Careful",
+              "Quirky"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "item": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "form": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ability": {
+        "anyOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "tier": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "new": {
+        "type": "boolean",
+        "description": "An entry the import has none of by this name: added only when it says so, so a misspelt name stops the importer."
+      }
+    },
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The later battle places' trainers: classes, looks and names of ours (Data/facility-trainers.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "trainers": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "class": {
+            "type": "string"
+          },
+          "look": {
+            "type": "string"
+          },
+          "names": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "required": [
+          "class",
+          "look",
+          "names"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "trainers"
+  ],
+  "additionalProperties": false
+}

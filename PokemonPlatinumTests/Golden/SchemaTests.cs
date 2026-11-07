@@ -35,6 +35,7 @@ public class SchemaTests
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),
+        ("facility-trainers.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.FacilityTrainersFile), "The later battle places' trainers: classes, looks and names of ours (Data/facility-trainers.json)"),
         // An open region's descriptions (plan 32 · OW2), read strictly by tools/OpenWorldBake
         ("open-world.schema.json", typeof(OpenWorldBake.OpenWorldFile), "An open region's world.json (Data/world3d/<region>/world.json)"),
         ("open-terrain.schema.json", typeof(OpenWorldBake.TerrainFile), "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)"),
@@ -48,7 +49,8 @@ public class SchemaTests
     {
         ("species-patch.schema.json", typeof(PokemonSpecies), "The importer's patch of species.json (tools/DataImporter/Overrides/species.json)"),
         ("items-patch.schema.json", typeof(ItemData), "The importer's patch of items.json (tools/DataImporter/Overrides/items.json)"),
-        ("moves-patch.schema.json", typeof(MoveData), "The importer's patch of moves.json (tools/DataImporter/Overrides/moves.json)")
+        ("moves-patch.schema.json", typeof(MoveData), "The importer's patch of moves.json (tools/DataImporter/Overrides/moves.json)"),
+        ("facility-sets-patch.schema.json", typeof(FrontierSetRecord), "The importer's patch of the later sets, by set id (tools/DataImporter/Overrides/facility-sets.json)")
     };
 
     [Fact]

@@ -50,6 +50,20 @@ public sealed class FrontierSetRecord
     /// <summary>The form it is in, where it is in one (plan 06 · R18c: two of the Battle Hall's Wormadam, by their cloaks).</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Form { get; set; }
+
+    /// <summary>
+    /// The ability it has (plan 37 · FC1: a later set's, one of its species' own, the hidden one among them); null for the
+    /// Frontier's own sets, whose ability is the personality's (<see cref="Models.Frontier.FrontierTrainers.Build"/>).
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Ability { get; set; }
+
+    /// <summary>
+    /// How strong it is, 1 (the weakest) to 4 (plan 37 · FC1, <see cref="FacilitySetDatabase.TierOfLevel"/>); 0 for the
+    /// Frontier's own sets, which the original ranks by their trainers instead.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int Tier { get; set; }
 }
 
 /// <summary>Something an Exchange Service Corner hands over for Battle Points.</summary>

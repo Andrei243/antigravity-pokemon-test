@@ -138,7 +138,10 @@ public static class FrontierTrainers
         if ((set.EvFlags & 8) != 0) pokemon.EvSpeed = effort;
         if ((set.EvFlags & 16) != 0) pokemon.EvSpAttack = effort;
         if ((set.EvFlags & 32) != 0) pokemon.EvSpDefense = effort;
-        pokemon.AbilityName = Personality.AbilityOf(pokemon.Abilities, personality);
+        // A later set names its ability (plan 37 · FC1); the Frontier's own take the personality's
+        pokemon.AbilityName = set.Ability is { } named && (pokemon.Abilities.Contains(named) || pokemon.HiddenAbilityName == named)
+            ? named
+            : Personality.AbilityOf(pokemon.Abilities, personality);
         pokemon.HeldItem = ItemDatabase.Get(item ?? set.Item ?? "");
         pokemon.Moves.Clear();
         foreach (string move in set.Moves) pokemon.Moves.Add(MoveDatabase.Create(move));
