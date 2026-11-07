@@ -1,0 +1,21 @@
+# Kahili's room of the Alola Pokémon League (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula,
+# Poni, Aether Paradise and the League"): the last of the Elite Four, Flying, a golfer of Hau'oli's links. Her team is
+# alola_kahili_league; beaten, FLAG_ALOLA_DEFEATED_KAHILI opens the door to the Champion's room.
+
+
+script League
+  face kahili player
+  speaker "Kahili"
+  if flag FLAG_ALOLA_DEFEATED_KAHILI goto Won
+  scene "Kahili"
+  say "Welcome, {player}. I'm Kahili, the last of the Elite Four. I fly, and so do my Pokémon, and so does my golf ball."
+  say "Flying types are just a matter of freedom. See if you can keep up with mine!"
+  battle self as "alola_kahili_league"
+  say "A hole in one! ...For you, I mean. Not for me. Well played."
+  say "The Champion's door is open. I think you'll recognise the Trainer waiting inside."
+  setflag FLAG_ALOLA_DEFEATED_KAHILI
+  endscene
+  end
+label Won
+  say "Go on. The Champion is waiting for you."
+  end

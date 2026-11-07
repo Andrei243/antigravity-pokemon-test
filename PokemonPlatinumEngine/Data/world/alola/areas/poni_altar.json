@@ -1,0 +1,58 @@
+{
+  "key": "poni_altar",
+  "index": 207,
+  "name": "Altar of the Sunne and Moone",
+  "matrix": 16,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_ALTAR",
+  "nightMusic": "PONI_ALTAR",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 32,
+      "z": 93,
+      "to": "poni_breakers",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "lillie",
+      "looks": "lillie",
+      "movement": "look_north",
+      "x": 31,
+      "z": 24,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "legend",
+      "looks": "solgaleo",
+      "movement": "look_south",
+      "x": 32,
+      "z": 14,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 34,
+      "z": 84,
+      "type": 0,
+      "script": "AltarSign"
+    }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,117 @@
+{
+  // Aether Paradise (plan 23 · Z7): drawn by hand, our words. The Aether Foundation's floating island: its pier in the south, the
+  // Foundation's head office in the north, a clinic, a house and a garden of tall grass with a pond where hurt Pokémon rest.
+  "area": "aether_paradise",
+  "bgmTrack": "alola/pokecenter",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "AetherParadise_Office",
+      "x": 8,
+      "y": 14,
+      "facing": "Up",
+      "openedBy": "FLAG_ALOLA_AETHER_HQ_OPEN"
+    },
+    {
+      "warp": 1,
+      "map": "AetherParadise_PokemonCenter_1F",
+      "x": 8,
+      "y": 12,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "AetherParadise_House",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    }
+  ],
+  "triggers": [
+    {
+      "script": "Tour",
+      "x": 45,
+      "z": 72,
+      "width": 7,
+      "depth": 1,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 40
+    },
+    {
+      "script": "Rescue",
+      "x": 45,
+      "z": 72,
+      "width": 7,
+      "depth": 1,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 47
+    }
+  ],
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "script": "Ferry",
+      "still": true
+    },
+    "wicke": {
+      "name": "Wicke",
+      "npcType": "wicke",
+      "script": "Wicke",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_AETHER_WICKE_DONE",
+      "shownBy": "FLAG_ALOLA_AT_AETHER"
+    },
+    "lusamine": {
+      "name": "Lusamine",
+      "npcType": "lusamine",
+      "script": "Lusamine",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_AETHER_LUSAMINE_DONE",
+      "shownBy": "FLAG_ALOLA_AT_AETHER"
+    },
+    "lillie": {
+      "name": "Lillie",
+      "npcType": "lillie",
+      "script": "Wicke",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_AETHER_LILLIE_DONE",
+      "shownBy": "FLAG_ALOLA_AT_AETHER"
+    },
+    "guard": {
+      "name": "Aether Guard",
+      "npcType": "policeman",
+      "script": "AetherGuard",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_AETHER_HQ_OPEN"
+    },
+    "employee": {
+      "name": "Aether Employee",
+      "npcType": "scientist",
+      "dialog": [
+        "Welcome to Aether Paradise! Our foundation looks after injured Pokémon, and we have a whole floating island of them to prove it."
+      ]
+    },
+    "child": {
+      "name": "Girl",
+      "npcType": "preschooler_f",
+      "dialog": [
+        "They let the hurt Pokémon rest in the garden until they're better. This one has been here a week and doesn't want to leave."
+      ]
+    },
+    "ito": {
+      "name": "Ito",
+      "npcType": "scientist",
+      "trainer": {
+        "dialogueBefore": "Scientist Ito: You're going to take a tour, are you? Let me test your resolve first.",
+        "dialogueAfter": "Scientist Ito: You're well past the tour."
+      }
+    }
+  },
+  "signs": {
+    "AetherSign": "Aether Paradise\nThe Aether Foundation's floating haven for Pokémon.",
+    "PierSign": "Aether Paradise Pier\nFerries to Heahea City, Akala, and Malie City, Ula'ula."
+  }
+}

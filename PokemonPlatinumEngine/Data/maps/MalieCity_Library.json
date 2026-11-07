@@ -1,0 +1,138 @@
+{
+  "name": "MalieCity_Library",
+  "displayName": "Malie Library",
+  "bgmTrack": "alola/hauoli",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 12,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#...##....#",
+    "#...##....#",
+    "#.........#",
+    "#.........#",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 11,
+      "targetMap": "Ulaula",
+      "targetX": 49,
+      "targetY": 331,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "librarian",
+      "name": "Librarian",
+      "npcType": "lady",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Shh... but not too much. Most of the books here are about the sun and moon guardians, if you're curious."
+      ]
+    },
+    {
+      "id": "scholar",
+      "name": "Scholar",
+      "npcType": "expert_m",
+      "x": 8,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Ula'ula was named for the red of the sunset over the mountain. At least, that's what the oldest book says. The oldest book may be a menu."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

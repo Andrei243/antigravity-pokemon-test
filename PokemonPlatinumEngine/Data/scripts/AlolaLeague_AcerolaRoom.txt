@@ -1,0 +1,20 @@
+# Acerola's room of the Alola Pokémon League (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula,
+# Poni, Aether Paradise and the League"): the third of the Elite Four, Ghost, a captain of Ula'ula who has risen with
+# the player. Her team is alola_acerola_league; beaten, FLAG_ALOLA_DEFEATED_ACEROLA opens the door to Kahili's room.
+
+
+script League
+  face acerola player
+  speaker "Acerola"
+  if flag FLAG_ALOLA_DEFEATED_ACEROLA goto Won
+  scene "Acerola"
+  say "Hi hi! Remember me? Acerola! I'm in the Elite Four now. Isn't that spooky?"
+  say "My Pokémon and I have been practising our scariest faces. Brace yourself!"
+  battle self as "alola_acerola_league"
+  say "Wow! You even beat my scariest face. Kahili's up next. She's a golfer, did you know? She hits things really, really far."
+  setflag FLAG_ALOLA_DEFEATED_ACEROLA
+  endscene
+  end
+label Won
+  say "Kahili's through the door. Don't let her tell you about her swing."
+  end

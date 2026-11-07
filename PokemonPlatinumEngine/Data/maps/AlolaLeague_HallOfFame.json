@@ -1,0 +1,70 @@
+{
+  "name": "AlolaLeague_HallOfFame",
+  "displayName": "Hall of Fame",
+  "bgmTrack": "alola/battle_gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "HallOfFame",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "#...........#",
+    "#....###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "AlolaLeague_KukuiRoom",
+      "targetX": 7,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kukui_hof",
+      "name": "Kukui",
+      "npcType": "kukui",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "script": "KukuiWaits"
+    }
+  ],
+  "wildEncounters": []
+}

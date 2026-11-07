@@ -1,5 +1,1872 @@
 [
   {
+    "id": "alola_hiker_kalani",
+    "name": "Kalani",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 532,
+    "party": [
+      {
+        "species": "Geodude",
+        "form": "Geodude-Alola",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 4103048
+      },
+      {
+        "species": "Roggenrola",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 4206096
+      }
+    ]
+  },
+  {
+    "id": "alola_youngster_makana",
+    "name": "Makana",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 504,
+    "party": [
+      {
+        "species": "Yungoos",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 4309144
+      },
+      {
+        "species": "Pikipek",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 4412192
+      }
+    ]
+  },
+  {
+    "id": "alola_lass_leilene",
+    "name": "Leilene",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 504,
+    "party": [
+      {
+        "species": "Fomantis",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 4515240
+      },
+      {
+        "species": "Cottonee",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 4618288
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_kai",
+    "name": "Kai",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Mankey",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 4721336
+      },
+      {
+        "species": "Sandile",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 4824384
+      },
+      {
+        "species": "Rufflet",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 4927432
+      }
+    ]
+  },
+  {
+    "id": "alola_backpacker_noa",
+    "name": "Noa",
+    "class": "Backpacker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 560,
+    "party": [
+      {
+        "species": "Magnemite",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 5030480
+      },
+      {
+        "species": "Trubbish",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 5133528
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_hiwa",
+    "name": "Hiwa",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 588,
+    "party": [
+      {
+        "species": "Skarmory",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 5236576
+      },
+      {
+        "species": "Pidgeotto",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 5339624
+      }
+    ]
+  },
+  {
+    "id": "alola_hiker_pono",
+    "name": "Pono",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 588,
+    "party": [
+      {
+        "species": "Geodude",
+        "form": "Geodude-Alola",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 5442672
+      },
+      {
+        "species": "Graveler",
+        "form": "Graveler-Alola",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 5545720
+      }
+    ]
+  },
+  {
+    "id": "alola_scientist_kuhio",
+    "name": "Kuhio",
+    "class": "Scientist",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 616,
+    "party": [
+      {
+        "species": "Electabuzz",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 5648768
+      },
+      {
+        "species": "Magneton",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 5751816
+      }
+    ]
+  },
+  {
+    "id": "alola_fisherman_loke",
+    "name": "Loke",
+    "class": "Fisherman",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 588,
+    "party": [
+      {
+        "species": "Barboach",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 5854864
+      },
+      {
+        "species": "Goldeen",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 5957912
+      }
+    ]
+  },
+  {
+    "id": "alola_pokemon_breeder_lani",
+    "name": "Lani",
+    "class": "Pokémon Breeder",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 616,
+    "party": [
+      {
+        "species": "Cutiefly",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 6060960
+      },
+      {
+        "species": "Dewpider",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 6164008
+      },
+      {
+        "species": "Morelull",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6267056
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_nalo",
+    "name": "Nalo",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 616,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "form": "Lycanroc-Midnight",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6370104
+      },
+      {
+        "species": "Mudbray",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6473152
+      }
+    ]
+  },
+  {
+    "id": "alola_hiker_wana",
+    "name": "Wana",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 616,
+    "party": [
+      {
+        "species": "Roggenrola",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 6576200
+      },
+      {
+        "species": "Boldore",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6679248
+      }
+    ]
+  },
+  {
+    "id": "alola_rancher_kalei",
+    "name": "Kalei",
+    "class": "Rancher",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 616,
+    "party": [
+      {
+        "species": "Mudbray",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6782296
+      },
+      {
+        "species": "Tauros",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6885344
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_makalii",
+    "name": "Makalii",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 672,
+    "party": [
+      {
+        "species": "Pelipper",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 6988392
+      },
+      {
+        "species": "Wingull",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 7091440
+      },
+      {
+        "species": "Gliscor",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 7194488
+      }
+    ]
+  },
+  {
+    "id": "alola_hiker_akoni",
+    "name": "Akoni",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 672,
+    "party": [
+      {
+        "species": "Golem",
+        "form": "Golem-Alola",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 7297536
+      }
+    ]
+  },
+  {
+    "id": "alola_backpacker_keala",
+    "name": "Keala",
+    "class": "Backpacker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 644,
+    "party": [
+      {
+        "species": "Lombre",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 7400584
+      },
+      {
+        "species": "Pyukumuku",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 7503632
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_nohea",
+    "name": "Nohea",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1512,
+    "party": [
+      {
+        "species": "Lucario",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 7606680
+      },
+      {
+        "species": "Steelix",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 7709728
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_ailani",
+    "name": "Ailani",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1512,
+    "party": [
+      {
+        "species": "Gardevoir",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 7812776
+      },
+      {
+        "species": "Lopunny",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 7915824
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_ula1",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 676,
+    "party": [
+      {
+        "species": "Salandit",
+        "level": 26,
+        "ivScale": 0,
+        "personality": 8018872
+      },
+      {
+        "species": "Zubat",
+        "level": 26,
+        "ivScale": 0,
+        "personality": 8121920
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_ula2",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 702,
+    "party": [
+      {
+        "species": "Ekans",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 8224968
+      },
+      {
+        "species": "Drowzee",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 8328016
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_ula3",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 728,
+    "party": [
+      {
+        "species": "Mareanie",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 8431064
+      },
+      {
+        "species": "Pancham",
+        "level": 28,
+        "ivScale": 0,
+        "personality": 8534112
+      }
+    ]
+  },
+  {
+    "id": "alola_pokemon_breeder_hoku",
+    "name": "Hoku",
+    "class": "Pokémon Breeder",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 728,
+    "party": [
+      {
+        "species": "Lillipup",
+        "level": 25,
+        "ivScale": 0,
+        "personality": 8637160
+      },
+      {
+        "species": "Yungoos",
+        "level": 25,
+        "ivScale": 0,
+        "personality": 8740208
+      },
+      {
+        "species": "Rockruff",
+        "level": 26,
+        "ivScale": 0,
+        "personality": 8843256
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_po1",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 754,
+    "party": [
+      {
+        "species": "Raticate",
+        "form": "Raticate-Alola",
+        "level": 28,
+        "ivScale": 0,
+        "personality": 8946304
+      },
+      {
+        "species": "Golbat",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 9049352
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_po2",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 754,
+    "party": [
+      {
+        "species": "Haunter",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 9152400
+      },
+      {
+        "species": "Salandit",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 9255448
+      }
+    ]
+  },
+  {
+    "id": "alola_team_skull_grunt_po3",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 780,
+    "party": [
+      {
+        "species": "Mareanie",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 9358496
+      },
+      {
+        "species": "Pelipper",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 9461544
+      },
+      {
+        "species": "Pancham",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 9564592
+      }
+    ]
+  },
+  {
+    "id": "alola_ranger_leilani",
+    "name": "Leilani",
+    "class": "Pokémon Ranger",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1120,
+    "party": [
+      {
+        "species": "Mudsdale",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 9667640
+      },
+      {
+        "species": "Ribombee",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 9770688
+      }
+    ]
+  },
+  {
+    "id": "alola_hiker_makoa",
+    "name": "Makoa",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1148,
+    "party": [
+      {
+        "species": "Golem",
+        "form": "Golem-Alola",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 9873736
+      },
+      {
+        "species": "Probopass",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 9976784
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_pele",
+    "name": "Pele",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1176,
+    "party": [
+      {
+        "species": "Ninetales",
+        "form": "Ninetales-Alola",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 10079832
+      },
+      {
+        "species": "Lycanroc",
+        "form": "Lycanroc-Midnight",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 10182880
+      },
+      {
+        "species": "Gumshoos",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 10285928
+      }
+    ]
+  },
+  {
+    "id": "alola_backpacker_nani",
+    "name": "Nani",
+    "class": "Backpacker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1176,
+    "party": [
+      {
+        "species": "Pelipper",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 10388976
+      },
+      {
+        "species": "Bruxish",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 10492024
+      },
+      {
+        "species": "Oricorio",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 10595072
+      }
+    ]
+  },
+  {
+    "id": "alola_swimmer_kekoa",
+    "name": "Kekoa",
+    "class": "Swimmer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1232,
+    "party": [
+      {
+        "species": "Wishiwashi",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 10698120
+      },
+      {
+        "species": "Brionne",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 10801168
+      }
+    ]
+  },
+  {
+    "id": "alola_fisherman_nuka",
+    "name": "Nuka",
+    "class": "Fisherman",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1232,
+    "party": [
+      {
+        "species": "Wailmer",
+        "level": 43,
+        "ivScale": 0,
+        "personality": 10904216
+      },
+      {
+        "species": "Mantine",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 11007264
+      },
+      {
+        "species": "Dewgong",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 11110312
+      }
+    ]
+  },
+  {
+    "id": "alola_veteran_loio",
+    "name": "Loio",
+    "class": "Veteran",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1260,
+    "party": [
+      {
+        "species": "Hariyama",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 11213360
+      },
+      {
+        "species": "Tyranitar",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 11316408
+      }
+    ]
+  },
+  {
+    "id": "alola_psychic_maile",
+    "name": "Maile",
+    "class": "Psychic",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1260,
+    "party": [
+      {
+        "species": "Hypno",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 11419456
+      },
+      {
+        "species": "Slowking",
+        "level": 44,
+        "ivScale": 0,
+        "personality": 11522504
+      },
+      {
+        "species": "Oranguru",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 11625552
+      }
+    ]
+  },
+  {
+    "id": "alola_dragon_tamer_keawe",
+    "name": "Keawe",
+    "class": "Dragon Tamer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1288,
+    "party": [
+      {
+        "species": "Kommo-o",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 11728600
+      },
+      {
+        "species": "Flygon",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 11831648
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_iolana",
+    "name": "Iolana",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1288,
+    "party": [
+      {
+        "species": "Exeggutor",
+        "form": "Exeggutor-Alola",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 11934696
+      },
+      {
+        "species": "Cradily",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 12037744
+      },
+      {
+        "species": "Torkoal",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 12140792
+      }
+    ]
+  },
+  {
+    "id": "alola_aether_employee_ito",
+    "name": "Ito",
+    "class": "Scientist",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1120,
+    "party": [
+      {
+        "species": "Porygon2",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 12243840
+      },
+      {
+        "species": "Magneton",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 12346888
+      }
+    ]
+  },
+  {
+    "id": "alola_ruin_maniac_hoku",
+    "name": "Hoku",
+    "class": "Ruin Maniac",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1148,
+    "party": [
+      {
+        "species": "Golem",
+        "form": "Golem-Alola",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 12449936
+      },
+      {
+        "species": "Probopass",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 12552984
+      }
+    ]
+  },
+  {
+    "id": "alola_psychic_anuenue",
+    "name": "Anuenue",
+    "class": "Psychic",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1176,
+    "party": [
+      {
+        "species": "Chimecho",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 12656032
+      },
+      {
+        "species": "Beheeyem",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 12759080
+      },
+      {
+        "species": "Orbeetle",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 12862128
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_kapono",
+    "name": "Kapono",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1176,
+    "party": [
+      {
+        "species": "Lucario",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 12965176
+      },
+      {
+        "species": "Zoroark",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 13068224
+      }
+    ]
+  },
+  {
+    "id": "alola_dragon_tamer_kaoni",
+    "name": "Kaoni",
+    "class": "Dragon Tamer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1288,
+    "party": [
+      {
+        "species": "Druddigon",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 13171272
+      },
+      {
+        "species": "Haxorus",
+        "level": 46,
+        "ivScale": 0,
+        "personality": 13274320
+      }
+    ]
+  },
+  {
+    "id": "alola_hiker_nalani",
+    "name": "Nalani",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1260,
+    "party": [
+      {
+        "species": "Steelix",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 13377368
+      },
+      {
+        "species": "Tyranitar",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 13480416
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_ioane",
+    "name": "Ioane",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1512,
+    "party": [
+      {
+        "species": "Weavile",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 13583464
+      },
+      {
+        "species": "Glalie",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 13686512
+      },
+      {
+        "species": "Lapras",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 13789560
+      }
+    ]
+  },
+  {
+    "id": "alola_ace_trainer_hina",
+    "name": "Hina",
+    "class": "Ace Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1512,
+    "party": [
+      {
+        "species": "Froslass",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 13892608
+      },
+      {
+        "species": "Mamoswine",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 13995656
+      }
+    ]
+  },
+  {
+    "id": "alola_veteran_kaeo",
+    "name": "Kaeo",
+    "class": "Veteran",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1540,
+    "party": [
+      {
+        "species": "Dragonite",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 14098704
+      },
+      {
+        "species": "Gengar",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 14201752
+      }
+    ]
+  },
+  {
+    "id": "alola_dragon_tamer_pua",
+    "name": "Pua",
+    "class": "Dragon Tamer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1540,
+    "party": [
+      {
+        "species": "Salamence",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 14304800
+      },
+      {
+        "species": "Goodra",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 14407848
+      },
+      {
+        "species": "Kommo-o",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 14510896
+      }
+    ]
+  },
+  {
+    "id": "alola_hau_malie_1",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Raichu",
+        "form": "Raichu-Alola",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 14613944
+      },
+      {
+        "species": "Torracat",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 14716992
+      }
+    ]
+  },
+  {
+    "id": "alola_hau_malie_2",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Raichu",
+        "form": "Raichu-Alola",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 14820040
+      },
+      {
+        "species": "Brionne",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 14923088
+      }
+    ]
+  },
+  {
+    "id": "alola_hau_malie_3",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Raichu",
+        "form": "Raichu-Alola",
+        "level": 23,
+        "ivScale": 0,
+        "personality": 15026136
+      },
+      {
+        "species": "Dartrix",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 15129184
+      }
+    ]
+  },
+  {
+    "id": "alola_plumeria_1",
+    "name": "Plumeria",
+    "class": "Team Skull Admin",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3400,
+    "party": [
+      {
+        "species": "Golbat",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 15232232
+      },
+      {
+        "species": "Skuntank",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 15335280
+      },
+      {
+        "species": "Salazzle",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 15438328
+      }
+    ]
+  },
+  {
+    "id": "alola_guzma_1",
+    "name": "Guzma",
+    "class": "Team Skull Boss",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 4800,
+    "party": [
+      {
+        "species": "Ariados",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 15541376
+      },
+      {
+        "species": "Masquerain",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 15644424
+      },
+      {
+        "species": "Golisopod",
+        "level": 36,
+        "ivScale": 0,
+        "personality": 15747472
+      }
+    ]
+  },
+  {
+    "id": "alola_manor_grunt_1",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 780,
+    "party": [
+      {
+        "species": "Mareanie",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 15850520
+      },
+      {
+        "species": "Raticate",
+        "form": "Raticate-Alola",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 15953568
+      }
+    ]
+  },
+  {
+    "id": "alola_manor_grunt_2",
+    "name": "Skull Grunt",
+    "class": "Team Skull Grunt",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 780,
+    "party": [
+      {
+        "species": "Golbat",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 16056616
+      },
+      {
+        "species": "Haunter",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 16159664
+      }
+    ]
+  },
+  {
+    "id": "alola_nanu_1",
+    "name": "Nanu",
+    "class": "Island Kahuna",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Sableye",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 16262712
+      },
+      {
+        "species": "Krokorok",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 16365760
+      },
+      {
+        "species": "Persian",
+        "form": "Persian-Alola",
+        "level": 39,
+        "ivScale": 0,
+        "personality": 16468808,
+        "item": "Darkinium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_hapu_1",
+    "name": "Hapu",
+    "class": "Island Kahuna",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4900,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Dugtrio",
+        "form": "Dugtrio-Alola",
+        "level": 47,
+        "ivScale": 0,
+        "personality": 16571856
+      },
+      {
+        "species": "Gastrodon",
+        "level": 47,
+        "ivScale": 0,
+        "personality": 16674904
+      },
+      {
+        "species": "Flygon",
+        "level": 48,
+        "ivScale": 0,
+        "personality": 16777952
+      },
+      {
+        "species": "Mudsdale",
+        "level": 49,
+        "ivScale": 0,
+        "personality": 16881000,
+        "item": "Groundium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_lusamine_1",
+    "name": "Lusamine",
+    "class": "Aether President",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 5400,
+    "party": [
+      {
+        "species": "Clefable",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 16984048
+      },
+      {
+        "species": "Mismagius",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 17087096
+      },
+      {
+        "species": "Lilligant",
+        "level": 43,
+        "ivScale": 0,
+        "personality": 17190144
+      },
+      {
+        "species": "Milotic",
+        "level": 43,
+        "ivScale": 0,
+        "personality": 17293192
+      },
+      {
+        "species": "Bewear",
+        "level": 43,
+        "ivScale": 0,
+        "personality": 17396240
+      },
+      {
+        "species": "Nihilego",
+        "level": 45,
+        "ivScale": 0,
+        "personality": 17499288
+      }
+    ]
+  },
+  {
+    "id": "alola_hala_league",
+    "name": "Hala",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6200,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Hariyama",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 17602336
+      },
+      {
+        "species": "Primeape",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 17705384
+      },
+      {
+        "species": "Poliwrath",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 17808432
+      },
+      {
+        "species": "Bewear",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 17911480
+      },
+      {
+        "species": "Crabominable",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 18014528,
+        "item": "Fightinium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_olivia_league",
+    "name": "Olivia",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6200,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Relicanth",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 18117576
+      },
+      {
+        "species": "Carbink",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 18220624
+      },
+      {
+        "species": "Lycanroc",
+        "form": "Lycanroc-Midnight",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 18323672
+      },
+      {
+        "species": "Probopass",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 18426720
+      },
+      {
+        "species": "Golem",
+        "form": "Golem-Alola",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 18529768,
+        "item": "Rockium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_acerola_league",
+    "name": "Acerola",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6300,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Sableye",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 18632816
+      },
+      {
+        "species": "Drifblim",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 18735864
+      },
+      {
+        "species": "Dhelmise",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 18838912
+      },
+      {
+        "species": "Froslass",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 18941960
+      },
+      {
+        "species": "Palossand",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 19045008
+      },
+      {
+        "species": "Mimikyu",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 19148056,
+        "item": "Ghostium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_kahili_league",
+    "name": "Kahili",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6200,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Skarmory",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 19251104
+      },
+      {
+        "species": "Crobat",
+        "level": 54,
+        "ivScale": 0,
+        "personality": 19354152
+      },
+      {
+        "species": "Oricorio",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 19457200
+      },
+      {
+        "species": "Mandibuzz",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 19560248
+      },
+      {
+        "species": "Toucannon",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 19663296,
+        "item": "Flyinium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_kukui_1",
+    "name": "Kukui",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Full Restore"
+    ],
+    "prizeMoney": 7000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 19766344
+      },
+      {
+        "species": "Ninetales",
+        "form": "Ninetales-Alola",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 19869392
+      },
+      {
+        "species": "Braviary",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 19972440
+      },
+      {
+        "species": "Magnezone",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 20075488
+      },
+      {
+        "species": "Snorlax",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 20178536
+      },
+      {
+        "species": "Incineroar",
+        "level": 58,
+        "ivScale": 0,
+        "personality": 20281584,
+        "item": "Firium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_kukui_2",
+    "name": "Kukui",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Full Restore"
+    ],
+    "prizeMoney": 7000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 20384632
+      },
+      {
+        "species": "Ninetales",
+        "form": "Ninetales-Alola",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 20487680
+      },
+      {
+        "species": "Braviary",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 20590728
+      },
+      {
+        "species": "Magnezone",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 20693776
+      },
+      {
+        "species": "Snorlax",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 20796824
+      },
+      {
+        "species": "Primarina",
+        "level": 58,
+        "ivScale": 0,
+        "personality": 20899872,
+        "item": "Waterium Z"
+      }
+    ]
+  },
+  {
+    "id": "alola_kukui_3",
+    "name": "Kukui",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion",
+      "Full Restore"
+    ],
+    "prizeMoney": 7000,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 21002920
+      },
+      {
+        "species": "Ninetales",
+        "form": "Ninetales-Alola",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 21105968
+      },
+      {
+        "species": "Braviary",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 21209016
+      },
+      {
+        "species": "Magnezone",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 21312064
+      },
+      {
+        "species": "Snorlax",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 21415112
+      },
+      {
+        "species": "Decidueye",
+        "level": 58,
+        "ivScale": 0,
+        "personality": 21518160,
+        "item": "Grassium Z"
+      }
+    ]
+  },
+  {
     "id": "alola_hau_1",
     "name": "Hau",
     "class": "Pokémon Trainer",

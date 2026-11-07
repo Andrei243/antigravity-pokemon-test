@@ -1,0 +1,117 @@
+{
+  "key": "exeggutor_island",
+  "index": 203,
+  "name": "Exeggutor Island",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "EXEGGUTOR_ISLAND",
+  "nightMusic": "EXEGGUTOR_ISLAND",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "hapu",
+      "looks": "hapu",
+      "movement": "look_south",
+      "x": 240,
+      "z": 82,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "keawe",
+      "looks": "dragon_tamer",
+      "movement": "look_east",
+      "x": 222,
+      "z": 100,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_DRAGON_TAMER_KEAWE"
+    },
+    {
+      "id": "iolana",
+      "looks": "ace_trainer_f",
+      "movement": "look_west",
+      "x": 258,
+      "z": 96,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_IOLANA"
+    }
+  ],
+  "signs": [
+    {
+      "x": 206,
+      "z": 98,
+      "type": 0,
+      "script": "IslandSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Exeggutor",
+      "level": 45
+    },
+    {
+      "species": "Exeggutor",
+      "level": 45
+    },
+    {
+      "species": "Exeggutor",
+      "level": 46
+    },
+    {
+      "species": "Stunfisk",
+      "level": 44
+    },
+    {
+      "species": "Stunfisk",
+      "level": 45
+    },
+    {
+      "species": "Stunfisk",
+      "level": 46
+    },
+    {
+      "species": "Gastrodon",
+      "level": 44
+    },
+    {
+      "species": "Gastrodon",
+      "level": 45
+    },
+    {
+      "species": "Gastrodon",
+      "level": 46
+    },
+    {
+      "species": "Trapinch",
+      "level": 44
+    },
+    {
+      "species": "Trapinch",
+      "level": 45
+    },
+    {
+      "species": "Torkoal",
+      "level": 45
+    }
+  ],
+  "landRate": 20
+}

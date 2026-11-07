@@ -1,0 +1,205 @@
+{
+  "name": "HokulaniObservatory",
+  "displayName": "Hokulani Observatory",
+  "bgmTrack": "alola/trial",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#..#.#####.#..#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Computer",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 11,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "Ulaula",
+      "targetX": 52,
+      "targetY": 200,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "sophocles",
+      "name": "Sophocles",
+      "npcType": "sophocles",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "script": "SophoclesInside",
+      "hiddenBy": "FLAG_ALOLA_HOKULANI_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_HOKULANI_TRIAL"
+    },
+    {
+      "id": "den_1",
+      "name": "Charjabug",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "script": "Den1",
+      "hiddenBy": "FLAG_ALOLA_HOKULANI_DEN_1",
+      "shownBy": "FLAG_ALOLA_HOKULANI_TRIAL",
+      "species": "Charjabug"
+    },
+    {
+      "id": "den_2",
+      "name": "Charjabug",
+      "npcType": "Pokemon",
+      "x": 11,
+      "y": 7,
+      "facing": "Down",
+      "script": "Den2",
+      "hiddenBy": "FLAG_ALOLA_HOKULANI_DEN_2",
+      "shownBy": "FLAG_ALOLA_HOKULANI_TRIAL",
+      "species": "Charjabug"
+    },
+    {
+      "id": "den_3",
+      "name": "Charjabug",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 10,
+      "facing": "Down",
+      "script": "Den3",
+      "hiddenBy": "FLAG_ALOLA_HOKULANI_DEN_3",
+      "shownBy": "FLAG_ALOLA_HOKULANI_TRIAL",
+      "species": "Charjabug"
+    },
+    {
+      "id": "totem",
+      "name": "Togedemaru",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Totem",
+      "hiddenBy": "FLAG_ALOLA_HOKULANI_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_HOKULANI_TRIAL",
+      "species": "Togedemaru"
+    },
+    {
+      "id": "scientist",
+      "name": "Scientist",
+      "npcType": "scientist",
+      "x": 12,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "We count the stars here every night. Sophocles counts them twice, then taps them to check."
+      ]
+    },
+    {
+      "id": "kid",
+      "name": "Girl",
+      "npcType": "preschooler_f",
+      "x": 2,
+      "y": 13,
+      "facing": "Right",
+      "dialog": [
+        "Sophocles let me look through the big telescope! I saw a star. It was a star."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

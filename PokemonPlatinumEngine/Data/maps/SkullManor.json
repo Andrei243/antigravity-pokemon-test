@@ -1,0 +1,147 @@
+{
+  "name": "SkullManor",
+  "displayName": "Po Town",
+  "bgmTrack": "alola/trial",
+  "interior": "House",
+  "trees": "Round",
+  "width": 15,
+  "height": 18,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#..###...###..#",
+    "#..###...###..#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 9,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 9,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 17,
+      "targetMap": "Ulaula",
+      "targetX": 245,
+      "targetY": 81,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "guzma",
+      "name": "Guzma",
+      "npcType": "guzma",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "GuzmaInside",
+      "hiddenBy": "FLAG_ALOLA_GUZMA_BEATEN",
+      "shownBy": "FLAG_ALOLA_PO_TOWN"
+    },
+    {
+      "id": "grunt_1",
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "x": 3,
+      "y": 12,
+      "facing": "Right",
+      "script": "ManorGrunt1",
+      "hiddenBy": "FLAG_ALOLA_MANOR_GRUNT_1",
+      "shownBy": "FLAG_ALOLA_PO_TOWN"
+    },
+    {
+      "id": "grunt_2",
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "x": 11,
+      "y": 12,
+      "facing": "Left",
+      "script": "ManorGrunt2",
+      "hiddenBy": "FLAG_ALOLA_MANOR_GRUNT_2",
+      "shownBy": "FLAG_ALOLA_PO_TOWN"
+    }
+  ],
+  "wildEncounters": []
+}

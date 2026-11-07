@@ -1,0 +1,39 @@
+# The Shady House, Po Town, Ula'ula Island: Nanu's grand trial (plan 23 · Z7). The lines are our own, on Sun and Moon's
+# beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"):
+# the kahuna of Ula'ula is a lazy man with a Meowth, and the island's grand trial is a battle with him. The Ula'ula
+# stamp, the Darkinium Z, and word from Professor Kukui that Lusamine has taken Lillie (VAR_ALOLA_STORY 47).
+
+
+script NanuInside
+  face self player
+  speaker "Nanu"
+  if flag FLAG_ALOLA_NANU_DONE goto Done
+  scene "Nanu's grand trial"
+  say "Sit, sit. This is my house, so I make the rules. First rule: don't look at the Meowth."
+  say "Ula'ula's grand trial is a battle with me. That's it. No totem, no dens, no tests. I can't be bothered."
+  say "Do your best. I'll do mine, which is less, but it's enough."
+  battle self as "alola_nanu_1"
+  speaker "Nanu"
+  say "Hmph. Not bad. You scrapped your way through Skull and now through me. The island has itself a decent one."
+  givebadge UlaUla
+  text "{player}'s Trainer card received Ula'ula's stamp!"
+  give "Darkinium Z"
+  say "That's the Darkinium Z. Dark-type moves, made bigger. Don't get used to being bigger."
+  setflag FLAG_ALOLA_NANU_DONE
+  hide self
+  speaker "Prof. Kukui"
+  say "...{player}! It's Kukui. Listen, Lillie went back to Aether Paradise, and Lusamine won't let her leave."
+  say "Gladion called me. He says his mother isn't herself, and Lillie's in danger. Go to Aether Paradise. Take the ferry from Malie's pier."
+  setvar VAR_ALOLA_STORY 47
+  objective alolaRescue
+  endscene
+  end
+label Done
+  say "Go. I'm napping."
+  end
+
+
+script MeowthTalk
+  cry "Meowth"
+  text "Meowth: ...Mrrow."
+  end

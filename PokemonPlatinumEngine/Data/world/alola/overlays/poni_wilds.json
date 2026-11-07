@@ -1,0 +1,55 @@
+{
+  // Poni Wilds (plan 23 · Z7): drawn by hand, our words. Grass and rock north of the village, with two mouths in its northern cliff:
+  // the Ancient Poni Path in the west and Vast Poni Canyon in the east, where Captain Dulse waits.
+  "area": "poni_wilds",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "dulse": {
+      "name": "Dulse",
+      "npcType": "dulse",
+      "script": "Dulse",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_AT_SEAFOLK"
+    },
+    "leilani": {
+      "name": "Leilani",
+      "npcType": "ranger_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Leilani: The Wilds are quiet, but the Pokémon are anything but. Let me show you!",
+        "dialogueAfter": "Pokémon Ranger Leilani: You're tougher than the Wilds."
+      }
+    },
+    "makoa": {
+      "name": "Makoa",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Makoa: I walk all the way to the canyon and back each morning. It makes a man strong!",
+        "dialogueAfter": "Hiker Makoa: Not strong enough this time."
+      }
+    },
+    "pele": {
+      "name": "Pele",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Pele: I came to find a good fight, and then I found you.",
+        "dialogueAfter": "Ace Trainer Pele: That was a good fight."
+      }
+    },
+    "nani": {
+      "name": "Nani",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Nani: My pack's full of snacks, and my team's full of attitude.",
+        "dialogueAfter": "Backpacker Nani: My pack's a bit lighter now."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Poni Wilds\nNorth: Ancient Poni Path\nEast: Vast Poni Canyon",
+    "PathSign": "Ancient Poni Path\nThe old road to the coast.",
+    "CanyonSign": "Vast Poni Canyon\nTrial site of Captain Dulse."
+  }
+}

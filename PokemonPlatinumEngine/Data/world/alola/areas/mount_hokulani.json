@@ -1,0 +1,165 @@
+{
+  "key": "mount_hokulani",
+  "index": 102,
+  "name": "Mount Hokulani",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MOUNT_HOKULANI",
+  "nightMusic": "MOUNT_HOKULANI",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 52,
+      "z": 199,
+      "to": "HokulaniObservatory",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "noa",
+      "looks": "backpacker_f",
+      "movement": "look_east",
+      "x": 36,
+      "z": 226,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_BACKPACKER_NOA"
+    },
+    {
+      "id": "hiwa",
+      "looks": "ace_trainer_f",
+      "movement": "look_west",
+      "x": 74,
+      "z": 238,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_HIWA"
+    },
+    {
+      "id": "pono",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 62,
+      "z": 216,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_PONO"
+    },
+    {
+      "id": "kuhio",
+      "looks": "scientist",
+      "movement": "look_east",
+      "x": 58,
+      "z": 204,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SCIENTIST_KUHIO"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 28,
+      "z": 192,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_HOKULANI_PP_UP",
+      "item": "PP Up"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 80,
+      "z": 252,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_HOKULANI_STAR_PIECE",
+      "item": "Star Piece"
+    }
+  ],
+  "signs": [
+    {
+      "x": 49,
+      "z": 262,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Zubat",
+      "level": 19
+    },
+    {
+      "species": "Zubat",
+      "level": 20
+    },
+    {
+      "species": "Geodude",
+      "level": 19
+    },
+    {
+      "species": "Geodude",
+      "level": 20
+    },
+    {
+      "species": "Magnemite",
+      "level": 20
+    },
+    {
+      "species": "Magnemite",
+      "level": 21
+    },
+    {
+      "species": "Spearow",
+      "level": 19
+    },
+    {
+      "species": "Spearow",
+      "level": 20
+    },
+    {
+      "species": "Spearow",
+      "level": 21
+    },
+    {
+      "species": "Rufflet",
+      "level": 20
+    },
+    {
+      "species": "Rufflet",
+      "level": 21
+    },
+    {
+      "species": "Cutiefly",
+      "level": 20
+    }
+  ],
+  "landRate": 20
+}

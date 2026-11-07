@@ -1,0 +1,30 @@
+# Exeggutor Island, Poni Island: Hapu's grand trial (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"). The
+# Poni stamp, the Groundium Z, and the road to the Altar opened (VAR_ALOLA_STORY 51).
+
+
+script HapuGrand
+  face hapu player
+  speaker "Hapu"
+  if flag FLAG_ALOLA_HAPU_DONE goto Done
+  scene "Hapu's grand trial"
+  say "There you are! I'm Hapu, the kahuna of Poni, and I hate waiting. So let's get to it."
+  say "Poni's grand trial is a battle with me. That's all. Every captain says yes. Every trial says yes. Now I decide."
+  say "My Pokémon and I know the island's sand, the island's stone, and the island's sky. Show me yours!"
+  battle self as "alola_hapu_1"
+  speaker "Hapu"
+  say "Hah! Nothing held back, and nothing left behind. You and your Pokémon are a team."
+  givebadge Poni
+  text "{player}'s Trainer card received Poni's stamp!"
+  give "Groundium Z"
+  say "The Groundium Z. Earth-type moves, grown. And the guard at the Altar's road will let you through."
+  setflag FLAG_ALOLA_HAPU_DONE
+  setflag FLAG_ALOLA_ALTAR_OPEN
+  hide self
+  setvar VAR_ALOLA_STORY 51
+  objective alolaAltar
+  endscene
+  end
+label Done
+  say "Go on. The Altar's up the northern road."
+  end

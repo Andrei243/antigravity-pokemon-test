@@ -1,0 +1,102 @@
+{
+  // Po Town (plan 23 · Z7): drawn by hand, our words. Team Skull's abandoned town: the manor where Guzma waits, the Shady House where
+  // the kahuna of Ula'ula is found, and three empty houses round a paved square.
+  "area": "po_town",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "ShadyHouse",
+      "x": 6,
+      "y": 10,
+      "facing": "Up",
+      "openedBy": "FLAG_ALOLA_SHADY_HOUSE_OPEN"
+    },
+    {
+      "warp": 1,
+      "map": "SkullManor",
+      "x": 7,
+      "y": 16,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "PoTown_HouseA",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 3,
+      "map": "PoTown_HouseB",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 4,
+      "map": "PoTown_HouseC",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    }
+  ],
+  "triggers": [
+    {
+      "script": "Arrival",
+      "x": 236,
+      "z": 128,
+      "width": 5,
+      "depth": 1,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 45
+    }
+  ],
+  "people": {
+    "plumeria": {
+      "name": "Plumeria",
+      "npcType": "plumeria",
+      "script": "Plumeria",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_PLUMERIA_DONE",
+      "shownBy": "FLAG_ALOLA_PO_TOWN"
+    },
+    "nanu": {
+      "name": "Nanu",
+      "npcType": "nanu",
+      "script": "NanuOutside",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_NANU_OUTSIDE_DONE",
+      "shownBy": "FLAG_ALOLA_GUZMA_BEATEN"
+    },
+    "po1_1": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: You made it to Po Town? Not past me, yo!",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Man, you're rough."
+      }
+    },
+    "po2_2": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: Plumeria said no visitors. That includes you!",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Plumeria's gonna be mad at me."
+      }
+    },
+    "po3_3": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: Everybody who wasn't picked for a trial is in Skull, yo. Let's show you why.",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Ugh. We're not so strong after all."
+      }
+    }
+  },
+  "signs": {
+    "TownSign": "Po Town\nA town long abandoned. Team Skull's territory."
+  }
+}

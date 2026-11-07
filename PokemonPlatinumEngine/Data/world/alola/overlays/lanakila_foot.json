@@ -1,0 +1,46 @@
+{
+  // The foot of Mount Lanakila (plan 23 · Z7): drawn by hand, our words. A narrow way up between cliffs, where a guard stands until
+  // the Poni stamp is won (FLAG_ALOLA_LANAKILA_OPEN), to the mountain's mouth.
+  "area": "lanakila_foot",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "MountLanakila",
+      "x": 48,
+      "y": 124,
+      "facing": "Up",
+      "openedBy": "FLAG_ALOLA_LANAKILA_OPEN"
+    }
+  ],
+  "people": {
+    "guard": {
+      "name": "Guard",
+      "npcType": "policeman",
+      "script": "LanakilaGuard",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_LANAKILA_OPEN"
+    },
+    "nohea": {
+      "name": "Nohea",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Nohea: Anyone who wants the League has to get through me first. Just kidding. But battle me!",
+        "dialogueAfter": "Ace Trainer Nohea: Go on, then."
+      }
+    },
+    "ailani": {
+      "name": "Ailani",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Ailani: I've trained since Melemele. Every kahuna has seen my face.",
+        "dialogueAfter": "Ace Trainer Ailani: And now you've seen what I can do."
+      }
+    }
+  },
+  "signs": {
+    "MountSign": "Mount Lanakila\nThe path to the Pokémon League"
+  }
+}

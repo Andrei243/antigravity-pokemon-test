@@ -1,0 +1,61 @@
+# Vast Poni Canyon, Poni Island: Captain Dulse's trial (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): three
+# young Jangmo-o hide in the canyon's chambers, and the totem Kommo-o waits at its head. The totem is met as a wild
+# battle that can't be run from (its aura is plan 23 · Z6's). VAR_ALOLA_STORY 49 is the way in, 50 the trial passed.
+#
+# The people: dulse, the three Jangmo-o and the totem are shown by FLAG_ALOLA_CANYON_TRIAL while the trial is under way.
+
+
+script DulseInside
+  face dulse player
+  speaker "Dulse"
+  say "Three Jangmo-o: one to the west, one to the east, one up the middle. Then the totem, at the head of the canyon."
+  end
+
+
+script Den1
+  text "A young Jangmo-o scrambled out from behind a rock!"
+  wildbattle "Jangmo-o" 45 nofleeing
+  setflag FLAG_ALOLA_CANYON_DEN_1
+  hide self
+  end
+
+script Den2
+  text "A young Jangmo-o scrambled out from behind a rock!"
+  wildbattle "Jangmo-o" 45 nofleeing
+  setflag FLAG_ALOLA_CANYON_DEN_2
+  hide self
+  end
+
+script Den3
+  text "A young Jangmo-o scrambled out from behind a rock!"
+  wildbattle "Jangmo-o" 46 nofleeing
+  setflag FLAG_ALOLA_CANYON_DEN_3
+  hide self
+  end
+
+
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_CANYON_DEN_1 goto NotYet
+  if not flag FLAG_ALOLA_CANYON_DEN_2 goto NotYet
+  if not flag FLAG_ALOLA_CANYON_DEN_3 goto NotYet
+  scene "The totem Kommo-o"
+  text "The scales on Kommo-o's body rattled like a hundred bells, and the whole canyon seemed to listen!"
+  cry "Kommo-o"
+  wildbattle "Kommo-o" 47 nofleeing
+  setflag FLAG_ALOLA_CANYON_TRIAL_DONE
+  hide self
+  hide dulse
+  speaker "Dulse"
+  say "...Hm. You passed. Not many do, and fewer without breaking a sweat."
+  say "Here. The Dragonium Z. With it, a Dragon-type move is made greater. Don't let it make you proud."
+  give "Dragonium Z"
+  say "The kahuna of Poni, Hapu, is waiting by the shore to the north. She'll want to meet you."
+  setvar VAR_ALOLA_STORY 50
+  objective alolaHapu
+  endscene
+  end
+label NotYet
+  text "Nothing stirs in the chamber. The Jangmo-o in the canyon come first."
+  end

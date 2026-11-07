@@ -1,0 +1,75 @@
+# The old Thrifty Megamart, Tapu Village, Ula'ula Island: Captain Acerola's trial (plan 23 · Z7). The lines are our own,
+# on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise
+# and the League"): three ghosts drift about the shop's shelves and the totem Mimikyu waits at the counter. The totem
+# is met as a wild battle that can't be run from (its aura is plan 23 · Z6's). VAR_ALOLA_STORY 44 is the way in, 45 the
+# trial passed.
+#
+# The people: acerola, the three ghosts and the totem are shown by FLAG_ALOLA_MEGAMART_TRIAL while the trial is under way.
+
+
+script OnEnter
+  if var VAR_ALOLA_STORY != 44 end
+  if flag FLAG_ALOLA_MEGAMART_TRIAL end
+  if flag FLAG_ALOLA_MEGAMART_TRIAL_DONE end
+  scene "Acerola's trial begins"
+  setflag FLAG_ALOLA_MEGAMART_TRIAL
+  speaker "Acerola"
+  say "Welcome to the old Thrifty Megamart! Everything's half off. Forever."
+  say "Three little ghosts live among the shelves. Find them, and be gentle, and I'll let you meet my Mimikyu."
+  say "He's very shy, so don't be surprised if he's very strong."
+  endscene
+  end
+
+
+script AcerolaInside
+  speaker "Acerola"
+  say "Three ghosts, then Mimikyu. Mind the aisle with the cold spot. It's not a draught."
+  end
+
+
+script Den1
+  text "A Gastly drifted out from between the shelves!"
+  wildbattle "Gastly" 23 nofleeing
+  setflag FLAG_ALOLA_MEGAMART_DEN_1
+  hide self
+  end
+
+script Den2
+  text "A Misdreavus drifted out from between the shelves!"
+  wildbattle "Misdreavus" 24 nofleeing
+  setflag FLAG_ALOLA_MEGAMART_DEN_2
+  hide self
+  end
+
+script Den3
+  text "A Duskull drifted out from between the shelves!"
+  wildbattle "Duskull" 24 nofleeing
+  setflag FLAG_ALOLA_MEGAMART_DEN_3
+  hide self
+  end
+
+
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_MEGAMART_DEN_1 goto NotYet
+  if not flag FLAG_ALOLA_MEGAMART_DEN_2 goto NotYet
+  if not flag FLAG_ALOLA_MEGAMART_DEN_3 goto NotYet
+  scene "The totem Mimikyu"
+  text "A little cloth Pikachu peeked out from behind the counter... and the dark behind it began to move!"
+  cry "Mimikyu"
+  wildbattle "Mimikyu" 25 nofleeing
+  setflag FLAG_ALOLA_MEGAMART_TRIAL_DONE
+  hide self
+  hide acerola
+  speaker "Acerola"
+  say "You did it! Mimikyu likes you. I can tell, because he didn't eat you."
+  say "This is the Ghostium Z. With it, a Ghost-type move becomes a Z-Move. Look after it, and look after the ghosts."
+  give "Ghostium Z"
+  say "Team Skull has taken over Po Town, north of the village. Their boss is bad news. Be careful, okay?"
+  setvar VAR_ALOLA_STORY 45
+  objective alolaPoTown
+  endscene
+  end
+label NotYet
+  text "The counter's quiet. The ghosts among the shelves come first."
+  end

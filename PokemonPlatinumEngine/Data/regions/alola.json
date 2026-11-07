@@ -60,7 +60,12 @@
     { "id": 3, "area": "alola_route_2", "x": 285, "y": 139, "room": "AlolaRoute2_PokemonCenter_1F" },
     { "id": 4, "area": "heahea_city", "x": 129, "y": 309, "room": "HeaheaCity_PokemonCenter_1F", "map": "Akala" },
     { "id": 5, "area": "paniola_town", "x": 133, "y": 215, "room": "PaniolaTown_PokemonCenter_1F", "map": "Akala" },
-    { "id": 6, "area": "akala_route_5", "x": 159, "y": 127, "room": "AkalaRoute5_PokemonCenter_1F", "map": "Akala" }
+    { "id": 6, "area": "akala_route_5", "x": 159, "y": 127, "room": "AkalaRoute5_PokemonCenter_1F", "map": "Akala" },
+    // Plan 23 · Z7: Malie City's, Tapu Village's, Seafolk Village's and Aether Paradise's (ids 20 on, apart from Z6's)
+    { "id": 20, "area": "malie_city", "x": 34, "y": 331, "room": "MalieCity_PokemonCenter_1F", "map": "Ulaula" },
+    { "id": 21, "area": "tapu_village", "x": 204, "y": 213, "room": "TapuVillage_PokemonCenter_1F", "map": "Ulaula" },
+    { "id": 22, "area": "seafolk_village", "x": 34, "y": 243, "room": "SeafolkVillage_PokemonCenter_1F", "map": "Poni" },
+    { "id": 23, "area": "aether_paradise", "x": 16, "y": 22, "room": "AetherParadise_PokemonCenter_1F", "map": "AetherParadise" }
   ],
   // Plan 18 · W4: Sun and Moon's levels for a team that crossed from Kalos, from Kalos's Champion's 205 on the first
   // route to Alola's Champion at 224 (the W4 study's place for it, beside Kalos's post-game at 222 = 224 − 2); W4b-1:

@@ -1,0 +1,239 @@
+{
+  "key": "poni_breakers",
+  "index": 202,
+  "name": "Poni Breakers",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_BREAKERS",
+  "nightMusic": "PONI_BREAKERS",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 100,
+      "z": 77,
+      "to": "poni_altar",
+      "toWarp": 0
+    },
+    {
+      "x": 58,
+      "z": 150,
+      "to": "ancient_poni_path",
+      "toWarp": 1
+    }
+  ],
+  "objects": [
+    {
+      "id": "guard",
+      "looks": "policeman",
+      "movement": "look_south",
+      "x": 97,
+      "z": 80,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "AltarGuard"
+    },
+    {
+      "id": "hapu",
+      "looks": "hapu",
+      "movement": "look_east",
+      "x": 172,
+      "z": 120,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "fini",
+      "looks": "tapu_fini",
+      "movement": "look_south",
+      "x": 144,
+      "z": 94,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "kekoa",
+      "looks": "swimmer_m",
+      "movement": "look_east",
+      "x": 160,
+      "z": 134,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_KEKOA"
+    },
+    {
+      "id": "nuka",
+      "looks": "fisherman",
+      "movement": "look_east",
+      "x": 164,
+      "z": 110,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_FISHERMAN_NUKA"
+    },
+    {
+      "id": "loio",
+      "looks": "veteran",
+      "movement": "look_north",
+      "x": 90,
+      "z": 132,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_VETERAN_LOIO"
+    },
+    {
+      "id": "maile",
+      "looks": "psychic_f",
+      "movement": "look_west",
+      "x": 124,
+      "z": 112,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_PSYCHIC_MAILE"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 36,
+      "z": 120,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_BREAKERS_PP_MAX",
+      "item": "PP Max"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 154,
+      "z": 138,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_BREAKERS_ULTRA_BALL",
+      "item": "Ultra Ball"
+    }
+  ],
+  "signs": [
+    {
+      "x": 62,
+      "z": 146,
+      "type": 0,
+      "script": "RouteSign"
+    },
+    {
+      "x": 136,
+      "z": 108,
+      "type": 0,
+      "script": "RuinsSign"
+    },
+    {
+      "x": 172,
+      "z": 124,
+      "type": 0,
+      "script": "ShoreSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Wingull",
+      "level": 43
+    },
+    {
+      "species": "Wingull",
+      "level": 44
+    },
+    {
+      "species": "Pelipper",
+      "level": 43
+    },
+    {
+      "species": "Pelipper",
+      "level": 44
+    },
+    {
+      "species": "Tentacool",
+      "level": 43
+    },
+    {
+      "species": "Tentacool",
+      "level": 44
+    },
+    {
+      "species": "Staryu",
+      "level": 43
+    },
+    {
+      "species": "Staryu",
+      "level": 44
+    },
+    {
+      "species": "Bruxish",
+      "level": 44
+    },
+    {
+      "species": "Bruxish",
+      "level": 45
+    },
+    {
+      "species": "Pyukumuku",
+      "level": 43
+    },
+    {
+      "species": "Pyukumuku",
+      "level": 44
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Wingull",
+      "level": 43
+    },
+    {
+      "species": "Tentacool",
+      "level": 44
+    },
+    {
+      "species": "Wailmer",
+      "level": 44
+    },
+    {
+      "species": "Mantine",
+      "level": 45
+    },
+    {
+      "species": "Dewgong",
+      "level": 45
+    }
+  ],
+  "waterRate": 20
+}

@@ -1,0 +1,52 @@
+{
+  // Route 12 (plan 23 · Z7): drawn by hand, our words. East from Mount Hokulani along the ridge to Tapu Village.
+  "area": "ulaula_route_12",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "loke": {
+      "name": "Loke",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Loke: Fishing here is lovely. Quiet. Until someone like you comes along.",
+        "dialogueAfter": "Fisherman Loke: And now it's quiet again."
+      }
+    },
+    "lani": {
+      "name": "Lani",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Lani: I breed the Pokémon of Ula'ula's slopes. Healthy, happy, and ready to battle!",
+        "dialogueAfter": "Pokémon Breeder Lani: A happy loss is still a loss."
+      }
+    },
+    "nalo": {
+      "name": "Nalo",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Nalo: This road is long. You'll want something to fight on the way.",
+        "dialogueAfter": "Ace Trainer Nalo: Okay. Not that long, after all."
+      }
+    },
+    "wana": {
+      "name": "Wana",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Wana: Boulders, boulders everywhere! And I love them all!",
+        "dialogueAfter": "Hiker Wana: Boulders don't lose. I do."
+      }
+    },
+    "kalei": {
+      "name": "Kalei",
+      "npcType": "rancher",
+      "trainer": {
+        "dialogueBefore": "Rancher Kalei: Tapu Village is just ahead, and so are my Mudbray. They've got a race to win.",
+        "dialogueAfter": "Rancher Kalei: Slow and steady, I guess."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 12\nEast: Tapu Village\nWest: Mount Hokulani"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "key": "poni_wilds",
+  "index": 201,
+  "name": "Poni Wilds",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_WILDS",
+  "nightMusic": "PONI_WILDS",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 58,
+      "z": 153,
+      "to": "ancient_poni_path",
+      "toWarp": 0
+    },
+    {
+      "x": 104,
+      "z": 153,
+      "to": "vast_poni_canyon",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "dulse",
+      "looks": "dulse",
+      "movement": "look_west",
+      "x": 100,
+      "z": 186,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "leilani",
+      "looks": "ranger_f",
+      "movement": "look_east",
+      "x": 56,
+      "z": 214,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_RANGER_LEILANI"
+    },
+    {
+      "id": "makoa",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 76,
+      "z": 198,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_MAKOA"
+    },
+    {
+      "id": "pele",
+      "looks": "ace_trainer_f",
+      "movement": "look_east",
+      "x": 40,
+      "z": 190,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_PELE"
+    },
+    {
+      "id": "nani",
+      "looks": "backpacker_f",
+      "movement": "look_north",
+      "x": 88,
+      "z": 222,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_BACKPACKER_NANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 38,
+      "z": 210,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_WILDS_RARE_CANDY",
+      "item": "Rare Candy"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 112,
+      "z": 176,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_WILDS_MAX_REVIVE",
+      "item": "Max Revive"
+    }
+  ],
+  "signs": [
+    {
+      "x": 62,
+      "z": 226,
+      "type": 0,
+      "script": "RouteSign"
+    },
+    {
+      "x": 62,
+      "z": 192,
+      "type": 0,
+      "script": "PathSign"
+    },
+    {
+      "x": 108,
+      "z": 192,
+      "type": 0,
+      "script": "CanyonSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Mudsdale",
+      "level": 38
+    },
+    {
+      "species": "Mudsdale",
+      "level": 39
+    },
+    {
+      "species": "Mudsdale",
+      "level": 40
+    },
+    {
+      "species": "Ledian",
+      "level": 38
+    },
+    {
+      "species": "Ledian",
+      "level": 39
+    },
+    {
+      "species": "Ledian",
+      "level": 40
+    },
+    {
+      "species": "Tauros",
+      "level": 38
+    },
+    {
+      "species": "Tauros",
+      "level": 39
+    },
+    {
+      "species": "Tauros",
+      "level": 40
+    },
+    {
+      "species": "Pelipper",
+      "level": 38
+    },
+    {
+      "species": "Absol",
+      "level": 41
+    },
+    {
+      "species": "Komala",
+      "level": 41
+    }
+  ],
+  "landRate": 20
+}

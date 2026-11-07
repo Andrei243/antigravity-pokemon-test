@@ -1,0 +1,150 @@
+{
+  "name": "AetherParadise_Office",
+  "displayName": "Aether House",
+  "bgmTrack": "alola/trial",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 16,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#.#...#####...#.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#..###.....###..#",
+    "#..###.....###..#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 8,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 11,
+      "y": 8,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 15,
+      "targetMap": "AetherParadise",
+      "targetX": 48,
+      "targetY": 21,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lusamine",
+      "name": "Lusamine",
+      "npcType": "lusamine",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "LusamineInside",
+      "hiddenBy": "FLAG_ALOLA_LUSAMINE_BEATEN",
+      "shownBy": "FLAG_ALOLA_AETHER_RESCUE"
+    },
+    {
+      "id": "gladion",
+      "name": "Gladion",
+      "npcType": "gladion",
+      "x": 4,
+      "y": 6,
+      "facing": "Right",
+      "script": "GladionInside",
+      "hiddenBy": "FLAG_ALOLA_GLADION_AETHER_DONE",
+      "shownBy": "FLAG_ALOLA_AETHER_RESCUE"
+    },
+    {
+      "id": "employee",
+      "name": "Aether Employee",
+      "npcType": "scientist",
+      "x": 13,
+      "y": 11,
+      "facing": "Left",
+      "dialog": [
+        "The President is in a meeting. She's always in a meeting. Perhaps with the walls."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

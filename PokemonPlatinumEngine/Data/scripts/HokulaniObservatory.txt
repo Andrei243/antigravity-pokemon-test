@@ -1,0 +1,76 @@
+# Hokulani Observatory, Mount Hokulani, Ula'ula Island: Captain Sophocles' trial (plan 23 · Z7). The lines are our own,
+# on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise
+# and the League"). Three Charjabug have crept into the observatory's wiring; the totem, a Togedemaru, is met as a wild
+# battle that can't be run from (its aura and its call for help are plan 23 · Z6's). VAR_ALOLA_STORY 42 is the
+# way in, 43 the trial passed.
+#
+# The people: sophocles, the three Charjabug and the totem are shown by FLAG_ALOLA_HOKULANI_TRIAL while the trial is
+# under way.
+
+
+script OnEnter
+  if var VAR_ALOLA_STORY != 42 end
+  if flag FLAG_ALOLA_HOKULANI_TRIAL end
+  if flag FLAG_ALOLA_HOKULANI_TRIAL_DONE end
+  scene "Sophocles' trial begins"
+  setflag FLAG_ALOLA_HOKULANI_TRIAL
+  speaker "Sophocles"
+  say "Oh! A visitor! ...Oh no, you're a trial-goer. I'm Sophocles, the captain. I get nervous with company."
+  say "My trial is simple. Three Charjabug got in through the wiring, and they've been charging the whole observatory. Would you find them?"
+  say "They're in the dome, around the room. And then the big one. The totem. I've kept it fed. Please be nice."
+  endscene
+  end
+
+
+script SophoclesInside
+  speaker "Sophocles"
+  say "The Charjabug are in the room, and the totem is waiting behind them. I'll hold the door. Metaphorically."
+  end
+
+
+script Den1
+  text "A Charjabug bolted out of the wiring!"
+  wildbattle "Charjabug" 22 nofleeing
+  setflag FLAG_ALOLA_HOKULANI_DEN_1
+  hide self
+  end
+
+script Den2
+  text "A Charjabug bolted out of the wiring!"
+  wildbattle "Charjabug" 22 nofleeing
+  setflag FLAG_ALOLA_HOKULANI_DEN_2
+  hide self
+  end
+
+script Den3
+  text "A Charjabug bolted out of the wiring!"
+  wildbattle "Charjabug" 23 nofleeing
+  setflag FLAG_ALOLA_HOKULANI_DEN_3
+  hide self
+  end
+
+
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_HOKULANI_DEN_1 goto NotYet
+  if not flag FLAG_ALOLA_HOKULANI_DEN_2 goto NotYet
+  if not flag FLAG_ALOLA_HOKULANI_DEN_3 goto NotYet
+  scene "The totem Togedemaru"
+  text "The Togedemaru's spines crackled, and electricity ran up every wire in the room!"
+  cry "Togedemaru"
+  wildbattle "Togedemaru" 24 nofleeing
+  setflag FLAG_ALOLA_HOKULANI_TRIAL_DONE
+  hide self
+  hide sophocles
+  speaker "Sophocles"
+  say "...You did it! You passed my trial! I've never seen the whole observatory glow like that."
+  say "This is the Electrium Z. With it, an Electric-type move becomes a Z-Move. Please keep it safe."
+  give "Electrium Z"
+  say "Acerola's trial is next, in Tapu Village. Go east along Route 12, and... and don't tell her I sent you."
+  setvar VAR_ALOLA_STORY 43
+  objective alolaTapu
+  endscene
+  end
+label NotYet
+  text "The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first."
+  end

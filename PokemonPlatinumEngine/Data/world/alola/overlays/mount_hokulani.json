@@ -1,0 +1,54 @@
+{
+  // Mount Hokulani (plan 23 · Z7): drawn by hand, our words. A path up the mountain to the observatory on its top, where Captain
+  // Sophocles holds his trial, and a way down its east side onto Route 12.
+  "area": "mount_hokulani",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "HokulaniObservatory",
+      "x": 7,
+      "y": 14,
+      "facing": "Up"
+    }
+  ],
+  "people": {
+    "noa": {
+      "name": "Noa",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Noa: My Magnemite and I came for the stars. I stayed for the battles.",
+        "dialogueAfter": "Backpacker Noa: The stars are pretty. You, too, I guess."
+      }
+    },
+    "hiwa": {
+      "name": "Hiwa",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Hiwa: Fly high, strike hard. That's my style.",
+        "dialogueAfter": "Ace Trainer Hiwa: You fly higher."
+      }
+    },
+    "pono": {
+      "name": "Pono",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Pono: I've got a rock collection and a rock team. Want to see the team?",
+        "dialogueAfter": "Hiker Pono: You broke my rocks. I'll find more rocks."
+      }
+    },
+    "kuhio": {
+      "name": "Kuhio",
+      "npcType": "scientist",
+      "trainer": {
+        "dialogueBefore": "Scientist Kuhio: Static, sparks, magnets: the observatory's power is my project. Let me test you!",
+        "dialogueAfter": "Scientist Kuhio: Hm. You carry a lot of charge."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Mount Hokulani\nUp: Hokulani Observatory, trial site of Captain Sophocles"
+  }
+}

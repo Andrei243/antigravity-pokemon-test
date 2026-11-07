@@ -1,0 +1,71 @@
+{
+  // Vast Poni Canyon (plan 23 · Z7): a map of its own, drawn by hand, our words. Captain Dulse's trial: three dens and the totem Kommo-o's chamber.
+  "area": "vast_poni_canyon",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "dulse": {
+      "name": "Dulse",
+      "npcType": "dulse",
+      "script": "DulseInside",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL"
+    },
+    "den_1": {
+      "name": "Jangmo-o",
+      "npcType": "Pokemon",
+      "species": "Jangmo-o",
+      "script": "Den1",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_DEN_1",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL"
+    },
+    "den_2": {
+      "name": "Jangmo-o",
+      "npcType": "Pokemon",
+      "species": "Jangmo-o",
+      "script": "Den2",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_DEN_2",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL"
+    },
+    "den_3": {
+      "name": "Jangmo-o",
+      "npcType": "Pokemon",
+      "species": "Jangmo-o",
+      "script": "Den3",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_DEN_3",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL"
+    },
+    "totem": {
+      "name": "Kommo-o",
+      "npcType": "Pokemon",
+      "species": "Kommo-o",
+      "script": "Totem",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CANYON_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL"
+    },
+    "kaoni": {
+      "name": "Kaoni",
+      "npcType": "dragon_tamer",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Kaoni: The canyon is a dragon's home. Wait, so is mine. Let's battle!",
+        "dialogueAfter": "Dragon Tamer Kaoni: The canyon has a new favourite."
+      }
+    },
+    "nalani": {
+      "name": "Nalani",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Nalani: I've climbed every rock face in Alola. This one's my favourite.",
+        "dialogueAfter": "Hiker Nalani: Good climb. Good fight."
+      }
+    }
+  },
+  "signs": {
+    "CanyonSign": "Vast Poni Canyon\nTrial site of Captain Dulse. Totem: Kommo-o"
+  }
+}

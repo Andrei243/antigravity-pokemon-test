@@ -1,0 +1,36 @@
+{
+  // Route 13 (plan 23 · Z7): drawn by hand, our words. East from Tapu Village to the foot of Mount Lanakila.
+  "area": "ulaula_route_13",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "makalii": {
+      "name": "Makalii",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Makalii: The mountain looks quiet from here. It's not.",
+        "dialogueAfter": "Ace Trainer Makalii: It's louder than I thought."
+      }
+    },
+    "akoni": {
+      "name": "Akoni",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Akoni: Lanakila is the tallest mountain in Alola. Big mountains, big Pokémon!",
+        "dialogueAfter": "Hiker Akoni: The mountain wins either way."
+      }
+    },
+    "keala": {
+      "name": "Keala",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Keala: I keep a bag of surprises. This team is one.",
+        "dialogueAfter": "Backpacker Keala: You were the surprise."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 13\nNorth: the foot of Mount Lanakila"
+  }
+}

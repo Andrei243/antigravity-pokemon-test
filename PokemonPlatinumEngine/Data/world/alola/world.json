@@ -18,7 +18,15 @@
     { "name": "VerdantCavern", "matrix": 2, "area": "verdant_cavern", "trees": "Round", "setting": "Cave" },
     // Akala Island, the second island, a matrix of its own: Heahea City to Brooklet Hill so far. The ferry from Hau'oli's
     // marina lands on Heahea's pier (hauoli_city.txt, heahea_city.txt)
-    { "name": "Akala", "matrix": 3, "trees": "Round" }
+    { "name": "Akala", "matrix": 3, "trees": "Round" },
+    // Plan 23 · Z7: Ula'ula (matrix 10), Poni (11), Aether Paradise (12) and the four caves
+    { "name": "Ulaula", "matrix": 10, "trees": "Round" },
+    { "name": "Poni", "matrix": 11, "trees": "Round" },
+    { "name": "AetherParadise", "matrix": 12, "area": "aether_paradise", "trees": "Round" },
+    { "name": "AncientPoniPath", "matrix": 15, "area": "ancient_poni_path", "trees": "Round", "setting": "Cave" },
+    { "name": "VastPoniCanyon", "matrix": 14, "area": "vast_poni_canyon", "trees": "Round", "setting": "Cave" },
+    { "name": "PoniAltar", "matrix": 16, "area": "poni_altar", "trees": "Round", "setting": "Cave" },
+    { "name": "MountLanakila", "matrix": 17, "area": "mount_lanakila", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "alola_route_1",
@@ -35,6 +43,24 @@
     "paniola_town",
     "paniola_ranch",
     "akala_route_5",
-    "brooklet_hill"
+    "brooklet_hill",
+    "malie_city",
+    "ulaula_route_10",
+    "mount_hokulani",
+    "ulaula_route_12",
+    "tapu_village",
+    "ulaula_route_13",
+    "lanakila_foot",
+    "ulaula_route_16",
+    "po_town",
+    "seafolk_village",
+    "poni_wilds",
+    "poni_breakers",
+    "exeggutor_island",
+    "aether_paradise",
+    "ancient_poni_path",
+    "vast_poni_canyon",
+    "poni_altar",
+    "mount_lanakila"
   ]
 }

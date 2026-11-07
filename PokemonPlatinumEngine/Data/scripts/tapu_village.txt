@@ -1,0 +1,47 @@
+# Tapu Village, Ula'ula Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether
+# Paradise and the League"). VAR_ALOLA_STORY 43, Sophocles' trial passed, brings Acerola out to meet the player on the
+# road in; she opens the old Thrifty Megamart for her trial (FLAG_ALOLA_MEGAMART_OPEN) and the village's rancher lets
+# the player ride his Mudsdale (Overworld/RidePager.cs: no field move of the grid's, a flag alone).
+#
+# The people: acerola is shown by FLAG_ALOLA_TAPU_ACEROLA until she has been met.
+
+
+script AcerolaArrival
+  scene "Acerola in Tapu Village"
+  setflag FLAG_ALOLA_TAPU_ACEROLA
+  walk player right 16
+  waitmoves
+  face player right
+  speaker "Acerola"
+  say "Hi hi! I'm Acerola, and you're the island challenger Sophocles told me about! He said you were scary. You don't look scary at all."
+  say "I've got a trial for you in the old Thrifty Megamart, just there. Don't mind the dust. Or the ghosts."
+  say "I'll open the door. Go on in whenever you like. My Mimikyu is waiting in the dark, and he's very shy."
+  setflag FLAG_ALOLA_MEGAMART_OPEN
+  setflag FLAG_ALOLA_ACEROLA_MET
+  setvar VAR_ALOLA_STORY 44
+  objective alolaMegamart
+  endscene
+  end
+
+
+script AcerolaMeet
+  speaker "Acerola"
+  say "The Megamart's door is open. Mind the dark, and mind the ghosts. They like you already."
+  end
+
+
+script Rancher
+  speaker "Rancher Moke"
+  if var VAR_ALOLA_STORY >= 44 goto Ride
+  say "This ridge is no road for the weak-kneed. Come back when you've been to the observatory and I'll lend you a Mudsdale."
+  end
+label Ride
+  if flag FLAG_ALOLA_RIDE_MUDSDALE goto Have
+  say "You're the trial-goer I've heard about! Take my Mudsdale. She can trot over rubble that would break your ankles."
+  setflag FLAG_ALOLA_RIDE_MUDSDALE
+  text "{player} registered Mudsdale in the Ride Pager! Mudsdale can gallop over rough ground."
+  end
+label Have
+  say "Mudsdale is a good horse. Strong, steady and not the least bit clever."
+  end
+

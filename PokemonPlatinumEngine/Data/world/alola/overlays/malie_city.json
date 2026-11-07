@@ -1,0 +1,100 @@
+{
+  // Malie City, Ula'ula Island (plan 23 · Z7): drawn by hand, our words. The island's garden city on the south shore: the Pokémon Center
+  // (with the Mart's counter), the library, the city hall, a house and the tea house round a paved plaza, the ferry's pier on the
+  // beach, and the road north to Route 10. Kukui and Hau wait on the plaza once the player has come from Aether Paradise
+  // (FLAG_ALOLA_AT_MALIE, ulaula_malie_city.txt).
+  "area": "malie_city",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "MalieCity_PokemonCenter_1F",
+      "x": 8,
+      "y": 12,
+      "facing": "Up"
+    },
+    {
+      "warp": 1,
+      "map": "MalieCity_Library",
+      "x": 5,
+      "y": 10,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "MalieCity_Hall",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 3,
+      "map": "MalieCity_House",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 4,
+      "map": "MalieCity_TeaHouse",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    }
+  ],
+  "triggers": [
+    {
+      "script": "Arrival",
+      "x": 56,
+      "z": 350,
+      "width": 7,
+      "depth": 1,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 41
+    }
+  ],
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "script": "Ferry",
+      "still": true
+    },
+    "kukui": {
+      "name": "Prof. Kukui",
+      "npcType": "kukui",
+      "script": "Kukui",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_MALIE_KUKUI_DONE",
+      "shownBy": "FLAG_ALOLA_AT_MALIE"
+    },
+    "hau": {
+      "name": "Hau",
+      "npcType": "hau",
+      "script": "Hau",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_MALIE_HAU_DONE",
+      "shownBy": "FLAG_ALOLA_AT_MALIE"
+    },
+    "tourist": {
+      "name": "Tourist",
+      "npcType": "Lady",
+      "dialog": [
+        "Malie City is the garden city, did you know? There's a library, a tea house, a grand garden... and a trial on the mountain."
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [
+        "The mountain behind the city has an observatory on top. The captain there keeps a lot of electric Pokémon."
+      ]
+    }
+  },
+  "signs": {
+    "CitySign": "Malie City\nA city of gardens and a library, on the shore of Ula'ula Island.",
+    "RouteSign": "Route 10\nNorth: Mount Hokulani and its observatory"
+  }
+}

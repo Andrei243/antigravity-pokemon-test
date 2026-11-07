@@ -1,0 +1,119 @@
+{
+  "key": "ulaula_route_13",
+  "index": 105,
+  "name": "Route 13",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_13",
+  "nightMusic": "ROUTE_13",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "makalii",
+      "looks": "ace_trainer_f",
+      "movement": "look_east",
+      "x": 276,
+      "z": 232,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_MAKALII"
+    },
+    {
+      "id": "akoni",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 296,
+      "z": 220,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_AKONI"
+    },
+    {
+      "id": "keala",
+      "looks": "backpacker_m",
+      "movement": "look_north",
+      "x": 268,
+      "z": 238,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_BACKPACKER_KEALA"
+    }
+  ],
+  "signs": [
+    {
+      "x": 262,
+      "z": 224,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Skarmory",
+      "level": 23
+    },
+    {
+      "species": "Skarmory",
+      "level": 24
+    },
+    {
+      "species": "Trumbeak",
+      "level": 23
+    },
+    {
+      "species": "Trumbeak",
+      "level": 24
+    },
+    {
+      "species": "Lycanroc",
+      "level": 23
+    },
+    {
+      "species": "Lycanroc",
+      "level": 24
+    },
+    {
+      "species": "Gumshoos",
+      "level": 24
+    },
+    {
+      "species": "Gumshoos",
+      "level": 25
+    },
+    {
+      "species": "Cutiefly",
+      "level": 23
+    },
+    {
+      "species": "Cutiefly",
+      "level": 24
+    },
+    {
+      "species": "Mudsdale",
+      "level": 24
+    },
+    {
+      "species": "Mudsdale",
+      "level": 25
+    }
+  ],
+  "landRate": 20
+}

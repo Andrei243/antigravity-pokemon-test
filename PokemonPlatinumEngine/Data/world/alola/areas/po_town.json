@@ -1,0 +1,172 @@
+{
+  "key": "po_town",
+  "index": 108,
+  "name": "Po Town",
+  "matrix": 10,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PO_TOWN",
+  "nightMusic": "PO_TOWN",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 213,
+      "z": 86,
+      "to": "ShadyHouse",
+      "toWarp": 0
+    },
+    {
+      "x": 245,
+      "z": 80,
+      "to": "SkullManor",
+      "toWarp": 0
+    },
+    {
+      "x": 265,
+      "z": 86,
+      "to": "PoTown_HouseA",
+      "toWarp": 0
+    },
+    {
+      "x": 211,
+      "z": 108,
+      "to": "PoTown_HouseB",
+      "toWarp": 0
+    },
+    {
+      "x": 267,
+      "z": 110,
+      "to": "PoTown_HouseC",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "plumeria",
+      "looks": "plumeria",
+      "movement": "look_south",
+      "x": 238,
+      "z": 112,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "nanu",
+      "looks": "nanu",
+      "movement": "look_south",
+      "x": 214,
+      "z": 94,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "po1_1",
+      "looks": "skull_grunt",
+      "movement": "look_east",
+      "x": 226,
+      "z": 112,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_PO1"
+    },
+    {
+      "id": "po2_2",
+      "looks": "skull_grunt",
+      "movement": "look_west",
+      "x": 252,
+      "z": 112,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_PO2"
+    },
+    {
+      "id": "po3_3",
+      "looks": "skull_grunt",
+      "movement": "look_north",
+      "x": 242,
+      "z": 126,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_PO3"
+    }
+  ],
+  "signs": [
+    {
+      "x": 238,
+      "z": 124,
+      "type": 0,
+      "script": "TownSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Grimer",
+      "level": 27
+    },
+    {
+      "species": "Grimer",
+      "level": 28
+    },
+    {
+      "species": "Gastly",
+      "level": 27
+    },
+    {
+      "species": "Gastly",
+      "level": 28
+    },
+    {
+      "species": "Trubbish",
+      "level": 28
+    },
+    {
+      "species": "Trubbish",
+      "level": 29
+    },
+    {
+      "species": "Rattata",
+      "level": 27
+    },
+    {
+      "species": "Rattata",
+      "level": 28
+    },
+    {
+      "species": "Zubat",
+      "level": 27
+    },
+    {
+      "species": "Zubat",
+      "level": 28
+    },
+    {
+      "species": "Sableye",
+      "level": 28
+    },
+    {
+      "species": "Sableye",
+      "level": 29
+    }
+  ],
+  "landRate": 20
+}

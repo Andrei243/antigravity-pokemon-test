@@ -1,0 +1,151 @@
+{
+  "key": "ancient_poni_path",
+  "index": 205,
+  "name": "Ancient Poni Path",
+  "matrix": 15,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ANCIENT_PONI_PATH",
+  "nightMusic": "ANCIENT_PONI_PATH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 32,
+      "z": 93,
+      "to": "poni_wilds",
+      "toWarp": 0
+    },
+    {
+      "x": 46,
+      "z": 3,
+      "to": "poni_breakers",
+      "toWarp": 1
+    }
+  ],
+  "objects": [
+    {
+      "id": "hoku",
+      "looks": "ruin_maniac",
+      "movement": "look_east",
+      "x": 16,
+      "z": 62,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_RUIN_MANIAC_HOKU"
+    },
+    {
+      "id": "anuenue",
+      "looks": "psychic",
+      "movement": "look_east",
+      "x": 40,
+      "z": 32,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_PSYCHIC_ANUENUE"
+    },
+    {
+      "id": "kapono",
+      "looks": "ace_trainer_m",
+      "movement": "look_north",
+      "x": 30,
+      "z": 78,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_KAPONO"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 12,
+      "z": 64,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_ANCIENT_PATH_NUGGET",
+      "item": "Nugget"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 54,
+      "z": 30,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_ANCIENT_PATH_ELIXIR",
+      "item": "Elixir"
+    }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Golbat",
+      "level": 40
+    },
+    {
+      "species": "Golbat",
+      "level": 41
+    },
+    {
+      "species": "Boldore",
+      "level": 40
+    },
+    {
+      "species": "Boldore",
+      "level": 41
+    },
+    {
+      "species": "Gurdurr",
+      "level": 40
+    },
+    {
+      "species": "Gurdurr",
+      "level": 41
+    },
+    {
+      "species": "Sableye",
+      "level": 40
+    },
+    {
+      "species": "Sableye",
+      "level": 41
+    },
+    {
+      "species": "Lunatone",
+      "level": 41
+    },
+    {
+      "species": "Solrock",
+      "level": 41
+    },
+    {
+      "species": "Beheeyem",
+      "level": 41
+    },
+    {
+      "species": "Beheeyem",
+      "level": 42
+    }
+  ],
+  "landRate": 20
+}

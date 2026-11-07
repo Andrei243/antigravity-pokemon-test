@@ -1,0 +1,68 @@
+# Seafolk Village, Poni Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether
+# Paradise and the League"). VAR_ALOLA_STORY 48, Lillie saved, brings the player to Poni by ferry: Professor Kukui and
+# Lillie wait on the square (FLAG_ALOLA_AT_SEAFOLK) and a Machamp on the shore lends its strength to the Ride Pager (49).
+
+
+script Arrival
+  scene "Poni Island"
+  setflag FLAG_ALOLA_AT_SEAFOLK
+  walk player up 14
+  waitmoves
+  face player up
+  speaker "Lillie"
+  say "{player}! Over here. ...I wanted to say thank you. For what you did at the Foundation."
+  say "Nebby is a little better. It wants to go home, I think. It keeps saying so, in its own way."
+  speaker "Prof. Kukui"
+  say "Welcome to Poni, cousin. The last island. There's a trial in Vast Poni Canyon, and a grand trial across the strait."
+  say "Captain Dulse is waiting up in Poni Wilds. His totem is a Kommo-o, and Kommo-o does not do small talk."
+  speaker "Lillie"
+  say "I'm going to the Altar of the Sunne and Moone, on the other side of the island. I think that's where Nebby has to be."
+  say "Please be careful, {player}. And I'll see you there."
+  text "A Machamp on the shore nodded at {player}, as if to say it was ready to lend a hand."
+  hide kukui
+  hide lillie
+  setflag FLAG_ALOLA_SEAFOLK_KUKUI_DONE
+  setvar VAR_ALOLA_STORY 49
+  objective alolaDulse
+  endscene
+  end
+
+
+script MachampRide
+  speaker "Machamp"
+  if flag FLAG_ALOLA_RIDE_MACHAMP goto Have
+  cry "Machamp"
+  text "The Machamp flexed all four arms and pushed a boulder along the shore without a sound."
+  setflag FLAG_ALOLA_RIDE_MACHAMP
+  text "{player} registered Machamp in the Ride Pager! Machamp can shove boulders aside."
+  hide self
+  end
+label Have
+  text "Machamp flexed."
+  end
+
+
+script Kukui
+  speaker "Prof. Kukui"
+  say "Dulse's trial is up in the Wilds. Go on, I'll be around."
+  end
+
+
+script Ferry
+  speaker "Sailor"
+  choose "Where to?" "Malie City, Ula'ula" "Aether Paradise" "Stay here"
+  if result == 0 goto Malie
+  if result == 1 goto Aether
+  end
+label Malie
+  fade out
+  text "The ferry pulled away from Seafolk Village..."
+  warp "Ulaula" 59 366 up
+  fade in
+  end
+label Aether
+  fade out
+  text "The ferry pulled away from Seafolk Village..."
+  warp "AetherParadise" 48 90 up
+  fade in
+  end

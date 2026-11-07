@@ -1,0 +1,22 @@
+# Poni Wilds, Poni Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether
+# Paradise and the League"): Captain Dulse stands before Vast Poni Canyon's mouth and begins his trial when spoken to
+# (VAR_ALOLA_STORY 49; the trial is vast_poni_canyon.txt).
+
+
+script Dulse
+  face dulse player
+  speaker "Dulse"
+  if flag FLAG_ALOLA_CANYON_TRIAL goto During
+  if var VAR_ALOLA_STORY < 49 goto TooEarly
+  say "So you're the one. I'm Dulse, the captain of this canyon's trial. I don't say much. I let my Pokémon do the talking."
+  say "Three young Jangmo-o have wandered into the canyon, and the totem's been looking for them. Bring them back to the canyon floor."
+  say "Then Kommo-o. It's a dragon of the old kind. It will test every Pokémon you bring."
+  say "The canyon is just there. I'll be inside."
+  setflag FLAG_ALOLA_CANYON_TRIAL
+  end
+label During
+  say "The canyon's mouth is just up the path. I'll be inside."
+  end
+label TooEarly
+  say "The canyon isn't safe for the unready. Take the ferry back, speak with the Professor, and then come."
+  end

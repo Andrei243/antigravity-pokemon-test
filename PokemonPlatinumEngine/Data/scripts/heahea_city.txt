@@ -12,3 +12,24 @@ script Ferry
   warp "Melemele" 357 177 down
   fade in
   end
+
+
+# The ferry to Aether Paradise (plan 23 · Z7): it sails once Akala's grand trial is won (the Akala stamp), the first time
+# for the tour (VAR_ALOLA_STORY 40; aether_paradise.txt), and after that whenever it is asked
+script AetherFerry
+  speaker "Sailor"
+  if badge Akala goto Open
+  say "That ferry is for the Aether Foundation's guests. It only takes those who've finished Akala's grand trial."
+  end
+label Open
+  ask "This ferry sails to Aether Paradise. All aboard?"
+  if no end
+  fade out
+  text "The ferry pulled away from Heahea's pier..."
+  if var VAR_ALOLA_STORY >= 40 goto Sail
+  setvar VAR_ALOLA_STORY 40
+  objective alolaAether
+label Sail
+  warp "AetherParadise" 48 90 up
+  fade in
+  end

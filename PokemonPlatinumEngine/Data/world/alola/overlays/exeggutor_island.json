@@ -1,0 +1,35 @@
+{
+  // Exeggutor Island (plan 23 · Z7): drawn by hand, our words. A ring of sand and palms with the kahuna of Poni at its middle.
+  "area": "exeggutor_island",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "hapu": {
+      "name": "Hapu",
+      "npcType": "hapu",
+      "script": "HapuGrand",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_HAPU_DONE"
+    },
+    "keawe": {
+      "name": "Keawe",
+      "npcType": "dragon_tamer",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Keawe: Only a dragon's fire can climb the palms of this island. Show me yours!",
+        "dialogueAfter": "Dragon Tamer Keawe: Your fire burns hotter."
+      }
+    },
+    "iolana": {
+      "name": "Iolana",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Iolana: The palms look calm until the Exeggutor start to sway.",
+        "dialogueAfter": "Ace Trainer Iolana: Calm again."
+      }
+    }
+  },
+  "signs": {
+    "IslandSign": "Exeggutor Island\nPoni's grand trial site."
+  }
+}

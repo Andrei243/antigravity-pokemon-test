@@ -1,0 +1,20 @@
+# Olivia's room of the Alola Pokémon League (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula,
+# Poni, Aether Paradise and the League"): the second of the Elite Four, Rock. Her team is alola_olivia_league; beaten,
+# FLAG_ALOLA_DEFEATED_OLIVIA opens the door to Acerola's room.
+
+
+script League
+  face olivia player
+  speaker "Olivia"
+  if flag FLAG_ALOLA_DEFEATED_OLIVIA goto Won
+  scene "Olivia"
+  say "Aloha, {player}. I'm Olivia. I used to be the kahuna of Akala, and I'm still the one who knows the stones best."
+  say "Rock endures. It takes the waves and the wind and is still standing at the end. Let's see if you can say the same."
+  battle self as "alola_olivia_league"
+  say "Beautiful. Even the stones moved aside for you. Acerola is next, and she is... a lot."
+  setflag FLAG_ALOLA_DEFEATED_OLIVIA
+  endscene
+  end
+label Won
+  say "Acerola's waiting. She likes visitors, and sometimes they like her back."
+  end

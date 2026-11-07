@@ -1,0 +1,32 @@
+{
+  // The Ancient Poni Path (plan 23 · Z7): a map of its own, drawn by hand. A winding cave from Poni Wilds to the northern coast.
+  "area": "ancient_poni_path",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "hoku": {
+      "name": "Hoku",
+      "npcType": "ruin_maniac",
+      "trainer": {
+        "dialogueBefore": "Ruin Maniac Hoku: This path is older than the League, older than the trials! And so are my Pokémon!",
+        "dialogueAfter": "Ruin Maniac Hoku: Not as old as my Pokémon, I guess."
+      }
+    },
+    "anuenue": {
+      "name": "Anuenue",
+      "npcType": "psychic",
+      "trainer": {
+        "dialogueBefore": "Psychic Anuenue: The stones whisper in here. They said you were coming.",
+        "dialogueAfter": "Psychic Anuenue: They didn't say how it would go."
+      }
+    },
+    "kapono": {
+      "name": "Kapono",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kapono: Dark in here, isn't it? Perfect for a surprise!",
+        "dialogueAfter": "Ace Trainer Kapono: No surprise at all in the end."
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "key": "tapu_village",
+  "index": 104,
+  "name": "Tapu Village",
+  "matrix": 10,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "TAPU_VILLAGE",
+  "nightMusic": "TAPU_VILLAGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 204,
+      "z": 212,
+      "to": "TapuVillage_PokemonCenter_1F",
+      "toWarp": 0
+    },
+    {
+      "x": 217,
+      "z": 211,
+      "to": "TapuVillage_House",
+      "toWarp": 0
+    },
+    {
+      "x": 238,
+      "z": 209,
+      "to": "ThriftyMegamart",
+      "toWarp": 0
+    },
+    {
+      "x": 203,
+      "z": 241,
+      "to": "TapuVillage_RanchHouse",
+      "toWarp": 0
+    },
+    {
+      "x": 219,
+      "z": 241,
+      "to": "TapuVillage_Stables",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "acerola",
+      "looks": "acerola",
+      "movement": "look_south",
+      "x": 228,
+      "z": 218,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "mudsdale",
+      "looks": "rancher",
+      "movement": "look_south",
+      "x": 240,
+      "z": 238,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "Rancher"
+    },
+    {
+      "id": "mudsdale_pokemon",
+      "looks": "mudsdale",
+      "movement": "look_south",
+      "x": 244,
+      "z": 243,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "woman",
+      "looks": "lady",
+      "movement": "wander_around",
+      "x": 214,
+      "z": 228,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 1,
+      "script": ""
+    },
+    {
+      "id": "boy",
+      "looks": "youngster",
+      "movement": "wander_around",
+      "x": 244,
+      "z": 226,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 1,
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 224,
+      "z": 224,
+      "type": 0,
+      "script": "VillageSign"
+    },
+    {
+      "x": 196,
+      "z": 224,
+      "type": 0,
+      "script": "RouteSign"
+    },
+    {
+      "x": 236,
+      "z": 222,
+      "type": 0,
+      "script": "MartSign"
+    }
+  ],
+  "triggers": []
+}
