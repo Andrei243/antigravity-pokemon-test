@@ -23,6 +23,7 @@ partial class Harness
         story.Set(StoryState.PokedexFlag);
         story.Set(StoryState.RunningShoesFlag);
         story.SetVar("VAR_KALOS_STORY", 31);
+        story.Set("KalosHallOfFame");
         story.SetVar("VAR_KALOS_LUMIOSE_ROADS", 2);
         Frames(2);
 
