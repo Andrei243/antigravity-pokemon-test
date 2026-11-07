@@ -86,6 +86,12 @@ public class ArchitectureTests
             (root, u) => u.TargetType == $"{Engine}.Core.SaveEnvironment" && u.Member == "Here" && !(u.Namespace == root && u.Caller == "Program")),
         new("Reading a player's own files needs no window (plan 08 · P20): Foreign uses no raylib type",
             (root, u) => In(root, u, "Foreign") && Raylib(u)),
+        new("The open world's rules need no window (plan 32 · OW1): OpenWorld uses no raylib type but a Color",
+            (root, u) => In(root, u, "OpenWorld") && Raylib(u)),
+        new("The open world keeps no time but its ticks (plan 32 · decision 2): OpenWorld reads no FrameClock, WallClock, GameClock or Stopwatch, and makes no System.Random",
+            (root, u) => In(root, u, "OpenWorld")
+                && (u.TargetType is $"{Engine}.Graphics.FrameClock" or $"{Engine}.Core.WallClock" or $"{Engine}.Core.GameClock" or "System.Diagnostics.Stopwatch"
+                    || u.Constructs && u.TargetType == "System.Random")),
         new("A player's own file is only read (plan 08 · P20): Foreign touches no File or Directory, and writes through no stream",
             (root, u) => In(root, u, "Foreign")
                 && (u.TargetType is "System.IO.File" or "System.IO.Directory" or "System.IO.StreamWriter" or "System.IO.BinaryWriter"

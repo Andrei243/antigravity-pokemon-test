@@ -199,6 +199,9 @@ public class SaveCorpusTests
             string height = save.PlayerHeight is { } h ? $" at height {h:0.##}" : "";
             text.Append($"wakes on {spot.Map} {spot.X},{spot.Y} facing {spot.Facing}, {save.Travel}{height}" +
                 (save.Safari is { } safari ? $", a Safari Game with {safari.Balls} balls and {safari.Steps} steps left" : "") + "\n");
+            // A save made in an open map (plan 32 · OW1) keeps its place there beside the grid's; no open map is the game's
+            // yet, so it wakes on the grid's place above
+            if (save.OpenPlace is { } open) text.Append($"stood in the open map {open.ToPlace()}, which no region has: it wakes on its grid place\n");
             foreach (var (where, saved) in Owned(save))
             {
                 var p = saved.ToPokemon();

@@ -177,6 +177,24 @@ public sealed class RegionFile
         _ => throw new FormatException($"region {Id}: 'sound' is 'modern' or 'ds', not '{Sound}'")
     };
 
+    /// <summary>
+    /// What the region's outdoors are walked on (plan 32 · OW1): <c>"open"</c>, the open world's engine (Galar's and
+    /// Paldea's, once their files are written), or <c>"grid"</c> and left out for the tile grid every region before them
+    /// has. Its rooms stay grid maps either way (plan 32 · decision 6). <see cref="Region.Field"/> reads it, never this.
+    /// </summary>
+    public string? Field { get; set; }
+
+    /// <summary>
+    /// <see cref="Field"/> read: the open world or the grid, the grid when the file names none. Anything but <c>open</c>
+    /// and <c>grid</c> is refused, so a misspelling can't leave a region on the wrong field unnoticed.
+    /// </summary>
+    public FieldKind FieldKind => Field?.Trim().ToLowerInvariant() switch
+    {
+        null or "" or "grid" => FieldKind.Grid,
+        "open" => FieldKind.Open,
+        _ => throw new FormatException($"region {Id}: 'field' is 'grid' or 'open', not '{Field}'")
+    };
+
     // What a region a pack adds says of its place in the chain (plan 16 · T14, the last part; docs/packs.md, "A region
     // of your own"). The game's own regions are code in RegionDatabase and their files leave these out; a pack's region
     // has no code, so its file says them all. RegionDatabase reads them only for a region no game region is called.
@@ -239,6 +257,12 @@ public enum MovementSpeed { Paces, Analog }
 
 /// <summary>A region's own way of travelling beyond on foot, surfing, cycling and diving (plan 30, "The setting").</summary>
 public enum RegionMode { Skates, Ride, RotomBike, Mount }
+
+/// <summary>
+/// Which field engine a region's outdoors are walked on (plan 32): the tile grid of every region from Sinnoh to Alola,
+/// or the open world in metres of Galar and Paldea.
+/// </summary>
+public enum FieldKind { Grid, Open }
 
 /// <summary>The body kit people are drawn in (plan 30, decision 12): the chibi kit, or the grown one from Kalos on.</summary>
 public enum CharacterKit { Chibi, Grown }

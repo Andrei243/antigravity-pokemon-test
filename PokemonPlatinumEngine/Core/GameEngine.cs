@@ -629,6 +629,8 @@ public partial class GameEngine
         flow.Map = MapDatabase.Get(start.Map);
         flow.Player = new Player(start.X, start.Y);
         flow.Player.Facing = start.Facing;
+        // A new game begins on the grid (plan 32 · OW1: no region's start is in an open map yet)
+        flow.Open = null;
         // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
         // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
         // starts as every game did before: a Pokémon, its first starter, and a few items (plan 18 · W1: by the record's HasStory).
@@ -677,6 +679,8 @@ public partial class GameEngine
         // A save made between tiles in a free region wakes where the body stood (plan 30 · FM7), unless it was moved
         if ((save.PlayerSubX != 0 || save.PlayerSubY != 0) && place.Map == save.CurrentMapName && (place.X, place.Y) == (save.PlayerGridX, save.PlayerGridY))
             flow.Player.SetOffset(save.PlayerSubX, save.PlayerSubY);
+        // A save made in an open map wakes there, where the game knows the map (plan 32 · OW1), and on its grid place otherwise
+        TakeUpOpenPlace(save);
         flow.ExitSpot = save.Exit;
         flow.MapTrail.Restore(save.MapTrail);
         flow.LastDay = save.LastDay;
@@ -889,6 +893,7 @@ public partial class GameEngine
             PlayerFacing = flow.Player.Facing,
             PlayerSubX = flow.Player.Offset.X,
             PlayerSubY = flow.Player.Offset.Y,
+            OpenPlace = flow.Open is { } open ? SavedOpenPlace.From(open.Place) : null,
             Travel = flow.Player.Mode,
             PlayerHeight = flow.Player.HeightOn(flow.Map),
             Exit = flow.ExitSpot,
@@ -1756,6 +1761,12 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // An open map's field is its own (plan 32 · OW1), and nothing of the grid's below runs while the player is in one
+        if (flow.Open != null)
+        {
+            UpdateOpenField(dt);
+            return;
+        }
         // What the field itself does runs at the field's pace, which a scene's slow motion lowers (plan 09 · L4)
         float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push

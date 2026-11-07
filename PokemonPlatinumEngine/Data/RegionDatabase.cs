@@ -95,6 +95,12 @@ public sealed class Region
     /// <summary>The body kit the region's people are drawn in (plan 30); chibi where the file says nothing.</summary>
     public CharacterKit Kit => File?.Kit ?? CharacterKit.Chibi;
 
+    /// <summary>
+    /// What the region's outdoors are walked on (plan 32 · OW1): the file's <c>field</c>, or the grid where there is no
+    /// file or it says nothing, as every region from Sinnoh to Alola. Asked through <c>GameEngine.Here</c>.
+    /// </summary>
+    public FieldKind Field => File?.FieldKind ?? FieldKind.Grid;
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival => File?.Rival;
 

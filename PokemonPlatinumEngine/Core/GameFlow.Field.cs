@@ -17,6 +17,13 @@ public sealed partial class GameFlow
     /// <summary>The player on <see cref="Map"/>. Not valid before a game has begun or been continued.</summary>
     public Player Player { get; set; } = null!;
 
+    /// <summary>
+    /// The open field the player is in (plan 32 · OW1: an open map, the player's place in it, the field's clock), or
+    /// null on the grid, which is everywhere today. While it is there, <see cref="Map"/> and <see cref="Player"/> are
+    /// where the player last stood on the grid.
+    /// </summary>
+    public OpenWorld.OpenField? Open { get; set; }
+
     /// <summary>The team.</summary>
     public Party Party { get; } = new();
 

@@ -1,11 +1,24 @@
+global using OpenPos = PokemonPlatinumEngine.OpenWorld.OpenPos;
+
 namespace OpenWorldBake;
 
-/// <summary>A place in the open world: whole millimetres (plan 32 · decision 2), the feet's height in <see cref="Y"/>.</summary>
-public readonly record struct OpenPos(int X, int Y, int Z)
+/// <summary>
+/// The engine's <see cref="OpenPos"/> (plan 32 · OW1 moved the prototype's into <c>PokemonPlatinumEngine.OpenWorld</c>,
+/// where the game keeps it) as the baker's geometry reads it: in metres as a <see cref="D3"/>, and back.
+/// </summary>
+public static class OpenPosInMetres
 {
-    public D3 Metres => new(Mm.Metres(X), Mm.Metres(Y), Mm.Metres(Z));
-    public static OpenPos Of(D3 p) => new(Mm.Of(p.X), Mm.Of(p.Y), Mm.Of(p.Z));
-    public override string ToString() => $"({X} mm, {Y} mm, {Z} mm)";
+    extension(OpenPos p)
+    {
+        /// <summary>The place in metres.</summary>
+        public D3 Metres => new(Mm.Metres(p.X), Mm.Metres(p.Y), Mm.Metres(p.Z));
+    }
+
+    extension(OpenPos)
+    {
+        /// <summary>A place in metres, to the nearest millimetre (half away from nought).</summary>
+        public static OpenPos Of(D3 p) => new(Mm.Of(p.X), Mm.Of(p.Y), Mm.Of(p.Z));
+    }
 }
 
 /// <summary>
@@ -21,7 +34,7 @@ public readonly record struct OpenPos(int X, int Y, int Z)
 /// </summary>
 public sealed class OpenBody
 {
-    public const int TicksPerSecond = 120;
+    public const int TicksPerSecond = PokemonPlatinumEngine.OpenWorld.OpenClock.TicksPerSecond;
     public const double Radius = 0.35, Height = 1.6, StepUp = 0.35, SnapDown = 0.5;
     public const double WalkSpeed = 1.5, RunSpeed = 4.5, Gravity = 9.81;
 
