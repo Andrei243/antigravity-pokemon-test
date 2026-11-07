@@ -968,6 +968,14 @@ public static class RegionDatabase
                 "AlolaRoute1_PlayersHouse", "AlolaRoute1_KukuiLab",
                 "IkiTown_HalasHouse", "IkiTown_NortheastHouse", "IkiTown_SouthwestHouse", "IkiTown_SoutheastHouse",
                 "HauoliCity_PokemonCenter_1F", "HauoliCity_WestHouse", "HauoliCity_EastHouse",
+                // Plan 23 · Z5, second part: the rest of Melemele (its two caves, maps of the imported kind, and the
+                // rooms of Hau'oli's east end and Route 2) and Akala Island, a map of its own, with its rooms
+                "TenCaratHill", "VerdantCavern", "Akala",
+                "HauoliCity_MalasadaShop", "HauoliCity_IlimasHouse",
+                "AlolaRoute2_PokemonCenter_1F", "AlolaRoute2_BerryFieldsHouse",
+                "HeaheaCity_PokemonCenter_1F", "HeaheaCity_House",
+                "PaniolaTown_PokemonCenter_1F", "PaniolaTown_House",
+                "AkalaRoute5_PokemonCenter_1F",
             }
         },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

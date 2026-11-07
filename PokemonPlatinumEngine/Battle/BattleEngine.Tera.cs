@@ -20,7 +20,7 @@ public partial class BattleEngine
 
     /// <summary>The Pokémon whose moves are being chosen can Terastallize, and no other of the player's has been chosen to this turn.</summary>
     public bool CanTerastallizeNow =>
-        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Terastallize) && core.CanTerastallize(InCore(MenuBattler));
+        !IsLink && core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Terastallize) && core.CanTerastallize(InCore(MenuBattler));
 
     /// <summary>The Tera Type the Pokémon whose moves are being chosen has taken, or would take: what the move menu may show.</summary>
     public TeraType? MenuTeraType => MenuBattler.Pokemon is { } p ? p.Terastallized ?? (TeraArmed ? p.TeraType : null) : null;

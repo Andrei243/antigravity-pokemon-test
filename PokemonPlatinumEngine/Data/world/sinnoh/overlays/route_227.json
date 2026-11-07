@@ -1,6 +1,8 @@
 {
   "area": "route_227",
   "ours": { "land": [ ["Aurasage", 120, 124], ["Corvicapo", 115, 119] ] },
+  // An alpha (plan 10 · F10)
+  "alphas": { "land": [ ["Rhyperior", 59, 61], ["Skarmory", 59, 61] ] },
   // The original's role (Routes 225 to 227 and Stark Mountain's foot) has no song yet (plan 05 · A6): Routes 206 to
   // 208's stands in
   "bgmTrack": "sinnoh/route206",

@@ -411,7 +411,12 @@ partial class Harness
             Skip(BattleAnimator.DynamaxTime + 0.5);
             Profile("double battle, a Mega Dynamax beside its partner, at the menu");
             game.State = GameState.Overworld;
+
+            // The open world's prototype (plan 32 · OW0): its scene at 1920×1080 in this preset's target, the gate's floor
+            OpenPrototypeProfile();
         }
+        openScene?.Unload();
+        openScene = null;
         engine.Settings.Quality = GraphicsQuality.High;
         engine.ApplySettings(window: false);
         // What tools/dev/ab.sh hands to `ab`

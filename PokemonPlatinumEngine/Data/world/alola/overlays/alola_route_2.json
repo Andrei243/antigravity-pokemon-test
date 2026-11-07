@@ -1,0 +1,69 @@
+{
+  // Route 2 (plan 23 · Z5, second part): drawn by hand, our words. North out of Hau'oli City along a road past a
+  // Pokémon Center and a motel, the berry fields and their caretaker's house in the north-west, and the hill of Verdant
+  // Cavern in the east, where Captain Ilima stands before its mouth until his trial begins (alola_route_2.txt). Hau
+  // waits by the Pokémon Center from the festival until the trial is passed. The motel's door is a later session's
+  "area": "alola_route_2",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "AlolaRoute2_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "AlolaRoute2_BerryFieldsHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 1 ],
+  "people": {
+    "ilima": { "name": "Ilima", "npcType": "ilima", "script": "Ilima", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_ROUTE_2_DONE", "shownBy": "FLAG_ALOLA_FESTIVAL_DONE" },
+    "beauty": {
+      "name": "Leilani",
+      "npcType": "beauty",
+      "trainer": {
+        "dialogueBefore": "Beauty Leilani: The sun is out, the breeze is warm, and you look like you want a battle. Perfect!",
+        "dialogueAfter": "Beauty Leilani: Well, the breeze is still lovely, at least."
+      }
+    },
+    "preschooler": {
+      "name": "Kekoa",
+      "npcType": "preschooler_m",
+      "trainer": {
+        "dialogueBefore": "Preschooler Kekoa: My Lancerow can peck really, really fast. Watch!",
+        "dialogueAfter": "Preschooler Kekoa: Aww. Lancerow, we need more snacks."
+      }
+    },
+    "backpacker": {
+      "name": "Malia",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Malia: I've walked every road on this island. Let's see if you can keep up!",
+        "dialogueAfter": "Backpacker Malia: You kept up and then some."
+      }
+    },
+    "breeder": {
+      "name": "Noelani",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Noelani: I raised my Butterfree from a tiny Caterpie. Let me show you how strong it got!",
+        "dialogueAfter": "Pokémon Breeder Noelani: You've raised yours well, too."
+      }
+    },
+    "grunt": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Yo! These berries are ours now, see? Back off or get skulled!",
+        "dialogueAfter": "Team Skull Grunt: Ugh, whatever. The berries weren't even ripe anyway."
+      }
+    },
+    "farmer": {
+      "name": "Farmer",
+      "npcType": "rancher",
+      "dialog": [ "The caretaker grows every kind of berry here. Some troublemakers in skull shirts have been helping themselves." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 2\nNorth: Verdant Cavern and Route 3\nSouth: Hau'oli City",
+    "BerrySign": "The Berry Fields\nPlease don't pick the berries without asking.",
+    "CavernSign": "Verdant Cavern\nTrial site of Captain Ilima"
+  }
+}

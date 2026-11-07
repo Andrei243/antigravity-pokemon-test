@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
+using PokemonPlatinumEngine.Battle.Sim.Link;
 using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Online;
@@ -31,7 +32,13 @@ public enum LinkPhase
     /// <summary>Something went wrong that ends the visit (no server, another version, a dropped connection): its line is shown.</summary>
     Failed,
     /// <summary>The visit is over and the connection closed.</summary>
-    Closed
+    Closed,
+    /// <summary>In a battle room (plan 07 · O6): the team to bring.</summary>
+    BattleRoom,
+    /// <summary>A team brought: the battle is under way (its screen is shown once the room greets the player).</summary>
+    Battling,
+    /// <summary>The battle over: how it went is shown until the player reads on.</summary>
+    Battled
 }
 
 /// <summary>
@@ -58,6 +65,8 @@ public sealed class GlobalLinkSession
     // Receipts to apply, each with whether it is the trade of the room now (or one an earlier visit left unfinished)
     private readonly Queue<(TradeReceipt Receipt, bool Now)> pending = new();
     private bool greeted;
+    // The kind of room the code being made is for
+    private RoomKind making = RoomKind.Trade;
 
     /// <param name="makeClient">Makes the client to the server; null when no server is set, and the visit fails at once with its line.</param>
     /// <param name="keeper">The save the trades are applied to.</param>
@@ -149,6 +158,8 @@ public sealed class GlobalLinkSession
 
         if (client != null)
         {
+            // A team brought: the battle's own messages are taken until the room greets the player, when its screen takes over
+            if (Phase == LinkPhase.Battling && Battle is { Hello: null } waiting) waiting.Pump();
             while (Phase != LinkPhase.Closed && client.TryTake(out var message)) Take(message);
             if (greeted && Phase is not (LinkPhase.Failed or LinkPhase.Closed) && !client.Connected) Fail("globalLink.error.dropped");
         }
@@ -189,10 +200,19 @@ public sealed class GlobalLinkSession
     // ---------------------------------------------------------------------------------------------- what the player does
 
     /// <summary>MAKE A CODE: the server is asked for a code for a trade room.</summary>
-    public bool MakeCode()
+    public bool MakeCode() => MakeCode(RoomKind.Trade);
+
+    /// <summary>
+    /// MAKE A BATTLE CODE (plan 07 · O6): the server is asked for a code for a battle room, of the room's own rules
+    /// (<see cref="LinkRoom.Default"/>: Flat 50 under Platinum's rules, six against six, the species and item clauses).
+    /// </summary>
+    public bool MakeBattleCode() => MakeCode(RoomKind.Battle);
+
+    private bool MakeCode(RoomKind kind)
     {
         if (Phase != LinkPhase.Menu || client == null) return false;
-        client.Send(new MakeCode(RoomKind.Trade));
+        making = kind;
+        client.Send(kind == RoomKind.Battle ? new MakeCode(kind, LinkRoom.Default) : new MakeCode(kind));
         Phase = LinkPhase.MakingCode;
         Say("globalLink.line.making");
         return true;
@@ -264,7 +284,7 @@ public sealed class GlobalLinkSession
     /// <summary>Out of the room (or the code made given up), back to the counter's menu.</summary>
     public bool Leave()
     {
-        if (Phase is not (LinkPhase.Room or LinkPhase.WaitingForOther or LinkPhase.MakingCode or LinkPhase.EnterCode or LinkPhase.Joining)) return false;
+        if (Phase is not (LinkPhase.Room or LinkPhase.WaitingForOther or LinkPhase.MakingCode or LinkPhase.EnterCode or LinkPhase.Joining or LinkPhase.BattleRoom)) return false;
         if (Phase is not LinkPhase.EnterCode) client?.Send(new LeaveRoom());
         Code = null;
         ResetRoom();
@@ -303,6 +323,64 @@ public sealed class GlobalLinkSession
         catch (Exception e) when (e is WebSocketException or ObjectDisposedException or OperationCanceledException or InvalidOperationException) { }
     }
 
+    // ---------------------------------------------------------------------------------------------- a battle (plan 07 · O6)
+
+    /// <summary>The battle room's rules, once it is joined.</summary>
+    public LinkRoom Rules { get; private set; } = LinkRoom.Default;
+
+    /// <summary>The battle's client once a team is brought: its screen plays it (<c>BattleEngine.ForLink</c>) once the room greets the player.</summary>
+    public LinkClient? Battle { get; private set; }
+
+    /// <summary>The battle as the server counted it against the two friend codes, once it has.</summary>
+    public BattleRecorded? Recorded { get; private set; }
+
+    /// <summary>
+    /// The team brought into the battle room: the server checks it (the clauses, each Pokémon possible, the data) and,
+    /// once both are in, greets each player with the other's preview; the six go in in the order brought.
+    /// </summary>
+    public bool BringTeam(LinkPlayer team)
+    {
+        if (Phase != LinkPhase.BattleRoom || client == null || team.Team.Count == 0) return false;
+        Battle = client.StartBattle(team, new BroughtInOrder());
+        Battle.AnswersByItself = false;
+        Recorded = null;
+        Details = null;
+        Phase = LinkPhase.Battling;
+        Say("globalLink.line.bringing", ("name", OtherName ?? ""));
+        return true;
+    }
+
+    /// <summary>The battle's screen has shown its end: how it went is told, the record once the server has counted it.</summary>
+    public void FinishBattle()
+    {
+        if (Phase != LinkPhase.Battling) return;
+        Phase = LinkPhase.Battled;
+        SayHowItWent();
+    }
+
+    private void SayHowItWent()
+    {
+        var result = Battle?.Result;
+        bool won = result?.Winner is { } side && side == Battle!.Side;
+        string how = result?.How switch
+        {
+            LinkEnding.Forfeit => "forfeit",
+            LinkEnding.Timer => "timer",
+            LinkEnding.Disconnect => "disconnect",
+            _ => "knockedOut"
+        };
+        Say(result?.Winner == null ? "globalLink.battled.none" : won ? $"globalLink.battled.won.{how}" : $"globalLink.battled.lost.{how}", ("name", OtherName ?? ""));
+    }
+
+    /// <summary>How the battle went read: back to the counter's menu (a battle room holds one battle).</summary>
+    public void DismissBattle()
+    {
+        if (Phase != LinkPhase.Battled) return;
+        Battle = null;
+        ResetRoom();
+        ToMenu("globalLink.line.welcome");
+    }
+
     // ---------------------------------------------------------------------------------------------- what the server says
 
     private void Take(OnlineMessage message)
@@ -324,8 +402,24 @@ public sealed class GlobalLinkSession
                 OtherFriendCode = joined.OtherFriendCode;
                 ResetOffers();
                 OtherAway = false;
+                // A refusal of an earlier room is no part of this one
+                Details = null;
+                if (joined.Kind == RoomKind.Battle)
+                {
+                    // A battle room (plan 07 · O6): the team to bring, under the room's rules
+                    Rules = joined.Rules ?? LinkRoom.Default;
+                    Battle = null;
+                    Recorded = null;
+                    Phase = LinkPhase.BattleRoom;
+                    Say("globalLink.line.battleRoom", ("name", joined.OtherName));
+                    break;
+                }
                 Phase = LinkPhase.Room;
                 Say("globalLink.line.choose", ("name", joined.OtherName));
+                break;
+            case BattleRecorded recorded:
+                Recorded = recorded;
+                if (Phase == LinkPhase.Battled) SayHowItWent();
                 break;
             case TradeOffered { Mine: true } mine:
                 MyOffer = mine.Pokemon;
@@ -354,6 +448,21 @@ public sealed class GlobalLinkSession
                 pending.Enqueue((r, Phase == LinkPhase.Room));
                 break;
             case TradeDone:
+                break;
+            case RoomClosed when Phase is LinkPhase.Battling or LinkPhase.Battled:
+                // A battle room closes as its battle ends (or the other left it): what came of it stays on show
+                Code = null;
+                if (Phase == LinkPhase.Battling && Battle?.Hello == null)
+                {
+                    ResetRoom();
+                    Battle = null;
+                    ToMenu("globalLink.line.otherLeft");
+                }
+                break;
+            case RoomClosed when Phase == LinkPhase.BattleRoom:
+                Code = null;
+                ResetRoom();
+                ToMenu("globalLink.line.otherLeft");
                 break;
             case RoomClosed:
                 if (Phase is LinkPhase.Room or LinkPhase.WaitingForOther or LinkPhase.Traded)
@@ -407,6 +516,12 @@ public sealed class GlobalLinkSession
                 break;
             case LinkPhase.Room:
                 Checking = false;
+                Say(line);
+                break;
+            case LinkPhase.Battling when Battle?.Hello == null:
+                // The team brought was refused (a clause, an impossible Pokémon, other data): back to choosing it
+                Battle = null;
+                Phase = LinkPhase.BattleRoom;
                 Say(line);
                 break;
             default:

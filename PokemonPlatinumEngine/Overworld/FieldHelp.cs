@@ -40,10 +40,14 @@ public static class FieldHelp
     /// </summary>
     public static IReadOnlyList<FieldMove> Granted(RulesDefault row, RulesPreset preset, StoryState story, Inventory bag, string region)
     {
-        if (!On(row, preset)) return Array.Empty<FieldMove>();
+        // The Ride Pager's rides (plan 23 · Z5) are granted in their region whatever the row says: they are the island
+        // challenge's own way of doing a field move, not a help of the options'
+        var rides = RidePager.Granted(story, region).ToList();
+        if (!On(row, preset)) return rides.Count == 0 ? Array.Empty<FieldMove>() : Helped.Where(rides.Contains).ToList();
         var granted = new List<FieldMove>();
         foreach (var move in Helped)
         {
+            if (rides.Contains(move)) { granted.Add(move); continue; }
             if (FieldMoveRules.BadgeFor(move, region) is { } badge && !story.HasBadge(region, badge)) continue;
             if (HmOf(move) is not { } hm || bag.GetQuantity(hm) <= 0) continue;
             granted.Add(move);
@@ -82,9 +86,18 @@ public static class FieldHelp
     /// The helper that does a granted move: a Pokémon of the species for it that knows the move, made from a generator
     /// of its own (a fixed seed per move), so that nothing is drawn from <see cref="Dice"/> and the same helper comes every time.
     /// </summary>
-    public static Pokemon HelperFor(FieldMove move)
+    public static Pokemon HelperFor(FieldMove move) => HelperFor(move, SpeciesFor(move));
+
+    /// <summary>
+    /// The helper for a move where the story and the region are known: the Ride Pager's Pokémon where a ride is
+    /// registered for the move (plan 23 · Z5: a Tauros charges the rock), the options' helper otherwise.
+    /// </summary>
+    public static Pokemon HelperFor(FieldMove move, StoryState? story, string? region) =>
+        HelperFor(move, story != null && region != null && RidePager.RideFor(move, story, region) is { } ride ? ride.Species : SpeciesFor(move));
+
+    private static Pokemon HelperFor(FieldMove move, string speciesName)
     {
-        var species = PokemonDatabase.Get(SpeciesFor(move)) ?? throw new InvalidOperationException("no species for a field helper");
+        var species = PokemonDatabase.Get(speciesName) ?? throw new InvalidOperationException("no species for a field helper");
         var helper = new Pokemon(species, 20, new Random(7000 + (int)move));
         string name = FieldMoveRules.MoveName(move);
         if (!helper.Moves.Any(m => m.Name == name) && MoveDatabase.Get(name) is { } data)

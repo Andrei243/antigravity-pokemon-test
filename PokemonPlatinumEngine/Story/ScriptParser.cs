@@ -300,6 +300,23 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch, Inverse = inverse };
             }
             // A Master Trainer's battle (plan 14 · B14): the one choosepokemon chose, alone, with the bag closed
+            // A Battle Royal (plan 14 · B13): three people of the map, each named with the trainer of the data they battle
+            // as (`royal a "royal_a" b "royal_b" c "royal_c" canlose`), every one for themselves against the player
+            case "royal":
+            {
+                var people = new List<string>();
+                var ids = new List<string>();
+                for (int k = 0; k < 3; k++)
+                {
+                    string who = r.Who();
+                    if (who == "player") throw r.Error("the player can't be battled");
+                    if (people.Contains(who)) throw r.Error("a Battle Royal is three different people of the map");
+                    people.Add(who);
+                    ids.Add(r.Text("the id of the trainer they battle as"));
+                }
+                bool mayLose = r.More && r.OneOf("canlose") == "canlose";
+                return new Instruction { Op = Op.Royal, Line = line, Name = people[0], Other = people[1], Partner = people[2], Trainers = ids, Option = mayLose };
+            }
             case "master":
             {
                 string who = r.Who();
@@ -833,7 +850,7 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends", "rotom");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends", "rotom", "fliers");
                 return what switch
                 {
                     // Plan 20 · J15, part n: Silph Co.'s Rotom room, an appliance by its word (`team rotom heat`)

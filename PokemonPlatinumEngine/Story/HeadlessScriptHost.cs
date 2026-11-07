@@ -789,6 +789,19 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
+    /// <summary>
+    /// A Battle Royal (plan 14 · B13): written down with its three trainers; a test's <see cref="Fight"/> answers for
+    /// it as for any battle, and a Royal gives nothing whatever its placing: no money, nobody beaten, nobody healed.
+    /// </summary>
+    public void Royal(NPC first, NPC second, NPC third, bool mayLose)
+    {
+        Shown("start a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        Outcome = Fight?.Invoke(first) ?? BattleOutcome.Won;
+        Log.Add($"royal {first.TrainerData?.Id} {second.TrainerData?.Id} {third.TrainerData?.Id} {Outcome}");
+    }
+
     public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
     {
         if (catcher != null) Log.Add($"catcher {catcher.Name} {catcher.Own.Species.Name} {catcher.Own.Level}");
@@ -1554,6 +1567,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         NationalDex = true;
         Log.Add("nationaldex");
+        // The DexNav comes with it (plan 10 · F11; decision 6)
+        if (ItemDatabase.Get(Overworld.DexNavRules.Item) is { } navItem && Bag.GetQuantity(navItem) == 0) Bag.AddItem(navItem, 1);
     }
 
     /// <summary>How many teams have entered the Hall of Fame (<c>LEAGUE_VICTORIES</c>): those this host recorded, unless a test says otherwise.</summary>

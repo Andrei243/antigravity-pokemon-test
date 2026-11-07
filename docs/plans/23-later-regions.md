@@ -95,6 +95,72 @@ Each session: the rule in a GPU-free class with its tests, the areas opened thro
 - `Data/world/alola/` with four matrices and Aether Paradise; `Data/regions/alola.json` (Kukui, Rowlet, Litten and Popplio, `Challenge = "trials"`, the stamps, the `Powers` list, the `Arrival` at the player's new home on Melemele); `StoryState.Grants`, `SaveData.FieldGrants`, the `grant` command and the `granted` question, the ride's species on `usemove`'s band, `FieldMoves.Charge` and `Climb`, the rider drawn on its Pokémon as a surfer is (the style guide's "Characters" first), with `Strength` as plan 02 · S2 leaves it (a story flag, `FieldMoveRules.StrengthFlag`, that `common.Boulder` sets and `KeepFieldMovesInForce` turns into `Player.PushesBoulders`) and the obstacles' scripts asking the grant; the ferry's scene; Melemele's towns and Routes 1 to 3.
 - Tests: a grant opens a rock that no party move opens; a save without `FieldGrants` loads empty; the ferry warps between matrices in `WorldWalk`. Shots: `wa01` to `wa08`, `lab` with a Tauros charge.
 - **Done when** the player rides Tauros through a rock on Melemele with no Pokémon that knows Rock Smash.
+- **Built so far** (2026-11-04, first part): Melemele drawn by hand (Route 1 with the new home and the lab, Iki Town, the
+  Mahalo Trail, Hau'oli City's west end), nine rooms, the chapter from Mom to Hau'oli City (`AlolaTests`), the airline's
+  attendant in Lumiose's Pokémon Center; rulings, "Alola's first chapter, drawn by hand".
+- **Second part** (2026-11-07; rulings, "The rest of Melemele, the Ride Pager and Akala as far as Brooklet Hill"; the
+  facts researched online from Serebii's and Bulbapedia's pages of each place, its exits, trainers, wild Pokémon and the
+  story's order, never their pictures or words): **the rest of Melemele** (Hau'oli's east end and marina, Route 2 with
+  its Pokémon Center and berry fields, Route 3 over its gorge, Melemele Meadow, the shore to Ten Carat Hill behind a
+  cracked rock, and Verdant Cavern and Ten Carat Hill as maps of their own, matrices 1 and 2); **the Ride Pager**
+  (`Overworld/RidePager.cs`: a ride is a story flag that grants its field move in Alola whatever the options' helpers
+  row says, the ride's species seen doing it; Tauros Rock Smash, Lapras Surf, Charizard Fly, Machamp Strength; Stoutland a
+  flag alone); **the ferry** (a sailor at each pier's end, after the professor's boat); **Akala as far as Brooklet Hill**
+  (matrix 3, `Akala`: Heahea City, Route 4, Paniola Town, Paniola Ranch, Route 5's south half and Brooklet Hill), drawn
+  with MapDraw's new `MapDrawing.Areas` (a map of its own with several areas); the story from the marina to Lana's
+  trial (`VAR_ALOLA_STORY` 8 to 18: Team Skull and Ilima, the festival and the Z-Ring, Ilima's trial and the Normalium Z,
+  the meadow, Hau on Route 3, Hala's grand trial with the stamp, the Fightinium Z and Tauros, the boat, Hau in Paniola,
+  Mallow and Stoutland, Gladion, Lana's trial with Lapras and the Waterium Z); nine rooms (four Pokémon Centers, five houses and shops); a road song for Akala (`alola/route4`); five looks (Ilima, a Team
+  Skull grunt, Mallow, Lana, Gladion) and three classes; 36 trainers of ours; objectives 607 to 617;
+  `AlolaIslandsTests` (the walk to every new place, the spawns, the Ride Pager's grants, Tauros breaking the rock with
+  no knower, and the story headless). **Z5's "done when" holds headless** (`TaurosChargesTheRockBeforeTenCaratHill…`):
+  the rock gives way to a Tauros with no team member that knows Rock Smash, but as a helper's move from the rock's
+  question, not ridden (below). **Shots owed** (none taken: three agents had the GPU): the `alola` mode gains, after
+  `wa25`, `wa30` to `wa37` Hau'oli's east end and marina, Route 2 by the Pokémon Center and before Verdant Cavern, Route
+  3's bridge, Melemele Meadow, the shore before Ten Carat Hill, inside Ten Carat Hill and Verdant Cavern (by day; Route 2
+  and the meadow after dark as `wa38`, `wa39`), `wa40` to `wa47` Heahea's plaza and pier, Route 4, Paniola Town, the
+  ranch's paddocks, Route 5's Pokémon Center and Brooklet Hill's two lakes, the new rooms `wa50` to `wa63`, and the story
+  `was30` on (the marina's grunts and Ilima, the festival's stage and the Z-Ring, the three dens and the totem
+  Gumshoos, the meadow, Hau on Route 3, Hala's grand trial and its stamp, a Tauros's cut-in breaking the rock, the boat's
+  fade, Hau in Paniola with a Z-Move in battle, Mallow, Gladion, Lapras carrying the player across Brooklet Hill and
+  the totem Wishiwashi schooling); `tools/dev/shots.sh <dir> alola` takes them once the mode has them, and the profile's
+  line for Hau'oli. **Left of Z5**: Ula'ula and Poni (Z7), Aether Paradise, the rider drawn on its Pokémon and the
+  rides' own travel modes, the Town Map with an island to a tab, the rest of each island listed in the rulings' "Left".
+
+#### The engine for Alola (2026-11-07, the user's question: does Alola need an adapted engine?)
+- **What plan 30 already gives.** Eight directions on the grid (FM1, FM2: Alola's file says `Eight`, as Kalos's does);
+  continuous movement over the same grid behind the region's record (FM7 to FM9: `Overworld/FreeMovement.cs`,
+  `Player.SteerFreely`, the stick, the save's offset, the bot and the fuzzer free), proven on test regions and switched
+  on for no region (the user's gate, untouched here); the `freemove` harness mode's three looks and two cameras (Platinum's
+  59° beside a 50° Kalos camera). Every Alola drawing is a grid drawing, so switching Alola's file to `Free` later
+  redraws nothing: `FieldMovement.Step` stays the only wall.
+- **The camera.** Sun and Moon's field camera is no camera the player turns: it follows from a fixed yaw at a lower,
+  nearer angle than Platinum's, and a place or a scene changes its framing (closer in towns, wider on routes, a few
+  scripted angles in scenes and interiors). So **Alola needs no orbiting camera**; it needs (a) a camera of the region's
+  own, a row of `MapScene.ViewOf` like plan 30's decision 3 `FieldCamera.Kalos` (about 50°, a wider, nearer lens), which
+  is plan 30 · FM6's and should be judged there with the grown cast, and (b) per-area framing, which the area files'
+  `camera` field and the camera kit (`CameraRig`: zoom, pans, paths, bars) already give scenes. **A yaw that turns**
+  (scripted or free) is the large part, and is a proposal only: the upright straightening in the shared vertex shader
+  (`SetUpright`, `WorldRenderer.Straighten`) assumes a camera looking north; field sprites are baked at fixed facings
+  seen from the south (a yaw would remap facings and bake more); `WorldRenderer.VisibleRects` and the chunks' streaming
+  cull an axis-aligned trapezoid; the pixel ground is baked in whole texels on the grid's axes (a turned view would show
+  the texel grid shimmering diagonally); houses are painted for a southern view (their backs are plain); and steering
+  would need to be relative to the camera. Recommended: none of it for Alola; if the user wants turned angles in scenes,
+  a session of its own after plan 30 · FM3 (live rigs make facings free) that generalises the straightening to any yaw
+  and culls by the frustum.
+- **The Ride Pager.** Built now as grants (small and safe). Proposed, a session each: (1) **riding**: a
+  `TravelMode.Riding` with the ride's species, the player drawn on its field sprite as a surfer is on `Player.Carrier`
+  (the style guide's "Characters" first), a pace of its own, called from a menu of the pager (the key item, a pager
+  screen, `common.Ride`); (2) **the rides' own moves on the field**: Tauros charging breaks a cracked rock it runs into
+  (`FieldMovement.Step` answering `CrackedRock` for a charging walker), Stoutland sniffs hidden items out (`Map.HiddenItems`
+  near the player marked), Sharpedo's jet breaks rocks in the water, Mudsdale's gallop crosses a new rocky ground
+  (`TileBehavior` at the enum's end, refused on foot), Machamp's shove is Strength; (3) Charizard's Fly is today's Fly.
+- **Trials and totems.** Scripts and flags, as built here; the engine's part is Z6's: `BattleConditions.TotemAura` (stat
+  stages on entry, a line, the aura drawn: a field of `CoreSetup` and the Vs. Recorder's file), a `wildbattle` word
+  that asks for an SOS battle (plan 14 · B5's format, `MeetWildPokemon(… sos: true)`) and one that refuses the ball
+  (a totem can't be caught): both small. Z-Moves are built (plan 06 · R21) and work from these scripts' items now.
+- **Islands.** Four matrices of one region: the Town Map (`townmap.json`, one grid) and the habitats (one grid) know only
+  Melemele; an island to a tab, as Fly's region tabs (plan 18 · W9), is a session of its own.
 
 ### Z6 · Melemele and Akala: trials, totems and Z-Moves
 - The trial scripts of Melemele and Akala, `BattleConditions.TotemAura` (its aura a line of the style guide's "Stage" first), `callsForHelp` in the totems' areas (plan 14 · B5), the Z-Ring's scene as the island challenge begins (plan 06 · R21; the ring only to a bag without one) and each trial's crystal, the grand trials and their stamps on the card (plan 18 · W2's region row), the cap by stamps (plan 13 · V3's table for Alola).
@@ -201,7 +267,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [ ] Z2 Lumiose and central Kalos
 - [x] Z3 Shalour, the coast and the Tower of Mastery (first part 2026-11-03: Route 10, Geosenge, Route 11, Shalour, the Rumble Badge, the Key Stone and the Lucario; second part 2026-11-03: the harness shots with a Lucario Mega Evolving, caves in the hand-drawn tool, Reflection and Glittering Caves, Route 8's south, Ambrette, Routes 9 and 12, Coumarine City; left, see Z3's second part: Coumarine's Gym, the Connecting Cave, the fossil lab, hordes and sky trainers, songs)
 - [ ] Z4 The mountain, Team Flare and the League
-- [ ] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; left: Routes 2 and 3 and the rest of Hau'oli, the Ride Pager's grants, `FieldMoves.Charge` and `Climb` and the rider drawn, the ferry between islands, the other three islands and Aether Paradise, the Town Map, the user's look at Melemele)
+- [ ] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rider drawn and the rides' own travel modes, the rest of Akala, Ula'ula, Poni and Aether Paradise, the Town Map with an island to a tab, the user's look at Melemele)
 - [ ] Z6 Melemele and Akala: trials, totems and Z-Moves
 - [ ] Z7 Ula'ula, Poni and the Aether Foundation
 - [ ] Z8 After the League: Ultra Space and the Battle Royal (optional)

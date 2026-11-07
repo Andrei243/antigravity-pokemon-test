@@ -15,12 +15,51 @@
     { "file": "mahalo_trail.txt", "x": 236, "z": 72 },
     { "file": "iki_town.txt", "x": 230, "z": 112 },
     { "file": "alola_route_1.txt", "x": 228, "z": 139 },
-    { "file": "hauoli_city.txt", "x": 272, "z": 160 }
+    { "file": "hauoli_city.txt", "x": 272, "z": 160 },
+    // Plan 23 · Z5, second part: the rest of Melemele. Hau'oli City's shops, city hall and marina to the east of its
+    // first streets; Route 2 north out of the city past a Pokémon Center and the berry fields to Verdant Cavern's hill;
+    // Route 3 north of it along the cliffs and over a gorge to Melemele Meadow in the north-east; and the shore west of
+    // Route 1's beach to Ten Carat Hill's mouth, behind a cracked rock that only a charging Tauros breaks
+    { "file": "hauoli_city_east.txt", "x": 312, "z": 160 },
+    { "file": "alola_route_2.txt", "x": 276, "z": 88 },
+    { "file": "alola_route_3.txt", "x": 276, "z": 40 },
+    { "file": "melemele_meadow.txt", "x": 372, "z": 40 },
+    { "file": "ten_carat_shore.txt", "x": 196, "z": 168 }
+  ],
+  // Caves and the other islands as maps of their own (plan 23's Alola decisions: each island a matrix of its own)
+  "maps": [
+    { "matrix": 1, "area": "ten_carat_hill", "width": 2, "height": 2, "cell": "6,5", "pieces": [ { "file": "ten_carat_hill.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 2, "area": "verdant_cavern", "width": 2, "height": 2, "cell": "10,3", "pieces": [ { "file": "verdant_cavern.txt", "x": 4, "z": 4 } ] },
+    // Akala Island (plan 23 · Z5, second part), the second island, 12 chunks by 12: Heahea City's port in the south, the
+    // road north up Route 4 to Paniola Town and through Paniola Ranch onto Route 5, and west off Route 5 to the lakes of
+    // Brooklet Hill, Captain Lana's trial. The ferry from Hau'oli's marina lands on Heahea's pier
+    {
+      "matrix": 3, "area": "heahea_city", "width": 12, "height": 12, "fill": "T",
+      "pieces": [
+        { "file": "heahea_city.txt", "x": 120, "z": 300 },
+        { "file": "akala_route_4.txt", "x": 128, "z": 240 },
+        { "file": "paniola_town.txt", "x": 124, "z": 204 },
+        { "file": "paniola_ranch.txt", "x": 116, "z": 152 },
+        { "file": "akala_route_5.txt", "x": 124, "z": 92 },
+        { "file": "brooklet_hill.txt", "x": 60, "z": 92 }
+      ],
+      "areas": [
+        { "key": "heahea_city", "x": 120, "z": 300, "width": 60, "depth": 40 },
+        { "key": "akala_route_4", "x": 128, "z": 240, "width": 48, "depth": 60 },
+        { "key": "paniola_town", "x": 124, "z": 204, "width": 56, "depth": 36 },
+        { "key": "paniola_ranch", "x": 116, "z": 152, "width": 72, "depth": 52 },
+        { "key": "akala_route_5", "x": 124, "z": 92, "width": 56, "depth": 60 },
+        { "key": "brooklet_hill", "x": 60, "z": 92, "width": 64, "depth": 60 }
+      ]
+    }
   ],
   "areas": [
-    { "key": "alola_route_1", "x": 228, "z": 139, "width": 44, "depth": 42 },
+    { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },
     { "key": "iki_town", "x": 230, "z": 112, "width": 40, "depth": 27 },
     { "key": "mahalo_trail", "x": 236, "z": 72, "width": 28, "depth": 40 },
-    { "key": "hauoli_city", "x": 272, "z": 160, "width": 40, "depth": 21 }
+    { "key": "hauoli_city", "x": 272, "z": 160, "width": 96, "depth": 21 },
+    { "key": "alola_route_2", "x": 276, "z": 88, "width": 60, "depth": 72 },
+    { "key": "alola_route_3", "x": 276, "z": 40, "width": 96, "depth": 48 },
+    { "key": "melemele_meadow", "x": 372, "z": 40, "width": 44, "depth": 44 }
   ]
 }

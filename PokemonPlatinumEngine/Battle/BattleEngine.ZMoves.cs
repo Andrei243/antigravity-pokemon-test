@@ -22,7 +22,7 @@ public partial class BattleEngine
     {
         get
         {
-            if (core.Request is not ActionRequest || playingTheLog || MenuBattler.Pokemon is not { } p) return false;
+            if (IsLink || core.Request is not ActionRequest || playingTheLog || MenuBattler.Pokemon is not { } p) return false;
             var mine = InCore(MenuBattler);
             bool z = !choices.Values.Any(c => c.ZMove) && Enumerable.Range(0, p.Moves.Count).Any(i => core.CanUseZMove(mine, i));
             bool burst = !choices.Values.Any(c => c.UltraBurst) && core.CanUltraBurst(mine);
@@ -65,7 +65,7 @@ public partial class BattleEngine
 
     /// <summary>The Pokémon whose moves are being chosen can Ultra Burst, and no other of the player's has been chosen to (the item button's word, plan 25 · Y14).</summary>
     public bool CanUltraBurstNow =>
-        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.UltraBurst) && core.CanUltraBurst(InCore(MenuBattler));
+        !IsLink && core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.UltraBurst) && core.CanUltraBurst(InCore(MenuBattler));
 
     /// <summary>
     /// A change of shape on screen (a Mega Evolution, a Primal Reversion, an Ultra Burst; plan 25 · Y14): its sound, its

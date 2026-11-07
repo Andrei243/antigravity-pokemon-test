@@ -1754,6 +1754,8 @@ public static class WorldMapBuilder
         area.OursLand.AddRange(overlay?.Ours?.Land ?? new());
         area.OursSurf.AddRange(overlay?.Ours?.Surf ?? new());
         area.OursSuperRod.AddRange(overlay?.Ours?.SuperRod ?? new());
+        // Alphas of the post-game zone, once the region's Hall of Fame is entered (plan 10 · F10)
+        area.AlphaLand.AddRange(overlay?.Alphas?.Land ?? new());
         area.WaterRate = file?.WaterRate ?? 0;
         // The rods' tables: the Old Rod's slots bite as often as the water's, the other two's by their own weights
         Fill(area.RodEncounters[(int)FishingRod.Old], file?.OldRod, WorldAreaFile.WaterSlotWeights);

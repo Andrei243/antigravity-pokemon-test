@@ -1,0 +1,42 @@
+{
+  "key": "ten_carat_hill",
+  "index": 7,
+  "name": "Ten Carat Hill",
+  "matrix": 1,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "TEN_CARAT_HILL",
+  "nightMusic": "TEN_CARAT_HILL",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 29, "z": 59, "to": "alola_route_1", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 20, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_TEN_CARAT_HILL_HARD_STONE", "item": "Hard Stone", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 36, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_TEN_CARAT_HILL_NUGGET", "item": "Nugget", "script": "" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 30, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Zubat", "level": 12 },
+    { "species": "Roggenrola", "level": 10 },
+    { "species": "Roggenrola", "level": 11 },
+    { "species": "Roggenrola", "level": 12 },
+    { "species": "Carbink", "level": 11 },
+    { "species": "Carbink", "level": 12 },
+    { "species": "Machop", "level": 10 },
+    { "species": "Machop", "level": 11 },
+    { "species": "Rockruff", "level": 11 },
+    { "species": "Spinda", "level": 12 }
+  ],
+  "landRate": 10
+}

@@ -1,0 +1,14 @@
+# The berry fields' caretaker's house on Route 2, Melemele Island (plan 23 · Z5, second part). Our words.
+
+
+script Caretaker
+  speaker "Caretaker"
+  if flag FLAG_ALOLA_CARETAKER_BERRY goto Talk
+  say "Those skull-shirted rascals have been stripping my bushes bare. Thank you for chasing them off, if that was you!"
+  say "Here, have a berry from the fields. They're best eaten fresh, but your Pokémon will like them anytime."
+  give "Oran Berry" 3
+  setflag FLAG_ALOLA_CARETAKER_BERRY
+  end
+label Talk
+  say "A berry a day keeps the Pokémon Center away. Well, almost."
+  end

@@ -1,6 +1,8 @@
 {
   "area": "route_225",
   "ours": { "land": [ ["Lapinova", 110, 114], ["Quadripom", 110, 114] ] },
+  // An alpha: larger, with three perfect IVs and a move ahead of its level, one step in a hundred after the Hall of Fame (plan 10 · F10)
+  "alphas": { "land": [ ["Machamp", 55, 57], ["Fearow", 55, 57] ] },
   // The original's role (Routes 225 to 227 and Stark Mountain's foot share it) has no song yet (plan 05 · A6):
   // Routes 206 to 208's climb stands in
   "bgmTrack": "sinnoh/route206",

@@ -781,6 +781,7 @@ public partial class GameEngine
         flow.Story.RestorePhrases(save.StoryPhrases);
         ResetTheSkip();
         OweTheFashionCase();
+        OweTheDexNav();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -1316,6 +1317,10 @@ public partial class GameEngine
                     if (flow.Battle.Watching)
                     {
                         if (flow.Battle.WatchOver) EndWatching();
+                    }
+                    else if (KeepTheLinkBattle(dt))
+                    {
+                        // A link battle ends back where it began, leaving nothing behind (plan 28 · I3, plan 07 · O6)
                     }
                     else if (KeepTheRoomsBattle())
                     {
@@ -2735,6 +2740,7 @@ public partial class GameEngine
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
         flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
+                flow.PokedexScreen.SetHere(DexNavHereList(), flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
                 break;
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;
@@ -3436,6 +3442,8 @@ public partial class GameEngine
         if (flow.Battle == null || DrawBattlePhoto()) return;
         battleRenderer.DrawField(flow.Battle, VirtualWidth, VirtualHeight);
         flow.Battle.Draw(VirtualWidth, VirtualHeight);
+        // VERSUS's curtain between the two players (plan 13 · V12)
+        DrawTheVersusCurtain();
     }
 
     public void Close()

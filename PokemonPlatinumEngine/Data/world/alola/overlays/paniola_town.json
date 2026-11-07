@@ -1,0 +1,35 @@
+{
+  // Paniola Town, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. A ranching town on the road north:
+  // its Pokémon Center, Captain Kiawe's family's house (a later session's door), a rancher's house and fenced yards, the
+  // ranch beyond its north end. Hau catches up with the player at its south end once they have sailed to Akala
+  // (paniola_town.txt), shown by FLAG_ALOLA_SAILED_TO_AKALA until his battle
+  "area": "paniola_town",
+  "bgmTrack": "alola/iki_town",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "PaniolaTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "PaniolaTown_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 1 ],
+  "triggers": [
+    { "script": "HauInPaniola", "x": 148, "z": 238, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 14 }
+  ],
+  "people": {
+    "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_PANIOLA_DONE", "shownBy": "FLAG_ALOLA_SAILED_TO_AKALA" },
+    "cowgirl": {
+      "name": "Cowgirl",
+      "npcType": "cowgirl",
+      "dialog": [ "Yee-haw! Er, I mean, alola! The ranch is just north. Mind the Tauros, they don't stop for anybody." ]
+    },
+    "rancher": {
+      "name": "Rancher",
+      "npcType": "rancher",
+      "still": true,
+      "dialog": [ "That house over there is Kiawe's family's. He's a trial captain, and he dances with fire, if you can believe it." ]
+    }
+  },
+  "signs": {
+    "TownSign": "Paniola Town\nA town of ranchers, where the Tauros run free."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "key": "verdant_cavern",
+  "index": 8,
+  "name": "Verdant Cavern",
+  "matrix": 2,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "VERDANT_CAVERN",
+  "nightMusic": "VERDANT_CAVERN",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 29, "z": 51, "to": "alola_route_2", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "ilima", "looks": "ilima", "movement": "look_south", "x": 29, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "den_1", "looks": "yungoos", "movement": "look_south", "x": 12, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "den_2", "looks": "yungoos", "movement": "look_south", "x": 46, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "den_3", "looks": "yungoos", "movement": "look_south", "x": 30, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "totem", "looks": "gumshoos", "movement": "look_south", "x": 29, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "grunt", "looks": "skull_grunt", "movement": "look_east", "x": 20, "z": 32, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TEAM_SKULL_GRUNT_VERDANT" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 40, "z": 30, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_VERDANT_CAVERN_TM31", "item": "TM31", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Noibat", "level": 9 },
+    { "species": "Noibat", "level": 10 },
+    { "species": "Noibat", "level": 11 },
+    { "species": "Noibat", "level": 9 }
+  ],
+  "landRate": 10
+}

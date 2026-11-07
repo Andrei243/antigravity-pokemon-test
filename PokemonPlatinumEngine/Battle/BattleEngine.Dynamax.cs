@@ -22,7 +22,7 @@ public partial class BattleEngine
 
     /// <summary>The Pokémon whose moves are being chosen can Dynamax, and no other of the player's has been chosen to this turn.</summary>
     public bool CanDynamaxNow =>
-        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Dynamax) && core.CanDynamax(InCore(MenuBattler));
+        !IsLink && core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Dynamax) && core.CanDynamax(InCore(MenuBattler));
 
     /// <summary>The Pokémon whose moves are being chosen is Dynamaxed.</summary>
     public bool MenuDynamaxed => MenuBattler.Pokemon != null && BattleCore.IsDynamaxed(InCore(MenuBattler));
@@ -32,7 +32,7 @@ public partial class BattleEngine
 
     /// <summary>The Pokémon whose moves are being chosen may Mega Evolve and Mega Dynamax in one choice (plan 06 · R20c), and no other of the player's has chosen either this turn.</summary>
     public bool CanMegaDynamaxNow =>
-        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Dynamax || c.Mega) && core.CanMegaDynamax(InCore(MenuBattler));
+        !IsLink && core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Dynamax || c.Mega) && core.CanMegaDynamax(InCore(MenuBattler));
 
     /// <summary>The Pokémon whose moves are being chosen is in a Mega form (its Dynamax is a Mega Dynamax).</summary>
     public bool MenuIsMega => MenuBattler.Pokemon != null && InCore(MenuBattler).Pokemon?.FormData?.Kind == FormKind.Mega;

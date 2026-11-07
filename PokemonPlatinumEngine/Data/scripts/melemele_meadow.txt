@@ -1,0 +1,30 @@
+# Melemele Meadow, Melemele Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they
+# are publicly described (docs/mechanics/rulings.md, "The rest of Melemele"): the girl's little Pokémon lost among the
+# flowers and found. As in the first part, it is told of and never shown. VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: lillie on the meadow's path, shown by FLAG_ALOLA_LILLIE_MEADOW from Ilima's trial until her Pokémon is
+# found (FLAG_ALOLA_NEBBY_FOUND).
+
+
+script Nebby
+  scene "Lillie in the meadow"
+  face player right
+  speaker "Lillie"
+  say "Oh! It's you again. Nebby, my little one, slipped out of my bag again and squeezed into a gap in the rocks over there."
+  say "It's too narrow for me, and the flowers are full of buzzing Pokémon... Could you, maybe...?"
+  text "{player} pushed through the flowers and found the little Pokémon curled up in the gap. It floated straight back to Lillie."
+  speaker "Lillie"
+  say "Thank you! Thank you so much. I'll keep the bag closed properly from now on, I promise."
+  say "Hau went past a little while ago. He said something about battling you before the grand trial. Good luck!"
+  hide lillie
+  setflag FLAG_ALOLA_NEBBY_FOUND
+  setvar VAR_ALOLA_STORY 11
+  objective alolaHau3
+  endscene
+  end
+
+
+script Lillie
+  speaker "Lillie"
+  say "Nebby? Nebby, where are you?"
+  end

@@ -203,7 +203,8 @@ public sealed class SideView
         switch (e)
         {
             case Said said:
-                var line = new Said(said.Text);
+                // A link battle's lines are written for both players: this side reads its own (plan 28 · I3)
+                var line = new Said(Narration.For(said.Text, Side));
                 foreach (var inner in said.Shows)
                     if (Shown(inner) is { } kept) line.Shows.Add(kept);
                 foreach (var inner in said.OnImpact)

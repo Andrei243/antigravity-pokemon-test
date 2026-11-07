@@ -1,0 +1,45 @@
+# Route 3, Melemele Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The rest of Melemele"). VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: hau on the road east of the bridge, shown once the girl's Pokémon is found in Melemele Meadow
+# (FLAG_ALOLA_NEBBY_FOUND) until his battle (FLAG_ALOLA_HAU_ROUTE_3_DONE). His teams are Alola's trainers.json's
+# alola_hau_route_3_1 to _3, the one strong against the player's.
+
+
+# Back from the meadow: Hau, who has been training
+script HauOnRoute3
+  scene "Hau on Route 3"
+  face player right
+  speaker "Hau"
+  say "{player}! There you are! I passed Ilima's trial too, finally. Now you know what that means..."
+  say "Grandpa's grand trial is next! So let's warm up. Battle me!"
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle hau as "alola_hau_route_3_3" canlose
+  goto Fought
+label AgainstRowlet
+  battle hau as "alola_hau_route_3_1" canlose
+  goto Fought
+label AgainstLitten
+  battle hau as "alola_hau_route_3_2" canlose
+label Fought
+  heal
+  speaker "Hau"
+  if lost goto HauWon
+  say "Ahh, you're too strong! Grandpa's going to have his hands full with you."
+  goto Done
+label HauWon
+  say "Yes! But you'll beat Grandpa for sure. He's waiting on the stage in Iki Town!"
+label Done
+  hide hau
+  setflag FLAG_ALOLA_HAU_ROUTE_3_DONE
+  setvar VAR_ALOLA_STORY 12
+  objective alolaGrandTrial
+  endscene
+  end
+
+
+script Hau
+  speaker "Hau"
+  say "Wait, wait, don't go past yet!"
+  end

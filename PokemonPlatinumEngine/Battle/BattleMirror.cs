@@ -50,6 +50,12 @@ internal sealed class BattleMirror
         TeraOrb = trainer.TeraOrb
     };
 
+    /// <summary>
+    /// A Pokémon the screen is handed as the log names it (plan 28 · I3: a link battle's view names the client's own
+    /// Pokémon and the foe's stand-ins): it shows as itself.
+    /// </summary>
+    public void Know(Pokemon shown) => shownOf[shown] = shown;
+
     /// <summary>The game's own Pokémon that one of the rules' copies stands for.</summary>
     public Pokemon Shown(Pokemon copy)
     {

@@ -175,6 +175,8 @@ public enum Op
     GlobalLink,
     // Black City's Black Tower (plan 22 · U10, the last part): a climb of five areas with the Frontier's rules lent, Benga at its top
     BlackTower,
+    // A Battle Royal (plan 14 · B13): three people of the map, each battling as a trainer of the data, every one for themselves
+    Royal,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -308,6 +310,9 @@ public sealed class Instruction
 
     /// <summary>For <c>battle self rematch</c>: the trainer fights with the team the Vs. Seeker has them bring (plan 06 · R12).</summary>
     public bool Rematch { get; init; }
+
+    /// <summary>For <c>royal</c> (plan 14 · B13): the trainers of the data the three people battle as, in the order they are named.</summary>
+    public IReadOnlyList<string> Trainers { get; init; } = Array.Empty<string>();
 
     /// <summary>For <c>battle self inverse</c>: an inverse battle, its type chart turned round (plan 14 · B1).</summary>
     public bool Inverse { get; init; }

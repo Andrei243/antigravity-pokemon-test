@@ -1,0 +1,35 @@
+# Route 5, Akala Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Akala, as far as Brooklet Hill"). VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: gladion on the road, shown once Mallow has been met (FLAG_ALOLA_RIDE_STOUTLAND) until his battle
+# (FLAG_ALOLA_GLADION_ROUTE_5_DONE). His team is alola_gladion_1.
+
+
+script Gladion
+  scene "Gladion on Route 5"
+  face player up
+  speaker "Gladion"
+  say "...You're the one Hau talks about. The trial-goer who beat him."
+  say "I've got no interest in trials. But I want to see what you've got. Don't hold back."
+  battle gladion as "alola_gladion_1" canlose
+  heal
+  speaker "Gladion"
+  if lost goto GladionWon
+  say "...Hmph. Not bad. I'll remember that."
+  goto Done
+label GladionWon
+  say "Is that all? Then don't get in my way."
+label Done
+  say "Team Skull pays me to battle for them. That's all it is."
+  hide gladion
+  setflag FLAG_ALOLA_GLADION_ROUTE_5_DONE
+  setvar VAR_ALOLA_STORY 17
+  objective alolaBrooklet
+  endscene
+  end
+
+
+script GladionTalk
+  speaker "Gladion"
+  say "..."
+  end

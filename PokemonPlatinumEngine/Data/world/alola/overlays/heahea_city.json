@@ -1,0 +1,32 @@
+{
+  // Heahea City, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. Akala's port: the ferry's pier on
+  // the west of its beach, a plaza of the island's shops, the Pokémon Center, the tourist bureau, a hotel and a
+  // research laboratory along its north side, and the road north to Route 4. The bureau, the hotel and the laboratory
+  // are a later session's. The sailor at the pier's end sails back to Hau'oli (heahea_city.txt)
+  "area": "heahea_city",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    { "warp": 0, "map": "HeaheaCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 4, "map": "HeaheaCity_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 1, 2, 3 ],
+  "people": {
+    "sailor": { "name": "Sailor", "npcType": "sailor", "script": "Ferry", "still": true },
+    "tourist": {
+      "name": "Tourist",
+      "npcType": "backpacker_m",
+      "dialog": [ "First stop, the tourist bureau. Second stop, the volcano. Third stop, the beach. Fourth stop, a nap." ]
+    },
+    "woman": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "The trial captains of Akala are Lana, Kiawe and Mallow. The nearest is Lana's, up past Paniola." ]
+    }
+  },
+  "signs": {
+    "CitySign": "Heahea City\nThe front door of Akala Island.",
+    "PierSign": "Heahea Pier\nFerries to Hau'oli City, Melemele Island."
+  }
+}

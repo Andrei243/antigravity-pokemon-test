@@ -32,6 +32,15 @@ way -
   = VAR_ALOLA_STORY 0 -> 1
   = VAR_OBJECTIVE 0 -> 601
   + seen AlolaRoute1_PlayersHouse.Mom on the first morning
+=== AlolaRoute2_BerryFieldsHouse.Caretaker
+from Caretaker at 7,6 of AlolaRoute2_BerryFieldsHouse
+way -
+  Caretaker> Those skull-shirted rascals have been stripping my bushes bare. Thank you for chasing them off, if that was you!
+  Caretaker> Here, have a berry from the fields. They're best eaten fresh, but your Pokémon will like them anytime.
+  > Lucas received 3 × Oran Berry!
+  > Lucas put them away in the Berries pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_CARETAKER_BERRY
 === BattleArcade.Beauty
 from Beauty at 4,14 of BattleArcade
 way -
@@ -556,6 +565,27 @@ way 1, from answer 1
   Receptionist> Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one.
   Receptionist> Win the final and you're the champion. Lose a match, and the tournament is over for you.
   ? Would you like to enter a tournament? = The rules
+=== BattleFrontierAnnex.RoyalDesk
+from Receptionist at 1,8 of BattleFrontierAnnex
+way 0.0
+  Receptionist> This is the Battle Royal corner! Four Trainers battle at once, and every one of them is everyone else's foe.
+  Receptionist> Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal?
+  Receptionist> Then step into the ring! Every Trainer for themselves!
+  Receptionist> First place! You read all three of them at once. Come back whenever you'd like another round.
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = Join
+  * royal royal_brisa royal_corin royal_dalla Won
+way 0.1, from answer 2
+  Receptionist> A hard-fought placing! Every Battle Royal is different, so do come back and try for first.
+  * royal royal_brisa royal_corin royal_dalla Lost
+way 2, from answer 1
+  Receptionist> Whenever you're ready for a free-for-all, you know where to find us.
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = No
+way 1, from answer 1
+  Receptionist> Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag.
+  Receptionist> The moment any Trainer has no Pokémon left, the battle is over.
+  Receptionist> Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing.
+  Receptionist> The highest score takes first place. Nothing is won or lost but the placing, so battle freely!
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = The rules
 === BattleFrontierAnnex.TournamentDesk
 from Receptionist at 13,8 of BattleFrontierAnnex
 way 0
@@ -6478,6 +6508,14 @@ way -
   * sound select
   * fade out
   * fade in
+=== VistaLighthouse.SkyBattle
+from Sky Trainer at 3,4 of VistaLighthouse
+way -
+  Sky Trainer> Up here the wind comes straight off the sea. It's the closest thing in Sinnoh to the open sky.
+  Sky Trainer> Where I come from we battle in the air: a Sky Battle. Only Pokémon that fly or float can take part.
+  Sky Trainer> And no move that needs the ground. No Earthquake, no Dig, nothing that slams a foe down onto anything.
+  Sky Trainer> None of your Pokémon can fly or float, I'm afraid. Bring one that can, and we'll take to the sky.
+  + FLAG_VISTA_LIGHTHOUSE_SKY_BATTLE_EXPLAINED
 === VistaLighthouse.Volkner
 from Volkner at 6,4 of VistaLighthouse
 way -
@@ -6582,10 +6620,76 @@ way -
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   = VAR_ACUITY_LAKEFRONT_STATE 0 -> 1
   + seen acuity_lakefront.The rival calls down
+=== akala_route_5.Gladion
+from the trigger at 148,145 of Akala
+way 0
+  Gladion> ...You're the one Hau talks about. The trial-goer who beat him.
+  Gladion> I've got no interest in trials. But I want to see what you've got. Don't hold back.
+  Gladion> ...Hmph. Not bad. I'll remember that.
+  Gladion> Team Skull pays me to battle for them. That's all it is.
+  * scene akala_route_5.Gladion on Route 5
+  * battle alola_gladion_1 Won
+  * endscene
+  + FLAG_ALOLA_GLADION_ROUTE_5_DONE
+  = VAR_ALOLA_STORY 0 -> 17
+  = VAR_OBJECTIVE 0 -> 617
+  + beaten alola_gladion_1
+  + seen akala_route_5.Gladion on Route 5
+way 1, from answer 1
+  Gladion> Is that all? Then don't get in my way.
+  Gladion> Team Skull pays me to battle for them. That's all it is.
+  * battle alola_gladion_1 Lost
+  * endscene
+  + FLAG_ALOLA_GLADION_ROUTE_5_DONE
+  = VAR_ALOLA_STORY 0 -> 17
+  = VAR_OBJECTIVE 0 -> 617
+  + seen akala_route_5.Gladion on Route 5
+=== akala_route_5.GladionTalk
+from Gladion at 150,140 of Akala
+way -
+  Gladion> ...
 === alola_route_1.Kukui
 from Prof. Kukui at 240,158 of Melemele
 way -
   Prof. Kukui> Iki Town is just north of here. The kahuna's waiting!
+=== alola_route_2.Hau
+from Hau at 291,140 of Melemele
+way -
+  Hau> Hey, Lucas! You're doing Ilima's trial? Take these, then. My grandpa says you can never have too many.
+  > Lucas received 3 × Revive!
+  > Lucas put them away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_HAU_REVIVES
+=== alola_route_2.Ilima
+from Ilima at 326,107 of Melemele
+way -
+  Ilima> This is Verdant Cavern, the site of my trial. But a trial-goer needs the kahuna's blessing first: the festival in Iki Town!
+=== alola_route_3.Hau
+from Hau at 340,69 of Melemele
+way -
+  Hau> Wait, wait, don't go past yet!
+=== alola_route_3.HauOnRoute3
+from the trigger at 336,68 of Melemele
+way 0
+  Hau> Lucas! There you are! I passed Ilima's trial too, finally. Now you know what that means...
+  Hau> Grandpa's grand trial is next! So let's warm up. Battle me!
+  Hau> Ahh, you're too strong! Grandpa's going to have his hands full with you.
+  * scene alola_route_3.Hau on Route 3
+  * battle alola_hau_route_3_3 Won
+  * endscene
+  + FLAG_ALOLA_HAU_ROUTE_3_DONE
+  = VAR_ALOLA_STORY 0 -> 12
+  = VAR_OBJECTIVE 0 -> 612
+  + beaten alola_hau_route_3_3
+  + seen alola_route_3.Hau on Route 3
+way 1, from answer 1
+  Hau> Yes! But you'll beat Grandpa for sure. He's waiting on the stage in Iki Town!
+  * battle alola_hau_route_3_3 Lost
+  * endscene
+  + FLAG_ALOLA_HAU_ROUTE_3_DONE
+  = VAR_ALOLA_STORY 0 -> 12
+  = VAR_OBJECTIVE 0 -> 612
+  + seen alola_route_3.Hau on Route 3
 === amity_square.EastGate
 from the trigger at 51,46 of AmitySquare
 way 0
@@ -8337,6 +8441,30 @@ way -
 from the trigger at 13,7 of MarineTubeGate_Undella
 way -
   Worker> Sorry! We're polishing the Marine Tube's glass today. Come back another time, would you?
+=== brooklet_hill.Lana
+from Lana at 115,133 of Akala
+way -
+  Lana> ...Hello. I'm Lana, the captain here. My trial is ready, but you look like you've somewhere else to be first. Route 5, maybe?
+=== brooklet_hill.Splash1
+from Wishiwashi at 110,125 of Akala
+way 0
+  > Something splashed! A Wishiwashi leapt out!
+  * wildbattle Wishiwashi 17 nofleeing Won
+  + FLAG_ALOLA_BROOKLET_SPLASH_1
+way 1, from answer 1
+  * wildbattle Wishiwashi 17 nofleeing Lost
+=== brooklet_hill.Splash2
+from Wishiwashi at 85,130 of Akala
+way 0
+  > Something splashed! A Wishiwashi leapt out!
+  * wildbattle Wishiwashi 18 nofleeing Won
+  + FLAG_ALOLA_BROOKLET_SPLASH_2
+way 1, from answer 1
+  * wildbattle Wishiwashi 18 nofleeing Lost
+=== brooklet_hill.Totem
+from Wishiwashi at 89,96 of Akala
+way -
+  > The water by the far shore ripples strangely... Perhaps the splashes on the first lake come first.
 === burned_tower_1f.Eusine
 from the trigger at 19,23 of BurnedTower_1F
 way -
@@ -18075,6 +18203,78 @@ way 0
 way 1, from answer 1
   * wildbattle Arceus 80 Lost
   + seen hall_of_origin.Arceus in the Hall of Origin
+=== hauoli_city.Ferry
+from Sailor at 357,180 of Melemele
+way -
+  Sailor> This ferry crosses to Akala Island. It's for trial-goers who've finished Melemele's grand trial, so come back once the kahuna's seen what you can do!
+=== hauoli_city.Grunt
+from Grunt at 356,178 of Melemele
+from Grunt at 358,178 of Melemele
+way -
+  Grunt> What're you looking at?
+=== hauoli_city.Ilima
+from Ilima at 350,174 of Melemele
+way -
+  Ilima> Verdant Cavern is north up Route 2. I'll be waiting.
+=== hauoli_city.Kukui
+from Prof. Kukui at 355,177 of Melemele
+way -
+  Prof. Kukui> Whenever you're ready, step onto the pier and we'll set sail for Akala.
+=== hauoli_city.Marina
+from the trigger at 356,176 of Melemele
+way 0.0
+  Grunt> Yo yo yo! Look who's wandered onto our pier. A little island challenger, huh?
+  Grunt> Team Skull says this pier's ours today. Wanna argue? Then let's battle!
+  Grunt> Tch! You got lucky. Come on, let's split. This place is boring anyway.
+  Ilima> Well handled! I was about to step in, but you didn't need me at all. I'm Ilima, a trial captain of this island.
+  Ilima> A trial-goer who battles like that... Let me see it for myself. Your Pokémon are tired, so allow me.
+  Ilima> Splendid! You and your partner understand each other well.
+  Ilima> My trial waits in Verdant Cavern, up Route 2. But first you need the kahuna's blessing: the festival in Iki Town is tonight, and Hala will be expecting you.
+  * scene hauoli_city.Team Skull at the marina
+  * battle alola_grunt_marina Won
+  * battle alola_ilima_1 Won
+  * endscene
+  = VAR_ALOLA_STORY 0 -> 8
+  = VAR_OBJECTIVE 0 -> 608
+  + beaten alola_grunt_marina
+  + beaten alola_ilima_1
+  + seen hauoli_city.Team Skull at the marina
+way 0.1, from answer 2
+  * battle alola_ilima_1 Lost
+  * scene over, unseen
+  + FLAG_ALOLA_ILIMA_MARINA
+  + beaten alola_grunt_marina
+way 1, from answer 1
+  * battle alola_grunt_marina Lost
+  * scene over, unseen
+  + FLAG_ALOLA_SKULL_MARINA
+=== hauoli_city.SailToAkala
+from the trigger at 356,176 of Melemele
+way -
+  Prof. Kukui> Woo! There's the island's newest grand trial winner! Hala told me all about it, cousin.
+  Prof. Kukui> Melemele's done, so Akala's next. My boat's tied up right here. Hop in and I'll take you across!
+  > The professor's boat skimmed out of the marina and across the bright sea to Akala Island...
+  Prof. Kukui> Welcome to Akala! Heahea City's just up the beach. The nearest trial is north, past Route 4 and Paniola Town. Have fun out there!
+  * scene hauoli_city.The boat to Akala
+  * fade out
+  * warp Akala 125 328
+  * fade in
+  * endscene
+  + FLAG_ALOLA_SAILED_TO_AKALA
+  = VAR_ALOLA_STORY 0 -> 14
+  = VAR_OBJECTIVE 0 -> 614
+  + seen hauoli_city.The boat to Akala
+=== heahea_city.Ferry
+from Sailor at 125,339 of Akala
+way 0
+  Sailor> This ferry sails for Hau'oli City on Melemele Island. All aboard?
+  > The ferry pulled away from Heahea's pier...
+  ? This ferry sails for Hau'oli City on Melemele Island. All aboard? = Yes
+  * fade out
+  * warp Melemele 357 177
+  * fade in
+way 1, from answer 1
+  ? This ferry sails for Hau'oli City on Melemele Island. All aboard? = No
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -
@@ -18392,6 +18592,78 @@ way 0
 way 1, from answer 1
   * wildbattle Regice 65 Lost
   + seen iceberg_chamber.Regice wakes
+=== iki_town.Festival
+from the trigger at 248,137 of Melemele
+way 0
+  Hala> Ah, there you are! Tonight we hold the festival for Tapu Koko, the guardian of Melemele.
+  Hala> And in Iki Town, a festival is never complete without a battle on the stage. Hau has been waiting all day!
+  Hau> Finally! I've been practising with my new Pokémon. And I caught a new friend too! Let's give the guardian a good show!
+  Hau> Whoa, you got even stronger since this morning! The guardian must have liked that one.
+  Hala> A fine battle, both of you. Tapu Koko is surely pleased.
+  Hala> Lucas, the guardian took an interest in you on the bridge. So I give you this, for the island challenge.
+  > Lucas received the Z-Ring!
+  > Lucas put it away in the Key Items pocket.
+  Hala> Pass the trials of the island's captains, and the crystals they give you will let you and your Pokémon unleash Z-Moves through that ring.
+  Hala> Your first trial is Captain Ilima's, in Verdant Cavern at the end of Route 2. Go with the guardian's blessing!
+  Hau> I'll go on ahead to Route 2! See you there, Lucas!
+  * scene iki_town.The festival
+  * battle alola_hau_festival_3 Won
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_ALOLA_FESTIVAL_DONE
+  + FLAG_ALOLA_HIDE_HAU_IKI
+  = VAR_ALOLA_STORY 0 -> 9
+  = VAR_OBJECTIVE 0 -> 609
+  + beaten alola_hau_festival_3
+  + seen iki_town.The festival
+way 1, from answer 1
+  Hau> We did it! But only just. That was the best festival battle ever!
+  Hala> A fine battle, both of you. Tapu Koko is surely pleased.
+  Hala> Lucas, the guardian took an interest in you on the bridge. So I give you this, for the island challenge.
+  > Lucas received the Z-Ring!
+  > Lucas put it away in the Key Items pocket.
+  Hala> Pass the trials of the island's captains, and the crystals they give you will let you and your Pokémon unleash Z-Moves through that ring.
+  Hala> Your first trial is Captain Ilima's, in Verdant Cavern at the end of Route 2. Go with the guardian's blessing!
+  Hau> I'll go on ahead to Route 2! See you there, Lucas!
+  * battle alola_hau_festival_3 Lost
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_ALOLA_FESTIVAL_DONE
+  + FLAG_ALOLA_HIDE_HAU_IKI
+  = VAR_ALOLA_STORY 0 -> 9
+  = VAR_OBJECTIVE 0 -> 609
+  + seen iki_town.The festival
+=== iki_town.GrandTrial
+from the trigger at 248,137 of Melemele
+way 0
+  Hala> Ho ho! Ilima's crystal, and the look of a Trainer who has walked every road of Melemele. Then the time has come.
+  Hala> I am Hala, kahuna of this island. As kahuna, I will face you with everything I have. Show me the strength you have found!
+  Hala> Ha! Splendid, splendid! The guardian chose well.
+  > Lucas's Trainer card received Melemele's stamp!
+  > Lucas received the Fightinium Z!
+  > Lucas put it away in the Items pocket.
+  Hala> And take this, too. With it, the Tauros of the island will come when you call.
+  > Lucas registered Tauros in the Ride Pager! Tauros can charge through cracked rocks.
+  > Lucas received the TM54!
+  > TM54 holds the move False Swipe.
+  > Lucas put it away in the TMs & HMs pocket.
+  Hala> Kukui is waiting at Hau'oli's marina with his boat. Akala Island is next, and its kahuna will not go easy on you!
+  * scene iki_town.Hala's grand trial
+  * battle alola_hala_1 Won
+  * fanfare FanfareBadge
+  * fanfare FanfareItem
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_ALOLA_KUKUI_MARINA
+  + FLAG_ALOLA_RIDE_TAUROS
+  = VAR_ALOLA_STORY 0 -> 13
+  = VAR_OBJECTIVE 0 -> 613
+  + beaten alola_hala_1
+  = badges Alola 0 -> 1
+  + seen iki_town.Hala's grand trial
+way 1, from answer 1
+  * battle alola_hala_1 Lost
+  * scene over, unseen
 === iki_town.Hala
 from Hala at 249,121 of Melemele
 way -
@@ -21336,6 +21608,24 @@ way -
 from Woman at 4,5 of MauvilleCity_House2
 way -
   Woman> My husband spends every afternoon at the Game Corner. I wish I had some pretty Harbor Mail to write to my friends.
+=== melemele_meadow.Lillie
+from Lillie at 382,60 of Melemele
+way -
+  Lillie> Nebby? Nebby, where are you?
+=== melemele_meadow.Nebby
+from the trigger at 377,68 of Melemele
+way -
+  Lillie> Oh! It's you again. Nebby, my little one, slipped out of my bag again and squeezed into a gap in the rocks over there.
+  Lillie> It's too narrow for me, and the flowers are full of buzzing Pokémon... Could you, maybe...?
+  > Lucas pushed through the flowers and found the little Pokémon curled up in the gap. It floated straight back to Lillie.
+  Lillie> Thank you! Thank you so much. I'll keep the bag closed properly from now on, I promise.
+  Lillie> Hau went past a little while ago. He said something about battling you before the grand trial. Good luck!
+  * scene melemele_meadow.Lillie in the meadow
+  * endscene
+  + FLAG_ALOLA_NEBBY_FOUND
+  = VAR_ALOLA_STORY 0 -> 11
+  = VAR_OBJECTIVE 0 -> 611
+  + seen melemele_meadow.Lillie in the meadow
 === meteor_falls_1f_1r.Cozmo
 from Prof. Cozmo at 13,23 of MeteorFalls_1F_1R
 way -
@@ -23654,6 +23944,66 @@ from Daisy at 10,6 of PalletTown_RivalsHouse
 way -
   Daisy> Hi there! My brother's out somewhere, as usual.
   Daisy> He's talked about nothing but Pokémon since Grandpa came home.
+=== paniola_ranch.Mallow
+from the trigger at 148,202 of Akala
+way -
+  Mallow> Alola! You must be the trial-goer Kukui keeps talking about. I'm Mallow, one of Akala's trial captains.
+  Mallow> My trial's up in the Lush Jungle, but you'll want to see Lana's at Brooklet Hill first. It's west off Route 5, just north of here.
+  Mallow> Oh, and take this along. My Stoutland can sniff out things buried in the ground. It's registered in your Ride Pager now!
+  > Lucas registered Stoutland in the Ride Pager!
+  Mallow> See you in the jungle!
+  * scene paniola_ranch.Mallow at the ranch
+  * endscene
+  + FLAG_ALOLA_RIDE_STOUTLAND
+  = VAR_ALOLA_STORY 0 -> 16
+  = VAR_OBJECTIVE 0 -> 616
+  + seen paniola_ranch.Mallow at the ranch
+=== paniola_ranch.MallowTalk
+from Mallow at 153,196 of Akala
+way -
+  Mallow> Have you tried the moomoo milk here? It's the best!
+=== paniola_ranch.Miltank
+from Miltank at 126,172 of Akala
+way -
+  > Miltank looks content.
+  * cry Miltank
+=== paniola_ranch.Mudbray
+from Mudbray at 165,165 of Akala
+way -
+  > Mudbray is rolling happily in the mud.
+  * cry Mudbray
+=== paniola_ranch.Tauros
+from Tauros at 130,166 of Akala
+from Tauros at 138,170 of Akala
+way -
+  > Tauros snorted and pawed at the ground.
+  * cry Tauros
+=== paniola_town.Hau
+from Hau at 152,232 of Akala
+way -
+  Hau> Hey, Lucas! Over here!
+=== paniola_town.HauInPaniola
+from the trigger at 148,238 of Akala
+way 0
+  Hau> Alola, Lucas! I took the ferry right after you. Akala's huge! And look, I got a Normalium Z too!
+  Hau> So now we can both use Z-Moves. You know what that means, right? Battle!
+  Hau> Whoa, that Z-Move was huge! I gotta keep up. I'm going to check out the ranch up north!
+  * scene paniola_town.Hau in Paniola
+  * battle alola_hau_paniola_3 Won
+  * endscene
+  + FLAG_ALOLA_HAU_PANIOLA_DONE
+  = VAR_ALOLA_STORY 0 -> 15
+  = VAR_OBJECTIVE 0 -> 615
+  + beaten alola_hau_paniola_3
+  + seen paniola_town.Hau in Paniola
+way 1, from answer 1
+  Hau> Ha! Our Z-Moves were both huge, though! I'm going to check out the ranch up north!
+  * battle alola_hau_paniola_3 Lost
+  * endscene
+  + FLAG_ALOLA_HAU_PANIOLA_DONE
+  = VAR_ALOLA_STORY 0 -> 15
+  = VAR_OBJECTIVE 0 -> 615
+  + seen paniola_town.Hau in Paniola
 === pastoria_city.BlockGreatMarsh
 from the trigger at 610,810 of Sinnoh
 way -
@@ -32752,6 +33102,41 @@ way -
   Tough Guy> It's Embargo. Hit a Pokémon with it, and its trainer can't use items on it for a while. Handy, that.
   * fanfare FanfareTM
   + FLAG_RECEIVED_VEILSTONE_CITY_TM63
+=== verdant_cavern.Den1
+from Yungoos at 12,16 of VerdantCavern
+way 0
+  > A Yungoos burst out of the den!
+  > The den is empty now.
+  * wildbattle Yungoos 11 nofleeing Won
+  + FLAG_ALOLA_VERDANT_DEN_1
+way 1, from answer 1
+  * wildbattle Yungoos 11 nofleeing Lost
+=== verdant_cavern.Den2
+from Yungoos at 46,16 of VerdantCavern
+way 0
+  > A Yungoos burst out of the den!
+  > The den is empty now.
+  * wildbattle Yungoos 11 nofleeing Won
+  + FLAG_ALOLA_VERDANT_DEN_2
+way 1, from answer 1
+  * wildbattle Yungoos 11 nofleeing Lost
+=== verdant_cavern.Den3
+from Yungoos at 30,20 of VerdantCavern
+way 0
+  > A Yungoos burst out of the den!
+  > The den is empty now.
+  * wildbattle Yungoos 11 nofleeing Won
+  + FLAG_ALOLA_VERDANT_DEN_3
+way 1, from answer 1
+  * wildbattle Yungoos 11 nofleeing Lost
+=== verdant_cavern.IlimaInside
+from Ilima at 29,36 of VerdantCavern
+way -
+  Ilima> Three dens: one west, one east and one up the middle. Then the totem's den at the very top. Good luck!
+=== verdant_cavern.Totem
+from Gumshoos at 29,8 of VerdantCavern
+way -
+  > Something enormous stirs at the top of the den... It won't come out until the three dens below are clear.
 === verdanturf_town.Boy
 from Boy at 127,151 of Hoenn
 way -

@@ -98,10 +98,90 @@ script Kukui
 
 script Hala
   speaker "Hala"
+  if var VAR_ALOLA_STORY >= 13 goto Won
+  if var VAR_ALOLA_STORY >= 9 goto Challenge
   say "The island watches over all of us, and the guardian watches over the island. Take good care of your partner."
+  end
+label Challenge
+  say "Pass Ilima's trial, and every captain's on Melemele that follows, and I will be waiting for you on this stage for your grand trial."
+  end
+label Won
+  say "Ho ho! Akala's kahuna is a fierce one. Show her the same fire you showed me."
   end
 
 script Hau
   speaker "Hau"
   say "Have you tried the malasadas in Hau'oli City? They're the best thing in Alola! Well, after Pokémon."
+  end
+
+
+# Up from Route 1 after meeting Team Skull and Ilima in Hau'oli: the island's festival, Hau's battle on the stage and
+# the kahuna's blessing, a Z-Ring for the island challenge (plan 23 · Z5, second part; ours: Sun and Moon hold the
+# festival on the first evening, before Hau'oli City)
+script Festival
+  scene "The festival"
+  face player up
+  speaker "Hala"
+  say "Ah, there you are! Tonight we hold the festival for Tapu Koko, the guardian of Melemele."
+  say "And in Iki Town, a festival is never complete without a battle on the stage. Hau has been waiting all day!"
+  speaker "Hau"
+  say "Finally! I've been practising with my new Pokémon. And I caught a new friend too! Let's give the guardian a good show!"
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle hau as "alola_hau_festival_3" canlose
+  goto Fought
+label AgainstRowlet
+  battle hau as "alola_hau_festival_1" canlose
+  goto Fought
+label AgainstLitten
+  battle hau as "alola_hau_festival_2" canlose
+label Fought
+  heal
+  speaker "Hau"
+  if lost goto HauWon
+  say "Whoa, you got even stronger since this morning! The guardian must have liked that one."
+  goto Blessing
+label HauWon
+  say "We did it! But only just. That was the best festival battle ever!"
+label Blessing
+  speaker "Hala"
+  say "A fine battle, both of you. Tapu Koko is surely pleased."
+  say "{player}, the guardian took an interest in you on the bridge. So I give you this, for the island challenge."
+  give "Z-Ring"
+  say "Pass the trials of the island's captains, and the crystals they give you will let you and your Pokémon unleash Z-Moves through that ring."
+  say "Your first trial is Captain Ilima's, in Verdant Cavern at the end of Route 2. Go with the guardian's blessing!"
+  speaker "Hau"
+  say "I'll go on ahead to Route 2! See you there, {player}!"
+  hide hau
+  setflag FLAG_ALOLA_HIDE_HAU_IKI
+  setflag FLAG_ALOLA_FESTIVAL_DONE
+  setvar VAR_ALOLA_STORY 9
+  objective alolaVerdant
+  endscene
+  end
+
+
+# Back up from Route 3 with Ilima's crystal: Hala's grand trial on the stage, the Melemele stamp, the Fightinium Z,
+# and Tauros registered in the Ride Pager (plan 23 · Z5, second part; Overworld/RidePager.cs)
+script GrandTrial
+  scene "Hala's grand trial"
+  face player up
+  speaker "Hala"
+  say "Ho ho! Ilima's crystal, and the look of a Trainer who has walked every road of Melemele. Then the time has come."
+  say "I am Hala, kahuna of this island. As kahuna, I will face you with everything I have. Show me the strength you have found!"
+  battle hala as "alola_hala_1"
+  speaker "Hala"
+  say "Ha! Splendid, splendid! The guardian chose well."
+  givebadge Melemele
+  text "{player}'s Trainer card received Melemele's stamp!"
+  give "Fightinium Z"
+  say "And take this, too. With it, the Tauros of the island will come when you call."
+  setflag FLAG_ALOLA_RIDE_TAUROS
+  text "{player} registered Tauros in the Ride Pager! Tauros can charge through cracked rocks."
+  give "TM54"
+  say "Kukui is waiting at Hau'oli's marina with his boat. Akala Island is next, and its kahuna will not go easy on you!"
+  setflag FLAG_ALOLA_KUKUI_MARINA
+  setvar VAR_ALOLA_STORY 13
+  objective alolaSail
+  endscene
   end

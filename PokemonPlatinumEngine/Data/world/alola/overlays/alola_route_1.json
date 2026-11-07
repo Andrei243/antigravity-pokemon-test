@@ -36,6 +36,7 @@
   },
   "signs": {
     "RouteSign": "Route 1\nNorth: Iki Town\nSouth: Hau'oli Outskirts",
-    "OutskirtsSign": "Hau'oli Outskirts\nEast: Hau'oli City\nWest: Pokémon Research Lab"
+    "OutskirtsSign": "Hau'oli Outskirts\nEast: Hau'oli City\nWest: Pokémon Research Lab",
+    "ShoreSign": "Ten Carat Hill\nWest along the shore. Mind the rocks!"
   }
 }

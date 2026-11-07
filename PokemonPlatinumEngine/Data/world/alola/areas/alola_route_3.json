@@ -1,0 +1,47 @@
+{
+  "key": "alola_route_3",
+  "index": 5,
+  "name": "Route 3",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_3",
+  "nightMusic": "ROUTE_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 300, "z": 64, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_KAIMANA" },
+    { "id": "lass", "looks": "lass", "movement": "look_north", "x": 310, "z": 74, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_PUA" },
+    { "id": "ace_trainer", "looks": "ace_trainer_m", "movement": "look_south", "x": 345, "z": 64, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_MAKOA" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 362, "z": 66, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_KEOLA" },
+    { "id": "hau", "looks": "hau", "movement": "look_east", "x": 340, "z": 69, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 290, "z": 56, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_3_SHARP_BEAK", "item": "Sharp Beak", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 360, "z": 58, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_3_SUPER_POTION", "item": "Super Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 299, "z": 73, "type": 0, "script": "RouteSign" },
+    { "x": 366, "z": 67, "type": 0, "script": "MeadowSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Spearow", "level": 9 },
+    { "species": "Spearow", "level": 10 },
+    { "species": "Spearow", "level": 11 },
+    { "species": "Spearow", "level": 12 },
+    { "species": "Mankey", "level": 9 },
+    { "species": "Mankey", "level": 10 },
+    { "species": "Cutiefly", "level": 9 },
+    { "species": "Cutiefly", "level": 10 },
+    { "species": "Yungoos", "level": 10 },
+    { "species": "Yungoos", "level": 11 },
+    { "species": "Delibird", "level": 10 },
+    { "species": "Rufflet", "level": 11 }
+  ],
+  "landRate": 20
+}

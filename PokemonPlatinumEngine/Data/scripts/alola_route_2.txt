@@ -1,0 +1,38 @@
+# Route 2, Melemele Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The rest of Melemele"): no script of the original is read.
+# VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: ilima before Verdant Cavern's mouth until his trial begins (hidden by FLAG_ALOLA_VERDANT_TRIAL, which he
+# sets as he goes in), hau by the Pokémon Center from the festival (FLAG_ALOLA_FESTIVAL_DONE) until the trial is passed
+# (FLAG_ALOLA_HAU_ROUTE_2_DONE).
+
+
+# Captain Ilima at the cavern's mouth: the trial begins once the kahuna has blessed the challenge
+script Ilima
+  if var VAR_ALOLA_STORY >= 9 goto Begin
+  speaker "Ilima"
+  say "This is Verdant Cavern, the site of my trial. But a trial-goer needs the kahuna's blessing first: the festival in Iki Town!"
+  end
+label Begin
+  scene "Ilima's trial begins"
+  speaker "Ilima"
+  say "Welcome, {player}! This is Verdant Cavern, and my trial begins here."
+  say "Pokémon have made dens in the cavern's walls. Look in all three and deal with whoever comes out. Then, at the very top, the totem Pokémon awaits."
+  say "No running from the totem, mind! I'll go in ahead and watch over you."
+  setflag FLAG_ALOLA_VERDANT_TRIAL
+  hide self
+  endscene
+  end
+
+
+# Hau by the Pokémon Center: a gift for the trial, once
+script Hau
+  speaker "Hau"
+  if flag FLAG_ALOLA_HAU_REVIVES goto Talk
+  say "Hey, {player}! You're doing Ilima's trial? Take these, then. My grandpa says you can never have too many."
+  give "Revive" 3
+  setflag FLAG_ALOLA_HAU_REVIVES
+  end
+label Talk
+  say "I'm gonna get a malasada and then I'll do the trial too. Probably. After a nap."
+  end

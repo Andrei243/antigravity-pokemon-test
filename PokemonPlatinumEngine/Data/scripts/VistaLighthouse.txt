@@ -63,6 +63,45 @@ label Leaves
   end
 
 
+# Our own (plan 14 · B2; docs/mechanics/rulings.md, "Sky battles"): a sky trainer on the gallery once the Hall of Fame
+# is entered, who fights one Sky Battle a day, X and Y's battle in the air, where only Pokémon that fly or float take
+# part. She asks the team before she offers, since the game turns away a team with no flier.
+script SkyBattle
+  face self player
+  speaker self
+  if flag FLAG_DAILY_VISTA_LIGHTHOUSE_SKY_BATTLE goto Tomorrow
+  if flag FLAG_VISTA_LIGHTHOUSE_SKY_BATTLE_EXPLAINED goto Offer
+  say "Up here the wind comes straight off the sea. It's the closest thing in Sinnoh to the open sky."
+  say "Where I come from we battle in the air: a Sky Battle. Only Pokémon that fly or float can take part."
+  say "And no move that needs the ground. No Earthquake, no Dig, nothing that slams a foe down onto anything."
+  setflag FLAG_VISTA_LIGHTHOUSE_SKY_BATTLE_EXPLAINED
+label Offer
+  team fliers
+  if var RESULT == 0 goto Grounded
+  ask "My team has rested and the wind is right. Will you take to the sky with me?"
+  if no goto Refused
+  say "Then up we go! Keep your eyes on the horizon!"
+  setflag FLAG_DAILY_VISTA_LIGHTHOUSE_SKY_BATTLE
+  battle self as "sky_trainer_aster" canlose
+  speaker self
+  if lost goto Lost
+  say "What a flight! You and your Pokémon read the wind as if you'd been born to it."
+  say "One Sky Battle a day is all my team can manage. Come and fly with me again tomorrow."
+  end
+label Lost
+  say "The sky is a hard place to learn in. Watch how the wind carries them, and try again tomorrow."
+  end
+label Grounded
+  say "None of your Pokémon can fly or float, I'm afraid. Bring one that can, and we'll take to the sky."
+  end
+label Refused
+  say "Not today? The wind will still be here. So will I."
+  end
+label Tomorrow
+  say "My team is resting their wings. One Sky Battle a day! Come back tomorrow."
+  end
+
+
 # VistaLighthouse_Binoculars
 script Binoculars
   speaker none

@@ -1,11 +1,11 @@
 {
   "map": [
     "                ",
-    "                ",
-    "       ..       ",
-    "       ..       ",
-    "       ..       ",
-    "       ..T      ",
+    "        .....   ",
+    "       ......   ",
+    "       ....     ",
+    "       ....     ",
+    "      ...TTT    ",
     "                ",
     "                ",
     "                ",
@@ -19,9 +19,70 @@
   ],
   "areas": [
     {
+      "key": "akala_route_4",
+      "name": "Route 4",
+      "cells": "",
+      "morning": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ],
+      "day": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ],
+      "night": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ]
+    },
+    {
+      "key": "akala_route_5",
+      "name": "Route 5",
+      "cells": "",
+      "morning": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "day": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "night": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ]
+    },
+    {
       "key": "alola_route_1",
       "name": "Route 1",
-      "cells": "7,4 8,4 7,5 8,5",
+      "cells": "7,4 6,5 7,5 8,5",
       "morning": [
         "Pikipek",
         "Yungoos",
@@ -45,9 +106,105 @@
       ]
     },
     {
+      "key": "alola_route_2",
+      "name": "Route 2",
+      "cells": "8,3 9,3 10,3 8,4 9,4 10,4",
+      "morning": [
+        "Yungoos",
+        "Spearow",
+        "Abra",
+        "Drowzee",
+        "Smeargle",
+        "Growlithe",
+        "Cutiefly"
+      ],
+      "day": [
+        "Yungoos",
+        "Spearow",
+        "Abra",
+        "Drowzee",
+        "Smeargle",
+        "Growlithe",
+        "Cutiefly"
+      ],
+      "night": [
+        "Yungoos",
+        "Spearow",
+        "Abra",
+        "Drowzee",
+        "Smeargle",
+        "Growlithe",
+        "Cutiefly"
+      ]
+    },
+    {
+      "key": "alola_route_3",
+      "name": "Route 3",
+      "cells": "8,1 9,1 10,1 11,1 8,2 9,2 10,2 11,2",
+      "morning": [
+        "Spearow",
+        "Mankey",
+        "Cutiefly",
+        "Yungoos",
+        "Delibird",
+        "Rufflet"
+      ],
+      "day": [
+        "Spearow",
+        "Mankey",
+        "Cutiefly",
+        "Yungoos",
+        "Delibird",
+        "Rufflet"
+      ],
+      "night": [
+        "Spearow",
+        "Mankey",
+        "Cutiefly",
+        "Yungoos",
+        "Delibird",
+        "Rufflet"
+      ]
+    },
+    {
+      "key": "brooklet_hill",
+      "name": "Brooklet Hill",
+      "cells": "",
+      "morning": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "day": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "night": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "surf": [
+        "Wishiwashi",
+        "Psyduck",
+        "Poliwag",
+        "Surskit"
+      ]
+    },
+    {
       "key": "mahalo_trail",
       "name": "Mahalo Trail",
-      "cells": "7,2 8,2",
+      "cells": "7,2",
       "morning": [
         "Pikipek",
         "Yungoos",
@@ -65,6 +222,101 @@
         "Yungoos",
         "Caterpie",
         "Ledyba"
+      ]
+    },
+    {
+      "key": "melemele_meadow",
+      "name": "Melemele Meadow",
+      "cells": "12,1 12,2",
+      "morning": [
+        "Cutiefly",
+        "Cottonee",
+        "Petilil",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "day": [
+        "Cutiefly",
+        "Cottonee",
+        "Petilil",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "night": [
+        "Cutiefly",
+        "Cottonee",
+        "Petilil",
+        "Caterpie",
+        "Butterfree"
+      ]
+    },
+    {
+      "key": "paniola_ranch",
+      "name": "Paniola Ranch",
+      "cells": "",
+      "morning": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
+      ],
+      "day": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
+      ],
+      "night": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
+      ]
+    },
+    {
+      "key": "ten_carat_hill",
+      "name": "Ten Carat Hill",
+      "cells": "6,5",
+      "morning": [
+        "Zubat",
+        "Roggenrola",
+        "Carbink",
+        "Machop",
+        "Rockruff",
+        "Spinda"
+      ],
+      "day": [
+        "Zubat",
+        "Roggenrola",
+        "Carbink",
+        "Machop",
+        "Rockruff",
+        "Spinda"
+      ],
+      "night": [
+        "Zubat",
+        "Roggenrola",
+        "Carbink",
+        "Machop",
+        "Rockruff",
+        "Spinda"
+      ]
+    },
+    {
+      "key": "verdant_cavern",
+      "name": "Verdant Cavern",
+      "cells": "10,3",
+      "morning": [
+        "Zubat",
+        "Noibat"
+      ],
+      "day": [
+        "Zubat",
+        "Noibat"
+      ],
+      "night": [
+        "Zubat",
+        "Noibat"
       ]
     }
   ]

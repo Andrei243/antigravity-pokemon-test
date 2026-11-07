@@ -1,0 +1,56 @@
+{
+  // Paniola Ranch, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. Two fenced paddocks of Tauros,
+  // Miltank and Mudbray either side of the road north, wild grass where Mudbray and Lillipup run, and the Pokémon
+  // nursery (a later session's door) in the south-east. Captain Mallow meets the player on the road in and registers
+  // Stoutland in the Ride Pager (paniola_ranch.txt); she is shown from Hau's battle in Paniola until then
+  "area": "paniola_ranch",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "locked": [ 0 ],
+  "triggers": [
+    { "script": "Mallow", "x": 148, "z": 202, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 15 }
+  ],
+  "people": {
+    "mallow": { "name": "Mallow", "npcType": "mallow", "script": "MallowTalk", "still": true, "hiddenBy": "FLAG_ALOLA_RIDE_STOUTLAND", "shownBy": "FLAG_ALOLA_HAU_PANIOLA_DONE" },
+    "tauros": { "name": "Tauros", "script": "Tauros", "still": true },
+    "tauros_2": { "name": "Tauros", "script": "Tauros", "still": true },
+    "miltank": { "name": "Miltank", "script": "Miltank", "still": true },
+    "mudbray": { "name": "Mudbray", "script": "Mudbray", "still": true },
+    "rancher": {
+      "name": "Koa",
+      "npcType": "rancher",
+      "trainer": {
+        "dialogueBefore": "Rancher Koa: You're on my ranch, partner. That means you battle my Bovarch!",
+        "dialogueAfter": "Rancher Koa: Well, I'll be. My Bovarch is sulking now."
+      }
+    },
+    "breeder": {
+      "name": "Makani",
+      "npcType": "pokemon_breeder_m",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Makani: My Mudsdale eats a mountain of hay a day. All that strength has to go somewhere!",
+        "dialogueAfter": "Pokémon Breeder Makani: More hay. We need more hay."
+      }
+    },
+    "lady": {
+      "name": "Hoku",
+      "npcType": "Lady",
+      "trainer": {
+        "dialogueBefore": "Lady Hoku: I came to see the Miltank, and found a challenger. How delightful.",
+        "dialogueAfter": "Lady Hoku: How very delightful, still."
+      }
+    },
+    "gentleman": {
+      "name": "Kawika",
+      "npcType": "gentleman",
+      "trainer": {
+        "dialogueBefore": "Gentleman Kawika: A fine day for a ride, and a finer one for a battle!",
+        "dialogueAfter": "Gentleman Kawika: A fine day for losing, too, it turns out."
+      }
+    }
+  },
+  "signs": {
+    "RanchSign": "Paniola Ranch\nNorth: Route 5\nSouth: Paniola Town"
+  }
+}

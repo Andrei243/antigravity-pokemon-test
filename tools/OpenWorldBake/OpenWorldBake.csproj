@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool (plan 32 · OW0, the prototype gate): a first cut of the open world's baker. It describes the
+       land as a height field with carves, meshes it by surface nets into chunks at three levels of detail, rounds
+       every vertex to the millimetre, and draws a vertical section and a plan of what it baked. Beside it, the
+       prototype's own rules, GPU-free: a capsule walked at 120 ticks a second against the baked triangles, an orbit
+       camera's spring arm and a first navigation over the walkable triangles. Nothing of it is in the game: the
+       harness's `openproto` mode and the test project are what use it. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- For PixelCanvas and raylib's image writer (the section and the plan); nothing of the engine's game -->
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Battle.Sim.Link;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Online;
@@ -9,7 +11,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>The rows of the Global Link counter's menu.</summary>
-public enum GlobalLinkRow { MakeCode, EnterCode, Leave }
+public enum GlobalLinkRow { MakeCode, EnterCode, BattleCode, Leave }
 
 /// <summary>
 /// The Global Link counter (plan 07 · O5 and O7, the game's half; style guide, "Menu screens", "The Global Link
@@ -43,6 +45,13 @@ public class GlobalLinkScreen
 
     /// <summary>The player's Pokémon that may be offered (the team, then the boxes), as the room last read them.</summary>
     public IReadOnlyList<Pokemon> Offerable { get; private set; } = Array.Empty<Pokemon>();
+
+    /// <summary>The battles fought with the friend of the battle room, once the last one is counted (plan 07 · O6).</summary>
+    public LinkTally? Record { get; set; }
+
+    /// <summary>The team a battle room is shown, brought as it stands (plan 07 · O6).</summary>
+    public IReadOnlyList<Pokemon> Team { get; private set; } = Array.Empty<Pokemon>();
+    private Func<IReadOnlyList<Pokemon>>? team;
     public int Cursor { get; private set; }
     public int First { get; private set; }
 
@@ -63,9 +72,11 @@ public class GlobalLinkScreen
     /// <param name="session">The visit, connecting already (or failed already, with no server set).</param>
     /// <param name="offerables">The player's Pokémon that may be offered, each with its id; read again whenever the room is entered or a trade is made.</param>
     /// <param name="serverShown">The server's host as the counter shows it.</param>
-    public void Open(GlobalLinkSession session, Func<IReadOnlyList<Pokemon>> offerables, string? serverShown)
+    public void Open(GlobalLinkSession session, Func<IReadOnlyList<Pokemon>> offerables, string? serverShown, Func<IReadOnlyList<Pokemon>>? team = null)
     {
         Session = session;
+        this.team = team;
+        Team = Array.Empty<Pokemon>();
         this.offerables = offerables;
         ServerShown = serverShown;
         MenuRow = GlobalLinkRow.MakeCode;
@@ -86,6 +97,8 @@ public class GlobalLinkScreen
         openAge += dt;
         var before = Session.Phase;
         Session.Update(dt);
+        // The team a battle room is shown, read as the room is joined (plan 07 · O6)
+        if (Session.Phase == LinkPhase.BattleRoom && before != LinkPhase.BattleRoom) Team = team?.Invoke() ?? Array.Empty<Pokemon>();
         if (Session.Phase == LinkPhase.Room && (before != LinkPhase.Room || Offerable.Count == 0)) Refresh();
         if (!ReferenceEquals(theirsSeen, Session.TheirOffer))
         {
@@ -115,7 +128,7 @@ public class GlobalLinkScreen
         switch (Phase)
         {
             case LinkPhase.Menu:
-                MenuRow = (GlobalLinkRow)UiNav.Wrap((int)MenuRow, delta, 3);
+                MenuRow = (GlobalLinkRow)UiNav.Wrap((int)MenuRow, delta, 4);
                 break;
             case LinkPhase.EnterCode:
                 Key = UiNav.Wrap(Key, delta * KeypadColumns, KeypadKeys);
@@ -154,6 +167,7 @@ public class GlobalLinkScreen
                 {
                     GlobalLinkRow.MakeCode => Session.MakeCode(),
                     GlobalLinkRow.EnterCode => Session.EnterCode(),
+                    GlobalLinkRow.BattleCode => Session.MakeBattleCode(),
                     _ => Close()
                 };
                 if (MenuRow == GlobalLinkRow.EnterCode) Key = 0;
@@ -176,6 +190,14 @@ public class GlobalLinkScreen
             case LinkPhase.Traded:
                 Session.Dismiss();
                 Refresh();
+                done = true;
+                break;
+            case LinkPhase.BattleRoom:
+                // The team as it stands is brought, in its order (plan 07 · O6)
+                done = Team.Count > 0 && Session.BringTeam(new LinkPlayer(PlayerIdentity.Name, Team.Select(RecordedPokemon.Of).ToList()));
+                break;
+            case LinkPhase.Battled:
+                Session.DismissBattle();
                 done = true;
                 break;
             case LinkPhase.Failed:
@@ -208,7 +230,11 @@ public class GlobalLinkScreen
             case LinkPhase.MakingCode:
             case LinkPhase.WaitingForOther:
             case LinkPhase.Joining:
+            case LinkPhase.BattleRoom:
                 Session.Leave();
+                break;
+            case LinkPhase.Battled:
+                Session.DismissBattle();
                 break;
             default:
                 return;

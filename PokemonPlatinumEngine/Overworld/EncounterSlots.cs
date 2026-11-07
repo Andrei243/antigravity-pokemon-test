@@ -82,6 +82,9 @@ public sealed record EncounterMoment
     /// </summary>
     public bool OursOpen { get; init; }
 
+    /// <summary>Whether the region's alphas are met (plan 10 · F10, <see cref="Alphas.Open"/>): its Hall of Fame is entered.</summary>
+    public bool AlphasOpen { get; init; }
+
     /// <summary>
     /// Which of a place's grass tables is met where it has several (plan 21 · H12, part k; <see cref="MapArea.LandSets"/>):
     /// Emerald's <c>VAR_ALTERING_CAVE_WILD_SET</c>, nought the area's own table. Null where the game doesn't say.

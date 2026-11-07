@@ -1,0 +1,14 @@
+# Heahea City, Akala Island (plan 23 · Z5, second part). The lines are our own. VAR_ALOLA_STORY is alola_route_1.txt's
+# count.
+
+
+# The ferry back to Melemele
+script Ferry
+  speaker "Sailor"
+  ask "This ferry sails for Hau'oli City on Melemele Island. All aboard?"
+  if no end
+  fade out
+  text "The ferry pulled away from Heahea's pier..."
+  warp "Melemele" 357 177 down
+  fade in
+  end

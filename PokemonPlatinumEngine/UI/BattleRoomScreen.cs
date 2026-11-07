@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum RoomPage { Menu, PickTeam, Puzzles, Between, RunOver, PuzzleOver }
 
 /// <summary>The battle room's menu, in its order.</summary>
-public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends, Daily }
+public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends, Daily, Versus }
 
 /// <summary>What the battle room asks the engine for, handed over once (<see cref="BattleRoomScreen.TakeRequest"/>).</summary>
 public abstract record RoomRequest;
@@ -26,6 +26,8 @@ public sealed record PlayPuzzle(string Id) : RoomRequest;
 public sealed record BeginDaily : RoomRequest;
 /// <summary>A trade offered after a win of the daily run.</summary>
 public sealed record TradeDaily : RoomRequest;
+/// <summary>Two people at one machine (plan 13 · V12): the first player's team and the second's, battling at level 50.</summary>
+public sealed record BeginVersus(int First, int Second) : RoomRequest;
 
 /// <summary>
 /// The battle room (plan 13 · V13, V26; style guide, "Opening and title screen" and "Menu screens", "The battle room"): the
@@ -72,6 +74,9 @@ public sealed class BattleRoomScreen
     /// <summary>The puzzle just played and whether it was solved.</summary>
     public PuzzleFile? LastPuzzle { get; private set; }
     public bool PuzzleSolved { get; private set; }
+
+    /// <summary>VERSUS's first player's team, once picked (plan 13 · V12); −1 while it is the first player's pick.</summary>
+    public int VersusFirst { get; private set; } = -1;
 
     /// <summary>Which challenge a team is being picked for.</summary>
     public RoomChallenge Picking => picking;
@@ -190,6 +195,10 @@ public sealed class BattleRoomScreen
                     case RoomEntry.Gauntlet: PickFor(RoomChallenge.Gauntlet); break;
                     case RoomEntry.Streak: PickFor(RoomChallenge.Streak); break;
                     case RoomEntry.Daily: Ask(new BeginDaily()); break;
+                    case RoomEntry.Versus:
+                        VersusFirst = -1;
+                        PickFor(RoomChallenge.Versus);
+                        break;
                     case RoomEntry.Puzzles:
                         AudioManager.PlaySound("select");
                         Show(RoomPage.Puzzles, 0);
@@ -198,6 +207,19 @@ public sealed class BattleRoomScreen
                 break;
             case RoomPage.PickTeam:
                 if (!CanTake(Cursor)) { AudioManager.PlaySound("error"); return; }
+                // VERSUS picks twice: the first player's team, then the second's (plan 13 · V12)
+                if (picking == RoomChallenge.Versus)
+                {
+                    if (VersusFirst < 0)
+                    {
+                        VersusFirst = Cursor;
+                        AudioManager.PlaySound("select");
+                        Show(RoomPage.PickTeam, Cursor);
+                        break;
+                    }
+                    Ask(new BeginVersus(VersusFirst, Cursor));
+                    break;
+                }
                 Ask(new BeginRun(picking, Cursor));
                 break;
             case RoomPage.Puzzles:
@@ -242,6 +264,16 @@ public sealed class BattleRoomScreen
                 IsActive = false;
                 Left = true;
                 break;
+            case RoomPage.PickTeam when picking == RoomChallenge.Versus && VersusFirst >= 0:
+                // Back to the first player's pick
+                AudioManager.PlaySound("cancel");
+                Show(RoomPage.PickTeam, VersusFirst);
+                VersusFirst = -1;
+                break;
+            case RoomPage.PickTeam when picking == RoomChallenge.Versus:
+                AudioManager.PlaySound("cancel");
+                Show(RoomPage.Menu, (int)RoomEntry.Versus);
+                break;
             case RoomPage.PickTeam or RoomPage.Puzzles:
                 AudioManager.PlaySound("cancel");
                 Show(RoomPage.Menu, Page == RoomPage.Puzzles ? (int)RoomEntry.Puzzles : picking == RoomChallenge.Friend ? (int)RoomEntry.Friends : picking == RoomChallenge.Gauntlet ? (int)RoomEntry.Gauntlet : (int)RoomEntry.Streak);
@@ -270,6 +302,16 @@ public sealed class BattleRoomScreen
         IsActive = true;
         age = AppearTime;
         Show(RoomPage.Menu, (int)RoomEntry.Friends);
+    }
+
+    /// <summary>A VERSUS battle is over (plan 13 · V12): the room's menu again, on its row.</summary>
+    public void AfterVersus(IReadOnlyList<BuiltTeam> teams)
+    {
+        Teams = teams;
+        VersusFirst = -1;
+        IsActive = true;
+        age = AppearTime;
+        Show(RoomPage.Menu, (int)RoomEntry.Versus);
     }
 
     private void PickFor(RoomChallenge kind)

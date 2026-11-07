@@ -50,6 +50,16 @@ internal static partial class ModernUi
                 GlobalLinkOffers(detail, screen);
                 if (screen.Phase == LinkPhase.Traded && screen.Received is { } received) GlobalLinkTraded(sw, sh, session, received);
                 break;
+            case LinkPhase.BattleRoom:
+                // The battle room (plan 07 · O6): the team to bring beside the room's rules and who it is with
+                Panel(list, 34);
+                Panel(detail, 34);
+                GlobalLinkTeam(list, screen);
+                GlobalLinkBattleCard(detail, screen);
+                break;
+            case LinkPhase.Battled:
+                GlobalLinkBattled(sw, screen);
+                break;
             default:
                 GlobalLinkWaiting(sw, session);
                 break;
@@ -78,7 +88,12 @@ internal static partial class ModernUi
                 break;
             case LinkPhase.Traded:
             case LinkPhase.Failed:
+            case LinkPhase.Battled:
                 keys.Add(Hint("shared.keys.z", "shared.hints.choose"));
+                break;
+            case LinkPhase.BattleRoom:
+                keys.Add(Hint("shared.keys.z", "globalLink.hint.bring"));
+                keys.Add(Hint("shared.keys.esc", "globalLink.hint.leave"));
                 break;
             default:
                 keys.Add(Hint("shared.keys.esc", "shared.hints.back"));
@@ -89,7 +104,7 @@ internal static partial class ModernUi
 
     private static void GlobalLinkMenu(Rectangle list, GlobalLinkScreen screen)
     {
-        var rows = new[] { "globalLink.menu.makeCode", "globalLink.menu.enterCode", "globalLink.menu.leave" };
+        var rows = new[] { "globalLink.menu.makeCode", "globalLink.menu.enterCode", "globalLink.menu.battleCode", "globalLink.menu.leave" };
         for (int row = 0; row < rows.Length; row++)
         {
             var r = RowRect(list, row);
@@ -225,6 +240,48 @@ internal static partial class ModernUi
         BallDisc(disc, 130);
         PixelArt(PixelArtGenerator.SpriteOf(received), disc, 2);
         DrawWrapped(session.LineText, disc.X + 170, r.Y + 90, r.Width - 380, 34, Ink, 48, UiWeight.Black);
+    }
+
+    /// <summary>The battle room's team (plan 07 · O6): each Pokémon as it stands, brought in this order.</summary>
+    private static void GlobalLinkTeam(Rectangle list, GlobalLinkScreen screen)
+    {
+        Label(Text.Of("globalLink.team"), list.X + 44, list.Y + 30);
+        var under = new Rectangle(list.X, list.Y + 50, list.Width, list.Height - 50);
+        for (int row = 0; row < screen.Team.Count && row < GlobalLinkScreen.VisibleRows; row++)
+        {
+            var pokemon = screen.Team[row];
+            var r = RowRect(under, row);
+            var ink = ListRow(r, false, pokemon.DisplayName);
+            RowIcon(r, PixelArtGenerator.IconOf(pokemon), 1f, false, hop: 0f);
+            RowValue(r, Text.Of("jobs.level", ("level", pokemon.Level)), ink, 28);
+        }
+    }
+
+    /// <summary>The battle room's card: who it is with, the room's rules, the line, and the record with them.</summary>
+    private static void GlobalLinkBattleCard(Rectangle detail, GlobalLinkScreen screen)
+    {
+        var session = screen.Session;
+        float x = detail.X + 44, y = detail.Y + 60, room = detail.Width - 88;
+        Field(Text.Of("globalLink.battleWith"), session.OtherName ?? "", x, y, 52, 64);
+        if (session.OtherFriendCode is { } code) UiFonts.Draw(Text.Of("globalLink.otherCode", ("code", code)), x, y + 104, 24, Muted, UiWeight.Black);
+        y += 170;
+        DrawWrapped(Text.Of("globalLink.battleRules"), x, y, room, 24, Muted, 34, UiWeight.Black);
+        y += 110;
+        DrawWrapped(session.LineText, x, y, room, 30, Ink, 42, UiWeight.ExtraBold);
+        if (session.Details is { Length: > 0 } details) DrawWrapped(details, x, y + 150, room, 22, Muted, 30, UiWeight.ExtraBold);
+    }
+
+    /// <summary>How the battle went, and the record with the other player (plan 07 · O6).</summary>
+    private static void GlobalLinkBattled(int sw, GlobalLinkScreen screen)
+    {
+        var session = screen.Session;
+        var r = new Rectangle(sw / 2f - 640, ContentTop + 120, 1280, 560);
+        Panel(r, 36);
+        float x = r.X + 64, y = r.Y + 64, room = r.Width - 128;
+        DrawWrapped(session.LineText, x, y, room, 34, Ink, 48, UiWeight.Black);
+        if (screen.Record is { } record)
+            UiFonts.Draw(Text.Of("globalLink.record", ("name", session.OtherName ?? ""), ("wins", record.Wins), ("losses", record.Losses), ("draws", record.Draws)),
+                x, y + 240, 30, Muted, UiWeight.Black);
     }
 
     private static void GlobalLinkWaiting(int sw, GlobalLinkSession session)

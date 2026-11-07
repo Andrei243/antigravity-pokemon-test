@@ -14,6 +14,8 @@
     <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
     <!-- The online server, started in-process on localhost by the `globallink` mode alone (plan 07 · O5), as the tests start it -->
     <ProjectReference Include="../../server/PokemonPlatinum.Server/PokemonPlatinum.Server.csproj" />
+    <!-- The open world's baker and the prototype's rules, which the `openproto` mode and `profile`'s open_prototype bake and draw (plan 32 · OW0) -->
+    <ProjectReference Include="../OpenWorldBake/OpenWorldBake.csproj" />
   </ItemGroup>
 
   <!-- The kept scenarios (plan 16 · T17), which the `scenarios` mode plays -->

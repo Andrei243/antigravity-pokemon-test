@@ -347,7 +347,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>A party member's name as the side's lines say it.</summary>
-    private static string NameOf(Battler side, Pokemon member) => side.IsPlayerSide ? member.DisplayName : Text.Of("battle.foe", ("pokemon", member.DisplayName));
+    private static string NameOf(Battler side, Pokemon member) => Narration.Sided(side.Side, member.DisplayName, Text.Of("battle.foe", ("pokemon", member.DisplayName)));
 
     // ---------------------------------------------------------------- a one-hit knockout
 

@@ -16,7 +16,10 @@
   ],
   "triggers": [
     { "script": "KahunaAway", "x": 248, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 2 },
-    { "script": "KahunaHome", "x": 248, "z": 113, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 4 }
+    { "script": "KahunaHome", "x": 248, "z": 113, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 4 },
+    // Plan 23 · Z5, second part: the festival, and the grand trial, each as the player comes up from Route 1
+    { "script": "Festival", "x": 248, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 8 },
+    { "script": "GrandTrial", "x": 248, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 12 }
   ],
   "people": {
     "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_IKI" },

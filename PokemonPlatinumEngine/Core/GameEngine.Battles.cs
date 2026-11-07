@@ -49,6 +49,8 @@ public partial class GameEngine
         OursGrowth.GrowWild(wild);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
+        // An alpha of the post-game zone: larger, three perfect IVs and a move ahead of its level (plan 10 · F10)
+        if (entry.Alpha) Alphas.Apply(wild, rng);
         return wild;
     }
 
@@ -630,6 +632,7 @@ public partial class GameEngine
             flow.BattleTrainers.Clear();
             flow.BattleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) flow.BattleTrainers.Add(secondNpc);
+            if (royal && thirdNpc != null) flow.BattleTrainers.Add(thirdNpc);
         }, SceneTransition.ForBattle(meeting));
         // A Gym Leader, one of the Elite Four and the Champion are met on a band with their portrait (plan 09 · L15):
         // of the look the battle itself will draw them in, and beside the player's own in the League's. The rigs

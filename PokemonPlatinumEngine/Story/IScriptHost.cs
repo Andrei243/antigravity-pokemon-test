@@ -294,6 +294,13 @@ public interface IScriptHost
     /// </summary>
     void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null);
 
+    /// <summary>
+    /// A Battle Royal against three trainers of the map, each for themselves (plan 14 · B13). <see cref="Outcome"/> is
+    /// <see cref="BattleOutcome.Won"/> for first place and <see cref="BattleOutcome.None"/> for any other: a Royal is
+    /// fought for its placing and gives nothing. A host that can't fight one fights the first two as a double.
+    /// </summary>
+    void Royal(NPC first, NPC second, NPC third, bool mayLose) => Battle(first, second, null, mayLose, false);
+
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
     /// <remarks>A lesson someone else shows names them and their Pokémon (<paramref name="catcher"/>; plan 21 · H2, Wally with his father's Zigzagoon).</remarks>
     void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null);

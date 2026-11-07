@@ -290,7 +290,7 @@ public partial class GameEngine
     /// </summary>
     internal void UseFieldMoveFromMenu(FieldMove move, int index)
     {
-        var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move); // index -1: a wild helper (plan 12 · Q18)
+        var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move, flow.Story, Here.Id); // index -1: a wild helper (plan 12 · Q18), or a ride (plan 23 · Z5)
         var walker = new Walker(flow.Player.Mode, flow.Player.HeightOn(flow.Map), Moves: flow.Player.Moves);
         var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, flow.Story);
@@ -1184,6 +1184,13 @@ public partial class GameEngine
             game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
+        public void Royal(NPC first, NPC second, NPC third, bool mayLose)
+        {
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = mayLose;
+            game.StartTrainerBattle(first, second, thirdNpc: third);
+        }
+
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
         {
             game.flow.ScriptOutcome = BattleOutcome.None;
@@ -1688,6 +1695,8 @@ public partial class GameEngine
             // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and the National
             // Pokédex's get a hundred (plan 03 · D13)
             game.flow.Boxes.Grow();
+            // The DexNav comes with it (plan 10 · F11; decision 6)
+            game.GiveTheDexNav();
         }
 
         public int LeagueVictories => game.flow.HallOfFame.Total;

@@ -1205,6 +1205,17 @@
     "alolaKahuna": "Întoarce-te în Iki Town. Kahuna s-a întors acasă.",
     "alolaLab": "Treci pe la laboratorul profesorului Kukui de pe plajă, la sud de casa ta.",
     "alolaHauoli": "Urmează țărmul spre est, până în Hau'oli City.",
+    "alolaMarina": "Mergi spre est prin Hau'oli City, până pe debarcaderul portului.",
+    "alolaFestival": "Întoarce-te în Iki Town pentru festival.",
+    "alolaVerdant": "Ia-o pe Drumul 2 spre nord din Hau'oli City, la încercarea căpitanului Ilima din Verdant Cavern.",
+    "alolaMeadow": "Urmează Drumul 2 spre nord pe Drumul 3 și caut-o pe Lillie în Melemele Meadow.",
+    "alolaHau3": "Întoarce-te pe Drumul 3. Hau te așteaptă acolo.",
+    "alolaGrandTrial": "Întoarce-te în Iki Town pentru marea încercare a lui Hala.",
+    "alolaSail": "Întâlnește-l pe profesorul Kukui în portul din Hau'oli City și pleacă spre Akala.",
+    "alolaPaniola": "Ia-o pe Drumul 4 spre nord din Heahea City, până în Paniola Town.",
+    "alolaRanch": "Mergi spre nord prin ferma Paniola.",
+    "alolaRoute5": "Urmează Drumul 5 spre nord, spre Brooklet Hill.",
+    "alolaBrooklet": "Caut-o pe căpitana Lana la Brooklet Hill, la vest de Drumul 5.",
     "alolaFree": "Până aici merge drumul deocamdată. Melemele îți stă deschisă."
   },
 
@@ -2827,6 +2838,7 @@
   },
   "fieldMoves": {
     "helped": "Un {name} sălbatic a dat o mână de ajutor. A folosit {move}!",
+    "ride": "{name} a venit la chemarea Ride Pager-ului. A folosit {move}!",
     "why": {
       "badge": "E nevoie de o Insignă nouă ca să poată fi folosită în afara luptei.",
       "partner": "Nu cât timp cineva călătorește cu tine.",
@@ -4102,6 +4114,9 @@
     "Pokemaniac": "Pasionat Pokémon",
     "PokemonBreeder": "Crescător Pokémon",
     "PokemonRanger": "Ranger Pokémon",
+    "TeamSkullGrunt": "Bătăuș Team Skull",
+    "TrialCaptain": "Căpitan de încercare",
+    "IslandKahuna": "Kahuna insulei",
     "PokemonProfessor": "Profesor Pokémon",
     "PokemonTrainer": "Antrenor Pokémon",
     "Policeman": "Polițist",
@@ -4222,6 +4237,7 @@
     "Nurse": "Asistentă",
     "NurseryAide": "Educatoare",
     "Pilot": "Pilot",
+    "SkyTrainer": "Antrenor de Văzduh",
     "PokemonTrainerAlder": "Antrenor Pokémon",
     "PokemonTrainerBianca": "Antrenor Pokémon",
     "PokemonTrainerCheren": "Antrenor Pokémon",

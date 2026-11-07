@@ -1,0 +1,52 @@
+{
+  // Route 3 (plan 23 · Z5, second part): drawn by hand, our words. Up from Route 2 to a road along the island's northern
+  // cliffs, over a gorge by a wooden bridge and above Kala'e Bay to Melemele Meadow in the north-east. Hau waits on the
+  // road east of the bridge once the girl's little Pokémon is found in the meadow, and battles on the way back
+  // (alola_route_3.txt)
+  "area": "alola_route_3",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "triggers": [
+    { "script": "HauOnRoute3", "x": 336, "z": 68, "width": 1, "depth": 4, "variable": "VAR_ALOLA_STORY", "value": 11 }
+  ],
+  "people": {
+    "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_ROUTE_3_DONE", "shownBy": "FLAG_ALOLA_NEBBY_FOUND" },
+    "youngster": {
+      "name": "Kaimana",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Kaimana: The view from up here is the best on the island. The battles are pretty good too!",
+        "dialogueAfter": "Youngster Kaimana: I got distracted by the view. That's my excuse."
+      }
+    },
+    "lass": {
+      "name": "Pua",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Pua: My Ballerilly and I practise our battles up here where nobody can see us lose!",
+        "dialogueAfter": "Lass Pua: Oh no, somebody saw."
+      }
+    },
+    "ace_trainer": {
+      "name": "Makoa",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Makoa: A trial-goer, are you? Then a battle with me is good practice for what comes next.",
+        "dialogueAfter": "Ace Trainer Makoa: Good. The kahuna will be glad to see you."
+      }
+    },
+    "hiker": {
+      "name": "Keola",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Keola: The cliffs are steep, but my Kirinine and I are steeper! Wait, that doesn't make sense...",
+        "dialogueAfter": "Hiker Keola: I'll sit down and think about what I meant."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 3\nEast: Melemele Meadow\nSouth: Route 2",
+    "MeadowSign": "Melemele Meadow\nA field of yellow flowers."
+  }
+}

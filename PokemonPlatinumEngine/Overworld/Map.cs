@@ -152,6 +152,9 @@ public sealed class MapArea
     public List<OursSlot> OursSurf { get; } = new();
     public List<OursSlot> OursSuperRod { get; } = new();
 
+    /// <summary>The alphas the area's overlay lists (plan 10 · F10, <see cref="Alphas"/>): met in its tall grass once the region's Hall of Fame is entered; empty for every area of Platinum's own.</summary>
+    public List<OursSlot> AlphaLand { get; } = new();
+
     /// <summary>
     /// What each game in the console's second slot puts in the grass's slots 8 and 9 (plan 08 · P23, the original's
     /// <c>ruby</c>, <c>sapphire</c>, <c>emerald</c>, <c>firered</c> and <c>leafgreen</c>, <c>WildEncounters_ReplaceDualSlotEncounters</c>);
@@ -1739,7 +1742,7 @@ public class Map
         // Where the tall grass holds hordes, Sweet Scent always draws one out, as in X and Y (plan 14 · B4)
         if (HordeHere(x, y, water, AreaAt(x, y), moment) is { } hordes)
             return WildEncounterRules.Meet(hordes, false, lead, rng, keptAway: false);
-        return WildEncounterRules.Meet(table, water, lead, rng, keptAway: false);
+        return AlphaOr(WildEncounterRules.Meet(table, water, lead, rng, keptAway: false), x, y, water, moment);
     }
 
     /// <summary>
@@ -1782,10 +1785,20 @@ public class Map
         var met = HordeHere(x, y, water, area, moment) is { } hordes && Hordes.Comes(rng)
             ? WildEncounterRules.Meet(hordes, false, lead, rng)
             : WildEncounterRules.Meet(table, water, lead, rng);
+        met = AlphaOr(met, x, y, water, moment);
         // Any other Pokémon of the grass ends the Poké Radar's chain
         if (met != null && !water) moment?.Radar?.Clear();
         return met;
     }
+
+    /// <summary>
+    /// A meeting in the tall grass of an area that lists alphas may be an alpha instead (plan 10 · F10): one time in a hundred,
+    /// once the region's Hall of Fame is entered, never beside a partner. Nothing is drawn anywhere else.
+    /// </summary>
+    private WildEncounterEntry? AlphaOr(WildEncounterEntry? met, int x, int y, bool water, EncounterMoment? moment) =>
+        met != null && !water && moment is { Partner: false, AlphasOpen: true } && AreaAt(x, y) is { AlphaLand.Count: > 0 } area && IsTallGrass(x, y)
+            ? Overworld.Alphas.Roll(area.AlphaLand, rng) ?? met
+            : met;
 
     private static WildEncounterEntry RoamerMet(Models.SpecialEncounters state, int slot)
     {

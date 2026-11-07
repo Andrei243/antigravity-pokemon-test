@@ -29,7 +29,7 @@ public partial class GameEngine
         // A run that has ended is never written again (plan 13 · V4), so it can't take a trade's receipt
         string? refused = flow.RunState.Ended ? "globalLink.error.runEnded" : null;
         var session = new GlobalLinkSession(make, new SaveKeeper(this), refused);
-        flow.GlobalLinkScreen.Open(session, OfferableNow, server == null ? null : OnlineIdentity.Shown(server));
+        flow.GlobalLinkScreen.Open(session, OfferableNow, server == null ? null : OnlineIdentity.Shown(server), () => flow.Party.Members.ToList());
         flow.State = GameState.GlobalLink;
         if (server != null) Log.Info($"The Global Link counter connects to {OnlineIdentity.Shown(server)}.");
     }
@@ -44,6 +44,8 @@ public partial class GameEngine
     private void UpdateGlobalLink(float dt)
     {
         flow.GlobalLinkScreen.Update(dt);
+        // A battle room's battle is shown once the room greets the player, and its record kept (plan 07 · O6)
+        KeepTheCountersBattle();
         if (flow.State != GameState.GlobalLink) return;
         if (!flow.GlobalLinkScreen.IsActive) flow.State = GameState.Overworld;
     }

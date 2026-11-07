@@ -116,7 +116,11 @@ public static class Drawing
         for (int i = 0; i < layout.Maps.Count; i++)
         {
             var m = layout.Maps[i];
-            var (mx, mc) = BuildMatrix(m.Matrix, m.Width, m.Height, mapDrawings![i], new List<string> { m.Area }, (x, z) => m.Area, m.Fill, chunks.Count);
+            // A map of several areas (plan 23 · Z5: an island of Alola beside Melemele) names them by rectangles as the
+            // overworld does; a cave is one area, its own
+            var mapKeys = m.Areas.Count > 0 ? m.Areas.Select(a => a.Key).ToList() : new List<string> { m.Area };
+            Func<int, int, string?> areaOf = m.Areas.Count > 0 ? (x, z) => m.Areas.FirstOrDefault(a => a.Holds(x, z))?.Key : (x, z) => m.Area;
+            var (mx, mc) = BuildMatrix(m.Matrix, m.Width, m.Height, mapDrawings![i], mapKeys, areaOf, m.Fill, chunks.Count);
             chunks.AddRange(mc);
             extra.Add(mx);
         }
@@ -266,4 +270,10 @@ public sealed class MapDrawing
     public string Cell { get; set; } = "";
 
     public List<Piece> Pieces { get; set; } = new();
+
+    /// <summary>
+    /// The map's areas by rectangles of its own tiles, the first holding a tile winning (plan 23 · Z5: an island of
+    /// several places); none for a map that is all one area, <see cref="Area"/>.
+    /// </summary>
+    public List<AreaRect> Areas { get; set; } = new();
 }

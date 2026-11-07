@@ -12,7 +12,8 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>Where the Pokédex's cursor is: its list, the entry beside it, the search panel or a diploma.</summary>
 /// <summary>Where the cursor is: the list, an entry's pages, the search panel, a diploma, or the cry page's rows (plan 08 · P18).</summary>
-public enum PokedexFocus { List, Entry, Search, Diploma, Cry, Forms }
+/// <summary>Where the Pokédex's cursor is. <see cref="Here"/> (plan 10 · F11) is the DexNav's list of what lives where the player stands, opened over the list.</summary>
+public enum PokedexFocus { List, Entry, Search, Diploma, Cry, Forms, Here }
 
 /// <summary>The pages of an entry.</summary>
 public enum PokedexPage { Info, Area, Cry, Size, Forms, Tasks }
@@ -352,6 +353,13 @@ public class PokedexScreen
                 }
                 break;
             }
+            case PokedexFocus.Here:
+                if (HereEntries is { Count: > 1 } here)
+                {
+                    HereIndex = UiNav.Wrap(HereIndex, Math.Sign(step), here.Count);
+                    AudioManager.PlaySound("cursor");
+                }
+                break;
             case PokedexFocus.Search:
                 SearchIndex = UiNav.Wrap(SearchIndex, Math.Sign(step), SearchRows.Count);
                 ButtonIndex = Math.Min(ButtonIndex, Buttons.Count - 1);
@@ -506,12 +514,79 @@ public class PokedexScreen
             case PokedexFocus.Diploma:
                 CloseDiploma();
                 break;
+            case PokedexFocus.Here:
+                ChooseHere();
+                break;
             case PokedexFocus.Entry when Selected is { } shown:
                 // A on the INFO, AREA or SIZE page opens the gallery on the species (plan 12 · Q30)
                 galleryRequested = shown.Species.Name;
                 AudioManager.PlaySound("select");
                 break;
         }
+    }
+
+    // ------------------------------------------------------------------ what lives here (plan 10 · F11)
+
+    /// <summary>
+    /// The HERE list the DexNav gives (<see cref="Overworld.DexNavRules.Here"/>), told by the engine as the Pokédex opens:
+    /// null without the DexNav (the list's Item button then does nothing), empty where nothing is known to live.
+    /// </summary>
+    public IReadOnlyList<Overworld.DexNavEntry>? HereEntries { get; private set; }
+
+    /// <summary>How many species the HERE panel shows at once.</summary>
+    public const int HereVisibleRows = 6;
+
+    /// <summary>The place the list is of, by its shown name.</summary>
+    public string HerePlace { get; private set; } = "";
+
+    /// <summary>The entry the cursor is on.</summary>
+    public int HereIndex { get; private set; }
+
+    /// <summary>The engine tells the screen what lives where the player stands (null without the DexNav).</summary>
+    public void SetHere(IReadOnlyList<Overworld.DexNavEntry>? entries, string place = "")
+    {
+        HereEntries = entries;
+        HerePlace = place;
+        HereIndex = 0;
+    }
+
+    /// <summary>The Item button: the HERE list opens over the list or an entry, and shuts again. Nothing happens without the DexNav.</summary>
+    public void ToggleHere()
+    {
+        if (Focus == PokedexFocus.Here) { CloseHere(); return; }
+        if (HereEntries == null || Focus is not (PokedexFocus.List or PokedexFocus.Entry)) return;
+        StopCry();
+        hereFrom = Focus;
+        Focus = PokedexFocus.Here;
+        HereIndex = 0;
+        AudioManager.PlaySound("select");
+    }
+
+    private PokedexFocus hereFrom = PokedexFocus.List;
+
+    private void CloseHere()
+    {
+        Focus = hereFrom;
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>A on a species of the list: its entry opens, if the Pokédex has seen it (an unseen one only buzzes).</summary>
+    private void ChooseHere()
+    {
+        if (HereEntries is not { Count: > 0 } here) return;
+        var chosen = here[Math.Clamp(HereIndex, 0, here.Count - 1)];
+        if (!chosen.Seen || PokemonDatabase.Get(chosen.Species) is not { } species) { AudioManager.PlaySound("error"); return; }
+        // Back to the whole Pokédex that has the species (this region's, else the National one), on the species
+        Results = null;
+        var dex = pokedex.Dexes.FirstOrDefault(d => Pokedex.Entries(d).Any(e => e.Species == species));
+        if (dex != null) Mode = dex;
+        Rebuild();
+        SelectedIndex = Math.Max(0, rows.FindIndex(r => r.Species == species));
+        Follow();
+        Focus = PokedexFocus.Entry;
+        Opened();
+        AudioManager.PlaySound("select");
+        AudioManager.PlayCry(species, null, CryMode.Pokedex);
     }
 
     private string? galleryRequested;
@@ -528,6 +603,9 @@ public class PokedexScreen
     {
         switch (Focus)
         {
+            case PokedexFocus.Here:
+                CloseHere();
+                return;
             case PokedexFocus.Forms:
                 Focus = PokedexFocus.Entry;
                 break;
@@ -727,13 +805,15 @@ public class PokedexScreen
         int pages = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
         if (pages != 0 && dx == 0 && dy == 0) Sideways(pages);
 
+        // The Item button opens what lives here, with the DexNav (plan 10 · F11)
+        if (InputManager.IsActionPressed(GameAction.Item)) ToggleHere();
         // A button pressed while the list runs on still counts: it acts on the species the cursor has come to
-        if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         else if (InputManager.IsActionPressed(GameAction.Menu))
         {
             if (Focus == PokedexFocus.Search) Search();
             else if (Focus == PokedexFocus.Diploma) Confirm();
-            else if (Focus is not (PokedexFocus.Cry or PokedexFocus.Forms)) OpenSearch();
+            else if (Focus is not (PokedexFocus.Cry or PokedexFocus.Forms or PokedexFocus.Here)) OpenSearch();
         }
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
     }

@@ -277,7 +277,7 @@ public sealed partial class BattleCore
         if (!CanSendIn(place, partyIndex)) return;
         var outgoing = place.Pokemon!;
         var incoming = place.Roster!.Members[partyIndex];
-        var back = Say(place.Trainer == null ? Text.Of("battle.comeBack", ("pokemon", outgoing.DisplayName)) : Text.Of("battle.withdrew", ("trainer", place.Trainer.FullTitle), ("pokemon", outgoing.DisplayName)));
+        var back = Say(Link ? SidedRecall(place, outgoing) : place.Trainer == null ? Text.Of("battle.comeBack", ("pokemon", outgoing.DisplayName)) : Text.Of("battle.withdrew", ("trainer", place.Trainer.FullTitle), ("pokemon", outgoing.DisplayName)));
 
         // A foe that chose Pursuit catches it on its way out
         if (!Pursue(place)) back.With(new Recalled(place.Place));
@@ -420,7 +420,7 @@ public sealed partial class BattleCore
         Withdraw(target);
         Emit(new Recalled(target.Place));
         Emit(new Left(target.Place));
-        Arrive(target, dragged, Text.Of("battle.wasDraggedOut", ("pokemon", target.IsPlayerSide ? dragged.DisplayName : Text.Of("battle.foe", ("pokemon", dragged.DisplayName)))));
+        Arrive(target, dragged, Text.Of("battle.wasDraggedOut", ("pokemon", Narration.Sided(target.Side, dragged.DisplayName, Text.Of("battle.foe", ("pokemon", dragged.DisplayName))))));
     }
 
     /// <summary>The party member that takes a place, asked of whoever chooses for its side; null when nobody can.</summary>
@@ -445,8 +445,16 @@ public sealed partial class BattleCore
         else picked = NextFromRoster(place, SlotsOf(place.Side).Select(b => b.Pokemon).Concat(OnTheWheel(place.Side)));
     }
 
+    /// <summary>A link battle's recall (plan 28 · I3): "Come back!" to the one recalling, "X withdrew" to the other player.</summary>
+    private string SidedRecall(Battler place, Pokemon outgoing) => Narration.Sided(place.Side, Text.Of("battle.comeBack", ("pokemon", outgoing.DisplayName)),
+        Text.Of("battle.withdrew", ("trainer", place.Trainer?.FullTitle ?? PlayerTitle), ("pokemon", outgoing.DisplayName)));
+
+    /// <summary>A link battle's send-out (plan 28 · I3): "Go!" to the one sending, "X sent out" to the other player.</summary>
+    private string SidedSendOut(Battler place, Pokemon incoming) => Narration.Sided(place.Side, Text.Of("battle.go", ("pokemon", ShownAs(place, incoming))),
+        Text.Of("battle.sentOut", ("trainer", place.Trainer?.FullTitle ?? PlayerTitle), ("pokemon", ShownAs(place, incoming))));
+
     private string SentOutLine(Battler place, Pokemon incoming) =>
-        place.Trainer == null ? Text.Of("battle.go", ("pokemon", GoesOutAs(place, incoming))) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", ShownAs(place, incoming)));
+        Link ? SidedSendOut(place, incoming) : place.Trainer == null ? Text.Of("battle.go", ("pokemon", GoesOutAs(place, incoming))) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", ShownAs(place, incoming)));
 
     /// <summary>
     /// A Pokémon leaves by its own move once the move is done: U-turn brings it back (Pursuit can catch it), Baton
