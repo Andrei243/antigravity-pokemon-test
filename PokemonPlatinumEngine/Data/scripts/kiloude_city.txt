@@ -55,7 +55,7 @@ label Fought
   speaker "{rival}"
   if lost goto RivalWon
   say "Still the Champion. All right. I'll keep training up here, where the wind off the sea is strong."
-  say "Take this. I found it on the beach, of all places. It's a Mega Stone, for an Absol. Mine never took to it."
+  say "Take this. I found it on the beach, of all places. It's a Mega Stone, for an Absol. It'll do more good with you."
   give "Absolite"
   say "Oh, and the professor rang. He wants to meet you by the sundial in Anistar City. Something about your Key Stone."
   setflag FLAG_KALOS_RIVAL_KILOUDE_BEATEN

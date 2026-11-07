@@ -4,7 +4,7 @@
 # FLAG_KALOS_MEGA_RING_UPGRADED), takes the player on as a partner and gives them his cases one by one.
 #
 # VAR_KALOS_LOOKER, his episode's count: 0 not yet met; 1 the first case, three tickets hidden in the city (the station's,
-# the museum's and the hotel's Ticket); 2 the second, the back alley's children and Emma's lost Espurr (lumiose_city.txt);
+# the museum's and the hotel's Ticket, each with a flag of its own, counted by VAR_KALOS_LOOKER_TICKETS); 2 the second, the back alley's children and Emma's lost Espurr (lumiose_city.txt);
 # 3 the third, the gang at Lumiose Station (LumioseCity_Station.txt); 4 the fourth, the museum's thief and the sting in
 # the alleys (LumioseCity_Museum.txt, lumiose_city.txt), with the butler come to the bureau; 5 the fifth, Malva at the
 # Hotel Richissime (LumioseCity_HotelRichissime.txt) and Xerosic under Lysandre's old café (LumioseCity_LysandreLabs.txt);
@@ -20,9 +20,7 @@ script OnEnter
   if var VAR_KALOS_LOOKER == 0 goto FirstVisit
   if var VAR_KALOS_LOOKER != 4 end
   if flag FLAG_KALOS_LOOKER_BUTLER end
-  if not flag FLAG_KALOS_STING_WOMAN end
-  if not flag FLAG_KALOS_STING_CHILD end
-  if not flag FLAG_KALOS_STING_LADY end
+  if var VAR_KALOS_STING < 3 end
   scene "A visitor at the bureau"
   face looker player
   speaker "Looker"
@@ -65,9 +63,7 @@ script Looker
   say "Every case closed. The city sleeps better tonight, {player}."
   end
 label Tickets
-  if not flag FLAG_KALOS_LOOKER_TICKET_STATION goto StillLooking
-  if not flag FLAG_KALOS_LOOKER_TICKET_MUSEUM goto StillLooking
-  if not flag FLAG_KALOS_LOOKER_TICKET_HOTEL goto StillLooking
+  if var VAR_KALOS_LOOKER_TICKETS < 3 goto StillLooking
   scene "The second case"
   say "All three! The station, the museum and the hotel. You see what other people walk past. Good."
   say "Then here is a real case. Children have been playing at battles in the little park south of this bureau."

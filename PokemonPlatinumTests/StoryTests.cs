@@ -832,6 +832,9 @@ public class StoryTests
         foreach (var (map, ball) in ItemBalls().Where(b => b.Ball.Script == null).ToList())
         {
             var host = new HeadlessScriptHost { Map = map };
+            // A ball the story lays down later is there once its flag is (Kalos's Mega Stones, once the Mega Ring has
+            // been upgraded at Anistar's sundial: plan 23 · Z4b)
+            if (ball.ShownBy != null) host.Story.Set(ball.ShownBy);
             map.ApplyPresence(host.Story.Has);
             Assert.Contains(ball, map.NPCs);
             Assert.False(map.IsWalkable(ball.GridX, ball.GridY));

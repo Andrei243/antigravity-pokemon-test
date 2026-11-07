@@ -72,7 +72,7 @@ label Champion
   if var PLAYER_Y != 722 end
   scene "A bird over Vaniville"
   letterbox on 0.4
-  effect shadow 246 718 2 right
+  effect shadow 242 724 2 right
   wait 0.8
   emote player exclaim
   speaker none

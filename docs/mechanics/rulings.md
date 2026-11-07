@@ -9557,6 +9557,78 @@ What Z4 left, closed in our own words on X and Y's beats as they are publicly de
 - **Left.** The Gyms' puzzle pieces (Clemont's quiz, Valerie's, Olympia's and Wulfric's floors) are still plain halls;
   the Mamoswine ride, the Poké Ball Factory, the Battle Château, Parfum Palace's inside, Lumiose's east and south-east
   gates, hordes and sky trainers and every new place's own song are not built.
+
+## Kalos after its Hall of Fame (2026-11-07, plan 23 · Z4b)
+
+X and Y's post-game in our own words on its publicly described beats (the order of events, the places and the levels),
+drawn with `tools/MapDraw`. Its count is `VAR_KALOS_POSTGAME` (0 the Hall of Fame entered, 1 the TMV pass, 2 the
+neighbour beaten in Kiloude, 3 the Mega Ring upgraded); Looker's episode has its own, `VAR_KALOS_LOOKER` (0 to 7).
+
+- **Lumiose's last two gates** open with the Hall of Fame (`VAR_KALOS_LUMIOSE_ROADS` 3; Lumiose's arrival gives it to a
+  save already past it), so no road out of the city turns the player back any more. X and Y's Lumiose Station stands on
+  the north boulevard; ours stands on a square of its own outside the **east gate** (a piece drawn into Lumiose's own
+  area), which gives that gate somewhere to lead. The **south-east gate** leads down a shore road to **Azure Bay**, which
+  X and Y put off Route 12 near Coumarine and reach by Surf: nobody surfs in Kalos yet, so ours lies south-east of
+  Lumiose with a sandbar out to the island, its grass Kalos-Coastal's shore species at 58 to 61, and two trainers.
+- **The station.** The first time a Champion of Kalos comes in, Sina, Dexio and the professor wait there; the professor
+  gives the **TMV pass**, a flag (`FLAG_KALOS_TMV_PASS`), since the data has no item of that name. X and Y's assistants
+  upgrade the Pokédex to the National one there; ours have nothing to upgrade, since Kalos's National Pokédex comes with
+  its Hall of Fame. The TMV's attendant rides the player to Kiloude City's street, and Kiloude's attendant back: the train
+  is a fade and a warp, and Kiloude has no station building of its own.
+- **Kiloude's neighbour.** X and Y have the rival wait on the northern hill once a battle of the Battle Maison has been
+  had; the Maison isn't built, so ours waits once the pass is had. The first win gives the **Absolite** and the
+  professor's message; after that the neighbour battles once a day (`FLAG_DAILY_KALOS_RIVAL_KILOUDE`), the team never
+  growing, as X and Y's.
+- **The Mega Ring and the stones.** The professor waits by Anistar's sundial once the neighbour is beaten and has the
+  player hold their Key Stone (our Kalos's Mega Ring) up to it (`FLAG_KALOS_MEGA_RING_UPGRADED`). X and Y's fourteen
+  post-game stones then lie where X and Y hide them: the Heracronite and Pinsirite in Santalune Forest, the Houndoominite
+  and Manectite on Route 16, the Gyaradosite in Couriway Town, the Medichamite in Laverre City, the Alakazite in Reflection
+  Cave, the Kangaskhanite in Glittering Cave, the Garchompite in Victory Road, the Scizorite in Frost Cavern, the
+  Aggronite and Tyranitarite in Cyllage's Gym and the Mawilite in Camphrier's castle. **Both versions' stones lie at the
+  same place** (the game has no versions), **at any hour** (X and Y's stones glint only between eight and nine in the
+  evening: a shown ball is clearer than an hour nobody is told of), as item balls shown by the flag. The **Banettite**
+  lies in the Lost Hotel, since X and Y's Chamber of Emptiness isn't drawn. The Kanto starter's stone, which X and Y give
+  in Lumiose before the League, is not given yet.
+- **The bird by the starter.** As the player first steps out of the house after the Hall of Fame, the bird of their
+  first Pokémon's choice crosses Vaniville's sky and is loose in Kalos: Articuno for Chespin, Zapdos for Fennekin,
+  Moltres for Froakie, at level 70. It has three roaming slots of Kalos's own (`roamer start … kalos`,
+  `VAR_ROAMING_KALOS_<SPECIES>_STATE`), so Sinnoh's three birds keep theirs, and roams Platinum's way over Kalos's twenty
+  routes with grass and Azure Bay's shore (X and Y's roams the grass and the water; there is no water to roam). **Having
+  fled a dozen times** (any battle with it that it ends still roaming: twelve, X and Y's "over a dozen"), it settles in
+  **Sea Spirit's Den** on the bay's island (its variable 4, `Roamers.Resting`), where it waits and is battled once.
+- **A roamer's level is the region's met level.** A script's `roamer start` hands the slot's level through the host's
+  `LevelHere`, as a script's `wildbattle` and `givepokemon` always did (plan 18 · W4): a roamer set loose in a region the
+  game crossed into is met at that region's levels. This holds for every region's roamers, Hoenn's eon Pokémon, Johto's
+  beasts and Kanto's among them, which a Champion crossing from Sinnoh had met at their own games' levels.
+- **Terminus Cave's depths and Zygarde.** X and Y's Terminus Cave lies off Route 18 and goes deeper after the Elite Four;
+  ours lies off Route 13 (Z4's loose ends) and its narrow way north out of the great hall leads to the depths, a cave of
+  its own, three chambers down to the last basement, where **Zygarde** sleeps at 70. A League worker stands in the narrow
+  way until the Hall of Fame. Three trainers of ours and the mountains' strongest ground and rock Pokémon, 60 to 63.
+- **The Unknown Dungeon and Mewtwo.** Its mouth is at the head of the Pokémon Village, where X and Y reach it by Surf:
+  ours is walked to, with a Zoroark of the village standing in the mouth until the Hall of Fame. Three chambers of the
+  region's strongest wild Pokémon (64 to 66), and **Mewtwo** at the far end at 70; beaten or caught it leaves **both
+  Mewtwonites**.
+- **Looker's episode** (once the Mega Ring is upgraded, whose scene tells of a note left for the player: X and Y's
+  anonymous message). Looker's Bureau is a room behind a door south of Rouge Plaza; the museum on the north boulevard and
+  the Hotel Richissime by the plaza open with the Hall of Fame. The cases, on X and Y's: **three** tickets hidden in the
+  station, the museum and the hotel (X and Y have five); the children of the little park south of the bureau and Emma,
+  whose Espurr has hidden (X and Y find it by dancing; ours by keeping still, after a question of where); the gang that
+  holds Lumiose Station, talked round by Emma; the museum's break-in, three suspects in the alleys and a butler at the
+  bureau; Malva in the hotel's lobby (X and Y's suite), who tells that Essentia is Emma in a suit Xerosic controls;
+  Xerosic in Lysandre's old laboratory under the café, two scientists, and **Essentia three times, the team healed
+  between** (ours), until her Espurr's cry reaches her; and Looker's farewell at the museum (X and Y's goes on to the
+  café), which names Emma the bureau's head and gives the player his name. Afterwards Essentia battles at the bureau on
+  Tuesdays, Thursdays and Saturdays, once a day. The episode gives nothing but its battles' prize money, as X and Y's.
+- **Objectives** 531 to 534 (the station, Kiloude, the sundial, Looker's Bureau) before `kalosFree`; the stones, the
+  bird and the two legendaries ask nothing of the story.
+- **Every species of Kalos** (`KalosSpeciesTests`, plan 40 · GE1's shape): of the three Pokédexes' 457 species, what
+  nothing in Kalos gives is listed with who owes it. Most of it is X and Y's wild Pokémon that the drawn tables (twelve
+  species to a place, no water) have no room for yet; the rest is evolution stones and items, a Linking Cord, three
+  places of evolution, Ambrette's fossil laboratory, Yveltal and the three mythicals.
+- **Left.** The Battle Maison, the Friend Safari, Kalos's water (surfing and the rods), the Kanto starter's stone, the
+  Chamber of Emptiness, the Poké Ball Factory, the Battle Château, Lumiose's other shut doors, the TMV's Kiloude station,
+  the stones' evening hour, and every new place's own song (plan 31).
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).

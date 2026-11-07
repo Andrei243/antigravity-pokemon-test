@@ -73,7 +73,8 @@
     { "x": 309, "z": 364, "type": 0, "script": "VertSign" },
     { "x": 401, "z": 364, "type": 0, "script": "RougeSign" },
     { "x": 388, "z": 331, "type": 0, "script": "MagentaSign" },
-    { "x": 388, "z": 397, "type": 0, "script": "BleuSign" }
+    { "x": 388, "z": 397, "type": 0, "script": "BleuSign" },
+    { "x": 430, "z": 353, "type": 0, "script": "StationSign" }
   ],
   "triggers": []
 }

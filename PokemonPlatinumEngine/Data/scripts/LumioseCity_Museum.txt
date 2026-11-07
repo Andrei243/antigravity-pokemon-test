@@ -33,6 +33,7 @@ script Ticket
   if var VAR_KALOS_LOOKER != 1 goto Statue
   if flag FLAG_KALOS_LOOKER_TICKET_MUSEUM goto Statue
   setflag FLAG_KALOS_LOOKER_TICKET_MUSEUM
+  addvar VAR_KALOS_LOOKER_TICKETS 1
   fanfare item
   text "A card is propped against the statue's foot, with an eye drawn on it in ink." "{player} found one of Looker's tickets!"
   end

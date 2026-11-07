@@ -21,7 +21,7 @@
   },
   "npcs": [
     { "id": "rival_kiloude", "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "x": 565, "y": 336, "facing": "Down", "script": "RivalKiloude", "shownBy": "FLAG_KALOS_TMV_PASS" },
-    { "id": "tmv_kiloude", "name": "TMV Attendant", "npcType": "receptionist", "x": 538, "y": 354, "facing": "Down", "script": "TmvBack", "shownBy": "FLAG_KALOS_TMV_PASS" }
+    { "id": "tmv_kiloude", "name": "TMV Attendant", "npcType": "receptionist", "x": 537, "y": 355, "facing": "Right", "script": "TmvBack", "shownBy": "FLAG_KALOS_TMV_PASS" }
   ],
   "signs": {
     "TownSign": "Kiloude City\nThe sea begins at the end of the street."

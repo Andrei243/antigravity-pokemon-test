@@ -80,6 +80,7 @@ script Ticket
   if var VAR_KALOS_LOOKER != 1 goto Plant
   if flag FLAG_KALOS_LOOKER_TICKET_STATION goto Plant
   setflag FLAG_KALOS_LOOKER_TICKET_STATION
+  addvar VAR_KALOS_LOOKER_TICKETS 1
   fanfare item
   text "A card is tucked into the pot, with an eye drawn on it in ink." "{player} found one of Looker's tickets!"
   end

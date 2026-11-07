@@ -42,6 +42,10 @@
       "note": "first spoken at nimbasa_city_gym.txt(74)",
       "provisional": true
     },
+    "anatole": {
+      "note": "first spoken at LumioseCity_LookerBureau.txt(36)",
+      "provisional": true
+    },
     "antique_dealer": {
       "note": "first spoken at join_avenue.txt(258)",
       "provisional": true
@@ -134,6 +138,10 @@
       "note": "first spoken at fuchsia_gym.txt(104)",
       "provisional": true
     },
+    "bastien": {
+      "note": "first spoken at lumiose_city.txt(142)",
+      "provisional": true
+    },
     "beauty": {
       "note": "first spoken at route_120.txt(75)",
       "provisional": true
@@ -203,6 +211,10 @@
       "note": "first spoken at pokemon_league_bruno_room.txt(9)",
       "provisional": true
     },
+    "brutus": {
+      "note": "first spoken at LumioseCity_Station.txt(107)",
+      "provisional": true
+    },
     "buck": {},
     "buena": {
       "note": "first spoken at goldenrod_radio_tower_2f.txt(57)",
@@ -262,6 +274,10 @@
       "note": "first spoken at one_island_pokemon_center_1f.txt(35)",
       "provisional": true
     },
+    "cerise": {
+      "note": "first spoken at lumiose_city.txt(129)",
+      "provisional": true
+    },
     "chairman": {
       "note": "first spoken at HearthomeFanClub.txt(11)",
       "provisional": true
@@ -310,6 +326,10 @@
     },
     "clemont": {
       "note": "first spoken at LumioseCity_PrismTowerGym.txt(10)",
+      "provisional": true
+    },
+    "clothilde": {
+      "note": "first spoken at LumioseCity_LysandreLabs.txt(42)",
       "provisional": true
     },
     "clyde": {
@@ -471,6 +491,10 @@
       "note": "first spoken at nimbasa_city_gym.txt(97)",
       "provisional": true
     },
+    "emma": {
+      "note": "first spoken at LumioseCity_LookerBureau.txt(125)",
+      "provisional": true
+    },
     "emmet": {
       "note": "first spoken at nimbasa_city.txt(55)",
       "provisional": true
@@ -495,6 +519,10 @@
       "note": "first spoken at phone.txt(370)",
       "provisional": true
     },
+    "essentia": {
+      "note": "first spoken at LumioseCity_LysandreLabs.txt(68)",
+      "provisional": true
+    },
     "eusine": {
       "note": "first spoken at burned_tower_1f.txt(14)",
       "provisional": true
@@ -514,6 +542,10 @@
     },
     "farmers_wife": {
       "note": "first spoken at route_39_moomoo_farm_house.txt(44)",
+      "provisional": true
+    },
+    "fauve": {
+      "note": "first spoken at LumioseCity_Station.txt(120)",
       "provisional": true
     },
     "fishing_guru": {
@@ -879,6 +911,10 @@
       "note": "first spoken at JubilifeTV1F.txt(12)",
       "provisional": true
     },
+    "lou": {
+      "note": "first spoken at lumiose_city.txt(116)",
+      "provisional": true
+    },
     "lt_surge": {
       "note": "first spoken at vermilion_city_gym.txt(244)",
       "provisional": true
@@ -1088,6 +1124,10 @@
       "note": "first spoken at chargestone_cave_2.txt(40)",
       "provisional": true
     },
+    "nanette": {
+      "note": "first spoken at lumiose_city.txt(103)",
+      "provisional": true
+    },
     "nanu": {
       "note": "first spoken at ShadyHouse.txt(9)",
       "provisional": true
@@ -1115,6 +1155,10 @@
     },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
+      "provisional": true
+    },
+    "odile": {
+      "note": "first spoken at lumiose_city.txt(214)",
       "provisional": true
     },
     "officer": {
@@ -1183,6 +1227,10 @@
     },
     "pilot": {
       "note": "first spoken at nature_preserve.txt(11)",
+      "provisional": true
+    },
+    "pip": {
+      "note": "first spoken at lumiose_city.txt(204)",
       "provisional": true
     },
     "plumeria": {
@@ -1352,6 +1400,10 @@
     },
     "roughneck": {
       "note": "first spoken at virbank_complex.txt(12)",
+      "provisional": true
+    },
+    "rouille": {
+      "note": "first spoken at LumioseCity_Station.txt(94)",
       "provisional": true
     },
     "rowan": {
@@ -1555,6 +1607,14 @@
       "note": "first spoken at aquacorde_town.txt(39)",
       "provisional": true
     },
+    "tmv_attendant": {
+      "note": "first spoken at LumioseCity_Station.txt(63)",
+      "provisional": true
+    },
+    "tourist": {
+      "note": "first spoken at LumioseCity_Station.txt(139)",
+      "provisional": true
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
@@ -1601,6 +1661,10 @@
     },
     "vance": {
       "note": "first spoken at phone.txt(199)",
+      "provisional": true
+    },
+    "vesper": {
+      "note": "first spoken at lumiose_city.txt(194)",
       "provisional": true
     },
     "veteran": {
@@ -1721,6 +1785,10 @@
       "note": "first spoken at SnowbelleCity_Gym.txt(10)",
       "provisional": true
     },
+    "xerosic": {
+      "note": "first spoken at LumioseCity_LysandreLabs.txt(92)",
+      "provisional": true
+    },
     "young_man": {
       "note": "first spoken at rusturf_tunnel.txt(103)",
       "provisional": true
@@ -1756,6 +1824,7 @@
     "Aliana": "aliana",
     "Alice": "alice",
     "Ampère": "ampere",
+    "Anatole": "anatole",
     "Announcer": "look:announcer",
     "Antique Dealer": "antique_dealer",
     "Apprentice": "look:apprentice",
@@ -1776,6 +1845,7 @@
     "Baoba": "baoba",
     "Barber": "barber",
     "Barry": "barry",
+    "Bastien": "bastien",
     "Beauty": "beauty",
     "Ben": "ben",
     "Benga": "benga",
@@ -1796,6 +1866,7 @@
     "Breeder": "breeder",
     "Brock": "brock",
     "Bruno": "bruno",
+    "Brutus": "brutus",
     "Buck": "buck",
     "Buena": "buena",
     "Bug Catcher": "look:bug_catcher",
@@ -1815,6 +1886,7 @@
     "Catherine": "catherine",
     "Celebrity": "celebrity",
     "Celio": "celio",
+    "Cerise": "cerise",
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
@@ -1828,6 +1900,7 @@
     "Clefairy": "clefairy",
     "Clemont": "clemont",
     "Clerk": "look:clerk",
+    "Clothilde": "clothilde",
     "Clyde": "clyde",
     "Collector": "collector",
     "Colress": "colress",
@@ -1873,18 +1946,21 @@
     "Elder": "elder",
     "Elder Li": "elder_li",
     "Elesa": "elesa",
+    "Emma": "emma",
     "Emmet": "emmet",
     "Energy Guru": "energy_guru",
     "Engineer": "engineer",
     "Erika": "erika",
     "Erin": "erin",
     "Ernest": "ernest",
+    "Essentia": "essentia",
     "Eusine": "eusine",
     "Factory Staff": "factory_staff",
     "Falkner": "falkner",
     "Fantina": "fantina",
     "Farmer": "farmer",
     "Farmer's Wife": "farmers_wife",
+    "Fauve": "fauve",
     "Fisherman": "look:fisherman",
     "Fishing Guru": "fishing_guru",
     "Flannery": "flannery",
@@ -1986,6 +2062,7 @@
     "Lostelle": "lostelle",
     "Lostelle's Daddy": "lostelles_daddy",
     "Lottery Clerk": "lottery_clerk",
+    "Lou": "lou",
     "Lt. Surge": "lt_surge",
     "Lucian": "lucian",
     "Lucius": "lucius",
@@ -2037,6 +2114,7 @@
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
     "N": "n",
+    "Nanette": "nanette",
     "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
@@ -2046,6 +2124,7 @@
     "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
+    "Odile": "odile",
     "Officer": "officer",
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
@@ -2065,6 +2144,7 @@
     "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Pilot": "pilot",
+    "Pip": "pip",
     "Plumeria": "plumeria",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
@@ -2107,6 +2187,7 @@
     "Rosa": "rosa",
     "Rose": "rose",
     "Roughneck": "roughneck",
+    "Rouille": "rouille",
     "Roxanne": "roxanne",
     "Roxie": "roxie",
     "Rydel": "rydel",
@@ -2160,6 +2241,8 @@
     "Thalia": "thalia",
     "Thorton": "thorton",
     "Tierno": "tierno",
+    "TMV Attendant": "tmv_attendant",
+    "Tourist": "tourist",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
@@ -2170,6 +2253,7 @@
     "Underground Man": "underground_man",
     "Valet": "valet",
     "Vance": "vance",
+    "Vesper": "vesper",
     "Veteran": "veteran",
     "Vicky": "vicky",
     "Victor": "victor",
@@ -2204,6 +2288,7 @@
     "Worker": "look:worker",
     "Wren": "wren",
     "Wulfric": "wulfric",
+    "Xerosic": "xerosic",
     "Young Man": "young_man",
     "Youngster": "look:youngster",
     "Zac": "zac",
