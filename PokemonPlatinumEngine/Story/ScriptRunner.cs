@@ -373,6 +373,8 @@ public sealed partial class ScriptRunner
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
         Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
         Op.Tutor or Op.Amity => true,
+        // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
+        Op.Craft => i.Name == "open",
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
@@ -1445,6 +1447,10 @@ public sealed partial class ScriptRunner
             // Black City's Black Tower (plan 22 · U10, the last part)
             case Op.BlackTower:
                 BlackTowerCommand(i);
+                break;
+            // The crafting kit and its pouch (plan 39 · CR1)
+            case Op.Craft:
+                CraftCommand(i);
                 break;
             // A friend's trainer of the friends' hall (plan 13 · V23)
             case Op.Friend:
@@ -2545,6 +2551,9 @@ public sealed partial class ScriptRunner
             "apricorn" => apricornName,
             "ball" => apricornBall,
             "apricorns" => apricornCount.ToString(),
+            // The material `craft` named last, and how many (plan 39 · CR1)
+            "material" => materialId.Length > 0 ? MaterialTable.NameOf(materialId) : "",
+            "materials" => materialCount.ToString(),
             "mulch" => NameOfItem(mulchName),
             "user" => lastUser,
             "money" => host.Money.ToString(),

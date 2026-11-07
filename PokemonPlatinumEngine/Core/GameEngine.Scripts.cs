@@ -491,6 +491,12 @@ public partial class GameEngine
             OpenApricornBox(fromBag: false);
             return;
         }
+        // The crafting kit from the item button (plan 39 · CR1)
+        if (item.FieldUse == CraftingKitUse)
+        {
+            OpenCrafting(fromBag: false);
+            return;
+        }
         // The Pokéblock Case off the item button, and back to the field (plan 21 · H11)
         if (item.FieldUse == "PokeblockCase")
         {
@@ -1258,6 +1264,10 @@ public partial class GameEngine
                 case ScriptScreen.Apricorns:
                     game.OpenApricornBox(fromBag: false);
                     break;
+                // The crafting kit looked into (plan 39 · CR1)
+                case ScriptScreen.Crafting:
+                    game.OpenCrafting(fromBag: false);
+                    break;
                 // Cameron's photo album (plan 20, part q)
                 case ScriptScreen.PhotoAlbum:
                     game.OpenPhotoAlbum();
@@ -1612,6 +1622,7 @@ public partial class GameEngine
 
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
+        public CraftingState Crafting => game.flow.Crafting;
         public PhotoAlbum? Photos => game.flow.Photos;
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

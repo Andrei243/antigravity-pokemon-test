@@ -271,6 +271,7 @@ public static class Overlays
             string name = $"exits {exit.X},{exit.Z}";
             if (!Inside(exit.X, exit.Z)) Add(Kind.Way, name, "is not a tile of the area");
             Landing(content, found, file, name, exit.Map, exit.ToX, exit.ToY);
+            flags.Check(found, file, name, exit.OpenedBy, "is opened by");
         }
 
         // ---- triggers

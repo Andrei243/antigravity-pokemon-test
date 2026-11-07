@@ -66,6 +66,13 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Shots: `cr01_workshop_door_shut`, `cr02_workshop_door_open`, `cr03_workshop`, `cr04_kit_given`, `cr05_left_behind`, `cr06_pouch`.
 - **Done when** a Champion of Sinnoh is given the kit in the workshop, a Bidoof knocked out on Route 201 leaves its material in the pouch and the toast says so once the field is back, in a test and in the harness.
 
+**CR1 outcome (2026-11-07)**
+
+- **Built**: `Data/materials.json` (36 Pokémon materials, a common and a rare for each of the eighteen types, and ten of the field's, with one `drops` table of numbers), `Models/Materials.cs` (`MaterialTable`, `MaterialPouch` at 999 of a kind, `CraftingState`, `CraftingSave`), `Models/MaterialDrops.cs`, `BattleEngine.FelledFoes`, the drop and its one-line toast in `Core/GameEngine.Crafting.cs` (called from `EndBattle`, only with the kit in the bag, on `fieldRandom`), `SaveData.Crafting` (null while empty; no version raised), the kit as item 9900 of `Overrides/items.json` (`fieldUse` `CraftingKit`, opened from the bag's USE, the item button and `craft open`), `UI/CraftingScreen.cs` (MATERIALS tab, `GameState.Crafting` at the enum's end) with `ModernUi.Crafting.cs`, `Op.Craft` with `has`, `give` (`kit` or a material), `take`, `count` and `open` (`docs/scripts.md`, "The crafting kit"; `{material}` and `{materials}`), `PropType.Workbench` (`Graphics/WorkshopArt.cs`), the room `SunyshoreWorkshop` (a map file of ours, written by hand: the room editor is a window), the craftswoman's script (`Data/scripts/SunyshoreWorkshop.txt`) and the billboard's (`WorkshopSign`, `sunyshore_city.txt`), the words in `ui.json` (`crafting`, with `crafting.material` for the materials), a `materials.schema.json`, the style guide's "The kit", "What a battle left behind" and "A workbench", the rulings' "Materials, crafting and cooking", `docs/data-files.md`'s "Materials", and `MaterialsTests`.
+- **Deviation: the door.** Sunyshore City's doors 7 and 8 stand inside blocked ground that nothing can walk to (forest to the west, water to the north), so a door there can never be entered. The workshop's way is an overlay `exits` entry with a new optional field `openedBy` (`OverlayExit.OpenedBy`, `Warp.OpenedBy`), at the dead end (871, 763) east of the alley at x 869 to 870, opened by `FLAG_GAME_COMPLETED`, with a billboard on the blocked tile north of it as the sign; doors 7 and 8 stay `locked` (`NorthInteriorTests` as it was). **Plan 36's training hall can't use door 7 either**: it takes an exit of its own by the same field.
+- **Fixed on the way**: Overrides/items.json's `DexNav` lacked `"new": true`, which stopped the importer; it has it now.
+- **Shots**: the harness's `crafting` mode (`cr01` to `cr06`) is not written in this session; the room, the toast and the screen are held by the tests, and the shots are owed.
+
 ### CR2 · Gathering in the field (1 to 2 sittings)
 - Style guide first: "Props" gains the five spots, bearing and bare.
 - `NPC.GatherSpotType`, `IsGatherSpot` in `IsThing` (and `CharacterTableTests`' list of what is no person), `Graphics/GatherArt.cs`, `GameEngine.KeepGatherSpotsInView`; `OverlayGather` and the overlay's `gather` list (`WorldOverlayFile`, strict, its schema, `docs/data-files.md`, the content check: on open ground, faced from an open tile); `Models/Gathering.cs`, `common.Gather` and `craft gather`; six to ten spots in each finished region (Sinnoh, Kanto, Johto, Hoenn, Unova), each looked at with `ContentCheck --plan` before it is kept; `common.CutTree` and `common.Rock` leaving wood and stone; the cave job's materials if plan 35 · BN6 is built.
@@ -142,7 +149,7 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 
 ## Status
 
-- [ ] CR1 The workshop, the kit and what Pokémon leave behind
+- [x] CR1 The workshop, the kit and what Pokémon leave behind (2026-11-07; the outcome below)
 - [ ] CR2 Gathering in the field
 - [ ] CR3 Making things at the kit
 - [ ] CR4 The TM maker

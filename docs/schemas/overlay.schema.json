@@ -310,6 +310,12 @@
               "Left",
               "Right"
             ]
+          },
+          "openedBy": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "additionalProperties": false
@@ -1017,7 +1023,8 @@
               "Wreck",
               "ShipEngine",
               "ShipCabin",
-              "PokeblockFeeder"
+              "PokeblockFeeder",
+              "Workbench"
             ]
           },
           "x": {

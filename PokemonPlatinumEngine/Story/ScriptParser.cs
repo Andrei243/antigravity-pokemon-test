@@ -1073,6 +1073,27 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
             }
 
+            // The crafting kit and its pouch (plan 39 · CR1): `craft has`, `craft give kit`, `craft give "Soft Fluff" 3`,
+            // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name
+            case "craft":
+            {
+                string what = r.OneOf("has", "give", "take", "count", "open");
+                if (what == "give" && r.PeekWord("kit"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = "kit" };
+                }
+                if (what is "give" or "take" or "count")
+                {
+                    string material = r.Text("a material's name");
+                    if (Models.MaterialTable.ByName(material) == null) throw r.Error($"'{material}' is no material (Data/materials.json)");
+                    int many = what != "count" && r.More ? r.Int("how many") : 1;
+                    if (many < 1) throw r.Error("a material is given or taken one at a time at least");
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = Models.MaterialTable.ByName(material)!.Id, Number = many };
+                }
+                return new Instruction { Op = Op.Craft, Line = line, Name = what };
+            }
+
             // Black City's Black Tower (plan 22 · U10, the last part)
             case "blacktower":
                 return new Instruction { Op = Op.BlackTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "next", "area",

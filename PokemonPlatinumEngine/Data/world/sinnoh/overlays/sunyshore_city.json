@@ -26,6 +26,12 @@
   ],
   // Two houses the original never used (its own files call them unused): their doors stay shut for good
   "locked": [ 7, 8 ],
+  // The workshop of plan 39 · CR1: the original's two unused doors stand inside a block of blocked ground nobody can come
+  // to, so the workshop's way is one of ours, at the dead end east of the alley at 869-870 (871, 763), shut until the Hall
+  // of Fame (FLAG_GAME_COMPLETED). A billboard of ours on the blocked tile north of the way in reads as its sign
+  "exits": [ { "x": 871, "z": 763, "map": "SunyshoreWorkshop", "toX": 6, "toY": 9, "facing": "Up", "openedBy": "FLAG_GAME_COMPLETED" } ],
+  "props": [ { "type": "Billboard", "x": 871, "y": 762, "width": 1, "depth": 1 } ],
+  "readAt": [ { "x": 871, "z": 762, "script": "WorkshopSign" } ],
   // The beach north of the Gym (trigger 0, plan 02 · S13): once the Beacon Badge is won the rival comes running up it,
   // and Jasmine gives HM07 (scripts/sunyshore_city.txt)
   "triggers": [ { "trigger": 0, "script": "RivalAndJasmine" } ],

@@ -332,6 +332,10 @@
       "note": "first spoken at fallarbor_town_cozmos_house.txt(8)",
       "provisional": true
     },
+    "craftswoman": {
+      "note": "first spoken at SunyshoreWorkshop.txt(10)",
+      "provisional": true
+    },
     "crasher_wake": {},
     "cristin": {
       "note": "first spoken at phone.txt(350)",
@@ -1760,6 +1764,7 @@
     "Cooltrainer": "cooltrainer",
     "Cowgirl": "cowgirl",
     "Cozmo's Wife": "cozmos_wife",
+    "Craftswoman": "craftswoman",
     "Crasher Wake": "crasher_wake",
     "Cristin": "cristin",
     "Curator": "curator",

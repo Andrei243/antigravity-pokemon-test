@@ -1,0 +1,34 @@
+# The craftswoman's workshop in Sunyshore City (plan 39 · CR1): a room of ours behind the town's door 8, which the Hall of
+# Fame opens (FLAG_GAME_COMPLETED, the overlay's openedBy). docs/scripts.md describes the language; the lines are our own,
+# since nothing of this is the original's.
+#
+# She gives the Crafting Kit once, to whoever comes in (`craft give kit` puts it in the bag and sets FLAG_GOT_CRAFTING_KIT,
+# which the rest of plan 39 waits for), and afterwards looks into it with the player or says how it goes.
+
+
+script Craftswoman
+  speaker "Craftswoman"
+  if item "Crafting Kit" goto Again
+  say "Well, look at that! A Champion, and on my doorstep. Come in, come in, and mind the shavings."
+  say "This is where I make things. Every Pokémon sheds something as it battles, and the countryside gives a good deal more to anyone who knows where to look."
+  say "I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours."
+  craft give kit
+  fanfare keyitem
+  text "{player} received the {item}!"
+  say "Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over."
+  say "Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready."
+  end
+label Again
+  say "Back again! Your kit's still in good order, I hope."
+  choose "What can I do for you?" "LOOK IN THE KIT" "HOW IT WORKS" "NOTHING"
+  if result == 0 goto Open
+  if result == 1 goto How
+  say "Then I'll get on. Mind the shavings on your way out."
+  end
+label Open
+  craft open
+  end
+label How
+  say "Every wild Pokémon leaves something of its own kind behind: a common thing almost every time, a rare one now and then. The higher its level, the more there is."
+  say "Trainers' Pokémon leave nothing, nor do the ones in a contest or a park. Those are sport, not the wild."
+  end

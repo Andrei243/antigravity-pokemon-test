@@ -199,3 +199,10 @@ label Stronger
   say "...I left home, far from here, to become stronger."
   say "Everyone I've met on the way had Pokémon beside them, and every one of them was smiling. I liked seeing that."
   end
+
+
+# The billboard beside the workshop's door (plan 39 · CR1, our own: the original's door here was never used)
+script WorkshopSign
+  speaker "Sign"
+  say "SUNYSHORE WORKSHOP" "Mending, making and measuring, for Champions of the Pokémon League. Walk right in."
+  end

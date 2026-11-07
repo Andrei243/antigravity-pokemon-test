@@ -227,6 +227,7 @@ if (mode == "levelling") h.LevellingMode();
 if (mode == "photo") h.PhotoMode();
 if (mode == "jobs") h.JobsMode();
 if (mode == "globallink") h.GlobalLinkMode();
+if (mode == "crafting") h.CraftingMode();
 
 h.Close();
 Raylib.CloseWindow();

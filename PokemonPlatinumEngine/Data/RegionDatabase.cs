@@ -350,6 +350,8 @@ public static class RegionDatabase
                 "CelesticTownNorthwestHouse", "CelesticTownNortheastHouse", "CelesticTownSouthwestHouse",
                 "Route216House", "Route217WestHouse", "Route217NortheastHouse", "Route222EastHouse", "Route222WestHouse",
                 "SunyshoreCityWestHouse", "SunyshoreCityNorthwestHouse", "SunyshoreCityEastHouse",
+                // Plan 39 · CR1: the craftswoman's workshop behind Sunyshore City's door 8, a map of ours
+                "SunyshoreWorkshop",
                 "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse",
                 "Route226House", "Route227House", "Route228SouthHouse", "ResortAreaHouse",
                 "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator",

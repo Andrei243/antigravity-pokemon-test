@@ -232,6 +232,12 @@ public class ScriptTests
           berry status
           apricorn tree
           apricorn order red
+          craft has
+          craft give kit
+          craft give "Soft Fluff" 3
+          craft take "Soft Fluff" 2
+          craft count "Soft Fluff"
+          craft open
           photo take
           photo count
           globallink check

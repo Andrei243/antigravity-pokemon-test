@@ -162,6 +162,11 @@ public partial class GameEngine
         public ApricornBoxScreen ApricornBoxScreen => game.flow.ApricornBoxScreen;
         public ApricornBox Apricorns => game.flow.Apricorns;
         public void OpenApricornBox() => game.OpenApricornBox(fromBag: false);
+        public CraftingScreen CraftingScreen => game.flow.CraftingScreen;
+        public CraftingState Crafting => game.flow.Crafting;
+        public void OpenCrafting() => game.OpenCrafting(fromBag: false);
+        public Toast Toast => game.flow.Toast;
+        public Random FieldRandom { get => game.fieldRandom; set => game.fieldRandom = value; }
         public DayCare DayCare => game.flow.DayCare;
         public RadarChain Radar => game.flow.Radar;
         public FishingAttempt? Fishing { get => game.flow.Fishing; set => game.flow.Fishing = value; }

@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -529,6 +529,9 @@ public interface IScriptHost
 
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6).</summary>
     ApricornBox Apricorns { get; }
+
+    /// <summary>The crafting kit's pouch of materials (plan 39 · CR1); none where a host keeps none, and <c>craft</c> then does nothing.</summary>
+    CraftingState? Crafting => null;
 
     /// <summary>Cameron's photo album (plan 20, part q); none where a host keeps no album, and <c>photo take</c> then takes nothing.</summary>
     PhotoAlbum? Photos => null;

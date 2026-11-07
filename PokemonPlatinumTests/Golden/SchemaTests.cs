@@ -31,7 +31,8 @@ public class SchemaTests
         ("overlay.schema.json", typeof(WorldOverlayFile), "An area's overlay (Data/world/<region>/overlays/<key>.json)"),
         ("map.schema.json", typeof(MapFile), "A map file, a room (Data/maps/<Name>.json)"),
         ("sound-map.schema.json", typeof(SoundMapFile), "The sound map (Data/audio/sound-map.json)"),
-        ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)")
+        ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
+        ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)")
     };
 
     /// <summary>The importer's patches (tools/DataImporter/Overrides): an object of entries by name, each the entry's fields, none required, and <c>new</c>.</summary>

@@ -259,6 +259,8 @@ public class TextTests
         ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },
         // The key item the Apricorn Box is, and Kurt's id in the phone book (plan 20 · J6)
         ["Core/GameEngine.Apricorns.cs"] = new[] { "Apricorn Box", "kurt" },
+        // The crafting kit, the item of ours the kit is (plan 39 · CR1)
+        ["Core/GameEngine.Crafting.cs"] = new[] { "Crafting Kit" },
         // The start of the Master Ranks' flags, and the region whose story is asked about
         ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
         // The lobbies' maps

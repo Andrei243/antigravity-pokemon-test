@@ -177,6 +177,8 @@ public enum Op
     BlackTower,
     // A Battle Royal (plan 14 · B13): three people of the map, each battling as a trainer of the data, every one for themselves
     Royal,
+    // The crafting kit (plan 39 · CR1): held or not, given, the pouch's materials taken and counted, the kit looked into
+    Craft,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
