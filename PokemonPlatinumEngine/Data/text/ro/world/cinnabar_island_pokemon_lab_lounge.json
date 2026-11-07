@@ -34,14 +34,6 @@
         "text": [
           "Clifton"
         ]
-      },
-      "dialog": {
-        "en": [
-          "I'd love to swap one of my Pokémon for one of yours. If only the trading machine worked!"
-        ],
-        "text": [
-          "Mi-ar plăcea să schimb unul dintre Pokémonii mei pe unul de-al tău. Dacă ar merge aparatul de schimb!"
-        ]
       }
     },
     "woman_2": {
@@ -51,14 +43,6 @@
         ],
         "text": [
           "Norma"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "I came here hoping to trade. The machine's broken, so I'm just enjoying the coffee."
-        ],
-        "text": [
-          "Am venit aici sperând să fac schimb. Aparatul e stricat, așa că mă bucur doar de cafea."
         ]
       }
     }

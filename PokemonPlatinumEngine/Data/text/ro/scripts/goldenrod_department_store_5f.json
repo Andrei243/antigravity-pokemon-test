@@ -8,5 +8,55 @@
         "Mulțumesc! Să mai treci pe la noi."
       ]
     }
+  ],
+  "Trade": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm after a Drowzee. I'd give you my Machop for one. Deal?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Drowzee! Thanks. Muscle is strong, so he'll do all your heavy lifting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No, that isn't a Drowzee. A Drowzee is what I want."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm. If you get hold of a Drowzee, come and see me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Drowzee never stops yawning. How is Muscle?"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -1,13 +1,11 @@
 {
-  // A house in Vermilion City (plan 19 · K4, part b). The girl's trade waits for plan 07's trades
+  // A house in Vermilion City (plan 19 · K4, part b). The girl's Farfetch'd trade is "chding" (plan 40 · GE2)
   "area": "vermilion_city_house_2",
   "bgmTrack": "kanto/vermilion",
   "people": {
     "little_girl": {
       "name": "Girl",
-      "dialog": [
-        "My Spearow flies all the way to the harbour and back every morning!"
-      ]
+      "script": "Trade"
     }
   }
 }

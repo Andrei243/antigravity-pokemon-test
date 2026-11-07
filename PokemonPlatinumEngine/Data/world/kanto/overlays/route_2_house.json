@@ -1,6 +1,6 @@
 {
-  // The house on Route 2's east lane (plan 19 · K2). The boy's trade of a Mr. Mime for an Abra is plan 07's trades
-  // with characters; until then he only talks
+  // The house on Route 2's east lane (plan 19 · K2). The boy's trade of a Mr. Mime for an Abra is "mimien"
+  // (plan 40 · GE2)
   "area": "route_2_house",
   "bgmTrack": "kanto/viridian",
   "people": {
@@ -13,7 +13,7 @@
     },
     "gba_kid": {
       "name": "Boy",
-      "dialog": [ "I'm looking for an Abra. If you ever catch one, come and show me!" ]
+      "script": "Trade"
     }
   }
 }

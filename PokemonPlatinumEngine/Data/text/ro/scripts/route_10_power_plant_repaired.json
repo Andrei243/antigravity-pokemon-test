@@ -138,5 +138,55 @@
         "Toate cadranele sunt iar pe verde. Generatorul se învârte mai frumos ca oricând!"
       ]
     }
+  ],
+  "TradeEngineer": [
+    {
+      "en": [
+        "Engineer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm after a Dugtrio. I'd swap my Magneton for one. Care to trade?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Dugtrio! Thank you. Maggie hums with power, so keep her away from the machinery."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That isn't a Dugtrio. A Dugtrio is what I need."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh well. If you catch a Dugtrio, let me know."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dugtrio digs the best tunnels for the cables. How is Maggie?"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

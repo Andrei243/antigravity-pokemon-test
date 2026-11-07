@@ -1,10 +1,10 @@
 {
-  // A house of Accumula Town (plan 22 · U10, part f), Black 2's, our words. Its Pokémon (3) is left out
+  // A house of Accumula Town (plan 22 · U10, part f), Black 2's, our words. Its Pokémon (3) is left out, and the Lass (1) swaps her Pokémon (plan 40 · GE2)
   "area": "accumula_town_2",
   "bgmTrack": "unova/accumula",
   "people": {
     "0": { "name": "Lady", "npcType": "lady", "dialog": [ "Welcome! Our house is the one with the best view of the plaza." ] },
-    "1": { "name": "Lass", "dialog": [ "I'm learning the piano. The neighbours are very patient." ] },
+    "1": { "name": "Lass", "script": "TradeLass" },
     "2": { "name": "Little Girl", "npcType": "school_kid_f", "dialog": [ "My big sister is a Trainer! She went to Striaton." ] },
     "4": { "name": "Poké Fan", "dialog": [ "We all love music in this house. Even our Pokémon sing!" ] }
   }

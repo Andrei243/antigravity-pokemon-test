@@ -1,0 +1,24 @@
+# unova_route_4_5 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Girl"
+  if flag FLAG_TRADED_FOR_PETULIA goto Done
+  ask "Do you have a Cottonee? I'd swap my Petilil for one."
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade petulia
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_PETULIA
+  say "A Cottonee! Thank you. Petulia is shy, so be gentle with her."
+  end
+label NotWanted
+  say "That isn't a Cottonee. It's a Cottonee I want."
+  end
+label Waiting
+  say "Oh. If you catch a Cottonee, will you come back?"
+  end
+label Done
+  say "Cottonee floats around my room like a cloud. I hope Petulia is happy with you."
+  end

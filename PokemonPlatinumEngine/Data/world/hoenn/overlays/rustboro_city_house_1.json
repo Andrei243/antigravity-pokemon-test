@@ -5,9 +5,7 @@
   "people": {
     "camper": {
       "name": "Boy",
-      "dialog": [
-        "I'd love to trade Pokémon with someone, but nobody has what I want."
-      ]
+      "script": "Trade"
     },
     "hiker": {
       "name": "Hiker",

@@ -1,0 +1,24 @@
+# pewter_pokecenter_1f (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Man"
+  if flag FLAG_TRADED_FOR_PAUL goto Done
+  ask "I'm hoping for a Haunter. Would you trade one for my Xatu?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade paul
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_PAUL
+  say "A Haunter! Splendid. Paul stares at the sun for hours, so don't worry."
+  end
+label NotWanted
+  say "That isn't a Haunter. A Haunter is what I want."
+  end
+label Waiting
+  say "Never mind. Come back if you find a Haunter."
+  end
+label Done
+  say "My Haunter is a cheerful sort. How is Paul?"
+  end

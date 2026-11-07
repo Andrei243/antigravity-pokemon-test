@@ -315,7 +315,7 @@ Plan 06 · R12.
 
 | Command | |
 |---|---|
-| `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). A GBA game's trade gives each of the five conditions its own number and a sheen (`NpcTrade.Conditions`, `Sheen`: Fortree's `pluses`, plan 21 · H6, part b); Platinum's give all five one. |
+| `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. (Data/trades.json since plan 40 · GE2: every region's own trades, a person each; `wantsGender` makes a trade ask for a female or a male.) A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). A GBA game's trade gives each of the five conditions its own number and a sheen (`NpcTrade.Conditions`, `Sheen`: Fortree's `pluses`, plan 21 · H6, part b); Platinum's give all five one. |
 | `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written, and every Pokémon of the team that is no Egg wears the Sinnoh Champ Ribbon. The scene of it is `halloffame show` ("The Hall of Fame's end", below). |
 
 ### Poffins

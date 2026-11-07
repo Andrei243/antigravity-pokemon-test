@@ -1,14 +1,12 @@
 {
   // The floor above Route 11's gate (plan 19 · K4, part b). The aide's Itemfinder waits for an item this game
-  // doesn't have yet, and the boy's Nidorino trade for plan 07's trades
+  // doesn't have yet, and the boy's Nidorino trade is "nina" (plan 40 · GE2)
   "area": "route_11_east_entrance_2f",
   "bgmTrack": "kanto/vermilion",
   "people": {
     "youngster": {
       "name": "Boy",
-      "dialog": [
-        "I'd love to trade my Pokémon for something new. Maybe another day."
-      ]
+      "script": "Trade"
     },
     "scientist": {
       "name": "Aide",

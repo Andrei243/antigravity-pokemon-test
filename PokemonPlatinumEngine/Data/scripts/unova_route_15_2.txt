@@ -1,0 +1,24 @@
+# unova_route_15_2 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Scientist"
+  if flag FLAG_TRADED_FOR_BUCKY goto Done
+  ask "I'd like to study a Ditto. I'd swap my Rotom for one. Would you?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade bucky
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_BUCKY
+  say "A Ditto! Marvellous! Look after Bucky. He flits about the house."
+  end
+label NotWanted
+  say "That isn't a Ditto. A Ditto is what I need."
+  end
+label Waiting
+  say "A pity. Come back if you find a Ditto."
+  end
+label Done
+  say "Ditto changes shape more than I can keep up with. How is Bucky?"
+  end

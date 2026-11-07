@@ -1,0 +1,24 @@
+# violet_bellsprout_onyx_trade_house (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Boy"
+  if flag FLAG_TRADED_FOR_ROCKY goto Done
+  ask "I want a Bellsprout. Would you trade me one for my Onix?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade rocky
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_ROCKY
+  say "A Bellsprout! Great! Rocky is tough, but he's gentle. Take good care of him."
+  end
+label NotWanted
+  say "That isn't a Bellsprout. It's a Bellsprout I'm after."
+  end
+label Waiting
+  say "Oh. Please come back if you find a Bellsprout."
+  end
+label Done
+  say "Bellsprout and I train in Sprout Tower every day. I hope Rocky is doing well."
+  end

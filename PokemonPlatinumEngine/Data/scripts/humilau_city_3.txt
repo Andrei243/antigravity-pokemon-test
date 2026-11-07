@@ -1,0 +1,24 @@
+# humilau_city_3 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Roughneck"
+  if flag FLAG_TRADED_FOR_TANGLES goto Done
+  ask "Hey! Have you got a Mantine? Swap it for my Tangrowth!"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade tangles
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_TANGLES
+  say "A Mantine! Thanks! Tangles is a handful, so hold on tight!"
+  end
+label NotWanted
+  say "No, no. It's a Mantine I want."
+  end
+label Waiting
+  say "No? Fine. But if you find a Mantine, come back!"
+  end
+label Done
+  say "Mantine rides the waves like nobody else. How's Tangles?"
+  end

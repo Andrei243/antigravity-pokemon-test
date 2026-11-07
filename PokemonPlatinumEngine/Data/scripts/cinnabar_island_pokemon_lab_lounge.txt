@@ -1,0 +1,46 @@
+# cinnabar_island_pokemon_lab_lounge (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script TradeClifton
+  speaker "Clifton"
+  if flag FLAG_TRADED_FOR_ESPHERE goto Done
+  ask "Have you a Raichu? I'd gladly swap my Electrode for one."
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade esphere
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_ESPHERE
+  say "A Raichu! Splendid. Esphere will give you a shock now and then, mind."
+  end
+label NotWanted
+  say "That isn't a Raichu. A Raichu is what I want."
+  end
+label Waiting
+  say "Fair enough. Bring a Raichu next time, and we'll talk."
+  end
+label Done
+  say "Raichu has made itself at home in the lab. How is Esphere?"
+  end
+
+script TradeNorma
+  speaker "Norma"
+  if flag FLAG_TRADED_FOR_TANGENY goto Done
+  ask "I'd love a Venonat. I'd swap my Tangela for one."
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade tangeny
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_TANGENY
+  say "A Venonat! Thank you. Tangeny's vines get tangled easily, so mind them."
+  end
+label NotWanted
+  say "That isn't a Venonat. I only want a Venonat."
+  end
+label Waiting
+  say "Oh. If you come across a Venonat, do come back."
+  end
+label Done
+  say "My Venonat has a lovely pair of eyes. I hope Tangeny is well."
+  end

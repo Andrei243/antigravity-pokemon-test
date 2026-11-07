@@ -25,9 +25,6 @@ public class KantoSpeciesTests
         ["Slowbro"] = "GE3: LeafGreen's, in its own places", ["Staryu"] = "GE3: LeafGreen's, in its own places",
         ["Starmie"] = "GE3: LeafGreen's, in its own places", ["Magmar"] = "GE3: LeafGreen's, in its own places",
         ["Pinsir"] = "GE3: LeafGreen's, in its own places",
-        // FireRed's in-game trades, which plan 19 left "for plan 07's trades"
-        ["Farfetch'd"] = "GE2: FireRed's own trades", ["Lickitung"] = "GE2: FireRed's own trades",
-        ["Mr. Mime"] = "GE2: FireRed's own trades", ["Jynx"] = "GE2: FireRed's own trades",
         // Evolved by trading, and Kanto gives no Linking Cord
         ["Alakazam"] = "GE3: a Linking Cord in Kanto", ["Machamp"] = "GE3: a Linking Cord in Kanto",
         ["Golem"] = "GE3: a Linking Cord in Kanto", ["Gengar"] = "GE3: a Linking Cord in Kanto",

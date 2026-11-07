@@ -1,0 +1,24 @@
+# vermilion_city_house_2 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Girl"
+  if flag FLAG_TRADED_FOR_CHDING goto Done
+  ask "Please, do you have a Spearow? I'd trade my Farfetch'd for it!"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade chding
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_CHDING
+  say "A Spearow! Thank you. Ch'ding always carries a leek, so be careful."
+  end
+label NotWanted
+  say "That's not a Spearow. I really want a Spearow."
+  end
+label Waiting
+  say "Oh... If you find a Spearow, will you come back?"
+  end
+label Done
+  say "Spearow flies all the way to the harbour and back each morning. I hope Ch'ding is happy too."
+  end

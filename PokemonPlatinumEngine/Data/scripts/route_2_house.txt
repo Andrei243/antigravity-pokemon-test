@@ -1,0 +1,24 @@
+# route_2_house (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Boy"
+  if flag FLAG_TRADED_FOR_MIMIEN goto Done
+  ask "I'd swap my Mr. Mime for an Abra. Would you trade one with me?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade mimien
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MIMIEN
+  say "An Abra at last! Thank you. Please look after Mimien for me."
+  end
+label NotWanted
+  say "That isn't an Abra. It's an Abra I'm after."
+  end
+label Waiting
+  say "That's all right. If you ever catch an Abra, come and find me."
+  end
+label Done
+  say "Abra and I are the best of friends already. I hope Mimien is happy with you."
+  end

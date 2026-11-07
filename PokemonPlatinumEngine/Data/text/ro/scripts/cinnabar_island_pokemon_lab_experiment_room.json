@@ -80,5 +80,55 @@
         "Nu? Ei bine, aparatul rămâne aici dacă te răzgândești."
       ]
     }
+  ],
+  "Trade": [
+    {
+      "en": [
+        "Garett"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'd trade you my Seel for a Ponyta. Have you got one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Ponyta! Thanks. Seelor loves the cold, so keep him cool."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That isn't a Ponyta. I'm after a Ponyta."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's fine. If you find a Ponyta, come back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ponyta's mane is the hottest thing in the lab. How is Seelor?"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

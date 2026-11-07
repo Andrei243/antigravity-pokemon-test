@@ -7015,6 +7015,17 @@ way -
 === abundant_shrine.Landorus
 from Landorus at 22,14 of AbundantShrine
 way -
+=== accumula_town_2.TradeLass
+from Lass at 5,4 of AccumulaTown_House1_1F
+way 0
+  Lass> Do you have an Excadrill? I'd swap my Ambipom for one. Let's trade!
+  Lass> That isn't an Excadrill. It's an Excadrill I want.
+  ? Do you have an Excadrill? I'd swap my Ambipom for one. Let's trade! = Yes
+  * open ChoosePokemon
+  * trade ambidexter refused
+way 1, from answer 1
+  Lass> I see. That's your trusty partner. If you change your mind, let's trade.
+  ? Do you have an Excadrill? I'd swap my Ambipom for one. Let's trade! = No
 === acuity_cavern.Uxie
 from Uxie at 14,10 of AcuityCavern
 way 0
@@ -8630,6 +8641,17 @@ way -
   Breeder> Turtwig is an ordinary sort. Love it all the same, and it'll serve you well.
   Breeder> Its greatest gift is its HP.
   * open ChoosePokemon
+=== battle_frontier_lounge_6.Trade
+from Beauty at 2,4 of BattleFrontier_Lounge6
+way 0
+  Beauty> I'd love a Skitty. I'd swap my Meowth for one. Would you?
+  Beauty> That isn't a Skitty. It's a Skitty I'm longing for.
+  ? I'd love a Skitty. I'd swap my Meowth for one. Would you? = Yes
+  * open ChoosePokemon
+  * trade meowow refused
+way 1, from answer 1
+  Beauty> Oh. If you find a Skitty, please remember me.
+  ? I'd love a Skitty. I'd swap my Meowth for one. Would you? = No
 === battle_frontier_mart.FrontierClerk
 from Clerk at 1,3 of BattleFrontier_Mart
 way -
@@ -8887,6 +8909,17 @@ way -
 from Santos at 674,163 of Johto
 way -
   Santos> ...It's not Saturday. ...Come back on Saturday.
+=== blackthorn_east_house.Trade
+from Girl at 5,5 of Blackthorn_EastHouse
+way 0
+  Girl> I want a girl Dragonair. Will you swap one for my Dodrio, Doris?
+  Girl> That isn't a girl Dragonair. It's a girl Dragonair I want.
+  ? I want a girl Dragonair. Will you swap one for my Dodrio, Doris? = Yes
+  * open ChoosePokemon
+  * trade doris refused
+way 1, from answer 1
+  Girl> Oh. If you find a girl Dragonair, please come back.
+  ? I want a girl Dragonair. Will you swap one for my Dodrio, Doris? = No
 === blackthorn_gym.BackToTheDoor
 from the trigger at 23,41 of Blackthorn_Gym
 from the trigger at 3,62 of Blackthorn_Gym
@@ -10277,6 +10310,17 @@ way 0
 way 1, from answer 1
   * battle kanto_leader_misty Lost
   * scene over, unseen
+=== cerulean_city_house_3.Trade
+from Old Man at 2,2 of CeruleanCity_House3
+way 0
+  Old Man> I've a fancy for a Poliwhirl, and a Jynx to give for it. Shall we trade?
+  Old Man> Hmm? That's no Poliwhirl. It's a Poliwhirl I'd like.
+  ? I've a fancy for a Poliwhirl, and a Jynx to give for it. Shall we trade? = Yes
+  * open ChoosePokemon
+  * trade zynx refused
+way 1, from answer 1
+  Old Man> Another day, then. A Poliwhirl is what I'm waiting for.
+  ? I've a fancy for a Poliwhirl, and a Jynx to give for it. Shall we trade? = No
 === cerulean_gym.Guide
 from Gym guide at 13,21 of Cerulean_Gym
 way -
@@ -10780,6 +10824,39 @@ from Scientist at 12,3 of CinnabarIsland_PokemonLab_ExperimentRoom
 way -
   Scientist> Hiya! I'm working on bringing Pokémon back from ancient Fossils.
   Scientist> If you ever find a Fossil, bring it to me. I'll show you what it used to be!
+=== cinnabar_island_pokemon_lab_experiment_room.Trade
+from Garett at 11,8 of CinnabarIsland_PokemonLab_ExperimentRoom
+way 0
+  Garett> I'd trade you my Seel for a Ponyta. Have you got one?
+  Garett> That isn't a Ponyta. I'm after a Ponyta.
+  ? I'd trade you my Seel for a Ponyta. Have you got one? = Yes
+  * open ChoosePokemon
+  * trade seelor refused
+way 1, from answer 1
+  Garett> That's fine. If you find a Ponyta, come back.
+  ? I'd trade you my Seel for a Ponyta. Have you got one? = No
+=== cinnabar_island_pokemon_lab_lounge.TradeClifton
+from Clifton at 4,6 of CinnabarIsland_PokemonLab_Lounge
+way 0
+  Clifton> Have you a Raichu? I'd gladly swap my Electrode for one.
+  Clifton> That isn't a Raichu. A Raichu is what I want.
+  ? Have you a Raichu? I'd gladly swap my Electrode for one. = Yes
+  * open ChoosePokemon
+  * trade esphere refused
+way 1, from answer 1
+  Clifton> Fair enough. Bring a Raichu next time, and we'll talk.
+  ? Have you a Raichu? I'd gladly swap my Electrode for one. = No
+=== cinnabar_island_pokemon_lab_lounge.TradeNorma
+from Norma at 10,5 of CinnabarIsland_PokemonLab_Lounge
+way 0
+  Norma> I'd love a Venonat. I'd swap my Tangela for one.
+  Norma> That isn't a Venonat. I only want a Venonat.
+  ? I'd love a Venonat. I'd swap my Tangela for one. = Yes
+  * open ChoosePokemon
+  * trade tangeny refused
+way 1, from answer 1
+  Norma> Oh. If you come across a Venonat, do come back.
+  ? I'd love a Venonat. I'd swap my Tangela for one. = No
 === cinnabar_island_pokemon_lab_research_room.MetronomeTutor
 from Researcher at 5,4 of CinnabarIsland_PokemonLab_ResearchRoom
 way 0
@@ -18185,6 +18262,17 @@ way -
   Clerk> Welcome! How can I help you?
   Clerk> Thank you! Do come again.
   * open Shop goldenrod_5f
+=== goldenrod_department_store_5f.Trade
+from Man at 2,6 of Goldenrod_DeptStore_5F
+way 0
+  Man> I'm after a Drowzee. I'd give you my Machop for one. Deal?
+  Man> No, that isn't a Drowzee. A Drowzee is what I want.
+  ? I'm after a Drowzee. I'd give you my Machop for one. Deal? = Yes
+  * open ChoosePokemon
+  * trade muscle refused
+way 1, from answer 1
+  Man> Hmm. If you get hold of a Drowzee, come and see me.
+  ? I'm after a Drowzee. I'd give you my Machop for one. Deal? = No
 === goldenrod_department_store_6f.MeetWhitney
 from Whitney at 3,6 of Goldenrod_DeptStore_6F
 way -
@@ -19058,6 +19146,17 @@ way 1, from answer 1
   + FLAG_UNOVA_HIDE_MARLON_BEACH
   = VAR_UNOVA_HUMILAU 0 -> 4
   + seen humilau_city.Hugh and Marlon outside the Gym
+=== humilau_city_3.Trade
+from Roughneck at 7,6 of HumilauCity_House2
+way 0
+  Roughneck> Hey! Have you got a Mantine? Swap it for my Tangrowth!
+  Roughneck> No, no. It's a Mantine I want.
+  ? Hey! Have you got a Mantine? Swap it for my Tangrowth! = Yes
+  * open ChoosePokemon
+  * trade tangles refused
+way 1, from answer 1
+  Roughneck> No? Fine. But if you find a Mantine, come back!
+  ? Hey! Have you got a Mantine? Swap it for my Tangrowth! = No
 === humilau_city_gym.GymGuide
 from Guide at 17,72 of HumilauCity_Gym
 way -
@@ -24140,6 +24239,17 @@ way -
   + FLAG_UNK_1D8
   = VAR_SCENE_LIGHTHOUSE_JASMINE 0 -> 1
   + seen olivine_lighthouse_light_room.Jasmine by the lamp
+=== olivine_north_house.Trade
+from Fisherman at 5,5 of Olivine_NorthHouse
+way 0
+  Fisherman> I'd give a good Voltorb for a Krabby. How about it?
+  Fisherman> That isn't a Krabby. I'm after a Krabby.
+  ? I'd give a good Voltorb for a Krabby. How about it? = Yes
+  * open ChoosePokemon
+  * trade billy refused
+way 1, from answer 1
+  Fisherman> Not now? Fine. Come back if you catch a Krabby.
+  ? I'd give a good Voltorb for a Krabby. How about it? = No
 === one_island_harbor.Sailor
 from Sailor at 8,6 of OneIsland_Harbor
 way -
@@ -25223,6 +25333,17 @@ from Steven at 16,4 of Pewter_Museum
 way -
   Steven> I gave the Enigma Stone back to the museum. Some stones are meant to be looked at, not kept.
   Steven> Old bones and fallen stars under one roof. I could spend a whole day in here.
+=== pewter_pokecenter_1f.Trade
+from Man at 4,17 of Pewter_PokemonCenter_1F
+way 0
+  Man> I'm hoping for a Haunter. Would you trade one for my Xatu?
+  Man> That isn't a Haunter. A Haunter is what I want.
+  ? I'm hoping for a Haunter. Would you trade one for my Xatu? = Yes
+  * open ChoosePokemon
+  * trade paul refused
+way 1, from answer 1
+  Man> Never mind. Come back if you find a Haunter.
+  ? I'm hoping for a Haunter. Would you trade one for my Xatu? = No
 === plasma_frigate_2.Barrier
 from the trigger at 9,7 of PlasmaFrigate_Hold
 way -
@@ -26421,6 +26542,17 @@ way -
   * endscene
   + FLAG_JOHTO_POWER_PLANT_ROBBED
   + seen route_10_power_plant_repaired.The Power Plant robbed
+=== route_10_power_plant_repaired.TradeEngineer
+from Engineer at 19,8 of Route10_PowerPlant
+way 0
+  Engineer> I'm after a Dugtrio. I'd swap my Magneton for one. Care to trade?
+  Engineer> That isn't a Dugtrio. A Dugtrio is what I need.
+  ? I'm after a Dugtrio. I'd swap my Magneton for one. Care to trade? = Yes
+  * open ChoosePokemon
+  * trade maggie refused
+way 1, from answer 1
+  Engineer> Oh well. If you catch a Dugtrio, let me know.
+  ? I'm after a Dugtrio. I'd swap my Magneton for one. Care to trade? = No
 === route_110.Abigail
 from Abigail at 230,191 of Hoenn
 way 0.0
@@ -27651,6 +27783,17 @@ way 1, from answer 1
 from Scientist at 18,6 of Route119_WeatherInstitute_2F
 way -
   Scientist> Th-they want our data on rain! What could anyone want with that much rain?
+=== route_11_east_entrance_2f.Trade
+from Boy at 7,3 of Route11_EastEntrance_2F
+way 0
+  Boy> Have you a Nidorino? I'd swap my Nidorina for one.
+  Boy> That isn't a Nidorino. I'm only after a Nidorino.
+  ? Have you a Nidorino? I'd swap my Nidorina for one. = Yes
+  * open ChoosePokemon
+  * trade nina refused
+way 1, from answer 1
+  Boy> Oh well. If you find a Nidorino, you know where I am.
+  ? Have you a Nidorino? I'd swap my Nidorina for one. = No
 === route_12.Snorlax
 from Snorlax at 398,220 of Kanto
 way -
@@ -28071,6 +28214,17 @@ from the trigger at 1,7 of Route18_EastEntrance_1F
 from the trigger at 2,6 of Route18_EastEntrance_1F
 way -
   = VAR_MAP_SCENE_ROUTE16 0 -> 1
+=== route_18_east_entrance_2f.Trade
+from Boy at 5,3 of Route18_EastEntrance_2F
+way 0
+  Boy> I'm looking for a Golduck. Would you swap one for my Lickitung?
+  Boy> That's not a Golduck. I'm hoping for a Golduck.
+  ? I'm looking for a Golduck. Would you swap one for my Lickitung? = Yes
+  * open ChoosePokemon
+  * trade marc refused
+way 1, from answer 1
+  Boy> That's fine. If you ever have a Golduck to spare, come back.
+  ? I'm looking for a Golduck. Would you swap one for my Lickitung? = No
 === route_18_gatehouse.NeedBike
 from the trigger at 5,6 of Route18_CyclingGate
 way -
@@ -28952,6 +29106,17 @@ from Aide at 4,6 of Route2_EastBuilding
 way -
   Aide> I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.
   Aide> Catch plenty of Pokémon and I may have something for you.
+=== route_2_house.Trade
+from Boy at 7,2 of Route2_House
+way 0
+  Boy> I'd swap my Mr. Mime for an Abra. Would you trade one with me?
+  Boy> That isn't an Abra. It's an Abra I'm after.
+  ? I'd swap my Mr. Mime for an Abra. Would you trade one with me? = Yes
+  * open ChoosePokemon
+  * trade mimien refused
+way 1, from answer 1
+  Boy> That's all right. If you ever catch an Abra, come and find me.
+  ? I'd swap my Mr. Mime for an Abra. Would you trade one with me? = No
 === route_30.Joey
 from Joey at 553,332 of Johto
 way 0
@@ -29633,6 +29798,17 @@ way 0
 way 1, from answer 1
   * battle hoenn_roxanne_1 Lost
   * scene over, unseen
+=== rustboro_city_house_1.Trade
+from Boy at 6,4 of RustboroCity_House1
+way 0
+  Boy> I'd give a Seedot for a Ralts. Would you trade one with me?
+  Boy> That isn't a Ralts. I'm only after a Ralts.
+  ? I'd give a Seedot for a Ralts. Would you trade one with me? = Yes
+  * open ChoosePokemon
+  * trade dots refused
+way 1, from answer 1
+  Boy> All right. If you ever catch a Ralts, come and see me.
+  ? I'd give a Seedot for a Ralts. Would you trade one with me? = No
 === rustboro_city_pokemon_school.Scott
 from Scott at 0,10 of RustboroCity_PokemonSchool
 way -
@@ -33162,6 +33338,17 @@ way -
   Hiker> Dug up any treasures? I'll give you good Spheres for them.
   Hiker> Mind how you go down here!
   * underground hiker
+=== underground_path_north_entrance.Trade
+from Girl at 5,6 of UndergroundPath_NorthEntrance
+way 0
+  Girl> Do you have a male Nidoran? I'd swap my female Nidoran for one.
+  Girl> That isn't a male Nidoran. It's a male Nidoran I want.
+  ? Do you have a male Nidoran? I'd swap my female Nidoran for one. = Yes
+  * open ChoosePokemon
+  * trade msnido refused
+way 1, from answer 1
+  Girl> Oh. Come back if you ever catch a male Nidoran.
+  ? Do you have a male Nidoran? I'd swap my female Nidoran for one. = No
 === underground_ruins.DoorWatcher
 from Psychic at 13,10 of UndergroundRuins
 way -
@@ -33410,6 +33597,17 @@ way -
   Lady> It doesn't matter to Wingull that it isn't much of a fighter. It's the best postman in Unova.
   * fanfare FanfareItem
   + FLAG_UNOVA_GOT_POWER_LENS
+=== unova_route_15_2.Trade
+from Scientist at 7,3 of Route15_House
+way 0
+  Scientist> I'd like to study a Ditto. I'd swap my Rotom for one. Would you?
+  Scientist> That isn't a Ditto. A Ditto is what I need.
+  ? I'd like to study a Ditto. I'd swap my Rotom for one. Would you? = Yes
+  * open ChoosePokemon
+  * trade bucky refused
+way 1, from answer 1
+  Scientist> A pity. Come back if you find a Ditto.
+  ? I'd like to study a Ditto. I'd swap my Rotom for one. Would you? = No
 === unova_route_19.Alder
 from Alder at 94,695 of Unova
 way -
@@ -33626,6 +33824,17 @@ way -
   Woman> Goodness, you look worn out! Sit down and rest a while. Your Pokémon too.
   > Lucas and the team had a good rest.
   Woman> There! With that much energy you could walk straight through a sandstorm.
+=== unova_route_4_5.Trade
+from Girl at 10,7 of Route4_House2_1F
+way 0
+  Girl> Do you have a Cottonee? I'd swap my Petilil for one.
+  Girl> That isn't a Cottonee. It's a Cottonee I want.
+  ? Do you have a Cottonee? I'd swap my Petilil for one. = Yes
+  * open ChoosePokemon
+  * trade petulia refused
+way 1, from answer 1
+  Girl> Oh. If you catch a Cottonee, will you come back?
+  ? Do you have a Cottonee? I'd swap my Petilil for one. = No
 === unova_route_5.BiancasFly
 from the trigger at 372,437 of Unova
 way 0
@@ -34480,6 +34689,17 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh... That's a shame. Fishing is such a peaceful way to pass the time.
   ? I'm the Fishing Guru! I simply love fishing. Do you like to fish? = No
+=== vermilion_city_house_2.Trade
+from Girl at 4,4 of VermilionCity_House2
+way 0
+  Girl> Please, do you have a Spearow? I'd trade my Farfetch'd for it!
+  Girl> That's not a Spearow. I really want a Spearow.
+  ? Please, do you have a Spearow? I'd trade my Farfetch'd for it! = Yes
+  * open ChoosePokemon
+  * trade chding refused
+way 1, from answer 1
+  Girl> Oh... If you find a Spearow, will you come back?
+  ? Please, do you have a Spearow? I'd trade my Farfetch'd for it! = No
 === vermilion_city_pokemon_fan_club.Chairman
 from Chairman at 5,4 of VermilionCity_PokemonFanClub
 way 0
@@ -34679,6 +34899,17 @@ way -
 from Fat Man at 474,252 of Johto
 way -
   Fat Man> Falkner trains at Sprout Tower now and then. If the monks there can't stop you, maybe he can't either!
+=== violet_bellsprout_onyx_trade_house.Trade
+from Boy at 2,5 of Violet_TradeHouse
+way 0
+  Boy> I want a Bellsprout. Would you trade me one for my Onix?
+  Boy> That isn't a Bellsprout. It's a Bellsprout I'm after.
+  ? I want a Bellsprout. Would you trade me one for my Onix? = Yes
+  * open ChoosePokemon
+  * trade rocky refused
+way 1, from answer 1
+  Boy> Oh. Please come back if you find a Bellsprout.
+  ? I want a Bellsprout. Would you trade me one for my Onix? = No
 === violet_gym.Falkner
 from Falkner at 15,4 of Violet_Gym
 way 0
