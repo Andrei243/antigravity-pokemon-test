@@ -17,7 +17,7 @@ script OnEnter
 script Clay
   face clay player
   speaker "Clay"
-  if badge quake goto Won
+  if badge quake goto Back
   scene "Clay"
   say "So you dug your way down here. I'm Clay, boss of these mines and Leader of this Gym. I don't go easy on anybody!"
   say "Let's see if your team's got the grit to strike it rich against mine!"
@@ -39,4 +39,15 @@ label Tm
 label Won
   if not flag FLAG_UNOVA_GOT_TM78 goto Tm
   say "Hard work never lies, kid. Not to you, and not to your Pokémon."
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM78 goto Won
+  if flag FLAG_DAILY_UNOVA_CLAY_REMATCH goto Won
+  ask "Well, if it is not the Champion! I have been digging deeper than ever, and my Pokémon are in fine shape. Fancy a go?"
+  if no goto Won
+  say "Ha! That is what I like to hear! Let us shake the whole mine!"
+  battle clay as "unova_leader_clay_rematch"
+  say "Gah! You rattled my bones again. Come back tomorrow, and I will have dug up something stronger."
+  setflag FLAG_DAILY_UNOVA_CLAY_REMATCH
   end

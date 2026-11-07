@@ -150,7 +150,7 @@ script Door
 script Blaine
   face blaine player
   speaker "Blaine"
-  if badge volcano goto Won
+  if badge volcano goto Back
   scene "Blaine"
   say "Ho! So you solved my riddles. I am Blaine, and this volcano is my Gym!"
   say "My Pokémon burn with the heat of the mountain itself. Have you packed any Burn Heals?"
@@ -185,6 +185,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM38_FROM_BLAINE goto Tm
   say "I'll rebuild my fire hotter than ever. Come and test it again some day!"
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM38_FROM_BLAINE goto Won
+  if flag FLAG_DAILY_KANTO_BLAINE_REMATCH goto Won
+  ask "Hah! The Champion in my hot house again! Your Pokémon will not have cooled off, and neither have mine. Burn bright with me once more?"
+  if no goto Won
+  say "That is the way! Hotter, hotter, hotter! Let the whole Gym feel it!"
+  battle self as "kanto_leader_blaine_rematch"
+  say "Hah! Burned to a crisp, and I loved every second. Come back tomorrow, and I will have a new fire ready!"
+  setflag FLAG_DAILY_KANTO_BLAINE_REMATCH
   end
 
 

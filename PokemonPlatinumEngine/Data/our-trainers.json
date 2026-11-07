@@ -2873,5 +2873,1146 @@
       { "species": "Weavile", "level": 55, "ivScale": 160, "personality": 2847719, "moves": [ "Night Slash", "Ice Punch", "X-Scissor", "Brick Break" ] },
       { "species": "Electivire", "level": 55, "ivScale": 160, "personality": 7708342, "moves": [ "Thunder Punch", "Cross Chop", "Fire Punch", "Ice Punch" ] }
     ]
+  },
+  {
+    "id": "kanto_leader_brock_rematch",
+    "name": "Brock",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6840,
+    "party": [
+      {
+        "species": "Golem",
+        "level": 55,
+        "ivScale": 200,
+        "personality": 7593353,
+        "moves": [
+          "Sandstorm",
+          "Rock Slide",
+          "Rock Polish",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Relicanth",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 6398601,
+        "item": "Lum Berry",
+        "moves": [
+          "Head Smash",
+          "Aqua Tail",
+          "Earthquake",
+          "Rest"
+        ]
+      },
+      {
+        "species": "Omastar",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 3654281,
+        "moves": [
+          "Ancient Power",
+          "Brine",
+          "Protect",
+          "Sandstorm"
+        ]
+      },
+      {
+        "species": "Onix",
+        "level": 61,
+        "ivScale": 200,
+        "personality": 6054793,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Stealth Rock",
+          "Rock Slide",
+          "Rock Polish",
+          "Sandstorm"
+        ]
+      },
+      {
+        "species": "Kabutops",
+        "level": 55,
+        "ivScale": 200,
+        "personality": 3592841,
+        "moves": [
+          "Rock Slide",
+          "Aqua Jet",
+          "Endure",
+          "Giga Drain"
+        ]
+      },
+      {
+        "species": "Rampardos",
+        "level": 57,
+        "ivScale": 200,
+        "personality": 3752073,
+        "moves": [
+          "Earthquake",
+          "Stone Edge",
+          "Avalanche",
+          "Rock Polish"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_misty_rematch",
+    "name": "Misty",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "party": [
+      {
+        "species": "Starmie",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 11712889,
+        "item": "Colbur Berry",
+        "moves": [
+          "Thunderbolt",
+          "Psychic",
+          "Ice Beam",
+          "Surf"
+        ]
+      },
+      {
+        "species": "Quagsire",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 5111929,
+        "moves": [
+          "Water Pulse",
+          "Amnesia",
+          "Earthquake",
+          "Rain Dance"
+        ]
+      },
+      {
+        "species": "Lapras",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 1560185,
+        "moves": [
+          "Surf",
+          "Perish Song",
+          "Blizzard",
+          "Rain Dance"
+        ]
+      },
+      {
+        "species": "Lanturn",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 9960313,
+        "moves": [
+          "Confuse Ray",
+          "Thunderbolt",
+          "Surf",
+          "Thunder Wave"
+        ]
+      },
+      {
+        "species": "Floatzel",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 15334521,
+        "moves": [
+          "Agility",
+          "Ice Fang",
+          "Waterfall",
+          "Baton Pass"
+        ]
+      },
+      {
+        "species": "Milotic",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 12886905,
+        "moves": [
+          "Hydro Pump",
+          "Ice Beam",
+          "Rest",
+          "Sleep Talk"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_lt_surge_rematch",
+    "name": "Lt. Surge",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6720,
+    "party": [
+      {
+        "species": "Raichu",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 1779848,
+        "moves": [
+          "Thunder Wave",
+          "Quick Attack",
+          "Thunderbolt",
+          "Grass Knot"
+        ]
+      },
+      {
+        "species": "Manectric",
+        "level": 52,
+        "ivScale": 200,
+        "personality": 7291272,
+        "item": "Pinap Berry",
+        "moves": [
+          "Thunder Wave",
+          "Natural Gift",
+          "Discharge",
+          "Overheat"
+        ]
+      },
+      {
+        "species": "Magnezone",
+        "level": 52,
+        "ivScale": 200,
+        "personality": 9597320,
+        "moves": [
+          "Thunderbolt",
+          "Double Team",
+          "Magnet Rise",
+          "Mirror Shot"
+        ]
+      },
+      {
+        "species": "Electrode",
+        "level": 52,
+        "ivScale": 200,
+        "personality": 14606473,
+        "moves": [
+          "Thunder Wave",
+          "Double Team",
+          "Thunderbolt",
+          "Explosion"
+        ]
+      },
+      {
+        "species": "Pachirisu",
+        "level": 58,
+        "ivScale": 200,
+        "personality": 12648073,
+        "moves": [
+          "Quick Attack",
+          "Super Fang",
+          "Discharge",
+          "Sweet Kiss"
+        ]
+      },
+      {
+        "species": "Electivire",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 14133641,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Thunderbolt",
+          "Cross Chop",
+          "Ice Punch",
+          "Earthquake"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_erika_rematch",
+    "name": "Erika",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert",
+      "Weather"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6600,
+    "party": [
+      {
+        "species": "Shiftry",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 2647672,
+        "moves": [
+          "Leaf Storm",
+          "Sucker Punch",
+          "Explosion",
+          "Sunny Day"
+        ]
+      },
+      {
+        "species": "Jumpluff",
+        "level": 53,
+        "ivScale": 200,
+        "personality": 13047672,
+        "moves": [
+          "U-turn",
+          "Memento",
+          "Sleep Powder",
+          "Giga Drain"
+        ]
+      },
+      {
+        "species": "Victreebel",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 16767096,
+        "item": "Kelpsy Berry",
+        "moves": [
+          "Natural Gift",
+          "Sludge Bomb",
+          "Leaf Storm",
+          "Leaf Blade"
+        ]
+      },
+      {
+        "species": "Bellossom",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 14489976,
+        "moves": [
+          "Sunny Day",
+          "Solar Beam",
+          "Giga Drain",
+          "Attract"
+        ]
+      },
+      {
+        "species": "Tangrowth",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 15857272,
+        "moves": [
+          "Swords Dance",
+          "Power Whip",
+          "Rock Slide",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Roserade",
+        "level": 55,
+        "ivScale": 200,
+        "personality": 825976,
+        "moves": [
+          "Weather Ball",
+          "Energy Ball",
+          "Sludge Bomb",
+          "Stun Spore"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_sabrina_rematch",
+    "name": "Sabrina",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert",
+      "SetupFirstTurn"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 6360,
+    "party": [
+      {
+        "species": "Alakazam",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 3868280,
+        "moves": [
+          "Recover",
+          "Focus Blast",
+          "Energy Ball",
+          "Psychic"
+        ]
+      },
+      {
+        "species": "Espeon",
+        "level": 58,
+        "ivScale": 200,
+        "personality": 3185273,
+        "moves": [
+          "Calm Mind",
+          "Baton Pass",
+          "Shadow Ball",
+          "Psychic"
+        ]
+      },
+      {
+        "species": "Mr. Mime",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 2677369,
+        "moves": [
+          "Reflect",
+          "Skill Swap",
+          "Thunder",
+          "Psychic"
+        ]
+      },
+      {
+        "species": "Jynx",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 2677369,
+        "moves": [
+          "Blizzard",
+          "Perish Song",
+          "Psychic",
+          "Focus Blast"
+        ]
+      },
+      {
+        "species": "Wobbuffet",
+        "level": 53,
+        "ivScale": 200,
+        "personality": 2529657,
+        "moves": [
+          "Counter",
+          "Mirror Coat",
+          "Destiny Bond",
+          "Encore"
+        ]
+      },
+      {
+        "species": "Gallade",
+        "level": 53,
+        "ivScale": 200,
+        "personality": 8107385,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Close Combat",
+          "Psycho Cut",
+          "Night Slash",
+          "Stone Edge"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_blaine_rematch",
+    "name": "Blaine",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7440,
+    "party": [
+      {
+        "species": "Torkoal",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 4160136,
+        "moves": [
+          "Sunny Day",
+          "Yawn",
+          "Body Slam",
+          "Overheat"
+        ]
+      },
+      {
+        "species": "Camerupt",
+        "level": 57,
+        "ivScale": 200,
+        "personality": 1555849,
+        "moves": [
+          "Earthquake",
+          "Eruption",
+          "Solar Beam",
+          "Sunny Day"
+        ]
+      },
+      {
+        "species": "Rapidash",
+        "level": 60,
+        "ivScale": 200,
+        "personality": 14671753,
+        "moves": [
+          "Megahorn",
+          "Quick Attack",
+          "Overheat",
+          "Flare Blitz"
+        ]
+      },
+      {
+        "species": "Magcargo",
+        "level": 58,
+        "ivScale": 200,
+        "personality": 1453449,
+        "moves": [
+          "Curse",
+          "Gyro Ball",
+          "Overheat",
+          "Stone Edge"
+        ]
+      },
+      {
+        "species": "Houndoom",
+        "level": 54,
+        "ivScale": 200,
+        "personality": 10418057,
+        "moves": [
+          "Shadow Ball",
+          "Dark Pulse",
+          "Flamethrower",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "species": "Magmortar",
+        "level": 62,
+        "ivScale": 200,
+        "personality": 8871049,
+        "moves": [
+          "Thunderbolt",
+          "Low Kick",
+          "Flamethrower",
+          "Confuse Ray"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_leader_koga_rematch",
+    "name": "Koga",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Heal"
+    ],
+    "prizeMoney": 6900,
+    "party": [
+      {
+        "species": "Ariados",
+        "level": 56,
+        "ivScale": 200,
+        "personality": 1687656,
+        "moves": [
+          "Poison Jab",
+          "Pin Missile",
+          "Sucker Punch",
+          "Toxic Spikes"
+        ]
+      },
+      {
+        "species": "Venomoth",
+        "level": 57,
+        "ivScale": 200,
+        "personality": 2675312,
+        "moves": [
+          "Sleep Powder",
+          "Bug Buzz",
+          "Sludge Bomb",
+          "Baton Pass"
+        ]
+      },
+      {
+        "species": "Muk",
+        "level": 57,
+        "ivScale": 200,
+        "personality": 3662968,
+        "item": "Black Sludge",
+        "moves": [
+          "Gunk Shot",
+          "Poison Jab",
+          "Minimize",
+          "Toxic"
+        ]
+      },
+      {
+        "species": "Tentacruel",
+        "level": 58,
+        "ivScale": 200,
+        "personality": 4650624,
+        "moves": [
+          "Scald",
+          "Sludge Bomb",
+          "Toxic",
+          "Knock Off"
+        ]
+      },
+      {
+        "species": "Crobat",
+        "level": 59,
+        "ivScale": 200,
+        "personality": 5638280,
+        "moves": [
+          "Cross Poison",
+          "Air Slash",
+          "Confuse Ray",
+          "Toxic"
+        ]
+      },
+      {
+        "species": "Weezing",
+        "level": 61,
+        "ivScale": 200,
+        "personality": 6625936,
+        "item": "Leftovers",
+        "moves": [
+          "Sludge Bomb",
+          "Will-O-Wisp",
+          "Pain Split",
+          "Explosion"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_cheren_rematch",
+    "name": "Cheren",
+    "class": "Leader Cheren",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Potion"
+    ],
+    "prizeMoney": 1560,
+    "party": [
+      {
+        "species": "Patrat",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 13862280,
+        "moves": [
+          "Work Up",
+          "Bite",
+          "Tackle"
+        ]
+      },
+      {
+        "species": "Pidove",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 11775624,
+        "moves": [
+          "Work Up",
+          "Quick Attack",
+          "Leer"
+        ]
+      },
+      {
+        "species": "Lillipup",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 2121096,
+        "item": "Oran Berry",
+        "moves": [
+          "Work Up",
+          "Bite",
+          "Tackle"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_roxie_rematch",
+    "name": "Roxie",
+    "class": "Leader Roxie",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion"
+    ],
+    "prizeMoney": 2160,
+    "party": [
+      {
+        "species": "Koffing",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 270984,
+        "item": "Oran Berry",
+        "moves": [
+          "Venoshock",
+          "Assurance",
+          "Tackle",
+          "Smog"
+        ]
+      },
+      {
+        "species": "Grimer",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 12411784,
+        "moves": [
+          "Venoshock",
+          "Mud-Slap",
+          "Disable",
+          "Poison Gas"
+        ]
+      },
+      {
+        "species": "Whirlipede",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 12065928,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Venoshock",
+          "Poison Sting",
+          "Protect",
+          "Rollout"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_burgh_rematch",
+    "name": "Burgh",
+    "class": "Leader Burgh",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 2880,
+    "party": [
+      {
+        "species": "Dwebble",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 10639496,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Struggle Bug",
+          "Rock Blast",
+          "Feint Attack",
+          "Rock Polish"
+        ]
+      },
+      {
+        "species": "Shelmet",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 13032840,
+        "moves": [
+          "Struggle Bug",
+          "Mega Drain",
+          "Acid",
+          "Curse"
+        ]
+      },
+      {
+        "species": "Karrablast",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 15878024,
+        "moves": [
+          "Struggle Bug",
+          "Headbutt",
+          "Aerial Ace",
+          "Endure"
+        ]
+      },
+      {
+        "species": "Leavanny",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 3571848,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Struggle Bug",
+          "Razor Leaf",
+          "Aerial Ace",
+          "Grass Whistle"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_elesa_rematch",
+    "name": "Elesa",
+    "class": "Leader Elesa",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 3600,
+    "party": [
+      {
+        "species": "Emolga",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 10208904,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Volt Switch",
+          "Quick Attack",
+          "Pursuit",
+          "Aerial Ace"
+        ]
+      },
+      {
+        "species": "Flaaffy",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 5631880,
+        "moves": [
+          "Volt Switch",
+          "Take Down",
+          "Thunder Wave",
+          "Confuse Ray"
+        ]
+      },
+      {
+        "species": "Joltik",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 5764488,
+        "moves": [
+          "Volt Switch",
+          "X-Scissor",
+          "Thunder Wave",
+          "Energy Ball"
+        ]
+      },
+      {
+        "species": "Zebstrika",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 2710152,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Volt Switch",
+          "Flame Charge",
+          "Stomp",
+          "Pursuit"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_clay_rematch",
+    "name": "Clay",
+    "class": "Leader Clay",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 3960,
+    "party": [
+      {
+        "species": "Krokorok",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 14781576,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Bulldoze",
+          "Crunch",
+          "Sandstorm",
+          "Torment"
+        ]
+      },
+      {
+        "species": "Sandslash",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 3659656,
+        "moves": [
+          "Bulldoze",
+          "Crush Claw",
+          "Rock Slide",
+          "Hone Claws"
+        ]
+      },
+      {
+        "species": "Onix",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 13950600,
+        "moves": [
+          "Bulldoze",
+          "Rock Slide",
+          "Explosion",
+          "Rock Polish"
+        ]
+      },
+      {
+        "species": "Excadrill",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 7953544,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Bulldoze",
+          "Metal Claw",
+          "Slash",
+          "Rock Slide"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_skyla_rematch",
+    "name": "Skyla",
+    "class": "Leader Skyla",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 4680,
+    "party": [
+      {
+        "species": "Swoobat",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 3960200,
+        "moves": [
+          "Acrobatics",
+          "Psychic",
+          "Energy Ball",
+          "Attract"
+        ]
+      },
+      {
+        "species": "Skarmory",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 7508616,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Aerial Ace",
+          "Steel Wing",
+          "X-Scissor",
+          "Agility"
+        ]
+      },
+      {
+        "species": "Sigilyph",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 7974536,
+        "moves": [
+          "Air Cutter",
+          "Psychic",
+          "Flash Cannon",
+          "Hypnosis"
+        ]
+      },
+      {
+        "species": "Swanna",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 16243080,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Air Slash",
+          "Surf",
+          "Roost",
+          "Feather Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_drayden_rematch",
+    "name": "Drayden",
+    "class": "Leader Drayden",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 5760,
+    "party": [
+      {
+        "species": "Druddigon",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 5858696,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Dragon Tail",
+          "Revenge",
+          "Rock Slide",
+          "Crunch"
+        ]
+      },
+      {
+        "species": "Flygon",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 76936,
+        "moves": [
+          "Dragon Tail",
+          "Crunch",
+          "Earth Power",
+          "Rock Slide"
+        ]
+      },
+      {
+        "species": "Altaria",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 7709064,
+        "moves": [
+          "Dragon Pulse",
+          "Cotton Guard",
+          "Sing",
+          "Fire Blast"
+        ]
+      },
+      {
+        "species": "Haxorus",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 5085320,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Dragon Tail",
+          "Shadow Claw",
+          "X-Scissor",
+          "Dragon Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_leader_marlon_rematch",
+    "name": "Marlon",
+    "class": "Leader Marlon",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6120,
+    "party": [
+      {
+        "species": "Wailord",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 5195912,
+        "moves": [
+          "Scald",
+          "Rain Dance",
+          "Ice Beam",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Carracosta",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 6804360,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Scald",
+          "Rock Slide",
+          "Crunch",
+          "Shell Smash"
+        ]
+      },
+      {
+        "species": "Mantine",
+        "level": 68,
+        "ivScale": 250,
+        "personality": 13577096,
+        "moves": [
+          "Scald",
+          "Air Slash",
+          "Ice Beam",
+          "Confuse Ray"
+        ]
+      },
+      {
+        "species": "Jellicent",
+        "level": 70,
+        "ivScale": 250,
+        "personality": 7689608,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Scald",
+          "Shadow Ball",
+          "Energy Ball",
+          "Recover"
+        ]
+      }
+    ]
   }
 ]

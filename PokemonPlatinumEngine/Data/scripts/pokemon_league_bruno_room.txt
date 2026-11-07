@@ -12,7 +12,13 @@ script Bruno
   say "I am Bruno of the Elite Four! My Pokémon and I have trained together until we move as one."
   say "We will smash anything that stands in our way, with all the strength our bodies hold!"
   say "Hoo hah! Come on!"
+  if flag JohtoHallOfFame goto SecondRound
   battle self as "johto_elite_four_bruno_bruno"
+  goto RoundOver
+label SecondRound
+  say "Hoo hah! You have come back stronger, and so have we. Let us see whose muscles have grown more!"
+  battle self as "johto_elite_four_bruno_bruno_2"
+label RoundOver
   speaker "Bruno"
   say "Our strength... wasn't enough? Hah! Then we have a long way still to climb."
   setflag FLAG_HIDE_BRUNOS_ROOM_EXIT

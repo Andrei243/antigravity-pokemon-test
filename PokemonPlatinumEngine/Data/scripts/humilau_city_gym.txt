@@ -37,7 +37,7 @@ label Won
 script Marlon
   face 0 player
   speaker marlon "Marlon"
-  if badge wave goto Won
+  if badge wave goto Back
   scene "Marlon's battle"
   say "Sup! Here already, huh? You look strong! Shoots! Let's do this!"
   battle 0 as "unova_leader_marlon"
@@ -66,4 +66,15 @@ label Tm
   say "Whoa, you forgot your TM! Here."
   give "TM55"
   setflag FLAG_UNOVA_GOT_TM55
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM55 goto Won
+  if flag FLAG_DAILY_UNOVA_MARLON_REMATCH goto Won
+  ask "Hey hey, the Champion! The tide is high and the water is warm! Want to swim another round with me?"
+  if no goto Won
+  say "Awesome! Dive right in, and do not forget to breathe!"
+  battle 0 as "unova_leader_marlon_rematch"
+  say "Whoa, that was a wave! You swept me clean off my feet. Come back tomorrow, the tide will be higher."
+  setflag FLAG_DAILY_UNOVA_MARLON_REMATCH
   end

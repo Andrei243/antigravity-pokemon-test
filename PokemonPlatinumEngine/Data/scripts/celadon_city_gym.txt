@@ -8,7 +8,7 @@
 script Erika
   face erika player
   speaker "Erika"
-  if badge rainbow goto Won
+  if badge rainbow goto Back
   scene "Erika"
   say "Hello... Lovely weather, isn't it? I must have dozed off in the sunshine."
   say "I'm Erika, the Leader of this Gym. I study flower arranging, and my Pokémon are all of the Grass type."
@@ -37,6 +37,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM19_FROM_ERIKA goto Tm
   say "Losing to you was no disgrace. I must devote myself to my studies of flowers and of battle."
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM19_FROM_ERIKA goto Won
+  if flag FLAG_DAILY_KANTO_ERIKA_REMATCH goto Won
+  ask "Oh, welcome back, Champion. The garden has bloomed twice since you were here. Would you like to see my Pokémon in full flower?"
+  if no goto Won
+  say "Lovely. Then please, do not hold back. I shall not."
+  battle self as "kanto_leader_erika_rematch"
+  say "Oh dear... you win again. I will tend my garden, and my team, a little more carefully until tomorrow."
+  setflag FLAG_DAILY_KANTO_ERIKA_REMATCH
   end
 
 

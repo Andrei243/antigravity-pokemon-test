@@ -34,10 +34,24 @@
     },
     {
       "en": [
+        "The League has called the strongest of us back. This time I will not hold anything in reserve!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Will"
+      ]
+    },
+    {
+      "en": [
         "Will"
       ],
       "text": [
-        "Will"
+        ""
+      ],
+      "was": [
+        "Eu... nu pot să cred. Puterea mea psihică n-a fost de ajuns."
       ]
     },
     {
@@ -45,7 +59,10 @@
         "I... can't believe it. My psychic power was not enough."
       ],
       "text": [
-        "Eu... nu pot să cred. Puterea mea psihică n-a fost de ajuns."
+        ""
+      ],
+      "was": [
+        "Mergi în camera următoare. Acolo vei afla ce sunt cu adevărat cei din Elita celor Patru."
       ]
     },
     {
@@ -53,7 +70,10 @@
         "Go on to the next room. You will learn there what the Elite Four truly are."
       ],
       "text": [
-        "Mergi în camera următoare. Acolo vei afla ce sunt cu adevărat cei din Elita celor Patru."
+        ""
+      ],
+      "was": [
+        "Chiar și după ce am pierdut, nu-mi schimb drumul. Voi continua să mă antrenez până voi vedea de unde vine puterea ta."
       ]
     },
     {
@@ -61,7 +81,7 @@
         "Even having lost, I won't change my course. I'll keep training until I can see where your strength comes from."
       ],
       "text": [
-        "Chiar și după ce am pierdut, nu-mi schimb drumul. Voi continua să mă antrenez până voi vedea de unde vine puterea ta."
+        ""
       ]
     }
   ]

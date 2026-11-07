@@ -8,7 +8,7 @@
 script Misty
   face misty player
   speaker "Misty"
-  if badge cascade goto Won
+  if badge cascade goto Back
   scene "Misty"
   say "Hi, you're a new face! Trainers who want to turn pro need a policy for raising their Pokémon."
   say "Mine? It's all-out offence with Water types! Let's see if you can keep your head above water!"
@@ -31,6 +31,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM03_FROM_MISTY goto Tm
   say "Water Pulse can throw the foe off balance. Use it well, and remember who taught you!"
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM03_FROM_MISTY goto Won
+  if flag FLAG_DAILY_KANTO_MISTY_REMATCH goto Won
+  ask "Hey, it is the Champion! My Pokémon have been swimming laps ever since you left. Want to see how fast they have got?"
+  if no goto Won
+  say "All right! Dive in, and do not expect me to go easy!"
+  battle self as "kanto_leader_misty_rematch"
+  say "Wow, you are still too much for me! Fine, but I will be waiting for you here tomorrow, with a better plan."
+  setflag FLAG_DAILY_KANTO_MISTY_REMATCH
   end
 
 

@@ -230,6 +230,7 @@ if (mode == "run") h.RunScenariosMode();
 if (mode == "serve") h.ServeMode();
 if (mode == "scenarios") h.ScenariosMode();
 if (mode == "venues") h.VenuesMode();
+if (mode == "journey") h.JourneyMode();
 if (mode == "layers") h.LayersMode();
 if (mode == "soak") h.SoakMode();
 if (mode == "pointer") h.PointerMode();

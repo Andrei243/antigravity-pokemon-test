@@ -242,7 +242,7 @@ label Both
 script LtSurge
   face lt_surge player
   speaker "Lt. Surge"
-  if badge thunder goto Won
+  if badge thunder goto Back
   scene "Surge"
   say "Hey, kid! What do you think you're doing here? You won't last long in battle, not with your puny power!"
   say "I tell you, kid, electric Pokémon saved me during the war! Now let's see you survive a jolt like that!"
@@ -267,6 +267,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM34_FROM_SURGE goto Tm
   say "A little word of advice, kid. Electricity is sure powerful, but it's useless against Ground types!"
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM34_FROM_SURGE goto Won
+  if flag FLAG_DAILY_KANTO_LT_SURGE_REMATCH goto Won
+  ask "Hey, kid! Champion or not, you still have to get past my Gym to talk to me, and you did it again! Fancy a real battle?"
+  if no goto Won
+  say "Ha! That is the spirit! My Electric Pokémon are charged up to the brim!"
+  battle self as "kanto_leader_lt_surge_rematch"
+  say "Whoa! You short-circuited the whole team! Come back tomorrow, kid, and I will have them fully recharged."
+  setflag FLAG_DAILY_KANTO_LT_SURGE_REMATCH
   end
 
 

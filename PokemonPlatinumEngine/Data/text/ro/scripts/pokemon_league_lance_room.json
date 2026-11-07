@@ -42,10 +42,24 @@
     },
     {
       "en": [
+        "The title is yours, but a title is only a promise. Prove again that it was earned!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Lance"
+      ]
+    },
+    {
+      "en": [
         "Lance"
       ],
       "text": [
-        "Lance"
+        ""
+      ],
+      "was": [
+        "...S-a terminat. Am pierdut."
       ]
     },
     {
@@ -53,7 +67,10 @@
         "...It's over. I've lost."
       ],
       "text": [
-        "...S-a terminat. Am pierdut."
+        ""
+      ],
+      "was": [
+        "Tu și Pokémonii tăi aveți o legătură pe care rareori o văd. Aveți încredere unii în alții, iar încrederea asta a învins."
       ]
     },
     {
@@ -61,7 +78,10 @@
         "You and your Pokémon have a bond I've rarely seen. You trusted each other, and that trust won through."
       ],
       "text": [
-        "Tu și Pokémonii tăi aveți o legătură pe care rareori o văd. Aveți încredere unii în alții, iar încrederea asta a învins."
+        ""
+      ],
+      "was": [
+        "Ca Campion, spun cu mândrie: ești noul Campion al Ligii Pokémon!"
       ]
     },
     {
@@ -69,7 +89,10 @@
         "As the Champion, I'm proud to say it: you are the new Champion of the Pokémon League!"
       ],
       "text": [
-        "Ca Campion, spun cu mândrie: ești noul Campion al Ligii Pokémon!"
+        ""
+      ],
+      "was": [
+        "Mary"
       ]
     },
     {
@@ -77,7 +100,10 @@
         "Mary"
       ],
       "text": [
-        "Mary"
+        ""
+      ],
+      "was": [
+        "Oh, așteptați! Așteptați-ne, vă rog!"
       ]
     },
     {
@@ -85,7 +111,10 @@
         "Oh, wait! Wait for us, please!"
       ],
       "text": [
-        "Oh, așteptați! Așteptați-ne, vă rog!"
+        ""
+      ],
+      "was": [
+        "Mary"
       ]
     },
     {
@@ -93,7 +122,10 @@
         "Mary"
       ],
       "text": [
-        "Mary"
+        ""
+      ],
+      "was": [
+        "S-a terminat deja? Am ratat tot! Sunt Mary, de la Discuții Pokémon la radio. Am venit să iau un interviu noului Campion!"
       ]
     },
     {
@@ -101,7 +133,10 @@
         "Is it over already? We've missed the whole thing! I'm Mary, from Pokémon Talk on the radio. I came to interview the new Champion!"
       ],
       "text": [
-        "S-a terminat deja? Am ratat tot! Sunt Mary, de la Discuții Pokémon la radio. Am venit să iau un interviu noului Campion!"
+        ""
+      ],
+      "was": [
+        "Profesorul Oak"
       ]
     },
     {
@@ -109,7 +144,10 @@
         "Prof. Oak"
       ],
       "text": [
-        "Profesorul Oak"
+        ""
+      ],
+      "was": [
+        "Liniștește-te, Mary. {player}, ai câștigat. Am auzit de la ușă. Felicitări, Campionule!"
       ]
     },
     {
@@ -117,7 +155,10 @@
         "Calm yourself, Mary. {player}, you've won. I heard it from the doorway. Congratulations, Champion!"
       ],
       "text": [
-        "Liniștește-te, Mary. {player}, ai câștigat. Am auzit de la ușă. Felicitări, Campionule!"
+        ""
+      ],
+      "was": [
+        "Când ți-am dat Pokédexul ăla, nu mi-am închipuit că vei fi aici atât de curând. Pokémonii tăi au încredere în tine. Asta e puterea unui adevărat antrenor."
       ]
     },
     {
@@ -125,7 +166,10 @@
         "When I handed you that Pokédex, I never dreamt you'd be standing here so soon. Your Pokémon trust you. That's the strength of a true trainer."
       ],
       "text": [
-        "Când ți-am dat Pokédexul ăla, nu mi-am închipuit că vei fi aici atât de curând. Pokémonii tăi au încredere în tine. Asta e puterea unui adevărat antrenor."
+        ""
+      ],
+      "was": [
+        "Lance"
       ]
     },
     {
@@ -133,7 +177,10 @@
         "Lance"
       ],
       "text": [
-        "Lance"
+        ""
+      ],
+      "was": [
+        "{player}, vino cu mine. Mai e o singură cameră, unde Liga păstrează numele Campionilor ei."
       ]
     },
     {
@@ -141,7 +188,7 @@
         "{player}, come with me. There is one room left, where the League keeps the names of its Champions."
       ],
       "text": [
-        "{player}, vino cu mine. Mai e o singură cameră, unde Liga păstrează numele Campionilor ei."
+        ""
       ]
     }
   ],

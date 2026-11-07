@@ -19,7 +19,13 @@ script Lance
   say "I knew that one day you would stand here. Ever since the Lake of Rage, I've wanted to see how far you would go."
   say "We fought side by side once. Today I stand in your way, as the League's Champion should."
   say "My dragons have never been beaten in this room. Show me everything you have!"
+  if flag JohtoHallOfFame goto SecondRound
   battle t10r0601_wataru as "johto_champion_lance"
+  goto RoundOver
+label SecondRound
+  say "The title is yours, but a title is only a promise. Prove again that it was earned!"
+  battle t10r0601_wataru as "johto_champion_lance_2"
+label RoundOver
   speaker "Lance"
   say "...It's over. I've lost."
   say "You and your Pokémon have a bond I've rarely seen. You trusted each other, and that trust won through."

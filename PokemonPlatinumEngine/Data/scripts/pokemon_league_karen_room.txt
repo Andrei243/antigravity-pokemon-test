@@ -13,7 +13,13 @@ script Karen
   say "I am Karen of the Elite Four. You're {player}? How amusing."
   say "My Pokémon are of the Dark type. Untamed, hard to read, and far tougher than they look."
   say "Think you can take them? Just try to entertain me. Let's go."
+  if flag JohtoHallOfFame goto SecondRound
   battle self as "johto_elite_four_karen_karen"
+  goto RoundOver
+label SecondRound
+  say "Back for more? Good. I was getting bored. Show me how much you have grown."
+  battle self as "johto_elite_four_karen_karen_2"
+label RoundOver
   speaker "Karen"
   say "Well, aren't you good. I like that in a trainer."
   setflag FLAG_HIDE_KARENS_ROOM_EXIT

@@ -9821,3 +9821,46 @@ Peak training is our name for the later games' hyper training, and its rule is p
 - **For Battle Points** (`Data/training.json`'s `battlePoints`, `frontier prize training`): Bottle Cap 48, Gold Bottle Cap 160, Ability Capsule 48, Ability Patch 200, each mint 32, on Platinum's scale (its booths' held items cost 16 to 48 and a set of seven pays 3 to 7). The training club's clerk (`common.TrainingExchange`, our person, look `training_clerk`) trades them for a Champion beside Sinnoh's Exchange Service Corner, at Hoenn's island Exchange Service Corner and in Unova's Gear Station, all on the Frontier's one set of points. `frontier buy` asks the price again of the list the prize was chosen from, so a list whose price changed in between sells nothing.
 - **Found**: a Bottle Cap of ours on Route 226's island, before its house, and one in Route 228's sandy hollow beside the Shiny Stone, each a ball with a flag of ours (`FLAG_OBTAINED_ROUTE_226_BOTTLE_CAP`, `_228_`). The drills' tenth and fiftieth golds give the caps too (TR2).
 - **Every tool can be had** (decision 2): `Data/ItemSources.cs` lists every sure way the data and the scripts give an item (a counter's stock, a prize list, a ball, a hidden item, a script's `give` or `find`), by region or everywhere; a wild Pokémon's held item, the Underground's walls and a Hidden Grotto are chance and not counted. `TrainingToolsTests.EveryToolCanBeHad` holds the mints, the Exp. Candies, the Ability Capsule and Patch and the two caps to Sinnoh's, and names what other plans owe: Exp. Candy XS and XL, the Dynamax Candy, Max Mushrooms and the TRs (plan 33), the nectars and Legends: Arceus's candies (plan 23), the mochi (plan 34), the Shiny Charm (plan 40). Unova's feathers are TR4's.
+
+## The Leaders' rematches in every region (2026-11-07, plan 41 · EG5, decision 6)
+
+**Parity.** Once a finished region's Hall of Fame is entered, each of its Leaders and League members has a team that
+something in the game fights again: Sinnoh's at the Battleground and in the League's rooms (plan 02 · S15), Johto's Leaders
+by phone at Saffron's dojo (plan 20 · J15), Hoenn's through Match Call (plan 21 · H12), and from EG5 on FireRed's Kanto
+Leaders and Unova's eight in their own Gyms, and Johto's Elite Four and Lance in their rooms. `RematchParityTests` holds
+the list (a first team to the team it battles with again; the exceptions named with why; a region built later fails until
+its session adds rows or is named as owing them: Kalos by plan 23 · Z4, Alola by plan 23 · Z7).
+
+- **A Gym's rematch** is the Leader's own script, reached only by the road of a Leader already beaten: `if badge X goto Back`,
+  where `Back` hands over the TM first if it is owed, then does nothing before the region's Hall of Fame
+  (`KantoHallOfFame`, `UnovaHallOfFame`) and nothing for the rest of the day once the rematch has been fought
+  (`FLAG_DAILY_KANTO_<WHO>_REMATCH`, `FLAG_DAILY_UNOVA_<WHO>_REMATCH`; `DailyEvents` clears every `FLAG_DAILY_` flag with
+  the day). It asks first, and a no leaves the Leader's usual talk. A battle lost does not set the day's flag: the Leader
+  can be fought again at once. The Gyms' own puzzles stand as they did (Surge behind his gates, Blaine behind his quiz).
+- **Kanto's seven** are teams under Kanto's own ids in `our-trainers.json` (`kanto_leader_<who>_rematch`, class `Leader`).
+  Brock, Misty, Lt. Surge, Erika, Sabrina and Blaine take HeartGold's second teams (`johto_leader_<who>_<who>_2`),
+  moves FireRed's species cannot learn by the data's legality swapped for ones they can (Sabrina's Alakazam knows Recover
+  for Gravity). **Koga is ours**: HeartGold's Koga is its Elite Four member, so the Gym Leader's rematch is six Pokémon at
+  55 to 61 (Ariados, Venomoth, Muk, Tentacruel, Crobat, Weezing) of the poison he fights with. **Viridian stays empty**
+  as FireRed leaves it: Giovanni's Gym is shut for good (`FLAG_HIDE_VIRIDIAN_GIOVANNI`) and he returns as the Rocket
+  leader of plan 41's epilogue (EG9).
+- **Unova's eight** fight in their Gyms with teams of ours, `unova_leader_<who>_rematch`. Black 2 has no Gym rematches, and
+  its `unova_leader_<who>_2` are its Challenge Mode's (the first battle's levels with better IVs, held items and sometimes a
+  Pokémon more: Cheren's is Patrat 11, Pidove 11, Lillipup 13), so fought after the Hall of Fame they would be as weak as
+  the first battle. Ours keep Black 2's own picks (species, moves, items and the trainer's mind of each `_2` team, nothing new
+  invented) and raise every Pokémon by the same number of levels, so that the team's highest stands at 70 in Black 2's own
+  scale (Cheren: Patrat 68, Pidove 68, Lillipup 70; Marlon: Wailord 68, Carracosta 68, Mantine 68, Jellicent 70); Unova's
+  level mapping then lifts them as it lifts every Unova trainer, and `RematchLevels` once a later region is finished. Black 2's
+  moves are kept as the game gave them, not held to `Legality` (whose data is older: Venoshock, Struggle Bug and the like);
+  no move was changed. The Elite Four and Iris already fought their own `_2` to `_4` after Unova's Hall of Fame.
+- **Johto's League second round.** The decompilation cache holds HeartGold's data (its trainer numbers: `TRAINER_ELITE_FOUR_WILL_WILL_2`
+  702 to `KAREN_2` 705, `TRAINER_CHAMPION_LANCE_2` 701 and `_3` 733) and not its scripts, so the rule that picks the second
+  teams could not be read. Ours: once Johto's Hall of Fame is entered (`JohtoHallOfFame`) each of Will, Koga, Bruno and
+  Karen, and Lance as the League's Champion, fights the `_2` team in their own room when the League is challenged again,
+  as Unova's Four do; Lance's `_3` stays the Dragon's Den's. A challenge again begins as the first does: the hall's
+  arrival puts the doors back.
+- **Met as every rematch is.** `TrainerDatabase.IsRematchTeam` knows a team numbered after a Leader's or an Elite
+  Four member's first team of any region (`unova_leader_cheren_2`, `unova_elite_four_shauntal_2`; classes
+  `Leader <name>` and `Elite Four <name>` as Black 2's import writes them) as well as a Champion's, and `_rematch` ids
+  as ever; where the player has gone past the region, `RematchLevels` lifts them to the furthest region's post-game
+  levels.

@@ -9,7 +9,7 @@
 script Koga
   face koga player
   speaker "Koga"
-  if badge soul goto Won
+  if badge soul goto Back
   scene "Koga"
   say "Fwahahaha! A mere child dares to challenge me? I am Koga, Leader of this Gym!"
   say "Ninja arts are the arts of deception. My poisons will sap your strength while you stumble in confusion!"
@@ -36,6 +36,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM06_FROM_KOGA goto Tm
   say "You have the makings of a fine trainer. Remember: when strength fails, cunning wins the day."
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM06_FROM_KOGA goto Won
+  if flag FLAG_DAILY_KANTO_KOGA_REMATCH goto Won
+  ask "Fwahaha! The Champion returns to my Gym. My new poisons are ready, and they need an opponent worthy of them. Will you test them?"
+  if no goto Won
+  say "Excellent! Remember, child: a ninja does not fight with strength alone!"
+  battle self as "kanto_leader_koga_rematch"
+  say "Hmph! Again my poisons were not enough. I shall brew something worse by tomorrow."
+  setflag FLAG_DAILY_KANTO_KOGA_REMATCH
   end
 
 
