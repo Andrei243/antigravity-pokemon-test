@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Iki Town"
+    ],
+    "text": [
+      "Iki Town"
+    ]
+  },
+  "people": {
+    "grandmother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the kahuna's house. My husband is out more often than he's home, and our grandson eats more than both of us together!"
+        ],
+        "text": [
+          "Aceasta e casa kahunei. Soțul meu e mai mult plecat decât acasă, iar nepotul nostru mănâncă mai mult decât noi doi la un loc!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

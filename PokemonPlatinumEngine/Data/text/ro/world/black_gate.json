@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Gate Guard"
+        ],
+        "text": [
+          "Paznic de poartă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Black City is through there. It never sleeps, and neither do the Trainers who go there."
+        ],
+        "text": [
+          "Black City e pe acolo. Nu doarme niciodată, și nici Antrenorii care merg acolo."
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrân"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see the Black Tower. My knees told me not to climb it."
+        ],
+        "text": [
+          "Am venit să văd Turnul Negru. Genunchii mi-au spus să nu-l urc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

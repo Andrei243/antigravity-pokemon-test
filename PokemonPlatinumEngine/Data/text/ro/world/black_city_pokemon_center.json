@@ -1,0 +1,105 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționer"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistentă"
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot ajuta?"
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Backpacker"
+        ],
+        "text": [
+          "Drumeț cu rucsac"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Even the Pokémon Center is open all night here. Black City never stops."
+        ],
+        "text": [
+          "Până și Centrul Pokémon e deschis toată noaptea aici. Black City nu se oprește niciodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

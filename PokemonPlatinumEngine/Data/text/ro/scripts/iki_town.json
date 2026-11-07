@@ -1,0 +1,260 @@
+{
+  "KahunaAway": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Iki Town! This is where the island's festival is held, right on that stage."
+      ],
+      "text": [
+        "Bun venit în Iki Town! Aici se ține festivalul insulei, chiar pe scena aceea."
+      ]
+    },
+    {
+      "en": [
+        "Bad news, though: the kahuna's gone off somewhere. He does that. He's a busy man."
+      ],
+      "text": [
+        "Vești proaste, însă: kahuna a plecat undeva. Face asta. E un om ocupat."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and a girl I know just ran up the Mahalo Trail, north of the village, in an awful hurry. Would you go and check on her for me?"
+      ],
+      "text": [
+        "Ah, și o fată pe care o cunosc tocmai a urcat în goană pe Poteca Mahalo, la nord de sat, grăbită îngrozitor. Ai putea s-o verifici pentru mine?"
+      ]
+    }
+  ],
+  "KahunaHome": [
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Ho ho! So you're the new face Kukui told me about. And it seems the island's guardian has taken an interest in you as well!"
+      ],
+      "text": [
+        "Ho ho! Deci tu ești chipul nou despre care mi-a vorbit Kukui. Și se pare că ocrotitorul insulei s-a interesat și el de tine!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Hala's the kahuna of Melemele, the one who watches over the whole island. Kahuna, this is {player}."
+      ],
+      "text": [
+        "Hala e kahuna din Melemele, cel care veghează asupra întregii insule. Kahuna, ți-l prezint pe {player}."
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Every child in Alola goes out into the world with a partner. Here are three who have been waiting. Choose the one you like!"
+      ],
+      "text": [
+        "Fiecare copil din Alola pornește în lume cu un partener. Iată trei care te-au așteptat. Alege-l pe cel care îți place!"
+      ]
+    },
+    {
+      "en": [
+        "{player} chose {starter}!"
+      ],
+      "text": [
+        "{player} l-a ales pe {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "A fine choice. May the two of you grow strong together."
+      ],
+      "text": [
+        "O alegere bună. Fie ca voi doi să deveniți puternici împreună."
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Tutu! Wait for me! Did I miss it?"
+      ],
+      "text": [
+        "Tutu! Așteaptă-mă! Am pierdut ceva?"
+      ]
+    },
+    {
+      "en": [
+        "Alola! I'm Hau. That's my grandpa, the kahuna! You got your Pokémon already? Then this one's mine!"
+      ],
+      "text": [
+        "Alola! Sunt Hau. Ăla e bunicul meu, kahuna! Ți-ai primit deja Pokémonul? Atunci pe ăsta îl iau eu!"
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "You were off eating again, weren't you? Very well, very well."
+      ],
+      "text": [
+        "Iar ai fost la mâncat, nu-i așa? Bine, bine."
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! We've both got Pokémon now, so let's battle! The first battle's the best one!"
+      ],
+      "text": [
+        "Hei, {player}! Acum avem amândoi Pokémoni, deci hai să ne luptăm! Prima luptă e cea mai frumoasă!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Aw, you're really good! That was so much fun. Your Pokémon looked like it was having fun too!"
+      ],
+      "text": [
+        "Of, ești foarte bun! Ce distracție a fost! Pokémonul tău părea că se distrează și el!"
+      ]
+    },
+    {
+      "en": [
+        "We won! But that was so close. Let's battle again sometime, okay?"
+      ],
+      "text": [
+        "Am câștigat! Dar a fost la mustață. Hai să ne luptăm din nou cândva, bine?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! What a battle! Now, {player}, come by my laboratory on the beach south of your house. I've got something for you."
+      ],
+      "text": [
+        "Uuu! Ce luptă! Acum, {player}, treci pe la laboratorul meu de pe plajă, la sud de casa ta. Am ceva pentru tine."
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "The kahuna might be back soon. Have a look around the village while you wait."
+      ],
+      "text": [
+        "Kahuna s-ar putea întoarce curând. Uită-te prin sat cât aștepți."
+      ]
+    }
+  ],
+  "Hala": [
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "The island watches over all of us, and the guardian watches over the island. Take good care of your partner."
+      ],
+      "text": [
+        "Insula veghează asupra noastră, a tuturor, iar ocrotitorul veghează asupra insulei. Ai grijă de partenerul tău."
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Have you tried the malasadas in Hau'oli City? They're the best thing in Alola! Well, after Pokémon."
+      ],
+      "text": [
+        "Ai gustat malasada din Hau'oli City? Sunt cel mai bun lucru din Alola! Ei bine, după Pokémoni."
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
           "Kentaro"
         ],
         "text": [
-          ""
+          "Kentaro"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "The forest is my dojo! Show me your fighting spirit!"
         ],
         "text": [
-          ""
+          "Pădurea este dojo-ul meu! Arată-mi spiritul tău de luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "My spirit wavered. Yours didn't."
         ],
         "text": [
-          ""
+          "Spiritul meu a șovăit. Al tău nu."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Lee"
         ],
         "text": [
-          ""
+          "Lee"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I punch the air in the clearing every morning. Today I'll punch through you!"
         ],
         "text": [
-          ""
+          "Lovesc aerul din poiană în fiecare dimineață. Azi te lovesc pe tine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Well, the air never punched back."
         ],
         "text": [
-          ""
+          "Ei bine, aerul nu mi-a răspuns niciodată."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Kelsey"
         ],
         "text": [
-          ""
+          "Kelsey"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Only strong Trainers make it this far into the forest. Are you one?"
         ],
         "text": [
-          ""
+          "Doar Antrenorii puternici ajung atât de adânc în pădure. Ești unul?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "You're one, all right."
         ],
         "text": [
-          ""
+          "Ești unul, fără îndoială."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Kathrine"
         ],
         "text": [
-          ""
+          "Kathrine"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I came here to train in peace. A battle is a kind of peace too, right?"
         ],
         "text": [
-          ""
+          "Am venit aici să mă antrenez în pace. O luptă e și ea un fel de pace, nu?"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "A very loud kind, it turns out."
         ],
         "text": [
-          ""
+          "Un fel foarte zgomotos, se pare."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Keston"
         ],
         "text": [
-          ""
+          "Keston"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "We're on a school trip! I'm supposed to be studying bugs, but battling's more fun!"
         ],
         "text": [
-          ""
+          "Suntem într-o excursie școlară! Ar trebui să studiez insectele, dar luptele sunt mai distractive!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "I'll go back to the bugs now."
         ],
         "text": [
-          ""
+          "Mă întorc la insecte acum."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Millie"
         ],
         "text": [
-          ""
+          "Millie"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Our teacher said to stay with the group. Battle me quickly before she notices!"
         ],
         "text": [
-          ""
+          "Profesoara ne-a spus să rămânem cu grupul. Luptă cu mine repede înainte să observe!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "She noticed. And I lost."
         ],
         "text": [
-          ""
+          "A observat. Și am pierdut."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Battle Girl"
         ],
         "text": [
-          ""
+          "Fată de Luptă"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "Running round the clearing is my warm-up. The real training starts deeper in."
         ],
         "text": [
-          ""
+          "Alergatul prin poiană e încălzirea mea. Antrenamentul adevărat începe mai adânc."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -188,7 +188,7 @@
           "The trees grow so thick in the middle that the sun barely gets through. Mind you don't get lost."
         ],
         "text": [
-          ""
+          "Copacii cresc atât de deși în mijloc că soarele abia trece. Ai grijă să nu te rătăcești."
         ]
       }
     }
@@ -199,7 +199,7 @@
         "Pinwheel Forest\nThe great wood south of Nacrene City"
       ],
       "text": [
-        ""
+        "Pădurea Pinwheel\nMarea pădure la sud de Nacrene City"
       ]
     },
     "2": {
@@ -207,7 +207,7 @@
         "Trainer Tips\nThe forest's tall grass hides many Bug Pokémon. Bring plenty of Poké Balls!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nIarba înaltă a pădurii ascunde mulți Pokémoni de tip Insectă. Adu multe Poké Ball-uri!"
       ]
     }
   }

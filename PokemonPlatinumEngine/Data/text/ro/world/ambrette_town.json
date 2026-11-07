@@ -1,0 +1,68 @@
+{
+  "people": {
+    "angler": {
+      "name": {
+        "en": [
+          "Angler"
+        ],
+        "text": [
+          "Pescar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've fished off this pier since before the aquarium was built. The big ones only bite at dusk."
+        ],
+        "text": [
+          "Pescuiesc de pe cheiul acesta de dinainte să fie construit acvariul. Cei mari mușcă doar la amurg."
+        ]
+      }
+    },
+    "child": {
+      "name": {
+        "en": [
+          "Child"
+        ],
+        "text": [
+          "Copil"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw a Pokémon in the tide pools that looked just like a rock. Then it blinked at me!"
+        ],
+        "text": [
+          "Am văzut un Pokémon în bălțile de maree care semăna cu o piatră. Apoi mi-a clipit!"
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamnă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ambrette is quiet in the afternoons. Everyone's out on the water, or asleep in the shade."
+        ],
+        "text": [
+          "Ambrette e liniștit după-amiaza. Toți sunt pe apă sau dorm la umbră."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Ambrette Town\nA town on a bay, where the cliff road meets the south coast."
+      ],
+      "text": [
+        "Ambrette Town\nUn oraș pe un golf, unde drumul de pe stâncă întâlnește coasta de sud."
+      ]
+    }
+  }
+}

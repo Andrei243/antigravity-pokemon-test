@@ -1,0 +1,77 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Gate Guard"
+        ],
+        "text": [
+          "Paznic de poartă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Skyarrow Bridge is just through there. It's the longest bridge in Unova, so pace yourself!"
+        ],
+        "text": [
+          "Podul Skyarrow e chiar pe acolo. E cel mai lung pod din Unova, așa că dozează-ți efortul!"
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Susținător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I cheer for everyone who crosses. Go, go, go!"
+        ],
+        "text": [
+          "Îi încurajez pe toți cei care trec. Hai, hai, hai!"
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ships pass right under the bridge. From the deck they look like toys."
+        ],
+        "text": [
+          "Corăbiile trec chiar pe sub pod. De pe punte arată ca jucăriile."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          "Arlechin"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I juggle on the bridge for the people walking by. The wind steals a ball now and then."
+        ],
+        "text": [
+          "Jonglez pe pod pentru oamenii care trec. Vântul îmi fură câte o minge din când în când."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

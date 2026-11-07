@@ -1,0 +1,68 @@
+{
+  "people": {
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for a week and I've stayed a month. The sea here is the bluest I've ever seen!"
+        ],
+        "text": [
+          "Am venit pentru o săptămână și am rămas o lună. Marea de aici e cea mai albastră pe care am văzut-o!"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Wishiwashi out there look tiny on their own. Wait till you see a whole school of them, though."
+        ],
+        "text": [
+          "Wishiwashi de acolo arată mici de unul singur. Așteaptă să vezi un banc întreg, însă."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Trainers' School is further along the promenade. Everyone on Melemele learns to battle there!"
+        ],
+        "text": [
+          "Școala Antrenorilor e mai departe pe faleză. Toată lumea de pe Melemele învață să lupte acolo!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Hau'oli City\nThe city of the island's beaches and shops."
+      ],
+      "text": [
+        "Hau'oli City\nOrașul plajelor și al magazinelor insulei."
+      ]
+    }
+  }
+}

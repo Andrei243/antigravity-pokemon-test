@@ -6,7 +6,7 @@
           "Cliff"
         ],
         "text": [
-          ""
+          "Cliff"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "My shift's over, but a battle's never over. Let's go!"
         ],
         "text": [
-          ""
+          "Tura mea s-a terminat, dar o luptă nu se termină niciodată. Hai!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Back to the pick for me, then."
         ],
         "text": [
-          ""
+          "Înapoi la târnăcop, deci."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Carter"
         ],
         "text": [
-          ""
+          "Carter"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I've walked these tunnels since before the lifts were built. Show me what you've got!"
         ],
         "text": [
-          ""
+          "Umblu prin tunelurile astea de dinainte să fie construite liftele. Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "You walk them better than I ever did."
         ],
         "text": [
-          ""
+          "Le străbați mai bine decât le-am străbătut eu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Wade"
         ],
         "text": [
-          ""
+          "Wade"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "A mountain this twisted needs a Trainer this stubborn. Battle!"
         ],
         "text": [
-          ""
+          "Un munte atât de răsucit are nevoie de un Antrenor atât de încăpățânat. Luptă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Twisted me right round, you did."
         ],
         "text": [
-          ""
+          "M-ai răsucit de tot."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Carol"
         ],
         "text": [
-          ""
+          "Carol"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I patch up the miners when a ladder gives way. Let's see if your Pokémon need patching!"
         ],
         "text": [
-          ""
+          "Îi cos pe mineri când cedează câte o scară. Să vedem dacă Pokémonii tăi au nevoie de cusut!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "They don't. Mine do. Excuse me a moment."
         ],
         "text": [
-          ""
+          "Nu au. Ai mei da. Scuză-mă o clipă."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "The ladders take you up and down the mountain's floors. Lose count and you'll be wandering for hours."
         ],
         "text": [
-          ""
+          "Scările te duc în sus și în jos pe etajele muntelui. Pierzi șirul și te rătăcești ore în șir."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -136,7 +136,7 @@
           "In winter the snow comes in through the high openings and the lower floors freeze over. Bring something warm."
         ],
         "text": [
-          ""
+          "Iarna zăpada intră pe deschizăturile de sus și etajele de jos îngheață. Adu ceva cald."
         ]
       }
     }

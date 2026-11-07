@@ -1,0 +1,57 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hilaire"
+        ],
+        "text": [
+          "Hilaire"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Hilaire: This cave glitters like a jewel box. I'll guard the treasure!"
+        ],
+        "text": [
+          "Drumețul Hilaire: Peștera asta sclipește ca o casetă de bijuterii. Eu păzesc comoara!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Hilaire: You take the treasure, then. It's mostly wet rock anyway."
+        ],
+        "text": [
+          "Drumețul Hilaire: Ia tu comoara, atunci. Oricum e mai mult stâncă udă."
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Solène"
+        ],
+        "text": [
+          "Solène"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Solène: Shh! Do you hear the Magnezone humming? ...Oh. You've seen me. Battle!"
+        ],
+        "text": [
+          "Drumeața Solène: Șșt! Auzi cum bâzâie Magnezone? ...A. M-ai văzut. Luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Solène: The humming was louder than I thought."
+        ],
+        "text": [
+          "Drumeața Solène: Bâzâitul era mai puternic decât credeam."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

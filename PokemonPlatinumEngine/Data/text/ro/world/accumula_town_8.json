@@ -6,7 +6,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamnă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome. This house has been in my family for generations."
         ],
         "text": [
-          ""
+          "Bun venit. Casa asta e în familia mea de generații."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I remember when Accumula was just a few houses. Now look at it!"
         ],
         "text": [
-          ""
+          "Îmi amintesc când Accumula erau doar câteva case. Acum uită-te la el!"
         ]
       }
     }

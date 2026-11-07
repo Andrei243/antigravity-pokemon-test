@@ -6,7 +6,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Icirrus City is just through there. The cold hits you the moment you step out."
         ],
         "text": [
-          ""
+          "Icirrus City e chiar pe acolo. Frigul te lovește imediat ce ieși."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Victor"
         ],
         "text": [
-          ""
+          "Victor"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "My Pokémon dug half these tunnels. They can dig you a defeat too!"
         ],
         "text": [
-          ""
+          "Pokémonii mei au săpat jumătate din tunelurile astea. Pot săpa și o înfrângere pentru tine!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "They dug us a hole instead."
         ],
         "text": [
-          ""
+          "Au săpat o groapă pentru noi în schimb."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Zach"
         ],
         "text": [
-          ""
+          "Zach"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "I came up the mountain for the view and stayed for the battles. Have at you!"
         ],
         "text": [
-          ""
+          "Am urcat muntele pentru priveliște și am rămas pentru lupte. Hai!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "A fine battle. Better than the view."
         ],
         "text": [
-          ""
+          "O luptă frumoasă. Mai bună decât priveliștea."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -84,7 +84,7 @@
           "Deeper down there's a tunnel that runs all the way to Driftveil's side. The diggers there are always busy."
         ],
         "text": [
-          ""
+          "Mai jos e un tunel care duce până pe partea Driftveil. Săpătorii de acolo sunt mereu ocupați."
         ]
       }
     }

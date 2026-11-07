@@ -1,0 +1,24 @@
+{
+  "people": {
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TrailSign": {
+      "en": [
+        "Mahalo Trail\nNorth: the Ruins of Conflict\nSouth: Iki Town"
+      ],
+      "text": [
+        "Poteca Mahalo\nNord: Ruinele Conflictului\nSud: Iki Town"
+      ]
+    }
+  }
+}

@@ -6,7 +6,7 @@
           "William"
         ],
         "text": [
-          ""
+          "William"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I come to the Dreamyard to catch Munna. Battle me instead!"
         ],
         "text": [
-          ""
+          "Vin în Dreamyard să prind Munna. Luptă cu mine în schimb!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "You're no Munna."
         ],
         "text": [
-          ""
+          "Tu nu ești un Munna."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Rita"
         ],
         "text": [
-          ""
+          "Rita"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "My teacher says the ruins were a laboratory once. Spooky!"
         ],
         "text": [
-          ""
+          "Profesoara mea zice că ruinele au fost cândva un laborator. Înfricoșător!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Spookier to lose."
         ],
         "text": [
-          ""
+          "Și mai înfricoșător e să pierzi."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Keita"
         ],
         "text": [
-          ""
+          "Keita"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "I'm exploring the ruins! Want to battle?"
         ],
         "text": [
-          ""
+          "Explorez ruinele! Vrei să te lupți?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "The ruins win this one. And you."
         ],
         "text": [
-          ""
+          "Ruinele câștigă de data asta. Și tu."
         ]
       }
     }

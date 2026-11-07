@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Tower of Mastery"
+    ],
+    "text": [
+      "Turnul Măiestriei"
+    ]
+  },
+  "people": {
+    "gurkinn": {
+      "name": {
+        "en": [
+          "Gurkinn"
+        ],
+        "text": [
+          "Gurkinn"
+        ]
+      }
+    },
+    "korrina": {
+      "name": {
+        "en": [
+          "Korrina"
+        ],
+        "text": [
+          "Korrina"
+        ]
+      }
+    },
+    "pupil": {
+      "name": {
+        "en": [
+          "Pupil"
+        ],
+        "text": [
+          "Elev"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The master says a Pokémon only changes when its heart and its Trainer's beat as one. I'm still listening for mine."
+        ],
+        "text": [
+          "Maestrul zice că un Pokémon se schimbă doar când inima lui și cea a Antrenorului bat ca una. Eu încă o ascult pe a mea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

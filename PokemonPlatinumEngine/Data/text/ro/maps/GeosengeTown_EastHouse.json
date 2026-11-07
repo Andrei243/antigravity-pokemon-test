@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Geosenge Town"
+    ],
+    "text": [
+      "Geosenge Town"
+    ]
+  },
+  "people": {
+    "scholar": {
+      "name": {
+        "en": [
+          "Scholar"
+        ],
+        "text": [
+          "Savant"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three thousand years old, those stones, and no two scholars agree on why they're there. Wonderful, isn't it?"
+        ],
+        "text": [
+          "Pietrele astea au trei mii de ani și nu există doi savanți care să cadă de acord de ce sunt acolo. Minunat, nu-i așa?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

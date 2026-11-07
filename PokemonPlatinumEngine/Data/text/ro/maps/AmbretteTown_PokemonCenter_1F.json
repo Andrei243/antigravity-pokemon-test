@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Ambrette Town"
+    ],
+    "text": [
+      "Ambrette Town"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Nurse Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Funcționar: Bun venit! Tejgheaua Pokémon Mart e deschisă. Cu ce te pot servi?"
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ambrette's bay never freezes, and the Pokémon here are the strongest swimmers on the coast. Bring a good Water type and a bit of patience."
+        ],
+        "text": [
+          "Golful din Ambrette nu îngheață niciodată, iar Pokémonii de aici sunt cei mai buni înotători de pe coastă. Adu un Pokémon de tip Apă bun și puțină răbdare."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fată"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east follows the coast all the way. Just past the tall grass there's a cave that glitters, if you've got the nerve."
+        ],
+        "text": [
+          "Drumul spre est urmează coasta până la capăt. Chiar după iarba înaltă e o peșteră care sclipește, dacă ai curaj."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

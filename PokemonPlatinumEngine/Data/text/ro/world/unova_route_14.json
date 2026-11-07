@@ -1,106 +1,238 @@
 {
   "people": {
     "0": {
-      "name": { "en": [ "Glinda" ], "text": [ "Glinda" ] },
+      "name": {
+        "en": [
+          "Glinda"
+        ],
+        "text": [
+          "Glinda"
+        ]
+      },
       "before": {
-        "en": [ "I train by running the length of this valley every morning. You're my warm-down!" ],
-        "text": [ "Mă antrenez alergând de-a lungul văii în fiecare dimineață. Tu ești încălzirea mea de la final!" ]
+        "en": [
+          "I train by running the length of this valley every morning. You're my warm-down!"
+        ],
+        "text": [
+          "Mă antrenez alergând de-a lungul văii în fiecare dimineață. Tu ești încălzirea mea de la final!"
+        ]
       },
       "after": {
-        "en": [ "Some warm-down. I'm the one who's beaten." ],
-        "text": [ "Ce încălzire! Eu am ieșit învinsă." ]
+        "en": [
+          "Some warm-down. I'm the one who's beaten."
+        ],
+        "text": [
+          "Ce încălzire! Eu am ieșit învinsă."
+        ]
       }
     },
     "1": {
-      "name": { "en": [ "Sid" ], "text": [ "Sid" ] },
+      "name": {
+        "en": [
+          "Sid"
+        ],
+        "text": [
+          "Sid"
+        ]
+      },
       "before": {
-        "en": [ "The water off the falls is full of fight. So am I. Battle?" ],
-        "text": [ "Apa de sub cascadă e plină de luptă. Și eu la fel. Ne luptăm?" ]
+        "en": [
+          "The water off the falls is full of fight. So am I. Battle?"
+        ],
+        "text": [
+          "Apa de sub cascadă e plină de luptă. Și eu la fel. Ne luptăm?"
+        ]
       },
       "after": {
-        "en": [ "I'll go back to fishing. The fish lose to me sometimes." ],
-        "text": [ "Mă întorc la pescuit. Peștii mai pierd și ei uneori cu mine." ]
+        "en": [
+          "I'll go back to fishing. The fish lose to me sometimes."
+        ],
+        "text": [
+          "Mă întorc la pescuit. Peștii mai pierd și ei uneori cu mine."
+        ]
       }
     },
     "2": {
-      "name": { "en": [ "Jay" ], "text": [ "Jay" ] },
+      "name": {
+        "en": [
+          "Jay"
+        ],
+        "text": [
+          "Jay"
+        ]
+      },
       "before": {
-        "en": [ "I came to the valley to sharpen myself against the mist. Sharpen me further!" ],
-        "text": [ "Am venit în vale să mă călesc în ceață. Călește-mă și mai tare!" ]
+        "en": [
+          "I came to the valley to sharpen myself against the mist. Sharpen me further!"
+        ],
+        "text": [
+          "Am venit în vale să mă călesc în ceață. Călește-mă și mai tare!"
+        ]
       },
       "after": {
-        "en": [ "Hah! I'm the one who's been honed down." ],
-        "text": [ "Ha! Eu am fost cel tocit." ]
+        "en": [
+          "Hah! I'm the one who's been honed down."
+        ],
+        "text": [
+          "Ha! Eu am fost cel tocit."
+        ]
       }
     },
     "3": {
-      "name": { "en": [ "Sheldon" ], "text": [ "Sheldon" ] },
+      "name": {
+        "en": [
+          "Sheldon"
+        ],
+        "text": [
+          "Sheldon"
+        ]
+      },
       "before": {
-        "en": [ "A stroll by the sea and then a battle. A fine afternoon, wouldn't you say?" ],
-        "text": [ "O plimbare pe lângă mare și apoi o luptă. O după-amiază minunată, nu-i așa?" ]
+        "en": [
+          "A stroll by the sea and then a battle. A fine afternoon, wouldn't you say?"
+        ],
+        "text": [
+          "O plimbare pe lângă mare și apoi o luptă. O după-amiază minunată, nu-i așa?"
+        ]
       },
       "after": {
-        "en": [ "A fine afternoon, all the same." ],
-        "text": [ "Tot o după-amiază minunată." ]
+        "en": [
+          "A fine afternoon, all the same."
+        ],
+        "text": [
+          "Tot o după-amiază minunată."
+        ]
       }
     },
     "4": {
-      "name": { "en": [ "Marian" ], "text": [ "Marian" ] },
+      "name": {
+        "en": [
+          "Marian"
+        ],
+        "text": [
+          "Marian"
+        ]
+      },
       "before": {
-        "en": [ "The mist is ruining my hair, so I'll take it out on you. Battle!" ],
-        "text": [ "Ceața îmi strică părul, așa că mă răzbun pe tine. La luptă!" ]
+        "en": [
+          "The mist is ruining my hair, so I'll take it out on you. Battle!"
+        ],
+        "text": [
+          "Ceața îmi strică părul, așa că mă răzbun pe tine. La luptă!"
+        ]
       },
       "after": {
-        "en": [ "My hair AND my pride. What a day." ],
-        "text": [ "Și părul, ȘI mândria. Ce zi." ]
+        "en": [
+          "My hair AND my pride. What a day."
+        ],
+        "text": [
+          "Și părul, ȘI mândria. Ce zi."
+        ]
       }
     },
     "5": {
-      "name": { "en": [ "Kipp" ], "text": [ "Kipp" ] },
+      "name": {
+        "en": [
+          "Kipp"
+        ],
+        "text": [
+          "Kipp"
+        ]
+      },
       "before": {
-        "en": [ "Trainers who make it this far are worth battling. Prove it!" ],
-        "text": [ "Antrenorii care ajung până aici merită o luptă. Dovedește-o!" ]
+        "en": [
+          "Trainers who make it this far are worth battling. Prove it!"
+        ],
+        "text": [
+          "Antrenorii care ajung până aici merită o luptă. Dovedește-o!"
+        ]
       },
       "after": {
-        "en": [ "Proven. Very proven." ],
-        "text": [ "Dovedit. Foarte dovedit." ]
+        "en": [
+          "Proven. Very proven."
+        ],
+        "text": [
+          "Dovedit. Foarte dovedit."
+        ]
       }
     },
     "6": {
-      "name": { "en": [ "Junko" ], "text": [ "Junko" ] },
+      "name": {
+        "en": [
+          "Junko"
+        ],
+        "text": [
+          "Junko"
+        ]
+      },
       "before": {
-        "en": [ "I've been watching the path for a challenger. You'll do!" ],
-        "text": [ "Am tot pândit poteca după un adversar. Tu ești numai bun!" ]
+        "en": [
+          "I've been watching the path for a challenger. You'll do!"
+        ],
+        "text": [
+          "Am tot pândit poteca după un adversar. Tu ești numai bun!"
+        ]
       },
       "after": {
-        "en": [ "You'll more than do. You're too strong." ],
-        "text": [ "Ești mai mult decât bun. Ești prea puternic." ]
+        "en": [
+          "You'll more than do. You're too strong."
+        ],
+        "text": [
+          "Ești mai mult decât bun. Ești prea puternic."
+        ]
       }
     },
     "7": {
-      "name": { "en": [ "Reece" ], "text": [ "Reece" ] },
+      "name": {
+        "en": [
+          "Reece"
+        ],
+        "text": [
+          "Reece"
+        ]
+      },
       "before": {
-        "en": [ "I followed the river all the way here. Now let's see where a battle takes us!" ],
-        "text": [ "Am urmat râul până aici. Acum să vedem unde ne duce o luptă!" ]
+        "en": [
+          "I followed the river all the way here. Now let's see where a battle takes us!"
+        ],
+        "text": [
+          "Am urmat râul până aici. Acum să vedem unde ne duce o luptă!"
+        ]
       },
       "after": {
-        "en": [ "It took me straight to losing." ],
-        "text": [ "M-a dus direct la înfrângere." ]
+        "en": [
+          "It took me straight to losing."
+        ],
+        "text": [
+          "M-a dus direct la înfrângere."
+        ]
       }
     }
   },
   "signs": {
     "1": {
-      "en": [ "Route 14\nBetween Undella Town and Black City" ],
-      "text": [ "Route 14\nÎntre Undella Town și Black City" ]
+      "en": [
+        "Route 14\nBetween Undella Town and Black City"
+      ],
+      "text": [
+        "Route 14\nÎntre Undella Town și Black City"
+      ]
     },
     "2": {
-      "en": [ "Route 14\nThe Abundant Shrine lies to the west" ],
-      "text": [ "Route 14\nAbundant Shrine e spre vest" ]
+      "en": [
+        "Route 14\nThe Abundant Shrine lies to the west"
+      ],
+      "text": [
+        "Route 14\nAbundant Shrine e spre vest"
+      ]
     },
     "3": {
-      "en": [ "Mind the falls!\nThe rocks are slippery in the mist" ],
-      "text": [ "Atenție la cascadă!\nPietrele alunecă în ceață" ]
+      "en": [
+        "Mind the falls!\nThe rocks are slippery in the mist"
+      ],
+      "text": [
+        "Atenție la cascadă!\nPietrele alunecă în ceață"
+      ]
     }
   }
 }

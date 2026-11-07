@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Shalour City"
+    ],
+    "text": [
+      "Shalour City"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear day you can see the tower from far out at sea. We steer home by it."
+        ],
+        "text": [
+          "Într-o zi senină se vede turnul din larg. Ne întoarcem acasă după el."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Coumarine City"
+    ],
+    "text": [
+      "Coumarine City"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Nurse Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Funcționar: Bun venit! Tejgheaua Pokémon Mart e deschisă. Cu ce te pot servi?"
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Coumarine is a garden city: every bed in the square is planted by the people who live here. Please keep your Pokémon off the flowers!"
+        ],
+        "text": [
+          "Coumarine e un oraș-grădină: fiecare strat din piață e plantat de oamenii care locuiesc aici. Ține-ți Pokémonii departe de flori, te rog!"
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fată"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walked here along the Blossom Road from Ambrette. The flowers get thicker the closer you come to the town."
+        ],
+        "text": [
+          "Am venit pe Drumul Florilor de la Ambrette. Florile se îndesesc cu cât te apropii de oraș."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționer"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Drumeț cu rucsac"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I always stop here before the forest. It's a long walk to the bridge."
         ],
         "text": [
-          ""
+          "Mă opresc mereu aici înainte de pădure. E un drum lung până la pod."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The museum gift shop sells the cutest postcards. I bought ten!"
         ],
         "text": [
-          ""
+          "Magazinul de suveniruri al muzeului vinde cele mai drăguțe cărți poștale. Am cumpărat zece!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetiță"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "My mum is painting at the café. I'm waiting for her here."
         ],
         "text": [
-          ""
+          "Mama pictează la cafenea. O aștept aici."
         ]
       }
     }

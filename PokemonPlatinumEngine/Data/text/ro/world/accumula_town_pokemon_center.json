@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționer"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamnă"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The professor in Nuvema sends all her new Trainers here first."
         ],
         "text": [
-          ""
+          "Profesoara din Nuvema îi trimite pe toți Antrenorii ei noi aici mai întâi."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "My first Pokémon came from Nuvema. We've been together ever since."
         ],
         "text": [
-          ""
+          "Primul meu Pokémon a venit din Nuvema. De atunci suntem împreună."
         ]
       }
     }

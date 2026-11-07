@@ -6,7 +6,7 @@
           "Gate Guard"
         ],
         "text": [
-          ""
+          "Paznic de poartă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Pinwheel Forest is just outside. Keep to the path, or you'll be turned around in no time."
         ],
         "text": [
-          ""
+          "Pădurea Pinwheel e chiar afară. Rămâi pe potecă sau te rătăcești imediat."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The bridge's lights come on after dark. From the forest they look like a string of pearls."
         ],
         "text": [
-          ""
+          "Luminile podului se aprind după lăsarea nopții. Din pădure arată ca un șirag de perle."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumeț"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I came up through the forest on foot. My boots are still full of leaves."
         ],
         "text": [
-          ""
+          "Am venit prin pădure pe jos. Cizmele mele sunt încă pline de frunze."
         ]
       }
     }

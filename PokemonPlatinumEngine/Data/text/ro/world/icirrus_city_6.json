@@ -6,7 +6,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I joined the club for the chairman's stories. I stayed for the Pokémon."
         ],
         "text": [
-          ""
+          "M-am înscris în club pentru poveștile președintelui. Am rămas pentru Pokémoni."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Lillipup"
         ],
         "text": [
-          ""
+          "Lillipup"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Lillipup wags its tail at everyone who comes in."
         ],
         "text": [
-          ""
+          "Lillipup dă din coadă la toți cei care intră."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Chairman"
         ],
         "text": [
-          ""
+          "Președinte"
         ]
       },
       "dialog": {
@@ -51,8 +51,8 @@
           "But my Minccino... ah, its tail! It sweeps the floor of the club every morning, all by itself!"
         ],
         "text": [
-          "",
-          ""
+          "Bun venit la Clubul Fanilor Pokémon! Sunt președintele lui și ador orice Pokémon există.",
+          "Dar Minccino-ul meu... ah, coada lui! Mătură podeaua clubului în fiecare dimineață, singur!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Minccino"
         ],
         "text": [
-          ""
+          "Minccino"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Minccino is dusting a corner with its tail."
         ],
         "text": [
-          ""
+          "Minccino șterge de praf un colț cu coada."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Cubchoo"
         ],
         "text": [
-          ""
+          "Cubchoo"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "Cubchoo sniffles. It seems quite happy all the same."
         ],
         "text": [
-          ""
+          "Cubchoo trage din nas. Pare destul de fericit totuși."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Deerling"
         ],
         "text": [
-          ""
+          "Deerling"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Deerling trots about the room."
         ],
         "text": [
-          ""
+          "Deerling trap prin cameră."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Audino"
         ],
         "text": [
-          ""
+          "Audino"
         ]
       },
       "dialog": {
@@ -124,7 +124,7 @@
           "Audino listens closely to your heartbeat."
         ],
         "text": [
-          ""
+          "Audino ascultă atent bătăile inimii tale."
         ]
       }
     }

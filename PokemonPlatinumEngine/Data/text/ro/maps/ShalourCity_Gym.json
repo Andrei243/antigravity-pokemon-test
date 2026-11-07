@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Shalour Gym"
+    ],
+    "text": [
+      "Sala Shalour"
+    ]
+  },
+  "people": {
+    "korrina": {
+      "name": {
+        "en": [
+          "Korrina"
+        ],
+        "text": [
+          "Korrina"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de sală"
+        ]
+      }
+    },
+    "kalos_black_belt_lucien": {
+      "name": {
+        "en": [
+          "Lucien"
+        ],
+        "text": [
+          "Lucien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Lucien: Korrina trains on wheels, and so do we. Feel the speed!"
+        ],
+        "text": [
+          "Centura Neagră Lucien: Korrina se antrenează pe roți, la fel și noi. Simte viteza!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Lucien: Too slow. Korrina is much faster than me."
+        ],
+        "text": [
+          "Centura Neagră Lucien: Prea încet. Korrina e mult mai rapidă decât mine."
+        ]
+      }
+    },
+    "kalos_battle_girl_ines": {
+      "name": {
+        "en": [
+          "Inès"
+        ],
+        "text": [
+          "Inès"
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Inès: You won't reach Korrina without a fight. Hi-yah!"
+        ],
+        "text": [
+          "Fata de Luptă Inès: Nu ajungi la Korrina fără o luptă. Hi-iah!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Inès: Korrina will knock you flat. Go on, then!"
+        ],
+        "text": [
+          "Fata de Luptă Inès: Korrina o să te doboare. Hai, atunci!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

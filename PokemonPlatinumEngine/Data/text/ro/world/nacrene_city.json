@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The warehouses were all turned into studios. Now the whole city smells of paint."
         ],
         "text": [
-          ""
+          "Depozitele au fost toate transformate în studiouri. Acum tot orașul miroase a vopsea."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The museum's dragon skeleton has stood in its hall since before I was born."
         ],
         "text": [
-          ""
+          "Scheletul de dragon al muzeului stă în sala lui de dinainte să mă nasc."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Lenora runs the museum now. She's as tough a curator as she was a Leader."
         ],
         "text": [
-          ""
+          "Lenora conduce acum muzeul. E o curatoare la fel de dură cum a fost Lider."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrână"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Once a week the café puts on music. You can hear it all down the street."
         ],
         "text": [
-          ""
+          "O dată pe săptămână cafeneaua face muzică. Se aude pe toată strada."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Drumeț cu rucsac"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I came to see the museum and stayed for the café. Best coffee in Unova."
         ],
         "text": [
-          ""
+          "Am venit să văd muzeul și am rămas pentru cafenea. Cea mai bună cafea din Unova."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "We're here on a school trip to the museum. I'm going to look at the fossils!"
         ],
         "text": [
-          ""
+          "Suntem aici într-o excursie școlară la muzeu. Mă duc să văd fosilele!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "My art teacher says Nacrene is where all the great painters live."
         ],
         "text": [
-          ""
+          "Profesorul meu de artă zice că Nacrene e locul unde trăiesc toți marii pictori."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrână"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "The old rails along the city were for trains carrying goods. Now people walk on them."
         ],
         "text": [
-          ""
+          "Vechile șine de-a lungul orașului erau pentru trenurile cu marfă. Acum oamenii merg pe ele."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Dancer"
         ],
         "text": [
-          ""
+          "Dansatoare"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "Nacrene's streets are made for dancing. Nobody minds a little music here."
         ],
         "text": [
-          ""
+          "Străzile din Nacrene sunt făcute pentru dans. Nimănui nu-i displace puțină muzică aici."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "I sell paint in the warehouse district. Business is always good."
         ],
         "text": [
-          ""
+          "Vând vopsea în cartierul depozitelor. Afacerile merg mereu bine."
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "I'm painting the museum's roof. It's harder than it looks; the light keeps changing."
         ],
         "text": [
-          ""
+          "Pictez acoperișul muzeului. E mai greu decât pare: lumina se schimbă mereu."
         ]
       }
     }
@@ -205,7 +205,7 @@
         "Nacrene City\nThe city of art, where the past meets the present"
       ],
       "text": [
-        ""
+        "Nacrene City\nOrașul artei, unde trecutul întâlnește prezentul"
       ]
     },
     "3": {
@@ -213,7 +213,7 @@
         "Nacrene Museum\nFossils and treasures of Unova"
       ],
       "text": [
-        ""
+        "Muzeul Nacrene\nFosile și comori din Unova"
       ]
     },
     "4": {
@@ -221,7 +221,7 @@
         "Nacrene City Warehouse District"
       ],
       "text": [
-        ""
+        "Cartierul Depozitelor din Nacrene City"
       ]
     },
     "14": {
@@ -229,7 +229,7 @@
         "Café Warehouse"
       ],
       "text": [
-        ""
+        "Cafeneaua Depozitului"
       ]
     },
     "15": {
@@ -237,7 +237,7 @@
         "Trainer Tips\nWarehouses here have been turned into studios. Please knock before you enter!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nDepozitele de aici au fost transformate în studiouri. Te rugăm să bați înainte să intri!"
       ]
     }
   }

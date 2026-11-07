@@ -1,0 +1,60 @@
+{
+  "people": {
+    "trevor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          "Trevor"
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrân"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those stones were old when my grandfather was young. Some say they were stood there to mark the end of a war."
+        ],
+        "text": [
+          "Pietrele alea erau vechi când bunicul meu era tânăr. Unii zic că au fost ridicate să marcheze sfârșitul unui război."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fată"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east goes along the hills and up to Shalour City, where the tower is. You can see it from the sea!"
+        ],
+        "text": [
+          "Drumul spre est merge de-a lungul dealurilor și urcă până la Shalour City, unde e turnul. Se vede de pe mare!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Geosenge Town\nA quiet town beside the standing stones."
+      ],
+      "text": [
+        "Geosenge Town\nUn oraș liniștit lângă pietrele ridicate."
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "n": {
+      "name": {
+        "en": [
+          "N"
+        ],
+        "text": [
+          "N"
+        ]
+      }
+    },
+    "zekrom": {
+      "name": {
+        "en": [
+          "Zekrom"
+        ],
+        "text": [
+          "Zekrom"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

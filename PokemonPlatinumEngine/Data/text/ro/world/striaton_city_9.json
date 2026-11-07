@@ -6,7 +6,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor Elită"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I teach the battle class. Today's lesson: types, types, types!"
         ],
         "text": [
-          ""
+          "Predau la cursul de luptă. Lecția de azi: tipuri, tipuri, tipuri!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Teacher"
         ],
         "text": [
-          ""
+          "Profesor"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome to the Trainers' School. We teach the basics to every new Trainer."
         ],
         "text": [
-          ""
+          "Bun venit la Școala Antrenorilor. Predăm bazele fiecărui Antrenor nou."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My son is in the class. I'm waiting to take him home."
         ],
         "text": [
-          ""
+          "Fiul meu e în clasă. Aștept să-l duc acasă."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Fire beats Grass, Grass beats Water, Water beats Fire! I know that much."
         ],
         "text": [
-          ""
+          "Focul bate Iarba, Iarba bate Apa, Apa bate Focul! Atâta știu."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I'm top of the class in status conditions. Ask me about paralysis!"
         ],
         "text": [
-          ""
+          "Sunt primul din clasă la stările de status. Întreabă-mă despre paralizie!"
         ]
       }
     }
@@ -97,7 +97,7 @@
         "The blackboard reads: \"A Pokémon that is asleep can't move. Wake it with an Awakening!\""
       ],
       "text": [
-        ""
+        "Pe tablă scrie: „Un Pokémon adormit nu se poate mișca. Trezește-l cu un Awakening!”"
       ]
     }
   }

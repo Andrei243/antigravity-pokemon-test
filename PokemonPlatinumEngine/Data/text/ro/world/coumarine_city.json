@@ -1,0 +1,68 @@
+{
+  "people": {
+    "gardener": {
+      "name": {
+        "en": [
+          "Gardener"
+        ],
+        "text": [
+          "Grădinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every bed in this garden has a keeper. Mine is the one with the blue ones, and no, you may not pick any."
+        ],
+        "text": [
+          "Fiecare strat din grădina asta are un păzitor. Al meu e cel cu cele albastre și nu, nu ai voie să culegi niciuna."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym is closed, but the Leader's Pokémon still come out to sunbathe on the rocks by the gate. They're huge!"
+        ],
+        "text": [
+          "Sala e închisă, dar Pokémonii Liderului tot ies să se bronzeze pe stâncile de lângă poartă. Sunt uriași!"
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrân"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've watched these flowers bloom for sixty summers. They come back every year, and so do the Pokémon who love them."
+        ],
+        "text": [
+          "Am privit florile astea înflorind șaizeci de veri. Se întorc în fiecare an, la fel ca Pokémonii care le iubesc."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Coumarine City\nA garden city of a hundred flower beds."
+      ],
+      "text": [
+        "Coumarine City\nUn oraș-grădină cu o sută de straturi de flori."
+      ]
+    }
+  }
+}

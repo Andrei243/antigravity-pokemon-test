@@ -1,0 +1,54 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Alola, cousin! You must be the new arrival. I'm Kukui, the Pokémon professor of these islands."
+      ],
+      "text": [
+        "Alola, verișorule! Tu trebuie să fii noul venit. Sunt Kukui, profesorul de Pokémon al acestor insule."
+      ]
+    },
+    {
+      "en": [
+        "Here in Alola, every kid gets a partner Pokémon from the island's kahuna. And Melemele's kahuna lives just up the road!"
+      ],
+      "text": [
+        "Aici, în Alola, fiecare copil primește un Pokémon partener de la kahuna insulei. Iar kahuna din Melemele locuiește chiar mai sus pe drum!"
+      ]
+    },
+    {
+      "en": [
+        "Iki Town is north up Route 1. I'll go on ahead and find him. Come on up whenever you're ready, yeah?"
+      ],
+      "text": [
+        "Iki Town e spre nord, pe Traseul 1. Merg înainte să-l găsesc. Vino când ești gata, da?"
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Iki Town is just north of here. The kahuna's waiting!"
+      ],
+      "text": [
+        "Iki Town e chiar la nord de aici. Kahuna te așteaptă!"
+      ]
+    }
+  ]
+}

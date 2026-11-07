@@ -1,0 +1,66 @@
+{
+  "people": {
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Élodie"
+        ],
+        "text": [
+          "Élodie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Élodie: Everyone on this road is going to Shalour to train. Let's warm up first!"
+        ],
+        "text": [
+          "Fata de Luptă Élodie: Toți cei de pe drumul ăsta merg la Shalour să se antreneze. Să ne încălzim întâi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Élodie: Warmed up and knocked down."
+        ],
+        "text": [
+          "Fata de Luptă Élodie: Încălzită și doborâtă."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Gustave"
+        ],
+        "text": [
+          "Gustave"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Gustave: The tower at Shalour taught my grandfather to fight. Let me teach you!"
+        ],
+        "text": [
+          "Centura Neagră Gustave: Turnul din Shalour l-a învățat pe bunicul meu să lupte. Lasă-mă să te învăț și pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Gustave: Grandfather would say I need more teaching."
+        ],
+        "text": [
+          "Centura Neagră Gustave: Bunicul ar zice că mai am nevoie de învățătură."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 11 · Miroir Way\nWest: Geosenge Town\nNorth: Shalour City"
+      ],
+      "text": [
+        "Traseul 11 · Calea Miroir\nVest: Geosenge Town\nNord: Shalour City"
+      ]
+    }
+  }
+}

@@ -1,5 +1,83 @@
 {
   "people": {
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Pierrick"
+        ],
+        "text": [
+          "Pierrick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Pierrick: The bay is empty today, and I'm itching for a bite. You'll do!"
+        ],
+        "text": [
+          "Pescarul Pierrick: Golful e gol azi și mă mănâncă palmele după o mușcătură. Tu faci față!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Pierrick: Nothing on the line, nothing in the bucket. Typical."
+        ],
+        "text": [
+          "Pescarul Pierrick: Nimic pe fir, nimic în găleată. Ca de obicei."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Ysolde"
+        ],
+        "text": [
+          "Ysolde"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ysolde: My sandwiches are on the rocks and my Pokémon are rested. Let's battle!"
+        ],
+        "text": [
+          "Excursionista Ysolde: Sandvișurile mele sunt pe stânci și Pokémonii mei sunt odihniți. Să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ysolde: Now my sandwiches are cold. Worth it."
+        ],
+        "text": [
+          "Excursionista Ysolde: Acum sandvișurile mele s-au răcit. A meritat."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Aurélien"
+        ],
+        "text": [
+          "Aurélien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Aurélien: The cliffs got me early today. Let me see how you do on flat ground!"
+        ],
+        "text": [
+          "Drumețul Aurélien: Stâncile m-au obosit devreme azi. Hai să văd cum te descurci pe teren plat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Aurélien: Flat ground, and you still knocked me over."
+        ],
+        "text": [
+          "Drumețul Aurélien: Teren plat, și tot m-ai doborât."
+        ]
+      }
+    },
     "fisherman": {
       "name": {
         "en": [
@@ -56,9 +134,12 @@
   "signs": {
     "RouteSign": {
       "en": [
-        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: Ambrette Town"
       ],
       "text": [
+        "Traseul 8 · Poteca Coastei Stâncoase\nNord: Cyllage City\nSud: Ambrette Town"
+      ],
+      "was": [
         "Ruta 8 · Poteca Coastei Stâncoase\nNord: Orașul Cyllage\nSud: închis de o alunecare de teren"
       ]
     }

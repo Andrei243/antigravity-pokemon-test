@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I moved here from the mainland years ago. I still can't get over how warm the sea is, even in winter."
+        ],
+        "text": [
+          "M-am mutat aici de pe continent acum ani de zile. Încă nu mă dumiresc cât de caldă e marea, chiar și iarna."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

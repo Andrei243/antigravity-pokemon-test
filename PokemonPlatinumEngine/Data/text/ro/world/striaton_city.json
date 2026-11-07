@@ -6,7 +6,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The fountain's water comes all the way from Wellspring Cave. It's the cleanest in Unova."
         ],
         "text": [
-          ""
+          "Apa fântânii vine tocmai din Wellspring Cave. E cea mai curată din Unova."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Pokémon Breeder"
         ],
         "text": [
-          ""
+          "Crescător Pokémon"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Striaton is a quiet city. Perfect for raising Pokémon."
         ],
         "text": [
-          ""
+          "Striaton e un oraș liniștit. Perfect pentru crescut Pokémoni."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The old Trainers' School is where I learned to draw Pokémon."
         ],
         "text": [
-          ""
+          "La vechea Școală a Antrenorilor am învățat să desenez Pokémoni."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Golan"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The restaurant's three brothers used to run the Gym. Now they just run the restaurant."
         ],
         "text": [
-          ""
+          "Cei trei frați de la restaurant conduceau odinioară Sala. Acum conduc doar restaurantul."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemeni"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The Dreamyard is behind the city. It's spooky at night!"
         ],
         "text": [
-          ""
+          "Dreamyard e în spatele orașului. Noaptea e înfricoșător!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The fountains in the plaza look different in every light."
         ],
         "text": [
-          ""
+          "Fântânile din piață arată altfel la fiecare lumină."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Golan"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "I eat at the restaurant every day. The brothers know my order by heart."
         ],
         "text": [
-          ""
+          "Mănânc la restaurant în fiecare zi. Frații îmi știu comanda pe de rost."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "We cheer for the brothers' battles at the restaurant. Three at once!"
         ],
         "text": [
-          ""
+          "Încurajăm luptele fraților la restaurant. Trei deodată!"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Nursery Aide"
         ],
         "text": [
-          ""
+          "Îngrijitoare de creșă"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "The children love the fountains. So do I."
         ],
         "text": [
-          ""
+          "Copiilor le plac fântânile. Și mie."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "Striaton's the first city most Trainers from Nuvema see."
         ],
         "text": [
-          ""
+          "Striaton e primul oraș pe care îl văd majoritatea Antrenorilor din Nuvema."
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Pokémon Breeder"
         ],
         "text": [
-          ""
+          "Crescător Pokémon"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "My Pokémon love walking by the fountain. They always want to splash in."
         ],
         "text": [
-          ""
+          "Pokémonilor mei le place să se plimbe pe lângă fântână. Vor mereu să se stropească."
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -212,7 +212,7 @@
           "I'm going to the Dreamyard to look for Munna!"
         ],
         "text": [
-          ""
+          "Merg în Dreamyard să caut Munna!"
         ]
       }
     }
@@ -223,7 +223,7 @@
         "Striaton City\nA city that blooms with the passion of Trainers"
       ],
       "text": [
-        ""
+        "Striaton City\nUn oraș care înflorește cu pasiunea Antrenorilor"
       ]
     },
     "3": {
@@ -231,7 +231,7 @@
         "Trainers' School"
       ],
       "text": [
-        ""
+        "Școala Antrenorilor"
       ]
     },
     "4": {
@@ -239,7 +239,7 @@
         "Striaton Restaurant"
       ],
       "text": [
-        ""
+        "Restaurantul Striaton"
       ]
     },
     "5": {
@@ -247,7 +247,7 @@
         "Trainer Tips\nThe Dreamyard lies east of the city."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nDreamyard se află la est de oraș."
       ]
     }
   }

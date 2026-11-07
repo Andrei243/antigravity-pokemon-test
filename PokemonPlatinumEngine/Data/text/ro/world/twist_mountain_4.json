@@ -6,7 +6,7 @@
           "Chloris"
         ],
         "text": [
-          ""
+          "Chloris"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I've battled in every cave in Unova. This one has the best echo. Listen!"
         ],
         "text": [
-          ""
+          "M-am luptat în fiecare peșteră din Unova. Aceasta are cel mai bun ecou. Ascultă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "That echo will be my defeat ringing for a while."
         ],
         "text": [
-          ""
+          "Ecoul acela va suna mult timp a înfrângerea mea."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Patton"
         ],
         "text": [
-          ""
+          "Patton"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Nobody's mined this seam in years, but a battle's still worth digging for!"
         ],
         "text": [
-          ""
+          "Nimeni nu a mai exploatat filonul ăsta de ani, dar o luptă tot merită săpată!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Struck out, didn't I?"
         ],
         "text": [
-          ""
+          "Am dat greș, nu-i așa?"
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ryan"
         ],
         "text": [
-          ""
+          "Ryan"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "You look lost. Beat me and I'll pretend I didn't notice!"
         ],
         "text": [
-          ""
+          "Pari rătăcit. Învinge-mă și mă fac că nu am observat!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "You're not lost. I am. In a losing streak."
         ],
         "text": [
-          ""
+          "Tu nu ești rătăcit. Eu sunt. Într-un șir de înfrângeri."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Hunter"
         ],
         "text": [
-          ""
+          "Hunter"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Every hiker worth the name climbs Twist Mountain once a year. Battle me at the top of my climb!"
         ],
         "text": [
-          ""
+          "Orice drumeț care se respectă urcă Twist Mountain o dată pe an. Luptă cu mine în vârful urcușului meu!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Down I go, then."
         ],
         "text": [
-          ""
+          "Cobor, atunci."
         ]
       }
     }

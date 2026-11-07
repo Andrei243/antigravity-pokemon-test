@@ -1,12 +1,23 @@
 {
-  "people": {},
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Prof. Juniper"
+        ],
+        "text": [
+          "Prof. Juniper"
+        ]
+      }
+    }
+  },
   "signs": {
     "1": {
       "en": [
         "A shelf of books on Pokémon origins. Professor Juniper wrote some of them."
       ],
       "text": [
-        ""
+        "Un raft cu cărți despre originea Pokémonilor. Profesoara Juniper a scris unele dintre ele."
       ]
     },
     "2": {
@@ -14,7 +25,7 @@
         "A machine for studying Pokémon. Its lights are blinking."
       ],
       "text": [
-        ""
+        "O mașinărie pentru studierea Pokémonilor. Luminile ei clipesc."
       ]
     },
     "3": {
@@ -22,7 +33,7 @@
         "A computer showing a map of Unova."
       ],
       "text": [
-        ""
+        "Un calculator care arată o hartă a Unovei."
       ]
     },
     "4": {
@@ -30,7 +41,7 @@
         "A bookshelf of research notes. They're very neat."
       ],
       "text": [
-        ""
+        "O bibliotecă de note de cercetare. Sunt foarte ordonate."
       ]
     },
     "5": {
@@ -38,7 +49,7 @@
         "A poster of the three Pokémon a new Trainer can choose from."
       ],
       "text": [
-        ""
+        "Un afiș cu cei trei Pokémoni dintre care poate alege un Antrenor nou."
       ]
     }
   }

@@ -1,0 +1,68 @@
+{
+  "people": {
+    "skater": {
+      "name": {
+        "en": [
+          "Skater"
+        ],
+        "text": [
+          "Patinator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shalour's streets are the smoothest in Kalos. I come all the way from Cyllage just to skate here!"
+        ],
+        "text": [
+          "Străzile din Shalour sunt cele mai netede din Kalos. Vin tocmai din Cyllage ca să patinez aici!"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At low tide you could walk out to the tower once, they say. Now the sea's come in, and it stands on the shore."
+        ],
+        "text": [
+          "Se zice că odinioară, la reflux, puteai merge pe jos până la turn. Acum marea a intrat și el stă pe mal."
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrână"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The guru up in the tower is older than me, and still climbs those stairs every day. Imagine!"
+        ],
+        "text": [
+          "Maestrul din turn e mai bătrân decât mine și tot urcă treptele alea în fiecare zi. Închipuie-ți!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Shalour City\nWhere the tower of Mega Evolution stands by the sea."
+      ],
+      "text": [
+        "Shalour City\nUnde turnul Mega Evoluției stă lângă mare."
+      ]
+    }
+  }
+}

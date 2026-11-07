@@ -1,0 +1,98 @@
+{
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "hala": {
+      "name": {
+        "en": [
+          "Hala"
+        ],
+        "text": [
+          "Hala"
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrână"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This stage has seen a festival every year since I was a little girl. We dance for the island's guardian."
+        ],
+        "text": [
+          "Scena asta a văzut un festival în fiecare an de când eram fetiță. Dansăm pentru ocrotitorul insulei."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Up the trail there's an old rope bridge over the gorge. My mum won't let me cross it!"
+        ],
+        "text": [
+          "Pe potecă, mai sus, e un pod vechi de frânghie peste cheu. Mama nu mă lasă să-l trec!"
+        ]
+      }
+    },
+    "vendor": {
+      "name": {
+        "en": [
+          "Vendor"
+        ],
+        "text": [
+          "Vânzător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fresh fruit, flower garlands, carvings of the guardian! Everything for the festival, right here."
+        ],
+        "text": [
+          "Fructe proaspete, ghirlande de flori, sculpturi ale ocrotitorului! Tot ce trebuie pentru festival, chiar aici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Iki Town\nA village on the hill, where the island's guardian is honoured."
+      ],
+      "text": [
+        "Iki Town\nUn sat pe deal, unde este cinstit ocrotitorul insulei."
+      ]
+    }
+  }
+}

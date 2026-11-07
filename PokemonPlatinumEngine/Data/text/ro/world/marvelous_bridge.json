@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Poké Fan"
+        ],
+        "text": [
+          "Fan Poké"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From the middle of the bridge you can see Black City's towers in one direction and Nimbasa's wheel in the other."
+        ],
+        "text": [
+          "Din mijlocul podului se văd turnurile din Black City într-o parte și roata din Nimbasa în cealaltă."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          "Susținători"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We walk the bridge to cheer at Nimbasa's stadiums. It's quicker than the train!"
+        ],
+        "text": [
+          "Mergem pe pod să încurajăm la stadioanele din Nimbasa. E mai rapid decât trenul!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

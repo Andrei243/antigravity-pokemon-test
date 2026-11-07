@@ -1,0 +1,109 @@
+{
+  "people": {
+    "4": {
+      "name": {
+        "en": [
+          "Xiao"
+        ],
+        "text": [
+          "Xiao"
+        ]
+      },
+      "before": {
+        "en": [
+          "The drips keep time for my kicks. Let me show you the rhythm!"
+        ],
+        "text": [
+          "Picăturile țin ritmul loviturilor mele. Lasă-mă să-ți arăt ritmul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "I lost the beat."
+        ],
+        "text": [
+          "Am pierdut ritmul."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Edward"
+        ],
+        "text": [
+          "Edward"
+        ]
+      },
+      "before": {
+        "en": [
+          "Down here nobody hears me shout. Hyah! Battle me!"
+        ],
+        "text": [
+          "Aici jos nu mă aude nimeni strigând. Hai! Luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Even my shout went quiet."
+        ],
+        "text": [
+          "Până și strigătul meu s-a stins."
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Thomas"
+        ],
+        "text": [
+          "Thomas"
+        ]
+      },
+      "before": {
+        "en": [
+          "I came down for the cold water and stayed for the battles!"
+        ],
+        "text": [
+          "Am coborât pentru apa rece și am rămas pentru lupte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Back into the cold water I go."
+        ],
+        "text": [
+          "Mă întorc în apa rece."
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Shaun"
+        ],
+        "text": [
+          "Shaun"
+        ]
+      },
+      "before": {
+        "en": [
+          "I have walked this cave since before the steps were worn. Show me what you've learned."
+        ],
+        "text": [
+          "Umblu prin peștera asta de dinainte să fie tocite treptele. Arată-mi ce ai învățat."
+        ]
+      },
+      "after": {
+        "en": [
+          "You've learned plenty."
+        ],
+        "text": [
+          "Ai învățat multe."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

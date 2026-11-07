@@ -6,7 +6,7 @@
           "Rayne"
         ],
         "text": [
-          ""
+          "Rayne"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I've walked this road a thousand times. Battle me, and make it a thousand and one!"
         ],
         "text": [
-          ""
+          "Am mers pe drumul ăsta de o mie de ori. Luptă cu mine și facem o mie și una!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "A thousand and one losses, it feels like."
         ],
         "text": [
-          ""
+          "O mie și una de înfrângeri, așa simt."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Jimmy"
         ],
         "text": [
-          ""
+          "Jimmy"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "This is my road! Battle me if you want to pass!"
         ],
         "text": [
-          ""
+          "Acesta e drumul meu! Luptă cu mine dacă vrei să treci!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "It's your road now."
         ],
         "text": [
-          ""
+          "Acum e drumul tău."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Henrietta"
         ],
         "text": [
-          ""
+          "Henrietta"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "I just started my journey! Let's battle!"
         ],
         "text": [
-          ""
+          "Tocmai mi-am început călătoria! Hai să luptăm!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "I'll start again tomorrow."
         ],
         "text": [
-          ""
+          "O iau de la capăt mâine."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Mali"
         ],
         "text": [
-          ""
+          "Mali"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Route 2's tall grass is full of Pokémon. And Trainers!"
         ],
         "text": [
-          ""
+          "Iarba înaltă de pe Traseul 2 e plină de Pokémoni. Și de Antrenori!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Full of Trainers better than me."
         ],
         "text": [
-          ""
+          "Plină de Antrenori mai buni decât mine."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "Striaton City is north. The Trainers' School there is great for beginners."
         ],
         "text": [
-          ""
+          "Striaton City e spre nord. Școala Antrenorilor de acolo e grozavă pentru începători."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -136,7 +136,7 @@
           "I'm looking for a Purrloin. They're sneaky!"
         ],
         "text": [
-          ""
+          "Caut un Purrloin. Sunt șmecheri!"
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -154,7 +154,7 @@
           "This road is where most Trainers from Nuvema have their first battles."
         ],
         "text": [
-          ""
+          "Pe drumul ăsta au primele lupte majoritatea Antrenorilor din Nuvema."
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Mikey"
         ],
         "text": [
-          ""
+          "Mikey"
         ]
       },
       "before": {
@@ -172,7 +172,7 @@
           "I've been training since sunrise! Battle!"
         ],
         "text": [
-          ""
+          "Mă antrenez din zori! Luptă!"
         ]
       },
       "after": {
@@ -180,7 +180,7 @@
           "Time for a nap."
         ],
         "text": [
-          ""
+          "E timpul pentru un pui de somn."
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Oriana"
         ],
         "text": [
-          ""
+          "Oriana"
         ]
       },
       "before": {
@@ -198,7 +198,7 @@
           "Even old Trainers like a good stroll. And a good battle!"
         ],
         "text": [
-          ""
+          "Până și Antrenorilor bătrâni le place o plimbare bună. Și o luptă bună!"
         ]
       },
       "after": {
@@ -206,7 +206,7 @@
           "A good stroll, at least."
         ],
         "text": [
-          ""
+          "O plimbare bună, cel puțin."
         ]
       }
     }
@@ -217,7 +217,7 @@
         "Route 2\nAccumula Town - Striaton City"
       ],
       "text": [
-        ""
+        "Traseul 2\nAccumula Town - Striaton City"
       ]
     },
     "3": {
@@ -225,7 +225,7 @@
         "Trainer Tips\nWeaken a wild Pokémon before you throw a Poké Ball."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nSlăbește un Pokémon sălbatic înainte să arunci un Poké Ball."
       ]
     },
     "4": {
@@ -233,7 +233,7 @@
         "Trainer Tips\nPokémon learn new moves as they grow. Check your team after a level up!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nPokémonii învață mișcări noi pe măsură ce cresc. Verifică-ți echipa după un nivel nou!"
       ]
     }
   }

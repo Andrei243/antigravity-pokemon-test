@@ -1,0 +1,45 @@
+{
+  "people": {
+    "cedric": {
+      "name": {
+        "en": [
+          "Prof. Cedric Juniper"
+        ],
+        "text": [
+          "Prof. Cedric Juniper"
+        ]
+      }
+    },
+    "uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      }
+    },
+    "mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      }
+    },
+    "azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

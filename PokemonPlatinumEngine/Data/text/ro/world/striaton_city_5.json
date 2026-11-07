@@ -6,7 +6,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I paint the Dreamyard's ruins. They seem to change every time I look."
         ],
         "text": [
-          ""
+          "Pictez ruinele din Dreamyard. Parcă se schimbă de fiecare dată când mă uit."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "My big brother is a Trainer. He's in Driftveil right now."
         ],
         "text": [
-          ""
+          "Fratele meu mai mare e Antrenor. Acum e în Driftveil."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Every Trainer who passes through Striaton gets a cheer from us!"
         ],
         "text": [
-          ""
+          "Fiecare Antrenor care trece prin Striaton primește de la noi un strigăt de încurajare!"
         ]
       }
     }
