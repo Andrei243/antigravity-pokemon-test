@@ -1184,6 +1184,13 @@ public partial class GameEngine
             game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
+        public void Royal(NPC first, NPC second, NPC third, bool mayLose)
+        {
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = mayLose;
+            game.StartTrainerBattle(first, second, thirdNpc: third);
+        }
+
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
         {
             game.flow.ScriptOutcome = BattleOutcome.None;

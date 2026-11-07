@@ -337,7 +337,7 @@ public sealed partial class ScriptRunner
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
         Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         // A voice is never heard in a hurry, so there is none to wait for (plan 26 · V2)
@@ -773,6 +773,28 @@ public sealed partial class ScriptRunner
                 Refresh(second);
                 host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                 afterBusy = () => AfterBattle(mayLose);
+                break;
+            }
+            // A Battle Royal (plan 14 · B13; docs/mechanics/rulings.md, "The Battle Royal"): three people of the map, each
+            // battling as a trainer of the data, as `battle … as` makes someone that trainer, every one for themselves.
+            // The battle gives nothing but a placing; a win is `won`, any other placing is neither won nor lost
+            case Op.Royal:
+            {
+                if (NoPokemonToBattle()) break;
+                var three = new NPC[3];
+                string[] who = { i.Name, i.Other, i.Partner };
+                for (int k = 0; k < 3; k++)
+                {
+                    var person = Person(who[k], i) ?? throw Wrong(i, "the player can't be battled");
+                    var record = TrainerDatabase.Get(i.Trainers[k]) ?? throw Wrong(i, $"there is no trainer '{i.Trainers[k]}'");
+                    var team = new Trainer { Id = record.Id };
+                    TrainerDatabase.Fill(team, record);
+                    person.TrainerData = team;
+                    three[k] = person;
+                }
+                bool mayLoseThis = i.Option;
+                host.Royal(three[0], three[1], three[2], mayLoseThis);
+                afterBusy = () => AfterBattle(mayLoseThis);
                 break;
             }
             // A Master Trainer's battle (plan 14 · B14; docs/mechanics/rulings.md, "Master Trainers"): the person
@@ -2110,6 +2132,11 @@ public sealed partial class ScriptRunner
         var team = host.Party.Members;
         switch (i.Name)
         {
+            // Plan 14 · B2: how many of the team may go up into a Sky Battle and can still fight (SkyBattles.CanFly):
+            // a sky trainer asks before the battle, which the game would otherwise refuse
+            case "fliers":
+                Result = team.Count(p => SkyBattles.CanFly(p) && !p.IsFainted);
+                break;
             // ScrCmd_IncreasePartyMonFriendship, for the Pokémon RESULT names (after choosepokemon): 255 with none
             // chosen, 254 for an Egg
             case "befriend":

@@ -789,6 +789,19 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
+    /// <summary>
+    /// A Battle Royal (plan 14 · B13): written down with its three trainers; a test's <see cref="Fight"/> answers for
+    /// it as for any battle, and a Royal gives nothing whatever its placing: no money, nobody beaten, nobody healed.
+    /// </summary>
+    public void Royal(NPC first, NPC second, NPC third, bool mayLose)
+    {
+        Shown("start a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        Outcome = Fight?.Invoke(first) ?? BattleOutcome.Won;
+        Log.Add($"royal {first.TrainerData?.Id} {second.TrainerData?.Id} {third.TrainerData?.Id} {Outcome}");
+    }
+
     public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
     {
         if (catcher != null) Log.Add($"catcher {catcher.Name} {catcher.Own.Species.Name} {catcher.Own.Level}");

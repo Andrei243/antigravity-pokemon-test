@@ -889,6 +889,8 @@
     // Plan 22 · U7, part a: Skyla and her pilots
     "Leader Skyla": "skyla",
     "Pilot": "pilot",
+    // Plan 14 · B2: X and Y's sky trainers, who jump in wingsuits, stand as the pilot until a look of their own is made
+    "Sky Trainer": "pilot",
     // Plan 22 · U9, part a: Ghetsis and the Shadow Triad in battle
     "Team Plasma Ghetsis": "ghetsis",
     "Team Plasma Shadow": "shadow_triad",

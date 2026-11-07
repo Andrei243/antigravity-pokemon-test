@@ -247,6 +247,10 @@ public sealed class ScriptLibrary
                 if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self" or "pair")) yield return (i.Other, i.Line);
                 if (i.Op == Op.Battle && !i.PartnerById && i.Partner is not ("" or "self" or "partner")) yield return (i.Partner, i.Line);
             }
+            // A Battle Royal's three (plan 14 · B13)
+            if (i.Op == Op.Royal)
+                foreach (string who in new[] { i.Name, i.Other, i.Partner })
+                    if (who is not ("player" or "self")) yield return (who, i.Line);
         }
     }
 
@@ -383,6 +387,9 @@ public sealed class ScriptLibrary
                         break;
                     case Op.Subway when i.Name == "foe" && TrainerDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no trainer '{i.Other}'");
+                        break;
+                    case Op.Royal when i.Trainers.FirstOrDefault(id => TrainerDatabase.Get(id) == null) is { } missing:
+                        Wrong(i, $"there is no trainer '{missing}'");
                         break;
                     case Op.Battle when i.AsTrainer.Length > 0 && TrainerDatabase.Get(i.AsTrainer) == null:
                         Wrong(i, $"there is no trainer '{i.AsTrainer}'");

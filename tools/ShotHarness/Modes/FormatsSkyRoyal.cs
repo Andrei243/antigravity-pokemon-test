@@ -4,7 +4,7 @@ partial class Harness
     // before them moves. Each is a trainer, or three, of the harness's own met through the game's own StartTrainerBattle
     // (and Driver.StartBattleRoyal) in Route 225.
     //
-    // The sky: a trainer whose Format is "sky" (none of the game's is) against a team of a Golem, a Staraptor and a
+    // The sky: a trainer whose Format is "sky" (of the harness's own: the game's one is on the Vista Lighthouse, shot below) against a team of a Golem, a Staraptor and a
     // Gyarados: the opening line over the sky's stage (ft50_sky_intro), the move menu with Gyarados's Earthquake greyed
     // (ft51_sky_moves), the line refusing it (ft51b_sky_refused) and a battle won; then the same trainer met with a team
     // of none that fly, the line that turns the player away (ft52_sky_none). It prints the format, the conditions, the
@@ -211,5 +211,147 @@ partial class Harness
         else if (royal.ChangedFromOutside) Console.WriteLine("  the harness changed the battle's Pokémon in the middle, so the Vs. Recorder keeps no file of it (BattleRoyalTests replays one fought untouched)");
         for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
         Frames(10);
+    }
+
+    // Plan 14 · B2 and B13 where the game offers them (2026-11-07), the very last of `formats`: Aster the Sky Trainer on
+    // the Vista Lighthouse's gallery once the Hall of Fame is entered, turning a team of a Bidoof away
+    // (ft53_sky_trainer_grounded), her offer to a team with a Staraptor (ft54_sky_trainer_offer) and her battle at its
+    // menu on the sky's stage (ft55_sky_trainer_battle); then the Battle Frontier annex's Royal corner, its receptionist
+    // and the three beside her (ft74_royal_corner), her question (ft75_royal_desk) and the Royal against Brisa, Corin
+    // and Dalla at its menu (ft76_royal_corner_battle). Each is spoken to through the game's own Interact.
+    void SkyAndRoyalPlaceShots()
+    {
+        var team = game.Party;
+        var story = game.Story;
+        var box = game.Dialogue;
+        void Quick()
+        {
+            FrameClock.Fixed = ++tick / 60.0;
+            engine.Update(1f / 60f);
+            engine.Draw();
+        }
+        // Reads on to a question or a battle (or, with neither, to the script's end)
+        void ReadOn(int most = 2400)
+        {
+            for (int i = 0; i < most && game.State != GameState.Battle && !engine.Choice.IsOpen; i++)
+            {
+                if (box.IsActive && !box.IsCurrentLineComplete) box.FinishLine();
+                else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) box.Advance();
+                else if (!box.IsActive && !engine.ScriptRunning && game.State == GameState.Overworld) return;
+                Quick();
+            }
+        }
+        void ToTheLastLine()
+        {
+            for (int i = 0; i < 600 && box.IsActive && !(box.IsCurrentLineComplete && !engine.ScriptRunning); i++)
+            {
+                if (!box.IsCurrentLineComplete) box.FinishLine(); else box.Advance();
+                Quick();
+            }
+        }
+        void Answer(int answer)
+        {
+            for (int a = 0; a < answer; a++) engine.Choice.Move(1);
+            engine.Choice.Confirm();
+            Quick();
+        }
+        BattleEngine? ToMenu()
+        {
+            ReadOn();
+            if (game.State != GameState.Battle) { Console.WriteLine("  !! never happened: the battle"); return null; }
+            var b = game.Battle;
+            Skip(1.0);
+            for (int i = 0; i < 80 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver; i++) { Confirm(b); Skip(0.4); }
+            return b;
+        }
+        void LeaveBattle(BattleEngine b)
+        {
+            for (int guard = 0; guard < 600 && !b.IsBattleOver; guard++)
+            {
+                if (b.HUD.MenuState == BattleMenuState.Main)
+                {
+                    foreach (var p in team.Members.Where(p => !p.IsFainted)) p.CurrentHP = p.MaxHP;
+                    foreach (var foe in b.EnemySlots.Select(s => s.Pokemon).Where(p => p is { CurrentHP: > 0 })) foe!.CurrentHP = 1;
+                    b.SelectMainMenuOption(0);
+                    b.SelectMove(0);
+                    if (b.HUD.MenuState == BattleMenuState.SelectTarget) b.SelectTarget(0);
+                }
+                else Confirm(b);
+                Skip(0.4);
+            }
+            for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
+            ToTheLastLine();
+            Frames(10);
+        }
+        Pokemon Mine(string species, params string[] moves)
+        {
+            var p = new Pokemon(PokemonDatabase.Get(species)!, 60);
+            p.Moves.Clear();
+            foreach (string move in moves) p.Moves.Add(new Move(MoveDatabase.Get(move)));
+            return p;
+        }
+
+        story.Set("FLAG_GAME_COMPLETED");
+        team.Members.Clear();
+        team.Members.Add(Mine("Bidoof", "Tackle"));
+        At("VistaLighthouse", 3, 5, Direction.Up);
+        game.ArriveOnMap();
+        game.LocationSign.Hide();
+        Frames(10);
+        game.Interact();
+        ReadOn();
+        Shot("ft53_sky_trainer_grounded");
+        Console.WriteLine($"the sky trainer to a Bidoof: {box.CurrentLine}; asked {engine.Choice.IsOpen}");
+        ToTheLastLine();
+        Frames(10);
+
+        team.Members.Clear();
+        team.Members.Add(Mine("Staraptor", "Brave Bird", "Close Combat"));
+        team.Members.Add(Mine("Bidoof", "Tackle"));
+        game.Interact();
+        ReadOn();
+        Frames(10);
+        Shot("ft54_sky_trainer_offer");
+        if (engine.Choice.IsOpen)
+        {
+            Answer(0);
+            if (ToMenu() is { } sky)
+            {
+                Skip(0.6);
+                Shot("ft55_sky_trainer_battle");
+                Console.WriteLine($"the sky trainer's battle: in the air {sky.Core.InTheAir}; the team it took {string.Join(", ", sky.PlayerParty.Members.Select(p => p.Species.Name))}; "
+                    + $"{sky.Trainers[0].FullTitle} with {string.Join(", ", sky.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.Level}"))}");
+                LeaveBattle(sky);
+                Console.WriteLine($"  after it: the day's flag {story.Has("FLAG_DAILY_VISTA_LIGHTHOUSE_SKY_BATTLE")}");
+            }
+        }
+        else Console.WriteLine("  !! never asked: the sky trainer's offer");
+
+        team.Members.Clear();
+        team.Members.Add(Mine("Garchomp", "Dragon Claw", "Earthquake"));
+        team.Members.Add(Mine("Staraptor", "Brave Bird", "Close Combat"));
+        team.Members.Add(Mine("Infernape", "Flamethrower", "Close Combat"));
+        At("BattleFrontierAnnex", 2, 8, Direction.Left);
+        game.ArriveOnMap();
+        game.LocationSign.Hide();
+        Frames(10);
+        Shot("ft74_royal_corner");
+        game.Interact();
+        ReadOn();
+        Frames(10);
+        Shot("ft75_royal_desk");
+        if (engine.Choice.IsOpen)
+        {
+            Answer(0);
+            if (ToMenu() is { } royal)
+            {
+                Skip(0.6);
+                Shot("ft76_royal_corner_battle");
+                Console.WriteLine($"the corner's Royal: format {royal.Format}; others {string.Join(", ", royal.EnemySlots.Select(s => s.Trainer?.FullTitle))}");
+                LeaveBattle(royal);
+                Console.WriteLine($"  after it: {royal.Result}, the player placed {royal.Core.RoyalPlace}");
+            }
+        }
+        else Console.WriteLine("  !! never asked: the Royal corner's question");
     }
 }

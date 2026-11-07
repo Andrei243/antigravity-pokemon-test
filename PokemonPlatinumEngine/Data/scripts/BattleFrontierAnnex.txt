@@ -299,3 +299,33 @@ label TournamentRules
   say "Eight Trainers enter, and you meet one in each round: three of your Pokémon against three of theirs."
   say "Win three matches and the title is yours. Lose one, and the tournament is over for you."
   end
+
+
+# The Battle Royal's corner (plan 14 · B13; docs/mechanics/rulings.md, "The Battle Royal"): Sun and Moon's four-way
+# battle, offered as often as the player likes, against the three who wait beside the desk. It is fought on the player's
+# own team and gives nothing but a placing: no EXP, no prize, and nobody whites out.
+script RoyalDesk
+  face self player
+  speaker "Receptionist"
+  say "This is the Battle Royal corner! Four Trainers battle at once, and every one of them is everyone else's foe."
+  choose "Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal?" "Join" "The rules" "No"
+  if result == 1 goto RoyalRules
+  if result == 2 goto RoyalLater
+  say "Then step into the ring! Every Trainer for themselves!"
+  royal royal_brisa "royal_brisa" royal_corin "royal_corin" royal_dalla "royal_dalla" canlose
+  speaker "Receptionist"
+  if won goto RoyalWon
+  say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+  end
+label RoyalWon
+  say "First place! You read all three of them at once. Come back whenever you'd like another round."
+  end
+label RoyalRules
+  say "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
+  say "The moment any Trainer has no Pokémon left, the battle is over."
+  say "Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing."
+  say "The highest score takes first place. Nothing is won or lost but the placing, so battle freely!"
+  end
+label RoyalLater
+  say "Whenever you're ready for a free-for-all, you know where to find us."
+  end

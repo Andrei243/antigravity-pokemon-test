@@ -2823,5 +2823,55 @@
       { "species": "Whiscash", "level": 50, "ivScale": 200, "personality": 9104476 },
       { "species": "Swalot", "level": 50, "ivScale": 200, "personality": 7218850 }
     ]
+  },
+  {
+    "id": "sky_trainer_aster",
+    "name": "Aster",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 4800,
+    "party": [
+      { "species": "Skarmory", "level": 58, "ivScale": 160, "personality": 6120385, "moves": [ "Brave Bird", "Steel Wing", "Roost", "Whirlwind" ] },
+      { "species": "Gliscor", "level": 58, "ivScale": 160, "personality": 3094417, "moves": [ "X-Scissor", "Night Slash", "Aerial Ace", "Swords Dance" ] },
+      { "species": "Togekiss", "level": 59, "ivScale": 160, "personality": 8452290, "moves": [ "Air Slash", "Aura Sphere", "Thunder Wave", "Roost" ] },
+      { "species": "Salamence", "level": 60, "ivScale": 160, "personality": 1736648, "moves": [ "Dragon Claw", "Fire Fang", "Fly", "Dragon Dance" ] }
+    ]
+  },
+  {
+    "id": "royal_brisa",
+    "name": "Brisa",
+    "class": "Ace Trainer",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Roserade", "level": 55, "ivScale": 160, "personality": 2051139, "moves": [ "Energy Ball", "Sludge Bomb", "Shadow Ball", "Sleep Powder" ] },
+      { "species": "Lucario", "level": 55, "ivScale": 160, "personality": 7319004, "moves": [ "Aura Sphere", "Dragon Pulse", "Dark Pulse", "Extreme Speed" ] },
+      { "species": "Milotic", "level": 55, "ivScale": 160, "personality": 4482671, "moves": [ "Surf", "Ice Beam", "Recover", "Dragon Pulse" ] }
+    ]
+  },
+  {
+    "id": "royal_corin",
+    "name": "Corin",
+    "class": "Veteran",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Heracross", "level": 55, "ivScale": 160, "personality": 5590263, "moves": [ "Megahorn", "Close Combat", "Stone Edge", "Night Slash" ] },
+      { "species": "Magmortar", "level": 55, "ivScale": 160, "personality": 3317852, "moves": [ "Flamethrower", "Thunderbolt", "Focus Blast", "Psychic" ] },
+      { "species": "Rhyperior", "level": 55, "ivScale": 160, "personality": 6649120, "moves": [ "Earthquake", "Stone Edge", "Megahorn", "Hammer Arm" ] }
+    ]
+  },
+  {
+    "id": "royal_dalla",
+    "name": "Dalla",
+    "class": "Battle Girl",
+    "ai": [ "Basic", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Medicham", "level": 55, "ivScale": 160, "personality": 9015536, "moves": [ "High Jump Kick", "Zen Headbutt", "Ice Punch", "Thunder Punch" ] },
+      { "species": "Weavile", "level": 55, "ivScale": 160, "personality": 2847719, "moves": [ "Night Slash", "Ice Punch", "X-Scissor", "Brick Break" ] },
+      { "species": "Electivire", "level": 55, "ivScale": 160, "personality": 7708342, "moves": [ "Thunder Punch", "Cross Chop", "Fire Punch", "Ice Punch" ] }
+    ]
   }
 ]
