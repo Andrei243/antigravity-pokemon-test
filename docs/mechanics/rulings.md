@@ -9566,3 +9566,22 @@ Only the mechanics come from the games (a Pokémon leaving something behind, thi
 - **Where materials are kept** (decision 3): counts in the kit's pouch, 999 of a kind (`MaterialPouch`, saved as `SaveData.Crafting`, null while nothing is held, so no save version was raised), never items of the bag: the randomiser, the Marts and every bag shot are untouched. Three kinds: a Pokémon's (a common and a rare material for each of the eighteen types), the field's (ten) and the pantry's (CR6).
 - **What a wild Pokémon leaves** (`MaterialDrops.For`, the numbers one table in `materials.json`): one to three of its type's common material, plus one for every 25 levels up to two more; if it has a second type, that type's common material as well half the time, by a count rolled the same way; and its type's rare material 8 times in a hundred plus one for every 5 levels, at most 30, one of it (two from level 60), the second type's rare one a third of the time. Every draw is on the field's chance, in that order, and the same for each foe. **Who leaves it**: a wild Pokémon felled in a battle of kind Normal or Roamer, or caught, only after a battle that was not lost, and each foe of a horde or an SOS chain its own (`BattleEngine.FelledFoes`); never a trainer's Pokémon, nothing in the Frontier, nothing of the Safari Game, Pal Park, the Bug-Catching Contest or the catching lesson. **The toast** tells it in one line once the field is the player's again, the counts of one material added, and never for nothing. A pouch full of a material takes no more of it and the line says only what fitted.
 - **TMs** (decision 4, for CR4; the table's row above is left to that session to rewrite): used up in every game, as the code has them since R11 and as Scarlet and Violet do.
+
+## Every species, region by region: the checks (2026-11-07, plan 40 · GE1)
+
+- **What counts as had in a region.** Its own game, with nobody else: the region's open areas and the maps its world makes,
+  the hand-made rooms that belong to it, their scripts, the `common` scripts named after the region and every script those call, its professor's
+  three, the counters its own scripts and rooms open, and whatever evolves or hatches from those with the items and places
+  the region gives (a trade's evolution by a Linking Cord, as plan 03 · D12a ruled). Sinnoh's honey trees, Great Marsh,
+  Trophy Garden, Feebas, Game Corner, Underground and Battle Points' exchange count only for Sinnoh, and a gift of another
+  region (Kanto's Lapras, Hoenn's Castform) counts only there.
+- **What is met and what waits.** HeartGold's day and night species on a slot, its swarms on the water and on a rod, the
+  Pokégear's two Sounds and the Bug-Catching Contest's tables are met, so they count; so do Black 2's dark grass, its
+  seasons' tables, its Hidden Grottoes and Join Avenue's shops at every rank. Black 2's shaking grass, rippling water and
+  dust clouds are imported and met by nothing until plan 38 · EX11, so they do not count, and the species only they give
+  are owed to it.
+- **A mythical its game gave only by an event** is owed as "had in another region" where another region gives it (Mew, on
+  Hoenn's Faraway Island); a test holds that it is.
+- **The later generations** are owed to their regions' plans by National number (Kalos, Alola and Hisui plan 23's, Galar
+  plan 33's, Paldea plan 34's) until each plan's last session holds its region to `SpeciesSources.Of`. What every region
+  owes, and to whom, is `docs/mechanics/species-owed.md`, written from the checks.

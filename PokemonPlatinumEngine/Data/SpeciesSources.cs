@@ -99,6 +99,9 @@ public sealed class SpeciesSources
 
     private static List<World> Worlds => allWorlds ??= World.LoadAll();
 
+    /// <summary>The area the Bug-Catching Contest is held in (HeartGold's National Park).</summary>
+    private const string BugContestPark = "national_park";
+
     /// <summary>
     /// A region's own game with nobody else (plan 40 · GE1, the shape plan 21 · H12c gave Hoenn's): its open areas, its
     /// rooms (a hand-made map of the region), their scripts and the common scripts named after the region
@@ -128,8 +131,10 @@ public sealed class SpeciesSources
                     }
             }
             var starters = RegionDatabase.Get(region)?.Starters ?? Array.Empty<string>();
-            var found = Gather(world == null ? new List<World>() : new List<World> { world }, null, ScriptLibrary.Default, rooms,
-                s => own.Contains(s.File) || OwnCommon(s, region), starters.Select(s => (s, "the professor's three")), ownCounters: true);
+            var library = ScriptLibrary.Default;
+            var scripts = Reached(library, library.All.Where(s => own.Contains(s.File) || OwnCommon(s, region)));
+            var found = Gather(world == null ? new List<World>() : new List<World> { world }, null, library, rooms,
+                scripts.Contains, starters.Select(s => (s, "the professor's three")), ownCounters: true);
             return regions[region] = Make(found, HighestOf(region));
         }
     }
@@ -152,6 +157,25 @@ public sealed class SpeciesSources
                 return everywhere = Make(found, PokemonDatabase.GetAll().Max(s => s.DexNumber));
             }
         }
+    }
+
+    /// <summary>
+    /// The scripts given and every script they call, to the end (a region's gate house calls <c>common.BugContestDesk</c>):
+    /// what a region's own scripts reach of the shared file.
+    /// </summary>
+    private static HashSet<Script> Reached(ScriptLibrary library, IEnumerable<Script> start)
+    {
+        var reached = new HashSet<Script>();
+        var queue = new Queue<Script>(start);
+        while (queue.Count > 0)
+        {
+            var script = queue.Dequeue();
+            if (!reached.Add(script)) continue;
+            foreach (var i in script.Everything())
+                if (i.Op == Op.Call && library.Find(i.Name, script.File) is { } called && !reached.Contains(called))
+                    queue.Enqueue(called);
+        }
+        return reached;
     }
 
     /// <summary>A common script that is one region's own: named after it (<c>HoennKecleonFound</c>, <c>UnovaCatchUp</c>).</summary>
@@ -351,8 +375,9 @@ public sealed class SpeciesSources
                         for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)
                             if (JoinAvenue.StockOf(i.Other ?? "", rank) is { } stock) counters.Add(stock);
                         break;
-                    // The Bug-Catching Contest's catch is kept (plan 15 · E5), every day's table
-                    case Op.BugContest:
+                    // The Bug-Catching Contest's catch is kept (plan 15 · E5), every day's table, where its park is open
+                    // (the desk is a script of the shared file, which Sinnoh's own game reads whole)
+                    case Op.BugContest when openAreas.Contains(BugContestPark):
                         foreach (var slot in BugContestVenue.NationalPark.Encounters.SelectMany(t => t))
                             f.Species(slot.Species, $"{where}: the Bug-Catching Contest", true);
                         break;

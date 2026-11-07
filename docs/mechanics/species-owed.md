@@ -10,7 +10,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Hoenn | `hoenn` | 202 | 187 | 15 |
 | Unova | `updated-unova` | 301 | 248 | 53 |
 
-Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (70 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
+Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (76 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
 
 ## Kanto
 
