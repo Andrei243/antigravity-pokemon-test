@@ -118,6 +118,9 @@ partial class Harness
             Save(board, "fw40_hips");
         }
 
+        // FM4, part b: every cut, every hat, every garment and everything held at grown scale, and the grown face
+        FreeWalkPartB(context, pose, backdrop);
+
         // The chibi kit's clips on a grown body, which follows them with its seven appended bones at rest
         if (Wanted("fw40_poses"))
         {

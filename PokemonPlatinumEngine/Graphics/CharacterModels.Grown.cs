@@ -32,6 +32,9 @@ internal sealed record GrownFrame(
     /// <summary>The body's size beside a grown adult's (its crown over the adult's): what the frame doesn't give scales by it.</summary>
     public float Size => Crown / 1.585f;
 
+    /// <summary>How far out the thighs reach at the hip joints (their tops' outer side), which a garment over the hips covers.</summary>
+    public float ThighOuter => LegTop.X + 0.078f * Girth;
+
     /// <summary>The ball of the left foot, where its toes turn (three quarters of the foot from the heel).</summary>
     public Vector3 Ball => new(Ankle.X, 0.025f * Size, Ankle.Z + 0.54f * FootLength);
 
@@ -104,20 +107,30 @@ internal static partial class CharacterModels
     }
 
     /// <summary>
-    /// A look of the grown kit (plan 30 · FM4): its skeleton and body sculpted, meshed in the grown kit's cells with its
-    /// outline shell, and the place of its face found. The clothes' layer and the painted face are part b's.
+    /// A look of the grown kit (plan 30 · FM4): its skeleton, body, hair, hat and what it holds sculpted and meshed in the
+    /// grown kit's cells with its outline shell, its clothes a layer of their own meshed apart with theirs (part b), and
+    /// its painted face's patch cut from the front of the head.
     /// </summary>
     private static CharacterRig BuildGrownRig(CharacterRig rig, SdfModel model)
     {
         var s = rig.Style;
         var f = GrownFrameOf(s.Build, s.CurvedFigure());
         rig.Scale = s.Height;
-        BuildGrown(rig, model, s, f);
+        var wear = new SdfModel("clothes " + rig.Type) { WeightBlend = GrownWeightBlend };
+        BuildGrown(rig, model, wear, s, f);
         model.BoneCount = rig.Skeleton.Count;
         rig.Mesh = SdfCache.Get(model, GrownMeshCell);
         SoftenGrownFace(rig, f);
         SoftenGrownHair(rig, f);
         rig.Shell = SdfCache.Get(model, GrownMeshCell * 1.25f, GrownOutlineThickness);
+        // A swimsuit and a bare chest wear nothing over the body
+        if (wear.Shapes.Count > 0)
+        {
+            wear.BoneCount = rig.Skeleton.Count;
+            rig.Clothes = SdfCache.Get(wear, GrownMeshCell);
+            rig.ClothesShell = SdfCache.Get(wear, GrownMeshCell * 1.25f, GrownOutlineThickness);
+        }
+        ExtractGrownFacePatch(rig, f);
         rig.PrepareScratch();
         return rig;
     }
@@ -165,44 +178,50 @@ internal static partial class CharacterModels
     }
 
     /// <summary>
-    /// A grown body (style guide, "Grown characters"), until part b dresses it: the hair's cap, the head, the neck, the
-    /// torso, the arms with their mitten hands and the legs with their feet and toes, in the look's colours: the top's
-    /// painted on the body from the waist up and down the arms, the trousers, the shoes and bare skin the body's own.
-    /// A cut only carves what came before it, so the hair's cap is carved before the head fills its face.
+    /// A grown body (style guide, "Grown characters") and what it wears: the hair's cap, the head, the hair laid over the
+    /// cap, the hat, a moustache, a beard or bushy brows, the neck, the torso, the arms with their mitten hands and the
+    /// legs with their feet and toes, what is held, then the clothes as a layer of their own in <paramref name="w"/>.
+    /// Under a garment the torso is the garment's lining and slimmer, an arm under its sleeve slimmer still; a swimsuit
+    /// and a bare chest are painted on the body itself, with nothing over them. The trousers, the shoes, the hands, the
+    /// head and what is held are the body's own. A cut only carves what came before it, so the hair's cap (a mask's
+    /// hood, a bowl) is carved before the head fills its face.
     /// </summary>
-    private static void BuildGrown(CharacterRig rig, SdfModel m, CharacterStyle s, GrownFrame f)
+    private static void BuildGrown(CharacterRig rig, SdfModel m, SdfModel w, CharacterStyle s, GrownFrame f)
     {
         m.WeightBlend = GrownWeightBlend;
         GrownSkeleton(rig.Skeleton, f);
         var skin = s.Skin;
-        float sz = f.Size;
-
-        // What covers what (style guide, "Grown characters", "until part b dresses them"): a top in the skin's own colour
-        // is a bare chest, a swimsuit leaves the arms and legs bare, short sleeves end on the upper arm, shorts (and a
-        // skirt, until part b makes it) at mid-thigh
-        int dr = s.Top.R - skin.R, dg = s.Top.G - skin.G, db = s.Top.B - skin.B;
-        bool shirt = !s.Swimsuit && dr * dr + dg * dg + db * db > 8 * 8;
-        var upper = shirt || s.Swimsuit ? s.Top : skin;
-        bool sleeves = shirt, longSleeves = shirt && !s.ShortSleeves;
-        bool bareLegs = s.Swimsuit || s.Shorts || s.Skirt;
+        var dress = GrownDress.Of(s);
+        // A swimsuit's top is painted on the body; under a garment the body is its lining
+        var upper = dress.Clothed ? Shade(s.Top, 0.62f) : s.Swimsuit ? s.Top : skin;
+        float torsoSlim = dress.Clothed ? GrownUnderGarment : 1f;
+        float upperSlim = dress.Sleeves ? GrownUnderSleeve : 1f, foreSlim = dress.LongSleeves ? GrownUnderSleeve : 1f;
 
         GrownHairCap(m, s, f);
         GrownHead(m, f, skin);
+        GrownHair(m, s, f);
+        GrownHat(m, s, f);
+        GrownFacialHair(m, s, f);
         GrownNeck(m, f, skin);
-        GrownTorso(m, f, upper, s.Bottom, skin);
+        GrownTorso(m, f, upper, s.Bottom, skin, torsoSlim);
         foreach (float side in new[] { 1f, -1f })
         {
-            GrownArm(m, f, side, sleeves ? s.Top : skin, longSleeves ? s.Top : skin, skin);
-            GrownLeg(m, f, side, bareLegs ? skin : s.Bottom, skin);
-            GrownFoot(m, f, side, s.Shoes, s.Sole ?? Shade(s.Shoes, 0.62f), collar: bareLegs);
+            // A bare arm is the skin's; a swimsuit leaves it bare, and under a sleeve it is the wearer's own arm
+            GrownArm(m, f, side, skin, skin, skin, upperSlim, foreSlim);
+            GrownLeg(m, f, side, dress.BareShins ? skin : s.Bottom, skin);
+            GrownFoot(m, f, side, s.Shoes, s.Sole ?? Shade(s.Shoes, 0.62f), collar: dress.BareShins);
         }
         GrownSeat(m, f, s.Bottom, skin);
-        GrownBaseLayer(m, f, s, upper, sleeves, longSleeves, bareLegs);
+        GrownBaseLayer(m, f, s, upper, dress);
+        GrownBlush(m, s, f);
+        if (dress.Wears(s)) GrownClothes(w, s, f, dress);
+        // What is held is on the clothes' layer, with its own outline, after everything the clothes' probes look for
+        GrownHeld(w, s, f);
 
         // The face's place: the surface between the eyes at the head's middle, the eyes a fifth of the head's width
-        // apart; the painted face over it is part b's
+        // apart, and the square the painted face covers
         var anchor = SurfaceAlong(m, new Vector3(0, f.HeadC.Y, f.HeadC.Z + 1f), -Vector3.UnitZ);
-        rig.Face = new FaceLayout(anchor, 0.30f * f.HeadR, new Vector3(0, f.HeadC.Y - 0.2f * f.HeadR, anchor.Z), 0.62f * f.HeadR);
+        rig.Face = new FaceLayout(anchor, GrownFaces.EyeHalfSpacing * f.HeadR, new Vector3(0, f.HeadC.Y - 0.2f * f.HeadR, anchor.Z), 0.62f * f.HeadR);
     }
 
     // ------------------------------------------------------------------ the grown sculpting helpers
@@ -213,12 +232,30 @@ internal static partial class CharacterModels
     /// </summary>
     private static void GrownHairCap(SdfModel m, CharacterStyle s, GrownFrame f)
     {
-        if (s.Hair == HairCut.Bald) return;
         float R = f.HeadR;
         var H = f.HeadC;
         var hair = s.HairColor;
+        if (s.Hat == Headwear.Mask)
+        {
+            // A wrestler's mask (style guide, "Grown characters", "Hats"): a hood over the crown, the sides and the back
+            // down to the jaw in the hat's colour, its face left bare from the brows down (no lock grows under it)
+            m.Ellipsoid(CapCentre(f), CapRadii(f) + new Vector3(0.1f, 0.1f, 0.1f) * R, s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth);
+            m.Ellipsoid(H + new Vector3(0, -0.4f, 0.74f) * R, new Vector3(0.62f, 0.64f, 0.62f) * R, s.HatColor, HumanBones.Head, 0.1f * R, op: SdfOp.Cut);
+            return;
+        }
+        if (s.Hair == HairCut.Bald) return;
+        if (s.Hair == HairCut.Bowl)
+        {
+            // A bowl (style guide, "Grown characters", "Hair"): one round mass a little fuller than the cap, cut by a
+            // plane straight across the brow, just over the brows, that slopes down past the tops of the ears to the nape
+            m.Ellipsoid(CapCentre(f) + new Vector3(0, 0.02f, 0.02f) * R, CapRadii(f) + new Vector3(0.08f, 0.06f, 0.06f) * R, hair, HumanBones.Head, 0f, SurfaceMaterial.Hair);
+            var bowl = Pitch(-0.42f);
+            m.Box(H + new Vector3(0, 0.3f, 0.6f) * R + Vector3.Transform(new Vector3(0, -1.6f, -0.6f) * R, bowl), new Vector3(2f, 1.6f, 1.8f) * R, 0f, hair, HumanBones.Head,
+                0.06f * R, rotation: bowl, op: SdfOp.Cut);
+            return;
+        }
         // Over the skull, thicker on top and at the back than at the sides, never thinner than two cells
-        m.Ellipsoid(Skull(f) + new Vector3(0, 0.06f * R, -0.02f * R), SkullRadii(f) + new Vector3(0.12f, 0.06f, 0.12f) * R, hair, HumanBones.Head, 0f, SurfaceMaterial.Hair);
+        m.Ellipsoid(CapCentre(f), CapRadii(f), hair, HumanBones.Head, 0f, SurfaceMaterial.Hair);
         // The face's opening: the hairline across the forehead a little over half the head's half height above the
         // eyes, the temples bare at the eyes' height
         // (each cut over a wide blend, so the hair's edge is a rounded rim and never a sliver a cell thick)
@@ -304,14 +341,16 @@ internal static partial class CharacterModels
     /// chest, the top of the chest out to the shoulders under the collarbones, a slope from the neck's foot to each
     /// shoulder on its collarbone, and a curved figure's bust.
     /// </summary>
-    private static void GrownTorso(SdfModel m, GrownFrame f, Color upper, Color lower, Color skin)
+    private static void GrownTorso(SdfModel m, GrownFrame f, Color upper, Color lower, Color skin, float slim = 1f)
     {
         var Cloth = SurfaceOf(upper, skin);
         float sz = f.Size, g = f.Girth;
+        // Under a garment the torso is a little slimmer across and through, so nothing of it pokes through
+        var under = new Vector3(slim, 1f, slim);
         m.Ellipsoid(new Vector3(0, f.HipY + 0.045f * sz, -0.008f * sz), new Vector3(f.PelvisW, 0.1f * sz, f.PelvisD), lower, HumanBones.Hips, 0f, SurfaceOf(lower, skin));
-        m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f * sz), new Vector3(f.WaistW, (f.ChestJointY - f.HipY) * 0.62f, f.WaistD), upper, HumanBones.Spine, 0.04f * sz, Cloth);
-        m.Ellipsoid(new Vector3(0, f.ChestMidY, 0f), new Vector3(f.ChestW, (f.ShoulderY - f.WaistY) * 0.5f, f.ChestD), upper, HumanBones.Chest, 0.04f * sz, Cloth);
-        m.Ellipsoid(new Vector3(0, f.ShoulderY - 0.035f * sz, -0.008f * sz + f.Forward * 0.25f), new Vector3(f.Shoulder.X * 0.92f, 0.055f * sz, f.ChestD * 0.85f),
+        m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f * sz), new Vector3(f.WaistW, (f.ChestJointY - f.HipY) * 0.62f, f.WaistD) * under, upper, HumanBones.Spine, 0.04f * sz, Cloth);
+        m.Ellipsoid(new Vector3(0, f.ChestMidY, 0f), new Vector3(f.ChestW, (f.ShoulderY - f.WaistY) * 0.5f, f.ChestD) * under, upper, HumanBones.Chest, 0.04f * sz, Cloth);
+        m.Ellipsoid(new Vector3(0, f.ShoulderY - 0.035f * sz, -0.008f * sz + f.Forward * 0.25f), new Vector3(f.Shoulder.X * 0.92f, 0.055f * sz, f.ChestD * 0.85f) * under,
             upper, HumanBones.Chest, 0.03f * sz, Cloth);
         // The trapezius: from up the back of the neck down and out to the top of each shoulder
         foreach (var (side, clavicle) in new[] { (1f, HumanBones.ClavicleL), (-1f, HumanBones.ClavicleR) })
@@ -331,9 +370,10 @@ internal static partial class CharacterModels
     /// An arm (style guide, "Grown characters"): the upper arm a tapered cone with the deltoid at the shoulder, an elbow a
     /// little fuller than both its segments on the forearm's bone, the forearm fuller near the elbow, and its hand.
     /// </summary>
-    private static void GrownArm(SdfModel m, GrownFrame f, float side, Color upperArm, Color forearm, Color skin)
+    private static void GrownArm(SdfModel m, GrownFrame f, float side, Color upperArm, Color forearm, Color skin, float upperSlim = 1f, float foreSlim = 1f)
     {
-        float g = f.Girth, sz = f.Size;
+        // Under a sleeve the arm is slimmer (style guide, "Grown characters", "Clothes"), so the sleeve never meets it
+        float g = f.Girth, sz = f.Size, gu = g * upperSlim, gf = g * foreSlim;
         int upperB = side > 0f ? HumanBones.UpperArmL : HumanBones.UpperArmR;
         int foreB = side > 0f ? HumanBones.ForeArmL : HumanBones.ForeArmR;
         int handB = side > 0f ? HumanBones.HandL : HumanBones.HandR;
@@ -341,12 +381,12 @@ internal static partial class CharacterModels
         var el = Side(f.Elbow, side);
         var wr = Side(f.Wrist, side);
         var Mat = SurfaceOf(upperArm, skin);
-        m.Ellipsoid(sh + new Vector3(side * 0.006f * g, -0.03f * sz, 0f), new Vector3(0.046f * g, 0.07f * sz, 0.045f * g), upperArm, upperB, 0.025f * sz, Mat, AlignY(el - sh));
-        m.Capsule(sh, el, 0.044f * g, 0.030f * g, upperArm, upperB, 0.02f * sz, Mat);
+        m.Ellipsoid(sh + new Vector3(side * 0.006f * gu, -0.03f * sz, 0f), new Vector3(0.046f * gu, 0.07f * sz, 0.045f * gu), upperArm, upperB, 0.025f * sz, Mat, AlignY(el - sh));
+        m.Capsule(sh, el, 0.044f * gu, 0.030f * Math.Max(gu, gf), upperArm, upperB, 0.02f * sz, Mat);
         var fMat = SurfaceOf(forearm, skin);
-        m.Sphere(el, 0.032f * g, forearm, foreB, 0.015f * sz, fMat);
-        m.Capsule(el, wr, 0.031f * g, 0.024f * g, forearm, foreB, 0.015f * sz, fMat);
-        m.Ellipsoid(Vector3.Lerp(el, wr, 0.25f), new Vector3(0.035f * g, 0.25f * Vector3.Distance(el, wr), 0.032f * g), forearm, foreB, 0.02f * sz, fMat, AlignY(wr - el));
+        m.Sphere(el, 0.032f * gf, forearm, foreB, 0.015f * sz, fMat);
+        m.Capsule(el, wr, 0.031f * gf, 0.024f * gf, forearm, foreB, 0.015f * sz, fMat);
+        m.Ellipsoid(Vector3.Lerp(el, wr, 0.25f), new Vector3(0.035f * gf, 0.25f * Vector3.Distance(el, wr), 0.032f * gf), forearm, foreB, 0.02f * sz, fMat, AlignY(wr - el));
         GrownHand(m, f, wr, Vector3.Normalize(wr - el), side, skin, handB);
     }
 
@@ -443,11 +483,13 @@ internal static partial class CharacterModels
     }
 
     /// <summary>
-    /// What the base layer paints crisp (style guide, "Grown characters", until part b dresses them): the waistline
-    /// between the top and the trousers, each cuff, short sleeves' hems, shorts' hems at mid-thigh and the trousers'
-    /// hems over the shoes. Painted once everything is joined on, or the shapes joined after would blur the lines.
+    /// What is painted on the body itself (style guide, "Grown characters", "The body under the clothes"): the
+    /// waistline between what is over the torso (a garment's lining, a swimsuit's top, a bare chest's skin) and the
+    /// trousers or a swimsuit's bottom, the neck bare above a round neckline, shorts' hems at mid-thigh and the
+    /// trousers' hems over the shoes. The sleeves, collars and hems of what is worn over the body are the clothes'
+    /// layer's own. Painted once everything is joined on, or the shapes joined after would blur the lines.
     /// </summary>
-    private static void GrownBaseLayer(SdfModel m, GrownFrame f, CharacterStyle s, Color upper, bool sleeves, bool longSleeves, bool bareLegs)
+    private static void GrownBaseLayer(SdfModel m, GrownFrame f, CharacterStyle s, Color upper, GrownDress dress)
     {
         float sz = f.Size;
         const SurfaceMaterial Cloth = SurfaceMaterial.Cloth, Skin = SurfaceMaterial.Skin;
@@ -455,9 +497,11 @@ internal static partial class CharacterModels
         float waistline = f.WaistY - 0.025f * sz;
         PaintBox(m, new Vector3(0, waistline + 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), Quaternion.Identity, upper, SurfaceOf(upper, s.Skin),
             HumanBones.Spine, HumanBones.Hips, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR);
-        // The back of a crew neck rises up the neck's foot
-        PaintBox(m, new Vector3(0, f.NeckFootY + 0.02f * sz - 0.3f, -0.34f), new Vector3(0.5f, 0.3f, 0.3f), Quaternion.Identity, upper, SurfaceOf(upper, s.Skin),
-            HumanBones.Neck, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR);
+        // Behind the neck's foot, where the garment's own rise lies close over the body, the body is the garment's colour,
+        // so nothing darker shows between them
+        if (dress.Clothed)
+            PaintBox(m, new Vector3(0, f.NeckFootY + 0.03f * sz - 0.3f, -0.34f), new Vector3(0.5f, 0.3f, 0.3f), Quaternion.Identity, s.Top, Cloth,
+                HumanBones.Neck, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR);
         PaintBox(m, new Vector3(0, waistline - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), Quaternion.Identity, s.Bottom, Cloth, HumanBones.Hips, HumanBones.Spine);
         // A round neckline at the neck's foot, the neck bare above it: a crew neck, lower at the front than at the back,
         // where the shirt rises up the neck's foot
@@ -467,43 +511,20 @@ internal static partial class CharacterModels
             HumanBones.Neck, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR).Material = Skin;
         foreach (float side in new[] { 1f, -1f })
         {
-            int upperB = side > 0f ? HumanBones.UpperArmL : HumanBones.UpperArmR;
-            int foreB = side > 0f ? HumanBones.ForeArmL : HumanBones.ForeArmR;
-            int handB = side > 0f ? HumanBones.HandL : HumanBones.HandR;
-            var sh = Side(f.Shoulder, side);
-            var el = Side(f.Elbow, side);
-            var wr = Side(f.Wrist, side);
-            if (longSleeves)
-            {
-                // The cuff at the wrist: the sleeve up the arm from it, the hand bare beyond it
-                var along = Vector3.Normalize(wr - el);
-                var turn = AlignY(along);
-                PaintBox(m, wr - along * 0.15f, new Vector3(0.08f, 0.15f, 0.08f), turn, s.Top, Cloth, foreB, upperB);
-                PaintBox(m, wr + along * 0.15f, new Vector3(0.08f, 0.15f, 0.08f), turn, s.Skin, Skin, handB, foreB);
-            }
-            else if (sleeves)
-            {
-                // A short sleeve's hem at two thirds of the upper arm
-                var along = Vector3.Normalize(el - sh);
-                var hem = Vector3.Lerp(sh, el, 0.68f);
-                var turn = AlignY(along);
-                PaintBox(m, hem - along * 0.15f, new Vector3(0.09f, 0.15f, 0.09f), turn, s.Top, Cloth, upperB);
-                PaintBox(m, hem + along * 0.15f, new Vector3(0.09f, 0.15f, 0.09f), turn, s.Skin, Skin, upperB, foreB);
-            }
             int thighB = side > 0f ? HumanBones.ThighL : HumanBones.ThighR;
             int shinB = side > 0f ? HumanBones.ShinL : HumanBones.ShinR;
             int footB = side > 0f ? HumanBones.FootL : HumanBones.FootR;
             var hip = Side(f.LegTop, side);
             var knee = Side(f.Knee, side);
             var ankle = Side(f.Ankle, side);
-            if (bareLegs && !s.Swimsuit)
+            if (dress.BareShins && !dress.BareThighs)
             {
-                // Shorts (and, until part b makes it, a skirt) end at mid-thigh
+                // Shorts end at mid-thigh (a skirt is the clothes' own, over bare legs)
                 var along = Vector3.Normalize(knee - hip);
                 var hem = Vector3.Lerp(hip, knee, 0.5f);
                 PaintBox(m, hem - along * 0.2f, new Vector3(0.12f, 0.2f, 0.12f), AlignY(along), s.Bottom, Cloth, thighB, HumanBones.Hips);
             }
-            if (!bareLegs)
+            if (!dress.BareShins)
             {
                 // The trousers' hem, a shade darker, over the shoe's top
                 PaintBox(m, ankle + new Vector3(0, 0.15f + 0.03f * sz, 0), new Vector3(0.1f, 0.15f, 0.1f), Quaternion.Identity, s.Bottom, Cloth, shinB);
@@ -569,17 +590,105 @@ internal static partial class CharacterModels
     internal static (Vector3 Centre, Vector3 Radii) GrownHeadEgg(GrownFrame f) =>
         (f.HeadC + new Vector3(0, -0.04f, -0.04f) * f.HeadR, new Vector3(0.74f, 1.02f, 0.88f) * f.HeadR);
 
-    /// <summary>Bends the hair's normals 70 % toward a sphere round the skull (style guide, "Light on hair"), for one clean shade edge over the head.</summary>
+    /// <summary>
+    /// Bends the hair's normals 70 % toward those of the smooth mass it fills (style guide, "Light on hair"): a sphere
+    /// round the skull, stretched into a capsule down the back for hair that falls below the head (long hair, a
+    /// ponytail), for one clean shade edge over the head; a beard and a moustache keep theirs, which follow the face.
+    /// </summary>
     private static void SoftenGrownHair(CharacterRig rig, GrownFrame f)
     {
         var mesh = rig.Mesh;
-        var middle = f.HeadC + new Vector3(0, 0.24f * f.HeadR, -0.10f * f.HeadR);
+        float R = f.HeadR;
+        var middle = f.HeadC + new Vector3(0, 0.24f * R, -0.10f * R);
+        // What hangs below the skull's own foot behind the head (long hair, a ponytail) lies along a capsule down the back
+        float lowest = middle.Y;
+        for (int v = 0; v < mesh.VertexCount; v++)
+            if (mesh.Materials[v] == (byte)SurfaceMaterial.Hair && mesh.Positions[v].Z < f.HeadC.Z - 0.5f * R)
+                lowest = Math.Min(lowest, mesh.Positions[v].Y);
+        float drop = Math.Max(0f, middle.Y - lowest - 1.2f * R);
+        var axis = new Vector3(0, -drop, -drop * 0.2f);
+        float length2 = axis.LengthSquared();
         for (int v = 0; v < mesh.VertexCount; v++)
         {
             if (mesh.Materials[v] != (byte)SurfaceMaterial.Hair) continue;
-            var away = mesh.Positions[v] - middle;
+            var p = mesh.Positions[v];
+            // Facial hair in front of the face is lit with the face
+            if (p.Z > f.HeadC.Z + 0.3f * R && p.Y < f.HeadC.Y - 0.25f * R) continue;
+            float t = length2 < 1e-6f ? 0f : Math.Clamp(Vector3.Dot(p - middle, axis) / length2, 0f, 1f);
+            var away = p - (middle + axis * t);
             if (away.LengthSquared() < 1e-8f) continue;
             mesh.Normals[v] = Vector3.Normalize(Vector3.Lerp(mesh.Normals[v], Vector3.Normalize(away), 0.7f));
         }
     }
+
+    /// <summary>
+    /// The front of a grown head, where its painted face is drawn (style guide, "Grown characters", "Faces"): the skin's
+    /// triangles moving only with the head inside the face's square and facing forward, copied a hair's breadth out from
+    /// the head and mapped onto the face's texture, as the chibi kit's patch is.
+    /// </summary>
+    private static void ExtractGrownFacePatch(CharacterRig rig, GrownFrame f)
+    {
+        var mesh = rig.Mesh;
+        var face = rig.Face;
+        var skin = rig.Style.Skin;
+        float half = face.TextureHalfSize;
+        var c = face.TextureCenter;
+
+        bool Usable(int v)
+        {
+            var p = mesh.Positions[v];
+            if (mesh.WeightOf(v, HumanBones.Head) < 0.97f) return false;
+            if (MathF.Abs(p.X - c.X) > half || MathF.Abs(p.Y - c.Y) > half || p.Z < f.HeadC.Z) return false;
+            if (mesh.Normals[v].Z < 0.15f) return false;
+            // Skin, or the blush painted on it; never hair
+            var col = mesh.Colors[v];
+            int dr = col.R - skin.R, dg = col.G - skin.G, db = col.B - skin.B;
+            return dr * dr + dg * dg + db * db < 70 * 70;
+        }
+
+        var map = new System.Collections.Generic.Dictionary<int, int>();
+        var indices = new System.Collections.Generic.List<int>();
+        int Map(int v)
+        {
+            if (!map.TryGetValue(v, out int i))
+            {
+                i = map.Count;
+                map[v] = i;
+            }
+            return i;
+        }
+        for (int t = 0; t < mesh.Indices.Length; t += 3)
+        {
+            int a = mesh.Indices[t], b = mesh.Indices[t + 1], d = mesh.Indices[t + 2];
+            if (!Usable(a) || !Usable(b) || !Usable(d)) continue;
+            indices.Add(Map(a));
+            indices.Add(Map(b));
+            indices.Add(Map(d));
+        }
+
+        int n = map.Count;
+        var patch = new SdfMesh
+        {
+            Positions = new Vector3[n], Normals = new Vector3[n], Colors = new Color[n], Materials = new byte[n],
+            BoneIndices = new byte[n * 4], BoneWeights = new float[n * 4], Indices = indices.ToArray()
+        };
+        var uvs = new Vector2[n];
+        foreach (var (src, dst) in map)
+        {
+            var nrm = mesh.Normals[src];
+            patch.Positions[dst] = mesh.Positions[src] + nrm * GrownFaceLift;
+            patch.Normals[dst] = nrm;
+            patch.Colors[dst] = Color.White;
+            patch.Materials[dst] = (byte)SurfaceMaterial.Skin;
+            patch.BoneIndices[dst * 4] = HumanBones.Head;
+            patch.BoneWeights[dst * 4] = 1f;
+            var p = mesh.Positions[src];
+            uvs[dst] = new Vector2(0.5f + (p.X - c.X) / (2f * half), 0.5f - (p.Y - c.Y) / (2f * half));
+        }
+        rig.FacePatch = patch;
+        rig.FaceUVs = uvs;
+    }
+
+    /// <summary>How far out from a grown head its face patch lies: a hair's breadth at a grown head's size.</summary>
+    public const float GrownFaceLift = 0.0012f;
 }
