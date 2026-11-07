@@ -5,6 +5,8 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- After the Hall of Fame, Routes 225 to 227 hide a rare alpha in their tall grass (about one meeting in a hundred): a Pokémon half again as big as its kind, with three perfect IVs, a move ahead of its level and a deeper cry. A caught alpha carries the Alpha mark.
+- The National Pokédex now comes with the DexNav (a save that has the one is given the other): with it in the bag, the Pokédex's Item button (C) lists what lives where you stand at this hour, with what you have seen and caught.
 - The last of Unova's old roads are open: walk the Skyarrow Bridge between Pinwheel Forest and Castelia City, climb Black City's Black Tower area by area (Benga waits at the top after the Hall of Fame), find N and Zekrom at the top of N's Castle off Victory Road, surf to the Cave of Being on Route 20's pond, dive into the Abyssal Ruins from Undella Bay's dark water, and surf Wellspring Cave's pool to its lower floor. In winter, Twist Mountain's ice opens the way to its hidden ledges.
 - Thirteen more of Unova's places have music of their own (the Moor of Icirrus, the Tubeline, Skyarrow and Marvelous Bridges, Pinwheel Forest, the Dreamyard, Wellspring Cave, Routes 8, 14, 15, 17 and 18 and the Nature Preserve); Twist Mountain's floor is earth rather than paving, Black City's towers are dark, and no pine grows in the Moor's water.
 - In battle, about 150 moves now tint the Pokémon's body as they play (Dragon Dance flushes its user red, Surf leaves its target sea-green for a moment), the weather and terrain moves spread from their user across the field, and the big ground-shaking blows are framed lower so the cracks at the target's feet are in view.
