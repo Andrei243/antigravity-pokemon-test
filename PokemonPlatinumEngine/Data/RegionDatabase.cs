@@ -980,6 +980,10 @@ public static class RegionDatabase
                 // Plan 23 · Z4, the loose ends: the Lost Hotel, Frost Cavern and Terminus Cave (maps of their own) and Kiloude City's rooms
                 "LostHotel", "FrostCavern", "TerminusCave",
                 "KiloudeCity_PokemonCenter_1F", "KiloudeCity_NorthHouse", "KiloudeCity_SeaHouse",
+                // Plan 23 · Z4b, after the Hall of Fame: Terminus Cave's depths, the Unknown Dungeon and Sea Spirit's Den
+                // (maps of their own), Lumiose Station and the three rooms of Looker's episode
+                "TerminusCaveDepths", "UnknownDungeon", "SeaSpiritsDen",
+                "LumioseCity_Station", "LumioseCity_LookerBureau", "LumioseCity_Museum", "LumioseCity_HotelRichissime",
             }
         },
         new()

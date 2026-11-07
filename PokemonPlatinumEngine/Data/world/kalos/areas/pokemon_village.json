@@ -14,7 +14,9 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    { "x": 698, "z": 107, "to": "unknown_dungeon", "toWarp": 0 }
+  ],
   "objects": [
     { "id": "keeper", "looks": "old_man", "movement": "look_south", "x": 690, "z": 130, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
   ],

@@ -17,7 +17,7 @@
   "warps": [
     { "x": 342, "z": 317, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 349, "z": 317, "to": "lumiose_city_building", "toWarp": 0 },
-    { "x": 370, "z": 317, "to": "lumiose_city_building", "toWarp": 0 },
+    { "x": 370, "z": 317, "to": "LumioseCity_Museum", "toWarp": 0 },
     { "x": 377, "z": 317, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 333, "z": 327, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 342, "z": 327, "to": "lumiose_city_building", "toWarp": 0 },
@@ -34,11 +34,11 @@
     { "x": 332, "z": 357, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 340, "z": 357, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 379, "z": 357, "to": "LumioseCity_StoneEmporium", "toWarp": 0 },
-    { "x": 387, "z": 357, "to": "lumiose_city_hotel", "toWarp": 0 },
+    { "x": 387, "z": 357, "to": "LumioseCity_HotelRichissime", "toWarp": 0 },
     { "x": 312, "z": 377, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 321, "z": 377, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 342, "z": 377, "to": "lumiose_city_restaurant", "toWarp": 0 },
-    { "x": 398, "z": 377, "to": "lumiose_city_building", "toWarp": 0 },
+    { "x": 398, "z": 377, "to": "LumioseCity_LookerBureau", "toWarp": 0 },
     { "x": 407, "z": 377, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 321, "z": 387, "to": "lumiose_city_building", "toWarp": 0 },
     { "x": 330, "z": 387, "to": "lumiose_city_building", "toWarp": 0 },
@@ -50,7 +50,8 @@
     { "x": 340, "z": 407, "to": "LumioseCity_SouthwestHouse", "toWarp": 0 },
     { "x": 349, "z": 407, "to": "LumioseCity_PokemonCenter_1F", "toWarp": 0 },
     { "x": 370, "z": 407, "to": "LumioseCity_SouthHouse", "toWarp": 0 },
-    { "x": 379, "z": 407, "to": "LumioseCity_SoutheastHouse", "toWarp": 0 }
+    { "x": 379, "z": 407, "to": "LumioseCity_SoutheastHouse", "toWarp": 0 },
+    { "x": 433, "z": 351, "to": "LumioseCity_Station", "toWarp": 0 }
   ],
   "objects": [
     { "id": "sina", "looks": "lass", "movement": "look_south", "x": 359, "z": 409, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE", "script": "" },
@@ -72,7 +73,8 @@
     { "x": 309, "z": 364, "type": 0, "script": "VertSign" },
     { "x": 401, "z": 364, "type": 0, "script": "RougeSign" },
     { "x": 388, "z": 331, "type": 0, "script": "MagentaSign" },
-    { "x": 388, "z": 397, "type": 0, "script": "BleuSign" }
+    { "x": 388, "z": 397, "type": 0, "script": "BleuSign" },
+    { "x": 430, "z": 353, "type": 0, "script": "StationSign" }
   ],
   "triggers": []
 }

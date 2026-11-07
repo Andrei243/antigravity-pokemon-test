@@ -15,5 +15,9 @@
   },
   "signs": {
     "TownSign": "Couriway Town\nWhere the rivers meet and fall."
-  }
+  },
+  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_gyaradosite", "name": "Gyaradosite", "npcType": "ItemBall", "item": "Gyaradosite", "x": 659, "y": 340, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_GYARADOSITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
 }

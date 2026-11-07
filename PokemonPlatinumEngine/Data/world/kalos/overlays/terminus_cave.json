@@ -1,8 +1,9 @@
 {
-  // Terminus Cave (plan 23 Â· Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/terminus_cave.txt), our
+  // Terminus Cave (plan 23 · Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/terminus_cave.txt), our
   // words. A cave off Route 13's badlands where the road ends and the tunnels go on: an entrance hall, a great hall across
-  // the middle and three chambers above, with the ground and rock PokÃ©mon of the south and three Trainers. It plays
-  // Santalune Forest's song until plan 31 writes it a cave song of its own
+  // the middle and three chambers above, with the ground and rock Pokémon of the south and three Trainers. It plays
+  // Santalune Forest's song until plan 31 writes it a cave song of its own. Plan 23 · Z4b: a narrow way north out of the
+  // great hall's head leads down to the depths (terminus_cave_depths), where a worker stands until the Hall of Fame
   "area": "terminus_cave",
   "bgmTrack": "kalos/santalune_forest",
   "trees": "Round",
@@ -31,5 +32,8 @@
         "dialogueAfter": "Backpacker Ysolde: The map is wrong. I will have to draw it again."
       }
     }
-  }
+  },
+  "npcs": [
+    { "id": "worker", "name": "Worker", "npcType": "worker", "x": 31, "y": 17, "facing": "Down", "script": "Worker", "hiddenBy": "KalosHallOfFame" }
+  ]
 }

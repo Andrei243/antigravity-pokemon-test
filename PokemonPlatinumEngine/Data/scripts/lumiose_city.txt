@@ -14,9 +14,15 @@
 # A save from before this part of the story was written finds the people of Lumiose's part of the story as a new game does
 script OnEnter
   if not flag FLAG_KALOS_LUMIOSE_BEGUN call KalosLumiose
+  # Plan 23 · Z4b: a game saved after the Hall of Fame, before its last two roads were opened (the east gate to Lumiose
+  # Station, the south-east one to Azure Bay: VAR_KALOS_LUMIOSE_ROADS 3), finds them open
+  if flag KalosHallOfFame goto Champion
   # Plan 23 · Z2, second part: a game saved after Lysandre's café, before the road west was opened, finds it open
   if var VAR_KALOS_STORY < 12 end
   if var VAR_KALOS_LUMIOSE_ROADS == 0 setvar VAR_KALOS_LUMIOSE_ROADS 1
+  end
+label Champion
+  if var VAR_KALOS_LUMIOSE_ROADS < 3 setvar VAR_KALOS_LUMIOSE_ROADS 3
   end
 
 
@@ -86,4 +92,135 @@ script NotYetWest
 script NotYetEast
   text "The road beyond is closed for repairs. It will open again soon."
   walk player left 1
+  end
+
+
+# Plan 23 · Z4b, Looker's second case (LumioseCity_LookerBureau.txt, VAR_KALOS_LOOKER 2): the children who play at battles
+# in the little park south of the bureau, and Emma, whose Espurr has run off (FLAG_KALOS_LOOKER_ALLEY until
+# FLAG_KALOS_LOOKER_ALLEY_DONE). Each child battles once (a flag of their own, counted by VAR_KALOS_ALLEY); with all four
+# beaten, Emma asks where her Espurr went
+script AlleyNanette
+  face self player
+  speaker "Nanette"
+  if flag FLAG_KALOS_ALLEY_NANETTE goto Played
+  say "You're the Champion? Then you have to play with me! That's the rule of the park!"
+  battle self as "kalos_preschooler_nanette"
+  setflag FLAG_KALOS_ALLEY_NANETTE
+  addvar VAR_KALOS_ALLEY 1
+  say "Aww. Okay, you can play again tomorrow. That's the rule too."
+  end
+label Played
+  say "The girl with the pink hair? She's looking for her cat. It's a very grumpy cat."
+  end
+
+script AlleyLou
+  face self player
+  speaker "Lou"
+  if flag FLAG_KALOS_ALLEY_LOU goto Played
+  say "I'm guarding the park! Nobody gets past without a battle!"
+  battle self as "kalos_preschooler_lou"
+  setflag FLAG_KALOS_ALLEY_LOU
+  addvar VAR_KALOS_ALLEY 1
+  say "Okay, you can get past. But only a little bit."
+  end
+label Played
+  say "My Pokémon are sleepy now. Shh."
+  end
+
+script AlleyCerise
+  face self player
+  speaker "Cerise"
+  if flag FLAG_KALOS_ALLEY_CERISE goto Played
+  say "School's out, and we battle here every afternoon. You're new. Let's see what you've got!"
+  battle self as "kalos_school_kid_cerise"
+  setflag FLAG_KALOS_ALLEY_CERISE
+  addvar VAR_KALOS_ALLEY 1
+  say "Okay, that wasn't fair. You're the Champion, aren't you?"
+  end
+label Played
+  say "Emma used to battle us here all the time, before she started working for that funny detective."
+  end
+
+script AlleyBastien
+  face self player
+  speaker "Bastien"
+  if flag FLAG_KALOS_ALLEY_BASTIEN goto Played
+  say "My Pokémon is very old and very spooky. Are you scared? You should be!"
+  battle self as "kalos_school_kid_bastien"
+  setflag FLAG_KALOS_ALLEY_BASTIEN
+  addvar VAR_KALOS_ALLEY 1
+  say "Not scared at all? Not even a little?"
+  end
+label Played
+  say "Emma's Espurr hates noise. It always hides when we battle too loudly."
+  end
+
+script AlleyEmma
+  face self player
+  speaker "Emma"
+  if var VAR_KALOS_ALLEY < 4 goto Kids
+  scene "Emma and Mimi"
+  say "You battled all four of them? The noise must have scared Mimi half to death. My Espurr, I mean. She's run off."
+  say "She hides somewhere small and dark when she's frightened. There are three alleys near here she likes."
+label Where
+  choose "Where would a frightened Espurr hide?" "The alley beside the bureau" "The alley beside the museum" "The street by the restaurant"
+  if result == 0 goto Found
+  say "No, she wouldn't go that far. Somewhere close, and quiet."
+  goto Where
+label Found
+  speaker none
+  text "{player} looked into the narrow alley beside the bureau. Two wide eyes stared back out of the dark."
+  text "{player} kept very still. After a while a small grey Pokémon crept out and sniffed {player}'s hand."
+  speaker "Emma"
+  say "Mimi! Oh, thank you! Nobody's ever been that patient with her. Not even me."
+  say "You work with the detective, don't you? He asked me to help him. I said no, because of Mimi."
+  say "But if Mimi likes you, maybe she'll like the bureau too. Tell him Emma's coming. Both of us."
+  hide alley_nanette
+  hide alley_lou
+  hide alley_cerise
+  hide alley_bastien
+  hide self
+  setflag FLAG_KALOS_LOOKER_ALLEY_DONE
+  setflag FLAG_KALOS_EMMA_BUREAU
+  endscene
+  end
+label Kids
+  say "Shh! My Espurr's hiding around here somewhere, and those children won't stop battling. Can you quiet them down?"
+  end
+
+
+# Plan 23 · Z4b, Looker's fourth case: once the museum's curator has told of the thefts (FLAG_KALOS_LOOKER_STING), three
+# suspects in the alleys, each battled once and gone after (their own flags, counted by VAR_KALOS_STING, which the bureau's
+# arrival asks)
+script SuspectWoman
+  face self player
+  speaker "Vesper"
+  say "You're following me? Bad idea. Very bad idea."
+  battle self as "kalos_suspect_vesper"
+  say "Fine! I only steal Poké Balls for someone who pays well. I've never seen her face. She wears a dark suit."
+  hide self
+  setflag FLAG_KALOS_STING_WOMAN
+  addvar VAR_KALOS_STING 1
+  end
+
+script SuspectChild
+  face self player
+  speaker "Pip"
+  say "I didn't take anything! Okay, I took some things. Want to battle about it?"
+  battle self as "kalos_suspect_pip"
+  say "A lady in a suit gives us sweets for every ball we bring her. She talks funny, like a machine."
+  hide self
+  setflag FLAG_KALOS_STING_CHILD
+  addvar VAR_KALOS_STING 1
+  end
+
+script SuspectLady
+  face self player
+  speaker "Odile"
+  say "How dare you look at me like that. Do you know who I am? No? Good."
+  battle self as "kalos_suspect_odile"
+  say "Very well. I was told the balls would go to a good cause. A scientist's cause. I see now I was a fool."
+  hide self
+  setflag FLAG_KALOS_STING_LADY
+  addvar VAR_KALOS_STING 1
   end

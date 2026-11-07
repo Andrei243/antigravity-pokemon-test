@@ -4037,6 +4037,60 @@ way -
   Clerk> Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish.
   Clerk> Merci! Do come back when the new season arrives.
   * open Wardrobe lumiose
+=== LumioseCity_HotelRichissime.Malva
+from Malva at 12,6 of LumioseCity_HotelRichissime
+way 0
+  Malva> So you're the Champion who keeps poking about in alleys. Anatole says you battle well. Let me see for myself.
+  Malva> Hmph. Fine. You've earned an answer.
+  Malva> The thief in the dark suit calls herself Essentia. She's your little friend Emma, in a suit that isn't hers.
+  Malva> A scientist of what's left of Team Flare made it. Xerosic. The suit takes orders from him, and so does whoever wears it.
+  Malva> I wanted no part of his tinkering. He's set up in Lysandre's old laboratory, under the café. The waiter knows the way.
+  Malva> Go and get your friend back, Champion. I'd go myself, but I have a reputation to keep.
+  * scene LumioseCity_HotelRichissime.Malva at the hotel
+  * battle kalos_malva_looker Won
+  * endscene
+  + FLAG_KALOS_LOOKER_LABS
+  + FLAG_KALOS_LOOKER_MALVA_DONE
+  + beaten kalos_malva_looker
+  + seen LumioseCity_HotelRichissime.Malva at the hotel
+way 1, from answer 1
+  * battle kalos_malva_looker Lost
+  * scene over, unseen
+=== LumioseCity_HotelRichissime.Ticket
+from the tile read at 15,3 of LumioseCity_HotelRichissime
+way -
+  > A palm in a gilded pot. Even the plants here look expensive.
+=== LumioseCity_LookerBureau.Butler
+from Anatole at 3,7 of LumioseCity_LookerBureau
+way 0
+  Anatole> Allow me to see what the partner of the Looker Bureau is made of.
+  Anatole> Splendid. You are worthy of the message.
+  Anatole> My mistress is Malva, of the Elite Four. She waits for you at the Hotel Richissime, by Rouge Plaza.
+  Anatole> She asked me to say this: the thief you seek is closer to this bureau than you think.
+  * scene LumioseCity_LookerBureau.The butler's message
+  * battle kalos_butler_anatole Won
+  * endscene
+  + FLAG_KALOS_LOOKER_BUTLER_DONE
+  + FLAG_KALOS_LOOKER_MALVA
+  = VAR_KALOS_LOOKER 0 -> 5
+  + beaten kalos_butler_anatole
+  + seen LumioseCity_LookerBureau.The butler's message
+way 1, from answer 1
+  * battle kalos_butler_anatole Lost
+  * scene over, unseen
+=== LumioseCity_LookerBureau.Emma
+from Emma at 7,5 of LumioseCity_LookerBureau
+way -
+  Emma> Looker always says a detective should see everything and say nothing. So I'm practising saying nothing.
+=== LumioseCity_LookerBureau.Looker
+from Looker at 5,5 of LumioseCity_LookerBureau
+way -
+  Looker> Every case closed. The city sleeps better tonight, Lucas.
+=== LumioseCity_LookerBureau.Mimi
+from Mimi at 8,5 of LumioseCity_LookerBureau
+way -
+  > Mimi stares at Lucas with wide, unblinking eyes. It seems to approve.
+  * cry Espurr
 === LumioseCity_LysandreCafe.Lysandre
 from Lysandre at 6,5 of LumioseCity_LysandreCafe
 way -
@@ -4049,9 +4103,62 @@ way -
 from Waiter at 8,4 of LumioseCity_LysandreCafe
 way -
   Waiter> Good day. The gentleman in red owns this café. He takes his coffee very black and very hot.
+=== LumioseCity_LysandreLabs.Essentia
+from Essentia at 8,6 of LumioseCity_LysandreLabs
+way -
+  Essentia> ...
+  > The figure in the dark suit stands perfectly still, as if waiting for an order.
 === LumioseCity_LysandreLabs.Lysandre
 from Lysandre at 8,4 of LumioseCity_LysandreLabs
 way -
+=== LumioseCity_LysandreLabs.ScientistClothilde
+from Clothilde at 3,6 of LumioseCity_LysandreLabs
+way 0
+  Clothilde> Visitors? Dr. Xerosic is not to be disturbed. His work is nearly finished!
+  Clothilde> Disturbed anyway. He won't be pleased.
+  * battle kalos_scientist_clothilde Won
+  + FLAG_KALOS_LABS_CLOTHILDE
+  + beaten kalos_scientist_clothilde
+way 1, from answer 1
+  * battle kalos_scientist_clothilde Lost
+=== LumioseCity_LysandreLabs.ScientistErnest
+from Ernest at 13,6 of LumioseCity_LysandreLabs
+way 0
+  Ernest> Team Flare is finished, but science goes on! Out of the way!
+  Ernest> Science goes on... somewhere else, I suppose.
+  * battle kalos_scientist_ernest Won
+  + FLAG_KALOS_LABS_ERNEST
+  + beaten kalos_scientist_ernest
+way 1, from answer 1
+  * battle kalos_scientist_ernest Lost
+=== LumioseCity_LysandreLabs.Xerosic
+from Xerosic at 8,4 of LumioseCity_LysandreLabs
+way -
+  Xerosic> My scientists will deal with you. And if not them, Essentia will. Do watch, it is quite something.
+=== LumioseCity_Museum.Curator
+from Curator at 8,5 of LumioseCity_Museum
+way -
+  Curator> Welcome to the Lumiose Museum. Every work here was made in Kalos, or found in its ground.
+=== LumioseCity_Museum.LookerFarewell
+from Looker at 9,4 of LumioseCity_Museum
+way -
+  Looker> You came. Of course you did. You always find what you are looking for, Lucas.
+  Looker> The city is safe. Xerosic is in custody, and Emma is free. My work in Lumiose is finished.
+  Looker> The International Police want me somewhere else. A detective's life is a suitcase and a train ticket.
+  Looker> Emma will run the bureau now. She knows the streets, and she has a good heart. Look in on her from time to time.
+  Looker> And you... You have earned something. From today, you may call yourself Looker too. A secret name, for a secret job.
+  Looker> Farewell, partner. Look after this city of light.
+  > Looker turned up his collar and walked out of the museum without looking back.
+  * scene LumioseCity_Museum.Looker's farewell
+  * endscene
+  + FLAG_KALOS_LOOKER_LEFT
+  = VAR_KALOS_LOOKER 0 -> 7
+  = VAR_OBJECTIVE 0 -> 599
+  + seen LumioseCity_Museum.Looker's farewell
+=== LumioseCity_Museum.Ticket
+from the tile read at 3,4 of LumioseCity_Museum
+way -
+  > A statue of a Trainer and a Pokémon, carved so long ago that nobody knows which Pokémon it was.
 === LumioseCity_PrismTowerGym.Clemont
 from Clemont at 6,4 of LumioseCity_PrismTowerGym
 way 0
@@ -4086,6 +4193,64 @@ way 1, from answer 1
 from Gym Guide at 9,15 of LumioseCity_PrismTowerGym
 way -
   Gym Guide> Hello there, future Champion! Clemont's Electric types can't touch a Ground type. Dig in!
+=== LumioseCity_Station.Dexio
+from Dexio at 10,6 of LumioseCity_Station
+way -
+  Dexio> The trains are very punctual. The professor, less so.
+=== LumioseCity_Station.EmmaStation
+from Emma at 3,8 of LumioseCity_Station
+way -
+  Emma> I know these three. We grew up on the same streets. Beat them, and leave the talking to me.
+=== LumioseCity_Station.GangBrutus
+from Brutus at 4,7 of LumioseCity_Station
+way 0
+  Brutus> You want through? Then you go through me, and nobody goes through me.
+  Brutus> ...Somebody went through me.
+  * battle kalos_gang_brutus Won
+  + FLAG_KALOS_GANG_BRUTUS
+  + beaten kalos_gang_brutus
+way 1, from answer 1
+  * battle kalos_gang_brutus Lost
+=== LumioseCity_Station.GangFauve
+from Fauve at 13,7 of LumioseCity_Station
+way 0
+  Fauve> The tourist's Pokémon is ours now. Finders keepers. Want to argue?
+  Fauve> Argument lost. Ugh.
+  * battle kalos_gang_fauve Won
+  + FLAG_KALOS_GANG_FAUVE
+  + beaten kalos_gang_fauve
+way 1, from answer 1
+  * battle kalos_gang_fauve Lost
+=== LumioseCity_Station.GangRouille
+from Rouille at 4,5 of LumioseCity_Station
+way 0
+  Rouille> This station's ours today, sweetheart. Tourists pay a toll. You look like a tourist.
+  Rouille> Tch. Fine. Not a tourist, then.
+  * battle kalos_gang_rouille Won
+  + FLAG_KALOS_GANG_ROUILLE
+  + beaten kalos_gang_rouille
+way 1, from answer 1
+  * battle kalos_gang_rouille Lost
+=== LumioseCity_Station.Sina
+from Sina at 6,6 of LumioseCity_Station
+way -
+  Sina> We'll tell everyone at the laboratory the Champion came through our station!
+=== LumioseCity_Station.Sycamore
+from Prof. Sycamore at 8,5 of LumioseCity_Station
+way -
+  Prof. Sycamore> The TMV runs to Kiloude City. Off you go, Champion!
+=== LumioseCity_Station.Ticket
+from the tile read at 15,3 of LumioseCity_Station
+way -
+  > A tall plant in a pot. Somebody waters it with great care.
+=== LumioseCity_Station.Tmv
+from TMV Attendant at 12,4 of LumioseCity_Station
+way -
+  TMV Attendant> I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory.
+=== LumioseCity_Station.Tourist
+from Tourist at 2,6 of LumioseCity_Station
+way -
+  Tourist> Those three took my Pokémon and won't give it back! They say I have to pay their toll first...
 === LumioseCity_SycamoreLab.Dexio
 from Dexio at 10,8 of LumioseCity_SycamoreLab
 way -
@@ -7525,6 +7690,21 @@ from the tile read at 8,20 of AncientTomb
 from the tile read at 9,20 of AncientTomb
 way -
   > Rows of raised dots are carved over the doorway. They seem to say: let light shine in the middle.
+=== anistar_city.Sundial
+from Prof. Sycamore at 649,219 of Kalos
+way -
+  Prof. Sycamore> Lucas! Have you heard the old story? This sundial's stone fell from the sky long ago, the night Kalos first saw a Mega Evolution.
+  Prof. Sycamore> Its light still reaches every Key Stone and Mega Stone in the region. Hold your Key Stone up to it, would you?
+  > The sundial's stone gave off a soft light, and the Key Stone Lucas carried shone back at it.
+  Prof. Sycamore> Magnifique! Now your Key Stone will feel the Mega Stones hidden all over Kalos. Trainers of old left them everywhere.
+  Prof. Sycamore> In caves and forests, in a Gym and a castle, by the sea and in the snow. Go and find them all!
+  Prof. Sycamore> Oh, and before I forget. Someone left a note for you at my laboratory. It said only: the bureau south of Rouge Plaza. L.
+  * scene anistar_city.The professor by the sundial
+  * endscene
+  + FLAG_KALOS_MEGA_RING_UPGRADED
+  = VAR_KALOS_POSTGAME 0 -> 3
+  = VAR_OBJECTIVE 0 -> 534
+  + seen anistar_city.The professor by the sundial
 === anville_town.Collector
 from Collector at 33,39 of AnvilleTown
 way 0
@@ -20476,7 +20656,7 @@ way 0
   AZ> My land was at war, and I could not stop it. So I built a machine that could. A weapon, the greatest ever made.
   AZ> It ended the war. It also took the life of a small Floette who had been my dearest friend.
   AZ> I could not bear it. I gave my own life to the machine to find her. I have waited here, in one form or another, ever since.
-  AZ> They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that PokÃ©mon and people can be strong together.
+  AZ> They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that Pokémon and people can be strong together.
   AZ> I would like to see it for myself. Not a weapon. A bond. Show me!
   AZ> Ah... yes. That is what I forgot. Power is not what the war was missing. It was this.
   AZ> Thank you, Lucas. Perhaps the long wait has been worth it. Take these, with an old man's thanks.
@@ -20492,6 +20672,41 @@ way 0
 way 1, from answer 1
   * battle kalos_az_1 Lost
   * scene over, unseen
+=== kiloude_city.RivalKiloude
+from {rival} at 565,336 of Kalos
+way 0
+  Barry> Lucas! I came out on the first train. Kiloude's the end of the line, so I knew you'd turn up here sooner or later.
+  Barry> Champion, huh? I'm not jealous. Much. But I haven't stopped chasing you. Battle me!
+  Barry> Still the Champion. All right. I'll keep training up here, where the wind off the sea is strong.
+  Barry> Take this. I found it on the beach, of all places. It's a Mega Stone, for an Absol. It'll do more good with you.
+  > Lucas received the Absolite!
+  > Lucas put it away in the Items pocket.
+  Barry> Oh, and the professor rang. He wants to meet you by the sundial in Anistar City. Something about your Key Stone.
+  * scene kiloude_city.The neighbour in Kiloude
+  * battle kalos_rival_kiloude_chespin Won
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_DAILY_KALOS_RIVAL_KILOUDE
+  + FLAG_KALOS_RIVAL_KILOUDE_BEATEN
+  = VAR_KALOS_POSTGAME 0 -> 2
+  = VAR_OBJECTIVE 0 -> 533
+  + beaten kalos_rival_kiloude_chespin
+  + seen kiloude_city.The neighbour in Kiloude
+way 1, from answer 1
+  Barry> I won? I won! Come back when you're ready. I'm not going anywhere.
+  * battle kalos_rival_kiloude_chespin Lost
+  * endscene
+  + seen kiloude_city.The neighbour in Kiloude
+=== kiloude_city.TmvBack
+from TMV Attendant at 537,355 of Kalos
+way 0
+  TMV Attendant> The next train leaves for Lumiose City. Will you be travelling?
+  TMV Attendant> Your pass, please... Thank you. All aboard!
+  ? The next train leaves for Lumiose City. Will you be travelling? = Yes
+  * warp LumioseCity_Station 12 5
+way 1, from answer 1
+  TMV Attendant> The trains run all day. Enjoy the sea air in the meantime!
+  ? The next train leaves for Lumiose City. Will you be travelling? = No
 === konikoni_city.Olivia
 from Olivia at 322,248 of Akala
 way -
@@ -22010,6 +22225,54 @@ way 1, from answer 1
   + FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + seen lostlorn_forest.The traveller in the Lostlorn Forest
+=== lumiose_city.AlleyBastien
+from Bastien at 399,380 of Kalos
+way 0
+  Bastien> My Pokémon is very old and very spooky. Are you scared? You should be!
+  Bastien> Not scared at all? Not even a little?
+  * battle kalos_school_kid_bastien Won
+  + FLAG_KALOS_ALLEY_BASTIEN
+  = VAR_KALOS_ALLEY 0 -> 1
+  + beaten kalos_school_kid_bastien
+way 1, from answer 1
+  * battle kalos_school_kid_bastien Lost
+=== lumiose_city.AlleyCerise
+from Cerise at 395,380 of Kalos
+way 0
+  Cerise> School's out, and we battle here every afternoon. You're new. Let's see what you've got!
+  Cerise> Okay, that wasn't fair. You're the Champion, aren't you?
+  * battle kalos_school_kid_cerise Won
+  + FLAG_KALOS_ALLEY_CERISE
+  = VAR_KALOS_ALLEY 0 -> 1
+  + beaten kalos_school_kid_cerise
+way 1, from answer 1
+  * battle kalos_school_kid_cerise Lost
+=== lumiose_city.AlleyEmma
+from Emma at 403,380 of Kalos
+way -
+  Emma> Shh! My Espurr's hiding around here somewhere, and those children won't stop battling. Can you quiet them down?
+=== lumiose_city.AlleyLou
+from Lou at 391,380 of Kalos
+way 0
+  Lou> I'm guarding the park! Nobody gets past without a battle!
+  Lou> Okay, you can get past. But only a little bit.
+  * battle kalos_preschooler_lou Won
+  + FLAG_KALOS_ALLEY_LOU
+  = VAR_KALOS_ALLEY 0 -> 1
+  + beaten kalos_preschooler_lou
+way 1, from answer 1
+  * battle kalos_preschooler_lou Lost
+=== lumiose_city.AlleyNanette
+from Nanette at 387,380 of Kalos
+way 0
+  Nanette> You're the Champion? Then you have to play with me! That's the rule of the park!
+  Nanette> Aww. Okay, you can play again tomorrow. That's the rule too.
+  * battle kalos_preschooler_nanette Won
+  + FLAG_KALOS_ALLEY_NANETTE
+  = VAR_KALOS_ALLEY 0 -> 1
+  + beaten kalos_preschooler_nanette
+way 1, from answer 1
+  * battle kalos_preschooler_nanette Lost
 === lumiose_city.Assistants
 from the trigger at 358,412 of Kalos
 way -
@@ -22058,6 +22321,39 @@ way -
 from Sina at 359,409 of Kalos
 way -
   Sina> The professor's laboratory is up the avenue on the right!
+=== lumiose_city.SuspectChild
+from Child in a cap at 373,313 of Kalos
+way 0
+  Pip> I didn't take anything! Okay, I took some things. Want to battle about it?
+  Pip> A lady in a suit gives us sweets for every ball we bring her. She talks funny, like a machine.
+  * battle kalos_suspect_pip Won
+  + FLAG_KALOS_STING_CHILD
+  = VAR_KALOS_STING 0 -> 1
+  + beaten kalos_suspect_pip
+way 1, from answer 1
+  * battle kalos_suspect_pip Lost
+=== lumiose_city.SuspectLady
+from Lady in a veil at 330,377 of Kalos
+way 0
+  Odile> How dare you look at me like that. Do you know who I am? No? Good.
+  Odile> Very well. I was told the balls would go to a good cause. A scientist's cause. I see now I was a fool.
+  * battle kalos_suspect_odile Won
+  + FLAG_KALOS_STING_LADY
+  = VAR_KALOS_STING 0 -> 1
+  + beaten kalos_suspect_odile
+way 1, from answer 1
+  * battle kalos_suspect_odile Lost
+=== lumiose_city.SuspectWoman
+from Woman in a hood at 402,373 of Kalos
+way 0
+  Vesper> You're following me? Bad idea. Very bad idea.
+  Vesper> Fine! I only steal Poké Balls for someone who pays well. I've never seen her face. She wears a dark suit.
+  * battle kalos_suspect_vesper Won
+  + FLAG_KALOS_STING_WOMAN
+  = VAR_KALOS_STING 0 -> 1
+  + beaten kalos_suspect_vesper
+way 1, from answer 1
+  * battle kalos_suspect_vesper Lost
 === lush_jungle.Ingredient1
 from the tile read at 197,100 of Akala
 way -
@@ -26008,6 +26304,15 @@ way -
   + FLAG_RESCUED_MR_FUJI
   = VAR_OBJECTIVE 0 -> 112
   + seen pokemon_tower_7f.Mr Fuji
+=== pokemon_village.Guardian
+from Zoroark at 698,107 of Kalos
+way -
+  > A Zoroark stands before the cave's mouth and won't let anyone near. Other eyes watch from the grass.
+  * cry Zoroark
+=== pokemon_village.Keeper
+from Old Woman at 690,130 of Kalos
+way -
+  Old Woman> The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle.
 === poni_altar.Legend
 from Solgaleo at 32,14 of PoniAltar
 way 0
@@ -30541,6 +30846,23 @@ way -
 from Shauna at 256,597 of Kalos
 way -
   Shauna> Have you seen a Pikachu around here?
+=== sea_spirits_den.Bird
+from Articuno at 15,10 of SeaSpiritsDen
+from Moltres at 15,10 of SeaSpiritsDen
+from Zapdos at 15,10 of SeaSpiritsDen
+way 0
+  > The great bird that flew over Kalos has come to rest here, wings folded, in the hush of the sea.
+  > The cave is quiet. Only the sea goes on breathing at its mouth.
+  * scene sea_spirits_den.The bird at rest
+  * cry Moltres
+  * wildbattle Moltres 70 Won
+  * endscene
+  + FLAG_KALOS_DEN_DONE
+  = VAR_ROAMING_KALOS_MOLTRES_STATE 0 -> 2
+  + seen sea_spirits_den.The bird at rest
+way 1, from answer 1
+  * wildbattle Moltres 70 Lost
+  * scene over, unseen
 === seafloor_cavern_entrance.Grunt
 from Team Aqua Grunt at 10,2 of SeafloorCavern_Entrance
 way -
@@ -33066,6 +33388,27 @@ way -
   + FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
   = VAR_UNK_40AC 0 -> 3
   + seen team_rocket_headquarters_b3f.The rival in the hideout
+=== terminus_cave.Worker
+from Worker at 31,17 of TerminusCave
+way -
+  Worker> Sorry, the way down is closed. The tunnels below are old and deep, and something sleeps at the bottom that nobody should wake.
+  Worker> Only the Champion of Kalos is let past, by order of the League.
+=== terminus_cave_depths.Zygarde
+from Zygarde at 31,8 of TerminusCaveDepths
+way 0
+  > A great serpent of black and green lies coiled in the dark, its eyes half closed...
+  > It raised its head! The whole cave trembled!
+  > Zygarde sank back into the rock, and the depths were still again.
+  * scene terminus_cave_depths.Zygarde in the depths
+  * cry Zygarde
+  * camera Shake
+  * wildbattle Zygarde 70 Won
+  * endscene
+  + FLAG_KALOS_ZYGARDE_GONE
+  + seen terminus_cave_depths.Zygarde in the depths
+way 1, from answer 1
+  * wildbattle Zygarde 70 Lost
+  * scene over, unseen
 === terra_cave_end.Groudon
 from the trigger at 17,26 of TerraCave_End
 way 0
@@ -33510,6 +33853,26 @@ from the tile read at 8,4 of Underwater_SeafloorCavern
 way -
   > "Submarine Explorer 1" is painted on its side.
   > It's the submarine Team Aqua took from Slateport! They must have come ashore near here.
+=== unknown_dungeon.Mewtwo
+from Mewtwo at 24,10 of UnknownDungeon
+way 0
+  > A Pokémon stands alone at the end of the cave, with its back to the wall. Slowly, it turns its head toward Lucas.
+  > Where Mewtwo stood, two stones glimmer on the cave floor.
+  > Lucas received the Mewtwonite X!
+  > Lucas put it away in the Items pocket.
+  > Lucas received the Mewtwonite Y!
+  > Lucas put it away in the Items pocket.
+  * scene unknown_dungeon.Mewtwo in the Unknown Dungeon
+  * cry Mewtwo
+  * wildbattle Mewtwo 70 Won
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_KALOS_MEWTWO_GONE
+  + seen unknown_dungeon.Mewtwo in the Unknown Dungeon
+way 1, from answer 1
+  * wildbattle Mewtwo 70 Lost
+  * scene over, unseen
 === unova_pokemon_league.Guard
 from the trigger at 31,48 of UnovaPokemonLeague
 way 0

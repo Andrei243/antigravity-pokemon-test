@@ -805,7 +805,8 @@ public class KalosTests
         foreach (var (value, name) in new[]
                  {
                      (22, "kalosRamos"), (23, "kalosPowerPlant"), (24, "kalosClemont"), (25, "kalosValerie"), (26, "kalosOlympia"),
-                     (27, "kalosLabs"), (28, "kalosFlareHQ"), (29, "kalosWulfric"), (30, "kalosLeague"), (31, "kalosFree")
+                     // (the Hall of Fame leads on to the time after it, plan 23 · Z4b: KalosPostGameTests follows it to the end)
+                     (27, "kalosLabs"), (28, "kalosFlareHQ"), (29, "kalosWulfric"), (30, "kalosLeague"), (31, "kalosStation")
                  })
         {
             story.SetVar("VAR_KALOS_STORY", value);

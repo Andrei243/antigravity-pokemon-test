@@ -131,6 +131,17 @@
       "dialog": [
         "The castle is very old and very draughty. I dust the suits of armour every morning, and every morning they are dusty again."
       ]
+    },
+    {
+      "id": "mega_mawilite",
+      "name": "Mawilite",
+      "npcType": "ItemBall",
+      "x": 13,
+      "y": 10,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MAWILITE",
+      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "item": "Mawilite"
     }
   ],
   "wildEncounters": []

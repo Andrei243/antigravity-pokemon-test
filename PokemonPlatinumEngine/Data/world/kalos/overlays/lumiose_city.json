@@ -23,9 +23,16 @@
     { "warp": 32, "map": "LumioseCity_SouthwestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 33, "map": "LumioseCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
     { "warp": 34, "map": "LumioseCity_SouthHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 35, "map": "LumioseCity_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 35, "map": "LumioseCity_SoutheastHouse", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 23 · Z4b, after the Hall of Fame: the museum on the north boulevard and the Hotel Richissime by Rouge Plaza open
+    // with the Hall of Fame, Looker's Bureau south of the plaza once the Mega Ring is upgraded (Looker's episode), and
+    // Lumiose Station on its square outside the east gate
+    { "warp": 2, "map": "LumioseCity_Museum", "x": 8, "y": 10, "facing": "Up", "openedBy": "KalosHallOfFame" },
+    { "warp": 19, "map": "LumioseCity_HotelRichissime", "x": 8, "y": 10, "facing": "Up", "openedBy": "KalosHallOfFame" },
+    { "warp": 23, "map": "LumioseCity_LookerBureau", "x": 5, "y": 8, "facing": "Up", "openedBy": "FLAG_KALOS_MEGA_RING_UPGRADED" },
+    { "warp": 36, "map": "LumioseCity_Station", "x": 8, "y": 10, "facing": "Up" }
   ],
-  "locked": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31 ],
+  "locked": [ 0, 1, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 20, 21, 22, 24, 25, 26, 29, 30, 31 ],
   "triggers": [
     { "script": "Assistants", "x": 358, "z": 412, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 9 },
     { "script": "NotYetNorth", "x": 358, "z": 301, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 0 },
@@ -44,6 +51,8 @@
     // lead nowhere drawn yet and go on turning the player back
     { "script": "NotYetEast", "x": 418, "z": 358, "width": 1, "depth": 4, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 2 },
     { "script": "NotYetSouth", "x": 391, "z": 418, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 2 }
+    // Plan 23 · Z4b: the Hall of Fame (VAR_KALOS_LUMIOSE_ROADS 3) opens the last two, east to Lumiose Station's square and
+    // south-east down the shore road to Azure Bay, so nothing here turns the player back any more
   ],
   "props": [
     { "type": "PrismTower", "x": 358, "y": 358, "width": 4, "depth": 4 },
@@ -108,9 +117,22 @@
     "lass": {
       "name": "Lass",
       "npcType": "Lass",
-      "dialog": [ "They've mended the road west to Route 5, but the others are still closed. I'm off to Camphrier on my skates!" ]
+      "dialog": [ "Every road out of Lumiose goes somewhere lovely. Today I'm skating west to Camphrier!" ]
     }
   },
+  // Plan 23 · Z4b, Looker's episode (LumioseCity_LookerBureau.txt has the chapters): the children of the little park south
+  // of the bureau and Emma among them (the second chapter), and the three suspects of the sting (the fourth) in the bureau's
+  // alley, the museum's alley and the street west of the restaurant
+  "npcs": [
+    { "id": "alley_nanette", "name": "Nanette", "npcType": "preschooler_f", "x": 387, "y": 380, "facing": "Up", "script": "AlleyNanette", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
+    { "id": "alley_lou", "name": "Lou", "npcType": "preschooler_m", "x": 391, "y": 380, "facing": "Up", "script": "AlleyLou", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
+    { "id": "alley_cerise", "name": "Cerise", "npcType": "school_kid_f", "x": 395, "y": 380, "facing": "Up", "script": "AlleyCerise", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
+    { "id": "alley_bastien", "name": "Bastien", "npcType": "school_kid_m", "x": 399, "y": 380, "facing": "Up", "script": "AlleyBastien", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
+    { "id": "alley_emma", "name": "Emma", "npcType": "emma", "x": 403, "y": 380, "facing": "Up", "script": "AlleyEmma", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
+    { "id": "suspect_woman", "name": "Woman in a hood", "npcType": "Lady", "x": 402, "y": 373, "facing": "Down", "script": "SuspectWoman", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_WOMAN" },
+    { "id": "suspect_child", "name": "Child in a cap", "npcType": "school_kid_m", "x": 373, "y": 313, "facing": "Down", "script": "SuspectChild", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_CHILD" },
+    { "id": "suspect_lady", "name": "Lady in a veil", "npcType": "Lady", "x": 330, "y": 377, "facing": "Down", "script": "SuspectLady", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_LADY" }
+  ],
   "signs": {
     "CitySign": "Lumiose City\nThe city of light, the heart of Kalos.",
     "PrismTowerSign": "Prism Tower\nThe light of Lumiose City.",
@@ -118,6 +140,7 @@
     "VertSign": "Vert Plaza\nWest of the tower",
     "RougeSign": "Rouge Plaza\nEast of the tower",
     "MagentaSign": "Magenta Plaza\nNorth-east of the tower",
-    "BleuSign": "Bleu Plaza\nSouth-east of the tower"
+    "BleuSign": "Bleu Plaza\nSouth-east of the tower",
+    "StationSign": "Lumiose Station\nThe TMV to Kiloude City"
   }
 }

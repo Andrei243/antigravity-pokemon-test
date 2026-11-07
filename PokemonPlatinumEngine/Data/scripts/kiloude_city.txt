@@ -1,7 +1,7 @@
-# Kiloude City (plan 23 Â· Z4, the loose ends). The lines are our own, on X and Y's beats as they are publicly described:
+# Kiloude City (plan 23 · Z4, the loose ends). The lines are our own, on X and Y's beats as they are publicly described:
 # after the Hall of Fame an old man called AZ waits at the landing across Kiloude's pier. Long ago he was a king whose
 # war was ended by a weapon he made, and the weapon took the Floette he loved; he has waited three thousand years to
-# be forgiven. He tells it all once, battles the player to see what the bond between a Trainer and a PokÃ©mon is worth,
+# be forgiven. He tells it all once, battles the player to see what the bond between a Trainer and a Pokémon is worth,
 # and gives thanks. His team is Kalos's trainers.json's kalos_az_1. FLAG_KALOS_HIDE_AZ is clear; the overlay shows him
 # from KalosHallOfFame (so no new game needs to hide him).
 
@@ -16,7 +16,7 @@ script Az
   say "My land was at war, and I could not stop it. So I built a machine that could. A weapon, the greatest ever made."
   say "It ended the war. It also took the life of a small Floette who had been my dearest friend."
   say "I could not bear it. I gave my own life to the machine to find her. I have waited here, in one form or another, ever since."
-  say "They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that PokÃ©mon and people can be strong together."
+  say "They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that Pokémon and people can be strong together."
   say "I would like to see it for myself. Not a weapon. A bond. Show me!"
   battle self as "kalos_az_1"
   say "Ah... yes. That is what I forgot. Power is not what the war was missing. It was this."
@@ -27,4 +27,83 @@ script Az
   end
 label Done
   say "Some days I sit here and listen to the sea. It does not ask for anything. I am learning from it."
+  end
+
+
+# Plan 23 · Z4b: the neighbour on the city's northern hill once the TMV pass is had (FLAG_KALOS_TMV_PASS): a battle, the
+# Absolite and the professor's message the first time won (FLAG_KALOS_RIVAL_KILOUDE_BEATEN, VAR_KALOS_POSTGAME 2), and a
+# battle once a day after (FLAG_DAILY_KALOS_RIVAL_KILOUDE). The teams are Kalos's trainers.json's kalos_rival_kiloude_*,
+# named for the neighbour's own first Pokémon, the one strong against the player's.
+script RivalKiloude
+  face self player
+  speaker "{rival}"
+  if flag FLAG_KALOS_RIVAL_KILOUDE_BEATEN goto Again
+  scene "The neighbour in Kiloude"
+  say "{player}! I came out on the first train. Kiloude's the end of the line, so I knew you'd turn up here sooner or later."
+  say "Champion, huh? I'm not jealous. Much. But I haven't stopped chasing you. Battle me!"
+  if starter "Chespin" goto AgainstChespin
+  if starter "Fennekin" goto AgainstFennekin
+  battle self as "kalos_rival_kiloude_chespin" canlose
+  goto Fought
+label AgainstChespin
+  battle self as "kalos_rival_kiloude_fennekin" canlose
+  goto Fought
+label AgainstFennekin
+  battle self as "kalos_rival_kiloude_froakie" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto RivalWon
+  say "Still the Champion. All right. I'll keep training up here, where the wind off the sea is strong."
+  say "Take this. I found it on the beach, of all places. It's a Mega Stone, for an Absol. It'll do more good with you."
+  give "Absolite"
+  say "Oh, and the professor rang. He wants to meet you by the sundial in Anistar City. Something about your Key Stone."
+  setflag FLAG_KALOS_RIVAL_KILOUDE_BEATEN
+  setflag FLAG_DAILY_KALOS_RIVAL_KILOUDE
+  if var VAR_KALOS_POSTGAME < 2 setvar VAR_KALOS_POSTGAME 2
+  objective kalosSundial
+  endscene
+  end
+label RivalWon
+  say "I won? I won! Come back when you're ready. I'm not going anywhere."
+  endscene
+  end
+label Again
+  if flag FLAG_DAILY_KALOS_RIVAL_KILOUDE goto Tomorrow
+  ask "Another battle? I train up here every day."
+  if no goto Later
+  if starter "Chespin" goto AgainChespin
+  if starter "Fennekin" goto AgainFennekin
+  battle self as "kalos_rival_kiloude_chespin" canlose
+  goto Tired
+label AgainChespin
+  battle self as "kalos_rival_kiloude_fennekin" canlose
+  goto Tired
+label AgainFennekin
+  battle self as "kalos_rival_kiloude_froakie" canlose
+label Tired
+  heal
+  setflag FLAG_DAILY_KALOS_RIVAL_KILOUDE
+  speaker "{rival}"
+  say "Same time tomorrow?"
+  end
+label Later
+  say "Whenever you like. The sea's not going anywhere, and neither am I."
+  end
+label Tomorrow
+  say "That's enough for one day. Come back tomorrow, and I'll be stronger!"
+  end
+
+
+# Plan 23 · Z4b: the TMV's attendant on Kiloude's street, back to Lumiose Station
+script TmvBack
+  face self player
+  speaker "TMV Attendant"
+  ask "The next train leaves for Lumiose City. Will you be travelling?"
+  if no goto Later
+  say "Your pass, please... Thank you. All aboard!"
+  warp "LumioseCity_Station" 12 5 down
+  end
+label Later
+  say "The trains run all day. Enjoy the sea air in the meantime!"
   end

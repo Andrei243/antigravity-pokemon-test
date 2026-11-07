@@ -404,6 +404,16 @@
     "flare_grunt": { "hairColor": "#c8402a", "hair": "Spiky", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "build": "Adult", "height": 1.02 },
     "flare_grunt_f": { "hairColor": "#c8402a", "hair": "Bun", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "flare_admin": { "hairColor": "#e8803a", "hair": "Short", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8803a", "coat": true, "lashes": true, "build": "Adult", "height": 1.04 },
+    // Plan 23 · Z4b, after the Hall of Fame (our own designs, on the Adult build like the rest of Kalos's cast): Emma, a
+    // girl of the back streets with short fuchsia hair in a pale hoodie and dark shorts; Essentia, Emma in the suit that was
+    // forced on her, black with a magenta trim and a magenta visor over her hair; Xerosic, a thin scientist of Team Flare in
+    // a lab coat over red, with wild pale hair and round red glasses; the Lumiose Gang, in black leather and studs, the men
+    // with a shaved head and dark glasses, the women with a spiky violet crop
+    "emma": { "hairColor": "#c8407a", "hair": "Short", "top": "#ece8f2", "accent": "#c8407a", "bottom": "#2a2a36", "shoes": "#c8407a", "eyes": "#5a3a4a", "shorts": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.98 },
+    "essentia": { "hairColor": "#c8407a", "hair": "Short", "top": "#1e1e26", "accent": "#d8408a", "bottom": "#1e1e26", "shoes": "#d8408a", "eyes": "#5a3a4a", "glasses": "#e848a0", "jacket": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "xerosic": { "skin": "#e8c4a8", "hairColor": "#e4e0d4", "hair": "Spiky", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#d8402a", "coat": true, "build": "Adult", "height": 1.1 },
+    "lumiose_gang": { "skin": "#e8b892", "hairColor": "#1e1e22", "hair": "Bald", "top": "#1e1e22", "accent": "#b8bcc6", "bottom": "#2a2a36", "shoes": "#1e1e22", "glasses": "#141418", "jacket": true, "bushyBrows": true, "build": "Adult", "height": 1.08 },
+    "lumiose_gang_f": { "hairColor": "#7a4ac8", "hair": "Spiky", "top": "#1e1e22", "accent": "#b8bcc6", "bottom": "#1e1e22", "shoes": "#7a4ac8", "eyes": "#4a3a6a", "jacket": true, "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
     // Alola's first chapter (plan 23 · Z5; our own designs, on the Adult build as Kalos's cast is, stand-ins until plan 30):
     // Hau, the kahuna's grandson and the player's rival, dark hair tied in a knot and a sunset-orange shirt over green
     // shorts; Professor Kukui, a cap over short dark hair, glasses, an open white coat and grey trousers; Hala, the
@@ -784,6 +794,9 @@
     "Galactic": [ "grunt", "grunt_f" ],
     // Plan 23 · Z4: Team Flare's grunts, by the person's look, the men's first (its admins and its boss stand as themselves)
     "Team Flare Grunt": [ "flare_grunt", "flare_grunt_f" ],
+    // Plan 23 · Z4b: the Lumiose Gang of Looker's episode, by the person's look, the men's first; Essentia in her suit
+    "Lumiose Gang": [ "lumiose_gang", "lumiose_gang_f" ],
+    "Agent": "essentia",
     // Plan 11 · C2: the first trainers of the open areas, the second look of a class standing for the women
     "School Kid": [ "school_kid_m", "school_kid_f" ],
     "Bug Catcher": "bug_catcher",

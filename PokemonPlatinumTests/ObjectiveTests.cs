@@ -291,11 +291,20 @@ public class ObjectiveTests
         string[] expected = { "kalosDownstairs", "kalosDoor", "kalosAquacorde", "kalosHome", "kalosRoute2", "kalosForest", "kalosRoute3", "kalosSantalune", "kalosViola", "kalosRoute4", "kalosLab", "kalosLysandre",
             "kalosRoute5", "kalosCamphrier", "kalosPalace", "kalosSnorlax", "kalosCyllage", "kalosGrant", "kalosRoute10", "kalosShalour", "kalosKorrina", "kalosMastery",
             // Plan 23 · Z4: on to the Hall of Fame
-            "kalosRamos", "kalosPowerPlant", "kalosClemont", "kalosValerie", "kalosOlympia", "kalosLabs", "kalosFlareHQ", "kalosWulfric", "kalosLeague", "kalosFree" };
+            "kalosRamos", "kalosPowerPlant", "kalosClemont", "kalosValerie", "kalosOlympia", "kalosLabs", "kalosFlareHQ", "kalosWulfric", "kalosLeague",
+            // Plan 23 · Z4b: after the Hall of Fame, the station first
+            "kalosStation" };
         for (int n = 0; n <= 31; n++)
         {
             story.SetVar("VAR_KALOS_STORY", n);
             Assert.Equal(expected[n], Objectives.Current(story, RegionDatabase.Kalos)?.Name);
+        }
+        // Plan 23 · Z4b: the post-game's own count, then Looker's, then nothing left to tell
+        foreach (var (variable, value, next) in new[] { ("VAR_KALOS_POSTGAME", 1, "kalosKiloude"), ("VAR_KALOS_POSTGAME", 2, "kalosSundial"),
+            ("VAR_KALOS_POSTGAME", 3, "kalosLooker"), ("VAR_KALOS_LOOKER", 6, "kalosLooker"), ("VAR_KALOS_LOOKER", 7, "kalosFree") })
+        {
+            story.SetVar(variable, value);
+            Assert.Equal(next, Objectives.Current(story, RegionDatabase.Kalos)?.Name);
         }
     }
 

@@ -1231,8 +1231,12 @@ public sealed partial class ScriptRunner
                 TrophyGardenRules.AddNew(host.Encounters, SpecialEncounterTables.Sinnoh.TrophyGarden, host.Chance);
                 break;
             case Op.Roamer:
-                Roamers.SetLoose(host.Encounters, Roamers.SlotOf(i.Name, i.Other) ?? throw Wrong(i, $"'{i.Name}' doesn't roam"), host.Chance);
+            {
+                int slot = Roamers.SlotOf(i.Name, i.Other) ?? throw Wrong(i, $"'{i.Name}' doesn't roam");
+                // (at the level met in a region crossed into, as a script's wildbattle is: plan 18 · W4)
+                Roamers.SetLoose(host.Encounters, slot, host.Chance, host.LevelHere(Roamers.Slots[slot].Level));
                 break;
+            }
             case Op.SurvivePoison:
             {
                 // SurvivePoison: the team's Pokémon at the place the variable gives, cured if it came through

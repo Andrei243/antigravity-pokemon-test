@@ -137,9 +137,14 @@ public static class Itineraries
         Leg.Trigger("Kalos", "Neighbour", "kalos_route_21"),
         Leg.Trigger("Kalos", "Gate", "kalos_route_21"),
         Leg.Heal("KalosLeague_Hall"),
+        // (the hall's nurse between the rooms, as a player would go back to her: a team worn by three of the Four in a
+        // row lost to the fourth once Z4b's trainers had moved the dice, and a white-out sends the player home)
         Leg.Talk("KalosLeague_MalvaRoom", "malva") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_MALVA") },
+        Leg.Heal("KalosLeague_Hall"),
         Leg.Talk("KalosLeague_SieboldRoom", "siebold") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_SIEBOLD") },
+        Leg.Heal("KalosLeague_Hall"),
         Leg.Talk("KalosLeague_WikstromRoom", "wikstrom") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_WIKSTROM") },
+        Leg.Heal("KalosLeague_Hall"),
         Leg.Talk("KalosLeague_DrasnaRoom", "drasna") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_DRASNA") },
         // (her script ends as it takes the player through to the Hall of Fame, whose own arrival sends the player home)
         Leg.Heal("KalosLeague_Hall"),

@@ -1,0 +1,46 @@
+{
+  "key": "terminus_cave_depths",
+  "index": 47,
+  "name": "Terminus Cave",
+  "matrix": 7,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "TERMINUS_CAVE",
+  "nightMusic": "TERMINUS_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 58, "to": "terminus_cave", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "solenne", "looks": "ace_trainer_f", "movement": "look_east", "x": 20, "z": 42, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_SOLENNE" },
+    { "id": "hector", "looks": "veteran", "movement": "look_west", "x": 44, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_VETERAN_HECTOR" },
+    { "id": "eloi", "looks": "hiker", "movement": "look_east", "x": 16, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_ELOI" },
+    { "id": "zygarde", "looks": "zygarde", "movement": "look_south", "x": 31, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ZYGARDE_GONE", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 49, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_DEPTHS_MAX_REVIVE", "item": "Max Revive", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 13, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_DEPTHS_PP_UP", "item": "PP Up", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 48, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_DEPTHS_FULL_RESTORE", "item": "Full Restore", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Durant", "level": 60 },
+    { "species": "Lairon", "level": 60 },
+    { "species": "Graveler", "level": 60 },
+    { "species": "Noibat", "level": 60 },
+    { "species": "Pupitar", "level": 61 },
+    { "species": "Sandslash", "level": 61 },
+    { "species": "Ariados", "level": 61 },
+    { "species": "Dugtrio", "level": 61 },
+    { "species": "Druddigon", "level": 62 },
+    { "species": "Gabite", "level": 62 },
+    { "species": "Aggron", "level": 63 },
+    { "species": "Noivern", "level": 63 }
+  ],
+  "landRate": 10
+}

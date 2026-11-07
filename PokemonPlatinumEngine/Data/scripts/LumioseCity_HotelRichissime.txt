@@ -1,0 +1,40 @@
+# The Hotel Richissime by Rouge Plaza (plan 23 · Z4b; its door opens with the Hall of Fame). The lines are our own, on X
+# and Y's beats as they are publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): in Looker's
+# first case one of his tickets hides in the potted plant by the stairs; in his fifth (VAR_KALOS_LOOKER 5) Malva of the
+# Elite Four waits in the lobby, battles, and tells who Essentia is and who controls her, which opens the way down under
+# Lysandre's old café to his laboratory (FLAG_KALOS_LOOKER_LABS, LumioseCity_LysandreLabs.txt).
+#
+# The people: a receptionist, a guest, malva (FLAG_KALOS_LOOKER_MALVA until FLAG_KALOS_LOOKER_MALVA_DONE).
+
+
+# Looker's first case: one of his tickets, in the pot where the rich wait for their keys
+script Ticket
+  if var VAR_KALOS_LOOKER != 1 goto Plant
+  if flag FLAG_KALOS_LOOKER_TICKET_HOTEL goto Plant
+  setflag FLAG_KALOS_LOOKER_TICKET_HOTEL
+  addvar VAR_KALOS_LOOKER_TICKETS 1
+  fanfare item
+  text "A card is tucked among the leaves, with an eye drawn on it in ink." "{player} found one of Looker's tickets!"
+  end
+label Plant
+  text "A palm in a gilded pot. Even the plants here look expensive."
+  end
+
+
+# Looker's fifth case: Malva in the lobby
+script Malva
+  face malva player
+  speaker "Malva"
+  scene "Malva at the hotel"
+  say "So you're the Champion who keeps poking about in alleys. Anatole says you battle well. Let me see for myself."
+  battle self as "kalos_malva_looker"
+  say "Hmph. Fine. You've earned an answer."
+  say "The thief in the dark suit calls herself Essentia. She's your little friend Emma, in a suit that isn't hers."
+  say "A scientist of what's left of Team Flare made it. Xerosic. The suit takes orders from him, and so does whoever wears it."
+  say "I wanted no part of his tinkering. He's set up in Lysandre's old laboratory, under the café. The waiter knows the way."
+  say "Go and get your friend back, Champion. I'd go myself, but I have a reputation to keep."
+  hide malva
+  setflag FLAG_KALOS_LOOKER_MALVA_DONE
+  setflag FLAG_KALOS_LOOKER_LABS
+  endscene
+  end

@@ -1,0 +1,16 @@
+{
+  "id": 7,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    "225 226",
+    "227 228"
+  ],
+  "areas": [
+    "  0   0",
+    "  0   0"
+  ],
+  "areaKeys": [
+    "terminus_cave_depths"
+  ]
+}

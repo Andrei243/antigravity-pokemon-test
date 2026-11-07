@@ -1,0 +1,43 @@
+{
+  "key": "unknown_dungeon",
+  "index": 48,
+  "name": "Unknown Dungeon",
+  "matrix": 8,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "UNKNOWN_DUNGEON",
+  "nightMusic": "UNKNOWN_DUNGEON",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 58, "to": "pokemon_village", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mewtwo", "looks": "mewtwo", "movement": "look_east", "x": 24, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_MEWTWO_GONE", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_UNKNOWN_DUNGEON_MAX_REVIVE", "item": "Max Revive", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 52, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_UNKNOWN_DUNGEON_PP_MAX", "item": "PP Max", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 50, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_UNKNOWN_DUNGEON_FULL_RESTORE", "item": "Full Restore", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Ditto", "level": 64 },
+    { "species": "Electrode", "level": 64 },
+    { "species": "Ariados", "level": 64 },
+    { "species": "Noctowl", "level": 64 },
+    { "species": "Kecleon", "level": 65 },
+    { "species": "Wobbuffet", "level": 65 },
+    { "species": "Banette", "level": 65 },
+    { "species": "Gothitelle", "level": 66 },
+    { "species": "Zoroark", "level": 66 },
+    { "species": "Mienshao", "level": 66 },
+    { "species": "Absol", "level": 66 },
+    { "species": "Lucario", "level": 66 }
+  ],
+  "landRate": 10
+}

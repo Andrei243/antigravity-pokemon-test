@@ -1,0 +1,31 @@
+{
+  // Azure Bay (plan 23 · Z4b): drawn by hand, our words. Lumiose City's south-east gate, shut until the Hall of Fame, opens
+  // on a shore road that runs down past a meadow of tall grass to a beach, and out over a sandbar to a rocky island in the
+  // bay, where Sea Spirit's Den opens in the rock (sea_spirits_den: the roaming bird rests there once it has fled a dozen
+  // times). Nobody sails or surfs in Kalos yet, so the island is walked to. It plays Aquacorde's song until plan 31 writes
+  // it its own
+  "area": "azure_bay",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "people": {
+    "ondine": {
+      "name": "Ondine",
+      "npcType": "beauty",
+      "trainer": {
+        "dialogueBefore": "Beauty Ondine: The bay is never the same blue twice. Let's see if your battle is as changeable!",
+        "dialogueAfter": "Beauty Ondine: The tide turned on me. It does that."
+      }
+    },
+    "yannick": {
+      "name": "Yannick",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Yannick: Something big swims round that island at night. Until it bites, you'll do!",
+        "dialogueAfter": "Fisherman Yannick: Reeled in, and by a Trainer. Well, well."
+      }
+    }
+  },
+  "signs": {
+    "BaySign": "Azure Bay\nNorth: Lumiose City\nSouth: the shore and the sea cave"
+  }
+}

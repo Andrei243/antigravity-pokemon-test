@@ -12,6 +12,7 @@
 
 # Out of the front door for the first time: the neighbour and Shauna come to meet the player
 script OnEnter
+  if flag KalosHallOfFame goto Champion
   if var VAR_KALOS_STORY == 0 goto CrossedIn
   if var VAR_KALOS_STORY != 1 end
   if var PLAYER_X != 242 end
@@ -60,6 +61,40 @@ label AtTheDoor
   clearflag FLAG_KALOS_HIDE_RIVAL_AQUACORDE
   setvar VAR_KALOS_STORY 2
   objective kalosAquacorde
+  endscene
+  end
+# Plan 23 · Z4b: the first time a Champion of Kalos steps out of the front door after the Hall of Fame, a great bird crosses
+# Vaniville's sky and is loose in Kalos: the one of the first Pokémon's choice, as X and Y's (Articuno for Chespin, Zapdos
+# for Fennekin, Moltres for Froakie), at level 70 on Kalos's routes (roamer start … kalos; FLAG_KALOS_BIRD_LOOSE)
+label Champion
+  if flag FLAG_KALOS_BIRD_LOOSE end
+  if var PLAYER_X != 242 end
+  if var PLAYER_Y != 722 end
+  scene "A bird over Vaniville"
+  letterbox on 0.4
+  effect shadow 242 724 2 right
+  wait 0.8
+  emote player exclaim
+  speaker none
+  if starter "Chespin" goto Articuno
+  if starter "Fennekin" goto Zapdos
+  cry "Moltres"
+  text "A great bird of flame swept low over the rooftops and was gone over the hills!" "Moltres is loose in Kalos!"
+  roamer start "Moltres" kalos
+  goto Loose
+label Articuno
+  cry "Articuno"
+  text "A great bird of ice swept low over the rooftops, and for a moment snow fell in the street!" "Articuno is loose in Kalos!"
+  roamer start "Articuno" kalos
+  goto Loose
+label Zapdos
+  cry "Zapdos"
+  camera shake 0.4
+  text "A great bird of lightning crackled low over the rooftops and was gone over the hills!" "Zapdos is loose in Kalos!"
+  roamer start "Zapdos" kalos
+label Loose
+  setflag FLAG_KALOS_BIRD_LOOSE
+  letterbox off 0.3
   endscene
   end
 

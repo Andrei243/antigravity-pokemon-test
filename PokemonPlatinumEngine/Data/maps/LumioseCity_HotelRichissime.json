@@ -1,0 +1,152 @@
+{
+  "name": "LumioseCity_HotelRichissime",
+  "displayName": "Hotel Richissime",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 17,
+  "height": 12,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#......###......#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#.##.........##.#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ReceptionDesk",
+      "x": 7,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 2,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 13,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 387,
+      "targetY": 358,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the Hotel Richissime. Our rooms are, I'm afraid, all taken this season."
+      ]
+    },
+    {
+      "id": "guest",
+      "name": "Guest",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "I have stayed here every spring for twenty years. The lobby still has not learned my name."
+      ]
+    },
+    {
+      "id": "malva",
+      "name": "Malva",
+      "npcType": "malva",
+      "x": 12,
+      "y": 6,
+      "facing": "Left",
+      "script": "Malva",
+      "hiddenBy": "FLAG_KALOS_LOOKER_MALVA_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_MALVA"
+    }
+  ],
+  "tileScripts": [
+    { "x": 15, "y": 3, "script": "Ticket" }
+  ],
+  "wildEncounters": []
+}

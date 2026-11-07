@@ -1,5 +1,5 @@
 {
-  // Route 16 (plan 23 Â· Z4, the loose ends): drawn by hand, our words. A short road north-east out of Lumiose City's north-east
+  // Route 16 (plan 23 · Z4, the loose ends): drawn by hand, our words. A short road north-east out of Lumiose City's north-east
   // gate (open once the power is back), through broad fields to the dark mouth of the Lost Hotel. It plays Route 2's song
   // until plan 31 writes it its own
   "area": "kalos_route_16",
@@ -41,5 +41,10 @@
   },
   "signs": {
     "RouteSign": "Route 16\nSouth: Lumiose City\nNorth: the Lost Hotel"
-  }
+  },
+  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_houndoominite", "name": "Houndoominite", "npcType": "ItemBall", "item": "Houndoominite", "x": 383, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_HOUNDOOMINITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" },
+    { "id": "mega_manectite", "name": "Manectite", "npcType": "ItemBall", "item": "Manectite", "x": 432, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MANECTITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
 }

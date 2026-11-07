@@ -1,0 +1,15 @@
+{
+  // Sea Spirit's Den (plan 23 · Z4b): a map of its own, drawn by hand (tools/MapDraw/kalos/sea_spirits_den.txt), our words.
+  // A round cave in the island of Azure Bay, where the bird that roams Kalos after the Hall of Fame (Articuno, Zapdos or
+  // Moltres, by the first Pokémon chosen) settles once it has fled a dozen times; the three stand on one tile and the
+  // place's arrival shows the one at rest (sea_spirits_den.txt). It plays Santalune Forest's song until plan 31 writes it
+  // a cave song of its own
+  "area": "sea_spirits_den",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "articuno": { "name": "Articuno", "npcType": "Pokemon", "species": "Articuno", "script": "Bird", "still": true, "shownBy": "FLAG_KALOS_DEN_ARTICUNO", "hiddenBy": "FLAG_KALOS_DEN_DONE" },
+    "zapdos": { "name": "Zapdos", "npcType": "Pokemon", "species": "Zapdos", "script": "Bird", "still": true, "shownBy": "FLAG_KALOS_DEN_ZAPDOS", "hiddenBy": "FLAG_KALOS_DEN_DONE" },
+    "moltres": { "name": "Moltres", "npcType": "Pokemon", "species": "Moltres", "script": "Bird", "still": true, "shownBy": "FLAG_KALOS_DEN_MOLTRES", "hiddenBy": "FLAG_KALOS_DEN_DONE" }
+  }
+}

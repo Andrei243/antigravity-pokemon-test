@@ -1,0 +1,11 @@
+# Terminus Cave (plan 23 · Z4b). The lines are our own: a worker of the League stands in the narrow way north out of the
+# great hall's head, which leads down to the depths (terminus_cave_depths), until the Hall of Fame (the overlay hides him
+# by KalosHallOfFame).
+
+
+script Worker
+  face self player
+  speaker "Worker"
+  say "Sorry, the way down is closed. The tunnels below are old and deep, and something sleeps at the bottom that nobody should wake."
+  say "Only the Champion of Kalos is let past, by order of the League."
+  end

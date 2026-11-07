@@ -1,0 +1,156 @@
+{
+  "name": "LumioseCity_LookerBureau",
+  "displayName": "Looker Bureau",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###......##",
+    "#...###...#",
+    "#.........#",
+    "#.......#.#",
+    "#.........#",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 4,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 398,
+      "targetY": 378,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "looker",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Looker",
+      "hiddenBy": "FLAG_KALOS_LOOKER_FAREWELL"
+    },
+    {
+      "id": "emma",
+      "name": "Emma",
+      "npcType": "emma",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Emma",
+      "hiddenBy": "FLAG_KALOS_EMMA_AWAY",
+      "shownBy": "FLAG_KALOS_EMMA_BUREAU"
+    },
+    {
+      "id": "mimi",
+      "name": "Mimi",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Mimi",
+      "hiddenBy": "FLAG_KALOS_EMMA_AWAY",
+      "shownBy": "FLAG_KALOS_EMMA_BUREAU",
+      "species": "Espurr"
+    },
+    {
+      "id": "butler",
+      "name": "Anatole",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "script": "Butler",
+      "hiddenBy": "FLAG_KALOS_LOOKER_BUTLER_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_BUTLER"
+    }
+  ],
+  "wildEncounters": []
+}

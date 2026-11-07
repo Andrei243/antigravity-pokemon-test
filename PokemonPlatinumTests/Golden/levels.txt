@@ -257,6 +257,10 @@ trainers 2, 9: unova_lass_serena 9, unova_youngster_pedro 9
 === azalea_gym
 Azalea Town
 trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug_catcher_josh 13, johto_twins_amy_and_mimi 10
+=== azure_bay
+Azure Bay
+grass 58-61
+trainers 2, 60-61: kalos_beauty_ondine 61, kalos_fisherman_yannick 61
 === bell_tower_10f
 Bell Tower
 grass 20-24
@@ -3507,6 +3511,10 @@ grass 10-12
 Terminus Cave
 grass 30-32
 trainers 3, 31-32: kalos_backpacker_ysolde 32, kalos_black_belt_thibault 32, kalos_hiker_anselme 31
+=== terminus_cave_depths
+Terminus Cave
+grass 60-63
+trainers 3, 61-64: kalos_ace_trainer_solenne 63, kalos_hiker_eloi 62, kalos_veteran_hector 64
 === three_island_berry_forest
 Berry Forest
 grass 30-40
@@ -3690,6 +3698,9 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unknown_dungeon
+Unknown Dungeon
+grass 64-66
 === unova_route_1
 Route 1
 grass 56-59

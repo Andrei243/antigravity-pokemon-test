@@ -18,5 +18,9 @@
   },
   "signs": {
     "CitySign": "Laverre City\nA town of old timber beneath a great tree."
-  }
+  },
+  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_medichamite", "name": "Medichamite", "npcType": "ItemBall", "item": "Medichamite", "x": 328, "y": 180, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MEDICHAMITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
 }

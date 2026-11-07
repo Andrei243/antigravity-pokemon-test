@@ -28,3 +28,102 @@ script Lysandre
   objective kalosFlareHQ
   endscene
   end
+
+
+# Plan 23 · Z4b, Looker's fifth case (LumioseCity_LookerBureau.txt, VAR_KALOS_LOOKER 5): once Malva has told of him
+# (FLAG_KALOS_LOOKER_LABS), Xerosic of what was Team Flare has set up among Lysandre's machines, with two scientists and
+# Essentia, who is Emma in a suit he controls. The scientists battle first; Essentia then battles three times without
+# rest, until her Espurr's cry reaches her through the suit; and Xerosic gives in. That ends the case and begins
+# Looker's farewell (FLAG_KALOS_LOOKER_FAREWELL, VAR_KALOS_LOOKER 6). The people: xerosic, essentia,
+# scientist_clothilde and scientist_ernest (FLAG_KALOS_LOOKER_LABS until FLAG_KALOS_LOOKER_LABS_DONE).
+
+script ScientistClothilde
+  face scientist_clothilde player
+  speaker "Clothilde"
+  if flag FLAG_KALOS_LABS_CLOTHILDE goto Beaten
+  say "Visitors? Dr. Xerosic is not to be disturbed. His work is nearly finished!"
+  battle self as "kalos_scientist_clothilde"
+  setflag FLAG_KALOS_LABS_CLOTHILDE
+  say "Disturbed anyway. He won't be pleased."
+  end
+label Beaten
+  say "The suit was only ever a test. Nobody was supposed to get hurt. That's what he told us."
+  end
+
+script ScientistErnest
+  face scientist_ernest player
+  speaker "Ernest"
+  if flag FLAG_KALOS_LABS_ERNEST goto Beaten
+  say "Team Flare is finished, but science goes on! Out of the way!"
+  battle self as "kalos_scientist_ernest"
+  setflag FLAG_KALOS_LABS_ERNEST
+  say "Science goes on... somewhere else, I suppose."
+  end
+label Beaten
+  say "I'm going back to teaching. Children never control anybody with a suit."
+  end
+
+script Essentia
+  face essentia player
+  speaker "Essentia"
+  if not flag FLAG_KALOS_LABS_CLOTHILDE goto Waiting
+  if not flag FLAG_KALOS_LABS_ERNEST goto Waiting
+  if flag FLAG_KALOS_ESSENTIA_FREED goto Freed
+  scene "Essentia"
+  say "Intruder. Remove intruder."
+  speaker none
+  text "{player} called out to the figure in the suit by Emma's name. It did not answer to it."
+  speaker "Essentia"
+  say "Remove... intruder."
+  battle self as "kalos_essentia_1"
+  heal
+  say "Order repeats. Remove intruder."
+  battle self as "kalos_essentia_2"
+  heal
+  say "Remove... {player}... Remove..."
+  battle self as "kalos_essentia_3"
+  heal
+  speaker none
+  cry "Espurr"
+  text "A small grey Pokémon darted in past the machines and cried out at the figure in the suit: Mimi!"
+  speaker "Essentia"
+  say "Mimi...? Mimi! {player}? Where am I? The suit... I can't take it off!"
+  setflag FLAG_KALOS_ESSENTIA_FREED
+  speaker "Xerosic"
+  say "Remarkable. A Pokémon's cry, stronger than my signal. I did not account for affection."
+  endscene
+  end
+label Waiting
+  say "..."
+  speaker none
+  text "The figure in the dark suit stands perfectly still, as if waiting for an order."
+  end
+label Freed
+  say "Make him take it off, {player}. Please."
+  end
+
+script Xerosic
+  face xerosic player
+  speaker "Xerosic"
+  if not flag FLAG_KALOS_ESSENTIA_FREED goto Watching
+  scene "Xerosic gives in"
+  say "You beat my scientists, and then my best experiment, three times. And a little Espurr finished the job."
+  say "Lysandre wanted to remake the world. I only wanted to see what a person could become, with the right suit."
+  say "Very well. The signal is off. The suit is hers now, with nobody's orders in it but her own."
+  speaker "Essentia"
+  say "...It still fits. Maybe I'll keep it. A bureau needs a secret agent, right?"
+  speaker "Xerosic"
+  say "I suppose your detective will want to arrest me. Tell him I will be waiting at the café, with a very black coffee."
+  hide xerosic
+  hide essentia
+  hide scientist_clothilde
+  hide scientist_ernest
+  setflag FLAG_KALOS_LOOKER_LABS_DONE
+  setflag FLAG_KALOS_LOOKER_FAREWELL
+  clearflag FLAG_KALOS_EMMA_AWAY
+  setvar VAR_KALOS_LOOKER 6
+  endscene
+  end
+label Watching
+  say "My scientists will deal with you. And if not them, Essentia will. Do watch, it is quite something."
+  end

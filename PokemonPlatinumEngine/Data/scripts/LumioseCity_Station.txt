@@ -1,0 +1,171 @@
+# Lumiose Station on its square outside the city's east gate (plan 23 · Z4b). The lines are our own, on X and Y's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): the first time a Champion of
+# Kalos comes in, the professor's two assistants and the professor wait there, and the professor gives the TMV pass
+# (FLAG_KALOS_TMV_PASS, a flag: the data has no item of that name). The TMV's attendant then takes the player to Kiloude
+# City (kiloude_city.txt's TmvBack brings them back). VAR_KALOS_POSTGAME is Z4b's count: 0 the Hall of Fame entered, 1 the
+# pass given. In Looker's third case (LumioseCity_LookerBureau.txt, VAR_KALOS_LOOKER 3) a gang holds the hall and Emma
+# talks them round; and one of Looker's tickets (his first case) is tucked into the potted plant by the platform.
+#
+# The people: tmv, sycamore, sina and dexio (shown by KalosHallOfFame until FLAG_KALOS_TMV_PASS), the gang's three
+# (gang_rouille, gang_brutus, gang_fauve), the tourist and emma_station (FLAG_KALOS_LOOKER_GANG until
+# FLAG_KALOS_LOOKER_GANG_DONE), and a traveller.
+
+
+# Into the station after the Hall of Fame: the professor and his assistants, and the TMV pass
+script OnEnter
+  if not flag KalosHallOfFame end
+  if flag FLAG_KALOS_TMV_PASS end
+  scene "Lumiose Station"
+  face sina player
+  face dexio player
+  speaker "Sina"
+  say "There you are! The Champion of Kalos, in our little station!"
+  speaker "Dexio"
+  say "The professor asked us to wait for you here. He wanted to give you something himself."
+  face sycamore player
+  speaker "Prof. Sycamore"
+  say "{player}! Congratulations, Champion. I always knew the bond between you and your Pokémon would carry you all the way."
+  say "With the League behind you, all of Kalos is open to you, even the corners most people never see."
+  say "Here. With this pass you can ride the TMV, our fast train, as often as you like."
+  setflag FLAG_KALOS_TMV_PASS
+  fanfare keyitem
+  text "{player} received the TMV pass!"
+  say "The line runs out to Kiloude City, by the sea. {rival} took the first train there this morning, looking for you."
+  speaker "Sina"
+  say "Show your pass to the attendant by the platform, and off you go!"
+  hide sycamore
+  hide sina
+  hide dexio
+  setvar VAR_KALOS_POSTGAME 1
+  objective kalosKiloude
+  endscene
+  end
+
+script Sycamore
+  speaker "Prof. Sycamore"
+  say "The TMV runs to Kiloude City. Off you go, Champion!"
+  end
+
+script Sina
+  speaker "Sina"
+  say "We'll tell everyone at the laboratory the Champion came through our station!"
+  end
+
+script Dexio
+  speaker "Dexio"
+  say "The trains are very punctual. The professor, less so."
+  end
+
+
+# The TMV's attendant before the platform: to Kiloude City, with the pass
+script Tmv
+  face tmv player
+  speaker "TMV Attendant"
+  if not flag FLAG_KALOS_TMV_PASS goto NoPass
+  ask "Welcome to the TMV. The next train leaves for Kiloude City. Will you be travelling?"
+  if no goto Later
+  say "Your pass, please... Thank you. All aboard!"
+  warp "Kalos" 538 355 down
+  end
+label Later
+  say "The trains run all day. Come back whenever you're ready."
+  end
+label NoPass
+  say "I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory."
+  end
+
+
+# Looker's first case: one of his three tickets, tucked into the pot by the platform
+script Ticket
+  if var VAR_KALOS_LOOKER != 1 goto Plant
+  if flag FLAG_KALOS_LOOKER_TICKET_STATION goto Plant
+  setflag FLAG_KALOS_LOOKER_TICKET_STATION
+  addvar VAR_KALOS_LOOKER_TICKETS 1
+  fanfare item
+  text "A card is tucked into the pot, with an eye drawn on it in ink." "{player} found one of Looker's tickets!"
+  end
+label Plant
+  text "A tall plant in a pot. Somebody waters it with great care."
+  end
+
+
+# Looker's third case: the gang that holds the station, each battled, and the tourist whose Pokémon they took
+script GangRouille
+  face gang_rouille player
+  speaker "Rouille"
+  if flag FLAG_KALOS_GANG_ROUILLE goto Beaten
+  say "This station's ours today, sweetheart. Tourists pay a toll. You look like a tourist."
+  battle self as "kalos_gang_rouille"
+  setflag FLAG_KALOS_GANG_ROUILLE
+  say "Tch. Fine. Not a tourist, then."
+  end
+label Beaten
+  say "Don't look at me. Look at those two. Nobody here's the boss."
+  end
+
+script GangBrutus
+  face gang_brutus player
+  speaker "Brutus"
+  if flag FLAG_KALOS_GANG_BRUTUS goto Beaten
+  say "You want through? Then you go through me, and nobody goes through me."
+  battle self as "kalos_gang_brutus"
+  setflag FLAG_KALOS_GANG_BRUTUS
+  say "...Somebody went through me."
+  end
+label Beaten
+  say "My back's still sore. Your Pokémon hit like a train."
+  end
+
+script GangFauve
+  face gang_fauve player
+  speaker "Fauve"
+  if flag FLAG_KALOS_GANG_FAUVE goto Beaten
+  say "The tourist's Pokémon is ours now. Finders keepers. Want to argue?"
+  battle self as "kalos_gang_fauve"
+  setflag FLAG_KALOS_GANG_FAUVE
+  say "Argument lost. Ugh."
+  end
+label Beaten
+  say "We were only messing about. Mostly."
+  end
+
+script EmmaStation
+  face emma_station player
+  speaker "Emma"
+  say "I know these three. We grew up on the same streets. Beat them, and leave the talking to me."
+  end
+
+script Tourist
+  face tourist player
+  speaker "Tourist"
+  if not flag FLAG_KALOS_GANG_ROUILLE goto Help
+  if not flag FLAG_KALOS_GANG_BRUTUS goto Help
+  if not flag FLAG_KALOS_GANG_FAUVE goto Help
+  scene "The gang at the station"
+  say "You beat them all! But they still have my Pokémon..."
+  face emma_station gang_brutus
+  speaker "Emma"
+  say "Brutus. Rouille. Fauve. You remember me? From the alleys behind the restaurants. Give her Pokémon back."
+  speaker "Brutus"
+  say "...Emma? Little Emma? You went straight?"
+  speaker "Emma"
+  say "I found something better to do than this. So could you. The city's big enough for people who help."
+  speaker "Rouille"
+  say "Hmph. Here, take it back. We were bored, that's all."
+  speaker "Tourist"
+  say "My Pokémon! Oh, thank you, both of you! Lumiose isn't so frightening after all."
+  speaker "Emma"
+  face emma_station player
+  say "Let's tell Looker. He'll pretend he isn't impressed."
+  hide gang_rouille
+  hide gang_brutus
+  hide gang_fauve
+  hide tourist
+  hide emma_station
+  setflag FLAG_KALOS_LOOKER_GANG_DONE
+  clearflag FLAG_KALOS_EMMA_AWAY
+  endscene
+  end
+label Help
+  say "Those three took my Pokémon and won't give it back! They say I have to pay their toll first..."
+  end

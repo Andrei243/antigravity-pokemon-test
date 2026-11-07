@@ -1,0 +1,36 @@
+{
+  // Terminus Cave's depths (plan 23 · Z4b): a map of its own, drawn by hand (tools/MapDraw/kalos/terminus_cave_depths.txt),
+  // our words. Below the great hall's head three chambers go down, each by a way at its far side, to the last basement,
+  // where a Pokémon that watches over the land sleeps (terminus_cave_depths.txt: Zygarde). Three Trainers and the strongest
+  // ground and rock Pokémon of the mountains. It plays Santalune Forest's song until plan 31 writes it a cave song of its own
+  "area": "terminus_cave_depths",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "solenne": {
+      "name": "Solenne",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Solenne: Only Champions come this deep. Prove it, and I'll let you go deeper still!",
+        "dialogueAfter": "Ace Trainer Solenne: Proved. Mind the dark down there."
+      }
+    },
+    "hector": {
+      "name": "Hector",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Hector: I have heard something breathing below us for forty years. Show me what you're made of first!",
+        "dialogueAfter": "Veteran Hector: Go on, then. Tell me what's breathing."
+      }
+    },
+    "eloi": {
+      "name": "Eloi",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Eloi: The rock gets warmer the deeper you go. Funny, isn't it? Warm up with a battle!",
+        "dialogueAfter": "Hiker Eloi: Plenty warm now, thanks."
+      }
+    },
+    "zygarde": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_KALOS_ZYGARDE_GONE" }
+  }
+}
