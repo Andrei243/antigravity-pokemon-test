@@ -178,7 +178,7 @@ sealed class FreeMovePeople : IFieldPeople
     /// own scale that makes it <paramref name="height"/> tiles tall: the legs lengthened from the ground, the body from
     /// the hips over them, each arm from its shoulder, the head shrunk about the neck and carried up with it.
     /// </summary>
-    static float Grow(CharacterRig rig, float height)
+    internal static float Grow(CharacterRig rig, float height)
     {
         var sk = rig.Skeleton;
         var skin = rig.Skin;
