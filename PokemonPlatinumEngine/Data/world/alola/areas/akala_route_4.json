@@ -1,0 +1,45 @@
+{
+  "key": "akala_route_4",
+  "index": 10,
+  "name": "Route 4",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_4",
+  "nightMusic": "ROUTE_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "collector", "looks": "collector", "movement": "look_east", "x": 140, "z": 280, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_COLLECTOR_KANOA" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 158, "z": 270, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_PALANI" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 142, "z": 256, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_ANELA" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 158, "z": 250, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_IKAIKA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 133, "z": 291, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_4_GREAT_BALL", "item": "Great Ball", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_4_REVIVE", "item": "Revive", "script": "" }
+  ],
+  "signs": [
+    { "x": 152, "z": 296, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Lillipup", "level": 11 },
+    { "species": "Lillipup", "level": 12 },
+    { "species": "Lillipup", "level": 13 },
+    { "species": "Pikipek", "level": 11 },
+    { "species": "Pikipek", "level": 12 },
+    { "species": "Mudbray", "level": 12 },
+    { "species": "Mudbray", "level": 13 },
+    { "species": "Yungoos", "level": 11 },
+    { "species": "Yungoos", "level": 12 },
+    { "species": "Grubbin", "level": 12 },
+    { "species": "Igglybuff", "level": 11 },
+    { "species": "Eevee", "level": 12 }
+  ],
+  "landRate": 20
+}

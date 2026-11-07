@@ -1,0 +1,14 @@
+{
+  // Melemele Meadow (plan 23 · Z5, second part): drawn by hand, our words. A secluded field of yellow flowers at Route
+  // 3's east end, paths crossing it and tall grass in its four corners. Lillie comes here looking for her little Pokémon
+  // after Ilima's trial (melemele_meadow.txt); she is shown by a flag of ours from then until it is found
+  "area": "melemele_meadow",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "triggers": [
+    { "script": "Nebby", "x": 377, "z": 68, "width": 1, "depth": 4, "variable": "VAR_ALOLA_STORY", "value": 10 }
+  ],
+  "people": {
+    "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_NEBBY_FOUND", "shownBy": "FLAG_ALOLA_LILLIE_MEADOW" }
+  }
+}

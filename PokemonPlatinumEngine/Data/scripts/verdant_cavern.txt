@@ -1,0 +1,69 @@
+# Verdant Cavern, Melemele Island: Captain Ilima's trial (plan 23 · Z5, second part). The lines are our own, on Sun and
+# Moon's beats as they are publicly described (docs/mechanics/rulings.md, "The rest of Melemele"): three dens, each
+# with a Yungoos that bolts out to battle, then the totem Pokémon at the top. Ours: the totem is Sun's, a Gumshoos, met
+# as a wild battle that can't be run from; its aura and its call for help are plan 23 · Z6's. VAR_ALOLA_STORY is
+# alola_route_1.txt's count.
+#
+# The people: ilima, the three dens' Yungoos and the totem, shown by FLAG_ALOLA_VERDANT_TRIAL while the trial is under
+# way; each den's Yungoos is hidden once battled (FLAG_ALOLA_VERDANT_DEN_1 to _3), Ilima and the totem once it is won
+# (FLAG_ALOLA_VERDANT_TRIAL_DONE).
+
+
+script IlimaInside
+  speaker "Ilima"
+  say "Three dens: one west, one east and one up the middle. Then the totem's den at the very top. Good luck!"
+  end
+
+
+script Den1
+  text "A Yungoos burst out of the den!"
+  wildbattle "Yungoos" 11 nofleeing
+  setflag FLAG_ALOLA_VERDANT_DEN_1
+  hide self
+  text "The den is empty now."
+  end
+
+script Den2
+  text "A Yungoos burst out of the den!"
+  wildbattle "Yungoos" 11 nofleeing
+  setflag FLAG_ALOLA_VERDANT_DEN_2
+  hide self
+  text "The den is empty now."
+  end
+
+script Den3
+  text "A Yungoos burst out of the den!"
+  wildbattle "Yungoos" 11 nofleeing
+  setflag FLAG_ALOLA_VERDANT_DEN_3
+  hide self
+  text "The den is empty now."
+  end
+
+
+# The totem's den: only once all three dens are clear
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_VERDANT_DEN_1 goto NotYet
+  if not flag FLAG_ALOLA_VERDANT_DEN_2 goto NotYet
+  if not flag FLAG_ALOLA_VERDANT_DEN_3 goto NotYet
+  scene "The totem Gumshoos"
+  text "An enormous Gumshoos glares down from the top of the den. Its whole body seems to shimmer with power!"
+  cry "Gumshoos"
+  wildbattle "Gumshoos" 12 nofleeing
+  setflag FLAG_ALOLA_VERDANT_TRIAL_DONE
+  setflag FLAG_ALOLA_HAU_ROUTE_2_DONE
+  setflag FLAG_ALOLA_LILLIE_MEADOW
+  hide self
+  speaker "Ilima"
+  say "Bravo! Truly bravo! You have passed my trial, {player}."
+  say "This crystal is proof of it. Hold it with your Z-Ring, and a Normal-type move becomes a Z-Move."
+  give "Normalium Z"
+  give "Great Ball" 10
+  say "Professor Kukui came by while you were inside. He said the girl Lillie went looking for her Pokémon up on Route 3, past the end of Route 2. Perhaps you could help her?"
+  setvar VAR_ALOLA_STORY 10
+  objective alolaMeadow
+  endscene
+  end
+label NotYet
+  text "Something enormous stirs at the top of the den... It won't come out until the three dens below are clear."
+  end

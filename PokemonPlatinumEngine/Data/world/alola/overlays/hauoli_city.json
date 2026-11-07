@@ -1,8 +1,11 @@
 {
-  // Hau'oli City, its west end (plan 23 · Z5, first part): drawn by hand, our words. The island's city on its beach: the
+  // Hau'oli City (plan 23 · Z5, first and second parts): drawn by hand, our words. The island's city on its beach: the
   // Pokémon Center (with the Mart's counter inside, as Alola's centres have) and two houses along the promenade, the
-  // road in from the Hau'oli Outskirts in the west. Its shopping streets, the marina, the city hall and the Trainers'
-  // School to the east are a later session's
+  // road in from the Hau'oli Outskirts in the west and the road north to Route 2; east of them the shopping street (the
+  // city hall, the police station, the malasada shop, the clothes shop and Captain Ilima's house) and the marina's pier,
+  // where Team Skull's grunts are met with Ilima and the ferry to Akala sails (hauoli_city.txt). The city hall, the
+  // police station and the clothes shop are a later session's. The grunts, Ilima and the professor on the beach are
+  // shown by flags of ours for their scenes
   "area": "hauoli_city",
   "bgmTrack": "alola/hauoli",
   "trees": "Round",
@@ -10,7 +13,14 @@
   "doors": [
     { "warp": 0, "map": "HauoliCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
     { "warp": 1, "map": "HauoliCity_WestHouse", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 2, "map": "HauoliCity_EastHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "HauoliCity_EastHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "HauoliCity_MalasadaShop", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "HauoliCity_IlimasHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 3, 4, 6 ],
+  "triggers": [
+    { "script": "Marina", "x": 356, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 7 },
+    { "script": "SailToAkala", "x": 356, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 13 }
   ],
   "props": [
     { "type": "Bench", "x": 284, "y": 169, "width": 2, "depth": 1 },
@@ -33,10 +43,33 @@
       "name": "Boy",
       "npcType": "Youngster",
       "still": true,
-      "dialog": [ "The Trainers' School is further along the promenade. Everyone on Melemele learns to battle there!" ]
+      "dialog": [ "The shops are further along the promenade, and the marina's at the far end. That's where the boats go to the other islands!" ]
+    },
+    "grunt": { "name": "Grunt", "npcType": "skull_grunt", "script": "Grunt", "still": true, "shownBy": "FLAG_ALOLA_SKULL_MARINA" },
+    "grunt_2": { "name": "Grunt", "npcType": "skull_grunt", "script": "Grunt", "still": true, "shownBy": "FLAG_ALOLA_SKULL_MARINA" },
+    "ilima": { "name": "Ilima", "npcType": "ilima", "script": "Ilima", "still": true, "shownBy": "FLAG_ALOLA_ILIMA_MARINA" },
+    "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_SAILED_TO_AKALA", "shownBy": "FLAG_ALOLA_KUKUI_MARINA" },
+    "sailor": { "name": "Sailor", "npcType": "sailor", "script": "Ferry", "still": true },
+    "shopper": {
+      "name": "Shopper",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "I always buy a bag of malasadas before the ferry. The trip to Akala is just long enough to eat them all." ]
+    },
+    "officer": {
+      "name": "Officer",
+      "npcType": "policeman",
+      "still": true,
+      "dialog": [ "Those kids in the skull shirts have been hanging around the marina again. Keep an eye on your things." ]
+    },
+    "girl": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Captain Ilima lives just down the street. He's so polite, and he's never lost a battle to anyone from the school!" ]
     }
   },
   "signs": {
-    "CitySign": "Hau'oli City\nThe city of the island's beaches and shops."
+    "CitySign": "Hau'oli City\nThe city of the island's beaches and shops.",
+    "ShopsSign": "Hau'oli Shopping District\nCity Hall, the police station and the shops of the promenade.",
+    "MarinaSign": "Hau'oli Marina\nFerries to Akala Island."
   }
 }

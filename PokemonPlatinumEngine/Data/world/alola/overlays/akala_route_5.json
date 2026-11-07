@@ -1,0 +1,46 @@
+{
+  // Route 5, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. North from Paniola Ranch past a Pokémon
+  // Center, with the way west to Brooklet Hill; its north end is a later session's. Gladion, of Team Skull, stands on the
+  // road once Mallow has been met (shown by FLAG_ALOLA_RIDE_STOUTLAND until his battle, akala_route_5.txt)
+  "area": "akala_route_5",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "AkalaRoute5_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "Gladion", "x": 148, "z": 145, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 16 }
+  ],
+  "people": {
+    "gladion": { "name": "Gladion", "npcType": "gladion", "script": "GladionTalk", "still": true, "hiddenBy": "FLAG_ALOLA_GLADION_ROUTE_5_DONE", "shownBy": "FLAG_ALOLA_RIDE_STOUTLAND" },
+    "breeder": {
+      "name": "Lehua",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Lehua: My two have been raised with love. And a little bit of mushroom.",
+        "dialogueAfter": "Pokémon Breeder Lehua: More love next time. Maybe more mushroom."
+      }
+    },
+    "hiker": {
+      "name": "Koapaka",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Koapaka: I've climbed the volcano three times this week. You don't look tired at all, so let's battle!",
+        "dialogueAfter": "Hiker Koapaka: Now I'm tired."
+      }
+    },
+    "lass": {
+      "name": "Maile",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Maile: My Fomantis looks like a flower, but it fights like a sword!",
+        "dialogueAfter": "Lass Maile: A wilted flower now."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 5\nNorth: Lush Jungle\nSouth: Paniola Ranch",
+    "BrookletSign": "Brooklet Hill\nWest. Trial site of Captain Lana."
+  }
+}

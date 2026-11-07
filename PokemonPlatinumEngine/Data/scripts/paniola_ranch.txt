@@ -1,0 +1,44 @@
+# Paniola Ranch, Akala Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Akala, as far as Brooklet Hill"). VAR_ALOLA_STORY is
+# alola_route_1.txt's count.
+#
+# The people: mallow on the road in, shown from Hau's battle in Paniola (FLAG_ALOLA_HAU_PANIOLA_DONE) until she has
+# registered Stoutland in the Ride Pager (FLAG_ALOLA_RIDE_STOUTLAND). The paddocks' Pokémon only cry.
+
+
+script Mallow
+  scene "Mallow at the ranch"
+  face player right
+  speaker "Mallow"
+  say "Alola! You must be the trial-goer Kukui keeps talking about. I'm Mallow, one of Akala's trial captains."
+  say "My trial's up in the Lush Jungle, but you'll want to see Lana's at Brooklet Hill first. It's west off Route 5, just north of here."
+  say "Oh, and take this along. My Stoutland can sniff out things buried in the ground. It's registered in your Ride Pager now!"
+  setflag FLAG_ALOLA_RIDE_STOUTLAND
+  text "{player} registered Stoutland in the Ride Pager!"
+  say "See you in the jungle!"
+  hide mallow
+  setvar VAR_ALOLA_STORY 16
+  objective alolaRoute5
+  endscene
+  end
+
+
+script MallowTalk
+  speaker "Mallow"
+  say "Have you tried the moomoo milk here? It's the best!"
+  end
+
+script Tauros
+  cry "Tauros"
+  text "Tauros snorted and pawed at the ground."
+  end
+
+script Miltank
+  cry "Miltank"
+  text "Miltank looks content."
+  end
+
+script Mudbray
+  cry "Mudbray"
+  text "Mudbray is rolling happily in the mud."
+  end

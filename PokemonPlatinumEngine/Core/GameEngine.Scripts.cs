@@ -290,7 +290,7 @@ public partial class GameEngine
     /// </summary>
     internal void UseFieldMoveFromMenu(FieldMove move, int index)
     {
-        var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move); // index -1: a wild helper (plan 12 · Q18)
+        var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move, flow.Story, Here.Id); // index -1: a wild helper (plan 12 · Q18), or a ride (plan 23 · Z5)
         var walker = new Walker(flow.Player.Mode, flow.Player.HeightOn(flow.Map), Moves: flow.Player.Moves);
         var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, flow.Story);

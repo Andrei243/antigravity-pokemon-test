@@ -1,0 +1,36 @@
+{
+  // Brooklet Hill, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. Two lakes stepping up from Route
+  // 5's way in, sandy shores round them, and the totem's den on the second lake's north shore, which is reached only
+  // across the water. Captain Lana's trial (brooklet_hill.txt): she registers Lapras in the Ride Pager, two splashes on
+  // the first lake's shores are Wishiwashi, and the totem Wishiwashi waits on the far shore, met as a plain wild battle
+  // until plan 23 · Z6 gives it its aura. The splashes and the totem are shown by FLAG_ALOLA_BROOKLET_TRIAL while the
+  // trial is under way
+  "area": "brooklet_hill",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "lana": { "name": "Lana", "npcType": "lana", "script": "Lana", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE" },
+    "splash": { "name": "Wishiwashi", "script": "Splash1", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_SPLASH_1", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },
+    "splash_2": { "name": "Wishiwashi", "script": "Splash2", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_SPLASH_2", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },
+    "totem": { "name": "Wishiwashi", "script": "Totem", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },
+    "fisherman": {
+      "name": "Kaleo",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Kaleo: Shh! The fish can hear you! ...Too late. Battle!",
+        "dialogueAfter": "Fisherman Kaleo: And now the fish are laughing at me."
+      }
+    },
+    "backpacker": {
+      "name": "Nalu",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Nalu: I hiked up for the view and stayed for the battles!",
+        "dialogueAfter": "Backpacker Nalu: The view is still great."
+      }
+    }
+  },
+  "signs": {
+    "HillSign": "Brooklet Hill\nTrial site of Captain Lana."
+  }
+}

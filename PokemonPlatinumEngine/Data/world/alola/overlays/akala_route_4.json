@@ -1,0 +1,45 @@
+{
+  // Route 4, Akala Island (plan 23 · Z5, second part): drawn by hand, our words. The road north from Heahea City to
+  // Paniola Town through three patches of tall grass, a berry tree and four trainers
+  "area": "akala_route_4",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "collector": {
+      "name": "Kanoa",
+      "npcType": "collector",
+      "trainer": {
+        "dialogueBefore": "Collector Kanoa: I collect rare Pokémon. Have you got anything I haven't seen? Let's find out!",
+        "dialogueAfter": "Collector Kanoa: Rare and strong. I'm writing that down."
+      }
+    },
+    "gentleman": {
+      "name": "Palani",
+      "npcType": "gentleman",
+      "trainer": {
+        "dialogueBefore": "Gentleman Palani: Ah, a young challenger on the road to Paniola. Allow me a friendly bout.",
+        "dialogueAfter": "Gentleman Palani: Most invigorating. Do carry on."
+      }
+    },
+    "picnicker": {
+      "name": "Anela",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Anela: My Cutiefly loves the flowers here. And battles. Mostly battles!",
+        "dialogueAfter": "Picnicker Anela: Back to the flowers, then."
+      }
+    },
+    "youngster": {
+      "name": "Ikaika",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Ikaika: I'm training to take on the trials too! You first, though!",
+        "dialogueAfter": "Youngster Ikaika: Maybe I'll wait another year."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 4\nNorth: Paniola Town\nSouth: Heahea City"
+  }
+}

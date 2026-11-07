@@ -1,0 +1,46 @@
+# Paniola Town, Akala Island (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Akala, as far as Brooklet Hill"). VAR_ALOLA_STORY is
+# alola_route_1.txt's count.
+#
+# The people: hau at the town's south end, shown once the player has sailed to Akala (FLAG_ALOLA_SAILED_TO_AKALA) until
+# his battle (FLAG_ALOLA_HAU_PANIOLA_DONE). His teams are alola_hau_paniola_1 to _3, the one strong against the player's,
+# its ace holding a Normalium Z.
+
+
+script HauInPaniola
+  scene "Hau in Paniola"
+  face player up
+  speaker "Hau"
+  say "Alola, {player}! I took the ferry right after you. Akala's huge! And look, I got a Normalium Z too!"
+  say "So now we can both use Z-Moves. You know what that means, right? Battle!"
+  heal
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle hau as "alola_hau_paniola_3" canlose
+  goto Fought
+label AgainstRowlet
+  battle hau as "alola_hau_paniola_1" canlose
+  goto Fought
+label AgainstLitten
+  battle hau as "alola_hau_paniola_2" canlose
+label Fought
+  heal
+  speaker "Hau"
+  if lost goto HauWon
+  say "Whoa, that Z-Move was huge! I gotta keep up. I'm going to check out the ranch up north!"
+  goto Done
+label HauWon
+  say "Ha! Our Z-Moves were both huge, though! I'm going to check out the ranch up north!"
+label Done
+  hide hau
+  setflag FLAG_ALOLA_HAU_PANIOLA_DONE
+  setvar VAR_ALOLA_STORY 15
+  objective alolaRanch
+  endscene
+  end
+
+
+script Hau
+  speaker "Hau"
+  say "Hey, {player}! Over here!"
+  end

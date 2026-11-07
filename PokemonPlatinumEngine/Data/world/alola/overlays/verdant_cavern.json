@@ -1,0 +1,25 @@
+{
+  // Verdant Cavern (plan 23 · Z5, second part): a map of its own, drawn by hand (tools/MapDraw/alola/verdant_cavern.txt),
+  // our words. Captain Ilima's trial (verdant_cavern.txt): three dens, west, east and up the middle, each with a
+  // Yungoos that bolts out, a Team Skull grunt in the main hall, and the totem's den at the top. The dens' Pokémon,
+  // Ilima inside and the totem are shown by a flag of ours while the trial is under way; the totem is met as a plain
+  // wild battle until plan 23 · Z6 gives it its aura and its call for help
+  "area": "verdant_cavern",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "ilima": { "name": "Ilima", "npcType": "ilima", "script": "IlimaInside", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL_DONE", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "den_1": { "name": "Yungoos", "script": "Den1", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_DEN_1", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "den_2": { "name": "Yungoos", "script": "Den2", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_DEN_2", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "den_3": { "name": "Yungoos", "script": "Den3", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_DEN_3", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "totem": { "name": "Gumshoos", "script": "Totem", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL_DONE", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
+    "grunt": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Trials are for losers! Skull's here to wreck it. Bring it!",
+        "dialogueAfter": "Team Skull Grunt: Whatever. Trials are still lame."
+      }
+    }
+  }
+}

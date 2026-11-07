@@ -9166,6 +9166,52 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **The way in.** Until Z4 builds Kalos's League and a departure hall of its own, the airline's attendant to Alola
   stands in Lumiose City's Pokémon Center, shown by `KalosHallOfFame` (`common.Attendant`), and lands the player before
   their new home.
+
+## The rest of Melemele, the Ride Pager and Akala as far as Brooklet Hill (2026-11-07, plan 23 · Z5, second part)
+
+- **Where it comes from.** As the first part: drawn by hand from the places as they are publicly described (Serebii's
+  and Bulbapedia's pages of each place, its exits, its trainers' classes and teams, its wild Pokémon and the order of
+  the story's beats), in our own drawing and our own words; no picture, map, line or script of the original is read.
+  Names of people and of trainers are ours; the teams follow Sun's levels and species where they are known.
+- **What is drawn.** Melemele: Hau'oli City's east end (the city hall, police station and clothes shop shut for now,
+  the malasada shop and Captain Ilima's house, the marina's pier), Route 2 north out of the city (a Pokémon Center, a
+  motel shut for now, the berry fields and their caretaker's house, Verdant Cavern's hill), Route 3 along the northern
+  cliffs over a gorge and Kala'e Bay to Melemele Meadow, the shore west of Route 1's beach to Ten Carat Hill, and two
+  caves as maps of their own (`TenCaratHill`, matrix 1; `VerdantCavern`, matrix 2). Akala is a map of its own
+  (`Akala`, matrix 3, plan 23's "four islands as four matrices"), its places named by rectangles of its own (MapDraw's
+  `MapDrawing.Areas`): Heahea City, Route 4, Paniola Town, Paniola Ranch, Route 5 to its Pokémon Center and Brooklet
+  Hill. Hau'oli's layout stays the first part's: east of Route 1, where Sun and Moon have it west.
+- **The story** (`VAR_ALOLA_STORY` 8 to 18, `alola_route_1.txt`'s header): Team Skull's grunts and Captain Ilima at the
+  marina; the festival in Iki Town with Hau's battle and **the Z-Ring from Hala** (ours: Sun and Moon hold the festival
+  on the first evening, before Hau'oli City, which the first part had already passed); Ilima's trial in Verdant Cavern
+  (three dens and the totem); Lillie's Pokémon found in Melemele Meadow (still never shown); Hau on Route 3; Hala's
+  grand trial on Iki Town's stage (the Melemele stamp, `givebadge Melemele`, the Fightinium Z, Tauros in the Ride
+  Pager, TM54 from Hala where Sun and Moon have the professor give it); the professor's boat from the marina to Heahea;
+  Hau in Paniola Town (his ace holds a Normalium Z and the trainer has a Z-Ring); Mallow registering Stoutland at the
+  ranch; Gladion on Route 5; Lana's trial at Brooklet Hill (Lapras in the Ride Pager, two splashes, the totem and the
+  Waterium Z). Each scene's people are shown and hidden by flags of ours with `shownBy`, so no catch-up script was
+  needed for a save of the first part. Objectives 607 to 617.
+- **The totems** are Sun's (Gumshoos; Wishiwashi, which schools by its own ability at level 20) and are met as wild
+  battles that can't be run from (`wildbattle … nofleeing`). Their aura, their allies called in and the rule that a
+  totem can't be caught are plan 23 · Z6's (`BattleConditions.TotemAura`, `callsForHelp`): a totem caught now is kept.
+  The trials' dens and splashes are Pokémon of the map battled in turn, where Sun and Moon interrupt with Team Skull.
+- **The Ride Pager** (`Overworld/RidePager.cs`): a ride is a story flag (`FLAG_ALOLA_RIDE_TAUROS`, `_LAPRAS`,
+  `_CHARIZARD`, `_MACHAMP`) that grants its field move while the player is in Alola, whatever the options' helpers row
+  says and with no HM: Tauros Rock Smash, Lapras Surf, Charizard Fly, Machamp Strength (`FieldHelp.Granted`). The
+  Pokémon seen doing the move is the ride's species, in a line of its own (`fieldMoves.ride`). Ours, beside Sun and
+  Moon: the ride does the move as a helper does, from the obstacle's question; nobody is ridden yet (no rider drawn, no
+  charge into a rock, no pace of its own), which plan 23's "The engine for Alola" proposes. Stoutland's Search and
+  Mudsdale's Gallop have no field move of the grid's: Stoutland is a flag alone (`RidePager.StoutlandFlag`), Mudsdale
+  waits for Ula'ula (Z7). Plan 23 had named `StoryState.Grants` and `SaveData.FieldGrants`; flags of the story do the
+  same with nothing new saved.
+- **The ferry** is a sailor at each pier's end whose script `warp`s between Melemele's marina and Heahea's pier (after
+  the professor's boat), which `WorldWalk` follows as it follows any person's warp. No scene is played at sea.
+- **Left**: the Trainers' School, the city hall, the police station, the clothes shop, the motel, Hau'oli Cemetery,
+  Seaward Cave, Kala'e Bay, Big Wave Beach and Sandy Cave on Melemele; Heahea's bureau, hotel and laboratory, Kiawe's
+  house, the nursery, the north of Route 5, Route 6 and everything beyond on Akala; Island Scan; the totems' aura;
+  Akala's places on the Pokédex's area page (the habitats are one grid, Melemele's) and on a Town Map (Alola has none
+  yet); Akala's own songs (it plays Melemele's).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -801,6 +801,17 @@
     "alolaKahuna": "Go back down to Iki Town. The kahuna has come home.",
     "alolaLab": "Visit Professor Kukui's laboratory on the beach, south of your house.",
     "alolaHauoli": "Follow the shore east into Hau'oli City.",
+    "alolaMarina": "Walk east through Hau'oli City to the marina's pier.",
+    "alolaFestival": "Go back up to Iki Town for the festival.",
+    "alolaVerdant": "Take Route 2 north from Hau'oli City to Captain Ilima's trial in Verdant Cavern.",
+    "alolaMeadow": "Follow Route 2 north onto Route 3 and look for Lillie in Melemele Meadow.",
+    "alolaHau3": "Head back along Route 3. Hau is waiting there.",
+    "alolaGrandTrial": "Return to Iki Town for Hala's grand trial.",
+    "alolaSail": "Meet Professor Kukui at Hau'oli City's marina and sail for Akala.",
+    "alolaPaniola": "Take Route 4 north from Heahea City to Paniola Town.",
+    "alolaRanch": "Go north through Paniola Ranch.",
+    "alolaRoute5": "Follow Route 5 north towards Brooklet Hill.",
+    "alolaBrooklet": "Find Captain Lana at Brooklet Hill, west of Route 5.",
     "alolaFree": "That is as far as the road runs for now. Melemele is yours to explore."
   },
 
@@ -2676,7 +2687,8 @@
       "location": "There's nothing here to use it on."
     },
     "used": "{name} used {move}!",
-    "helped": "A wild {name} lent a hand. It used {move}!"
+    "helped": "A wild {name} lent a hand. It used {move}!",
+    "ride": "{name} came at the Ride Pager's call. It used {move}!"
   },
   "fishing": {
     "landed": "Hooked one! Here it comes!",
@@ -3942,6 +3954,9 @@
     "Pokemaniac": "Poké Maniac",
     "PokemonBreeder": "Pokémon Breeder",
     "PokemonRanger": "Pokémon Ranger",
+    "TeamSkullGrunt": "Team Skull Grunt",
+    "TrialCaptain": "Trial Captain",
+    "IslandKahuna": "Island Kahuna",
     "PokemonProfessor": "Pokémon Professor",
     "PokemonTrainer": "Pokémon Trainer",
     "Policeman": "Policeman",

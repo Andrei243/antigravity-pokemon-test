@@ -55,7 +55,12 @@
   // Pokémon Center, and Hau'oli City's Pokémon Center
   "spawns": [
     { "id": 1, "area": "alola_route_1", "x": 238, "y": 158, "room": "AlolaRoute1_PlayersHouse" },
-    { "id": 2, "area": "hauoli_city", "x": 281, "y": 166, "room": "HauoliCity_PokemonCenter_1F" }
+    { "id": 2, "area": "hauoli_city", "x": 281, "y": 166, "room": "HauoliCity_PokemonCenter_1F" },
+    // Plan 23 · Z5, second part: Route 2's Pokémon Center, and Akala's three, on the island's own map
+    { "id": 3, "area": "alola_route_2", "x": 285, "y": 139, "room": "AlolaRoute2_PokemonCenter_1F" },
+    { "id": 4, "area": "heahea_city", "x": 129, "y": 309, "room": "HeaheaCity_PokemonCenter_1F", "map": "Akala" },
+    { "id": 5, "area": "paniola_town", "x": 133, "y": 215, "room": "PaniolaTown_PokemonCenter_1F", "map": "Akala" },
+    { "id": 6, "area": "akala_route_5", "x": 159, "y": 127, "room": "AkalaRoute5_PokemonCenter_1F", "map": "Akala" }
   ],
   // Plan 18 · W4: Sun and Moon's levels for a team that crossed from Kalos, from Kalos's Champion's 205 on the first
   // route to Alola's Champion at 224 (the W4 study's place for it, beside Kalos's post-game at 222 = 224 − 2); W4b-1:

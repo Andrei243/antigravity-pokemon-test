@@ -1,0 +1,35 @@
+{
+  "key": "heahea_city",
+  "index": 9,
+  "name": "Heahea City",
+  "matrix": 3,
+  "kind": "City",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HEAHEA_CITY",
+  "nightMusic": "HEAHEA_CITY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 129, "z": 308, "to": "HeaheaCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 141, "z": 308, "to": "HeaheaCity_TouristBureau", "toWarp": 0 },
+    { "x": 158, "z": 308, "to": "HeaheaCity_Hotel", "toWarp": 0 },
+    { "x": 169, "z": 308, "to": "HeaheaCity_ResearchLab", "toWarp": 0 },
+    { "x": 168, "z": 320, "to": "HeaheaCity_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "look_north", "x": 125, "z": 339, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "tourist", "looks": "backpacker_m", "movement": "wander_around", "x": 140, "z": 318, "facing": 1, "rangeX": 3, "rangeZ": 2, "script": "" },
+    { "id": "woman", "looks": "lady", "movement": "look_around", "x": 156, "z": 322, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 176, "z": 326, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_HEAHEA_CITY_RARE_CANDY", "item": "Rare Candy", "script": "" }
+  ],
+  "signs": [
+    { "x": 153, "z": 310, "type": 0, "script": "CitySign" },
+    { "x": 128, "z": 326, "type": 0, "script": "PierSign" }
+  ],
+  "triggers": []
+}
