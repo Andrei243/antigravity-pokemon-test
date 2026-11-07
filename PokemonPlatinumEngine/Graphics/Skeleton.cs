@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace PokemonPlatinumEngine.Graphics;
@@ -16,19 +17,64 @@ internal sealed class Skeleton
     private readonly List<Bone> bones = new();
     private readonly Dictionary<string, int> byName = new(StringComparer.OrdinalIgnoreCase);
 
+    // The order the bones are posed in, every parent before its children: null while each bone hangs from one added
+    // before it (every skeleton but the grown kit's), which is the order they were added in
+    private int[]? order;
+
     public int Count => bones.Count;
 
     public IReadOnlyList<Bone> Bones => bones;
 
     public Bone this[int index] => bones[index];
 
-    /// <summary>Adds a bone; parents must be added before their children.</summary>
+    /// <summary>Adds a bone; parents must be added before their children (<see cref="Reparent"/> hangs one from a later bone).</summary>
     public int Add(string name, int parent, Vector3 joint)
     {
         if (parent >= bones.Count) throw new ArgumentException("parents come before their children", nameof(parent));
         bones.Add(new Bone(name, parent, joint));
         byName[name] = bones.Count - 1;
+        if (order != null) order = [.. order, bones.Count - 1];
         return bones.Count - 1;
+    }
+
+    /// <summary>
+    /// Hangs <paramref name="bone"/> from <paramref name="parent"/>, which may come later in the list (the grown kit's
+    /// head from its neck, bone 19, and each upper arm from its collarbone, plan 30 · FM4: a body's bones keep the
+    /// chibi kit's numbers, so what a grown body puts between them is appended). The bones are then posed in an order
+    /// that has every parent before its children. A parent that is the bone itself or hangs from it is refused.
+    /// </summary>
+    public void Reparent(int bone, int parent)
+    {
+        if ((uint)bone >= (uint)bones.Count) throw new ArgumentOutOfRangeException(nameof(bone));
+        if (parent >= bones.Count) throw new ArgumentOutOfRangeException(nameof(parent));
+        for (int p = parent; p >= 0; p = bones[p].Parent)
+            if (p == bone) throw new ArgumentException($"{bones[bone].Name} can't hang from {bones[parent].Name}, which hangs from it", nameof(parent));
+        bones[bone] = bones[bone] with { Parent = parent };
+        order = PosingOrder();
+    }
+
+    /// <summary>The order the bones are posed in: every parent before its children, and otherwise as they were added.</summary>
+    public IReadOnlyList<int> Order => order ?? Enumerable.Range(0, bones.Count).ToArray();
+
+    // Depth first from each root, the children of a bone in the order they were added
+    private int[] PosingOrder()
+    {
+        var children = new List<int>[bones.Count];
+        for (int b = 0; b < bones.Count; b++) children[b] = new List<int>();
+        var roots = new List<int>();
+        for (int b = 0; b < bones.Count; b++)
+            if (bones[b].Parent < 0) roots.Add(b);
+            else children[bones[b].Parent].Add(b);
+        var result = new List<int>(bones.Count);
+        var stack = new Stack<int>();
+        for (int r = roots.Count - 1; r >= 0; r--) stack.Push(roots[r]);
+        while (stack.Count > 0)
+        {
+            int b = stack.Pop();
+            result.Add(b);
+            for (int c = children[b].Count - 1; c >= 0; c--) stack.Push(children[b][c]);
+        }
+        return result.ToArray();
     }
 
     public int Find(string name) => byName.TryGetValue(name, out int i) ? i : -1;
@@ -51,16 +97,21 @@ internal sealed class Skeleton
     /// </summary>
     public void Evaluate(SkeletonPose pose, Span<Matrix4x4> skin)
     {
-        for (int b = 0; b < bones.Count; b++)
-        {
-            var joint = bones[b].Joint;
-            var local = Matrix4x4.CreateTranslation(-joint)
-                * Matrix4x4.CreateScale(pose.Scale[b])
-                * Matrix4x4.CreateFromQuaternion(pose.Rotation[b])
-                * Matrix4x4.CreateTranslation(joint + pose.Offset[b]);
-            int parent = bones[b].Parent;
-            skin[b] = parent < 0 ? local : local * skin[parent];
-        }
+        if (order == null)
+            for (int b = 0; b < bones.Count; b++) Pose(b, pose, skin);
+        else
+            foreach (int b in order) Pose(b, pose, skin);
+    }
+
+    private void Pose(int b, SkeletonPose pose, Span<Matrix4x4> skin)
+    {
+        var joint = bones[b].Joint;
+        var local = Matrix4x4.CreateTranslation(-joint)
+            * Matrix4x4.CreateScale(pose.Scale[b])
+            * Matrix4x4.CreateFromQuaternion(pose.Rotation[b])
+            * Matrix4x4.CreateTranslation(joint + pose.Offset[b]);
+        int parent = bones[b].Parent;
+        skin[b] = parent < 0 ? local : local * skin[parent];
     }
 
     /// <summary>Where a point of bone <paramref name="b"/>'s sculpted geometry is in the pose that gave <paramref name="skin"/>.</summary>

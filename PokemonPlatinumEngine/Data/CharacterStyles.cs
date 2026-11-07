@@ -17,6 +17,14 @@ namespace PokemonPlatinumEngine.Data;
 internal sealed class CharacterData
 {
     public Dictionary<string, CharacterStyle> Looks { get; set; } = new();
+
+    /// <summary>
+    /// Looks of the grown kit under a name <see cref="Looks"/> has already (plan 30 · FM4 and FM10: the classes the
+    /// older regions share with Kalos), asked for first when a look is asked in the grown kit. A look of the grown kit
+    /// alone stands in <see cref="Looks"/>, saying its <c>kit</c>.
+    /// </summary>
+    public Dictionary<string, CharacterStyle> Grown { get; set; } = new();
+
     public Dictionary<string, string> Same { get; set; } = new();
     public Dictionary<string, string> Fallbacks { get; set; } = new();
     public string Fallback { get; set; } = "Trainer";
@@ -40,7 +48,7 @@ internal sealed class CharacterStyles
 
     private static readonly Lazy<CharacterStyles> table = new(() => Parse(DataLayers.ReadPatched(FileName))); // a pack's characters.patch.json laid over it (plan 16 · T14)
 
-    private readonly Dictionary<string, CharacterStyle> looks;
+    private readonly Dictionary<string, CharacterStyle> looks, grown;
     private readonly Dictionary<string, string> same, fallbacks;
     private readonly Dictionary<string, string[]?> classes;
     private readonly string fallback;
@@ -48,6 +56,7 @@ internal sealed class CharacterStyles
     private CharacterStyles(CharacterData data)
     {
         looks = new Dictionary<string, CharacterStyle>(data.Looks, StringComparer.OrdinalIgnoreCase);
+        grown = new Dictionary<string, CharacterStyle>(data.Grown, StringComparer.OrdinalIgnoreCase);
         same = new Dictionary<string, string>(data.Same, StringComparer.OrdinalIgnoreCase);
         fallbacks = new Dictionary<string, string>(data.Fallbacks, StringComparer.OrdinalIgnoreCase);
         fallback = data.Fallback;
@@ -65,6 +74,13 @@ internal sealed class CharacterStyles
         }
         foreach (var (name, of) in same)
             if (!looks.ContainsKey(of)) throw new JsonException($"'{name}' is the same as '{of}', which is no look.");
+        // A grown look is the grown kit's twin of a look of the table: one of the grown kit alone stands among the looks
+        foreach (var (name, style) in grown)
+        {
+            if (!looks.TryGetValue(name, out var own)) throw new JsonException($"The grown look '{name}' has no look of that name to be the grown twin of.");
+            if (own.Kit == CharacterKit.Grown) throw new JsonException($"'{name}' is a look of the grown kit already, and needs no grown twin.");
+            style.Kit = CharacterKit.Grown;
+        }
     }
 
     /// <summary>Reads a table written as <c>characters.json</c> is: an unknown field of a look is an error, not a look silently left plain.</summary>
@@ -102,6 +118,19 @@ internal sealed class CharacterStyles
     public CharacterStyle Get(string name) =>
         (looks.TryGetValue(name, out var style) || (same.TryGetValue(name, out var of) && looks.TryGetValue(of, out style))
             ? style : new CharacterStyle()).Clone();
+
+    /// <summary>
+    /// The style of a look asked in a kit (plan 30 · FM4): in the grown kit, the table's grown look of that name (or of
+    /// the look the name is the same as) where it has one, else the look itself; in the chibi kit, the look itself.
+    /// A copy, as <see cref="Get(string)"/> gives; the look's build is as written, which
+    /// <see cref="CharacterStyle.For"/> reads in the kit it is made in.
+    /// </summary>
+    public CharacterStyle Get(string name, CharacterKit kit) =>
+        kit == CharacterKit.Grown && (grown.TryGetValue(name, out var style) || (same.TryGetValue(name, out var of) && grown.TryGetValue(of, out style)))
+            ? style.Clone() : Get(name);
+
+    /// <summary>The names the table has a grown look of (<see cref="CharacterData.Grown"/>).</summary>
+    public IEnumerable<string> GrownNames => grown.Keys;
 
     /// <summary>
     /// The look a person of the world stands as, by the name of the original's object looks: their own when the table

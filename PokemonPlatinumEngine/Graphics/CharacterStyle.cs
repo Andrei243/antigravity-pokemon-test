@@ -9,8 +9,14 @@ internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, 
 /// <summary>How the hair is cut (style guide, "Characters"; Bowl to Bald came with plan 11 · C2).</summary>
 internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches, Bowl, Ponytail, Curls, Bald }
 
-/// <summary>Body proportions: chibi children, adults with a longer body and a slightly smaller head, little children with a shorter one (plan 11 · C2) and the elderly, shorter still with the head forward (C3).</summary>
-internal enum BodyBuild { Kid, Adult, Little, Elder }
+/// <summary>
+/// Body proportions. The chibi kit's four: children, adults with a longer body and a slightly smaller head, little
+/// children with a shorter one (plan 11 · C2) and the elderly, shorter still with the head forward (C3). The grown
+/// kit's five (plan 30 · FM4; style guide, "Grown characters"): teenagers, most adults, broad adults, children and
+/// the elderly. A build belongs to one kit (<see cref="CharacterStyle.KitOf"/>), and a look's build is read in the kit
+/// it is made in (<see cref="CharacterStyle.BuildIn"/>).
+/// </summary>
+internal enum BodyBuild { Kid, Adult, Little, Elder, Teen, Grown, GrownBroad, Child, GrownElder }
 
 /// <summary>Something a person holds (plan 11 · C3; style guide, "Characters", "The second trainers' parts").</summary>
 internal enum HeldProp { None, Rod, Parasol, Guitar, Net, Pickaxe, FloatRing, Camera }
@@ -36,6 +42,19 @@ internal sealed class CharacterStyle
     public Color? Bag;
 
     public BodyBuild Build = BodyBuild.Kid;
+
+    /// <summary>
+    /// The kit the look is made in (plan 30 · FM4; style guide, "Grown characters"): the chibi kit unless it says the
+    /// grown one, or is asked for in a grown build by name (<c>PLAYER~Teen</c>, <see cref="For"/>).
+    /// </summary>
+    public Data.CharacterKit Kit = Data.CharacterKit.Chibi;
+
+    /// <summary>
+    /// The grown kit's figure (plan 30 · FM4): a waist, hips as wide as the rib cage and a bust (true) or a straight
+    /// one (false); left out, it follows <see cref="Lashes"/>, which the table gives its women and girls. The chibi kit
+    /// has no figure, and a child's never curves.
+    /// </summary>
+    public bool? Curved;
 
     /// <summary>Colour of the shoes' soles (darker shoe colour when left out).</summary>
     public Color? Sole;
@@ -81,22 +100,99 @@ internal sealed class CharacterStyle
     /// </summary>
     public static CharacterStyle For(string npcType)
     {
-        // A look holding something (plan 11 · C8): the player fishing is "PLAYER+Rod"
-        HeldProp? held = null;
-        if (npcType.LastIndexOf('+') is var plus and > 0 && Enum.TryParse<HeldProp>(npcType[(plus + 1)..], true, out var holds))
-        {
-            held = holds;
-            npcType = npcType[..plus];
-        }
-        var (character, outfit) = Core.Outfit.Undress(npcType);
-        var look = Data.CharacterStyles.Default.Get(character);
+        // A look holding something (plan 11 · C8): the player fishing is "PLAYER+Rod"; a look asked in a build of the
+        // other kit (plan 30 · FM4): the player crossed into Kalos is "PLAYER~Teen"
+        var (character, outfit, held, build) = Parse(npcType);
+        // Asked in the grown kit, a look is the table's grown look of that name where it has one
+        var look = build is { } asked ? Data.CharacterStyles.Default.Get(character, KitOf(asked)) : Data.CharacterStyles.Default.Get(character);
         var style = outfit == null ? look : Dressed(look, outfit);
         if (held is { } h) style.Holds = h;
+        if (build is { } b) (style.Kit, style.Build) = (KitOf(b), b);
+        style.Build = BuildIn(style.Build, style.Kit);
         return style;
     }
 
     /// <summary>The name of a look holding something (plan 11 · C8), which <see cref="For"/> reads back: <c>PLAYER+Rod</c>.</summary>
     public static string Holding(string npcType, HeldProp held) => $"{npcType}+{held}";
+
+    /// <summary>
+    /// The name of a look in a kit (plan 30 · FM4, decision 4: the player's body follows the region), which
+    /// <see cref="For"/> reads back: the name as it is where the look is made in that kit already, else with the build
+    /// the look stands as there (<c>PLAYER~Teen</c> in the grown kit, its <c>~Teen</c> taken off again in the chibi).
+    /// The build is the table's grown look's where it has one (<see cref="Data.CharacterStyles.Get(string, Data.CharacterKit)"/>).
+    /// </summary>
+    public static string InKit(string npcType, Data.CharacterKit kit)
+    {
+        string plain = WithoutBuild(npcType);
+        if (For(plain).Kit == kit) return plain;
+        var (character, _, _, _) = Parse(plain);
+        return $"{plain}~{BuildIn(Data.CharacterStyles.Default.Get(character, kit).Build, kit)}";
+    }
+
+    /// <summary>The kit a build belongs to (style guide, "Grown characters").</summary>
+    public static Data.CharacterKit KitOf(BodyBuild build) =>
+        build is BodyBuild.Teen or BodyBuild.Grown or BodyBuild.GrownBroad or BodyBuild.Child or BodyBuild.GrownElder
+            ? Data.CharacterKit.Grown : Data.CharacterKit.Chibi;
+
+    /// <summary>
+    /// A build as the other kit reads it (style guide, "Grown characters"): the child is a teenager when grown, the
+    /// adult a grown adult, the little child a child, the elder a grown elder, and back again (the broad build an adult).
+    /// A build of the kit asked for is itself.
+    /// </summary>
+    public static BodyBuild BuildIn(BodyBuild build, Data.CharacterKit kit) => kit == Data.CharacterKit.Grown
+        ? build switch
+        {
+            BodyBuild.Kid => BodyBuild.Teen,
+            BodyBuild.Adult => BodyBuild.Grown,
+            BodyBuild.Little => BodyBuild.Child,
+            BodyBuild.Elder => BodyBuild.GrownElder,
+            _ => build
+        }
+        : build switch
+        {
+            BodyBuild.Teen or BodyBuild.Child => BodyBuild.Kid,
+            BodyBuild.Grown or BodyBuild.GrownBroad => BodyBuild.Adult,
+            BodyBuild.GrownElder => BodyBuild.Elder,
+            _ => build
+        };
+
+    /// <summary>Whether a grown body has a waist, hips and a bust: as the look says, else as its lashes do; a child never.</summary>
+    public bool CurvedFigure() => Build != BodyBuild.Child && (Curved ?? Lashes);
+
+    private static readonly char[] Marks = { '+', '~' };
+
+    /// <summary>
+    /// A character type taken apart: the look's own name, the outfit it is dressed in, what it holds and the build it
+    /// is asked in, the last two written after it with <c>+</c> and <c>~</c> in either order.
+    /// </summary>
+    private static (string Character, Core.Outfit? Outfit, HeldProp? Held, BodyBuild? Build) Parse(string npcType)
+    {
+        HeldProp? held = null;
+        BodyBuild? build = null;
+        while (npcType.LastIndexOfAny(Marks) is var at and > 0)
+        {
+            string tail = npcType[(at + 1)..];
+            if (npcType[at] == '+' && held == null && Named(tail, out HeldProp h)) held = h;
+            else if (npcType[at] == '~' && build == null && Named(tail, out BodyBuild b)) build = b;
+            else break;
+            npcType = npcType[..at];
+        }
+        var (character, outfit) = Core.Outfit.Undress(npcType);
+        return (character, outfit, held, build);
+    }
+
+    /// <summary>A type's name with the build it is asked in taken off (what it holds and its outfit kept).</summary>
+    private static string WithoutBuild(string npcType)
+    {
+        int at = npcType.LastIndexOf('~');
+        if (at <= 0 || !Named(npcType[(at + 1)..].Split('+')[0], out BodyBuild _)) return npcType;
+        int end = npcType.IndexOf('+', at);
+        return end < 0 ? npcType[..at] : npcType[..at] + npcType[end..];
+    }
+
+    /// <summary>A value of an enum by its name (never by a number, which a name of the game could end in).</summary>
+    private static bool Named<T>(string text, out T value) where T : struct, Enum =>
+        Enum.TryParse(text, true, out value) && text.Length > 0 && !char.IsAsciiDigit(text[0]) && Enum.IsDefined(value);
 
     /// <summary>
     /// <paramref name="look"/> with the outfit's garments put on: each changes only what its slot covers (a hat its
