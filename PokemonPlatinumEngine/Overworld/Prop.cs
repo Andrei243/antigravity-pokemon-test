@@ -322,6 +322,16 @@ public enum PropType
     /// laboratory's tank: the room's own tiles say that it blocks.
     /// </summary>
     Workbench,
+    /// <summary>
+    /// A drill target (plan 36 · TR2, the training hall): a round board of rings in a square frame hung on the back wall
+    /// over its tile, our own drawing (<c>TrainingArt</c>). It lies on the wall's row as a painting does and blocks nothing.
+    /// </summary>
+    DrillTarget,
+    /// <summary>
+    /// A training mat (plan 36 · TR2): a padded blue mat with a white border and a lane line laid on the floor as a rug
+    /// is, over any number of tiles (<c>TrainingArt</c>); walked on, blocking nothing.
+    /// </summary>
+    TrainingMat,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

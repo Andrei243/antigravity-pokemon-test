@@ -138,6 +138,13 @@ public sealed class HeadlessScriptHost : IScriptHost
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
+
+    /// <summary>The training drills' records (plan 36 · TR2).</summary>
+    public TrainingRecords? Training { get; set; } = new();
+
+    /// <summary>The stat a drill opened by <c>train drill</c> trains here, and the grade it is played to (null: the screen left before a drill).</summary>
+    public StatType TrainingStat { get; set; } = StatType.Attack;
+    public DrillGrade? TrainingGrade { get; set; } = DrillGrade.Gold;
     public PhotoAlbum? Photos { get; set; } = new();
 
     /// <summary>
@@ -900,6 +907,20 @@ public sealed class HeadlessScriptHost : IScriptHost
             Answer = AthlonRun.CanEnter(Party) ? Math.Clamp(AthlonPlace, 0, AthlonRun.TeamCount) : 0;
             if (Answer > 0) Athlon.Record(AthlonCourses.Practice.Key, AthlonScore, Answer);
             Log[^1] = $"open {screen} {Answer}";
+        }
+        // A drill (plan 36 · TR2): the stat and the grade the test says, the effort given and the records kept as the screen does
+        if (screen == ScriptScreen.Training && int.TryParse(counter, out int trainee) && trainee >= 0 && trainee < Party.Count)
+        {
+            var p = Party.Members[trainee];
+            Answer = 0;
+            if (TrainingGrade is { } grade && EffortDrills.WhyNot(p, TrainingStat) == null)
+            {
+                int gained = EffortDrills.Award(p, TrainingStat, grade);
+                Training?.Record(TrainingStat, grade == DrillGrade.Gold ? 200 : grade == DrillGrade.Silver ? 100 : 10, grade);
+                Answer = (int)grade + 1;
+                Log[^1] = $"open {screen} {p.Species.Name} {TrainingStat} {grade} +{gained}";
+            }
+            else Log[^1] = $"open {screen} {p.Species.Name} left";
         }
         // The World Tournament's events (plan 14 · B11): the event the test chooses, counted from 1 (0 backs out)
         if (screen == ScriptScreen.Tournament && counter == "events")

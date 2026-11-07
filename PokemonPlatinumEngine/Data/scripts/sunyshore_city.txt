@@ -206,3 +206,9 @@ script WorkshopSign
   speaker "Sign"
   say "SUNYSHORE WORKSHOP" "Mending, making and measuring, for Champions of the Pokémon League. Walk right in."
   end
+
+# The billboard beside the training hall's way in (plan 36 · TR2, our own: it stands for the original's unused door 7)
+script TrainingHallSign
+  speaker "Sign"
+  say "SUNYSHORE TRAINING HALL" "Drills for every Pokémon, free of charge. Train hard, train often!"
+  end

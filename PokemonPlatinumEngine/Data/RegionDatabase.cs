@@ -362,6 +362,8 @@ public static class RegionDatabase
                 "SunyshoreCityWestHouse", "SunyshoreCityNorthwestHouse", "SunyshoreCityEastHouse",
                 // Plan 39 · CR1: the craftswoman's workshop behind Sunyshore City's door 8, a map of ours
                 "SunyshoreWorkshop",
+                // Plan 36 · TR2: the training hall, a map of ours standing for Sunyshore City's unused door 7
+                "SunyshoreTrainingHall",
                 "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse",
                 "Route226House", "Route227House", "Route228SouthHouse", "ResortAreaHouse",
                 "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator",

@@ -3521,3 +3521,119 @@ label Beaten
 label Lost
   text "Your friend's trainer was too strong this time. Try again whenever you like!"
   end
+
+# ------------------------------------------------------------------ the training hall (plan 36 · TR2)
+
+# The head coach of a training hall, a room of ours (Sinnoh's is SunyshoreTrainingHall, behind Sunyshore City's alley
+# between its north houses). He hands over what the drills' golds have earned, then offers a drill on a Pokémon of the
+# team (train drill: the drill screen, RESULT the grade and one), a reset of its effort, or a word on how it all goes.
+# Our own lines and people: nothing of the games' Super Training is recreated.
+script TrainingCoach
+  speaker "Head Coach"
+  train prize
+  if result == 0 goto Welcome
+  say "Hold on! Your golds have earned you something. Here you go!"
+label Prize
+  fanfare item
+  text "{player} received the {item}!"
+  train prize
+  if result == 1 goto Prize
+label Welcome
+  say "Welcome to the training hall! Here a Pokémon builds up one stat at a time, and it doesn't cost a thing."
+  choose "What'll it be today?" "A DRILL" "RESET EFFORT" "HOW IT WORKS" "NOTHING"
+  if result == 0 goto Drill
+  if result == 1 goto Reset
+  if result == 2 goto How
+  say "Then keep moving, and come back when you're warmed up!"
+  end
+label Drill
+  say "Who's training today?"
+  choosepokemon
+  if result == 255 goto Later
+  train drill
+  if result == 0 goto Later
+  if result == 3 goto Gold
+  if result == 2 goto Silver
+  say "Bronze! Everyone starts somewhere. Keep at it and you'll feel the difference."
+  end
+label Silver
+  say "Silver! Solid work. Gold is closer than you think."
+  end
+label Gold
+  say "Gold! Now that's how it's done!"
+  train prize
+  if result == 0 goto Done
+  say "And that gold has earned you something. Here!"
+label GoldPrize
+  fanfare item
+  text "{player} received the {item}!"
+  train prize
+  if result == 1 goto GoldPrize
+label Done
+  say "Talk to me again whenever you want another drill."
+  end
+label Reset
+  ask "Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to?"
+  if no goto Later
+  say "Whose effort is it?"
+  choosepokemon
+  if result == 255 goto Later
+  choose "Which effort shall go?" "ALL OF IT" "ONE STAT'S" "NEVER MIND"
+  if result == 2 goto Later
+  if result == 0 goto ResetAll
+  choose "Which stat's?" "HP" "ATTACK" "DEFENSE" "SP. ATK" "SP. DEF" "SPEED"
+  if result == 0 goto ResetHp
+  if result == 1 goto ResetAttack
+  if result == 2 goto ResetDefense
+  if result == 3 goto ResetSpAtk
+  if result == 4 goto ResetSpDef
+  goto ResetSpeed
+label ResetAll
+  train reset all
+  goto Wiped
+label ResetHp
+  train reset hp
+  goto Wiped
+label ResetAttack
+  train reset attack
+  goto Wiped
+label ResetDefense
+  train reset defense
+  goto Wiped
+label ResetSpAtk
+  train reset spatk
+  goto Wiped
+label ResetSpDef
+  train reset spdef
+  goto Wiped
+label ResetSpeed
+  train reset speed
+label Wiped
+  if result == 0 goto Nothing
+  say "There. A clean slate, ready for whatever you train next."
+  end
+label Nothing
+  say "There's nothing there to wipe! Train first, then come back."
+  end
+label How
+  say "Every drill trains one stat and lasts half a minute. Bronze puts 8 points of effort into it, silver 16, gold 24."
+  say "A stat holds 252 at most, and a Pokémon 510 in all. The effort counts the moment the drill is over."
+  say "And a stat's first gold earns you something from me. Keep winning golds, and there's more where that came from."
+  end
+label Later
+  say "No rush. Come back whenever you're ready."
+  end
+
+# The clerk of a training hall, behind the counter beside the coach. Her shelf of training goods opens with plan 36 ·
+# TR3; until then she tells of the drills and what the shelf will hold.
+script TrainingClerk
+  speaker "Clerk"
+  train open
+  if result == 1 goto Champion
+  say "Welcome! The shelf behind me is for the club's training goods, but the club only stocks it for Champions."
+  say "The drills are open to everyone, though. Talk to the Head Coach!"
+  end
+label Champion
+  say "Welcome, Champion! We're still filling the shelf behind me. Come back soon, and it'll be stocked."
+  say "Meanwhile, the Head Coach's drills are open as always."
+  end

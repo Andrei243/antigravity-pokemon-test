@@ -467,6 +467,8 @@ public sealed class DashDrill : TrainingDrill
     public int Stumbles => stumbles;
     public int Cleared => cleared;
     public bool InAir => air > 0;
+    /// <summary>Frames of the jump still to come (plan 36 · TR2: the screen draws the arc from it).</summary>
+    public int AirLeft => air;
     public int StunLeft => stun;
 
     /// <summary>Stamina left, 0 to <see cref="StartStamina"/> (the long run's; the sprint keeps its full).</summary>
