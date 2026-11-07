@@ -30854,6 +30854,13 @@ way 0
   > The great bird that flew over Kalos has come to rest here, wings folded, in the hush of the sea.
   > The cave is quiet. Only the sea goes on breathing at its mouth.
   * scene sea_spirits_den.The bird at rest
+  * letterbox on
+  * camera Pan 15 10
+  * camera Zoom 1.4
+  * effect Sparkles 15 10 hold
+  * effect stop 15 10
+  * camera Release
+  * letterbox off
   * cry Moltres
   * wildbattle Moltres 70 Won
   * endscene
@@ -33400,8 +33407,15 @@ way 0
   > It raised its head! The whole cave trembled!
   > Zygarde sank back into the rock, and the depths were still again.
   * scene terminus_cave_depths.Zygarde in the depths
+  * letterbox on
+  * camera Pan 31 8
+  * camera Zoom 1.4
+  * effect Shadow 31 8 hold
   * cry Zygarde
   * camera Shake
+  * effect stop 31 8
+  * camera Release
+  * letterbox off
   * wildbattle Zygarde 70 Won
   * endscene
   + FLAG_KALOS_ZYGARDE_GONE
@@ -33863,7 +33877,13 @@ way 0
   > Lucas received the Mewtwonite Y!
   > Lucas put it away in the Items pocket.
   * scene unknown_dungeon.Mewtwo in the Unknown Dungeon
+  * letterbox on
+  * camera Pan 24 10
+  * camera Zoom 1.4
+  * effect Ripple 24 10
   * cry Mewtwo
+  * camera Release
+  * letterbox off
   * wildbattle Mewtwo 70 Won
   * fanfare FanfareItem
   * fanfare FanfareItem

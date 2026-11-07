@@ -7,8 +7,14 @@
 script Mewtwo
   speaker none
   scene "Mewtwo in the Unknown Dungeon"
+  letterbox on 0.4
+  camera pan 24 10 1.2
+  camera zoom 1.4 0.8
+  effect ripple 24 10
   text "A Pokémon stands alone at the end of the cave, with its back to the wall. Slowly, it turns its head toward {player}."
   cry "Mewtwo"
+  camera release 0.4
+  letterbox off 0.3
   wildbattle "Mewtwo" 70
   if result == 2 goto Stays
   setflag FLAG_KALOS_MEWTWO_GONE

@@ -34,7 +34,7 @@
   // the blocked tile beside it (880, 740), read from the alley's other column
   "exits": [
     { "x": 871, "z": 763, "map": "SunyshoreWorkshop", "toX": 6, "toY": 8, "facing": "Up", "openedBy": "FLAG_GAME_COMPLETED" },
-    { "x": 879, "z": 741, "map": "SunyshoreTrainingHall", "toX": 7, "toY": 10, "facing": "Up" }
+    { "x": 879, "z": 741, "map": "SunyshoreTrainingHall", "toX": 7, "toY": 9, "facing": "Up" }
   ],
   "props": [
     { "type": "Billboard", "x": 871, "y": 762, "width": 1, "depth": 1 },

@@ -1062,7 +1062,10 @@ public class StarkMountainAndTheLegendaryPokemonTests
         // and Emerald's two, which roam Hoenn (plan 21 · H9, part b)
         Assert.Equal(new[] { ("Latias", 40), ("Latios", 40) }, Roamers.Slots.Skip(8).Take(2));
         // and FireRed's beast, one of three by the starter, which roams Kanto (plan 29 · LS9)
-        Assert.Equal(new[] { ("Raikou", 50), ("Entei", 50), ("Suicune", 50) }, Roamers.Slots.Skip(10));
+        Assert.Equal(new[] { ("Raikou", 50), ("Entei", 50), ("Suicune", 50) }, Roamers.Slots.Skip(10).Take(3));
+        // and X and Y's bird, one of three by the first Pokémon chosen, which roams Kalos (plan 23 · Z4b); a roamer set loose in
+        // a region crossed into is met at that region's levels (the script hands the slot's level through LevelHere)
+        Assert.Equal(new[] { ("Articuno", 70), ("Zapdos", 70), ("Moltres", 70) }, Roamers.Slots.Skip(13));
         // Each is set loose by a scene of its own: Mesprit's cavern (plan 02 · S13), Cresselia's wood, Professor Oak's
         // three birds in Eterna City (plan 02 · S15, part a). Darkrai's belongs to one of the original's events
         var loosed = Scripts.All.SelectMany(s => s.Everything()).Where(i => i.Op == Op.Roamer).Select(i => i.Name).Distinct().Order().ToList();

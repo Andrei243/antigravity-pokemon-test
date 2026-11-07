@@ -19,7 +19,7 @@ Each cell of a kind of file is translated / lines; a language with no file for a
 
 | Language | `ui.json` | Names | Scripts | Overlays | Maps | Data | Stale | Unknown |
 |---|---|---|---|---|---|---|---|---|
-| Română (`ro`) | 5847 | yes | 16084 / 17281 | 16755 / 17380 | 3554 / 3978 | 606 / 636 | 3 | 0 |
+| Română (`ro`) | 5857 | yes | 16084 / 17281 | 16755 / 17380 | 3554 / 3978 | 606 / 636 | 3 | 0 |
 | Français (`fr`) | 0 | yes | 0 / 17281 | 0 / 17380 | 0 / 3978 | 0 / 636 | 0 | 0 |
 | Deutsch (`de`) | 0 | yes | 0 / 17281 | 0 / 17380 | 0 / 3978 | 0 / 636 | 0 | 0 |
 | Español (`es`) | 0 | yes | 0 / 17281 | 0 / 17380 | 0 / 3978 | 0 / 636 | 0 | 0 |

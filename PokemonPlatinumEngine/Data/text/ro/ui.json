@@ -96,6 +96,22 @@
 
   "options": {
     "title": "OPȚIUNI",
+    "category": {
+      "Game": "JOC",
+      "Field": "TEREN",
+      "Battle": "LUPTĂ",
+      "Display": "ECRAN",
+      "Sound": "SUNET",
+      "Controls": "COMENZI",
+      "Access": "ACCES",
+      "More": "ALTELE"
+    },
+    "keys": {
+      "shoulders": "Q / E"
+    },
+    "hint": {
+      "tab": "Tab"
+    },
     "language": {
       "label": "Limba",
       "help": "Limba în care sunt scrise cuvintele jocului. Altele vor veni pe măsură ce sunt traduse."
