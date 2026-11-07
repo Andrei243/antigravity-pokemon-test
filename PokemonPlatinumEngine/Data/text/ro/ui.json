@@ -6283,7 +6283,7 @@
     "best": "RECORD {score}",
     "noBest": "NEANTRENAT ÎNCĂ",
     "start": "Start",
-    "trains": "ANTRENEAZĂ {stat}",
+    "trains": "Antrenează {stat}",
     "seconds": "{n} SECUNDE",
     "from": "de la {score}",
     "gives": "+{n} efort",

@@ -59,6 +59,14 @@ public sealed class TrainingScreen
     /// <summary>For tools (as <c>ArcadeBoard.Rig</c>): the seed the next drill is made from in place of a draw; used once.</summary>
     public int? NextSeed { get; set; }
 
+    /// <summary>
+    /// For tools (as <c>PoffinCookingScreen.Held</c>): what plays a drill in the keys' place, asked once for each frame
+    /// played as time passes (<see cref="Advance"/>); null, the keys play it. The game never sets it.
+    /// </summary>
+    public Func<TrainingDrill, DrillInput>? Pilot { get; set; }
+
+    private float pilotOwed;
+
     /// <summary>Seconds since the phase began (its slide-in and the count before a drill).</summary>
     public float PhaseAge { get; private set; }
 
@@ -132,6 +140,7 @@ public sealed class TrainingScreen
             }
             case TrainingPhase.Briefing:
                 Input = DrillInput.None;
+                pilotOwed = 0f;
                 heard = default;
                 Enter(TrainingPhase.Playing);
                 AudioManager.PlaySound("select");
@@ -178,7 +187,17 @@ public sealed class TrainingScreen
         if (Phase != TrainingPhase.Playing || Drill is not { } drill) return;
         float running = PhaseAge - Math.Max(before, CountIn);
         if (running <= 0f) return;
-        if (drill.Advance(running, Input) > 0) Input = Input with { Tap = false };
+        if (Pilot != null)
+        {
+            // A tool's hand: a frame at a time, each with what it says for the drill as it stands
+            pilotOwed += running;
+            while (pilotOwed >= TrainingDrill.Frame && !drill.IsDone)
+            {
+                pilotOwed -= TrainingDrill.Frame;
+                drill.Step(Pilot(drill));
+            }
+        }
+        else if (drill.Advance(running, Input) > 0) Input = Input with { Tap = false };
         Hear(drill);
         if (drill.IsDone) Finish();
     }
@@ -259,6 +278,11 @@ public sealed class TrainingScreen
     public void Update(float dt)
     {
         if (!IsActive) return;
+        if (Phase == TrainingPhase.Playing && Pilot != null)
+        {
+            Advance(dt);
+            return;
+        }
         if (Phase == TrainingPhase.Playing)
         {
             int dx = (InputManager.IsActionDown(GameAction.Right) ? 1 : 0) - (InputManager.IsActionDown(GameAction.Left) ? 1 : 0);

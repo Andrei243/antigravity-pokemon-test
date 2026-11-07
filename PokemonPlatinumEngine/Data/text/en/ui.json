@@ -5949,7 +5949,7 @@
     "best": "BEST {score}",
     "noBest": "NOT TRAINED YET",
     "start": "Start",
-    "trains": "TRAINS {stat}",
+    "trains": "Trains {stat}",
     "seconds": "{n} SECONDS",
     "from": "from {score}",
     "gives": "+{n} effort",

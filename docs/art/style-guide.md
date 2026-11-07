@@ -467,6 +467,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 - **A blackboard** (`PropType.Blackboard`, plan 01 · M11, the last rooms: the Trainers' School) hangs on the back wall over the tiles it is read from: a board of dark green (`46,92,74`) 30 texels high, its foot 36 above the floor, in a frame of wood (`150,104,66`) two texels wide with a ledge four deep under it, and on it three rows of chalk (`226,232,220`) two texels high in runs of six to fourteen with gaps of four. It lies on the wall's row as a painting does and blocks nothing; whoever stands before it reads it.
 - **A pile of books** (`PropType.BookPile`, plan 01 · M11, part c: the houses of Sunyshore's inventor, of the Survival Area's black belt and of the old gentleman of Route 228, whose piles are read) is an upright card on its tile, 26 texels wide and 24 high: five books lying flat one on another, each four texels thick and 18 to 24 long, in the bookshelf's own cover colours (red `200,66,66`, blue `66,114,200`, green `76,160,96`, yellow `230,190,76`, violet `150,96,176`), a lighter line along the top of each cover, a darker one along its foot, and the cream of its pages (`236,228,208`) three texels wide at one end. The books are shifted a texel or two against each other, and which colour lies where and which end the pages show at go by the tile, so two piles in a room are never the same. The room's own tiles say that it blocks.
 - **A workbench** (`PropType.Workbench`, plan 39 · CR1: the craftswoman's workshop in Sunyshore City; `WorkshopArt`) is built as a table is: a top of planks 5 texels thick at 21 to 26 high on two trestles (legs `128,86,56` with a crossbar at 7 to 10), the top of pale wood (`214,160,104`) with a seam every 14 texels, a few dark nicks, and on it from the left a heap of shavings (cream `240,222,178`), a mallet (a dark head on a haft), three chisels side by side (steel blades, red handles `200,66,66`) and at the right end an iron vice (`110,116,132`, its jaws 9 high, its handle in front); a small coil of cord hangs on the near trestle. Any width in whole tiles, one deep; the room's own tiles say that it blocks.
+- **A training hall** (plan 36 · TR2; `SunyshoreTrainingHall`, `TrainingArt`): one plan of ours, 15 tiles by 12, a house's room (planks, wallpaper, wainscot) with three rows of back wall. At the back on the left the court: three drill targets on the back wall over tiles 2, 4 and 6 and a training mat before them, six tiles by four. At the back on the right the head coach and the clerk behind a counter four tiles long (tiles 10 to 13, the room's `Counter` behaviour so they are spoken to across it), a wall of shelves behind them and crates closing the counter's end; a bench by the west wall for the teacher (TR8), a plant in the east corner for the keeper (TR5), and the mat inside the door. *A drill target* (`PropType.DrillTarget`) is a card on the back wall 28 texels square with its foot 30 over the floor: a raised frame of pale wood (`196,146,96`) round a board of `226,214,192`, on it a round target 23 texels across in rings, a dark rim `120,96,74` outermost, cream `250,242,222`, a rim, blue `70,120,210`, a rim and the club's orange `232,112,64` in the middle, with two dark nicks where shots have struck. *A training mat* (`PropType.TrainingMat`) lies on the floor as a rug does, two texels in from its tiles' edges: padded blue in panels 32 texels square of two blues (`84,132,200`, `92,142,210`) with seams of `64,104,168`, a darker edge `52,86,146`, a white border two texels wide three in, and a white lane line across its middle. Neither blocks: the mat is walked on, the targets hang on the wall.
 - **A lift with an attendant** (the Ribbon Syndicate's, plan 01 · M11, part c) is the same car as the lighthouse's with someone standing in its corner by the door: the doors in each floor's back wall lead into it, she asks for the floor, the ride is every lift's ("Machines at work", below), and the car's own door then leads out onto the floor it has come to.
 - **A covered street** (`InteriorStyle.Street`, plan 22, wave 48: Join Avenue, under its glass roof) is no house's room: its floor is the ground its tiles say, the street's paving, as a Gym's is, with pale flagstones `226,220,204` / `212,204,186` (tiles 16 square, grout and light edge as every tiled floor) where a tile is plain floor; its walls and the blocks of its shops between the street's lanes are shopfronts, cream stucco `240,230,208` with a coral motif and trim `226,104,92` over a band of shop glass `110,168,196` and a slate skirting `72,86,110`.
 - **A wooden tower** (`InteriorStyle.Tower`, plan 20, wave 77: Sprout Tower's three floors) is no house's room. Its floor is dark polished boards 8 texels deep running east and west, joints staggered, in three tones (`136,90,54` / `148,98,60` / `160,108,68`, grooves `92,60,38`). Its walls are paper screens (`236,226,200`) in a lattice of timber `128,86,54` two texels wide every 16 across and 14 down, over a wainscot of dark timber `110,74,48` and a skirting `70,48,34`. Where the original leaves the floor (the gaps between its ring and its hall, the openings where the pillar rises through the floors above) the room has nothing: those tiles are void (an overlay's `overTheDark`), and every floor stands on timber two tiles deep over the dark (`MapScene.WellDepth`), whatever the floor beside it does: the face (`BuiltArt.TimberFace`) is a beam along its head (`120,82,52`, lit `156,112,74`, shaded `80,54,34`) and below it a post six texels wide at each tile's west end with a cross beam three rows deep between the posts at the head of every 48 rows, the dark `30,24,26` between them. Along every edge of a floor that ends over the dark stands a **rail** of the same timber, a texel in from the edge, 18 texels high: a post four texels square at each end of the tile's edge, a bar three deep along its head and a bar two deep half way up. A tile that is a way somewhere has none, so no rail stands across a flight of stairs. The walls stand over the dark with nothing under them. **The pillar** (`GymPieces`, over the tiles of the room's columns, three by three) is one trunk of dark old timber `104,70,46` (lit west `132,92,60`, shaded east `70,46,30`), its faces ten texels in from the edge of its tiles, from the dark two tiles under the floor to 104 texels over it: grain in streaks a texel wide, a band of dark iron `52,50,58` two texels deep every 40 rows with a rivet `120,118,128` every 8 across, and a rope of straw `226,206,150` four texels deep round it 18 texels over its foot. Its top is the trunk's end, rings of its grain round a dark heart. It **sways**: it leans east and west on its foot, at most 0.022 of a radian, once every 3.6 seconds of the field's clock, as the pagoda's pillar does. It stands in the way as the columns did: the room's own tiles block.
@@ -2006,6 +2007,52 @@ own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars an
 - **The Athlete Shop** is the shop's screen with the dome's stock: the prices and the purse in Athlete Points, a number
   with PTS after it in place of the money's sign, the purse captioned ATHLETE POINTS; it opens on its list (there is
   nothing to sell).
+
+### Training
+
+Plan 36 · TR2 (`TrainingScreen`, `ModernUi.DrawTraining`). Our own throughout: nothing of X and Y's Super Training (its
+balloons, goals or bags) is drawn. One screen in the menus' look, titled TRAINING. The club's own colour is a warm orange
+(232, 112, 64): the briefing's band, the clock's bar, the target's middle, the effort a drill added; a shot or a pellet of
+energy (the special drills') is violet (150, 110, 236). A grade's medal is the Pokéathlon's (gold, silver, bronze discs
+with a darker rim and a white star). The trainee is its own menu sprite (128 texels), never its field sprite: the drills
+are drawn in layout units where a field sprite would want the field's renderer.
+
+- **The stat chosen**: at the left a panel 560 wide with the trainee on a pale disc at twice its sprite's size, its name
+  in Black 48, its level, EFFORT with its total out of 510 and a bar, and a line that the drills are free; at the right a
+  panel with a row 112 tall for each of the six stats (in the drills' order: Attack, Sp. Atk, Defense, Sp. Def, Speed,
+  HP), the stat's name in Black 36 and its drill's in muted ExtraBold 24 under it, an effort bar 420 by 14 (Selection,
+  Gold at the cap) with `n / 252`, and the best score at the right (NOT TRAINED YET before any) with a small gold medal
+  before it once the stat has earned a gold; the row under the cursor a pale wash of Selection with its rim. A stat the
+  drills refuse is muted, and choosing it says why in Red in the foot panel, which otherwise says what to do.
+- **A drill's briefing**: a card 1240 by 720 at the middle, its top 130 a band of the club's orange with "Trains {stat}"
+  in white Black 26, the drill's name in white Black 60 and its length at the band's right; how it is played in Bold 34,
+  wrapped; and the three medals in a row, radius 70, each with its name, the score it wants and the effort it gives in
+  the club's orange.
+- **A drill** fills the screen under a bar 92 tall with the drill's name, its score (after a small medal of the grade it
+  stands at) and the clock (Red in the last five seconds), the club's orange running down along its foot. The count before
+  it is the Pokéathlon's dark disc with the digit and GO!.
+  - **The throw**: the back wall a panel of pale stone (226, 214, 192) 520 tall with faint upright seams, the target on it
+    a cream board, a blue ring and an orange middle, shrinking with the drill; under it the floor a blue panel with a white
+    line, the aim a white line with a chevron at its head and the trainee over it at one and a half times its sprite; a shot
+    a tan disc (a violet glow for the energy shot) flying from the trainee to the wall and shrinking as it goes; where the
+    last one struck a dark mark and its points (MISS, muted) rising for two thirds of a second.
+  - **The guard**: three lanes, each a panel of pale stone, the trainee's lit a pale wash of the club's orange, with the
+    guard's line across each; a pellet a dark ball with a glint (a violet one with a glow in the shield drill) falling to
+    the line; the trainee at the foot of its lane, a shield (blue, violet in the shield drill) raised over it on the line
+    while the guard is up, faded and circled by three gold sparks while stunned; a pellet settled says its points, or MISS
+    in Red, over its lane.
+  - **The dash**: a sky panel (196, 222, 244) over a track in the lanes' brick red with a white line and marks every
+    hundred units going by; hurdles white posts with a gold bar; the trainee a third of the way along, rising through a jump
+    in an arc 170 high and faded while it gets up from a stumble; in the sky the pace as a bar 640 long in the club's orange,
+    the long run's stamina under it (Green, Red under a quarter), the streak and the hurdles cleared in Black 32 and the
+    distance run, and at the right the beat: an orange disc with a ring closing on it at each beat.
+- **The grade**: a card 1040 wide with the drill's name, the medal at radius 140 over a soft glow of its colour, the grade in
+  Black 72, the score, the effort given ("+24 effort in Attack!", the club's orange; muted when none fits) and a gold NEW
+  BEST! pill when the score is the stat's best.
+- **The effort after**: one panel with the trainee and, for each of the six, its name (the stat trained in the club's
+  orange), a bar 520 by 16 with the effort before in Selection and what the drill added in the club's orange, `n / 252`
+  and, where it changed, a drawn arrow and the new number, and at the right the stat's value ("71 to 74" where it rose);
+  the total out of 510 at the foot.
 
 ### Badges
 

@@ -182,7 +182,7 @@ internal static partial class ModernUi
         var drill = screen.Drill!;
         ScreenTitle(Text.Of("training.title"));
         Hints(sw - Margin, 44, Hint("shared.keys.z", "training.start"), Hint("shared.keys.x", "shared.hints.back"));
-        var card = new Rectangle(sw / 2f - 620, ContentTop + 20 + rise, 1240, 820);
+        var card = new Rectangle(sw / 2f - 620, ContentTop + 40 + rise, 1240, 720);
         Panel(card, 36);
         UiShapes.Fill(new Rectangle(card.X, card.Y, card.Width, 130), 36, TrainingOrange);
         UiFonts.Draw(Text.Of("training.trains", ("stat", Words.Stat(drill.Stat))), card.X + 48, card.Y + 22, 26, Color.White, UiWeight.Black);
@@ -201,7 +201,7 @@ internal static partial class ModernUi
         for (int g = 0; g < 3; g++)
         {
             var grade = (DrillGrade)g;
-            var c = new Vector2(card.X + 230 + g * 390, card.Y + 560);
+            var c = new Vector2(card.X + 230 + g * 390, card.Y + 460);
             GradeMedal(c, 70, grade);
             TextMiddle(GradeName(grade), c.X, c.Y + 116, 32, Ink, UiWeight.Black);
             int from = grade switch { DrillGrade.Gold => DrillBands.Gold(drill.Kind, drill.Special), DrillGrade.Silver => DrillBands.Silver(drill.Kind, drill.Special), _ => 0 };

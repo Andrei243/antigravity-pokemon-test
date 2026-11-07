@@ -902,6 +902,21 @@ another command. `{material}` says the last material named, in the language chos
 | `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
 | `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
 
+### The training hall
+
+Plan 36 · TR2; `docs/mechanics/rulings.md`, "The training hall". A hall's people run common scripts (`common.TrainingCoach`,
+`common.TrainingClerk`; TR5 and TR8 add the keeper and the teacher), so a region's hall is a room, a way in and its people.
+One command, `train`; later sessions of plan 36 add words to it (`peak`, `tera`) and `power`, never another for the drills.
+`drill` and `reset` act on the Pokémon the last `choosepokemon` chose.
+
+| Command | What it does |
+|---|---|
+| `train open` | `RESULT` 1 once a Hall of Fame of any region has been entered (the hall's Champion's things: the stall, peak training, the teacher, the keeper), else 0. |
+| `train drill` | Opens the drill screen (`UI/TrainingScreen.cs`) on the Pokémon chosen and waits for it: `RESULT` the grade won and one (1 bronze, 2 silver, 3 gold), 0 when the screen was left before a drill or nobody fit was chosen (none, or an Egg). The effort and the records are the screen's. |
+| `train reset all` | Takes the chosen Pokémon's effort in all six stats to nought and reckons its stats at once: `RESULT` 1, or 0 when it had none. |
+| `train reset attack` | The same for one stat: `hp`, `attack`, `defense`, `spatk`, `spdef` or `speed`. |
+| `train prize` | Hands over the first prize the drills' records have earned and the coach hasn't (`Data/training.json`'s `drillPrizes`: each stat's first gold its vitamin, then every tenth gold a Bottle Cap and every fiftieth a Gold Bottle Cap once a Hall of Fame is entered) into the bag: `RESULT` 1 and `{item}` names it, or 0 when nothing is owed. The text and the fanfare are the script's; a loop hands over all of it. |
+
 ### Join Avenue
 
 Plan 22 · U11; `docs/mechanics/rulings.md`, "Join Avenue's growth". The avenue's growth (`Models/JoinAvenue.cs`) is the
