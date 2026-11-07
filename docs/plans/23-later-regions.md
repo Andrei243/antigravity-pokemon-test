@@ -167,6 +167,26 @@ Each session: the rule in a GPU-free class with its tests, the areas opened thro
 - The trial scripts of Melemele and Akala, `BattleConditions.TotemAura` (its aura a line of the style guide's "Stage" first), `callsForHelp` in the totems' areas (plan 14 · B5), the Z-Ring's scene as the island challenge begins (plan 06 · R21; the ring only to a bag without one) and each trial's crystal, the grand trials and their stamps on the card (plan 18 · W2's region row), the cap by stamps (plan 13 · V3's table for Alola).
 - Tests: a totem enters with its stages and calls an ally; a trial's flag sets its stamp; a trial gives its crystal once and a Z-Move is refused without it. Shots: `wa10` to `wa20`, `ft22_totem_aura`, `28f_card_alola_stamps`.
 - **Done when** the Totem Gumshoos calls for help and the Normalium Z is used in the harness's battle after it.
+- **Built** (2026-11-07; rulings, "The rest of Akala: trials, totems and Olivia's grand trial"): **totems**
+  (`BattleConditions.TotemAura`, `Battle/Sim/BattleCore.Totem.cs`, the event `TotemAuraRaised`, `wildbattle … totem
+  <stats> [stages] [ally "<species>"]`, `IScriptHost.TotemBattle`): the aura's stat stages on entry with a line of ours,
+  an SOS battle whose first call is always made and answered (the named ally or the totem's own line), no ball, no
+  running, and the battle won once the totem falls; a field of the Vs. Recorder's file; its look (`MoveFx.Totem.cs`,
+  six gold wisps, style guide "Stage", "A totem's aura"). Verdant Cavern's Gumshoos and Brooklet Hill's Wishiwashi now
+  fight as totems, and the four trial sites' overlays say `callsForHelp`. The Z-Ring only to a bag without one.
+  **Stamps**: `RegionFile.Challenge` (`"trials"`), the card's STAMPS and the four island stamps' looks; the cap by stamps
+  was already Alola's `caps`. **The rest of Akala** drawn with MapDraw (Route 6, Royal Avenue, Route 8, the Lush Jungle,
+  Route 7, Wela Volcano Park, Diglett's Tunnel as matrix 20, Route 9, Konikoni City, Memorial Hill, the Akala Outskirts,
+  Hano Beach), eight rooms, three spawns (20 to 22), Kiawe's, Olivia's and Wicke's looks, 22 trainers of ours with
+  Olivia's team (`alola_olivia_1`), and the story on `VAR_ALOLA_AKALA` 0 to 8 (Royal Avenue, the motel, Kiawe's trial
+  and the Firium Z, Mallow's and the Grassium Z, Olivia, the Ruins of Life, the grand trial with Akala's stamp, the
+  Rockium Z and Machamp, the Hano Grand Resort; `FLAG_ALOLA_AKALA_DONE`), objectives 618 to 625. Tests: `TotemTests`
+  (the aura's stages, the first call and its named ally, the ball refused, the battle won with the ally standing, the
+  record file, the script's word, a Z-Move refused without its crystal or ring) and `AlolaAkalaTrialsTests` (every new
+  place and room walked to, the spawns, the stamps and the cap by them, each totem fought as one and its crystal given
+  once, and the story from Royal Avenue to the resort headless). **Left**: the harness's shots (`wa10` to `wa20`,
+  `ft22_totem_aura`, `28f_card_alola_stamps`; see the session's report), so the "done when" holds headless only; the
+  rulings' "Left".
 
 ### Z7 · Ula'ula, Poni and the Aether Foundation
 - Ula'ula and Poni with their trials, Aether Paradise, Team Skull's town, the Altar, the League on Mount Lanakila, `AlolaHallOfFame`; the region-bound evolutions in `EvolutionContext.Region` (Raichu, Exeggutor, Marowak) alive; the Ultra Beasts placed as plan 03 · D12 asks; `rulings.md`'s Alolan line amended.

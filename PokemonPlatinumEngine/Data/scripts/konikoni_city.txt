@@ -8,7 +8,7 @@
 
 script OliviaMeets
   scene "Olivia at Konikoni's gate"
-  speaker "Olivia"
+  speaker kahuna_olivia "Olivia"
   say "Alola! You must be the trial-goer Mallow keeps messaging me about. I'm Olivia, kahuna of Akala."
   say "Before my grand trial, go up to the Ruins of Life past Memorial Hill. Your friend Lillie is waiting there."
   setflag FLAG_ALOLA_OLIVIA_MET
@@ -21,7 +21,7 @@ script OliviaMeets
 script Olivia
   if var VAR_ALOLA_AKALA >= 7 goto After
   if var VAR_ALOLA_AKALA >= 6 goto GrandTrial
-  speaker "Olivia"
+  speaker kahuna_olivia "Olivia"
   if var VAR_ALOLA_AKALA >= 5 goto Ruins
   say "Welcome to Konikoni! Mind the jewelry. It's all for sale."
   end
@@ -30,10 +30,10 @@ label Ruins
   end
 label GrandTrial
   scene "Olivia's grand trial"
-  speaker "Olivia"
+  speaker kahuna_olivia "Olivia"
   say "You've been to the guardian's shrine. Then you're ready. I'm Akala's kahuna, and I don't do anything halfway!"
   battle olivia as "alola_olivia_1"
-  speaker "Olivia"
+  speaker kahuna_olivia "Olivia"
   say "Well! That was a gem of a battle. Akala's stamp is yours."
   givebadge Akala
   text "{player}'s Trainer card received Akala's stamp!"
@@ -48,6 +48,6 @@ label GrandTrial
   endscene
   end
 label After
-  speaker "Olivia"
+  speaker kahuna_olivia "Olivia"
   say "Two stamps down, two to go! The other kahunas won't go easy on you either."
   end

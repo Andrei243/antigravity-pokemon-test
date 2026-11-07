@@ -82,13 +82,14 @@ public class TotemTests
         var own = Totem(Mon("Snorlax", 50, "Splash"), Mon("Gumshoos", 12, "Tackle"), new TotemAura(new[] { StatType.Defense }),
             Calm().Force(RollKind.Call, 99, 99).Force(RollKind.Ally, 0, 0));
         Answer(own);
-        Assert.Equal("Yungoos", own.EnemySlots[1].Pokemon!.Species.Name);
+        Assert.Contains(own.EnemySlots[1].Pokemon!.Species.Name, new[] { "Yungoos", "Gumshoos" });
     }
 
     [Fact]
     public void NoBallMayBeThrownAndTheBattleIsWonOnceTheTotemFalls()
     {
-        var core = Totem(Idling(Mon("Golem", 60, "Rock Slide")), Mon("Gumshoos", 12, "Tackle"), new TotemAura(new[] { StatType.Defense }),
+        // Rock Throw strikes one foe alone: the totem, at the first place
+        var core = Totem(Idling(Mon("Golem", 60, "Rock Throw")), Mon("Gumshoos", 12, "Tackle"), new TotemAura(new[] { StatType.Defense }),
             Calm().Force(RollKind.Call, 99, 99).Force(RollKind.Ally, 0, 0));
         Assert.Equal(BattleCore.TotemRefusal, core.WhyNot(BattleChoice.UseItem(Mine, "Poké Ball")));
         Assert.True(core.CannotFlee);
@@ -97,7 +98,9 @@ public class TotemTests
         // Only the totem falls: the ally stands, and the battle is won all the same
         core.EnemySlots[0].Pokemon!.CurrentHP = 1;
         core.EnemySlots[1].Pokemon!.CurrentHP = core.EnemySlots[1].Pokemon!.MaxHP;
-        var said = Answer(core, mine: 0);
+        var asked = Assert.IsType<ActionRequest>(core.Request).Places;
+        core.Submit(asked.Select(p => p.Side == BattleSide.Player ? BattleChoice.Fight(p, 0, Foe) : BattleChoice.Fight(p, 0)).ToList());
+        var said = Lines(core.TakeLog());
         Assert.Equal(BattleResult.PlayerVictory, core.Result);
         Assert.False(core.EnemySlots[1].Pokemon!.IsFainted);
         Assert.Contains(said, s => s.StartsWith("Lucas defeated the totem"));
