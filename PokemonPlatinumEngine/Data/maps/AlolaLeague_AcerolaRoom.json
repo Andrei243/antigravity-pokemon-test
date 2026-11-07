@@ -1,0 +1,94 @@
+{
+  "name": "AlolaLeague_AcerolaRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "alola/trial",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Ghost",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "######_######",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "######.######",
+    "#...........#",
+    "#.#.......#.#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 10,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "AlolaLeague_OliviaRoom",
+      "targetX": 6,
+      "targetY": 4,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 3,
+      "targetMap": "AlolaLeague_KahiliRoom",
+      "targetX": 6,
+      "targetY": 10,
+      "targetFacing": "Up",
+      "from": "FLAG_ALOLA_DEFEATED_ACEROLA"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "acerola",
+      "name": "Acerola",
+      "npcType": "acerola",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "League"
+    }
+  ],
+  "wildEncounters": []
+}

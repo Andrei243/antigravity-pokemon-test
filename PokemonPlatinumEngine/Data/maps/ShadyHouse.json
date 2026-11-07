@@ -1,0 +1,117 @@
+{
+  "name": "ShadyHouse",
+  "displayName": "Shady House",
+  "bgmTrack": "alola/trial",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "#.#.......#.#",
+    "#...........#",
+    "#...........#",
+    "#....###....#",
+    "#....###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Table",
+      "x": 5,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "Ulaula",
+      "targetX": 213,
+      "targetY": 87,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "nanu",
+      "name": "Nanu",
+      "npcType": "nanu",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "NanuInside",
+      "hiddenBy": "FLAG_ALOLA_NANU_DONE",
+      "shownBy": "FLAG_ALOLA_NANU_INSIDE"
+    },
+    {
+      "id": "meowth",
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "x": 4,
+      "y": 5,
+      "facing": "Right",
+      "script": "MeowthTalk",
+      "shownBy": "FLAG_ALOLA_NANU_INSIDE",
+      "species": "Meowth"
+    }
+  ],
+  "wildEncounters": []
+}

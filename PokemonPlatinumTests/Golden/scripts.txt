@@ -1,5 +1,119 @@
 # Every script of the game on every way through it (plan 24 · X3), made by GoldenScriptTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
 # '>' a line said, '?' a question and the answer taken, '*' what the script did, '!' a problem, '+'/'-' a flag set or cleared, '=' a variable changed, '+ seen' a scene played to its end; a way after the first is told from the answer where it parts from those before it.
+=== AetherParadise_Office.GladionInside
+from Gladion at 4,6 of AetherParadise_Office
+way -
+  Gladion> Lucas. You came. ...Thank you. Mother won't listen to me, but maybe she'll listen to you.
+  Gladion> She isn't herself. Not since the creature. Please, stop her.
+=== AetherParadise_Office.LusamineInside
+from Lusamine at 8,5 of AetherParadise_Office
+way 0
+  Lusamine> ...Oh, it's you. The little Trial-goer who found my daughter's secret. How very interesting.
+  Lusamine> Lillie wanted to take Nebby away from me. Nebby, who is the most beautiful thing in the world. I can't allow that.
+  Lusamine> I love beautiful things. I love them so much, I could never let them go. So I keep them. Do you understand?
+  Lusamine> No, of course not. Let me show you how much I love what I love. Let me show you what it can do!
+  Lusamine> ...Ah. Ahhh. What was I...? Lillie. Lillie, my darling. Where is she? What have I done?
+  Gladion> She's safe, Mother. She's right here. Lucas brought her out.
+  Lillie> Mother... it's all right. I'm all right. Nebby is all right. We're going to fix this, together.
+  Lusamine> Lucas... I owe you more than I can say. The Foundation will mend what I broke. And Nebby... is out beyond the sea, I think.
+  Lusamine> On Poni, in the Altar of the Sunne and Moone. If it has anywhere to go, it's there. Please, go.
+  * scene AetherParadise_Office.Lusamine
+  * battle alola_lusamine_1 Won
+  * endscene
+  + FLAG_ALOLA_GLADION_AETHER_DONE
+  + FLAG_ALOLA_LUSAMINE_BEATEN
+  = VAR_ALOLA_STORY 0 -> 48
+  = VAR_OBJECTIVE 0 -> 658
+  + beaten alola_lusamine_1
+  + seen AetherParadise_Office.Lusamine
+way 1, from answer 1
+  * battle alola_lusamine_1 Lost
+  * scene over, unseen
+=== AlolaLeague_AcerolaRoom.League
+from Acerola at 6,5 of AlolaLeague_AcerolaRoom
+way 0
+  Acerola> Hi hi! Remember me? Acerola! I'm in the Elite Four now. Isn't that spooky?
+  Acerola> My Pokémon and I have been practising our scariest faces. Brace yourself!
+  Acerola> Wow! You even beat my scariest face. Kahili's up next. She's a golfer, did you know? She hits things really, really far.
+  * scene AlolaLeague_AcerolaRoom.Acerola
+  * battle alola_acerola_league Won
+  * endscene
+  + FLAG_ALOLA_DEFEATED_ACEROLA
+  + beaten alola_acerola_league
+  + seen AlolaLeague_AcerolaRoom.Acerola
+way 1, from answer 1
+  * battle alola_acerola_league Lost
+  * scene over, unseen
+=== AlolaLeague_HalaRoom.League
+from Hala at 6,5 of AlolaLeague_HalaRoom
+way 0
+  Hala> Ho ho! Here you are at last, Lucas, and look how far the island's champion has come since Iki Town.
+  Hala> I am Hala, once your kahuna and now the first of the Alola League. I will not hold back, as you must not hold back.
+  Hala> The sea is wide and the sun is hot. Show me everything!
+  Hala> Ha ha! Magnificent! My heart is as full as the first time I saw you stand up to Tapu Koko.
+  Hala> Go on. Olivia is next. She has the strength of the rock beneath our islands.
+  * scene AlolaLeague_HalaRoom.Hala
+  * battle alola_hala_league Won
+  * endscene
+  + FLAG_ALOLA_DEFEATED_HALA
+  + beaten alola_hala_league
+  + seen AlolaLeague_HalaRoom.Hala
+way 1, from answer 1
+  * battle alola_hala_league Lost
+  * scene over, unseen
+=== AlolaLeague_HallOfFame.KukuiWaits
+from Kukui at 8,6 of AlolaLeague_HallOfFame
+way -
+  Prof. Kukui> Alola is lucky to have you, Lucas. Woo!
+=== AlolaLeague_KahiliRoom.League
+from Kahili at 6,5 of AlolaLeague_KahiliRoom
+way 0
+  Kahili> Welcome, Lucas. I'm Kahili, the last of the Elite Four. I fly, and so do my Pokémon, and so does my golf ball.
+  Kahili> Flying types are just a matter of freedom. See if you can keep up with mine!
+  Kahili> A hole in one! ...For you, I mean. Not for me. Well played.
+  Kahili> The Champion's door is open. I think you'll recognise the Trainer waiting inside.
+  * scene AlolaLeague_KahiliRoom.Kahili
+  * battle alola_kahili_league Won
+  * endscene
+  + FLAG_ALOLA_DEFEATED_KAHILI
+  + beaten alola_kahili_league
+  + seen AlolaLeague_KahiliRoom.Kahili
+way 1, from answer 1
+  * battle alola_kahili_league Lost
+  * scene over, unseen
+=== AlolaLeague_KukuiRoom.Kukui
+from Kukui at 7,5 of AlolaLeague_KukuiRoom
+way 0
+  Prof. Kukui> Woo! Welcome, Lucas! You made it, cousin. The Elite Four are down, and nobody sits in this room's chair yet.
+  Prof. Kukui> I built this League with Hala and the others, because I wanted you kids to have something to aim for.
+  Prof. Kukui> I wanted to be the first to try you out. Let's go. Show me every move you've learned!
+  Prof. Kukui> ...Woo! Woooo! Yeah! That's what I'm talking about! You took me full on, and you came out on top!
+  Prof. Kukui> Alola has its first Champion, Lucas. The chair's yours. Come on, the Hall of Fame is just through here.
+  * scene AlolaLeague_KukuiRoom.Kukui
+  * battle alola_kukui_3 Won
+  * endscene
+  * warp AlolaLeague_HallOfFame 6 10
+  + FLAG_ALOLA_DEFEATED_KUKUI
+  + beaten alola_kukui_3
+  + seen AlolaLeague_KukuiRoom.Kukui
+way 1, from answer 1
+  * battle alola_kukui_3 Lost
+  * scene over, unseen
+=== AlolaLeague_OliviaRoom.League
+from Olivia at 6,5 of AlolaLeague_OliviaRoom
+way 0
+  Olivia> Aloha, Lucas. I'm Olivia. I used to be the kahuna of Akala, and I'm still the one who knows the stones best.
+  Olivia> Rock endures. It takes the waves and the wind and is still standing at the end. Let's see if you can say the same.
+  Olivia> Beautiful. Even the stones moved aside for you. Acerola is next, and she is... a lot.
+  * scene AlolaLeague_OliviaRoom.Olivia
+  * battle alola_olivia_league Won
+  * endscene
+  + FLAG_ALOLA_DEFEATED_OLIVIA
+  + beaten alola_olivia_league
+  + seen AlolaLeague_OliviaRoom.Olivia
+way 1, from answer 1
+  * battle alola_olivia_league Lost
+  * scene over, unseen
 === AlolaRoute1_KukuiLab.Kukui
 from Prof. Kukui at 7,4 of AlolaRoute1_KukuiLab
 way -
@@ -3730,6 +3844,38 @@ way 0
 way 1, from answer 1
   * battle leader_fantina Lost
   * scene over, unseen
+=== HokulaniObservatory.Den1
+from Charjabug at 3,7 of HokulaniObservatory
+way 0
+  > A Charjabug bolted out of the wiring!
+  * wildbattle Charjabug 22 nofleeing Won
+  + FLAG_ALOLA_HOKULANI_DEN_1
+way 1, from answer 1
+  * wildbattle Charjabug 22 nofleeing Lost
+=== HokulaniObservatory.Den2
+from Charjabug at 11,7 of HokulaniObservatory
+way 0
+  > A Charjabug bolted out of the wiring!
+  * wildbattle Charjabug 22 nofleeing Won
+  + FLAG_ALOLA_HOKULANI_DEN_2
+way 1, from answer 1
+  * wildbattle Charjabug 22 nofleeing Lost
+=== HokulaniObservatory.Den3
+from Charjabug at 7,10 of HokulaniObservatory
+way 0
+  > A Charjabug bolted out of the wiring!
+  * wildbattle Charjabug 23 nofleeing Won
+  + FLAG_ALOLA_HOKULANI_DEN_3
+way 1, from answer 1
+  * wildbattle Charjabug 23 nofleeing Lost
+=== HokulaniObservatory.SophoclesInside
+from Sophocles at 7,6 of HokulaniObservatory
+way -
+  Sophocles> The Charjabug are in the room, and the totem is waiting behind them. I'll hold the door. Metaphorically.
+=== HokulaniObservatory.Totem
+from Togedemaru at 7,4 of HokulaniObservatory
+way -
+  > The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first.
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -5462,6 +5608,38 @@ way -
 from Roman at 8,3 of SevenStarsRestaurant
 way -
   Roman> The house rule is two Pokémon against two, I'm afraid. Do come back with a second!
+=== ShadyHouse.MeowthTalk
+from Meowth at 4,5 of ShadyHouse
+way -
+  > Meowth: ...Mrrow.
+  * cry Meowth
+=== ShadyHouse.NanuInside
+from Nanu at 6,4 of ShadyHouse
+way 0
+  Nanu> Sit, sit. This is my house, so I make the rules. First rule: don't look at the Meowth.
+  Nanu> Ula'ula's grand trial is a battle with me. That's it. No totem, no dens, no tests. I can't be bothered.
+  Nanu> Do your best. I'll do mine, which is less, but it's enough.
+  Nanu> Hmph. Not bad. You scrapped your way through Skull and now through me. The island has itself a decent one.
+  > Lucas's Trainer card received Ula'ula's stamp!
+  > Lucas received the Darkinium Z!
+  > Lucas put it away in the Items pocket.
+  Nanu> That's the Darkinium Z. Dark-type moves, made bigger. Don't get used to being bigger.
+  Prof. Kukui> ...Lucas! It's Kukui. Listen, Lillie went back to Aether Paradise, and Lusamine won't let her leave.
+  Prof. Kukui> Gladion called me. He says his mother isn't herself, and Lillie's in danger. Go to Aether Paradise. Take the ferry from Malie's pier.
+  * scene ShadyHouse.Nanu's grand trial
+  * battle alola_nanu_1 Won
+  * fanfare FanfareBadge
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_ALOLA_NANU_DONE
+  = VAR_ALOLA_STORY 0 -> 47
+  = VAR_OBJECTIVE 0 -> 657
+  + beaten alola_nanu_1
+  = badges Alola 0 -> 100
+  + seen ShadyHouse.Nanu's grand trial
+way 1, from answer 1
+  * battle alola_nanu_1 Lost
+  * scene over, unseen
 === ShalourCity_Gym.GymGuide
 from Gym Guide at 9,15 of ShalourCity_Gym
 way -
@@ -5506,6 +5684,46 @@ way -
 from Korrina at 9,7 of ShalourCity_TowerOfMastery
 way -
   Korrina> Grandpa talks to that statue more than to me. I think it listens better!
+=== SkullManor.GuzmaInside
+from Guzma at 7,5 of SkullManor
+way 0
+  Guzma> Well, well, well. Look at what the Pokémon dragged in. Another trial-goer who thinks they're special.
+  Guzma> I'm Guzma, boss of Team Skull. I got told I wasn't any good. By a hundred people. Turns out they were wrong, 'cause here I am.
+  Guzma> Trials, captains, kahunas: they're a system built for the people who already fit. We don't. So we made our own.
+  Guzma> You wanna take it all down? Then take me down first. Come on, make me proud!
+  Guzma> Huh... I lost. Of course I lost. I always lose to the ones the island chose.
+  Guzma> Go ahead. Run to your kahunas and your trials. I got my own thing to look after. Don't think I'm done.
+  * scene SkullManor.Guzma
+  * battle alola_guzma_1 Won
+  * endscene
+  + FLAG_ALOLA_GUZMA_BEATEN
+  = VAR_ALOLA_STORY 0 -> 46
+  = VAR_OBJECTIVE 0 -> 656
+  + beaten alola_guzma_1
+  + seen SkullManor.Guzma
+way 1, from answer 1
+  * battle alola_guzma_1 Lost
+  * scene over, unseen
+=== SkullManor.ManorGrunt1
+from Skull Grunt at 3,12 of SkullManor
+way 0
+  Skull Grunt> Yo! Boss said no one's allowed in. Boss also said I'm not allowed to lose. Rock, meet hard place.
+  Skull Grunt> Aw, man. Boss is gonna put me on cooking duty.
+  * battle alola_manor_grunt_1 Won
+  + FLAG_ALOLA_MANOR_GRUNT_1
+  + beaten alola_manor_grunt_1
+way 1, from answer 1
+  * battle alola_manor_grunt_1 Lost
+=== SkullManor.ManorGrunt2
+from Skull Grunt at 11,12 of SkullManor
+way 0
+  Skull Grunt> Yo! You came all this way? I'd say you're brave, but you look too cheerful for that.
+  Skull Grunt> Cooking duty. Definitely cooking duty.
+  * battle alola_manor_grunt_2 Won
+  + FLAG_ALOLA_MANOR_GRUNT_2
+  + beaten alola_manor_grunt_2
+way 1, from answer 1
+  * battle alola_manor_grunt_2 Lost
 === SnowbelleCity_Gym.GymGuide
 from Gym Guide at 9,15 of SnowbelleCity_Gym
 way -
@@ -5891,6 +6109,38 @@ way 1, from answer 1
 from Manager at 14,9 of TeamGalacticEternaBuilding4F
 way -
   Manager> What is it with this Team Galactic? Why take people's Pokémon? What are they trying to do?
+=== ThriftyMegamart.AcerolaInside
+from Acerola at 8,14 of ThriftyMegamart
+way -
+  Acerola> Three ghosts, then Mimikyu. Mind the aisle with the cold spot. It's not a draught.
+=== ThriftyMegamart.Den1
+from Gastly at 3,7 of ThriftyMegamart
+way 0
+  > A Gastly drifted out from between the shelves!
+  * wildbattle Gastly 23 nofleeing Won
+  + FLAG_ALOLA_MEGAMART_DEN_1
+way 1, from answer 1
+  * wildbattle Gastly 23 nofleeing Lost
+=== ThriftyMegamart.Den2
+from Misdreavus at 13,7 of ThriftyMegamart
+way 0
+  > A Misdreavus drifted out from between the shelves!
+  * wildbattle Misdreavus 24 nofleeing Won
+  + FLAG_ALOLA_MEGAMART_DEN_2
+way 1, from answer 1
+  * wildbattle Misdreavus 24 nofleeing Lost
+=== ThriftyMegamart.Den3
+from Duskull at 8,11 of ThriftyMegamart
+way 0
+  > A Duskull drifted out from between the shelves!
+  * wildbattle Duskull 24 nofleeing Won
+  + FLAG_ALOLA_MEGAMART_DEN_3
+way 1, from answer 1
+  * wildbattle Duskull 24 nofleeing Lost
+=== ThriftyMegamart.Totem
+from Mimikyu at 8,6 of ThriftyMegamart
+way -
+  > The counter's quiet. The ghosts among the shelves come first.
 === TrainerHillFloor.Down
 from the trigger at 3,3 of TrainerHillFloor
 way -
@@ -6802,6 +7052,71 @@ way -
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   = VAR_ACUITY_LAKEFRONT_STATE 0 -> 1
   + seen acuity_lakefront.The rival calls down
+=== aether_paradise.AetherGuard
+from Aether Guard at 48,24 of AetherParadise
+way -
+  Aether Guard> The head office is closed to visitors. President's orders.
+=== aether_paradise.Ferry
+from Sailor at 48,92 of AetherParadise
+way 0
+  Sailor> Where to?
+  > The ferry pulled away from Aether Paradise...
+  ? Where to? = Heahea City, Akala
+  * fade out
+  * warp Akala 125 328
+  * fade in
+way 2, from answer 1
+  ? Where to? = Stay here
+way 1, from answer 1
+  > The ferry pulled away from Aether Paradise...
+  ? Where to? = Malie City, Ula'ula
+  * fade out
+  * warp Ulaula 59 366
+  * fade in
+  + FLAG_ALOLA_AT_MALIE
+=== aether_paradise.Lusamine
+from Lusamine at 54,30 of AetherParadise
+way -
+  Lusamine> A Trial-goer should be in Ula'ula, not standing about on my square. Run along.
+=== aether_paradise.Rescue
+from the trigger at 45,72 of AetherParadise
+way -
+  Wicke> Lucas! Thank goodness. The President has shut herself and Lillie inside the head office, and she isn't herself.
+  Wicke> Mr. Gladion is in there too. I don't know what's happening to her. She talks about beauty, and she holds a creature I've never seen.
+  Wicke> I'll open the door. Please... bring Lillie out.
+  * scene aether_paradise.The rescue at Aether Paradise
+  * endscene
+  + FLAG_ALOLA_AETHER_HQ_OPEN
+  + FLAG_ALOLA_AETHER_RESCUE
+  + FLAG_ALOLA_AETHER_WICKE_DONE
+  + FLAG_ALOLA_AT_AETHER
+  + seen aether_paradise.The rescue at Aether Paradise
+=== aether_paradise.Tour
+from the trigger at 45,72 of AetherParadise
+way -
+  Wicke> Welcome to Aether Paradise! I'm Wicke, the Foundation's staff. Professor Kukui said to expect you.
+  Lillie> ...Lucas! You came. Mother, this is the Trainer I told you about.
+  Lusamine> Welcome, welcome. Lusamine, president of the Aether Foundation. Lillie says you've been to Akala and back already.
+  Lusamine> Everything on this island is kept safe and warm, and every Pokémon here is loved. It's my whole life's work.
+  Lusamine> Lillie, dear, don't hide behind your bag. Look at how well you're doing out there with your friends!
+  Lillie> Mother... I'm not doing it for them. I'm doing it for Nebby.
+  Wicke> Shall we have a look at the garden? Our ferry will take you on to Ula'ula Island afterwards.
+  > Lucas was shown through the Foundation's garden, its clinic and its rows of resting Pokémon.
+  Lusamine> Go on, then, Trial-goer. Ula'ula's trials are harder than Akala's. Don't be late for them.
+  * scene aether_paradise.The tour of Aether Paradise
+  * endscene
+  + FLAG_ALOLA_AETHER_LILLIE_DONE
+  + FLAG_ALOLA_AETHER_LUSAMINE_DONE
+  + FLAG_ALOLA_AETHER_WICKE_DONE
+  + FLAG_ALOLA_AT_AETHER
+  = VAR_ALOLA_STORY 0 -> 41
+  = VAR_OBJECTIVE 0 -> 651
+  + seen aether_paradise.The tour of Aether Paradise
+=== aether_paradise.Wicke
+from Lillie at 42,30 of AetherParadise
+from Wicke at 48,30 of AetherParadise
+way -
+  Wicke> This island has lasted because every employee believes the President. Every one.
 === akala_outskirts.Lillie
 from Lillie at 359,152 of Akala
 way -
@@ -16270,6 +16585,32 @@ way 0
 way 1, from answer 1
   * battle hoenn_sidney Lost
   * scene over, unseen
+=== exeggutor_island.HapuGrand
+from Hapu at 240,82 of Poni
+way 0
+  Hapu> There you are! I'm Hapu, the kahuna of Poni, and I hate waiting. So let's get to it.
+  Hapu> Poni's grand trial is a battle with me. That's all. Every captain says yes. Every trial says yes. Now I decide.
+  Hapu> My Pokémon and I know the island's sand, the island's stone, and the island's sky. Show me yours!
+  Hapu> Hah! Nothing held back, and nothing left behind. You and your Pokémon are a team.
+  > Lucas's Trainer card received Poni's stamp!
+  > Lucas received the Groundium Z!
+  > Lucas put it away in the Items pocket.
+  Hapu> The Groundium Z. Earth-type moves, grown. And the guard at the Altar's road will let you through.
+  * scene exeggutor_island.Hapu's grand trial
+  * battle alola_hapu_1 Won
+  * fanfare FanfareBadge
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_ALOLA_ALTAR_OPEN
+  + FLAG_ALOLA_HAPU_DONE
+  = VAR_ALOLA_STORY 0 -> 51
+  = VAR_OBJECTIVE 0 -> 661
+  + beaten alola_hapu_1
+  = badges Alola 0 -> 1000
+  + seen exeggutor_island.Hapu's grand trial
+way 1, from answer 1
+  * battle alola_hapu_1 Lost
+  * scene over, unseen
 === fallarbor_town.Azurill
 from Azurill at 88,12 of Hoenn
 way -
@@ -18535,6 +18876,10 @@ way -
   = VAR_ALOLA_STORY 0 -> 14
   = VAR_OBJECTIVE 0 -> 614
   + seen hauoli_city.The boat to Akala
+=== heahea_city.AetherFerry
+from Sailor at 126,339 of Akala
+way -
+  Sailor> That ferry is for the Aether Foundation's guests. It only takes those who've finished Akala's grand trial.
 === heahea_city.Ferry
 from Sailor at 125,339 of Akala
 way 0
@@ -20182,6 +20527,10 @@ way -
   Prof. Rowan> Lucas? What brings you here? There is no sign of the lake's Pokémon. Not a ripple.
   Prof. Rowan> And how was Lake Valor? You have been there, I trust?
   + FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+=== lanakila_foot.LanakilaGuard
+from Guard at 289,153 of Ulaula
+way -
+  Guard> The path up Mount Lanakila is closed until the League opens it. They say a Trainer with all four stamps is on the way.
 === lavaridge_town.EggWoman
 from Old Woman at 144,67 of Hoenn
 way 0
@@ -21712,6 +22061,41 @@ way -
   Saleswoman> Welcome back to the souvenir shop! Those crooks are gone, so we're open properly again.
   Saleswoman> A Rage Candy Bar perks up a Pokémon that's feeling poorly. Come again, dear!
   * open Shop mahogany_souvenirs
+=== malie_city.Arrival
+from the trigger at 56,350 of Ulaula
+way 0
+  Hau> Lucas! Over here! The ferry was so fast I didn't think you'd make it before the malasadas were gone.
+  Prof. Kukui> Welcome to Ula'ula, cousin. This island is the biggest of the four, and its trials are the toughest yet.
+  Prof. Kukui> Captain Sophocles is waiting at the observatory on Mount Hokulani, up Route 10. After that comes Tapu Village, and Acerola's trial.
+  Hau> Hey, before we go anywhere, let's battle! I've got a new Pokémon since the last time, and I want you to see it!
+  Hau> Whoa! Even with a Z-Move, you were faster than me. I'll catch up. Just you wait!
+  Prof. Kukui> Woo! That's what I like to see. Off you go, then. I'll be in my lab, taking Z-Moves on the chin.
+  * scene malie_city.Malie City
+  * battle alola_hau_malie_2 Won
+  * endscene
+  + FLAG_ALOLA_AT_MALIE
+  + FLAG_ALOLA_MALIE_HAU_DONE
+  + FLAG_ALOLA_MALIE_KUKUI_DONE
+  = VAR_ALOLA_STORY 0 -> 42
+  = VAR_OBJECTIVE 0 -> 652
+  + beaten alola_hau_malie_2
+  + seen malie_city.Malie City
+way 1, from answer 1
+  * battle alola_hau_malie_2 Lost
+  * scene over, unseen
+  + FLAG_ALOLA_AT_MALIE
+=== malie_city.Ferry
+from Sailor at 59,372 of Ulaula
+way -
+  Sailor> The ferry's for trial-goers on their way from Aether Paradise. Come back once you've seen the Foundation.
+=== malie_city.Hau
+from Hau at 56,338 of Ulaula
+way -
+  Hau> Go on, I'll catch up! After a malasada or two.
+=== malie_city.Kukui
+from Prof. Kukui at 59,340 of Ulaula
+way -
+  Prof. Kukui> Route 10 leads to the observatory on Mount Hokulani. The air's thin, so mind your lungs!
 === marine_cave_end.Kyogre
 from the trigger at 9,26 of MarineCave_End
 way 0
@@ -25045,6 +25429,37 @@ way 0
   + FLAG_UNOVA_FRIGATE_SWITCH_A
 way 1, from answer 1
   ? There's a switch on the wall marked BARRIER. Press it? = No
+=== po_town.Arrival
+from the trigger at 236,128 of Ulaula
+way 0
+  Plumeria> Yo. You're the one who ruined Gladion's day, aren't you? Don't bother denying it. I know the walk.
+  Plumeria> I'm Plumeria. I look after the grunts so Boss doesn't have to. Which means I look after kids like you.
+  Plumeria> Skull doesn't want trials and it doesn't want rules. We want a place where nobody asks us to be anything.
+  Plumeria> ...Tch. You fight like somebody who's been told they can do anything. It's annoying.
+  Plumeria> Boss is in the manor, up ahead. Go ahead and tell him what you think of us. He's got plenty to say back.
+  * scene po_town.Po Town
+  * battle alola_plumeria_1 Won
+  * endscene
+  + FLAG_ALOLA_PLUMERIA_DONE
+  + FLAG_ALOLA_PO_TOWN
+  + beaten alola_plumeria_1
+  + seen po_town.Po Town
+way 1, from answer 1
+  * battle alola_plumeria_1 Lost
+  * scene over, unseen
+  + FLAG_ALOLA_PO_TOWN
+=== po_town.NanuOutside
+from Nanu at 214,94 of Ulaula
+way -
+  Nanu> Hm. So you're the kid who put Guzma on the floor. Don't let it go to your head. That's what he did.
+  Nanu> I'm Nanu, the kahuna of this island. Ula'ula's grand trial is me, and I'm lazy. Come find me in the Shady House, over there.
+  + FLAG_ALOLA_NANU_INSIDE
+  + FLAG_ALOLA_NANU_OUTSIDE_DONE
+  + FLAG_ALOLA_SHADY_HOUSE_OPEN
+=== po_town.Plumeria
+from Plumeria at 238,112 of Ulaula
+way -
+  Plumeria> Hold up. Nobody walks into Po Town without a word to me first.
 === pokeathlon_dome_interior_1f.Whitney
 from Whitney at 23,22 of PokeathlonDome_1F
 way -
@@ -25387,6 +25802,55 @@ way -
   + FLAG_RESCUED_MR_FUJI
   = VAR_OBJECTIVE 0 -> 112
   + seen pokemon_tower_7f.Mr Fuji
+=== poni_altar.Legend
+from Solgaleo at 32,14 of PoniAltar
+way 0
+  > The light on the dais gathered into a great white shape: a lion of the sun, its mane ablaze!
+  Lillie> Nebby... you were Solgaleo all along. You're free to go home, now, if that's what you want.
+  Lillie> ...Lucas, thank you. For everything. Whatever happens, I'm going to be braver.
+  Prof. Kukui> Lucas! Hello, hello! Lillie told me what happened. The Pokémon League is finally open on Mount Lanakila, cousin.
+  Prof. Kukui> Hau's already there, I bet. Take the Route 13 road east from Tapu Village. And try not to enjoy yourself too much.
+  * scene poni_altar.The legendary of the sun
+  * cry Solgaleo
+  * wildbattle Solgaleo 55 nofleeing Won
+  * endscene
+  + FLAG_ALOLA_ALTAR_DONE
+  + FLAG_ALOLA_LANAKILA_OPEN
+  = VAR_ALOLA_STORY 0 -> 52
+  = VAR_OBJECTIVE 0 -> 662
+  + seen poni_altar.The legendary of the sun
+way 1, from answer 1
+  * wildbattle Solgaleo 55 nofleeing Lost
+  * scene over, unseen
+=== poni_altar.LillieAtAltar
+from Lillie at 31,24 of PoniAltar
+way -
+  Lillie> Lucas... I'm so glad you're here. Nebby changed, on the way. Look.
+  Lillie> It wants to go home, and I think the dais is where home is. The sun is out, and the dais lights when the sun is.
+  Lillie> I'm afraid. But I'm not going to hide in my bag any more. Please, stay with me.
+  > Lillie held her bag up to the dais, and the light in it rose into the cavern like a second sun!
+=== poni_breakers.AltarGuard
+from Guard at 97,80 of Poni
+way -
+  Guard> The road up to the Altar of the Sunne and Moone is closed to everyone but the one who holds Poni's stamp.
+=== poni_breakers.HapuShore
+from Hapu at 172,120 of Poni
+way -
+  Hapu> Hey. You're Lucas, the one who's been collecting stamps. I've heard about you.
+  Hapu> I'm Hapu, kahuna of Poni. My grand trial is on Exeggutor Island, across this strait.
+  Hapu> You'll need something that swims. Lapras will carry you, if you've got it in the Ride Pager.
+  Hapu> I'll be there. Don't dawdle. I get bored fast, and when I get bored I get strong.
+  + FLAG_ALOLA_HAPU_SHORE_DONE
+=== poni_breakers.TapuFini
+from Tapu Fini at 144,94 of Poni
+way -
+  > Tapu Fini's mist rolled over the ruins, and it rose from the water.
+  > It watched Lucas for a moment, and then let the mist close again.
+  * cry Tapu Fini
+=== poni_wilds.Dulse
+from Dulse at 100,186 of Poni
+way -
+  Dulse> The canyon isn't safe for the unready. Take the ferry back, speak with the Professor, and then come.
 === power_plant.Electrode
 from Poké Ball at 30,38 of PowerPlant
 way 0
@@ -29959,6 +30423,52 @@ way 1, from answer 1
 from Gym guide at 16,23 of Seafoam_Gym
 way -
   Gym guide> Hey, champ in the making! Blaine's Pokémon burn hot. Water and Ground moves will cool them right down.
+=== seafolk_village.Arrival
+from the trigger at 47,282 of Poni
+way -
+  Lillie> Lucas! Over here. ...I wanted to say thank you. For what you did at the Foundation.
+  Lillie> Nebby is a little better. It wants to go home, I think. It keeps saying so, in its own way.
+  Prof. Kukui> Welcome to Poni, cousin. The last island. There's a trial in Vast Poni Canyon, and a grand trial across the strait.
+  Prof. Kukui> Captain Dulse is waiting up in Poni Wilds. His totem is a Kommo-o, and Kommo-o does not do small talk.
+  Lillie> I'm going to the Altar of the Sunne and Moone, on the other side of the island. I think that's where Nebby has to be.
+  Lillie> Please be careful, Lucas. And I'll see you there.
+  > A Machamp on the shore nodded at Lucas, as if to say it was ready to lend a hand.
+  * scene seafolk_village.Poni Island
+  * endscene
+  + FLAG_ALOLA_AT_SEAFOLK
+  + FLAG_ALOLA_SEAFOLK_KUKUI_DONE
+  = VAR_ALOLA_STORY 0 -> 49
+  = VAR_OBJECTIVE 0 -> 659
+  + seen seafolk_village.Poni Island
+=== seafolk_village.Ferry
+from Sailor at 49,302 of Poni
+way 0
+  Sailor> Where to?
+  > The ferry pulled away from Seafolk Village...
+  ? Where to? = Malie City, Ula'ula
+  * fade out
+  * warp Ulaula 59 366
+  * fade in
+way 2, from answer 1
+  ? Where to? = Stay here
+way 1, from answer 1
+  > The ferry pulled away from Seafolk Village...
+  ? Where to? = Aether Paradise
+  * fade out
+  * warp AetherParadise 48 90
+  * fade in
+=== seafolk_village.Kukui
+from Lillie at 60,262 of Poni
+from Prof. Kukui at 58,262 of Poni
+way -
+  Prof. Kukui> Dulse's trial is up in the Wilds. Go on, I'll be around.
+=== seafolk_village.MachampRide
+from Machamp at 76,280 of Poni
+way -
+  > The Machamp flexed all four arms and pushed a boulder along the shore without a sound.
+  > Lucas registered Machamp in the Ride Pager! Machamp can shove boulders aside.
+  * cry Machamp
+  + FLAG_ALOLA_RIDE_MACHAMP
 === sealed_chamber_inner_room.BackWall
 from the tile read at 10,4 of SealedChamber_InnerRoom
 from the tile read at 11,4 of SealedChamber_InnerRoom
@@ -31752,6 +32262,28 @@ way -
 from {rival} at 651,339 of Sinnoh
 way -
   Barry> Lucas! I'm piling up the wins at the Battle Frontier! My dad had better watch out. I'm coming for him!
+=== tapu_village.AcerolaArrival
+from the trigger at 204,226 of Ulaula
+way -
+  Acerola> Hi hi! I'm Acerola, and you're the island challenger Sophocles told me about! He said you were scary. You don't look scary at all.
+  Acerola> I've got a trial for you in the old Thrifty Megamart, just there. Don't mind the dust. Or the ghosts.
+  Acerola> I'll open the door. Go on in whenever you like. My Mimikyu is waiting in the dark, and he's very shy.
+  * scene tapu_village.Acerola in Tapu Village
+  * endscene
+  + FLAG_ALOLA_ACEROLA_MET
+  + FLAG_ALOLA_MEGAMART_OPEN
+  + FLAG_ALOLA_TAPU_ACEROLA
+  = VAR_ALOLA_STORY 0 -> 44
+  = VAR_OBJECTIVE 0 -> 654
+  + seen tapu_village.Acerola in Tapu Village
+=== tapu_village.AcerolaMeet
+from Acerola at 228,218 of Ulaula
+way -
+  Acerola> The Megamart's door is open. Mind the dark, and mind the ghosts. They like you already.
+=== tapu_village.Rancher
+from Rancher Moke at 240,238 of Ulaula
+way -
+  Rancher Moke> This ridge is no road for the weak-kneed. Come back when you've been to the observatory and I'll lend you a Mudsdale.
 === team_rocket_headquarters_b1f.BackToTheStairs
 from the trigger at 16,28 of TeamRocketHQ_B1F
 way -
@@ -33429,6 +33961,38 @@ way -
 from Shauna at 246,723 of Kalos
 way -
   Shauna> Come on, come on! Aquacorde's this way!
+=== vast_poni_canyon.Den1
+from Jangmo-o at 19,50 of VastPoniCanyon
+way 0
+  > A young Jangmo-o scrambled out from behind a rock!
+  * wildbattle Jangmo-o 45 nofleeing Won
+  + FLAG_ALOLA_CANYON_DEN_1
+way 1, from answer 1
+  * wildbattle Jangmo-o 45 nofleeing Lost
+=== vast_poni_canyon.Den2
+from Jangmo-o at 77,50 of VastPoniCanyon
+way 0
+  > A young Jangmo-o scrambled out from behind a rock!
+  * wildbattle Jangmo-o 45 nofleeing Won
+  + FLAG_ALOLA_CANYON_DEN_2
+way 1, from answer 1
+  * wildbattle Jangmo-o 45 nofleeing Lost
+=== vast_poni_canyon.Den3
+from Jangmo-o at 48,32 of VastPoniCanyon
+way 0
+  > A young Jangmo-o scrambled out from behind a rock!
+  * wildbattle Jangmo-o 46 nofleeing Won
+  + FLAG_ALOLA_CANYON_DEN_3
+way 1, from answer 1
+  * wildbattle Jangmo-o 46 nofleeing Lost
+=== vast_poni_canyon.DulseInside
+from Dulse at 48,86 of VastPoniCanyon
+way -
+  Dulse> Three Jangmo-o: one to the west, one to the east, one up the middle. Then the totem, at the head of the canyon.
+=== vast_poni_canyon.Totem
+from Kommo-o at 48,12 of VastPoniCanyon
+way -
+  > Nothing stirs in the chamber. The Jangmo-o in the canyon come first.
 === veilstone_city.Assistant
 from {assistant} at 682,614 of Sinnoh
 way -

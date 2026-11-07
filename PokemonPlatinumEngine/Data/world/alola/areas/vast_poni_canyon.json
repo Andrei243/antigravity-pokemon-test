@@ -1,0 +1,194 @@
+{
+  "key": "vast_poni_canyon",
+  "index": 206,
+  "name": "Vast Poni Canyon",
+  "matrix": 14,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "VAST_PONI_CANYON",
+  "nightMusic": "VAST_PONI_CANYON",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 48,
+      "z": 93,
+      "to": "poni_wilds",
+      "toWarp": 1
+    }
+  ],
+  "objects": [
+    {
+      "id": "dulse",
+      "looks": "dulse",
+      "movement": "look_north",
+      "x": 48,
+      "z": 86,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "den_1",
+      "looks": "jangmo-o",
+      "movement": "look_south",
+      "x": 19,
+      "z": 50,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "den_2",
+      "looks": "jangmo-o",
+      "movement": "look_south",
+      "x": 77,
+      "z": 50,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "den_3",
+      "looks": "jangmo-o",
+      "movement": "look_south",
+      "x": 48,
+      "z": 32,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "totem",
+      "looks": "kommo-o",
+      "movement": "look_south",
+      "x": 48,
+      "z": 12,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "kaoni",
+      "looks": "dragon_tamer",
+      "movement": "look_east",
+      "x": 48,
+      "z": 72,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_DRAGON_TAMER_KAONI"
+    },
+    {
+      "id": "nalani",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 76,
+      "z": 66,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_NALANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 15,
+      "z": 52,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_CANYON_DRAGON_SCALE",
+      "item": "Dragon Scale"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 80,
+      "z": 58,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_CANYON_SITRUS",
+      "item": "Rare Candy"
+    }
+  ],
+  "signs": [
+    {
+      "x": 52,
+      "z": 88,
+      "type": 0,
+      "script": "CanyonSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Jangmo-o",
+      "level": 44
+    },
+    {
+      "species": "Jangmo-o",
+      "level": 45
+    },
+    {
+      "species": "Jangmo-o",
+      "level": 46
+    },
+    {
+      "species": "Hakamo-o",
+      "level": 45
+    },
+    {
+      "species": "Hakamo-o",
+      "level": 46
+    },
+    {
+      "species": "Druddigon",
+      "level": 44
+    },
+    {
+      "species": "Druddigon",
+      "level": 45
+    },
+    {
+      "species": "Druddigon",
+      "level": 46
+    },
+    {
+      "species": "Gabite",
+      "level": 44
+    },
+    {
+      "species": "Gabite",
+      "level": 45
+    },
+    {
+      "species": "Gabite",
+      "level": 46
+    },
+    {
+      "species": "Skarmory",
+      "level": 45
+    }
+  ],
+  "landRate": 20
+}

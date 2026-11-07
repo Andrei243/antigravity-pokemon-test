@@ -1,0 +1,53 @@
+# Alola's Hall of Fame (plan 23 · Z7). docs/scripts.md describes the language; the lines are our own, on Sun and Moon's
+# beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League").
+#
+# One scene, played as the new Champion comes in behind Professor Kukui, as the other regions' are: his words, the team
+# recorded (halloffame), Alola's story ended (AlolaHallOfFame, the region's flag, which opens Alola's post-game and the
+# flight on to Galar once it is built), the scene of the team's entry, the team healed, home to the player's new house
+# on Route 1, the game saved there and the credits. ClearGame puts the League back for a second challenge.
+
+
+script OnEnter
+  if not flag FLAG_ALOLA_DEFEATED_KUKUI end
+  scene "Alola's Hall of Fame"
+  face kukui_hof player
+  speaker "Prof. Kukui"
+  say "This is the Hall of Fame. Every Champion of Alola is kept here, with the Pokémon who stood beside them."
+  say "You were the very first Trainer I handed a Z-Ring to, back on Melemele. Now look at us. Let's record your team."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag AlolaHallOfFame
+  setvar VAR_ALOLA_STORY 54
+  objective alolaFree
+  call ClearGame
+  halloffame show
+  heal
+  warp "AlolaRoute1_PlayersHouse" 6 6 down
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+
+
+# What a victory leaves behind: the League's rooms put back for a second challenge
+script ClearGame
+  clearflag FLAG_ALOLA_DEFEATED_HALA
+  clearflag FLAG_ALOLA_DEFEATED_OLIVIA
+  clearflag FLAG_ALOLA_DEFEATED_ACEROLA
+  clearflag FLAG_ALOLA_DEFEATED_KAHILI
+  clearflag FLAG_ALOLA_DEFEATED_KUKUI
+  return
+
+
+script KukuiWaits
+  speaker "Prof. Kukui"
+  say "Alola is lucky to have you, {player}. Woo!"
+  end

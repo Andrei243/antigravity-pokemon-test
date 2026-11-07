@@ -1,0 +1,81 @@
+{
+  // Poni Breakers (plan 23 · Z7): drawn by hand, our words. The northern coast, from the Ancient Poni Path's north mouth east to the Ruins
+  // of Hope, with a strait to Exeggutor Island that a swimmer crosses, and the road north to the Altar of the Sunne and Moone.
+  "area": "poni_breakers",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "PoniAltar",
+      "x": 32,
+      "y": 92,
+      "facing": "Up",
+      "openedBy": "FLAG_ALOLA_ALTAR_OPEN"
+    }
+  ],
+  "people": {
+    "guard": {
+      "name": "Guard",
+      "npcType": "policeman",
+      "script": "AltarGuard",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_ALTAR_OPEN"
+    },
+    "hapu": {
+      "name": "Hapu",
+      "npcType": "hapu",
+      "script": "HapuShore",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_HAPU_SHORE_DONE",
+      "shownBy": "FLAG_ALOLA_CANYON_TRIAL_DONE"
+    },
+    "fini": {
+      "name": "Tapu Fini",
+      "npcType": "Pokemon",
+      "species": "Tapu Fini",
+      "script": "TapuFini",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_TAPU_FINI_DONE",
+      "shownBy": "AlolaHallOfFame"
+    },
+    "kekoa": {
+      "name": "Kekoa",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kekoa: Jump in! The water is perfect for a battle!",
+        "dialogueAfter": "Swimmer Kekoa: Ahh, I got all wet for nothing."
+      }
+    },
+    "nuka": {
+      "name": "Nuka",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Nuka: Where the breakers crash is where the fish run. Let's battle!",
+        "dialogueAfter": "Fisherman Nuka: The fish got away. So did the battle."
+      }
+    },
+    "loio": {
+      "name": "Loio",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Loio: I've walked this coast for forty years. You're nowhere near finished.",
+        "dialogueAfter": "Veteran Loio: Well. Maybe you are finished with this part."
+      }
+    },
+    "maile": {
+      "name": "Maile",
+      "npcType": "psychic_f",
+      "trainer": {
+        "dialogueBefore": "Psychic Maile: I felt your thoughts as you came up the path. Shall I tell you what you were thinking?",
+        "dialogueAfter": "Psychic Maile: You were thinking you could win. Hm."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Poni Breakers\nEast: Ruins of Hope\nNorth: the Altar of the Sunne and Moone",
+    "RuinsSign": "Ruins of Hope\nThe sea guardian's shrine.",
+    "ShoreSign": "Exeggutor Island lies across the strait. Only a swimmer will reach it."
+  }
+}

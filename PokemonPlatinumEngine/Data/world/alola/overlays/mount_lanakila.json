@@ -1,0 +1,49 @@
+{
+  // Mount Lanakila (plan 23 · Z7): a map of its own, drawn by hand. A winding snowy way up to the Pokémon League at its summit.
+  "area": "mount_lanakila",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "doors": [
+    {
+      "warp": 1,
+      "map": "AlolaLeague_Lobby",
+      "x": 8,
+      "y": 12,
+      "facing": "Up"
+    }
+  ],
+  "people": {
+    "ioane": {
+      "name": "Ioane",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Ioane: The League is at the top. The cold gets worse on the way. So do I.",
+        "dialogueAfter": "Ace Trainer Ioane: You made me cold. In a good way."
+      }
+    },
+    "hina": {
+      "name": "Hina",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Hina: I train in the snow all year. Do you?",
+        "dialogueAfter": "Ace Trainer Hina: Maybe I should train in the sun."
+      }
+    },
+    "kaeo": {
+      "name": "Kaeo",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Kaeo: Almost at the League. Almost. Not past me.",
+        "dialogueAfter": "Veteran Kaeo: Almost, and then past."
+      }
+    },
+    "pua": {
+      "name": "Pua",
+      "npcType": "dragon_tamer",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Pua: Eat my fire, or my thunder, or my claws! Whichever you prefer!",
+        "dialogueAfter": "Dragon Tamer Pua: I'll eat my words."
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+# Malie City, Ula'ula Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether
+# Paradise and the League"). VAR_ALOLA_STORY is alola_route_1.txt's count: 42 is Malie City reached (Hau's battle on the
+# plaza and the professor's word of Ula'ula's trials). The ferry at the pier sails to Aether Paradise and, once the
+# Foundation's president has been dealt with, to Poni Island.
+#
+# The people: kukui and hau on the plaza while FLAG_ALOLA_AT_MALIE is set and the scene not played.
+
+
+# The plaza's trigger, the first time the player comes up from the pier
+script Arrival
+  scene "Malie City"
+  setflag FLAG_ALOLA_AT_MALIE
+  walk player up 4
+  waitmoves
+  face player up
+  speaker "Hau"
+  say "{player}! Over here! The ferry was so fast I didn't think you'd make it before the malasadas were gone."
+  speaker "Prof. Kukui"
+  say "Welcome to Ula'ula, cousin. This island is the biggest of the four, and its trials are the toughest yet."
+  say "Captain Sophocles is waiting at the observatory on Mount Hokulani, up Route 10. After that comes Tapu Village, and Acerola's trial."
+  speaker "Hau"
+  say "Hey, before we go anywhere, let's battle! I've got a new Pokémon since the last time, and I want you to see it!"
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle hau as "alola_hau_malie_2"
+  goto AfterBattle
+label AgainstRowlet
+  battle hau as "alola_hau_malie_3"
+  goto AfterBattle
+label AgainstLitten
+  battle hau as "alola_hau_malie_1"
+label AfterBattle
+  speaker "Hau"
+  say "Whoa! Even with a Z-Move, you were faster than me. I'll catch up. Just you wait!"
+  speaker "Prof. Kukui"
+  say "Woo! That's what I like to see. Off you go, then. I'll be in my lab, taking Z-Moves on the chin."
+  hide kukui
+  hide hau
+  setflag FLAG_ALOLA_MALIE_KUKUI_DONE
+  setflag FLAG_ALOLA_MALIE_HAU_DONE
+  setvar VAR_ALOLA_STORY 42
+  objective alolaHokulani
+  endscene
+  end
+
+
+script Kukui
+  speaker "Prof. Kukui"
+  say "Route 10 leads to the observatory on Mount Hokulani. The air's thin, so mind your lungs!"
+  end
+
+
+script Hau
+  speaker "Hau"
+  say "Go on, I'll catch up! After a malasada or two."
+  end
+
+
+# The ferry
+script Ferry
+  speaker "Sailor"
+  if var VAR_ALOLA_STORY >= 41 goto Open
+  say "The ferry's for trial-goers on their way from Aether Paradise. Come back once you've seen the Foundation."
+  end
+label Open
+  if var VAR_ALOLA_STORY >= 48 goto Far
+  choose "Where to?" "Aether Paradise" "Stay here"
+  if result == 0 goto Aether
+  end
+label Far
+  choose "Where to?" "Aether Paradise" "Seafolk Village, Poni" "Stay here"
+  if result == 0 goto Aether
+  if result == 1 goto Poni
+  end
+label Aether
+  fade out
+  text "The ferry pulled away from Malie City's pier..."
+  warp "AetherParadise" 48 90 up
+  fade in
+  end
+label Poni
+  fade out
+  text "The ferry pulled away from Malie City's pier and out across the sea to Poni Island..."
+  if var VAR_ALOLA_STORY >= 49 goto PoniLate
+  setflag FLAG_ALOLA_AT_SEAFOLK
+label PoniLate
+  warp "Poni" 49 300 up
+  fade in
+  end

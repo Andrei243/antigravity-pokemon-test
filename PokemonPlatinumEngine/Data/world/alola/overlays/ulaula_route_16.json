@@ -1,0 +1,44 @@
+{
+  // Route 16 (plan 23 · Z7): drawn by hand, our words. North from Tapu Village through Team Skull's outposts to Po Town.
+  "area": "ulaula_route_16",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "ula1_1": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: Po Town is ours, yo! No trials, no rules! Beat it!",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Yo... we still own the place."
+      }
+    },
+    "ula2_2": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: Skull's boss says we keep everybody out. Even you.",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Boss won't like this."
+      }
+    },
+    "ula3_3": {
+      "name": "Skull Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt Skull Grunt: You're too nosy, yo!",
+        "dialogueAfter": "Team Skull Grunt Skull Grunt: Whatever. Go on in."
+      }
+    },
+    "hoku": {
+      "name": "Hoku",
+      "npcType": "pokemon_breeder_m",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Hoku: I breed pups. All three of these ones are the best pups.",
+        "dialogueAfter": "Pokémon Breeder Hoku: Yours are good pups, too."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 16\nNorth: Po Town\nSouth: Tapu Village"
+  }
+}

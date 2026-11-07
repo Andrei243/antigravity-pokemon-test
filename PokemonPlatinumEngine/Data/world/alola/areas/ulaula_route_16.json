@@ -1,0 +1,132 @@
+{
+  "key": "ulaula_route_16",
+  "index": 107,
+  "name": "Route 16",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_16",
+  "nightMusic": "ROUTE_16",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "ula1_1",
+      "looks": "skull_grunt",
+      "movement": "look_south",
+      "x": 228,
+      "z": 186,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_ULA1"
+    },
+    {
+      "id": "ula2_2",
+      "looks": "skull_grunt",
+      "movement": "look_west",
+      "x": 238,
+      "z": 158,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_ULA2"
+    },
+    {
+      "id": "ula3_3",
+      "looks": "skull_grunt",
+      "movement": "look_east",
+      "x": 226,
+      "z": 150,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_ULA3"
+    },
+    {
+      "id": "hoku",
+      "looks": "pokemon_breeder_m",
+      "movement": "look_east",
+      "x": 220,
+      "z": 192,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_POKEMON_BREEDER_HOKU"
+    }
+  ],
+  "signs": [
+    {
+      "x": 232,
+      "z": 192,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Grimer",
+      "level": 26
+    },
+    {
+      "species": "Grimer",
+      "level": 27
+    },
+    {
+      "species": "Salandit",
+      "level": 26
+    },
+    {
+      "species": "Salandit",
+      "level": 27
+    },
+    {
+      "species": "Zubat",
+      "level": 26
+    },
+    {
+      "species": "Zubat",
+      "level": 27
+    },
+    {
+      "species": "Ekans",
+      "level": 26
+    },
+    {
+      "species": "Ekans",
+      "level": 27
+    },
+    {
+      "species": "Houndour",
+      "level": 26
+    },
+    {
+      "species": "Houndour",
+      "level": 27
+    },
+    {
+      "species": "Murkrow",
+      "level": 27
+    },
+    {
+      "species": "Pancham",
+      "level": 27
+    }
+  ],
+  "landRate": 20
+}

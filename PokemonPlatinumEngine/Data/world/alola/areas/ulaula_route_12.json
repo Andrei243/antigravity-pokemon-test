@@ -1,0 +1,181 @@
+{
+  "key": "ulaula_route_12",
+  "index": 103,
+  "name": "Route 12",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_12",
+  "nightMusic": "ROUTE_12",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "loke",
+      "looks": "fisherman",
+      "movement": "look_west",
+      "x": 164,
+      "z": 240,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_FISHERMAN_LOKE"
+    },
+    {
+      "id": "lani",
+      "looks": "pokemon_breeder_f",
+      "movement": "look_east",
+      "x": 108,
+      "z": 230,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_POKEMON_BREEDER_LANI"
+    },
+    {
+      "id": "nalo",
+      "looks": "ace_trainer_m",
+      "movement": "look_west",
+      "x": 150,
+      "z": 232,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_NALO"
+    },
+    {
+      "id": "wana",
+      "looks": "hiker",
+      "movement": "look_north",
+      "x": 142,
+      "z": 250,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_WANA"
+    },
+    {
+      "id": "kalei",
+      "looks": "rancher",
+      "movement": "look_west",
+      "x": 176,
+      "z": 232,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_RANCHER_KALEI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 120,
+      "z": 232,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_12_MAX_ETHER",
+      "item": "Max Ether"
+    }
+  ],
+  "signs": [
+    {
+      "x": 92,
+      "z": 244,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Mudbray",
+      "level": 21
+    },
+    {
+      "species": "Mudbray",
+      "level": 22
+    },
+    {
+      "species": "Ponyta",
+      "level": 21
+    },
+    {
+      "species": "Ponyta",
+      "level": 22
+    },
+    {
+      "species": "Mareep",
+      "level": 21
+    },
+    {
+      "species": "Mareep",
+      "level": 22
+    },
+    {
+      "species": "Trumbeak",
+      "level": 21
+    },
+    {
+      "species": "Trumbeak",
+      "level": 22
+    },
+    {
+      "species": "Lillipup",
+      "level": 21
+    },
+    {
+      "species": "Lillipup",
+      "level": 22
+    },
+    {
+      "species": "Fletchling",
+      "level": 21
+    },
+    {
+      "species": "Fletchling",
+      "level": 22
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Wingull",
+      "level": 20
+    },
+    {
+      "species": "Poliwag",
+      "level": 21
+    },
+    {
+      "species": "Goldeen",
+      "level": 21
+    },
+    {
+      "species": "Psyduck",
+      "level": 22
+    },
+    {
+      "species": "Magikarp",
+      "level": 20
+    }
+  ],
+  "waterRate": 20
+}

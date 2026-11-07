@@ -1,0 +1,106 @@
+{
+  // Seafolk Village, Poni Island (plan 23 · Z7): drawn by hand, our words. The sea folk's village on the south shore: the Pokémon Center,
+  // four houses and the ferry's pier. Kukui and Lillie wait on the square when the ferry comes (FLAG_ALOLA_AT_SEAFOLK).
+  "area": "seafolk_village",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "SeafolkVillage_PokemonCenter_1F",
+      "x": 8,
+      "y": 12,
+      "facing": "Up"
+    },
+    {
+      "warp": 1,
+      "map": "SeafolkVillage_HouseA",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "SeafolkVillage_HouseB",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 3,
+      "map": "SeafolkVillage_HouseC",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 4,
+      "map": "SeafolkVillage_HouseD",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    }
+  ],
+  "triggers": [
+    {
+      "script": "Arrival",
+      "x": 47,
+      "z": 282,
+      "width": 5,
+      "depth": 1,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 48
+    }
+  ],
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "script": "Ferry",
+      "still": true
+    },
+    "kukui": {
+      "name": "Prof. Kukui",
+      "npcType": "kukui",
+      "script": "Kukui",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_SEAFOLK_KUKUI_DONE",
+      "shownBy": "FLAG_ALOLA_AT_SEAFOLK"
+    },
+    "lillie": {
+      "name": "Lillie",
+      "npcType": "lillie",
+      "script": "Kukui",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_SEAFOLK_KUKUI_DONE",
+      "shownBy": "FLAG_ALOLA_AT_SEAFOLK"
+    },
+    "machamp": {
+      "name": "Machamp",
+      "npcType": "Pokemon",
+      "species": "Machamp",
+      "script": "MachampRide",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_RIDE_MACHAMP"
+    },
+    "elder": {
+      "name": "Elder",
+      "npcType": "old_man",
+      "dialog": [
+        "The sea folk have lived on these stilts since before there were trials. The sea gives, and the sea takes, and we say thank you both times."
+      ]
+    },
+    "girl": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [
+        "Poni Island is the last island! The Altar of the Sunne and Moone is up past the ruins, where the sky touches the stone."
+      ]
+    }
+  },
+  "signs": {
+    "PierSign": "Seafolk Village Pier\nFerries to Malie City, Ula'ula Island.",
+    "VillageSign": "Seafolk Village\nA village of the sea folk, on the shore of Poni Island."
+  }
+}

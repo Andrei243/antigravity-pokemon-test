@@ -79,6 +79,85 @@
         { "key": "hano_beach", "x": 236, "z": 244, "width": 60, "depth": 40 }
       ]
     },
+    // Plan 23 · Z7: Ula'ula Island (matrix 10), 12 chunks by 12: Malie City in the south-west, up Route 10 and Mount Hokulani, east along Route 12 to
+    // Tapu Village, north to Po Town, east to the foot of Mount Lanakila
+    {
+      "matrix": 10, "area": "malie_city", "width": 12, "height": 12, "fill": "T",
+      "pieces": [
+        { "file": "ulaula_coast.txt", "x": 0, "z": 364 },
+        { "file": "malie_city.txt", "x": 24, "z": 320 },
+        { "file": "ulaula_route_10.txt", "x": 24, "z": 264 },
+        { "file": "mount_hokulani.txt", "x": 24, "z": 184 },
+        { "file": "ulaula_route_12.txt", "x": 88, "z": 208 },
+        { "file": "tapu_village.txt", "x": 192, "z": 200 },
+        { "file": "ulaula_route_13.txt", "x": 256, "z": 208 },
+        { "file": "lanakila_foot.txt", "x": 264, "z": 136 },
+        { "file": "ulaula_route_16.txt", "x": 216, "z": 136 },
+        { "file": "po_town.txt", "x": 200, "z": 64 }
+      ],
+      "areas": [
+        { "key": "malie_city", "x": 24, "z": 320, "width": 72, "depth": 44 },
+        { "key": "ulaula_route_10", "x": 24, "z": 264, "width": 56, "depth": 56 },
+        { "key": "mount_hokulani", "x": 24, "z": 184, "width": 64, "depth": 80 },
+        { "key": "ulaula_route_12", "x": 88, "z": 208, "width": 104, "depth": 60 },
+        { "key": "tapu_village", "x": 192, "z": 200, "width": 64, "depth": 56 },
+        { "key": "ulaula_route_13", "x": 256, "z": 208, "width": 48, "depth": 40 },
+        { "key": "lanakila_foot", "x": 264, "z": 136, "width": 64, "depth": 72 },
+        { "key": "ulaula_route_16", "x": 216, "z": 136, "width": 40, "depth": 64 },
+        { "key": "po_town", "x": 200, "z": 64, "width": 88, "depth": 72 }
+      ]
+    },
+    // Poni
+    {
+      "matrix": 11, "area": "seafolk_village", "width": 10, "height": 10, "fill": "~",
+      "pieces": [
+        { "file": "seafolk_village.txt", "x": 24, "z": 232 },
+        { "file": "poni_wilds.txt", "x": 24, "z": 152 },
+        { "file": "poni_breakers.txt", "x": 24, "z": 72 },
+        { "file": "exeggutor_island.txt", "x": 200, "z": 56 }
+      ],
+      "areas": [
+        { "key": "seafolk_village", "x": 24, "z": 232, "width": 72, "depth": 64 },
+        { "key": "poni_wilds", "x": 24, "z": 152, "width": 100, "depth": 80 },
+        { "key": "poni_breakers", "x": 24, "z": 72, "width": 176, "depth": 80 },
+        { "key": "exeggutor_island", "x": 200, "z": 56, "width": 80, "depth": 64 }
+      ]
+    },
+    // AetherParadise
+    {
+      "matrix": 12, "area": "aether_paradise", "width": 3, "height": 3, "fill": "~",
+      "pieces": [
+        { "file": "aether_paradise.txt", "x": 4, "z": 4 }
+      ]
+    },
+    // AncientPoniPath
+    {
+      "matrix": 15, "area": "ancient_poni_path", "width": 2, "height": 3, "fill": "r",
+      "pieces": [
+        { "file": "ancient_poni_path.txt", "x": 0, "z": 0 }
+      ]
+    },
+    // VastPoniCanyon
+    {
+      "matrix": 14, "area": "vast_poni_canyon", "width": 3, "height": 3, "fill": "r",
+      "pieces": [
+        { "file": "vast_poni_canyon.txt", "x": 0, "z": 0 }
+      ]
+    },
+    // PoniAltar
+    {
+      "matrix": 16, "area": "poni_altar", "width": 2, "height": 3, "fill": "r",
+      "pieces": [
+        { "file": "poni_altar.txt", "x": 0, "z": 0 }
+      ]
+    },
+    // MountLanakila
+    {
+      "matrix": 17, "area": "mount_lanakila", "width": 3, "height": 4, "fill": "r",
+      "pieces": [
+        { "file": "mount_lanakila.txt", "x": 0, "z": 0 }
+      ]
+    },
     // Plan 23 · Z6: Diglett's Tunnel, a cave of its own under Akala between Route 8 and Route 9. Its matrix number is
     // well clear of the islands' (Ula'ula and Poni are a parallel session's), so the two may be laid in either order
     { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }

@@ -423,6 +423,16 @@
     "mallow": { "skin": "#9a6a48", "hairColor": "#4a9a4a", "hair": "Ponytail", "hatBand": "#e8c86a", "top": "#f4f4f6", "accent": "#4a9a4a", "bottom": "#3a7a3a", "shoes": "#5a3a2a", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "lana": { "skin": "#e8c4a0", "hairColor": "#3a6aa8", "hair": "Short", "top": "#f4f4f6", "accent": "#5a8ad8", "bottom": "#4a74b8", "shoes": "#f2f2ee", "eyes": "#2a4a7a", "shortSleeves": true, "lashes": true, "build": "Adult", "height": 0.96 },
     "gladion": { "skin": "#e8c8a8", "hairColor": "#f0e2a8", "hair": "Short", "top": "#1e1e24", "accent": "#a83a3a", "bottom": "#2a2a30", "shoes": "#1e1e24", "eyes": "#3a6a5a", "build": "Adult", "height": 1.06 },
+    // Plan 23 · Z7: Ula'ula's, Poni's and the League's cast
+    "sophocles": { "skin": "#d8a880", "hairColor": "#4a3a2a", "hair": "Short", "top": "#d8b84a", "accent": "#4a4a5a", "bottom": "#4a5a7a", "shoes": "#3a3a44", "eyes": "#3a2a24", "glasses": "#a8c8e8", "build": "Adult", "height": 0.92 },
+    "acerola": { "skin": "#e0b08a", "hairColor": "#6a3a9a", "hair": "Long", "top": "#f6f6f8", "accent": "#6a3a9a", "bottom": "#4a2a6a", "shoes": "#2a2a34", "eyes": "#5a3a6a", "skirt": true, "lashes": true, "build": "Adult", "height": 0.9 },
+    "nanu": { "skin": "#c8946a", "hairColor": "#2a2224", "hair": "Short", "top": "#3a3a44", "accent": "#c8c8d0", "bottom": "#2a2a34", "shoes": "#2a2420", "eyes": "#3a2a24", "beard": true, "build": "Adult", "height": 1.08 },
+    "plumeria": { "skin": "#d8a078", "hairColor": "#e0b04a", "hair": "Ponytail", "top": "#2a2a34", "accent": "#d86a9a", "bottom": "#2a2a34", "shoes": "#e8e8ee", "eyes": "#5a3a3a", "lashes": true, "shortSleeves": true, "build": "Adult", "height": 1.02 },
+    "guzma": { "skin": "#c8946a", "hairColor": "#e8e0d0", "hair": "Short", "top": "#f2f2ee", "accent": "#1e1e24", "bottom": "#f2f2ee", "shoes": "#1e1e24", "eyes": "#3a2a24", "glasses": "#2a2a34", "coat": true, "build": "Adult", "height": 1.12 },
+    "lusamine": { "skin": "#f0d0b0", "hairColor": "#f0e2a8", "hair": "Long", "top": "#f6f6f8", "accent": "#d8a8c8", "bottom": "#f6f6f8", "shoes": "#d8b8d0", "eyes": "#3a6a5a", "skirt": true, "lashes": true, "coat": true, "build": "Adult", "height": 1.08 },
+    "dulse": { "skin": "#b8845e", "hairColor": "#e8e8ee", "hair": "Short", "top": "#4a7a5a", "accent": "#e8c040", "bottom": "#2a3a2a", "shoes": "#3a302a", "eyes": "#3a2a24", "beard": true, "build": "Adult", "height": 1.08 },
+    "hapu": { "skin": "#a87858", "hairColor": "#2a2224", "hair": "Long", "top": "#7a5a3a", "accent": "#e8c040", "bottom": "#4a3a2a", "shoes": "#3a2e28", "eyes": "#3a2a24", "lashes": true, "build": "Adult", "height": 1.0 },
+    "kahili": { "skin": "#e0b48c", "hairColor": "#4a3a2a", "hair": "Short", "top": "#e8e8ee", "accent": "#6a9ad8", "bottom": "#3a4a6a", "shoes": "#f2f2ee", "eyes": "#3a2a24", "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.06 },
     "skull_grunt": { "skin": "#c8946a", "hairColor": "#2a2224", "hat": "Beanie", "hatColor": "#1e1e24", "hatBand": "#f2f2ee", "top": "#1e1e24", "accent": "#f2f2ee", "bottom": "#1e1e24", "shoes": "#f2f2ee", "eyes": "#3a2a24", "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.0 },
     // The rest of Akala (plan 23 · Z6; our own designs): Kiawe, the fire captain, tall, dark hair with a red crown, a
     // short open white shirt over bare arms and dark trousers; Olivia, Akala's kahuna, long black hair, a rose-pink top
@@ -924,6 +934,10 @@
     "Team Skull Grunt": "skull_grunt",
     "Trial Captain": null,
     "Island Kahuna": null,
+    // Plan 23 · Z7: Team Skull's admin and boss and the Aether Foundation's president, each as the person they are
+    "Team Skull Admin": null,
+    "Team Skull Boss": null,
+    "Aether President": null,
     // Plan 22 · U6, part b: Route 5's and Driftveil's classes, and Driftveil's cast as themselves
     "Baker": "baker",
     "Dancer": "street_dancer",

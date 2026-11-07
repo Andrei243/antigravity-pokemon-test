@@ -1,0 +1,22 @@
+# Hala's room of the Alola Pokémon League (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula, Poni,
+# Aether Paradise and the League"): the first of the Elite Four, Fighting. His team is alola_hala_league; beaten,
+# FLAG_ALOLA_DEFEATED_HALA opens the door to Olivia's room.
+
+
+script League
+  face hala player
+  speaker "Hala"
+  if flag FLAG_ALOLA_DEFEATED_HALA goto Won
+  scene "Hala"
+  say "Ho ho! Here you are at last, {player}, and look how far the island's champion has come since Iki Town."
+  say "I am Hala, once your kahuna and now the first of the Alola League. I will not hold back, as you must not hold back."
+  say "The sea is wide and the sun is hot. Show me everything!"
+  battle self as "alola_hala_league"
+  say "Ha ha! Magnificent! My heart is as full as the first time I saw you stand up to Tapu Koko."
+  say "Go on. Olivia is next. She has the strength of the rock beneath our islands."
+  setflag FLAG_ALOLA_DEFEATED_HALA
+  endscene
+  end
+label Won
+  say "Olivia waits through the door. Go with my blessing."
+  end

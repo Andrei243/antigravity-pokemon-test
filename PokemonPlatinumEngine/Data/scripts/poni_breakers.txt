@@ -1,0 +1,37 @@
+# Poni Breakers and the Ruins of Hope, Poni Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md,
+# "Ula'ula, Poni, Aether Paradise and the League"): Hapu waits on the shore once Dulse's trial is passed (VAR_ALOLA_STORY
+# 50) and tells the player the way across the strait; the guard at the road to the Altar stands aside after the grand
+# trial (FLAG_ALOLA_ALTAR_OPEN); and Tapu Fini, the sea's guardian, rests in the ruins after the Hall of Fame.
+
+
+script HapuShore
+  face hapu player
+  speaker "Hapu"
+  say "Hey. You're {player}, the one who's been collecting stamps. I've heard about you."
+  say "I'm Hapu, kahuna of Poni. My grand trial is on Exeggutor Island, across this strait."
+  say "You'll need something that swims. Lapras will carry you, if you've got it in the Ride Pager."
+  say "I'll be there. Don't dawdle. I get bored fast, and when I get bored I get strong."
+  setflag FLAG_ALOLA_HAPU_SHORE_DONE
+  end
+
+
+script AltarGuard
+  face guard player
+  speaker "Guard"
+  say "The road up to the Altar of the Sunne and Moone is closed to everyone but the one who holds Poni's stamp."
+  end
+
+
+script TapuFini
+  face self player
+  speaker none
+  cry "Tapu Fini"
+  text "Tapu Fini's mist rolled over the ruins, and it rose from the water."
+  if flag AlolaHallOfFame goto Fight
+  text "It watched {player} for a moment, and then let the mist close again."
+  end
+label Fight
+  wildbattle "Tapu Fini" 60 nofleeing
+  setflag FLAG_ALOLA_TAPU_FINI_DONE
+  hide self
+  end

@@ -1,0 +1,103 @@
+{
+  // Tapu Village (plan 23 · Z7): drawn by hand, our words. A village on the ridge: the Pokémon Center, two houses and a stable, and the
+  // old Thrifty Megamart, shut until Captain Acerola's trial (FLAG_ALOLA_MEGAMART_OPEN). Roads lead west, north to Route 16 and
+  // east to Route 13.
+  "area": "tapu_village",
+  "bgmTrack": "alola/iki_town",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "TapuVillage_PokemonCenter_1F",
+      "x": 8,
+      "y": 12,
+      "facing": "Up"
+    },
+    {
+      "warp": 1,
+      "map": "TapuVillage_House",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "ThriftyMegamart",
+      "x": 8,
+      "y": 16,
+      "facing": "Up",
+      "openedBy": "FLAG_ALOLA_MEGAMART_OPEN"
+    },
+    {
+      "warp": 3,
+      "map": "TapuVillage_RanchHouse",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "warp": 4,
+      "map": "TapuVillage_Stables",
+      "x": 4,
+      "y": 8,
+      "facing": "Up"
+    }
+  ],
+  "triggers": [
+    {
+      "script": "AcerolaArrival",
+      "x": 204,
+      "z": 226,
+      "width": 1,
+      "depth": 3,
+      "variable": "VAR_ALOLA_STORY",
+      "value": 43
+    }
+  ],
+  "people": {
+    "acerola": {
+      "name": "Acerola",
+      "npcType": "acerola",
+      "script": "AcerolaMeet",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_ACEROLA_MET",
+      "shownBy": "FLAG_ALOLA_TAPU_ACEROLA"
+    },
+    "mudsdale": {
+      "name": "Rancher Moke",
+      "npcType": "rancher",
+      "script": "Rancher",
+      "still": true
+    },
+    "mudsdale_pokemon": {
+      "name": "Mudsdale",
+      "npcType": "Pokemon",
+      "species": "Mudsdale",
+      "script": "Pokemon",
+      "dialog": [
+        "Mudsdale: Brrr-hoo!"
+      ],
+      "still": true
+    },
+    "woman": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [
+        "Tapu Village stands right up here with the clouds. The old market on the hill has been empty for years. Nobody wants to go in."
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [
+        "They say a ghost sits in the old market, all by itself. I think it's a cat."
+      ]
+    }
+  },
+  "signs": {
+    "VillageSign": "Tapu Village\nHigh above the island, where the clouds drift past.",
+    "RouteSign": "Tapu Village crossroads\nWest: Route 12, North: Route 16\nEast: Route 13",
+    "MartSign": "The old Thrifty Megamart\nClosed for good. Please keep out."
+  }
+}

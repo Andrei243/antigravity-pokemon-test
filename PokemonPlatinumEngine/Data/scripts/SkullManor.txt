@@ -1,0 +1,44 @@
+# Team Skull's manor, Po Town, Ula'ula Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula,
+# Poni, Aether Paradise and the League"): two grunts in the hall and Guzma at its head. Beaten, Guzma sets
+# FLAG_ALOLA_GUZMA_BEATEN, which shows Nanu in Po Town (po_town.txt); VAR_ALOLA_STORY becomes 46.
+
+
+script ManorGrunt1
+  face self player
+  speaker "Skull Grunt"
+  say "Yo! Boss said no one's allowed in. Boss also said I'm not allowed to lose. Rock, meet hard place."
+  battle self as "alola_manor_grunt_1"
+  say "Aw, man. Boss is gonna put me on cooking duty."
+  setflag FLAG_ALOLA_MANOR_GRUNT_1
+  hide self
+  end
+
+script ManorGrunt2
+  face self player
+  speaker "Skull Grunt"
+  say "Yo! You came all this way? I'd say you're brave, but you look too cheerful for that."
+  battle self as "alola_manor_grunt_2"
+  say "Cooking duty. Definitely cooking duty."
+  setflag FLAG_ALOLA_MANOR_GRUNT_2
+  hide self
+  end
+
+
+script GuzmaInside
+  face self player
+  speaker "Guzma"
+  scene "Guzma"
+  say "Well, well, well. Look at what the Pokémon dragged in. Another trial-goer who thinks they're special."
+  say "I'm Guzma, boss of Team Skull. I got told I wasn't any good. By a hundred people. Turns out they were wrong, 'cause here I am."
+  say "Trials, captains, kahunas: they're a system built for the people who already fit. We don't. So we made our own."
+  say "You wanna take it all down? Then take me down first. Come on, make me proud!"
+  battle self as "alola_guzma_1"
+  speaker "Guzma"
+  say "Huh... I lost. Of course I lost. I always lose to the ones the island chose."
+  say "Go ahead. Run to your kahunas and your trials. I got my own thing to look after. Don't think I'm done."
+  setflag FLAG_ALOLA_GUZMA_BEATEN
+  hide self
+  setvar VAR_ALOLA_STORY 46
+  objective alolaNanu
+  endscene
+  end

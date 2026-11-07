@@ -23,6 +23,7 @@
   ],
   "objects": [
     { "id": "sailor", "looks": "sailor", "movement": "look_north", "x": 125, "z": 339, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "aether_sailor", "looks": "sailor", "movement": "look_north", "x": 126, "z": 339, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "tourist", "looks": "backpacker_m", "movement": "wander_around", "x": 140, "z": 318, "facing": 1, "rangeX": 3, "rangeZ": 2, "script": "" },
     { "id": "woman", "looks": "lady", "movement": "look_around", "x": 156, "z": 322, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 176, "z": 326, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_HEAHEA_CITY_RARE_CANDY", "item": "Rare Candy", "script": "" }

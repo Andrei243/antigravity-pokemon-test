@@ -1,0 +1,28 @@
+{
+  // The Altar of the Sunne and Moone (plan 23 · Z7): a map of its own, drawn by hand. A passage up to the dais where the sun and the moon meet.
+  "area": "poni_altar",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "lillie": {
+      "name": "Lillie",
+      "npcType": "lillie",
+      "script": "LillieAtAltar",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_ALTAR_DONE",
+      "shownBy": "FLAG_ALOLA_AT_ALTAR"
+    },
+    "legend": {
+      "name": "Solgaleo",
+      "npcType": "Pokemon",
+      "species": "Solgaleo",
+      "script": "Legend",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_ALTAR_DONE",
+      "shownBy": "FLAG_ALOLA_AT_ALTAR"
+    }
+  },
+  "signs": {
+    "AltarSign": "The Altar of the Sunne and Moone\nThe place where the sun and the moon are said to meet."
+  }
+}

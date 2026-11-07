@@ -1,0 +1,36 @@
+# The Champion's room of the Alola Pokémon League (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as they
+# are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): Professor Kukui
+# has built the League, and its Champion's seat is empty until someone sits in it. His team is alola_kukui_1 to 3, the
+# last of each being the starter strong against the one the player chose. Beaten, FLAG_ALOLA_DEFEATED_KUKUI opens the
+# way to the Hall of Fame.
+
+
+script Kukui
+  face kukui player
+  speaker "Prof. Kukui"
+  if flag FLAG_ALOLA_DEFEATED_KUKUI goto Won
+  scene "Kukui"
+  say "Woo! Welcome, {player}! You made it, cousin. The Elite Four are down, and nobody sits in this room's chair yet."
+  say "I built this League with Hala and the others, because I wanted you kids to have something to aim for."
+  say "I wanted to be the first to try you out. Let's go. Show me every move you've learned!"
+  if starter "Rowlet" goto AgainstRowlet
+  if starter "Litten" goto AgainstLitten
+  battle self as "alola_kukui_3"
+  goto Beaten
+label AgainstRowlet
+  battle self as "alola_kukui_1"
+  goto Beaten
+label AgainstLitten
+  battle self as "alola_kukui_2"
+label Beaten
+  speaker "Prof. Kukui"
+  say "...Woo! Woooo! Yeah! That's what I'm talking about! You took me full on, and you came out on top!"
+  say "Alola has its first Champion, {player}. The chair's yours. Come on, the Hall of Fame is just through here."
+  setflag FLAG_ALOLA_DEFEATED_KUKUI
+  endscene
+  warp "AlolaLeague_HallOfFame" 6 10 up
+  end
+label Won
+  say "The Hall of Fame is through here."
+  warp "AlolaLeague_HallOfFame" 6 10 up
+  end

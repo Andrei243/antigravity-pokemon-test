@@ -1,0 +1,134 @@
+{
+  "key": "malie_city",
+  "index": 100,
+  "name": "Malie City",
+  "matrix": 10,
+  "kind": "City",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MALIE_CITY",
+  "nightMusic": "MALIE_CITY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 34,
+      "z": 330,
+      "to": "MalieCity_PokemonCenter_1F",
+      "toWarp": 0
+    },
+    {
+      "x": 49,
+      "z": 330,
+      "to": "MalieCity_Library",
+      "toWarp": 0
+    },
+    {
+      "x": 70,
+      "z": 330,
+      "to": "MalieCity_Hall",
+      "toWarp": 0
+    },
+    {
+      "x": 33,
+      "z": 349,
+      "to": "MalieCity_House",
+      "toWarp": 0
+    },
+    {
+      "x": 77,
+      "z": 349,
+      "to": "MalieCity_TeaHouse",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "sailor",
+      "looks": "sailor",
+      "movement": "look_south",
+      "x": 59,
+      "z": 372,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "Ferry"
+    },
+    {
+      "id": "kukui",
+      "looks": "kukui",
+      "movement": "look_south",
+      "x": 59,
+      "z": 340,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "hau",
+      "looks": "hau",
+      "movement": "look_east",
+      "x": 56,
+      "z": 338,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "tourist",
+      "looks": "lady",
+      "movement": "wander_around",
+      "x": 80,
+      "z": 340,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 2,
+      "script": ""
+    },
+    {
+      "id": "boy",
+      "looks": "youngster",
+      "movement": "wander_around",
+      "x": 36,
+      "z": 340,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 2,
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 90,
+      "z": 354,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_MALIE_ULTRA_BALL",
+      "item": "Ultra Ball"
+    }
+  ],
+  "signs": [
+    {
+      "x": 46,
+      "z": 356,
+      "type": 0,
+      "script": "CitySign"
+    },
+    {
+      "x": 52,
+      "z": 322,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": []
+}

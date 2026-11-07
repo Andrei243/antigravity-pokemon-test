@@ -1,0 +1,123 @@
+# Aether Paradise (plan 23 · Z7). docs/scripts.md describes the language; the lines are our own, on Sun and Moon's beats
+# as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): the
+# Foundation's floating island, toured once after Akala's grand trial (VAR_ALOLA_STORY 40 to 41) and returned to when
+# Lusamine has taken Lillie (47 to 48, the head office's door opened by FLAG_ALOLA_AETHER_HQ_OPEN).
+#
+# The people: wicke, lusamine and lillie on the square while FLAG_ALOLA_AT_AETHER is set; the guard at the head
+# office's door until it is open.
+
+
+# The pier's trigger: the tour, the first time
+script Tour
+  scene "The tour of Aether Paradise"
+  setflag FLAG_ALOLA_AT_AETHER
+  walk player up 40
+  waitmoves
+  face player up
+  speaker "Wicke"
+  say "Welcome to Aether Paradise! I'm Wicke, the Foundation's staff. Professor Kukui said to expect you."
+  speaker "Lillie"
+  say "...{player}! You came. Mother, this is the Trainer I told you about."
+  speaker "Lusamine"
+  say "Welcome, welcome. Lusamine, president of the Aether Foundation. Lillie says you've been to Akala and back already."
+  say "Everything on this island is kept safe and warm, and every Pokémon here is loved. It's my whole life's work."
+  say "Lillie, dear, don't hide behind your bag. Look at how well you're doing out there with your friends!"
+  speaker "Lillie"
+  say "Mother... I'm not doing it for them. I'm doing it for Nebby."
+  speaker "Wicke"
+  say "Shall we have a look at the garden? Our ferry will take you on to Ula'ula Island afterwards."
+  text "{player} was shown through the Foundation's garden, its clinic and its rows of resting Pokémon."
+  speaker "Lusamine"
+  say "Go on, then, Trial-goer. Ula'ula's trials are harder than Akala's. Don't be late for them."
+  setvar VAR_ALOLA_STORY 41
+  objective alolaMalie
+  hide wicke
+  hide lusamine
+  hide lillie
+  setflag FLAG_ALOLA_AETHER_WICKE_DONE
+  setflag FLAG_ALOLA_AETHER_LUSAMINE_DONE
+  setflag FLAG_ALOLA_AETHER_LILLIE_DONE
+  endscene
+  end
+
+
+# The pier's trigger when Lusamine has taken Lillie: Wicke opens the head office
+script Rescue
+  scene "The rescue at Aether Paradise"
+  clearflag FLAG_ALOLA_AETHER_WICKE_DONE
+  clearflag FLAG_ALOLA_AETHER_LUSAMINE_DONE
+  clearflag FLAG_ALOLA_AETHER_LILLIE_DONE
+  setflag FLAG_ALOLA_AT_AETHER
+  hide lusamine
+  hide lillie
+  walk player up 40
+  waitmoves
+  face player up
+  speaker "Wicke"
+  say "{player}! Thank goodness. The President has shut herself and Lillie inside the head office, and she isn't herself."
+  say "Mr. Gladion is in there too. I don't know what's happening to her. She talks about beauty, and she holds a creature I've never seen."
+  say "I'll open the door. Please... bring Lillie out."
+  setflag FLAG_ALOLA_AETHER_HQ_OPEN
+  setflag FLAG_ALOLA_AETHER_RESCUE
+  hide wicke
+  setflag FLAG_ALOLA_AETHER_WICKE_DONE
+  endscene
+  end
+
+
+script Wicke
+  speaker "Wicke"
+  say "This island has lasted because every employee believes the President. Every one."
+  end
+
+
+script Lusamine
+  speaker "Lusamine"
+  say "A Trial-goer should be in Ula'ula, not standing about on my square. Run along."
+  end
+
+
+script AetherGuard
+  speaker "Aether Guard"
+  say "The head office is closed to visitors. President's orders."
+  end
+
+
+# The ferry: back to the island's ports, and on to Poni once Lillie is safe
+script Ferry
+  speaker "Sailor"
+  if var VAR_ALOLA_STORY >= 48 goto Far
+  choose "Where to?" "Heahea City, Akala" "Malie City, Ula'ula" "Stay here"
+  if result == 0 goto Heahea
+  if result == 1 goto Malie
+  end
+label Far
+  choose "Where to?" "Heahea City, Akala" "Malie City, Ula'ula" "Seafolk Village, Poni" "Stay here"
+  if result == 0 goto Heahea
+  if result == 1 goto Malie
+  if result == 2 goto Poni
+  end
+label Heahea
+  fade out
+  text "The ferry pulled away from Aether Paradise..."
+  warp "Akala" 125 328 up
+  fade in
+  end
+label Malie
+  fade out
+  text "The ferry pulled away from Aether Paradise..."
+  if var VAR_ALOLA_STORY >= 42 goto MalieLate
+  setflag FLAG_ALOLA_AT_MALIE
+label MalieLate
+  warp "Ulaula" 59 366 up
+  fade in
+  end
+label Poni
+  fade out
+  text "The ferry pulled away from Aether Paradise and out across the sea to Poni Island..."
+  if var VAR_ALOLA_STORY >= 49 goto PoniLate
+  setflag FLAG_ALOLA_AT_SEAFOLK
+label PoniLate
+  warp "Poni" 49 300 up
+  fade in
+  end

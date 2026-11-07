@@ -206,6 +206,7 @@ if (mode == "hoenn") h.HoennMode();
 if (mode == "unova") h.UnovaMode();
 if (mode == "kalos") h.KalosMode();
 if (mode == "alola") h.AlolaMode();
+if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle
 if (mode == "akala") h.AlolaAkalaMode();
 if (mode == "freemove") h.FreeMoveMode();

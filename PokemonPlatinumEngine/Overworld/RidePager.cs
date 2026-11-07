@@ -19,8 +19,8 @@ public sealed record Ride(string Species, FieldMove Move, string Flag, string Re
 /// field whatever the team knows, as <see cref="FieldHelp"/>'s helpers are but with no option and no HM, since the
 /// island challenge hands the rides over in place of HMs. The ride's species is who is seen doing the move
 /// (<see cref="FieldHelp.HelperFor(FieldMove, StoryState?, string?)"/>). Stoutland's Search and Mudsdale's Gallop are no
-/// field move of the grid's and are not listed: Stoutland is a story flag alone (FLAG_ALOLA_RIDE_STOUTLAND), Mudsdale is
-/// plan 23 · Z7's. The rider drawn on its Pokémon is not built (plan 23's Alola section, "The engine for Alola").
+/// field move of the grid's and are not listed: Stoutland is a story flag alone (FLAG_ALOLA_RIDE_STOUTLAND), Mudsdale is one too
+/// (plan 23 · Z7: MudsdaleFlag, lent by Tapu Village's rancher). The rider drawn on its Pokémon is not built (plan 23's Alola section, "The engine for Alola").
 /// </summary>
 public static class RidePager
 {
@@ -39,6 +39,9 @@ public static class RidePager
 
     /// <summary>The flag that registers Stoutland, whose Search finds hidden items; no field move of the grid's.</summary>
     public const string StoutlandFlag = "FLAG_ALOLA_RIDE_STOUTLAND";
+
+    /// <summary>The flag that registers Mudsdale, whose Gallop crosses rough ground; no field move of the grid's either (plan 23 · Z7: Tapu Village's rancher lends it).</summary>
+    public const string MudsdaleFlag = "FLAG_ALOLA_RIDE_MUDSDALE";
 
     /// <summary>The rides registered and answering in a region.</summary>
     public static IEnumerable<Ride> Registered(StoryState story, string region) =>

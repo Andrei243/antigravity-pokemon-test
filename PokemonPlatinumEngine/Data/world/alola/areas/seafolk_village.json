@@ -1,0 +1,132 @@
+{
+  "key": "seafolk_village",
+  "index": 200,
+  "name": "Seafolk Village",
+  "matrix": 11,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SEAFOLK_VILLAGE",
+  "nightMusic": "SEAFOLK_VILLAGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 34,
+      "z": 242,
+      "to": "SeafolkVillage_PokemonCenter_1F",
+      "toWarp": 0
+    },
+    {
+      "x": 49,
+      "z": 241,
+      "to": "SeafolkVillage_HouseA",
+      "toWarp": 0
+    },
+    {
+      "x": 73,
+      "z": 241,
+      "to": "SeafolkVillage_HouseB",
+      "toWarp": 0
+    },
+    {
+      "x": 33,
+      "z": 265,
+      "to": "SeafolkVillage_HouseC",
+      "toWarp": 0
+    },
+    {
+      "x": 73,
+      "z": 265,
+      "to": "SeafolkVillage_HouseD",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "sailor",
+      "looks": "sailor",
+      "movement": "look_south",
+      "x": 49,
+      "z": 302,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "Ferry"
+    },
+    {
+      "id": "kukui",
+      "looks": "kukui",
+      "movement": "look_south",
+      "x": 58,
+      "z": 262,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "lillie",
+      "looks": "lillie",
+      "movement": "look_south",
+      "x": 60,
+      "z": 262,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "machamp",
+      "looks": "machamp",
+      "movement": "look_west",
+      "x": 76,
+      "z": 280,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "elder",
+      "looks": "old_man",
+      "movement": "wander_around",
+      "x": 62,
+      "z": 270,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 2,
+      "script": ""
+    },
+    {
+      "id": "girl",
+      "looks": "lass",
+      "movement": "wander_around",
+      "x": 40,
+      "z": 270,
+      "facing": 1,
+      "rangeX": 3,
+      "rangeZ": 2,
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 54,
+      "z": 280,
+      "type": 0,
+      "script": "PierSign"
+    },
+    {
+      "x": 52,
+      "z": 236,
+      "type": 0,
+      "script": "VillageSign"
+    }
+  ],
+  "triggers": []
+}

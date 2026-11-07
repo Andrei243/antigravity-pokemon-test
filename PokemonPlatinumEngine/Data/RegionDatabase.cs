@@ -1003,6 +1003,16 @@ public static class RegionDatabase
                 "HeaheaCity_PokemonCenter_1F", "HeaheaCity_House",
                 "PaniolaTown_PokemonCenter_1F", "PaniolaTown_House",
                 "AkalaRoute5_PokemonCenter_1F",
+                // Plan 23 · Z7: Ula'ula Island, Poni Island, Aether Paradise and the four caves (maps of the imported kind),
+                // and the rooms of Malie City, Tapu Village, Po Town, Seafolk Village, Aether Paradise and the League
+                "Ulaula", "Poni", "AetherParadise", "AncientPoniPath", "VastPoniCanyon", "PoniAltar", "MountLanakila",
+                "MalieCity_PokemonCenter_1F", "MalieCity_Library", "MalieCity_Hall", "MalieCity_House", "MalieCity_TeaHouse",
+                "HokulaniObservatory", "TapuVillage_PokemonCenter_1F", "TapuVillage_House", "TapuVillage_RanchHouse",
+                "TapuVillage_Stables", "ThriftyMegamart", "ShadyHouse", "SkullManor", "PoTown_HouseA", "PoTown_HouseB",
+                "PoTown_HouseC", "SeafolkVillage_PokemonCenter_1F", "SeafolkVillage_HouseA", "SeafolkVillage_HouseB",
+                "SeafolkVillage_HouseC", "SeafolkVillage_HouseD", "AetherParadise_PokemonCenter_1F", "AetherParadise_House",
+                "AetherParadise_Office", "AlolaLeague_Lobby", "AlolaLeague_HalaRoom", "AlolaLeague_OliviaRoom",
+                "AlolaLeague_AcerolaRoom", "AlolaLeague_KahiliRoom", "AlolaLeague_KukuiRoom", "AlolaLeague_HallOfFame",
                 // Plan 23 · Z6: the rest of Akala's rooms, and Diglett's Tunnel, a cave map of its own
                 "DiglettsTunnel",
                 "RoyalAvenue_PokemonCenter_1F", "RoyalAvenue_House", "AkalaRoute8_PokemonCenter_1F",

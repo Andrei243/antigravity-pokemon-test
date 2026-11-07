@@ -1,0 +1,44 @@
+{
+  // Route 10 (plan 23 · Z7): drawn by hand, our words. North from Malie City over grass and flowers to the foot of Mount Hokulani.
+  "area": "ulaula_route_10",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "kalani": {
+      "name": "Kalani",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Kalani: The mountain is the best hike in Alola. The air is thin up there, so it's easy to feel proud of yourself.",
+        "dialogueAfter": "Hiker Kalani: My legs are fine. It's my pride that hurts."
+      }
+    },
+    "makana": {
+      "name": "Makana",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Makana: I've been practising on the grass here every day!",
+        "dialogueAfter": "Youngster Makana: Practice makes... not enough."
+      }
+    },
+    "leilene": {
+      "name": "Leilene",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Leilene: Look at my Pokémon! They look like flowers and they're tougher than they look.",
+        "dialogueAfter": "Lass Leilene: Hmph. Flowers get trampled sometimes."
+      }
+    },
+    "kai": {
+      "name": "Kai",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kai: The mountain wants Trainers who can climb and fight at once. Show me you can.",
+        "dialogueAfter": "Ace Trainer Kai: You can. Good luck up there."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 10\nNorth: Mount Hokulani\nSouth: Malie City"
+  }
+}

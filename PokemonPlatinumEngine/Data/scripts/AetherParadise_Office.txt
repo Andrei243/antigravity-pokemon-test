@@ -1,0 +1,40 @@
+# The Aether Foundation's head office, Aether Paradise (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): the
+# president, who loves beautiful things more than she loves the people who have them, has taken Lillie's Cosmog and
+# fused with a creature from beyond the sky. Her team is alola_lusamine_1, its ace a Nihilego. Beaten, she lets Lillie
+# go (FLAG_ALOLA_LUSAMINE_BEATEN), and VAR_ALOLA_STORY becomes 48. The people are shown by FLAG_ALOLA_AETHER_RESCUE.
+
+
+script GladionInside
+  face gladion player
+  speaker "Gladion"
+  say "{player}. You came. ...Thank you. Mother won't listen to me, but maybe she'll listen to you."
+  say "She isn't herself. Not since the creature. Please, stop her."
+  end
+
+
+script LusamineInside
+  face lusamine player
+  speaker "Lusamine"
+  scene "Lusamine"
+  say "...Oh, it's you. The little Trial-goer who found my daughter's secret. How very interesting."
+  say "Lillie wanted to take Nebby away from me. Nebby, who is the most beautiful thing in the world. I can't allow that."
+  say "I love beautiful things. I love them so much, I could never let them go. So I keep them. Do you understand?"
+  say "No, of course not. Let me show you how much I love what I love. Let me show you what it can do!"
+  battle self as "alola_lusamine_1"
+  speaker "Lusamine"
+  say "...Ah. Ahhh. What was I...? Lillie. Lillie, my darling. Where is she? What have I done?"
+  speaker "Gladion"
+  say "She's safe, Mother. She's right here. {player} brought her out."
+  speaker "Lillie"
+  say "Mother... it's all right. I'm all right. Nebby is all right. We're going to fix this, together."
+  speaker "Lusamine"
+  say "{player}... I owe you more than I can say. The Foundation will mend what I broke. And Nebby... is out beyond the sea, I think."
+  say "On Poni, in the Altar of the Sunne and Moone. If it has anywhere to go, it's there. Please, go."
+  setflag FLAG_ALOLA_LUSAMINE_BEATEN
+  hide self
+  setflag FLAG_ALOLA_GLADION_AETHER_DONE
+  setvar VAR_ALOLA_STORY 48
+  objective alolaPoni
+  endscene
+  end

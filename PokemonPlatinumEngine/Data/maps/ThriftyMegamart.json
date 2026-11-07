@@ -1,0 +1,229 @@
+{
+  "name": "ThriftyMegamart",
+  "displayName": "Thrifty Megamart",
+  "bgmTrack": "alola/trial",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 17,
+  "height": 18,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#...............#",
+    "#......###......#",
+    "#.###.......###.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#.###.......###.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "StoreShelf",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 3,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 4,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 12,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 14,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 14,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 17,
+      "targetMap": "Ulaula",
+      "targetX": 238,
+      "targetY": 210,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "acerola",
+      "name": "Acerola",
+      "npcType": "acerola",
+      "x": 8,
+      "y": 14,
+      "facing": "Up",
+      "script": "AcerolaInside",
+      "hiddenBy": "FLAG_ALOLA_MEGAMART_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL"
+    },
+    {
+      "id": "den_1",
+      "name": "Gastly",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "script": "Den1",
+      "hiddenBy": "FLAG_ALOLA_MEGAMART_DEN_1",
+      "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL",
+      "species": "Gastly"
+    },
+    {
+      "id": "den_2",
+      "name": "Misdreavus",
+      "npcType": "Pokemon",
+      "x": 13,
+      "y": 7,
+      "facing": "Down",
+      "script": "Den2",
+      "hiddenBy": "FLAG_ALOLA_MEGAMART_DEN_2",
+      "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL",
+      "species": "Misdreavus"
+    },
+    {
+      "id": "den_3",
+      "name": "Duskull",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 11,
+      "facing": "Down",
+      "script": "Den3",
+      "hiddenBy": "FLAG_ALOLA_MEGAMART_DEN_3",
+      "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL",
+      "species": "Duskull"
+    },
+    {
+      "id": "totem",
+      "name": "Mimikyu",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "script": "Totem",
+      "hiddenBy": "FLAG_ALOLA_MEGAMART_TRIAL_DONE",
+      "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL",
+      "species": "Mimikyu"
+    }
+  ],
+  "wildEncounters": []
+}

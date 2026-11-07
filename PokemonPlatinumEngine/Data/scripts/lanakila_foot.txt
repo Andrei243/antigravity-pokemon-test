@@ -1,0 +1,10 @@
+# The foot of Mount Lanakila, Ula'ula Island (plan 23 · Z7). The lines are our own (docs/mechanics/rulings.md, "Ula'ula,
+# Poni, Aether Paradise and the League"): the mountain's mouth is shut until the Altar's scene has opened the way
+# (FLAG_ALOLA_LANAKILA_OPEN, poni_altar.txt).
+
+
+script LanakilaGuard
+  face guard player
+  speaker "Guard"
+  say "The path up Mount Lanakila is closed until the League opens it. They say a Trainer with all four stamps is on the way."
+  end

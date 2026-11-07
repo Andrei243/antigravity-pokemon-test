@@ -1,0 +1,45 @@
+# Po Town, Ula'ula Island (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): Team Skull's abandoned town. Plumeria
+# waits on the square (VAR_ALOLA_STORY 45, FLAG_ALOLA_PO_TOWN), Guzma in the manor (skull_manor.txt); once he is beaten
+# (46) the kahuna of Ula'ula, Nanu, is found outside, and the Shady House opens for his grand trial (shady_house.txt).
+
+
+script Arrival
+  scene "Po Town"
+  setflag FLAG_ALOLA_PO_TOWN
+  walk player up 12
+  waitmoves
+  face player up
+  speaker "Plumeria"
+  say "Yo. You're the one who ruined Gladion's day, aren't you? Don't bother denying it. I know the walk."
+  say "I'm Plumeria. I look after the grunts so Boss doesn't have to. Which means I look after kids like you."
+  say "Skull doesn't want trials and it doesn't want rules. We want a place where nobody asks us to be anything."
+  battle plumeria as "alola_plumeria_1"
+  speaker "Plumeria"
+  say "...Tch. You fight like somebody who's been told they can do anything. It's annoying."
+  say "Boss is in the manor, up ahead. Go ahead and tell him what you think of us. He's got plenty to say back."
+  setflag FLAG_ALOLA_PLUMERIA_DONE
+  endscene
+  end
+
+
+script Plumeria
+  face plumeria player
+  speaker "Plumeria"
+  if flag FLAG_ALOLA_PLUMERIA_DONE goto After
+  say "Hold up. Nobody walks into Po Town without a word to me first."
+  end
+label After
+  say "Boss is in the manor. Don't say I didn't warn you."
+  end
+
+
+script NanuOutside
+  face nanu player
+  speaker "Nanu"
+  say "Hm. So you're the kid who put Guzma on the floor. Don't let it go to your head. That's what he did."
+  say "I'm Nanu, the kahuna of this island. Ula'ula's grand trial is me, and I'm lazy. Come find me in the Shady House, over there."
+  setflag FLAG_ALOLA_NANU_OUTSIDE_DONE
+  setflag FLAG_ALOLA_SHADY_HOUSE_OPEN
+  setflag FLAG_ALOLA_NANU_INSIDE
+  end

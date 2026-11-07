@@ -291,7 +291,21 @@ public static class Objectives
         (623, "alolaRuins", AtLeast("VAR_ALOLA_AKALA", 6), false),
         (624, "alolaOlivia", s => s.Var("VAR_ALOLA_AKALA") >= 7 || s.HasBadge(RegionDatabase.Alola, "Akala"), false),
         (625, "alolaHano", AtLeast("VAR_ALOLA_AKALA", 8), false),
-        // What comes after Akala is a later session's
+        // Plan 23 · Z7: the Aether tour, Ula'ula's trials and grand trial, the rescue, Poni's trial and grand trial, the
+        // Altar and the League (VAR_ALOLA_STORY 40 to 54)
+        (650, "alolaAether", AtLeast("VAR_ALOLA_STORY", 41), false),
+        (651, "alolaMalie", AtLeast("VAR_ALOLA_STORY", 42), false),
+        (652, "alolaHokulani", AtLeast("VAR_ALOLA_STORY", 43), false),
+        (653, "alolaTapu", AtLeast("VAR_ALOLA_STORY", 44), false),
+        (654, "alolaMegamart", AtLeast("VAR_ALOLA_STORY", 45), false),
+        (655, "alolaPoTown", AtLeast("VAR_ALOLA_STORY", 46), false),
+        (656, "alolaNanu", s => s.Var("VAR_ALOLA_STORY") >= 47 || s.HasBadge(RegionDatabase.Alola, "UlaUla"), false),
+        (657, "alolaRescue", AtLeast("VAR_ALOLA_STORY", 48), false),
+        (658, "alolaPoni", AtLeast("VAR_ALOLA_STORY", 49), false),
+        (659, "alolaDulse", AtLeast("VAR_ALOLA_STORY", 50), false),
+        (660, "alolaHapu", s => s.Var("VAR_ALOLA_STORY") >= 51 || s.HasBadge(RegionDatabase.Alola, "Poni"), false),
+        (661, "alolaAltar", AtLeast("VAR_ALOLA_STORY", 52), false),
+        (662, "alolaLanakila", s => s.Var("VAR_ALOLA_STORY") >= 54 || s.Has("AlolaHallOfFame"), false),
         (699, "alolaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

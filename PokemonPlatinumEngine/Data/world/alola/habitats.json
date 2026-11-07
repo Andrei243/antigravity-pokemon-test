@@ -299,6 +299,38 @@
       ]
     },
     {
+      "key": "ancient_poni_path",
+      "name": "Ancient Poni Path",
+      "cells": "",
+      "morning": [
+        "Golbat",
+        "Boldore",
+        "Gurdurr",
+        "Sableye",
+        "Lunatone",
+        "Solrock",
+        "Beheeyem"
+      ],
+      "day": [
+        "Golbat",
+        "Boldore",
+        "Gurdurr",
+        "Sableye",
+        "Lunatone",
+        "Solrock",
+        "Beheeyem"
+      ],
+      "night": [
+        "Golbat",
+        "Boldore",
+        "Gurdurr",
+        "Sableye",
+        "Lunatone",
+        "Solrock",
+        "Beheeyem"
+      ]
+    },
+    {
       "key": "brooklet_hill",
       "name": "Brooklet Hill",
       "cells": "",
@@ -354,6 +386,32 @@
       ]
     },
     {
+      "key": "exeggutor_island",
+      "name": "Exeggutor Island",
+      "cells": "",
+      "morning": [
+        "Exeggutor",
+        "Stunfisk",
+        "Gastrodon",
+        "Trapinch",
+        "Torkoal"
+      ],
+      "day": [
+        "Exeggutor",
+        "Stunfisk",
+        "Gastrodon",
+        "Trapinch",
+        "Torkoal"
+      ],
+      "night": [
+        "Exeggutor",
+        "Stunfisk",
+        "Gastrodon",
+        "Trapinch",
+        "Torkoal"
+      ]
+    },
+    {
       "key": "hano_beach",
       "name": "Hano Beach",
       "cells": "",
@@ -381,6 +439,32 @@
         "Finneon",
         "Wishiwashi",
         "Pelipper"
+      ]
+    },
+    {
+      "key": "lanakila_foot",
+      "name": "Foot of Mount Lanakila",
+      "cells": "",
+      "morning": [
+        "Sneasel",
+        "Beartic",
+        "Skarmory",
+        "Absol",
+        "Golduck"
+      ],
+      "day": [
+        "Sneasel",
+        "Beartic",
+        "Skarmory",
+        "Absol",
+        "Golduck"
+      ],
+      "night": [
+        "Sneasel",
+        "Beartic",
+        "Skarmory",
+        "Absol",
+        "Golduck"
       ]
     },
     {
@@ -493,6 +577,58 @@
       "surf": []
     },
     {
+      "key": "mount_hokulani",
+      "name": "Mount Hokulani",
+      "cells": "",
+      "morning": [
+        "Zubat",
+        "Geodude",
+        "Magnemite",
+        "Spearow",
+        "Rufflet",
+        "Cutiefly"
+      ],
+      "day": [
+        "Zubat",
+        "Geodude",
+        "Magnemite",
+        "Spearow",
+        "Rufflet",
+        "Cutiefly"
+      ],
+      "night": [
+        "Zubat",
+        "Geodude",
+        "Magnemite",
+        "Spearow",
+        "Rufflet",
+        "Cutiefly"
+      ]
+    },
+    {
+      "key": "mount_lanakila",
+      "name": "Mount Lanakila",
+      "cells": "",
+      "morning": [
+        "Sneasel",
+        "Beartic",
+        "Vanilluxe",
+        "Golduck"
+      ],
+      "day": [
+        "Sneasel",
+        "Beartic",
+        "Vanilluxe",
+        "Golduck"
+      ],
+      "night": [
+        "Sneasel",
+        "Beartic",
+        "Vanilluxe",
+        "Golduck"
+      ]
+    },
+    {
       "key": "paniola_ranch",
       "name": "Paniola Ranch",
       "cells": "",
@@ -513,6 +649,100 @@
         "Lillipup",
         "Miltank",
         "Tauros"
+      ]
+    },
+    {
+      "key": "po_town",
+      "name": "Po Town",
+      "cells": "",
+      "morning": [
+        "Grimer",
+        "Gastly",
+        "Trubbish",
+        "Rattata",
+        "Zubat",
+        "Sableye"
+      ],
+      "day": [
+        "Grimer",
+        "Gastly",
+        "Trubbish",
+        "Rattata",
+        "Zubat",
+        "Sableye"
+      ],
+      "night": [
+        "Grimer",
+        "Gastly",
+        "Trubbish",
+        "Rattata",
+        "Zubat",
+        "Sableye"
+      ]
+    },
+    {
+      "key": "poni_breakers",
+      "name": "Poni Breakers",
+      "cells": "",
+      "morning": [
+        "Wingull",
+        "Pelipper",
+        "Tentacool",
+        "Staryu",
+        "Bruxish",
+        "Pyukumuku"
+      ],
+      "day": [
+        "Wingull",
+        "Pelipper",
+        "Tentacool",
+        "Staryu",
+        "Bruxish",
+        "Pyukumuku"
+      ],
+      "night": [
+        "Wingull",
+        "Pelipper",
+        "Tentacool",
+        "Staryu",
+        "Bruxish",
+        "Pyukumuku"
+      ],
+      "surf": [
+        "Wingull",
+        "Tentacool",
+        "Wailmer",
+        "Mantine",
+        "Dewgong"
+      ]
+    },
+    {
+      "key": "poni_wilds",
+      "name": "Poni Wilds",
+      "cells": "",
+      "morning": [
+        "Mudsdale",
+        "Ledian",
+        "Tauros",
+        "Pelipper",
+        "Absol",
+        "Komala"
+      ],
+      "day": [
+        "Mudsdale",
+        "Ledian",
+        "Tauros",
+        "Pelipper",
+        "Absol",
+        "Komala"
+      ],
+      "night": [
+        "Mudsdale",
+        "Ledian",
+        "Tauros",
+        "Pelipper",
+        "Absol",
+        "Komala"
       ]
     },
     {
@@ -542,6 +772,161 @@
         "Machop",
         "Rockruff",
         "Spinda"
+      ]
+    },
+    {
+      "key": "ulaula_route_10",
+      "name": "Route 10",
+      "cells": "",
+      "morning": [
+        "Rattata",
+        "Spearow",
+        "Mankey",
+        "Rufflet",
+        "Fomantis",
+        "Eevee",
+        "Pikachu"
+      ],
+      "day": [
+        "Rattata",
+        "Spearow",
+        "Mankey",
+        "Rufflet",
+        "Fomantis",
+        "Eevee",
+        "Pikachu"
+      ],
+      "night": [
+        "Rattata",
+        "Spearow",
+        "Mankey",
+        "Rufflet",
+        "Fomantis",
+        "Eevee",
+        "Pikachu"
+      ]
+    },
+    {
+      "key": "ulaula_route_12",
+      "name": "Route 12",
+      "cells": "",
+      "morning": [
+        "Mudbray",
+        "Ponyta",
+        "Mareep",
+        "Trumbeak",
+        "Lillipup",
+        "Fletchling"
+      ],
+      "day": [
+        "Mudbray",
+        "Ponyta",
+        "Mareep",
+        "Trumbeak",
+        "Lillipup",
+        "Fletchling"
+      ],
+      "night": [
+        "Mudbray",
+        "Ponyta",
+        "Mareep",
+        "Trumbeak",
+        "Lillipup",
+        "Fletchling"
+      ],
+      "surf": [
+        "Wingull",
+        "Poliwag",
+        "Goldeen",
+        "Psyduck",
+        "Magikarp"
+      ]
+    },
+    {
+      "key": "ulaula_route_13",
+      "name": "Route 13",
+      "cells": "",
+      "morning": [
+        "Skarmory",
+        "Trumbeak",
+        "Lycanroc",
+        "Gumshoos",
+        "Cutiefly",
+        "Mudsdale"
+      ],
+      "day": [
+        "Skarmory",
+        "Trumbeak",
+        "Lycanroc",
+        "Gumshoos",
+        "Cutiefly",
+        "Mudsdale"
+      ],
+      "night": [
+        "Skarmory",
+        "Trumbeak",
+        "Lycanroc",
+        "Gumshoos",
+        "Cutiefly",
+        "Mudsdale"
+      ]
+    },
+    {
+      "key": "ulaula_route_16",
+      "name": "Route 16",
+      "cells": "",
+      "morning": [
+        "Grimer",
+        "Salandit",
+        "Zubat",
+        "Ekans",
+        "Houndour",
+        "Murkrow",
+        "Pancham"
+      ],
+      "day": [
+        "Grimer",
+        "Salandit",
+        "Zubat",
+        "Ekans",
+        "Houndour",
+        "Murkrow",
+        "Pancham"
+      ],
+      "night": [
+        "Grimer",
+        "Salandit",
+        "Zubat",
+        "Ekans",
+        "Houndour",
+        "Murkrow",
+        "Pancham"
+      ]
+    },
+    {
+      "key": "vast_poni_canyon",
+      "name": "Vast Poni Canyon",
+      "cells": "",
+      "morning": [
+        "Jangmo-o",
+        "Hakamo-o",
+        "Druddigon",
+        "Gabite",
+        "Skarmory"
+      ],
+      "day": [
+        "Jangmo-o",
+        "Hakamo-o",
+        "Druddigon",
+        "Gabite",
+        "Skarmory"
+      ],
+      "night": [
+        "Jangmo-o",
+        "Hakamo-o",
+        "Druddigon",
+        "Gabite",
+        "Skarmory"
       ]
     },
     {

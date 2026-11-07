@@ -1,0 +1,44 @@
+# The Altar of the Sunne and Moone, Poni Island (plan 23 · Z7). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise and the League"): Lillie carries her
+# Cosmog up to the dais, where it calls the legendary Pokémon of the sun. Ours is Solgaleo (Sun's): battled at 55 and
+# gone once it is caught or beaten (FLAG_ALOLA_ALTAR_DONE). VAR_ALOLA_STORY 51 is the way in, 52 the Altar passed.
+
+
+script OnEnter
+  if var VAR_ALOLA_STORY != 51 end
+  if flag FLAG_ALOLA_ALTAR_DONE end
+  setflag FLAG_ALOLA_AT_ALTAR
+  end
+
+
+script LillieAtAltar
+  face lillie player
+  speaker "Lillie"
+  say "{player}... I'm so glad you're here. Nebby changed, on the way. Look."
+  say "It wants to go home, and I think the dais is where home is. The sun is out, and the dais lights when the sun is."
+  say "I'm afraid. But I'm not going to hide in my bag any more. Please, stay with me."
+  text "Lillie held her bag up to the dais, and the light in it rose into the cavern like a second sun!"
+  end
+
+
+script Legend
+  face self player
+  speaker none
+  scene "The legendary of the sun"
+  text "The light on the dais gathered into a great white shape: a lion of the sun, its mane ablaze!"
+  cry "Solgaleo"
+  wildbattle "Solgaleo" 55 nofleeing
+  setflag FLAG_ALOLA_ALTAR_DONE
+  hide self
+  hide lillie
+  speaker "Lillie"
+  say "Nebby... you were Solgaleo all along. You're free to go home, now, if that's what you want."
+  say "...{player}, thank you. For everything. Whatever happens, I'm going to be braver."
+  speaker "Prof. Kukui"
+  say "{player}! Hello, hello! Lillie told me what happened. The Pokémon League is finally open on Mount Lanakila, cousin."
+  say "Hau's already there, I bet. Take the Route 13 road east from Tapu Village. And try not to enjoy yourself too much."
+  setflag FLAG_ALOLA_LANAKILA_OPEN
+  setvar VAR_ALOLA_STORY 52
+  objective alolaLanakila
+  endscene
+  end

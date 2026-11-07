@@ -9367,6 +9367,68 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   drawn on its Pokémon, Akala on a Town Map and the Pokédex's area page (one grid, Melemele's), the trial sites' own
   songs and Akala's towns' (plan 31), Moon's totems (Salazzle for Marowak), and Aether Paradise (Z7).
 
+## Ula'ula, Poni, Aether Paradise and the League (2026-11-07, plan 23 · Z7)
+
+- **Where it comes from.** As Z5: drawn by hand from the places as they are publicly described (Bulbapedia's walkthrough
+  and a summary of the games' fourteen chapters for the order of the beats and the places; no picture, map, line or
+  script read), in our own drawing and our own words. Names of people and of trainers are ours where the games' are not
+  known; the teams follow Sun's species and rising levels. The drawings come from a throwaway generator kept outside the
+  repository (rectangles, roads, houses by their doors); `tools/MapDraw/alola/*.txt` are the sources, and
+  `dotnet run --project tools/MapDraw -- alola` writes the chunks, the matrices and the habitats from them.
+- **What is drawn.** Ula'ula Island is a map of its own (`Ulaula`, matrix 10, 12 chunks by 12): Malie City on the south
+  shore with its pier, Route 10, Mount Hokulani, Route 12, Tapu Village, Route 13 and the foot of Mount Lanakila, Route
+  16 and Po Town. Poni Island (`Poni`, matrix 11, 10 by 10): Seafolk Village, Poni Wilds, Poni Breakers with the Ruins of
+  Hope, and Exeggutor Island across a strait. Aether Paradise (`AetherParadise`, matrix 12) is a floating island of its
+  own. Four caves are maps of their own, as Z5's two are: Vast Poni Canyon (14), the Ancient Poni Path (15, two mouths:
+  the legend's `u` and `n`), the Altar of the Sunne and Moone (16) and Mount Lanakila (17, whose top leads by an
+  overlay door into the League's lobby). The matrices skip 4 to 9 so that Z6's can take them. 31 rooms: the Pokémon
+  Centers of Malie City, Tapu Village, Seafolk Village and Aether Paradise (with the Mart's counter inside, as Alola's
+  have), the library, city hall, house and tea house of Malie City, Hokulani Observatory, the old Thrifty Megamart,
+  the Shady House, Team Skull's manor, Po Town's three houses, Tapu Village's three, Seafolk's four, Aether
+  Paradise's house and head office, and the League's lobby, four Elite Four rooms, the Champion's room and the Hall of
+  Fame. About fifty trainers of ours (`trainers.json` ids `alola_<class>_<name>`, the story's `alola_*_league` and
+  `alola_kukui_1` to `_3`) and eleven looks (Sophocles, Acerola, Nanu, Plumeria, Guzma, Lusamine, Wicke, Dulse, Hapu,
+  Olivia, Kahili) and three classes (Team Skull Admin and Boss, Aether President).
+- **The story** (`VAR_ALOLA_STORY` 40 to 54, `objective` ids 650 to 662): **40** the ferry from Heahea's pier, open to
+  whoever holds the Akala stamp (`if badge Akala`), takes the player to Aether Paradise; **41** the tour (Wicke,
+  Lusamine and Lillie on the square); **42** Malie City, Hau's battle and the professor's word of the trials; **43**
+  Sophocles' trial (three Charjabug, the totem Togedemaru, the Electrium Z); **44** Acerola on the road into Tapu
+  Village, the Megamart's door opened, the rancher's Mudsdale (a flag alone, `RidePager.MudsdaleFlag`, as Stoutland's);
+  **45** her trial (three ghosts, the totem Mimikyu, the Ghostium Z); **46** Po Town, Plumeria's battle, the manor's
+  two grunts and Guzma; **47** Nanu in the Shady House, Ula'ula's stamp (`UlaUla`) and the Darkinium Z, and the
+  professor's call that lusamine holds Lillie; **48** the head office opened, Lusamine and her Nihilego beaten; **49** by
+  ferry to Seafolk Village, Kukui and Lillie on the square, a Machamp lending its strength to the Ride Pager
+  (`FLAG_ALOLA_RIDE_MACHAMP`, Strength, which Z5's ride table had waiting); **50** Dulse's trial (three Jangmo-o, the
+  totem Kommo-o, the Dragonium Z); **51** Hapu's grand trial, reached across the strait with Lapras (Poni's stamp, the
+  Groundium Z, the road to the Altar opened); **52** the Altar: Lillie's Cosmog and Solgaleo, battled at 55 (ours is
+  Sun's legendary) and the mountain opened (`FLAG_ALOLA_LANAKILA_OPEN`); **54** the League: Hala, Olivia, Acerola and
+  Kahili in turn, Professor Kukui as Champion (his last Pokémon is the starter that is strong against the player's),
+  and the Hall of Fame (`AlolaHallOfFame`, the credits, home to the new house on Route 1). 53 is left for a session that
+  adds a scene in the League's lobby. The numbers 19 to 39 are Akala's remaining trials and Z6's.
+- **The ferries** are sailors at each pier whose scripts `warp` between the maps (`WorldWalk` follows them): Heahea,
+  Malie City, Aether Paradise and Seafolk Village each sail to the others once the story has been there (Poni's after the
+  rescue). **A door opened by the story that leads into a cave** is an overlay `doors` entry with `openedBy` and the
+  cave's arrival tile (Mount Lanakila's, the Altar's): the guards beside the mouth are decoration, hidden by the same
+  flag.
+- **Ours, beside Sun and Moon.** The Aether tour comes after Akala's grand trial and before Ula'ula as in the games, but
+  Sun and Moon send the player to Malie City by Kukui's boat from Konikoni City, which Z6's Akala is to draw; the ferry
+  from Heahea stands in until then. Po Town's Plumeria is met before the manor and Guzma in it, with Nanu outside once
+  he is beaten (the games meet Nanu at the Shady House's door earlier and hold the grand trial in the town). The
+  totems are met as wild battles that cannot be run from (`nofleeing`), their aura and their calls for help being Z6's.
+  Mount Lanakila is reached from Tapu Village by Route 13 and not from Poni (the games take the player there by Charizard
+  or by the Altar's road); its snow is a scatter of snow tiles on the cave's floor. Tapu Bulu's and Tapu Fini's ruins are
+  one: the Ruins of Hope has Tapu Fini, battled at 60 after the Hall of Fame; Ruins of Abundance is a later session's.
+  The League's rooms are a line, not Sun and Moon's one hall: each door opens (`from` the room's flag) when its master
+  is beaten, as Kalos's Champion's does.
+- **The region-bound evolutions** were alive since plan 03 (`EvolutionContext.Region`): a Pikachu with a Thunder Stone,
+  an Exeggcute with a Leaf Stone and a Cubone at level 28 by night become their Alolan forms in Alola and their Kanto
+  forms anywhere else, now held by a test with Raichu's old one (`AlolaUlaulaTests`).
+- **Left**: the Ultra Beasts and Ultra Space (Z8; Nihilego is battled once, as Lusamine's ace), the Town Map and the
+  Pokédex's area page for the islands (one grid each), the rider drawn on its Pokémon, Island Scan, the songs of the
+  new places (they play Alola's trial, road and town songs), Malie Garden, Ula'ula Meadow, Blush Mountain, Route 14 to
+  15 and Route 17, the Ruins of Abundance and Tapu Bulu, Poni's Plains and Grove, Resolution Cave, Seafolk's Mina
+  (Ultra Sun and Ultra Moon), and the post-game: the Battle Tree, rematches and the flight to Galar.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -1,0 +1,124 @@
+{
+  "key": "lanakila_foot",
+  "index": 106,
+  "name": "Foot of Mount Lanakila",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MOUNT_LANAKILA",
+  "nightMusic": "MOUNT_LANAKILA",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 290,
+      "z": 141,
+      "to": "mount_lanakila",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "guard",
+      "looks": "policeman",
+      "movement": "look_south",
+      "x": 289,
+      "z": 153,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "LanakilaGuard"
+    },
+    {
+      "id": "nohea",
+      "looks": "ace_trainer_m",
+      "movement": "look_east",
+      "x": 276,
+      "z": 178,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_NOHEA"
+    },
+    {
+      "id": "ailani",
+      "looks": "ace_trainer_f",
+      "movement": "look_west",
+      "x": 306,
+      "z": 168,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_AILANI"
+    }
+  ],
+  "signs": [
+    {
+      "x": 286,
+      "z": 196,
+      "type": 0,
+      "script": "MountSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Sneasel",
+      "level": 52
+    },
+    {
+      "species": "Sneasel",
+      "level": 53
+    },
+    {
+      "species": "Sneasel",
+      "level": 54
+    },
+    {
+      "species": "Beartic",
+      "level": 52
+    },
+    {
+      "species": "Beartic",
+      "level": 53
+    },
+    {
+      "species": "Beartic",
+      "level": 54
+    },
+    {
+      "species": "Skarmory",
+      "level": 52
+    },
+    {
+      "species": "Skarmory",
+      "level": 53
+    },
+    {
+      "species": "Skarmory",
+      "level": 54
+    },
+    {
+      "species": "Absol",
+      "level": 53
+    },
+    {
+      "species": "Absol",
+      "level": 54
+    },
+    {
+      "species": "Golduck",
+      "level": 52
+    }
+  ],
+  "landRate": 20
+}
