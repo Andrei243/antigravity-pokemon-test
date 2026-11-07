@@ -123,12 +123,14 @@ public static class RegionCommand
             var all = Meshes();
             var finest = RegionPictures.Surface(all.Values.Select(m => m[0]));
             string name = planArea ?? description.World.Region;
-            Pictures.Save(RegionPictures.Plan(description, land, finest, box.Value), Path.Combine(planDir, $"plan_{name}.png"));
-            Console.WriteLine($"wrote {Path.Combine(planDir, $"plan_{name}.png")}");
+            // About a thousand pixels across, from 2 to 16 a metre
+            int perMetre = Math.Clamp((int)(1024 / (box.Value.X1 - box.Value.X0)), 2, 16);
+            Pictures.Save(RegionPictures.Plan(description, land, finest, box.Value, perMetre: perMetre), Path.Combine(planDir, $"plan_{name}.png"));
+            Console.WriteLine($"wrote {Path.Combine(planDir, $"plan_{name}.png")} ({perMetre} pixels a metre)");
             for (int level = 1; level < RegionBake.Levels; level++)
             {
                 string path = Path.Combine(planDir, $"plan_{name}_level{level}.png");
-                Pictures.Save(RegionPictures.Plan(description, land, finest, box.Value, all.Values.Select(m => m[level]).ToArray()), path);
+                Pictures.Save(RegionPictures.Plan(description, land, finest, box.Value, all.Values.Select(m => m[level]).ToArray(), perMetre), path);
                 Console.WriteLine($"wrote {path}");
             }
             Console.WriteLine("  key: the top of level 0 shaded by its slope and coloured by its cover; violet where a walkable floor lies under the top; blue where water stands; brown the roads' lines; dark lines a level's triangles; the areas' outlines:");

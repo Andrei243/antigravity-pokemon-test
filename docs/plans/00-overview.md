@@ -212,7 +212,7 @@ These run beside whichever main wave is current when the gate opens, a row to a 
 
 | Step | Session | Model | Waits for | Size | Marks |
 |---|---|---|---|---|---|
-| O1 | 32 · OW2 The baker and the terrain | Opus max | the gate; OW1 | L | |
+| O1 | 32 · OW2 The baker and the terrain (built 2026-11-07: plan 32's "OW2 as built") | Opus max | the gate; OW1 | L | |
 | O2 | 32 · OW3 Collision and the capsule; beside it OW8, part a: ground, water and sky | Opus max | OW2 | M + M | H |
 | O3 | 32 · OW4 The navigation mesh; beside it OW8, part b: the camera and shadows | Opus high | OW3 | M + M | H |
 | O4 | 32 · OW5 Volumes, markers, doors and scripts; beside it OW6 People, trainers and followers | Opus high | OW4 | M + M | C |
