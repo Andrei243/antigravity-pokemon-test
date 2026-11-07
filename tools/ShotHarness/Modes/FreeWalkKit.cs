@@ -82,12 +82,12 @@ partial class Harness
         Heads(GrownCuts, "fw40_cuts");
         Heads(GrownHats, "fw40_hats");
 
-        // Whole figures: from the front, three-quarter and behind
-        void Figures((string Type, string Text)[] looks, string name, float[] round)
+        // Whole figures: from the front, three-quarter and behind (what is held in columns wide enough for it, four to a row)
+        void Figures((string Type, string Text)[] looks, string name, float[] round, int W = 170, int most = 8)
         {
             if (!Wanted(name)) return;
-            const int W = 170, H = 400;
-            int perRow = looks.Length > 8 ? (looks.Length + 1) / 2 : looks.Length, rows = (looks.Length + perRow - 1) / perRow;
+            const int H = 400;
+            int perRow = looks.Length > most ? (looks.Length + 1) / 2 : looks.Length, rows = (looks.Length + perRow - 1) / perRow;
             var board = Raylib.GenImageColor(W * round.Length * perRow, (H + Label) * rows, backdrop);
             for (int i = 0; i < looks.Length; i++)
             {
@@ -102,7 +102,7 @@ partial class Harness
             Save(board, name);
         }
         Figures(GrownGarments, "fw40_garments", new[] { 0.35f, MathF.PI });
-        Figures(GrownHeld, "fw40_held", new[] { 0.5f, -0.9f });
+        Figures(GrownHeld, "fw40_held", new[] { 0.5f, -0.9f }, W: 340, most: 4);
 
         // The grown face: its five expressions with the eyes open, then shut, then speaking; a woman's and a man's with glasses
         if (Wanted("fw40_faces"))

@@ -161,6 +161,10 @@ internal static partial class CharacterModels
             w.Capsule(new Vector3(side * 0.028f * sz, f.NeckFootY + 0.045f * sz, -0.035f * sz + f.Forward * 0.25f),
                 new Vector3(side * (f.Shoulder.X - 0.035f * sz), f.ShoulderY + 0.022f * sz, -0.015f * sz + f.Forward * 0.25f),
                 0.036f * g + off, 0.028f * g + off, top, clavicle, 0.03f * sz, Cloth);
+        // Behind the neck the slopes' two heads are joined, so the garment runs straight across the nape (between them it
+        // dipped, and the collar laid along its top dipped with it into a stalk down the back of the neck)
+        w.Capsule(new Vector3(-0.028f * sz, f.NeckFootY + 0.045f * sz, -0.038f * sz + f.Forward * 0.25f),
+            new Vector3(0.028f * sz, f.NeckFootY + 0.045f * sz, -0.038f * sz + f.Forward * 0.25f), 0.036f * g + off, 0.036f * g + off, top, HumanBones.Chest, 0.03f * sz, Cloth);
         if (f.Curved)
             foreach (float side in new[] { 1f, -1f })
                 w.Ellipsoid(new Vector3(side * f.ChestW * 0.42f, f.ChestMidY + 0.02f * sz, f.ChestD * 0.66f), new Vector3(0.046f, 0.044f, 0.04f) * sz + o,
@@ -325,16 +329,26 @@ internal static partial class CharacterModels
                 SurfaceMaterial.Metal);
         }
 
-        // A collar round the neck's foot (the accent colour's; the garment's own under a scarf), and a scarf wrapped over
-        // it with its tail hanging in front
-        // Round the neck's own axis, lower in front than behind
+        // A collar in the accent colour where the garment meets the neck, or a scarf wrapped there instead with its tail
+        // hanging in front: laid along the garment's own top round the neck's axis, found by probing down onto it, so it
+        // shows all round, higher behind than in front as the garment rises there (a ring round the neck's axis alone sank
+        // into the garment in front and stood out of it behind, a bar at the nape on every board)
         float neck = 0.055f * g;
-        var collar = new Vector3(0, f.NeckFootY - 0.004f * sz, -0.016f * sz + f.Forward * 0.3f);
-        var lean = Pitch(0.28f);
-        w.Torus(collar, neck + 0.012f * sz, Math.Max(GrownLeastRadius, 0.011f * sz), s.Scarf ? top : s.Accent, HumanBones.Chest, 0.006f * sz, Cloth, lean);
+        var axis = new Vector3(0, f.NeckFootY + 0.16f * sz, -0.02f * sz + f.Forward * 0.3f);
+        float tube = s.Scarf ? 0.016f * sz : Math.Max(GrownLeastRadius, 0.011f * sz);
+        const int Around = 20;
+        var neckline = new Vector3[Around];
+        for (int i = 0; i < Around; i++)
+        {
+            float a = i * MathF.Tau / Around;
+            var d = new Vector3(MathF.Sin(a), 0f, MathF.Cos(a));
+            var on = SurfaceAlong(w, axis + d * (neck + 0.002f * sz), -Vector3.UnitY);
+            neckline[i] = on + d * (0.35f * tube) + new Vector3(0, (s.Scarf ? 0.7f : 0.4f) * tube, 0);
+        }
+        for (int i = 0; i < Around; i++)
+            w.Capsule(neckline[i], neckline[(i + 1) % Around], tube, tube, s.Accent, HumanBones.Chest, 0.006f * sz, Cloth);
         if (s.Scarf)
         {
-            w.Torus(collar + new Vector3(0, 0.008f * sz, 0.002f * sz), neck + 0.016f * sz, 0.016f * sz, s.Accent, HumanBones.Chest, 0f, Cloth, lean);
             var knot = Front(f.ChestW * 0.3f, f.NeckFootY - 0.03f * sz);
             w.Capsule(knot + new Vector3(0, 0, 0.008f * sz), Front(f.ChestW * 0.38f, f.ChestMidY - 0.02f * sz) + new Vector3(0, 0, 0.012f * sz), 0.016f * sz, 0.013f * sz,
                 s.Accent, HumanBones.Chest, 0.003f * sz, Cloth);
@@ -378,13 +392,23 @@ internal static partial class CharacterModels
             }
             case HeldProp.Parasol:
             {
-                // Over the right shoulder: the shaft from the hand up behind the head, the canopy a shallow dome with a
-                // scalloped rim in the accent colour
+                // Over the right shoulder: the shaft from the hand up behind the head, the canopy a shallow dome (the top of
+                // an ellipsoid cut off underneath and hollowed, so from below it is a hollow: a flattened ellipsoid whole
+                // read as a plate, and cut flat as a tray) with a rim in the accent colour round its edge and a tip over
+                // its middle
                 var canopy = new Vector3(-0.15f * sz, f.Crown + 0.08f * sz, -0.24f * sz);
                 var tilt = Quaternion.Concatenate(Quaternion.CreateFromAxisAngle(Vector3.UnitZ, 0.32f), Pitch(-0.5f));
+                var up = Vector3.Transform(Vector3.UnitY, tilt);
+                const float Rise = 0.12f, Under = 0.08f, Across = 0.436f;
+                var cloth = s.PropColor ?? s.Top;
+                m.Ellipsoid(canopy - up * (Under * sz), new Vector3(Across, Rise + Under, Across) * sz, cloth, HumanBones.Chest, 0f, Cloth, tilt);
+                m.Box(canopy - up * (0.3f * sz), new Vector3(0.6f, 0.3f, 0.6f) * sz, 0f, cloth, HumanBones.Chest, 0f, op: SdfOp.Cut, rotation: tilt);
+                m.Ellipsoid(canopy - up * ((Under + 0.025f) * sz), new Vector3(Across - 0.02f, Rise + Under - 0.005f, Across - 0.02f) * sz, Shade(cloth, 0.8f), HumanBones.Chest, 0f,
+                    Cloth, tilt, SdfOp.Cut);
+                float rim = Across * MathF.Sqrt(1f - Under * Under / ((Rise + Under) * (Rise + Under)));
+                m.Torus(canopy, rim * sz, 0.02f * sz, s.Accent, HumanBones.Chest, 0.004f * sz, Cloth, tilt);
+                m.Sphere(canopy + up * ((Rise + 0.012f) * sz), 0.018f * sz, s.Accent, HumanBones.Chest, 0.006f * sz, Cloth);
                 m.Capsule(palm, canopy, Math.Max(least, 0.01f * sz), Math.Max(least, 0.01f * sz), new Color(112, 84, 64, 255), HumanBones.HandR, 0.003f * sz, Wood);
-                m.Ellipsoid(canopy, new Vector3(0.4f, 0.075f, 0.4f) * sz, s.PropColor ?? s.Top, HumanBones.Chest, 0f, Cloth, tilt);
-                m.Torus(canopy + Vector3.Transform(new Vector3(0, -0.037f, 0) * sz, tilt), 0.38f * sz, 0.016f * sz, s.Accent, HumanBones.Chest, 0f, Cloth, tilt);
                 break;
             }
             case HeldProp.Pickaxe:

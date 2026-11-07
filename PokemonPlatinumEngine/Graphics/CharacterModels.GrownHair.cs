@@ -145,16 +145,18 @@ internal static partial class CharacterModels
                 return;
             case HairCut.Bald:
             {
-                // A band of short locks round the back of the skull from behind one ear to behind the other, lying close
-                // to it, the crown bare skin
+                // A fringe of short locks round the back of the skull from behind one ear to behind the other, two rows
+                // deep down to the nape, lying close to it, the crown bare skin (one row across the back read as a
+                // headband)
                 var c = Skull(f);
                 var radii = SkullRadii(f);
                 foreach (float side in new[] { 1f, -1f })
                 {
-                    LockOn(m, f, c, radii, hair, new Vector3(side * 0.94f, -0.12f, -0.32f), new Vector3(side * 0.4f, -0.22f, -0.92f), 0.09f, 0.085f, 0f, 0.05f);
-                    LockOn(m, f, c, radii, hair, new Vector3(side * 0.86f, -0.4f, -0.4f), new Vector3(side * 0.35f, -0.48f, -0.84f), 0.085f, 0.08f, 0f, 0.05f);
+                    LockOn(m, f, c, radii, hair, new Vector3(side * 0.94f, -0.14f, -0.32f), new Vector3(side * 0.4f, -0.25f, -0.9f), 0.12f, 0.115f, 0f, 0.05f);
+                    LockOn(m, f, c, radii, hair, new Vector3(side * 0.88f, -0.36f, -0.38f), new Vector3(side * 0.36f, -0.47f, -0.82f), 0.12f, 0.11f, 0f, 0.05f);
                 }
-                LockOn(m, f, c, radii, hair, new Vector3(0.4f, -0.36f, -0.88f), new Vector3(-0.4f, -0.36f, -0.88f), 0.095f, 0.095f, 0f, 0.05f);
+                LockOn(m, f, c, radii, hair, new Vector3(0.42f, -0.25f, -0.9f), new Vector3(-0.42f, -0.25f, -0.9f), 0.12f, 0.12f, 0f, 0.05f);
+                LockOn(m, f, c, radii, hair, new Vector3(0.38f, -0.47f, -0.82f), new Vector3(-0.38f, -0.47f, -0.82f), 0.12f, 0.12f, 0f, 0.05f);
                 return;
             }
             case HairCut.Curls:
@@ -272,11 +274,14 @@ internal static partial class CharacterModels
         const float Nape = -1.3f;
         foreach (float x in new[] { -0.55f, -0.18f, 0.18f, 0.55f })
         {
+            // Full to their ends and close enough to join down the back, the outer two ending a little higher, so the ends
+            // make one soft curve (thin, wide-set tips hung apart like fingers with the back between them)
+            float end = MathF.Abs(x) > 0.3f ? -2.2f : -2.38f;
             var top = H + new Vector3(x, 0.05f, -1.02f + MathF.Abs(x) * 0.22f) * R;
-            var tip = new Vector3(H.X + x * 1.12f * R, H.Y - 2.35f * R, back + MathF.Abs(x) * 0.15f * R);
-            var nape = Vector3.Lerp(top, tip, (0.05f - Nape) / (0.05f + 2.35f));
-            GrownTube(m, f, top, nape, 0.26f, 0.19f, hair, HumanBones.Head, 0.05f, Hair);
-            GrownTube(m, f, nape, tip, 0.19f, 0.1f, hair, HumanBones.Chest, 0.05f, Hair);
+            var tip = new Vector3(H.X + x * 0.98f * R, H.Y + end * R, back + MathF.Abs(x) * 0.15f * R);
+            var nape = Vector3.Lerp(top, tip, (0.05f - Nape) / (0.05f - end));
+            GrownTube(m, f, top, nape, 0.26f, 0.22f, hair, HumanBones.Head, 0.05f, Hair);
+            GrownTube(m, f, nape, tip, 0.22f, 0.15f, hair, HumanBones.Chest, 0.05f, Hair);
         }
         // A lock framing each cheek, from over the temple down in front of the ear to below the jaw
         foreach (float side in new[] { 1f, -1f })
