@@ -556,6 +556,27 @@ way 1, from answer 1
   Receptionist> Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one.
   Receptionist> Win the final and you're the champion. Lose a match, and the tournament is over for you.
   ? Would you like to enter a tournament? = The rules
+=== BattleFrontierAnnex.RoyalDesk
+from Receptionist at 1,8 of BattleFrontierAnnex
+way 0.0
+  Receptionist> This is the Battle Royal corner! Four Trainers battle at once, and every one of them is everyone else's foe.
+  Receptionist> Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal?
+  Receptionist> Then step into the ring! Every Trainer for themselves!
+  Receptionist> First place! You read all three of them at once. Come back whenever you'd like another round.
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = Join
+  * royal royal_brisa royal_corin royal_dalla Won
+way 0.1, from answer 2
+  Receptionist> A hard-fought placing! Every Battle Royal is different, so do come back and try for first.
+  * royal royal_brisa royal_corin royal_dalla Lost
+way 2, from answer 1
+  Receptionist> Whenever you're ready for a free-for-all, you know where to find us.
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = No
+way 1, from answer 1
+  Receptionist> Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag.
+  Receptionist> The moment any Trainer has no Pokémon left, the battle is over.
+  Receptionist> Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing.
+  Receptionist> The highest score takes first place. Nothing is won or lost but the placing, so battle freely!
+  ? Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal? = The rules
 === BattleFrontierAnnex.TournamentDesk
 from Receptionist at 13,8 of BattleFrontierAnnex
 way 0
@@ -6478,6 +6499,14 @@ way -
   * sound select
   * fade out
   * fade in
+=== VistaLighthouse.SkyBattle
+from Sky Trainer at 3,4 of VistaLighthouse
+way -
+  Sky Trainer> Up here the wind comes straight off the sea. It's the closest thing in Sinnoh to the open sky.
+  Sky Trainer> Where I come from we battle in the air: a Sky Battle. Only Pokémon that fly or float can take part.
+  Sky Trainer> And no move that needs the ground. No Earthquake, no Dig, nothing that slams a foe down onto anything.
+  Sky Trainer> None of your Pokémon can fly or float, I'm afraid. Bring one that can, and we'll take to the sky.
+  + FLAG_VISTA_LIGHTHOUSE_SKY_BATTLE_EXPLAINED
 === VistaLighthouse.Volkner
 from Volkner at 6,4 of VistaLighthouse
 way -
