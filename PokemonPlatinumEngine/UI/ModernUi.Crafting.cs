@@ -137,8 +137,8 @@ internal static partial class ModernUi
         if (nameW > room) size = MathF.Floor(size * room / nameW);
         UiFonts.DrawCentered(name, detail.X + (detail.Width - Math.Min(nameW, room)) / 2f, detail.Y + 330, size, Ink, UiWeight.Black);
         float pillW = UiFonts.Measure(Words.Type(cost.Type).ToUpperInvariant(), 34 * 0.6f, UiWeight.Black) + 34 * 1.05f + (Seeing.Signs ? 34 * 0.8f : 0f);
-        string power = move.Category == MoveCategory.Status || move.Power <= 0
-            ? Text.Of("crafting.tm.noPower")
+        string power = move.Category == MoveCategory.Status ? Text.Of("crafting.tm.noPower")
+            : move.Power <= 0 ? Text.Of("crafting.tm.varies")
             : Text.Of("crafting.tm.power", ("n", move.Power));
         float powerW = UiFonts.Measure(power, 26, UiWeight.ExtraBold);
         float startX = detail.X + (detail.Width - pillW - 18 - powerW) / 2f;

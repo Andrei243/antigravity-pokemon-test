@@ -2626,6 +2626,7 @@
       "price": "Money",
       "power": "Power {n}",
       "noPower": "No damage",
+      "varies": "Power varies",
       "made": "Made {name}, {move}!",
       "why": {
         "hm": "An HM is never made.",

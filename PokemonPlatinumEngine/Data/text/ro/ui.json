@@ -6152,6 +6152,7 @@
       "price": "Bani",
       "power": "Putere {n}",
       "noPower": "Fără daune",
+      "varies": "Putere variabilă",
       "made": "Ai creat {name}, {move}!",
       "why": {
         "hm": "Un HM nu se creează niciodată.",
