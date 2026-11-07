@@ -108,7 +108,6 @@ partial class Harness
     void TellOpen(OpenProtoScene scene, string name, WalkSample s, (double Arm, bool Held)? arm, double frameMs)
     {
         var p = s.Pos.Metres;
-        var world = scene.Collision;
         bool under = scene.Collision.Raycast(p + new D3(0, 1.7, 0), new D3(0, 1, 0), 40) is not null;
         string where = Prototype.Trigger.Holds(p + new D3(0, 0.8, 0)) ? "in the cavern (in the trigger's box)" : under ? "under rock" : Prototype.Zone.Holds(p) ? $"on the hill's top (zone '{Prototype.Zone.Name}')" : "in the open";
         Console.WriteLine($"  {name}: tick {s.Tick} ({s.Tick / 120.0:0.00} s), feet {s.Pos}, yaw {s.Yaw} ({s.Yaw * 360.0 / 65536:0.0}°), {where}, {(s.Grounded ? "on the ground" : "falling")}, {s.Speed:0.00} m/s, hour {scene.Hour:0}");
