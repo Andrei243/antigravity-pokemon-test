@@ -901,6 +901,7 @@ another command. `{material}` says the last material named, in the language chos
 | `craft take "Soft Fluff" 3` | Takes exactly that many out: `RESULT` 1, or 0 and nothing taken with fewer. |
 | `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
 | `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
+| `craft tm` | Plan 39 · CR4, from a PC: looks into the kit on its TMs tab (the TM maker) and waits for it to be put away; `RESULT` 1, or 0 and nothing opened without the kit in the bag. `common.PC`'s modern branch offers it as TM MAKER once the kit is held. |
 
 ### Join Avenue
 

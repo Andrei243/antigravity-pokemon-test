@@ -2617,7 +2617,24 @@
   },
   "crafting": {
     "title": "CRAFTING KIT",
-    "tab": { "materials": "MATERIALS" },
+    "tab": { "materials": "MATERIALS", "machines": "TMS" },
+    "hint": { "make": "Make", "tab": "Tab" },
+    "tm": {
+      "empty": "No TM or TR has been in your bag yet. Any you carry, and any you use up, can be made here again.",
+      "money": "MONEY",
+      "needs": "IT TAKES",
+      "price": "Money",
+      "power": "Power {n}",
+      "noPower": "No damage",
+      "made": "Made {name}, {move}!",
+      "why": {
+        "hm": "An HM is never made.",
+        "unknown": "That machine has never been in your bag.",
+        "short": "Not enough {name}.",
+        "money": "Not enough money.",
+        "full": "Your bag can't hold another."
+      }
+    },
     "kinds": "{n} KINDS",
     "has": "×{count}  of {limit}",
     "worth": "Worth {money} each",

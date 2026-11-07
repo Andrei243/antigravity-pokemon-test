@@ -760,6 +760,8 @@ public partial class GameEngine
                 flow.Bag.AddItem(itemDef, itData.Quantity);
             }
         }
+        // The machines had before (plan 39 · CR4); those still in the bag were noted as they were added
+        flow.Bag.NoteMachinesHad(save.MachinesHad);
         foreach (var (pocketName, orderName) in save.BagOrder)
             if (Enum.TryParse<ItemPocket>(pocketName, out var orderedPocket) && Enum.TryParse<BagOrder>(orderName, out var order)) flow.Bag.SetOrder(orderedPocket, order);
 
@@ -927,6 +929,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,

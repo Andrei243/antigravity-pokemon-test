@@ -94,6 +94,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Shots: `cr30_pc_menu`, `cr31_tm_list`, `cr32_tm_cost`, `cr33_tm_made`.
 - **Done when** TM27 (Return), taught and gone, is made again at a Pokémon Center's PC and teaches.
 
+**CR4 outcome (2026-11-07)**
+
+- **Built**: `Inventory.MachinesHad` (TMs and TRs noted as added, kept when used up, never an HM; `NoteMachinesHad`) and `SaveData.MachinesHad` (null while empty and in an older save, which knows the machines in its bag as it loads; no version raised), `Models/Recipes.cs` (`RecipesFile`, `RecipeTable`) and `Data/recipes.json` with `machines` (four tiers by base power; a status move falls in the first, a damaging move with no power in the data counts as `variablePower`, 80), its schema `docs/schemas/recipes.schema.json`, `Models/TmMaker.cs` (`Known`, `TierOf`, `CostOf`, `WhyNot`, `Make`), the TMS tab of `CraftingScreen` (opened by `Open(state, bag, money, atMaker)`; `Machines`, `Confirm`, `TakeSpent`, `Notice`; the tab exists only at a PC) with `ModernUi.DrawMachines`, `craft tm` (the sixth word of `craft`: `RESULT` 1 with the kit, and the kit opens on its TMs tab), `common.PC`'s modern branch offering TM MAKER once the kit is held (with and without the Seal Case), the money taken by `UpdateCrafting` as the screen makes a machine, the content check's rules for `recipes.json` (tiers named once and climbing, the last holding every move, every TM and TR of the items having a cost), the words (`crafting.tm.*`, `crafting.hint.*`, Romanian too), the rulings' TMs row rewritten, the style guide's "The kit's TMS tab", `docs/scripts.md`, `docs/data-files.md`, the changelog, and `TmMakerTests`.
+- **Deviations**: none of substance. The price is a tier table of money and counts only (the plan's `machines` tiers); a TM is not held to its Mart price in materials, which is CR3's rule for the kit's recipes. `recipes.json` is created here with `machines` alone: CR3 adds `kit` beside it.
+- **Shots**: `cr30_pc_menu`, `cr31_tm_list`, `cr32_tm_cost` and `cr33_tm_made` are written in the harness's `crafting` mode (see the session report for whether they were run).
+
 ### CR5 · Crossing berries
 - Style guide first: "The kit" gains the CROSSES page.
 - `Overworld/BerryCrossing.cs`, `BerryPatch.Cross`, the host's planting handing the touching soils (both hosts), the harvest's roll on the field's chance, `recipes.json`'s `crosses` (our flavour table for the fifteen), the crosses found in `SaveData.Crafting`, the CROSSES page; `where-items-are-found.md` names crossing for Kalos's three berries.
@@ -152,7 +158,7 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - [x] CR1 The workshop, the kit and what Pokémon leave behind (2026-11-07; the outcome below)
 - [ ] CR2 Gathering in the field
 - [ ] CR3 Making things at the kit
-- [ ] CR4 The TM maker
+- [x] CR4 The TM maker (2026-11-07; the outcome below)
 - [ ] CR5 Crossing berries (with Johto's Berry Pots)
 - [ ] CR6 Cooking at the camp (plan 10 · F8, taken over)
 - [ ] CR7 Restaurants and stalls

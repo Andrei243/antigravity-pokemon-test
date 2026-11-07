@@ -14,6 +14,58 @@ public static class CraftingFiles
 {
     public static void Check(GameContent content, List<Finding> found)
     {
+        CheckMaterials(content, found);
+        CheckRecipes(content, found);
+    }
+
+    /// <summary>
+    /// <c>Data/recipes.json</c> (plan 39 · CR4): read strictly; the TM maker's tiers are named once, climb in power and the
+    /// last holds every move; each costs materials and money; and every TM and TR of the items has a cost (its move exists
+    /// and its type has a common material, and a rare one where its tier asks for it).
+    /// </summary>
+    private static void CheckRecipes(GameContent content, List<Finding> found)
+    {
+        string path = Path.Combine(content.Root, "recipes.json");
+        if (!File.Exists(path)) return;
+        string file = content.Relative(path);
+        RecipesFile data;
+        try
+        {
+            data = GameDataFiles.ReadStrict<RecipesFile>(File.ReadAllText(path), file);
+        }
+        catch (InvalidDataException e)
+        {
+            found.Add(new Finding(Kind.Unreadable, file, "recipes", e.Message));
+            return;
+        }
+
+        void Add(string name, string what) => found.Add(new Finding(Kind.Data, file, name, what));
+        var tiers = data.Machines.Tiers;
+        if (tiers.Count == 0) Add("machines", "has no tiers: the TM maker prices nothing");
+        foreach (var group in tiers.GroupBy(t => t.Id).Where(g => g.Count() > 1)) Add(group.Key, "is a tier twice");
+        for (int i = 0; i < tiers.Count; i++)
+        {
+            var tier = tiers[i];
+            if (tier.Id.Length == 0) Add($"tiers[{i}]", "has no id");
+            if (tier.Common < 1) Add(tier.Id, "takes no common material");
+            if (tier.Rare < 0) Add(tier.Id, "takes a negative number of rare materials");
+            if (tier.Money < 1) Add(tier.Id, "costs no money");
+            if (i > 0 && tier.MaxPower <= tiers[i - 1].MaxPower) Add(tier.Id, "does not hold more power than the tier before it");
+            if (i > 0 && tier.Common < tiers[i - 1].Common) Add(tier.Id, "takes less of the common material than a lighter tier");
+        }
+        if (tiers.Count > 0 && tiers[^1].MaxPower < 250) Add(tiers[^1].Id, "is the last tier and does not hold every move (its maxPower is under 250)");
+        if (data.Machines.VariablePower < 1) Add("variablePower", "is under one");
+
+        // Every machine of the items can be made: it names a move, whose type has the materials its tier asks for
+        foreach (var item in ItemDatabase.GetAll().Where(TmMaker.Makeable))
+        {
+            if (item.TeachesMove == null || !MoveDatabase.Has(item.TeachesMove)) { Add(item.Name, $"teaches {item.TeachesMove}, which is no move"); continue; }
+            if (tiers.Count > 0 && TmMaker.CostOf(item) == null) Add(item.Name, "has no cost: its move's type has no common material, or its tier a rare one");
+        }
+    }
+
+    private static void CheckMaterials(GameContent content, List<Finding> found)
+    {
         string path = Path.Combine(content.Root, "materials.json");
         if (!File.Exists(path)) return;
         string file = content.Relative(path);

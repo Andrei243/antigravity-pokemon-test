@@ -1,0 +1,11 @@
+{
+  "machines": {
+    "variablePower": 80,
+    "tiers": [
+      { "id": "light",  "maxPower": 60,  "common": 3, "rare": 0, "money": 1500 },
+      { "id": "medium", "maxPower": 85,  "common": 5, "rare": 0, "money": 3000 },
+      { "id": "strong", "maxPower": 110, "common": 6, "rare": 1, "money": 6000 },
+      { "id": "mighty", "maxPower": 999, "common": 8, "rare": 2, "money": 12000 }
+    ]
+  }
+}

@@ -859,7 +859,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
             : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
             : screen == ScriptScreen.ChoosePokemon && counter != null ? $"open {screen} {counter}"
-            : screen == ScriptScreen.AlphPuzzle ? $"open {screen} {counter} {(PuzzleSolved ? "solved" : "left")}"
+            : screen == ScriptScreen.Crafting && counter != null ? $"open {screen} {counter}"
+            : screen == ScriptScreen.AlphPuzzle ?$"open {screen} {counter} {(PuzzleSolved ? "solved" : "left")}"
             : screen == ScriptScreen.Phrase ? $"open {screen} {counter} {(PhraseGroups.IsWhole(PhraseChoice) ? string.Join(" ", PhraseChoice!) : "none")}"
             : $"open {screen}");
         Answer = 0;
