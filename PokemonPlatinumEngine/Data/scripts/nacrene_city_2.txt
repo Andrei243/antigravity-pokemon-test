@@ -9,7 +9,6 @@
 
 
 script Ranger
-  face 7 player
   speaker "Pokémon Ranger"
   if flag FLAG_UNOVA_GOT_SECOND_FOSSIL goto Done
   if flag FLAG_UNOVA_GOT_MUSEUM_FOSSIL goto Second
@@ -47,7 +46,6 @@ label Done
 
 
 script FossilScientist
-  face 2 player
   speaker "Scientist"
   if flag FLAG_MAP_LOCAL_NACRENE_MUSEUM_REVIVING goto Working
   fossil ready

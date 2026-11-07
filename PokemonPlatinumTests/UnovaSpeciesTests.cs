@@ -22,7 +22,8 @@ public class UnovaSpeciesTests
         ["Pansear"] = "plan 38 · EX11: shaking grass", ["Simisear"] = "plan 38 · EX11: shaking grass",
         ["Panpour"] = "plan 38 · EX11: shaking grass", ["Simipour"] = "plan 38 · EX11: shaking grass",
         ["Emolga"] = "plan 38 · EX11: shaking grass", ["Castform"] = "plan 38 · EX11: shaking grass",
-        ["Steelix"] = "plan 38 · EX11: dust clouds", ["Drilbur"] = "plan 38 · EX11: dust clouds",
+        // (Steelix evolves from Onix by the Linking Cord since plan 40 · GE3)
+        ["Drilbur"] = "plan 38 · EX11: dust clouds",
         ["Excadrill"] = "plan 38 · EX11: dust clouds",
         ["Ducklett"] = "plan 38 · EX11: the bridges' shadows", ["Swanna"] = "plan 38 · EX11: the bridges' shadows",
         ["Alomomola"] = "plan 38 · EX11: rippling water", ["Wailmer"] = "plan 38 · EX11: rippling water",

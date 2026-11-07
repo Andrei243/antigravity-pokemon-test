@@ -6,7 +6,6 @@
 
 
 script Digger
-  face d24r0102_gsassistantm player
   speaker "Scientist"
   if flag FLAG_JOHTO_GOT_DOME_FOSSIL goto Done
   if flag FLAG_JOHTO_GOT_HELIX_FOSSIL goto Dome

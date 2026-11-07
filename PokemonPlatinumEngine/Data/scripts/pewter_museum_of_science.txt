@@ -62,7 +62,6 @@ label Two
 # game's own Fossils, VAR_REVIVED_POKEMON_SPECIES, and a local flag that lasts while the player stays). HeartGold hands
 # the Pokémon over at level 20, and so does this museum.
 script Curator
-  face t03r0101_gsassistantm player
   speaker "Scientist"
   say "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
   if flag FLAG_JOHTO_GOT_OLD_AMBER end
@@ -74,7 +73,6 @@ script Curator
 
 
 script FossilScientist
-  face t03r0101_gsassistantm_2 player
   speaker "Scientist"
   if flag FLAG_MAP_LOCAL_PEWTER_MUSEUM_REVIVING goto Working
   fossil ready

@@ -7180,6 +7180,12 @@ way -
 === abundant_shrine.Landorus
 from Landorus at 22,14 of AbundantShrine
 way -
+=== abundant_shrine.Thundurus
+from Thundurus at 25,13 of AbundantShrine
+way -
+=== abundant_shrine.Tornadus
+from Tornadus at 19,13 of AbundantShrine
+way -
 === accumula_town_2.TradeLass
 from Lass at 5,4 of AccumulaTown_House1_1F
 way 0
@@ -9509,6 +9515,10 @@ way -
 from Iris at 20,58 of CasteliaCity_GymStreet
 way -
   Iris> Where would shady people hide...?
+=== castelia_city_4.EeveeGift
+from Ace Trainer at 19,33 of CasteliaCity_NorthStreet
+way -
+  Ace Trainer> Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!
 === castelia_city_gym.Burgh
 from Burgh at 14,2 of CasteliaCity_Gym
 way 0
@@ -9550,6 +9560,15 @@ way -
   > Lucas put it away in the Medicine pocket.
   * fanfare FanfareItem
   + FLAG_UNOVA_GOT_WATER_CASTELIA
+=== castelia_city_pokemon_center.LinkingCord
+from Receptionist at 4,4 of CasteliaCity_PokemonCenter
+way -
+  Receptionist> I'm sorry, the link to other players is closed for now.
+  Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  * fanfare FanfareItem
 === castelia_sewers.Hugh
 from {rival} at 81,20 of CasteliaSewers
 way -
@@ -9800,9 +9819,12 @@ from the tile read at 6,7 of CeladonCity_GameCorner
 from the tile read at 6,9 of CeladonCity_GameCorner
 way -
   > A slot machine. Without a Coin Case there is nothing to play with.
+=== celadon_city_game_corner_prize_room.PokemonPrizes
+from Clerk at 4,2 of CeladonCity_GameCorner_PrizeRoom
+way -
+  Clerk> Prizes are exchanged for coins. You'll need a Coin Case first.
 === celadon_city_game_corner_prize_room.Prizes
 from Clerk at 2,2 of CeladonCity_GameCorner_PrizeRoom
-from Clerk at 4,2 of CeladonCity_GameCorner_PrizeRoom
 from Clerk at 6,2 of CeladonCity_GameCorner_PrizeRoom
 way -
   Clerk> Prizes are exchanged for coins. You'll need a Coin Case first.
@@ -9853,6 +9875,15 @@ from the tile read at 4,16 of CeladonCity_Gym
 from the tile read at 8,16 of CeladonCity_Gym
 way -
   > Celadon City Pokémon Gym. Leader: Erika. Winning trainers: Barry.
+=== celadon_city_pokemon_center_2f.LinkingCord
+from Receptionist at 2,2 of CeladonCity_PokemonCenter_2F
+way -
+  Receptionist> This is the trade corner. I'm sorry, the link to other players is closed for now.
+  Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  * fanfare FanfareItem
 === celadon_city_restaurant.CoinCaseMan
 from Man at 1,2 of CeladonCity_Restaurant
 way -
@@ -16274,6 +16305,9 @@ from Elder at 6,9 of DragonsDen_Shrine
 way -
   Elder> Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.
   Elder> When the time is right, I will ask you some questions. Not yet.
+=== dragonspiral_tower_9.Reshiram
+from Reshiram at 16,11 of DragonspiralTower_Top
+way -
 === driftveil_city.ClayAndHugh
 from the trigger at 212,401 of Unova
 way -
@@ -18704,6 +18738,15 @@ from Officer at 6,8 of Goldenrod_MagnetTrainStation
 way -
   Officer> The Magnet Train runs between Goldenrod City and Saffron City in Kanto.
   Officer> For now its seats are kept for those the League has named Champion. Win at the Indigo Plateau, and you can ride.
+=== goldenrod_pokecenter_1f.LinkingCord
+from Receptionist at 6,4 of Goldenrod_PokemonCenter_1F
+way -
+  Receptionist> This is the trade counter. I'm sorry, the link to other players is closed for now.
+  Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  * fanfare FanfareItem
 === goldenrod_radio_tower_1f.Grunt
 from Grunt at 23,5 of Goldenrod_RadioTower_1F
 way -
@@ -22098,6 +22141,15 @@ way 1, from answer 1
   Quiz Lady> Oh, how dull! Do come back if you change your mind.
   ? Will you take on today's quiz? = No
   = VAR_HOENN_QUIZ_LADY 0 -> 1
+=== lilycove_city_pokemon_center_2f.LinkingCord
+from Receptionist at 2,2 of LilycoveCity_PokemonCenter_2F
+way -
+  Receptionist> This is the trade corner. I'm sorry, the link to other players is closed for now.
+  Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  * fanfare FanfareItem
 === littleroot_town.GoSaveBirch
 from the trigger at 131,283 of Hoenn
 way -
@@ -24030,6 +24082,34 @@ way 0
 way 1, from answer 1
   * wildbattle Meloetta 65 Lost
   + seen musical_theater.Meloetta in the Musical Theater
+=== nacrene_city_2.FossilScientist
+from Scientist at 12,21 of NacreneCity_Museum
+way -
+  Scientist> We restore fossils here, at the museum's own laboratory.
+  Scientist> Bring one in sometime, and we'll see what we can do.
+=== nacrene_city_2.Ranger
+from Pokémon Ranger at 20,16 of NacreneCity_Museum
+way 0
+  Pokémon Ranger> I bring things I find in the wild for the museum to study. They've more fossils than they have room for, though.
+  Pokémon Ranger> Would you like one of these two?
+  > Lucas received the Cover Fossil!
+  > Lucas put it away in the Items pocket.
+  Pokémon Ranger> The scientist over there can bring it back to life. It used to be part of a Pokémon's shell, from the old sea.
+  ? Would you like one of these two? = The Cover Fossil
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_MUSEUM_FOSSIL
+  = VAR_UNOVA_MUSEUM_FOSSIL 0 -> 1
+way 2, from answer 1
+  Pokémon Ranger> No? Well, the offer stands.
+  ? Would you like one of these two? = No, thanks
+way 1, from answer 1
+  > Lucas received the Plume Fossil!
+  > Lucas put it away in the Items pocket.
+  Pokémon Ranger> The scientist over there can bring it back to life. It used to be part of a Pokémon's wing, from long ago.
+  ? Would you like one of these two? = The Plume Fossil
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_MUSEUM_FOSSIL
+  = VAR_UNOVA_MUSEUM_FOSSIL 0 -> 2
 === national_park.MeetBugsy
 from Bugsy at 58,39 of NationalPark
 way -
@@ -25699,6 +25779,21 @@ from the tile read at 10,25 of Pewter_Gym
 from the tile read at 4,25 of Pewter_Gym
 way -
   > Pewter City Pokémon Gym\nLeader: Brock
+=== pewter_museum_of_science.Curator
+from Scientist at 26,9 of Pewter_Museum
+way -
+  Scientist> Welcome to the museum. Mind the bones: some of them are older than the mountains outside.
+  Scientist> Oh, you look like a Trainer who travels. We found a lump of amber in the back room, more than we can study.
+  > Lucas received the Old Amber!
+  > Lucas put it away in the Items pocket.
+  Scientist> There's something caught inside it, from long, long ago. My colleague over there can tell you more.
+  * fanfare FanfareItem
+  + FLAG_JOHTO_GOT_OLD_AMBER
+=== pewter_museum_of_science.FossilScientist
+from Scientist at 4,13 of Pewter_Museum
+way -
+  Scientist> We study how to bring Pokémon back from fossils here. And at last, we've managed it!
+  Scientist> If you ever find a Fossil, bring it here. I'll show you what it used to be!
 === pewter_museum_of_science.Steven
 from Steven at 23,7 of Pewter_Museum
 way -
@@ -29885,6 +29980,16 @@ from the tile read at 8,3 of RuinsOfAlph_NorthwestItemRoom
 from the tile read at 8,4 of RuinsOfAlph_NorthwestItemRoom
 way -
   > A statue of rough stone. Rows of Unown are carved down its sides, and a great bird spreads its wings above them.
+=== ruins_of_alph_research_center.Digger
+from Scientist at 9,7 of RuinsOfAlph_ResearchCenter
+way -
+  Scientist> The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike.
+  Scientist> When I'm not reading them, I break up the rocks round the Ruins. Fossils turn up inside, now and then. Take this one!
+  > Lucas received the Helix Fossil!
+  > Lucas put it away in the Items pocket.
+  Scientist> I hear the museum in Pewter City has learned how to bring them back to life. Imagine it!
+  * fanfare FanfareItem
+  + FLAG_JOHTO_GOT_HELIX_FOSSIL
 === ruins_of_alph_southeast_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_SoutheastChamber
 way 0
@@ -30705,6 +30810,16 @@ from Guard at 4,4 of Saffron_SilphCo
 way -
   Guard> That lift goes up to the research floor. Only staff may ride it, I'm afraid.
   Guard> Unless you've got a Rotom with you. The researchers up there are always glad to meet one.
+=== saffron_silph_co_hq.Receptionist
+from Receptionist at 22,5 of Saffron_SilphCo
+way -
+  Receptionist> Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom.
+  Receptionist> Oh, and our engineers left a spare of their newest gadget at the desk. They said a visiting Trainer should have it.
+  > Lucas received the Upgrade!
+  > Lucas put it away in the Items pocket.
+  Receptionist> It's a box of data a Porygon can make use of. Let one hold it, and see what happens when it's traded.
+  * fanfare FanfareItem
+  + FLAG_JOHTO_GOT_UPGRADE
 === saffron_silph_co_hq.Steven
 from Steven at 14,8 of Saffron_SilphCo
 way 0

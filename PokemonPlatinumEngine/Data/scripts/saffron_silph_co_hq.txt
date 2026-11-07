@@ -75,7 +75,6 @@ label Open
 # Plan 40 · GE3, our words on HeartGold's beat: the receptionist hands a visitor one of the company's Upgrades, once
 # (FLAG_JOHTO_GOT_UPGRADE, a flag of ours), as HeartGold's Silph Co. gives its Up-Grade in Saffron City.
 script Receptionist
-  face t11r0701_gswoman6 player
   speaker "Receptionist"
   say "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom."
   if flag FLAG_JOHTO_GOT_UPGRADE end

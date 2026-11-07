@@ -6,7 +6,6 @@
 
 
 script EeveeGift
-  face 1 player
   speaker "Ace Trainer"
   if flag FLAG_UNOVA_GOT_EEVEE goto Given
   if not badge insect goto Plain
