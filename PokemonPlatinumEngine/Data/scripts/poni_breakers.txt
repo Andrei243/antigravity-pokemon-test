@@ -25,8 +25,16 @@ script AltarGuard
 script TapuFini
   face self player
   speaker none
+  scene "Tapu Fini rises"
+  letterbox on 0.4
+  camera pan 144 94 1.2
+  camera zoom 1.4 0.8
+  effect geyser 144 94 wait
   cry "Tapu Fini"
   text "Tapu Fini's mist rolled over the ruins, and it rose from the water."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
   if flag AlolaHallOfFame goto Fight
   text "It watched {player} for a moment, and then let the mist close again."
   end

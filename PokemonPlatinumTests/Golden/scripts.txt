@@ -25811,9 +25811,15 @@ way 0
   Prof. Kukui> Lucas! Hello, hello! Lillie told me what happened. The Pokémon League is finally open on Mount Lanakila, cousin.
   Prof. Kukui> Hau's already there, I bet. Take the Route 13 road east from Tapu Village. And try not to enjoy yourself too much.
   * scene poni_altar.The legendary of the sun
+  * letterbox on
+  * camera Pan 32 14
+  * camera Zoom 1.4
+  * effect Burst 32 14
   * cry Solgaleo
-  * wildbattle Solgaleo 55 nofleeing Won
+  * camera Release
+  * letterbox off
   * endscene
+  * wildbattle Solgaleo 55 nofleeing Won
   + FLAG_ALOLA_ALTAR_DONE
   + FLAG_ALOLA_LANAKILA_OPEN
   = VAR_ALOLA_STORY 0 -> 52
@@ -25821,7 +25827,7 @@ way 0
   + seen poni_altar.The legendary of the sun
 way 1, from answer 1
   * wildbattle Solgaleo 55 nofleeing Lost
-  * scene over, unseen
+  + seen poni_altar.The legendary of the sun
 === poni_altar.LillieAtAltar
 from Lillie at 31,24 of PoniAltar
 way -
@@ -25846,7 +25852,16 @@ from Tapu Fini at 144,94 of Poni
 way -
   > Tapu Fini's mist rolled over the ruins, and it rose from the water.
   > It watched Lucas for a moment, and then let the mist close again.
+  * scene poni_breakers.Tapu Fini rises
+  * letterbox on
+  * camera Pan 144 94
+  * camera Zoom 1.4
+  * effect Geyser 144 94
   * cry Tapu Fini
+  * camera Release
+  * letterbox off
+  * endscene
+  + seen poni_breakers.Tapu Fini rises
 === poni_wilds.Dulse
 from Dulse at 100,186 of Poni
 way -
