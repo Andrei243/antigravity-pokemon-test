@@ -1410,6 +1410,9 @@
     "toLevel": "PÂNĂ LA Nv {level}",
     "heldAt": "Nu mai primește EXP peste Nv. {level} deocamdată.",
     "stats": "STATISTICI",
+    "effort": "EFORT",
+    "effortValue": "{ev} / {max}",
+    "effortTotal": "{total} / {max}",
     "stat": { "HP": "HP", "Attack": "Atac", "Defense": "Apărare", "SpAttack": "At. Sp.", "SpDefense": "Ap. Sp.", "Speed": "Viteză" },
     "moves": "MIȘCĂRI",
     "power": "PUTERE",
@@ -6260,6 +6263,15 @@
       "pass": "Dă controlerul lui {player}",
       "lookAway": "{player}, uită-te în altă parte cât alege celălalt.",
       "ready": "Apasă A când ești gata"
+    }
+  },
+  "training": {
+    "why": {
+      "egg": "Un Ou nu se poate antrena.",
+      "stat": "Niciun exercițiu nu antrenează asta.",
+      "shedinja": "Shedinja nu are HP de antrenat.",
+      "limit": "{stat} nu mai poate primi efort.",
+      "full": "Acest Pokémon nu mai poate primi efort în total."
     }
   }
 }

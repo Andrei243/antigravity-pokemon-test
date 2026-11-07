@@ -275,7 +275,7 @@ internal static partial class ModernUi
         {
             var skills = new Rectangle(696 + slide, 132, 1160, 900);
             Panel(skills, 34);
-            StatRows(skills, p, 92, 66);
+            StatRows(skills, p, 92, 66, effort: true);
             UiShapes.Fill(new Rectangle(skills.X + 44, skills.Y + 536, skills.Width - 88, 3), 1.5f, Rule);
             Label(Text.Of("summary.ability"), skills.X + 44, skills.Y + 566);
             if (p.Ability is { } ability)
@@ -404,7 +404,7 @@ internal static partial class ModernUi
         DrawWrapped(move.DisplayDescription, r.X + 44, r.Y + 188, r.Width - 88, 32, Ink, 44, UiWeight.ExtraBold);
     }
     /// <summary>The six stats as rows in a panel: the value, and a bar whose length and colour follow the species' base stat (HP shows its current share).</summary>
-    private static void StatRows(Rectangle panel, Pokemon p, float first, float pitch)
+    private static void StatRows(Rectangle panel, Pokemon p, float first, float pitch, bool effort = false)
     {
         Label(Text.Of("summary.stats"), panel.X + 44, panel.Y + 30);
         int[] values = { p.MaxHP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed };
@@ -418,7 +418,42 @@ internal static partial class ModernUi
             var track = new Rectangle(panel.X + 420, cy - 11, panel.Width - 420 - 44, 22);
             if (i == 0) Bar(track, (float)p.CurrentHP / Math.Max(1, p.MaxHP), HpColor((float)p.CurrentHP / Math.Max(1, p.MaxHP)));
             else Bar(track, bases[i] / 160f, StatColor(bases[i]));
+            if (effort) EffortRow(panel, p, SummaryStats[i], cy);
         }
+        if (effort) EffortTotal(panel, p, panel.Y + first + 5 * pitch + 60);
+    }
+
+    /// <summary>
+    /// A stat's effort under its row (plan 36 · TR1; style guide, "Effort on SKILLS"): a thin bar on the base-stat bar's
+    /// track and its number out of the most the rules let a stat hold, Selection until it is full and Gold once it is.
+    /// </summary>
+    private static void EffortRow(Rectangle panel, Pokemon p, StatType stat, float cy)
+    {
+        int cap = Ruleset.Current.EvStatCap, ev = EffortRules.Get(p, stat);
+        var full = ev >= cap;
+        string text = Text.Of("summary.effortValue", ("ev", ev), ("max", cap));
+        UiFonts.DrawCentered(text, panel.X + 380 - UiFonts.Measure(text, 20, UiWeight.Black), cy + 28, 20, Muted, UiWeight.Black);
+        EffortBar(new Rectangle(panel.X + 420, cy + 14, panel.Width - 420 - 44, 8), (float)ev / cap, full);
+    }
+
+    /// <summary>The effort under the six rows: the word, the total out of 510 and a bar across the track's width.</summary>
+    private static void EffortTotal(Rectangle panel, Pokemon p, float y)
+    {
+        int total = EffortRules.Total(p), most = EffortRules.MaxTotal;
+        Label(Text.Of("summary.effort"), panel.X + 44, y - 10);
+        string text = Text.Of("summary.effortTotal", ("total", total), ("max", most));
+        UiFonts.DrawCentered(text, panel.X + 380 - UiFonts.Measure(text, 26, UiWeight.Black), y, 26, Ink, UiWeight.Black);
+        EffortBar(new Rectangle(panel.X + 420, y - 4, panel.Width - 420 - 44, 8), (float)total / most, total >= most);
+    }
+
+    /// <summary>A thin pill bar: Selection, or Gold once full.</summary>
+    private static void EffortBar(Rectangle track, float ratio, bool full)
+    {
+        UiShapes.Fill(track, track.Height / 2f, Track);
+        float w = (track.Width - 4) * Math.Clamp(ratio, 0f, 1f);
+        if (w < 0.5f) return;
+        var color = full ? Gold : Selection;
+        UiShapes.Shape(new Rectangle(track.X + 2, track.Y + 2, Math.Max(w, track.Height - 4), track.Height - 4), (track.Height - 4) / 2f, Lighter(color, 0.3f), color);
     }
 
     /// <summary>
