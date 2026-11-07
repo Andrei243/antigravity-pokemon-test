@@ -40,6 +40,9 @@ public class Pokedex
     /// <summary>Platinum's Sinnoh Pokédex (210 species): PokeAPI's <c>extended-sinnoh</c>.</summary>
     public const string Sinnoh = "extended-sinnoh";
 
+    /// <summary>Kalos's three regional Pokédexes (plan 23 · Z4), PokeAPI's identifiers.</summary>
+    public const string KalosCentral = "kalos-central", KalosCoastal = "kalos-coastal", KalosMountain = "kalos-mountain";
+
     public HashSet<int> SeenSpecies { get; } = new();
     public HashSet<int> CaughtSpecies { get; } = new();
 
