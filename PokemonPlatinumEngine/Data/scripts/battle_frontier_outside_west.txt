@@ -84,3 +84,19 @@ label Later
 label NoPass
   text "The door is shut. A sign says that only holders of a Frontier Pass may enter."
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Audinite (plan 40 · GE11, decision 11: those games give it on their post-game's island of
+# battles, the Battle Resort, which the Battle Frontier stands for here): the gentleman by the Dome's road gives it, once;
+# afterwards he says his line (the overlay's), sayown
+script Audinite
+  if flag FLAG_HOENN_RECEIVED_AUDINITE goto Own
+  face self player
+  say "A Trainer who made it to this island deserves a keepsake. My Audino and I won this stone in a tournament long ago."
+  give "Audinite"
+  setflag FLAG_HOENN_RECEIVED_AUDINITE
+  say "An Audino holding the Audinite can Mega Evolve, and its healing grows kinder still. Treasure it, young one."
+  end
+label Own
+  sayown
+  end

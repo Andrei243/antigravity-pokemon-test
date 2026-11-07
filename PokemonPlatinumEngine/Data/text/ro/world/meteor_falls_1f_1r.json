@@ -99,6 +99,16 @@
           "Prof. Cozmo"
         ]
       }
+    },
+    "dragon_elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

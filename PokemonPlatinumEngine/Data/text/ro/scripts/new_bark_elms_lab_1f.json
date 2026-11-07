@@ -508,5 +508,31 @@
         "Să te gândești că a intrat cineva și a luat un Pokémon cât eram ocupați. Între timp am schimbat yalele."
       ]
     }
+  ],
+  "OurMegaStone": [
+    {
+      "en": [
+        "Is that a Key Stone? Then you've seen Mega Evolution! I've been reading about it for years."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A friend in Kalos sent me this stone. It warms up whenever a Typhlosion comes near, so it must be its Mega Stone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let a Typhlosion hold it in battle, and with your Key Stone it should Mega Evolve. Tell me everything after!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

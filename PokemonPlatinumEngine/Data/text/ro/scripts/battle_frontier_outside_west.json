@@ -198,5 +198,23 @@
         "Ușa e închisă. Un anunț spune că doar cei cu un Frontier Pass pot intra."
       ]
     }
+  ],
+  "Audinite": [
+    {
+      "en": [
+        "A Trainer who made it to this island deserves a keepsake. My Audino and I won this stone in a tournament long ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Audino holding the Audinite can Mega Evolve, and its healing grows kinder still. Treasure it, young one."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

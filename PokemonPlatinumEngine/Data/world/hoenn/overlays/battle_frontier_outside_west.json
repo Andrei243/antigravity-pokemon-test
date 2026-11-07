@@ -20,7 +20,7 @@
     "man_3": { "name": "Man", "dialog": [ "I was going to start a challenge the moment I stepped off the ferry. Then the sea got to me... Ugh." ] },
     "woman_5": { "name": "Woman", "dialog": [ "Not so long ago there was nothing on this island but rock and grass. Look at it now!" ] },
     "fat_man": { "name": "Man", "dialog": [ "Mmph... Everyone here looks so tough... Mmph. I'd better finish my snack first." ] },
-    "gentleman": { "name": "Gentleman", "dialog": [ "Off to the Battle Dome? I wish you luck. Perhaps we shall meet in the final." ] },
+    "gentleman": { "name": "Gentleman", "script": "Audinite", "dialog": [ "Off to the Battle Dome? I wish you luck. Perhaps we shall meet in the final." ] },
     "frontier_maniac_1": { "name": "Maniac", "dialog": [ "Do you think they'll let us in if we haven't brought any Pokémon of our own?" ] },
     "frontier_maniac_2": { "name": "Maniac", "dialog": [ "The big fellow at the Factory said he'd lend us Pokémon. I think. I hope." ] },
     "man_5": { "name": "Man", "dialog": [ "The Battle Factory lends its challengers Pokémon. I've always wondered who trains them all." ] },

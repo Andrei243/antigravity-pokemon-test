@@ -86,3 +86,27 @@ label Fled
   hide self
   text "Thundurus rode the storm away over the wood..."
   end
+
+
+# The Reveal Glass (plan 40 · GE11), where Black 2 hands it over: at the Abundant Shrine, to a Trainer with one of the
+# three of the legend on the team (Tornadus, Thundurus or Landorus), once. Ours, the Pokémon Breeder who tells the legend
+# keeps it; to anyone else he says his line (the overlay's), sayown. The glass changes the three's formes from the bag
+# (Models/FormChanges.cs).
+script RevealGlass
+  face self player
+  if flag FLAG_UNOVA_RECEIVED_REVEAL_GLASS goto Given
+  if has "Tornadus" goto Shows
+  if has "Thundurus" goto Shows
+  if has "Landorus" goto Shows
+  sayown
+  end
+label Shows
+  say "That Pokémon with you... It's one of the three from the old story! I never thought I'd see one with my own eyes."
+  say "My grandmother left me this mirror. She said it shows such a Pokémon the shape it truly has. It's yours now."
+  give "Reveal Glass"
+  setflag FLAG_UNOVA_RECEIVED_REVEAL_GLASS
+  say "Hold the Reveal Glass up to it, and its forme will change. Hold it up again, and back it goes."
+  end
+label Given
+  say "Has the Reveal Glass shown you that Pokémon's true shape? My grandmother would have liked to see it."
+  end

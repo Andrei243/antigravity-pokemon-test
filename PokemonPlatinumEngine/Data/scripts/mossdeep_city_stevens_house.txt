@@ -48,12 +48,14 @@ script Beldum
   speaker none
   ask "{player} looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?"
   if no goto Leave
-  givepokemon "Beldum" 5
+  # (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Beldum comes holding its line's Metagrossite)
+  givepokemon "Beldum" 5 holding "Metagrossite"
   hide self
   setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
   setflag FLAG_RECEIVED_BELDUM
   fanfare pokemon
   text "{player} received a Beldum!"
+  call BeldumsStone
   end
 label Leave
   text "{player} left the Poké Ball where it was."
@@ -68,3 +70,9 @@ script Letter
   text "'I have a favour to ask. Please take the Poké Ball on the desk. Inside is Beldum, my favourite Pokémon.'"
   text "'I'm counting on you. May our paths cross again someday. Steven Stone'"
   end
+
+
+# What the Beldum holds (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Metagrossite, given with its line)
+script BeldumsStone
+  text "Beldum is holding something in its claw... It's a Metagrossite, the stone that lets a Metagross Mega Evolve!"
+  return

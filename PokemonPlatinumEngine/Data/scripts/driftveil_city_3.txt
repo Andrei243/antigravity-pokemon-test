@@ -1,0 +1,28 @@
+# A block of flats of Driftveil City by the market (plan 22 · U6, part b). docs/scripts.md describes the language; the
+# lines are our own.
+#
+# Genesect's drives (plan 40 · GE11), where Black 2 hands them over: in Driftveil City, to a Trainer who shows a Genesect.
+# The scientist who studies the Pokémon ships bring from far away (the overlay's person 3) keeps the Burn, Chill and Douse
+# Drives, which came in on a ship of Team Plasma's when the P2 Laboratory was emptied (its researcher gives the Shock Drive,
+# p2_laboratory_2.txt), and gives them once; to anyone else she says her line (the overlay's), sayown.
+script Drives
+  face self player
+  if flag FLAG_UNOVA_RECEIVED_DRIVES goto Given
+  if has "Genesect" goto Shows
+  sayown
+  end
+label Shows
+  speaker "Scientist"
+  say "Is that a Genesect? An ancient Pokémon, rebuilt with a cannon on its back! I've only ever read about them."
+  say "A crate came in on a ship last month, marked with Team Plasma's sign. Inside were three drives made for that cannon."
+  say "They're no use to me without the Pokémon. Here, take them all!"
+  give "Burn Drive"
+  give "Chill Drive"
+  give "Douse Drive"
+  setflag FLAG_UNOVA_RECEIVED_DRIVES
+  say "When Genesect holds a drive, its Techno Blast takes the drive's type: fire, ice or water. Try each in turn!"
+  end
+label Given
+  speaker "Scientist"
+  say "How is your Genesect getting on with its drives? Give it a new one before each battle and keep your foes guessing!"
+  end

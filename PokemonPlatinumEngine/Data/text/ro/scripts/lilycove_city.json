@@ -296,5 +296,31 @@
         "Boabele sunt minunate, dar Pokéblock-urile făcute din ele li se potrivesc Pokémonilor și mai bine."
       ]
     }
+  ],
+  "Altarianite": [
+    {
+      "en": [
+        "Now that is a work of art! Those wings are softer than any brushstroke I've ever bought. Your Altaria, I take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came by this stone with a painting of a cloud-winged Pokémon. It belongs with the real thing. Please, take it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Altarianite. Let your Altaria hold it in battle, and it will become even more beautiful."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

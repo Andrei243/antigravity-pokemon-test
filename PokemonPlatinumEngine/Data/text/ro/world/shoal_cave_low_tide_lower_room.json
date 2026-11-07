@@ -9,6 +9,16 @@
           "Centură Neagră"
         ]
       }
+    },
+    "shoal_cave_low_tide_lower_room.Glalitite": {
+      "name": {
+        "en": [
+          "Glalitite"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

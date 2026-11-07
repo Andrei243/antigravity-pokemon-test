@@ -126,6 +126,7 @@ script Ghetsis
   hide triad_cavern_c
   hide ghetsis
   fade in
+  call DnaSplicers
   face n player
   speaker "N"
   say "Thank you, for everyone. Kyurem is safe. It has spent its strength, but it will come back here to rest."
@@ -212,3 +213,16 @@ label Fled
   hide self
   text "Kyurem sank back into the dark of the cavern..."
   end
+
+
+# The DNA Splicers (plan 40 · GE11), where Black 2 hands them over: Ghetsis had brought them to the cavern for Kyurem, and
+# when the Shadow Triad take him away they are left lying where he stood. N asks the player to keep them. Called inside
+# the scene of Ghetsis and Kyurem, so a scene skipped gives them too; a Kyurem caught after the Hall of Fame is fused with
+# Zekrom or Reshiram by them from the bag (Models/FormChanges.cs).
+script DnaSplicers
+  speaker none
+  text "Something was lying on the cavern floor where Ghetsis had stood..."
+  find "DNA Splicers"
+  speaker "N"
+  say "The DNA Splicers... In his hands they only ever made Pokémon suffer. Will you keep them? I know you won't use them so."
+  return

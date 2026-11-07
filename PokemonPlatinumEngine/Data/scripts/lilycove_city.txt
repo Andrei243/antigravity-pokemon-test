@@ -197,3 +197,22 @@ label Given
 label Tomorrow
   say "Berries are lovely, but Pokéblocks made from them suit Pokémon even better."
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Altarianite (plan 40 · GE11, decision 11: Lilycove's collector gives it for a look at an
+# Altaria): the art dealer of the street (man_2), once Hoenn's Hall of Fame is entered, gives it to a Trainer with an
+# Altaria on the team, once; to anyone else he says his line (the overlay's), sayown
+script Altarianite
+  if not flag HoennHallOfFame goto Own
+  if flag FLAG_HOENN_RECEIVED_ALTARIANITE goto Own
+  if not has "Altaria" goto Own
+  face self player
+  say "Now that is a work of art! Those wings are softer than any brushstroke I've ever bought. Your Altaria, I take it?"
+  say "I came by this stone with a painting of a cloud-winged Pokémon. It belongs with the real thing. Please, take it."
+  give "Altarianite"
+  setflag FLAG_HOENN_RECEIVED_ALTARIANITE
+  say "An Altarianite. Let your Altaria hold it in battle, and it will become even more beautiful."
+  end
+label Own
+  sayown
+  end

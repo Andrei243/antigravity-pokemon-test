@@ -21,5 +21,9 @@
     "meteor_falls_aqua_grunt_1": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "After them!" ] },
     "meteor_falls_aqua_grunt_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "After them!" ] },
     "scientist_1": { "name": "Prof. Cozmo", "npcType": "scientist", "script": "Cozmo", "still": true }
-  }
+  },
+  // The elder of the dragon folk, ours (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Salamencite comes from an elder of Meteor Falls), once Hoenn's Hall of Fame is entered (meteor_falls_1f_1r.txt's Salamencite)
+  "npcs": [
+    { "id": "dragon_elder", "name": "Elder", "npcType": "old_woman", "x": 12, "y": 27, "facing": "Down", "script": "Salamencite", "shownBy": "HoennHallOfFame" }
+  ]
 }

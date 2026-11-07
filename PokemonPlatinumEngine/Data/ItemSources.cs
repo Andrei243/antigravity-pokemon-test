@@ -21,7 +21,14 @@ public enum ItemSourceKind
     /// <summary>A script hands it over (<c>give</c>, <c>additem</c>, a designer's <c>charm give</c>: plan 40 · GE5).</summary>
     Given,
     /// <summary>A script finds it (<c>find</c>).</summary>
-    Found
+    Found,
+    /// <summary>
+    /// A Pokémon a script hands over holds it (plan 40 · GE11): <c>givepokemon … holding</c> (the Tower of Mastery's
+    /// Lucario and its Lucarionite). A Pokémon met holding one (<c>wildbattle … holding</c>) is no sure way: it must be caught.
+    /// </summary>
+    Held,
+    /// <summary>A person's in-game trade sends it with its Pokémon (<c>trades.json</c>'s <c>item</c>, by the script's <c>trade</c>).</summary>
+    Traded
 }
 
 /// <summary>One way an item is had: its kind and where (an area, a room, a script, a counter, a list).</summary>
@@ -34,9 +41,11 @@ public sealed record ItemSource(ItemSourceKind Kind, string Where);
 /// rooms, the scripts of its places with every script they call and the common scripts its people name (a training
 /// hall's clerk, <c>common.TrainingClerk</c>), the counters they open and the Poké Marts' common list; <see cref="Everywhere"/>
 /// is every world, room, script and list. What gives an item only by chance (a wild Pokémon's held item, the Underground's
-/// walls, a Hidden Grotto) is not counted: a tool's test asks for a sure way. GPU-free, read from the data alone, once.
-/// Plan 36 · TR9's later machines needed no kind of their own: their shelf is a counter's stock (<c>marts.json</c>'s
-/// <c>training_hall_machines</c>) that the training clerk's <c>shop</c> opens, read as any other.
+/// walls, a Hidden Grotto) is not counted: a tool's test asks for a sure way. Plan 40 · GE11, which holds every item the
+/// rules run to a way (<c>ItemSourcesTests</c>), added two sure kinds: what a Pokémon given holds
+/// (<see cref="ItemSourceKind.Held"/>) and what a trade sends (<see cref="ItemSourceKind.Traded"/>). Plan 36 · TR9's later
+/// machines needed no kind of their own: their shelf is a counter's stock (<c>marts.json</c>'s <c>training_hall_machines</c>)
+/// that the training clerk's <c>shop</c> opens, read as any other. GPU-free, read from the data alone, once.
 /// </summary>
 public sealed class ItemSources
 {
@@ -115,6 +124,16 @@ public sealed class ItemSources
                 return everywhere = sources;
             }
         }
+    }
+
+    /// <summary>
+    /// What the worlds, rooms and scripts given give, read afresh: a test's own world (a way taken away, an owed one given).
+    /// </summary>
+    public static ItemSources From(IEnumerable<World> worldsRead, IReadOnlyList<MapFile> roomsRead, IEnumerable<Script> scripts)
+    {
+        var sources = new ItemSources();
+        sources.Read(worldsRead, roomsRead, scripts);
+        return sources;
     }
 
     /// <summary>The scripts given and every script they call, to the end.</summary>
@@ -200,6 +219,13 @@ public sealed class ItemSources
                     case Op.JoinAvenue when i.Name == "shop":
                         for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)
                             if (JoinAvenue.StockOf(i.Other ?? "", rank) is { } stock) counters.Add(stock);
+                        break;
+                    // Plan 40 · GE11: what a Pokémon handed over holds, and what a person's trade sends with its Pokémon
+                    case Op.GivePokemon when !string.IsNullOrEmpty(i.Other):
+                        Add(i.Other, ItemSourceKind.Held, $"{where}: a {i.Name} given holding it");
+                        break;
+                    case Op.Trade when NpcTrades.Get(i.Name) is { } trade && !string.IsNullOrEmpty(trade.Item):
+                        Add(trade.Item, ItemSourceKind.Traded, $"{where}: the trade {trade.Id}'s {trade.Gives}");
                         break;
                 }
             }

@@ -168,3 +168,20 @@ script SchoolKid
 label Explained
   say "I've been watching all the shows. There's always something new on!"
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Lopunnite (plan 40 · GE11, decision 11: a man of Mauville gives it once the story's great
+# battle is over): the man of the square (maniac), once Hoenn's Hall of Fame is entered, gives it, once; before then he
+# says his line (the overlay's), sayown
+script Lopunnite
+  if not flag HoennHallOfFame goto Own
+  if flag FLAG_HOENN_RECEIVED_LOPUNNITE goto Own
+  face self player
+  say "You're the new Champion! A traveller from Sinnoh left this with me. Said to hand it to the strongest Trainer passing through."
+  give "Lopunnite"
+  setflag FLAG_HOENN_RECEIVED_LOPUNNITE
+  say "A Lopunnite, the traveller called it. A Lopunny holding it can Mega Evolve. I'd say that makes it yours!"
+  end
+label Own
+  sayown
+  end

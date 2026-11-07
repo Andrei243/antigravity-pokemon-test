@@ -9,6 +9,16 @@
           "Drumețul"
         ]
       }
+    },
+    "granite_cave_1f.Steelixite": {
+      "name": {
+        "en": [
+          "Steelixite"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

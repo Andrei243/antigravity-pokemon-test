@@ -35,6 +35,16 @@
           "Bianca"
         ]
       }
+    },
+    "reversal_mountain_3.FireGem": {
+      "name": {
+        "en": [
+          "Fire Gem"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

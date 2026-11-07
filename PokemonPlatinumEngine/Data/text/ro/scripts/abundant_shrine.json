@@ -24,5 +24,39 @@
         "Landorus s-a înălțat departe peste pădure..."
       ]
     }
+  ],
+  "RevealGlass": [
+    {
+      "en": [
+        "That Pokémon with you... It's one of the three from the old story! I never thought I'd see one with my own eyes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My grandmother left me this mirror. She said it shows such a Pokémon the shape it truly has. It's yours now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold the Reveal Glass up to it, and its forme will change. Hold it up again, and back it goes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Has the Reveal Glass shown you that Pokémon's true shape? My grandmother would have liked to see it."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -59,5 +59,9 @@
     "SootopolisCity_EventScript_CitySign": "Sootopolis City\nThe city where history sleeps.",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
     "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
-  }
+  },
+  // Omega Ruby's and Alpha Sapphire's Mega Stone found here (plan 40 · GE11, decision 11), once Hoenn's Hall of Fame is entered
+  "npcs": [
+    { "id": "sootopolis_city.Sablenite", "name": "Sablenite", "npcType": "ItemBall", "x": 29, "y": 20, "item": "Sablenite", "shownBy": "HoennHallOfFame", "hiddenBy": "FLAG_HOENN_OBTAINED_SABLENITE" }
+  ]
 }

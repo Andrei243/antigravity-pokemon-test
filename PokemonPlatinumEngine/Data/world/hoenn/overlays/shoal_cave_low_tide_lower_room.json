@@ -10,5 +10,9 @@
   },
   "read": {
     "ShoalCave_LowTideLowerRoom_EventScript_ShoalSalt4": "ShoalSalt4"
-  }
+  },
+  // Omega Ruby's and Alpha Sapphire's Mega Stone found here (plan 40 · GE11, decision 11), once Hoenn's Hall of Fame is entered
+  "npcs": [
+    { "id": "shoal_cave_low_tide_lower_room.Glalitite", "name": "Glalitite", "npcType": "ItemBall", "x": 16, "y": 6, "item": "Glalitite", "shownBy": "HoennHallOfFame", "hiddenBy": "FLAG_HOENN_OBTAINED_GLALITITE" }
+  ]
 }
