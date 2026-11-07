@@ -25,7 +25,10 @@ public enum StrictKind
     Matrix,
     Habitats,
     Calendar,
-    Encounters
+    Encounters,
+    // Plan 37 · FC1: the later sets (generated) and the later places' trainers (written by hand)
+    FacilitySets,
+    FacilityTrainers
 }
 
 /// <summary>A data file to read strictly: where it is, its name under <c>Data</c>, and its kind.</summary>
@@ -53,6 +56,8 @@ public static class StrictFiles
         foreach (string file in Files(Path.Combine(data, "maps"))) yield return Make(data, file, StrictKind.Map);
         string sound = Path.Combine(data, SoundMap.FileName);
         if (File.Exists(sound)) yield return Make(data, sound, StrictKind.SoundMap);
+        string facilityTrainers = Path.Combine(data, Models.Facilities.FacilityTrainers.FileName);
+        if (File.Exists(facilityTrainers)) yield return Make(data, facilityTrainers, StrictKind.FacilityTrainers);
     }
 
     public static IEnumerable<StrictFile> GeneratedFiles(string data)
@@ -65,6 +70,8 @@ public static class StrictFiles
         };
         foreach (var (name, kind) in tables)
             if (File.Exists(Path.Combine(data, name))) yield return Make(data, Path.Combine(data, name), kind);
+        string facilitySets = Path.Combine(data, FacilitySetDatabase.FileName);
+        if (File.Exists(facilitySets)) yield return Make(data, facilitySets, StrictKind.FacilitySets);
         string world = Path.Combine(data, World.Folder);
         if (!Directory.Exists(world)) yield break;
         foreach (string region in Directory.GetDirectories(world).OrderBy(d => d, StringComparer.Ordinal))
@@ -112,6 +119,8 @@ public static class StrictFiles
                 case StrictKind.Habitats: GameDataFiles.ReadStrict<WorldHabitatsFile>(text, file.Relative); break;
                 case StrictKind.Calendar: GameDataFiles.ReadStrict<WorldCalendarFile>(text, file.Relative); break;
                 case StrictKind.Encounters: GameDataFiles.ReadStrict<WorldEncountersFile>(text, file.Relative); break;
+                case StrictKind.FacilitySets: GameDataFiles.ReadStrict<FacilitySetData>(text, file.Relative); break;
+                case StrictKind.FacilityTrainers: GameDataFiles.ReadStrict<Models.Facilities.FacilityTrainersFile>(text, file.Relative); break;
             }
             return null;
         }

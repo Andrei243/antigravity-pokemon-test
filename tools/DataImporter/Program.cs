@@ -8,6 +8,7 @@
 //   dotnet run --project tools/DataImporter -- --last-species 493   stop after Platinum's National Pokédex
 //   dotnet run --project tools/DataImporter -- --check-entries      the written Pokédex entries against the games' own (plan 08 · P13)
 //   dotnet run --project tools/DataImporter -- --trainer-hill       Emerald's Trainer Hill alone into trainer-hill.json (plan 21, part l)
+//   dotnet run --project tools/DataImporter -- --facility-sets      the later sets alone into facility-sets.json, from the data as it stands (plan 37 · FC1)
 
 using System.Text.Json.Nodes;
 using DataImporter;
@@ -46,6 +47,17 @@ if (args.Contains("--trades"))
     // The trades people of the games make, alone (plan 40 · GE2): trades.json, from the decompilations' in-game trade tables
     TradesImport.Use(Path.Combine(repo, "PokemonPlatinumEngine", "Data"));
     Write(Path.Combine(outDir, NpcTrades.FileName), GameDataFiles.Serialize(TradesImport.Build(repo, cache)));
+    return 0;
+}
+
+if (args.Contains("--facility-sets"))
+{
+    // The later sets alone (plan 37 · FC1), from the data files as they stand: facility-sets.json. The default run writes it too
+    string showdownOnly = Arg("--showdown") ?? Sources.Download(cache, "showdown", Sources.ShowdownRaw, Sources.ShowdownCommit, Sources.ShowdownFiles);
+    var sets = FacilitySets.Build(showdownOnly, PokemonDatabase.Everyone().ToList(), MoveDatabase.GetAll().ToList(), ItemDatabase.GetAll().ToList(),
+        FrontierDatabase.Banned, Path.Combine(repo, "tools", "DataImporter", "Overrides", FacilitySets.OverridesFile));
+    ReportFacilitySets(sets);
+    Write(Path.Combine(outDir, FacilitySetDatabase.FileName), GameDataFiles.Serialize(sets.Data));
     return 0;
 }
 
@@ -122,6 +134,9 @@ var trainers = importer.Trainers(species);
 // (the games' species alone: the masters are Let's Go's, a master to each of the National Pokédex's)
 var masters = MasterTrainers.Build(showdownDir, species.Where(s => !s.IsOurs).ToList(), moves, items);
 Console.WriteLine($"  {masters.Masters.Count} masters: {masters.FromSets} with moves of a set ({masters.MadeUp} made up with what their level taught them), {masters.WithoutMoves} with none (they know what their level taught them)");
+// The later sets (plan 37 · FC1): a battle set for each role of every species Showdown's random-battle files name
+var facilitySets = FacilitySets.Build(showdownDir, species, moves, items, frontier.Banned, Path.Combine(overrides, FacilitySets.OverridesFile));
+ReportFacilitySets(facilitySets);
 
 Check(species, moves, abilities, items);
 
@@ -131,6 +146,7 @@ Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(ab
 Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
 Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
 Write(Path.Combine(outDir, TrainerDatabase.MastersFileName), GameDataFiles.Serialize(masters.Masters));
+Write(Path.Combine(outDir, FacilitySetDatabase.FileName), GameDataFiles.Serialize(facilitySets.Data));
 Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts));
 Write(Path.Combine(outDir, SuperContestDatabase.FileName), GameDataFiles.Serialize(contests));
 Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals));
@@ -169,6 +185,15 @@ void Write(string path, string text)
     }
     File.WriteAllText(path, text);
     Console.WriteLine($"  wrote      {Path.GetFileName(path)}");
+}
+
+// What the later sets' import made, and the species with none by why
+static void ReportFacilitySets(FacilitySets.Result sets)
+{
+    var tiers = sets.Data.Sets.GroupBy(s => s.Tier).OrderBy(g => g.Key).Select(g => $"tier {g.Key} {g.Count()}");
+    Console.WriteLine($"  later sets: {sets.Data.Sets.Count} for {sets.Species} species ({sets.MadeUp} made up with what their level taught them; {string.Join(", ", tiers)})");
+    foreach (var why in sets.Data.Without.GroupBy(w => w.Why))
+        Console.WriteLine($"  without a set, {why.Key}: {why.Count()} ({string.Join(", ", why.Take(12).Select(w => w.Species))}{(why.Count() > 12 ? ", …" : "")})");
 }
 
 string? Arg(string name)

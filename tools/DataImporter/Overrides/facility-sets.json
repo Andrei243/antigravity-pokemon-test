@@ -1,0 +1,5 @@
+{
+  // Corrections to the later sets of plan 37 · FC1 (Data/facility-sets.json, written by tools/DataImporter's FacilitySets.cs):
+  // an entry by set id with the fields to change ("item": "Leftovers", "moves": [...]), read strictly as a set; a set the
+  // import lacks is added after its species' own when it says "new": true. None yet.
+}

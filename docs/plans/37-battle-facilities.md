@@ -96,6 +96,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - Tests (`FacilitySetTests`): every set's moves learnable (`Legality`) and run in full, its ability the species' own, its item an item; every fully evolved species of the 1,025 has a set or stands on the report's list; two imports write the file byte for byte; a team is the same for a seed and keeps species and items apart; the tiers follow the level; `frontier.json` and the golden battles are unmoved.
 - Shots: none (data and rules).
 - **Done when** a team of three later species (Kalos's and Paldea's among them) is drawn for a seed in a test and built at 50 with every move legal.
+- **FC1 as built** (2026-11-07, wave 93; rulings, "The later sets"): `tools/DataImporter/FacilitySets.cs` in the default run and alone as `--facility-sets` (from the data as it stands), `Data/facility-sets.json` (`sets` and `without`), `Overrides/facility-sets.json` (patches by set id, `"new": true` to add; schema `facility-sets-patch`), `Data/FacilitySetDatabase.cs` (`Sets`, `Without`, `Get`, `Of`, `TierOfLevel`, `TierOfTotal`), `FrontierSetRecord.Ability` and `Tier` (left out of `frontier.json`, which doesn't change), `FrontierTrainers.Build` taking a named ability, `Models/Facilities/FacilityTrainers.cs` (`Draw`, `Pool`, `SelectSets`, `MayCome`, `IvsFor`, `Rebuild`, `FacilityOpponent.AsTrainer`) and `Data/facility-trainers.json` (read strictly, schema `facility-trainers`), both files in `StrictFiles`. At the pinned commit: 888 sets for 655 species (146, 247, 291, 204 by tier 4 to 1), 47 made up; 18 banned, 350 named by no file (no fully evolved species among them), Smeargle and Oinkologne with no role that fits. Decisions of the session: sets of base forms only; no legendary or mythical species comes to a facility trainer unless the place asks (`legendaries: true`); a draw that refuses ten thousand times throws. `FacilitySetTests` holds it. Left for FC2: everything of the frame (a room's tiers by the streak are FC2's tables).
 
 ### FC2 · The facilities' frame and the streak house (2 sessions)
 - The frame: `FacilityRecord`, `StreakChallenge`, `FrontierRecords.Facilities`, the hosts' battles and trophies, `FrontierBoard.ForFacility`, `Data/facility-prizes.json` and its counter, `Op.Facility` with its words, `Core/GameEngine.Facilities.cs`, the bag's key items through `StartFrontierBattle`, the rulings' new section.
@@ -183,7 +184,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 
 ## Status
 
-- [ ] FC1 The later sets: battle sets for every species
+- [x] FC1 The later sets: battle sets for every species (2026-11-07, wave 93; below, "FC1 as built")
 - [ ] FC2 The facilities' frame and the streak house
 - [ ] FC3 The partners' tree
 - [ ] FC4 The house of titles

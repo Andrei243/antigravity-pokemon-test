@@ -1,0 +1,21 @@
+{
+  // The later battle places' own trainers (plan 37 · FC1; rulings, "The later sets"). Written by hand, ours: a class of the
+  // tables with the look its trainer wears and eight names of ours, from which Models/Facilities/FacilityTrainers.cs draws who
+  // brings a team of the later sets (Data/facility-sets.json). A class of two looks is two rows, each naming the look it wears.
+  "trainers": [
+    { "class": "Ace Trainer", "look": "ace_trainer_m", "names": [ "Alaric", "Benedikt", "Casimir", "Dashiell", "Evander", "Florian", "Gaspard", "Hadrian" ] },
+    { "class": "Ace Trainer", "look": "ace_trainer_f", "names": [ "Adeline", "Briony", "Celestine", "Dagmar", "Eloise", "Fenella", "Giselle", "Honora" ] },
+    { "class": "Veteran", "look": "veteran", "names": [ "Ambrose", "Barnabas", "Cornelius", "Dunstan", "Erasmus", "Fergus", "Gilbert", "Horatio" ] },
+    { "class": "Veteran", "look": "veteran_f", "names": [ "Agatha", "Beatrix", "Clementine", "Dorothea", "Euphemia", "Florence", "Gwendolyn", "Hester" ] },
+    { "class": "Black Belt", "look": "black_belt", "names": [ "Akio", "Bastian", "Conor", "Darius", "Emil", "Fintan", "Goran", "Hamish" ] },
+    { "class": "Battle Girl", "look": "battle_girl", "names": [ "Asta", "Brenna", "Carys", "Delia", "Eira", "Freja", "Greta", "Hilde" ] },
+    { "class": "Psychic", "look": "psychic", "names": [ "Aurelio", "Benoit", "Cyprian", "Damien", "Elias", "Fabian", "Gregor", "Hector" ] },
+    { "class": "Psychic", "look": "psychic_f", "names": [ "Annika", "Bettina", "Cosima", "Desdemona", "Elvira", "Felicia", "Galina", "Hermione" ] },
+    { "class": "Dragon Tamer", "look": "dragon_tamer", "names": [ "Anders", "Bjorn", "Cassius", "Drago", "Eamon", "Fenris", "Gunnar", "Harald" ] },
+    { "class": "Gentleman", "look": "gentleman", "names": [ "Archibald", "Bartholomew", "Clarence", "Douglas", "Edmund", "Frederick", "Godfrey", "Humphrey" ] },
+    { "class": "Socialite", "look": "socialite", "names": [ "Arabella", "Blanche", "Cordelia", "Daphne", "Estelle", "Fiorella", "Genevieve", "Henrietta" ] },
+    { "class": "Pokémon Ranger", "look": "ranger_m", "names": [ "Aldo", "Bowen", "Cormac", "Dermot", "Ewan", "Finnegan", "Griffin", "Hartley" ] },
+    { "class": "Pokémon Ranger", "look": "ranger_f", "names": [ "Aoife", "Bryony", "Ciara", "Deirdre", "Elin", "Fionnuala", "Grainne", "Hazel" ] },
+    { "class": "Scientist", "look": "scientist", "names": [ "Alvar", "Bertil", "Caspar", "Detlef", "Egon", "Folke", "Gustav", "Hjalmar" ] }
+  ]
+}
