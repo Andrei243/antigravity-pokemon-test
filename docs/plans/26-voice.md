@@ -331,7 +331,7 @@ ever want a recorded or cloned part. What it was written for:
 - [ ] V4 The designed cast
   - [x] `Data/voice/lexicon.json` (50 names, Sinnoh's first places, people and species) and `VoiceTool lexicon` for the rest
   - [x] briefs and Kokoro designs for Sinnoh's named cast (95 voices: the professor, both assistants, both mothers, Cynthia, Looker, Cyrus and his commanders and Charon, the eight Gym Leaders, the Elite Four and the rest of the story's people, and Sinnoh's role-named speakers)
-  - [x] Sinnoh's lines of those voices generated into the pack (`generate <voices> --region sinnoh`)
+  - [x] Sinnoh's lines of those voices generated into the pack (`generate <voices> --region sinnoh`): 2,098 lines, 2,197 takes (the assistant's in both voices), no take with a finding, `VoiceTool check` clean; 647 MB of WAV, kept in `~/.cache/pokemon-voicegen/voice/en` on the Windows machine
   - [ ] the user approves each main character's voice by ear from its reel (`reel --voice <id>`); a voice turned down gets another design
 - [ ] V5 Everyone else
   - [x] `reel <prefix>`: a town's takes one after another for spot listening; `jobs`/`generate` take an archetype (`look:lass`) for all its voices
@@ -443,3 +443,46 @@ the user's.
 6. **Decision 4, voices on by default**: still off; the recommendation stands (Story only once chapter 1 is voiced).
 7. Kanto's champion's battle lines (`kanto_champion_megamax_*`) are spoken by a Champion archetype, since the cast has
    no voice for Kanto's rival apart from Barry's; a `people` entry or a voice of his own would change it.
+
+Items 1 to 4 were answered on 2026-11-07 (no recordings, no clone, Kokoro-82M, no whisper.cpp): the section below.
+
+## V3 to V5 with Kokoro (2026-11-07)
+
+The user's answers of 2026-11-07 approved Kokoro-82M and gave the rival a designed voice; this session set the engine
+up and made Sinnoh's named cast.
+
+- **The engine** (`tools/VoiceGen/`): `setup-kokoro.sh` makes a Python environment of its own (from Python 3.9, the
+  Windows machine's; onnxruntime 1.19.2 and NumPy 2.0.2 are the last for it, pinned in `requirements-kokoro.txt`) and
+  fetches by checksum the model's ONNX export (fp32, 325 MB, `onnx-community/Kokoro-82M-v1.0-ONNX`, the same Apache-2.0
+  weights), `hexgrad/Kokoro-82M`'s `config.json` (the phoneme vocabulary) and the 28 English voices, all into
+  `VOICEGEN_HOME` (`~/.cache/pokemon-voicegen`). **Not `POKEMON_CACHE`**: another session removed that folder whole
+  while this one was using it, which the dev scripts allow. The package `kokoro-onnx` wants Python 3.10, so
+  `kokoro_speak.py` is our own short runner over onnxruntime and `phonemizer-fork` with `espeakng-loader`'s eSpeak NG
+  (GPL-3.0, a separate program on the developer's machine, never shipped). It speaks a take from a design, a direction
+  (a share of speed and pitch: `calm` 1 and 1, `excited` 1.08 and 1.03, `shouting` 1.10 and 1.05, `quiet` 0.92 and
+  0.98...) and a seed (three takes a line: as written, 4% slower, 4% faster; Kokoro itself draws nothing); names of the
+  lexicon are said by their respellings syllable by syllable; a pitch is the take made slower by its share and its WAV
+  stamped at a rate higher by the same share. Its output is brought under 0.89 of full scale before it is written, so
+  the bake's clip check sees the take and not the 16 bits.
+- **The tool**: `EngineConfig.Serve` keeps one engine process for a whole `generate` (a take is a JSON line on its
+  input), `{voicegen}` names the engine's folder; `generate` takes several voices and `--region <id>`
+  (`VoiceCatalogue.RegionOf`: an area by its world folder, a map or a script named after one by the region that lists
+  it, an introduction by its region, a battle line by its trainer id's prefix); `reel --voice <id> [--count n]` is a
+  voice's sample reel, its takes spread over their directions, with the words beside it in a `.txt`;
+  `VoiceGeneration.Plan` makes a voice chosen at run time (`assistant`) in each voice it chooses from, since the game
+  plays `assistant_boy`'s or `assistant_girl`'s take.
+- **The designs** (`cast.json`'s `design`, `CastDesign`; `VoiceTests.EveryDesignIsABlendOfKokorosOwnVoicesWithinReason`
+  holds each to Kokoro's voices, a speed of 0.7 to 1.4, a pitch of 0.85 to 1.25, a brief and no two alike): 42 written
+  one by one for the story's people (the rival `am_puck:0.6,am_michael:0.4` at 1.14 and pitch 1.10; Rowan
+  `bm_george:0.7,am_onyx:0.3` at 0.88 and 0.94 in en-gb; Cynthia `af_kore:0.5,af_heart:0.3,bf_emma:0.2`...) and 53 for
+  Sinnoh's role-named speakers (an Ace Trainer, a Beauty, the Battle Castle's valet...), their blends drawn from pools by
+  register and age. A name the cast shares across regions and that speaks mostly elsewhere (a trainer named Kurt, Juan,
+  Sabrina, Scott...) was left provisional: its design would be wrong for the other region's famous one.
+- **Time**: on the Ryzen 7 9800X3D about 1.5 s a take, 4.6 s a line with its three takes, on 8 threads; four runs side
+  by side (`KOKORO_THREADS` 4 or 5 each, a pack folder each, merged after) took 5.5 to 6 s a line each, about 40 lines
+  a minute together: Sinnoh's 2,197 takes in under an hour.
+- **What is left**: the user's ear on each reel; the archetypes (V5) and every other region's voices; `{player}` lines
+  written by hand where they are shown only; Ogg packs (decision 5 of the list above); splitting the voices one name
+  gives several regions (`rival` speaks 432 lines outside Sinnoh, `mom` 97: each region's rival and mother want a
+  `speaker <id>` or `people` entry of their own before their regions are generated); and a Romanian pack wants another
+  engine, since Kokoro has no Romanian.

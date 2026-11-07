@@ -43,12 +43,13 @@ dotnet run --project tools/VoiceTool -- reroll <key>                            
 `generate` bakes every take (`VoiceTool`'s bake: trimmed, the rumble and plosives taken out, brought to the voice bus's
 level, limited under -1 dB, at the game's rate), keeps the one with the fewest findings and the easiest pace, and
 writes it into the pack with the engine's name and its seed. The same seed and design make the same line again. On the
-Windows machine's Ryzen 7 9800X3D a line takes about 4.6 s (three takes) on 8 threads; three runs side by side, each
-into a pack folder of its own (`KOKORO_THREADS=5`), make about two lines a second together.
+Windows machine's Ryzen 7 9800X3D a line takes about 4.6 s (three takes) on 8 threads; four runs side by side, each
+into a pack folder of its own (`KOKORO_THREADS=4` or `5`) and merged afterwards, make about 40 lines a minute together.
+Never run two `generate`s into one pack folder at once: each writes its `pack.json` at the end of each voice.
 
-A voice is tuned by changing its `design` and making its lines again (`generate <voice> --which all` is not needed: a
-take made under another design is not stale, so delete the voice's folder in the pack, or reroll its lines). The user
-approves each voice by ear from its reel.
+A voice is tuned by changing its `design` and making its lines again: a take made under another design is not stale,
+so delete the voice's folder and its entries from the pack (or `reroll` its lines) before `generate`. The user approves
+each voice by ear from its reel.
 
 A speech-to-text check (whisper.cpp) is not wanted (the user's ruling of 2026-11-07); the bake's checks (clipping,
 loudness, a length that fits the words) are what holds a take.
