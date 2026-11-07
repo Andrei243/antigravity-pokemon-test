@@ -36,6 +36,10 @@ public sealed class Store : IDisposable
     public static readonly TimeSpan ForgetAfter = TimeSpan.FromDays(365);
 
     private readonly SqliteConnection db;
+    // The one connection is used under the hub's lock and also by a caller that only reads (a test polling OpenTrades):
+    // a statement from another thread while a transaction is pending throws, so every statement and every transaction
+    // holds this lock (reentrant, so Ack and Recover may read inside theirs).
+    private readonly object sync = new();
     private readonly byte[] secret;
 
     public Store(string path, string secret)
@@ -140,15 +144,18 @@ public sealed class Store : IDisposable
     public Guid Commit(string codeA, SavedPokemonData fromA, string codeB, SavedPokemonData fromB, string dataVersion, DateTimeOffset now)
     {
         var receipt = Guid.NewGuid();
-        using var tx = db.BeginTransaction();
-        Run("""
-            INSERT INTO trades(receipt, code_a, code_b, id_a, id_b, pokemon_a, pokemon_b, data_version, at)
-            VALUES($r, $ca, $cb, $ia, $ib, $pa, $pb, $dv, $at)
-            """, tx, ("$r", receipt.ToString()), ("$ca", codeA), ("$cb", codeB), ("$ia", fromA.Id!.Value.ToString()), ("$ib", fromB.Id!.Value.ToString()),
-            ("$pa", Json(fromA)), ("$pb", Json(fromB)), ("$dv", dataVersion), ("$at", now.ToUnixTimeSeconds()));
-        Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", fromA.Id.Value.ToString()), ("$c", codeB));
-        Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", fromB.Id.Value.ToString()), ("$c", codeA));
-        tx.Commit();
+        lock (sync)
+        {
+            using var tx = db.BeginTransaction();
+            Run("""
+                INSERT INTO trades(receipt, code_a, code_b, id_a, id_b, pokemon_a, pokemon_b, data_version, at)
+                VALUES($r, $ca, $cb, $ia, $ib, $pa, $pb, $dv, $at)
+                """, tx, ("$r", receipt.ToString()), ("$ca", codeA), ("$cb", codeB), ("$ia", fromA.Id!.Value.ToString()), ("$ib", fromB.Id!.Value.ToString()),
+                ("$pa", Json(fromA)), ("$pb", Json(fromB)), ("$dv", dataVersion), ("$at", now.ToUnixTimeSeconds()));
+            Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", fromA.Id.Value.ToString()), ("$c", codeB));
+            Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", fromB.Id.Value.ToString()), ("$c", codeA));
+            tx.Commit();
+        }
         return receipt;
     }
 
@@ -164,13 +171,16 @@ public sealed class Store : IDisposable
     /// <summary>The player of <paramref name="code"/> has applied the trade: whether it is now done for both. Nothing for a stranger to it.</summary>
     public (bool Known, bool Done) Ack(Guid receipt, string code)
     {
-        var trade = Trade(receipt);
-        if (trade == null || code != trade.CodeA && code != trade.CodeB) return (false, false);
-        using var tx = db.BeginTransaction();
-        Run(code == trade.CodeA ? "UPDATE trades SET ack_a=1 WHERE receipt=$r" : "UPDATE trades SET ack_b=1 WHERE receipt=$r", tx, ("$r", receipt.ToString()));
-        Run("UPDATE trades SET done=1 WHERE receipt=$r AND ack_a=1 AND ack_b=1", tx, ("$r", receipt.ToString()));
-        tx.Commit();
-        return (true, Trade(receipt)!.Done);
+        lock (sync)
+        {
+            var trade = Trade(receipt);
+            if (trade == null || code != trade.CodeA && code != trade.CodeB) return (false, false);
+            using var tx = db.BeginTransaction();
+            Run(code == trade.CodeA ? "UPDATE trades SET ack_a=1 WHERE receipt=$r" : "UPDATE trades SET ack_b=1 WHERE receipt=$r", tx, ("$r", receipt.ToString()));
+            Run("UPDATE trades SET done=1 WHERE receipt=$r AND ack_a=1 AND ack_b=1", tx, ("$r", receipt.ToString()));
+            tx.Commit();
+            return (true, Trade(receipt)!.Done);
+        }
     }
 
     /// <summary>
@@ -179,27 +189,33 @@ public sealed class Store : IDisposable
     /// </summary>
     public int Recover()
     {
-        var open = OpenTrades();
-        if (open.Count == 0) return 0;
-        using var tx = db.BeginTransaction();
-        foreach (var t in open)
+        lock (sync)
         {
-            Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", t.FromA.Id!.Value.ToString()), ("$c", t.CodeB));
-            Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", t.FromB.Id!.Value.ToString()), ("$c", t.CodeA));
+            var open = OpenTrades();
+            if (open.Count == 0) return 0;
+            using var tx = db.BeginTransaction();
+            foreach (var t in open)
+            {
+                Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", t.FromA.Id!.Value.ToString()), ("$c", t.CodeB));
+                Run("INSERT OR REPLACE INTO owners(id, code) VALUES($id, $c)", tx, ("$id", t.FromB.Id!.Value.ToString()), ("$c", t.CodeA));
+            }
+            tx.Commit();
+            return open.Count;
         }
-        tx.Commit();
-        return open.Count;
     }
 
     private List<TradeRow> Trades(string where, params (string, object)[] args)
     {
-        using var cmd = Command($"SELECT receipt, code_a, code_b, pokemon_a, pokemon_b, ack_a, ack_b, done FROM trades {where}", null, args);
-        using var r = cmd.ExecuteReader();
-        var rows = new List<TradeRow>();
-        while (r.Read())
-            rows.Add(new TradeRow(Guid.Parse(r.GetString(0)), r.GetString(1), r.GetString(2), Saved(r.GetString(3)), Saved(r.GetString(4)),
-                r.GetInt64(5) != 0, r.GetInt64(6) != 0, r.GetInt64(7) != 0));
-        return rows;
+        lock (sync)
+        {
+            using var cmd = Command($"SELECT receipt, code_a, code_b, pokemon_a, pokemon_b, ack_a, ack_b, done FROM trades {where}", null, args);
+            using var r = cmd.ExecuteReader();
+            var rows = new List<TradeRow>();
+            while (r.Read())
+                rows.Add(new TradeRow(Guid.Parse(r.GetString(0)), r.GetString(1), r.GetString(2), Saved(r.GetString(3)), Saved(r.GetString(4)),
+                    r.GetInt64(5) != 0, r.GetInt64(6) != 0, r.GetInt64(7) != 0));
+            return rows;
+        }
     }
 
     // ---- Battles ----
@@ -217,16 +233,19 @@ public sealed class Store : IDisposable
     /// <summary>Wins, losses and draws of the player of <paramref name="code"/> against the player of <paramref name="other"/>.</summary>
     public (int Wins, int Losses, int Draws) Battles(string code, string other)
     {
-        int wins = 0, losses = 0, draws = 0;
-        using var cmd = Command("SELECT code_a, winner FROM battles WHERE (code_a=$c AND code_b=$o) OR (code_a=$o AND code_b=$c)", null, ("$c", code), ("$o", other));
-        using var r = cmd.ExecuteReader();
-        while (r.Read())
+        lock (sync)
         {
-            if (r.IsDBNull(1)) { draws++; continue; }
-            bool aWon = r.GetString(1) == "a";
-            if (aWon == (r.GetString(0) == code)) wins++; else losses++;
+            int wins = 0, losses = 0, draws = 0;
+            using var cmd = Command("SELECT code_a, winner FROM battles WHERE (code_a=$c AND code_b=$o) OR (code_a=$o AND code_b=$c)", null, ("$c", code), ("$o", other));
+            using var r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                if (r.IsDBNull(1)) { draws++; continue; }
+                bool aWon = r.GetString(1) == "a";
+                if (aWon == (r.GetString(0) == code)) wins++; else losses++;
+            }
+            return (wins, losses, draws);
         }
-        return (wins, losses, draws);
     }
 
     // ---- Plumbing ----
@@ -246,14 +265,20 @@ public sealed class Store : IDisposable
 
     private int Run(string sql, SqliteTransaction? tx = null, params (string, object)[] args)
     {
-        using var cmd = Command(sql, tx, args);
-        return cmd.ExecuteNonQuery();
+        lock (sync)
+        {
+            using var cmd = Command(sql, tx, args);
+            return cmd.ExecuteNonQuery();
+        }
     }
 
     private T Scalar<T>(string sql, params (string, object)[] args)
     {
-        using var cmd = Command(sql, null, args);
-        var value = cmd.ExecuteScalar();
-        return value is null or DBNull ? default! : (T)Convert.ChangeType(value, Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T));
+        lock (sync)
+        {
+            using var cmd = Command(sql, null, args);
+            var value = cmd.ExecuteScalar();
+            return value is null or DBNull ? default! : (T)Convert.ChangeType(value, Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T));
+        }
     }
 }
