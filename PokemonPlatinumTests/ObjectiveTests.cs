@@ -289,8 +289,10 @@ public class ObjectiveTests
     {
         var story = new StoryState();
         string[] expected = { "kalosDownstairs", "kalosDoor", "kalosAquacorde", "kalosHome", "kalosRoute2", "kalosForest", "kalosRoute3", "kalosSantalune", "kalosViola", "kalosRoute4", "kalosLab", "kalosLysandre",
-            "kalosRoute5", "kalosCamphrier", "kalosPalace", "kalosSnorlax", "kalosCyllage", "kalosGrant", "kalosRoute10", "kalosShalour", "kalosKorrina", "kalosMastery", "kalosFree" };
-        for (int n = 0; n <= 22; n++)
+            "kalosRoute5", "kalosCamphrier", "kalosPalace", "kalosSnorlax", "kalosCyllage", "kalosGrant", "kalosRoute10", "kalosShalour", "kalosKorrina", "kalosMastery",
+            // Plan 23 · Z4: on to the Hall of Fame
+            "kalosRamos", "kalosPowerPlant", "kalosClemont", "kalosValerie", "kalosOlympia", "kalosLabs", "kalosFlareHQ", "kalosWulfric", "kalosLeague", "kalosFree" };
+        for (int n = 0; n <= 31; n++)
         {
             story.SetVar("VAR_KALOS_STORY", n);
             Assert.Equal(expected[n], Objectives.Current(story, RegionDatabase.Kalos)?.Name);

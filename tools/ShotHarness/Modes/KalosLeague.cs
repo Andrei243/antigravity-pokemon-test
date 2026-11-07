@@ -132,7 +132,7 @@ partial class Harness
             ("wk231_pokemon_village", null, 687, 130, Direction.Up),
             ("wk232_route21", null, 630, 128, Direction.Left),
             ("wk233_victory_road_mouth", null, 605, 123, Direction.Up),
-            ("wk234_league_terrace", "wk235_league_terrace_night", 608, 72, Direction.Up),
+            ("wk234_league_terrace", "wk235_league_terrace_night", 608, 65, Direction.Up),
             ("wk236_geosenge_stones", null, 108, 223, Direction.Up),
         };
         foreach (var (day, _, x, y, facing) in places)
@@ -153,12 +153,12 @@ partial class Harness
             ("wk248_anistar_center", "AnistarCity_PokemonCenter_1F", 8, 9, Direction.Up),
             ("wk249_lysandre_labs", "LumioseCity_LysandreLabs", 8, 13, Direction.Up),
             ("wk250_flare_hq", "GeosengeTown_FlareHQ", 10, 18, Direction.Up),
-            ("wk251_flare_hq_chamber", "GeosengeTown_FlareHQ", 10, 8, Direction.Up),
+            ("wk251_flare_hq_chamber", "GeosengeTown_FlareHQ", 10, 9, Direction.Up),
             ("wk252_couriway_center", "CouriwayTown_PokemonCenter_1F", 8, 9, Direction.Up),
             ("wk253_snowbelle_gym", "SnowbelleCity_Gym", 6, 13, Direction.Up),
             ("wk254_snowbelle_center", "SnowbelleCity_PokemonCenter_1F", 8, 9, Direction.Up),
             ("wk255_victory_road_south", "KalosVictoryRoad", 28, 54, Direction.Up),
-            ("wk256_victory_road_hall", "KalosVictoryRoad", 30, 30, Direction.Up),
+            ("wk256_victory_road_hall", "KalosVictoryRoad", 22, 34, Direction.Up),
             ("wk257_victory_road_north", "KalosVictoryRoad", 34, 10, Direction.Up),
             ("wk258_league_hall", "KalosLeague_Hall", 10, 12, Direction.Up),
             ("wk259_malva_room", "KalosLeague_MalvaRoom", 6, 9, Direction.Up),
@@ -197,8 +197,8 @@ partial class Harness
         Left("the Power Plant");
 
         // ---- the Prism Tower and Clemont
-        At("Kalos", 359, 362, Direction.Up); Frames(2); game.Interact();
-        ReadTo("carries"); Frames(10); Shot("wks66_the_tower_lift");
+        At("Kalos", 358, 363, Direction.Up); Frames(2); game.Interact();
+        ReadTo("Up you go"); Frames(10); Shot("wks66_the_tower_lift");
         ReadTo(null);
         Frames(30);
         Talk("LumioseCity_PrismTowerGym", 6, 5, Direction.Up);
@@ -248,11 +248,11 @@ partial class Harness
         ReadTo(null);
         Frames(30);
         Shot("wks82_team_flares_base");
-        Talk("GeosengeTown_FlareHQ", 10, 7, Direction.Up);
+        Talk("GeosengeTown_FlareHQ", 10, 8, Direction.Up);
         ReadTo("the Pokémon of life"); Frames(10); Shot("wks83_lysandre_at_the_weapon");
         Battle("Lysandre's second battle", "wks84_lysandre_battle_2");
         ReadTo(null);
-        Talk("GeosengeTown_FlareHQ", 10, 4, Direction.Up);
+        Talk("GeosengeTown_FlareHQ", 10, 5, Direction.Up);
         ReadTo("horns glow"); Frames(10); Shot("wks85_xerneas_wakes");
         ToBattle();
         if (State() == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("wks86_xerneas_battle"); Win(); }
@@ -288,14 +288,35 @@ partial class Harness
         Talk("KalosLeague_ChampionRoom", 7, 5, Direction.Up);
         ReadTo("I'm Diantha"); Frames(10); Shot("wks94_diantha");
         Battle("Diantha's battle", "wks95_diantha_battle");
-        ReadTo("This is the Hall of Fame"); Frames(10); Shot("wks96_hall_of_fame");
-        for (int i = 0; i < 3000 && game.Map.Name != "VanivilleTown_PlayersHouse_2F"; i++)
+        for (int i = 0; i < 1500 && game.Map.Name != "KalosLeague_HallOfFame"; i++)
         {
-            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
-            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
-            else { Confirm(); Frames(2); }
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
         }
+        ReadTo("This is the Hall of Fame"); Frames(10); Shot("wks96_hall_of_fame");
+        for (int i = 0; i < 2400 && State() != GameState.HallOfFameCeremony; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
+        Skip(3.0); Shot("wks97_the_teams_entry");
+        // (the ceremony and the credits end in black, and the script goes on at home: read on through both, holding the
+        // credits' button as the Unova mode does)
+        for (int i = 0; i < 20000 && (State() != GameState.Overworld || engine.ScriptRunning || Box().IsActive); i++)
+        {
+            if (State() == GameState.Credits) { game.Credits.Held = true; Frames(1); }
+            else if (State() == GameState.HallOfFameCeremony) { game.Ceremony.PressConfirm(); Frames(1); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Frames(30); Shot("wks98_home_as_champion");
         Left("the Hall of Fame");
+        // ---- the flight on to Alola, its attendant in Lumiose's Pokémon Center
+        At("LumioseCity_PokemonCenter_1F", 12, 10, Direction.Right); Frames(2); game.Interact();
+        Until(() => Box().IsActive, "the attendant's words");
+        Frames(10); Shot("wks99_the_flight_to_alola");
+        ReadTo(null);
         game.DeleteSave();
     }
 }

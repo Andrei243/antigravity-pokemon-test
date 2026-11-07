@@ -104,7 +104,7 @@
     },
     // Plan 23 · Z4: the Prism Tower's lift operator at the foot of its south face, who takes the player up to its Gym once the
     // power is back (lumiose_city.txt's PrismTower)
-    "lift_operator": { "name": "Lift Operator", "npcType": "Gentleman", "script": "PrismTower", "still": true },
+    "lift_operator": { "name": "Lift Operator", "npcType": "receptionist", "script": "PrismTower", "still": true },
     "lass": {
       "name": "Lass",
       "npcType": "Lass",

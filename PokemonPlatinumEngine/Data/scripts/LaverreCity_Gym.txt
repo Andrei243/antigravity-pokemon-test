@@ -7,7 +7,7 @@
 
 script Valerie
   face valerie player
-  speaker "Valerie"
+  speaker kalos_valerie "Valerie"
   if badge fairy goto Won
   if var VAR_KALOS_STORY < 25 goto Later
   scene "Valerie"

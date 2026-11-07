@@ -22,6 +22,10 @@
       "note": "first spoken at floccesy_town.txt(22)",
       "provisional": true
     },
+    "aliana": {
+      "note": "first spoken at KalosPowerPlant.txt(11)",
+      "provisional": true
+    },
     "alice": {
       "note": "first spoken at fuchsia_gym.txt(79)",
       "provisional": true
@@ -288,6 +292,10 @@
       "note": "first spoken at route_218.txt(23)",
       "provisional": true
     },
+    "clemont": {
+      "note": "first spoken at LumioseCity_PrismTowerGym.txt(10)",
+      "provisional": true
+    },
     "clyde": {
       "note": "first spoken at castelia_city_3.txt(18)",
       "provisional": true
@@ -379,6 +387,10 @@
       "note": "first spoken at LumioseCity_SycamoreLab.txt(70)",
       "provisional": true
     },
+    "diantha": {
+      "note": "first spoken at KalosLeague_ChampionRoom.txt(9)",
+      "provisional": true
+    },
     "director": {
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
@@ -401,6 +413,10 @@
     },
     "drake": {
       "note": "first spoken at ever_grande_city_drakes_room.txt(32)",
+      "provisional": true
+    },
+    "drasna": {
+      "note": "first spoken at KalosLeague_DrasnaRoom.txt(8)",
       "provisional": true
     },
     "drayden": {
@@ -670,6 +686,10 @@
       "note": "first spoken at CyllageCity_Gym.txt(10)",
       "provisional": true
     },
+    "kalos_valerie": {
+      "note": "Valerie of Laverre City's Gym (plan 23 · Z4), named by her id so the other Trainers called Valerie keep their voices; first spoken at LaverreCity_Gym.txt(10)",
+      "provisional": true
+    },
     "kanto_attendant": {
       "note": "first spoken at PalParkLobby.txt(210)",
       "provisional": true
@@ -748,6 +768,10 @@
     },
     "lift_attendant": {
       "note": "first spoken at lilycove_city_department_store_elevator.txt(13)",
+      "provisional": true
+    },
+    "lift_operator": {
+      "note": "first spoken at lumiose_city.txt(26)",
       "provisional": true
     },
     "lillie": {
@@ -842,6 +866,10 @@
     },
     "maid_sophie": {
       "note": "first spoken at PokemonMansion.txt(56)",
+      "provisional": true
+    },
+    "malva": {
+      "note": "first spoken at KalosLeague_MalvaRoom.txt(8)",
       "provisional": true
     },
     "man_in_black": {
@@ -1025,6 +1053,10 @@
       "note": "first spoken at route_111_old_ladys_rest_stop.txt(7)",
       "provisional": true
     },
+    "olympia": {
+      "note": "first spoken at AnistarCity_Gym.txt(12)",
+      "provisional": true
+    },
     "owner": {
       "note": "first spoken at goldenrod_bike_shop.txt(8)",
       "provisional": true
@@ -1156,6 +1188,10 @@
     },
     "ramon": {
       "note": "first spoken at cinnabar_island_gym.txt(57)",
+      "provisional": true
+    },
+    "ramos": {
+      "note": "first spoken at CoumarineCity_Gym.txt(11)",
       "provisional": true
     },
     "red": {
@@ -1344,6 +1380,10 @@
     },
     "sidney": {
       "note": "first spoken at ever_grande_city_sidneys_room.txt(17)",
+      "provisional": true
+    },
+    "siebold": {
+      "note": "first spoken at KalosLeague_SieboldRoom.txt(8)",
       "provisional": true
     },
     "sign": {
@@ -1561,6 +1601,10 @@
       "note": "first spoken at floccesy_ranch_2.txt(70)",
       "provisional": true
     },
+    "wikstrom": {
+      "note": "first spoken at KalosLeague_WikstromRoom.txt(8)",
+      "provisional": true
+    },
     "will": {
       "note": "first spoken at pokemon_league_will_room.txt(12)",
       "provisional": true
@@ -1575,6 +1619,10 @@
     },
     "wren": {
       "note": "first spoken at sootopolis_city_mystery_events_house_b1f.txt(25)",
+      "provisional": true
+    },
+    "wulfric": {
+      "note": "first spoken at SnowbelleCity_Gym.txt(10)",
       "provisional": true
     },
     "young_man": {
@@ -1607,6 +1655,7 @@
     "Agatha": "agatha",
     "Aide": "look:aide",
     "Alder": "alder",
+    "Aliana": "aliana",
     "Alice": "alice",
     "Ampère": "ampere",
     "Announcer": "look:announcer",
@@ -1677,6 +1726,7 @@
     "Clair": "clair",
     "Clay": "clay",
     "Clefairy": "clefairy",
+    "Clemont": "clemont",
     "Clerk": "look:clerk",
     "Clyde": "clyde",
     "Collector": "collector",
@@ -1706,12 +1756,14 @@
     "Derek": "derek",
     "Devon Employee": "devon_employee",
     "Dexio": "dexio",
+    "Diantha": "diantha",
     "Director": "director",
     "Dock": "dock",
     "Dojo Master": "dojo_master",
     "Dome Owner": "dome_owner",
     "Dragon Tamer": "dragon_tamer",
     "Drake": "drake",
+    "Drasna": "drasna",
     "Drayden": "drayden",
     "Dusty": "dusty",
     "Dylan": "dylan",
@@ -1812,6 +1864,7 @@
     "Lass": "look:lass",
     "Librarian": "librarian",
     "Lift Attendant": "lift_attendant",
+    "Lift Operator": "lift_operator",
     "Lillie": "lillie",
     "Linda": "linda",
     "Little Boy": "little_boy",
@@ -1836,6 +1889,7 @@
     "Maid Elena": "maid_elena",
     "Maid Emily": "maid_emily",
     "Maid Sophie": "maid_sophie",
+    "Malva": "malva",
     "Man": "look:man",
     "Man in Black": "man_in_black",
     "Manager": "manager",
@@ -1883,6 +1937,7 @@
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
+    "Olympia": "olympia",
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
@@ -1919,6 +1974,7 @@
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",
     "Ramon": "ramon",
+    "Ramos": "ramos",
     "Receptionist": "look:receptionist",
     "Red": "red",
     "Referee": "referee",
@@ -1963,6 +2019,7 @@
     "Shop Girl": "shop_girl",
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
+    "Siebold": "siebold",
     "Sign": "sign",
     "Sina": "sina",
     "Skitty": "skitty",
@@ -2020,12 +2077,14 @@
     "Wesley": "wesley",
     "Whitney": "whitney",
     "Wife": "wife",
+    "Wikstrom": "wikstrom",
     "Will": "will",
     "Wingull": "wingull",
     "Winona": "winona",
     "Woman": "look:woman",
     "Worker": "look:worker",
     "Wren": "wren",
+    "Wulfric": "wulfric",
     "Young Man": "young_man",
     "Youngster": "look:youngster",
     "Zac": "zac",

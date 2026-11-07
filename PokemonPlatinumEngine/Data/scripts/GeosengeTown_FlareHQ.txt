@@ -35,7 +35,7 @@ script Xerneas
   scene "Xerneas wakes"
   face player self
   letterbox on 0.4
-  effect burst 10 3
+  effect burst 10 4
   cry "Xerneas"
   speaker none
   text "The great Pokémon's horns glow with every colour at once!\nIt rises to face {player}!"

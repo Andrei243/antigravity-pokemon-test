@@ -98,9 +98,9 @@
     "TTTTTTTTTTTTTTTT================",
     "TTTTTTTTTTTTTTTT================",
     "TTTTTTTTTTTTTTTTT=====.......???",
-    ",,,,,,,,,TTTTTTTTT=====....O.???",
-    ",,,,,,,,,TTTTTTTTTT=====....O???",
-    ",,,,,,,,,TTTTTTTTTTT=====....???"
+    ":::::::::TTTTTTTTT=====....O.???",
+    ":::::::::TTTTTTTTTT=====....O???",
+    ":::::::::TTTTTTTTTTT=====....???"
   ],
   "heights": [
     { "x": 0, "z": 0, "width": 32, "depth": 32, "height": 0, "slopeX": 0, "slopeZ": 0 }
