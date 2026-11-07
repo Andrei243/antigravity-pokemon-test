@@ -435,11 +435,16 @@ internal static partial class CharacterModels
         // The waistline: the top above it, the trousers (or a swimsuit's bottom) below
         float waistline = f.WaistY - 0.025f * sz;
         PaintBox(m, new Vector3(0, waistline + 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), Quaternion.Identity, upper, SurfaceOf(upper, s.Skin),
-            HumanBones.Spine, HumanBones.Hips, HumanBones.Chest);
+            HumanBones.Spine, HumanBones.Hips, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR);
+        // The back of a crew neck rises up the neck's foot
+        PaintBox(m, new Vector3(0, f.NeckFootY + 0.02f * sz - 0.3f, -0.34f), new Vector3(0.5f, 0.3f, 0.3f), Quaternion.Identity, upper, SurfaceOf(upper, s.Skin),
+            HumanBones.Neck, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR);
         PaintBox(m, new Vector3(0, waistline - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), Quaternion.Identity, s.Bottom, Cloth, HumanBones.Hips, HumanBones.Spine);
-        // A round neckline at the neck's foot, the neck bare above it
-        var neckline = new Vector3(0, f.NeckFootY - 0.012f * sz, -0.02f * sz + f.Forward * 0.3f);
-        m.Paint(m.Capsule(neckline, f.HeadC, 0.055f * f.Girth + 0.014f * sz, 0.055f * f.Girth + 0.014f * sz, s.Skin, HumanBones.Neck, GrownPaintEdge), true,
+        // A round neckline at the neck's foot, the neck bare above it: a crew neck, lower at the front than at the back,
+        // where the shirt rises up the neck's foot
+        var neckline = new Vector3(0, f.NeckFootY - 0.014f * sz, 0.012f * sz + f.Forward * 0.3f);
+        float round = 0.055f * f.Girth + 0.008f * sz;
+        m.Paint(m.Capsule(neckline, f.HeadC + new Vector3(0, 0, 0.012f * sz), round, round, s.Skin, HumanBones.Neck, GrownPaintEdge), true,
             HumanBones.Neck, HumanBones.Chest, HumanBones.ClavicleL, HumanBones.ClavicleR).Material = Skin;
         foreach (float side in new[] { 1f, -1f })
         {
