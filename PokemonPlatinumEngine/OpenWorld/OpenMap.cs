@@ -16,7 +16,7 @@ public sealed record OpenMarker(string Name, OpenPos Pos, int Yaw = 0)
 /// <summary>
 /// The open counterpart of the grid's <c>Map</c> (plan 32 · OW1), not a subclass of it: a map of an open region, its
 /// outdoors and its continuous caves, described in millimetres. As OW1 builds it, it is the map's name, the region it
-/// belongs to and its markers, and nothing of terrain: OW2 gives it its baked chunks, OW5 its areas, volumes and
+/// belongs to and its markers; OW2 gives it its baked land (<see cref="Land"/>), OW5 its areas, volumes and
 /// doors, OW6 its people. Chunks are 32 m by 32 m columns of any height (<see cref="ChunkOf"/>). GPU-free.
 /// </summary>
 public sealed class OpenMap
@@ -39,6 +39,12 @@ public sealed class OpenMap
         Region = region ?? "";
         foreach (var marker in markers ?? Enumerable.Empty<OpenMarker>()) Add(marker);
     }
+
+    /// <summary>
+    /// The map's land as <c>tools/OpenWorldBake</c> baked it (plan 32 · OW2), or null for a map with none (OW1's empty
+    /// test maps). Nothing reads it yet: OW3's collision takes level 0's ground, OW8's renderer every level.
+    /// </summary>
+    public BakedRegion? Land { get; set; }
 
     /// <summary>The map's markers, in the order they were added.</summary>
     public IReadOnlyList<OpenMarker> Markers => order;

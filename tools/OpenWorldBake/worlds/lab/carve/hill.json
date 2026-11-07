@@ -1,0 +1,12 @@
+{
+  // OW0's tunnel through the hill from west to east on a flat floor, and the cavern under its top that it opens on
+  "carves": [
+    { "kind": "capsules", "name": "the tunnel", "points": [[-40, 1, 0], [40, 1, 0]], "radius": 2.4, "floor": 0 },
+    { "kind": "ellipsoid", "name": "the cavern", "centre": [0, 2.5, 0], "radii": [13, 6.5, 11], "floor": 0 }
+  ],
+  "additions": [
+    // A rock bridge arching over the river, and a stack standing in the pond
+    { "kind": "capsules", "name": "the rock bridge", "points": [[24, -0.6, 34], [24, 1.6, 44], [24, -0.6, 54]], "radius": 1.1 },
+    { "kind": "pillar", "name": "the pond's stack", "at": [43, -40], "radius": 1.4, "bottom": -4, "top": 3 }
+  ]
+}

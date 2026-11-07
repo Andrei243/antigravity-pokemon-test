@@ -107,5 +107,28 @@ namespace PokemonPlatinumTests.Probes.OpenWorld
     {
         public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
         public static System.DateTime Now() => PokemonPlatinumEngine.Core.WallClock.UtcNow;
+        public static void Aside() => System.Threading.Tasks.Parallel.For(0, 2, _ => { });
+    }
+}
+
+namespace PokemonPlatinumTests.Probes.Baker
+{
+    // The baker's rules (plan 32 · OW2): a window, a clock, unseeded chance and a second thread, each where it may not be
+    internal static class Mesher
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+        public static long Clock() => System.Diagnostics.Stopwatch.GetTimestamp() + System.DateTime.UtcNow.Ticks + new Random().Next();
+        public static void Aside() => System.Threading.Tasks.Parallel.For(0, 2, _ => { });
+    }
+
+    // And where they may be
+    internal static class Pictures
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+    }
+
+    internal static class RegionBake
+    {
+        public static void Aside() => System.Threading.Tasks.Parallel.For(0, 2, _ => { });
     }
 }

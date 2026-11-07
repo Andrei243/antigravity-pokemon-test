@@ -32,7 +32,13 @@ public class SchemaTests
         ("map.schema.json", typeof(MapFile), "A map file, a room (Data/maps/<Name>.json)"),
         ("sound-map.schema.json", typeof(SoundMapFile), "The sound map (Data/audio/sound-map.json)"),
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
-        ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)")
+        ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
+        // An open region's descriptions (plan 32 · OW2), read strictly by tools/OpenWorldBake
+        ("open-world.schema.json", typeof(OpenWorldBake.OpenWorldFile), "An open region's world.json (Data/world3d/<region>/world.json)"),
+        ("open-terrain.schema.json", typeof(OpenWorldBake.TerrainFile), "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)"),
+        ("open-carve.schema.json", typeof(OpenWorldBake.CarveFile), "What is cut out of an open region's land and added to it (Data/world3d/<region>/carve/*.json)"),
+        ("open-water.schema.json", typeof(OpenWorldBake.WaterFile), "An open region's sea, lakes and rivers (Data/world3d/<region>/water.json)"),
+        ("open-roads.schema.json", typeof(OpenWorldBake.RoadsFile), "An open region's roads (Data/world3d/<region>/roads.json)")
     };
 
     /// <summary>The importer's patches (tools/DataImporter/Overrides): an object of entries by name, each the entry's fields, none required, and <c>new</c>.</summary>

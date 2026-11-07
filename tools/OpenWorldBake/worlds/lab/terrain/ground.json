@@ -1,0 +1,37 @@
+{
+  // The meadow's control points, 16 m apart from (-80, -80): level by the hill, rolling gently toward the edges
+  "grid": {
+    "origin": [-80, -80],
+    "spacing": 16,
+    "heights": [
+      [1.6, 1.2, 0.9, 1.1, 0.8, 0.6, 0.9, 1.3, 1.0, 1.4, 1.8],
+      [1.2, 0.9, 0.6, 0.7, 0.4, 0.3, 0.5, 0.8, 0.6, 1.0, 1.3],
+      [0.9, 0.5, 0.3, 0.2, 0.1, 0.0, 0.2, 0.4, 0.2, 0.6, 0.9],
+      [0.7, 0.4, 0.1, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.3, 0.7],
+      [0.8, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.4, 0.8],
+      [0.6, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.6],
+      [0.7, 0.3, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, 0.5],
+      [0.9, 0.5, 0.2, 0.1, 0.0, 0.0, 0.0, 0.1, 0.2, 0.4, 0.7],
+      [1.1, 0.7, 0.5, 0.3, 0.2, 0.2, 0.3, 0.2, 0.3, 0.6, 0.9],
+      [1.4, 1.0, 0.8, 0.6, 0.5, 0.4, 0.5, 0.6, 0.7, 0.9, 1.2],
+      [1.7, 1.3, 1.1, 0.9, 0.8, 0.7, 0.8, 0.9, 1.0, 1.3, 1.6]
+    ]
+  },
+  "brushes": [
+    // OW0's hill, 60 m across and 12 m high, with its shoulder over the cavern's north-west
+    { "kind": "dome", "name": "the hill", "at": [0, 0], "radius": 30, "rise": 12 },
+    { "kind": "dome", "name": "the hill's shoulder", "at": [-9, -11], "radius": 9, "rise": 2.2 },
+    // A ledge of a plateau in the north-west, 3 m over the meadow, falling to it over 4 m
+    { "kind": "plateau", "name": "the ledge", "polygon": [[-60, -60], [-38, -60], [-38, -44], [-60, -40]], "height": 3.5, "falloff": 4 },
+    // The pond's basin in the north-east, and the river's bed across the south
+    { "kind": "crater", "name": "the pond's basin", "at": [40, -38], "radius": 11, "depth": 2.6, "rim": 0.3 },
+    { "kind": "channel", "name": "the river's bed", "points": [[-70, 40], [-30, 46], [10, 42], [70, 47]], "width": 12, "depth": 2.2 },
+    // A low ridge east of the hill, between the road and the pond
+    { "kind": "ridge", "name": "the east ridge", "points": [[44, -6], [56, -18], [58, -30]], "width": 10, "rise": 2.5 }
+  ],
+  "paint": [
+    // A patch of bare rock on the south-west meadow, and a muddy square south-east of the hill
+    { "cover": "Rock", "at": [-40, 26], "radius": 4 },
+    { "cover": "Mud", "polygon": [[20, 18], [30, 18], [30, 26], [20, 26]] }
+  ]
+}

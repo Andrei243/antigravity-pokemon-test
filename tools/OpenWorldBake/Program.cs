@@ -1,6 +1,17 @@
-// The open world's baker, a first cut (plan 32 · OW0, the prototype gate). Today it knows one world, the gate's
-// prototype (a hill with a tunnel through it and a cavern under its top), written as code; OW2 reads a region's
-// files from Data/world3d/<region>/ and writes what it bakes under baked/.
+// The open world's baker (plan 32 · OW2). A region's descriptions (Data/world3d/<region>/, or the baker's own test
+// worlds in tools/OpenWorldBake/worlds/<region>/) are read strictly and baked into what the game loads, under the
+// folder's baked/: every chunk at three levels, the finest by surface nets at half a metre and the others by thinning
+// it, with its cover, normals, apron, skirts and water, and an index.
+//
+//   dotnet run --project tools/OpenWorldBake -- <region>                            bakes and writes; prints each level's counts
+//   dotnet run --project tools/OpenWorldBake -- <region> --check                    writes nothing; ends with 1 where the baked files differ from the descriptions
+//   dotnet run --project tools/OpenWorldBake -- <region> --chunk x,z                that chunk alone (with --check, checks it alone)
+//   dotnet run --project tools/OpenWorldBake -- <region> --plan <out dir> [area]    the area (or the region) from above, and the same with levels 1 and 2's triangles
+//   dotnet run --project tools/OpenWorldBake -- <region> --section <out dir> [area] [x1,z1 x2,z2 ...]   vertical cuts (across the area's middle unless given)
+//   dotnet run --project tools/OpenWorldBake -- <region> --seams                    how far each level's border stands off its neighbours' levels (nought, by design)
+//   dotnet run --project tools/OpenWorldBake -- <region> --world <folder> --out <baked folder>   descriptions and bake elsewhere
+//
+// OW0's prototype gate (the hill as code, its capsule, camera and navigation) is still here for the harness's openproto:
 //
 //   dotnet run --project tools/OpenWorldBake -- prototype                           the bake's counts, the capsule's walk, the camera's arm, the navigation's numbers
 //   dotnet run --project tools/OpenWorldBake -- prototype --section <out dir> [x1,z1 x2,z2 ...]   vertical cuts (along the tunnel and across the hill unless given)
@@ -12,11 +23,13 @@
 using System.Globalization;
 using OpenWorldBake;
 
-if (args.Length == 0 || args[0] != Prototype.Name)
+if (args.Length == 0)
 {
-    Console.Error.WriteLine("usage: OpenWorldBake prototype [--section <out dir> [x1,z1 x2,z2 ...]] [--plan <out dir>] [--check]");
+    Console.Error.WriteLine("usage: OpenWorldBake <region> [--check] [--chunk x,z] [--plan <out dir> [area]] [--section <out dir> [area] [x1,z1 x2,z2 ...]] [--seams] [--world <folder>] [--out <folder>]");
+    Console.Error.WriteLine("       OpenWorldBake prototype [--section <out dir> [x1,z1 x2,z2 ...]] [--plan <out dir>] [--check] [--seams]");
     return 2;
 }
+if (args[0] != Prototype.Name) return RegionCommand.Run(args);
 string? sectionDir = null, planDir = null;
 bool check = false, seams = false;
 var cuts = new List<((double, double) A, (double, double) B)>();

@@ -22,6 +22,8 @@ public sealed class ChunkMesh
     public required int GroundTriangles { get; init; }
     /// <summary>The row west and north that the neighbours there own too: drawn, so a level never stops short of its border.</summary>
     public required int ApronTriangles { get; init; }
+    /// <summary>A thinned level's bound on how far it may stand off the finest, in metres (nought for a level meshed at its cell).</summary>
+    public double Error { get; init; }
 
     public int VertexCount => Positions.Length / 3;
     public int TriangleCount => Indices.Length / 3;
@@ -46,6 +48,41 @@ public sealed class ChunkMesh
 }
 
 /// <summary>
+/// A chunk's surface net before its normals, covers and skirts (<see cref="SurfaceNets.Net"/>): every vertex in
+/// whole millimetres with the grid cell it lies in (its column across and its row down, 0 being the apron's, 1 to
+/// <see cref="N"/> the chunk's own and N + 1 the row it shares with its neighbour east or south), and the triangles of
+/// the chunk's own ground and of its apron.
+/// </summary>
+public sealed class RawChunk
+{
+    public required int ChunkX { get; init; }
+    public required int ChunkZ { get; init; }
+    public required double Cell { get; init; }
+    /// <summary>The chunk's own cells across.</summary>
+    public required int N { get; init; }
+    /// <summary>Three a vertex, millimetres.</summary>
+    public required List<int> Positions { get; init; }
+    public required List<(int I, int K)> Cells { get; init; }
+    public required List<int> Ground { get; init; }
+    public required List<int> Apron { get; init; }
+
+    public int VertexCount => Positions.Count / 3;
+    public D3 Vertex(int v) => new(Mm.Metres(Positions[v * 3]), Mm.Metres(Positions[v * 3 + 1]), Mm.Metres(Positions[v * 3 + 2]));
+
+    /// <summary>
+    /// Whether a vertex lies in the two rows of cells along the chunk's border on any side: the apron's and the row
+    /// inside it on the west and north, the chunk's last and the shared row on the east and south. What the chunk
+    /// shares with its neighbours (and the apron overlaps) is there, so a thinned level keeps those vertices and meets
+    /// a neighbour of any level exactly (decision 16).
+    /// </summary>
+    public bool OnTheBorder(int v)
+    {
+        var (i, k) = Cells[v];
+        return i <= 1 || i >= N || k <= 1 || k >= N;
+    }
+}
+
+/// <summary>
 /// Surface nets over the land's field, a chunk at a time, single-threaded (plan 32: "the meshers are ours,
 /// single-threaded per chunk, and they round to millimetres"). The grid is the world's own: a corner's place is a
 /// whole number of cells from the origin, so two chunks of a level compute the same vertex for the cell they share
@@ -56,7 +93,14 @@ public sealed class ChunkMesh
 /// </summary>
 public static class SurfaceNets
 {
-    public static ChunkMesh Mesh(TerrainWorld world, int cx, int cz, int lod, double cell, double skirt)
+    public static ChunkMesh Mesh(TerrainWorld world, int cx, int cz, int lod, double cell, double skirt) =>
+        Finish(world, Net(world, cx, cz, cell), lod, skirt);
+
+    /// <summary>
+    /// The chunk's surface net at one cell's size: its vertices, the grid cell each lies in, and its triangles (the
+    /// chunk's own ground and its apron), before normals, covers and skirts (<see cref="Finish"/>).
+    /// </summary>
+    public static RawChunk Net(TerrainWorld world, int cx, int cz, double cell)
     {
         var (x0, z0) = world.ChunkOrigin(cx, cz);
         int n = (int)Math.Round(world.ChunkSize / cell);
@@ -76,9 +120,16 @@ public static class SurfaceNets
         double lo = colH.Min(), hi = colH.Max();
         double bx0 = (gi0 - 1) * cell, bx1 = (gi0 + n + 2) * cell, bz0 = (gk0 - 1) * cell, bz1 = (gk0 + n + 2) * cell;
         foreach (var c in world.Carves.Where(c => c.Max.X >= bx0 && c.Min.X <= bx1 && c.Max.Z >= bz0 && c.Min.Z <= bz1)) lo = Math.Min(lo, c.Min.Y);
+        // And any addition over it, whose rock may stand over the land (a sea stack) or reach under it
+        foreach (var a in world.Additions.Where(a => a.Max.X >= bx0 && a.Min.X <= bx1 && a.Max.Z >= bz0 && a.Min.Z <= bz1))
+        {
+            lo = Math.Min(lo, a.Min.Y);
+            hi = Math.Max(hi, a.Max.Y);
+        }
         // Every carve is asked at every corner, as the field asks them: two chunks then give the corner they share
         // the very same number, whichever carves are near either
         var carves = world.Carves.ToArray();
+        var additions = world.Additions.ToArray();
         long j0 = (long)Math.Floor(lo / cell) - 2, j1 = (long)Math.Ceiling(hi / cell) + 2;
         int ny = (int)(j1 - j0);                            // cells up; corners 0..ny
         int cyn = ny + 1;
@@ -95,6 +146,7 @@ public static class SurfaceNets
                     double y = (j0 + j) * cell;
                     double v = (y - h) / norm;
                     foreach (var c in carves) v = Math.Max(v, -c.Distance(new D3(x, y, z)));
+                    foreach (var a in additions) v = Math.Min(v, a.Distance(new D3(x, y, z)));
                     f[Corner(i, j, k)] = v;
                 }
             }
@@ -105,6 +157,7 @@ public static class SurfaceNets
         var cellVertex = new int[ncx * ncy * ncz];
         Array.Fill(cellVertex, -1);
         var positions = new List<int>();
+        var cells = new List<(int I, int K)>();
         Span<(int, int, int, int, int, int)> edges = stackalloc (int, int, int, int, int, int)[]
         {
             (0,0,0, 1,0,0), (0,1,0, 1,1,0), (0,0,1, 1,0,1), (0,1,1, 1,1,1),
@@ -144,6 +197,7 @@ public static class SurfaceNets
                     p = new D3(Math.Clamp(p.X, lo3.X, hi3.X), Math.Clamp(p.Y, lo3.Y, hi3.Y), Math.Clamp(p.Z, lo3.Z, hi3.Z));
                     cellVertex[(k * ncy + j) * ncx + i] = positions.Count / 3;
                     positions.Add(Mm.Of(p.X)); positions.Add(Mm.Of(p.Y)); positions.Add(Mm.Of(p.Z));
+                    cells.Add((i, k));
                 }
         int CellVertex(int i, int j, int k) => cellVertex[(k * ncy + j) * ncx + i];
         D3 V(int v) => new(Mm.Metres(positions[v * 3]), Mm.Metres(positions[v * 3 + 1]), Mm.Metres(positions[v * 3 + 2]));
@@ -192,9 +246,22 @@ public static class SurfaceNets
                         Quad(CellVertex(i - 1, j - 1, k), CellVertex(i, j - 1, k), CellVertex(i, j, k), CellVertex(i - 1, j, k), reverse: !here,
                             k >= 1 && k <= n && i >= 2 ? ground : apronList);
                 }
-        int groundTriangles = ground.Count / 3;
-        int apronTriangles = apronList.Count / 3;
-        var indices = ground.Concat(apronList).ToList();
+        return new RawChunk { ChunkX = cx, ChunkZ = cz, Cell = cell, N = n, Positions = positions, Cells = cells, Ground = ground, Apron = apronList };
+    }
+
+    /// <summary>
+    /// A net (or a net thinned) made a chunk: smooth normals and covers at each vertex (or those given, by vertex, which
+    /// the thinned levels take from the finest), and skirts hung from the up-facing edges of its border.
+    /// </summary>
+    public static ChunkMesh Finish(TerrainWorld world, RawChunk raw, int lod, double skirt, D3[]? givenNormals = null, Cover[]? givenCovers = null, double error = 0)
+    {
+        var positions = raw.Positions;
+        int cx = raw.ChunkX, cz = raw.ChunkZ;
+        double cell = raw.Cell;
+        D3 V(int v) => new(Mm.Metres(positions[v * 3]), Mm.Metres(positions[v * 3 + 1]), Mm.Metres(positions[v * 3 + 2]));
+        int groundTriangles = raw.Ground.Count / 3;
+        int apronTriangles = raw.Apron.Count / 3;
+        var indices = raw.Ground.Concat(raw.Apron).ToList();
         int surfaceTriangles = groundTriangles + apronTriangles;
 
         // Smooth normals: the faces round each vertex, by their area
@@ -229,7 +296,8 @@ public static class SurfaceNets
             skirtSource.Add(v);
             return s;
         }
-        for (int t = 0; t < surfaceTriangles; t++)
+        // (A skirt of nothing is none: the thinned levels hang no skirts)
+        for (int t = 0; t < (skirt > 0 ? surfaceTriangles : 0); t++)
         {
             int a0 = indices[t * 3], b0 = indices[t * 3 + 1], c0 = indices[t * 3 + 2];
             var face = D3.Cross(V(b0) - V(a0), V(c0) - V(a0)).Normalized();
@@ -251,16 +319,16 @@ public static class SurfaceNets
         for (int v = 0; v < total; v++)
         {
             int source = v < vertexCount ? v : skirtSource[v - vertexCount];
-            var nn = sums[source].Normalized();
+            var nn = givenNormals?[source] ?? sums[source].Normalized();
             if (nn.Length < 0.5) nn = new D3(0, 1, 0);
             normals[v * 3] = (float)nn.X; normals[v * 3 + 1] = (float)nn.Y; normals[v * 3 + 2] = (float)nn.Z;
             var p = new D3(Mm.Metres(allPositions[source * 3]), Mm.Metres(allPositions[source * 3 + 1]), Mm.Metres(allPositions[source * 3 + 2]));
-            covers[v] = world.CoverAt(p, nn);
+            covers[v] = givenCovers?[source] ?? world.CoverAt(p, nn);
         }
 
         return new ChunkMesh
         {
-            ChunkX = cx, ChunkZ = cz, Lod = lod, Cell = cell,
+            ChunkX = cx, ChunkZ = cz, Lod = lod, Cell = cell, Error = error,
             Positions = allPositions, Normals = normals, Covers = covers,
             Indices = indices.ToArray(), GroundTriangles = groundTriangles, ApronTriangles = apronTriangles
         };
