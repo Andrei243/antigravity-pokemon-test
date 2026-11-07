@@ -5,62 +5,33 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Region | Pokédex | Species | Had | Owed |
 |---|---|---:|---:|---:|
 | Sinnoh | `extended-sinnoh` | 210 | 210 | 0 |
-| Kanto | `kanto` | 151 | 132 | 19 |
-| Johto | `updated-johto` | 256 | 218 | 38 |
-| Hoenn | `hoenn` | 202 | 189 | 13 |
-| Unova | `updated-unova` | 301 | 250 | 51 |
+| Kanto | `kanto` | 151 | 150 | 1 |
+| Johto | `updated-johto` | 256 | 248 | 8 |
+| Hoenn | `hoenn` | 202 | 200 | 2 |
+| Unova | `updated-unova` | 301 | 283 | 18 |
 | Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 314 | 143 |
 
 Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (76 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
 
 ## Kanto
 
-- **GE3: FireRed's Game Corner prizes**: Porygon
-- **GE3: LeafGreen's, in its own places**: Sandshrew, Sandslash, Vulpix, Ninetales, Bellsprout, Weepinbell, Victreebel, Slowpoke, Slowbro, Staryu, Starmie, Magmar, Pinsir
-- **GE3: a Linking Cord in Kanto**: Alakazam, Machamp, Golem, Gengar
 - **had in another region: Hoenn's Faraway Island**: Mew
-
-Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a Linking Cord in Kanto).
 
 ## Johto
 
-- **GE3: SoulSilver's, in its own places**: Ledyba, Ledian, Vulpix, Ninetales, Meowth, Persian, Teddiursa, Ursaring, Delibird, Skarmory
-- **GE3: a Fire Stone in Johto**: Arcanine, Flareon
-- **GE3: a Linking Cord and an Upgrade in Johto**: Porygon2
-- **GE3: a Linking Cord in Johto**: Alakazam, Machamp, Golem, Gengar, Politoed, Slowking, Scizor, Kingdra
-- **GE3: a Sun Stone in Johto**: Bellossom, Sunflora
-- **GE3: a Thunder Stone in Johto**: Raichu, Jolteon
-- **GE3: fossils at Pewter's museum**: Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl
 - **had in another region: Hoenn's Faraway Island**: Mew
 - **plan 38 · EX4: headbutt trees**: Pineco, Forretress, Exeggcute, Exeggutor, Heracross, Aipom, Ambipom
 
-Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a Linking Cord in Johto); Thunder Stone (GE3: a Thunder Stone in Johto); Fire Stone (GE3: a Fire Stone in Johto); Sun Stone (GE3: a Sun Stone in Johto); Upgrade (GE3: an Upgrade in Johto).
-
 ## Hoenn
 
-- **GE3: Ruby's and Sapphire's, in their own places**: Meditite, Medicham, Roselia, Zangoose, Lunatone
-- **GE3: a Linking Cord in Hoenn**: Alakazam, Golem, Machamp, Kingdra, Huntail, Gorebyss
 - **plan 38 · EX4: Route 119's Feebas**: Feebas, Milotic
-
-Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a Linking Cord in Hoenn).
 
 ## Unova
 
-- **GE3: Black 2's gift**: Zorua, Zoroark
-- **GE3: Black 2's gift and grass**: Eevee, Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon
-- **GE3: Black 2's grass, which the import has no place for**: Buneary, Lopunny
-- **GE3: Chargestone Cave's Magnetic Field**: Magnezone, Probopass
-- **GE3: White 2's legendary, in its own place**: Reshiram
-- **GE3: White 2's, in its own places**: Elekid, Electabuzz, Skitty, Delcatty, Numel, Camerupt
-- **GE3: a Linking Cord in Unova**: Magmortar, Electivire, Conkeldurr, Escavalier, Accelgor
-- **GE3: a way of ours, for Black 2's Dream Radar**: Tornadus, Thundurus
-- **GE3: fossils at Nacrene's museum**: Tirtouga, Carracosta, Archen, Archeops
-- **plan 38 · EX11: dust clouds**: Steelix, Drilbur, Excadrill
+- **plan 38 · EX11: dust clouds**: Drilbur, Excadrill
 - **plan 38 · EX11: rippling water**: Alomomola, Wailmer, Wailord, Lapras
 - **plan 38 · EX11: shaking grass**: Dunsparce, Audino, Pansage, Simisage, Pansear, Simisear, Panpour, Simipour, Emolga, Castform
 - **plan 38 · EX11: the bridges' shadows**: Ducklett, Swanna
-
-Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a Linking Cord in Unova); Magnetic Field (GE3: Chargestone Cave's Magnetic Field); Moss Rock (GE3: Pinwheel Forest's Moss Rock); Ice Rock (GE3: Twist Mountain's Ice Rock); Electirizer (GE3: an Electirizer in Unova).
 
 ## Kalos
 
@@ -78,9 +49,6 @@ Items and places its evolutions ask for and nothing gives: Leaf Stone (GE3: Kalo
 
 Generations 1 to 5, had nowhere in the game yet:
 
-- **GE3: White 2's legendary, in its own place**: Reshiram
-- **GE3: a way of ours, for Black 2's Dream Radar**: Tornadus, Thundurus
-- **GE3: fossils at Nacrene's museum**: Tirtouga, Carracosta, Archen, Archeops
 - **plan 38 · EX11: Unova's dust clouds**: Drilbur, Excadrill
 - **plan 38 · EX11: Unova's rippling water**: Alomomola
 
