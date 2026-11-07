@@ -20,7 +20,9 @@ script OnEnter
   halloffame
   setflag KalosHallOfFame
   setvar VAR_KALOS_STORY 31
-  objective kalosFree
+  # Plan 23 · Z4b: Lumiose's last two roads open (Lumiose Station, Azure Bay), and the professor waits at the station
+  setvar VAR_KALOS_LUMIOSE_ROADS 3
+  objective kalosStation
   call ClearGame
   halloffame show
   heal

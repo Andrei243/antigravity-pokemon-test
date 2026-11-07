@@ -1,8 +1,10 @@
 {
-  // Kiloude City (plan 23 Â· Z4, the loose ends): drawn by hand, our words. A seafront city at the west end of the long
-  // street that runs out of Couriway Town, a PokÃ©mon Center (with the Mart's counter inside) and two houses, a beach and a
+  // Kiloude City (plan 23 · Z4, the loose ends): drawn by hand, our words. A seafront city at the west end of the long
+  // street that runs out of Couriway Town, a Pokémon Center (with the Mart's counter inside) and two houses, a beach and a
   // pier that crosses the water to a paved landing on the far shore. Once the Hall of Fame is entered an old man called AZ
-  // sits at the landing (Kiloude_City.txt: his story and his battle). It plays Aquacorde's song until plan 31 writes it its own
+  // sits at the landing (kiloude_city.txt: his story and his battle). It plays Aquacorde's song until plan 31 writes it its own.
+  // Plan 23 · Z4b: once the professor has given the TMV pass in Lumiose Station, the neighbour waits on the city's northern
+  // hill, and the TMV's attendant on the street takes the player back to Lumiose
   "area": "kiloude_city",
   "bgmTrack": "kalos/aquacorde",
   "trees": "Round",
@@ -17,6 +19,10 @@
     "fisher": { "name": "Fisherman", "npcType": "Fisherman", "still": true, "dialog": [ "The pier is the best seat in Kalos. Everything the sea brings in passes under my feet." ] },
     "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "Past the pier there is a landing nobody uses. An old man goes there some days, and just looks at the water." ] }
   },
+  "npcs": [
+    { "id": "rival_kiloude", "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "x": 565, "y": 336, "facing": "Down", "script": "RivalKiloude", "shownBy": "FLAG_KALOS_TMV_PASS" },
+    { "id": "tmv_kiloude", "name": "TMV Attendant", "npcType": "receptionist", "x": 538, "y": 354, "facing": "Down", "script": "TmvBack", "shownBy": "FLAG_KALOS_TMV_PASS" }
+  ],
   "signs": {
     "TownSign": "Kiloude City\nThe sea begins at the end of the street."
   }

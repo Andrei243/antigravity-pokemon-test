@@ -19,6 +19,11 @@
     "astronomer": { "name": "Astronomer", "npcType": "Gentleman", "still": true, "dialog": [ "The sundial was carved from a stone that fell from the sky. On clear nights it hums." ] },
     "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "Route 18 runs south from here, down a narrow valley to Couriway Town." ] }
   },
+  // Plan 23 · Z4b: the professor by the sundial once the neighbour is beaten in Kiloude City, until he has upgraded the
+  // Mega Ring (anistar_city.txt)
+  "npcs": [
+    { "id": "sycamore_sundial", "name": "Prof. Sycamore", "npcType": "sycamore", "x": 649, "y": 219, "facing": "Right", "script": "Sundial", "shownBy": "FLAG_KALOS_RIVAL_KILOUDE_BEATEN", "hiddenBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ],
   "signs": {
     "CitySign": "Anistar City\nThe city of the sundial, where the stars are read."
   }

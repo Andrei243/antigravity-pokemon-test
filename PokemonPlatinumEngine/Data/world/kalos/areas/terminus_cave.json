@@ -15,7 +15,8 @@
   "escapeRope": true,
   "fly": false,
   "warps": [
-    { "x": 31, "z": 58, "to": "kalos_route_13", "toWarp": 1 }
+    { "x": 31, "z": 58, "to": "kalos_route_13", "toWarp": 1 },
+    { "x": 31, "z": 9, "to": "terminus_cave_depths", "toWarp": 0 }
   ],
   "objects": [
     { "id": "anselme", "looks": "hiker", "movement": "look_south", "x": 34, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_ANSELME" },

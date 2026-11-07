@@ -3616,5 +3616,752 @@
         "personality": 5430217
       }
     ]
+  },
+  {
+    "id": "kalos_rival_kiloude_fennekin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 2600,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 3735834
+      },
+      {
+        "species": "Absol",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 3736237
+      },
+      {
+        "species": "Talonflame",
+        "level": 64,
+        "ivScale": 20,
+        "personality": 3735028
+      },
+      {
+        "species": "Jolteon",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 3735431
+      },
+      {
+        "species": "Delphox",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 3734222
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_kiloude_froakie",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 2600,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 5700301
+      },
+      {
+        "species": "Absol",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 5699898
+      },
+      {
+        "species": "Talonflame",
+        "level": 64,
+        "ivScale": 20,
+        "personality": 5699495
+      },
+      {
+        "species": "Jolteon",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 5699092
+      },
+      {
+        "species": "Greninja",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 5698689
+      }
+    ]
+  },
+  {
+    "id": "kalos_rival_kiloude_chespin",
+    "name": "{rival}",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 2600,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 13891100
+      },
+      {
+        "species": "Absol",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 13891503
+      },
+      {
+        "species": "Talonflame",
+        "level": 64,
+        "ivScale": 20,
+        "personality": 13891906
+      },
+      {
+        "species": "Jolteon",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 13892309
+      },
+      {
+        "species": "Chesnaught",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 13889488
+      }
+    ]
+  },
+  {
+    "id": "kalos_beauty_ondine",
+    "name": "Ondine",
+    "class": "Beauty",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4880,
+    "party": [
+      {
+        "species": "Starmie",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 6009287
+      },
+      {
+        "species": "Lapras",
+        "level": 61,
+        "ivScale": 0,
+        "personality": 6008884
+      }
+    ]
+  },
+  {
+    "id": "kalos_fisherman_yannick",
+    "name": "Yannick",
+    "class": "Fisherman",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 2440,
+    "party": [
+      {
+        "species": "Clawitzer",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 12218162
+      },
+      {
+        "species": "Barbaracle",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 12218565
+      },
+      {
+        "species": "Gyarados",
+        "level": 61,
+        "ivScale": 0,
+        "personality": 12217356
+      }
+    ]
+  },
+  {
+    "id": "kalos_ace_trainer_solenne",
+    "name": "Solenne",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5040,
+    "party": [
+      {
+        "species": "Noivern",
+        "level": 62,
+        "ivScale": 0,
+        "personality": 1189139
+      },
+      {
+        "species": "Haxorus",
+        "level": 62,
+        "ivScale": 0,
+        "personality": 1188736
+      },
+      {
+        "species": "Tyrantrum",
+        "level": 63,
+        "ivScale": 0,
+        "personality": 1189945
+      }
+    ]
+  },
+  {
+    "id": "kalos_veteran_hector",
+    "name": "Hector",
+    "class": "Veteran",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5120,
+    "party": [
+      {
+        "species": "Aggron",
+        "level": 63,
+        "ivScale": 0,
+        "personality": 8242784
+      },
+      {
+        "species": "Golurk",
+        "level": 63,
+        "ivScale": 0,
+        "personality": 8243187
+      },
+      {
+        "species": "Druddigon",
+        "level": 64,
+        "ivScale": 0,
+        "personality": 8243590
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_eloi",
+    "name": "Eloi",
+    "class": "Hiker",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 2480,
+    "party": [
+      {
+        "species": "Gigalith",
+        "level": 61,
+        "ivScale": 0,
+        "personality": 9685664
+      },
+      {
+        "species": "Steelix",
+        "level": 61,
+        "ivScale": 0,
+        "personality": 9686067
+      },
+      {
+        "species": "Golurk",
+        "level": 62,
+        "ivScale": 0,
+        "personality": 9686470
+      }
+    ]
+  },
+  {
+    "id": "kalos_preschooler_nanette",
+    "name": "Nanette",
+    "class": "Preschooler",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 212,
+    "party": [
+      {
+        "species": "Swinub",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 6101407
+      },
+      {
+        "species": "Bonsly",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 6101004
+      }
+    ]
+  },
+  {
+    "id": "kalos_preschooler_lou",
+    "name": "Lou",
+    "class": "Preschooler",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 220,
+    "party": [
+      {
+        "species": "Igglybuff",
+        "level": 55,
+        "ivScale": 0,
+        "personality": 16185484
+      }
+    ]
+  },
+  {
+    "id": "kalos_school_kid_cerise",
+    "name": "Cerise",
+    "class": "School Kid",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 1060,
+    "party": [
+      {
+        "species": "Rapidash",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 15392704
+      },
+      {
+        "species": "Leavanny",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 15393107
+      },
+      {
+        "species": "Crawdaunt",
+        "level": 53,
+        "ivScale": 0,
+        "personality": 15393510
+      }
+    ]
+  },
+  {
+    "id": "kalos_school_kid_bastien",
+    "name": "Bastien",
+    "class": "School Kid",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 1120,
+    "party": [
+      {
+        "species": "Spiritomb",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 7816967
+      }
+    ]
+  },
+  {
+    "id": "kalos_gang_rouille",
+    "name": "Rouille",
+    "class": "Lumiose Gang",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2320,
+    "party": [
+      {
+        "species": "Mandibuzz",
+        "level": 58,
+        "ivScale": 0,
+        "personality": 2877577
+      }
+    ]
+  },
+  {
+    "id": "kalos_gang_brutus",
+    "name": "Brutus",
+    "class": "Lumiose Gang",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2240,
+    "party": [
+      {
+        "species": "Pangoro",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 2729836
+      },
+      {
+        "species": "Bouffalant",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 2730239
+      }
+    ]
+  },
+  {
+    "id": "kalos_gang_fauve",
+    "name": "Fauve",
+    "class": "Lumiose Gang",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2240,
+    "party": [
+      {
+        "species": "Druddigon",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 4334220
+      },
+      {
+        "species": "Krookodile",
+        "level": 56,
+        "ivScale": 0,
+        "personality": 4334623
+      }
+    ]
+  },
+  {
+    "id": "kalos_suspect_vesper",
+    "name": "Vesper",
+    "class": "Suspect",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "party": [
+      {
+        "species": "Jellicent",
+        "level": 58,
+        "ivScale": 0,
+        "personality": 11045430
+      },
+      {
+        "species": "Volcarona",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 11045833
+      }
+    ]
+  },
+  {
+    "id": "kalos_suspect_pip",
+    "name": "Pip",
+    "class": "Suspect",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3420,
+    "party": [
+      {
+        "species": "Whimsicott",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 14886678
+      },
+      {
+        "species": "Mawile",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 14887081
+      },
+      {
+        "species": "Granbull",
+        "level": 57,
+        "ivScale": 0,
+        "personality": 14885872
+      }
+    ]
+  },
+  {
+    "id": "kalos_suspect_odile",
+    "name": "Odile",
+    "class": "Suspect",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "party": [
+      {
+        "species": "Persian",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 15313238
+      }
+    ]
+  },
+  {
+    "id": "kalos_butler_anatole",
+    "name": "Anatole",
+    "class": "Butler",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4960,
+    "party": [
+      {
+        "species": "Braviary",
+        "level": 62,
+        "ivScale": 0,
+        "personality": 12296304
+      }
+    ]
+  },
+  {
+    "id": "kalos_malva_looker",
+    "name": "Malva",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6300,
+    "party": [
+      {
+        "species": "Pyroar",
+        "level": 63,
+        "ivScale": 25,
+        "personality": 11233057
+      }
+    ]
+  },
+  {
+    "id": "kalos_scientist_clothilde",
+    "name": "Clothilde",
+    "class": "Scientist",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2880,
+    "party": [
+      {
+        "species": "Elgyem",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 9937478
+      },
+      {
+        "species": "Klinklang",
+        "level": 60,
+        "ivScale": 0,
+        "personality": 9937881
+      }
+    ]
+  },
+  {
+    "id": "kalos_scientist_ernest",
+    "name": "Ernest",
+    "class": "Scientist",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2928,
+    "party": [
+      {
+        "species": "Weezing",
+        "level": 61,
+        "ivScale": 0,
+        "personality": 12760591
+      },
+      {
+        "species": "Heliolisk",
+        "level": 59,
+        "ivScale": 0,
+        "personality": 12760188
+      }
+    ]
+  },
+  {
+    "id": "kalos_essentia_1",
+    "name": "Essentia",
+    "class": "Agent",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6600,
+    "party": [
+      {
+        "species": "Jellicent",
+        "level": 64,
+        "ivScale": 25,
+        "personality": 12864053
+      },
+      {
+        "species": "Volcarona",
+        "level": 66,
+        "ivScale": 25,
+        "personality": 12863650
+      }
+    ]
+  },
+  {
+    "id": "kalos_essentia_2",
+    "name": "Essentia",
+    "class": "Agent",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6600,
+    "party": [
+      {
+        "species": "Whimsicott",
+        "level": 63,
+        "ivScale": 25,
+        "personality": 14210168
+      },
+      {
+        "species": "Mawile",
+        "level": 63,
+        "ivScale": 25,
+        "personality": 14210571
+      },
+      {
+        "species": "Granbull",
+        "level": 63,
+        "ivScale": 25,
+        "personality": 14210974
+      },
+      {
+        "species": "Persian",
+        "level": 66,
+        "ivScale": 25,
+        "personality": 14211377
+      }
+    ]
+  },
+  {
+    "id": "kalos_essentia_3",
+    "name": "Essentia",
+    "class": "Agent",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 7000,
+    "party": [
+      {
+        "species": "Crobat",
+        "level": 68,
+        "ivScale": 25,
+        "personality": 10446723
+      },
+      {
+        "species": "Malamar",
+        "level": 70,
+        "ivScale": 25,
+        "personality": 10446320
+      }
+    ]
+  },
+  {
+    "id": "kalos_essentia_rematch",
+    "name": "Essentia",
+    "class": "Agent",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 10500,
+    "party": [
+      {
+        "species": "Crobat",
+        "level": 73,
+        "ivScale": 31,
+        "personality": 8207336
+      },
+      {
+        "species": "Malamar",
+        "level": 75,
+        "ivScale": 31,
+        "personality": 8207739
+      }
+    ]
   }
 ]

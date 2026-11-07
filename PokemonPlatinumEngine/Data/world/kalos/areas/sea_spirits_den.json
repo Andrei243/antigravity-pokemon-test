@@ -1,0 +1,27 @@
+{
+  "key": "sea_spirits_den",
+  "index": 49,
+  "name": "Sea Spirit's Den",
+  "matrix": 9,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SEA_SPIRITS_DEN",
+  "nightMusic": "SEA_SPIRITS_DEN",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 26, "to": "azure_bay", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "articuno", "looks": "articuno", "movement": "look_south", "x": 15, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "zapdos", "looks": "zapdos", "movement": "look_south", "x": 15, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "moltres", "looks": "moltres", "movement": "look_south", "x": 15, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

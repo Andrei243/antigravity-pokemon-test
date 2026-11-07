@@ -1,0 +1,179 @@
+# The Looker Bureau, south of Rouge Plaza in Lumiose City (plan 23 · Z4b). The lines are our own, on X and Y's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): the international detective
+# opens an office in Lumiose once the Champion's Mega Ring has been upgraded (its door opens with
+# FLAG_KALOS_MEGA_RING_UPGRADED), takes the player on as a partner and gives them his cases one by one.
+#
+# VAR_KALOS_LOOKER, his episode's count: 0 not yet met; 1 the first case, three tickets hidden in the city (the station's,
+# the museum's and the hotel's Ticket); 2 the second, the back alley's children and Emma's lost Espurr (lumiose_city.txt);
+# 3 the third, the gang at Lumiose Station (LumioseCity_Station.txt); 4 the fourth, the museum's thief and the sting in
+# the alleys (LumioseCity_Museum.txt, lumiose_city.txt), with the butler come to the bureau; 5 the fifth, Malva at the
+# Hotel Richissime (LumioseCity_HotelRichissime.txt) and Xerosic under Lysandre's old café (LumioseCity_LysandreLabs.txt);
+# 6 his farewell at the museum; 7 the episode over. Emma (and her Espurr, Mimi) works here from the second case on, away
+# (FLAG_KALOS_EMMA_AWAY) at the station and from the fourth case's end to the fifth's; once it is all over she battles as
+# Essentia on Tuesdays, Thursdays and Saturdays.
+#
+# The people: looker (until FLAG_KALOS_LOOKER_FAREWELL), emma and mimi (FLAG_KALOS_EMMA_BUREAU, but FLAG_KALOS_EMMA_AWAY),
+# butler (FLAG_KALOS_LOOKER_BUTLER until FLAG_KALOS_LOOKER_BUTLER_DONE).
+
+
+script OnEnter
+  if var VAR_KALOS_LOOKER == 0 goto FirstVisit
+  if var VAR_KALOS_LOOKER != 4 end
+  if flag FLAG_KALOS_LOOKER_BUTLER end
+  if not flag FLAG_KALOS_STING_WOMAN end
+  if not flag FLAG_KALOS_STING_CHILD end
+  if not flag FLAG_KALOS_STING_LADY end
+  scene "A visitor at the bureau"
+  face looker player
+  speaker "Looker"
+  say "Ah, {player}. You caught all three in the alleys? Good work. But something is wrong."
+  say "Emma went out an hour ago and did not come back. Mimi is gone too. Emma never leaves without telling me."
+  setflag FLAG_KALOS_EMMA_AWAY
+  hide emma
+  hide mimi
+  setflag FLAG_KALOS_LOOKER_BUTLER
+  show butler
+  speaker "Anatole"
+  say "Pardon the intrusion. My mistress has heard a great deal about the new partner of this bureau."
+  say "Before I carry her message, I must see whether the partner is worth it. Speak to me when you are ready."
+  endscene
+  end
+label FirstVisit
+  scene "The Looker Bureau"
+  face looker player
+  speaker "Looker"
+  say "So you came. You are {player}, the Champion of Kalos, no? I am called Looker. It is not my real name."
+  say "I am a detective of the International Police. I have opened a small bureau here, to keep an eye on this city."
+  say "Lumiose is beautiful, but its alleys keep secrets. I need a partner with sharp eyes and strong Pokémon."
+  say "But first, a test. I have hidden three of my tickets in the city: a card with an eye on it."
+  say "One waits where the trains leave from. One sleeps beside a statue among old things. One hides in a pot where the rich wait for their keys."
+  say "Find all three and bring them back to me. Then we will talk about cases."
+  setvar VAR_KALOS_LOOKER 1
+  endscene
+  end
+
+
+# Looker: each case begun and ended at his desk
+script Looker
+  face looker player
+  speaker "Looker"
+  if var VAR_KALOS_LOOKER == 1 goto Tickets
+  if var VAR_KALOS_LOOKER == 2 goto Alley
+  if var VAR_KALOS_LOOKER == 3 goto Gang
+  if var VAR_KALOS_LOOKER == 4 goto Thief
+  if var VAR_KALOS_LOOKER == 5 goto Truth
+  say "Every case closed. The city sleeps better tonight, {player}."
+  end
+label Tickets
+  if not flag FLAG_KALOS_LOOKER_TICKET_STATION goto StillLooking
+  if not flag FLAG_KALOS_LOOKER_TICKET_MUSEUM goto StillLooking
+  if not flag FLAG_KALOS_LOOKER_TICKET_HOTEL goto StillLooking
+  scene "The second case"
+  say "All three! The station, the museum and the hotel. You see what other people walk past. Good."
+  say "Then here is a real case. Children have been playing at battles in the little park south of this bureau."
+  say "And with them, they say, a girl who knows every alley of Lumiose. I want her on our side. Go and find her."
+  setflag FLAG_KALOS_LOOKER_ALLEY
+  setvar VAR_KALOS_LOOKER 2
+  endscene
+  end
+label StillLooking
+  say "Three tickets: where the trains leave, among old things, where the rich wait for their keys."
+  end
+label Alley
+  if not flag FLAG_KALOS_EMMA_BUREAU goto StillAlley
+  scene "The third case"
+  say "So you found her, and her Espurr too. Emma will be a fine assistant. She knows the streets I do not."
+  say "And already a new case. A tourist says a gang has taken her Pokémon at Lumiose Station, east of the city."
+  say "Emma has gone ahead. Go with her, {player}."
+  setflag FLAG_KALOS_LOOKER_GANG
+  setflag FLAG_KALOS_EMMA_AWAY
+  hide emma
+  hide mimi
+  setvar VAR_KALOS_LOOKER 3
+  endscene
+  end
+label StillAlley
+  say "The little park south of the bureau. The children, and the girl. Go."
+  end
+label Gang
+  if not flag FLAG_KALOS_LOOKER_GANG_DONE goto StillGang
+  scene "The fourth case"
+  say "Emma told me everything. She talked a whole gang out of crime. I could not have done it myself."
+  say "Now, the museum on the north boulevard. Someone broke in last night, and the curator is very upset."
+  say "Speak to him. Find out what was taken, and by whom."
+  setvar VAR_KALOS_LOOKER 4
+  endscene
+  end
+label StillGang
+  say "Lumiose Station, past the east gate. Emma is waiting for you there."
+  end
+label Thief
+  if flag FLAG_KALOS_LOOKER_BUTLER goto Butler
+  say "The museum on the north boulevard, then the alleys. Whoever is stealing Poké Balls is close."
+  end
+label Butler
+  say "That butler wants a battle. I suggest you give him one. He may know where Emma is."
+  end
+label Truth
+  say "Malva of the Elite Four, at the Hotel Richissime... She knows something. Find out what."
+  end
+
+
+# Emma: her cases with Looker, and Essentia's battles once it is all over
+script Emma
+  face emma player
+  speaker "Emma"
+  if var VAR_KALOS_LOOKER == 6 goto Letter
+  if var VAR_KALOS_LOOKER >= 7 goto Essentia
+  say "Looker always says a detective should see everything and say nothing. So I'm practising saying nothing."
+  end
+label Letter
+  scene "Looker's letter"
+  say "{player}... Looker's gone. He left this on his desk."
+  text "{player} read the letter." "The city is safe, and my work here is done. Before I go, meet me where the old things sleep. Bring nothing but yourself. L."
+  say "Where the old things sleep... The museum! Go, quickly, before he leaves for good."
+  endscene
+  end
+label Essentia
+  if weekday tuesday goto Training
+  if weekday thursday goto Training
+  if weekday saturday goto Training
+  say "I'm the head of the bureau now. On Tuesdays, Thursdays and Saturdays I train in the suit. Come and battle me!"
+  end
+label Training
+  if flag FLAG_DAILY_KALOS_ESSENTIA goto Tomorrow
+  ask "It's a training day. Shall Essentia battle you?"
+  if no end
+  say "Then let's go, partner!"
+  battle self as "kalos_essentia_rematch" canlose
+  heal
+  setflag FLAG_DAILY_KALOS_ESSENTIA
+  say "The suit's strong, but you're stronger. Come back on another training day!"
+  end
+label Tomorrow
+  say "That's enough for today. Essentia trains again on the next training day."
+  end
+
+script Mimi
+  speaker none
+  cry "Espurr"
+  text "Mimi stares at {player} with wide, unblinking eyes. It seems to approve."
+  end
+
+
+# The butler of the fourth case: a battle, then his mistress's message
+script Butler
+  face butler player
+  speaker "Anatole"
+  scene "The butler's message"
+  say "Allow me to see what the partner of the Looker Bureau is made of."
+  battle self as "kalos_butler_anatole"
+  say "Splendid. You are worthy of the message."
+  say "My mistress is Malva, of the Elite Four. She waits for you at the Hotel Richissime, by Rouge Plaza."
+  say "She asked me to say this: the thief you seek is closer to this bureau than you think."
+  hide butler
+  setflag FLAG_KALOS_LOOKER_BUTLER_DONE
+  setflag FLAG_KALOS_LOOKER_MALVA
+  setvar VAR_KALOS_LOOKER 5
+  endscene
+  end

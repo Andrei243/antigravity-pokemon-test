@@ -1,0 +1,48 @@
+# Sea Spirit's Den on Azure Bay's island (plan 23 · Z4b). The lines are our own, on X and Y's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): the bird that roams Kalos after its Hall of Fame
+# (vaniville_town.txt sets it loose; Overworld/Roamers.cs) comes to rest here once it has fled a dozen times, its story's
+# variable then saying 4 (Roamers.Resting). The place's arrival shows the one at rest (FLAG_KALOS_DEN_<SPECIES>); battled,
+# beaten or caught it is gone (FLAG_KALOS_DEN_DONE) and its variable says so as a roamer's would (1 caught, 2 beaten).
+
+
+script OnEnter
+  if var VAR_ROAMING_KALOS_ARTICUNO_STATE == 4 setflag FLAG_KALOS_DEN_ARTICUNO
+  if var VAR_ROAMING_KALOS_ZAPDOS_STATE == 4 setflag FLAG_KALOS_DEN_ZAPDOS
+  if var VAR_ROAMING_KALOS_MOLTRES_STATE == 4 setflag FLAG_KALOS_DEN_MOLTRES
+  end
+
+script Bird
+  speaker none
+  scene "The bird at rest"
+  text "The great bird that flew over Kalos has come to rest here, wings folded, in the hush of the sea."
+  if flag FLAG_KALOS_DEN_ARTICUNO goto Articuno
+  if flag FLAG_KALOS_DEN_ZAPDOS goto Zapdos
+  cry "Moltres"
+  wildbattle "Moltres" 70
+  if result == 2 goto Stays
+  setvar VAR_ROAMING_KALOS_MOLTRES_STATE 2
+  if result == 3 setvar VAR_ROAMING_KALOS_MOLTRES_STATE 1
+  goto Gone
+label Articuno
+  cry "Articuno"
+  wildbattle "Articuno" 70
+  if result == 2 goto Stays
+  setvar VAR_ROAMING_KALOS_ARTICUNO_STATE 2
+  if result == 3 setvar VAR_ROAMING_KALOS_ARTICUNO_STATE 1
+  goto Gone
+label Zapdos
+  cry "Zapdos"
+  wildbattle "Zapdos" 70
+  if result == 2 goto Stays
+  setvar VAR_ROAMING_KALOS_ZAPDOS_STATE 2
+  if result == 3 setvar VAR_ROAMING_KALOS_ZAPDOS_STATE 1
+label Gone
+  setflag FLAG_KALOS_DEN_DONE
+  hide self
+  text "The cave is quiet. Only the sea goes on breathing at its mouth."
+  goto Done
+label Stays
+  text "The bird settles its wings again. It isn't going anywhere."
+label Done
+  endscene
+  end

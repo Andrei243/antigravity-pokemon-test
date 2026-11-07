@@ -34,7 +34,7 @@
     { "file": "geosenge_town.txt", "x": 96, "z": 192 },
     { "file": "kalos_route_11.txt", "x": 144, "z": 150 },
     { "file": "shalour_city.txt", "x": 136, "z": 92 },
-    // Plan 23 � Z3, second part: Route 8 on south past the rockfall to Ambrette Town on its bay, and Route 9 east along the
+    // Plan 23 · Z3, second part: Route 8 on south past the rockfall to Ambrette Town on its bay, and Route 9 east along the
     // south coast, with a cave off each of the two roads (Reflection Cave off Route 11, Glittering Cave off Route 9)
     { "file": "kalos_route_8_south.txt", "x": 80, "z": 422 },
     { "file": "ambrette_town.txt", "x": 72, "z": 462 },
@@ -65,9 +65,13 @@
     // Kiloude City on the sea west of Couriway Town (the street runs on west out of Couriway); the mouths of Terminus Cave
     // (in Route 13's badlands) and Frost Cavern (on Route 17's snow) are drawn into those routes
     { "file": "kalos_route_16.txt", "x": 380, "z": 236 },
-    { "file": "kiloude_city.txt", "x": 532, "z": 332 }
+    { "file": "kiloude_city.txt", "x": 532, "z": 332 },
+    // Plan 23 · Z4b, after the Hall of Fame: the station's square east of Lumiose's east gate (Lumiose City's own area),
+    // and the shore road south from its south-east gate down to Azure Bay, with Sea Spirit's Den's island in the bay
+    { "file": "lumiose_station.txt", "x": 420, "z": 340 },
+    { "file": "azure_bay.txt", "x": 384, "z": 420 }
   ],
-  // Plan 23 � Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
+  // Plan 23 · Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
   "maps": [
     { "matrix": 1, "area": "reflection_cave", "width": 2, "height": 1, "cell": "5,5", "pieces": [ { "file": "reflection_cave.txt", "x": 4, "z": 4 } ] },
     { "matrix": 2, "area": "glittering_cave", "width": 2, "height": 2, "cell": "5,14", "pieces": [ { "file": "glittering_cave.txt", "x": 4, "z": 4 } ] },
@@ -76,7 +80,12 @@
     // Plan 23 · Z4, the loose ends: the Lost Hotel (off Route 16), Frost Cavern (off Route 17), Terminus Cave (off Route 13)
     { "matrix": 4, "area": "lost_hotel", "width": 2, "height": 2, "cell": "13,7", "pieces": [ { "file": "lost_hotel.txt", "x": 4, "z": 4 } ] },
     { "matrix": 5, "area": "frost_cavern", "width": 2, "height": 2, "cell": "18,6", "pieces": [ { "file": "frost_cavern.txt", "x": 4, "z": 4 } ] },
-    { "matrix": 6, "area": "terminus_cave", "width": 2, "height": 2, "cell": "7,12", "pieces": [ { "file": "terminus_cave.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 6, "area": "terminus_cave", "width": 2, "height": 2, "cell": "7,12", "pieces": [ { "file": "terminus_cave.txt", "x": 4, "z": 4 } ] },
+    // Plan 23 · Z4b: Terminus Cave's depths below its great hall (Zygarde's), the Unknown Dungeon off the Pokémon Village
+    // (Mewtwo's) and Sea Spirit's Den on Azure Bay's island (where the roaming bird rests)
+    { "matrix": 7, "area": "terminus_cave_depths", "width": 2, "height": 2, "cell": "7,12", "pieces": [ { "file": "terminus_cave_depths.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 8, "area": "unknown_dungeon", "width": 2, "height": 2, "cell": "21,3", "pieces": [ { "file": "unknown_dungeon.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 9, "area": "sea_spirits_den", "width": 1, "height": 1, "cell": "13,14", "pieces": [ { "file": "sea_spirits_den.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -87,7 +96,7 @@
     { "key": "kalos_route_3", "x": 258, "z": 516, "width": 58, "depth": 40 },
     { "key": "santalune_city", "x": 316, "z": 492, "width": 52, "depth": 58 },
     { "key": "kalos_route_4", "x": 336, "z": 420, "width": 48, "depth": 72 },
-    { "key": "lumiose_city", "x": 300, "z": 300, "width": 120, "depth": 120 },
+    { "key": "lumiose_city", "x": 300, "z": 300, "width": 148, "depth": 120 },
     { "key": "kalos_route_5", "x": 228, "z": 344, "width": 72, "depth": 34 },
     { "key": "camphrier_town", "x": 176, "z": 328, "width": 52, "depth": 58 },
     { "key": "kalos_route_6", "x": 184, "z": 262, "width": 36, "depth": 66 },
@@ -118,6 +127,9 @@
     { "key": "kalos_route_21", "x": 596, "z": 116, "width": 66, "depth": 24 },
     { "key": "kalos_pokemon_league", "x": 576, "z": 40, "width": 64, "depth": 60 },
     { "key": "kalos_route_16", "x": 380, "z": 236, "width": 56, "depth": 64 },
-    { "key": "kiloude_city", "x": 532, "z": 332, "width": 68, "depth": 56 }
+    { "key": "kiloude_city", "x": 532, "z": 332, "width": 68, "depth": 56 },
+    // Plan 23 · Z4b: the shore road and the bay south-east of Lumiose (the station's square is Lumiose's, which reaches
+    // over it since Z4b)
+    { "key": "azure_bay", "x": 384, "z": 420, "width": 72, "depth": 96 }
   ]
 }

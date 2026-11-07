@@ -19,7 +19,11 @@
     // Plan 23 · Z4, the loose ends: the Lost Hotel, Frost Cavern and Terminus Cave
     { "name": "LostHotel", "matrix": 4, "area": "lost_hotel", "trees": "Round", "setting": "Cave" },
     { "name": "FrostCavern", "matrix": 5, "area": "frost_cavern", "trees": "Round", "setting": "Cave" },
-    { "name": "TerminusCave", "matrix": 6, "area": "terminus_cave", "trees": "Round", "setting": "Cave" }
+    { "name": "TerminusCave", "matrix": 6, "area": "terminus_cave", "trees": "Round", "setting": "Cave" },
+    // Plan 23 · Z4b, after the Hall of Fame: Terminus Cave's depths, the Unknown Dungeon and Sea Spirit's Den
+    { "name": "TerminusCaveDepths", "matrix": 7, "area": "terminus_cave_depths", "trees": "Round", "setting": "Cave" },
+    { "name": "UnknownDungeon", "matrix": 8, "area": "unknown_dungeon", "trees": "Round", "setting": "Cave" },
+    { "name": "SeaSpiritsDen", "matrix": 9, "area": "sea_spirits_den", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "vaniville_town",
@@ -56,6 +60,8 @@
     "kalos_route_18", "couriway_town", "kalos_route_19", "snowbelle_city", "kalos_route_20", "pokemon_village", "kalos_route_21",
     "kalos_victory_road", "kalos_pokemon_league",
     // Plan 23 · Z4, the loose ends: Route 16 and Kiloude City in the open, then the three caves
-    "kalos_route_16", "kiloude_city", "lost_hotel", "frost_cavern", "terminus_cave"
+    "kalos_route_16", "kiloude_city", "lost_hotel", "frost_cavern", "terminus_cave",
+    // Plan 23 · Z4b: Azure Bay in the open, then the three caves of the time after the Hall of Fame
+    "azure_bay", "terminus_cave_depths", "unknown_dungeon", "sea_spirits_den"
   ]
 }

@@ -1,0 +1,45 @@
+{
+  "key": "azure_bay",
+  "index": 46,
+  "name": "Azure Bay",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AZURE_BAY",
+  "nightMusic": "AZURE_BAY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 419, "z": 476, "to": "sea_spirits_den", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ondine", "looks": "beauty", "movement": "look_east", "x": 402, "z": 448, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_ONDINE" },
+    { "id": "yannick", "looks": "fisherman", "movement": "look_west", "x": 434, "z": 449, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_YANNICK" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 450, "z": 447, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_AZURE_BAY_STAR_PIECE", "item": "Star Piece", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 413, "z": 473, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_AZURE_BAY_MAX_ETHER", "item": "Max Ether", "script": "" }
+  ],
+  "signs": [
+    { "x": 395, "z": 422, "type": 0, "script": "BaySign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Wingull", "level": 58 },
+    { "species": "Pelipper", "level": 59 },
+    { "species": "Binacle", "level": 58 },
+    { "species": "Barbaracle", "level": 60 },
+    { "species": "Skrelp", "level": 58 },
+    { "species": "Dragalge", "level": 60 },
+    { "species": "Clauncher", "level": 58 },
+    { "species": "Clawitzer", "level": 60 },
+    { "species": "Corphish", "level": 59 },
+    { "species": "Crawdaunt", "level": 61 },
+    { "species": "Staryu", "level": 59 },
+    { "species": "Starmie", "level": 61 }
+  ],
+  "landRate": 20
+}

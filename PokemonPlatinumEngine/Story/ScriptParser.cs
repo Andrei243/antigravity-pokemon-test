@@ -679,9 +679,11 @@ public static class ScriptParser
             {
                 r.OneOf("start");
                 string species = r.Text("a roaming Pokémon's species");
-                // (a region named after it: FireRed's beast roams Kanto, plan 29 · LS9, where a Raikou or an Entei is otherwise Johto's)
+                // (a region named after it: FireRed's beast roams Kanto, plan 29 · LS9, where a Raikou or an Entei is otherwise
+                // Johto's; X and Y's bird roams Kalos, plan 23 · Z4b, where an Articuno is otherwise one of Sinnoh's three)
                 string? region = null;
                 if (r.PeekWord("kanto")) { r.Next(); region = "kanto"; }
+                else if (r.PeekWord("kalos")) { r.Next(); region = "kalos"; }
                 if (Overworld.Roamers.SlotOf(species, region) == null) throw r.Error($"'{species}' is no Pokémon that roams{(region == null ? "" : " in " + region)} (Roamers.Slots)");
                 return new Instruction { Op = Op.Roamer, Line = line, Name = species, Other = region };
             }

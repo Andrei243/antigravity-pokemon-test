@@ -7,6 +7,11 @@
   "trees": "Round",
   "architecture": "OldTimber",
   "people": {
-    "keeper": { "name": "Old Woman", "npcType": "lady", "still": true, "dialog": [ "The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle." ] }
-  }
+    "keeper": { "name": "Old Woman", "npcType": "lady", "still": true, "script": "Keeper" }
+  },
+  // Plan 23 · Z4b: a cave's mouth at the head of the meadow, the Unknown Dungeon (unknown_dungeon), and a Zoroark of the
+  // village standing in it until the Hall of Fame (pokemon_village.txt); whoever comes out of the cave steps out south of it
+  "npcs": [
+    { "id": "guardian", "name": "Zoroark", "npcType": "Pokemon", "species": "Zoroark", "x": 698, "y": 107, "facing": "Down", "script": "Guardian", "hiddenBy": "KalosHallOfFame" }
+  ]
 }

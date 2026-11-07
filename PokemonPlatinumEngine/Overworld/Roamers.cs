@@ -25,6 +25,11 @@ namespace PokemonPlatinumEngine.Overworld;
 /// Hoenn's (plan 21 · H9, part b; Emerald's <c>src/roamer.c</c>): Latias or Latios, whichever the player names on the
 /// television's report after Hoenn's Hall of Fame, set loose at level 40 over Emerald's twenty routes
 /// (<see cref="HoennRoutes"/>) by the same rules, Platinum's, where Emerald's differ only in the odds of a move.
+/// Kalos's (plan 23 · Z4b; X and Y's, as they are publicly described): Articuno, Zapdos or Moltres by the first Pokémon
+/// chosen, set loose at level 70 over Kalos's routes (<see cref="KalosRoutes"/>) after its Hall of Fame; having fled a
+/// dozen times it settles in Sea Spirit's Den (<see cref="RestsAfter"/>, <see cref="Resting"/>), to be battled there.
+/// A roamer's level is the region's own game's; the script that sets it loose hands it through the host's
+/// <c>LevelHere</c>, so one set loose in a region crossed into is met at that region's levels.
 /// </summary>
 public static class Roamers
 {
@@ -40,16 +45,20 @@ public static class Roamers
         // FireRed's roaming beast (plan 29 · LS9; GetRoamerSpecies, CreateInitialRoamerMon at level 50): one of the three,
         // by the starter chosen, set loose over Kanto once Oak has given the National Pokédex. Slots of their own, so
         // that a Raikou of Kanto and one of Johto never share their place or their story's variable
-        ("Raikou", 50), ("Entei", 50), ("Suicune", 50)
+        ("Raikou", 50), ("Entei", 50), ("Suicune", 50),
+        // X and Y's bird (plan 23 · Z4b, at level 70): one of the three, by the first Pokémon chosen in Kalos, set loose
+        // after Kalos's Hall of Fame. Slots of their own beside Sinnoh's three birds, as Kanto's beast's are
+        ("Articuno", 70), ("Zapdos", 70), ("Moltres", 70)
     };
 
     /// <summary>The region each slot roams, in <see cref="Slots"/>' order.</summary>
     private static readonly string[] SlotRegions =
     {
-        "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "johto", "johto", "hoenn", "hoenn", "kanto", "kanto", "kanto"
+        "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "sinnoh", "johto", "johto", "hoenn", "hoenn", "kanto", "kanto", "kanto",
+        "kalos", "kalos", "kalos"
     };
 
-    /// <summary>The region a slot roams (<c>sinnoh</c>, <c>johto</c>, <c>hoenn</c>, <c>kanto</c>).</summary>
+    /// <summary>The region a slot roams (<c>sinnoh</c>, <c>johto</c>, <c>hoenn</c>, <c>kanto</c>, <c>kalos</c>).</summary>
     public static string RegionOf(int slot) => SlotRegions[slot];
 
     /// <summary>The slots that roam Johto (HeartGold's <c>roamer_idx == ROAMER_RAIKOU || ROAMER_ENTEI</c>): the rest roam Sinnoh.</summary>
@@ -171,6 +180,45 @@ public static class Roamers
         new[] { 0, 14 }         // 46: 29, 45
     };
 
+    /// <summary>
+    /// Kalos's places the bird goes (plan 23 · Z4b): every route with grass, and Azure Bay's shore. X and Y's roams "the
+    /// grass and the water of Kalos"; nobody surfs in Kalos yet, so the grass is all.
+    /// </summary>
+    public static readonly string[] KalosRoutes =
+    {
+        "kalos_route_2", "kalos_route_3", "kalos_route_4", "kalos_route_5", "kalos_route_6", "kalos_route_7", "kalos_route_8",
+        "kalos_route_9", "kalos_route_10", "kalos_route_11", "kalos_route_12", "kalos_route_13", "kalos_route_14",
+        "kalos_route_15", "kalos_route_16", "kalos_route_17", "kalos_route_18", "kalos_route_19", "kalos_route_20",
+        "kalos_route_21", "azure_bay"
+    };
+
+    // The places beside each, in KalosRoutes' order: the routes a town or a forest between joins it to (Lumiose's gates
+    // join Route 4 to Routes 5, 14 and 16 and to Azure Bay)
+    private static readonly int[][] KalosNearby =
+    {
+        new[] { 1 },                   // 2: 3, past Santalune Forest
+        new[] { 0, 2 },                // 3: 2, 4
+        new[] { 1, 3, 12, 14, 20 },    // 4: 3, and Lumiose's 5, 14, 16 and the bay
+        new[] { 2, 4, 5, 11 },         // 5: 4, Camphrier's 6 and 7, and 13
+        new[] { 3, 5 },                // 6: 5, 7
+        new[] { 3, 4, 6 },             // 7: 5, 6, 8
+        new[] { 5, 7, 8 },             // 8: 7, Ambrette's 9 and Cyllage's 10
+        new[] { 6, 10 },               // 9: 8, 12
+        new[] { 6, 9 },                // 10: 8, 11
+        new[] { 8 },                   // 11: 10
+        new[] { 7, 11 },               // 12: 9, 13
+        new[] { 10, 3 },               // 13: 12, 5
+        new[] { 2, 13, 14 },           // 14: 4, 15, 16
+        new[] { 12, 15 },              // 15: 14, 17
+        new[] { 2, 12 },               // 16: 4, 14
+        new[] { 13, 16 },              // 17: 15, 18
+        new[] { 15, 17 },              // 18: 17, 19
+        new[] { 16, 18 },              // 19: 18, 20
+        new[] { 17, 19 },              // 20: 19, 21
+        new[] { 18 },                  // 21: 20
+        new[] { 2, 3 }                 // the bay: 4, 5
+    };
+
     /// <summary>The places a species roams: Johto's for Raikou and Entei, Hoenn's for Latias and Latios, Sinnoh's for the rest.</summary>
     public static string[] RoutesOf(string species) => RoutesIn(RegionBySpecies(species));
 
@@ -179,12 +227,12 @@ public static class Roamers
 
     private static string[] RoutesIn(string region) => region switch
     {
-        "johto" => JohtoRoutes, "hoenn" => HoennRoutes, "kanto" => KantoRoutes, _ => Routes
+        "johto" => JohtoRoutes, "hoenn" => HoennRoutes, "kanto" => KantoRoutes, "kalos" => KalosRoutes, _ => Routes
     };
 
     private static int[][] NearbyOf(Roamer roamer) => (roamer.Region ?? RegionBySpecies(roamer.Species)) switch
     {
-        "johto" => JohtoNearby, "hoenn" => HoennNearby, "kanto" => KantoNearby, _ => Nearby
+        "johto" => JohtoNearby, "hoenn" => HoennNearby, "kanto" => KantoNearby, "kalos" => KalosNearby, _ => Nearby
     };
 
     /// <summary>The places roamers go, by the original's numbers (<c>RoamingPokemonRoutes</c>, <c>RI_*</c>).</summary>
@@ -235,13 +283,27 @@ public static class Roamers
     /// <summary>The story's variable that tells what became of a roamer (<c>VAR_ROAMING_&lt;SPECIES&gt;_STATE</c>).</summary>
     public static string StateVariable(string species) => $"VAR_ROAMING_{species.ToUpperInvariant()}_STATE";
 
-    /// <summary>The story's variable of a slot: Kanto's beast's is <c>VAR_ROAMING_KANTO_&lt;SPECIES&gt;_STATE</c>, apart from Johto's.</summary>
-    public static string StateVariable(int slot) => RegionOf(slot) == "kanto"
-        ? $"VAR_ROAMING_KANTO_{Slots[slot].Species.ToUpperInvariant()}_STATE"
+    /// <summary>
+    /// The story's variable of a slot: Kanto's beast's is <c>VAR_ROAMING_KANTO_&lt;SPECIES&gt;_STATE</c>, apart from Johto's,
+    /// and Kalos's bird's <c>VAR_ROAMING_KALOS_&lt;SPECIES&gt;_STATE</c>, apart from Sinnoh's three.
+    /// </summary>
+    public static string StateVariable(int slot) => RegionOf(slot) is "kanto" or "kalos"
+        ? $"VAR_ROAMING_{RegionOf(slot).ToUpperInvariant()}_{Slots[slot].Species.ToUpperInvariant()}_STATE"
         : StateVariable(Slots[slot].Species);
 
-    /// <summary>What the variable says (<c>ROAMER_STATE_*</c>).</summary>
-    public const int Roaming = 0, Captured = 1, Defeated = 2, Reset = 3;
+    /// <summary>What the variable says (<c>ROAMER_STATE_*</c>), and ours: settled somewhere to be battled (plan 23 · Z4b).</summary>
+    public const int Roaming = 0, Captured = 1, Defeated = 2, Reset = 3, Resting = 4;
+
+    /// <summary>
+    /// How many times a slot's roamer flees before it settles (X and Y's bird: "over a dozen times", twelve here), or 0
+    /// for one that roams until it is met for good, as Platinum's do. Fled is any wild battle with it that it ends still
+    /// roaming: its own flight or the player's.
+    /// </summary>
+    public static int RestsAfter(int slot) => RegionOf(slot) == "kalos" ? 12 : 0;
+
+    /// <summary>The story's variable that counts a settling roamer's flights (<c>VAR_ROAMING_KALOS_&lt;SPECIES&gt;_FLED</c>).</summary>
+    public static string FledVariable(int slot) =>
+        $"VAR_ROAMING_{RegionOf(slot).ToUpperInvariant()}_{Slots[slot].Species.ToUpperInvariant()}_FLED";
 
     /// <summary>The slot of a species (in a region, when one is named; the first otherwise), or null for one that doesn't roam.</summary>
     public static int? SlotOf(string species, string? region = null)
@@ -264,9 +326,11 @@ public static class Roamers
     /// <c>RoamingPokemon_ActivateSlot</c>: the slot's Pokémon is made (random IVs, at full HP, with no condition) and
     /// set loose somewhere at random.
     /// </summary>
-    public static void SetLoose(SpecialEncounters state, int slot, Random rng)
+    public static void SetLoose(SpecialEncounters state, int slot, Random rng, int? levelHere = null)
     {
         var (species, level) = Slots[slot];
+        // (at the level the region's own game gives it, or the level met in a region crossed into: plan 18 · W4)
+        level = levelHere ?? level;
         var roamer = state.Roamers[slot];
         roamer.Species = species;
         roamer.Level = level;
@@ -384,6 +448,17 @@ public static class Roamers
             {
                 roamer.Pokemon.CurrentHP = foe.CurrentHP;
                 roamer.Pokemon.Status = (int)foe.Status;
+                // Having fled often enough, X and Y's bird settles where it can be battled (plan 23 · Z4b)
+                if (RestsAfter(slot) is > 0 and var limit)
+                {
+                    int fled = story.Var(FledVariable(slot)) + 1;
+                    story.SetVar(FledVariable(slot), fled);
+                    if (fled >= limit)
+                    {
+                        Gone(roamer);
+                        story.SetVar(StateVariable(slot), Resting);
+                    }
+                }
             }
             MoveOff(state, place, rng);
         }

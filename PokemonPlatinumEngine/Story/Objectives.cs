@@ -255,7 +255,14 @@ public static class Objectives
         (528, "kalosFlareHQ", AtLeast("VAR_KALOS_STORY", 29), false),
         (529, "kalosWulfric", s => s.Var("VAR_KALOS_STORY") >= 30 || s.HasBadge(RegionDatabase.Kalos, "Iceberg"), false),
         (530, "kalosLeague", s => s.Var("VAR_KALOS_STORY") >= 31 || s.Has("KalosHallOfFame"), false),
-        // What comes after the Hall of Fame (the flight to Alola, the post-game) leaves nothing pressing
+        // Plan 23 · Z4b, after the Hall of Fame: the professor at Lumiose Station and the TMV pass, the neighbour in Kiloude
+        // City, the Mega Ring upgraded by Anistar's sundial, and Looker's episode to its end (VAR_KALOS_POSTGAME,
+        // VAR_KALOS_LOOKER); the legendaries, the bird and the stones ask nothing of the story
+        (531, "kalosStation", AtLeast("VAR_KALOS_POSTGAME", 1), false),
+        (532, "kalosKiloude", AtLeast("VAR_KALOS_POSTGAME", 2), false),
+        (533, "kalosSundial", AtLeast("VAR_KALOS_POSTGAME", 3), false),
+        (534, "kalosLooker", AtLeast("VAR_KALOS_LOOKER", 7), false),
+        // What comes after that (the flight to Alola, the rest of the post-game) leaves nothing pressing
         (599, "kalosFree", null, false));
     private static Objective[] Alola => Region(RegionDatabase.Alola,
         // Plan 23 · Z5: VAR_ALOLA_STORY, alola_route_1.txt's count, from the new home to Hau'oli City

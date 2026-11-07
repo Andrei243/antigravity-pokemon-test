@@ -1,0 +1,227 @@
+{
+  "name": "LumioseCity_Station",
+  "displayName": "Lumiose Station",
+  "bgmTrack": "kalos/santalune",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 17,
+  "height": 12,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.........###.##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###...........###",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Booth",
+      "x": 11,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 12,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 14,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 433,
+      "targetY": 352,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "tmv",
+      "name": "TMV Attendant",
+      "npcType": "receptionist",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Tmv"
+    },
+    {
+      "id": "sycamore",
+      "name": "Prof. Sycamore",
+      "npcType": "sycamore",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Sycamore",
+      "hiddenBy": "FLAG_KALOS_TMV_PASS",
+      "shownBy": "KalosHallOfFame"
+    },
+    {
+      "id": "sina",
+      "name": "Sina",
+      "npcType": "sina",
+      "x": 6,
+      "y": 6,
+      "facing": "Down",
+      "script": "Sina",
+      "hiddenBy": "FLAG_KALOS_TMV_PASS",
+      "shownBy": "KalosHallOfFame"
+    },
+    {
+      "id": "dexio",
+      "name": "Dexio",
+      "npcType": "dexio",
+      "x": 10,
+      "y": 6,
+      "facing": "Down",
+      "script": "Dexio",
+      "hiddenBy": "FLAG_KALOS_TMV_PASS",
+      "shownBy": "KalosHallOfFame"
+    },
+    {
+      "id": "gang_rouille",
+      "name": "Rouille",
+      "npcType": "lumiose_gang_f",
+      "x": 4,
+      "y": 5,
+      "facing": "Right",
+      "script": "GangRouille",
+      "hiddenBy": "FLAG_KALOS_LOOKER_GANG_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_GANG"
+    },
+    {
+      "id": "gang_brutus",
+      "name": "Brutus",
+      "npcType": "lumiose_gang",
+      "x": 4,
+      "y": 7,
+      "facing": "Right",
+      "script": "GangBrutus",
+      "hiddenBy": "FLAG_KALOS_LOOKER_GANG_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_GANG"
+    },
+    {
+      "id": "gang_fauve",
+      "name": "Fauve",
+      "npcType": "lumiose_gang",
+      "x": 13,
+      "y": 7,
+      "facing": "Left",
+      "script": "GangFauve",
+      "hiddenBy": "FLAG_KALOS_LOOKER_GANG_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_GANG"
+    },
+    {
+      "id": "tourist",
+      "name": "Tourist",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "script": "Tourist",
+      "hiddenBy": "FLAG_KALOS_LOOKER_GANG_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_GANG"
+    },
+    {
+      "id": "emma_station",
+      "name": "Emma",
+      "npcType": "emma",
+      "x": 3,
+      "y": 8,
+      "facing": "Up",
+      "script": "EmmaStation",
+      "hiddenBy": "FLAG_KALOS_LOOKER_GANG_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_GANG"
+    },
+    {
+      "id": "traveller",
+      "name": "Traveller",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "The TMV crosses half of Kalos before you can finish a croissant. I always try anyway."
+      ]
+    }
+  ],
+  "tileScripts": [
+    { "x": 15, "y": 3, "script": "Ticket" }
+  ],
+  "wildEncounters": []
+}

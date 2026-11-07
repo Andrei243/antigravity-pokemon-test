@@ -1,0 +1,185 @@
+{
+  "name": "LumioseCity_Museum",
+  "displayName": "Lumiose Museum",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 17,
+  "height": 12,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#..#........##..#",
+    "#...........##..#",
+    "#...............#",
+    "#.#.#.#.....#.#.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Column",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ScaleModel",
+      "x": 12,
+      "y": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "DomeFossil",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "HelixFossil",
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "OldAmber",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 14,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 370,
+      "targetY": 318,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "curator",
+      "name": "Curator",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Curator"
+    },
+    {
+      "id": "visitor",
+      "name": "Visitor",
+      "npcType": "Lady",
+      "x": 10,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Every painting in this hall was painted in Lumiose. The city has always loved to look at itself."
+      ]
+    },
+    {
+      "id": "looker_farewell",
+      "name": "Looker",
+      "npcType": "looker",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "script": "LookerFarewell",
+      "hiddenBy": "FLAG_KALOS_LOOKER_LEFT",
+      "shownBy": "FLAG_KALOS_LOOKER_FAREWELL"
+    }
+  ],
+  "tileScripts": [
+    { "x": 3, "y": 4, "script": "Ticket" }
+  ],
+  "wildEncounters": []
+}

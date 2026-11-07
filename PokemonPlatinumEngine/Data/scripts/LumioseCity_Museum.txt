@@ -1,0 +1,61 @@
+# The Lumiose Museum on the north boulevard (plan 23 · Z4b; its door opens with the Hall of Fame). The lines are our own,
+# on X and Y's beats as they are publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): a hall of
+# paintings, fossils and a model of the city. In Looker's first case one of his tickets lies by a statue; in his fourth
+# (VAR_KALOS_LOOKER 4) the curator tells of the night's break-in and the Poké Balls stolen in the alleys, which sets the
+# three suspects in the streets (FLAG_KALOS_LOOKER_STING, lumiose_city.txt); and in his farewell (6) Looker waits here.
+#
+# The people: curator, a visitor, looker_farewell (FLAG_KALOS_LOOKER_FAREWELL until FLAG_KALOS_LOOKER_LEFT).
+
+
+script Curator
+  face curator player
+  speaker "Curator"
+  if var VAR_KALOS_LOOKER == 4 goto BreakIn
+  say "Welcome to the Lumiose Museum. Every work here was made in Kalos, or found in its ground."
+  end
+label BreakIn
+  if flag FLAG_KALOS_LOOKER_STING goto Sting
+  scene "The museum's break-in"
+  say "You're from the bureau? Thank goodness. Last night someone broke in and smashed three of our cases."
+  say "Nothing was taken from them, but a guard saw a figure in a dark suit running off toward the alleys."
+  say "And all week, Trainers have had Poké Balls snatched in the alleys of this city. Three suspects keep being seen there."
+  say "One in the alley beside the bureau, one in the alley beside this museum, and one near the restaurant to the west."
+  setflag FLAG_KALOS_LOOKER_STING
+  endscene
+  end
+label Sting
+  say "The alley beside the bureau, the alley beside this museum, and the street near the restaurant. Please, be careful."
+  end
+
+
+# Looker's first case: one of his tickets, by the statue among the old things
+script Ticket
+  if var VAR_KALOS_LOOKER != 1 goto Statue
+  if flag FLAG_KALOS_LOOKER_TICKET_MUSEUM goto Statue
+  setflag FLAG_KALOS_LOOKER_TICKET_MUSEUM
+  fanfare item
+  text "A card is propped against the statue's foot, with an eye drawn on it in ink." "{player} found one of Looker's tickets!"
+  end
+label Statue
+  text "A statue of a Trainer and a Pokémon, carved so long ago that nobody knows which Pokémon it was."
+  end
+
+
+# Looker's farewell (VAR_KALOS_LOOKER 6, after the fifth case): he hands the bureau to Emma, and his name to the player
+script LookerFarewell
+  face looker_farewell player
+  speaker "Looker"
+  scene "Looker's farewell"
+  say "You came. Of course you did. You always find what you are looking for, {player}."
+  say "The city is safe. Xerosic is in custody, and Emma is free. My work in Lumiose is finished."
+  say "The International Police want me somewhere else. A detective's life is a suitcase and a train ticket."
+  say "Emma will run the bureau now. She knows the streets, and she has a good heart. Look in on her from time to time."
+  say "And you... You have earned something. From today, you may call yourself Looker too. A secret name, for a secret job."
+  say "Farewell, partner. Look after this city of light."
+  text "Looker turned up his collar and walked out of the museum without looking back."
+  hide looker_farewell
+  setflag FLAG_KALOS_LOOKER_LEFT
+  setvar VAR_KALOS_LOOKER 7
+  objective kalosFree
+  endscene
+  end

@@ -1,0 +1,20 @@
+# The Pokémon Village (plan 23 · Z4b). The lines are our own: a cave's mouth at the head of the meadow, the Unknown Dungeon,
+# with one of the village's Zoroark before it until the Hall of Fame (the overlay hides it by KalosHallOfFame); and the
+# old woman who looks after the village.
+
+
+script Keeper
+  face self player
+  speaker "Old Woman"
+  if flag KalosHallOfFame goto Champion
+  say "The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle."
+  end
+label Champion
+  say "The Zoroark let you by the cave, I see. What lives at the end of it was made by people, long ago. Go gently."
+  end
+
+script Guardian
+  speaker none
+  cry "Zoroark"
+  text "A Zoroark stands before the cave's mouth and won't let anyone near. Other eyes watch from the grass."
+  end

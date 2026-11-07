@@ -185,6 +185,28 @@
         "dialogueAfter": "Hiker Armand: You climbed right over me. Grant is waiting at the top.",
         "sightRange": 3
       }
+    },
+    {
+      "id": "mega_aggronite",
+      "name": "Aggronite",
+      "npcType": "ItemBall",
+      "x": 1,
+      "y": 16,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_ITEM_MEGA_AGGRONITE",
+      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "item": "Aggronite"
+    },
+    {
+      "id": "mega_tyranitarite",
+      "name": "Tyranitarite",
+      "npcType": "ItemBall",
+      "x": 11,
+      "y": 16,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_ITEM_MEGA_TYRANITARITE",
+      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "item": "Tyranitarite"
     }
   ],
   "wildEncounters": []

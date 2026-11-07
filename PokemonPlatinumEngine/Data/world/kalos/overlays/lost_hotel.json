@@ -1,5 +1,5 @@
 {
-  // The Lost Hotel (plan 23 Â· Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/lost_hotel.txt), our
+  // The Lost Hotel (plan 23 · Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/lost_hotel.txt), our
   // words. An old grand hotel at the head of Route 16 whose floors have sunk into the hill: a lobby, a hall, two wings and
   // a long gallery, with the ghosts of the north and four Trainers who stayed. It plays Santalune Forest's song until
   // plan 31 writes it a cave song of its own
@@ -39,5 +39,9 @@
         "dialogueAfter": "Psychic Odile: A view is better with a friend. I will remember that."
       }
     }
-  }
+  },
+  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_banettite", "name": "Banettite", "npcType": "ItemBall", "item": "Banettite", "x": 53, "y": 24, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_BANETTITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
 }

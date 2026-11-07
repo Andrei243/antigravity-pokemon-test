@@ -1,7 +1,7 @@
 {
-  // Frost Cavern (plan 23 Â· Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/frost_cavern.txt), our
+  // Frost Cavern (plan 23 · Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/frost_cavern.txt), our
   // words. A cave of ice off Route 17's snowfield: an entrance hall, a great frozen hall and three chambers above it, with
-  // the cold PokÃ©mon of the north and four Trainers. It plays Santalune Forest's song until plan 31 writes it a cave
+  // the cold Pokémon of the north and four Trainers. It plays Santalune Forest's song until plan 31 writes it a cave
   // song of its own
   "area": "frost_cavern",
   "bgmTrack": "kalos/santalune_forest",
@@ -39,5 +39,9 @@
         "dialogueAfter": "Ace Trainer Sylvain: Take the hall. I will warm my hands somewhere else."
       }
     }
-  }
+  },
+  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
 }

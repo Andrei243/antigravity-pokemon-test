@@ -1,0 +1,12 @@
+{
+  // The Unknown Dungeon (plan 23 · Z4b): a map of its own, drawn by hand (tools/MapDraw/kalos/unknown_dungeon.txt), our words.
+  // A cave behind the Pokémon Village whose Pokémon guard its mouth until the Hall of Fame: three chambers, the strongest
+  // wild Pokémon of Kalos, and at the far end of the last one a Pokémon made by people long ago, alone (unknown_dungeon.txt:
+  // Mewtwo). It plays Santalune Forest's song until plan 31 writes it a cave song of its own
+  "area": "unknown_dungeon",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "mewtwo": { "name": "Mewtwo", "npcType": "Pokemon", "species": "Mewtwo", "script": "Mewtwo", "still": true, "hiddenBy": "FLAG_KALOS_MEWTWO_GONE" }
+  }
+}

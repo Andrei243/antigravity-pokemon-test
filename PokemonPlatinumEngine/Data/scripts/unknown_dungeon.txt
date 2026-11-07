@@ -1,0 +1,24 @@
+# The Unknown Dungeon behind the Pokémon Village (plan 23 · Z4b). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): at the far end of the last chamber
+# Mewtwo waits alone, at level 70. Beaten or caught it is gone for good (FLAG_KALOS_MEWTWO_GONE) and the two Mewtwonites lie
+# where it stood (X's and Y's both, since the game has no versions); run from, it stays.
+
+
+script Mewtwo
+  speaker none
+  scene "Mewtwo in the Unknown Dungeon"
+  text "A Pokémon stands alone at the end of the cave, with its back to the wall. Slowly, it turns its head toward {player}."
+  cry "Mewtwo"
+  wildbattle "Mewtwo" 70
+  if result == 2 goto Stays
+  setflag FLAG_KALOS_MEWTWO_GONE
+  hide self
+  text "Where Mewtwo stood, two stones glimmer on the cave floor."
+  give "Mewtwonite X"
+  give "Mewtwonite Y"
+  goto Done
+label Stays
+  text "Mewtwo watches {player} go, without moving."
+label Done
+  endscene
+  end

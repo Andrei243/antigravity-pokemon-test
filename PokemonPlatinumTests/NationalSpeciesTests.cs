@@ -72,7 +72,7 @@ public class NationalSpeciesTests
     [Fact]
     public void WhatARegionOwesAsHadInAnotherRegionIsHadThere()
     {
-        foreach (var owed in new[] { KantoSpeciesTests.Owed, JohtoSpeciesTests.Owed, UnovaSpeciesTests.Owed, HoennSpeciesTests.Owed })
+        foreach (var owed in new[] { KantoSpeciesTests.Owed, JohtoSpeciesTests.Owed, UnovaSpeciesTests.Owed, HoennSpeciesTests.Owed, KalosSpeciesTests.Owed })
             foreach (var (species, who) in owed.Where(o => o.Value.StartsWith("had in another region")))
                 Assert.True(SpeciesSources.Everywhere.Has(species), $"{species} is owed as {who}, and nothing anywhere gives it");
     }
@@ -80,7 +80,7 @@ public class NationalSpeciesTests
     [Fact]
     public void EveryRegionsWaysAreInEverywhere()
     {
-        foreach (var region in new[] { SpeciesSources.Sinnoh, SpeciesSources.Kanto, SpeciesSources.Johto, SpeciesSources.Hoenn, SpeciesSources.Unova })
+        foreach (var region in new[] { SpeciesSources.Sinnoh, SpeciesSources.Kanto, SpeciesSources.Johto, SpeciesSources.Hoenn, SpeciesSources.Unova, SpeciesSources.Of(RegionDatabase.Kalos) })
             foreach (string s in region.Ways.Keys) Assert.True(SpeciesSources.Everywhere.Has(s), s);
     }
 
@@ -142,11 +142,13 @@ public class NationalSpeciesTests
             (RegionDatabase.Johto, JohtoSpeciesTests.Owed, JohtoSpeciesTests.OwedNeeds),
             (RegionDatabase.Hoenn, HoennSpeciesTests.Owed, HoennSpeciesTests.OwedNeeds),
             (RegionDatabase.Unova, UnovaSpeciesTests.Owed, UnovaSpeciesTests.OwedNeeds),
+            // Plan 23 · Z4b: Kalos, its three Pokédexes together
+            (RegionDatabase.Kalos, KalosSpeciesTests.Owed, KalosSpeciesTests.OwedNeeds),
         };
         foreach (var (region, owed, _) in checks)
         {
             var dex = SpeciesSources.DexOf(region);
-            md.Append($"| {region} | `{RegionDatabase.Get(region)!.Dex}` | {dex.Count} | {dex.Count(SpeciesSources.Of(region).Has)} | {owed.Count} |\n");
+            md.Append($"| {region} | {string.Join(", ", RegionDatabase.Get(region)!.Dexes.Select(d => $"`{d}`"))} | {dex.Count} | {dex.Count(SpeciesSources.Of(region).Has)} | {owed.Count} |\n");
         }
         md.Append("\nSinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives ");
         md.Append($"({SpeciesSources.Sinnoh.PalParkPool.Count} species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).\n");

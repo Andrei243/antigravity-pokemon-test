@@ -1,0 +1,28 @@
+# Anistar City (plan 23 · Z4b). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): once the neighbour has been beaten in Kiloude City
+# (FLAG_KALOS_RIVAL_KILOUDE_BEATEN), the professor waits by the great sundial, whose stone fell from the sky. He has the
+# player hold up their Key Stone to it, which lets it feel the Mega Stones hidden across Kalos (FLAG_KALOS_MEGA_RING_UPGRADED:
+# they lie where X and Y hide them from then on, at any hour), and passes on a note that opens Looker's Bureau in Lumiose.
+# VAR_KALOS_POSTGAME, Z4b's count (LumioseCity_Station.txt), becomes 3.
+#
+# The people: sycamore_sundial (FLAG_KALOS_RIVAL_KILOUDE_BEATEN until FLAG_KALOS_MEGA_RING_UPGRADED).
+
+
+script Sundial
+  face self player
+  speaker "Prof. Sycamore"
+  scene "The professor by the sundial"
+  say "{player}! Have you heard the old story? This sundial's stone fell from the sky long ago, the night Kalos first saw a Mega Evolution."
+  say "Its light still reaches every Key Stone and Mega Stone in the region. Hold your Key Stone up to it, would you?"
+  speaker none
+  text "The sundial's stone gave off a soft light, and the Key Stone {player} carried shone back at it."
+  speaker "Prof. Sycamore"
+  say "Magnifique! Now your Key Stone will feel the Mega Stones hidden all over Kalos. Trainers of old left them everywhere."
+  say "In caves and forests, in a Gym and a castle, by the sea and in the snow. Go and find them all!"
+  say "Oh, and before I forget. Someone left a note for you at my laboratory. It said only: the bureau south of Rouge Plaza. L."
+  setflag FLAG_KALOS_MEGA_RING_UPGRADED
+  if var VAR_KALOS_POSTGAME < 3 setvar VAR_KALOS_POSTGAME 3
+  hide self
+  objective kalosLooker
+  endscene
+  end

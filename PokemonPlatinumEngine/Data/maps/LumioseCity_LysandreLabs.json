@@ -143,6 +143,50 @@
       "facing": "Down",
       "script": "Lysandre",
       "hiddenBy": "FLAG_KALOS_HIDE_LYSANDRE_LABS"
+    },
+    {
+      "id": "xerosic",
+      "name": "Xerosic",
+      "npcType": "xerosic",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Xerosic",
+      "hiddenBy": "FLAG_KALOS_LOOKER_LABS_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_LABS"
+    },
+    {
+      "id": "essentia",
+      "name": "Essentia",
+      "npcType": "essentia",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "script": "Essentia",
+      "hiddenBy": "FLAG_KALOS_LOOKER_LABS_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_LABS"
+    },
+    {
+      "id": "scientist_clothilde",
+      "name": "Clothilde",
+      "npcType": "scientist_f",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "script": "ScientistClothilde",
+      "hiddenBy": "FLAG_KALOS_LOOKER_LABS_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_LABS"
+    },
+    {
+      "id": "scientist_ernest",
+      "name": "Ernest",
+      "npcType": "scientist",
+      "x": 13,
+      "y": 6,
+      "facing": "Left",
+      "script": "ScientistErnest",
+      "hiddenBy": "FLAG_KALOS_LOOKER_LABS_DONE",
+      "shownBy": "FLAG_KALOS_LOOKER_LABS"
     }
   ],
   "wildEncounters": []
