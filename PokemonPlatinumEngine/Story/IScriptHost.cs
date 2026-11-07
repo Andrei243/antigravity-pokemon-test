@@ -304,6 +304,12 @@ public interface IScriptHost
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
     /// <remarks>A lesson someone else shows names them and their Pokémon (<paramref name="catcher"/>; plan 21 · H2, Wally with his father's Zigzagoon).</remarks>
     void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null);
+
+    /// <summary>
+    /// A trial's totem (plan 23 · Z6): a wild battle that can't be run from, fought as an SOS battle under the totem's
+    /// <paramref name="aura"/>, in which nothing can be caught. A host that has no such battle fights it as a wild one.
+    /// </summary>
+    void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura) => WildBattle(wild, BattleKind.Normal, cannotFlee: true);
     BattleOutcome Outcome { get; }
 
     /// <summary>

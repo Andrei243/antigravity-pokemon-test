@@ -1,0 +1,14 @@
+{
+  // Route 7, Akala Island (plan 23 · Z6): drawn by hand, our words. A beach between Route 8 and Wela Volcano Park, the
+  // sea along its south side
+  "area": "akala_route_7",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "swimmer": {
+      "name": "Swimmer",
+      "npcType": "swimmer_m",
+      "dialog": [ "The volcano's right up there, and the sea's right down here. Best beach in Alola, if you ask me." ]
+    }
+  }
+}

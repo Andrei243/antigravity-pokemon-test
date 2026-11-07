@@ -1,0 +1,44 @@
+{
+  "key": "digletts_tunnel",
+  "index": 21,
+  "name": "Diglett's Tunnel",
+  "matrix": 20,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "DIGLETTS_TUNNEL",
+  "nightMusic": "DIGLETTS_TUNNEL",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 24, "to": "akala_route_8", "toWarp": 2 },
+    { "x": 56, "z": 24, "to": "akala_route_9", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "grunt_1", "looks": "skull_grunt", "movement": "look_west", "x": 30, "z": 21, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TEAM_SKULL_GRUNT_TUNNEL_1" },
+    { "id": "grunt_2", "looks": "skull_grunt", "movement": "look_south", "x": 40, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TEAM_SKULL_GRUNT_TUNNEL_2" },
+    { "id": "worker", "looks": "hiker", "movement": "look_south", "x": 20, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_DIGLETTS_TUNNEL_ESCAPE_ROPE", "item": "Escape Rope", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Diglett", "level": 21 },
+    { "species": "Diglett", "level": 22 },
+    { "species": "Diglett", "level": 23 },
+    { "species": "Diglett", "level": 21 },
+    { "species": "Zubat", "level": 20 },
+    { "species": "Zubat", "level": 21 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Diglett", "level": 22 },
+    { "species": "Zubat", "level": 21 },
+    { "species": "Diglett", "level": 23 },
+    { "species": "Larvitar", "level": 22 },
+    { "species": "Larvitar", "level": 23 }
+  ],
+  "landRate": 10
+}

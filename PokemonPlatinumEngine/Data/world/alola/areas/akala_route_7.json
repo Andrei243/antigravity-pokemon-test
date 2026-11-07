@@ -1,0 +1,33 @@
+{
+  "key": "akala_route_7",
+  "index": 19,
+  "name": "Route 7",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AKALA_ROUTE_7",
+  "nightMusic": "AKALA_ROUTE_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "swimmer", "looks": "swimmer_m", "movement": "look_south", "x": 326, "z": 118, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 334, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_7_STAR_PIECE", "item": "Star Piece", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [],
+  "landRate": 0,
+  "water": [
+    { "species": "Tentacool", "level": 18 },
+    { "species": "Wingull", "level": 18 },
+    { "species": "Finneon", "level": 19 },
+    { "species": "Wishiwashi", "level": 18 },
+    { "species": "Mantyke", "level": 19 }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  // Memorial Hill, Akala Island (plan 23 · Z6): drawn by hand, our words. A quiet hillside of graves east of Route 9,
+  // the way north to the Akala Outskirts; Team Skull's grunts have come to make trouble
+  "area": "memorial_hill",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "grunt_1": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Spooky up here, right? Not as spooky as Team Skull!",
+        "dialogueAfter": "Team Skull Grunt: Okay, this hill is a little spooky."
+      }
+    },
+    "grunt_2": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Nobody gets up to the ruins on our watch! Well, our watch starts now.",
+        "dialogueAfter": "Team Skull Grunt: Our watch is over. Go on."
+      }
+    },
+    "mourner": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [ "My Pokémon rests here. I come every week to tell it how the garden's doing." ]
+    }
+  }
+}

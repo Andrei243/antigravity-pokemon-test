@@ -1,0 +1,107 @@
+# The Lush Jungle, Akala Island: Captain Mallow's trial (plan 23 · Z6). The lines are our own, on Sun and Moon's beats
+# as they are publicly described (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand
+# trial"): four ingredients found among the jungle's bushes for Mallow's dish, whose scent draws the totem Lurantis
+# into the clearing, fought as a totem (its aura raises its Speed; its first call brings a Comfey). VAR_ALOLA_AKALA is
+# royal_avenue.txt's count.
+#
+# The people: mallow at the jungle's crossing until the trial is passed (FLAG_ALOLA_LUSH_TRIAL_DONE); the totem, shown
+# once all four ingredients are found (FLAG_ALOLA_LUSH_TOTEM) until it is beaten. The four bushes are read where they
+# stand (lush_jungle.json's readAt).
+
+
+script Mallow
+  if var VAR_ALOLA_AKALA >= 3 goto Begin
+  speaker "Mallow"
+  say "Alola again! My trial wants a fire-tested trainer. Go see Kiawe on the volcano, then come back to me!"
+  end
+label Begin
+  if flag FLAG_ALOLA_LUSH_TRIAL goto During
+  scene "Mallow's trial begins"
+  speaker "Mallow"
+  say "Welcome to the Lush Jungle! My trial is a cooking trial. My dish will call the totem right out of the trees!"
+  say "Find me four things among the bushes: a sweet fruit, a fragrant leaf, a tiny mushroom and a bitter herb."
+  say "Each one goes straight in the pot. Then wait for the totem in the clearing up north!"
+  setflag FLAG_ALOLA_LUSH_TRIAL
+  endscene
+  end
+label During
+  speaker "Mallow"
+  say "A sweet fruit, a fragrant leaf, a tiny mushroom and a bitter herb. Then the clearing up north!"
+  end
+
+
+script Ingredient1
+  if not flag FLAG_ALOLA_LUSH_TRIAL goto Bush
+  if flag FLAG_ALOLA_LUSH_INGREDIENT_1 goto Bush
+  text "{player} found a sweet, ripe fruit among the leaves!"
+  setflag FLAG_ALOLA_LUSH_INGREDIENT_1
+  call Gathered
+  end
+label Bush
+  text "Thick green leaves. Nothing else here."
+  end
+
+script Ingredient2
+  if not flag FLAG_ALOLA_LUSH_TRIAL goto Bush
+  if flag FLAG_ALOLA_LUSH_INGREDIENT_2 goto Bush
+  text "{player} found a fragrant leaf that smells of spice!"
+  setflag FLAG_ALOLA_LUSH_INGREDIENT_2
+  call Gathered
+  end
+label Bush
+  text "Thick green leaves. Nothing else here."
+  end
+
+script Ingredient3
+  if not flag FLAG_ALOLA_LUSH_TRIAL goto Bush
+  if flag FLAG_ALOLA_LUSH_INGREDIENT_3 goto Bush
+  text "{player} found a tiny mushroom growing in the shade!"
+  setflag FLAG_ALOLA_LUSH_INGREDIENT_3
+  call Gathered
+  end
+label Bush
+  text "Thick green leaves. Nothing else here."
+  end
+
+script Ingredient4
+  if not flag FLAG_ALOLA_LUSH_TRIAL goto Bush
+  if flag FLAG_ALOLA_LUSH_INGREDIENT_4 goto Bush
+  text "{player} found a bitter herb tucked under a root!"
+  setflag FLAG_ALOLA_LUSH_INGREDIENT_4
+  call Gathered
+  end
+label Bush
+  text "Thick green leaves. Nothing else here."
+  end
+
+# All four found: the dish is done, and the totem comes to the clearing
+script Gathered
+  if not flag FLAG_ALOLA_LUSH_INGREDIENT_1 goto NotAll
+  if not flag FLAG_ALOLA_LUSH_INGREDIENT_2 goto NotAll
+  if not flag FLAG_ALOLA_LUSH_INGREDIENT_3 goto NotAll
+  if not flag FLAG_ALOLA_LUSH_INGREDIENT_4 goto NotAll
+  text "That's all four! A rich smell drifts through the jungle... Something stirs in the clearing to the north."
+  setflag FLAG_ALOLA_LUSH_TOTEM
+  return
+label NotAll
+  return
+
+
+script Totem
+  speaker none
+  scene "The totem Lurantis"
+  text "Drawn by the dish's scent, a Lurantis as tall as a tree stepped out of the leaves!"
+  cry "Lurantis"
+  wildbattle "Lurantis" 24 totem speed ally "Comfey"
+  setflag FLAG_ALOLA_LUSH_TRIAL_DONE
+  hide self
+  hide mallow
+  speaker "Mallow"
+  say "You did it! The whole jungle heard that one. My trial is passed!"
+  say "Here's the Grassium Z. With it, a Grass-type move becomes a Z-Move. Best seasoning there is!"
+  give "Grassium Z"
+  say "Diglett's Tunnel should be open now. Konikoni City is on its far side, and Olivia, our kahuna, is there."
+  setvar VAR_ALOLA_AKALA 4
+  objective alolaKonikoni
+  endscene
+  end

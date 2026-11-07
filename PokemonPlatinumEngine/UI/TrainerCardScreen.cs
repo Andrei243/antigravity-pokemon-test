@@ -15,6 +15,9 @@ public sealed record CardRegion(string Id, int Generation, IReadOnlyList<string>
     /// <summary>The species of the region's own Pokédex seen and caught (plan 18 · W3); null for a region whose Pokédex the player hasn't.</summary>
     public (int Seen, int Caught, int Of)? Pokedex { get; init; }
 
+    /// <summary>Its badges are an island challenge's stamps (plan 23 · Z6: Alola's grand trials), and the card says so.</summary>
+    public bool Stamps { get; init; }
+
     /// <summary>How many of the region's badges are won.</summary>
     public int Count => TitleScreen.CountBadges(Badges);
 

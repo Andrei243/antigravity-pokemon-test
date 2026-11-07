@@ -186,6 +186,10 @@ trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngste
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== akala_outskirts
+Akala Outskirts
+grass 22-25
+trainers 2, 23: alola_gentleman_makoa 23, alola_lady_puanani 23
 === akala_route_4
 Route 4
 grass 11-13
@@ -194,6 +198,18 @@ trainers 4, 13-14: alola_collector_kanoa 14, alola_gentleman_palani 14, alola_pi
 Route 5
 grass 13-16
 trainers 3, 15-16: alola_hiker_koapaka 16, alola_lass_maile 16, alola_pokemon_breeder_lehua 16
+=== akala_route_6
+Route 6
+grass 16-18
+trainers 2, 16-17: alola_lass_noelani 17, alola_youngster_kekoa 17
+=== akala_route_7
+Route 7
+surf 18-19
+=== akala_route_8
+Route 8
+grass 17-19
+surf 18-20
+trainers 2, 17-18: alola_backpacker_kaipo 18, alola_fisherman_kanoa 18
 === alola_route_1
 Route 1
 grass 2-4
@@ -486,6 +502,10 @@ grass 13-29
 Diglett's Cave
 grass 15-31
 ours Molemount 104-108
+=== digletts_tunnel
+Diglett's Tunnel
+grass 20-23
+trainers 2, 20-22: alola_team_skull_grunt_tunnel_1 21, alola_team_skull_grunt_tunnel_2 22
 === dragons_den
 Dragons Den
 surf 5-20
@@ -813,6 +833,10 @@ super rod 20-55
 === guidance_chamber
 Guidance Chamber
 grass 27-30
+=== hano_beach
+Hano Beach
+surf 22-23
+trainers 1, 23-24: alola_beauty_nohea 24
 === hoenn_safari_zone_north
 Safari Zone
 grass 27-31
@@ -1227,6 +1251,9 @@ Victory Road
 grass 32-46
 ours Molemount 104-108, Ossugard 105-109
 trainers 5, 41-45: kanto_cool_couple_ray_tyra 45, kanto_cooltrainer_alexa 42, kanto_cooltrainer_caroline 42, kanto_cooltrainer_colby 43, kanto_cooltrainer_george 42
+=== konikoni_city
+Konikoni City
+surf 22-24
 === lake_acuity
 Lake Acuity
 grass 38-41
@@ -1291,6 +1318,10 @@ surf 10-25
 super rod 40-70
 ours Ballerilly 172-176, Simisylvan 170-174
 trainers 4, 24-51: unova_pkmn_breeder_galen 24, unova_pkmn_ranger_forrest 26, unova_pkmn_ranger_serenity 26, unova_veteran_murphy 51
+=== lush_jungle
+Lush Jungle
+grass 20-22
+trainers 2, 20-21: alola_picnicker_keala 21, alola_pokemon_breeder_ululani 21
 === magma_hideout_1f
 Magma Hideout
 grass 27-33
@@ -1337,6 +1368,10 @@ trainers 5, 17: hoenn_angelo 17, hoenn_ben 17, hoenn_kirk 17, hoenn_shawn 17, ho
 === melemele_meadow
 Melemele Meadow
 grass 9-12
+=== memorial_hill
+Memorial Hill
+grass 22-25
+trainers 2, 22-23: alola_team_skull_grunt_hill_1 22, alola_team_skull_grunt_hill_2 23
 === meteor_falls_1f_1r
 Meteor Falls
 grass 14-20
@@ -3901,6 +3936,10 @@ trainers 10, 17-22: camper_diego 22, camper_parker 20, collector_terry 22, hiker
 === wayward_cave_b1f
 Wayward Cave
 grass 17-20
+=== wela_volcano_park
+Wela Volcano Park
+grass 19-21
+trainers 2, 19-21: alola_ace_trainer_m_kalani 21, alola_hiker_kanaloa 19
 === wellspring_cave
 Wellspring Cave
 grass 55-58

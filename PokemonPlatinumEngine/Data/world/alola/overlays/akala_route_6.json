@@ -1,0 +1,33 @@
+{
+  // Route 6, Akala Island (plan 23 · Z6): drawn by hand, our words. East out of Paniola Town through open pasture and
+  // tall grass to Royal Avenue
+  "area": "akala_route_6",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "youngster": {
+      "name": "Kekoa",
+      "npcType": "youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Kekoa: I'm off to watch the Battle Royal! But first, a warm-up. You!",
+        "dialogueAfter": "Youngster Kekoa: Some warm-up. I'm all sweaty now."
+      }
+    },
+    "lass": {
+      "name": "Noelani",
+      "npcType": "lass",
+      "trainer": {
+        "dialogueBefore": "Lass Noelani: My Cutiefly can tell when someone's heart is racing. Yours is!",
+        "dialogueAfter": "Lass Noelani: Now mine is racing too."
+      }
+    },
+    "rancher": {
+      "name": "Rancher",
+      "npcType": "rancher",
+      "dialog": [ "This road's for walking slow. Watch the Mudbray graze, smell the grass. Royal Avenue's just east if you're in a hurry." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 6\nWest: Paniola Town\nEast: Royal Avenue"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "key": "memorial_hill",
+  "index": 24,
+  "name": "Memorial Hill",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MEMORIAL_HILL",
+  "nightMusic": "MEMORIAL_HILL",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "grunt_1", "looks": "skull_grunt", "movement": "look_east", "x": 363, "z": 200, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TEAM_SKULL_GRUNT_HILL_1" },
+    { "id": "grunt_2", "looks": "skull_grunt", "movement": "look_west", "x": 368, "z": 203, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TEAM_SKULL_GRUNT_HILL_2" },
+    { "id": "mourner", "looks": "old_woman", "movement": "look_north", "x": 354, "z": 201, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 356, "z": 224, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_MEMORIAL_HILL_SPELL_TAG", "item": "Spell Tag", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Zubat", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Gastly", "level": 22 },
+    { "species": "Gastly", "level": 23 },
+    { "species": "Gastly", "level": 24 },
+    { "species": "Misdreavus", "level": 23 },
+    { "species": "Zubat", "level": 24 },
+    { "species": "Gastly", "level": 22 },
+    { "species": "Misdreavus", "level": 24 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Haunter", "level": 25 },
+    { "species": "Gastly", "level": 23 }
+  ],
+  "landRate": 20,
+  "water": []
+}

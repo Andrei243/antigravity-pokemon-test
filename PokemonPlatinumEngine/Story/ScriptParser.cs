@@ -345,16 +345,38 @@ public static class ScriptParser
                 // `nofleeing` (a battle that can't be run from) and `shiny` (plan 20 · J11: the Lake of Rage's red
                 // Gyarados), in either order
                 // and `holding "Soul Dew"` (plan 21 · H12, part a: Emerald's seteventmon of the eon Pokémon on Southern Island)
+                // and `totem defense [2] [ally "Alomomola"]` (plan 23 · Z6: a trial's totem, with its aura's stats, their
+                // stages and the species its first call brings; a totem can't be run from)
                 bool noFleeing = false, shiny = false;
                 string held = "";
+                Battle.Sim.TotemAura? totem = null;
                 while (r.More)
                 {
-                    string option = r.OneOf("nofleeing", "shiny", "holding");
+                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "ally");
                     if (option == "shiny") shiny = true;
                     else if (option == "holding") held = r.Text("an item's name");
+                    else if (option == "totem")
+                    {
+                        var stats = new List<StatType>();
+                        while (Battle.Sim.TotemAura.StatWords.FirstOrDefault(r.PeekWord) is { } statWord)
+                        {
+                            r.OneOf(statWord);
+                            stats.AddRange(Battle.Sim.TotemAura.StatsOf(statWord));
+                        }
+                        if (stats.Count == 0) throw r.Error("a totem's aura names the stats it raises (attack, defense, spattack, spdefense, speed, accuracy, evasion or all)");
+                        int stages = r.PeekNumber ? r.Int("its stages") : 1;
+                        if (stages is < 1 or > 6) throw r.Error("an aura raises a stat by one to six stages");
+                        totem = new Battle.Sim.TotemAura(stats, stages);
+                        noFleeing = true;
+                    }
+                    else if (option == "ally")
+                    {
+                        if (totem == null) throw r.Error("only a totem names its ally: `totem <stats>` comes first");
+                        totem = totem with { Ally = r.Text("a species' name") };
+                    }
                     else noFleeing = true;
                 }
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny, Other = held };
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny, Other = held, Totem = totem };
             }
 
             case "face":

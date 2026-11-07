@@ -1,0 +1,35 @@
+{
+  // Royal Avenue, Akala Island (plan 23 · Z6): drawn by hand, our words. A paved avenue of shops round the Battle Royal
+  // Dome, with its Pokémon Center and a house; the dome, the department store and the boutique are later sessions'
+  // doors. Professor Kukui and Hau wait before the dome once Lana's trial is passed (FLAG_ALOLA_BROOKLET_TRIAL_DONE), and
+  // the scene at the avenue's west end is royal_avenue.txt's. Route 8 leaves north, the Hano Grand Resort's beach south
+  "area": "royal_avenue",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    { "warp": 0, "map": "RoyalAvenue_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "RoyalAvenue_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 2, 3, 4 ],
+  "triggers": [
+    { "script": "RoyalScene", "x": 238, "z": 216, "width": 1, "depth": 4, "variable": "VAR_ALOLA_AKALA", "value": 0 }
+  ],
+  "people": {
+    "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_ROYAL_DONE", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE" },
+    "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_ROYAL_DONE", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE" },
+    "woman": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "Four trainers in one ring, every one for themselves! The Battle Royal is the loudest show on Akala." ]
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "The dome isn't taking challengers today, I'm afraid. Come back once you've made a name on the islands." ]
+    }
+  },
+  "signs": {
+    "AvenueSign": "Royal Avenue\nHome of the Battle Royal Dome."
+  }
+}

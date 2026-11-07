@@ -369,7 +369,8 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(card.X + 72, by, card.Width - 144, 3), 1.5f, Rule);
         // The badges of the region the player is in (plan 18 · W2), at the eight places' spacing from the left
         var here = info.Here;
-        Label(Text.Of("card.badges", ("count", here.Count), ("of", here.BadgeNames.Count)), card.X + 72, by + 24);
+        // An island challenge's are stamps (plan 23 · Z6)
+        Label(Text.Of(here.Stamps ? "card.stamps" : "card.badges", ("count", here.Count), ("of", here.BadgeNames.Count)), card.X + 72, by + 24);
         if (info.RegionPages.Count > 0 || info.Run != null)
         {
             string region = RegionName(here);

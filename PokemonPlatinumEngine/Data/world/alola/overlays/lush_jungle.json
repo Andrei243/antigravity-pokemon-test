@@ -1,0 +1,35 @@
+{
+  // The Lush Jungle, Akala Island (plan 23 · Z6): drawn by hand, our words. Broad-leaved woods between Route 5 and Route
+  // 8, its paths meeting in a clearing in the north. Captain Mallow's trial (lush_jungle.txt): four ingredients found
+  // among the bushes, then the totem Lurantis in the clearing. Its wild Pokémon call for help, as a trial site's do
+  "area": "lush_jungle",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "callsForHelp": true,
+  "readAt": [
+    { "x": 197, "z": 100, "script": "Ingredient1" },
+    { "x": 218, "z": 100, "script": "Ingredient2" },
+    { "x": 195, "z": 118, "script": "Ingredient3" },
+    { "x": 202, "z": 138, "script": "Ingredient4" }
+  ],
+  "people": {
+    "mallow": { "name": "Mallow", "npcType": "mallow", "script": "Mallow", "still": true, "hiddenBy": "FLAG_ALOLA_LUSH_TRIAL_DONE" },
+    "totem": { "name": "Lurantis", "script": "Totem", "still": true, "hiddenBy": "FLAG_ALOLA_LUSH_TRIAL_DONE", "shownBy": "FLAG_ALOLA_LUSH_TOTEM" },
+    "picnicker": {
+      "name": "Keala",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Keala: I came to pick fruit and found a battle instead! Lucky me!",
+        "dialogueAfter": "Picnicker Keala: Unlucky me."
+      }
+    },
+    "breeder": {
+      "name": "Ululani",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Ululani: The jungle's damp air is so good for a growing Pokémon. Let me show you!",
+        "dialogueAfter": "Pokémon Breeder Ululani: It needs more damp air."
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  // Route 8, Akala Island (plan 23 · Z6): drawn by hand, our words. North from Royal Avenue along the coast past a
+  // Pokémon Center and a motel (a later session's door); west off it the Lush Jungle, north-east Route 7 to Wela Volcano
+  // Park, and a cave's mouth to Diglett's Tunnel, where a worker stands until Mallow's trial is passed. Team Skull
+  // pesters Wicke of the Aether Foundation by the motel once Royal Avenue's scene is played (akala_route_8.txt)
+  "area": "akala_route_8",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "AkalaRoute8_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" }
+  ],
+  "locked": [ 1 ],
+  "triggers": [
+    { "script": "MotelScene", "x": 264, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_AKALA", "value": 1 }
+  ],
+  "people": {
+    "grunt_motel": { "name": "Grunt", "npcType": "skull_grunt", "script": "MotelGrunt", "still": true, "hiddenBy": "FLAG_ALOLA_MOTEL_DONE", "shownBy": "FLAG_ALOLA_ROYAL_DONE" },
+    "wicke": { "name": "Wicke", "npcType": "wicke", "script": "Wicke", "still": true, "hiddenBy": "FLAG_ALOLA_MOTEL_DONE", "shownBy": "FLAG_ALOLA_ROYAL_DONE" },
+    "worker": { "name": "Worker", "npcType": "hiker", "script": "Worker", "still": true, "hiddenBy": "FLAG_ALOLA_LUSH_TRIAL_DONE" },
+    "fisherman": {
+      "name": "Kanoa",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Kanoa: Everything I catch today goes straight into a battle. Starting with you!",
+        "dialogueAfter": "Fisherman Kanoa: Back to the sea, all of you."
+      }
+    },
+    "backpacker": {
+      "name": "Kaipo",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Kaipo: Three islands down, one to go! And one trainer to beat. That's you.",
+        "dialogueAfter": "Backpacker Kaipo: Three islands and one loss. Fair trade."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 8\nSouth: Royal Avenue. North-east: Route 7.\nWest: Lush Jungle"
+  }
+}

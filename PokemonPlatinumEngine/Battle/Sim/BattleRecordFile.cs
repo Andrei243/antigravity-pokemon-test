@@ -195,6 +195,7 @@ public sealed class BattleRecordFile
                 OnlyBall = conditions.OnlyBall,
                 Surprised = conditions.Surprised,
                 InTheAir = conditions.InTheAir,
+                TotemAura = conditions.TotemAura,
                 // The only species a battle asks about having caught is the wild one's (the Repeat Ball)
                 Caught = setup.WildPokemon.Select(p => p.Species).Distinct().Where(conditions.HasCaught).Select(s => s.DexNumber).ToList()
             }
@@ -265,7 +266,8 @@ public sealed class BattleRecordFile
                 Fishing = Conditions.Fishing,
                 OnlyBall = Conditions.OnlyBall,
                 Surprised = Conditions.Surprised,
-                InTheAir = Conditions.InTheAir
+                InTheAir = Conditions.InTheAir,
+                TotemAura = Conditions.TotemAura
             },
             PlayerName = PlayerName,
             PlayerController = null,
@@ -501,6 +503,9 @@ public sealed class RecordedConditions
 
     /// <summary>A sky battle (plan 14 · B2): who may take part and which moves may be used. A file without it was fought on the ground.</summary>
     public bool InTheAir { get; set; }
+
+    /// <summary>A trial's totem battle (plan 23 · Z6): the aura the totem took. A file without it was no totem's.</summary>
+    public TotemAura? TotemAura { get; set; }
 
     /// <summary>The wild species met that the player had caught before, by their National Pokédex numbers (the Repeat Ball).</summary>
     public List<int> Caught { get; set; } = new();

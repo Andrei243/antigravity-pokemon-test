@@ -730,6 +730,14 @@
       "note": "first spoken at phone.txt(118)",
       "provisional": true
     },
+    "kahuna_olivia": {
+      "note": "first spoken at konikoni_city.txt(11); Akala's kahuna, by an id of her own so that every trainer named Olivia keeps her voice",
+      "provisional": true
+    },
+    "kiawe": {
+      "note": "first spoken at wela_volcano_park.txt(13)",
+      "provisional": true
+    },
     "kimono_girl": {
       "note": "first spoken at ecruteak_dance_theater.txt(16)",
       "provisional": true
@@ -1621,6 +1629,10 @@
       "note": "first spoken at goldenrod_gym.txt(11)",
       "provisional": true
     },
+    "wicke": {
+      "note": "first spoken at akala_route_8.txt(14)",
+      "provisional": true
+    },
     "wife": {
       "note": "first spoken at floccesy_ranch_2.txt(70)",
       "provisional": true
@@ -1876,6 +1888,7 @@
     "Katelyn": "katelyn",
     "Keira": "keira",
     "Kenji": "kenji",
+    "Kiawe": "kiawe",
     "Kimono Girl": "kimono_girl",
     "Kira": "kira",
     "Kiri": "kiri",
@@ -2106,6 +2119,7 @@
     "Wattson": "wattson",
     "Wesley": "wesley",
     "Whitney": "whitney",
+    "Wicke": "wicke",
     "Wife": "wife",
     "Wikstrom": "wikstrom",
     "Will": "will",

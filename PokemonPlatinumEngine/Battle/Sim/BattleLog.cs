@@ -438,3 +438,10 @@ public sealed record Judged(ArenaVerdict Verdict) : BattleEvent;
 /// after the lines that place them.
 /// </summary>
 public sealed record RoyalPlaced(IReadOnlyList<int> Standing, IReadOnlyList<int> Scores) : BattleEvent;
+
+/// <summary>
+/// A trial's totem is wrapped in its aura as the battle opens (plan 23 · Z6; <see cref="BattleCore.Totem"/>): the place
+/// of the totem, whose aura the screen draws from this line on. It rides on the line that says so; the stat stages
+/// come after it on lines of their own.
+/// </summary>
+public sealed record TotemAuraRaised(Place Place) : BattleEvent;

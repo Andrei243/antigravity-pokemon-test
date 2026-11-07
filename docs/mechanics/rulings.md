@@ -9315,6 +9315,58 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   own**, ours (`Data/music/alola/route4.mml`: a steel drum in D over the ukulele and a marimba), on Route 4, the ranch
   and Route 5; Ten Carat Hill, Verdant Cavern and Brooklet Hill play the trial site's song.
 
+## The rest of Akala: trials, totems and Olivia's grand trial (2026-11-07, plan 23 · Z6)
+
+- **Where it comes from.** As Z5: Akala's places drawn by hand in their publicly described shape and order (which place
+  leads to which, who the captains and the kahuna are, the order of the story's beats), our own drawing, names and
+  words; no picture, map, line or script of the original is read. Teams follow Sun's levels and species where they are
+  known; the people's names are ours.
+- **What is drawn**, on Akala's map (matrix 3): Route 6 east out of Paniola Town (whose east edge opens for it), Royal
+  Avenue (a Pokémon Center, a house, and the Battle Royal Dome, the department store and a boutique as shut doors),
+  Route 8 north from it along the coast (a Pokémon Center, a shut motel, the mouth of Diglett's Tunnel), the Lush Jungle
+  between Route 8 and Route 5 (whose east edge opens for it), Route 7's beach, Wela Volcano Park up to its crater, Route
+  9's crossroads (a shut police station), Konikoni City (a Pokémon Center, Olivia's jewelry shop, a house, a shut
+  restaurant), Memorial Hill, the Akala Outskirts with the Ruins of Life (a room, `AkalaOutskirts_RuinsOfLife`) and Hano
+  Beach before the Hano Grand Resort's lobby (`HanoGrandResort`). Diglett's Tunnel is a cave of its own (`DiglettsTunnel`,
+  matrix 20, numbered clear of the islands' so a parallel session's Ula'ula and Poni keep the numbers after 3). The three
+  new Pokémon Centers' spawns are 20 to 22 for the same reason. **Ours**: Akala's south is Heahea and its north the
+  trial sites, as Z5 laid it, so Royal Avenue and Route 8 run north-east of Paniola rather than as Sun and Moon place
+  them; the Hano Grand Resort is reached from Royal Avenue's south side.
+- **The story** has a count of its own, `VAR_ALOLA_AKALA` 0 to 8 (`royal_avenue.txt`'s header), after Brooklet Hill's
+  `VAR_ALOLA_STORY` 18, which it leaves alone: Kukui and Hau before the Battle Royal Dome and Hau's battle (his ace holds
+  the crystal of its type); Team Skull at Route 8's motel and Wicke of the Aether Foundation; Kiawe's trial (two of the
+  trial's Pokémon join his dance, then the totem Alolan Marowak) and the Firium Z; Mallow's trial (four ingredients
+  read in the jungle's bushes, then the totem Lurantis) and the Grassium Z; Olivia at Konikoni's gate; the Ruins of Life
+  with Lillie, where Tapu Lele shows itself (seen, never battled); Olivia's grand trial (Akala's stamp, the Rockium Z and
+  Machamp in the Ride Pager); and Hau, Lillie and Wicke at the Hano Grand Resort, whose invitation to Aether Paradise is
+  plan 23 · Z7's. The last scene sets `FLAG_ALOLA_AKALA_DONE` for the next chapter to ask. Objectives 618 to 625. **Ours**:
+  Kiawe's and Mallow's trials are shortened to battles and four bushes read; the grand trial is fought before Olivia's
+  shop; Machamp is registered by Olivia; a worker shuts Diglett's Tunnel until Mallow's trial is passed.
+- **Totems and their aura** (`BattleConditions.TotemAura`, `BattleCore.Totem.cs`): a totem is a wild battle a script asks
+  for with `wildbattle … totem <stats> [stages] [ally "<species>"]`. It can't be run from, is fought as an SOS battle
+  (plan 14 · B5) whatever the place's own overlay says, and as it opens the totem is wrapped in its aura: a line of ours
+  with a `TotemAuraRaised` for the screen, then each named stat raised by the stages through the core's own stat
+  change, so whatever answers a rise answers this one. Its **first action is a call for help that is always made and
+  always answered, with no roll**, by the aura's named ally or else its own line; later calls go by the rule's rates.
+  **No ball may be thrown** while a totem's battle lasts (`BattleCore.TotemRefusal`, at the totem and at its allies),
+  and **the battle is won the moment the totem falls**, its allies scattering. Sun and Moon's own auras, allies and the
+  ball rule differ from totem to totem; ours: Gumshoos +1 Defense (its own line), Wishiwashi +1 Defense (an Alomomola),
+  Alolan Marowak +1 Defense (its own line, a Cubone), Lurantis +1 Speed (a Comfey). The aura is a field of the Vs.
+  Recorder's file. Its look is ours (style guide, "Stage", "A totem's aura").
+- **Trial sites call for help**: Verdant Cavern, Brooklet Hill, Wela Volcano Park and the Lush Jungle say `callsForHelp`,
+  so their wild Pokémon met alone are SOS battles under the modern rules.
+- **The Z-Ring only to a bag without one**: Iki Town's festival gives it with `if not item "Z-Ring"`. Each trial gives its
+  crystal once, in the scene the totem's flag closes; a Z-Move is refused without the ring or without the crystal held
+  (plan 06 · R21's `WhyNotZMove`, unchanged).
+- **Stamps**: a region file's `"challenge": "trials"` makes its badges an island challenge's stamps
+  (`RegionFile.Stamps`); the Trainer Card says STAMPS and draws Alola's four in their guardians' colours. The level cap
+  by stamps is Alola's `caps`, which plan 13 · V3's table already counted.
+- **Left**: the Battle Royal itself (plan 23 · Z8 with plan 14 · B13), the shut doors (the dome, the department store, the
+  boutique, the motel, the police station, the restaurant), Heahea's bureau, hotel and laboratory, the Fossil
+  Restoration Center, Kiawe's house, the Paniola Ranch's later scenes, Hapu, the rides' own travel modes and a rider
+  drawn on its Pokémon, Akala on a Town Map and the Pokédex's area page (one grid, Melemele's), the trial sites' own
+  songs and Akala's towns' (plan 31), Moon's totems (Salazzle for Marowak), and Aether Paradise (Z7).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -1,8 +1,8 @@
 # Brooklet Hill, Akala Island: Captain Lana's trial (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's
 # beats as they are publicly described (docs/mechanics/rulings.md, "Akala, as far as Brooklet Hill"): Lana registers
 # Lapras in the Ride Pager, the splashes on the first lake's shores are Wishiwashi, and the totem, a Wishiwashi that
-# schools as it battles, waits on the far shore of the second lake. Ours: the totem is met as a wild battle that can't
-# be run from; its aura and its allies are plan 23 · Z6's. VAR_ALOLA_STORY is alola_route_1.txt's count.
+# schools as it battles, waits on the far shore of the second lake. It is fought as a totem since plan 23 · Z6 (its
+# aura, its first call answered by an Alomomola, no ball). VAR_ALOLA_STORY is alola_route_1.txt's count.
 #
 # The people: lana at the way in until the trial is passed (FLAG_ALOLA_BROOKLET_TRIAL_DONE); the two splashes and the
 # totem shown by FLAG_ALOLA_BROOKLET_TRIAL while the trial is under way.
@@ -54,7 +54,8 @@ script Totem
   scene "The totem Wishiwashi"
   text "A little Wishiwashi peeked out of the shallows... then hundreds more rose up around it!"
   cry "Wishiwashi"
-  wildbattle "Wishiwashi" 20 nofleeing
+  # A totem (plan 23 · Z6): its aura raises its Defense, and its first call brings an Alomomola
+  wildbattle "Wishiwashi" 20 totem defense ally "Alomomola"
   setflag FLAG_ALOLA_BROOKLET_TRIAL_DONE
   hide self
   hide lana

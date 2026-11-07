@@ -122,6 +122,16 @@ public sealed class RegionFile
     /// </summary>
     public bool Skates { get; set; }
 
+    /// <summary>
+    /// How the region's challenge is taken (plan 23 · Z6): <c>"trials"</c> for Alola's island challenge, whose
+    /// <see cref="Badges"/> are the grand trials' stamps (the Trainer Card says STAMPS); left out for Gyms and badges.
+    /// </summary>
+    public string? Challenge { get; set; }
+
+    /// <summary>The region's badges are an island challenge's stamps (<see cref="Challenge"/> is <c>trials</c>).</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Stamps => string.Equals(Challenge, "trials", StringComparison.OrdinalIgnoreCase);
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival { get; set; }
 

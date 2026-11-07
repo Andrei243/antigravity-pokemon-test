@@ -820,6 +820,11 @@ public partial class BattleEngine
                     AudioManager.PlayCry(caller, CryMode.Normal, Pan(called.Caller.Side));
                 }
                 break;
+            case TotemAuraRaised aura:
+                // A trial's totem lights up in its aura and cries (plan 23 · Z6); with the scene off the aura still stands, as a mark that lasts
+                Anim[aura.Place.Side, aura.Place.Slot].TotemAge = 0f;
+                if (At(aura.Place).Pokemon is { } totemPokemon) AudioManager.PlayCry(totemPokemon, CryMode.Normal, Pan(aura.Place.Side));
+                break;
             case AllyJoined joined:
                 // The rules made the ally: the screen takes it in as it came, and its place is marked for the hop in
                 mirror.Adopt(joined.Pokemon, joined.AsItCame);

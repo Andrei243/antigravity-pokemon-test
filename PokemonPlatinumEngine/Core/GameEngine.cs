@@ -2862,7 +2862,8 @@ public partial class GameEngine
             {
                 // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
                 Pokedex = r.Dexes.Where(flow.Pokedex.Regional.Contains).ToList() is { Count: > 0 } own
-                    ? OwnDexCounts(own) : null
+                    ? OwnDexCounts(own) : null,
+                Stamps = r.File?.Stamps == true
             })
             .ToList();
     }
