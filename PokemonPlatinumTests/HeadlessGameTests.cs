@@ -132,6 +132,51 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void TheDexNavSwitchedOffPlaysPlatinumsGrassAndSwitchedOnFindsARustle()
+    {
+        // Plan 10 · F12: off, a walk through the grass finds nothing hiding and the run button stays a run; on, a rustle
+        // turns up within the walk and the run button creeps. The player has no Pokémon, so no wild battle interrupts
+        var paths = SavePaths.Current;
+        try
+        {
+            Dice.Seed(12);
+            foreach (bool on in new[] { false, true })
+            {
+                var engine = Headless();
+                var game = engine.Drive;
+                engine.NewGameRegion = "Sinnoh";
+                engine.StartNewGame();
+                StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
+                game.Party.Clear();
+                game.State = GameState.Overworld;
+                var sinnoh = MapDatabase.Get("Sinnoh");
+                var (gx, gy) = GrassPair(sinnoh, 116, 886);
+                game.Place(sinnoh, gx, gy, Direction.Right);
+                game.TrainersLookOnArrival = false;
+                game.DexNav.On = on;
+                bool rustled = false, creeps = false;
+                for (int f = 0; f < 60 * 120 && !(on && rustled); f++)
+                {
+                    engine.Steering = (game.Player.GridX == gx ? Direction.Right : Direction.Left, false);
+                    Run(engine, ActionFrame.None);
+                    rustled |= game.DexNavRustle != null;
+                    creeps |= game.Player.SneaksInsteadOfRunning;
+                }
+                engine.Steering = null;
+                Assert.Equal(on, rustled);
+                Assert.Equal(on, creeps);
+            }
+        }
+        finally
+        {
+            InputManager.Feed(null);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            SavePaths.Current = paths;
+        }
+    }
+
+    [Fact]
     public void ARegionCrossedIntoMeetsThePlayerAtItsMappedLevels()
     {
         // Plan 18 · W4: a game begun in Sinnoh meets Kanto's wild Pokémon at Kanto's mapped levels (FireRed's 3 is 63:

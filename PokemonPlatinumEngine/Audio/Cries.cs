@@ -249,6 +249,9 @@ public static partial class Cries
     /// <summary>The peak a cry is brought to, unless that would make it too loud (<see cref="Loudness.CryCeiling"/>): louder than any sound effect, as the original's are.</summary>
     public const float Peak = 0.6f;
 
+    /// <summary>What tests hear after an alpha's cry (plan 10 · F10): "cry Bidoof alpha".</summary>
+    public const string AlphaHeard = " alpha";
+
     /// <summary>How many cries are kept made; a Pokédex scrolled through all of them would otherwise keep every one.</summary>
     public const int Kept = 48;
 
@@ -257,7 +260,23 @@ public static partial class Cries
     private static readonly LinkedList<(string, CryMode)> order = new();
 
     /// <summary>A Pokémon's cry in a mode (its form's, if it is in one).</summary>
-    public static SoundSample Get(Pokemon pokemon, CryMode mode = CryMode.Normal) => Get(pokemon.Species, pokemon.Form, mode);
+    public static SoundSample Get(Pokemon pokemon, CryMode mode = CryMode.Normal) =>
+        pokemon.IsAlpha ? Alpha(pokemon.Species, pokemon.Form, mode) : Get(pokemon.Species, pokemon.Form, mode);
+
+    /// <summary>
+    /// An alpha's cry (plan 10 · F10): the species' own in the mode, played <see cref="Overworld.Alphas.CrySemitones"/> lower, so it is
+    /// deeper and longer; made from the kept cry and kept apart from it.
+    /// </summary>
+    public static SoundSample Alpha(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal)
+    {
+        var key = ((species.Form(form)?.Name ?? species.Name).ToLowerInvariant() + AlphaHeard, mode);
+        lock (Gate)
+            if (made.TryGetValue(key, out var kept)) return kept;
+        var own = Get(species, form, mode);
+        var sample = new SoundSample("cry " + key.Item1, Pitched(own.Samples, Overworld.Alphas.CrySemitones));
+        lock (Gate)
+            return made.TryAdd(key, sample) ? sample : made[key];
+    }
 
     /// <summary>A species' cry (or one of its forms') in a mode, made now if it isn't kept.</summary>
     public static SoundSample Get(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal)

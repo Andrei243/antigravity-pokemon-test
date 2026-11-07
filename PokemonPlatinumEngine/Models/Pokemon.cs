@@ -546,6 +546,15 @@ public class Pokemon
     public string? Title { get; set; }
 
     /// <summary>
+    /// Its size against its species' (plan 10 · F10): 1 for nearly everyone, <see cref="Overworld.Alphas.Scale"/> for an alpha, which towers over
+    /// others of its kind in battle and on the field board. Saved (left out at 1).
+    /// </summary>
+    public float Scale { get; set; } = 1f;
+
+    /// <summary>An alpha: larger than its kind (plan 10 · F10).</summary>
+    public bool IsAlpha => Scale > 1f;
+
+    /// <summary>
     /// The Ball Capsule on its ball (plan 06 · R17b; the original's <c>MON_DATA_BALL_CAPSULE_ID</c> and
     /// <c>MON_DATA_BALL_CAPSULE</c>): the capsule's number among the Seal Case's twelve, from 1, or 0 for none, and a
     /// copy of its Seals, which burst as the Pokémon is sent out in battle (<see cref="CapsuleRules"/>). A trainer's
@@ -1427,6 +1436,7 @@ public class Pokemon
         EncounterMarks.Clear();
         EncounterMarks.UnionWith(other.EncounterMarks);
         Title = other.Title;
+        Scale = other.Scale;
 
         for (int i = 0; i < other.Moves.Count; i++)
         {

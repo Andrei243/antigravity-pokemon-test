@@ -965,7 +965,8 @@ public sealed class BattleRenderer
         var other = isPlayer ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
 
         // A Dynamaxed Pokémon stands giant (plan 25 · Y15): the lunge and the shake grow with it
-        float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(v, isPlayer, anim.Paired(isPlayer ? BattleSide.Player : BattleSide.Enemy));
+        // An alpha stands one and a half times its kind (plan 10 · F10; Scale is 1 for everyone else, which leaves the product as it was)
+        float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(v, isPlayer, anim.Paired(isPlayer ? BattleSide.Player : BattleSide.Enemy)) * v.Shown.Scale;
         float frame = scale * framing.WorldPerPixel * PokemonSprites.Size;
         var toward = Vector3.Normalize(other - spot);
         var feet = spot + new Vector3(0, platformTop, 0)

@@ -53,6 +53,8 @@ public partial class GameEngine
             Hordes = Hordes.Open(Here, flow.Story, Ruleset.Current),
             // Our own species past level 100 in the rarest slots, once the region's Hall of Fame is entered (plan 03 · D15)
             OursOpen = OursSlots.Open(Here, flow.Story),
+            // Alphas of the post-game zone (plan 10 · F10)
+            AlphasOpen = Alphas.Open(Here, flow.Story),
             // Which of a place's grass tables is met where it has several: Altering Cave's (plan 21 · H12, part k)
             LandSet = flow.Story.Var(EncounterMoment.LandSetVariable)
         };

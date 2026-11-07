@@ -83,6 +83,13 @@ internal static partial class ModernUi
             case PokedexFocus.Diploma:
                 Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.close"));
                 break;
+            case PokedexFocus.Here:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.entry"), Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.close"));
+                break;
+            case PokedexFocus.List when dex.HereEntries != null:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.entry"), Hint("shared.keys.c", "shared.hints.here"), Hint("shared.keys.leftRight", "shared.hints.jump"),
+                    Hint("shared.keys.enter", "shared.hints.search"), Hint("shared.keys.esc", dex.Results != null ? "shared.hints.all" : "shared.hints.back"));
+                break;
             default:
                 Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.entry"), Hint("shared.keys.leftRight", "shared.hints.jump"), Hint("shared.keys.enter", "shared.hints.search"),
                     Hint("shared.keys.esc", dex.Results != null ? "shared.hints.all" : "shared.hints.back"));
@@ -117,6 +124,7 @@ internal static partial class ModernUi
 
         if (dex.Focus == PokedexFocus.Search) DexSearch(sw, sh, dex);
         else if (dex.Focus == PokedexFocus.Diploma) Diploma(sw, sh, dex.ShownDiploma);
+        else if (dex.Focus == PokedexFocus.Here) DexHere(sw, sh, dex, pokedex);
     }
 
     // ------------------------------------------------------------------ the list
@@ -553,6 +561,58 @@ internal static partial class ModernUi
             string name = Text.Of($"pokedex.search.row.{row}");
             ValueRow(new Rectangle(panel.X + 40, y, panel.Width - 80, height), name, dex.ValueOf(row), i == dex.SearchIndex, 440);
             y += pitch;
+        }
+    }
+
+    // ------------------------------------------------------------------ what lives here (plan 10 · F11)
+
+    /// <summary>
+    /// The DexNav's HERE list (style guide, "Menu screens (G10)", the Pokédex's HERE panel): a panel over the dimmed
+    /// Pokédex, the place's name and the list of the species met at the player's tile at this hour, each a list row
+    /// with its icon (a silhouette's dot while unseen), its name or dashes, how it is met and a ball once caught, and
+    /// its search level at the row's right. Written blind of the GPU (its shots wait: 26n, 26o).
+    /// </summary>
+    private static void DexHere(int sw, int sh, PokedexScreen dex, Pokedex pokedex)
+    {
+        Dim(sw, sh, 150);
+        var entries = dex.HereEntries ?? Array.Empty<Overworld.DexNavEntry>();
+        const float rowPitch = 92, rowHeight = 80, top = 128;
+        int shown = Math.Min(entries.Count, PokedexScreen.HereVisibleRows);
+        float panelH = top + Math.Max(1, shown) * rowPitch + 48;
+        var panel = new Rectangle(sw / 2f - 620, sh / 2f - panelH / 2f, 1240, panelH);
+        Panel(panel, 36);
+        float x = panel.X + 56 + Tag(panel.X + 56, panel.Y + 36, Text.Of("pokedex.here.title"), Green, 44) + 28;
+        UiFonts.Draw(dex.HerePlace, x, panel.Y + 36, 44, Ink, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(panel.X + 40, panel.Y + 108, panel.Width - 80, 3), 1.5f, Rule);
+        if (entries.Count == 0)
+        {
+            EmptyNote(new Rectangle(panel.X, panel.Y + top, panel.Width, panel.Height - top), Text.Of("pokedex.here.none"));
+            return;
+        }
+        int first = Math.Clamp(dex.HereIndex - shown + 1, 0, entries.Count - shown);
+        for (int i = 0; i < shown; i++)
+        {
+            int index = first + i;
+            var entry = entries[index];
+            var r = new Rectangle(panel.X + 40, panel.Y + top + i * rowPitch, panel.Width - 80, rowHeight);
+            bool selected = index == dex.HereIndex;
+            var species = PokemonDatabase.Get(entry.Species);
+            var ink = ListRow(r, selected, entry.Seen && species != null ? species.DisplayName : "— — —", entry.Seen, nameX: 104);
+            if (entry.Seen && species != null) RowIcon(r, PixelArtGenerator.GetPokemonIcon(species.Name), 1f, selected, hop: Hop(selected));
+            else UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 8, Rule);
+            string how = WaysOf(entry.Ways);
+            UiFonts.Draw(how, r.X + 520, r.Y + r.Height / 2f - 14, 26, selected ? Color.White : Muted, UiWeight.ExtraBold);
+            if (entry.Level > 0)
+            {
+                string level = Text.Of("pokedex.here.level", ("n", entry.Level.ToString(CultureInfo.InvariantCulture)));
+                UiFonts.DrawCentered(level, r.X + r.Width - 104 - UiFonts.Measure(level, 24, UiWeight.Black), r.Y + r.Height / 2f, 24, ink, UiWeight.Black);
+            }
+            if (entry.Caught)
+            {
+                var c = new Vector2(r.X + r.Width - 44, r.Y + r.Height / 2f);
+                UiShapes.Circle(c, 18, selected ? Color.White : Red);
+                UiIcons.Draw(UiIcon.Ball, c, 9, selected ? Red : Color.White, selected ? Color.White : Red);
+            }
         }
     }
 

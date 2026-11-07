@@ -765,6 +765,9 @@ public class SavedPokemonData
     /// <summary>The mark chosen as its title (plan 10 · F9); left out for none.</summary>
     public string? Title { get; set; }
 
+    /// <summary>An alpha's size (plan 10 · F10); left out at 1, which is every Pokémon of an older save.</summary>
+    public float? Scale { get; set; }
+
     /// <summary>The Ball Capsule on its ball (plan 06 · R17b): its number among the case's twelve and its Seals; left out for one with none.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int CapsuleId { get; set; }
@@ -841,6 +844,7 @@ public class SavedPokemonData
             Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
             EncounterMarks = p.EncounterMarks.Count > 0 ? p.EncounterMarks.ToList() : null,
             Title = p.Title,
+            Scale = p.Scale > 1f ? p.Scale : null,
             CapsuleId = p.CapsuleId,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
@@ -917,6 +921,7 @@ public class SavedPokemonData
         if (EncounterMarks != null) p.EncounterMarks.UnionWith(EncounterMarks);
         // A title is one of its marks or nothing
         p.Title = Title != null && p.EncounterMarks.Contains(Title) ? Title : null;
+        if (Scale is > 1f and var scale) p.Scale = Math.Min(Overworld.Alphas.Scale, scale);
         if (CapsuleId is > 0 and <= SealCase.Capsules)
         {
             p.CapsuleId = CapsuleId;

@@ -9042,7 +9042,23 @@ The rules of plan 10's companions that need no picture; what they draw waits (pl
   the chain; walking out of sight forgets it. A find beaten or caught raises its species' search level and its chain.
   *Ours*: its bonus is perfect IVs, one from search level 10 and two from 50, one more from a chain of 5 and two from
   10, three at most; and under the modern rules its hidden ability, 5% from level 5, 10% from 25, 15% from 50 and 20%
-  from 100. The rustle is not drawn yet and nobody gives the item yet: both wait for the session that draws them.
+  from 100. The rustle is not drawn yet and waits for the session that draws it. *Ours* (plan 10 · F11): the National
+  Pokédex's script gives the item (`nationaldex`, in both hosts; a save that has the National Pokédex and no DexNav is
+  given it as it loads, with no story version), and with it the Item button (C) in the Pokédex opens the HERE panel
+  (`PokedexFocus.Here`; the plan called it a `PokedexPage`, but it is of the place and not of a species, so it is a
+  panel of the Pokédex's, not a page of an entry).
+- **Alphas** (2026-11-07, plan 10 · F10; `Overworld/Alphas.cs`; decision 5's recommendation: the post-game zone only). An
+  overlay's `alphas` (`OverlayAlphas`: at most three `[species, lowest level, highest level]` of the games' species)
+  lists the alphas of an area, now Routes 225 to 227; none of Platinum's own areas lists one, and a flag on a table
+  row can never be read from a file (`WildEncounterEntry.Alpha` is `JsonIgnore`). Once the region's Hall of Fame is
+  entered, a meeting in that area's tall grass (a step, and a Sweet Scent or a DexNav find drawn there) is an alpha one
+  time in a hundred, drawn on the area's own generator after the meeting is made and only where an area lists one, so
+  no other meeting's draws move. *Ours*: an alpha has the overlay's levels (above the area's grass: the level rule is
+  the file's), `Pokemon.Scale` 1.5 (saved when over 1, cut to 1.5 on load), three IVs made perfect (stats drawn among
+  those not yet perfect), one move of its level-up list it doesn't know (the strongest within ten levels above its own,
+  else the strongest it passed over) in the empty place or the last, the Alpha mark and no other when caught, and a cry
+  five semitones lower. The plan's "sprite signature carries the scale" is dropped: the species' sprite is drawn at the
+  larger size, so no cache is keyed by it.
 ## Battles for two players (2026-11-03, plan 28 · I1 to I5)
 
 What the link battles' rules part was built with, and where it chose. Everything is GPU-free under `Battle/Sim/Link` (with `BattleCore.Link.cs` and `BattleSnapshot.cs` beside the core), and nothing of it is reached by a battle of the game's own, so neither golden file moved.

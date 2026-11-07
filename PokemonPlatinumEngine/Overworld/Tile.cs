@@ -558,6 +558,10 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore]
     public int? Roamer { get; set; }
 
+    /// <summary>The Pokémon met is an alpha (plan 10 · F10, <see cref="Alphas"/>): larger, with perfect IVs and an extra move; never in a table, only an area overlay's <c>alphas</c> makes one.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Alpha { get; set; }
+
     /// <summary>
     /// How many of the slot's species come at once (plan 14 · B3): one, or a horde of up to five, each at a level of its
     /// own drawn from the slot's range, fought as a <see cref="Battle.BattleFormat.Horde"/>. No table of Platinum's has a

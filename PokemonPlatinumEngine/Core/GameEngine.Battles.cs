@@ -49,6 +49,8 @@ public partial class GameEngine
         OursGrowth.GrowWild(wild);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
+        // An alpha of the post-game zone: larger, three perfect IVs and a move ahead of its level (plan 10 · F10)
+        if (entry.Alpha) Alphas.Apply(wild, rng);
         return wild;
     }
 

@@ -1695,6 +1695,8 @@ public partial class GameEngine
             // The PC's boxes grow with it: eighteen held one of each of Platinum's species, and the National
             // Pokédex's get a hundred (plan 03 · D13)
             game.flow.Boxes.Grow();
+            // The DexNav comes with it (plan 10 · F11; decision 6)
+            game.GiveTheDexNav();
         }
 
         public int LeagueVictories => game.flow.HallOfFame.Total;

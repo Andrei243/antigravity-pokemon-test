@@ -528,6 +528,21 @@
       },
       "additionalProperties": false
     },
+    "alphas": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "land": {
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
     "signs": {
       "type": [
         "object",
