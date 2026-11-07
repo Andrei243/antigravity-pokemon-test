@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
@@ -82,7 +83,7 @@ public class AlolaIslandsTests
 
         (HeadlessScriptHost Host, bool Gone) Charge(bool tauros)
         {
-            var host = new HeadlessScriptHost { Map = map, PlayerTile = (rock.X + 1, rock.Y), PlayerFacing = Direction.Left, Region = RegionDatabase.Alola };
+            var host = new HeadlessScriptHost { Map = map, PlayerTile = (rock.GridX + 1, rock.GridY), PlayerFacing = Direction.Left, Region = RegionDatabase.Alola };
             host.Party.Add(new Pokemon(PokemonDatabase.Get("Rowlet")!, 15));
             if (tauros) host.Story.Set("FLAG_ALOLA_RIDE_TAUROS");
             host.Answers.Enqueue(0);
@@ -109,11 +110,13 @@ public class AlolaIslandsTests
         var party = new Party();
         var bag = new Inventory();
         var library = ScriptLibrary.Default;
-        void Play(string file, string script, Map map)
+        // Someone spoken to is the script's own person (its self), found by their key among everyone the place has
+        void Play(string file, string script, Map map, string? who = null)
         {
             var host = new HeadlessScriptHost(story, party, bag) { Map = map, Region = RegionDatabase.Alola };
             var runner = new ScriptRunner(library, host);
-            runner.Start(library.Find(script, file)!, null);
+            var subject = who == null ? null : map.Everyone.Single(n => n.Key == who && (map.AreaAt(n.GridX, n.GridY)?.Key ?? file) == file);
+            runner.Start(library.Find(script, file)!, subject);
             runner.RunToEnd();
         }
         string? Next() => Objectives.Current(story, RegionDatabase.Alola)?.Name;
@@ -134,14 +137,14 @@ public class AlolaIslandsTests
         Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Z-Ring")!));
         Assert.True(story.Has("FLAG_ALOLA_FESTIVAL_DONE"));
         // Ilima at the cavern lets the trial begin; the totem waits until the three dens are clear
-        Play("alola_route_2", "Ilima", melemele);
+        Play("alola_route_2", "Ilima", melemele, "ilima");
         Assert.True(story.Has("FLAG_ALOLA_VERDANT_TRIAL"));
-        Play("verdant_cavern", "Totem", cavern);
+        Play("verdant_cavern", "Totem", cavern, "totem");
         Assert.Equal(9, story.Var("VAR_ALOLA_STORY"));
-        Play("verdant_cavern", "Den1", cavern);
-        Play("verdant_cavern", "Den2", cavern);
-        Play("verdant_cavern", "Den3", cavern);
-        Play("verdant_cavern", "Totem", cavern);
+        Play("verdant_cavern", "Den1", cavern, "den_1");
+        Play("verdant_cavern", "Den2", cavern, "den_2");
+        Play("verdant_cavern", "Den3", cavern, "den_3");
+        Play("verdant_cavern", "Totem", cavern, "totem");
         Assert.Equal(10, story.Var("VAR_ALOLA_STORY"));
         Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Normalium Z")!));
         Play("melemele_meadow", "Nebby", melemele);
@@ -164,12 +167,12 @@ public class AlolaIslandsTests
         Assert.True(story.Has(RidePager.StoutlandFlag));
         Play("akala_route_5", "Gladion", akala);
         Assert.Equal(17, story.Var("VAR_ALOLA_STORY"));
-        Play("brooklet_hill", "Lana", akala);
+        Play("brooklet_hill", "Lana", akala, "lana");
         Assert.True(story.Has("FLAG_ALOLA_RIDE_LAPRAS"));
         Assert.Contains(FieldMove.Surf, RidePager.Granted(story, RegionDatabase.Alola));
-        Play("brooklet_hill", "Splash1", akala);
-        Play("brooklet_hill", "Splash2", akala);
-        Play("brooklet_hill", "Totem", akala);
+        Play("brooklet_hill", "Splash1", akala, "splash");
+        Play("brooklet_hill", "Splash2", akala, "splash_2");
+        Play("brooklet_hill", "Totem", akala, "totem");
         Assert.Equal(18, story.Var("VAR_ALOLA_STORY"));
         Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Waterium Z")!));
         Assert.Equal("alolaFree", Next());

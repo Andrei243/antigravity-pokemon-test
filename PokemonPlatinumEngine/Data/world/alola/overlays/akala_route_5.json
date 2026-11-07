@@ -3,7 +3,7 @@
   // Center, with the way west to Brooklet Hill; its north end is a later session's. Gladion, of Team Skull, stands on the
   // road once Mallow has been met (shown by FLAG_ALOLA_RIDE_STOUTLAND until his battle, akala_route_5.txt)
   "area": "akala_route_5",
-  "bgmTrack": "alola/route1",
+  "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

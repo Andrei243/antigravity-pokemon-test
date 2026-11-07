@@ -4,7 +4,7 @@
   // nursery (a later session's door) in the south-east. Captain Mallow meets the player on the road in and registers
   // Stoutland in the Ride Pager (paniola_ranch.txt); she is shown from Hau's battle in Paniola until then
   "area": "paniola_ranch",
-  "bgmTrack": "alola/route1",
+  "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
   "locked": [ 0 ],

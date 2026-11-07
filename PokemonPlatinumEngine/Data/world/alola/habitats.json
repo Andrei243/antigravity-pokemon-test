@@ -19,6 +19,67 @@
   ],
   "areas": [
     {
+      "key": "akala_route_4",
+      "name": "Route 4",
+      "cells": "",
+      "morning": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ],
+      "day": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ],
+      "night": [
+        "Lillipup",
+        "Pikipek",
+        "Mudbray",
+        "Yungoos",
+        "Grubbin",
+        "Igglybuff",
+        "Eevee"
+      ]
+    },
+    {
+      "key": "akala_route_5",
+      "name": "Route 5",
+      "cells": "",
+      "morning": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "day": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ],
+      "night": [
+        "Lillipup",
+        "Pikipek",
+        "Fomantis",
+        "Grubbin",
+        "Caterpie",
+        "Butterfree"
+      ]
+    },
+    {
       "key": "alola_route_1",
       "name": "Route 1",
       "cells": "7,4 6,5 7,5 8,5",
@@ -106,6 +167,41 @@
       ]
     },
     {
+      "key": "brooklet_hill",
+      "name": "Brooklet Hill",
+      "cells": "",
+      "morning": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "day": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "night": [
+        "Psyduck",
+        "Wingull",
+        "Poliwag",
+        "Dewpider",
+        "Surskit",
+        "Lillipup"
+      ],
+      "surf": [
+        "Wishiwashi",
+        "Psyduck",
+        "Poliwag",
+        "Surskit"
+      ]
+    },
+    {
       "key": "mahalo_trail",
       "name": "Mahalo Trail",
       "cells": "7,2",
@@ -152,6 +248,29 @@
         "Petilil",
         "Caterpie",
         "Butterfree"
+      ]
+    },
+    {
+      "key": "paniola_ranch",
+      "name": "Paniola Ranch",
+      "cells": "",
+      "morning": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
+      ],
+      "day": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
+      ],
+      "night": [
+        "Mudbray",
+        "Lillipup",
+        "Miltank",
+        "Tauros"
       ]
     },
     {

@@ -9210,7 +9210,9 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   Seaward Cave, Kala'e Bay, Big Wave Beach and Sandy Cave on Melemele; Heahea's bureau, hotel and laboratory, Kiawe's
   house, the nursery, the north of Route 5, Route 6 and everything beyond on Akala; Island Scan; the totems' aura;
   Akala's places on the Pokédex's area page (the habitats are one grid, Melemele's) and on a Town Map (Alola has none
-  yet); Akala's own songs (it plays Melemele's).
+  yet); Akala's towns' own songs (Heahea plays Hau'oli's, Paniola Iki Town's). **Akala's roads have a song of their
+  own**, ours (`Data/music/alola/route4.mml`: a steel drum in D over the ukulele and a marimba), on Route 4, the ranch
+  and Route 5; Ten Carat Hill, Verdant Cavern and Brooklet Hill play the trial site's song.
 
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
