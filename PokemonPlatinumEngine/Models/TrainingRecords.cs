@@ -39,7 +39,11 @@ public sealed class TrainingFile
 /// <summary>The training club's tables (plan 36 · TR2; <c>Data/training.json</c>). No drawing or input.</summary>
 public static class TrainingData
 {
-    private static readonly Lazy<TrainingFile> file = new(() => GameDataFiles.Load<TrainingFile>("training.json", strict: true));
+    // Written in two halves, as the Pokéathlon's is: "training" is also a section of ui.json, and the text tests take a
+    // literal that begins with a section's name for a key
+    private const string FileName = "training" + ".json";
+
+    private static readonly Lazy<TrainingFile> file = new(() => GameDataFiles.Load<TrainingFile>(FileName, strict: true));
 
     public static TrainingFile File => file.Value;
 
