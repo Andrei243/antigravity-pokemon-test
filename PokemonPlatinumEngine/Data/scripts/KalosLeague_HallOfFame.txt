@@ -1,0 +1,54 @@
+# Kalos's Hall of Fame (plan 23 · Z4). docs/scripts.md describes the language; the lines are our own, on X and Y's beats as
+# they are publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand").
+#
+# One scene, played as the new Champion comes in behind Diantha, as the other regions' are: her words, the team recorded
+# (halloffame), Kalos's story ended (KalosHallOfFame, the region's flag, which opens the flight on to Alola from Lumiose
+# City's Pokémon Center and the National Pokédex), the scene of the team's entry, the team healed, home to the player's
+# room in Vaniville Town, the game saved there and the credits. ClearGame puts the League back for a second challenge.
+
+
+script OnEnter
+  if not flag FLAG_KALOS_DEFEATED_DIANTHA end
+  scene "Kalos's Hall of Fame"
+  face diantha_hof player
+  speaker "Diantha"
+  say "This is the Hall of Fame. Every Champion of Kalos is kept here, with the Pokémon who stood beside them."
+  say "Your journey began in a little town in the south, and look where it has brought you. Let's record your team."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag KalosHallOfFame
+  setvar VAR_KALOS_STORY 31
+  objective kalosFree
+  call ClearGame
+  halloffame show
+  heal
+  warp "VanivilleTown_PlayersHouse_2F" 4 6 down
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+
+
+# What a victory leaves behind: the League's rooms put back for a second challenge
+script ClearGame
+  clearflag FLAG_KALOS_DEFEATED_MALVA
+  clearflag FLAG_KALOS_DEFEATED_SIEBOLD
+  clearflag FLAG_KALOS_DEFEATED_WIKSTROM
+  clearflag FLAG_KALOS_DEFEATED_DRASNA
+  clearflag FLAG_KALOS_DEFEATED_DIANTHA
+  clearflag FLAG_KALOS_LEAGUE_FOUR
+  return
+
+
+script DianthaWaits
+  speaker "Diantha"
+  say "Kalos is lucky to have you, {player}."
+  end

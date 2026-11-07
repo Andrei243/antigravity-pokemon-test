@@ -91,6 +91,12 @@ public static class Drawing
         ['r'] = new('r', true, TileBehavior.None),
         ['M'] = new('M', false, TileBehavior.EntranceNorth),
         ['m'] = new('c', false, TileBehavior.EntranceSouth),
+        // Plan 23 · Z4: snow underfoot, a puddle, a cave's way out taken walking north (a second mouth, Victory Road's),
+        // and a cave's mouth in the open taken walking south
+        ['^'] = new('^', false, TileBehavior.ShallowSnow),
+        ['p'] = new('p', false, TileBehavior.Puddle),
+        ['u'] = new('c', false, TileBehavior.EntranceNorth),
+        ['n'] = new('M', false, TileBehavior.EntranceSouth),
     };
 
     /// <summary>What fills a drawn chunk where no drawing reaches: the woods every place is cut out of.</summary>

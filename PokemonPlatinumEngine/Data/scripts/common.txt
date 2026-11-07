@@ -2796,6 +2796,18 @@ script KalosLumiose
   return
 
 
+# The Champion's door in the Pokémon League's hall (plan 23 · Z4): its way is there from FLAG_KALOS_LEAGUE_FOUR, set
+# once all four of the Elite Four are beaten; each of their rooms calls this after its battle.
+script KalosLeagueFour
+  if not flag FLAG_KALOS_DEFEATED_MALVA goto Not
+  if not flag FLAG_KALOS_DEFEATED_SIEBOLD goto Not
+  if not flag FLAG_KALOS_DEFEATED_WIKSTROM goto Not
+  if not flag FLAG_KALOS_DEFEATED_DRASNA goto Not
+  setflag FLAG_KALOS_LEAGUE_FOUR
+label Not
+  return
+
+
 # ------------------------------------------------------------------ Alola (plan 23 · Z5)
 
 # What every game starts with in Alola: the professor at the door, in Iki Town and in his laboratory, the kahuna and

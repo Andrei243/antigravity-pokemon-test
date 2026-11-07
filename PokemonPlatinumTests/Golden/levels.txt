@@ -1,11 +1,17 @@
 # The levels of every place with wild Pokémon or trainers in it (plan 03 · D13), made by GoldenLevelTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
 # A place's wild Pokémon by how they are met, then its trainers with the levels of their teams, each trainer by id with the highest of its own.
+=== AnistarCity_Gym
+Anistar Gym
+trainers 2, 42-43: kalos_psychic_aurele 43, kalos_psychic_lucile 42
 === CafeCabin
 Café Cabin
 trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
 === CanalaveGym
 Canalave Gym
 trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== CoumarineCity_Gym
+Coumarine Gym
+trainers 2, 29-30: kalos_gardener_flora 29, kalos_hiker_sylvain 30
 === CyllageCity_Gym
 Cyllage Gym
 trainers 2, 19-20: kalos_hiker_armand 19, kalos_hiker_bruno 20
@@ -27,12 +33,21 @@ trainers 4, 38-41: galactic_grunt_galactic_hq_3f_1 41, galactic_grunt_galactic_h
 === GalacticHQB2F
 Galactic HQ
 trainers 2, 38-41: galactic_grunt_galactic_hq_b2f_1 41, galactic_grunt_galactic_hq_b2f_2 40
+=== GeosengeTown_FlareHQ
+Team Flare Secret HQ
+trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1 48, kalos_flare_grunt_hq_2 49
 === HearthomeGymRoom1
 Hearthome Gym
 trainers 2, 20-23: lass_molly 23, youngster_donny 22
 === HearthomeGymRoom2
 Hearthome Gym
 trainers 4, 21-24: ace_trainer_allen 24, ace_trainer_catherine 24, school_kid_chance 23, school_kid_mackenzie 21
+=== KalosPowerPlant
+Kalos Power Plant
+trainers 2, 27-28: kalos_flare_grunt_plant_1 28, kalos_flare_grunt_plant_2 28
+=== LaverreCity_Gym
+Laverre Gym
+trainers 2, 36-37: kalos_lady_eleonore 37, kalos_lass_josette 36
 === LostTower1F
 Lost Tower
 grass 17-20
@@ -51,6 +66,12 @@ trainers 3, 23: belle_and_pa_beth_and_bob 23, pokefan_rebekah 23, young_couple_m
 === LostTower5F
 Lost Tower
 grass 19-22
+=== LumioseCity_LysandreLabs
+Lysandre Labs
+trainers 2, 45: kalos_flare_grunt_labs_1 45, kalos_flare_grunt_labs_2 45
+=== LumioseCity_PrismTowerGym
+Prism Tower
+trainers 2, 32-33: kalos_schoolboy_hugo 33, kalos_schoolgirl_adele 33
 === OldChateau
 Old Chateau
 grass 14-17
@@ -102,6 +123,9 @@ trainers 18, 24-31: aroma_lady_alison 28, artist_ismael 28, beauty_gabriella 26,
 === ShalourCity_Gym
 Shalour Gym
 trainers 2, 26-27: kalos_battle_girl_ines 27, kalos_black_belt_lucien 26
+=== SnowbelleCity_Gym
+Snowbelle Gym
+trainers 2, 52-53: kalos_skier_agathe 53, kalos_skier_basile 53
 === SnowpointGym
 Snowpoint Gym
 trainers 6, 39-44: ace_trainer_alicia 43, ace_trainer_anton 44, ace_trainer_brenna 41, ace_trainer_isaiah 44, ace_trainer_savannah 42, ace_trainer_sergio 42
@@ -1110,10 +1134,42 @@ trainers 2, 20-21: kalos_battle_girl_elodie 20, kalos_black_belt_gustave 21
 Route 12
 grass 20-22
 trainers 3, 21-22: kalos_lass_violette 22, kalos_picnicker_hortense 22, kalos_youngster_matthieu 22
+=== kalos_route_13
+Route 13
+grass 26-28
+trainers 3, 27-28: kalos_backpacker_maelle 28, kalos_black_belt_romain 28, kalos_hiker_bastien 28
+=== kalos_route_14
+Route 14
+grass 30-32
+trainers 2, 31-32: kalos_lass_celestine 31, kalos_picnicker_odile 32
+=== kalos_route_15
+Route 15
+grass 33-35
+trainers 3, 34-35: kalos_hiker_ambroise 35, kalos_lass_margot 34, kalos_youngster_felix 34
+=== kalos_route_17
+Route 17
+grass 36-38
+trainers 2, 37-38: kalos_hiker_gaspard 38, kalos_lass_neige 38
+=== kalos_route_18
+Route 18
+grass 40-42
+trainers 2, 42-43: kalos_black_belt_leon 43, kalos_hiker_firmin 43
+=== kalos_route_19
+Route 19
+grass 42-44
+trainers 3, 44-45: kalos_ace_trainer_rosalie 45, kalos_fisherman_eloi 45, kalos_hiker_urbain 45
 === kalos_route_2
 Route 2
 grass 2-4
 trainers 1, 3: kalos_youngster_milo 3
+=== kalos_route_20
+Route 20
+grass 44-46
+trainers 2, 45-46: kalos_hiker_thibaut 46, kalos_lady_honorine 46
+=== kalos_route_21
+Route 21
+grass 48-50
+trainers 1, 49-50: kalos_veteran_germain 50
 === kalos_route_3
 Route 3
 grass 4-6
@@ -1144,6 +1200,10 @@ trainers 5, 14-16: kalos_fisherman_pierrick 16, kalos_fisherman_yves 14, kalos_h
 Route 9
 grass 17-19
 trainers 4, 17-18: kalos_backpacker_odile 18, kalos_fisherman_loic 18, kalos_lass_clemence 18, kalos_youngster_basile 18
+=== kalos_victory_road
+Victory Road
+grass 50-58
+trainers 3, 55-56: kalos_ace_trainer_camille 56, kalos_ace_trainer_maxime 56, kalos_veteran_clovis 56
 === kanto_victory_road_1f
 Victory Road
 grass 32-46
@@ -1775,6 +1835,9 @@ trainers 3, 22-24: kanto_channeler_angelica 22, kanto_channeler_emilia 24, kanto
 Pokémon Tower
 grass 15-25
 trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26, kanto_team_rocket_grunt_21 23
+=== pokemon_village
+Pokémon Village
+grass 46-48
 === power_plant
 Power Plant
 grass 22-35

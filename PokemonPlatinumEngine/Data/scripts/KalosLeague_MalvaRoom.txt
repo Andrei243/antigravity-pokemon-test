@@ -1,0 +1,22 @@
+# Malva's room of the Pokémon League (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md, "The mountain, Team
+# Flare and the League, drawn by hand"): the first of the Elite Four's four doors, Fire. Her team is Kalos's
+# trainers.json's kalos_malva_1; beaten, FLAG_KALOS_DEFEATED_MALVA, and the
+# Champion's door opens once all four are (common.KalosLeagueFour).
+
+
+script Malva
+  face malva player
+  speaker "Malva"
+  if flag FLAG_KALOS_DEFEATED_MALVA goto Won
+  scene "Malva"
+  say "So you're the Trainer everyone on the news is talking about. I'm Malva of the Elite Four."
+  say "I don't care how you got here. I care how hot you burn. Let's find out."
+  battle self as "kalos_malva_1"
+  say "Hmph. You burn hotter than I expected. Don't let it go out before the end."
+  setflag FLAG_KALOS_DEFEATED_MALVA
+  call KalosLeagueFour
+  endscene
+  end
+label Won
+  say "Go on. The others won't wait all day."
+  end

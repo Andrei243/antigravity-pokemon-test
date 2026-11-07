@@ -59,6 +59,38 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void KalossLastChaptersPlayThroughFromCoumarineToTheHallOfFame()
+    {
+        // Plan 23 · Z4: a Kalos game brought to where the Tower of Mastery leaves it (three Badges, in Coumarine City),
+        // with a team strong enough for the League, played by the bot through every scene, Gym and battle to the Hall of Fame
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            var story = game.Story;
+            story.ChooseStarter("Froakie");
+            story.Set(StoryState.PokedexFlag);
+            story.Set(StoryState.RunningShoesFlag);
+            foreach (string badge in new[] { "Bug", "Cliff", "Rumble" }) story.GiveBadge(RegionDatabase.Kalos, badge);
+            story.SetVar("VAR_KALOS_STORY", 22);
+            story.SetVar("VAR_KALOS_LUMIOSE_ROADS", 1);
+            foreach (var (species, level) in new[] { ("Greninja", 78), ("Talonflame", 76), ("Venusaur", 76), ("Lucario", 76), ("Garchomp", 76), ("Gardevoir", 76) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+            // (a Repel that lasts the whole way: the wild Pokémon are all weaker than the lead, and only the story is tried here)
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            game.Place(MapDatabase.Get("Kalos"), 243, 474, Direction.Down);
+            game.State = GameState.Overworld;
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosLastChapters) };
+            Run(bot, 6 * 3600);
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(story.Has("KalosHallOfFame"), report.ToMarkdown());
+            Assert.Equal(8, story.BadgeCount(RegionDatabase.Kalos));
+        }, Seed, RegionDatabase.Kalos);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor
@@ -113,7 +145,7 @@ public class PlaythroughTests
 /// <summary>A game with no window for the playthrough tests (plan 16 · T7, T13), begun in Sinnoh's bedroom in a save folder of its own.</summary>
 internal static class Headless
 {
-    public static void Play(Action<GameEngine> play, int dice = 12)
+    public static void Play(Action<GameEngine> play, int dice = 12, string region = "Sinnoh")
     {
         string folder = Path.Combine(Path.GetTempPath(), "playthrough-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(folder);
@@ -125,7 +157,7 @@ internal static class Headless
             var engine = new GameEngine(new GameSettings { Muted = true });
             engine.InitializeHeadless();
             engine.PeopleStayPut = true;
-            engine.NewGameRegion = "Sinnoh";
+            engine.NewGameRegion = region;
             engine.StartNewGame();
             engine.Drive.State = GameState.Overworld;
             play(engine);
@@ -136,6 +168,7 @@ internal static class Headless
             Dice.Seed(null);
             Ruleset.Use(RulesPreset.Platinum);
             PlayerIdentity.InRegion(RegionDatabase.First);
+            PlayerIdentity.SetRival(null);
             SavePaths.Current = paths;
             try { Directory.Delete(folder, recursive: true); } catch (IOException) { }
         }

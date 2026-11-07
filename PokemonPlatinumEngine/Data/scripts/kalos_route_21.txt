@@ -1,0 +1,69 @@
+# Route 21, the last road (plan 23 · Z4). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): the neighbour waits on the road
+# for one last battle before the League (VAR_KALOS_RIVAL_LEAGUE 0 until it, 1 after), and the guard at Victory Road's
+# mouth lets through only a Trainer with all eight of Kalos's Badges (VAR_KALOS_VICTORY_ROAD 1 once one has come). The
+# neighbour's teams are Kalos's trainers.json's kalos_rival_league_*.
+#
+# The people: guard, rival (FLAG_KALOS_HIDE_RIVAL_ROUTE_21, set by the scene).
+
+
+# Into the road from the village (the trigger across it east of the neighbour, on VAR_KALOS_RIVAL_LEAGUE 0)
+script Neighbour
+  scene "The neighbour before Victory Road"
+  face rival player
+  speaker "{rival}"
+  say "{player}. I thought you'd come this way. Victory Road is just ahead, and the League past it."
+  say "Ever since Vaniville I've been chasing you. One more battle. Everything I've got!"
+  if starter "Chespin" goto AgainstChespin
+  if starter "Fennekin" goto AgainstFennekin
+  battle rival as "kalos_rival_league_chespin" canlose
+  goto Fought
+label AgainstChespin
+  battle rival as "kalos_rival_league_fennekin" canlose
+  goto Fought
+label AgainstFennekin
+  battle rival as "kalos_rival_league_froakie" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto RivalWon
+  say "That's it, then. You're the one who's going to stand in front of the Champion. Go and win."
+  goto Off
+label RivalWon
+  say "I won? I won! Then you'd better win twice as hard up there."
+  goto Off
+label Off
+  say "I'll be cheering for you. Loudly. Embarrassingly."
+  walk rival right 3 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_ROUTE_21
+  setvar VAR_KALOS_RIVAL_LEAGUE 1
+  endscene
+  end
+
+script Rival
+  speaker "{rival}"
+  say "Victory Road's mouth is just ahead. The guard checks your Badges."
+  end
+
+
+# The tile before Victory Road's mouth (the trigger on it, on VAR_KALOS_VICTORY_ROAD 0)
+script Gate
+  speaker "Guard"
+  if badges >= 8 goto Pass
+  say "Halt! Only a Trainer with all eight of Kalos's Badges may enter Victory Road."
+  walk player down 1
+  end
+label Pass
+  say "Eight Badges! Very well. Victory Road is open to you, and the Pokémon League lies beyond it."
+  setvar VAR_KALOS_VICTORY_ROAD 1
+  end
+
+script Guard
+  speaker "Guard"
+  if badges >= 8 goto Pass
+  say "I guard the way to the League. Come back with all eight Badges of Kalos."
+  end
+label Pass
+  say "The League is beyond Victory Road. Good luck, Trainer."
+  end

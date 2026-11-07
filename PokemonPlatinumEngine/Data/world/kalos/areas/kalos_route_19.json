@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_19",
+  "index": 34,
+  "name": "Route 19",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_19",
+  "nightMusic": "ROUTE_19",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "ace", "looks": "lass", "movement": "look_east", "x": 684, "z": 328, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_ROSALIE" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 691, "z": 346, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_URBAIN" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 676, "z": 354, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_ELOI" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 700, "z": 306, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_19_MAX_POTION", "item": "Max Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 684, "z": 304, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Haunter", "level": 42 },
+    { "species": "Weepinbell", "level": 42 },
+    { "species": "Carnivine", "level": 42 },
+    { "species": "Sliggoo", "level": 42 },
+    { "species": "Quagsire", "level": 43 },
+    { "species": "Arbok", "level": 43 },
+    { "species": "Drapion", "level": 43 },
+    { "species": "Lombre", "level": 43 },
+    { "species": "Gligar", "level": 43 },
+    { "species": "Poliwhirl", "level": 44 },
+    { "species": "Sliggoo", "level": 44 },
+    { "species": "Drapion", "level": 44 }
+  ],
+  "landRate": 20
+}

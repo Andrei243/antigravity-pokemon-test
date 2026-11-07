@@ -13,7 +13,9 @@
     { "name": "Kalos", "matrix": 0, "trees": "Round" },
     // Plan 23 · Z3, second part: the two caves, maps of their own (tools/MapDraw's layout.json "maps")
     { "name": "ReflectionCave", "matrix": 1, "area": "reflection_cave", "trees": "Round", "setting": "Cave" },
-    { "name": "GlitteringCave", "matrix": 2, "area": "glittering_cave", "trees": "Round", "setting": "Cave" }
+    { "name": "GlitteringCave", "matrix": 2, "area": "glittering_cave", "trees": "Round", "setting": "Cave" },
+    // Plan 23 · Z4: Victory Road, between Route 21 and the Pokémon League
+    { "name": "KalosVictoryRoad", "matrix": 3, "area": "kalos_victory_road", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "vaniville_town",
@@ -44,6 +46,10 @@
     "glittering_cave",
     // Route 12 on east to Coumarine City, whose Gym is a later part of plan 23 · Z3
     "kalos_route_12",
-    "coumarine_city"
+    "coumarine_city",
+    // Plan 23 · Z4: the badlands, the north and east, the snow, the valleys, the woods, Victory Road and the League
+    "kalos_route_13", "kalos_route_14", "laverre_city", "kalos_route_15", "dendemille_town", "kalos_route_17", "anistar_city",
+    "kalos_route_18", "couriway_town", "kalos_route_19", "snowbelle_city", "kalos_route_20", "pokemon_village", "kalos_route_21",
+    "kalos_victory_road", "kalos_pokemon_league"
   ]
 }

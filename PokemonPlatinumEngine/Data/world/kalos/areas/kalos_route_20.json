@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_20",
+  "index": 36,
+  "name": "Route 20",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_20",
+  "nightMusic": "ROUTE_20",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "lady", "looks": "lady", "movement": "look_west", "x": 696, "z": 186, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LADY_HONORINE" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 675, "z": 208, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_THIBAUT" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 698, "z": 226, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_20_MAX_REVIVE", "item": "Max Revive", "script": "" }
+  ],
+  "signs": [
+    { "x": 684, "z": 232, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Phantump", "level": 44 },
+    { "species": "Pumpkaboo", "level": 44 },
+    { "species": "Noctowl", "level": 44 },
+    { "species": "Jigglypuff", "level": 44 },
+    { "species": "Sudowoodo", "level": 45 },
+    { "species": "Amoonguss", "level": 45 },
+    { "species": "Zorua", "level": 45 },
+    { "species": "Lampent", "level": 45 },
+    { "species": "Ariados", "level": 45 },
+    { "species": "Trevenant", "level": 46 },
+    { "species": "Gourgeist", "level": 46 },
+    { "species": "Phantump", "level": 46 }
+  ],
+  "landRate": 20
+}

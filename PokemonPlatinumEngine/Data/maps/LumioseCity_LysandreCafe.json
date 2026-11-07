@@ -149,7 +149,8 @@
       "x": 6,
       "y": 5,
       "facing": "Down",
-      "script": "Lysandre"
+      "script": "Lysandre",
+      "hiddenBy": "FLAG_KALOS_HIDE_LYSANDRE_CAFE"
     },
     {
       "id": "sycamore",

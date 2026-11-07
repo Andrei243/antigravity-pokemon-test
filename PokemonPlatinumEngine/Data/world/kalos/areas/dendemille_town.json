@@ -1,0 +1,29 @@
+{
+  "key": "dendemille_town",
+  "index": 29,
+  "name": "Dendemille Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "DENDEMILLE",
+  "nightMusic": "DENDEMILLE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 487, "z": 198, "to": "DendemilleTown_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 507, "z": 198, "to": "DendemilleTown_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "miller", "looks": "old_man", "movement": "look_south", "x": 498, "z": 210, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 512, "z": 212, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "" }
+  ],
+  "signs": [
+    { "x": 482, "z": 203, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

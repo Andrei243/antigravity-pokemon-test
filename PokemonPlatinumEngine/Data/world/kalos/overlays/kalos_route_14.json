@@ -1,0 +1,34 @@
+{
+  // Route 14, the marshy trail (plan 23 · Z4): drawn by hand, our words. North out of Lumiose City's north gate, a
+  // raised trail between pools and tall grass to Laverre City. The neighbour waits half way for a battle
+  // (kalos_route_14.txt). It plays Santalune Forest's song until plan 31 writes it its own
+  "area": "kalos_route_14",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "architecture": "Lumiose",
+  "triggers": [
+    { "script": "Neighbour", "x": 358, "z": 276, "width": 4, "depth": 1, "variable": "VAR_KALOS_RIVAL_NORTH", "value": 0 }
+  ],
+  "people": {
+    "lass": {
+      "name": "Célestine",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Célestine: These pools are full of shy Pokémon. You'll scare them off! Battle me instead!",
+        "dialogueAfter": "Lass Célestine: Shh. You'll wake the whole marsh."
+      }
+    },
+    "picnicker": {
+      "name": "Odile",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Odile: Nobody else picnics in a swamp. That's why it's my favourite spot!",
+        "dialogueAfter": "Picnicker Odile: My sandwiches got soggy anyway."
+      }
+    },
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_14" }
+  },
+  "signs": {
+    "RouteSign": "Route 14\nNorth: Laverre City\nSouth: Lumiose City"
+  }
+}

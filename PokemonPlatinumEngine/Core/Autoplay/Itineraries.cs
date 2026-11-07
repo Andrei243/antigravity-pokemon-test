@@ -73,6 +73,39 @@ public static class Itineraries
         Leg.Talk("OreburghGym", "roark") with { Until = story => story.HasBadge("Sinnoh", "Coal") },
     };
 
+    /// <summary>
+    /// Kalos's last chapters (plan 23 · Z4), from where the Tower of Mastery leaves a game (in Coumarine City with three
+    /// Badges) to the Hall of Fame: Ramos, the Power Plant, the Prism Tower's lift and Clemont, the neighbour on Route 14,
+    /// Valerie, Olympia, the waiter's way down to Lysandre's laboratory, the hidden door under Geosenge's stones, Lysandre
+    /// and Xerneas, Wulfric, the neighbour and the guard on Route 21, the Elite Four and Diantha, whose Hall of Fame sends
+    /// the player home.
+    /// </summary>
+    public static IReadOnlyList<Leg> KalosLastChapters { get; } = new[]
+    {
+        Leg.Talk("CoumarineCity_Gym", "ramos") with { Until = story => story.HasBadge("Kalos", "Plant") },
+        Leg.Talk("KalosPowerPlant", "aliana") with { Until = story => story.Var("VAR_KALOS_STORY") >= 24 },
+        Leg.Talk("Kalos", "lift_operator", "lumiose_city"),
+        Leg.Talk("LumioseCity_PrismTowerGym", "clemont") with { Until = story => story.HasBadge("Kalos", "Voltage") },
+        Leg.Trigger("Kalos", "Neighbour", "kalos_route_14"),
+        Leg.Talk("LaverreCity_Gym", "valerie") with { Until = story => story.HasBadge("Kalos", "Fairy") },
+        Leg.Talk("AnistarCity_Gym", "olympia") with { Until = story => story.HasBadge("Kalos", "Psychic") },
+        Leg.Talk("LumioseCity_LysandreCafe", "waiter"),
+        Leg.Talk("LumioseCity_LysandreLabs", "lysandre") with { Until = story => story.Var("VAR_KALOS_STORY") >= 28 },
+        Leg.Trigger("Kalos", "HiddenDoor", "geosenge_town"),
+        Leg.Talk("GeosengeTown_FlareHQ", "lysandre") with { Until = story => story.Has("FLAG_KALOS_HIDE_LYSANDRE_HQ") },
+        Leg.Talk("GeosengeTown_FlareHQ", "xerneas") with { Until = story => story.Var("VAR_KALOS_STORY") >= 29 },
+        Leg.Talk("SnowbelleCity_Gym", "wulfric") with { Until = story => story.HasBadge("Kalos", "Iceberg") },
+        Leg.Trigger("Kalos", "Neighbour", "kalos_route_21"),
+        Leg.Trigger("Kalos", "Gate", "kalos_route_21"),
+        Leg.Talk("KalosLeague_MalvaRoom", "malva") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_MALVA") },
+        Leg.Talk("KalosLeague_SieboldRoom", "siebold") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_SIEBOLD") },
+        Leg.Talk("KalosLeague_WikstromRoom", "wikstrom") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_WIKSTROM") },
+        Leg.Talk("KalosLeague_DrasnaRoom", "drasna") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_DRASNA") },
+        // (her script ends as it takes the player through to the Hall of Fame, whose own arrival sends the player home)
+        Leg.Talk("KalosLeague_ChampionRoom", "diantha") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_DIANTHA") || story.Has("KalosHallOfFame") },
+        Leg.Enter("VanivilleTown_PlayersHouse_2F") with { Until = story => story.Has("KalosHallOfFame") },
+    };
+
     /// <summary>From a new game's bedroom to the Coal Badge.</summary>
     public static IReadOnlyList<Leg> TwinleafToCoalBadge { get; } = Join(FirstChapter, ToTheCoalBadge);
 

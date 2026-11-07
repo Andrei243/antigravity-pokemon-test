@@ -951,6 +951,18 @@ public static class RegionDatabase
                 "ReflectionCave", "GlitteringCave",
                 "AmbretteTown_PokemonCenter_1F", "AmbretteTown_WestHouse", "AmbretteTown_Aquarium", "AmbretteTown_Cottage",
                 "CoumarineCity_PokemonCenter_1F", "CoumarineCity_GardenHouse", "CoumarineCity_EastHouse",
+                // Plan 23 · Z4: Coumarine's Gym, the Power Plant, the Prism Tower's Gym, Lysandre's laboratory, Team Flare's
+                // base under Geosenge Town, the rooms of Laverre City, Dendemille Town, Anistar City, Couriway Town and
+                // Snowbelle City, Victory Road (a map of its own) and the Pokémon League's rooms
+                "CoumarineCity_Gym", "KalosPowerPlant", "LumioseCity_PrismTowerGym", "LumioseCity_LysandreLabs", "GeosengeTown_FlareHQ",
+                "LaverreCity_Gym", "LaverreCity_PokemonCenter_1F", "LaverreCity_House",
+                "DendemilleTown_PokemonCenter_1F", "DendemilleTown_House",
+                "AnistarCity_Gym", "AnistarCity_PokemonCenter_1F", "AnistarCity_House",
+                "CouriwayTown_PokemonCenter_1F", "CouriwayTown_House",
+                "SnowbelleCity_Gym", "SnowbelleCity_PokemonCenter_1F", "SnowbelleCity_House",
+                "KalosVictoryRoad",
+                "KalosLeague_Hall", "KalosLeague_MalvaRoom", "KalosLeague_SieboldRoom", "KalosLeague_WikstromRoom", "KalosLeague_DrasnaRoom",
+                "KalosLeague_ChampionRoom", "KalosLeague_HallOfFame",
             }
         },
         new()
@@ -1001,8 +1013,9 @@ public static class RegionDatabase
         // From Unova by air: the airline's attendant stands in the east wing of Mistralton City's cargo hall once Unova's Hall of
         // Fame is entered (plan 22 · U9, part c: the hall's overlay, common.Attendant)
         new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "MistraltonCity_CargoHall" },
-        // From Kalos by air (plan 23 · Z5, first part, until Z4 builds a departure hall of its own): the airline's attendant
-        // stands in Lumiose City's Pokémon Center once Kalos's Hall of Fame is entered (common.Attendant)
+        // From Kalos by air (plan 23 · Z5, first part; confirmed by Z4, which keeps the departure where Z5 put it, Kalos having no
+        // airport in the original): the airline's attendant stands in Lumiose City's Pokémon Center once Kalos's Hall of Fame
+        // is entered (KalosLeague_HallOfFame.txt sets KalosHallOfFame; common.Attendant)
         new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "LumioseCity_PokemonCenter_1F" },
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane" },
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }

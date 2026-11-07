@@ -1,0 +1,42 @@
+# The Power Plant on Route 13 (plan 23 · Z4). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Team Flare has taken the plant
+# and cut Lumiose City's power; two grunts guard the hall and Aliana, one of the team's scientists, the machines at its
+# head. Beating her puts the power back: VAR_KALOS_STORY 23 becomes 24, and VAR_KALOS_LUMIOSE_ROADS 2 opens the road
+# north out of Lumiose (lumiose_city.json) and lights the Prism Tower (lumiose_city.txt's PrismTower). The room's people:
+# the two grunts (trainers of the room), aliana (FLAG_KALOS_HIDE_ALIANA_PLANT once beaten) and the plant's worker.
+
+
+script Aliana
+  face aliana player
+  speaker "Aliana"
+  if var VAR_KALOS_STORY < 23 goto Early
+  scene "Aliana at the Power Plant"
+  say "Oh? A child, all the way out here. Team Flare is borrowing this plant's power, and we don't share."
+  say "Every watt goes to a far more beautiful purpose than lighting shop windows. Now run along."
+  say "No? Then I'll have to make you."
+  battle self as "kalos_aliana_1"
+  say "Hmph. Fine. We've taken what we needed anyway. Enjoy your shop windows."
+  hide aliana
+  setflag FLAG_KALOS_HIDE_ALIANA_PLANT
+  defeat "kalos_flare_grunt_plant_1"
+  defeat "kalos_flare_grunt_plant_2"
+  speaker "Worker"
+  say "You chased them off! I'll have the generators running again in no time. Lumiose will be lit by tonight!"
+  setvar VAR_KALOS_STORY 24
+  setvar VAR_KALOS_LUMIOSE_ROADS 2
+  objective kalosClemont
+  endscene
+  end
+label Early
+  say "Run along, child. Team Flare has business here that has nothing to do with you."
+  end
+
+
+script Worker
+  speaker "Worker"
+  if var VAR_KALOS_STORY >= 24 goto Fixed
+  say "They came in red suits and told us all to wait outside. Please, someone has to stop them!"
+  end
+label Fixed
+  say "The lights are back on in Lumiose. The Gym in the Prism Tower runs on all that power, you know."
+  end

@@ -1,0 +1,28 @@
+{
+  "key": "couriway_town",
+  "index": 33,
+  "name": "Couriway Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "COURIWAY",
+  "nightMusic": "COURIWAY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 613, "z": 350, "to": "CouriwayTown_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 645, "z": 350, "to": "CouriwayTown_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fisher", "looks": "fisherman", "movement": "look_south", "x": 640, "z": 364, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 630, "z": 361, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

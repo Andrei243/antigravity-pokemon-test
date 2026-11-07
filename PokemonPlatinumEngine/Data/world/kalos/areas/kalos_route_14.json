@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_14",
+  "index": 26,
+  "name": "Route 14",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_14",
+  "nightMusic": "ROUTE_14",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 356, "z": 262, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_CELESTINE" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_west", "x": 363, "z": 280, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_ODILE" },
+    { "id": "rival", "looks": "Rival:SERENA:CALEM", "movement": "look_south", "x": 360, "z": 272, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_14", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 370, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_14_REVIVE", "item": "Revive", "script": "" }
+  ],
+  "signs": [
+    { "x": 356, "z": 294, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Goomy", "level": 30 },
+    { "species": "Haunter", "level": 30 },
+    { "species": "Karrablast", "level": 30 },
+    { "species": "Shelmet", "level": 30 },
+    { "species": "Bellsprout", "level": 31 },
+    { "species": "Weepinbell", "level": 31 },
+    { "species": "Ekans", "level": 31 },
+    { "species": "Carnivine", "level": 31 },
+    { "species": "Quagsire", "level": 31 },
+    { "species": "Skorupi", "level": 32 },
+    { "species": "Stunfisk", "level": 32 },
+    { "species": "Poliwhirl", "level": 32 }
+  ],
+  "landRate": 20
+}

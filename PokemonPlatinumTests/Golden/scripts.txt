@@ -41,6 +41,14 @@ way -
   > Lucas put them away in the Berries pocket.
   * fanfare FanfareItem
   + FLAG_ALOLA_CARETAKER_BERRY
+=== AnistarCity_Gym.GymGuide
+from Gym Guide at 9,15 of AnistarCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Olympia's Psychic types fear bugs, ghosts and the dark. Choose well!
+=== AnistarCity_Gym.Olympia
+from Olympia at 6,4 of AnistarCity_Gym
+way -
+  Olympia> The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree.
 === BattleArcade.Beauty
 from Beauty at 4,14 of BattleArcade
 way -
@@ -2507,6 +2515,15 @@ way -
   Boy> It's hard to win without one. Still, if you're set on it, I won't stop you.
   Boy> You could always practise at the counter on the right.
   + FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+=== CoumarineCity_Gym.GymGuide
+from Gym Guide at 9,15 of CoumarineCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Ramos's Grass types wilt before fire, ice, poison and wings. Choose well!
+=== CoumarineCity_Gym.Ramos
+from Ramos at 6,4 of CoumarineCity_Gym
+way -
+  Ramos> Hoo, a visitor! I'm Ramos. I'm tending my seedlings just now, sprout.
+  Ramos> Come back once you've seen the tower up in Shalour. Then we'll have ourselves a proper battle.
 === CyllageCity_Gym.Grant
 from Grant at 6,4 of CyllageCity_Gym
 way 0
@@ -3515,6 +3532,13 @@ way 1, from answer 1
   Depot Agent> Beat Ingo in the 21st car and the Super Single Train opens to you, with tougher trainers and more Battle Points.
   Depot Agent> After a set you may also put your run down. The game is saved here, and you can ride on later.
   ? What would you like to do? = INFO
+=== GeosengeTown_FlareHQ.Lysandre
+from Lysandre at 10,7 of GeosengeTown_FlareHQ
+way -
+=== GeosengeTown_FlareHQ.Xerneas
+from Xerneas at 10,4 of GeosengeTown_FlareHQ
+way -
+  > A great Pokémon sleeps among the machines, its horns as still and grey as a dead tree.
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
 way 0
@@ -3750,6 +3774,108 @@ way 0
 way 1, from answer 1
   Lottery Clerk> Of course. Come back whenever you feel lucky!
   ? Shall I check today's number against your Pokémon? = No
+=== KalosLeague_ChampionRoom.Diantha
+from Diantha at 7,4 of KalosLeague_ChampionRoom
+way 0
+  Diantha> Welcome. I'm Diantha. You've been all over the news, Lucas: the Trainer who stopped Team Flare.
+  Diantha> I've played heroes on the screen. Today I want to meet a real one. Show me everything!
+  Diantha> Wonderful... That was the most thrilling battle of my life. Kalos has a new Champion.
+  Diantha> Come, Lucas. There's a room where every Champion is remembered. Yours is waiting.
+  * scene KalosLeague_ChampionRoom.Diantha
+  * battle kalos_diantha_1 Won
+  * endscene
+  * warp KalosLeague_HallOfFame 6 10
+  + FLAG_KALOS_DEFEATED_DIANTHA
+  + beaten kalos_diantha_1
+  + seen KalosLeague_ChampionRoom.Diantha
+way 1, from answer 1
+  * battle kalos_diantha_1 Lost
+  * scene over, unseen
+=== KalosLeague_DrasnaRoom.Drasna
+from Drasna at 6,4 of KalosLeague_DrasnaRoom
+way 0
+  Drasna> Oh my, what a lovely young Trainer! I'm Drasna. Don't let my age fool you, dear.
+  Drasna> My dragons are as fierce as ever. Shall we?
+  Drasna> Oh, wonderful! It's been an age since anyone made my dragons work so hard.
+  * scene KalosLeague_DrasnaRoom.Drasna
+  * battle kalos_drasna_1 Won
+  * endscene
+  + FLAG_KALOS_DEFEATED_DRASNA
+  + beaten kalos_drasna_1
+  + seen KalosLeague_DrasnaRoom.Drasna
+way 1, from answer 1
+  * battle kalos_drasna_1 Lost
+  * scene over, unseen
+=== KalosLeague_Hall.Guide
+from Guide at 12,7 of KalosLeague_Hall
+way -
+  Guide> Welcome to the Pokémon League! Four doors, four of the Elite Four, in any order you like.
+  Guide> Beat all four and the middle door opens on the Champion. The nurse here will heal you between rooms.
+=== KalosLeague_HallOfFame.DianthaWaits
+from Diantha at 8,6 of KalosLeague_HallOfFame
+way -
+  Diantha> Kalos is lucky to have you, Lucas.
+=== KalosLeague_MalvaRoom.Malva
+from Malva at 6,4 of KalosLeague_MalvaRoom
+way 0
+  Malva> So you're the Trainer everyone on the news is talking about. I'm Malva of the Elite Four.
+  Malva> I don't care how you got here. I care how hot you burn. Let's find out.
+  Malva> Hmph. You burn hotter than I expected. Don't let it go out before the end.
+  * scene KalosLeague_MalvaRoom.Malva
+  * battle kalos_malva_1 Won
+  * endscene
+  + FLAG_KALOS_DEFEATED_MALVA
+  + beaten kalos_malva_1
+  + seen KalosLeague_MalvaRoom.Malva
+way 1, from answer 1
+  * battle kalos_malva_1 Lost
+  * scene over, unseen
+=== KalosLeague_SieboldRoom.Siebold
+from Siebold at 6,4 of KalosLeague_SieboldRoom
+way 0
+  Siebold> Welcome. I am Siebold. When I am not here, I cook. A battle, like a dish, wants care and balance.
+  Siebold> Let us see whether your recipe holds together.
+  Siebold> Exquisite. Every flavour in its place. I shall remember this battle as I remember my finest meals.
+  * scene KalosLeague_SieboldRoom.Siebold
+  * battle kalos_siebold_1 Won
+  * endscene
+  + FLAG_KALOS_DEFEATED_SIEBOLD
+  + beaten kalos_siebold_1
+  + seen KalosLeague_SieboldRoom.Siebold
+way 1, from answer 1
+  * battle kalos_siebold_1 Lost
+  * scene over, unseen
+=== KalosLeague_WikstromRoom.Wikstrom
+from Wikstrom at 6,4 of KalosLeague_WikstromRoom
+way 0
+  Wikstrom> Well met, challenger! I am Wikstrom, a knight of the Elite Four. My blade and my Pokémon are at your service.
+  Wikstrom> En garde! Let our steel speak!
+  Wikstrom> Glorious! A true duel, honestly fought. My helmet is off to you.
+  * scene KalosLeague_WikstromRoom.Wikstrom
+  * battle kalos_wikstrom_1 Won
+  * endscene
+  + FLAG_KALOS_DEFEATED_WIKSTROM
+  + beaten kalos_wikstrom_1
+  + seen KalosLeague_WikstromRoom.Wikstrom
+way 1, from answer 1
+  * battle kalos_wikstrom_1 Lost
+  * scene over, unseen
+=== KalosPowerPlant.Aliana
+from Aliana at 8,4 of KalosPowerPlant
+way -
+  Aliana> Run along, child. Team Flare has business here that has nothing to do with you.
+=== KalosPowerPlant.Worker
+from Worker at 3,11 of KalosPowerPlant
+way -
+  Worker> They came in red suits and told us all to wait outside. Please, someone has to stop them!
+=== LaverreCity_Gym.GymGuide
+from Gym Guide at 9,15 of LaverreCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Valerie's Fairy types shrink from poison and steel. Choose well!
+=== LaverreCity_Gym.Valerie
+from Valerie at 6,4 of LaverreCity_Gym
+way -
+  Valerie> The Leader of Lumiose's tower has not yet met you, I think. Go to him first. Then come back to me.
 === LostTower5F.OldWoman1
 from Old Woman at 7,9 of LostTower5F
 way -
@@ -3777,6 +3903,43 @@ way -
 from Waiter at 8,4 of LumioseCity_LysandreCafe
 way -
   Waiter> Good day. The gentleman in red owns this café. He takes his coffee very black and very hot.
+=== LumioseCity_LysandreLabs.Lysandre
+from Lysandre at 8,4 of LumioseCity_LysandreLabs
+way -
+=== LumioseCity_PrismTowerGym.Clemont
+from Clemont at 6,4 of LumioseCity_PrismTowerGym
+way 0
+  Clemont> You must be the one who switched the power back on! I'm Clemont. Thank you! My inventions were starving.
+  Clemont> Science is amazing! And so is a good battle. Let me show you what my Pokémon and I have built together!
+  Clemont> Incredible! My calculations had you losing at least three times. I'll have to check my numbers.
+  Clemont> Here, the Voltage Badge. You've more than earned it.
+  > Lucas received the Voltage Badge from Clemont!
+  Clemont> And take this machine. It throws a burst of electricity that stops a foe in its tracks!
+  > Lucas received the TM24!
+  > TM24 holds the move Thunderbolt.
+  > Lucas put it away in the TMs & HMs pocket.
+  Clemont> The north gate is open again. Laverre City lies up Route 14, past the marsh.
+  * scene LumioseCity_PrismTowerGym.Clemont
+  * battle kalos_clemont_1 Won
+  * fanfare FanfareBadge
+  * defeat kalos_schoolboy_hugo
+  * defeat kalos_schoolgirl_adele
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_DEFEATED_LUMIOSE_GYM
+  + FLAG_KALOS_RECEIVED_TM_CLEMONT
+  + beaten kalos_clemont_1
+  + beaten kalos_schoolboy_hugo
+  + beaten kalos_schoolgirl_adele
+  = badges Kalos 0 -> 10000
+  + seen LumioseCity_PrismTowerGym.Clemont
+way 1, from answer 1
+  * battle kalos_clemont_1 Lost
+  * scene over, unseen
+=== LumioseCity_PrismTowerGym.GymGuide
+from Gym Guide at 9,15 of LumioseCity_PrismTowerGym
+way -
+  Gym Guide> Hello there, future Champion! Clemont's Electric types can't touch a Ground type. Dig in!
 === LumioseCity_SycamoreLab.Dexio
 from Dexio at 10,8 of LumioseCity_SycamoreLab
 way -
@@ -5343,6 +5506,14 @@ way -
 from Korrina at 9,7 of ShalourCity_TowerOfMastery
 way -
   Korrina> Grandpa talks to that statue more than to me. I think it listens better!
+=== SnowbelleCity_Gym.GymGuide
+from Gym Guide at 9,15 of SnowbelleCity_Gym
+way -
+  Gym Guide> Hello there, future Champion! Wulfric's Ice types crack under fire, fists, rock and steel. Choose well!
+=== SnowbelleCity_Gym.Wulfric
+from Wulfric at 6,4 of SnowbelleCity_Gym
+way -
+  Wulfric> Ha! You've come a long way, but not far enough. Kalos has bigger trouble than me just now: go and stop it first.
 === SnowpointCityEastHouse.Sayings
 from Old Man at 5,5 of SnowpointCityEastHouse
 way 0
@@ -12108,6 +12279,9 @@ way -
   + FLAG_ROCKET_TAKEOVER_ACTIVE
   + FLAG_UNK_0C5
   = VAR_SCENE_ROCKET_TAKEOVER 0 -> 2
+=== common.KalosLeagueFour
+from a trainer with lines of their own
+way -
 === common.KalosLumiose
 from a trainer with lines of their own
 way -
@@ -17260,6 +17434,14 @@ way -
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
   + seen fullmoon_island_forest.Cresselia on Fullmoon Island
+=== geosenge_town.HiddenDoor
+from the trigger at 108,219 of Kalos
+way -
+  > The flower bed shudders and slides aside. Steps lead down into the dark under the standing stones.
+  * scene geosenge_town.Team Flare's hidden door
+  * endscene
+  * warp GeosengeTown_FlareHQ 10 20
+  + seen geosenge_town.Team Flare's hidden door
 === geosenge_town.Trevor
 from the trigger at 118,227 of Kalos
 way -
@@ -19440,6 +19622,40 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== kalos_route_14.Neighbour
+from the trigger at 358,276 of Kalos
+way 0
+  Barry> Lucas! You got the power running again? Everyone in Lumiose is talking about the kid who beat Team Flare.
+  Barry> I'm not going to fall behind you now. Let's battle, right here in the mud!
+  Barry> Again! You're always one step ahead of me. I'll catch up, you'll see.
+  Barry> Laverre's Gym Leader uses fairies. They're prettier than they look, and tougher.
+  * scene kalos_route_14.The neighbour on Route 14
+  * battle kalos_rival_route14_chespin Won
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_14
+  = VAR_KALOS_RIVAL_NORTH 0 -> 1
+  + beaten kalos_rival_route14_chespin
+  + seen kalos_route_14.The neighbour on Route 14
+way 1, from answer 1
+  Barry> Got you this time! Don't let it go to your head... or mine.
+  Barry> Laverre's Gym Leader uses fairies. They're prettier than they look, and tougher.
+  * battle kalos_rival_route14_chespin Lost
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_14
+  = VAR_KALOS_RIVAL_NORTH 0 -> 1
+  + seen kalos_route_14.The neighbour on Route 14
+=== kalos_route_14.Rival
+from {rival} at 360,272 of Kalos
+way -
+  Barry> Watch your step. Half this trail is puddle.
+=== kalos_route_18.NotYet
+from the trigger at 632,239 of Kalos
+way -
+  Worker> Sorry, the valley's shut. The ground keeps shaking and rocks keep falling. Nobody knows why.
+=== kalos_route_18.Worker
+from Worker at 636,239 of Kalos
+way -
+  Worker> The valley stays shut until the ground settles. Something deep under Kalos is stirring.
 === kalos_route_2.Lesson
 from the trigger at 254,636 of Kalos
 way -
@@ -19464,6 +19680,40 @@ way -
 from {rival} at 255,632 of Kalos
 way -
   Barry> Watch closely, Lucas.
+=== kalos_route_21.Gate
+from the trigger at 605,121 of Kalos
+way -
+  Guard> Halt! Only a Trainer with all eight of Kalos's Badges may enter Victory Road.
+=== kalos_route_21.Guard
+from Guard at 606,121 of Kalos
+way -
+  Guard> I guard the way to the League. Come back with all eight Badges of Kalos.
+=== kalos_route_21.Neighbour
+from the trigger at 642,126 of Kalos
+way 0
+  Barry> Lucas. I thought you'd come this way. Victory Road is just ahead, and the League past it.
+  Barry> Ever since Vaniville I've been chasing you. One more battle. Everything I've got!
+  Barry> That's it, then. You're the one who's going to stand in front of the Champion. Go and win.
+  Barry> I'll be cheering for you. Loudly. Embarrassingly.
+  * scene kalos_route_21.The neighbour before Victory Road
+  * battle kalos_rival_league_chespin Won
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_21
+  = VAR_KALOS_RIVAL_LEAGUE 0 -> 1
+  + beaten kalos_rival_league_chespin
+  + seen kalos_route_21.The neighbour before Victory Road
+way 1, from answer 1
+  Barry> I won? I won! Then you'd better win twice as hard up there.
+  Barry> I'll be cheering for you. Loudly. Embarrassingly.
+  * battle kalos_rival_league_chespin Lost
+  * endscene
+  + FLAG_KALOS_HIDE_RIVAL_ROUTE_21
+  = VAR_KALOS_RIVAL_LEAGUE 0 -> 1
+  + seen kalos_route_21.The neighbour before Victory Road
+=== kalos_route_21.Rival
+from {rival} at 640,127 of Kalos
+way -
+  Barry> Victory Road's mouth is just ahead. The guard checks your Badges.
 === kalos_route_3.Friends
 from the trigger at 266,531 of Kalos
 way 0
@@ -21119,6 +21369,7 @@ way -
 === lumiose_city.NotYetEast
 from the trigger at 418,358 of Kalos
 from the trigger at 418,358 of Kalos
+from the trigger at 418,358 of Kalos
 way -
   > The road beyond is closed for repairs. It will open again soon.
 === lumiose_city.NotYetNorth
@@ -21126,9 +21377,11 @@ from the trigger at 358,301 of Kalos
 from the trigger at 358,301 of Kalos
 from the trigger at 391,301 of Kalos
 from the trigger at 391,301 of Kalos
+from the trigger at 391,301 of Kalos
 way -
   > The road beyond is closed for repairs. It will open again soon.
 === lumiose_city.NotYetSouth
+from the trigger at 391,418 of Kalos
 from the trigger at 391,418 of Kalos
 from the trigger at 391,418 of Kalos
 way -
@@ -21137,6 +21390,10 @@ way -
 from the trigger at 301,358 of Kalos
 way -
   > The road to Route 5 is closed for repairs. It will open again soon.
+=== lumiose_city.PrismTower
+from Lift Operator at 358,362 of Kalos
+way -
+  Lift Operator> Sorry, the lift has no power. The whole city's gone dark, and the tower with it.
 === lumiose_city.Sina
 from Sina at 359,409 of Kalos
 way -

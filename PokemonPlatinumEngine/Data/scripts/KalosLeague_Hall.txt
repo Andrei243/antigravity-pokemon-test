@@ -1,0 +1,12 @@
+# The Pokémon League's hall (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md, "The mountain, Team Flare and
+# the League, drawn by hand"): five doors along the back wall, the Elite Four's in any order and the Champion's in the
+# middle, whose way is there only from FLAG_KALOS_LEAGUE_FOUR, set once all four are beaten (common.KalosLeagueFour); a
+# nurse and a clerk by the way in. The Hall of Fame's scene (KalosLeague_HallOfFame.txt) clears the flags for a second
+# challenge.
+
+
+script Guide
+  speaker "Guide"
+  say "Welcome to the Pokémon League! Four doors, four of the Elite Four, in any order you like."
+  say "Beat all four and the middle door opens on the Champion. The nurse here will heal you between rooms."
+  end

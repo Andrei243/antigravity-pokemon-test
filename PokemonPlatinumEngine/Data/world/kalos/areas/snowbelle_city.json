@@ -1,0 +1,29 @@
+{
+  "key": "snowbelle_city",
+  "index": 35,
+  "name": "Snowbelle City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Snowing",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SNOWBELLE",
+  "nightMusic": "SNOWBELLE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 673, "z": 255, "to": "SnowbelleCity_Gym", "toWarp": 0 },
+    { "x": 699, "z": 270, "to": "SnowbelleCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 671, "z": 280, "to": "SnowbelleCity_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "boy", "looks": "youngster", "movement": "wander_around", "x": 694, "z": 256, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "" }
+  ],
+  "signs": [
+    { "x": 684, "z": 292, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

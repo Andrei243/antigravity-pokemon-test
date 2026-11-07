@@ -1397,22 +1397,41 @@ unova_youngster_kevin 186 (60) [Venonat → Somnimoth, Raticate → Ratchisel, V
 === region Kalos
 levels 2 → 185, 68 → 205, 76 → 222
 caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
+kalos_aliana_1 194 (31) [Mightyena → Hyaenarch, Houndoom → Cerberhound]
+kalos_clemont_1 196 (37) [Emolga → Nimbolga, Magneton → Magnezone, Heliolisk → Coronafrill]
+kalos_diantha_1 205 (68) [Hawlucha → Luchacondor, Tyrantrum → Despotitan, Aurorus → Borealosaur, Gourgeist → Lanternhusk]
+kalos_drasna_1 204 (65) [Dragalge → Kelpdrake, Druddigon → Drudrakon, Altaria → Nimbusong, Noivern → Sonarwing]
 kalos_grant_1 192 (25) [Amaura → Aurorus, Tyrunt → Tyrantrum]
 kalos_korrina_1 194 (32) [Mienfoo → Mienshifu, Machoke → Machamp, Hawlucha → Luchacondor]
 kalos_korrina_tower 194 (32) [Lucario → Aurasage]
+kalos_lysandre_1 200 (51) [Mienshao → Mienshifu, Honchkrow → Corvicapo, Pyroar → Blazemonarch, Gyarados → Typhonarch]
+kalos_lysandre_2 201 (55) [Mienshao → Mienshifu, Honchkrow → Corvicapo, Pyroar → Blazemonarch, Gyarados → Typhonarch]
+kalos_malva_1 204 (65) [Pyroar → Blazemonarch, Torkoal → Smeltortoise]
+kalos_olympia_1 199 (48) [Sigilyph → Glyphoracle, Slowking → Slowmonarch, Meowstic → Occulynx]
+kalos_ramos_1 195 (34) [Weepinbell → Victreebel, Gogoat → Alpicorn]
 kalos_rival_cyllage_chespin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Quilladin → Chesnaught]
 kalos_rival_cyllage_fennekin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Braixen → Delphox]
 kalos_rival_cyllage_froakie 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Frogadier → Greninja]
+kalos_rival_league_chespin 202 (59) [Meowstic → Occulynx, Absol → Omenblade, Jolteon → Fulgureon]
+kalos_rival_league_fennekin 202 (59) [Meowstic → Occulynx, Absol → Omenblade, Jolteon → Fulgureon]
+kalos_rival_league_froakie 202 (59) [Meowstic → Occulynx, Absol → Omenblade, Jolteon → Fulgureon]
+kalos_rival_route14_chespin 194 (33) [Meowstic → Occulynx, Absol → Omenblade, Fletchinder → Talonflame, Quilladin → Chesnaught]
+kalos_rival_route14_fennekin 194 (33) [Meowstic → Occulynx, Absol → Omenblade, Fletchinder → Talonflame, Braixen → Delphox]
+kalos_rival_route14_froakie 194 (33) [Meowstic → Occulynx, Absol → Omenblade, Fletchinder → Talonflame, Frogadier → Greninja]
 kalos_rival_santalune_chespin 187 (8) [Fletchling → Talonflame, Chespin → Chesnaught]
 kalos_rival_santalune_fennekin 187 (8) [Fletchling → Talonflame, Fennekin → Delphox]
 kalos_rival_santalune_froakie 187 (8) [Fletchling → Talonflame, Froakie → Greninja]
 kalos_shauna_1 186 (5) [Froakie → Greninja]
 kalos_shauna_2 186 (5) [Chespin → Chesnaught]
 kalos_shauna_3 186 (5) [Fennekin → Delphox]
+kalos_siebold_1 204 (65) [Clawitzer → Salvoclaw, Gyarados → Typhonarch, Starmie → Stellamir, Barbaracle → Reefcolony]
 kalos_sycamore_1 187 (10) [Bulbasaur → Venusaur, Charmander → Charizard, Squirtle → Blastoise]
 kalos_tierno_1 186 (6) [Corphish → Crayronin]
 kalos_tierno_2 188 (12) [Corphish → Crayronin, Pancham → Pangoro]
+kalos_valerie_1 197 (42) [Mawile → Deceivore, Mr. Mime → Mimestro, Sylveon → Faerieon]
 kalos_viola_1 188 (12) [Surskit → Ocellwing]
+kalos_wikstrom_1 204 (65) [Klefki → Chatelkey, Probopass → Lodestarch, Scizor → Guillotyne]
+kalos_wulfric_1 202 (59) [Abomasnow → Glaciarbor, Cryogonal → Cryohedron, Avalugg → Glacitadel]
 === region Alola
 levels 2 → 205, 58 → 224, 70 → 238
 caps 209 213 218 223 224 (own 15 27 39 54 58)
@@ -1432,18 +1451,42 @@ alola_hau_route_3_1 209 (14) [Pikachu → Raichu, Litten → Incineroar]
 alola_hau_route_3_2 209 (14) [Pikachu → Raichu, Popplio → Primarina]
 alola_hau_route_3_3 209 (14) [Pikachu → Raichu, Rowlet → Decidueye]
 alola_ilima_1 208 (10) [Yungoos → Gumshoos, Smeargle → Muralist]
+=== AnistarCity_Gym
+Anistar Gym, Kalos
+trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]
+=== CoumarineCity_Gym
+Coumarine Gym, Kalos
+trainers 2, 193 (own 29-30): kalos_gardener_flora 193 (29) [Skiploom → Jumpluff], kalos_hiker_sylvain 193 (30) [Sudowoodo → Mimicedar, Gogoat → Alpicorn]
 === CyllageCity_Gym
 Cyllage Gym, Kalos
 trainers 2, 190 (own 19-20): kalos_hiker_armand 190 (19) [Roggenrola → Gigalith, Binacle → Barbaracle], kalos_hiker_bruno 190 (20) [Onix → Ironwyrm]
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]
+=== GeosengeTown_FlareHQ
+Team Flare Secret HQ, Kalos
+trainers 4, 199-200 (own 48-50): kalos_bryony_1 200 (50) [Liepard → Umbrapard, Bisharp → Kingambit], kalos_celosia_1 200 (50) [Manectric → Fulmenhound, Drapion → Dreadpion], kalos_flare_grunt_hq_1 199 (48) [Liepard → Umbrapard, Manectric → Fulmenhound], kalos_flare_grunt_hq_2 199 (49) [Houndoom → Cerberhound, Golbat → Crobat]
+=== KalosPowerPlant
+Kalos Power Plant, Kalos
+trainers 2, 193 (own 27-28): kalos_flare_grunt_plant_1 193 (28) [Houndour → Cerberhound, Croagunk → Venomsensei], kalos_flare_grunt_plant_2 193 (28) [Scraggy → Brawlhood, Golbat → Crobat]
+=== LaverreCity_Gym
+Laverre Gym, Kalos
+trainers 2, 195-196 (own 36-37): kalos_lady_eleonore 196 (37) [Mr. Mime → Mimestro, Granbull → Mastiffang], kalos_lass_josette 195 (36) [Spritzee → Perfumelle, Floette → Florges]
+=== LumioseCity_LysandreLabs
+Lysandre Labs, Kalos
+trainers 2, 198 (own 45): kalos_flare_grunt_labs_1 198 (45) [Houndoom → Cerberhound, Scrafty → Brawlhood], kalos_flare_grunt_labs_2 198 (45) [Toxicroak → Venomsensei, Swalot → Gulpgorge]
+=== LumioseCity_PrismTowerGym
+Prism Tower, Kalos
+trainers 2, 194 (own 32-33): kalos_schoolboy_hugo 194 (33) [Magnemite → Magnezone, Helioptile → Coronafrill], kalos_schoolgirl_adele 194 (33) [Emolga → Nimbolga, Dedenne → Signalmus]
 === SantaluneCity_Gym
 Santalune Gym, Kalos
 trainers 2, 187 (own 7-8): kalos_bug_catcher_luc 187 (8) [Spewpa → Vivillon, Kakuna → Beedrill], kalos_lass_mireille 187 (8) [Ledyba → Coccinova, Surskit → Ocellwing]
 === ShalourCity_Gym
 Shalour Gym, Kalos
 trainers 2, 192-193 (own 26-27): kalos_battle_girl_ines 193 (27) [Meditite → Ascetrance, Mienfoo → Mienshifu], kalos_black_belt_lucien 192 (26) [Machop → Machamp]
+=== SnowbelleCity_Gym
+Snowbelle Gym, Kalos
+trainers 2, 200 (own 52-53): kalos_skier_agathe 200 (53) [Vanillish → Vanilluxe, Beartic → Beartundra], kalos_skier_basile 200 (53) [Abomasnow → Glaciarbor, Weavile → Rimeripper]
 === abandoned_ship_corridors_1f
 Abandoned Ship, Hoenn
 trainers 1, 147 (own 26): hoenn_charlie 147 (26) [Marill → Azumarill]
@@ -2287,10 +2330,42 @@ trainers 2, 190-191 (own 20-21): kalos_battle_girl_elodie 190 (20) [Mienfoo → 
 Route 12, Kalos
 grass 190-191 (own 20-22)
 trainers 3, 191 (own 21-22): kalos_lass_violette 191 (22) [Spritzee → Aromatisse, Floette → Florges], kalos_picnicker_hortense 191 (22) [Skiddo → Alpicorn, Bellsprout → Victreebel, Weepinbell → Victreebel], kalos_youngster_matthieu 191 (22) [Fletchinder → Talonflame, Pancham → Pangoro]
+=== kalos_route_13
+Route 13, Kalos
+grass 192-193 (own 26-28)
+trainers 3, 193 (own 27-28): kalos_backpacker_maelle 193 (28) [Trapinch → Flygon, Helioptile → Heliolisk], kalos_black_belt_romain 193 (28) [Machoke → Machamp, Mienfoo → Mienshifu], kalos_hiker_bastien 193 (28) [Hippopotas → Behemowdon, Krokorok → Krookodile]
+=== kalos_route_14
+Route 14, Kalos
+grass 193-194 (own 30-32)
+trainers 2, 194 (own 31-32): kalos_lass_celestine 194 (31) [Spritzee → Perfumelle, Swirlix → Soufflair], kalos_picnicker_odile 194 (32) [Weepinbell → Victreebel, Quagsire → Mirelord]
+=== kalos_route_15
+Route 15, Kalos
+grass 194-195 (own 33-35)
+trainers 3, 195 (own 34-35): kalos_hiker_ambroise 195 (35) [Graveler → Golem, Lairon → Aggron], kalos_lass_margot 195 (34) [Foongus → Sporemonarch], kalos_youngster_felix 195 (34) [Pawniard → Kingambit, Watchog → Beaconwatch]
+=== kalos_route_17
+Route 17, Kalos
+grass 195-196 (own 36-38)
+trainers 2, 196 (own 37-38): kalos_hiker_gaspard 196 (38) [Piloswine → Mamoswine, Bergmite → Avalugg], kalos_lass_neige 196 (38) [Vanillish → Vanilluxe, Snover → Glaciarbor]
+=== kalos_route_18
+Route 18, Kalos
+grass 197 (own 40-42)
+trainers 2, 197 (own 42-43): kalos_black_belt_leon 197 (43) [Gurdurr → Conkeldurr, Hariyama → Yokozan], kalos_hiker_firmin 197 (43) [Graveler → Golem, Lairon → Aggron]
+=== kalos_route_19
+Route 19, Kalos
+grass 197-198 (own 42-44)
+trainers 3, 198 (own 44-45): kalos_ace_trainer_rosalie 198 (45) [Gogoat → Alpicorn, Pyroar → Blazemonarch], kalos_fisherman_eloi 198 (45) [Whiscash → Namazuro], kalos_hiker_urbain 198 (45) [Gligar → Fangliscor, Quagsire → Mirelord]
 === kalos_route_2
 Route 2, Kalos
 grass 185-186 (own 2-4)
 trainers 1, 185 (own 3): kalos_youngster_milo 185 (3) [Bunnelby → Diggersby]
+=== kalos_route_20
+Route 20, Kalos
+grass 198 (own 44-46)
+trainers 2, 198 (own 45-46): kalos_hiker_thibaut 198 (46) [Sudowoodo → Mimicedar, Ursaring → Ursaluna], kalos_lady_honorine 198 (46) [Gourgeist → Lanternhusk]
+=== kalos_route_21
+Route 21, Kalos
+grass 199-200 (own 48-50)
+trainers 1, 199-200 (own 49-50): kalos_veteran_germain 200 (50) [Skarmory → Rapierwing, Gliscor → Fangliscor, Altaria → Nimbusong]
 === kalos_route_3
 Route 3, Kalos
 grass 186 (own 4-6)
@@ -2321,6 +2396,10 @@ trainers 5, 189 (own 14-16): kalos_fisherman_pierrick 189 (16) [Remoraid → Kra
 Route 9, Kalos
 grass 190 (own 17-19)
 trainers 4, 190 (own 17-18): kalos_backpacker_odile 190 (18) [Skiddo → Alpicorn, Zubat → Crobat, Mienfoo → Mienshifu], kalos_fisherman_loic 190 (18) [Barboach → Namazuro, Staryu → Stellamir], kalos_lass_clemence 190 (18) [Vulpix → Kitsunox, Spritzee → Aromatisse], kalos_youngster_basile 190 (18) [Fletchling → Talonflame, Pancham → Pangoro]
+=== kalos_victory_road
+Victory Road, Kalos
+grass 200-202 (own 50-58)
+trainers 3, 201 (own 55-56): kalos_ace_trainer_camille 201 (56) [Aromatisse → Perfumelle, Clawitzer → Salvoclaw, Pangoro → Bambrawler], kalos_ace_trainer_maxime 201 (56) [Tyrantrum → Despotitan, Aurorus → Borealosaur], kalos_veteran_clovis 201 (56) [Druddigon → Drudrakon, Bisharp → Kingambit]
 === kanto_victory_road_1f
 Victory Road, Kanto
 grass 83-92 (own 32-46)
@@ -2808,6 +2887,9 @@ trainers 3, 76-77 (own 22-24): kanto_channeler_angelica 76 (22) [Gastly → Geng
 Pokémon Tower, Kanto
 grass 71-78 (own 15-25)
 trainers 3, 76-79 (own 23-26): kanto_team_rocket_grunt_19 78 (25) [Zubat → Crobat, Zubat → Crobat, Golbat → Crobat], kanto_team_rocket_grunt_20 79 (26) [Koffing → Weezing, Drowzee → Hypno], kanto_team_rocket_grunt_21 76 (23) [Zubat → Crobat, Rattata → Raticate, Zubat → Crobat]
+=== pokemon_village
+Pokémon Village, Kalos
+grass 198-199 (own 46-48)
 === power_plant
 Power Plant, Kanto
 grass 76-85 (own 22-35)

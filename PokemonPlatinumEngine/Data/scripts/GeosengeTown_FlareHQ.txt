@@ -1,0 +1,62 @@
+# Team Flare's secret base under Geosenge Town (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): grunts and two
+# of the team's scientists, Celosia and Bryony, in the halls; Lysandre before the chamber of the ultimate weapon, battled
+# a second time; and in the chamber the Pokémon of life, Xerneas (X's; Y's Yveltal is not met), which he meant to drain
+# to power the weapon. Woken by the player, it stands up to battle; caught or not, the weapon fails without it, Team
+# Flare scatters, and the valley road south of Anistar City opens (VAR_KALOS_ROUTE_18 1). VAR_KALOS_STORY is
+# vaniville_town.txt's count: 28 becomes 29 here. Lysandre's team is Kalos's trainers.json's kalos_lysandre_2.
+#
+# The people: the grunts and the two scientists (trainers of the room), lysandre (FLAG_KALOS_HIDE_LYSANDRE_HQ once
+# beaten) and xerneas (FLAG_KALOS_HIDE_XERNEAS once it has been battled).
+
+
+script Lysandre
+  face lysandre player
+  speaker "Lysandre"
+  if var VAR_KALOS_STORY != 28 end
+  scene "Lysandre at the weapon"
+  say "You followed me even here. Then you will see it: the Pokémon of life, asleep, and the weapon that will drink it."
+  say "When it fires, everything I find ugly will be gone. I will not let a child stand in the way."
+  battle self as "kalos_lysandre_2"
+  say "Again... Is this the strength I wanted to save? Then perhaps the world was never mine to choose for."
+  say "Go to it, if you must. But it will not wake gently."
+  hide lysandre
+  setflag FLAG_KALOS_HIDE_LYSANDRE_HQ
+  defeat "kalos_flare_grunt_hq_1"
+  defeat "kalos_flare_grunt_hq_2"
+  defeat "kalos_celosia_1"
+  defeat "kalos_bryony_1"
+  endscene
+  end
+
+
+script Xerneas
+  if not flag FLAG_KALOS_HIDE_LYSANDRE_HQ goto Asleep
+  scene "Xerneas wakes"
+  face player self
+  letterbox on 0.4
+  effect burst 10 4
+  cry "Xerneas"
+  speaker none
+  text "The great Pokémon's horns glow with every colour at once!\nIt rises to face {player}!"
+  letterbox off 0.3
+  endscene
+  wildbattle "Xerneas" 50
+  setflag FLAG_KALOS_HIDE_XERNEAS
+  hide self
+  if result == 3 goto Caught
+  text "Xerneas bounds away into the dark, and the weapon's lights go out one by one."
+  goto Free
+label Caught
+  text "With Xerneas gone from its chamber, the weapon's lights go out one by one."
+label Free
+  setflag FLAG_KALOS_XERNEAS_MET
+  setvar VAR_KALOS_STORY 29
+  setvar VAR_KALOS_ROUTE_18 1
+  objective kalosWulfric
+  text "Team Flare's grunts flee up the steps. It's over."
+  warp "Kalos" 108 220 down
+  end
+label Asleep
+  text "A great Pokémon sleeps among the machines, its horns as still and grey as a dead tree."
+  end

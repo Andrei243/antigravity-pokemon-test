@@ -1,0 +1,35 @@
+{
+  // Victory Road (plan 23 · Z4): a map of its own, drawn by hand (tools/MapDraw/kalos/kalos_victory_road.txt), our
+  // words. The last cave, under the mountains between Route 21 and the Pokémon League: a great hall of rock pillars
+  // entered from the south and left by a mouth in the north onto the League's terrace, with Ace Trainers and the
+  // strongest wild Pokémon of Kalos. It plays Santalune Forest's song until plan 31 writes it a cave song of its own
+  "area": "kalos_victory_road",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "ace": {
+      "name": "Camille",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Camille: Victory Road is the last test before the League. I'm the test before the test!",
+        "dialogueAfter": "Ace Trainer Camille: You passed. Both, I'd say."
+      }
+    },
+    "ace_2": {
+      "name": "Maxime",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Maxime: Eight Badges? So do I. Let's see whose are shinier.",
+        "dialogueAfter": "Ace Trainer Maxime: Yours, clearly."
+      }
+    },
+    "veteran": {
+      "name": "Clovis",
+      "npcType": "Gentleman",
+      "trainer": {
+        "dialogueBefore": "Veteran Clovis: The League's door is just past me. Many have stood here; few walked on.",
+        "dialogueAfter": "Veteran Clovis: Walk on, then."
+      }
+    }
+  }
+}

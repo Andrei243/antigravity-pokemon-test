@@ -1,0 +1,30 @@
+{
+  "key": "anistar_city",
+  "index": 31,
+  "name": "Anistar City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ANISTAR",
+  "nightMusic": "ANISTAR",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 636, "z": 189, "to": "AnistarCity_Gym", "toWarp": 0 },
+    { "x": 615, "z": 198, "to": "AnistarCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 653, "z": 200, "to": "AnistarCity_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "astronomer", "looks": "gentleman", "movement": "look_north", "x": 651, "z": 221, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 624, "z": 210, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "" }
+  ],
+  "signs": [
+    { "x": 630, "z": 210, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

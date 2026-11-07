@@ -244,7 +244,18 @@ public static class Objectives
         (519, "kalosShalour", AtLeast("VAR_KALOS_STORY", 20), false),
         (520, "kalosKorrina", s => s.Var("VAR_KALOS_STORY") >= 21 || s.HasBadge(RegionDatabase.Kalos, "Rumble"), false),
         (521, "kalosMastery", AtLeast("VAR_KALOS_STORY", 22), false),
-        // What comes after the Key Stone is a later session's
+        // Plan 23 · Z4: Ramos's Plant Badge, the Power Plant, Clemont's Voltage Badge, Valerie's Fairy Badge, Olympia's
+        // Psychic Badge, Lysandre's laboratory, Team Flare's base under Geosenge Town, Wulfric's Iceberg Badge and the League
+        (522, "kalosRamos", s => s.Var("VAR_KALOS_STORY") >= 23 || s.HasBadge(RegionDatabase.Kalos, "Plant"), false),
+        (523, "kalosPowerPlant", AtLeast("VAR_KALOS_STORY", 24), false),
+        (524, "kalosClemont", s => s.Var("VAR_KALOS_STORY") >= 25 || s.HasBadge(RegionDatabase.Kalos, "Voltage"), false),
+        (525, "kalosValerie", s => s.Var("VAR_KALOS_STORY") >= 26 || s.HasBadge(RegionDatabase.Kalos, "Fairy"), false),
+        (526, "kalosOlympia", s => s.Var("VAR_KALOS_STORY") >= 27 || s.HasBadge(RegionDatabase.Kalos, "Psychic"), false),
+        (527, "kalosLabs", AtLeast("VAR_KALOS_STORY", 28), false),
+        (528, "kalosFlareHQ", AtLeast("VAR_KALOS_STORY", 29), false),
+        (529, "kalosWulfric", s => s.Var("VAR_KALOS_STORY") >= 30 || s.HasBadge(RegionDatabase.Kalos, "Iceberg"), false),
+        (530, "kalosLeague", s => s.Var("VAR_KALOS_STORY") >= 31 || s.Has("KalosHallOfFame"), false),
+        // What comes after the Hall of Fame (the flight to Alola, the post-game) leaves nothing pressing
         (599, "kalosFree", null, false));
     private static Objective[] Alola => Region(RegionDatabase.Alola,
         // Plan 23 · Z5: VAR_ALOLA_STORY, alola_route_1.txt's count, from the new home to Hau'oli City

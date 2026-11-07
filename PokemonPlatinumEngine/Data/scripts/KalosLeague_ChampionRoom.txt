@@ -1,0 +1,24 @@
+# The Champion's room of the Pokémon League (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Diantha, the
+# Champion, an actress, battles with a Gardevoir that Mega Evolves with her own Key Stone (kalos_diantha_1); beaten, she
+# takes the player through to the Hall of Fame (KalosLeague_HallOfFame.txt), FLAG_KALOS_DEFEATED_DIANTHA set.
+
+
+script Diantha
+  face diantha player
+  speaker "Diantha"
+  if flag FLAG_KALOS_DEFEATED_DIANTHA goto Won
+  scene "Diantha"
+  say "Welcome. I'm Diantha. You've been all over the news, {player}: the Trainer who stopped Team Flare."
+  say "I've played heroes on the screen. Today I want to meet a real one. Show me everything!"
+  battle self as "kalos_diantha_1"
+  say "Wonderful... That was the most thrilling battle of my life. Kalos has a new Champion."
+  say "Come, {player}. There's a room where every Champion is remembered. Yours is waiting."
+  setflag FLAG_KALOS_DEFEATED_DIANTHA
+  endscene
+  warp "KalosLeague_HallOfFame" 6 10 up
+  end
+label Won
+  say "The Hall of Fame is through here."
+  warp "KalosLeague_HallOfFame" 6 10 up
+  end

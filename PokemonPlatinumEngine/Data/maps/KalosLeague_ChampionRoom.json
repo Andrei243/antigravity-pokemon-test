@@ -1,0 +1,103 @@
+{
+  "name": "KalosLeague_ChampionRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "hall": "Champion",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "KalosLeague_Hall",
+      "targetX": 10,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "diantha",
+      "name": "Diantha",
+      "npcType": "diantha",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Diantha"
+    }
+  ],
+  "wildEncounters": []
+}

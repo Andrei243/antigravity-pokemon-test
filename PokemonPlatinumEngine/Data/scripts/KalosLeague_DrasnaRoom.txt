@@ -1,0 +1,22 @@
+# Drasna's room of the Pokémon League (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md, "The mountain, Team
+# Flare and the League, drawn by hand"): one of the Elite Four's four doors, Dragon, its master a cheerful old woman. Her
+# team is Kalos's trainers.json's kalos_drasna_1; beaten, FLAG_KALOS_DEFEATED_DRASNA, and the
+# Champion's door opens once all four are (common.KalosLeagueFour).
+
+
+script Drasna
+  face drasna player
+  speaker "Drasna"
+  if flag FLAG_KALOS_DEFEATED_DRASNA goto Won
+  scene "Drasna"
+  say "Oh my, what a lovely young Trainer! I'm Drasna. Don't let my age fool you, dear."
+  say "My dragons are as fierce as ever. Shall we?"
+  battle self as "kalos_drasna_1"
+  say "Oh, wonderful! It's been an age since anyone made my dragons work so hard."
+  setflag FLAG_KALOS_DEFEATED_DRASNA
+  call KalosLeagueFour
+  endscene
+  end
+label Won
+  say "Off you go, dear. Give the others my love."
+  end

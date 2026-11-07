@@ -7,7 +7,8 @@
 #
 # The people: sina and dexio (FLAG_KALOS_HIDE_ASSISTANTS_LUMIOSE once their scene is over). The roads out of the city
 # wait for later sessions: VAR_KALOS_LUMIOSE_ROADS is 1 once Lysandre's café is heard (LumioseCity_LysandreCafe.txt),
-# which opens the road west to Route 5 (plan 23 · Z2, second part); the others keep turning the player back.
+# which opens the road west to Route 5 (plan 23 · Z2, second part), and 2 once the Power Plant is freed
+# (KalosPowerPlant.txt), which opens the road north to Route 14 (plan 23 · Z4); the others keep turning the player back.
 
 
 # A save from before this part of the story was written finds the people of Lumiose's part of the story as a new game does
@@ -16,6 +17,19 @@ script OnEnter
   # Plan 23 · Z2, second part: a game saved after Lysandre's café, before the road west was opened, finds it open
   if var VAR_KALOS_STORY < 12 end
   if var VAR_KALOS_LUMIOSE_ROADS == 0 setvar VAR_KALOS_LUMIOSE_ROADS 1
+  end
+
+
+# The Prism Tower's lift operator at the foot of its south face (plan 23 · Z4): the lift has no power until the Power
+# Plant is freed (KalosPowerPlant.txt, VAR_KALOS_STORY 24), then it takes the player up to Clemont's Gym
+script PrismTower
+  speaker "Lift Operator"
+  if var VAR_KALOS_STORY < 24 goto Dark
+  say "The power's back! Up you go: the Gym is at the very top of the tower."
+  warp "LumioseCity_PrismTowerGym" 6 16 up
+  end
+label Dark
+  say "Sorry, the lift has no power. The whole city's gone dark, and the tower with it."
   end
 
 

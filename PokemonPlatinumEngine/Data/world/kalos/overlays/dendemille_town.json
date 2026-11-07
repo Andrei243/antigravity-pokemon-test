@@ -1,0 +1,20 @@
+{
+  // Dendemille Town (plan 23 · Z4): drawn by hand, our words. A small town of millers at the edge of the cold, its north
+  // half under early snow, a Pokémon Center (with the Mart's counter inside) and a house on its road between Route 15 in
+  // the west and Route 17 in the east. It plays Vaniville's song until plan 31 writes it its own
+  "area": "dendemille_town",
+  "bgmTrack": "kalos/vaniville",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "doors": [
+    { "warp": 0, "map": "DendemilleTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "DendemilleTown_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "miller": { "name": "Miller", "npcType": "old_man", "still": true, "dialog": [ "The wind off the snowfields turns our mill all winter. East of town the road is snow from here to Anistar." ] },
+    "boy": { "name": "Boy", "npcType": "Youngster", "dialog": [ "A Trainer rode a Mamoswine through town last week! Nothing stops those, not even deep snow." ] }
+  },
+  "signs": {
+    "TownSign": "Dendemille Town\nA town of millers where the cold begins."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "KalosLeague_HallOfFame",
+  "displayName": "Hall of Fame",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "HallOfFame",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "#...........#",
+    "#....###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "KalosLeague_ChampionRoom",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "diantha_hof",
+      "name": "Diantha",
+      "npcType": "diantha",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "script": "DianthaWaits"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_15",
+  "index": 28,
+  "name": "Route 15",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_15",
+  "nightMusic": "ROUTE_15",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 416, "z": 204, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_FELIX" },
+    { "id": "lass", "looks": "lass", "movement": "look_north", "x": 432, "z": 209, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_MARGOT" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 460, "z": 204, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_AMBROISE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 468, "z": 201, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_15_SUPER_REPEL", "item": "Super Repel", "script": "" }
+  ],
+  "signs": [
+    { "x": 400, "z": 204, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Pawniard", "level": 33 },
+    { "species": "Murkrow", "level": 33 },
+    { "species": "Foongus", "level": 33 },
+    { "species": "Klefki", "level": 33 },
+    { "species": "Liepard", "level": 34 },
+    { "species": "Mightyena", "level": 34 },
+    { "species": "Watchog", "level": 34 },
+    { "species": "Lombre", "level": 34 },
+    { "species": "Floatzel", "level": 34 },
+    { "species": "Amoonguss", "level": 35 },
+    { "species": "Skorupi", "level": 35 },
+    { "species": "Pawniard", "level": 35 }
+  ],
+  "landRate": 20
+}

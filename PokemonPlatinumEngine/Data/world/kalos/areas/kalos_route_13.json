@@ -1,0 +1,46 @@
+{
+  "key": "kalos_route_13",
+  "index": 25,
+  "name": "Route 13",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_13",
+  "nightMusic": "ROUTE_13",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 288, "z": 392, "to": "KalosPowerPlant", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 270, "z": 405, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_BASTIEN" },
+    { "id": "backpacker", "looks": "backpacker", "movement": "look_west", "x": 263, "z": 428, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_MAELLE" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 273, "z": 400, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_ROMAIN" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 244, "z": 386, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_13_MAX_REPEL", "item": "Max Repel", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 292, "z": 450, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_13_HYPER_POTION", "item": "Hyper Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 273, "z": 382, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Trapinch", "level": 26 },
+    { "species": "Sandile", "level": 26 },
+    { "species": "Hippopotas", "level": 26 },
+    { "species": "Diglett", "level": 26 },
+    { "species": "Helioptile", "level": 27 },
+    { "species": "Dugtrio", "level": 27 },
+    { "species": "Slugma", "level": 27 },
+    { "species": "Trapinch", "level": 27 },
+    { "species": "Sandile", "level": 27 },
+    { "species": "Krokorok", "level": 28 },
+    { "species": "Gible", "level": 28 },
+    { "species": "Dugtrio", "level": 28 }
+  ],
+  "landRate": 20
+}
