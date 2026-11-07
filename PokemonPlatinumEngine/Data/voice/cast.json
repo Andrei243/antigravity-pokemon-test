@@ -312,6 +312,10 @@
       "note": "first spoken at LumioseCity_PrismTowerGym.txt(10)",
       "provisional": true
     },
+    "clifton": {
+      "note": "first spoken at cinnabar_island_pokemon_lab_lounge.txt(5)",
+      "provisional": true
+    },
     "clyde": {
       "note": "first spoken at castelia_city_3.txt(18)",
       "provisional": true
@@ -569,6 +573,10 @@
       }
     },
     "gardenia": {},
+    "garett": {
+      "note": "first spoken at cinnabar_island_pokemon_lab_experiment_room.txt(49)",
+      "provisional": true
+    },
     "ghetsis": {
       "note": "first spoken at giant_chasm_6.txt(22)",
       "provisional": true
@@ -631,6 +639,10 @@
     },
     "hau": {
       "note": "first spoken at iki_town.txt(50)",
+      "provisional": true
+    },
+    "head_coach": {
+      "note": "first spoken at common.txt(3532)",
       "provisional": true
     },
     "herbalist": {
@@ -1102,6 +1114,10 @@
     },
     "nikola": {
       "note": "first spoken at nimbasa_city_gym.txt(42)",
+      "provisional": true
+    },
+    "norma": {
+      "note": "first spoken at cinnabar_island_pokemon_lab_lounge.txt(27)",
       "provisional": true
     },
     "norman": {},
@@ -1828,6 +1844,7 @@
     "Clefairy": "clefairy",
     "Clemont": "clemont",
     "Clerk": "look:clerk",
+    "Clifton": "clifton",
     "Clyde": "clyde",
     "Collector": "collector",
     "Colress": "colress",
@@ -1900,6 +1917,7 @@
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
     "Gardenia": "gardenia",
+    "Garett": "garett",
     "Gate Keeper": "look:guard",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
@@ -1924,6 +1942,7 @@
     "Hapu": "hapu",
     "Harlequin": "harlequin",
     "Hau": "hau",
+    "Head Coach": "head_coach",
     "Herbalist": "herbalist",
     "Herdier": "herdier",
     "Hiker": "look:hiker",
@@ -2041,6 +2060,7 @@
     "Naoko": "naoko",
     "Neighbour": "neighbour",
     "Nikola": "nikola",
+    "Norma": "norma",
     "Norman": "norman",
     "Nugget Boy": "nugget_boy",
     "Nugget Man": "nugget_man",

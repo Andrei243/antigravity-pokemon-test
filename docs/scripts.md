@@ -315,7 +315,7 @@ Plan 06 · R12.
 
 | Command | |
 |---|---|
-| `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). A GBA game's trade gives each of the five conditions its own number and a sheen (`NpcTrade.Conditions`, `Sheen`: Fortree's `pluses`, plan 21 · H6, part b); Platinum's give all five one. |
+| `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. (Data/trades.json since plan 40 · GE2: every region's own trades, a person each; `wantsGender` makes a trade ask for a female or a male.) A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). A GBA game's trade gives each of the five conditions its own number and a sheen (`NpcTrade.Conditions`, `Sheen`: Fortree's `pluses`, plan 21 · H6, part b); Platinum's give all five one. |
 | `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written, and every Pokémon of the team that is no Egg wears the Sinnoh Champ Ribbon. The scene of it is `halloffame show` ("The Hall of Fame's end", below). |
 
 ### Poffins
@@ -902,6 +902,22 @@ another command. `{material}` says the last material named, in the language chos
 | `craft take "Soft Fluff" 3` | Takes exactly that many out: `RESULT` 1, or 0 and nothing taken with fewer. |
 | `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
 | `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
+| `craft tm` | Plan 39 · CR4, from a PC: looks into the kit on its TMs tab (the TM maker) and waits for it to be put away; `RESULT` 1, or 0 and nothing opened without the kit in the bag. `common.PC`'s modern branch offers it as TM MAKER once the kit is held. |
+
+### The training hall
+
+Plan 36 · TR2; `docs/mechanics/rulings.md`, "The training hall". A hall's people run common scripts (`common.TrainingCoach`,
+`common.TrainingClerk`; TR5 and TR8 add the keeper and the teacher), so a region's hall is a room, a way in and its people.
+One command, `train`; later sessions of plan 36 add words to it (`peak`, `tera`) and `power`, never another for the drills.
+`drill` and `reset` act on the Pokémon the last `choosepokemon` chose.
+
+| Command | What it does |
+|---|---|
+| `train open` | `RESULT` 1 once a Hall of Fame of any region has been entered (the hall's Champion's things: the stall, peak training, the teacher, the keeper), else 0. |
+| `train drill` | Opens the drill screen (`UI/TrainingScreen.cs`) on the Pokémon chosen and waits for it: `RESULT` the grade won and one (1 bronze, 2 silver, 3 gold), 0 when the screen was left before a drill or nobody fit was chosen (none, or an Egg). The effort and the records are the screen's. |
+| `train reset all` | Takes the chosen Pokémon's effort in all six stats to nought and reckons its stats at once: `RESULT` 1, or 0 when it had none. |
+| `train reset attack` | The same for one stat: `hp`, `attack`, `defense`, `spatk`, `spdef` or `speed`. |
+| `train prize` | Hands over the first prize the drills' records have earned and the coach hasn't (`Data/training.json`'s `drillPrizes`: each stat's first gold its vitamin, then every tenth gold a Bottle Cap and every fiftieth a Gold Bottle Cap once a Hall of Fame is entered) into the bag: `RESULT` 1 and `{item}` names it, or 0 when nothing is owed. The text and the fanfare are the script's; a loop hands over all of it. |
 
 ### Join Avenue
 

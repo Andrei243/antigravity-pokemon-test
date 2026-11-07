@@ -1,0 +1,24 @@
+# cerulean_city_house_3 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Old Man"
+  if flag FLAG_TRADED_FOR_ZYNX goto Done
+  ask "I've a fancy for a Poliwhirl, and a Jynx to give for it. Shall we trade?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade zynx
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_ZYNX
+  say "A Poliwhirl! Lovely. Do look after Zynx. She loves to dance."
+  end
+label NotWanted
+  say "Hmm? That's no Poliwhirl. It's a Poliwhirl I'd like."
+  end
+label Waiting
+  say "Another day, then. A Poliwhirl is what I'm waiting for."
+  end
+label Done
+  say "My Poliwhirl is swirling about happily. How is Zynx getting on with you?"
+  end

@@ -1,0 +1,24 @@
+# battle_frontier_lounge_6 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Beauty"
+  if flag FLAG_TRADED_FOR_MEOWOW goto Done
+  ask "I'd love a Skitty. I'd swap my Meowth for one. Would you?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade meowow
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MEOWOW
+  say "A Skitty! How lovely. Meowow is a bit of a snob, but a dear."
+  end
+label NotWanted
+  say "That isn't a Skitty. It's a Skitty I'm longing for."
+  end
+label Waiting
+  say "Oh. If you find a Skitty, please remember me."
+  end
+label Done
+  say "Skitty has charmed the whole lounge. I hope Meowow is just as charming."
+  end

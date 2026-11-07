@@ -19,7 +19,7 @@ namespace PokemonPlatinumEngine.Models;
 public sealed record NpcTrade(
     string Id, string Wants, string Gives, string Nickname, string TrainerName, int TrainerId, PlayerLook TrainerLook,
     uint Personality, string Item, int[] Ivs, Nature Nature, string Ability, Gender Gender, int Contest = 0, string? Language = null,
-    int[]? Conditions = null, int Sheen = 0)
+    int[]? Conditions = null, int Sheen = 0, string? Region = null, Gender? WantsGender = null)
 {
     /// <summary>Where a traded Pokémon was met: the original writes "Link trade" whatever the map (met location 2001).</summary>
     public const string MetBy = "a trade";
@@ -27,42 +27,15 @@ public sealed record NpcTrade(
 
 public static class NpcTrades
 {
-    // IVs in the table's order: HP, Attack, Defense, Speed, Sp. Atk, Sp. Def. The nature, ability and gender are what
-    // the fixed personality gives (Pokemon_InitWith: nature PID % 25, ability by bit 0, gender by the low byte)
-    public static readonly IReadOnlyList<NpcTrade> All = new[]
-    {
-        new NpcTrade("kazza", "Machop", "Abra", "Kazza", "Hilary", 25643, PlayerLook.Girl, 142, "Oran Berry",
-            new[] { 15, 15, 15, 20, 25, 25 }, Nature.Quiet, "Synchronize", Gender.Male),
-        new NpcTrade("charap", "Buizel", "Chatot", "Charap", "Norton", 44142, PlayerLook.Boy, 2151, "Leppa Berry",
-            new[] { 15, 20, 15, 25, 25, 15 }, Nature.Lonely, "Tangled Feet", Gender.Female, Contest: 20),
-        new NpcTrade("gaspar", "Medicham", "Haunter", "Gaspar", "Mindy", 19248, PlayerLook.Girl, 136, "Everstone",
-            new[] { 20, 25, 15, 25, 15, 15 }, Nature.Hasty, "Levitate", Gender.Male),
-        new NpcTrade("foppa", "Finneon", "Magikarp", "Foppa", "Meister", 53277, PlayerLook.Boy, 1116, "Lum Berry",
-            new[] { 15, 25, 15, 20, 25, 15 }, Nature.Mild, "Swift Swim", Gender.Female, Language: "German"),
-        // Emerald's INGAME_TRADE_PLUSLE (src/data/trade.h): the boy of Fortree City's first house wants a Volbeat.
-        // Its personality 0x6F gives a Hasty female with its first ability; the IVs are in the table's order, which
-        // is the one above. Emerald's Plusle holds Wood Mail, which the item table hasn't got: it holds Grass Mail
-        new NpcTrade("pluses", "Volbeat", "Plusle", "Pluses", "Roman", 73996, PlayerLook.Boy, 0x6F, "Grass Mail",
-            new[] { 4, 4, 4, 5, 5, 4 }, Nature.Hasty, "Plus", Gender.Female,
-            Conditions: new[] { 5, 5, 30, 5, 5 }, Sheen: 10),
-        // Emerald's INGAME_TRADE_HORSEA (plan 21 · H8, part d): the man of Pacifidlog Town's third house wants a Bagon.
-        // Its personality 0x7F gives a Brave male with its first ability. Emerald's Horsea holds Wave Mail, which the
-        // item table hasn't got: it holds Bubble Mail, the sea's
-        new NpcTrade("seasor", "Bagon", "Horsea", "Seasor", "Skylar", 46285, PlayerLook.Boy, 0x7F, "Bubble Mail",
-            new[] { 5, 4, 4, 4, 5, 4 }, Nature.Brave, "Swift Swim", Gender.Male,
-            Conditions: new[] { 5, 5, 5, 5, 30 }, Sheen: 10),
-        // Anville Town's collectors (plan 22 · U6, part d), trades of our own on the weekend crowd: the railway fan wants
-        // a Timburr, the girl who tried her first swap a Tympole. Their personalities (0x2A and 0x3B) give a Sassy
-        // Klink and a Careful Dwebble with their first abilities
-        new NpcTrade("cogs", "Timburr", "Klink", "Cogs", "Dmitri", 38511, PlayerLook.Boy, 0x2A, "Metal Coat",
-            new[] { 20, 20, 25, 15, 20, 15 }, Nature.Sassy, "Plus", Gender.Genderless),
-        new NpcTrade("shelly", "Tympole", "Dwebble", "Shelly", "Odette", 52690, PlayerLook.Girl, 0x3B, "Oran Berry",
-            new[] { 15, 20, 25, 15, 15, 20 }, Nature.Careful, "Sturdy", Gender.Female),
-        // Route 7's hiker (plan 22 · U7, part a): a Gigalith for an Emolga. Its personality 0x58 gives a Jolly female with
-        // its first ability
-        new NpcTrade("gigalith", "Emolga", "Gigalith", "Gigalith", "Reiner", 61243, PlayerLook.Boy, 0x58, "Hard Stone",
-            new[] { 20, 20, 15, 20, 15, 20 }, Nature.Jolly, "Sturdy", Gender.Female)
-    };
+    /// <summary>
+    /// Every trade people of the game make (plan 40 · GE2), read from <c>trades.json</c>: Platinum's four, FireRed's nine,
+    /// Emerald's four, HeartGold's six with a person and Black 2's six, written by <c>tools/DataImporter -- --trades</c>
+    /// from the decompilations' tables (numbers and names, no text), and the rows of our own the importer adds
+    /// (<c>Overrides/trades.json</c>). IVs are in the table's order: HP, Attack, Defense, Speed, Sp. Atk, Sp. Def.
+    /// </summary>
+    public static IReadOnlyList<NpcTrade> All { get; } = GameDataFiles.Load<List<NpcTrade>>(FileName);
+
+    public const string FileName = "trades.json";
 
     public static NpcTrade? Get(string id) => All.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase));
 
@@ -116,6 +89,8 @@ public static class NpcTrades
         var given = party.Members[slot];
         // An Egg is no species anyone asks for (GetPartyMonSpecies reads nothing from one; plan 06 · R15)
         if (given.IsEgg || given.Species.Name != trade.Wants) return null;
+        // HeartGold's girl in Blackthorn wants a female Dragonair, and takes no male one
+        if (trade.WantsGender is { } wanted && given.Gender != wanted) return null;
         var received = Make(trade, given.Level, today);
         party.Members[slot] = received;
         return received;

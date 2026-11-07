@@ -6140,7 +6140,29 @@
   "crafting": {
     "title": "TRUSA DE CREAȚIE",
     "tab": {
-      "materials": "MATERIALE"
+      "materials": "MATERIALE",
+      "machines": "TM-URI"
+    },
+    "hint": {
+      "make": "Creează",
+      "tab": "Filă"
+    },
+    "tm": {
+      "empty": "Niciun TM sau TR nu s-a aflat încă în rucsacul tău. Pe cele pe care le porți, și pe cele pe care le-ai folosit, le poți crea din nou aici.",
+      "money": "BANI",
+      "needs": "ARE NEVOIE DE",
+      "price": "Bani",
+      "power": "Putere {n}",
+      "noPower": "Fără daune",
+      "varies": "Putere variabilă",
+      "made": "Ai creat {name}, {move}!",
+      "why": {
+        "hm": "Un HM nu se creează niciodată.",
+        "unknown": "Acel disc n-a fost niciodată în rucsacul tău.",
+        "short": "Nu ai destul {name}.",
+        "money": "Nu ai destui bani.",
+        "full": "Rucsacul tău nu mai poate ține încă unul."
+      }
     },
     "kinds": "{n} FELURI",
     "has": "×{count}  din {limit}",
@@ -6274,6 +6296,54 @@
       "shedinja": "Shedinja nu are HP de antrenat.",
       "limit": "{stat} nu mai poate primi efort.",
       "full": "Acest Pokémon nu mai poate primi efort în total."
+    },
+    "title": "ANTRENAMENT",
+    "chooseStat": "Alege o statistică de antrenat.",
+    "free": "Exercițiile sunt gratuite, de câte ori vrei. Efortul contează imediat.",
+    "level": "Nv. {level}",
+    "effort": "EFORT",
+    "effortInAll": "ÎN TOTAL",
+    "ofMost": "{n} / {most}",
+    "best": "RECORD {score}",
+    "noBest": "NEANTRENAT ÎNCĂ",
+    "start": "Start",
+    "trains": "Antrenează {stat}",
+    "seconds": "{n} SECUNDE",
+    "from": "de la {score}",
+    "gives": "+{n} efort",
+    "score": "SCOR {score}",
+    "go": "START!",
+    "miss": "RATAT",
+    "beat": "RITM",
+    "pace": "VITEZĂ",
+    "stamina": "REZISTENȚĂ",
+    "streak": "ȘIR {n}",
+    "hurdles": "OBSTACOLE {n} / {of}",
+    "distance": "{n} m parcurși",
+    "gain": "+{n} efort la {stat}!",
+    "noGain": "Nu mai încape efort la {stat}.",
+    "newBest": "RECORD NOU!",
+    "valueRose": "{before} la {after}",
+    "drill": {
+      "throw": "ARUNCAREA",
+      "shot": "LOVITURA DE ENERGIE",
+      "guard": "GARDA",
+      "shield": "SCUTUL",
+      "sprint": "SPRINTUL",
+      "run": "ALERGAREA LUNGĂ"
+    },
+    "howTo": {
+      "throw": "O țintă alunecă de-a lungul peretelui din spate și se micșorează pe măsură ce trece exercițiul. Mută ținta cu Stânga și Dreapta și apasă {KEY:confirm} ca să arunci. Mijlocul aduce 3, inelul albastru 2, panoul 1.",
+      "shot": "O țintă alunecă de-a lungul peretelui din spate și se micșorează pe măsură ce trece exercițiul. Mută ținta cu Stânga și Dreapta și apasă {KEY:confirm} ca să tragi o lovitură de energie. Mijlocul aduce 3, inelul albastru 2, panoul 1.",
+      "guard": "Bile cad pe trei culoare. Treci de pe un culoar pe altul cu Stânga și Dreapta și apasă {KEY:confirm} ca să ridici garda când sosește o bilă. La timp aduce 2, puțin alături 1; o bilă scăpată te amețește o clipă.",
+      "shield": "Bile de energie cad pe trei culoare, mai repede decât la gardă. Treci de pe un culoar pe altul cu Stânga și Dreapta și apasă {KEY:confirm} ca să ridici scutul când sosește una. La timp aduce 2, puțin alături 1; una scăpată te amețește.",
+      "sprint": "Apasă {KEY:confirm} pe ritm ca să prinzi viteză; o apăsare în afara ritmului pierde din ea. Ține apăsat ca să sari un obstacol. Cu cât alergi mai departe și sari mai multe obstacole, cu atât scorul e mai mare.",
+      "run": "O alergare lungă pe un ritm mai rar. Apasă {KEY:confirm} pe ritm ca să ții viteza și ține apăsat ca să sari un obstacol. Rezistența scade pe drum, și mai repede la fiecare împiedicare: fără ea nu mai poți decât să te târăști."
+    },
+    "grade": {
+      "bronze": "BRONZ",
+      "silver": "ARGINT",
+      "gold": "AUR"
     }
   }
 }

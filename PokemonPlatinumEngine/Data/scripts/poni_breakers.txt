@@ -23,27 +23,23 @@ script AltarGuard
 
 
 script TapuFini
-  if not flag AlolaHallOfFame goto Watches
-  # Its beat (plan 29 · LS, wave 91): the bars, the camera on the guardian and the lens closing as it rises shaking
-  scene "Tapu Fini in the Ruins of Hope"
   face self player
   speaker none
+  scene "Tapu Fini rises"
   letterbox on 0.4
-  camera follow self 0.8
+  camera pan 144 94 1.2
   camera zoom 1.4 0.8
+  effect geyser 144 94 wait
   cry "Tapu Fini"
-  shake self 6
   text "Tapu Fini's mist rolled over the ruins, and it rose from the water."
   camera release 0.4
+  letterbox off 0.3
   endscene
+  if flag AlolaHallOfFame goto Fight
+  text "It watched {player} for a moment, and then let the mist close again."
+  end
+label Fight
   wildbattle "Tapu Fini" 60 nofleeing
   setflag FLAG_ALOLA_TAPU_FINI_DONE
   hide self
-  end
-label Watches
-  face self player
-  speaker none
-  cry "Tapu Fini"
-  text "Tapu Fini's mist rolled over the ruins, and it rose from the water."
-  text "It watched {player} for a moment, and then let the mist close again."
   end

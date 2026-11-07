@@ -66,3 +66,27 @@ label Stopped
 label Turning
   say "Every dial's back in the green. The generator's turning as sweetly as ever!"
   end
+
+
+# Plan 40 · GE2: the trades of the regions' own people (trades.json)
+script TradeEngineer
+  speaker "Engineer"
+  if flag FLAG_TRADED_FOR_MAGGIE goto Done
+  ask "I'm after a Dugtrio. I'd swap my Magneton for one. Care to trade?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade maggie
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MAGGIE
+  say "A Dugtrio! Thank you. Maggie hums with power, so keep her away from the machinery."
+  end
+label NotWanted
+  say "That isn't a Dugtrio. A Dugtrio is what I need."
+  end
+label Waiting
+  say "Oh well. If you catch a Dugtrio, let me know."
+  end
+label Done
+  say "Dugtrio digs the best tunnels for the cables. How is Maggie?"
+  end

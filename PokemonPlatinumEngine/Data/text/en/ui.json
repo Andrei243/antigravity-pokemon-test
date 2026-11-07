@@ -2619,7 +2619,25 @@
   },
   "crafting": {
     "title": "CRAFTING KIT",
-    "tab": { "materials": "MATERIALS" },
+    "tab": { "materials": "MATERIALS", "machines": "TMS" },
+    "hint": { "make": "Make", "tab": "Tab" },
+    "tm": {
+      "empty": "No TM or TR has been in your bag yet. Any you carry, and any you use up, can be made here again.",
+      "money": "MONEY",
+      "needs": "IT TAKES",
+      "price": "Money",
+      "power": "Power {n}",
+      "noPower": "No damage",
+      "varies": "Power varies",
+      "made": "Made {name}, {move}!",
+      "why": {
+        "hm": "An HM is never made.",
+        "unknown": "That machine has never been in your bag.",
+        "short": "Not enough {name}.",
+        "money": "Not enough money.",
+        "full": "Your bag can't hold another."
+      }
+    },
     "kinds": "{n} KINDS",
     "has": "×{count}  of {limit}",
     "worth": "Worth {money} each",
@@ -5940,6 +5958,54 @@
       "shedinja": "Shedinja has no HP to train.",
       "limit": "{stat} can't take any more effort.",
       "full": "This Pokémon can't take any more effort in all."
+    },
+    "title": "TRAINING",
+    "chooseStat": "Choose a stat to train.",
+    "free": "Drills are free, and as often as you like. Effort counts at once.",
+    "level": "Lv. {level}",
+    "effort": "EFFORT",
+    "effortInAll": "IN ALL",
+    "ofMost": "{n} / {most}",
+    "best": "BEST {score}",
+    "noBest": "NOT TRAINED YET",
+    "start": "Start",
+    "trains": "Trains {stat}",
+    "seconds": "{n} SECONDS",
+    "from": "from {score}",
+    "gives": "+{n} effort",
+    "score": "SCORE {score}",
+    "go": "GO!",
+    "miss": "MISS",
+    "beat": "BEAT",
+    "pace": "PACE",
+    "stamina": "STAMINA",
+    "streak": "STREAK {n}",
+    "hurdles": "HURDLES {n} / {of}",
+    "distance": "{n} m run",
+    "gain": "+{n} effort in {stat}!",
+    "noGain": "No more effort fits in {stat}.",
+    "newBest": "NEW BEST!",
+    "valueRose": "{before} to {after}",
+    "drill": {
+      "throw": "THE THROW",
+      "shot": "THE ENERGY SHOT",
+      "guard": "THE GUARD",
+      "shield": "THE SHIELD",
+      "sprint": "THE SPRINT",
+      "run": "THE LONG RUN"
+    },
+    "howTo": {
+      "throw": "A target slides along the back wall and grows smaller as the drill goes on. Move the aim with Left and Right, and press {KEY:confirm} to throw. The middle scores 3, the blue ring 2, the board 1.",
+      "shot": "A target slides along the back wall and grows smaller as the drill goes on. Move the aim with Left and Right, and press {KEY:confirm} to fire a shot of energy. The middle scores 3, the blue ring 2, the board 1.",
+      "guard": "Pellets come down three lanes. Step from lane to lane with Left and Right, and press {KEY:confirm} to raise the guard as a pellet arrives. On time scores 2, a little off 1; a pellet let through stuns you for a moment.",
+      "shield": "Pellets of energy come down three lanes, faster than in the guard. Step from lane to lane with Left and Right, and press {KEY:confirm} to raise the shield as one arrives. On time scores 2, a little off 1; one let through stuns you.",
+      "sprint": "Press {KEY:confirm} on the beat to build up pace; a press off the beat loses some. Hold it down to jump a hurdle. The further you run, and the more hurdles you clear, the higher the score.",
+      "run": "A long run on a slower beat. Press {KEY:confirm} on the beat to keep the pace, and hold it down to jump a hurdle. Stamina runs down as you go, and faster with every stumble: with none left you can only crawl."
+    },
+    "grade": {
+      "bronze": "BRONZE",
+      "silver": "SILVER",
+      "gold": "GOLD"
     }
   }
 }

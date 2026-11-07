@@ -143,7 +143,9 @@ public enum GameState
     /// <summary>The Global Link counter: the online server's friend code, link codes and a trade room (plan 07 · O5, O7).</summary>
     GlobalLink,
     /// <summary>The crafting kit looked into, from the bag, the item button or a script's <c>craft open</c> (plan 39 · CR1).</summary>
-    Crafting
+    Crafting,
+    /// <summary>The effort drills, opened by a coach's <c>train drill</c> on the Pokémon chosen (plan 36 · TR2).</summary>
+    Training
 }
 
 public partial class GameEngine
@@ -448,6 +450,7 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Training.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
         LoadFrontier(null);
@@ -714,6 +717,7 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Training.Load(save.Training);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
@@ -760,6 +764,8 @@ public partial class GameEngine
                 flow.Bag.AddItem(itemDef, itData.Quantity);
             }
         }
+        // The machines had before (plan 39 · CR4); those still in the bag were noted as they were added
+        flow.Bag.NoteMachinesHad(save.MachinesHad);
         foreach (var (pocketName, orderName) in save.BagOrder)
             if (Enum.TryParse<ItemPocket>(pocketName, out var orderedPocket) && Enum.TryParse<BagOrder>(orderName, out var order)) flow.Bag.SetOrder(orderedPocket, order);
 
@@ -928,6 +934,8 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
+            Training = flow.Training.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
@@ -1594,6 +1602,9 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 UpdateCrafting(dt);
+                break;
+            case GameState.Training:
+                UpdateTraining(dt);
                 break;
             case GameState.Mining:
                 UpdateMining(dt);
@@ -3350,6 +3361,9 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Training:
+                flow.TrainingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
                 flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);

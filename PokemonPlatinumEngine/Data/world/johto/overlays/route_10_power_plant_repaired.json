@@ -46,9 +46,7 @@
     "r10r0201_gsassistantm_4": {
       "name": "Engineer",
       "still": true,
-      "dialog": [
-        "There's a radio tower in Lavender Town now. Every song it sends out runs on the power we make here."
-      ]
+      "script": "TradeEngineer"
     }
   }
 }

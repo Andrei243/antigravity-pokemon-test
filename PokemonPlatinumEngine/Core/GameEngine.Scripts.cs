@@ -1283,7 +1283,11 @@ public partial class GameEngine
                     break;
                 // The crafting kit looked into (plan 39 · CR1)
                 case ScriptScreen.Crafting:
-                    game.OpenCrafting(fromBag: false);
+                    game.OpenCrafting(fromBag: false, atMaker: counter == "tm");
+                    break;
+                // A drill on the Pokémon the coach's script chose (plan 36 · TR2)
+                case ScriptScreen.Training when int.TryParse(counter, out int trainee):
+                    game.OpenTraining(trainee);
                     break;
                 // Cameron's photo album (plan 20, part q)
                 case ScriptScreen.PhotoAlbum:
@@ -1640,6 +1644,7 @@ public partial class GameEngine
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
         public CraftingState Crafting => game.flow.Crafting;
+        public TrainingRecords Training => game.flow.Training;
         public PhotoAlbum? Photos => game.flow.Photos;
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

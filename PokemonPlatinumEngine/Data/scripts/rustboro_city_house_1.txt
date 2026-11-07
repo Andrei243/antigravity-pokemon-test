@@ -1,0 +1,24 @@
+# rustboro_city_house_1 (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Boy"
+  if flag FLAG_TRADED_FOR_DOTS goto Done
+  ask "I'd give a Seedot for a Ralts. Would you trade one with me?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade dots
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_DOTS
+  say "A Ralts! Thank you. Dots is a bit of a sleepyhead, so be gentle."
+  end
+label NotWanted
+  say "That isn't a Ralts. I'm only after a Ralts."
+  end
+label Waiting
+  say "All right. If you ever catch a Ralts, come and see me."
+  end
+label Done
+  say "Ralts feels what I feel, and I love it. How is Dots?"
+  end

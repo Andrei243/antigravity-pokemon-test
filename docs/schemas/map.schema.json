@@ -603,7 +603,9 @@
               "ShipEngine",
               "ShipCabin",
               "PokeblockFeeder",
-              "Workbench"
+              "Workbench",
+              "DrillTarget",
+              "TrainingMat"
             ]
           },
           "x": {

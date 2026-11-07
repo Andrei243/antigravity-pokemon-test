@@ -25,14 +25,15 @@ script Legend
   face self player
   speaker none
   scene "The legendary of the sun"
-  # Its beat (plan 29 · LS, wave 91): the bars, the camera on the lion and the lens closing, the dais shaking under it
   letterbox on 0.4
-  camera follow self 0.8
+  camera pan 32 14 1.2
   camera zoom 1.4 0.8
-  text "The light on the dais gathered into a great white shape: a lion of the sun, its mane ablaze!"
-  shake self 6
+  effect burst 32 14 wait
   cry "Solgaleo"
+  text "The light on the dais gathered into a great white shape: a lion of the sun, its mane ablaze!"
   camera release 0.4
+  letterbox off 0.3
+  endscene
   wildbattle "Solgaleo" 55 nofleeing
   setflag FLAG_ALOLA_ALTAR_DONE
   hide self
@@ -46,5 +47,4 @@ script Legend
   setflag FLAG_ALOLA_LANAKILA_OPEN
   setvar VAR_ALOLA_STORY 52
   objective alolaLanakila
-  endscene
   end

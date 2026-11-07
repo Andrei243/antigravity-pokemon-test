@@ -57,6 +57,12 @@ internal static class PropModels
             WorkshopArt.Build(kit, p, map);
             return;
         }
+        // The training hall's targets and mats (plan 36 · TR2)
+        if (TrainingArt.Builds(p))
+        {
+            TrainingArt.Build(kit, p, map);
+            return;
+        }
         // A secret base's decorations (plan 21 · H10)
         if (DecorationArt.Builds(p))
         {

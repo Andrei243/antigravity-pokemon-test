@@ -48,9 +48,7 @@
     "t03pc0101_gsmiddleman1": {
       "name": "Man",
       "still": true,
-      "dialog": [
-        "I came from Johto to see the museum. The fossils were worth the journey."
-      ]
+      "script": "Trade"
     },
     "t03pc0101_gswoman1": {
       "name": "Woman",

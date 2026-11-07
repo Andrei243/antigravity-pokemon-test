@@ -3,6 +3,6 @@
   "area": "unova_route_15_2",
   "bgmTrack": "unova/route13",
   "people": {
-    "0": { "name": "Scientist", "dialog": [ "I watch the canyon's rocks shift over the years. Very slowly. Very, very slowly." ] }
+    "0": { "name": "Scientist", "script": "Trade" }
   }
 }

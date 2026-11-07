@@ -5,16 +5,15 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Region | Pokédex | Species | Had | Owed |
 |---|---|---:|---:|---:|
 | Sinnoh | `extended-sinnoh` | 210 | 210 | 0 |
-| Kanto | `kanto` | 151 | 128 | 23 |
+| Kanto | `kanto` | 151 | 132 | 19 |
 | Johto | `updated-johto` | 256 | 218 | 38 |
 | Hoenn | `hoenn` | 202 | 187 | 15 |
-| Unova | `updated-unova` | 301 | 248 | 53 |
+| Unova | `updated-unova` | 301 | 250 | 51 |
 
 Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (76 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
 
 ## Kanto
 
-- **GE2: FireRed's own trades**: Farfetch'd, Lickitung, Mr. Mime, Jynx
 - **GE3: FireRed's Game Corner prizes**: Porygon
 - **GE3: LeafGreen's, in its own places**: Sandshrew, Sandslash, Vulpix, Ninetales, Bellsprout, Weepinbell, Victreebel, Slowpoke, Slowbro, Staryu, Starmie, Magmar, Pinsir
 - **GE3: a Linking Cord in Kanto**: Alakazam, Machamp, Golem, Gengar
@@ -47,7 +46,6 @@ Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a 
 
 ## Unova
 
-- **GE2: Black 2's own trades**: Petilil, Lilligant
 - **GE3: Black 2's gift**: Zorua, Zoroark
 - **GE3: Black 2's gift and grass**: Eevee, Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon
 - **GE3: Black 2's grass, which the import has no place for**: Buneary, Lopunny

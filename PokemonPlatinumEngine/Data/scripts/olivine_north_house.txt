@@ -1,0 +1,24 @@
+# olivine_north_house (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Fisherman"
+  if flag FLAG_TRADED_FOR_BILLY goto Done
+  ask "I'd give a good Voltorb for a Krabby. How about it?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade billy
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_BILLY
+  say "A Krabby! Thanks. Billy rolls fast, so keep an eye on him."
+  end
+label NotWanted
+  say "That isn't a Krabby. I'm after a Krabby."
+  end
+label Waiting
+  say "Not now? Fine. Come back if you catch a Krabby."
+  end
+label Done
+  say "My Krabby catches more fish than I do. How is Billy?"
+  end

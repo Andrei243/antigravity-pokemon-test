@@ -1,0 +1,36 @@
+[
+  {
+    "id": "cogs",
+    "wants": "Timburr",
+    "gives": "Klink",
+    "nickname": "Cogs",
+    "trainerName": "Dmitri",
+    "trainerId": 38511,
+    "trainerLook": "Boy",
+    "personality": 22,
+    "item": "Metal Coat",
+    "ivs": [20, 20, 25, 15, 20, 15],
+    "nature": "Sassy",
+    "ability": "Plus",
+    "gender": "Genderless",
+    "contest": 0,
+    "region": "Unova"
+  },
+  {
+    "id": "shelly",
+    "wants": "Tympole",
+    "gives": "Dwebble",
+    "nickname": "Shelly",
+    "trainerName": "Odette",
+    "trainerId": 52690,
+    "trainerLook": "Girl",
+    "personality": 48,
+    "item": "Oran Berry",
+    "ivs": [15, 20, 25, 15, 15, 20],
+    "nature": "Careful",
+    "ability": "Sturdy",
+    "gender": "Female",
+    "contest": 0,
+    "region": "Unova"
+  }
+]

@@ -21,9 +21,7 @@
     "t25r1005_gsbigman": {
       "name": "Man",
       "still": true,
-      "dialog": [
-        "I've bought every TM on this floor. Now I need more Pokémon to teach them to!"
-      ]
+      "script": "Trade"
     },
     "t25r1005_gsgirl3": {
       "name": "Girl",

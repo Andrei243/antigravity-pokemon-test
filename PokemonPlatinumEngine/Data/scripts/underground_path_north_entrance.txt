@@ -1,0 +1,24 @@
+# underground_path_north_entrance (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Girl"
+  if flag FLAG_TRADED_FOR_MSNIDO goto Done
+  ask "Do you have a male Nidoran? I'd swap my female Nidoran for one."
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade msnido
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MSNIDO
+  say "A male Nidoran! Thank you. Please be kind to Ms. Nido."
+  end
+label NotWanted
+  say "That isn't a male Nidoran. It's a male Nidoran I want."
+  end
+label Waiting
+  say "Oh. Come back if you ever catch a male Nidoran."
+  end
+label Done
+  say "My new Nidoran follows me everywhere. I hope Ms. Nido is doing well."
+  end

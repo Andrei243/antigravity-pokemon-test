@@ -1,0 +1,24 @@
+# route_11_east_entrance_2f (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Boy"
+  if flag FLAG_TRADED_FOR_NINA goto Done
+  ask "Have you a Nidorino? I'd swap my Nidorina for one."
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade nina
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_NINA
+  say "A Nidorino! Thanks. Nina likes to be well fed, so mind that."
+  end
+label NotWanted
+  say "That isn't a Nidorino. I'm only after a Nidorino."
+  end
+label Waiting
+  say "Oh well. If you find a Nidorino, you know where I am."
+  end
+label Done
+  say "My Nidorino is the best. Is Nina behaving herself?"
+  end

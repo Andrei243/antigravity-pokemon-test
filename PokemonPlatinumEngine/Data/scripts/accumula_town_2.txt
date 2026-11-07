@@ -1,0 +1,44 @@
+# A house of Accumula Town (plan 40 · GE2: the Lass's two trades). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (accumula_town_2.s, read for the order). The Lass swaps her Ambipom for an Excadrill, and on the next
+# talk her Alakazam for a Hippowdon, once each (NpcTrades "ambidexter" and "beardy"). The original's battles with the
+# Pokémon she was given back are not built.
+
+
+script TradeLass
+  speaker "Lass"
+  if flag FLAG_TRADED_FOR_BEARDY goto AllDone
+  if flag FLAG_TRADED_FOR_AMBIDEXTER goto Second
+  ask "Do you have an Excadrill? I'd swap my Ambipom for one. Let's trade!"
+  if no goto Waiting1
+  choosepokemon
+  if result == 255 goto Waiting1
+  trade ambidexter
+  if result == 0 goto Wrong1
+  setflag FLAG_TRADED_FOR_AMBIDEXTER
+  say "Great! Ambidexter knows Nasty Plot. I'll make your Excadrill really strong."
+  end
+label Wrong1
+  say "That isn't an Excadrill. It's an Excadrill I want."
+  end
+label Waiting1
+  say "I see. That's your trusty partner. If you change your mind, let's trade."
+  end
+label Second
+  ask "Oh! Could you give me a Hippowdon, too? I'd trade you my Alakazam for it!"
+  if no goto Waiting2
+  choosepokemon
+  if result == 255 goto Waiting2
+  trade beardy
+  if result == 0 goto Wrong2
+  setflag FLAG_TRADED_FOR_BEARDY
+  say "Wonderful! Beardy knows Psycho Cut. I'll make your Hippowdon really tough."
+  end
+label Wrong2
+  say "That isn't a Hippowdon. It's a Hippowdon I want."
+  end
+label Waiting2
+  say "I see. Come back if you change your mind about swapping."
+  end
+label AllDone
+  say "I'm so glad we got to trade Pokémon! Ambidexter and Beardy are lucky to have you."
+  end
