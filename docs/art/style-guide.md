@@ -1346,6 +1346,23 @@ Plan 06 · R22's and R23's events (`Dynamaxed`, `DynamaxEnded`, `MaxMoveUsed` on
 | Bloom | threshold 0.86, strength 0.28 |
 | Grade | saturation 1.05, contrast 1.05, shadows × (0.94, 0.97, 1.06), highlights × (1.04, 1.01, 0.95), vignette 0.10 |
 
+## Open world (plan 32 · OW0's prototype, provisional)
+
+What the gate's prototype draws (the harness's `openproto` mode, nothing of it in the game), written down so the user judges named numbers. Plan 32 · OW8 writes this section properly before the open world's renderer is the game's; until the gate is passed every row here is a proposal.
+
+| Setting | Value |
+|---|---|
+| Units | one world unit is a metre (the grid's is a tile); +z is south, as the field's |
+| Scene | 1920×1080 in every preset's scene target (a step of half of High's 4K, two thirds of Medium's), the interface at 4K over it |
+| Camera | orbit behind the player: 5.5 m back, pitched 16° down at a point 1.35 m over the feet, vertical lens 50°; held off rock by its arm (a ray from the point back to the camera, stopped 0.3 m short of what it meets, never under 0.6 m); no straightening of upright things |
+| Ground | per-vertex cover in the field's own colours (lawn `104,190,98`, patches `120,200,102`, slopes over 25° `80,162,88`, path `222,204,160`, rock `150,140,128` and `112,104,98` under 63°, a cave's floor `128,108,88`, highland over 20 m `136,168,112`), under a grey grain of 32 texels repeating every 2 m (16 texels a metre), box-mapped by each face's axis, whole texels near (nearest) and blended between mip levels far |
+| Cover rules | a face steeper than 40° is rock; under the land's own surface by more than 0.8 m (a tunnel, a cavern, a cutting) rock, with walkable floor as a cave's floor; on a road path; over 20 m highland; lawn patches are blobs of a value noise 7 m across over 0.66 |
+| Levels | 0.5 m cells within 70 m of the camera, 2 m to 230 m, 4 m beyond; each chunk carries an apron a cell wide on its west and north, so two levels overlap where they meet instead of leaving the half cells each stops short of its border |
+| Trees | the battle's soft trees (`TreeModels`, `soft`), 1.35 to 1.8 times their size; meshes within 120 m of the camera, beyond that impostors: each kind rendered once from eight sides at 128×160, the side nearest the camera drawn as a card standing on the tree's foot, lit as the ground is |
+| Light | the battle's rig of the hour (`ArtLook.BattleRig`) with its fog drawn out to the horizon: from 110 m to 760 m, 78 % at the far edge; one shadow map 70 m across round the player |
+| People | plan 30 · FM0's grown stand-in (the chibi rig's skin stretched): the player 1.6 m, a person 1.65 m, live rigs with their faces and shells |
+| Pokémon | the battle model at its species' height in metres |
+
 ## Time of day
 
 The world follows the computer's clock, like the DS's real-time clock, with Platinum's five light states (pret/pokeplatinum, `src/rtc.c`). The options screen can fix a time. Each state has a light rig for the field and one for battles (`ArtLook.FieldRigFor`, `BattleRigFor`); within half an hour of a change the two rigs blend.

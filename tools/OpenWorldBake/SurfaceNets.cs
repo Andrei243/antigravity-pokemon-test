@@ -130,8 +130,20 @@ public static class SurfaceNets
                         sx += a.X + (b.X - a.X) * t; sy += a.Y + (b.Y - a.Y) * t; sz += a.Z + (b.Z - a.Z) * t;
                         count++;
                     }
+                    // Then pulled onto the surface along the field's slope, as SdfMesher pulls its own, and kept in its
+                    // cell: the mean of the crossings lies off a curved surface by a share of the cell, which two levels
+                    // of cell size do by different amounts, and their meeting showed as a step
+                    var p = new D3(sx / count, sy / count, sz / count);
+                    double e = cell * 0.1, fp = world.Field(p);
+                    var g = new D3(world.Field(p + new D3(e, 0, 0)) - world.Field(p - new D3(e, 0, 0)),
+                        world.Field(p + new D3(0, e, 0)) - world.Field(p - new D3(0, e, 0)),
+                        world.Field(p + new D3(0, 0, e)) - world.Field(p - new D3(0, 0, e))) * (1 / (2 * e));
+                    double g2 = D3.Dot(g, g);
+                    if (g2 > 1e-12) p -= g * (fp / g2);
+                    var lo3 = CornerAt(i, j, k); var hi3 = CornerAt(i + 1, j + 1, k + 1);
+                    p = new D3(Math.Clamp(p.X, lo3.X, hi3.X), Math.Clamp(p.Y, lo3.Y, hi3.Y), Math.Clamp(p.Z, lo3.Z, hi3.Z));
                     cellVertex[(k * ncy + j) * ncx + i] = positions.Count / 3;
-                    positions.Add(Mm.Of(sx / count)); positions.Add(Mm.Of(sy / count)); positions.Add(Mm.Of(sz / count));
+                    positions.Add(Mm.Of(p.X)); positions.Add(Mm.Of(p.Y)); positions.Add(Mm.Of(p.Z));
                 }
         int CellVertex(int i, int j, int k) => cellVertex[(k * ncy + j) * ncx + i];
         D3 V(int v) => new(Mm.Metres(positions[v * 3]), Mm.Metres(positions[v * 3 + 1]), Mm.Metres(positions[v * 3 + 2]));

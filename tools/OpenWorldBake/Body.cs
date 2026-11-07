@@ -254,7 +254,8 @@ public sealed class WalkRecord
             body.Step(mesh, dx / dist, dz / dist, target.Run);
             if (body.Pushes > 0) record.PushTicks++;
             if (body.Sliding) record.SlideTicks++;
-            var now = body.Pos.Metres;
+            var (ux, uy, uz) = body.Micrometres;
+            var now = new D3(ux / 1e6, uy / 1e6, uz / 1e6);
             double moved = Math.Sqrt((now.X - last.X) * (now.X - last.X) + (now.Z - last.Z) * (now.Z - last.Z));
             walked += moved;
             last = now;
