@@ -201,8 +201,8 @@ Each session: the rule in a GPU-free class with its tests, the areas opened thro
 - **Built** (2026-11-07; rulings, "Alola's loose ends"): Z7's three trials fight their totems as Z6's (Togedemaru with a
   Charjabug, Mimikyu with a Haunter, Kommo-o with a Hakamo-o; Vast Poni Canyon `callsForHelp`); Tapu Fini's and
   Solgaleo's meetings stand behind a staged beat (bars, `camera follow`, a zoom, `shake`), so `LegendaryScenesTests` holds
-  them with no `StillBare` entry; **Alola's Town Map** (`world/alola/townmap.json`): the four islands laid on one grid of 28
-  by 26 by the file's new `islands` (`RegionMap.Overworlds`, `CellOn`; the picture painted over the four maps, the
+  them with no `StillBare` entry; **Alola's Town Map** (`world/alola/townmap.json`): the four islands laid on one grid of 30
+  by 27 by the file's new `islands` (`RegionMap.Overworlds`, `CellOn`; the picture painted over the four maps, the
   habitats' grid the same through MapDraw's `island`), 209 blocks, Fly to the twelve Pokémon Centers and the player's
   house, Aether Paradise shown at Heahea City, the Pokédex's AREA page lighting every island (and `originalalola`'s
   words, the ALOLA tag and its diploma); **the Ride Pager on land** (the key item from Hala, `common.RidePager`, the

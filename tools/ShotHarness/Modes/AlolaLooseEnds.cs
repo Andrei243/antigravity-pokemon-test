@@ -35,6 +35,15 @@ partial class Harness
             for (int i = 0; i < most && !holds(); i++) Frames(1);
             if (!holds()) Console.WriteLine($"  !! never happened: {what}");
         }
+        // Reads every line on until the script and its text are done
+        void ReadOn(int most = 900)
+        {
+            for (int i = 0; i < most && (engine.ScriptRunning || game.Dialogue.IsActive || game.State == GameState.Dialogue); i++)
+            {
+                if (game.Dialogue.IsActive) { game.Dialogue.FinishLine(); Frames(2); game.Dialogue.Advance(); }
+                Frames(2);
+            }
+        }
         void To(int x, int y)
         {
             for (int i = 0; i < 80 && (screen.CursorX, screen.CursorY) != (x, y); i++) screen.Move(Math.Sign(x - screen.CursorX), Math.Sign(y - screen.CursorY));
@@ -55,9 +64,9 @@ partial class Harness
         At("Melemele", 238, 150, Direction.Up);
         game.OpenTownMap(TownMapMode.Item);
         Frames(30); Shot("wl00_alola_town_map"); Report("wl00_alola_town_map");
-        To(20, 21); Shot("wl01_akala_heahea"); Report("wl01_akala_heahea");
-        To(17, 10); Shot("wl02_ulaula_malie"); Report("wl02_ulaula_malie");
-        To(1, 24); Shot("wl03_poni_seafolk"); Report("wl03_poni_seafolk");
+        To(21, 21); Shot("wl01_akala_heahea"); Report("wl01_akala_heahea");
+        To(18, 10); Shot("wl02_ulaula_malie"); Report("wl02_ulaula_malie");
+        To(2, 24); Shot("wl03_poni_seafolk"); Report("wl03_poni_seafolk");
         screen.Cancel(); Frames(4);
         game.State = GameState.Overworld;
 
@@ -65,13 +74,14 @@ partial class Harness
         screen.Open(new TownMapState(map, story, map.CellOn("Melemele", 238, 150)), TownMapMode.Fly, new Pokemon(PokemonDatabase.Get("Charizard")!, 40));
         game.State = GameState.FlyMap;
         Frames(30);
-        To(17, 10); Shot("wl04_fly_to_malie"); Report("wl04_fly_to_malie");
+        To(18, 10); Shot("wl04_fly_to_malie"); Report("wl04_fly_to_malie");
         screen.Cancel(); Frames(4);
         game.State = GameState.Overworld;
 
         // ---- The Pokédex's AREA page: Wingull lives on several islands; Jangmo-o in Vast Poni Canyon on Poni
         var dex = game.Pokedex;
         var dexScreen = game.PokedexScreen;
+        dex.Enter(alola);
         foreach (string caught in new[] { "Wingull", "Jangmo-o", "Yungoos" }) dex.RegisterCaught(PokemonDatabase.Get(caught)!.DexNumber);
         foreach (int seen in dex.SeenSpecies) PokemonPlatinumEngine.Graphics.PokemonSprites.Request(PokemonDatabase.GetByDex(seen)!.Name);
         PokemonPlatinumEngine.Graphics.PokemonSprites.Flush(game.RenderContext);
@@ -101,12 +111,12 @@ partial class Harness
         story.Set(RidePager.StoutlandFlag);
         story.Set(RidePager.MudsdaleFlag);
         game.Bag.AddItem(ItemDatabase.Get(RidePager.Item)!, 1);
-        At("Melemele", 238, 150, Direction.Down);
+        At("Melemele", 290, 167, Direction.Down);
         game.UseFieldItem(ItemDatabase.Get(RidePager.Item)!);
         Until(() => engine.Choice.IsOpen, "the pager's question", 240);
         Frames(10); Shot("wl10_ride_pager_question");
         engine.Choice.Confirm();
-        Until(() => !engine.ScriptRunning, "the ride", 600);
+        ReadOn();
         Frames(30);
         Console.WriteLine($"alola: riding {game.Player.Steed} ({game.Player.Mode})");
         foreach (var (facing, suffix) in new[] { (Direction.Down, "down"), (Direction.Left, "left"), (Direction.Up, "up"), (Direction.Right, "right") })
@@ -142,7 +152,7 @@ partial class Harness
         for (int f = 0; f < 60 && !engine.ScriptRunning; f++) Frames(1);
         engine.Steering = null;
         Frames(20); Shot("wl15_tauros_charges");
-        Until(() => !engine.ScriptRunning, "the charge", 900);
+        ReadOn();
         Frames(30);
         Console.WriteLine($"alola: after the charge the rock is {(game.Map.NPCs.Contains(rock) ? "still there" : "gone")}, its flag {story.Has(rock.HiddenBy!)}");
         Shot("wl16_rock_broken");

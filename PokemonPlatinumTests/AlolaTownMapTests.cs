@@ -11,7 +11,7 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Alola's Town Map (plan 23, wave 91: the loose ends of Z5 to Z7). Each island is a matrix of its own, so the region's
 /// map lays all four onto one grid, each at the cell of its north-west chunk (<see cref="RegionMap.Overworlds"/>):
-/// Melemele at 0,0, Ula'ula at 16,0, Akala at 16,12 and Poni at 0,16. Fly reaches every island's Pokémon Centers, the
+/// Melemele at 0,0, Ula'ula at 17,0, Akala at 17,12 and Poni at 1,16. Fly reaches every island's Pokémon Centers, the
 /// picture paints the four, and the Pokédex's area page lights Akala's, Ula'ula's and Poni's places on the same grid.
 /// </summary>
 public class AlolaTownMapTests
@@ -75,9 +75,9 @@ public class AlolaTownMapTests
         foreach (string island in Islands)
             Assert.Contains(map.Blocks, b => IslandAt(b.X, b.Y)!.Value.Island.Name == island);
         // A tile of an island is shown at the island's cell plus its own chunk
-        Assert.Equal((16 + 4, 12 + 9), map.CellOn("Akala", 129, 309));
+        Assert.Equal((17 + 4, 12 + 9), map.CellOn("Akala", 129, 309));
         Assert.Equal((7, 4), map.CellOn("Melemele", 238, 158));
-        Assert.Equal("Heahea City", map.BlockAt(20, 21)!.Name);
+        Assert.Equal("Heahea City", map.BlockAt(21, 21)!.Name);
         Assert.Equal("Malie City", map.BlockAt(map.CellOn("Ulaula", 34, 331).X, map.CellOn("Ulaula", 34, 331).Y)!.Name);
         Assert.Equal("Seafolk Village", map.BlockAt(map.CellOn("Poni", 34, 243).X, map.CellOn("Poni", 34, 243).Y)!.Name);
     }
@@ -191,7 +191,7 @@ public class AlolaTownMapTests
         var picture = RegionMapArt.Paint(worlds, Town, (x, y) => habitats.LookAt(x, y) != ' ', new HashSet<string>());
         Assert.Equal((Town.View.Width * RegionMapArt.CellTexels, Town.View.Height * RegionMapArt.CellTexels), (picture.Width, picture.Height));
         // The middle of a town's cell on each island is land, not sea
-        foreach (var (key, cell) in new[] { ("iki_town", (7, 3)), ("heahea_city", (20, 21)), ("malie_city", (17, 10)), ("seafolk_village", (1, 24)) })
+        foreach (var (key, cell) in new[] { ("iki_town", (7, 3)), ("heahea_city", (21, 21)), ("malie_city", (18, 10)), ("seafolk_village", (2, 24)) })
         {
             int land = 0;
             for (int y = 0; y < RegionMapArt.CellTexels; y++)

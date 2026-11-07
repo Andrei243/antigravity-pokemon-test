@@ -9444,9 +9444,9 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   closing while it is shaken where it stands; Solgaleo forms on the Altar's dais the same way. The lines are those Z7
   wrote; before the Hall of Fame Tapu Fini only watches, as before, with no scene.
 - **One Town Map for four islands.** Each island is a matrix of its own (plan 23's Alola decisions), so the region's
-  map lays all four onto one grid of 28 cells by 26, each at the cell of its north-west chunk, as the islands lie in the
-  games: Melemele at 0,0 (its own 16 by 16, drawn small in the north-west), Ula'ula at 16,0, Akala at 16,12 and Poni at
-  0,16 (`townmap.json`'s new `islands`; `RegionMap.Overworlds`, `IsOverworld`, `CellOn`; docs/data-files.md, "The region
+  map lays all four onto one grid of 30 cells by 27 (a cell of sea round the land), each at the cell of its north-west chunk, as the islands lie in the
+  games: Melemele at 0,0 (its own 16 by 16, drawn small in the north-west), Ula'ula at 17,0, Akala at 17,12 and Poni at
+  1,16 (`townmap.json`'s new `islands`; `RegionMap.Overworlds`, `IsOverworld`, `CellOn`; docs/data-files.md, "The region
   map"). Plan 23 · Z5 had proposed an island to a tab of Fly's choice; one grid was chosen instead because the
   Pokédex's area page, the way come, Fly and the rooms' cells then need nothing of their own, the picture shows the
   islands where they lie, and a tab per island would have wanted a tab per island on the area page too. A block on
