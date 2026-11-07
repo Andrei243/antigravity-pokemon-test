@@ -37,6 +37,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> legends            after the Hall of Fame, part b: Stark Mountain with Mars, Jupiter, Buck and Charon's arrest, Heatran, a rematch at the League, Snowpoint Temple and Regigigas, the sailor's son, Fullmoon Island, Cresselia and the Lunar Wing
 //   dotnet run --project tools/ShotHarness -- <output dir> arcade             the Battle Arcade: its lobby and counter, three entered, the corridor, the game room, the game board counting down, running and stopped, its events one after another, a battle under one, the round's Battle Points, a challenge put down, the bonuses, the Arcade Star
 //   dotnet run --project tools/ShotHarness -- <output dir> townmap            the map of the region: the Town Map out of the bag, a town, a route, a landmark, the way come, the map from near, the hidden places, Fly's mode, a wall's map, the Pokédex's area page
+//   dotnet run --project tools/ShotHarness -- <output dir> explore             the field beyond the tables (plan 38, not part of "all"; EXPLORE_PART=unova runs one part): EX10, Unova's Town Map, Fly tab and Pokédex area page (ex00*)
 //   dotnet run --project tools/ShotHarness -- <output dir> epilogue           after the Hall of Fame, part c: Rotom in the Old Chateau's television, the elder's book, Dialga's and Palkia's pillars, the Battleground with its guests and their rematches, Cynthia before the ruins' painting
 //   dotnet run --project tools/ShotHarness -- <output dir> amity              Amity Square's walk: the gate, the counter's check for a team that may not and one that may, a Pokémon let out and the walk with it through every turn, its mood, a find, the ruins' huts, the man of the park, the goodbye, every species behind the player, a game saved on a walk taken up again
 //   dotnet run --project tools/ShotHarness -- <output dir> saves              no shots: saves of today's game (a new game, past the first chapter, surfing, on a bridge, a Safari Game, the girl) into <output dir>/saves, for the tests' corpus
@@ -190,6 +191,7 @@ if (mode == "castle") h.CastleMode();
 if (mode == "legends") h.LegendsMode();
 if (mode == "arcade") h.ArcadeMode();
 if (mode == "townmap") h.RegionMapMode();
+if (mode == "explore") h.ExploreMode();
 if (mode == "epilogue") h.EpilogueMode();
 if (mode == "amity") h.AmityMode();
 if (mode == "companions") h.CompanionsMode();

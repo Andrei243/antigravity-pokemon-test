@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- Unova has a Town Map: the one Aspertia City gives now opens in Unova, with a cell for every stretch of the region, its towns told of once you have been there and its routes from the start. Fly lists Unova beside the regions you have entered and lands at Aspertia City, Floccesy Town, Nimbasa City, Driftveil City, Mistralton City, Lentimas Town, Undella Town, Lacunosa Town, Opelucid City and Humilau City once you have been to each, and a Pokémon's area page in the Unova Pokédex draws Unova's map.
 - After the Hall of Fame, a Sky Trainer waits at the top of Sunyshore's Vista Lighthouse with one Sky Battle a day: only Pokémon that fly or float may take part, and moves that need the ground (Earthquake, Dig, Surf and the like) can't be used. Gengar, Pinsir and Shaymin are now among those that can't go up, and Pidove can.
 - The Battle Frontier's annex has a Battle Royal corner: join Brisa, Corin and Dalla in a four-way free-for-all where everyone is everyone's foe. Nobody may switch or use items, the battle ends as soon as anyone runs out, and you're placed by knock-outs and Pokémon left standing. It costs and gives nothing, so play as often as you like.
 - After the Hall of Fame, Routes 225 to 227 hide a rare alpha in their tall grass (about one meeting in a hundred): a Pokémon half again as big as its kind, with three perfect IVs, a move ahead of its level and a deeper cry. A caught alpha carries the Alpha mark.

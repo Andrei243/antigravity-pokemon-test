@@ -36,6 +36,13 @@ public sealed class RegionMapFile
     public List<RegionPlaceRecord> Landmarks { get; set; } = new();
     public List<RegionBlockRecord> Blocks { get; set; } = new();
     public List<RegionFlyRecord> Fly { get; set; } = new();
+
+    /// <summary>
+    /// Rooms and maps of the region that no warp leads into from the overworld (they are dived, surfed, flown or ridden to, or
+    /// stepped into by a script) with the cell each is shown at, <c>"x,y"</c>: <see cref="RegionMap.PlacesOf"/> takes these first, and the
+    /// rooms that open off them have the same cell (plan 38 · EX10).
+    /// </summary>
+    public Dictionary<string, string> Places { get; set; } = new();
 }
 
 /// <summary>A place the map leaves out until a variable of the story holds its number.</summary>
@@ -121,6 +128,7 @@ public sealed class RegionMap
 {
     private readonly Dictionary<(int X, int Y), RegionBlock> byCell = new();
     private readonly Dictionary<string, List<string>> arrivals = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, (int X, int Y)> placed = new(StringComparer.Ordinal);
 
     /// <summary>The region's folder under <c>Data/world</c>: "sinnoh".</summary>
     public string Region { get; }
@@ -145,6 +153,9 @@ public sealed class RegionMap
     public IReadOnlyList<RegionPlace> Landmarks { get; }
     public IReadOnlyList<RegionBlock> Blocks { get; }
     public IReadOnlyList<RegionFlySpot> FlySpots { get; }
+
+    /// <summary>The rooms and maps the file places itself (<see cref="RegionMapFile.Places"/>), by name.</summary>
+    public IReadOnlyDictionary<string, (int X, int Y)> Placed => placed;
 
     public RegionMap(string region, RegionMapFile file)
     {
@@ -199,6 +210,14 @@ public sealed class RegionMap
         }
         FlySpots = spots;
 
+        foreach (var (name, text) in file.Places)
+        {
+            var cell = ParseCells(text);
+            if (cell.Count != 1 || !InView(cell[0].X, cell[0].Y) || !byCell.ContainsKey(cell[0]))
+                throw new InvalidDataException($"The map of {region}: '{name}' is placed at '{text}', which is no block of its view.");
+            placed[name] = cell[0];
+        }
+
         foreach (var place in Areas.Concat(Landmarks))
             foreach (string where in place.Arrival)
             {
@@ -250,6 +269,8 @@ public sealed class RegionMap
         if (!byName.TryGetValue(Map, out var overworld)) return places;
 
         var queue = new Queue<(string Name, (int X, int Y) Cell)>();
+        // (the places the file names itself come first: the cell they are said to be at, whatever warp might lead there)
+        foreach (var (name, cell) in placed) queue.Enqueue((name, cell));
         foreach (var warp in overworld.Warps)
             if (warp.TargetMap != Map) queue.Enqueue((warp.TargetMap, CellOf(warp.SourceX, warp.SourceY)));
         while (queue.Count > 0)
