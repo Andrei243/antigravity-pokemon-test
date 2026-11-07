@@ -49,7 +49,12 @@ internal struct CharacterPose
     public Overworld.Stance Stance;
 }
 
-/// <summary>Bone numbers of every humanoid skeleton (L is the character's left, +X).</summary>
+/// <summary>
+/// Bone numbers of every humanoid skeleton (L is the character's left, +X). The chibi kit's are the first
+/// <see cref="Count"/>; the grown kit (plan 30 · FM4; style guide, "Grown characters") keeps them at their numbers and
+/// appends seven, <see cref="GrownCount"/> in all: the neck, the chest (the spine in two), the collarbones, the toes and
+/// the back of a long coat. The grown head hangs from the neck and each upper arm from its collarbone.
+/// </summary>
 internal static class HumanBones
 {
     public const int Root = 0, Hips = 1, Spine = 2, Head = 3;
@@ -57,6 +62,9 @@ internal static class HumanBones
     public const int ThighL = 10, ShinL = 11, FootL = 12, ThighR = 13, ShinR = 14, FootR = 15;
     public const int Hair = 16, Bag = 17, Skirt = 18;
     public const int Count = 19;
+
+    public const int Neck = 19, Chest = 20, ClavicleL = 21, ClavicleR = 22, ToeL = 23, ToeR = 24, CoatTail = 25;
+    public const int GrownCount = 26;
 }
 
 /// <summary>
@@ -136,9 +144,10 @@ internal sealed class CharacterRig
 /// <summary>
 /// Builds and caches the characters, one per character type: sculpted with the SDF kit, meshed (cached on disk by
 /// <see cref="SdfCache"/>) and skinned to a humanoid skeleton. The same rig is drawn in 3D in battle and baked
-/// into the field's pixel sprites (<see cref="CharacterSprites"/>).
+/// into the field's pixel sprites (<see cref="CharacterSprites"/>). A look of the grown kit is sculpted by
+/// <c>CharacterModels.Grown.cs</c> (plan 30 · FM4).
 /// </summary>
-internal static class CharacterModels
+internal static partial class CharacterModels
 {
     /// <summary>Outline of the 3D characters in battle, in model units.</summary>
     public const float OutlineThickness = 0.009f;
@@ -252,6 +261,8 @@ internal static class CharacterModels
             case RigKind.Rift: BuildRift(rig, model); break;
             default:
                 rig.Style = CharacterStyle.For(npcType);
+                // A look of the grown kit is a body of its own (plan 30 · FM4), meshed and finished in its own way
+                if (rig.Style.Kit == Data.CharacterKit.Grown) return BuildGrownRig(rig, model);
                 wear = new SdfModel("clothes " + rig.Type) { WeightBlend = 0.04f };
                 BuildHumanoid(rig, model, rig.Style, wear);
                 break;
