@@ -29,8 +29,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 461 voices (424 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
-- Cloned from the user's samples: `rival`.
+- Named characters: 461 voices (360 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
 - Archetypes in use: 243, with 734 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1911.
 
