@@ -1,0 +1,35 @@
+# Castelia City's street north from the plaza to the gate for Route 4 (plan 22 · U5, part c). docs/scripts.md describes
+# the language; the lines are our own.
+#
+# Plan 40 · GE3, our words on Black 2's beat (Black 2 gives an Eevee in Castelia City at level 10): once the Insect Badge
+# is won, the Trainer here gives the player one of her family's Eevee, once (FLAG_UNOVA_GOT_EEVEE, a flag of ours).
+
+
+script EeveeGift
+  face 1 player
+  speaker "Ace Trainer"
+  if flag FLAG_UNOVA_GOT_EEVEE goto Given
+  if not badge insect goto Plain
+  say "You beat Burgh? Then you're just the Trainer I was waiting for!"
+  say "My family's Eevee had more little ones than our flat can hold. One of them keeps staring at the gate to Route 4."
+  ask "Would you take it with you on your journey?"
+  if no goto Later
+  if not party < 6 goto Full
+  givepokemon "Eevee" 10
+  setflag FLAG_UNOVA_GOT_EEVEE
+  fanfare pokemon
+  text "{player} received Eevee!"
+  say "Eevee can grow into so many different Pokémon. I can't wait to hear which one it chooses!"
+  end
+label Later
+  say "Oh... Well, it'll be right here if you change your mind."
+  end
+label Full
+  say "Your team looks full. Make some room, then come back for it!"
+  end
+label Given
+  say "How's Eevee doing? Has it chosen what it wants to be yet?"
+  end
+label Plain
+  say "Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!"
+  end

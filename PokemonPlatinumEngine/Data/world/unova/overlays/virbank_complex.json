@@ -2,6 +2,10 @@
   // The road from Virbank City into the Virbank Complex (plan 22 · U5, part b): Black 2's yard, its words ours. The
   // roughneck by the road (2) swaps a Poké Ball for a Great Ball once a day (virbank_complex.txt)
   "area": "virbank_complex",
+
+  // Plan 40 · GE3: White 2's Elekid, where Black 2 has Magby, once the National Pokédex is had
+
+  "national": { "land": [ "Elekid", "Elekid" ] },
   "bgmTrack": "unova/virbank",
   "people": {
     "2": { "name": "Roughneck", "script": "BallTrade" }

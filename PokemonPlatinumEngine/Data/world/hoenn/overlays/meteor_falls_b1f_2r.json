@@ -1,6 +1,10 @@
 {
   // Meteor Falls' deepest room (plan 21 · H4, part b), where TM02 lies at the end of the falls' lowest path
   "area": "meteor_falls_b1f_2r",
+
+  // Plan 40 · GE3: Sapphire's Lunatone, once the National Pokédex is had
+
+  "national": { "land": [ "Lunatone", "Lunatone" ] },
   "bgmTrack": "hoenn/cave_of_origin",
   "trees": "Round"
 }

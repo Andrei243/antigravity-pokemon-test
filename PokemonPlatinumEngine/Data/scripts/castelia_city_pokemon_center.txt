@@ -1,0 +1,18 @@
+# Castelia City's Pokémon Center (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own.
+#
+# Plan 40 · GE3, ours: the link's receptionist hands out a Linking Cord whenever the bag holds none, as Sinnoh's GTS
+# receptionist does (GlobalTerminal1F.Gts), so that Unova's Pokémon that evolve by a trade (Karrablast and Shelmet with
+# each other among them) can evolve with nobody else while the link is closed.
+
+
+script LinkingCord
+  speaker "Receptionist"
+  say "I'm sorry, the link to other players is closed for now."
+  if item "Linking Cord" goto Holding
+  say "But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!"
+  give "Linking Cord"
+  say "Use it on the Pokémon as you would a stone. Come back for another once yours is used up."
+  end
+label Holding
+  say "You still have a Linking Cord. Use it on a Pokémon that grows through a trade, then come back for another."
+  end

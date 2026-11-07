@@ -1,0 +1,85 @@
+# The Nacrene Museum (plan 22 · U10, part f). docs/scripts.md describes the language; the lines are our own.
+#
+# Plan 40 · GE3, our words on Black 2's beats. Black 2's Lenora offers the Cover Fossil or the Plume Fossil, one or the
+# other, and the other is to be had from Join Avenue's antique shop. Lenora's scenes are left out of this museum, so the
+# ranger who brings the museum what she finds offers the choice (FLAG_UNOVA_GOT_MUSEUM_FOSSIL, ours) and, on a later
+# visit, the other (FLAG_UNOVA_GOT_SECOND_FOSSIL, ours; VAR_UNOVA_MUSEUM_FOSSIL says which came first, 1 the Cover and 2
+# the Plume). The scientist restores any fossil, as Oreburgh's and Cinnabar's do (the game's own Fossils,
+# VAR_REVIVED_POKEMON_SPECIES, and a local flag that lasts while the player stays), at Black 2's level 25.
+
+
+script Ranger
+  face 7 player
+  speaker "Pokémon Ranger"
+  if flag FLAG_UNOVA_GOT_SECOND_FOSSIL goto Done
+  if flag FLAG_UNOVA_GOT_MUSEUM_FOSSIL goto Second
+  say "I bring things I find in the wild for the museum to study. They've more fossils than they have room for, though."
+  choose "Would you like one of these two?" "The Cover Fossil" "The Plume Fossil" "No, thanks"
+  if result == 0 goto Cover
+  if result == 1 goto Plume
+  say "No? Well, the offer stands."
+  end
+label Cover
+  give "Cover Fossil"
+  setvar VAR_UNOVA_MUSEUM_FOSSIL 1
+  setflag FLAG_UNOVA_GOT_MUSEUM_FOSSIL
+  say "The scientist over there can bring it back to life. It used to be part of a Pokémon's shell, from the old sea."
+  end
+label Plume
+  give "Plume Fossil"
+  setvar VAR_UNOVA_MUSEUM_FOSSIL 2
+  setflag FLAG_UNOVA_GOT_MUSEUM_FOSSIL
+  say "The scientist over there can bring it back to life. It used to be part of a Pokémon's wing, from long ago."
+  end
+label Second
+  say "Oh, it's you! I dug up another fossil on my last trip. It's the kind you didn't take, so it ought to be yours."
+  if var VAR_UNOVA_MUSEUM_FOSSIL == 2 goto SecondCover
+  give "Plume Fossil"
+  setflag FLAG_UNOVA_GOT_SECOND_FOSSIL
+  end
+label SecondCover
+  give "Cover Fossil"
+  setflag FLAG_UNOVA_GOT_SECOND_FOSSIL
+  end
+label Done
+  say "I bring things I find in the wild for the museum to study. Every fossil has a story, if you know how to read it."
+  end
+
+
+script FossilScientist
+  face 2 player
+  speaker "Scientist"
+  if flag FLAG_MAP_LOCAL_NACRENE_MUSEUM_REVIVING goto Working
+  fossil ready
+  if result == 1 goto Ready
+  say "We restore fossils here, at the museum's own laboratory."
+  fossil count
+  if result == 0 goto None
+  ask "You have a fossil with you! Shall I bring it back to life?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+  say "Wonderful. Leave it with me for a little while."
+label Working
+  setflag FLAG_MAP_LOCAL_NACRENE_MUSEUM_REVIVING
+  say "Have a look round Nacrene City, then come back. It will be ready by then."
+  end
+label Ready
+  say "Here it is! Your fossil came back to life as {thing}!"
+  if not party < 6 goto Full
+  fossil give 25
+  fanfare pokemon
+  text "{player} received {thing}!"
+  say "It has waited in that stone a very long time. Take good care of it."
+  end
+label Full
+  say "But your team is full! Make some room, and come back for it."
+  end
+label None
+  say "Bring one in sometime, and we'll see what we can do."
+  end
+label Declined
+  say "No? Well, the laboratory will be here if you change your mind."
+  end

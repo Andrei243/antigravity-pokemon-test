@@ -3,6 +3,10 @@
   // mountain the ledges down to Cerulean City. Its two Black Belts teach Mega Punch and Mega Kick, once each
   // (route_4.txt, plan 19 · K5)
   "area": "route_4",
+
+  // Plan 40 · GE3: LeafGreen's Sandshrew, where FireRed has Ekans, once the National Pokédex is had
+
+  "national": { "land": [ "Sandshrew", "Sandshrew" ] },
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {

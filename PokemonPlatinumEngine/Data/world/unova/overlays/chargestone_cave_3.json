@@ -3,6 +3,10 @@
   // she has met the player at the mouth, and the Nugget man and his boy (2, 1) give a Nugget each once
   // (chargestone_cave_3.txt)
   "area": "chargestone_cave_3",
+
+  // Plan 40 · GE3: Black 2's Chargestone Cave, where a Magneton, a Nosepass or a Charjabug evolves by levelling
+
+  "evolutionSites": [ "Magnetic Field" ],
   "bgmTrack": "unova/chargestone",
   "battleArena": "Cave",
   "people": {

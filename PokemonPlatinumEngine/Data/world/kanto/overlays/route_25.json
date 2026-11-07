@@ -1,6 +1,10 @@
 {
   // Route 25 (plan 19 · K4): along the sea cliffs east to Bill's Sea Cottage (route_25_sea_cottage.txt)
   "area": "route_25",
+
+  // Plan 40 · GE3: LeafGreen's Bellsprout and Slowpoke, once the National Pokédex is had
+
+  "national": { "land": [ "Bellsprout", "Bellsprout" ], "superRod": [ "Slowpoke" ] },
   "bgmTrack": "kanto/route24",
   "trees": "Round",
   "people": {

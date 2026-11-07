@@ -2,6 +2,10 @@
   // Pallet Town (plan 19 · K1): FireRed's map, our words. Professor Oak's scene at the edge of the grass, which the
   // two triggers north of town start, is plan 19 · K3's (pallet_town.txt)
   "area": "pallet_town",
+
+  // Plan 40 · GE3: LeafGreen's Staryu on the Super Rod, once the National Pokédex is had
+
+  "national": { "superRod": [ "Staryu" ] },
   "bgmTrack": "kanto/pallet",
   "trees": "Round",
   "architecture": "Clapboard",

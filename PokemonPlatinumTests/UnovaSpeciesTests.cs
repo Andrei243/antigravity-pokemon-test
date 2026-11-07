@@ -27,39 +27,15 @@ public class UnovaSpeciesTests
         ["Ducklett"] = "plan 38 · EX11: the bridges' shadows", ["Swanna"] = "plan 38 · EX11: the bridges' shadows",
         ["Alomomola"] = "plan 38 · EX11: rippling water", ["Wailmer"] = "plan 38 · EX11: rippling water",
         ["Wailord"] = "plan 38 · EX11: rippling water", ["Lapras"] = "plan 38 · EX11: rippling water",
-        // White 2's, which Black 2's tables leave out (PokeAPI's white-2 encounters): placed in their own places
-        ["Elekid"] = "GE3: White 2's, in its own places", ["Electabuzz"] = "GE3: White 2's, in its own places",
-        ["Skitty"] = "GE3: White 2's, in its own places", ["Delcatty"] = "GE3: White 2's, in its own places",
-        ["Numel"] = "GE3: White 2's, in its own places", ["Camerupt"] = "GE3: White 2's, in its own places",
-        ["Reshiram"] = "GE3: White 2's legendary, in its own place",
-        // Black 2's own places, gifts and trades that the import or the scripts have not given yet
-        ["Buneary"] = "GE3: Black 2's grass, which the import has no place for", ["Lopunny"] = "GE3: Black 2's grass, which the import has no place for",
-        ["Eevee"] = "GE3: Black 2's gift and grass", ["Vaporeon"] = "GE3: Black 2's gift and grass",
-        ["Jolteon"] = "GE3: Black 2's gift and grass", ["Flareon"] = "GE3: Black 2's gift and grass",
-        ["Espeon"] = "GE3: Black 2's gift and grass", ["Umbreon"] = "GE3: Black 2's gift and grass",
-        ["Leafeon"] = "GE3: Black 2's gift and grass", ["Glaceon"] = "GE3: Black 2's gift and grass",
-        ["Zorua"] = "GE3: Black 2's gift", ["Zoroark"] = "GE3: Black 2's gift",
-        // Evolved by trading, and Unova gives no Linking Cord
-        ["Magmortar"] = "GE3: a Linking Cord in Unova", ["Electivire"] = "GE3: a Linking Cord in Unova",
-        ["Conkeldurr"] = "GE3: a Linking Cord in Unova", ["Escavalier"] = "GE3: a Linking Cord in Unova",
-        ["Accelgor"] = "GE3: a Linking Cord in Unova",
-        // Evolved by levelling in Chargestone Cave, whose overlay names no Magnetic Field
-        ["Magnezone"] = "GE3: Chargestone Cave's Magnetic Field", ["Probopass"] = "GE3: Chargestone Cave's Magnetic Field",
-        // Nacrene's museum, which restores no fossil yet
-        ["Tirtouga"] = "GE3: fossils at Nacrene's museum", ["Carracosta"] = "GE3: fossils at Nacrene's museum",
-        ["Archen"] = "GE3: fossils at Nacrene's museum", ["Archeops"] = "GE3: fossils at Nacrene's museum",
-        // Black 2 gave them only by the Dream Radar, which this game has no stand-in for (rulings, "The Abundant Shrine's Landorus")
-        ["Tornadus"] = "GE3: a way of ours, for Black 2's Dream Radar", ["Thundurus"] = "GE3: a way of ours, for Black 2's Dream Radar",
+        // (Plan 40 · GE3 gave White 2's species in the overlays' national slots and its Reshiram on the Dragonspiral
+        // Tower, the Castelia patch's Buneary in Pinwheel Forest, Black 2's Eevee and Zorua, a Linking Cord in Castelia's
+        // Pokémon Center, Chargestone Cave's Magnetic Field, the Moss Rock and the Ice Rock, Nacrene's fossils, and
+        // Tornadus and Thundurus at the Abundant Shrine for Black 2's Dream Radar)
     };
 
     /// <summary>The items and places Unova's evolutions ask for that nothing in Unova gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = "GE3: a Linking Cord in Unova",
-        ["Magnetic Field"] = "GE3: Chargestone Cave's Magnetic Field",
-        ["Moss Rock"] = "GE3: Pinwheel Forest's Moss Rock",
-        ["Ice Rock"] = "GE3: Twist Mountain's Ice Rock",
-        ["Electirizer"] = "GE3: an Electirizer in Unova",
     };
 
     [Fact]

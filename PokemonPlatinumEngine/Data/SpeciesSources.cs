@@ -380,6 +380,12 @@ public sealed class SpeciesSources
                     case Op.BugContest when openAreas.Contains(BugContestPark):
                         foreach (var slot in BugContestVenue.NationalPark.Encounters.SelectMany(t => t))
                             f.Species(slot.Species, $"{where}: the Bug-Catching Contest", true);
+                        // ... and its prizes (plan 40 · GE3): the first prize's stones (the Sun Stone, and one of ten drawn
+                        // once the National Pokédex is had) and the three below it, BugContest.PrizeFor
+                        for (int stone = 0; stone < BugContest.Stones.Length; stone++)
+                            f.Item(BugContest.PrizeFor(0, stone), $"{where}: the Bug-Catching Contest's first prize");
+                        for (int placement = 1; placement <= 3; placement++)
+                            f.Item(BugContest.PrizeFor(placement, 0), $"{where}: the Bug-Catching Contest's prizes");
                         break;
                 }
             }

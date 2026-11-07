@@ -8,6 +8,10 @@
   // offers to go her own way. The scientist (16) rewards a Pokémon of the mountain on the team once, with False Swipe. Black
   // 2's White 2 twin of this floor is not built
   "area": "reversal_mountain_4",
+
+  // Plan 40 · GE3: White 2's Numel, once the National Pokédex is had
+
+  "national": { "land": [ "Numel", "Numel" ] },
   "bgmTrack": "unova/reversal_cave",
   "triggers": [
     {

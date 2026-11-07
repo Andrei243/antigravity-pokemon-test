@@ -53,3 +53,60 @@ script StevenAfter
 label Two
   say "Hoenn's skies are wide, {player}. If you ever cross the sea that way, look up now and then."
   end
+
+
+# Plan 40 · GE3, our words on HeartGold's beats: the museum restores fossils as HeartGold's does (the Helix and Dome
+# Fossils the Ruins of Alph's researchers dig up, ruins_of_alph_research_center.txt, and the Old Amber of the museum's own
+# back room, which its other scientist hands over here, once: FLAG_JOHTO_GOT_OLD_AMBER, ours). The scientist takes a
+# Fossil and has the Pokémon ready once the player has gone out and come back, as Oreburgh's and Cinnabar's do (the
+# game's own Fossils, VAR_REVIVED_POKEMON_SPECIES, and a local flag that lasts while the player stays). HeartGold hands
+# the Pokémon over at level 20, and so does this museum.
+script Curator
+  face t03r0101_gsassistantm player
+  speaker "Scientist"
+  say "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
+  if flag FLAG_JOHTO_GOT_OLD_AMBER end
+  say "Oh, you look like a Trainer who travels. We found a lump of amber in the back room, more than we can study."
+  give "Old Amber"
+  setflag FLAG_JOHTO_GOT_OLD_AMBER
+  say "There's something caught inside it, from long, long ago. My colleague over there can tell you more."
+  end
+
+
+script FossilScientist
+  face t03r0101_gsassistantm_2 player
+  speaker "Scientist"
+  if flag FLAG_MAP_LOCAL_PEWTER_MUSEUM_REVIVING goto Working
+  fossil ready
+  if result == 1 goto Ready
+  say "We study how to bring Pokémon back from fossils here. And at last, we've managed it!"
+  fossil count
+  if result == 0 goto None
+  ask "You've brought a Fossil, haven't you? Shall I bring it back to life for you?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+  say "Leave it with me. The machine needs a little while."
+label Working
+  setflag FLAG_MAP_LOCAL_PEWTER_MUSEUM_REVIVING
+  say "Take a walk round Pewter City, then come back. It'll be ready by then."
+  end
+label Ready
+  say "There you are! Your Fossil came back to life as {thing}!"
+  if not party < 6 goto Full
+  fossil give
+  fanfare pokemon
+  text "{player} received {thing}!"
+  say "It's been asleep in that stone for longer than anyone can say. Show it the world."
+  end
+label Full
+  say "But your team is full! Make room, and come back for it."
+  end
+label None
+  say "If you ever find a Fossil, bring it here. I'll show you what it used to be!"
+  end
+label Declined
+  say "No? Well, the machine will be here if you change your mind."
+  end

@@ -95,6 +95,7 @@ Every session: its rules in GPU-free classes with their tests; a screen on the k
 - Tests: both museums' scripts played headless on every way through (a fossil given, revived once, the Pokédex told); the four checks' lists shorter, each remaining entry another plan's (Hoenn's Surskit line and Feebas plan 38's, Johto's prize Pokémon plan 42's).
 - Shots: `gf20_kanto_other_version`, `gf21_linking_cord`, `gf22_game_corner_pokemon`, `gf23_unova_other_version`, `gf24_nacrene_fossil`, `gf25_pewter_fossil`.
 - **Done when** `KantoSpeciesTests`, `JohtoSpeciesTests`, `UnovaSpeciesTests` and `HoennSpeciesTests` owe only what another plan holds, each with its reason.
+- **Outcome (2026-11-07)**: one session. The other versions' species are overlay `national` slots (LeafGreen's in sixteen Kanto areas, SoulSilver's in thirteen of Johto's, Ruby's and Sapphire's in five of Hoenn's, White 2's in four of Unova's, and the Castelia patch's Buneary and Skitty in Pinwheel Forest); a Linking Cord from a receptionist in Celadon's, Goldenrod's, Lilycove's and Castelia's Pokémon Centers; FireRed's Game Corner Pokémon at the prize room's first counter; Johto's stones were the Bug-Catching Contest's prizes all along (the check counts them now) and Silph Co.'s receptionist gives the Upgrade; the Ruins of Alph's researcher gives the Helix and Dome Fossils, Pewter's curator the Old Amber and its scientist revives (`fossil`, level 20); Nacrene's ranger gives the Cover or Plume Fossil and later the other, its scientist revives (level 25), the two fossils items of ours (9590, 9591) added to `Fossils.All`; Chargestone Cave, Pinwheel Forest and Twist Mountain are Unova's Magnetic Field, Moss Rock and Ice Rock; Black 2's Eevee (Castelia, after the Insect Badge) and Zorua (Rood, after the Quake Badge); White 2's Reshiram on the Dragonspiral Tower's top once Zekrom has been met; Tornadus and Thundurus at the Abundant Shrine once Landorus has been met. The four checks owe only plan 38's (EX1, EX4, EX11) and Mew; the National check owes only EX11's three. Kalos's entries owed to "GE3" (its stones, items, sites and Linking Cord) are plan 23's Kalos check's and are not built. The rulings' "What the checks still owed" has every choice. **No shots** (`gf20` to `gf25` are not made: no GPU run in this session), and the museums' headless test of every way through is `StoryTests`' walk of every script, not a test of its own.
 
 ### GE4 · Diplomas for every Pokédex and a Pokédex of our own
 - Every region's diploma words; `Pokedex.Ours` with its list, counts, search, area page, diploma and D14's heading; `Query.Diploma` and `DIPLOMAS`; the designers' scripts in five regions. Style guide first: "Menu screens (G10)", the Pokédex's list of ours.
@@ -184,7 +185,7 @@ Every session: its rules in GPU-free classes with their tests; a screen on the k
 
 - [x] GE1 Every species, region by region: the checks (2026-11-07)
 - [x] GE2 The regions' own trades (2026-11-07)
-- [ ] GE3 What the checks still owe
+- [x] GE3 What the checks still owe
 - [ ] GE4 Diplomas for every Pokédex and a Pokédex of our own
 - [ ] GE5 The charms and critical captures
 - [ ] GE6 Legendaries met again

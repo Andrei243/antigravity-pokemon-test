@@ -2,6 +2,10 @@
   // Pinwheel Forest's edge (plan 22 · U10, part f): Black 2's clearing south of Nacrene City, its trainers, balls and hidden
   // things read by the importer, our words
   "area": "pinwheel_forest",
+
+  // Plan 40 · GE3: Black 2's Moss Rock in Pinwheel Forest, by which an Eevee levelled here becomes a Leafeon
+
+  "evolutionSites": [ "Moss Rock" ],
   "bgmTrack": "unova/pinwheel_forest",
   "people": {
     "5": { "name": "Kentaro", "trainer": { "dialogueBefore": "The forest is my dojo! Show me your fighting spirit!", "dialogueAfter": "My spirit wavered. Yours didn't." } },

@@ -16,31 +16,13 @@ public class JohtoSpeciesTests
     /// <summary>What the Johto Pokédex has that nothing in Johto gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // SoulSilver's, which HeartGold's tables leave out (PokeAPI's soulsilver encounters): placed in their own places
-        ["Ledyba"] = "GE3: SoulSilver's, in its own places", ["Ledian"] = "GE3: SoulSilver's, in its own places",
-        ["Vulpix"] = "GE3: SoulSilver's, in its own places", ["Ninetales"] = "GE3: SoulSilver's, in its own places",
-        ["Meowth"] = "GE3: SoulSilver's, in its own places", ["Persian"] = "GE3: SoulSilver's, in its own places",
-        ["Teddiursa"] = "GE3: SoulSilver's, in its own places", ["Ursaring"] = "GE3: SoulSilver's, in its own places",
-        ["Delibird"] = "GE3: SoulSilver's, in its own places", ["Skarmory"] = "GE3: SoulSilver's, in its own places",
+        // (Plan 40 · GE3 gave SoulSilver's species in the overlays' national slots, a Linking Cord in Goldenrod's
+        // Pokémon Center, Silph Co.'s Upgrade, the Bug-Catching Contest's stones and Pewter's fossils)
         // HeartGold's headbutt trees, not built (plan 38 · EX4)
         ["Pineco"] = "plan 38 · EX4: headbutt trees", ["Forretress"] = "plan 38 · EX4: headbutt trees",
         ["Exeggcute"] = "plan 38 · EX4: headbutt trees", ["Exeggutor"] = "plan 38 · EX4: headbutt trees",
         ["Heracross"] = "plan 38 · EX4: headbutt trees",
         ["Aipom"] = "plan 38 · EX4: headbutt trees", ["Ambipom"] = "plan 38 · EX4: headbutt trees",
-        // Evolved by a stone that nothing in Johto gives (HeartGold's Bill's grandfather, the Pokéathlon's shop)
-        ["Raichu"] = "GE3: a Thunder Stone in Johto", ["Jolteon"] = "GE3: a Thunder Stone in Johto",
-        ["Arcanine"] = "GE3: a Fire Stone in Johto", ["Flareon"] = "GE3: a Fire Stone in Johto",
-        ["Bellossom"] = "GE3: a Sun Stone in Johto", ["Sunflora"] = "GE3: a Sun Stone in Johto",
-        // Evolved by trading, and Johto gives no Linking Cord
-        ["Alakazam"] = "GE3: a Linking Cord in Johto", ["Machamp"] = "GE3: a Linking Cord in Johto",
-        ["Golem"] = "GE3: a Linking Cord in Johto", ["Gengar"] = "GE3: a Linking Cord in Johto",
-        ["Politoed"] = "GE3: a Linking Cord in Johto", ["Slowking"] = "GE3: a Linking Cord in Johto",
-        ["Scizor"] = "GE3: a Linking Cord in Johto", ["Kingdra"] = "GE3: a Linking Cord in Johto",
-        ["Porygon2"] = "GE3: a Linking Cord and an Upgrade in Johto",
-        // Pewter's museum, which restores no fossil yet
-        ["Omanyte"] = "GE3: fossils at Pewter's museum", ["Omastar"] = "GE3: fossils at Pewter's museum",
-        ["Kabuto"] = "GE3: fossils at Pewter's museum", ["Kabutops"] = "GE3: fossils at Pewter's museum",
-        ["Aerodactyl"] = "GE3: fossils at Pewter's museum",
         // A mythical HeartGold gave only by an event: had in another region (Faraway Island, plan 29 · LS11c)
         ["Mew"] = "had in another region: Hoenn's Faraway Island",
     };
@@ -48,11 +30,6 @@ public class JohtoSpeciesTests
     /// <summary>The items and places Johto's evolutions ask for that nothing in Johto gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = "GE3: a Linking Cord in Johto",
-        ["Thunder Stone"] = "GE3: a Thunder Stone in Johto",
-        ["Fire Stone"] = "GE3: a Fire Stone in Johto",
-        ["Sun Stone"] = "GE3: a Sun Stone in Johto",
-        ["Upgrade"] = "GE3: an Upgrade in Johto",
     };
 
     [Fact]

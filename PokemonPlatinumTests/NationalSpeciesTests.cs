@@ -27,10 +27,7 @@ public class NationalSpeciesTests
     {
         ["Drilbur"] = "plan 38 · EX11: Unova's dust clouds", ["Excadrill"] = "plan 38 · EX11: Unova's dust clouds",
         ["Alomomola"] = "plan 38 · EX11: Unova's rippling water",
-        ["Tirtouga"] = "GE3: fossils at Nacrene's museum", ["Carracosta"] = "GE3: fossils at Nacrene's museum",
-        ["Archen"] = "GE3: fossils at Nacrene's museum", ["Archeops"] = "GE3: fossils at Nacrene's museum",
-        ["Reshiram"] = "GE3: White 2's legendary, in its own place",
-        ["Tornadus"] = "GE3: a way of ours, for Black 2's Dream Radar", ["Thundurus"] = "GE3: a way of ours, for Black 2's Dream Radar",
+        // (Plan 40 · GE3 gave Nacrene's fossils, Reshiram, Tornadus and Thundurus)
     };
 
     /// <summary>The plan that owes a species of a later generation its ways, by its National number.</summary>
@@ -97,8 +94,11 @@ public class NationalSpeciesTests
         var with = SpeciesSources.Of(kanto, given, Array.Empty<MapFile>(), SpeciesSources.HighestInSinnoh,
             f => f == "test_gift", starters, noAreaTables: true);
         Assert.Contains("test_gift.Gift", with.Ways["Porygon"]);
-        Assert.Contains(RegionSpeciesCheck.Problems(with, dex, KantoSpeciesTests.Owed), p => p.StartsWith("Owed but now given") && p.Contains("Porygon"));
-        Assert.Contains(RegionSpeciesCheck.NeedProblems(with, dex, KantoSpeciesTests.OwedNeeds), p => p.Contains("Linking Cord"));
+        // (A list of the test's own, since Kanto's owes neither any more: plan 40 · GE3)
+        var owed = new Dictionary<string, string>(KantoSpeciesTests.Owed) { ["Porygon"] = "a test" };
+        var needs = new Dictionary<string, string> { ["Linking Cord"] = "a test" };
+        Assert.Contains(RegionSpeciesCheck.Problems(with, dex, owed), p => p.StartsWith("Owed but now given") && p.Contains("Porygon"));
+        Assert.Contains(RegionSpeciesCheck.NeedProblems(with, dex, needs), p => p.Contains("Linking Cord"));
         // Without it and with no professor's bag, the three are lost and the check names them
         var bare = SpeciesSources.Of(kanto, given, Array.Empty<MapFile>(), SpeciesSources.HighestInSinnoh, _ => false, null, noAreaTables: true);
         Assert.False(bare.Has("Porygon"));

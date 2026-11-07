@@ -10,12 +10,12 @@
     "t03r0101_daigo": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true, "hiddenBy": "FLAG_JOHTO_HIDE_PEWTER_MUSEUM_STEVEN" },
     "t03r0101_daigo_2": { "name": "Steven", "npcType": "steven", "script": "StevenAfter", "still": true, "hiddenBy": "FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS" },
     "t03r0101_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },
+    // Plan 40 · GE3: the curator gives the Old Amber once, and the scientist below restores fossils
+    // (pewter_museum_of_science.txt)
     "t03r0101_gsassistantm": {
       "name": "Scientist",
       "still": true,
-      "dialog": [
-        "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
-      ]
+      "script": "Curator"
     },
     "t03r0101_gswoman6": {
       "name": "Woman",
@@ -39,9 +39,7 @@
     },
     "t03r0101_gsassistantm_2": {
       "name": "Scientist",
-      "dialog": [
-        "We're studying how to bring Pokémon back from fossils. Some day, we'll manage it here too."
-      ]
+      "script": "FossilScientist"
     }
   },
   "signs": {

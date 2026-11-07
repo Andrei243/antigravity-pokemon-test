@@ -2,6 +2,10 @@
   // Twist Mountain's middle floor (plan 22 · U10, part e), Black 2's, our words. The ice blocks of Black 2's winter (0) wait
   // for a session that lays the season's ice in the caves
   "area": "twist_mountain_4",
+
+  // Plan 40 · GE3: Black 2's Ice Rock in Twist Mountain, by which an Eevee levelled here becomes a Glaceon
+
+  "evolutionSites": [ "Ice Rock" ],
   "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",
   "people": {

@@ -1,5 +1,9 @@
 {
   // A miners' rest room off Twist Mountain's great hall (plan 22 · U10, part e): Black 2's, empty
   "area": "twist_mountain_7",
+
+  // Plan 40 · GE3: Black 2's Ice Rock in Twist Mountain, by which an Eevee levelled here becomes a Glaceon
+
+  "evolutionSites": [ "Ice Rock" ],
   "bgmTrack": "unova/twist_mountain"
 }

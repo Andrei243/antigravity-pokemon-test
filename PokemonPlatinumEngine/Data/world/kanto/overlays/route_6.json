@@ -2,6 +2,10 @@
   // Route 6 (plan 19 · K4, part b): from the Underground Path to Vermilion City, its trainers FireRed's. Its gate to
   // Saffron City is plan 19 · K5's, and stays shut
   "area": "route_6",
+
+  // Plan 40 · GE3: LeafGreen's Bellsprout and Slowpoke, once the National Pokédex is had
+
+  "national": { "land": [ "Bellsprout", "Bellsprout" ], "superRod": [ "Slowpoke" ] },
   "bgmTrack": "kanto/route3",
   "people": {
     "bug_catcher": {

@@ -3,6 +3,10 @@
   // the Dark Cave (warp 2, open since plan 20 · J10) lie at its two ends. Bug Catcher Wade's team is
   // read from Johto's trainers.json; the man who wants his mail taken is plan 20 · J4's
   "area": "route_31",
+
+  // Plan 40 · GE3: SoulSilver's Ledyba, once the National Pokédex is had
+
+  "national": { "land": [ "Ledyba", "Ledyba" ] },
   "bgmTrack": "johto/route30",
   "trees": "Round",
   "people": {

@@ -1,0 +1,27 @@
+# The Ruins of Alph's research centre (plan 20 · J5). docs/scripts.md describes the language; the lines are our own.
+#
+# Plan 40 · GE3, ours: HeartGold's Helix Fossil and SoulSilver's Dome Fossil are found smashing the rocks round the Ruins.
+# Here a researcher who digs there hands over the one, and on a later visit the other (FLAG_JOHTO_GOT_HELIX_FOSSIL and
+# FLAG_JOHTO_GOT_DOME_FOSSIL, ours), for Pewter City's museum to bring back to life (pewter_museum_of_science.txt).
+
+
+script Digger
+  face d24r0102_gsassistantm player
+  speaker "Scientist"
+  if flag FLAG_JOHTO_GOT_DOME_FOSSIL goto Done
+  if flag FLAG_JOHTO_GOT_HELIX_FOSSIL goto Dome
+  say "The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike."
+  say "When I'm not reading them, I break up the rocks round the Ruins. Fossils turn up inside, now and then. Take this one!"
+  give "Helix Fossil"
+  setflag FLAG_JOHTO_GOT_HELIX_FOSSIL
+  say "I hear the museum in Pewter City has learned how to bring them back to life. Imagine it!"
+  end
+label Dome
+  say "Back again? I broke open another rock this morning, and look what was inside. You have it."
+  give "Dome Fossil"
+  setflag FLAG_JOHTO_GOT_DOME_FOSSIL
+  say "Two kinds of shell from the old sea, so close to the Ruins. The people who built them must have seen these alive."
+  end
+label Done
+  say "The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike."
+  end

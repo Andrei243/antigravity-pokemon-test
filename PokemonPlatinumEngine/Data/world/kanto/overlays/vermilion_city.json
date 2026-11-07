@@ -3,6 +3,10 @@
   // S.S. Ticket, and the old man and the sailors know when the ship has sailed (vermilion_city.txt). The tree beside
   // the Gym is cut down with the Cascade Badge and HM01, which the S.S. Anne's captain gives
   "area": "vermilion_city",
+
+  // Plan 40 · GE3: LeafGreen's Staryu on the Super Rod, once the National Pokédex is had
+
+  "national": { "superRod": [ "Staryu" ] },
   "bgmTrack": "kanto/vermilion",
   "trees": "Round",
   // The port of glowing sunsets builds in stucco under vermilion roofs (plan 19 · K5; the style guide's row)

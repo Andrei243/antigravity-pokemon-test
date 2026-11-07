@@ -1,6 +1,10 @@
 {
   // The Seafoam Islands, B1F (plan 19 · K6, part b): its two boulders down its two holes (seafoam_islands_b1f.txt)
   "area": "seafoam_islands_b1f",
+
+  // Plan 40 · GE3: LeafGreen's Slowpoke, once the National Pokédex is had
+
+  "national": { "land": [ "Slowpoke", "Slowpoke" ] },
   "name": "Seafoam Islands",
   "bgmTrack": "kanto/viridian_forest",
   "pits": [

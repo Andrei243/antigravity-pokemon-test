@@ -2,6 +2,10 @@
   // Route 24, Nugget Bridge (plan 19 · K4): five trainers across the bridge and Team Rocket's recruiter at its north
   // end (route_24.txt)
   "area": "route_24",
+
+  // Plan 40 · GE3: LeafGreen's Bellsprout, once the National Pokédex is had
+
+  "national": { "land": [ "Bellsprout", "Bellsprout" ] },
   "bgmTrack": "kanto/route24",
   "trees": "Round",
   "triggers": [ { "trigger": 0, "script": "RocketLeft" }, { "trigger": 1, "script": "RocketRight" } ],

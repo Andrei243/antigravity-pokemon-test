@@ -4,6 +4,10 @@
   // Path (warp 2) is open since part l (route_5_underground_path_gate); the man HeartGold keeps before its door behind
   // FLAG_UNK_258, which nothing here sets, would stand in the doorway, and is held back
   "area": "johto_route_5",
+
+  // Plan 40 · GE3: SoulSilver's Meowth, once the National Pokédex is had
+
+  "national": { "land": [ "Meowth", "Meowth" ] },
   "bgmTrack": "kanto/route3",
   "heldBack": [ "r05_gsmiddleman1" ],
   "signs": {

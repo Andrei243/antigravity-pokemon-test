@@ -17,11 +17,10 @@
         "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
       ]
     },
+    // Plan 40 · GE3: the trade counter hands out a Linking Cord (goldenrod_pokecenter_1f.txt)
     "t25pc0101_pcwoman2_2": {
       "name": "Receptionist",
-      "dialog": [
-        "I'm sorry, the link to other players is closed for now."
-      ]
+      "script": "LinkingCord"
     },
     "t25pc0101_pcwoman2_3": {
       "name": "Receptionist",

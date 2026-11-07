@@ -2,6 +2,10 @@
   // Route 38 (plan 20 · J8): HeartGold's map, our words. The road west out of Ecruteak City through the farmland, its
   // five trainers by their own records. Its Apricorn tree is plan 20 · J6's
   "area": "route_38",
+
+  // Plan 40 · GE3: SoulSilver's Meowth, once the National Pokédex is had
+
+  "national": { "land": [ "Meowth", "Meowth" ] },
   "bgmTrack": "johto/route38",
   "trees": "Round",
   "people": {

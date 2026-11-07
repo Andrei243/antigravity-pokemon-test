@@ -4,6 +4,10 @@
   // Pokémon block the path until Mr. Pokémon has been visited, and the call that comes there, are plan 20 · J4's
   // (Joey stands from the start meanwhile); the Apricorn trees are J6's
   "area": "route_30",
+
+  // Plan 40 · GE3: SoulSilver's Ledyba, where HeartGold has Spinarak, once the National Pokédex is had
+
+  "national": { "land": [ "Ledyba", "Ledyba" ] },
   "bgmTrack": "johto/route30",
   "trees": "Round",
   "people": {

@@ -14538,6 +14538,30 @@
     "cantBeTossed": true
   },
   {
+    "id": 9590,
+    "name": "Cover Fossil",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that swam in the sea long ago. It seems to be part of its back.",
+    "flingPower": 100
+  },
+  {
+    "id": 9591,
+    "name": "Plume Fossil",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that flew long ago. It seems to be part of a wing.",
+    "flingPower": 100
+  },
+  {
     "id": 9900,
     "name": "Crafting Kit",
     "pocket": "KeyItems",

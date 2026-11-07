@@ -2,6 +2,10 @@
   // Mt. Silver Cave's first floor (plan 20 · J15): the mouth of the climb, with ways out onto the lower mountainside,
   // to the chamber of the Expert Belt and to Moltres's chamber. Cameron the photographer takes pictures here (plan 20, part t, common.Cameron)
   "area": "mount_silver_cave_1f",
+
+  // Plan 40 · GE3: SoulSilver's Teddiursa, once the National Pokédex is had
+
+  "national": { "land": [ "Teddiursa", "Teddiursa" ] },
   "ours": { "land": [ ["Cerberhound", 120, 124], ["Siegephant", 115, 119] ] },
   "bgmTrack": "johto/lighthouse",
   "people": {},

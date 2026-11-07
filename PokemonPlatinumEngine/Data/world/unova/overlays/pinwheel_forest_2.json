@@ -3,6 +3,14 @@
   // trainers, balls and hidden things read by the importer, our words. Its people of scenes (21, 24) and its triggers are left
   // out; the way into the Rumination Field (not open) stays shut
   "area": "pinwheel_forest_2",
+
+
+  // Plan 40 · GE3: Black 2's Moss Rock in Pinwheel Forest, by which an Eevee levelled here becomes a Leafeon
+
+  "evolutionSites": [ "Moss Rock" ],
+  // Plan 40 · GE3: the two of Castelia's patch of grass that no area of the import holds (Black 2's Buneary and White 2's Skitty), beside the Cottonee they share it with, once the National Pokédex is had
+
+  "national": { "land": [ "Buneary", "Skitty" ] },
   // (an item this game's data hasn't is held back)
   "heldBack": [ "8047" ],
   "bgmTrack": "unova/pinwheel_forest",
