@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționer"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "We always heal up here before cheering at the restaurant. Cheering takes stamina!"
         ],
         "text": [
-          ""
+          "Ne vindecăm mereu aici înainte să încurajăm la restaurant. Încurajatul cere rezistență!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I've seen generations of Trainers start their journeys from this Center."
         ],
         "text": [
-          ""
+          "Am văzut generații de Antrenori pornind la drum din acest Centru."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Nuvema's young ones always come through here first. Good luck to them all."
         ],
         "text": [
-          ""
+          "Tinerii din Nuvema trec mereu pe aici primii. Noroc tuturor!"
         ]
       }
     }

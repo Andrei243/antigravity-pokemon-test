@@ -6,7 +6,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I paint the pond in every season. Today the light is just right."
         ],
         "text": [
-          ""
+          "Pictez iazul în fiecare anotimp. Azi lumina e exact cum trebuie."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Marsha"
         ],
         "text": [
-          ""
+          "Marsha"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "We have a test on Pokémon battles tomorrow. Help me practise!"
         ],
         "text": [
-          ""
+          "Mâine avem test la luptele Pokémon. Ajută-mă să exersez!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "I think I'll fail the test too."
         ],
         "text": [
-          ""
+          "Cred că voi pica și testul."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Bruce"
         ],
         "text": [
-          ""
+          "Bruce"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "The pond is full of fish. Full of battles, too!"
         ],
         "text": [
-          ""
+          "Iazul e plin de pești. Plin de lupte, de asemenea!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Not a bite. Not a win."
         ],
         "text": [
-          ""
+          "Nicio mușcătură. Nicio victorie."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Mack"
         ],
         "text": [
-          ""
+          "Mack"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Fish and battles: my two loves!"
         ],
         "text": [
-          ""
+          "Pești și lupte: cele două iubiri ale mele!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "My two disappointments today."
         ],
         "text": [
-          ""
+          "Cele două dezamăgiri ale mele de azi."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Buster"
         ],
         "text": [
-          ""
+          "Buster"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "I can battle all by myself now!"
         ],
         "text": [
-          ""
+          "Pot lupta singur acum!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "I need a hug."
         ],
         "text": [
-          ""
+          "Am nevoie de o îmbrățișare."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Tyrone"
         ],
         "text": [
-          ""
+          "Tyrone"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "I'm the strongest in the nursery!"
         ],
         "text": [
-          ""
+          "Sunt cel mai puternic din creșă!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "I'm the second strongest. Maybe."
         ],
         "text": [
-          ""
+          "Sunt al doilea ca putere. Poate."
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Eva"
         ],
         "text": [
-          ""
+          "Eva"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "My Pokémon is fluffy and strong!"
         ],
         "text": [
-          ""
+          "Pokémonul meu e pufos și puternic!"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "Still fluffy, at least."
         ],
         "text": [
-          ""
+          "Tot pufos, cel puțin."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Autumn"
         ],
         "text": [
-          ""
+          "Autumn"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "I'll battle you while the children watch. Show them how it's done!"
         ],
         "text": [
-          ""
+          "Voi lupta cu tine cât copiii se uită. Arată-le cum se face!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "Well, they learned something."
         ],
         "text": [
-          ""
+          "Ei bine, au învățat ceva."
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Edgar"
         ],
         "text": [
-          ""
+          "Edgar"
         ]
       },
       "before": {
@@ -214,7 +214,7 @@
           "I'm studying to be the best Trainer in the school!"
         ],
         "text": [
-          ""
+          "Învăț să fiu cel mai bun Antrenor din școală!"
         ]
       },
       "after": {
@@ -222,7 +222,7 @@
           "I need to study harder."
         ],
         "text": [
-          ""
+          "Trebuie să învăț mai mult."
         ]
       }
     },
@@ -232,7 +232,7 @@
           "Nursery Aide"
         ],
         "text": [
-          ""
+          "Îngrijitoare de creșă"
         ]
       },
       "dialog": {
@@ -240,7 +240,7 @@
           "The Day Care down the road looks after Pokémon. We look after children!"
         ],
         "text": [
-          ""
+          "Creșa de pe drum are grijă de Pokémoni. Noi avem grijă de copii!"
         ]
       }
     },
@@ -250,7 +250,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemeni"
         ]
       },
       "dialog": {
@@ -258,7 +258,7 @@
           "We're waiting for the nursery to open!"
         ],
         "text": [
-          ""
+          "Așteptăm să se deschidă creșa!"
         ]
       }
     },
@@ -268,7 +268,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemeni"
         ]
       },
       "dialog": {
@@ -276,7 +276,7 @@
           "We're waiting for the nursery to open!"
         ],
         "text": [
-          ""
+          "Așteptăm să se deschidă creșa!"
         ]
       }
     },
@@ -286,7 +286,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețel"
         ]
       },
       "dialog": {
@@ -294,7 +294,7 @@
           "I'm going to the nursery! There are toys there!"
         ],
         "text": [
-          ""
+          "Merg la creșă! Sunt jucării acolo!"
         ]
       }
     },
@@ -304,7 +304,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețel"
         ]
       },
       "dialog": {
@@ -312,7 +312,7 @@
           "My Pokémon is at the Day Care. I visit it every day."
         ],
         "text": [
-          ""
+          "Pokémonul meu e la Creșa Pokémon. Îl vizitez în fiecare zi."
         ]
       }
     },
@@ -322,7 +322,7 @@
           "May"
         ],
         "text": [
-          ""
+          "May"
         ]
       },
       "before": {
@@ -330,7 +330,7 @@
           "We're backers! We cheer together and we battle together!"
         ],
         "text": [
-          ""
+          "Suntem susținători! Încurajăm împreună și luptăm împreună!"
         ]
       },
       "after": {
@@ -338,7 +338,7 @@
           "Our cheering couldn't save us!"
         ],
         "text": [
-          ""
+          "Încurajările noastre nu ne-au putut salva!"
         ]
       }
     },
@@ -348,7 +348,7 @@
           "Mal"
         ],
         "text": [
-          ""
+          "Mal"
         ]
       },
       "before": {
@@ -356,7 +356,7 @@
           "We're backers! We cheer together and we battle together!"
         ],
         "text": [
-          ""
+          "Suntem susținători! Încurajăm împreună și luptăm împreună!"
         ]
       },
       "after": {
@@ -364,7 +364,7 @@
           "Our cheering couldn't save us!"
         ],
         "text": [
-          ""
+          "Încurajările noastre nu ne-au putut salva!"
         ]
       }
     },
@@ -374,7 +374,7 @@
           "Shannon"
         ],
         "text": [
-          ""
+          "Shannon"
         ]
       },
       "before": {
@@ -382,7 +382,7 @@
           "I walk this road every day. Today I'll battle on it!"
         ],
         "text": [
-          ""
+          "Merg pe drumul ăsta în fiecare zi. Azi voi lupta pe el!"
         ]
       },
       "after": {
@@ -390,7 +390,7 @@
           "I'll just walk next time."
         ],
         "text": [
-          ""
+          "Data viitoare doar merg."
         ]
       }
     },
@@ -400,7 +400,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -408,7 +408,7 @@
           "Wellspring Cave is just over there. It's always dripping inside."
         ],
         "text": [
-          ""
+          "Wellspring Cave e chiar acolo. Mereu picură înăuntru."
         ]
       }
     }
@@ -419,7 +419,7 @@
         "Route 3\nStriaton City - Nacrene City"
       ],
       "text": [
-        ""
+        "Traseul 3\nStriaton City - Nacrene City"
       ]
     },
     "2": {
@@ -427,7 +427,7 @@
         "Pokémon Day Care\nWe'll raise your Pokémon for you!"
       ],
       "text": [
-        ""
+        "Creșa Pokémon\nCrescem Pokémonii în locul tău!"
       ]
     },
     "3": {
@@ -435,7 +435,7 @@
         "Pokémon Nursery\nWe'll look after your children!"
       ],
       "text": [
-        ""
+        "Creșa de copii\nAvem grijă de copiii tăi!"
       ]
     }
   }

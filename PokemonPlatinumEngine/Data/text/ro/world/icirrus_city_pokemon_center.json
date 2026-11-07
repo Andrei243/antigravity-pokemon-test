@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționer"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I come down from my house on the hill whenever the marsh floods. The Center is always dry."
         ],
         "text": [
-          ""
+          "Cobor din casa mea de pe deal ori de câte ori se inundă mlaștina. Centrul e mereu uscat."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Battle Girl"
         ],
         "text": [
-          ""
+          "Fată de Luptă"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I train by running round the marsh at dawn. The mud makes every step count!"
         ],
         "text": [
-          ""
+          "Mă antrenez alergând în jurul mlaștinii în zori. Noroiul face fiecare pas să conteze!"
         ]
       }
     }

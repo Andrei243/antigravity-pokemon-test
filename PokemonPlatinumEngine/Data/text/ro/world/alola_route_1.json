@@ -6,7 +6,7 @@
           "Prof. Kukui"
         ],
         "text": [
-          ""
+          "Prof. Kukui"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Keoni"
         ],
         "text": [
-          ""
+          "Keoni"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Youngster Keoni: Alola! You're new here, aren't you? Let's see what you and your partner can do!"
         ],
         "text": [
-          ""
+          "Tinerelul Keoni: Alola! Ești nou aici, nu-i așa? Să vedem ce puteți tu și partenerul tău!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Youngster Keoni: Whoa, you two are already in tune. I'll have to train harder!"
         ],
         "text": [
-          ""
+          "Tinerelul Keoni: Hopa, voi doi sunteți deja în armonie. Va trebui să mă antrenez mai mult!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Alola! People here say it for hello and for goodbye. You'll be saying it all day in no time."
         ],
         "text": [
-          ""
+          "Alola! Oamenii de aici îl spun și pentru salut, și pentru rămas-bun. În curând îl vei spune toată ziua."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Surfer"
         ],
         "text": [
-          ""
+          "Surfer"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The waves off the outskirts are gentle in the mornings. Perfect for watching the Wingull dive."
         ],
         "text": [
-          ""
+          "Valurile din afara orașului sunt blânde dimineața. Perfecte ca să privești Wingull cum se scufundă."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Route 1\nNorth: Iki Town\nSouth: Hau'oli Outskirts"
       ],
       "text": [
-        ""
+        "Traseul 1\nNord: Iki Town\nSud: Hau'oli Outskirts"
       ]
     },
     "OutskirtsSign": {
@@ -87,7 +87,7 @@
         "Hau'oli Outskirts\nEast: Hau'oli City\nWest: Pokémon Research Lab"
       ],
       "text": [
-        ""
+        "Hau'oli Outskirts\nEst: Hau'oli City\nVest: Laboratorul de Cercetare Pokémon"
       ]
     }
   }

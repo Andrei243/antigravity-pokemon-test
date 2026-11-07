@@ -6,7 +6,7 @@
           "Odilon"
         ],
         "text": [
-          ""
+          "Odilon"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Odilon: Nobody knows who stood these stones up. I like to think it was a very strong hiker!"
         ],
         "text": [
-          ""
+          "Drumețul Odilon: Nimeni nu știe cine a ridicat pietrele astea. Îmi place să cred că a fost un drumeț foarte puternic!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Odilon: Strong legs, but not strong enough. Like the stones, I'll just stand here."
         ],
         "text": [
-          ""
+          "Drumețul Odilon: Picioare puternice, dar nu destul. Ca pietrele, voi sta aici."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Maëlle"
         ],
         "text": [
-          ""
+          "Maëlle"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Lass Maëlle: I count the stones every time I walk this way, and I always get a different number!"
         ],
         "text": [
-          ""
+          "Fata Maëlle: Număr pietrele de fiecare dată când trec pe aici și îmi iese mereu alt număr!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Lass Maëlle: Now I've lost count again."
         ],
         "text": [
-          ""
+          "Fata Maëlle: Acum am pierdut din nou șirul."
         ]
       }
     }
@@ -59,7 +59,7 @@
         "Route 10 · Menhir Trail\nNorth: Geosenge Town\nSouth: Cyllage City"
       ],
       "text": [
-        ""
+        "Traseul 10 · Drumul Menhirilor\nNord: Geosenge Town\nSud: Cyllage City"
       ]
     }
   }

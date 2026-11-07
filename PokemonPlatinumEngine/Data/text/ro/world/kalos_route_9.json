@@ -6,7 +6,7 @@
           "Clémence"
         ],
         "text": [
-          ""
+          "Clémence"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Lass Clémence: I come out to the coast every weekend. The sea air is good for Pokémon!"
         ],
         "text": [
-          ""
+          "Fata Clémence: Vin pe coastă în fiecare weekend. Aerul mării le face bine Pokémonilor!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Lass Clémence: Well, that was bracing."
         ],
         "text": [
-          ""
+          "Fata Clémence: Ei bine, asta a fost înviorător."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Basile"
         ],
         "text": [
-          ""
+          "Basile"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Youngster Basile: I've been waiting here all morning for someone to battle. Finally!"
         ],
         "text": [
-          ""
+          "Tinerelul Basile: Aștept aici toată dimineața pe cineva cu care să lupt. În sfârșit!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Youngster Basile: Should've waited for an easier challenger."
         ],
         "text": [
-          ""
+          "Tinerelul Basile: Trebuia să aștept un adversar mai ușor."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Odile"
         ],
         "text": [
-          ""
+          "Odile"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Backpacker Odile: I've walked half of Kalos with this pack. My Pokémon have, too!"
         ],
         "text": [
-          ""
+          "Drumeața Odile: Am mers pe jos jumătate din Kalos cu rucsacul ăsta. Și Pokémonii mei la fel!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Backpacker Odile: My feet are sore and my pride is, too."
         ],
         "text": [
-          ""
+          "Drumeața Odile: Mă dor picioarele și mă doare și mândria."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Loïc"
         ],
         "text": [
-          ""
+          "Loïc"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Fisherman Loïc: The fish aren't biting, so I'll take a battle instead!"
         ],
         "text": [
-          ""
+          "Pescarul Loïc: Peștii nu mușcă, așa că mă mulțumesc cu o luptă!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Fisherman Loïc: Even the fish would have given me more of a fight."
         ],
         "text": [
-          ""
+          "Pescarul Loïc: Până și peștii mi-ar fi dat mai multă bătaie."
         ]
       }
     }
@@ -111,7 +111,7 @@
         "Route 9 · Coast Road\nWest: Ambrette Town\nEast: Route 12"
       ],
       "text": [
-        ""
+        "Traseul 9 · Drumul Coastei\nVest: Ambrette Town\nEst: Traseul 12"
       ]
     }
   }

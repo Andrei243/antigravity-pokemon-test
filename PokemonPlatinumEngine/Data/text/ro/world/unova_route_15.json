@@ -6,7 +6,7 @@
           "Elliot"
         ],
         "text": [
-          ""
+          "Elliot"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "My Pokémon is the cutest in Unova. And the strongest! Battle!"
         ],
         "text": [
-          ""
+          "Pokémonul meu e cel mai drăguț din Unova. Și cel mai puternic! Luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Still the cutest, at least."
         ],
         "text": [
-          ""
+          "Tot cel mai drăguț, cel puțin."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Marie"
         ],
         "text": [
-          ""
+          "Marie"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I study the canyon's rocks. And the Trainers who cross them!"
         ],
         "text": [
-          ""
+          "Studiez stâncile canionului. Și Antrenorii care le trec!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "My study is complete. I lose."
         ],
         "text": [
-          ""
+          "Studiul meu e încheiat. Pierd."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Lydia"
         ],
         "text": [
-          ""
+          "Lydia"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "I come to the canyon to show off my Pokémon. Look!"
         ],
         "text": [
-          ""
+          "Vin în canion să-mi arăt Pokémonii. Uite!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "You looked. Then you won."
         ],
         "text": [
-          ""
+          "Te-ai uitat. Apoi ai câștigat."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Talon"
         ],
         "text": [
-          ""
+          "Talon"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "The canyon wind tests your balance. Let's test your team!"
         ],
         "text": [
-          ""
+          "Vântul canionului îți pune echilibrul la încercare. Să-ți încercăm echipa!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Blown away."
         ],
         "text": [
-          ""
+          "Luat de vânt."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Corin"
         ],
         "text": [
-          ""
+          "Corin"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "I've hiked from one end of Unova to the other. Battle me here!"
         ],
         "text": [
-          ""
+          "Am mers pe jos dintr-un capăt al Unovei în celălalt. Luptă cu mine aici!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "The hike was easier."
         ],
         "text": [
-          ""
+          "Drumeția a fost mai ușoară."
         ]
       }
     }
@@ -137,7 +137,7 @@
         "Route 15\nBlack City - Marvelous Bridge"
       ],
       "text": [
-        ""
+        "Traseul 15\nBlack City - Podul Minunat"
       ]
     },
     "2": {
@@ -145,7 +145,7 @@
         "Poké Transfer Lab\nThe lab is closed"
       ],
       "text": [
-        ""
+        "Laboratorul Poké Transfer\nLaboratorul este închis"
       ]
     },
     "3": {
@@ -153,7 +153,7 @@
         "Trainer Tips\nStrength moves heavy boulders out of the way."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nStrength mută bolovanii grei din cale."
       ]
     },
     "4": {
@@ -161,7 +161,7 @@
         "Watch out for falling rocks!"
       ],
       "text": [
-        ""
+        "Atenție la căderile de pietre!"
       ]
     }
   }

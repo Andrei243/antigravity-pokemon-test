@@ -6,7 +6,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Golan"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "This city never sleeps. Every street has a Trainer looking for a fight."
         ],
         "text": [
-          ""
+          "Orașul ăsta nu doarme niciodată. Pe fiecare stradă e un Antrenor în căutare de ceartă."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Battle Girl"
         ],
         "text": [
-          ""
+          "Fată de Luptă"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I came to Black City to climb the Black Tower. Its battles are the best training there is."
         ],
         "text": [
-          ""
+          "Am venit în Black City să urc Turnul Negru. Luptele lui sunt cel mai bun antrenament."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Veteran"
         ],
         "text": [
-          ""
+          "Veteran"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "In my day this was a forest. Now it's all towers and lights."
         ],
         "text": [
-          ""
+          "Pe vremea mea aici era o pădure. Acum sunt doar turnuri și lumini."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The shops here stay open all night. So do the battles."
         ],
         "text": [
-          ""
+          "Magazinele de aici rămân deschise toată noaptea. La fel și luptele."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Welcome to Black City! Everything's for sale, if you've got the money."
         ],
         "text": [
-          ""
+          "Bun venit în Black City! Totul se vinde, dacă ai bani."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Drumeț cu rucsac"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I heard the Black Tower's floors are different every time you climb them."
         ],
         "text": [
-          ""
+          "Am auzit că etajele Turnului Negru sunt altele de fiecare dată când le urci."
         ]
       }
     }
@@ -115,7 +115,7 @@
         "Black City\nThe city that never sleeps"
       ],
       "text": [
-        ""
+        "Black City\nOrașul care nu doarme niciodată"
       ]
     }
   }

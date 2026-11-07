@@ -6,7 +6,7 @@
           "Librarian"
         ],
         "text": [
-          ""
+          "Bibliotecar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "This is the museum's library. Every book here is about Unova's past."
         ],
         "text": [
-          ""
+          "Aceasta este biblioteca muzeului. Fiecare carte de aici e despre trecutul Unovei."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm reading about the dragon in the tower up north. It's a scary story."
         ],
         "text": [
-          ""
+          "Citesc despre dragonul din turnul din nord. E o poveste înfricoșătoare."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetiță"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm waiting for my brother. He reads so slowly!"
         ],
         "text": [
-          ""
+          "Îl aștept pe fratele meu. Citește atât de încet!"
         ]
       }
     }
@@ -61,7 +61,7 @@
         "A book about Unova's founding. The two brothers and their dragon are on every page."
       ],
       "text": [
-        ""
+        "O carte despre întemeierea Unovei. Cei doi frați și dragonul lor sunt pe fiecare pagină."
       ]
     },
     "3": {
@@ -69,7 +69,7 @@
         "A book about fossils. Rocks with shells in them, and rocks with bones."
       ],
       "text": [
-        ""
+        "O carte despre fosile. Pietre cu scoici în ele și pietre cu oase."
       ]
     },
     "4": {
@@ -77,7 +77,7 @@
         "A book about the Skyarrow Bridge. It took years to build."
       ],
       "text": [
-        ""
+        "O carte despre Podul Skyarrow. A durat ani să fie construit."
       ]
     },
     "5": {
@@ -85,7 +85,7 @@
         "A book about the old warehouses. The city once moved goods all over Unova."
       ],
       "text": [
-        ""
+        "O carte despre vechile depozite. Orașul muta odinioară marfă în toată Unova."
       ]
     },
     "6": {
@@ -93,7 +93,7 @@
         "A book of paintings. Many are of Nacrene City."
       ],
       "text": [
-        ""
+        "O carte de picturi. Multe sunt cu Nacrene City."
       ]
     },
     "7": {
@@ -101,7 +101,7 @@
         "A book of old maps. Some of the roads have changed names."
       ],
       "text": [
-        ""
+        "O carte de hărți vechi. Unele drumuri și-au schimbat numele."
       ]
     },
     "8": {
@@ -109,7 +109,7 @@
         "A book about meteorites. Some fell near the Giant Chasm."
       ],
       "text": [
-        ""
+        "O carte despre meteoriți. Unii au căzut lângă Giant Chasm."
       ]
     },
     "9": {
@@ -117,7 +117,7 @@
         "A book about Pokémon of the forest. The pictures are beautiful."
       ],
       "text": [
-        ""
+        "O carte despre Pokémonii pădurii. Imaginile sunt superbe."
       ]
     },
     "10": {
@@ -125,7 +125,7 @@
         "A book of folk tales. The dragon of Dragonspiral Tower is in most of them."
       ],
       "text": [
-        ""
+        "O carte de basme populare. Dragonul din Turnul Dragonspiral e în majoritatea lor."
       ]
     },
     "11": {
@@ -133,7 +133,7 @@
         "A book about museums. This one is in it, of course."
       ],
       "text": [
-        ""
+        "O carte despre muzee. Acesta e în ea, desigur."
       ]
     }
   }

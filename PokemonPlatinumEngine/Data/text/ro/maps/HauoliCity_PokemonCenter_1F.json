@@ -4,7 +4,7 @@
       "Pokémon Center"
     ],
     "text": [
-      ""
+      "Centru Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse Joy"
         ],
         "text": [
-          ""
+          "Nurse Joy"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "PC Terminal"
         ],
         "text": [
-          ""
+          "Terminal PC"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
         ],
         "text": [
-          ""
+          "Funcționar: Bun venit! Tejgheaua Pokémon Mart e deschisă. Cu ce te pot servi?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumeț"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Every Pokémon Center in Alola has a Poké Mart counter and a café. You can heal up, stock up and have a drink, all in one stop!"
         ],
         "text": [
-          ""
+          "Fiecare Centru Pokémon din Alola are o tejghea Poké Mart și o cafenea. Te poți vindeca, aproviziona și bea ceva, totul într-un singur loc!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "There are four islands in Alola, and every one has its own kahuna. Melemele's is Hala, up in Iki Town."
         ],
         "text": [
-          ""
+          "Sunt patru insule în Alola și fiecare are propriul kahuna. Al insulei Melemele este Hala, sus în Iki Town."
         ]
       }
     }

@@ -4,7 +4,7 @@
       "{player}'s Home"
     ],
     "text": [
-      ""
+      "Casa lui {player}"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Mom"
         ],
         "text": [
-          ""
+          "Mama"
         ]
       },
       "dialog": {
@@ -23,8 +23,8 @@
           "Mom: ...There! You both look much better."
         ],
         "text": [
-          "",
-          ""
+          "Mama: Bine ai venit acasă! Stai jos și odihnește-te puțin.",
+          "Mama: ...Gata! Arătați mult mai bine amândoi."
         ]
       }
     }

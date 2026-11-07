@@ -4,7 +4,7 @@
       "Pokémon Center"
     ],
     "text": [
-      ""
+      "Centru Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse Joy"
         ],
         "text": [
-          ""
+          "Nurse Joy"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "PC Terminal"
         ],
         "text": [
-          ""
+          "Terminal PC"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
         ],
         "text": [
-          ""
+          "Funcționar: Bun venit! Tejgheaua Pokémon Mart e deschisă. Cu ce te pot servi?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I came to Shalour to train at the tower. The old master says I'm not ready to climb it yet."
         ],
         "text": [
-          ""
+          "Am venit la Shalour să mă antrenez la turn. Bătrânul maestru zice că nu sunt încă gata să-l urc."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Skater"
         ],
         "text": [
-          ""
+          "Patinator"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "The Gym Leader here skates to her Gym every morning, and she's faster than the bus!"
         ],
         "text": [
-          ""
+          "Liderul de sală de aici patinează până la sală în fiecare dimineață și e mai rapidă decât autobuzul!"
         ]
       }
     }

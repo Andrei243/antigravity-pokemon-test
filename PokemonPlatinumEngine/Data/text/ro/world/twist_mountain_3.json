@@ -6,7 +6,7 @@
           "Cairn"
         ],
         "text": [
-          ""
+          "Cairn"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hold it! Nobody passes my rail cart without a battle!"
         ],
         "text": [
-          ""
+          "Stai! Nimeni nu trece de vagonetul meu fără luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Fine, pass. Mind the cart."
         ],
         "text": [
-          ""
+          "Bine, treci. Ai grijă la vagonet."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Julia"
         ],
         "text": [
-          ""
+          "Julia"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "The young ones rush through these tunnels. I like to take my time, and take on whoever comes by."
         ],
         "text": [
-          ""
+          "Tinerii se grăbesc prin tunelurile astea. Eu îmi iau timpul și înfrunt pe oricine trece."
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Well fought. Take your time on the way out, too."
         ],
         "text": [
-          ""
+          "Bine luptat. Ia-ți timpul și la ieșire."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Gus"
         ],
         "text": [
-          ""
+          "Gus"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Up here the air's thin and the battles are hot. Ready?"
         ],
         "text": [
-          ""
+          "Aici sus aerul e rar și luptele sunt fierbinți. Gata?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Phew. That warmed me right up."
         ],
         "text": [
-          ""
+          "Uf. M-ai încălzit bine."
         ]
       }
     }

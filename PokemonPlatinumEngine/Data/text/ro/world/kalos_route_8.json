@@ -6,7 +6,7 @@
           "Pierrick"
         ],
         "text": [
-          ""
+          "Pierrick"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Fisherman Pierrick: The bay is empty today, and I'm itching for a bite. You'll do!"
         ],
         "text": [
-          ""
+          "Pescarul Pierrick: Golful e gol azi și mă mănâncă palmele după o mușcătură. Tu faci față!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Fisherman Pierrick: Nothing on the line, nothing in the bucket. Typical."
         ],
         "text": [
-          ""
+          "Pescarul Pierrick: Nimic pe fir, nimic în găleată. Ca de obicei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Ysolde"
         ],
         "text": [
-          ""
+          "Ysolde"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Ysolde: My sandwiches are on the rocks and my Pokémon are rested. Let's battle!"
         ],
         "text": [
-          ""
+          "Excursionista Ysolde: Sandvișurile mele sunt pe stânci și Pokémonii mei sunt odihniți. Să luptăm!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Ysolde: Now my sandwiches are cold. Worth it."
         ],
         "text": [
-          ""
+          "Excursionista Ysolde: Acum sandvișurile mele s-au răcit. A meritat."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Aurélien"
         ],
         "text": [
-          ""
+          "Aurélien"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Hiker Aurélien: The cliffs got me early today. Let me see how you do on flat ground!"
         ],
         "text": [
-          ""
+          "Drumețul Aurélien: Stâncile m-au obosit devreme azi. Hai să văd cum te descurci pe teren plat!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Hiker Aurélien: Flat ground, and you still knocked me over."
         ],
         "text": [
-          ""
+          "Drumețul Aurélien: Teren plat, și tot m-ai doborât."
         ]
       }
     },
@@ -137,7 +137,7 @@
         "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: Ambrette Town"
       ],
       "text": [
-        ""
+        "Traseul 8 · Poteca Coastei Stâncoase\nNord: Cyllage City\nSud: Ambrette Town"
       ],
       "was": [
         "Ruta 8 · Poteca Coastei Stâncoase\nNord: Orașul Cyllage\nSud: închis de o alunecare de teren"

@@ -6,7 +6,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I paint Pokémon in motion. They never sit still for long!"
         ],
         "text": [
-          ""
+          "Pictez Pokémoni în mișcare. Nu stau niciodată locului mult timp!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Poké Fan"
         ],
         "text": [
-          ""
+          "Fan Poké"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I buy a painting from every artist here. My house is full of them."
         ],
         "text": [
-          ""
+          "Cumpăr câte un tablou de la fiecare artist de aici. Casa mea e plină."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This studio sells prints. Something for every wall!"
         ],
         "text": [
-          ""
+          "Studioul ăsta vinde reproduceri. Ceva pentru fiecare perete!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Tinerel"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I want to be an artist when I grow up. Or a Trainer. Or both!"
         ],
         "text": [
-          ""
+          "Vreau să fiu artist când voi fi mare. Sau Antrenor. Sau amândouă!"
         ]
       }
     }

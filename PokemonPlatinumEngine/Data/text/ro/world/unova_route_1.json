@@ -6,7 +6,7 @@
           "Jill"
         ],
         "text": [
-          ""
+          "Jill"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I've walked all of Unova with my backpack. Let's see how far you've come!"
         ],
         "text": [
-          ""
+          "Am străbătut toată Unova cu rucsacul meu. Să vedem cât de departe ai ajuns!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Further than me, apparently."
         ],
         "text": [
-          ""
+          "Mai departe decât mine, se pare."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Shane"
         ],
         "text": [
-          ""
+          "Shane"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Route 1 is where my journey began. Let's make it where yours gets tough!"
         ],
         "text": [
-          ""
+          "Pe Traseul 1 a început călătoria mea. Să-l facem locul unde a ta devine grea!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Tough for me, at least."
         ],
         "text": [
-          ""
+          "Grea pentru mine, cel puțin."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Audra"
         ],
         "text": [
-          ""
+          "Audra"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Even here, close to Nuvema, a Ranger has to stay sharp!"
         ],
         "text": [
-          ""
+          "Chiar și aici, aproape de Nuvema, un Ranger trebuie să rămână ager!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Not sharp enough."
         ],
         "text": [
-          ""
+          "Nu destul de ager."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Rick"
         ],
         "text": [
-          ""
+          "Rick"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I protect the Pokémon of Route 1. Let me test your team!"
         ],
         "text": [
-          ""
+          "Protejez Pokémonii de pe Traseul 1. Lasă-mă să-ți testez echipa!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "They're well protected."
         ],
         "text": [
-          ""
+          "Sunt bine protejați."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Sean"
         ],
         "text": [
-          ""
+          "Sean"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "I came back to where I started to see how much I've grown. Battle me!"
         ],
         "text": [
-          ""
+          "M-am întors de unde am pornit ca să văd cât am crescut. Luptă cu mine!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "I've still got growing to do."
         ],
         "text": [
-          ""
+          "Mai am de crescut."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Cheyenne"
         ],
         "text": [
-          ""
+          "Cheyenne"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Every great Trainer passes along Route 1 once. Let's see how great you are!"
         ],
         "text": [
-          ""
+          "Fiecare Antrenor mare trece o dată pe Traseul 1. Să vedem cât de mare ești!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Very great, it turns out."
         ],
         "text": [
-          ""
+          "Foarte mare, se pare."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "Nuvema Town is just down the road. New Trainers set off from there."
         ],
         "text": [
-          ""
+          "Nuvema Town e chiar în josul drumului. De acolo pornesc Antrenorii noi."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescar"
         ]
       },
       "dialog": {
@@ -188,7 +188,7 @@
           "The sea is just past the trees. Good fishing, if you have the patience."
         ],
         "text": [
-          ""
+          "Marea e chiar dincolo de copaci. Pescuit bun, dacă ai răbdare."
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -206,7 +206,7 @@
           "Accumula Town is up the hill. You'll hear the music before you see it."
         ],
         "text": [
-          ""
+          "Accumula Town e sus pe deal. Vei auzi muzica înainte să-l vezi."
         ]
       }
     }
@@ -217,7 +217,7 @@
         "Route 1\nNuvema Town - Accumula Town"
       ],
       "text": [
-        ""
+        "Traseul 1\nNuvema Town - Accumula Town"
       ]
     },
     "3": {
@@ -225,7 +225,7 @@
         "Trainer Tips\nPress the button to talk to people and check signs!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nApasă butonul ca să vorbești cu oamenii și să citești indicatoarele!"
       ]
     }
   }

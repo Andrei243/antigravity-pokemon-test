@@ -6,7 +6,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "In spring the whole town turns to marsh. In winter you can skate from one end to the other!"
         ],
         "text": [
-          ""
+          "Primăvara tot orașul se face mlaștină. Iarna poți patina de la un capăt la altul!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamnă cu umbrelă"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I carry my parasol in every season here. Rain, snow, the odd hailstone... you never know."
         ],
         "text": [
-          ""
+          "Îmi port umbrela în fiecare anotimp aici. Ploaie, zăpadă, câte o piatră de grindină... nu știi niciodată."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The Gym's been quiet since its Leader went off to act in films. We still cheer for it, though."
         ],
         "text": [
-          ""
+          "Sala e liniștită de când Liderul ei a plecat să joace în filme. Tot o încurajăm, totuși."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I train in the shallows. Wading through the marsh builds the legs like nothing else!"
         ],
         "text": [
-          ""
+          "Mă antrenez în apele puțin adânci. Mersul prin mlaștină întărește picioarele ca nimic altceva!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Up north stands the Dragonspiral Tower, the oldest thing in Unova. Nobody knows who built it."
         ],
         "text": [
-          ""
+          "Spre nord se află Turnul Dragonspiral, cel mai vechi lucru din Unova. Nimeni nu știe cine l-a construit."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The Pokémon Fan Club's chairman lives here. He'll talk your ear off about his favourites."
         ],
         "text": [
-          ""
+          "Președintele Clubului Fanilor Pokémon locuiește aici. Îți va vorbi până te doare capul despre favoriții lui."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Route 8 is all bog. Watch your step or you'll be in it up to your knees."
         ],
         "text": [
-          ""
+          "Traseul 8 e numai mlaștină. Ai grijă pe unde calci sau intri până la genunchi."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Young Boy"
         ],
         "text": [
-          ""
+          "Băiețel"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "When the marsh freezes I'm going to slide all the way to the Pokémon Center!"
         ],
         "text": [
-          ""
+          "Când îngheață mlaștina, o să alunec până la Centrul Pokémon!"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamnă cu umbrelă"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "The mountain's tunnels bring the cold right down to the town. Even in summer it's cool here."
         ],
         "text": [
-          ""
+          "Tunelurile muntelui aduc frigul până în oraș. Chiar și vara e răcoare aici."
         ]
       }
     }
@@ -169,7 +169,7 @@
         "Icirrus City\nThe city that changes with the seasons"
       ],
       "text": [
-        ""
+        "Icirrus City\nOrașul care se schimbă odată cu anotimpurile"
       ]
     },
     "2": {
@@ -177,7 +177,7 @@
         "Pokémon Fan Club\nAll who love Pokémon are welcome!"
       ],
       "text": [
-        ""
+        "Clubul Fanilor Pokémon\nToți cei care iubesc Pokémonii sunt bineveniți!"
       ]
     },
     "3": {
@@ -185,7 +185,7 @@
         "Icirrus City Pokémon Gym"
       ],
       "text": [
-        ""
+        "Sala Pokémon Icirrus City"
       ]
     }
   }

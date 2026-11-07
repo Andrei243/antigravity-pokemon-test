@@ -6,7 +6,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamnă cu umbrelă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The puddles here are deeper than they look. My boots learned that the hard way."
         ],
         "text": [
-          ""
+          "Băltoacele de aici sunt mai adânci decât par. Cizmele mele au aflat pe pielea lor."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Astor"
         ],
         "text": [
-          ""
+          "Astor"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "I'm the toughest kid in Icirrus! Want to see?"
         ],
         "text": [
-          ""
+          "Sunt cel mai dur copil din Icirrus! Vrei să vezi?"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Okay, maybe the second toughest."
         ],
         "text": [
-          ""
+          "Bine, poate al doilea ca duritate."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Mai"
         ],
         "text": [
-          ""
+          "Mai"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "I jumped from puddle to puddle all the way here! Now I'll jump on you!"
         ],
         "text": [
-          ""
+          "Am sărit din băltoacă în băltoacă până aici! Acum sar pe tine!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Splash. That's the sound of me losing."
         ],
         "text": [
-          ""
+          "Plici. Așa sună când pierd."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Tyra"
         ],
         "text": [
-          ""
+          "Tyra"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Rain or shine, my parasol and I are always ready for a battle."
         ],
         "text": [
-          ""
+          "Ploaie sau soare, umbrela mea și cu mine suntem mereu gata de luptă."
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Shine for you. Rain for me."
         ],
         "text": [
-          ""
+          "Soare pentru tine. Ploaie pentru mine."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Ryder"
         ],
         "text": [
-          ""
+          "Ryder"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Nothing bites in a bog like this. Let's battle while I wait."
         ],
         "text": [
-          ""
+          "Nimic nu mușcă într-o mlaștină ca asta. Să luptăm cât aștept."
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Something bit, all right. It was you."
         ],
         "text": [
-          ""
+          "Ceva a mușcat, într-adevăr. Tu ai fost."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Ingrid"
         ],
         "text": [
-          ""
+          "Ingrid"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "A walk in the marsh does wonders for one's complexion. A battle, even more so!"
         ],
         "text": [
-          ""
+          "O plimbare prin mlaștină face minuni pentru ten. O luptă, și mai mult!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Flushed with defeat. How unbecoming."
         ],
         "text": [
-          ""
+          "Roșie de înfrângere. Ce nepotrivit."
         ]
       }
     }
@@ -155,7 +155,7 @@
         "Route 8\nIcirrus City - Tubeline Bridge"
       ],
       "text": [
-        ""
+        "Traseul 8\nIcirrus City - Podul Tubeline"
       ]
     },
     "2": {
@@ -163,7 +163,7 @@
         "Moor of Icirrus\nRangers watch over the moor"
       ],
       "text": [
-        ""
+        "Mlaștina din Icirrus\nRangerii veghează asupra mlaștinii"
       ]
     },
     "3": {
@@ -171,7 +171,7 @@
         "Beware of the bog!\nKeep to the dry ground"
       ],
       "text": [
-        ""
+        "Atenție la mlaștină!\nRămâi pe pământ uscat"
       ]
     }
   }

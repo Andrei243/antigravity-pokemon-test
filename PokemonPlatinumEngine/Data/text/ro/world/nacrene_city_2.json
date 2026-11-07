@@ -6,7 +6,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Nacrene Museum! Please don't touch the exhibits."
         ],
         "text": [
-          ""
+          "Bun venit la Muzeul Nacrene! Te rugăm să nu atingi exponatele."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The great skeleton in the middle is a dragon Pokémon's. Nobody has found another like it."
         ],
         "text": [
-          ""
+          "Scheletul mare din mijloc aparține unui Pokémon dragon. Nimeni nu a mai găsit altul."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Om de știință"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "We restore fossils here. Bring one in sometime, and we'll see what we can do."
         ],
         "text": [
-          ""
+          "Restaurăm fosile aici. Adu una cândva și vedem ce putem face."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I come here to sketch the skeleton. It's a different picture from every angle."
         ],
         "text": [
-          ""
+          "Vin aici să schițez scheletul. E o altă imagine din fiecare unghi."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlar"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The meteorite room is my favourite. It's a rock from space!"
         ],
         "text": [
-          ""
+          "Sala cu meteoriți e preferata mea. E o stâncă din spațiu!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The upper floor has the library. Quiet up there, please."
         ],
         "text": [
-          ""
+          "Etajul de sus are biblioteca. Liniște acolo sus, te rog."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "I bring things I find in the wild for the museum to study."
         ],
         "text": [
-          ""
+          "Aduc lucruri găsite în sălbăticie ca muzeul să le studieze."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "My grandfather dug up half these fossils. He'd be pleased to see them here."
         ],
         "text": [
-          ""
+          "Bunicul meu a dezgropat jumătate din fosilele astea. S-ar bucura să le vadă aici."
         ]
       }
     }

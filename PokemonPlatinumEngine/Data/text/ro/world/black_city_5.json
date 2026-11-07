@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționer"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Climbers come down tired but smiling. Most of them, anyway."
         ],
         "text": [
-          ""
+          "Cei care urcă coboară obosiți, dar zâmbind. Majoritatea, cel puțin."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The tower's areas change all the time. No two climbs are quite the same."
         ],
         "text": [
-          ""
+          "Zonele turnului se schimbă tot timpul. Nu există două urcări la fel."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Battle Points earned in the tower spend just as well at the Battle Frontier."
         ],
         "text": [
-          ""
+          "Punctele de Luptă câștigate în turn se cheltuiesc la fel de bine la Battle Frontier."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "The Black Tower tests Trainers area by area. Only the strongest see the top."
         ],
         "text": [
-          ""
+          "Turnul Negru pune Antrenorii la încercare, zonă cu zonă. Doar cei mai puternici ajung în vârf."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Rich Boy"
         ],
         "text": [
-          ""
+          "Băiat Bogat"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I've climbed to the top three times. Well, twice. Well, once."
         ],
         "text": [
-          ""
+          "Am urcat până sus de trei ori. Ei bine, de două. Ei bine, o dată."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I climbed this tower when it was half as tall. My knees remember."
         ],
         "text": [
-          ""
+          "Am urcat turnul acesta când era pe jumătate cât e acum. Genunchii mei își amintesc."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Susținători"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "We cheer for whoever reaches the top. Nobody's come down a winner yet today."
         ],
         "text": [
-          ""
+          "Încurajăm pe oricine ajunge în vârf. Încă nimeni nu a coborât învingător azi."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Poké Fan"
         ],
         "text": [
-          ""
+          "Fan Poké"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "My Pokémon want to climb the tower. I'm still saving up my courage."
         ],
         "text": [
-          ""
+          "Pokémonii mei vor să urce turnul. Eu îmi adun încă curajul."
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Poké Fan"
         ],
         "text": [
-          ""
+          "Fan Poké"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "They say the boss at the top is barely older than you!"
         ],
         "text": [
-          ""
+          "Se zice că șeful de sus e abia mai în vârstă decât tine!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Golan"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "I made it to the third area once. The fourth one sent me right back down."
         ],
         "text": [
-          ""
+          "Am ajuns o dată în a treia zonă. A patra m-a trimis direct înapoi."
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Nursery Aide"
         ],
         "text": [
-          ""
+          "Îngrijitoare de creșă"
         ]
       },
       "dialog": {
@@ -204,7 +204,7 @@
           "The children are on a trip to see the tower. They want to climb it when they're older."
         ],
         "text": [
-          ""
+          "Copiii sunt într-o excursie să vadă turnul. Vor să-l urce când vor fi mai mari."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -222,7 +222,7 @@
           "I'm painting the lobby. The tower's lights make every colour shine."
         ],
         "text": [
-          ""
+          "Vopsesc holul. Luminile turnului fac fiecare culoare să strălucească."
         ]
       }
     }

@@ -6,7 +6,7 @@
           "Violette"
         ],
         "text": [
-          ""
+          "Violette"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Lass Violette: I grew these flowers myself, and I'll fight for every one. Ready?"
         ],
         "text": [
-          ""
+          "Fata Violette: Florile astea le-am crescut eu, și mă bat pentru fiecare. Gata?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Lass Violette: You trampled one. Just kidding! Good battle."
         ],
         "text": [
-          ""
+          "Fata Violette: Ai călcat una. Glumesc! Luptă frumoasă."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Hortense"
         ],
         "text": [
-          ""
+          "Hortense"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Hortense: The flower beds make the best picnic spots. Want to join? After a battle!"
         ],
         "text": [
-          ""
+          "Excursionista Hortense: Stratele de flori sunt cele mai frumoase locuri de picnic. Vrei să ni te alături? După o luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Hortense: Fine, fine. Come and sit down, then."
         ],
         "text": [
-          ""
+          "Excursionista Hortense: Bine, bine. Vino și stai jos, atunci."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Matthieu"
         ],
         "text": [
-          ""
+          "Matthieu"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Youngster Matthieu: Coumarine's Gym Leader taught me everything I know. Watch this!"
         ],
         "text": [
-          ""
+          "Tinerelul Matthieu: Liderul sălii din Coumarine m-a învățat tot ce știu. Privește!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Youngster Matthieu: He didn't teach me that. I'd better ask him."
         ],
         "text": [
-          ""
+          "Tinerelul Matthieu: Asta nu m-a învățat-o. Mai bine îl întreb."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 12 · Blossom Road\nWest: Route 9\nEast: Coumarine City"
       ],
       "text": [
-        ""
+        "Traseul 12 · Drumul Florilor\nVest: Traseul 9\nEst: Coumarine City"
       ]
     }
   }

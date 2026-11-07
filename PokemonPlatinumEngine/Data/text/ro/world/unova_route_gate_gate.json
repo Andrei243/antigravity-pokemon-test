@@ -6,7 +6,7 @@
           "Gate Guard"
         ],
         "text": [
-          ""
+          "Paznic de poartă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Route 1 leads up to Accumula Town. Route 17 goes out over the sea."
         ],
         "text": [
-          ""
+          "Traseul 1 duce sus spre Accumula Town. Traseul 17 iese peste mare."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Drumeț cu rucsac"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I came in from the sea route. The currents out there are fierce!"
         ],
         "text": [
-          ""
+          "Am venit pe drumul mării. Curenții de acolo sunt năprasnici!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor Elită"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Route 17's Trainers are tough. Make sure your team's ready."
         ],
         "text": [
-          ""
+          "Antrenorii de pe Traseul 17 sunt duri. Asigură-te că echipa ta e pregătită."
         ]
       }
     }

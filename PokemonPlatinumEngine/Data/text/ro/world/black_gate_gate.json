@@ -6,7 +6,7 @@
           "Gate Guard"
         ],
         "text": [
-          ""
+          "Paznic de poartă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Route 15 runs west to the Marvelous Bridge. The wind off the canyon is fierce."
         ],
         "text": [
-          ""
+          "Traseul 15 duce spre vest, la Podul Minunat. Vântul de pe canion e năprasnic."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Drumeț cu rucsac"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm walking from Black City to Nimbasa. A long way, but the bridge is worth it."
         ],
         "text": [
-          ""
+          "Merg pe jos de la Black City la Nimbasa. E un drum lung, dar podul merită."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Poké Fan"
         ],
         "text": [
-          ""
+          "Fan Poké"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Black City's Trainers are the toughest in Unova. I come just to watch them battle."
         ],
         "text": [
-          ""
+          "Antrenorii din Black City sunt cei mai duri din Unova. Vin doar să-i privesc luptând."
         ]
       }
     }
