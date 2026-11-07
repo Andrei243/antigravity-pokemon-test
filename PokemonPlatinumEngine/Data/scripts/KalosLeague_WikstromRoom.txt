@@ -1,6 +1,7 @@
 # Wikstrom's room of the Pokémon League (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md, "The mountain,
 # Team Flare and the League, drawn by hand"): one of the Elite Four's four doors, Steel, its master a knight. His team is
-# Kalos's trainers.json's kalos_wikstrom_1; beaten, FLAG_KALOS_DEFEATED_WIKSTROM (KalosLeague_Hall.txt).
+# Kalos's trainers.json's kalos_wikstrom_1; beaten, FLAG_KALOS_DEFEATED_WIKSTROM, and the
+# Champion's door opens once all four are (common.KalosLeagueFour).
 
 
 script Wikstrom
@@ -13,6 +14,7 @@ script Wikstrom
   battle self as "kalos_wikstrom_1"
   say "Glorious! A true duel, honestly fought. My helmet is off to you."
   setflag FLAG_KALOS_DEFEATED_WIKSTROM
+  call KalosLeagueFour
   endscene
   end
 label Won

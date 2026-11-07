@@ -8846,8 +8846,8 @@ beats as they are publicly described. Kalos is played from Vaniville Town to its
   met as a wild Pokémon at 50 (X's: Y's Yveltal is not met; the battle may be run from, and caught or not, it leaves and
   the weapon fails), which opens the valley south of Anistar (`VAR_KALOS_ROUTE_18` 1); Wulfric's Iceberg Badge in Snowbelle;
   the neighbour's last battle on Route 21 (`VAR_KALOS_RIVAL_LEAGUE`); Victory Road's guard, who counts eight Badges
-  (`VAR_KALOS_VICTORY_ROAD`); the League's hall with its four doors in any order and the Champion's in the middle, shut by
-  its trigger until the four flags are set; Diantha, whose Gardevoir Mega Evolves; and the Hall of Fame
+  (`VAR_KALOS_VICTORY_ROAD`); the League's hall with its four doors in any order and the Champion's in the middle, a way there
+  only `from` `FLAG_KALOS_LEAGUE_FOUR`, which each master's room sets once all four are beaten (`common.KalosLeagueFour`); Diantha, whose Gardevoir Mega Evolves; and the Hall of Fame
   (`KalosLeague_HallOfFame.txt`), which sets `KalosHallOfFame`, puts the League back, sends the player home and opens the
   flight on to Alola. AZ, the ultimate weapon's history in full and the post-game's Looker are not built.
 - **The flight on to Alola** stays where plan 23 · Z5 put it, the airline's attendant in Lumiose City's Pokémon Center,
@@ -8863,6 +8863,16 @@ beats as they are publicly described. Kalos is played from Vaniville Town to its
   `Canalside`, the League as `Lumiose`: no new `Architecture` row. Every new place plays one of Kalos's existing songs
   until plan 31 writes its own.
 - **Fly**: spawns 10 to 15, the five new Pokémon Centers and the League's hall, each a block of the Town Map.
+- **Voices**: the new speakers are provisional voices of the cast (`Data/voice/cast.json`); Laverre's Leader speaks as
+  `kalos_valerie` (`speaker kalos_valerie "Valerie"`), as Nimbasa's Nate does, so the other Trainers called Valerie (Sinnoh's
+  reporter, Emerald's Hex Maniac, HeartGold's Beauty) keep their voices.
+- **The tests**: `KalosTests` hold the places, the tables, the rooms, the walk from the bedroom to the Hall of Fame's room,
+  the objectives, the gates and every chapter's script played headless from Ramos to the Hall of Fame and the flight on;
+  `PlaythroughTests.KalossLastChaptersPlayThroughFromCoumarineToTheHallOfFame` has the bot play the field from Coumarine
+  City (three Badges, a team of the 70s, a Repel that lasts the whole way) to the Hall of Fame on
+  `Itineraries.KalosLastChapters`. Its first run found the bot turning back at Victory Road: of a map between's ways back
+  onto the same map, it took the nearest, the mouth it had come in by; it now takes the one that comes out nearest the way
+  on (`Autoplayer.OnwardDoor`), as it already did on the map the leg is for.
 
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 

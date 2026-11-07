@@ -44,6 +44,7 @@ script ClearGame
   clearflag FLAG_KALOS_DEFEATED_WIKSTROM
   clearflag FLAG_KALOS_DEFEATED_DRASNA
   clearflag FLAG_KALOS_DEFEATED_DIANTHA
+  clearflag FLAG_KALOS_LEAGUE_FOUR
   return
 
 

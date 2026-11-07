@@ -76,6 +76,8 @@ public class PlaythroughTests
             foreach (var (species, level) in new[] { ("Greninja", 78), ("Talonflame", 76), ("Venusaur", 76), ("Lucario", 76), ("Garchomp", 76), ("Gardevoir", 76) })
                 game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
             game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+            // (a Repel that lasts the whole way: the wild Pokémon are all weaker than the lead, and only the story is tried here)
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
             game.Place(MapDatabase.Get("Kalos"), 243, 474, Direction.Down);
             game.State = GameState.Overworld;
             var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosLastChapters) };

@@ -261,6 +261,13 @@ internal sealed partial class Autoplayer
         return Toward(it, targetMap, (_, _) => false, aim.X, aim.Y, null);
     }
 
+    // Where on a map between the way on toward the target map starts: the first warp of it that leads to the map after it
+    private static (int X, int Y)? OnwardDoor(string between, string targetMap)
+    {
+        if (Itinerary.NextMap(between, targetMap, MapDatabase.Get) is not { } after) return null;
+        return MapDatabase.Get(between).Warps.FirstOrDefault(w => w.TargetMap == after && !w.Shut) is { } door ? (door.SourceX, door.SourceY) : null;
+    }
+
     // No way on this map to the goal: a way off it whose map leads back onto it nearer the goal (a cave or a gate between)
     private bool Detour(Map map, int px, int py, int tx, int ty, out Func<int, int, bool> goal, out (int X, int Y) aim)
     {
@@ -300,9 +307,12 @@ internal sealed partial class Autoplayer
             if (next == null) return Failed(it, $"no way from {map.Name} to {targetMap}") ? ActionFrame.None : ActionFrame.None;
             var ways = map.Warps.Where(w => w.TargetMap == next && !w.Shut && (w.SourceX, w.SourceY) != (px, py)).ToList();
             if (ways.Count == 0) return Failed(it, $"no way to {next}") ? ActionFrame.None : ActionFrame.None;
-            // Of several ways to the next map, the one that comes out nearest where the leg is going, or else the nearest
-            var aim = next == targetMap && (tx, ty) != (0, 0)
-                ? ways.OrderBy(w => Math.Abs(w.TargetX - tx) + Math.Abs(w.TargetY - ty)).First()
+            // Of several ways to the next map, the one that comes out nearest where the leg is going; on the way through a
+            // map between (plan 23 · Z4: Victory Road, whose two mouths both open on the map of Kalos, one on Route 21 and
+            // one on the League's terrace), the one that comes out nearest the way on from it; or else the nearest
+            (int X, int Y)? onward = next == targetMap ? ((tx, ty) != (0, 0) ? (tx, ty) : null) : OnwardDoor(next, targetMap);
+            var aim = onward is { } o
+                ? ways.OrderBy(w => Math.Abs(w.TargetX - o.X) + Math.Abs(w.TargetY - o.Y)).First()
                 : ways.OrderBy(w => Math.Abs(w.SourceX - px) + Math.Abs(w.SourceY - py)).First();
             var doors = ways.Where(w => w.TargetX == aim.TargetX && w.TargetY == aim.TargetY || Math.Abs(w.SourceX - aim.SourceX) + Math.Abs(w.SourceY - aim.SourceY) <= 2)
                 .Select(w => (w.SourceX, w.SourceY)).ToHashSet();

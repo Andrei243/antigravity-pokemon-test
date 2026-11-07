@@ -139,7 +139,8 @@
       "targetMap": "KalosLeague_ChampionRoom",
       "targetX": 7,
       "targetY": 12,
-      "targetFacing": "Up"
+      "targetFacing": "Up",
+      "from": "FLAG_KALOS_LEAGUE_FOUR"
     },
     {
       "sourceX": 13,
@@ -189,15 +190,6 @@
       "y": 7,
       "facing": "Down",
       "script": "Guide"
-    }
-  ],
-  "triggers": [
-    {
-      "x": 10,
-      "y": 4,
-      "width": 1,
-      "depth": 1,
-      "script": "ChampionDoor"
     }
   ],
   "wildEncounters": []

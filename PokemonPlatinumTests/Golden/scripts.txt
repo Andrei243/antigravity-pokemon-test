@@ -3503,10 +3503,10 @@ way 1, from answer 1
   Depot Agent> After a set you may also put your run down. The game is saved here, and you can ride on later.
   ? What would you like to do? = INFO
 === GeosengeTown_FlareHQ.Lysandre
-from Lysandre at 10,6 of GeosengeTown_FlareHQ
+from Lysandre at 10,7 of GeosengeTown_FlareHQ
 way -
 === GeosengeTown_FlareHQ.Xerneas
-from Xerneas at 10,3 of GeosengeTown_FlareHQ
+from Xerneas at 10,4 of GeosengeTown_FlareHQ
 way -
   > A great Pokémon sleeps among the machines, its horns as still and grey as a dead tree.
 === GlobalTerminal1F.Favourite
@@ -3776,10 +3776,6 @@ way 0
 way 1, from answer 1
   * battle kalos_drasna_1 Lost
   * scene over, unseen
-=== KalosLeague_Hall.ChampionDoor
-from the trigger at 10,4 of KalosLeague_Hall
-way -
-  > The Champion's door is shut fast. Beat all four of the Elite Four first.
 === KalosLeague_Hall.Guide
 from Guide at 12,7 of KalosLeague_Hall
 way -
@@ -12155,6 +12151,9 @@ way -
   + FLAG_ROCKET_TAKEOVER_ACTIVE
   + FLAG_UNK_0C5
   = VAR_SCENE_ROCKET_TAKEOVER 0 -> 2
+=== common.KalosLeagueFour
+from a trainer with lines of their own
+way -
 === common.KalosLumiose
 from a trainer with lines of their own
 way -
@@ -21120,7 +21119,7 @@ from the trigger at 301,358 of Kalos
 way -
   > The road to Route 5 is closed for repairs. It will open again soon.
 === lumiose_city.PrismTower
-from Lift Operator at 361,362 of Kalos
+from Lift Operator at 358,362 of Kalos
 way -
   Lift Operator> Sorry, the lift has no power. The whole city's gone dark, and the tower with it.
 === lumiose_city.Sina

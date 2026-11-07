@@ -172,6 +172,10 @@ internal sealed partial class Autoplayer
                 return Answer();
             case GameState.Dialogue:
                 return Pulse(GameAction.Confirm);
+            case GameState.Credits or GameState.HallOfFameCeremony:
+                // A timed scene of a Hall of Fame (plan 23 · Z4, the first itinerary to reach one): the button kept down
+                // hurries it, as a player holds it
+                return ActionFrame.Press(GameAction.Confirm);
             case GameState.StarterSelect:
                 // The briefcase's question opens on NO: YES is to the right (plan 16 · T13)
                 return game.StarterSelect is { ConfirmingSelection: true, AnswerYes: false } ? Pulse(GameAction.Right) : Pulse(GameAction.Confirm);
@@ -385,7 +389,9 @@ internal sealed partial class Autoplayer
 
         // A softlock: whatever the game holds, standing still while input goes in
         {
-            bool free = state == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null && !game.StartMenu.IsActive;
+            // (a Hall of Fame's ceremony and the credits play by themselves to their end, whatever is pressed: no softlock)
+            bool free = state == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null && !game.StartMenu.IsActive
+                || state is GameState.Credits or GameState.HallOfFameCeremony;
             float limit = state is GameState.Overworld or GameState.Dialogue or GameState.Battle or GameState.Transition ? Softlock.Limit : 3 * Softlock.Limit;
             // Random presses get through a screen slowly: a fuzzer's run is given six times as long (plan 16 · T13)
             if (fuzzer != null) limit = 6 * Softlock.Limit;

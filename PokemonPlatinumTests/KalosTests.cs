@@ -873,12 +873,15 @@ public class KalosTests
         Assert.Equal(1, story.Var("VAR_KALOS_VICTORY_ROAD"));
         foreach (var (room, who) in new[] { ("KalosLeague_MalvaRoom", "Malva"), ("KalosLeague_SieboldRoom", "Siebold"), ("KalosLeague_WikstromRoom", "Wikstrom"), ("KalosLeague_DrasnaRoom", "Drasna") })
             Play(room, who, room, who);
+        // The Champion's door is there once all four are beaten
+        Assert.True(story.Has("FLAG_KALOS_LEAGUE_FOUR"));
         Assert.Contains("warp KalosLeague_HallOfFame 6 10", Play("KalosLeague_ChampionRoom", "Diantha", "KalosLeague_ChampionRoom", "Diantha").Log);
         var hall = Play("KalosLeague_HallOfFame", "OnEnter", "KalosLeague_HallOfFame");
         Assert.Contains("warp VanivilleTown_PlayersHouse_2F 4 6", hall.Log);
         Assert.True(story.Has("KalosHallOfFame"));
         Assert.Equal(31, Story());
         Assert.False(story.Has("FLAG_KALOS_DEFEATED_DIANTHA"));
+        Assert.False(story.Has("FLAG_KALOS_LEAGUE_FOUR"));
         // The Hall of Fame opens the flight on to Alola from Lumiose City's Pokémon Center, where its attendant now stands
         Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Kalos)!, story));
         var center = Fresh("LumioseCity_PokemonCenter_1F");

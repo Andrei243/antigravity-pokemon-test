@@ -101,7 +101,9 @@ public static class Itineraries
         Leg.Talk("KalosLeague_SieboldRoom", "siebold") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_SIEBOLD") },
         Leg.Talk("KalosLeague_WikstromRoom", "wikstrom") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_WIKSTROM") },
         Leg.Talk("KalosLeague_DrasnaRoom", "drasna") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_DRASNA") },
-        Leg.Talk("KalosLeague_ChampionRoom", "diantha") with { Until = story => story.Has("KalosHallOfFame") },
+        // (her script ends as it takes the player through to the Hall of Fame, whose own arrival sends the player home)
+        Leg.Talk("KalosLeague_ChampionRoom", "diantha") with { Until = story => story.Has("FLAG_KALOS_DEFEATED_DIANTHA") || story.Has("KalosHallOfFame") },
+        Leg.Enter("VanivilleTown_PlayersHouse_2F") with { Until = story => story.Has("KalosHallOfFame") },
     };
 
     /// <summary>From a new game's bedroom to the Coal Badge.</summary>
