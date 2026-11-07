@@ -1001,6 +1001,9 @@
     "toLevel": "TO Lv {level}",
     "heldAt": "Gains no EXP above Lv. {level} for now.",
     "stats": "STATS",
+    "effort": "EFFORT",
+    "effortValue": "{ev} / {max}",
+    "effortTotal": "{total} / {max}",
     "stat": { "HP": "HP", "Attack": "Attack", "Defense": "Defense", "SpAttack": "Sp. Atk", "SpDefense": "Sp. Def", "Speed": "Speed" },
     "moves": "MOVES",
     "power": "POWER",
@@ -5923,6 +5926,15 @@
       "closing": "The server is closing. Please come back later.",
       "notSaved": "The game couldn't be saved, so the trade waits for your next visit.",
       "runEnded": "This run has ended, so nothing more can come into it."
+    }
+  },
+  "training": {
+    "why": {
+      "egg": "An Egg can't train.",
+      "stat": "No drill trains that.",
+      "shedinja": "Shedinja has no HP to train.",
+      "limit": "{stat} can't take any more effort.",
+      "full": "This Pokémon can't take any more effort in all."
     }
   }
 }
