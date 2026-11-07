@@ -9,7 +9,7 @@
 script Brock
   face brock player
   speaker "Brock"
-  if badge boulder goto Won
+  if badge boulder goto Back
   scene "Brock"
   say "So you're the new challenger. I'm Brock, Pewter's Gym Leader."
   say "I believe in rock-hard defence and unshakable will. My Pokémon are Rock types, solid to the core."
@@ -36,6 +36,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM39_FROM_BROCK goto Tm
   say "The world is big, and there are trainers far stronger than me out there. Keep at it!"
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM39_FROM_BROCK goto Won
+  if flag FLAG_DAILY_KANTO_BROCK_REMATCH goto Won
+  ask "Champion! Since you came through here, my Pokémon and I have trained in the rock quarries every day. Care to see what that came to?"
+  if no goto Won
+  say "Good! Rock-hard is the only way I know to fight. Come at me!"
+  battle self as "kanto_leader_brock_rematch"
+  say "Still standing, are you? No, it is I who was knocked flat. I will go back to the quarry and start again tomorrow."
+  setflag FLAG_DAILY_KANTO_BROCK_REMATCH
   end
 
 

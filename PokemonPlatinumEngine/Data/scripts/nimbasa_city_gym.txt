@@ -95,7 +95,7 @@ label After
 script Elesa
   face 4 player
   speaker "Elesa"
-  if badge bolt goto Won
+  if badge bolt goto Back
   if var VAR_UNOVA_NIMBASA_GYM < 3 goto Wait
   scene "Elesa"
   say "Welcome to the main stage. My Pokémon and yours are about to compete, and we'll see whose light shines brightest!"
@@ -121,4 +121,15 @@ label Wait
 label Won
   if not flag FLAG_UNOVA_GOT_TM72 goto Tm
   say "My Pokémon and I want to shine together like two suns. I think you and yours already do."
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM72 goto Won
+  if flag FLAG_DAILY_UNOVA_ELESA_REMATCH goto Won
+  ask "The Champion, back on my runway! The lights are on, the crowd is waiting. Would you like to put on a show with me?"
+  if no goto Won
+  say "Wonderful! Smile for the cameras, and let the sparks fly!"
+  battle 4 as "unova_leader_elesa_rematch"
+  say "What a show! The crowd is still cheering. Come back tomorrow, and we will put on another one."
+  setflag FLAG_DAILY_UNOVA_ELESA_REMATCH
   end

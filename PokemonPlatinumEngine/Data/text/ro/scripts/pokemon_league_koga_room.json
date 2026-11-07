@@ -34,10 +34,24 @@
     },
     {
       "en": [
+        "You again. The years have only sharpened my poisons. Do not expect the same fight as before."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Koga"
+      ]
+    },
+    {
+      "en": [
         "Koga"
       ],
       "text": [
-        "Koga"
+        ""
+      ],
+      "was": [
+        "Ah! Ți-ai dovedit valoarea pe deplin."
       ]
     },
     {
@@ -45,7 +59,10 @@
         "Ah! You have proven your worth in full."
       ],
       "text": [
-        "Ah! Ți-ai dovedit valoarea pe deplin."
+        ""
+      ],
+      "was": [
+        "Mergi mai departe. Următorul dintre noi te așteaptă și luptă doar cu pumnii."
       ]
     },
     {
@@ -53,7 +70,10 @@
         "Go on. The next of us is waiting, and he fights with nothing but his fists."
       ],
       "text": [
-        "Mergi mai departe. Următorul dintre noi te așteaptă și luptă doar cu pumnii."
+        ""
+      ],
+      "was": [
+        "Un ninja învață cel mai mult din luptele pe care le pierde. Voi mai antrena o vreme în întuneric."
       ]
     },
     {
@@ -61,7 +81,7 @@
         "A ninja learns most from the battles he loses. I shall train in the dark a while longer."
       ],
       "text": [
-        "Un ninja învață cel mai mult din luptele pe care le pierde. Voi mai antrena o vreme în întuneric."
+        ""
       ]
     }
   ]

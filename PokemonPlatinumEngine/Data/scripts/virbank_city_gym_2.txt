@@ -18,7 +18,7 @@ script OnEnter
 script Roxie
   face self player
   speaker "Roxie"
-  if badge toxic goto Won
+  if badge toxic goto Back
   if not defeated "unova_roughneck_nicky" goto TooLoud
   if not defeated "unova_guitarist_billy_jo" goto TooLoud
   scene "Roxie"
@@ -48,6 +48,17 @@ label TooLoud
 label Won
   if not flag FLAG_UNOVA_GOT_TM09 goto Tm
   say "Your Pokémon WANTED that win! Keep going like that, and do all sorts of amazing stuff!"
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM09 goto Won
+  if flag FLAG_DAILY_UNOVA_ROXIE_REMATCH goto Won
+  ask "Hey, the Champion! Bet you came back for another dose of my poison! My band wrote a new set just for you. Wanna hear it?"
+  if no goto Won
+  say "Yeah! Turn it up! Let us see if your Pokémon can keep the beat!"
+  battle self as "unova_leader_roxie_rematch"
+  say "Argh, I lost again, and it is the best I have ever felt! Come back tomorrow, I will have a whole new song ready!"
+  setflag FLAG_DAILY_UNOVA_ROXIE_REMATCH
   end
 
 

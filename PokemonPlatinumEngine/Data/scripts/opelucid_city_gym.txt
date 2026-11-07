@@ -104,7 +104,7 @@ label Beaten
 script Drayden
   face 6 player
   speaker "Drayden"
-  if badge legend goto Won
+  if badge legend goto Back
   scene "Drayden's battle"
   say "Welcome. Thank you for coming. I am Drayden, the Gym Leader of Opelucid City."
   say "As its mayor, I have given everything to developing this city. And as a Trainer, I have never stopped training."
@@ -133,4 +133,15 @@ label Tm
   say "You forgot your TM, I see. Here it is."
   give "TM82"
   setflag FLAG_UNOVA_GOT_TM82
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM82 goto Won
+  if flag FLAG_DAILY_UNOVA_DRAYDEN_REMATCH goto Won
+  ask "You have returned, Champion. A dragon never forgets a good battle. Will you show me how much further your bond has grown?"
+  if no goto Won
+  say "Good. Then let me show you everything I have learnt in the years since."
+  battle 6 as "unova_leader_drayden_rematch"
+  say "Magnificent. A dragon may fall and still be proud. Come again tomorrow, and we shall see what the day brings."
+  setflag FLAG_DAILY_UNOVA_DRAYDEN_REMATCH
   end

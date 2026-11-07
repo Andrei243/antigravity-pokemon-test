@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11251 | 10770 | 481 | 17 | 0 |
+| Scripts (`script:`) | 11301 | 10820 | 481 | 17 | 0 |
 | People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
-| **All** | 20906 | 20318 | 588 | 22 | 0 |
+| **All** | 20956 | 20368 | 588 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -97,10 +97,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:girl (any)` | 71 | 0 |
 | `class:pokémon_ranger (any)` | 70 | 0 |
 | `prof_juniper` | 67 | 0 |
+| `lance` | 65 | 0 |
 | `class:backpacker (any)` | 64 | 0 |
 | `class:biker (any)` | 64 | 0 |
 | `class:sailor (any)` | 64 | 0 |
-| `lance` | 64 | 0 |
 | `beauty` | 63 | 4 |
 | `prof_elm` | 63 | 1 |
 | `class:scientist (any)` | 62 | 0 |
@@ -109,18 +109,18 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_kukui` | 61 | 1 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `artist` | 59 | 1 |
+| `cheren` | 56 | 1 |
 | `archie` | 55 | 3 |
 | `bill` | 53 | 2 |
-| `cheren` | 53 | 1 |
 | `class:beauty (any)` | 52 | 0 |
 | `elder` | 51 | 0 |
 | `officer` | 51 | 5 |
 | `class:young_couple (any)` | 50 | 0 |
 | `crasher_wake` | 49 | 1 |
 | `depot_agent` | 49 | 3 |
+| `drayden` | 49 | 0 |
 | `clair` | 48 | 4 |
 | `maxie` | 48 | 1 |
-| `drayden` | 46 | 0 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
 | `class:gentleman (any)` | 44 | 0 |
@@ -164,6 +164,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `mars` | 34 | 0 |
 | `mr_briney` | 34 | 1 |
 | `saturn` | 34 | 0 |
+| `clay` | 33 | 3 |
 | `hau` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
@@ -177,37 +178,38 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `captain` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `class:skier (any)` | 30 | 0 |
-| `clay` | 30 | 3 |
 | `head_coach` | 30 | 1 |
+| `lt_surge` | 30 | 0 |
 | `zinzolin` | 30 | 0 |
+| `brock` | 29 | 0 |
 | `celio` | 29 | 1 |
 | `chairman` | 29 | 0 |
 | `look:aide (any)` | 29 | 4 |
+| `roxie` | 29 | 1 |
+| `sabrina` | 29 | 0 |
 | `byron` | 28 | 1 |
 | `class:dragon_tamer (any)` | 28 | 0 |
 | `class:triathlete (any)` | 28 | 0 |
+| `erika` | 28 | 0 |
 | `lillie` | 28 | 0 |
 | `little_boy` | 28 | 0 |
+| `misty` | 28 | 0 |
 | `director` | 27 | 1 |
-| `lt_surge` | 27 | 0 |
 | `marley` | 27 | 0 |
+| `marlon` | 27 | 0 |
 | `president` | 27 | 0 |
 | `trick_master` | 27 | 0 |
-| `brock` | 26 | 0 |
+| `blaine` | 26 | 0 |
 | `class:aroma_lady (any)` | 26 | 0 |
 | `class:guitarist (any)` | 26 | 0 |
 | `class:lady (any)` | 26 | 0 |
 | `class:super_nerd (any)` | 26 | 0 |
 | `lottery_clerk` | 26 | 2 |
-| `roxie` | 26 | 1 |
-| `sabrina` | 26 | 0 |
 | `shadow_triad` | 26 | 7 |
 | `blue` | 25 | 0 |
 | `captain_stern` | 25 | 0 |
 | `emma` | 25 | 0 |
-| `erika` | 25 | 0 |
 | `giovanni` | 25 | 2 |
-| `misty` | 25 | 0 |
 | `n` | 25 | 0 |
 | `class:ace_trainer_f (any)` | 24 | 0 |
 | `class:cyclist (any)` | 24 | 0 |
@@ -219,9 +221,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `day_care_lady` | 24 | 3 |
 | `fantina` | 24 | 0 |
 | `hala` | 24 | 0 |
-| `marlon` | 24 | 0 |
 | `move_deleter` | 24 | 3 |
-| `blaine` | 23 | 0 |
 | `eusine` | 23 | 0 |
 | `fishing_guru` | 23 | 3 |
 | `look:galacticdoor (any)` | 23 | 23 |
@@ -241,6 +241,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:ninja_boy (any)` | 22 | 0 |
 | `look:pokemon_breeder_f (any)` | 22 | 0 |
 | `schoolboy` | 22 | 0 |
+| `skyla` | 22 | 1 |
 | `cooltrainer` | 21 | 6 |
 | `look:bug_catcher (any)` | 21 | 0 |
 | `manager` | 21 | 0 |

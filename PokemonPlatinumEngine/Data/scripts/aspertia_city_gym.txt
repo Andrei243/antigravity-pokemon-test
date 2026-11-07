@@ -11,7 +11,7 @@
 script Cheren
   face 0 player
   speaker "Cheren"
-  if badge basic goto Won
+  if badge basic goto Back
   if not defeated "unova_youngster_pedro" goto Pupils
   if not defeated "unova_lass_serena" goto Pupils
   scene "Cheren"
@@ -41,6 +41,17 @@ label Pupils
 label Won
   if not flag FLAG_UNOVA_GOT_TM83 goto Tm
   say "I hope you'll always remember the moment you received that Badge."
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM83 goto Won
+  if flag FLAG_DAILY_UNOVA_CHEREN_REMATCH goto Won
+  ask "You have come a very long way since the day you won my Basic Badge, {player}. I have grown too. Shall we measure it?"
+  if no goto Won
+  say "Thank you. I will not hold back, and I know you would not want me to."
+  battle self as "unova_leader_cheren_rematch"
+  say "Still the same bond, and so much more of it. I am proud to have been your first. Come again tomorrow, if you like."
+  setflag FLAG_DAILY_UNOVA_CHEREN_REMATCH
   end
 
 

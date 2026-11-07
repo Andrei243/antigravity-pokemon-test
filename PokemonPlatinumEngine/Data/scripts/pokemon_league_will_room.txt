@@ -15,7 +15,13 @@ script Will
   say "Welcome to the Pokémon League. I am Will of the Elite Four."
   say "My Psychic-type Pokémon and I have honed our minds in every corner of the world, and the League called us here at last."
   say "I will not lose to you. Prepare yourself!"
+  if flag JohtoHallOfFame goto SecondRound
   battle self as "johto_elite_four_will_will"
+  goto RoundOver
+label SecondRound
+  say "The League has called the strongest of us back. This time I will not hold anything in reserve!"
+  battle self as "johto_elite_four_will_will_2"
+label RoundOver
   speaker "Will"
   say "I... can't believe it. My psychic power was not enough."
   setflag FLAG_HIDE_WILLS_ROOM_EXIT

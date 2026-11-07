@@ -9,7 +9,7 @@
 script Sabrina
   face sabrina player
   speaker "Sabrina"
-  if badge marsh goto Won
+  if badge marsh goto Back
   scene "Sabrina"
   say "I knew you would come. I had a vision of your arrival, three years ago."
   say "Psychic power has been mine since I was a child. I don't enjoy battling, but if you insist..."
@@ -38,6 +38,17 @@ label Tm
 label Won
   if not flag FLAG_GOT_TM04_FROM_SABRINA goto Tm
   say "I foresaw your victory, and still I fought. Perhaps the future isn't fixed after all."
+  end
+label Back
+  if not flag KantoHallOfFame goto Won
+  if not flag FLAG_GOT_TM04_FROM_SABRINA goto Won
+  if flag FLAG_DAILY_KANTO_SABRINA_REMATCH goto Won
+  ask "I knew you would come. I saw you in my mind, standing in this room with a stronger team. Shall we see if I saw true?"
+  if no goto Won
+  say "Then focus. My Pokémon have grown, and so has my sight."
+  battle self as "kanto_leader_sabrina_rematch"
+  say "So it was true. You are even stronger than I saw. Come back tomorrow, and I will look farther ahead."
+  setflag FLAG_DAILY_KANTO_SABRINA_REMATCH
   end
 
 

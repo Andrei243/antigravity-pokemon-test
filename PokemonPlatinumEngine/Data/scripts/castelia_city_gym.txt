@@ -34,7 +34,7 @@ label Won
 script Burgh
   face burgh player
   speaker "Burgh"
-  if badge insect goto Won
+  if badge insect goto Back
   scene "Burgh"
   say "Welcome! I've just got back from the sewers, and do you know what? My muse came back with me!"
   say "I'm Burgh, Leader of this Gym and painter of Bug Pokémon. I'll paint our battle onto the canvas of your memory!"
@@ -58,4 +58,15 @@ label Tm
 label Won
   if not flag FLAG_UNOVA_GOT_TM76 goto Tm
   say "Your Pokémon and you painted something wonderful together. Come back and show me how you've grown!"
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM76 goto Won
+  if flag FLAG_DAILY_UNOVA_BURGH_REMATCH goto Won
+  ask "Ah, the Champion! I have been painting the new Gym wall, and it needs a masterpiece to finish it. Would you be so kind as to battle?"
+  if no goto Won
+  say "Marvellous! A battle is just another canvas. Let us fill it with colour!"
+  battle burgh as "unova_leader_burgh_rematch"
+  say "What a canvas you have painted! I shall hang this memory in the Gym until tomorrow, when I will hope for another."
+  setflag FLAG_DAILY_UNOVA_BURGH_REMATCH
   end

@@ -145,7 +145,7 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - [ ] EG2 Every region's Hall of Fame in one hall
 - [ ] EG3 The plaza: stalls the player sets out and ranks up
 - [ ] EG4 The Champions' circuit and its final
-- [ ] EG5 The Leaders' rematches where a region has none
+- [x] EG5 The Leaders' rematches where a region has none: Kanto's seven Gyms (teams `kanto_leader_<who>_rematch`, Koga ours, Viridian empty) and Unova's eight (teams of ours, `unova_leader_<who>_rematch`: Black 2's Challenge teams lifted to an ace at 70) fight their Leader again once a day after the region's Hall of Fame (`FLAG_DAILY_<REGION>_<WHO>_REMATCH`), Johto's Four and Lance fight `_2` in their rooms; `RematchParityTests`, `RematchScriptTests`, `journey` mode (`JOURNEY_FROM=rematches`, eg50 to eg52); ruling "The Leaders' rematches in every region"
 - [ ] EG6 The weekly board of missions
 - [ ] EG7 The agency and its first case
 - [ ] EG8 Cases in Kanto, Johto, Hoenn and Unova

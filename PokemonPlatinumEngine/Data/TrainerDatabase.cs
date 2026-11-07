@@ -291,7 +291,8 @@ public static class TrainerDatabase
         int end = id.Length;
         while (end > 0 && char.IsAsciiDigit(id[end - 1])) end--;
         return end < id.Length && end > 1 && id[end - 1] == '_' && Get(id[..(end - 1)]) is { } first
-            && (first.Class == "Elite Four" || first.Class == "Champion");
+            && (first.Class == "Elite Four" || first.Class == "Champion"
+            || first.Class.StartsWith("Elite Four ", StringComparison.Ordinal) || first.Class.StartsWith("Leader ", StringComparison.Ordinal));
     }
 
     private static readonly Lazy<HashSet<string>> RowTeams = new(() =>

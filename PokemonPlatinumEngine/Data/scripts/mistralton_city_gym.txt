@@ -37,7 +37,7 @@ label Won
 script Skyla
   face 3 player
   speaker "Skyla"
-  if badge jet goto Won
+  if badge jet goto Back
   scene "Skyla"
   say "Hee-hee! I've been waiting for you. You're a tough Trainer who can face the wind and not be blown off your feet!"
   say "I'm kind of excited about this battle! Shall we? You and me, wings spread!"
@@ -59,4 +59,15 @@ label Won
   if not flag FLAG_UNOVA_GOT_TM62 goto Tm
   say "Are you and your Pokémon well? Our battle was a ton of fun. My Pokémon want to train again just thinking about it."
   say "Two things I love: flying my own plane, and having my Pokémon take me up using Fly!"
+  end
+label Back
+  if not flag UnovaHallOfFame goto Won
+  if not flag FLAG_UNOVA_GOT_TM62 goto Won
+  if flag FLAG_DAILY_UNOVA_SKYLA_REMATCH goto Won
+  ask "Champion! The skies are clear and the engines are warm. How about another flight together, battle style?"
+  if no goto Won
+  say "All right! Strap in, and keep your eyes on the horizon!"
+  battle 3 as "unova_leader_skyla_rematch"
+  say "Wow, what a flight! I could not keep up. Come back tomorrow, and I will bring a faster plane."
+  setflag FLAG_DAILY_UNOVA_SKYLA_REMATCH
   end
