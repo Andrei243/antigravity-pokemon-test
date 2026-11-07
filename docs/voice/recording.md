@@ -1,5 +1,8 @@
 # Recording the rival's samples
 
+> **Not used since 2026-11-07.** The user ruled that the rival gets a designed voice like everyone else (Kokoro-82M, no cloning,
+> no recordings: `docs/plans/decisions/USER-DECISIONS-2026-11-07.md`). This page is kept, unused, in case that ever changes.
+
 How to record the 21 passages of [`samples.md`](samples.md) for plan 26 · V3. Twenty to thirty minutes at the
 microphone, once. The clone copies the room and the microphone along with the voice, so a few minutes spent on the
 setting below pays for itself in every one of Barry's lines.

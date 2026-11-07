@@ -225,7 +225,7 @@ Optional, last in each region and only if its story is played through: 33 · GL8
 
 ### The voices' column (after the user's choice, item 4)
 
-26 · V4's trial finished and the first chapter generated; then V5 (everyone else), V6's scenes retimed with `waitvoice`, V7 a region's chapters a wave beside the rest (Sinnoh's first, then the regions in the chain's order), V8's Romanian pack with the engine V4 chose; V3 (the rival's clone) whenever the recordings come. Each is Sonnet high and touches `Data/voice` and the voice pack alone, so it fits beside any wave.
+26 · V3 and V4 with Kokoro-82M (chosen 2026-11-07, no trial; the rival a designed voice, no clone): Sinnoh's named cast designed and generated, the user approving each voice by ear from its reel; then V5 (everyone else), V6's scenes retimed with `waitvoice`, V7 a region's chapters a wave beside the rest (Sinnoh's first, then the regions in the chain's order), V8's Romanian pack (Kokoro speaks no Romanian: an engine for it is still to be chosen). Each is Sonnet high and touches `Data/voice` and the voice pack alone, so it fits beside any wave.
 
 ### Optional, on the user's word
 
@@ -415,7 +415,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - The user's order (2026-10-12): synthesised voices for every character first, Barry among them, and the user's own voice put on Barry when the samples come. The voices speak Romanian as well as English.
   - V2 (NVorbis is allowed, 2026-10-12).
   - V4 before V3: the trial of the synthesised cast, among engines that speak both languages (which ones do is checked there, each licence with the user's OK). Barry gets a designed voice like everyone else, marked as a stand-in in the cast. Then V5, everyone else.
-  - V3 whenever the user is ready: it writes the sample script (`docs/voice/samples.md`, about twenty passages, in both languages), the recording guide and the booth; the user records; its trial chooses the cloning engine by ear; Barry's lines are made again from the clone and replace the stand-in's. Nothing else waits for it.
+  - V3, reshaped on 2026-11-07: no recordings and no clone; Barry keeps a designed voice (`docs/plans/decisions/USER-DECISIONS-2026-11-07.md`). The sample kit V3 wrote stays unused.
   - V6. V7, chapter by chapter: first the chapters already written, then each region's.
   - V8 (other languages) is no longer last: the Romanian pack is made as soon as 17 · N6 has a chapter's lines in Romanian, with the engine V4 chose.
 - **Localisation (17)**, wanted since 2026-10-12: Romanian first, and the language an options row the player changes at any time (so nothing of it is kept in the save, plan 17's decision 5).

@@ -1,5 +1,6 @@
 // The voice catalogue (plan 26 · V1). See tools/VoiceTool/README.md.
 
+using System.Diagnostics;
 using System.Text;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Data;
@@ -16,7 +17,7 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
@@ -97,7 +98,14 @@ int BakeSamples()
 
 // ------------------------------------------------------------------ generating and baking (plan 26 · V3, V4)
 
-VoiceFile CatalogueNow() => VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+// The catalogue, or with --region <id> only the lines of that region's places (VoiceCatalogue.RegionOf)
+VoiceFile CatalogueNow()
+{
+    var file = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+    if (Option("--region") is { } region)
+        file.Lines.RemoveAll(l => !string.Equals(VoiceCatalogue.RegionOf(l.Key), region, StringComparison.OrdinalIgnoreCase));
+    return file;
+}
 
 VoiceLibrary? PackNow() => VoiceLibrary.Open(Option("--pack") is { } p ? Path.GetFullPath(p) : Path.Combine(repo, "voice", LanguageOf()));
 
@@ -140,19 +148,35 @@ int Jobs()
 int Generate()
 {
     string config = Path.Combine(repo, "tools", "VoiceGen", "engine.json");
-    VoiceJobFile? jobs = Option("--jobs") is { } file ? GameDataFiles.Deserialize<VoiceJobFile>(File.ReadAllText(file))
-        : words.Count > 1 ? VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default) : null;
-    if (jobs == null) { Console.Error.WriteLine("generate <voice> | --jobs <file>"); return 2; }
+    // generate <voice>... : each voice's lines with no current take (with --region, only that region's), one run of the engine
+    var files = new List<VoiceJobFile>();
+    if (Option("--jobs") is { } file) files.Add(GameDataFiles.Deserialize<VoiceJobFile>(File.ReadAllText(file)));
+    else
+    {
+        var catalogue = CatalogueNow();
+        var pack = PackNow();
+        foreach (string voice in words.Skip(1))
+            files.Add(VoiceGeneration.Plan(catalogue, voice, pack, VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default));
+    }
+    if (files.Count == 0) { Console.Error.WriteLine("generate <voice>... [--region <id>] | --jobs <file>"); return 2; }
     if (!File.Exists(config))
     {
-        Console.WriteLine($"No engine yet: {config} is not there. Plan 26's trials choose one (V3 for the rival, V4 for the rest), with your OK for its licence and download; tools/VoiceGen/README.md says how to set it up. {jobs.Jobs.Count} lines wait.");
+        Console.WriteLine($"No engine yet: {config} is not there. tools/VoiceGen/README.md says how to set it up (setup-kokoro.sh). {files.Sum(f => f.Jobs.Count)} lines wait.");
         return 2;
     }
-    var command = CommandEngine.Read(config, repo);
-    var (kept, failed) = VoiceGeneration.Generate(jobs, command, PackFolderOption(), Console.WriteLine);
-    foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
-    Console.WriteLine($"{kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");
-    return failed.Count > 0 ? 1 : 0;
+    using var command = CommandEngine.Read(config, repo);
+    int keptCount = 0, failedCount = 0;
+    var clock = Stopwatch.StartNew();
+    foreach (var jobs in files)
+    {
+        var (kept, failed) = VoiceGeneration.Generate(jobs, command, PackFolderOption(), Console.WriteLine);
+        foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
+        Console.WriteLine($"{jobs.Voice}: {kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");
+        keptCount += kept.Count;
+        failedCount += failed.Count;
+    }
+    Console.WriteLine($"In all {keptCount} lines in {clock.Elapsed.TotalSeconds:0} s ({(keptCount > 0 ? clock.Elapsed.TotalSeconds / keptCount : 0):0.00} s a line); {failedCount} with findings or failed.");
+    return failedCount > 0 ? 1 : 0;
 }
 
 int Reroll()
@@ -189,14 +213,30 @@ int Trial()
 
 int Reel()
 {
-    if (words.Count < 2) { Console.Error.WriteLine("reel <key prefix> [--pack <folder>] [--out <file.wav>] (reel world:jubilife_city.)"); return 2; }
+    string? voice = Option("--voice");
+    if (words.Count < 2 && voice == null) { Console.Error.WriteLine("reel <key prefix> | --voice <id> [--count n] [--region <id>] [--pack <folder>] [--out <file.wav>] (reel world:jubilife_city.; reel --voice rowan --count 12)"); return 2; }
     var pack = PackNow();
     if (pack == null) { Console.WriteLine("No pack to make a reel from."); return 2; }
-    var (samples, keys) = VoiceGeneration.Reel(pack, CatalogueNow(), words[1]);
-    string output = Option("--out") ?? Path.Combine(repo, "voice", "reels", VoicePacks.FileNameOf(words[1].TrimEnd('.')) + ".wav");
+    var catalogue = CatalogueNow();
+    if (voice != null)
+    {
+        // A voice's reel: its first lines in the catalogue's order that have a take, spread over its directions
+        int count = int.TryParse(Option("--count"), out int c) ? c : 12;
+        // (a voice chosen at run time, the assistant's, is made in its own voices: assistant_girl's reel has her takes of the assistant's lines)
+        var mine = catalogue.Lines.Where(l => pack.Entries.Any(e => VoiceGeneration.Matches(e.Voice, voice) && (e.Key == l.Key || e.Key.StartsWith(l.Key + "~", StringComparison.Ordinal)))).ToList();
+        var picked = mine.GroupBy(l => l.Direction is { Length: > 0 } d ? d : VoiceMoods.Guess(l.En))
+            .SelectMany(g => g.Select((l, i) => (l, i))).OrderBy(x => x.i).ThenBy(x => mine.IndexOf(x.l)).Take(count).Select(x => x.l)
+            .OrderBy(l => mine.IndexOf(l)).ToList();
+        catalogue = new VoiceFile { Lines = picked };
+    }
+    string prefix = words.Count > 1 ? words[1] : "";
+    var (samples, keys) = VoiceGeneration.Reel(pack, catalogue, prefix, voice: voice);
+    string output = Option("--out") ?? Path.Combine(repo, "voice", "reels", VoicePacks.FileNameOf(voice ?? prefix.TrimEnd('.')) + ".wav");
     Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
     File.WriteAllBytes(output, WavDecoder.Encode(samples));
-    File.WriteAllLines(Path.ChangeExtension(output, ".txt"), keys);
+    // Beside the reel, its takes in order with the words each says, for listening along
+    var spoken = VoicePacks.KeysOf(catalogue).GroupBy(k => k.Key).ToDictionary(g => g.Key, g => g.First().English);
+    File.WriteAllLines(Path.ChangeExtension(output, ".txt"), keys.Select(k => { string key = k[..k.IndexOf(' ')]; return spoken.TryGetValue(key, out var en) ? $"{k}: {en}" : k; }));
     Console.WriteLine($"{keys.Count} takes, {samples.Length / (double)Synthesizer.DsRate:0} seconds, in {output} (their keys in order beside it).");
     return 0;
 }

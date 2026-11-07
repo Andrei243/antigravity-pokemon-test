@@ -63,7 +63,56 @@ public sealed class VoiceTests
         foreach (var (id, voice) in file.Voices)
             foreach (string chosen in voice.Chooses ?? new List<string>())
                 Assert.True(file.Voices.ContainsKey(chosen), $"{id} chooses {chosen}, which is no voice");
-        Assert.NotNull(file.Voices[VoiceCast.Rival].Clone);
+        // The rival is a designed voice like everyone else (the user's ruling of 2026-11-07: no cloning, no recordings)
+        Assert.Null(file.Voices[VoiceCast.Rival].Clone);
+        Assert.NotNull(file.Voices[VoiceCast.Rival].Design);
+    }
+
+    [Fact]
+    public void EveryDesignIsABlendOfKokorosOwnVoicesWithinReason()
+    {
+        var voices = VoiceCast.Default.File.Voices;
+        foreach (var (id, voice) in voices)
+        {
+            if (voice.Design is not { } design) continue;
+            Assert.True(voice.Brief != null, $"{id} is designed with no brief to be designed to");
+            Assert.True(voice.Provisional != true, $"{id} is designed, so it is no longer provisional");
+            Assert.Equal(CastDesign.Kokoro, design.Engine);
+            var parts = design.Parts();
+            Assert.True(parts.Count > 0, $"{id}'s blend '{design.Blend}' is not voices with weights");
+            foreach (var (name, weight) in parts)
+            {
+                Assert.True(CastDesign.KokoroVoices.Contains(name), $"{id}'s blend names {name}, which is no voice of Kokoro's");
+                Assert.True(weight > 0, $"{id}'s blend gives {name} a weight of {weight}");
+            }
+            Assert.InRange(design.Speed, 0.7, 1.4);
+            // A pitch moved much further sounds processed rather than younger or older
+            Assert.InRange(design.Pitch, 0.85, 1.25);
+            Assert.Contains(design.Accent, CastDesign.Accents);
+        }
+        // Sinnoh's main cast has a voice of its own
+        foreach (string id in new[] { VoiceCast.Rival, "rowan", "assistant_boy", "assistant_girl", "mom", "cynthia", "looker", "cyrus", "mars", "jupiter", "saturn",
+                     "roark", "gardenia", "maylene", "crasher_wake", "fantina", "byron", "candice", "volkner" })
+            Assert.True(voices[id].Design != null, $"{id} has no design");
+        // No two named voices sound the same
+        var designs = voices.Where(v => v.Value.Design != null).GroupBy(v => (v.Value.Design!.Blend, v.Value.Design.Speed, v.Value.Design.Pitch));
+        Assert.All(designs, g => Assert.True(g.Count() == 1, $"{string.Join(", ", g.Select(v => v.Key))} have one design"));
+    }
+
+    [Fact]
+    public void ALinesRegionIsTheRegionOfItsPlace()
+    {
+        Assert.Equal("sinnoh", VoiceCatalogue.RegionOf("script:twinleaf_town.Rival#1.0"));
+        Assert.Equal("sinnoh", VoiceCatalogue.RegionOf("world:twinleaf_town.mom.dialog.0"));
+        Assert.Equal("sinnoh", VoiceCatalogue.RegionOf("map:PlayerHouse.Mom.dialog.0"));
+        Assert.Equal("sinnoh", VoiceCatalogue.RegionOf("intro:Sinnoh.World.0"));
+        Assert.Equal("sinnoh", VoiceCatalogue.RegionOf("battle:leader_roark.lastPokemon.0"));
+        Assert.Equal("kanto", VoiceCatalogue.RegionOf("battle:kanto_champion_megamax_x.lowHp.0"));
+        Assert.Null(VoiceCatalogue.RegionOf("script:common.Nurse#1.0"));
+        // Every line of the catalogue whose place is an area or a room has a region
+        foreach (var line in VoiceCatalogue.Parse(File.ReadAllText(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "voice", "lines.json"))).Lines)
+            if (line.Key.StartsWith("world:", StringComparison.Ordinal) || line.Key.StartsWith("map:", StringComparison.Ordinal))
+                Assert.True(VoiceCatalogue.RegionOf(line.Key) != null, $"{line.Key} has no region");
     }
 
     [Fact]

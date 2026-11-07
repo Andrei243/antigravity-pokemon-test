@@ -12,21 +12,21 @@ dotnet run --project tools/VoiceTool -- check [folder]            # hold a pack 
 dotnet run --project tools/VoiceTool -- vowels [folder] --voice rival   # a pack of stand-in takes (synthesised vowels) for a voice's lines, or --all; turn VOICES on in the options to hear them
 ```
 
-Making the voices (plan 26 · V3 to V5; no window, no engine needed until `generate`):
+Making the voices (plan 26 · V3 to V5; no window, no engine needed until `generate`). The engine is Kokoro-82M (approved 2026-11-07), set up by `bash tools/VoiceGen/setup-kokoro.sh` as `tools/VoiceGen/README.md` says; every voice, the rival's too, is a `design` in `cast.json`:
 
 ```bash
-dotnet run --project tools/VoiceTool -- check-samples [folder] [--voice rival]   # the user's recordings held to docs/voice/recording.md: 48 kHz, mono, 24-bit, no clip, peak, the room's noise, quiet at each end, pace against the passage's words, every mood; ends with 1 on an error or a passage not recorded
-dotnet run --project tools/VoiceTool -- bake-samples [--out <folder>]            # the samples cleaned (trimmed, rumble and plosives softened) at their own rate into voice/samples-clean/rival: what an engine clones from
-dotnet run --project tools/VoiceTool -- bake <folder> --voice <id> [--pack <folder>] [--engine <name>]   # takes made elsewhere (<key>.wav, the colon '+') baked into the pack: trimmed, levelled to the voice bus, limited under -1 dB, at the game's rate, stamped in pack.json
-dotnet run --project tools/VoiceTool -- jobs <voice> [--which missing|stale|all] # a voice's lines an engine still has to speak, with directions (guessed where none is written), samples by mood, respellings and three seeds each: voice/jobs/<voice>.json
-dotnet run --project tools/VoiceTool -- generate <voice> | --jobs <file>          # runs tools/VoiceGen/engine.json's engine over them, three takes a line, the best baked into the pack (says so and stops while no engine is chosen)
-dotnet run --project tools/VoiceTool -- reroll <key>                              # the next round's seeds for one line: voice/jobs/reroll.json
-dotnet run --project tools/VoiceTool -- trial <voice>...                          # the twenty lines of a trial (V3: trial rival; V4: the named cast), the same for every engine: voice/trial/<names>.json and .md
+dotnet run --project tools/VoiceTool -- generate <voice>... [--region <id>] | --jobs <file>   # runs tools/VoiceGen/engine.json's engine over the voices' lines with no current take (with --region sinnoh, only that region's places), three takes a line, the best baked into the pack; one engine process for the whole run (says so and stops while no engine is set up)
+dotnet run --project tools/VoiceTool -- reel --voice <id> [--count 12] [--region <id>]          # a voice's sample reel: its first lines with a take, spread over their directions, one after another: voice/reels/<voice>.wav and its keys
 dotnet run --project tools/VoiceTool -- reel <key prefix>                         # a place's current takes one after another, for spot listening (reel world:jubilife_city.): voice/reels/<prefix>.wav and its keys
+dotnet run --project tools/VoiceTool -- jobs <voice> [--which missing|stale|all] [--region <id>]  # a voice's lines an engine still has to speak, with directions (guessed where none is written), respellings and three seeds each: voice/jobs/<voice>.json
+dotnet run --project tools/VoiceTool -- reroll <key>                              # the next round's seeds for one line: voice/jobs/reroll.json
+dotnet run --project tools/VoiceTool -- trial <voice>...                          # the twenty lines of a trial, the same for every design: voice/trial/<names>.json and .md
+dotnet run --project tools/VoiceTool -- bake <folder> --voice <id> [--pack <folder>] [--engine <name>]   # takes made elsewhere (<key>.wav, the colon '+') baked into the pack: trimmed, levelled to the voice bus, limited under -1 dB, at the game's rate, stamped in pack.json
 dotnet run --project tools/VoiceTool -- lexicon [--top 60]                        # the names the lines say that Data/voice/lexicon.json has no respelling for, the most said first
+dotnet run --project tools/VoiceTool -- check-samples | bake-samples              # the recording kit of the first draft (a cloned rival), kept but unused since the user's ruling of 2026-11-07
 ```
 
-The rival's sample script is `PokemonPlatinumEngine/Data/voice/samples/rival/samples.json` (the same passages for a person in `docs/voice/samples.md`, how to record them in `docs/voice/recording.md`, a booth page in `tools/VoiceBooth/booth.html`). The engine itself is chosen in plan 26's trials and set up as `tools/VoiceGen/README.md` says.
+A line whose voice chooses at run time (`assistant`) is made in each voice it chooses from (`assistant_boy`, `assistant_girl`).
 
 A pack (`docs/data-files.md`, "Voice packs") is `voice/<language>/` beside the game or at the repository's root, ignored by git. The game plays a take only while its `textHash` is the hash of the line's English now; a rewritten line is stale and silent until its take is made again.
 

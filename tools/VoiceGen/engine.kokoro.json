@@ -1,0 +1,11 @@
+{
+  "name": "Kokoro-82M v1.0 (ONNX, fp32) with espeak-ng, onnxruntime 1.19.2",
+  "command": "{voicegen}/env/Scripts/python.exe",
+  "args": ["-I", "{repo}/tools/VoiceGen/kokoro_speak.py", "--serve",
+           "--models", "{voicegen}/models",
+           "--cast", "{repo}/PokemonPlatinumEngine/Data/voice/cast.json",
+           "--lexicon", "{repo}/PokemonPlatinumEngine/Data/voice/lexicon.json"],
+  "useRespelling": false,
+  "serve": true,
+  "timeoutSeconds": 600
+}

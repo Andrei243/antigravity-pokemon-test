@@ -1,0 +1,37 @@
+# The voice engine's Python packages (plan 26 · V4, Kokoro-82M, approved by the user on 2026-11-07), pinned.
+# Installed by setup-kokoro.sh into the cache's own environment (never the system's); the game never depends on any of it.
+# onnxruntime 1.19.2 and numpy 2.0.2 are the last releases for Python 3.9, which is what the Windows machine has.
+onnxruntime==1.19.2
+numpy==2.0.2
+espeakng-loader==0.2.4
+phonemizer-fork==3.3.2
+attrs==26.1.0
+babel==2.18.0
+colorama==0.4.6
+coloredlogs==15.0.1
+csvw==4.1.1
+dlinfo==2.0.0
+flatbuffers==25.12.19
+humanfriendly==10.0
+isodate==0.7.2
+joblib==1.5.3
+jsonschema==4.25.1
+jsonschema-specifications==2025.9.1
+language-tags==1.2.0
+mpmath==1.3.0
+packaging==26.3
+protobuf==6.33.6
+pyparsing==3.3.3
+pyreadline3==3.5.6 ; sys_platform == "win32"
+python-dateutil==3.0.0
+rdflib==7.6.0
+referencing==0.36.2
+regex==2026.1.15
+rfc3986==1.5.0
+rpds-py==0.27.1
+segments==2.4.0
+six==1.17.0
+sympy==1.14.0
+typing_extensions==4.16.0
+tzdata==2026.6
+uritemplate==4.2.0
