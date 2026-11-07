@@ -851,7 +851,7 @@ public static class ScriptParser
                 string what = r.OneOf("points", "give", "prize", "buy", "records", "print", "judge", "judged", "save", "prints", "printed");
                 string which = what switch
                 {
-                    "prize" => r.OneOf("items", "machines"),
+                    "prize" => r.OneOf("items", "machines", "training"),
                     "records" or "print" or "printed" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
                     "judged" => r.OneOf("total", "best"),
                     _ => ""
@@ -1130,7 +1130,8 @@ public static class ScriptParser
             // `train prize`; drill and reset act on the Pokémon the last `choosepokemon` chose
             case "train":
             {
-                string what = r.OneOf("open", "drill", "reset", "prize");
+                string what = r.OneOf("open", "drill", "reset", "prize", "peak");
+                if (what == "peak") return new Instruction { Op = Op.Train, Line = line, Name = what, Other = r.More ? r.OneOf("check") : "" };
                 if (what != "reset") return new Instruction { Op = Op.Train, Line = line, Name = what };
                 string stat = r.OneOf("all", "hp", "attack", "defense", "spatk", "spdef", "speed");
                 return new Instruction { Op = Op.Train, Line = line, Name = what, Other = stat };

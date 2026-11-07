@@ -356,14 +356,32 @@ public static class FrontierBrains
     public static bool AnyPrint(StoryState story) => Printed.Any(f => story.Var(PrintVariable(f)) >= 2);
 }
 
-/// <summary>The Exchange Service Corner (<c>ScrCmd_PokeMartFrontier</c>): what its two booths hand over for Battle Points.</summary>
+/// <summary>
+/// The Exchange Service Corner (<c>ScrCmd_PokeMartFrontier</c>): what its two booths hand over for Battle Points, and the
+/// training club's list beside them (plan 36 · TR3, <c>Data/training.json</c>'s <c>battlePoints</c>), on the same points.
+/// </summary>
 public static class FrontierExchange
 {
+    /// <summary>The three lists by the word a script names them with.</summary>
+    public const string Items = "items", Machines = "machines", Training = "training";
+
     /// <summary>The west booth's vitamins and held items, or the east booth's Technical Machines.</summary>
     public static IReadOnlyList<Data.FrontierPrizeRecord> Stock(bool machines) =>
         machines ? Data.FrontierDatabase.ExchangeMachines : Data.FrontierDatabase.ExchangeItems;
 
+    /// <summary>A list by its word: <see cref="Items"/>, <see cref="Machines"/> or <see cref="Training"/>; nothing for another.</summary>
+    public static IReadOnlyList<Data.FrontierPrizeRecord> Stock(string list) => list switch
+    {
+        Items => Data.FrontierDatabase.ExchangeItems,
+        Machines => Data.FrontierDatabase.ExchangeMachines,
+        Training => Models.TrainingData.BattlePoints,
+        _ => Array.Empty<Data.FrontierPrizeRecord>()
+    };
+
     /// <summary><c>Shop_GetItemBPPrice</c>: what something costs in Battle Points; 0 for what neither booth has.</summary>
     public static int PriceOf(string item) =>
         Data.FrontierDatabase.ExchangeItems.Concat(Data.FrontierDatabase.ExchangeMachines).FirstOrDefault(p => p.Item == item)?.Price ?? 0;
+
+    /// <summary>What something costs on one list, as the list stands now; 0 for what that list hasn't.</summary>
+    public static int PriceOf(string item, string list) => Stock(list).FirstOrDefault(p => p.Item == item)?.Price ?? 0;
 }

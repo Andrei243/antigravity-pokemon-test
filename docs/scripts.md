@@ -612,7 +612,7 @@ every facility shares (the records are the game's `FrontierRecords`, saved; the 
 |---|---|
 | `frontier points` | `RESULT` is the Battle Points held. `{points}` in a line says them. |
 | `frontier give 3` | Adds Battle Points (9,999 at most): `RESULT` is what is held afterwards. |
-| `frontier prize items`, `frontier prize machines` | Asks which of a booth's prizes at the Exchange Service Corner, with the points shown: `RESULT` 1, or 0 for none. `{item}`, `{price}` in Battle Points, and `{thing}` the move a TM holds. |
+| `frontier prize items`, `frontier prize machines`, `frontier prize training` | Asks which of a booth's prizes at the Exchange Service Corner, with the points shown: `RESULT` 1, or 0 for none. `{item}`, `{price}` in Battle Points, and `{thing}` the move a TM holds. `training` is the training club's list (plan 36 · TR3, `Data/training.json`'s `battlePoints`: the Bottle Caps, the Ability Capsule and Patch, the mints). |
 | `frontier buy` | Trades Battle Points for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `frontier records tower` | Opens a facility's board of records (`tower`, `factory`, `hall`, `castle`, `arcade`) and waits until it is closed. |
 | `frontier print tower` | Hands over the commemorative print that waits at a facility: `RESULT` 0 for none, 1 the silver one, 2 the gold one. The fifth gold print sets `FLAG_OBTAINED_ALL_BATTLE_FRONTIER_GOLD_PRINTS`. |
@@ -918,6 +918,8 @@ One command, `train`; later sessions of plan 36 add words to it (`peak`, `tera`)
 | `train reset all` | Takes the chosen Pokémon's effort in all six stats to nought and reckons its stats at once: `RESULT` 1, or 0 when it had none. |
 | `train reset attack` | The same for one stat: `hp`, `attack`, `defense`, `spatk`, `spdef` or `speed`. |
 | `train prize` | Hands over the first prize the drills' records have earned and the coach hasn't (`Data/training.json`'s `drillPrizes`: each stat's first gold its vitamin, then every tenth gold a Bottle Cap and every fiftieth a Gold Bottle Cap once a Hall of Fame is entered) into the bag: `RESULT` 1 and `{item}` names it, or 0 when nothing is owed. The text and the fanfare are the script's; a loop hands over all of it. |
+| `train peak check` | Whether the chosen Pokémon may take peak training (plan 36 · TR3, `Models/HyperTraining.cs`): `RESULT` 1 ready, 0 nobody chosen or an Egg, 2 under level 50, 3 every stat's IV 31 or at its peak already, 4 neither a Bottle Cap nor a Gold Bottle Cap in the bag. |
+| `train peak` | Asks which stat of the chosen Pokémon shall reach its peak: each stat it may take, with the judge's word for its IV, where a Bottle Cap is held, and ALL SIX where a Gold Bottle Cap is, then NEVER MIND. The answer takes one cap from the bag and trains: `RESULT` 1 for one stat (`{thing}` names it), 2 for all six, 0 when nothing was trained. |
 
 ### Join Avenue
 

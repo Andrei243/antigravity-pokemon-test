@@ -30,10 +30,14 @@ public sealed class DrillPrizes
     public List<RepeatingPrize> EveryGolds { get; set; } = new();
 }
 
-/// <summary>The file <c>Data/training.json</c> (plan 36 · TR2; ours, read strictly): the drills' prizes. TR3 adds its Battle Points list here.</summary>
+/// <summary>
+/// The file <c>Data/training.json</c> (plan 36 · TR2, TR3; ours, read strictly): the drills' prizes, and what the training
+/// club's clerk at a Battle Points counter trades (<c>frontier prize training</c>, beside the Exchange Service Corner's two lists).
+/// </summary>
 public sealed class TrainingFile
 {
     public DrillPrizes DrillPrizes { get; set; } = new();
+    public List<FrontierPrizeRecord> BattlePoints { get; set; } = new();
 }
 
 /// <summary>The training club's tables (plan 36 · TR2; <c>Data/training.json</c>). No drawing or input.</summary>
@@ -48,6 +52,9 @@ public static class TrainingData
     public static TrainingFile File => file.Value;
 
     public static DrillPrizes Prizes => File.DrillPrizes;
+
+    /// <summary>The training club's list for Battle Points (plan 36 · TR3), in the order it is offered.</summary>
+    public static IReadOnlyList<FrontierPrizeRecord> BattlePoints => File.BattlePoints;
 }
 
 /// <summary>What the training records keep in the save (plan 36 · TR2): plain values; null in <c>SaveData</c> while nothing is kept.</summary>

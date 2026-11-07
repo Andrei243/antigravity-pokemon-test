@@ -57,5 +57,11 @@
   "signs": {
     "arrow_signpost_survival_area": "Rt. 226\nWest: Survival Area",
     "arrow_signpost_rt_227_rt_228": "Rt. 226\nNorth: Rt. 227\nEast: Rt. 228"
-  }
+  },
+  // A Bottle Cap of ours on the sand before the island's house (plan 36 · TR3): peak training's cap, found in the Battle
+  // Zone as well as traded for Battle Points
+  "npcs": [
+    { "id": "route_226.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 740, "y": 341, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_ROUTE_226_BOTTLE_CAP" }
+  ]
 }

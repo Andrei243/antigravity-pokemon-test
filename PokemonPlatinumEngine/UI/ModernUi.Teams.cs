@@ -120,6 +120,8 @@ internal static partial class ModernUi
             var pill = new Rectangle(x + wide - pw, ry - 20, pw, 40);
             UiShapes.Fill(pill, 20, fill);
             UiFonts.DrawCentered(word, pill.X + (pw - UiFonts.Measure(word, 24, UiWeight.Black)) / 2f, ry, 24, ink, UiWeight.Black);
+            // A stat brought to its peak (plan 36 · TR3): the PEAK tag before the word
+            if (shown.IsHyperTrained(stat)) PeakTag(pill.X - PeakTagWidth - 12, ry - PeakTagHeight / 2f);
         }
         string best = IvJudge.Best(shown) is { } top ? Text.Of("boxTeams.judge.best", ("stat", Words.Stat(top))) : Text.Of("boxTeams.judge.alike");
         UiFonts.DrawCentered(best, x, y + 428 + 6 * 56 + 8, 26, Muted, UiWeight.ExtraBold);

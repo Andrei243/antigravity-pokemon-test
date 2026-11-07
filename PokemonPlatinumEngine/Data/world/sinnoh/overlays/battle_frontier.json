@@ -226,6 +226,10 @@
     // The guide of the Frontier's annex (plan 14 · B8), before the lodge on the plaza's south side: he shows the player into
     // its lobby, the Battle Dome's (battle_frontier.txt, AnnexGuide)
     { "id": "battle_frontier.AnnexGuide", "name": "Guide", "npcType": "Gentleman", "x": 44, "y": 64, "facing": "Up",
-      "script": "AnnexGuide" }
+      "script": "AnnexGuide" },
+    // The training club's clerk (plan 36 · TR3), a person of our own at the foot of the Exchange Service Corner's south-east booth:
+    // she trades the club's goods for the same Battle Points (common.TrainingExchange, frontier prize training)
+    { "id": "battle_frontier.TrainingClerk", "name": "Club Clerk", "npcType": "training_clerk", "x": 50, "y": 45, "facing": "Left",
+      "script": "TrainingExchange" }
   ]
 }

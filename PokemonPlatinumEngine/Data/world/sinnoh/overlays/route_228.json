@@ -84,5 +84,10 @@
   "signs": {
     "arrow_signpost_rt_226": "Rt. 228\nWest: Rt. 226",
     "arrow_signpost_rt_229": "Rt. 228\nSouth: Rt. 229"
-  }
+  },
+  // A Bottle Cap of ours in the sandy hollow beside the Shiny Stone (plan 36 · TR3), as on Route 226's island
+  "npcs": [
+    { "id": "route_228.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 796, "y": 384, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_ROUTE_228_BOTTLE_CAP" }
+  ]
 }

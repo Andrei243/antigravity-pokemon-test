@@ -21,10 +21,13 @@ public sealed partial class ScriptRunner
     private readonly string[] allies = { "", "" }, allyMoves = { "", "" };
     private List<FrontierOpponent> towerFoes = new();
     private int judgedTotal, judgedBest;
+    // The Battle Points list the last prize was chosen from, which "buy" asks the price again of (plan 36 · TR3)
+    private string lastPrizeList = FrontierExchange.Items;
 
     /// <summary>
     /// <c>points</c> is the Battle Points held (<c>{points}</c> in a line says them); <c>give N</c> adds some;
-    /// <c>prize items|machines</c> asks which of a booth's prizes (<c>PokeMartFrontier</c>; RESULT 1, or 0 for none;
+    /// <c>prize items|machines|training</c> asks which of a booth's prizes (<c>PokeMartFrontier</c>; <c>training</c> the training
+    /// club's list of plan 36 · TR3; RESULT 1, or 0 for none;
     /// <c>{item}</c> and <c>{price}</c>, and <c>{thing}</c> the move a TM holds) and <c>buy</c> exchanges points for it
     /// (RESULT 1, or 0 with too few); <c>records tower</c> opens a facility's board and waits; <c>print tower</c> hands
     /// over the commemorative print that waits (RESULT 0 none, 1 silver, 2 gold); <c>judge</c> reads the potential of
@@ -45,7 +48,8 @@ public sealed partial class ScriptRunner
                 break;
             case "prize":
             {
-                var stock = FrontierExchange.Stock(machines: i.Other == "machines");
+                var stock = FrontierExchange.Stock(i.Other);
+                string list = i.Other ?? FrontierExchange.Items;
                 var rows = stock.Select(p => PrizeRow(p.Item, "scriptLines.priceBp", "price", p.Price.ToString()))
                     .Append(Text.Of("scriptLines.noThanks")).ToList();
                 host.FrontierAct("points", 1, Subject);
@@ -55,6 +59,7 @@ public sealed partial class ScriptRunner
                     if (host.Answer < 0 || host.Answer >= stock.Count) { Result = 0; return; }
                     lastItem = stock[host.Answer].Item;
                     lastPrice = stock[host.Answer].Price;
+                    lastPrizeList = list;
                     lastThing = ItemDatabase.Get(lastItem)?.TeachesMove ?? "";
                     Result = 1;
                 };
@@ -62,8 +67,9 @@ public sealed partial class ScriptRunner
             }
             case "buy":
             {
+                // The price asked again of the list it was chosen from: a list whose price changed since sells nothing
                 var item = ItemDatabase.Get(lastItem);
-                if (item == null || FrontierExchange.PriceOf(lastItem) != lastPrice || !records.SpendPoints(lastPrice)) { Result = 0; break; }
+                if (item == null || FrontierExchange.PriceOf(lastItem, lastPrizeList) != lastPrice || !records.SpendPoints(lastPrice)) { Result = 0; break; }
                 host.Bag.AddItem(item, 1);
                 Result = 1;
                 break;

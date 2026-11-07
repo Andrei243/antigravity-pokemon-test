@@ -13593,6 +13593,10 @@ way 1.0.1.1, from answer 4
 way 1.1, from answer 2
   Head Coach> No rush. Come back whenever you're ready.
   ? Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to? = No
+=== common.TrainingExchange
+from a trainer with lines of their own
+way -
+  Club Clerk> I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!
 === common.TrashCan
 from a trainer with lines of their own
 way -

@@ -17,6 +17,7 @@ partial class Harness
         string part = Environment.GetEnvironmentVariable("TRAINING_PART") ?? "";
         if (part == "" || part == "skills") TrainingSkills();
         if (part == "" || part == "hall") TrainingHall();
+        if (part == "" || part == "peak") TrainingPeak();
     }
 
     /// <summary>

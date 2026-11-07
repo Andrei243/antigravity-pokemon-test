@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11161 | 10684 | 477 | 17 | 0 |
+| Scripts (`script:`) | 11175 | 10697 | 478 | 17 | 0 |
 | People of the world (`world:`) | 7941 | 7879 | 62 | 4 | 0 |
-| **All** | 20827 | 20243 | 584 | 22 | 0 |
+| **All** | 20841 | 20256 | 585 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,14 +22,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 830 |
+| a question's answers | 835 |
 | a sign | 1736 |
 | the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1830 |
+| the game's own voice (text) | 1831 |
 
 ## The cast
 
-- Named characters: 459 voices (422 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 460 voices (423 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 244, with 737 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1911.
@@ -45,7 +45,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 595 | 0 |
 | `look:lady (any)` | 448 | 1 |
-| `look:clerk (any)` | 426 | 10 |
+| `look:clerk (any)` | 425 | 10 |
 | `look:youngster (any)` | 417 | 21 |
 | `look:lass (any)` | 358 | 11 |
 | `look:attendant (any)` | 321 | 12 |
@@ -178,6 +178,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:school_kid_m (any)` | 30 | 0 |
 | `class:skier (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
+| `head_coach` | 30 | 1 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `chairman` | 29 | 0 |
@@ -248,7 +249,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:double_team (any)` | 20 | 0 |
 | `class:sis_and_bro (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
-| `head_coach` | 20 | 0 |
 | `juan` | 20 | 0 |
 | `look:announcer (any)` | 20 | 12 |
 

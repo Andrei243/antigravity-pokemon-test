@@ -757,5 +757,31 @@
     "cantBeTossed": true,
     "canBeRegistered": true,
     "fieldUse": "CraftingKit"
-  }
+  },
+  // Plan 36 · TR3: the training tools the import carries at its placeholder price of 20, priced as ours so that the
+  // training hall's stall sells them and every counter buys them back at half (docs/mechanics/rulings.md, "Peak training
+  // and the training tools"). The mints and the Ability Patch are sold for Battle Points too (Data/training.json)
+  "Lonely Mint": { "price": 3000 },
+  "Adamant Mint": { "price": 3000 },
+  "Naughty Mint": { "price": 3000 },
+  "Brave Mint": { "price": 3000 },
+  "Bold Mint": { "price": 3000 },
+  "Impish Mint": { "price": 3000 },
+  "Lax Mint": { "price": 3000 },
+  "Relaxed Mint": { "price": 3000 },
+  "Modest Mint": { "price": 3000 },
+  "Mild Mint": { "price": 3000 },
+  "Rash Mint": { "price": 3000 },
+  "Quiet Mint": { "price": 3000 },
+  "Calm Mint": { "price": 3000 },
+  "Gentle Mint": { "price": 3000 },
+  "Careful Mint": { "price": 3000 },
+  "Sassy Mint": { "price": 3000 },
+  "Timid Mint": { "price": 3000 },
+  "Hasty Mint": { "price": 3000 },
+  "Jolly Mint": { "price": 3000 },
+  "Naive Mint": { "price": 3000 },
+  "Serious Mint": { "price": 3000 },
+  "Exp. Candy XS": { "price": 40 },
+  "Ability Patch": { "price": 40000 }
 }
