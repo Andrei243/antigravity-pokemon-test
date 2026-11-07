@@ -18,6 +18,8 @@ partial class Harness
         if (part == "" || part == "skills") TrainingSkills();
         if (part == "" || part == "hall") TrainingHall();
         if (part == "" || part == "peak") TrainingPeak();
+        // Plan 36 · TR9: the later machines' shelf, a machine taught and a Dipplin into Hydrapple, the hall's tutor (tr80 to tr83)
+        if (part == "" || part == "machines") TrainingMachines();
     }
 
     /// <summary>

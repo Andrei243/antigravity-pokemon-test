@@ -112,14 +112,29 @@ var importedItems = importer.Items(evolutionItems, moves);
 importer.AddLaterMechanics(importedItems, showdown);
 importer.AddLaterItemEffects(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
+// The later games' machines of ours (plan 36 · TR9), after the overrides, whose Hoenn's HM09 and Johto's HM10 teach what
+// no later machine need teach again
+var laterMachines = importer.AddLaterMachineItems(items, moves);
+Console.WriteLine($"  later machines: {laterMachines.Count} ({laterMachines.FirstOrDefault()?.Item.Name} to {laterMachines.LastOrDefault()?.Item.Name}), "
+    + string.Join(", ", laterMachines.GroupBy(m => m.Group).Select(g => $"{g.Count()} from version group {g.Key}")));
 importer.AddLaterMachines(species, items);
 importer.AddTechnicalRecords(species, items);
 importer.AddHoennMachines(species, items);
+importer.AddLaterCompatibility(species, items);
 SpeciesPastHundred.CopyMachines(species);
+var tutorCandidates = importer.LaterTutorCandidates(items);
+var hallTutor = MoveTutors.At(MoveTutors.TrainingHall).Select(m => m.Move).ToHashSet();
+Console.WriteLine($"  the later tutors' moves no machine teaches: {tutorCandidates.Count}; not on a training hall's tutor's list: "
+    + (tutorCandidates.Where(m => !hallTutor.Contains(m)).ToList() is { Count: > 0 } off ? string.Join(", ", off) : "none"));
+var laterGaps = importer.LaterGaps(species, items);
+Console.WriteLine($"  species whose newest game teaches by a machine or a tutor what nothing here teaches them: {laterGaps.Count}");
+foreach (var gap in laterGaps) Console.WriteLine($"    {gap}");
 var marts = importer.Marts();
 // Counters of other regions's own (plan 20 · J7: the Goldenrod Department Store's, from HeartGold's src/scrcmd_mart.c), which
 // Platinum's lists don't have: Overrides/marts.json's specialties, laid over the imported ones
 Overrides.AddMarts(marts, Path.Combine(overrides, "marts.json"));
+// A training hall's machine shelf (plan 36 · TR9): the later machines of ours, which its clerk sells
+Importer.AddMachineShelf(marts, items);
 var contests = importer.Contests();
 contests.Backdrops = importer.Backdrops();
 var seals = importer.Seals();

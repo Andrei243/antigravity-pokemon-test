@@ -32,7 +32,8 @@ public class TrainingToolsTests
     /// <summary>
     /// The later games' training tools the rules run (plan 06 · R28b and beside it): the mints, the Exp. Candies, the Ability
     /// Capsule and Patch, the Bottle Caps, the Dynamax Candy and Max Mushrooms, the nectars, the mochi, Legends: Arceus's
-    /// candies, Sword and Shield's TRs and the charms.
+    /// candies, Sword and Shield's TRs and the charms; and since TR9 the later games' machines of ours (TM93 on), sold on a
+    /// hall's machine shelf.
     /// </summary>
     private static IReadOnlyList<string> Tools()
     {
@@ -41,7 +42,7 @@ public class TrainingToolsTests
             LaterItemUse.DynamaxCandy, LaterItemUse.Nectar };
         return ItemDatabase.GetAll()
             .Where(i => uses.Contains(i.FieldUse ?? "") || HyperTraining.IsCap(i) || i.Name.EndsWith(" Mochi") || candies.IsMatch(i.Name)
-                || Regex.IsMatch(i.Name, @"^TR\d\d$") || i.Name is "Max Mushrooms" or "Shiny Charm" or "Oval Charm")
+                || Regex.IsMatch(i.Name, @"^TR\d\d$") || i.Name is "Max Mushrooms" or "Shiny Charm" or "Oval Charm" || MoveTeaching.IsLater(i))
             .Select(i => i.Name).OrderBy(n => n, StringComparer.Ordinal).ToList();
     }
 
@@ -200,6 +201,8 @@ public class TrainingToolsTests
         var sinnoh = ItemSources.In(RegionDatabase.Sinnoh);
         Assert.Contains(sinnoh.Of("Poké Ball"), s => s.Kind == ItemSourceKind.Stock && s.Where == "a Poké Mart");
         Assert.Contains(sinnoh.Of("Ability Capsule"), s => s.Kind == ItemSourceKind.Stock && s.Where == "the counter training_hall");
+        // The later machines' shelf, which the training clerk opens as her second (plan 36 · TR9)
+        Assert.Contains(sinnoh.Of("TM249"), s => s.Kind == ItemSourceKind.Stock && s.Where == "the counter training_hall_machines");
         Assert.Contains(sinnoh.Of("Gold Bottle Cap"), s => s.Kind == ItemSourceKind.Prize && s.Where.Contains("TrainingExchange"));
         Assert.Contains(sinnoh.Of("Bottle Cap"), s => s.Kind == ItemSourceKind.Ball && s.Where == "route_228");
         Assert.Contains(sinnoh.Of("Bottle Cap"), s => s.Kind == ItemSourceKind.Ball && s.Where == "route_226");
@@ -233,5 +236,9 @@ public class TrainingToolsTests
         Assert.Contains("Shiny Charm", tools);
         Assert.Contains(sinnoh.Of("Oval Charm"), s => s.Kind == ItemSourceKind.Given && s.Where == "GrandLakeValorLakefrontWestHouse.Director");
         Assert.Contains(sinnoh.Of("Shiny Charm"), s => s.Kind == ItemSourceKind.Given && s.Where == "GrandLakeValorLakefrontWestHouse.Director");
+
+        // TR9's machine shelf for every later machine (plan 36 · TR9)
+        Assert.All(ItemDatabase.GetAll().Where(MoveTeaching.IsLater), m => Assert.Contains(sinnoh.Of(m.Name),
+            s => s.Kind == ItemSourceKind.Stock && s.Where == "the counter training_hall_machines"));
     }
 }

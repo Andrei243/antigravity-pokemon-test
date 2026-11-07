@@ -724,7 +724,7 @@ public class BagScreen
             if (target.Moves.Count < 4)
             {
                 onNotification(MoveTeaching.Learn(target, move));
-                if (!MoveTeaching.IsHm(item)) inventory.RemoveItem(item, 1);
+                if (MoveTeaching.IsUsedUp(item)) inventory.RemoveItem(item, 1);
                 AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
             }
             else
@@ -979,7 +979,7 @@ public class BagScreen
         else
         {
             onNotification(MoveTeaching.Learn(p, move, ForgetIndex));
-            if (machine != null && !MoveTeaching.IsHm(machine)) inventory.RemoveItem(machine, 1);
+            if (machine != null && MoveTeaching.IsUsedUp(machine)) inventory.RemoveItem(machine, 1);
             AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
         }
         teaching = null;

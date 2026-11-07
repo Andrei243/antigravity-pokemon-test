@@ -351,6 +351,14 @@ public sealed class Ruleset
     /// </summary>
     public bool ExpForACatch { get; private init; }
 
+    /// <summary>
+    /// The later games' machines and their compatibility (plan 36 · TR9; <c>docs/mechanics/rulings.md</c>, "The later TMs
+    /// and tutors"): the machines of ours from TM93 on teach their moves, and every species takes the machines its later
+    /// games taught it (<see cref="Models.PokemonSpecies.LaterMachines"/>, <see cref="Models.MoveTeaching.Takes"/>).
+    /// Platinum's rules teach Platinum's machines by Platinum's lists, as they always did.
+    /// </summary>
+    public bool LaterMachines { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -420,7 +428,8 @@ public sealed class Ruleset
         MegaDynamax = true,
         AffectionPerks = true,
         CriticalCaptures = true,
-        ExpForACatch = true
+        ExpForACatch = true,
+        LaterMachines = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

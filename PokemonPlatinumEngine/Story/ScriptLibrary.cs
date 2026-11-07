@@ -376,7 +376,7 @@ public sealed class ScriptLibrary
                     case Op.Tutor when i.Name == "once" && !Models.MoveTutors.Kanto.ContainsKey(i.Other):
                         Wrong(i, $"no tutor of Kanto teaches '{i.Other}'");
                         break;
-                    case Op.Tutor when i.Name == "moves" && !Models.MoveTutors.Places.Contains(i.Other):
+                    case Op.Tutor when i.Name == "moves" && !Models.MoveTutors.IsPlace(i.Other):
                         Wrong(i, $"no shard tutor lives at '{i.Other}'");
                         break;
                     case Op.GiveAccessory when SuperContestDatabase.Accessory(i.Name) < 0:

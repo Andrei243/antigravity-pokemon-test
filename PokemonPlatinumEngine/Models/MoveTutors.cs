@@ -24,7 +24,8 @@ public enum TutorAnswer { Able, Nobody, Egg, NotAble, Knows, NotClose }
 /// moves of the starters to the twelve of them fully grown, on the same condition. Who can learn a tutor's move is
 /// the species' own list (<see cref="PokemonSpecies.TutorMoves"/>); the four moves the last two teach are on no list,
 /// as in the original, whose scripts ask the type and the species themselves. Teaching is
-/// <see cref="MoveTeaching.Learn"/>, as a TM's is.
+/// <see cref="MoveTeaching.Learn"/>, as a TM's is. Since plan 36 · TR9 a training hall's tutor teaches the later games'
+/// tutors' moves no machine teaches, for Shards in the same way, by the species' later list (<see cref="TrainingHall"/>).
 /// </summary>
 public static class MoveTutors
 {
@@ -57,19 +58,60 @@ public static class MoveTutors
         },
     };
 
-    /// <summary>The places that have a shard tutor.</summary>
+    /// <summary>The places that have a shard tutor of Platinum's.</summary>
     public static IReadOnlyCollection<string> Places => ByPlace.Keys;
 
-    /// <summary>Every move a place's tutor teaches, in the original's order.</summary>
+    /// <summary>
+    /// A training hall's tutor (plan 36 · TR9; <c>docs/mechanics/rulings.md</c>, "The later TMs and tutors"): the later
+    /// games' tutors' moves that no machine of this game teaches, for Shards in the shard tutors' way, to the Pokémon whose
+    /// species learns the move from a tutor in a game after Platinum (<see cref="PokemonSpecies.LaterTutorMoves"/>).
+    /// </summary>
+    public const string TrainingHall = "training_hall";
+
+    /// <summary>Whether a <c>tutor moves</c> may name the place: a shard tutor's of Platinum's, or a training hall's.</summary>
+    public static bool IsPlace(string place) => place == TrainingHall || ByPlace.ContainsKey(place);
+
+    /// <summary>Every move a place's tutor teaches, in the original's order (a training hall's in ours).</summary>
     public static IReadOnlyList<TutorMove> At(string place) =>
-        ByPlace.TryGetValue(place, out var moves) ? moves : throw new ArgumentException($"No shard tutor lives at '{place}'", nameof(place));
+        place == TrainingHall ? Later
+        : ByPlace.TryGetValue(place, out var moves) ? moves : throw new ArgumentException($"No shard tutor lives at '{place}'", nameof(place));
 
     /// <summary>
     /// The moves a place's tutor can teach this Pokémon (the original's <c>CheckHasLearnableTutorMoves</c> and its
-    /// list): those on its species' list that it doesn't know. An Egg learns none.
+    /// list): those on its species' list that it doesn't know (Platinum's list for a shard tutor of Platinum's, the later
+    /// games' for a training hall's). An Egg learns none.
     /// </summary>
-    public static List<TutorMove> Teachable(Pokemon p, string place) =>
-        p.IsEgg ? new() : At(place).Where(m => p.Species.TutorMoves?.Contains(m.Move) == true && !p.Knows(m.Move)).ToList();
+    public static List<TutorMove> Teachable(Pokemon p, string place)
+    {
+        if (p.IsEgg) return new();
+        var list = place == TrainingHall ? p.Species.LaterTutorMoves : p.Species.TutorMoves;
+        return At(place).Where(m => list?.Contains(m.Move) == true && !p.Knows(m.Move)).ToList();
+    }
+
+    /// <summary>
+    /// A training hall's tutor's moves (plan 36 · TR9), our own list and prices: every move a tutor teaches in a game after
+    /// Platinum (Black and White to Scarlet and Violet, Legends: Arceus among them) that no machine of this game teaches,
+    /// Let's Go's partner moves left out (they are its partner Pikachu's and Eevee's alone), the newer games' first, as
+    /// the importer finds them (<c>Importer.LaterTutorCandidates</c>, which says when a move is missing here). Each costs
+    /// eight Shards as Platinum's do, of the colour its type is nearest (red the hot and the hard: Fire, Fighting, Ground,
+    /// Rock, Steel, Dragon; blue the cold and the wet: Water, Ice, Flying, Psychic; yellow the bright and the swift:
+    /// Electric, Normal, Fairy; green the living and the dark: Grass, Bug, Poison, Ghost, Dark): six and two of the next
+    /// colour for a move that hits, four and four for one that doesn't.
+    /// </summary>
+    private static readonly TutorMove[] Later =
+    {
+        // Sword and Shield's (the Isle of Armor's tutor)
+        new("Corrosive Gas", 4, 0, 0, 4), new("Rising Voltage", 0, 2, 6, 0), new("Steel Roller", 6, 0, 2, 0), new("Terrain Pulse", 0, 2, 6, 0),
+        // Ultra Sun and Ultra Moon's and the games of Kalos and Unova before them
+        new("After You", 0, 4, 4, 0), new("Aqua Tail", 0, 6, 0, 2), new("Bind", 0, 2, 6, 0), new("Block", 0, 4, 4, 0),
+        new("Covet", 0, 2, 6, 0), new("Dragon Ascent", 0, 6, 0, 2), new("Dual Chop", 6, 0, 2, 0), new("Gastro Acid", 4, 0, 0, 4),
+        new("Heal Bell", 0, 4, 4, 0), new("Laser Focus", 0, 4, 4, 0), new("Last Resort", 0, 2, 6, 0), new("Magic Coat", 0, 4, 0, 4),
+        new("Magnet Rise", 0, 4, 4, 0), new("Relic Song", 0, 2, 6, 0), new("Role Play", 0, 4, 0, 4), new("Secret Sword", 6, 0, 2, 0),
+        new("Signal Beam", 2, 0, 0, 6), new("Sky Attack", 0, 6, 0, 2), new("Synthesis", 4, 0, 0, 4), new("Volt Tackle", 0, 2, 6, 0),
+        new("Worry Seed", 4, 0, 0, 4),
+        // Legends: Arceus's (its Power Shift and Ice Ball are Hisui's forms' alone, which take their species' lists)
+        new("Baby-Doll Eyes", 0, 4, 4, 0), new("Ominous Wind", 2, 0, 0, 6),
+    };
 
     private static IEnumerable<(string Shard, int Count)> Cost(TutorMove move) =>
         new[] { ("Red Shard", move.Red), ("Blue Shard", move.Blue), ("Yellow Shard", move.Yellow), ("Green Shard", move.Green) }.Where(c => c.Item2 > 0);

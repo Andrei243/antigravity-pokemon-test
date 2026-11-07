@@ -529,6 +529,44 @@
           }
         ]
       },
+      "laterMachines": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "laterTutorMoves": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "offspring": {
         "anyOf": [
           {

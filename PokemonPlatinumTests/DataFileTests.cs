@@ -354,7 +354,9 @@ public class DataFileTests
     {
         var all = ItemDatabase.GetAll().ToList();
         var machines = all.Where(i => i.TeachesMove != null).ToList();
-        Assert.Equal(202, machines.Count); // Platinum's 92 TMs and 8 HMs, Sword and Shield's hundred TRs (plan 06 · R28b), HM09, Dive (plan 21 · H8), and HM10, Whirlpool (plan 20 · J11)
+        // Platinum's 92 TMs and 8 HMs, Sword and Shield's hundred TRs (plan 06 · R28b), HM09, Dive (plan 21 · H8), HM10,
+        // Whirlpool (plan 20 · J11), and the later games' 212 of ours, TM93 to TM304 (plan 36 · TR9)
+        Assert.Equal(414, machines.Count);
 
         // Any move's name standing as words of its own; the longest first, so Flash Cannon isn't read as Flash
         var names = MoveDatabase.GetAll().Select(m => m.Name).OrderByDescending(n => n.Length).Select(Regex.Escape);
