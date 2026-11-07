@@ -1161,8 +1161,8 @@
       "left": "Left {n}", "right": "Right {n}", "ready": "Press to hear", "sounding": "Sounding",
       "hint": "Press the confirm key to bend this cry."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "national": "NATIONAL" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "national": "National" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NATIONAL" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "National" },
     "found": "FOUND",
     "order": "ORDER",
     "seen": "SEEN",

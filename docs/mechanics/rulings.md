@@ -9403,3 +9403,6 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   north end, the Underground Ruins' two halls at Route 14's, the Regis' chambers at the Desert Resort's (Regirock), Twist Mountain's
   (Regice) and Mistralton City's (Registeel), the Nature Preserve at Mistralton City's (flown to from its cargo hall) and the Hidden
   Grotto at Route 19's. They are only where the player is shown on the map; nothing else reads them.
+- **Words.** The 52 places' words are in English and Romanian (`Data/text/ro/data.json`, which `RomanianTests` holds every region's map to), and the
+  Pokédex's tag for Unova's own list is `pokedex.mode.updatedunova` and `pokedex.modeName.updatedunova` ("UNOVA"; the other regions'
+  Pokédexes beyond Kanto's have none yet and show their key, which a later session of each writes).

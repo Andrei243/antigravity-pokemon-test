@@ -1560,8 +1560,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "national": "NAȚIONAL" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "national": "Național" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NAȚIONAL" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "Național" },
     "found": "GĂSIȚI",
     "order": "ORDINE",
     "seen": "VĂZUȚI",
