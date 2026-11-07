@@ -6138,7 +6138,29 @@
   "crafting": {
     "title": "TRUSA DE CREAȚIE",
     "tab": {
-      "materials": "MATERIALE"
+      "materials": "MATERIALE",
+      "machines": "TM-URI"
+    },
+    "hint": {
+      "make": "Creează",
+      "tab": "Filă"
+    },
+    "tm": {
+      "empty": "Niciun TM sau TR nu s-a aflat încă în rucsacul tău. Pe cele pe care le porți, și pe cele pe care le-ai folosit, le poți crea din nou aici.",
+      "money": "BANI",
+      "needs": "ARE NEVOIE DE",
+      "price": "Bani",
+      "power": "Putere {n}",
+      "noPower": "Fără daune",
+      "varies": "Putere variabilă",
+      "made": "Ai creat {name}, {move}!",
+      "why": {
+        "hm": "Un HM nu se creează niciodată.",
+        "unknown": "Acel disc n-a fost niciodată în rucsacul tău.",
+        "short": "Nu ai destul {name}.",
+        "money": "Nu ai destui bani.",
+        "full": "Rucsacul tău nu mai poate ține încă unul."
+      }
     },
     "kinds": "{n} FELURI",
     "has": "×{count}  din {limit}",

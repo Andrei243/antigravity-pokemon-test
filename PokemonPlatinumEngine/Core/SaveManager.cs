@@ -331,6 +331,9 @@ public class SaveData
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
 
+    /// <summary>Every TM and TR (never an HM) that has been in the bag, by item name, for the TM maker (plan 39 · CR4). Null in saves from before it, which know those in their bag, and while none has.</summary>
+    public List<string>? MachinesHad { get; set; }
+
     /// <summary>The DexNav (plan 10 · F11, F12): switched on or not, the search levels and the chain. Null while it has never been used, and in older saves.</summary>
     public Overworld.DexNavSave? DexNav { get; set; }
 

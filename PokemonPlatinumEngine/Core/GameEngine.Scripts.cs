@@ -1275,7 +1275,7 @@ public partial class GameEngine
                     break;
                 // The crafting kit looked into (plan 39 · CR1)
                 case ScriptScreen.Crafting:
-                    game.OpenCrafting(fromBag: false);
+                    game.OpenCrafting(fromBag: false, atMaker: counter == "tm");
                     break;
                 // Cameron's photo album (plan 20, part q)
                 case ScriptScreen.PhotoAlbum:

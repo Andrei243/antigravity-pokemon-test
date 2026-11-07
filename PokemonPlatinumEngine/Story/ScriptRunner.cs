@@ -374,7 +374,7 @@ public sealed partial class ScriptRunner
         Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
         Op.Tutor or Op.Amity => true,
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
-        Op.Craft => i.Name == "open",
+        Op.Craft => i.Name is "open" or "tm",
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen

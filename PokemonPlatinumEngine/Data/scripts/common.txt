@@ -783,6 +783,9 @@ label NoSeals
 # The modern rules' PC (plan 15 · E3): storage, the jobs board, the Ball Capsules with a Seal Case, and off. Written
 # after the rest so that Platinum's own lines keep their places
 label Modern
+  # With the crafting kit in the bag, the PC offers the TM maker too (plan 39 · CR4)
+  craft has
+  if result == 1 goto ModernKit
   if item "Seal Case" goto ModernCapsules
   choose "Which should be opened?" "POKéMON STORAGE" "POKé JOBS" "SWITCH OFF"
   if result == 1 goto Jobs
@@ -796,6 +799,23 @@ label ModernCapsules
   goto Storage
 label Jobs
   jobs
+  goto Off
+label ModernKit
+  if item "Seal Case" goto ModernKitCapsules
+  choose "Which should be opened?" "POKéMON STORAGE" "POKé JOBS" "TM MAKER" "SWITCH OFF"
+  if result == 1 goto Jobs
+  if result == 2 goto Maker
+  if result == 3 goto Off
+  goto Storage
+label ModernKitCapsules
+  choose "Which should be opened?" "POKéMON STORAGE" "POKé JOBS" "BALL CAPSULES" "TM MAKER" "SWITCH OFF"
+  if result == 1 goto Jobs
+  if result == 2 goto Capsules
+  if result == 3 goto Maker
+  if result == 4 goto Off
+  goto Storage
+label Maker
+  craft tm
   goto Off
 
 

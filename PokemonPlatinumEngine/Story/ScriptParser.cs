@@ -1099,7 +1099,7 @@ public static class ScriptParser
             // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm");
                 if (what == "give" && r.PeekWord("kit"))
                 {
                     r.Next();

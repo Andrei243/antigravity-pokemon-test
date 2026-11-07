@@ -164,7 +164,7 @@ public partial class GameEngine
         public void OpenApricornBox() => game.OpenApricornBox(fromBag: false);
         public CraftingScreen CraftingScreen => game.flow.CraftingScreen;
         public CraftingState Crafting => game.flow.Crafting;
-        public void OpenCrafting() => game.OpenCrafting(fromBag: false);
+        public void OpenCrafting(bool atMaker = false) => game.OpenCrafting(fromBag: false, atMaker: atMaker);
         public Toast Toast => game.flow.Toast;
         public Random FieldRandom { get => game.fieldRandom; set => game.fieldRandom = value; }
         public DayCare DayCare => game.flow.DayCare;
@@ -446,6 +446,8 @@ public partial class GameEngine
         public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
+        /// <summary>Puts a save's contents into the game as loading it does, with no title or fade (plan 39 · CR4's tests).</summary>
+        public void ApplySave(SaveData save) => game.ApplySaveData(save);
         /// <summary>The title's HOME (plan 12 · Q28, Q29).</summary>
         public HomeScreen Home => game.flow.HomeScreen;
         /// <summary>Opens HOME on the slots as their files now stand, as the title's row does.</summary>

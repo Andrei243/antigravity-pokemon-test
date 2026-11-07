@@ -11,6 +11,21 @@ public class Inventory
 {
     private readonly List<ItemStack> items = new();
     private readonly Dictionary<ItemPocket, BagOrder> orders = new();
+    private readonly HashSet<string> machinesHad = new(System.StringComparer.Ordinal);
+
+    /// <summary>
+    /// Every TM and TR (never an HM) that has ever been in the bag, by item name (plan 39 · CR4): noted as one is added,
+    /// kept when it is used up, and saved as <c>SaveData.MachinesHad</c>; what the TM maker (<see cref="TmMaker"/>) lists.
+    /// An older save knows those in its bag, since loading adds them.
+    /// </summary>
+    public IReadOnlyCollection<string> MachinesHad => machinesHad;
+
+    /// <summary>Notes machines as had (a save's list laid over those the bag's own items noted).</summary>
+    public void NoteMachinesHad(IEnumerable<string>? names)
+    {
+        foreach (var name in names ?? System.Array.Empty<string>())
+            if (ItemDatabase.Get(name) is { } item && TmMaker.Makeable(item)) machinesHad.Add(item.Name);
+    }
 
     public IReadOnlyList<ItemStack> AllItems => items;
 
@@ -52,6 +67,7 @@ public class Inventory
     public void AddItem(ItemData item, int quantity = 1)
     {
         if (quantity <= 0) return;
+        if (TmMaker.Makeable(item)) machinesHad.Add(item.Name);
         var existing = items.FirstOrDefault(i => i.Data.Id == item.Id);
         if (existing != null)
         {
@@ -86,5 +102,6 @@ public class Inventory
     {
         items.Clear();
         orders.Clear();
+        machinesHad.Clear();
     }
 }

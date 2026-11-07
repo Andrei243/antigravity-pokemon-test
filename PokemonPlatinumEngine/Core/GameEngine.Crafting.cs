@@ -38,16 +38,18 @@ public partial class GameEngine
     internal bool HasCraftingKit => ItemDatabase.Get(CraftingKitItem) is { } kit && flow.Bag.GetQuantity(kit) > 0;
 
     /// <summary>Opens the kit to look into, from the bag, the item button or a script.</summary>
-    private void OpenCrafting(bool fromBag)
+    private void OpenCrafting(bool fromBag, bool atMaker = false)
     {
         craftingFromBag = fromBag;
         flow.State = GameState.Crafting;
-        flow.CraftingScreen.Open(flow.Crafting);
+        flow.CraftingScreen.Open(flow.Crafting, flow.Bag, flow.Money, atMaker);
     }
 
     private void UpdateCrafting(float dt)
     {
         flow.CraftingScreen.Update(dt);
+        // The money a machine made at the TM maker costs is taken as it is made (plan 39 · CR4)
+        flow.Money = Math.Max(0, flow.Money - flow.CraftingScreen.TakeSpent());
         if (flow.CraftingScreen.IsActive) return;
         if (craftingFromBag)
         {

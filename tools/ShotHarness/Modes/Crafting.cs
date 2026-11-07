@@ -96,5 +96,69 @@ partial class Harness
         Console.WriteLine($"kit screen: {game.CraftingScreen.Selected?.Id}, {game.CraftingScreen.Pouch.Kinds} kinds");
         game.CraftingScreen.Cancel();
         Frames(4);
+
+        CraftingTmMakerPart(Until);
+    }
+
+    // ---------------------------------------------------------------- the TM maker (plan 39 · CR4)
+
+    // A Pokémon Center's PC with the kit in the bag: the menu with TM MAKER among its answers (cr30), the maker's list of
+    // every machine the player has carried (cr31), the cost of a strong one against what is held (cr32) and a machine made
+    // (cr33). Through the game's own TryInteract, script and screen; it prints the bag, the pouch and the money after.
+    void CraftingTmMakerPart(Action<Func<bool>, string, int> until)
+    {
+        game.Crafting.Pouch.Clear();
+        game.State = GameState.Overworld;
+        foreach (var name in new[] { "TM27", "TM13", "TM01", "TM68", "TM06" })
+            if (ItemDatabase.Get(name) is { } machine) game.Bag.AddItem(machine, 1);
+        // Some used up, as they are: the maker remembers them
+        foreach (var name in new[] { "TM27", "TM13", "TM06" })
+            if (ItemDatabase.Get(name) is { } machine) game.Bag.RemoveItem(machine, 1);
+        var cost = TmMaker.CostOf(ItemDatabase.Get("TM27")!)!;
+        var big = TmMaker.CostOf(ItemDatabase.Get("TM68")!)!;
+        game.Crafting.Pouch.Add(cost.CommonId, cost.Common + 1);
+        game.Crafting.Pouch.Add(big.CommonId, big.Common);
+        game.Money = 5000;
+
+        var center = MapDatabase.Get("PokemonCenter");
+        var terminal = center.NPCs.First(n => n.IsPCTerminal);
+        At("PokemonCenter", terminal.GridX, terminal.GridY + 1, Direction.Up);
+        game.LocationSign.Hide();
+        game.Interact(); Frames(3);
+        bool menuShot = false;
+        for (int i = 0; i < 40 && game.State != GameState.Crafting; i++)
+        {
+            if (engine.Choice.IsOpen)
+            {
+                until(() => engine.Choice.Shown >= 0.99f, "the PC's menu", 120);
+                if (!menuShot) { Shot("cr30_pc_menu"); menuShot = true; }
+                Console.WriteLine($"pc menu: {string.Join(" / ", engine.Choice.Options)}");
+                int maker = engine.Choice.Options.ToList().IndexOf("TM MAKER");
+                for (int k = 0; k < maker; k++) engine.Choice.Move(1);
+                engine.Choice.Confirm(); Frames(6);
+                continue;
+            }
+            if (game.Dialogue.IsActive) { game.Dialogue.FinishLine(); Frames(2); game.Dialogue.Advance(); }
+            Frames(4);
+        }
+        until(() => game.State == GameState.Crafting, "the TM maker", 120);
+        var screen = game.CraftingScreen;
+        Frames(30);
+        Shot("cr31_tm_list");
+        Console.WriteLine($"maker: {string.Join(", ", screen.Machines.Select(m => m.Name))}");
+        // The strong one: Hyper Beam, its common and its rare material against what is held
+        int beam = screen.Machines.ToList().FindIndex(m => m.Name == "TM68");
+        for (int k = 0; k < beam; k++) screen.Move(1);
+        Frames(6);
+        Shot("cr32_tm_cost");
+        // And one made: Return
+        while (screen.SelectedMachine?.Name != "TM27") screen.Move(-1);
+        screen.Confirm();
+        Frames(12);
+        Shot("cr33_tm_made");
+        Console.WriteLine($"made: {screen.Notice}; TM27 in the bag {game.Bag.GetQuantity(ItemDatabase.Get("TM27")!)}, money {game.Money} (screen {screen.Money})");
+        screen.Cancel();
+        Frames(10);
+        until(() => !engine.ScriptRunning, "the PC switched off", 240);
     }
 }
