@@ -9375,3 +9375,31 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **Black City's blocks** are dark slate panels with a band of the accent along their tops (the style guide's row first): the
   pale panels of part h read as a pale town. The Moor of Icirrus's `sp_o11m` textures are its mud, so a blocked tile of it no
   longer grows a pine in the water.
+
+## The field beyond the tables (2026-11-07, plan 38)
+
+Plan 38 adds what the field offers in every region beyond its tables; each session adds its part here.
+
+- **Unova's Town Map** (EX10). `Data/world/unova/townmap.json` is written by hand like the other regions' (a script made its first
+  draft from the overworld matrix's own list of areas by chunk; its words and kinds are ours): a cell for every chunk of the
+  overworld's 29 by 27, a block on each cell of an open area (265 blocks: 263 on land and two for Castelia City), the screen showing
+  the 28 columns and 24 rows that hold land (a picture that the Pokédex's area page fits at twenty to a cell, as Sinnoh's is), the
+  cursor on the cells from 1,1 to 26,24 and starting on Aspertia City. A town or city is a `Town` block whose words wait for its
+  first arrival (`FLAG_FIRST_ARRIVAL_<AREA>`; a Fly town's is set by the arrival itself, the rest by the file's `arrival`), a route a
+  `Route` block told of from the start, and a cave, forest, tower, desert or other place with a cell of its own a `Landmark` block.
+  Black 2's Route 10 and Unity Tower are not open and have no block.
+- **Fly lands** at the ten Pokémon Centers of the overworld, spawns 2 to 11 (Aspertia City, Floccesy Town, Nimbasa City, Driftveil
+  City, Mistralton City, Lentimas Town, Undella Town, Lacunosa Town, Opelucid City, Humilau City), each on its town's cells and opened
+  by the town's first arrival. Spawn 1 (the player's house) is where a white-out goes and not a place to fly to; spawns 12 and 13
+  (Victory Road's and the League's Pokémon Centers) are maps of their own with no cell on the overworld's grid, so Fly does not offer
+  them yet; a session that gives a map of its own a place on the Town Map adds them. `Crossing.CanFly` needed nothing: it asks only
+  that the region has a map, so the tab appears once the Unova Pokédex is entered.
+- **Castelia City** is a map of ours with no place on the overworld's grid (Black 2 lays it out on rails the reader leaves out), so
+  its block stands on two cells of the empty sea in the south (11,23 and 12,23), where Black 2's grid has the shut Unity Tower. A
+  rooms of the city are shown on the map on that block: the file's new `places` (docs/data-files.md, "The region map") names the
+  maps that no warp of the overworld leads into with the cell each is shown at, and `RegionMap.PlacesOf` takes them first.
+- **The maps no warp leads into** get their cell from `places`, ours: the Abyssal Ruins at Undella Bay's, the Gear Station's train to
+  Anville Town and the Battle Subway's cars at Nimbasa City's, the League's descent, Champion's room and Hall of Fame at Route 23's
+  north end, the Underground Ruins' two halls at Route 14's, the Regis' chambers at the Desert Resort's (Regirock), Twist Mountain's
+  (Regice) and Mistralton City's (Registeel), the Nature Preserve at Mistralton City's (flown to from its cargo hall) and the Hidden
+  Grotto at Route 19's. They are only where the player is shown on the map; nothing else reads them.
