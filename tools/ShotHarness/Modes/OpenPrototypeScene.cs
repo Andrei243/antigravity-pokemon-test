@@ -23,6 +23,11 @@ sealed class OpenProtoScene
     readonly Bake bake;
     public readonly CollisionMesh Collision;
     readonly Dictionary<(int, int, int), (SceneMeshes Meshes, int Triangles)> terrain = new();
+    // Each chunk's skirts apart from its surface: drawn in the colour pass only, never cast into the shadow map
+    readonly Dictionary<(int, int, int), SceneMeshes> skirts = new();
+
+    /// <summary>Diagnostic switches for the gate's look: the skirts drawn, the shadow map's casters drawn, the post's depth outline.</summary>
+    public bool DrawSkirts = true, CastShadows = true, Outline = true;
     readonly Dictionary<(int, int), (SceneMeshes Meshes, int Triangles, int Trees)> treeChunks = new();
     readonly Dictionary<(int, int), List<TreeSpot>> treesByChunk = new();
     readonly Texture2D grain;
@@ -73,20 +78,29 @@ sealed class OpenProtoScene
         foreach (var ((cx, cz, lod), chunk) in bake.Chunks)
         {
             var b = new MeshBuilder();
+            var hung = new MeshBuilder();
+            int surface = chunk.GroundTriangles + chunk.ApronTriangles;
             for (int t = 0; t < chunk.TriangleCount; t++)
             {
+                var into = t < surface ? b : hung;
                 int ia = chunk.Indices[t * 3], ib = chunk.Indices[t * 3 + 1], ic = chunk.Indices[t * 3 + 2];
                 var pa = Pos(chunk, ia); var pb = Pos(chunk, ib); var pc = Pos(chunk, ic);
                 var face = Vector3.Cross(pb - pa, pc - pa);
                 // Box mapping by the face's own axis: the grain is never stretched down a cliff or a cave's wall
                 var ax = Vector3.Abs(face);
                 Vector2 Uv(Vector3 p) => (ax.Y >= ax.X && ax.Y >= ax.Z ? new Vector2(p.X, p.Z) : ax.X >= ax.Z ? new Vector2(p.Z, -p.Y) : new Vector2(p.X, -p.Y)) * 0.5f;
-                b.Tri(pa, pb, pc, Uv(pa), Uv(pb), Uv(pc), Nrm(chunk, ia), Nrm(chunk, ib), Nrm(chunk, ic),
+                into.Tri(pa, pb, pc, Uv(pa), Uv(pb), Uv(pc), Nrm(chunk, ia), Nrm(chunk, ib), Nrm(chunk, ic),
                     Pictures.CoverColour(chunk.Covers[ia]), Pictures.CoverColour(chunk.Covers[ib]), Pictures.CoverColour(chunk.Covers[ic]));
             }
             var meshes = new SceneMeshes();
             meshes.Add(b.Upload("openproto"), grain, MeshPass.Opaque, null, shaders);
             terrain[(cx, cz, lod)] = (meshes, chunk.TriangleCount);
+            if (hung.VertexCount > 0)
+            {
+                var skirtMeshes = new SceneMeshes();
+                skirtMeshes.Add(hung.Upload("openproto"), grain, MeshPass.Opaque, null, shaders);
+                skirts[(cx, cz, lod)] = skirtMeshes;
+            }
         }
 
         foreach (var tree in trees)
@@ -252,8 +266,21 @@ sealed class OpenProtoScene
 
     // ------------------------------------------------------------------ the frame
 
+    /// <summary>How far the chunks holding a carve keep their finest level.</summary>
+    public const float CaveReach = 260f;
+
+    bool CaveChunk(int cx, int cz)
+    {
+        var (ox, oz) = bake.World.ChunkOrigin(cx, cz);
+        return bake.World.Carves.Any(c => c.Max.X >= ox && c.Min.X <= ox + 32 && c.Max.Z >= oz && c.Min.Z <= oz + 32);
+    }
+
     /// <summary>The light by the hour: the battle's rig (made for a camera low over the ground), its fog drawn out to the horizon.</summary>
-    LightRig Rig() => ArtLook.BattleRig(Hour) with { FogNear = 110f, FogFar = 760f, FogAmount = 0.78f };
+    LightRig Rig()
+    {
+        var rig = ArtLook.BattleRig(Hour) with { FogNear = 110f, FogFar = 760f, FogAmount = 0.78f };
+        return Outline ? rig : rig with { Post = rig.Post with { OutlineStrength = 0f } };
+    }
 
     /// <summary>Renders the scene into the scene target at 1920×1080 and readies the post passes. Outside any texture mode.</summary>
     public void Render()
@@ -276,10 +303,15 @@ sealed class OpenProtoScene
                 var (ox, oz) = bake.World.ChunkOrigin(cx, cz);
                 float d = Vector2.Distance(new Vector2(eye.X, eye.Z), new Vector2((float)ox + 16, (float)oz + 16));
                 int want = d < FinestReach ? 0 : d < SecondReach ? 1 : 2;
+                // A chunk with a cave in it keeps its finest level further out: a coarser cell than the rock over a
+                // cavern is thick meshes the shell with holes in it (the gate's finding; OW2 makes far levels by
+                // thinning the finest mesh instead, which keeps its holes where they are)
+                if (CaveChunk(cx, cz) && d < CaveReach) want = 0;
                 for (int lod = want; lod < 3; lod++)
                     if (terrain.TryGetValue((cx, cz, lod), out var t))
                     {
                         drawn.Add(t.Meshes);
+                        if (DrawSkirts && skirts.TryGetValue((cx, cz, lod), out var hung)) drawn.Add(hung);
                         ChunksAt[lod]++;
                         TerrainTriangles += t.Triangles;
                         break;
@@ -307,7 +339,7 @@ sealed class OpenProtoScene
         var lightProjection = Rlgl.GetMatrixProjection();
         Rlgl.DisableBackfaceCulling();
         ShadowTriangles = 0;
-        for (int cz = 0; cz < bake.World.ChunksZ; cz++)
+        for (int cz = 0; cz < bake.World.ChunksZ && CastShadows; cz++)
             for (int cx = 0; cx < bake.World.ChunksX; cx++)
             {
                 var (ox, oz) = bake.World.ChunkOrigin(cx, cz);
@@ -318,11 +350,11 @@ sealed class OpenProtoScene
         foreach (var (key, chunk) in treeChunks)
         {
             var (ox, oz) = bake.World.ChunkOrigin(key.Item1, key.Item2);
-            if (Vector2.Distance(new Vector2(PlayerFeet.X, PlayerFeet.Z), new Vector2((float)ox + 16, (float)oz + 16)) > 70f) continue;
+            if (!CastShadows || Vector2.Distance(new Vector2(PlayerFeet.X, PlayerFeet.Z), new Vector2((float)ox + 16, (float)oz + 16)) > 70f) continue;
             chunk.Meshes.DrawDepth();
             ShadowTriangles += chunk.Triangles;
         }
-        DrawFigures(CharacterPass.Depth);
+        if (CastShadows) DrawFigures(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -452,8 +484,9 @@ sealed class OpenProtoScene
     public void Unload()
     {
         foreach (var t in terrain.Values) t.Meshes.Unload();
+        foreach (var t in skirts.Values) t.Unload();
         foreach (var t in treeChunks.Values) t.Meshes.Unload();
-        terrain.Clear(); treeChunks.Clear();
+        terrain.Clear(); skirts.Clear(); treeChunks.Clear();
         if (impostorLoaded) Gpu.Unload(impostorMesh);
         impostorLoaded = false;
         foreach (var k in impostorKinds) if (k.Atlas.Id != 0) Gpu.Unload(k.Atlas);

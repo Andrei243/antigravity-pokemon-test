@@ -18,7 +18,7 @@ if (args.Length == 0 || args[0] != Prototype.Name)
     return 2;
 }
 string? sectionDir = null, planDir = null;
-bool check = false;
+bool check = false, seams = false;
 var cuts = new List<((double, double) A, (double, double) B)>();
 for (int i = 1; i < args.Length; i++)
 {
@@ -35,6 +35,7 @@ for (int i = 1; i < args.Length; i++)
             break;
         case "--plan": planDir = args[++i]; break;
         case "--check": check = true; break;
+        case "--seams": seams = true; break;
         default: Console.Error.WriteLine($"unknown argument {args[i]}"); return 2;
     }
 }
@@ -62,6 +63,45 @@ if (check)
 }
 
 var bake = Prototype.BakeAll(world);
+if (seams)
+{
+    // Where two levels meet: how far a chunk's border stands over its neighbour's surface at another level (what
+    // its skirt shows there), the worst of each pair of levels
+    var worst = new Dictionary<(int, int), (double Gap, string Where)>();
+    var surfaces = new Dictionary<(int, int, int), CollisionMesh>();
+    CollisionMesh SurfaceOf((int, int, int) key)
+    {
+        if (surfaces.TryGetValue(key, out var m)) return m;
+        var c = bake.Chunks[key];
+        m = new CollisionMesh();
+        for (int t = 0; t < c.GroundTriangles + c.ApronTriangles; t++)
+            m.Add(c.Vertex(c.Indices[t * 3]), c.Vertex(c.Indices[t * 3 + 1]), c.Vertex(c.Indices[t * 3 + 2]));
+        return surfaces[key] = m;
+    }
+    foreach (var (key, chunk) in bake.Chunks)
+    {
+        var top = Enumerable.Range(0, chunk.GroundTriangles + chunk.ApronTriangles).SelectMany(t => new[] { chunk.Indices[t * 3], chunk.Indices[t * 3 + 1], chunk.Indices[t * 3 + 2] }).ToHashSet();
+        var hung = Enumerable.Range(chunk.GroundTriangles + chunk.ApronTriangles, chunk.TriangleCount - chunk.GroundTriangles - chunk.ApronTriangles)
+            .SelectMany(t => new[] { chunk.Indices[t * 3], chunk.Indices[t * 3 + 1], chunk.Indices[t * 3 + 2] }).Where(top.Contains).Distinct();
+        foreach (int v in hung)
+        {
+            var p = chunk.Vertex(v);
+            var (nx, nz) = world.ChunkOf(p.X, p.Z);
+            if (nx == key.X && nz == key.Z) continue;
+            foreach (var other in bake.Chunks.Keys.Where(k => k.X == nx && k.Z == nz && k.Lod != key.Lod))
+            {
+                if (SurfaceOf(other).Column(p.X, p.Z).FirstOrDefault() is not { Triangle: >= 0 } hit || hit.Y > p.Y + 5) continue;
+                double gap = p.Y - hit.Y;
+                // The hill's own chunks (a cave's shell) apart from the open ground's, which have no carve
+                var pair = (key.Lod * 10 + other.Lod, Math.Sqrt(p.X * p.X + p.Z * p.Z) < 42 ? 1 : 0);
+                if (!worst.TryGetValue(pair, out var w) || gap > w.Gap) worst[pair] = (gap, $"chunk {key.X},{key.Z} over {nx},{nz} at {p}");
+            }
+        }
+    }
+    foreach (var ((levels, hill), (gap, where)) in worst.OrderBy(w => w.Key))
+        Console.WriteLine($"a level-{levels / 10} border over level {levels % 10}{(hill == 1 ? " on the hill" : " on open ground")}: at most {gap:0.000} m ({where})");
+    return 0;
+}
 for (int lod = 0; lod < Bake.Cells.Length; lod++)
 {
     var chunks = bake.Chunks.Where(c => c.Key.Lod == lod).Select(c => c.Value).ToList();

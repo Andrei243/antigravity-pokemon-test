@@ -176,6 +176,19 @@ partial class Harness
         var start = samples[0];
         PlaceOverview(scene, start);
         Shoot("ow00_overview_day", start, null);
+        // OPENPROTO_DIAG=1: the same with the skirts left out, and with nothing cast into the shadow map
+        if (Environment.GetEnvironmentVariable("OPENPROTO_DIAG") == "1")
+        {
+            scene.DrawSkirts = false;
+            Shoot("ow00_diag_no_skirts", start, null);
+            scene.DrawSkirts = true;
+            scene.CastShadows = false;
+            Shoot("ow00_diag_no_shadow_casters", start, null);
+            scene.CastShadows = true;
+            scene.Outline = false;
+            Shoot("ow00_diag_no_outline", start, null);
+            scene.Outline = true;
+        }
 
         var run = Find(s => s.Leg == 0 && s.Walked > 8);
         Shoot("ow01_meadow_run_day", run, PlaceOnWalk(scene, run, 0, 14, 5.5));
