@@ -177,7 +177,7 @@ foreach (var (tag, ids) in PokeApi.Languages)
 {
     string folder = Path.Combine(outDir, "text", tag);
     Directory.CreateDirectory(folder);
-    Write(Path.Combine(folder, NameFiles.FileName), NameFiles.Build(pokeApi, ids, species, moves, abilities, items));
+    Write(Path.Combine(folder, NameFiles.FileName), NameFiles.Build(pokeApi, ids, species, moves, abilities, items, tag));
 }
 Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items, Path.Combine(outDir, "text")));
 Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");

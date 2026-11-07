@@ -22,9 +22,18 @@ public static class NameFiles
 
     private static readonly JsonSerializerOptions Quote = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
+    /// <summary>
+    /// Names left out of a language's file until its typeface can draw them, shown in English meanwhile (plan 17 · N5): the
+    /// cut CJK face has no 덮 of the Cover Fossil's Korean name (<c>CjkFontTests</c>), and cutting it again needs the whole
+    /// Noto faces (<c>TextTool font</c>), which wait for the user's word to be fetched; the Plume Fossil, the other of the
+    /// pair, goes with it. Main took them out of <c>ko/names.json</c> by hand (2026-11-07), which every run of the importer
+    /// put back. The session that cuts the face again takes these lines off.
+    /// </summary>
+    private static readonly HashSet<(string Tag, string Key)> HeldBack = new() { ("ko", "Cover Fossil"), ("ko", "Plume Fossil") };
+
     /// <summary>One language's file as text.</summary>
     public static string Build(PokeApi api, int[] languages, IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves,
-        IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
+        IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items, string tag = "")
     {
         var sections = new List<(string Name, List<(string Key, string Value)> Entries)>();
 
@@ -45,7 +54,7 @@ public static class NameFiles
 
         var itemIds = api.IdsByEnglishName("item_names", "item_id");
         var itemNames = api.LocalNames("item_names", "item_id", languages);
-        sections.Add(("items", Named(items.Select(i => i.Name), itemIds, itemNames)));
+        sections.Add(("items", Named(items.Select(i => i.Name), itemIds, itemNames).Where(e => !HeldBack.Contains((tag, e.Key))).ToList()));
 
         // The eighteen types and the twenty-five natures, by the names the engine's enums spell
         var typeNames = api.LocalNames("type_names", "type_id", languages);

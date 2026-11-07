@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11301 | 10820 | 481 | 17 | 0 |
+| Scripts (`script:`) | 11368 | 10883 | 485 | 17 | 0 |
 | People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
-| **All** | 20956 | 20368 | 588 | 22 | 0 |
+| **All** | 21023 | 20431 | 592 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 844 |
+| a question's answers | 847 |
 | a sign | 1736 |
 | the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1845 |
+| the game's own voice (text) | 1847 |
 
 ## The cast
 
 - Named characters: 461 voices (360 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
 - Archetypes in use: 243, with 734 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1911.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1943.
 
 ## Lines by voice
 
@@ -40,17 +40,17 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1911 | 138 |
-| `look:gentleman (any)` | 730 | 15 |
+| `@self` | 1943 | 142 |
+| `look:gentleman (any)` | 743 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
 | `look:lady (any)` | 448 | 1 |
-| `look:clerk (any)` | 432 | 11 |
+| `look:clerk (any)` | 435 | 11 |
 | `look:youngster (any)` | 417 | 21 |
 | `look:lass (any)` | 358 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 258 | 0 |
-| `look:scientist (any)` | 232 | 6 |
+| `look:scientist (any)` | 237 | 6 |
 | `look:gym_guide (any)` | 216 | 1 |
 | `look:receptionist (any)` | 209 | 23 |
 | `class:ace_trainer (any)` | 194 | 0 |
@@ -81,10 +81,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `bianca` | 99 | 3 |
 | `black_belt` | 99 | 14 |
 | `cyrus` | 92 | 7 |
+| `steven` | 91 | 1 |
 | `look:fisherman (any)` | 90 | 4 |
 | `look:hiker (any)` | 90 | 0 |
 | `prof_oak` | 90 | 3 |
-| `steven` | 89 | 1 |
 | `class:bug_catcher (any)` | 88 | 0 |
 | `ace_trainer` | 84 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |
@@ -111,9 +111,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `artist` | 59 | 1 |
 | `cheren` | 56 | 1 |
 | `archie` | 55 | 3 |
+| `elder` | 55 | 0 |
 | `bill` | 53 | 2 |
 | `class:beauty (any)` | 52 | 0 |
-| `elder` | 51 | 0 |
 | `officer` | 51 | 5 |
 | `class:young_couple (any)` | 50 | 0 |
 | `crasher_wake` | 49 | 1 |
@@ -178,6 +178,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `captain` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `class:skier (any)` | 30 | 0 |
+| `director` | 30 | 1 |
 | `head_coach` | 30 | 1 |
 | `lt_surge` | 30 | 0 |
 | `zinzolin` | 30 | 0 |
@@ -194,7 +195,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lillie` | 28 | 0 |
 | `little_boy` | 28 | 0 |
 | `misty` | 28 | 0 |
-| `director` | 27 | 1 |
 | `marley` | 27 | 0 |
 | `marlon` | 27 | 0 |
 | `president` | 27 | 0 |
@@ -205,12 +205,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:lady (any)` | 26 | 0 |
 | `class:super_nerd (any)` | 26 | 0 |
 | `lottery_clerk` | 26 | 2 |
+| `n` | 26 | 0 |
 | `shadow_triad` | 26 | 7 |
 | `blue` | 25 | 0 |
 | `captain_stern` | 25 | 0 |
 | `emma` | 25 | 0 |
 | `giovanni` | 25 | 2 |
-| `n` | 25 | 0 |
 | `class:ace_trainer_f (any)` | 24 | 0 |
 | `class:cyclist (any)` | 24 | 0 |
 | `class:pokefan (any)` | 24 | 0 |
@@ -244,6 +244,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `skyla` | 22 | 1 |
 | `cooltrainer` | 21 | 6 |
 | `look:bug_catcher (any)` | 21 | 0 |
+| `look:pokemon_breeder_m (any)` | 21 | 0 |
 | `manager` | 21 | 0 |
 | `tierno` | 21 | 0 |
 | `veteran` | 21 | 0 |
