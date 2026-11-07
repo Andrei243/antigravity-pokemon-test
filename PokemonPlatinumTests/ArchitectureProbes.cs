@@ -99,3 +99,13 @@ namespace PokemonPlatinumTests.Probes.Foreign
         public static void Writes(string path) => System.IO.File.WriteAllBytes(path, new byte[1]);
     }
 }
+
+namespace PokemonPlatinumTests.Probes.OpenWorld
+{
+    // The open world's rules need no window and keep no time but their ticks (plan 32 · OW1)
+    internal static class Field
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+        public static System.DateTime Now() => PokemonPlatinumEngine.Core.WallClock.UtcNow;
+    }
+}

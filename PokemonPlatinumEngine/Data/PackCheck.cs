@@ -226,6 +226,9 @@ public static class PackCheck
         {
             string file = FileOf(region);
             if (region.Maps.Count == 0) findings.Add($"{file}: {region.Id} lists no maps (\"maps\").");
+            // The field its outdoors are walked on is a word the game knows (plan 32 · OW1)
+            try { _ = region.Field; }
+            catch (FormatException e) { findings.Add($"{file}: {e.Message}."); }
             foreach (string map in region.Maps)
             {
                 if (!ways.ContainsKey(map)) findings.Add($"{file}: {region.Id} lists the map {map}, which the pack doesn't make (a room of maps/ or a map of its world).");

@@ -36,6 +36,12 @@ public static class SaveMigration
             save.PlayerSubX = 0;
             save.PlayerSubY = 0;
         }
+        if (save.SaveVersion < SaveData.OpenPlaces)
+        {
+            // Version 3 (plan 32 · OW1): a save keeps where the player stood in an open map; every save from before stood
+            // on the grid, which is no open place, and its grid place is left as it was
+            save.OpenPlace = null;
+        }
         save.SaveVersion = Math.Max(save.SaveVersion, SaveData.CurrentSave);
         return given;
     }

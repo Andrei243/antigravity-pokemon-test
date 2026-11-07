@@ -257,6 +257,32 @@ public partial class GameEngine
             game.flow.Map = map;
             game.flow.Player.SetPosition(x, y, facing);
             game.flow.State = GameState.Overworld;
+            // (on the grid: out of an open map, if the player was in one, plan 32 · OW1)
+            game.flow.Open = null;
+        }
+
+        // ------------------------------------------------------------ the open world (plan 32 · OW1)
+
+        /// <summary>The open field in force (the map, the player in it, the field's clock), or null on the grid.</summary>
+        public OpenWorld.OpenField? OpenField => game.flow.Open;
+
+        /// <summary>The open map the player is in, or null on the grid.</summary>
+        public OpenWorld.OpenMap? OpenMap => game.flow.Open?.Map;
+
+        /// <summary>The player in the open map, or null on the grid.</summary>
+        public OpenWorld.OpenPlayer? OpenPlayer => game.flow.Open?.Player;
+
+        /// <summary>An open map the game is to know by name, as a loaded save asks for it (a grid map's name is refused).</summary>
+        public void AddOpenMap(OpenWorld.OpenMap map) => game.AddOpenMap(map);
+
+        /// <summary>Puts the player in an open map at a place, facing a way (65,536ths of a turn), the field's clock begun afresh.</summary>
+        public void PlaceOpen(OpenWorld.OpenMap map, OpenWorld.OpenPos pos, int yaw) => game.EnterOpenField(map, pos, yaw);
+
+        /// <summary>Puts the player in an open map on one of its markers, facing as the marker does.</summary>
+        public void PlaceOpen(OpenWorld.OpenMap map, string marker)
+        {
+            var at = map.Marker(marker) ?? throw new ArgumentException($"{map.Name} has no marker {marker}");
+            game.EnterOpenField(map, at.Pos, at.Yaw);
         }
 
         /// <summary>Crosses to another region as the attendant's travel does (plan 18 · W4, part b), behind a fade.</summary>

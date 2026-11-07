@@ -15,6 +15,8 @@ public static class SaveDump
         text.AppendLine($"played {Time(save.PlayTimeSeconds)}; began {save.Started?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? "(unknown)"} in {save.BeganInOrHere()}; {save.Rules} rules");
         text.AppendLine($"versions: world {save.WorldVersion}/{SaveData.CurrentWorld}, story {save.StoryVersion}/{PokemonPlatinumEngine.Story.StoryState.CurrentVersion}, save {save.SaveVersion}/{SaveData.CurrentSave}");
         text.AppendLine($"at {save.CurrentMapName} {save.PlayerGridX},{save.PlayerGridY} facing {save.PlayerFacing}, {save.Travel}");
+        // In an open map (plan 32 · OW1), beside the grid's place it was entered from
+        if (save.OpenPlace is { } open) text.AppendLine($"in the open map {open.ToPlace()}");
         text.AppendLine("badges: " + (badges.Count == 0 ? "none" : string.Join(", ", badges.OrderBy(b => b.Key, StringComparer.Ordinal).Select(b => $"{b.Key} {System.Numerics.BitOperations.PopCount((uint)b.Value)}"))));
         text.AppendLine($"pokédex: {save.SeenSpecies.Count} seen, {save.CaughtSpecies.Count} caught{(save.NationalPokedex ? ", national" : "")}");
         if (save.AutosaveSlot is { } autosaved) text.AppendLine($"an autosave of slot {autosaved}");

@@ -13,6 +13,27 @@ namespace PokemonPlatinumEngine.Core;
 /// <summary>A Safari Game as a save keeps it: the balls and the steps left, and how many Pokémon it has caught.</summary>
 public sealed record SafariSave(int Balls, int Steps, int Caught = 0);
 
+/// <summary>
+/// Where the player stood in an open map, as the save keeps it (plan 32 · OW1, <see cref="SaveData.OpenPlace"/>): the
+/// map's name, the place in whole millimetres (east, up, south) and the yaw in 65,536ths of a turn. Whatever finer step
+/// the field's rules hold between ticks (plan 32 · decision 11) is not kept: a place to the millimetre is what a game
+/// wakes on.
+/// </summary>
+public sealed class SavedOpenPlace
+{
+    public string Map { get; set; } = "";
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Z { get; set; }
+    public int Yaw { get; set; }
+
+    public static SavedOpenPlace From(OpenWorld.OpenPlace place) =>
+        new() { Map = place.Map, X = place.Pos.X, Y = place.Pos.Y, Z = place.Pos.Z, Yaw = place.Yaw };
+
+    /// <summary>The place as the field takes it (a yaw out of range brought into a turn).</summary>
+    public OpenWorld.OpenPlace ToPlace() => new(Map, new OpenWorld.OpenPos(X, Y, Z), Yaw);
+}
+
 public class SaveData
 {
     /// <summary>
@@ -119,6 +140,15 @@ public class SaveData
     /// <inheritdoc cref="PlayerSubX"/>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int PlayerSubY { get; set; }
+
+    /// <summary>
+    /// Where the player stood in an open map (plan 32 · OW1): the map's name, the place in whole millimetres and the yaw.
+    /// Null, left out of the file, on the grid, which is every save of every region before Galar. Beside it the grid's
+    /// place above stays where the player last stood on the grid, which is where the save wakes if no open map of that
+    /// name is there to take it. A save from before <see cref="OpenPlaces"/> stood on the grid (<see cref="SaveMigration"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public SavedOpenPlace? OpenPlace { get; set; }
 
     /// <summary>How the player was getting about: a save made while surfing loads out on the water.</summary>
     public PokemonPlatinumEngine.Overworld.TravelMode Travel { get; set; }
@@ -347,8 +377,14 @@ public class SaveData
     /// </summary>
     public const int FreePositions = 2;
 
+    /// <summary>
+    /// The <see cref="SaveVersion"/> from which a save keeps where the player stood in an open map (plan 32 · OW1,
+    /// <see cref="OpenPlace"/>): a save from before stood on the grid.
+    /// </summary>
+    public const int OpenPlaces = 3;
+
     /// <summary>The <see cref="SaveVersion"/> of saves made today.</summary>
-    public const int CurrentSave = FreePositions;
+    public const int CurrentSave = OpenPlaces;
 
     /// <summary>
     /// The version of the save's own records, beside <see cref="WorldVersion"/> (where its player stands) and
