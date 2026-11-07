@@ -1,7 +1,0 @@
-{
-  "name": "the engine and its version (chosen in plan 26's trials)",
-  "command": "tools/VoiceGen/env/Scripts/python.exe",
-  "args": ["{repo}/tools/VoiceGen/speak.py", "--text-file", "{textFile}", "--out", "{out}", "--seed", "{seed}", "--sample", "{sample}", "--sample-text", "{sampleText}", "--direction", "{direction}"],
-  "useRespelling": false,
-  "timeoutSeconds": 600
-}

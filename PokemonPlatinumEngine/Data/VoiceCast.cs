@@ -45,6 +45,57 @@ public sealed class CastVoice
 
     /// <summary>How the voice should sound (plan 26 · V4's voice design), whatever engine makes it: the brief a designed voice is chosen or tuned to.</summary>
     public CastBrief? Brief { get; set; }
+
+    /// <summary>
+    /// The voice as the chosen engine makes it (plan 26 · V4, Kokoro-82M, approved 2026-11-07): a blend of the engine's own
+    /// voices, a speed and a pitch, tuned to the <see cref="Brief"/>. Read by <c>tools/VoiceGen/kokoro_speak.py</c>.
+    /// </summary>
+    public CastDesign? Design { get; set; }
+}
+
+/// <summary>
+/// A designed voice (plan 26 · V4): never a clone of anyone. <see cref="Blend"/> is a weighted mean of the engine's
+/// built-in voices (<c>am_puck:0.7,am_echo:0.3</c>), <see cref="Speed"/> its pace, and <see cref="Pitch"/> a share the
+/// take is raised by (it is made slower by the same share and played faster, which moves its pitch and its formants
+/// together: a younger or an older sound of the same voice).
+/// </summary>
+public sealed class CastDesign
+{
+    public const string Kokoro = "kokoro-82m";
+
+    public string Engine { get; set; } = Kokoro;
+    public string Blend { get; set; } = "";
+    public double Speed { get; set; } = 1.0;
+    public double Pitch { get; set; } = 1.0;
+
+    /// <summary>en-us or en-gb: the accent the words are read in (Kokoro's British voices want en-gb).</summary>
+    public string Accent { get; set; } = "en-us";
+
+    /// <summary>Kokoro-82M v1.0's English voices (<c>a</c> American, <c>b</c> British; <c>f</c> female, <c>m</c> male).</summary>
+    public static IReadOnlyList<string> KokoroVoices { get; } = new[]
+    {
+        "af_alloy", "af_aoede", "af_bella", "af_heart", "af_jessica", "af_kore", "af_nicole", "af_nova", "af_river", "af_sarah", "af_sky",
+        "am_adam", "am_echo", "am_eric", "am_fenrir", "am_liam", "am_michael", "am_onyx", "am_puck", "am_santa",
+        "bf_alice", "bf_emma", "bf_isabella", "bf_lily", "bm_daniel", "bm_fable", "bm_george", "bm_lewis",
+    };
+
+    public static IReadOnlyList<string> Accents { get; } = new[] { "en-us", "en-gb" };
+
+    /// <summary>The blend's voices and their weights, in the order written; empty where it is not well made.</summary>
+    public IReadOnlyList<(string Voice, double Weight)> Parts()
+    {
+        var parts = new List<(string, double)>();
+        foreach (string piece in Blend.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        {
+            int colon = piece.IndexOf(':');
+            string name = colon < 0 ? piece : piece[..colon];
+            double weight = 1;
+            if (colon >= 0 && !double.TryParse(piece[(colon + 1)..], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out weight))
+                return Array.Empty<(string, double)>();
+            parts.Add((name, weight));
+        }
+        return parts;
+    }
 }
 
 /// <summary>
@@ -87,7 +138,7 @@ public sealed class VoiceCast
     /// <summary>The game's own cast, read once.</summary>
     public static VoiceCast Default => loaded.Value;
 
-    /// <summary>The id of the cast's rival, who is cloned from the user's samples.</summary>
+    /// <summary>The id of the cast's rival (a designed voice since the user's ruling of 2026-11-07: no cloning, no recordings).</summary>
     public const string Rival = "rival";
 
     /// <summary>The voice of lines whose speaker is the person spoken to, decided as the talk starts (plan 26 · V2).</summary>

@@ -195,3 +195,26 @@ SOFTWARE.
 ## OggVorbisEncoder (tests only)
 
 The NuGet package `OggVorbisEncoder` 1.2.2 (MIT, a managed port of libvorbis's encoder), referenced by `PokemonPlatinumTests` alone, to make a few seconds of Ogg Vorbis from synthesised vowels in memory for the voice-pack tests. It is not part of the game or its build output.
+
+## Kokoro-82M (the voice engine)
+
+<https://huggingface.co/hexgrad/Kokoro-82M>, Kokoro-82M v1.0 by hexgrad, an open-weight text-to-speech model under the Apache License 2.0, run from its ONNX export (<https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX>, the same weights) by `tools/VoiceGen/kokoro_speak.py` on the developer's machine (plan 26; approved by the user on 2026-11-07). The model, its configuration and its voices are fetched by `tools/VoiceGen/setup-kokoro.sh` into a cache outside the repository and are never committed or shipped; what the game ships of it is the speech it made, the voice pack, a separate download. Every character's voice is designed: a blend of the model's built-in voices with a speed and a pitch of our own. No one's voice is cloned.
+
+```
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+```
+
+## The voice engine's runtime (tools only)
+
+Installed by `tools/VoiceGen/setup-kokoro.sh` into the engine's own Python environment in the machine's cache, pinned in `tools/VoiceGen/requirements-kokoro.txt`; none of it is part of the game, its build output or the repository:
+
+- ONNX Runtime 1.19.2 (MIT, Microsoft), which runs the model, with NumPy 2.0.2 (BSD 3-Clause);
+- eSpeak NG, through the package `espeakng-loader` 0.2.4, and `phonemizer-fork` 3.3.2 (both GPL-3.0), which turn the lines' words into the phonemes the model reads. They run as a separate program on the developer's machine and are never linked into or distributed with the game; the speech they help make is not covered by their licence;
+- the small packages those need, each under its own permissive licence (listed in the requirements file).

@@ -280,6 +280,34 @@ public static class VoiceCatalogue
         return all.Count > 0 ? all : null;
     }
 
+    private static readonly Lazy<Dictionary<string, string>> placesByRegion = new(RegionOfFiles);
+
+    /// <summary>
+    /// The region whose place a line's key names, by its id in lower case (<c>sinnoh</c>), or null for a line of no place
+    /// (<c>common</c>'s scripts, the phone's): an area by the world folder its files are in, a hand-made map or a script named
+    /// after one by the region that lists the map (a map no region lists is Sinnoh's), an introduction by its region, a
+    /// trainer's battle line by the region its id begins with (Platinum's own ids have none: Sinnoh's). What
+    /// <c>VoiceTool generate --region</c> goes by.
+    /// </summary>
+    public static string? RegionOf(string key)
+    {
+        int colon = key.IndexOf(':');
+        if (colon < 0) return null;
+        string kind = key[..colon], rest = key[(colon + 1)..];
+        int dot = rest.IndexOf('.');
+        string place = dot < 0 ? rest : rest[..dot];
+        if (kind == "battle")
+        {
+            foreach (var r in RegionDatabase.All)
+                if (r.Id != "Sinnoh" && place.StartsWith(r.Id.ToLowerInvariant() + "_", StringComparison.Ordinal)) return r.Id.ToLowerInvariant();
+            return "sinnoh";
+        }
+        if (kind == "intro") return place.ToLowerInvariant();
+        if (placesByRegion.Value.TryGetValue(place, out var region)) return region;
+        if (kind is "map" or "script" && RegionDatabase.RegionOfMap(place) is { } owner) return owner.Id.ToLowerInvariant();
+        return kind == "map" ? "sinnoh" : null;
+    }
+
     /// <summary>The region each area and hand-made map belongs to, by the folder its files are in (a hand-made map is Sinnoh's unless a region's folder lists the name).</summary>
     private static Dictionary<string, string> RegionOfFiles()
     {
@@ -481,7 +509,9 @@ public static class VoiceCatalogue
         sb.AppendLine();
         var named = castFile.Voices.Where(v => v.Value.Chooses == null).ToList();
         sb.AppendLine($"- Named characters: {castFile.Voices.Count} voices ({castFile.Voices.Count(v => v.Value.Provisional == true)} provisional: added for a name nobody has cast yet, with nothing said about how they sound).");
-        sb.AppendLine($"- Cloned from the user's samples: {string.Join(", ", castFile.Voices.Where(v => v.Value.Clone != null).Select(v => "`" + v.Key + "`"))}.");
+        if (castFile.Voices.Any(v => v.Value.Clone != null))
+            sb.AppendLine($"- Cloned from samples: {string.Join(", ", castFile.Voices.Where(v => v.Value.Clone != null).Select(v => "`" + v.Key + "`"))}.");
+        sb.AppendLine($"- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): {castFile.Voices.Count(v => v.Value.Design != null)} voices.");
         var archetypes = c.Lines.Where(l => VoiceCast.IsArchetype(l.Voice)).Select(l => l.Voice[..l.Voice.IndexOf('#')]).Distinct().OrderBy(a => a, StringComparer.Ordinal).ToList();
         sb.AppendLine($"- Archetypes in use: {archetypes.Count}, with {archetypes.Sum(cast.VoicesOf)} voices to cast (V5).");
         sb.AppendLine($"- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): {c.Lines.Count(l => l.Voice == VoiceCast.Self)}.");

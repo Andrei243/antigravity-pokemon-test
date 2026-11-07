@@ -1,14 +1,42 @@
 {
   "archetypeVoices": 3,
   "voices": {
-    "aaron": {},
+    "aaron": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "of the Elite Four, a Bug type lover: earnest, eager and a little boyish"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.5,am_liam:0.5",
+        "speed": 1.04,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
+    },
     "abigail": {
       "note": "first spoken at phone.txt(252)",
       "provisional": true
     },
     "ace_trainer": {
       "note": "first spoken at route_210_south.txt(87)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "an Ace Trainer: confident and keen, a little showy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_liam:0.5",
+        "speed": 1.08,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "acerola": {
       "note": "first spoken at AlolaLeague_AcerolaRoom.txt(8)",
@@ -61,7 +89,20 @@
     "archie": {},
     "argenta": {
       "note": "first spoken at BattleHallStage.txt(84)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "the Hall Matron: grand, motherly and a little stern"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.5,af_sarah:0.5",
+        "speed": 0.96,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "ariana": {
       "note": "first spoken at team_rocket_headquarters_b2f.txt(160)",
@@ -94,6 +135,13 @@
         "pitch": "middle",
         "pace": "even",
         "manner": "polite and keen, a little formal, proud of his Pokédex work; never loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_puck:0.4",
+        "speed": 1.0,
+        "pitch": 1.12,
+        "accent": "en-us"
       }
     },
     "assistant_girl": {
@@ -104,6 +152,13 @@
         "pitch": "middle",
         "pace": "quick",
         "manner": "bright and friendly, helpful, a little bossy about the Pokédex; a laugh close at hand"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_heart:0.4",
+        "speed": 1.06,
+        "pitch": 1.07,
+        "accent": "en-us"
       }
     },
     "avery": {
@@ -144,7 +199,20 @@
     },
     "beauty": {
       "note": "first spoken at route_120.txt(75)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a well-to-do young woman: airy, a touch helpless, charming"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.7,af_sarah:0.3",
+        "speed": 1.02,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
     },
     "ben": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(52)",
@@ -162,7 +230,22 @@
       "note": "first spoken at route_123_berry_masters_house.txt(13)",
       "provisional": true
     },
-    "bertha": {},
+    "bertha": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "of the Elite Four: a kindly grandmother, slow and amused, tough as the ground"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,bf_alice:0.5",
+        "speed": 0.88,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
+    },
     "bianca": {
       "note": "first spoken at aspertia_city.txt(128)",
       "provisional": true
@@ -181,7 +264,20 @@
     },
     "black_belt": {
       "note": "first spoken at route_4.txt(10)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Black Belt: hearty, all effort and training talk"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.5,bm_daniel:0.5",
+        "speed": 1.06,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
     },
     "blaine": {
       "note": "first spoken at cinnabar_island_gym.txt(152)",
@@ -193,7 +289,20 @@
     },
     "brandon": {
       "note": "first spoken at BattlePyramidFloor.txt(87)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "the Pyramid King: brash, booming, an adventurer's laugh"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.5,am_onyx:0.5",
+        "speed": 1.06,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
     },
     "brawly": {
       "note": "first spoken at dewford_town_gym.txt(12)",
@@ -201,7 +310,20 @@
     },
     "breeder": {
       "note": "first spoken at battle_frontier_lounge_1.txt(8)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Pokémon Breeder: kindly, practical, motherly advice"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.5,af_alloy:0.5",
+        "speed": 0.99,
+        "pitch": 0.99,
+        "accent": "en-us"
+      }
     },
     "brock": {
       "note": "first spoken at pewter_city_gym.txt(11)",
@@ -215,7 +337,22 @@
       "note": "first spoken at LumioseCity_Station.txt(107)",
       "provisional": true
     },
-    "buck": {},
+    "buck": {
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "Byron's student: cocky, hyper and full of himself, but a good sort"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,am_puck:0.4",
+        "speed": 1.12,
+        "pitch": 1.14,
+        "accent": "en-us"
+      }
+    },
     "buena": {
       "note": "first spoken at goldenrod_radio_tower_2f.txt(57)",
       "provisional": true
@@ -228,7 +365,22 @@
       "note": "first spoken at castelia_city_gym.txt(36)",
       "provisional": true
     },
-    "byron": {},
+    "byron": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "the Steel Gym Leader, Roark's father: hearty, boastful and loud-laughing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.5,am_fenrir:0.5",
+        "speed": 1.0,
+        "pitch": 0.92,
+        "accent": "en-gb"
+      }
+    },
     "caitlin": {
       "note": "first spoken at unova_pokemon_league_8.txt(12)",
       "provisional": true
@@ -239,13 +391,41 @@
     },
     "cameraman": {
       "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a television cameraman: harried, apologetic, busy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.5,am_fenrir:0.5",
+        "speed": 1.07,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "cameron": {
       "note": "first spoken at common.txt(3387)",
       "provisional": true
     },
-    "candice": {},
+    "candice": {
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "the Ice Gym Leader: peppy and bubbly, always telling herself to focus"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.5,af_sky:0.5",
+        "speed": 1.12,
+        "pitch": 1.1,
+        "accent": "en-us"
+      }
+    },
     "captain": {
       "note": "first spoken at ss_anne_captains_office.txt(9)",
       "provisional": true
@@ -286,7 +466,22 @@
       "note": "first spoken at ilex_forest.txt(141)",
       "provisional": true
     },
-    "charon": {},
+    "charon": {
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Team Galactic's scientist: wheedling, greedy and pleased with himself; a cackle close at hand"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,am_santa:0.4",
+        "speed": 1.02,
+        "pitch": 1.05,
+        "accent": "en-gb"
+      }
+    },
     "cheren": {
       "note": "first spoken at aspertia_city.txt(286)",
       "provisional": true
@@ -298,6 +493,13 @@
         "pitch": "middle",
         "pace": "slow",
         "manner": "gentle and soothing, a healer's calm; a soft smile in every line"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.4,af_nicole:0.6",
+        "speed": 0.9,
+        "pitch": 1.0,
+        "accent": "en-us"
       }
     },
     "chuck": {
@@ -346,7 +548,20 @@
     },
     "collector": {
       "note": "first spoken at valor_lakefront.txt(138)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a collector: knowing, fond of a good story, unhurried"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.7,am_onyx:0.3",
+        "speed": 1.02,
+        "pitch": 0.91,
+        "accent": "en-us"
+      }
     },
     "colress": {
       "note": "first spoken at castelia_city_2.txt(29)",
@@ -358,7 +573,20 @@
     },
     "cook": {
       "note": "first spoken at PoffinHouse.txt(13)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Poffin House's cook: warm and homely, fond of her pot"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_isabella:0.5,af_alloy:0.5",
+        "speed": 1.01,
+        "pitch": 1.01,
+        "accent": "en-gb"
+      }
     },
     "cooltrainer": {
       "note": "first spoken at kanto_victory_road_2f.txt(34)",
@@ -366,7 +594,20 @@
     },
     "cowgirl": {
       "note": "first spoken at PastoriaCityObservatoryGate1F.txt(40)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a cowgirl: easy-going, friendly drawl, teasing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_bella:0.4",
+        "speed": 0.99,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "cozmos_wife": {
       "note": "first spoken at fallarbor_town_cozmos_house.txt(8)",
@@ -374,9 +615,37 @@
     },
     "craftswoman": {
       "note": "first spoken at SunyshoreWorkshop.txt(10)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a craftswoman: bustling, warm and practical"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.5,af_sarah:0.5",
+        "speed": 1.05,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
-    "crasher_wake": {},
+    "crasher_wake": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "the Water Gym Leader, a masked wrestler: booming, boisterous and big-hearted"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,am_santa:0.5",
+        "speed": 1.08,
+        "pitch": 0.9,
+        "accent": "en-us"
+      }
+    },
     "cristin": {
       "note": "first spoken at phone.txt(350)",
       "provisional": true
@@ -389,11 +658,54 @@
       "note": "first spoken at route_110.txt(197)",
       "provisional": true
     },
-    "cynthia": {},
-    "cyrus": {},
+    "cynthia": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Champion: calm, poised and thoughtful, warm under the reserve; a scholar of myths who speaks softly and means it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.5,af_heart:0.3,bf_emma:0.2",
+        "speed": 0.95,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
+    "cyrus": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Team Galactic's boss: cold, flat and measured, contemptuous of feeling; never raises his voice"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,am_fenrir:0.4",
+        "speed": 0.9,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
+    },
     "dahlia": {
       "note": "first spoken at BattleArcadeBattleRoom.txt(245)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Arcade Star: lively and playful, loves a gamble"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,af_heart:0.4",
+        "speed": 1.08,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
     },
     "dalton": {
       "note": "first spoken at phone.txt(301)",
@@ -401,7 +713,20 @@
     },
     "darach": {
       "note": "first spoken at BattleCastleBattleRoom.txt(90)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Castle Valet: formal and courtly, a butler's precision"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.6,bm_daniel:0.4",
+        "speed": 0.96,
+        "pitch": 1.0,
+        "accent": "en-gb"
+      }
     },
     "day_care_lady": {
       "note": "first spoken at common.txt(1307)",
@@ -413,7 +738,20 @@
     },
     "delivery_man": {
       "note": "first spoken at ResortAreaVilla.txt(168)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a delivery man: cheery and quick"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,am_liam:0.3",
+        "speed": 1.05,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "denae": {
       "note": "first spoken at opelucid_city_gym.txt(53)",
@@ -461,7 +799,20 @@
     },
     "drake": {
       "note": "first spoken at ever_grande_city_drakes_room.txt(32)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Dragon Tamer: fierce and proud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.5,am_fenrir:0.5",
+        "speed": 0.98,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "drasna": {
       "note": "first spoken at KalosLeague_DrasnaRoom.txt(8)",
@@ -489,7 +840,20 @@
     },
     "elder": {
       "note": "first spoken at CelesticTownNorthHouse.txt(30)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Celestic Town's elder, Cynthia's grandmother: slow, wise and gently amused"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.5,af_sarah:0.5",
+        "speed": 0.85,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
     },
     "elder_li": {
       "note": "first spoken at sprout_tower_3f.txt(12)",
@@ -537,13 +901,41 @@
     },
     "factory_staff": {
       "note": "first spoken at BattleFactoryCorridor.txt(22)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Battle Factory's staff: polite, businesslike"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.7,am_liam:0.3",
+        "speed": 0.99,
+        "pitch": 0.99,
+        "accent": "en-us"
+      }
     },
     "falkner": {
       "note": "first spoken at violet_gym.txt(11)",
       "provisional": true
     },
-    "fantina": {},
+    "fantina": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Ghost Gym Leader, a contest star: theatrical and grand, every line a little performance"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_isabella:0.6,af_aoede:0.4",
+        "speed": 0.96,
+        "pitch": 1.02,
+        "accent": "en-gb"
+      }
+    },
     "farmer": {
       "note": "first spoken at route_39_moomoo_farm_house.txt(12)",
       "provisional": true
@@ -568,7 +960,22 @@
       "note": "first spoken at nimbasa_city_gym.txt(58)",
       "provisional": true
     },
-    "flint": {},
+    "flint": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "of the Elite Four, a Fire type trainer: fiery and passionate, friendly and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_fenrir:0.4",
+        "speed": 1.1,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
     "florist": {
       "note": "first spoken at goldenrod_flower_shop.txt(10)",
       "provisional": true
@@ -599,16 +1006,37 @@
     },
     "galactic_grunts": {
       "note": "first spoken at GalacticHQHall.txt(61)",
-      "provisional": true,
       "brief": {
         "register": "man",
         "age": "young",
         "pitch": "middle",
         "pace": "quick",
         "manner": "a crowd of grunts in chorus: smug, a bit nasal, more bluster than menace"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,am_liam:0.5",
+        "speed": 1.08,
+        "pitch": 1.0,
+        "accent": "en-us"
       }
     },
-    "gardenia": {},
+    "gardenia": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "the Grass Gym Leader: sunny, energetic and chatty, scared of ghosts"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.5,af_nova:0.5",
+        "speed": 1.08,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
+    },
     "garett": {
       "note": "first spoken at cinnabar_island_pokemon_lab_experiment_room.txt(49)",
       "provisional": true
@@ -683,7 +1111,20 @@
     },
     "herbalist": {
       "note": "first spoken at goldenrod_tunnel_b1f.txt(47)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Herb Shop's keeper: brisk and knowing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,bf_isabella:0.5",
+        "speed": 1.01,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "herdier": {
       "note": "first spoken at floccesy_ranch_2.txt(140)",
@@ -695,11 +1136,37 @@
     },
     "honey_man": {
       "note": "first spoken at floaroma_meadow.txt(47)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the honey seller: relieved and effusive"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.5,am_santa:0.5",
+        "speed": 1.07,
+        "pitch": 0.95,
+        "accent": "en-gb"
+      }
     },
     "hostess": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Ribbon Syndicate's hostess: refined and welcoming"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.5,af_kore:0.5",
+        "speed": 0.98,
+        "pitch": 1.01,
+        "accent": "en-gb"
+      }
     },
     "huey": {
       "note": "first spoken at olivine_lighthouse_2f.txt(11)",
@@ -747,7 +1214,20 @@
     },
     "jasmine": {
       "note": "first spoken at olivine_gym.txt(23)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Gym Leader from Johto: shy, soft-spoken and gentle"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.5,af_heart:0.5",
+        "speed": 0.9,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
     },
     "jeffrey": {
       "note": "first spoken at phone.txt(329)",
@@ -769,7 +1249,22 @@
       "note": "first spoken at phone.txt(405)",
       "provisional": true
     },
-    "jupiter": {},
+    "jupiter": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Team Galactic commander: cool, dry and sultry, amused by everyone; her threats are drawled"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.6,af_alloy:0.4",
+        "speed": 0.96,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
     "kahili": {
       "note": "first spoken at AlolaLeague_KahiliRoom.txt(8)",
       "provisional": true
@@ -788,7 +1283,20 @@
     },
     "kanto_attendant": {
       "note": "first spoken at PalParkLobby.txt(210)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an attendant from Kanto: helpful, plain and patient"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,bm_lewis:0.5",
+        "speed": 0.99,
+        "pitch": 0.98,
+        "accent": "en-gb"
+      }
     },
     "karate_master": {
       "note": "first spoken at mount_mortar_b1f.txt(12)",
@@ -804,7 +1312,20 @@
     },
     "keira": {
       "note": "first spoken at ContestHallLobby.txt(19)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a girl who loves her Buneary: excitable and grateful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.5,af_nicole:0.5",
+        "speed": 1.06,
+        "pitch": 1.08,
+        "accent": "en-us"
+      }
     },
     "kenji": {
       "note": "first spoken at phone.txt(118)",
@@ -852,7 +1373,20 @@
     },
     "lady_celeste": {
       "note": "first spoken at PokemonMansion.txt(122)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the mansion's lady: gracious, amused, a hostess's poise"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,af_kore:0.5",
+        "speed": 0.99,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "lana": {
       "note": "first spoken at brooklet_hill.txt(13)",
@@ -868,7 +1402,20 @@
     },
     "librarian": {
       "note": "first spoken at CanalaveLibrary1F.txt(12)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a librarian: quiet, precise, proud of her books"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.7,af_aoede:0.3",
+        "speed": 0.94,
+        "pitch": 0.99,
+        "accent": "en-us"
+      }
     },
     "lift_attendant": {
       "note": "first spoken at lilycove_city_department_store_elevator.txt(13)",
@@ -888,7 +1435,20 @@
     },
     "little_boy": {
       "note": "first spoken at CanalaveCitySailorEldritchHouse.txt(110)",
-      "provisional": true
+      "brief": {
+        "register": "boy",
+        "age": "child",
+        "pitch": "high",
+        "pace": "slow",
+        "manner": "a small boy waking from a nightmare: frightened, quiet"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.5,am_michael:0.5",
+        "speed": 0.94,
+        "pitch": 1.2,
+        "accent": "en-us"
+      }
     },
     "liz": {
       "note": "first spoken at phone.txt(81)",
@@ -909,6 +1469,13 @@
         "pitch": "low",
         "pace": "even",
         "manner": "a detective who takes himself very seriously; hushed, theatrical, slightly odd in his phrasing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_fable:0.6,bm_lewis:0.4",
+        "speed": 0.95,
+        "pitch": 0.96,
+        "accent": "en-gb"
       }
     },
     "lorelei": {
@@ -925,7 +1492,20 @@
     },
     "lottery_clerk": {
       "note": "first spoken at JubilifeTV1F.txt(12)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Lottery Corner's clerk: bright, practised, cheerful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.7,af_river:0.3",
+        "speed": 1.05,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "lou": {
       "note": "first spoken at lumiose_city.txt(116)",
@@ -935,14 +1515,42 @@
       "note": "first spoken at vermilion_city_gym.txt(244)",
       "provisional": true
     },
-    "lucian": {},
+    "lucian": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "of the Elite Four, a reader: calm, bookish and courteous"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,bm_george:0.5",
+        "speed": 0.94,
+        "pitch": 1.0,
+        "accent": "en-gb"
+      }
+    },
     "lucius": {
       "note": "first spoken at opelucid_city_gym.txt(92)",
       "provisional": true
     },
     "lucy": {
       "note": "first spoken at BattlePikeRoom.txt(140)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "the Pike Queen: cool, curt and a little menacing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.5,af_river:0.5",
+        "speed": 0.93,
+        "pitch": 1.0,
+        "accent": "en-gb"
+      }
     },
     "lusamine": {
       "note": "first spoken at AetherParadise_Office.txt(18)",
@@ -966,23 +1574,88 @@
     },
     "maid_belinda": {
       "note": "first spoken at PokemonMansion.txt(47)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "the first maid: perky and proper"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,af_river:0.4",
+        "speed": 1.08,
+        "pitch": 1.06,
+        "accent": "en-us"
+      }
     },
     "maid_clare": {
       "note": "first spoken at PokemonMansion.txt(88)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the fifth maid: fiery and game"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.7,af_alloy:0.3",
+        "speed": 1.07,
+        "pitch": 1.03,
+        "accent": "en-gb"
+      }
     },
     "maid_elena": {
       "note": "first spoken at PokemonMansion.txt(74)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the fourth maid: bubbly and proud of her place"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,af_nova:0.5",
+        "speed": 1.07,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "maid_emily": {
       "note": "first spoken at PokemonMansion.txt(65)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "the third maid: sunny and bouncy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.7,af_sarah:0.3",
+        "speed": 1.05,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
     },
     "maid_sophie": {
       "note": "first spoken at PokemonMansion.txt(56)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the second maid: sweet and courteous"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_river:0.4",
+        "speed": 1.0,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "mallow": {
       "note": "first spoken at paniola_ranch.txt(12)",
@@ -998,13 +1671,41 @@
     },
     "manager": {
       "note": "first spoken at EternaCycleShop.txt(13)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the cycle shop's manager: grateful, chatty, a salesman at heart"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,bm_lewis:0.3",
+        "speed": 1.07,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
     },
     "maria": {
       "note": "first spoken at phone.txt(287)",
       "provisional": true
     },
-    "marley": {},
+    "marley": {
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a girl of few words: quiet, blunt and shy behind it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.6,af_sky:0.4",
+        "speed": 0.92,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
+    },
     "marlon": {
       "note": "first spoken at humilau_city.txt(54)",
       "provisional": true
@@ -1016,6 +1717,13 @@
         "pitch": "high",
         "pace": "quick",
         "manner": "a Team Galactic commander: sharp, impatient, cheerfully cruel, a sing-song sneer"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.5,af_bella:0.5",
+        "speed": 1.08,
+        "pitch": 1.07,
+        "accent": "en-us"
       }
     },
     "marshal": {
@@ -1028,7 +1736,20 @@
     },
     "master": {
       "note": "first spoken at MastersHall.txt(32)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Masters' Hall's receptionist: polished and polite"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.7,af_alloy:0.3",
+        "speed": 0.98,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "matt": {
       "note": "first spoken at aqua_hideout_b2f.txt(28)",
@@ -1038,7 +1759,22 @@
       "note": "first spoken at mt_chimney.txt(17)",
       "provisional": true
     },
-    "maylene": {},
+    "maylene": {
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Fighting Gym Leader: earnest, modest and a little unsure of herself; firm when she fights"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.5,af_bella:0.5",
+        "speed": 0.98,
+        "pitch": 1.08,
+        "accent": "en-us"
+      }
+    },
     "mechadoll_1": {
       "note": "first spoken at route_110_trick_house_puzzle_5.txt(27)",
       "provisional": true
@@ -1061,7 +1797,20 @@
     },
     "member": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(41)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Ribbon Syndicate member: snooty and superior"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,am_eric:0.4",
+        "speed": 0.9,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "miguel": {
       "note": "first spoken at mt_moon_b2f.txt(29)",
@@ -1073,7 +1822,20 @@
     },
     "mira": {
       "note": "first spoken at Battleground.txt(821)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "child",
+        "pitch": "high",
+        "pace": "slow",
+        "manner": "a little girl lost: drowsy, polite, a little scared"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.6,af_bella:0.4",
+        "speed": 0.95,
+        "pitch": 1.18,
+        "accent": "en-us"
+      }
     },
     "misty": {
       "note": "first spoken at cerulean_city_gym.txt(10)",
@@ -1087,6 +1849,13 @@
         "pitch": "middle",
         "pace": "even",
         "manner": "warm and easy-going, gently teasing, proud without fuss"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_sarah:0.4",
+        "speed": 0.98,
+        "pitch": 1.0,
+        "accent": "en-us"
       }
     },
     "monica": {
@@ -1111,7 +1880,20 @@
     },
     "mr_fuego": {
       "note": "first spoken at fuego_ironworks_building.txt(17)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "the ironworks' owner: gruff, hearty and loud over the machines"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,am_santa:0.5",
+        "speed": 0.98,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "mr_fuji": {
       "note": "first spoken at lavender_town_volunteer_pokemon_house.txt(20)",
@@ -1187,7 +1969,20 @@
     },
     "old_lady": {
       "note": "first spoken at route_111_old_ladys_rest_stop.txt(7)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "an old lady: fond and wistful, gently humorous"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.7,bf_isabella:0.3",
+        "speed": 0.93,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "olivia": {
       "note": "first spoken at AlolaLeague_OliviaRoom.txt(8)",
@@ -1207,19 +2002,71 @@
     },
     "palace_maven": {
       "note": "first spoken at BattlePalace.txt(18)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "the Palace Maven: an old sage, calm and teasing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.7,bm_fable:0.3",
+        "speed": 0.91,
+        "pitch": 0.91,
+        "accent": "en-us"
+      }
     },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "the Tower Tycoon, Barry's father: booming, cheerful and proud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.5,am_santa:0.5",
+        "speed": 1.02,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
     },
     "papa": {
       "note": "first spoken at ValleyWindworksBuilding.txt(76)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a little girl's father, freed: breathless and grateful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,bm_daniel:0.4",
+        "speed": 1.06,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "park_attendant": {
       "note": "first spoken at PalParkLobby.txt(40)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Pal Park's attendant: cheerful, a games host's energy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.6,bf_emma:0.4",
+        "speed": 1.06,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
     },
     "parry": {
       "note": "first spoken at phone.txt(145)",
@@ -1263,7 +2110,20 @@
     },
     "policeman": {
       "note": "first spoken at cerulean_city.txt(127)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a policeman: steady, dutiful, a little stiff"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_liam:0.4",
+        "speed": 0.98,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "poochyena": {
       "note": "first spoken at route_114.txt(36)",
@@ -1271,7 +2131,20 @@
     },
     "president": {
       "note": "first spoken at PoketchCompany.txt(8)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Pokétch company's president: cheery, salesmanlike, pleased with his inventions"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_liam:0.4",
+        "speed": 1.04,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "prof_birch": {
       "note": "first spoken at littleroot_town_professor_birchs_lab.txt(16)",
@@ -1297,7 +2170,22 @@
       "note": "first spoken at AlolaRoute1_KukuiLab.txt(8)",
       "provisional": true
     },
-    "prof_oak": {},
+    "prof_oak": {
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a professor visiting from Kanto: kindly, curious and a little rambling"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.5,am_santa:0.5",
+        "speed": 0.95,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
     "prof_sycamore": {
       "note": "first spoken at regions/Kalos.json",
       "provisional": true
@@ -1320,7 +2208,20 @@
     },
     "psychic": {
       "note": "first spoken at underground_ruins.txt(62)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Psychic: dreamy and earnest, thinking aloud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_michael:0.4",
+        "speed": 0.94,
+        "pitch": 0.99,
+        "accent": "en-us"
+      }
     },
     "quinn": {
       "note": "first spoken at cinnabar_island_gym.txt(19)",
@@ -1356,7 +2257,20 @@
     },
     "referee": {
       "note": "first spoken at BattleArena.txt(18)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Battle Arena's referee: crisp, ringing announcer"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,bm_daniel:0.4",
+        "speed": 1.05,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "rhona": {
       "note": "first spoken at opelucid_city_gym.txt(66)",
@@ -1364,16 +2278,57 @@
     },
     "rich_boy_liam": {
       "note": "first spoken at PokemonMansion.txt(106)",
-      "provisional": true
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a rich boy: bored, spoilt, faintly put out"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,am_liam:0.5",
+        "speed": 0.92,
+        "pitch": 1.11,
+        "accent": "en-us"
+      }
     },
     "ricky": {
       "note": "first spoken at phone.txt(224)",
       "provisional": true
     },
-    "riley": {},
+    "riley": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a trainer who reads auras: calm, stoic and kind"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_onyx:0.5",
+        "speed": 0.95,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
+    },
     "rival": {
-      "note": "The rival, Barry (or whatever the player names him): the only voice cloned, from the user's own samples (plan 26 · V3). Every rival battle's trainer lines too.",
-      "clone": "Data/voice/samples/rival"
+      "note": "The rival, Barry (or whatever the player names him): a designed voice since the user's ruling of 2026-11-07 (no cloning, no recordings). Every rival battle's trainer lines too.",
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "impatient, loud and warm-hearted: runs everywhere, threatens fines he never collects, talks faster than he thinks; a few quiet, serious moments late in the story"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.6,am_michael:0.4",
+        "speed": 1.14,
+        "pitch": 1.1,
+        "accent": "en-us"
+      }
     },
     "rival_mom": {
       "note": "The rival's mother.",
@@ -1383,6 +2338,13 @@
         "pitch": "middle",
         "pace": "quick",
         "manner": "brisk and fond, a little exasperated by her son; talks as she hurries"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.6,af_kore:0.4",
+        "speed": 1.08,
+        "pitch": 1.0,
+        "accent": "en-us"
       }
     },
     "rivals_sister": {
@@ -1396,6 +2358,13 @@
         "pitch": "middle",
         "pace": "even",
         "manner": "a miner and Gym Leader: confident, plain-spoken, steady, with a friendly challenge in it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_michael:0.4",
+        "speed": 1.02,
+        "pitch": 1.0,
+        "accent": "en-us"
       }
     },
     "robert": {
@@ -1438,6 +2407,13 @@
         "pitch": "low",
         "pace": "slow",
         "manner": "stern and deliberate, few words, gruff with a kindness under it; a scholar's precision"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.7,am_onyx:0.3",
+        "speed": 0.88,
+        "pitch": 0.94,
+        "accent": "en-gb"
       }
     },
     "roxanne": {
@@ -1462,7 +2438,20 @@
     },
     "sailor_eldritch": {
       "note": "first spoken at CanalaveCitySailorEldritchHouse.txt(82)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a sailor and father: rough voice, full of feeling for his son"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.7,am_santa:0.3",
+        "speed": 1.02,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "salesman": {
       "note": "first spoken at mahogany_souvenir_shop.txt(38)",
@@ -1476,31 +2465,100 @@
       "note": "first spoken at blackthorn.txt(66)",
       "provisional": true
     },
-    "saturn": {},
+    "saturn": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Team Galactic commander: calm, analytical and polite, the reasonable one; a hint of doubt"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.5,am_michael:0.5",
+        "speed": 1.0,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
+    },
     "sayo": {
       "note": "first spoken at ecruteak_dance_theater.txt(93)",
       "provisional": true
     },
     "school_kid": {
       "note": "first spoken at CanalaveLibrary2F.txt(9)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "child",
+        "pitch": "high",
+        "pace": "even",
+        "manner": "a schoolgirl at the library: bright and bookish"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.6,af_sky:0.4",
+        "speed": 0.99,
+        "pitch": 1.16,
+        "accent": "en-us"
+      }
     },
     "schoolboy": {
       "note": "first spoken at EternaPokemonCenter.txt(12)",
-      "provisional": true
+      "brief": {
+        "register": "boy",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a schoolboy: earnest, eager to tell what he knows"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_puck:0.5",
+        "speed": 1.07,
+        "pitch": 1.2,
+        "accent": "en-us"
+      }
     },
     "schoolgirl": {
       "note": "first spoken at oreburgh_city.txt(92)",
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a schoolgirl: chatty, matter-of-fact"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.5,af_bella:0.5",
+        "speed": 1.06,
+        "pitch": 1.06,
+        "accent": "en-us"
+      }
+    },
+    "scott": {
       "provisional": true
     },
-    "scott": {},
     "scout": {
       "note": "first spoken at virbank_city_gym_2.txt(63)",
       "provisional": true
     },
     "sea_ranger": {
       "note": "first spoken at route_230.txt(25): the Pokémon Ranger with the Manaphy Egg (plan 29 · LS11a)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Pokémon Ranger at sea: capable, kind, outdoorsy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.5,af_alloy:0.5",
+        "speed": 1.02,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
     },
     "seller": {
       "note": "first spoken at driftveil_city_7.txt(9)",
@@ -1528,7 +2586,20 @@
     },
     "shop_boy": {
       "note": "first spoken at EternaCycleShop.txt(30)",
-      "provisional": true
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the cycle shop's boy: worried, polite"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.6,am_echo:0.4",
+        "speed": 1.02,
+        "pitch": 1.1,
+        "accent": "en-us"
+      }
     },
     "shop_girl": {
       "note": "first spoken at join_avenue.txt(76)",
@@ -1536,7 +2607,20 @@
     },
     "shopkeeper": {
       "note": "first spoken at join_avenue.txt(11)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Celestic Town's shopkeeper: welcoming and slow"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.6,af_sarah:0.4",
+        "speed": 0.93,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
     },
     "sidney": {
       "note": "first spoken at ever_grande_city_sidneys_room.txt(17)",
@@ -1572,7 +2656,20 @@
     },
     "socialite": {
       "note": "first spoken at FightAreaPokeMart.txt(9)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a socialite: languid, fussy, delighted with herself"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,af_alloy:0.5",
+        "speed": 1.01,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "sophocles": {
       "note": "first spoken at HokulaniObservatory.txt(17)",
@@ -1613,11 +2710,37 @@
     },
     "teala": {
       "note": "first spoken at BattleTower.txt(288)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Battle Tower's announcer: polished and clear"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.5,af_jessica:0.5",
+        "speed": 1.0,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "temple_guard": {
       "note": "first spoken at snowpoint_city.txt(36)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Snowpoint Temple's guard: grave, few words, unmoving"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 0.93,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "thalia": {
       "note": "first spoken at abandoned_ship_rooms_1f.txt(12)",
@@ -1625,7 +2748,20 @@
     },
     "thorton": {
       "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Factory Head: dry, technical and blunt"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,am_echo:0.4",
+        "speed": 1.0,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "tierno": {
       "note": "first spoken at aquacorde_town.txt(39)",
@@ -1661,11 +2797,37 @@
     },
     "tv": {
       "note": "first spoken at CanalaveLibrary3F.txt(97)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a television newsreader: clear, urgent, broadcast-smooth"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,bm_george:0.4",
+        "speed": 1.09,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "tv_producer": {
       "note": "first spoken at jubilife_city.txt(238)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a television producer: gushing, fast-talking showman"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.5,bm_lewis:0.5",
+        "speed": 1.05,
+        "pitch": 0.94,
+        "accent": "en-gb"
+      }
     },
     "ty": {
       "note": "first spoken at common.txt(2152)",
@@ -1673,7 +2835,20 @@
     },
     "underground_man": {
       "note": "first spoken at EternaUndergroundManHouse.txt(13)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Underground's explorer: enthusiastic, chatty and fond of a good find"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.6,am_eric:0.4",
+        "speed": 1.02,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "unova_nate": {
       "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
@@ -1681,7 +2856,20 @@
     },
     "valet": {
       "note": "first spoken at BattleCastleBattleRoom.txt(130)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "the Battle Castle's valet: formal, courtly, faintly amused"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.5,am_michael:0.5",
+        "speed": 0.99,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "vance": {
       "note": "first spoken at phone.txt(199)",
@@ -1713,13 +2901,41 @@
     },
     "visitor": {
       "note": "first spoken at BattlePikeRoom.txt(86)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a visitor who likes to watch: chatty and curious"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.6,af_sarah:0.4",
+        "speed": 1.06,
+        "pitch": 1.01,
+        "accent": "en-us"
+      }
     },
     "vivi": {
       "note": "first spoken at route_111.txt(76)",
       "provisional": true
     },
-    "volkner": {},
+    "volkner": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "the Electric Gym Leader: bored and laid-back, waking up when a real challenge comes"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,am_liam:0.5",
+        "speed": 0.92,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
     "wade": {
       "note": "first spoken at phone.txt(68)",
       "provisional": true

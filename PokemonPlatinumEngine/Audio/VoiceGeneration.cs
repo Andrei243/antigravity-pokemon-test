@@ -89,28 +89,34 @@ public static class VoiceGeneration
     /// for all its voices; <c>all</c>): every spoken line and variant that <paramref name="which"/> asks for, given the pack
     /// as it is (null for none). A line said by whoever is spoken to (<c>@self</c>) is left out: its voice is decided at
     /// run time, so it is generated once per voice the people who say it have (V5). <paramref name="samples"/> gives a
-    /// cloned voice's sample for a mood (and the line's key, to spread the lines over a mood's samples).
+    /// cloned voice's sample for a mood (and the line's key, to spread the lines over a mood's samples). A line whose voice
+    /// chooses at run time (<c>assistant</c>: <c>assistant_boy</c> or <c>assistant_girl</c>) is a job in each voice it
+    /// chooses from, by <paramref name="cast"/> (the game's when none is given), since the game plays the chosen one's take.
     /// </summary>
     public static VoiceJobFile Plan(VoiceFile catalogue, string voice, VoiceLibrary? pack, Which which, string language = "en",
-        Func<string, string, (string Path, string Text)?>? samples = null, VoiceLexicon? lexicon = null, int round = 0, int takes = Takes)
+        Func<string, string, (string Path, string Text)?>? samples = null, VoiceLexicon? lexicon = null, int round = 0, int takes = Takes, VoiceCast? cast = null)
     {
         var file = new VoiceJobFile { Voice = voice, Language = language };
         foreach (var line in catalogue.Lines)
         {
             if (line.Status != VoiceLine.StatusSpoken || line.Spoken == null || line.Voice == VoiceCast.Self) continue;
-            if (!Matches(line.Voice, voice)) continue;
+            // A voice chosen at run time (the assistant, by the player's look) is made in each of the voices it chooses from
+            var speakers = (cast ?? VoiceCast.Default).File.Voices.TryGetValue(line.Voice, out var entry) && entry.Chooses is { Count: > 0 } chooses
+                ? chooses.Where(c => Matches(line.Voice, voice) || Matches(c, voice)).ToList()
+                : Matches(line.Voice, voice) ? new List<string> { line.Voice } : new List<string>();
             var keyed = line.Variants is { Count: > 0 } variants
                 ? variants.Select(v => (Key: line.Key + v.Key, Text: v.Spoken))
                 : new[] { (Key: line.Key, Text: line.Spoken) };
+            foreach (string speaker in speakers)
             foreach (var (key, text) in keyed)
             {
-                var state = pack?.StateOf(key, line.En, line.Voice).State ?? VoiceState.Missing;
+                var state = pack?.StateOf(key, line.En, speaker).State ?? VoiceState.Missing;
                 if (which == Which.Missing && state != VoiceState.Missing) continue;
                 if (which == Which.Stale && state == VoiceState.Current) continue;
                 string direction = line.Direction is { Length: > 0 } d ? d : VoiceMoods.Guess(line.En);
                 var job = new VoiceJob
                 {
-                    Key = key, Voice = line.Voice, Text = text, English = line.En, Direction = direction, Guessed = line.Direction is not { Length: > 0 },
+                    Key = key, Voice = speaker, Text = text, English = line.En, Direction = direction, Guessed = line.Direction is not { Length: > 0 },
                     Respelled = lexicon?.Respell(text) is { } r && r != text ? r : null
                 };
                 if (samples?.Invoke(VoiceMoods.SampleFor(direction), key) is { } sample)
@@ -299,14 +305,14 @@ public static class VoiceGeneration
     /// <c>world:jubilife_city.</c>, a script's <c>script:Twinleaf.</c>), in the catalogue's order, one after another with
     /// <paramref name="gap"/> seconds between, at the DS's rate. Returns the samples and the keys in it.
     /// </summary>
-    public static (float[] Samples, List<string> Keys) Reel(VoiceLibrary pack, VoiceFile catalogue, string prefix, double gap = 0.5)
+    public static (float[] Samples, List<string> Keys) Reel(VoiceLibrary pack, VoiceFile catalogue, string prefix, double gap = 0.5, string? voice = null)
     {
         var parts = new List<float[]>();
         var keys = new List<string>();
-        foreach (var (key, english, voice) in VoicePacks.KeysOf(catalogue))
+        foreach (var (key, english, _) in VoicePacks.KeysOf(catalogue))
         {
             if (!key.StartsWith(prefix, StringComparison.Ordinal)) continue;
-            foreach (var entry in pack.Entries.Where(e => e.Key == key))
+            foreach (var entry in pack.Entries.Where(e => e.Key == key && (voice == null || Matches(e.Voice, voice))))
             {
                 if (entry.TextHash != VoiceCatalogue.HashOf(english)) continue;
                 if (pack.Load(entry) is not { } take) continue;

@@ -28,11 +28,21 @@ The license files ship next to the fonts in every build, as the OFL requires.
 
 Shipping any of them would need the terms checked first.
 
+## Voices
+
+| Asset | Files | Author | License | Source |
+|---|---|---|---|---|
+| Kokoro-82M v1.0, the speech model every character's voice is made with (plan 26, approved by the user on 2026-11-07): designed voices, each a blend of its built-in English voices with a speed and a pitch of our own (`Data/voice/cast.json`'s `design`), never a clone of anyone | the voice pack `voice/<language>/`, a separate download, never in the repository; the model itself stays in the machine's own cache (`tools/VoiceGen/setup-kokoro.sh`) | hexgrad | Apache License 2.0 | <https://huggingface.co/hexgrad/Kokoro-82M>; its ONNX export, <https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX> |
+
+The words the voices say are the game's own lines.
+
 ## Libraries
 
 | Library | Used by | License | Source |
 |---|---|---|---|
 | NVorbis 0.10.5 | the game (`Audio/OggVoiceDecoder.cs`: decodes the Ogg Vorbis files of voice packs) | MIT | <https://github.com/NVorbis/NVorbis> |
 | OggVorbisEncoder 1.2.2 | the test project only (makes an Ogg file from synthesised vowels for `VoicePlaybackTests`) | MIT | <https://www.nuget.org/packages/OggVorbisEncoder> |
+| ONNX Runtime 1.19.2 | the voice engine only (`tools/VoiceGen/kokoro_speak.py` runs Kokoro-82M with it), never the game | MIT | <https://onnxruntime.ai> |
+| eSpeak NG (through `espeakng-loader` 0.2.4) and `phonemizer-fork` 3.3.2 | the voice engine only: the lines' words into phonemes for Kokoro-82M, run as a separate program on the developer's machine, never shipped or linked into the game | GPL-3.0 | <https://github.com/espeak-ng/espeak-ng>, <https://pypi.org/project/phonemizer-fork/> |
 
 The full notices are in `THIRD-PARTY-NOTICES.md`.

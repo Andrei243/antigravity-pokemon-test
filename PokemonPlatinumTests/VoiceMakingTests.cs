@@ -277,6 +277,17 @@ public sealed class VoiceMakingTests : IDisposable
     }
 
     [Fact]
+    public void AVoiceChosenAtRunTimeIsMadeInEachVoiceItChoosesFrom()
+    {
+        // The assistant is the boy or the girl the player isn't: the game plays assistant_boy's or assistant_girl's take
+        var catalogue = Few(("script:t.A#0.0", "assistant", "The professor is waiting for you in the lab!", null));
+        var both = VoiceGeneration.Plan(catalogue, "assistant", null, VoiceGeneration.Which.All).Jobs;
+        Assert.Equal(new[] { "assistant_boy", "assistant_girl" }, both.Select(j => j.Voice));
+        Assert.All(both, j => Assert.Equal("script:t.A#0.0", j.Key));
+        Assert.Equal("assistant_girl", Assert.Single(VoiceGeneration.Plan(catalogue, "assistant_girl", null, VoiceGeneration.Which.All).Jobs).Voice);
+    }
+
+    [Fact]
     public void GeneratingKeepsTheBestTakeStampsItAndThePackPassesItsChecks()
     {
         var catalogue = Few(
@@ -404,7 +415,7 @@ public sealed class VoiceMakingTests : IDisposable
     public void TheFirstChaptersNamedCastHaveBriefs()
     {
         var voices = VoiceCast.Default.File.Voices;
-        foreach (string id in new[] { "rowan", "mom", "rival_mom", "assistant_boy", "assistant_girl", "looker", "cheryl", "roark", "mars", "galactic_grunts" })
+        foreach (string id in new[] { VoiceCast.Rival, "rowan", "mom", "rival_mom", "assistant_boy", "assistant_girl", "looker", "cheryl", "roark", "mars", "galactic_grunts" })
         {
             var brief = voices[id].Brief;
             Assert.True(brief != null, $"{id} has no brief");
@@ -414,8 +425,8 @@ public sealed class VoiceMakingTests : IDisposable
             Assert.Contains(brief.Pace, CastBrief.Paces);
             Assert.False(string.IsNullOrWhiteSpace(brief.Manner));
         }
-        // The rival is the user's, from the samples, never a designed voice
-        Assert.Null(voices[VoiceCast.Rival].Brief);
+        // The rival is a designed voice too since the user's ruling of 2026-11-07 (no cloning, no recordings)
+        Assert.Null(voices[VoiceCast.Rival].Clone);
     }
 
     [Fact]
