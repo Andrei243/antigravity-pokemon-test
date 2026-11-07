@@ -24,11 +24,13 @@ internal static class CharacterRenderer
             case CharacterPass.Depth:
                 rig.Body.Draw(context.DepthSkinned, rig.Skin, model);
                 rig.ClothesBody?.Draw(context.DepthSkinned, rig.Skin, model);
+                rig.HeldBody?.Draw(context.DepthSkinned, rig.Skin, model);
                 break;
             case CharacterPass.Color:
                 rig.Body.Draw(context.ToonSkinned, rig.Skin, model);
-                // A layered look's clothes, a mesh of their own over the body
+                // A layered look's clothes, a mesh of their own over the body, and what a grown look holds, another
                 rig.ClothesBody?.Draw(context.ToonSkinned, rig.Skin, model);
+                rig.HeldBody?.Draw(context.ToonSkinned, rig.Skin, model);
                 if (drawFace && rig.FaceModel != null && rig.FaceMaterials.Length > 0)
                     rig.FaceModel.Draw(rig.FaceMaterial(CharacterAnimation.ExpressionOf(pose), pose.Blink, pose.MouthOpen), rig.Skin, model);
                 break;
@@ -42,6 +44,7 @@ internal static class CharacterRenderer
                 rig.Outline.Draw(context.OutlineSkinned, rig.Skin, model);
                 // The clothes' own shell: a rim round each garment, which is the ink line at a hem
                 rig.ClothesOutline?.Draw(context.OutlineSkinned, rig.Skin, model);
+                rig.HeldOutline?.Draw(context.OutlineSkinned, rig.Skin, model);
                 Rlgl.SetCullFace(1);
                 break;
         }

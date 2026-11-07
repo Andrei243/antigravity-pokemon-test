@@ -117,18 +117,26 @@ internal static partial class CharacterModels
         var f = GrownFrameOf(s.Build, s.CurvedFigure());
         rig.Scale = s.Height;
         var wear = new SdfModel("clothes " + rig.Type) { WeightBlend = GrownWeightBlend };
+        var held = new SdfModel("held " + rig.Type) { WeightBlend = GrownWeightBlend };
         BuildGrown(rig, model, wear, s, f);
+        GrownHeld(held, s, f);
         model.BoneCount = rig.Skeleton.Count;
         rig.Mesh = SdfCache.Get(model, GrownMeshCell);
         SoftenGrownFace(rig, f);
         SoftenGrownHair(rig, f);
         rig.Shell = SdfCache.Get(model, GrownMeshCell * 1.25f, GrownOutlineThickness);
-        // A swimsuit and a bare chest wear nothing over the body
+        // A swimsuit and a bare chest wear nothing over the body, and most hold nothing
         if (wear.Shapes.Count > 0)
         {
             wear.BoneCount = rig.Skeleton.Count;
             rig.Clothes = SdfCache.Get(wear, GrownMeshCell);
             rig.ClothesShell = SdfCache.Get(wear, GrownMeshCell * 1.25f, GrownOutlineThickness);
+        }
+        if (held.Shapes.Count > 0)
+        {
+            held.BoneCount = rig.Skeleton.Count;
+            rig.Held = SdfCache.Get(held, GrownMeshCell);
+            rig.HeldShell = SdfCache.Get(held, GrownMeshCell * 1.25f, GrownOutlineThickness);
         }
         ExtractGrownFacePatch(rig, f);
         rig.PrepareScratch();
@@ -215,8 +223,6 @@ internal static partial class CharacterModels
         GrownBaseLayer(m, f, s, upper, dress);
         GrownBlush(m, s, f);
         if (dress.Wears(s)) GrownClothes(w, s, f, dress);
-        // What is held is on the clothes' layer, with its own outline, after everything the clothes' probes look for
-        GrownHeld(w, s, f);
 
         // The face's place: the surface between the eyes at the head's middle, the eyes a fifth of the head's width
         // apart, and the square the painted face covers
@@ -591,9 +597,11 @@ internal static partial class CharacterModels
         (f.HeadC + new Vector3(0, -0.04f, -0.04f) * f.HeadR, new Vector3(0.74f, 1.02f, 0.88f) * f.HeadR);
 
     /// <summary>
-    /// Bends the hair's normals 70 % toward those of the smooth mass it fills (style guide, "Light on hair"): a sphere
-    /// round the skull, stretched into a capsule down the back for hair that falls below the head (long hair, a
-    /// ponytail), for one clean shade edge over the head; a beard and a moustache keep theirs, which follow the face.
+    /// Bends the hair's normals 80 % toward those of the smooth mass it fills (style guide, "Grown characters", "Light"):
+    /// a sphere round the skull, stretched into a capsule down the back for hair that falls below the head (long hair, a
+    /// ponytail), for one clean shade edge over the head (a grown head's locks are finer beside its cells than a chibi
+    /// head's, so its normals turn more between neighbours and want the stronger bend); a beard and a moustache keep
+    /// theirs, which follow the face.
     /// </summary>
     private static void SoftenGrownHair(CharacterRig rig, GrownFrame f)
     {
@@ -617,7 +625,7 @@ internal static partial class CharacterModels
             float t = length2 < 1e-6f ? 0f : Math.Clamp(Vector3.Dot(p - middle, axis) / length2, 0f, 1f);
             var away = p - (middle + axis * t);
             if (away.LengthSquared() < 1e-8f) continue;
-            mesh.Normals[v] = Vector3.Normalize(Vector3.Lerp(mesh.Normals[v], Vector3.Normalize(away), 0.7f));
+            mesh.Normals[v] = Vector3.Normalize(Vector3.Lerp(mesh.Normals[v], Vector3.Normalize(away), 0.8f));
         }
     }
 

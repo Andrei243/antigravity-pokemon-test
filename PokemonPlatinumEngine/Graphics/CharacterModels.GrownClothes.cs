@@ -342,11 +342,11 @@ internal static partial class CharacterModels
     }
 
     /// <summary>
-    /// What a grown person holds (style guide, "Grown characters", "What is held"), on the clothes' layer with its own
-    /// outline (a parasol's canopy alone is a third of a body's vertices, more than the body's mesh has room for) and on
-    /// the bone it moves with, at a grown body's size: a rod or a net in the right hand, a parasol, a pickaxe or a camera
-    /// over the right shoulder, a guitar slung across the front, a float ring round the waist. The right hand is the
-    /// character's right.
+    /// What a grown person holds (style guide, "Grown characters", "What is held"), a mesh of its own with its own outline
+    /// (<see cref="CharacterRig.Held"/>: a parasol's canopy alone is a third of a body's vertices, more than the body's or
+    /// the clothes' mesh has room for), on the bone it moves with, at a grown body's size: a rod or a net in the right
+    /// hand, a parasol, a pickaxe or a camera over the right shoulder, a guitar slung across the front, a float ring round
+    /// the waist. The right hand is the character's right.
     /// </summary>
     private static void GrownHeld(SdfModel m, CharacterStyle s, GrownFrame f)
     {
@@ -383,8 +383,8 @@ internal static partial class CharacterModels
                 var canopy = new Vector3(-0.15f * sz, f.Crown + 0.08f * sz, -0.24f * sz);
                 var tilt = Quaternion.Concatenate(Quaternion.CreateFromAxisAngle(Vector3.UnitZ, 0.32f), Pitch(-0.5f));
                 m.Capsule(palm, canopy, Math.Max(least, 0.01f * sz), Math.Max(least, 0.01f * sz), new Color(112, 84, 64, 255), HumanBones.HandR, 0.003f * sz, Wood);
-                m.Ellipsoid(canopy, new Vector3(0.36f, 0.07f, 0.36f) * sz, s.PropColor ?? s.Top, HumanBones.Chest, 0f, Cloth, tilt);
-                m.Torus(canopy + Vector3.Transform(new Vector3(0, -0.035f, 0) * sz, tilt), 0.34f * sz, 0.016f * sz, s.Accent, HumanBones.Chest, 0f, Cloth, tilt);
+                m.Ellipsoid(canopy, new Vector3(0.4f, 0.075f, 0.4f) * sz, s.PropColor ?? s.Top, HumanBones.Chest, 0f, Cloth, tilt);
+                m.Torus(canopy + Vector3.Transform(new Vector3(0, -0.037f, 0) * sz, tilt), 0.38f * sz, 0.016f * sz, s.Accent, HumanBones.Chest, 0f, Cloth, tilt);
                 break;
             }
             case HeldProp.Pickaxe:

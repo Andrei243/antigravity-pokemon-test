@@ -50,7 +50,7 @@ partial class Harness
         {
             var rig = CharacterModels.Get(type, context.Shaders);
             float top = rig.Mesh.Positions.Max(p => p.Y), wide = rig.Mesh.Positions.Max(p => p.X) - rig.Mesh.Positions.Min(p => p.X);
-            Console.WriteLine($"  {type}: {rig.Style.Build}, body {rig.Mesh.VertexCount} vertices, clothes {rig.Clothes?.VertexCount ?? 0}, " +
+            Console.WriteLine($"  {type}: {rig.Style.Build}, body {rig.Mesh.VertexCount} vertices, clothes {rig.Clothes?.VertexCount ?? 0}, held {rig.Held?.VertexCount ?? 0}, " +
                 $"face patch {rig.FacePatch?.TriangleCount ?? 0} triangles; {top:0.000} tall, {wide:0.000} wide");
         }
         float HeadY(string type)
@@ -93,7 +93,7 @@ partial class Harness
             {
                 Print(looks[i].Type);
                 float scale = CharacterStyle.For(looks[i].Type).Height;
-                var views = CharacterStudio.Turntable(context, looks[i].Type, round, W, H, pose, 2.0f / scale, 0.9f / scale);
+                var views = CharacterStudio.Turntable(context, looks[i].Type, round, W, H, pose, 2.1f / scale, 1.02f / scale);
                 int x = i % perRow * W * round.Length, y = i / perRow * (H + Label);
                 Raylib.ImageDraw(ref board, views, new Rectangle(0, 0, views.Width, views.Height), new Rectangle(x, y + Label, views.Width, H), Color.White);
                 Raylib.UnloadImage(views);
@@ -139,8 +139,9 @@ partial class Harness
             for (int i = 0; i < looks.Length; i++)
             {
                 Print(looks[i]);
+                // Every look framed alike, 2.1 units of the world tall from the ground, so a tall one is seen taller
                 float scale = CharacterStyle.For(looks[i]).Height;
-                var views = CharacterStudio.Turntable(context, looks[i], round, W, H, pose, 1.85f / scale, 0.86f / scale);
+                var views = CharacterStudio.Turntable(context, looks[i], round, W, H, pose, 2.1f / scale, 1.02f / scale);
                 int x = i % 2 * W * round.Length, y = i / 2 * (H + Label);
                 Raylib.ImageDraw(ref board, views, new Rectangle(0, 0, views.Width, views.Height), new Rectangle(x, y + Label, views.Width, H), Color.White);
                 Raylib.UnloadImage(views);

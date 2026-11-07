@@ -261,13 +261,22 @@ internal static partial class CharacterModels
         float R = f.HeadR;
         var H = f.HeadC;
         const SurfaceMaterial Hair = SurfaceMaterial.Hair;
-        // The mass behind, from the back of the head down over the back of the neck, clear of the back itself
-        m.Ellipsoid(H + new Vector3(0, -0.9f, -0.98f) * R, new Vector3(0.78f, 1.25f, 0.3f) * R, hair, HumanBones.Hair, 0.15f * R, Hair);
+        // The mass behind the head and the nape, then locks from the back of the head down to the shoulder blades,
+        // slanting back to clear the upper back however deep the chest is (a broad build's is further back than the head).
+        // Long hair rests on the back: what is above the nape moves with the head and what lies on the back with the
+        // chest, so between them it stretches as the neck does (on the hair's bone, which a bow turns past the head, its
+        // outline tore away from the back)
+        m.Ellipsoid(H + new Vector3(0, -0.62f, -1.0f) * R, new Vector3(0.78f, 0.8f, 0.3f) * R, hair, HumanBones.Head, 0.12f * R, Hair);
+        // (the elder's rounded upper back stands further back still)
+        float back = Math.Min(H.Z - 1.06f * R, -(f.ChestD * (f.Forward > 0f ? 1.15f : 1f) + 0.016f * f.Size) - 0.12f * R);
+        const float Nape = -1.3f;
         foreach (float x in new[] { -0.55f, -0.18f, 0.18f, 0.55f })
         {
             var top = H + new Vector3(x, 0.05f, -1.02f + MathF.Abs(x) * 0.22f) * R;
-            var tip = H + new Vector3(x * 1.12f, -2.35f, -1.06f + MathF.Abs(x) * 0.2f) * R;
-            GrownTube(m, f, top, tip, 0.26f, 0.1f, hair, HumanBones.Hair, 0.05f, Hair);
+            var tip = new Vector3(H.X + x * 1.12f * R, H.Y - 2.35f * R, back + MathF.Abs(x) * 0.15f * R);
+            var nape = Vector3.Lerp(top, tip, (0.05f - Nape) / (0.05f + 2.35f));
+            GrownTube(m, f, top, nape, 0.26f, 0.19f, hair, HumanBones.Head, 0.05f, Hair);
+            GrownTube(m, f, nape, tip, 0.19f, 0.1f, hair, HumanBones.Chest, 0.05f, Hair);
         }
         // A lock framing each cheek, from over the temple down in front of the ear to below the jaw
         foreach (float side in new[] { 1f, -1f })
