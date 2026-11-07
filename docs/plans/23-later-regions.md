@@ -110,7 +110,7 @@ Each session: the rule in a GPU-free class with its tests, the areas opened thro
   with MapDraw's new `MapDrawing.Areas` (a map of its own with several areas); the story from the marina to Lana's
   trial (`VAR_ALOLA_STORY` 8 to 18: Team Skull and Ilima, the festival and the Z-Ring, Ilima's trial and the Normalium Z,
   the meadow, Hau on Route 3, Hala's grand trial with the stamp, the Fightinium Z and Tauros, the boat, Hau in Paniola,
-  Mallow and Stoutland, Gladion, Lana's trial with Lapras and the Waterium Z); fourteen rooms; five looks (Ilima, a Team
+  Mallow and Stoutland, Gladion, Lana's trial with Lapras and the Waterium Z); nine rooms (four Pokémon Centers, five houses and shops); a road song for Akala (`alola/route4`); five looks (Ilima, a Team
   Skull grunt, Mallow, Lana, Gladion) and three classes; 36 trainers of ours; objectives 607 to 617;
   `AlolaIslandsTests` (the walk to every new place, the spawns, the Ride Pager's grants, Tauros breaking the rock with
   no knower, and the story headless). **Z5's "done when" holds headless** (`TaurosChargesTheRockBeforeTenCaratHill…`):
