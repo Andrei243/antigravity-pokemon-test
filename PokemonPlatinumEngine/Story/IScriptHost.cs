@@ -97,6 +97,12 @@ public interface IScriptHost
 
     /// <summary>How many species the player has caught, every one the Pokédex has (plan 19 · K3, <c>CAUGHT</c>: the original's <c>GetPokedexCount</c>, which Oak's aides ask).</summary>
     int Caught => 0;
+
+    /// <summary>
+    /// The player's Pokédex, which the charms a designer hands over are read from (plan 40 · GE5, <c>charm due</c>,
+    /// <see cref="Charms.Due"/>); null for a host that has none, where nothing is due.
+    /// </summary>
+    Pokedex? Pokedex => null;
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }

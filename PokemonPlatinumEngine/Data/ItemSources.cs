@@ -18,7 +18,7 @@ public enum ItemSourceKind
     Ball,
     /// <summary>It is hidden in the ground: an area's sign, a room's hidden item.</summary>
     Hidden,
-    /// <summary>A script hands it over (<c>give</c>, <c>additem</c>).</summary>
+    /// <summary>A script hands it over (<c>give</c>, <c>additem</c>, a designer's <c>charm give</c>: plan 40 · GE5).</summary>
     Given,
     /// <summary>A script finds it (<c>find</c>).</summary>
     Found
@@ -189,6 +189,10 @@ public sealed class ItemSources
                     case Op.GameCorner when i.Name == "prize":
                         foreach (var (item, _) in i.Other == "mauville" ? GameCornerPrizes.Mauville : GameCornerPrizes.All)
                             Add(item, ItemSourceKind.Prize, $"{where}: coins");
+                        break;
+                    // A designer hands over whichever charm a Pokédex filled has earned (plan 40 · GE5): every charm of the table
+                    case Op.Charm when i.Name == "give":
+                        foreach (string charm in Charms.Table.Regional.Append(Charms.Table.National)) Add(charm, ItemSourceKind.Given, where);
                         break;
                     // Join Avenue's shops, at every rank (plan 22 · U11)
                     case Op.JoinAvenue when i.Name == "shop":

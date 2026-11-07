@@ -211,7 +211,7 @@ internal sealed class BattleCamera
         if (choosing && anim.Time >= 1.8f) return (Overview(anim.Time), ShotKind.Overview, null);
 
         // A thrown ball takes the camera with it
-        if (anim.Ball is { } ball && !(ball.Caught && ball.Age > BattleAnimator.BallThrowTime(ball.Shakes)))
+        if (anim.Ball is { } ball && !(ball.Caught && ball.Age > BattleAnimator.BallThrowTime(ball.Shakes, ball.Critical)))
             return BallShot(anim, ball, places);
 
         // A trainer back on their platform to say a line, while it is read (plan 11 · C13); eased back once they go
@@ -676,7 +676,7 @@ internal sealed class BattleCamera
     /// <summary>Follows a thrown ball: the trainer's throw, the flight to the foe, close on it while it wobbles.</summary>
     private static (CameraShot, ShotKind, EffectCue?) BallShot(BattleAnimator anim, BallThrowView ball, FxPlaces places)
     {
-        var (phase, progress, _) = BattleAnimator.BallStage(ball.Age, ball.Shakes);
+        var (phase, progress, _) = BattleAnimator.BallStage(ball.Age, ball.Shakes, ball.Critical);
         switch (phase)
         {
             case BallPhase.RunIn:
@@ -694,6 +694,7 @@ internal sealed class BattleCamera
                 return (new CameraShot(from.Position, to, OverviewFov + (Math.Clamp(fit, 15f, OverviewFov) - OverviewFov) * zoom), ShotKind.Throw, null);
             }
             case BallPhase.Open:
+            case BallPhase.Rattle:
             case BallPhase.Drop:
             case BallPhase.Burst:
                 return (Close(places, BattleSide.Enemy, ball.Slot, 3.0f), ShotKind.Ball, null);

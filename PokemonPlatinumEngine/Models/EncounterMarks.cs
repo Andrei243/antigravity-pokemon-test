@@ -32,7 +32,8 @@ public enum Mark
 /// <param name="Time">The time of day it was met at (<see cref="GameClock.Now"/>).</param>
 /// <param name="Weather">The weather where it was met (<see cref="Map.WeatherAt(int, int)"/>).</param>
 /// <param name="Fished">It was reeled in on a rod.</param>
-public readonly record struct MarkMoment(TimeOfDay Time, FieldWeather Weather, bool Fished);
+/// <param name="MarkCharm">The Mark Charm was in the player's bag (plan 40 · GE5): every try at a mark is made three times.</param>
+public readonly record struct MarkMoment(TimeOfDay Time, FieldWeather Weather, bool Fished, bool MarkCharm = false);
 
 /// <summary>
 /// The marks of a catch (plan 10 · F9; docs/mechanics/rulings.md, "Marks and titles"): at most one, tried in the
@@ -77,18 +78,31 @@ public static class EncounterMarks
         _ => null
     };
 
-    /// <summary>Whether a try passes its odds: a number read from the personality and the try's salt.</summary>
-    private static bool Passes(uint personality, uint salt, int odds) => SplitMix.Mix(personality, 0x4D41524Bu, salt) % (uint)odds == 0;
+    /// <summary>
+    /// Whether a try passes its odds: a number read from the personality and the try's salt. With the Mark Charm
+    /// (plan 40 · GE5) the try is made <see cref="Charms.MarkTries"/> times, the first with the try's own salt (so the
+    /// charm never takes a mark away) and each after it with a salt of its own (<see cref="CharmSalt"/> further on).
+    /// </summary>
+    private static bool Passes(uint personality, uint salt, int odds, int tries = 1)
+    {
+        for (int t = 0; t < tries; t++)
+            if (SplitMix.Mix(personality, 0x4D41524Bu, salt + (uint)t * CharmSalt) % (uint)odds == 0) return true;
+        return false;
+    }
+
+    /// <summary>How far apart the Mark Charm's tries' salts stand from the try's own (plan 40 · GE5): past every salt of the first try.</summary>
+    public const uint CharmSalt = 0x100;
 
     /// <summary>The mark the encounter gives a Pokémon of this personality, or none.</summary>
     public static Mark? For(uint personality, MarkMoment moment)
     {
-        if (Passes(personality, 1, RareOdds)) return Mark.Rare;
-        if (Passes(personality, 2, PersonalityOdds))
+        int tries = moment.MarkCharm ? Charms.MarkTries : 1;
+        if (Passes(personality, 1, RareOdds, tries)) return Mark.Rare;
+        if (Passes(personality, 2, PersonalityOdds, tries))
             return Personalities[(int)(SplitMix.Mix(personality, 0x4D41524Bu, 3) % (uint)Personalities.Count)];
-        if (Passes(personality, 4, TimeOdds)) return TimeMarkOf(moment.Time);
-        if (WeatherMarkOf(moment.Weather) is { } weather && Passes(personality, 5, WeatherOdds)) return weather;
-        if (moment.Fished && Passes(personality, 6, FishingOdds)) return Mark.Fishing;
+        if (Passes(personality, 4, TimeOdds, tries)) return TimeMarkOf(moment.Time);
+        if (WeatherMarkOf(moment.Weather) is { } weather && Passes(personality, 5, WeatherOdds, tries)) return weather;
+        if (moment.Fished && Passes(personality, 6, FishingOdds, tries)) return Mark.Fishing;
         return null;
     }
 

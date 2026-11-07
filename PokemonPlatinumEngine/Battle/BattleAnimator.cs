@@ -370,13 +370,17 @@ public sealed class EffectCue
     public bool OnOnePokemon => Kind is CueKind.StatUp or CueKind.StatDown or CueKind.Heal or CueKind.Status;
 }
 
-/// <summary>The steps of a thrown Poké Ball, in order.</summary>
-public enum BallPhase { RunIn, Flight, Open, Drop, Wobble, Pause, Click, Burst, Rest }
+/// <summary>
+/// The steps of a thrown Poké Ball, in order; a critical capture's <see cref="Rattle"/> (plan 40 · GE5) comes between
+/// <see cref="Open"/> and <see cref="Drop"/>.
+/// </summary>
+public enum BallPhase { RunIn, Flight, Open, Drop, Wobble, Pause, Click, Burst, Rest, Rattle }
 
 /// <summary>
 /// A Poké Ball thrown at a wild Pokémon (plan 04 · G8). The trainer runs in and throws it; it flies over to the
 /// foe, opens and draws it in, drops onto the platform, wobbles once per successful shake check, and then clicks
-/// shut (and stays there) or bursts open.
+/// shut (and stays there) or bursts open. A critical capture (plan 40 · GE5) rattles in the air where it shut before it
+/// drops, and wobbles once whichever way it goes.
 /// </summary>
 public sealed class BallThrowView
 {
@@ -386,6 +390,9 @@ public sealed class BallThrowView
 
     /// <summary>Successful shake checks; 4 means caught.</summary>
     public int Shakes { get; init; }
+
+    /// <summary>A critical capture (plan 40 · GE5): one shake check, shown by a rattle in the air and one wobble.</summary>
+    public bool Critical { get; init; }
 
     public float Age { get; internal set; }
 
@@ -584,26 +591,44 @@ public sealed class BattleAnimator
     /// <summary>When the ball reaches the foe and opens.</summary>
     public const float BallArriveTime = BallReleaseTime + BallFlightTime;
 
+    /// <summary>A critical capture's rattle in the air, where the ball shut over the foe, before it drops (plan 40 · GE5).</summary>
+    public const float BallRattleTime = 0.5f;
+
+    /// <summary>When a critical capture's rattle begins, from the throw: as the ball has shut over the foe.</summary>
+    public const float BallRattleAt = BallArriveTime + BallOpenTime;
+
+    /// <summary>How many times a thrown ball wobbles on the platform: once per successful shake check up to three, and a critical capture once either way.</summary>
+    public static int BallWobbles(int shakes, bool critical = false) => critical ? 1 : Math.Min(shakes, 3);
+
     /// <summary>When the ball stops wobbling: it clicks shut, or bursts open and the Pokémon breaks free.</summary>
-    public static float BallSettleTime(int shakes) =>
-        BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * Math.Min(shakes, 3);
+    public static float BallSettleTime(int shakes, bool critical = false) => critical
+        ? BallRattleAt + BallRattleTime + BallDropTime + (BallWobbleTime + BallPauseTime) * BallWobbles(shakes, critical: true)
+        : BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * Math.Min(shakes, 3);
 
     /// <summary>When the ball's wobble <paramref name="wobble"/> (0-based) begins, from the throw.</summary>
-    public static float BallWobbleAt(int wobble) => BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * wobble;
+    public static float BallWobbleAt(int wobble, bool critical = false) => critical
+        ? BallRattleAt + BallRattleTime + BallDropTime + (BallWobbleTime + BallPauseTime) * wobble
+        : BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * wobble;
 
     /// <summary>How long a throw with <paramref name="shakes"/> successful shake checks takes to play out.</summary>
-    public static float BallThrowTime(int shakes) => BallSettleTime(shakes) + BallEndTime;
+    public static float BallThrowTime(int shakes, bool critical = false) => BallSettleTime(shakes, critical) + BallEndTime;
 
     /// <summary>Where a thrown ball is at <paramref name="age"/>: its phase, progress through it (0..1) and which wobble (0-based).</summary>
-    public static (BallPhase Phase, float Progress, int Wobble) BallStage(float age, int shakes)
+    public static (BallPhase Phase, float Progress, int Wobble) BallStage(float age, int shakes, bool critical = false)
     {
         if (age < BallReleaseTime) return (BallPhase.RunIn, age / BallReleaseTime, 0);
         float t = age - BallReleaseTime;
         if (t < BallFlightTime) return (BallPhase.Flight, t / BallFlightTime, 0);
         if ((t -= BallFlightTime) < BallOpenTime) return (BallPhase.Open, t / BallOpenTime, 0);
-        if ((t -= BallOpenTime) < BallDropTime) return (BallPhase.Drop, t / BallDropTime, 0);
+        if (critical)
+        {
+            // A critical capture rattles in the air where the ball shut, before it drops (plan 40 · GE5)
+            if ((t -= BallOpenTime) < BallRattleTime) return (BallPhase.Rattle, t / BallRattleTime, 0);
+            if ((t -= BallRattleTime) < BallDropTime) return (BallPhase.Drop, t / BallDropTime, 0);
+        }
+        else if ((t -= BallOpenTime) < BallDropTime) return (BallPhase.Drop, t / BallDropTime, 0);
         t -= BallDropTime;
-        int wobbles = Math.Min(shakes, 3);
+        int wobbles = BallWobbles(shakes, critical);
         float step = BallWobbleTime + BallPauseTime;
         int index = (int)(t / step);
         if (index < wobbles)
@@ -1574,10 +1599,10 @@ public sealed class BattleAnimator
         v.CaptureAge = 0f;
     }
 
-    /// <summary>The player throws <paramref name="ball"/> at the foe in <paramref name="slot"/>; it is drawn in when the ball arrives.</summary>
-    public void ThrowBall(string ball, int slot, int shakes)
+    /// <summary>The player throws <paramref name="ball"/> at the foe in <paramref name="slot"/>; it is drawn in when the ball arrives. A critical capture rattles in the air first (plan 40 · GE5).</summary>
+    public void ThrowBall(string ball, int slot, int shakes, bool critical = false)
     {
-        Ball = new BallThrowView { Ball = ball, Slot = slot, Shakes = shakes };
+        Ball = new BallThrowView { Ball = ball, Slot = slot, Shakes = shakes, Critical = critical };
         Capture(BallArriveTime, slot);
     }
 
@@ -1634,7 +1659,7 @@ public sealed class BattleAnimator
         if (Ball != null)
         {
             Ball.Age += dt;
-            if (!Ball.Caught && Ball.Age >= BallThrowTime(Ball.Shakes)) Ball = null;
+            if (!Ball.Caught && Ball.Age >= BallThrowTime(Ball.Shakes, Ball.Critical)) Ball = null;
         }
 
         for (int side = 0; side < 2; side++)

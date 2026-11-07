@@ -7,9 +7,15 @@
 # opened once complete (plan 03 · D10; docs/mechanics/rulings.md): he sends the player to look. Having said so, he
 # talks of other things until the player has gone out and come back (a flag that lasts while the player stays, as
 # the original's FLAG_MAP_LOCAL_0x01).
+#
+# Since plan 40 · GE5 he is also one of the designers who hand over the charms a Pokédex filled has earned (charm due,
+# charm give; Models/Charms.cs): any regional Pokédex seen whole, whichever region's, and the National one caught whole.
+# What is due is given before anything else he says, one charm after another.
 
 
 script Director
+  charm due
+  if var RESULT > 0 goto Charms
   if flag FLAG_MAP_LOCAL_GAME_DIRECTOR_SPOKE goto Stories
   if var SEEN >= 210 goto Complete
   say "Hello there! I'm the game director!" "Oh! You're filling in a Pokédex, I see!" "Do come and show me again once there's more in it!"
@@ -22,4 +28,13 @@ label Complete
   end
 label Stories
   say "How did you come by all the Pokémon in your Pokédex, I wonder?" "Did you work long and hard to catch and raise each one? Were some of them gifts from friends? Did a few arrive in trades from far away?" "Every Pokédex may look the same in the end. The stories inside them never are."
+  end
+label Charms
+  say "Hello there! I'm the game director!" "Now, let me see that Pokédex... Page after page, every one of them filled in! That earns more than a diploma."
+  say "Whoever makes it this far gets a little something from all of us who made the game. Here you are!"
+label GiveCharm
+  charm give
+  charm due
+  if var RESULT > 0 goto GiveCharm
+  say "Keep it with you wherever you go. Fill in another Pokédex and come and show me: I may have something more for you."
   end

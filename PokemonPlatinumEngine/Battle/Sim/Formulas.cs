@@ -252,6 +252,29 @@ public static class Formulas
     private static uint WholeRoot(uint n) => (uint)Math.Floor(Math.Sqrt(n));
 
     /// <summary>
+    /// What the caught count makes of a critical capture's chance (plan 40 · GE5; Generation 6 on, the later games'
+    /// Pokédex modifier), in tenths: nothing to 30 species caught, a half to 150, the whole to 300, one and a half to 450,
+    /// twice to 600 and two and a half beyond.
+    /// </summary>
+    public static int CriticalCaptureTenths(int caught) => caught switch
+    {
+        > 600 => 25,
+        > 450 => 20,
+        > 300 => 15,
+        > 150 => 10,
+        > 30 => 5,
+        _ => 0
+    };
+
+    /// <summary>
+    /// A critical capture's chance out of 256 (plan 40 · GE5; Generation 6 on): the catch rate, at most 255, times the caught
+    /// count's share (<see cref="CriticalCaptureTenths"/>), twice with the Catching Charm, over 6, rounded down once at the
+    /// end. A roll of 256 below it makes the throw a critical capture: one shake check in place of four.
+    /// </summary>
+    public static int CriticalCapture(int catchRate, int caught, bool catchingCharm) =>
+        (int)((long)Math.Clamp(catchRate, 0, 255) * CriticalCaptureTenths(caught) * (catchingCharm ? 2 : 1) / 60);
+
+    /// <summary>
     /// A ball's strength in tenths (<c>sBasicBallMod</c> and the special balls of
     /// <c>BattleScript_CalcCatchShakes</c>). A Master Ball is not here: it catches whatever the rolls say.
     /// </summary>
@@ -347,4 +370,23 @@ public sealed class BattleConditions
     /// never changed while it runs; a <see cref="BattleRecord"/>'s file keeps it.
     /// </summary>
     public TotemAura? TotemAura { get; init; }
+
+    /// <summary>
+    /// How many species the player has caught (plan 40 · GE5): the National Pokédex's count, species of our own left out
+    /// (<see cref="Models.Pokedex.CaughtCount"/>), which a critical capture's chance is read by under the modern rules
+    /// (<see cref="Formulas.CriticalCapture"/>). 0 unless given, which gives no critical capture; a record's file keeps it.
+    /// </summary>
+    public int CaughtSpecies { get; init; }
+
+    /// <summary>
+    /// The Catching Charm is in the player's bag (plan 40 · GE5, <see cref="Models.Charms"/>): a critical capture's chance
+    /// is doubled before it is divided. Off unless given; a record's file keeps it.
+    /// </summary>
+    public bool CatchingCharm { get; init; }
+
+    /// <summary>
+    /// The Exp. Charm is in the player's bag (plan 40 · GE5): every EXP the battle gives the player's Pokémon is half as much
+    /// again, after a crossed region's half and before Easy's (<c>BattleCore.Give</c>). Off unless given; a record's file keeps it.
+    /// </summary>
+    public bool ExpCharm { get; init; }
 }

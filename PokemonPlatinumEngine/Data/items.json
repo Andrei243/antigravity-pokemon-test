@@ -8016,6 +8016,17 @@
     "fieldUse": "FormChange"
   },
   {
+    "id": 1674,
+    "name": "Oval Charm",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A smooth oval charm. While it is in the Bag, two Pokémon left at a Day Care find an Egg more often."
+  },
+  {
     "id": 1675,
     "name": "Shiny Charm",
     "pocket": "KeyItems",
@@ -12193,6 +12204,17 @@
     "flingPower": 80
   },
   {
+    "id": 2325,
+    "name": "Catching Charm",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A charm that steadies a thrown ball. While it is in the Bag, critical captures come twice as often."
+  },
+  {
     "id": 2329,
     "name": "Rotom Catalog",
     "pocket": "KeyItems",
@@ -12252,6 +12274,28 @@
     "canUseInOverworld": false,
     "description": "",
     "flingPower": 30
+  },
+  {
+    "id": 2638,
+    "name": "Exp. Charm",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A charm that makes every battle count for more. While it is in the Bag, Pokémon gain half as much Exp. again."
+  },
+  {
+    "id": 2640,
+    "name": "Mark Charm",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A charm that draws out a Pokémon's character. While it is in the Bag, wild Pokémon carry a mark more often."
   },
   {
     "id": 2643,

@@ -814,6 +814,8 @@ public class ScriptTests
           tournament points
           tournament end
           tournament rental
+          charm due
+          charm give
         script Other
           end
         """;

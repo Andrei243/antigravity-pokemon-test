@@ -985,6 +985,7 @@ public partial class GameEngine
         // the professor counts them all, and the National Pokédex opens on the Hall of Fame alone (plan 13 · V6, rulings: "The randomiser")
         public int SeenInSinnoh => Randomizer.SinnohSeen(game.flow.Run, game.flow.Pokedex, game.flow.Story);
         public int Caught => game.flow.Pokedex.CaughtCount;
+        public Pokedex? Pokedex => game.flow.Pokedex;
 
         public int Money
         {

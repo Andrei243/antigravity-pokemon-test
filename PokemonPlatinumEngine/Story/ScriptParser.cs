@@ -1315,6 +1315,10 @@ public static class ScriptParser
             case "endscene":
                 return new Instruction { Op = Op.EndScene, Line = line };
 
+            // The charms of a Pokédex filled (plan 40 · GE5): "charm due" how many are earned and not in the bag, "charm give" the first
+            case "charm":
+                return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

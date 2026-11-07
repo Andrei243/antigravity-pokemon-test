@@ -53,7 +53,7 @@ public class CoverageTests
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(190, n.LaterAbilitiesRun, "later abilities with an effect");
         AtLeast(379, n.PlatinumItemsFully, "Platinum's items that work"); // plan 06 · R28a: the Luxury and Heal Balls; R30: the berries, mulch, the Sprayduck and the Oval Stone judged by what the game does with them
-        AtLeast(449, n.LaterItemsFully, "later items that work"); // plan 06 · R28b: everything used outside a battle, the TRs, the last held items; R29: the key items that change a form, the Origin Formes' three
+        AtLeast(455, n.LaterItemsFully, "later items that work"); // plan 06 · R28b: everything used outside a battle, the TRs, the last held items; R29: the key items that change a form, the Origin Formes' three; plan 40 · GE5: the Oval, Exp., Catching and Mark Charms
         AtLeast(380, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         // The 35 Z-Moves since plan 06 · R21

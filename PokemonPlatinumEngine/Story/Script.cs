@@ -183,6 +183,8 @@ public enum Op
     Craft,
     // The training hall (plan 36 · TR2): whether its Champion's things are open, a drill on the Pokémon chosen, effort reset, the drills' prizes
     Train,
+    // The charms of a Pokédex filled (plan 40 · GE5): how many are due, and the first handed over
+    Charm,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

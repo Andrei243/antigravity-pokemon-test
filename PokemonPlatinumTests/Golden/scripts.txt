@@ -9724,6 +9724,10 @@ way -
   Old Woman> Do share it with anyone who looks thirsty, won't you?
   * fanfare FanfareKeyItem
   + FLAG_GOT_TEA
+=== celadon_city_condominiums_3f.Designer
+from Designer at 3,8 of CeladonCity_Condominiums_3F
+way -
+  Designer> I plan the maps. Every town needs a place to explore, don't you think?
 === celadon_city_condominiums_roof_room.EeveeBall
 from Poké Ball at 7,3 of CeladonCity_Condominiums_RoofRoom
 way 0
@@ -9893,6 +9897,10 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_GOT_COIN_CASE
+=== celadon_condominiums_3f.Director
+from Director at 8,12 of Celadon_Condominiums_3F
+way -
+  Director> Ah, a Trainer! Fill your Pokédex, every page of it. The Pokédex itself knows when you've done it.
 === celadon_department_store_2f.BallClerk
 from Clerk at 18,8 of Celadon_DeptStore_2F
 way -
@@ -21702,6 +21710,10 @@ way -
 from the tile read at 27,1 of LilycoveCity_ContestLobby
 way -
   > An empty frame. No winner has been hung here yet.
+=== lilycove_city_cove_lily_motel_2f.Designer
+from Game Designer at 4,6 of LilycoveCity_CoveLilyMotel_2F
+way -
+  Game Designer> I design games. Fill your Pokédex with every Pokémon of Hoenn and show me, and I'll have something for you.
 === lilycove_city_cove_lily_motel_2f.Scott
 from Scott at 1,7 of LilycoveCity_CoveLilyMotel_2F
 way -

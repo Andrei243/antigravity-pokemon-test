@@ -2,7 +2,8 @@
   // The Celadon Condominiums' third floor (plan 20 · J15, part k): an office of people who make games, come to by the
   // left-hand lift. Its people talk in lines of ours; the two of HeartGold's objects that stand off the room's floor (a
   // thing of a scene and a Marill, at row 30) are held back, and the man of the office who in HeartGold hands a diploma
-  // to whoever has completed the Pokédex only talks of it: the diploma is the Pokédex's own (plan 03 · D10)
+  // to whoever has completed the Pokédex only talks of it: the diploma is the Pokédex's own (plan 03 · D10). Since plan
+  // 40 · GE5 he hands over the charms a Pokédex filled has earned (celadon_condominiums_3f.txt, Director)
   "area": "celadon_condominiums_3f",
   "bgmTrack": "kanto/celadon",
   "heldBack": [ "t07r0203_var_1", "t07r0203_tsure_poke_static_marill" ],
@@ -33,6 +34,7 @@
     },
     "t07r0203_suit": {
       "name": "Director",
+      "script": "Director",
       "still": true,
       "dialog": [ "Ah, a Trainer! Fill your Pokédex, every page of it. The Pokédex itself knows when you've done it." ]
     }

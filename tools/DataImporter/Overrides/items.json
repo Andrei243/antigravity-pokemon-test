@@ -810,5 +810,11 @@
     "canUseInOverworld": false,
     "description": "A fossil of a Pokémon that flew long ago. It seems to be part of a wing.",
     "flingPower": 100
-  }
+  },
+  // The later games' charms for a Pokédex filled (plan 40 · GE5, Models/Charms.cs), brought in by name from PokeAPI's
+  // items: what each says of itself is ours
+  "Oval Charm": { "description": "A smooth oval charm. While it is in the Bag, two Pokémon left at a Day Care find an Egg more often." },
+  "Exp. Charm": { "description": "A charm that makes every battle count for more. While it is in the Bag, Pokémon gain half as much Exp. again." },
+  "Catching Charm": { "description": "A charm that steadies a thrown ball. While it is in the Bag, critical captures come twice as often." },
+  "Mark Charm": { "description": "A charm that draws out a Pokémon's character. While it is in the Bag, wild Pokémon carry a mark more often." }
 }

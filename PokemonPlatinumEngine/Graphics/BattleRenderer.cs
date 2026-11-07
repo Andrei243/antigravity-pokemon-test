@@ -725,10 +725,22 @@ public sealed class BattleRenderer
         var open = BattleBall.CaptureOpen(places, ball.Slot);
         var rest = feet + toCamera * 0.4f + Vector3.UnitY * EnemyBall * 0.5f;
         float yaw = FaceCamera(rest);
-        var (phase, p, _) = BattleAnimator.BallStage(ball.Age, ball.Shakes);
+        var (phase, p, _) = BattleAnimator.BallStage(ball.Age, ball.Shakes, ball.Critical);
 
         switch (phase)
         {
+            case BallPhase.Rattle:
+            {
+                // A critical capture (plan 40 · GE5): the ball hangs where it shut over the foe and rattles twice in the
+                // air, a white glint at its button and a ring of light round it, before it drops
+                float rock = MathF.Sin(p * MathF.Tau * 2f) * 0.5f * (1f - 0.35f * p);
+                balls.Add(new BallDraw(model, BattleBall.Place(open, EnemyBall, yaw, 0f, rock), 0f));
+                var front = open + toCamera * EnemyBall * 0.55f;
+                Fx.Glint(fx, p * BattleAnimator.BallRattleTime, front, 1f, 0f, Color.White, 0.32f);
+                float ring = Fx.Envelope(p, 0f, 0.15f, 0.6f, 1f);
+                if (ring > 0f) fx.Sprite(FxShape.Glow, open, EnemyBall * (1.6f + 0.8f * p), new Color(255, 248, 210, (int)(150 * ring)));
+                break;
+            }
             case BallPhase.RunIn:
             {
                 var thrower = CaptureThrowerAt(ball.Age, ball.Slot, anim.Time);
