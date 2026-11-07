@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -12,7 +13,8 @@ namespace PokemonPlatinumEngine.Story;
 /// <c>reset all</c> or <c>reset attack</c> (and <c>hp</c>, <c>defense</c>, <c>spatk</c>, <c>spdef</c>, <c>speed</c>) takes that
 /// Pokémon's effort in the stat, or in all six, to nought (<c>RESULT</c> 1 when there was any to take); <c>prize</c> hands
 /// over the first prize the drills' records have earned and the coach hasn't given, into the bag (<c>RESULT</c> 1, and
-/// <c>{item}</c> names it; 0 when nothing is owed). A host that keeps no records gives no prize.
+/// <c>{item}</c> names it; 0 when nothing is owed). A host that keeps no records gives no prize. <c>peak check</c> and
+/// <c>peak</c> are peak training (plan 36 · TR3): whether the chosen Pokémon may be trained, and the question that does it.
 /// </summary>
 public sealed partial class ScriptRunner
 {
@@ -62,7 +64,78 @@ public sealed partial class ScriptRunner
                 Result = 1;
                 return;
             }
+
+            case "peak" when i.Other == "check":
+                Result = (int)PeakCheck(chosenMember);
+                return;
+
+            case "peak":
+                PeakQuestion();
+                return;
         }
+    }
+
+    /// <summary>What <c>train peak check</c> answers (plan 36 · TR3), in the order it is asked.</summary>
+    public enum PeakReadiness
+    {
+        /// <summary>Nobody was chosen, or an Egg was.</summary>
+        Nobody = 0,
+        Ready = 1,
+        /// <summary>Under level 50 (<see cref="HyperTraining.Level"/>).</summary>
+        TooLow = 2,
+        /// <summary>Every stat's IV is 31 or brought to its peak already.</summary>
+        AtItsPeak = 3,
+        /// <summary>No Bottle Cap and no Gold Bottle Cap in the bag.</summary>
+        NoCap = 4
+    }
+
+    private PeakReadiness PeakCheck(Pokemon? member)
+    {
+        if (member is not { IsEgg: false }) return PeakReadiness.Nobody;
+        if (member.Level < HyperTraining.Level) return PeakReadiness.TooLow;
+        if (!EffortRules.Order.Any(s => HyperTraining.CanTrain(member, s))) return PeakReadiness.AtItsPeak;
+        return Held(HyperTraining.BottleCap) || Held(HyperTraining.GoldBottleCap) ? PeakReadiness.Ready : PeakReadiness.NoCap;
+    }
+
+    private bool Held(string item) => ItemDatabase.Get(item) is { } data && host.Bag.GetQuantity(data) > 0;
+
+    /// <summary>
+    /// <c>train peak</c> (plan 36 · TR3, peak training: <see cref="HyperTraining"/>): asks which stat of the chosen Pokémon shall
+    /// reach its peak, each stat it may with the judge's word for its IV, where a Bottle Cap is held, and all six where a Gold
+    /// Bottle Cap is; the answer takes one cap from the bag and trains. <c>RESULT</c> 1 for one stat (<c>{thing}</c> names
+    /// it), 2 for all six, 0 when nothing was trained.
+    /// </summary>
+    private void PeakQuestion()
+    {
+        Result = 0;
+        var member = chosenMember;
+        if (PeakCheck(member) != PeakReadiness.Ready || member == null) return;
+        var choices = new List<(StatType? Stat, string Row)>();
+        if (Held(HyperTraining.BottleCap))
+            foreach (var stat in IvJudge.Stats)
+            {
+                if (!HyperTraining.CanTrain(member, stat)) continue;
+                var grade = IvJudge.Grade(IvJudge.IvOf(member, stat));
+                string word = Core.Text.Of($"boxTeams.judge.grade.{grade}");
+                choices.Add((stat, Core.Text.Of("training.peak.row", ("stat", Core.Words.Stat(stat)), ("word", word))));
+            }
+        if (Held(HyperTraining.GoldBottleCap))
+            choices.Add((null, Core.Text.Of("training.peak.all", ("item", LocalNames.Item(HyperTraining.GoldBottleCap)))));
+        var rows = choices.Select(c => c.Row).Append(Core.Text.Of("training.peak.never")).ToList();
+        host.Ask(speakerShown, Core.Text.Of("training.peak.question"), rows, cancel: choices.Count);
+        afterBusy = () =>
+        {
+            Result = 0;
+            if (host.Answer < 0 || host.Answer >= choices.Count) return;
+            var (stat, _) = choices[host.Answer];
+            string capName = stat == null ? HyperTraining.GoldBottleCap : HyperTraining.BottleCap;
+            if (ItemDatabase.Get(capName) is not { } cap || host.Bag.GetQuantity(cap) <= 0) return;
+            if (!HyperTraining.Train(cap, member, stat ?? StatType.HP)) return;
+            host.Bag.RemoveItem(cap, 1);
+            lastItem = cap.Name;
+            lastThing = stat is { } one ? Core.Words.Stat(one) : "";
+            Result = stat == null ? 2 : 1;
+        };
     }
 
     /// <summary>Whether a Hall of Fame of any region has been entered.</summary>

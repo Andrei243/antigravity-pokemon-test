@@ -1024,6 +1024,7 @@
     "effort": "EFFORT",
     "effortValue": "{ev} / {max}",
     "effortTotal": "{total} / {max}",
+    "peak": "PEAK",
     "stat": { "HP": "HP", "Attack": "Attack", "Defense": "Defense", "SpAttack": "Sp. Atk", "SpDefense": "Sp. Def", "Speed": "Speed" },
     "moves": "MOVES",
     "power": "POWER",
@@ -6030,6 +6031,12 @@
       "bronze": "BRONZE",
       "silver": "SILVER",
       "gold": "GOLD"
+    },
+    "peak": {
+      "question": "Which stat shall reach its peak?",
+      "row": "{stat}: {word}",
+      "all": "ALL SIX ({item})",
+      "never": "NEVER MIND"
     }
   }
 }

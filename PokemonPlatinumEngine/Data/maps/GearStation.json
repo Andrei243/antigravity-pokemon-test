@@ -267,6 +267,15 @@
       "script": "Exchange"
     },
     {
+      "id": "training_clerk",
+      "name": "Club Clerk",
+      "npcType": "training_clerk",
+      "x": 21,
+      "y": 6,
+      "facing": "Left",
+      "script": "TrainingExchange"
+    },
+    {
       "id": "traveller",
       "name": "Gentleman",
       "npcType": "Gentleman",

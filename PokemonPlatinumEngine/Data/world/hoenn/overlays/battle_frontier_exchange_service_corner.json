@@ -15,5 +15,11 @@
     "sailor": { "name": "Sailor", "dialog": [ "I traded my points for a Technical Machine. Now I need a Pokémon that can learn it." ] },
     "man_5": { "name": "Man", "dialog": [ "Points earned on this island and points earned at Sinnoh's Frontier are all the same points." ] },
     "girl_1": { "name": "Girl", "dialog": [ "Which prize should I choose? I've been standing here for an hour!" ] }
-  }
+  },
+  // The training club's clerk (plan 36 · TR3), a person of our own outside the counters' east end: the club's goods for
+  // the Frontier's one set of Battle Points (common.TrainingExchange, frontier prize training)
+  "npcs": [
+    { "id": "battle_frontier_exchange_service_corner.TrainingClerk", "name": "Club Clerk", "npcType": "training_clerk",
+      "x": 13, "y": 4, "facing": "Left", "script": "TrainingExchange" }
+  ]
 }

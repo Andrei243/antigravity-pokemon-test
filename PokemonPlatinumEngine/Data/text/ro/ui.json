@@ -1417,6 +1417,7 @@
     "effort": "EFORT",
     "effortValue": "{ev} / {max}",
     "effortTotal": "{total} / {max}",
+    "peak": "VÂRF",
     "stat": { "HP": "HP", "Attack": "Atac", "Defense": "Apărare", "SpAttack": "At. Sp.", "SpDefense": "Ap. Sp.", "Speed": "Viteză" },
     "moves": "MIȘCĂRI",
     "power": "PUTERE",
@@ -6352,6 +6353,12 @@
       "bronze": "BRONZ",
       "silver": "ARGINT",
       "gold": "AUR"
+    },
+    "peak": {
+      "question": "Care statistică să ajungă la vârf?",
+      "row": "{stat}: {word}",
+      "all": "TOATE ȘASE ({item})",
+      "never": "LASĂ"
     }
   }
 }

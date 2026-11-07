@@ -376,7 +376,7 @@ public sealed partial class ScriptRunner
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
-        Op.Train => i.Name == "drill",
+        Op.Train => i.Name == "drill" || i.Name == "peak" && i.Other != "check",
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen

@@ -433,7 +433,21 @@ internal static partial class ModernUi
         var full = ev >= cap;
         string text = Text.Of("summary.effortValue", ("ev", ev), ("max", cap));
         UiFonts.DrawCentered(text, panel.X + 380 - UiFonts.Measure(text, 20, UiWeight.Black), cy + 28, 20, Muted, UiWeight.Black);
-        EffortBar(new Rectangle(panel.X + 420, cy + 14, panel.Width - 420 - 44, 8), (float)ev / cap, full);
+        var bar = new Rectangle(panel.X + 420, cy + 14, panel.Width - 420 - 44, 8);
+        EffortBar(bar, (float)ev / cap, full);
+        // A stat brought to its peak (plan 36 · TR3): the PEAK tag at the bar's right end, under the base-stat bar
+        if (p.IsHyperTrained(stat)) PeakTag(bar.X + bar.Width - PeakTagWidth, cy + 12);
+    }
+
+    private const float PeakTagWidth = 70, PeakTagHeight = 26;
+
+    /// <summary>The PEAK tag (style guide, "Effort on SKILLS"): a Gold pill 70 by 26 with white Black 18 text, its top left at the point given.</summary>
+    internal static void PeakTag(float x, float y)
+    {
+        var tag = new Rectangle(x, y, PeakTagWidth, PeakTagHeight);
+        UiShapes.Fill(tag, PeakTagHeight / 2f, Gold);
+        string word = Text.Of("summary.peak");
+        UiFonts.DrawCentered(word, x + (PeakTagWidth - UiFonts.Measure(word, 18, UiWeight.Black)) / 2f, y + PeakTagHeight / 2f, 18, Color.White, UiWeight.Black);
     }
 
     /// <summary>The effort under the six rows: the word, the total out of 510 and a bar across the track's width.</summary>

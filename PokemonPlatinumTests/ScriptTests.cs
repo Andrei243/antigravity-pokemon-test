@@ -245,6 +245,8 @@ public class ScriptTests
           train reset all
           train reset spatk
           train prize
+          train peak check
+          train peak
           photo take
           photo count
           globallink check
@@ -341,6 +343,7 @@ public class ScriptTests
           frontier give 3
           frontier prize items
           frontier prize machines
+          frontier prize training
           frontier buy
           frontier records tower
           frontier print tower

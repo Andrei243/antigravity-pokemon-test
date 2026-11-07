@@ -15,5 +15,35 @@
       { "golds": 10, "item": "Bottle Cap", "afterHallOfFame": true },
       { "golds": 50, "item": "Gold Bottle Cap", "afterHallOfFame": true }
     ]
-  }
+  },
+  // What the training club's clerk at a Battle Points counter trades (plan 36 · TR3): a third list beside the Exchange Service
+  // Corner's two (frontier prize training), on the Frontier's one set of points, at prices of ours on Platinum's scale
+  // (its held items cost 16 to 48). Sinnoh's Frontier grounds, Hoenn's island counter and the Gear Station each have the clerk
+  "battlePoints": [
+    { "item": "Bottle Cap", "price": 48 },
+    { "item": "Gold Bottle Cap", "price": 160 },
+    { "item": "Ability Capsule", "price": 48 },
+    { "item": "Ability Patch", "price": 200 },
+    { "item": "Lonely Mint", "price": 32 },
+    { "item": "Adamant Mint", "price": 32 },
+    { "item": "Naughty Mint", "price": 32 },
+    { "item": "Brave Mint", "price": 32 },
+    { "item": "Bold Mint", "price": 32 },
+    { "item": "Impish Mint", "price": 32 },
+    { "item": "Lax Mint", "price": 32 },
+    { "item": "Relaxed Mint", "price": 32 },
+    { "item": "Modest Mint", "price": 32 },
+    { "item": "Mild Mint", "price": 32 },
+    { "item": "Rash Mint", "price": 32 },
+    { "item": "Quiet Mint", "price": 32 },
+    { "item": "Calm Mint", "price": 32 },
+    { "item": "Gentle Mint", "price": 32 },
+    { "item": "Careful Mint", "price": 32 },
+    { "item": "Sassy Mint", "price": 32 },
+    { "item": "Timid Mint", "price": 32 },
+    { "item": "Hasty Mint", "price": 32 },
+    { "item": "Jolly Mint", "price": 32 },
+    { "item": "Naive Mint", "price": 32 },
+    { "item": "Serious Mint", "price": 32 }
+  ]
 }

@@ -3586,8 +3586,10 @@ label Lost
 
 # The head coach of a training hall, a room of ours (Sinnoh's is SunyshoreTrainingHall, behind Sunyshore City's alley
 # between its north houses). He hands over what the drills' golds have earned, then offers a drill on a Pokémon of the
-# team (train drill: the drill screen, RESULT the grade and one), a reset of its effort, or a word on how it all goes.
-# Our own lines and people: nothing of the games' Super Training is recreated.
+# team (train drill: the drill screen, RESULT the grade and one), a reset of its effort, or a word on how it all goes;
+# once a Hall of Fame has been entered, peak training too (plan 36 · TR3: train peak, a Bottle Cap for one stat brought
+# to its peak, a Gold Bottle Cap for all six). Our own lines and people: nothing of the games' Super Training or of
+# Mr. Hyper is recreated.
 script TrainingCoach
   speaker "Head Coach"
   train prize
@@ -3600,11 +3602,51 @@ label Prize
   if result == 1 goto Prize
 label Welcome
   say "Welcome to the training hall! Here a Pokémon builds up one stat at a time, and it doesn't cost a thing."
+  train open
+  if result == 1 goto WelcomeChampion
   choose "What'll it be today?" "A DRILL" "RESET EFFORT" "HOW IT WORKS" "NOTHING"
   if result == 0 goto Drill
   if result == 1 goto Reset
   if result == 2 goto How
   say "Then keep moving, and come back when you're warmed up!"
+  end
+label WelcomeChampion
+  choose "What'll it be today?" "A DRILL" "PEAK TRAINING" "RESET EFFORT" "HOW IT WORKS" "NOTHING"
+  if result == 0 goto Drill
+  if result == 1 goto Peak
+  if result == 2 goto Reset
+  if result == 3 goto How
+  say "Then keep moving, and come back when you're warmed up!"
+  end
+label Peak
+  say "Peak training! Hand me a Bottle Cap, and one stat grows as if it had been born the best it could be."
+  say "A Gold Bottle Cap does the same for all six. Only a Pokémon of level 50 or more has the grit for it, mind."
+  say "Who's reaching for the peak?"
+  choosepokemon
+  if result == 255 goto Later
+  train peak check
+  if result == 2 goto PeakTooLow
+  if result == 3 goto PeakThere
+  if result == 4 goto PeakNoCap
+  if result == 0 goto Later
+  train peak
+  if result == 0 goto Later
+  if result == 2 goto PeakAll
+  sound "select"
+  say "There! Its {thing} is at its peak now. It'll grow as far as that stat can ever go."
+  end
+label PeakAll
+  sound "select"
+  say "There! Every one of its stats is at its peak now. That's a Pokémon at its very best!"
+  end
+label PeakTooLow
+  say "Hmm. It needs to be level 50 or more before it can take peak training. Bring it back once it's grown!"
+  end
+label PeakThere
+  say "Every stat it has is at its peak already. There's nothing more I can do for this one!"
+  end
+label PeakNoCap
+  say "You'll need a Bottle Cap for that. The clerk at a Battle Points counter trades them, and golds in the drills earn them too."
   end
 label Drill
   say "Who's training today?"
@@ -3684,8 +3726,9 @@ label Later
   say "No rush. Come back whenever you're ready."
   end
 
-# The clerk of a training hall, behind the counter beside the coach. Her shelf of training goods opens with plan 36 ·
-# TR3; until then she tells of the drills and what the shelf will hold.
+# The clerk of a training hall, behind the counter beside the coach. Her stall of training goods (plan 36 · TR3:
+# marts.json's training_hall, the Exp. Candies, the Ability Capsule and the mints) is for whoever has entered a Hall of
+# Fame; until then she tells of the drills.
 script TrainingClerk
   speaker "Clerk"
   train open
@@ -3694,6 +3737,34 @@ script TrainingClerk
   say "The drills are open to everyone, though. Talk to the Head Coach!"
   end
 label Champion
-  say "Welcome, Champion! We're still filling the shelf behind me. Come back soon, and it'll be stocked."
-  say "Meanwhile, the Head Coach's drills are open as always."
+  say "Welcome, Champion! Candies, capsules and mints: everything a team in training needs is on this shelf."
+  shop "training_hall"
+  end
+
+# The training club's clerk at a Battle Points counter (plan 36 · TR3), beside Sinnoh's Exchange Service Corner, at the
+# Battle Frontier island's counter in Hoenn and in Unova's Gear Station, all on the Frontier's one set of points: she
+# trades the club's goods for Battle Points (frontier prize training: Data/training.json's battlePoints, the Bottle Caps,
+# the Ability Capsule and Patch and the mints), for a Champion. One prize to a visit, as the booths beside her.
+script TrainingExchange
+  face self player
+  speaker "Club Clerk"
+  train open
+  if result == 0 goto NotYet
+  say "Hello! I'm with the training club. Battle Points buy our very best goods here."
+  frontier prize training
+  if result == 0 goto Bye
+  frontier buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! A Bottle Cap goes to the Head Coach of any training hall, if that's what you chose."
+  end
+label NotYet
+  say "I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!"
+  end
+label Short
+  say "Oh dear, you don't have the Battle Points for that."
+  end
+label Bye
+  say "Come back whenever your points pile up!"
   end

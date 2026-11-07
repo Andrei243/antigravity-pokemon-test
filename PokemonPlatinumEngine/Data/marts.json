@@ -644,6 +644,33 @@
       "Potion",
       "Antidote",
       "Ice Heal"
+    ],
+    "training_hall": [
+      "Exp. Candy S",
+      "Exp. Candy M",
+      "Exp. Candy L",
+      "Ability Capsule",
+      "Lonely Mint",
+      "Adamant Mint",
+      "Naughty Mint",
+      "Brave Mint",
+      "Bold Mint",
+      "Impish Mint",
+      "Lax Mint",
+      "Relaxed Mint",
+      "Modest Mint",
+      "Mild Mint",
+      "Rash Mint",
+      "Quiet Mint",
+      "Calm Mint",
+      "Gentle Mint",
+      "Careful Mint",
+      "Sassy Mint",
+      "Timid Mint",
+      "Hasty Mint",
+      "Jolly Mint",
+      "Naive Mint",
+      "Serious Mint"
     ]
   }
 }

@@ -4692,6 +4692,7 @@
     "Blue Card": "Carte Bleue",
     "Jade Orb": "Orbe Vert",
     "Pokéblock Case": "Boîte Pokéblocs",
+    "Ride Pager": "Appel-Monture",
     "Liberty Pass": "Passe Liberté"
   },
   "types": {
@@ -7354,6 +7355,7 @@
       "Blue Card": "Garde une trace des points du Mot de Passe de Buena.",
       "Jade Orb": "Invoque Rayquaza à la Tour Enfouie.",
       "Pokéblock Case": "Porte les Pokéblocs.",
+      "Ride Pager": "Permet au joueur d'invoquer une Poké Monture.",
       "Liberty Pass": "Permet d'accéder à l'Île Liberté et Victini."
     }
   }
