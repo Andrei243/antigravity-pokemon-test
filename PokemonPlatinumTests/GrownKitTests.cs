@@ -82,16 +82,16 @@ public class GrownKitTests
             Assert.Equal(1f, sum, 3);
         }
 
-        // Feet on the ground, the crown at the frame's with the hair's cap over it (none on the bald), and inside the
-        // grown frame's limits (style guide, "Grown characters", "The frame's limits")
+        // Feet on the ground, the crown at the frame's with the hair, or a hat, over it, and inside the grown frame's
+        // limits (style guide, "Grown characters", "The frame's limits")
         Assert.InRange(min.Y, -0.01f, 0.01f);
-        Assert.InRange(max.Y, frame.Crown - 0.005f, frame.Crown + (rig.Style.Hair == HairCut.Bald ? 0.01f : 0.03f));
-        Assert.True(max.Y <= frame.Crown + 0.12f);
+        Assert.InRange(max.Y, frame.Crown - 0.005f, frame.Crown + 0.12f);
         Assert.InRange(max.X - min.X, 0.4f, 1.0f);
         Assert.InRange(frame.Crown / (2f * frame.HeadR), 4.8f, 7.7f);
 
-        // A mesh can index 65,535 vertices: the body leaves room for part b's locks of hair
-        Assert.InRange(mesh.VertexCount, 15000, 58000);
+        // A mesh can index 65,535 vertices: the body with its hair, its hat and what it holds, and the clothes apart
+        Assert.InRange(mesh.VertexCount, 15000, 60000);
+        if (rig.Clothes != null) Assert.InRange(rig.Clothes.VertexCount, 1000, 60000);
     }
 
     [Fact]
@@ -236,8 +236,8 @@ public class GrownKitTests
         var cheek = Enumerable.Range(0, mesh.VertexCount).Where(v => MathF.Abs(mesh.Positions[v].X - 0.35f * R) < 0.01f && MathF.Abs(mesh.Positions[v].Y - tip.Y) < 0.01f)
             .Select(v => mesh.Positions[v].Z).Max();
         Assert.True(tip.Z > cheek + 0.15f * R, $"the nose's tip at z {tip.Z:0.000}, the cheek beside it at {cheek:0.000}");
-        // No face is painted yet (part b's), so none is drawn
-        Assert.Null(rig.FacePatch);
+        // The painted face's patch covers the front of the head (part b)
+        Assert.NotNull(rig.FacePatch);
     }
 
     [Theory]
@@ -350,30 +350,39 @@ public class GrownKitTests
     }
 
     [Fact]
-    public void TheBaseLayerPaintsTheLooksColoursWhereTheyBelong()
+    public void TheLooksColoursAreWhereTheyBelongOnTheBodyAndItsClothes()
     {
-        // Until part b dresses them (style guide, "Grown characters"): the top on the body, the trousers on the legs, the
-        // shoes and their soles, bare hands, neck and face, the hair's cap
+        // Style guide, "Grown characters": the jacket and its sleeves on the clothes' layer, the body under it its lining,
+        // the trousers on the legs, the shoes and their soles, bare hands, neck and face
         var rig = Rig("PLAYER~Teen");
         var s = rig.Style;
         var f = CharacterModels.GrownFrameOf(BodyBuild.Teen);
         var mesh = rig.Mesh;
+        var clothes = rig.Clothes!;
         Color At(Vector3 p) => mesh.Colors[Nearest(mesh, p)];
-        Assert.True(Near(At(new Vector3(0, f.ChestMidY, 0.2f)), s.Top), "the chest is the top's");
-        Assert.True(Near(At(new Vector3(f.Elbow.X, f.Elbow.Y, 0.04f)), s.Top), "a sleeve runs past the elbow");
+        Color Worn(Vector3 p) => clothes.Colors[Nearest(clothes, p)];
+        Assert.True(Near(Worn(new Vector3(-0.03f, f.ChestMidY - 0.04f, 0.2f)), s.Top), "the jacket's front is the top's");
+        Assert.True(Near(Worn(new Vector3(f.Elbow.X, f.Elbow.Y, 0.04f)), s.Top), "a sleeve runs past the elbow");
+        Assert.True(Near(At(new Vector3(0, f.ChestMidY, 0.2f)), new Color((int)(s.Top.R * 0.62f), (int)(s.Top.G * 0.62f), (int)(s.Top.B * 0.62f), 255), 40),
+            "the body under the jacket is its lining");
         Assert.True(Near(At(new Vector3(f.LegTop.X, (f.LegTop.Y + f.Knee.Y) / 2f, 0.1f)), s.Bottom), "the thigh is the trousers'");
         Assert.True(Near(At(new Vector3(f.Knee.X, (f.Knee.Y + f.Ankle.Y) / 2f, 0.06f)), s.Bottom), "the shin is the trousers'");
         Assert.True(Near(At(f.Wrist + Vector3.Normalize(f.Wrist - f.Elbow) * (0.6f * f.HandLength)), s.Skin), "the hand is bare");
         Assert.True(Near(At(new Vector3(0, (f.NeckFootY + f.Chin) / 2f + 0.01f, 0.06f)), s.Skin), "the neck is bare");
         Assert.True(Near(At(new Vector3(f.Ankle.X, 0.04f, f.Ankle.Z + 0.7f * f.FootLength)), s.Shoes), "the toes are the shoe's");
         Assert.True(Near(At(new Vector3(f.Ankle.X, 0f, f.Ankle.Z + 0.3f * f.FootLength)), s.Sole!.Value), "the sole is the sole's");
-        Assert.True(Near(At(new Vector3(0, f.Crown + 0.02f, -0.02f)), s.HairColor), "the crown is the hair's");
+        var clerk = Rig("CLERK~Grown");
+        var c = CharacterModels.GrownFrameOf(BodyBuild.Grown);
+        Assert.True(Near(clerk.Mesh.Colors[Nearest(clerk.Mesh, new Vector3(0, c.Crown + 0.03f, -0.02f))], clerk.Style.HairColor), "the crown is the hair's");
 
-        // Short sleeves end on the upper arm, shorts at mid-thigh
+        // Short sleeves end on the upper arm, leaving the forearm the body's own, and shorts at mid-thigh
         var kid = Rig("YOUNGSTER~Child");
         var k = CharacterModels.GrownFrameOf(BodyBuild.Child);
         Color KidAt(Vector3 p) => kid.Mesh.Colors[Nearest(kid.Mesh, p)];
-        Assert.True(Near(KidAt(Vector3.Lerp(k.Elbow, k.Wrist, 0.5f) + new Vector3(0, 0, 0.03f)), kid.Style.Skin), "a short sleeve leaves the forearm bare");
+        var shortSleeve = kid.Clothes!;
+        var forearm = Vector3.Lerp(k.Elbow, k.Wrist, 0.5f) + new Vector3(0, 0, 0.03f);
+        Assert.True(shortSleeve.Positions.Min(p => Vector3.Distance(p, k.Elbow)) > 0.01f, "a short sleeve stops before the elbow");
+        Assert.True(Near(KidAt(forearm), kid.Style.Skin), "a short sleeve leaves the forearm bare");
         Assert.True(Near(KidAt(new Vector3(k.Knee.X, (k.Knee.Y + k.Ankle.Y) / 2f, 0.05f)), kid.Style.Skin), "shorts leave the shin bare");
         Assert.True(Near(KidAt(new Vector3(k.LegTop.X, k.LegTop.Y - 0.03f, 0.08f)), kid.Style.Bottom), "shorts cover the top of the thigh");
     }
@@ -459,4 +468,244 @@ public class GrownKitTests
         Assert.False(CharacterModels.GrownFrameOf(BodyBuild.Child, curved: true).Curved);
         Assert.Throws<ArgumentException>(() => CharacterModels.GrownFrameOf(BodyBuild.Kid));
     }
+
+    // ------------------------------------------------------------------ part b: hair, hats, clothes, held, faces
+
+    /// <summary>Every hair cut of the kit, on a look of the table that has it, asked in a grown build (the harness's <c>fw40_cuts</c>).</summary>
+    public static IEnumerable<object[]> Cuts => new[]
+    {
+        "CLERK~Grown", "RIVAL~Teen", "LASS~Teen", "ROWAN~Grown", "FLINT~Grown", "BERTHA~GrownElder", "CANDICE~Grown", "JASMINE~Grown", "GRUNT~Grown",
+        "ROXIE~Teen", "BURGH~Grown", "MARSHAL~GrownBroad"
+    }.Select(t => new object[] { t });
+
+    /// <summary>Every hat of the kit, on a look of the table that wears it, asked in a grown build (the harness's <c>fw40_hats</c>).</summary>
+    public static IEnumerable<object[]> Hats => new[]
+    {
+        "PLAYER~Teen", "YOUNGSTER~Child", "NURSE~Grown", "MIRA~Child", "CRASHER_WAKE~GrownBroad", "RILEY~Grown", "CYCLIST_M~Teen", "WORKER~Grown", "CAMPER~Teen",
+        "NINJA_BOY~Teen", "BLACKBELT~GrownBroad", "RANCHER~Grown", "JOGGER~Grown", "SOCIALITE~Grown"
+    }.Select(t => new object[] { t });
+
+    [Fact]
+    public void EveryCutAndEveryHatIsALookOfTheTable()
+    {
+        // The twins below cover the kit: a look of each cut and of each hat
+        Assert.Equal(Enum.GetValues<HairCut>().OrderBy(c => c), Cuts.Select(c => CharacterStyle.For((string)c[0]).Hair).OrderBy(c => c));
+        Assert.Equal(Enum.GetValues<Headwear>().Where(h => h != Headwear.None).OrderBy(h => h), Hats.Select(h => CharacterStyle.For((string)h[0]).Hat).OrderBy(h => h));
+        Assert.All(Cuts.Concat(Hats), t => Assert.Equal(CharacterKit.Grown, CharacterStyle.For((string)t[0]).Kit));
+    }
+
+    [Theory]
+    [MemberData(nameof(Cuts))]
+    public void EveryCutStaysInsideTheGrownFrame(string type)
+    {
+        // Style guide, "Grown characters", "The frame's limits": no wider than 1.0 and no taller than the crown and 0.12;
+        // the hair grows over the head (the bald's band behind it), never down over the face below the brows
+        var rig = Rig(type);
+        var f = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure());
+        var mesh = rig.Mesh;
+        var (min, max) = Bounds(mesh);
+        Assert.True(max.Y <= f.Crown + 0.12f, $"{type}: the hair reaches {max.Y - f.Crown:0.000} over the crown");
+        Assert.True(max.X - min.X <= 1.0f);
+        var hair = Enumerable.Range(0, mesh.VertexCount).Where(v => mesh.Materials[v] == (byte)SurfaceMaterial.Hair).ToList();
+        output.WriteLine($"{type}: {hair.Count} vertices of hair, {max.Y - f.Crown:0.000} over the crown");
+        Assert.True(hair.Count > (rig.Style.Hair == HairCut.Bald ? 150 : 2000), $"{type}: only {hair.Count} vertices of hair");
+        // Nothing of the hair hangs in front of the eyes: in front of the face, between the brows and the nose's tip,
+        // there is no hair (a moustache grows below, sculpted brows above)
+        float R = f.HeadR;
+        var over = hair.Where(v => mesh.Positions[v].Z > f.HeadC.Z + 0.6f * R && MathF.Abs(mesh.Positions[v].X) < 0.42f * R
+            && mesh.Positions[v].Y < f.HeadC.Y + 0.1f * R && mesh.Positions[v].Y > f.HeadC.Y - 0.3f * R).ToList();
+        Assert.True(over.Count == 0, $"{type}: {over.Count} vertices of hair over the eyes");
+    }
+
+    [Theory]
+    [MemberData(nameof(Hats))]
+    public void EveryHatShowsOverTheGrownHair(string type)
+    {
+        // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace; and a
+        // hat stays inside the grown frame. A grown head is small: the least of them (a nurse's cap, a visor's peak) show
+        // some 300 vertices, the nurse's cross a dozen
+        var rig = Rig(type);
+        var f = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure());
+        var mesh = rig.Mesh;
+        int Above(Color c) => Enumerable.Range(0, mesh.VertexCount).Count(v => mesh.Positions[v].Y > rig.Face.Anchor.Y && Near(mesh.Colors[v], c));
+        int hat = Above(rig.Style.HatColor), band = Above(rig.Style.HatBand);
+        output.WriteLine($"{type}: {hat} vertices in the hat's colour, {band} in its band's");
+        Assert.True(hat > 250, $"{type}: only {hat} vertices of the hat show");
+        Assert.True(band > 8, $"{type}: only {band} vertices of the hat's band or badge show");
+        Assert.True(Bounds(mesh).Max.Y <= f.Crown + 0.12f);
+    }
+
+    [Theory]
+    [InlineData("NURSE~Grown")]
+    [InlineData("RIVAL~Teen")]
+    [InlineData("ROWAN~Grown")]
+    [InlineData("LASS~Teen")]
+    public void GrownHairIsLitAsOneMass(string type)
+    {
+        // Style guide, "Light on hair": the normals change gently from vertex to vertex across the hair, so the shade's
+        // edge runs across the head instead of breaking up over every lock and groove
+        var mesh = Rig(type).Mesh;
+        var turns = new List<float>();
+        for (int i = 0; i < mesh.Indices.Length; i += 3)
+            for (int k = 0; k < 3; k++)
+            {
+                int a = mesh.Indices[i + k], b = mesh.Indices[i + (k + 1) % 3];
+                if (mesh.Materials[a] != (byte)SurfaceMaterial.Hair || mesh.Materials[b] != (byte)SurfaceMaterial.Hair) continue;
+                turns.Add(MathF.Acos(Math.Clamp(Vector3.Dot(mesh.Normals[a], mesh.Normals[b]), -1f, 1f)) * 180f / MathF.PI);
+            }
+        turns.Sort();
+        float p95 = turns[(int)(turns.Count * 0.95f)];
+        output.WriteLine($"{type}: {turns.Count} hair edges, 95 % turn less than {p95:F1}°");
+        Assert.True(turns.Count > 3000);
+        Assert.True(p95 < 12f, $"{type}: the hair's normals turn up to {p95:F1}° between neighbours");
+    }
+
+    [Fact]
+    public void TheClothesAreALayerOfTheirOwnWithTheirHemsWhereTheGuideSays()
+    {
+        // Style guide, "Grown characters", "Clothes"
+        static int Heaviest(SdfMesh mesh, int v)
+        {
+            int best = 0;
+            for (int k = 1; k < 4; k++)
+                if (mesh.BoneWeights[v * 4 + k] > mesh.BoneWeights[v * 4 + best]) best = k;
+            return mesh.BoneIndices[v * 4 + best];
+        }
+        // A swimsuit and a bare chest wear nothing over the body
+        Assert.Null(Rig("SWIMMER_F~Grown").Clothes);
+        Assert.Null(Rig("CRASHER_WAKE~GrownBroad").Clothes);
+
+        // A coat's tails on the coat's tail bone, down to just below the knee; its shell beside it
+        var rowan = Rig("ROWAN~Grown");
+        var f = CharacterModels.GrownFrameOf(BodyBuild.Grown);
+        var coat = rowan.Clothes!;
+        Assert.NotNull(rowan.ClothesShell);
+        Assert.InRange(coat.Positions.Min(p => p.Y), f.Knee.Y - 0.08f, f.Knee.Y - 0.02f);
+        var tail = Enumerable.Range(0, coat.VertexCount).Where(v => coat.Positions[v].Y < f.Knee.Y + 0.05f).ToList();
+        Assert.All(tail, v => Assert.Equal(HumanBones.CoatTail, Heaviest(coat, v)));
+        // The legs under it are in trousers
+        Assert.True(Near(rowan.Mesh.Colors[Nearest(rowan.Mesh, new Vector3(f.Knee.X, (f.Knee.Y + f.Ankle.Y) / 2f, 0.06f))], rowan.Style.Bottom));
+        // A robe's to the ankles
+        var robe = Rig("EXPERT_M~GrownElder");
+        Assert.True(robe.Clothes!.Positions.Min(p => p.Y) < CharacterModels.GrownFrameOf(BodyBuild.GrownElder).Ankle.Y + 0.08f);
+
+        // A skirt on the skirt's bone, its hem just above the knee, over bare legs
+        var lass = Rig("LASS~Teen");
+        var t = CharacterModels.GrownFrameOf(BodyBuild.Teen, curved: true);
+        var skirt = lass.Clothes!;
+        var low = Enumerable.Range(0, skirt.VertexCount).Where(v => skirt.Positions[v].Y < t.HipY - 0.05f).ToList();
+        Assert.NotEmpty(low);
+        Assert.All(low, v => Assert.Equal(HumanBones.Skirt, Heaviest(skirt, v)));
+        Assert.InRange(skirt.Positions.Min(p => p.Y), t.Knee.Y + 0.02f, t.Knee.Y + 0.09f);
+        Assert.True(Near(lass.Mesh.Colors[Nearest(lass.Mesh, new Vector3(t.Knee.X, t.Knee.Y, 0.05f))], lass.Style.Skin), "the knee under the skirt is bare");
+
+        // A jacket ends just below the hips; a bag on its own bone behind; a collar round the neck
+        var player = Rig("PLAYER~Teen");
+        var jacket = player.Clothes!;
+        var front = Enumerable.Range(0, jacket.VertexCount).Where(v => MathF.Abs(jacket.Positions[v].X) < 0.05f && jacket.Positions[v].Z > 0f).Select(v => jacket.Positions[v].Y).Min();
+        Assert.InRange(front, t.HipY - 0.06f, t.HipY);
+        var bag = Enumerable.Range(0, jacket.VertexCount).Where(v => jacket.Positions[v].Z < -t.ChestD - 0.04f && MathF.Abs(jacket.Positions[v].X) < 0.03f).ToList();
+        Assert.NotEmpty(bag);
+        Assert.Contains(bag, v => Heaviest(jacket, v) == HumanBones.Bag);
+    }
+
+    [Theory]
+    [InlineData("FISHERMAN~Grown", "Rod", HumanBones.HandR)]
+    [InlineData("BUG_CATCHER~Child", "Net", HumanBones.HandR)]
+    [InlineData("PARASOL_LADY~Grown", "Parasol", HumanBones.Chest)]
+    [InlineData("GUITARIST~Grown", "Guitar", HumanBones.Spine)]
+    [InlineData("TUBER_M~Child", "FloatRing", HumanBones.Hips)]
+    [InlineData("CAMERAMAN~Grown", "Camera", HumanBones.ClavicleR)]
+    [InlineData("RUIN_MANIAC~Grown", "Pickaxe", HumanBones.HandR)]
+    public void WhatIsHeldMovesWithItsBone(string type, string heldName, int bone)
+    {
+        // Style guide, "Grown characters", "What is held": part of the body on the bone it moves with; only a parasol's
+        // canopy stands over the frame
+        var held = Enum.Parse<HeldProp>(heldName);
+        var rig = Rig(type);
+        Assert.Equal(held, rig.Style.Holds);
+        // A mesh of its own, with its own outline (a parasol's canopy is more than the body's or the clothes' has room for)
+        var mesh = rig.Held!;
+        Assert.NotNull(rig.HeldShell);
+        Assert.True(mesh.VertexCount < ushort.MaxValue);
+        var colour = rig.Style.PropColor ?? held switch
+        {
+            HeldProp.Rod => new Color(84, 66, 54, 255), HeldProp.Net => new Color(238, 238, 228, 255), HeldProp.Parasol => rig.Style.Top,
+            HeldProp.Guitar => new Color(196, 120, 58, 255), HeldProp.FloatRing => new Color(240, 96, 80, 255), HeldProp.Camera => new Color(58, 60, 70, 255),
+            _ => new Color(150, 108, 66, 255)
+        };
+        var on = Enumerable.Range(0, mesh.VertexCount).Where(v => Near(mesh.Colors[v], colour, 12) && mesh.WeightOf(v, bone) > 0.9f).ToList();
+        output.WriteLine($"{type}: {on.Count} vertices of the {held} on bone {bone}");
+        Assert.True(on.Count > 150, $"{type}: only {on.Count} vertices of the {held} move with bone {bone}");
+        var f = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure());
+        if (held != HeldProp.Parasol) Assert.True(Bounds(mesh).Max.Y <= f.Crown + 0.12f);
+        float left = Math.Min(Bounds(mesh).Min.X, Bounds(rig.Mesh).Min.X), right = Math.Max(Bounds(mesh).Max.X, Bounds(rig.Mesh).Max.X);
+        Assert.True(right - left <= 1.05f, $"{type}: {right - left:0.000} wide with the {held}");
+    }
+
+    [Theory]
+    [MemberData(nameof(Builds))]
+    public void EveryPartOfAGrownRigFitsAMesh(string look, string build)
+    {
+        // A mesh indexes 65,535 vertices: the body, its outline, the clothes and theirs each stay under it
+        var rig = Rig($"{look}~{build}");
+        foreach (var (part, mesh) in new[] { ("body", rig.Mesh), ("outline", rig.Shell), ("clothes", rig.Clothes), ("clothes' outline", rig.ClothesShell), ("held", rig.Held),
+                     ("held's outline", rig.HeldShell), ("face", rig.FacePatch) })
+            if (mesh != null) Assert.True(mesh.VertexCount < ushort.MaxValue, $"{look} as {build}: the {part} is {mesh.VertexCount} vertices");
+    }
+
+    [Theory]
+    [InlineData("DAWN~Teen")]
+    [InlineData("CLERK~Grown")]
+    [InlineData("LUCIAN~Grown")]
+    [InlineData("BYRON~GrownBroad")]
+    public void TheGrownFaceIsPaintedOnItsPatch(string type)
+    {
+        // Style guide, "Grown characters", "Faces": 256 pixels, the eyes either side of the anchor with their whites and
+        // highlights, cut out between them, shut with no white left, and the mouth's opening when speaking
+        var rig = Rig(type);
+        Assert.NotNull(rig.FacePatch);
+        Assert.True(rig.FacePatch!.TriangleCount > 400, $"{type}: the face's patch has {rig.FacePatch.TriangleCount} triangles");
+        Assert.All(rig.FaceUVs!, uv => Assert.True(uv.X >= -0.01f && uv.X <= 1.01f && uv.Y >= -0.01f && uv.Y <= 1.01f));
+        Assert.All(Enumerable.Range(0, rig.FacePatch.VertexCount), v => Assert.Equal(1f, rig.FacePatch.WeightOf(v, HumanBones.Head)));
+
+        var open = CharacterFaces.Paint(rig.Style, rig.Face, Expression.Neutral, blink: false);
+        int n = GrownFaces.TextureSize;
+        Assert.Equal(n, open.Width);
+        float k = n / (2f * rig.Face.TextureHalfSize);
+        int ey = (int)(n * 0.5f - (rig.Face.Anchor.Y - rig.Face.TextureCenter.Y) * k);
+        if (rig.Style.Glasses == null) Assert.False(open.IsOpaque(n / 2, ey), "between the eyes the skin shows through");
+        foreach (float side in new[] { -1f, 1f })
+        {
+            int ex = (int)(n * 0.5f + side * rig.Face.EyeHalfSpacing * k);
+            Assert.True(open.IsOpaque(ex, ey));
+            Assert.Contains(Enumerable.Range(ex - 16, 32), x => Enumerable.Range(ey - 16, 32).Any(y => open.Get(x, y).Equals(Color.White)));
+        }
+        var shut = CharacterFaces.Paint(rig.Style, rig.Face, Expression.Neutral, blink: true);
+        Assert.DoesNotContain(Enumerable.Range(0, n * n), i => shut.Get(i % n, i / n).Equals(Color.White));
+        // Every face of the five, open and shut, and speaking, differs from the neutral one
+        foreach (var expression in Enum.GetValues<Expression>().Where(e => e != Expression.Neutral))
+            Assert.True(Differs(CharacterFaces.Paint(rig.Style, rig.Face, expression, blink: false), open) > 40, $"{type}: {expression} looks neutral");
+        Assert.True(Differs(CharacterFaces.Paint(rig.Style, rig.Face, Expression.Neutral, blink: false, mouthOpen: true), open) > 40);
+        // Glasses are a rim round each eye, there with the eyes shut too
+        if (rig.Style.Glasses != null)
+        {
+            var bare = rig.Style.Clone();
+            bare.Glasses = null;
+            foreach (bool blink in new[] { false, true })
+                Assert.True(Opaque(CharacterFaces.Paint(rig.Style, rig.Face, Expression.Neutral, blink)) > Opaque(CharacterFaces.Paint(bare, rig.Face, Expression.Neutral, blink)) + 300);
+        }
+        // A look whose brows are sculpted has none painted
+        if (rig.Style.BushyBrows)
+        {
+            var brows = rig.Style.Clone();
+            brows.BushyBrows = false;
+            Assert.True(Opaque(CharacterFaces.Paint(brows, rig.Face, Expression.Neutral, false)) > Opaque(open) + 100);
+        }
+    }
+
+    private static int Opaque(PixelCanvas c) => Enumerable.Range(0, c.Width * c.Height).Count(i => c.IsOpaque(i % c.Width, i / c.Width));
+
+    private static int Differs(PixelCanvas a, PixelCanvas b) =>
+        Enumerable.Range(0, a.Width * a.Height).Count(i => !a.Get(i % a.Width, i / a.Width).Equals(b.Get(i % b.Width, i / b.Width)));
 }

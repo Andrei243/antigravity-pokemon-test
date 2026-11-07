@@ -98,11 +98,20 @@ internal sealed class CharacterRig
     public SdfMesh? Clothes;
     public SdfMesh? ClothesShell;
 
+    /// <summary>
+    /// What a look of the grown kit holds (plan 30 · FM4, part b), meshed apart from the body and the clothes, with its own
+    /// outline shell: a parasol's canopy is more than either mesh has room for. Null for the chibi kit, whose body holds it.
+    /// </summary>
+    public SdfMesh? Held;
+    public SdfMesh? HeldShell;
+
     // On the GPU (see CharacterModels.Upload)
     public SkinnedModel? Body;
     public SkinnedModel? Outline;
     public SkinnedModel? ClothesBody;
     public SkinnedModel? ClothesOutline;
+    public SkinnedModel? HeldBody;
+    public SkinnedModel? HeldOutline;
     public SkinnedModel? FaceModel;
     public Material[] FaceMaterials = Array.Empty<Material>();
     public bool Uploaded;
@@ -212,13 +221,15 @@ internal static partial class CharacterModels
         rig.Outline?.Unload();
         rig.ClothesBody?.Unload();
         rig.ClothesOutline?.Unload();
+        rig.HeldBody?.Unload();
+        rig.HeldOutline?.Unload();
         rig.FaceModel?.Unload();
         foreach (var material in rig.FaceMaterials.Concat(rig.OpenFaceMaterials.Where(m => m != null).Select(m => m!.Value)))
         {
             Gpu.Unload(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(material.Maps);
         }
-        rig.Body = rig.Outline = rig.ClothesBody = rig.ClothesOutline = rig.FaceModel = null;
+        rig.Body = rig.Outline = rig.ClothesBody = rig.ClothesOutline = rig.HeldBody = rig.HeldOutline = rig.FaceModel = null;
         rig.FaceMaterials = Array.Empty<Material>();
         rig.OpenFaceMaterials = Array.Empty<Material?>();
         rig.Uploaded = false;
@@ -289,6 +300,8 @@ internal static partial class CharacterModels
         rig.Outline = SkinnedModel.Upload(rig.Shell, rig.Skeleton.Count);
         if (rig.Clothes is { VertexCount: > 0 } clothes) rig.ClothesBody = SkinnedModel.Upload(clothes, rig.Skeleton.Count);
         if (rig.ClothesShell is { VertexCount: > 0 } shell) rig.ClothesOutline = SkinnedModel.Upload(shell, rig.Skeleton.Count);
+        if (rig.Held is { VertexCount: > 0 } held) rig.HeldBody = SkinnedModel.Upload(held, rig.Skeleton.Count);
+        if (rig.HeldShell is { VertexCount: > 0 } heldShell) rig.HeldOutline = SkinnedModel.Upload(heldShell, rig.Skeleton.Count);
         if (rig.FacePatch != null && rig.FaceUVs != null && rig.FacePatch.VertexCount > 0)
         {
             rig.FaceModel = SkinnedModel.Upload(rig.FacePatch, rig.Skeleton.Count, rig.FaceUVs, _ => Color.White);
