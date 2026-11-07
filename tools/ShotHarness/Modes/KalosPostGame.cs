@@ -106,8 +106,13 @@ partial class Harness
         // ... and what the story's own scenes left on the way there that the post-game's people meet: Lysandre gone from
         // his laboratory, where Xerosic stands later, and its two grunts beaten (LumioseCity_LysandreLabs.txt)
         story.Set("FLAG_KALOS_HIDE_LYSANDRE_LABS");
-        story.Defeat("kalos_flare_grunt_labs_1");
-        story.Defeat("kalos_flare_grunt_labs_2");
+        // (as the script's `defeat` does: the story and the trainers of the map, whose eyes then see nobody)
+        foreach (var npc in MapDatabase.Get("LumioseCity_LysandreLabs").Everyone)
+            if (npc.TrainerData?.Id is "kalos_flare_grunt_labs_1" or "kalos_flare_grunt_labs_2")
+            {
+                story.Defeat(npc.TrainerData.Id);
+                npc.HasBattled = true;
+            }
         Frames(2);
         Left("brought to the Hall of Fame");
 
