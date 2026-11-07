@@ -9,6 +9,9 @@ partial class Harness
     /// City, Tapu Village and Po Town after dark (<c>wu50</c> to <c>wu52</c>). The story is played headless by
     /// <c>AlolaUlaulaTests</c>; this mode only looks.
     /// </summary>
+    // The chunks of a streamed map bake on a worker thread: wait for them, a few seconds at most
+    void Settle() { for (int i = 0; i < 24; i++) { Frames(3); System.Threading.Thread.Sleep(120); } }
+
     public void UlaulaMode()
     {
         engine.NewGameRegion = "Alola";
@@ -38,13 +41,13 @@ partial class Harness
         };
         foreach (var (name, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(name);
+            At(map, x, y, facing); Settle(); game.LocationSign.Hide(); Shot(name);
         }
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);
         foreach (var (name, map, x, y, facing) in places.Where(p => p.Name.StartsWith("wu01", StringComparison.Ordinal) || p.Name.StartsWith("wu05", StringComparison.Ordinal) || p.Name.StartsWith("wu09", StringComparison.Ordinal)))
         {
-            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(name.Replace("wu0", "wu5", StringComparison.Ordinal) + "_night");
+            At(map, x, y, facing); Settle(); game.LocationSign.Hide(); Shot(name.Replace("wu0", "wu5", StringComparison.Ordinal) + "_night");
         }
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
