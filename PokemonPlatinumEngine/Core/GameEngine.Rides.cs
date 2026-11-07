@@ -1,0 +1,70 @@
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Overworld;
+
+namespace PokemonPlatinumEngine.Core;
+
+/// <summary>
+/// Alola's Ride Pager on land (plan 23, wave 91; rulings, "Alola's loose ends"): the key item opens
+/// <c>common.RidePager</c>, whose <c>ride</c> puts the player on a registered Pokémon's back (<see cref="TravelMode.Riding"/>)
+/// or takes them off it; the ride ends at a door indoors and anywhere the region offers none; Tauros, run into a cracked
+/// rock, breaks it (<c>common.TaurosCharge</c>, the Rock Smash the pager grants).
+/// </summary>
+public partial class GameEngine
+{
+    /// <summary>The script the Ride Pager opens from the bag or the item button.</summary>
+    public const string RidePagerScript = "common.RidePager";
+
+    /// <summary>The script a charging Tauros runs on the cracked rock it runs into.</summary>
+    public const string TaurosChargeScript = "common.TaurosCharge";
+
+    /// <summary>
+    /// Gets on a ride (<paramref name="species"/>) or off one (null), the script's <c>ride</c>: refused where the place
+    /// offers no riding, the ride isn't registered, indoors, or the player is on the water, on the Bicycle or mid-step.
+    /// </summary>
+    internal bool RideOn(string? species)
+    {
+        if (species == null)
+        {
+            if (!flow.Player.SetRiding(null)) return false;
+            PlayFieldMusic();
+            return true;
+        }
+        if (!MovementHere.Offers(RegionMode.Ride) || !RidePager.CanRide(species, flow.Story, Here) || flow.Map.IsIndoors) return false;
+        if (!flow.Player.SetRiding(RidePager.LandRideOf(species)!.Value.Species)) return false;
+        PlayFieldMusic();
+        return true;
+    }
+
+    /// <summary>
+    /// A ride ends where riding may not go (plan 23, wave 91): through a door indoors, into a region or place that offers
+    /// none. Run as a place changes, as the Bicycle is put away where it isn't allowed.
+    /// </summary>
+    private void DismountWhereNoRiding()
+    {
+        if (flow.Player.Mode == TravelMode.Riding && (flow.Map.IsIndoors || !MovementHere.Offers(RegionMode.Ride)))
+            flow.Player.SetRiding(null);
+    }
+
+    /// <summary>
+    /// What a ride ran into this frame: a charging ride breaks a cracked rock (<see cref="RidePager.Charges"/>), by the same
+    /// Rock Smash the pager grants. True where a script began.
+    /// </summary>
+    private bool ChargeThroughRock()
+    {
+        if (flow.Player.TakeRanInto() is not { } tile || flow.Player.Mode != TravelMode.Riding || !RidePager.Charges(flow.Player.Steed)) return false;
+        if (flow.Map.GetNpcAt(tile.X, tile.Y) is not { Obstacle: PropType.CrackedRock } rock) return false;
+        return StartScript(TaurosChargeScript, rock);
+    }
+
+    /// <summary>A save with a ride registered and no pager in the bag is owed the pager as it loads (no story version).</summary>
+    private void OweTheRidePager()
+    {
+        if (ItemDatabase.Get(RidePager.Item) is not { } item || flow.Bag.GetQuantity(item) > 0) return;
+        foreach (var (_, flag) in RidePager.LandRides)
+            if (flow.Story.Has(flag))
+            {
+                flow.Bag.AddItem(item, 1);
+                return;
+            }
+    }
+}

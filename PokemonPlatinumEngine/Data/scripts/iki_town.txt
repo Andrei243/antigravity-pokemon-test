@@ -177,6 +177,7 @@ script GrandTrial
   text "{player}'s Trainer card received Melemele's stamp!"
   give "Fightinium Z"
   say "And take this, too. With it, the Tauros of the island will come when you call."
+  give "Ride Pager"
   setflag FLAG_ALOLA_RIDE_TAUROS
   text "{player} registered Tauros in the Ride Pager! Tauros can charge through cracked rocks."
   give "TM54"

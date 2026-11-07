@@ -17,8 +17,8 @@
   "hasStory": true,
   // How the player moves here (plan 30 · FM1): eight ways on the grid, as Kalos does, until plan 30's gate lets the
   // later regions move freely (stage 2, FM7 to FM9). The body kit stays chibi until plan 30 · FM3 and FM4 build the
-  // grown one
-  "movement": { "directions": "Eight", "speed": "Paces" },
+  // grown one. Its own mode is the Ride Pager's rides on land (plan 23, wave 91: TravelMode.Riding)
+  "movement": { "directions": "Eight", "speed": "Paces", "modes": [ "Ride" ] },
   // The rival is the kahuna's grandson, who has the same name in every game
   "rival": "Hau",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },

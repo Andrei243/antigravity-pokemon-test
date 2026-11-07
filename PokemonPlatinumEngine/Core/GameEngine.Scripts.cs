@@ -270,6 +270,8 @@ public partial class GameEngine
         flow.AshBrushed.Clear();
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.BikeAllowedAt(flow.Player.GridX, flow.Player.GridY)) flow.Player.SetCycling(false);
+        // ...and a ride of the Ride Pager is left outside a door and where riding is not offered (plan 23, wave 91)
+        DismountWhereNoRiding();
         flow.Fishing = null;
         // A flute's tune lasts only while the player stays where it was played (field_map_change_flags.c)
         flow.EncounterAids.ChangePlace();
@@ -529,6 +531,12 @@ public partial class GameEngine
         if (item.FieldUse == "PokeRadar")
         {
             UsePokeRadar();
+            return;
+        }
+        // The Ride Pager calls a ride on land or sends it home (plan 23, wave 91)
+        if (item.FieldUse == "RidePager")
+        {
+            StartScript(RidePagerScript);
             return;
         }
         // The DexNav is switched on or off (plan 10 · F12)
@@ -1735,5 +1743,9 @@ public partial class GameEngine
             if (Cycling == on) return;
             if (game.flow.Player.SetCycling(on)) game.PlayFieldMusic();
         }
+
+        public string? Riding => game.flow.Player.Mode == TravelMode.Riding ? game.flow.Player.Steed : null;
+
+        public bool RidePokemon(string? species) => game.RideOn(species);
     }
 }

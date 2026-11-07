@@ -791,6 +791,7 @@ public partial class GameEngine
         ResetTheSkip();
         OweTheFashionCase();
         OweTheDexNav();
+        OweTheRidePager();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -1790,6 +1791,8 @@ public partial class GameEngine
         KeepThePyramidsLight(fieldDt);
         KeepPuzzleInForce(fieldDt);
         ShatterSnowball();
+        // A charging Tauros breaks the cracked rock it ran into (plan 23, wave 91)
+        ChargeThroughRock();
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
@@ -1982,6 +1985,8 @@ public partial class GameEngine
         else flow.Player.Update(dt, flow.Map, MeetInTheField, HandleWarp, OnStep);
         // A snowball the slide broke bursts as it happens (plan 01 · M9, part 2b)
         ShatterSnowball();
+        // A charging Tauros breaks the cracked rock it ran into (plan 23, wave 91)
+        ChargeThroughRock();
 
         TrailBehind();
 
@@ -2139,9 +2144,9 @@ public partial class GameEngine
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
         // The cell of the region's map stood in is written down as it changes (OverworldMapHistory_Push, plan 01 · M12)
-        if (RegionMap.ForMap(flow.Map.Name) is { } region && region.Map == flow.Map.Name)
+        if (RegionMap.ForMap(flow.Map.Name) is { } region && region.IsOverworld(flow.Map.Name))
         {
-            var (cellX, cellY) = RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
+            var (cellX, cellY) = region.CellOn(flow.Map.Name, flow.Player.GridX, flow.Player.GridY);
             flow.MapTrail.Push(cellX, cellY, flow.Player.Facing);
         }
         // The Vs. Seeker charges in the bag, and the rematches it found end after a hundred steps (plan 06 · R12)

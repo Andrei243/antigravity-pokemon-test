@@ -24,8 +24,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a Pokémon's cry | 251 |
 | a question's answers | 805 |
 | a sign | 1734 |
-| the game's own voice (speaker none) | 285 |
-| the game's own voice (text) | 1788 |
+| the game's own voice (speaker none) | 286 |
+| the game's own voice (text) | 1791 |
 
 ## The cast
 

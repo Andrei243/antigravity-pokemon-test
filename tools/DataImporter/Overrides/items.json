@@ -725,6 +725,21 @@
     "cantBeTossed": true,
     "fieldUse": "DexNav"
   },
+  // The Ride Pager (plan 23, wave 91; Sun and Moon's, our words): Hala hands it over with Tauros, and USE calls one of the
+  // rides registered in it to carry the player on land (common.RidePager), or sends it home; id 9540, after the DexNav
+  "Ride Pager": {
+    "new": true,
+    "id": 9540,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A pager that calls the Pokémon registered in it to carry you over land, or sends one home.",
+    "cantBeTossed": true,
+    "fieldUse": "RidePager"
+  },
   // The crafting kit (plan 39 · CR1, our own after the mechanics of Scarlet and Violet's crafting, Legends: Arceus's pouch
   // and X and Y's berry crossing; the name, the words and the workshop are ours): given by the craftswoman of Sunyshore City's
   // workshop to a Champion of Sinnoh, looked into with USE or the item button. It holds the pouch of materials; id 9900, the

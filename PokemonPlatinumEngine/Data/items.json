@@ -14513,6 +14513,19 @@
     "fieldUse": "DexNav"
   },
   {
+    "id": 9540,
+    "name": "Ride Pager",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A pager that calls the Pokémon registered in it to carry you over land, or sends one home.",
+    "cantBeTossed": true,
+    "fieldUse": "RidePager"
+  },
+  {
     "id": 9571,
     "name": "Liberty Pass",
     "pocket": "KeyItems",

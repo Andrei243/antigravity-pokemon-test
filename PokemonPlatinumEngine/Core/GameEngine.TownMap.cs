@@ -30,8 +30,8 @@ public partial class GameEngine
     /// </summary>
     private (int X, int Y)? RegionCellNow(RegionMap region)
     {
-        if (flow.Map.Name == region.Map) return RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
-        if (flow.ExitSpot is { } exit && exit.Map == region.Map) return RegionMap.CellOf(exit.X, exit.Y);
+        if (region.IsOverworld(flow.Map.Name)) return region.CellOn(flow.Map.Name, flow.Player.GridX, flow.Player.GridY);
+        if (flow.ExitSpot is { } exit && region.IsOverworld(exit.Map)) return region.CellOn(exit.Map, exit.X, exit.Y);
         if (regionPlaces == null || regionPlacesOf != region.Region)
         {
             regionPlaces = region.PlacesOf(MapDatabase.MapNames.Select(MapDatabase.Get));
@@ -143,8 +143,8 @@ public partial class GameEngine
     /// </summary>
     private void NoteTheTrailOnArrival()
     {
-        if (RegionMapNow is not { } region || region.Map != flow.Map.Name) return;
-        var (x, y) = RegionMap.CellOf(flow.Player.GridX, flow.Player.GridY);
+        if (RegionMapNow is not { } region || !region.IsOverworld(flow.Map.Name)) return;
+        var (x, y) = region.CellOn(flow.Map.Name, flow.Player.GridX, flow.Player.GridY);
         flow.MapTrail.PushViaWarp(x, y);
     }
 

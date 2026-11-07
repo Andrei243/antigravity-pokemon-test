@@ -452,7 +452,13 @@ public class Player
     }
 
     /// <summary>Puts the player on foot, on the water or on the Bicycle outright: a loaded save, a test, the harness.</summary>
-    public void SetMode(TravelMode mode) => Mode = mode;
+    public void SetMode(TravelMode mode)
+    {
+        // (a ride is got on only by SetRiding, which says whose back it is: a save made riding wakes on foot)
+        if (mode == TravelMode.Riding && Steed == null) mode = TravelMode.OnFoot;
+        if (mode != TravelMode.Riding) Steed = null;
+        Mode = mode;
+    }
 
     /// <summary>
     /// Whoever comes down through a hole onto water rides out on it there (plan 19 · K6, part b: FireRed's
@@ -971,6 +977,12 @@ public class Player
                 return;
             }
         }
+        // A ride runs into what stands in its way; the engine asks whether it charges through (plan 23, wave 91)
+        if (step.Obstacle == Obstacle.Person && Mode == TravelMode.Riding)
+        {
+            var (dx, dy) = FieldMovement.Delta(dir);
+            ranInto = (GridX + dx, GridY + dy);
+        }
         Bump();
     }
 
@@ -1293,8 +1305,42 @@ public class Player
     {
         if (IsMoving || Mode is TravelMode.Surfing or TravelMode.Diving) return false;
         Mode = cycling ? TravelMode.Cycling : TravelMode.OnFoot;
+        Steed = null;
         return true;
     }
+
+    /// <summary>
+    /// The Ride Pager's Pokémon the player sits on while <see cref="TravelMode.Riding"/> (plan 23, wave 91), by its
+    /// species; null otherwise. Drawn under the player on its own field sprite, as a surfer's <see cref="Carrier"/> is.
+    /// </summary>
+    public string? Steed { get; private set; }
+
+    /// <summary>
+    /// Gets on a ride on land (<paramref name="species"/>) or off it (null). False while on the water, on the Bicycle or
+    /// in the middle of a step; whoever asks has checked that the ride is the pager's and the place allows it.
+    /// </summary>
+    public bool SetRiding(string? species)
+    {
+        if (IsMoving || Mode is TravelMode.Surfing or TravelMode.Diving or TravelMode.Cycling) return false;
+        if (species == null && Mode != TravelMode.Riding) return false;
+        Mode = species == null ? TravelMode.OnFoot : TravelMode.Riding;
+        Steed = species;
+        IsRunning = false;
+        return true;
+    }
+
+    /// <summary>
+    /// The tile a ride ran into and was stopped by something standing there (plan 23, wave 91: Tauros's charge into a
+    /// cracked rock), once; null when nothing was run into since it was last taken.
+    /// </summary>
+    public (int X, int Y)? TakeRanInto()
+    {
+        var tile = ranInto;
+        ranInto = null;
+        return tile;
+    }
+
+    private (int X, int Y)? ranInto;
 
     /// <summary>
     /// Collisions on a bicycle, counted for good (plan 21 · H12, part k: the Seaside Cycling Road's run counts those since

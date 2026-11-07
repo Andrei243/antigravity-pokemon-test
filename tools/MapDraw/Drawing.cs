@@ -52,7 +52,8 @@ public sealed class AreaRect
 public readonly record struct Ink(char Cover, bool Solid, TileBehavior Behaviour);
 
 /// <summary>The world files a layout makes (<see cref="Drawing.Build"/>).</summary>
-public sealed record DrawnWorld(WorldMatrixFile Matrix, IReadOnlyList<WorldChunkFile> Chunks, IReadOnlyList<WorldMatrixFile>? Maps = null, IReadOnlyDictionary<string, string>? Cells = null);
+public sealed record DrawnWorld(WorldMatrixFile Matrix, IReadOnlyList<WorldChunkFile> Chunks, IReadOnlyList<WorldMatrixFile>? Maps = null, IReadOnlyDictionary<string, string>? Cells = null,
+    IReadOnlyDictionary<int, (int X, int Y)>? Islands = null);
 
 public static class Drawing
 {
@@ -130,7 +131,13 @@ public static class Drawing
             chunks.AddRange(mc);
             extra.Add(mx);
         }
-        return new DrawnWorld(matrix, chunks, extra, layout.Maps.Where(m => m.Cell.Length > 0).ToDictionary(m => m.Area, m => m.Cell));
+        var islands = new Dictionary<int, (int X, int Y)>();
+        foreach (var m in layout.Maps.Where(m => m.Island.Length > 0))
+        {
+            var parts = m.Island.Split(',');
+            islands[m.Matrix] = (int.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture), int.Parse(parts[1], System.Globalization.CultureInfo.InvariantCulture));
+        }
+        return new DrawnWorld(matrix, chunks, extra, layout.Maps.Where(m => m.Cell.Length > 0).ToDictionary(m => m.Area, m => m.Cell), islands);
     }
 
     private static (WorldMatrixFile Matrix, List<WorldChunkFile> Chunks) BuildMatrix(int matrixId, int layoutWidth, int layoutHeight, IReadOnlyList<(Piece Piece, string[] Rows)> drawings,
@@ -220,29 +227,39 @@ public static class Drawing
     /// </summary>
     public static WorldHabitatsFile Habitats(DrawnWorld world, IEnumerable<WorldAreaFile> areas)
     {
+        // The overworld at 0,0 and each island at its own cell (plan 23, wave 91: Alola's islands on one grid)
+        var grids = new List<(WorldMatrixFile Matrix, int X, int Y)> { (world.Matrix, 0, 0) };
+        if (world.Islands != null && world.Maps != null)
+            foreach (var m in world.Maps)
+                if (world.Islands.TryGetValue(m.Id, out var at)) grids.Add((m, at.X, at.Y));
+        int gridWidth = grids.Max(g => g.X + g.Matrix.Width), gridHeight = grids.Max(g => g.Y + g.Matrix.Height);
+        var looks = new char[gridHeight, gridWidth];
+        for (int y = 0; y < gridHeight; y++)
+            for (int x = 0; x < gridWidth; x++) looks[y, x] = ' ';
+        foreach (var (matrix, ox, oy) in grids)
+            for (int y = 0; y < matrix.Height; y++)
+                for (int x = 0; x < matrix.Width; x++)
+                {
+                    int id = matrix.ChunkAt(x, y);
+                    if (id == WorldMatrixFile.NoChunk) continue;
+                    if (looks[oy + y, ox + x] != ' ') throw new InvalidDataException($"Two islands have a chunk at {ox + x},{oy + y} of the habitats' grid.");
+                    var chunk = world.Chunks[id];
+                    int water = chunk.Cover.Sum(r => r.Count(c => c == '~'));
+                    int town = chunk.Cover.Sum(r => r.Count(c => c is '=' or '?' or 'B'));
+                    looks[oy + y, ox + x] = water * 2 > T * T ? '~' : town * 8 > T * T ? 'T' : '.';
+                }
         var map = new List<string>();
-        for (int y = 0; y < world.Matrix.Height; y++)
-        {
-            var row = new StringBuilder();
-            for (int x = 0; x < world.Matrix.Width; x++)
-            {
-                int id = world.Matrix.ChunkAt(x, y);
-                if (id == WorldMatrixFile.NoChunk) { row.Append(' '); continue; }
-                var chunk = world.Chunks[id];
-                int water = chunk.Cover.Sum(r => r.Count(c => c == '~'));
-                int town = chunk.Cover.Sum(r => r.Count(c => c is '=' or '?' or 'B'));
-                row.Append(water * 2 > T * T ? '~' : town * 8 > T * T ? 'T' : '.');
-            }
-            map.Add(row.ToString());
-        }
+        for (int y = 0; y < gridHeight; y++)
+            map.Add(new string(Enumerable.Range(0, gridWidth).Select(x => looks[y, x]).ToArray()));
         var habitats = new WorldHabitatsFile { Map = map };
         foreach (var area in areas.OrderBy(a => a.Key, StringComparer.Ordinal))
         {
             if (area.Land == null && area.Water == null) continue;
             var cells = new List<string>();
-            for (int y = 0; y < world.Matrix.Height; y++)
-                for (int x = 0; x < world.Matrix.Width; x++)
-                    if (world.Matrix.AreaAt(x, y) == area.Key) cells.Add($"{x},{y}");
+            foreach (var (matrix, ox, oy) in grids)
+                for (int y = 0; y < matrix.Height; y++)
+                    for (int x = 0; x < matrix.Width; x++)
+                        if (matrix.AreaAt(x, y) == area.Key) cells.Add($"{ox + x},{oy + y}");
             if (cells.Count == 0 && world.Cells != null && world.Cells.TryGetValue(area.Key, out var mouth)) cells.Add(mouth);
             var land = area.Land?.Select(e => e.Species).Distinct().ToList();
             habitats.Areas.Add(new HabitatArea
@@ -274,6 +291,13 @@ public sealed class MapDrawing
 
     /// <summary>The cell of the overworld its mouth lies in, <c>"x,y"</c>: where the Pokédex's area page shows the cave's Pokémon.</summary>
     public string Cell { get; set; } = "";
+
+    /// <summary>
+    /// For an island beside the overworld (plan 23, wave 91: Alola's Akala, Ula'ula and Poni), the cell of the region's map
+    /// its north-west chunk is shown at, <c>"x,y"</c>, as the Town Map's <c>islands</c> lays it: its chunks and areas are on
+    /// the habitats' grid there, which grows to hold them.
+    /// </summary>
+    public string Island { get; set; } = "";
 
     public List<Piece> Pieces { get; set; } = new();
 

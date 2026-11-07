@@ -1594,8 +1594,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola" },
     "found": "GĂSIȚI",
     "order": "ORDINE",
     "seen": "VĂZUȚI",
@@ -1668,11 +1668,13 @@
         "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon.",
         "kaloscentral": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Central: grădinile, pădurile și străzile din Lumiose, toate înregistrate.",
         "kaloscoastal": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Costier, de la bălțile de maree până în larg.",
-        "kalosmountain": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Munte, de la zăpezile înalte până la piatra veche."
+        "kalosmountain": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Munte, de la zăpezile înalte până la piatra veche.",
+        "originalalola": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Alola, pe toate cele patru insule, de la plaje până la culmi."
       },
       "kaloscentral": "POKÉDEX KALOS CENTRAL",
       "kaloscoastal": "POKÉDEX KALOS COSTIER",
-      "kalosmountain": "POKÉDEX KALOS MUNTE"
+      "kalosmountain": "POKÉDEX KALOS MUNTE",
+      "originalalola": "POKÉDEX ALOLA"
     },
     "here": {
       "title": "TRĂIEȘTE AICI",

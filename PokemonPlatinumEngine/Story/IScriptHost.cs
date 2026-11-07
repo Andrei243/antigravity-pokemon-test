@@ -810,6 +810,20 @@ public interface IScriptHost
     void Ride(bool on) { }
 
     /// <summary>
+    /// The Ride Pager's Pokémon the player rides on land (plan 23, wave 91: Alola's Tauros, Stoutland, Mudsdale), by its
+    /// species; null on foot, on the Bicycle or on the water. The built-in variable <c>RIDING</c> is 1 while it is set.
+    /// </summary>
+    string? Riding => null;
+
+    /// <summary>
+    /// Gets on a Ride Pager's Pokémon (<c>ride "Tauros"</c>) or off it (<c>ride off</c>, null). True where it happened: a
+    /// ride is refused where the region offers none (<see cref="Data.RegionMode.Ride"/>), where the Pokémon isn't
+    /// registered (<see cref="Overworld.RidePager.CanRide"/>), indoors, on the water or in the middle of a step. A host
+    /// with no field refuses.
+    /// </summary>
+    bool RidePokemon(string? species) => false;
+
+    /// <summary>
     /// The Battle Arcade challenge under way (plan 06 · R18d); null while none is. <see cref="FrontierAct"/> takes one
     /// more word for it: <c>arcadeboard</c> opens the game board the challenge has brought up
     /// (<see cref="Models.Frontier.BattleArcadeChallenge.Board"/>) and plays it until its cursor is stopped (the script

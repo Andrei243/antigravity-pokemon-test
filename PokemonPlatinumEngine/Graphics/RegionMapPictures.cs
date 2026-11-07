@@ -49,7 +49,10 @@ public static class RegionMapPictures
         if (entry.Loaded && entry.Painted == entry.Wanted) return (entry.Full, entry.Small);
         if (!MapDatabase.MapNames.Contains(region.Map) || Habitats.For(region.Region) is not { } habitats) return null;
 
-        var canvas = RegionMapArt.Paint(MapDatabase.Get(region.Map), region, (x, y) => habitats.LookAt(x, y) != ' ', entry.Revealed);
+        // (every overworld map the grid lies over, each at its own cell: Alola's four islands, plan 23, wave 91)
+        var worlds = region.Overworlds.Where(o => MapDatabase.MapNames.Contains(o.Key))
+            .Select(o => (MapDatabase.Get(o.Key), o.Value.X, o.Value.Y)).ToList();
+        var canvas = RegionMapArt.Paint(worlds, region, (x, y) => habitats.LookAt(x, y) != ' ', entry.Revealed);
         if (entry.Loaded)
         {
             Gpu.Unload(entry.Full);

@@ -20,10 +20,38 @@ public sealed record Ride(string Species, FieldMove Move, string Flag, string Re
 /// island challenge hands the rides over in place of HMs. The ride's species is who is seen doing the move
 /// (<see cref="FieldHelp.HelperFor(FieldMove, StoryState?, string?)"/>). Stoutland's Search and Mudsdale's Gallop are no
 /// field move of the grid's and are not listed: Stoutland is a story flag alone (FLAG_ALOLA_RIDE_STOUTLAND), Mudsdale is one too
-/// (plan 23 · Z7: MudsdaleFlag, lent by Tapu Village's rancher). The rider drawn on its Pokémon is not built (plan 23's Alola section, "The engine for Alola").
+/// (plan 23 · Z7: MudsdaleFlag, lent by Tapu Village's rancher). Since wave 91 the three that carry the player on land
+/// (<see cref="LandRides"/>) are ridden: the key item (<see cref="Item"/>) opens <c>common.RidePager</c>, whose
+/// <c>ride "Tauros"</c> puts the player on its back (<see cref="TravelMode.Riding"/>, drawn sitting on its field sprite as a
+/// surfer is) at a run's pace, and a charging Tauros breaks a cracked rock it runs into (<see cref="Charges"/>).
 /// </summary>
 public static class RidePager
 {
+    /// <summary>The key item that calls a ride (wave 91), handed over with Tauros by Hala's grand trial.</summary>
+    public const string Item = "Ride Pager";
+
+    /// <summary>The rides that carry the player on land, by species, and the flag each is registered by.</summary>
+    public static readonly IReadOnlyList<(string Species, string Flag)> LandRides = new[]
+    {
+        ("Tauros", "FLAG_ALOLA_RIDE_TAUROS"),
+        ("Stoutland", StoutlandFlag),
+        ("Mudsdale", MudsdaleFlag),
+    };
+
+    /// <summary>A ride on land by its species; null where the pager has none.</summary>
+    public static (string Species, string Flag)? LandRideOf(string species) =>
+        LandRides.FirstOrDefault(r => string.Equals(r.Species, species, StringComparison.OrdinalIgnoreCase)) is { Species: not null } ride ? ride : null;
+
+    /// <summary>
+    /// Whether the player may get on a ride here: the region offers riding (<c>movement.modes</c> lists
+    /// <see cref="RegionMode.Ride"/>, Alola's) and the ride is registered by its flag.
+    /// </summary>
+    public static bool CanRide(string species, StoryState story, Region region) =>
+        region.Movement.Offers(RegionMode.Ride) && LandRideOf(species) is { } ride && story.Has(ride.Flag);
+
+    /// <summary>Whether a ride breaks a cracked rock it runs into (Tauros's charge), as Rock Smash does.</summary>
+    public static bool Charges(string? species) => string.Equals(species, "Tauros", StringComparison.OrdinalIgnoreCase);
+
     /// <summary>The rides, in the order the island challenge hands them over.</summary>
     public static readonly IReadOnlyList<Ride> Rides = new[]
     {

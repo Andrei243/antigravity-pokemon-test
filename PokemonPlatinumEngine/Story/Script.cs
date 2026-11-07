@@ -105,6 +105,8 @@ public enum Op
     Puzzle,
     // On or off the Bicycle by the story's say (plan 19 · K6: the Cycling Road of FireRed puts its riders on it)
     Bicycle,
+    // On the back of a Ride Pager's Pokémon or off it (plan 23, wave 91: Alola's rides on land)
+    RidePokemon,
     // Down to the sea floor under the dark water, or back up from it (plan 21 · H5: Emerald's Dive)
     Dive,
     // A television's programme, made of what is true of the game (plan 08 · P8, Broadcasts)
