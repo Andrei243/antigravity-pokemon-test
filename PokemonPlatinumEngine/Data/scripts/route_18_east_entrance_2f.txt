@@ -1,0 +1,24 @@
+# route_18_east_entrance_2f (plan 40 · GE2: the trades of the regions' own people). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats. NpcTrades carries each trade's numbers (trades.json, written by tools/DataImporter -- --trades).
+
+script Trade
+  speaker "Boy"
+  if flag FLAG_TRADED_FOR_MARC goto Done
+  ask "I'm looking for a Golduck. Would you swap one for my Lickitung?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade marc
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MARC
+  say "A Golduck! Wonderful. Marc will look after you, I promise. Look after him too."
+  end
+label NotWanted
+  say "That's not a Golduck. I'm hoping for a Golduck."
+  end
+label Waiting
+  say "That's fine. If you ever have a Golduck to spare, come back."
+  end
+label Done
+  say "Golduck swims better than I ever expected. I hope Marc is licking his way to fame."
+  end

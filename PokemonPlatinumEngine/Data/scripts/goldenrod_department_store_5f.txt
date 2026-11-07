@@ -7,3 +7,27 @@ script Clerk
   shop "goldenrod_5f"
   say "Thank you! Do come again."
   end
+
+
+# Plan 40 · GE2: the trades of the regions' own people (trades.json)
+script Trade
+  speaker "Man"
+  if flag FLAG_TRADED_FOR_MUSCLE goto Done
+  ask "I'm after a Drowzee. I'd give you my Machop for one. Deal?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade muscle
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_MUSCLE
+  say "A Drowzee! Thanks. Muscle is strong, so he'll do all your heavy lifting."
+  end
+label NotWanted
+  say "No, that isn't a Drowzee. A Drowzee is what I want."
+  end
+label Waiting
+  say "Hmm. If you get hold of a Drowzee, come and see me."
+  end
+label Done
+  say "My Drowzee never stops yawning. How is Muscle?"
+  end

@@ -87,6 +87,7 @@ Every session: its rules in GPU-free classes with their tests; a screen on the k
 - Tests (`RegionTradesTests`): every trade's species and item exist and every trade is someone's; each region's trades played headless (the wrong species refused, the right one received with its numbers); the checks lose what the trades give.
 - Shots: `gf10_trade_kanto_asks`, `gf11_trade_kanto_done`, `gf12_trade_johto`, `gf13_trade_hoenn`, `gf14_trade_unova`.
 - **Done when** every trade a region plan left "for plan 07" is made in its own place and the `Owed` lists have lost its species.
+- **Outcome (2026-11-07)**: both halves in one session. `tools/DataImporter -- --trades` (`Trades.cs`; Platinum's, FireRed's, Emerald's, HeartGold's narc and Black 2's JSON fetched file by file, the rows of ours in `Overrides/trades.json`) writes `Data/trades.json` (31 trades) and `NpcTrades.All` reads it; `NpcTrade` gains `Region` and `WantsGender` (Blackthorn's female Dragonair). Twenty-two new trades are made by people in their places (FireRed's nine, Emerald's Dots and Meowow, HeartGold's six, Black 2's five), each a `Trade` script with lines of ours and a `FLAG_TRADED_FOR_<ID>` flag. Left out on purpose: HeartGold's six loans and unplaced Rapidash, Black 2's White-side Cottonee and unused offers, the lass's battles with the Pokémon she traded away; `docs/mechanics/rulings.md`, "The regions' own trades", lists them. Kanto's four and Unova's Petilil and Lilligant are off the owed lists (`species-owed.md` written again); `RegionTradesTests` plays every trade headless (wrong species refused, right one received with its numbers). **No shots** (`gf10` to `gf14` are not made: this session had no GPU run).
 
 ### GE3 · What the checks still owe (1 to 2 sessions)
 - The other versions' species in their own places; a Linking Cord in Kanto, Johto, Hoenn and Unova; FireRed's Game Corner Pokémon; fossil revival in Nacrene's museum and Pewter's (their people given `fossil`, the Cover and Plume Fossils placed in Unova as Black 2 places them); `levels.txt` and `scripts.txt` accepted.
@@ -182,7 +183,7 @@ Every session: its rules in GPU-free classes with their tests; a screen on the k
 ## Status
 
 - [x] GE1 Every species, region by region: the checks (2026-11-07)
-- [ ] GE2 The regions' own trades
+- [x] GE2 The regions' own trades (2026-11-07)
 - [ ] GE3 What the checks still owe
 - [ ] GE4 Diplomas for every Pokédex and a Pokédex of our own
 - [ ] GE5 The charms and critical captures

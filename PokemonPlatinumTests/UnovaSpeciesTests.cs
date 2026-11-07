@@ -39,7 +39,6 @@ public class UnovaSpeciesTests
         ["Espeon"] = "GE3: Black 2's gift and grass", ["Umbreon"] = "GE3: Black 2's gift and grass",
         ["Leafeon"] = "GE3: Black 2's gift and grass", ["Glaceon"] = "GE3: Black 2's gift and grass",
         ["Zorua"] = "GE3: Black 2's gift", ["Zoroark"] = "GE3: Black 2's gift",
-        ["Petilil"] = "GE2: Black 2's own trades", ["Lilligant"] = "GE2: Black 2's own trades",
         // Evolved by trading, and Unova gives no Linking Cord
         ["Magmortar"] = "GE3: a Linking Cord in Unova", ["Electivire"] = "GE3: a Linking Cord in Unova",
         ["Conkeldurr"] = "GE3: a Linking Cord in Unova", ["Escavalier"] = "GE3: a Linking Cord in Unova",

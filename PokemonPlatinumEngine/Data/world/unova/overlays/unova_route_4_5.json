@@ -1,6 +1,6 @@
 {
-  // Route 4's second house of flats, downstairs (plan 22 · U6): Black 2's room, our words. The girl who would trade
-  // her Petilil for a Cottonee only talks of it for now (plan 22 · U6, part b)
+  // Route 4's second house of flats, downstairs (plan 22 · U6): Black 2's room, our words. The girl trades
+  // her Petilil for a Cottonee ("petulia", plan 40 · GE2)
   "area": "unova_route_4_5",
   "bgmTrack": "unova/route4",
   "people": {
@@ -13,7 +13,7 @@
     "2": {
       "name": "Girl",
       "npcType": "Lass",
-      "dialog": [ "I'd love a Cottonee. I'd even swap my Petilil for one... if only I could find somebody with one!" ]
+      "script": "Trade"
     }
   }
 }

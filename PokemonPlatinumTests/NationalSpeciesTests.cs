@@ -93,15 +93,15 @@ public class NationalSpeciesTests
         var starters = new[] { ("Bulbasaur", "the bag"), ("Charmander", "the bag"), ("Squirtle", "the bag") };
         // A script of the test's own that gives an owed species and the Linking Cord
         var given = ScriptLibrary.FromSources(("test_gift",
-            "script Gift\n  givepokemon \"Farfetch'd\" 5\n  give \"Linking Cord\"\n  end\n"));
+            "script Gift\n  givepokemon \"Porygon\" 5\n  give \"Linking Cord\"\n  end\n"));
         var with = SpeciesSources.Of(kanto, given, Array.Empty<MapFile>(), SpeciesSources.HighestInSinnoh,
             f => f == "test_gift", starters, noAreaTables: true);
-        Assert.Contains("test_gift.Gift", with.Ways["Farfetch'd"]);
-        Assert.Contains(RegionSpeciesCheck.Problems(with, dex, KantoSpeciesTests.Owed), p => p.StartsWith("Owed but now given") && p.Contains("Farfetch'd"));
+        Assert.Contains("test_gift.Gift", with.Ways["Porygon"]);
+        Assert.Contains(RegionSpeciesCheck.Problems(with, dex, KantoSpeciesTests.Owed), p => p.StartsWith("Owed but now given") && p.Contains("Porygon"));
         Assert.Contains(RegionSpeciesCheck.NeedProblems(with, dex, KantoSpeciesTests.OwedNeeds), p => p.Contains("Linking Cord"));
         // Without it and with no professor's bag, the three are lost and the check names them
         var bare = SpeciesSources.Of(kanto, given, Array.Empty<MapFile>(), SpeciesSources.HighestInSinnoh, _ => false, null, noAreaTables: true);
-        Assert.False(bare.Has("Farfetch'd"));
+        Assert.False(bare.Has("Porygon"));
         Assert.Contains(RegionSpeciesCheck.Problems(bare, dex, KantoSpeciesTests.Owed), p => p.StartsWith("Nothing gives") && p.Contains("Bulbasaur"));
     }
 

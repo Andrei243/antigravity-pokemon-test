@@ -41,6 +41,14 @@ if (args.Contains("--hoenn-contest"))
     return 0;
 }
 
+if (args.Contains("--trades"))
+{
+    // The trades people of the games make, alone (plan 40 · GE2): trades.json, from the decompilations' in-game trade tables
+    TradesImport.Use(Path.Combine(repo, "PokemonPlatinumEngine", "Data"));
+    Write(Path.Combine(outDir, NpcTrades.FileName), GameDataFiles.Serialize(TradesImport.Build(repo, cache)));
+    return 0;
+}
+
 if (args.Contains("--trainer-hill"))
 {
     // Emerald's Trainer Hill alone (plan 21, part l): trainer-hill.json, from its header, its source and its floors' collision rows

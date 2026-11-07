@@ -5,9 +5,7 @@
   "people": {
     "t30r0301_gsgirl1": {
       "name": "Girl",
-      "dialog": [
-        "Everyone in my family trains dragons. I'm going to be the first to train a Kingdra!"
-      ]
+      "script": "Trade"
     },
     "t30r0301_gswoman1": {
       "name": "Woman",

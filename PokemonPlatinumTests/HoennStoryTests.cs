@@ -1554,7 +1554,7 @@ public class HoennStoryTests
         var pluses = game.Party.Members[0];
         Assert.Equal("Plusle", pluses.Species.Name);
         Assert.Equal("Pluses", pluses.Nickname);
-        Assert.Equal("Grass Mail", pluses.HeldItem?.Name);
+        Assert.Equal("Wood Mail", pluses.HeldItem?.Name);
         // Emerald's trade gives each condition its own number, and a sheen
         Assert.Equal((5, 5, 30, 5, 5, 10), (pluses.Cool, pluses.Beauty, pluses.Cute, pluses.Smart, pluses.Tough, pluses.Sheen));
         var again = game.Talk("ninja_boy");

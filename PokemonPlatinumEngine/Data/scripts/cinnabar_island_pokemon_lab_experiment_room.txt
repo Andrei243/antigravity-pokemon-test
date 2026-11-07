@@ -42,3 +42,27 @@ label None
 label Declined
   say "No? Well, the machine will be here if you change your mind."
   end
+
+
+# Plan 40 · GE2: the trades of the regions' own people (trades.json)
+script Trade
+  speaker "Garett"
+  if flag FLAG_TRADED_FOR_SEELOR goto Done
+  ask "I'd trade you my Seel for a Ponyta. Have you got one?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade seelor
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_SEELOR
+  say "A Ponyta! Thanks. Seelor loves the cold, so keep him cool."
+  end
+label NotWanted
+  say "That isn't a Ponyta. I'm after a Ponyta."
+  end
+label Waiting
+  say "That's fine. If you find a Ponyta, come back."
+  end
+label Done
+  say "Ponyta's mane is the hottest thing in the lab. How is Seelor?"
+  end
