@@ -5683,8 +5683,13 @@
     "menu": {
       "makeCode": "MAKE A CODE",
       "enterCode": "ENTER A CODE",
+      "battleCode": "MAKE A BATTLE CODE",
       "leave": "LEAVE"
     },
+    "team": "YOUR TEAM",
+    "battleWith": "YOU BATTLE",
+    "battleRules": "FLAT 50 · SIX AGAINST SIX · ONE OF EACH SPECIES AND ITEM",
+    "record": "With {name}: {wins} won, {losses} lost, {draws} drawn",
     "key": {
       "ok": "OK",
       "erase": "ERASE"
@@ -5695,7 +5700,8 @@
       "trade": "Trade",
       "offer": "Offer",
       "callOff": "Call off",
-      "leave": "Leave"
+      "leave": "Leave",
+      "bring": "Bring this team"
     },
     "line": {
       "welcome": "You're linked! Make a code for your friend, or type the one they made.",
@@ -5718,7 +5724,24 @@
       "otherBack": "{name} is back.",
       "notThisSave": "A trade is waiting for another save of yours, not this one.",
       "finished": "{pokemon} from your last visit has come, and the game was saved.",
-      "traded": "The trade with {name} is done! {pokemon} is yours, and the game was saved."
+      "traded": "The trade with {name} is done! {pokemon} is yours, and the game was saved.",
+      "battleRoom": "You're linked with {name} for a battle! Bring your team: each Pokémon is made level 50 for it, and nothing it does reaches your save.",
+      "bringing": "Your team is being checked. Waiting for {name}…"
+    },
+    "battled": {
+      "none": "The battle with {name} was called off before it began.",
+      "won": {
+        "knockedOut": "You beat {name}! The win was written into your Trainer Card.",
+        "forfeit": "{name} gave the match up. The win was written into your Trainer Card.",
+        "timer": "{name}'s time ran out. The win was written into your Trainer Card.",
+        "disconnect": "{name}'s link dropped and didn't come back. The win was written into your Trainer Card."
+      },
+      "lost": {
+        "knockedOut": "You lost to {name}. The battle was written into your Trainer Card.",
+        "forfeit": "You gave the match up to {name}.",
+        "timer": "Your time ran out three turns running, and the match went to {name}.",
+        "disconnect": "Your link dropped, and the match went to {name}."
+      }
     },
     "refused": {
       "outdated": "This game is too old for the server. Please update it.",

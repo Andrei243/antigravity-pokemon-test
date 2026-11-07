@@ -1317,6 +1317,10 @@ public partial class GameEngine
                     {
                         if (flow.Battle.WatchOver) EndWatching();
                     }
+                    else if (KeepTheLinkBattle())
+                    {
+                        // A link battle ends back where it began, leaving nothing behind (plan 28 · I3, plan 07 · O6)
+                    }
                     else if (KeepTheRoomsBattle())
                     {
                         // A battle of the battle room ends back in the room, leaving nothing behind (plan 13 · V13, V26)

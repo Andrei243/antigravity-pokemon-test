@@ -234,6 +234,18 @@ public sealed class ViewState
 }
 
 /// <summary>
+/// The order a player's six go in when nobody picks another (plan 07 · O6's battle room, the harness): the order they
+/// were brought, as many as the room picks. It answers no question: a screen does (<c>BattleEngine.ForLink</c>).
+/// </summary>
+public sealed class BroughtInOrder : ILinkChooser
+{
+    public IReadOnlyList<int> Pick(LinkHello hello, int brought) => Enumerable.Range(0, System.Math.Min(hello.Room.Picks, brought)).ToList();
+
+    public IReadOnlyList<BattleChoice> Choose(LinkClient client, LinkAsk ask) =>
+        throw new System.InvalidOperationException("A screen answers this player's questions");
+}
+
+/// <summary>
 /// A chooser for the tests and the bench (plan 28 · I3): picks at random among what the question allows, from a seed and
 /// the question's number alone, so the same battle asks it the same way every time (and again after a resume).
 /// </summary>

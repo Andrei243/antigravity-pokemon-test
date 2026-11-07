@@ -30,7 +30,7 @@ public class LinkScreenTests
     /// One step of a player at their screen: a line read on, the first move the server allows at the commands (aimed
     /// at the first place offered), the first Pokémon it allows where one is to come in. False once nothing is left to do.
     /// </summary>
-    private static bool Act(BattleEngine face, List<string> lines)
+    internal static bool Act(BattleEngine face, List<string> lines)
     {
         face.Update(0.05f);
         if (face.IsBattleOver) return false;
