@@ -1,0 +1,43 @@
+{
+  "key": "lush_jungle",
+  "index": 18,
+  "name": "Lush Jungle",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "LUSH_JUNGLE",
+  "nightMusic": "LUSH_JUNGLE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "mallow", "looks": "mallow", "movement": "look_south", "x": 204, "z": 109, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "totem", "looks": "lurantis", "movement": "look_south", "x": 207, "z": 95, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 197, "z": 119, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_KEALA" },
+    { "id": "breeder", "looks": "pokemon_breeder_f", "movement": "look_south", "x": 190, "z": 132, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_POKEMON_BREEDER_ULULANI" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 214, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_LUSH_JUNGLE_MIRACLE_SEED", "item": "Miracle Seed", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Fomantis", "level": 20 },
+    { "species": "Fomantis", "level": 21 },
+    { "species": "Morelull", "level": 20 },
+    { "species": "Morelull", "level": 21 },
+    { "species": "Paras", "level": 20 },
+    { "species": "Bounsweet", "level": 20 },
+    { "species": "Bounsweet", "level": 21 },
+    { "species": "Comfey", "level": 21 },
+    { "species": "Trumbeak", "level": 21 },
+    { "species": "Pinsir", "level": 21 },
+    { "species": "Passimian", "level": 21 },
+    { "species": "Fomantis", "level": 22 }
+  ],
+  "landRate": 20,
+  "water": []
+}

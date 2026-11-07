@@ -1,0 +1,53 @@
+# Konikoni City, Akala Island (plan 23 · Z6). The lines are our own, on Sun and Moon's beats as they are publicly
+# described (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand trial"): Kahuna Olivia
+# meets the player at the city's gate and sends them to the Ruins of Life, then holds Akala's grand trial. Ours: the
+# grand trial is fought in the street before her shop. VAR_ALOLA_AKALA is royal_avenue.txt's count.
+#
+# The people: olivia before her shop, always. Her team is alola_olivia_1, her ace holding the Rockium Z.
+
+
+script OliviaMeets
+  scene "Olivia at Konikoni's gate"
+  speaker "Olivia"
+  say "Alola! You must be the trial-goer Mallow keeps messaging me about. I'm Olivia, kahuna of Akala."
+  say "Before my grand trial, go up to the Ruins of Life past Memorial Hill. Your friend Lillie is waiting there."
+  setflag FLAG_ALOLA_OLIVIA_MET
+  setvar VAR_ALOLA_AKALA 5
+  objective alolaRuins
+  endscene
+  end
+
+
+script Olivia
+  if var VAR_ALOLA_AKALA >= 7 goto After
+  if var VAR_ALOLA_AKALA >= 6 goto GrandTrial
+  speaker "Olivia"
+  if var VAR_ALOLA_AKALA >= 5 goto Ruins
+  say "Welcome to Konikoni! Mind the jewelry. It's all for sale."
+  end
+label Ruins
+  say "The Ruins of Life are past Memorial Hill, east of Route 9. Lillie's waiting, so off you go!"
+  end
+label GrandTrial
+  scene "Olivia's grand trial"
+  speaker "Olivia"
+  say "You've been to the guardian's shrine. Then you're ready. I'm Akala's kahuna, and I don't do anything halfway!"
+  battle olivia as "alola_olivia_1"
+  speaker "Olivia"
+  say "Well! That was a gem of a battle. Akala's stamp is yours."
+  givebadge Akala
+  text "{player}'s Trainer card received Akala's stamp!"
+  give "Rockium Z"
+  say "And take Machamp along. With it in your Ride Pager, heavy boulders won't stand in your way."
+  setflag FLAG_ALOLA_RIDE_MACHAMP
+  text "{player} registered Machamp in the Ride Pager! Machamp can shove heavy boulders."
+  say "Lillie and Hau went down to the Hano Grand Resort. Go south from Royal Avenue and say hello."
+  setflag FLAG_ALOLA_OLIVIA_DONE
+  setvar VAR_ALOLA_AKALA 7
+  objective alolaHano
+  endscene
+  end
+label After
+  speaker "Olivia"
+  say "Two stamps down, two to go! The other kahunas won't go easy on you either."
+  end

@@ -1,0 +1,35 @@
+{
+  // Konikoni City, Akala Island (plan 23 · Z6): drawn by hand, our words. A market town by the sea at Route 9's south
+  // end: its Pokémon Center, Kahuna Olivia's jewelry shop, a house and a restaurant (a later session's door). Olivia
+  // meets the player at the north gate after Mallow's trial and holds Akala's grand trial once the Ruins of Life have
+  // been visited (konikoni_city.txt)
+  "area": "konikoni_city",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "doors": [
+    { "warp": 0, "map": "KonikoniCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "KonikoniCity_OliviasShop", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "KonikoniCity_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "locked": [ 3 ],
+  "triggers": [
+    { "script": "OliviaMeets", "x": 320, "z": 237, "width": 4, "depth": 1, "variable": "VAR_ALOLA_AKALA", "value": 4 }
+  ],
+  "people": {
+    "olivia": { "name": "Olivia", "npcType": "olivia", "script": "Olivia", "still": true },
+    "old_woman": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [ "Every stone in Olivia's shop came out of Akala's own hills. She polishes them herself, you know." ]
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "npcType": "fisherman",
+      "dialog": [ "Wingull up there, Wishiwashi down here, and me in the middle with nothing on the hook." ]
+    }
+  },
+  "signs": {
+    "CitySign": "Konikoni City\nA market town of stones and lanterns."
+  }
+}

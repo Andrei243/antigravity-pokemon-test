@@ -1,0 +1,31 @@
+{
+  // Wela Volcano Park, Akala Island (plan 23 · Z6): drawn by hand, our words. A winding path of ash and rock up the
+  // volcano from Route 7 to the crater, where Captain Kiawe's trial is held (wela_volcano_park.txt): two of the trial's
+  // Pokémon join his dance, then the totem Marowak. Its wild Pokémon call for help, as a trial site's do
+  "area": "wela_volcano_park",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "callsForHelp": true,
+  "people": {
+    "kiawe": { "name": "Kiawe", "npcType": "kiawe", "script": "Kiawe", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_DONE" },
+    "trial_1": { "name": "Salandit", "script": "Trial1", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_1", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },
+    "trial_2": { "name": "Cubone", "script": "Trial2", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_2", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },
+    "totem": { "name": "Marowak", "script": "Totem", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_DONE", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },
+    "hiker": {
+      "name": "Kanaloa",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Kanaloa: The ground's warm under your boots up here, eh? My Pokémon are warmer!",
+        "dialogueAfter": "Hiker Kanaloa: Cooled off, the lot of us."
+      }
+    },
+    "ace_trainer": {
+      "name": "Kalani",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kalani: Heading up to Kiawe's trial? You'll have to get past my fire first.",
+        "dialogueAfter": "Ace Trainer Kalani: You'll do fine up there."
+      }
+    }
+  }
+}

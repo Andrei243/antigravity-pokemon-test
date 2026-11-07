@@ -1,0 +1,51 @@
+# Route 8, Akala Island (plan 23 · Z6). The lines are our own, on Sun and Moon's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand trial"). VAR_ALOLA_AKALA is
+# royal_avenue.txt's count.
+#
+# The people: grunt_motel and wicke by the motel, shown once Royal Avenue's scene is played (FLAG_ALOLA_ROYAL_DONE)
+# until this one is (FLAG_ALOLA_MOTEL_DONE); worker before Diglett's Tunnel until Mallow's trial is passed
+# (FLAG_ALOLA_LUSH_TRIAL_DONE).
+
+
+script MotelScene
+  scene "Team Skull at the motel"
+  speaker "Grunt"
+  say "Yo, Aether lady! Hand over that Pokémon or Team Skull's moving into your little foundation!"
+  speaker "Wicke"
+  say "Oh dear, oh dear. I only came to check on the island's Pokémon... Ah, a trainer! Would you be so kind?"
+  speaker "Grunt"
+  say "A trial-goer? Fine! I'll squash you first!"
+  battle grunt_motel as "alola_team_skull_grunt_motel"
+  speaker "Grunt"
+  say "Ugh! Skull doesn't need this. I'm out!"
+  hide grunt_motel
+  speaker "Wicke"
+  say "Thank you ever so much. I'm Wicke, of the Aether Foundation. We care for Pokémon that are hurt or lost."
+  say "Our home is a floating island called Aether Paradise. Do come and visit one day."
+  say "Kiawe's trial? Along Route 7's beach to the volcano. Do mind the heat!"
+  hide wicke
+  setflag FLAG_ALOLA_MOTEL_DONE
+  setvar VAR_ALOLA_AKALA 2
+  objective alolaWela
+  endscene
+  end
+
+
+script MotelGrunt
+  speaker "Grunt"
+  say "What're you looking at? This is Skull business!"
+  end
+
+script Wicke
+  speaker "Wicke"
+  say "Oh! Please, don't mind me. Nothing at all to worry about here."
+  end
+
+script Worker
+  speaker "Worker"
+  if flag FLAG_ALOLA_WELA_TRIAL_DONE goto Soon
+  say "Diglett's Tunnel is shut while we shore it up. Go and see the captains first, eh?"
+  end
+label Soon
+  say "Nearly done in here. Pass Captain Mallow's trial in the jungle and the tunnel will be open when you're back."
+  end

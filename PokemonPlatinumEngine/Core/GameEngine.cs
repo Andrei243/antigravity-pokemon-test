@@ -2844,7 +2844,9 @@ public partial class GameEngine
             .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
             {
                 Pokedex = r.Dex is { } dex && flow.Pokedex.Regional.Contains(dex)
-                    ? (flow.Pokedex.SeenIn(dex), flow.Pokedex.CaughtIn(dex), Pokedex.Entries(dex).Count) : null
+                    ? (flow.Pokedex.SeenIn(dex), flow.Pokedex.CaughtIn(dex), Pokedex.Entries(dex).Count) : null,
+                // Alola's grand trials are stamps (plan 23 · Z6)
+                Stamps = r.File?.Stamps == true
             })
             .ToList();
     }

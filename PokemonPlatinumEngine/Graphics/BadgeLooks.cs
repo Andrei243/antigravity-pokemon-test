@@ -23,6 +23,12 @@ public static class BadgeLooks
             ["Soul"] = (new Color(222, 92, 140, 255), BadgeMark.Heart),
             ["Marsh"] = (new Color(214, 178, 68, 255), BadgeMark.Twins),
             ["Volcano"] = (new Color(220, 72, 54, 255), BadgeMark.Flame),
-            ["Earth"] = (new Color(82, 160, 86, 255), BadgeMark.Leaf)
+            ["Earth"] = (new Color(82, 160, 86, 255), BadgeMark.Leaf),
+            // Alola's four island stamps (plan 23 · Z6), each in its guardian's colour: Melemele's amber bolt, Akala's
+            // rose heart, Ula'ula's green leaf, Poni's blue drop
+            ["Melemele"] = (new Color(232, 168, 48, 255), BadgeMark.Bolt),
+            ["Akala"] = (new Color(226, 104, 150, 255), BadgeMark.Heart),
+            ["UlaUla"] = (new Color(96, 168, 76, 255), BadgeMark.Leaf),
+            ["Poni"] = (new Color(70, 132, 210, 255), BadgeMark.Drop)
         };
 }

@@ -822,7 +822,15 @@
     "alolaRanch": "Go north through Paniola Ranch.",
     "alolaRoute5": "Follow Route 5 north towards Brooklet Hill.",
     "alolaBrooklet": "Find Captain Lana at Brooklet Hill, west of Route 5.",
-    "alolaFree": "That is as far as the road runs for now. Melemele is yours to explore."
+    "alolaRoyal": "Take Route 6 east from Paniola Town to Royal Avenue.",
+    "alolaMotel": "Head north from Royal Avenue up Route 8's coast.",
+    "alolaWela": "Follow Route 7's beach to Wela Volcano Park for Captain Kiawe's trial.",
+    "alolaJungle": "Find Captain Mallow in the Lush Jungle, west off Route 8.",
+    "alolaKonikoni": "Go through Diglett's Tunnel from Route 8 and on to Konikoni City.",
+    "alolaRuins": "Climb Memorial Hill east of Route 9 to the Ruins of Life, where Lillie is waiting.",
+    "alolaOlivia": "Return to Konikoni City for Kahuna Olivia's grand trial.",
+    "alolaHano": "Go south from Royal Avenue to the Hano Grand Resort.",
+    "alolaFree": "That is as far as the road runs for now. Melemele and Akala are yours to explore."
   },
 
   "close": {
@@ -1386,6 +1394,7 @@
     "seen": "POKÉMON SEEN",
     "score": "SCORE",
     "badges": "BADGES  {count} / {of}",
+    "stamps": "STAMPS  {count} / {of}",
     "page": "Page",
     "outOf": "{count} / {of}",
     "regionSeen": "SEEN IN ITS POKÉDEX",

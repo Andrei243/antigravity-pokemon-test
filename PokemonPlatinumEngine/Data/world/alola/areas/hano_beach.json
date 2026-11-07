@@ -1,0 +1,38 @@
+{
+  "key": "hano_beach",
+  "index": 26,
+  "name": "Hano Beach",
+  "matrix": 3,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HANO_BEACH",
+  "nightMusic": "HANO_BEACH",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 265, "z": 255, "to": "HanoGrandResort", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lillie", "looks": "lillie", "movement": "look_north", "x": 263, "z": 257, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "hau", "looks": "hau", "movement": "look_north", "x": 268, "z": 257, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "wicke", "looks": "wicke", "movement": "look_north", "x": 270, "z": 258, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_east", "x": 250, "z": 266, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_NOHEA" },
+    { "id": "swimmer", "looks": "swimmer_m", "movement": "wander_around", "x": 280, "z": 268, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [],
+  "landRate": 0,
+  "water": [
+    { "species": "Tentacool", "level": 22 },
+    { "species": "Wingull", "level": 22 },
+    { "species": "Pyukumuku", "level": 23 },
+    { "species": "Wishiwashi", "level": 22 },
+    { "species": "Mantyke", "level": 23 }
+  ]
+}

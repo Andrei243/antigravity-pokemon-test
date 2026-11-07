@@ -1,0 +1,29 @@
+# The Akala Outskirts and the Ruins of Life (plan 23 · Z6). The lines are our own, on Sun and Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand trial"): Lillie
+# visits the guardian's shrine with the player and Tapu Lele shows itself for a moment (seen in the Pokédex, never
+# battled here). VAR_ALOLA_AKALA is royal_avenue.txt's count.
+#
+# The people: lillie before the ruins' door, shown once Olivia has been met (FLAG_ALOLA_OLIVIA_MET) until the visit is
+# made (FLAG_ALOLA_RUINS_DONE).
+
+
+script Lillie
+  scene "The Ruins of Life"
+  speaker "Lillie"
+  say "{player}! Olivia said you'd come. These are the Ruins of Life, the shrine of Akala's guardian, Tapu Lele."
+  say "I wanted to ask the guardian something. Would you come in with me?"
+  fade out
+  text "The two of them stepped inside. The air was still and sweet... Then a glimmer of pink light danced over the altar."
+  cry "Tapu Lele"
+  seen "Tapu Lele"
+  text "For a moment Tapu Lele hung in the air before them. Then it was gone, as if it had never been there."
+  fade in
+  speaker "Lillie"
+  say "Did you see it? It was so beautiful... I think it was telling us to keep going."
+  say "Olivia is waiting for her grand trial in Konikoni City. I'll see you later, {player}."
+  hide lillie
+  setflag FLAG_ALOLA_RUINS_DONE
+  setvar VAR_ALOLA_AKALA 6
+  objective alolaOlivia
+  endscene
+  end

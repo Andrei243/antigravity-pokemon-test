@@ -1,0 +1,251 @@
+{
+  "name": "HanoGrandResort",
+  "displayName": "Hano Grand Resort",
+  "bgmTrack": "alola/hauoli",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#___________P___#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "###___________###",
+    "#_______________#",
+    "###___________###",
+    "##_____________##",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "########..###..##",
+    "#....###..##....#",
+    "#.##########....#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###...........###",
+    "##.............##",
+    "###...........###",
+    "##.............##",
+    "########.########"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 2, "behaviour": "Counter" },
+    { "x": 11, "y": 3, "width": 1, "depth": 1, "behaviour": "Counter" },
+    { "x": 10, "y": 4, "width": 2, "depth": 1, "behaviour": "Counter" },
+    { "x": 5, "y": 5, "width": 7, "depth": 1, "behaviour": "Counter" },
+    { "x": 2, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 4,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Akala",
+      "targetX": 265,
+      "targetY": 256,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "lady",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Alola, and welcome to the Hano Grand Resort! I'm afraid every room is booked this season. The beach is free, though!"
+      ]
+    },
+    {
+      "id": "concierge",
+      "name": "Concierge",
+      "npcType": "gentleman",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Our guests come for the sea and stay for the sunsets. Some of them never check out at all."
+      ]
+    },
+    {
+      "id": "guest",
+      "name": "Guest",
+      "npcType": "backpacker_f",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "I came for a week and I've stayed a month. Don't tell my boss."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

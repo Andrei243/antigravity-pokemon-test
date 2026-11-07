@@ -1,0 +1,57 @@
+{
+  "key": "akala_route_8",
+  "index": 17,
+  "name": "Route 8",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AKALA_ROUTE_8",
+  "nightMusic": "AKALA_ROUTE_8",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 245, "z": 136, "to": "AkalaRoute8_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 279, "z": 136, "to": "AkalaRoute8_Motel", "toWarp": 0 },
+    { "x": 273, "z": 162, "to": "digletts_tunnel", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "grunt_motel", "looks": "skull_grunt", "movement": "look_east", "x": 277, "z": 138, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "wicke", "looks": "wicke", "movement": "look_west", "x": 279, "z": 138, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "worker", "looks": "hiker", "movement": "look_south", "x": 273, "z": 163, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 286, "z": 150, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_KANOA" },
+    { "id": "backpacker", "looks": "backpacker_m", "movement": "look_east", "x": 262, "z": 121, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_KAIPO" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 240, "z": 175, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_8_SUPER_POTION", "item": "Super Potion", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 284, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_8_FRESH_WATER", "item": "Fresh Water", "script": "" }
+  ],
+  "signs": [
+    { "x": 262, "z": 138, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Fletchinder", "level": 18 },
+    { "species": "Trumbeak", "level": 18 },
+    { "species": "Yungoos", "level": 17 },
+    { "species": "Yungoos", "level": 18 },
+    { "species": "Gumshoos", "level": 19 },
+    { "species": "Salandit", "level": 18 },
+    { "species": "Crabrawler", "level": 18 },
+    { "species": "Wingull", "level": 17 },
+    { "species": "Stunky", "level": 18 },
+    { "species": "Spinda", "level": 18 },
+    { "species": "Rattata", "level": 17 },
+    { "species": "Fletchinder", "level": 19 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 18 },
+    { "species": "Wingull", "level": 18 },
+    { "species": "Finneon", "level": 19 },
+    { "species": "Wishiwashi", "level": 18 },
+    { "species": "Pelipper", "level": 20 }
+  ]
+}

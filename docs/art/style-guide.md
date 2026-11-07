@@ -1990,6 +1990,8 @@ own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars an
   | Volcano | flame red (220, 72, 54) | a flame: a point over a disc |
   | Earth | leaf green (82, 160, 86) | a leaf: a diamond turned on its point |
 
+- **Alola's island stamps** (plan 23 · Z6): a region whose file says `"challenge": "trials"` has stamps, not badges, and the card's caption reads STAMPS. They are the same medallions, in the island guardian's colour with a mark already in the table above: Melemele amber (232, 168, 48) with the bolt, Akala rose (226, 104, 150) with the heart, Ula'ula green (96, 168, 76) with the leaf, Poni blue (70, 132, 210) with the drop.
+
 ### Opening and title screen (`TitleScreen`, `TitleScene`)
 
 The order follows the games' opening: a notice, a short film, the legendary Pokémon with the title, "press start", then the menu. Any button skips to the title.

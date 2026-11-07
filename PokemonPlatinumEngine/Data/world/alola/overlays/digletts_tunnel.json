@@ -1,0 +1,31 @@
+{
+  // Diglett's Tunnel, Akala Island (plan 23 · Z6): a cave of its own, drawn by hand (tools/MapDraw/alola/digletts_tunnel.txt),
+  // our words. A loop of tunnels the island's miners dug with their Diglett, from Route 8 in the west to Route 9 in the
+  // east; Team Skull loiters in it
+  "area": "digletts_tunnel",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "grunt_1": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: This tunnel's Skull turf now! Toll's a battle. Pay up!",
+        "dialogueAfter": "Team Skull Grunt: Fine, fine. Toll waived. Skull's generous like that."
+      }
+    },
+    "grunt_2": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Yo! You lost? Lost to me is what you're gonna be!",
+        "dialogueAfter": "Team Skull Grunt: That line sounded cooler in my head."
+      }
+    },
+    "worker": {
+      "name": "Worker",
+      "npcType": "hiker",
+      "dialog": [ "We dug every one of these tunnels with our Diglett. Don't you go knocking any of them in, now." ]
+    }
+  }
+}

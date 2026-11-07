@@ -1,0 +1,29 @@
+{
+  // The Akala Outskirts (plan 23 · Z6): drawn by hand, our words. Grassy cliffs north of Memorial Hill up to the Ruins
+  // of Life, the island guardian's shrine, where Lillie waits once Olivia has sent the player there (akala_outskirts.txt)
+  "area": "akala_outskirts",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "AkalaOutskirts_RuinsOfLife", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_RUINS_DONE", "shownBy": "FLAG_ALOLA_OLIVIA_MET" },
+    "gentleman": {
+      "name": "Makoa",
+      "npcType": "gentleman",
+      "trainer": {
+        "dialogueBefore": "Gentleman Makoa: A fine view for a fine battle. Shall we?",
+        "dialogueAfter": "Gentleman Makoa: The view is still fine, at least."
+      }
+    },
+    "lady": {
+      "name": "Puanani",
+      "npcType": "lady",
+      "trainer": {
+        "dialogueBefore": "Lady Puanani: I walked all the way from the resort in these shoes. Make it worth my while!",
+        "dialogueAfter": "Lady Puanani: My feet hurt AND I lost."
+      }
+    }
+  }
+}

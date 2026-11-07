@@ -1,0 +1,43 @@
+# Hano Beach and the Hano Grand Resort, Akala Island (plan 23 · Z6). The lines are our own, on Sun and Moon's beats as
+# they are publicly described (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand
+# trial"): Hau and Lillie at the resort after the grand trial, and Wicke's invitation to Aether Paradise, which is plan
+# 23 · Z7's. This scene ends Akala: VAR_ALOLA_AKALA 8 and FLAG_ALOLA_AKALA_DONE, which a later chapter asks.
+#
+# The people: lillie, hau and wicke before the resort, shown once Olivia's grand trial is passed (FLAG_ALOLA_OLIVIA_DONE)
+# until the scene is played (FLAG_ALOLA_HANO_DONE).
+
+
+script HanoScene
+  scene "The Hano Grand Resort"
+  speaker "Hau"
+  say "{player}! You got Olivia's stamp? That's two islands done! We should celebrate. With malasadas."
+  speaker "Lillie"
+  say "Congratulations, {player}. I knew you could do it."
+  speaker "Wicke"
+  say "Oh, hello again! I've been telling your friends about Aether Paradise. Our ship can take all three of you."
+  say "The Aether Foundation would be honoured to have you as our guests. Do think about it!"
+  hide hau
+  hide lillie
+  hide wicke
+  setflag FLAG_ALOLA_HANO_DONE
+  setflag FLAG_ALOLA_AKALA_DONE
+  setvar VAR_ALOLA_AKALA 8
+  objective alolaFree
+  endscene
+  end
+
+
+script Lillie
+  speaker "Lillie"
+  say "The sea here is so blue. I could watch it all day."
+  end
+
+script Hau
+  speaker "Hau"
+  say "The resort's malasadas cost twice as much. They're also twice as big!"
+  end
+
+script Wicke
+  speaker "Wicke"
+  say "Aether Paradise is lovely this time of year. Well, it's lovely every time of year."
+  end
