@@ -1,7 +1,7 @@
 # Hokulani Observatory, Mount Hokulani, Ula'ula Island: Captain Sophocles' trial (plan 23 · Z7). The lines are our own,
 # on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise
-# and the League"). Three Charjabug have crept into the observatory's wiring; the totem, a Togedemaru, is met as a wild
-# battle that can't be run from (its aura and its call for help are plan 23 · Z6's). VAR_ALOLA_STORY 42 is the
+# and the League"). Three Charjabug have crept into the observatory's wiring; the totem, a Togedemaru, is fought as
+# a totem (plan 23 · Z6: its aura, its first call answered by a Charjabug, no ball, no running; wave 91). VAR_ALOLA_STORY 42 is the
 # way in, 43 the trial passed.
 #
 # The people: sophocles, the three Charjabug and the totem are shown by FLAG_ALOLA_HOKULANI_TRIAL while the trial is
@@ -58,7 +58,8 @@ script Totem
   scene "The totem Togedemaru"
   text "The Togedemaru's spines crackled, and electricity ran up every wire in the room!"
   cry "Togedemaru"
-  wildbattle "Togedemaru" 24 nofleeing
+  # A totem (plan 23 · Z6): its aura raises its Defense, it calls a Charjabug at once, and it can't be caught
+  wildbattle "Togedemaru" 24 totem defense ally "Charjabug"
   setflag FLAG_ALOLA_HOKULANI_TRIAL_DONE
   hide self
   hide sophocles

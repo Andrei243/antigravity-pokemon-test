@@ -26,7 +26,10 @@
     { "file": "melemele_meadow.txt", "x": 372, "z": 40 },
     { "file": "ten_carat_shore.txt", "x": 196, "z": 168 }
   ],
-  // Caves and the other islands as maps of their own (plan 23's Alola decisions: each island a matrix of its own)
+  // Caves and the other islands as maps of their own (plan 23's Alola decisions: each island a matrix of its own). Since
+  // wave 91 an island's "island" is the cell of the region's map its north-west chunk is shown at, as the Town Map's
+  // `islands` lays it (Data/world/alola/townmap.json): Ula'ula at 17,0, Akala at 17,12, Poni at 1,16, Melemele at 0,0; the
+  // habitats' grid holds all four there, and a cave's "cell" is on that grid
   "maps": [
     { "matrix": 1, "area": "ten_carat_hill", "width": 2, "height": 2, "cell": "6,5", "pieces": [ { "file": "ten_carat_hill.txt", "x": 4, "z": 4 } ] },
     { "matrix": 2, "area": "verdant_cavern", "width": 2, "height": 2, "cell": "10,3", "pieces": [ { "file": "verdant_cavern.txt", "x": 4, "z": 4 } ] },
@@ -34,7 +37,7 @@
     // road north up Route 4 to Paniola Town and through Paniola Ranch onto Route 5, and west off Route 5 to the lakes of
     // Brooklet Hill, Captain Lana's trial. The ferry from Hau'oli's marina lands on Heahea's pier
     {
-      "matrix": 3, "area": "heahea_city", "width": 12, "height": 12, "fill": "T",
+      "matrix": 3, "area": "heahea_city", "width": 12, "height": 12, "fill": "T", "island": "17,12",
       "pieces": [
         { "file": "heahea_city.txt", "x": 120, "z": 300 },
         { "file": "akala_route_4.txt", "x": 128, "z": 240 },
@@ -82,7 +85,7 @@
     // Plan 23 · Z7: Ula'ula Island (matrix 10), 12 chunks by 12: Malie City in the south-west, up Route 10 and Mount Hokulani, east along Route 12 to
     // Tapu Village, north to Po Town, east to the foot of Mount Lanakila
     {
-      "matrix": 10, "area": "malie_city", "width": 12, "height": 12, "fill": "T",
+      "matrix": 10, "area": "malie_city", "width": 12, "height": 12, "fill": "T", "island": "17,0",
       "pieces": [
         { "file": "ulaula_coast.txt", "x": 0, "z": 364 },
         { "file": "malie_city.txt", "x": 24, "z": 320 },
@@ -109,7 +112,7 @@
     },
     // Poni
     {
-      "matrix": 11, "area": "seafolk_village", "width": 10, "height": 10, "fill": "~",
+      "matrix": 11, "area": "seafolk_village", "width": 10, "height": 10, "fill": "~", "island": "1,16",
       "pieces": [
         { "file": "seafolk_village.txt", "x": 24, "z": 232 },
         { "file": "poni_wilds.txt", "x": 24, "z": 152 },
@@ -125,42 +128,42 @@
     },
     // AetherParadise
     {
-      "matrix": 12, "area": "aether_paradise", "width": 3, "height": 3, "fill": "~",
+      "matrix": 12, "area": "aether_paradise", "width": 3, "height": 3, "fill": "~", "cell": "20,21",
       "pieces": [
         { "file": "aether_paradise.txt", "x": 4, "z": 4 }
       ]
     },
     // AncientPoniPath
     {
-      "matrix": 15, "area": "ancient_poni_path", "width": 2, "height": 3, "fill": "r",
+      "matrix": 15, "area": "ancient_poni_path", "width": 2, "height": 3, "fill": "r", "cell": "2,20",
       "pieces": [
         { "file": "ancient_poni_path.txt", "x": 0, "z": 0 }
       ]
     },
     // VastPoniCanyon
     {
-      "matrix": 14, "area": "vast_poni_canyon", "width": 3, "height": 3, "fill": "r",
+      "matrix": 14, "area": "vast_poni_canyon", "width": 3, "height": 3, "fill": "r", "cell": "4,20",
       "pieces": [
         { "file": "vast_poni_canyon.txt", "x": 0, "z": 0 }
       ]
     },
     // PoniAltar
     {
-      "matrix": 16, "area": "poni_altar", "width": 2, "height": 3, "fill": "r",
+      "matrix": 16, "area": "poni_altar", "width": 2, "height": 3, "fill": "r", "cell": "4,18",
       "pieces": [
         { "file": "poni_altar.txt", "x": 0, "z": 0 }
       ]
     },
     // MountLanakila
     {
-      "matrix": 17, "area": "mount_lanakila", "width": 3, "height": 4, "fill": "r",
+      "matrix": 17, "area": "mount_lanakila", "width": 3, "height": 4, "fill": "r", "cell": "26,4",
       "pieces": [
         { "file": "mount_lanakila.txt", "x": 0, "z": 0 }
       ]
     },
     // Plan 23 · Z6: Diglett's Tunnel, a cave of its own under Akala between Route 8 and Route 9. Its matrix number is
     // well clear of the islands' (Ula'ula and Poni are a parallel session's), so the two may be laid in either order
-    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },

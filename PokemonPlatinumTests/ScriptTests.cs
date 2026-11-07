@@ -195,6 +195,8 @@ public class ScriptTests
           safari end
           bicycle on
           bicycle off
+          ride "Tauros"
+          ride off
           turnback
           defeat "lass_caroline"
           flowerclock

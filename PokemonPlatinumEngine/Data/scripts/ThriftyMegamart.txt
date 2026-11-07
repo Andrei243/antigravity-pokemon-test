@@ -1,7 +1,7 @@
 # The old Thrifty Megamart, Tapu Village, Ula'ula Island: Captain Acerola's trial (plan 23 · Z7). The lines are our own,
 # on Sun and Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ula'ula, Poni, Aether Paradise
 # and the League"): three ghosts drift about the shop's shelves and the totem Mimikyu waits at the counter. The totem
-# is met as a wild battle that can't be run from (its aura is plan 23 · Z6's). VAR_ALOLA_STORY 44 is the way in, 45 the
+# is fought as a totem (plan 23 · Z6: its aura, a Haunter at its first call, no ball, no running; wave 91). VAR_ALOLA_STORY 44 is the way in, 45 the
 # trial passed.
 #
 # The people: acerola, the three ghosts and the totem are shown by FLAG_ALOLA_MEGAMART_TRIAL while the trial is under way.
@@ -57,7 +57,8 @@ script Totem
   scene "The totem Mimikyu"
   text "A little cloth Pikachu peeked out from behind the counter... and the dark behind it began to move!"
   cry "Mimikyu"
-  wildbattle "Mimikyu" 25 nofleeing
+  # A totem (plan 23 · Z6): its aura raises every stat, it calls a Haunter at once, and it can't be caught
+  wildbattle "Mimikyu" 25 totem all ally "Haunter"
   setflag FLAG_ALOLA_MEGAMART_TRIAL_DONE
   hide self
   hide acerola

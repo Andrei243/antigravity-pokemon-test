@@ -56,9 +56,18 @@ public static class RegionMapArt
     /// says whether a cell of the grid has a chunk at all (the habitats' picture knows); <paramref name="revealed"/> are
     /// the hidden places the story has revealed, by their keys: the others are left off.
     /// </summary>
-    public static PixelCanvas Paint(Map world, RegionMap region, Func<int, int, bool> hasGround, IReadOnlySet<string> revealed)
+    public static PixelCanvas Paint(Map world, RegionMap region, Func<int, int, bool> hasGround, IReadOnlySet<string> revealed) =>
+        Paint(new[] { (world, 0, 0) }, region, hasGround, revealed);
+
+    /// <summary>
+    /// Paints a region whose grid lies over several overworld maps, each at the cell of its north-west chunk
+    /// (<see cref="RegionMap.Overworlds"/>: Alola's four islands, plan 23, wave 91). Their rectangles of chunks must not
+    /// overlap; a cell outside all of them is nothing.
+    /// </summary>
+    public static PixelCanvas Paint(IReadOnlyList<(Map World, int X, int Y)> worlds, RegionMap region, Func<int, int, bool> hasGround, IReadOnlySet<string> revealed)
     {
         const int T = CellTexels;
+        var world = new Ground(worlds);
         var view = region.View;
         int width = view.Width * T, height = view.Height * T;
         // A margin of cells round the view is worked out too, so nothing changes at the picture's own edge
@@ -77,7 +86,7 @@ public static class RegionMapArt
             for (int gx = 0; gx < gw; gx++)
             {
                 int cx = view.X - Margin + gx, cy = view.Y - Margin + gy, i = gy * gw + gx;
-                bool inGrid = cx >= 0 && cy >= 0 && cx < region.Columns && cy < region.Rows && cx < world.ChunkColumns && cy < world.ChunkRows;
+                bool inGrid = cx >= 0 && cy >= 0 && cx < region.Columns && cy < region.Rows && world.Has(cx, cy);
                 if (region.BlockAt(cx, cy) is { Hidden: { } hide } && !revealed.Contains(hide.Key))
                 {
                     // A hidden place not yet revealed is open sea, or whatever land lies round it
@@ -91,7 +100,7 @@ public static class RegionMapArt
                     kind[i] = Empty;
                     continue;
                 }
-                var (majority, share, water) = Majority(world, cx, cy);
+                var (majority, share, water) = world.Majority(cx, cy);
                 var area = world.AreaAt(cx * T, cy * T);
                 bool open = area is { Open: true };
                 // Ground of an area, or a chunk of scenery with something in it, is painted as it is; a chunk that is
@@ -201,7 +210,7 @@ public static class RegionMapArt
                 int tx = originX + px, ty = originY + py;
                 if (own[cell])
                 {
-                    what[i] = TileClass(world, tx, ty);
+                    what[i] = world.TileClass(tx, ty);
                     where[i] = country[cell];
                     continue;
                 }
@@ -215,15 +224,16 @@ public static class RegionMapArt
 
         // ---- Buildings: a roof over a wall
         var roofs = new Color[pw * ph];
-        if (world.PlacedBuildings != null)
-            foreach (var b in world.PlacedBuildings)
+        foreach (var (part, partX, partY) in worlds)
+            if (part.PlacedBuildings != null)
+            foreach (var b in part.PlacedBuildings)
             {
                 if (b.Forecourt) continue;
                 var roof = RoofOf(b);
                 for (int y = b.Y0; y <= b.Y1; y++)
                     for (int x = b.X0; x <= b.X1; x++)
                     {
-                        int px = x - originX, py = y - originY;
+                        int px = x + partX * T - originX, py = y + partY * T - originY;
                         if (px < 0 || py < 0 || px >= pw || py >= ph || !own[py / T * gw + px / T]) continue;
                         bool wall = y == b.Y1 && b.Y1 > b.Y0;
                         what[py * pw + px] = wall ? Wall : Roof;
@@ -303,6 +313,50 @@ public static class RegionMapArt
         Broadleaf => Broadleaf,
         _ => Forest
     };
+
+    /// <summary>
+    /// The ground a region's grid lies over: one overworld map, or several each at a cell of its own (Alola's islands). A
+    /// tile of the grid is a tile of whichever map's rectangle of chunks holds it, and sea where none does.
+    /// </summary>
+    private sealed class Ground
+    {
+        private readonly IReadOnlyList<(Map World, int X, int Y)> parts;
+
+        public Ground(IReadOnlyList<(Map World, int X, int Y)> parts) => this.parts = parts;
+
+        private (Map? World, int X, int Y) Part(int cx, int cy)
+        {
+            foreach (var (w, ox, oy) in parts)
+            {
+                int lx = cx - ox, ly = cy - oy;
+                if (lx >= 0 && ly >= 0 && lx < w.ChunkColumns && ly < w.ChunkRows) return (w, ox, oy);
+            }
+            return (null, 0, 0);
+        }
+
+        /// <summary>Whether a cell of the grid lies on a map at all.</summary>
+        public bool Has(int cx, int cy) => Part(cx, cy).World != null;
+
+        public MapArea? AreaAt(int tx, int ty)
+        {
+            if (tx < 0 || ty < 0) return null;
+            var (w, ox, oy) = Part(tx / CellTexels, ty / CellTexels);
+            return w?.AreaAt(tx - ox * CellTexels, ty - oy * CellTexels);
+        }
+
+        public (byte Class, float Share, float Water) Majority(int cx, int cy)
+        {
+            var (w, ox, oy) = Part(cx, cy);
+            return w == null ? (Sea, 1f, 1f) : RegionMapArt.Majority(w, cx - ox, cy - oy);
+        }
+
+        public byte TileClass(int tx, int ty)
+        {
+            if (tx < 0 || ty < 0) return Sea;
+            var (w, ox, oy) = Part(tx / CellTexels, ty / CellTexels);
+            return w == null ? Sea : RegionMapArt.TileClass(w, tx - ox * CellTexels, ty - oy * CellTexels);
+        }
+    }
 
     /// <summary>
     /// What most of a chunk is among forest, rock and sea, how much of it is one thing (whatever that is: a chunk of

@@ -1063,6 +1063,46 @@ script UseRockClimb
   end
 
 
+# The Ride Pager (plan 23, wave 91): a ride on land called, or sent home. The rides are registered by the story's flags
+# (RidePager.LandRides); `ride` refuses one not registered, indoors and where the place offers no riding
+script RidePager
+  speaker none
+  if var RIDING == 1 goto Off
+  choose "Which Pokémon will you call?" "Tauros" "Stoutland" "Mudsdale" "Cancel"
+  if var RESULT == 0 goto Tauros
+  if var RESULT == 1 goto Stoutland
+  if var RESULT == 2 goto Mudsdale
+  end
+label Tauros
+  ride "Tauros"
+  goto Rode
+label Stoutland
+  ride "Stoutland"
+  goto Rode
+label Mudsdale
+  ride "Mudsdale"
+label Rode
+  if var RESULT == 1 end
+  text "Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors."
+  end
+label Off
+  ride off
+  text "The Pokémon was sent home."
+  end
+
+# A charging Tauros runs into a cracked rock and breaks it (plan 23, wave 91): the Rock Smash the Ride Pager grants,
+# with no question, as the rock's own script breaks it
+script TaurosCharge
+  speaker none
+  if knows "Rock Smash" goto Able
+  if not granted "Rock Smash" end
+label Able
+  usemove "Rock Smash"
+  setflag own
+  smashencounter
+  end
+
+
 # Deep water at the player's feet. The field offers it only to someone who may surf (the move and the region's Badge
 # for it: the Fen Badge in Sinnoh, the Soul Badge in Kanto).
 script Water

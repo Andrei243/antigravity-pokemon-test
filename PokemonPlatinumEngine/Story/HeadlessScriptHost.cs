@@ -1631,5 +1631,37 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Log.Add(on ? "bicycle on" : "bicycle off");
         if (PlayerMode is not (TravelMode.Surfing or TravelMode.Diving)) PlayerMode = on ? TravelMode.Cycling : TravelMode.OnFoot;
+        if (on) Riding = null;
+    }
+
+    // ------------------------------------------------------------------ the Ride Pager on land (plan 23, wave 91)
+
+    public string? Riding { get; private set; }
+
+    /// <summary>
+    /// The script's <c>ride</c> as the game has it, with no field: on a registered ride's back where the region offers
+    /// riding, on land and out of doors (a test's map, where it has one, says whether it is indoors). Written as
+    /// <c>ride Tauros</c>, <c>ride off</c> or <c>ride refused Tauros</c>.
+    /// </summary>
+    public bool RidePokemon(string? species)
+    {
+        if (species == null)
+        {
+            if (Riding == null) return false;
+            Log.Add("ride off");
+            Riding = null;
+            PlayerMode = TravelMode.OnFoot;
+            return true;
+        }
+        var region = RegionDatabase.Get(Region);
+        if (region == null || !RidePager.CanRide(species, Story, region) || Map?.IsIndoors == true || PlayerMode is not (TravelMode.OnFoot or TravelMode.Riding))
+        {
+            Log.Add("ride refused " + species);
+            return false;
+        }
+        Riding = RidePager.LandRideOf(species)!.Value.Species;
+        PlayerMode = TravelMode.Riding;
+        Log.Add("ride " + Riding);
+        return true;
     }
 }

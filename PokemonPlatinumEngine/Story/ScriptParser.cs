@@ -25,7 +25,7 @@ public static class ScriptParser
         "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP",
         "TURNS", "SAFARI_CAUGHT",
         "LEAGUE_VICTORIES",
-        "CYCLING", "BIKE",
+        "CYCLING", "BIKE", "RIDING",
         "CAUGHT",
         "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
         "CROSSED_IN",
@@ -589,6 +589,14 @@ public static class ScriptParser
             case "bicycle":
                 // On or off the Bicycle by the story's say (plan 19 · K6: FireRed's ForcePlayerOntoBike on the Cycling Road)
                 return new Instruction { Op = Op.Bicycle, Line = line, Option = r.OneOf("on", "off") == "on" };
+            case "ride":
+                // On a Ride Pager's Pokémon or off it (plan 23, wave 91): `ride "Tauros"`, `ride off`
+                if (r.PeekWord("off"))
+                {
+                    r.OneOf("off");
+                    return new Instruction { Op = Op.RidePokemon, Line = line };
+                }
+                return new Instruction { Op = Op.RidePokemon, Line = line, Name = r.Text("a species' name"), Option = true };
 
             case "music":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Music, Line = line, Name = r.Text("a song") };

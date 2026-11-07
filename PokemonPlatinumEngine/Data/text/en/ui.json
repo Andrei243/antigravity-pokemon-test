@@ -1185,8 +1185,8 @@
       "left": "Left {n}", "right": "Right {n}", "ready": "Press to hear", "sounding": "Sounding",
       "hint": "Press the confirm key to bend this cry."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "national": "NATIONAL" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "national": "National" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "originalalola": "ALOLA", "national": "NATIONAL" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "originalalola": "Alola", "national": "National" },
     "found": "FOUND",
     "order": "ORDER",
     "seen": "SEEN",
@@ -1256,6 +1256,7 @@
       "kaloscentral": "CENTRAL KALOS POKÉDEX",
       "kaloscoastal": "COASTAL KALOS POKÉDEX",
       "kalosmountain": "MOUNTAIN KALOS POKÉDEX",
+      "originalalola": "ALOLA POKÉDEX",
       "national": "NATIONAL POKÉDEX",
       "research": "SINNOH RESEARCH",
       "line": {
@@ -1265,6 +1266,7 @@
         "kaloscentral": "has seen every one of the {count} Pokémon of the Central Kalos Pokédex: the gardens, the forests and the streets of Lumiose, all of them recorded.",
         "kaloscoastal": "has seen every one of the {count} Pokémon of the Coastal Kalos Pokédex, from the tide pools to the open sea.",
         "kalosmountain": "has seen every one of the {count} Pokémon of the Mountain Kalos Pokédex, from the high snow to the old stone.",
+        "originalalola": "has seen every one of the {count} Pokémon of the Alola Pokédex, on all four islands from the beaches to the peaks.",
         "national": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
       }
     }

@@ -1312,6 +1312,10 @@ public sealed partial class WorldRenderer
         // On the water the player sits on a Pokémon's back, and the two bob together, a texel up and a texel down.
         // The Pokémon is the one whose Surf it is, once its field sprite is ready (plan 10 · F1); the swimmer every
         // Pokémon shares stands in meanwhile
+        // On land a ride of the Ride Pager carries them (plan 23, wave 91; style guide, "Characters", "On a ride"): they
+        // sit on its field sprite as a surfer does, a texel up and down with its gallop; until its sprite is baked they
+        // stand on their own feet
+        bool riding = player.Mode == Overworld.TravelMode.Riding && player.Steed != null;
         float saddle = player.Saddle;
         float bob = player.Mount != null && MathF.Floor(time * 2.4f) % 2f == 0f ? Rows(1f) : 0f;
         FieldSprites.Strip? carrier = null;
@@ -1321,7 +1325,18 @@ public sealed partial class WorldRenderer
             FieldSprites.Prepare(context, carried, facing, ref fieldBakes);
             carrier = FieldSprites.Get(carried, facing);
         }
-        float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
+        else if (riding)
+        {
+            int facing = CharacterSprites.FacingIndex(player.Yaw);
+            FieldSprites.Prepare(context, player.Steed!, facing, ref fieldBakes);
+            carrier = FieldSprites.Get(player.Steed!, facing);
+            saddle = carrier != null ? 1f : 0f;
+            bob = carrier != null && player.IsMoving && MathF.Floor(time * 8f) % 2f == 0f ? Rows(1f) : 0f;
+            playerPose.Walk = 0f;
+            playerPose.WalkBlend = 0f;
+            playerPose.Running = false;
+        }
+        float seat = carrier != null ? (riding ? RideSeat(carrier) : CarrierSeat(carrier)) : SurfMount.Seat;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
         // Fishing, the player holds the rod (plan 11 · C8): their own look holding one
         bool fishing = player.Posed is Overworld.Stance.Fish or Overworld.Stance.Tug;
@@ -1344,7 +1359,13 @@ public sealed partial class WorldRenderer
             float sunk = carrier != null ? CarrierSunk(carrier) + FieldSprites.FootRows : 2f;
             mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(sunk), mz + 0.06f), player.Yaw, carrier);
         }
+        // A ride on land stands on the ground under its rider, a little nearer the camera, so its back covers their shoes
+        else if (riding && carrier != null)
+            mount = (new Vector3(px + NudgeOf(null), groundY + lift + bob - Rows(FieldSprites.FootRows), pz + 0.06f), player.Yaw, carrier);
     }
+
+    /// <summary>How many rows above the ground a rider of a ride on land sits: a little under half of the Pokémon's height (plan 23, wave 91).</summary>
+    internal static int RideSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - FieldSprites.FootRows) * 0.45f);
 
     /// <summary>How many rows of a Pokémon's field sprite are under the water while it carries someone: a fifth of it.</summary>
     internal static int CarrierSunk(FieldSprites.Strip carrier) => (int)MathF.Round(carrier.Rows * 0.2f);

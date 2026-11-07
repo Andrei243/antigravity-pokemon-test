@@ -345,7 +345,7 @@ public sealed partial class ScriptRunner
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker or Op.Photograph => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
-        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle => false,
+        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
         Op.PlatformLift => !i.Option,
@@ -991,6 +991,10 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Bicycle:
                 host.Ride(i.Option);
+                break;
+            case Op.RidePokemon:
+                // RESULT 1 where the player got on (or off), 0 where the ride was refused (plan 23, wave 91)
+                Result = host.RidePokemon(i.Option ? i.Name : null) ? 1 : 0;
                 break;
             case Op.SweetScent:
                 // A wild Pokémon comes out where any live, and its battle is waited for
@@ -2394,6 +2398,8 @@ public sealed partial class ScriptRunner
 
         // Whether the player rides the Bicycle (plan 01 · M11, part d: the Cycling Road's gate keepers)
         "CYCLING" => host.Cycling ? 1 : 0,
+        // Whether the player rides a Ride Pager's Pokémon on land (plan 23, wave 91)
+        "RIDING" => host.Riding != null ? 1 : 0,
         // Which bicycle (plan 21 · H12, part k; Emerald's GetPlayerAvatarBike: 1 the Acro Bike, 2 the Mach Bike)
         "BIKE" => host.Bike,
         // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)

@@ -9429,6 +9429,51 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   15 and Route 17, the Ruins of Abundance and Tapu Bulu, Poni's Plains and Grove, Resolution Cave, Seafolk's Mina
   (Ultra Sun and Ultra Moon), and the post-game: the Battle Tree, rematches and the flight to Galar.
 
+## Alola's loose ends: the last totems, two legendaries' beats, the islands' Town Map and the Ride Pager on land (2026-11-07, plan 23, wave 91)
+
+- **Every trial's totem fights as one.** Z7's three trials (Sophocles' in Hokulani Observatory, Acerola's in the old
+  Thrifty Megamart, Dulse's in Vast Poni Canyon) had their totems as plain wild battles that couldn't be run from; they
+  are now Z6's totem battles (`wildbattle … totem`): the totem Togedemaru's aura raises its Defense and its first call
+  brings a Charjabug (the observatory's own wiring pests), the totem Mimikyu's raises every stat and brings a Haunter,
+  and the totem Kommo-o's raises every stat and brings a Hakamo-o (its own line, as Sun and Moon's totem Kommo-o calls
+  one). Ours: Sun and Moon's totems' exact boosts and allies vary between the four games; these follow their beats.
+  Vast Poni Canyon's wild Pokémon call for help as the other trial sites' do (`callsForHelp`); the observatory and the
+  Megamart are rooms with no wild tables, so nothing more is needed there.
+- **Tapu Fini and Solgaleo are met after their beats** (plan 29's convention, `LegendaryScenesTests`): the wave's suite fix
+  staged both before this session reached them (the bars, the camera sent to the guardian and the lens closing, a geyser
+  under Tapu Fini in the Ruins of Hope and a burst of light on the Altar's dais for Solgaleo), and this session kept those
+  scripts as they stand: the lines are those Z7 wrote.
+- **One Town Map for four islands.** Each island is a matrix of its own (plan 23's Alola decisions), so the region's
+  map lays all four onto one grid of 30 cells by 27 (a cell of sea round the land), each at the cell of its north-west chunk, as the islands lie in the
+  games: Melemele at 0,0 (its own 16 by 16, drawn small in the north-west), Ula'ula at 17,0, Akala at 17,12 and Poni at
+  1,16 (`townmap.json`'s new `islands`; `RegionMap.Overworlds`, `IsOverworld`, `CellOn`; docs/data-files.md, "The region
+  map"). Plan 23 · Z5 had proposed an island to a tab of Fly's choice; one grid was chosen instead because the
+  Pokédex's area page, the way come, Fly and the rooms' cells then need nothing of their own, the picture shows the
+  islands where they lie, and a tab per island would have wanted a tab per island on the area page too. A block on
+  every cell of an open area (209), every word ours; towns and cities told of once come to, routes from the start.
+  Fly lands at the player's house and the twelve Pokémon Centers of the islands' grids (spawns 1 to 6, 20 to 22, 30 to
+  32); Aether Paradise, reached by ferry alone, is a map of its own off the grid and shown at Heahea City, where its ferry
+  sails from (`places`). The picture paints the four islands into one (`RegionMapArt.Paint` over several maps), and the
+  habitats' grid is the same (MapDraw's `island` on a map of the layout), so Melemele's caves keep their cells and
+  Poni's, Ula'ula's and Akala's are lit at their mouths.
+- **The Ride Pager is a key item** (ours on Sun and Moon's, id 9540), given by Hala with Tauros after Melemele's grand
+  trial; a save that has a ride registered and no pager is given it as it loads (no story version). USE (or the item
+  button) opens `common.RidePager`: which of Tauros, Stoutland and Mudsdale to call, or, while riding, the ride sent
+  home. A ride is `TravelMode.Riding` (the script's `ride "Tauros"`, `ride off`; built-in `RIDING`): at a run's pace
+  everywhere a walker goes (grass, stairs, a ledge's hop, deep snow and mud alike), the player sitting on the ride's own
+  field sprite as a surfer sits on the Pokémon whose Surf it was (style guide, "Characters", "On a ride"). It is offered
+  only where the region's movement lists `Ride` (Alola's), only for a ride whose flag is set, never indoors; it ends at
+  any door into a room, the Bicycle puts it away, Surf is not offered from a ride's back (get off first: in Sun and
+  Moon the water is Lapras's, called by the pager, and here a Lapras's Surf is the pager's grant), and a save made
+  riding wakes on foot (the save keeps the travel mode, not whose back it was). **Tauros's charge**: a step into a
+  cracked rock while riding Tauros is stopped by it, and the engine runs `common.TaurosCharge` on it, the Rock Smash the
+  pager grants with no question asked, so the rock before Ten Carat Hill falls as Tauros runs into it. Charizard's Fly,
+  Lapras's Surf and Machamp's Strength stay the grants Z5 made of them; Stoutland's Search and Mudsdale's Gallop carry
+  the player and do nothing more yet (Sun and Moon's buried items and rough ground are not drawn).
+- **Left**: Hapu's ride (Mudsdale is Tapu Village's rancher's here), Sharpedo's Jet and Stoutland's sniffing, the
+  rough ground only Mudsdale crosses, a ride's own song, the Fossil Restoration Center, Moon's totems, Malie Garden and
+  Routes 14, 15 and 17 (still the rulings' "Left" above), Ultra Space (Z8) and the user's look at the new shots.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

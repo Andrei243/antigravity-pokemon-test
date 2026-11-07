@@ -13024,6 +13024,23 @@ way 1, from answer 1
 from a trainer with lines of their own
 way -
   Anyone> The Ribbon Syndicate is for those who have collected a great many ribbons. Do come back when you have.
+=== common.RidePager
+from a trainer with lines of their own
+way 0
+  > Which Pokémon will you call?
+  > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
+  ? Which Pokémon will you call? = Tauros
+  * ride refused Tauros
+way 3, from answer 1
+  ? Which Pokémon will you call? = Cancel
+way 2, from answer 1
+  > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
+  ? Which Pokémon will you call? = Mudsdale
+  * ride refused Mudsdale
+way 1, from answer 1
+  > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
+  ? Which Pokémon will you call? = Stoutland
+  * ride refused Stoutland
 === common.Rock
 from an obstacle, with every field move and every badge
 way 0
@@ -13280,6 +13297,9 @@ way -
 from a trainer with lines of their own
 way -
   Anyone> A line of its own.
+=== common.TaurosCharge
+from a trainer with lines of their own
+way -
 === common.Television
 from a trainer with lines of their own
 way -
@@ -19420,6 +19440,8 @@ way 0
   > Lucas received the Fightinium Z!
   > Lucas put it away in the Items pocket.
   Hala> And take this, too. With it, the Tauros of the island will come when you call.
+  > Lucas received the Ride Pager!
+  > Lucas put it away in the Key Items pocket.
   > Lucas registered Tauros in the Ride Pager! Tauros can charge through cracked rocks.
   > Lucas received the TM54!
   > TM54 holds the move False Swipe.
@@ -19429,6 +19451,7 @@ way 0
   * battle alola_hala_1 Won
   * fanfare FanfareBadge
   * fanfare FanfareItem
+  * fanfare FanfareKeyItem
   * fanfare FanfareTM
   * endscene
   + FLAG_ALOLA_KUKUI_MARINA

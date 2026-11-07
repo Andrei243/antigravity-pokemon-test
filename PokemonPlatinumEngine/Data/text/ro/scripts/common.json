@@ -839,6 +839,40 @@
       ]
     }
   ],
+  "RidePager": [
+    {
+      "en": [
+        "Which Pokémon will you call?",
+        "Tauros",
+        "Stoutland",
+        "Mudsdale",
+        "Cancel"
+      ],
+      "text": [
+        "Ce Pokémon chemi?",
+        "Tauros",
+        "Stoutland",
+        "Mudsdale",
+        "Anulează"
+      ]
+    },
+    {
+      "en": [
+        "Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors."
+      ],
+      "text": [
+        "Nu a venit nimic. Un Pokémon vine doar după ce e înregistrat în Pagerul de Călărie, și doar afară."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon was sent home."
+      ],
+      "text": [
+        "Pokémonul a fost trimis acasă."
+      ]
+    }
+  ],
   "Water": [
     {
       "en": [

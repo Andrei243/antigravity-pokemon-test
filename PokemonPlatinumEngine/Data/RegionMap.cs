@@ -43,6 +43,14 @@ public sealed class RegionMapFile
     /// rooms that open off them have the same cell (plan 38 · EX10).
     /// </summary>
     public Dictionary<string, string> Places { get; set; } = new();
+
+    /// <summary>
+    /// The region's other overworld maps, each laid onto the grid at a cell of its own, <c>"x,y"</c>: the cell its north-west
+    /// chunk is shown at (plan 23, wave 91: Alola's four islands, each a matrix of its own, are one map of the region). A tile of
+    /// such a map is shown at that cell plus its own chunk; <see cref="Map"/> is laid at 0,0. Optional: a region of one
+    /// overworld has none.
+    /// </summary>
+    public Dictionary<string, string> Islands { get; set; } = new();
 }
 
 /// <summary>A place the map leaves out until a variable of the story holds its number.</summary>
@@ -129,6 +137,7 @@ public sealed class RegionMap
     private readonly Dictionary<(int X, int Y), RegionBlock> byCell = new();
     private readonly Dictionary<string, List<string>> arrivals = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, (int X, int Y)> placed = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, (int X, int Y)> islands = new(StringComparer.Ordinal);
 
     /// <summary>The region's folder under <c>Data/world</c>: "sinnoh".</summary>
     public string Region { get; }
@@ -157,6 +166,12 @@ public sealed class RegionMap
     /// <summary>The rooms and maps the file places itself (<see cref="RegionMapFile.Places"/>), by name.</summary>
     public IReadOnlyDictionary<string, (int X, int Y)> Placed => placed;
 
+    /// <summary>
+    /// Every overworld map the grid lies over with the cell its north-west chunk is shown at: <see cref="Map"/> at 0,0, and
+    /// the file's <see cref="RegionMapFile.Islands"/> (Alola's other islands) at theirs.
+    /// </summary>
+    public IReadOnlyDictionary<string, (int X, int Y)> Overworlds => islands;
+
     public RegionMap(string region, RegionMapFile file)
     {
         Region = region;
@@ -173,6 +188,13 @@ public sealed class RegionMap
         if (Bounds.Left > Bounds.Right || Bounds.Top > Bounds.Bottom || !InView(Bounds.Left, Bounds.Top) || !InView(Bounds.Right, Bounds.Bottom))
             throw new InvalidDataException($"The map of {region}: its cursor's bounds lie outside its view.");
         if (!InBounds(Start.X, Start.Y)) throw new InvalidDataException($"The map of {region}: its cursor starts outside its bounds.");
+        islands[Map] = (0, 0);
+        foreach (var (name, text) in file.Islands)
+        {
+            var cell = ParseCells(text);
+            if (cell.Count != 1 || cell[0].X < 0 || cell[0].Y < 0 || cell[0].X >= Columns || cell[0].Y >= Rows || !islands.TryAdd(name, cell[0]))
+                throw new InvalidDataException($"The map of {region}: the island '{name}' is laid at '{text}', which is no one cell of its grid, or twice.");
+        }
 
         Hidden = file.Hidden.Select(h => new RegionHiddenPlace(h.Key, h.Variable, h.Value, h.Sea)).ToList();
         RegionPlace Place(RegionPlaceRecord r) => new(r.Key, r.Name, r.About, r.Flag, r.Arrival ?? new List<string>());
@@ -250,6 +272,20 @@ public sealed class RegionMap
     /// <summary>The cell a tile of the overworld lies in.</summary>
     public static (int X, int Y) CellOf(int tileX, int tileY) => (tileX / Overworld.Map.ChunkTiles, tileY / Overworld.Map.ChunkTiles);
 
+    /// <summary>Whether a map of the game is one the grid lies over: the region's overworld or one of its islands.</summary>
+    public bool IsOverworld(string mapName) => islands.ContainsKey(mapName);
+
+    /// <summary>
+    /// The cell a tile of one of the grid's overworld maps is shown at (<see cref="Overworlds"/>): the map's own cell plus
+    /// the chunk the tile lies in; on the region's one overworld, <see cref="CellOf(int, int)"/>.
+    /// </summary>
+    public (int X, int Y) CellOn(string mapName, int tileX, int tileY)
+    {
+        var (x, y) = CellOf(tileX, tileY);
+        var (ox, oy) = islands.GetValueOrDefault(mapName);
+        return (ox + x, oy + y);
+    }
+
     /// <summary>
     /// The flags a first arrival somewhere sets (an area's key or a room's name), where the original's own map
     /// script sets them and no script of ours does: what a landmark's words on the map wait for.
@@ -266,17 +302,20 @@ public sealed class RegionMap
         var byName = new Dictionary<string, Map>(StringComparer.Ordinal);
         foreach (var map in maps) byName.TryAdd(map.Name, map);
         var places = new Dictionary<string, (int X, int Y)>(StringComparer.Ordinal);
-        if (!byName.TryGetValue(Map, out var overworld)) return places;
+        if (!byName.ContainsKey(Map)) return places;
 
         var queue = new Queue<(string Name, (int X, int Y) Cell)>();
         // (the places the file names itself come first: the cell they are said to be at, whatever warp might lead there)
         foreach (var (name, cell) in placed) queue.Enqueue((name, cell));
-        foreach (var warp in overworld.Warps)
-            if (warp.TargetMap != Map) queue.Enqueue((warp.TargetMap, CellOf(warp.SourceX, warp.SourceY)));
+        // (the ways in from each overworld map the grid lies over: Alola's islands each have their own)
+        foreach (var island in islands.Keys)
+            if (byName.TryGetValue(island, out var overworld))
+                foreach (var warp in overworld.Warps)
+                    if (!IsOverworld(warp.TargetMap)) queue.Enqueue((warp.TargetMap, CellOn(island, warp.SourceX, warp.SourceY)));
         while (queue.Count > 0)
         {
             var (name, cell) = queue.Dequeue();
-            if (name == Map || !byName.TryGetValue(name, out var map) || !places.TryAdd(name, cell)) continue;
+            if (IsOverworld(name) || !byName.TryGetValue(name, out var map) || !places.TryAdd(name, cell)) continue;
             foreach (var warp in map.Warps) queue.Enqueue((warp.TargetMap, cell));
         }
         return places;

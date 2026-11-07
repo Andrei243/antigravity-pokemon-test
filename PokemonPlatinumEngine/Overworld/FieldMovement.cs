@@ -20,7 +20,12 @@ public enum TravelMode
     /// glide on stopping (<see cref="FieldMovement.Coast"/>). Taken with the Run button where the region skates and
     /// the skates are had, as the Bicycle's gear is changed with it.
     /// </summary>
-    Skating
+    Skating,
+    /// <summary>
+    /// On the back of a Ride Pager's Pokémon on land (plan 23, wave 91: Alola's Tauros, Stoutland and Mudsdale): at a
+    /// run's pace, as a walker goes otherwise (grass, stairs and ledges alike), and off at any door indoors.
+    /// </summary>
+    Riding
 }
 
 /// <summary>
@@ -545,6 +550,8 @@ public static class FieldMovement
         TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,
         // Skates go at a run's pace wherever they go at all (plan 23 · Z1)
         TravelMode.Skating => Pace.Fast,
+        // A ride gallops at a run's pace, deep snow and mud included (plan 23, wave 91)
+        TravelMode.Riding => Pace.Fast,
         _ => underfoot switch
         {
             TileBehavior.DeepestSnow => Pace.Slowest,
