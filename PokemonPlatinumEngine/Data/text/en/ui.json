@@ -75,6 +75,22 @@
 
   "options": {
     "title": "OPTIONS",
+    "category": {
+      "Game": "GAME",
+      "Field": "FIELD",
+      "Battle": "BATTLE",
+      "Display": "DISPLAY",
+      "Sound": "SOUND",
+      "Controls": "CONTROLS",
+      "Access": "ACCESS",
+      "More": "MORE"
+    },
+    "keys": {
+      "shoulders": "Q / E"
+    },
+    "hint": {
+      "tab": "Tab"
+    },
     "language": {
       "label": "Language",
       "help": "The language the game's words are written in. Others come as they are translated."

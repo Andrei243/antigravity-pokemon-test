@@ -8,7 +8,7 @@ partial class Harness
     private void LookCaptionsAndHold()
     {
         var options = game.Options;
-        void GoToRow(OptionRow row) { while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != row) options.Move(1); }
+        void GoToRow(OptionRow row) => options.Select(row);
 
         game.State = GameState.Options;
         options.Open();

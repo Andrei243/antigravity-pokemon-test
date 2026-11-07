@@ -187,6 +187,14 @@ public class PointerTests
         }
         options.PointAt(4);
         Assert.Equal(4, options.SelectedIndex);
+        // A tab under the pointer: a hover leaves the cursor, a click puts the tab on show
+        for (int i = 0; i < OptionsScreen.Categories.Count; i++)
+            Assert.Equal(OptionsScreen.TabHit + i, options.HitTest(Middle(OptionsScreen.TabRect(i))));
+        options.PointAt(OptionsScreen.TabHit + 2);
+        Assert.Equal((OptionCategory.Game, 4), (options.Category, options.SelectedIndex));
+        Assert.True(options.Press(OptionsScreen.TabHit + 2));
+        Assert.Equal((OptionCategory.Battle, 0), (options.Category, options.SelectedIndex));
+        Assert.False(options.Press(1));
 
         var save = new SaveScreen();
         save.Open(new SaveData { PlayerName = "Lucas" });

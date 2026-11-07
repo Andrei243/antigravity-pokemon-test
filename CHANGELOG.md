@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- The options are sorted into eight tabs: Game, Field, Battle, Display, Sound, Controls, Access and More. Turn them with Q and E (the shoulder buttons on a pad) or click one.
 - Alola has a Town Map: all four islands on one map as they lie in the sea, Melemele in the north-west, Ula'ula in the north-east, Akala in the south-east and Poni in the south-west, with every town told of once you have been there. Fly lands at the islands' Pokémon Centers and your house, and a Pokémon's area page in the Alola Pokédex lights its places on every island.
 - Hala now hands you the Ride Pager with Tauros. Use it to call Tauros, Stoutland or Mudsdale and ride on its back at a gallop over land (use it again to send it home); riding Tauros, just run into a cracked rock and it breaks.
 - The totems of Sophocles', Acerola's and Dulse's trials now fight as totems too, each in its golden aura and calling an ally at once, and Tapu Fini and Solgaleo are met with a scene of their own before their battles.

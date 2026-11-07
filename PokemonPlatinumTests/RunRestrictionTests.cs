@@ -261,14 +261,14 @@ public class RunRestrictionTests
     {
         var screen = new OptionsScreen { StyleLocked = true };
         screen.Open();
-        screen.SelectedIndex = (int)OptionRow.BattleStyle;
+        screen.Select(OptionRow.BattleStyle);
         var settings = new GameSettings { BattleStyle = BattleStyle.Set };
         Assert.False(screen.Step(settings, 1));
         Assert.Equal(BattleStyle.Set, settings.BattleStyle);
 
         var free = new OptionsScreen();
         free.Open();
-        free.SelectedIndex = (int)OptionRow.BattleStyle;
+        free.Select(OptionRow.BattleStyle);
         Assert.True(free.Step(settings, 1));
         Assert.Equal(BattleStyle.Shift, settings.BattleStyle);
     }

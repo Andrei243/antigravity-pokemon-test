@@ -913,7 +913,7 @@ public class BattlePresentationTests
     {
         var options = new OptionsScreen();
         options.Open();
-        while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.Help) options.Move(1);
+        options.Select(OptionRow.Help);
         options.Confirm();
         var help = options.Help;
         Assert.True(help.IsActive);

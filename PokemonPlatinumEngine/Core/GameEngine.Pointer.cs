@@ -115,7 +115,7 @@ public partial class GameEngine
                 return new Pointable(at => flow.PCScreen.HitTest(at, flow.Party.Count), i => flow.PCScreen.PointAt(i, flow.Party.Count),
                     i => flow.PCScreen.Press(i, flow.Party.Count));
             case GameState.Options:
-                return new Pointable(flow.OptionsScreen.HitTest, flow.OptionsScreen.PointAt);
+                return new Pointable(flow.OptionsScreen.HitTest, flow.OptionsScreen.PointAt, flow.OptionsScreen.Press);
             case GameState.SaveMenu:
                 return new Pointable(flow.SaveScreen.HitTest, flow.SaveScreen.PointAt);
             case GameState.FlyMap:

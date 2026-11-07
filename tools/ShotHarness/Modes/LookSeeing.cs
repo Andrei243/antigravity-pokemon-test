@@ -10,7 +10,7 @@ partial class Harness
     {
         var options = game.Options;
         var settings = engine.Settings;
-        void GoToRow(OptionRow row) { while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != row) options.Move(1); }
+        void GoToRow(OptionRow row) => options.Select(row);
         void Apply() => game.ApplySettings();
 
         // The rows

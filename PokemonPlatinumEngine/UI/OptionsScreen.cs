@@ -54,6 +54,12 @@ public enum OptionRow
 }
 
 /// <summary>
+/// The tabs the options are grouped under: every row is in exactly one (<see cref="OptionsScreen.CategoryOf"/>). A new
+/// row names its tab there as well as going at the enum's end before HELP.
+/// </summary>
+public enum OptionCategory { Game, Field, Battle, Display, Sound, Controls, Access, More }
+
+/// <summary>
 /// The options screen: the language (plan 17 · N1), text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
 /// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
@@ -71,12 +77,101 @@ public class OptionsScreen
     /// The rows this screen shows: every one unless it was made with fewer (plan 16 · T24: the first start's page shows a
     /// few and shares <see cref="Change"/> and <see cref="Describe"/> with this screen).
     /// </summary>
-    public IReadOnlyList<OptionRow> Rows { get; }
+    public IReadOnlyList<OptionRow> Rows => fixedRows ?? RowsIn(Category);
 
-    public OptionsScreen(IReadOnlyList<OptionRow>? rows = null) => Rows = rows ?? AllRows;
+    private readonly IReadOnlyList<OptionRow>? fixedRows;
 
-    /// <summary>The rows the screen shows at once, above the help panel.</summary>
-    public const int VisibleRows = 9;
+    public OptionsScreen(IReadOnlyList<OptionRow>? rows = null) => fixedRows = rows;
+
+    /// <summary>The rows the screen shows at once, under the tabs and above the help panel.</summary>
+    public const int VisibleRows = 8;
+
+    // ---------------------------------------------------------------- the tabs
+
+    /// <summary>Every tab, in the order the strip shows them.</summary>
+    public static IReadOnlyList<OptionCategory> Categories { get; } = Enum.GetValues<OptionCategory>();
+
+    /// <summary>Whether the screen is cut into tabs: the options' own screen is; one made with rows of its own shows them in one list.</summary>
+    public bool Tabbed => fixedRows == null;
+
+    /// <summary>The tab on show; its rows are <see cref="Rows"/>.</summary>
+    public OptionCategory Category { get; private set; }
+
+    /// <summary>The row under the cursor.</summary>
+    public OptionRow Selected => Rows[SelectedIndex];
+
+    /// <summary>The rows of a tab, in the enum's order.</summary>
+    public static IReadOnlyList<OptionRow> RowsIn(OptionCategory category) => byCategory[(int)category];
+
+    private static readonly OptionRow[][] byCategory =
+        Enum.GetValues<OptionCategory>().Select(c => Enum.GetValues<OptionRow>().Where(r => CategoryOf(r) == c).ToArray()).ToArray();
+
+    /// <summary>The tab a row is under.</summary>
+    public static OptionCategory CategoryOf(OptionRow row) => row switch
+    {
+        OptionRow.Language or OptionRow.TextSpeed or OptionRow.AutoAdvance or OptionRow.SpeedUp or OptionRow.SkipScenes
+            or OptionRow.Autosave or OptionRow.NextObjective or OptionRow.Tips or OptionRow.Requests or OptionRow.MedalNotices
+            or OptionRow.TimeOfDay or OptionRow.Season or OptionRow.SlotTwo => OptionCategory.Game,
+        OptionRow.Autorun or OptionRow.Movement or OptionRow.Follower or OptionRow.WildPokemon or OptionRow.FieldHelpers
+            or OptionRow.PartyTools or OptionRow.BoxesAnywhere or OptionRow.BoxTools or OptionRow.AreaChecklist => OptionCategory.Field,
+        OptionRow.BattleScene or OptionRow.BattleStyle or OptionRow.MoveHints or OptionRow.TrainerLines or OptionRow.AutoBattle
+            or OptionRow.RetryBattles or OptionRow.RecordBattles or OptionRow.Coop => OptionCategory.Battle,
+        OptionRow.Quality or OptionRow.WindowSize or OptionRow.Fullscreen or OptionRow.VSync or OptionRow.FrameCap
+            or OptionRow.DynamicResolution or OptionRow.FocusPause or OptionRow.Frame => OptionCategory.Display,
+        OptionRow.Sound or OptionRow.MusicVolume or OptionRow.SoundVolume or OptionRow.CryVolume or OptionRow.AmbienceVolume
+            or OptionRow.Speakers or OptionRow.Voices or OptionRow.VoiceVolume or OptionRow.LetVoicesFinish or OptionRow.EnglishVoices => OptionCategory.Sound,
+        OptionRow.ButtonMode or OptionRow.StickDeadZone or OptionRow.Gamepad or OptionRow.Rumble or OptionRow.Controls => OptionCategory.Controls,
+        OptionRow.TextSize or OptionRow.ColourVision or OptionRow.HighContrast or OptionRow.ReduceFlashes or OptionRow.ReduceMotion
+            or OptionRow.Captions or OptionRow.HoldToConfirm or OptionRow.TimingAssist => OptionCategory.Access,
+        OptionRow.RunTimer or OptionRow.StreamFeed or OptionRow.StreamSafe or OptionRow.Jukebox or OptionRow.Packs
+            or OptionRow.Help or OptionRow.ResetDefaults => OptionCategory.More,
+        _ => throw new ArgumentOutOfRangeException(nameof(row), row, "every option row is under a tab: name it in OptionsScreen.CategoryOf")
+    };
+
+    /// <summary>The next or the previous tab, wrapping round, with the cursor on its first row.</summary>
+    public void ChangeCategory(int step)
+    {
+        if (!Tabbed) return;
+        ShowCategory((OptionCategory)(((int)Category + step + Categories.Count) % Categories.Count));
+    }
+
+    /// <summary>A tab put on show, the cursor on its first row.</summary>
+    public void ShowCategory(OptionCategory category)
+    {
+        if (!Tabbed || category == Category) return;
+        Category = category;
+        SelectedIndex = 0;
+        FirstRow = 0;
+        AudioManager.PlaySound("page");
+    }
+
+    /// <summary>The cursor onto a row, its tab put on show first: how a tool or a test finds a row by its name.</summary>
+    public void Select(OptionRow row)
+    {
+        if (Tabbed) Category = CategoryOf(row);
+        int at = Rows.ToList().IndexOf(row);
+        if (at < 0) return;
+        SelectedIndex = at;
+        FirstRow = UiNav.Window(FirstRow, SelectedIndex, Rows.Count, VisibleRows);
+    }
+
+    /// <summary>Where the strip of tabs stands.</summary>
+    public static Rectangle TabStrip => new(64, ModernUi.ContentTop, GameEngine.VirtualWidth - 128, 76);
+
+    /// <summary>Where the first row stands: under the strip when there is one.</summary>
+    private float ListTop => ModernUi.ContentTop + (Tabbed ? 76 + 16 : 0);
+
+    /// <summary>A tab's rectangle on the strip, as <see cref="ModernUi.Tabs"/> lays them out.</summary>
+    public static Rectangle TabRect(int i)
+    {
+        const float gap = 12;
+        var strip = TabStrip;
+        float w = (strip.Width - gap * (Categories.Count - 1)) / Categories.Count;
+        return new Rectangle(strip.X + i * (w + gap), strip.Y, w, strip.Height);
+    }
+
+    /// <summary>What <see cref="HitTest"/> gives for a tab: this plus the tab's index.</summary>
+    public const int TabHit = 1000;
 
     public bool IsActive { get; private set; }
     public int SelectedIndex { get; set; }
@@ -114,6 +209,7 @@ public class OptionsScreen
     public void Open()
     {
         IsActive = true;
+        Category = OptionCategory.Game;
         SelectedIndex = 0;
         FirstRow = 0;
         ResetAsking = false;
@@ -192,7 +288,7 @@ public class OptionsScreen
     {
         const float pitch = 86, height = 78;
         float width = GameEngine.VirtualWidth - 128 - (Rows.Count > VisibleRows ? 36 : 0);
-        return new Rectangle(64, ModernUi.ContentTop + k * pitch, width, height);
+        return new Rectangle(64, ListTop + k * pitch, width, height);
     }
 
     /// <summary>
@@ -203,9 +299,20 @@ public class OptionsScreen
     {
         if (!IsActive || Help.IsActive || Controls.IsActive || Packs.IsActive) return null;
         if (ResetAsking) return UiPointer.Hit(ModernUi.PromptButtons(GameEngine.VirtualWidth, GameEngine.VirtualHeight, 2), at);
+        if (Tabbed)
+            for (int i = 0; i < Categories.Count; i++)
+                if (UiPointer.Inside(TabRect(i), at)) return TabHit + i;
         for (int k = 0; k < Math.Min(VisibleRows, Rows.Count); k++)
             if (UiPointer.Inside(RowRect(k), at)) return FirstRow + k;
         return null;
+    }
+
+    /// <summary>A click: on a tab it puts the tab on show (true: nothing more is done with it); a row's click is the A button.</summary>
+    public bool Press(int index)
+    {
+        if (ResetAsking || index < TabHit) return false;
+        ShowCategory(Categories[index - TabHit]);
+        return true;
     }
 
     /// <summary>A hover: the cursor onto the row (or the reset question's answer) under the pointer.</summary>
@@ -216,6 +323,7 @@ public class OptionsScreen
             if ((index == 1) != ResetYes) ToggleReset();
             return;
         }
+        if (index >= TabHit) return;
         if (index != SelectedIndex && index >= 0 && index < Rows.Count) Move(index - SelectedIndex);
     }
 
@@ -251,7 +359,9 @@ public class OptionsScreen
             return false;
         }
 
-        if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
+        if (Tabbed && InputManager.IsActionPressed(GameAction.PageLeft)) ChangeCategory(-1);
+        else if (Tabbed && InputManager.IsActionPressed(GameAction.PageRight)) ChangeCategory(1);
+        else if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
         else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
         else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
         {
@@ -661,6 +771,30 @@ public class OptionsScreen
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help", ("version", Core.Diagnostics.GameVersion.Shown)))
     };
 
+    private static UiIcon IconOf(OptionCategory c) => c switch
+    {
+        OptionCategory.Game => UiIcon.Star,
+        OptionCategory.Field => UiIcon.MapCard,
+        OptionCategory.Battle => UiIcon.Ball,
+        OptionCategory.Display => UiIcon.Size,
+        OptionCategory.Sound => UiIcon.Radio,
+        OptionCategory.Controls => UiIcon.Gear,
+        OptionCategory.Access => UiIcon.Trainer,
+        _ => UiIcon.Boxes
+    };
+
+    private static Color ColourOf(OptionCategory c) => c switch
+    {
+        OptionCategory.Game => ModernUi.Gold,
+        OptionCategory.Field => ModernUi.Green,
+        OptionCategory.Battle => ModernUi.Red,
+        OptionCategory.Display => ModernUi.Blue,
+        OptionCategory.Sound => new Color(150, 96, 220, 255),
+        OptionCategory.Controls => ModernUi.Track,
+        OptionCategory.Access => new Color(16, 150, 160, 255),
+        _ => ModernUi.Selection
+    };
+
     private static string OnOff(bool on) => Text.Of(on ? "shared.on" : "shared.off");
 
     private static string Percent(int volume) => Text.Of("shared.percent", ("n", volume));
@@ -685,8 +819,15 @@ public class OptionsScreen
         }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle(Text.Of("options.title"));
-        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.Packs or OptionRow.ResetDefaults) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
-        else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        var hints = new List<HintItem>();
+        if (Tabbed) hints.Add(ModernUi.Hint("options.keys.shoulders", "options.hint.tab"));
+        hints.Add(Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.Packs or OptionRow.ResetDefaults
+            ? ModernUi.Hint("shared.keys.z", "shared.hints.open")
+            : ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"));
+        hints.Add(ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        ModernUi.Hints(sw - 64, 44, hints.ToArray());
+        if (Tabbed)
+            ModernUi.Tabs(TabStrip, Categories.Select(c => (Text.Of($"options.category.{c}"), IconOf(c), ColourOf(c))).ToArray(), (int)Category);
 
         const float pitch = 86, height = 78;
         bool scrolls = Rows.Count > VisibleRows;
@@ -700,14 +841,14 @@ public class OptionsScreen
         if (scrolls)
         {
             // Where the window is among all the rows: a thin track with a thumb at the right
-            var track = new Rectangle(sw - 64 - 12, ModernUi.ContentTop, 12, VisibleRows * pitch - (pitch - height));
+            var track = new Rectangle(sw - 64 - 12, ListTop, 12, VisibleRows * pitch - (pitch - height));
             UiShapes.Fill(track, 6, ModernUi.Rule);
             float size = track.Height * VisibleRows / Rows.Count;
             float at = (track.Height - size) * FirstRow / (Rows.Count - VisibleRows);
             UiShapes.Fill(new Rectangle(track.X, track.Y + at, track.Width, size), 6, ModernUi.Frame);
         }
 
-        float top = ModernUi.ContentTop + Math.Min(VisibleRows, Rows.Count) * pitch + 6;
+        float top = ListTop + VisibleRows * pitch + 6;
         var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
         ModernUi.DrawWrapped(Described(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);

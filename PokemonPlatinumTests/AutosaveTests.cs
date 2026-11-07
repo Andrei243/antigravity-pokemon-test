@@ -413,7 +413,7 @@ public class AutosaveTests
         var settings = new GameSettings { MusicVolume = 20, Quality = GraphicsQuality.Medium };
         var screen = new OptionsScreen();
         screen.Open();
-        while (Enum.GetValues<OptionRow>()[screen.SelectedIndex] != OptionRow.ResetDefaults) screen.Move(1);
+        screen.Select(OptionRow.ResetDefaults);
         Assert.False(screen.ResetAsking);
         screen.Confirm(settings);
         Assert.True(screen.ResetAsking);
