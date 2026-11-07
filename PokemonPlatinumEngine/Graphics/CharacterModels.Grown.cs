@@ -88,11 +88,13 @@ internal static partial class CharacterModels
         float waistW = (curved ? 0.76f : build == BodyBuild.Child ? 0.94f : 0.86f) * chestW, waistD = 0.80f * waistW;
         float pelvisW = (curved ? 1.06f : 0.92f) * chestW, pelvisD = 0.66f * pelvisW;
 
-        // The legs straight down from the hip joints, the feet a little apart (a curved figure's knees a little closer)
-        float hipX = 0.6f * pelvisW, ankleY = 0.045f * crown;
+        // The legs down from the hip joints, the feet a little apart (a curved figure's knees a little closer): never so
+        // close that the outline's shell, a little out from the body, takes weights from the other leg across the gap
+        // between the thighs or the knees (it stretched into a fin in a stride: the child's thick legs set it apart)
+        float hipX = Math.Max(0.66f * pelvisW, 0.056f * girth + 0.022f), ankleY = 0.045f * crown;
         var legTop = new Vector3(hipX, hipY, 0f);
-        var knee = new Vector3(hipX * (curved ? 0.86f : 0.98f), (ankleY + hipY) / 2f, 0.01f * size);
-        var ankle = new Vector3(hipX * 1.04f, ankleY, -0.005f * size);
+        var knee = new Vector3(hipX * (curved ? 0.95f : 1.05f), (ankleY + hipY) / 2f, 0.01f * size);
+        var ankle = new Vector3(hipX * (curved ? 1.08f : 1.12f), ankleY, -0.005f * size);
 
         return new GrownFrame(build, curved, crown, new Vector3(0, headY, 0.005f + forward), headR, chin,
             shoulderY + 0.02f * size, shoulderY, shoulderY - 0.30f * torso, shoulderY - 0.45f * torso, shoulderY - 0.70f * torso, hipY,
@@ -194,6 +196,7 @@ internal static partial class CharacterModels
             GrownLeg(m, f, side, bareLegs ? skin : s.Bottom, skin);
             GrownFoot(m, f, side, s.Shoes, s.Sole ?? Shade(s.Shoes, 0.62f), collar: bareLegs);
         }
+        GrownSeat(m, f, s.Bottom, skin);
         GrownBaseLayer(m, f, s, upper, sleeves, longSleeves, bareLegs);
 
         // The face's place: the surface between the eyes at the head's middle, the eyes a fifth of the head's width
@@ -387,13 +390,29 @@ internal static partial class CharacterModels
         var knee = Side(f.Knee, side);
         var ankle = Side(f.Ankle, side);
         var mat = SurfaceOf(leg, skin);
-        m.Capsule(hip + new Vector3(0, 0.04f * sz, 0), knee, 0.074f * g, 0.046f * g, leg, thighB, 0.03f * sz, mat);
+        // Small blends: a wide one joins the leg to the other across the gap between them, and the field's dip there
+        // brings the outline's shells of the two together
+        // The thigh's top inside the pelvis, below the waist (higher, a broad build's reached its side, which a sitter's
+        // thigh then dragged forward)
+        m.Capsule(hip + new Vector3(0, 0.01f * sz, 0), knee, 0.074f * g, 0.046f * g, leg, thighB, 0.015f * sz, mat);
         m.Ellipsoid(Vector3.Lerp(hip, knee, 0.38f) + new Vector3(side * 0.006f * g, 0, 0.022f * g), new Vector3(0.058f * g, 0.30f * Vector3.Distance(hip, knee), 0.05f * g),
-            leg, thighB, 0.03f * sz, mat, AlignY(knee - hip));
-        m.Sphere(knee, 0.047f * g, leg, shinB, 0.02f * sz, mat);
-        m.Capsule(knee, ankle + new Vector3(0, 0.01f * sz, 0), 0.045f * g, 0.031f * g, leg, shinB, 0.02f * sz, mat);
+            leg, thighB, 0.015f * sz, mat, AlignY(knee - hip));
+        m.Sphere(knee, 0.047f * g, leg, shinB, 0.012f * sz, mat);
+        m.Capsule(knee, ankle + new Vector3(0, 0.01f * sz, 0), 0.045f * g, 0.031f * g, leg, shinB, 0.012f * sz, mat);
         m.Ellipsoid(Vector3.Lerp(knee, ankle, 0.3f) + new Vector3(side * 0.004f * g, 0, -0.02f * g), new Vector3(0.046f * g, 0.26f * Vector3.Distance(knee, ankle), 0.043f * g),
-            leg, shinB, 0.03f * sz, mat, AlignY(ankle - knee));
+            leg, shinB, 0.015f * sz, mat, AlignY(ankle - knee));
+    }
+
+    /// <summary>
+    /// The seat (style guide, "Grown characters"): a piece of the pelvis between the tops of the thighs, on the hips'
+    /// bone, made after both legs so the crotch moves with the pelvis and never with both thighs at once (it stretched
+    /// between them in a stride).
+    /// </summary>
+    private static void GrownSeat(SdfModel m, GrownFrame f, Color bottom, Color skin)
+    {
+        float sz = f.Size;
+        m.Ellipsoid(new Vector3(0, f.HipY - 0.03f * sz, -0.012f * sz), new Vector3(f.LegTop.X * 0.7f, 0.05f * sz, f.PelvisD * 0.8f), bottom, HumanBones.Hips, 0.015f * sz,
+            SurfaceOf(bottom, skin));
     }
 
     /// <summary>

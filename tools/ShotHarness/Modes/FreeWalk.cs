@@ -102,24 +102,42 @@ partial class Harness
             Save(views, "fw40_face");
         }
 
+        // The hips close up in a stride and a run, from the front, the side and behind: where the thighs turn under the pelvis
+        if (Wanted("fw40_hips"))
+        {
+            var frame = CharacterModels.GrownFrameOf(BodyBuild.Teen);
+            float[] round = { 0.3f, MathF.PI / 2f, MathF.PI };
+            var board = Raylib.GenImageColor(300 * round.Length, (340 + Label) * 2, backdrop);
+            foreach (var (row, text, stride) in new[] { (0, "walk a", pose with { Walk = 0.25f, WalkBlend = 1f }), (1, "run", pose with { Walk = 0.25f, WalkBlend = 1f, Running = true }) })
+            {
+                var views = CharacterStudio.Turntable(context, "PLAYER~Teen", round, 300, 340, stride, 0.62f, (frame.HipY + frame.Knee.Y) / 2f);
+                Raylib.ImageDraw(ref board, views, new Rectangle(0, 0, views.Width, views.Height), new Rectangle(0, row * (340 + Label) + Label, views.Width, 340), Color.White);
+                Raylib.UnloadImage(views);
+                Labelled(ref board, text, 0, row * (340 + Label), 300 * round.Length);
+            }
+            Save(board, "fw40_hips");
+        }
+
         // The chibi kit's clips on a grown body, which follows them with its seven appended bones at rest
         if (Wanted("fw40_poses"))
         {
-            (string Text, CharacterPose Pose)[] poses =
+            (string Text, CharacterPose Pose, string Type)[] poses =
             {
-                ("idle", pose),
-                ("walk a", pose with { Walk = 0.25f, WalkBlend = 1f }),
-                ("walk b", pose with { Walk = 0.75f, WalkBlend = 1f }),
-                ("run", pose with { Walk = 0.25f, WalkBlend = 1f, Running = true }),
-                ("bow", pose with { Emote = Emote.Bow, EmoteTime = 0.6f }),
-                ("sit", pose with { Stance = PokemonPlatinumEngine.Overworld.Stance.Sit })
+                ("idle", pose, "PLAYER~Teen"),
+                ("walk a", pose with { Walk = 0.25f, WalkBlend = 1f }, "PLAYER~Teen"),
+                ("walk b", pose with { Walk = 0.75f, WalkBlend = 1f }, "PLAYER~Teen"),
+                ("run", pose with { Walk = 0.25f, WalkBlend = 1f, Running = true }, "PLAYER~Teen"),
+                ("bow", pose with { Emote = Emote.Bow, EmoteTime = 0.6f }, "PLAYER~Teen"),
+                ("sit", pose with { Stance = PokemonPlatinumEngine.Overworld.Stance.Sit }, "PLAYER~Teen"),
+                ("sit (broad)", pose with { Stance = PokemonPlatinumEngine.Overworld.Stance.Sit }, "BLACKBELT~GrownBroad")
             };
             const int W = 240, H = 440;
             var board = Raylib.GenImageColor(W * poses.Length, (H + Label) * 2, backdrop);
             for (int i = 0; i < poses.Length; i++)
                 for (int row = 0; row < 2; row++)
                 {
-                    var view = CharacterStudio.Turntable(context, "PLAYER~Teen", new[] { row == 0 ? 0.5f : MathF.PI / 2f }, W, H, poses[i].Pose, 1.95f, 0.88f);
+                    float scale = CharacterStyle.For(poses[i].Type).Height;
+                    var view = CharacterStudio.Turntable(context, poses[i].Type, new[] { row == 0 ? 0.5f : MathF.PI / 2f }, W, H, poses[i].Pose, 1.95f / scale, 0.88f / scale);
                     Raylib.ImageDraw(ref board, view, new Rectangle(0, 0, W, H), new Rectangle(i * W, row * (H + Label) + Label, W, H), Color.White);
                     Raylib.UnloadImage(view);
                     Labelled(ref board, poses[i].Text, i * W, row * (H + Label), W);

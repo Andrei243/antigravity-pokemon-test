@@ -259,6 +259,42 @@ public class GrownKitTests
         Assert.Single(pieces);
     }
 
+    [Theory]
+    [MemberData(nameof(Builds))]
+    public void NeitherTheBodyNorItsOutlineTearsInTheChibiClips(string look, string build)
+    {
+        // A vertex weighted to both legs (the crotch), or the outline's shell weighted across the gap between the knees,
+        // stretches into a fin when the legs part: no edge of either may grow past four times its length in a stride, a
+        // run or a bow (style guide, "Grown characters": the legs' spacing and small blends, the seat, the shell's weights
+        // from the body). Sitting turns the thighs a quarter turn, which stretches the hip's crease as any skin bent so
+        // far by blended weights does: a grown sitter's clip is plan 30 · FM5's
+        var rig = Rig($"{look}~{build}");
+        (string Name, CharacterPose Pose)[] clips =
+        {
+            ("walk", new CharacterPose { Walk = 0.25f, WalkBlend = 1f, Time = 0.4f }), ("walk back", new CharacterPose { Walk = 0.75f, WalkBlend = 1f, Time = 0.4f }),
+            ("run", new CharacterPose { Walk = 0.25f, WalkBlend = 1f, Running = true, Time = 0.4f }),
+            ("bow", new CharacterPose { Emote = Emote.Bow, EmoteTime = 0.6f, Time = 0.4f })
+        };
+        foreach (var (part, mesh) in new[] { ("body", rig.Mesh), ("outline", rig.Shell) })
+            foreach (var (name, pose) in clips)
+            {
+                rig.Animate(pose);
+                var at = new Vector3[mesh.VertexCount];
+                for (int v = 0; v < mesh.VertexCount; v++)
+                    for (int k = 0; k < 4; k++)
+                        at[v] += Vector3.Transform(mesh.Positions[v], rig.Skin[mesh.BoneIndices[v * 4 + k]]) * mesh.BoneWeights[v * 4 + k];
+                int torn = 0;
+                for (int i = 0; i < mesh.Indices.Length; i += 3)
+                    for (int k = 0; k < 3; k++)
+                    {
+                        int a = mesh.Indices[i + k], b = mesh.Indices[i + (k + 1) % 3];
+                        float now = Vector3.Distance(at[a], at[b]);
+                        if (now > 0.02f && now > 4f * Vector3.Distance(mesh.Positions[a], mesh.Positions[b])) torn++;
+                    }
+                Assert.True(torn == 0, $"{look} as {build}: {torn} edges of the {part} tear in the {name}");
+            }
+    }
+
     [Fact]
     public void NothingIsThinnerThanTheGrownCellsAllow()
     {
