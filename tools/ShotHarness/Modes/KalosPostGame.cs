@@ -103,9 +103,11 @@ partial class Harness
         story.SetVar("VAR_KALOS_STORY", 31);
         story.Set("KalosHallOfFame");
         story.SetVar("VAR_KALOS_LUMIOSE_ROADS", 3);
-        // ... and what the story's own scenes left on the way there that the post-game's people share a tile with:
-        // Lysandre gone from his laboratory, where Xerosic stands later (LumioseCity_LysandreLabs.txt)
+        // ... and what the story's own scenes left on the way there that the post-game's people meet: Lysandre gone from
+        // his laboratory, where Xerosic stands later, and its two grunts beaten (LumioseCity_LysandreLabs.txt)
         story.Set("FLAG_KALOS_HIDE_LYSANDRE_LABS");
+        story.Defeat("kalos_flare_grunt_labs_1");
+        story.Defeat("kalos_flare_grunt_labs_2");
         Frames(2);
         Left("brought to the Hall of Fame");
 
@@ -201,6 +203,9 @@ partial class Harness
         Talk("LumioseCity_HotelRichissime", 11, 6, Direction.Right);
         ReadTo("Let me see for myself"); Frames(10); Shot("wks222_malva_hotel");
         ReadTo(null);
+        // (come into the laboratory as through the café, so that the room takes the story as it is: its grunts beaten)
+        ComeThrough("LumioseCity_LysandreLabs", 8, 14, Direction.Up);
+        ReadTo(null);
         foreach (var (x, y, facing) in new[] { (4, 6, Direction.Left), (12, 6, Direction.Right) }) { Talk("LumioseCity_LysandreLabs", x, y, facing); ReadTo(null); }
         Talk("LumioseCity_LysandreLabs", 8, 7, Direction.Up);
         ReadTo("Intruder. Remove intruder"); Frames(10); Shot("wks223_essentia");
@@ -237,8 +242,9 @@ partial class Harness
         Battle("the bird's battle", "wks235_den_bird_battle");
         ReadTo(null);
         Left("the legendaries");
-        // (the Pokédex's research notices the battles left are let run out first, so the places show none)
-        Frames(200);
+        // (the Pokédex's research notices the battles left are told one at a time: they are let run out first, so the
+        // places show none)
+        for (int quiet = 0, i = 0; quiet < 10 && i < 8000; i++) { Frames(1); quiet = game.Toast.Visible ? 0 : quiet + 1; }
 
         // ---- the places, as the story leaves them, by day
         (string Day, string? Night, string Map, int X, int Y, Direction Facing)[] places =
@@ -269,7 +275,10 @@ partial class Harness
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(day);
+            At(map, x, y, facing);
+            // (a room or a cave is come into, as a door would bring the player, so its people stand as the story has them)
+            if (map != "Kalos") { game.ArriveOnMap(); ReadTo(null); }
+            Frames(2); game.LocationSign.Hide(); Shot(day);
         }
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);

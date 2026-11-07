@@ -136,6 +136,39 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   (`KALOS_FROM=postgame`: `wk400` on, the places by day and after dark, `wks200` on, the scenes).
 - **Done when** a Champion of Kalos takes the TMV to Kiloude, beats the neighbour, has the Mega Ring upgraded, meets
   Zygarde, Mewtwo and the resting bird, and plays Looker's episode to its end, headless, with the places shot.
+- **Built** (2026-11-07, wave 92; rulings, "Kalos after its Hall of Fame"): all of the above. Drawn with `tools/MapDraw`:
+  the station's square east of Lumiose (`lumiose_station.txt`, Lumiose's own area, with the station's sign), Azure Bay
+  south-east of it (`azure_bay.txt`, a new area: its road, meadow, beach and sandbar, two trainers, two items, twelve
+  shore species at 58 to 61) and three caves of their own: Terminus Cave's depths (matrix 7, three chambers, three
+  trainers, three items, 60 to 63, Zygarde), the Unknown Dungeon (matrix 8, its mouth cut into the Pokémon Village's
+  head, three items, 64 to 66, Mewtwo) and Sea Spirit's Den (matrix 9, on the bay's island, the three birds' place);
+  Terminus Cave's narrow way north opened past its worker. Four rooms: `LumioseCity_Station` (a new door off the
+  square), `LumioseCity_LookerBureau`, `LumioseCity_Museum` and `LumioseCity_HotelRichissime` (Lumiose's doors 23, 2
+  and 19, opened by the Mega Ring and the Hall of Fame), and the laboratory's post-game people. Twenty-six trainers of
+  ours in Kalos's `trainers.json` (the neighbour's three Kiloude teams, the bay's, the depths', the park's four
+  children, the station's gang, the three suspects, the butler, Malva's, two scientists and Essentia's four) and the
+  looks of Emma, Essentia, Xerosic and the gang (the classes Lumiose Gang, Suspect, Butler and Agent, with their
+  Romanian). The scripts on `VAR_KALOS_POSTGAME` 0 to 3 and `VAR_KALOS_LOOKER` 0 to 7 (`LumioseCity_Station.txt`,
+  `LumioseCity_LookerBureau.txt`, `LumioseCity_Museum.txt`, `LumioseCity_HotelRichissime.txt`, `anistar_city.txt`,
+  `terminus_cave.txt`, `terminus_cave_depths.txt`, `pokemon_village.txt`, `unknown_dungeon.txt`,
+  `sea_spirits_den.txt`, and Lumiose's, Kiloude's, Vaniville's, the café's, the laboratory's, the Hall of Fame's and
+  Mom's), Looker's cases counted where they have several parts (`VAR_KALOS_LOOKER_TICKETS`, `VAR_KALOS_ALLEY`,
+  `VAR_KALOS_STING`). The bird's three roaming slots of Kalos's own (`Roamers`: `KalosRoutes`, `Resting` once
+  `RestsAfter` flights are counted in `FledVariable`; `roamer start … kalos`), and every script's roamer met at the
+  region's level (`LevelHere`). The fourteen post-game stones as item balls shown by `FLAG_KALOS_MEGA_RING_UPGRADED`.
+  Objectives 531 to 534. Tests: `KalosPostGameTests` (the places, mouths and ways out, `WorldWalk` reaching every new
+  place, chamber and stone, the gates by the story, the TMV both ways, the neighbour once and daily with the Absolite
+  once, the sundial and the stones, the bird by each starter, its rest after twelve flights and its battle in the den,
+  Zygarde and Mewtwo once with both Mewtwonites, Looker's episode played headless to its end and Essentia's days, the
+  objectives, the roamer's region word), `KalosSpeciesTests` (plan 40 · GE1's check for the three Pokédexes' 457
+  species, the owed ones named with their owners, Kalos in `docs/mechanics/species-owed.md`); the tests that count
+  the roamers, the objectives and the item balls take Z4b's in, and the Kalos playthrough heals in the League's hall
+  between the Four (Z4b's trainers had moved the dice and the bot, worn by three of the Four, lost to the fourth). Shots:
+  the `kalos` mode's `KalosPostGame` (`KALOS_FROM=postgame`: `wk400` to `wk430`, `wk440` to `wk442` after dark, `wks200`
+  to `wks235`), looked at. **Left**: the Battle Maison, the Friend Safari, Kalos's water (surfing and the rods), the
+  Kanto starter's stone, the Chamber of Emptiness, the Poké Ball Factory, the Battle Château, Lumiose's other shut
+  doors, a station building in Kiloude, the stones' evening hour, the 143 species `KalosSpeciesTests` lists as owed,
+  and every new place's own song (plan 31).
 
 ### Alola
 
@@ -338,7 +371,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [ ] Z2 Lumiose and central Kalos
 - [x] Z3 Shalour, the coast and the Tower of Mastery (first part 2026-11-03: Route 10, Geosenge, Route 11, Shalour, the Rumble Badge, the Key Stone and the Lucario; second part 2026-11-03: the harness shots with a Lucario Mega Evolving, caves in the hand-drawn tool, Reflection and Glittering Caves, Route 8's south, Ambrette, Routes 9 and 12, Coumarine City; left, see Z3's second part: Coumarine's Gym, the Connecting Cave, the fossil lab, hordes and sky trainers, songs)
 - [ ] Z4 The mountain, Team Flare and the League (2026-11-07: Coumarine's Gym, Route 13 and the Power Plant, the Prism Tower's Gym, Routes 14 to 21 but 16, Laverre, Dendemille, Anistar, Couriway, Snowbelle, the Pokémon Village, Lysandre's laboratory, Team Flare's base and Xerneas, Victory Road, the League and Kalos's Hall of Fame, every chapter played headless, and the playthrough bot's way from Coumarine City to the Hall of Fame (`Itineraries.KalosLastChapters`); then, afterwards, the bot's way from Vaniville whole, the three dexes and Route 16, the Lost Hotel, Frost Cavern, Terminus Cave, Kiloude City and AZ; left: the Gyms' puzzles, the Mamoswine ride and the places' own songs)
-- [ ] Z4b Kalos after its Hall of Fame (written 2026-11-07, wave 92)
+- [x] Z4b Kalos after its Hall of Fame (written and built 2026-11-07, wave 92)
 - [ ] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rider drawn and the rides' own travel modes, the rest of Akala, Ula'ula, Poni and Aether Paradise, the Town Map with an island to a tab, the user's look at Melemele)
 - [x] Z6 Melemele and Akala: trials, totems and Z-Moves (2026-11-07: totems with their aura, first call and no ball; the trial sites calling for help; Alola's stamps; the rest of Akala drawn, Kiawe's and Mallow's trials, Olivia's grand trial and the Hano Grand Resort, headless; the harness's `akala` mode shoots the places, the rooms, the card and the totem Gumshoos calling an ally before the Normalium Z's Breakneck Blitz, which is the "done when"; left: the rulings' "Left")
 - [x] Z7 Ula'ula, Poni and the Aether Foundation (2026-11-07: Ula'ula, Poni, Aether Paradise, four caves and the League drawn by hand, the story from the Akala stamp to the Hall of Fame headless, `docs/mechanics/rulings.md`, "Ula'ula, Poni, Aether Paradise and the League"; the walk from Iki Town needs Z6's Akala between Brooklet Hill and the stamp; shots owed; left: the Ultra Beasts and the islands' Town Map)
