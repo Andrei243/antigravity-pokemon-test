@@ -27,8 +27,8 @@
       "name": "Kekoa",
       "npcType": "preschooler_m",
       "trainer": {
-        "dialogueBefore": "Preschooler Kekoa: My Spearow can peck really, really fast. Watch!",
-        "dialogueAfter": "Preschooler Kekoa: Aww. Spearow, we need more snacks."
+        "dialogueBefore": "Preschooler Kekoa: My Lancerow can peck really, really fast. Watch!",
+        "dialogueAfter": "Preschooler Kekoa: Aww. Lancerow, we need more snacks."
       }
     },
     "backpacker": {

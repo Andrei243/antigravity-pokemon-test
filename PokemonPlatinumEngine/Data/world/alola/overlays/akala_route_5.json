@@ -34,7 +34,7 @@
       "name": "Maile",
       "npcType": "Lass",
       "trainer": {
-        "dialogueBefore": "Lass Maile: My Fomantis looks like a flower, but it fights like a sword!",
+        "dialogueBefore": "Lass Maile: My Lurantis looks like a flower, but it fights like a sword!",
         "dialogueAfter": "Lass Maile: A wilted flower now."
       }
     }

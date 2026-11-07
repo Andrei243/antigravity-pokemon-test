@@ -26,7 +26,7 @@
       "name": "Anela",
       "npcType": "picnicker",
       "trainer": {
-        "dialogueBefore": "Picnicker Anela: My Cutiefly loves the flowers here. And battles. Mostly battles!",
+        "dialogueBefore": "Picnicker Anela: My Ribombee loves the flowers here. And battles. Mostly battles!",
         "dialogueAfter": "Picnicker Anela: Back to the flowers, then."
       }
     },

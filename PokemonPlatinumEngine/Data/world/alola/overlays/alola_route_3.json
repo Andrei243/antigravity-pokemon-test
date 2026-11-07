@@ -24,7 +24,7 @@
       "name": "Pua",
       "npcType": "Lass",
       "trainer": {
-        "dialogueBefore": "Lass Pua: My Petilil and I practise our battles up here where nobody can see us lose!",
+        "dialogueBefore": "Lass Pua: My Ballerilly and I practise our battles up here where nobody can see us lose!",
         "dialogueAfter": "Lass Pua: Oh no, somebody saw."
       }
     },
@@ -40,7 +40,7 @@
       "name": "Keola",
       "npcType": "hiker",
       "trainer": {
-        "dialogueBefore": "Hiker Keola: The cliffs are steep, but my Growlithe and I are steeper! Wait, that doesn't make sense...",
+        "dialogueBefore": "Hiker Keola: The cliffs are steep, but my Kirinine and I are steeper! Wait, that doesn't make sense...",
         "dialogueAfter": "Hiker Keola: I'll sit down and think about what I meant."
       }
     }

@@ -21,15 +21,15 @@
       "name": "Koa",
       "npcType": "rancher",
       "trainer": {
-        "dialogueBefore": "Rancher Koa: You're on my ranch, partner. That means you battle my Tauros!",
-        "dialogueAfter": "Rancher Koa: Well, I'll be. My Tauros is sulking now."
+        "dialogueBefore": "Rancher Koa: You're on my ranch, partner. That means you battle my Bovarch!",
+        "dialogueAfter": "Rancher Koa: Well, I'll be. My Bovarch is sulking now."
       }
     },
     "breeder": {
       "name": "Makani",
       "npcType": "pokemon_breeder_m",
       "trainer": {
-        "dialogueBefore": "Pokémon Breeder Makani: My Mudbray eats a mountain of hay a day. All that strength has to go somewhere!",
+        "dialogueBefore": "Pokémon Breeder Makani: My Mudsdale eats a mountain of hay a day. All that strength has to go somewhere!",
         "dialogueAfter": "Pokémon Breeder Makani: More hay. We need more hay."
       }
     },

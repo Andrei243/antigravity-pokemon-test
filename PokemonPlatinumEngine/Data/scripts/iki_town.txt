@@ -125,7 +125,7 @@ script Festival
   say "Ah, there you are! Tonight we hold the festival for Tapu Koko, the guardian of Melemele."
   say "And in Iki Town, a festival is never complete without a battle on the stage. Hau has been waiting all day!"
   speaker "Hau"
-  say "Finally! I've been practising with my new Pokémon. And I caught a Pichu too! Let's give the guardian a good show!"
+  say "Finally! I've been practising with my new Pokémon. And I caught a new friend too! Let's give the guardian a good show!"
   if starter "Rowlet" goto AgainstRowlet
   if starter "Litten" goto AgainstLitten
   battle hau as "alola_hau_festival_3" canlose
