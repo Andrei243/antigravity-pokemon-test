@@ -161,6 +161,9 @@ public sealed partial class GameFlow
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
     public ApricornBox Apricorns { get; } = new();
 
+    /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
+    public CraftingState Crafting { get; } = new();
+
     /// <summary>The DexNav's state (plan 10 · F11, F12).</summary>
     public Overworld.DexNavState DexNav { get; set; } = new();
 

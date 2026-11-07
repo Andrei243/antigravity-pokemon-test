@@ -5785,6 +5785,17 @@ from Ninja Boy at 10,7 of SunyshorePokemonCenter
 way -
   Ninja Boy> Whoa, seven Gym Badges! You're amazing!
   Ninja Boy> Just one to go, and it's the Pokémon League for you!
+=== SunyshoreWorkshop.Craftswoman
+from Craftswoman at 6,4 of SunyshoreWorkshop
+way -
+  Craftswoman> Well, look at that! A Champion, and on my doorstep. Come in, come in, and mind the shavings.
+  Craftswoman> This is where I make things. Every Pokémon sheds something as it battles, and the countryside gives a good deal more to anyone who knows where to look.
+  Craftswoman> I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours.
+  > Lucas received the Crafting Kit!
+  Craftswoman> Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over.
+  Craftswoman> Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready.
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_CRAFTING_KIT
 === SurvivalAreaNorthHouse.Tutor
 from Hiker at 3,4 of SurvivalAreaNorthHouse
 way 0.0
@@ -31714,6 +31725,11 @@ way -
   + FLAG_RECEIVED_SUNYSHORE_CITY_HM07
   = VAR_SUNYSHORE_CITY_STATE 0 -> 3
   + seen sunyshore_city.Jasmine on the beach
+=== sunyshore_city.WorkshopSign
+from the tile read at 871,762 of Sinnoh
+way -
+  Sign> SUNYSHORE WORKSHOP
+  Sign> Mending, making and measuring, for Champions of the Pokémon League. Walk right in.
 === survival_area.BattlegroundDoor
 from the tile read at 652,338 of Sinnoh
 way -

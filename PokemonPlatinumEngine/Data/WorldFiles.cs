@@ -1221,6 +1221,8 @@ public sealed class OverlayExit
     public int ToX { get; set; }
     public int ToY { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+    /// <summary>A story flag that keeps the way shut, a wall like a locked door, until a script sets it (plan 39 · CR1: the workshop's door); left out, the way is always open.</summary>
+    public string? OpenedBy { get; set; }
 }
 
 /// <summary>A tile of an imported area and the script of the area's file it runs (<see cref="WorldOverlayFile.ReadAt"/>, <see cref="WorldOverlayFile.Pits"/>).</summary>

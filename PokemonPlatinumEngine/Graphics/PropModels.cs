@@ -51,6 +51,12 @@ internal static class PropModels
             PastimeArt.Build(kit, p, map);
             return;
         }
+        // The workshop's workbench (plan 39 · CR1)
+        if (WorkshopArt.Builds(p))
+        {
+            WorkshopArt.Build(kit, p, map);
+            return;
+        }
         // A secret base's decorations (plan 21 · H10)
         if (DecorationArt.Builds(p))
         {

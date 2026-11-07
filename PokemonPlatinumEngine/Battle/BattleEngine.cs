@@ -206,6 +206,11 @@ public partial class BattleEngine
     public Pokemon? Caught { get; private set; }
     public bool CaughtNewSpecies { get; private set; }
 
+    private readonly List<Pokemon> felledFoes = new();
+
+    /// <summary>The foes that fainted in this battle, as the screen had them when they did (plan 39 · CR1: a wild Pokémon felled leaves materials behind).</summary>
+    public IReadOnlyList<Pokemon> FelledFoes => felledFoes;
+
     private readonly PcBoxes? pcBoxStorage;
     private readonly string? place;
     private readonly Models.MarkMoment? encounter;
@@ -1131,6 +1136,9 @@ public partial class BattleEngine
                 // A foe beaten, for its species' research (plan 15 · E1): once, on its faint
                 if (Researching && fainted.Place.Side == BattleSide.Enemy && At(fainted.Place).Pokemon is { } beaten)
                     Pokedex.Research.Tell(beaten.Species, ResearchKind.Defeated);
+                // ...and for what it leaves behind (plan 39 · CR1), once, whoever is watching
+                if (fainted.Place.Side == BattleSide.Enemy && !Watching && At(fainted.Place).Pokemon is { } felled && !felledFoes.Contains(felled))
+                    felledFoes.Add(felled);
                 if (At(fainted.Place).Pokemon is { } down)
                 {
                     down.Status = StatusCondition.Faint;

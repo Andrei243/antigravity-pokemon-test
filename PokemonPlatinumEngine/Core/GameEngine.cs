@@ -141,7 +141,9 @@ public enum GameState
     /// <summary>The camp: the team out of their balls, petted and fed (plan 10 · F6).</summary>
     Camp,
     /// <summary>The Global Link counter: the online server's friend code, link codes and a trade room (plan 07 · O5, O7).</summary>
-    GlobalLink
+    GlobalLink,
+    /// <summary>The crafting kit looked into, from the bag, the item button or a script's <c>craft open</c> (plan 39 · CR1).</summary>
+    Crafting
 }
 
 public partial class GameEngine
@@ -445,6 +447,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.Crafting.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
         LoadFrontier(null);
@@ -504,6 +507,7 @@ public partial class GameEngine
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
         ForgetTheResearchToTell();
+        ForgetWhatWasLeft();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
@@ -709,6 +713,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.Crafting.Load(save.Crafting);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
@@ -830,6 +835,7 @@ public partial class GameEngine
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
         ForgetTheResearchToTell();
+        ForgetWhatWasLeft();
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
@@ -920,6 +926,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            Crafting = flow.Crafting.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
@@ -1141,6 +1148,7 @@ public partial class GameEngine
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
         KeepTheResearch();
+        KeepWhatWasLeft();
         KeepTheTimer(dt);
         KeepTheStream(dt);
         KeepTheAutosave(dt);
@@ -1433,6 +1441,8 @@ public partial class GameEngine
                         else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
                         // The Apricorn Box is looked into and closes back onto the bag (plan 20 · J6)
                         else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
+                        // The crafting kit is looked into and closes back onto the bag (plan 39 · CR1)
+                        else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1580,6 +1590,9 @@ public partial class GameEngine
                 break;
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
+                break;
+            case GameState.Crafting:
+                UpdateCrafting(dt);
                 break;
             case GameState.Mining:
                 UpdateMining(dt);
@@ -3329,6 +3342,9 @@ public partial class GameEngine
                 break;
             case GameState.ApricornBox:
                 flow.ApricornBoxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Crafting:
+                flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
                 flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);

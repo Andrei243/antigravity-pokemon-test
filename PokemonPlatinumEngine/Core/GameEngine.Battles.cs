@@ -736,6 +736,8 @@ public partial class GameEngine
         SilenceTheRadio();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
         if (flow.Battle != null) EncountersAfterBattle(flow.Battle, isDefeat);
+        // Wild Pokémon felled or caught leave materials in the kit's pouch, if the kit is in the bag (plan 39 · CR1)
+        if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
         flow.BattleMayBeLost = false;

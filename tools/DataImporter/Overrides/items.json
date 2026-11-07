@@ -713,6 +713,7 @@
   // lists what lives where the player stands and finds Pokémon hiding in the grass. Given with the National Pokédex
   // once its page and its rustles are drawn; its id stands apart from the event key items
   "DexNav": {
+    "new": true,
     "id": 9530,
     "pocket": "KeyItems",
     "effectType": "KeyItem",
@@ -723,5 +724,23 @@
     "description": "A device that tells what lives nearby and finds Pokémon hiding in tall grass. Switch it on to search.",
     "cantBeTossed": true,
     "fieldUse": "DexNav"
+  },
+  // The crafting kit (plan 39 · CR1, our own after the mechanics of Scarlet and Violet's crafting, Legends: Arceus's pouch
+  // and X and Y's berry crossing; the name, the words and the workshop are ours): given by the craftswoman of Sunyshore City's
+  // workshop to a Champion of Sinnoh, looked into with USE or the item button. It holds the pouch of materials; id 9900, the
+  // hundred after plan 35's 9600s, plan 36's 9700s and the machines of 9800
+  "Crafting Kit": {
+    "new": true,
+    "id": 9900,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A roll of tools and a pouch for the things Pokémon leave behind and the field gives. Open it to see what you hold.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "CraftingKit"
   }
 }

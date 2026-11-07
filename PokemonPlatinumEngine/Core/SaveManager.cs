@@ -328,6 +328,9 @@ public class SaveData
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
     public Models.ApricornSave? Apricorns { get; set; }
 
+    /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
+    public Models.CraftingSave? Crafting { get; set; }
+
     /// <summary>The DexNav (plan 10 · F11, F12): switched on or not, the search levels and the chain. Null while it has never been used, and in older saves.</summary>
     public Overworld.DexNavSave? DexNav { get; set; }
 

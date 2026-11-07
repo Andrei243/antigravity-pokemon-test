@@ -885,6 +885,23 @@ was started with; anyone else is no friend's trainer and has nothing to battle.
 | `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
 | `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
 
+### The crafting kit
+
+Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,
+`fieldUse` `CraftingKit`) that holds the pouch of materials (`Models/Materials.cs`, 999 of a kind at most, saved as
+`SaveData.Crafting`). A material is named by its id (`softFluff`) or its English name (`"Soft Fluff"`) and a name the table
+(`Data/materials.json`) lacks is a mistake of the file. One command, `craft`; later sessions of plan 39 add words to it and never
+another command. `{material}` says the last material named, in the language chosen, and `{materials}` how many.
+
+| Command | What it does |
+|---|---|
+| `craft has` | `RESULT` 1 when the kit is in the bag, else 0. |
+| `craft give kit` | Puts the kit in the bag once and sets `FLAG_GOT_CRAFTING_KIT`: `RESULT` 1, or 0 and nothing given when it is held already; `{item}` names it. The text and the fanfare are the script's. |
+| `craft give "Soft Fluff" 3` | Adds to the pouch, silently: `RESULT` and `{materials}` are how many fitted (the pouch stops at 999 of a kind). |
+| `craft take "Soft Fluff" 3` | Takes exactly that many out: `RESULT` 1, or 0 and nothing taken with fewer. |
+| `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
+| `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
+
 ### Join Avenue
 
 Plan 22 · U11; `docs/mechanics/rulings.md`, "Join Avenue's growth". The avenue's growth (`Models/JoinAvenue.cs`) is the

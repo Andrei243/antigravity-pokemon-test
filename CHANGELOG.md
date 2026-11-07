@@ -47,6 +47,7 @@ What changes from one release to the next, for players. Every session's close-ou
 - Kalos's Routes 2 to 4, Santalune Forest, Santalune City, its houses, Pokémon Center and Gym now play their own songs.
 
 ### Added
+- After the Hall of Fame, a craftswoman's workshop opens at the east end of a small alley in Sunyshore City (a billboard marks the way) and gives you the Crafting Kit. With the kit in the bag, every wild Pokémon you beat or catch leaves something behind that fits its type (Soft Fluff from a Bidoof, an Ember Core now and then from a Charmander), a line at the top of the screen tells you what once the battle is over, and the kit's pouch (open it from the bag, or with the item button) lists all 46 materials and what each is worth. Trainers' Pokémon and anything in a park, contest or the Frontier leave nothing.
 - Alola opens: once you are Champion of Kalos, an airline attendant in Lumiose City's Pokémon Center flies you to Melemele Island, and a new game can begin there too (`--region Alola`). Wake in your new home on Route 1, meet Professor Kukui, go up to Iki Town and the Mahalo Trail, choose Rowlet, Litten or Popplio from the kahuna, battle his grandson Hau, collect your Pokédex at the lab on the beach and walk on into Hau'oli City.
 - Hoenn's contests have a song of their own, the crowd claps or groans, the judge says "hm!", and every appeal throws a burst of stars, glints, hearts, rings or shards in its move's own quality round the Pokémon.
 - The Lilycove Museum hangs each winner's painting on its gallery wall where its frame was empty.

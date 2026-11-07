@@ -9,7 +9,8 @@
     { "fileMatch": ["**/overrides/models/*.json", "assets/models/*.json"], "url": "./docs/schemas/model-options.schema.json" },
     { "fileMatch": ["tools/DataImporter/Overrides/species.json"], "url": "./docs/schemas/species-patch.schema.json" },
     { "fileMatch": ["tools/DataImporter/Overrides/items.json"], "url": "./docs/schemas/items-patch.schema.json" },
-    { "fileMatch": ["tools/DataImporter/Overrides/moves.json"], "url": "./docs/schemas/moves-patch.schema.json" }
+    { "fileMatch": ["tools/DataImporter/Overrides/moves.json"], "url": "./docs/schemas/moves-patch.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/materials.json"], "url": "./docs/schemas/materials.schema.json" }
   ],
   // The files the game reads with comments and trailing commas allowed
   "files.associations": {

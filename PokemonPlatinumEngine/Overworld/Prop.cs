@@ -316,6 +316,12 @@ public enum PropType
     /// nothing by itself.
     /// </summary>
     PokeblockFeeder,
+    /// <summary>
+    /// A workbench (plan 39 · CR1, the craftswoman's workshop in Sunyshore City): a plank top on trestles with a vice, a
+    /// mallet, a row of chisels and a heap of shavings, our own drawing (<c>WorkshopArt</c>). Past the decorations like the
+    /// laboratory's tank: the room's own tiles say that it blocks.
+    /// </summary>
+    Workbench,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>
