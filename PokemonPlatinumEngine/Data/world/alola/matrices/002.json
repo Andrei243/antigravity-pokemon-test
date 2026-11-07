@@ -1,0 +1,16 @@
+{
+  "id": 2,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    "29 30",
+    "31 32"
+  ],
+  "areas": [
+    " 0  0",
+    " 0  0"
+  ],
+  "areaKeys": [
+    "verdant_cavern"
+  ]
+}

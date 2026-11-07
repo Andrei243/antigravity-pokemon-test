@@ -1,0 +1,51 @@
+{
+  "key": "paniola_ranch",
+  "index": 12,
+  "name": "Paniola Ranch",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PANIOLA_RANCH",
+  "nightMusic": "PANIOLA_RANCH",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 173, "z": 198, "to": "PaniolaRanch_Nursery", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mallow", "looks": "mallow", "movement": "look_west", "x": 153, "z": 196, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "tauros", "looks": "tauros", "movement": "look_south", "x": 130, "z": 166, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "tauros_2", "looks": "tauros", "movement": "look_east", "x": 138, "z": 170, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "miltank", "looks": "miltank", "movement": "look_south", "x": 126, "z": 172, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "mudbray", "looks": "mudbray", "movement": "look_west", "x": 165, "z": 165, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "rancher", "looks": "rancher", "movement": "look_east", "x": 144, "z": 190, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_RANCHER_KOA" },
+    { "id": "breeder", "looks": "pokemon_breeder_m", "movement": "look_west", "x": 156, "z": 186, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_POKEMON_BREEDER_MAKANI" },
+    { "id": "lady", "looks": "lady", "movement": "look_east", "x": 146, "z": 172, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LADY_HOKU" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 156, "z": 156, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_KAWIKA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 120, "z": 190, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_PANIOLA_RANCH_POTION", "item": "Super Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 152, "z": 200, "type": 0, "script": "RanchSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Mudbray", "level": 12 },
+    { "species": "Mudbray", "level": 13 },
+    { "species": "Mudbray", "level": 14 },
+    { "species": "Mudbray", "level": 15 },
+    { "species": "Mudbray", "level": 12 },
+    { "species": "Lillipup", "level": 12 },
+    { "species": "Lillipup", "level": 13 },
+    { "species": "Lillipup", "level": 14 },
+    { "species": "Lillipup", "level": 15 },
+    { "species": "Lillipup", "level": 12 },
+    { "species": "Miltank", "level": 14 },
+    { "species": "Tauros", "level": 15 }
+  ],
+  "landRate": 20
+}

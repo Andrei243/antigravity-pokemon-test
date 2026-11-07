@@ -1,0 +1,47 @@
+{
+  "key": "akala_route_5",
+  "index": 13,
+  "name": "Route 5",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_5",
+  "nightMusic": "ROUTE_5",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 159, "z": 126, "to": "AkalaRoute5_PokemonCenter_1F", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "gladion", "looks": "gladion", "movement": "look_south", "x": 150, "z": 140, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "breeder", "looks": "pokemon_breeder_f", "movement": "look_east", "x": 140, "z": 146, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_POKEMON_BREEDER_LEHUA" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 158, "z": 140, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_KOAPAKA" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 140, "z": 120, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_MAILE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_5_STAR_PIECE", "item": "Star Piece", "script": "" }
+  ],
+  "signs": [
+    { "x": 152, "z": 148, "type": 0, "script": "RouteSign" },
+    { "x": 144, "z": 131, "type": 0, "script": "BrookletSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Lillipup", "level": 13 },
+    { "species": "Lillipup", "level": 14 },
+    { "species": "Lillipup", "level": 15 },
+    { "species": "Pikipek", "level": 13 },
+    { "species": "Pikipek", "level": 14 },
+    { "species": "Fomantis", "level": 13 },
+    { "species": "Fomantis", "level": 14 },
+    { "species": "Fomantis", "level": 15 },
+    { "species": "Grubbin", "level": 14 },
+    { "species": "Grubbin", "level": 15 },
+    { "species": "Caterpie", "level": 13 },
+    { "species": "Butterfree", "level": 16 }
+  ],
+  "landRate": 20
+}

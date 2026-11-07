@@ -255,7 +255,21 @@ public static class Objectives
         (604, "alolaKahuna", AtLeast("VAR_ALOLA_STORY", 5), true),
         (605, "alolaLab", AtLeast("VAR_ALOLA_STORY", 6), true),
         (606, "alolaHauoli", AtLeast("VAR_ALOLA_STORY", 7), true),
-        // What comes after Hau'oli City is a later session's
+        // Plan 23 · Z5, second part: the marina, the festival, Ilima's trial, the meadow, Hau on Route 3, Hala's grand
+        // trial and the boat to Akala
+        (607, "alolaMarina", AtLeast("VAR_ALOLA_STORY", 8), false),
+        (608, "alolaFestival", AtLeast("VAR_ALOLA_STORY", 9), false),
+        (609, "alolaVerdant", AtLeast("VAR_ALOLA_STORY", 10), false),
+        (610, "alolaMeadow", AtLeast("VAR_ALOLA_STORY", 11), false),
+        (611, "alolaHau3", AtLeast("VAR_ALOLA_STORY", 12), false),
+        (612, "alolaGrandTrial", s => s.Var("VAR_ALOLA_STORY") >= 13 || s.HasBadge(RegionDatabase.Alola, "Melemele"), false),
+        (613, "alolaSail", AtLeast("VAR_ALOLA_STORY", 14), false),
+        // Akala: Route 4 to Paniola Town, the ranch, Route 5 and Lana's trial at Brooklet Hill
+        (614, "alolaPaniola", AtLeast("VAR_ALOLA_STORY", 15), false),
+        (615, "alolaRanch", AtLeast("VAR_ALOLA_STORY", 16), false),
+        (616, "alolaRoute5", AtLeast("VAR_ALOLA_STORY", 17), false),
+        (617, "alolaBrooklet", AtLeast("VAR_ALOLA_STORY", 18), false),
+        // What comes after Brooklet Hill is a later session's
         (699, "alolaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

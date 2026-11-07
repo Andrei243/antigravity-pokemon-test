@@ -1,0 +1,16 @@
+{
+  // Ten Carat Hill (plan 23 · Z5, second part): a map of its own, drawn by hand (tools/MapDraw/alola/ten_carat_hill.txt),
+  // our words. Its mouth is on the shore west of Route 1's beach, behind a cracked rock that a charging Tauros breaks (the
+  // Ride Pager, Overworld/RidePager.cs); inside, a hall of glittering stone and a passage each side up to the Farthest
+  // Hollow, open to the sky, with grass in it. It plays the trial's song until plan 31 writes a cave song for Alola
+  "area": "ten_carat_hill",
+  "bgmTrack": "alola/trial",
+  "trees": "Round",
+  "people": {
+    "hiker": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "dialog": [ "The walls sparkle because of the Carbink. Folk say there's a hollow up top where the sky comes right in." ]
+    }
+  }
+}

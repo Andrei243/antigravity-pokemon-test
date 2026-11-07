@@ -226,6 +226,10 @@
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
       "provisional": true
     },
+    "caretaker": {
+      "note": "first spoken at AlolaRoute2_BerryFieldsHouse.txt(5)",
+      "provisional": true
+    },
     "castellan_aubert": {
       "note": "first spoken at CamphrierTown_Castle.txt(7)",
       "provisional": true
@@ -549,6 +553,10 @@
       "note": "first spoken at ever_grande_city_glacias_room.txt(8)",
       "provisional": true
     },
+    "gladion": {
+      "note": "first spoken at akala_route_5.txt(11)",
+      "provisional": true
+    },
     "glass_worker": {
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
@@ -607,6 +615,10 @@
     },
     "ian": {
       "note": "first spoken at phone.txt(253)",
+      "provisional": true
+    },
+    "ilima": {
+      "note": "first spoken at alola_route_2.txt(13)",
       "provisional": true
     },
     "ilse": {
@@ -734,6 +746,10 @@
       "note": "first spoken at PokemonMansion.txt(122)",
       "provisional": true
     },
+    "lana": {
+      "note": "first spoken at brooklet_hill.txt(13)",
+      "provisional": true
+    },
     "lance": {
       "note": "first spoken at johto_pokemon_league_hall_of_fame.txt(14)",
       "provisional": true
@@ -842,6 +858,10 @@
     },
     "maid_sophie": {
       "note": "first spoken at PokemonMansion.txt(56)",
+      "provisional": true
+    },
+    "mallow": {
+      "note": "first spoken at paniola_ranch.txt(12)",
       "provisional": true
     },
     "man_in_black": {
@@ -1662,6 +1682,7 @@
     "Candice": "candice",
     "Captain": "captain",
     "Captain Stern": "captain_stern",
+    "Caretaker": "caretaker",
     "Castellan Aubert": "castellan_aubert",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
@@ -1754,6 +1775,7 @@
     "Giovanni": "giovanni",
     "Girl": "look:girl",
     "Glacia": "glacia",
+    "Gladion": "gladion",
     "Glass Worker": "glass_worker",
     "Grimsley": "grimsley",
     "Grunt": "look:grunt",
@@ -1775,6 +1797,7 @@
     "Hostess": "hostess",
     "Huey": "huey",
     "Ian": "ian",
+    "Ilima": "ilima",
     "Ilse": "ilse",
     "Ingo": "ingo",
     "Iris": "iris",
@@ -1807,6 +1830,7 @@
     "Kurt": "kurt",
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
+    "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",
     "Lass": "look:lass",
@@ -1836,6 +1860,7 @@
     "Maid Elena": "maid_elena",
     "Maid Emily": "maid_emily",
     "Maid Sophie": "maid_sophie",
+    "Mallow": "mallow",
     "Man": "look:man",
     "Man in Black": "man_in_black",
     "Manager": "manager",

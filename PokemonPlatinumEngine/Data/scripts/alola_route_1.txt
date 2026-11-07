@@ -5,7 +5,11 @@
 # VAR_ALOLA_STORY, Alola's first chapter's count: 0 a new game, in the house; 1 Mom has said the professor is waiting;
 # 2 Professor Kukui met at the door, off to Iki Town; 3 the kahuna found away, the girl gone up the Mahalo Trail; 4 the
 # guardian seen at the bridge, back down to Iki Town; 5 the first Pokémon from the kahuna and Hau's battle had; 6 the
-# Pokédex from the professor at his laboratory; 7 Hau'oli City reached.
+# Pokédex from the professor at his laboratory; 7 Hau'oli City reached. Plan 23 · Z5, second part: 8 Team Skull and
+# Captain Ilima met at the marina; 9 the festival in Iki Town, Hau's battle and the Z-Ring; 10 Ilima's trial in Verdant
+# Cavern passed; 11 Lillie's Pokémon found in Melemele Meadow; 12 Hau's battle on Route 3; 13 Hala's grand trial won,
+# Tauros in the Ride Pager; 14 sailed to Akala with the professor; 15 Hau's battle in Paniola Town; 16 Mallow met at
+# Paniola Ranch, Stoutland registered; 17 Gladion's battle on Route 5; 18 Lana's trial at Brooklet Hill passed.
 #
 # The people: kukui at the door (FLAG_ALOLA_HIDE_KUKUI_HOME).
 

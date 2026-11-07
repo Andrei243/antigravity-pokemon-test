@@ -936,11 +936,13 @@ public sealed partial class ScriptRunner
                 bool helped = false;
                 var user = ownPokemon != null && ownPokemon.Moves.Any(m => m.Name == i.Name) ? ownPokemon
                     : FieldMoveRules.Knower(host.Party, move)
-                      ?? (host.Granted.Contains(move) ? FieldHelp.HelperFor(move) : null)
+                      ?? (host.Granted.Contains(move) ? FieldHelp.HelperFor(move, host.Story, host.Region) : null)
                       ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
                 helped = !host.Party.Members.Contains(user);
                 lastUser = user.DisplayName;
-                host.Say(null, new[] { Text.Of(helped ? "fieldMoves.helped" : "fieldMoves.used", ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
+                // A ride of Alola's Ride Pager comes when called (plan 23 · Z5), where a helper of the options' is wild
+                string line = !helped ? "fieldMoves.used" : RidePager.RideFor(move, host.Story, host.Region) != null ? "fieldMoves.ride" : "fieldMoves.helped";
+                host.Say(null, new[] { Text.Of(line, ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
                 afterBusy = () => host.UseMove(move, user, Subject);
                 break;
             }

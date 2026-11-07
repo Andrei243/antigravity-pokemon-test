@@ -1,0 +1,72 @@
+# Brooklet Hill, Akala Island: Captain Lana's trial (plan 23 · Z5, second part). The lines are our own, on Sun and Moon's
+# beats as they are publicly described (docs/mechanics/rulings.md, "Akala, as far as Brooklet Hill"): Lana registers
+# Lapras in the Ride Pager, the splashes on the first lake's shores are Wishiwashi, and the totem, a Wishiwashi that
+# schools as it battles, waits on the far shore of the second lake. Ours: the totem is met as a wild battle that can't
+# be run from; its aura and its allies are plan 23 · Z6's. VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: lana at the way in until the trial is passed (FLAG_ALOLA_BROOKLET_TRIAL_DONE); the two splashes and the
+# totem shown by FLAG_ALOLA_BROOKLET_TRIAL while the trial is under way.
+
+
+script Lana
+  if var VAR_ALOLA_STORY >= 17 goto Begin
+  speaker "Lana"
+  say "...Hello. I'm Lana, the captain here. My trial is ready, but you look like you've somewhere else to be first. Route 5, maybe?"
+  end
+label Begin
+  if flag FLAG_ALOLA_BROOKLET_TRIAL goto During
+  scene "Lana's trial begins"
+  speaker "Lana"
+  say "...Hello. I'm Lana. This is Brooklet Hill, and my trial."
+  say "Something has been splashing in the lakes. Something big. Would you find out what it is?"
+  say "You'll need to cross the water. Here, I'll register my Lapras in your Ride Pager. It's a very good swimmer."
+  setflag FLAG_ALOLA_RIDE_LAPRAS
+  text "{player} registered Lapras in the Ride Pager! Lapras can carry you across water."
+  say "Look for the splashes on the shore of the first lake, then the far shore of the second. I'll be watching."
+  setflag FLAG_ALOLA_BROOKLET_TRIAL
+  endscene
+  end
+label During
+  speaker "Lana"
+  say "The splashes are on the first lake's shores. Then cross the second lake to the far shore."
+  end
+
+
+script Splash1
+  text "Something splashed! A Wishiwashi leapt out!"
+  wildbattle "Wishiwashi" 17 nofleeing
+  setflag FLAG_ALOLA_BROOKLET_SPLASH_1
+  hide self
+  end
+
+script Splash2
+  text "Something splashed! A Wishiwashi leapt out!"
+  wildbattle "Wishiwashi" 18 nofleeing
+  setflag FLAG_ALOLA_BROOKLET_SPLASH_2
+  hide self
+  end
+
+
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_BROOKLET_SPLASH_1 goto NotYet
+  if not flag FLAG_ALOLA_BROOKLET_SPLASH_2 goto NotYet
+  scene "The totem Wishiwashi"
+  text "A little Wishiwashi peeked out of the shallows... then hundreds more rose up around it!"
+  cry "Wishiwashi"
+  wildbattle "Wishiwashi" 20 nofleeing
+  setflag FLAG_ALOLA_BROOKLET_TRIAL_DONE
+  hide self
+  hide lana
+  speaker "Lana"
+  say "...You did it. You passed my trial. The whole school, all at once!"
+  say "This is the Waterium Z. With it, a Water-type move becomes a Z-Move. Keep Lapras too; you'll need it on Akala."
+  give "Waterium Z"
+  give "Dive Ball" 10
+  setvar VAR_ALOLA_STORY 18
+  objective alolaFree
+  endscene
+  end
+label NotYet
+  text "The water by the far shore ripples strangely... Perhaps the splashes on the first lake come first."
+  end

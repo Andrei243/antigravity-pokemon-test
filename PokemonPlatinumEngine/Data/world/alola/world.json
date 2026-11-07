@@ -11,12 +11,30 @@
   "maps": [
     // Melemele Island, the first of the four islands (each a matrix of its own, plan 23's Alola decisions): 16 chunks by
     // 16, Iki Town on its hill near the middle
-    { "name": "Melemele", "matrix": 0, "trees": "Round" }
+    { "name": "Melemele", "matrix": 0, "trees": "Round" },
+    // Plan 23 · Z5, second part: Melemele's two caves, maps of their own: Ten Carat Hill off Route 1's shore and
+    // Verdant Cavern, Captain Ilima's trial, off Route 2
+    { "name": "TenCaratHill", "matrix": 1, "area": "ten_carat_hill", "trees": "Round", "setting": "Cave" },
+    { "name": "VerdantCavern", "matrix": 2, "area": "verdant_cavern", "trees": "Round", "setting": "Cave" },
+    // Akala Island, the second island, a matrix of its own: Heahea City to Brooklet Hill so far. The ferry from Hau'oli's
+    // marina lands on Heahea's pier (hauoli_city.txt, heahea_city.txt)
+    { "name": "Akala", "matrix": 3, "trees": "Round" }
   ],
   "areas": [
     "alola_route_1",
     "iki_town",
     "mahalo_trail",
-    "hauoli_city"
+    "hauoli_city",
+    "alola_route_2",
+    "alola_route_3",
+    "melemele_meadow",
+    "ten_carat_hill",
+    "verdant_cavern",
+    "heahea_city",
+    "akala_route_4",
+    "paniola_town",
+    "paniola_ranch",
+    "akala_route_5",
+    "brooklet_hill"
   ]
 }

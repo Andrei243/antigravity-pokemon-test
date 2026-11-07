@@ -1,0 +1,53 @@
+{
+  "key": "brooklet_hill",
+  "index": 14,
+  "name": "Brooklet Hill",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "BROOKLET_HILL",
+  "nightMusic": "BROOKLET_HILL",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "lana", "looks": "lana", "movement": "look_east", "x": 115, "z": 133, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "splash", "looks": "wishiwashi", "movement": "look_west", "x": 110, "z": 125, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "splash_2", "looks": "wishiwashi", "movement": "look_east", "x": 85, "z": 130, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "totem", "looks": "wishiwashi", "movement": "look_south", "x": 89, "z": 96, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_west", "x": 111, "z": 140, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_KALEO" },
+    { "id": "backpacker", "looks": "backpacker_m", "movement": "look_south", "x": 90, "z": 117, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_NALU" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 72, "z": 118, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_BROOKLET_HILL_NET_BALL", "item": "Net Ball", "script": "" }
+  ],
+  "signs": [
+    { "x": 116, "z": 136, "type": 0, "script": "HillSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Psyduck", "level": 14 },
+    { "species": "Psyduck", "level": 15 },
+    { "species": "Psyduck", "level": 16 },
+    { "species": "Wingull", "level": 14 },
+    { "species": "Wingull", "level": 15 },
+    { "species": "Poliwag", "level": 14 },
+    { "species": "Poliwag", "level": 15 },
+    { "species": "Dewpider", "level": 15 },
+    { "species": "Dewpider", "level": 16 },
+    { "species": "Surskit", "level": 15 },
+    { "species": "Surskit", "level": 16 },
+    { "species": "Lillipup", "level": 14 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Wishiwashi", "level": 15 },
+    { "species": "Psyduck", "level": 16 },
+    { "species": "Poliwag", "level": 16 },
+    { "species": "Wishiwashi", "level": 17 },
+    { "species": "Surskit", "level": 17 }
+  ]
+}

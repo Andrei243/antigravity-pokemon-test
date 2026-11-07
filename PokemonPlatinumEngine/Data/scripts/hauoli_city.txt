@@ -1,9 +1,104 @@
-# Hau'oli City, Melemele Island (plan 23 · Z5). The lines are our own. VAR_ALOLA_STORY is alola_route_1.txt's count.
+# Hau'oli City, Melemele Island (plan 23 · Z5). The lines are our own, on Sun and Moon's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Alola's first chapter" and "The rest of Melemele"): no script of the original is
+# read. VAR_ALOLA_STORY is alola_route_1.txt's count.
+#
+# The people: grunt and grunt_2 on the marina's pier (shown by FLAG_ALOLA_SKULL_MARINA for their scene), ilima beside
+# them (FLAG_ALOLA_ILIMA_MARINA), kukui on the beach by the pier (shown by FLAG_ALOLA_KUKUI_MARINA from the grand trial
+# until FLAG_ALOLA_SAILED_TO_AKALA), and the sailor at the pier's end, whose ferry crosses to Akala's Heahea City.
 
 
 # Into the city for the first time with the Pokédex: the first chapter's road is walked
 script OnEnter
   if var VAR_ALOLA_STORY != 6 end
   setvar VAR_ALOLA_STORY 7
-  objective alolaFree
+  objective alolaMarina
+  end
+
+
+# Onto the marina's pier for the first time: two of Team Skull, and Captain Ilima
+script Marina
+  scene "Team Skull at the marina"
+  setflag FLAG_ALOLA_SKULL_MARINA
+  show grunt
+  show grunt_2
+  face player down
+  speaker "Grunt"
+  say "Yo yo yo! Look who's wandered onto our pier. A little island challenger, huh?"
+  say "Team Skull says this pier's ours today. Wanna argue? Then let's battle!"
+  battle grunt as "alola_grunt_marina"
+  speaker "Grunt"
+  say "Tch! You got lucky. Come on, let's split. This place is boring anyway."
+  hide grunt
+  hide grunt_2
+  clearflag FLAG_ALOLA_SKULL_MARINA
+  setflag FLAG_ALOLA_ILIMA_MARINA
+  show ilima
+  face player left
+  speaker "Ilima"
+  say "Well handled! I was about to step in, but you didn't need me at all. I'm Ilima, a trial captain of this island."
+  say "A trial-goer who battles like that... Let me see it for myself. Your Pokémon are tired, so allow me."
+  heal
+  battle ilima as "alola_ilima_1"
+  speaker "Ilima"
+  say "Splendid! You and your partner understand each other well."
+  say "My trial waits in Verdant Cavern, up Route 2. But first you need the kahuna's blessing: the festival in Iki Town is tonight, and Hala will be expecting you."
+  hide ilima
+  clearflag FLAG_ALOLA_ILIMA_MARINA
+  setvar VAR_ALOLA_STORY 8
+  objective alolaFestival
+  endscene
+  end
+
+
+# The grunts and the captain, should they be spoken to while they stand there
+script Grunt
+  speaker "Grunt"
+  say "What're you looking at?"
+  end
+
+script Ilima
+  speaker "Ilima"
+  say "Verdant Cavern is north up Route 2. I'll be waiting."
+  end
+
+
+# After the grand trial: the professor's boat to Akala
+script SailToAkala
+  scene "The boat to Akala"
+  face player left
+  speaker "Prof. Kukui"
+  say "Woo! There's the island's newest grand trial winner! Hala told me all about it, cousin."
+  say "Melemele's done, so Akala's next. My boat's tied up right here. Hop in and I'll take you across!"
+  fade out
+  text "The professor's boat skimmed out of the marina and across the bright sea to Akala Island..."
+  setflag FLAG_ALOLA_SAILED_TO_AKALA
+  hide kukui
+  setvar VAR_ALOLA_STORY 14
+  objective alolaPaniola
+  warp "Akala" 125 328 up
+  fade in
+  speaker "Prof. Kukui"
+  say "Welcome to Akala! Heahea City's just up the beach. The nearest trial is north, past Route 4 and Paniola Town. Have fun out there!"
+  endscene
+  end
+
+script Kukui
+  speaker "Prof. Kukui"
+  say "Whenever you're ready, step onto the pier and we'll set sail for Akala."
+  end
+
+
+# The ferry to Akala, once the professor has taken the player across the first time
+script Ferry
+  speaker "Sailor"
+  if var VAR_ALOLA_STORY >= 14 goto Sail
+  say "This ferry crosses to Akala Island. It's for trial-goers who've finished Melemele's grand trial, so come back once the kahuna's seen what you can do!"
+  end
+label Sail
+  ask "All aboard for Akala Island! Shall we sail?"
+  if no end
+  fade out
+  text "The ferry pulled out of Hau'oli Marina..."
+  warp "Akala" 125 328 up
+  fade in
   end

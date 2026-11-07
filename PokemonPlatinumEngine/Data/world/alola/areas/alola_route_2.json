@@ -1,0 +1,56 @@
+{
+  "key": "alola_route_2",
+  "index": 4,
+  "name": "Route 2",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_2",
+  "nightMusic": "ROUTE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 285, "z": 138, "to": "AlolaRoute2_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 306, "z": 138, "to": "AlolaRoute2_Motel", "toWarp": 0 },
+    { "x": 282, "z": 95, "to": "AlolaRoute2_BerryFieldsHouse", "toWarp": 0 },
+    { "x": 326, "z": 106, "to": "verdant_cavern", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ilima", "looks": "ilima", "movement": "look_south", "x": 326, "z": 107, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "hau", "looks": "hau", "movement": "look_west", "x": 291, "z": 140, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_west", "x": 300, "z": 128, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_LEILANI" },
+    { "id": "preschooler", "looks": "preschooler_m", "movement": "look_east", "x": 293, "z": 118, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PRESCHOOLER_KEKOA" },
+    { "id": "backpacker", "looks": "backpacker_f", "movement": "look_west", "x": 318, "z": 110, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_MALIA" },
+    { "id": "breeder", "looks": "pokemon_breeder_f", "movement": "look_east", "x": 283, "z": 150, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_POKEMON_BREEDER_NOELANI" },
+    { "id": "grunt", "looks": "skull_grunt", "movement": "look_west", "x": 287, "z": 98, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_TEAM_SKULL_GRUNT_BERRY" },
+    { "id": "farmer", "looks": "rancher", "movement": "look_around", "x": 284, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 280, "z": 141, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_2_REVIVE", "item": "Revive", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 316, "z": 126, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_2_SUPER_POTION", "item": "Super Potion", "script": "" }
+  ],
+  "signs": [
+    { "x": 292, "z": 141, "type": 0, "script": "RouteSign" },
+    { "x": 292, "z": 106, "type": 0, "script": "BerrySign" },
+    { "x": 322, "z": 109, "type": 0, "script": "CavernSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Yungoos", "level": 7 },
+    { "species": "Yungoos", "level": 8 },
+    { "species": "Yungoos", "level": 9 },
+    { "species": "Spearow", "level": 7 },
+    { "species": "Spearow", "level": 8 },
+    { "species": "Abra", "level": 7 },
+    { "species": "Abra", "level": 8 },
+    { "species": "Drowzee", "level": 8 },
+    { "species": "Drowzee", "level": 9 },
+    { "species": "Smeargle", "level": 8 },
+    { "species": "Growlithe", "level": 8 },
+    { "species": "Cutiefly", "level": 8 }
+  ],
+  "landRate": 20
+}
