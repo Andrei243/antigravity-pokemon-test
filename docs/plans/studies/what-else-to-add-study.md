@@ -44,7 +44,7 @@ Every plan takes the later games' mechanics and makes the content our own: our p
 
 ## What open plans already hold
 
-- **Plan 23 (Kalos, Alola, Hisui, Lumiose's era)**: the Ride Pager (Z5), the trials and totems (Z6), Ultra Space and the Battle Tree's door (Z8), the Friend Safari (Z3, optional), catching from the field and the battle styles (Z18, Z19, optional), the Wild Zones, the Rogue Megas and the Z-A Royale (Z22 to Z24).
+- **Plan 23 (Kalos, Alola, Hisui, Lumiose's era)**: the Ride Pager (Z5, built on Melemele and Akala on 2026-11-07), the trials and totems (Z6), Ultra Space and the Battle Tree's door (Z8), the Friend Safari (Z3, optional), catching from the field and the battle styles (Z18, Z19, optional), the Wild Zones, the Rogue Megas and the Z-A Royale (Z22 to Z24).
 - **Plan 33 (Galar)**: the Wild Area, Max Raids, the Watt traders, the Digging Duo, the Ball Guy and the cram-o-matic, Galar's Battle Tower, the Isle of Armor and the Crown Tundra with the Max Lair (optional).
 - **Plan 34 (Paldea)**: Tera Raids and picnics, Let's Go, the mount, the Ace tournament, the stakes, the Teal Mask and the Indigo Disk (optional).
 - **Plan 10 (companions)**: alphas (F10), the HERE page of the Pokédex (F11), the rustles and chains (F12).
