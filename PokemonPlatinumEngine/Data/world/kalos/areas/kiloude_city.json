@@ -1,0 +1,32 @@
+{
+  "key": "kiloude_city",
+  "index": 42,
+  "name": "Kiloude City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "KILOUDE",
+  "nightMusic": "KILOUDE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 543, "z": 348, "to": "KiloudeCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 581, "z": 348, "to": "KiloudeCity_NorthHouse", "toWarp": 0 },
+    { "x": 591, "z": 364, "to": "KiloudeCity_SeaHouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "az", "looks": "old_man", "movement": "look_south", "x": 563, "z": 381, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_AZ", "script": "" },
+    { "id": "fisher", "looks": "fisherman", "movement": "look_south", "x": 566, "z": 366, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "girl", "looks": "lass", "movement": "look_south", "x": 553, "z": 352, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 572, "z": 385, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_KILOUDE_CITY_PEARL", "item": "Big Pearl", "script": "" }
+  ],
+  "signs": [
+    { "x": 563, "z": 362, "type": 0, "script": "TownSign" }
+  ],
+  "triggers": []
+}

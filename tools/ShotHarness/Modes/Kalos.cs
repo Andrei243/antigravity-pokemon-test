@@ -20,6 +20,8 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "coast") { KalosCoast(); return; }
         // KALOS_FROM=league: plan 23 · Z4 alone (wk200 on, wks60 on)
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "league") { KalosLeague(); return; }
+        // KALOS_FROM=loose: plan 23 · Z4's loose ends alone (wk300 on, wks100 on)
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "loose") { KalosLooseEnds(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -119,6 +121,7 @@ partial class Harness
         KalosCentral();
         KalosCoast();
         KalosLeague();
+        KalosLooseEnds();
     }
 
     private void KalosScenes()

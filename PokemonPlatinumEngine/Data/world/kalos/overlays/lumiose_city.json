@@ -40,8 +40,8 @@
     { "script": "NotYetEast", "x": 418, "z": 358, "width": 1, "depth": 4, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 1 },
     { "script": "NotYetSouth", "x": 391, "z": 418, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 1 },
     // Plan 23 · Z4: the power back on (KalosPowerPlant.txt, VAR_KALOS_LUMIOSE_ROADS 2) opens the road north to Route 14;
-    // the north-east, east and south-east roads lead nowhere drawn yet and go on turning the player back
-    { "script": "NotYetNorth", "x": 391, "z": 301, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 2 },
+    // the north-east road (the plan's loose ends: Route 16 and the Lost Hotel) opens with it; the east and south-east roads
+    // lead nowhere drawn yet and go on turning the player back
     { "script": "NotYetEast", "x": 418, "z": 358, "width": 1, "depth": 4, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 2 },
     { "script": "NotYetSouth", "x": 391, "z": 418, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 2 }
   ],

@@ -74,7 +74,9 @@
     { "id": 12, "area": "anistar_city", "x": 615, "y": 199, "room": "AnistarCity_PokemonCenter_1F" },
     { "id": 13, "area": "couriway_town", "x": 613, "y": 351, "room": "CouriwayTown_PokemonCenter_1F" },
     { "id": 14, "area": "snowbelle_city", "x": 699, "y": 271, "room": "SnowbelleCity_PokemonCenter_1F" },
-    { "id": 15, "area": "kalos_pokemon_league", "x": 608, "y": 60, "room": "KalosLeague_Hall" }
+    { "id": 15, "area": "kalos_pokemon_league", "x": 608, "y": 60, "room": "KalosLeague_Hall" },
+    // Plan 23 Â· Z4, the loose ends: Kiloude City's PokÃ©mon Center
+    { "id": 16, "area": "kiloude_city", "x": 543, "y": 349, "room": "KiloudeCity_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: X and Y's levels for a team that crossed from Unova, from Iris's 185 on the first route to Diantha at
   // 205, as the W4 study placed Kalos's Champion; W4b-1: the post-game's strongest (about 76, approximate until the

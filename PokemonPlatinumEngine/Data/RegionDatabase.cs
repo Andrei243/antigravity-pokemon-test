@@ -117,6 +117,10 @@ public sealed class Region
     /// <summary>The regional Pokédex the region plays by, a PokeAPI identifier (<c>extended-sinnoh</c>, <c>kanto</c>); null for a region with no file (plan 18 · W3).</summary>
     public string? Dex => File?.Dex is { Length: > 0 } d ? d : null;
 
+    /// <summary>Every regional Pokédex the region plays by (plan 23 · Z4: Kalos has three), <see cref="Dex"/> first; empty for a region with none.</summary>
+    public IReadOnlyList<string> Dexes =>
+        File?.Dexes is { Count: > 0 } many ? many : Dex is { } one ? new[] { one } : Array.Empty<string>();
+
     /// <summary>The rule that opens the National Pokédex here, read from the file (plan 18 · W3); the Hall of Fame alone for a region that names none.</summary>
     public NationalUnlock NationalUnlock => NationalUnlock.Parse(File?.NationalUnlock);
 
@@ -963,6 +967,9 @@ public static class RegionDatabase
                 "KalosVictoryRoad",
                 "KalosLeague_Hall", "KalosLeague_MalvaRoom", "KalosLeague_SieboldRoom", "KalosLeague_WikstromRoom", "KalosLeague_DrasnaRoom",
                 "KalosLeague_ChampionRoom", "KalosLeague_HallOfFame",
+                // Plan 23 · Z4, the loose ends: the Lost Hotel, Frost Cavern and Terminus Cave (maps of their own) and Kiloude City's rooms
+                "LostHotel", "FrostCavern", "TerminusCave",
+                "KiloudeCity_PokemonCenter_1F", "KiloudeCity_NorthHouse", "KiloudeCity_SeaHouse",
             }
         },
         new()

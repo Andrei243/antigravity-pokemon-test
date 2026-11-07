@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- Kalos has its three regional Pokédexes (Central, Coastal and Mountain, each with its own diploma), a short road out of Lumiose City's north-east gate to the Lost Hotel, Frost Cavern off Route 17's snow, Terminus Cave off Route 13's badlands and Kiloude City on the sea west of Couriway Town, where an old man called AZ waits on the landing after the Hall of Fame to tell his story and battle you once.
 - After the Hall of Fame, a Sky Trainer waits at the top of Sunyshore's Vista Lighthouse with one Sky Battle a day: only Pokémon that fly or float may take part, and moves that need the ground (Earthquake, Dig, Surf and the like) can't be used. Gengar, Pinsir and Shaymin are now among those that can't go up, and Pidove can.
 - The Battle Frontier's annex has a Battle Royal corner: join Brisa, Corin and Dalla in a four-way free-for-all where everyone is everyone's foe. Nobody may switch or use items, the battle ends as soon as anyone runs out, and you're placed by knock-outs and Pokémon left standing. It costs and gives nothing, so play as often as you like.
 - After the Hall of Fame, Routes 225 to 227 hide a rare alpha in their tall grass (about one meeting in a hundred): a Pokémon half again as big as its kind, with three perfect IVs, a move ahead of its level and a deeper cry. A caught alpha carries the Alpha mark.

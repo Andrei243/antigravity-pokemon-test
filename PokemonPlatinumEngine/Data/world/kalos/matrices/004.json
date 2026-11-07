@@ -1,0 +1,16 @@
+{
+  "id": 4,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    "201 202",
+    "203 204"
+  ],
+  "areas": [
+    "  0   0",
+    "  0   0"
+  ],
+  "areaKeys": [
+    "lost_hotel"
+  ]
+}
