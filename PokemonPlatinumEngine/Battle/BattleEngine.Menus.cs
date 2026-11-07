@@ -280,6 +280,8 @@ public partial class BattleEngine
     /// </summary>
     public void SelectMainMenuOption(int index)
     {
+        // A link battle's menus act only on the server's question (plan 28 · I3)
+        if (!MayChoose) return;
         // Hoenn's Safari Zone: 0 the Safari Ball, 1 POKéBLOCK, 2 GO NEAR, 3 RUN (plan 21 · H11, part e)
         if (EmeraldSafari)
         {
@@ -454,6 +456,7 @@ public partial class BattleEngine
     /// <summary>Uses the move in the given slot, as chosen from the FIGHT menu.</summary>
     public void SelectMove(int index)
     {
+        if (!MayChoose) return;
         var user = MenuBattler;
         // In a rotation battle the moves are those of the Pokémon the turntable is turned to (plan 14 · B7)
         var fighter = Fighter;
@@ -516,6 +519,7 @@ public partial class BattleEngine
     /// <summary>Sends in the party's Pokémon at <paramref name="partyIndex"/>: a switch for this turn, or a fainted Pokémon's replacement.</summary>
     public void SelectSwitch(int partyIndex)
     {
+        if (!MayChoose) return;
         // The place's own team: a friend at the partner's place switches among the partner's (plan 13 · V20)
         var team = SwitchParty;
         if (partyIndex < 0 || partyIndex >= team.Count) return;

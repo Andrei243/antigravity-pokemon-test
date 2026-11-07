@@ -1283,6 +1283,14 @@ public partial class BattleEngine
         Voice.Advance(dt);
         if (Anim.Speaking is { } speaking) speaking.MouthOpen = Voice.MouthOpen;
 
+        // A screen played along unseen (plan 13 · V12: the other player's at one machine) reads no key: its lines go on
+        // by themselves and a question waits for its own player
+        if (Unseen)
+        {
+            UnseenFrame(dt);
+            return;
+        }
+
         // AUTO plays the battle for the player while it runs (plan 12 · Q12); a press still reads a line on
         if (AutoRunning && waitingForMessageConfirm && ConfirmPressed)
         {

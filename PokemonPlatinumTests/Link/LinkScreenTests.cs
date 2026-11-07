@@ -239,4 +239,26 @@ public class LinkScreenTests
         Assert.DoesNotContain(core.Log.OfType<Said>(), s => Narration.IsMarked(s.Text));
         Assert.False(Narration.Neutral);
     }
+
+    [Fact]
+    public void AnAnswerTheServerRefusesLeavesTheQuestionStandingAndTheMenusActOnlyOnAQuestion()
+    {
+        var (bench, a, _) = Screens(13);
+        var lines = new List<string>();
+        for (int i = 0; i < 2000 && a.HUD.MenuState != BattleMenuState.Main; i++) Act(a, lines);
+        var asked = bench.A.Asked!;
+        // Struggle while moves are left is refused by the server: the question stands on the client
+        bench.A.Answer(new[] { BattleChoice.Fight(asked.Options[0].Place, -1) });
+        Assert.Null(bench.A.Asked);
+        bench.Server.Pump();
+        bench.A.Pump();
+        Assert.NotEmpty(bench.A.Refusals);
+        Assert.Equal(asked.Number, bench.A.Asked!.Number);
+
+        // A screen with nothing asked of it does nothing at its commands
+        var (_, waiting, _) = Screens(14);
+        waiting.SelectMainMenuOption(0);
+        Assert.NotEqual(BattleMenuState.Moves, waiting.HUD.MenuState);
+        Assert.Empty(waiting.LinkClient!.Refusals);
+    }
 }

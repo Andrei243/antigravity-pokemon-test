@@ -75,13 +75,20 @@ partial class Harness
             // The keypad, four digits in and taken back out again
             screen.Move(1);
             screen.Confirm();
-            foreach (int key in new[] { 0, 1, 2, 3 }) { while (screen.Key != key) screen.Sideways(1); screen.Confirm(); screen.Move(0); }
+            // (to a key by its row, then along it: a step sideways stays in its row)
+            foreach (int key in new[] { 0, 1, 2, 3 })
+            {
+                while (screen.Key / GlobalLinkScreen.KeypadColumns != key / GlobalLinkScreen.KeypadColumns) screen.Move(1);
+                while (screen.Key != key) screen.Sideways(1);
+                screen.Confirm();
+            }
             Frames(20); Shot("gl02_keypad");
             Console.WriteLine($"typed: '{screen.Session.Typed}'");
             screen.Cancel(); screen.Cancel(); screen.Cancel(); screen.Cancel(); screen.Cancel();
             Pump(() => screen.Phase == LinkPhase.Menu, "the menu again");
 
             // A code made by the game, typed by the friend
+            while (screen.MenuRow != GlobalLinkRow.MakeCode) screen.Move(1);
             screen.Confirm();
             Pump(() => screen.Phase == LinkPhase.WaitingForOther, "a code");
             Frames(20); Shot("gl03_code_made");
@@ -118,6 +125,10 @@ partial class Harness
 
             screen.Cancel();
             Pump(() => screen.Phase == LinkPhase.Menu, "the menu after leaving");
+
+            // The battle room (plan 07 · O6): a battle code made by the game, typed by the friend, six brought each side
+            BattleRoomShots(screen, friend, Pump);
+
             screen.Cancel();
             friend.Close();
             Frames(10);

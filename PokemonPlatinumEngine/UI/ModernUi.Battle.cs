@@ -75,6 +75,24 @@ internal static partial class ModernUi
             UiShapes.Circle(new System.Numerics.Vector2(x + i * 30, y), 9, i == lit ? Red : new Color(196, 200, 210, 255));
     }
 
+    /// <summary>
+    /// VERSUS's curtain (plan 13 · V12; style guide, "Battle panels", "The curtain"): the whole picture under the
+    /// backdrop's teal, a panel 1100 by 420 in the middle with "Pass the controller to {player}" in Black 56, the other
+    /// told to look away in ExtraBold 34 Muted, and "Press A when you're ready" in Black 30 Red at its foot, with the
+    /// waiting dots beside it. Nothing of either side's battle shows through.
+    /// </summary>
+    public static void VersusCurtain(int sw, int sh, string next, string other)
+    {
+        Backdrop(sw, sh);
+        var r = new Rectangle(sw / 2f - 550, sh / 2f - 210, 1100, 420);
+        Panel(r, 40);
+        float x = r.X + 64, room = r.Width - 128;
+        DrawWrapped(Text.Of("versus.curtain.pass", ("player", next)), x, r.Y + 70, room, 56, Ink, 70, UiWeight.Black);
+        DrawWrapped(Text.Of("versus.curtain.lookAway", ("player", other)), x, r.Y + 190, room, 34, Muted, 46, UiWeight.ExtraBold);
+        UiFonts.Draw(Text.Of("versus.curtain.ready"), x, r.Y + r.Height - 96, 30, Red, UiWeight.Black);
+        WaitingDots(r.X + r.Width - 150, r.Y + r.Height - 78);
+    }
+
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;

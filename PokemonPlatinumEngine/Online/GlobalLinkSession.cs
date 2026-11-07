@@ -158,6 +158,8 @@ public sealed class GlobalLinkSession
 
         if (client != null)
         {
+            // A team brought: the battle's own messages are taken until the room greets the player, when its screen takes over
+            if (Phase == LinkPhase.Battling && Battle is { Hello: null } waiting) waiting.Pump();
             while (Phase != LinkPhase.Closed && client.TryTake(out var message)) Take(message);
             if (greeted && Phase is not (LinkPhase.Failed or LinkPhase.Closed) && !client.Connected) Fail("globalLink.error.dropped");
         }
@@ -400,6 +402,8 @@ public sealed class GlobalLinkSession
                 OtherFriendCode = joined.OtherFriendCode;
                 ResetOffers();
                 OtherAway = false;
+                // A refusal of an earlier room is no part of this one
+                Details = null;
                 if (joined.Kind == RoomKind.Battle)
                 {
                     // A battle room (plan 07 · O6): the team to bring, under the room's rules

@@ -88,11 +88,49 @@ public partial class BattleEngine
         return face;
     }
 
+    /// <summary>
+    /// The screen is played along unseen (plan 13 · V12: the player not at the controls of a battle at one machine):
+    /// it reads no key, its lines go on by themselves, and a question waits for its own player to come to the screen.
+    /// </summary>
+    public bool Unseen { get; set; }
+
+    private void UnseenFrame(float dt)
+    {
+        if (IsLearningMove || offerPanel) return;
+        if (waitingForMessageConfirm)
+        {
+            ConfirmMessage();
+            return;
+        }
+        if (messageWaitTimer > 0f)
+        {
+            messageWaitTimer -= dt;
+            if (messageWaitTimer <= 0f) Pump();
+            return;
+        }
+        if (HUD.MenuState == BattleMenuState.Message) Pump();
+    }
+
     /// <summary>Takes in what the server has sent: the view's new events are played, and a question waiting is opened once they have been.</summary>
     private void PumpLink()
     {
         if (link == null) return;
         link.Client.Pump();
+        // An answer the server refused: its reason said, and the same question opened again
+        if (link.Client.Refusals.Count > refusalsSeen)
+        {
+            string reason = link.Client.Refusals[^1];
+            refusalsSeen = link.Client.Refusals.Count;
+            if (HUD.MenuState == BattleMenuState.Waiting && link.Standing is { } again)
+            {
+                linkAsk = null;
+                AudioManager.PlaySound("error");
+                QueueMessage(reason, () => LinkReopen(again));
+                Play(new List<BattleEvent>());
+                Pump();
+                return;
+            }
+        }
         var fresh = link.TakeEvents();
         if (fresh.Count > 0)
         {
@@ -133,6 +171,26 @@ public partial class BattleEngine
                 break;
         }
     }
+
+    // The server's refusals already said
+    private int refusalsSeen;
+
+    /// <summary>A question asked again after a refusal: opened as it was first opened.</summary>
+    private void LinkReopen(LinkAsk ask)
+    {
+        linkAsk = ask;
+        if (ask.Request is ReplacementRequest replacement)
+        {
+            replacing = true;
+            menuSlot = replacement.Place.Slot;
+            HUD.SwitchMenuIndex = 0;
+            HUD.MenuState = BattleMenuState.SwitchPokemon;
+        }
+        else BeginChoosing();
+    }
+
+    /// <summary>Whether the menus may act: outside a link battle always; in one, only while the server's question is open.</summary>
+    private bool MayChoose => link == null || linkAsk != null;
 
     /// <summary>The screen's places as the view has told them: the rules' copies are no part of a link battle.</summary>
     private void SyncFromView()

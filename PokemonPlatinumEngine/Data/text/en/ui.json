@@ -5415,6 +5415,7 @@
       "puzzles": "PUZZLES",
       "friends": "FRIENDS' TRAINERS",
       "daily": "DAILY RUN",
+      "versus": "VERSUS",
       "teamsCount": "{n} kept",
       "gauntletBest": "Best {n}/{of}",
       "streakBest": "Best {n}",
@@ -5426,7 +5427,8 @@
       "streak": "Battle trainers of the Battle Frontier one after another at level 50 for as long as your team keeps winning. Every seven battles they grow stronger.",
       "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works.",
       "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way.",
-      "daily": "A round of the Battle Factory drawn from today's date: the same six rentals and the same seven trainers for everyone today. Rent three, trade after a win, and see how far you get. The first run of the day is the one kept."
+      "daily": "A round of the Battle Factory drawn from today's date: the same six rentals and the same seven trainers for everyone today. Rent three, trade after a win, and see how far you get. The first run of the day is the one kept.",
+      "versus": "Two people at one screen: each picks a team and they battle at level 50. Each chooses in turn behind a curtain, so neither sees the other's choice. Nothing is kept."
     },
     "clears": "Cleared {n} times",
     "daily": {
@@ -5444,6 +5446,8 @@
       "gauntlet": "Which team takes on the gauntlet?",
       "streak": "Which team starts a streak?",
       "friend": "Which team takes on this trainer?",
+      "versusFirst": "{player}: which team?",
+      "versusSecond": "{player}: which team?",
       "speciesTitle": "Choose a species",
       "itemTitle": "Choose an item to hold",
       "moveTitle": "Choose a move"
@@ -5643,6 +5647,15 @@
       }
     }
   },
+  "versus": {
+    "first": "Player 1",
+    "second": "Player 2",
+    "curtain": {
+      "pass": "Pass the controller to {player}",
+      "lookAway": "{player}, look away while they choose.",
+      "ready": "Press A when you're ready"
+    }
+  },
   "linkRoom": {
     "fault": {
       "teamSize": "A team of {count} can't be brought.",
@@ -5731,13 +5744,13 @@
     "battled": {
       "none": "The battle with {name} was called off before it began.",
       "won": {
-        "knockedOut": "You beat {name}! The win was written into your Trainer Card.",
-        "forfeit": "{name} gave the match up. The win was written into your Trainer Card.",
-        "timer": "{name}'s time ran out. The win was written into your Trainer Card.",
-        "disconnect": "{name}'s link dropped and didn't come back. The win was written into your Trainer Card."
+        "knockedOut": "You beat {name}! The win was written into your record.",
+        "forfeit": "{name} gave the match up. The win was written into your record.",
+        "timer": "{name}'s time ran out. The win was written into your record.",
+        "disconnect": "{name}'s link dropped and didn't come back. The win was written into your record."
       },
       "lost": {
-        "knockedOut": "You lost to {name}. The battle was written into your Trainer Card.",
+        "knockedOut": "You lost to {name}. The battle was written into your record.",
         "forfeit": "You gave the match up to {name}.",
         "timer": "Your time ran out three turns running, and the match went to {name}.",
         "disconnect": "Your link dropped, and the match went to {name}."

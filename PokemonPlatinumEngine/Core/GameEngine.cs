@@ -1317,7 +1317,7 @@ public partial class GameEngine
                     {
                         if (flow.Battle.WatchOver) EndWatching();
                     }
-                    else if (KeepTheLinkBattle())
+                    else if (KeepTheLinkBattle(dt))
                     {
                         // A link battle ends back where it began, leaving nothing behind (plan 28 · I3, plan 07 · O6)
                     }
@@ -3440,6 +3440,8 @@ public partial class GameEngine
         if (flow.Battle == null || DrawBattlePhoto()) return;
         battleRenderer.DrawField(flow.Battle, VirtualWidth, VirtualHeight);
         flow.Battle.Draw(VirtualWidth, VirtualHeight);
+        // VERSUS's curtain between the two players (plan 13 · V12)
+        DrawTheVersusCurtain();
     }
 
     public void Close()

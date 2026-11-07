@@ -53,6 +53,8 @@ public sealed class LinkClient
     private readonly List<BattleEvent> events = new();
     private readonly List<string> refusals = new();
     private BattleRoster? roster;
+    // The question answered last, which a refusal of its answer asks again
+    private LinkAsk? answered;
 
     /// <summary>The names the view's Pokémon go by on the wire, once the room has greeted the player.</summary>
     public BattleRoster? Roster => roster;
@@ -83,6 +85,7 @@ public sealed class LinkClient
                 Greeted(hello);
                 break;
             case LinkTurn turn:
+                answered = null;
                 events.AddRange(turn.Events);
                 State.Apply(turn.Events, Side);
                 break;
@@ -92,6 +95,8 @@ public sealed class LinkClient
                 break;
             case LinkRefused refused:
                 refusals.Add(refused.Reason);
+                // The question stands (the server says so): the one answered is asked again
+                if (Asked == null && answered != null && Result == null) Asked = answered;
                 break;
             case LinkOver over:
                 Result = over.Result;
@@ -123,6 +128,7 @@ public sealed class LinkClient
     {
         if (Asked == null) return;
         channel.Send(BattleWire.WriteMessage(new LinkAnswer(Asked.Number, choices), null));
+        answered = Asked;
         Asked = null;
     }
 

@@ -22,7 +22,7 @@ public partial class GameEngine
 {
     // What keeps the link of the battle shown going each frame (the counter's session, a hot-seat's server), and what
     // the battle's end comes back to; null outside a link battle
-    private Action? linkBeside;
+    private Action<float>? linkBeside;
     private Action? linkOver;
     private bool linkEnding;
 
@@ -30,9 +30,13 @@ public partial class GameEngine
     /// Shows a link client's battle as the game's battle behind a fade: its models made ready, the battle's music, an
     /// indoor stage; <paramref name="beside"/> runs every frame of it, <paramref name="over"/> once it has shown its end.
     /// </summary>
-    private void ShowLinkBattle(LinkClient client, Action beside, Action over, string? foeLook = null)
+    private void ShowLinkBattle(LinkClient client, Action<float> beside, Action over, string? foeLook = null) =>
+        ShowLinkBattle(client.Own.Concat(client.FoeStandIns), () => BattleEngine.ForLink(client, Settings.BattleScene, PlayerIdentity.Character, foeLook), beside, over);
+
+    /// <summary>A link battle's screen made behind the fade (<paramref name="face"/>), with the Pokémon it shows made ready first.</summary>
+    private void ShowLinkBattle(IEnumerable<Pokemon> shown, Func<BattleEngine> face, Action<float> beside, Action over)
     {
-        var models = client.Own.Concat(client.FoeStandIns).Select(p => p.LookName).Distinct().ToList();
+        var models = shown.Select(p => p.LookName).Distinct().ToList();
         foreach (string name in models) flow.WantModel(name);
         linkBeside = beside;
         linkOver = over;
@@ -42,7 +46,7 @@ public partial class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(models);
-            flow.Battle = BattleEngine.ForLink(client, Settings.BattleScene, PlayerIdentity.Character, foeLook);
+            flow.Battle = face();
             battleRenderer.SetArena(BattleArena.Indoors);
             flow.BattleTrainers.Clear();
         });
@@ -52,10 +56,12 @@ public partial class GameEngine
     /// A frame of a link battle: the link kept going beside it, and its end (or a link that died under it) handed to
     /// whoever began it. True when the frame was a link battle's.
     /// </summary>
-    private bool KeepTheLinkBattle()
+    private bool KeepTheLinkBattle(float dt)
     {
-        if (flow.Battle is not { IsLink: true } face || linkOver == null) return false;
-        linkBeside?.Invoke();
+        if (flow.Battle is not { IsLink: true } || linkOver == null) return false;
+        linkBeside?.Invoke(dt);
+        // (whoever keeps the link may have put another of its screens on show: a hot-seat's curtain lifted)
+        var face = flow.Battle!;
         if (linkEnding || !face.IsBattleOver && !LinkDied) return true;
         linkEnding = true;
         AudioManager.LowHp = false;
@@ -95,7 +101,7 @@ public partial class GameEngine
         TakeTheBattleRecord();
         if (flow.State != GameState.GlobalLink || flow.Battle != null || linkOver != null) return;
         if (session.Phase == LinkPhase.Battling && session.Battle is { Hello: not null } client)
-            ShowLinkBattle(client, beside: () =>
+            ShowLinkBattle(client, beside: _ =>
             {
                 session.Update(0f);
                 TakeTheBattleRecord();
@@ -125,6 +131,6 @@ public partial class GameEngine
     internal sealed partial class Driver
     {
         /// <summary>The link battle on screen's link kept going and its end handed back, as a frame of the game does (a tool driving a battle it shows by hand).</summary>
-        public bool KeepTheLinkBattle() => game.KeepTheLinkBattle();
+        public bool KeepTheLinkBattle(float dt = 1f / 60f) => game.KeepTheLinkBattle(dt);
     }
 }
