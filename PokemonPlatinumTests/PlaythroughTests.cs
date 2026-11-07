@@ -91,6 +91,31 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void AKalosGamePlaysWholeFromTheBedroomInVanivilleToTheHallOfFame()
+    {
+        // Plan 23 · Z4's "done when": the bot plays the opening, the middle chapters and the last ones in one itinerary.
+        // Five strong Pokémon are on the team before the first Pokémon arrives (the starter is the sixth), so the Gyms
+        // and the League are the story's to be got through and the bot has no training to do
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            var story = game.Story;
+            foreach (var (species, level) in new[] { ("Talonflame", 76), ("Venusaur", 76), ("Lucario", 76), ("Garchomp", 76), ("Gardevoir", 76) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosWhole) };
+            Run(bot, 10 * 3600);
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.True(story.Has("KalosHallOfFame"), report.ToMarkdown());
+            Assert.Equal(8, story.BadgeCount(RegionDatabase.Kalos));
+        }, Seed, RegionDatabase.Kalos);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor

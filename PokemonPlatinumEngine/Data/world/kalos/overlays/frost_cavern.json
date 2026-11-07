@@ -1,0 +1,43 @@
+{
+  // Frost Cavern (plan 23 Â· Z4, the loose ends): a map of its own, drawn by hand (tools/MapDraw/kalos/frost_cavern.txt), our
+  // words. A cave of ice off Route 17's snowfield: an entrance hall, a great frozen hall and three chambers above it, with
+  // the cold PokÃ©mon of the north and four Trainers. It plays Santalune Forest's song until plan 31 writes it a cave
+  // song of its own
+  "area": "frost_cavern",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "noemie": {
+      "name": "Noemie",
+      "npcType": "skier_f",
+      "trainer": {
+        "dialogueBefore": "Skier Noemie: The cave keeps the snow I lose on the slopes. I come here to find it again. And to battle!",
+        "dialogueAfter": "Skier Noemie: My snow, your win. Fair is fair."
+      }
+    },
+    "octave": {
+      "name": "Octave",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Octave: Cold in here, isn't it? Nothing a good battle won't fix!",
+        "dialogueAfter": "Hiker Octave: Warm now. Warmer than I would like, in fact."
+      }
+    },
+    "brice": {
+      "name": "Brice",
+      "npcType": "skier_m",
+      "trainer": {
+        "dialogueBefore": "Skier Brice: Glide in, glide out. That is how the cave is meant to be crossed. You are not gliding. You are walking into a battle!",
+        "dialogueAfter": "Skier Brice: You slid right past my guard. Nicely done."
+      }
+    },
+    "sylvain": {
+      "name": "Sylvain",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Sylvain: The deepest hall of Frost Cavern is mine for the afternoon. You will have to win it from me.",
+        "dialogueAfter": "Ace Trainer Sylvain: Take the hall. I will warm my hands somewhere else."
+      }
+    }
+  }
+}

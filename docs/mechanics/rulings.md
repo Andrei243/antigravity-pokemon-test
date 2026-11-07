@@ -9406,3 +9406,40 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
 - **Words.** The 52 places' words are in English and Romanian (`Data/text/ro/data.json`, which `RomanianTests` holds every region's map to), and the
   Pokédex's tag for Unova's own list is `pokedex.mode.updatedunova` and `pokedex.modeName.updatedunova` ("UNOVA"; the other regions'
   Pokédexes beyond Kanto's have none yet and show their key, which a later session of each writes).
+## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
+
+What Z4 left, closed in our own words on X and Y's beats as they are publicly described.
+
+- **Three regional Pokédexes.** X and Y have Central, Coastal and Mountain Kalos, each about 150 species, and a Trainer
+  who finishes any one gets its diploma. A region file may therefore name a list (`dexes`), `dex` being its first; every
+  species already carried its three numbers (`species.json`'s `dexNumbers`). Entering Kalos gives the player all three
+  (`Pokedex.Enter` enters each), so each is a mode of the Pokédex, a search row and a diploma of its own (the diploma's key
+  is the PokeAPI identifier, `kalos-central`), and `Region.Dexes` is what everything that asked `Dex` for "the region's
+  Pokédex" now asks (the cross-region checks, the Trainer Card, the catch score): the Trainer Card counts each species
+  once whichever list names it. Kalos's National unlock stays the Hall of Fame alone (`nationalUnlock`: `HallOfFame`); the
+  rule ("every species seen") belongs to Sinnoh's. A region with one Pokédex is unchanged.
+- **The whole way.** `Itineraries.KalosWhole` plays the bedroom in Vaniville Town to the Hall of Fame: the opening
+  (`KalosOpening`), the middle chapters (`KalosMiddleChapters`, from the neighbours in Route 2 to the Tower of Mastery's Key
+  Stone, each leg a trigger by its script or a person by key) and the last (`KalosLastChapters`). The test puts five strong
+  Pokémon on the team before the first Pokémon arrives (the starter is the sixth) and a Repel for the whole way, so the
+  bot has no training to do and the story is what is tried.
+- **Route 16 and the Lost Hotel.** Lumiose City's north-east gate opens with the north gate (the power back,
+  `VAR_KALOS_LUMIOSE_ROADS` 2; the east and south-east gates still turn the player back). The road runs north-east through
+  broad fields to the Lost Hotel, an old grand hotel whose floors have sunk into the hill: a map of its own drawn as a
+  cave (lobby, hall, two wings, a gallery), because our hotel has no rooms to be built as rooms; its ghosts are the
+  Mountain list's. (X and Y's Route 16 joins Laverre and Route 15 differently; here it is a dead end, so the main way stays
+  one road.)
+- **Frost Cavern and Terminus Cave** are caves of their own off Route 17's snow (mouth in the field at its west) and Route
+  13's badlands, each an entrance hall, a great hall and three chambers, with the cold and the ground and rock Pokémon of
+  their routes; the player may skip them all.
+- **Kiloude City** lies on the sea at the west end of the long street of Couriway Town (whose west end is open now): a Pokémon
+  Center with the Mart's counter, two houses, a beach, and a pier that crosses the water to a paved landing. Fly lands
+  there (spawn 16).
+- **AZ.** After the Hall of Fame an old man sits on the landing (`KalosHallOfFame` shows him). His story is ours: a king of
+  long ago whose war was ended by a machine of his own making, which took the Floette he loved; he has waited ever since to
+  be forgiven. He asks to see what a Trainer and their Pokémon are worth together and battles (Sigilyph and Golurk at 66,
+  his Florges at 68), then gives three Rare Candies, once. The weapon's history is told here and no further (no Lysandre
+  tie-in beyond Z4's base); nothing is asked of the player but the battle.
+- **Left.** The Gyms' puzzle pieces (Clemont's quiz, Valerie's, Olympia's and Wulfric's floors) are still plain halls;
+  the Mamoswine ride, the Poké Ball Factory, the Battle Château, Parfum Palace's inside, Lumiose's east and south-east
+  gates, hordes and sky trainers and every new place's own song are not built.

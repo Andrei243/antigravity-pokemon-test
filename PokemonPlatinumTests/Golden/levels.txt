@@ -676,6 +676,10 @@ old rod 5
 good rod 5-15
 super rod 15-35
 ours Glacitusk 112-116, Clamspire 120-124
+=== frost_cavern
+Frost Cavern
+grass 38-41
+trainers 4, 39-42: kalos_ace_trainer_sylvain 42, kalos_hiker_octave 41, kalos_skier_brice 41, kalos_skier_noemie 40
 === fuchsia
 Fuchsia City
 surf 10-20
@@ -1146,6 +1150,10 @@ trainers 2, 31-32: kalos_lass_celestine 31, kalos_picnicker_odile 32
 Route 15
 grass 33-35
 trainers 3, 34-35: kalos_hiker_ambroise 35, kalos_lass_margot 34, kalos_youngster_felix 34
+=== kalos_route_16
+Route 16
+grass 33-35
+trainers 4, 33-35: kalos_backpacker_gaetan 34, kalos_lady_rosalie 35, kalos_picnicker_constance 34, kalos_youngster_corentin 34
 === kalos_route_17
 Route 17
 grass 36-38
@@ -1272,6 +1280,10 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+=== lost_hotel
+Lost Hotel
+grass 36-38
+trainers 4, 36-38: kalos_lass_pomme 37, kalos_psychic_lucien 37, kalos_psychic_odile 38, kalos_veteran_ambrose 38
 === lostlorn_forest
 Lostlorn Forest
 grass 21-24
@@ -3420,6 +3432,10 @@ trainers 5, 18-24: johto_executive_petrel_petrel_2 24, johto_scientist_gs_mitch 
 === ten_carat_hill
 Ten Carat Hill
 grass 10-12
+=== terminus_cave
+Terminus Cave
+grass 30-32
+trainers 3, 31-32: kalos_backpacker_ysolde 32, kalos_black_belt_thibault 32, kalos_hiker_anselme 31
 === three_island_berry_forest
 Berry Forest
 grass 30-40

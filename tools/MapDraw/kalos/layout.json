@@ -60,14 +60,23 @@
     { "file": "kalos_route_20.txt", "x": 670, "z": 156 },
     { "file": "pokemon_village.txt", "x": 662, "z": 104 },
     { "file": "kalos_route_21.txt", "x": 596, "z": 116 },
-    { "file": "kalos_pokemon_league.txt", "x": 576, "z": 40 }
+    { "file": "kalos_pokemon_league.txt", "x": 576, "z": 40 },
+    // Plan 23 · Z4, the loose ends: Route 16 north from Lumiose's north-east gate, with the Lost Hotel at its head, and
+    // Kiloude City on the sea west of Couriway Town (the street runs on west out of Couriway); the mouths of Terminus Cave
+    // (in Route 13's badlands) and Frost Cavern (on Route 17's snow) are drawn into those routes
+    { "file": "kalos_route_16.txt", "x": 380, "z": 236 },
+    { "file": "kiloude_city.txt", "x": 532, "z": 332 }
   ],
   // Plan 23 � Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
   "maps": [
     { "matrix": 1, "area": "reflection_cave", "width": 2, "height": 1, "cell": "5,5", "pieces": [ { "file": "reflection_cave.txt", "x": 4, "z": 4 } ] },
     { "matrix": 2, "area": "glittering_cave", "width": 2, "height": 2, "cell": "5,14", "pieces": [ { "file": "glittering_cave.txt", "x": 4, "z": 4 } ] },
     // Plan 23 · Z4: Victory Road, its south mouth on Route 21 and its north mouth on the League's terrace
-    { "matrix": 3, "area": "kalos_victory_road", "width": 2, "height": 2, "cell": "18,3", "pieces": [ { "file": "kalos_victory_road.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 3, "area": "kalos_victory_road", "width": 2, "height": 2, "cell": "18,3", "pieces": [ { "file": "kalos_victory_road.txt", "x": 4, "z": 4 } ] },
+    // Plan 23 · Z4, the loose ends: the Lost Hotel (off Route 16), Frost Cavern (off Route 17), Terminus Cave (off Route 13)
+    { "matrix": 4, "area": "lost_hotel", "width": 2, "height": 2, "cell": "13,7", "pieces": [ { "file": "lost_hotel.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 5, "area": "frost_cavern", "width": 2, "height": 2, "cell": "18,6", "pieces": [ { "file": "frost_cavern.txt", "x": 4, "z": 4 } ] },
+    { "matrix": 6, "area": "terminus_cave", "width": 2, "height": 2, "cell": "7,12", "pieces": [ { "file": "terminus_cave.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -107,6 +116,8 @@
     { "key": "kalos_route_20", "x": 670, "z": 156, "width": 36, "depth": 80 },
     { "key": "pokemon_village", "x": 662, "z": 104, "width": 52, "depth": 52 },
     { "key": "kalos_route_21", "x": 596, "z": 116, "width": 66, "depth": 24 },
-    { "key": "kalos_pokemon_league", "x": 576, "z": 40, "width": 64, "depth": 60 }
+    { "key": "kalos_pokemon_league", "x": 576, "z": 40, "width": 64, "depth": 60 },
+    { "key": "kalos_route_16", "x": 380, "z": 236, "width": 56, "depth": 64 },
+    { "key": "kiloude_city", "x": 532, "z": 332, "width": 68, "depth": 56 }
   ]
 }

@@ -1398,6 +1398,7 @@ unova_youngster_kevin 186 (60) [Venonat → Somnimoth, Raticate → Ratchisel, V
 levels 2 → 185, 68 → 205, 76 → 222
 caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
 kalos_aliana_1 194 (31) [Mightyena → Hyaenarch, Houndoom → Cerberhound]
+kalos_az_1 205 (68) [Sigilyph → Glyphoracle, Golurk → Colossurk]
 kalos_clemont_1 196 (37) [Emolga → Nimbolga, Magneton → Magnezone, Heliolisk → Coronafrill]
 kalos_diantha_1 205 (68) [Hawlucha → Luchacondor, Tyrantrum → Despotitan, Aurorus → Borealosaur, Gourgeist → Lanternhusk]
 kalos_drasna_1 204 (65) [Dragalge → Kelpdrake, Druddigon → Drudrakon, Altaria → Nimbusong, Noivern → Sonarwing]
@@ -1964,6 +1965,10 @@ surf 64-88 (own 5-40)
 old rod 64 (own 5)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
+=== frost_cavern
+Frost Cavern, Kalos
+grass 196-197 (own 38-41)
+trainers 4, 196-197 (own 39-42): kalos_ace_trainer_sylvain 197 (42), kalos_hiker_octave 197 (41) [Piloswine → Mamoswine, Sneasel → Rimeripper, Cryogonal → Cryohedron], kalos_skier_brice 197 (41) [Beartic → Beartundra, Weavile → Rimeripper], kalos_skier_noemie 197 (40) [Snover → Glaciarbor, Vanillish → Vanilluxe]
 === fuchsia
 Fuchsia City, Johto
 surf 109-116 (own 10-20)
@@ -2342,6 +2347,10 @@ trainers 2, 194 (own 31-32): kalos_lass_celestine 194 (31) [Spritzee → Perfume
 Route 15, Kalos
 grass 194-195 (own 33-35)
 trainers 3, 195 (own 34-35): kalos_hiker_ambroise 195 (35) [Graveler → Golem, Lairon → Aggron], kalos_lass_margot 195 (34) [Foongus → Sporemonarch], kalos_youngster_felix 195 (34) [Pawniard → Kingambit, Watchog → Beaconwatch]
+=== kalos_route_16
+Route 16, Kalos
+grass 194-195 (own 33-35)
+trainers 4, 194-195 (own 33-35): kalos_backpacker_gaetan 195 (34) [Pancham → Bambrawler, Honedge → Aegislash], kalos_lady_rosalie 195 (35) [Furfrou → Majesthound, Meowstic → Occulynx], kalos_picnicker_constance 195 (34) [Skiddo → Alpicorn, Litleo → Blazemonarch, Espurr → Occulynx], kalos_youngster_corentin 195 (34) [Bunnelby → Excavabbit, Fletchinder → Talonflame]
 === kalos_route_17
 Route 17, Kalos
 grass 195-196 (own 36-38)
@@ -2431,6 +2440,10 @@ surf 137-151 (own 5-35)
 old rod 137-140 (own 5-10)
 good rod 140-149 (own 10-30)
 super rod 147-156 (own 25-45)
+=== lost_hotel
+Lost Hotel, Kalos
+grass 195-196 (own 36-38)
+trainers 4, 195-196 (own 36-38): kalos_lass_pomme 196 (37) [Shuppet → Effigrim, Phantump → Trevenant, Pumpkaboo → Gourgeist], kalos_psychic_lucien 196 (37) [Haunter → Gengar, Gothorita → Gothitelle], kalos_psychic_odile 196 (38) [Meowstic → Occulynx, Gothorita → Gothitelle, Litwick → Chandelure], kalos_veteran_ambrose 196 (38) [Banette → Effigrim, Doublade → Aegislash, Lampent → Chandelure]
 === lostlorn_forest
 Lostlorn Forest, Unova
 grass 170-171 (own 21-24)
@@ -4063,6 +4076,10 @@ trainers 5, 115-119 (own 18-24): johto_executive_petrel_petrel_2 119 (24) [Zubat
 === ten_carat_hill
 Ten Carat Hill, Alola
 grass 208 (own 10-12)
+=== terminus_cave
+Terminus Cave, Kalos
+grass 193-194 (own 30-32)
+trainers 3, 194 (own 31-32): kalos_backpacker_ysolde 194 (32) [Gabite → Garchomp, Aron → Aggron], kalos_black_belt_thibault 194 (32) [Throh → Throjutsu, Machoke → Machamp], kalos_hiker_anselme 194 (31) [Rhyhorn → Rhyperior, Onix → Ironwyrm]
 === three_island_berry_forest
 Berry Forest, Kanto
 grass 81-88 (own 30-40)

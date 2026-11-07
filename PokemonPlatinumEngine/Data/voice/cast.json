@@ -98,6 +98,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(38)",
       "provisional": true
     },
+    "az": {
+      "note": "first spoken at kiloude_city.txt(11)",
+      "provisional": true
+    },
     "azurill": {
       "note": "first spoken at fallarbor_town.txt(22)",
       "provisional": true
@@ -1691,6 +1695,7 @@
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
     "Avery": "avery",
+    "AZ": "az",
     "Azurill": "azurill",
     "Backer": "backer",
     "Backers": "backers",

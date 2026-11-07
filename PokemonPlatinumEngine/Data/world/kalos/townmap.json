@@ -49,7 +49,9 @@
     { "key": "kalos_route_20", "about": "A misty wood whose path winds back and forth between the trees." },
     { "key": "pokemon_village", "about": "A hidden meadow round a pond where Pokémon live with no Trainer." },
     { "key": "kalos_route_21", "about": "The last road, west along the foot of the mountains to Victory Road." },
-    { "key": "kalos_pokemon_league", "flag": "FLAG_FIRST_ARRIVAL_KALOS_POKEMON_LEAGUE", "arrival": [ "kalos_pokemon_league" ], "about": "The Pokémon League of Kalos, high on its mountain terrace past Victory Road." }
+    { "key": "kalos_pokemon_league", "flag": "FLAG_FIRST_ARRIVAL_KALOS_POKEMON_LEAGUE", "arrival": [ "kalos_pokemon_league" ], "about": "The Pokémon League of Kalos, high on its mountain terrace past Victory Road." },
+    { "key": "kalos_route_16", "about": "A short road north-east out of Lumiose through broad fields, ending at the dark mouth of an old hotel." },
+    { "key": "kiloude_city", "flag": "FLAG_FIRST_ARRIVAL_KILOUDE_CITY", "arrival": [ "kiloude_city" ], "about": "A seafront city at the end of the long street west of Couriway Town, with a pier that runs out over the water." }
   ],
   "landmarks": [],
   "blocks": [
@@ -189,7 +191,15 @@
     { "x": 18, "y": 1, "kind": "Town", "name": "Pokémon League", "area": "kalos_pokemon_league" },
     { "x": 19, "y": 1, "kind": "Town", "name": "Pokémon League", "area": "kalos_pokemon_league" },
     { "x": 18, "y": 2, "kind": "Town", "name": "Pokémon League", "area": "kalos_pokemon_league" },
-    { "x": 19, "y": 2, "kind": "Town", "name": "Pokémon League", "area": "kalos_pokemon_league" }
+    { "x": 19, "y": 2, "kind": "Town", "name": "Pokémon League", "area": "kalos_pokemon_league" },
+    { "x": 12, "y": 7, "kind": "Route", "name": "Route 16", "area": "kalos_route_16" },
+    { "x": 13, "y": 7, "kind": "Route", "name": "Route 16", "area": "kalos_route_16" },
+    { "x": 12, "y": 8, "kind": "Route", "name": "Route 16", "area": "kalos_route_16" },
+    { "x": 13, "y": 8, "kind": "Route", "name": "Route 16", "area": "kalos_route_16" },
+    { "x": 16, "y": 10, "kind": "Town", "name": "Kiloude City", "area": "kiloude_city" },
+    { "x": 17, "y": 10, "kind": "Town", "name": "Kiloude City", "area": "kiloude_city" },
+    { "x": 16, "y": 11, "kind": "Town", "name": "Kiloude City", "area": "kiloude_city" },
+    { "x": 17, "y": 11, "kind": "Town", "name": "Kiloude City", "area": "kiloude_city" }
   ],
   "fly": [
     { "spawn": 1, "cells": "7,22 8,22" },
@@ -206,6 +216,7 @@
     { "spawn": 12, "cells": "19,5 20,5 19,6 20,6" },
     { "spawn": 13, "cells": "19,10 20,10 19,11 20,11" },
     { "spawn": 14, "cells": "21,7 21,8" },
-    { "spawn": 15, "cells": "18,1 19,1 18,2 19,2" }
+    { "spawn": 15, "cells": "18,1 19,1 18,2 19,2" },
+    { "spawn": 16, "cells": "16,10 17,10 16,11 17,11" }
   ]
 }

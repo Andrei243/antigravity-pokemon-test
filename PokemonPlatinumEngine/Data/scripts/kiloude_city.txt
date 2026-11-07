@@ -1,0 +1,30 @@
+# Kiloude City (plan 23 Â· Z4, the loose ends). The lines are our own, on X and Y's beats as they are publicly described:
+# after the Hall of Fame an old man called AZ waits at the landing across Kiloude's pier. Long ago he was a king whose
+# war was ended by a weapon he made, and the weapon took the Floette he loved; he has waited three thousand years to
+# be forgiven. He tells it all once, battles the player to see what the bond between a Trainer and a PokÃ©mon is worth,
+# and gives thanks. His team is Kalos's trainers.json's kalos_az_1. FLAG_KALOS_HIDE_AZ is clear; the overlay shows him
+# from KalosHallOfFame (so no new game needs to hide him).
+
+
+script Az
+  face az player
+  speaker "AZ"
+  if flag FLAG_KALOS_AZ_DONE goto Done
+  scene "AZ"
+  say "Hm? A young Trainer, out on the old landing. Not many walk this far."
+  say "I am called AZ. I was a king, once. A very long time ago."
+  say "My land was at war, and I could not stop it. So I built a machine that could. A weapon, the greatest ever made."
+  say "It ended the war. It also took the life of a small Floette who had been my dearest friend."
+  say "I could not bear it. I gave my own life to the machine to find her. I have waited here, in one form or another, ever since."
+  say "They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that PokÃ©mon and people can be strong together."
+  say "I would like to see it for myself. Not a weapon. A bond. Show me!"
+  battle self as "kalos_az_1"
+  say "Ah... yes. That is what I forgot. Power is not what the war was missing. It was this."
+  say "Thank you, {player}. Perhaps the long wait has been worth it. Take these, with an old man's thanks."
+  give "Rare Candy" 3
+  setflag FLAG_KALOS_AZ_DONE
+  endscene
+  end
+label Done
+  say "Some days I sit here and listen to the sea. It does not ask for anything. I am learning from it."
+  end

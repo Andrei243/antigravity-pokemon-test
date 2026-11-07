@@ -19850,6 +19850,30 @@ way -
   > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
   * sound rock_smash
   + FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
+=== kiloude_city.Az
+from AZ at 563,381 of Kalos
+way 0
+  AZ> Hm? A young Trainer, out on the old landing. Not many walk this far.
+  AZ> I am called AZ. I was a king, once. A very long time ago.
+  AZ> My land was at war, and I could not stop it. So I built a machine that could. A weapon, the greatest ever made.
+  AZ> It ended the war. It also took the life of a small Floette who had been my dearest friend.
+  AZ> I could not bear it. I gave my own life to the machine to find her. I have waited here, in one form or another, ever since.
+  AZ> They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that PokÃ©mon and people can be strong together.
+  AZ> I would like to see it for myself. Not a weapon. A bond. Show me!
+  AZ> Ah... yes. That is what I forgot. Power is not what the war was missing. It was this.
+  AZ> Thank you, Lucas. Perhaps the long wait has been worth it. Take these, with an old man's thanks.
+  > Lucas received 3 × Rare Candy!
+  > Lucas put them away in the Medicine pocket.
+  * scene kiloude_city.AZ
+  * battle kalos_az_1 Won
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_KALOS_AZ_DONE
+  + beaten kalos_az_1
+  + seen kiloude_city.AZ
+way 1, from answer 1
+  * battle kalos_az_1 Lost
+  * scene over, unseen
 === lacunosa_town.Hugh
 from {rival} at 649,185 of Unova
 way -
@@ -21375,7 +21399,6 @@ way -
 === lumiose_city.NotYetNorth
 from the trigger at 358,301 of Kalos
 from the trigger at 358,301 of Kalos
-from the trigger at 391,301 of Kalos
 from the trigger at 391,301 of Kalos
 from the trigger at 391,301 of Kalos
 way -

@@ -1,0 +1,47 @@
+{
+  "key": "terminus_cave",
+  "index": 45,
+  "name": "Terminus Cave",
+  "matrix": 6,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "TERMINUS_CAVE",
+  "nightMusic": "TERMINUS_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 58, "to": "kalos_route_13", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "anselme", "looks": "hiker", "movement": "look_south", "x": 34, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_ANSELME" },
+    { "id": "thibault", "looks": "black_belt", "movement": "look_east", "x": 16, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BLACK_BELT_THIBAULT" },
+    { "id": "ysolde", "looks": "backpacker", "movement": "look_west", "x": 44, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BACKPACKER_YSOLDE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_CAVE_RARE_CANDY", "item": "Rare Candy", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 49, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_CAVE_HARD_STONE", "item": "Hard Stone", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 32, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_TERMINUS_CAVE_HYPER_POTION", "item": "Hyper Potion", "script": "" }
+  ],
+  "signs": [
+
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Geodude", "level": 30 },
+    { "species": "Onix", "level": 30 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Sandshrew", "level": 30 },
+    { "species": "Rhyhorn", "level": 31 },
+    { "species": "Machop", "level": 31 },
+    { "species": "Aron", "level": 31 },
+    { "species": "Gligar", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Trapinch", "level": 32 },
+    { "species": "Gible", "level": 32 },
+    { "species": "Larvitar", "level": 32 }
+  ],
+  "landRate": 10
+}

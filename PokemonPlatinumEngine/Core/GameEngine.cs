@@ -2841,6 +2841,12 @@ public partial class GameEngine
         : unitsSold > 0 ? JournalEventKind.SoldALittle
         : null;
 
+    private (int Seen, int Caught, int Of) OwnDexCounts(IReadOnlyList<string> dexes)
+    {
+        var species = dexes.SelectMany(d => Pokedex.Entries(d)).Select(e => e.Species.DexNumber).Distinct().ToList();
+        return (species.Count(flow.Pokedex.IsSeen), species.Count(flow.Pokedex.IsCaught), species.Count);
+    }
+
     /// <summary>
     /// The regions the Trainer Card has a word for (plan 18 · W2), in the journey's order: the one the player is in, and
     /// every other they have been in (its Pokédex entered, a badge won there or its Hall of Fame entered), each with its
@@ -2851,11 +2857,12 @@ public partial class GameEngine
         var here = Here;
         return RegionDatabase.All
             .Where(r => r == here || flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
-                || (r.Dex is { } dex && flow.Pokedex.Entered.Contains(dex)))
+                || r.Dexes.Any(flow.Pokedex.Entered.Contains))
             .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
             {
-                Pokedex = r.Dex is { } dex && flow.Pokedex.Regional.Contains(dex)
-                    ? (flow.Pokedex.SeenIn(dex), flow.Pokedex.CaughtIn(dex), Pokedex.Entries(dex).Count) : null
+                // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
+                Pokedex = r.Dexes.Where(flow.Pokedex.Regional.Contains).ToList() is { Count: > 0 } own
+                    ? OwnDexCounts(own) : null
             })
             .ToList();
     }
@@ -2933,7 +2940,7 @@ public partial class GameEngine
             BattleResult.PlayerVictory => flow.Battle.IsTrainerBattle ? TrainerScore.WonTrainerBattle : TrainerScore.WonWildBattle,
             BattleResult.EnemyCaught when flow.Battle.Caught is { } caught =>
                 // Of the regional Pokédex of the region the player is in (plan 18 · W2), or not
-                (Here.Dex is { } dex && caught.Species.DexNumbers.ContainsKey(dex) ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
+                (Here.Dexes.Any(caught.Species.DexNumbers.ContainsKey) ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
                 + (flow.Battle.CaughtNewSpecies ? TrainerScore.CaughtNewSpecies : 0),
             _ => 0
         };

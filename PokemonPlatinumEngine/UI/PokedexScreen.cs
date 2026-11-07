@@ -259,7 +259,7 @@ public class PokedexScreen
         this.pokedex = pokedex ?? new Pokedex();
         Portrait = portrait;
         Here = here;
-        if (!this.pokedex.Dexes.Contains(Mode)) Mode = here?.Dex is { } own && this.pokedex.Dexes.Contains(own) ? own : this.pokedex.Dexes[0];
+        if (!this.pokedex.Dexes.Contains(Mode)) Mode = here?.Dexes.FirstOrDefault(this.pokedex.Dexes.Contains) is { } own ? own : this.pokedex.Dexes[0];
         Results = null;
         Focus = PokedexFocus.List;
         Page = PokedexPage.Info;

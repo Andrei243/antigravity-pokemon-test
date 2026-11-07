@@ -15,7 +15,8 @@
   "escapeRope": false,
   "fly": false,
   "warps": [
-    { "x": 288, "z": 392, "to": "KalosPowerPlant", "toWarp": 0 }
+    { "x": 288, "z": 392, "to": "KalosPowerPlant", "toWarp": 0 },
+    { "x": 246, "z": 410, "to": "terminus_cave", "toWarp": 0 }
   ],
   "objects": [
     { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 270, "z": 405, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_BASTIEN" },

@@ -1,0 +1,48 @@
+{
+  "key": "frost_cavern",
+  "index": 44,
+  "name": "Frost Cavern",
+  "matrix": 5,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "FROST_CAVERN",
+  "nightMusic": "FROST_CAVERN",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 58, "to": "kalos_route_17", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "noemie", "looks": "skier_f", "movement": "look_south", "x": 26, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_SKIER_NOEMIE" },
+    { "id": "octave", "looks": "hiker", "movement": "look_east", "x": 14, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_OCTAVE" },
+    { "id": "brice", "looks": "skier_m", "movement": "look_west", "x": 44, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_SKIER_BRICE" },
+    { "id": "sylvain", "looks": "ace_trainer_m", "movement": "look_south", "x": 26, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_SYLVAIN" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_FROST_CAVERN_FULL_RESTORE", "item": "Full Restore", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 53, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_FROST_CAVERN_MAX_ELIXIR", "item": "Max Elixir", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 28, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_FROST_CAVERN_NUGGET", "item": "Nugget", "script": "" }
+  ],
+  "signs": [
+
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Swinub", "level": 38 },
+    { "species": "Snover", "level": 38 },
+    { "species": "Sneasel", "level": 38 },
+    { "species": "Zubat", "level": 38 },
+    { "species": "Vanillite", "level": 39 },
+    { "species": "Cubchoo", "level": 39 },
+    { "species": "Bergmite", "level": 39 },
+    { "species": "Delibird", "level": 39 },
+    { "species": "Piloswine", "level": 40 },
+    { "species": "Beartic", "level": 40 },
+    { "species": "Vanillish", "level": 40 },
+    { "species": "Cryogonal", "level": 41 }
+  ],
+  "landRate": 10
+}
