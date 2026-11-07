@@ -21,6 +21,9 @@ public class LegendaryScenesTests
     {
         ["GeosengeTown_FlareHQ.Xerneas Xerneas"] = "Kalos Z4: Xerneas wakes in a scene of its own (wks85); its LS beat is plan 29's to write",
         ["ns_castle_5.Zekrom Zekrom"] = "Unova U10: Zekrom's meeting before plan 29 LS beats; owed",
+        ["abundant_shrine.Tornadus Tornadus"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
+        ["abundant_shrine.Thundurus Thundurus"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
+        ["dragonspiral_tower_9.Reshiram Reshiram"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>

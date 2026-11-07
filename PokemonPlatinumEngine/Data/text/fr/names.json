@@ -4693,7 +4693,9 @@
     "Jade Orb": "Orbe Vert",
     "Pokéblock Case": "Boîte Pokéblocs",
     "Ride Pager": "Appel-Monture",
-    "Liberty Pass": "Passe Liberté"
+    "Liberty Pass": "Passe Liberté",
+    "Cover Fossil": "Fossile Plaque",
+    "Plume Fossil": "Fossile Plume"
   },
   "types": {
     "Normal": "Normal",
@@ -7356,7 +7358,9 @@
       "Jade Orb": "Invoque Rayquaza à la Tour Enfouie.",
       "Pokéblock Case": "Porte les Pokéblocs.",
       "Ride Pager": "Permet au joueur d'invoquer une Poké Monture.",
-      "Liberty Pass": "Permet d'accéder à l'Île Liberté et Victini."
+      "Liberty Pass": "Permet d'accéder à l'Île Liberté et Victini.",
+      "Cover Fossil": "Peut être ressuscité en un Carapagos.",
+      "Plume Fossil": "Peut être ressuscité en un Arkéapti."
     }
   }
 }
