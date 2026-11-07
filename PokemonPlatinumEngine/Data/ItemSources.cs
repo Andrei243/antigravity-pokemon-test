@@ -35,6 +35,8 @@ public sealed record ItemSource(ItemSourceKind Kind, string Where);
 /// hall's clerk, <c>common.TrainingClerk</c>), the counters they open and the Poké Marts' common list; <see cref="Everywhere"/>
 /// is every world, room, script and list. What gives an item only by chance (a wild Pokémon's held item, the Underground's
 /// walls, a Hidden Grotto) is not counted: a tool's test asks for a sure way. GPU-free, read from the data alone, once.
+/// Plan 36 · TR9's later machines needed no kind of their own: their shelf is a counter's stock (<c>marts.json</c>'s
+/// <c>training_hall_machines</c>) that the training clerk's <c>shop</c> opens, read as any other.
 /// </summary>
 public sealed class ItemSources
 {

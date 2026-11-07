@@ -493,9 +493,10 @@
     "expert_m": { "hairColor": "#c8ccd6", "hair": "Bald", "top": "#3e5a8a", "accent": "#f0c84a", "bottom": "#2e3a5a", "shoes": "#2a2420", "mustache": true, "bushyBrows": true, "robe": true, "build": "Elder" },
     "expert_f": { "hairColor": "#c8ccd6", "hair": "Bun", "top": "#a84a5a", "accent": "#f0d07a", "bottom": "#6a2e3a", "shoes": "#2a2420", "robe": true, "build": "Elder", "lashes": true },
     // The training club (plan 36 · TR2): the head coach in the club's orange track top striped in white, the clerk in a
-    // cream blouse under an orange vest
+    // cream blouse under an orange vest; and its tutor (plan 36 · TR9), grey-haired and moustached in a navy jacket
     "training_coach": { "hairColor": "#2a2420", "hair": "Swept", "top": "#e87040", "accent": "#f6f6f4", "bottom": "#2e3a5a", "shoes": "#f6f6f4", "stripes": true, "build": "Adult", "height": 1.04 },
     "training_clerk": { "hairColor": "#8a5a3a", "hair": "Bun", "top": "#f6f2ea", "accent": "#e87040", "bottom": "#2e3a5a", "shoes": "#3a2c24", "vest": "#e87040", "build": "Adult", "lashes": true },
+    "training_tutor": { "hairColor": "#c8ccd6", "hair": "Swept", "top": "#2a3046", "accent": "#e8602a", "bottom": "#2a3046", "shoes": "#f2f2f6", "eyes": "#3a2a24", "mustache": true, "bushyBrows": true, "jacket": true, "build": "Elder", "height": 1.0 },
     // The townsfolk: a man in an olive vest over a cream shirt, a woman with a brown bun in a lavender top and a plum skirt
     "middle_aged_man": { "hairColor": "#5a4232", "hair": "Swept", "top": "#e8e2d0", "accent": "#8a7a5a", "bottom": "#5a4a3a", "shoes": "#3a2c24", "vest": "#6a7a4a", "build": "Adult", "height": 1.02 },
     "middle_aged_woman": { "hairColor": "#6a4a34", "hair": "Bun", "top": "#b896c8", "accent": "#f4eef6", "bottom": "#6a4a78", "shoes": "#4a3434", "skirt": true, "build": "Adult", "lashes": true },

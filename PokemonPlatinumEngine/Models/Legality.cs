@@ -10,8 +10,9 @@ namespace PokemonPlatinumEngine.Models;
 /// gauntlet share; no drawing and no input): what its own data can teach it, and what the species it evolved from
 /// could, since a Pokémon keeps the moves it knew as it evolves. The data's ways are its level-up learnset (at any
 /// level), its Egg moves, Platinum's move tutors' list, the TMs and HMs it takes (each machine read for the move it
-/// holds), Grandma Wilma's Draco Meteor for a Dragon type and the strongest move of a starter fully grown. Nothing
-/// else: an event's move, a move of a later game's tutor or machine the data doesn't list, a Sketch.
+/// holds), the later games' machines and a training hall's tutor's moves (plan 36 · TR9, which the modern rules teach),
+/// Grandma Wilma's Draco Meteor for a Dragon type and the strongest move of a starter fully grown. Nothing else: an
+/// event's move, a move of a later game's tutor or machine the data doesn't list, a Sketch.
 /// </summary>
 public static class Legality
 {
@@ -38,7 +39,9 @@ public static class Legality
             foreach (var m in s.Learnset) moves.Add(m.MoveName);
             foreach (var m in s.EggMoves ?? new()) moves.Add(m);
             foreach (var m in s.TutorMoves ?? new()) moves.Add(m);
-            foreach (var machine in s.TmMoves ?? new())
+            // The later games' tutors' and machines' (plan 36 · TR9): every game is played by the modern rules, which teach them
+            foreach (var m in s.LaterTutorMoves ?? new()) moves.Add(m);
+            foreach (var machine in (s.TmMoves ?? new()).Concat(s.LaterMachines ?? new()))
                 if (machineMove(machine) is { } taught) moves.Add(taught);
             // Whoever evolves into it, and so on back to the first of the line
             foreach (var forebear in everyone.Where(f => f.Evolutions?.Any(e => e.TargetSpecies == s.Name) == true)) line.Enqueue(forebear);

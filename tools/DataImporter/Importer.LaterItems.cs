@@ -52,7 +52,9 @@ public sealed partial class Importer
     /// </summary>
     public void AddTechnicalRecords(List<PokemonSpecies> species, List<ItemData> items)
     {
-        var records = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 1000 && i.TeachesMove != null).OrderBy(i => i.Name, StringComparer.Ordinal).ToList();
+        // (the later machines of ours, plan 36 · TR9, are the modern rules' alone: AddLaterCompatibility)
+        var records = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 1000 && i.TeachesMove != null && !MoveTeaching.IsLater(i))
+            .OrderBy(i => i.Name, StringComparer.Ordinal).ToList();
         var byMachine = api.Table("pokemon_moves").Where(r => r.Int("version_group_id") == SwordShield && r.Int("pokemon_move_method_id") == 4)
             .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.Select(r => api.MoveName(r.Int("move_id"))).ToHashSet());
         foreach (var s in species)
@@ -72,7 +74,7 @@ public sealed partial class Importer
     /// </summary>
     public void AddHoennMachines(List<PokemonSpecies> species, List<ItemData> items)
     {
-        var machines = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 9000 && i.TeachesMove != null).OrderBy(i => i.Id).ToList();
+        var machines = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 9000 && i.TeachesMove != null && !MoveTeaching.IsLater(i)).OrderBy(i => i.Id).ToList();
         if (machines.Count == 0) return;
         var byMachine = api.Table("pokemon_moves").Where(r => r.Int("pokemon_move_method_id") == 4)
             .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.Select(r => api.MoveName(r.Int("move_id"))).ToHashSet());

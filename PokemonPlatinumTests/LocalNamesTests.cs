@@ -68,8 +68,9 @@ public class LocalNamesTests
     public void TheCountsOfFrenchAreWhatTheImporterFound()
     {
         // PokeAPI's French is the one language with prose for moves, abilities and items (docs/mechanics/coverage.md has every language)
-        // (plan 21 · H12, part j: seven of Emerald's mails; Johto's leftovers two items: 930 to 939; Johto's last leftovers the Blue Card and the Jade Orb: 941; Alola's Ride Pager: 942; the Cover and Plume Fossils: 944)
-        Assert.Equal((1025, 901, 310, 944), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
+        // (plan 21 · H12, part j: seven of Emerald's mails; Johto's leftovers two items: 930 to 939; Johto's last leftovers the Blue Card and the Jade Orb: 941; Alola's Ride Pager: 942; the Cover and Plume Fossils: 944;
+        // plan 36 · TR9 the later machines of ours, TM93 to TM304, whose names PokeAPI has for the 137 numbers the games' machines had: 1081)
+        Assert.Equal((1025, 901, 310, 1081), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
             LocalNames.Section("fr", "abilities").Count, LocalNames.Section("fr", "items").Count));
         // (and plan 13 · V5 the Shiny Charm)
         // (plan 06 · R29 brought eleven items in: the key items that change a form and Legends: Arceus's three)

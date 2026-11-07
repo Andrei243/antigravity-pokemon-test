@@ -278,6 +278,21 @@ public class PokemonSpecies
     public List<string>? TutorMoves { get; set; }
 
     /// <summary>
+    /// The machines only the modern rules teach it (plan 36 · TR9; <see cref="Ruleset.LaterMachines"/>,
+    /// <see cref="MoveTeaching.Takes"/>), by name and in their order: the later games' machines of ours (TM93 on, ids
+    /// from <see cref="MoveTeaching.LaterFrom"/>) whose move it learns by a machine or from a tutor in a game after
+    /// Platinum, and for one of Platinum's species Platinum's own machines whose move it learns so in a later game where
+    /// <see cref="TmMoves"/> hasn't them. Null for none.
+    /// </summary>
+    public List<string>? LaterMachines { get; set; }
+
+    /// <summary>
+    /// The moves a training hall's tutor teaches it (plan 36 · TR9, <see cref="MoveTutors.TrainingHall"/>): those of the
+    /// later games' tutors' moves no machine teaches that it learns from a tutor in a game after Platinum. Null for none.
+    /// </summary>
+    public List<string>? LaterTutorMoves { get; set; }
+
+    /// <summary>
     /// The species an Egg it lays is (plan 06 · R15; the original's personal data <c>offspring</c>, which
     /// <c>Pokemon_GetBaseSpeciesFromPersonalData</c> reads): the first of its line, the baby where there is one (Azurill
     /// for Marill). Null for itself.

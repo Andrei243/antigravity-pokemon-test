@@ -129,6 +129,9 @@ public static class SpeciesPastHundred
             var from = ForebearOf(s, species);
             s.TmMoves = from.TmMoves?.ToList();
             s.TutorMoves = from.TutorMoves?.ToList();
+            // The later games' machines and tutor moves its forebear takes under the modern rules (plan 36 · TR9)
+            s.LaterMachines = from.LaterMachines?.ToList();
+            s.LaterTutorMoves = from.LaterTutorMoves?.ToList();
             s.EggMoves = from.EggMoves?.ToList();
         }
     }

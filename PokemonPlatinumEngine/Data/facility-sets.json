@@ -64,14 +64,14 @@
       "id": "charmander_random_battle",
       "species": "Charmander",
       "moves": [
-        "Swords Dance",
-        "Slash",
+        "Seismic Toss",
         "Body Slam",
-        "Fire Blast"
+        "Fire Blast",
+        "Slash"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Focus Sash",
+      "item": "Muscle Band",
       "ability": "Blaze",
       "tier": 1
     },
@@ -79,10 +79,10 @@
       "id": "charmeleon_random_battle",
       "species": "Charmeleon",
       "moves": [
-        "Slash",
         "Swords Dance",
         "Body Slam",
-        "Fire Blast"
+        "Seismic Toss",
+        "Slash"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -124,14 +124,14 @@
       "id": "squirtle_random_battle",
       "species": "Squirtle",
       "moves": [
+        "Seismic Toss",
         "Hydro Pump",
-        "Blizzard",
-        "Surf",
-        "Body Slam"
+        "Body Slam",
+        "Blizzard"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Wise Glasses",
+      "evFlags": 19,
+      "nature": "Mild",
+      "item": "Expert Belt",
       "ability": "Torrent",
       "tier": 1
     },
@@ -139,14 +139,14 @@
       "id": "wartortle_random_battle",
       "species": "Wartortle",
       "moves": [
-        "Blizzard",
         "Surf",
+        "Seismic Toss",
         "Hydro Pump",
-        "Rest"
+        "Blizzard"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Chesto Berry",
+      "item": "Wise Glasses",
       "ability": "Torrent",
       "tier": 3
     },
@@ -214,10 +214,10 @@
       "id": "pidgey_random_battle",
       "species": "Pidgey",
       "moves": [
-        "Quick Attack",
         "Agility",
-        "Sand Attack",
-        "Substitute"
+        "Substitute",
+        "Sky Attack",
+        "Mirror Move"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -229,10 +229,10 @@
       "id": "pidgeotto_random_battle",
       "species": "Pidgeotto",
       "moves": [
-        "Agility",
+        "Mirror Move",
         "Sand Attack",
         "Quick Attack",
-        "Substitute"
+        "Sky Attack"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -274,14 +274,14 @@
       "id": "raticate_wallbreaker",
       "species": "Raticate",
       "moves": [
-        "Protect",
         "Swords Dance",
+        "Stomping Tantrum",
         "Facade",
         "U-turn"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
       "ability": "Guts",
       "tier": 2
     },
@@ -301,34 +301,19 @@
       "tier": 1
     },
     {
-      "id": "fearow_fast_attacker",
+      "id": "fearow_wallbreaker",
       "species": "Fearow",
       "moves": [
         "Drill Peck",
         "U-turn",
-        "Quick Attack",
+        "Drill Run",
         "Return"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
-      "ability": "Keen Eye",
-      "tier": 3
-    },
-    {
-      "id": "fearow_wallbreaker",
-      "species": "Fearow",
-      "moves": [
-        "Return",
-        "Pursuit",
-        "Drill Peck",
-        "U-turn"
-      ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Choice Band",
-      "ability": "Keen Eye",
-      "tier": 3
+      "ability": "Sniper",
+      "tier": 2
     },
     {
       "id": "ekans_random_battle",
@@ -346,28 +331,28 @@
       "tier": 1
     },
     {
-      "id": "arbok_fast_attacker",
+      "id": "arbok_fast_support",
       "species": "Arbok",
       "moves": [
-        "Glare",
-        "Poison Jab",
-        "Crunch",
-        "Seed Bomb"
+        "Gunk Shot",
+        "Knock Off",
+        "Earthquake",
+        "Toxic Spikes"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Focus Sash",
       "ability": "Intimidate",
-      "tier": 1
+      "tier": 2
     },
     {
       "id": "pikachu_fast_attacker",
       "species": "Pikachu",
       "moves": [
-        "Play Rough",
+        "Volt Switch",
         "Fake Out",
         "Knock Off",
-        "Surf"
+        "Volt Tackle"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -379,14 +364,14 @@
       "id": "raichu_fast_support",
       "species": "Raichu",
       "moves": [
-        "Focus Blast",
-        "Nasty Plot",
+        "Knock Off",
         "Encore",
-        "Thunderbolt"
+        "Alluring Voice",
+        "Surf"
       ],
-      "evFlags": 33,
+      "evFlags": 24,
       "nature": "Timid",
-      "item": "Sitrus Berry",
+      "item": "Focus Sash",
       "ability": "Lightning Rod",
       "tier": 2
     },
@@ -394,10 +379,10 @@
       "id": "raichu_tera_blast_user",
       "species": "Raichu",
       "moves": [
-        "Nasty Plot",
         "Encore",
-        "Thunderbolt",
-        "Surf"
+        "Nasty Plot",
+        "Surf",
+        "Focus Blast"
       ],
       "evFlags": 33,
       "nature": "Timid",
@@ -529,14 +514,14 @@
       "id": "clefairy_random_battle",
       "species": "Clefairy",
       "moves": [
-        "Sing",
-        "Thunderbolt",
         "Thunder Wave",
-        "Body Slam"
+        "Thunderbolt",
+        "Blizzard",
+        "Psychic"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
       "ability": "Cute Charm",
       "tier": 2
     },
@@ -560,13 +545,13 @@
       "species": "Vulpix",
       "moves": [
         "Confuse Ray",
-        "Flamethrower",
-        "Fire Blast",
-        "Body Slam"
+        "Quick Attack",
+        "Body Slam",
+        "Reflect"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Focus Sash",
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
       "ability": "Flash Fire",
       "tier": 1
     },
@@ -574,29 +559,29 @@
       "id": "ninetales_setup_sweeper",
       "species": "Ninetales",
       "moves": [
-        "Solar Beam",
+        "Scorching Sands",
         "Fire Blast",
-        "Will-O-Wisp",
+        "Solar Beam",
         "Nasty Plot"
       ],
-      "evFlags": 33,
+      "evFlags": 24,
       "nature": "Timid",
-      "item": "Sitrus Berry",
+      "item": "Life Orb",
       "ability": "Drought",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "jigglypuff_random_battle",
       "species": "Jigglypuff",
       "moves": [
-        "Sing",
+        "Seismic Toss",
         "Thunder Wave",
-        "Body Slam",
-        "Blizzard"
+        "Blizzard",
+        "Body Slam"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Focus Sash",
       "ability": "Cute Charm",
       "tier": 1
     },
@@ -604,14 +589,14 @@
       "id": "wigglytuff_bulky_support",
       "species": "Wigglytuff",
       "moves": [
-        "Thunder Wave",
-        "Protect",
-        "Dazzling Gleam",
-        "Fire Blast"
+        "Knock Off",
+        "Fire Blast",
+        "Alluring Voice",
+        "Thunder Wave"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
       "ability": "Cute Charm",
       "tier": 1
     },
@@ -619,10 +604,10 @@
       "id": "zubat_random_battle",
       "species": "Zubat",
       "moves": [
-        "Substitute",
-        "Confuse Ray",
+        "Mega Drain",
         "Wing Attack",
-        "Air Slash"
+        "Confuse Ray",
+        "Substitute"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -634,13 +619,13 @@
       "id": "golbat_random_battle",
       "species": "Golbat",
       "moves": [
-        "Confuse Ray",
         "Hyper Beam",
-        "Haze",
-        "Poison Fang"
+        "Mega Drain",
+        "Confuse Ray",
+        "Haze"
       ],
       "evFlags": 33,
-      "nature": "Careful",
+      "nature": "Calm",
       "item": "Black Sludge",
       "ability": "Inner Focus",
       "tier": 4
@@ -694,13 +679,13 @@
       "id": "paras_random_battle",
       "species": "Paras",
       "moves": [
-        "Swords Dance",
         "Spore",
+        "Swords Dance",
         "Stun Spore",
-        "X-Scissor"
+        "Mega Drain"
       ],
       "evFlags": 5,
-      "nature": "Impish",
+      "nature": "Bold",
       "item": "Sitrus Berry",
       "ability": "Effect Spore",
       "tier": 1
@@ -724,13 +709,13 @@
       "id": "venonat_random_battle",
       "species": "Venonat",
       "moves": [
-        "Stun Spore",
+        "Mega Drain",
         "Sleep Powder",
-        "Psychic",
-        "Poison Fang"
+        "Stun Spore",
+        "Psychic"
       ],
       "evFlags": 33,
-      "nature": "Careful",
+      "nature": "Calm",
       "item": "Black Sludge",
       "ability": "Compound Eyes",
       "tier": 2
@@ -769,16 +754,31 @@
       "id": "dugtrio_fast_attacker",
       "species": "Dugtrio",
       "moves": [
-        "Stone Edge",
         "Sucker Punch",
+        "Swords Dance",
         "Earthquake",
-        "Stealth Rock"
+        "Stone Edge"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Focus Sash",
       "ability": "Arena Trap",
-      "tier": 3
+      "tier": 2
+    },
+    {
+      "id": "dugtrio_wallbreaker",
+      "species": "Dugtrio",
+      "moves": [
+        "Earthquake",
+        "Sucker Punch",
+        "Stone Edge",
+        "Throat Chop"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Arena Trap",
+      "tier": 2
     },
     {
       "id": "meowth_random_battle",
@@ -796,47 +796,32 @@
       "tier": 2
     },
     {
-      "id": "persian_fast_attacker",
+      "id": "persian_wallbreaker",
       "species": "Persian",
       "moves": [
+        "Double-Edge",
+        "Switcheroo",
         "Knock Off",
-        "Seed Bomb",
-        "Return",
         "U-turn"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Choice Band",
+      "item": "Focus Sash",
       "ability": "Limber",
       "tier": 1
     },
     {
-      "id": "persian_wallbreaker",
+      "id": "persian_fast_attacker",
       "species": "Persian",
       "moves": [
-        "Return",
-        "Fake Out",
         "Knock Off",
+        "Double-Edge",
+        "Fake Out",
         "U-turn"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
-      "ability": "Technician",
-      "tier": 1
-    },
-    {
-      "id": "persian_setup_sweeper",
-      "species": "Persian",
-      "moves": [
-        "Hidden Power",
-        "Shadow Ball",
-        "Nasty Plot",
-        "Hyper Voice"
-      ],
-      "evFlags": 24,
-      "nature": "Timid",
-      "item": "Focus Sash",
       "ability": "Technician",
       "tier": 1
     },
@@ -844,14 +829,14 @@
       "id": "psyduck_random_battle",
       "species": "Psyduck",
       "moves": [
-        "Rest",
+        "Amnesia",
         "Surf",
         "Body Slam",
-        "Blizzard"
+        "Hydro Pump"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Chesto Berry",
+      "item": "Focus Sash",
       "ability": "Damp",
       "tier": 1
     },
@@ -860,24 +845,39 @@
       "species": "Golduck",
       "moves": [
         "Ice Beam",
+        "Grass Knot",
         "Encore",
-        "Focus Blast",
-        "Scald"
+        "Nasty Plot"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
+      "ability": "Cloud Nine",
+      "tier": 1
+    },
+    {
+      "id": "golduck_fast_attacker",
+      "species": "Golduck",
+      "moves": [
+        "Hydro Pump",
+        "Nasty Plot",
+        "Ice Beam",
+        "Flip Turn"
       ],
       "evFlags": 17,
       "nature": "Modest",
       "item": "Expert Belt",
-      "ability": "Swift Swim",
-      "tier": 2
+      "ability": "Cloud Nine",
+      "tier": 1
     },
     {
       "id": "mankey_random_battle",
       "species": "Mankey",
       "moves": [
-        "Rock Slide",
         "Counter",
         "Low Kick",
-        "Close Combat"
+        "Rock Slide",
+        "Body Slam"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -889,10 +889,10 @@
       "id": "primeape_fast_attacker",
       "species": "Primeape",
       "moves": [
-        "Earthquake",
-        "Close Combat",
         "Stone Edge",
-        "U-turn"
+        "Gunk Shot",
+        "Earthquake",
+        "Throat Chop"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -904,14 +904,14 @@
       "id": "primeape_setup_sweeper",
       "species": "Primeape",
       "moves": [
-        "Gunk Shot",
-        "Earthquake",
+        "Close Combat",
         "Stone Edge",
-        "Close Combat"
+        "Throat Chop",
+        "Hone Claws"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Choice Scarf",
+      "item": "Focus Sash",
       "ability": "Defiant",
       "tier": 1
     },
@@ -921,12 +921,12 @@
       "moves": [
         "Agility",
         "Flamethrower",
-        "Fire Blast",
-        "Body Slam"
+        "Body Slam",
+        "Reflect"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Focus Sash",
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
       "ability": "Intimidate",
       "tier": 1
     },
@@ -949,40 +949,55 @@
       "id": "poliwag_random_battle",
       "species": "Poliwag",
       "moves": [
-        "Blizzard",
-        "Surf",
         "Hypnosis",
-        "Mud Bomb"
+        "Blizzard",
+        "Amnesia",
+        "Surf"
       ],
-      "evFlags": 24,
-      "nature": "Timid",
-      "item": "Focus Sash",
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
       "ability": "Water Absorb",
       "tier": 2
     },
     {
-      "id": "poliwhirl_setup_sweeper",
+      "id": "poliwhirl_random_battle",
       "species": "Poliwhirl",
       "moves": [
-        "Belly Drum",
-        "Return",
-        "Earthquake",
-        "Hydro Pump"
+        "Surf",
+        "Blizzard",
+        "Amnesia",
+        "Hypnosis"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Focus Sash",
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
       "ability": "Water Absorb",
-      "tier": 4
+      "tier": 3
+    },
+    {
+      "id": "poliwrath_setup_sweeper",
+      "species": "Poliwrath",
+      "moves": [
+        "Close Combat",
+        "Rain Dance",
+        "Knock Off",
+        "Liquidation"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Swift Swim",
+      "tier": 2
     },
     {
       "id": "poliwrath_bulky_setup",
       "species": "Poliwrath",
       "moves": [
         "Bulk Up",
-        "Liquidation",
+        "Knock Off",
         "Poison Jab",
-        "Ice Punch"
+        "Drain Punch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -994,10 +1009,10 @@
       "id": "abra_random_battle",
       "species": "Abra",
       "moves": [
-        "Thunder Wave",
-        "Substitute",
         "Psychic",
-        "Reflect"
+        "Reflect",
+        "Seismic Toss",
+        "Substitute"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -1009,10 +1024,10 @@
       "id": "kadabra_random_battle",
       "species": "Kadabra",
       "moves": [
-        "Thunder Wave",
         "Reflect",
         "Psychic",
-        "Recover"
+        "Seismic Toss",
+        "Thunder Wave"
       ],
       "evFlags": 33,
       "nature": "Timid",
@@ -1084,15 +1099,45 @@
       "id": "machamp_bulky_attacker",
       "species": "Machamp",
       "moves": [
-        "Bullet Punch",
-        "Stone Edge",
+        "Knock Off",
         "Dynamic Punch",
-        "Bulk Up"
+        "Bulk Up",
+        "Bullet Punch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Lum Berry",
       "ability": "No Guard",
+      "tier": 3
+    },
+    {
+      "id": "machamp_av_pivot",
+      "species": "Machamp",
+      "moves": [
+        "Stone Edge",
+        "Knock Off",
+        "Bullet Punch",
+        "Dynamic Punch"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "No Guard",
+      "tier": 3
+    },
+    {
+      "id": "machamp_wallbreaker",
+      "species": "Machamp",
+      "moves": [
+        "Facade",
+        "Bullet Punch",
+        "Close Combat",
+        "Knock Off"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Guts",
       "tier": 3
     },
     {
@@ -1129,13 +1174,13 @@
       "id": "victreebel_wallbreaker",
       "species": "Victreebel",
       "moves": [
+        "Sludge Wave",
+        "Knock Off",
         "Sleep Powder",
-        "Sludge Bomb",
-        "Hidden Power",
         "Sucker Punch"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Focus Sash",
       "ability": "Chlorophyll",
       "tier": 1
@@ -1144,10 +1189,10 @@
       "id": "tentacool_random_battle",
       "species": "Tentacool",
       "moves": [
+        "Substitute",
+        "Mega Drain",
         "Surf",
-        "Hydro Pump",
-        "Blizzard",
-        "Substitute"
+        "Blizzard"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -1159,9 +1204,9 @@
       "id": "tentacruel_bulky_support",
       "species": "Tentacruel",
       "moves": [
+        "Toxic",
+        "Flip Turn",
         "Haze",
-        "Knock Off",
-        "Toxic Spikes",
         "Rapid Spin"
       ],
       "evFlags": 33,
@@ -1174,10 +1219,10 @@
       "id": "geodude_random_battle",
       "species": "Geodude",
       "moves": [
-        "Earthquake",
-        "Explosion",
         "Rock Slide",
-        "Stone Edge"
+        "Explosion",
+        "Earthquake",
+        "Body Slam"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1190,9 +1235,9 @@
       "species": "Graveler",
       "moves": [
         "Rock Slide",
-        "Earthquake",
         "Explosion",
-        "Stone Edge"
+        "Earthquake",
+        "Body Slam"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1219,14 +1264,14 @@
       "id": "ponyta_random_battle",
       "species": "Ponyta",
       "moves": [
+        "Substitute",
         "Fire Blast",
         "Body Slam",
-        "Stomp",
         "Agility"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Focus Sash",
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
       "ability": "Run Away",
       "tier": 2
     },
@@ -1264,13 +1309,13 @@
       "id": "slowbro_bulky_attacker",
       "species": "Slowbro",
       "moves": [
-        "Thunder Wave",
+        "Psyshock",
         "Scald",
         "Calm Mind",
-        "Psyshock"
+        "Psychic Noise"
       ],
-      "evFlags": 5,
-      "nature": "Bold",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Regenerator",
       "tier": 2
@@ -1279,10 +1324,10 @@
       "id": "slowbro_av_pivot",
       "species": "Slowbro",
       "moves": [
-        "Fire Blast",
-        "Future Sight",
+        "Body Press",
+        "Scald",
         "Ice Beam",
-        "Body Press"
+        "Fire Blast"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -1370,9 +1415,9 @@
       "species": "Doduo",
       "moves": [
         "Agility",
+        "Double-Edge",
         "Drill Peck",
-        "Endeavor",
-        "Double Hit"
+        "Body Slam"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1381,28 +1426,43 @@
       "tier": 2
     },
     {
-      "id": "dodrio_fast_attacker",
+      "id": "dodrio_setup_sweeper",
       "species": "Dodrio",
       "moves": [
         "Knock Off",
+        "Drill Run",
         "Brave Bird",
-        "Return",
-        "Quick Attack"
+        "Swords Dance"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Early Bird",
+      "tier": 2
+    },
+    {
+      "id": "dodrio_fast_attacker",
+      "species": "Dodrio",
+      "moves": [
+        "Double-Edge",
+        "Drill Run",
+        "Knock Off",
+        "Brave Bird"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
       "ability": "Early Bird",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "seel_random_battle",
       "species": "Seel",
       "moves": [
-        "Blizzard",
-        "Rest",
+        "Body Slam",
         "Surf",
-        "Ice Beam"
+        "Rest",
+        "Blizzard"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -1411,17 +1471,17 @@
       "tier": 2
     },
     {
-      "id": "dewgong_staller",
+      "id": "dewgong_bulky_attacker",
       "species": "Dewgong",
       "moves": [
+        "Encore",
         "Surf",
-        "Toxic",
-        "Protect",
-        "Ice Beam"
+        "Knock Off",
+        "Triple Axel"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Thick Fat",
       "tier": 1
     },
@@ -1430,13 +1490,13 @@
       "species": "Dewgong",
       "moves": [
         "Ice Beam",
-        "Encore",
-        "Toxic",
-        "Surf"
+        "Hydro Pump",
+        "Flip Turn",
+        "Knock Off"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 19,
+      "nature": "Mild",
+      "item": "Expert Belt",
       "ability": "Thick Fat",
       "tier": 1
     },
@@ -1444,10 +1504,10 @@
       "id": "grimer_random_battle",
       "species": "Grimer",
       "moves": [
-        "Explosion",
-        "Sludge",
         "Thunderbolt",
-        "Fire Blast"
+        "Fire Blast",
+        "Explosion",
+        "Mega Drain"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -1459,10 +1519,10 @@
       "id": "muk_bulky_attacker",
       "species": "Muk",
       "moves": [
-        "Poison Jab",
-        "Haze",
-        "Gunk Shot",
-        "Shadow Sneak"
+        "Knock Off",
+        "Ice Punch",
+        "Drain Punch",
+        "Toxic Spikes"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1476,7 +1536,7 @@
       "moves": [
         "Poison Jab",
         "Shadow Sneak",
-        "Gunk Shot",
+        "Drain Punch",
         "Ice Punch"
       ],
       "evFlags": 3,
@@ -1504,10 +1564,10 @@
       "id": "cloyster_staller",
       "species": "Cloyster",
       "moves": [
-        "Rapid Spin",
+        "Toxic Spikes",
+        "Explosion",
         "Ice Shard",
-        "Surf",
-        "Spikes"
+        "Surf"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1535,13 +1595,13 @@
       "species": "Gastly",
       "moves": [
         "Night Shade",
+        "Mega Drain",
         "Thunderbolt",
-        "Hypnosis",
-        "Explosion"
+        "Psychic"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Focus Sash",
+      "item": "Choice Scarf",
       "ability": "Levitate",
       "tier": 3
     },
@@ -1549,9 +1609,9 @@
       "id": "haunter_random_battle",
       "species": "Haunter",
       "moves": [
-        "Explosion",
-        "Night Shade",
         "Thunderbolt",
+        "Explosion",
+        "Mega Drain",
         "Psychic"
       ],
       "evFlags": 24,
@@ -1579,14 +1639,14 @@
       "id": "gengar_fast_attacker",
       "species": "Gengar",
       "moves": [
-        "Encore",
         "Focus Blast",
+        "Sludge Wave",
         "Will-O-Wisp",
-        "Sludge Wave"
+        "Shadow Ball"
       ],
-      "evFlags": 33,
+      "evFlags": 24,
       "nature": "Timid",
-      "item": "Black Sludge",
+      "item": "Focus Sash",
       "ability": "Levitate",
       "tier": 3
     },
@@ -1609,13 +1669,13 @@
       "id": "drowzee_random_battle",
       "species": "Drowzee",
       "moves": [
-        "Thunder Wave",
+        "Seismic Toss",
         "Hypnosis",
-        "Rest",
-        "Psychic"
+        "Thunder Wave",
+        "Rest"
       ],
       "evFlags": 33,
-      "nature": "Calm",
+      "nature": "Careful",
       "item": "Chesto Berry",
       "ability": "Insomnia",
       "tier": 2
@@ -1625,9 +1685,24 @@
       "species": "Hypno",
       "moves": [
         "Thunder Wave",
-        "Psychic",
-        "Focus Blast",
+        "Psychic Noise",
+        "Encore",
         "Toxic"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Leftovers",
+      "ability": "Insomnia",
+      "tier": 1
+    },
+    {
+      "id": "hypno_bulky_attacker",
+      "species": "Hypno",
+      "moves": [
+        "Psychic Noise",
+        "Toxic",
+        "Focus Blast",
+        "Protect"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -1669,10 +1744,10 @@
       "id": "voltorb_random_battle",
       "species": "Voltorb",
       "moves": [
+        "Thunder",
+        "Take Down",
         "Thunder Wave",
-        "Thunderbolt",
-        "Explosion",
-        "Thunder"
+        "Thunderbolt"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -1684,14 +1759,29 @@
       "id": "electrode_fast_support",
       "species": "Electrode",
       "moves": [
-        "Thunderbolt",
-        "Taunt",
+        "Thunder Wave",
+        "Foul Play",
         "Explosion",
-        "Thunder Wave"
+        "Thunderbolt"
       ],
-      "evFlags": 33,
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Aftermath",
+      "tier": 1
+    },
+    {
+      "id": "electrode_tera_blast_user",
+      "species": "Electrode",
+      "moves": [
+        "Tera Blast",
+        "Volt Switch",
+        "Taunt",
+        "Thunderbolt"
+      ],
+      "evFlags": 24,
       "nature": "Timid",
-      "item": "Sitrus Berry",
+      "item": "Focus Sash",
       "ability": "Aftermath",
       "tier": 1
     },
@@ -1714,10 +1804,25 @@
       "id": "exeggutor_bulky_support",
       "species": "Exeggutor",
       "moves": [
-        "Psychic",
+        "Sleep Powder",
+        "Sludge Bomb",
         "Leech Seed",
+        "Psychic Noise"
+      ],
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
+      "ability": "Harvest",
+      "tier": 1
+    },
+    {
+      "id": "exeggutor_bulky_attacker",
+      "species": "Exeggutor",
+      "moves": [
         "Substitute",
-        "Sleep Powder"
+        "Psychic Noise",
+        "Protect",
+        "Leech Seed"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -1744,10 +1849,10 @@
       "id": "cubone_random_battle",
       "species": "Cubone",
       "moves": [
-        "Blizzard",
-        "Body Slam",
         "Earthquake",
-        "Double-Edge"
+        "Seismic Toss",
+        "Body Slam",
+        "Blizzard"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1789,14 +1894,14 @@
       "id": "hitmonlee_setup_sweeper",
       "species": "Hitmonlee",
       "moves": [
-        "Poison Jab",
         "Close Combat",
-        "Stone Edge",
-        "Knock Off"
+        "Knock Off",
+        "Swords Dance",
+        "Stone Edge"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Choice Scarf",
+      "item": "Focus Sash",
       "ability": "Unburden",
       "tier": 2
     },
@@ -1804,10 +1909,40 @@
       "id": "hitmonchan_setup_sweeper",
       "species": "Hitmonchan",
       "moves": [
-        "Drain Punch",
+        "Knock Off",
         "Mach Punch",
+        "Swords Dance",
+        "Rapid Spin"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Iron Fist",
+      "tier": 2
+    },
+    {
+      "id": "hitmonchan_bulky_setup",
+      "species": "Hitmonchan",
+      "moves": [
         "Rapid Spin",
-        "Ice Punch"
+        "Drain Punch",
+        "Bulk Up",
+        "Poison Jab"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Iron Fist",
+      "tier": 2
+    },
+    {
+      "id": "hitmonchan_bulky_support",
+      "species": "Hitmonchan",
+      "moves": [
+        "Poison Jab",
+        "Rapid Spin",
+        "Knock Off",
+        "Drain Punch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -1879,13 +2014,13 @@
       "id": "weezing_bulky_attacker",
       "species": "Weezing",
       "moves": [
+        "Gunk Shot",
         "Sludge Bomb",
-        "Fire Blast",
-        "Will-O-Wisp",
-        "Pain Split"
+        "Toxic Spikes",
+        "Will-O-Wisp"
       ],
       "evFlags": 5,
-      "nature": "Bold",
+      "nature": "Impish",
       "item": "Black Sludge",
       "ability": "Levitate",
       "tier": 2
@@ -1924,13 +2059,13 @@
       "id": "chansey_bulky_support",
       "species": "Chansey",
       "moves": [
-        "Stealth Rock",
-        "Soft-Boiled",
         "Thunder Wave",
+        "Seismic Toss",
+        "Soft-Boiled",
         "Heal Bell"
       ],
       "evFlags": 33,
-      "nature": "Calm",
+      "nature": "Careful",
       "item": "Leftovers",
       "ability": "Natural Cure",
       "tier": 2
@@ -2059,10 +2194,10 @@
       "id": "seaking_wallbreaker",
       "species": "Seaking",
       "moves": [
-        "Knock Off",
         "Waterfall",
-        "Drill Run",
-        "Megahorn"
+        "Flip Turn",
+        "Knock Off",
+        "Drill Run"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -2134,25 +2269,10 @@
       "id": "mr_mime_fast_attacker",
       "species": "Mr. Mime",
       "moves": [
-        "Healing Wish",
-        "Psyshock",
+        "Trick",
+        "Focus Blast",
         "Dazzling Gleam",
-        "Trick"
-      ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
-      "ability": "Filter",
-      "tier": 2
-    },
-    {
-      "id": "mr_mime_setup_sweeper",
-      "species": "Mr. Mime",
-      "moves": [
-        "Psyshock",
-        "Dazzling Gleam",
-        "Nasty Plot",
-        "Focus Blast"
+        "Mystical Fire"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -2161,17 +2281,47 @@
       "tier": 2
     },
     {
+      "id": "mr_mime_setup_sweeper",
+      "species": "Mr. Mime",
+      "moves": [
+        "Mystical Fire",
+        "Psyshock",
+        "Psychic",
+        "Dazzling Gleam"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Scarf",
+      "ability": "Filter",
+      "tier": 2
+    },
+    {
       "id": "scyther_setup_sweeper",
       "species": "Scyther",
       "moves": [
         "Swords Dance",
-        "Knock Off",
-        "Roost",
-        "Brick Break"
+        "Close Combat",
+        "Dual Wingbeat",
+        "Bug Bite"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Sitrus Berry",
+      "item": "Life Orb",
+      "ability": "Technician",
+      "tier": 3
+    },
+    {
+      "id": "scyther_fast_support",
+      "species": "Scyther",
+      "moves": [
+        "Defog",
+        "Dual Wingbeat",
+        "U-turn",
+        "Close Combat"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
       "ability": "Technician",
       "tier": 3
     },
@@ -2314,10 +2464,25 @@
       "id": "gyarados_setup_sweeper",
       "species": "Gyarados",
       "moves": [
+        "Temper Flare",
         "Earthquake",
         "Stone Edge",
-        "Dragon Dance",
         "Waterfall"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Intimidate",
+      "tier": 3
+    },
+    {
+      "id": "gyarados_tera_blast_user",
+      "species": "Gyarados",
+      "moves": [
+        "Waterfall",
+        "Tera Blast",
+        "Dragon Dance",
+        "Earthquake"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -2326,31 +2491,16 @@
       "tier": 3
     },
     {
-      "id": "lapras_bulky_support",
+      "id": "lapras_setup_sweeper",
       "species": "Lapras",
       "moves": [
-        "Thunderbolt",
-        "Hydro Pump",
-        "Ice Beam",
-        "Toxic"
+        "Waterfall",
+        "Dragon Dance",
+        "Icicle Spear",
+        "Earthquake"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Leftovers",
-      "ability": "Water Absorb",
-      "tier": 2
-    },
-    {
-      "id": "lapras_staller",
-      "species": "Lapras",
-      "moves": [
-        "Hydro Pump",
-        "Toxic",
-        "Protect",
-        "Ice Beam"
-      ],
-      "evFlags": 33,
-      "nature": "Calm",
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Leftovers",
       "ability": "Water Absorb",
       "tier": 2
@@ -2371,10 +2521,10 @@
       "id": "eevee_random_battle",
       "species": "Eevee",
       "moves": [
-        "Quick Attack",
-        "Body Slam",
-        "Tail Whip",
-        "Sand Attack"
+        "Double-Edge",
+        "Sand Attack",
+        "Reflect",
+        "Body Slam"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -2386,10 +2536,25 @@
       "id": "vaporeon_bulky_support",
       "species": "Vaporeon",
       "moves": [
-        "Protect",
         "Wish",
         "Scald",
+        "Protect",
         "Ice Beam"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Leftovers",
+      "ability": "Water Absorb",
+      "tier": 2
+    },
+    {
+      "id": "vaporeon_bulky_setup",
+      "species": "Vaporeon",
+      "moves": [
+        "Wish",
+        "Protect",
+        "Scald",
+        "Calm Mind"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -2413,47 +2578,62 @@
       "tier": 2
     },
     {
-      "id": "jolteon_bulky_attacker",
+      "id": "jolteon_fast_attacker",
       "species": "Jolteon",
       "moves": [
         "Thunderbolt",
-        "Substitute",
-        "Toxic",
-        "Hidden Power"
+        "Calm Mind",
+        "Shadow Ball",
+        "Alluring Voice"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Volt Absorb",
+      "tier": 2
+    },
+    {
+      "id": "jolteon_fast_support",
+      "species": "Jolteon",
+      "moves": [
+        "Alluring Voice",
+        "Calm Mind",
+        "Volt Switch",
+        "Thunderbolt"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Volt Absorb",
+      "tier": 2
+    },
+    {
+      "id": "jolteon_tera_blast_user",
+      "species": "Jolteon",
+      "moves": [
+        "Tera Blast",
+        "Thunderbolt",
+        "Calm Mind",
+        "Substitute"
       ],
       "evFlags": 33,
       "nature": "Timid",
       "item": "Sitrus Berry",
       "ability": "Volt Absorb",
-      "tier": 4
-    },
-    {
-      "id": "jolteon_fast_attacker",
-      "species": "Jolteon",
-      "moves": [
-        "Hidden Power",
-        "Shadow Ball",
-        "Thunderbolt",
-        "Signal Beam"
-      ],
-      "evFlags": 24,
-      "nature": "Timid",
-      "item": "Choice Specs",
-      "ability": "Volt Absorb",
-      "tier": 4
+      "tier": 2
     },
     {
       "id": "flareon_setup_sweeper",
       "species": "Flareon",
       "moves": [
-        "Quick Attack",
         "Facade",
-        "Will-O-Wisp",
-        "Flare Blitz"
+        "Trailblaze",
+        "Flare Blitz",
+        "Quick Attack"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Lum Berry",
+      "item": "Muscle Band",
       "ability": "Guts",
       "tier": 1
     },
@@ -2461,14 +2641,14 @@
       "id": "porygon_random_battle",
       "species": "Porygon",
       "moves": [
-        "Recover",
-        "Thunder Wave",
+        "Double-Edge",
+        "Blizzard",
         "Psychic",
-        "Blizzard"
+        "Recover"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
       "ability": "Trace",
       "tier": 4
     },
@@ -2537,8 +2717,8 @@
       "species": "Kabutops",
       "moves": [
         "Rapid Spin",
-        "Knock Off",
         "Liquidation",
+        "Flip Turn",
         "Swords Dance"
       ],
       "evFlags": 3,
@@ -2548,32 +2728,17 @@
       "tier": 3
     },
     {
-      "id": "aerodactyl_bulky_attacker",
+      "id": "aerodactyl_fast_attacker",
       "species": "Aerodactyl",
       "moves": [
         "Stone Edge",
-        "Defog",
+        "Aqua Tail",
         "Earthquake",
-        "Roost"
+        "Dual Wingbeat"
       ],
-      "evFlags": 33,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Sitrus Berry",
-      "ability": "Unnerve",
-      "tier": 3
-    },
-    {
-      "id": "aerodactyl_fast_support",
-      "species": "Aerodactyl",
-      "moves": [
-        "Stealth Rock",
-        "Stone Edge",
-        "Earthquake",
-        "Roost"
-      ],
-      "evFlags": 33,
-      "nature": "Jolly",
-      "item": "Sitrus Berry",
+      "item": "Choice Band",
       "ability": "Unnerve",
       "tier": 3
     },
@@ -2611,10 +2776,10 @@
       "id": "articuno_bulky_support",
       "species": "Articuno",
       "moves": [
-        "Substitute",
+        "Roost",
         "Brave Bird",
         "U-turn",
-        "Roost"
+        "Haze"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -2641,14 +2806,14 @@
       "id": "moltres_bulky_attacker",
       "species": "Moltres",
       "moves": [
-        "Will-O-Wisp",
-        "U-turn",
         "Brave Bird",
-        "Fire Blast"
+        "U-turn",
+        "Will-O-Wisp",
+        "Roost"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Life Orb",
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
       "ability": "Flame Body",
       "tier": 3
     },
@@ -2728,16 +2893,46 @@
       "tier": 4
     },
     {
-      "id": "meganium_staller",
+      "id": "dragonite_tera_blast_user",
+      "species": "Dragonite",
+      "moves": [
+        "Tera Blast",
+        "Earthquake",
+        "Dragon Dance",
+        "Outrage"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Multiscale",
+      "tier": 4
+    },
+    {
+      "id": "meganium_bulky_attacker",
       "species": "Meganium",
       "moves": [
-        "Earthquake",
-        "Aromatherapy",
-        "Leech Seed",
-        "Synthesis"
+        "Encore",
+        "Dragon Tail",
+        "Knock Off",
+        "Leech Seed"
       ],
       "evFlags": 5,
       "nature": "Impish",
+      "item": "Leftovers",
+      "ability": "Overgrow",
+      "tier": 1
+    },
+    {
+      "id": "meganium_bulky_setup",
+      "species": "Meganium",
+      "moves": [
+        "Knock Off",
+        "Swords Dance",
+        "Petal Blizzard",
+        "Earthquake"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Leftovers",
       "ability": "Overgrow",
       "tier": 1
@@ -2747,23 +2942,38 @@
       "species": "Typhlosion",
       "moves": [
         "Fire Blast",
-        "Hidden Power",
+        "Scorching Sands",
         "Eruption",
         "Focus Blast"
       ],
       "evFlags": 24,
       "nature": "Timid",
       "item": "Choice Specs",
-      "ability": "Flash Fire",
+      "ability": "Blaze",
       "tier": 2
+    },
+    {
+      "id": "feraligatr_fast_bulky_setup",
+      "species": "Feraligatr",
+      "moves": [
+        "Crunch",
+        "Dragon Dance",
+        "Ice Punch",
+        "Liquidation"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Sheer Force",
+      "tier": 3
     },
     {
       "id": "feraligatr_setup_sweeper",
       "species": "Feraligatr",
       "moves": [
-        "Crunch",
+        "Liquidation",
+        "Trailblaze",
         "Dragon Dance",
-        "Earthquake",
         "Ice Punch"
       ],
       "evFlags": 3,
@@ -2806,10 +3016,10 @@
       "id": "ledian_staller",
       "species": "Ledian",
       "moves": [
-        "Encore",
         "Focus Blast",
+        "Knock Off",
         "Toxic",
-        "Roost"
+        "Defog"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -2818,12 +3028,12 @@
       "tier": 1
     },
     {
-      "id": "ariados_bulky_support",
+      "id": "ariados_fast_support",
       "species": "Ariados",
       "moves": [
         "Toxic Spikes",
         "Sucker Punch",
-        "Bug Bite",
+        "Knock Off",
         "Poison Jab"
       ],
       "evFlags": 3,
@@ -2836,16 +3046,31 @@
       "id": "crobat_bulky_attacker",
       "species": "Crobat",
       "moves": [
+        "U-turn",
         "Toxic",
-        "Taunt",
-        "Roost",
-        "Brave Bird"
+        "Super Fang",
+        "Taunt"
       ],
       "evFlags": 5,
       "nature": "Jolly",
       "item": "Black Sludge",
       "ability": "Infiltrator",
       "tier": 2
+    },
+    {
+      "id": "lanturn_fast_support",
+      "species": "Lanturn",
+      "moves": [
+        "Thunderbolt",
+        "Scald",
+        "Thunder Wave",
+        "Volt Switch"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
+      "ability": "Volt Absorb",
+      "tier": 1
     },
     {
       "id": "lanturn_bulky_attacker",
@@ -2881,10 +3106,10 @@
       "id": "xatu_setup_sweeper",
       "species": "Xatu",
       "moves": [
+        "Air Slash",
         "Calm Mind",
-        "Heat Wave",
-        "Psychic",
-        "Roost"
+        "Roost",
+        "Heat Wave"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -2908,17 +3133,32 @@
       "tier": 1
     },
     {
-      "id": "ampharos_bulky_attacker",
+      "id": "ampharos_wallbreaker",
       "species": "Ampharos",
       "moves": [
-        "Toxic",
+        "Dazzling Gleam",
+        "Focus Blast",
         "Thunderbolt",
-        "Hidden Power",
-        "Focus Blast"
+        "Agility"
       ],
       "evFlags": 17,
       "nature": "Modest",
       "item": "Expert Belt",
+      "ability": "Static",
+      "tier": 2
+    },
+    {
+      "id": "ampharos_av_pivot",
+      "species": "Ampharos",
+      "moves": [
+        "Focus Blast",
+        "Dazzling Gleam",
+        "Dragon Tail",
+        "Thunderbolt"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
       "ability": "Static",
       "tier": 2
     },
@@ -2956,14 +3196,14 @@
       "id": "azumarill_bulky_attacker",
       "species": "Azumarill",
       "moves": [
-        "Play Rough",
+        "Liquidation",
         "Aqua Jet",
-        "Superpower",
-        "Knock Off"
+        "Belly Drum",
+        "Play Rough"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Muscle Band",
+      "item": "Lum Berry",
       "ability": "Huge Power",
       "tier": 3
     },
@@ -2998,19 +3238,34 @@
       "tier": 2
     },
     {
+      "id": "politoed_fast_attacker",
+      "species": "Politoed",
+      "moves": [
+        "Ice Beam",
+        "Hydro Pump",
+        "Focus Blast",
+        "Weather Ball"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Drizzle",
+      "tier": 2
+    },
+    {
       "id": "jumpluff_bulky_attacker",
       "species": "Jumpluff",
       "moves": [
-        "Sleep Powder",
         "Encore",
-        "Toxic",
+        "Acrobatics",
+        "Sleep Powder",
         "U-turn"
       ],
       "evFlags": 33,
       "nature": "Jolly",
       "item": "Sitrus Berry",
       "ability": "Infiltrator",
-      "tier": 1
+      "tier": 2
     },
     {
       "id": "aipom_fast_attacker",
@@ -3046,10 +3301,10 @@
       "id": "aipom_wallbreaker",
       "species": "Aipom",
       "moves": [
-        "Baton Pass",
+        "Double-Edge",
+        "Brick Break",
         "Return",
-        "Shadow Ball",
-        "Brick Break"
+        "Baton Pass"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -3058,32 +3313,32 @@
       "tier": 1
     },
     {
-      "id": "sunflora_bulky_attacker",
+      "id": "sunflora_wallbreaker",
       "species": "Sunflora",
       "moves": [
-        "Synthesis",
-        "Toxic",
-        "Razor Leaf",
-        "Leech Seed"
+        "Earth Power",
+        "Sludge Bomb",
+        "Leaf Storm",
+        "Dazzling Gleam"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
       "ability": "Chlorophyll",
       "tier": 1
     },
     {
-      "id": "sunflora_fast_attacker",
+      "id": "sunflora_setup_sweeper",
       "species": "Sunflora",
       "moves": [
-        "Synthesis",
+        "Weather Ball",
         "Solar Beam",
         "Sunny Day",
-        "Hidden Power"
+        "Earth Power"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
       "ability": "Chlorophyll",
       "tier": 1
     },
@@ -3106,9 +3361,9 @@
       "id": "yanma_fast_attacker",
       "species": "Yanma",
       "moves": [
-        "Aerial Ace",
-        "Toxic",
+        "Signal Beam",
         "Hidden Power",
+        "Toxic",
         "Hypnosis"
       ],
       "evFlags": 5,
@@ -3118,26 +3373,26 @@
       "tier": 1
     },
     {
-      "id": "quagsire_bulky_attacker",
+      "id": "quagsire_bulky_support",
       "species": "Quagsire",
       "moves": [
         "Earthquake",
         "Ice Beam",
         "Toxic",
-        "Scald"
+        "Spikes"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Expert Belt",
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
       "ability": "Unaware",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "espeon_fast_attacker",
       "species": "Espeon",
       "moves": [
-        "Trick",
-        "Psychic",
+        "Morning Sun",
+        "Alluring Voice",
         "Calm Mind",
         "Psyshock"
       ],
@@ -3168,7 +3423,7 @@
       "moves": [
         "Roost",
         "Thunder Wave",
-        "Defog",
+        "Brave Bird",
         "Haze"
       ],
       "evFlags": 5,
@@ -3183,7 +3438,7 @@
       "moves": [
         "Thunder Wave",
         "Scald",
-        "Psyshock",
+        "Psychic Noise",
         "Slack Off"
       ],
       "evFlags": 33,
@@ -3193,49 +3448,19 @@
       "tier": 2
     },
     {
-      "id": "misdreavus_bulky_support",
+      "id": "misdreavus_bulky_setup",
       "species": "Misdreavus",
       "moves": [
-        "Hidden Power",
+        "Calm Mind",
         "Shadow Ball",
-        "Pain Split",
-        "Toxic"
+        "Draining Kiss",
+        "Will-O-Wisp"
       ],
       "evFlags": 33,
       "nature": "Calm",
       "item": "Sitrus Berry",
       "ability": "Levitate",
-      "tier": 2
-    },
-    {
-      "id": "misdreavus_staller",
-      "species": "Misdreavus",
-      "moves": [
-        "Shadow Ball",
-        "Mean Look",
-        "Protect",
-        "Perish Song"
-      ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
-      "ability": "Levitate",
-      "tier": 2
-    },
-    {
-      "id": "misdreavus_setup_sweeper",
-      "species": "Misdreavus",
-      "moves": [
-        "Hidden Power",
-        "Substitute",
-        "Thunderbolt",
-        "Calm Mind"
-      ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
-      "ability": "Levitate",
-      "tier": 2
+      "tier": 1
     },
     {
       "id": "unown_fast_attacker",
@@ -3265,17 +3490,32 @@
       "tier": 1
     },
     {
-      "id": "girafarig_setup_sweeper",
+      "id": "girafarig_bulky_setup",
       "species": "Girafarig",
       "moves": [
-        "Calm Mind",
-        "Psychic",
-        "Substitute",
-        "Thunderbolt"
+        "Psyshock",
+        "Nasty Plot",
+        "Thunderbolt",
+        "Shadow Ball"
       ],
-      "evFlags": 5,
-      "nature": "Bold",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
+      "ability": "Sap Sipper",
+      "tier": 1
+    },
+    {
+      "id": "girafarig_fast_bulky_setup",
+      "species": "Girafarig",
+      "moves": [
+        "Nasty Plot",
+        "Psyshock",
+        "Thunderbolt",
+        "Hyper Voice"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
       "ability": "Sap Sipper",
       "tier": 1
     },
@@ -3283,31 +3523,46 @@
       "id": "forretress_bulky_support",
       "species": "Forretress",
       "moves": [
+        "Toxic Spikes",
+        "Iron Head",
+        "Volt Switch",
+        "Rapid Spin"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Sturdy",
+      "tier": 2
+    },
+    {
+      "id": "forretress_bulky_attacker",
+      "species": "Forretress",
+      "moves": [
+        "Iron Head",
         "Stealth Rock",
-        "Gyro Ball",
-        "Toxic",
+        "Spikes",
         "Rapid Spin"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Leftovers",
       "ability": "Sturdy",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "forretress_bulky_support_2",
       "species": "Forretress",
       "moves": [
-        "Toxic Spikes",
-        "Gyro Ball",
+        "Stealth Rock",
+        "Spikes",
         "Rapid Spin",
-        "Stealth Rock"
+        "Thunder Wave"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Leftovers",
       "ability": "Sturdy",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "dunsparce_bulky_attacker",
@@ -3373,25 +3628,55 @@
       "id": "granbull_bulky_attacker",
       "species": "Granbull",
       "moves": [
-        "Heal Bell",
-        "Toxic",
+        "Encore",
+        "Thunder Wave",
         "Earthquake",
-        "Thunder Wave"
+        "Play Rough"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Sitrus Berry",
       "ability": "Intimidate",
-      "tier": 1
+      "tier": 2
+    },
+    {
+      "id": "granbull_bulky_support",
+      "species": "Granbull",
+      "moves": [
+        "Earthquake",
+        "Play Rough",
+        "Thunder Wave",
+        "Roar"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "tier": 2
     },
     {
       "id": "qwilfish_bulky_support",
       "species": "Qwilfish",
       "moves": [
-        "Toxic Spikes",
         "Waterfall",
+        "Thunder Wave",
         "Spikes",
-        "Thunder Wave"
+        "Destiny Bond"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Black Sludge",
+      "ability": "Intimidate",
+      "tier": 2
+    },
+    {
+      "id": "qwilfish_fast_support",
+      "species": "Qwilfish",
+      "moves": [
+        "Flip Turn",
+        "Gunk Shot",
+        "Toxic Spikes",
+        "Pain Split"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -3404,13 +3689,43 @@
       "species": "Scizor",
       "moves": [
         "U-turn",
-        "Defog",
+        "Bullet Punch",
         "Knock Off",
+        "Close Combat"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Technician",
+      "tier": 3
+    },
+    {
+      "id": "scizor_setup_sweeper",
+      "species": "Scizor",
+      "moves": [
+        "Close Combat",
+        "Swords Dance",
+        "Bug Bite",
         "Bullet Punch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Lum Berry",
+      "ability": "Technician",
+      "tier": 3
+    },
+    {
+      "id": "scizor_wallbreaker",
+      "species": "Scizor",
+      "moves": [
+        "Bullet Punch",
+        "Knock Off",
+        "U-turn",
+        "Close Combat"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
       "ability": "Technician",
       "tier": 3
     },
@@ -3428,6 +3743,21 @@
       "item": "Leftovers",
       "ability": "Sturdy",
       "tier": 2
+    },
+    {
+      "id": "heracross_setup_sweeper",
+      "species": "Heracross",
+      "moves": [
+        "Facade",
+        "Trailblaze",
+        "Knock Off",
+        "Close Combat"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Guts",
+      "tier": 3
     },
     {
       "id": "heracross_fast_attacker",
@@ -3475,17 +3805,32 @@
       "tier": 2
     },
     {
-      "id": "ursaring_setup_sweeper",
+      "id": "ursaring_bulky_attacker",
       "species": "Ursaring",
       "moves": [
-        "Facade",
-        "Close Combat",
-        "Crunch",
-        "Swords Dance"
+        "Sleep Talk",
+        "Body Slam",
+        "Throat Chop",
+        "Earthquake"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Lum Berry",
+      "ability": "Guts",
+      "tier": 2
+    },
+    {
+      "id": "ursaring_setup_sweeper",
+      "species": "Ursaring",
+      "moves": [
+        "Crunch",
+        "Throat Chop",
+        "Close Combat",
+        "Facade"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
       "ability": "Quick Feet",
       "tier": 2
     },
@@ -3493,10 +3838,10 @@
       "id": "magcargo_bulky_support",
       "species": "Magcargo",
       "moves": [
-        "Lava Plume",
         "Yawn",
-        "Stealth Rock",
-        "Recover"
+        "Recover",
+        "Lava Plume",
+        "Power Gem"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -3569,9 +3914,9 @@
       "species": "Delibird",
       "moves": [
         "Spikes",
-        "Brave Bird",
         "Drill Run",
-        "Ice Shard"
+        "Brave Bird",
+        "Ice Spinner"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -3583,10 +3928,10 @@
       "id": "mantine_bulky_attacker",
       "species": "Mantine",
       "moves": [
-        "Defog",
+        "Roost",
         "Toxic",
-        "Hurricane",
-        "Scald"
+        "Scald",
+        "Hurricane"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -3658,10 +4003,10 @@
       "id": "kingdra_wallbreaker",
       "species": "Kingdra",
       "moves": [
-        "Rain Dance",
         "Hurricane",
         "Hydro Pump",
-        "Draco Meteor"
+        "Draco Meteor",
+        "Rain Dance"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -3688,14 +4033,14 @@
       "id": "donphan_bulky_support",
       "species": "Donphan",
       "moves": [
-        "Earthquake",
         "Knock Off",
-        "Rapid Spin",
-        "Stealth Rock"
+        "Ice Spinner",
+        "Ice Shard",
+        "Rapid Spin"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Leftovers",
+      "item": "Assault Vest",
       "ability": "Sturdy",
       "tier": 2
     },
@@ -3715,16 +4060,46 @@
       "tier": 3
     },
     {
-      "id": "stantler_wallbreaker",
+      "id": "porygon2_tera_blast_user",
+      "species": "Porygon2",
+      "moves": [
+        "Recover",
+        "Shadow Ball",
+        "Thunder Wave",
+        "Tera Blast"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Leftovers",
+      "ability": "Download",
+      "tier": 3
+    },
+    {
+      "id": "stantler_bulky_attacker",
       "species": "Stantler",
       "moves": [
         "Thunder Wave",
-        "Return",
-        "Sucker Punch",
-        "Earthquake"
+        "Earthquake",
+        "Throat Chop",
+        "Body Slam"
       ],
       "evFlags": 3,
       "nature": "Adamant",
+      "item": "Focus Sash",
+      "ability": "Intimidate",
+      "tier": 1
+    },
+    {
+      "id": "stantler_tera_blast_user",
+      "species": "Stantler",
+      "moves": [
+        "Earth Power",
+        "Calm Mind",
+        "Shadow Ball",
+        "Tera Blast"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Focus Sash",
       "ability": "Intimidate",
       "tier": 1
@@ -3742,6 +4117,21 @@
       "nature": "Adamant",
       "item": "Choice Scarf",
       "ability": "Intimidate",
+      "tier": 2
+    },
+    {
+      "id": "hitmontop_bulky_setup",
+      "species": "Hitmontop",
+      "moves": [
+        "Bulk Up",
+        "Triple Axel",
+        "Close Combat",
+        "Rapid Spin"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Technician",
       "tier": 2
     },
     {
@@ -3764,12 +4154,12 @@
       "species": "Blissey",
       "moves": [
         "Stealth Rock",
-        "Heal Bell",
-        "Thunder Wave",
-        "Soft-Boiled"
+        "Seismic Toss",
+        "Soft-Boiled",
+        "Heal Bell"
       ],
       "evFlags": 33,
-      "nature": "Calm",
+      "nature": "Careful",
       "item": "Leftovers",
       "ability": "Natural Cure",
       "tier": 2
@@ -3793,10 +4183,25 @@
       "id": "raikou_bulky_attacker",
       "species": "Raikou",
       "moves": [
+        "Volt Switch",
+        "Shadow Ball",
+        "Calm Mind",
+        "Thunderbolt"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
+      "ability": "Pressure",
+      "tier": 3
+    },
+    {
+      "id": "raikou_fast_support",
+      "species": "Raikou",
+      "moves": [
+        "Calm Mind",
         "Scald",
         "Thunderbolt",
-        "Calm Mind",
-        "Shadow Ball"
+        "Volt Switch"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -3898,8 +4303,8 @@
       "id": "tyranitar_bulky_setup",
       "species": "Tyranitar",
       "moves": [
-        "Stone Edge",
         "Dragon Dance",
+        "Stone Edge",
         "Earthquake",
         "Ice Punch"
       ],
@@ -3913,13 +4318,13 @@
       "id": "tyranitar_bulky_support",
       "species": "Tyranitar",
       "moves": [
-        "Thunder Wave",
         "Stealth Rock",
-        "Earthquake",
-        "Ice Beam"
+        "Ice Beam",
+        "Dragon Tail",
+        "Earthquake"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Leftovers",
       "ability": "Sand Stream",
       "tier": 4
@@ -3988,10 +4393,10 @@
       "id": "swampert_bulky_support",
       "species": "Swampert",
       "moves": [
-        "Roar",
         "Earthquake",
+        "Flip Turn",
         "Stealth Rock",
-        "Ice Beam"
+        "Roar"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -4003,14 +4408,29 @@
       "id": "mightyena_bulky_attacker",
       "species": "Mightyena",
       "moves": [
-        "Crunch",
+        "Poison Fang",
+        "Play Rough",
+        "Throat Chop",
+        "Crunch"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Intimidate",
+      "tier": 1
+    },
+    {
+      "id": "mightyena_av_pivot",
+      "species": "Mightyena",
+      "moves": [
+        "Super Fang",
         "Sucker Punch",
-        "Taunt",
+        "Play Rough",
         "Poison Fang"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Focus Sash",
+      "item": "Choice Scarf",
       "ability": "Intimidate",
       "tier": 1
     },
@@ -4108,14 +4528,14 @@
       "id": "shiftry_fast_support",
       "species": "Shiftry",
       "moves": [
+        "Sucker Punch",
         "Defog",
-        "Leaf Storm",
-        "Knock Off",
-        "Sucker Punch"
+        "Will-O-Wisp",
+        "Knock Off"
       ],
-      "evFlags": 3,
-      "nature": "Adamant",
-      "item": "Focus Sash",
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
       "ability": "Chlorophyll",
       "tier": 1
     },
@@ -4127,6 +4547,21 @@
         "Leaf Blade",
         "Knock Off",
         "Swords Dance"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Focus Sash",
+      "ability": "Chlorophyll",
+      "tier": 1
+    },
+    {
+      "id": "shiftry_setup_sweeper",
+      "species": "Shiftry",
+      "moves": [
+        "Knock Off",
+        "Tailwind",
+        "Leaf Blade",
+        "Low Kick"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -4165,17 +4600,32 @@
       "tier": 2
     },
     {
+      "id": "pelipper_wallbreaker",
+      "species": "Pelipper",
+      "moves": [
+        "U-turn",
+        "Hydro Pump",
+        "Weather Ball",
+        "Hurricane"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
+      "ability": "Keen Eye",
+      "tier": 2
+    },
+    {
       "id": "gardevoir_fast_attacker",
       "species": "Gardevoir",
       "moves": [
+        "Calm Mind",
+        "Psychic",
         "Psyshock",
-        "Focus Blast",
-        "Trick",
-        "Healing Wish"
+        "Focus Blast"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
       "ability": "Trace",
       "tier": 3
     },
@@ -4183,10 +4633,10 @@
       "id": "masquerain_fast_support",
       "species": "Masquerain",
       "moves": [
-        "Stun Spore",
-        "Hydro Pump",
         "Bug Buzz",
-        "U-turn"
+        "Hydro Pump",
+        "Stun Spore",
+        "Hurricane"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -4210,6 +4660,21 @@
       "tier": 3
     },
     {
+      "id": "vigoroth_bulky_setup",
+      "species": "Vigoroth",
+      "moves": [
+        "Body Slam",
+        "Bulk Up",
+        "Slack Off",
+        "Knock Off"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
+      "ability": "Vital Spirit",
+      "tier": 2
+    },
+    {
       "id": "vigoroth_bulky_attacker",
       "species": "Vigoroth",
       "moves": [
@@ -4228,55 +4693,70 @@
       "id": "slaking_fast_attacker",
       "species": "Slaking",
       "moves": [
+        "Double-Edge",
         "Earthquake",
-        "Giga Impact",
-        "Return",
-        "Night Slash"
+        "Knock Off",
+        "Giga Impact"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
       "ability": "Truant",
-      "tier": 3
+      "tier": 2
+    },
+    {
+      "id": "slaking_wallbreaker",
+      "species": "Slaking",
+      "moves": [
+        "Knock Off",
+        "Giga Impact",
+        "Earthquake",
+        "Double-Edge"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Truant",
+      "tier": 2
     },
     {
       "id": "ninjask_fast_attacker",
       "species": "Ninjask",
       "moves": [
         "Swords Dance",
-        "Night Slash",
-        "Aerial Ace",
-        "U-turn"
+        "U-turn",
+        "Leech Life",
+        "Dual Wingbeat"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Focus Sash",
       "ability": "Infiltrator",
-      "tier": 2
+      "tier": 1
     },
     {
-      "id": "ninjask_z_move_user",
+      "id": "ninjask_setup_sweeper",
       "species": "Ninjask",
       "moves": [
-        "Dig",
         "Leech Life",
+        "Substitute",
         "Swords Dance",
-        "Aerial Ace"
+        "Dual Wingbeat"
       ],
-      "evFlags": 10,
+      "evFlags": 33,
       "nature": "Jolly",
-      "item": "Focus Sash",
+      "item": "Sitrus Berry",
       "ability": "Infiltrator",
-      "tier": 2
+      "tier": 1
     },
     {
-      "id": "shedinja_setup_sweeper",
+      "id": "shedinja_wallbreaker",
       "species": "Shedinja",
       "moves": [
         "X-Scissor",
         "Shadow Sneak",
         "Will-O-Wisp",
-        "Shadow Claw"
+        "Poltergeist"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -4333,10 +4813,10 @@
       "id": "hariyama_av_pivot",
       "species": "Hariyama",
       "moves": [
-        "Knock Off",
-        "Close Combat",
         "Stone Edge",
-        "Bullet Punch"
+        "Knock Off",
+        "Bullet Punch",
+        "Close Combat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -4363,13 +4843,13 @@
       "id": "delcatty_fast_support",
       "species": "Delcatty",
       "moves": [
-        "Shadow Ball",
-        "Thunder Wave",
-        "Toxic",
-        "Heal Bell"
+        "Heal Bell",
+        "Stomping Tantrum",
+        "Fake Out",
+        "Toxic"
       ],
       "evFlags": 5,
-      "nature": "Bold",
+      "nature": "Impish",
       "item": "Sitrus Berry",
       "ability": "Wonder Skin",
       "tier": 1
@@ -4379,9 +4859,9 @@
       "species": "Sableye",
       "moves": [
         "Encore",
+        "Knock Off",
         "Will-O-Wisp",
-        "Recover",
-        "Knock Off"
+        "Thunder Wave"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -4423,14 +4903,14 @@
       "id": "medicham_fast_attacker",
       "species": "Medicham",
       "moves": [
-        "Trick",
+        "Ice Punch",
         "Poison Jab",
-        "Bullet Punch",
-        "Ice Punch"
+        "Close Combat",
+        "Zen Headbutt"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Focus Sash",
+      "item": "Choice Scarf",
       "ability": "Pure Power",
       "tier": 2
     },
@@ -4438,9 +4918,9 @@
       "id": "manectric_wallbreaker",
       "species": "Manectric",
       "moves": [
+        "Volt Switch",
         "Thunderbolt",
         "Overheat",
-        "Hidden Power",
         "Flamethrower"
       ],
       "evFlags": 24,
@@ -4453,10 +4933,10 @@
       "id": "plusle_setup_sweeper",
       "species": "Plusle",
       "moves": [
-        "Encore",
-        "Grass Knot",
         "Thunderbolt",
-        "Nasty Plot"
+        "Nasty Plot",
+        "Alluring Voice",
+        "Encore"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -4468,10 +4948,10 @@
       "id": "minun_setup_sweeper",
       "species": "Minun",
       "moves": [
-        "Grass Knot",
+        "Nasty Plot",
         "Encore",
         "Thunderbolt",
-        "Nasty Plot"
+        "Alluring Voice"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -4487,6 +4967,21 @@
         "Encore",
         "Roost",
         "U-turn"
+      ],
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
+      "ability": "Prankster",
+      "tier": 1
+    },
+    {
+      "id": "volbeat_bulky_attacker",
+      "species": "Volbeat",
+      "moves": [
+        "Encore",
+        "Roost",
+        "Lunge",
+        "Thunder Wave"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -4545,12 +5040,12 @@
       "moves": [
         "Ice Beam",
         "Encore",
-        "Earthquake",
-        "Pain Split"
+        "Sludge Bomb",
+        "Earthquake"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Black Sludge",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
       "ability": "Liquid Ooze",
       "tier": 1
     },
@@ -4566,6 +5061,21 @@
       "evFlags": 5,
       "nature": "Impish",
       "item": "Black Sludge",
+      "ability": "Liquid Ooze",
+      "tier": 1
+    },
+    {
+      "id": "swalot_bulky_setup",
+      "species": "Swalot",
+      "moves": [
+        "Knock Off",
+        "Gunk Shot",
+        "Swords Dance",
+        "Earthquake"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Liquid Ooze",
       "tier": 1
     },
@@ -4675,13 +5185,43 @@
       "tier": 2
     },
     {
-      "id": "grumpig_bulky_attacker",
+      "id": "grumpig_bulky_setup",
+      "species": "Grumpig",
+      "moves": [
+        "Psyshock",
+        "Dazzling Gleam",
+        "Psychic",
+        "Nasty Plot"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
+      "ability": "Thick Fat",
+      "tier": 1
+    },
+    {
+      "id": "grumpig_bulky_setup_2",
       "species": "Grumpig",
       "moves": [
         "Shadow Ball",
-        "Trick",
+        "Psyshock",
+        "Focus Blast",
+        "Nasty Plot"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
+      "ability": "Thick Fat",
+      "tier": 1
+    },
+    {
+      "id": "grumpig_bulky_attacker",
+      "species": "Grumpig",
+      "moves": [
         "Psychic",
-        "Focus Blast"
+        "Focus Blast",
+        "Psyshock",
+        "Trick"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -4723,9 +5263,9 @@
       "id": "cacturne_wallbreaker",
       "species": "Cacturne",
       "moves": [
-        "Superpower",
         "Spikes",
-        "Dark Pulse",
+        "Knock Off",
+        "Focus Blast",
         "Sucker Punch"
       ],
       "evFlags": 3,
@@ -4740,7 +5280,7 @@
       "moves": [
         "Sucker Punch",
         "Seed Bomb",
-        "Drain Punch",
+        "Knock Off",
         "Swords Dance"
       ],
       "evFlags": 3,
@@ -4753,10 +5293,25 @@
       "id": "altaria_bulky_support",
       "species": "Altaria",
       "moves": [
-        "Earthquake",
-        "Fire Blast",
+        "Will-O-Wisp",
+        "Haze",
+        "Brave Bird",
+        "Roost"
+      ],
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Leftovers",
+      "ability": "Natural Cure",
+      "tier": 1
+    },
+    {
+      "id": "altaria_bulky_setup",
+      "species": "Altaria",
+      "moves": [
         "Roost",
-        "Toxic"
+        "Brave Bird",
+        "Dragon Dance",
+        "Earthquake"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -4784,12 +5339,27 @@
       "species": "Seviper",
       "moves": [
         "Knock Off",
+        "Earthquake",
         "Flamethrower",
-        "Glare",
-        "Giga Drain"
+        "Gunk Shot"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Infiltrator",
+      "tier": 1
+    },
+    {
+      "id": "seviper_bulky_setup",
+      "species": "Seviper",
+      "moves": [
+        "Gunk Shot",
+        "Swords Dance",
+        "Trailblaze",
+        "Earthquake"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Focus Sash",
       "ability": "Infiltrator",
       "tier": 1
@@ -4802,6 +5372,21 @@
         "Power Gem",
         "Earth Power",
         "Stealth Rock"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
+      "ability": "Levitate",
+      "tier": 1
+    },
+    {
+      "id": "lunatone_setup_sweeper",
+      "species": "Lunatone",
+      "moves": [
+        "Psychic",
+        "Meteor Beam",
+        "Rock Polish",
+        "Earth Power"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -4823,6 +5408,21 @@
       "item": "Sitrus Berry",
       "ability": "Levitate",
       "tier": 1
+    },
+    {
+      "id": "whiscash_bulky_support",
+      "species": "Whiscash",
+      "moves": [
+        "Stealth Rock",
+        "Spikes",
+        "Earthquake",
+        "Ice Beam"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
+      "ability": "Oblivious",
+      "tier": 2
     },
     {
       "id": "whiscash_setup_sweeper",
@@ -4933,13 +5533,13 @@
       "id": "milotic_bulky_attacker",
       "species": "Milotic",
       "moves": [
-        "Scald",
-        "Recover",
         "Ice Beam",
+        "Dragon Tail",
+        "Scald",
         "Haze"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Marvel Scale",
       "tier": 3
@@ -4948,14 +5548,14 @@
       "id": "castform_bulky_attacker",
       "species": "Castform",
       "moves": [
-        "Ice Beam",
-        "Return",
+        "Scald",
         "Fire Blast",
-        "Thunderbolt"
+        "Thunderbolt",
+        "Defog"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Choice Scarf",
+      "item": "Focus Sash",
       "ability": "Forecast",
       "tier": 1
     },
@@ -4994,9 +5594,9 @@
       "species": "Banette",
       "moves": [
         "Shadow Sneak",
-        "Thunder Wave",
-        "Knock Off",
-        "Shadow Claw"
+        "Swords Dance",
+        "Gunk Shot",
+        "Poltergeist"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -5050,17 +5650,47 @@
       "tier": 1
     },
     {
+      "id": "tropius_setup_sweeper",
+      "species": "Tropius",
+      "moves": [
+        "Earthquake",
+        "Leaf Blade",
+        "Dual Wingbeat",
+        "Dragon Dance"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Harvest",
+      "tier": 1
+    },
+    {
       "id": "chimecho_bulky_support",
       "species": "Chimecho",
       "moves": [
+        "Heal Bell",
+        "Psychic Noise",
         "Thunder Wave",
-        "Knock Off",
-        "Recover",
-        "Heal Bell"
+        "Recover"
       ],
       "evFlags": 33,
-      "nature": "Careful",
+      "nature": "Calm",
       "item": "Sitrus Berry",
+      "ability": "Levitate",
+      "tier": 1
+    },
+    {
+      "id": "chimecho_bulky_setup",
+      "species": "Chimecho",
+      "moves": [
+        "Dazzling Gleam",
+        "Calm Mind",
+        "Psychic Noise",
+        "Psyshock"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
       "ability": "Levitate",
       "tier": 1
     },
@@ -5083,10 +5713,10 @@
       "id": "glalie_bulky_support",
       "species": "Glalie",
       "moves": [
-        "Spikes",
+        "Super Fang",
         "Taunt",
         "Earthquake",
-        "Ice Beam"
+        "Spikes"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -5105,6 +5735,21 @@
       ],
       "evFlags": 5,
       "nature": "Bold",
+      "item": "Leftovers",
+      "ability": "Thick Fat",
+      "tier": 2
+    },
+    {
+      "id": "walrein_bulky_attacker",
+      "species": "Walrein",
+      "moves": [
+        "Toxic",
+        "Surf",
+        "Super Fang",
+        "Ice Beam"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Thick Fat",
       "tier": 2
@@ -5155,34 +5800,64 @@
       "tier": 1
     },
     {
-      "id": "luvdisc_staller",
+      "id": "luvdisc_fast_support",
       "species": "Luvdisc",
       "moves": [
-        "Protect",
+        "Flip Turn",
         "Substitute",
-        "Toxic",
-        "Ice Beam"
+        "Surf",
+        "Endeavor"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
-      "ability": "Hydration",
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Swift Swim",
+      "tier": 1
+    },
+    {
+      "id": "luvdisc_fast_support_2",
+      "species": "Luvdisc",
+      "moves": [
+        "Endeavor",
+        "Whirlpool",
+        "Substitute",
+        "Surf"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Swift Swim",
       "tier": 1
     },
     {
       "id": "salamence_setup_sweeper",
       "species": "Salamence",
       "moves": [
-        "Dragon Dance",
         "Roost",
         "Earthquake",
+        "Dual Wingbeat",
         "Outrage"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Sitrus Berry",
+      "item": "Life Orb",
       "ability": "Intimidate",
       "tier": 4
+    },
+    {
+      "id": "metagross_bulky_setup",
+      "species": "Metagross",
+      "moves": [
+        "Earthquake",
+        "Psychic Fangs",
+        "Agility",
+        "Heavy Slam"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Clear Body",
+      "tier": 3
     },
     {
       "id": "metagross_bulky_support",
@@ -5190,29 +5865,14 @@
       "moves": [
         "Stealth Rock",
         "Bullet Punch",
-        "Zen Headbutt",
-        "Meteor Mash"
+        "Heavy Slam",
+        "Psychic Fangs"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Leftovers",
       "ability": "Clear Body",
-      "tier": 4
-    },
-    {
-      "id": "metagross_bulky_setup",
-      "species": "Metagross",
-      "moves": [
-        "Zen Headbutt",
-        "Earthquake",
-        "Meteor Mash",
-        "Thunder Punch"
-      ],
-      "evFlags": 3,
-      "nature": "Adamant",
-      "item": "Choice Scarf",
-      "ability": "Clear Body",
-      "tier": 4
+      "tier": 3
     },
     {
       "id": "regirock_bulky_attacker",
@@ -5248,10 +5908,10 @@
       "id": "regice_bulky_attacker",
       "species": "Regice",
       "moves": [
-        "Thunderbolt",
         "Sleep Talk",
-        "Rest",
-        "Ice Beam"
+        "Ice Beam",
+        "Thunderbolt",
+        "Rest"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -5320,6 +5980,21 @@
       "tier": 4
     },
     {
+      "id": "latios_fast_attacker",
+      "species": "Latios",
+      "moves": [
+        "Flip Turn",
+        "Luster Purge",
+        "Aura Sphere",
+        "Draco Meteor"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Levitate",
+      "tier": 4
+    },
+    {
       "id": "latios_bulky_attacker",
       "species": "Latios",
       "moves": [
@@ -5368,14 +6043,14 @@
       "id": "infernape_fast_attacker",
       "species": "Infernape",
       "moves": [
-        "Stone Edge",
-        "Close Combat",
         "Grass Knot",
-        "Overheat"
+        "Gunk Shot",
+        "Knock Off",
+        "Mach Punch"
       ],
-      "evFlags": 26,
-      "nature": "Hasty",
-      "item": "Expert Belt",
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
       "ability": "Blaze",
       "tier": 3
     },
@@ -5383,10 +6058,10 @@
       "id": "infernape_fast_support",
       "species": "Infernape",
       "moves": [
-        "Swords Dance",
         "Close Combat",
+        "U-turn",
         "Flare Blitz",
-        "Gunk Shot"
+        "Swords Dance"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -5398,13 +6073,13 @@
       "id": "empoleon_bulky_support",
       "species": "Empoleon",
       "moves": [
-        "Surf",
-        "Stealth Rock",
+        "Knock Off",
         "Ice Beam",
-        "Yawn"
+        "Yawn",
+        "Surf"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Competitive",
       "tier": 2
@@ -5425,13 +6100,13 @@
       "tier": 3
     },
     {
-      "id": "bibarel_bulky_setup",
+      "id": "bibarel_setup_sweeper",
       "species": "Bibarel",
       "moves": [
-        "Waterfall",
+        "Quick Attack",
+        "Liquidation",
         "Return",
-        "Curse",
-        "Quick Attack"
+        "Swords Dance"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -5455,13 +6130,28 @@
       "tier": 1
     },
     {
+      "id": "luxray_setup_sweeper",
+      "species": "Luxray",
+      "moves": [
+        "Play Rough",
+        "Throat Chop",
+        "Facade",
+        "Trailblaze"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Guts",
+      "tier": 2
+    },
+    {
       "id": "luxray_av_pivot",
       "species": "Luxray",
       "moves": [
-        "Wild Charge",
-        "Throat Chop",
+        "Volt Switch",
         "Play Rough",
-        "Ice Fang"
+        "Throat Chop",
+        "Wild Charge"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -5515,18 +6205,48 @@
       "tier": 1
     },
     {
-      "id": "bastiodon_bulky_support",
+      "id": "bastiodon_bulky_setup",
       "species": "Bastiodon",
       "moves": [
-        "Stealth Rock",
-        "Protect",
-        "Metal Burst",
-        "Roar"
+        "Iron Defense",
+        "Body Press",
+        "Foul Play",
+        "Rest"
       ],
       "evFlags": 5,
       "nature": "Impish",
-      "item": "Leftovers",
-      "ability": "Sturdy",
+      "item": "Chesto Berry",
+      "ability": "Soundproof",
+      "tier": 1
+    },
+    {
+      "id": "wormadam_setup_sweeper",
+      "species": "Wormadam",
+      "moves": [
+        "Bug Buzz",
+        "Energy Ball",
+        "Giga Drain",
+        "Hidden Power"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
+      "ability": "Anticipation",
+      "tier": 1
+    },
+    {
+      "id": "wormadam_wallbreaker",
+      "species": "Wormadam",
+      "moves": [
+        "Psychic",
+        "Hidden Power",
+        "Leaf Storm",
+        "Bug Buzz"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
+      "ability": "Anticipation",
       "tier": 1
     },
     {
@@ -5563,25 +6283,25 @@
       "id": "vespiquen_bulky_support",
       "species": "Vespiquen",
       "moves": [
-        "U-turn",
-        "Toxic",
+        "Roost",
+        "Hurricane",
         "Toxic Spikes",
-        "Roost"
+        "Air Slash"
       ],
       "evFlags": 5,
-      "nature": "Impish",
+      "nature": "Bold",
       "item": "Leftovers",
       "ability": "Pressure",
       "tier": 1
     },
     {
-      "id": "pachirisu_bulky_support",
+      "id": "pachirisu_fast_support",
       "species": "Pachirisu",
       "moves": [
         "Super Fang",
-        "Thunderbolt",
         "U-turn",
-        "Toxic"
+        "Encore",
+        "Discharge"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -5594,9 +6314,9 @@
       "species": "Floatzel",
       "moves": [
         "Substitute",
+        "Liquidation",
         "Bulk Up",
-        "Ice Punch",
-        "Waterfall"
+        "Ice Punch"
       ],
       "evFlags": 5,
       "nature": "Jolly",
@@ -5608,14 +6328,29 @@
       "id": "floatzel_fast_attacker",
       "species": "Floatzel",
       "moves": [
-        "Aqua Jet",
         "Ice Punch",
-        "Crunch",
-        "Waterfall"
+        "Aqua Jet",
+        "Low Kick",
+        "Crunch"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
+      "ability": "Water Veil",
+      "tier": 2
+    },
+    {
+      "id": "floatzel_z_move_user",
+      "species": "Floatzel",
+      "moves": [
+        "Liquidation",
+        "Bulk Up",
+        "Ice Punch",
+        "Low Kick"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
       "ability": "Water Veil",
       "tier": 2
     },
@@ -5638,14 +6373,14 @@
       "id": "gastrodon_bulky_attacker",
       "species": "Gastrodon",
       "moves": [
-        "Ice Beam",
-        "Earthquake",
+        "Surf",
+        "Spikes",
         "Recover",
-        "Surf"
+        "Stealth Rock"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Expert Belt",
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
       "ability": "Storm Drain",
       "tier": 2
     },
@@ -5653,9 +6388,9 @@
       "id": "gastrodon_bulky_support",
       "species": "Gastrodon",
       "moves": [
-        "Earthquake",
-        "Surf",
         "Sludge Bomb",
+        "Surf",
+        "Earthquake",
         "Recover"
       ],
       "evFlags": 17,
@@ -5668,7 +6403,22 @@
       "id": "ambipom_fast_attacker",
       "species": "Ambipom",
       "moves": [
-        "Return",
+        "Low Kick",
+        "Triple Axel",
+        "Double-Edge",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Technician",
+      "tier": 2
+    },
+    {
+      "id": "ambipom_wallbreaker",
+      "species": "Ambipom",
+      "moves": [
+        "Double-Edge",
         "Fake Out",
         "U-turn",
         "Knock Off"
@@ -5680,43 +6430,58 @@
       "tier": 2
     },
     {
-      "id": "drifblim_fast_support",
+      "id": "drifblim_bulky_attacker",
       "species": "Drifblim",
       "moves": [
+        "Air Slash",
         "Defog",
         "Shadow Ball",
-        "Substitute",
-        "Destiny Bond"
+        "Calm Mind"
       ],
       "evFlags": 33,
       "nature": "Calm",
       "item": "Sitrus Berry",
-      "ability": "Unburden",
+      "ability": "Aftermath",
       "tier": 2
     },
     {
       "id": "lopunny_wallbreaker",
       "species": "Lopunny",
       "moves": [
-        "Return",
-        "Healing Wish",
-        "Switcheroo",
-        "Ice Punch"
+        "Mega Kick",
+        "Close Combat",
+        "Triple Axel",
+        "Healing Wish"
       ],
-      "evFlags": 33,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Sitrus Berry",
+      "item": "Life Orb",
       "ability": "Limber",
-      "tier": 2
+      "tier": 1
+    },
+    {
+      "id": "lopunny_wallbreaker_2",
+      "species": "Lopunny",
+      "moves": [
+        "Close Combat",
+        "U-turn",
+        "Mega Kick",
+        "Triple Axel"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Limber",
+      "tier": 1
     },
     {
       "id": "mismagius_wallbreaker",
       "species": "Mismagius",
       "moves": [
-        "Trick",
-        "Energy Ball",
         "Shadow Ball",
-        "Thunderbolt"
+        "Thunderbolt",
+        "Dazzling Gleam",
+        "Trick"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -5725,28 +6490,73 @@
       "tier": 2
     },
     {
-      "id": "honchkrow_wallbreaker",
+      "id": "mismagius_setup_sweeper",
+      "species": "Mismagius",
+      "moves": [
+        "Dazzling Gleam",
+        "Shadow Ball",
+        "Thunderbolt",
+        "Nasty Plot"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Levitate",
+      "tier": 2
+    },
+    {
+      "id": "mismagius_tera_blast_user",
+      "species": "Mismagius",
+      "moves": [
+        "Tera Blast",
+        "Nasty Plot",
+        "Shadow Ball",
+        "Substitute"
+      ],
+      "evFlags": 33,
+      "nature": "Timid",
+      "item": "Sitrus Berry",
+      "ability": "Levitate",
+      "tier": 2
+    },
+    {
+      "id": "honchkrow_fast_attacker",
       "species": "Honchkrow",
       "moves": [
-        "Pursuit",
+        "Brave Bird",
         "Heat Wave",
-        "Superpower",
-        "Sucker Punch"
+        "Sucker Punch",
+        "U-turn"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Choice Scarf",
       "ability": "Moxie",
-      "tier": 3
+      "tier": 2
+    },
+    {
+      "id": "honchkrow_wallbreaker",
+      "species": "Honchkrow",
+      "moves": [
+        "Thunder Wave",
+        "Lash Out",
+        "Brave Bird",
+        "Heat Wave"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Focus Sash",
+      "ability": "Moxie",
+      "tier": 2
     },
     {
       "id": "purugly_fast_attacker",
       "species": "Purugly",
       "moves": [
-        "Knock Off",
-        "Return",
+        "Stomping Tantrum",
+        "U-turn",
         "Fake Out",
-        "U-turn"
+        "Return"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -5758,14 +6568,14 @@
       "id": "skuntank_fast_support",
       "species": "Skuntank",
       "moves": [
-        "Sucker Punch",
-        "Crunch",
-        "Poison Jab",
-        "Toxic"
+        "Knock Off",
+        "Fire Blast",
+        "Toxic Spikes",
+        "Taunt"
       ],
-      "evFlags": 3,
-      "nature": "Adamant",
-      "item": "Lum Berry",
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Black Sludge",
       "ability": "Aftermath",
       "tier": 2
     },
@@ -5774,12 +6584,12 @@
       "species": "Bronzong",
       "moves": [
         "Iron Head",
+        "Psychic",
         "Stealth Rock",
-        "Earthquake",
-        "Psychic"
+        "Psychic Noise"
       ],
-      "evFlags": 3,
-      "nature": "Adamant",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Levitate",
       "tier": 2
@@ -5789,12 +6599,12 @@
       "species": "Bronzong",
       "moves": [
         "Body Press",
+        "Psychic Noise",
         "Iron Head",
-        "Rest",
-        "Iron Defense"
+        "Rest"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Chesto Berry",
       "ability": "Levitate",
       "tier": 2
@@ -5818,10 +6628,10 @@
       "id": "spiritomb_bulky_support",
       "species": "Spiritomb",
       "moves": [
-        "Foul Play",
         "Pain Split",
-        "Toxic",
-        "Shadow Sneak"
+        "Foul Play",
+        "Poltergeist",
+        "Will-O-Wisp"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -5830,13 +6640,28 @@
       "tier": 1
     },
     {
+      "id": "garchomp_fast_support",
+      "species": "Garchomp",
+      "moves": [
+        "Outrage",
+        "Earthquake",
+        "Stealth Rock",
+        "Dragon Tail"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Rough Skin",
+      "tier": 4
+    },
+    {
       "id": "garchomp_setup_sweeper",
       "species": "Garchomp",
       "moves": [
-        "Earthquake",
         "Swords Dance",
         "Fire Fang",
-        "Stone Edge"
+        "Stone Edge",
+        "Earthquake"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -5938,10 +6763,10 @@
       "id": "toxicroak_fast_attacker",
       "species": "Toxicroak",
       "moves": [
+        "Earthquake",
         "Gunk Shot",
         "Swords Dance",
-        "Sucker Punch",
-        "Earthquake"
+        "Close Combat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -5953,14 +6778,14 @@
       "id": "toxicroak_setup_sweeper",
       "species": "Toxicroak",
       "moves": [
-        "Earthquake",
+        "Close Combat",
         "Sucker Punch",
-        "Swords Dance",
-        "Gunk Shot"
+        "Gunk Shot",
+        "Earthquake"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Focus Sash",
+      "item": "Choice Scarf",
       "ability": "Dry Skin",
       "tier": 2
     },
@@ -5968,10 +6793,10 @@
       "id": "carnivine_bulky_support",
       "species": "Carnivine",
       "moves": [
-        "Knock Off",
-        "Sleep Powder",
         "Synthesis",
-        "Power Whip"
+        "Defog",
+        "Toxic",
+        "Knock Off"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -5995,17 +6820,32 @@
       "tier": 1
     },
     {
-      "id": "lumineon_bulky_support",
+      "id": "lumineon_fast_support",
       "species": "Lumineon",
       "moves": [
-        "Defog",
-        "Ice Beam",
+        "Encore",
+        "Hydro Pump",
         "U-turn",
-        "Toxic"
+        "Ice Beam"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
+      "ability": "Storm Drain",
+      "tier": 1
+    },
+    {
+      "id": "lumineon_fast_attacker",
+      "species": "Lumineon",
+      "moves": [
+        "Hydro Pump",
+        "Alluring Voice",
+        "Encore",
+        "Ice Beam"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
       "ability": "Storm Drain",
       "tier": 1
     },
@@ -6028,9 +6868,9 @@
       "id": "weavile_fast_attacker",
       "species": "Weavile",
       "moves": [
-        "Ice Shard",
         "Swords Dance",
-        "Knock Off",
+        "Triple Axel",
+        "Ice Shard",
         "Low Kick"
       ],
       "evFlags": 10,
@@ -6040,13 +6880,28 @@
       "tier": 3
     },
     {
-      "id": "magnezone_av_pivot",
+      "id": "magnezone_fast_attacker",
       "species": "Magnezone",
       "moves": [
         "Body Press",
         "Thunderbolt",
-        "Mirror Coat",
-        "Discharge"
+        "Flash Cannon",
+        "Volt Switch"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Assault Vest",
+      "ability": "Analytic",
+      "tier": 2
+    },
+    {
+      "id": "magnezone_av_pivot",
+      "species": "Magnezone",
+      "moves": [
+        "Volt Switch",
+        "Body Press",
+        "Thunderbolt",
+        "Flash Cannon"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -6073,10 +6928,10 @@
       "id": "lickilicky_av_pivot",
       "species": "Lickilicky",
       "moves": [
-        "Power Whip",
         "Earthquake",
-        "Explosion",
-        "Body Slam"
+        "Power Whip",
+        "Knock Off",
+        "Explosion"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -6118,9 +6973,9 @@
       "id": "rhyperior_bulky_attacker",
       "species": "Rhyperior",
       "moves": [
-        "Ice Punch",
         "Megahorn",
-        "Stone Edge",
+        "Ice Punch",
+        "Dragon Tail",
         "Earthquake"
       ],
       "evFlags": 3,
@@ -6148,29 +7003,44 @@
       "id": "electivire_fast_attacker",
       "species": "Electivire",
       "moves": [
+        "Ice Punch",
+        "Supercell Slam",
         "Flamethrower",
-        "Wild Charge",
-        "Cross Chop",
-        "Ice Punch"
+        "Knock Off"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Scarf",
       "ability": "Motor Drive",
-      "tier": 3
+      "tier": 2
+    },
+    {
+      "id": "electivire_setup_sweeper",
+      "species": "Electivire",
+      "moves": [
+        "Ice Punch",
+        "Earthquake",
+        "Supercell Slam",
+        "Bulk Up"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Motor Drive",
+      "tier": 2
     },
     {
       "id": "magmortar_wallbreaker",
       "species": "Magmortar",
       "moves": [
-        "Focus Blast",
         "Thunderbolt",
-        "Taunt",
-        "Fire Blast"
+        "Knock Off",
+        "Focus Blast",
+        "Scorching Sands"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Expert Belt",
+      "item": "Choice Scarf",
       "ability": "Flame Body",
       "tier": 2
     },
@@ -6178,10 +7048,10 @@
       "id": "magmortar_fast_attacker",
       "species": "Magmortar",
       "moves": [
-        "Thunderbolt",
-        "Will-O-Wisp",
+        "Knock Off",
         "Focus Blast",
-        "Earthquake"
+        "Thunderbolt",
+        "Will-O-Wisp"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -6220,13 +7090,28 @@
       "tier": 3
     },
     {
+      "id": "yanmega_tera_blast_user",
+      "species": "Yanmega",
+      "moves": [
+        "Bug Buzz",
+        "Air Slash",
+        "Protect",
+        "Tera Blast"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Speed Boost",
+      "tier": 3
+    },
+    {
       "id": "leafeon_setup_sweeper",
       "species": "Leafeon",
       "moves": [
-        "Substitute",
         "Swords Dance",
         "Leaf Blade",
-        "Synthesis"
+        "Double-Edge",
+        "Substitute"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6238,9 +7123,9 @@
       "id": "glaceon_bulky_support",
       "species": "Glaceon",
       "moves": [
-        "Ice Beam",
-        "Wish",
         "Hidden Power",
+        "Wish",
+        "Heal Bell",
         "Protect"
       ],
       "evFlags": 5,
@@ -6283,10 +7168,10 @@
       "id": "gliscor_bulky_support",
       "species": "Gliscor",
       "moves": [
-        "Earthquake",
-        "Protect",
         "Toxic",
-        "Knock Off"
+        "Earthquake",
+        "Toxic Spikes",
+        "Protect"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6307,6 +7192,21 @@
       "nature": "Adamant",
       "item": "Lum Berry",
       "ability": "Thick Fat",
+      "tier": 3
+    },
+    {
+      "id": "porygon_z_tera_blast_user",
+      "species": "Porygon-Z",
+      "moves": [
+        "Tera Blast",
+        "Nasty Plot",
+        "Shadow Ball",
+        "Agility"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
+      "ability": "Adaptability",
       "tier": 3
     },
     {
@@ -6343,14 +7243,14 @@
       "id": "probopass_bulky_setup",
       "species": "Probopass",
       "moves": [
-        "Flash Cannon",
-        "Iron Defense",
         "Power Gem",
-        "Thunder Wave"
+        "Rest",
+        "Thunder Wave",
+        "Iron Defense"
       ],
       "evFlags": 33,
       "nature": "Calm",
-      "item": "Leftovers",
+      "item": "Chesto Berry",
       "ability": "Magnet Pull",
       "tier": 1
     },
@@ -6358,10 +7258,10 @@
       "id": "dusknoir_wallbreaker",
       "species": "Dusknoir",
       "moves": [
-        "Shadow Sneak",
-        "Trick",
+        "Earthquake",
         "Pain Split",
-        "Earthquake"
+        "Trick",
+        "Shadow Sneak"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6373,10 +7273,25 @@
       "id": "dusknoir_bulky_support",
       "species": "Dusknoir",
       "moves": [
-        "Earthquake",
-        "Shadow Sneak",
         "Pain Split",
-        "Will-O-Wisp"
+        "Earthquake",
+        "Will-O-Wisp",
+        "Shadow Sneak"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Leftovers",
+      "ability": "Frisk",
+      "tier": 1
+    },
+    {
+      "id": "dusknoir_bulky_attacker",
+      "species": "Dusknoir",
+      "moves": [
+        "Substitute",
+        "Pain Split",
+        "Focus Punch",
+        "Poltergeist"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6388,13 +7303,13 @@
       "id": "froslass_fast_support",
       "species": "Froslass",
       "moves": [
-        "Thunder Wave",
+        "Will-O-Wisp",
         "Destiny Bond",
-        "Spikes",
-        "Shadow Ball"
+        "Taunt",
+        "Spikes"
       ],
       "evFlags": 5,
-      "nature": "Timid",
+      "nature": "Jolly",
       "item": "Sitrus Berry",
       "ability": "Cursed Body",
       "tier": 2
@@ -6403,10 +7318,10 @@
       "id": "rotom_fast_attacker",
       "species": "Rotom",
       "moves": [
-        "Shadow Ball",
         "Thunderbolt",
+        "Will-O-Wisp",
         "Trick",
-        "Nasty Plot"
+        "Shadow Ball"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -6419,9 +7334,9 @@
       "species": "Uxie",
       "moves": [
         "Yawn",
-        "Stealth Rock",
         "Thunder Wave",
-        "U-turn"
+        "Knock Off",
+        "Encore"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6433,10 +7348,10 @@
       "id": "uxie_bulky_setup",
       "species": "Uxie",
       "moves": [
-        "Substitute",
         "Encore",
-        "Nasty Plot",
-        "Psyshock"
+        "Psyshock",
+        "Draining Kiss",
+        "Nasty Plot"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -6463,10 +7378,10 @@
       "id": "mesprit_bulky_support",
       "species": "Mesprit",
       "moves": [
-        "Stealth Rock",
+        "Thunder Wave",
+        "Psychic Noise",
         "U-turn",
-        "Encore",
-        "Thunder Wave"
+        "Encore"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -6478,13 +7393,13 @@
       "id": "mesprit_bulky_attacker",
       "species": "Mesprit",
       "moves": [
+        "Knock Off",
         "Ice Beam",
-        "Thunder Wave",
-        "Stealth Rock",
-        "Knock Off"
+        "Psychic Noise",
+        "Stealth Rock"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Levitate",
       "tier": 2
@@ -6535,28 +7450,28 @@
       "tier": 3
     },
     {
-      "id": "regigigas_bulky_attacker",
+      "id": "regigigas_bulky_support",
       "species": "Regigigas",
       "moves": [
-        "Return",
+        "Rest",
         "Knock Off",
-        "Thunder Wave",
-        "Drain Punch"
+        "Sleep Talk",
+        "Body Slam"
       ],
-      "evFlags": 10,
+      "evFlags": 5,
       "nature": "Jolly",
-      "item": "Life Orb",
+      "item": "Chesto Berry",
       "ability": "Slow Start",
       "tier": 2
     },
     {
-      "id": "regigigas_bulky_support",
+      "id": "regigigas_bulky_attacker",
       "species": "Regigigas",
       "moves": [
+        "Body Slam",
         "Knock Off",
-        "Return",
-        "Substitute",
-        "Thunder Wave"
+        "Protect",
+        "Substitute"
       ],
       "evFlags": 5,
       "nature": "Jolly",
@@ -6565,13 +7480,13 @@
       "tier": 2
     },
     {
-      "id": "cresselia_bulky_attacker",
+      "id": "cresselia_bulky_setup",
       "species": "Cresselia",
       "moves": [
-        "Thunder Wave",
-        "Psychic",
+        "Calm Mind",
+        "Thunderbolt",
         "Moonlight",
-        "Toxic"
+        "Psyshock"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -6599,12 +7514,12 @@
       "species": "Serperior",
       "moves": [
         "Synthesis",
-        "Leech Seed",
-        "Glare",
-        "Substitute"
+        "Leaf Storm",
+        "Substitute",
+        "Glare"
       ],
       "evFlags": 5,
-      "nature": "Jolly",
+      "nature": "Timid",
       "item": "Sitrus Berry",
       "ability": "Contrary",
       "tier": 3
@@ -6625,13 +7540,13 @@
       "tier": 3
     },
     {
-      "id": "emboar_bulky_attacker",
+      "id": "emboar_av_pivot",
       "species": "Emboar",
       "moves": [
-        "Superpower",
-        "Sucker Punch",
         "Flare Blitz",
-        "Head Smash"
+        "Knock Off",
+        "Sucker Punch",
+        "Close Combat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -6640,17 +7555,32 @@
       "tier": 2
     },
     {
-      "id": "emboar_av_pivot",
+      "id": "emboar_fast_attacker",
       "species": "Emboar",
       "moves": [
-        "Grass Knot",
-        "Sucker Punch",
+        "Wild Charge",
+        "Head Smash",
         "Flare Blitz",
-        "Superpower"
+        "Close Combat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Muscle Band",
+      "ability": "Reckless",
+      "tier": 2
+    },
+    {
+      "id": "emboar_bulky_setup",
+      "species": "Emboar",
+      "moves": [
+        "Trailblaze",
+        "Drain Punch",
+        "Flare Blitz",
+        "Bulk Up"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Reckless",
       "tier": 2
     },
@@ -6658,10 +7588,10 @@
       "id": "samurott_av_pivot",
       "species": "Samurott",
       "moves": [
-        "Megahorn",
-        "Knock Off",
+        "Flip Turn",
         "Hydro Pump",
-        "Sacred Sword"
+        "Sacred Sword",
+        "Megahorn"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -6673,10 +7603,10 @@
       "id": "samurott_setup_sweeper",
       "species": "Samurott",
       "moves": [
-        "Aqua Jet",
+        "Liquidation",
+        "Sacred Sword",
         "Swords Dance",
-        "Knock Off",
-        "Megahorn"
+        "Knock Off"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -6703,14 +7633,14 @@
       "id": "watchog_setup_sweeper",
       "species": "Watchog",
       "moves": [
-        "Knock Off",
-        "Swords Dance",
         "Return",
-        "Hypnosis"
+        "Stomping Tantrum",
+        "Knock Off",
+        "Swords Dance"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Focus Sash",
       "ability": "Analytic",
       "tier": 1
     },
@@ -6763,10 +7693,10 @@
       "id": "simisage_setup_sweeper",
       "species": "Simisage",
       "moves": [
-        "Focus Blast",
         "Substitute",
-        "Nasty Plot",
-        "Hidden Power"
+        "Hidden Power",
+        "Giga Drain",
+        "Nasty Plot"
       ],
       "evFlags": 5,
       "nature": "Timid",
@@ -6853,14 +7783,14 @@
       "id": "zebstrika_fast_attacker",
       "species": "Zebstrika",
       "moves": [
+        "Volt Switch",
+        "Supercell Slam",
         "Overheat",
-        "Wild Charge",
-        "Hidden Power",
-        "Agility"
+        "High Horsepower"
       ],
-      "evFlags": 24,
-      "nature": "Timid",
-      "item": "Focus Sash",
+      "evFlags": 26,
+      "nature": "Hasty",
+      "item": "Expert Belt",
       "ability": "Sap Sipper",
       "tier": 2
     },
@@ -7078,14 +8008,29 @@
       "id": "leavanny_fast_support",
       "species": "Leavanny",
       "moves": [
+        "Leaf Blade",
+        "Sticky Web",
+        "Lunge",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Chlorophyll",
+      "tier": 2
+    },
+    {
+      "id": "leavanny_fast_attacker",
+      "species": "Leavanny",
+      "moves": [
+        "Triple Axel",
         "Knock Off",
         "Sticky Web",
-        "X-Scissor",
-        "Toxic"
+        "Bullet Seed"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Sitrus Berry",
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
       "ability": "Chlorophyll",
       "tier": 2
     },
@@ -7135,28 +8080,43 @@
       "tier": 2
     },
     {
-      "id": "lilligant_fast_attacker",
+      "id": "lilligant_tera_blast_user",
       "species": "Lilligant",
       "moves": [
-        "Sleep Powder",
-        "Pollen Puff",
+        "Tera Blast",
+        "Quiver Dance",
+        "Giga Drain",
+        "Sleep Powder"
+      ],
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
+      "ability": "Chlorophyll",
+      "tier": 2
+    },
+    {
+      "id": "lilligant_setup_sweeper",
+      "species": "Lilligant",
+      "moves": [
         "Petal Dance",
+        "Alluring Voice",
+        "Sleep Powder",
         "Quiver Dance"
       ],
       "evFlags": 5,
       "nature": "Bold",
       "item": "Sitrus Berry",
       "ability": "Own Tempo",
-      "tier": 3
+      "tier": 2
     },
     {
-      "id": "basculin_bulky_attacker",
+      "id": "basculin_wallbreaker",
       "species": "Basculin",
       "moves": [
         "Aqua Jet",
-        "Liquidation",
-        "Head Smash",
-        "Crunch"
+        "Flip Turn",
+        "Double-Edge",
+        "Wave Crash"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -7168,10 +8128,25 @@
       "id": "krookodile_fast_attacker",
       "species": "Krookodile",
       "moves": [
-        "Stealth Rock",
-        "Earthquake",
+        "Gunk Shot",
         "Stone Edge",
+        "Earthquake",
         "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Scarf",
+      "ability": "Intimidate",
+      "tier": 3
+    },
+    {
+      "id": "krookodile_bulky_setup",
+      "species": "Krookodile",
+      "moves": [
+        "Earthquake",
+        "Gunk Shot",
+        "Knock Off",
+        "Bulk Up"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -7273,10 +8248,10 @@
       "id": "sigilyph_bulky_attacker",
       "species": "Sigilyph",
       "moves": [
-        "Heat Wave",
         "Air Slash",
         "Roost",
-        "Calm Mind"
+        "Defog",
+        "Psyshock"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -7319,8 +8294,8 @@
       "species": "Cofagrigus",
       "moves": [
         "Toxic Spikes",
-        "Will-O-Wisp",
         "Shadow Ball",
+        "Pain Split",
         "Body Press"
       ],
       "evFlags": 5,
@@ -7363,10 +8338,10 @@
       "id": "archeops_fast_attacker",
       "species": "Archeops",
       "moves": [
-        "Knock Off",
         "Stone Edge",
-        "Defog",
-        "U-turn"
+        "Earthquake",
+        "Dual Wingbeat",
+        "Roost"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -7378,10 +8353,10 @@
       "id": "garbodor_bulky_attacker",
       "species": "Garbodor",
       "moves": [
-        "Haze",
+        "Toxic Spikes",
         "Spikes",
-        "Gunk Shot",
-        "Toxic Spikes"
+        "Toxic",
+        "Stomping Tantrum"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -7423,14 +8398,14 @@
       "id": "cinccino_fast_attacker",
       "species": "Cinccino",
       "moves": [
+        "Triple Axel",
+        "Bullet Seed",
         "Tail Slap",
-        "Tidy Up",
-        "U-turn",
-        "Bullet Seed"
+        "U-turn"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Focus Sash",
+      "item": "Choice Band",
       "ability": "Technician",
       "tier": 3
     },
@@ -7439,13 +8414,13 @@
       "species": "Gothitelle",
       "moves": [
         "Thunderbolt",
-        "Calm Mind",
         "Dark Pulse",
-        "Focus Blast"
+        "Focus Blast",
+        "Psychic Noise"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Leftovers",
+      "item": "Assault Vest",
       "ability": "Shadow Tag",
       "tier": 1
     },
@@ -7480,19 +8455,19 @@
       "tier": 2
     },
     {
-      "id": "swanna_bulky_attacker",
+      "id": "swanna_bulky_support",
       "species": "Swanna",
       "moves": [
-        "Brave Bird",
+        "Flip Turn",
+        "Roost",
         "Defog",
-        "Toxic",
-        "Roost"
+        "Knock Off"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Sitrus Berry",
       "ability": "Hydration",
-      "tier": 2
+      "tier": 1
     },
     {
       "id": "vanilluxe_fast_support",
@@ -7514,8 +8489,8 @@
       "species": "Sawsbuck",
       "moves": [
         "Double-Edge",
+        "High Horsepower",
         "Horn Leech",
-        "Return",
         "Swords Dance"
       ],
       "evFlags": 10,
@@ -7525,16 +8500,31 @@
       "tier": 2
     },
     {
+      "id": "sawsbuck_fast_attacker",
+      "species": "Sawsbuck",
+      "moves": [
+        "Swords Dance",
+        "Horn Leech",
+        "Headbutt",
+        "High Horsepower"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Serene Grace",
+      "tier": 2
+    },
+    {
       "id": "emolga_bulky_attacker",
       "species": "Emolga",
       "moves": [
-        "Thunderbolt",
-        "Defog",
-        "Knock Off",
-        "Roost"
+        "Toxic",
+        "Roost",
+        "Air Slash",
+        "Thunderbolt"
       ],
       "evFlags": 5,
-      "nature": "Jolly",
+      "nature": "Timid",
       "item": "Sitrus Berry",
       "ability": "Motor Drive",
       "tier": 1
@@ -7562,6 +8552,21 @@
         "Spore",
         "Sludge Bomb",
         "Clear Smog"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
+      "ability": "Regenerator",
+      "tier": 3
+    },
+    {
+      "id": "amoonguss_bulky_attacker",
+      "species": "Amoonguss",
+      "moves": [
+        "Stomping Tantrum",
+        "Spore",
+        "Sludge Bomb",
+        "Giga Drain"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -7604,9 +8609,24 @@
       "species": "Alomomola",
       "moves": [
         "Wish",
-        "Toxic",
-        "Knock Off",
+        "Scald",
+        "Flip Turn",
         "Protect"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Leftovers",
+      "ability": "Regenerator",
+      "tier": 2
+    },
+    {
+      "id": "alomomola_fast_support",
+      "species": "Alomomola",
+      "moves": [
+        "Scald",
+        "Protect",
+        "Flip Turn",
+        "Wish"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -7618,10 +8638,10 @@
       "id": "galvantula_fast_support",
       "species": "Galvantula",
       "moves": [
-        "Energy Ball",
+        "Volt Switch",
         "Sticky Web",
-        "Bug Buzz",
-        "Thunder"
+        "Energy Ball",
+        "Bug Buzz"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -7679,8 +8699,8 @@
       "species": "Eelektross",
       "moves": [
         "Coil",
+        "Supercell Slam",
         "Drain Punch",
-        "Fire Punch",
         "Knock Off"
       ],
       "evFlags": 3,
@@ -7694,13 +8714,13 @@
       "species": "Eelektross",
       "moves": [
         "Knock Off",
+        "Dragon Tail",
         "Giga Drain",
-        "Flamethrower",
-        "Discharge"
+        "Close Combat"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Wise Glasses",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
       "ability": "Levitate",
       "tier": 2
     },
@@ -7723,14 +8743,14 @@
       "id": "chandelure_fast_bulky_setup",
       "species": "Chandelure",
       "moves": [
-        "Fire Blast",
-        "Shadow Ball",
+        "Energy Ball",
+        "Will-O-Wisp",
         "Substitute",
-        "Energy Ball"
+        "Pain Split"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Expert Belt",
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
       "ability": "Flame Body",
       "tier": 3
     },
@@ -7753,10 +8773,25 @@
       "id": "haxorus_setup_sweeper",
       "species": "Haxorus",
       "moves": [
+        "Dragon Dance",
         "Close Combat",
         "Outrage",
+        "Iron Head"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Mold Breaker",
+      "tier": 4
+    },
+    {
+      "id": "haxorus_fast_bulky_setup",
+      "species": "Haxorus",
+      "moves": [
+        "Scale Shot",
+        "Swords Dance",
         "Earthquake",
-        "Dragon Dance"
+        "Iron Head"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -7769,9 +8804,9 @@
       "species": "Beartic",
       "moves": [
         "Icicle Crash",
-        "Swords Dance",
         "Snowscape",
-        "Earthquake"
+        "Earthquake",
+        "Swords Dance"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -7787,6 +8822,21 @@
         "Haze",
         "Rapid Spin",
         "Flash Cannon"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
+      "ability": "Levitate",
+      "tier": 1
+    },
+    {
+      "id": "cryogonal_tera_blast_user",
+      "species": "Cryogonal",
+      "moves": [
+        "Rapid Spin",
+        "Ice Beam",
+        "Recover",
+        "Tera Blast"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -7873,10 +8923,10 @@
       "id": "mienshao_setup_sweeper",
       "species": "Mienshao",
       "moves": [
-        "Swords Dance",
-        "Poison Jab",
         "Knock Off",
-        "Close Combat"
+        "Triple Axel",
+        "Poison Jab",
+        "Swords Dance"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -7918,8 +8968,8 @@
       "id": "golurk_wallbreaker",
       "species": "Golurk",
       "moves": [
+        "Poltergeist",
         "Stealth Rock",
-        "Stone Edge",
         "Earthquake",
         "Dynamic Punch"
       ],
@@ -8023,10 +9073,10 @@
       "id": "durant_setup_sweeper",
       "species": "Durant",
       "moves": [
-        "Superpower",
         "Iron Head",
+        "Rock Slide",
         "X-Scissor",
-        "Rock Slide"
+        "Superpower"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -8068,10 +9118,10 @@
       "id": "volcarona_tera_blast_user",
       "species": "Volcarona",
       "moves": [
-        "Quiver Dance",
+        "Tera Blast",
         "Bug Buzz",
-        "Giga Drain",
-        "Fiery Dance"
+        "Quiver Dance",
+        "Fire Blast"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -8095,17 +9145,32 @@
       "tier": 3
     },
     {
+      "id": "cobalion_bulky_setup",
+      "species": "Cobalion",
+      "moves": [
+        "Calm Mind",
+        "Aura Sphere",
+        "Vacuum Wave",
+        "Flash Cannon"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
+      "ability": "Justified",
+      "tier": 3
+    },
+    {
       "id": "cobalion_bulky_support",
       "species": "Cobalion",
       "moves": [
-        "Iron Defense",
-        "Stealth Rock",
-        "Thunder Wave",
-        "Iron Head"
+        "Body Press",
+        "Volt Switch",
+        "Iron Head",
+        "Stealth Rock"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Leftovers",
+      "item": "Life Orb",
       "ability": "Justified",
       "tier": 3
     },
@@ -8185,13 +9250,13 @@
       "tier": 3
     },
     {
-      "id": "thundurus_wallbreaker",
+      "id": "thundurus_tera_blast_user",
       "species": "Thundurus",
       "moves": [
-        "Thunderbolt",
-        "U-turn",
-        "Taunt",
-        "Focus Blast"
+        "Nasty Plot",
+        "Focus Blast",
+        "Tera Blast",
+        "Thunderbolt"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -8200,13 +9265,28 @@
       "tier": 3
     },
     {
+      "id": "thundurus_wallbreaker",
+      "species": "Thundurus",
+      "moves": [
+        "U-turn",
+        "Knock Off",
+        "Acrobatics",
+        "Thunderbolt"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Defiant",
+      "tier": 3
+    },
+    {
       "id": "reshiram_fast_attacker",
       "species": "Reshiram",
       "moves": [
-        "Blue Flare",
         "Earth Power",
-        "Draco Meteor",
-        "Will-O-Wisp"
+        "Will-O-Wisp",
+        "Dragon Tail",
+        "Draco Meteor"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -8248,15 +9328,30 @@
       "id": "landorus_fast_attacker",
       "species": "Landorus",
       "moves": [
+        "Earth Power",
         "Rock Slide",
         "Psychic",
-        "Earth Power",
-        "Sludge Wave"
+        "Stealth Rock"
       ],
       "evFlags": 24,
       "nature": "Timid",
-      "item": "Choice Specs",
+      "item": "Life Orb",
       "ability": "Sheer Force",
+      "tier": 4
+    },
+    {
+      "id": "kyurem_tera_blast_user",
+      "species": "Kyurem",
+      "moves": [
+        "Scale Shot",
+        "Tera Blast",
+        "Dragon Dance",
+        "Icicle Spear"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Pressure",
       "tier": 4
     },
     {
@@ -8323,14 +9418,29 @@
       "id": "meloetta_bulky_attacker",
       "species": "Meloetta",
       "moves": [
+        "Hyper Voice",
         "Calm Mind",
         "U-turn",
-        "Hyper Voice",
-        "Focus Blast"
+        "Psyshock"
       ],
       "evFlags": 24,
       "nature": "Timid",
       "item": "Life Orb",
+      "ability": "Serene Grace",
+      "tier": 3
+    },
+    {
+      "id": "meloetta_wallbreaker",
+      "species": "Meloetta",
+      "moves": [
+        "Relic Song",
+        "Close Combat",
+        "Triple Axel",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Scarf",
       "ability": "Serene Grace",
       "tier": 3
     },
@@ -8354,43 +9464,43 @@
       "species": "Chesnaught",
       "moves": [
         "Spikes",
-        "Drain Punch",
-        "Wood Hammer",
-        "Synthesis"
+        "Synthesis",
+        "Knock Off",
+        "Body Press"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Leftovers",
       "ability": "Bulletproof",
-      "tier": 1
+      "tier": 2
     },
     {
-      "id": "chesnaught_staller",
+      "id": "chesnaught_fast_bulky_setup",
       "species": "Chesnaught",
       "moves": [
-        "Spiky Shield",
-        "Leech Seed",
-        "Drain Punch",
-        "Wood Hammer"
+        "Synthesis",
+        "Iron Defense",
+        "Body Press",
+        "Trailblaze"
       ],
       "evFlags": 5,
       "nature": "Impish",
       "item": "Leftovers",
       "ability": "Bulletproof",
-      "tier": 1
+      "tier": 2
     },
     {
       "id": "delphox_fast_attacker",
       "species": "Delphox",
       "moves": [
-        "Grass Knot",
-        "Focus Blast",
+        "Nasty Plot",
+        "Psyshock",
         "Fire Blast",
-        "Psyshock"
+        "Focus Blast"
       ],
       "evFlags": 24,
       "nature": "Timid",
-      "item": "Choice Specs",
+      "item": "Life Orb",
       "ability": "Blaze",
       "tier": 2
     },
@@ -8470,6 +9580,21 @@
       "tier": 3
     },
     {
+      "id": "talonflame_tera_blast_user",
+      "species": "Talonflame",
+      "moves": [
+        "Brave Bird",
+        "Tera Blast",
+        "Flare Blitz",
+        "Swords Dance"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Flame Body",
+      "tier": 3
+    },
+    {
       "id": "vivillon_fast_bulky_setup",
       "species": "Vivillon",
       "moves": [
@@ -8477,6 +9602,21 @@
         "Quiver Dance",
         "Hurricane",
         "Sleep Powder"
+      ],
+      "evFlags": 5,
+      "nature": "Bold",
+      "item": "Sitrus Berry",
+      "ability": "Compound Eyes",
+      "tier": 3
+    },
+    {
+      "id": "vivillon_tera_blast_user",
+      "species": "Vivillon",
+      "moves": [
+        "Tera Blast",
+        "Hurricane",
+        "Sleep Powder",
+        "Quiver Dance"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -8507,6 +9647,21 @@
         "Wish",
         "Protect",
         "Calm Mind"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Leftovers",
+      "ability": "Flower Veil",
+      "tier": 2
+    },
+    {
+      "id": "florges_tera_blast_user",
+      "species": "Florges",
+      "moves": [
+        "Tera Blast",
+        "Calm Mind",
+        "Moonblast",
+        "Synthesis"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -8609,13 +9764,13 @@
       "species": "Meowstic",
       "moves": [
         "Yawn",
-        "Reflect",
-        "Thunder Wave",
-        "Light Screen"
+        "Psychic Noise",
+        "Light Screen",
+        "Alluring Voice"
       ],
       "evFlags": 33,
       "nature": "Timid",
-      "item": "Light Clay",
+      "item": "Sitrus Berry",
       "ability": "Prankster",
       "tier": 1
     },
@@ -8743,10 +9898,10 @@
       "id": "dragalge_bulky_attacker",
       "species": "Dragalge",
       "moves": [
-        "Sludge Wave",
         "Toxic",
+        "Dragon Tail",
         "Toxic Spikes",
-        "Dragon Tail"
+        "Draco Meteor"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -8830,6 +9985,21 @@
       "tier": 2
     },
     {
+      "id": "aurorus_bulky_setup",
+      "species": "Aurorus",
+      "moves": [
+        "Blizzard",
+        "Freeze-Dry",
+        "Meteor Beam",
+        "Earth Power"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Assault Vest",
+      "ability": "Snow Warning",
+      "tier": 2
+    },
+    {
       "id": "sylveon_bulky_setup",
       "species": "Sylveon",
       "moves": [
@@ -8848,14 +10018,14 @@
       "id": "hawlucha_setup_sweeper",
       "species": "Hawlucha",
       "moves": [
-        "Swords Dance",
-        "Encore",
+        "Stone Edge",
         "Brave Bird",
-        "Stone Edge"
+        "Close Combat",
+        "Throat Chop"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Sitrus Berry",
+      "item": "Choice Band",
       "ability": "Unburden",
       "tier": 3
     },
@@ -8893,10 +10063,10 @@
       "id": "goodra_av_pivot",
       "species": "Goodra",
       "moves": [
-        "Earthquake",
-        "Sludge Bomb",
-        "Draco Meteor",
-        "Power Whip"
+        "Knock Off",
+        "Fire Blast",
+        "Power Whip",
+        "Scald"
       ],
       "evFlags": 19,
       "nature": "Mild",
@@ -8938,9 +10108,9 @@
       "id": "trevenant_wallbreaker",
       "species": "Trevenant",
       "moves": [
-        "Will-O-Wisp",
-        "Drain Punch",
         "Wood Hammer",
+        "Drain Punch",
+        "Will-O-Wisp",
         "Rest"
       ],
       "evFlags": 33,
@@ -8950,12 +10120,27 @@
       "tier": 1
     },
     {
+      "id": "trevenant_bulky_support",
+      "species": "Trevenant",
+      "moves": [
+        "Poltergeist",
+        "Toxic",
+        "Protect",
+        "Drain Punch"
+      ],
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
+      "ability": "Harvest",
+      "tier": 1
+    },
+    {
       "id": "gourgeist_bulky_support",
       "species": "Gourgeist",
       "moves": [
-        "Shadow Sneak",
-        "Will-O-Wisp",
         "Power Whip",
+        "Poltergeist",
+        "Will-O-Wisp",
         "Synthesis"
       ],
       "evFlags": 5,
@@ -9029,9 +10214,9 @@
       "species": "Yveltal",
       "moves": [
         "Roost",
+        "Knock Off",
         "Oblivion Wing",
-        "Toxic",
-        "Knock Off"
+        "Toxic"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -9100,16 +10285,31 @@
       "tier": 3
     },
     {
-      "id": "hoopa_fast_attacker",
-      "species": "Hoopa",
+      "id": "diancie_bulky_setup",
+      "species": "Diancie",
       "moves": [
-        "Focus Blast",
-        "Shadow Ball",
-        "Psychic",
-        "Nasty Plot"
+        "Draining Kiss",
+        "Earth Power",
+        "Calm Mind",
+        "Diamond Storm"
       ],
       "evFlags": 17,
       "nature": "Modest",
+      "item": "Leftovers",
+      "ability": "Clear Body",
+      "tier": 3
+    },
+    {
+      "id": "hoopa_fast_attacker",
+      "species": "Hoopa",
+      "moves": [
+        "Psyshock",
+        "Shadow Ball",
+        "Nasty Plot",
+        "Trick"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
       "item": "Leftovers",
       "ability": "Magician",
       "tier": 2
@@ -9137,6 +10337,21 @@
         "Leaf Storm",
         "Defog",
         "Knock Off"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Overgrow",
+      "tier": 2
+    },
+    {
+      "id": "decidueye_setup_sweeper",
+      "species": "Decidueye",
+      "moves": [
+        "Swords Dance",
+        "Poltergeist",
+        "Shadow Sneak",
+        "Leaf Blade"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -9175,13 +10390,28 @@
       "tier": 3
     },
     {
-      "id": "primarina_bulky_attacker",
+      "id": "incineroar_setup_sweeper",
+      "species": "Incineroar",
+      "moves": [
+        "Flare Blitz",
+        "Knock Off",
+        "Trailblaze",
+        "Swords Dance"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Intimidate",
+      "tier": 3
+    },
+    {
+      "id": "primarina_wallbreaker",
       "species": "Primarina",
       "moves": [
-        "Psychic",
         "Moonblast",
         "Hydro Pump",
-        "Scald"
+        "Flip Turn",
+        "Psychic"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -9190,17 +10420,32 @@
       "tier": 3
     },
     {
-      "id": "primarina_bulky_support",
+      "id": "primarina_bulky_setup",
       "species": "Primarina",
       "moves": [
+        "Calm Mind",
         "Moonblast",
-        "Scald",
-        "Rest",
-        "Sleep Talk"
+        "Draining Kiss",
+        "Psychic Noise"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Chesto Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Leftovers",
+      "ability": "Liquid Voice",
+      "tier": 3
+    },
+    {
+      "id": "primarina_bulky_attacker",
+      "species": "Primarina",
+      "moves": [
+        "Sparkling Aria",
+        "Psychic",
+        "Calm Mind",
+        "Draining Kiss"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Leftovers",
       "ability": "Torrent",
       "tier": 3
     },
@@ -9224,9 +10469,24 @@
       "species": "Gumshoos",
       "moves": [
         "U-turn",
-        "Return",
+        "Knock Off",
         "Earthquake",
-        "Crunch"
+        "Double-Edge"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Stakeout",
+      "tier": 1
+    },
+    {
+      "id": "gumshoos_fast_attacker",
+      "species": "Gumshoos",
+      "moves": [
+        "Earthquake",
+        "Knock Off",
+        "U-turn",
+        "Double-Edge"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -9238,14 +10498,14 @@
       "id": "vikavolt_bulky_support",
       "species": "Vikavolt",
       "moves": [
-        "Sticky Web",
-        "Bug Buzz",
+        "Volt Switch",
         "Discharge",
-        "Thunderbolt"
+        "Energy Ball",
+        "Bug Buzz"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Expert Belt",
+      "item": "Wise Glasses",
       "ability": "Levitate",
       "tier": 3
     },
@@ -9253,10 +10513,25 @@
       "id": "crabominable_wallbreaker",
       "species": "Crabominable",
       "moves": [
+        "Drain Punch",
         "Ice Hammer",
-        "Earthquake",
         "Close Combat",
-        "Drain Punch"
+        "Gunk Shot"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Iron Fist",
+      "tier": 1
+    },
+    {
+      "id": "crabominable_av_pivot",
+      "species": "Crabominable",
+      "moves": [
+        "Earthquake",
+        "Ice Hammer",
+        "Drain Punch",
+        "Knock Off"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -9291,6 +10566,21 @@
       "evFlags": 33,
       "nature": "Timid",
       "item": "Sitrus Berry",
+      "ability": "Shield Dust",
+      "tier": 3
+    },
+    {
+      "id": "ribombee_tera_blast_user",
+      "species": "Ribombee",
+      "moves": [
+        "Bug Buzz",
+        "Tera Blast",
+        "Moonblast",
+        "Quiver Dance"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
       "ability": "Shield Dust",
       "tier": 3
     },
@@ -9460,6 +10750,21 @@
       "tier": 3
     },
     {
+      "id": "salazzle_tera_blast_user",
+      "species": "Salazzle",
+      "moves": [
+        "Sludge Wave",
+        "Nasty Plot",
+        "Fire Blast",
+        "Tera Blast"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Focus Sash",
+      "ability": "Corrosion",
+      "tier": 3
+    },
+    {
       "id": "bewear_bulky_setup",
       "species": "Bewear",
       "moves": [
@@ -9508,14 +10813,14 @@
       "id": "tsareena_fast_support",
       "species": "Tsareena",
       "moves": [
-        "High Jump Kick",
-        "Synthesis",
+        "Power Whip",
+        "U-turn",
         "Knock Off",
-        "U-turn"
+        "High Jump Kick"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Lum Berry",
+      "item": "Choice Scarf",
       "ability": "Queenly Majesty",
       "tier": 2
     },
@@ -9538,10 +10843,10 @@
       "id": "comfey_tera_blast_user",
       "species": "Comfey",
       "moves": [
-        "Taunt",
-        "Giga Drain",
         "Draining Kiss",
-        "Calm Mind"
+        "Taunt",
+        "Calm Mind",
+        "Synthesis"
       ],
       "evFlags": 33,
       "nature": "Timid",
@@ -9569,12 +10874,12 @@
       "species": "Oranguru",
       "moves": [
         "Thunderbolt",
-        "Trick",
-        "Focus Blast",
-        "Nasty Plot"
+        "Hyper Voice",
+        "Nasty Plot",
+        "Focus Blast"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Inner Focus",
       "tier": 1
@@ -9689,8 +10994,8 @@
       "species": "Silvally",
       "moves": [
         "Explosion",
-        "Crunch",
         "Multi-Attack",
+        "Flame Charge",
         "Swords Dance"
       ],
       "evFlags": 10,
@@ -9704,9 +11009,9 @@
       "species": "Minior",
       "moves": [
         "Power Gem",
-        "Earthquake",
+        "Acrobatics",
         "Shell Smash",
-        "Explosion"
+        "Earthquake"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -9719,9 +11024,9 @@
       "species": "Komala",
       "moves": [
         "U-turn",
-        "Rapid Spin",
+        "Earthquake",
         "Knock Off",
-        "Earthquake"
+        "Rapid Spin"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -9808,10 +11113,10 @@
       "id": "togedemaru_av_pivot",
       "species": "Togedemaru",
       "moves": [
+        "Super Fang",
+        "U-turn",
         "Nuzzle",
-        "Zing Zap",
-        "Iron Head",
-        "U-turn"
+        "Iron Head"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -9853,14 +11158,14 @@
       "id": "bruxish_fast_attacker",
       "species": "Bruxish",
       "moves": [
-        "Ice Fang",
-        "Wave Crash",
+        "Flip Turn",
         "Aqua Jet",
-        "Crunch"
+        "Swords Dance",
+        "Wave Crash"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Choice Scarf",
+      "item": "Focus Sash",
       "ability": "Strong Jaw",
       "tier": 2
     },
@@ -9898,14 +11203,14 @@
       "id": "drampa_bulky_attacker",
       "species": "Drampa",
       "moves": [
-        "Hyper Voice",
-        "Roost",
+        "Defog",
+        "Draco Meteor",
         "Fire Blast",
-        "Draco Meteor"
+        "Roost"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
-      "item": "Expert Belt",
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
       "ability": "Berserk",
       "tier": 2
     },
@@ -9913,9 +11218,9 @@
       "id": "dhelmise_fast_support",
       "species": "Dhelmise",
       "moves": [
-        "Anchor Shot",
+        "Poltergeist",
         "Synthesis",
-        "Power Whip",
+        "Anchor Shot",
         "Rapid Spin"
       ],
       "evFlags": 3,
@@ -9940,17 +11245,32 @@
       "tier": 4
     },
     {
+      "id": "kommo_o_setup_sweeper",
+      "species": "Kommo-o",
+      "moves": [
+        "Iron Head",
+        "Close Combat",
+        "Swords Dance",
+        "Scale Shot"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Soundproof",
+      "tier": 4
+    },
+    {
       "id": "tapu_koko_fast_support",
       "species": "Tapu Koko",
       "moves": [
-        "Dazzling Gleam",
+        "Defog",
+        "U-turn",
         "Roost",
-        "Wild Charge",
-        "U-turn"
+        "Wild Charge"
       ],
-      "evFlags": 10,
+      "evFlags": 5,
       "nature": "Jolly",
-      "item": "Life Orb",
+      "item": "Sitrus Berry",
       "ability": "Electric Surge",
       "tier": 4
     },
@@ -10063,14 +11383,14 @@
       "id": "tapu_fini_bulky_attacker",
       "species": "Tapu Fini",
       "moves": [
+        "Draining Kiss",
         "Hydro Pump",
-        "Calm Mind",
         "Moonblast",
         "Surf"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Leftovers",
+      "item": "Choice Scarf",
       "ability": "Misty Surge",
       "tier": 4
     },
@@ -10093,10 +11413,10 @@
       "id": "solgaleo_bulky_setup",
       "species": "Solgaleo",
       "moves": [
-        "Sunsteel Strike",
-        "Close Combat",
+        "Knock Off",
         "Earthquake",
-        "Knock Off"
+        "Psychic",
+        "Flame Charge"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -10165,13 +11485,28 @@
       "tier": 4
     },
     {
+      "id": "nihilego_setup_sweeper",
+      "species": "Nihilego",
+      "moves": [
+        "Meteor Beam",
+        "Sludge Wave",
+        "Thunderbolt",
+        "Grass Knot"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Beast Boost",
+      "tier": 4
+    },
+    {
       "id": "buzzwole_dynamax_user",
       "species": "Buzzwole",
       "moves": [
-        "Close Combat",
+        "Dual Wingbeat",
         "Earthquake",
-        "Stone Edge",
-        "Darkest Lariat"
+        "Darkest Lariat",
+        "Leech Life"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -10183,13 +11518,13 @@
       "id": "buzzwole_bulky_attacker",
       "species": "Buzzwole",
       "moves": [
-        "Stone Edge",
         "Leech Life",
-        "Toxic",
-        "Roost"
+        "Roost",
+        "Stone Edge",
+        "Drain Punch"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
+      "evFlags": 3,
+      "nature": "Adamant",
       "item": "Leftovers",
       "ability": "Beast Boost",
       "tier": 4
@@ -10199,9 +11534,9 @@
       "species": "Pheromosa",
       "moves": [
         "U-turn",
+        "Close Combat",
         "Poison Jab",
-        "Ice Beam",
-        "Close Combat"
+        "Throat Chop"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -10225,13 +11560,43 @@
       "tier": 4
     },
     {
+      "id": "xurkitree_fast_attacker",
+      "species": "Xurkitree",
+      "moves": [
+        "Dazzling Gleam",
+        "Volt Switch",
+        "Thunderbolt",
+        "Energy Ball"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Beast Boost",
+      "tier": 4
+    },
+    {
       "id": "celesteela_bulky_setup",
       "species": "Celesteela",
       "moves": [
         "Earthquake",
-        "Autotomize",
+        "Air Slash",
         "Flash Cannon",
-        "Iron Defense"
+        "Autotomize"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Leftovers",
+      "ability": "Beast Boost",
+      "tier": 4
+    },
+    {
+      "id": "celesteela_staller",
+      "species": "Celesteela",
+      "moves": [
+        "Heavy Slam",
+        "Protect",
+        "Air Slash",
+        "Leech Seed"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -10243,10 +11608,10 @@
       "id": "kartana_fast_attacker",
       "species": "Kartana",
       "moves": [
-        "Swords Dance",
-        "Sacred Sword",
         "Knock Off",
-        "Leaf Blade"
+        "Swords Dance",
+        "Leaf Blade",
+        "Sacred Sword"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -10333,13 +11698,13 @@
       "id": "magearna_bulky_attacker",
       "species": "Magearna",
       "moves": [
-        "Fleur Cannon",
-        "Aura Sphere",
-        "Flash Cannon",
-        "Pain Split"
+        "Volt Switch",
+        "Spikes",
+        "Pain Split",
+        "Fleur Cannon"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
+      "evFlags": 5,
+      "nature": "Bold",
       "item": "Leftovers",
       "ability": "Soul-Heart",
       "tier": 4
@@ -10355,6 +11720,21 @@
       ],
       "evFlags": 5,
       "nature": "Bold",
+      "item": "Leftovers",
+      "ability": "Soul-Heart",
+      "tier": 4
+    },
+    {
+      "id": "magearna_tera_blast_user",
+      "species": "Magearna",
+      "moves": [
+        "Tera Blast",
+        "Iron Head",
+        "Shift Gear",
+        "Fleur Cannon"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
       "item": "Leftovers",
       "ability": "Soul-Heart",
       "tier": 4
@@ -10528,9 +11908,9 @@
       "id": "rillaboom_wallbreaker",
       "species": "Rillaboom",
       "moves": [
-        "Knock Off",
         "U-turn",
         "Swords Dance",
+        "Knock Off",
         "Wood Hammer"
       ],
       "evFlags": 3,
@@ -10543,10 +11923,10 @@
       "id": "rillaboom_fast_attacker",
       "species": "Rillaboom",
       "moves": [
-        "U-turn",
         "High Horsepower",
+        "Swords Dance",
         "Wood Hammer",
-        "Swords Dance"
+        "U-turn"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -10619,9 +11999,9 @@
       "species": "Greedent",
       "moves": [
         "Swords Dance",
-        "Earthquake",
         "Body Slam",
-        "Payback"
+        "Double-Edge",
+        "Knock Off"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -10678,14 +12058,14 @@
       "id": "thievul_wallbreaker",
       "species": "Thievul",
       "moves": [
-        "U-turn",
-        "Grass Knot",
         "Psychic",
+        "Burning Jealousy",
+        "Nasty Plot",
         "Dark Pulse"
       ],
       "evFlags": 24,
       "nature": "Timid",
-      "item": "Choice Scarf",
+      "item": "Focus Sash",
       "ability": "Stakeout",
       "tier": 1
     },
@@ -10768,10 +12148,10 @@
       "id": "boltund_fast_attacker",
       "species": "Boltund",
       "moves": [
-        "Play Rough",
-        "Crunch",
-        "Psychic Fangs",
-        "Bulk Up"
+        "Fire Fang",
+        "Thunder Fang",
+        "Bulk Up",
+        "Crunch"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -10810,13 +12190,28 @@
       "tier": 2
     },
     {
+      "id": "flapple_tera_blast_user",
+      "species": "Flapple",
+      "moves": [
+        "Dragon Dance",
+        "Grav Apple",
+        "Tera Blast",
+        "Outrage"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Focus Sash",
+      "ability": "Hustle",
+      "tier": 2
+    },
+    {
       "id": "appletun_bulky_attacker",
       "species": "Appletun",
       "moves": [
-        "Dragon Pulse",
-        "Apple Acid",
+        "Draco Meteor",
         "Recover",
-        "Leech Seed"
+        "Leech Seed",
+        "Dragon Pulse"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -10855,6 +12250,21 @@
       "tier": 2
     },
     {
+      "id": "sandaconda_fast_bulky_setup",
+      "species": "Sandaconda",
+      "moves": [
+        "Earthquake",
+        "Coil",
+        "Rock Blast",
+        "Scale Shot"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Shed Skin",
+      "tier": 2
+    },
+    {
       "id": "cramorant_bulky_support",
       "species": "Cramorant",
       "moves": [
@@ -10873,15 +12283,30 @@
       "id": "barraskewda_wallbreaker",
       "species": "Barraskewda",
       "moves": [
+        "Throat Chop",
+        "Flip Turn",
         "Psychic Fangs",
-        "Close Combat",
-        "Waterfall",
-        "Throat Chop"
+        "Waterfall"
       ],
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
       "ability": "Swift Swim",
+      "tier": 3
+    },
+    {
+      "id": "toxtricity_fast_attacker",
+      "species": "Toxtricity",
+      "moves": [
+        "Overdrive",
+        "Boomburst",
+        "Sludge Wave",
+        "Volt Switch"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Punk Rock",
       "tier": 3
     },
     {
@@ -10918,29 +12343,44 @@
       "id": "grapploct_bulky_setup",
       "species": "Grapploct",
       "moves": [
-        "Sucker Punch",
-        "Bulk Up",
         "Drain Punch",
-        "Topsy-Turvy"
+        "Ice Punch",
+        "Sucker Punch",
+        "Bulk Up"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Limber",
+      "tier": 2
+    },
+    {
+      "id": "grapploct_bulky_attacker",
+      "species": "Grapploct",
+      "moves": [
+        "Ice Punch",
+        "Brutal Swing",
+        "Drain Punch",
+        "Bulk Up"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Technician",
       "tier": 2
     },
     {
       "id": "polteageist_tera_blast_user",
       "species": "Polteageist",
       "moves": [
-        "Strength Sap",
-        "Shadow Ball",
         "Stored Power",
-        "Shell Smash"
+        "Shell Smash",
+        "Tera Blast",
+        "Shadow Ball"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
       "ability": "Cursed Body",
       "tier": 4
     },
@@ -10965,12 +12405,27 @@
       "moves": [
         "Mystical Fire",
         "Psychic",
-        "Calm Mind",
-        "Psyshock"
+        "Draining Kiss",
+        "Calm Mind"
       ],
       "evFlags": 17,
       "nature": "Modest",
       "item": "Expert Belt",
+      "ability": "Magic Bounce",
+      "tier": 2
+    },
+    {
+      "id": "hatterene_av_pivot",
+      "species": "Hatterene",
+      "moves": [
+        "Mystical Fire",
+        "Nuzzle",
+        "Psychic Noise",
+        "Psychic"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Wise Glasses",
       "ability": "Magic Bounce",
       "tier": 2
     },
@@ -11053,14 +12508,14 @@
       "id": "cursola_bulky_setup",
       "species": "Cursola",
       "moves": [
-        "Shadow Ball",
-        "Strength Sap",
         "Hydro Pump",
+        "Meteor Beam",
+        "Ice Beam",
         "Earth Power"
       ],
       "evFlags": 17,
       "nature": "Modest",
-      "item": "Expert Belt",
+      "item": "Wise Glasses",
       "ability": "Weak Armor",
       "tier": 1
     },
@@ -11098,9 +12553,9 @@
       "id": "runerigus_bulky_attacker",
       "species": "Runerigus",
       "moves": [
-        "Stealth Rock",
+        "Poltergeist",
         "Haze",
-        "Will-O-Wisp",
+        "Toxic Spikes",
         "Earthquake"
       ],
       "evFlags": 5,
@@ -11113,10 +12568,25 @@
       "id": "alcremie_bulky_setup",
       "species": "Alcremie",
       "moves": [
-        "Psyshock",
-        "Calm Mind",
         "Recover",
-        "Entrainment"
+        "Calm Mind",
+        "Alluring Voice",
+        "Psyshock"
+      ],
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
+      "ability": "Aroma Veil",
+      "tier": 1
+    },
+    {
+      "id": "alcremie_tera_blast_user",
+      "species": "Alcremie",
+      "moves": [
+        "Recover",
+        "Calm Mind",
+        "Alluring Voice",
+        "Tera Blast"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -11128,16 +12598,16 @@
       "id": "falinks_setup_sweeper",
       "species": "Falinks",
       "moves": [
-        "Rock Slide",
-        "No Retreat",
+        "Close Combat",
+        "Knock Off",
         "Iron Head",
-        "Close Combat"
+        "No Retreat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Focus Sash",
       "ability": "Defiant",
-      "tier": 3
+      "tier": 2
     },
     {
       "id": "pincurchin_bulky_attacker",
@@ -11173,10 +12643,10 @@
       "id": "frosmoth_tera_blast_user",
       "species": "Frosmoth",
       "moves": [
-        "Quiver Dance",
         "Bug Buzz",
-        "Ice Beam",
-        "Giga Drain"
+        "Tera Blast",
+        "Giga Drain",
+        "Quiver Dance"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -11220,8 +12690,23 @@
       "moves": [
         "Iron Head",
         "Liquidation",
-        "Zen Headbutt",
-        "Belly Drum"
+        "Ice Spinner",
+        "Zen Headbutt"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Assault Vest",
+      "ability": "Ice Face",
+      "tier": 2
+    },
+    {
+      "id": "eiscue_tera_blast_user",
+      "species": "Eiscue",
+      "moves": [
+        "Tera Blast",
+        "Ice Spinner",
+        "Belly Drum",
+        "Liquidation"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -11233,14 +12718,14 @@
       "id": "indeedee_fast_attacker",
       "species": "Indeedee",
       "moves": [
-        "Dazzling Gleam",
         "Calm Mind",
-        "Shadow Ball",
-        "Hyper Voice"
+        "Healing Wish",
+        "Dazzling Gleam",
+        "Expanding Force"
       ],
-      "evFlags": 24,
-      "nature": "Timid",
-      "item": "Focus Sash",
+      "evFlags": 33,
+      "nature": "Calm",
+      "item": "Sitrus Berry",
       "ability": "Psychic Surge",
       "tier": 2
     },
@@ -11256,6 +12741,21 @@
       "evFlags": 5,
       "nature": "Impish",
       "item": "Sitrus Berry",
+      "ability": "Hunger Switch",
+      "tier": 2
+    },
+    {
+      "id": "morpeko_bulky_attacker",
+      "species": "Morpeko",
+      "moves": [
+        "Knock Off",
+        "Rapid Spin",
+        "Aura Wheel",
+        "Protect"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
       "ability": "Hunger Switch",
       "tier": 2
     },
@@ -11279,8 +12779,8 @@
       "species": "Copperajah",
       "moves": [
         "Heat Crash",
-        "Superpower",
         "Heavy Slam",
+        "Superpower",
         "Earthquake"
       ],
       "evFlags": 3,
@@ -11324,9 +12824,9 @@
       "species": "Arctozolt",
       "moves": [
         "Icicle Crash",
-        "Bolt Beak",
         "Freeze-Dry",
-        "Slam"
+        "Stomping Tantrum",
+        "Bolt Beak"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -11410,6 +12910,21 @@
       "tier": 4
     },
     {
+      "id": "dragapult_tera_blast_user",
+      "species": "Dragapult",
+      "moves": [
+        "Fire Blast",
+        "Dragon Darts",
+        "Dragon Dance",
+        "Tera Blast"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Life Orb",
+      "ability": "Clear Body",
+      "tier": 4
+    },
+    {
       "id": "dragapult_fast_support",
       "species": "Dragapult",
       "moves": [
@@ -11458,14 +12973,14 @@
       "id": "zamazenta_bulky_setup",
       "species": "Zamazenta",
       "moves": [
+        "Body Press",
+        "Iron Head",
         "Crunch",
-        "Stone Edge",
-        "Substitute",
-        "Rest"
+        "Substitute"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Chesto Berry",
+      "item": "Life Orb",
       "ability": "Dauntless Shield",
       "tier": 4
     },
@@ -11500,6 +13015,21 @@
       "tier": 4
     },
     {
+      "id": "eternatus_setup_sweeper",
+      "species": "Eternatus",
+      "moves": [
+        "Sludge Bomb",
+        "Dynamax Cannon",
+        "Meteor Beam",
+        "Fire Blast"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Pressure",
+      "tier": 4
+    },
+    {
       "id": "urshifu_fast_attacker",
       "species": "Urshifu",
       "moves": [
@@ -11518,14 +13048,29 @@
       "id": "zarude_fast_bulky_setup",
       "species": "Zarude",
       "moves": [
+        "Close Combat",
+        "Knock Off",
         "Power Whip",
-        "Synthesis",
-        "Swords Dance",
+        "Swords Dance"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Leaf Guard",
+      "tier": 4
+    },
+    {
+      "id": "zarude_fast_attacker",
+      "species": "Zarude",
+      "moves": [
+        "U-turn",
+        "Knock Off",
+        "Power Whip",
         "Close Combat"
       ],
-      "evFlags": 5,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Leftovers",
+      "item": "Choice Band",
       "ability": "Leaf Guard",
       "tier": 4
     },
@@ -11534,13 +13079,28 @@
       "species": "Regieleki",
       "moves": [
         "Thunderbolt",
-        "Explosion",
         "Rapid Spin",
-        "Magnet Rise"
+        "Volt Switch",
+        "Explosion"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Focus Sash",
+      "evFlags": 26,
+      "nature": "Hasty",
+      "item": "Expert Belt",
+      "ability": "Transistor",
+      "tier": 3
+    },
+    {
+      "id": "regieleki_tera_blast_user",
+      "species": "Regieleki",
+      "moves": [
+        "Rapid Spin",
+        "Tera Blast",
+        "Thunderbolt",
+        "Volt Switch"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
       "ability": "Transistor",
       "tier": 3
     },
@@ -11552,6 +13112,21 @@
         "Draco Meteor",
         "Earthquake",
         "Dragon Dance"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Dragon's Maw",
+      "tier": 4
+    },
+    {
+      "id": "regidrago_tera_blast_user",
+      "species": "Regidrago",
+      "moves": [
+        "Dragon Dance",
+        "Tera Blast",
+        "Dragon Claw",
+        "Earthquake"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -11593,10 +13168,10 @@
       "id": "spectrier_setup_sweeper",
       "species": "Spectrier",
       "moves": [
-        "Nasty Plot",
         "Will-O-Wisp",
-        "Shadow Ball",
-        "Dark Pulse"
+        "Draining Kiss",
+        "Dark Pulse",
+        "Substitute"
       ],
       "evFlags": 33,
       "nature": "Timid",
@@ -11610,7 +13185,7 @@
       "moves": [
         "Will-O-Wisp",
         "Shadow Ball",
-        "Nasty Plot",
+        "Tera Blast",
         "Substitute"
       ],
       "evFlags": 33,
@@ -11639,9 +13214,9 @@
       "species": "Calyrex",
       "moves": [
         "Psychic",
-        "Psyshock",
-        "Giga Drain",
-        "Encore"
+        "Body Press",
+        "Leech Seed",
+        "Psyshock"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -11653,14 +13228,14 @@
       "id": "wyrdeer_bulky_attacker",
       "species": "Wyrdeer",
       "moves": [
+        "Psychic Noise",
         "Megahorn",
-        "Earthquake",
         "Thunder Wave",
-        "Imprison"
+        "Body Slam"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Intimidate",
       "tier": 2
     },
@@ -11668,14 +13243,14 @@
       "id": "kleavor_bulky_attacker",
       "species": "Kleavor",
       "moves": [
-        "Swords Dance",
         "Defog",
         "Stone Axe",
+        "X-Scissor",
         "U-turn"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Sharpness",
       "tier": 4
     },
@@ -11683,10 +13258,10 @@
       "id": "ursaluna_bulky_attacker",
       "species": "Ursaluna",
       "moves": [
-        "Crunch",
-        "Facade",
+        "Throat Chop",
+        "Trailblaze",
         "Swords Dance",
-        "Headlong Rush"
+        "Crunch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -11698,10 +13273,10 @@
       "id": "basculegion_av_pivot",
       "species": "Basculegion",
       "moves": [
+        "Flip Turn",
         "Aqua Jet",
         "Wave Crash",
-        "Shadow Ball",
-        "Thrash"
+        "Shadow Ball"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -11725,28 +13300,73 @@
       "tier": 4
     },
     {
+      "id": "sneasler_setup_sweeper",
+      "species": "Sneasler",
+      "moves": [
+        "Acrobatics",
+        "Dire Claw",
+        "Swords Dance",
+        "Close Combat"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Unburden",
+      "tier": 4
+    },
+    {
       "id": "overqwil_fast_attacker",
       "species": "Overqwil",
       "moves": [
-        "Crunch",
-        "Liquidation",
         "Swords Dance",
-        "Toxic"
+        "Liquidation",
+        "Gunk Shot",
+        "Crunch"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Black Sludge",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Intimidate",
+      "tier": 3
+    },
+    {
+      "id": "overqwil_setup_sweeper",
+      "species": "Overqwil",
+      "moves": [
+        "Gunk Shot",
+        "Scale Shot",
+        "Crunch",
+        "Swords Dance"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Intimidate",
+      "tier": 3
+    },
+    {
+      "id": "enamorus_setup_sweeper",
+      "species": "Enamorus",
+      "moves": [
+        "Substitute",
+        "Play Rough",
+        "Zen Headbutt",
+        "Superpower"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Contrary",
       "tier": 3
     },
     {
       "id": "enamorus_fast_bulky_setup",
       "species": "Enamorus",
       "moves": [
-        "Mystical Fire",
-        "Calm Mind",
+        "Substitute",
         "Moonblast",
-        "Substitute"
+        "Earth Power",
+        "Calm Mind"
       ],
       "evFlags": 33,
       "nature": "Timid",
@@ -11758,16 +13378,31 @@
       "id": "meowscarada_fast_support",
       "species": "Meowscarada",
       "moves": [
-        "Flower Trick",
-        "U-turn",
+        "Triple Axel",
         "Knock Off",
-        "Play Rough"
+        "U-turn",
+        "Toxic Spikes"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Choice Band",
+      "item": "Focus Sash",
       "ability": "Protean",
       "tier": 4
+    },
+    {
+      "id": "skeledirge_bulky_attacker",
+      "species": "Skeledirge",
+      "moves": [
+        "Shadow Ball",
+        "Torch Song",
+        "Slack Off",
+        "Flame Charge"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Leftovers",
+      "ability": "Unaware",
+      "tier": 3
     },
     {
       "id": "skeledirge_bulky_support",
@@ -11782,6 +13417,36 @@
       "nature": "Bold",
       "item": "Leftovers",
       "ability": "Unaware",
+      "tier": 3
+    },
+    {
+      "id": "quaquaval_wallbreaker",
+      "species": "Quaquaval",
+      "moves": [
+        "Aqua Step",
+        "U-turn",
+        "Knock Off",
+        "Triple Axel"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Moxie",
+      "tier": 3
+    },
+    {
+      "id": "quaquaval_setup_sweeper",
+      "species": "Quaquaval",
+      "moves": [
+        "Aqua Step",
+        "Close Combat",
+        "Swords Dance",
+        "Knock Off"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Moxie",
       "tier": 3
     },
     {
@@ -11800,28 +13465,43 @@
       "tier": 3
     },
     {
-      "id": "spidops_bulky_support",
-      "species": "Spidops",
+      "id": "oinkologne_bulky_setup",
+      "species": "Oinkologne",
       "moves": [
-        "Sticky Web",
-        "U-turn",
-        "Circle Throw",
-        "Skitter Smack"
+        "High Horsepower",
+        "Double-Edge",
+        "Curse",
+        "Lash Out"
       ],
       "evFlags": 3,
       "nature": "Adamant",
       "item": "Lum Berry",
+      "ability": "Thick Fat",
+      "tier": 1
+    },
+    {
+      "id": "spidops_bulky_support",
+      "species": "Spidops",
+      "moves": [
+        "Toxic Spikes",
+        "Sticky Web",
+        "Circle Throw",
+        "Spikes"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Sitrus Berry",
       "ability": "Stakeout",
       "tier": 1
     },
     {
-      "id": "lokix_fast_attacker",
+      "id": "lokix_wallbreaker",
       "species": "Lokix",
       "moves": [
-        "U-turn",
-        "Sucker Punch",
+        "Knock Off",
         "First Impression",
-        "Bounce"
+        "Sucker Punch",
+        "Leech Life"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -11830,11 +13510,41 @@
       "tier": 3
     },
     {
+      "id": "lokix_fast_attacker",
+      "species": "Lokix",
+      "moves": [
+        "First Impression",
+        "Sucker Punch",
+        "U-turn",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Scarf",
+      "ability": "Tinted Lens",
+      "tier": 3
+    },
+    {
+      "id": "lokix_setup_sweeper",
+      "species": "Lokix",
+      "moves": [
+        "Sucker Punch",
+        "Leech Life",
+        "Swords Dance",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Tinted Lens",
+      "tier": 3
+    },
+    {
       "id": "pawmot_fast_attacker",
       "species": "Pawmot",
       "moves": [
-        "Close Combat",
         "Revival Blessing",
+        "Knock Off",
         "Nuzzle",
         "Double Shock"
       ],
@@ -11842,6 +13552,21 @@
       "nature": "Jolly",
       "item": "Focus Sash",
       "ability": "Volt Absorb",
+      "tier": 3
+    },
+    {
+      "id": "pawmot_wallbreaker",
+      "species": "Pawmot",
+      "moves": [
+        "Ice Punch",
+        "Close Combat",
+        "Double Shock",
+        "Revival Blessing"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Iron Fist",
       "tier": 3
     },
     {
@@ -11863,8 +13588,8 @@
       "id": "dachsbun_bulky_support",
       "species": "Dachsbun",
       "moves": [
+        "Body Press",
         "Play Rough",
-        "Yawn",
         "Protect",
         "Wish"
       ],
@@ -11875,13 +13600,28 @@
       "tier": 1
     },
     {
+      "id": "arboliva_bulky_attacker",
+      "species": "Arboliva",
+      "moves": [
+        "Hyper Voice",
+        "Earth Power",
+        "Strength Sap",
+        "Energy Ball"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Leftovers",
+      "ability": "Seed Sower",
+      "tier": 1
+    },
+    {
       "id": "arboliva_bulky_support",
       "species": "Arboliva",
       "moves": [
         "Leech Seed",
-        "Protect",
+        "Hyper Voice",
         "Substitute",
-        "Terrain Pulse"
+        "Protect"
       ],
       "evFlags": 33,
       "nature": "Calm",
@@ -11923,10 +13663,25 @@
       "id": "garganacl_bulky_support",
       "species": "Garganacl",
       "moves": [
-        "Protect",
+        "Stealth Rock",
         "Recover",
+        "Protect",
+        "Body Press"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Leftovers",
+      "ability": "Purifying Salt",
+      "tier": 3
+    },
+    {
+      "id": "garganacl_bulky_setup",
+      "species": "Garganacl",
+      "moves": [
         "Salt Cure",
-        "Stealth Rock"
+        "Recover",
+        "Body Press",
+        "Iron Defense"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -11938,9 +13693,24 @@
       "id": "armarouge_wallbreaker",
       "species": "Armarouge",
       "moves": [
+        "Psyshock",
+        "Focus Blast",
+        "Armor Cannon",
+        "Aura Sphere"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Weak Armor",
+      "tier": 3
+    },
+    {
+      "id": "armarouge_setup_sweeper",
+      "species": "Armarouge",
+      "moves": [
+        "Meteor Beam",
         "Armor Cannon",
         "Energy Ball",
-        "Focus Blast",
         "Psyshock"
       ],
       "evFlags": 17,
@@ -11953,14 +13723,14 @@
       "id": "ceruledge_setup_sweeper",
       "species": "Ceruledge",
       "moves": [
-        "Bitter Blade",
-        "Swords Dance",
         "Shadow Sneak",
-        "Ally Switch"
+        "Close Combat",
+        "Swords Dance",
+        "Bitter Blade"
       ],
-      "evFlags": 33,
-      "nature": "Careful",
-      "item": "Sitrus Berry",
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
       "ability": "Weak Armor",
       "tier": 4
     },
@@ -11968,10 +13738,10 @@
       "id": "bellibolt_bulky_attacker",
       "species": "Bellibolt",
       "moves": [
-        "Thunderbolt",
+        "Volt Switch",
+        "Muddy Water",
         "Toxic",
-        "Slack Off",
-        "Muddy Water"
+        "Slack Off"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -11998,10 +13768,10 @@
       "id": "mabosstiff_bulky_attacker",
       "species": "Mabosstiff",
       "moves": [
+        "Psychic Fangs",
         "Crunch",
-        "Play Rough",
-        "Jaw Lock",
-        "Reversal"
+        "Wild Charge",
+        "Play Rough"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12025,13 +13795,43 @@
       "tier": 2
     },
     {
+      "id": "grafaiai_fast_support",
+      "species": "Grafaiai",
+      "moves": [
+        "Knock Off",
+        "Encore",
+        "Gunk Shot",
+        "Parting Shot"
+      ],
+      "evFlags": 33,
+      "nature": "Jolly",
+      "item": "Black Sludge",
+      "ability": "Prankster",
+      "tier": 2
+    },
+    {
+      "id": "grafaiai_setup_sweeper",
+      "species": "Grafaiai",
+      "moves": [
+        "Knock Off",
+        "Swords Dance",
+        "Gunk Shot",
+        "Low Kick"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Poison Touch",
+      "tier": 2
+    },
+    {
       "id": "brambleghast_fast_support",
       "species": "Brambleghast",
       "moves": [
+        "Spikes",
+        "Poltergeist",
         "Leech Seed",
-        "Rapid Spin",
-        "Substitute",
-        "Strength Sap"
+        "Rapid Spin"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -12043,13 +13843,13 @@
       "id": "toedscruel_bulky_support",
       "species": "Toedscruel",
       "moves": [
-        "Earth Power",
+        "Leaf Storm",
         "Knock Off",
-        "Rapid Spin",
-        "Toxic"
+        "Spore",
+        "Giga Drain"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
+      "evFlags": 24,
+      "nature": "Timid",
       "item": "Life Orb",
       "ability": "Mycelium Might",
       "tier": 2
@@ -12100,17 +13900,47 @@
       "tier": 1
     },
     {
+      "id": "scovillain_fast_attacker",
+      "species": "Scovillain",
+      "moves": [
+        "Flamethrower",
+        "Energy Ball",
+        "Overheat",
+        "Leaf Storm"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Chlorophyll",
+      "tier": 1
+    },
+    {
+      "id": "scovillain_wallbreaker",
+      "species": "Scovillain",
+      "moves": [
+        "Sunny Day",
+        "Stomping Tantrum",
+        "Energy Ball",
+        "Fire Blast"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
+      "ability": "Chlorophyll",
+      "tier": 1
+    },
+    {
       "id": "rabsca_wallbreaker",
       "species": "Rabsca",
       "moves": [
-        "Recover",
         "Psychic",
         "Trick Room",
-        "Revival Blessing"
+        "Bug Buzz",
+        "Earth Power"
       ],
-      "evFlags": 33,
-      "nature": "Calm",
-      "item": "Sitrus Berry",
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Expert Belt",
       "ability": "Synchronize",
       "tier": 1
     },
@@ -12133,10 +13963,10 @@
       "id": "espathra_fast_bulky_setup",
       "species": "Espathra",
       "moves": [
-        "Protect",
-        "Substitute",
-        "Dazzling Gleam",
-        "Roost"
+        "Calm Mind",
+        "Roost",
+        "Stored Power",
+        "Dazzling Gleam"
       ],
       "evFlags": 5,
       "nature": "Timid",
@@ -12148,14 +13978,14 @@
       "id": "tinkaton_bulky_attacker",
       "species": "Tinkaton",
       "moves": [
-        "Knock Off",
+        "Gigaton Hammer",
         "Play Rough",
         "Thunder Wave",
-        "Gigaton Hammer"
+        "Encore"
       ],
-      "evFlags": 10,
-      "nature": "Jolly",
-      "item": "Life Orb",
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
       "ability": "Mold Breaker",
       "tier": 3
     },
@@ -12178,10 +14008,10 @@
       "id": "wugtrio_fast_attacker",
       "species": "Wugtrio",
       "moves": [
-        "Aqua Jet",
-        "Liquidation",
+        "Stomping Tantrum",
         "Throat Chop",
-        "Sucker Punch"
+        "Liquidation",
+        "Aqua Jet"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -12194,13 +14024,13 @@
       "species": "Bombirdier",
       "moves": [
         "Stone Edge",
-        "Sucker Punch",
+        "Roost",
         "U-turn",
-        "Knock Off"
+        "Brave Bird"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Choice Scarf",
+      "item": "Lum Berry",
       "ability": "Rocky Payload",
       "tier": 2
     },
@@ -12208,9 +14038,9 @@
       "id": "bombirdier_bulky_support",
       "species": "Bombirdier",
       "moves": [
-        "Roost",
+        "Brave Bird",
+        "Stealth Rock",
         "Knock Off",
-        "U-turn",
         "Sucker Punch"
       ],
       "evFlags": 3,
@@ -12220,13 +14050,28 @@
       "tier": 2
     },
     {
+      "id": "palafin_wallbreaker",
+      "species": "Palafin",
+      "moves": [
+        "Flip Turn",
+        "Jet Punch",
+        "Close Combat",
+        "Wave Crash"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
+      "ability": "Zero to Hero",
+      "tier": 4
+    },
+    {
       "id": "palafin_bulky_setup",
       "species": "Palafin",
       "moves": [
-        "Wave Crash",
+        "Ice Punch",
         "Bulk Up",
         "Drain Punch",
-        "Jet Punch"
+        "Wave Crash"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -12239,9 +14084,9 @@
       "species": "Revavroom",
       "moves": [
         "Shift Gear",
-        "Gunk Shot",
         "Iron Head",
-        "Uproar"
+        "Gunk Shot",
+        "High Horsepower"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -12268,10 +14113,10 @@
       "id": "orthworm_bulky_setup",
       "species": "Orthworm",
       "moves": [
-        "Rest",
         "Coil",
+        "Rest",
         "Iron Tail",
-        "Earthquake"
+        "Body Press"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -12280,13 +14125,28 @@
       "tier": 2
     },
     {
+      "id": "orthworm_bulky_attacker",
+      "species": "Orthworm",
+      "moves": [
+        "Spikes",
+        "Shed Tail",
+        "Heavy Slam",
+        "Body Press"
+      ],
+      "evFlags": 5,
+      "nature": "Impish",
+      "item": "Leftovers",
+      "ability": "Earth Eater",
+      "tier": 2
+    },
+    {
       "id": "glimmora_fast_support",
       "species": "Glimmora",
       "moves": [
-        "Sludge Wave",
+        "Spikes",
+        "Earth Power",
         "Power Gem",
-        "Stealth Rock",
-        "Mortal Spin"
+        "Sludge Wave"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -12295,32 +14155,92 @@
       "tier": 4
     },
     {
+      "id": "glimmora_setup_sweeper",
+      "species": "Glimmora",
+      "moves": [
+        "Energy Ball",
+        "Earth Power",
+        "Sludge Wave",
+        "Meteor Beam"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Choice Scarf",
+      "ability": "Toxic Debris",
+      "tier": 4
+    },
+    {
       "id": "houndstone_bulky_attacker",
       "species": "Houndstone",
       "moves": [
-        "Play Rough",
-        "Roar",
+        "Poltergeist",
+        "Body Press",
         "Will-O-Wisp",
-        "Shadow Sneak"
+        "Play Rough"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Lum Berry",
+      "ability": "Fluffy",
+      "tier": 2
+    },
+    {
+      "id": "houndstone_bulky_support",
+      "species": "Houndstone",
+      "moves": [
+        "Sleep Talk",
+        "Rest",
+        "Body Press",
+        "Poltergeist"
       ],
       "evFlags": 5,
       "nature": "Impish",
-      "item": "Sitrus Berry",
+      "item": "Chesto Berry",
       "ability": "Fluffy",
       "tier": 2
+    },
+    {
+      "id": "houndstone_av_pivot",
+      "species": "Houndstone",
+      "moves": [
+        "Play Rough",
+        "Poltergeist",
+        "Body Press",
+        "Shadow Sneak"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Muscle Band",
+      "ability": "Fluffy",
+      "tier": 2
+    },
+    {
+      "id": "flamigo_fast_attacker",
+      "species": "Flamigo",
+      "moves": [
+        "Close Combat",
+        "U-turn",
+        "Brave Bird",
+        "Throat Chop"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Scarf",
+      "ability": "Scrappy",
+      "tier": 3
     },
     {
       "id": "flamigo_setup_sweeper",
       "species": "Flamigo",
       "moves": [
+        "Close Combat",
         "Throat Chop",
-        "Swords Dance",
-        "Brave Bird",
-        "Roost"
+        "Roost",
+        "Brave Bird"
       ],
-      "evFlags": 5,
-      "nature": "Impish",
-      "item": "Sitrus Berry",
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
       "ability": "Scrappy",
       "tier": 3
     },
@@ -12328,10 +14248,10 @@
       "id": "cetitan_wallbreaker",
       "species": "Cetitan",
       "moves": [
-        "Superpower",
         "Ice Shard",
+        "Superpower",
         "Earthquake",
-        "Icicle Crash"
+        "Liquidation"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12359,9 +14279,9 @@
       "species": "Veluza",
       "moves": [
         "Aqua Cutter",
-        "Night Slash",
-        "Aqua Jet",
-        "Psycho Cut"
+        "Flip Turn",
+        "Psycho Cut",
+        "Night Slash"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12415,6 +14335,21 @@
       "tier": 2
     },
     {
+      "id": "tatsugiri_fast_support_2",
+      "species": "Tatsugiri",
+      "moves": [
+        "Draco Meteor",
+        "Rapid Spin",
+        "Nasty Plot",
+        "Hydro Pump"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Focus Sash",
+      "ability": "Storm Drain",
+      "tier": 2
+    },
+    {
       "id": "annihilape_bulky_setup",
       "species": "Annihilape",
       "moves": [
@@ -12430,13 +14365,28 @@
       "tier": 4
     },
     {
+      "id": "clodsire_bulky_support",
+      "species": "Clodsire",
+      "moves": [
+        "Earthquake",
+        "Gunk Shot",
+        "Poison Jab",
+        "Toxic"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Unaware",
+      "tier": 3
+    },
+    {
       "id": "clodsire_bulky_attacker",
       "species": "Clodsire",
       "moves": [
-        "Toxic Spikes",
+        "Gunk Shot",
+        "Curse",
         "Poison Jab",
-        "Stealth Rock",
-        "Curse"
+        "Toxic Spikes"
       ],
       "evFlags": 33,
       "nature": "Careful",
@@ -12448,10 +14398,10 @@
       "id": "farigiraf_bulky_support",
       "species": "Farigiraf",
       "moves": [
-        "Protect",
+        "Body Slam",
+        "Psychic Noise",
         "Wish",
-        "Psychic",
-        "Nasty Plot"
+        "Protect"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -12478,10 +14428,10 @@
       "id": "dudunsparce_bulky_setup",
       "species": "Dudunsparce",
       "moves": [
-        "Boomburst",
         "Calm Mind",
         "Roost",
-        "Shadow Ball"
+        "Shadow Ball",
+        "Boomburst"
       ],
       "evFlags": 5,
       "nature": "Bold",
@@ -12553,10 +14503,10 @@
       "id": "great_tusk_bulky_support",
       "species": "Great Tusk",
       "moves": [
-        "Close Combat",
-        "Headlong Rush",
         "Stealth Rock",
-        "Knock Off"
+        "Knock Off",
+        "Ice Spinner",
+        "Close Combat"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12568,10 +14518,25 @@
       "id": "scream_tail_bulky_support",
       "species": "Scream Tail",
       "moves": [
-        "Play Rough",
         "Wish",
-        "Protect",
+        "Encore",
+        "Play Rough",
         "Thunder Wave"
+      ],
+      "evFlags": 33,
+      "nature": "Jolly",
+      "item": "Leftovers",
+      "ability": "Protosynthesis",
+      "tier": 2
+    },
+    {
+      "id": "scream_tail_bulky_attacker",
+      "species": "Scream Tail",
+      "moves": [
+        "Protect",
+        "Thunder Wave",
+        "Encore",
+        "Wish"
       ],
       "evFlags": 33,
       "nature": "Jolly",
@@ -12583,10 +14548,25 @@
       "id": "brute_bonnet_bulky_attacker",
       "species": "Brute Bonnet",
       "moves": [
+        "Crunch",
         "Sucker Punch",
-        "Spore",
-        "Giga Drain",
-        "Thrash"
+        "Close Combat",
+        "Spore"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Protosynthesis",
+      "tier": 3
+    },
+    {
+      "id": "brute_bonnet_bulky_support",
+      "species": "Brute Bonnet",
+      "moves": [
+        "Sucker Punch",
+        "Crunch",
+        "Seed Bomb",
+        "Spore"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12628,10 +14608,10 @@
       "id": "slither_wing_fast_bulky_setup",
       "species": "Slither Wing",
       "moves": [
-        "Leech Life",
         "Earthquake",
+        "Bulk Up",
         "Flame Charge",
-        "Bulk Up"
+        "Wild Charge"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12640,13 +14620,43 @@
       "tier": 3
     },
     {
+      "id": "slither_wing_fast_attacker",
+      "species": "Slither Wing",
+      "moves": [
+        "Flare Blitz",
+        "U-turn",
+        "Wild Charge",
+        "First Impression"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Protosynthesis",
+      "tier": 3
+    },
+    {
+      "id": "slither_wing_fast_support",
+      "species": "Slither Wing",
+      "moves": [
+        "Will-O-Wisp",
+        "Morning Sun",
+        "U-turn",
+        "Close Combat"
+      ],
+      "evFlags": 33,
+      "nature": "Careful",
+      "item": "Sitrus Berry",
+      "ability": "Protosynthesis",
+      "tier": 3
+    },
+    {
       "id": "sandy_shocks_fast_support",
       "species": "Sandy Shocks",
       "moves": [
-        "Earth Power",
-        "Stealth Rock",
         "Thunderbolt",
-        "Thunder Wave"
+        "Spikes",
+        "Stealth Rock",
+        "Volt Switch"
       ],
       "evFlags": 5,
       "nature": "Timid",
@@ -12658,14 +14668,14 @@
       "id": "iron_treads_bulky_support",
       "species": "Iron Treads",
       "moves": [
-        "Rapid Spin",
         "Earthquake",
         "Iron Head",
-        "Stealth Rock"
+        "Rapid Spin",
+        "Volt Switch"
       ],
       "evFlags": 10,
       "nature": "Jolly",
-      "item": "Life Orb",
+      "item": "Choice Band",
       "ability": "Quark Drive",
       "tier": 4
     },
@@ -12674,8 +14684,8 @@
       "species": "Iron Bundle",
       "moves": [
         "Freeze-Dry",
-        "Ice Beam",
         "Hydro Pump",
+        "Ice Beam",
         "Flip Turn"
       ],
       "evFlags": 24,
@@ -12688,9 +14698,9 @@
       "id": "iron_hands_av_pivot",
       "species": "Iron Hands",
       "moves": [
-        "Fake Out",
+        "Volt Switch",
+        "Thunder Punch",
         "Drain Punch",
-        "Heavy Slam",
         "Wild Charge"
       ],
       "evFlags": 3,
@@ -12703,10 +14713,10 @@
       "id": "iron_hands_bulky_attacker",
       "species": "Iron Hands",
       "moves": [
+        "Wild Charge",
         "Swords Dance",
-        "Drain Punch",
-        "Thunder Punch",
-        "Wild Charge"
+        "Ice Punch",
+        "Thunder Punch"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12719,9 +14729,24 @@
       "species": "Iron Jugulis",
       "moves": [
         "U-turn",
-        "Fire Blast",
         "Dark Pulse",
-        "Hyper Voice"
+        "Earth Power",
+        "Hydro Pump"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Quark Drive",
+      "tier": 4
+    },
+    {
+      "id": "iron_jugulis_setup_sweeper",
+      "species": "Iron Jugulis",
+      "moves": [
+        "Earth Power",
+        "Dark Pulse",
+        "Hurricane",
+        "Meteor Beam"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -12733,14 +14758,14 @@
       "id": "iron_moth_fast_attacker",
       "species": "Iron Moth",
       "moves": [
-        "Fire Blast",
-        "U-turn",
-        "Energy Ball",
-        "Sludge Wave"
+        "Sludge Wave",
+        "Fiery Dance",
+        "Toxic Spikes",
+        "Morning Sun"
       ],
-      "evFlags": 24,
+      "evFlags": 33,
       "nature": "Timid",
-      "item": "Choice Specs",
+      "item": "Black Sludge",
       "ability": "Quark Drive",
       "tier": 4
     },
@@ -12748,10 +14773,10 @@
       "id": "iron_thorns_fast_bulky_setup",
       "species": "Iron Thorns",
       "moves": [
-        "Wild Charge",
+        "Ice Punch",
+        "Dragon Dance",
         "Earthquake",
-        "Stone Edge",
-        "Sandstorm"
+        "Stone Edge"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -12775,16 +14800,46 @@
       "tier": 4
     },
     {
+      "id": "baxcalibur_setup_sweeper",
+      "species": "Baxcalibur",
+      "moves": [
+        "Glaive Rush",
+        "Dragon Dance",
+        "Icicle Crash",
+        "Earthquake"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Thermal Exchange",
+      "tier": 4
+    },
+    {
+      "id": "baxcalibur_bulky_setup",
+      "species": "Baxcalibur",
+      "moves": [
+        "Earthquake",
+        "Icicle Spear",
+        "Swords Dance",
+        "Scale Shot"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Leftovers",
+      "ability": "Thermal Exchange",
+      "tier": 4
+    },
+    {
       "id": "gholdengo_bulky_attacker",
       "species": "Gholdengo",
       "moves": [
         "Make It Rain",
         "Nasty Plot",
-        "Shadow Ball",
+        "Trick",
         "Focus Blast"
       ],
-      "evFlags": 17,
-      "nature": "Modest",
+      "evFlags": 5,
+      "nature": "Bold",
       "item": "Leftovers",
       "ability": "Good as Gold",
       "tier": 4
@@ -12823,10 +14878,10 @@
       "id": "chien_pao_wallbreaker",
       "species": "Chien-Pao",
       "moves": [
+        "Sacred Sword",
+        "Crunch",
         "Throat Chop",
-        "Ice Shard",
-        "Icicle Crash",
-        "Sacred Sword"
+        "Ice Shard"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -12868,14 +14923,14 @@
       "id": "ting_lu_bulky_attacker",
       "species": "Ting-Lu",
       "moves": [
-        "Earthquake",
         "Payback",
-        "Ruination",
-        "Spikes"
+        "Heavy Slam",
+        "Earthquake",
+        "Ruination"
       ],
       "evFlags": 3,
       "nature": "Adamant",
-      "item": "Leftovers",
+      "item": "Assault Vest",
       "ability": "Vessel of Ruin",
       "tier": 4
     },
@@ -12914,13 +14969,43 @@
       "species": "Roaring Moon",
       "moves": [
         "Dragon Dance",
-        "Roost",
-        "Earthquake",
-        "Night Slash"
+        "Knock Off",
+        "Outrage",
+        "Earthquake"
       ],
-      "evFlags": 33,
+      "evFlags": 10,
       "nature": "Jolly",
-      "item": "Leftovers",
+      "item": "Life Orb",
+      "ability": "Protosynthesis",
+      "tier": 4
+    },
+    {
+      "id": "roaring_moon_fast_bulky_setup",
+      "species": "Roaring Moon",
+      "moves": [
+        "Knock Off",
+        "Outrage",
+        "Dragon Dance",
+        "Acrobatics"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Protosynthesis",
+      "tier": 4
+    },
+    {
+      "id": "roaring_moon_bulky_attacker",
+      "species": "Roaring Moon",
+      "moves": [
+        "U-turn",
+        "Outrage",
+        "Knock Off",
+        "Iron Head"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Choice Band",
       "ability": "Protosynthesis",
       "tier": 4
     },
@@ -12955,6 +15040,21 @@
       "tier": 4
     },
     {
+      "id": "iron_valiant_wallbreaker",
+      "species": "Iron Valiant",
+      "moves": [
+        "Close Combat",
+        "Knock Off",
+        "Moonblast",
+        "Encore"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Focus Sash",
+      "ability": "Quark Drive",
+      "tier": 4
+    },
+    {
       "id": "koraidon_fast_attacker",
       "species": "Koraidon",
       "moves": [
@@ -12966,6 +15066,21 @@
       "evFlags": 10,
       "nature": "Jolly",
       "item": "Choice Band",
+      "ability": "Orichalcum Pulse",
+      "tier": 4
+    },
+    {
+      "id": "koraidon_setup_sweeper",
+      "species": "Koraidon",
+      "moves": [
+        "Scale Shot",
+        "Swords Dance",
+        "Flare Blitz",
+        "Collision Course"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
       "ability": "Orichalcum Pulse",
       "tier": 4
     },
@@ -12983,6 +15098,36 @@
       "item": "Life Orb",
       "ability": "Hadron Engine",
       "tier": 4
+    },
+    {
+      "id": "miraidon_fast_attacker",
+      "species": "Miraidon",
+      "moves": [
+        "Volt Switch",
+        "Electro Drift",
+        "Overheat",
+        "Draco Meteor"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Hadron Engine",
+      "tier": 4
+    },
+    {
+      "id": "walking_wake_wallbreaker",
+      "species": "Walking Wake",
+      "moves": [
+        "Flip Turn",
+        "Flamethrower",
+        "Hydro Pump",
+        "Draco Meteor"
+      ],
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
+      "ability": "Protosynthesis",
+      "tier": 3
     },
     {
       "id": "walking_wake_fast_attacker",
@@ -13048,10 +15193,10 @@
       "id": "okidogi_bulky_setup",
       "species": "Okidogi",
       "moves": [
+        "Gunk Shot",
         "Bulk Up",
         "Drain Punch",
-        "Brutal Swing",
-        "Poison Jab"
+        "Knock Off"
       ],
       "evFlags": 3,
       "nature": "Adamant",
@@ -13060,13 +15205,28 @@
       "tier": 4
     },
     {
+      "id": "okidogi_av_pivot",
+      "species": "Okidogi",
+      "moves": [
+        "High Horsepower",
+        "Knock Off",
+        "Psychic Fangs",
+        "Drain Punch"
+      ],
+      "evFlags": 3,
+      "nature": "Adamant",
+      "item": "Choice Scarf",
+      "ability": "Toxic Chain",
+      "tier": 4
+    },
+    {
       "id": "munkidori_fast_attacker",
       "species": "Munkidori",
       "moves": [
-        "U-turn",
+        "Sludge Wave",
         "Nasty Plot",
-        "Focus Blast",
-        "Sludge Wave"
+        "U-turn",
+        "Psyshock"
       ],
       "evFlags": 24,
       "nature": "Timid",
@@ -13079,13 +15239,13 @@
       "species": "Munkidori",
       "moves": [
         "Focus Blast",
-        "Sludge Wave",
         "Fake Out",
-        "U-turn"
+        "Sludge Wave",
+        "Psychic Noise"
       ],
-      "evFlags": 26,
-      "nature": "Hasty",
-      "item": "Expert Belt",
+      "evFlags": 24,
+      "nature": "Timid",
+      "item": "Choice Specs",
       "ability": "Toxic Chain",
       "tier": 3
     },
@@ -13093,10 +15253,25 @@
       "id": "fezandipiti_bulky_attacker",
       "species": "Fezandipiti",
       "moves": [
-        "Beat Up",
-        "Roost",
         "Moonblast",
-        "U-turn"
+        "U-turn",
+        "Gunk Shot",
+        "Roost"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Toxic Chain",
+      "tier": 3
+    },
+    {
+      "id": "fezandipiti_tera_blast_user",
+      "species": "Fezandipiti",
+      "moves": [
+        "Swords Dance",
+        "Gunk Shot",
+        "Tera Blast",
+        "Play Rough"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -13109,8 +15284,23 @@
       "species": "Ogerpon",
       "moves": [
         "Superpower",
+        "Ivy Cudgel",
         "Synthesis",
-        "U-turn",
+        "Knock Off"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Defiant",
+      "tier": 3
+    },
+    {
+      "id": "ogerpon_setup_sweeper",
+      "species": "Ogerpon",
+      "moves": [
+        "Swords Dance",
+        "Superpower",
+        "Knock Off",
         "Ivy Cudgel"
       ],
       "evFlags": 10,
@@ -13153,14 +15343,44 @@
       "id": "hydrapple_av_pivot",
       "species": "Hydrapple",
       "moves": [
-        "Dragon Tail",
-        "Fickle Beam",
         "Giga Drain",
-        "Substitute"
+        "Dragon Tail",
+        "Earth Power",
+        "Leaf Storm"
       ],
       "evFlags": 17,
       "nature": "Modest",
+      "item": "Assault Vest",
+      "ability": "Regenerator",
+      "tier": 3
+    },
+    {
+      "id": "hydrapple_fast_bulky_setup",
+      "species": "Hydrapple",
+      "moves": [
+        "Fickle Beam",
+        "Recover",
+        "Giga Drain",
+        "Nasty Plot"
+      ],
+      "evFlags": 5,
+      "nature": "Bold",
       "item": "Leftovers",
+      "ability": "Regenerator",
+      "tier": 3
+    },
+    {
+      "id": "hydrapple_wallbreaker",
+      "species": "Hydrapple",
+      "moves": [
+        "Leaf Storm",
+        "Draco Meteor",
+        "Earth Power",
+        "Fickle Beam"
+      ],
+      "evFlags": 17,
+      "nature": "Modest",
+      "item": "Assault Vest",
       "ability": "Regenerator",
       "tier": 3
     },
@@ -13168,10 +15388,25 @@
       "id": "gouging_fire_setup_sweeper",
       "species": "Gouging Fire",
       "moves": [
+        "Dragon Dance",
         "Earthquake",
         "Outrage",
-        "Burning Bulwark",
-        "Morning Sun"
+        "Heat Crash"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Protosynthesis",
+      "tier": 4
+    },
+    {
+      "id": "gouging_fire_bulky_setup",
+      "species": "Gouging Fire",
+      "moves": [
+        "Morning Sun",
+        "Heat Crash",
+        "Outrage",
+        "Dragon Dance"
       ],
       "evFlags": 5,
       "nature": "Impish",
@@ -13184,9 +15419,9 @@
       "species": "Raging Bolt",
       "moves": [
         "Discharge",
+        "Volt Switch",
         "Thunderbolt",
-        "Thunderclap",
-        "Draco Meteor"
+        "Thunderclap"
       ],
       "evFlags": 17,
       "nature": "Modest",
@@ -13228,10 +15463,25 @@
       "id": "iron_boulder_setup_sweeper",
       "species": "Iron Boulder",
       "moves": [
+        "Mighty Cleave",
+        "Swords Dance",
+        "Close Combat",
+        "Zen Headbutt"
+      ],
+      "evFlags": 10,
+      "nature": "Jolly",
+      "item": "Life Orb",
+      "ability": "Quark Drive",
+      "tier": 4
+    },
+    {
+      "id": "iron_boulder_fast_bulky_setup",
+      "species": "Iron Boulder",
+      "moves": [
+        "Close Combat",
         "Swords Dance",
         "Mighty Cleave",
-        "Sacred Sword",
-        "Rock Tomb"
+        "Zen Headbutt"
       ],
       "evFlags": 10,
       "nature": "Jolly",
@@ -14663,10 +16913,6 @@
     {
       "species": "Lechonk",
       "why": "NotNamed"
-    },
-    {
-      "species": "Oinkologne",
-      "why": "NoFit"
     },
     {
       "species": "Tarountula",

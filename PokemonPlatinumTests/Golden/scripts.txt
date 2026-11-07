@@ -13628,6 +13628,10 @@ way 1.1, from answer 2
 from a trainer with lines of their own
 way -
   Club Clerk> I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!
+=== common.TrainingTutor
+from a trainer with lines of their own
+way -
+  Anyone> I teach the moves of newer lands, but only to Champions. Come back once you've entered a Hall of Fame.
 === common.TrashCan
 from a trainer with lines of their own
 way -

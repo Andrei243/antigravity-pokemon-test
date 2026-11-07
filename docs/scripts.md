@@ -800,7 +800,7 @@ on the original's script command; all are for the Pokémon `RESULT` names after 
 
 | Command | What it does |
 |---|---|
-| `tutor moves "route_212"` | Asks which of the place's moves the Pokémon is to be taught, of those on its species' list that it doesn't know, each with its price in Shards (`ShowMoveTutorMoveSelectionMenu`). `RESULT` 1 one was picked, 0 none, 2 the tutor has nothing for it, 3 an Egg, 4 nobody chosen. The places are `route_212`, `snowpoint_city` and `survival_area`; any other is told as the file is read. |
+| `tutor moves "route_212"` | Asks which of the place's moves the Pokémon is to be taught, of those on its species' list that it doesn't know, each with its price in Shards (`ShowMoveTutorMoveSelectionMenu`). `RESULT` 1 one was picked, 0 none, 2 the tutor has nothing for it, 3 an Egg, 4 nobody chosen. The places are `route_212`, `snowpoint_city` and `survival_area`, by the species' Platinum list (`tutorMoves`), and `training_hall` (plan 36 · TR9: a training hall's tutor, the later games' tutors' moves no machine teaches, by its `laterTutorMoves`); any other is told as the file is read. |
 | `tutor afford`, `tutor pay` | `RESULT` 1 when the bag holds the Shards the move picked costs (`CheckCanAffordMove`); `pay` takes them, all or none (`PayShardCost`). |
 | `tutor special dracometeor`, `tutor special ultimate` | The checks of the two tutors of one move each: a Dragon type for Draco Meteor; one of the twelve starters of Kanto to Sinnoh fully grown for Blast Burn, Hydro Cannon or Frenzy Plant, whichever is its own. `RESULT` 0 it may learn, 1 nobody chosen, 2 an Egg, 3 it can't, 4 it knows the move, 5 its friendship is under 255. |
 | `tutor once "Mega Punch"` | A tutor of Kanto's who teaches one move, free (plan 19 · K5; `MoveTutors.Kanto`, our own table of who may learn it): the answer for the Pokémon `RESULT` names, as `special`'s (0 it may learn, 1 nobody chosen, 2 an Egg, 3 it can't, 4 it knows the move); `learn` then teaches it. The script keeps the tutor to once a game with the move's flag (`FLAG_TUTOR_MEGA_PUNCH`). The table serves every region's tutor of one move: Hoenn's Sleep Talk in Fortree City (plan 21 · H6, part b) keeps Emerald's flag, `FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK`. |
@@ -909,7 +909,9 @@ another command. `{material}` says the last material named, in the language chos
 Plan 36 · TR2; `docs/mechanics/rulings.md`, "The training hall". A hall's people run common scripts (`common.TrainingCoach`,
 `common.TrainingClerk`; TR5 and TR8 add the keeper and the teacher), so a region's hall is a room, a way in and its people.
 One command, `train`; later sessions of plan 36 add words to it (`peak`, `tera`) and `power`, never another for the drills.
-`drill` and `reset` act on the Pokémon the last `choosepokemon` chose.
+`drill` and `reset` act on the Pokémon the last `choosepokemon` chose. TR9 adds no word: the clerk's second shelf, the
+later machines, is a `shop` (`training_hall_machines`), and `common.TrainingTutor`, the hall's tutor of the later games'
+moves, is `tutor moves "training_hall"` and the shard tutors' other words.
 
 | Command | What it does |
 |---|---|

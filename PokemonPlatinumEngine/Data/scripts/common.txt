@@ -3728,7 +3728,9 @@ label Later
 
 # The clerk of a training hall, behind the counter beside the coach. Her stall of training goods (plan 36 · TR3:
 # marts.json's training_hall, the Exp. Candies, the Ability Capsule and the mints) is for whoever has entered a Hall of
-# Fame; until then she tells of the drills.
+# Fame; until then she tells of the drills. Since TR9 a second shelf, the later games' machines of ours
+# (training_hall_machines, TM93 on, which the importer makes: docs/mechanics/rulings.md, "The later TMs and tutors"),
+# each used up as every TM is
 script TrainingClerk
   speaker "Clerk"
   train open
@@ -3738,7 +3740,17 @@ script TrainingClerk
   end
 label Champion
   say "Welcome, Champion! Candies, capsules and mints: everything a team in training needs is on this shelf."
+  choose "Which shelf would you like to look at?" "TRAINING TOOLS" "MACHINES" "NOT NOW"
+  if result == 1 goto Machines
+  if result == 2 goto Bye
   shop "training_hall"
+  end
+label Machines
+  say "These machines teach the moves of the newer lands."
+  shop "training_hall_machines"
+  end
+label Bye
+  say "Come back whenever you're ready to shape your team."
   end
 
 # The training club's clerk at a Battle Points counter (plan 36 · TR3), beside Sinnoh's Exchange Service Corner, at the
@@ -3767,4 +3779,53 @@ label Short
   end
 label Bye
   say "Come back whenever your points pile up!"
+  end
+
+# A training hall's tutor (plan 36 · TR9; docs/mechanics/rulings.md, "The later TMs and tutors"): the moves the later
+# games' tutors teach that no machine teaches, for Shards in the shard tutors' way (Models/MoveTutors.cs, its list for
+# training_hall), to a Pokémon whose species learns the move from a tutor in a game after Platinum (its species'
+# laterTutorMoves), once any region's Hall of Fame is entered (decision 1). As the shard tutors': the Pokémon is chosen,
+# then the move with its price; one that knows four moves gives one up, never an HM's; the Shards are paid once it learns.
+script TrainingTutor
+  face self player
+  speaker self
+  train open
+  if result == 0 goto NotYet
+  ask "I teach the moves the tutors of newer lands teach, each for a few of your Shards. Shall I teach one?"
+  if no goto Bye
+  say "Which Pokémon am I to teach?"
+  choosepokemon
+  tutor moves "training_hall"
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result != 1 goto Bye
+  tutor afford
+  if result == 0 goto Poor
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... there! {wearer} forgot {forgotten}. And..."
+  tutor pay
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+label Bye
+  say "Come back whenever you'd like a new move."
+  end
+label Egg
+  say "An Egg can't learn a thing yet. Let it hatch first!"
+  end
+label Nothing
+  say "There's no move of mine that this Pokémon can be taught, I'm afraid."
+  end
+label Poor
+  say "You haven't the Shards for that one. They turn up in the ground, for anyone who digs."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto Bye
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto Bye
+label NotYet
+  say "I teach the moves of newer lands, but only to Champions. Come back once you've entered a Hall of Fame."
   end

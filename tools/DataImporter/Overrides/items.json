@@ -743,7 +743,7 @@
   // The crafting kit (plan 39 · CR1, our own after the mechanics of Scarlet and Violet's crafting, Legends: Arceus's pouch
   // and X and Y's berry crossing; the name, the words and the workshop are ours): given by the craftswoman of Sunyshore City's
   // workshop to a Champion of Sinnoh, looked into with USE or the item button. It holds the pouch of materials; id 9900, the
-  // hundred after plan 35's 9600s, plan 36's 9700s and the machines of 9800
+  // hundred after plan 35's 9600s, plan 36's 9700s and the 9800s plan 36 first gave its machines (TR9's run from 10000)
   "Crafting Kit": {
     "new": true,
     "id": 9900,

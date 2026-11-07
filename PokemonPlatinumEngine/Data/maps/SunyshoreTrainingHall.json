@@ -23,7 +23,7 @@
     "###############",
     "###############",
     "##........#####",
-    "#.........#.#.#",
+    "#.........#...#",
     "#.........#####",
     "#.............#",
     "#.............#",
@@ -150,6 +150,15 @@
       "y": 3,
       "facing": "Down",
       "script": "TrainingClerk"
+    },
+    {
+      "id": "training_tutor",
+      "name": "Tutor Hale",
+      "npcType": "training_tutor",
+      "x": 12,
+      "y": 3,
+      "facing": "Down",
+      "script": "TrainingTutor"
     }
   ],
   "wildEncounters": []
