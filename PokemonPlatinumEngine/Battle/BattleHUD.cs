@@ -31,7 +31,9 @@ public enum BattleMenuState
     /// <summary>A Pokémon of the team's summary, opened from the switching cards (plan 08 · P4).</summary>
     Summary,
     /// <summary>Hoenn's Safari Zone: the Pokéblocks of the case, one to throw (plan 21 · H11, part e).</summary>
-    Pokeblocks
+    Pokeblocks,
+    /// <summary>A link battle waits for the other player to choose (plan 28 · I3): their name in the message box, nothing to press.</summary>
+    Waiting
 }
 
 public class BattleHUD

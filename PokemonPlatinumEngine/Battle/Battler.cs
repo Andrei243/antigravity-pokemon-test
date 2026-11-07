@@ -50,7 +50,7 @@ public sealed class Battler
     public bool IsActive => Pokemon != null && !Pokemon.IsFainted;
 
     /// <summary>How the battle's messages name it: "Turtwig" for the player's, "Foe Starly" for the other side's.</summary>
-    public string Name => Pokemon == null ? "" : IsPlayerSide ? Shown : Text.Of("battle.foe", ("pokemon", Shown));
+    public string Name => Pokemon == null ? "" : Sim.Narration.Sided(Side, Shown, Text.Of("battle.foe", ("pokemon", Shown)));
 
     /// <summary>The name it goes by: its own, or under an Illusion the one it looks like (plan 06 · R27b).</summary>
     private string Shown => Volatile.Illusion ?? Pokemon!.DisplayName;

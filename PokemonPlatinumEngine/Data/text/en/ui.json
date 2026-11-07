@@ -5660,7 +5660,9 @@
       "stale": "That answers a question no longer asked.",
       "places": "One choice is wanted for each of your places."
     },
-    "waiting": "Waiting for {player}…"
+    "waiting": "Waiting for {player}…",
+    "moveRefused": "{pokemon} can't use {move} now!",
+    "switchRefused": "That Pokémon can't come in for {pokemon} now!"
   },
   "globalLink": {
     "title": "GLOBAL LINK",

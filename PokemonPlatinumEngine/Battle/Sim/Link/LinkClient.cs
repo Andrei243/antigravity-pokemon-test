@@ -54,6 +54,9 @@ public sealed class LinkClient
     private readonly List<string> refusals = new();
     private BattleRoster? roster;
 
+    /// <summary>The names the view's Pokémon go by on the wire, once the room has greeted the player.</summary>
+    public BattleRoster? Roster => roster;
+
     public LinkClient(string name, IReadOnlyList<RecordedPokemon> team, ILinkChannel channel, ILinkChooser chooser)
     {
         Name = name;

@@ -173,7 +173,7 @@ public partial class BattleEngine
         TeraArmed = false;
         RotationArmed = 0;
         // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
-        asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
+        asked = Asking is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
         menuSlot = asked.Count > 0 ? asked[0] : 0;
         HUD.MenuState = BattleMenuState.Main;
     }
@@ -186,7 +186,7 @@ public partial class BattleEngine
 
     /// <summary>The Pokémon whose moves are being chosen may Mega Evolve with its move: the rules let it, and no other of the player's has been chosen to this turn.</summary>
     public bool CanMegaEvolveNow =>
-        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Mega) && core.CanMegaEvolve(InCore(MenuBattler));
+        !IsLink && core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Mega) && core.CanMegaEvolve(InCore(MenuBattler));
 
     /// <summary>Arms or disarms the Mega Evolution for the move to be chosen; false (and disarmed) where it can't be had.</summary>
     public bool ToggleMega()
@@ -248,6 +248,12 @@ public partial class BattleEngine
     {
         // While lines are still being shown the screen is behind the rules, and what it holds must never be
         // copied over theirs (a choice made early by a tool would otherwise undo a turn's worth of state)
+        // A link battle's answer goes to the server (plan 28 · I3)
+        if (link != null)
+        {
+            SubmitToLink(answer);
+            return;
+        }
         if (!playingTheLog) SyncToCore();
         core.Submit(answer);
         Play(core.TakeLog());
@@ -424,6 +430,7 @@ public partial class BattleEngine
     /// <summary>The moves <see cref="Fighter"/> may pick this turn, as the rules have them.</summary>
     private List<Move> FighterUsableMoves()
     {
+        if (link != null) return LinkUsableMoves(MenuBattler);
         var mine = InCore(MenuBattler);
         return core.WithRotated(mine, RotationArmed, () => core.UsableMoves(mine));
     }
@@ -457,7 +464,7 @@ public partial class BattleEngine
         // The rules say what can't be picked, and why: no PP, a Choice item, a Taunt, an Encore, a Disable…
         var mine = InCore(user);
         int way = RotationArmed;
-        if ((way == 0 ? core.WhyNotMove(mine, mine.Pokemon!.Moves[index]) : core.WhyNot(BattleChoice.Fight(user.Place, index) with { Rotation = way })) is { } refusal)
+        if ((link != null ? LinkWhyNotMove(user, index) : way == 0 ? core.WhyNotMove(mine, mine.Pokemon!.Moves[index]) : core.WhyNot(BattleChoice.Fight(user.Place, index) with { Rotation = way })) is { } refusal)
         {
             Refuse(refusal, BattleMenuState.Moves);
             return;
@@ -521,7 +528,8 @@ public partial class BattleEngine
         else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = Text.Of("battle.isAlreadyGoingIn", ("pokemon", chosen.DisplayName));
 
         // Something may be holding the Pokémon on the field (a fainted one's place is free to fill)
-        if (refusal == null && !replacing)
+        if (refusal == null && link != null) refusal = LinkWhyNotSwitch(MenuBattler, partyIndex);
+        else if (refusal == null && !replacing)
         {
             InCore(MenuBattler);
             refusal = core.WhyNot(BattleChoice.Switch(MenuBattler.Place, partyIndex));

@@ -494,7 +494,15 @@ public sealed partial class BattleCore : IBattleContext
         Step();
     }
 
-    private void Step() => Request = course!.MoveNext() ? course.Current : null;
+    private void Step()
+    {
+        // A link battle's lines are written for both its players (plan 28 · I3): each side's view reads its own
+        using var narration = Narration.ForBothSides(Link);
+        Request = course!.MoveNext() ? course.Current : null;
+    }
+
+    /// <summary>How the player is named to the other side of a link battle: as a trainer of their class (plan 28 · I3).</summary>
+    private string PlayerTitle => Text.Of("battle.fullTitle", ("class", Trainer.ClassName(PokemonPlatinumEngine.Battle.Sim.Link.LinkSetup.PlayerClass)), ("name", playerName));
 
     /// <summary>
     /// The battle so far, small enough to keep or send: where its random numbers began and every answer it was
@@ -635,7 +643,7 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>"your team" for the player's side and "the foe's team" for the other, as the field's lines say it.</summary>
     private static string TeamOf(BattleSide side, bool capital = false) =>
-        side == BattleSide.Player ? Text.Of(capital ? "battle.team.yoursCapital" : "battle.team.yours") : Text.Of(capital ? "battle.team.foesCapital" : "battle.team.foes");
+        Narration.Sided(side, Text.Of(capital ? "battle.team.yoursCapital" : "battle.team.yours"), Text.Of(capital ? "battle.team.foesCapital" : "battle.team.foes"));
 
     // ---------------------------------------------------------------- the course of a battle
 
@@ -706,12 +714,15 @@ public sealed partial class BattleCore : IBattleContext
             Say(IsRoyal ? RoyalBegins()
                 : Trainers.Count > 1
                 ? Text.Of("battle.wouldLikeToBattle", ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
+                : Link ? Narration.Sided(BattleSide.Player, Text.Of("battle.wantsToBattle", ("trainer", Trainers[0].FullTitle)), Text.Of("battle.wantsToBattle", ("trainer", PlayerTitle)))
                 : Text.Of("battle.wantsToBattle", ("trainer", Trainers[0].FullTitle)));
 
             // Each trainer announces their own Pokémon
             foreach (var group in foes.GroupBy(b => b.Trainer!))
             {
-                var said = Say(Text.Of("battle.sentOut", ("trainer", group.Key.FullTitle), ("pokemon", JoinNames(group.Select(b => ShownAs(b, b.Pokemon!))))));
+                var sentOut = Text.Of("battle.sentOut", ("trainer", group.Key.FullTitle), ("pokemon", JoinNames(group.Select(b => ShownAs(b, b.Pokemon!)))));
+                // A link battle's other player reads their own send-out as "Go!" (plan 28 · I3)
+                var said = Say(Link ? Narration.Sided(BattleSide.Enemy, Text.Of("battle.go", ("pokemon", JoinNames(group.Select(b => ShownAs(b, b.Pokemon!))))), sentOut) : sentOut);
                 foreach (var b in group)
                 {
                     OnEntered(b, opening: true);
@@ -742,7 +753,8 @@ public sealed partial class BattleCore : IBattleContext
 
         // A partner sends theirs out with their own line
         var own = mine.Where(b => b.Trainer == null).ToList();
-        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => GoesOutAs(b, b.Pokemon!))))));
+        var goLine = Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => GoesOutAs(b, b.Pokemon!)))));
+        var go = Say(Link ? Narration.Sided(BattleSide.Player, goLine, Text.Of("battle.sentOut", ("trainer", PlayerTitle), ("pokemon", JoinNames(own.Select(b => ShownAs(b, b.Pokemon!)))))) : goLine);
         foreach (var b in own)
         {
             OnEntered(b, opening: true);

@@ -269,7 +269,7 @@ public partial class BattleEngine
     {
     }
 
-    public BattleEngine(BattleSetup setup) : this(setup, null)
+    public BattleEngine(BattleSetup setup) : this(setup, null, null)
     {
     }
 
@@ -280,9 +280,14 @@ public partial class BattleEngine
     /// A battle on screen: fought, or (with <paramref name="watched"/>, plan 08 · P11) a recorded battle watched, whose
     /// answers are the record's and whose Pokémon, bag and Pokédex are the recording's own (<see cref="ForReplay"/>).
     /// </summary>
-    private BattleEngine(BattleSetup setup, BattleRecordFile? watched)
+    private BattleEngine(BattleSetup setup, BattleRecordFile? watched, Sim.Link.LinkScreenFeed? linked = null)
     {
         Watched = watched;
+        link = linked;
+        // A link battle's screen shows the client's own Pokémon and the foe's stand-ins as they are: they are the
+        // view's, and the stage below holds copies it never touches (plan 28 · I3)
+        if (linked != null)
+            foreach (var p in setup.PlayerParty.Members.Concat(setup.Trainers.SelectMany(t => t.Party.Members))) mirror.Know(p);
         PlayerParty = setup.PlayerParty;
         PlayerInventory = setup.Inventory;
         Pokeblocks = setup.Pokeblocks;
@@ -349,7 +354,9 @@ public partial class BattleEngine
             // And a Mega Max Band lets a Mega Dynamax (plan 06 · R20c)
             MegaMaxBand = watched?.MegaMaxBand ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.MegaMaxBandItem),
             // And a Tera Orb lets one Terastallize (plan 06 · R23)
-            TeraOrb = watched?.TeraOrb ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
+            TeraOrb = watched?.TeraOrb ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem),
+            // A link battle's stage: given up, never run from (plan 28 · I4), and never started here (plan 28 · I3)
+            Link = linked != null
         };
         // The battle as its rules begin it, before they have changed anything: what the Vs. Recorder keeps (plan 08 · P10)
         Opening = BattleRecordFile.Opening(rules);
@@ -376,6 +383,20 @@ public partial class BattleEngine
         // Every cry the battle may play, made on a worker before it is heard
         AudioManager.RequestCries(PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members)));
 
+        // A link battle's screen plays what the server sent, and starts nothing of its own (plan 28 · I3)
+        if (link != null)
+        {
+            Play(link.TakeEvents());
+            Pump();
+            return;
+        }
+        // A link battle's screen plays what the server sent, and starts nothing of its own (plan 28 · I3)
+        if (link != null)
+        {
+            Play(link.TakeEvents());
+            Pump();
+            return;
+        }
         core.Start();
         Play(core.TakeLog());
         Pump();
@@ -551,7 +572,8 @@ public partial class BattleEngine
             if (happening is Said said)
             {
                 bool megaMaxLine = megaMaxes.Contains(i);
-                steps.Enqueue(new Line(said.Text, () =>
+                // A link battle watched from its record reads as its player side does (plan 28 · I3)
+                steps.Enqueue(new Line(Narration.For(said.Text, BattleSide.Player), () =>
                 {
                     // What a line shows is shown knowing its line: a moment on it takes its HP with it (plan 25 · Y3)
                     showing = said;
@@ -665,6 +687,12 @@ public partial class BattleEngine
     /// <summary>Everything the rules worked out has been shown: the screen's Pokémon are the rules' again, and the next menu opens.</summary>
     private void LogPlayed()
     {
+        // A link battle: the server's question, or the wait for the other player (plan 28 · I3)
+        if (link != null)
+        {
+            LinkLogPlayed();
+            return;
+        }
         SyncFromCore();
         // A battle watched opens no menu: the record answers what the rules ask (plan 08 · P11)
         if (Watching)
@@ -708,7 +736,7 @@ public partial class BattleEngine
     private readonly List<string> tipsRaised = new();
 
     /// <summary>The main menu is open and waits for the player's choice: nothing of the log is being shown (plan 12 · Q23's quiet moment).</summary>
-    public bool AtItsMenu => HUD.MenuState == BattleMenuState.Main && core.Request is ActionRequest && Result == BattleResult.None;
+    public bool AtItsMenu => HUD.MenuState == BattleMenuState.Main && Asking is ActionRequest && Result == BattleResult.None;
 
     /// <summary>The tips raised since the game last asked, handed over once.</summary>
     public IReadOnlyList<string> TakeTips()
@@ -1246,6 +1274,8 @@ public partial class BattleEngine
             Watch(dt, InputManager.IsActionDown(GameAction.Run), InputManager.IsActionPressed(GameAction.Menu));
             return;
         }
+        // A link battle takes in what the server sent (plan 28 · I3)
+        PumpLink();
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);

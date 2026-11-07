@@ -63,6 +63,18 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(fighter, fight.X + (fight.Width - w) / 2f, fight.Y + fight.Height - 30, 26, Color.White, UiWeight.Black);
     }
 
+    /// <summary>
+    /// The waiting dots of a link battle (plan 28 · I3; style guide, "Battle panels", "Waiting for the other player"):
+    /// three discs of 9 units, 30 apart, the lit one red and the others the ink's grey, the light stepping on every
+    /// 0.4 s of the frame clock, in whole steps.
+    /// </summary>
+    public static void WaitingDots(float x, float y)
+    {
+        int lit = (int)(FrameClock.Now / 0.4) % 3;
+        for (int i = 0; i < 3; i++)
+            UiShapes.Circle(new System.Numerics.Vector2(x + i * 30, y), 9, i == lit ? Red : new Color(196, 200, 210, 255));
+    }
+
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;
@@ -222,6 +234,12 @@ internal static partial class ModernUi
                     // 22 above the message box, its right edge on the box's
                     // (the field's box stands taller under large text, the message box doesn't: plan 12 · Q8)
                     DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
+                break;
+            case BattleMenuState.Waiting:
+                // A link battle waits for the other player (plan 28 · I3; style guide, "Battle panels", "Waiting for the
+                // other player"): the line and three dots in turn where the arrow would be, nothing to press
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), battle.WaitingLine, null, arrow: false);
+                WaitingDots(48 + MessageBoxWidth - 120, 858 + 172 - 46);
                 break;
             default:
                 // No arrow while a growth holds the lines (plan 25 · YD6): a press would do nothing then
