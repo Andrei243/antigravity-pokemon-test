@@ -326,8 +326,10 @@ public class TripleTests
     {
         // Plan 14, decision 1: Platinum's places keep Platinum's formats. Nobody of the tables, and nobody placed in any
         // region's world, battles in a triple (or anything else of the later games); the harness's `formats` mode
-        // stages its own (ft30 to ft32)
-        Assert.All(TrainerDatabase.All.Concat(TrainerDatabase.Masters).Concat(TrainerDatabase.Ours), t => Assert.Null(t.Format));
+        // stages its own (ft30 to ft32). The one exception is plan 14 · B2's sky trainer of our own, whom a script on
+        // the Vista Lighthouse battles by her record after the Hall of Fame: nobody of the tables, and nobody placed
+        Assert.All(TrainerDatabase.All.Concat(TrainerDatabase.Masters).Concat(TrainerDatabase.Ours.Where(t => t.Id != "sky_trainer_aster")), t => Assert.Null(t.Format));
+        Assert.Equal("sky", TrainerDatabase.Get("sky_trainer_aster")!.Format);
         var maps = MapDatabase.Fresh();
         var later = new List<string>();
         foreach (string name in MapDatabase.MapNames)

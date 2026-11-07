@@ -134,6 +134,7 @@ public class ScriptTests
           battle self as "rival_route_201_piplup" first canlose
           battle self as "scientist_shaun_rematch_3" inverse canlose
           master self canlose
+          royal self "royal_brisa" twin "royal_corin" helper "royal_dalla" canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           wildbattle "Gyarados" 30 shiny
@@ -373,6 +374,7 @@ public class ScriptTests
           team befriend 3
           team level VAR_X
           team combee
+          team fliers
           team condition cool
           team massage
           team massage room
