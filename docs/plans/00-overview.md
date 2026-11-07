@@ -40,6 +40,16 @@ About 350 sittings are left, a dozen or so of them marked optional (Hisui and th
 | 26 · Voice | — (only the plan is written) | 8 | NVorbis allowed on 2026-10-12 |
 | 29 · Legendary scenes | — (only the plan is written, 2026-10-31) | 9 | LS10 optional; LS2 to LS9 side by side after LS1 |
 | 27 · Moving to Unity | — (only the plan is written, 2026-10-08) | 7 | deferred by the user to the end of the project, after every other plan; its numbers are measured again then |
+| 35 · Bonding | — (only the plan is written, 2026-11-07) | 10 | BN7, BN8 optional; plans 35 to 44 come from [the study of what else to add](studies/what-else-to-add-study.md) |
+| 36 · Training | — (only the plan is written, 2026-11-07) | 10–12 | TR3 and TR9 make built rules reachable: early |
+| 37 · Battle facilities | — (only the plan is written, 2026-11-07) | 12–14 | FC9, FC10 optional |
+| 38 · The field | — (only the plan is written, 2026-11-07) | 13–17 | EX10 (Unova's Town Map) first; EX9 optional |
+| 39 · Crafting | — (only the plan is written, 2026-11-07) | 8 | CR6 takes plan 10 · F8 over; CR8 optional |
+| 40 · Gifts and completion | — (only the plan is written, 2026-11-07) | 12–17 | GE1 to GE3, GE5 and GE11 early; GE10 optional |
+| 41 · The whole journey | — (only the plan is written, 2026-11-07) | 10–14 | EG5 needs nothing and can start at once |
+| 42 · Pastimes | — (only the plan is written, 2026-11-07) | 11–12 | PS8 to PS10 optional |
+| 43 · The player's life | — (only the plan is written, 2026-11-07) | 10–14 | LF2, LF8, LF10 optional |
+| 44 · Side modes | — (only the plan is written, 2026-11-07) | 10–13 | SD10 optional; the whole plan may be dropped |
 
 Plan 13 and plan 26 both number their sessions V1, V2…; this file always writes the plan with the ID (13 · V1, 26 · V1), and so should anyone citing them.
 
@@ -256,6 +266,21 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
 - **Side activities (15)**: E6 to E8 (the Pokéathlon) are kept (decided 2026-10-12) and run just before 20 · J13, which stands the dome in Johto; E5 runs just before 20 · J7.
 - **Unity (27)**: deferred by the user to the end, after everything above. Its spike (S0) is where its own six decisions begin.
 
+### Plans 35 to 44: what else to add
+
+Written on 2026-11-07 at the user's request, with [the study they came from](studies/what-else-to-add-study.md): a plan for each category of what the main series and its spin-offs offer that the game neither had nor planned. Each plan says the lane of each of its sessions; the order across them:
+
+- **First, what is built and can't be reached, or what a finished region was left without**, since each needs nothing new: 38 · EX10 (Unova's Town Map, lane 2), 36 · TR3 and TR9 (the tools' sources and the later TMs and tutors; lanes 6 and 3), 40 · GE1 to GE3 (every species of each finished region's games can be had there, and its trades and fossils; lane 1), GE5 (the charms, critical captures and the EXP a catch gives; lane 3), GE11 (every item the rules run, after TR3; lane 1), and 41 · EG5 (the Leaders' rematches where a region has none; lane 1).
+- **Then the journey and the team**: 41 · EG1 to EG4 (the hub, the hall of every Hall of Fame, the plaza, the Champions' circuit; lanes 2, 6, 5 and 1), 35 · BN1 to BN5 (care, treats, the follower's mood, the pasture; lane 5), 38 · EX1 to EX3 (outbreaks, the day's report, bright Pokémon and streaks; lane 5).
+- **Then the rest of 36 to 41** by their gates, and **last 42 to 44** (pastimes, the player's life, the side modes), each of which the user may drop whole.
+- **Their shared rules**:
+  - They add about twenty script commands between them: rule 7 above holds, at most two sessions adding commands in a wave beside the chapter.
+  - Items of ours (`tools/DataImporter/Overrides/items.json`) take the next free hundred when a session lands (35 · BN3 the 9600s, 36 the 9700s and 9800s); the second merged in a wave renumbers.
+  - The doors the original never used, settled between them: Sunyshore City's 7 is 36's training hall, its 8 is 39's workshop, and Jubilife City's 10 and 11 are 43's salon and studio.
+  - `GameEngine.EndBattle`, `OnStep`, `MakeWild`, `BattleCore.Give` and `CatchCalculator.Shakes` are touched by 35, 36, 38, 39, 40 and 44: lane 3's rule for `BattleCore` (rule 8 above) applies to the ones that change a battle.
+  - `common.PC`'s modern menu gains answers from 35 · BN5 and BN7 and 39 · CR4, the camp's screen changes in 35 · BN2 and 39 · CR6, and Jubilife TV's lobby gains a person in 40 · GE7 and 43 · LF10: never two of a pair in one wave, and the second takes its own tile or line.
+- **Before building anything new**, each plan's stories, festivals, gifts and designs are shown to the user as an outline, as plan 03 · D14's designs are.
+
 ## Shared seams and their owners
 
 A seam is a piece several plans offer to write "if it hasn't been". Each has one owner here. Until it lands, the others use a stand-in and say so.
@@ -285,6 +310,14 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | The Game Boy Advance's behaviour values | 18 · W6 | 12 (done: `0xED` to `0xFD`, `Gba/GbaBehaviours.cs`) | 20 · J1, 22 · U1 |
 | A layout swapped behind a fade | 21 · H8 | later | 22 · U4, U8, plan 23 |
 | Rock Smash's roll | the first region chapter that opens such a rock, in the chain's order | later | 19, 20 · J7, 21 · H4 |
+| `Region.Side`, a region off the chain | the first of 41 · EG1, 23 · Z17 and 23 · Z21, in Z17's shape | later | the other two |
+| Timed powers (`Models/Powers.cs`, `PowerKind`) | 36 · TR7 | later | 39 · CR6 and CR7 (the meals, and through them 33 · GL2's curry and 34 · PD7's sandwiches), 41 · EG3, 43 · LF6 |
+| The test of where every item is found (`Data/ItemSources.cs`) | 36 · TR3 | later | 40 · GE11 widens it to every item the rules run; 36 · TR9's machines; plans 23, 33 and 34 empty its owed list |
+| A floor laid from pieces (`FloorLayout`, out of `PyramidFloor`) | the first of 44 · SD7 and 38 · EX6 | later | the other |
+| `MapArea.WildVisible` | the first of 23 · Z22 and 38 · EX6 | later | the other |
+| `Op.Cafe` | the first of 42 · PS10 and 43 · LF9 | later | the other |
+| `LevelLift`, a team lifted on a copy | 41 · EG3 | later | 41 · EG4 and EG9 |
+| A battle set for every species | 37 · FC1 | later | 37 · FC2 to FC10, 33 · GL7's Battle Tower |
 
 ## Work no plan owned, now placed
 
@@ -315,6 +348,12 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | S5's and S6's bosses' lines in battle | 11 · C12 |
 | The Azure Flute and the Hall of Origin | 03 · D12c |
 | Tests that count what every new room or area changes | 16 · T16 makes them floors |
+| Kalos after its Hall of Fame: Kiloude City, Terminus Cave and Zygarde, the cave where Mewtwo waits, the bird that roams by the starter chosen, the Mega Stones that appear after the Hall of Fame, Looker's episode (found 2026-11-07 by the study of what else to add) | plan 23: a session after Z4, as Z8 is Alola's, written into plan 23 by its next session |
+| Gimmighoul's coins, which Gholdengo needs; the academy's classes and exams; Tera Shards as a raid's pay, which 36 · TR5's keeper reads | plan 34 · PD3 and PD6, PD1, PD7 |
+| The Crown Tundra's tag tournament; Galar's cafés and the Sweets that Milcery needs | plan 33 · GL9; GL4 or GL5 |
+| Zygarde's cells and cores, the totem stickers, Lumiose's screws for Mega Stones, the Isle of Armor's lost Diglett | plan 23 · Z7 or Z8 and Z22; plan 33 · GL8 |
+| Unova's shaking grass, dust clouds, rippling water and bridge shadows, imported and never met | plan 10 · F12's rustle, then plan 38 · EX11 |
+| Battles in real time for Lumiose's era | not placed: the study's first question to the user |
 
 ## Hot files, and how to merge them
 
@@ -373,6 +412,9 @@ Where a default is given, the session goes ahead on it unless the user says othe
 | Which species get Mega Dynamax, what it does and where it is handed over; and each new Mega's design | the two new sessions of plan 06 | wait: each session proposes, the user approves |
 | Where the second slot's species go in Sinnoh, and what Pal Park's show draws from | 03 · D12a | Answered 2026-10-17: Pal Park keeps the second slot's species; its show brings six a day by a fixed rotation by the date (done in wave 19) |
 | 27 · 1–6: the move to Unity | plan 27 | deferred to the end by the user (2026-10-08) |
+| Battles in real time for Lumiose's era (the study of what else to add, question 1) | plan 23 · Z22 to Z24, or a plan of its own | keep the era turn-based, as plan 23 builds it |
+| The order of plans 35 to 44, and whether 42 to 44 are wanted (the study's question 2) | their first sessions | the order under "Plans 35 to 44" above, with 42 to 44 last |
+| Each of plans 35 to 44's own decisions | their sessions | the plan's recommended answer, as everywhere in the roadmap |
 
 ## Stale lines found in the plans
 
@@ -424,6 +466,8 @@ Each plan's next session fixes its own.
   - 23 still calls the species from Inkay on generated.
 - **24**: "Where we are" is old, and X1 misses the Hall of Fame's `DateTime.Now`.
 - **26**: its counts of script files and Barry's lines are old.
+- **18**: W8 (the harbours that sail both ways) is built (2026-11-03) and its status line is still open.
+- **Found by the study of what else to add (2026-11-07)**: `docs/mechanics/where-items-are-found.md` gives the Mega Stones to plan 21 and Unova's items to plan 22, both finished without them, and `docs/plans/decisions/R20b-mega-proposals.md` promised a line in plan 23 for our fifteen stones that was never written (40 · GE11 rewrites both); `docs/mechanics/evolution.md` points Gimmighoul's coins and Meltan's candies at plan 03 · D12's dropped part b (40 · GE11); `Overworld/Map.cs` hands Unova's special tables to plan 10 · F12, whose text never names them (38 · EX11).
 - **Shot names claimed twice**:
   - 13's `28b`–`28d` and 08's `20d`/`20e` against shots that exist;
   - 08 · P13's and 10 · F11's `26n`;
@@ -711,3 +755,4 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - Wave 78 (merged 2026-11-01): navy wall tops, giant size in doubles (x1.15 own, x1.12 foe), Q17, Q22 (THIS AREA tab waits on Q21), V11 New Game+, J11 Whirlpool HM (HM10, id 9204), shot-report defects (Aaron's flag was a test-tool timing bug, Sabrina's look, packs screen, layers, New Mauville), Solaceon Ruins centred and the Route 205 footbridge head, Johto room looks (Sprout Tower, Violet Gym, Burned Tower, chambers), J15 part k (Celadon store, condominiums, Game Corner), and plan 29 (legendary scenes; the user opened the event-only legendaries as LS11). The full suite was stopped unfinished at the user's request, so wave 78 is untested as a whole and not pushed. Left: S.S. Aqua void unverified, Mega Garchomp blade graze in doubles, Charizard/Blissey overlap, store clerks hidden inside counter blocks (a builder rule), other Johto Gyms' looks.
 - Waves 79 and 80 (merged 2026-11-01): plan 29 LS1-LS9 (legendary scenes: Sinnoh, Kanto, Johto, Hoenn, Unova, Kanto's roaming beast), N6 Romanian for the scripts (269 lines), Q21 Requests, J15 part l (Underground Path, Silph Co. lobby). Full suite: 21,709 passed, 1 failed (BudgetTests memory ceiling, known, passes alone). Not pushed since 8586d3e7. Left: no plan 29 scene seen on screen yet (harness shots owed: rift tile, Turnback shadow, two effects on one tile in Ho-Oh/Raikou beats, Distortion Giratina framing, Cresselia shadow, Hoenn/Unova coordinates), Kyogre/Groudon only stir (need LS10), LS11 event-only legendaries (proposals first), Q21 start-menu overflow with Pokégear/PokéNav, J15 l receptionist hidden in counter block and unchecked `kn_chika` houses, Rotom's room and Silph upper floors, 68 `world/` Romanian overlays.
 - **Next wave (81), added 2026-11-02 at the user's request**: 31 · MU0 (the test of a richer sound: one tune as a pair of MP3s, for the user's ear; touches no existing song), which comes before any more of Kalos's songs are written. Its answer gates the rest: on a yes, 31 · MU1 and then MU2 go in the waves after it, in that order, and MU3 to MU6 with plan 23's session for each region; MU7 last. On a no, plan 31 stops there.
+- **2026-11-07, plans 35 to 44 written** at the user's request, with [the study of what else to add](studies/what-else-to-add-study.md): ten categories of what the main series and its spin-offs offer that the game neither had nor planned, 96 sessions (14 optional, about 106 to 131 sittings). A sweep of nine agents listed 254 features of every generation; ten agents wrote the plans, re-checking each feature in the code; five reviewed them against the code and each other; a critic's verified gaps were folded in (a catch gives no EXP under the modern rules, Unova has no Town Map, Mega Stones and form items that nothing gives, later moves nobody can learn). No code changed. Their order is under "Plans 35 to 44" above; the cheap fixes of what is built and unreachable come first.
