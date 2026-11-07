@@ -8,6 +8,7 @@
 //   dotnet run --project tools/OpenWorldBake -- <region> --chunk x,z                that chunk alone (with --check, checks it alone)
 //   dotnet run --project tools/OpenWorldBake -- <region> --plan <out dir> [area]    the area (or the region) from above, and the same with levels 1 and 2's triangles
 //   dotnet run --project tools/OpenWorldBake -- <region> --section <out dir> [area] [x1,z1 x2,z2 ...]   vertical cuts (across the area's middle unless given)
+//   dotnet run --project tools/OpenWorldBake -- <region> --walk <out dir> [--swim] x,z x,z[!] ...   the game's capsule (plan 32 · OW3) walked from the first point through the rest (! runs), what happened printed, drawn over the plan and as a profile
 //   dotnet run --project tools/OpenWorldBake -- <region> --seams                    how far each level's border stands off its neighbours' levels (nought, by design)
 //   dotnet run --project tools/OpenWorldBake -- <region> --world <folder> --out <baked folder>   descriptions and bake elsewhere
 //
@@ -25,7 +26,7 @@ using OpenWorldBake;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("usage: OpenWorldBake <region> [--check] [--chunk x,z] [--plan <out dir> [area]] [--section <out dir> [area] [x1,z1 x2,z2 ...]] [--seams] [--world <folder>] [--out <folder>]");
+    Console.Error.WriteLine("usage: OpenWorldBake <region> [--check] [--chunk x,z] [--plan <out dir> [area]] [--section <out dir> [area] [x1,z1 x2,z2 ...]] [--seams] [--walk <out dir> [--swim] x,z x,z ...] [--world <folder>] [--out <folder>]");
     Console.Error.WriteLine("       OpenWorldBake prototype [--section <out dir> [x1,z1 x2,z2 ...]] [--plan <out dir>] [--check] [--seams]");
     return 2;
 }

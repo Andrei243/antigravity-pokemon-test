@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.Core;
 /// is loaded by the game, so <c>flow.Open</c> is null in every game and every line here is passed by. A tool or a test
 /// lays an open map in (<see cref="AddOpenMap"/>) and puts the player there through the <c>Driver</c>.
 /// <para>
-/// What OW1 has the open field do is stand and count its ticks: the capsule (OW3), the picture (OW8), doors and
+/// What the open field does is count its ticks and walk the capsule (OW3) by the stick; the picture (OW8), doors and
 /// scripts (OW5) come later, so the field's frame runs no script, opens no menu and draws what the grid's field drew.
 /// </para>
 /// </summary>
@@ -48,8 +48,18 @@ public partial class GameEngine
         flow.State = GameState.Overworld;
     }
 
-    /// <summary>The field's frame in an open map: its ticks counted, and nothing else yet (the player stands until OW3's capsule).</summary>
-    private void UpdateOpenField(float dt) => flow.Open!.Advance(dt);
+    /// <summary>
+    /// The field's frame in an open map (plan 32 · OW3): the frame's ticks, each stepping the player's capsule by the
+    /// stick (the frame's quantised tilt, or the direction actions as a full tilt: <c>InputManager.GetStick</c>, its
+    /// y down the screen being south) and the run button (turned round by the options' Autorun, as the grid's is).
+    /// Nothing else of the field runs yet: no script, menu, encounter or life.
+    /// </summary>
+    private void UpdateOpenField(float dt)
+    {
+        var stick = InputManager.GetStick();
+        bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
+        flow.Open!.Advance(dt, new OpenInput(stick.X, stick.Y, run));
+    }
 
     /// <summary>
     /// A loaded save's open place (plan 32 · OW1): the player is put there if the game knows its map, and otherwise

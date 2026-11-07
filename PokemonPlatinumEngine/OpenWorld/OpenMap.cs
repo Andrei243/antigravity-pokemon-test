@@ -42,9 +42,44 @@ public sealed class OpenMap
 
     /// <summary>
     /// The map's land as <c>tools/OpenWorldBake</c> baked it (plan 32 · OW2), or null for a map with none (OW1's empty
-    /// test maps). Nothing reads it yet: OW3's collision takes level 0's ground, OW8's renderer every level.
+    /// test maps). OW3's collision takes level 0's ground (<see cref="Ground"/>), OW8's renderer every level.
     /// </summary>
-    public BakedRegion? Land { get; set; }
+    public BakedRegion? Land
+    {
+        get => land;
+        set { land = value; ground = null; }
+    }
+    private BakedRegion? land;
+
+    private readonly List<OpenBox> solids = new();
+    private readonly List<OpenWaterBox> waters = new();
+    private OpenGround? ground;
+
+    /// <summary>The map's solid boxes (plan 32 · OW3: the kit's buildings and props as OW5 lays them), in the order added.</summary>
+    public IReadOnlyList<OpenBox> Solids => solids;
+
+    /// <summary>The map's water laid by hand beside its land's (plan 32 · OW3), in the order added.</summary>
+    public IReadOnlyList<OpenWaterBox> Waters => waters;
+
+    /// <summary>Adds a solid box (the ground is made again the next time it is asked for).</summary>
+    public void Add(OpenBox box)
+    {
+        solids.Add(box.Checked());
+        ground = null;
+    }
+
+    /// <summary>Adds water laid by hand.</summary>
+    public void Add(OpenWaterBox water)
+    {
+        waters.Add(water);
+        ground = null;
+    }
+
+    /// <summary>
+    /// What the capsule collides with (plan 32 · OW3): the land's level 0 and the solid boxes, made the first time it
+    /// is asked for and again after either changes.
+    /// </summary>
+    public OpenGround Ground => ground ??= OpenGround.Of(this);
 
     /// <summary>The map's markers, in the order they were added.</summary>
     public IReadOnlyList<OpenMarker> Markers => order;
