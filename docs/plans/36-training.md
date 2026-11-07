@@ -101,6 +101,7 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
 - Tests (`TrainingDrillTests`): each drill the same for a seed and its presses; never past its length, in whole frames; the autopilot's grade for a seed; `Award` by grade, at 252 and at 510; an Egg refused; Pokérus and a Power item add nothing.
 - Shots: `tr01_skills_effort` (a Pokémon trained in two stats), `tr02_skills_effort_full`.
 - **Done when** a drill the autopilot plays from a seed gives the same grade twice in a test, and the points it gives show on SKILLS in the harness.
+- **Outcome (2026-11-07).** Built as written. Decisions: the drills are three classes over one `TrainingDrill` base (a drill a `Step(DrillInput)`, thirty frames a second, 900 frames, its chance from `SplitMix`); the pair's second game (Sp. Atk, Sp. Def, HP) is the same class with `Special` and its own numbers (only the guard's pellet gap and the dash's beat, pace and stamina differ), so the dash's bands are per variant (`DrillBands.Silver(kind, special)`); the autopilot's skill is a `knack` (default 0.55 = silver, 0.9 = gold, `TrainingDrillTests` holds both); `WhyNot` and its words are `Text.Of("training.why.*")` (a `training` section of `ui.json`, English and Romanian), which TR2's screen shows; SKILLS' effort is `ModernUi.StatRows(..., effort: true)`, drawn on the SKILLS page alone. TR2 draws the drills' screen, so nothing in the game can start a drill yet; PEAK is drawn from TR3 (the style guide says where).
 
 ### TR2 · The training hall and its drills (1 to 2 sessions)
 - The style guide first: "Rooms" gains the hall's plan, "Training" the drill screen.
@@ -184,7 +185,7 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
 
 ## Status
 
-- [ ] TR1 Effort on screen and the drills' rules
+- [x] TR1 Effort on screen and the drills' rules (2026-11-07: `Models/TrainingDrills.cs`, `TrainingDrillTests`, SKILLS' effort bars and total, the rulings' "Effort drills, and effort on the summary"; the PEAK tag is described in the style guide and left to TR3; the harness's `training` mode, shots tr01 and tr02, identical on two runs)
 - [ ] TR2 The training hall and its drills
 - [ ] TR3 Peak training, the tools and every tool's source
 - [ ] TR4 The halls of Kanto, Johto, Hoenn and Unova

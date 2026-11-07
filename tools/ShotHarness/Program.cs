@@ -217,6 +217,8 @@ if (mode == "pokegear") h.PokegearMode();
 if (mode == "skips") h.SkipsMode();
 if (mode == "contest") h.BugContestMode();
 if (mode == "athlon") h.AthlonMode();
+// Plan 36: training (TR1, the drills' rules and effort on SKILLS)
+if (mode == "training") h.TrainingMode();
 if (mode == "hoenncontest") h.HoennContestMode();
 if (mode == "hoenntents") h.HoennTentsMode();
 if (mode == "play") h.PlayMode();

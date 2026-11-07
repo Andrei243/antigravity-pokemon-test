@@ -420,7 +420,7 @@ internal static partial class ModernUi
             else Bar(track, bases[i] / 160f, StatColor(bases[i]));
             if (effort) EffortRow(panel, p, SummaryStats[i], cy);
         }
-        if (effort) EffortTotal(panel, p, first + 5 * pitch + 60);
+        if (effort) EffortTotal(panel, p, panel.Y + first + 5 * pitch + 60);
     }
 
     /// <summary>
@@ -433,7 +433,7 @@ internal static partial class ModernUi
         var full = ev >= cap;
         string text = Text.Of("summary.effortValue", ("ev", ev), ("max", cap));
         UiFonts.DrawCentered(text, panel.X + 380 - UiFonts.Measure(text, 20, UiWeight.Black), cy + 28, 20, Muted, UiWeight.Black);
-        EffortBar(new Rectangle(panel.X + 420, cy + 11, panel.Width - 420 - 44, 8), (float)ev / cap, full);
+        EffortBar(new Rectangle(panel.X + 420, cy + 14, panel.Width - 420 - 44, 8), (float)ev / cap, full);
     }
 
     /// <summary>The effort under the six rows: the word, the total out of 510 and a bar across the track's width.</summary>
