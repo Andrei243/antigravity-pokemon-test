@@ -69,6 +69,8 @@ partial class Harness
         Console.WriteLine($"explore: {regionId} day {daily}: {string.Join(", ", Outbreaks.Today(regionId, daily).Select(o => $"{o.Species} at {o.Area} ({o.Share} in a hundred{(o.Level > 0 ? $", level {o.Level}" : "")})"))}; standing at {at.X},{at.Y}");
 
         engine.Settings.WildInSight = true;
+        // Nobody's eyes on the player as they arrive: the shot is of the crowd, not of a trainer's challenge
+        game.TrainersLookOnArrival = false;
         At(mapName, at.X, at.Y, Direction.Up);
         Console.WriteLine($"explore: in the outbreak's place {engine.OutbreakHere()?.Area ?? "(none)"}, the moment holds {engine.Drive.EncounterMomentNow().Outbreaks?.Count ?? 0} outbreaks");
         // Stood still, so that nothing is walked into, while they come out
