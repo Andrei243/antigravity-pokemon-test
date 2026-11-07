@@ -42,13 +42,13 @@ partial class Harness
         Console.WriteLine($"door: solid {game.Map.IsSolid(door.SourceX, door.SourceY)}");
 
         // ---- inside
-        At("SunyshoreWorkshop", 6, 9, Direction.Up);
+        At("SunyshoreWorkshop", 6, 8, Direction.Up);
         game.LocationSign.Hide();
         Frames(20);
         Shot("cr03_workshop");
 
         // ---- the craftswoman: her lines read to the one that gives the kit
-        At("SunyshoreWorkshop", 6, 5, Direction.Up);
+        At("SunyshoreWorkshop", 6, 4, Direction.Up);
         game.LocationSign.Hide();
         game.Interact(); Frames(3);
         bool shot = false;

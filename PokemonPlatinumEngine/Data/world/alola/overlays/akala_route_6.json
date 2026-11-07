@@ -17,7 +17,7 @@
       "name": "Noelani",
       "npcType": "lass",
       "trainer": {
-        "dialogueBefore": "Lass Noelani: My Cutiefly can tell when someone's heart is racing. Yours is!",
+        "dialogueBefore": "Lass Noelani: My Pollenoble can tell when someone's heart is racing. Yours is!",
         "dialogueAfter": "Lass Noelani: Now mine is racing too."
       }
     },

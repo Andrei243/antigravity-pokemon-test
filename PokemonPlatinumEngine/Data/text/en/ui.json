@@ -4241,7 +4241,10 @@
     "NoData": "Trainer",
     "PokemonTrainerColress": "Pokémon Trainer",
     "PikeQueen": "Pike Queen",
-    "PyramidKing": "Pyramid King"
+    "PyramidKing": "Pyramid King",
+    "AetherPresident": "Aether President",
+    "TeamSkullAdmin": "Team Skull Admin",
+    "TeamSkullBoss": "Team Skull Boss"
   },
   "broadcast": {
     "clock": {

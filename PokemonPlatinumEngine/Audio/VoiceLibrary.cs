@@ -192,6 +192,14 @@ public sealed class VoiceLibrary
             }
     }
 
+    /// <summary>Waits for the takes a worker is decoding ahead, so that nothing still has a take's file open (a pack's folder can then be deleted).</summary>
+    public void Settle()
+    {
+        Task[] pending;
+        lock (gate) pending = decoding.Values.ToArray<Task>();
+        Task.WaitAll(pending);
+    }
+
     /// <summary>How many takes are held decoded now.</summary>
     public int Held
     {

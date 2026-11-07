@@ -21,9 +21,13 @@ public sealed class VoicePlaybackTests : IDisposable
 {
     private readonly string folder = Path.Combine(Path.GetTempPath(), "voice-pack-" + Guid.NewGuid().ToString("N"));
 
+    /// <summary>Every pack opened, so that Dispose can wait for the takes a worker decodes ahead before it deletes their files.</summary>
+    private readonly List<VoiceLibrary> opened = new();
+
     public void Dispose()
     {
         AudioManager.StopListening();
+        foreach (var library in opened) library.Settle();
         if (Directory.Exists(folder)) Directory.Delete(folder, recursive: true);
     }
 
@@ -41,7 +45,9 @@ public sealed class VoicePlaybackTests : IDisposable
         }
         Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(folder, VoiceLibrary.PackFileName), GameDataFiles.Serialize(pack));
-        return VoiceLibrary.Open(folder)!;
+        var library = VoiceLibrary.Open(folder)!;
+        opened.Add(library);
+        return library;
     }
 
     private static DialogueManager Box(VoiceLibrary? pack, VoiceMode mode = VoiceMode.All, bool letFinish = false)

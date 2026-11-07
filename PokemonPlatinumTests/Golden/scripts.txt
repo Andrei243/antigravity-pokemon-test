@@ -6004,7 +6004,7 @@ way -
   Ninja Boy> Whoa, seven Gym Badges! You're amazing!
   Ninja Boy> Just one to go, and it's the Pokémon League for you!
 === SunyshoreWorkshop.Craftswoman
-from Craftswoman at 6,4 of SunyshoreWorkshop
+from Craftswoman at 6,3 of SunyshoreWorkshop
 way -
   Craftswoman> Well, look at that! A Champion, and on my doorstep. Come in, come in, and mind the shavings.
   Craftswoman> This is where I make things. Every Pokémon sheds something as it battles, and the countryside gives a good deal more to anyone who knows where to look.

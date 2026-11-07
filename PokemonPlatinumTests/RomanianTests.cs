@@ -69,7 +69,7 @@ public class RomanianTests
         files.AddRange(Directory.GetFiles(Path.Combine(data, "world"), "trainers.json", SearchOption.AllDirectories));
         var all = new List<(string, string)>();
         foreach (string file in files.Where(File.Exists))
-            using (var document = JsonDocument.Parse(File.ReadAllText(file)))
+            using (var document = JsonDocument.Parse(File.ReadAllText(file), new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true }))
                 foreach (var t in document.RootElement.EnumerateArray())
                     if (t.TryGetProperty("class", out var c) && c.GetString() is { Length: > 0 } cls)
                         all.Add((cls, t.TryGetProperty("name", out var n) ? n.GetString() ?? "" : ""));

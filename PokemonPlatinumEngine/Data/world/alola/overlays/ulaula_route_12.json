@@ -41,7 +41,7 @@
       "name": "Kalei",
       "npcType": "rancher",
       "trainer": {
-        "dialogueBefore": "Rancher Kalei: Tapu Village is just ahead, and so are my Mudbray. They've got a race to win.",
+        "dialogueBefore": "Rancher Kalei: Tapu Village is just ahead, and so are my Mudsdale. They've got a race to win.",
         "dialogueAfter": "Rancher Kalei: Slow and steady, I guess."
       }
     }
