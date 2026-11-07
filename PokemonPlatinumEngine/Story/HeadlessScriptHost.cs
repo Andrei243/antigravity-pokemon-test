@@ -1554,6 +1554,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         NationalDex = true;
         Log.Add("nationaldex");
+        // The DexNav comes with it (plan 10 · F11; decision 6)
+        if (ItemDatabase.Get(Overworld.DexNavRules.Item) is { } navItem && Bag.GetQuantity(navItem) == 0) Bag.AddItem(navItem, 1);
     }
 
     /// <summary>How many teams have entered the Hall of Fame (<c>LEAGUE_VICTORIES</c>): those this host recorded, unless a test says otherwise.</summary>

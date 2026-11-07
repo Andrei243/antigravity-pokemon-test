@@ -46,6 +46,13 @@ public partial class GameEngine
         public Party Party => Flow.Party;
         public Inventory Bag => Flow.Bag;
         public Pokedex Pokedex => Flow.Pokedex;
+
+        /// <summary>The DexNav's state and the rustle it has found in the grass (plan 10 · F11, F12).</summary>
+        public Overworld.DexNavState DexNav => Flow.DexNav;
+        public Overworld.Rustle? DexNavRustle => game.DexNavRustle;
+
+        /// <summary>The Pokédex's HERE list for where the player stands, as the engine tells the screen (null without the DexNav).</summary>
+        public IReadOnlyList<Overworld.DexNavEntry>? DexNavHere => game.DexNavHereList();
         public PcBoxes Boxes { get => Flow.Boxes; set => Flow.Boxes = value; }
 
         /// <summary>The teams kept at the PC (plan 12 · Q27).</summary>

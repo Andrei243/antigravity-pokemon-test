@@ -23,6 +23,32 @@ public partial class GameEngine
     /// <summary>The DexNav's find in the grass now, for a tool (the harness, the tests).</summary>
     internal Rustle? DexNavRustle => rustle;
 
+    /// <summary>The DexNav is in the bag (plan 10 · F11): the National Pokédex gives it, and a save that has the one is given the other.</summary>
+    private bool HasTheDexNav => ItemDatabase.Get(DexNavRules.Item) is { } item && flow.Bag.GetQuantity(item) > 0;
+
+    /// <summary>The National Pokédex's script gives the DexNav, once.</summary>
+    private void GiveTheDexNav()
+    {
+        if (ItemDatabase.Get(DexNavRules.Item) is { } item && !HasTheDexNav) flow.Bag.AddItem(item, 1);
+    }
+
+    /// <summary>A save that has the National Pokédex and no DexNav is owed it as it loads (no story version).</summary>
+    private void OweTheDexNav()
+    {
+        if (flow.Pokedex.NationalUnlocked) GiveTheDexNav();
+    }
+
+    /// <summary>
+    /// The Pokédex's HERE list (plan 10 · F11): what lives at the tile the player stands on, by the hour, with what the
+    /// Pokédex knows of each and its search level; null without the DexNav, empty where the place is no streamed overworld.
+    /// </summary>
+    internal IReadOnlyList<DexNavEntry>? DexNavHereList()
+    {
+        if (!HasTheDexNav) return null;
+        if (!flow.Map.IsStreamed || Habitats.Of(Here) is not { } habitats) return Array.Empty<DexNavEntry>();
+        return DexNavRules.Here(habitats, flow.Player.GridX, flow.Player.GridY, GameClock.Now, flow.Pokedex, flow.DexNav);
+    }
+
     /// <summary>The DexNav is switched on, or off; the find in sight goes with it.</summary>
     private void SwitchDexNav()
     {

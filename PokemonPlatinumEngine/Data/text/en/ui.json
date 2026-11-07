@@ -16,6 +16,7 @@
       "c": "C"
     },
     "hints": {
+      "here": "Here",
       "open": "Open",
       "back": "Back",
       "change": "Change",
@@ -1147,6 +1148,11 @@
     "seen": "SEEN",
     "caught": "CAUGHT",
     "nothingFound": "Nothing found.",
+    "here": {
+      "title": "LIVES HERE",
+      "none": "Nothing is known to live here.",
+      "level": "Search level {n}"
+    },
     "notSeen": "Not seen yet.",
     "kind": "{category} Pokémon",
     "unknownKind": "????? Pokémon",

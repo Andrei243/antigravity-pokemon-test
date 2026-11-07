@@ -781,6 +781,7 @@ public partial class GameEngine
         flow.Story.RestorePhrases(save.StoryPhrases);
         ResetTheSkip();
         OweTheFashionCase();
+        OweTheDexNav();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -2735,6 +2736,7 @@ public partial class GameEngine
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
         flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
+                flow.PokedexScreen.SetHere(DexNavHereList(), flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
                 break;
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;

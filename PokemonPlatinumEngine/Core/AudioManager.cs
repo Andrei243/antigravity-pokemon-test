@@ -138,7 +138,7 @@ public static class AudioManager
     {
         if (hushed) return;
         string name = species.Form(form)?.Name ?? species.Name;
-        heard?.Add((mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}") + (alpha ? " alpha" : ""));
+        heard?.Add((mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}") + (alpha ? Cries.AlphaHeard : ""));
         if (Accessibility.Captions) Accessibility.Caption(SoundBank.CryCaption(species, form), CaptionKind.Cry); // plan 12 · Q9
         if (isMuted || !isInitialized) return;
         mixer.PlaySound(alpha ? Cries.Alpha(species, form, mode) : Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
