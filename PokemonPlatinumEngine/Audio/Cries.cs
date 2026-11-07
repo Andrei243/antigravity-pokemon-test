@@ -271,11 +271,19 @@ public static partial class Cries
     {
         var key = ((species.Form(form)?.Name ?? species.Name).ToLowerInvariant() + AlphaHeard, mode);
         lock (Gate)
-            if (made.TryGetValue(key, out var kept)) return kept;
+            if (made.TryGetValue(key, out var kept))
+            {
+                order.Remove(key);
+                order.AddFirst(key);
+                return kept;
+            }
         var own = Get(species, form, mode);
         var sample = new SoundSample("cry " + key.Item1, Pitched(own.Samples, Overworld.Alphas.CrySemitones));
         lock (Gate)
-            return made.TryAdd(key, sample) ? sample : made[key];
+        {
+            if (made.TryAdd(key, sample)) KeepOnly(key); // an alpha is kept and let go of like any other, or they would pile up beside the bound
+            return made[key];
+        }
     }
 
     /// <summary>A species' cry (or one of its forms') in a mode, made now if it isn't kept.</summary>
@@ -294,16 +302,19 @@ public static partial class Cries
         var sample = new SoundSample("cry " + key.Item1, Play(Make(CryVoice.Of(species, form)), mode));
         lock (Gate)
         {
-            if (made.TryAdd(key, sample))
-            {
-                order.AddFirst(key);
-                while (order.Count > Kept)
-                {
-                    made.Remove(order.Last!.Value);
-                    order.RemoveLast();
-                }
-            }
+            if (made.TryAdd(key, sample)) KeepOnly(key);
             return made[key];
+        }
+    }
+
+    /// <summary>Puts a cry just made first in the order and lets go of the longest unasked for past <see cref="Kept"/>. Called under the gate.</summary>
+    private static void KeepOnly((string, CryMode) key)
+    {
+        order.AddFirst(key);
+        while (order.Count > Kept)
+        {
+            made.Remove(order.Last!.Value);
+            order.RemoveLast();
         }
     }
 

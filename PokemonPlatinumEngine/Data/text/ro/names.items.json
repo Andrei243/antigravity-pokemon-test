@@ -969,7 +969,8 @@
     "Reins of Unity": "Frâiele Unității",
     "Adamant Crystal": "Cristalul de Diamant",
     "Lustrous Globe": "Sfera de Perlă",
-    "Griseous Core": "Miezul Cenușiu"
+    "Griseous Core": "Miezul Cenușiu",
+    "Crafting Kit": "Trusă de Creație"
   },
   "descriptions": {
     "items": {
@@ -1942,7 +1943,8 @@
       "Reins of Unity": "Îl unește pe Calyrex cu Glastrier sau cu Spectrier ori îi desparte din nou.",
       "Adamant Crystal": "Ținut de Dialga, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Oțel.",
       "Lustrous Globe": "Ținut de Palkia, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Apă.",
-      "Griseous Core": "Ținut de Giratina, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Fantomă."
+      "Griseous Core": "Ținut de Giratina, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Fantomă.",
+      "Crafting Kit": "O trusă cu unelte și un săculeț pentru ce lasă în urmă Pokémonii și ce oferă terenul. Deschide-o ca să vezi ce ai."
     }
   }
 }

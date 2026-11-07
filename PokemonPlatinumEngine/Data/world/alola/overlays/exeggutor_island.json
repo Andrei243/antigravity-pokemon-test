@@ -24,7 +24,7 @@
       "name": "Iolana",
       "npcType": "ace_trainer_f",
       "trainer": {
-        "dialogueBefore": "Ace Trainer Iolana: The palms look calm until the Exeggutor start to sway.",
+        "dialogueBefore": "Ace Trainer Iolana: The palms look calm until the Palmagus start to sway.",
         "dialogueAfter": "Ace Trainer Iolana: Calm again."
       }
     }

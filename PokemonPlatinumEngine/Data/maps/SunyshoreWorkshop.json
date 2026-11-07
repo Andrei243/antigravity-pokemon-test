@@ -5,9 +5,8 @@
   "interior": "House",
   "trees": "Round",
   "width": 13,
-  "height": 11,
+  "height": 10,
   "ground": [
-    "#############",
     "#############",
     "#############",
     "#___________#",
@@ -20,7 +19,6 @@
     "######D######"
   ],
   "solid": [
-    "#############",
     "#############",
     "#############",
     "####.###.##.#",
@@ -36,70 +34,70 @@
     {
       "type": "Bookshelf",
       "x": 1,
-      "y": 3,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Bookshelf",
       "x": 2,
-      "y": 3,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Bookshelf",
       "x": 3,
-      "y": 3,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Workbench",
       "x": 5,
-      "y": 3,
+      "y": 2,
       "width": 3,
       "depth": 1
     },
     {
       "type": "Crates",
       "x": 9,
-      "y": 3,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Crates",
       "x": 10,
-      "y": 3,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Plant",
       "x": 11,
-      "y": 4,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Table",
       "x": 9,
-      "y": 5,
+      "y": 4,
       "width": 2,
       "depth": 2
     },
     {
       "type": "Crates",
       "x": 1,
-      "y": 8,
+      "y": 7,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Rug",
       "x": 5,
-      "y": 8,
+      "y": 7,
       "width": 3,
       "depth": 1
     }
@@ -107,7 +105,7 @@
   "warps": [
     {
       "sourceX": 6,
-      "sourceY": 10,
+      "sourceY": 9,
       "targetMap": "Sinnoh",
       "targetX": 870,
       "targetY": 763,
@@ -121,7 +119,7 @@
       "name": "Craftswoman",
       "npcType": "expert_f",
       "x": 6,
-      "y": 4,
+      "y": 3,
       "facing": "Down",
       "script": "Craftswoman"
     }

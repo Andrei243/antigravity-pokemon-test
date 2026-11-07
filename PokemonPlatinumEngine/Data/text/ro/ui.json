@@ -89,7 +89,8 @@
       "wholeMap": "Toată harta",
       "slot": "Slot",
       "wear": "Poartă",
-      "done": "Gata"
+      "done": "Gata",
+      "here": "Aici"
     }
   },
 
@@ -1216,7 +1217,37 @@
     "alolaRanch": "Mergi spre nord prin ferma Paniola.",
     "alolaRoute5": "Urmează Drumul 5 spre nord, spre Brooklet Hill.",
     "alolaBrooklet": "Caut-o pe căpitana Lana la Brooklet Hill, la vest de Drumul 5.",
-    "alolaFree": "Până aici merge drumul deocamdată. Melemele îți stă deschisă."
+    "alolaFree": "Până aici merge drumul deocamdată. Alola îți stă deschisă.",
+    "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
+    "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
+    "kalosClemont": "Întoarce-te în Lumiose City și câștigă de la Clemont, în vârful Turnului Prism, Insigna Tensiune.",
+    "kalosValerie": "Părăsește Lumiose pe poarta de nord, ia Drumul 14 până în Laverre City și câștigă de la Valerie Insigna Zână.",
+    "kalosOlympia": "Urmează Drumurile 15 și 17 spre est, prin Dendemille Town, până în Anistar City și câștigă de la Olympia Insigna Psihic.",
+    "kalosLabs": "Mergi la cafeneaua lui Lysandre, în nordul orașului Lumiose, și caută drumul spre laboratorul lui.",
+    "kalosFlareHQ": "Du-te în Geosenge Town și caută ușa ascunsă a Team Flare, în mijlocul cercului de pietre.",
+    "kalosWulfric": "Ia Drumul 18 spre sud din Anistar City până în Couriway Town, apoi Drumul 19 până în Snowbelle City și la Sala ei.",
+    "kalosLeague": "Mergi spre nord din Snowbelle, prin pădure și sat, pe Drumul 21 și urcă pe Drumul Victoriei până la Ligă.",
+    "alolaRoyal": "Ia Drumul 6 spre est din Paniola Town, până pe Royal Avenue.",
+    "alolaMotel": "Mergi spre nord din Royal Avenue, pe coasta Drumului 8.",
+    "alolaWela": "Urmează plaja Drumului 7 până în Wela Volcano Park, la încercarea căpitanului Kiawe.",
+    "alolaJungle": "Caută-l pe căpitanul Mallow în Lush Jungle, la vest de Drumul 8.",
+    "alolaKonikoni": "Treci prin Diglett's Tunnel de pe Drumul 8 și mergi mai departe până în Konikoni City.",
+    "alolaRuins": "Urcă pe Memorial Hill, la est de Drumul 9, până la Ruins of Life, unde te așteaptă Lillie.",
+    "alolaOlivia": "Întoarce-te în Konikoni City pentru marea încercare a kahunei Olivia.",
+    "alolaHano": "Mergi spre sud din Royal Avenue, până la Hano Grand Resort.",
+    "alolaAether": "Ia feribotul de la debarcaderul din Heahea, spre Aether Paradise.",
+    "alolaMalie": "Ia feribotul de la Aether Paradise spre Malie City, pe insula Ula'ula.",
+    "alolaHokulani": "Urcă pe Mount Hokulani, la nord de Malie City, până la observatorul căpitanului Sophocles.",
+    "alolaTapu": "Urmează Drumul 12 spre est, până în Tapu Village, unde te așteaptă căpitana Acerola.",
+    "alolaMegamart": "Dă încercarea lui Acerola în vechiul Thrifty Megamart din Tapu Village.",
+    "alolaPoTown": "Mergi spre nord din Tapu Village, în Po Town, și înfruntă șeful Team Skull.",
+    "alolaNanu": "Caută-l pe kahuna Nanu în Shady House din Po Town, pentru marea încercare din Ula'ula.",
+    "alolaRescue": "Navighează spre Aether Paradise și scoate-o pe Lillie din sediul central.",
+    "alolaPoni": "Ia feribotul spre Seafolk Village, pe insula Poni.",
+    "alolaDulse": "Dă încercarea căpitanului Dulse în Vast Poni Canyon, la nord de Seafolk Village.",
+    "alolaHapu": "Traversează înot strâmtoarea spre Exeggutor Island și întâlnește-l pe kahuna Hapu.",
+    "alolaAltar": "Urcă drumul de la nord de Poni Breakers, până la Altarul Soarelui și al Lunii.",
+    "alolaLanakila": "Mergi spre est din Tapu Village, la Mount Lanakila, și urcă până la Liga Pokémon."
   },
 
   "close": {
@@ -1560,8 +1591,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NAȚIONAL" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "Național" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte" },
     "found": "GĂSIȚI",
     "order": "ORDINE",
     "seen": "VĂZUȚI",
@@ -1631,8 +1662,19 @@
         "research": "a studiat fiecare dintre cei {count} Pokémoni ai Pokédexului Sinnoh până la nivelul de cercetare 10. Nimic despre ei nu a rămas nescris.",
         "sinnoh": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Sinnoh. O evidență completă a vieții sălbatice a regiunii, ținută cu grijă.",
         "kanto": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kanto. O evidență completă a vieții sălbatice a regiunii, ținută cu grijă.",
-        "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon."
-      }
+        "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon.",
+        "kaloscentral": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Central: grădinile, pădurile și străzile din Lumiose, toate înregistrate.",
+        "kaloscoastal": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Costier, de la bălțile de maree până în larg.",
+        "kalosmountain": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Munte, de la zăpezile înalte până la piatra veche."
+      },
+      "kaloscentral": "POKÉDEX KALOS CENTRAL",
+      "kaloscoastal": "POKÉDEX KALOS COSTIER",
+      "kalosmountain": "POKÉDEX KALOS MUNTE"
+    },
+    "here": {
+      "title": "TRĂIEȘTE AICI",
+      "none": "Nu se știe să trăiască nimic aici.",
+      "level": "Nivel de căutare {n}"
     }
   },
   "hallOfFame": {
@@ -1746,7 +1788,8 @@
     "contestsValue": "{won} câștigate din {entered}",
     "started": "AVENTURĂ ÎNCEPUTĂ",
     "stars": "STELE",
-    "starsNote": "O stea pentru fiecare dintre cinci mari isprăvi."
+    "starsNote": "O stea pentru fiecare dintre cinci mari isprăvi.",
+    "stamps": "ȘTAMPILE  {count} / {of}"
   },
   "boxes": {
     "title": "CUTIILE PC-ULUI",
@@ -3819,7 +3862,10 @@
       "boutLost": "{pokemon} iese din rundă!",
       "noHesitating": "Doar un Pokémon din Battle Palace ezită.",
       "noSwitching": "O rundă din Battle Arena se luptă până la capăt!"
-    }
+    },
+    "totemAura": "{pokemon} e învăluit în aura unui totem!",
+    "totemCantBeCaught": "Aura totemului a abătut Ball-ul! Un totem nu poate fi prins!",
+    "defeatedTheTotem": "{player} a învins totemul {pokemon}! Aliații lui s-au împrăștiat!"
   },
 
   "battleInfo": {
@@ -4271,7 +4317,13 @@
     "NoData": "Antrenor",
     "PokemonTrainerColress": "Antrenor Pokémon",
     "PikeQueen": "Regina Știucii",
-    "PyramidKing": "Regele Piramidei"
+    "PyramidKing": "Regele Piramidei",
+    "TeamFlareGrunt": "Membru Team Flare",
+    "TeamFlareAdmin": "Administrator Team Flare",
+    "TeamFlareBoss": "Șeful Team Flare",
+    "AetherPresident": "Președinte Aether",
+    "TeamSkullAdmin": "Administrator Team Skull",
+    "TeamSkullBoss": "Șeful Team Skull"
   },
   "broadcast": {
     "clock": {
@@ -5728,7 +5780,8 @@
       "teamsCount": "{n} păstrate",
       "gauntletBest": "Record {n}/{of}",
       "streakBest": "Record {n}",
-      "puzzlesSolved": "{n}/{of} rezolvate"
+      "puzzlesSolved": "{n}/{of} rezolvate",
+      "versus": "VERSUS"
     },
     "blurb": {
       "teams": "Construiește echipe de la zero: orice specie, cu nivelul, firea, abilitatea, obiectul și patru atacuri pe care le poate ști. Echipele sunt păstrate pe acest calculator, separat de orice salvare.",
@@ -5736,7 +5789,8 @@
       "streak": "Luptă cu antrenorii Frontierei de Luptă unul după altul, la nivelul 50, cât timp echipa ta continuă să câștige. La fiecare șapte lupte devin mai puternici.",
       "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge.",
       "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel.",
-      "daily": "O rundă a Fabricii de Luptă trasă din data de azi: aceleași șase Pokémon de închiriat și aceiași șapte antrenori pentru toată lumea azi. Închiriază trei, fă un schimb după o victorie și vezi cât de departe ajungi. Se păstrează prima rundă a zilei."
+      "daily": "O rundă a Fabricii de Luptă trasă din data de azi: aceleași șase Pokémon de închiriat și aceiași șapte antrenori pentru toată lumea azi. Închiriază trei, fă un schimb după o victorie și vezi cât de departe ajungi. Se păstrează prima rundă a zilei.",
+      "versus": "Doi oameni la același ecran: fiecare alege o echipă și se luptă la nivelul 50. Fiecare alege pe rând, în spatele unei perdele, ca să nu vadă celălalt alegerea. Nimic nu se păstrează."
     },
     "clears": "Terminată de {n} ori",
     "daily": {
@@ -5756,7 +5810,9 @@
       "friend": "Ce echipă înfruntă acest antrenor?",
       "speciesTitle": "Alege o specie",
       "itemTitle": "Alege un obiect de ținut",
-      "moveTitle": "Alege un atac"
+      "moveTitle": "Alege un atac",
+      "versusFirst": "{player}: ce echipă?",
+      "versusSecond": "{player}: ce echipă?"
     },
     "hint": {
       "begin": "Începe",
@@ -5970,7 +6026,9 @@
       "stale": "Aceasta răspunde la o întrebare care nu mai e pusă.",
       "places": "Se așteaptă câte o alegere pentru fiecare dintre locurile tale."
     },
-    "waiting": "Se așteaptă {player}…"
+    "waiting": "Se așteaptă {player}…",
+    "moveRefused": "{pokemon} nu poate folosi {move} acum!",
+    "switchRefused": "Pokémonul acela nu poate intra acum în locul lui {pokemon}!"
   },
   "globalLink": {
     "title": "LEGĂTURA GLOBALĂ",
@@ -5991,7 +6049,8 @@
     "menu": {
       "makeCode": "FĂ UN COD",
       "enterCode": "TASTEAZĂ UN COD",
-      "leave": "PLEACĂ"
+      "leave": "PLEACĂ",
+      "battleCode": "FĂ UN COD DE LUPTĂ"
     },
     "key": {
       "ok": "OK",
@@ -6003,7 +6062,8 @@
       "trade": "Schimbă",
       "offer": "Oferă",
       "callOff": "Anulează",
-      "leave": "Pleacă"
+      "leave": "Pleacă",
+      "bring": "Adu echipa aceasta"
     },
     "line": {
       "welcome": "Ești conectat! Fă un cod pentru prietenul tău sau tastează-l pe cel făcut de el.",
@@ -6026,7 +6086,9 @@
       "otherBack": "{name} s-a întors.",
       "notThisSave": "Un schimb așteaptă o altă salvare de-a ta, nu pe aceasta.",
       "finished": "{pokemon} de la vizita trecută a sosit, iar jocul a fost salvat.",
-      "traded": "Schimbul cu {name} s-a încheiat! {pokemon} e al tău, iar jocul a fost salvat."
+      "traded": "Schimbul cu {name} s-a încheiat! {pokemon} e al tău, iar jocul a fost salvat.",
+      "battleRoom": "Ești conectat cu {name} pentru o luptă! Adu-ți echipa: fiecare Pokémon e adus la nivelul 50, iar nimic din ce face nu ajunge în salvarea ta.",
+      "bringing": "Echipa ta e verificată. Se așteaptă {name}…"
     },
     "refused": {
       "outdated": "Jocul acesta e prea vechi pentru server. Te rog actualizează-l.",
@@ -6049,6 +6111,155 @@
       "closing": "Serverul se închide. Te rog revino mai târziu.",
       "notSaved": "Jocul nu a putut fi salvat, așa că schimbul așteaptă vizita următoare.",
       "runEnded": "Această încercare s-a încheiat, așa că nu mai poate primi nimic."
+    },
+    "team": "ECHIPA TA",
+    "battleWith": "TE LUPȚI",
+    "battleRules": "NIVEL FIX 50 · ȘASE LA ȘASE · CÂTE UNUL DIN FIECARE SPECIE ȘI OBIECT",
+    "record": "Cu {name}: {wins} câștigate, {losses} pierdute, {draws} egale",
+    "battled": {
+      "none": "Lupta cu {name} a fost anulată înainte să înceapă.",
+      "won": {
+        "knockedOut": "Ai câștigat în fața lui {name}! Victoria a fost trecută în recordul tău.",
+        "forfeit": "{name} a renunțat la meci. Victoria a fost trecută în recordul tău.",
+        "timer": "Timpul lui {name} s-a scurs. Victoria a fost trecută în recordul tău.",
+        "disconnect": "Legătura lui {name} a căzut și nu s-a mai întors. Victoria a fost trecută în recordul tău."
+      },
+      "lost": {
+        "knockedOut": "Ai pierdut în fața lui {name}. Lupta a fost trecută în recordul tău.",
+        "forfeit": "Ai cedat meciul în fața lui {name}.",
+        "timer": "Ți s-a scurs timpul de trei ori la rând, iar meciul a mers la {name}.",
+        "disconnect": "Legătura ta a căzut, iar meciul a mers la {name}."
+      }
+    }
+  },
+  "crafting": {
+    "title": "TRUSA DE CREAȚIE",
+    "tab": {
+      "materials": "MATERIALE"
+    },
+    "kinds": "{n} FELURI",
+    "has": "×{count}  din {limit}",
+    "worth": "Valorează {money} bucata",
+    "leftBy": "Lăsat în urmă de Pokémonii de tip {type}.",
+    "leftByRare": "Uneori lăsat în urmă de Pokémonii de tip {type}.",
+    "fieldFinds": "Se găsește pe teren.",
+    "pantryGoods": "Cumpărat pentru oală.",
+    "none": "Încă nimic.",
+    "left": "Lasă în urmă: {list}.",
+    "leftItem": "{name} ×{n}",
+    "leftSeparator": ", ",
+    "leftMore": "{list} și încă {n}",
+    "material": {
+      "kind": {
+        "pokemon": "DE LA POKÉMONI",
+        "field": "DE PE TEREN",
+        "pantry": "DIN CĂMARĂ"
+      },
+      "name": {
+        "softFluff": "Puf Moale",
+        "plushTuft": "Smoc Pufos",
+        "cinderAsh": "Cenușă de Jar",
+        "emberCore": "Miez de Jar",
+        "clearDroplet": "Picătură Limpede",
+        "tidePearl": "Perlă de Maree",
+        "leafScrap": "Petic de Frunză",
+        "sunBloom": "Floare de Soare",
+        "sparkDust": "Praf de Scântei",
+        "stormCoil": "Spirală de Furtună",
+        "frostFlake": "Fulg de Chiciură",
+        "glacierShard": "Ciob de Ghețar",
+        "tornWrap": "Fâșie Ruptă",
+        "valorThread": "Fir de Vitejie",
+        "murkDrop": "Picătură Tulbure",
+        "venomGland": "Glandă de Venin",
+        "grittySand": "Nisip Aspru",
+        "fossilChip": "Așchie de Fosilă",
+        "looseFeather": "Pană Zburlită",
+        "galePlume": "Pană de Vijelie",
+        "faintGlimmer": "Licărire Slabă",
+        "dreamPrism": "Prismă de Vis",
+        "silkStrand": "Fir de Mătase",
+        "chitinShard": "Ciob de Chitină",
+        "rockFlake": "Așchie de Stâncă",
+        "geodeHeart": "Inimă de Geodă",
+        "paleWisp": "Fuior Palid",
+        "nightVeil": "Văl de Noapte",
+        "drakeScale": "Solz de Dragon",
+        "wyrmFang": "Colț de Balaur",
+        "ironFilings": "Pilitură de Fier",
+        "brightAlloy": "Aliaj Lucios",
+        "nightFur": "Blană de Noapte",
+        "umbralClaw": "Gheară Umbrală",
+        "charmGlitter": "Sclipici Fermecat",
+        "moonRibbon": "Panglică Lunară",
+        "quarryStone": "Piatră de Carieră",
+        "rawOre": "Minereu Brut",
+        "timber": "Cherestea",
+        "amberResin": "Răsină de Chihlimbar",
+        "plantFibre": "Fibră Vegetală",
+        "wildHerbs": "Ierburi Sălbatice",
+        "seaShell": "Scoică",
+        "coarseSalt": "Sare Grunjoasă",
+        "frostCrystal": "Cristal de Chiciură",
+        "riverClay": "Argilă de Râu"
+      },
+      "desc": {
+        "softFluff": "Puf moale, lăsat de Pokémonii blânzi și obișnuiți.",
+        "plushTuft": "Un smoc des de puf, elastic și greu de găsit.",
+        "cinderAsh": "Cenușă caldă și cenușie, ce cade de pe Pokémonii de tip Foc.",
+        "emberCore": "Un ghem de jar aprins care nu se stinge niciodată de tot.",
+        "clearDroplet": "O picătură limpede de apă, care își păstrează forma.",
+        "tidePearl": "O perlă mică ce murmură ca marea.",
+        "leafScrap": "Un petic de frunză, verde și mlădios.",
+        "sunBloom": "O floare ce păstrează căldura soarelui.",
+        "sparkDust": "Un praf care furnică și pocnește în palmă.",
+        "stormCoil": "O spirală strânsă de blană, vibrând de fulgere adunate.",
+        "frostFlake": "Un fulg de chiciură care nu se topește în mână.",
+        "glacierShard": "Un ciob de gheață veche, limpede ca sticla și amarnic de rece.",
+        "tornWrap": "O fâșie de pânză ruptă într-un antrenament aprig.",
+        "valorThread": "Un fir răsucit strâns, mai tare decât funia.",
+        "murkDrop": "O picătură groasă și neagră, care înțeapă nasul.",
+        "venomGland": "O glandă mică, încă ușor primejdioasă.",
+        "grittySand": "Nisip aspru care se lipește de orice.",
+        "fossilChip": "O așchie de piatră mai veche decât orice drum.",
+        "looseFeather": "O pană ușoară, purtată de vânt.",
+        "galePlume": "O pană lungă, care prinde orice adiere.",
+        "faintGlimmer": "O licărire care piere dacă te uiți drept la ea.",
+        "dreamPrism": "O prismă ce frânge lumina în chipuri de somn.",
+        "silkStrand": "Un fir fin de mătase, lipicios la un capăt.",
+        "chitinShard": "Un ciob curbat și tare, dintr-o carapace lepădată.",
+        "rockFlake": "O așchie de piatră, tocită și grea.",
+        "geodeHeart": "O inimă de cristal, ruptă dintr-o geodă.",
+        "paleWisp": "Un fuior palid care se agață de locurile reci.",
+        "nightVeil": "Un văl de umbră fină, care nu cântărește nimic.",
+        "drakeScale": "Un solz tare ca scoarța, cu muchii ca de lamă.",
+        "wyrmFang": "Un colț șlefuit de o viață lungă și mândră.",
+        "ironFilings": "Pilitură fină de metal, care sare spre magnet.",
+        "brightAlloy": "O placă de metal lucios care nu ruginește niciodată.",
+        "nightFur": "Blană neagră care soarbe lumina.",
+        "umbralClaw": "O gheară neagră ca o noapte fără lună.",
+        "charmGlitter": "Sclipici care strălucește fără nicio pricină.",
+        "moonRibbon": "O panglică argintie care luminează slab după lăsarea întunericului.",
+        "quarryStone": "Piatră simplă, spartă dintr-un perete de stâncă.",
+        "rawOre": "Un bulgăre de minereu, cu vine de metal în el.",
+        "timber": "O bucată de lemn dintr-un copac doborât.",
+        "amberResin": "O răsină lipicioasă, care se întărește ca chihlimbarul.",
+        "plantFibre": "Fibră rezistentă, bună pentru funii și pânză.",
+        "wildHerbs": "Un mănunchi de ierburi culese de pe marginea drumului.",
+        "seaShell": "O scoică aruncată de valuri pe țărm.",
+        "coarseSalt": "Cristale de sare grunjoasă de la linia mareei.",
+        "frostCrystal": "Un cristal de chiciură găsit unde zăpada stă adâncă.",
+        "riverClay": "Argilă fină care își păstrează forma când se usucă."
+      }
+    }
+  },
+  "versus": {
+    "first": "Jucătorul 1",
+    "second": "Jucătorul 2",
+    "curtain": {
+      "pass": "Dă controlerul lui {player}",
+      "lookAway": "{player}, uită-te în altă parte cât alege celălalt.",
+      "ready": "Apasă A când ești gata"
     }
   }
 }

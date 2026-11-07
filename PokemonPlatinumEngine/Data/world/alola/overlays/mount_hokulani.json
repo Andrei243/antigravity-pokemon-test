@@ -19,7 +19,7 @@
       "name": "Noa",
       "npcType": "backpacker_f",
       "trainer": {
-        "dialogueBefore": "Backpacker Noa: My Magnemite and I came for the stars. I stayed for the battles.",
+        "dialogueBefore": "Backpacker Noa: My Magnezone and I came for the stars. I stayed for the battles.",
         "dialogueAfter": "Backpacker Noa: The stars are pretty. You, too, I guess."
       }
     },
