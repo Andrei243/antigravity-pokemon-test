@@ -46,7 +46,7 @@ internal static partial class ModernUi
     public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", Text.Decimal(kilograms, 1)));
 
     /// <summary>The colour of a Pokédex's tag (plan 18 · W3): Sinnoh's Blue, Kanto's Green, the National one's Red, and Gold for a Pokédex whose region has no colour of its own yet.</summary>
-    public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, _ => Gold };
+    public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, "kalos-central" => Red, "kalos-coastal" => Blue, "kalos-mountain" => Green, _ => Gold };
 
     private static readonly Color Cream = new(252, 246, 228, 255);
     private static readonly Color DeepGold = new(176, 120, 30, 255);

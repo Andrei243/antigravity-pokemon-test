@@ -197,16 +197,16 @@ public class Pokedex
     public static string FromDiplomaKey(string key) => key switch { "Sinnoh" => Sinnoh, "National" => National, _ => key };
 
     /// <summary>The region whose own Pokédex this is (<c>RegionFile.Dex</c>); null for the National one or one no region plays by.</summary>
-    public static Region? RegionOf(string dex) => dex == National ? null : RegionDatabase.All.FirstOrDefault(r => r.Dex == dex);
+    public static Region? RegionOf(string dex) => dex == National ? null : RegionDatabase.All.FirstOrDefault(r => r.Dexes.Contains(dex));
 
     /// <summary>Notes that the player has entered a region, which gives them its regional Pokédex (a region with none gives nothing).</summary>
     public void Enter(Region region)
     {
-        if (region.Dex is { } dex && !entered.Contains(dex)) entered.Add(dex);
+        foreach (var dex in region.Dexes) if (!entered.Contains(dex)) entered.Add(dex);
     }
 
     /// <summary>The regional Pokédexes the player has, in the order of the chain of regions.</summary>
-    public IReadOnlyList<string> Regional => RegionDatabase.All.Select(r => r.Dex).Where(d => d != null && entered.Contains(d)).Select(d => d!).Distinct().ToList();
+    public IReadOnlyList<string> Regional => RegionDatabase.All.SelectMany(r => r.Dexes).Where(entered.Contains).Distinct().ToList();
 
     /// <summary>The Pokédexes the player can open: the regional ones of the regions they have entered, then the National one once it is unlocked.</summary>
     public IReadOnlyList<string> Dexes => NationalUnlocked ? Regional.Append(National).ToList() : Regional;

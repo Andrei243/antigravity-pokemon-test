@@ -81,7 +81,7 @@ public static class Crossing
     /// </summary>
     public static bool HasEntered(Region region, StoryState story, IEnumerable<string> dexesEntered) =>
         story.HasEntered(region.Id)
-        || (region.Dex is { } dex && dexesEntered.Contains(dex));
+        || region.Dexes.Any(dexesEntered.Contains);
 
     /// <summary>
     /// Whether Fly may take the player from <paramref name="from"/> to another region (plan 18 · W9; the README's

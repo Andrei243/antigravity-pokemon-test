@@ -7,8 +7,9 @@
   "map": "Kalos",
   // Kalos's first places as they are drawn by hand (plan 23 · Z1; tools/MapDraw/kalos): X and Y have no decompilation
   // and no dump, so the region is laid in its shape on the four-direction grid. Kalos-Central, the first of its three
-  // Pokédexes, until plan 23's later sessions list all three
+  // Pokédexes; plan 23 · Z4 lists all three below (the player reads each, and each has its own diploma)
   "dex": "kalos-central",
+  "dexes": [ "kalos-central", "kalos-coastal", "kalos-mountain" ],
   "nationalUnlock": "HallOfFame",
   // A new game begun here (--region Kalos) wakes in the player's room in Vaniville Town with nothing, and the friends
   // in Aquacorde Town hand over the first Pokémon (plan 23 · Z1)
