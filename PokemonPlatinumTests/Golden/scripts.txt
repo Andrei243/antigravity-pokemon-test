@@ -6791,6 +6791,25 @@ way -
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   = VAR_ACUITY_LAKEFRONT_STATE 0 -> 1
   + seen acuity_lakefront.The rival calls down
+=== akala_outskirts.Lillie
+from Lillie at 359,152 of Akala
+way -
+  Lillie> Lucas! Olivia said you'd come. These are the Ruins of Life, the shrine of Akala's guardian, Tapu Lele.
+  Lillie> I wanted to ask the guardian something. Would you come in with me?
+  > The two of them stepped inside. The air was still and sweet... Then a glimmer of pink light danced over the altar.
+  > For a moment Tapu Lele hung in the air before them. Then it was gone, as if it had never been there.
+  Lillie> Did you see it? It was so beautiful... I think it was telling us to keep going.
+  Lillie> Olivia is waiting for her grand trial in Konikoni City. I'll see you later, Lucas.
+  * scene akala_outskirts.The Ruins of Life
+  * fade out
+  * cry Tapu Lele
+  * seen Tapu Lele
+  * fade in
+  * endscene
+  + FLAG_ALOLA_RUINS_DONE
+  = VAR_ALOLA_AKALA 0 -> 6
+  = VAR_OBJECTIVE 0 -> 624
+  + seen akala_outskirts.The Ruins of Life
 === akala_route_5.Gladion
 from the trigger at 148,145 of Akala
 way 0
@@ -6819,6 +6838,39 @@ way 1, from answer 1
 from Gladion at 150,140 of Akala
 way -
   Gladion> ...
+=== akala_route_8.MotelGrunt
+from Grunt at 277,138 of Akala
+way -
+  Grunt> What're you looking at? This is Skull business!
+=== akala_route_8.MotelScene
+from the trigger at 264,137 of Akala
+way 0
+  Grunt> Yo, Aether lady! Hand over that Pokémon or Team Skull's moving into your little foundation!
+  Wicke> Oh dear, oh dear. I only came to check on the island's Pokémon... Ah, a trainer! Would you be so kind?
+  Grunt> A trial-goer? Fine! I'll squash you first!
+  Grunt> Ugh! Skull doesn't need this. I'm out!
+  Wicke> Thank you ever so much. I'm Wicke, of the Aether Foundation. We care for Pokémon that are hurt or lost.
+  Wicke> Our home is a floating island called Aether Paradise. Do come and visit one day.
+  Wicke> Kiawe's trial? Along Route 7's beach to the volcano. Do mind the heat!
+  * scene akala_route_8.Team Skull at the motel
+  * battle alola_team_skull_grunt_motel Won
+  * endscene
+  + FLAG_ALOLA_MOTEL_DONE
+  = VAR_ALOLA_AKALA 0 -> 2
+  = VAR_OBJECTIVE 0 -> 620
+  + beaten alola_team_skull_grunt_motel
+  + seen akala_route_8.Team Skull at the motel
+way 1, from answer 1
+  * battle alola_team_skull_grunt_motel Lost
+  * scene over, unseen
+=== akala_route_8.Wicke
+from Wicke at 279,138 of Akala
+way -
+  Wicke> Oh! Please, don't mind me. Nothing at all to worry about here.
+=== akala_route_8.Worker
+from Worker at 273,163 of Akala
+way -
+  Worker> Diglett's Tunnel is shut while we shore it up. Go and see the captains first, eh?
 === alola_route_1.Kukui
 from Prof. Kukui at 240,158 of Melemele
 way -
@@ -18385,6 +18437,32 @@ way 0
 way 1, from answer 1
   * wildbattle Arceus 80 Lost
   + seen hall_of_origin.Arceus in the Hall of Origin
+=== hano_beach.HanoScene
+from the trigger at 264,245 of Akala
+way -
+  Hau> Lucas! You got Olivia's stamp? That's two islands done! We should celebrate. With malasadas.
+  Lillie> Congratulations, Lucas. I knew you could do it.
+  Wicke> Oh, hello again! I've been telling your friends about Aether Paradise. Our ship can take all three of you.
+  Wicke> The Aether Foundation would be honoured to have you as our guests. Do think about it!
+  * scene hano_beach.The Hano Grand Resort
+  * endscene
+  + FLAG_ALOLA_AKALA_DONE
+  + FLAG_ALOLA_HANO_DONE
+  = VAR_ALOLA_AKALA 0 -> 8
+  = VAR_OBJECTIVE 0 -> 699
+  + seen hano_beach.The Hano Grand Resort
+=== hano_beach.Hau
+from Hau at 268,257 of Akala
+way -
+  Hau> The resort's malasadas cost twice as much. They're also twice as big!
+=== hano_beach.Lillie
+from Lillie at 263,257 of Akala
+way -
+  Lillie> The sea here is so blue. I could watch it all day.
+=== hano_beach.Wicke
+from Wicke at 270,258 of Akala
+way -
+  Wicke> Aether Paradise is lovely this time of year. Well, it's lovely every time of year.
 === hauoli_city.Ferry
 from Sailor at 357,180 of Melemele
 way -
@@ -19850,6 +19928,21 @@ way -
   > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
   * sound rock_smash
   + FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
+=== konikoni_city.Olivia
+from Olivia at 322,248 of Akala
+way -
+  Olivia> Welcome to Konikoni! Mind the jewelry. It's all for sale.
+=== konikoni_city.OliviaMeets
+from the trigger at 320,237 of Akala
+way -
+  Olivia> Alola! You must be the trial-goer Mallow keeps messaging me about. I'm Olivia, kahuna of Akala.
+  Olivia> Before my grand trial, go up to the Ruins of Life past Memorial Hill. Your friend Lillie is waiting there.
+  * scene konikoni_city.Olivia at Konikoni's gate
+  * endscene
+  + FLAG_ALOLA_OLIVIA_MET
+  = VAR_ALOLA_AKALA 0 -> 5
+  = VAR_OBJECTIVE 0 -> 623
+  + seen konikoni_city.Olivia at Konikoni's gate
 === lacunosa_town.Hugh
 from {rival} at 649,185 of Unova
 way -
@@ -21398,6 +21491,47 @@ way -
 from Sina at 359,409 of Kalos
 way -
   Sina> The professor's laboratory is up the avenue on the right!
+=== lush_jungle.Ingredient1
+from the tile read at 197,100 of Akala
+way -
+  > Thick green leaves. Nothing else here.
+=== lush_jungle.Ingredient2
+from the tile read at 218,100 of Akala
+way -
+  > Thick green leaves. Nothing else here.
+=== lush_jungle.Ingredient3
+from the tile read at 195,118 of Akala
+way -
+  > Thick green leaves. Nothing else here.
+=== lush_jungle.Ingredient4
+from the tile read at 202,138 of Akala
+way -
+  > Thick green leaves. Nothing else here.
+=== lush_jungle.Mallow
+from Mallow at 204,109 of Akala
+way -
+  Mallow> Alola again! My trial wants a fire-tested trainer. Go see Kiawe on the volcano, then come back to me!
+=== lush_jungle.Totem
+from Lurantis at 207,95 of Akala
+way 0
+  > Drawn by the dish's scent, a Lurantis as tall as a tree stepped out of the leaves!
+  Mallow> You did it! The whole jungle heard that one. My trial is passed!
+  Mallow> Here's the Grassium Z. With it, a Grass-type move becomes a Z-Move. Best seasoning there is!
+  > Lucas received the Grassium Z!
+  > Lucas put it away in the Items pocket.
+  Mallow> Diglett's Tunnel should be open now. Konikoni City is on its far side, and Olivia, our kahuna, is there.
+  * scene lush_jungle.The totem Lurantis
+  * cry Lurantis
+  * totembattle Lurantis 24 Speed+1 ally Comfey Won
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_ALOLA_LUSH_TRIAL_DONE
+  = VAR_ALOLA_AKALA 0 -> 4
+  = VAR_OBJECTIVE 0 -> 622
+  + seen lush_jungle.The totem Lurantis
+way 1, from answer 1
+  * totembattle Lurantis 24 Speed+1 ally Comfey Lost
+  * scene over, unseen
 === magma_hideout_4f.Maxie
 from Maxie at 16,21 of MagmaHideout_4F
 way 0
@@ -28618,6 +28752,17 @@ way -
 from Guard at 6,2 of Route8_WestEntrance
 way -
   Guard> Saffron City's closed to travellers for now. Orders from the top, I'm afraid.
+=== royal_avenue.Hau
+from Hau at 266,209 of Akala
+way -
+  Hau> Royal Avenue's got everything! Shops, a dome, and a malasada stand somewhere. I just have to find it.
+=== royal_avenue.Kukui
+from Prof. Kukui at 264,209 of Akala
+way -
+  Prof. Kukui> Isn't the dome something? One day you'll stand in that ring, cousin. I can feel it!
+=== royal_avenue.RoyalScene
+from the trigger at 238,216 of Akala
+way -
 === ruins_of_alph_northeast_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_NortheastChamber
 way 0
@@ -34372,6 +34517,30 @@ way -
   * partner Mira mira_wayward_cave
   + FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA
   = VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 0 -> 1
+=== wela_volcano_park.Kiawe
+from Kiawe at 331,46 of Akala
+way -
+  Kiawe> I am Kiawe, captain of this volcano's trial. You are early. Walk Route 8 first, and come back when it is done.
+=== wela_volcano_park.Totem
+from Marowak at 331,39 of Akala
+way -
+  > Smoke curls from the crater's far side... The dancers come first.
+=== wela_volcano_park.Trial1
+from Salandit at 324,43 of Akala
+way 0
+  > The Salandit hissed and leapt into the dance!
+  * wildbattle Salandit 20 nofleeing Won
+  + FLAG_ALOLA_WELA_TRIAL_1
+way 1, from answer 1
+  * wildbattle Salandit 20 nofleeing Lost
+=== wela_volcano_park.Trial2
+from Cubone at 339,43 of Akala
+way 0
+  > The Cubone twirled its bone and leapt into the dance!
+  * wildbattle Cubone 20 nofleeing Won
+  + FLAG_ALOLA_WELA_TRIAL_2
+way 1, from answer 1
+  * wildbattle Cubone 20 nofleeing Lost
 === whirl_islands_b3f_lugia_cave.Lugia
 from Lugia at 16,17 of WhirlIslands_LugiaCave
 way 0
