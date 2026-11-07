@@ -326,11 +326,15 @@ public static class Fossils
     public const string RevivedVariable = "VAR_REVIVED_POKEMON_SPECIES";
     public const int Level = 20;
 
-    /// <summary><c>sFossilItemToSpeciesMapping</c>, in its order.</summary>
+    /// <summary>
+    /// <c>sFossilItemToSpeciesMapping</c>, in its order, then Black 2's two of Unova (plan 40 · GE3: Nacrene City's museum
+    /// restores them, and so does any museum that restores fossils, as Black 2's restores every fossil of the games before).
+    /// </summary>
     public static readonly (string Item, string Species)[] All =
     {
         ("Old Amber", "Aerodactyl"), ("Helix Fossil", "Omanyte"), ("Dome Fossil", "Kabuto"), ("Root Fossil", "Lileep"),
-        ("Claw Fossil", "Anorith"), ("Armor Fossil", "Shieldon"), ("Skull Fossil", "Cranidos")
+        ("Claw Fossil", "Anorith"), ("Armor Fossil", "Shieldon"), ("Skull Fossil", "Cranidos"),
+        ("Cover Fossil", "Tirtouga"), ("Plume Fossil", "Archen")
     };
 
     public static string? SpeciesOf(string item) => All.FirstOrDefault(f => f.Item == item).Species;

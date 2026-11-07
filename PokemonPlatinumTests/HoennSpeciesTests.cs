@@ -27,16 +27,8 @@ public class HoennSpeciesTests
     /// </summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Ruby's and Sapphire's, which Emerald's tables leave out (Emerald had them by trade): placed in their own places
-        ["Meditite"] = "GE3: Ruby's and Sapphire's, in their own places", ["Medicham"] = "GE3: Ruby's and Sapphire's, in their own places",
-        ["Roselia"] = "GE3: Ruby's and Sapphire's, in their own places", ["Zangoose"] = "GE3: Ruby's and Sapphire's, in their own places",
-        ["Lunatone"] = "GE3: Ruby's and Sapphire's, in their own places",
-        // (Surskit and Masquerain, which Emerald's grass leaves out and its television never announces, are met in the outbreaks
-        // of our own since plan 38 · EX1: Data/world/hoenn/outbreaks.json)
-        // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
-        ["Alakazam"] = "GE3: a Linking Cord in Hoenn", ["Golem"] = "GE3: a Linking Cord in Hoenn",
-        ["Machamp"] = "GE3: a Linking Cord in Hoenn", ["Kingdra"] = "GE3: a Linking Cord in Hoenn",
-        ["Huntail"] = "GE3: a Linking Cord in Hoenn", ["Gorebyss"] = "GE3: a Linking Cord in Hoenn",
+        // (Plan 40 · GE3 gave Ruby's and Sapphire's species in the overlays' national slots and a Linking Cord in
+        // Lilycove's Pokémon Center)
         // Route 119's Feebas tiles, not built for Hoenn
         ["Feebas"] = "plan 38 · EX4: Route 119's Feebas", ["Milotic"] = "plan 38 · EX4: Route 119's Feebas",
         // (Jirachi, which no island of decision 5 gave, wakes in Steven's cave since plan 29 · LS11c)
@@ -45,7 +37,6 @@ public class HoennSpeciesTests
     /// <summary>The items and places Hoenn's evolutions ask for that nothing in Hoenn gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = "GE3: a Linking Cord in Hoenn",
     };
 
     [Fact]

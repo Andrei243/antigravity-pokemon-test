@@ -4,6 +4,10 @@
   // level 68; caught or beaten it is gone for good (FLAG_UNOVA_FOUGHT_REGIGIGAS), run from, it is back the next time
   // (twist_mountain_8.txt; the rulings' "The old roads round Icirrus City")
   "area": "twist_mountain_8",
+
+  // Plan 40 · GE3: Black 2's Ice Rock in Twist Mountain, by which an Eevee levelled here becomes a Glaceon
+
+  "evolutionSites": [ "Ice Rock" ],
   "bgmTrack": "johto/ruins_of_alph",
   "battleArena": "Cave",
   "read": { "2": "Plaque", "3": "Inscription", "4": "Inscription" },

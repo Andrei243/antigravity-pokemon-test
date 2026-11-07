@@ -23,8 +23,13 @@
   },
   // Landorus (plan 22 · U10, part d): a person of ours before the shrine, shown once Unova's Hall of Fame is entered and gone
   // once fought (abundant_shrine.txt)
+  // Plan 40 · GE3, a way of ours for Black 2's Dream Radar: once Landorus has been met, the two who once roamed with it,
+  // Tornadus and Thundurus, come down to the clearing before the shrine, each battled at level 70 and gone for good once
+  // caught or beaten (FLAG_UNOVA_FOUGHT_TORNADUS, FLAG_UNOVA_FOUGHT_THUNDURUS, ours)
   "npcs": [
-    { "id": "landorus", "name": "Landorus", "npcType": "Pokemon", "species": "Landorus", "x": 22, "y": 14, "facing": "Down", "script": "Landorus", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_LANDORUS" }
+    { "id": "landorus", "name": "Landorus", "npcType": "Pokemon", "species": "Landorus", "x": 22, "y": 14, "facing": "Down", "script": "Landorus", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_LANDORUS" },
+    { "id": "tornadus", "name": "Tornadus", "npcType": "Pokemon", "species": "Tornadus", "x": 19, "y": 13, "facing": "Down", "script": "Tornadus", "shownBy": "FLAG_UNOVA_FOUGHT_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_TORNADUS" },
+    { "id": "thundurus", "name": "Thundurus", "npcType": "Pokemon", "species": "Thundurus", "x": 25, "y": 13, "facing": "Down", "script": "Thundurus", "shownBy": "FLAG_UNOVA_FOUGHT_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_THUNDURUS" }
   ],
   "signs": {
     "10807": "Abundant Shrine\nA wood kept for the one who blesses the harvest",

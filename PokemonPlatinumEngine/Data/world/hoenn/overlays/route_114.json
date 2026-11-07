@@ -3,6 +3,10 @@
   // Maniac's house and Lanette's (route_114.txt). Its two ways into Terra Cave open one at a time after the Hall of Fame,
   // while the drought is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather; the doors' and zones' flags)
   "area": "route_114",
+
+  // Plan 40 · GE3: Ruby's Zangoose, where Emerald and Sapphire have Seviper, once the National Pokédex is had
+
+  "national": { "land": [ "Zangoose", "Zangoose" ] },
   "ours": { "land": [ ["Ravagoose", 148, 152], ["Scimitail", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",

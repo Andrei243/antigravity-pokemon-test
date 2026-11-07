@@ -3,6 +3,10 @@
   // (one trainer of HeartGold's table carried by both twins). Its three Apricorn trees are plan 20 · J6's and the
   // Wednesday sibling a later chapter's
   "area": "route_37",
+
+  // Plan 40 · GE3: SoulSilver's Ledyba and Vulpix, once the National Pokédex is had
+
+  "national": { "land": [ "Ledyba", "Vulpix" ] },
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {

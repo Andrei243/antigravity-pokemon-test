@@ -783,5 +783,32 @@
   "Naive Mint": { "price": 3000 },
   "Serious Mint": { "price": 3000 },
   "Exp. Candy XS": { "price": 40 },
-  "Ability Patch": { "price": 40000 }
+  "Ability Patch": { "price": 40000 },
+  // Black 2's two fossils of Unova (plan 40 · GE3), which the import's later items leave out: Lenora gives one of them in
+  // Nacrene City's museum and the museum's scientist brings either back as Tirtouga or Archen (Models/Pastimes.cs,
+  // Fossils). Ids 9590 and 9591, after the region items of the 9500s
+  "Cover Fossil": {
+    "new": true,
+    "id": 9590,
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that swam in the sea long ago. It seems to be part of its back.",
+    "flingPower": 100
+  },
+  "Plume Fossil": {
+    "new": true,
+    "id": 9591,
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that flew long ago. It seems to be part of a wing.",
+    "flingPower": 100
+  }
 }

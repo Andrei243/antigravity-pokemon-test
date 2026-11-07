@@ -3,6 +3,10 @@
   // its four holes drop the player (triggers 0 to 3) and a boulder pushed onto one (the pits) to the ice below
   // (scripts/ice_path_b1f.txt)
   "area": "ice_path_b1f",
+
+  // Plan 40 · GE3: SoulSilver's Delibird, once the National Pokédex is had
+
+  "national": { "land": [ "Delibird", "Delibird" ] },
   "bgmTrack": "johto/ice_path",
   "people": {},
   "triggers": [

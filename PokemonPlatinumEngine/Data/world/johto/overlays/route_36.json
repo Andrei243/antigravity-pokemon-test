@@ -7,6 +7,10 @@
   // sister waits by the tree until then; the man by the gate gives HM06, and Arthur of Thursday stands here on
   // Thursdays. The Apricorn tree is plan 20 · J6's
   "area": "route_36",
+
+  // Plan 40 · GE3: SoulSilver's Vulpix, where HeartGold has Growlithe, once the National Pokédex is had
+
+  "national": { "land": [ "Vulpix", "Vulpix" ] },
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {

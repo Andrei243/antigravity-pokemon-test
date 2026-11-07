@@ -2,6 +2,10 @@
   // Route 8 (plan 19 · K5, part a): west from Lavender Town to Saffron City's gate, its trainers FireRed's. The
   // Underground Path's hut leads under Saffron City to Route 7
   "area": "route_8",
+
+  // Plan 40 · GE3: LeafGreen's Sandshrew and Vulpix, once the National Pokédex is had
+
+  "national": { "land": [ "Sandshrew", "Vulpix" ] },
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {

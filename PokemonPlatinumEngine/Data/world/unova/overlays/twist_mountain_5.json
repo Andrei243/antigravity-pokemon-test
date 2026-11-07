@@ -3,6 +3,10 @@
   // tunnel, Black 2's, our words. Black 2's winter ice blocks (0, 1) are left out, and its Big Nugget's ball (3) is held back,
   // the item not being in the game's data
   "area": "twist_mountain_5",
+
+  // Plan 40 · GE3: Black 2's Ice Rock in Twist Mountain, by which an Eevee levelled here becomes a Glaceon
+
+  "evolutionSites": [ "Ice Rock" ],
   "heldBack": [ "3" ],
   "bgmTrack": "unova/twist_mountain",
   "battleArena": "Cave",

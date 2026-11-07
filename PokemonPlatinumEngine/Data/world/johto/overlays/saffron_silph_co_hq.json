@@ -12,12 +12,11 @@
   ],
   "people": {
     "t11r0701_daigo": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
+    // Plan 40 · GE3: she gives the Upgrade once (saffron_silph_co_hq.txt)
     "t11r0701_gswoman6": {
       "name": "Receptionist",
       "hiddenBy": "",
-      "dialog": [
-        "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom."
-      ]
+      "script": "Receptionist"
     },
     "t11r0701_policeman": {
       "name": "Guard",

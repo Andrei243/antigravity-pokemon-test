@@ -3,6 +3,10 @@
   // (4, 5, 6) battle when spoken to, as Black 2's do once the foreman has asked for them; the foreman (3) and the
   // scientist who knows everything about the place (7) only talk (virbank_complex_2.txt)
   "area": "virbank_complex_2",
+
+  // Plan 40 · GE3: White 2's Elekid, once the National Pokédex is had
+
+  "national": { "land": [ "Elekid", "Elekid" ] },
   "bgmTrack": "unova/virbank",
   "people": {
     "0": {

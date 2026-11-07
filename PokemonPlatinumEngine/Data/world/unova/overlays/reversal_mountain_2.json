@@ -4,6 +4,10 @@
   // bianca_along (hidden until she travels, FLAG_UNOVA_HIDE_BIANCA_ALONG) and, before the way out to the slopes (24 to 26, 26),
   // offers to go her own way (reversal_mountain_2.txt)
   "area": "reversal_mountain_2",
+
+  // Plan 40 · GE3: White 2's Numel, where Black 2 has Spoink, once the National Pokédex is had
+
+  "national": { "land": [ "Numel", "Numel" ] },
   "bgmTrack": "unova/reversal_cave",
   "triggers": [
     {

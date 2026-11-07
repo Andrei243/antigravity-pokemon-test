@@ -1,6 +1,10 @@
 {
   // Chargestone Cave's last chamber (plan 22 · U7, part a): a dead end with four Trainers and the cave's better items
   "area": "chargestone_cave_4",
+
+  // Plan 40 · GE3: Black 2's Chargestone Cave, where a Magneton, a Nosepass or a Charjabug evolves by levelling
+
+  "evolutionSites": [ "Magnetic Field" ],
   "bgmTrack": "unova/chargestone",
   "battleArena": "Cave",
   "people": {

@@ -3,6 +3,10 @@
   // Dark Cave's back way in. Its seven trainers by their own records; its Apricorn tree is plan 20 · J6's and the
   // photographer plan 20 · J11's. It plays Route 34's song, as HeartGold's header shares it
   "area": "route_45",
+
+  // Plan 40 · GE3: SoulSilver's Teddiursa and Skarmory, where HeartGold has Phanpy and Gligar, once the National Pokédex is had
+
+  "national": { "land": [ "Teddiursa", "Skarmory" ] },
   "bgmTrack": "johto/route34",
   "trees": "Round",
   "people": {

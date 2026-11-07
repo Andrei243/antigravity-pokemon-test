@@ -5,6 +5,10 @@
   // beaten, and sails with the player to One Island (plan 19 · K7); his friend's ferry comes and goes while the screen
   // is dark, and stays out of sight
   "area": "cinnabar_island",
+
+  // Plan 40 · GE3: LeafGreen's Staryu on the Super Rod, once the National Pokédex is had
+
+  "national": { "superRod": [ "Staryu" ] },
   "bgmTrack": "kanto/cinnabar",
   "trees": "Round",
   "architecture": "Cinder",

@@ -2,6 +2,10 @@
   // Route 7 (plan 19 · K5, part a): the short road between Celadon City and Saffron City's gate. Celadon City is part
   // b's, and stands as scenery to the west until then
   "area": "route_7",
+
+  // Plan 40 · GE3: LeafGreen's Vulpix and Bellsprout, once the National Pokédex is had
+
+  "national": { "land": [ "Vulpix", "Bellsprout" ] },
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "signs": {

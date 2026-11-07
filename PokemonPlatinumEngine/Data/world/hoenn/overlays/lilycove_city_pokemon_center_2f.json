@@ -5,7 +5,7 @@
   "bgmTrack": "hoenn/lilycove",
   "people": {
     "teala": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
-    "teala_2": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "teala_2": { "name": "Receptionist", "script": "LinkingCord" },
     "teala_3": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] }
   }
 }

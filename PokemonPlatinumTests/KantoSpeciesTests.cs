@@ -17,19 +17,8 @@ public class KantoSpeciesTests
     /// <summary>What the Kanto Pokédex has that nothing in Kanto gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // LeafGreen's, which FireRed's tables leave out (PokeAPI's leafgreen encounters): placed in their own places
-        ["Sandshrew"] = "GE3: LeafGreen's, in its own places", ["Sandslash"] = "GE3: LeafGreen's, in its own places",
-        ["Vulpix"] = "GE3: LeafGreen's, in its own places", ["Ninetales"] = "GE3: LeafGreen's, in its own places",
-        ["Bellsprout"] = "GE3: LeafGreen's, in its own places", ["Weepinbell"] = "GE3: LeafGreen's, in its own places",
-        ["Victreebel"] = "GE3: LeafGreen's, in its own places", ["Slowpoke"] = "GE3: LeafGreen's, in its own places",
-        ["Slowbro"] = "GE3: LeafGreen's, in its own places", ["Staryu"] = "GE3: LeafGreen's, in its own places",
-        ["Starmie"] = "GE3: LeafGreen's, in its own places", ["Magmar"] = "GE3: LeafGreen's, in its own places",
-        ["Pinsir"] = "GE3: LeafGreen's, in its own places",
-        // Evolved by trading, and Kanto gives no Linking Cord
-        ["Alakazam"] = "GE3: a Linking Cord in Kanto", ["Machamp"] = "GE3: a Linking Cord in Kanto",
-        ["Golem"] = "GE3: a Linking Cord in Kanto", ["Gengar"] = "GE3: a Linking Cord in Kanto",
-        // The Game Corner's prize Pokémon, which plan 19 · K5 left (celadon_city_game_corner_prize_room.txt)
-        ["Porygon"] = "GE3: FireRed's Game Corner prizes",
+        // (Plan 40 · GE3 gave the rest: LeafGreen's species in the overlays' national slots, a Linking Cord in Celadon's
+        // Pokémon Center and FireRed's Pokémon prizes at the Game Corner)
         // A mythical FireRed gave only by an event: had in another region (Faraway Island, plan 29 · LS11c)
         ["Mew"] = "had in another region: Hoenn's Faraway Island",
     };
@@ -37,7 +26,6 @@ public class KantoSpeciesTests
     /// <summary>The items and places Kanto's evolutions ask for that nothing in Kanto gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = "GE3: a Linking Cord in Kanto",
     };
 
     [Fact]

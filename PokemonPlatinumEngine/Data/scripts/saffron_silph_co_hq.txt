@@ -70,3 +70,16 @@ label Rotom
 label Open
   say "The research floor is just up the lift. Mind you don't let your Rotom wander off into the photocopiers."
   end
+
+
+# Plan 40 · GE3, our words on HeartGold's beat: the receptionist hands a visitor one of the company's Upgrades, once
+# (FLAG_JOHTO_GOT_UPGRADE, a flag of ours), as HeartGold's Silph Co. gives its Up-Grade in Saffron City.
+script Receptionist
+  speaker "Receptionist"
+  say "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom."
+  if flag FLAG_JOHTO_GOT_UPGRADE end
+  say "Oh, and our engineers left a spare of their newest gadget at the desk. They said a visiting Trainer should have it."
+  give "Upgrade"
+  setflag FLAG_JOHTO_GOT_UPGRADE
+  say "It's a box of data a Porygon can make use of. Let one hold it, and see what happens when it's traded."
+  end

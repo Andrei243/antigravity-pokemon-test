@@ -5,6 +5,10 @@
   // are open since plan 21 · H4, part b (Surf and Waterfall reach them); Steven's cave's mouth opens in the north-west
   // wall once Hoenn's Hall of Fame is entered (plan 21 · H12, part c: world.json's swap, Emerald's OpenStevensCave)
   "area": "meteor_falls_1f_1r",
+
+  // Plan 40 · GE3: Sapphire's Lunatone, where Ruby and Emerald have Solrock, once the National Pokédex is had
+
+  "national": { "land": [ "Lunatone", "Lunatone" ] },
   "bgmTrack": "hoenn/cave_of_origin",
   "trees": "Round",
   "triggers": [

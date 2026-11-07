@@ -3,6 +3,10 @@
   // J11, part c the man by HM07, who notices the player coming (trigger 0), and the Kimono Girl stuck on the ice
   // (scripts/ice_path_1f.txt)
   "area": "ice_path_1f",
+
+  // Plan 40 · GE3: SoulSilver's Delibird, once the National Pokédex is had
+
+  "national": { "land": [ "Delibird", "Delibird" ] },
   "bgmTrack": "johto/ice_path",
   "people": {
     "d39r0101_gsmiddleman1_2": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },

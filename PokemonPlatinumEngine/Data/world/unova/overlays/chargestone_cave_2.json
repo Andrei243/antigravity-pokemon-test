@@ -5,6 +5,10 @@
   // shows N (11, FLAG_UNOVA_HIDE_N_CHARGESTONE) alone with his thoughts, who goes as the player comes near
   // (chargestone_cave_2.txt). The workers, the bridge and Black 2's later scenes in the cave are left out
   "area": "chargestone_cave_2",
+
+  // Plan 40 · GE3: Black 2's Chargestone Cave, where a Magneton, a Nosepass or a Charjabug evolves by levelling
+
+  "evolutionSites": [ "Magnetic Field" ],
   "bgmTrack": "unova/chargestone",
   "battleArena": "Cave",
   "triggers": [

@@ -1257,6 +1257,10 @@
       "note": "first spoken at po_town.txt(13)",
       "provisional": true
     },
+    "pokemon_ranger": {
+      "note": "first spoken at nacrene_city_2.txt(12)",
+      "provisional": true
+    },
     "policeman": {
       "note": "first spoken at cerulean_city.txt(127)",
       "provisional": true
@@ -2171,6 +2175,7 @@
     "Pilot": "pilot",
     "Pip": "pip",
     "Plumeria": "plumeria",
+    "Pokémon Ranger": "pokemon_ranger",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
     "President": "president",

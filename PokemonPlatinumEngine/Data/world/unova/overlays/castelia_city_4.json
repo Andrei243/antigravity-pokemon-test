@@ -6,7 +6,8 @@
   "locked": [ 1, 2, 3 ],
   "people": {
     "0": { "name": "Clerk", "npcType": "Clerk", "dialog": [ "Route 4 is just past the gate. The wind out there blows sand right into the city sometimes." ] },
-    "1": { "name": "Ace Trainer", "npcType": "ace_trainer_f", "dialog": [ "Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!" ] }
+    // Plan 40 · GE3: she gives an Eevee once the Insect Badge is won (castelia_city_4.txt)
+    "1": { "name": "Ace Trainer", "npcType": "ace_trainer_f", "script": "EeveeGift" }
   },
   "signs": {
     "1": "North: Route 4\nSouth: Castelia City Central Plaza"

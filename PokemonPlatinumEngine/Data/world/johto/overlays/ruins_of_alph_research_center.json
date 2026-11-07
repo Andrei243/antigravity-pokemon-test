@@ -11,9 +11,10 @@
         "Whoever built the Ruins left a puzzle for us. We just haven't worked out the picture yet."
       ]
     },
+    // Plan 40 · GE3: he gives the Helix Fossil, then the Dome Fossil (ruins_of_alph_research_center.txt)
     "d24r0102_gsassistantm": {
       "name": "Scientist",
-      "dialog": [ "The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike." ]
+      "script": "Digger"
     },
     "d24r0102_gsassistantm_2": {
       "name": "Scientist",
