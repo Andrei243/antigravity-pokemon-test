@@ -1,0 +1,69 @@
+# Wela Volcano Park, Akala Island: Captain Kiawe's trial (plan 23 · Z6). The lines are our own, on Sun and Moon's beats
+# as they are publicly described (docs/mechanics/rulings.md, "The rest of Akala: trials, totems and Olivia's grand
+# trial"): Kiawe's dance at the crater, two of the trial's Pokémon who join it, then the totem, Sun's Alolan Marowak,
+# fought as a totem (its aura raises its Defense; its first call brings a Cubone). VAR_ALOLA_AKALA is royal_avenue.txt's
+# count.
+#
+# The people: kiawe at the crater until the trial is passed (FLAG_ALOLA_WELA_TRIAL_DONE); the two dancers and the totem
+# shown by FLAG_ALOLA_WELA_TRIAL while the trial is under way.
+
+
+script Kiawe
+  if var VAR_ALOLA_AKALA >= 2 goto Begin
+  speaker "Kiawe"
+  say "I am Kiawe, captain of this volcano's trial. You are early. Walk Route 8 first, and come back when it is done."
+  end
+label Begin
+  if flag FLAG_ALOLA_WELA_TRIAL goto During
+  scene "Kiawe's trial begins"
+  speaker "Kiawe"
+  say "Welcome to Wela Volcano Park! I am Kiawe, and this crater is my trial."
+  say "My Pokémon and I dance for the volcano. Two of its Pokémon will join in. Battle them, and the totem will answer!"
+  setflag FLAG_ALOLA_WELA_TRIAL
+  endscene
+  end
+label During
+  speaker "Kiawe"
+  say "Two dancers first, a Salandit and a Cubone. Then the totem itself!"
+  end
+
+
+script Trial1
+  text "The Salandit hissed and leapt into the dance!"
+  wildbattle "Salandit" 20 nofleeing
+  setflag FLAG_ALOLA_WELA_TRIAL_1
+  hide self
+  end
+
+script Trial2
+  text "The Cubone twirled its bone and leapt into the dance!"
+  wildbattle "Cubone" 20 nofleeing
+  setflag FLAG_ALOLA_WELA_TRIAL_2
+  hide self
+  end
+
+
+# The totem: only once both dancers are beaten
+script Totem
+  speaker none
+  if not flag FLAG_ALOLA_WELA_TRIAL_1 goto NotYet
+  if not flag FLAG_ALOLA_WELA_TRIAL_2 goto NotYet
+  scene "The totem Marowak"
+  text "A towering Marowak strode out of the smoke, its bone blazing at both ends!"
+  cry "Marowak"
+  wildbattle "Marowak-Alola" 22 totem defense
+  setflag FLAG_ALOLA_WELA_TRIAL_DONE
+  hide self
+  hide kiawe
+  speaker "Kiawe"
+  say "...Magnificent. The volcano itself must be cheering. You have passed my trial!"
+  say "This is the Firium Z. With it, a Fire-type move becomes a Z-Move. Burn bright."
+  give "Firium Z"
+  say "Mallow's trial is in the Lush Jungle, west off Route 8. Tell her she still owes me lunch."
+  setvar VAR_ALOLA_AKALA 3
+  objective alolaJungle
+  endscene
+  end
+label NotYet
+  text "Smoke curls from the crater's far side... The dancers come first."
+  end

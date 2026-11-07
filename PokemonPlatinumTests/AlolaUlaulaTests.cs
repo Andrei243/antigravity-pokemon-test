@@ -45,13 +45,13 @@ public class AlolaUlaulaTests
     public void TheSpawnsOfTheNewPokemonCentersStandBeforeTheirDoors()
     {
         var region = RegionDatabase.Get(RegionDatabase.Alola)!;
-        foreach (var spawn in region.File!.Spawns.Where(s => s.Id >= 20))
+        foreach (var spawn in region.File!.Spawns.Where(s => s.Id >= 30))
         {
             var map = MapNamed(spawn.Map ?? "Melemele");
             Assert.True(map.IsWalkable(spawn.X, spawn.Y), $"spawn {spawn.Id} stands on a blocked tile");
             Assert.Equal(spawn.Room, map.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
         }
-        Assert.True(region.File.Spawns.Count(s => s.Id >= 20) >= 4);
+        Assert.True(region.File.Spawns.Count(s => s.Id >= 30) >= 4);
     }
 
     [Fact]

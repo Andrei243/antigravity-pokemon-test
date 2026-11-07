@@ -1,0 +1,48 @@
+{
+  "key": "lost_hotel",
+  "index": 43,
+  "name": "Lost Hotel",
+  "matrix": 4,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "LOST_HOTEL",
+  "nightMusic": "LOST_HOTEL",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 58, "to": "kalos_route_16", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lucien", "looks": "psychic", "movement": "look_south", "x": 39, "z": 47, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PSYCHIC_LUCIEN" },
+    { "id": "pomme", "looks": "lass", "movement": "look_east", "x": 12, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LASS_POMME" },
+    { "id": "ambrose", "looks": "veteran", "movement": "look_west", "x": 44, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_VETERAN_AMBROSE" },
+    { "id": "odile", "looks": "psychic", "movement": "look_south", "x": 27, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PSYCHIC_ODILE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_LOST_HOTEL_MAX_REVIVE", "item": "Max Revive", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 51, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_LOST_HOTEL_FULL_HEAL", "item": "Full Heal", "script": "" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 40, "z": 55, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_LOST_HOTEL_ULTRA_BALL", "item": "Ultra Ball", "script": "" }
+  ],
+  "signs": [
+
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Gastly", "level": 36 },
+    { "species": "Haunter", "level": 36 },
+    { "species": "Shuppet", "level": 36 },
+    { "species": "Litwick", "level": 36 },
+    { "species": "Phantump", "level": 37 },
+    { "species": "Pumpkaboo", "level": 37 },
+    { "species": "Zubat", "level": 36 },
+    { "species": "Golbat", "level": 37 },
+    { "species": "Murkrow", "level": 37 },
+    { "species": "Banette", "level": 38 },
+    { "species": "Lampent", "level": 38 },
+    { "species": "Gothorita", "level": 38 }
+  ],
+  "landRate": 10
+}

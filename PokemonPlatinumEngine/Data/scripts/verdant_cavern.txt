@@ -1,8 +1,8 @@
 # Verdant Cavern, Melemele Island: Captain Ilima's trial (plan 23 · Z5, second part). The lines are our own, on Sun and
 # Moon's beats as they are publicly described (docs/mechanics/rulings.md, "The rest of Melemele"): three dens, each
-# with a Yungoos that bolts out to battle, then the totem Pokémon at the top. Ours: the totem is Sun's, a Gumshoos, met
-# as a wild battle that can't be run from; its aura and its call for help are plan 23 · Z6's. VAR_ALOLA_STORY is
-# alola_route_1.txt's count.
+# with a Yungoos that bolts out to battle, then the totem Pokémon at the top. Ours: the totem is Sun's, a Gumshoos,
+# fought as a totem since plan 23 · Z6 ("Totems and their aura": its aura, its first call answered by a Yungoos, no
+# ball). VAR_ALOLA_STORY is alola_route_1.txt's count.
 #
 # The people: ilima, the three dens' Yungoos and the totem, shown by FLAG_ALOLA_VERDANT_TRIAL while the trial is under
 # way; each den's Yungoos is hidden once battled (FLAG_ALOLA_VERDANT_DEN_1 to _3), Ilima and the totem once it is won
@@ -49,7 +49,8 @@ script Totem
   scene "The totem Gumshoos"
   text "An enormous Gumshoos glares down from the top of the den. Its whole body seems to shimmer with power!"
   cry "Gumshoos"
-  wildbattle "Gumshoos" 12 nofleeing
+  # A totem (plan 23 · Z6): its aura raises its Defense, it calls a Yungoos at once, and it can't be caught
+  wildbattle "Gumshoos" 12 totem defense
   setflag FLAG_ALOLA_VERDANT_TRIAL_DONE
   setflag FLAG_ALOLA_HAU_ROUTE_2_DONE
   setflag FLAG_ALOLA_LILLIE_MEADOW

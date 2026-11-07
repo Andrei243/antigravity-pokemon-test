@@ -3186,5 +3186,435 @@
         "personality": 10279550
       }
     ]
+  },
+  {
+    "id": "kalos_youngster_corentin",
+    "name": "Corentin",
+    "class": "Youngster",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 544,
+    "party": [
+      {
+        "species": "Bunnelby",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 20939757
+      },
+      {
+        "species": "Fletchinder",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 24174261
+      }
+    ]
+  },
+  {
+    "id": "kalos_picnicker_constance",
+    "name": "Constance",
+    "class": "Picnicker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 528,
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 19962644
+      },
+      {
+        "species": "Litleo",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 20265809
+      },
+      {
+        "species": "Espurr",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 20506300
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_gaetan",
+    "name": "Gaetan",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 544,
+    "party": [
+      {
+        "species": "Pancham",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 18039755
+      },
+      {
+        "species": "Honedge",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 18311583
+      }
+    ]
+  },
+  {
+    "id": "kalos_lady_rosalie",
+    "name": "Rosalie",
+    "class": "Lady",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 2800,
+    "party": [
+      {
+        "species": "Furfrou",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 19048205
+      },
+      {
+        "species": "Meowstic",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 20297146
+      }
+    ]
+  },
+  {
+    "id": "kalos_psychic_lucien",
+    "name": "Lucien",
+    "class": "Psychic",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 1184,
+    "party": [
+      {
+        "species": "Haunter",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 18133766
+      },
+      {
+        "species": "Gothorita",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 20359820
+      }
+    ]
+  },
+  {
+    "id": "kalos_lass_pomme",
+    "name": "Pomme",
+    "class": "Lass",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 576,
+    "party": [
+      {
+        "species": "Shuppet",
+        "level": 36,
+        "ivScale": 0,
+        "personality": 17125316
+      },
+      {
+        "species": "Phantump",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 18405594
+      },
+      {
+        "species": "Pumpkaboo",
+        "level": 36,
+        "ivScale": 0,
+        "personality": 19623198
+      }
+    ]
+  },
+  {
+    "id": "kalos_veteran_ambrose",
+    "name": "Ambrose",
+    "class": "Veteran",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 2432,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 19142216
+      },
+      {
+        "species": "Doublade",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 20391157
+      },
+      {
+        "species": "Lampent",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 19685872
+      }
+    ]
+  },
+  {
+    "id": "kalos_psychic_odile",
+    "name": "Odile",
+    "class": "Psychic",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 1152,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 18133766
+      },
+      {
+        "species": "Gothorita",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 19414044
+      },
+      {
+        "species": "Litwick",
+        "level": 36,
+        "ivScale": 0,
+        "personality": 17668972
+      }
+    ]
+  },
+  {
+    "id": "kalos_skier_noemie",
+    "name": "Noemie",
+    "class": "Skier",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Snover",
+        "level": 39,
+        "ivScale": 0,
+        "personality": 17219327
+      },
+      {
+        "species": "Vanillish",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 20453831
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_octave",
+    "name": "Octave",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1476,
+    "party": [
+      {
+        "species": "Piloswine",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 20182003
+      },
+      {
+        "species": "Sneasel",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 18499605
+      },
+      {
+        "species": "Cryogonal",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 20756996
+      }
+    ]
+  },
+  {
+    "id": "kalos_skier_brice",
+    "name": "Brice",
+    "class": "Skier",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 640,
+    "party": [
+      {
+        "species": "Beartic",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 17282001
+      },
+      {
+        "species": "Weavile",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 17522492
+      }
+    ]
+  },
+  {
+    "id": "kalos_ace_trainer_sylvain",
+    "name": "Sylvain",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2940,
+    "party": [
+      {
+        "species": "Avalugg",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 19267564
+      },
+      {
+        "species": "Mamoswine",
+        "level": 42,
+        "ivScale": 0,
+        "personality": 21493618
+      }
+    ]
+  },
+  {
+    "id": "kalos_hiker_anselme",
+    "name": "Anselme",
+    "class": "Hiker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1116,
+    "party": [
+      {
+        "species": "Rhyhorn",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 18922857
+      },
+      {
+        "species": "Onix",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 16263346
+      }
+    ]
+  },
+  {
+    "id": "kalos_black_belt_thibault",
+    "name": "Thibault",
+    "class": "Black Belt",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 768,
+    "party": [
+      {
+        "species": "Throh",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 17977081
+      },
+      {
+        "species": "Machoke",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 20203135
+      }
+    ]
+  },
+  {
+    "id": "kalos_backpacker_ysolde",
+    "name": "Ysolde",
+    "class": "Backpacker",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 496,
+    "party": [
+      {
+        "species": "Gabite",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 16999968
+      },
+      {
+        "species": "Aron",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 15286233
+      }
+    ]
+  },
+  {
+    "id": "kalos_az_1",
+    "name": "AZ",
+    "class": "Veteran",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 6800,
+    "party": [
+      {
+        "species": "Sigilyph",
+        "level": 66,
+        "ivScale": 0,
+        "personality": 5112901
+      },
+      {
+        "species": "Golurk",
+        "level": 66,
+        "ivScale": 0,
+        "personality": 5271377
+      },
+      {
+        "species": "Florges",
+        "level": 68,
+        "ivScale": 0,
+        "personality": 5430217
+      }
+    ]
   }
 ]

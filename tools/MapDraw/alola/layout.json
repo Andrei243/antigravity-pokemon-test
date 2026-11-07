@@ -41,7 +41,23 @@
         { "file": "paniola_town.txt", "x": 124, "z": 204 },
         { "file": "paniola_ranch.txt", "x": 116, "z": 152 },
         { "file": "akala_route_5.txt", "x": 124, "z": 92 },
-        { "file": "brooklet_hill.txt", "x": 60, "z": 92 }
+        { "file": "brooklet_hill.txt", "x": 60, "z": 92 },
+        // Plan 23 · Z6: the rest of Akala. East out of Paniola Town along Route 6 to Royal Avenue; north from it up
+        // Route 8's coast, west off Route 8 into the Lush Jungle (whose other way out is Route 5's east side), and
+        // north-east along Route 7's beach to Wela Volcano Park; south of Royal Avenue the beach of the Hano Grand
+        // Resort; and in the east, through Diglett's Tunnel from Route 8, Route 9's crossroads, Konikoni City to its
+        // south, Memorial Hill to its east and the Akala Outskirts north of the hill, up to the Ruins of Life
+        { "file": "akala_route_6.txt", "x": 180, "z": 204 },
+        { "file": "royal_avenue.txt", "x": 236, "z": 196 },
+        { "file": "akala_route_8.txt", "x": 236, "z": 100 },
+        { "file": "lush_jungle.txt", "x": 180, "z": 92 },
+        { "file": "akala_route_7.txt", "x": 300, "z": 100 },
+        { "file": "wela_volcano_park.txt", "x": 300, "z": 36 },
+        { "file": "akala_route_9.txt", "x": 300, "z": 196 },
+        { "file": "konikoni_city.txt", "x": 300, "z": 236 },
+        { "file": "memorial_hill.txt", "x": 348, "z": 196 },
+        { "file": "akala_outskirts.txt", "x": 340, "z": 140 },
+        { "file": "hano_beach.txt", "x": 236, "z": 244 }
       ],
       "areas": [
         { "key": "heahea_city", "x": 120, "z": 300, "width": 60, "depth": 40 },
@@ -49,7 +65,18 @@
         { "key": "paniola_town", "x": 124, "z": 204, "width": 56, "depth": 36 },
         { "key": "paniola_ranch", "x": 116, "z": 152, "width": 72, "depth": 52 },
         { "key": "akala_route_5", "x": 124, "z": 92, "width": 56, "depth": 60 },
-        { "key": "brooklet_hill", "x": 60, "z": 92, "width": 64, "depth": 60 }
+        { "key": "brooklet_hill", "x": 60, "z": 92, "width": 64, "depth": 60 },
+        { "key": "akala_route_6", "x": 180, "z": 204, "width": 56, "depth": 40 },
+        { "key": "royal_avenue", "x": 236, "z": 196, "width": 60, "depth": 48 },
+        { "key": "akala_route_8", "x": 236, "z": 100, "width": 64, "depth": 96 },
+        { "key": "lush_jungle", "x": 180, "z": 92, "width": 56, "depth": 60 },
+        { "key": "akala_route_7", "x": 300, "z": 100, "width": 40, "depth": 32 },
+        { "key": "wela_volcano_park", "x": 300, "z": 36, "width": 64, "depth": 64 },
+        { "key": "akala_route_9", "x": 300, "z": 196, "width": 48, "depth": 40 },
+        { "key": "konikoni_city", "x": 300, "z": 236, "width": 60, "depth": 44 },
+        { "key": "memorial_hill", "x": 348, "z": 196, "width": 36, "depth": 40 },
+        { "key": "akala_outskirts", "x": 340, "z": 140, "width": 44, "depth": 56 },
+        { "key": "hano_beach", "x": 236, "z": 244, "width": 60, "depth": 40 }
       ]
     },
     // Plan 23 · Z7: Ula'ula Island (matrix 10), 12 chunks by 12: Malie City in the south-west, up Route 10 and Mount Hokulani, east along Route 12 to
@@ -130,7 +157,10 @@
       "pieces": [
         { "file": "mount_lanakila.txt", "x": 0, "z": 0 }
       ]
-    }
+    },
+    // Plan 23 · Z6: Diglett's Tunnel, a cave of its own under Akala between Route 8 and Route 9. Its matrix number is
+    // well clear of the islands' (Ula'ula and Poni are a parallel session's), so the two may be laid in either order
+    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },

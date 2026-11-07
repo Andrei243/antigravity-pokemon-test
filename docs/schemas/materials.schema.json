@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The crafting kit's materials (Data/materials.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "pouchLimit": {
+      "type": "integer"
+    },
+    "drops": {
+      "type": "object",
+      "properties": {
+        "commonLeast": {
+          "type": "integer"
+        },
+        "commonMost": {
+          "type": "integer"
+        },
+        "levelStep": {
+          "type": "integer"
+        },
+        "levelExtraMost": {
+          "type": "integer"
+        },
+        "secondTypeInHundred": {
+          "type": "integer"
+        },
+        "rareInHundred": {
+          "type": "integer"
+        },
+        "rareLevelStep": {
+          "type": "integer"
+        },
+        "rareInHundredMost": {
+          "type": "integer"
+        },
+        "rareDoubleLevel": {
+          "type": "integer"
+        },
+        "secondRareInThree": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "Pokemon",
+              "Field",
+              "Pantry"
+            ]
+          },
+          "type": {
+            "enum": [
+              "Normal",
+              "Fire",
+              "Water",
+              "Grass",
+              "Electric",
+              "Ice",
+              "Fighting",
+              "Poison",
+              "Ground",
+              "Flying",
+              "Psychic",
+              "Bug",
+              "Rock",
+              "Ghost",
+              "Dragon",
+              "Steel",
+              "Dark",
+              "Fairy",
+              null
+            ]
+          },
+          "rare": {
+            "type": "boolean"
+          },
+          "worth": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "worth"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "pouchLimit"
+  ],
+  "additionalProperties": false
+}

@@ -177,6 +177,8 @@ public enum Op
     BlackTower,
     // A Battle Royal (plan 14 · B13): three people of the map, each battling as a trainer of the data, every one for themselves
     Royal,
+    // The crafting kit (plan 39 · CR1): held or not, given, the pouch's materials taken and counted, the kit looked into
+    Craft,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -319,6 +321,9 @@ public sealed class Instruction
 
     /// <summary>For <c>wildbattle … shiny</c>: the Pokémon met is a shiny one (plan 20 · J11: the Lake of Rage's red Gyarados).</summary>
     public bool Shiny { get; init; }
+
+    /// <summary>For <c>wildbattle … totem defense</c>: the Pokémon met is a trial's totem, with this aura (plan 23 · Z6).</summary>
+    public Battle.Sim.TotemAura? Totem { get; init; }
 
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }

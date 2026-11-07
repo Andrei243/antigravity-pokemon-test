@@ -767,6 +767,8 @@ public sealed partial class BattleCore : IBattleContext
         }
 
         AnnounceFormat();
+        // A trial's totem is wrapped in its aura (plan 23 · Z6)
+        RaiseTheTotemsAura();
         OpenUnderTheSky();
         SwitchInChecks();
     }
@@ -1328,7 +1330,8 @@ public sealed partial class BattleCore : IBattleContext
             return;
         }
 
-        if (!SideDefeated(EnemySlots)) return;
+        // A trial's totem battle is won once the totem falls, whoever answered its calls still standing (plan 23 · Z6)
+        if (!SideDefeated(EnemySlots) && !TotemFell) return;
         Emit(new Won());
         if (IsTrainerBattle)
         {
@@ -1346,6 +1349,7 @@ public sealed partial class BattleCore : IBattleContext
         else
         {
             Say(IsHorde ? Text.Of("battle.defeatedTheHorde", ("player", playerName))
+                : TotemFell ? Text.Of("battle.defeatedTheTotem", ("player", playerName), ("pokemon", totem!.DisplayName))
                 : Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
         }
         // What Pay Day scattered, up to the original's most

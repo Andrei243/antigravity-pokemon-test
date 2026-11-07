@@ -1,0 +1,41 @@
+{
+  "key": "konikoni_city",
+  "index": 23,
+  "name": "Konikoni City",
+  "matrix": 3,
+  "kind": "City",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "KONIKONI_CITY",
+  "nightMusic": "KONIKONI_CITY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 307, "z": 245, "to": "KonikoniCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 320, "z": 245, "to": "KonikoniCity_OliviasShop", "toWarp": 0 },
+    { "x": 333, "z": 245, "to": "KonikoniCity_House", "toWarp": 0 },
+    { "x": 346, "z": 245, "to": "KonikoniCity_Restaurant", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "olivia", "looks": "olivia", "movement": "look_north", "x": 322, "z": 248, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south", "x": 340, "z": 250, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 330, "z": 273, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 324, "z": 247, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": [],
+  "land": [],
+  "landRate": 0,
+  "water": [
+    { "species": "Tentacool", "level": 22 },
+    { "species": "Wingull", "level": 22 },
+    { "species": "Finneon", "level": 23 },
+    { "species": "Wishiwashi", "level": 22 },
+    { "species": "Pelipper", "level": 24 }
+  ]
+}

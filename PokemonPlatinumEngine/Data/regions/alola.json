@@ -24,8 +24,9 @@
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Rowlet", "Litten", "Popplio" ],
   // Alola has trials in place of Gyms (plan 23's Alola decisions): a stamp on the card for each island's grand trial,
-  // won from its kahuna. The trials themselves are plan 23 · Z6's
+  // won from its kahuna. The card calls them stamps and draws each as an island's stamp (plan 23 · Z6, "challenge")
   "badges": [ "Melemele", "Akala", "UlaUla", "Poni" ],
+  "challenge": "trials",
   // Sun and Moon ask no badge of a field move: there are none, and the Ride Pager's grants are plan 23 · Z5's later part
   "gates": {},
   "professor": {
@@ -61,11 +62,16 @@
     { "id": 4, "area": "heahea_city", "x": 129, "y": 309, "room": "HeaheaCity_PokemonCenter_1F", "map": "Akala" },
     { "id": 5, "area": "paniola_town", "x": 133, "y": 215, "room": "PaniolaTown_PokemonCenter_1F", "map": "Akala" },
     { "id": 6, "area": "akala_route_5", "x": 159, "y": 127, "room": "AkalaRoute5_PokemonCenter_1F", "map": "Akala" },
-    // Plan 23 · Z7: Malie City's, Tapu Village's, Seafolk Village's and Aether Paradise's (ids 20 on, apart from Z6's)
-    { "id": 20, "area": "malie_city", "x": 34, "y": 331, "room": "MalieCity_PokemonCenter_1F", "map": "Ulaula" },
-    { "id": 21, "area": "tapu_village", "x": 204, "y": 213, "room": "TapuVillage_PokemonCenter_1F", "map": "Ulaula" },
-    { "id": 22, "area": "seafolk_village", "x": 34, "y": 243, "room": "SeafolkVillage_PokemonCenter_1F", "map": "Poni" },
-    { "id": 23, "area": "aether_paradise", "x": 16, "y": 22, "room": "AetherParadise_PokemonCenter_1F", "map": "AetherParadise" }
+    // Plan 23 · Z7: Malie City's, Tapu Village's, Seafolk Village's and Aether Paradise's (ids 30 on, since Z6 took 20 to 22)
+    { "id": 30, "area": "malie_city", "x": 34, "y": 331, "room": "MalieCity_PokemonCenter_1F", "map": "Ulaula" },
+    { "id": 31, "area": "tapu_village", "x": 204, "y": 213, "room": "TapuVillage_PokemonCenter_1F", "map": "Ulaula" },
+    { "id": 32, "area": "seafolk_village", "x": 34, "y": 243, "room": "SeafolkVillage_PokemonCenter_1F", "map": "Poni" },
+    { "id": 33, "area": "aether_paradise", "x": 16, "y": 22, "room": "AetherParadise_PokemonCenter_1F", "map": "AetherParadise" },
+    // Plan 23 · Z6: the rest of Akala's three, numbered from 20 so that the other islands' (a parallel session's) keep
+    // the numbers after 6
+    { "id": 20, "area": "royal_avenue", "x": 243, "y": 207, "room": "RoyalAvenue_PokemonCenter_1F", "map": "Akala" },
+    { "id": 21, "area": "akala_route_8", "x": 245, "y": 137, "room": "AkalaRoute8_PokemonCenter_1F", "map": "Akala" },
+    { "id": 22, "area": "konikoni_city", "x": 307, "y": 246, "room": "KonikoniCity_PokemonCenter_1F", "map": "Akala" }
   ],
   // Plan 18 · W4: Sun and Moon's levels for a team that crossed from Kalos, from Kalos's Champion's 205 on the first
   // route to Alola's Champion at 224 (the W4 study's place for it, beside Kalos's post-game at 222 = 224 − 2); W4b-1:

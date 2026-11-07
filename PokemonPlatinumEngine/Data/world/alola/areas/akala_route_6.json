@@ -1,0 +1,44 @@
+{
+  "key": "akala_route_6",
+  "index": 15,
+  "name": "Route 6",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AKALA_ROUTE_6",
+  "nightMusic": "AKALA_ROUTE_6",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 196, "z": 214, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_KEKOA" },
+    { "id": "lass", "looks": "lass", "movement": "look_north", "x": 220, "z": 221, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_NOELANI" },
+    { "id": "rancher", "looks": "rancher", "movement": "wander_around", "x": 206, "z": 236, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 188, "z": 226, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_6_GREAT_BALL", "item": "Great Ball", "script": "" }
+  ],
+  "signs": [
+    { "x": 186, "z": 223, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Pikipek", "level": 16 },
+    { "species": "Pikipek", "level": 17 },
+    { "species": "Yungoos", "level": 16 },
+    { "species": "Yungoos", "level": 17 },
+    { "species": "Eevee", "level": 17 },
+    { "species": "Mudbray", "level": 17 },
+    { "species": "Mudbray", "level": 18 },
+    { "species": "Oricorio", "level": 18 },
+    { "species": "Tauros", "level": 18 },
+    { "species": "Miltank", "level": 17 },
+    { "species": "Lillipup", "level": 16 },
+    { "species": "Lillipup", "level": 17 }
+  ],
+  "landRate": 20,
+  "water": []
+}

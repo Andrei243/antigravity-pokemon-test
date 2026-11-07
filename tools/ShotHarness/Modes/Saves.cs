@@ -83,6 +83,13 @@ partial class Harness
         engine.RegionMovementOverride = null;
         game.Player.SetOffset(0, 0);
 
+        // ---- in an open map (plan 32 · OW1: an empty one of the harness's own, as OpenFieldGameTests makes it, since no
+        // region's file says open yet), the grid's place in front of the house kept beside it; only SaveVersion 3 on keeps it
+        game.PlaceOpen(new PokemonPlatinumEngine.OpenWorld.OpenMap("OpenTestField", "OpenTest"),
+            new PokemonPlatinumEngine.OpenWorld.OpenPos(12_345, 2_500, -6_789), PokemonPlatinumEngine.OpenWorld.OpenYaw.East + 100);
+        Write("in-an-open-map");
+        game.Place(game.Map, game.Player.GridX, game.Player.GridY, game.Player.Facing);
+
         // ---- out on Twinleaf Town's pond, on the back of a Pokémon that knows Surf
         var swimmer = new Pokemon(PokemonDatabase.Get("Bibarel")!, 30);
         while (swimmer.Moves.Count >= 4) swimmer.Moves.RemoveAt(swimmer.Moves.Count - 1);

@@ -1,0 +1,29 @@
+{
+  "key": "akala_route_9",
+  "index": 22,
+  "name": "Route 9",
+  "matrix": 3,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "AKALA_ROUTE_9",
+  "nightMusic": "AKALA_ROUTE_9",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 324, "z": 198, "to": "digletts_tunnel", "toWarp": 1 },
+    { "x": 309, "z": 214, "to": "AkalaRoute9_PoliceStation", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 311, "z": 217, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 334, "z": 226, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" }
+  ],
+  "signs": [
+    { "x": 318, "z": 216, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": []
+}

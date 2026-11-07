@@ -9315,6 +9315,58 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   own**, ours (`Data/music/alola/route4.mml`: a steel drum in D over the ukulele and a marimba), on Route 4, the ranch
   and Route 5; Ten Carat Hill, Verdant Cavern and Brooklet Hill play the trial site's song.
 
+## The rest of Akala: trials, totems and Olivia's grand trial (2026-11-07, plan 23 · Z6)
+
+- **Where it comes from.** As Z5: Akala's places drawn by hand in their publicly described shape and order (which place
+  leads to which, who the captains and the kahuna are, the order of the story's beats), our own drawing, names and
+  words; no picture, map, line or script of the original is read. Teams follow Sun's levels and species where they are
+  known; the people's names are ours.
+- **What is drawn**, on Akala's map (matrix 3): Route 6 east out of Paniola Town (whose east edge opens for it), Royal
+  Avenue (a Pokémon Center, a house, and the Battle Royal Dome, the department store and a boutique as shut doors),
+  Route 8 north from it along the coast (a Pokémon Center, a shut motel, the mouth of Diglett's Tunnel), the Lush Jungle
+  between Route 8 and Route 5 (whose east edge opens for it), Route 7's beach, Wela Volcano Park up to its crater, Route
+  9's crossroads (a shut police station), Konikoni City (a Pokémon Center, Olivia's jewelry shop, a house, a shut
+  restaurant), Memorial Hill, the Akala Outskirts with the Ruins of Life (a room, `AkalaOutskirts_RuinsOfLife`) and Hano
+  Beach before the Hano Grand Resort's lobby (`HanoGrandResort`). Diglett's Tunnel is a cave of its own (`DiglettsTunnel`,
+  matrix 20, numbered clear of the islands' so a parallel session's Ula'ula and Poni keep the numbers after 3). The three
+  new Pokémon Centers' spawns are 20 to 22 for the same reason. **Ours**: Akala's south is Heahea and its north the
+  trial sites, as Z5 laid it, so Royal Avenue and Route 8 run north-east of Paniola rather than as Sun and Moon place
+  them; the Hano Grand Resort is reached from Royal Avenue's south side.
+- **The story** has a count of its own, `VAR_ALOLA_AKALA` 0 to 8 (`royal_avenue.txt`'s header), after Brooklet Hill's
+  `VAR_ALOLA_STORY` 18, which it leaves alone: Kukui and Hau before the Battle Royal Dome and Hau's battle (his ace holds
+  the crystal of its type); Team Skull at Route 8's motel and Wicke of the Aether Foundation; Kiawe's trial (two of the
+  trial's Pokémon join his dance, then the totem Alolan Marowak) and the Firium Z; Mallow's trial (four ingredients
+  read in the jungle's bushes, then the totem Lurantis) and the Grassium Z; Olivia at Konikoni's gate; the Ruins of Life
+  with Lillie, where Tapu Lele shows itself (seen, never battled); Olivia's grand trial (Akala's stamp, the Rockium Z and
+  Machamp in the Ride Pager); and Hau, Lillie and Wicke at the Hano Grand Resort, whose invitation to Aether Paradise is
+  plan 23 · Z7's. The last scene sets `FLAG_ALOLA_AKALA_DONE` for the next chapter to ask. Objectives 618 to 625. **Ours**:
+  Kiawe's and Mallow's trials are shortened to battles and four bushes read; the grand trial is fought before Olivia's
+  shop; Machamp is registered by Olivia; a worker shuts Diglett's Tunnel until Mallow's trial is passed.
+- **Totems and their aura** (`BattleConditions.TotemAura`, `BattleCore.Totem.cs`): a totem is a wild battle a script asks
+  for with `wildbattle … totem <stats> [stages] [ally "<species>"]`. It can't be run from, is fought as an SOS battle
+  (plan 14 · B5) whatever the place's own overlay says, and as it opens the totem is wrapped in its aura: a line of ours
+  with a `TotemAuraRaised` for the screen, then each named stat raised by the stages through the core's own stat
+  change, so whatever answers a rise answers this one. Its **first action is a call for help that is always made and
+  always answered, with no roll**, by the aura's named ally or else its own line; later calls go by the rule's rates.
+  **No ball may be thrown** while a totem's battle lasts (`BattleCore.TotemRefusal`, at the totem and at its allies),
+  and **the battle is won the moment the totem falls**, its allies scattering. Sun and Moon's own auras, allies and the
+  ball rule differ from totem to totem; ours: Gumshoos +1 Defense (its own line), Wishiwashi +1 Defense (an Alomomola),
+  Alolan Marowak +1 Defense (its own line, a Cubone), Lurantis +1 Speed (a Comfey). The aura is a field of the Vs.
+  Recorder's file. Its look is ours (style guide, "Stage", "A totem's aura").
+- **Trial sites call for help**: Verdant Cavern, Brooklet Hill, Wela Volcano Park and the Lush Jungle say `callsForHelp`,
+  so their wild Pokémon met alone are SOS battles under the modern rules.
+- **The Z-Ring only to a bag without one**: Iki Town's festival gives it with `if not item "Z-Ring"`. Each trial gives its
+  crystal once, in the scene the totem's flag closes; a Z-Move is refused without the ring or without the crystal held
+  (plan 06 · R21's `WhyNotZMove`, unchanged).
+- **Stamps**: a region file's `"challenge": "trials"` makes its badges an island challenge's stamps
+  (`RegionFile.Stamps`); the Trainer Card says STAMPS and draws Alola's four in their guardians' colours. The level cap
+  by stamps is Alola's `caps`, which plan 13 · V3's table already counted.
+- **Left**: the Battle Royal itself (plan 23 · Z8 with plan 14 · B13), the shut doors (the dome, the department store, the
+  boutique, the motel, the police station, the restaurant), Heahea's bureau, hotel and laboratory, the Fossil
+  Restoration Center, Kiawe's house, the Paniola Ranch's later scenes, Hapu, the rides' own travel modes and a rider
+  drawn on its Pokémon, Akala on a Town Map and the Pokédex's area page (one grid, Melemele's), the trial sites' own
+  songs and Akala's towns' (plan 31), Moon's totems (Salazzle for Marowak), and Aether Paradise (Z7).
+
 ## Ula'ula, Poni, Aether Paradise and the League (2026-11-07, plan 23 · Z7)
 
 - **Where it comes from.** As Z5: drawn by hand from the places as they are publicly described (Bulbapedia's walkthrough
@@ -9437,3 +9489,80 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **Black City's blocks** are dark slate panels with a band of the accent along their tops (the style guide's row first): the
   pale panels of part h read as a pale town. The Moor of Icirrus's `sp_o11m` textures are its mud, so a blocked tile of it no
   longer grows a pine in the water.
+
+## The field beyond the tables (2026-11-07, plan 38)
+
+Plan 38 adds what the field offers in every region beyond its tables; each session adds its part here.
+
+- **Unova's Town Map** (EX10). `Data/world/unova/townmap.json` is written by hand like the other regions' (a script made its first
+  draft from the overworld matrix's own list of areas by chunk; its words and kinds are ours): a cell for every chunk of the
+  overworld's 29 by 27, a block on each cell of an open area (265 blocks: 263 on land and two for Castelia City), the screen showing
+  the 28 columns and 24 rows that hold land (a picture that the Pokédex's area page fits at twenty to a cell, as Sinnoh's is), the
+  cursor on the cells from 1,1 to 26,24 and starting on Aspertia City. A town or city is a `Town` block whose words wait for its
+  first arrival (`FLAG_FIRST_ARRIVAL_<AREA>`; a Fly town's is set by the arrival itself, the rest by the file's `arrival`), a route a
+  `Route` block told of from the start, and a cave, forest, tower, desert or other place with a cell of its own a `Landmark` block.
+  Black 2's Route 10 and Unity Tower are not open and have no block.
+- **Fly lands** at the ten Pokémon Centers of the overworld, spawns 2 to 11 (Aspertia City, Floccesy Town, Nimbasa City, Driftveil
+  City, Mistralton City, Lentimas Town, Undella Town, Lacunosa Town, Opelucid City, Humilau City), each on its town's cells and opened
+  by the town's first arrival. Spawn 1 (the player's house) is where a white-out goes and not a place to fly to; spawns 12 and 13
+  (Victory Road's and the League's Pokémon Centers) are maps of their own with no cell on the overworld's grid, so Fly does not offer
+  them yet; a session that gives a map of its own a place on the Town Map adds them. `Crossing.CanFly` needed nothing: it asks only
+  that the region has a map, so the tab appears once the Unova Pokédex is entered.
+- **Castelia City** is a map of ours with no place on the overworld's grid (Black 2 lays it out on rails the reader leaves out), so
+  its block stands on two cells of the empty sea in the south (11,23 and 12,23), where Black 2's grid has the shut Unity Tower. A
+  rooms of the city are shown on the map on that block: the file's new `places` (docs/data-files.md, "The region map") names the
+  maps that no warp of the overworld leads into with the cell each is shown at, and `RegionMap.PlacesOf` takes them first.
+- **The maps no warp leads into** get their cell from `places`, ours: the Abyssal Ruins at Undella Bay's, the Gear Station's train to
+  Anville Town and the Battle Subway's cars at Nimbasa City's, the League's descent, Champion's room and Hall of Fame at Route 23's
+  north end, the Underground Ruins' two halls at Route 14's, the Regis' chambers at the Desert Resort's (Regirock), Twist Mountain's
+  (Regice) and Mistralton City's (Registeel), the Nature Preserve at Mistralton City's (flown to from its cargo hall) and the Hidden
+  Grotto at Route 19's. They are only where the player is shown on the map; nothing else reads them.
+- **Words.** The 52 places' words are in English and Romanian (`Data/text/ro/data.json`, which `RomanianTests` holds every region's map to), and the
+  Pokédex's tag for Unova's own list is `pokedex.mode.updatedunova` and `pokedex.modeName.updatedunova` ("UNOVA"; the other regions'
+  Pokédexes beyond Kanto's have none yet and show their key, which a later session of each writes).
+## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
+
+What Z4 left, closed in our own words on X and Y's beats as they are publicly described.
+
+- **Three regional Pokédexes.** X and Y have Central, Coastal and Mountain Kalos, each about 150 species, and a Trainer
+  who finishes any one gets its diploma. A region file may therefore name a list (`dexes`), `dex` being its first; every
+  species already carried its three numbers (`species.json`'s `dexNumbers`). Entering Kalos gives the player all three
+  (`Pokedex.Enter` enters each), so each is a mode of the Pokédex, a search row and a diploma of its own (the diploma's key
+  is the PokeAPI identifier, `kalos-central`), and `Region.Dexes` is what everything that asked `Dex` for "the region's
+  Pokédex" now asks (the cross-region checks, the Trainer Card, the catch score): the Trainer Card counts each species
+  once whichever list names it. Kalos's National unlock stays the Hall of Fame alone (`nationalUnlock`: `HallOfFame`); the
+  rule ("every species seen") belongs to Sinnoh's. A region with one Pokédex is unchanged.
+- **The whole way.** `Itineraries.KalosWhole` plays the bedroom in Vaniville Town to the Hall of Fame: the opening
+  (`KalosOpening`), the middle chapters (`KalosMiddleChapters`, from the neighbours in Route 2 to the Tower of Mastery's Key
+  Stone, each leg a trigger by its script or a person by key) and the last (`KalosLastChapters`). The test puts five strong
+  Pokémon on the team before the first Pokémon arrives (the starter is the sixth) and a Repel for the whole way, so the
+  bot has no training to do and the story is what is tried.
+- **Route 16 and the Lost Hotel.** Lumiose City's north-east gate opens with the north gate (the power back,
+  `VAR_KALOS_LUMIOSE_ROADS` 2; the east and south-east gates still turn the player back). The road runs north-east through
+  broad fields to the Lost Hotel, an old grand hotel whose floors have sunk into the hill: a map of its own drawn as a
+  cave (lobby, hall, two wings, a gallery), because our hotel has no rooms to be built as rooms; its ghosts are the
+  Mountain list's. (X and Y's Route 16 joins Laverre and Route 15 differently; here it is a dead end, so the main way stays
+  one road.)
+- **Frost Cavern and Terminus Cave** are caves of their own off Route 17's snow (mouth in the field at its west) and Route
+  13's badlands, each an entrance hall, a great hall and three chambers, with the cold and the ground and rock Pokémon of
+  their routes; the player may skip them all.
+- **Kiloude City** lies on the sea at the west end of the long street of Couriway Town (whose west end is open now): a Pokémon
+  Center with the Mart's counter, two houses, a beach, and a pier that crosses the water to a paved landing. Fly lands
+  there (spawn 16).
+- **AZ.** After the Hall of Fame an old man sits on the landing (`KalosHallOfFame` shows him). His story is ours: a king of
+  long ago whose war was ended by a machine of his own making, which took the Floette he loved; he has waited ever since to
+  be forgiven. He asks to see what a Trainer and their Pokémon are worth together and battles (Sigilyph and Golurk at 66,
+  his Florges at 68), then gives three Rare Candies, once. The weapon's history is told here and no further (no Lysandre
+  tie-in beyond Z4's base); nothing is asked of the player but the battle.
+- **Left.** The Gyms' puzzle pieces (Clemont's quiz, Valerie's, Olympia's and Wulfric's floors) are still plain halls;
+  the Mamoswine ride, the Poké Ball Factory, the Battle Château, Parfum Palace's inside, Lumiose's east and south-east
+  gates, hordes and sky trainers and every new place's own song are not built.
+## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
+
+Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).
+
+- **The kit is the switch.** Nothing of the plan is seen before the Crafting Kit (a key item of ours, id 9900, `fieldUse` `CraftingKit`) is in the bag: no wild Pokémon leaves anything, no battle draws once more on the field's chance (`fieldRandom`), no toast is shown. There is no options row; Sinnoh's story stays Platinum's, and every game that never gives the kit plays as it did. The kit is given once, by the craftswoman of Sunyshore City's workshop (`craft give kit`, which also sets `FLAG_GOT_CRAFTING_KIT`, ours), and is kept in every region after Sinnoh.
+- **The workshop's way in is an exit, not door 8** (the plan named Sunyshore City's door 8). The original's two unused doors at (832, 750) and (832, 751) stand inside a block of blocked ground with forest to the west and water to the north (a player can come to neither tile), so a door there could never be walked into. The workshop's way is a warp of ours at the dead end east of the town's alley at x 869 to 870 (871, 763), an overlay `exits` entry with the new field `openedBy` (`FLAG_GAME_COMPLETED`: shut as a locked door is until the Hall of Fame, open for ever after), a billboard of ours on the blocked tile north of it as the sign, and doors 7 and 8 stay `locked`. Plan 36's training hall, which the plans put behind door 7, meets the same wall and takes a way of its own by the same field.
+- **Where materials are kept** (decision 3): counts in the kit's pouch, 999 of a kind (`MaterialPouch`, saved as `SaveData.Crafting`, null while nothing is held, so no save version was raised), never items of the bag: the randomiser, the Marts and every bag shot are untouched. Three kinds: a Pokémon's (a common and a rare material for each of the eighteen types), the field's (ten) and the pantry's (CR6).
+- **What a wild Pokémon leaves** (`MaterialDrops.For`, the numbers one table in `materials.json`): one to three of its type's common material, plus one for every 25 levels up to two more; if it has a second type, that type's common material as well half the time, by a count rolled the same way; and its type's rare material 8 times in a hundred plus one for every 5 levels, at most 30, one of it (two from level 60), the second type's rare one a third of the time. Every draw is on the field's chance, in that order, and the same for each foe. **Who leaves it**: a wild Pokémon felled in a battle of kind Normal or Roamer, or caught, only after a battle that was not lost, and each foe of a horde or an SOS chain its own (`BattleEngine.FelledFoes`); never a trainer's Pokémon, nothing in the Frontier, nothing of the Safari Game, Pal Park, the Bug-Catching Contest or the catching lesson. **The toast** tells it in one line once the field is the player's again, the counts of one material added, and never for nothing. A pouch full of a material takes no more of it and the line says only what fitted.
+- **TMs** (decision 4, for CR4; the table's row above is left to that session to rewrite): used up in every game, as the code has them since R11 and as Scarlet and Violet do.

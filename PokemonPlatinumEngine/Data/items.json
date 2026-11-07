@@ -14523,5 +14523,19 @@
     "canUseInOverworld": false,
     "description": "A pass for the ferry from Castelia's Liberty Pier to the Liberty Garden, given to champions.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9900,
+    "name": "Crafting Kit",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A roll of tools and a pouch for the things Pokémon leave behind and the field gives. Open it to see what you hold.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "CraftingKit"
   }
 ]

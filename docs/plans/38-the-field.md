@@ -175,7 +175,7 @@ Every session: its rule in a GPU-free class with its tests (a seed and a fixed c
 
 ## Status
 
-- [ ] EX10 Unova's Town Map (first of the plan's sessions)
+- [x] EX10 Unova's Town Map (first of the plan's sessions; built 2026-11-07: `Data/world/unova/townmap.json`, `UnovaTownMapTests`, the harness's `explore` mode with `EXPLORE_PART=unova` for the ex00* shots; the rulings' "The field beyond the tables" tells what was decided)
 - [ ] EX1 Outbreaks of one species
 - [ ] EX2 The day's report and the visitor
 - [ ] EX3 Bright Pokémon, catch streaks and glints

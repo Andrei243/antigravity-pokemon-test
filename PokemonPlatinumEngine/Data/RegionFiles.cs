@@ -96,6 +96,13 @@ public sealed class RegionFile
     /// <summary>The regional Pokédex it plays by, a PokeAPI identifier (<c>extended-sinnoh</c>); plan 18 · W3 reads it.</summary>
     public string Dex { get; set; } = "";
 
+    /// <summary>
+    /// The regional Pokédexes it plays by when it has several (plan 23 · Z4: Kalos's Central, Coastal and Mountain ones), in
+    /// the order the Pokédex lists them; empty for a region with one, which is <see cref="Dex"/> alone. <see cref="Dex"/>
+    /// is the first of them, the one the player's own region shows first.
+    /// </summary>
+    public List<string>? Dexes { get; set; }
+
     /// <summary>Which rule opens the National Pokédex (<c>HallOfFameAndSeenAll</c>, <c>Caught60</c>); plan 18 · W3 reads it.</summary>
     public string NationalUnlock { get; set; } = "";
 
@@ -114,6 +121,16 @@ public sealed class RegionFile
     /// (<see cref="Overworld.SkateRules.Flag"/>) the run button puts them on (<see cref="Overworld.TravelMode.Skating"/>).
     /// </summary>
     public bool Skates { get; set; }
+
+    /// <summary>
+    /// How the region's challenge is taken (plan 23 · Z6): <c>"trials"</c> for Alola's island challenge, whose
+    /// <see cref="Badges"/> are the grand trials' stamps (the Trainer Card says STAMPS); left out for Gyms and badges.
+    /// </summary>
+    public string? Challenge { get; set; }
+
+    /// <summary>The region's badges are an island challenge's stamps (<see cref="Challenge"/> is <c>trials</c>).</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Stamps => string.Equals(Challenge, "trials", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival { get; set; }
@@ -175,6 +192,24 @@ public sealed class RegionFile
         "modern" => Audio.SynthSound.Modern,
         "ds" => Audio.SynthSound.Ds,
         _ => throw new FormatException($"region {Id}: 'sound' is 'modern' or 'ds', not '{Sound}'")
+    };
+
+    /// <summary>
+    /// What the region's outdoors are walked on (plan 32 · OW1): <c>"open"</c>, the open world's engine (Galar's and
+    /// Paldea's, once their files are written), or <c>"grid"</c> and left out for the tile grid every region before them
+    /// has. Its rooms stay grid maps either way (plan 32 · decision 6). <see cref="Region.Field"/> reads it, never this.
+    /// </summary>
+    public string? Field { get; set; }
+
+    /// <summary>
+    /// <see cref="Field"/> read: the open world or the grid, the grid when the file names none. Anything but <c>open</c>
+    /// and <c>grid</c> is refused, so a misspelling can't leave a region on the wrong field unnoticed.
+    /// </summary>
+    public FieldKind FieldKind => Field?.Trim().ToLowerInvariant() switch
+    {
+        null or "" or "grid" => FieldKind.Grid,
+        "open" => FieldKind.Open,
+        _ => throw new FormatException($"region {Id}: 'field' is 'grid' or 'open', not '{Field}'")
     };
 
     // What a region a pack adds says of its place in the chain (plan 16 · T14, the last part; docs/packs.md, "A region
@@ -239,6 +274,12 @@ public enum MovementSpeed { Paces, Analog }
 
 /// <summary>A region's own way of travelling beyond on foot, surfing, cycling and diving (plan 30, "The setting").</summary>
 public enum RegionMode { Skates, Ride, RotomBike, Mount }
+
+/// <summary>
+/// Which field engine a region's outdoors are walked on (plan 32): the tile grid of every region from Sinnoh to Alola,
+/// or the open world in metres of Galar and Paldea.
+/// </summary>
+public enum FieldKind { Grid, Open }
 
 /// <summary>The body kit people are drawn in (plan 30, decision 12): the chibi kit, or the grown one from Kalos on.</summary>
 public enum CharacterKit { Chibi, Grown }

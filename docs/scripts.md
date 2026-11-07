@@ -266,6 +266,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
 | `wildbattle "Gyarados" 30 shiny` | A shiny one (plan 20 · J11: the Lake of Rage's red Gyarados), made of a shiny personality drawn for the player's trainer number as the original's does; `nofleeing` and `shiny` go in either order. |
 | `wildbattle "Latios" 50 holding "Soul Dew"` | A wild Pokémon that holds an item (plan 21 · H12, part a: Southern Island's eon Pokémon, Emerald's `seteventmon`); one caught keeps it. The options go in any order. |
+| `wildbattle "Wishiwashi" 20 totem defense [2] [ally "Alomomola"]` | A trial's totem (plan 23 · Z6; `IScriptHost.TotemBattle`, `BattleConditions.TotemAura`): it can't be run from, is fought as an SOS battle, takes the aura's stat stages as the battle opens (each named stat, `attack`, `defense`, `spattack`, `spdefense`, `speed`, `accuracy`, `evasion` or `all` for the five, by the stages given, one when none), calls on its first action and is always answered (by the `ally` named, else its own line), can't be caught, and the battle is won once it falls. A headless host writes `totembattle <species> <level> <stats>+<stages> [ally <species>] <outcome>`. |
 | `wildbattle "Giratina-Origin" 47` | A form's name in place of its species': the Pokémon is met in that form (plan 02 · S12), and one caught keeps it only as the form's own rule lets it (Giratina's by the Griseous Orb, `FormRules.ByHeldItem`). |
 | `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
@@ -883,6 +884,23 @@ was started with; anyone else is no friend's trainer and has nothing to battle.
 | `friend beaten` | `RESULT` 1 when the friend was beaten today (`GameClock.Today`), or the person is no friend's trainer; 0 otherwise. |
 | `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
 | `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
+
+### The crafting kit
+
+Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,
+`fieldUse` `CraftingKit`) that holds the pouch of materials (`Models/Materials.cs`, 999 of a kind at most, saved as
+`SaveData.Crafting`). A material is named by its id (`softFluff`) or its English name (`"Soft Fluff"`) and a name the table
+(`Data/materials.json`) lacks is a mistake of the file. One command, `craft`; later sessions of plan 39 add words to it and never
+another command. `{material}` says the last material named, in the language chosen, and `{materials}` how many.
+
+| Command | What it does |
+|---|---|
+| `craft has` | `RESULT` 1 when the kit is in the bag, else 0. |
+| `craft give kit` | Puts the kit in the bag once and sets `FLAG_GOT_CRAFTING_KIT`: `RESULT` 1, or 0 and nothing given when it is held already; `{item}` names it. The text and the fanfare are the script's. |
+| `craft give "Soft Fluff" 3` | Adds to the pouch, silently: `RESULT` and `{materials}` are how many fitted (the pouch stops at 999 of a kind). |
+| `craft take "Soft Fluff" 3` | Takes exactly that many out: `RESULT` 1, or 0 and nothing taken with fewer. |
+| `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
+| `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
 
 ### Join Avenue
 

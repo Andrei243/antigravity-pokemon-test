@@ -141,7 +141,9 @@ public enum GameState
     /// <summary>The camp: the team out of their balls, petted and fed (plan 10 · F6).</summary>
     Camp,
     /// <summary>The Global Link counter: the online server's friend code, link codes and a trade room (plan 07 · O5, O7).</summary>
-    GlobalLink
+    GlobalLink,
+    /// <summary>The crafting kit looked into, from the bag, the item button or a script's <c>craft open</c> (plan 39 · CR1).</summary>
+    Crafting
 }
 
 public partial class GameEngine
@@ -445,6 +447,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.Crafting.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
         LoadFrontier(null);
@@ -504,6 +507,7 @@ public partial class GameEngine
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
         ForgetTheResearchToTell();
+        ForgetWhatWasLeft();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
@@ -629,6 +633,8 @@ public partial class GameEngine
         flow.Map = MapDatabase.Get(start.Map);
         flow.Player = new Player(start.X, start.Y);
         flow.Player.Facing = start.Facing;
+        // A new game begins on the grid (plan 32 · OW1: no region's start is in an open map yet)
+        flow.Open = null;
         // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
         // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
         // starts as every game did before: a Pokémon, its first starter, and a few items (plan 18 · W1: by the record's HasStory).
@@ -677,6 +683,8 @@ public partial class GameEngine
         // A save made between tiles in a free region wakes where the body stood (plan 30 · FM7), unless it was moved
         if ((save.PlayerSubX != 0 || save.PlayerSubY != 0) && place.Map == save.CurrentMapName && (place.X, place.Y) == (save.PlayerGridX, save.PlayerGridY))
             flow.Player.SetOffset(save.PlayerSubX, save.PlayerSubY);
+        // A save made in an open map wakes there, where the game knows the map (plan 32 · OW1), and on its grid place otherwise
+        TakeUpOpenPlace(save);
         flow.ExitSpot = save.Exit;
         flow.MapTrail.Restore(save.MapTrail);
         flow.LastDay = save.LastDay;
@@ -705,6 +713,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.Crafting.Load(save.Crafting);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadFrontier(save.Frontier);
@@ -826,6 +835,7 @@ public partial class GameEngine
         flow.MedalNotice.Clear();
         medalsLookedAt = -1;
         ForgetTheResearchToTell();
+        ForgetWhatWasLeft();
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
@@ -889,6 +899,7 @@ public partial class GameEngine
             PlayerFacing = flow.Player.Facing,
             PlayerSubX = flow.Player.Offset.X,
             PlayerSubY = flow.Player.Offset.Y,
+            OpenPlace = flow.Open is { } open ? SavedOpenPlace.From(open.Place) : null,
             Travel = flow.Player.Mode,
             PlayerHeight = flow.Player.HeightOn(flow.Map),
             Exit = flow.ExitSpot,
@@ -915,6 +926,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            Crafting = flow.Crafting.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             Frontier = flow.Frontier,
@@ -1136,6 +1148,7 @@ public partial class GameEngine
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
         KeepTheResearch();
+        KeepWhatWasLeft();
         KeepTheTimer(dt);
         KeepTheStream(dt);
         KeepTheAutosave(dt);
@@ -1428,6 +1441,8 @@ public partial class GameEngine
                         else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
                         // The Apricorn Box is looked into and closes back onto the bag (plan 20 · J6)
                         else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
+                        // The crafting kit is looked into and closes back onto the bag (plan 39 · CR1)
+                        else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1575,6 +1590,9 @@ public partial class GameEngine
                 break;
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
+                break;
+            case GameState.Crafting:
+                UpdateCrafting(dt);
                 break;
             case GameState.Mining:
                 UpdateMining(dt);
@@ -1756,6 +1774,12 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // An open map's field is its own (plan 32 · OW1), and nothing of the grid's below runs while the player is in one
+        if (flow.Open != null)
+        {
+            UpdateOpenField(dt);
+            return;
+        }
         // What the field itself does runs at the field's pace, which a scene's slow motion lowers (plan 09 · L4)
         float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
@@ -2830,6 +2854,12 @@ public partial class GameEngine
         : unitsSold > 0 ? JournalEventKind.SoldALittle
         : null;
 
+    private (int Seen, int Caught, int Of) OwnDexCounts(IReadOnlyList<string> dexes)
+    {
+        var species = dexes.SelectMany(d => Pokedex.Entries(d)).Select(e => e.Species.DexNumber).Distinct().ToList();
+        return (species.Count(flow.Pokedex.IsSeen), species.Count(flow.Pokedex.IsCaught), species.Count);
+    }
+
     /// <summary>
     /// The regions the Trainer Card has a word for (plan 18 · W2), in the journey's order: the one the player is in, and
     /// every other they have been in (its Pokédex entered, a badge won there or its Hall of Fame entered), each with its
@@ -2840,11 +2870,13 @@ public partial class GameEngine
         var here = Here;
         return RegionDatabase.All
             .Where(r => r == here || flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
-                || (r.Dex is { } dex && flow.Pokedex.Entered.Contains(dex)))
+                || r.Dexes.Any(flow.Pokedex.Entered.Contains))
             .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
             {
-                Pokedex = r.Dex is { } dex && flow.Pokedex.Regional.Contains(dex)
-                    ? (flow.Pokedex.SeenIn(dex), flow.Pokedex.CaughtIn(dex), Pokedex.Entries(dex).Count) : null
+                // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
+                Pokedex = r.Dexes.Where(flow.Pokedex.Regional.Contains).ToList() is { Count: > 0 } own
+                    ? OwnDexCounts(own) : null,
+                Stamps = r.File?.Stamps == true
             })
             .ToList();
     }
@@ -2922,7 +2954,7 @@ public partial class GameEngine
             BattleResult.PlayerVictory => flow.Battle.IsTrainerBattle ? TrainerScore.WonTrainerBattle : TrainerScore.WonWildBattle,
             BattleResult.EnemyCaught when flow.Battle.Caught is { } caught =>
                 // Of the regional Pokédex of the region the player is in (plan 18 · W2), or not
-                (Here.Dex is { } dex && caught.Species.DexNumbers.ContainsKey(dex) ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
+                (Here.Dexes.Any(caught.Species.DexNumbers.ContainsKey) ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
                 + (flow.Battle.CaughtNewSpecies ? TrainerScore.CaughtNewSpecies : 0),
             _ => 0
         };
@@ -3310,6 +3342,9 @@ public partial class GameEngine
                 break;
             case GameState.ApricornBox:
                 flow.ApricornBoxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Crafting:
+                flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
                 flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);

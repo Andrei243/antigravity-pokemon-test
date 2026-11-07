@@ -19,6 +19,8 @@ public class LegendaryScenesTests
     /// </summary>
     private static readonly Dictionary<string, string> StillBare = new()
     {
+        ["GeosengeTown_FlareHQ.Xerneas Xerneas"] = "Kalos Z4: Xerneas wakes in a scene of its own (wks85); its LS beat is plan 29's to write",
+        ["ns_castle_5.Zekrom Zekrom"] = "Unova U10: Zekrom's meeting before plan 29 LS beats; owed",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>

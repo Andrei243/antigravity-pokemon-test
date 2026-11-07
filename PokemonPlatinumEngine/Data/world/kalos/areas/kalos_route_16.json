@@ -1,0 +1,47 @@
+{
+  "key": "kalos_route_16",
+  "index": 41,
+  "name": "Route 16",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_16",
+  "nightMusic": "ROUTE_16",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 422, "z": 240, "to": "lost_hotel", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "corentin", "looks": "youngster", "movement": "look_north", "x": 400, "z": 273, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_CORENTIN" },
+    { "id": "constance", "looks": "picnicker", "movement": "look_east", "x": 384, "z": 272, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_CONSTANCE" },
+    { "id": "gaetan", "looks": "backpacker", "movement": "look_east", "x": 419, "z": 262, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_GAETAN" },
+    { "id": "rosalie", "looks": "lady", "movement": "look_west", "x": 428, "z": 255, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LADY_ROSALIE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 385, "z": 242, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_16_MAX_POTION", "item": "Max Potion", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 432, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_16_REVIVE", "item": "Revive", "script": "" }
+  ],
+  "signs": [
+    { "x": 396, "z": 294, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Bunnelby", "level": 33 },
+    { "species": "Fletchinder", "level": 33 },
+    { "species": "Pancham", "level": 33 },
+    { "species": "Skiddo", "level": 33 },
+    { "species": "Litleo", "level": 34 },
+    { "species": "Honedge", "level": 34 },
+    { "species": "Espurr", "level": 34 },
+    { "species": "Ledian", "level": 34 },
+    { "species": "Pancham", "level": 34 },
+    { "species": "Gogoat", "level": 35 },
+    { "species": "Furfrou", "level": 35 },
+    { "species": "Meowstic", "level": 35 }
+  ],
+  "landRate": 20
+}

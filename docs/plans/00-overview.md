@@ -1,55 +1,58 @@
-# 00 · Overview: what is left, in lanes that run side by side
+# 00 · Overview: what is left, in waves of sessions that run side by side
 
 Written on 2026-10-07, after every one of the 26 plans was read in full and checked against the code. The plans keep what each session delivers, needs and leaves for the user to decide; this file says **when** each session runs and **what runs beside it**, so that several sessions (one agent each, in a worktree of its own) can be done at once and merged together. It replaces the README's "Order", which was written before any session.
 
 **On 2026-10-12 the user answered the decisions that gate sessions** ("Decisions that gate sessions", below, has every answer and what is still open). They changed the lanes after wave 11, the regions' section and the work no plan owned: every game begins in Sinnoh and is played by one set of rules, the modern ones (there are no Platinum rules any more), the later regions without a decompilation are drawn by hand, Generations 5 to 9 live in their own regions and not in a zone of Sinnoh's, the four later mechanics are handed over in their own regions, Romanian is the first translation, and migration from the player's files is dropped. The plans' own decision lists still carry what they recommended before: "Stale lines found in the plans" names each, and a plan's next session rewrites its own.
 
-The idea in one paragraph: the work is split into six **lanes** whose sessions touch different parts of the code, plus work that can go **beside** any of them. A **wave** is one round of sessions, at most one from each lane, started from the same commit and merged together at its end. Lanes 1 (the story) and 2 (the map and its rooms) are the spine: lane 2 stays a wave ahead of the chapter that needs its Gym or room. The other lanes have only soft gates: when one is behind, the chapter leaves the beat out and writes where it goes, as plan 02 already does.
+**Remade on 2026-11-07**, after plans 35 to 44 were written and every open plan's status list was counted again (and held to `git log` where a tick looked wrong): "Waiting on the user" first, then where each plan stands, then **every wave still to come** ("The waves to come", waves 90 to 112, the open world's column behind its gate, the voices' column behind theirs, the optional sessions and plan 27 last). What the waves were written from (the lanes' lists of 2026-10-12, the regions' section, the order of plans 35 to 44) is kept below them for its reasons, and the record of every wave run is at the end ("Status").
+
+The idea in one paragraph: the work is split into **lanes** whose sessions touch different parts of the code (six from the start, and a seventh, the open world, since plan 32), plus work that can go **beside** any of them. A **wave** is one round of sessions started from the same commit and merged together at its end, with no two of its sessions on the same files, the same seam or the same save or story version. The spine is now the chain of regions: plan 23's last sessions, plan 30's grown kit and free movement, then plan 32's open world and the two regions built on it (plans 33 and 34). Plans 35 to 44 fill each wave around the spine; none of them gates a region.
+
+## Waiting on the user
+
+Each item says what the user decides or runs, and what waits for it. Nothing else in the waves below waits for the user: where a plan's decision has a recommended answer, the session goes ahead on it unless the user says otherwise.
+
+1. **The open world's gate** (plan 32 · OW0, built 2026-11-07; plan 32's decisions 10 to 16). *Look* at the harness's `openproto` shots (`ow00` to `ow09`, `ow02n`, `ow07n`, `ow07v`, the sections `ow_section_*`, the plan `ow_plan` and the impostors' atlas) and say whether that is the open world wanted; *run* `SHOTS_ONLY=open_prototype dotnet run --project tools/ShotHarness -- <out dir> profile` on the Windows machine, quiet, and read the scene's floor (under 8 ms at 1080p on High). Decisions 11 to 16 (micrometres in the rules, the baker's own mesher, the apron, standing on a steep face, instanced trees, far levels by thinning) go ahead on their recommendations unless the user says otherwise. **Waits for it**: plan 32 · OW2 to OW10, all of plans 33 and 34, plan 30 · FM12 to FM14 (Paldea's mount), plan 03 · D15's Galar and Paldea placements. OW1 (no terrain, GPU-free) is running already.
+2. **The Kalos gate for free movement** (plan 30 · decision 10, stage 2). After wave 99's FM9 close-out (`fw30` to `fw39` shot, `profile` with free movement, the bot past the skates in `Free`), *say* whether Kalos's region file (and Alola's, plan 23 · Z5's "The engine for Alola") goes from `Eight` to `Free`. Nothing else waits for it; a no leaves both regions on eight ways.
+3. **The grown kit's looks** (plan 30). *Judge* FM4's turntables (wave 93) and FM10's `56_cast` boards of Kalos (wave 97). FM5, FM6 and FM10 build on FM4's kit and go ahead before the answer only at their own risk; a no sends FM4 round again.
+4. **The voices** (plan 26). *Approve* the speech engines' licences and downloads and *choose* each character's voice by ear in V4's trial; *record* the rival's 21 passages into `PokemonPlatinumEngine/Data/voice/samples/rival/` and approve the cloning engine and whisper.cpp for V3. **Waits for it**: 26 · V3 to V8, and with them the voices of every chapter written since (V7). Nothing else waits.
+5. **The outline sheet of plans 35 to 44** (written in wave 91, docs only, `decisions/APPROVAL-plans-35-44.md`). *Answer* the names and content of ours the plans ask to be shown first: the hub's, the plaza's, the office's and the gathering's names (41 · decision 3), the agency's cases and the gathering's story (EG7 to EG9), the gifts and the festivals (40 · decision 9), the famous partners (37 · decision 3), the stage show and the films (42 · PS2, PS4), the travelling folk (43 · LF9), the syndicate's story and words (44 · decisions 2 and 9). **Waits for it**: the sessions marked ◇ below (waves 94 to 109); the rest of plans 35 to 44 goes on.
+6. **Timings on the Windows machine** (the GTX 970, a quiet machine, never during a wave). Owed now: the OW0 floor (item 1); 16 · T10's `budgets` mode (`MapScene.Prepare`'s figures into `budgets.json`); `profile`'s scenes never read since they were built: 22 · U2 (Unova on High), 21 · H5 (the sea floor), 25 · Y1 to Y5 (the rain, the double, the moments, the tired battle), Y14 and Y15 (the later mechanics' looks), the giants (plan Y), 23 · Z2's busiest Lumiose plaza. Owed as the waves bring them: FM3's thirty people (wave 94), FM9's free movement (wave 99), Z22's busiest Wild Zone (wave 100), BN5's pasture (wave 100), SD8's floor (wave 105), OW9's floor (the open world's column). A session whose done-when is a timing is ticked when the user's number comes back.
+7. **Ears** (Claude can't listen). The MP3s of plan 31 · MU3 to MU7 (Kalos, Alola, Galar, Paldea, the later legendaries' themes); Kalos's and Alola's chapter songs (plan 23, MusicRender); plan 25's move sounds and the later mechanics' sounds, unheard since Y6. A song the user rejects goes back to its region's session; nothing waits.
+8. **Looks** of what was built by hand: Kalos's towns (23 · Z1, "the user's call on the town"), Melemele (23 · Z5), D14's weakest sculpts after their tidy-up (wave 98), and later each open world's first shots.
+9. **Questions with a default that holds until answered**: real-time battles for the Lumiose era (the study's question 1: no, turn-based); the order of plans 35 to 44 and whether 42 to 44 are wanted (question 2: built last, waves 103 to 111; the user may drop 42, 43 or 44 whole); Hisui (plan 23 · decision 9: Z17 to Z20 optional, asked again after Paldea); Alola drawn by hand (23 · Z5: unless the user rules on the Moon decompilation otherwise).
+10. **What only the user does**: plan 07 · O7's first deployment of the online server; plan 16 · T2's first public release; plan 13 · V25's Discord application; every optional session (the list after wave 112) on the user's word; plan 27's six decisions when its spike comes.
 
 ## Where we are
 
-About 350 sittings are left, a dozen or so of them marked optional (Hisui and the Pokéathlon no longer are, since 2026-10-12), and plan 27's seven come after them all.
+Counted on 2026-11-07 from every plan's status list. About 190 to 230 sittings are left with the regions on the open world, 25 or so of them optional, and plan 27's seven after them all. Twenty-one plans are finished and filed in [finished/](finished/): 01, 02, 04, 06, 08, 09, 11, 12, 14, 15, 18, 19, 20, 21, 22, 24, 25, 28, 29, 31 and Y (14, 18, 28 and 31 moved there by this remake; 18's W8, the harbours that sail both ways, was built on 2026-11-03 and its line ticked now).
 
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
-| 01 · Sinnoh map | M1–M12 | 0 | done 2026-10-12: the last two hand-made rooms (the player's house and the professor's lab) are on the original's plans, and M12's timings were read (judged by each scene's floor: 27 of the 28 scenes on the map of Sinnoh faster, one battle menu 0.06 ms slower, everything else within noise) |
-| 02 · Story | S1, S2, S4–S15 | 0 | done 2026-10-11: played from the bedroom to the post-game; the plan ends with what the story still owes other plans |
-| 03 · National Pokédex | D1, D5–D11, every model batch to Pecharunt (all 1,025 hand-built; Paldea 3a–3c), D13 | 2 | D12 (two parts: its zone for Generations 5–9 was dropped on 2026-10-12); D13 was done ahead of it on 2026-10-12 |
-| 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
-| 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
-| 06 · Game mechanics | R1–R18 | ~14 | every one of Platinum's mechanics is in (2026-10-11); R19 to R30 are the later generations', and two sessions of our own were asked for on 2026-10-12 (Megas of our own, Mega Dynamax) |
-| 07 · Online | — | 8 | most of O2 came with plan 06; O3 became plan 28 (2026-10-12); O8 optional |
-| 08 · Platinum's details | P1, P5, P6, P7, P12, P13, P14 | 12 | P3's met data and markings came with R12; P20–P23 (migration, the second slot) were dropped on 2026-10-12 |
-| 09 · Looks | L2, L4, L11, L12, L13, L14, L15 | 8 | |
-| 10 · Companions | F1 | 11 | F8 optional |
-| 11 · People | C1, C5, C6, C11, C12, C9, C10 (finished 2026-11-03; the `intro` shots owed) | 8 | the looks are a table, `characters.json` |
-| 12 · Quality of life | Q1, Q2, Q10, Q11, Q20 | 25 | Q20 wrapped the scenes of every chapter, S4 to S15 (124 scenes) |
-| 13 · Ways to play | — | 26 | V11, V14, V25 optional |
-| 14 · Battle formats | B1, B14 | 13 | B2, B13 optional |
-| 15 · Side activities | — | 8 | E6–E8 (the Pokéathlon) kept on 2026-10-12, just before 20 · J13 |
-| 16 · Tooling and shipping | T3, T5, T8, T16 (and a CI build-and-test workflow) | 20 | T9, the editor, is now what Unova and the later regions are drawn with |
-| 17 · Localisation | — | 6 | wanted since 2026-10-12: Romanian first, changed in the options at any time |
-| 18 · Other regions | W6, W7 | 8 | W6 done 2026-10-17: the GBA reader's layouts, behaviours, heights and matrices (`--game firered`, `--game emerald`); W7 done 2026-10-17: its events, wild Pokémon, trainers, heal locations, rooms and houses found at their doors, `--game … --data` |
-| 19 · Kanto | — | 9 | |
-| 20 · Johto | — | 15 | J15 optional |
-| 21 · Hoenn | H1 to H12 (finished 2026-11-04) | 12 | the sea floor's timing (H5) is the user's to read on the GTX 970 |
-| 22 · Unova | U1, U3 to U12 (finished 2026-11-04) | 12 | U2's frame on High (the `profile` mode's Unova scenes) is the user's to time on the GTX 970 |
-| 23 · Later regions | — | 24 | drawn by hand; Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) are wanted since 2026-10-12, through a rift after the last region |
-| 24 · Guards | X1, X2, X3 | 3 | |
-| 25 · Battle presentation | Y1, Y2, Y3, Y4, Y5, Y6 | 10 | |
-| 26 · Voice | — (only the plan is written) | 8 | NVorbis allowed on 2026-10-12 |
-| 29 · Legendary scenes | — (only the plan is written, 2026-10-31) | 9 | LS10 optional; LS2 to LS9 side by side after LS1 |
-| 27 · Moving to Unity | — (only the plan is written, 2026-10-08) | 7 | deferred by the user to the end of the project, after every other plan; its numbers are measured again then |
-| 35 · Bonding | — (only the plan is written, 2026-11-07) | 10 | BN7, BN8 optional; plans 35 to 44 come from [the study of what else to add](studies/what-else-to-add-study.md) |
-| 36 · Training | — (only the plan is written, 2026-11-07) | 10–12 | TR3 and TR9 make built rules reachable: early |
-| 37 · Battle facilities | — (only the plan is written, 2026-11-07) | 12–14 | FC9, FC10 optional |
-| 38 · The field | — (only the plan is written, 2026-11-07) | 13–17 | EX10 (Unova's Town Map) first; EX9 optional |
-| 39 · Crafting | — (only the plan is written, 2026-11-07) | 8 | CR6 takes plan 10 · F8 over; CR8 optional |
-| 40 · Gifts and completion | — (only the plan is written, 2026-11-07) | 12–17 | GE1 to GE3, GE5 and GE11 early; GE10 optional |
-| 41 · The whole journey | — (only the plan is written, 2026-11-07) | 10–14 | EG5 needs nothing and can start at once |
-| 42 · Pastimes | — (only the plan is written, 2026-11-07) | 11–12 | PS8 to PS10 optional |
-| 43 · The player's life | — (only the plan is written, 2026-11-07) | 10–14 | LF2, LF8, LF10 optional |
-| 44 · Side modes | — (only the plan is written, 2026-11-07) | 10–13 | SD10 optional; the whole plan may be dropped |
+| 03 · National Pokédex | D1, D5–D11, D13, every model batch to Pecharunt; D12a; D14's nine batches and four supplements (400 species of ours, all sculpted from the user's pictures); D15 for Sinnoh to Unova | ~3 | D12's part c came with plan 29 · LS11a (a close-out, wave 99); D14 owes a tidy-up of its weakest sculpts (wave 98); D15's placements for Kalos and Alola (wave 96), for Galar and Paldea with plans 33 and 34 |
+| 05 · Sound and music | A1–A5, A7 | rolls | A6 rolls on with each region's chapters and ends with plan 34 |
+| 07 · Online | O2–O6 | 1–2 and the user | O1, the core library split, a freeze of its own (wave 112); O7's first deployment is the user's; O8 optional |
+| 10 · Companions | F1–F7, F9; F10–F12 but their drawing and shots | 1 | wave 92; F8 is plan 39 · CR6 |
+| 13 · Ways to play | V1–V20, V22–V24, V26 | 1 | V21 (wave 102); V25 optional, the user's word and a Discord application |
+| 16 · Tooling and shipping | all but what T10 and T11 owe | the user | T10's `MapScene.Prepare` figures are the Windows machine's; T11's `diff` of `all` goes to a shots pass |
+| 17 · Localisation | N1–N5, N6 a to zi | rolls | N6 each wave beside the rest (Romanian for the wave before); the last names (wave 107) |
+| 23 · Later regions | Kalos drawn to its Hall of Fame (Z1–Z4, Z3 ticked); Alola Z5 in two parts; **running**: Z6, Z7, Kalos's loose ends | ~8 (+6 optional) | Alola's loose ends (wave 91), Kalos's post-game as a new Z4b (wave 92), Z8's plane to Galar (wave 97), the Lumiose era Z21–Z23 (waves 99 to 101); optional: Z8's Ultra Space, Z24, Hisui's Z17–Z20 |
+| 26 · Voice | V1, V2; the tools of V3 to V6 | 6+ | everything left waits for the user (item 4) |
+| 27 · Moving to Unity | — | 7 | last, after everything |
+| 30 · Free movement | FM0–FM2, FM7–FM9 on test regions | ~10 | FM4 (waves 91 and 93), FM3, FM5, FM6, FM10, the crossing's scene, FM9's close-out (waves 94 to 99), then the Kalos gate; FM13 with plan 34 · PD2; FM11 optional |
+| 32 · Open-world engine | OW0 (its gate waits); **running**: OW1 | 13–17 | after the gate: the open world's column |
+| 33 · Galar | — | 12–16 (GL8, GL9 optional) | after plan 32 |
+| 34 · Paldea | — | 16–20 (PD10–PD12 optional) | after GL7 |
+| 35 · Bonding | — | 8 (+2 optional) | waves 94 to 105 |
+| 36 · Training | — | 10–12 | waves 91 to 97 |
+| 37 · Battle facilities | — | 10–12 (+2 optional) | waves 93 to 106 |
+| 38 · The field | **running**: EX1 | 12–16 (+1 optional) | waves 91 to 106 |
+| 39 · Crafting | **running**: CR1 | 7 (+1 optional) | waves 92 to 110 |
+| 40 · Gifts and completion | — | 12–16 (+1 optional) | waves 91 to 102 |
+| 41 · The whole journey | — | 10–14 | waves 93 to 102 |
+| 42 · Pastimes | — | 8–9 (+3 optional) | waves 103 to 111; may be dropped whole |
+| 43 · The player's life | — | 7–10 (+3 optional) | waves 100 to 108; may be dropped whole |
+| 44 · Side modes | — | 9–12 (+1 optional) | waves 103 to 106; may be dropped whole |
 
 Plan 13 and plan 26 both number their sessions V1, V2…; this file always writes the plan with the ID (13 · V1, 26 · V1), and so should anyone citing them.
 
@@ -57,12 +60,14 @@ Plan 13 and plan 26 both number their sessions V1, V2…; this file always write
 
 1. **Start together.** Every session of a wave starts from the same commit of the branch, in a worktree of its own (`git worktree add`), on a branch named for its session.
 2. **Each session tests only itself.** It builds, runs the tests of what it touches (`dotnet test --filter`), runs its harness mode before and after in its own worktree (the copy method in CLAUDE.md), records its outcome and ticks its plan, and commits in its worktree. It never runs the full suite (CLAUDE.md, "The full suite runs once").
-3. **Merge in this order**, each with `git merge --no-ff`: lane 6 (tools and guards: what the others build on), then 3 (rules), 2 (map and rooms), 1 (story), 4, 5, then the work beside. Resolve by the table "Hot files" below. Then build the solution and the tools outside it (`tools/ShotHarness`, `tools/MusicRender`), regenerate what is generated, and run **the full suite once**. Fix what fails there, on the merged tree, then commit, push and open the pull request.
-4. **How many at once.** A wave holds up to six sessions and the work beside. This machine has carried four agents with a full test run beside them (the load reached about 50, and every run slowed). With fewer hands, keep lanes 1 and 2 and take the other lanes in turn. A lane that waits a wave only slips its soft gates.
+3. **Merge in this order**, each with `git merge --no-ff`: lane 6 (tools and guards: what the others build on), then 3 (rules), 2 (map and rooms), 1 (story), 4, 5, 7 (the open world), then the work beside. Resolve by the table "Hot files" below. Then build the solution and the tools outside it (`tools/ShotHarness`, `tools/MusicRender`), regenerate what is generated, and run **the full suite once**. Fix what fails there, on the merged tree, then commit, push and open the pull request.
+4. **How many at once.** A wave holds up to six sessions and the work beside. This machine has carried four agents with a full test run beside them (the load reached about 50, and every run slowed). With fewer hands, keep lanes 1 and 2 and take the other lanes in turn. A lane that waits a wave only slips its soft gates. **At most three agents of a wave run the harness** (the user's limit since 2026-11-03): two sessions that build with it open (marked H in "The waves to come") and the shots pass; every other session builds and tests with no window and leaves its shots, listed by name, to the next wave's pass.
 5. **Time nothing while a wave runs.** `profile`'s milliseconds mean something only on a quiet machine. A session whose proof is a timing (G11's rule) runs its timing after the merge, alone.
 6. **No two "whoever lands first" sessions for the same seam in one wave.** The seams and their owners are in the table below.
 7. **At most two sessions adding script commands in a wave, besides the chapter.** They append at the end of the `Op` enum, the parser and runner cases, both hosts, `ScriptTests.EveryCommand` and `docs/scripts.md`, and the merge keeps both.
-8. **While lane 3 changes the battle's rules (R19 to R29, B1, B3 to B7), lane 4 takes only sessions that don't change `BattleCore`.** Hooking one event onto a named line is allowed; changing what a turn does is not.
+8. **While lane 3 changes the battle's rules (R19 to R29, B1, B3 to B7), lane 4 takes only sessions that don't change `BattleCore`.** Hooking one event onto a named line is allowed; changing what a turn does is not. Since plans 35 to 44 the same holds for any session that changes `BattleCore`, `BattleCore.Give` or `CatchCalculator.Shakes` (36 · TR7, 40 · GE5, 44 · SD1, 23 · Z22's rogues): one a wave.
+9. **No two sessions of a wave on one save or story version.** A session that raises `SaveData.CurrentSave`, `CurrentWorld` or `StoryState.CurrentVersion` (32 · OW1 does) is the only one of its wave that touches `SaveData`; a session that adds save fields that are null while empty (most of plans 35 to 44) raises nothing and may share a wave.
+10. **A session that waits for the user ends at its question.** It builds what needs no answer, writes the question into its plan and the list "Waiting on the user", and is ticked only when the answer has been carried out.
 
 ## The lanes
 
@@ -74,9 +79,163 @@ Plan 13 and plan 26 both number their sessions V1, V2…; this file always write
 | 4 · Battle on screen | plan 25, plan 08's battle sessions (P1, P2, P5, P10, P11), 09 · L1 and L2, 12 · Q10–Q12 and Q17, 11 · C1, C12 and C13 | `BattleEngine.Show`, `BattleAnimator`, `MoveFx`, `ModernUi.Battle` |
 | 5 · Field and people | plan 09's field sessions, plan 10, plan 11's people, 08 · P8, P9 | `WorldRenderer`, `FieldLife`, `CharacterModels`, `characters.json` |
 | 6 · Comfort, tools and guards | plan 12's rest, plan 08's menus and Pokédex (P3, P4, P13, P18, P19), plan 15, plan 16, plan 24 · X1–X4, 26 · V1, 07 · O2 | menus, saves, the title, the test project, `tools/`, CI |
+| 7 · The open world (since 2026-11-04) | plan 32, then plans 33 and 34 on it | `OpenWorld/`, `Graphics/OpenWorld/`, `tools/OpenWorldBake`, `Data/world/<region>` of an open region |
 | Beside | 03 · Paldea 3a–3c, 08 · P14–P17 (the Pokédex's written entries), 09 · L6–L8 (female looks), 05 · A6 songs written ahead | model files, one data file, song files: nothing anyone else edits |
 
-### Sessions this file splits
+Since 2026-11-07 the lanes also hold the plans written after them: plan 23 and its region chapters are lane 1's (drawn maps lane 2's), plan 30's kit and movement lane 5's, plan 26 beside, and plans 35 to 44 each name their sessions' lanes (the rows of "The waves to come" carry them).
+
+## The waves to come
+
+Written on 2026-11-07 from every open plan's status list and its "Needs and gives", with the user's gates of "Waiting on the user". Each wave starts from the merge of the one before; a wave whose session waits for something not yet merged moves that session to the next wave that has room, and says so in its outcome.
+
+**How to read a row.** *Marks*: **H**, the session builds with the harness open (art, renderers, sculpts, a region drawn by hand), at most two a wave, since the third GPU agent is the wave's shots pass; **C**, the session adds a script command or words of one (at most two a wave, besides a region's chapter: rule 7); **◇**, it waits for the outline sheet's answer (item 5 of "Waiting on the user"); **U**, its done-when needs the user (a look, a timing, an ear). A session without H builds and tests with no window and lists its shots for the next wave's pass. *Model*: Opus max for the hardest builds (a region drawn, a kit, an engine), Opus high for most builds, Sonnet high for scripts, data, menus and content laid on built rules, Sonnet for translations, passes and audits. *Size*: S one sitting, M one to two, L two to three (a session of two parts in its plan is one row, its parts done in the same wave).
+
+**Beside every wave** (not counted in its six): **the shots pass** (Sonnet high, GPU): the previous wave's owed shots taken in a worktree of the merged tree, looked at, and their faults fixed or listed (16 · T11's owed `diff` of `all` is folded into the first pass that has time); and **17 · N6** (Sonnet): Romanian for every line the previous wave wrote, then `TextTool report` and the voice catalogue's `--add-missing`.
+
+### Wave 90 (running, started 2026-11-07)
+
+23 · Z6 (Melemele and Akala: trials, totems, Z-Moves); 23 · Z7 (Ula'ula, Poni, Aether, Alola's Hall of Fame); 23 · Kalos's loose ends (Z1, Z2 and Z4: the bot's way from Vaniville whole, the three dexes, the Gyms' puzzles, the skater's pose); 32 · OW1 (the region's word, positions, ticks and the save: raises the save's version, so no other session of the wave touches `SaveData`); 38 · EX1 (outbreaks of one species); 39 · CR1 (the workshop, the kit and what Pokémon leave behind).
+
+### Waves 91 to 112
+
+| Wave | Session | Lane | Model | Waits for | Size | Marks |
+|---|---|---|---|---|---|---|
+| **91** | 23 · Alola's loose ends: Z5's rider drawn and the rides' own travel modes, the Town Map an island to a tab, the owed `wa` shots, whatever Z6 and Z7 leave | 1 | Opus high | wave 90's Z6, Z7 | M | H |
+| | 30 · FM4, part a: the style guide's "Grown characters", the five builds, the grown sculpting helpers | 5 | Opus max | — | L | H |
+| | 38 · EX10 Unova's Town Map (first of plan 38, a finished region's gap) | 2 | Sonnet high | — | M | |
+| | 36 · TR1 Effort on screen and the drills' rules | 6 | Sonnet high | — | S | |
+| | 36 · TR6 Hidden abilities handed down: the modern Day Care, Unova's opened | 3 | Opus high | — | M | |
+| | 40 · GE1 Every species, region by region: the checks | 1 | Opus high | — | M | |
+| | beside: the outline sheet of plans 35 to 44 (docs only: every name, story, gift, festival and design of ours a ◇ session needs, each with its plan's default) | — | Sonnet high | — | S | |
+| **92** | 23 · Z4b Kalos after its Hall of Fame (Kiloude City, Terminus Cave and Zygarde, the cave where Mewtwo waits, the roaming bird by the starter, the Mega Stones after the Hall of Fame, Looker's episode), written into plan 23 first | 1 | Opus max | wave 90's Kalos loose ends | L | H |
+| | 10 · F10 to F12's leftovers: `PokePose.Fierce`, the rustle drawn (`FieldLife`, `LifeArt`), the alpha's, HERE's and the rustle's shots | 5 | Sonnet high | no plan 38 session, no BN2 in the wave | M | H |
+| | 36 · TR2 The training hall and its drills (Sunyshore's door 7) | 6 | Opus high | TR1 | M | C |
+| | 36 · TR7 Powers: the rule and its readers (`Models/Powers.cs`, the seam) | 3 | Opus high | the wave's only `BattleCore.Give` and `Shakes` session | M | |
+| | 40 · GE2 The regions' own trades: the importer and the file, then the four regions' people | 1 | Sonnet high | GE1 | L | |
+| | 39 · CR4 The TM maker | 6 | Sonnet high | wave 90's CR1; no BN5 or BN7 (`common.PC`) | S | C |
+| **93** | 30 · FM4, part b: every hair cut, hat and garment at grown scale, the grown faces; the user judges the turntables | 5 | Opus max | FM4a | L | H U |
+| | 38 · EX3 Bright Pokémon, catch streaks and glints | 5 | Opus high | wave 90's EX1 | L | H |
+| | 36 · TR3 Peak training, the tools and every tool's source (`Data/ItemSources.cs`, the seam) | 6 | Opus high | TR2 | M | C |
+| | 37 · FC1 The later sets: a battle set for every species (the seam) | 3 | Opus high | — | M | |
+| | 40 · GE3 What the checks still owe (trades, fossils, the other versions' places) | 1 | Opus high | GE2 | L | |
+| | 41 · EG5 The Leaders' rematches where a region has none | 1 | Sonnet high | — | L | |
+| **94** | 30 · FM3 Live rigs in the field and their budget (thirty people timed on the Windows machine, `fw50`) | 5 | Opus high | FM4 | M | H U |
+| | 41 · EG1 The hub: a region of our own, its ways in and its rules (writes `Region.Side`) | 2 | Opus max | the sheet's names; no plan 23 side era in the wave | L | H ◇ |
+| | 38 · EX4 Headbutt trees and Route 119's Feebas | 2 | Sonnet high | not with EX8 | M | C |
+| | 36 · TR9 The later TMs and tutors | 3 | Opus high | TR3 | L | |
+| | 37 · FC2 The facilities' frame and the streak house (`facility`) | 3 | Opus high | FC1 | L | C |
+| | 35 · BN1 The care book | 5 | Opus high | — | S | |
+| **95** | 30 · FM5 Grown animation | 5 | Opus high | FM4's turntables approved | M | H U |
+| | 35 · BN2 The care close-up | 5 | Opus high | BN1; no F10 in the wave (both add `PokePose` fields) | L | H |
+| | 38 · EX2 The day's report and the visitor | 5 | Sonnet high | EX1, EX10 | M | |
+| | 40 · GE11 Every item the rules run can be had | 1 | Opus high | GE3, TR3 | L | |
+| | 36 · TR5 Tera Shards and the Tera keeper | 3 | Sonnet high | TR2 | S | C |
+| | 35 · BN4 The follower's mood and its words | 5 | Sonnet high | BN1 | M | |
+| **96** | 30 · FM6 Scale: the world, Pokémon, the camera, battle | 5 | Opus high | FM4 | M | H U |
+| | 38 · EX5 Rifts in the field | 5 | Sonnet high | EX1 | M | H |
+| | 36 · TR8 Powers in hand: the watch, the panel and the teachers | 6 | Sonnet high | TR2, TR7 | M | |
+| | 03 · D15 Our species in Kalos's and Alola's wild and teams | 1 | Sonnet high | Z4b, wave 90's Z7 | M | |
+| | 41 · EG2 Every region's Hall of Fame in one hall | 6 | Opus high | EG1 | M | |
+| | 41 · EG7 The agency and its first case (`Op.Deduce`) | 1 | Opus high | EG1, the sheet's case | M | C ◇ |
+| **97** | 30 · FM10 Kalos's cast in the grown kit; the user approves the `56_cast` boards | 5 | Opus high | FM4, FM6 | L | H U |
+| | 41 · EG3 The plaza (`Op.Plaza`, `LevelLift`, the seam) | 5 | Opus high | EG1, TR7 | M | H C |
+| | 40 · GE4 Diplomas for every Pokédex and a Pokédex of our own | 6 | Sonnet high | — | S | C |
+| | 36 · TR4 The halls of Kanto, Johto, Hoenn and Unova | 1 | Sonnet high | TR3 | L | |
+| | 37 · FC8 The institute's test and the ladder | 3 | Opus high | FC2 | M | |
+| | 23 · Z8a The plane from Alola to Galar: the link's attendant and its room in Hau'oli City (Ultra Space stays optional as Z8b) | 1 | Sonnet high | wave 90's Z7 | S | |
+| **98** | 30 · The crossing's scene: the chibi body to the grown and back (the user's note to plan 30's decision 4) | 5 | Opus high | FM5, FM6 | M | H |
+| | 03 · D14's tidy-up: the weakest sculpts of ours redone (Kanto's six that differ from their pictures, Sirenyss, Gulpereel, Heartreef, Omenblade, Beadruin and the rest the reports name) | beside | Opus high | — | M | H U |
+| | 41 · EG4 The Champions' circuit and its final | 1 | Opus max | EG2, EG3 | L | C |
+| | 41 · EG6 The weekly board of missions | 6 | Sonnet high | EG3 | M | C |
+| | 37 · FC3 The partners' tree (Hau'oli City) | 3 | Opus high | FC2, the sheet's partners | M | ◇ |
+| | 41 · EG8 Cases in Kanto, Johto, Hoenn and Unova | 1 | Opus high | EG7, the sheet's cases | L | ◇ |
+| **99** | 30 · FM9's close-out: `fw30` to `fw39`, `profile` with free movement, the bot past the skates in `Free`, the fuzzer's Kalos spots; **then the Kalos gate** | 5 | Sonnet high | FM10 | M | H U |
+| | 23 · Z21 The side era: Lumiose City and Hotel Z | 2 | Opus max | Z4b, EG1 (the side seam) | L | H |
+| | 40 · GE5 The charms and critical captures | 3 | Opus high | GE4; the wave's only `BattleCore` session | M | C |
+| | 39 · CR2 Gathering in the field | 6 | Sonnet high | CR1; no lane 5 session on `WorldRenderer` or the thing cards | M | C |
+| | 37 · FC7 The cups, the Leaders' round and the sparring room | 3 | Opus high | FC2 | L | |
+| | 03 · D12's close-out: part c held to plan 29 · LS11a, the line ticked | 1 | Sonnet | — | S | |
+| **100** | 23 · Z22 The Wild Zones and the Rogue Mega Evolutions (writes `MapArea.WildVisible`; the busiest zone timed) | 1 | Opus max | Z21; no EX6 in the wave | L | H U |
+| | 35 · BN5 The pasture (`profile`'s pasture timed) | 5 | Opus high | BN1; no CR4 or BN7 | L | H C U |
+| | 39 · CR3 Making things at the kit | 6 | Sonnet high | CR2 | M | C |
+| | 37 · FC5 Lumiose's restaurants | 3 | Sonnet high | FC2; no Kalos session in the wave | M | |
+| | 43 · LF1 The card the player designs | 6 | Sonnet high | — | S | |
+| | 43 · LF6 A phone for the later regions | 6 | Opus high | TR8 (its POWERS card) | L | |
+| **101** | 38 · EX6 Hideaways under the Underground, and statues (writes `FloorLayout`) | 2 | Opus high | Z22 | L | H |
+| | 38 · EX7 Soaring, and the places of the day | 5 | Opus high | EX10 | L | H |
+| | 35 · BN6 The jobs at the pasture | 6 | Sonnet high | BN5 | M | |
+| | 40 · GE6 Legendaries met again | 1 | Opus high | — | L | C |
+| | 40 · GE7 The gift box | 6 | Sonnet high | the sheet's gifts; no LF10 | L | C ◇ |
+| | 23 · Z23 The Z-A Royale | 3 | Opus high | Z21 | M | |
+| **102** | 39 · CR6 Cooking at the camp (plan 10 · F8 taken over) | 6 | Opus high | CR1, TR7; no BN2 | L | H C |
+| | 40 · GE9 Festivals on the calendar | 5 | Sonnet high | GE7, the sheet's festivals | M | H ◇ |
+| | 40 · GE8 The trade board and blind trades | 6 | Sonnet high | GE2 | M | C |
+| | 37 · FC4 The house of titles | 3 | Sonnet high | FC2; no Kalos session in the wave | M | |
+| | 41 · EG9 The gathering | 1 | Opus max | EG4, EG6, EG8, the sheet's story | L | ◇ |
+| | 13 · V21 Four at one machine | 4 | Sonnet high | V12 (built) | M | |
+| **103** | 38 · EX11 Unova's shaking grass, dust clouds, ripples and the bridges' shadows | 5 | Opus high | F12's drawing (wave 92) | M | H |
+| | 44 · SD5 The photo tour: the ride, the judge and the first course | 5 | Opus high | — | L | H C |
+| | 44 · SD1 Locked hearts: the lock and the battle | 3 | Opus high | the wave's only `BattleCore` session | M | C |
+| | 42 · PS3 The card-flip game | 6 | Sonnet high | — | M | |
+| | 42 · PS6 The arcade: a match-three and a picture-logic puzzle | 6 | Sonnet high | decision 2 (default: a Lumiose door) | M | |
+| **104** | 44 · SD2 Locked hearts on screen | 4 | Opus high | SD1 | M | H |
+| | 43 · LF4 Poses, the photo book and the photo spots | 5 | Opus high | — | L | H C |
+| | 44 · SD7 The delve's rules (on EX6's `FloorLayout`) | 3 | Opus high | EX6 | M | C |
+| | 44 · SD6 The photo tour's courses and report | 5 | Sonnet high | SD5 | M | |
+| **105** | 44 · SD8 The delve on screen (`profile`'s floor timed) | 5 | Opus high | SD7; no `GatherActors` session | M | H U |
+| | 43 · LF3 The salon and the dye house | 5 | Opus high | FM10 (the grown cuts) | M | H C |
+| | 44 · SD3 The syndicate: Sinnoh, Kanto and Johto | 1 | Opus high | SD2, the sheet's story and words | L | ◇ |
+| | 35 · BN3 Treats | 5 | Sonnet high | BN2 | S | C |
+| **106** | 37 · FC6 The Trainer Tower on Seven Island | 2 | Opus high | FC2; no lane 2 session on Kanto | L | H |
+| | 43 · LF5 The photo studio | 5 | Sonnet high | LF4 | M | H C |
+| | 44 · SD4 The syndicate: Hoenn, Unova and the head office | 1 | Opus high | SD3 | L | |
+| | 44 · SD9 The hollow camp, its board and the hollows | 1 | Opus high | SD8 | M | |
+| | 38 · EX8 Johto's Safari Zone arranged | 2 | Sonnet high | not with EX4 | L | C |
+| **107** | 42 · PS1 Props and the dressing room | 6 | Opus high | — | M | H C |
+| | 43 · LF9 Cafés and the travelling folk (`Op.Cafe`, the seam) | 5 | Opus high | the sheet's folk | L | H C ◇ |
+| | 17 · N6's last names: the accessories', the traps', the credits' and the boxes' default names | beside | Sonnet | — | S | |
+| **108** | 42 · PS2 The stage show | 6 | Opus high | PS1, the sheet's show | L | H ◇ |
+| | 43 · LF7 A home that goes with the player | 2 | Opus high | — | L | H C |
+| | 39 · CR5 Crossing berries, and Johto's Berry Pots | 6 | Sonnet high | — | M | C |
+| **109** | 42 · PS4, part a: the film studio's battles (the face's interlude, `LearnStep`, the Vs. Recorder's file) | 4 | Opus high | the sheet's films; no other lane 4 session | M | H C ◇ |
+| | 42 · PS7 Trick surfing (Hau'oli's beach) | 5 | Opus high | — | M | H C |
+| **110** | 42 · PS4, part b: Virbank's studio imported | 2 | Opus high | PS4a; no other Unova import in the wave | M | H C |
+| | 39 · CR7 Restaurants and stalls | 6 | Sonnet high | CR6 | M | C |
+| **111** | 42 · PS5 Sports days in Nimbasa's stadiums | 2 | Opus high | no other Unova import in the wave | M | H |
+| **112** | **A freeze**: 07 · O1, the core library split, alone, like wave 11 | all | Opus max | everything above merged | L | |
+
+The waves from 103 on are plans 42 to 44, which the user may drop whole (item 9): a dropped plan's rows are taken out and the waves close up. Plans 35 to 41 and the spine never wait for them.
+
+### The open world's column (after the gate, item 1)
+
+These run beside whichever main wave is current when the gate opens, a row to a wave, in this order. A row marked H takes one of that wave's two H places (the main wave's second H session waits a wave). Plan 32's rule holds for each: nothing of the grid regions moves (their modes' `diff` empty, the golden files unmoved but where the session says why).
+
+| Step | Session | Model | Waits for | Size | Marks |
+|---|---|---|---|---|---|
+| O1 | 32 · OW2 The baker and the terrain | Opus max | the gate; OW1 | L | |
+| O2 | 32 · OW3 Collision and the capsule; beside it OW8, part a: ground, water and sky | Opus max | OW2 | M + M | H |
+| O3 | 32 · OW4 The navigation mesh; beside it OW8, part b: the camera and shadows | Opus high | OW3 | M + M | H |
+| O4 | 32 · OW5 Volumes, markers, doors and scripts; beside it OW6 People, trainers and followers | Opus high | OW4 | M + M | C |
+| O5 | 32 · OW7 Wild Pokémon in the field; beside it OW9, part a | Opus high, Opus max | OW6; OW8 and FM3 to FM6 (waves 94 to 96) | M + L | H |
+| O6 | 32 · OW9, part b, with `profile`'s floor read by the user; beside it OW10 The tools, whole | Opus max, Sonnet high | OW9a | L + M | H U |
+| O7 to O13 | 33 · GL1 to GL7, one a wave: Galar's file, Postwick to Routes 1 and 2; the Wild Area (curry on CR6's pot); Max Raid dens (`BattleFormat.Raid`); Motostoke and the first three gyms; Stow-on-Side to Hammerlocke; the Champion Cup, the Darkest Day and Leon; after the Hall of Fame, with 03 · D15's Galar placements | Opus max | plan 32 whole; 23 · Z8a's plane; GL3 before GL4 | L each | H |
+| O14 to O22 | 34 · PD1 to PD9, one a wave: Paldea's file to Mesagoza; the mount on the open world (30 · FM12), with 30 · FM13 the mount as a rig beside PD3; the provinces and their gyms, the Path of Legends, Starfall Street and Let's Go, Tera Raids and picnics (sandwiches on CR6's pot), the League, Area Zero and the Way Home, after the Hall of Fame with 03 · D15's Paldea placements | Opus max | GL3's raids, GL7's plane; FM5 for FM13 | L each | H |
+
+Optional, last in each region and only if its story is played through: 33 · GL8, GL9; 34 · PD10 to PD12.
+
+### The voices' column (after the user's choice, item 4)
+
+26 · V4's trial finished and the first chapter generated; then V5 (everyone else), V6's scenes retimed with `waitvoice`, V7 a region's chapters a wave beside the rest (Sinnoh's first, then the regions in the chain's order), V8's Romanian pack with the engine V4 chose; V3 (the rival's clone) whenever the recordings come. Each is Sonnet high and touches `Data/voice` and the voice pack alone, so it fits beside any wave.
+
+### Optional, on the user's word
+
+35 · BN7, BN8; 37 · FC9, FC10; 38 · EX9; 39 · CR8; 40 · GE10; 42 · PS8, PS9, PS10; 43 · LF2, LF8, LF10; 44 · SD10; 23 · Z8b (Ultra Space and the Battle Royal's avenue), Z24, Z17 to Z20 (Hisui); 30 · FM11; 13 · V25; 07 · O8. Each goes into the first wave after the word that has room, by its plan's own gates.
+
+### Last
+
+Plan 27 (moving to Unity), after everything above, starting with its spike (S0), where its six decisions are put to the user. It needs wave 112's core library.
+
+## Sessions split in the first waves (kept for their reasons)
 
 Some sessions are too big for one sitting, or hold parts with different gates. They are split here. Each part ticks its plan's line only when the last part is done, and its outcome names the part.
 
@@ -151,6 +310,8 @@ What each cell is, and why it stands where it does:
 
 ## After the Hall of Fame: the lanes go on
 
+*As written on 2026-10-12. Nearly all of it is built (the Status says what and when); what is left of these lists is in "The waves to come", which wins where the two differ.*
+
 From wave 12, each lane takes its next session whose gates are met. The waves are no longer written out, but the rules above still hold. The list for each lane is in its order; "after X" is a hard gate.
 
 **Lane 1 · Story**
@@ -216,6 +377,8 @@ From wave 12, each lane takes its next session whose gates are met. The waves ar
 
 ## Then: the other regions and the rest
 
+*As written from 2026-10-12 to 2026-11-04, kept for its reasons. Plans 18 to 22, 24, 25, 28, 29 and 31 are finished since; what is left of 23, 26, 30 and 32 to 34 is in "The waves to come". Two lines here are overtaken: the harbours sail both ways since 2026-11-03 (18 · W8), and the Lumiose era (23 · Z21 to Z24) hangs off Kalos's Hall of Fame by plan 23's decision 10, not behind the rift.*
+
 These are the plans the README put after Sinnoh's Hall of Fame, which has been in the game since 02 · S14: the groundwork can start whenever lanes 2 and 6 take it. What the user decided on 2026-10-12 (the decisions' table has each answer):
 
 - **Every game begins in Sinnoh.** NEW GAME asks nothing about regions, and the stand-in Kanto is no longer where a game starts.
@@ -268,7 +431,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
 
 ### Plans 35 to 44: what else to add
 
-Written on 2026-11-07 at the user's request, with [the study they came from](studies/what-else-to-add-study.md): a plan for each category of what the main series and its spin-offs offer that the game neither had nor planned. Each plan says the lane of each of its sessions; the order across them:
+Written on 2026-11-07 at the user's request, with [the study they came from](studies/what-else-to-add-study.md): a plan for each category of what the main series and its spin-offs offer that the game neither had nor planned. Each plan says the lane of each of its sessions; the order across them (laid into waves 91 to 111 on 2026-11-07, "The waves to come"):
 
 - **First, what is built and can't be reached, or what a finished region was left without**, since each needs nothing new: 38 · EX10 (Unova's Town Map, lane 2), 36 · TR3 and TR9 (the tools' sources and the later TMs and tutors; lanes 6 and 3), 40 · GE1 to GE3 (every species of each finished region's games can be had there, and its trades and fossils; lane 1), GE5 (the charms, critical captures and the EXP a catch gives; lane 3), GE11 (every item the rules run, after TR3; lane 1), and 41 · EG5 (the Leaders' rematches where a region has none; lane 1).
 - **Then the journey and the team**: 41 · EG1 to EG4 (the hub, the hall of every Hall of Fame, the plaza, the Champions' circuit; lanes 2, 6, 5 and 1), 35 · BN1 to BN5 (care, treats, the follower's mood, the pasture; lane 5), 38 · EX1 to EX3 (outbreaks, the day's report, bright Pokémon and streaks; lane 5).
@@ -310,14 +473,18 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | The Game Boy Advance's behaviour values | 18 · W6 | 12 (done: `0xED` to `0xFD`, `Gba/GbaBehaviours.cs`) | 20 · J1, 22 · U1 |
 | A layout swapped behind a fade | 21 · H8 | later | 22 · U4, U8, plan 23 |
 | Rock Smash's roll | the first region chapter that opens such a rock, in the chain's order | later | 19, 20 · J7, 21 · H4 |
-| `Region.Side`, a region off the chain | the first of 41 · EG1, 23 · Z17 and 23 · Z21, in Z17's shape | later | the other two |
-| Timed powers (`Models/Powers.cs`, `PowerKind`) | 36 · TR7 | later | 39 · CR6 and CR7 (the meals, and through them 33 · GL2's curry and 34 · PD7's sandwiches), 41 · EG3, 43 · LF6 |
-| The test of where every item is found (`Data/ItemSources.cs`) | 36 · TR3 | later | 40 · GE11 widens it to every item the rules run; 36 · TR9's machines; plans 23, 33 and 34 empty its owed list |
-| A floor laid from pieces (`FloorLayout`, out of `PyramidFloor`) | the first of 44 · SD7 and 38 · EX6 | later | the other |
-| `MapArea.WildVisible` | the first of 23 · Z22 and 38 · EX6 | later | the other |
-| `Op.Cafe` | the first of 42 · PS10 and 43 · LF9 | later | the other |
-| `LevelLift`, a team lifted on a copy | 41 · EG3 | later | 41 · EG4 and EG9 |
-| A battle set for every species | 37 · FC1 | later | 37 · FC2 to FC10, 33 · GL7's Battle Tower |
+| `Region.Side`, a region off the chain | 41 · EG1, in Z17's shape (the first of EG1, Z17 and Z21) | 94 | the other two |
+| Timed powers (`Models/Powers.cs`, `PowerKind`) | 36 · TR7 | 92 | 39 · CR6 and CR7 (the meals, and through them 33 · GL2's curry and 34 · PD7's sandwiches), 41 · EG3, 43 · LF6 |
+| The test of where every item is found (`Data/ItemSources.cs`) | 36 · TR3 | 93 | 40 · GE11 widens it to every item the rules run; 36 · TR9's machines; plans 23, 33 and 34 empty its owed list |
+| A floor laid from pieces (`FloorLayout`, out of `PyramidFloor`) | 38 · EX6 (the first of SD7 and EX6) | 101 | the other |
+| `MapArea.WildVisible` | 23 · Z22 (the first of Z22 and EX6) | 100 | the other |
+| `Op.Cafe` | 43 · LF9 (the first of PS10 and LF9) | 107 | the other |
+| `LevelLift`, a team lifted on a copy | 41 · EG3 | 97 | 41 · EG4 and EG9 |
+| A battle set for every species | 37 · FC1 | 93 | 37 · FC2 to FC10, 33 · GL7's Battle Tower |
+| The open field's word (`Region.File.Field`, `OpenPos`, `SaveData.OpenPlace`) | 32 · OW1 | 90 | every OW session, plans 33 and 34 |
+| The grown kit (`Kit`, `CharacterStyles` asked by kit first) | 30 · FM4 | 91 and 93 | 30 · FM10, 43 · LF3 (the salon's cuts), 37's hosts in Kalos and Alola, plans 23, 33, 34 |
+| A pot and `recipes.json` (plan 10 · F8's, taken over) | 39 · CR6 | 102 | 33 · GL2's curry, 34 · PD7's sandwiches |
+| `BattleFormat.Raid` | 33 · GL3 | the open world's column | 34 · PD7's Tera Raids |
 
 ## Work no plan owned, now placed
 
@@ -409,12 +576,17 @@ Where a default is given, the session goes ahead on it unless the user says othe
 |---|---|---|
 | Which rules of the modern column the user wants kept as Platinum has them, if any | 06 · R19 | none: the whole modern column. R19a (2026-10-17) kept it and laid the table out in `docs/mechanics/rulings.md`, "What the two sets of rules say"; a rule the user names goes into `Ruleset.Modern` as Platinum has it |
 | The details of W4's option B: the exact cap, Erratic and Fluctuating past 100, which legendaries and mythicals get a new evolution, how many new moves | 18 · W4, 06 · R31, 03 · D14 | the defaults in the study's "The decision": about 260; a rule of our own; every species with none and every two-stage line's last stage, and some legendaries and mythicals (the user, 2026-10-21: D14 proposes which, the user picks); a shared pool of about 50 to 100 moves. Each new move and species is shown to the user before it is kept |
-| Which species get Mega Dynamax, what it does and where it is handed over; and each new Mega's design | the two new sessions of plan 06 | wait: each session proposes, the user approves |
+| Which species get Mega Dynamax, what it does and where it is handed over; and each new Mega's design | the two new sessions of plan 06 | Answered 2026-10-26 (R20c's questions at their defaults but Q14 = b; all 78 forms; R20b's 15 Megas approved); built in waves 56 to 60 |
 | Where the second slot's species go in Sinnoh, and what Pal Park's show draws from | 03 · D12a | Answered 2026-10-17: Pal Park keeps the second slot's species; its show brings six a day by a fixed rotation by the date (done in wave 19) |
 | 27 · 1–6: the move to Unity | plan 27 | deferred to the end by the user (2026-10-08) |
 | Battles in real time for Lumiose's era (the study of what else to add, question 1) | plan 23 · Z22 to Z24, or a plan of its own | keep the era turn-based, as plan 23 builds it |
-| The order of plans 35 to 44, and whether 42 to 44 are wanted (the study's question 2) | their first sessions | the order under "Plans 35 to 44" above, with 42 to 44 last |
+| The order of plans 35 to 44, and whether 42 to 44 are wanted (the study's question 2) | their first sessions | the order of "The waves to come" (fixes first, the journey and the team next, 42 to 44 last, waves 103 to 111) |
 | Each of plans 35 to 44's own decisions | their sessions | the plan's recommended answer, as everywhere in the roadmap |
+| The names and content of ours plans 35 to 44 show first (the outline sheet of wave 91) | the ◇ sessions of waves 94 to 109 | none: they wait for the user's word ("Waiting on the user", item 5) |
+| The open world's gate: the look and the floor (plan 32 · decision 10), and decisions 11 to 16 | 32 · OW2 on, plans 33 and 34, 30 · FM12 to FM14 | the gate has none (item 1); decisions 11 to 16 their recommendations |
+| Kalos and Alola from eight ways to free movement (plan 30 · decision 10, stage 2) | nothing in the waves; the regions' files | stay on `Eight` until the user says so (item 2) |
+| The voices' engines, each character's voice and the rival's recordings (plan 26) | 26 · V3 to V8 | none (item 4) |
+| Hisui (plan 23 · decision 9) | 23 · Z17 to Z20 | optional, asked again after Paldea |
 
 ## Stale lines found in the plans
 
@@ -468,6 +640,14 @@ Each plan's next session fixes its own.
 - **26**: its counts of script files and Barry's lines are old.
 - **18**: W8 (the harbours that sail both ways) is built (2026-11-03) and its status line is still open.
 - **Found by the study of what else to add (2026-11-07)**: `docs/mechanics/where-items-are-found.md` gives the Mega Stones to plan 21 and Unova's items to plan 22, both finished without them, and `docs/plans/decisions/R20b-mega-proposals.md` promised a line in plan 23 for our fifteen stones that was never written (40 · GE11 rewrites both); `docs/mechanics/evolution.md` points Gimmighoul's coins and Meltan's candies at plan 03 · D12's dropped part b (40 · GE11); `Overworld/Map.cs` hands Unova's special tables to plan 10 · F12, whose text never names them (38 · EX11).
+- **Found by the overview's remake (2026-11-07)**:
+  - Two merges of 2026-11-07 wrote back older copies of plan files: plan 10's F10 to F12 lines (ticked `[~]` with their decisions by `311f3ac85`, reverted by the merge of Alola's Z5) and plan 13's V12 (ticked by `f782a77b6`, reverted by `b7858406a`). Both are restored by the remake; a session that merges a plan file checks its status lines against both sides.
+  - Plan 23's Z2 is unticked though both its parts are built (2026-11-02, 2026-11-03); its done-when's 8 ms on Lumiose's busiest plaza is the Windows machine's. Z1 and Z4 are open for the loose ends wave 90 is doing.
+  - Plan 03's D12 is unticked though its part c, the legendaries' quests, came with plan 29 · LS11a (2026-11-01): wave 99's close-out ticks it.
+  - Plan 13's V21 still says it waits for plan 28's I1 to I3, which are built, and V12 (VERSUS) with them.
+  - Plan 16's T11 owes only the harness's `diff` of `all` from 2026-10-13, which a shots pass can take or retire.
+  - Plan 05's A6 has no end: it ends with plan 34's songs.
+  - Plan 23's "Lumiose (Legends: Z-A)" says the era can come "before Alola or after Paldea"; the waves put it after Kalos's post-game and Alola (waves 99 to 101).
 - **Shot names claimed twice**:
   - 13's `28b`–`28d` and 08's `20d`/`20e` against shots that exist;
   - 08 · P13's and 10 · F11's `26n`;
@@ -513,10 +693,10 @@ The plans were not edited when the user answered; this file holds the answers. E
 ## Starting a wave
 
 ```text
-Do wave 2 of docs/plans/00-overview.md.
+Do wave 91 of docs/plans/00-overview.md.
 ```
 
-The main session starts one agent per cell of the wave, each in its own worktree, and merges as "How a wave runs" says. A single session of the wave can also be asked for alone ("Do 02 · S7 from wave 2 of the overview"); it then merges by itself.
+The main session starts one agent per row of the wave (and the two beside it: the shots pass and 17 · N6), each in its own worktree, with the model the row names, and merges as "How a wave runs" says. A single session of the wave can also be asked for alone ("Do 36 · TR1 from wave 91 of the overview"); it then merges by itself. Once a wave is merged, its line goes into the Status below and its rows come out of "The waves to come"; a row that moved to a later wave is moved there, not left behind.
 
 ## Status
 
@@ -756,3 +936,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - Waves 79 and 80 (merged 2026-11-01): plan 29 LS1-LS9 (legendary scenes: Sinnoh, Kanto, Johto, Hoenn, Unova, Kanto's roaming beast), N6 Romanian for the scripts (269 lines), Q21 Requests, J15 part l (Underground Path, Silph Co. lobby). Full suite: 21,709 passed, 1 failed (BudgetTests memory ceiling, known, passes alone). Not pushed since 8586d3e7. Left: no plan 29 scene seen on screen yet (harness shots owed: rift tile, Turnback shadow, two effects on one tile in Ho-Oh/Raikou beats, Distortion Giratina framing, Cresselia shadow, Hoenn/Unova coordinates), Kyogre/Groudon only stir (need LS10), LS11 event-only legendaries (proposals first), Q21 start-menu overflow with Pokégear/PokéNav, J15 l receptionist hidden in counter block and unchecked `kn_chika` houses, Rotom's room and Silph upper floors, 68 `world/` Romanian overlays.
 - **Next wave (81), added 2026-11-02 at the user's request**: 31 · MU0 (the test of a richer sound: one tune as a pair of MP3s, for the user's ear; touches no existing song), which comes before any more of Kalos's songs are written. Its answer gates the rest: on a yes, 31 · MU1 and then MU2 go in the waves after it, in that order, and MU3 to MU6 with plan 23's session for each region; MU7 last. On a no, plan 31 stops there.
 - **2026-11-07, plans 35 to 44 written** at the user's request, with [the study of what else to add](studies/what-else-to-add-study.md): ten categories of what the main series and its spin-offs offer that the game neither had nor planned, 96 sessions (14 optional, about 106 to 131 sittings). A sweep of nine agents listed 254 features of every generation; ten agents wrote the plans, re-checking each feature in the code; five reviewed them against the code and each other; a critic's verified gaps were folded in (a catch gives no EXP under the modern rules, Unova has no Town Map, Mega Stones and form items that nothing gives, later moves nobody can learn). No code changed. Their order is under "Plans 35 to 44" above; the cheap fixes of what is built and unreachable come first.
+- [x] Waves 81 to 88 (2026-11-01 to 2026-11-04, merged to main as they came, not numbered at the time; this line written from `git log` on 2026-11-07): 31 · MU0 (the user said the modern sound is better), MU1 to MU7 (plan 31 finished); 12 · Q6, Q7 (the pointer), Q9 (captions), Q14 for the built regions, Q21, Q23, Q25, Q28, Q29, Q30 (plan 12 finished); 15 · E1 to E3 (plan 15 finished); 16 · T4 (CI), T9 (the room and overlay editor), T14's region packs and the bot's, fuzzer's and recordings' leftovers; 24 · X4, X5 (plan 24 finished); 28 · I1 to I5's rules; 07 · O4, O5, O7's game side; 13 · V13, V14, V15 to V19 (Remix), V20, V22, V23, V24, V26; 10 · F2 to F7, F9 and the rules of F11 and F12; 30 · FM0, FM1, FM2, FM7 to FM9 (on test regions); 14 · B2 and B13's rules; 29 · LS10, LS11 (plan 29 finished); 25's last parts (plan 25 finished); 20 · J15 parts n to v and Johto's leftovers (plan 20 finished); Hoenn's parts i to q, the Safari battle (plan 21 finished); Unova's U4, U10 parts e to h, U11, U12, Genesect, the Hidden Grottoes, the bridge, the Black Tower, N's Castle (plan 22 finished); 23 · Z1 in two parts, Z2 in two parts, Z3 in two parts, Z5's first part; 26's recording kit, voice tools, mouths and battle lines; 17 · N6zi; plans 32 to 34 written (2026-11-04).
+- [x] Wave 89 (2026-11-07, merged to main): 17 · N6 (Romanian for the recent regions' scripts, world and room files); 14 · B2 and B13 in the world (a sky trainer on the Vista Lighthouse's gallery, the Royal corner in the annex; plan 14 finished); 10 · F10 to F12 (alphas from an overlay on Routes 225 to 227, the Pokédex's HERE, the DexNav given with the National Pokédex; their drawing and shots owed to wave 92); 23 · Z5's second part (the rest of Melemele, Akala to Brooklet Hill, the Ride Pager, the ferry); 28 · I3's screen half with 13 · V12 VERSUS and 07 · O6's battle room (plan 28 finished); 32 · OW0 (the prototype gate, the harness's `openproto` and `profile`'s open_prototype scene; the gate waits for the user); 23 · Z4 (Kalos drawn to its Hall of Fame, the bot from Coumarine City); plans 35 to 44 written and indexed.
+- [ ] Wave 90 (running, started 2026-11-07): 23 · Z6, Z7 and Kalos's loose ends; 32 · OW1; 38 · EX1; 39 · CR1.
+- **2026-11-07, this file remade** for every wave to come (docs only, no code): every open plan's status list counted again; "Waiting on the user" at the top; "Where we are" rewritten; "The waves to come" (waves 91 to 112, the open world's and the voices' columns, the optional sessions, plan 27 last); rules 9 and 10 and the harness's limit in "How a wave runs"; lane 7; the seams given their waves; plans 14, 18, 28 and 31 moved to finished/ (18's W8 ticked: built 2026-11-03); plan 10's F10 to F12 and plan 13's V12 ticks, lost in two merges, restored.

@@ -1,0 +1,74 @@
+{
+  "name": "AkalaOutskirts_RuinsOfLife",
+  "displayName": "Ruins of Life",
+  "bgmTrack": "alola/trial",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Akala",
+      "targetX": 361,
+      "targetY": 152,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pilgrim",
+      "name": "Pilgrim",
+      "npcType": "old_woman",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "This is Tapu Lele's shrine. Its scales are said to heal any wound. Speak softly here."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

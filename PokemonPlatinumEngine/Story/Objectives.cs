@@ -280,7 +280,17 @@ public static class Objectives
         (615, "alolaRanch", AtLeast("VAR_ALOLA_STORY", 16), false),
         (616, "alolaRoute5", AtLeast("VAR_ALOLA_STORY", 17), false),
         (617, "alolaBrooklet", AtLeast("VAR_ALOLA_STORY", 18), false),
-        // What comes after Brooklet Hill is a later session's (Akala's remaining trials are plan 23 · Z6's)
+        // Plan 23 · Z6: the rest of Akala, on a count of its own, VAR_ALOLA_AKALA (royal_avenue.txt's header): Royal
+        // Avenue, the motel on Route 8, Kiawe's trial, Mallow's, Konikoni City, the Ruins of Life, Olivia's grand trial
+        // and the Hano Grand Resort
+        (618, "alolaRoyal", AtLeast("VAR_ALOLA_AKALA", 1), false),
+        (619, "alolaMotel", AtLeast("VAR_ALOLA_AKALA", 2), false),
+        (620, "alolaWela", AtLeast("VAR_ALOLA_AKALA", 3), false),
+        (621, "alolaJungle", AtLeast("VAR_ALOLA_AKALA", 4), false),
+        (622, "alolaKonikoni", AtLeast("VAR_ALOLA_AKALA", 5), false),
+        (623, "alolaRuins", AtLeast("VAR_ALOLA_AKALA", 6), false),
+        (624, "alolaOlivia", s => s.Var("VAR_ALOLA_AKALA") >= 7 || s.HasBadge(RegionDatabase.Alola, "Akala"), false),
+        (625, "alolaHano", AtLeast("VAR_ALOLA_AKALA", 8), false),
         // Plan 23 · Z7: the Aether tour, Ula'ula's trials and grand trial, the rescue, Poni's trial and grand trial, the
         // Altar and the League (VAR_ALOLA_STORY 40 to 54)
         (650, "alolaAether", AtLeast("VAR_ALOLA_STORY", 41), false),

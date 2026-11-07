@@ -177,6 +177,12 @@ Written 2026-10-06, before any session.
 - [x] F7 Affection's perks
 - [ ] F8 Cooking (optional: a second check judged it low value)
 - [x] F9 Marks and titles (2026-11-04; its shots owed)
-- [ ] F10 Alphas
-- [ ] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; the Pokédex page, its painter and the item's giving wait)
-- [ ] F12 Rustles and chains (rules, the creep and the chain done 2026-11-03; the rustle's drawing and shots wait)
+- [~] F10 Alphas (2026-11-07: rules, data, saved size, mark, cry, the battle scale done; owed: `PokePose.Fierce` (a field in `Graphics/PokemonModels.cs`, a sculpt file), the field board's 1.5 draw, the harness `versus -alpha`, the shots `95_versus_turtwig_bidoof-alpha`, `97_field_bidoof-alpha`)
+- [~] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; 2026-11-07: the HERE panel's logic and painter (blind of the GPU), the style guide's HERE paragraph, the item given with the National Pokédex; owed: shots `26n_pokedex_here_morning`, `26o_pokedex_here_night` in `menus`)
+- [~] F12 Rustles and chains (rules, the creep and the chain done 2026-11-03; 2026-11-07: the DexNav-off test in `HeadlessGameTests`; owed: the rustle's drawing (`FieldLife`, `LifeArt`), the style guide's rustle paragraph, shots `l70_rustle`, `l71_sneaking_up`, `l72_rustle_scared`, and `profile`'s "route 202")
+
+### Decisions made, 2026-11-07 (F10 to F12, no GPU)
+
+- **Alphas come from an overlay, not a table row.** `WildEncounterEntry.Alpha` exists but is `JsonIgnore`; an overlay's `alphas` lists them (Routes 225 to 227), met one meeting in a hundred in tall grass after the region's Hall of Fame. Levels are the overlay's own (the design's "level plus ten, IVs no lower than twenty" became: levels above the grass, three perfect IVs). The sprite signature is not keyed by the scale: the species' sprite is drawn larger.
+- **HERE is a focus of the Pokédex, not a page of an entry** (`PokedexFocus.Here`, the Item button), since it is of the place and not of a species.
+- **Owed with exact modes**: `menus` gains `26n_pokedex_here_morning` and `26o_pokedex_here_night` (give the DexNav, stand on Route 201, `PokedexScreen.SetHere(driver.DexNavHere, name)`, `ToggleHere`; the clock fixed morning, then night); `versus` takes `-alpha` after a species (`95_versus_turtwig_bidoof-alpha`; the foe made with `Alphas.Apply`) and `pokemon` the field board `97_field_bidoof-alpha` (drawn at `Alphas.Scale`; WorldRenderer's person draw wants `NPC` to carry a scale); `life` gains `l70_rustle`, `l71_sneaking_up`, `l72_rustle_scared` (the rustle's quad in `FieldLife`/`LifeArt`'s atlas, shot with `Driver.DexNavRustle` set), and `profile`'s "route 202" with and without one in view. `PokePose.Fierce` is one line in `PokemonModels.cs` (a sculpt file) plus the eyes' case 5 in `PokemonAnimation.EyesOf`.

@@ -1,0 +1,23 @@
+{
+  // Kiloude City (plan 23 Â· Z4, the loose ends): drawn by hand, our words. A seafront city at the west end of the long
+  // street that runs out of Couriway Town, a PokÃ©mon Center (with the Mart's counter inside) and two houses, a beach and a
+  // pier that crosses the water to a paved landing on the far shore. Once the Hall of Fame is entered an old man called AZ
+  // sits at the landing (Kiloude_City.txt: his story and his battle). It plays Aquacorde's song until plan 31 writes it its own
+  "area": "kiloude_city",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "KiloudeCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "KiloudeCity_NorthHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "KiloudeCity_SeaHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "az": { "name": "AZ", "npcType": "old_man", "script": "Az", "still": true, "shownBy": "KalosHallOfFame" },
+    "fisher": { "name": "Fisherman", "npcType": "Fisherman", "still": true, "dialog": [ "The pier is the best seat in Kalos. Everything the sea brings in passes under my feet." ] },
+    "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "Past the pier there is a landing nobody uses. An old man goes there some days, and just looks at the water." ] }
+  },
+  "signs": {
+    "TownSign": "Kiloude City\nThe sea begins at the end of the street."
+  }
+}

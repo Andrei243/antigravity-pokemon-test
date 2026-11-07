@@ -339,4 +339,12 @@ public sealed class BattleConditions
     /// runs; a <see cref="BattleRecord"/>'s file keeps it.
     /// </summary>
     public bool InTheAir { get; init; }
+
+    /// <summary>
+    /// A trial's totem battle (plan 23 · Z6; <c>docs/mechanics/rulings.md</c>, "Totems and their aura"): the first wild
+    /// Pokémon is the totem, which takes these stat stages as the battle opens, calls an ally that always answers on its
+    /// first action and can't be caught. Null in every other battle. Handed in with the battle's other conditions and
+    /// never changed while it runs; a <see cref="BattleRecord"/>'s file keeps it.
+    /// </summary>
+    public TotemAura? TotemAura { get; init; }
 }

@@ -491,6 +491,12 @@ public partial class GameEngine
             OpenApricornBox(fromBag: false);
             return;
         }
+        // The crafting kit from the item button (plan 39 · CR1)
+        if (item.FieldUse == CraftingKitUse)
+        {
+            OpenCrafting(fromBag: false);
+            return;
+        }
         // The Pokéblock Case off the item button, and back to the field (plan 21 · H11)
         if (item.FieldUse == "PokeblockCase")
         {
@@ -1202,6 +1208,15 @@ public partial class GameEngine
                 nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free);
         }
 
+        public void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura)
+        {
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            wild.Relevel(game.LevelHere(wild.Level));
+            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch
+            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: true, totem: aura);
+        }
+
         public BattleOutcome Outcome => game.flow.ScriptOutcome;
 
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
@@ -1257,6 +1272,10 @@ public partial class GameEngine
                 // The Apricorn Box looked into (plan 20 · J6)
                 case ScriptScreen.Apricorns:
                     game.OpenApricornBox(fromBag: false);
+                    break;
+                // The crafting kit looked into (plan 39 · CR1)
+                case ScriptScreen.Crafting:
+                    game.OpenCrafting(fromBag: false);
                     break;
                 // Cameron's photo album (plan 20, part q)
                 case ScriptScreen.PhotoAlbum:
@@ -1612,6 +1631,7 @@ public partial class GameEngine
 
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
+        public CraftingState Crafting => game.flow.Crafting;
         public PhotoAlbum? Photos => game.flow.Photos;
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

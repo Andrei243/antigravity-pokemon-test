@@ -3096,7 +3096,7 @@ public static class WorldMapBuilder
         }
 
         foreach (var exit in overlay?.Exits ?? new())
-            map.Warps.Add(new Warp { SourceX = exit.X, SourceY = exit.Z, TargetMap = exit.Map, TargetX = exit.ToX, TargetY = exit.ToY, TargetFacing = exit.Facing });
+            map.Warps.Add(new Warp { SourceX = exit.X, SourceY = exit.Z, TargetMap = exit.Map, TargetX = exit.ToX, TargetY = exit.ToY, TargetFacing = exit.Facing, OpenedBy = exit.OpenedBy });
 
         // A way in that leads nowhere yet (a cave's mouth, a gate house, a hall without a door) is closed: one
         // can't walk into an opening and stand in the wall. A door is shut by itself.

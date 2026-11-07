@@ -19,6 +19,39 @@
   ],
   "areas": [
     {
+      "key": "akala_outskirts",
+      "name": "Akala Outskirts",
+      "cells": "",
+      "morning": [
+        "Gumshoos",
+        "Trumbeak",
+        "Wingull",
+        "Pelipper",
+        "Smeargle",
+        "Crabrawler",
+        "Stunky"
+      ],
+      "day": [
+        "Gumshoos",
+        "Trumbeak",
+        "Wingull",
+        "Pelipper",
+        "Smeargle",
+        "Crabrawler",
+        "Stunky"
+      ],
+      "night": [
+        "Gumshoos",
+        "Trumbeak",
+        "Wingull",
+        "Pelipper",
+        "Smeargle",
+        "Crabrawler",
+        "Stunky"
+      ],
+      "surf": []
+    },
+    {
       "key": "akala_route_4",
       "name": "Route 4",
       "cells": "",
@@ -77,6 +110,105 @@
         "Grubbin",
         "Caterpie",
         "Butterfree"
+      ]
+    },
+    {
+      "key": "akala_route_6",
+      "name": "Route 6",
+      "cells": "",
+      "morning": [
+        "Pikipek",
+        "Yungoos",
+        "Eevee",
+        "Mudbray",
+        "Oricorio",
+        "Tauros",
+        "Miltank",
+        "Lillipup"
+      ],
+      "day": [
+        "Pikipek",
+        "Yungoos",
+        "Eevee",
+        "Mudbray",
+        "Oricorio",
+        "Tauros",
+        "Miltank",
+        "Lillipup"
+      ],
+      "night": [
+        "Pikipek",
+        "Yungoos",
+        "Eevee",
+        "Mudbray",
+        "Oricorio",
+        "Tauros",
+        "Miltank",
+        "Lillipup"
+      ],
+      "surf": []
+    },
+    {
+      "key": "akala_route_7",
+      "name": "Route 7",
+      "cells": "",
+      "morning": [],
+      "day": [],
+      "night": [],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Finneon",
+        "Wishiwashi",
+        "Mantyke"
+      ]
+    },
+    {
+      "key": "akala_route_8",
+      "name": "Route 8",
+      "cells": "",
+      "morning": [
+        "Fletchinder",
+        "Trumbeak",
+        "Yungoos",
+        "Gumshoos",
+        "Salandit",
+        "Crabrawler",
+        "Wingull",
+        "Stunky",
+        "Spinda",
+        "Rattata"
+      ],
+      "day": [
+        "Fletchinder",
+        "Trumbeak",
+        "Yungoos",
+        "Gumshoos",
+        "Salandit",
+        "Crabrawler",
+        "Wingull",
+        "Stunky",
+        "Spinda",
+        "Rattata"
+      ],
+      "night": [
+        "Fletchinder",
+        "Trumbeak",
+        "Yungoos",
+        "Gumshoos",
+        "Salandit",
+        "Crabrawler",
+        "Wingull",
+        "Stunky",
+        "Spinda",
+        "Rattata"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Finneon",
+        "Wishiwashi",
+        "Pelipper"
       ]
     },
     {
@@ -234,6 +366,26 @@
       ]
     },
     {
+      "key": "digletts_tunnel",
+      "name": "Diglett's Tunnel",
+      "cells": "",
+      "morning": [
+        "Diglett",
+        "Zubat",
+        "Larvitar"
+      ],
+      "day": [
+        "Diglett",
+        "Zubat",
+        "Larvitar"
+      ],
+      "night": [
+        "Diglett",
+        "Zubat",
+        "Larvitar"
+      ]
+    },
+    {
       "key": "exeggutor_island",
       "name": "Exeggutor Island",
       "cells": "",
@@ -257,6 +409,36 @@
         "Gastrodon",
         "Trapinch",
         "Torkoal"
+      ]
+    },
+    {
+      "key": "hano_beach",
+      "name": "Hano Beach",
+      "cells": "",
+      "morning": [],
+      "day": [],
+      "night": [],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Pyukumuku",
+        "Wishiwashi",
+        "Mantyke"
+      ]
+    },
+    {
+      "key": "konikoni_city",
+      "name": "Konikoni City",
+      "cells": "",
+      "morning": [],
+      "day": [],
+      "night": [],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Finneon",
+        "Wishiwashi",
+        "Pelipper"
       ]
     },
     {
@@ -284,6 +466,42 @@
         "Absol",
         "Golduck"
       ]
+    },
+    {
+      "key": "lush_jungle",
+      "name": "Lush Jungle",
+      "cells": "",
+      "morning": [
+        "Fomantis",
+        "Morelull",
+        "Paras",
+        "Bounsweet",
+        "Comfey",
+        "Trumbeak",
+        "Pinsir",
+        "Passimian"
+      ],
+      "day": [
+        "Fomantis",
+        "Morelull",
+        "Paras",
+        "Bounsweet",
+        "Comfey",
+        "Trumbeak",
+        "Pinsir",
+        "Passimian"
+      ],
+      "night": [
+        "Fomantis",
+        "Morelull",
+        "Paras",
+        "Bounsweet",
+        "Comfey",
+        "Trumbeak",
+        "Pinsir",
+        "Passimian"
+      ],
+      "surf": []
     },
     {
       "key": "mahalo_trail",
@@ -333,6 +551,30 @@
         "Caterpie",
         "Butterfree"
       ]
+    },
+    {
+      "key": "memorial_hill",
+      "name": "Memorial Hill",
+      "cells": "",
+      "morning": [
+        "Zubat",
+        "Gastly",
+        "Misdreavus",
+        "Haunter"
+      ],
+      "day": [
+        "Zubat",
+        "Gastly",
+        "Misdreavus",
+        "Haunter"
+      ],
+      "night": [
+        "Zubat",
+        "Gastly",
+        "Misdreavus",
+        "Haunter"
+      ],
+      "surf": []
     },
     {
       "key": "mount_hokulani",
@@ -703,6 +945,39 @@
         "Zubat",
         "Noibat"
       ]
+    },
+    {
+      "key": "wela_volcano_park",
+      "name": "Wela Volcano Park",
+      "cells": "",
+      "morning": [
+        "Cubone",
+        "Kangaskhan",
+        "Magby",
+        "Fletchinder",
+        "Salandit",
+        "Growlithe",
+        "Torkoal"
+      ],
+      "day": [
+        "Cubone",
+        "Kangaskhan",
+        "Magby",
+        "Fletchinder",
+        "Salandit",
+        "Growlithe",
+        "Torkoal"
+      ],
+      "night": [
+        "Cubone",
+        "Kangaskhan",
+        "Magby",
+        "Fletchinder",
+        "Salandit",
+        "Growlithe",
+        "Torkoal"
+      ],
+      "surf": []
     }
   ]
 }

@@ -1,0 +1,45 @@
+{
+  // Route 16 (plan 23 Â· Z4, the loose ends): drawn by hand, our words. A short road north-east out of Lumiose City's north-east
+  // gate (open once the power is back), through broad fields to the dark mouth of the Lost Hotel. It plays Route 2's song
+  // until plan 31 writes it its own
+  "area": "kalos_route_16",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "people": {
+    "corentin": {
+      "name": "Corentin",
+      "npcType": "youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Corentin: Hey! This road is quiet, and a quiet road is a dull road. Battle me!",
+        "dialogueAfter": "Youngster Corentin: Quiet again. I liked it better when it was loud."
+      }
+    },
+    "constance": {
+      "name": "Constance",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "Picnicker Constance: I packed sandwiches for the whole day, and a battle for each one!",
+        "dialogueAfter": "Picnicker Constance: Three battles, one sandwich left. I call that a good day."
+      }
+    },
+    "gaetan": {
+      "name": "Gaetan",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Gaetan: They say a hotel up the road lost its guests and never found them again. Care to find out with me? First, a battle!",
+        "dialogueAfter": "Backpacker Gaetan: You win. I will let you go in first."
+      }
+    },
+    "rosalie": {
+      "name": "Rosalie",
+      "npcType": "lady",
+      "trainer": {
+        "dialogueBefore": "Lady Rosalie: I have walked this road every autumn for thirty years. I know every rustle, and yours is new!",
+        "dialogueAfter": "Lady Rosalie: Thirty years, and still a surprise. Lovely."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 16\nSouth: Lumiose City\nNorth: the Lost Hotel"
+  }
+}

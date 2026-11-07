@@ -26,7 +26,10 @@
     { "name": "AncientPoniPath", "matrix": 15, "area": "ancient_poni_path", "trees": "Round", "setting": "Cave" },
     { "name": "VastPoniCanyon", "matrix": 14, "area": "vast_poni_canyon", "trees": "Round", "setting": "Cave" },
     { "name": "PoniAltar", "matrix": 16, "area": "poni_altar", "trees": "Round", "setting": "Cave" },
-    { "name": "MountLanakila", "matrix": 17, "area": "mount_lanakila", "trees": "Round", "setting": "Cave" }
+    { "name": "MountLanakila", "matrix": 17, "area": "mount_lanakila", "trees": "Round", "setting": "Cave" },
+    // Plan 23 · Z6: Diglett's Tunnel under Akala, between Route 8 and Route 9, a map of its own (matrix 20, clear of the
+    // islands' numbers)
+    { "name": "DiglettsTunnel", "matrix": 20, "area": "digletts_tunnel", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "alola_route_1",
@@ -61,6 +64,19 @@
     "ancient_poni_path",
     "vast_poni_canyon",
     "poni_altar",
-    "mount_lanakila"
+    "mount_lanakila",
+    // Plan 23 · Z6: the rest of Akala
+    "akala_route_6",
+    "royal_avenue",
+    "akala_route_8",
+    "lush_jungle",
+    "akala_route_7",
+    "wela_volcano_park",
+    "digletts_tunnel",
+    "akala_route_9",
+    "konikoni_city",
+    "memorial_hill",
+    "akala_outskirts",
+    "hano_beach"
   ]
 }
