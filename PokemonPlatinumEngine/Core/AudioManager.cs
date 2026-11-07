@@ -129,16 +129,19 @@ public static class AudioManager
     /// Plays a Pokémon's cry on the cry bus, which dips the music under it. <paramref name="pan"/> is -1 for the
     /// left, 1 for the right. Tests hear it as "cry &lt;species or form&gt;", with the mode after unless it is normal.
     /// </summary>
-    public static void PlayCry(Pokemon pokemon, CryMode mode = CryMode.Normal, float pan = 0f) => PlayCry(pokemon.Species, pokemon.Form, mode, pan);
+    public static void PlayCry(Pokemon pokemon, CryMode mode = CryMode.Normal, float pan = 0f) => PlayCry(pokemon.Species, pokemon.Form, mode, pan, pokemon.IsAlpha);
 
-    public static void PlayCry(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal, float pan = 0f)
+    public static void PlayCry(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal, float pan = 0f) => PlayCry(species, form, mode, pan, false);
+
+    /// <summary>The cry, lower for an alpha (plan 10 · F10: <see cref="Cries.Alpha"/>); tests hear it as "cry &lt;name&gt; alpha".</summary>
+    private static void PlayCry(PokemonSpecies species, string? form, CryMode mode, float pan, bool alpha)
     {
         if (hushed) return;
         string name = species.Form(form)?.Name ?? species.Name;
-        heard?.Add(mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}");
+        heard?.Add((mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}") + (alpha ? " alpha" : ""));
         if (Accessibility.Captions) Accessibility.Caption(SoundBank.CryCaption(species, form), CaptionKind.Cry); // plan 12 · Q9
         if (isMuted || !isInitialized) return;
-        mixer.PlaySound(Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
+        mixer.PlaySound(alpha ? Cries.Alpha(species, form, mode) : Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
     }
 
     /// <summary>

@@ -95,6 +95,8 @@ public static class EncounterMarks
     /// <summary>Gives a caught Pokémon the mark of its encounter, if it has one: as the catch becomes the player's.</summary>
     public static void Give(Pokemon p, MarkMoment moment)
     {
+        // An alpha carries its mark and no other (plan 10 · F10)
+        if (p.IsAlpha) { p.EncounterMarks.Add(nameof(Mark.Alpha)); return; }
         if (For(p.Personality, moment) is { } mark) p.EncounterMarks.Add(mark.ToString());
     }
 

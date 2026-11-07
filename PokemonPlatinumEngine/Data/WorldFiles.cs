@@ -924,6 +924,9 @@ public sealed class WorldOverlayFile
     /// </summary>
     public OverlayOurs? Ours { get; set; }
 
+    /// <summary>The area's alphas (plan 10 · F10): a rare larger Pokémon of its tall grass after the Hall of Fame; only the post-game zone has any.</summary>
+    public OverlayAlphas? Alphas { get; set; }
+
     /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
     public Dictionary<string, string>? Signs { get; set; }
 
@@ -1137,6 +1140,19 @@ public sealed class OverlayOurs
 
     /// <summary>How many each list may hold.</summary>
     public const int MostOnLand = 2, MostOnWater = 1, MostOnRod = 1;
+}
+
+/// <summary>
+/// An area's alphas (plan 10 · F10, <see cref="Overworld.Alphas"/>; <see cref="WorldOverlayFile.Alphas"/>): species of the games, each
+/// with its own levels, written <c>["Machamp", 55, 57]</c>, one of which a step in the area's tall grass meets one time in a hundred
+/// once the region's Hall of Fame is entered. At most three; only the post-game zone lists any.
+/// </summary>
+public sealed class OverlayAlphas
+{
+    public List<OursSlot>? Land { get; set; }
+
+    /// <summary>How many the list may hold.</summary>
+    public const int Most = 3;
 }
 
 /// <summary>A species of ours and the levels it is met at, written <c>["Ratchisel", 105, 109]</c>.</summary>

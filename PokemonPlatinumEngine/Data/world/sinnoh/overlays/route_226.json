@@ -1,6 +1,8 @@
 {
   "area": "route_226",
   "ours": { "land": [ ["Cantatot", 101, 105], ["Brutabby", 106, 110] ], "surf": [ ["Gastromire", 110, 114] ] },
+  // An alpha (plan 10 · F10)
+  "alphas": { "land": [ ["Raticate", 55, 57], ["Machamp", 56, 58] ] },
   // The original's role (Routes 225 to 227) has no song yet (plan 05 · A6): Routes 206 to 208's stands in
   "bgmTrack": "sinnoh/route206",
   "trees": "Round",

@@ -257,7 +257,23 @@ public static partial class Cries
     private static readonly LinkedList<(string, CryMode)> order = new();
 
     /// <summary>A Pokémon's cry in a mode (its form's, if it is in one).</summary>
-    public static SoundSample Get(Pokemon pokemon, CryMode mode = CryMode.Normal) => Get(pokemon.Species, pokemon.Form, mode);
+    public static SoundSample Get(Pokemon pokemon, CryMode mode = CryMode.Normal) =>
+        pokemon.IsAlpha ? Alpha(pokemon.Species, pokemon.Form, mode) : Get(pokemon.Species, pokemon.Form, mode);
+
+    /// <summary>
+    /// An alpha's cry (plan 10 · F10): the species' own in the mode, played <see cref="Overworld.Alphas.CrySemitones"/> lower, so it is
+    /// deeper and longer; made from the kept cry and kept apart from it.
+    /// </summary>
+    public static SoundSample Alpha(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal)
+    {
+        var key = ((species.Form(form)?.Name ?? species.Name).ToLowerInvariant() + " alpha", mode);
+        lock (Gate)
+            if (made.TryGetValue(key, out var kept)) return kept;
+        var own = Get(species, form, mode);
+        var sample = new SoundSample("cry " + key.Item1, Pitched(own.Samples, Overworld.Alphas.CrySemitones));
+        lock (Gate)
+            return made.TryAdd(key, sample) ? sample : made[key];
+    }
 
     /// <summary>A species' cry (or one of its forms') in a mode, made now if it isn't kept.</summary>
     public static SoundSample Get(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal)
