@@ -173,6 +173,51 @@
       "y": 8,
       "facing": "Left",
       "script": "TournamentDesk"
+    },
+    {
+      "id": "royal_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 8,
+      "facing": "Right",
+      "script": "RoyalDesk"
+    },
+    {
+      "id": "royal_brisa",
+      "name": "Brisa",
+      "npcType": "ace_trainer_f",
+      "x": 3,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "In a Battle Royal nobody has your back. I like it that way.",
+        "Watch who is weakest, and strike before someone else takes the knock-out!"
+      ]
+    },
+    {
+      "id": "royal_corin",
+      "name": "Corin",
+      "npcType": "veteran",
+      "x": 4,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Three foes at once, and every one of them would gladly see me fall first.",
+        "It is the knock-outs that count. Lasting to the end only counts if you have something left."
+      ]
+    },
+    {
+      "id": "royal_dalla",
+      "name": "Dalla",
+      "npcType": "battle_girl",
+      "x": 5,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "No switching, no items. Just you, your Pokémon and three people in your way!",
+        "Hit hard and hit first. That's the whole secret!"
+      ]
     }
   ],
   "wildEncounters": []

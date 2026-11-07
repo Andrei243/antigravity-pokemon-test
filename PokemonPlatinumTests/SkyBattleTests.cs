@@ -70,7 +70,18 @@ public class SkyBattleTests
         Assert.NotEmpty(SkyBattles.File.GroundedMoves);
         Assert.All(SkyBattles.File.GroundedMoves, name => Assert.True(MoveDatabase.Get(name) != null, $"{name} is no move of moves.json"));
         Assert.All(SkyBattles.File.GroundedSpecies, name => Assert.True(PokemonDatabase.Get(name) != null, $"{name} is no species of species.json"));
-        Assert.All(SkyBattles.File.GroundedSpecies, name => Assert.True(PokemonDatabase.Get(name)!.PrimaryType == PokemonType.Flying || PokemonDatabase.Get(name)!.SecondaryType == PokemonType.Flying, $"{name}: the list is of Flying types that can't take part"));
+        // Each is one that would otherwise take part: a Flying type, one with a Flying form (Mega Pinsir, Shaymin's Sky
+        // Forme) or one that may float (Gengar's Levitate of the fourth to sixth games); X and Y's list as Bulbapedia's
+        // "Sky Battle" gives it, checked 2026-11-07 (Pidove is not on it)
+        Assert.All(SkyBattles.File.GroundedSpecies, name =>
+        {
+            var s = PokemonDatabase.Get(name)!;
+            bool flies = s.PrimaryType == PokemonType.Flying || s.SecondaryType == PokemonType.Flying
+                || (s.Forms ?? new()).Any(f => f.Types?.Contains(PokemonType.Flying) == true) || s.Abilities.Contains("Levitate");
+            Assert.True(flies, $"{name}: the list is of those that fly or float and still can't take part");
+        });
+        Assert.Equal(21, SkyBattles.File.GroundedSpecies.Count);
+        Assert.DoesNotContain("Pidove", SkyBattles.File.GroundedSpecies);
         Assert.True(SkyBattles.Grounded(MoveDatabase.Get("Earthquake")!));
         Assert.False(SkyBattles.Grounded(MoveDatabase.Get("Wing Attack")!));
     }

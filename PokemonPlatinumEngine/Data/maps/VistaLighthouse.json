@@ -125,6 +125,16 @@
       "facing": "Up",
       "script": "Volkner",
       "hiddenBy": "FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER"
+    },
+    {
+      "id": "sky_trainer",
+      "name": "Sky Trainer",
+      "npcType": "pilot",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "script": "SkyBattle",
+      "shownBy": "FLAG_GAME_COMPLETED"
     }
   ],
   "wildEncounters": []
