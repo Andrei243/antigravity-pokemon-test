@@ -16,9 +16,12 @@ public sealed class ChunkMesh
     /// <summary>Three a vertex.</summary>
     public required float[] Normals { get; init; }
     public required Cover[] Covers { get; init; }
-    /// <summary>Three a triangle, counter-clockwise seen from the air: the ground's, then the skirts'.</summary>
+    /// <summary>Three a triangle, counter-clockwise seen from the air: the ground's own, the apron's, then the skirts'.</summary>
     public required int[] Indices { get; init; }
+    /// <summary>The chunk's own ground: what is collided with and walked (every piece of the world is one chunk's own).</summary>
     public required int GroundTriangles { get; init; }
+    /// <summary>The row west and north that the neighbours there own too: drawn, so a level never stops short of its border.</summary>
+    public required int ApronTriangles { get; init; }
 
     public int VertexCount => Positions.Length / 3;
     public int TriangleCount => Indices.Length / 3;
@@ -36,6 +39,7 @@ public sealed class ChunkMesh
         w.Write(Covers.Length); foreach (var c in Covers) w.Write((byte)c);
         w.Write(Indices.Length); foreach (int i in Indices) w.Write(i);
         w.Write(GroundTriangles);
+        w.Write(ApronTriangles);
         w.Flush();
         return stream.ToArray();
     }
@@ -56,8 +60,10 @@ public static class SurfaceNets
     {
         var (x0, z0) = world.ChunkOrigin(cx, cz);
         int n = (int)Math.Round(world.ChunkSize / cell);
-        long gi0 = (long)Math.Round(x0 / cell), gk0 = (long)Math.Round(z0 / cell);
-        int cxn = n + 2, czn = n + 2;                       // corners across and down (the chunk's cells and one more, and its last corner)
+        // The grid starts a cell west and north of the chunk: its own cells, the one more on its east and south that it
+        // shares with its neighbours there, and the apron, the one on its west and north (below)
+        long gi0 = (long)Math.Round(x0 / cell) - 1, gk0 = (long)Math.Round(z0 / cell) - 1;
+        int cxn = n + 3, czn = n + 3;                       // corners across and down
 
         // The land's height at every corner's column, once
         var colH = new double[cxn * czn];
@@ -95,7 +101,7 @@ public static class SurfaceNets
         D3 CornerAt(int i, int j, int k) => new((gi0 + i) * cell, (j0 + j) * cell, (gk0 + k) * cell);
 
         // A vertex in every cell the surface passes through: the mean of where it crosses the cell's edges
-        int ncx = n + 1, ncy = ny, ncz = n + 1;
+        int ncx = n + 2, ncy = ny, ncz = n + 2;
         var cellVertex = new int[ncx * ncy * ncz];
         Array.Fill(cellVertex, -1);
         var positions = new List<int>();
@@ -130,43 +136,55 @@ public static class SurfaceNets
         int CellVertex(int i, int j, int k) => cellVertex[(k * ncy + j) * ncx + i];
         D3 V(int v) => new(Mm.Metres(positions[v * 3]), Mm.Metres(positions[v * 3 + 1]), Mm.Metres(positions[v * 3 + 2]));
 
-        // A quad across every edge the surface crosses whose four cells this chunk holds, facing the air
-        var indices = new List<int>();
-        void Quad(int a, int b, int c, int d, D3 outward)
+        // A quad across every edge the surface crosses whose four cells this chunk holds, facing the air. The chunk's
+        // own are the edges whose cells lie in its own cells and the shared row east and south (every edge of the world
+        // is the own of exactly one chunk); the apron is the rest it holds, a row west and north that its neighbours
+        // there own too. The apron is drawn and never collided with: beside a chunk of another level it covers the
+        // half cells each level's surface stops short of its border, which left a strip of nothing between the two
+        var ground = new List<int>();
+        var apronList = new List<int>();
+        void Quad(int a, int b, int c, int d, D3 outward, List<int> into)
         {
             if (a < 0 || b < 0 || c < 0 || d < 0) return;
             var normal = D3.Cross(V(b) - V(a), V(c) - V(a)) + D3.Cross(V(c) - V(a), V(d) - V(a));
             if (D3.Dot(normal, outward) < 0) (b, d) = (d, b);
-            Triangle(a, b, c);
-            Triangle(a, c, d);
+            Triangle(a, b, c, into);
+            Triangle(a, c, d, into);
         }
-        void Triangle(int a, int b, int c)
+        void Triangle(int a, int b, int c, List<int> into)
         {
             if (a == b || b == c || a == c) return;
             if (D3.Cross(V(b) - V(a), V(c) - V(a)).Length < 1e-9) return;
-            indices.Add(a); indices.Add(b); indices.Add(c);
+            into.Add(a); into.Add(b); into.Add(c);
         }
-        for (int k = 0; k <= n + 1; k++)
+        // (Indices here are the grid's, a cell west and north of the chunk's own: its own cells are 1 to n)
+        for (int k = 0; k <= n + 2; k++)
             for (int j = 0; j <= ny; j++)
-                for (int i = 0; i <= n + 1; i++)
+                for (int i = 0; i <= n + 2; i++)
                 {
                     bool here = f[Corner(i, j, k)] < 0;
-                    // Along x: owned for i in [0, n-1], the cells (i, j-1..j, k-1..k)
-                    if (i <= n - 1 && j >= 1 && j <= ny - 1 && k >= 1 && k <= n && here != (f[Corner(i + 1, j, k)] < 0))
-                        Quad(CellVertex(i, j - 1, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i, j - 1, k), new D3(here ? 1 : -1, 0, 0));
-                    // Along y: owned for j in [0, ny-1], the cells (i-1..i, j, k-1..k)
-                    if (j <= ny - 1 && i >= 1 && i <= n && k >= 1 && k <= n && here != (f[Corner(i, j + 1, k)] < 0))
-                        Quad(CellVertex(i - 1, j, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, here ? 1 : -1, 0));
-                    // Along z: owned for k in [0, n-1], the cells (i-1..i, j-1..j, k)
-                    if (k <= n - 1 && i >= 1 && i <= n && j >= 1 && j <= ny - 1 && here != (f[Corner(i, j, k + 1)] < 0))
-                        Quad(CellVertex(i - 1, j - 1, k), CellVertex(i, j - 1, k), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, 0, here ? 1 : -1));
+                    // Along x: the cells (i, j-1..j, k-1..k); the chunk's own for i in 1..n and k in 2..n+1
+                    if (i <= n + 1 && j >= 1 && j <= ny - 1 && k >= 1 && k <= n + 1 && here != (f[Corner(i + 1, j, k)] < 0))
+                        Quad(CellVertex(i, j - 1, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i, j - 1, k), new D3(here ? 1 : -1, 0, 0),
+                            i >= 1 && i <= n && k >= 2 ? ground : apronList);
+                    // Along y: the cells (i-1..i, j, k-1..k); the chunk's own for i and k in 2..n+1
+                    if (j <= ny - 1 && i >= 1 && i <= n + 1 && k >= 1 && k <= n + 1 && here != (f[Corner(i, j + 1, k)] < 0))
+                        Quad(CellVertex(i - 1, j, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, here ? 1 : -1, 0),
+                            i >= 2 && k >= 2 ? ground : apronList);
+                    // Along z: the cells (i-1..i, j-1..j, k); the chunk's own for k in 1..n and i in 2..n+1
+                    if (k <= n + 1 && i >= 1 && i <= n + 1 && j >= 1 && j <= ny - 1 && here != (f[Corner(i, j, k + 1)] < 0))
+                        Quad(CellVertex(i - 1, j - 1, k), CellVertex(i, j - 1, k), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, 0, here ? 1 : -1),
+                            k >= 1 && k <= n && i >= 2 ? ground : apronList);
                 }
-        int groundTriangles = indices.Count / 3;
+        int groundTriangles = ground.Count / 3;
+        int apronTriangles = apronList.Count / 3;
+        var indices = ground.Concat(apronList).ToList();
+        int surfaceTriangles = groundTriangles + apronTriangles;
 
         // Smooth normals: the faces round each vertex, by their area
         int vertexCount = positions.Count / 3;
         var sums = new D3[vertexCount];
-        for (int t = 0; t < groundTriangles; t++)
+        for (int t = 0; t < surfaceTriangles; t++)
         {
             int a = indices[t * 3], b = indices[t * 3 + 1], c = indices[t * 3 + 2];
             var face = D3.Cross(V(b) - V(a), V(c) - V(a));
@@ -177,7 +195,7 @@ public static class SurfaceNets
         // a chunk of another level (a chunk of the same level meets this one exactly, and its skirts are under the ground)
         var edgeCount = new Dictionary<long, int>();
         long Key(int a, int b) => a < b ? ((long)a << 32) | (uint)b : ((long)b << 32) | (uint)a;
-        for (int t = 0; t < groundTriangles; t++)
+        for (int t = 0; t < surfaceTriangles; t++)
             for (int e = 0; e < 3; e++)
             {
                 long key = Key(indices[t * 3 + e], indices[t * 3 + (e + 1) % 3]);
@@ -195,7 +213,7 @@ public static class SurfaceNets
             skirtSource.Add(v);
             return s;
         }
-        for (int t = 0; t < groundTriangles; t++)
+        for (int t = 0; t < surfaceTriangles; t++)
         {
             int a0 = indices[t * 3], b0 = indices[t * 3 + 1], c0 = indices[t * 3 + 2];
             var face = D3.Cross(V(b0) - V(a0), V(c0) - V(a0)).Normalized();
@@ -228,7 +246,7 @@ public static class SurfaceNets
         {
             ChunkX = cx, ChunkZ = cz, Lod = lod, Cell = cell,
             Positions = allPositions, Normals = normals, Covers = covers,
-            Indices = indices.ToArray(), GroundTriangles = groundTriangles
+            Indices = indices.ToArray(), GroundTriangles = groundTriangles, ApronTriangles = apronTriangles
         };
     }
 }

@@ -66,7 +66,7 @@ for (int lod = 0; lod < Bake.Cells.Length; lod++)
 {
     var chunks = bake.Chunks.Where(c => c.Key.Lod == lod).Select(c => c.Value).ToList();
     Console.WriteLine($"level {lod} ({Bake.Cells[lod]} m cells): {chunks.Count} chunks, {chunks.Sum(c => c.VertexCount)} vertices, "
-        + $"{chunks.Sum(c => c.GroundTriangles)} ground triangles and {chunks.Sum(c => c.TriangleCount - c.GroundTriangles)} in skirts; "
+        + $"{chunks.Sum(c => c.GroundTriangles)} ground triangles, {chunks.Sum(c => c.ApronTriangles)} in aprons and {chunks.Sum(c => c.TriangleCount - c.GroundTriangles - c.ApronTriangles)} in skirts; "
         + $"the busiest chunk {chunks.Max(c => c.TriangleCount)} triangles");
 }
 var mesh = CollisionMesh.Of(bake);

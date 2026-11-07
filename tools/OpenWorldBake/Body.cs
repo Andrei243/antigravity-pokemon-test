@@ -13,8 +13,11 @@ public readonly record struct OpenPos(int X, int Y, int Z)
 /// tilt, stepping up 0.35 m, kept off walls by up to four pushes a tick, held to the ground going down slopes,
 /// and falling off a drop with a landing. The body above the step is three spheres along its axis, each pushed
 /// out of whatever is not floor; the floor is found by a line straight down from the step's height. Every
-/// quantity is worked in double and rounded to the millimetre (the fall's speed to the micrometre) once a tick,
-/// so nothing builds up and two runs of the same sticks end on the same millimetre.
+/// quantity is worked in double and rounded to the micrometre once a tick (in 64-bit integers), so nothing builds
+/// up and two runs of the same sticks end on the same micrometre. Not the millimetre the plan first named: a walk
+/// of 1.5 m/s is 12.5 mm a tick, which whole millimetres round up to 13 every other tick (2% fast), and a step
+/// slantwise of under half a millimetre on one axis rounds to nothing there, so a stick a few degrees off an axis
+/// walked straight along it (OpenWorldPrototypeTests holds both). <see cref="Pos"/> is still told in millimetres.
 /// </summary>
 public sealed class OpenBody
 {
@@ -22,7 +25,16 @@ public sealed class OpenBody
     public const double Radius = 0.35, Height = 1.6, StepUp = 0.35, SnapDown = 0.5;
     public const double WalkSpeed = 1.5, RunSpeed = 4.5, Gravity = 9.81;
 
-    public OpenPos Pos { get; private set; }
+    long mx, my, mz;
+
+    /// <summary>Where the feet are, in micrometres: the body's own state.</summary>
+    public (long X, long Y, long Z) Micrometres => (mx, my, mz);
+
+    /// <summary>Where the feet are, to the millimetre.</summary>
+    public OpenPos Pos => new(ToMm(mx), ToMm(my), ToMm(mz));
+
+    static int ToMm(long micrometres) => (int)Math.Round(micrometres / 1000.0, MidpointRounding.AwayFromZero);
+    static long ToMicro(double metres) => (long)Math.Round(metres * 1e6, MidpointRounding.AwayFromZero);
     /// <summary>The way the body faces, in 65,536ths of a turn: 0 is south (+z), a quarter is east (+x).</summary>
     public int Yaw { get; private set; }
     public bool Grounded { get; private set; } = true;
@@ -36,7 +48,11 @@ public sealed class OpenBody
     /// <summary>The height fallen, the tick a fall ended in.</summary>
     public double? Landed { get; private set; }
 
-    public OpenBody(OpenPos start, int yaw = 0) { Pos = start; Yaw = yaw; }
+    public OpenBody(OpenPos start, int yaw = 0)
+    {
+        mx = start.X * 1000L; my = start.Y * 1000L; mz = start.Z * 1000L;
+        Yaw = yaw;
+    }
 
     public double YawRadians => Yaw * (Math.PI * 2 / 65536.0);
 
@@ -46,8 +62,7 @@ public sealed class OpenBody
         Tick++;
         Landed = null;
         Pushes = 0;
-        var p = Pos.Metres;
-        double x = p.X, y = p.Y, z = p.Z;
+        double x = mx / 1e6, y = my / 1e6, z = mz / 1e6;
 
         double tilt = Math.Min(1, Math.Sqrt(stickX * stickX + stickZ * stickZ));
         if (tilt > 0.02)
@@ -124,7 +139,7 @@ public sealed class OpenBody
                 FallMicrometres = (int)Math.Round(vy * 1e6, MidpointRounding.AwayFromZero);
             }
         }
-        Pos = OpenPos.Of(new D3(x, y, z));
+        mx = ToMicro(x); my = ToMicro(y); mz = ToMicro(z);
     }
 
     /// <summary>How fast a body standing on a face steeper than 40° slides down it, metres a second over the ground.</summary>

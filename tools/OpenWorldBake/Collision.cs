@@ -95,6 +95,9 @@ public sealed class CollisionMesh
             if (HeightIn(x, z, a, b, c) is { } y) hits.Add((y, t));
         }
         hits.Sort((p, q) => q.Item1.CompareTo(p.Item1) != 0 ? q.Item1.CompareTo(p.Item1) : p.Item2.CompareTo(q.Item2));
+        // A line through the edge two triangles share meets both at one height: the surface is counted once
+        for (int i = hits.Count - 1; i > 0; i--)
+            if (hits[i - 1].Item1 - hits[i].Item1 < 1e-6) hits.RemoveAt(i);
         return hits;
     }
 

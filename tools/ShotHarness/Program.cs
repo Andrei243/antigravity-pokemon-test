@@ -204,6 +204,7 @@ if (mode == "unova") h.UnovaMode();
 if (mode == "kalos") h.KalosMode();
 if (mode == "alola") h.AlolaMode();
 if (mode == "freemove") h.FreeMoveMode();
+if (mode == "openproto") h.OpenPrototypeMode();
 if (mode == "beats") h.LegendBeatsMode();
 if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();

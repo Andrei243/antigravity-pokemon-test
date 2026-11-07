@@ -336,10 +336,17 @@ partial class Harness
             engine.Draw();
             Shot("profile_" + new string(label.Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray()));
         }
+        void One() { if (!frozen) { FrameClock.Fixed = ++tick / 60.0; engine.Update(1f / 60f); } engine.Draw(); }
+        TimeScene(label, One, frames);
+    }
+
+    // A scene timed by its own frame (the game's, or a prototype's that draws into the game's window: plan 32 · OW0's
+    // open_prototype), then the same frames with the profiler on
+    void TimeScene(string label, Action One, int frames = 240)
+    {
         // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
         var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
         if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
-        void One() { if (!frozen) { FrameClock.Fixed = ++tick / 60.0; engine.Update(1f / 60f); } engine.Draw(); }
         for (int i = 0; i < 20; i++) One();
         var times = new List<double>(frames);
         var sw = System.Diagnostics.Stopwatch.StartNew();
