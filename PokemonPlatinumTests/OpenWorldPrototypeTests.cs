@@ -1,5 +1,6 @@
 using OpenWorldBake;
 using PokemonPlatinumEngine.OpenWorld;
+using OpenBody = OpenWorldBake.OpenBody;
 
 namespace PokemonPlatinumTests;
 

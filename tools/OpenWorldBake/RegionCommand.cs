@@ -40,7 +40,9 @@ public static class RegionCommand
         string region = args[0];
         string? folder = null, outFolder = null, planDir = null, planArea = null, sectionDir = null, sectionArea = null;
         (int X, int Z)? onlyChunk = null;
-        bool check = false, seams = false;
+        bool check = false, seams = false, swim = false;
+        string? walkDir = null;
+        var walkPoints = new List<(double X, double Z, bool Run)>();
         var cuts = new List<((double, double) A, (double, double) B)>();
         for (int i = 1; i < args.Length; i++)
         {
@@ -68,6 +70,18 @@ public static class RegionCommand
                         cuts.Add((a, Point(args[++i])));
                     }
                     break;
+                case "--walk":
+                    walkDir = args[++i];
+                    while (i + 1 < args.Length && !args[i + 1].StartsWith("--"))
+                    {
+                        string p = args[++i];
+                        bool running = p.EndsWith('!');
+                        var (x, z) = Point(running ? p[..^1] : p);
+                        walkPoints.Add((x, z, running));
+                    }
+                    if (walkPoints.Count < 2) { Console.Error.WriteLine("--walk: a start and at least one stop, as x,z (a stop ending in ! is run to)"); return 2; }
+                    break;
+                case "--swim": swim = true; break;
                 default: Console.Error.WriteLine($"unknown argument {args[i]}"); return 2;
             }
         }
@@ -168,7 +182,38 @@ public static class RegionCommand
             }
             Console.WriteLine("  key: rock grey, topsoil green, air pale with a line every 5 m; water's surface blue; where each level's surface crosses the cut, level 0 black, level 1 orange a pixel lower, level 2 magenta two lower");
         }
+        if (walkDir != null) Walk(description, land, Meshes(), walkDir, walkPoints, swim);
         return 0;
+    }
+
+    /// <summary>
+    /// <c>--walk</c> (plan 32 · OW3): the game's capsule walked from the first point through the rest on level 0's
+    /// ground, what happened printed, and the walk drawn over the region's plan and as a profile.
+    /// </summary>
+    static void Walk(RegionDescription description, TerrainWorld land, Dictionary<(int, int), ChunkMesh[]> meshes, string dir,
+        List<(double X, double Z, bool Run)> points, bool swim)
+    {
+        var ground = CapsuleRoute.GroundOf(description, land);
+        var (sx, sz, _) = points[0];
+        var foot = ground.Footing(sx, sz, 1000, -1000);
+        if (foot == null) { Console.Error.WriteLine($"--walk: no ground at {sx},{sz}"); return; }
+        var start = OpenPos.FromMetres(sx, foot.Value.Y, sz);
+        var stops = points.Skip(1).Select((p, i) => new RouteStop(p.X, p.Z, $"stop {i + 1} ({p.X:0.#}, {p.Z:0.#})", p.Run)).ToList();
+        var walk = CapsuleRoute.Walk(ground, start, stops, swim ? PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim : PokemonPlatinumEngine.OpenWorld.MovementGrants.None);
+        Console.WriteLine($"walked from {start}: {walk.Samples.Count} ticks, ended {walk.End}; {(walk.Finished ? "finished" : walk.Stuck ? "stuck" : "out of time")}; "
+            + $"{walk.Reached.Count} stops reached, {walk.GivenUp.Count} given up; {walk.PushTicks} ticks pushed off walls, {walk.SlideTicks} sliding, {walk.SwimTicks} swimming, "
+            + $"{walk.HardLandings} landings; feet from {walk.LowestY:0.000} m to {walk.HighestY:0.000} m");
+        foreach (string e in walk.Events) Console.WriteLine("  " + e);
+        var box = BoxOf(description, null)!.Value;
+        int perMetre = Math.Clamp((int)(1024 / (box.X1 - box.X0)), 2, 16);
+        var finest = RegionPictures.Surface(meshes.Values.Select(m => m[0]));
+        var plan = RegionPictures.Plan(description, land, finest, box, perMetre: perMetre);
+        WalkPictures.Over(plan, walk, stops, box, perMetre);
+        string planPath = Path.Combine(dir, "walk_plan.png"), profilePath = Path.Combine(dir, "walk_profile.png");
+        Pictures.Save(plan, planPath);
+        Pictures.Save(WalkPictures.Profile(walk, ground), profilePath);
+        Console.WriteLine($"wrote {planPath} and {profilePath}");
+        Console.WriteLine("  key: the feet white standing, orange sliding, red falling, cyan swimming; a stop reached ringed yellow, given up magenta; the profile's grey every surface under the feet (the top darkest), a line every 5 m");
     }
 
     static (double, double) Point(string text)

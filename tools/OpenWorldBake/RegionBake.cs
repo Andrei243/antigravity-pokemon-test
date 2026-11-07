@@ -61,6 +61,17 @@ public static class RegionBake
         return meshes;
     }
 
+    /// <summary>
+    /// A chunk's level 0 alone as the game loads it (plan 32 · OW3): what the capsule collides with, without the
+    /// thinning of the far levels; the same bytes as <see cref="Chunk"/>'s first.
+    /// </summary>
+    public static BakedChunk Finest(TerrainWorld land, OpenWorldFile world, int x, int z)
+    {
+        int cx = x - world.Chunks[0], cz = z - world.Chunks[1];
+        var net = SurfaceNets.Net(land, cx, cz, Cell);
+        return ToBaked(SurfaceNets.Finish(land, net, 0, Skirts[0]), x, z, WaterOf(land, x, z));
+    }
+
     /// <summary>A chunk's three levels as the game loads them.</summary>
     public static BakedChunk[] Chunk(TerrainWorld land, OpenWorldFile world, int x, int z)
     {
