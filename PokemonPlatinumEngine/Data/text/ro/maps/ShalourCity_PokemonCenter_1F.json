@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fighter": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to Shalour to train at the tower. The old master says I'm not ready to climb it yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "skater": {
+      "name": {
+        "en": [
+          "Skater"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader here skates to her Gym every morning, and she's faster than the bus!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,254 @@
+{
+  "Desk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționer"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Black Tower! Trainers climb through its five areas, battling whoever waits on the way, all the way to the top."
+      ],
+      "text": [
+        "Bun venit la Turnul Negru! Antrenorii urcă prin cele cinci zone ale lui, luptându-se cu cine îi așteaptă pe drum, până în vârf."
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "CLIMB",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "Ce dorești să faci?",
+        "URCĂ",
+        "INFO",
+        "RECORD",
+        "IEȘI"
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon who will climb with you."
+      ],
+      "text": [
+        "Alege cei trei Pokémoni care vor urca cu tine."
+      ]
+    },
+    {
+      "en": [
+        "Very good! The way up is through the door behind me. Good luck!"
+      ],
+      "text": [
+        "Foarte bine! Drumul în sus e prin ușa din spatele meu. Succes!"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! Your climb is waiting for you. Up you go!"
+      ],
+      "text": [
+        "Bine ai revenit! Urcarea ta te așteaptă. Sus!"
+      ]
+    },
+    {
+      "en": [
+        "The tower has five areas, and three Trainers wait in each. Win them all and you reach the top."
+      ],
+      "text": [
+        "Turnul are cinci zone, iar în fiecare te așteaptă trei Antrenori. Învinge-i pe toți și ajungi în vârf."
+      ]
+    },
+    {
+      "en": [
+        "Three Pokémon go up, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
+      ],
+      "text": [
+        "Urcă trei Pokémoni, de specii diferite și cu obiecte diferite. Luptă la Nivelul 50 sau mai jos, și nu se poate folosi nimic din Rucsac."
+      ]
+    },
+    {
+      "en": [
+        "Every area cleared earns a Battle Point, and the top earns ten more."
+      ],
+      "text": [
+        "Fiecare zonă terminată aduce un Punct de Luptă, iar vârful încă zece."
+      ]
+    },
+    {
+      "en": [
+        "The most areas you have cleared in one climb: {number}."
+      ],
+      "text": [
+        "Cele mai multe zone terminate într-o singură urcare: {number}."
+      ]
+    },
+    {
+      "en": [
+        "Times you have reached the top: {number}."
+      ],
+      "text": [
+        "De câte ori ai ajuns în vârf: {number}."
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon of different species, holding different items, to climb. {banned} may not go up."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni de specii diferite, cu obiecte diferite, ca să urci. {banned} nu au voie să urce."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're ready to climb."
+      ],
+      "text": [
+        "Revino când ești gata să urci."
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon of the same species can't climb together. Please choose again."
+      ],
+      "text": [
+        "Doi Pokémoni din aceeași specie nu pot urca împreună. Alege din nou, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon holding the same item can't climb together. Please choose again."
+      ],
+      "text": [
+        "Doi Pokémoni cu același obiect nu pot urca împreună. Alege din nou, te rog."
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you climb soon!"
+      ],
+      "text": [
+        "Sperăm să te vedem urcând în curând!"
+      ]
+    }
+  ],
+  "Upward": [
+    {
+      "en": [
+        "Area {number} of the Black Tower."
+      ],
+      "text": [
+        "Zona {number} a Turnului Negru."
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps out of the dark to battle!"
+      ],
+      "text": [
+        "{foe} iese din întuneric să lupte!"
+      ]
+    },
+    {
+      "en": [
+        "Benga"
+      ],
+      "text": [
+        "Benga"
+      ]
+    },
+    {
+      "en": [
+        "Hey, you made it all the way up! I'm Benga. My grandpa's a pretty good Trainer, and so am I!"
+      ],
+      "text": [
+        "Hei, ai ajuns până sus! Sunt Benga. Bunicul meu e un Antrenor destul de bun, și eu la fel!"
+      ]
+    },
+    {
+      "en": [
+        "Let's see what you've got!"
+      ],
+      "text": [
+        "Să vedem ce poți!"
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționer"
+      ]
+    },
+    {
+      "en": [
+        "The way goes on."
+      ],
+      "text": [
+        "Drumul continuă."
+      ]
+    },
+    {
+      "en": [
+        "Area {number} is cleared!"
+      ],
+      "text": [
+        "Zona {number} e terminată!"
+      ]
+    },
+    {
+      "en": [
+        "Will you keep climbing?"
+      ],
+      "text": [
+        "Vei continua să urci?"
+      ]
+    },
+    {
+      "en": [
+        "The top of the Black Tower! Nobody else waits here."
+      ],
+      "text": [
+        "Vârful Turnului Negru! Aici nu te mai așteaptă nimeni."
+      ]
+    },
+    {
+      "en": [
+        "The climb ends here."
+      ],
+      "text": [
+        "Urcarea se oprește aici."
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționer"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! For your climb you've earned {number} Battle Points."
+      ],
+      "text": [
+        "Bine ai revenit! Pentru urcarea ta ai câștigat {number} Puncte de Luptă."
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! Please climb again soon."
+      ],
+      "text": [
+        "Bine ai revenit! Te rugăm să urci din nou în curând."
+      ]
+    }
+  ]
+}

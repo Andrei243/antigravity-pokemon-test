@@ -1,0 +1,66 @@
+{
+  "people": {
+    "battle_girl": {
+      "name": {
+        "en": [
+          "Élodie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Élodie: Everyone on this road is going to Shalour to train. Let's warm up first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Élodie: Warmed up and knocked down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Gustave"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Gustave: The tower at Shalour taught my grandfather to fight. Let me teach you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Gustave: Grandfather would say I need more teaching."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 11 · Miroir Way\nWest: Geosenge Town\nNorth: Shalour City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

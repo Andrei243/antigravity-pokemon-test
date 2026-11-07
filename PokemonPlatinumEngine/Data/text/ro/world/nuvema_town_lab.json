@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Prof. Juniper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
   "signs": {
     "1": {
       "en": [

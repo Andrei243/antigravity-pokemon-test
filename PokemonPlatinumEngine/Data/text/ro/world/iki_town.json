@@ -1,0 +1,98 @@
+{
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hala": {
+      "name": {
+        "en": [
+          "Hala"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This stage has seen a festival every year since I was a little girl. We dance for the island's guardian."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Up the trail there's an old rope bridge over the gorge. My mum won't let me cross it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "vendor": {
+      "name": {
+        "en": [
+          "Vendor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fresh fruit, flower garlands, carvings of the guardian! Everything for the festival, right here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Iki Town\nA village on the hill, where the island's guardian is honoured."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Shalour City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear day you can see the tower from far out at sea. We steer home by it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

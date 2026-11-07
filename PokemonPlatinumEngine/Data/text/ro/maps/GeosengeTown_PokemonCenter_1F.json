@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walked the whole Menhir Trail counting stones. Then I counted them again on the way back, and got a different number."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother says the stones hum on stormy nights. I've never heard them, but I've never stayed up that late."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

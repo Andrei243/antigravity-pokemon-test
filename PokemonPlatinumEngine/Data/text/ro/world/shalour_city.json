@@ -1,0 +1,68 @@
+{
+  "people": {
+    "skater": {
+      "name": {
+        "en": [
+          "Skater"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shalour's streets are the smoothest in Kalos. I come all the way from Cyllage just to skate here!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At low tide you could walk out to the tower once, they say. Now the sea's come in, and it stands on the shore."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The guru up in the tower is older than me, and still climbs those stairs every day. Imagine!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Shalour City\nWhere the tower of Mega Evolution stands by the sea."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Iki Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear night you can see Akala Island from the top of the village. That's where the second trials are."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Coumarine City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our whole street grows flowers, and every house has its own colour. Ours is yellow, because Dad can't tell the others apart."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

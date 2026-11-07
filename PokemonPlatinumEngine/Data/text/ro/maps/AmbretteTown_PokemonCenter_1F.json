@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Ambrette Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ambrette's bay never freezes, and the Pokémon here are the strongest swimmers on the coast. Bring a good Water type and a bit of patience."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east follows the coast all the way. Just past the tall grass there's a cave that glitters, if you've got the nerve."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

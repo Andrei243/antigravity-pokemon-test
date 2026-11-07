@@ -81,6 +81,16 @@
           "În Lumiose sunt cinci piețe, fiecare de altă culoare. Eu am găsit doar trei până acum!"
         ]
       }
+    },
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Tower of Mastery"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "gurkinn": {
+      "name": {
+        "en": [
+          "Gurkinn"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "korrina": {
+      "name": {
+        "en": [
+          "Korrina"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pupil": {
+      "name": {
+        "en": [
+          "Pupil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The master says a Pokémon only changes when its heart and its Trainer's beat as one. I'm still listening for mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

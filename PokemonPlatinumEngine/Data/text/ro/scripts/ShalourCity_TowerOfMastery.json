@@ -1,0 +1,222 @@
+{
+  "Guru": [
+    {
+      "en": [
+        "Gurkinn"
+      ],
+      "text": [
+        "Gurkinn"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Tower of Mastery. Look around as long as you like, young Trainer. The statue has stood here a very long time."
+      ],
+      "text": [
+        "Bun venit la Turnul Măiestriei. Privește cât vrei, tinere Antrenor. Statuia asta stă aici de foarte multă vreme."
+      ]
+    },
+    {
+      "en": [
+        "Ho! Another young Trainer climbs my stairs. I am Gurkinn, the master of this tower."
+      ],
+      "text": [
+        "Ho! Încă un tânăr Antrenor îmi urcă treptele. Sunt Gurkinn, stăpânul acestui turn."
+      ]
+    },
+    {
+      "en": [
+        "This statue shows a Pokémon in a shape it can only take when its heart and its Trainer's beat as one. We call it Mega Evolution."
+      ],
+      "text": [
+        "Statuia arată un Pokémon într-o formă pe care o poate lua doar când inima lui și a Antrenorului bat ca una. Îi spunem Mega Evoluție."
+      ]
+    },
+    {
+      "en": [
+        "Two stones make it happen: a Mega Stone held by the Pokémon, and a Key Stone carried by the Trainer."
+      ],
+      "text": [
+        "Două pietre o fac posibilă: o Mega Piatră purtată de Pokémon și o Piatră-Cheie purtată de Antrenor."
+      ]
+    },
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        "Korrina"
+      ]
+    },
+    {
+      "en": [
+        "Grandpa, can I? I'm Korrina, the Leader of Shalour's Gym. Grandpa only gives Key Stones to Trainers who've earned them."
+      ],
+      "text": [
+        "Bunicule, pot? Sunt Korrina, Liderul sălii din Shalour. Bunicul dă Pietre-Cheie doar Antrenorilor care le-au meritat."
+      ]
+    },
+    {
+      "en": [
+        "So come to my Gym first and show me what you've got! If you beat me, I'll put in a good word."
+      ],
+      "text": [
+        "Așa că vino mai întâi la sala mea și arată-mi ce poți! Dacă mă învingi, pun o vorbă bună."
+      ]
+    },
+    {
+      "en": [
+        "Gurkinn"
+      ],
+      "text": [
+        "Gurkinn"
+      ]
+    },
+    {
+      "en": [
+        "Ho ho. She skates everywhere, that one. Her Gym is east of the main street. Go on!"
+      ],
+      "text": [
+        "Ho ho. Aleargă pe patine peste tot, fata asta. Sala ei e la est de strada principală. Du-te!"
+      ]
+    },
+    {
+      "en": [
+        "Korrina waits at her Gym, east of the main street. Win her Badge, then come back to me."
+      ],
+      "text": [
+        "Korrina te așteaptă la sala ei, la est de strada principală. Câștigă-i Insigna, apoi întoarce-te la mine."
+      ]
+    },
+    {
+      "en": [
+        "Ho! Korrina's Rumble Badge. Then you are ready to carry what the tower keeps."
+      ],
+      "text": [
+        "Ho! Insigna Vuietului a Korrinei. Atunci ești gata să porți ce păstrează turnul."
+      ]
+    },
+    {
+      "en": [
+        "This Key Stone is yours. Wear it close, and let it listen to your heart."
+      ],
+      "text": [
+        "Piatra-Cheie aceasta e a ta. Poart-o aproape și las-o să-ți asculte inima."
+      ]
+    },
+    {
+      "en": [
+        "You carry a Key Stone already, I see. Then you need no other from me. Keep it close."
+      ],
+      "text": [
+        "Văd că porți deja o Piatră-Cheie. Atunci nu-ți mai trebuie alta de la mine. Ține-o aproape."
+      ]
+    },
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        "Korrina"
+      ]
+    },
+    {
+      "en": [
+        "My turn! Watch closely: this is what a Key Stone and a Mega Stone can do together."
+      ],
+      "text": [
+        "E rândul meu! Privește cu atenție: asta pot face împreună o Piatră-Cheie și o Mega Piatră."
+      ]
+    },
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        "Korrina"
+      ]
+    },
+    {
+      "en": [
+        "You beat a Mega Evolved Lucario! Grandpa, did you see that?"
+      ],
+      "text": [
+        "Ai învins un Lucario Mega Evoluat! Bunicule, ai văzut?"
+      ]
+    },
+    {
+      "en": [
+        "That's the power of Mega Evolution! And now you have a Key Stone too."
+      ],
+      "text": [
+        "Asta e puterea Mega Evoluției! Și acum ai și tu o Piatră-Cheie."
+      ]
+    },
+    {
+      "en": [
+        "Here, take this Lucario. It was raised at the tower, and it holds its own Mega Stone, the Lucarionite."
+      ],
+      "text": [
+        "Ține, ia acest Lucario. A fost crescut la turn și poartă propria Mega Piatră, Lucarionite."
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Lucario holding a Lucarionite!"
+      ],
+      "text": [
+        "{player} a primit un Lucario care ține o Lucarionite!"
+      ]
+    },
+    {
+      "en": [
+        "In battle, choose its move with the Key Stone ready, and it'll Mega Evolve. Take good care of it!"
+      ],
+      "text": [
+        "În luptă, alege-i mișcarea cu Piatra-Cheie pregătită și se va Mega Evolua. Ai grijă de el!"
+      ]
+    },
+    {
+      "en": [
+        "The bond between you and your Pokémon is the real stone. The rest is only rock."
+      ],
+      "text": [
+        "Legătura dintre tine și Pokémonul tău e adevărata piatră. Restul e doar rocă."
+      ]
+    }
+  ],
+  "Korrina": [
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        "Korrina"
+      ]
+    },
+    {
+      "en": [
+        "Grandpa talks to that statue more than to me. I think it listens better!"
+      ],
+      "text": [
+        "Bunicul vorbește cu statuia aia mai mult decât cu mine. Cred că ea ascultă mai bine!"
+      ]
+    },
+    {
+      "en": [
+        "You won my Badge! Go and talk to Grandpa. He's been waiting all morning."
+      ],
+      "text": [
+        "Mi-ai câștigat Insigna! Du-te și vorbește cu bunicul. Te așteaptă de dimineață."
+      ]
+    },
+    {
+      "en": [
+        "Train that Lucario well. Next time we battle, it'll be Mega against Mega!"
+      ],
+      "text": [
+        "Antrenează bine Lucario-ul acela. Data viitoare când ne luptăm, va fi Mega împotriva Mega!"
+      ]
+    }
+  ]
+}

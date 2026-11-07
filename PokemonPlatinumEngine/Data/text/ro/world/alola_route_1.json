@@ -1,0 +1,94 @@
+{
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Keoni"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Keoni: Alola! You're new here, aren't you? Let's see what you and your partner can do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Keoni: Whoa, you two are already in tune. I'll have to train harder!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Alola! People here say it for hello and for goodbye. You'll be saying it all day in no time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "surfer": {
+      "name": {
+        "en": [
+          "Surfer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The waves off the outskirts are gentle in the mornings. Perfect for watching the Wingull dive."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 1\nNorth: Iki Town\nSouth: Hau'oli Outskirts"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "OutskirtsSign": {
+      "en": [
+        "Hau'oli Outskirts\nEast: Hau'oli City\nWest: Pokémon Research Lab"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Iki Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When you turn eleven here, you can take the island challenge. I've got two years to wait!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

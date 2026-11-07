@@ -1,0 +1,118 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Clémence"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Clémence: I come out to the coast every weekend. The sea air is good for Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Clémence: Well, that was bracing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Basile"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Basile: I've been waiting here all morning for someone to battle. Finally!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Basile: Should've waited for an easier challenger."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Odile"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Odile: I've walked half of Kalos with this pack. My Pokémon have, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Odile: My feet are sore and my pride is, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Loïc"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Loïc: The fish aren't biting, so I'll take a battle instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Loïc: Even the fish would have given me more of a fight."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 9 · Coast Road\nWest: Ambrette Town\nEast: Route 12"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

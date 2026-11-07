@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Geosenge Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband walks round the stones every evening. He says it helps him think. I think it helps him avoid the washing-up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

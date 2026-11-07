@@ -1,0 +1,68 @@
+{
+  "people": {
+    "gardener": {
+      "name": {
+        "en": [
+          "Gardener"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every bed in this garden has a keeper. Mine is the one with the blue ones, and no, you may not pick any."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym is closed, but the Leader's Pokémon still come out to sunbathe on the rocks by the gate. They're huge!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've watched these flowers bloom for sixty summers. They come back every year, and so do the Pokémon who love them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Coumarine City\nA garden city of a hundred flower beds."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

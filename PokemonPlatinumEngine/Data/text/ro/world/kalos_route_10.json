@@ -1,0 +1,66 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Odilon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Odilon: Nobody knows who stood these stones up. I like to think it was a very strong hiker!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Odilon: Strong legs, but not strong enough. Like the stones, I'll just stand here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Maëlle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Maëlle: I count the stones every time I walk this way, and I always get a different number!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Maëlle: Now I've lost count again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 10 · Menhir Trail\nNorth: Geosenge Town\nSouth: Cyllage City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

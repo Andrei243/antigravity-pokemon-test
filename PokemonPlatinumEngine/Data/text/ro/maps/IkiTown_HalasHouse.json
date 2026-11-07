@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Iki Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "grandmother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the kahuna's house. My husband is out more often than he's home, and our grandson eats more than both of us together!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,92 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Violette"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Violette: I grew these flowers myself, and I'll fight for every one. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Violette: You trampled one. Just kidding! Good battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Hortense"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Hortense: The flower beds make the best picnic spots. Want to join? After a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Hortense: Fine, fine. Come and sit down, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Matthieu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Matthieu: Coumarine's Gym Leader taught me everything I know. Watch this!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Matthieu: He didn't teach me that. I'd better ask him."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 12 · Blossom Road\nWest: Route 9\nEast: Coumarine City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

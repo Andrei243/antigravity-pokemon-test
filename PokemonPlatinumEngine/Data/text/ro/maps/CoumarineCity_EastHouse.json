@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Coumarine City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym is shut while its Leader is away. He'll be back when the roses bloom, he says. He has said that since spring."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

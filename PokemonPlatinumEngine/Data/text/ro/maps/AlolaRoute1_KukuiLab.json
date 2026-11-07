@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Research Lab"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rockruff": {
+      "name": {
+        "en": [
+          "Rockruff"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

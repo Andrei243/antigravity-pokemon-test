@@ -1,0 +1,68 @@
+{
+  "people": {
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for a week and I've stayed a month. The sea here is the bluest I've ever seen!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Wishiwashi out there look tiny on their own. Wait till you see a whole school of them, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Trainers' School is further along the promenade. Everyone on Melemele learns to battle there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Hau'oli City\nThe city of the island's beaches and shops."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

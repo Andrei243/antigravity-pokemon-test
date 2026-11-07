@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mom: Welcome home! Sit down a while and rest.",
+          "Mom: ...There! You both look much better."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

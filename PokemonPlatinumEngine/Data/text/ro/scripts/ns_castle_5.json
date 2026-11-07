@@ -1,0 +1,78 @@
+{
+  "N": [
+    {
+      "en": [
+        "N"
+      ],
+      "text": [
+        "N"
+      ]
+    },
+    {
+      "en": [
+        "So you found your way up here. This castle was my whole world once. Now it's only stone and quiet."
+      ],
+      "text": [
+        "Deci ai găsit drumul până aici. Castelul acesta a fost cândva toată lumea mea. Acum e doar piatră și liniște."
+      ]
+    },
+    {
+      "en": [
+        "Zekrom came with me. It wants to know the Trainer who stood at the League's top."
+      ],
+      "text": [
+        "Zekrom a venit cu mine. Vrea să-l cunoască pe Antrenorul care a stat în vârful Ligii."
+      ]
+    },
+    {
+      "en": [
+        "Go to it. Let it see what kind of truth and ideals you carry."
+      ],
+      "text": [
+        "Mergi la el. Lasă-l să vadă ce fel de adevăr și de idealuri porți."
+      ]
+    },
+    {
+      "en": [
+        "Zekrom has seen you now. Whatever happens, it will remember."
+      ],
+      "text": [
+        "Zekrom te-a văzut acum. Orice s-ar întâmpla, își va aminti."
+      ]
+    },
+    {
+      "en": [
+        "I'm going to keep travelling. There are so many Pokémon I still haven't heard. Farewell, {player}."
+      ],
+      "text": [
+        "Voi călători mai departe. Sunt atâția Pokémoni pe care încă nu i-am auzit. Rămas bun, {player}."
+      ]
+    }
+  ],
+  "Zekrom": [
+    {
+      "en": [
+        "Zekrom's tail crackles with lightning!\nIt rears up to face {player}!"
+      ],
+      "text": [
+        "Coada lui Zekrom trosnește de fulgere!\nSe ridică în fața lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The throne room is quiet once more..."
+      ],
+      "text": [
+        "Sala tronului e din nou liniștită..."
+      ]
+    },
+    {
+      "en": [
+        "Zekrom watches {player} from beside the throne..."
+      ],
+      "text": [
+        "Zekrom îl privește pe {player} de lângă tron..."
+      ]
+    }
+  ]
+}

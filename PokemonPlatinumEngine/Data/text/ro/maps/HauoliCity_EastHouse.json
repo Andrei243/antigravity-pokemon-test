@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big sister works at the Pokémon Center. She says every Trainer on the island comes through there sooner or later."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

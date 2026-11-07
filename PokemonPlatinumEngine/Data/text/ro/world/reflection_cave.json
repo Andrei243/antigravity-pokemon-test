@@ -1,0 +1,57 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Perrine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Perrine: Look at the pools! You can see the whole ceiling in them. Now look at my Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Perrine: I looked at the pools too long and not at you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Ambroise"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Ambroise: It's spooky in here, and I love it. Come on, let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Ambroise: Okay, that was a little spooky for me too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

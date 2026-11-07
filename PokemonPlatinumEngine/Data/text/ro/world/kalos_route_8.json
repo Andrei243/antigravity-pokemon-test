@@ -1,5 +1,83 @@
 {
   "people": {
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Pierrick"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Pierrick: The bay is empty today, and I'm itching for a bite. You'll do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Pierrick: Nothing on the line, nothing in the bucket. Typical."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Ysolde"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ysolde: My sandwiches are on the rocks and my Pokémon are rested. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ysolde: Now my sandwiches are cold. Worth it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Aurélien"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Aurélien: The cliffs got me early today. Let me see how you do on flat ground!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Aurélien: Flat ground, and you still knocked me over."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "fisherman": {
       "name": {
         "en": [
@@ -56,9 +134,12 @@
   "signs": {
     "RouteSign": {
       "en": [
-        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: closed by a rockfall"
+        "Route 8 · Cliff Coast Path\nNorth: Cyllage City\nSouth: Ambrette Town"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Ruta 8 · Poteca Coastei Stâncoase\nNord: Orașul Cyllage\nSud: închis de o alunecare de teren"
       ]
     }

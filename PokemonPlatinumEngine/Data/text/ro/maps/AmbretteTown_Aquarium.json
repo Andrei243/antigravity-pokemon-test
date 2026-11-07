@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Ambrette Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "keeper": {
+      "name": {
+        "en": [
+          "Aquarium Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Ambrette Aquarium! The big tanks are being rebuilt, so today there are only the tide pools. They're the best part anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

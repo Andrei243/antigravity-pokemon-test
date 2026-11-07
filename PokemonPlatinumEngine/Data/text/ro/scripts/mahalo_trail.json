@@ -1,0 +1,102 @@
+{
+  "Bridge": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Please, could you help? My little one jumped out of my bag and ran onto the bridge!"
+      ],
+      "text": [
+        "Oh! Te rog, m-ai putea ajuta? Micuțul meu a sărit din geantă și a fugit pe pod!"
+      ]
+    },
+    {
+      "en": [
+        "There are Spearow all around it, and I... I can't make myself step onto those planks."
+      ],
+      "text": [
+        "Sunt Spearow peste tot în jurul lui, iar eu... nu mă pot face să calc pe scândurile alea."
+      ]
+    },
+    {
+      "en": [
+        "{player} hurried past her, out onto the old bridge."
+      ],
+      "text": [
+        "{player} a trecut în grabă pe lângă ea, pe podul vechi."
+      ]
+    },
+    {
+      "en": [
+        "A flock of Spearow came diving down on the little Pokémon in the middle of the bridge!"
+      ],
+      "text": [
+        "O cireadă de Spearow s-a năpustit asupra micului Pokémon din mijlocul podului!"
+      ]
+    },
+    {
+      "en": [
+        "With a crack, the old planks gave way!"
+      ],
+      "text": [
+        "Cu un trosnet, scândurile vechi au cedat!"
+      ]
+    },
+    {
+      "en": [
+        "Something swept out of the sky in a flash of yellow and caught them both before they fell!"
+      ],
+      "text": [
+        "Ceva a străbătut cerul într-o străfulgerare galbenă și i-a prins pe amândoi înainte să cadă!"
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "That was... the island's guardian! It saved you. Thank you, thank you so much for helping."
+      ],
+      "text": [
+        "Acela a fost... ocrotitorul insulei! Te-a salvat. Mulțumesc, mulțumesc mult pentru ajutor."
+      ]
+    },
+    {
+      "en": [
+        "Please, don't tell anyone you saw my little one. It's a secret. I should go back down now."
+      ],
+      "text": [
+        "Te rog, nu spune nimănui că ai văzut micuțul meu. E un secret. Ar trebui să cobor acum."
+      ]
+    }
+  ],
+  "Lillie": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Please be careful on the bridge. The planks are very old."
+      ],
+      "text": [
+        "Ai grijă pe pod, te rog. Scândurile sunt foarte vechi."
+      ]
+    }
+  ]
+}

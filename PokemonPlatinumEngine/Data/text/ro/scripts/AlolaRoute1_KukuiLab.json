@@ -1,0 +1,78 @@
+{
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Alola! Welcome to my lab. Don't mind the hole in the roof. Moves get tested in here, and some of them hit hard!"
+      ],
+      "text": [
+        "Alola! Bun venit în laboratorul meu. Nu te uita la gaura din acoperiș. Aici se testează mișcări, iar unele lovesc tare!"
+      ]
+    },
+    {
+      "en": [
+        "Here, this is for you. A Pokédex: it writes down every Pokémon you meet, all over the islands."
+      ],
+      "text": [
+        "Ține, asta e pentru tine. Un Pokédex: notează fiecare Pokémon pe care îl întâlnești, pe toate insulele."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex!"
+      ],
+      "text": [
+        "{player} a primit Pokédex-ul!"
+      ]
+    },
+    {
+      "en": [
+        "And you'll want these to catch the Pokémon you meet. Take five, on me."
+      ],
+      "text": [
+        "Și o să ai nevoie de ele ca să prinzi Pokémonii pe care îi întâlnești. Ia cinci, din partea mea."
+      ]
+    },
+    {
+      "en": [
+        "Hau'oli City is east along the shore. Have a look round, cousin. The whole island's open to you now!"
+      ],
+      "text": [
+        "Orașul Hau'oli e spre est, de-a lungul țărmului. Uită-te prin jur, verișorule. Toată insula e a ta acum!"
+      ]
+    },
+    {
+      "en": [
+        "Alola! You'll want to see the kahuna in Iki Town first."
+      ],
+      "text": [
+        "Alola! Mai întâi ar fi bine să-l vezi pe kahuna din Iki Town."
+      ]
+    },
+    {
+      "en": [
+        "Every move a Pokémon uses tells me something. Go and see as many as you can, yeah?"
+      ],
+      "text": [
+        "Fiecare mișcare a unui Pokémon îmi spune ceva. Du-te și vezi cât mai multe, da?"
+      ]
+    }
+  ],
+  "Rockruff": [
+    {
+      "en": [
+        "Rockruff: Arf! Arf!"
+      ],
+      "text": [
+        "Rockruff: Arf! Arf!"
+      ]
+    }
+  ]
+}

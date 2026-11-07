@@ -1,0 +1,57 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hilaire"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Hilaire: This cave glitters like a jewel box. I'll guard the treasure!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Hilaire: You take the treasure, then. It's mostly wet rock anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Solène"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Solène: Shh! Do you hear the Magnezone humming? ...Oh. You've seen me. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Solène: The humming was louder than I thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

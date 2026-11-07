@@ -1,0 +1,23 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I watch the canyon's rocks shift over the years. Very slowly. Very, very slowly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

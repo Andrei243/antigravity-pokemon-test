@@ -1,0 +1,54 @@
+{
+  "MomCalls": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Oh, you're up! Did you sleep with all those boxes still everywhere?"
+      ],
+      "text": [
+        "Ah, te-ai trezit! Ai dormit cu toate cutiile alea împrăștiate peste tot?"
+      ]
+    },
+    {
+      "en": [
+        "Professor Kukui came by while you were asleep. He said he'd take you up to Iki Town to meet the island's kahuna."
+      ],
+      "text": [
+        "Profesorul Kukui a trecut pe aici cât dormeai. A zis că te duce la Iki Town să-l cunoști pe kahuna insulei."
+      ]
+    },
+    {
+      "en": [
+        "He's waiting just outside. Off you go, and say alola for me!"
+      ],
+      "text": [
+        "Te așteaptă afară. Hai, pleacă, și spune alola din partea mea!"
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Professor Kukui is waiting outside, dear. Don't keep him standing in the sun!"
+      ],
+      "text": [
+        "Profesorul Kukui te așteaptă afară, dragă. Nu-l lăsa să stea în soare!"
+      ]
+    }
+  ]
+}

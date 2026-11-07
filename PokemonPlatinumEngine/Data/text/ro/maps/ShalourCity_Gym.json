@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Shalour Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "korrina": {
+      "name": {
+        "en": [
+          "Korrina"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kalos_black_belt_lucien": {
+      "name": {
+        "en": [
+          "Lucien"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Lucien: Korrina trains on wheels, and so do we. Feel the speed!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Lucien: Too slow. Korrina is much faster than me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kalos_battle_girl_ines": {
+      "name": {
+        "en": [
+          "Inès"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Inès: You won't reach Korrina without a fight. Hi-yah!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Inès: Korrina will knock you flat. Go on, then!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

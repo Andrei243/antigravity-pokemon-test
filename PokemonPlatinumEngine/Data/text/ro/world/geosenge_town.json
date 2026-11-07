@@ -1,0 +1,60 @@
+{
+  "people": {
+    "trevor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those stones were old when my grandfather was young. Some say they were stood there to mark the end of a war."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east goes along the hills and up to Shalour City, where the tower is. You can see it from the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Geosenge Town\nA quiet town beside the standing stones."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

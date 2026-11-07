@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Ambrette Town"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband fished this bay for fifty years. Every morning the Pokémon came up to the pier to watch him work, and he swore they were counting his catch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I moved here from the mainland years ago. I still can't get over how warm the sea is, even in winter."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

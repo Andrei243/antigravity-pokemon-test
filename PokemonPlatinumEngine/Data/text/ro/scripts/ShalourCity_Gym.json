@@ -1,0 +1,102 @@
+{
+  "Korrina": [
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        "Korrina"
+      ]
+    },
+    {
+      "en": [
+        "You made it! I'm Korrina, and this is the Shalour Gym. We train on wheels here, so keep up!"
+      ],
+      "text": [
+        "Ai ajuns! Sunt Korrina, iar aceasta e sala din Shalour. Aici ne antrenăm pe roți, așa că ține pasul!"
+      ]
+    },
+    {
+      "en": [
+        "Grandpa says a Trainer's heart shows in battle. Let's see what yours is made of!"
+      ],
+      "text": [
+        "Bunicul spune că inima unui Antrenor se vede în luptă. Hai să vedem din ce e făcută a ta!"
+      ]
+    },
+    {
+      "en": [
+        "Wow! You hit hard and you never stopped moving. That's a real fighter!"
+      ],
+      "text": [
+        "Uau! Lovești tare și nu te-ai oprit nicio clipă. Ăsta e un adevărat luptător!"
+      ]
+    },
+    {
+      "en": [
+        "This is the Rumble Badge. You've earned it, and Grandpa's Key Stone too, I bet."
+      ],
+      "text": [
+        "Aceasta e Insigna Vuietului. Ai meritat-o, și pun pariu că și Piatra-Cheie a bunicului."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Rumble Badge from Korrina!"
+      ],
+      "text": [
+        "{player} a primit Insigna Vuietului de la Korrina!"
+      ]
+    },
+    {
+      "en": [
+        "And take this. My Pokémon use it to tense every muscle before they strike, harder and harder."
+      ],
+      "text": [
+        "Și ia asta. Pokémonii mei o folosesc ca să-și încordeze fiecare mușchi înainte să lovească, tot mai tare."
+      ]
+    },
+    {
+      "en": [
+        "Now go and see Grandpa at the tower. I'll skate over and meet you there!"
+      ],
+      "text": [
+        "Acum du-te la bunicul, la turn. Vin și eu într-un suflet, pe patine!"
+      ]
+    },
+    {
+      "en": [
+        "Grandpa's waiting for you at the tower. Go, go!"
+      ],
+      "text": [
+        "Bunicul te așteaptă la turn. Hai, hai!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghid de sală"
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Korrina's Fighting types fear flying, psychic power and the fair folk. Choose well!"
+      ],
+      "text": [
+        "Salut, viitor Campion! Tipurile Luptă ale Korrinei se tem de zbor, de puterea psihică și de neamul zânelor. Alege cu grijă!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Korrina! Your fists must be made of iron."
+      ],
+      "text": [
+        "Ai învins-o pe Korrina! Pumnii tăi sunt din fier."
+      ]
+    }
+  ]
+}
