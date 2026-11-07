@@ -53,6 +53,11 @@ public sealed class LinkClient
     private readonly List<BattleEvent> events = new();
     private readonly List<string> refusals = new();
     private BattleRoster? roster;
+    // The question answered last, which a refusal of its answer asks again
+    private LinkAsk? answered;
+
+    /// <summary>The names the view's Pokémon go by on the wire, once the room has greeted the player.</summary>
+    public BattleRoster? Roster => roster;
 
     public LinkClient(string name, IReadOnlyList<RecordedPokemon> team, ILinkChannel channel, ILinkChooser chooser)
     {
@@ -80,6 +85,7 @@ public sealed class LinkClient
                 Greeted(hello);
                 break;
             case LinkTurn turn:
+                answered = null;
                 events.AddRange(turn.Events);
                 State.Apply(turn.Events, Side);
                 break;
@@ -89,6 +95,8 @@ public sealed class LinkClient
                 break;
             case LinkRefused refused:
                 refusals.Add(refused.Reason);
+                // The question stands (the server says so): the one answered is asked again
+                if (Asked == null && answered != null && Result == null) Asked = answered;
                 break;
             case LinkOver over:
                 Result = over.Result;
@@ -120,6 +128,7 @@ public sealed class LinkClient
     {
         if (Asked == null) return;
         channel.Send(BattleWire.WriteMessage(new LinkAnswer(Asked.Number, choices), null));
+        answered = Asked;
         Asked = null;
     }
 
@@ -228,6 +237,18 @@ public sealed class ViewState
         if (!shown.TryGetValue(p, out var set)) shown[p] = set = new HashSet<string>();
         return set;
     }
+}
+
+/// <summary>
+/// The order a player's six go in when nobody picks another (plan 07 · O6's battle room, the harness): the order they
+/// were brought, as many as the room picks. It answers no question: a screen does (<c>BattleEngine.ForLink</c>).
+/// </summary>
+public sealed class BroughtInOrder : ILinkChooser
+{
+    public IReadOnlyList<int> Pick(LinkHello hello, int brought) => Enumerable.Range(0, System.Math.Min(hello.Room.Picks, brought)).ToList();
+
+    public IReadOnlyList<BattleChoice> Choose(LinkClient client, LinkAsk ask) =>
+        throw new System.InvalidOperationException("A screen answers this player's questions");
 }
 
 /// <summary>

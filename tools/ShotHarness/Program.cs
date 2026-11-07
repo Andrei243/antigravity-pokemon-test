@@ -146,6 +146,7 @@ if (h.Run("pokemon")) h.PokemonMode();
 if (mode == "dex") h.DexMode();
 if (mode == "fulldex") h.FullDexMode();
 if (mode == "versus") h.VersusMode();
+if (mode == "link") h.LinkMode();
 if (mode == "clips") h.ClipsMode();
 if (mode == "moves") h.MovesMode();
 if (mode == "later") h.LaterMode();

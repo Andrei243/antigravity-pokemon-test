@@ -23,6 +23,7 @@ public sealed partial class BattleCore
         if (!Link) throw new ArgumentException(Text.Of("battle.noThereNoRunning"));
         answer = new List<BattleChoice> { giving };
         answers.Add(answer);
+        using var narration = Narration.ForBothSides(Link);
         bool mine = giving.Who.Side == BattleSide.Player;
         string who = mine ? playerName : Trainers.Count > 0 ? Trainers[0].Name : playerName;
         Say(Text.Of("battle.forfeitedTheMatch", ("player", who)));

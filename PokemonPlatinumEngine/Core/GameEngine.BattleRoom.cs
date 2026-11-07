@@ -84,6 +84,9 @@ public partial class GameEngine
                 roomRun = new RoomRun(begin.Kind, room.Teams[begin.Team], (uint)Dice.Shared.Next());
                 StartRoomBattle();
                 break;
+            case BeginVersus pair:
+                BeginTheVersus(room.Teams[pair.First], room.Teams[pair.Second]);
+                break;
             case BeginDaily:
                 BeginTheDailyRun();
                 break;

@@ -129,6 +129,64 @@ public static class BattleWire
         }
     }
 
+    // ------------------------------------------------------------------ turning a view round
+
+    /// <summary>
+    /// Events as a screen that stands on the other side would play them (plan 28 · I3): every side named turned round
+    /// (a place, a side's conditions), a victory a defeat and a defeat a victory, and the <see cref="Won"/> that tells the
+    /// player's side it won moved to the side that did. A Pokémon stays the one it is: only the places it stands in
+    /// turn. What a link battle's side B is sent names its own places by the core's other side; its screen, like every
+    /// battle screen, stands on the player's side, so it plays its view turned round. Turned twice, events are what they were.
+    /// </summary>
+    public static List<BattleEvent> Turned(IReadOnlyList<BattleEvent> events, BattleRoster roster)
+    {
+        var turned = (List<BattleEvent>)Turned(events.ToList(), typeof(List<BattleEvent>), roster);
+        // The player's side is told it won: turned round, the other side's win is the one the player's side is told of
+        bool hadWon = turned.Any(e => e is Won);
+        turned.RemoveAll(e => e is Won);
+        int ended = turned.FindIndex(e => e is Ended { Result: BattleResult.PlayerVictory });
+        if (ended >= 0 && !hadWon)
+        {
+            // After the last faint, as the core says it before its own win's lines; a match given up has none, and no Won
+            // either way (the core's forfeit says none)
+            int lastLine = turned.FindLastIndex(ended, e => e is Fainted || e is Said s && s.Shows.Concat(s.OnImpact).Any(i => i is Fainted));
+            if (lastLine >= 0) turned.Insert(lastLine + 1, new Won());
+        }
+        return turned;
+    }
+
+    /// <summary>A question turned round (<see cref="Turned(IReadOnlyList{BattleEvent}, BattleRoster)"/>).</summary>
+    public static BattleRequest Turned(BattleRequest request, BattleRoster roster) => (BattleRequest)Turned(request, typeof(BattleRequest), roster);
+
+    /// <summary>What a place may answer, turned round.</summary>
+    public static PlaceOptions Turned(PlaceOptions options) => options with { Place = Turned(options.Place) };
+
+    /// <summary>A choice turned round: its place and its target.</summary>
+    public static BattleChoice Turned(BattleChoice choice) => (BattleChoice)Turned(choice, typeof(BattleChoice), null);
+
+    /// <summary>A place turned round.</summary>
+    public static Place Turned(Place place) => new(place.Side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player, place.Slot);
+
+    private static object Turned(object value, Type declared, BattleRoster? roster)
+    {
+        using var stream = new MemoryStream();
+        using (var w = new Utf8JsonWriter(stream, WriterOptions)) Write(w, value, declared, roster);
+        using var document = JsonDocument.Parse(stream.ToArray());
+        return Read(document.RootElement, declared, roster, turn: true)!;
+    }
+
+    private static object Turn(object value, bool turn)
+    {
+        if (!turn) return value;
+        return value switch
+        {
+            BattleSide side => side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player,
+            BattleResult.PlayerVictory => BattleResult.PlayerDefeat,
+            BattleResult.PlayerDefeat => BattleResult.PlayerVictory,
+            _ => value
+        };
+    }
+
     // ------------------------------------------------------------------ writing
 
     private static void Write(Utf8JsonWriter w, object? value, Type declared, BattleRoster? roster)
@@ -180,7 +238,7 @@ public static class BattleWire
 
     // ------------------------------------------------------------------ reading
 
-    private static object? Read(JsonElement e, Type declared, BattleRoster? roster)
+    private static object? Read(JsonElement e, Type declared, BattleRoster? roster, bool turn = false)
     {
         if (e.ValueKind == JsonValueKind.Null) return null;
         var type = Nullable.GetUnderlyingType(declared) ?? declared;
@@ -191,11 +249,11 @@ public static class BattleWire
             if (type == typeof(int)) return e.GetInt32();
             if (type == typeof(uint)) return e.GetUInt32();
             if (type == typeof(long)) return e.GetInt64();
-            if (type.IsEnum) return Enum.Parse(type, e.GetString() ?? "", ignoreCase: false);
+            if (type.IsEnum) return Turn(Enum.Parse(type, e.GetString() ?? "", ignoreCase: false), turn);
             if (type == typeof(Pokemon))
             {
                 if (roster == null) throw new BattleWireException("A Pokémon can only be named with a roster");
-                return roster.Resolve((PokemonRef)Read(e, typeof(PokemonRef), roster)!);
+                return roster.Resolve((PokemonRef)Read(e, typeof(PokemonRef), roster, turn: false)!);
             }
             if (type == typeof(PokemonSpecies))
                 return PokemonDatabase.GetByDex(e.GetInt32()) ?? throw new BattleWireException($"No species is number {e.GetInt32()}");
@@ -209,7 +267,7 @@ public static class BattleWire
         {
             if (e.ValueKind != JsonValueKind.Array) throw new BattleWireException($"Not a list of {element.Name}");
             var list = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(element))!;
-            foreach (var item in e.EnumerateArray()) list.Add(Read(item, element, roster));
+            foreach (var item in e.EnumerateArray()) list.Add(Read(item, element, roster, turn));
             return list;
         }
 
@@ -222,17 +280,17 @@ public static class BattleWire
                 throw new BattleWireException($"No {type.Name} of that wire name: {e}");
             actual = found;
         }
-        return Build(e, actual, roster);
+        return Build(e, actual, roster, turn && actual != typeof(PokemonRef));
     }
 
-    private static object Build(JsonElement e, Type type, BattleRoster? roster)
+    private static object Build(JsonElement e, Type type, BattleRoster? roster, bool turn)
     {
         var fields = FieldsOf(type);
         var ctor = ConstructorOf(type);
         var parameters = ctor?.GetParameters() ?? Array.Empty<ParameterInfo>();
         var args = parameters.Select(p =>
         {
-            if (e.TryGetProperty(Camel(p.Name!), out var given)) return Read(given, p.ParameterType, roster);
+            if (e.TryGetProperty(Camel(p.Name!), out var given)) return Read(given, p.ParameterType, roster, turn);
             if (p.HasDefaultValue) return p.DefaultValue;
             return p.ParameterType.IsValueType ? Activator.CreateInstance(p.ParameterType) : null;
         }).ToArray();
@@ -242,8 +300,8 @@ public static class BattleWire
         {
             if (inCtor.Contains(field.Property.Name) || !e.TryGetProperty(field.Json, out var given)) continue;
             if (field.Property.SetMethod is { IsPublic: true })
-                field.Property.SetValue(made, Read(given, field.Property.PropertyType, roster));
-            else if (field.Property.GetValue(made) is IList into && Read(given, field.Property.PropertyType, roster) is IList items)
+                field.Property.SetValue(made, Read(given, field.Property.PropertyType, roster, turn));
+            else if (field.Property.GetValue(made) is IList into && Read(given, field.Property.PropertyType, roster, turn) is IList items)
                 foreach (var item in items) into.Add(item);
         }
         return made;

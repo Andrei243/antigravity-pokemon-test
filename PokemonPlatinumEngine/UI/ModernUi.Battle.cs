@@ -63,6 +63,36 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(fighter, fight.X + (fight.Width - w) / 2f, fight.Y + fight.Height - 30, 26, Color.White, UiWeight.Black);
     }
 
+    /// <summary>
+    /// The waiting dots of a link battle (plan 28 · I3; style guide, "Battle panels", "Waiting for the other player"):
+    /// three discs of 9 units, 30 apart, the lit one red and the others the ink's grey, the light stepping on every
+    /// 0.4 s of the frame clock, in whole steps.
+    /// </summary>
+    public static void WaitingDots(float x, float y)
+    {
+        int lit = (int)(FrameClock.Now / 0.4) % 3;
+        for (int i = 0; i < 3; i++)
+            UiShapes.Circle(new System.Numerics.Vector2(x + i * 30, y), 9, i == lit ? Red : new Color(196, 200, 210, 255));
+    }
+
+    /// <summary>
+    /// VERSUS's curtain (plan 13 · V12; style guide, "Battle panels", "The curtain"): the whole picture under the
+    /// backdrop's teal, a panel 1100 by 420 in the middle with "Pass the controller to {player}" in Black 56, the other
+    /// told to look away in ExtraBold 34 Muted, and "Press A when you're ready" in Black 30 Red at its foot, with the
+    /// waiting dots beside it. Nothing of either side's battle shows through.
+    /// </summary>
+    public static void VersusCurtain(int sw, int sh, string next, string other)
+    {
+        Backdrop(sw, sh);
+        var r = new Rectangle(sw / 2f - 550, sh / 2f - 210, 1100, 420);
+        Panel(r, 40);
+        float x = r.X + 64, room = r.Width - 128;
+        DrawWrapped(Text.Of("versus.curtain.pass", ("player", next)), x, r.Y + 70, room, 56, Ink, 70, UiWeight.Black);
+        DrawWrapped(Text.Of("versus.curtain.lookAway", ("player", other)), x, r.Y + 190, room, 34, Muted, 46, UiWeight.ExtraBold);
+        UiFonts.Draw(Text.Of("versus.curtain.ready"), x, r.Y + r.Height - 96, 30, Red, UiWeight.Black);
+        WaitingDots(r.X + r.Width - 150, r.Y + r.Height - 78);
+    }
+
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;
@@ -222,6 +252,12 @@ internal static partial class ModernUi
                     // 22 above the message box, its right edge on the box's
                     // (the field's box stands taller under large text, the message box doesn't: plan 12 · Q8)
                     DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
+                break;
+            case BattleMenuState.Waiting:
+                // A link battle waits for the other player (plan 28 · I3; style guide, "Battle panels", "Waiting for the
+                // other player"): the line and three dots in turn where the arrow would be, nothing to press
+                MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), battle.WaitingLine, null, arrow: false);
+                WaitingDots(48 + MessageBoxWidth - 120, 858 + 172 - 46);
                 break;
             default:
                 // No arrow while a growth holds the lines (plan 25 · YD6): a press would do nothing then
