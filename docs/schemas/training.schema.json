@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The training club's tables: the drills' prizes (Data/training.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "drillPrizes": {
+      "type": "object",
+      "properties": {
+        "firstGold": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "stat": {
+                "enum": [
+                  "HP",
+                  "Attack",
+                  "Defense",
+                  "SpAttack",
+                  "SpDefense",
+                  "Speed",
+                  "Accuracy",
+                  "Evasion"
+                ]
+              },
+              "item": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "stat",
+              "item"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "everyGolds": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "golds": {
+                "type": "integer"
+              },
+              "item": {
+                "type": "string"
+              },
+              "afterHallOfFame": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "golds",
+              "item"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

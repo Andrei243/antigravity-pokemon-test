@@ -13254,6 +13254,68 @@ way 0
   + beaten anyone
 way 1, from answer 1
   * battle anyone and anyone with cheryl_eterna_forest Lost
+=== common.TrainingClerk
+from a trainer with lines of their own
+way -
+  Clerk> Welcome! The shelf behind me is for the club's training goods, but the club only stocks it for Champions.
+  Clerk> The drills are open to everyone, though. Talk to the Head Coach!
+=== common.TrainingCoach
+from a trainer with lines of their own
+way 0
+  Head Coach> Welcome to the training hall! Here a Pokémon builds up one stat at a time, and it doesn't cost a thing.
+  Head Coach> What'll it be today?
+  Head Coach> Who's training today?
+  Head Coach> Gold! Now that's how it's done!
+  Head Coach> And that gold has earned you something. Here!
+  > Lucas received the Protein!
+  Head Coach> Talk to me again whenever you want another drill.
+  ? What'll it be today? = A DRILL
+  * open ChoosePokemon
+  * open Training Turtwig Attack Gold +24
+  * fanfare FanfareItem
+way 3, from answer 1
+  Head Coach> Then keep moving, and come back when you're warmed up!
+  ? What'll it be today? = NOTHING
+way 2, from answer 1
+  Head Coach> Every drill trains one stat and lasts half a minute. Bronze puts 8 points of effort into it, silver 16, gold 24.
+  Head Coach> A stat holds 252 at most, and a Pokémon 510 in all. The effort counts the moment the drill is over.
+  Head Coach> And a stat's first gold earns you something from me. Keep winning golds, and there's more where that came from.
+  ? What'll it be today? = HOW IT WORKS
+way 1.0.0, from answer 1
+  Head Coach> Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to?
+  Head Coach> Whose effort is it?
+  Head Coach> Which effort shall go?
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? What'll it be today? = RESET EFFORT
+  ? Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to? = Yes
+  ? Which effort shall go? = ALL OF IT
+  * open ChoosePokemon
+way 1.0.2, from answer 3
+  Head Coach> No rush. Come back whenever you're ready.
+  ? Which effort shall go? = NEVER MIND
+way 1.0.1.0, from answer 3
+  Head Coach> Which stat's?
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which effort shall go? = ONE STAT'S
+  ? Which stat's? = HP
+way 1.0.1.5, from answer 4
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which stat's? = SPEED
+way 1.0.1.4, from answer 4
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which stat's? = SP. DEF
+way 1.0.1.3, from answer 4
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which stat's? = SP. ATK
+way 1.0.1.2, from answer 4
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which stat's? = DEFENSE
+way 1.0.1.1, from answer 4
+  Head Coach> There's nothing there to wipe! Train first, then come back.
+  ? Which stat's? = ATTACK
+way 1.1, from answer 2
+  Head Coach> No rush. Come back whenever you're ready.
+  ? Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to? = No
 === common.TrashCan
 from a trainer with lines of their own
 way -
@@ -32235,6 +32297,11 @@ way -
   + FLAG_RECEIVED_SUNYSHORE_CITY_HM07
   = VAR_SUNYSHORE_CITY_STATE 0 -> 3
   + seen sunyshore_city.Jasmine on the beach
+=== sunyshore_city.TrainingHallSign
+from the tile read at 880,740 of Sinnoh
+way -
+  Sign> SUNYSHORE TRAINING HALL
+  Sign> Drills for every Pokémon, free of charge. Train hard, train often!
 === sunyshore_city.WorkshopSign
 from the tile read at 871,762 of Sinnoh
 way -

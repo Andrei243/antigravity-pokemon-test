@@ -33,6 +33,7 @@ public class SchemaTests
         ("sound-map.schema.json", typeof(SoundMapFile), "The sound map (Data/audio/sound-map.json)"),
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
+        ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),
         // An open region's descriptions (plan 32 · OW2), read strictly by tools/OpenWorldBake
         ("open-world.schema.json", typeof(OpenWorldBake.OpenWorldFile), "An open region's world.json (Data/world3d/<region>/world.json)"),
         ("open-terrain.schema.json", typeof(OpenWorldBake.TerrainFile), "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)"),

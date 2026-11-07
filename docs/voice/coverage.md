@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1487 | 1445 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10864 | 10391 | 473 | 17 | 0 |
+| Scripts (`script:`) | 10890 | 10417 | 473 | 17 | 0 |
 | People of the world (`world:`) | 7953 | 7891 | 62 | 4 | 0 |
-| **All** | 20538 | 19958 | 580 | 22 | 0 |
+| **All** | 20564 | 19984 | 580 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,14 +22,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 805 |
+| a question's answers | 818 |
 | a sign | 1734 |
 | the game's own voice (speaker none) | 285 |
-| the game's own voice (text) | 1788 |
+| the game's own voice (text) | 1790 |
 
 ## The cast
 
-- Named characters: 438 voices (401 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 439 voices (402 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 245, with 740 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1909.
@@ -45,7 +45,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 647 | 20 |
 | `look:grunt (any)` | 595 | 0 |
 | `look:lady (any)` | 455 | 1 |
-| `look:clerk (any)` | 422 | 10 |
+| `look:clerk (any)` | 426 | 10 |
 | `look:youngster (any)` | 422 | 21 |
 | `look:lass (any)` | 354 | 11 |
 | `look:attendant (any)` | 321 | 12 |
@@ -246,6 +246,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:double_team (any)` | 20 | 0 |
 | `class:sis_and_bro (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
+| `head_coach` | 20 | 0 |
 | `juan` | 20 | 0 |
 | `look:announcer (any)` | 20 | 12 |
 | `look:camper (any)` | 20 | 0 |
