@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1365 | 1323 | 42 | 1 | 0 |
-| Scripts (`script:`) | 10413 | 9944 | 469 | 17 | 0 |
+| People of the hand-made maps (`map:`) | 1371 | 1329 | 42 | 1 | 0 |
+| Scripts (`script:`) | 10434 | 9965 | 469 | 17 | 0 |
 | People of the world (`world:`) | 7676 | 7614 | 62 | 4 | 0 |
-| **All** | 19688 | 19112 | 576 | 22 | 0 |
+| **All** | 19715 | 19139 | 576 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 250 |
-| a question's answers | 784 |
+| a question's answers | 787 |
 | a sign | 1672 |
 | the game's own voice (speaker none) | 285 |
 | the game's own voice (text) | 1695 |
@@ -32,7 +32,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 402 voices (365 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 241, with 728 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1898.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1909.
 
 ## Lines by voice
 
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1898 | 138 |
+| `@self` | 1909 | 138 |
 | `look:gentleman (any)` | 732 | 15 |
 | `rival` | 635 | 20 |
 | `look:grunt (any)` | 587 | 0 |
@@ -52,7 +52,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:nurse (any)` | 261 | 0 |
 | `look:gym_guide (any)` | 203 | 1 |
 | `look:scientist (any)` | 201 | 4 |
-| `look:receptionist (any)` | 179 | 23 |
+| `look:receptionist (any)` | 189 | 23 |
 | `cynthia` | 170 | 2 |
 | `class:ace_trainer (any)` | 160 | 0 |
 | `class:fisherman (any)` | 160 | 0 |
@@ -163,6 +163,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
 | `class:school_kid (any)` | 32 | 0 |
+| `look:battle_girl (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `prof_kukui` | 32 | 1 |
 | `roughneck` | 32 | 0 |
@@ -174,7 +175,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `captain` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
-| `look:battle_girl (any)` | 30 | 0 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `chairman` | 29 | 0 |
