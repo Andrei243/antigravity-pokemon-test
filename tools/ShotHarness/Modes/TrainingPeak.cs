@@ -72,7 +72,7 @@ partial class Harness
 
         // ---- The training club's clerk beside the Exchange Service Corner's south-east booth: a Bottle Cap for 48 BP
         game.State = GameState.Overworld;
-        At("BattleFrontier", 49, 43, Direction.Right);
+        At("BattleFrontier", 49, 45, Direction.Right);
         game.LocationSign.Hide();
         Frames(20);
         Talk(_ => 0, q => q.Contains("prize") ? "tr25_frontier_training_clerk" : null, _ => null);

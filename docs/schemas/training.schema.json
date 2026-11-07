@@ -68,6 +68,24 @@
         }
       },
       "additionalProperties": false
+    },
+    "battlePoints": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

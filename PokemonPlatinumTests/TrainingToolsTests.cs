@@ -93,11 +93,14 @@ public class TrainingToolsTests
         var host = new HeadlessScriptHost(story, new Party());
         foreach (int a in answers) host.Answers.Enqueue(a);
         var runner = new ScriptRunner(Scripts, host);
-        runner.Start(Scripts.Find(script, place)!, null);
+        runner.Start(Scripts.Find(script, place)!, Clerk);
         runner.RunToEnd();
         Assert.Empty(host.Problems);
         return host;
     }
+
+    /// <summary>The club's clerk on Sinnoh's Frontier grounds, whom her script faces the player from.</summary>
+    private static PokemonPlatinumEngine.Overworld.NPC Clerk => MapDatabase.Get("BattleFrontier").Everyone.Single(n => n.Script == "TrainingExchange");
 
     private static StoryState Champion()
     {
@@ -132,14 +135,14 @@ public class TrainingToolsTests
         host.Frontier.GivePoints(100);
         host.Answers.Enqueue(0);
         var runner = new ScriptRunner(Scripts, host);
-        runner.Start(Scripts.Find("TrainingExchange", "battle_frontier")!, null);
+        runner.Start(Scripts.Find("TrainingExchange", "battle_frontier")!, Clerk);
         runner.RunToEnd();
         Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Bottle Cap")!));
         Assert.Equal(52, host.Frontier.BattlePoints);
 
         // Too few points for a Gold Bottle Cap: nothing changes hands
         host.Answers.Enqueue(1);
-        runner.Start(Scripts.Find("TrainingExchange", "battle_frontier")!, null);
+        runner.Start(Scripts.Find("TrainingExchange", "battle_frontier")!, Clerk);
         runner.RunToEnd();
         Assert.Equal(0, host.Bag.GetQuantity(ItemDatabase.Get("Gold Bottle Cap")!));
         Assert.Equal(52, host.Frontier.BattlePoints);
@@ -178,7 +181,7 @@ public class TrainingToolsTests
     {
         var grounds = MapDatabase.Get("BattleFrontier");
         var sinnoh = grounds.Everyone.Single(n => n.Script == "TrainingExchange");
-        Assert.Equal((50, 43), (sinnoh.GridX, sinnoh.GridY));
+        Assert.Equal((50, 45), (sinnoh.GridX, sinnoh.GridY));
 
         var station = MapDatabase.Get("GearStation");
         Assert.Contains(station.Everyone, n => n.Script == "TrainingExchange");

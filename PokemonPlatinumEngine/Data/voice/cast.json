@@ -336,6 +336,10 @@
       "note": "first spoken at LumioseCity_LysandreLabs.txt(42)",
       "provisional": true
     },
+    "club_clerk": {
+      "note": "first spoken at common.txt(3750)",
+      "provisional": true
+    },
     "clyde": {
       "note": "first spoken at castelia_city_3.txt(18)",
       "provisional": true
@@ -1918,6 +1922,7 @@
     "Clerk": "look:clerk",
     "Clifton": "clifton",
     "Clothilde": "clothilde",
+    "Club Clerk": "club_clerk",
     "Clyde": "clyde",
     "Collector": "collector",
     "Colress": "colress",
