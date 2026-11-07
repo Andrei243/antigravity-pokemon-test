@@ -78,26 +78,106 @@ public sealed class SpeciesSources
     /// <summary>The species Hoenn must hold: Ruby's, Sapphire's and Emerald's National Pokédex, 1 to 386.</summary>
     public const int HighestInHoenn = 386;
 
-    private static SpeciesSources? hoenn;
-
     /// <summary>
     /// Hoenn's (plan 21 · H12, part c, D12a's check for a region's own game): its open areas and their scripts alone, with
-    /// the region's briefcase of three, read once. Hoenn has no hand-made rooms, and the tables of no area are Sinnoh's.
+    /// the region's briefcase of three, read once. The tables of no area are Sinnoh's.
     /// </summary>
-    public static SpeciesSources Hoenn
+    public static SpeciesSources Hoenn => Of(RegionDatabase.Hoenn);
+
+    /// <summary>FireRed's Kanto (plan 40 · GE1): the region's own game, as <see cref="Hoenn"/> is read.</summary>
+    public static SpeciesSources Kanto => Of(RegionDatabase.Kanto);
+
+    /// <summary>HeartGold's Johto, with HeartGold's Kanto that Johto's world holds (plan 40 · GE1).</summary>
+    public static SpeciesSources Johto => Of(RegionDatabase.Johto);
+
+    /// <summary>Black 2's Unova (plan 40 · GE1).</summary>
+    public static SpeciesSources Unova => Of(RegionDatabase.Unova);
+
+    private static readonly Dictionary<string, SpeciesSources> regions = new(StringComparer.OrdinalIgnoreCase);
+    private static SpeciesSources? everywhere;
+    private static List<World>? allWorlds;
+
+    private static List<World> Worlds => allWorlds ??= World.LoadAll();
+
+    /// <summary>
+    /// A region's own game with nobody else (plan 40 · GE1, the shape plan 21 · H12c gave Hoenn's): its open areas, its
+    /// rooms (a hand-made map of the region), their scripts and the common scripts named after the region
+    /// (<c>common.HoennKecleonFound</c>), its professor's three, the counters its own scripts and rooms open, and no table
+    /// of another region (Sinnoh's honey trees, Great Marsh, Underground, Game Corner and Battle Frontier). Sinnoh's is
+    /// <see cref="Sinnoh"/>, read as plan 03 · D12a read it. Read once; what a later region's last session runs (plans 23,
+    /// 33 and 34). Null-safe: a region with no world gives nothing.
+    /// </summary>
+    public static SpeciesSources Of(string region)
+    {
+        if (string.Equals(region, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase)) return Sinnoh;
+        lock (loading)
+        {
+            if (regions.TryGetValue(region, out var known)) return known;
+            var world = Worlds.FirstOrDefault(w => string.Equals(w.Index.Region, region, StringComparison.OrdinalIgnoreCase));
+            var own = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var rooms = new List<MapFile>();
+            if (world != null)
+            {
+                own.UnionWith(world.Index.Areas);
+                own.UnionWith(world.Index.Maps.Select(m => m.Name));
+                foreach (var room in Rooms())
+                    if (string.Equals(RegionDatabase.RegionOfMap(room.Name)?.Id, region, StringComparison.OrdinalIgnoreCase))
+                    {
+                        rooms.Add(room);
+                        own.Add(room.Name);
+                    }
+            }
+            var starters = RegionDatabase.Get(region)?.Starters ?? Array.Empty<string>();
+            var found = Gather(world == null ? new List<World>() : new List<World> { world }, null, ScriptLibrary.Default, rooms,
+                s => own.Contains(s.File) || OwnCommon(s, region), starters.Select(s => (s, "the professor's three")), ownCounters: true);
+            return regions[region] = Make(found, HighestOf(region));
+        }
+    }
+
+    /// <summary>
+    /// Every region's ways together (plan 40 · GE1): every world, every room, every script, Sinnoh's tables that belong to
+    /// no area, every region's three and every counter. What <c>NationalSpeciesTests</c> holds the National Pokédex to.
+    /// </summary>
+    public static SpeciesSources Everywhere
     {
         get
         {
             lock (loading)
             {
-                if (hoenn != null) return hoenn;
-                var world = World.LoadAll().First(w => string.Equals(w.Index.Region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase));
-                var own = world.Index.Areas.ToHashSet(StringComparer.OrdinalIgnoreCase);
-                var starters = RegionDatabase.Get(RegionDatabase.Hoenn)?.Starters ?? Array.Empty<string>();
-                return hoenn = Of(world, ScriptLibrary.Default, Array.Empty<MapFile>(), HighestInHoenn, own.Contains,
-                    starters.Select(s => (s, "the professor's bag")), noAreaTables: true);
+                if (everywhere != null) return everywhere;
+                var worlds = Worlds;
+                var sinnohWorld = worlds.FirstOrDefault(w => string.Equals(w.Index.Region, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase));
+                var given = RegionDatabase.All.SelectMany(r => r.Starters.Select(s => (s, $"{r.Id}'s professor's three")));
+                var found = Gather(worlds, sinnohWorld, ScriptLibrary.Default, Rooms().ToList(), _ => true, given, ownCounters: false);
+                return everywhere = Make(found, PokemonDatabase.GetAll().Max(s => s.DexNumber));
             }
         }
+    }
+
+    /// <summary>A common script that is one region's own: named after it (<c>HoennKecleonFound</c>, <c>UnovaCatchUp</c>).</summary>
+    private static bool OwnCommon(Script s, string region) =>
+        s.File == "common" && s.Name.StartsWith(region, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The highest National number of a region's own Pokédex (its pool's reach, which only Sinnoh's park reads).</summary>
+    private static int HighestOf(string region)
+    {
+        var dexes = RegionDatabase.Get(region)?.Dexes ?? Array.Empty<string>();
+        var numbers = PokemonDatabase.GetAll().Where(s => s.DexNumbers != null && dexes.Any(s.DexNumbers.ContainsKey)).Select(s => s.DexNumber).ToList();
+        return numbers.Count == 0 ? 0 : numbers.Max();
+    }
+
+    /// <summary>
+    /// The species of a region's own Pokédex (every regional Pokédex its file names, in their order, each species once),
+    /// what its check holds to <see cref="Of(string)"/>.
+    /// </summary>
+    public static IReadOnlyList<string> DexOf(string region)
+    {
+        var list = new List<string>();
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        foreach (string dex in RegionDatabase.Get(region)?.Dexes ?? Array.Empty<string>())
+            foreach (var s in PokemonDatabase.GetAll().Where(s => s.DexNumbers != null && s.DexNumbers.ContainsKey(dex)).OrderBy(s => s.DexNumbers![dex]))
+                if (seen.Add(s.Name)) list.Add(s.Name);
+        return list;
     }
 
     /// <summary>The rooms' map files, read as the game reads them.</summary>
@@ -113,7 +193,14 @@ public sealed class SpeciesSources
     public static SpeciesSources Of(World world, ScriptLibrary scripts, IEnumerable<MapFile> rooms, int highest = HighestInSinnoh,
         Func<string, bool>? scriptFile = null, IEnumerable<(string Species, string Way)>? given = null, bool noAreaTables = false)
     {
-        var found = Gather(world, scripts, rooms.ToList(), scriptFile ?? (_ => true), given, noAreaTables);
+        var file = scriptFile ?? (_ => true);
+        var found = Gather(new List<World> { world }, noAreaTables ? null : world, scripts, rooms.ToList(), s => file(s.File), given,
+            ownCounters: false);
+        return Make(found, highest);
+    }
+
+    private static SpeciesSources Make(Found found, int highest)
+    {
         var pool = PokemonDatabase.GetAll().Where(s => s.DexNumber >= 1 && s.DexNumber <= highest && !found.ways.ContainsKey(s.Name))
             .OrderBy(s => s.DexNumber).Select(s => s.Name).ToList();
         var sources = new SpeciesSources(pool);
@@ -147,21 +234,48 @@ public sealed class SpeciesSources
         }
     }
 
-    private static Found Gather(World world, ScriptLibrary scripts, List<MapFile> rooms, Func<string, bool> scriptFile,
-        IEnumerable<(string Species, string Way)>? given, bool noAreaTables)
+    /// <summary>
+    /// What the worlds, rooms and scripts give. <paramref name="tablesOf"/> is the world whose tables of no area count
+    /// (Sinnoh's honey trees, Great Marsh, Trophy Garden and Feebas, with its Game Corner and Underground), null for none;
+    /// <paramref name="ownCounters"/> counts only the counters the scripts and rooms read here open (and no Battle
+    /// Points' exchange, which is Sinnoh's Battle Frontier), where false counts every counter of <c>marts.json</c>.
+    /// </summary>
+    private static Found Gather(IReadOnlyList<World> worlds, World? tablesOf, ScriptLibrary scripts, List<MapFile> rooms,
+        Func<Script, bool> scriptOf, IEnumerable<(string Species, string Way)>? given, bool ownCounters)
     {
         var f = new Found();
         // What the region hands over by no script (its briefcase of three)
         foreach (var (species, way) in given ?? Array.Empty<(string, string)>()) f.Species(species, way);
 
         // The open areas: their wild tables, our own species once the National Pokédex is had, their items and places
+        var openAreas = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var world in worlds)
         foreach (string key in world.Index.Areas)
         {
+            openAreas.Add(key);
             var area = world.Area(key);
             var overlay = world.Overlay(key);
             if (area != null)
             {
                 foreach (var e in area.Land ?? new()) f.Species(e.Species, $"{key}: grass", true);
+                // (HeartGold's morning slot is the entry's own species; its day and night ones are beside it, plan 20 · J2)
+                foreach (var e in area.Land ?? new()) f.Species(e.Day, $"{key}: grass by day", true);
+                foreach (var e in area.Land ?? new()) f.Species(e.Night, $"{key}: grass at night", true);
+                // Black 2's dark grass (plan 22 · U4) and the seasons' tables; the shaking grass and rippling water wait
+                // for plan 10 · F12's patches, so they give nothing yet
+                foreach (var e in area.DarkGrass ?? new()) f.Species(e.Species, $"{key}: dark grass", true);
+                foreach (var s in area.Seasons ?? new())
+                {
+                    foreach (var e in s.Land ?? new()) f.Species(e.Species, $"{key}: grass in {s.Season}", true);
+                    foreach (var e in s.DarkGrass ?? new()) f.Species(e.Species, $"{key}: dark grass in {s.Season}", true);
+                    foreach (var e in s.Water ?? new()) f.Species(e.Species, $"{key}: surfing in {s.Season}", true);
+                    foreach (var e in s.SuperRod ?? new()) f.Species(e.Species, $"{key}: the Super Rod in {s.Season}", true);
+                }
+                // HeartGold's swarms on the water and on a rod, and the Pokégear's two Sounds (plan 20 · J3, J13)
+                f.Species(area.SurfSwarm, $"{key}: a swarm on the water", true);
+                f.Species(area.FishSwarm, $"{key}: a swarm on a rod", true);
+                foreach (string s in area.HoennSounds ?? new()) f.Species(s, $"{key}: the Hoenn Sound", true);
+                foreach (string s in area.SinnohSounds ?? new()) f.Species(s, $"{key}: the Sinnoh Sound", true);
                 foreach (var e in (area.LandSets ?? new()).SelectMany(s => s)) f.Species(e.Species, $"{key}: grass on its day", true);
                 foreach (string s in area.Day ?? new()) f.Species(s, $"{key}: grass by day", true);
                 foreach (string s in area.Night ?? new()) f.Species(s, $"{key}: grass at night", true);
@@ -196,10 +310,19 @@ public sealed class SpeciesSources
             foreach (string site in room.EvolutionSites ?? new()) f.sites.Add(site);
         }
 
+        // Black 2's Hidden Grottoes (plan 22 · U11), in the open areas they open from
+        if (worlds.Any(w => string.Equals(w.Index.Region, RegionDatabase.Unova, StringComparison.OrdinalIgnoreCase)))
+            foreach (var g in HiddenGrottoes.All.Where(g => openAreas.Contains(g.Area)))
+                foreach (var e in g.Table)
+                {
+                    if (e.IsPokemon) f.Species(e.Species, $"{g.Area}: a Hidden Grotto", true);
+                    else f.Item(e.Item, $"{g.Area}: a Hidden Grotto");
+                }
+
         // The tables that belong to no one area (plan 06 · R13)
-        var tables = world.Encounters;
-        if (!noAreaTables)
+        if (tablesOf != null)
         {
+            var tables = tablesOf.Encounters;
             foreach (string s in tables.HoneyTrees.Common.Concat(tables.HoneyTrees.Uncommon).Concat(tables.HoneyTrees.Rare)) f.Species(s, "a honey tree", true);
             foreach (string s in tables.GreatMarsh.Local.Concat(tables.GreatMarsh.National)) f.Species(s, "the Great Marsh", true);
             foreach (string s in tables.TrophyGarden) f.Species(s, "the Trophy Garden", true);
@@ -208,7 +331,8 @@ public sealed class SpeciesSources
 
         // What the scripts hand over, battle or sell
         bool revives = false;
-        foreach (var script in scripts.All.Where(s => scriptFile(s.File)))
+        var counters = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var script in scripts.All.Where(scriptOf))
             foreach (var i in script.Everything())
             {
                 string where = script.FullName;
@@ -221,17 +345,32 @@ public sealed class SpeciesSources
                     case Op.Trade: f.Species(NpcTrades.Get(i.Name)?.Gives, $"{where}: a trade"); break;
                     case Op.Give or Op.AddItem or Op.Find: f.Item(i.Name, $"{where}: given"); break;
                     case Op.Fossil when i.Name == "revive": revives = true; break;
+                    case Op.Shop when !string.IsNullOrEmpty(i.Name): counters.Add(i.Name); break;
+                    // Join Avenue's shops, at every rank (plan 22 · U11)
+                    case Op.JoinAvenue when i.Name == "shop":
+                        for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)
+                            if (JoinAvenue.StockOf(i.Other ?? "", rank) is { } stock) counters.Add(stock);
+                        break;
+                    // The Bug-Catching Contest's catch is kept (plan 15 · E5), every day's table
+                    case Op.BugContest:
+                        foreach (var slot in BugContestVenue.NationalPark.Encounters.SelectMany(t => t))
+                            f.Species(slot.Species, $"{where}: the Bug-Catching Contest", true);
+                        break;
                 }
             }
+        foreach (var room in rooms)
+            foreach (var n in room.Npcs)
+                if (!string.IsNullOrEmpty(n.Mart)) counters.Add(n.Mart);
 
         // The shops, the prize counters and the Underground's walls (a thing either trainer number can dig)
         foreach (var m in MartDatabase.Common) f.Item(m.Item, "a Poké Mart");
         foreach (var (counter, list) in MartDatabase.Specialties)
-            foreach (string item in list) f.Item(item, $"the counter {counter}");
-        foreach (var prize in FrontierDatabase.ExchangeItems) f.Item(prize.Item, "the Battle Points' exchange");
+            if (!ownCounters || counters.Contains(counter))
+                foreach (string item in list) f.Item(item, $"the counter {counter}");
+        if (!ownCounters) foreach (var prize in FrontierDatabase.ExchangeItems) f.Item(prize.Item, "the Battle Points' exchange");
         // (Veilstone's Game Corner and the Underground are Sinnoh's: a region's own game asked without them has none)
-        if (!noAreaTables) foreach (var (item, _) in Models.GameCornerPrizes.All) f.Item(item, "the Game Corner's prizes");
-        if (!noAreaTables) foreach (var o in UndergroundDatabase.Objects)
+        if (tablesOf != null) foreach (var (item, _) in Models.GameCornerPrizes.All) f.Item(item, "the Game Corner's prizes");
+        if (tablesOf != null) foreach (var o in UndergroundDatabase.Objects)
             if (o.Odd + o.OddNational > 0 && o.Even + o.EvenNational > 0
                 && Enumerable.Range(1, UndergroundDatabase.TreasureEnd - 1).Select(UndergroundDatabase.Treasure).FirstOrDefault(t => t?.Id == o.Id) is { Item: { } dug })
                 f.Item(dug, "the Underground's walls");

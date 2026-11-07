@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Data;
 using Xunit;
@@ -8,7 +9,8 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Plan 21 · H12, part c: plan 03 · D12a's check for Hoenn's own game. Every species of Emerald's Hoenn Pokédex can be had
 /// in Hoenn with nobody else, from its open areas, its scripts and the professor's bag (<see cref="SpeciesSources.Hoenn"/>),
-/// but those the list below owes to a later session, each with the reason; a way lost or a way given shows here.
+/// but those the list below owes to a later session, each with who owes it (plan 40 · GE1 gave the list its owners and
+/// the shape every region's check shares, <see cref="RegionSpeciesCheck"/>); a way lost or a way given shows here.
 /// </summary>
 public class HoennSpeciesTests
 {
@@ -23,18 +25,27 @@ public class HoennSpeciesTests
     /// What the Hoenn Pokédex has that nothing in Hoenn gives yet, and who owes it (plan 21's status, H12's "Left"). A
     /// session that gives one of them a way takes it off this list.
     /// </summary>
-    public static readonly string[] Owed =
+    public static readonly Dictionary<string, string> Owed = new()
     {
-        // Ruby's and Sapphire's, which Emerald's tables leave out (Emerald had them by trade): a dual slot or the
-        // migration's, as plan 03 · D12a decided for Sinnoh
-        "Meditite", "Medicham", "Roselia", "Zangoose", "Lunatone",
-        // Emerald's mass outbreak, which its television announces: Hoenn has no swarms yet
-        "Surskit", "Masquerain",
+        // Ruby's and Sapphire's, which Emerald's tables leave out (Emerald had them by trade): placed in their own places
+        ["Meditite"] = "GE3: Ruby's and Sapphire's, in their own places", ["Medicham"] = "GE3: Ruby's and Sapphire's, in their own places",
+        ["Roselia"] = "GE3: Ruby's and Sapphire's, in their own places", ["Zangoose"] = "GE3: Ruby's and Sapphire's, in their own places",
+        ["Lunatone"] = "GE3: Ruby's and Sapphire's, in their own places",
+        // Emerald's mass outbreak, which its television announces
+        ["Surskit"] = "plan 38 · EX1: Hoenn's television outbreak", ["Masquerain"] = "plan 38 · EX1: Hoenn's television outbreak",
         // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
-        "Alakazam", "Golem", "Machamp", "Kingdra", "Huntail", "Gorebyss",
+        ["Alakazam"] = "GE3: a Linking Cord in Hoenn", ["Golem"] = "GE3: a Linking Cord in Hoenn",
+        ["Machamp"] = "GE3: a Linking Cord in Hoenn", ["Kingdra"] = "GE3: a Linking Cord in Hoenn",
+        ["Huntail"] = "GE3: a Linking Cord in Hoenn", ["Gorebyss"] = "GE3: a Linking Cord in Hoenn",
         // Route 119's Feebas tiles, not built for Hoenn
-        "Feebas", "Milotic"
+        ["Feebas"] = "plan 38 · EX4: Route 119's Feebas", ["Milotic"] = "plan 38 · EX4: Route 119's Feebas",
         // (Jirachi, which no island of decision 5 gave, wakes in Steven's cave since plan 29 · LS11c)
+    };
+
+    /// <summary>The items and places Hoenn's evolutions ask for that nothing in Hoenn gives, and who owes each.</summary>
+    public static readonly Dictionary<string, string> OwedNeeds = new()
+    {
+        ["Linking Cord"] = "GE3: a Linking Cord in Hoenn",
     };
 
     [Fact]
@@ -61,10 +72,15 @@ public class HoennSpeciesTests
     {
         var dex = HoennDex;
         Assert.Equal(202, dex.Length);
-        var missing = dex.Where(s => !Hoenn.Has(s)).ToList();
-        var lost = missing.Except(Owed).ToList();
-        var given = Owed.Where(Hoenn.Has).Select(s => $"{s} ({Hoenn.Ways[s]})").ToList();
-        Assert.True(lost.Count == 0 && given.Count == 0,
-            $"Nothing in Hoenn gives: {string.Join(", ", lost.Select(s => $"\"{s}\""))}. Now given: {string.Join(", ", given)}");
+        Assert.Equal(dex, SpeciesSources.DexOf(RegionDatabase.Hoenn));
+        var problems = RegionSpeciesCheck.Problems(Hoenn, dex, Owed);
+        Assert.True(problems.Count == 0, string.Join("\n", problems));
+    }
+
+    [Fact]
+    public void EveryItemAndPlaceHoennsEvolutionsAskForIsInHoennButWhatIsOwed()
+    {
+        var problems = RegionSpeciesCheck.NeedProblems(Hoenn, HoennDex, OwedNeeds);
+        Assert.True(problems.Count == 0, string.Join("\n", problems));
     }
 }
