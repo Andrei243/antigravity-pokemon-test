@@ -166,7 +166,8 @@ public class AlolaUlaulaTests
         Assert.Equal(42, Story());
         foreach (string den in new[] { "Den1", "Den2", "Den3" })
             Play("HokulaniObservatory", den, "HokulaniObservatory", "den_" + den[^1]);
-        Play("HokulaniObservatory", "Totem", "HokulaniObservatory", "totem");
+        // Fought as a totem since wave 91 (plan 23 · Z6's totem battles): the aura, a Charjabug at its first call
+        Assert.Contains(Play("HokulaniObservatory", "Totem", "HokulaniObservatory", "totem").Log, l => l.StartsWith("totembattle Togedemaru 24 Defense+1 ally Charjabug"));
         Assert.Equal(43, Story());
         Assert.Equal(1, Count("Electrium Z"));
         // Tapu Village: Acerola, the Megamart's trial, Mudsdale
@@ -178,7 +179,7 @@ public class AlolaUlaulaTests
         Play("ThriftyMegamart", "OnEnter", "ThriftyMegamart");
         foreach (string den in new[] { "Den1", "Den2", "Den3" })
             Play("ThriftyMegamart", den, "ThriftyMegamart", "den_" + den[^1]);
-        Play("ThriftyMegamart", "Totem", "ThriftyMegamart", "totem");
+        Assert.Contains(Play("ThriftyMegamart", "Totem", "ThriftyMegamart", "totem").Log, l => l.StartsWith("totembattle Mimikyu 25 ") && l.Contains("ally Haunter"));
         Assert.Equal(45, Story());
         Assert.Equal(1, Count("Ghostium Z"));
         // Po Town: Plumeria, the manor, Guzma, Nanu's grand trial
@@ -211,7 +212,7 @@ public class AlolaUlaulaTests
         Assert.True(story.Has("FLAG_ALOLA_CANYON_TRIAL"));
         foreach (string den in new[] { "Den1", "Den2", "Den3" })
             Play("vast_poni_canyon", den, "VastPoniCanyon", "den_" + den[^1]);
-        Play("vast_poni_canyon", "Totem", "VastPoniCanyon", "totem");
+        Assert.Contains(Play("vast_poni_canyon", "Totem", "VastPoniCanyon", "totem").Log, l => l.StartsWith("totembattle Kommo-o 47 ") && l.Contains("ally Hakamo-o"));
         Assert.Equal(50, Story());
         Assert.Equal(1, Count("Dragonium Z"));
         // Hapu's grand trial across the strait, and the Altar

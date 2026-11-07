@@ -3,6 +3,7 @@
   "area": "vast_poni_canyon",
   "bgmTrack": "alola/trial",
   "trees": "Round",
+  "callsForHelp": true,
   "people": {
     "dulse": {
       "name": "Dulse",
