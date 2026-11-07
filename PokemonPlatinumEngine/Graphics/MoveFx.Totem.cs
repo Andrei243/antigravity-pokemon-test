@@ -11,8 +11,8 @@ namespace PokemonPlatinumEngine.Graphics;
 // only the glow added, so it keeps its gold over a bright field. A pure function of the battle's clock and the place.
 internal static partial class MoveFx
 {
-    /// <summary>The most a totem's aura draws: six wisps, three of them with a glow, the glow underfoot and a glint.</summary>
-    public const int TotemCap = 11;
+    /// <summary>The most a totem's aura draws: six wisps, each with a glow, the glow underfoot and a glint.</summary>
+    public const int TotemCap = 14;
 
     /// <summary>How long one wisp is on its way up the body, and how long the aura takes to come up as the line is read.</summary>
     public const float TotemWispTime = 1.6f, TotemRise = 0.5f;
@@ -47,9 +47,9 @@ internal static partial class MoveFx
             // Up the edge of the body, leaning in as it rises, fading in and out on its way
             var p = feet + new Vector3(side * w * (1.05f - 0.35f * u), h * (0.08f + 0.85f * u), h * 0.05f * Fx.Signed(seed, i, 612));
             float a = k * MathF.Sin(u * MathF.PI);
-            float size = h * (0.11f - 0.04f * u);
-            fx.Sprite(FxShape.Wisp, p, size, Fx.Fade(i % 3 == 0 ? TotemEmber : TotemGold, a * 0.85f), FxBlend.Alpha, side * 0.3f);
-            if (i % 2 == 0) fx.Sprite(FxShape.Glow, p, size * 1.4f, Fx.Fade(TotemHalo, a * 0.35f));
+            float size = h * (0.17f - 0.05f * u);
+            fx.Sprite(FxShape.Wisp, p, size, Fx.Fade(i % 3 == 0 ? TotemEmber : TotemGold, a), FxBlend.Alpha, side * 0.3f);
+            fx.Sprite(FxShape.Glow, p, size * 1.5f, Fx.Fade(TotemHalo, a * 0.45f));
         }
         // A glint over the head for a fifth of a second once in each round
         float t = Loop(time / 2.2f + Fx.Rand(seed, 0, 613));
