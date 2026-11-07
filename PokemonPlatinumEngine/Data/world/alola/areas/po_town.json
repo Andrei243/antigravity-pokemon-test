@@ -111,7 +111,7 @@
   ],
   "signs": [
     {
-      "x": 238,
+      "x": 230,
       "z": 124,
       "type": 0,
       "script": "TownSign"

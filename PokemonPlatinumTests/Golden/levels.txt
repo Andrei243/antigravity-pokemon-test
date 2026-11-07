@@ -186,6 +186,9 @@ trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngste
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== aether_paradise
+Aether Paradise
+trainers 1, 40: alola_aether_employee_ito 40
 === akala_route_4
 Route 4
 grass 11-13
@@ -209,6 +212,10 @@ trainers 4, 13-14: alola_ace_trainer_makoa 14, alola_hiker_keola 13, alola_lass_
 === altering_cave
 Altering Cave
 grass 6-16
+=== ancient_poni_path
+Ancient Poni Path
+grass 40-42
+trainers 3, 40-42: alola_ace_trainer_kapono 42, alola_psychic_anuenue 42, alola_ruin_maniac_hoku 41
 === aqua_hideout_1f
 Aqua Hideout
 trainers 1, 32: hoenn_grunt_aqua_hideout_1 32
@@ -540,6 +547,10 @@ old rod 5-10
 good rod 10-30
 super rod 30-45
 ours Heartreef 140-144
+=== exeggutor_island
+Exeggutor Island
+grass 44-46
+trainers 2, 46: alola_ace_trainer_iolana 46, alola_dragon_tamer_keawe 46
 === fiery_path
 Fiery Path
 grass 14-16
@@ -1260,6 +1271,10 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== lanakila_foot
+Foot of Mount Lanakila
+grass 52-54
+trainers 2, 54: alola_ace_trainer_ailani 54, alola_ace_trainer_nohea 54
 === lavaridge_town_gym_1f
 Lavaridge Town
 trainers 4, 23: hoenn_axle 23, hoenn_cole 23, hoenn_danielle 23, hoenn_gerald 23
@@ -1402,6 +1417,14 @@ trainers 4, 26-32: hoenn_grunt_space_center_1 32, hoenn_grunt_space_center_2 30,
 === mossdeep_city_space_center_2f
 Mossdeep City
 trainers 1, 36-40: hoenn_tabitha_mossdeep 40
+=== mount_hokulani
+Mount Hokulani
+grass 19-21
+trainers 4, 20-22: alola_ace_trainer_hiwa 21, alola_backpacker_noa 20, alola_hiker_pono 21, alola_scientist_kuhio 22
+=== mount_lanakila
+Mount Lanakila
+grass 52-54
+trainers 4, 53-55: alola_ace_trainer_hina 54, alola_ace_trainer_ioane 54, alola_dragon_tamer_pua 55, alola_veteran_kaeo 55
 === mount_moon
 Mt. Moon
 grass 6-12
@@ -1791,6 +1814,10 @@ trainers 2, 45-50: unova_team_plasma_grunt_49 45, unova_team_plasma_zinzolin 50
 === plasma_frigate_7
 Plasma Frigate
 trainers 4, 45-47: unova_team_plasma_grunt_52 47, unova_team_plasma_grunt_53 47, unova_team_plasma_grunt_54 47, unova_team_plasma_grunt_59 45
+=== po_town
+Po Town
+grass 27-29
+trainers 3, 28-30: alola_team_skull_grunt_po1 29, alola_team_skull_grunt_po2 29, alola_team_skull_grunt_po3 30
 === pokemon_league
 Pokémon League
 surf 30-50
@@ -1838,6 +1865,15 @@ trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26,
 === pokemon_village
 Pokémon Village
 grass 46-48
+=== poni_breakers
+Poni Breakers
+grass 43-45
+surf 43-45
+trainers 4, 43-45: alola_fisherman_nuka 44, alola_psychic_maile 45, alola_swimmer_kekoa 44, alola_veteran_loio 45
+=== poni_wilds
+Poni Wilds
+grass 38-41
+trainers 4, 40-42: alola_ace_trainer_pele 42, alola_backpacker_nani 42, alola_hiker_makoa 41, alola_ranger_leilani 40
 === power_plant
 Power Plant
 grass 22-35
@@ -3535,6 +3571,23 @@ old rod 5
 good rod 5-15
 super rod 15-35
 ours Lancerow 104-108, Porrigard 101-105, Slowmantle 120-124, Ammonarch 120-124
+=== ulaula_route_10
+Route 10
+grass 17-19
+trainers 4, 17-20: alola_ace_trainer_kai 20, alola_hiker_kalani 19, alola_lass_leilene 18, alola_youngster_makana 18
+=== ulaula_route_12
+Route 12
+grass 21-22
+surf 20-22
+trainers 5, 20-22: alola_ace_trainer_nalo 22, alola_fisherman_loke 21, alola_hiker_wana 22, alola_pokemon_breeder_lani 22, alola_rancher_kalei 22
+=== ulaula_route_13
+Route 13
+grass 23-25
+trainers 3, 23-24: alola_ace_trainer_makalii 24, alola_backpacker_keala 23, alola_hiker_akoni 24
+=== ulaula_route_16
+Route 16
+grass 26-27
+trainers 4, 25-28: alola_pokemon_breeder_hoku 26, alola_team_skull_grunt_ula1 26, alola_team_skull_grunt_ula2 27, alola_team_skull_grunt_ula3 28
 === undella_bay
 Undella Bay
 surf 25-40
@@ -3766,6 +3819,10 @@ super rod 20-55
 === valor_lakefront
 Valor Lakefront
 grass 25-28
+=== vast_poni_canyon
+Vast Poni Canyon
+grass 44-46
+trainers 2, 45-46: alola_dragon_tamer_kaoni 46, alola_hiker_nalani 45
 === veilstone_city
 Veilstone City
 trainers 2, 24-26: galactic_grunt_veilstone_city_1 26, galactic_grunt_veilstone_city_2 26

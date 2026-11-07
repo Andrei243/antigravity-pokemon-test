@@ -10,8 +10,16 @@
       "note": "first spoken at route_210_south.txt(87)",
       "provisional": true
     },
+    "acerola": {
+      "note": "first spoken at AlolaLeague_AcerolaRoom.txt(8)",
+      "provisional": true
+    },
     "admin": {
       "note": "first spoken at five_island_rocket_warehouse.txt(15)",
+      "provisional": true
+    },
+    "aether_guard": {
+      "note": "first spoken at aether_paradise.txt(81)",
       "provisional": true
     },
     "agatha": {
@@ -427,6 +435,10 @@
       "note": "first spoken at opelucid_city.txt(101)",
       "provisional": true
     },
+    "dulse": {
+      "note": "first spoken at poni_wilds.txt(8)",
+      "provisional": true
+    },
     "dusty": {
       "note": "first spoken at cinnabar_island_gym.txt(95)",
       "provisional": true
@@ -589,12 +601,20 @@
       "note": "first spoken at ShalourCity_TowerOfMastery.txt(15)",
       "provisional": true
     },
+    "guzma": {
+      "note": "first spoken at SkullManor.txt(29)",
+      "provisional": true
+    },
     "gym_trainer": {
       "note": "first spoken at goldenrod.txt(163)",
       "provisional": true
     },
     "hala": {
       "note": "first spoken at iki_town.txt(40)",
+      "provisional": true
+    },
+    "hapu": {
+      "note": "first spoken at exeggutor_island.txt(8)",
       "provisional": true
     },
     "harlequin": {
@@ -694,6 +714,10 @@
       "provisional": true
     },
     "jupiter": {},
+    "kahili": {
+      "note": "first spoken at AlolaLeague_KahiliRoom.txt(8)",
+      "provisional": true
+    },
     "kalos_grant": {
       "note": "first spoken at CyllageCity_Gym.txt(10)",
       "provisional": true
@@ -852,12 +876,20 @@
       "note": "first spoken at BattlePikeRoom.txt(140)",
       "provisional": true
     },
+    "lusamine": {
+      "note": "first spoken at AetherParadise_Office.txt(18)",
+      "provisional": true
+    },
     "lydia": {
       "note": "first spoken at phone.txt(273)",
       "provisional": true
     },
     "lysandre": {
       "note": "first spoken at LumioseCity_LysandreCafe.txt(16)",
+      "provisional": true
+    },
+    "machamp": {
+      "note": "first spoken at seafolk_village.txt(32)",
       "provisional": true
     },
     "machop": {
@@ -1040,6 +1072,10 @@
       "note": "first spoken at chargestone_cave_2.txt(40)",
       "provisional": true
     },
+    "nanu": {
+      "note": "first spoken at ShadyHouse.txt(9)",
+      "provisional": true
+    },
     "naoko": {
       "note": "first spoken at ecruteak_dance_theater.txt(85)",
       "provisional": true
@@ -1071,6 +1107,10 @@
     },
     "old_lady": {
       "note": "first spoken at route_111_old_ladys_rest_stop.txt(7)",
+      "provisional": true
+    },
+    "olivia": {
+      "note": "first spoken at AlolaLeague_OliviaRoom.txt(8)",
       "provisional": true
     },
     "olympia": {
@@ -1127,6 +1167,10 @@
     },
     "pilot": {
       "note": "first spoken at nature_preserve.txt(11)",
+      "provisional": true
+    },
+    "plumeria": {
+      "note": "first spoken at po_town.txt(13)",
       "provisional": true
     },
     "policeman": {
@@ -1212,6 +1256,10 @@
     },
     "ramos": {
       "note": "first spoken at CoumarineCity_Gym.txt(11)",
+      "provisional": true
+    },
+    "rancher_moke": {
+      "note": "first spoken at tapu_village.txt(34)",
       "provisional": true
     },
     "red": {
@@ -1418,6 +1466,10 @@
       "note": "first spoken at fallarbor_town_mart.txt(5)",
       "provisional": true
     },
+    "skull_grunt": {
+      "note": "first spoken at SkullManor.txt(8)",
+      "provisional": true
+    },
     "skyla": {
       "note": "first spoken at mistralton_city.txt(48)",
       "provisional": true
@@ -1428,6 +1480,10 @@
     },
     "socialite": {
       "note": "first spoken at FightAreaPokeMart.txt(9)",
+      "provisional": true
+    },
+    "sophocles": {
+      "note": "first spoken at HokulaniObservatory.txt(17)",
       "provisional": true
     },
     "stall_keeper": {
@@ -1617,6 +1673,10 @@
       "note": "first spoken at goldenrod_gym.txt(11)",
       "provisional": true
     },
+    "wicke": {
+      "note": "first spoken at aether_paradise.txt(17)",
+      "provisional": true
+    },
     "wife": {
       "note": "first spoken at floccesy_ranch_2.txt(70)",
       "provisional": true
@@ -1671,7 +1731,9 @@
     "Aaron": "aaron",
     "Abigail": "abigail",
     "Ace Trainer": "ace_trainer",
+    "Acerola": "acerola",
     "Admin": "admin",
+    "Aether Guard": "aether_guard",
     "Agatha": "agatha",
     "Aide": "look:aide",
     "Alder": "alder",
@@ -1786,6 +1848,7 @@
     "Drake": "drake",
     "Drasna": "drasna",
     "Drayden": "drayden",
+    "Dulse": "dulse",
     "Dusty": "dusty",
     "Dylan": "dylan",
     "Edwin": "edwin",
@@ -1836,9 +1899,11 @@
     "Guide Gent": "guide_gent",
     "Guitarist": "look:guitarist",
     "Gurkinn": "gurkinn",
+    "Guzma": "guzma",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
     "Hala": "hala",
+    "Hapu": "hapu",
     "Harlequin": "harlequin",
     "Hau": "hau",
     "Herbalist": "herbalist",
@@ -1865,6 +1930,7 @@
     "Joey": "joey",
     "Juan": "juan",
     "Jupiter": "jupiter",
+    "Kahili": "kahili",
     "Kanto Attendant": "kanto_attendant",
     "Karate Master": "karate_master",
     "Karen": "karen",
@@ -1905,8 +1971,10 @@
     "Lucian": "lucian",
     "Lucius": "lucius",
     "Lucy": "lucy",
+    "Lusamine": "lusamine",
     "Lydia": "lydia",
     "Lysandre": "lysandre",
+    "Machamp": "machamp",
     "Machop": "machop",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
@@ -1950,6 +2018,7 @@
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
     "N": "n",
+    "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
     "Nikola": "nikola",
@@ -1962,6 +2031,7 @@
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
+    "Olivia": "olivia",
     "Olympia": "olympia",
     "Owner": "owner",
     "Pablo": "pablo",
@@ -1976,6 +2046,7 @@
     "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Pilot": "pilot",
+    "Plumeria": "plumeria",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
     "President": "president",
@@ -2000,6 +2071,7 @@
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Ramos": "ramos",
+    "Rancher Moke": "rancher_moke",
     "Receptionist": "look:receptionist",
     "Red": "red",
     "Referee": "referee",
@@ -2048,9 +2120,11 @@
     "Sign": "sign",
     "Sina": "sina",
     "Skitty": "skitty",
+    "Skull Grunt": "skull_grunt",
     "Skyla": "skyla",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
+    "Sophocles": "sophocles",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Steven": "steven",
@@ -2101,6 +2175,7 @@
     "Wattson": "wattson",
     "Wesley": "wesley",
     "Whitney": "whitney",
+    "Wicke": "wicke",
     "Wife": "wife",
     "Wikstrom": "wikstrom",
     "Will": "will",

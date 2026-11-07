@@ -131,14 +131,15 @@ public class AlolaUlaulaTests
         var cache = new Dictionary<string, Map>();
         Map Fresh(string name) => cache.TryGetValue(name, out var m) ? m : cache[name] = built.TryGetValue(name, out var b) ? b : rooms(name);
         var library = ScriptLibrary.Default;
-        HeadlessScriptHost Play(string file, string script, string map, string? person = null, params int[] answers)
+        HeadlessScriptHost Play(string file, string script, string map, string? person = null, (int X, int Y)? stand = null, int[]? answers = null)
         {
             var at = Fresh(map);
             var host = new HeadlessScriptHost(story, party, bag) { Map = at, MapNamed = Fresh, Region = RegionDatabase.Alola };
-            foreach (int a in answers) host.Answers.Enqueue(a);
+            if (stand is { } tile) host.PlayerTile = tile;
+            foreach (int a in answers ?? Array.Empty<int>()) host.Answers.Enqueue(a);
             var runner = new ScriptRunner(library, host);
             runner.Start(library.Find(script, file) ?? throw new Xunit.Sdk.XunitException($"{file}.{script} is missing"),
-                person == null ? null : at.Everyone.Single(n => n.Key == person));
+                person == null ? null : at.Everyone.Single(n => n.Key == person && (at.AreaAt(n.GridX, n.GridY)?.Key ?? file) == file));
             runner.RunToEnd();
             Assert.Empty(host.Problems);
             return host;
@@ -148,15 +149,15 @@ public class AlolaUlaulaTests
         int Count(string item) => bag.GetQuantity(ItemDatabase.Get(item)!);
 
         // The ferry from Heahea, the first time: the tour of Aether Paradise
-        Assert.Contains("warp AetherParadise 48 90", Play("heahea_city", "AetherFerry", "Akala", "aether_sailor", 0).Log);
+        Assert.Contains("warp AetherParadise 48 90", Play("heahea_city", "AetherFerry", "Akala", "aether_sailor", answers: new[] { 0 }).Log);
         Assert.Equal(40, Story());
-        Play("aether_paradise", "Tour", "AetherParadise");
+        Play("aether_paradise", "Tour", "AetherParadise", stand: (48, 72));
         Assert.Equal(41, Story());
         Assert.Equal("alolaMalie", Next());
         // Malie City: the ferry from the Foundation, Hau on the plaza
-        Assert.Contains("warp Ulaula 59 366", Play("aether_paradise", "Ferry", "AetherParadise", "sailor", 1).Log);
+        Assert.Contains("warp Ulaula 59 366", Play("aether_paradise", "Ferry", "AetherParadise", "sailor", answers: new[] { 1 }).Log);
         Assert.True(story.Has("FLAG_ALOLA_AT_MALIE"));
-        Play("malie_city", "Arrival", "Ulaula");
+        Play("malie_city", "Arrival", "Ulaula", stand: (59, 350));
         Assert.Equal(42, Story());
         // Hokulani Observatory: three Charjabug, then the totem Togedemaru
         Play("HokulaniObservatory", "OnEnter", "HokulaniObservatory");
@@ -169,7 +170,7 @@ public class AlolaUlaulaTests
         Assert.Equal(43, Story());
         Assert.Equal(1, Count("Electrium Z"));
         // Tapu Village: Acerola, the Megamart's trial, Mudsdale
-        Play("tapu_village", "AcerolaArrival", "Ulaula");
+        Play("tapu_village", "AcerolaArrival", "Ulaula", stand: (204, 226));
         Assert.Equal(44, Story());
         Assert.True(story.Has("FLAG_ALOLA_MEGAMART_OPEN"));
         Play("tapu_village", "Rancher", "Ulaula", "mudsdale");
@@ -181,7 +182,7 @@ public class AlolaUlaulaTests
         Assert.Equal(45, Story());
         Assert.Equal(1, Count("Ghostium Z"));
         // Po Town: Plumeria, the manor, Guzma, Nanu's grand trial
-        Play("po_town", "Arrival", "Ulaula");
+        Play("po_town", "Arrival", "Ulaula", stand: (238, 128));
         Assert.True(story.Has("FLAG_ALOLA_PLUMERIA_DONE"));
         Play("SkullManor", "ManorGrunt1", "SkullManor", "grunt_1");
         Play("SkullManor", "ManorGrunt2", "SkullManor", "grunt_2");
@@ -195,13 +196,13 @@ public class AlolaUlaulaTests
         Assert.Equal(1, Count("Darkinium Z"));
         Assert.Equal("alolaRescue", Next());
         // Aether Paradise again: the head office opens, Lusamine is beaten
-        Play("aether_paradise", "Rescue", "AetherParadise");
+        Play("aether_paradise", "Rescue", "AetherParadise", stand: (48, 72));
         Assert.True(story.Has("FLAG_ALOLA_AETHER_HQ_OPEN"));
         Play("AetherParadise_Office", "LusamineInside", "AetherParadise_Office", "lusamine");
         Assert.Equal(48, Story());
-        Assert.Contains("warp Poni 49 300", Play("aether_paradise", "Ferry", "AetherParadise", "sailor", 2).Log);
+        Assert.Contains("warp Poni 49 300", Play("aether_paradise", "Ferry", "AetherParadise", "sailor", answers: new[] { 2 }).Log);
         // Poni Island: the arrival, the Machamp, Dulse's trial in Vast Poni Canyon
-        Play("seafolk_village", "Arrival", "Poni");
+        Play("seafolk_village", "Arrival", "Poni", stand: (49, 282));
         Assert.Equal(49, Story());
         Play("seafolk_village", "MachampRide", "Poni", "machamp");
         Assert.True(story.Has("FLAG_ALOLA_RIDE_MACHAMP"));

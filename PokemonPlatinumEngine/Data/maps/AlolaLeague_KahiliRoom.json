@@ -1,7 +1,7 @@
 {
   "name": "AlolaLeague_KahiliRoom",
   "displayName": "Pokémon League",
-  "bgmTrack": "alola/battle_gym",
+  "bgmTrack": "alola/trial",
   "interior": "Gym",
   "trees": "Round",
   "battleArena": "League",

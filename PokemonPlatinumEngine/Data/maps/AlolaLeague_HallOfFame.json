@@ -1,7 +1,7 @@
 {
   "name": "AlolaLeague_HallOfFame",
   "displayName": "Hall of Fame",
-  "bgmTrack": "alola/battle_gym",
+  "bgmTrack": "alola/trial",
   "interior": "Gym",
   "trees": "Round",
   "hall": "HallOfFame",
