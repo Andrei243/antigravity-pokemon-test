@@ -1,0 +1,25 @@
+{
+  "honeyTrees": {
+    "common": [],
+    "uncommon": [],
+    "rare": []
+  },
+  "greatMarsh": {
+    "local": [],
+    "national": []
+  },
+  "trophyGarden": [],
+  "feebas": {
+    "area": "",
+    "species": "",
+    "tiles": ""
+  },
+  "swarms": [],
+  "outbreaks": [
+    { "area": "route_102", "species": "Seedot", "level": 3, "moves": ["Bide","Harden","Leech Seed"], "share": 50 },
+    { "area": "route_114", "species": "Nuzleaf", "level": 15, "moves": ["Harden","Growth","Nature Power","Leech Seed"], "share": 50 },
+    { "area": "route_117", "species": "Seedot", "level": 13, "moves": ["Harden","Growth","Nature Power","Leech Seed"], "share": 50 },
+    { "area": "route_120", "species": "Seedot", "level": 25, "moves": ["Giga Drain","Frustration","Solar Beam","Leech Seed"], "share": 50 },
+    { "area": "route_116", "species": "Skitty", "level": 8, "moves": ["Growl","Tackle","Tail Whip","Attract"], "share": 50 }
+  ]
+}

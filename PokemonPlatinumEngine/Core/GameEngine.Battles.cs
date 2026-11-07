@@ -26,7 +26,7 @@ public partial class GameEngine
     /// F5): its species (a randomised run's), its level, personality, form and coat, drawn on the field's own chance in
     /// the order a step in the grass draws them.
     /// </summary>
-    private Pokemon MakeWild(WildEncounterEntry entry, MapArea? area)
+    internal Pokemon MakeWild(WildEncounterEntry entry, MapArea? area)
     {
         // A randomised run meets the species its table's species go to (plan 13 · V6); every other run, the table's own
         var random = Randomizer.For(flow.Run);
@@ -43,6 +43,10 @@ public partial class GameEngine
             : new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
         // The Shiny Charm's two extra rolls (plan 13 · V5), keeping what the lead's ability chose; none without the charm
         if (!entry.Shiny) ShinyCharm.Roll(wild, flow.Bag, rng, entry.Gender, entry.Nature);
+        // The day's outbreak: one more shiny roll from thirty of its species met in its place and two from sixty, drawn only
+        // then (plan 38 · EX1); an outbreak of the region's own game also gives its Pokémon its moves, drawing nothing
+        if (!entry.Shiny && OutbreakRolls(area, entry.SpeciesName) is > 0 and var outbreakRolls) wild.RerollForShiny(rng, outbreakRolls, entry.Gender, entry.Nature);
+        if (entry.Moves is { Count: > 0 } outbreakMoves) Overworld.Outbreaks.GiveMoves(wild, outbreakMoves);
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Met at or past an evolution of ours, one time in four it is met as it, by its own personality (plan 03 · D15-A)

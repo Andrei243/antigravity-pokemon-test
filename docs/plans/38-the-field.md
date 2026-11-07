@@ -176,7 +176,7 @@ Every session: its rule in a GPU-free class with its tests (a seed and a fixed c
 ## Status
 
 - [x] EX10 Unova's Town Map (first of the plan's sessions; built 2026-11-07: `Data/world/unova/townmap.json`, `UnovaTownMapTests`, the harness's `explore` mode with `EXPLORE_PART=unova` for the ex00* shots; the rulings' "The field beyond the tables" tells what was decided)
-- [ ] EX1 Outbreaks of one species
+- [x] EX1 Outbreaks of one species (built 2026-11-07: `Overworld/Outbreaks.cs`, `GameEngine.Outbreaks.cs`, `OutbreakTests`; Emerald's five rows through `--game emerald --data` into Hoenn's `encounters.json`, and Surskit as three rows of ours in `outbreaks.json` since Emerald's table has none; no Black 2 swarms exist to read; the rulings' "The field beyond the tables" tells the rest. Left for EX1's shots: `ex01` to `ex03` and the profile scene, see "EX1 as built" under its heading)
 - [ ] EX2 The day's report and the visitor
 - [ ] EX3 Bright Pokémon, catch streaks and glints
 - [ ] EX4 Headbutt trees and Route 119's Feebas

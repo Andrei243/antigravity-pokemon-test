@@ -64,6 +64,12 @@ public static class Sources
         "/data/maps/*/scripts.inc", "/data/scripts/trainers.inc"
     };
 
+    /// <summary>
+    /// What the GBA reader fetches of Emerald: the same, and <c>src/tv.c</c> for its television outbreak (plan 38 · EX1), whose
+    /// table of species, moves, levels and routes is read (the show's text beside it is never kept).
+    /// </summary>
+    public static readonly string[] EmeraldFolders = GbaFolders.Append("/src/tv.c").ToArray();
+
     /// <summary>The named files of a pinned commit, downloaded once and reused until the commit or the list changes.</summary>
     public static string Download(string cache, string name, string rawBase, string commit, string[] files)
     {

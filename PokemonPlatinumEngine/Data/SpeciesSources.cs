@@ -274,6 +274,12 @@ public sealed class SpeciesSources
         // The open areas: their wild tables, our own species once the National Pokédex is had, their items and places
         var openAreas = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (var world in worlds)
+        {
+            // A region's outbreaks, its game's television one and ours (plan 38 · EX1): a species met in the grass of the row's place
+            foreach (var row in (world.Encounters.Outbreaks ?? new()).Concat(world.OwnOutbreaks.Rows))
+                f.Species(row.Species, $"{row.Area}: an outbreak", true);
+        }
+        foreach (var world in worlds)
         foreach (string key in world.Index.Areas)
         {
             openAreas.Add(key);

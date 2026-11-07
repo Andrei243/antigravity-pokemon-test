@@ -31,8 +31,8 @@ public class HoennSpeciesTests
         ["Meditite"] = "GE3: Ruby's and Sapphire's, in their own places", ["Medicham"] = "GE3: Ruby's and Sapphire's, in their own places",
         ["Roselia"] = "GE3: Ruby's and Sapphire's, in their own places", ["Zangoose"] = "GE3: Ruby's and Sapphire's, in their own places",
         ["Lunatone"] = "GE3: Ruby's and Sapphire's, in their own places",
-        // Emerald's mass outbreak, which its television announces
-        ["Surskit"] = "plan 38 · EX1: Hoenn's television outbreak", ["Masquerain"] = "plan 38 · EX1: Hoenn's television outbreak",
+        // (Surskit and Masquerain, which Emerald's grass leaves out and its television never announces, are met in the outbreaks
+        // of our own since plan 38 · EX1: Data/world/hoenn/outbreaks.json)
         // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
         ["Alakazam"] = "GE3: a Linking Cord in Hoenn", ["Golem"] = "GE3: a Linking Cord in Hoenn",
         ["Machamp"] = "GE3: a Linking Cord in Hoenn", ["Kingdra"] = "GE3: a Linking Cord in Hoenn",

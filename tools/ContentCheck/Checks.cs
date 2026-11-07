@@ -39,6 +39,7 @@ public static class Checks
         Scripts.Check(content, found);
         Translations.Check(content, found);
         CraftingFiles.Check(content, found);
+        OutbreakFiles.Check(content, found);
         flags.Stale(found);
         return found;
     }

@@ -7,7 +7,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Sinnoh | `extended-sinnoh` | 210 | 210 | 0 |
 | Kanto | `kanto` | 151 | 132 | 19 |
 | Johto | `updated-johto` | 256 | 218 | 38 |
-| Hoenn | `hoenn` | 202 | 187 | 15 |
+| Hoenn | `hoenn` | 202 | 189 | 13 |
 | Unova | `updated-unova` | 301 | 250 | 51 |
 | Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 314 | 143 |
 
@@ -40,7 +40,6 @@ Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a 
 
 - **GE3: Ruby's and Sapphire's, in their own places**: Meditite, Medicham, Roselia, Zangoose, Lunatone
 - **GE3: a Linking Cord in Hoenn**: Alakazam, Golem, Machamp, Kingdra, Huntail, Gorebyss
-- **plan 38 · EX1: Hoenn's television outbreak**: Surskit, Masquerain
 - **plan 38 · EX4: Route 119's Feebas**: Feebas, Milotic
 
 Items and places its evolutions ask for and nothing gives: Linking Cord (GE3: a Linking Cord in Hoenn).

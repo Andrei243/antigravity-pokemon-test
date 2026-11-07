@@ -20,7 +20,7 @@ public static class GbaImport
         string cache = Path.Combine(repo, "tools", "MapImporter", ".cache");
         return game == GbaGame.FireRed
             ? Sources.Checkout(cache, "pokefirered", Sources.FireRedRepo, Sources.FireRedCommit, Sources.GbaFolders)
-            : Sources.Checkout(cache, "pokeemerald", Sources.EmeraldRepo, Sources.EmeraldCommit, Sources.GbaFolders);
+            : Sources.Checkout(cache, "pokeemerald", Sources.EmeraldRepo, Sources.EmeraldCommit, Sources.EmeraldFolders);
     }
 
     /// <summary>A game's tables: its trainers' ids under the region's prefix (<c>kanto_</c>, <c>hoenn_</c>) and its own prize money.</summary>
@@ -182,6 +182,10 @@ public static class GbaImport
         Write("", "trainers", tables.Trainers);
         Write("", "spawns", GbaEvents.Spawns(world, tables, map => MapNameOf(world, map)));
         Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), GbaEvents.Habitats(world, areas));
+        // Emerald's television outbreak (plan 38 · EX1), the one table of the region's that belongs to no area
+        if (world.Source.Game == GbaGame.Emerald)
+            Write("", Path.GetFileNameWithoutExtension(WorldEncountersFile.FileName),
+                new WorldEncountersFile { Outbreaks = GbaOutbreaks.Read(world.Source, world.Problems) });
         if (open == null)
         {
             File.WriteAllText(Path.Combine(directory, World.IndexFile), GameDataFiles.Serialize(index));

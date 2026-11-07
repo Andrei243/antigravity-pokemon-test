@@ -102,6 +102,9 @@ public sealed class GbaMaps
 {
     public GbaGame Game { get; }
 
+    /// <summary>The folder of the decompilation read (plan 38 · EX1: <c>src/tv.c</c> lies beside the maps).</summary>
+    public string Checkout => dir;
+
     /// <summary>Every map, in the order of the groups (<c>group_order</c>) and of each group's list.</summary>
     public List<GbaMap> Maps { get; } = new();
     public Dictionary<string, GbaMap> ById { get; } = new(StringComparer.Ordinal);
