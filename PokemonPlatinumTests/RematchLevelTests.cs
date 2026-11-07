@@ -102,11 +102,15 @@ public class RematchLevelTests
         // pair's level (203) and at or above its first route's (162)
         var story = With(RegionDatabase.All.Select(r => r.Id).Take(5).ToArray());
         var unova = RegionDatabase.Get("Unova")!.Levels!;
+        // (a team of Unova's own or of a region after it, Kalos's or Alola's, is no region gone past: it keeps its own levels)
+        var all = RegionDatabase.All.Select(r => r.Id).ToList();
+        int unovaAt = all.IndexOf("Unova");
+        bool Before(string id) => all.IndexOf(RematchLevels.RegionOfTeam(id).Id) < unovaAt;
         int top = unova.Points[^1].To, bottom = unova.Points[0].To;
         foreach (var region in TrainerDatabase.Regions.Concat(new[] { "" }))
         {
             var records = region.Length == 0 ? TrainerDatabase.All : TrainerDatabase.OfRegion(region);
-            foreach (var record in records.Where(r => TrainerDatabase.IsRematchTeam(r.Id) && !r.Id.StartsWith("unova_")))
+            foreach (var record in records.Where(r => TrainerDatabase.IsRematchTeam(r.Id) && Before(r.Id)))
             {
                 var levels = RematchLevels.For(record.Id, story, "Sinnoh");
                 Assert.NotNull(levels);

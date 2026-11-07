@@ -14,7 +14,14 @@ script OnEnter
 script Bird
   speaker none
   scene "The bird at rest"
+  letterbox on 0.4
+  camera pan 15 10 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 15 10 hold
   text "The great bird that flew over Kalos has come to rest here, wings folded, in the hush of the sea."
+  effect stop 15 10
+  camera release 0.4
+  letterbox off 0.3
   if flag FLAG_KALOS_DEN_ARTICUNO goto Articuno
   if flag FLAG_KALOS_DEN_ZAPDOS goto Zapdos
   cry "Moltres"

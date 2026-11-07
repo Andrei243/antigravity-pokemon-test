@@ -7,10 +7,17 @@
 script Zygarde
   speaker none
   scene "Zygarde in the depths"
+  letterbox on 0.4
+  camera pan 31 8 1.2
+  camera zoom 1.4 0.8
+  effect shadow 31 8 hold
   text "A great serpent of black and green lies coiled in the dark, its eyes half closed..."
   cry "Zygarde"
   camera shake 0.5
   text "It raised its head! The whole cave trembled!"
+  effect stop 31 8
+  camera release 0.4
+  letterbox off 0.3
   wildbattle "Zygarde" 70
   if result == 2 goto Stays
   setflag FLAG_KALOS_ZYGARDE_GONE

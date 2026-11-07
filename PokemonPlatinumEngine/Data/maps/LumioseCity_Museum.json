@@ -92,21 +92,21 @@
       "depth": 2
     },
     {
-      "type": "DomeFossil",
+      "type": "DisplayCase",
       "x": 2,
       "y": 7,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "HelixFossil",
+      "type": "DisplayCase",
       "x": 4,
       "y": 7,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "OldAmber",
+      "type": "DisplayCase",
       "x": 6,
       "y": 7,
       "width": 1,
