@@ -1891,6 +1891,10 @@
     "safariBalls": "SAFARI BALLS",
     "steps": "PAȘI"
   },
+  "outbreakToast": {
+    "bonusOne": "{count} {name} întâlniți azi în {place}. Iarba s-a neliniștit: cei shiny apar mai des.",
+    "bonusTwo": "{count} {name} întâlniți azi în {place}! Cei shiny apar și mai des."
+  },
   "alphPuzzle": {
     "title": "PANOU DE PIATRĂ",
     "hint": {

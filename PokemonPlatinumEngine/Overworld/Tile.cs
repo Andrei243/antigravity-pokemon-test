@@ -562,6 +562,14 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore]
     public bool Alpha { get; set; }
 
+    /// <summary>The slot is a day's outbreak's (plan 38 · EX1, <see cref="Outbreaks"/>); never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Outbreak { get; set; }
+
+    /// <summary>The moves an outbreak of the game's own gives its Pokémon (Emerald's television outbreak); null leaves the moves its level gives. Never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public IReadOnlyList<string>? Moves { get; set; }
+
     /// <summary>
     /// How many of the slot's species come at once (plan 14 · B3): one, or a horde of up to five, each at a level of its
     /// own drawn from the slot's range, fought as a <see cref="Battle.BattleFormat.Horde"/>. No table of Platinum's has a

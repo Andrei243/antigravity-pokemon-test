@@ -660,6 +660,48 @@ public sealed class WorldEncountersFile
     /// what is told of the day's swarm, open place or not.
     /// </summary>
     public List<SwarmPlace> Swarms { get; set; } = new();
+
+    /// <summary>
+    /// The outbreaks a region's own game announces (plan 38 · EX1): Emerald's television outbreak, one row each of
+    /// <c>sPokeOutbreakSpeciesList</c>, written by <c>tools/MapImporter --game emerald --data</c>; left out everywhere else.
+    /// Rows of our own for the region are in <see cref="WorldOutbreaksFile"/>.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<OutbreakRow>? Outbreaks { get; set; }
+}
+
+/// <summary>
+/// One outbreak a region can have a day (plan 38 · EX1): a species met in the tall grass of one place, at a level of its
+/// own and with moves of its own where the game that wrote the row gave them, in <see cref="Share"/> of a hundred of the
+/// place's meetings.
+/// </summary>
+[JsonConverter(typeof(OneLine<OutbreakRow>))]
+public sealed class OutbreakRow
+{
+    /// <summary>The place's key, as its area file names it.</summary>
+    public string Area { get; set; } = "";
+
+    public string Species { get; set; } = "";
+
+    /// <summary>The level it is met at; 0 leaves the levels of the slots it takes the place of.</summary>
+    public int Level { get; set; }
+
+    /// <summary>The moves it knows (Emerald's give four); left out to leave the Pokémon the moves its level gives.</summary>
+    public List<string>? Moves { get; set; }
+
+    /// <summary>How many meetings in a hundred (Emerald's television outbreak: 50). The slots of the grass it takes are the first whose weights come to it.</summary>
+    public int Share { get; set; } = 50;
+}
+
+/// <summary>
+/// The outbreaks of our own that a region adds to its game's (plan 38 · EX1), written by hand: <c>outbreaks.json</c> beside
+/// the region's world files. Hoenn's holds the Surskit rows, which Emerald's television never announces.
+/// </summary>
+public sealed class WorldOutbreaksFile
+{
+    public const string FileName = "outbreaks.json";
+
+    public List<OutbreakRow> Rows { get; set; } = new();
 }
 
 [JsonConverter(typeof(OneLine<SwarmPlace>))]

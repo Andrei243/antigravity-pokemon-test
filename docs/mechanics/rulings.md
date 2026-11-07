@@ -9565,6 +9565,51 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
 - **Words.** The 52 places' words are in English and Romanian (`Data/text/ro/data.json`, which `RomanianTests` holds every region's map to), and the
   Pokédex's tag for Unova's own list is `pokedex.mode.updatedunova` and `pokedex.modeName.updatedunova` ("UNOVA"; the other regions'
   Pokédexes beyond Kanto's have none yet and show their key, which a later session of each writes).
+- **Outbreaks of one species** (EX1, 2026-11-07; `Overworld/Outbreaks.cs`). Once a region's Hall of Fame is entered it has **two a
+  day**. Each is at a place of the region with a land table of twelve slots, under the open sky (an area of kind Outdoors, Route or
+  Town; never a cave or a room), and is one species of that place's own table (the slots', the hour's and Sinnoh's two day and night
+  species) that is not the place's commonest (the species the most slots' weights come to, the first of the table on a tie), a
+  legendary, a mythical or a slot of ours. A place the story or a mechanic holds is left out by its key (a safari, the Great Marsh and
+  Trophy Garden, the contest's park, a Gym, the Frontier, Spear Pillar, Stark Mountain, the Distortion World, Turnback Cave, Mirage
+  Island, Victory Road, the Hall of Fame) and by what its table holds (a place with a legendary or a mythical in it is one the story
+  holds). A place that is the day's swarm's place (Sinnoh's, Johto's) has no outbreak that day: the swarm stays as it is, in slots 0
+  and 1 for a day in one place with no crowd, count or bonus rolls.
+- **What a day holds is worked out, never drawn.** The places and species are `SplitMix.Mix` of the day's number
+  (`SpecialEncounters.DailyNumber`, which `DaysPass` moves on), the region's name (`SplitMix.Fnv`) and a salt, in the order of the
+  places' keys: the same day gives the same two in a game, the next day others, and nothing is drawn from `Dice` or `fieldRandom`.
+  A region's outbreaks also begin with its Hall of Fame as hordes and our species do (plan 38, decision 1, the recommended one).
+- **The share.** The outbreak lays its species in the grass's slots 0 to 5 (weights 20, 20, 10, 10, 10, 10), eighty meetings in a
+  hundred, each slot keeping its own levels; the slots of the second slot's game and ours (8 to 11) are not touched, and in a place
+  with the Pokégear's radio on the outbreak takes the radio's slots 2 to 5. The order of what lays over a table is the swarm's, the
+  radio's, the outbreak's, the second slot's, ours. It is met on foot by a step, by Sweet Scent and by the DexNav; not on the water
+  or a rod; in a Remix run (a table laid over the area's, plan 13 · V15) not at all.
+- **The crowd.** With the options' WILD POKéMON row at VISIBLE up to **ten** (`FieldPokemon.MostInOutbreak`) stand in the grass of an
+  outbreak's place, and six elsewhere; they are drawn from the same slots, so about eight in ten are the outbreak's.
+- **The count and its pay.** Every Pokémon of the outbreak's species **beaten or caught** in its place is counted
+  (`SpecialEncounters.OutbreakMet`, by place, saved as `SaveData.Encounters` with the field left out when empty, cleared by
+  `DaysPass`, so a new day starts at nought). The 31st meeting of that species in that place is made with **one more shiny roll** and the
+  61st with **two** (`Outbreaks.ExtraRolls`, from `FirstBonusAt` 30 and `SecondBonusAt` 60 met): Scarlet's and Violet's steps
+  (decision 3, the recommended one: the games' own). The rolls are `Pokemon.RerollForShiny` in `MakeWild`, after the Shiny Charm's, and
+  are drawn only for that species in that place once thirty are met; a game with no outbreak in force makes a wild Pokémon with the
+  draws it always did. A toast tells at 30 and at 60 (`outbreakToast.bonusOne`, `outbreakToast.bonusTwo`). The count is of the day's one species
+  in its one place: another species of the place, the same species elsewhere, a roamer or a Safari Zone battle counts nothing; a
+  randomiser's run, whose Pokémon are not the table's, counts none.
+- **Hoenn's own.** Emerald's television outbreak (`src/tv.c`, `sPokeOutbreakSpeciesList`, read by `tools/MapImporter --game emerald
+  --data` into `Data/world/hoenn/encounters.json`'s `outbreaks`, the file's new `src/tv.c` added to `Sources.EmeraldFolders`) is five
+  rows: Seedot on Route 102 (level 3), Nuzleaf on Route 114 (15), Seedot on Routes 117 (13) and 120 (25) and Skitty on Route 116 (8),
+  each with its four moves and the show's 50 meetings in a hundred. Hoenn has **one of its rows a day** (drawn from the day's number)
+  and one generated outbreak. A row's share is 50, which fills slots 0 to 2 (20, 20, 10), its level is the row's for those slots and its
+  moves (up to four of those the data has) are given to the Pokémon (`WildEncounterEntry.Moves`, `Outbreaks.GiveMoves`, no draw).
+  Emerald's show lasts two days after a day's wait and is announced by a television; here a row lasts the day, as everything the day's
+  number picks does, and the Town Map's report (plan 38 · EX2) is where it is told. **Emerald's table has no Surskit**, and neither does
+  its grass (the plan and `species-owed.md` had taken it for the outbreak's), so Hoenn's **Surskit is ours**: three rows in the
+  hand-written `Data/world/hoenn/outbreaks.json` (Routes 102, 117 and 119 at levels 3, 13 and 25, Route 119 being where its trainers
+  speak of Surskit skating on the puddles), with the show's share. Masquerain is had by evolving it. `SpeciesSources` counts every row of
+  both files as an outbreak (`HoennSpeciesTests.Owed` loses Surskit and Masquerain).
+- **Black 2's swarms.** The pinned pokebw2 has none (it has the seasons' tables, the dark grass's, the shaking grass's and the
+  rippling water's, which plan 38 · EX11 meets); the reader reads no swarm and Unova's outbreaks are the generated ones alone.
+- **Not done in EX1.** The Town Map's report page and the visitor (EX2), a mark on the grass or a ring on the Pokémon (the crowd is the
+  mark), a shiny sparkle for the crowd's, and Johto's HeartGold has no television outbreak to read (its swarms stay as they are).
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
 
 What Z4 left, closed in our own words on X and Y's beats as they are publicly described.

@@ -19,6 +19,9 @@ public sealed class FieldPokemon
     /// <summary>The most wild Pokémon in sight at once.</summary>
     public const int MostInView = 6;
 
+    /// <summary>The most in sight at once in the tall grass of a place with an outbreak today (plan 38 · EX1, <see cref="Outbreaks.MostInOutbreak"/>).</summary>
+    public const int MostInOutbreak = Outbreaks.MostInOutbreak;
+
     /// <summary>How far, in tiles, one wanders from where it came out.</summary>
     public const int Roam = 3;
 
@@ -85,8 +88,9 @@ public sealed class FieldPokemon
     /// <param name="draw">Draws a wild Pokémon's row for a tile (land or water), as Sweet Scent draws one out; null where nothing lives.</param>
     /// <param name="make">Makes the Pokémon of a row, as the grass would have.</param>
     /// <param name="put">Puts a body on the map, or (false) takes one off it.</param>
+    /// <param name="most">How many may stand in sight at once: <see cref="MostInView"/>, or <see cref="Outbreaks.MostInOutbreak"/> in the place of a day's outbreak (plan 38 · EX1).</param>
     public Wild? Update(float dt, Map map, int px, int py, Random rng, Func<int, int, bool, WildEncounterEntry?> draw,
-        Func<WildEncounterEntry, Pokemon> make, Action<NPC, bool> put)
+        Func<WildEncounterEntry, Pokemon> make, Action<NPC, bool> put, int most = MostInView)
     {
         if (Map != map) Clear(put);
         Map = map;
@@ -105,7 +109,7 @@ public sealed class FieldPokemon
         if ((spawnWait -= dt) <= 0f)
         {
             spawnWait = SpawnEvery;
-            if (all.Count < MostInView) TrySpawn(map, px, py, rng, draw, make, put);
+            if (all.Count < most) TrySpawn(map, px, py, rng, draw, make, put);
         }
 
         // Each walks the step it is on, or thinks of the next

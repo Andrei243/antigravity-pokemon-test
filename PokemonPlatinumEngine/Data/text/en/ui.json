@@ -1573,6 +1573,10 @@
     "safariBalls": "SAFARI BALLS",
     "steps": "STEPS"
   },
+  "outbreakToast": {
+    "bonusOne": "{count} {name} met in {place} today. The grass has gone restless: shiny ones turn up more often.",
+    "bonusTwo": "{count} {name} met in {place} today! Shiny ones turn up more often still."
+  },
   "seasons": {
     "name": { "Spring": "Spring", "Summer": "Summer", "Autumn": "Autumn", "Winter": "Winter" },
     "arrived": {

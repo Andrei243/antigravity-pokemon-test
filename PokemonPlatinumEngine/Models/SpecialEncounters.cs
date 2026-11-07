@@ -75,6 +75,24 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
     public string? CurrentPlace { get; set; }
     public string? PreviousPlace { get; set; }
 
+    /// <summary>
+    /// How many of the day's outbreak species have been beaten or caught in each place today (plan 38 · EX1,
+    /// <see cref="Overworld.Outbreaks"/>), by the place's key; null while none has. A new day clears it
+    /// (<see cref="DaysPass"/>), so a save made on one day and loaded on the next has none.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, int>? OutbreakMet { get; set; }
+
+    /// <summary>How many of the outbreak's species have been beaten or caught in a place today.</summary>
+    public int OutbreakMetIn(string? area) => area != null && OutbreakMet != null && OutbreakMet.TryGetValue(area, out int n) ? n : 0;
+
+    /// <summary>One more of the outbreak's species is beaten or caught in a place; the count after it.</summary>
+    public int CountOutbreak(string area)
+    {
+        OutbreakMet ??= new Dictionary<string, int>(StringComparer.Ordinal);
+        return OutbreakMet[area] = OutbreakMetIn(area) + 1;
+    }
+
     /// <summary>The steps counted towards poison's next bite in the field, from 0 to 3 (<c>FieldOverworldState_GetPoisonStepCount</c>).</summary>
     public int PoisonSteps { get; set; }
 
@@ -109,6 +127,8 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
         if (days <= 0) return;
         for (int i = 0; i < days; i++) DailyNumber = Next(DailyNumber);
         MarshDaily = SwarmDaily = DailyNumber;
+        // The day's outbreaks are others, and what was met of the last day's is forgotten (plan 38 · EX1)
+        OutbreakMet = null;
     }
 
     /// <summary>The clock has moved on to <paramref name="now"/>: the honey trees count the whole minutes since it was last read. A clock turned back counts nothing.</summary>

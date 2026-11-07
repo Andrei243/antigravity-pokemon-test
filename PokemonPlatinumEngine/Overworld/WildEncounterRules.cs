@@ -117,6 +117,8 @@ public static class WildEncounterRules
             Count = slot.Count,
             OthersLevels = others,
             Unmapped = slot.Unmapped,
+            Outbreak = slot.Outbreak,
+            Moves = slot.Moves,
             Gender = GenderFor(PokemonDatabase.Get(slot.SpeciesName), lead, rng),
             Nature = NatureFor(lead, rng)
         };

@@ -82,6 +82,13 @@ public sealed record EncounterMoment
     /// </summary>
     public bool OursOpen { get; init; }
 
+    /// <summary>
+    /// The day's outbreaks in the region (plan 38 · EX1, <see cref="Overworld.Outbreaks"/>): each fills the first slots of its
+    /// place's grass after the swarm's and the radio's, before the second slot's and ours. Null before the region's Hall of
+    /// Fame is entered, and nothing is laid.
+    /// </summary>
+    public IReadOnlyList<Outbreak>? Outbreaks { get; init; }
+
     /// <summary>Whether the region's alphas are met (plan 10 · F10, <see cref="Alphas.Open"/>): its Hall of Fame is entered.</summary>
     public bool AlphasOpen { get; init; }
 
@@ -169,6 +176,9 @@ public static class EncounterSlots
             Put(4, sounds[1]);
             Put(5, sounds[1]);
         }
+        // Plan 38 · EX1: the day's outbreak in this place, in its first slots; after the swarm (which is never in its place) and
+        // the radio's species, which it takes the place of, and before everything that sits in the slots from 8 on
+        if (Overworld.Outbreaks.At(moment.Outbreaks, area.Key) is { } outbreak) Overworld.Outbreaks.Lay(slots, outbreak);
         // Plan 03 · D12a: the other versions' species of ours, in the slots the original gave a second game in the
         // console (WildEncounters_ReplaceDualSlotEncounters), once the National Pokédex is had
         if (moment.NationalDex && area.NationalSlots.Count == 2)
@@ -274,7 +284,9 @@ public static class EncounterSlots
         MinLevel = e.MinLevel,
         MaxLevel = e.MaxLevel,
         Weight = e.Weight,
-        Unmapped = e.Unmapped
+        Unmapped = e.Unmapped,
+        Outbreak = e.Outbreak,
+        Moves = e.Moves
     };
 }
 

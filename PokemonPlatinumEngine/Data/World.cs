@@ -18,6 +18,9 @@ public sealed class World
 
     public WorldIndexFile Index { get; }
 
+    /// <summary>The world's folder, relative to the data layers (<c>world/hoenn</c>): where a file beside its index is found (plan 38 · EX1).</summary>
+    public string Location => folder;
+
     private readonly string folder;
     private readonly Dictionary<int, WorldMatrixFile> matrices = new();
     private readonly Dictionary<int, WorldChunkFile?> chunks = new();
@@ -127,6 +130,10 @@ public sealed class World
     /// </summary>
     public WorldEncountersFile Encounters => encounters ??= Optional<WorldEncountersFile>(WorldEncountersFile.FileName) ?? new();
     private WorldEncountersFile? encounters;
+
+    /// <summary>The outbreaks of our own that the region adds (plan 38 · EX1, <c>outbreaks.json</c>, written by hand and read strictly); none when the folder has no file.</summary>
+    public WorldOutbreaksFile OwnOutbreaks => ownOutbreaks ??= Optional<WorldOutbreaksFile>(WorldOutbreaksFile.FileName, strict: true) ?? new();
+    private WorldOutbreaksFile? ownOutbreaks;
 
     public WorldOverlayFile? Overlay(string key)
     {

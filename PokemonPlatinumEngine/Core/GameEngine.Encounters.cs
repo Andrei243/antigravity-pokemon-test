@@ -56,7 +56,9 @@ public partial class GameEngine
             // Alphas of the post-game zone (plan 10 · F10)
             AlphasOpen = Alphas.Open(Here, flow.Story),
             // Which of a place's grass tables is met where it has several: Altering Cave's (plan 21 · H12, part k)
-            LandSet = flow.Story.Var(EncounterMoment.LandSetVariable)
+            LandSet = flow.Story.Var(EncounterMoment.LandSetVariable),
+            // The day's outbreaks of one species, once the region's Hall of Fame is entered (plan 38 · EX1)
+            Outbreaks = OutbreaksNow()
         };
     }
 
@@ -202,6 +204,8 @@ public partial class GameEngine
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)
             Roamers.AfterBattle(flow.Encounters, foe, won, caught, PlaceKey(), flow.Story, fieldRandom);
         flow.Radar.AfterBattle(won && !defeat, caught, fieldRandom);
+        // A Pokémon of the day's outbreak beaten or caught in its place is counted (plan 38 · EX1); nothing is drawn
+        if (!defeat && (won || caught) && fought.EnemyPokemon is { } outbreakFoe && fought.Kind == BattleKind.Normal) CountOutbreak(outbreakFoe);
     }
 
     /// <summary>

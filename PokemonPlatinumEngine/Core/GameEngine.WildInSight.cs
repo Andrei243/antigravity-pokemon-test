@@ -37,7 +37,9 @@ public partial class GameEngine
         }
         var touched = wildInSight.Update(dt, flow.Map, flow.Player.GridX, flow.Player.GridY, fieldRandom,
             (x, y, water) => flow.Map.DrawOutWild(x, y, water, flow.Player.Lead, EncounterMomentNow()),
-            entry => MakeWild(entry, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)), PutWild);
+            entry => MakeWild(entry, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)), PutWild,
+            // Ten stand in the grass of a place with an outbreak today (plan 38 · EX1)
+            OutbreakHere() != null ? FieldPokemon.MostInOutbreak : FieldPokemon.MostInView);
         // Nothing is met while a script, a rod or a fade has the field
         if (flow.Runner.IsRunning || flow.Fishing != null || flow.State != GameState.Overworld) return false;
         if (touched != null) return MeetSeen(touched);

@@ -1,0 +1,11 @@
+{
+  // Plan 38 · EX1: the outbreaks of our own that Hoenn adds to Emerald's television one (encounters.json, which the importer
+  // writes). Emerald's show announces Seedot, Nuzleaf and Skitty and never Surskit, which its grass leaves out, so
+  // Surskit skates on three routes whose puddles the trainers talk of: the same share, a level that fits each route. The
+  // rows follow Emerald's: a day's outbreak is one of them or a place drawn by the day's number.
+  "rows": [
+    { "area": "route_102", "species": "Surskit", "level": 3, "moves": ["Bubble", "Quick Attack"], "share": 50 },
+    { "area": "route_117", "species": "Surskit", "level": 13, "share": 50 },
+    { "area": "route_119", "species": "Surskit", "level": 25, "share": 50 }
+  ]
+}

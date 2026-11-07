@@ -180,6 +180,7 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 | `habitats.json` | `dotnet run --project tools/MapImporter -- --data` | Where the region's wild Pokémon live, open areas or not, for the Pokédex's area page |
 | `calendar.json` | `dotnet run --project tools/MapImporter -- --data` | Platinum's weather calendar: the weather of five places for each day of the year |
 | `encounters.json` | `dotnet run --project tools/MapImporter -- --data` | The wild Pokémon that aren't in an area's own tables (plan 06 · R13): the honey trees', the Great Marsh's and the Trophy Garden's dailies, Feebas's lake and the places swarms come to |
+| `outbreaks.json` | hand | The outbreaks of our own a region adds to its game's (plan 38 · EX1), if any |
 | `townmap.json` | hand | The map of the region (plan 01 · M12): its grid, the places under the cursor and what is said of each, the hidden places, where Fly lands |
 
 A GBA region's folder (plan 18 · W7; `Data/world/kanto/`, `Data/world/hoenn/` once plans 19 and 21 make them) is the same, written by `dotnet run --project tools/MapImporter -- --game firered --data` (or `emerald`) by the region's own `world.json`, and holds two files more: `trainers.json`, the region's trainers in the shape of `Data/trainers.json` (decision 8; the GBA's prize money and personalities are left at nought, from tables the region's plan adds), and `spawns.json`, its heal locations in the shape of a region file's `spawns`, to copy there. The run writes nothing until a region has its `world.json`.
@@ -456,6 +457,8 @@ What the original keeps beside the areas' tables (its `encdata_ex` and the `res/
 ```
 
 `honeyTrees` is the six slots of each group a honey tree draws (`HoneyTrees`); `greatMarsh` the 32 species the six areas of the marsh draw their daily one from, `local` before the National Pokédex and `national` after (`GreatMarsh`); `trophyGarden` the sixteen Mr. Backlot can bring (`TrophyGardenRules`). `feebas` is the lake Feebas lives in: every tile of it in the original's own order (in tiles of the area's matrix), which the day's number cuts into four groups and picks one tile of each from (`Feebas`). `swarms` is the places swarms come to (Sinnoh's 22, Johto's 20, in each game's order), with each one's name, the species that swarms there and, in Johto's, the `way` it is met (`surf` or `fish`; left out for the grass), open or not, for what is told of the day's swarm (`Swarms`).
+
+`outbreaks` (plan 38 · EX1; Hoenn's alone, left out of every other region's file) is Emerald's television outbreak, one row each of `sPokeOutbreakSpeciesList` in `src/tv.c`: `{ "area": "route_102", "species": "Seedot", "level": 3, "moves": [ "Bide", "Harden", "Leech Seed" ], "share": 50 }`, an open area of the region with a land table of twelve slots, a species, the level it is met at (nought leaves the slots' own), up to four moves and the meetings in a hundred it takes (`Outbreaks.SlotsFor` fills the grass's first slots to it). The rows of our own that a region adds are `outbreaks.json` beside it, written by hand and read strictly (`{ "rows": [ ... ] }`, the same rows; Hoenn's three are Surskit, which Emerald's table has none of). The content check holds every row. Every region has two outbreaks a day besides, generated from its areas' own tables by `Outbreaks` (no file).
 
 ### `calendar.json`
 
