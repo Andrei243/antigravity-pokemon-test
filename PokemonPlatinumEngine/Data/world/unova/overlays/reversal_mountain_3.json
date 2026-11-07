@@ -12,7 +12,9 @@
       "y": 8,
       "facing": "Down",
       "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
-    }
+    },
+    // The Fire Gem (plan 40 · GE11), found in Reversal Mountain as the Gems of Black 2 are found in Unova's caves
+    { "id": "reversal_mountain_3.FireGem", "name": "Fire Gem", "npcType": "ItemBall", "x": 20, "y": 10, "item": "Fire Gem", "hiddenBy": "FLAG_UNOVA_OBTAINED_REVERSAL_MOUNTAIN_FIRE_GEM" }
   ],
   "people": {
     "0": {

@@ -101,6 +101,8 @@ script GoSeeRoom
 script Mom
   if var VAR_LITTLEROOT_INTRO_STATE < 7 goto Busy
   speaker "Mom"
+  # (plan 40 · GE11, decision 11: the eon Pokémon's two stones, once Hoenn's Hall of Fame is entered)
+  call EonStones
   say "You look tired out, sweetie. Sit down for a minute and catch your breath."
   heal
   fanfare heal
@@ -110,3 +112,17 @@ label Busy
   speaker "Mom"
   say "Go on upstairs and see your room, {player}. The clock won't set itself!"
   end
+
+
+# The eon Pokémon's stones (plan 40 · GE11, decision 11: Omega Ruby and Alpha Sapphire give them from the player's mother in
+# Littleroot Town, the Latiasite and the Latiosite): once Hoenn's Hall of Fame is entered, Mom hands both over, once, and
+# goes on to see to the team.
+script EonStones
+  if not flag HoennHallOfFame return
+  if flag FLAG_HOENN_RECEIVED_EON_STONES return
+  say "Oh, {player}, before I forget! A parcel came for you while you were away. Two stones, one red and one blue."
+  say "They're the same colours as that Pokémon on the news. Maybe they belong together. Here, they're yours!"
+  give "Latiasite"
+  give "Latiosite"
+  setflag FLAG_HOENN_RECEIVED_EON_STONES
+  return

@@ -28,10 +28,13 @@ script Steven
   say "If you mean to challenge me, then come at me with everything. I won't hold back!"
   battle self as "hoenn_steven"
   setflag FLAG_DEFEATED_METEOR_FALLS_STEVEN
+  # (plan 40 · GE11, decision 11: the three Hoenn starters' Mega Stones, once he has been beaten here)
+  call StartersStones
   goto Foreseen
 label Afterwards
   face self player
   speaker "Steven"
+  call StartersStones
   if flag FLAG_HOENN_JIRACHI_MET goto Granted
   if not flag FLAG_RECEIVED_TM_RETURN goto Foreseen
   if time night goto Humming
@@ -93,3 +96,19 @@ script Jirachi
   speaker none
   text "Jirachi floats before the humming stone, half asleep."
   end
+
+
+# The Hoenn starters' Mega Stones (plan 40 · GE11, decision 11). Omega Ruby and Alpha Sapphire give the starter's from Steven
+# on Route 120 and the other two from a stone seller on Route 114; here Steven, beaten in his cave after the Hall of Fame,
+# hands over all three, once, and goes on with what he was saying.
+script StartersStones
+  if not flag FLAG_DEFEATED_METEOR_FALLS_STEVEN return
+  if flag FLAG_HOENN_RECEIVED_STARTERS_STONES return
+  speaker "Steven"
+  say "That was a battle worth having. Here, I want you to have these. I found them on my travels, and they've waited long enough."
+  give "Sceptilite"
+  give "Blazikenite"
+  give "Swampertite"
+  setflag FLAG_HOENN_RECEIVED_STARTERS_STONES
+  say "Mega Stones for Sceptile, Blaziken and Swampert, the three Pokémon Prof. Birch gives to new Trainers. With a Key Stone, they'll answer you."
+  return

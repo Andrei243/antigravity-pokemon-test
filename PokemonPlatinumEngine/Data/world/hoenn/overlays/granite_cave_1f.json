@@ -6,5 +6,9 @@
   "bgmTrack": "hoenn/petalburg_woods",
   "people": {
     "hiker": { "name": "Hiker", "script": "Hiker" }
-  }
+  },
+  // Omega Ruby's and Alpha Sapphire's Mega Stone found here (plan 40 · GE11, decision 11), once Hoenn's Hall of Fame is entered
+  "npcs": [
+    { "id": "granite_cave_1f.Steelixite", "name": "Steelixite", "npcType": "ItemBall", "x": 8, "y": 8, "item": "Steelixite", "shownBy": "HoennHallOfFame", "hiddenBy": "FLAG_HOENN_OBTAINED_STEELIXITE" }
+  ]
 }

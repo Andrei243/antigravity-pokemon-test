@@ -133,6 +133,16 @@
           "Groudon"
         ]
       }
+    },
+    "magma_hideout_4f.Cameruptite": {
+      "name": {
+        "en": [
+          "Cameruptite"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

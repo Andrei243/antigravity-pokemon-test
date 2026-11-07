@@ -54,6 +54,12 @@
     { "item": "Rocky Helmet", "price": 48 },
     { "item": "Eviolite", "price": 48 },
     { "item": "Weakness Policy", "price": 32 },
-    { "item": "Air Balloon", "price": 32 }
+    { "item": "Air Balloon", "price": 32 },
+    // Plan 40 · GE11: Unova's own held items that nothing else gives, as Black 2's counter sold them for Battle Points
+    // (docs/mechanics/where-items-are-found.md, "Unova's held items")
+    { "item": "Red Card", "price": 32 },
+    { "item": "Binding Band", "price": 32 },
+    { "item": "Absorb Bulb", "price": 32 },
+    { "item": "Cell Battery", "price": 32 }
   ]
 }

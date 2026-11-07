@@ -6,6 +6,8 @@
 script Juniper
   face self player
   speaker "Prof. Juniper"
+  # (plan 40 · GE11: the stones of Unova's own Megas of ours, once the bag holds a Key Stone)
+  call OurMegaStones
   say "{player}! The new Champion, in my own lab! Come in, come in."
   if nationaldex goto National
   say "Keep filling in your Pokédex. Every page tells me a little more about where Pokémon came from."
@@ -18,4 +20,21 @@ label Cave
   end
 label Seen
   say "Dad says you saw three Pokémon fly out of his cave. Three! He hasn't stopped talking about it."
+  end
+
+
+# The stones of the Megas of our own whose line is Unova's (plan 40 · GE11; docs/plans/decisions/R20b-mega-proposals.md,
+# "Where the stones are found", approved 2026-10-26): once Unova's Hall of Fame is entered (she is at her desk only then)
+# and the bag holds a Key Stone, the professor hands over the Serperiorite and the Samurottite, once, and the talk ends
+# there. (Emboar's stone is Legends: Z-A's, plan 23's to place.)
+script OurMegaStones
+  if not flag UnovaHallOfFame return
+  if not item "Key Stone" return
+  if flag FLAG_UNOVA_RECEIVED_JUNIPERS_MEGA_STONES return
+  say "{player}! Is that a Key Stone you're wearing? Then I've been keeping these for exactly the right Trainer."
+  say "They were dug out of the old ruins in Unova's south. Each one hums when a Pokémon of its own line comes near."
+  give "Serperiorite"
+  give "Samurottite"
+  setflag FLAG_UNOVA_RECEIVED_JUNIPERS_MEGA_STONES
+  say "One for Serperior and one for Samurott. Let one hold its stone in battle and watch it change. I can't wait!"
   end

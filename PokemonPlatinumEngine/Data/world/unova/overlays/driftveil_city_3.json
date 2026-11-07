@@ -19,9 +19,12 @@
       "npcType": "pokemon_breeder_f",
       "dialog": [ "My Pokémon love the sea breeze. We walk along the quay every evening." ]
     },
+    // (plan 40 · GE11: she keeps three of Genesect's drives for a Trainer who shows her one, driftveil_city_3.txt's Drives,
+    // and says her line to anyone else)
     "3": {
       "name": "Scientist",
       "npcType": "scientist_f",
+      "script": "Drives",
       "dialog": [ "I study the Pokémon that ships bring in from far away. Driftveil is the best place in Unova to do it!" ]
     }
   },

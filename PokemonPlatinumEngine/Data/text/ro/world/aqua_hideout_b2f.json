@@ -87,6 +87,16 @@
           "Aqua Grunt: Ai meritat, dar nu în felul în care voiam eu."
         ]
       }
+    },
+    "aqua_hideout_b2f.Sharpedonite": {
+      "name": {
+        "en": [
+          "Sharpedonite"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

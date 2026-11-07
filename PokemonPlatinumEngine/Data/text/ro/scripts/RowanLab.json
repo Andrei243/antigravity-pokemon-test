@@ -852,5 +852,31 @@
         "{player} a primit Piplup!"
       ]
     }
+  ],
+  "OurMegaStones": [
+    {
+      "en": [
+        "Hm? That stone on your wrist... A Key Stone! So you have seen Mega Evolution with your own eyes, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then these are yours. I found them near Mt. Coronet, each one warm to the touch where Sinnoh's first Pokémon came near."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One for each of the three in that briefcase. Whichever you raised, it can go further now. Show me what it becomes!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

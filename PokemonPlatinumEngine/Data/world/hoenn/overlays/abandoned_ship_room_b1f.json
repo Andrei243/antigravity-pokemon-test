@@ -1,5 +1,9 @@
 {
   // The Abandoned Ship's storage room (plan 21 · H12, part i), behind the door the Storage Key opens
   "area": "abandoned_ship_room_b1f",
-  "bgmTrack": "hoenn/abandoned_ship"
+  "bgmTrack": "hoenn/abandoned_ship",
+  // Omega Ruby's and Alpha Sapphire's Mega Stone found here (plan 40 · GE11, decision 11), once Hoenn's Hall of Fame is entered
+  "npcs": [
+    { "id": "abandoned_ship_room_b1f.Beedrillite", "name": "Beedrillite", "npcType": "ItemBall", "x": 5, "y": 5, "item": "Beedrillite", "shownBy": "HoennHallOfFame", "hiddenBy": "FLAG_HOENN_OBTAINED_BEEDRILLITE" }
+  ]
 }

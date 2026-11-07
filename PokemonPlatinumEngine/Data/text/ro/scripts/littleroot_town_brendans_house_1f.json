@@ -264,5 +264,23 @@
         "Du-te sus să-ți vezi camera, {player}. Ceasul nu se potrivește singur!"
       ]
     }
+  ],
+  "EonStones": [
+    {
+      "en": [
+        "Oh, {player}, before I forget! A parcel came for you while you were away. Two stones, one red and one blue."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They're the same colours as that Pokémon on the news. Maybe they belong together. Here, they're yours!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

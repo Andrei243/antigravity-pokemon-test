@@ -42,6 +42,19 @@ label Refused
   end
 # Plan 29 · LS11c (ours): what sends a Champion to Steven's cave at night for Jirachi
 label Comet
+  # (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Galladite, from Prof. Cozmo)
+  call Galladite
   say "Have you heard? A comet passes over Hoenn once in a thousand years, and it's in our skies right now."
   say "Steven Stone wrote to say a stone deep in Meteor Falls has begun to hum at night. I'd give anything to hear it!"
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Galladite (plan 40 · GE11, decision 11), from Prof. Cozmo once Hoenn's Hall of Fame is
+# entered and his meteorite is back (the Comet's talk), once
+script Galladite
+  if flag FLAG_HOENN_RECEIVED_GALLADITE return
+  say "Oh, and this! It was lodged in the meteorite all along. I chipped it free, and it isn't star metal at all."
+  give "Galladite"
+  setflag FLAG_HOENN_RECEIVED_GALLADITE
+  say "A Galladite, they call it: a Gallade holding it can Mega Evolve. Better with a Trainer than on my shelf!"
+  return

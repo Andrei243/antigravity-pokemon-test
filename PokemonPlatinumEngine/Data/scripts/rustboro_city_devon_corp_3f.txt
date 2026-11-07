@@ -59,7 +59,21 @@ script OnEnter
 # Mr. Stone (Emerald's MrStone): his errands, until a later chapter's thanks
 script MrStone
   speaker "Mr. Stone"
+  # (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Pidgeotite, from Mr. Stone in Rustboro City)
+  call Pidgeotite
   say "My son Steven is in Dewford Town, and Captain Stern awaits the goods in Slateport. I'm counting on you!"
+  end
+
+
+# Omega Ruby's and Alpha Sapphire's Pidgeotite (plan 40 · GE11, decision 11): Mr. Stone, once Hoenn's Hall of Fame is
+# entered, hands over a stone his company's diggers found, once, and the talk ends there
+script Pidgeotite
+  if not flag HoennHallOfFame return
+  if flag FLAG_HOENN_RECEIVED_PIDGEOTITE return
+  say "Ah, the Champion of Hoenn! Steven would be proud. Our diggers turned up a curious stone, and I thought of you at once."
+  give "Pidgeotite"
+  setflag FLAG_HOENN_RECEIVED_PIDGEOTITE
+  say "A Pidgeotite, my researchers say: a Pidgeot holding it can Mega Evolve. Do make good use of it!"
   end
 
 

@@ -93,3 +93,21 @@ script Cozmo
 label Met
   say "What could Team Magma want with a meteorite at Mt. Chimney? It worries me terribly."
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Salamencite (plan 40 · GE11, decision 11: an elder of the folk who keep Meteor Falls gives
+# it after the story). Ours, the elder (the overlay's dragon_elder, shown once Hoenn's Hall of Fame is entered) gives it
+# once; afterwards she speaks of the falls.
+script Salamencite
+  face self player
+  speaker "Elder"
+  if flag FLAG_HOENN_RECEIVED_SALAMENCITE goto Given
+  say "So you are the Champion the dragons of these falls have been whispering about. Come closer, child."
+  say "My people have kept this stone since the first star fell here. It belongs with one who flies with dragons."
+  give "Salamencite"
+  setflag FLAG_HOENN_RECEIVED_SALAMENCITE
+  say "A Salamence that holds the Salamencite can Mega Evolve. Let it fly higher than any sky it has known."
+  end
+label Given
+  say "Stars still fall on these falls now and then. Each one carries a wish, my mother used to say."
+  end

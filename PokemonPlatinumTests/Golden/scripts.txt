@@ -3488,9 +3488,21 @@ way 0
   Clerk> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = HP Up   4 BP
   * frontier points 1
-way 25, from answer 1
+way 29, from answer 1
   Clerk> Do come back when you've ridden a few more cars!
   ? Which prize would you like? = No thanks
+way 28, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Cell Battery   32 BP
+way 27, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Absorb Bulb   32 BP
+way 26, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Binding Band   32 BP
+way 25, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Red Card   32 BP
 way 24, from answer 1
   Clerk> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = Air Balloon   32 BP
@@ -7180,6 +7192,10 @@ way -
 === abundant_shrine.Landorus
 from Landorus at 22,14 of AbundantShrine
 way -
+=== abundant_shrine.RevealGlass
+from Pokémon Breeder at 40,20 of AbundantShrine
+way -
+  Pokémon Breeder> The folk round here say three great Pokémon once made the land rich. The shrine's for the one that blessed the fields.
 === abundant_shrine.Thundurus
 from Thundurus at 25,13 of AbundantShrine
 way -
@@ -8864,6 +8880,15 @@ way -
 from the tile read at 72,14 of HoennBattleFrontier
 way -
   > The door is shut. A sign says that only holders of a Frontier Pass may enter.
+=== battle_frontier_outside_west.Audinite
+from Gentleman at 17,20 of HoennBattleFrontier
+way -
+  Gentleman> A Trainer who made it to this island deserves a keepsake. My Audino and I won this stone in a tournament long ago.
+  > Lucas received the Audinite!
+  > Lucas put it away in the Items pocket.
+  Gentleman> An Audino holding the Audinite can Mega Evolve, and its healing grows kinder still. Treasure it, young one.
+  * fanfare FanfareItem
+  + FLAG_HOENN_RECEIVED_AUDINITE
 === battle_frontier_outside_west.DomeDoor
 from the tile read at 19,17 of HoennBattleFrontier
 way -
@@ -16401,6 +16426,10 @@ way 1, from answer 1
   ? Will you battle me? = No
   * endscene
   + seen driftveil_city.Rood at the church door
+=== driftveil_city_3.Drives
+from Scientist at 12,6 of DriftveilCity_House2
+way -
+  Scientist> I study the Pokémon that ships bring in from far away. Driftveil is the best place in Unova to do it!
 === driftveil_city_6.FormerMember
 from Former Member at 2,17 of DriftveilCity_PlasmaHouse
 way -
@@ -18341,6 +18370,10 @@ way 0.0
   Shadow Triad> Lord Ghetsis has lost himself... We will take him from here.
   N> ...I see. Without him, Team Plasma is...
   Shadow Triad> Farewell.
+  > Something was lying on the cavern floor where Ghetsis had stood...
+  > Lucas found the DNA Splicers!
+  > Lucas put it away in the Key Items pocket.
+  N> The DNA Splicers... In his hands they only ever made Pokémon suffer. Will you keep them? I know you won't use them so.
   N> Thank you, for everyone. Kyurem is safe. It has spent its strength, but it will come back here to rest.
   N> Zekrom says thank you as well. Yes... I can talk with Pokémon.
   N> Two years ago a Trainer and Alder taught me that when different ideas meet, the world is changed by them.
@@ -18382,6 +18415,7 @@ way 0.0
   * battle unova_team_plasma_ghetsis Won
   * fade out
   * fade in
+  * fanfare FanfareKeyItem
   * cry Zekrom
   * fade out
   * fade in
@@ -21142,6 +21176,10 @@ way 0
 way 1, from answer 1
   * wildbattle Victini 65 Lost
   + seen liberty_garden.Victini in the Liberty Garden
+=== lilycove_city.Altarianite
+from Man at 496,79 of Hoenn
+way -
+  Man> I deal in paintings. The museum here has a collection I'd give anything to get my hands on.
 === lilycove_city.BerryGentleman
 from Gentleman at 530,77 of Hoenn
 way -
@@ -22661,6 +22699,10 @@ way 1, from answer 1
 from Kyogre at 9,22 of MarineCave_End
 way -
   > A huge blue Pokémon floats in the pool, perfectly still.
+=== mauville_city.Lopunnite
+from Man at 214,151 of Hoenn
+way -
+  Man> Mauville's right in the middle of Hoenn. All kinds of people pass through here.
 === mauville_city.SchoolKid
 from Boy at 217,154 of Hoenn
 way -
@@ -23002,6 +23044,16 @@ way -
   + FLAG_MET_ARCHIE_METEOR_FALLS
   = VAR_METEOR_FALLS_STATE 0 -> 1
   + seen meteor_falls_1f_1r.Team Magma at Meteor Falls
+=== meteor_falls_1f_1r.Salamencite
+from Elder at 12,27 of MeteorFalls_1F_1R
+way -
+  Elder> So you are the Champion the dragons of these falls have been whispering about. Come closer, child.
+  Elder> My people have kept this stone since the first star fell here. It belongs with one who flies with dragons.
+  > Lucas received the Salamencite!
+  > Lucas put it away in the Items pocket.
+  Elder> A Salamence that holds the Salamencite can Mega Evolve. Let it fly higher than any sky it has known.
+  * fanfare FanfareItem
+  + FLAG_HOENN_RECEIVED_SALAMENCITE
 === meteor_falls_stevens_cave.Jirachi
 from Jirachi at 19,4 of MeteorFalls_StevensCave
 way -
@@ -23012,12 +23064,24 @@ way 0
   Steven> Oh! Lucas, you found me here? I wonder what you take me for. Just a man who loves stones?
   Steven> We fought side by side in Mossdeep's Space Center. You know what I can do.
   Steven> If you mean to challenge me, then come at me with everything. I won't hold back!
+  Steven> That was a battle worth having. Here, I want you to have these. I found them on my travels, and they've waited long enough.
+  > Lucas received the Sceptilite!
+  > Lucas put it away in the Items pocket.
+  > Lucas received the Blazikenite!
+  > Lucas put it away in the Items pocket.
+  > Lucas received the Swampertite!
+  > Lucas put it away in the Items pocket.
+  Steven> Mega Stones for Sceptile, Blaziken and Swampert, the three Pokémon Prof. Birch gives to new Trainers. With a Key Stone, they'll answer you.
   Steven> Ever since we met in Granite Cave, I had a feeling you would become the Champion.
   Steven> My hunches tend to come true. So where will you go from here?
   Steven> ...Ha! Even I can't see that far.
   * emote Steven Exclaim
   * battle hoenn_steven Won
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+  * fanfare FanfareItem
   + FLAG_DEFEATED_METEOR_FALLS_STEVEN
+  + FLAG_HOENN_RECEIVED_STARTERS_STONES
   + beaten hoenn_steven
 way 1, from answer 1
   * battle hoenn_steven Lost
@@ -23583,6 +23647,7 @@ from Poké Ball at 4,3 of MossdeepCity_StevensHouse
 way 0
   > Lucas looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?
   > Lucas received a Beldum!
+  > Beldum is holding something in its claw... It's a Metagrossite, the stone that lets a Metagross Mega Evolve!
   ? Lucas looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball? = Yes
   * fanfare FanfarePokemon
   + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL

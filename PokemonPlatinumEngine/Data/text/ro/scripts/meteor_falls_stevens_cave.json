@@ -130,5 +130,31 @@
         "Jirachi plutește în fața pietrei care zumzăie, pe jumătate adormit."
       ]
     }
+  ],
+  "StartersStones": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was a battle worth having. Here, I want you to have these. I found them on my travels, and they've waited long enough."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mega Stones for Sceptile, Blaziken and Swampert, the three Pokémon Prof. Birch gives to new Trainers. With a Key Stone, they'll answer you."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

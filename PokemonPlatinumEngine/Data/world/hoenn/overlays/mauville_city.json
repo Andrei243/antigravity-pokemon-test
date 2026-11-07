@@ -14,7 +14,7 @@
     "wattson": { "name": "Wattson", "npcType": "wattson", "still": true, "script": "Wattson" },
     "boy_3": { "name": "Boy", "dialog": [ "My Pokémon got hurt, but the nurse at the Pokémon Center fixed it right up. She's amazing!" ] },
     "rich_boy": { "name": "Boy", "dialog": [ "A Pokémon can jump out at you while you're riding a bike, too. You can't outpedal everything!" ] },
-    "maniac": { "name": "Man", "dialog": [ "Mauville's right in the middle of Hoenn. All kinds of people pass through here." ] },
+    "maniac": { "name": "Man", "script": "Lopunnite", "dialog": [ "Mauville's right in the middle of Hoenn. All kinds of people pass through here." ] },
     "woman_4": { "name": "Woman", "dialog": [ "Rydel at the bike shop is so generous. He gives his bikes away to travellers who come from far off!" ] },
     "school_kid_m": { "name": "Boy", "script": "SchoolKid" },
     "fat_man": { "name": "Man", "dialog": [ "My Pokémon roll everywhere they go. Rolling's the best way to get around, if you ask me!" ] }

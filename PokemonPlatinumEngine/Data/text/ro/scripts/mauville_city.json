@@ -306,5 +306,23 @@
         "M-am uitat la toate emisiunile. Mereu e ceva nou!"
       ]
     }
+  ],
+  "Lopunnite": [
+    {
+      "en": [
+        "You're the new Champion! A traveller from Sinnoh left this with me. Said to hand it to the strongest Trainer passing through."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Lopunnite, the traveller called it. A Lopunny holding it can Mega Evolve. I'd say that makes it yours!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

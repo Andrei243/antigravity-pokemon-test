@@ -204,6 +204,8 @@ label League
   say "Route 27 is east of town, across the water. Victory Road and the League are beyond it. I'm cheering for you!"
   end
 label Champion
+  # (plan 40 · GE11: the stone of Johto's own Mega of ours, once the bag holds a Key Stone)
+  call OurMegaStone
   say "The Champion of the Pokémon League, from my own lab! I still can't quite believe it."
   say "If you're thinking of going further, the ship at Olivine's port sails for Hoenn. Champions only, they tell me."
   end
@@ -217,4 +219,20 @@ script Aide
   end
 label After
   say "To think someone walked in and took a Pokémon while we were busy. We've changed the locks since."
+  end
+
+
+# The stone of the Mega of our own whose line is Johto's (plan 40 · GE11; docs/plans/decisions/R20b-mega-proposals.md,
+# "Where the stones are found", approved 2026-10-26): once Johto's Hall of Fame is entered (Elm's Champion talk asks it)
+# and the bag holds a Key Stone, the professor hands over the Typhlosionite, once, and the talk ends there. (Meganium's
+# and Feraligatr's stones are Legends: Z-A's, plan 23's to place.)
+script OurMegaStone
+  if not flag JohtoHallOfFame return
+  if not item "Key Stone" return
+  if flag FLAG_JOHTO_RECEIVED_TYPHLOSIONITE return
+  say "Is that a Key Stone? Then you've seen Mega Evolution! I've been reading about it for years."
+  say "A friend in Kalos sent me this stone. It warms up whenever a Typhlosion comes near, so it must be its Mega Stone!"
+  give "Typhlosionite"
+  setflag FLAG_JOHTO_RECEIVED_TYPHLOSIONITE
+  say "Let a Typhlosion hold it in battle, and with your Key Stone it should Mega Evolve. Tell me everything after!"
   end

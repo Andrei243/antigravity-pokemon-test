@@ -15,9 +15,12 @@
     "7": { "name": "Rae", "trainer": { "dialogueBefore": "We came to see the shrine together! And to battle together!", "dialogueAfter": "Together we lost. That's still together!" } },
     "8": { "name": "Ula", "trainer": { "dialogueBefore": "Two of us and one of you! That's fair, right?", "dialogueAfter": "It wasn't fair at all. For us!" } },
     "9": { "name": "Wes", "trainer": { "dialogueBefore": "I've walked every path in this wood. Now walk into a battle!", "dialogueAfter": "I'll walk home now." } },
+    // (plan 40 · GE11: he keeps the Reveal Glass for a Trainer with one of the three of the legend, abundant_shrine.txt's
+    // RevealGlass, and says his line to anyone else)
     "10": {
       "name": "Pokémon Breeder",
       "npcType": "pokemon_breeder_m",
+      "script": "RevealGlass",
       "dialog": [ "The folk round here say three great Pokémon once made the land rich. The shrine's for the one that blessed the fields." ]
     }
   },

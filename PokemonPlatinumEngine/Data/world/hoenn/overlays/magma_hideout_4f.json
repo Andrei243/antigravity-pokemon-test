@@ -16,5 +16,9 @@
     "magma_hideout_4f_maxie": { "name": "Maxie", "npcType": "maxie", "script": "Maxie", "still": true },
     "magma_hideout_4f_groudon_sleeping": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "script": "SleepingGroudon", "still": true },
     "magma_hideout_4f_groudon": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "still": true }
-  }
+  },
+  // Omega Ruby's and Alpha Sapphire's Mega Stone found here (plan 40 · GE11, decision 11), once Hoenn's Hall of Fame is entered
+  "npcs": [
+    { "id": "magma_hideout_4f.Cameruptite", "name": "Cameruptite", "npcType": "ItemBall", "x": 14, "y": 22, "item": "Cameruptite", "shownBy": "HoennHallOfFame", "hiddenBy": "FLAG_HOENN_OBTAINED_CAMERUPTITE" }
+  ]
 }

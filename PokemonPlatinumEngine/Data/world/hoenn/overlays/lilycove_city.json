@@ -18,7 +18,7 @@
     "girl_1": { "name": "Girl", "script": "Girl" },
     "man_1": { "name": "Man", "dialog": [ "The Contest Hall here is where the very best Pokémon come to show off. Only a Master Rank winner is anybody in Lilycove!" ] },
     "rich_boy": { "name": "Rich Boy", "dialog": [ "I came all the way from Kanto to see Hoenn's Pokémon. The sea air here is something else!" ] },
-    "man_2": { "name": "Man", "dialog": [ "I deal in paintings. The museum here has a collection I'd give anything to get my hands on." ] },
+    "man_2": { "name": "Man", "script": "Altarianite", "dialog": [ "I deal in paintings. The museum here has a collection I'd give anything to get my hands on." ] },
     "woman_2": { "name": "Woman", "script": "Woman" },
     "expert_m": { "name": "Old Man", "dialog": [ "The sea doesn't age, you know. Sixty years I've looked at it, and it's as young as the day I first saw it." ] },
     "expert_f": { "name": "Old Woman", "dialog": [ "My husband asked me to marry him right here, sixty years ago. We still come to watch the waves together." ] },

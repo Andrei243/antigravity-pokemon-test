@@ -159,6 +159,8 @@ script Rowan
   if var VAR_SANDGEM_TOWN_LAB_STATE == 0 goto Before
   face self player
   speaker "Prof. Rowan"
+  # (plan 40 · GE11: the stones of Sinnoh's own Megas, once the Hall of Fame is entered and the bag holds a Key Stone)
+  call OurMegaStones
   # SandgemTownLab_GiveCynthiaMyBestRegards: between his scene and the player's arrival in Sunyshore City
   if var VAR_SANDGEM_TOWN_LAB_STATE == 3 goto Regards
   # SandgemTownLab_ProfRowanReactToPokedex
@@ -402,3 +404,21 @@ script GivePiplup
   fanfare pokemon
   text "{player} received the Piplup!"
   return
+
+
+# The stones of the Megas of our own whose line is Sinnoh's (plan 40 · GE11; docs/plans/decisions/R20b-mega-proposals.md,
+# "Where the stones are found", approved 2026-10-26): once Sinnoh's Hall of Fame is entered and the bag holds a Key Stone
+# (Kalos's, from the Tower of Mastery), the professor hands over the Torterrite, the Infernapite and the Empoleonite, once,
+# and the talk ends there; until then the talk goes on as before.
+script OurMegaStones
+  if not flag SinnohHallOfFame return
+  if not item "Key Stone" return
+  if flag FLAG_RECEIVED_SANDGEM_TOWN_LAB_MEGA_STONES return
+  say "Hm? That stone on your wrist... A Key Stone! So you have seen Mega Evolution with your own eyes, {player}."
+  say "Then these are yours. I found them near Mt. Coronet, each one warm to the touch where Sinnoh's first Pokémon came near."
+  give "Torterrite"
+  give "Infernapite"
+  give "Empoleonite"
+  setflag FLAG_RECEIVED_SANDGEM_TOWN_LAB_MEGA_STONES
+  say "One for each of the three in that briefcase. Whichever you raised, it can go further now. Show me what it becomes!"
+  end

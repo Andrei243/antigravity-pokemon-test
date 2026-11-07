@@ -37,7 +37,21 @@ label Offer
   take "Shoal Shell" 4
   give "Shell Bell"
   say "Let a Pokémon hold the Shell Bell, and every blow it lands gives it back a little HP. Its ring is soothing, too."
+  # (plan 40 · GE11, decision 11: Omega Ruby's and Alpha Sapphire's Slowbronite, for the salt and shells after the Hall of Fame)
+  call Slowbronite
   end
 label Declined
   say "No? I'll be here whenever you change your mind."
   end
+
+
+# Omega Ruby's and Alpha Sapphire's Slowbronite (plan 40 · GE11, decision 11: the old man of Shoal Cave gives it for four
+# Shoal Salt and four Shoal Shells): once Hoenn's Hall of Fame is entered, the first Shell Bell he makes comes with it, once
+script Slowbronite
+  if not flag HoennHallOfFame return
+  if flag FLAG_HOENN_RECEIVED_SLOWBRONITE return
+  say "And here's something the tide brought in with the last of the shells. A stone with a swirl in it, like a Shellder's."
+  give "Slowbronite"
+  setflag FLAG_HOENN_RECEIVED_SLOWBRONITE
+  say "A Slowbro holding that Slowbronite can Mega Evolve, so they say. Take it, take it. The sea gives plenty."
+  return
