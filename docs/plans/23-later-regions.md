@@ -184,9 +184,11 @@ Each session: the rule in a GPU-free class with its tests, the areas opened thro
   (the aura's stages, the first call and its named ally, the ball refused, the battle won with the ally standing, the
   record file, the script's word, a Z-Move refused without its crystal or ring) and `AlolaAkalaTrialsTests` (every new
   place and room walked to, the spawns, the stamps and the cap by them, each totem fought as one and its crystal given
-  once, and the story from Royal Avenue to the resort headless). **Left**: the harness's shots (`wa10` to `wa20`,
-  `ft22_totem_aura`, `28f_card_alola_stamps`; see the session's report), so the "done when" holds headless only; the
-  rulings' "Left".
+  once, and the story from Royal Avenue to the resort headless). **Shots**: the harness's `akala` mode (not part of `all`;
+  `wz` in place of the plan's `wa10` to `wa20`, which Z5 took): the places by day `wz01` to `wz12`, two after dark,
+  the rooms `wz20` to `wz27`, the card's stamps `wz40`, and the totem Gumshoos through Verdant Cavern's own script
+  (`wz29` to `wz35`: its aura, its first call answered by a Gumshoos, and Breakneck Blitz from a Litten holding the
+  Normalium Z), which is the "done when". **Left**: the rulings' "Left"; the totem drawn at its kind's own size.
 
 ### Z7 · Ula'ula, Poni and the Aether Foundation
 - Ula'ula and Poni with their trials, Aether Paradise, Team Skull's town, the Altar, the League on Mount Lanakila, `AlolaHallOfFame`; the region-bound evolutions in `EvolutionContext.Region` (Raichu, Exeggutor, Marowak) alive; the Ultra Beasts placed as plan 03 · D12 asks; `rulings.md`'s Alolan line amended.
@@ -289,7 +291,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [x] Z3 Shalour, the coast and the Tower of Mastery (first part 2026-11-03: Route 10, Geosenge, Route 11, Shalour, the Rumble Badge, the Key Stone and the Lucario; second part 2026-11-03: the harness shots with a Lucario Mega Evolving, caves in the hand-drawn tool, Reflection and Glittering Caves, Route 8's south, Ambrette, Routes 9 and 12, Coumarine City; left, see Z3's second part: Coumarine's Gym, the Connecting Cave, the fossil lab, hordes and sky trainers, songs)
 - [ ] Z4 The mountain, Team Flare and the League (2026-11-07: Coumarine's Gym, Route 13 and the Power Plant, the Prism Tower's Gym, Routes 14 to 21 but 16, Laverre, Dendemille, Anistar, Couriway, Snowbelle, the Pokémon Village, Lysandre's laboratory, Team Flare's base and Xerneas, Victory Road, the League and Kalos's Hall of Fame, every chapter played headless, and the playthrough bot's way from Coumarine City to the Hall of Fame (`Itineraries.KalosLastChapters`); left: the bot's way from Vaniville whole, the three dexes, the optional places and the Gyms' puzzles)
 - [ ] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rider drawn and the rides' own travel modes, the rest of Akala, Ula'ula, Poni and Aether Paradise, the Town Map with an island to a tab, the user's look at Melemele)
-- [ ] Z6 Melemele and Akala: trials, totems and Z-Moves
+- [x] Z6 Melemele and Akala: trials, totems and Z-Moves (2026-11-07: totems with their aura, first call and no ball; the trial sites calling for help; Alola's stamps; the rest of Akala drawn, Kiawe's and Mallow's trials, Olivia's grand trial and the Hano Grand Resort, headless; the harness's `akala` mode shoots the places, the rooms, the card and the totem Gumshoos calling an ally before the Normalium Z's Breakneck Blitz, which is the "done when"; left: the rulings' "Left")
 - [ ] Z7 Ula'ula, Poni and the Aether Foundation
 - [ ] Z8 After the League: Ultra Space and the Battle Royal (optional)
 - Z9 to Z16 moved to plans 33 and 34 (2026-11-04)
