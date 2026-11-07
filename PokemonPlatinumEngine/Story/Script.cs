@@ -179,6 +179,8 @@ public enum Op
     Royal,
     // The crafting kit (plan 39 · CR1): held or not, given, the pouch's materials taken and counted, the kit looked into
     Craft,
+    // The training hall (plan 36 · TR2): whether its Champion's things are open, a drill on the Pokémon chosen, effort reset, the drills' prizes
+    Train,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

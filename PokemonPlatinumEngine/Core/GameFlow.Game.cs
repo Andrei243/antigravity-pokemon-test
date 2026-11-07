@@ -164,6 +164,9 @@ public sealed partial class GameFlow
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 
+    /// <summary>The training drills' records and the prizes they have earned (plan 36 · TR2; saved).</summary>
+    public TrainingRecords Training { get; } = new();
+
     /// <summary>The DexNav's state (plan 10 · F11, F12).</summary>
     public Overworld.DexNavState DexNav { get; set; } = new();
 

@@ -1116,6 +1116,16 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Craft, Line = line, Name = what };
             }
 
+            // The training hall (plan 36 · TR2): `train open`, `train drill`, `train reset all`, `train reset attack`,
+            // `train prize`; drill and reset act on the Pokémon the last `choosepokemon` chose
+            case "train":
+            {
+                string what = r.OneOf("open", "drill", "reset", "prize");
+                if (what != "reset") return new Instruction { Op = Op.Train, Line = line, Name = what };
+                string stat = r.OneOf("all", "hp", "attack", "defense", "spatk", "spdef", "speed");
+                return new Instruction { Op = Op.Train, Line = line, Name = what, Other = stat };
+            }
+
             // Black City's Black Tower (plan 22 · U10, the last part)
             case "blacktower":
                 return new Instruction { Op = Op.BlackTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "next", "area",

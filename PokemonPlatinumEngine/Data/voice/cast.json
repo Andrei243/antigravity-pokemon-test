@@ -641,6 +641,10 @@
       "note": "first spoken at iki_town.txt(50)",
       "provisional": true
     },
+    "head_coach": {
+      "note": "first spoken at common.txt(3532)",
+      "provisional": true
+    },
     "herbalist": {
       "note": "first spoken at goldenrod_tunnel_b1f.txt(47)",
       "provisional": true
@@ -1938,6 +1942,7 @@
     "Hapu": "hapu",
     "Harlequin": "harlequin",
     "Hau": "hau",
+    "Head Coach": "head_coach",
     "Herbalist": "herbalist",
     "Herdier": "herdier",
     "Hiker": "look:hiker",

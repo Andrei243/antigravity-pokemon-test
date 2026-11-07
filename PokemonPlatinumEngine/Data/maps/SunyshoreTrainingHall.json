@@ -1,0 +1,158 @@
+{
+  "name": "SunyshoreTrainingHall",
+  "displayName": "Sunyshore City",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "House",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##........#####",
+    "#.........#.#.#",
+    "#.........#####",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "###...........#",
+    "#............##",
+    "#######.#######"
+  ],
+  "behaviours": [
+    { "x": 10, "y": 5, "width": 4, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "DrillTarget",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "DrillTarget",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "DrillTarget",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallShelf",
+      "x": 11,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrainingMat",
+      "x": 2,
+      "y": 3,
+      "width": 6,
+      "depth": 4
+    },
+    {
+      "type": "Crates",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 5,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Sinnoh",
+      "targetX": 879,
+      "targetY": 742,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "head_coach",
+      "name": "Head Coach",
+      "npcType": "training_coach",
+      "x": 11,
+      "y": 4,
+      "facing": "Down",
+      "script": "TrainingCoach"
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "training_clerk",
+      "x": 13,
+      "y": 4,
+      "facing": "Down",
+      "script": "TrainingClerk"
+    }
+  ],
+  "wildEncounters": []
+}

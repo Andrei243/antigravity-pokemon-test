@@ -238,6 +238,11 @@ public class ScriptTests
           craft take "Soft Fluff" 2
           craft count "Soft Fluff"
           craft open
+          train open
+          train drill
+          train reset all
+          train reset spatk
+          train prize
           photo take
           photo count
           globallink check

@@ -165,6 +165,8 @@ public partial class GameEngine
         public CraftingScreen CraftingScreen => game.flow.CraftingScreen;
         public CraftingState Crafting => game.flow.Crafting;
         public void OpenCrafting(bool atMaker = false) => game.OpenCrafting(fromBag: false, atMaker: atMaker);
+        public TrainingScreen TrainingScreen => game.flow.TrainingScreen;
+        public TrainingRecords Training => game.flow.Training;
         public Toast Toast => game.flow.Toast;
         public Random FieldRandom { get => game.fieldRandom; set => game.fieldRandom = value; }
         public DayCare DayCare => game.flow.DayCare;

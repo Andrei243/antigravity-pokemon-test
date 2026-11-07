@@ -576,8 +576,9 @@ public class BuildingTests
             // and a seat walked onto and a stand of flowers (plan 01 · M11); a lift's car is a plate on its own tile (plan 02 · S13)
             // and a pile of books on its tile (plan 01 · M11, part c), and a vending machine on its (part d), a stereo that stands on the floor beside the wall (Kurt's house, plan 20 · J5) and the workshop's bench (plan 39 · CR1)
             if (prop.IsSolid || prop.Type is PropType.Tank or PropType.WarpPanel or PropType.WarpPanelOut or PropType.DisplayCase or PropType.SlotMachine or PropType.Cushion or PropType.FlowerStand or PropType.LiftCar or PropType.BookPile or PropType.VendingMachine or PropType.AudioSystem or PropType.ShipEngine or PropType.Workbench)
+                // (and the training hall's mat lies on the floor as a rug does, plan 36 · TR2)
                 Assert.True(min.Z >= prop.Y - slack && max.Z <= prop.Y + prop.Depth + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is deeper than its tiles");
-            else if (prop.Type != PropType.Rug)
+            else if (prop.Type is not (PropType.Rug or PropType.TrainingMat))
                 // Things on the back wall hang on its face, two tiles in (more in a room rebuilt to the original's plan)
                 Assert.True(max.Z >= map.RoomCorner().Back && max.Z <= map.RoomCorner().Back + 0.2f, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} ends at {max.Z}, not on the back wall ({map.RoomCorner().Back})");
         }

@@ -1,0 +1,19 @@
+{
+  // The training club's tables (plan 36 · TR2; docs/data-files.md, "Training"): ours, written by hand and read strictly.
+  // A stat's first gold in the drills gives its vitamin; once a Hall of Fame has been entered every tenth gold gives a
+  // Bottle Cap and every fiftieth a Gold Bottle Cap. The coach hands over what is owed when spoken to.
+  "drillPrizes": {
+    "firstGold": [
+      { "stat": "HP", "item": "HP Up" },
+      { "stat": "Attack", "item": "Protein" },
+      { "stat": "Defense", "item": "Iron" },
+      { "stat": "SpAttack", "item": "Calcium" },
+      { "stat": "SpDefense", "item": "Zinc" },
+      { "stat": "Speed", "item": "Carbos" }
+    ],
+    "everyGolds": [
+      { "golds": 10, "item": "Bottle Cap", "afterHallOfFame": true },
+      { "golds": 50, "item": "Gold Bottle Cap", "afterHallOfFame": true }
+    ]
+  }
+}

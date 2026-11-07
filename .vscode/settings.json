@@ -12,6 +12,7 @@
     { "fileMatch": ["tools/DataImporter/Overrides/moves.json"], "url": "./docs/schemas/moves-patch.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/materials.json"], "url": "./docs/schemas/materials.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/recipes.json"], "url": "./docs/schemas/recipes.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/training.json"], "url": "./docs/schemas/training.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/world.json", "tools/OpenWorldBake/worlds/*/world.json"], "url": "./docs/schemas/open-world.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/terrain/*.json", "tools/OpenWorldBake/worlds/*/terrain/*.json"], "url": "./docs/schemas/open-terrain.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/carve/*.json", "tools/OpenWorldBake/worlds/*/carve/*.json"], "url": "./docs/schemas/open-carve.schema.json" },
