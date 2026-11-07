@@ -156,7 +156,7 @@ The Alola and Kalos instruments are open to any song and play in both sounds, bu
 
 ## The modern sound (plan 31)
 
-The later regions' music is to sound like its own era rather than the DS's. [Plan 31](plans/31-later-music.md) adds a second sound to the synthesiser, chosen by data, beside the DS one, which renders every existing song, sound and cry to the sample as before (`ModernMusicTests` holds a sample of songs to hashes measured before the plan).
+The later regions' music is to sound like its own era rather than the DS's. [Plan 31](plans/finished/31-later-music.md) adds a second sound to the synthesiser, chosen by data, beside the DS one, which renders every existing song, sound and cry to the sample as before (`ModernMusicTests` holds a sample of songs to hashes measured before the plan).
 
 - **Its own rate and voices**: `new Synthesizer(SynthSound.Modern)` runs at 48,000 Hz (`Synthesizer.ModernRate`) with 96 voices (`ModernVoices`, plan 31's decision 2, to be measured on the Windows machine); `new Synthesizer()` is the DS one, 32,768 Hz and 40 voices. `SongPlayer(sound)` plays a song in either, and its `Rate`, `PeakVoices` and `VoicesStolen` (notes that cut a sounding voice short) say what it needed.
 - **The top end**: its wavetables keep harmonics up to 20 kHz (the DS sound's stop at 14 kHz), and the drum kit's filters are moved to the rate so a drum keeps its colour.

@@ -90,7 +90,7 @@ Already in the save (Where we are): the original trainer, EVs, held item, abilit
 
 ### What the battles still owe a link battle: plan 28
 
-This plan first listed four asks of the battle rework. Plan 06 · R1 and R2 gave the first three: the rules apart from the screen (`BattleCore` and its log), one way to choose for a side (`IBattleController`, with both sides asked from outside when it is null) and one seedable source of chance (`BattleRandom`), plus the replay (`BattleRecord`). The fourth was half given. What is left (a log that names places instead of objects, a view of the log each side may see, both sides asked by the menus, a battle's state written out and read back, a link battle's own setup with its rules, clauses and timer) is collected in [plan 28 · Battles for two players](28-battles-for-two-players.md), which replaces session O3. O6 starts once plan 28's sessions I1 to I4 are done.
+This plan first listed four asks of the battle rework. Plan 06 · R1 and R2 gave the first three: the rules apart from the screen (`BattleCore` and its log), one way to choose for a side (`IBattleController`, with both sides asked from outside when it is null) and one seedable source of chance (`BattleRandom`), plus the replay (`BattleRecord`). The fourth was half given. What is left (a log that names places instead of objects, a view of the log each side may see, both sides asked by the menus, a battle's state written out and read back, a link battle's own setup with its rules, clauses and timer) is collected in [plan 28 · Battles for two players](finished/28-battles-for-two-players.md), which replaces session O3. O6 starts once plan 28's sessions I1 to I4 are done.
 
 ### Risks
 
