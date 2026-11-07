@@ -907,7 +907,7 @@ partial class Harness
             var packsBefore = engine.Settings.Packs.ToList();
             game.State = GameState.Options;
             options.Open();
-            while (OptionsScreen.AllRows[options.SelectedIndex] != OptionRow.Packs) options.Move(1);
+            options.Select(OptionRow.Packs);
             Frames(6); Shot("29e_packs_row");
             string? repo = AppContext.BaseDirectory;
             while (repo != null && !Directory.Exists(Path.Combine(repo, "samples", "packs"))) repo = Path.GetDirectoryName(repo);

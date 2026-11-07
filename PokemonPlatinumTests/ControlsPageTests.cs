@@ -398,7 +398,7 @@ public class ControlsPageTests
             var settings = new GameSettings();
             var options = new OptionsScreen();
             options.Open();
-            while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.Controls) options.Move(1);
+            options.Select(OptionRow.Controls);
             options.Confirm(settings);
             Assert.True(options.Controls.IsActive);
 

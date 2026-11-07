@@ -49,7 +49,7 @@ partial class Harness
         game.State = GameState.Options;
         var options = game.Options;
         options.Open();
-        void GoToRow(OptionRow row) { while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != row) options.Move(1); }
+        void GoToRow(OptionRow row) => options.Select(row);
         GoToRow(OptionRow.MoveHints);
         Frames(1); Shot("look_12_options_hints");
         // HELP is the last row, whatever rows have come before it since

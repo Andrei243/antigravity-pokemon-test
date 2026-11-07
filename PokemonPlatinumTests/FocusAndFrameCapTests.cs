@@ -39,18 +39,19 @@ public class FocusAndFrameCapTests
         int first = Array.IndexOf(Rows.ToArray(), OptionRow.FocusPause);
         Assert.Equal(new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes, OptionRow.BattleScene, OptionRow.BattleStyle }, Rows.Skip(first).Take(5));
         Assert.True(first < Array.IndexOf(Rows.ToArray(), OptionRow.Help));
-        // The screen still shows nine at a time and scrolls to the rest
-        Assert.Equal(9, OptionsScreen.VisibleRows);
+        // The screen shows eight at a time under its tabs; each row is found on its own tab, in the window
+        Assert.Equal(8, OptionsScreen.VisibleRows);
         var screen = new OptionsScreen();
         screen.Open();
         foreach (var row in new[] { OptionRow.FocusPause, OptionRow.FrameCap, OptionRow.SkipScenes, OptionRow.BattleScene, OptionRow.BattleStyle })
         {
-            while (Rows[screen.SelectedIndex] != row) screen.Move(1);
+            screen.Select(row);
+            Assert.Equal(row, screen.Selected);
+            Assert.Equal(OptionsScreen.CategoryOf(row), screen.Category);
             Assert.InRange(screen.SelectedIndex, screen.FirstRow, screen.FirstRow + OptionsScreen.VisibleRows - 1);
         }
-        while (Rows[screen.SelectedIndex] != OptionRow.Help) screen.Move(1);
-        // On HELP, the second last row, the window is at its end (the row below it shows)
-        Assert.Equal(Rows.Length - OptionsScreen.VisibleRows, screen.FirstRow);
+        // HELP and the reset are the last two rows of the last tab
+        Assert.Equal(new[] { OptionRow.Help, OptionRow.ResetDefaults }, OptionsScreen.RowsIn(OptionCategory.More).TakeLast(2));
     }
 
     [Fact]

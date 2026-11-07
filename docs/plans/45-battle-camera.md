@@ -1,0 +1,135 @@
+# Plan 45 · A battle camera that moves
+
+Written 2026-11-07, before any session, at the user's request: the battle's camera made livelier, on the model of Sword and Shield's (a camera that keeps moving while the player chooses, pushes in on a Pokémon and pulls out again, and now and then splits the picture in two to show the two teams face on), with a way of filming of its own for every generation's region from Kanto to Paldea.
+
+**Goal**: a battle that looks filmed rather than watched from one seat. Between the moves the camera drifts through a cycle of shots of its own instead of resting on the overview; a battle opens and closes with shots that introduce and send off both sides; at the moments that matter (the two leads facing each other, a last Pokémon, a giant on each side) the picture splits in two and shows each team from the front. Each region films its battles in a manner of its own, from Kanto's, Johto's and Hoenn's restraint to Galar's constant movement, chosen by the region's file; the options' BATTLE tab chooses between that, Galar's manner everywhere, and today's camera. All of it is the face's: no rule, roll, line or recorded battle changes.
+
+This is a camera language, not a copy: no shot, timing or framing is measured off any game's footage. The originals are remembered only for what kind of filming each generation did (a fixed seat, a camera that zooms between commands, a drifting camera, a split face-off), and every number here is ours, judged on the harness's pictures.
+
+## Where we are
+
+- **The director** is `Graphics/BattleCamera.cs` (plan 04 · G8, grown by plans 11, 14, 25 and Y): `Direct(anim, places, choosing)` turns the animator's state into a `CameraShot` (position, target, lens) and a `ShotKind`, a pure function of the battle's clock, so tests check every shot without a window; `Update` eases between shots (0.18 s) and cuts where the style guide says (attacker to target, a critical punch-in, anything that would cross the player's side, `CrossesPlayerSide`, `Clearance`). Its shots: the intro's sweep (1.8 s), the overview, a send-out, the attacker and the target of a move, a critical hit's punch-in, the thrown ball, a faint, a turntable, a trainer who speaks, a giant's growth, a Max Move's whip and punch-in, and plan 25 · Y17's four signature shots (`Graphics/Direction.cs`).
+- **While the player chooses a command the camera is always on the overview** (`Direct`'s first line, `choosing && anim.Time >= 1.8f`; the style guide's "Camera (G8)" says so). Between moves nothing moves but a sway of 0.012 rad (`Overview`).
+- **One number scales every move beyond the plain shots**: `BattleCamera.Motion` (1, nought under plan 12 · Q9's REDUCE MOTION). A photo holds the shot (`BattleCamera.Hold`, plan 12 · Q17).
+- **One view**: `BattleRenderer.Render` draws one camera into the scene target (`RenderContext.BeginScene`, its part under dynamic resolution, plan 16 · T23), with one shadow map, then the post passes. A second view exists only for the field's water (`RenderContext.Mirror`, 1920×1080, on presets that reflect), and nothing splits the picture.
+- **The battle's arenas** are `BattleStage` from `BattleArenas`, a stage per `BattleArena` and region (plans 19 to 23 added theirs); a Gym's, the League's and the Frontier's are the arenas a Leader or a Champion is fought in. Kalos and Alola are drawn on the tile grid (plan 23); Galar and Paldea will be on plan 32's open world, whose battles still use this renderer.
+- **Who stands where**: `Graphics/BattlePlaces.cs` (up to five a side, plan 14 · B4), `FxPlaces` (each Pokémon's foot, height and half-width), the trainers on their platforms (`BattleAnimator.EnemyTrainer`, `PartnerTrainer`, `SpeakingTrainer`). The player's own trainer is drawn behind the player's platform and has never been filmed from the front.
+- **The harness** shoots battles at their menus (`ToMainMenu`) and at moments of a move in every battle mode (`demo`, `battle`, `doubles`, `conditions`, `giants`, `formats`, the regions' story modes): every one of those pictures is today's overview at the menu.
+- **The options** are on tabs since 2026-11-07; the BATTLE tab holds BATTLE SCENE, BATTLE STYLE, MOVE HINTS, TRAINER LINES and the rest, so a camera row has its place.
+
+## Design
+
+### Three ways to film, and who chooses
+
+- **The options' BATTLE CAMERA row** (`GameSettings.BattleCamera`, `BattleCameraChoice`: `Classic`, `Region`, `Lively`; on the BATTLE tab, after BATTLE STYLE in the tab's order, at the enum's end before HELP): Classic is today's director to the bit; Region films each region in its own manner; Lively films every region in Galar's. Default `Region` (decision 1). REDUCE MOTION goes on overruling: at `Motion` nought every manner is filmed as Classic is.
+- **A manner is data** (`Graphics/CameraManner.cs`, GPU-free): a record of what a region's filming does, each a number or a switch: whether the camera drifts at the menu and how far and how fast, the idle cycle's shots and how long each holds, whether moves push in and pull out and by how much, whether the battle opens and closes with its own shots, when the picture splits, how far a shot may be held low or swung round. The manners are a table (`CameraManners`), one to a region by its file's `battleCamera` (a name of the table; a region without one is filmed as Sinnoh is), and Classic is the manner whose every switch is off, which a test holds to today's director shot for shot.
+- **The manners**, our own reading of each generation, from the quietest to the liveliest (each is a row of the style guide's new section "The battle's manners", written before its session):
+  - *Kanto, Johto and Hoenn* (games filmed flat): the overview held, a slow push in on the foe at the menu and back, the opening and the closing; no splits. The quietest manner with something new.
+  - *Sinnoh* (Platinum's own seat): today's shots with a breathing overview (a drift of a few degrees round the field, never off the overview's side), the opening and the closing, a split for the last Pokémon of a Gym Leader, an Elite Four or a Champion.
+  - *Unova* (Black and White moved their camera between commands): the menu's drift becomes a slow swing between the overview and a shot low behind the player's Pokémon looking at the foe; a move's attacker shot pushes in a little more; a split as the leads face each other in a trainer's battle.
+  - *Kalos* and *Alola* (the first fully 3D generations): the idle cycle of shots, the opening introducing the foe's trainer and then the Pokémon, a low shot of the target as it is hit, a split at the leads and at the last Pokémon; Alola's shots stand lower and wider, with the trainers in them.
+  - *Galar* (the manner the user asked for, and Lively's): the camera never rests. The idle cycle at the menu (below), every move pushed in on its user and pulled out past its target, a reaction shot after a super-effective hit or a faint, the split at the leads, at every send-out of a trainer's battle, at the last Pokémon and when both sides have a giant, and the Gym Leaders' and Champions' battles filmed with a crane over the stage at their opening and closing.
+  - *Hisui* (Legends: Arceus's battles were close and low): Galar's cycle at half its reach, lower, without the splits.
+  - *Paldea*: Galar's manner with the cycle's shots handheld (a small sway of the aim, our own noise of the battle's clock, no roll) and a split when a Pokémon Terastallizes facing its foe.
+
+### The idle cycle: the menu is filmed
+
+- **What the player chooses over** stops being one shot. While a menu is open (`choosing`), a manner that has a cycle runs it: a few shots of ours, each held for its time and eased into the next over a second or more, as a function of the time the menu has been open (never of the frames), so a picture taken at a moment is the same every run. The shots, for a single battle (`IdleShot`):
+  - *the overview*, as today, which every cycle begins on, so a menu opened and closed at once looks as it always did;
+  - *over the shoulder*: low behind the player's Pokémon, its back and the foe beyond it, the foe in the picture's upper middle;
+  - *the foe's face*: the foe from the front, close (2.6 × its height), turned a little;
+  - *our own Pokémon's face*: the player's Pokémon from the front, which is in front of the player's platform: the first shot of the director to stand between the two platforms looking south (below);
+  - *the side*: both platforms from the side, the two facing each other across the picture;
+  - *the crane* (Galar, a Leader's or a Champion's battle): high over the stage, both sides and the stage's ground.
+- **What a cycle must keep**: the command menu, the move cards and the HP boxes are drawn where they are and must not cover what the shot is of, so each shot holds its subjects in the picture's free part (a rectangle of the layout the panels leave, `IdleFrame`), and a test projects each Pokémon's box (its foot, height and half-width, `FxPlaces`) through every shot of every cycle and holds it there. A shot whose subject a big Pokémon would overfill is widened up to `WidestFov` or left out of the cycle for that battle. A move card open on a target (the target menu) brings the overview back, as does BAG, POKéMON and a question: the cycle runs only on the commands and the move cards.
+- **Leaving the cycle**: the move chosen, the camera eases (or cuts, where the old rule says) from wherever the cycle stood into the move's shots, and the cycle starts again from the overview at the next menu.
+
+### Filming the player's side from the front
+
+- **A new place for the camera**: every shot today stands north of the player's platform or behind it (`CrossesPlayerSide` and `Clearance` keep easing from passing through it). The face-on shots of the player's Pokémon and trainer stand between the two platforms looking south, so the rule becomes a rule of corridors: a shot of our own side's front is reached only by a cut, never an ease, and is left by a cut (`ShotKind` gains `OwnFront`); the eases between every other pair stay as they are. The player's trainer is drawn with their front lit and their face (the rig has one: `CharacterRig.Face`), which the style guide's "Battles (3D)" says nobody has seen.
+
+### Push in, pull out
+
+- **A move's shots with movement in them** (a manner's `Push`): the attacker's shot dollies in over the wind-up (3 to 2.4 × the height), the target's shot starts tight and pulls out past the impact so the move's set piece is in the picture (2.6 to 3.6 ×), and a heavy hit (`Directions`' hit-stop) holds its punch-in a beat longer. A signature move's own shot (plan 25 · Y17) and a Max Move's (plan Y) win over these as they win over the plain ones; a manner only scales them.
+- **Reactions** (a manner's `React`): after a super-effective hit, a critical one or a faint, a short shot of the one hit (or of its trainer, in a trainer's battle) held 0.6 s before the overview or the next move; never when the next line is the move of another Pokémon already, so a turn reads no slower than its lines.
+
+### Opening and closing
+
+- **The opening** (a manner's `Open`, after plan 09 · L13 to L15's way into the battle, which ends on the battle's first frame): for a wild Pokémon, close on it then pulled out to the overview as it cries; for a trainer, the trainer, then their Pokémon as it comes out, then the player's as it comes out, each a send-out's shot as now. Galar's Leaders and Champions open with the crane down onto the stage. The intro's sweep (1.8 s) is the Classic manner's opening and stays its own.
+- **The closing** (`Close`): a win holds the player's Pokémon from the front with the trainer behind it (the first face-on shot of the player's trainer), a catch the ball's own shots as now, a loss the foe's side; each ends where the battle ends today, so no line waits on it.
+
+### The split: both teams face on
+
+- **What a split is**: the picture cut in two by a slanted band of the interface's colours, the foe's side in the upper right seen from the front and the player's in the lower left seen from the front, each half its own camera (`SplitShot`: two `CameraShot`s, the band's angle and how far it has come in). It comes in from the edges over 0.3 s, holds, and goes out the same way into the next shot, never cutting to or from a half.
+- **When** (a manner's `Splits`): the leads' send-outs of a trainer's battle (both platforms filled, held 1.4 s), a trainer's last Pokémon coming out (plan 11 · C12's `LastPokemon` moment, which a line already marks), both sides with a giant at once (plan Y), a Pokémon Terastallizing facing its foe (Paldea). Never in a wild battle but against a legendary (decision 3), never while a line waits on the player, never with the Battle Scene off, never at `Motion` under a half.
+- **Formats**: a double's split frames each side's pair; a triple's and a horde's the side's middle and its neighbours; a rotation's its front seat; a Battle Royal is filmed with four quarters instead of two halves (a manner may leave it out).
+- **How it is drawn** (BC3): the first half is the scene as today; the second is drawn into a second target of its own (1920×1080 at most, the scene's own part under dynamic resolution, made only while a split is on screen and freed after; the mirror's target is not borrowed, since a split and a reflection never share a frame but a preset without reflections has none) with the shadow map of the first, and laid over the first in the composite by a mask the band's line makes (`FieldShaders`' composite takes the second texture and the line), so the post passes run once. Only the half each camera sees is drawn into its target (a scissor on each half's bounding box), so the two together fill about one picture of pixels. Each half's lens keeps its aspect (the half is the picture's shape, cut, not squeezed). The HP boxes are drawn over their own half.
+
+### Under the rules nothing moves
+
+- The camera reads the animator alone, as every shot does; nothing of it reaches `BattleCore`, the log, the Vs. Recorder or a link battle (plan 28: each player's screen films their own side as its own). A recorded battle replays the same and is filmed by the watcher's options.
+- **Two runs draw the same pictures**: every shot, cycle and split is a function of the animator's clock, the menu's open time and the cue's seed; nothing reads `FrameClock` or a frame count.
+- **The harness keeps its pictures**: the harness's game is `new GameSettings()` with the camera set to Classic in the harness itself (`Harness.cs`, beside its other fixed options), so no mode's shots move with this plan; the new `camera` mode (below) shoots the manners. A session that changes Classic's shots is a bug, which `diff` of the battle modes finds.
+
+### Seeing it
+
+- **The harness's `camera` mode** (not part of `all`, `Modes/Camera.cs`): for each manner, a wild battle and a trainer's battle shot at its opening, at the menu every half second through two of its cycles, through a move, a super-effective hit, a faint, the leads' split and the last Pokémon's, and its closing (`bc_<manner>_<moment>_<n>`), and a reel of each at ten pictures a second for `contact` to put on sheets, which is how a moving camera is judged without a video. `CAMERA_ONLY=galar,unova` shoots some.
+- **Timing**: `profile` gains a battle at the menu under the Galar manner and a split held, judged by their floors against the overview's; the split's second view must cost no more than the battle's scene does today (decision 4).
+
+## Decisions
+
+Each is the user's; the plan's recommendation is first.
+
+1. **The default**: *Region* (each region its own manner; Sinnoh's is quiet, so a new game looks almost as it does) / *Lively* (Galar's everywhere from the start) / *Classic* (nothing changes until the row is turned).
+2. **The manners**: *one per generation as above* / *Galar's manner only*, with Classic and nothing between (half the sessions: BC6 shrinks to a row of the table).
+3. **Splits in wild battles**: *only against legendary and mythical Pokémon* / *every wild battle's opening* / *never*.
+4. **What a split may cost**: *no more than the battle's scene costs today* (the scissored halves; if the 970 can't, the second half is drawn at half resolution) / *up to twice, with a quality preset turning splits off*.
+
+## Sessions
+
+Every session ends with the harness's battle modes `diff`ed against their run before it (`tools/dev/baseline.sh <commit> demo battle doubles giants`): nothing of Classic may move. Each is Opus, but BC7.
+
+### BC1 · Manners as data, the row, and Classic held
+
+- `Graphics/CameraManner.cs` and the table with Classic and Sinnoh's (whose new parts are off until their sessions), `BattleCamera.Manner` read by `Direct`, the region files' `battleCamera`, the options' BATTLE CAMERA row on the BATTLE tab (its words, `GameSettings.BattleCamera`, the content check's and the schema's), the harness set to Classic, the style guide's "The battle's manners" section with the table's columns.
+- **Done when** a test drives every shot kind of the director under Classic and under a manner with all its switches off and gets the same shots to the bit, the row changes the manner in a battle, and every battle mode's `diff` is empty.
+
+### BC2 · The idle cycle and the player's side from the front
+
+- `IdleShot`, the cycles of Sinnoh's, Unova's and Galar's manners, `IdleFrame`, the corridor rule and `ShotKind.OwnFront` with its cuts, the player's trainer lit and faced from the front; the style guide's "Camera (G8)" rewritten where it says the menu is the overview.
+- **Done when** a test projects every Pokémon of a single, a double and a horde through every idle shot of every manner and finds each in the free part of the picture, no ease passes the player's platform, and the `camera` mode shoots two cycles of each manner the same twice.
+
+### BC3 · The split
+
+- The second view's target, the scissored halves, the composite's mask, the band's look (the style guide first), `SplitShot` and its timing, the leads' split and the last Pokémon's in Sinnoh's and Galar's manners; `profile`'s split scene.
+- **Done when** the `camera` mode shoots a split coming in, held and going out in a single and a double, the same twice, and `profile`'s split floor is within decision 4's bound on the Windows machine.
+
+### BC4 · Push in, pull out, reactions
+
+- The manners' `Push` and `React`, laid under the signature and Max Move shots, scaled by `Motion`.
+- **Done when** a test holds that no reaction delays a line (a turn's lines read at the same moments with and without), every shot keeps `Clearance`, and the `camera` mode shoots a move, a super-effective hit and a faint in Galar's manner.
+
+### BC5 · Opening and closing
+
+- The manners' `Open` and `Close` after the ways into a battle, the crane for Leaders and Champions, the win's face-on shot of the player's Pokémon and trainer.
+- **Done when** a wild and a trainer's battle open and close in each manner in the harness, the band of plan 09 · L15 still opens onto the battle's first frame, and no closing holds a line past where the battle ends today.
+
+### BC6 · The regions' manners
+
+- Kanto's, Johto's and Hoenn's, Kalos's, Alola's, Hisui's and Paldea's rows of the table and of the style guide, each region file's `battleCamera`, Paldea's handheld sway and its Terastallization split; Galar's and Paldea's battles on plan 32's engine take theirs by their region files when they come.
+- **Done when** the `camera` mode shoots every manner's cycle, split and closing, and a test holds every built region's file to a manner of the table.
+
+### BC7 · Formats and the rest (Sonnet)
+
+- Splits and cycles for triples, rotations, the Battle Royal's quarters, SOS allies hopping in, the Frontier's facilities; photo mode over the cycle (the held shot starts from wherever the cycle stood); link battles each filmed by their own options.
+- **Done when** the `camera` mode shoots a triple's, a rotation's and a Royal's split, a photo is composed from an idle shot, and two link players' screens film their own sides in the same turn.
+
+## Status
+
+- [ ] BC1 · Manners as data, the row, and Classic held
+- [ ] BC2 · The idle cycle and the player's side from the front
+- [ ] BC3 · The split
+- [ ] BC4 · Push in, pull out, reactions
+- [ ] BC5 · Opening and closing
+- [ ] BC6 · The regions' manners
+- [ ] BC7 · Formats and the rest

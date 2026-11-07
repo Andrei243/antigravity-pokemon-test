@@ -361,17 +361,44 @@ public class AmbienceTests
     {
         var screen = new OptionsScreen();
         screen.Open();
-        int rows = Enum.GetValues<OptionRow>().Length;
+        // The longest tab scrolls; the cursor stays in the window and wraps round to the top
+        var longest = OptionsScreen.Categories.OrderByDescending(c => OptionsScreen.RowsIn(c).Count).First();
+        int rows = OptionsScreen.RowsIn(longest).Count;
         Assert.True(rows > OptionsScreen.VisibleRows);
+        screen.ShowCategory(longest);
         for (int i = 0; i < rows - 1; i++)
         {
             screen.Move(1);
             Assert.InRange(screen.SelectedIndex, screen.FirstRow, screen.FirstRow + OptionsScreen.VisibleRows - 1);
         }
-        Assert.Equal(OptionRow.ResetDefaults, Enum.GetValues<OptionRow>()[screen.SelectedIndex]);
+        Assert.Equal(OptionsScreen.RowsIn(longest)[^1], screen.Selected);
         Assert.Equal(rows - OptionsScreen.VisibleRows, screen.FirstRow);
-        // Round to the top again
         screen.Move(1);
         Assert.Equal((0, 0), (screen.SelectedIndex, screen.FirstRow));
+    }
+
+    [Fact]
+    public void EveryOptionIsUnderOneTabAndTheTabsTurnRound()
+    {
+        // Every row is on exactly one tab (CategoryOf throws for a row nobody named), and no tab is empty
+        var onTabs = OptionsScreen.Categories.SelectMany(OptionsScreen.RowsIn).ToList();
+        Assert.Equal(Enum.GetValues<OptionRow>().OrderBy(r => r), onTabs.OrderBy(r => r));
+        Assert.All(OptionsScreen.Categories, c => Assert.NotEmpty(OptionsScreen.RowsIn(c)));
+
+        var screen = new OptionsScreen();
+        screen.Open();
+        Assert.Equal(OptionCategory.Game, screen.Category);
+        screen.Move(2);
+        screen.ChangeCategory(1);
+        Assert.Equal((OptionCategory.Field, 0, 0), (screen.Category, screen.SelectedIndex, screen.FirstRow));
+        screen.ChangeCategory(-2);
+        Assert.Equal(OptionCategory.More, screen.Category);
+        Assert.Equal(OptionsScreen.RowsIn(OptionCategory.More), screen.Rows);
+
+        // A screen made with rows of its own (the first start's) has no tabs
+        var page = new OptionsScreen(new[] { OptionRow.TextSize, OptionRow.Language });
+        Assert.False(page.Tabbed);
+        page.ChangeCategory(1);
+        Assert.Equal(new[] { OptionRow.TextSize, OptionRow.Language }, page.Rows);
     }
 }

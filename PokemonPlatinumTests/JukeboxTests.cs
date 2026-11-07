@@ -203,7 +203,7 @@ public class JukeboxTests
 
         var options = new OptionsScreen();
         options.Open();
-        while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.Jukebox) options.Move(1);
+        options.Select(OptionRow.Jukebox);
         Assert.False(options.TakeJukeboxRequest());
         options.Confirm(new GameSettings());
         Assert.True(options.TakeJukeboxRequest());
