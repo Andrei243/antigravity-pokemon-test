@@ -815,6 +815,19 @@ public sealed class HeadlessScriptHost : IScriptHost
         else if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
+    /// <summary>A trial's totem (plan 23 · Z6): fought as a wild battle that can't be run from, its aura written down; a totem is never caught.</summary>
+    public void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura)
+    {
+        Shown("start a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
+        if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
+        string ally = aura.Ally is { } named ? $" ally {named}" : "";
+        Log.Add($"totembattle {wild.Species.Name} {wild.Level} {string.Join(",", aura.Stats)}+{aura.Stages}{ally} {Outcome}");
+        if (Outcome == BattleOutcome.Lost) Party.HealAll();
+    }
+
     public BattleOutcome Outcome { get; private set; }
 
     /// <summary>

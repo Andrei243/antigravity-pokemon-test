@@ -1202,6 +1202,15 @@ public partial class GameEngine
                 nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free);
         }
 
+        public void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura)
+        {
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            wild.Relevel(game.LevelHere(wild.Level));
+            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch
+            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: true, totem: aura);
+        }
+
         public BattleOutcome Outcome => game.flow.ScriptOutcome;
 
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null)

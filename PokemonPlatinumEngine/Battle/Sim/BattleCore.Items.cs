@@ -393,6 +393,8 @@ public sealed partial class BattleCore
         if (item.Pocket == ItemPocket.PokeBalls)
         {
             if (IsTrainerBattle) return Text.Of("battle.theTrainerBlockedThe");
+            // A trial's totem and its allies can't be caught (plan 23 · Z6)
+            if (Totem != null) return TotemRefusal;
             if (EnemySlots.Count(f => f.IsActive) is > 1 and var standing) return NoAim(standing);
             return null;
         }

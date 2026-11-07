@@ -105,6 +105,8 @@ public sealed class BattleRenderer
         MoveFx.Conditions(anim, places, fx);
         // And a giant's wreath of red clouds and a Terastallized Pokémon's crown (plan 25 · Y15)
         MoveFx.Giants(anim, places, fx);
+        // And a trial's totem in its aura (plan 23 · Z6)
+        MoveFx.Totems(anim, places, fx);
         // While a giant stands, red-violet clouds low on the sky (plan 25 · YD1)
         GiantSky.Clouds(GiantSky.Presence(anim), anim.Time, Arena.Outdoors, fx);
         ArenaFx.Emit(Arena, anim.Time, night, fx, Math.Max(anim.WeatherStrength, anim.FadingStrength));

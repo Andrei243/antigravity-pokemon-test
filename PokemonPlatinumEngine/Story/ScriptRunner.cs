@@ -859,7 +859,9 @@ public sealed partial class ScriptRunner
                 var catcher = i.Op == Op.CatchingLesson && i.Other.Length > 0
                     ? new LessonCatcher(i.Other, new Pokemon(PokemonDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no species '{i.Partner}'"), i.X))
                     : null;
-                host.WildBattle(wild, kind, cannotFlee: i.Option, catcher);
+                // A trial's totem, with its aura (plan 23 · Z6)
+                if (i.Op == Op.WildBattle && i.Totem is { } totem) host.TotemBattle(wild, totem);
+                else host.WildBattle(wild, kind, cannotFlee: i.Option, catcher);
                 afterBusy = () => AfterBattle(mayLose: false);
                 break;
             }

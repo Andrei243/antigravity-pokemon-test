@@ -107,6 +107,12 @@ public sealed class CombatantView
     /// <summary>It is Dynamaxed, as the lines have told: it stands giant, its wreath over its head.</summary>
     public bool Dynamaxed { get; internal set; }
 
+    /// <summary>
+    /// It is a trial's totem wrapped in its aura (plan 23 · Z6; style guide, "Stage", "A totem's aura"), as the lines have
+    /// told (<see cref="Battle.Sim.TotemAuraRaised"/>): its age, −1 for none. Only the screen's, never the rules'.
+    /// </summary>
+    public float TotemAge { get; internal set; } = -1f;
+
     /// <summary>Its Dynamax is a Gigantamax: gold in its wreath.</summary>
     public bool Gigantamax { get; internal set; }
 
@@ -1653,6 +1659,7 @@ public sealed class BattleAnimator
         v.CheerAge = Tick(v.CheerAge, dt, CheerTime);
         v.StatAge = Tick(v.StatAge, dt, StatEyesTime);
         if (v.ChargeAge >= 0f) v.ChargeAge += dt;
+        if (v.TotemAge >= 0f) v.TotemAge += dt;
         v.AwayAge = Tick(v.AwayAge, dt, Graphics.BodyMotions.LeaveTime);
         v.BackAge = Tick(v.BackAge, dt, Graphics.BodyMotions.ReturnTime);
         // A spent body stays down while it lies fainted, and is let go once it stands again or is gone
@@ -1722,6 +1729,7 @@ public sealed class BattleAnimator
         v.ArriveAge = -1f;
         v.DodgeAge = v.CheerAge = v.ChargeAge = v.StatAge = -1f;
         v.AwayAge = v.BackAge = v.SpentAge = -1f;
+        v.TotemAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;
         // A new Pokémon on the place stands in front of nothing (a passed doll comes in after it, by its own line)
         v.Substitute = null;

@@ -149,7 +149,8 @@ public partial class GameEngine
     /// name alone.)
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
-        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false)
+        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false,
+        Battle.Sim.TotemAura? totem = null)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // A horde's others are seen with the first (plan 14 · B3)
@@ -194,6 +195,8 @@ public partial class GameEngine
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         // Every ally an SOS battle's Pokémon may call is made ready behind the fade too, so none comes in waiting for its model (plan 14 · B5)
         if (sos) shown.AddRange(SosAllyLooks(wildPkmn).Where(name => !shown.Contains(name)).Select(name => { flow.WantModel(name); return name; }).ToList());
+        // And a totem's own ally where its aura names one (plan 23 · Z6)
+        if (totem?.Ally is { } named && !shown.Contains(named)) { flow.WantModel(named); shown.Add(named); }
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the ground is the
         // battle's own, so a Pokémon hooked on a rod is met the water's way from any bank, and the first Pokémon
         // measured against it is the first of the team that fights (the assistant's, in the lesson)
@@ -220,7 +223,7 @@ public partial class GameEngine
                 WildPokemon = wilds,
                 Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
-                Conditions = BattleConditionsHere(),
+                Conditions = BattleConditionsHere(totem: totem),
                 // When, under what sky and how it was met, for a catch's mark (plan 10 · F9)
                 Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked),
                 Kind = kind,
@@ -254,9 +257,11 @@ public partial class GameEngine
     /// the battle itself (<paramref name="terms"/>, plan 14 · B1: an inverse battle) goes in with them, which is the
     /// only way it reaches a battle: nothing sets it on one that is running.
     /// </summary>
-    private Battle.Sim.BattleConditions BattleConditionsHere(BattleTerms? terms = null, bool inTheAir = false) => new()
+    private Battle.Sim.BattleConditions BattleConditionsHere(BattleTerms? terms = null, bool inTheAir = false, Battle.Sim.TotemAura? totem = null) => new()
     {
         Inverse = terms?.Inverse ?? false,
+        // A trial's totem (plan 23 · Z6)
+        TotemAura = totem,
         // A sky trainer's battle is fought in the air (plan 14 · B2)
         InTheAir = inTheAir,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)

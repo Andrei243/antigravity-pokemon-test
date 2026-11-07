@@ -57,12 +57,15 @@ public sealed partial class BattleCore
         var pokemon = caller.Pokemon!;
         if (pokemon.Status is StatusCondition.Sleep or StatusCondition.Freeze) return false;
         int rate = SosAllies.RateOf(pokemon.Species);
-        if (rate <= 0) return false;
+        // A trial's totem calls on its first action, and is answered, with no roll (plan 23 · Z6)
+        bool totemsFirst = TotemsFirstCall(caller);
+        if (rate <= 0 && !totemsFirst) return false;
         bool fell = faintedOnTurn[BattleSide.Enemy] >= 0 && faintedOnTurn[BattleSide.Enemy] >= Turn - 1;
         bool calling = PlayerSlots.Any(b => b.IsActive && b.Ability?.Name is { } name && CallingAbilities.Contains(name));
-        if (rng.Roll(RollKind.Call, 100) >= CallChance(rate, pokemon.CurrentHP, pokemon.MaxHP, fell, calling)) return false;
+        if (!totemsFirst && rng.Roll(RollKind.Call, 100) >= CallChance(rate, pokemon.CurrentHP, pokemon.MaxHP, fell, calling)) return false;
 
-        bool answered = rng.Roll(RollKind.Call, 100) < AnswerChance(rate);
+        bool answered = totemsFirst || rng.Roll(RollKind.Call, 100) < AnswerChance(rate);
+        if (totemsFirst) totemCalled = true;
         Say(Text.Of("battle.calledForHelp", ("pokemon", caller.Name))).With(new CalledForHelp(caller.Place, answered));
         if (!answered)
         {
@@ -71,7 +74,7 @@ public sealed partial class BattleCore
         }
 
         Field.SosChain = Math.Min(SosChain.Longest, Field.SosChain + 1);
-        var ally = MakeAlly(pokemon, Field.SosChain);
+        var ally = MakeAlly(pokemon, Field.SosChain, totemsFirst ? TotemsAlly() : null);
         Emit(new AllyJoined(empty.Place, ally, ally.Clone(), Field.SosChain));
         Arrive(empty, ally, Text.Of("battle.wildAppeared", ("pokemon", ally.DisplayName)), fromBall: false);
         return true;
@@ -83,16 +86,21 @@ public sealed partial class BattleCore
     /// in the caller's regional form where its species has that form, its personality and IVs made from a number drawn on
     /// the battle's generator, and the chain's bonus laid on: IVs made whole, its hidden ability, more rolls to be shiny.
     /// </summary>
-    private Pokemon MakeAlly(Pokemon caller, int chain)
+    private Pokemon MakeAlly(Pokemon caller, int chain, PokemonSpecies? named = null)
     {
         int level = Math.Max(1, caller.Level - rng.Roll(RollKind.Ally, 3));
-        var candidates = SosAllies.Candidates(caller.Species, level);
-        int roll = rng.Roll(RollKind.Ally, candidates.Sum(c => c.Weight));
-        var species = candidates[^1].Species;
-        foreach (var (s, weight) in candidates)
+        // A totem's first ally may be named by its aura (plan 23 · Z6); anyone else's is drawn from those that may come
+        var species = named;
+        if (species == null)
         {
-            if (roll < weight) { species = s; break; }
-            roll -= weight;
+            var candidates = SosAllies.Candidates(caller.Species, level);
+            int roll = rng.Roll(RollKind.Ally, candidates.Sum(c => c.Weight));
+            species = candidates[^1].Species;
+            foreach (var (s, weight) in candidates)
+            {
+                if (roll < weight) { species = s; break; }
+                roll -= weight;
+            }
         }
         if (!ReferenceEquals(Rules, Ruleset.Current)) species = species.Under(Rules);
         uint seed = (uint)rng.Roll(RollKind.Ally, 65536) << 16 | (uint)rng.Roll(RollKind.Ally, 65536);
