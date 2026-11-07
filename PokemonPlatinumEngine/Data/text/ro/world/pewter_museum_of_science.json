@@ -38,14 +38,6 @@
         "text": [
           "Cercetătorul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
-        ],
-        "text": [
-          "Bine ai venit la muzeu. Ai grijă la oase: unele sunt mai vechi decât munții de afară."
-        ]
       }
     },
     "t03r0101_gswoman6": {
@@ -109,14 +101,6 @@
         ],
         "text": [
           "Cercetătorul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "We're studying how to bring Pokémon back from fossils. Some day, we'll manage it here too."
-        ],
-        "text": [
-          "Studiem cum să readucem Pokémonii din fosile. Într-o zi vom reuși și aici."
         ]
       }
     }

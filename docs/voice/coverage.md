@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11161 | 10684 | 477 | 17 | 0 |
-| People of the world (`world:`) | 7941 | 7879 | 62 | 4 | 0 |
-| **All** | 20827 | 20243 | 584 | 22 | 0 |
+| Scripts (`script:`) | 11237 | 10757 | 480 | 17 | 0 |
+| People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
+| **All** | 20892 | 20305 | 587 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,16 +22,16 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 830 |
+| a question's answers | 839 |
 | a sign | 1736 |
 | the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1830 |
+| the game's own voice (text) | 1844 |
 
 ## The cast
 
-- Named characters: 459 voices (422 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 460 voices (423 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
-- Archetypes in use: 244, with 737 voices to cast (V5).
+- Archetypes in use: 243, with 734 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1911.
 
 ## Lines by voice
@@ -43,18 +43,18 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `@self` | 1911 | 138 |
 | `look:gentleman (any)` | 730 | 15 |
 | `rival` | 657 | 20 |
-| `look:grunt (any)` | 595 | 0 |
+| `look:grunt (any)` | 594 | 0 |
 | `look:lady (any)` | 448 | 1 |
-| `look:clerk (any)` | 426 | 10 |
+| `look:clerk (any)` | 433 | 11 |
 | `look:youngster (any)` | 417 | 21 |
 | `look:lass (any)` | 358 | 11 |
 | `look:attendant (any)` | 321 | 12 |
-| `look:nurse (any)` | 261 | 0 |
+| `look:nurse (any)` | 258 | 0 |
+| `look:scientist (any)` | 232 | 6 |
 | `look:gym_guide (any)` | 216 | 1 |
-| `look:scientist (any)` | 210 | 4 |
+| `look:receptionist (any)` | 209 | 23 |
 | `class:ace_trainer (any)` | 194 | 0 |
 | `class:hiker (any)` | 194 | 0 |
-| `look:receptionist (any)` | 190 | 23 |
 | `class:fisherman (any)` | 172 | 0 |
 | `cynthia` | 170 | 2 |
 | `look:sailor (any)` | 166 | 0 |
@@ -86,16 +86,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_oak` | 90 | 3 |
 | `steven` | 89 | 1 |
 | `class:bug_catcher (any)` | 88 | 0 |
+| `ace_trainer` | 84 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `class:twins (any)` | 82 | 0 |
 | `class:camper (any)` | 78 | 0 |
 | `class:swimmer (any)` | 78 | 0 |
-| `ace_trainer` | 77 | 0 |
-| `class:pokémon_ranger (any)` | 74 | 0 |
 | `class:veteran (any)` | 72 | 0 |
 | `look:girl (any)` | 71 | 0 |
+| `class:pokémon_ranger (any)` | 70 | 0 |
 | `prof_juniper` | 67 | 0 |
 | `class:backpacker (any)` | 64 | 0 |
 | `class:biker (any)` | 64 | 0 |
@@ -137,6 +137,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `riley` | 42 | 0 |
 | `look:pokefan_f (any)` | 41 | 0 |
 | `prof_sycamore` | 41 | 1 |
+| `rood` | 41 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
@@ -164,7 +165,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `mr_briney` | 34 | 1 |
 | `saturn` | 34 | 0 |
 | `hau` | 33 | 0 |
-| `rood` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |

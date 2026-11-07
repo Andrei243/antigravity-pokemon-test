@@ -44,14 +44,6 @@
         "text": [
           "Om de știință"
         ]
-      },
-      "dialog": {
-        "en": [
-          "We restore fossils here. Bring one in sometime, and we'll see what we can do."
-        ],
-        "text": [
-          "Restaurăm fosile aici. Adu una cândva și vedem ce putem face."
-        ]
       }
     },
     "3": {
@@ -115,14 +107,6 @@
         ],
         "text": [
           "Ranger Pokémon"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "I bring things I find in the wild for the museum to study."
-        ],
-        "text": [
-          "Aduc lucruri găsite în sălbăticie ca muzeul să le studieze."
         ]
       }
     },
