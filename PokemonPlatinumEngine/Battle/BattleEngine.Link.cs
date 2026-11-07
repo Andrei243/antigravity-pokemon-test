@@ -25,6 +25,9 @@ public partial class BattleEngine
     /// </summary>
     public bool IsLink => link != null;
 
+    /// <summary>The lines still to be shown after the one on screen (a tool waits on a battle's last line with it).</summary>
+    public int LinesToCome => steps.Count(s => s is Line) + interlude.Count(s => s is Line);
+
     /// <summary>The link client this screen plays, in a link battle.</summary>
     public LinkClient? LinkClient => link?.Client;
 
