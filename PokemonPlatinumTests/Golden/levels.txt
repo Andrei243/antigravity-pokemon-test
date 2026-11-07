@@ -162,10 +162,26 @@ trainers 4, 37-39: unova_lass_lurleen 39, unova_twins_rae_ula 38, unova_youngste
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== akala_route_4
+Route 4
+grass 11-13
+trainers 4, 13-14: alola_collector_kanoa 14, alola_gentleman_palani 14, alola_picnicker_anela 14, alola_youngster_ikaika 14
+=== akala_route_5
+Route 5
+grass 13-16
+trainers 3, 15-16: alola_hiker_koapaka 16, alola_lass_maile 16, alola_pokemon_breeder_lehua 16
 === alola_route_1
 Route 1
 grass 2-4
 trainers 1, 3: alola_youngster_keoni 3
+=== alola_route_2
+Route 2
+grass 7-9
+trainers 5, 8-10: alola_backpacker_malia 10, alola_beauty_leilani 9, alola_pokemon_breeder_noelani 10, alola_preschooler_kekoa 8, alola_team_skull_grunt_berry 10
+=== alola_route_3
+Route 3
+grass 9-12
+trainers 4, 13-14: alola_ace_trainer_makoa 14, alola_hiker_keola 13, alola_lass_pua 13, alola_youngster_kaimana 13
 === altering_cave
 Altering Cave
 grass 6-16
@@ -230,6 +246,11 @@ super rod 40
 === blackthorn_gym
 Blackthorn City
 trainers 5, 35-38: johto_ace_trainer_f_fran 38, johto_ace_trainer_f_lola 37, johto_ace_trainer_m_cody 37, johto_ace_trainer_m_mike 38, johto_ace_trainer_m_paulo 35
+=== brooklet_hill
+Brooklet Hill
+grass 14-16
+surf 15-17
+trainers 2, 16-17: alola_backpacker_nalu 17, alola_fisherman_kaleo 17
 === burned_tower_1f
 Burned Tower
 grass 13-16
@@ -1241,6 +1262,9 @@ trainers 2, 27-29: johto_boarder_patton 27, johto_skier_diana 29
 === mauville_city_gym
 Mauville City
 trainers 5, 17: hoenn_angelo 17, hoenn_ben 17, hoenn_kirk 17, hoenn_shawn 17, hoenn_vivian 17
+=== melemele_meadow
+Melemele Meadow
+grass 9-12
 === meteor_falls_1f_1r
 Meteor Falls
 grass 14-20
@@ -1654,6 +1678,10 @@ surf 5-40
 old rod 5-10
 good rod 5-15
 super rod 15-35
+=== paniola_ranch
+Paniola Ranch
+grass 12-15
+trainers 4, 15: alola_gentleman_kawika 15, alola_lady_hoku 15, alola_pokemon_breeder_makani 15, alola_rancher_koa 15
 === pastoria_city
 Pastoria City
 surf 20-40
@@ -3326,6 +3354,9 @@ trainers 5, 17-27: johto_executive_ariana_ariana_2 27, johto_team_rocket_grunt_1
 === team_rocket_headquarters_b3f
 Team Rocket Hq
 trainers 5, 18-24: johto_executive_petrel_petrel_2 24, johto_scientist_gs_mitch 24, johto_scientist_gs_ross 22, johto_team_rocket_f_grunt_5 18, johto_team_rocket_grunt_19 19
+=== ten_carat_hill
+Ten Carat Hill
+grass 10-12
 === three_island_berry_forest
 Berry Forest
 grass 30-40
@@ -3675,6 +3706,10 @@ grass 25-28
 === veilstone_city
 Veilstone City
 trainers 2, 24-26: galactic_grunt_veilstone_city_1 26, galactic_grunt_veilstone_city_2 26
+=== verdant_cavern
+Verdant Cavern
+grass 8-11
+trainers 1, 10-11: alola_team_skull_grunt_verdant 11
 === vermilion
 Vermilion City
 surf 30-35

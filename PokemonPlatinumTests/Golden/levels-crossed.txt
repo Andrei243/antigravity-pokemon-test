@@ -1416,9 +1416,22 @@ kalos_viola_1 188 (12) [Surskit → Ocellwing]
 === region Alola
 levels 2 → 205, 58 → 224, 70 → 238
 caps 209 213 218 223 224 (own 15 27 39 54 58)
+alola_gladion_1 210 (18) [Zubat → Crobat, Type: Null → Silvally]
+alola_grunt_marina 207 (8) [Zubat → Crobat]
+alola_hala_1 209 (15) [Mankey → Annihilape, Makuhita → Yokozan, Crabrawler → Crabominable]
 alola_hau_1 206 (5) [Litten → Incineroar]
 alola_hau_2 206 (5) [Popplio → Primarina]
 alola_hau_3 206 (5) [Rowlet → Decidueye]
+alola_hau_festival_1 207 (7) [Pichu → Raichu, Litten → Incineroar]
+alola_hau_festival_2 207 (7) [Pichu → Raichu, Popplio → Primarina]
+alola_hau_festival_3 207 (7) [Pichu → Raichu, Rowlet → Decidueye]
+alola_hau_paniola_1 210 (17) [Pikachu → Raichu, Torracat → Incineroar]
+alola_hau_paniola_2 210 (17) [Pikachu → Raichu, Brionne → Primarina]
+alola_hau_paniola_3 210 (17) [Pikachu → Raichu, Dartrix → Decidueye]
+alola_hau_route_3_1 209 (14) [Pikachu → Raichu, Litten → Incineroar]
+alola_hau_route_3_2 209 (14) [Pikachu → Raichu, Popplio → Primarina]
+alola_hau_route_3_3 209 (14) [Pikachu → Raichu, Rowlet → Decidueye]
+alola_ilima_1 208 (10) [Yungoos → Gumshoos, Smeargle → Muralist]
 === CyllageCity_Gym
 Cyllage Gym, Kalos
 trainers 2, 190 (own 19-20): kalos_hiker_armand 190 (19) [Roggenrola → Gigalith, Binacle → Barbaracle], kalos_hiker_bruno 190 (20) [Onix → Ironwyrm]
@@ -1461,10 +1474,26 @@ grass 174-176 (own 32-36)
 surf 171-177 (own 25-40)
 super rod 177-194 (own 40-70)
 trainers 4, 176-177 (own 37-39): unova_lass_lurleen 177 (39) [Deerling → Seasonstag, Zangoose → Ravagoose], unova_twins_rae_ula 177 (38) [Swablu → Nimbusong, Swablu → Nimbusong], unova_youngster_jaye 176 (37) [Karrablast → Lancelier, Shelmet → Velocigor, Joltik → Voltarantula], unova_youngster_wes 177 (39) [Skorupi → Dreadpion, Seviper → Scimitail]
+=== akala_route_4
+Route 4, Alola
+grass 208-209 (own 11-13)
+trainers 4, 209 (own 13-14): alola_collector_kanoa 209 (14) [Munchlax → Dozemount, Bagon → Salamence], alola_gentleman_palani 209 (14) [Growlithe → Kirinine], alola_picnicker_anela 209 (14) [Cutiefly → Ribombee], alola_youngster_ikaika 209 (14) [Yungoos → Inspectoose, Pikipek → Toucannon]
+=== akala_route_5
+Route 5, Alola
+grass 209-210 (own 13-16)
+trainers 3, 209-210 (own 15-16): alola_hiker_koapaka 210 (16) [Roggenrola → Gigalith], alola_lass_maile 210 (16) [Fomantis → Lurantis], alola_pokemon_breeder_lehua 210 (16) [Paras → Cordyhusk, Spinarak → Orbweavix]
 === alola_route_1
 Route 1, Alola
 grass 205-206 (own 2-4)
 trainers 1, 205 (own 3): alola_youngster_keoni 205 (3) [Yungoos → Gumshoos]
+=== alola_route_2
+Route 2, Alola
+grass 207 (own 7-9)
+trainers 5, 207-208 (own 8-10): alola_backpacker_malia 208 (10) [Cottonee → Cottonimbus], alola_beauty_leilani 207 (9) [Gastly → Gengar], alola_pokemon_breeder_noelani 208 (10), alola_preschooler_kekoa 207 (8) [Spearow → Lancerow], alola_team_skull_grunt_berry 208 (10) [Drowzee → Mesmeryx]
+=== alola_route_3
+Route 3, Alola
+grass 207-208 (own 9-12)
+trainers 4, 209 (own 13-14): alola_ace_trainer_makoa 209 (14) [Rockruff → Lycanroc, Slowpoke → Slowmantle], alola_hiker_keola 209 (13) [Growlithe → Kirinine], alola_lass_pua 209 (13) [Petilil → Ballerilly], alola_youngster_kaimana 209 (13) [Psyduck → Psyduke]
 === altering_cave
 Altering Cave, Hoenn
 grass 138-143 (own 6-16)
@@ -1529,6 +1558,11 @@ super rod 129 (own 40)
 === blackthorn_gym
 Blackthorn City, Johto
 trainers 5, 126-128 (own 35-38): johto_ace_trainer_f_fran 128 (38) [Seadra → Kingdra], johto_ace_trainer_f_lola 127 (37) [Dratini → Dragonite, Dragonair → Dragonite], johto_ace_trainer_m_cody 127 (37) [Horsea → Kingdra, Seadra → Kingdra], johto_ace_trainer_m_mike 128 (38) [Dragonair → Dragonite], johto_ace_trainer_m_paulo 126 (35) [Dratini → Dragonite, Seadra → Kingdra, Dratini → Dragonite]
+=== brooklet_hill
+Brooklet Hill, Alola
+grass 209-210 (own 14-16)
+surf 209-210 (own 15-17)
+trainers 2, 210 (own 16-17): alola_backpacker_nalu 210 (17) [Fletchling → Talonflame], alola_fisherman_kaleo 210 (17) [Barboach → Namazuro, Goldeen → Sabrefin]
 === burned_tower_1f
 Burned Tower, Johto
 grass 111-113 (own 13-16)
@@ -2366,6 +2400,9 @@ trainers 2, 121-122 (own 27-29): johto_boarder_patton 121 (27) [Swinub → Mamos
 === mauville_city_gym
 Mauville City, Hoenn
 trainers 5, 143 (own 17): hoenn_angelo 143 (17), hoenn_ben 143 (17) [Zigzagoon → Streakoon, Gulpin → Swalot], hoenn_kirk 143 (17) [Electrike → Manectric, Voltorb → Dynamorb], hoenn_shawn 143 (17) [Voltorb → Dynamorb, Magnemite → Magnezone], hoenn_vivian 143 (17) [Meditite → Medicham, Meditite → Medicham]
+=== melemele_meadow
+Melemele Meadow, Alola
+grass 207-208 (own 9-12)
 === meteor_falls_1f_1r
 Meteor Falls, Hoenn
 grass 142-144 (own 14-20)
@@ -2690,6 +2727,10 @@ surf 64-88 (own 5-40)
 old rod 64-68 (own 5-10)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
+=== paniola_ranch
+Paniola Ranch, Alola
+grass 208-209 (own 12-15)
+trainers 4, 209 (own 15): alola_gentleman_kawika 209 (15) [Sableye → Gemwraith], alola_lady_hoku 209 (15) [Carbink → Druzarion], alola_pokemon_breeder_makani 209 (15) [Mudbray → Mudsdale], alola_rancher_koa 209 (15) [Tauros → Bovarch]
 === petalburg_city
 Petalburg City, Hoenn
 surf 137-151 (own 5-35)
@@ -3937,6 +3978,9 @@ trainers 5, 114-121 (own 17-27): johto_executive_ariana_ariana_2 121 (27) [Arbok
 === team_rocket_headquarters_b3f
 Team Rocket Hq, Johto
 trainers 5, 115-119 (own 18-24): johto_executive_petrel_petrel_2 119 (24) [Zubat → Crobat, Raticate → Ratchisel, Koffing → Smoglom], johto_scientist_gs_mitch 119 (24), johto_scientist_gs_ross 117 (22) [Koffing → Smoglom, Koffing → Smoglom], johto_team_rocket_f_grunt_5 115 (18) [Ekans → Najarok], johto_team_rocket_grunt_19 115 (19) [Raticate → Ratchisel]
+=== ten_carat_hill
+Ten Carat Hill, Alola
+grass 208 (own 10-12)
 === three_island_berry_forest
 Berry Forest, Kanto
 grass 81-88 (own 30-40)
@@ -4189,6 +4233,10 @@ trainers 1, 183 (own 54): unova_veteran_hugo 183 (54) [Fraxure → Haxorus, Zwei
 === unova_victory_road_26
 Victory Road, Unova
 grass 180-181 (own 47-50)
+=== verdant_cavern
+Verdant Cavern, Alola
+grass 207-208 (own 8-11)
+trainers 1, 208 (own 10-11): alola_team_skull_grunt_verdant 208 (11) [Zubat → Crobat, Drowzee → Mesmeryx]
 === vermilion
 Vermilion City, Johto
 surf 123-126 (own 30-35)
