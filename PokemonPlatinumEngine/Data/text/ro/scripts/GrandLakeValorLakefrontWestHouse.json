@@ -41,6 +41,32 @@
         "I-ai prins și crescut pe fiecare cu trudă? Ți-au fost unii dăruiți de prieteni? Au venit câțiva prin schimburi de departe?",
         "Toate Pokédexurile par la fel până la urmă. Poveștile din ele, niciodată."
       ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "Now, let me see that Pokédex... Page after page, every one of them filled in! That earns more than a diploma."
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "Ia să văd Pokédexul ăsta... Pagină după pagină, toate completate! Asta merită mai mult decât o diplomă."
+      ]
+    },
+    {
+      "en": [
+        "Whoever makes it this far gets a little something from all of us who made the game. Here you are!"
+      ],
+      "text": [
+        "Cine ajunge până aici primește un mic dar de la noi toți, cei care am făcut jocul. Poftim!"
+      ]
+    },
+    {
+      "en": [
+        "Keep it with you wherever you go. Fill in another Pokédex and come and show me: I may have something more for you."
+      ],
+      "text": [
+        "Ține-l la tine oriunde ai merge. Completează încă un Pokédex și vino să mi-l arăți: s-ar putea să mai am ceva pentru tine."
+      ]
     }
   ]
 }

@@ -68,15 +68,17 @@ public class LocalNamesTests
     public void TheCountsOfFrenchAreWhatTheImporterFound()
     {
         // PokeAPI's French is the one language with prose for moves, abilities and items (docs/mechanics/coverage.md has every language)
-        // (plan 21 · H12, part j: seven of Emerald's mails; Johto's leftovers two items: 930 to 939; Johto's last leftovers the Blue Card and the Jade Orb: 941; Alola's Ride Pager: 942; the Cover and Plume Fossils: 944)
-        Assert.Equal((1025, 901, 310, 944), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
+        // (plan 21 · H12, part j: seven of Emerald's mails; Johto's leftovers two items: 930 to 939; Johto's last leftovers the Blue Card and the Jade Orb: 941; Alola's Ride Pager: 942; the Cover and Plume Fossils: 944;
+        // plan 40 · GE5 the Oval, Exp., Catching and Mark Charms: 948)
+        Assert.Equal((1025, 901, 310, 948), (LocalNames.Section("fr", "species").Count, LocalNames.Section("fr", "moves").Count,
             LocalNames.Section("fr", "abilities").Count, LocalNames.Section("fr", "items").Count));
         // (and plan 13 · V5 the Shiny Charm)
         // (plan 06 · R29 brought eleven items in: the key items that change a form and Legends: Arceus's three)
         // (and plan 21 · H3, part b three more: the Mach and Acro Bikes and the Orange Mail; and plan 21 · H4, part a four:
         // the Go-Goggles, the Soot Sack, the Harbor Mail and the Meteorite; plan 19 · K7 the Tri-Pass; plan 19 · K9, part a the Ruby and the Rainbow Pass; and five whose names the import of wave 41 found: plan 19 · K9's Sapphire, plan 21 · H6's Devon Scope and H7's Magma Emblem, plan 20 · J11's Basement Key and Rainbow Wing, and part d's Silver Wing; and plan 20 · J15, part n's Machine Part;
-        // and Johto's leftovers two: the Red Scale and the Rage Candy Bar; and Johto's last leftovers the Blue Card and the Jade Orb; and Alola's Ride Pager)
-        Assert.Equal((764, 305, 582), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
+        // and Johto's leftovers two: the Red Scale and the Rage Candy Bar; and Johto's last leftovers the Blue Card and the Jade Orb; and Alola's Ride Pager;
+        // and plan 40 · GE5 the Oval Charm, the one of the four charms whose French PokeAPI describes: 583)
+        Assert.Equal((764, 305, 583), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
             LocalNames.Section("fr", "descriptions.items").Count));
         Assert.Equal(191, LocalNames.Section("de", "descriptions.abilities").Count);
         Assert.Empty(LocalNames.Section("es", "descriptions.moves"));

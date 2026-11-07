@@ -193,9 +193,11 @@ public sealed class DayCare
     /// every 256th step of the second the couple may find one (their compatibility out of a hundred,
     /// <see cref="Breeding.OffspringPersonality"/>); and at the end of each egg cycle (255 steps, 230 on the original's
     /// special days) the team's Eggs are counted down (<see cref="Breeding.CountDown"/>). The Egg that hatches now is
-    /// returned (the field's <c>CommonScript_HatchEgg</c>), null when none does.
+    /// returned (the field's <c>CommonScript_HatchEgg</c>), null when none does. With the Oval Charm in the bag
+    /// (<paramref name="ovalCharm"/>, plan 40 · GE5) the chance is the later games' (<see cref="Charms.OvalChance"/>) and
+    /// the roll the same.
     /// </summary>
-    public Pokemon? Step(Party party, Random rng, DateTime today, Ruleset rules)
+    public Pokemon? Step(Party party, Random rng, DateTime today, Ruleset rules, bool ovalCharm = false)
     {
         int count = 0;
         for (int i = 0; i < Places; i++)
@@ -207,7 +209,7 @@ public sealed class DayCare
 
         if (!HasEgg && count == Places && (steps[1] & 0xFF) == 0xFF)
         {
-            int score = (int)Compatibility;
+            int score = ovalCharm ? Charms.OvalChance(Compatibility) : (int)Compatibility;
             int roll = rng.Next(1 << 16) * 100 / 0xFFFF;
             if (score > roll) Offspring = Breeding.OffspringPersonality(pokemon[0]!, pokemon[1]!, rng, rules);
         }

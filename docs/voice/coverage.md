@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11251 | 10770 | 481 | 17 | 0 |
+| Scripts (`script:`) | 11264 | 10783 | 481 | 17 | 0 |
 | People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
-| **All** | 20906 | 20318 | 588 | 22 | 0 |
+| **All** | 20919 | 20331 | 588 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -32,7 +32,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 461 voices (360 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
 - Archetypes in use: 243, with 734 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1911.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1915.
 
 ## Lines by voice
 
@@ -40,8 +40,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1911 | 138 |
-| `look:gentleman (any)` | 730 | 15 |
+| `@self` | 1915 | 138 |
+| `look:gentleman (any)` | 736 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
 | `look:lady (any)` | 448 | 1 |
@@ -178,6 +178,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:school_kid_m (any)` | 30 | 0 |
 | `class:skier (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
+| `director` | 30 | 1 |
 | `head_coach` | 30 | 1 |
 | `zinzolin` | 30 | 0 |
 | `celio` | 29 | 1 |
@@ -188,7 +189,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:triathlete (any)` | 28 | 0 |
 | `lillie` | 28 | 0 |
 | `little_boy` | 28 | 0 |
-| `director` | 27 | 1 |
 | `lt_surge` | 27 | 0 |
 | `marley` | 27 | 0 |
 | `president` | 27 | 0 |

@@ -1,6 +1,10 @@
 # The Cove Lily Motel's upper floor (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our
 # own, on Emerald's beats (data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.inc): Scott is taking a nap in one of the
 # rooms, and the first time he is woken he counts it as a meeting (FLAG_MET_SCOTT_IN_LILYCOVE, VAR_SCOTT_STATE).
+#
+# The game designer who comes to stay after Hoenn's Hall of Fame hands over the charms a Pokédex filled has earned
+# (plan 40 · GE5; charm due, charm give; Models/Charms.cs), where Emerald's gives a diploma: any regional Pokédex seen
+# whole, whichever region's, and the National one caught whole. With nothing due he says his own line (the overlay's).
 
 
 script Scott
@@ -14,4 +18,20 @@ script Scott
   end
 label Met
   say "Lilycove's full of strong trainers. You'll have no shortage of battles here, {player}."
+  end
+
+script Designer
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  sayown
+  end
+label Charms
+  say "That's a Pokédex? Let me look... Every single page filled in! You really did it!"
+  say "I said I'd have something for you, and I do. This charm is for players who see it through."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  say "Fill in another Pokédex, wherever you go next, and come and show me. I may have something more."
   end

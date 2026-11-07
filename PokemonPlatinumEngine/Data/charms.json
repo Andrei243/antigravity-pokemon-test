@@ -1,0 +1,8 @@
+// The charms a Pokédex filled earns (plan 40 · GE5, decision 3; Models/Charms.cs; docs/data-files.md, "Charms"). Ours:
+// the later games give each charm for a Pokédex of their own, and here any region's designer hands over what is due.
+// "regional" is the order the regional Pokédexes seen whole earn them, whichever regions they are: the first completed
+// earns the first, the second the second. "national" is what the National Pokédex caught whole earns.
+{
+  "regional": [ "Oval Charm", "Exp. Charm", "Catching Charm", "Mark Charm" ],
+  "national": "Shiny Charm"
+}

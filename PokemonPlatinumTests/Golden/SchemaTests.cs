@@ -41,7 +41,9 @@ public class SchemaTests
         ("open-terrain.schema.json", typeof(OpenWorldBake.TerrainFile), "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)"),
         ("open-carve.schema.json", typeof(OpenWorldBake.CarveFile), "What is cut out of an open region's land and added to it (Data/world3d/<region>/carve/*.json)"),
         ("open-water.schema.json", typeof(OpenWorldBake.WaterFile), "An open region's sea, lakes and rivers (Data/world3d/<region>/water.json)"),
-        ("open-roads.schema.json", typeof(OpenWorldBake.RoadsFile), "An open region's roads (Data/world3d/<region>/roads.json)")
+        ("open-roads.schema.json", typeof(OpenWorldBake.RoadsFile), "An open region's roads (Data/world3d/<region>/roads.json)"),
+        // Plan 40 · GE5: which charm a Pokédex filled earns
+        ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)")
     };
 
     /// <summary>The importer's patches (tools/DataImporter/Overrides): an object of entries by name, each the entry's fields, none required, and <c>new</c>.</summary>

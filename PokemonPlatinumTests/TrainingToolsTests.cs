@@ -63,7 +63,6 @@ public class TrainingToolsTests
             ["Yellow Nectar"] = "plan 23 (Alola's meadows)",
             ["Pink Nectar"] = "plan 23 (Alola's meadows)",
             ["Purple Nectar"] = "plan 23 (Alola's meadows)",
-            ["Shiny Charm"] = "plan 40 (the charms for a completed Pokédex)",
         };
         foreach (string stat in new[] { "Health", "Mighty", "Tough", "Smart", "Courage", "Quick" })
             foreach (string size in new[] { "", " L", " XL" })
@@ -85,7 +84,9 @@ public class TrainingToolsTests
         Assert.All(Mints, m => Assert.Equal(3000, ItemDatabase.Get(m + " Mint")!.Price));
         Assert.Equal(40, ItemDatabase.Get("Exp. Candy XS")!.Price);
         Assert.Equal(40000, ItemDatabase.Get("Ability Patch")!.Price);
-        Assert.All(Tools().Where(t => !Owed.ContainsKey(t)), t => Assert.True(ItemDatabase.Get(t)!.Price > 20, $"{t} still has the import's placeholder price"));
+        // (the charms are key items, never sold or bought back: plan 40 · GE5's have no price at all)
+        Assert.All(Tools().Where(t => !Owed.ContainsKey(t) && ItemDatabase.Get(t)!.Pocket != ItemPocket.KeyItems),
+            t => Assert.True(ItemDatabase.Get(t)!.Price > 20, $"{t} still has the import's placeholder price"));
     }
 
     private static HeadlessScriptHost Talk(string script, string place, StoryState? story, params int[] answers)
@@ -227,5 +228,10 @@ public class TrainingToolsTests
         Assert.True(stale.Count == 0, "owed, yet Sinnoh gives them now (take their lines off): " + string.Join(", ", stale));
         var unknown = Owed.Keys.Where(k => !tools.Contains(k)).ToList();
         Assert.True(unknown.Count == 0, "owed, yet no tool of the data: " + string.Join(", ", unknown));
+        // The Oval and Shiny Charms, once owed to plan 40, are handed over in Sinnoh by the game director's `charm give` (GE5)
+        Assert.Contains("Oval Charm", tools);
+        Assert.Contains("Shiny Charm", tools);
+        Assert.Contains(sinnoh.Of("Oval Charm"), s => s.Kind == ItemSourceKind.Given && s.Where == "GrandLakeValorLakefrontWestHouse.Director");
+        Assert.Contains(sinnoh.Of("Shiny Charm"), s => s.Kind == ItemSourceKind.Given && s.Where == "GrandLakeValorLakefrontWestHouse.Director");
     }
 }

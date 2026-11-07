@@ -32,5 +32,31 @@
         "Lilycove e plin de antrenori puternici. N-o să duci lipsă de lupte aici, {player}."
       ]
     }
+  ],
+  "Designer": [
+    {
+      "en": [
+        "That's a Pokédex? Let me look... Every single page filled in! You really did it!"
+      ],
+      "text": [
+        "Ăsta e un Pokédex? Ia să mă uit... Fiecare pagină completată! Chiar ai reușit!"
+      ]
+    },
+    {
+      "en": [
+        "I said I'd have something for you, and I do. This charm is for players who see it through."
+      ],
+      "text": [
+        "Ți-am zis că o să am ceva pentru tine, și am. Talismanul ăsta e pentru jucătorii care duc lucrurile până la capăt."
+      ]
+    },
+    {
+      "en": [
+        "Fill in another Pokédex, wherever you go next, and come and show me. I may have something more."
+      ],
+      "text": [
+        "Completează încă un Pokédex, oriunde ai merge mai departe, și vino să mi-l arăți. S-ar putea să mai am ceva."
+      ]
+    }
   ]
 }

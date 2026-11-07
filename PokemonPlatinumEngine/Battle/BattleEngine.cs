@@ -1183,15 +1183,17 @@ public partial class BattleEngine
                 // the ball to settle. A foe that breaks free bursts out with the ball and is back on its platform
                 // before the line about it.
                 AudioManager.PlaySound("ball_throw");
-                Anim.ThrowBall(ball.Ball, ball.Slot, ball.Shakes);
-                for (int wobble = 0; wobble < Math.Min(ball.Shakes, 3); wobble++)
-                    After(BattleAnimator.BallWobbleAt(wobble), () => Sound("ball_shake", BattleSide.Enemy));
-                After(BattleAnimator.BallSettleTime(ball.Shakes), () => Sound(ball.Shakes >= 4 ? "ball_click" : "ball_break", BattleSide.Enemy));
-                if (ball.Shakes >= 4) messageWaitTimer = BattleAnimator.BallThrowTime(ball.Shakes) + 0.1f;
+                Anim.ThrowBall(ball.Ball, ball.Slot, ball.Shakes, ball.Critical);
+                // A critical capture rattles in the air with a ring of its own as it shuts, then wobbles once (plan 40 · GE5)
+                if (ball.Critical) After(BattleAnimator.BallRattleAt, () => Sound("ball_critical", BattleSide.Enemy));
+                for (int wobble = 0; wobble < BattleAnimator.BallWobbles(ball.Shakes, ball.Critical); wobble++)
+                    After(BattleAnimator.BallWobbleAt(wobble, ball.Critical), () => Sound("ball_shake", BattleSide.Enemy));
+                After(BattleAnimator.BallSettleTime(ball.Shakes, ball.Critical), () => Sound(ball.Shakes >= 4 ? "ball_click" : "ball_break", BattleSide.Enemy));
+                if (ball.Shakes >= 4) messageWaitTimer = BattleAnimator.BallThrowTime(ball.Shakes, ball.Critical) + 0.1f;
                 else
                 {
-                    After(BattleAnimator.BallSettleTime(ball.Shakes), () => Anim.BreakFree(ball.Slot));
-                    messageWaitTimer = BattleAnimator.BallSettleTime(ball.Shakes) + BattleAnimator.SendOutTime + 0.1f;
+                    After(BattleAnimator.BallSettleTime(ball.Shakes, ball.Critical), () => Anim.BreakFree(ball.Slot));
+                    messageWaitTimer = BattleAnimator.BallSettleTime(ball.Shakes, ball.Critical) + BattleAnimator.SendOutTime + 0.1f;
                 }
                 break;
             case Caught caught:

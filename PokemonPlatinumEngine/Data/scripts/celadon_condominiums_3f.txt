@@ -1,7 +1,27 @@
 # The Celadon Condominiums' third floor in HeartGold's Kanto (plan 20 · J15, part k): the office of the people who make
 # games. docs/scripts.md describes the language. It is come to only by the left-hand lift.
+#
+# The director is one of those who hand over the charms a Pokédex filled has earned (plan 40 · GE5; charm due, charm
+# give; Models/Charms.cs): any regional Pokédex seen whole, whichever region's, and the National one caught whole. With
+# nothing due he says his own line (the overlay's).
 
 
 script OnEnter
   setvar VAR_JOHTO_CELADON_CONDO_FLOOR 3
+  end
+
+script Director
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  sayown
+  end
+label Charms
+  say "Ah, a Trainer! May I see your Pokédex? ...Every page of it, filled in. Splendid! Simply splendid!"
+  say "The Pokédex keeps its own diplomas, but this office keeps its charms. Please, take one with our thanks."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  say "Carry it with you, and fill in another Pokédex if you can. We may have something more for you."
   end

@@ -197,7 +197,11 @@ public sealed class BattleRecordFile
                 InTheAir = conditions.InTheAir,
                 TotemAura = conditions.TotemAura,
                 // The only species a battle asks about having caught is the wild one's (the Repeat Ball)
-                Caught = setup.WildPokemon.Select(p => p.Species).Distinct().Where(conditions.HasCaught).Select(s => s.DexNumber).ToList()
+                Caught = setup.WildPokemon.Select(p => p.Species).Distinct().Where(conditions.HasCaught).Select(s => s.DexNumber).ToList(),
+                // What a critical capture reads, and the charms a battle reads (plan 40 · GE5)
+                CaughtSpecies = conditions.CaughtSpecies,
+                CatchingCharm = conditions.CatchingCharm,
+                ExpCharm = conditions.ExpCharm
             }
         };
     }
@@ -267,7 +271,10 @@ public sealed class BattleRecordFile
                 OnlyBall = Conditions.OnlyBall,
                 Surprised = Conditions.Surprised,
                 InTheAir = Conditions.InTheAir,
-                TotemAura = Conditions.TotemAura
+                TotemAura = Conditions.TotemAura,
+                CaughtSpecies = Conditions.CaughtSpecies,
+                CatchingCharm = Conditions.CatchingCharm,
+                ExpCharm = Conditions.ExpCharm
             },
             PlayerName = PlayerName,
             PlayerController = null,
@@ -509,6 +516,13 @@ public sealed class RecordedConditions
 
     /// <summary>The wild species met that the player had caught before, by their National Pokédex numbers (the Repeat Ball).</summary>
     public List<int> Caught { get; set; } = new();
+
+    /// <summary>How many species the player had caught (plan 40 · GE5), which a critical capture's chance is read by; a file without it, none.</summary>
+    public int CaughtSpecies { get; set; }
+
+    /// <summary>The Catching Charm and the Exp. Charm were in the bag (plan 40 · GE5); a file without them, neither.</summary>
+    public bool CatchingCharm { get; set; }
+    public bool ExpCharm { get; set; }
 }
 
 /// <summary>An answer of a recorded battle (<see cref="BattleChoice"/>, as plain data).</summary>

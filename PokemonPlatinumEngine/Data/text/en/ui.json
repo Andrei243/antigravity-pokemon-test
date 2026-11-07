@@ -5337,6 +5337,7 @@
       "ballShake": "The ball wobbles",
       "ballClick": "The ball clicks shut",
       "ballBreak": "The ball bursts open",
+      "ballCritical": "The ball rattles in the air",
       "hitNormal": "A hit",
       "hitSuper": "A heavy hit",
       "hitWeak": "A weak hit",

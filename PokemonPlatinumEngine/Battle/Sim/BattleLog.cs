@@ -166,8 +166,11 @@ public sealed record LevelRose(Pokemon Pokemon, int Level, StatSpread Before, St
 /// </summary>
 public sealed record MoveWanted(Pokemon Pokemon, string Move) : BattleEvent;
 
-/// <summary>A ball is thrown at the foe in a slot and shakes this many times (4: it holds).</summary>
-public sealed record BallThrown(string Ball, int Slot, int Shakes) : BattleEvent;
+/// <summary>
+/// A ball is thrown at the foe in a slot and shakes this many times (4: it holds). A critical capture (plan 40 · GE5, under
+/// the modern rules) shakes once whichever way it goes: 4 held, 1 broken free.
+/// </summary>
+public sealed record BallThrown(string Ball, int Slot, int Shakes, bool Critical = false) : BattleEvent;
 
 /// <summary>The wild Pokémon is the player's: in the party, or sent to the PC.</summary>
 public sealed record Caught(Pokemon Pokemon, string Ball, bool ToBox) : BattleEvent;

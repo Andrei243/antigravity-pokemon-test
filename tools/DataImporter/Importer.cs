@@ -52,6 +52,9 @@ public sealed partial class Importer
         ["rotom-catalog"] = ItemPocket.KeyItems, ["reins-of-unity"] = ItemPocket.KeyItems,
         // The Shiny Charm: two more rolls at a shiny while it is in the bag (plan 13 · V5)
         ["shiny-charm"] = ItemPocket.KeyItems,
+        // The later games' charms for a Pokédex filled (plan 40 · GE5, Models/Charms.cs): the Oval Charm's Eggs, the Exp.
+        // Charm's half again, the Catching Charm's critical captures and the Mark Charm's two more tries at a mark
+        ["oval-charm"] = ItemPocket.KeyItems, ["exp-charm"] = ItemPocket.KeyItems, ["catching-charm"] = ItemPocket.KeyItems, ["mark-charm"] = ItemPocket.KeyItems,
         // HeartGold's Apricorn Box, which holds the Apricorns Kurt makes balls of (plan 20 · J6)
         ["apricorn-box"] = ItemPocket.KeyItems,
         ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items

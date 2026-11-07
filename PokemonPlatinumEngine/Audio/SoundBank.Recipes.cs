@@ -105,6 +105,7 @@ public static partial class SoundBank
         Add("ball_shake", SoundGroup.Battle, "SEQ_SE_DP_KON", "Each wobble of a thrown ball.");
         Add("ball_click", SoundGroup.Battle, "SEQ_SE_DP_GETTING", "The ball clicks shut: caught.");
         Add("ball_break", SoundGroup.Battle, null, "The ball bursts open: the Pokémon broke free.");
+        Add("ball_critical", SoundGroup.Battle, null, "A critical capture (plan 40 · GE5): the ball rattles in the air as it shuts, with a bright metal ring.");
         Add("hit_normal", SoundGroup.Battle, "SEQ_SE_DP_KOUKA_M", "A hit lands.");
         Add("hit_super", SoundGroup.Battle, "SEQ_SE_DP_KOUKA_H", "A super-effective hit lands.");
         Add("hit_weak", SoundGroup.Battle, "SEQ_SE_DP_KOUKA_L", "A not very effective hit lands.");
@@ -747,6 +748,17 @@ public static partial class SoundBank
                 d.Tone(0, 0.12f, Wave.Sine, 200f, 650f, 0.5f, 0.05f, 1.6f);
                 d.Bell(0.04f, 0.3f, N(93), 2.01f, 1f, 0.15f);
                 return Finish(d.S, 0.45f);
+            case "ball_critical":
+                // A critical capture: a rising whistle as the ball shuts, two quick metal rattles in the air and a bright ring
+                d = new SoundDesign(0.62f, 0xC417u);
+                d.Tone(0, 0.18f, Wave.Sine, 900f, 2200f, 0.22f, 0.4f, 1.6f);
+                d.Noise(0.12f, 0.016f, Filter.Band, 4200f, 4200f, 0.8f, 6f, 0.1f, 2f);
+                d.Tone(0.12f, 0.06f, Wave.Sine, 1500f, 1350f, 0.35f, 0.02f, 4f);
+                d.Noise(0.25f, 0.016f, Filter.Band, 3900f, 3900f, 0.8f, 6f, 0.1f, 2f);
+                d.Tone(0.25f, 0.06f, Wave.Sine, 1450f, 1300f, 0.32f, 0.02f, 4f);
+                d.Bell(0.3f, 0.3f, N(100), 3.5f, 1.4f, 0.3f);
+                d.Bell(0.34f, 0.26f, N(107), 3.5f, 1.4f, 0.18f);
+                return Finish(d.S, 0.42f);
             case "hit_normal":
                 // A blow: a low body dropping and a slap of noise
                 d = new SoundDesign(0.17f, 0xA511E9B3u);

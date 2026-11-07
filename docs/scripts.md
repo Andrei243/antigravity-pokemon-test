@@ -1229,6 +1229,38 @@ Outside a scene nothing can be skipped, and with the row off nothing is read or 
 ways with `ScriptRunner.Impatient` (someone who holds the button the whole time), and `HeadlessScriptHost` notes what a
 hurry dropped (`Unread`, `Dropped`) and tells as a problem anything it reached that it should have stopped before.
 
+### The charms
+
+Plan 40 · GE5; `docs/mechanics/rulings.md`, "The charms, critical captures and EXP for a catch". Which charm a Pokédex
+filled earns is `Data/charms.json` (`Models/Charms.cs`), read from the player's Pokédex itself (`IScriptHost.Pokedex`;
+a host with none has nothing due): each regional Pokédex the player has that is seen whole, or whose diploma they hold,
+earns the next of the Oval, Exp., Catching and Mark Charms, whichever region's it is, and the National Pokédex caught
+whole the Shiny Charm. A charm in the bag has been given, so nothing else is kept. Any region's designer hands over
+what is due: Sinnoh's game director (`GrandLakeValorLakefrontWestHouse.Director`), FireRed's in Celadon Mansion
+(`celadon_city_condominiums_3f.Designer`), HeartGold's in Johto's Celadon (`celadon_condominiums_3f.Director`) and
+Emerald's in the Cove Lily Motel (`lilycove_city_cove_lily_motel_2f.Designer`).
+
+| Command | What it does |
+|---|---|
+| `charm due` | `RESULT` is how many charms are earned and not in the bag (0 with none), and `{item}` names the first of them. |
+| `charm give` | The first charm due goes into the bag as `give` puts an item there (its fanfare, "received" and the Key Items pocket): `RESULT` 1. With nothing due nothing is given or said, `RESULT` 0. A designer with more to give asks `charm due` again and goes round (`if var RESULT > 0 goto Give`). |
+
+```
+script Designer
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  sayown
+  end
+label Charms
+  say "Every page filled in! This charm is for players who see it through."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  end
+```
+
 ## The Pokégear's phone
 
 Plan 20 · J3. Johto's Pokégear keeps its numbers in the story, a flag of ours to each (`FLAG_PHONE_CONTACT_JOEY`,

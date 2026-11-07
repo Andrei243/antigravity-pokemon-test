@@ -1105,11 +1105,14 @@ public sealed partial class BattleCore : IBattleContext
             return;
         }
 
-        // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH)
-        int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage,
-            Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon, EmeraldSafari ? EmeraldSafariRate : null);
+        // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH); under the modern rules a throw
+        // may be a critical capture, one shake check where a plain one is four (plan 40 · GE5)
+        var thrown = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? new CatchCalculator.CatchResult { IsCaught = true, Shakes = 4 }
+            : CatchCalculator.Throw(foe, ball, rng, Turn, Conditions, SafariCatchStage, Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon,
+                EmeraldSafari ? EmeraldSafariRate : null);
+        int shakes = thrown.Shakes;
         if (ball.Name == "Safari Ball" || ball.Name == Conditions.OnlyBall) SpecialBalls = Math.Max(0, SpecialBalls - 1);
-        Emit(new BallThrown(ball.Name, target.Slot, shakes));
+        Emit(new BallThrown(ball.Name, target.Slot, shakes, thrown.Critical));
         if (shakes < 4)
         {
             Say(shakes switch
@@ -1148,15 +1151,29 @@ public sealed partial class BattleCore : IBattleContext
         {
             Emit(new Caught(foe, ball.Name, ToBox: false));
             Say(Text.Of("battle.gotchaWasCaught", ("foe", foe.DisplayName)));
+            ExpForTheCatch(target);
             End(BattleResult.EnemyCaught);
             return;
         }
         bool toBox = PlayerParty.IsFull;
-        if (!toBox) PlayerParty.Add(foe);
         Emit(new Caught(foe, ball.Name, toBox));
         Say(Text.Of("battle.gotchaWasCaught", ("foe", foe.DisplayName)));
+        // Its EXP before it joins the team, so it gains none of its own (plan 40 · GE5)
+        ExpForTheCatch(target);
+        if (!toBox) PlayerParty.Add(foe);
         if (toBox) Say(Text.Of("battle.wasTransferredToBox", ("foe", foe.DisplayName)));
         End(BattleResult.EnemyCaught);
+    }
+
+    /// <summary>
+    /// A wild Pokémon caught gives the team the EXP its faint would have (plan 40 · GE5, <see cref="Ruleset.ExpForACatch"/>;
+    /// X and Y on): the same award as a faint's (<see cref="AwardExp"/>, so the crossed region's half, the Exp. Charm, Easy's
+    /// share and the run's cap all hold), its lines, levels and moves after the catch's own line and before the battle
+    /// ends. Nothing in the Great Marsh or Pal Park, where no Pokémon of the player's fights, nor under Platinum's rules.
+    /// </summary>
+    private void ExpForTheCatch(Battler caught)
+    {
+        if (Rules.ExpForACatch && Kind is not (BattleKind.Safari or BattleKind.PalPark)) AwardExp(caught);
     }
 
     /// <summary>Running from a wild battle works by the two Pokémon's Speed; each try that fails makes the next likelier.</summary>
@@ -1488,10 +1505,16 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
+        // What comes after the formula, in this order (plan 40 · GE5; docs/mechanics/rulings.md, "The charms, critical
+        // captures and EXP for a catch"), each step rounded down: affection's fifth, plan 36 · TR7's EXP power (not built
+        // yet: it goes before the crossed region's half), a crossed region's half, the Exp. Charm's half, Easy's three
+        // halves, and last the run's level cap
         // A Pokémon of the player's that loves it gains a fifth more (plan 10 · F7), before everything after the formula
         exp = WithAffection(p, exp);
         // A crossed region's foes give half as much again (plan 18 · W4b-3), after the formula and before Easy's three halves
         if (CrossedExp) exp = LevelCaps.CrossedExp(exp);
+        // The Exp. Charm in the bag gives half as much again (plan 40 · GE5, the Lucky Egg's share), after a crossed region's half
+        if (Conditions.ExpCharm) exp = Charms.ExpShare(exp);
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is
         exp = DifficultyRules.ScaleExp(exp, Difficulty);
         // The run's level cap (plan 13 · V3) lets through only what takes it to the cap's level; with none, exp is exp

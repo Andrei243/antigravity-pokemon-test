@@ -22,11 +22,12 @@ public partial class GameEngine
 
     /// <summary>
     /// The Day Care's part of a step (<c>Field_UpdateDaycare</c>): the couple walk it, and at the end of an egg cycle an
-    /// Egg of the team may be ready; then the field's <c>common.HatchEgg</c> runs. True when it did.
+    /// Egg of the team may be ready; then the field's <c>common.HatchEgg</c> runs. True when it did. The Oval Charm in the
+    /// bag raises the couple's chance of an Egg (plan 40 · GE5).
     /// </summary>
     private bool DayCareStep()
     {
-        if (flow.DayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current) == null) return false;
+        if (flow.DayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current, Charms.Held(flow.Bag, Charms.Oval)) == null) return false;
         return StartScript(FieldScripts.HatchEgg);
     }
 

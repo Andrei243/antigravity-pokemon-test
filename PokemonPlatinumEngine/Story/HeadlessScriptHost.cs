@@ -37,6 +37,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void PutInBox(Pokemon pokemon) => Box.Add(pokemon);
     public int SeenInSinnoh { get; set; }
     public int Caught { get; set; }
+
+    /// <summary>The player's Pokédex a test hands over, for the charms it has earned (plan 40 · GE5); none unless set, where nothing is due.</summary>
+    public Pokedex? Pokedex { get; set; }
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }

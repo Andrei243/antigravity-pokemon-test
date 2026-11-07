@@ -84,7 +84,13 @@ public enum RollKind
     /// Affection's perks (plan 10 · F7, <see cref="Models.Affection"/>): out of 100, a hit held on at 1 HP, a status
     /// shaken off at a turn's end, a move dodged. Rolled only for a Pokémon of the player's with affection to give.
     /// </summary>
-    Affection
+    Affection,
+    /// <summary>
+    /// A critical capture (plan 40 · GE5, <c>Ruleset.CriticalCaptures</c>): out of 256, the throw is critical below
+    /// its chance (<see cref="Formulas.CriticalCapture"/>). Rolled only under the modern rules, before the shakes, and only
+    /// where the chance is above nothing.
+    /// </summary>
+    CriticalCapture
 }
 
 /// <summary>

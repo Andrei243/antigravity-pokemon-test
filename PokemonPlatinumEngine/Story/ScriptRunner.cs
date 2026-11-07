@@ -426,6 +426,8 @@ public sealed partial class ScriptRunner
         Op.Jobs => true,
         // The Global Link counter is the player's to work; whether a server is set is only asked (plan 07 · O5, O7)
         Op.GlobalLink => i.Name != "check",
+        // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
+        Op.Charm => false,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1563,6 +1565,11 @@ public sealed partial class ScriptRunner
             }
             case Op.EndScene:
                 EndTheScene(seen: true);
+                break;
+
+            // The charms of a Pokédex filled (plan 40 · GE5)
+            case Op.Charm:
+                CharmCommand(i);
                 break;
 
             default:

@@ -336,6 +336,21 @@ public sealed class Ruleset
     /// </summary>
     public bool AffectionPerks { get; private init; }
 
+    /// <summary>
+    /// Critical captures (plan 40 · GE5; Generation 5 on; <c>docs/mechanics/rulings.md</c>, "The charms, critical captures
+    /// and EXP for a catch"): before a thrown ball's shakes, one roll of 256 against a chance made of the catch rate and of
+    /// how many species the player has caught (<see cref="Battle.Sim.Formulas.CriticalCapture"/>), doubled by the Catching
+    /// Charm; a critical capture is one shake check where a plain one is four. Platinum has none, so under its rules
+    /// nothing more is rolled and <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool CriticalCaptures { get; private init; }
+
+    /// <summary>
+    /// EXP for a catch (plan 40 · GE5; X and Y on): a wild Pokémon caught gives the team the EXP its faint would have given
+    /// (<c>BattleCore.ThrowBall</c>), before the battle ends. In Platinum a catch gives nothing.
+    /// </summary>
+    public bool ExpForACatch { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -403,7 +418,9 @@ public sealed class Ruleset
         Rotations = true,
         Royals = true,
         MegaDynamax = true,
-        AffectionPerks = true
+        AffectionPerks = true,
+        CriticalCaptures = true,
+        ExpForACatch = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

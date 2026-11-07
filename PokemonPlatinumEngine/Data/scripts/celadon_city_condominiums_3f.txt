@@ -1,0 +1,23 @@
+# Celadon Mansion's third floor in Kanto (plan 19 · K5, part b): FireRed's team of game makers at work. docs/scripts.md
+# describes the language; the lines are our own.
+#
+# The designer is one of those who hand over the charms a Pokédex filled has earned (plan 40 · GE5; charm due, charm
+# give; Models/Charms.cs): any regional Pokédex seen whole, whichever region's, and the National one caught whole. With
+# nothing due he talks of his maps (his own lines, the overlay's).
+
+
+script Designer
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  sayown
+  end
+label Charms
+  say "Hold on, is that your Pokédex? Every page filled in! That's the best thing anyone has shown me all year."
+  say "We keep a few charms here for the players who get that far. Go on, take it: it's yours."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  say "Fill in another Pokédex and drop by again. I'll find something more for you."
+  end

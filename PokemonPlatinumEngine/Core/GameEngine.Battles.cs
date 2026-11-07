@@ -228,8 +228,8 @@ public partial class GameEngine
                 Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(totem: totem),
-                // When, under what sky and how it was met, for a catch's mark (plan 10 · F9)
-                Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked),
+                // When, under what sky and how it was met, for a catch's mark (plan 10 · F9), and the Mark Charm's three tries (plan 40 · GE5)
+                Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked, Charms.Held(flow.Bag, Charms.Mark)),
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
@@ -280,7 +280,11 @@ public partial class GameEngine
         // The Bug-Catching Contest throws its Sport Balls and nothing else (plan 15 · E5)
         OnlyBall = InBugContest ? Battle.Sim.BattleCore.BugContestBall : null,
         // A wild Pokémon seen in the field and walked into from behind (plan 10 · F5)
-        Surprised = wildSurprised
+        Surprised = wildSurprised,
+        // What a critical capture's chance is read by, and the two charms a battle reads (plan 40 · GE5)
+        CaughtSpecies = flow.Pokedex.CaughtCount,
+        CatchingCharm = Charms.Held(flow.Bag, Charms.Catching),
+        ExpCharm = Charms.Held(flow.Bag, Charms.Exp)
     };
 
     /// <summary>

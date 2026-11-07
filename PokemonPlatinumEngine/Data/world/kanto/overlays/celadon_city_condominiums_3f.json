@@ -8,7 +8,8 @@
   "locked": [ 2, 3 ],
   "people": {
     "rocker": { "name": "Programmer", "dialog": [ "Me? I write the code. If the game crashes, it's probably my fault." ] },
-    "man": { "name": "Designer", "dialog": [ "I plan the maps. Every town needs a place to explore, don't you think?" ] },
+    // The designer hands over the charms a Pokédex filled has earned (plan 40 · GE5); with nothing due, his own line
+    "man": { "name": "Designer", "script": "Designer", "dialog": [ "I plan the maps. Every town needs a place to explore, don't you think?" ] },
     "poke_maniac": { "name": "Artist", "dialog": [ "I draw the Pokémon. Getting their eyes right takes the longest." ] },
     "fat_man": { "name": "Writer", "dialog": [ "I write what people say. A good line is harder than it looks!" ] }
   },

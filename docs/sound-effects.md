@@ -114,6 +114,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball; each rock of an Egg about to hatch (plan 06 · R15). |
 | `ball_click` | `SEQ_SE_DP_GETTING` | The ball clicks shut: caught; each Poké Ball set in a socket of the Hall of Fame's machine (plan 02 · S14; since plan 09 · L12 by the machine's own piece, `anim halloffame`). |
 | `ball_break` | — | The ball bursts open: the Pokémon broke free; an Egg breaks open as it hatches. |
+| `ball_critical` | — | A critical capture (plan 40 · GE5; the later games' metal ring, which Platinum doesn't have): a rising whistle as the ball shuts over the foe, two quick metal rattles while it shakes in the air, and a bright ring; then its one wobble's `ball_shake` and its `ball_click` or `ball_break`. |
 | `hit_normal` | `SEQ_SE_DP_KOUKA_M` | A hit lands. |
 | `hit_super` | `SEQ_SE_DP_KOUKA_H` | A super-effective hit lands. |
 | `hit_weak` | `SEQ_SE_DP_KOUKA_L` | A not very effective hit lands. |
