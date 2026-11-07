@@ -1,0 +1,42 @@
+{
+  // Route 13, the badlands (plan 23 · Z4): drawn by hand, our words. A dry plain of sand and rock between Coumarine City
+  // in the south and Route 5 outside Lumiose City's west gate in the north, a dirt track winding through it, the Power
+  // Plant on its east side, where Team Flare has stopped the city's power (KalosPowerPlant.txt). It plays Route 2's song
+  // until plan 31 writes it its own
+  "area": "kalos_route_13",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "KalosPowerPlant", "x": 8, "y": 12, "facing": "Up" }
+  ],
+  "people": {
+    "hiker": {
+      "name": "Bastien",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Bastien: The wind out here blows sand into everything. My Pokémon don't mind it one bit!",
+        "dialogueAfter": "Hiker Bastien: I'll be shaking sand out of my boots for a week."
+      }
+    },
+    "backpacker": {
+      "name": "Maëlle",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Maëlle: I'm crossing the whole plain on foot. Care to slow me down?",
+        "dialogueAfter": "Backpacker Maëlle: All right, all right. I'll take a rest."
+      }
+    },
+    "black_belt": {
+      "name": "Romain",
+      "npcType": "blackbelt",
+      "trainer": {
+        "dialogueBefore": "Black Belt Romain: I train where nothing grows. Nothing to hide behind, nothing to lean on!",
+        "dialogueAfter": "Black Belt Romain: You found something to lean on: your team."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 13 · The Badlands\nNorth: Route 5 and Lumiose City\nSouth: Coumarine City"
+  }
+}

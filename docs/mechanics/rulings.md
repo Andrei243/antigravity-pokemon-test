@@ -8811,6 +8811,59 @@ Drawn as the first part was (`tools/MapDraw/kalos`: `kalos_route_8_south.txt`, `
   Geosenge was thirteen tiles from him, so the scene began with nobody in the picture; it is seven tiles now. The lens
   has a floor of 0.5: a shot that asks for less gets nothing.
 
+## The mountain, Team Flare and the League, drawn by hand (2026-11-07, plan 23 · Z4)
+
+Drawn as the first three sessions were (`tools/MapDraw/kalos`: `kalos_route_13.txt` to `kalos_route_21.txt` but Route 16,
+`laverre_city.txt`, `dendemille_town.txt`, `anistar_city.txt`, `couriway_town.txt`, `snowbelle_city.txt`,
+`pokemon_village.txt`, `kalos_pokemon_league.txt` and the cave `kalos_victory_road.txt`), every word ours, on X and Y's
+beats as they are publicly described. Kalos is played from Vaniville Town to its Hall of Fame.
+
+- **Where the places lie.** The overworld's east and north were empty: the rest of Kalos is laid there as one road,
+  each place a step of the story. Route 13's badlands run from Coumarine City's north edge up to Route 5 outside Lumiose's
+  west gate (X and Y run Route 13 straight into Lumiose; Z1 put Coumarine south-west of the city, so the badlands join the
+  road that already leaves Lumiose there). Lumiose's north gate opens on Route 14 to Laverre City; Route 15 runs east to
+  Dendemille Town and Route 17 on east over the snow to Anistar City on the east coast. **Route 18 leaves Anistar City
+  southward** to Couriway Town (X and Y's Route 18 leaves Geosenge Town, which Z3 put in the far west): Team Flare's base
+  under Geosenge is reached by Fly or the long road back, and the valley south of Anistar is the way on. Route 19 climbs
+  north-east to Snowbelle City, Route 20's winding woods north to the Pokémon Village, and Route 21 west to Victory Road,
+  a cave of its own (matrix 3) whose north mouth comes out on the League's terrace. The legend gained `^` (snow underfoot,
+  `ShallowSnow`), `p` (a puddle), `u` (a cave's second way out, taken walking north) and `n` (a cave's mouth in the open,
+  taken walking south), so a cave may have two mouths.
+- **Left out**: Route 16, the Lost Hotel, Frost Cavern, Terminus Cave, Kiloude City, the Poké Ball Factory, the Battle
+  Château and Parfum Palace's inside; Lumiose's north-east, east and south-east gates go on turning the player back
+  (`VAR_KALOS_LUMIOSE_ROADS` 2 opens only the north). Route 17 is walked, not ridden: X and Y's Mamoswine ride is not built.
+  Rooms are kept to a Pokémon Center (with the Mart's counter inside) and a house in each town, and no puzzles: the Gyms
+  of Clemont (a quiz), Valerie, Olympia and Wulfric (moving floors) are halls with two trainers and their Leader.
+- **The story** (`VAR_KALOS_STORY` 22 to 31, the count of `vaniville_town.txt`; objectives 522 to 530): Ramos's Plant
+  Badge in Coumarine (only once the Tower of Mastery's scene is over, `< 22` sends the player on); Team Flare at the Power
+  Plant on Route 13, two grunts and Aliana, which puts Lumiose's power back (`VAR_KALOS_LUMIOSE_ROADS` 2); Clemont in the
+  Prism Tower, whose lift operator at the foot of its south face takes the player up (`lumiose_city.txt`'s `PrismTower`;
+  the lift has no power before the plant is freed); the neighbour on Route 14 (`VAR_KALOS_RIVAL_NORTH`); Valerie in Laverre's great tree; Olympia in
+  Anistar, after whose Badge Lysandre speaks on every screen (his café's table is empty from then on,
+  `FLAG_KALOS_HIDE_LYSANDRE_CAFE`); the café's waiter shows the way down to his laboratory, where he battles with a Gyarados
+  that Mega Evolves with his own Key Stone; the hidden door in the middle of Geosenge's ring of stones (a trigger on
+  `VAR_KALOS_STORY` 28) leads down to Team Flare's base, two grunts, Celosia and Bryony, Lysandre again, and **Xerneas**,
+  met as a wild Pokémon at 50 (X's: Y's Yveltal is not met; the battle may be run from, and caught or not, it leaves and
+  the weapon fails), which opens the valley south of Anistar (`VAR_KALOS_ROUTE_18` 1); Wulfric's Iceberg Badge in Snowbelle;
+  the neighbour's last battle on Route 21 (`VAR_KALOS_RIVAL_LEAGUE`); Victory Road's guard, who counts eight Badges
+  (`VAR_KALOS_VICTORY_ROAD`); the League's hall with its four doors in any order and the Champion's in the middle, shut by
+  its trigger until the four flags are set; Diantha, whose Gardevoir Mega Evolves; and the Hall of Fame
+  (`KalosLeague_HallOfFame.txt`), which sets `KalosHallOfFame`, puts the League back, sends the player home and opens the
+  flight on to Alola. AZ, the ultimate weapon's history in full and the post-game's Looker are not built.
+- **The flight on to Alola** stays where plan 23 · Z5 put it, the airline's attendant in Lumiose City's Pokémon Center,
+  shown by `KalosHallOfFame`: Kalos has no airport in the original, and a hall of ours for one would add nothing the
+  Pokémon Center doesn't already give.
+- **Teams.** The Leaders, the Elite Four (Malva, Siebold, Wikstrom, Drasna) and Diantha battle with teams after X and
+  Y's, at their levels (Ramos 30 to 34 up to Diantha 64 to 68), which match the region file's `caps`; every trainer is a
+  record of `Data/world/kalos/trainers.json`, and every wild Pokémon is of one of Kalos's three Pokédexes, at levels
+  rising from 26 on Route 13 to 58 in Victory Road.
+- **Looks**: the last five Leaders, the Elite Four, Diantha and Team Flare's grunts and admins are our own designs on the
+  `Adult` build (`characters.json`); Team Flare's three classes are eye- and battle-themed as the other teams are
+  (`sound-map.json`). Laverre, Dendemille and Snowbelle build as `OldTimber`, Anistar as `Cyllage`, Couriway as
+  `Canalside`, the League as `Lumiose`: no new `Architecture` row. Every new place plays one of Kalos's existing songs
+  until plan 31 writes its own.
+- **Fly**: spawns 10 to 15, the five new Pokémon Centers and the League's hall, each a block of the Town Map.
+
 ## How the player moves, region by region (2026-11-02, plan 30 · FM1)
 
 Not Platinum's: Platinum and every game before X and Y walk four ways a tile at a time (`src/player_move.c`), and

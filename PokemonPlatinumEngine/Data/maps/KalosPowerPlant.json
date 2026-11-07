@@ -1,0 +1,147 @@
+{
+  "name": "KalosPowerPlant",
+  "displayName": "Kalos Power Plant",
+  "bgmTrack": "kalos/gym",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#.#..#..#..#..#.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Tank",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Kalos",
+      "targetX": 288,
+      "targetY": 393,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kalos_flare_grunt_plant_1",
+      "name": "Grunt",
+      "npcType": "flare_grunt",
+      "x": 5,
+      "y": 9,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_flare_grunt_plant_1",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: Lumiose's lights are ours now. Stylish, isn't it?",
+        "dialogueAfter": "Team Flare Grunt Grunt: That wasn't stylish at all...",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_flare_grunt_plant_2",
+      "name": "Grunt",
+      "npcType": "flare_grunt_f",
+      "x": 11,
+      "y": 6,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_flare_grunt_plant_2",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: Every watt of this plant goes to Team Flare. Go home!",
+        "dialogueAfter": "Team Flare Grunt Grunt: Fine. Take your ugly victory.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "aliana",
+      "name": "Aliana",
+      "npcType": "flare_admin",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Aliana",
+      "hiddenBy": "FLAG_KALOS_HIDE_ALIANA_PLANT"
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "npcType": "Worker",
+      "x": 3,
+      "y": 11,
+      "facing": "Up",
+      "script": "Worker"
+    }
+  ],
+  "wildEncounters": []
+}

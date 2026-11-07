@@ -1,0 +1,46 @@
+# Lumiose City's Gym at the top of the Prism Tower (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Clemont, an
+# inventor, battles for the Voltage Badge, Kalos's fifth (`givebadge voltage`). The hall is one room with no puzzle (X
+# and Y's quiz is not built). VAR_KALOS_STORY is vaniville_town.txt's count: 24, the power back, becomes 25 here, and the
+# objective points north up Route 14 to Laverre City. His team is Kalos's trainers.json's kalos_clemont_1.
+
+
+script Clemont
+  face clemont player
+  speaker "Clemont"
+  if badge voltage goto Won
+  scene "Clemont"
+  say "You must be the one who switched the power back on! I'm Clemont. Thank you! My inventions were starving."
+  say "Science is amazing! And so is a good battle. Let me show you what my Pokémon and I have built together!"
+  battle self as "kalos_clemont_1"
+  say "Incredible! My calculations had you losing at least three times. I'll have to check my numbers."
+  say "Here, the Voltage Badge. You've more than earned it."
+  givebadge voltage
+  text "{player} received the Voltage Badge from Clemont!"
+  setflag FLAG_KALOS_DEFEATED_LUMIOSE_GYM
+  defeat "kalos_schoolboy_hugo"
+  defeat "kalos_schoolgirl_adele"
+  if var VAR_KALOS_STORY != 24 goto Tm
+  setvar VAR_KALOS_STORY 25
+  objective kalosValerie
+label Tm
+  say "And take this machine. It throws a burst of electricity that stops a foe in its tracks!"
+  give "TM24"
+  setflag FLAG_KALOS_RECEIVED_TM_CLEMONT
+  say "The north gate is open again. Laverre City lies up Route 14, past the marsh."
+  endscene
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_CLEMONT goto Tm
+  say "Next time I'll have an invention that can beat you. Probably!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge voltage goto Won
+  say "Hello there, future Champion! Clemont's Electric types can't touch a Ground type. Dig in!"
+  end
+label Won
+  say "You beat Clemont! He's already redesigning everything."
+  end

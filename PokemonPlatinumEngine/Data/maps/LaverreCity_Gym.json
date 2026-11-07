@@ -1,0 +1,191 @@
+{
+  "name": "LaverreCity_Gym",
+  "displayName": "Laverre Gym",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fairy",
+  "width": 13,
+  "height": 18,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...#...#...#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 360,
+      "targetY": 194,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "valerie",
+      "name": "Valerie",
+      "npcType": "valerie",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Valerie"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 15,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "kalos_lass_josette",
+      "name": "Josette",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_lass_josette",
+        "name": "Josette",
+        "trainerClass": "Lass",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lass Josette: Isn't the Gym lovely? Like a doll's house! Too lovely for you!",
+        "dialogueAfter": "Lass Josette: My dress got all creased...",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_lady_eleonore",
+      "name": "Éléonore",
+      "npcType": "Lady",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_lady_eleonore",
+        "name": "Éléonore",
+        "trainerClass": "Lady",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lady Éléonore: One must battle with grace. Let me show you how it's done.",
+        "dialogueAfter": "Lady Éléonore: How very graceless of me.",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

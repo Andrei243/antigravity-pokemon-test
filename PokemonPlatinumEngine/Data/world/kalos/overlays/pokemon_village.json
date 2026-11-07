@@ -1,0 +1,12 @@
+{
+  // The Pokémon Village (plan 23 · Z4): drawn by hand, our words. A hidden meadow north of the winding woods where
+  // Pokémon live with no Trainer, round a pond, with no houses; Route 20 comes in from the south and Route 21 leaves
+  // west toward Victory Road. It plays Santalune Forest's song until plan 31 writes it its own
+  "area": "pokemon_village",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "keeper": { "name": "Old Woman", "npcType": "lady", "still": true, "dialog": [ "The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle." ] }
+  }
+}

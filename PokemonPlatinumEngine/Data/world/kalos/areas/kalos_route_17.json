@@ -1,0 +1,42 @@
+{
+  "key": "kalos_route_17",
+  "index": 30,
+  "name": "Route 17",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Snowing",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_17",
+  "nightMusic": "ROUTE_17",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 552, "z": 204, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_GASPARD" },
+    { "id": "skier", "looks": "lass", "movement": "look_north", "x": 574, "z": 209, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_NEIGE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 564, "z": 218, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_17_NEVER_MELT_ICE", "item": "Never-Melt Ice", "script": "" }
+  ],
+  "signs": [
+    { "x": 528, "z": 204, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Snover", "level": 36 },
+    { "species": "Sneasel", "level": 36 },
+    { "species": "Swinub", "level": 36 },
+    { "species": "Delibird", "level": 36 },
+    { "species": "Cubchoo", "level": 37 },
+    { "species": "Vanillite", "level": 37 },
+    { "species": "Bergmite", "level": 37 },
+    { "species": "Piloswine", "level": 37 },
+    { "species": "Snover", "level": 37 },
+    { "species": "Beartic", "level": 38 },
+    { "species": "Abomasnow", "level": 38 },
+    { "species": "Mamoswine", "level": 38 }
+  ],
+  "landRate": 20
+}

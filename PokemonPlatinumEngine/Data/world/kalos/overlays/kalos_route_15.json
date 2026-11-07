@@ -1,0 +1,38 @@
+{
+  // Route 15, the autumn road (plan 23 · Z4): drawn by hand, our words. East from Laverre City through woods of
+  // broad-leaved trees and over a stream by a bridge to Dendemille Town. It plays Route 2's song until plan 31 writes it
+  // its own
+  "area": "kalos_route_15",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "youngster": {
+      "name": "Félix",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Félix: I kick the leaves all the way to Dendemille. Want to see what jumps out?",
+        "dialogueAfter": "Youngster Félix: You jumped out at me, more like."
+      }
+    },
+    "lass": {
+      "name": "Margot",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Lass Margot: Autumn is the best time for battles. Everything's so crunchy!",
+        "dialogueAfter": "Lass Margot: Crunch. That was me losing."
+      }
+    },
+    "hiker": {
+      "name": "Ambroise",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Ambroise: The stream up ahead is cold as ice. My Pokémon are colder!",
+        "dialogueAfter": "Hiker Ambroise: Brr. I'd better warm up."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 15\nWest: Laverre City\nEast: Dendemille Town"
+  }
+}

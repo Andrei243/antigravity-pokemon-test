@@ -1,0 +1,56 @@
+# Anistar City's Gym (plan 23 · Z4). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Olympia, a seer, battles for the
+# Psychic Badge, Kalos's seventh (`givebadge psychic`), once the Fairy Badge is won (VAR_KALOS_STORY 26); then every screen in Kalos shows
+# Lysandre, who says he will end the world as it is, and Olympia sends the player to his café in Lumiose City.
+# VAR_KALOS_STORY is vaniville_town.txt's count: 26 becomes 27 here; Lysandre leaves his café's table for the
+# laboratory under it (FLAG_KALOS_HIDE_LYSANDRE_CAFE, LumioseCity_LysandreCafe.txt). Her team is Kalos's trainers.json's
+# kalos_olympia_1.
+
+
+script Olympia
+  face olympia player
+  speaker "Olympia"
+  if badge psychic goto Won
+  if var VAR_KALOS_STORY < 26 goto Later
+  scene "Olympia"
+  say "The stars said you would come today, at this very hour. I am Olympia."
+  say "They did not say who would win. Fate is a thread. Let us see which way it pulls."
+  battle self as "kalos_olympia_1"
+  say "Ah. The thread pulled your way. It so often does, for those who pull back."
+  say "The Psychic Badge is yours."
+  givebadge psychic
+  text "{player} received the Psychic Badge from Olympia!"
+  setflag FLAG_KALOS_DEFEATED_ANISTAR_GYM
+  defeat "kalos_psychic_lucile"
+  defeat "kalos_psychic_aurele"
+  give "TM29"
+  setflag FLAG_KALOS_RECEIVED_TM_OLYMPIA
+  if var VAR_KALOS_STORY != 26 goto After
+  say "Wait. Something dark is coming. Look at the screen..."
+  speaker "Lysandre"
+  say "People of Kalos. I am Lysandre. This world grows ugly, crowded with those who take and never give."
+  say "Team Flare will make it beautiful again. The ultimate weapon will wake, and only the chosen will remain."
+  speaker "Olympia"
+  say "His café in Lumiose City. That is where the thread leads. Go, {player}, and quickly."
+  setflag FLAG_KALOS_HIDE_LYSANDRE_CAFE
+  setvar VAR_KALOS_STORY 27
+  objective kalosLabs
+label After
+  endscene
+  end
+label Later
+  say "The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree."
+  end
+label Won
+  say "The stars over Kalos are troubled. Follow the thread, {player}."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge psychic goto Won
+  say "Hello there, future Champion! Olympia's Psychic types fear bugs, ghosts and the dark. Choose well!"
+  end
+label Won
+  say "You beat Olympia! I bet she saw that coming."
+  end

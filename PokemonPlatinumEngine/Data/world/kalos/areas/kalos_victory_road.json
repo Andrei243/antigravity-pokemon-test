@@ -1,0 +1,45 @@
+{
+  "key": "kalos_victory_road",
+  "index": 39,
+  "name": "Victory Road",
+  "matrix": 3,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "VICTORY_ROAD",
+  "nightMusic": "VICTORY_ROAD",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 28, "z": 59, "to": "kalos_route_21", "toWarp": 0 },
+    { "x": 34, "z": 4, "to": "kalos_pokemon_league", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "ace", "looks": "lass", "movement": "look_east", "x": 10, "z": 30, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_CAMILLE" },
+    { "id": "ace_2", "looks": "youngster", "movement": "look_west", "x": 50, "z": 32, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_MAXIME" },
+    { "id": "veteran", "looks": "gentleman", "movement": "look_south", "x": 34, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_VETERAN_CLOVIS" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 10, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_FULL_RESTORE", "item": "Full Restore", "script": "" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 52, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_MAX_ELIXIR", "item": "Max Elixir", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Druddigon", "level": 50 },
+    { "species": "Gurdurr", "level": 50 },
+    { "species": "Graveler", "level": 50 },
+    { "species": "Zweilous", "level": 51 },
+    { "species": "Lickitung", "level": 51 },
+    { "species": "Fearow", "level": 51 },
+    { "species": "Noibat", "level": 52 },
+    { "species": "Durant", "level": 52 },
+    { "species": "Gabite", "level": 53 },
+    { "species": "Skarmory", "level": 54 },
+    { "species": "Noivern", "level": 56 },
+    { "species": "Hydreigon", "level": 58 }
+  ],
+  "landRate": 20
+}

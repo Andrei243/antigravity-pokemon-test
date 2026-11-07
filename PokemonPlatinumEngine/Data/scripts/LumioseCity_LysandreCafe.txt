@@ -2,7 +2,8 @@
 # publicly described (docs/mechanics/rulings.md, "Lumiose City and Route 4, drawn by hand"): the professor waits there
 # with a tall man of the city who speaks of a better world and of Pokémon that change; the professor goes back to his
 # laboratory after. VAR_KALOS_STORY is vaniville_town.txt's count: 11 becomes 12 here. The room's people: lysandre,
-# sycamore (FLAG_KALOS_HIDE_SYCAMORE_CAFE but while he waits there) and the café's waiter.
+# sycamore (FLAG_KALOS_HIDE_SYCAMORE_CAFE but while he waits there) and the café's waiter; Lysandre leaves for good
+# after his broadcast (FLAG_KALOS_HIDE_LYSANDRE_CAFE, plan 23 · Z4), and the waiter then shows the way down to his laboratory.
 
 
 # Into the café with the professor waiting (VAR_KALOS_STORY 11)
@@ -46,5 +47,19 @@ script Sycamore
 
 script Waiter
   speaker "Waiter"
+  if var VAR_KALOS_STORY == 27 goto Labs
+  if var VAR_KALOS_STORY >= 28 goto Gone
   say "Good day. The gentleman in red owns this café. He takes his coffee very black and very hot."
+  end
+# Plan 23 · Z4: after Lysandre's broadcast (AnistarCity_Gym.txt, VAR_KALOS_STORY 27) the waiter shows the player the way
+# down to the laboratory under the café (LumioseCity_LysandreLabs.txt)
+label Labs
+  scene "The way down to Lysandre's laboratory"
+  say "Mr. Lysandre said a young Trainer would come asking for him. He is waiting for you below."
+  say "This way, behind the counter. Mind the stairs; they are steeper than they look."
+  endscene
+  warp "LumioseCity_LysandreLabs" 8 14 up
+  end
+label Gone
+  say "Mr. Lysandre hasn't been in since that broadcast. The café feels very empty without him."
   end

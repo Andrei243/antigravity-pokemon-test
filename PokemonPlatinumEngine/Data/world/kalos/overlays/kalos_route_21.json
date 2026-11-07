@@ -1,0 +1,29 @@
+{
+  // Route 21, the last road (plan 23 · Z4): drawn by hand, our words. West out of the Pokémon Village along the foot of
+  // the mountains to the mouth of Victory Road, whose guard lets through only a Trainer with all eight of Kalos's Badges
+  // (kalos_route_21.txt). The neighbour waits on the road for one last battle. It plays Route 2's song until plan 31
+  // writes it its own
+  "area": "kalos_route_21",
+  "bgmTrack": "kalos/route2",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "triggers": [
+    { "script": "Gate", "x": 605, "z": 121, "width": 1, "depth": 1, "variable": "VAR_KALOS_VICTORY_ROAD", "value": 0 },
+    { "script": "Neighbour", "x": 642, "z": 126, "width": 1, "depth": 4, "variable": "VAR_KALOS_RIVAL_LEAGUE", "value": 0 }
+  ],
+  "people": {
+    "guard": { "name": "Guard", "npcType": "Gentleman", "script": "Guard", "still": true },
+    "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_21" },
+    "veteran": {
+      "name": "Germain",
+      "npcType": "Gentleman",
+      "trainer": {
+        "dialogueBefore": "Veteran Germain: I've walked this road to the League twenty times. Twenty-one, if you beat me.",
+        "dialogueAfter": "Veteran Germain: Twenty-one it is. Off you go."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 21\nWest: Victory Road\nEast: the Pokémon Village"
+  }
+}

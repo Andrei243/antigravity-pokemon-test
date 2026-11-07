@@ -41,12 +41,33 @@
     { "file": "kalos_route_9.txt", "x": 128, "z": 472 },
     // Route 12, the Blossom Road, on east to Coumarine City, a garden city on the south coast
     { "file": "kalos_route_12.txt", "x": 208, "z": 470 },
-    { "file": "coumarine_city.txt", "x": 232, "z": 458 }
+    { "file": "coumarine_city.txt", "x": 232, "z": 458 },
+    // Plan 23 · Z4: Route 13's badlands north from Coumarine to Route 5 outside Lumiose's west gate; north out of Lumiose
+    // up Route 14 to Laverre City, east along Routes 15 and 17 through Dendemille Town to Anistar City on the east coast,
+    // south down Route 18 to Couriway Town, north-east up Route 19 to Snowbelle City, north through Route 20's woods to
+    // the Pokémon Village, and west along Route 21 to Victory Road, which comes out on the League's terrace
+    { "file": "kalos_route_13.txt", "x": 236, "z": 378 },
+    { "file": "kalos_route_14.txt", "x": 344, "z": 236 },
+    { "file": "laverre_city.txt", "x": 324, "z": 176 },
+    { "file": "kalos_route_15.txt", "x": 396, "z": 196 },
+    { "file": "dendemille_town.txt", "x": 476, "z": 180 },
+    { "file": "kalos_route_17.txt", "x": 524, "z": 196 },
+    { "file": "anistar_city.txt", "x": 604, "z": 172 },
+    { "file": "kalos_route_18.txt", "x": 620, "z": 236 },
+    { "file": "couriway_town.txt", "x": 600, "z": 336 },
+    { "file": "kalos_route_19.txt", "x": 664, "z": 300 },
+    { "file": "snowbelle_city.txt", "x": 660, "z": 236 },
+    { "file": "kalos_route_20.txt", "x": 670, "z": 156 },
+    { "file": "pokemon_village.txt", "x": 662, "z": 104 },
+    { "file": "kalos_route_21.txt", "x": 596, "z": 116 },
+    { "file": "kalos_pokemon_league.txt", "x": 576, "z": 40 }
   ],
   // Plan 23 � Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
   "maps": [
     { "matrix": 1, "area": "reflection_cave", "width": 2, "height": 1, "cell": "5,5", "pieces": [ { "file": "reflection_cave.txt", "x": 4, "z": 4 } ] },
-    { "matrix": 2, "area": "glittering_cave", "width": 2, "height": 2, "cell": "5,14", "pieces": [ { "file": "glittering_cave.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 2, "area": "glittering_cave", "width": 2, "height": 2, "cell": "5,14", "pieces": [ { "file": "glittering_cave.txt", "x": 4, "z": 4 } ] },
+    // Plan 23 · Z4: Victory Road, its south mouth on Route 21 and its north mouth on the League's terrace
+    { "matrix": 3, "area": "kalos_victory_road", "width": 2, "height": 2, "cell": "18,3", "pieces": [ { "file": "kalos_victory_road.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },
@@ -71,6 +92,21 @@
     { "key": "ambrette_town", "x": 72, "z": 462, "width": 56, "depth": 44 },
     { "key": "kalos_route_9", "x": 128, "z": 472, "width": 80, "depth": 28 },
     { "key": "kalos_route_12", "x": 208, "z": 470, "width": 24, "depth": 30 },
-    { "key": "coumarine_city", "x": 232, "z": 458, "width": 56, "depth": 52 }
+    { "key": "coumarine_city", "x": 232, "z": 458, "width": 56, "depth": 52 },
+    { "key": "kalos_route_13", "x": 236, "z": 378, "width": 64, "depth": 80 },
+    { "key": "kalos_route_14", "x": 344, "z": 236, "width": 32, "depth": 64 },
+    { "key": "laverre_city", "x": 324, "z": 176, "width": 72, "depth": 60 },
+    { "key": "kalos_route_15", "x": 396, "z": 196, "width": 80, "depth": 30 },
+    { "key": "dendemille_town", "x": 476, "z": 180, "width": 48, "depth": 56 },
+    { "key": "kalos_route_17", "x": 524, "z": 196, "width": 80, "depth": 30 },
+    { "key": "anistar_city", "x": 604, "z": 172, "width": 64, "depth": 64 },
+    { "key": "kalos_route_18", "x": 620, "z": 236, "width": 28, "depth": 100 },
+    { "key": "couriway_town", "x": 600, "z": 336, "width": 64, "depth": 48 },
+    { "key": "kalos_route_19", "x": 664, "z": 300, "width": 44, "depth": 84 },
+    { "key": "snowbelle_city", "x": 660, "z": 236, "width": 56, "depth": 64 },
+    { "key": "kalos_route_20", "x": 670, "z": 156, "width": 36, "depth": 80 },
+    { "key": "pokemon_village", "x": 662, "z": 104, "width": 52, "depth": 52 },
+    { "key": "kalos_route_21", "x": 596, "z": 116, "width": 66, "depth": 24 },
+    { "key": "kalos_pokemon_league", "x": 576, "z": 40, "width": 64, "depth": 60 }
   ]
 }

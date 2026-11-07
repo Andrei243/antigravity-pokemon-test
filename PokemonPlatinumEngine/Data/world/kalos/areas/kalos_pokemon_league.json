@@ -1,0 +1,26 @@
+{
+  "key": "kalos_pokemon_league",
+  "index": 40,
+  "name": "Pokémon League",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "POKEMON_LEAGUE",
+  "nightMusic": "POKEMON_LEAGUE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 608, "z": 59, "to": "KalosLeague_Hall", "toWarp": 0 },
+    { "x": 606, "z": 95, "to": "kalos_victory_road", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 602, "z": 66, "type": 0, "script": "LeagueSign" }
+  ],
+  "triggers": []
+}

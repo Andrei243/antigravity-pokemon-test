@@ -1,0 +1,30 @@
+{
+  // Route 20, the winding woods (plan 23 · Z4): drawn by hand, our words. North from Snowbelle City through a misty wood
+  // whose path winds back and forth between the trees to the Pokémon Village. It plays Santalune Forest's song until
+  // plan 31 writes it its own
+  "area": "kalos_route_20",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "architecture": "OldTimber",
+  "people": {
+    "lady": {
+      "name": "Honorine",
+      "npcType": "Lady",
+      "trainer": {
+        "dialogueBefore": "Lady Honorine: I lost my way in these woods an hour ago. You'll do for company. And a battle!",
+        "dialogueAfter": "Lady Honorine: Would you show me the way out, at least?"
+      }
+    },
+    "hiker": {
+      "name": "Thibaut",
+      "npcType": "Hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Thibaut: Every tree in this wood looks the same. Every battle doesn't!",
+        "dialogueAfter": "Hiker Thibaut: That one I'll remember."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 20\nNorth: the Pokémon Village\nSouth: Snowbelle City"
+  }
+}

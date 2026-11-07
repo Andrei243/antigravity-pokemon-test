@@ -1,0 +1,52 @@
+# Coumarine City's Gym (plan 23 · Z4). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Ramos, an old gardener, battles
+# for the Plant Badge, Kalos's fourth (`givebadge plant`), once the player has come from Shalour with the Rumble Badge
+# (before it, he is busy with his plants and sends them on). VAR_KALOS_STORY is vaniville_town.txt's count: 22, the
+# Tower of Mastery's scene over, becomes 23 here, and the objective points north along Route 13 to the Power Plant. His
+# team is Kalos's trainers.json's kalos_ramos_1; his two trainers are the hall's own.
+
+
+script Ramos
+  face ramos player
+  speaker "Ramos"
+  if badge plant goto Won
+  if var VAR_KALOS_STORY < 22 goto Later
+  scene "Ramos"
+  say "Hoo! A young sprout come to visit an old gardener. I'm Ramos, and these plants are my pride."
+  say "A plant grows slow, but it don't give way. Let's see if you've got roots as deep as theirs!"
+  battle self as "kalos_ramos_1"
+  say "Well, I'll be. You flattened my whole garden, and I'm grinning like a fool."
+  say "Here's the Plant Badge. You've grown a fair bit, sprout."
+  givebadge plant
+  text "{player} received the Plant Badge from Ramos!"
+  setflag FLAG_KALOS_DEFEATED_COUMARINE_GYM
+  defeat "kalos_gardener_flora"
+  defeat "kalos_hiker_sylvain"
+  if var VAR_KALOS_STORY != 22 goto Tm
+  setvar VAR_KALOS_STORY 23
+  objective kalosPowerPlant
+label Tm
+  say "And this. My Pokémon send their roots deep and drink the strength right out of a foe."
+  give "TM86"
+  setflag FLAG_KALOS_RECEIVED_TM_RAMOS
+  say "They say Lumiose's lights went out this morning. Something's amiss at the Power Plant up the badlands road."
+  endscene
+  end
+label Later
+  say "Hoo, a visitor! I'm Ramos. I'm tending my seedlings just now, sprout."
+  say "Come back once you've seen the tower up in Shalour. Then we'll have ourselves a proper battle."
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_RAMOS goto Tm
+  say "Go on up Route 13, sprout. Lumiose won't light itself."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge plant goto Won
+  say "Hello there, future Champion! Ramos's Grass types wilt before fire, ice, poison and wings. Choose well!"
+  end
+label Won
+  say "You beat Ramos! The old man hasn't laughed like that in years."
+  end

@@ -1,0 +1,47 @@
+# Route 14, the marshy trail north of Lumiose City (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): the neighbour
+# waits half way up the trail and battles. VAR_KALOS_RIVAL_NORTH is 0 until that battle and 1 after. The neighbour's
+# teams are Kalos's trainers.json's kalos_rival_route14_*: the starter the neighbour took at the café is the one strong
+# against the player's.
+#
+# The people: rival (FLAG_KALOS_HIDE_RIVAL_ROUTE_14, set by the scene).
+
+
+# Up the trail from Lumiose (the trigger across the trail below the neighbour, on VAR_KALOS_RIVAL_NORTH 0)
+script Neighbour
+  scene "The neighbour on Route 14"
+  face rival player
+  speaker "{rival}"
+  say "{player}! You got the power running again? Everyone in Lumiose is talking about the kid who beat Team Flare."
+  say "I'm not going to fall behind you now. Let's battle, right here in the mud!"
+  if starter "Chespin" goto AgainstChespin
+  if starter "Fennekin" goto AgainstFennekin
+  battle rival as "kalos_rival_route14_chespin" canlose
+  goto Fought
+label AgainstChespin
+  battle rival as "kalos_rival_route14_fennekin" canlose
+  goto Fought
+label AgainstFennekin
+  battle rival as "kalos_rival_route14_froakie" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto RivalWon
+  say "Again! You're always one step ahead of me. I'll catch up, you'll see."
+  goto Off
+label RivalWon
+  say "Got you this time! Don't let it go to your head... or mine."
+  goto Off
+label Off
+  say "Laverre's Gym Leader uses fairies. They're prettier than they look, and tougher."
+  walk rival up 3 fast
+  hide rival
+  setflag FLAG_KALOS_HIDE_RIVAL_ROUTE_14
+  setvar VAR_KALOS_RIVAL_NORTH 1
+  endscene
+  end
+
+script Rival
+  speaker "{rival}"
+  say "Watch your step. Half this trail is puddle."
+  end

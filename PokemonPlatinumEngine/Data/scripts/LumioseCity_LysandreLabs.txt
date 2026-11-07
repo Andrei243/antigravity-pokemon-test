@@ -1,0 +1,30 @@
+# Lysandre's laboratory under his café in Lumiose City (plan 23 · Z4). The lines are our own, on X and Y's beats as
+# they are publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): past
+# two of Team Flare's grunts, Lysandre waits among his machines, tells of the ultimate weapon and battles; beaten, he goes
+# to Team Flare's base under Geosenge Town to wake it. VAR_KALOS_STORY is vaniville_town.txt's count: 27 becomes 28 here,
+# which opens the hidden way down in Geosenge's ring of stones (geosenge_town.txt's HiddenDoor). His team is Kalos's
+# trainers.json's kalos_lysandre_1: a Gyarados that Mega Evolves with his own Key Stone.
+#
+# The people: the two grunts (trainers of the room) and lysandre (FLAG_KALOS_HIDE_LYSANDRE_LABS once he leaves).
+
+
+script Lysandre
+  face lysandre player
+  speaker "Lysandre"
+  if var VAR_KALOS_STORY != 27 end
+  scene "Lysandre's laboratory"
+  say "So you came. I hoped you would. You have strength, {player}, and strength should see what I have built."
+  say "Three thousand years ago a king of Kalos built a weapon to end a war. It ended far more than that."
+  say "I mean to use it again. Not for war: to sweep the world clean, and leave it to the few who deserve it."
+  say "You disagree? Then show me your answer the only way it matters."
+  battle self as "kalos_lysandre_1"
+  say "Your answer is strong. It changes nothing. The weapon lies under Geosenge Town, and it is already waking."
+  say "Come and watch the world become beautiful, if you like."
+  hide lysandre
+  setflag FLAG_KALOS_HIDE_LYSANDRE_LABS
+  defeat "kalos_flare_grunt_labs_1"
+  defeat "kalos_flare_grunt_labs_2"
+  setvar VAR_KALOS_STORY 28
+  objective kalosFlareHQ
+  endscene
+  end

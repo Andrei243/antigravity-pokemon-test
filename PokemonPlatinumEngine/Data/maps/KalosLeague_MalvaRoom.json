@@ -1,0 +1,85 @@
+{
+  "name": "KalosLeague_MalvaRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Fire",
+  "width": 13,
+  "height": 12,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "#...........#",
+    "#.#.......#.#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 11,
+      "targetMap": "KalosLeague_Hall",
+      "targetX": 3,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "malva",
+      "name": "Malva",
+      "npcType": "malva",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Malva"
+    }
+  ],
+  "wildEncounters": []
+}

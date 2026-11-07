@@ -1,0 +1,204 @@
+{
+  "name": "KalosLeague_Hall",
+  "displayName": "Pokémon League",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "League",
+  "width": 21,
+  "height": 16,
+  "ground": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "###_###_##_##_###_###",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "##########D##########"
+  ],
+  "solid": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "###.###.##.##.###.###",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "##.................##",
+    "#...................#",
+    "#...................#",
+    "#..###.........###..#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "##########.##########"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 19,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 11,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 15,
+      "y": 11,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 15,
+      "targetMap": "Kalos",
+      "targetX": 608,
+      "targetY": 60,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 3,
+      "targetMap": "KalosLeague_MalvaRoom",
+      "targetX": 6,
+      "targetY": 10,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 3,
+      "targetMap": "KalosLeague_SieboldRoom",
+      "targetX": 6,
+      "targetY": 10,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 3,
+      "targetMap": "KalosLeague_ChampionRoom",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 13,
+      "sourceY": 3,
+      "targetMap": "KalosLeague_WikstromRoom",
+      "targetX": 6,
+      "targetY": 10,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 3,
+      "targetMap": "KalosLeague_DrasnaRoom",
+      "targetX": 6,
+      "targetY": 10,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "nurse",
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 4,
+      "y": 10,
+      "facing": "Down",
+      "isHealingNurse": true
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 16,
+      "y": 10,
+      "facing": "Down",
+      "dialog": [
+        "Clerk: Welcome! Stock up before you go on. You won't come back this way between battles."
+      ],
+      "isPokeMartClerk": true
+    },
+    {
+      "id": "guide",
+      "name": "Guide",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 7,
+      "facing": "Down",
+      "script": "Guide"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1,
+      "script": "ChampionDoor"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -383,6 +383,27 @@
     // Mastery, bald with a white moustache and bushy brows in a long sky-blue coat
     "korrina": { "hairColor": "#ecd27a", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8383c", "hatBand": "#d8383c", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#d8383c", "eyes": "#3a5a7a", "shorts": true, "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.02 },
     "gurkinn": { "hairColor": "#e8e8ee", "hair": "Bald", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#3a302a", "eyes": "#3a3a4a", "mustache": true, "bushyBrows": true, "coat": true, "build": "Elder" },
+    // Plan 23 · Z4 (our own designs, on the Adult build like the rest of Kalos's cast): the last five Gym Leaders, Ramos an
+    // old gardener in a straw hat and green overalls; Clemont, an inventor in round glasses and a blue jumpsuit with a yellow
+    // pack; Valerie, a designer in a doll's dress of pink and white under a wide pale hat; Olympia, a seer with long pale
+    // hair in a deep violet robe; Wulfric, a big bearded man in a fur-trimmed coat. The Elite Four: Malva, red hair cut
+    // short, glasses and a black suit; Siebold, a chef in white with a pale blue scarf; Wikstrom, a knight in a steel
+    // helmet and grey armour; Drasna, an old woman with long white hair in a green and gold robe. The Champion, Diantha,
+    // dark hair in a bob and a long white coat. Team Flare: its grunts in red jackets and red-tinted visors, the women
+    // with the same visor over a bun; its admins in lab coats over red, round orange glasses
+    "ramos": { "skin": "#d8a078", "hairColor": "#e8e8ee", "hair": "Short", "hat": "WideHat", "hatColor": "#e8cc6a", "hatBand": "#5a8a3a", "top": "#5a8a3a", "accent": "#e8cc6a", "bottom": "#4a6a2a", "shoes": "#5a4030", "eyes": "#3a3a2a", "mustache": true, "overalls": true, "build": "Elder" },
+    "clemont": { "hairColor": "#ecd27a", "hair": "Short", "top": "#3a5a9a", "accent": "#e8c040", "bottom": "#3a5a9a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "glasses": "#2a2a34", "bag": "#e8c040", "build": "Adult", "height": 1.04 },
+    "valerie": { "hairColor": "#2a2224", "hair": "Long", "hat": "WideHat", "hatColor": "#f6eef2", "hatBand": "#e88aa8", "top": "#e88aa8", "accent": "#f6f6f8", "bottom": "#e88aa8", "shoes": "#f6f6f8", "eyes": "#5a3a4a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "olympia": { "hairColor": "#d8d4e8", "hair": "Long", "top": "#5a3a8a", "accent": "#e8c040", "bottom": "#5a3a8a", "shoes": "#2a2230", "eyes": "#6a4a9a", "robe": true, "lashes": true, "build": "Adult", "height": 1.06 },
+    "wulfric": { "skin": "#e8b894", "hairColor": "#a86a3a", "hair": "Short", "top": "#3a6a8a", "accent": "#f2f2ee", "bottom": "#3a3a46", "shoes": "#3a2e28", "eyes": "#3a3a4a", "beard": true, "coat": true, "scarf": true, "build": "Adult", "height": 1.18 },
+    "malva": { "hairColor": "#c8402a", "hair": "Short", "top": "#22222a", "accent": "#c8402a", "bottom": "#22222a", "shoes": "#c8402a", "eyes": "#5a3a3a", "glasses": "#c8402a", "jacket": true, "lashes": true, "build": "Adult", "height": 1.06 },
+    "siebold": { "hairColor": "#e8d8a8", "hair": "Swept", "top": "#f6f6f8", "accent": "#8ab8dc", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "scarf": true, "coat": true, "build": "Adult", "height": 1.1 },
+    "wikstrom": { "hairColor": "#6a5a4a", "hair": "Short", "hat": "Helmet", "hatColor": "#9aa2b2", "hatBand": "#d8b44a", "top": "#9aa2b2", "accent": "#d8b44a", "bottom": "#6a7286", "shoes": "#3a3a46", "eyes": "#3a3a4a", "mustache": true, "build": "Adult", "height": 1.14 },
+    "drasna": { "hairColor": "#f2f2f4", "hair": "Long", "top": "#3a7a5a", "accent": "#d8b44a", "bottom": "#3a7a5a", "shoes": "#2a3a30", "eyes": "#5a6a4a", "robe": true, "lashes": true, "build": "Elder" },
+    "diantha": { "hairColor": "#2a2224", "hair": "Short", "top": "#f6f6f8", "accent": "#d8b44a", "bottom": "#2a2a36", "shoes": "#f6f6f8", "eyes": "#3a5a4a", "coat": true, "lashes": true, "build": "Adult", "height": 1.06 },
+    "flare_grunt": { "hairColor": "#c8402a", "hair": "Spiky", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "build": "Adult", "height": 1.02 },
+    "flare_grunt_f": { "hairColor": "#c8402a", "hair": "Bun", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "flare_admin": { "hairColor": "#e8803a", "hair": "Short", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8803a", "coat": true, "lashes": true, "build": "Adult", "height": 1.04 },
     // Alola's first chapter (plan 23 · Z5; our own designs, on the Adult build as Kalos's cast is, stand-ins until plan 30):
     // Hau, the kahuna's grandson and the player's rival, dark hair tied in a knot and a sunset-orange shirt over green
     // shorts; Professor Kukui, a cap over short dark hair, glasses, an open white coat and grey trousers; Hala, the
@@ -730,6 +751,8 @@
     "Scientist": [ "scientist", "scientist_f" ],
     "Black Belt": "blackbelt",
     "Galactic": [ "grunt", "grunt_f" ],
+    // Plan 23 · Z4: Team Flare's grunts, by the person's look, the men's first (its admins and its boss stand as themselves)
+    "Team Flare Grunt": [ "flare_grunt", "flare_grunt_f" ],
     // Plan 11 · C2: the first trainers of the open areas, the second look of a class standing for the women
     "School Kid": [ "school_kid_m", "school_kid_f" ],
     "Bug Catcher": "bug_catcher",
@@ -837,6 +860,8 @@
     "Leader": null,
     "Elite Four": null,
     "Champion": null,
+    "Team Flare Boss": null,
+    "Team Flare Admin": null,
     "Commander": null,
     "Galactic Boss": null,
     "Pokémon Trainer": null,

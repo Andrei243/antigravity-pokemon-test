@@ -1,0 +1,50 @@
+# Snowbelle City's Gym (plan 23 · Z4). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Wulfric, a big laughing man of the
+# north, battles for the Iceberg Badge, Kalos's eighth (`givebadge iceberg`), once the Psychic Badge is won. VAR_KALOS_STORY
+# is vaniville_town.txt's count: 29, Team Flare stopped, becomes 30 here, and the objective points on through the woods
+# and the village to Victory Road. His team is Kalos's trainers.json's kalos_wulfric_1.
+
+
+script Wulfric
+  face wulfric player
+  speaker "Wulfric"
+  if badge iceberg goto Won
+  if var VAR_KALOS_STORY < 29 goto Later
+  scene "Wulfric"
+  say "Ha! Another one comes in out of the cold! I'm Wulfric, and this Gym is the coldest place in Kalos. Ha ha!"
+  say "Ice is patient. It waits, it grows, and one day it moves mountains. Let's see if you can move it!"
+  battle self as "kalos_wulfric_1"
+  say "Ha ha ha! You melted the lot of us! That's the best fun I've had all winter."
+  say "The Iceberg Badge. Eight! Now you're ready for the road to the League."
+  givebadge iceberg
+  text "{player} received the Iceberg Badge from Wulfric!"
+  setflag FLAG_KALOS_DEFEATED_SNOWBELLE_GYM
+  defeat "kalos_skier_agathe"
+  defeat "kalos_skier_basile"
+  if var VAR_KALOS_STORY != 29 goto Tm
+  setvar VAR_KALOS_STORY 30
+  objective kalosLeague
+label Tm
+  say "Take this too. A storm of hail and wind that freezes everything in its way!"
+  give "TM13"
+  setflag FLAG_KALOS_RECEIVED_TM_WULFRIC
+  say "North of town, through the woods and past the village, Victory Road waits. Go on, then!"
+  endscene
+  end
+label Later
+  say "Ha! You've come a long way, but not far enough. Kalos has bigger trouble than me just now: go and stop it first."
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_WULFRIC goto Tm
+  say "Ha ha! Show the League what a little cold can do!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge iceberg goto Won
+  say "Hello there, future Champion! Wulfric's Ice types crack under fire, fists, rock and steel. Choose well!"
+  end
+label Won
+  say "You beat Wulfric! I could hear him laughing from the door."
+  end

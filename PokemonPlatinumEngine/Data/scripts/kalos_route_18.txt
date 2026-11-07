@@ -1,0 +1,21 @@
+# Route 18, the narrow valley south of Anistar City (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md,
+# "The mountain, Team Flare and the League, drawn by hand"): a worker keeps the valley shut while Team Flare's weapon
+# shakes the ground, and opens it once Xerneas is freed under Geosenge Town (GeosengeTown_FlareHQ.txt sets
+# VAR_KALOS_ROUTE_18 1).
+
+
+# Down from Anistar onto the valley road (the trigger across its head, on VAR_KALOS_ROUTE_18 0)
+script NotYet
+  speaker "Worker"
+  say "Sorry, the valley's shut. The ground keeps shaking and rocks keep falling. Nobody knows why."
+  walk player up 1
+  end
+
+script Worker
+  speaker "Worker"
+  if var VAR_KALOS_ROUTE_18 == 0 goto Shut
+  say "The shaking's stopped, so the valley's open again. Couriway Town is at the bottom. Mind the rocks!"
+  end
+label Shut
+  say "The valley stays shut until the ground settles. Something deep under Kalos is stirring."
+  end

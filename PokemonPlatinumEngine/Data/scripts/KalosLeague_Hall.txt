@@ -1,0 +1,24 @@
+# The Pokémon League's hall (plan 23 · Z4). The lines are our own (docs/mechanics/rulings.md, "The mountain, Team Flare and
+# the League, drawn by hand"): five doors along the back wall, the Elite Four's in any order and the Champion's in the
+# middle, which stays shut until all four are beaten (FLAG_KALOS_DEFEATED_MALVA, _SIEBOLD, _WIKSTROM and _DRASNA, set in
+# their rooms); a nurse and a clerk by the way in. The Hall of Fame's scene (KalosLeague_HallOfFame.txt) clears the
+# five flags for a second challenge.
+
+
+# The tile before the Champion's door (the room's trigger on it, every time)
+script ChampionDoor
+  if not flag FLAG_KALOS_DEFEATED_MALVA goto Shut
+  if not flag FLAG_KALOS_DEFEATED_SIEBOLD goto Shut
+  if not flag FLAG_KALOS_DEFEATED_WIKSTROM goto Shut
+  if not flag FLAG_KALOS_DEFEATED_DRASNA goto Shut
+  end
+label Shut
+  text "The Champion's door is shut fast. Beat all four of the Elite Four first."
+  walk player down 1
+  end
+
+script Guide
+  speaker "Guide"
+  say "Welcome to the Pokémon League! Four doors, four of the Elite Four, in any order you like."
+  say "Beat all four and the middle door opens on the Champion. The nurse here will heal you between rooms."
+  end

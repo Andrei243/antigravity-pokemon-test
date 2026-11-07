@@ -17,7 +17,7 @@
   "warps": [
     { "x": 243, "z": 472, "to": "CoumarineCity_PokemonCenter_1F", "toWarp": 0 },
     { "x": 253, "z": 472, "to": "CoumarineCity_GardenHouse", "toWarp": 0 },
-    { "x": 268, "z": 472, "to": "coumarine_city_gym", "toWarp": 0 },
+    { "x": 268, "z": 472, "to": "CoumarineCity_Gym", "toWarp": 0 },
     { "x": 280, "z": 472, "to": "CoumarineCity_EastHouse", "toWarp": 0 }
   ],
   "objects": [

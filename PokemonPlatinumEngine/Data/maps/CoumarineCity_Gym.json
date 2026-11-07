@@ -1,0 +1,191 @@
+{
+  "name": "CoumarineCity_Gym",
+  "displayName": "Coumarine Gym",
+  "bgmTrack": "kalos/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Grass",
+  "width": 13,
+  "height": 18,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...#...#...#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 17,
+      "targetMap": "Kalos",
+      "targetX": 268,
+      "targetY": 473,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ramos",
+      "name": "Ramos",
+      "npcType": "ramos",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Ramos"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 15,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "kalos_gardener_flora",
+      "name": "Flora",
+      "npcType": "picnicker",
+      "x": 3,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_gardener_flora",
+        "name": "Flora",
+        "trainerClass": "Picnicker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Picnicker Flora: The Leader grew every plant in this Gym from seed. Mind the leaves!",
+        "dialogueAfter": "Picnicker Flora: Trampled flat...",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_hiker_sylvain",
+      "name": "Sylvain",
+      "npcType": "hiker",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_hiker_sylvain",
+        "name": "Sylvain",
+        "trainerClass": "Hiker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Hiker Sylvain: I climbed every vine in this place. Now I'll climb over you!",
+        "dialogueAfter": "Hiker Sylvain: Fell off the vine, I did.",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

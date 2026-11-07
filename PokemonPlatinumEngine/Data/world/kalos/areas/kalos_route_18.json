@@ -1,0 +1,43 @@
+{
+  "key": "kalos_route_18",
+  "index": 32,
+  "name": "Route 18",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ROUTE_18",
+  "nightMusic": "ROUTE_18",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    { "id": "worker", "looks": "worker", "movement": "look_north", "x": 636, "z": 239, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 637, "z": 270, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_FIRMIN" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 630, "z": 298, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_LEON" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 642, "z": 326, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_18_FULL_HEAL", "item": "Full Heal", "script": "" }
+  ],
+  "signs": [
+    { "x": 630, "z": 240, "type": 0, "script": "RouteSign" }
+  ],
+  "triggers": [],
+  "land": [
+    { "species": "Torkoal", "level": 40 },
+    { "species": "Sandslash", "level": 40 },
+    { "species": "Lairon", "level": 40 },
+    { "species": "Durant", "level": 40 },
+    { "species": "Heatmor", "level": 41 },
+    { "species": "Gurdurr", "level": 41 },
+    { "species": "Graveler", "level": 41 },
+    { "species": "Pupitar", "level": 41 },
+    { "species": "Sandslash", "level": 41 },
+    { "species": "Torkoal", "level": 42 },
+    { "species": "Lairon", "level": 42 },
+    { "species": "Pupitar", "level": 42 }
+  ],
+  "landRate": 20
+}

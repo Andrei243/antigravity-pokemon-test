@@ -1,0 +1,149 @@
+{
+  "name": "LumioseCity_LysandreLabs",
+  "displayName": "Lysandre Labs",
+  "bgmTrack": "kalos/gym",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 16,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#.#..#.....#..#.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#..#.........#..#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Tank",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 15,
+      "targetMap": "LumioseCity_LysandreCafe",
+      "targetX": 11,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kalos_flare_grunt_labs_1",
+      "name": "Grunt",
+      "npcType": "flare_grunt",
+      "x": 5,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "kalos_flare_grunt_labs_1",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: The boss's guests come by the front door. You came by the back.",
+        "dialogueAfter": "Team Flare Grunt Grunt: Hmph. Go on, then. He's expecting you.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_flare_grunt_labs_2",
+      "name": "Grunt",
+      "npcType": "flare_grunt_f",
+      "x": 11,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "kalos_flare_grunt_labs_2",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: Team Flare only lets in the stylish. You're not on the list!",
+        "dialogueAfter": "Team Flare Grunt Grunt: Fine. You're on the list.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "lysandre",
+      "name": "Lysandre",
+      "npcType": "lysandre",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Lysandre",
+      "hiddenBy": "FLAG_KALOS_HIDE_LYSANDRE_LABS"
+    }
+  ],
+  "wildEncounters": []
+}

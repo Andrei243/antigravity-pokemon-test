@@ -1,0 +1,19 @@
+{
+  // Couriway Town (plan 23 · Z4): drawn by hand, our words. A town where rivers meet before they fall into the valley, a
+  // Pokémon Center (with the Mart's counter inside) and a house above its river, Route 18 coming in from the north and
+  // Route 19 going east. It plays Aquacorde's song until plan 31 writes it its own
+  "area": "couriway_town",
+  "bgmTrack": "kalos/aquacorde",
+  "trees": "Round",
+  "architecture": "Canalside",
+  "doors": [
+    { "warp": 0, "map": "CouriwayTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "CouriwayTown_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "fisher": { "name": "Fisherman", "npcType": "Fisherman", "still": true, "dialog": [ "Three rivers meet under the town and go over the falls together. The fishing's never dull." ] }
+  },
+  "signs": {
+    "TownSign": "Couriway Town\nWhere the rivers meet and fall."
+  }
+}

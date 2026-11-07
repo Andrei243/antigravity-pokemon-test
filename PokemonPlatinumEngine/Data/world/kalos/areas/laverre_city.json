@@ -1,0 +1,30 @@
+{
+  "key": "laverre_city",
+  "index": 27,
+  "name": "Laverre City",
+  "matrix": 0,
+  "kind": "City",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "LAVERRE",
+  "nightMusic": "LAVERRE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 360, "z": 193, "to": "LaverreCity_Gym", "toWarp": 0 },
+    { "x": 335, "z": 200, "to": "LaverreCity_PokemonCenter_1F", "toWarp": 0 },
+    { "x": 379, "z": 200, "to": "LaverreCity_House", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 344, "z": 210, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_south", "x": 370, "z": 208, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 357, "z": 228, "type": 0, "script": "CitySign" }
+  ],
+  "triggers": []
+}

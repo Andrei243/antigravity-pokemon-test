@@ -14,7 +14,10 @@
     { "warp": 2, "map": "GeosengeTown_EastHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   "triggers": [
-    { "script": "Trevor", "x": 118, "z": 227, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 18 }
+    { "script": "Trevor", "x": 118, "z": 227, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 18 },
+    // Plan 23 · Z4: the hidden way down to Team Flare's secret base under the flower bed in the ring of stones, open
+    // once Lysandre has been followed from his laboratory (VAR_KALOS_STORY 28; GeosengeTown_FlareHQ)
+    { "script": "HiddenDoor", "x": 108, "z": 219, "width": 1, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 28 }
   ],
   "props": [
     { "type": "LampPost", "x": 117, "y": 211, "width": 1, "depth": 1 },

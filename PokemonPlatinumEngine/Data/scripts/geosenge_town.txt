@@ -28,3 +28,14 @@ script TrevorWaits
   speaker trevor "Trevor"
   say "Um. I counted the stones three times. I got three different answers."
   end
+
+
+# Plan 23 · Z4: the hidden way down to Team Flare's secret base, under the flower bed in the middle of the ring of stones,
+# once Lysandre has gone there from his laboratory (the trigger on the bed's middle, on VAR_KALOS_STORY 28;
+# GeosengeTown_FlareHQ.txt)
+script HiddenDoor
+  scene "Team Flare's hidden door"
+  text "The flower bed shudders and slides aside. Steps lead down into the dark under the standing stones."
+  endscene
+  warp "GeosengeTown_FlareHQ" 10 20 up
+  end

@@ -1,0 +1,25 @@
+{
+  // Anistar City (plan 23 · Z4): drawn by hand, our words. A city of stone on the east coast round its great sundial (a
+  // statue on the square), its Gym at its head, a Pokémon Center (with the Mart's counter inside) and a house on its
+  // avenue, Route 17 coming in from the west and Route 18 leaving south. It plays Santalune's song until plan 31 writes
+  // it its own
+  "area": "anistar_city",
+  "bgmTrack": "kalos/santalune",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "doors": [
+    { "warp": 0, "map": "AnistarCity_Gym", "x": 6, "y": 16, "facing": "Up" },
+    { "warp": 1, "map": "AnistarCity_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 2, "map": "AnistarCity_House", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "props": [
+    { "type": "Statue", "x": 650, "y": 218, "width": 2, "depth": 2 }
+  ],
+  "people": {
+    "astronomer": { "name": "Astronomer", "npcType": "Gentleman", "still": true, "dialog": [ "The sundial was carved from a stone that fell from the sky. On clear nights it hums." ] },
+    "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "Route 18 runs south from here, down a narrow valley to Couriway Town." ] }
+  },
+  "signs": {
+    "CitySign": "Anistar City\nThe city of the sundial, where the stars are read."
+  }
+}

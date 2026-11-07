@@ -1,0 +1,50 @@
+# Laverre City's Gym, inside its great tree (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
+# publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Valerie, a
+# designer of dresses, battles for the Fairy Badge, Kalos's sixth (`givebadge fairy`), once the Voltage Badge is won.
+# VAR_KALOS_STORY is vaniville_town.txt's count: 25 becomes 26 here, and the objective points east along Routes 15 and 17
+# to Anistar City. Her team is Kalos's trainers.json's kalos_valerie_1.
+
+
+script Valerie
+  face valerie player
+  speaker "Valerie"
+  if badge fairy goto Won
+  if var VAR_KALOS_STORY < 25 goto Later
+  scene "Valerie"
+  say "Oh... a visitor. I am Valerie. Some say I am not quite of this world. Perhaps they are right."
+  say "My Pokémon are as delicate as lace, and as strong as the thread that holds it. Shall we see?"
+  battle self as "kalos_valerie_1"
+  say "How lovely. You battle like a butterfly that has decided to be a storm."
+  say "Please take the Fairy Badge. It suits you."
+  givebadge fairy
+  text "{player} received the Fairy Badge from Valerie!"
+  setflag FLAG_KALOS_DEFEATED_LAVERRE_GYM
+  defeat "kalos_lass_josette"
+  defeat "kalos_lady_eleonore"
+  if var VAR_KALOS_STORY != 25 goto Tm
+  setvar VAR_KALOS_STORY 26
+  objective kalosOlympia
+label Tm
+  say "And this. A charm so sweet a foe forgets to fight at all."
+  give "TM45"
+  setflag FLAG_KALOS_RECEIVED_TM_VALERIE
+  say "Anistar City lies far to the east, past Dendemille and the snow. Its Leader reads the stars."
+  endscene
+  end
+label Later
+  say "The Leader of Lumiose's tower has not yet met you, I think. Go to him first. Then come back to me."
+  end
+label Won
+  if not flag FLAG_KALOS_RECEIVED_TM_VALERIE goto Tm
+  say "Do come back. I am making a dress the colour of your battle."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge fairy goto Won
+  say "Hello there, future Champion! Valerie's Fairy types shrink from poison and steel. Choose well!"
+  end
+label Won
+  say "You beat Valerie! She's sketching a new dress already."
+  end
