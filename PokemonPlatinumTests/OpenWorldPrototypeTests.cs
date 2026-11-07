@@ -29,6 +29,30 @@ public class OpenWorldPrototypeTests
     }
 
     [Fact]
+    public void EveryTriangleFacesTheAir()
+    {
+        // A quad turned by its own shape came out the wrong way about where a gentle slope crosses a level of the grid:
+        // back faces in lines along the land's contours, drawn black. Turned by the order of its cells, every face of
+        // the ground away from a carve's sharp edges has air just in front of it and rock just behind (along a portal's
+        // rim or where a cavern's floor meets its wall, 5 cm can cross a wedge thinner than that)
+        var (world, bake, _) = hill.Value;
+        bool NearACarve(D3 p) => world.Carves.Any(c => p.X > c.Min.X - 1 && p.X < c.Max.X + 1 && p.Z > c.Min.Z - 1 && p.Z < c.Max.Z + 1 && p.Y < c.Max.Y + 1);
+        int faces = 0, wrong = 0;
+        foreach (var chunk in bake.Chunks.Values)
+            for (int t = 0; t < chunk.GroundTriangles + chunk.ApronTriangles; t++)
+            {
+                var a = chunk.Vertex(chunk.Indices[t * 3]); var b = chunk.Vertex(chunk.Indices[t * 3 + 1]); var c = chunk.Vertex(chunk.Indices[t * 3 + 2]);
+                var middle = (a + b + c) * (1.0 / 3);
+                if (NearACarve(middle)) continue;
+                var n = D3.Cross(b - a, c - a).Normalized();
+                faces++;
+                if (world.Field(middle + n * 0.05) <= 0 || world.Field(middle - n * 0.05) >= 0) wrong++;
+            }
+        Assert.True(faces > 100_000);
+        Assert.True(wrong == 0, $"{wrong} of {faces} faces don't face the air");
+    }
+
+    [Fact]
     public void TwoChunksOfALevelMeetWithoutASeam()
     {
         // Every vertex on the border column the two chunks share is a vertex of both, to the millimetre

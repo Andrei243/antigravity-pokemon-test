@@ -155,11 +155,15 @@ public static class SurfaceNets
         // half cells each level's surface stops short of its border, which left a strip of nothing between the two
         var ground = new List<int>();
         var apronList = new List<int>();
-        void Quad(int a, int b, int c, int d, D3 outward, List<int> into)
+        // The four cells go round the edge in the order the loops below give them, which is anticlockwise seen from the
+        // edge's positive end for an edge along x or z and clockwise for one along y; a quad faces the air by that
+        // order alone, never by its own shape. (A first cut turned each quad by the side its own normal fell on, and a
+        // quad nearly level round a level edge, where a gentle slope crosses a level of the grid, came out the wrong
+        // way about: back faces in lines along the land's contours, drawn black.)
+        void Quad(int a, int b, int c, int d, bool reverse, List<int> into)
         {
             if (a < 0 || b < 0 || c < 0 || d < 0) return;
-            var normal = D3.Cross(V(b) - V(a), V(c) - V(a)) + D3.Cross(V(c) - V(a), V(d) - V(a));
-            if (D3.Dot(normal, outward) < 0) (b, d) = (d, b);
+            if (reverse) (b, d) = (d, b);
             Triangle(a, b, c, into);
             Triangle(a, c, d, into);
         }
@@ -177,15 +181,15 @@ public static class SurfaceNets
                     bool here = f[Corner(i, j, k)] < 0;
                     // Along x: the cells (i, j-1..j, k-1..k); the chunk's own for i in 1..n and k in 2..n+1
                     if (i <= n + 1 && j >= 1 && j <= ny - 1 && k >= 1 && k <= n + 1 && here != (f[Corner(i + 1, j, k)] < 0))
-                        Quad(CellVertex(i, j - 1, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i, j - 1, k), new D3(here ? 1 : -1, 0, 0),
+                        Quad(CellVertex(i, j - 1, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i, j - 1, k), reverse: !here,
                             i >= 1 && i <= n && k >= 2 ? ground : apronList);
                     // Along y: the cells (i-1..i, j, k-1..k); the chunk's own for i and k in 2..n+1
                     if (j <= ny - 1 && i >= 1 && i <= n + 1 && k >= 1 && k <= n + 1 && here != (f[Corner(i, j + 1, k)] < 0))
-                        Quad(CellVertex(i - 1, j, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, here ? 1 : -1, 0),
+                        Quad(CellVertex(i - 1, j, k - 1), CellVertex(i, j, k - 1), CellVertex(i, j, k), CellVertex(i - 1, j, k), reverse: here,
                             i >= 2 && k >= 2 ? ground : apronList);
                     // Along z: the cells (i-1..i, j-1..j, k); the chunk's own for k in 1..n and i in 2..n+1
                     if (k <= n + 1 && i >= 1 && i <= n + 1 && j >= 1 && j <= ny - 1 && here != (f[Corner(i, j, k + 1)] < 0))
-                        Quad(CellVertex(i - 1, j - 1, k), CellVertex(i, j - 1, k), CellVertex(i, j, k), CellVertex(i - 1, j, k), new D3(0, 0, here ? 1 : -1),
+                        Quad(CellVertex(i - 1, j - 1, k), CellVertex(i, j - 1, k), CellVertex(i, j, k), CellVertex(i - 1, j, k), reverse: !here,
                             k >= 1 && k <= n && i >= 2 ? ground : apronList);
                 }
         int groundTriangles = ground.Count / 3;

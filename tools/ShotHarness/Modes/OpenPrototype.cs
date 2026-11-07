@@ -188,6 +188,9 @@ partial class Harness
             scene.Outline = false;
             Shoot("ow00_diag_no_outline", start, null);
             scene.Outline = true;
+            scene.Occlusion = false;
+            Shoot("ow00_diag_no_occlusion", start, null);
+            scene.Occlusion = true;
         }
 
         var run = Find(s => s.Leg == 0 && s.Walked > 8);

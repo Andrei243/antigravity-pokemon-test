@@ -27,7 +27,7 @@ sealed class OpenProtoScene
     readonly Dictionary<(int, int, int), SceneMeshes> skirts = new();
 
     /// <summary>Diagnostic switches for the gate's look: the skirts drawn, the shadow map's casters drawn, the post's depth outline.</summary>
-    public bool DrawSkirts = true, CastShadows = true, Outline = true;
+    public bool DrawSkirts = true, CastShadows = true, Outline = true, Occlusion = true;
     readonly Dictionary<(int, int), (SceneMeshes Meshes, int Triangles, int Trees)> treeChunks = new();
     readonly Dictionary<(int, int), List<TreeSpot>> treesByChunk = new();
     readonly Texture2D grain;
@@ -279,7 +279,9 @@ sealed class OpenProtoScene
     LightRig Rig()
     {
         var rig = ArtLook.BattleRig(Hour) with { FogNear = 110f, FogFar = 760f, FogAmount = 0.78f };
-        return Outline ? rig : rig with { Post = rig.Post with { OutlineStrength = 0f } };
+        if (!Outline) rig = rig with { Post = rig.Post with { OutlineStrength = 0f } };
+        if (!Occlusion) rig = rig with { Post = rig.Post with { AoStrength = 0f } };
+        return rig;
     }
 
     /// <summary>Renders the scene into the scene target at 1920×1080 and readies the post passes. Outside any texture mode.</summary>
