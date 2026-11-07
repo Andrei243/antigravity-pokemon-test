@@ -136,7 +136,6 @@ public sealed class OpenGround
             Add(P(f[0]), P(f[1]), P(f[2]), key++);
             Add(P(f[0]), P(f[2]), P(f[3]), key++);
         }
-        SortSquares();
     }
 
     private void Add(OpenVec a, OpenVec b, OpenVec c, long key)
@@ -153,17 +152,18 @@ public sealed class OpenGround
             {
                 if (!squares.TryGetValue((x, z), out var list)) squares[(x, z)] = list = new List<int>();
                 list.Add(index);
+                unsorted.Add((x, z));
             }
     }
 
-    private bool unsorted;
-    private void SortSquares() => unsorted = true;
+    // The squares given triangles since they were last put in the keys' order (every key is its own, so the order is whole)
+    private readonly HashSet<(int, int)> unsorted = new();
 
     private void SortIfNeeded()
     {
-        if (!unsorted) return;
-        foreach (var list in squares.Values) list.Sort((p, q) => triangles[p].Key.CompareTo(triangles[q].Key));
-        unsorted = false;
+        if (unsorted.Count == 0) return;
+        foreach (var square in unsorted) squares[square].Sort((p, q) => triangles[p].Key.CompareTo(triangles[q].Key));
+        unsorted.Clear();
     }
 
     private static int Cell(double v) => (int)Math.Floor(v / Square);
@@ -184,7 +184,6 @@ public sealed class OpenGround
                     Add(OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3])), OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3 + 1])),
                         OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3 + 2])), KeyOf(cx, cz, t));
                 if (chunk.HasWater) water[(cx, cz)] = chunk.Water;
-                SortSquares();
             }
     }
 

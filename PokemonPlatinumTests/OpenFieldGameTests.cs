@@ -59,7 +59,7 @@ public class OpenFieldGameTests
             var entered = StateHash.Of(game.Flow);
             Assert.Equal(new[] { "place" }, StateHash.Parted(gridRow, entered));
 
-            // Three seconds: 360 ticks, and the player stands where they were put (the capsule is OW3's)
+            // Three seconds: 360 ticks, and the player stands where they were put (a map with no ground is a place to stand, OW3)
             int steps = game.Pastimes.Steps;
             Run(engine, 180);
             Assert.Equal(360, game.OpenField!.Clock.Tick);
@@ -267,6 +267,9 @@ public class OpenFieldGameTests
             engine.ContinueGame();
             Assert.True(engine.InOpenField);
             Assert.Equal(stood, game.OpenField!.Place);
+            // The stick at rest through CONTINUE's fade: the capsule stands where it woke, settled on the ground
+            Run(engine, 60);
+            Assert.Equal(stood, game.OpenField!.Place);
             RunStick(engine, 60, 0, -127);
             Assert.InRange(stood.Pos.Z - game.OpenPlayer!.Pos.Z, 1_490, 1_510);
             Assert.Equal(OpenYaw.North, game.OpenPlayer.Yaw);
@@ -277,7 +280,7 @@ public class OpenFieldGameTests
     public void TenSecondsWalkedInTheOpenTestWorldRecordedPlayBackTheSameTwice()
     {
         // Plan 32 · OW3: as the empty map's recording, but walking: the stick swung round eight ways, the run button
-        // now held and now not, over the open test world's west road
+        // now held and now not, east and south-east over the open test world's meadow
         InputRecording? recording = null;
         string recorded = "", first = "", second = "";
         List<MovieCheckpoint>? firstRows = null, secondRows = null;
@@ -308,7 +311,7 @@ public class OpenFieldGameTests
                 if (f >= 60 * 60) return null;
                 if (inField < 0) return f % 6 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None;
                 int k = (f - inField) / 75;
-                double angle = k * Math.PI / 4 + 0.3;
+                double angle = 0.3 + k % 4 * 0.5;
                 return Stick((sbyte)Math.Round(Math.Cos(angle) * 127), (sbyte)Math.Round(Math.Sin(angle) * 127), run: k % 3 == 1);
             }, Start);
             while (source.Next(Frame) is { } frame) recorder.Step(engine, frame);
