@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "An open region's world.json (Data/world3d/<region>/world.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "region": {
+      "type": "string"
+    },
+    "chunkSize": {
+      "type": "number"
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "baseHeight": {
+      "type": "number"
+    },
+    "cover": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "highland": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "snow": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "shore": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "areas": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "minY": {
+            "type": "number"
+          },
+          "maxY": {
+            "type": "number"
+          },
+          "music": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "weather": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "polygon"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "maps": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "areas": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "region",
+    "chunks"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "What is cut out of an open region's land and added to it (Data/world3d/<region>/carve/*.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "carves": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "kind"
+        ],
+        "anyOf": [
+          {
+            "properties": {
+              "kind": {
+                "const": "capsules"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "radius": {
+                "type": "number"
+              },
+              "floor": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "points",
+              "radius"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "ellipsoid"
+              },
+              "centre": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "radii": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "floor": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "centre",
+              "radii"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "box"
+              },
+              "min": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "max": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "round": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "pillar"
+              },
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "radius": {
+                "type": "number"
+              },
+              "bottom": {
+                "type": "number"
+              },
+              "top": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "at",
+              "radius",
+              "bottom",
+              "top"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "additions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/carves/items"
+      }
+    }
+  },
+  "additionalProperties": false
+}

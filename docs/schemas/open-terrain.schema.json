@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "grid": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "spacing": {
+          "type": "number"
+        },
+        "heights": {
+          "type": "array",
+          "items": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "origin",
+        "spacing",
+        "heights"
+      ],
+      "additionalProperties": false
+    },
+    "brushes": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "kind"
+        ],
+        "anyOf": [
+          {
+            "properties": {
+              "kind": {
+                "const": "dome"
+              },
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "radius": {
+                "type": "number"
+              },
+              "rise": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "at",
+              "radius",
+              "rise"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "ridge"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/grid/properties/heights/items"
+                }
+              },
+              "width": {
+                "type": "number"
+              },
+              "rise": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "points",
+              "width",
+              "rise"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "plateau"
+              },
+              "polygon": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/grid/properties/heights/items"
+                }
+              },
+              "height": {
+                "type": "number"
+              },
+              "falloff": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "polygon",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "crater"
+              },
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "radius": {
+                "type": "number"
+              },
+              "depth": {
+                "type": "number"
+              },
+              "rim": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "at",
+              "radius",
+              "depth"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "channel"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/grid/properties/heights/items"
+                }
+              },
+              "width": {
+                "type": "number"
+              },
+              "depth": {
+                "type": "number"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "points",
+              "width",
+              "depth"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "paint": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "cover": {
+            "enum": [
+              "Grass",
+              "GrassLight",
+              "GrassDeep",
+              "Path",
+              "Rock",
+              "RockDark",
+              "CaveFloor",
+              "Highland",
+              "Sand",
+              "Snow",
+              "Mud"
+            ]
+          },
+          "polygon": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/properties/grid/properties/heights/items"
+            }
+          },
+          "at": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "number"
+            }
+          },
+          "radius": {
+            "type": "number"
+          },
+          "minY": {
+            "type": "number"
+          },
+          "maxY": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "cover"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

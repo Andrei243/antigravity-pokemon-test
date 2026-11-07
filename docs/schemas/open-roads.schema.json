@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "An open region's roads (Data/world3d/<region>/roads.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "roads": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "width": {
+            "type": "number"
+          },
+          "shoulder": {
+            "type": "number"
+          },
+          "surface": {
+            "enum": [
+              "Grass",
+              "GrassLight",
+              "GrassDeep",
+              "Path",
+              "Rock",
+              "RockDark",
+              "CaveFloor",
+              "Highland",
+              "Sand",
+              "Snow",
+              "Mud"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "points",
+          "width"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

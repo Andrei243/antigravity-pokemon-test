@@ -92,11 +92,62 @@ public class ArchitectureTests
             (root, u) => In(root, u, "OpenWorld")
                 && (u.TargetType is $"{Engine}.Graphics.FrameClock" or $"{Engine}.Core.WallClock" or $"{Engine}.Core.GameClock" or "System.Diagnostics.Stopwatch"
                     || u.Constructs && u.TargetType == "System.Random")),
+        new("The open world's rules run on one thread (plan 32 · decision 2): OpenWorld starts no Thread or Task and uses no Parallel or ThreadPool",
+            (root, u) => In(root, u, "OpenWorld") && Threads(u)),
         new("A player's own file is only read (plan 08 · P20): Foreign touches no File or Directory, and writes through no stream",
             (root, u) => In(root, u, "Foreign")
                 && (u.TargetType is "System.IO.File" or "System.IO.Directory" or "System.IO.StreamWriter" or "System.IO.BinaryWriter"
                     || u.TargetType == "System.IO.Stream" && u.Member.StartsWith("Write")))
     };
+
+    // What starts work on another thread
+    private static bool Threads(Use use) =>
+        use.TargetType is "System.Threading.Thread" or "System.Threading.ThreadPool" or "System.Threading.Tasks.Parallel" or "System.Threading.Tasks.Task"
+            or "System.Threading.Tasks.TaskFactory" || use.TargetType.StartsWith("System.Threading.Tasks.Task`", StringComparison.Ordinal);
+
+    // A clock, or chance not seeded by the caller
+    private static bool Clocks(Use use) =>
+        use.TargetType is $"{Engine}.Graphics.FrameClock" or $"{Engine}.Core.WallClock" or $"{Engine}.Core.GameClock" or "System.Diagnostics.Stopwatch"
+            || use.TargetType == "System.Environment" && use.Member.StartsWith("get_TickCount", StringComparison.Ordinal)
+            || use.TargetType is "System.DateTime" or "System.DateTimeOffset" && use.Member is "get_Now" or "get_UtcNow" or "get_Today"
+            || use.Constructs && use.TargetType == "System.Random" || use.TargetType == "System.Random" && use.Member == "get_Shared";
+
+    /// <summary>
+    /// The baker's rules (plan 32 · OW2), held to tools/OpenWorldBake's IL as the engine's are to its own: its root is
+    /// the baker's namespace. The bake must be the same to the byte on any machine (<c>--check</c>), so nothing reads a
+    /// clock or unseeded chance, each chunk is meshed and thinned on one thread (only the region's driver bakes chunks
+    /// side by side), and only the pictures touch raylib.
+    /// </summary>
+    public static readonly Rule[] BakerRules =
+    {
+        new("The baker's rules need no window: in OpenWorldBake only Pictures uses a raylib type but a Color",
+            (root, u) => InBaker(root, u) && u.Caller != "Pictures" && Raylib(u)),
+        new("A bake is the same on any machine: OpenWorldBake reads no clock and makes no unseeded Random",
+            (root, u) => InBaker(root, u) && Clocks(u)),
+        new("A chunk is baked on one thread: in OpenWorldBake only RegionBake bakes side by side (Parallel, Task, Thread)",
+            (root, u) => InBaker(root, u) && u.Caller != "RegionBake" && Threads(u))
+    };
+
+    private static bool InBaker(string root, Use use) => use.Namespace == root || use.Namespace.StartsWith(root + ".");
+
+    [Fact]
+    public void TheBakerKeepsItsRules()
+    {
+        var uses = Uses(typeof(OpenWorldBake.RegionBake).Assembly.Location);
+        Assert.True(uses.Count > 1000, $"only {uses.Count} uses read from the baker");
+        var broken = BakerRules.SelectMany(r => uses.Where(u => r.Breaks("OpenWorldBake", u)).Select(u => $"{r.Says}: {u}")).Distinct().ToList();
+        Assert.True(broken.Count == 0, string.Join("\n", broken.Take(40)));
+    }
+
+    [Fact]
+    public void EachBakerRuleFindsItsOwnBreak()
+    {
+        const string root = "PokemonPlatinumTests.Probes.Baker";
+        var uses = Uses(typeof(ArchitectureTests).Assembly.Location).Where(u => u.Namespace.StartsWith(root)).ToList();
+        foreach (var rule in BakerRules)
+            Assert.True(uses.Any(u => rule.Breaks(root, u)), $"no probe breaks \"{rule.Says}\"");
+        Assert.DoesNotContain(uses, u => u.Caller is "Pictures" or "RegionBake" && BakerRules.Any(r => r.Breaks(root, u)));
+    }
 
     // The command line and what it is read into (Core/CommandLine.cs)
     private static readonly string[] CommandLineTypes = { "CommandLine", "LaunchOptions", "Switch" };
