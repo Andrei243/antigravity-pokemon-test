@@ -68,12 +68,12 @@ partial class Harness
         // ---- Tapu Koko after the Hall of Fame, through the Ruins of Conflict's own script, to its battle
         story.Set("AlolaHallOfFame");
         game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Incineroar")!, 60));
-        At("MahaloTrail_RuinsOfConflict", 5, 6, Direction.Up); Frames(4);
+        At("MahaloTrail_RuinsOfConflict", 5, 5, Direction.Up); Frames(4);
         Shot("wr40_before_tapu_koko");
         game.Interact();
         for (int i = 0; i < 600 && game.State != GameState.Battle; i++)
         {
-            if (i % 30 == 10) Shot($"wr41_tapu_koko_beat_{i / 30}");
+            if (i % 45 == 20 && i < 400) Shot($"wr41_tapu_koko_beat_{i / 45}");
             if (game.Dialogue.IsActive && game.Dialogue.IsCurrentLineComplete && !game.Dialogue.IsQuestion) { game.Dialogue.Advance(); Frames(2); }
             else Frames(1);
         }

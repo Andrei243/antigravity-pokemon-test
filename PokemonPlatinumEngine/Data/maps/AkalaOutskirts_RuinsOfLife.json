@@ -4,6 +4,7 @@
   "bgmTrack": "alola/trial",
   "interior": "Museum",
   "trees": "Round",
+  "battleArena": "Cave",
   "width": 11,
   "height": 10,
   "ground": [
