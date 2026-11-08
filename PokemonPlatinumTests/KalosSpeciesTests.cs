@@ -50,8 +50,8 @@ public class KalosSpeciesTests
         ["Exeggutor"] = Wild, ["Chatot"] = Wild, ["Mantyke"] = Wild, ["Mantine"] = Wild, ["Clamperl"] = Wild,
         ["Huntail"] = Wild, ["Gorebyss"] = Wild, ["Remoraid"] = Wild, ["Octillery"] = Wild, ["Corsola"] = Wild,
         ["Chinchou"] = Wild, ["Lanturn"] = Wild, ["Alomomola"] = Wild, ["Lapras"] = Wild, ["Shuckle"] = Wild,
-        ["Barboach"] = Wild, ["Whiscash"] = Wild, ["Basculin"] = Wild, ["Rotom"] = Wild, ["Trubbish"] = Wild,
-        ["Garbodor"] = Wild, ["Smoochum"] = Wild, ["Jynx"] = Wild, ["Dratini"] = Wild, ["Dragonair"] = Wild,
+        ["Barboach"] = Wild, ["Whiscash"] = Wild, ["Basculin"] = Wild,
+        ["Smoochum"] = Wild, ["Jynx"] = Wild, ["Dratini"] = Wild, ["Dragonair"] = Wild,
         ["Dragonite"] = Wild,
     };
 
@@ -91,6 +91,7 @@ public class KalosSpeciesTests
         Assert.Contains("chamber_of_emptiness", kalos.Ways["Yveltal"]);
         Assert.Contains("lumiose_stones", kalos.Items["Dusk Stone"]);
         Assert.Contains("KiloudeCity_BattleMaison", kalos.Items["Razor Claw"]);
+        Assert.Contains("lost_hotel", kalos.Ways["Rotom"]);
         // Sinnoh's Game Corner, Underground and Battle Frontier give Kalos nothing
         Assert.DoesNotContain(kalos.Items.Values, w => w.Contains("Underground") || w.Contains("Battle Points"));
     }

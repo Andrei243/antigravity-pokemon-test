@@ -4330,9 +4330,24 @@ way 0
   Clerk> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = Dragon Scale   32 BP
   * frontier points 1
-way 20, from answer 1
+way 25, from answer 1
   Clerk> Come back when you've won a few more!
   ? Which prize would you like? = No thanks
+way 24, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Thick Club   48 BP
+way 23, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Icy Rock   48 BP
+way 22, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Smooth Rock   48 BP
+way 21, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Damp Rock   48 BP
+way 20, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Heat Rock   48 BP
 way 19, from answer 1
   Clerk> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = Weakness Policy   48 BP
@@ -22698,6 +22713,33 @@ way -
 from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
 way -
   Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
+=== lost_hotel.BinGallery
+from the tile read at 19,16 of LostHotel
+way 0
+  > The rubbish bin is shaking!
+  * wildbattle Trubbish 35 Won
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_GALLERY
+way 1, from answer 1
+  * wildbattle Trubbish 35 Lost
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_GALLERY
+=== lost_hotel.BinHall
+from the tile read at 27,32 of LostHotel
+way 0
+  > The rubbish bin is shaking!
+  * wildbattle Trubbish 35 Won
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_HALL
+way 1, from answer 1
+  * wildbattle Trubbish 35 Lost
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_HALL
+=== lost_hotel.BinLobby
+from the tile read at 23,46 of LostHotel
+way 0
+  > The rubbish bin is shaking!
+  * wildbattle Trubbish 35 Won
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_LOBBY
+way 1, from answer 1
+  * wildbattle Trubbish 35 Lost
+  + FLAG_DAILY_KALOS_LOST_HOTEL_BIN_LOBBY
 === lostlorn_forest.Traveller
 from Traveller at 8,11 of LostlornForest
 way 0

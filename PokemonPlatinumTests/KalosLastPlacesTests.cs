@@ -234,6 +234,23 @@ public class KalosLastPlacesTests
     }
 
     [Fact]
+    public void TheLostHotelsBinsShakeOnceADayWithTrubbishGarbodorAndOnTuesdaysRotom()
+    {
+        var hotel = BuiltMaps.Value["LostHotel"];
+        foreach (var (x, y) in new[] { (23, 46), (27, 32), (19, 16) })
+        {
+            Assert.True(hotel.TileScripts.ContainsKey((x, y)), $"no bin at {x},{y}");
+            Assert.True(hotel.IsSolid(x, y));
+        }
+        var story = new StoryState();
+        Assert.Contains(Play(story, "lost_hotel", "BinLobby", hotel, rolls: new[] { 0 }).Log, l => l.StartsWith("wildbattle Trubbish 35", StringComparison.Ordinal));
+        // ...once a day
+        Assert.DoesNotContain(Play(story, "lost_hotel", "BinLobby", hotel).Log, l => l.StartsWith("wildbattle", StringComparison.Ordinal));
+        Assert.Contains(Play(story, "lost_hotel", "BinHall", hotel, rolls: new[] { 4 }).Log, l => l.StartsWith("wildbattle Garbodor 37", StringComparison.Ordinal));
+        Assert.Contains(Play(story, "lost_hotel", "BinGallery", hotel, rolls: new[] { 0 }, day: DayOfWeek.Tuesday).Log, l => l.StartsWith("wildbattle Rotom 38", StringComparison.Ordinal));
+    }
+
+    [Fact]
     public void TheTrainRunsBetweenTheTwoStations()
     {
         var story = new StoryState();

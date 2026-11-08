@@ -6,6 +6,14 @@
   "area": "lost_hotel",
   "bgmTrack": "kalos/santalune_forest",
   "trees": "Round",
+  // Plan 23, Kalos's last places: three rubbish bins of the old hotel that shake now and then, as X and Y's do
+  // (lost_hotel.txt: Trubbish and Garbodor, and Rotom on Tuesdays)
+  "read": { "BinLobby": "BinLobby", "BinHall": "BinHall", "BinGallery": "BinGallery" },
+  "props": [
+    { "type": "TrashCan", "x": 23, "y": 46, "width": 1, "depth": 1 },
+    { "type": "TrashCan", "x": 27, "y": 32, "width": 1, "depth": 1 },
+    { "type": "TrashCan", "x": 19, "y": 16, "width": 1, "depth": 1 }
+  ],
   "people": {
     "lucien": {
       "name": "Lucien",

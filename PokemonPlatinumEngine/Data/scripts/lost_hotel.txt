@@ -1,0 +1,60 @@
+# The Lost Hotel's rubbish bins (plan 23, Kalos's last places). The lines are our own, on X and Y's beats as they are
+# publicly described: the old hotel's bins shake, and what is inside jumps out, a Trubbish most often and a Garbodor now
+# and then, and on Tuesdays a Rotom that has crept into the hotel's wiring. Each bin shakes once a day
+# (FLAG_DAILY_KALOS_LOST_HOTEL_BIN_*): X and Y's shake again and again, ours rests until the next day, so the hotel can't be
+# emptied of Rotom in one evening. The levels are X and Y's (35 to 38), which a region crossed into maps.
+
+
+script BinLobby
+  if flag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_LOBBY goto Still
+  setflag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_LOBBY
+  call Shakes
+  end
+label Still
+  call Quiet
+  end
+
+script BinHall
+  if flag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_HALL goto Still
+  setflag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_HALL
+  call Shakes
+  end
+label Still
+  call Quiet
+  end
+
+script BinGallery
+  if flag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_GALLERY goto Still
+  setflag FLAG_DAILY_KALOS_LOST_HOTEL_BIN_GALLERY
+  call Shakes
+  end
+label Still
+  call Quiet
+  end
+
+
+# What jumps out of a shaking bin: on a Tuesday a Rotom three times in four, otherwise a Trubbish four times in five and
+# a Garbodor the fifth
+script Shakes
+  speaker none
+  text "The rubbish bin is shaking!"
+  if weekday tuesday goto Tuesday
+label Rubbish
+  random 5
+  if result == 4 goto Garbodor
+  wildbattle "Trubbish" 35
+  return
+label Garbodor
+  wildbattle "Garbodor" 37
+  return
+label Tuesday
+  random 4
+  if result == 3 goto Rubbish
+  wildbattle "Rotom" 38
+  return
+
+
+script Quiet
+  speaker none
+  text "An old rubbish bin of the hotel. Nothing stirs in it today."
+  return

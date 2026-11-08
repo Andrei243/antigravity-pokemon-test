@@ -25,7 +25,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 854 |
 | a sign | 1736 |
 | the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1855 |
+| the game's own voice (text) | 1857 |
 
 ## The cast
 

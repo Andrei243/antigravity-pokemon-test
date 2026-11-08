@@ -116,9 +116,9 @@ partial class Harness
 
         // ---- the places from outside
         At("Kalos", 320, 501, Direction.Up); Frames(6); Shot("wk500_chamber_mouth");
-        At("Kalos", 570, 353, Direction.Up); Frames(6); Shot("wk501_kiloude_station_and_maison");
+        At("Kalos", 551, 352, Direction.Up); Frames(6); Shot("wk501_kiloude_station");
         At("Kalos", 592, 352, Direction.Up); Frames(6); Shot("wk502_kiloude_maison");
-        At("Kalos", 383, 196, Direction.Up); Frames(6); Shot("wk503_laverre_factory");
+        At("Kalos", 383, 192, Direction.Up); Frames(6); Shot("wk503_laverre_factory");
         At("Kalos", 188, 398, Direction.Up); Frames(6); Shot("wk504_route7_chateau");
         At("Kalos", 377, 320, Direction.Up); Frames(6); Shot("wk505_lumiose_herboriste");
         At("Kalos", 331, 400, Direction.Up); Frames(6); Shot("wk506_lumiose_ball_boutique");
@@ -138,6 +138,19 @@ partial class Harness
             Shot(shot);
         }
 
+        // The Lost Hotel's bins: one in the lobby, the lower hall's beside a pillar
+        ComeThrough("LostHotel", 21, 48, Direction.Up); Frames(6); Shot("wk521_lost_hotel_bin");
+        At("LostHotel", 23, 47, Direction.Up); Frames(2);
+        game.Interact();
+        for (int i = 0; i < 900 && State() != GameState.Battle; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("wk522_lost_hotel_bin_battle"); Win(); }
+        else Console.WriteLine("  !! the bin never shook");
+        ReadTo(null);
+
         // ---- the scenes
         // The Chamber of Emptiness: the chamber, Yveltal, its battle
         ComeThrough("ChamberOfEmptiness", 16, 26, Direction.Up); Frames(6); Shot("wk520_chamber_way_in");
@@ -153,10 +166,19 @@ partial class Harness
         ReadTo(null);
         Left("Yveltal");
         // The evening hour: the Banettite glints by the chamber's wall
-        ClockFlags.Keep(story, ClockFlags.StonesHour);
-        game.Map.ApplyPresence(story.Has);
-        At("ChamberOfEmptiness", 11, 11, Direction.Up); Frames(6); Shot("wks303_banettite_evening");
-        ClockFlags.Keep(story, 12);
+        // (the clock's own: the computer's clock, which the harness fixes, set to half past eight in the evening)
+        var timeOfDay = engine.Settings.TimeOfDay;
+        var noon = WallClock.Fixed;
+        engine.Settings.TimeOfDay = null;
+        WallClock.Fixed = noon!.Value.Date.AddHours(20.5);
+        engine.ApplySettings(window: false);
+        At("ChamberOfEmptiness", 11, 12, Direction.Up); Frames(10); Shot("wks303_banettite_evening");
+        At("KalosVictoryRoad", 55, 11, Direction.Up); Frames(10); Shot("wks303b_garchompite_evening");
+        Left("the stones' hour");
+        WallClock.Fixed = noon;
+        engine.Settings.TimeOfDay = timeOfDay;
+        engine.ApplySettings(window: false);
+        Frames(4);
         Left("the stones' hour");
 
         // The stone shop's owner and the Kanto Pokémon's stone
