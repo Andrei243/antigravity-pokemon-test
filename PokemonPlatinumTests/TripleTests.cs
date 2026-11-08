@@ -334,7 +334,10 @@ public class TripleTests
         var later = new List<string>();
         foreach (string name in MapDatabase.MapNames)
             foreach (var npc in maps(name).Everyone)
-                if (npc.TrainerData is { Format: { } format }) later.Add($"{name}: {npc.TrainerData.Id} {format}");
+                // (Kalos's five sky trainers, plan 23: sky battles are plan 14 · B2's, a trainer's own word as the Vista
+                // Lighthouse's is, and the team is the player's fliers; no other later format stands anywhere)
+                if (npc.TrainerData is { Format: { } format } && !(format == "sky" && npc.TrainerData.Id.StartsWith("kalos_sky_trainer_", StringComparison.Ordinal)))
+                    later.Add($"{name}: {npc.TrainerData.Id} {format}");
         Assert.True(later.Count == 0, "Trainers of a later format:\n" + string.Join("\n", later));
         // And a trainer's format asks for a triple only by its word
         Assert.Equal(BattleFormat.Triple, new Trainer { Format = "triple" }.AskedFormat);

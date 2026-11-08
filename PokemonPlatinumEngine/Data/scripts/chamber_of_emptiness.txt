@@ -13,7 +13,10 @@ script Yveltal
   camera zoom 1.4 0.8
   text "Something vast is folded in on itself against the far wall, its wings drawn round it like a cloak."
   text "The air grows cold. Its wings open."
+  effect shadow 16 7 2.5
+  shake yveltal 3
   cry "Yveltal"
+  effect ripple 16 7
   camera release 0.4
   letterbox off 0.3
   wildbattle "Yveltal" 70

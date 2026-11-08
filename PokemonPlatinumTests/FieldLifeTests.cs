@@ -147,7 +147,9 @@ public class FieldLifeTests
     {
         var keeps = new[]
         {
-            TileBehavior.Sand, TileBehavior.ShallowSnow, TileBehavior.ShadedSnow, TileBehavior.DeepSnow, TileBehavior.DeeperSnow, TileBehavior.DeepestSnow
+            TileBehavior.Sand, TileBehavior.ShallowSnow, TileBehavior.ShadedSnow, TileBehavior.DeepSnow, TileBehavior.DeeperSnow, TileBehavior.DeepestSnow,
+            // Kalos's drifts (plan 23): our own value, whose every step leaves a print (TileBehaviors.KeepsFootprints)
+            TileBehavior.SnowDrift
         };
         foreach (var behaviour in Enum.GetValues<TileBehavior>())
         {

@@ -318,6 +318,17 @@
     { "spawn": 32, "cells": "1,23 2,23 3,23 1,24 2,24 3,24 1,25 2,25 3,25" }
   ],
   "places": {
-    "AetherParadise": "20,21"
+    "AetherParadise": "20,21",
+    // The Ultra worlds are stepped into by a script (the wormhole over the Altar's dais), so no warp leads there: each is
+    // shown at the Altar's cell, with the tower of the city that opens off Ultra Megalopolis
+    "UltraDeepSea": "4,18",
+    "UltraJungle": "4,18",
+    "UltraDesert": "4,18",
+    "UltraPlant": "4,18",
+    "UltraCrater": "4,18",
+    "UltraForest": "4,18",
+    "UltraRuin": "4,18",
+    "UltraMegalopolis": "4,18",
+    "MegaloTower": "4,18"
   }
 }

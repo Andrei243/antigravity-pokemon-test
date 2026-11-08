@@ -256,7 +256,10 @@ public class PokemonTests
             // (and Black 2's hidden grotto, left by reading its tunnel mouth, plan 22 · U11)
             && mapName != "HiddenGrotto"
             // (and the Nature Preserve, flown to and from by the pilots' scripts, plan 22 · U10, part h)
-            && mapName != "NaturePreserve")
+            && mapName != "NaturePreserve"
+            // (and Alola's worlds of Ultra Space, which a wormhole over the Altar's dais leads into and a wormhole read in
+            // each leads out of by a script, plan 23 · Z8: only Ultra Megalopolis has doors of its own)
+            && !(mapName.StartsWith("Ultra", StringComparison.Ordinal) && RegionDatabase.RegionOfMap(mapName)?.Id == RegionDatabase.Alola))
             Assert.True(map.Warps.Count > 0, $"{mapName} has no warps");
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
@@ -273,7 +276,10 @@ public class PokemonTests
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
         // warp need only be reached from one arrival or another (RoomPlanTests holds how their stairs join).
         // So are the floors of Team Galactic's headquarters (plan 02 · S11): each is cut into parts joined by warp panels.
-        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName) || RoomPlanTests.GalacticHeadquarters.Contains(mapName);
+        // And the two Kalos Gyms whose floors are parts joined only by warps of their own (plan 23 · Z4): Anistar's islands
+        // by its thirteen warp panels, as Sabrina's are, and Laverre's rooms by its eleven doors.
+        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName) || RoomPlanTests.GalacticHeadquarters.Contains(mapName)
+            || mapName is "AnistarCity_Gym" or "LaverreCity_Gym";
         var reachedFromAny = new HashSet<(int, int)>();
 
         foreach (var (startX, startY) in arrivals)

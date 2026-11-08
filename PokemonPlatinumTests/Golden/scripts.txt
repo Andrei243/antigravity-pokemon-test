@@ -11476,7 +11476,10 @@ way 0
   * letterbox on
   * camera Pan 16 7
   * camera Zoom 1.4
+  * effect Shadow 16 7
+  * shake Yveltal 3
   * cry Yveltal
+  * effect Ripple 16 7
   * camera Release
   * letterbox off
   * wildbattle Yveltal 70 Won
