@@ -2,7 +2,8 @@
 # Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): a
 # city whose light was taken long ago by the being at the top of Megalo Tower, lit by lamps alone. It is open through
 # the Ultra Wormhole once the seven Ultra Beasts have been met (VAR_ALOLA_ULTRA 3), and after Necrozma's battle the
-# light comes back (FLAG_ALOLA_LIGHT_RETURNED, VAR_ALOLA_ULTRA 4) and a Blacephalon drawn by it waits on the square.
+# light comes back (FLAG_ALOLA_LIGHT_RETURNED, VAR_ALOLA_ULTRA 4). The Blacephalon Z8 stood on the square went to Poni
+# Grove with the grove (the wave after Ultra Space), where Ultra Sun and Ultra Moon keep it.
 
 
 script OnEnter
@@ -48,21 +49,3 @@ label Lit
   end
 
 
-# Drawn here by the light coming back: a showman of Ultra Space, its head a fuse
-script Blacephalon
-  face self player
-  speaker none
-  scene "Blacephalon"
-  letterbox on 0.4
-  camera pan 20 40 1.0
-  camera zoom 1.4 0.8
-  effect burst 20 40 wait
-  cry "Blacephalon"
-  text "Something like a clown made of fireworks juggled its own head on the square, and bowed to {player}."
-  camera release 0.4
-  letterbox off 0.3
-  endscene
-  wildbattle "Blacephalon" 60
-  if result == 3 setflag FLAG_ALOLA_CAUGHT_BLACEPHALON
-  hide self
-  end

@@ -1409,6 +1409,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
     public Models.Frontier.BattleDomeChallenge? Dome { get; set; }
     public Models.Frontier.BattleVenueChallenge? Venue { get; set; }
+    public Models.Facilities.StreakChallenge? Facility { get; set; }
     public Models.Frontier.BattlePikeChallenge? Pike { get; set; }
     public Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
     public Models.Tournament? Tournament { get; set; }
@@ -1507,6 +1508,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
                 return 1;
             case "records":
             case "subwayrecords":
+            case "facilityboard":
                 Waits();
                 return 1;
             case "subwaypartner":
@@ -1652,20 +1654,23 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         {
             if (Riding == null) return false;
             Log.Add("ride off");
+            // (Sharpedo goes home and leaves the player on the water: plan 23, Alola's water ride)
+            if (!RidePager.IsWaterRide(Riding)) PlayerMode = TravelMode.OnFoot;
             Riding = null;
-            PlayerMode = TravelMode.OnFoot;
             return true;
         }
         var region = RegionDatabase.Get(Region);
         // (a lent ride, Kalos's Mamoswine, is got on only in the area that lends it: plan 23)
         string? area = Map?.AreaAt(PlayerTile.X, PlayerTile.Y)?.Key;
-        if (region == null || !RidePager.CanRide(species, Story, region, area) || Map?.IsIndoors == true || PlayerMode is not (TravelMode.OnFoot or TravelMode.Riding))
+        bool water = RidePager.IsWaterRide(species);
+        if (region == null || !RidePager.CanRide(species, Story, region, area) || Map?.IsIndoors == true
+            || (water ? PlayerMode != TravelMode.Surfing : PlayerMode is not (TravelMode.OnFoot or TravelMode.Riding)))
         {
             Log.Add("ride refused " + species);
             return false;
         }
         Riding = RidePager.SpeciesOf(species)!;
-        PlayerMode = TravelMode.Riding;
+        if (!water) PlayerMode = TravelMode.Riding;
         Log.Add("ride " + Riding);
         return true;
     }

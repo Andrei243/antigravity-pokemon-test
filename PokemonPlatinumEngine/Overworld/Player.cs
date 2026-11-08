@@ -456,7 +456,7 @@ public class Player
     {
         // (a ride is got on only by SetRiding, which says whose back it is: a save made riding wakes on foot)
         if (mode == TravelMode.Riding && Steed == null) mode = TravelMode.OnFoot;
-        if (mode != TravelMode.Riding) Steed = null;
+        if (mode != TravelMode.Riding) { if (RidePager.IsWaterRide(Steed)) Carrier = carrierBeforeJet; Steed = null; }
         Mode = mode;
     }
 
@@ -538,7 +538,7 @@ public class Player
         _ => 0f
     };
 
-    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves, Bike: Bike, Sneaking: IsSneaking);
+    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves, Bike: Bike, Sneaking: IsSneaking, Steed: Steed);
 
     /// <summary>One frame of the player's movement, steered by the keys held.</summary>
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
@@ -833,6 +833,8 @@ public class Player
         height = toHeight;
         standing = toHeight;
         Mode = modeAfter;
+        // Off the water, Sharpedo goes home (plan 23, Alola's water ride)
+        if (Mode != TravelMode.Surfing && RidePager.IsWaterRide(Steed)) SetJet(null);
         offX = offY = 0;
         return Landed(map, onWildEncounter, onWarpTrigger, onArrive);
     }
@@ -1328,6 +1330,29 @@ public class Player
         IsRunning = false;
         return true;
     }
+
+    /// <summary>
+    /// Calls a ride over the water (<paramref name="species"/>: Sharpedo, plan 23, Alola's water ride) under a surfer, or
+    /// sends it home (null): the player goes on surfing, now on its back at a bicycle's top speed, and a rock in the sea
+    /// that only it rams is broken by the rock's own script. False off the water, mid-step, or with nothing to send home.
+    /// </summary>
+    public bool SetJet(string? species)
+    {
+        if (species == null)
+        {
+            if (!RidePager.IsWaterRide(Steed)) return false;
+            Steed = null;
+            Carrier = carrierBeforeJet;
+            return true;
+        }
+        if (IsMoving || Mode != TravelMode.Surfing) return false;
+        if (!RidePager.IsWaterRide(Steed)) carrierBeforeJet = Carrier;
+        Steed = species;
+        Carrier = species;
+        return true;
+    }
+
+    private string? carrierBeforeJet;
 
     /// <summary>
     /// The tile a ride ran into and was stopped by something standing there (plan 23, wave 91: Tauros's charge into a

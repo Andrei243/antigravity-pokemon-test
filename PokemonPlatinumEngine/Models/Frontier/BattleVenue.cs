@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Models.Facilities;
 
 namespace PokemonPlatinumEngine.Models.Frontier;
 
 /// <summary>
-/// The two venues of the Battle Frontier's annex that plan 14 · B9 builds, each a round of seven trainers, and Kiloude City's
-/// Battle Maison (plan 23, Kalos's last places), whose rounds of seven are plain single battles against the later sets.
+/// The two venues of the Battle Frontier's annex that plan 14 · B9 builds, each a round of seven trainers. (Kiloude City's
+/// Battle Maison, a third here in plan 23's first build, is plan 37 · FC2's streak house: <see cref="Facilities.StreakChallenge"/>.)
 /// </summary>
-public enum AnnexVenue { Palace, Arena, Maison }
+public enum AnnexVenue { Palace, Arena }
 
 /// <summary>
 /// Hoenn's three Battle Tents (plan 21 · H3's last part; <c>docs/mechanics/rulings.md</c>, "Hoenn's Battle Tents"):
@@ -173,52 +172,8 @@ public sealed class BattleVenueChallenge
     public static VenueRecord RecordOf(FrontierRecords records, AnnexVenue venue) => venue switch
     {
         AnnexVenue.Palace => records.Palace,
-        AnnexVenue.Maison => records.Maison,
         _ => records.Arena
     };
-
-    // ---- Kiloude City's Battle Maison (plan 23, Kalos's last places; plan 37's streak house on the venues' frame) ----
-
-    /// <summary>
-    /// The tiers of the later sets (<see cref="FacilitySetDatabase"/>, 1 the weakest, 4 the strongest) a round of the Maison
-    /// draws from, by the rounds won in a row before it: a table of ours, the stronger the longer the streak.
-    /// </summary>
-    public static (int Lowest, int Highest) MaisonTiers(int rounds) => rounds switch
-    {
-        0 => (1, 2),
-        1 => (1, 3),
-        2 => (2, 3),
-        3 => (2, 4),
-        _ => (3, 4)
-    };
-
-    /// <summary>
-    /// A round of the Maison begun with the three entered: one walked out on ends the streak first, then seven trainers of
-    /// the later places (<see cref="FacilityTrainers.Draw"/>) are drawn, each with three of the later sets of the round's
-    /// tiers at level 50 and IVs rising with the rounds won (<see cref="FacilityTrainers.IvsFor"/>), no two trainers alike.
-    /// Every draw is on the sixteen-bit draw handed over.
-    /// </summary>
-    public static BattleVenueChallenge BeginMaison(FrontierRecords records, IReadOnlyList<int> slots, Func<int> next16)
-    {
-        var record = records.Maison;
-        if (record.InProgress) record.Streak = 0;
-        record.InProgress = true;
-        int rounds = record.Streak / RoundLength;
-        var (low, high) = MaisonTiers(rounds);
-        var foes = new List<FrontierOpponent>();
-        var taken = new HashSet<string>(StringComparer.Ordinal);
-        while (foes.Count < RoundLength)
-        {
-            var drawn = FacilityTrainers.Draw(TeamSize, low, high, FacilityTrainers.IvsFor(rounds), next16);
-            if (!taken.Add(drawn.Id)) continue;
-            foes.Add(new FrontierOpponent
-            {
-                Number = 0, Pokemon = drawn.Pokemon, OtId = drawn.OtId, Personalities = drawn.Personalities,
-                Dress = new FrontierDress(drawn.Id, drawn.Class, drawn.Name, drawn.Look)
-            });
-        }
-        return new BattleVenueChallenge(AnnexVenue.Maison, slots.ToList(), foes, record.Streak);
-    }
 
     /// <summary>
     /// A round begun with the three entered (<paramref name="slots"/>): one walked out on ends the streak first, then seven

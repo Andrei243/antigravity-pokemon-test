@@ -878,6 +878,13 @@ public interface IScriptHost
     /// <summary>The round of the Battle Palace or the Battle Arena under way (plan 14 · B9); null while none is. A script's <c>venue</c> plays it.</summary>
     Models.Frontier.BattleVenueChallenge? Venue { get; set; }
 
+    /// <summary>
+    /// The challenge of a later battle place under way (plan 37 · FC2: the streak house and the places after it); null
+    /// while none is. A script's <c>facility</c> plays it; <see cref="FrontierAct"/> takes one more word for it,
+    /// <c>facilityboard</c>, the place's records' board by its number of <see cref="Models.Facilities.FacilityPlaces.Names"/>.
+    /// </summary>
+    Models.Facilities.StreakChallenge? Facility { get; set; }
+
     /// <summary>The round of the Battle Pike and of the Battle Pyramid under way (plan 14 · B10); null while none is. A script's <c>pike</c> and <c>pyramid</c> play them.</summary>
     Models.Frontier.BattlePikeChallenge? Pike { get; set; }
     Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }

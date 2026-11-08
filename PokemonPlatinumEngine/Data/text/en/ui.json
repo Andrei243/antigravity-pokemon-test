@@ -2140,9 +2140,13 @@
   },
   "records": {
     "title": "BATTLE RECORDS",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison" },
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
+      "house": {
+        "single": "Single Room", "double": "Double Room", "triple": "Triple Room", "rotation": "Rotation Room",
+        "hard": { "single": "Grand Single Room", "double": "Grand Double Room", "triple": "Grand Triple Room", "rotation": "Grand Rotation Room" }
+      },
       "subway": {
         "single": "Single Train", "double": "Double Train", "multi": "Multi Train",
         "supersingle": "Super Single Train", "superdouble": "Super Double Train", "supermulti": "Super Multi Train"

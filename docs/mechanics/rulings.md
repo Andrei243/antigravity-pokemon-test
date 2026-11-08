@@ -9601,6 +9601,80 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   Gauntlet; the link to Galar (plan 33's engine, `Transport.Undecided` still); the Ultra Beasts' worlds' wild Pokémon
   (they have none) and their own songs (all play `alola/ultra_space`, ours).
 
+## Poni's last places, Blush Mountain, Route 11 and the rides of the rough ground and the sea (2026-11-08, plan 23, the wave after Ultra Space)
+
+- **Where it comes from.** As Z5 to Z8: drawn by hand from the places as they are publicly described (Bulbapedia's and
+  Serebii's pages of each place: Poni Grove north-east of the Ancient Poni Path and south of Poni Plains, where Ultra Sun
+  and Ultra Moon keep Stakataka and Blacephalon, one to a version; Resolution Cave in Poni Meadow, with Zygarde at its
+  bottom at level 60 in Ultra Sun and Ultra Moon; Grimsley on Route 15, who registers Sharpedo; Mudsdale's Gallop over
+  rough terrain; Blush Mountain and its geothermal power plant north of Route 12; Route 11 between Route 10 and Route 12),
+  never a picture, map, line or script of the games. Every line, name of a trainer and team is ours. The drawings are
+  `tools/MapDraw/alola/*.txt`, written by a throwaway generator kept outside the repository, and
+  `dotnet run --project tools/MapDraw -- alola` writes the chunks, matrices and habitats from them.
+- **What is drawn.** On Poni (matrix 11), after the League: **Poni Grove** east of Poni Wilds, its one-tile way in kept
+  by a ranger until the Hall of Fame (hidden by `AlolaHallOfFame`); **Poni Plains** north-east of it; **Poni Gauntlet** up
+  the island's east edge from the plains, over rough ground, a lake crossed by Surf and a pass in the cliffs to the
+  **Battle Tree**, whose doors stay shut (a door `locked` in the overlay, as Ultra Megalopolis's houses are: the Battle Tree is a later
+  session's); **Poni Meadow**
+  south of the plains, its pond and flowers, with **Resolution Cave**'s mouth in its rock (matrix 70, a map of its own);
+  and **Poni Coast** below the meadow, whose west half lies behind rough ground and over cliffs from the sea, with an islet
+  shut by a rock in the sea. On Ula'ula (matrix 10): **Route 11** from Route 10's east side under Mount Hokulani round to
+  Route 12's south side, and **Blush Mountain** north of Route 12 behind rough ground, its geothermal power plant at the
+  top with its doors `locked` too. Area files 500 to 507; 24 trainers of ours.
+- **Ours, beside Sun and Moon.** Sun and Moon's Poni Grove, Plains, Meadow, Coast and Gauntlet are walked in another
+  order and shape; ours is one loop from Poni Wilds. Sun and Moon open them after the League by the story, ours by the
+  ranger at the grove's way in. Blush Mountain in Sun and Moon lies between Route 12 and Route 13; Z7's Route 12 runs
+  straight to Tapu Village, so ours is a branch north of it. Route 11 here leaves Route 10 to the east, where Sun and
+  Moon's leaves its northern end.
+- **Rough ground** is a behaviour of Sun and Moon's (`TileBehavior.RoughGround`, 0xBE, a few values on from Kalos's
+  `SnowDrift` so that a session drawing Kalos may take the ones between; `x` in a drawing, open rock underfoot): it stops
+  anyone on foot, on a Bicycle or on any ride but Mudsdale (`FieldMovement.Step`, `Obstacle.Rough`; the walker's ride is
+  the new `Walker.Steed`), which gallops over it at a run. It lies across Blush Mountain's foot (Hapu registers Mudsdale on
+  Route 12 below it, Z7's rancher in Tapu Village lends one to a game that walked round her), Poni Gauntlet's lower climb
+  and the middle of Poni Coast. `WorldWalk` counts it as ridden through, as it does Kalos's drifts.
+- **Sharpedo** is the Ride Pager's ride over the water (`RidePager.WaterRides`, `RidePager.SharpedoFlag`), registered by
+  Grimsley on Route 15's beach, once. It is called only under a surfer (`ride "Sharpedo"`, a fifth answer of
+  `common.RidePager`; refused on land, and a land ride is refused on the water), carries the player at a bicycle's top
+  speed (`Pace.Fastest`), is drawn as the surfer's carrier (`Player.SetJet`, which puts the Lapras back as it goes) and goes
+  home as the player lands. A **rock in the sea** is a cracked rock of the map on a water tile whose script is
+  `common.SeaRock`: a surfer on a Lapras is told what could ram it, and on Sharpedo's back (the built-in `RIDING` is 1 on
+  the water only then) it crumbles; it comes back once the place is left, as Rock Smash's rocks do. Two islets are shut by
+  one: off Route 15's beach (a King's Rock) and off Poni Coast (a Linking Cord). Sun and Moon's Sharpedo also speeds
+  through currents; none is drawn.
+- **Stakataka and Blacephalon** moved from where Z8 had put them (the Altar's stones, Ultra Megalopolis's square) to Poni
+  Grove, where Ultra Sun and Ultra Moon keep them: shown by `FLAG_ALOLA_LIGHT_RETURNED` (Necrozma's battle), each met
+  after its staged beat at 60, back until caught. Ultra Sun and Ultra Moon have one to a version; ours has both.
+- **Zygarde** waits at the bottom of Resolution Cave, as Ultra Sun and Ultra Moon have it: its 50% Forme at 60 after a
+  staged beat, not to be run from, back until caught (`FLAG_ALOLA_CAUGHT_ZYGARDE`). Sun and Moon's Zygarde Cube and its
+  hundred cells are not built.
+- **A Cosmog after the League.** The Altar's keeper (a person of ours, shown by `AlolaHallOfFame`) gives the Champion a
+  Cosmog at level 5, once (`FLAG_ALOLA_COSMOG_GIVEN`), as Sun and Moon give a second one after the League. **Moon's
+  legendary is a ruling of time, not of version**: Cosmoem evolves at 53 into Solgaleo by day and Lunala by night
+  (`species.json`'s `LevelDay` and `LevelNight`, already the data's), so Alola, which meets Sun's Solgaleo at the Altar,
+  meets Lunala through the Cosmog.
+- **The Elite Four's rematches.** Alola has no phone and Sun and Moon no rematch by call: after the Hall of Fame every climb
+  of the League is the title's defence (Z8), and on every one of them Hala, Olivia, Acerola and Kahili fight their rematch
+  teams (`alola_<who>_rematch`, six Pokémon at 63 to 66 with a Z-Crystal on the last), as Sun and Moon's Elite Four raise
+  their teams after the title is won. The League's own teams are fought only on the first climb.
+- **Wild Pokémon.** Each new place has its own grass, and the plains', the Gauntlet's and the meadow's ponds, the coast's
+  sea and the meadow's and the coast's rods have theirs, placing Sun and Moon's wild Pokémon that `AlolaSpeciesTests` owed
+  (Riolu, Snubbull, Phantump, Drifloon, Emolga, Scyther, Klefki, Stufful, Makuhita, Happiny, Munchlax, Snorlax, Ditto,
+  Goomy, Cleffa, Castform, Bonsly, Vullaby, Dratini, Wimpod, Nosepass, Corsola, Mareanie, Drampa, Turtonator, Carvanha,
+  Alomomola, Lapras, Barboach, Feebas, Luvdisc, Shellder, Chinchou, Relicanth, Dhelmise, Beldum, Porygon and the rest of
+  their lines) where ours puts them, and Mount Lanakila's three rarest slots are Snorunt, the Alolan Vulpix and Glalie. The
+  fishing is the Super Rod's, handed over once by a fisherman on Poni Coast (`FLAG_ALOLA_GOT_SUPER_ROD`; Sun and Moon have
+  one Fishing Rod). The items that the species check owed lie about the new places (the Dawn, Leaf, Thunder, Fire, Oval
+  and Ice Stones, the Electirizer and Magmarizer, the Upgrade and Dubious Disc, the King's Rock, the Linking Cord and an Old
+  Amber behind Poni Coast's rough ground, which the Fossil Restoration Center revives as Aerodactyl), and
+  the places of evolution are where Sun and Moon keep them: a Moss Rock in Poni Grove (Sun and Moon's is the Lush
+  Jungle's), the Magnetic Field of Blush Mountain and an Ice Rock on Mount Lanakila. Poni Meadow's Oricorio dance the Sensu
+  Style and its dancer gives a Purple Nectar.
+- **Ula'ula Meadow's Oricorio** were written with `"form": "Oricorio"`, which is no form: the Baile Style is the species'
+  own, so the key is gone, and `AlolaPoniTests` holds every wild slot of Alola in a form to a form its species has.
+- **Left**: the Battle Tree (Poni Gauntlet's shut doors), Sun and Moon's Zygarde Cube and cells, the geothermal power
+  plant's inside, Sharpedo's currents, Stoutland's buried items, the Secluded Shore, Big Wave Beach and Hau'oli Cemetery,
+  Island Scan, the version's other mythicals and the new places' own songs (they play Alola's road song).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.
@@ -9886,7 +9960,8 @@ movement stays `Eight`.
   (plan 37's decision 6), and the counter beside the desk trades them for the later games' items
   (`Data/facility-prizes.json`, plan 37's file: evolution items, the weather rocks, the Thick Club and battle items, at
   32 and 48 points). The record is `FrontierRecords.Maison`. Not built (FC2's): the double, triple and rotation rooms, the
-  hosts at the 20th and 50th battles and the hard rooms, a round put down and taken up, a board of its own.
+  hosts at the 20th and 50th battles and the hard rooms, a round put down and taken up, a board of its own. **Since plan
+  37 · FC2 all of that is built and the rounds of seven are gone**: "The later games' battle places", below.
 - **The Poké Ball Factory.** X and Y's stands in Laverre City and its scene comes after the Fairy Badge, with the
   neighbour beside the player and Team Flare's two scientists at the back. Ours is the player's alone and no step of
   the story: its door on the town's east side opens with the Fairy Badge (`FLAG_KALOS_DEFEATED_LAVERRE_GYM`), three
@@ -10056,6 +10131,53 @@ The later battle places (plan 37) draw their trainers' teams from a pool of sets
 - **A team** (`Models/Facilities/FacilityTrainers.cs`): a class and a name of ours from `Data/facility-trainers.json` (fourteen classes of the tables with a look each, eight names each), then so many sets of the tiers a room allows, drawn one at a time from the pool in the file's order, refused where it shares a species or an item with one already drawn or with a team to keep clear of (a partner's), then the first trainer's number (two draws) and each set's personality for its nature (`FrontierTrainers.PersonalityFor`), every draw on the caller's sixteen-bit draw in that order. **No legendary or mythical species comes to a facility trainer** unless a place asks for them (`FacilityTrainers.MayCome`): the banlist is Platinum's eighteen, and the later legendaries would otherwise stand in every room. Every IV of a team is the room's (`FacilityTrainers.IvsFor`: 12 at rank 0, four more a rank, 31 from rank 5), its level the place's (50 unless asked), and a team kept by its sets, its first trainer's number and its personalities is built again with no draw (`Rebuild`), for FC2's challenge put down.
 - **A correction** to a weak set (the random battles' sets are not made for level 50) goes in `tools/DataImporter/Overrides/facility-sets.json`, by the set's id; none yet.
 - **Not done here.** The stall (TR3, done: "Peak training and the training tools"), the other regions' halls (TR4), the keeper (TR5) and the teacher (TR8). The coach's lines are not yet in Romanian (plan 17 · N6 takes the scripts a slice at a time); the screen's words are.
+
+## The later games' battle places (2026-11-08, plan 37 · FC2)
+
+Every number of plan 37's places that is ours is here, a part to a place. The rules of a battle are the Frontier's as they
+stand (copies, no EXP, money or items from the bag but its key items, the formats of plan 14); what is ours is how a
+challenge goes and what it pays.
+
+**The frame.** A place's challenge is `Models/Facilities/StreakChallenge.cs`, the venues' round with a place's rules as
+values (`StreakRoom`: how many go in, the format, the level, the tiers and IVs by the streak, the points of a win, the host
+and the battle they come at), a battle at a time with no round's end. Its records are `FrontierRecords.Facilities`, by
+place and way (`house.single`, and `house.single.hard` for the hard room: the streak, the best, the latest, whether the
+hard room is open, a challenge under way and one put down), null until the first is entered, so no save version was
+raised. Every draw is on a generator of the challenge's own (Platinum's, `BattleRandom`), seeded from two of the game's
+sixteen-bit draws as it begins; a trainer is drawn as their battle comes, and a challenge put down keeps the generator as
+it stood before that draw, so taking it up meets the same trainer (the Tower's rule). It is taken up only with the same
+Pokémon in the same places of the team (by species, and by id where the Pokémon had one when it was put down); otherwise the pause is given up and the streak ends, as a
+challenge walked out on does. A challenge begun while another was under way (the game closed in the middle of one) ends
+that streak first. Battle Points go into the Frontier's one purse (decision 6). The bag's key items reach a place's
+battles as they reach every battle (`BattleEngine` reads them from the bag `StartFrontierBattle` hands it), so the Key
+Stone works there, and the Frontier's own five facilities are as they were. One script command for every place,
+`facility <place> <word>` (`docs/scripts.md`); each place's board is `FrontierBoard.ForFacility`, the Tower's frame as
+the Subway's is, with no victories counted and a print of its own.
+
+**The streak house** (after X and Y's Battle Maison). It stands in **Kiloude City**, in plan 23's `KiloudeCity_BattleMaison`
+and its hall, opened by Kalos's Hall of Fame: plan 37's decision 1 put it behind a Lumiose door only until plan 23 drew
+that town, which it has, so no Lumiose room or door is used. Four rooms behind one desk, the original's counts: single
+(three entered), double (four), triple (six) and rotation (four), each an endless streak; the trainer of the day brings
+as many as the player enters. After any win the player goes on, rests (the challenge put down and saved, taken up again
+at the desk) or retires (the streak ends there, kept as the latest).
+- **Tiers** (FC1's, 1 the weakest): in a normal room by the streak's sevens, 1 and 2, then 1 to 3, 2 and 3, 2 to 4 from
+  the 21st battle and 3 and 4 from the 50th (the first build's table by its rounds of seven); in a hard room 2 to 4 for the
+  first nineteen, 3 and 4 to the 49th, and 4 alone from the 50th. IVs are `FacilityTrainers.IvsFor` of the streak's sevens,
+  three ranks higher in a hard room.
+- **Hosts**: four of ours, one to a room (Corvin of the single room, Isaura of the double, Tamsin of the triple, Ludovic of
+  the rotation; class `House Host`, each in their own look), at the 20th battle of a normal room (X and Y's number) and at
+  the 50th of its hard room, the **grand room**, which the normal host's first defeat opens. Each has a normal and a hard
+  team in `our-trainers.json` (`house_host_<who>`, `_hard`) at level 50 with a Mega Stone and a Key Stone, as many as the
+  room enters, every move one the species can learn. The host comes once a streak, at that battle; a streak that runs on
+  past it meets the house's trainers. A hard room's host beaten for the first time leaves its trophy
+  (`VAR_KALOS_HOUSE_TROPHY_<WAY>`, 1), which counts toward none of the Frontier's prints; the board shows a silver print
+  for one trophy and a gold one for all four.
+- **Points**: one a win for the first ten of a streak, a point more each ten battles to five, one more in a grand room;
+  the normal host's win twenty and the grand host's forty in place of the battle's own.
+- **A save of plan 23's first build**: its Maison record (rounds of seven, single battles) becomes the single room's the
+  first time that room is asked for, its streak and best kept (a round that was under way ends its streak).
+- **Not built**: a song of its own (the lobby and the hall play Aquacorde's, as plan 23 left them, until plan 31 writes one; Kalos has no Lumiose song yet), the hosts' grown looks (plan 30's
+  kit, once it stands; they are chibi looks of the `Adult` build now), and the hosts' lines in battle.
 
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 

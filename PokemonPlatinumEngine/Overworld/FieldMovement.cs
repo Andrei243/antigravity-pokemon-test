@@ -119,7 +119,9 @@ public enum Obstacle
     /// <summary>Ground skates don't take (plan 23 · Z1): tall grass and stairs; the step is taken on foot instead.</summary>
     Skates,
     /// <summary>A drift of snow too deep to wade (X and Y's Route 17): crossed only on a ridden Pokémon, Kalos's Mamoswine.</summary>
-    Drift
+    Drift,
+    /// <summary>Rough ground (Sun and Moon's): crossed only on Mudsdale's back (plan 23, Alola's rough ground).</summary>
+    Rough
 }
 
 /// <summary>
@@ -129,7 +131,7 @@ public enum Obstacle
 /// </summary>
 public readonly record struct Walker(
     TravelMode Mode = TravelMode.OnFoot, float Height = 0f, bool Running = false, bool FastGear = false, FieldMoves Moves = FieldMoves.None,
-    bool Climbing = false, BikeKind Bike = BikeKind.Bicycle, bool Sneaking = false)
+    bool Climbing = false, BikeKind Bike = BikeKind.Bicycle, bool Sneaking = false, string? Steed = null)
 {
     /// <summary>
     /// Whether a rider goes at a bicycle's top speed: Platinum's Bicycle in its fast gear, or the Mach Bike, which has
@@ -435,6 +437,8 @@ public static class FieldMovement
         // A drift of snow too deep for anyone on foot, on skates or on a Bicycle is crossed only on a ridden Pokémon's back
         // (X and Y's Route 17, the Mamoswine Road: plan 23, Kalos's Mamoswine ride)
         if (there == TileBehavior.SnowDrift && walker.Mode != TravelMode.Riding) return No(Obstacle.Drift);
+        // Rough ground is crossed only on Mudsdale's back (Sun and Moon's Mudsdale Gallop: plan 23, Alola's rough ground)
+        if (there == TileBehavior.RoughGround && !(walker.Mode == TravelMode.Riding && RidePager.CrossesRoughGround(walker.Steed))) return No(Obstacle.Rough);
 
         // Skates take no tall grass and no stairs (plan 23 · Z1): X and Y's skater steps off them there
         if (walker.Mode == TravelMode.Skating && RefusesSkates(map, x, y, nx, ny, dir)) return No(Obstacle.Skates);
@@ -551,7 +555,8 @@ public static class FieldMovement
     /// </summary>
     public static Pace PaceOn(TileBehavior underfoot, Walker walker) => walker.Mode switch
     {
-        TravelMode.Surfing => Pace.Fast,
+        // Sharpedo's Jet goes at a bicycle's top speed over the water (plan 23, Alola's water ride)
+        TravelMode.Surfing => RidePager.IsWaterRide(walker.Steed) ? Pace.Fastest : Pace.Fast,
         // Under the sea nobody runs (Emerald's PlayerNotOnBikeMoving walks a diver at the normal pace)
         TravelMode.Diving => Pace.Walk,
         TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,

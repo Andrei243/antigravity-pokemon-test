@@ -1,0 +1,37 @@
+{
+  // Route 11, Ula'ula Island (plan 23, the wave after Ultra Space): drawn by hand, our words. A wooded road from Route
+  // 10's east side, under Mount Hokulani, round to Route 12's south side
+  "area": "ulaula_route_11",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "kale": {
+      "name": "Kale",
+      "npcType": "youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Kale: I found a shortcut to Route 12! Well, a longcut. Battle me anyway!",
+        "dialogueAfter": "Youngster Kale: I'll take the shortcut home."
+      }
+    },
+    "meli": {
+      "name": "Meli",
+      "npcType": "lass",
+      "trainer": {
+        "dialogueBefore": "Lass Meli: My Pokémon and I were having a picnic. You can join if you beat us!",
+        "dialogueAfter": "Lass Meli: Fine, have a sandwich anyway."
+      }
+    },
+    "kona": {
+      "name": "Kona",
+      "npcType": "backpacker_m",
+      "trainer": {
+        "dialogueBefore": "Backpacker Kona: I've walked every road on Ula'ula. This one's the quietest. Until now!",
+        "dialogueAfter": "Backpacker Kona: Back to quiet, then."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 11\nWest: Route 10\nNorth: Route 12"
+  }
+}

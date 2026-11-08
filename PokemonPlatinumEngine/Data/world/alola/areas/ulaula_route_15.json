@@ -98,6 +98,42 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_15_RARE_CANDY",
       "item": "Rare Candy",
       "script": ""
+    },
+    {
+      "id": "grimsley",
+      "looks": "gentleman",
+      "movement": "look_south",
+      "x": 300,
+      "z": 288,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "sea_rock",
+      "looks": "breakable_rock",
+      "movement": "look_south",
+      "x": 301,
+      "z": 298,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_MAP_LOCAL_ROCK_ROUTE_15_SEA"
+    },
+    {
+      "id": "item_ball_islet",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 301,
+      "z": 302,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_15_ISLET_KINGS_ROCK",
+      "item": "King's Rock"
     }
   ],
   "signs": [

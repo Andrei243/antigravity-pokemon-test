@@ -1044,6 +1044,8 @@ public static class RegionDatabase
                 // top and the Battle Royal Dome
                 "UltraDeepSea", "UltraJungle", "UltraDesert", "UltraPlant", "UltraCrater", "UltraForest", "UltraRuin",
                 "UltraMegalopolis", "MegaloTower", "RoyalAvenue_BattleRoyalDome",
+                // The wave after Ultra Space: Resolution Cave, a cave map of its own under Poni Meadow
+                "ResolutionCave",
             }
         },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

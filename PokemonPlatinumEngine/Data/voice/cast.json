@@ -34,7 +34,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -58,10 +58,6 @@
       "note": "first spoken at pokemon_league_agathas_room.txt(8)",
       "provisional": true
     },
-    "agnes": {
-      "note": "first spoken at LumioseCity_TableATrois.txt(22)",
-      "provisional": true
-    },
     "alder": {
       "note": "first spoken at floccesy_town.txt(22)",
       "provisional": true
@@ -72,6 +68,10 @@
     },
     "alice": {
       "note": "first spoken at fuchsia_gym.txt(79)",
+      "provisional": true
+    },
+    "altar_keeper": {
+      "note": "first spoken at poni_altar.txt(167)",
       "provisional": true
     },
     "ampere": {
@@ -147,7 +147,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_puck:0.4",
-        "speed": 1,
+        "speed": 1.0,
         "pitch": 1.12,
         "accent": "en-us"
       }
@@ -195,10 +195,6 @@
     },
     "barber": {
       "note": "first spoken at goldenrod_tunnel_b1f.txt(110)",
-      "provisional": true
-    },
-    "barnabe": {
-      "note": "first spoken at LumioseCity_TableATrois.txt(11)",
       "provisional": true
     },
     "barry": {
@@ -261,10 +257,6 @@
         "pitch": 0.93,
         "accent": "en-us"
       }
-    },
-    "bertrand": {
-      "note": "first spoken at LumioseCity_BistroDeux.txt(27)",
-      "provisional": true
     },
     "bianca": {
       "note": "first spoken at aspertia_city.txt(128)",
@@ -396,7 +388,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "bm_george:0.5,am_fenrir:0.5",
-        "speed": 1,
+        "speed": 1.0,
         "pitch": 0.92,
         "accent": "en-gb"
       }
@@ -422,7 +414,7 @@
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_fenrir:0.5",
         "speed": 1.07,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -452,10 +444,6 @@
     },
     "captain_stern": {
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
-      "provisional": true
-    },
-    "capucine": {
-      "note": "first spoken at LumioseCity_Carrousel.txt(22)",
       "provisional": true
     },
     "caretaker": {
@@ -530,7 +518,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.4,af_nicole:0.6",
         "speed": 0.9,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -772,7 +760,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_george:0.6,bm_daniel:0.4",
         "speed": 0.96,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-gb"
       }
     },
@@ -939,24 +927,12 @@
       "note": "first spoken at phone.txt(370)",
       "provisional": true
     },
-    "ernestine": {
-      "note": "first spoken at LumioseCity_GrandeTable.txt(12)",
-      "provisional": true
-    },
     "essentia": {
       "note": "first spoken at LumioseCity_LysandreLabs.txt(68)",
       "provisional": true
     },
     "eusine": {
       "note": "first spoken at burned_tower_1f.txt(14)",
-      "provisional": true
-    },
-    "evrard": {
-      "note": "first spoken at LumioseCity_GrandeTable.txt(25)",
-      "provisional": true
-    },
-    "fabien": {
-      "note": "first spoken at LumioseCity_BistroDeux.txt(23)",
       "provisional": true
     },
     "factory_staff": {
@@ -1010,10 +986,6 @@
     },
     "fauve": {
       "note": "first spoken at LumioseCity_Station.txt(120)",
-      "provisional": true
-    },
-    "ferdinand": {
-      "note": "first spoken at LumioseCity_Carrousel.txt(26)",
       "provisional": true
     },
     "fishing_guru": {
@@ -1089,7 +1061,7 @@
         "engine": "kokoro-82m",
         "blend": "am_echo:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -1161,10 +1133,6 @@
       "note": "first spoken at ShalourCity_TowerOfMastery.txt(15)",
       "provisional": true
     },
-    "gustavine": {
-      "note": "first spoken at LumioseCity_TradeSociety.txt(8)",
-      "provisional": true
-    },
     "guzma": {
       "note": "first spoken at SkullManor.txt(29)",
       "provisional": true
@@ -1193,10 +1161,6 @@
       "note": "first spoken at common.txt(3532)",
       "provisional": true
     },
-    "heloise": {
-      "note": "first spoken at LumioseCity_TableATrois.txt(26)",
-      "provisional": true
-    },
     "herbalist": {
       "note": "first spoken at goldenrod_tunnel_b1f.txt(47)",
       "brief": {
@@ -1216,10 +1180,6 @@
     },
     "herdier": {
       "note": "first spoken at floccesy_ranch_2.txt(140)",
-      "provisional": true
-    },
-    "hippolyte": {
-      "note": "first spoken at LumioseCity_GrandeTable.txt(29)",
       "provisional": true
     },
     "hoenn_drake": {
@@ -1484,7 +1444,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.5,af_kore:0.5",
         "speed": 0.99,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -1631,7 +1591,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_daniel:0.5,bm_george:0.5",
         "speed": 0.94,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-gb"
       }
     },
@@ -1652,7 +1612,7 @@
         "engine": "kokoro-82m",
         "blend": "bf_emma:0.5,af_river:0.5",
         "speed": 0.93,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-gb"
       }
     },
@@ -1760,7 +1720,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_river:0.4",
-        "speed": 1,
+        "speed": 1.0,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -1800,10 +1760,6 @@
     },
     "maria": {
       "note": "first spoken at phone.txt(287)",
-      "provisional": true
-    },
-    "marius": {
-      "note": "first spoken at LumioseCity_Carrousel.txt(18)",
       "provisional": true
     },
     "marley": {
@@ -1978,7 +1934,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.98,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -2097,10 +2053,6 @@
     },
     "octave": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(145)",
-      "provisional": true
-    },
-    "odette": {
-      "note": "first spoken at LumioseCity_BistroDeux.txt(19)",
       "provisional": true
     },
     "odile": {
@@ -2232,10 +2184,6 @@
       "note": "first spoken at cianwood_pharmacy.txt(12)",
       "provisional": true
     },
-    "philibert": {
-      "note": "first spoken at LumioseCity_Carrousel.txt(11)",
-      "provisional": true
-    },
     "phoebe": {
       "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
       "provisional": true
@@ -2250,6 +2198,10 @@
     },
     "pip": {
       "note": "first spoken at lumiose_city.txt(204)",
+      "provisional": true
+    },
+    "plant_worker": {
+      "note": "first spoken at blush_mountain.txt(7)",
       "provisional": true
     },
     "plumeria": {
@@ -2294,7 +2246,7 @@
         "engine": "kokoro-82m",
         "blend": "am_eric:0.6,am_liam:0.4",
         "speed": 1.04,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -2407,8 +2359,8 @@
       "note": "first spoken at tapu_village.txt(34)",
       "provisional": true
     },
-    "raoul": {
-      "note": "first spoken at LumioseCity_TableATrois.txt(18)",
+    "ranger": {
+      "note": "first spoken at poni_grove.txt(12)",
       "provisional": true
     },
     "red": {
@@ -2507,7 +2459,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.6,af_kore:0.4",
         "speed": 1.08,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -2527,7 +2479,7 @@
         "engine": "kokoro-82m",
         "blend": "am_fenrir:0.6,am_michael:0.4",
         "speed": 1.02,
-        "pitch": 1,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -2640,8 +2592,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_michael:0.5",
-        "speed": 1,
-        "pitch": 1,
+        "speed": 1.0,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -2730,10 +2682,6 @@
     },
     "selphy": {
       "note": "first spoken at five_island_lost_cave_room_10.txt(17)",
-      "provisional": true
-    },
-    "severine": {
-      "note": "first spoken at LumioseCity_GrandeTable.txt(21)",
       "provisional": true
     },
     "shadow_triad": {
@@ -2888,7 +2836,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_bella:0.5,af_jessica:0.5",
-        "speed": 1,
+        "speed": 1.0,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -2926,8 +2874,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.6,am_echo:0.4",
-        "speed": 1,
-        "pitch": 1,
+        "speed": 1.0,
+        "pitch": 1.0,
         "accent": "en-us"
       }
     },
@@ -3244,11 +3192,11 @@
     "Aether Employee": "aether_employee",
     "Aether Guard": "aether_guard",
     "Agatha": "agatha",
-    "Agnès": "agnes",
     "Aide": "look:aide",
     "Alder": "alder",
     "Aliana": "aliana",
     "Alice": "alice",
+    "Altar Keeper": "altar_keeper",
     "Ampère": "ampere",
     "Anatole": "anatole",
     "Announcer": "look:announcer",
@@ -3270,7 +3218,6 @@
     "Backers": "backers",
     "Baoba": "baoba",
     "Barber": "barber",
-    "Barnabé": "barnabe",
     "Barry": "barry",
     "Bastien": "bastien",
     "Battle Fan": "battle_fan",
@@ -3280,7 +3227,6 @@
     "Benjamin": "benjamin",
     "Berry Master": "berry_master",
     "Bertha": "bertha",
-    "Bertrand": "bertrand",
     "Bianca": "bianca",
     "Big Man": "big_man",
     "Bike Shop owner": "bike_shop_owner",
@@ -3310,7 +3256,6 @@
     "Candice": "candice",
     "Captain": "captain",
     "Captain Stern": "captain_stern",
-    "Capucine": "capucine",
     "Caretaker": "caretaker",
     "Castellan Aubert": "castellan_aubert",
     "Catherine": "catherine",
@@ -3391,11 +3336,8 @@
     "Erika": "erika",
     "Erin": "erin",
     "Ernest": "ernest",
-    "Ernestine": "ernestine",
     "Essentia": "essentia",
     "Eusine": "eusine",
-    "Évrard": "evrard",
-    "Fabien": "fabien",
     "Factory Staff": "factory_staff",
     "Falkner": "falkner",
     "Fan": "fan",
@@ -3403,7 +3345,6 @@
     "Farmer": "farmer",
     "Farmer's Wife": "farmers_wife",
     "Fauve": "fauve",
-    "Ferdinand": "ferdinand",
     "Fisherman": "look:fisherman",
     "Fishing Guru": "fishing_guru",
     "Flannery": "flannery",
@@ -3440,7 +3381,6 @@
     "Guide Gent": "guide_gent",
     "Guitarist": "look:guitarist",
     "Gurkinn": "gurkinn",
-    "Gustavine": "gustavine",
     "Guzma": "guzma",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
@@ -3449,11 +3389,9 @@
     "Harlequin": "harlequin",
     "Hau": "hau",
     "Head Coach": "head_coach",
-    "Héloïse": "heloise",
     "Herbalist": "herbalist",
     "Herdier": "herdier",
     "Hiker": "look:hiker",
-    "Hippolyte": "hippolyte",
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
@@ -3539,7 +3477,6 @@
     "Man in Black": "man_in_black",
     "Manager": "manager",
     "Maria": "maria",
-    "Marius": "marius",
     "Marley": "marley",
     "Mars": "mars",
     "Marshal": "marshal",
@@ -3588,7 +3525,6 @@
     "Nursery Aide": "nursery_aide",
     "Nursery Keeper": "nursery_keeper",
     "Octave": "octave",
-    "Odette": "odette",
     "Odile": "odile",
     "Officer": "officer",
     "Old Lady": "old_lady",
@@ -3607,11 +3543,11 @@
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
-    "Philibert": "philibert",
     "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Pilot": "pilot",
     "Pip": "pip",
+    "Plant Worker": "plant_worker",
     "Plumeria": "plumeria",
     "Pokémon Ranger": "pokemon_ranger",
     "Policeman": "policeman",
@@ -3640,7 +3576,7 @@
     "Ramon": "ramon",
     "Ramos": "ramos",
     "Rancher Moke": "rancher_moke",
-    "Raoul": "raoul",
+    "Ranger": "ranger",
     "Receptionist": "look:receptionist",
     "Red": "red",
     "Referee": "referee",
@@ -3679,7 +3615,6 @@
     "Scout": "scout",
     "Seller": "seller",
     "Selphy": "selphy",
-    "Séverine": "severine",
     "Shadow Triad": "shadow_triad",
     "Shauna": "shauna",
     "Shauntal": "shauntal",

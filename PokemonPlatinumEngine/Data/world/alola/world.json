@@ -33,6 +33,9 @@
     // The rest of the islands (plan 23, the wave after the loose ends): Seaward Cave under Melemele, from the meadow to
     // Kala'e Bay (matrix 40, clear of the other sessions' numbers)
     { "name": "SeawardCave", "matrix": 40, "area": "seaward_cave", "trees": "Round", "setting": "Cave" },
+    // The wave after Ultra Space: Resolution Cave under Poni Meadow, a map of its own (matrix 70, clear of the other
+    // sessions' numbers)
+    { "name": "ResolutionCave", "matrix": 70, "area": "resolution_cave", "trees": "Round", "setting": "Cave" },
     // Plan 23 · Z8: Ultra Space after the Hall of Fame, a map to each world (matrices 60 to 67), reached through the Ultra
     // Wormhole over the Altar's dais and left by the one each world is come in by. The two built inside (the deep sea's
     // cavern and the plant's hall) are caves that name the tile they are come to by, since no warp leads into them
@@ -109,6 +112,15 @@
     "ultra_crater",
     "ultra_forest",
     "ultra_ruin",
-    "ultra_megalopolis"
+    "ultra_megalopolis",
+    // The wave after Ultra Space: Poni's last places, Resolution Cave, Route 11 and Blush Mountain
+    "poni_grove",
+    "poni_plains",
+    "poni_gauntlet",
+    "poni_meadow",
+    "poni_coast",
+    "resolution_cave",
+    "ulaula_route_11",
+    "blush_mountain"
   ]
 }

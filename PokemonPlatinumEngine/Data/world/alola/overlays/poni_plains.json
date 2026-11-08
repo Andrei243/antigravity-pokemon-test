@@ -1,0 +1,45 @@
+{
+  // Poni Plains (plan 23, the wave after Ultra Space): drawn by hand, our words. Wide grass where Tauros and Miltank
+  // graze, between Poni Grove in the south-west, Poni Gauntlet in the north-east and Poni Meadow in the south
+  "area": "poni_plains",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "keoni": {
+      "name": "Keoni",
+      "npcType": "rancher",
+      "trainer": {
+        "dialogueBefore": "Rancher Keoni: Nobody fences the plains. The herds go where they like, and so do I.",
+        "dialogueAfter": "Rancher Keoni: Off you go, then. Mind the herds."
+      }
+    },
+    "pua": {
+      "name": "Pua",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Pua: I came to Poni to train where nobody would watch. Now you're watching. Battle!",
+        "dialogueAfter": "Ace Trainer Pua: Fine. You can watch me lose, then."
+      }
+    },
+    "ikaika": {
+      "name": "Ikaika",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Ikaika: Climbed the Gauntlet twice this morning! My Pokémon are warmed up. Are yours?",
+        "dialogueAfter": "Hiker Ikaika: Yours were warmer."
+      }
+    },
+    "lani": {
+      "name": "Lani",
+      "npcType": "backpacker_f",
+      "trainer": {
+        "dialogueBefore": "Backpacker Lani: Every Pokémon I've met on these plains is a little bit wild. Same goes for me!",
+        "dialogueAfter": "Backpacker Lani: A little bit beaten, too."
+      }
+    }
+  },
+  "signs": {
+    "PlainsSign": "Poni Plains\nNorth-east: Poni Gauntlet\nSouth: Poni Meadow"
+  }
+}

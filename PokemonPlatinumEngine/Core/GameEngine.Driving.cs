@@ -125,6 +125,8 @@ public partial class GameEngine
         public TournamentScreen TournamentScreen => game.flow.TournamentScreen;
         /// <summary>The Battle Palace's or the Battle Arena's round under way (plan 14 · B9).</summary>
         public Models.Frontier.BattleVenueChallenge? Venue => game.flow.Venue;
+        /// <summary>A later battle place's challenge under way (plan 37 · FC2: the streak house).</summary>
+        public Models.Facilities.StreakChallenge? Facility => game.flow.Facility;
         /// <summary>The Battle Pike's and the Battle Pyramid's round under way (plan 14 · B10).</summary>
         public Models.Frontier.BattlePikeChallenge? Pike => game.flow.Pike;
         public Models.Frontier.BattlePyramidChallenge? Pyramid => game.flow.Pyramid;

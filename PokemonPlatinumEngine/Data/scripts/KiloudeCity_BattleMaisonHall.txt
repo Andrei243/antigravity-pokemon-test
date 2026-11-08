@@ -1,48 +1,69 @@
-# The Battle Maison's hall in Kiloude City (plan 23, Kalos's last places). The lines are our own. A whole round is this
-# one arrival script, which loops battle by battle (Models/Frontier/BattleVenue.cs; `venue ... maison`), as the Battle
-# Palace's hall does: the round lives between the desk and the hall as the host's Venue, so a game closed in the middle of
-# one finds no round here, and the next one begun at the desk ends the streak.
+# The Battle Maison's hall in Kiloude City (plan 23, Kalos's last places; plan 37 · FC2's streak house). The lines are
+# our own. A whole challenge is this one arrival script, which loops a battle at a time (Models/Facilities/
+# StreakChallenge.cs; `facility house ...`): the challenge lives between the desk and the hall as the host's Facility, so
+# a game closed in the middle of one finds none here, and the next one begun at the desk ends the streak. A challenge
+# rested is put down in the records and saved, and the desk takes it up again.
 
 
 script OnEnter
-  venue active
+  facility house active
   if result == 0 end
   clearflag FLAG_KALOS_MAISON_SHOW_OPPONENT
   hide opponent
   place player 8 10 up
 label Battle
-  venue next
+  facility house next
   speaker "Maison Host"
-  say "Battle {number} of seven! Your challenger is on the way."
-  venue opponent
+  say "Battle {number}! Your challenger is on the way."
+  facility house host
+  if result == 0 goto Drawn
+  speaker "Maison Host"
+  say "Wait... the host of this room is coming down to meet you in person!"
+label Drawn
+  facility house opponent
   place opponent 8 3 down
   setflag FLAG_KALOS_MAISON_SHOW_OPPONENT
   show opponent
   walk opponent down 2
   text "{foe} steps forward!"
-  venue fight
+  facility house battle
   if result == 0 goto Lost
   call Leaves
-  venue won
-  if result == 1 goto RoundWon
-  speaker "Maison Host"
-  say "Splendid! Your three have been made whole again. The next challenger is waiting."
-  goto Battle
-label RoundWon
-  speaker "Maison Host"
-  say "Seven in a row! The whole hall is on its feet for {player}."
-  venue finish won
-  venue points
+  facility house won
+  facility house points
   text "{player} received {number} BP!"
+  facility house opened
+  if result == 1 goto Opened
+  facility house trophy
+  if result == 0 goto Next
   fanfare item
+  text "{player} received this room's trophy! It will stand on the Maison's board for good."
+  goto Next
+label Opened
+  speaker "Maison Host"
+  say "You beat the host! From now on, the grand room of this hall is open to you as well."
+label Next
+  speaker "Maison Host"
+  choose "Your Pokémon are whole again. What will you do?" "Next battle" "Rest" "Retire"
+  if result == 0 goto Battle
+  if result == 1 goto Rest
+  facility house finish won
+  speaker "Maison Host"
+  say "You retire with your head held high. The hall will remember your streak."
+  goto Home
+label Rest
+  facility house pause
+  speaker "Maison Host"
+  say "Then rest well. Your place is kept, and your progress is saved."
+  frontier save
   goto Home
 label Lost
   call Leaves
-  venue finish lost
+  facility house finish lost
   speaker "Maison Host"
-  say "The round ends here. Rest, and come back. The hall will remember you."
+  say "The streak ends here. Rest, and come back. The hall will remember you."
 label Home
-  venue end
+  facility house end
   fade out 0.6
   warp "KiloudeCity_BattleMaison" 8 12 down
   fade in
@@ -59,5 +80,5 @@ script Leaves
 script Host
   face self player
   speaker "Maison Host"
-  say "No round is under way. The receptionist in the lobby takes your three."
+  say "No challenge is under way. The receptionist in the lobby takes your entries."
   end

@@ -194,6 +194,8 @@ public sealed partial class GameFlow
     public BattleArcadeChallenge? Arcade { get; set; }
     public BattleDomeChallenge? Dome { get; set; }
     public BattleVenueChallenge? Venue { get; set; }
+    /// <summary>A later battle place's challenge under way (plan 37 · FC2); lives between the desk and the battle room as the venues' round does.</summary>
+    public Models.Facilities.StreakChallenge? Facility { get; set; }
     public BattlePikeChallenge? Pike { get; set; }
     public BattlePyramidChallenge? Pyramid { get; set; }
     public Models.Tournament? Tournament { get; set; }

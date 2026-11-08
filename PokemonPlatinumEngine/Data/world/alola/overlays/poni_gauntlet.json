@@ -1,0 +1,48 @@
+{
+  // Poni Gauntlet (plan 23, the wave after Ultra Space): drawn by hand, our words. A climb north from Poni Plains over
+  // rough ground only Mudsdale crosses, a lake crossed by Surf and a pass in the cliffs, to the Battle Tree at its head,
+  // whose doors are shut (the Battle Tree is a later session's)
+  "area": "poni_gauntlet",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  // The Battle Tree's doors, shut until a later session builds it
+  "locked": [ 0 ],
+  "people": {
+    "mikala": {
+      "name": "Mikala",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Mikala: This lake's the only cool place on the whole climb. I'm not letting you through dry!",
+        "dialogueAfter": "Swimmer Mikala: Go on. Enjoy the swim."
+      }
+    },
+    "hina": {
+      "name": "Hina",
+      "npcType": "dragon_tamer",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Hina: Dragons nest high on the Gauntlet. You'll have to get past mine first.",
+        "dialogueAfter": "Dragon Tamer Hina: My dragons will want a rematch. One day."
+      }
+    },
+    "manu": {
+      "name": "Manu",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Manu: Only Mudsdale gets over that ground down there. So you've a Mudsdale. Now show me the rest!",
+        "dialogueAfter": "Veteran Manu: The rest is very good indeed."
+      }
+    },
+    "lokelani": {
+      "name": "Lokelani",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Lokelani: They say the strongest Trainers in the world meet at the top of this climb. I'm the last test.",
+        "dialogueAfter": "Ace Trainer Lokelani: You passed. With flying colours."
+      }
+    }
+  },
+  "signs": {
+    "TreeSign": "Battle Tree\nWhere the strongest Trainers of every land meet.\nClosed for now."
+  }
+}

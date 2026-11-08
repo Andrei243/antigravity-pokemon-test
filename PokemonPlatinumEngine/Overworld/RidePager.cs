@@ -38,6 +38,32 @@ public static class RidePager
         ("Mudsdale", MudsdaleFlag),
     };
 
+    /// <summary>
+    /// The rides over the water (plan 23, Alola's water ride; rulings, "Poni's last places, Blush Mountain, Route 11 and the
+    /// rides of the rough ground and the sea"): Sharpedo, registered by the gambler of Route 15, called under a surfer, at a
+    /// bicycle's top speed, and ramming the rocks of the sea that stop a Lapras (<see cref="Rams"/>).
+    /// </summary>
+    public static readonly IReadOnlyList<(string Species, string Flag)> WaterRides = new[]
+    {
+        ("Sharpedo", SharpedoFlag),
+    };
+
+    /// <summary>The flag that registers Sharpedo (Route 15's gambler).</summary>
+    public const string SharpedoFlag = "FLAG_ALOLA_RIDE_SHARPEDO";
+
+    /// <summary>A ride over the water by its species; null where the pager has none.</summary>
+    public static (string Species, string Flag)? WaterRideOf(string? species) =>
+        WaterRides.FirstOrDefault(r => string.Equals(r.Species, species, StringComparison.OrdinalIgnoreCase)) is { Species: not null } ride ? ride : null;
+
+    /// <summary>Whether a species is a ride over the water.</summary>
+    public static bool IsWaterRide(string? species) => WaterRideOf(species) != null;
+
+    /// <summary>Whether a ride gallops over rough ground (Mudsdale's Gallop, <see cref="TileBehavior.RoughGround"/>).</summary>
+    public static bool CrossesRoughGround(string? species) => string.Equals(species, "Mudsdale", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Whether a ride rams the rocks of the sea apart (Sharpedo's Jet).</summary>
+    public static bool Rams(string? species) => string.Equals(species, "Sharpedo", StringComparison.OrdinalIgnoreCase);
+
     /// <summary>A ride on land by its species; null where the pager has none.</summary>
     public static (string Species, string Flag)? LandRideOf(string species) =>
         LandRides.FirstOrDefault(r => string.Equals(r.Species, species, StringComparison.OrdinalIgnoreCase)) is { Species: not null } ride ? ride : null;
@@ -62,7 +88,7 @@ public static class RidePager
         LentRideOf(species) is { } lent && lent.Region == region && string.Equals(lent.Area, area, StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The species a ride is known by, the pager's or a lent one's; null for neither.</summary>
-    public static string? SpeciesOf(string species) => LandRideOf(species)?.Species ?? LentRideOf(species)?.Species;
+    public static string? SpeciesOf(string species) => LandRideOf(species)?.Species ?? LentRideOf(species)?.Species ?? WaterRideOf(species)?.Species;
 
     /// <summary>
     /// Whether the player may get on a ride here: the region offers riding (<c>movement.modes</c> lists
@@ -71,7 +97,7 @@ public static class RidePager
     /// </summary>
     public static bool CanRide(string species, StoryState story, Region region, string? area = null) =>
         LentHere(species, region.Id, area)
-        || region.Movement.Offers(RegionMode.Ride) && LandRideOf(species) is { } ride && story.Has(ride.Flag);
+        || region.Movement.Offers(RegionMode.Ride) && (LandRideOf(species) ?? WaterRideOf(species)) is { } ride && story.Has(ride.Flag);
 
     /// <summary>Whether a ride breaks a cracked rock it runs into (Tauros's charge), as Rock Smash does.</summary>
     public static bool Charges(string? species) => string.Equals(species, "Tauros", StringComparison.OrdinalIgnoreCase);

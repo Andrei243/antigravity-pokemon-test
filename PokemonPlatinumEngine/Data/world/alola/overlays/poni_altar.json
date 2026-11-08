@@ -22,10 +22,11 @@
       "shownBy": "FLAG_ALOLA_AT_ALTAR"
     },
     // Plan 23 · Z8: the Lightseekers by the dais from their visit to the player's house until they go ahead to Megalo
-    // Tower, and a Stakataka among the stones once the light is back in Ultra Megalopolis
+    // Tower (the Stakataka Z8 stood among the stones went to Poni Grove with the grove, the wave after Ultra Space)
     "veyra": { "name": "Veyra", "npcType": "veyra", "script": "Veyra", "still": true, "hiddenBy": "FLAG_ALOLA_ULTRA_AT_TOWER", "shownBy": "FLAG_ALOLA_ULTRA_AT_ALTAR" },
     "oskin": { "name": "Oskin", "npcType": "oskin", "script": "Oskin", "still": true, "hiddenBy": "FLAG_ALOLA_ULTRA_AT_TOWER", "shownBy": "FLAG_ALOLA_ULTRA_AT_ALTAR" },
-    "stakataka": { "name": "Stakataka", "npcType": "Pokemon", "species": "Stakataka", "script": "Stakataka", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_STAKATAKA", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" }
+    // The altar's keeper (the wave after Ultra Space), who gives Alola's Champion a Cosmog of the altar's own, once
+    "keeper": { "name": "Altar Keeper", "npcType": "old_man", "script": "Keeper", "still": true, "shownBy": "AlolaHallOfFame" }
   },
   // Plan 23 · Z8: the Ultra Wormhole over the dais, read where it hangs (and the dais's warm stone before it opens), and
   // the Lightseekers' scene as the player comes up to the dais after their visit

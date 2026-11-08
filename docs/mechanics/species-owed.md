@@ -49,14 +49,14 @@ The later generations, owed by their regions' plans until each plan's last sessi
 | Owed by | Species | Had somewhere | Not yet |
 |---|---:|---:|---:|
 | plan 23: Kalos | 72 | 65 | 7 |
-| plan 23: Alola | 88 | 68 | 20 |
+| plan 23: Alola | 88 | 83 | 5 |
 | plan 33: Galar | 89 | 0 | 89 |
 | plan 23: Hisui | 7 | 1 | 6 |
 | plan 34: Paldea | 120 | 4 | 116 |
 
 **plan 23: Kalos**, not yet had: Tyrunt, Tyrantrum, Amaura, Aurorus, Diancie, Hoopa, Volcanion.
 
-**plan 23: Alola**, not yet had: Crabominable, Mareanie, Toxapex, Stufful, Bewear, Oranguru, Wimpod, Golisopod, Minior, Turtonator, Drampa, Dhelmise, Cosmog, Cosmoem, Lunala, Magearna, Marshadow, Zeraora, Meltan, Melmetal.
+**plan 23: Alola**, not yet had: Magearna, Marshadow, Zeraora, Meltan, Melmetal.
 
 **plan 33: Galar**, not yet had: Grookey, Thwackey, Rillaboom, Scorbunny, Raboot, Cinderace, Sobble, Drizzile, Inteleon, Skwovet, Greedent, Rookidee, Corvisquire, Corviknight, Blipbug, Dottler, Orbeetle, Nickit, Thievul, Gossifleur, Eldegoss, Wooloo, Dubwool, Chewtle, Drednaw, Yamper, Boltund, Rolycoly, Carkol, Coalossal, Applin, Flapple, Appletun, Silicobra, Sandaconda, Cramorant, Arrokuda, Barraskewda, Toxel, Toxtricity, Sizzlipede, Centiskorch, Clobbopus, Grapploct, Sinistea, Polteageist, Hatenna, Hattrem, Hatterene, Impidimp, Morgrem, Grimmsnarl, Obstagoon, Perrserker, Cursola, Sirfetch'd, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Snom, Frosmoth, Stonjourner, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Dreepy, Drakloak, Dragapult, Zacian, Zamazenta, Eternatus, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
 

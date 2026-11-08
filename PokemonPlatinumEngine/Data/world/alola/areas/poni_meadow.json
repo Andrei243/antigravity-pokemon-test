@@ -1,0 +1,230 @@
+{
+  "key": "poni_meadow",
+  "index": 502,
+  "name": "Poni Meadow",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_MEADOW",
+  "nightMusic": "PONI_MEADOW",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 281,
+      "z": 210,
+      "to": "resolution_cave",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "dancer",
+      "looks": "beauty",
+      "movement": "look_east",
+      "x": 252,
+      "z": 219,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "kapono",
+      "looks": "psychic",
+      "movement": "look_west",
+      "x": 262,
+      "z": 228,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_PSYCHIC_KAPONO"
+    },
+    {
+      "id": "noelani",
+      "looks": "beauty",
+      "movement": "look_west",
+      "x": 276,
+      "z": 230,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_BEAUTY_NOELANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 237,
+      "z": 200,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_MEADOW_OVAL_STONE",
+      "item": "Oval Stone"
+    }
+  ],
+  "signs": [
+    {
+      "x": 263,
+      "z": 215,
+      "type": 0,
+      "script": "MeadowSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Oricorio",
+      "form": "Oricorio-Sensu",
+      "level": 52
+    },
+    {
+      "species": "Cleffa",
+      "level": 50
+    },
+    {
+      "species": "Goomy",
+      "level": 51
+    },
+    {
+      "species": "Clefairy",
+      "level": 52
+    },
+    {
+      "species": "Bonsly",
+      "level": 50
+    },
+    {
+      "species": "Vullaby",
+      "level": 52
+    },
+    {
+      "species": "Castform",
+      "level": 53
+    },
+    {
+      "species": "Sudowoodo",
+      "level": 54
+    },
+    {
+      "species": "Sliggoo",
+      "level": 54
+    },
+    {
+      "species": "Mandibuzz",
+      "level": 55
+    },
+    {
+      "species": "Dratini",
+      "level": 52
+    },
+    {
+      "species": "Clefable",
+      "level": 56
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Barboach",
+      "level": 52
+    },
+    {
+      "species": "Dratini",
+      "level": 52
+    },
+    {
+      "species": "Feebas",
+      "level": 50
+    },
+    {
+      "species": "Whiscash",
+      "level": 55
+    },
+    {
+      "species": "Dragonair",
+      "level": 55
+    }
+  ],
+  "waterRate": 20,
+  "oldRod": [
+    {
+      "species": "Magikarp",
+      "level": 50
+    },
+    {
+      "species": "Barboach",
+      "level": 50
+    },
+    {
+      "species": "Feebas",
+      "level": 50
+    },
+    {
+      "species": "Goldeen",
+      "level": 50
+    },
+    {
+      "species": "Dratini",
+      "level": 50
+    }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    {
+      "species": "Barboach",
+      "level": 52
+    },
+    {
+      "species": "Feebas",
+      "level": 52
+    },
+    {
+      "species": "Dratini",
+      "level": 52
+    },
+    {
+      "species": "Whiscash",
+      "level": 54
+    },
+    {
+      "species": "Dragonair",
+      "level": 55
+    }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    {
+      "species": "Feebas",
+      "level": 54
+    },
+    {
+      "species": "Dratini",
+      "level": 54
+    },
+    {
+      "species": "Whiscash",
+      "level": 56
+    },
+    {
+      "species": "Dragonair",
+      "level": 56
+    },
+    {
+      "species": "Dragonite",
+      "level": 58
+    }
+  ],
+  "superRodRate": 75
+}

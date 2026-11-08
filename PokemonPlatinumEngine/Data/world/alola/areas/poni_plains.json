@@ -1,0 +1,181 @@
+{
+  "key": "poni_plains",
+  "index": 501,
+  "name": "Poni Plains",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_PLAINS",
+  "nightMusic": "PONI_PLAINS",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "keoni",
+      "looks": "rancher",
+      "movement": "look_east",
+      "x": 232,
+      "z": 150,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_RANCHER_KEONI"
+    },
+    {
+      "id": "pua",
+      "looks": "ace_trainer_f",
+      "movement": "look_south",
+      "x": 258,
+      "z": 134,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_PUA"
+    },
+    {
+      "id": "ikaika",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 231,
+      "z": 176,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_IKAIKA"
+    },
+    {
+      "id": "lani",
+      "looks": "backpacker_f",
+      "movement": "look_west",
+      "x": 262,
+      "z": 186,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_BACKPACKER_LANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 204,
+      "z": 128,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_PLAINS_THUNDER_STONE",
+      "item": "Thunder Stone"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 290,
+      "z": 150,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_PLAINS_FIRE_STONE",
+      "item": "Fire Stone"
+    }
+  ],
+  "signs": [
+    {
+      "x": 233,
+      "z": 168,
+      "type": 0,
+      "script": "PlainsSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Tauros",
+      "level": 53
+    },
+    {
+      "species": "Stufful",
+      "level": 52
+    },
+    {
+      "species": "Makuhita",
+      "level": 52
+    },
+    {
+      "species": "Elekid",
+      "level": 52
+    },
+    {
+      "species": "Happiny",
+      "level": 51
+    },
+    {
+      "species": "Munchlax",
+      "level": 51
+    },
+    {
+      "species": "Bewear",
+      "level": 55
+    },
+    {
+      "species": "Hariyama",
+      "level": 55
+    },
+    {
+      "species": "Electabuzz",
+      "level": 55
+    },
+    {
+      "species": "Ditto",
+      "level": 54
+    },
+    {
+      "species": "Miltank",
+      "level": 55
+    },
+    {
+      "species": "Snorlax",
+      "level": 56
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Barboach",
+      "level": 52
+    },
+    {
+      "species": "Psyduck",
+      "level": 52
+    },
+    {
+      "species": "Whiscash",
+      "level": 55
+    },
+    {
+      "species": "Golduck",
+      "level": 55
+    },
+    {
+      "species": "Feebas",
+      "level": 50
+    }
+  ],
+  "waterRate": 20
+}

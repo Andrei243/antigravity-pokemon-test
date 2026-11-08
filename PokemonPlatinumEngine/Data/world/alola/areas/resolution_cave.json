@@ -1,0 +1,143 @@
+{
+  "key": "resolution_cave",
+  "index": 505,
+  "name": "Resolution Cave",
+  "matrix": 70,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "RESOLUTION_CAVE",
+  "nightMusic": "RESOLUTION_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 48,
+      "z": 90,
+      "to": "poni_meadow",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "legend",
+      "looks": "zygarde",
+      "movement": "look_south",
+      "x": 48,
+      "z": 14,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "kanoa",
+      "looks": "veteran",
+      "movement": "look_east",
+      "x": 30,
+      "z": 54,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_VETERAN_KANOA"
+    },
+    {
+      "id": "ululani",
+      "looks": "ace_trainer_f",
+      "movement": "look_south",
+      "x": 66,
+      "z": 30,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_ULULANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 14,
+      "z": 28,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_RESOLUTION_UPGRADE",
+      "item": "Upgrade"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 80,
+      "z": 28,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_RESOLUTION_DUBIOUS_DISC",
+      "item": "Dubious Disc"
+    }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Golbat",
+      "level": 52
+    },
+    {
+      "species": "Beldum",
+      "level": 52
+    },
+    {
+      "species": "Porygon",
+      "level": 52
+    },
+    {
+      "species": "Nosepass",
+      "level": 53
+    },
+    {
+      "species": "Ditto",
+      "level": 53
+    },
+    {
+      "species": "Golbat",
+      "level": 54
+    },
+    {
+      "species": "Metang",
+      "level": 55
+    },
+    {
+      "species": "Druddigon",
+      "level": 55
+    },
+    {
+      "species": "Crobat",
+      "level": 56
+    },
+    {
+      "species": "Porygon2",
+      "level": 56
+    },
+    {
+      "species": "Metagross",
+      "level": 58
+    },
+    {
+      "species": "Beldum",
+      "level": 54
+    }
+  ],
+  "landRate": 10
+}

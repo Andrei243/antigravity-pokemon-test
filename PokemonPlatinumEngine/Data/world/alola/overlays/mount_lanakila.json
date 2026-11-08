@@ -3,6 +3,8 @@
   "area": "mount_lanakila",
   "bgmTrack": "alola/trial",
   "trees": "Round",
+  // The mountain's ice-bound rock is an Ice Rock, as Sun and Moon's is (the wave after Ultra Space)
+  "evolutionSites": [ "Ice Rock" ],
   "doors": [
     {
       "warp": 1,

@@ -2224,6 +2224,13 @@ Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5).
 
+### The later games' battle places
+
+Plan 37 · FC2. Ours; nothing of X and Y's hosts or halls is recreated.
+
+- **The streak house's rooms** are plan 23's two in Kiloude City as they stand (`KiloudeCity_BattleMaison`, a museum's lobby with the desk and the prize counter in its back wall; `KiloudeCity_BattleMaisonHall`, the hall the challenger and the trainer face each other in, the trainer walking down two tiles from the back wall). The four rooms are one desk's choice and one hall's battles, never four rooms drawn: whoever battles there is dressed in the drawn trainer's look as the Frontier's rooms dress theirs.
+- **The four hosts** (`characters.json`'s `house_corvin`, `house_isaura`, `house_tamsin`, `house_ludovic`): grown-ups of the `Adult` build in long coats, each of their room's colour with the same gold trim, so the four read as one house: Corvin of the single room in claret, tall, with swept silver hair; Isaura of the double in teal with long dark hair and a skirt; Tamsin of the triple in violet with her hair up in a bun and a skirt; Ludovic of the rotation in navy with short dark hair and a moustache. Plan 30's grown kit takes them over once it stands.
+
 ### Hoenn's last things
 
 Plan 21 · H12, part p. Our own drawings: nothing of Emerald's sprites or metatiles is taken.

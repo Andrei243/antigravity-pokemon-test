@@ -7,11 +7,21 @@ script League
   face olivia player
   speaker "Olivia"
   if flag FLAG_ALOLA_DEFEATED_OLIVIA goto Won
+  if flag AlolaHallOfFame goto Rematch
   scene "Olivia"
   say "Aloha, {player}. I'm Olivia. I used to be the kahuna of Akala, and I'm still the one who knows the stones best."
   say "Rock endures. It takes the waves and the wind and is still standing at the end. Let's see if you can say the same."
   battle self as "alola_olivia_league"
   say "Beautiful. Even the stones moved aside for you. Acerola is next, and she is... a lot."
+  setflag FLAG_ALOLA_DEFEATED_OLIVIA
+  endscene
+  end
+# The second climb and every one after it (the wave after Ultra Space): the rematch team (alola_olivia_rematch)
+label Rematch
+  scene "OliviaRematch"
+  say "The Champion, back again. The stones remember you, {player}. They've been sharpening themselves."
+  battle self as "alola_olivia_rematch"
+  say "Worn smooth by the tide again. Acerola's next, and she has new faces to show you."
   setflag FLAG_ALOLA_DEFEATED_OLIVIA
   endscene
   end
