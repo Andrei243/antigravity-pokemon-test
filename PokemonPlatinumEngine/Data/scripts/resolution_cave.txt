@@ -1,0 +1,24 @@
+# Resolution Cave, Poni Island (plan 23, the wave after Ultra Space). The lines are our own, on Ultra Sun and Ultra Moon's
+# beat as it is publicly described (docs/mechanics/rulings.md, "Poni's last places..."): at the bottom of the cave Zygarde
+# waits, met after a staged beat at 60, not to be run from, and back each time the cave is come to until it is caught
+# (FLAG_ALOLA_CAUGHT_ZYGARDE). Sun and Moon's Zygarde Cube and its cells are not built.
+
+
+script Zygarde
+  face self player
+  speaker none
+  scene "Zygarde"
+  letterbox on 0.4
+  camera pan 48 14 1.0
+  camera zoom 1.4 0.8
+  effect ripple 48 14 1.0
+  effect sparkles 48 14 wait
+  cry "Zygarde"
+  text "Green cells drifted out of the cracks in the rock and gathered into one great serpent, watching over the island."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Zygarde" 60 nofleeing
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_ZYGARDE
+  hide self
+  end

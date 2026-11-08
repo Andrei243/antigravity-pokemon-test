@@ -1756,7 +1756,7 @@ public partial class GameEngine
             if (game.flow.Player.SetCycling(on)) game.PlayFieldMusic();
         }
 
-        public string? Riding => game.flow.Player.Mode == TravelMode.Riding ? game.flow.Player.Steed : null;
+        public string? Riding => game.flow.Player.Mode is TravelMode.Riding or TravelMode.Surfing ? game.flow.Player.Steed : null;
 
         public bool RidePokemon(string? species) => game.RideOn(species);
     }

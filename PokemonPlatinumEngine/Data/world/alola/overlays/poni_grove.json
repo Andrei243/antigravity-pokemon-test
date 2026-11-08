@@ -1,0 +1,44 @@
+{
+  // Poni Grove (plan 23, the wave after Ultra Space): drawn by hand (tools/MapDraw/alola/poni_grove.txt), our words.
+  // A wood of broad trees east of Poni Wilds, open to Alola's Champion: a ranger keeps its one-tile way in until the Hall
+  // of Fame. Ultra Sun and Ultra Moon keep Stakataka and Blacephalon here, one to a version; ours has both, once the light
+  // is back in Ultra Megalopolis (rulings, "Poni's last places, Blush Mountain, Route 11 and the rides of the rough
+  // ground and the sea"). The grove's mossy stone is a Moss Rock, as Sun and Moon's is in the Lush Jungle
+  "area": "poni_grove",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "evolutionSites": [ "Moss Rock" ],
+  "people": {
+    "ranger": { "name": "Ranger", "npcType": "ranger_f", "script": "GroveRanger", "still": true, "hiddenBy": "AlolaHallOfFame" },
+    "stakataka": { "name": "Stakataka", "npcType": "Pokemon", "species": "Stakataka", "script": "Stakataka", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_STAKATAKA", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" },
+    "blacephalon": { "name": "Blacephalon", "npcType": "Pokemon", "species": "Blacephalon", "script": "Blacephalon", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_BLACEPHALON", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" },
+    "kalea": {
+      "name": "Kalea",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Kalea: I've walked this grove since before the Pokémon League was built. Let me see what a Champion is made of.",
+        "dialogueAfter": "Veteran Kalea: The islands chose well."
+      }
+    },
+    "kaleo": {
+      "name": "Kaleo",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kaleo: The trees here whisper at night. My Pokémon whisper back. Ready?",
+        "dialogueAfter": "Ace Trainer Kaleo: They've gone very quiet now."
+      }
+    },
+    "malia": {
+      "name": "Malia",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Malia: I raise my team in the shade of the grove. It keeps them calm and keen.",
+        "dialogueAfter": "Pokémon Breeder Malia: Calm, keen and beaten. Ah well."
+      }
+    }
+  },
+  "signs": {
+    "GroveSign": "Poni Grove\nWest: Poni Wilds\nNorth-east: Poni Plains"
+  }
+}

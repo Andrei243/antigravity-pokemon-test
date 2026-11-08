@@ -1,0 +1,158 @@
+{
+  "key": "blush_mountain",
+  "index": 507,
+  "name": "Blush Mountain",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "BLUSH_MOUNTAIN",
+  "nightMusic": "BLUSH_MOUNTAIN",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "pono",
+      "looks": "scientist",
+      "movement": "look_south",
+      "x": 124,
+      "z": 150,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "pekelo",
+      "looks": "hiker",
+      "movement": "look_east",
+      "x": 104,
+      "z": 192,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_PEKELO"
+    },
+    {
+      "id": "hoku",
+      "looks": "scientist",
+      "movement": "look_west",
+      "x": 137,
+      "z": 168,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SCIENTIST_HOKU"
+    },
+    {
+      "id": "kiele",
+      "looks": "ace_trainer_f",
+      "movement": "look_east",
+      "x": 114,
+      "z": 156,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_KIELE"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 97,
+      "z": 182,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_BLUSH_MAX_POTION",
+      "item": "Max Potion"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 142,
+      "z": 164,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_BLUSH_ULTRA_BALL",
+      "item": "Ultra Ball"
+    }
+  ],
+  "signs": [
+    {
+      "x": 123,
+      "z": 200,
+      "type": 0,
+      "script": "MountainSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Geodude",
+      "form": "Geodude-Alola",
+      "level": 24
+    },
+    {
+      "species": "Magnemite",
+      "level": 24
+    },
+    {
+      "species": "Mudbray",
+      "level": 24
+    },
+    {
+      "species": "Togedemaru",
+      "level": 25
+    },
+    {
+      "species": "Elekid",
+      "level": 24
+    },
+    {
+      "species": "Minior",
+      "level": 25
+    },
+    {
+      "species": "Klefki",
+      "level": 25
+    },
+    {
+      "species": "Clefairy",
+      "level": 25
+    },
+    {
+      "species": "Graveler",
+      "form": "Graveler-Alola",
+      "level": 26
+    },
+    {
+      "species": "Castform",
+      "level": 25
+    },
+    {
+      "species": "Electabuzz",
+      "level": 27
+    },
+    {
+      "species": "Skarmory",
+      "level": 26
+    }
+  ],
+  "landRate": 20
+}

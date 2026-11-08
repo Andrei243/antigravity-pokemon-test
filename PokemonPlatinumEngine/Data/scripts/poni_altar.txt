@@ -9,7 +9,8 @@
 # Megalopolis wait here once they have called at the player's house (VAR_ALOLA_ULTRA 1, FLAG_ALOLA_ULTRA_AT_ALTAR), and
 # open the Ultra Wormhole over the dais (VAR_ALOLA_ULTRA 2), read where it hangs (Wormhole): a world of each of the
 # seven Ultra Beasts, and Ultra Megalopolis once all seven have been met (VAR_ALOLA_ULTRA 3, counted as the player
-# comes back). After Necrozma (VAR_ALOLA_ULTRA 4) a Stakataka stands among the altar's stones until it is caught.
+# comes back). After Necrozma (VAR_ALOLA_ULTRA 4) the light draws a Stakataka and a Blacephalon to Poni Grove (poni_grove.txt).
+# And after the Hall of Fame the altar's keeper gives the Champion a Cosmog of the altar's own, once (Keeper).
 #   0  nothing yet
 #   1  the Lightseekers met at home, the Beast Balls and Poipole given (AlolaRoute1_PlayersHouse.txt)
 #   2  the Ultra Wormhole opened over the dais (this file)
@@ -158,23 +159,29 @@ script Oskin
   end
 
 
-# Drawn to the altar's stones as the light came back to Ultra Megalopolis: a wall of stones that is one creature
-script Stakataka
-  face self player
-  speaker none
-  scene "Stakataka"
+# The altar's keeper (the wave after Ultra Space; rulings, "Poni's last places..."): after the Hall of Fame, a Cosmog that
+# came down to the altar on its own, given to the Champion once, as Ultra Sun and Ultra Moon give one after the League.
+# Cosmoem evolves into Solgaleo by day and Lunala by night (species.json), which is how Alola meets Moon's legendary
+script Keeper
+  face keeper player
+  speaker "Altar Keeper"
+  if flag FLAG_ALOLA_COSMOG_GIVEN goto Given
+  say "I tend the altar for the people of Seafolk Village. The night after your victory, something came down onto the dais."
+  say "A little cloud with stars in it. It has been waiting there ever since, as if for someone. I think it was waiting for you."
+  scene "Cosmog"
   letterbox on 0.4
-  camera pan 16 30 1.0
-  camera zoom 1.4 0.8
-  shake self 3
-  cry "Stakataka"
-  text "One of the altar's walls shifted. Its stones were looking at {player}, every one of them."
+  camera pan 32 14 1.0
+  effect sparkles 32 14 wait
+  cry "Cosmog"
   camera release 0.4
   letterbox off 0.3
   endscene
-  wildbattle "Stakataka" 60
-  if result == 3 setflag FLAG_ALOLA_CAUGHT_STAKATAKA
-  hide self
+  givepokemon "Cosmog" 5
+  setflag FLAG_ALOLA_COSMOG_GIVEN
+  say "Look after it. They say it grows into the sun by day, or the moon by night, depending on when it is ready."
+  end
+label Given
+  say "The dais has been quiet since the little one left with you. I think it is glad."
   end
 
 

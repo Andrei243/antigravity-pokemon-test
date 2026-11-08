@@ -1,0 +1,17 @@
+# Poni Meadow, Poni Island (plan 23, the wave after Ultra Space). The lines are our own. The dancer explains the meadow's
+# purple nectar and hands one over, once (FLAG_ALOLA_PONI_MEADOW_NECTAR): an Oricorio that sips it takes the Sensu Style,
+# as Ula'ula Meadow's dancer gives the Red Nectar.
+
+
+script Dancer
+  face dancer player
+  speaker "Dancer"
+  if flag FLAG_ALOLA_PONI_MEADOW_NECTAR goto Done
+  say "The Oricorio of Poni dance a slow, graceful dance. They learn it from the purple flowers, and so did I!"
+  say "Take this nectar. Give it to an Oricorio from any other island and it will dance like a ghost on a summer night."
+  give "Purple Nectar"
+  setflag FLAG_ALOLA_PONI_MEADOW_NECTAR
+  end
+label Done
+  say "Four islands, four flowers, four dances. I have seen them all, and Poni's is the one that makes me cry."
+  end

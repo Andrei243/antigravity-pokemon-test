@@ -14,68 +14,21 @@ public class AlolaSpeciesTests
 {
     private const string Region = RegionDatabase.Alola;
 
-    private const string Wild = "plan 23: Sun and Moon's wild Pokémon still to place in Alola (the water, SOS allies, Island Scan, Poni's plains and coast)";
-    private const string Items = "plan 40 · GE3: Alola's evolution stones and items";
-    private const string Cord = "plan 40 · GE3: a Linking Cord in Alola";
-    private const string Sites = "plan 40 · GE3: Alola's places of evolution (a Moss Rock, an Ice Rock, a Magnetic Field)";
-    private const string Nebby = "plan 23: a Cosmog given after the League, as Ultra Sun and Ultra Moon give one (Z8 built Ultra Space and its beasts, not this)";
     private const string Mythicals = "plan 29 · LS11: Alola's mythicals, by events of ours";
-    private const string OtherVersion = "plan 23: Moon's legendary, in a place of its own (Alola meets Sun's Solgaleo)";
-    private const string Cells = "plan 23: Zygarde's cells and the Zygarde Cube";
-    private const string Amber = "plan 23: the Old Amber of Sun and Moon";
 
     /// <summary>What the Alola Pokédex has that nothing in Alola gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Evolved by a stone or an item no place of Alola gives yet
-        ["Raichu"] = Items, ["Chansey"] = Items, ["Blissey"] = Items, ["Magnezone"] = Items, ["Arcanine"] = Items, ["Crabominable"] = Items,
-        ["Jolteon"] = Items, ["Flareon"] = Items, ["Leafeon"] = Items, ["Glaceon"] = Items, ["Magmortar"] = Items, ["Probopass"] = Items,
-        ["Porygon2"] = Items, ["Porygon-Z"] = Items, ["Electivire"] = Items, ["Froslass"] = Items,
-        // Sun and Moon's wild Pokémon that the drawn tables (twelve to a place, five to its water) have no room for yet
-        ["Bonsly"] = Wild, ["Sudowoodo"] = Wild, ["Happiny"] = Wild, ["Munchlax"] = Wild, ["Snorlax"] = Wild, ["Makuhita"] = Wild,
-        ["Hariyama"] = Wild, ["Drifloon"] = Wild, ["Drifblim"] = Wild, ["Vullaby"] = Wild, ["Mandibuzz"] = Wild, ["Barboach"] = Wild,
-        ["Whiscash"] = Wild, ["Luvdisc"] = Wild, ["Corsola"] = Wild, ["Mareanie"] = Wild, ["Toxapex"] = Wild, ["Shellder"] = Wild,
-        ["Cloyster"] = Wild, ["Feebas"] = Wild, ["Milotic"] = Wild, ["Alomomola"] = Wild, ["Stufful"] = Wild, ["Bewear"] = Wild,
-        ["Oranguru"] = Wild, ["Goomy"] = Wild, ["Sliggoo"] = Wild, ["Goodra"] = Wild, ["Castform"] = Wild, ["Wimpod"] = Wild,
-        ["Golisopod"] = Wild, ["Phantump"] = Wild, ["Trevenant"] = Wild, ["Nosepass"] = Wild, ["Chinchou"] = Wild, ["Lanturn"] = Wild,
-        ["Ditto"] = Wild, ["Cleffa"] = Wild, ["Clefairy"] = Wild, ["Clefable"] = Wild, ["Minior"] = Wild, ["Beldum"] = Wild,
-        ["Metang"] = Wild, ["Metagross"] = Wild, ["Porygon"] = Wild, ["Turtonator"] = Wild, ["Elekid"] = Wild, ["Electabuzz"] = Wild,
-        ["Klefki"] = Wild, ["Drampa"] = Wild, ["Snorunt"] = Wild, ["Glalie"] = Wild, ["Vulpix"] = Wild, ["Ninetales"] = Wild,
-        ["Snubbull"] = Wild, ["Granbull"] = Wild, ["Relicanth"] = Wild, ["Dhelmise"] = Wild, ["Carvanha"] = Wild, ["Sharpedo"] = Wild,
-        ["Lapras"] = Wild, ["Emolga"] = Wild, ["Scyther"] = Wild, ["Riolu"] = Wild, ["Lucario"] = Wild, ["Dratini"] = Wild,
-        ["Dragonair"] = Wild, ["Dragonite"] = Wild,
-        // Evolved by trading, and Alola gives no Linking Cord
-        ["Slowking"] = Cord, ["Alakazam"] = Cord, ["Gengar"] = Cord, ["Machamp"] = Cord, ["Gigalith"] = Cord, ["Politoed"] = Cord,
-        ["Golem"] = Cord, ["Scizor"] = Cord,
-        // Zygarde's cells and cores, Sun and Moon's post-game hunt
-        ["Zygarde"] = Cells,
-        // The Old Amber, which Sun and Moon give and nothing here does yet
-        ["Aerodactyl"] = Amber,
-        // A Cosmog of the player's own after the League (the Ultra Beasts and Necrozma are plan 23 · Z8's, in Ultra Space)
-        ["Cosmog"] = Nebby, ["Cosmoem"] = Nebby,
-        // Moon's legendary (Alola meets Sun's Solgaleo)
-        ["Lunala"] = OtherVersion,
+        // (Sun and Moon's wild Pokémon, the stones and items, the Linking Cord, the places of evolution, Zygarde, a Cosmog of
+        // the player's own and Lunala by it were given by the wave after Ultra Space: Poni's last places, Route 11, Blush
+        // Mountain and Resolution Cave; rulings, "Poni's last places, Blush Mountain, Route 11 and the rides of the rough
+        // ground and the sea")
         // Given by events alone in Sun and Moon
         ["Magearna"] = Mythicals, ["Marshadow"] = Mythicals,
     };
 
     /// <summary>The items and places Alola's evolutions ask for that nothing in Alola gives, and who owes each.</summary>
-    public static readonly Dictionary<string, string> OwedNeeds = new()
-    {
-        ["Thunder Stone"] = Items,
-        ["Oval Stone"] = Items,
-        ["Fire Stone"] = Items,
-        ["Ice Stone"] = Items,
-        ["Upgrade"] = Items,
-        ["Dubious Disc"] = Items,
-        ["Electirizer"] = Items,
-        ["Dawn Stone"] = Items,
-        ["Leaf Stone"] = Items,
-        ["Linking Cord"] = Cord,
-        ["Magnetic Field"] = Sites,
-        ["Moss Rock"] = Sites,
-        ["Ice Rock"] = Sites,
-    };
+    public static readonly Dictionary<string, string> OwedNeeds = new();
 
     [Fact]
     public void EverySpeciesOfTheAlolaPokedexCanBeHadInAlolaButWhatIsOwed()

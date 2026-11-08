@@ -25,6 +25,8 @@ public partial class GameEngine
     {
         if (species == null)
         {
+            // (Sharpedo, under a surfer, goes home and leaves the player surfing: plan 23, Alola's water ride)
+            if (flow.Player.Mode == TravelMode.Surfing) return flow.Player.SetJet(null);
             if (!flow.Player.SetRiding(null)) return false;
             PlayFieldMusic();
             return true;
@@ -32,7 +34,9 @@ public partial class GameEngine
         string? area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key;
         bool lent = RidePager.LentHere(species, Here.Id, area);
         if (!lent && !MovementHere.Offers(RegionMode.Ride) || !RidePager.CanRide(species, flow.Story, Here, area) || flow.Map.IsIndoors) return false;
-        if (!flow.Player.SetRiding(RidePager.SpeciesOf(species))) return false;
+        // A ride over the water is called only under a surfer, a ride on land only off the water
+        if (RidePager.IsWaterRide(species) != (flow.Player.Mode == TravelMode.Surfing)) return false;
+        if (RidePager.IsWaterRide(species) ? !flow.Player.SetJet(RidePager.SpeciesOf(species)) : !flow.Player.SetRiding(RidePager.SpeciesOf(species))) return false;
         PlayFieldMusic();
         return true;
     }

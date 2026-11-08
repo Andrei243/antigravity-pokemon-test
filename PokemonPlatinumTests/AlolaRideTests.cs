@@ -58,8 +58,9 @@ public class AlolaRideTests
         // Tauros is registered, but Sinnoh offers no riding
         var sinnoh = Pager(0, region: RegionDatabase.Sinnoh);
         Assert.Contains("ride refused Tauros", sinnoh.Log);
-        // Cancel calls nothing
-        Assert.DoesNotContain(Pager(3).Log, l => l.StartsWith("ride"));
+        // Sharpedo comes only on the water (plan 23, the wave after Ultra Space), and Cancel calls nothing
+        Assert.Contains("ride refused Sharpedo", Pager(3).Log);
+        Assert.DoesNotContain(Pager(4).Log, l => l.StartsWith("ride"));
 
         Assert.True(RegionDatabase.Get(RegionDatabase.Alola)!.Movement.Offers(PokemonPlatinumEngine.Data.RegionMode.Ride));
         Assert.False(RegionDatabase.Get(RegionDatabase.Kalos)!.Movement.Offers(PokemonPlatinumEngine.Data.RegionMode.Ride));

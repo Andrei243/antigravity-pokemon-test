@@ -170,9 +170,9 @@ public class AlolaUltraSpaceTests
         Assert.True(game.Story.Has("FLAG_ALOLA_LIGHT_RETURNED"));
         Assert.True(game.Story.Has("FLAG_ALOLA_CAUGHT_NECROZMA"));
         Assert.Equal("alolaRoyalDome", Next());
-        // and the two the light drew
-        Assert.Contains(game.Run("ultra_megalopolis", "Blacephalon", "UltraMegalopolis", "blacephalon").Log, l => l.StartsWith("wildbattle Blacephalon 60"));
-        Assert.Contains(game.Run("poni_altar", "Stakataka", "PoniAltar", "stakataka").Log, l => l.StartsWith("wildbattle Stakataka 60"));
+        // and the two the light drew, to Poni Grove since the wave after Ultra Space (AlolaPoniTests)
+        Assert.Contains(game.Run("poni_grove", "Blacephalon", "Poni", "blacephalon").Log, l => l.StartsWith("wildbattle Blacephalon 60"));
+        Assert.Contains(game.Run("poni_grove", "Stakataka", "Poni", "stakataka").Log, l => l.StartsWith("wildbattle Stakataka 60"));
         Assert.True(game.Story.Has("FLAG_ALOLA_CAUGHT_BLACEPHALON") && game.Story.Has("FLAG_ALOLA_CAUGHT_STAKATAKA"));
     }
 

@@ -109,7 +109,11 @@
         { "file": "ulaula_route_15.txt", "x": 256, "z": 256 },
         { "file": "ulaula_meadow.txt", "x": 156, "z": 152 },
         { "file": "ulaula_route_17.txt", "x": 148, "z": 104 },
-        { "file": "haina_desert.txt", "x": 304, "z": 212 }
+        { "file": "haina_desert.txt", "x": 304, "z": 212 },
+        // Poni's last places' wave (plan 23): Route 11 from Route 10's east side to Route 12's south side, and Blush Mountain
+        // north of Route 12 behind the rough ground only Mudsdale crosses, the geothermal power plant at its top
+        { "file": "ulaula_route_11.txt", "x": 80, "z": 268 },
+        { "file": "blush_mountain.txt", "x": 92, "z": 136 }
       ],
       "areas": [
         { "key": "malie_city", "x": 24, "z": 320, "width": 72, "depth": 44 },
@@ -126,7 +130,9 @@
         { "key": "ulaula_route_15", "x": 256, "z": 256, "width": 80, "depth": 56 },
         { "key": "ulaula_meadow", "x": 156, "z": 152, "width": 60, "depth": 48 },
         { "key": "ulaula_route_17", "x": 148, "z": 104, "width": 52, "depth": 48 },
-        { "key": "haina_desert", "x": 304, "z": 212, "width": 72, "depth": 56 }
+        { "key": "haina_desert", "x": 304, "z": 212, "width": 72, "depth": 56 },
+        { "key": "ulaula_route_11", "x": 80, "z": 268, "width": 100, "depth": 48 },
+        { "key": "blush_mountain", "x": 92, "z": 136, "width": 56, "depth": 72 }
       ]
     },
     // Poni
@@ -136,13 +142,26 @@
         { "file": "seafolk_village.txt", "x": 24, "z": 232 },
         { "file": "poni_wilds.txt", "x": 24, "z": 152 },
         { "file": "poni_breakers.txt", "x": 24, "z": 72 },
-        { "file": "exeggutor_island.txt", "x": 200, "z": 56 }
+        { "file": "exeggutor_island.txt", "x": 200, "z": 56 },
+        // Poni's last places (plan 23, the wave after Ultra Space), after the League: east out of Poni Wilds into Poni Grove
+        // (Stakataka and Blacephalon), north-east to Poni Plains, up Poni Gauntlet to the Battle Tree's shut doors, south to
+        // Poni Meadow and Resolution Cave's mouth, and on to Poni Coast behind its rough ground and its islet's sea rock
+        { "file": "poni_grove.txt", "x": 124, "z": 160 },
+        { "file": "poni_plains.txt", "x": 200, "z": 124 },
+        { "file": "poni_gauntlet.txt", "x": 280, "z": 8 },
+        { "file": "poni_meadow.txt", "x": 232, "z": 196 },
+        { "file": "poni_coast.txt", "x": 124, "z": 248 }
       ],
       "areas": [
         { "key": "seafolk_village", "x": 24, "z": 232, "width": 72, "depth": 64 },
         { "key": "poni_wilds", "x": 24, "z": 152, "width": 100, "depth": 80 },
         { "key": "poni_breakers", "x": 24, "z": 72, "width": 176, "depth": 80 },
-        { "key": "exeggutor_island", "x": 200, "z": 56, "width": 80, "depth": 64 }
+        { "key": "exeggutor_island", "x": 200, "z": 56, "width": 80, "depth": 64 },
+        { "key": "poni_grove", "x": 124, "z": 160, "width": 76, "depth": 64 },
+        { "key": "poni_plains", "x": 200, "z": 124, "width": 96, "depth": 72 },
+        { "key": "poni_gauntlet", "x": 280, "z": 8, "width": 40, "depth": 116 },
+        { "key": "poni_meadow", "x": 232, "z": 196, "width": 64, "depth": 52 },
+        { "key": "poni_coast", "x": 124, "z": 248, "width": 172, "depth": 44 }
       ]
     },
     // AetherParadise
@@ -185,6 +204,9 @@
     { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] },
     // Seaward Cave, Melemele (the wave after the loose ends): from Melemele Meadow's south-west corner to Kala'e Bay, a
     // map of its own. Matrices 40 on, clear of the other islands' sessions
+    // Resolution Cave, Poni (the wave after Ultra Space): from Poni Meadow down to Zygarde's chamber. Matrix 70, clear of
+    // the islands', the caves' and Ultra Space's numbers
+    { "matrix": 70, "area": "resolution_cave", "width": 3, "height": 3, "cell": "8,22", "pieces": [ { "file": "resolution_cave.txt", "x": 4, "z": 4 } ] },
     { "matrix": 40, "area": "seaward_cave", "width": 2, "height": 2, "cell": "11,2", "pieces": [ { "file": "seaward_cave.txt", "x": 4, "z": 4 } ] },
     // Plan 23 · Z8: Ultra Space, after the Hall of Fame. Seven worlds of the Ultra Beasts and Ultra Megalopolis, each a
     // map of its own, reached through the Ultra Wormhole that opens over the Altar's dais; none of them lies on the

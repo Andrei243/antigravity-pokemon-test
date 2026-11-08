@@ -1,0 +1,40 @@
+{
+  // Poni Coast (plan 23, the wave after Ultra Space): drawn by hand, our words. Poni's south shore below the meadow; its
+  // west half lies behind rough ground only Mudsdale crosses and over cliffs from the sea, and an islet out at sea is shut
+  // by a rock only Sharpedo rams (common.SeaRock). A fisherman hands over a Super Rod, once
+  "area": "poni_coast",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "fisher": { "name": "Fisherman", "npcType": "fisherman", "script": "Fisher", "still": true },
+    "sea_rock": { "name": "Rock", "script": "SeaRock" },
+    "kawika": {
+      "name": "Kawika",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Kawika: The deep water off Poni hides the strangest fish. I've hooked a few. Have a look!",
+        "dialogueAfter": "Fisherman Kawika: That one got away from me too."
+      }
+    },
+    "kai": {
+      "name": "Kai",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kai: The currents round Poni are fierce. Only the strong swim here. Like me!",
+        "dialogueAfter": "Swimmer Kai: Like you, more like."
+      }
+    },
+    "leia": {
+      "name": "Leia",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Leia: You rode a Mudsdale over that rubble just to battle me? I'm flattered. And ready!",
+        "dialogueAfter": "Ace Trainer Leia: Worth the ride, I hope."
+      }
+    }
+  },
+  "signs": {
+    "CoastSign": "Poni Coast\nNorth: Poni Meadow"
+  }
+}

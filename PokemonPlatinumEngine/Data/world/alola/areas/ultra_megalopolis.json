@@ -48,17 +48,6 @@
   ],
   "objects": [
     {
-      "id": "blacephalon",
-      "looks": "blacephalon",
-      "movement": "look_south",
-      "x": 20,
-      "z": 40,
-      "facing": 1,
-      "rangeX": 0,
-      "rangeZ": 0,
-      "script": ""
-    },
-    {
       "id": "resident_1",
       "looks": "gentleman",
       "movement": "look_south",

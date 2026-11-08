@@ -1,0 +1,11 @@
+# Blush Mountain, Ula'ula Island (plan 23, the wave after Ultra Space). The lines are our own. A worker of the geothermal
+# power plant at the top tells of it; the plant's doors stay shut (docs/mechanics/rulings.md, "Poni's last places...").
+
+
+script PlantWorker
+  face pono player
+  speaker "Plant Worker"
+  say "Hot water from deep under the mountain turns the turbines inside. Half of Ula'ula's lights run on Blush Mountain!"
+  say "It pulls on the ground something fierce, too. Magnets go funny up here, and so do some Pokémon, they tell me."
+  say "The plant's closed to visitors, I'm afraid. Safety rules. Enjoy the view instead!"
+  end

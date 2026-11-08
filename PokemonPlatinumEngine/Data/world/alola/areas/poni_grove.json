@@ -1,0 +1,178 @@
+{
+  "key": "poni_grove",
+  "index": 500,
+  "name": "Poni Grove",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_GROVE",
+  "nightMusic": "PONI_GROVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "ranger",
+      "looks": "ranger_f",
+      "movement": "look_west",
+      "x": 124,
+      "z": 190,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "stakataka",
+      "looks": "stakataka",
+      "movement": "look_south",
+      "x": 182,
+      "z": 206,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "blacephalon",
+      "looks": "blacephalon",
+      "movement": "look_south",
+      "x": 145,
+      "z": 213,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "kalea",
+      "looks": "veteran",
+      "movement": "look_west",
+      "x": 150,
+      "z": 189,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_VETERAN_KALEA"
+    },
+    {
+      "id": "kaleo",
+      "looks": "ace_trainer_m",
+      "movement": "look_south",
+      "x": 161,
+      "z": 182,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_KALEO"
+    },
+    {
+      "id": "malia",
+      "looks": "pokemon_breeder_f",
+      "movement": "look_west",
+      "x": 176,
+      "z": 172,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_POKEMON_BREEDER_MALIA"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 130,
+      "z": 166,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_GROVE_DAWN_STONE",
+      "item": "Dawn Stone"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 194,
+      "z": 214,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_GROVE_LEAF_STONE",
+      "item": "Leaf Stone"
+    }
+  ],
+  "signs": [
+    {
+      "x": 128,
+      "z": 187,
+      "type": 0,
+      "script": "GroveSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Snubbull",
+      "level": 52
+    },
+    {
+      "species": "Phantump",
+      "level": 52
+    },
+    {
+      "species": "Drifloon",
+      "level": 52
+    },
+    {
+      "species": "Emolga",
+      "level": 53
+    },
+    {
+      "species": "Scyther",
+      "level": 53
+    },
+    {
+      "species": "Klefki",
+      "level": 53
+    },
+    {
+      "species": "Granbull",
+      "level": 54
+    },
+    {
+      "species": "Trevenant",
+      "level": 54
+    },
+    {
+      "species": "Drifblim",
+      "level": 54
+    },
+    {
+      "species": "Oranguru",
+      "level": 54
+    },
+    {
+      "species": "Riolu",
+      "level": 52
+    },
+    {
+      "species": "Lucario",
+      "level": 55
+    }
+  ],
+  "landRate": 20
+}

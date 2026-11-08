@@ -1,0 +1,55 @@
+# Poni Grove, Poni Island (plan 23, the wave after Ultra Space). The lines are our own, on Ultra Sun and Ultra Moon's beats
+# as they are publicly described (docs/mechanics/rulings.md, "Poni's last places, Blush Mountain, Route 11 and the rides of
+# the rough ground and the sea"). A ranger keeps the grove's one-tile way in from Poni Wilds until Alola has its Champion
+# (hidden by AlolaHallOfFame). Once the light is back in Ultra Megalopolis (FLAG_ALOLA_LIGHT_RETURNED, MegaloTower.txt) a
+# Stakataka stands in the ring of stones of the grove's east clearing and a Blacephalon among the flowers of its south-west,
+# each met after a staged beat at 60 and back each time the grove is come to until it is caught. Ultra Sun and Ultra Moon
+# keep one to a version here; ours has both.
+
+
+script GroveRanger
+  face ranger player
+  speaker "Ranger"
+  say "Sorry, the grove is closed. Something strange has been seen among the trees, and the rangers are keeping watch."
+  say "Only the island's Champion may go in. That's the rule the kahunas made, and I'm sticking to it!"
+  end
+
+
+# A wall of stones in the ring of the east clearing, that is one creature
+script Stakataka
+  face self player
+  speaker none
+  scene "Stakataka"
+  letterbox on 0.4
+  camera pan 182 206 1.0
+  camera zoom 1.4 0.8
+  shake self 3
+  cry "Stakataka"
+  text "One of the stones of the ring shifted. Its bricks were looking at {player}, every one of them."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Stakataka" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_STAKATAKA
+  hide self
+  end
+
+
+# A showman of Ultra Space among the flowers, its head a fuse
+script Blacephalon
+  face self player
+  speaker none
+  scene "Blacephalon"
+  letterbox on 0.4
+  camera pan 145 213 1.0
+  camera zoom 1.4 0.8
+  effect burst 145 213 wait
+  cry "Blacephalon"
+  text "Something like a clown made of fireworks juggled its own head among the flowers, and bowed to {player}."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Blacephalon" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_BLACEPHALON
+  hide self
+  end

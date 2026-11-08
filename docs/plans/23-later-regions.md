@@ -358,7 +358,26 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   back again, the dome's door, its show and its ranks, a Master Rank Royal fought to a placing by the core, the title
   defended against each of the three). Shots: the harness's `ultraspace` mode (`wa50` to `wa57`). **Left**: the Ultra
   Warp Ride and its other regions' legendaries, Lunala and the N-Solarizer and N-Lunarizer, the Battle Tree, the link
-  to Galar (`Transport.Undecided`; plan 33's engine), Poni's plains and grove.
+  to Galar (`Transport.Undecided`; plan 33's engine), Poni's plains and grove (the wave after Ultra Space's).
+
+### Poni's last places, Blush Mountain and Route 11 (the wave after Ultra Space)
+- **Built** (2026-11-08; rulings, "Poni's last places, Blush Mountain, Route 11 and the rides of the rough ground and the
+  sea"; facts from public descriptions, never the games' pictures or words): on Poni (matrix 11), after the League, **Poni
+  Grove** (its way in kept by a ranger until the Hall of Fame; Stakataka and Blacephalon moved here from Z8's Altar and
+  Ultra Megalopolis), **Poni Plains**, **Poni Gauntlet** up to the **Battle Tree**'s shut doors, **Poni Meadow** (the
+  Sensu Oricorio and their nectar) and **Poni Coast** (the Super Rod's fisherman, an islet behind a rock in the sea); **Resolution
+  Cave** (matrix 70) with Zygarde at 60 at its bottom; on Ula'ula, **Route 11** (Route 10 to Route 12) and **Blush
+  Mountain** north of Route 12. **Rough ground** (`TileBehavior.RoughGround`, 0xBE; `x` in a drawing) crossed only on
+  Mudsdale's back (`Walker.Steed`), across Blush Mountain's foot, the Gauntlet and the coast; **Sharpedo** on the water
+  (`RidePager.WaterRides`, Grimsley on Route 15, `Player.SetJet`, `Pace.Fastest`) ramming the rocks of the sea
+  (`common.SeaRock`). The Elite Four's rematch teams on every climb after the Hall of Fame (`alola_<who>_rematch`); the
+  Altar keeper's Cosmog after the League (Cosmoem by night is Lunala). Wild tables for the eight places (and Mount
+  Lanakila's three rarest slots), the owed items and the three places of evolution: `AlolaSpeciesTests` owes Magearna and
+  Marshadow alone, and its `OwedNeeds` nothing. Ula'ula Meadow's `"form": "Oricorio"` removed (the Baile Style is the
+  species' own). Area files 500 to 507, 24 trainers of ours and four rematch teams. Tests: `AlolaPoniTests`. Shots owed
+  (one harness at a time; none taken this session). **Left**: the Battle Tree, the Zygarde Cube and cells, the power plant's
+  inside, Sharpedo's currents, Stoutland's buried items, the Secluded Shore, Big Wave Beach, Hau'oli Cemetery, Island Scan,
+  the mythicals and the new places' own songs.
 
 ### Galar and Paldea
 

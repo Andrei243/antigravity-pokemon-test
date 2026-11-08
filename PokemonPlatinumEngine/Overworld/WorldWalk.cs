@@ -234,6 +234,15 @@ internal static class WorldWalk
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // A drift of snow is crossed on the Mamoswine its road lends at each end and in each clearing (plan 23, Kalos's
                 // Mamoswine ride; KalosWaterAndRideTests rides it): here every drift counts as ridden through
+                // and rough ground on Mudsdale's back, which the Ride Pager has registered by then (plan 23, Alola's rough
+                // ground; AlolaPoniTests ride it)
+                else if (step.Obstacle == Obstacle.Rough && mode == TravelMode.OnFoot
+                         && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // A rock in the sea is rammed apart by Sharpedo's Jet (plan 23, Alola's water ride), as a thing on land is cleared
+                else if (step.Obstacle == Obstacle.Person && mode == TravelMode.Surfing && map.GetNpcAt(nx, ny) is { IsThing: true }
+                         && !map.IsSolid(nx, ny) && TileBehaviors.IsSurfable(map.BehaviourAt(nx, ny)))
+                    Visit(map, nx, ny, TravelMode.Surfing, height, arrived: false);
                 else if (step.Obstacle == Obstacle.Drift && mode == TravelMode.OnFoot
                          && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);

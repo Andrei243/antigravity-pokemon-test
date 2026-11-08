@@ -29,15 +29,6 @@
     }
   ],
   "people": {
-    "blacephalon": {
-      "name": "Blacephalon",
-      "npcType": "Pokemon",
-      "species": "Blacephalon",
-      "script": "Blacephalon",
-      "still": true,
-      "hiddenBy": "FLAG_ALOLA_CAUGHT_BLACEPHALON",
-      "shownBy": "FLAG_ALOLA_LIGHT_RETURNED"
-    },
     "resident_1": {
       "name": "Old Man",
       "npcType": "gentleman",
