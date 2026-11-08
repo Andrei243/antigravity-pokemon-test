@@ -1397,22 +1397,57 @@ Plan 06 · R22's and R23's events (`Dynamaxed`, `DynamaxEnded`, `MaxMoveUsed` on
 | Bloom | threshold 0.86, strength 0.28 |
 | Grade | saturation 1.05, contrast 1.05, shadows × (0.94, 0.97, 1.06), highlights × (1.04, 1.01, 0.95), vignette 0.10 |
 
-## Open world (plan 32 · OW0's prototype, provisional)
+## Open world (plan 32)
 
-What the gate's prototype draws (the harness's `openproto` mode, nothing of it in the game), written down so the user judges named numbers. Plan 32 · OW8 writes this section properly before the open world's renderer is the game's; until the gate is passed every row here is a proposal.
+What the open world's renderer draws (plan 32 · OW8, `Graphics/OpenWorld/`): the ground, the water, the sky, the light, the weather in the air, the camera and the shadows of an open map (Galar's and Paldea's outdoors and continuous caves). Its trees, grass, buildings, people but the player, Pokémon and the rings past 300 m are OW9's, below them in this section when they come. The gate's prototype (the harness's `openproto`, nothing of it in the game) keeps its own path and OW0's numbers, which the user passed on 2026-11-07 and which these grow from ("The prototype", at the end).
 
 | Setting | Value |
 |---|---|
-| Units | one world unit is a metre (the grid's is a tile); +z is south, as the field's |
-| Scene | 1920×1080 in every preset's scene target (a step of half of High's 4K, two thirds of Medium's), the interface at 4K over it |
-| Camera | orbit behind the player: 5.5 m back, pitched 16° down at a point 1.35 m over the feet, vertical lens 50°; held off rock by its arm (a ray from the point back to the camera, stopped 0.3 m short of what it meets, never under 0.6 m); no straightening of upright things |
-| Ground | per-vertex cover in the field's own colours (lawn `104,190,98`, patches `120,200,102`, slopes over 25° `80,162,88`, path `222,204,160`, rock `150,140,128` and `112,104,98` under 63°, a cave's floor `128,108,88`, highland over 20 m `136,168,112`), under a grey grain of 32 texels repeating every 2 m (16 texels a metre), box-mapped by each face's axis, whole texels near (nearest) and blended between mip levels far |
-| Cover rules | a face steeper than 40° is rock; under the land's own surface by more than 0.8 m (a tunnel, a cavern, a cutting) rock, with walkable floor as a cave's floor; on a road path; over 20 m highland; lawn patches are blobs of a value noise 7 m across over 0.66 |
-| Levels | 0.5 m cells within 70 m of the camera, 2 m to 230 m, 4 m beyond; each chunk carries an apron a cell wide on its west and north, so two levels overlap where they meet instead of leaving the half cells each stops short of its border |
-| Trees | the battle's soft trees (`TreeModels`, `soft`), 1.35 to 1.8 times their size; meshes within 120 m of the camera, beyond that impostors: each kind rendered once from eight sides at 128×160, the side nearest the camera drawn as a card standing on the tree's foot, lit as the ground is |
-| Light | the battle's rig of the hour (`ArtLook.BattleRig`) with its fog drawn out to the horizon: from 110 m to 760 m, 78 % at the far edge; one shadow map 70 m across round the player |
-| People | plan 30 · FM0's grown stand-in (the chibi rig's skin stretched): the player 1.6 m, a person 1.65 m, live rigs with their faces and shells |
-| Pokémon | the battle model at its species' height in metres |
+| Units | one world unit is a metre (the grid's is a tile); x east, y up, +z south, as the field's |
+| Scene | 1920×1080 on every preset: a step of half of High's 4K target, two thirds of Medium's, the whole of Low's (`OpenRenderer.Step`); dynamic resolution (plan 16 · T23) steps under it, never over it; the interface at 4K over it, as everywhere |
+| Camera | orbit behind the player (`OpenWorld/OrbitCamera.cs`): 5.5 m back, pitched 16° down at a point 1.35 m over the feet, vertical lens 50°, near plane 0.3 m and far 1,400 m; no straightening of upright things |
+| The camera's arm | a ray from the point back to the camera against the collision mesh, stopped 0.3 m short of what it meets and never under 0.6 m: held in at once, let out again at 3 m a second, so walking out of a tunnel the camera swings back out instead of jumping |
+| Turning | the shoulders (Q and E, the pad's L and R) turn it 100° a second; it eases behind a walking player (half the way in 0.9 s), once two seconds have passed since it was last turned by hand, and never while the player walks toward it (within 45° of straight on) |
+| A script's look | `camera look <marker>`: over the line's seconds (smoothstep) the point the camera looks at goes from over the player to 1 m over the marker and the camera goes round behind the player, away from it; it holds there while the script runs, and comes home over 0.8 s once the script has ended |
+| Ground | each texel of 16 a metre takes one cover (below) and its tile's colour there: the cover of the triangle's corner whose weight is greatest, where the weights are the corners' barycentric weights at the texel's middle (corners of one cover summed first) jittered by ±0.28 per texel, so the border between two covers is a ragged pixel edge two or three texels wide and never a blend; whole texels near (nearest), blended between mip levels far |
+| Projection | a texel's tile is laid by the face's own axis (top, east-west or north-south), chosen per 1/16 m cube by the normal's weights to the fourth power with a jitter of its own: no tile is stretched down a cliff, a cave's wall or its roof, and where two projections meet they are dithered, never blended |
+| Light on the ground | the battle scenery's (`worldRamp` 0.85: a soft two-tone band), its sky and ground ambient by the normal, the sun with the three cascades' shadows and the cloud shade, fog by distance |
+| Levels | the block of three chunks by three round the player's at level 0 (0.5 m), then level 1 (level 0 thinned to 6 cm) to 300 m, and level 2 (30 cm) beyond; the player's chunk moves on only 4 m past its border, so walking along a border doesn't swap levels back and forth. A chunk is drawn at the level it has until the one wanted is loaded (never a hole); uploads take at most 2.5 ms a frame but where a chunk the camera sees has nothing yet. Level 0's apron is drawn with it; its skirts are drawn and cast nothing |
+| Beyond the region | until OW9's rings to the horizon, the ground past the region's last chunks is a plain of its base height in the grass's tile (`OpenRenderer.Horizon`), 2 km out, ending in the fog: the land never ends against the sky |
+
+The covers' tiles: 32 texels square, repeating every 2 m (`OpenCoverArt`), each a flat base with clean-edged patches one step lighter and placed marks of two texels or more, as the field's grounds are ("Ground"). The base colours are the gate's, which the user passed.
+
+| Cover | Base / patches | Marks |
+|---|---|---|
+| Grass | `104,190,98` / `120,200,102` | tufts `70,150,82` with a tip `160,222,122`, a "v" of three blades, two to a tile's quarter |
+| Grass, light | `120,200,102` / `132,208,110` | tufts `88,168,90`, tip `170,228,130` |
+| Grass, deep (slopes over 25°) | `80,162,88` / `92,174,94` | tufts `58,126,82`, tip `132,204,112` |
+| Path | `222,204,160` / `232,218,180` | pebbles: 2×2 `168,160,150` with a light texel `208,202,192` and a shadow `200,178,128` under them |
+| Rock | `150,140,128` / `164,154,142` | strata: bent lines `112,104,98` five to nine texels long, each with a light chip `196,188,176` over it |
+| Rock, dark (over 63°) | `112,104,98` / `124,116,108` | strata `84,78,76`, chips `150,140,128` |
+| Cave floor | `128,108,88` / `140,120,98` | cracks `96,80,66`, pebbles `164,150,132` |
+| Highland (over 20 m) | `136,168,112` / `148,178,122` | tufts `104,138,86`, tip `178,204,148` |
+| Sand | `238,224,172` / `246,236,196` | ripple arcs `214,196,140` |
+| Snow | `186,204,232` / `196,212,238` | drift lines `168,188,224`, three texels long |
+| Mud | `124,106,86` / `140,122,98` | wet patches `98,112,108`, five texels wide with a light texel |
+
+**Water** (`OpenWaterMesh`, the water program of `OpenShaders`): the field water's look at 16 texels a metre, banded by the depth over the ground under it where the field's bands go by the distance from the shore. Shallow `116,184,232` under 0.3 m, mid `76,146,214` under 1.0 m, deep `58,118,190` beyond, the band edges breathing by a texel; foam `236,246,255` where it is shallower than 6 cm, lapping in and out, and a broken line `176,218,248` round 0.15 m; wave marks (light dashes `150,206,246` 4 to 8 texels long over a dark line `46,104,186`, drifting east two texels a second) never where it is shallower than 0.5 m; sparkles in sunlight. Each texel takes the depth at its middle, so the bands are whole texels. The surface over each 2 m cell is the bake's, its corners shared with the cells beside it (a river's slope has no steps); level 0's water is laid at 0.5 m with its depth read from level 0's ground, the far levels' at 2 m from their own; a cell beside the water is laid too, and what is dry of it is never drawn, so the shore is where the ground meets the water. After dark the water is drawn darker and greyer, as the field's is. **Reflection**: on High and Medium, what stands over the water (the ground and the player) is mirrored about the water's height nearest the middle of the picture into the 1920×1080 mirror (plan 09 · L10), read once per texel in the mid and deep bands only, broken into runs and darkened toward its band as the field's; water more than 0.25 m off that height shows its bands alone. Low mirrors nothing.
+
+**The sky** (`OpenSky`): the battle's sky of the hour (`ArtLook.BattleRig`'s zenith, middle and horizon) by the angle over the horizon, a full-screen pass that follows the camera's pitch: the horizon's colour at the horizon, the middle by 10°, the zenith from 50° up; under the horizon the horizon's colour, which is the fog's. Clouds are a layer 600 m up: value noise of three octaves, soft-edged (from 0.52 to 0.70 of it), lit in the rig's cloud tint and shaded 22 % toward the sky's middle underneath, drifting east at 4 m a second and thinning to nothing within 4° of the horizon. After dark, stars: one cell in 140 of a grid of 0.5° holds one, a single texel of the 1080p scene, twinkling. Under the weather the sky is drawn toward the weather's grey, as a battle's is (`ArtLook.InBattleWeather`).
+
+**The light** (`OpenLook`): the battle's rig of the hour (`ArtLook.BattleRig`) with its fog drawn out to the horizon, from 110 m to 760 m and 78 % at the far edge, as the gate's; no tilt-shift and no wide blur (a camera low behind the player is no diorama), the battle's outlines, occlusion, bloom and grade. **Weather** is the field's (`ArtLook.Weathered`: the sun lost, half of it scattered from the whole sky, the fog thicker and, in fog, a sandstorm or a blizzard, near), with the sky toward its grey as above.
+
+**Under rock** (`OpenWorld/OpenUnderRock.cs`): where a ray straight up from the camera meets the land within 30 m, the cave's rig (`ArtLook.CaveRig`: a warm key, cool blue shade, a dark haze from 18 m to 75 m, a strong vignette) eases in over 0.8 s, and out again as fast. Under it the key is no sun and takes no shadow, and a warm light `1.0,0.78,0.50` at 0.9 hangs half a metre over the player's head, lighting the rock round them and falling to nothing at 14 m (its square), so a tunnel and a cavern read as rock lit round whoever stands in them and darkening into haze, never as grey.
+
+**Weather in the air** (`OpenWeatherFx`): pieces in a box round the camera, 28 m across and 20 m tall, each moving in the world and coming round again on the box's far side, so nothing slides with the camera. Rain: 1,400 streaks 0.5 m long and 1.2 cm wide falling 9 m a second a little to the east, `196,214,236` at half strength (heavy rain and a storm 2,600); snow: 900 flakes 5 cm across falling 1.1 m a second with a sway of 0.3 m (heavy snow 1,800, a blizzard 2,400 at 4 m a second slanting hard); hail: 900 pellets 3 cm across at 12 m a second; a sandstorm: 1,600 streaks blown east at 8 m a second in `214,190,140`; ash: 500 flakes falling half a metre a second. Every piece is lit by the scene's light as it stands (so rain never glows at night), depth-tested and never writing depth; none under rock (the cave's share takes them away); a storm's lightning whitens the picture as the field's does (`WeatherFx.Lightning`).
+
+**Shadows** (`OpenCascades`): three maps from the sun, each fitted round its slice of the view (the sphere round the slice) and snapped to its own texels so edges stay still as the camera moves: the first, twice the preset's shadow map across (4,096 on High and Medium, 2,048 on Low), for the view to 18 m; the second, the preset's, to 60 m; the third to 220 m; past that nothing casts. The last 15 % of each slice blends into the next. The preset's taps (9, 4, 1). The ground (at the level it is drawn at) and the player cast; level 0's skirts don't. The player is lit by the first.
+
+**The player** is plan 30 · FM4's grown kit (`PLAYER~Teen`), drawn at the capsule's feet between the field's last two ticks (`OpenClock.Between`), facing its yaw, walking and running by its speed.
+
+#### The prototype (OW0)
+
+What `openproto` draws, as the gate's look was judged: the same units, scene, camera and fog; per-vertex cover in the table's base colours under one grey grain, box-mapped by each face's axis; levels by the camera's distance (0.5 m cells to 70 m, 2 m to 230 m, 4 m beyond, a chunk with a carve kept fine to 260 m); the battle's soft trees as meshes within 120 m and as impostors of eight views beyond; one shadow map 70 m across round the player; the battle's tilt-shift; plan 30 · FM0's grown stand-in for the player (1.6 m) and a person (1.65 m); a Pokémon as its battle model at its species' height in metres.
 
 ## Time of day
 

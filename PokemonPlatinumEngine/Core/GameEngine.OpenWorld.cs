@@ -50,6 +50,8 @@ public partial class GameEngine
         // What the player is put down in is no crossing (plan 32 · OW5)
         openCrossings.Settle(map, pos);
         openWalk = null;
+        // The orbit camera begun behind them (plan 32 · OW8)
+        BeginTheOpenCamera(yaw);
     }
 
     /// <summary>
@@ -88,6 +90,7 @@ public partial class GameEngine
             flow.Open = new OpenField(map, place.Pos, place.Yaw);
             openCrossings.Settle(map, place.Pos);
             openWalk = null;
+            BeginTheOpenCamera(place.Yaw);
         }
         else Log.Warn($"The save stood in the open map {place.Map}, which isn't there: it wakes on its grid place, {flow.Map.Name} {flow.Player.GridX},{flow.Player.GridY}.");
     }

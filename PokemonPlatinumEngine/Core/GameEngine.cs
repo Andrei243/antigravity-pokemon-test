@@ -1186,6 +1186,8 @@ public partial class GameEngine
             // The titans' clash turns its weather by the field's own clock (plan 21 · H8, part b)
             flow.Map.WeatherClock = world.Life.Now;
             world.RunCamera(dt);
+            // An open map's orbit camera, beside it (plan 32 · OW8): nothing while the player is on the grid
+            KeepTheOpenCamera(dt);
             // The set pieces playing are heard as they go, by the field's own clock (plan 09 · L12)
             RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
@@ -3122,9 +3124,8 @@ public partial class GameEngine
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
         {
-            // Whose mouth is open is read as the frame is drawn, after the box's voice has moved on (plan 26 · V6)
-            world.Talking = SpeakerNow();
-            world.Render(flow.Map, flow.Player);
+            // The grid's field, or an open map's (plan 32 · OW8)
+            RenderTheField();
         }
         else if (showBattle)
         {
@@ -3185,7 +3186,7 @@ public partial class GameEngine
                 break;
             case GameState.Overworld:
             case GameState.Dialogue:
-                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawTheField();
                 DrawPoisonFlash();
                 DrawTrap();
                 // A script's black screen covers the field and leaves the text over it
@@ -3241,7 +3242,7 @@ public partial class GameEngine
                 flow.TrainerCardScreen.Draw(VirtualWidth, VirtualHeight, TrainerCardNow());
                 break;
             case GameState.SaveMenu:
-                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawTheField();
                 flow.SaveScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Intro:
@@ -3339,16 +3340,16 @@ public partial class GameEngine
                 break;
             case GameState.Phrases:
                 // Over the field, which stays under it as under a question (plan 08 · P9)
-                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawTheField();
                 flow.PhraseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.RivalNaming:
                 // Over the field, as the phrase picker is
-                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawTheField();
                 flow.RivalNamingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Nickname:
-                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawTheField();
                 flow.NicknameScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
@@ -3428,7 +3429,7 @@ public partial class GameEngine
                 else if (showWorld)
                 {
                     // On water the field wavers under the way into a battle as it closes (plan 09 · L13)
-                    world.DrawToScreen(VirtualWidth, VirtualHeight, SceneTransition.Ripple(flow.Kind, flow.Closing, flow.Clock));
+                    DrawTheField(SceneTransition.Ripple(flow.Kind, flow.Closing, flow.Clock));
                     DrawScriptFade();
                     DrawLetterbox();
                 }
@@ -3453,7 +3454,7 @@ public partial class GameEngine
         // and a band is drawn with whose it is and the portraits rendered for it so far
         if (shown == GameState.Transition)
             SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, VirtualWidth, VirtualHeight,
-                flow.Closing && showWorld ? world.PlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
+                flow.Closing && showWorld ? FieldPlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
                 flow.Closing ? band.Picture : null);
 
         // A battle lost's question over the battle (plan 12 · Q25), and the close button's over all of it, sliding away once answered
@@ -3517,6 +3518,7 @@ public partial class GameEngine
     {
         if (IsHeadless) return;
         band.End();
+        openRenderer?.Unload();
         renderContext.Unload();
         RegionMapPictures.Unload();
         Gpu.Unload(virtualScreen);

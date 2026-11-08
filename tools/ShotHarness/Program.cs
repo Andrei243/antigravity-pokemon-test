@@ -217,6 +217,8 @@ if (mode == "freemove") h.FreeMoveMode();
 // Plan 30's free movement and grown kit (FM4's turntables first)
 if (mode == "freewalk") h.FreeWalkMode();
 if (mode == "openproto") h.OpenPrototypeMode();
+// Plan 32 · OW8: the open world's renderer I, the game's own, on the open test world
+if (mode == "open") h.OpenMode();
 if (mode == "beats") h.LegendBeatsMode();
 if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();

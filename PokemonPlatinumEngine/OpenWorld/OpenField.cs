@@ -27,13 +27,31 @@ public sealed class OpenPlayer
     /// <summary>The way the player faces, 0 to 65,535 (<see cref="OpenYaw"/>).</summary>
     public int Yaw => Body.Yaw;
 
-    public OpenPlayer(OpenPos pos, int yaw) => Body = new OpenBody(pos, yaw);
+    public OpenPlayer(OpenPos pos, int yaw)
+    {
+        Body = new OpenBody(pos, yaw);
+        Before = pos;
+    }
+
+    /// <summary>
+    /// Where the feet were at the tick before the last (plan 32 · OW8): what the renderer draws between, by the clock's
+    /// <see cref="OpenClock.Between"/>. Where the player was put down, until a tick has been run. Nothing of the rules reads it.
+    /// </summary>
+    public OpenPos Before { get; private set; }
 
     /// <summary>Puts the player down at a place, facing a way: the capsule begun afresh there, settled on the ground at its next tick.</summary>
-    public void Place(OpenPos pos, int yaw) => Body = new OpenBody(pos, yaw);
+    public void Place(OpenPos pos, int yaw)
+    {
+        Body = new OpenBody(pos, yaw);
+        Before = pos;
+    }
 
     /// <summary>A tick of the field: the capsule stepped on the map's ground by the stick.</summary>
-    public void Step(OpenMap map, OpenInput input, MovementGrants grants) => Body.Step(map.Ground, input, grants);
+    public void Step(OpenMap map, OpenInput input, MovementGrants grants)
+    {
+        Before = Body.Pos;
+        Body.Step(map.Ground, input, grants);
+    }
 }
 
 /// <summary>
