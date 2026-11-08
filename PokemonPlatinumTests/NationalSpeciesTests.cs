@@ -26,8 +26,7 @@ public class NationalSpeciesTests
     public static readonly Dictionary<string, string> Owed = new()
     {
         ["Drilbur"] = "plan 38 · EX11: Unova's dust clouds", ["Excadrill"] = "plan 38 · EX11: Unova's dust clouds",
-        ["Alomomola"] = "plan 38 · EX11: Unova's rippling water",
-        // (Plan 40 · GE3 gave Nacrene's fossils, Reshiram, Tornadus and Thundurus)
+        // (Plan 40 · GE3 gave Nacrene's fossils, Reshiram, Tornadus and Thundurus; Kalos's water, plan 23, Alomomola)
     };
 
     /// <summary>The plan that owes a species of a later generation its ways, by its National number.</summary>

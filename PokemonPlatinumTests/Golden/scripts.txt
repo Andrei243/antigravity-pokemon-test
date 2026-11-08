@@ -228,8 +228,18 @@ way 0
 way 1, from answer 1
   Motel Clerk> Suit yourself. The beds will be here.
   ? A room for a nap is 500 dollars. Your Pokémon get a bed too. Would you like to rest? = No
+=== AmbretteTown_Aquarium.OldRod
+from Aquarium Keeper at 7,6 of AmbretteTown_Aquarium
+way -
+  Aquarium Keeper> Welcome to the Ambrette Aquarium! Every fish in these tide pools was caught off our own pier.
+  Aquarium Keeper> You look like someone who'd enjoy that. Here, take this rod. We keep a few for visitors.
+  > Lucas received the Old Rod!
+  > Lucas put it away in the Key Items pocket.
+  Aquarium Keeper> Face the water and use it from your bag. When the line twitches, reel it in!
+  * fanfare FanfareKeyItem
+  + FLAG_KALOS_RECEIVED_OLD_ROD
 === AnistarCity_Gym.GymGuide
-from Gym Guide at 9,15 of AnistarCity_Gym
+from Gym Guide at 8,15 of AnistarCity_Gym
 way -
   Gym Guide> Hello there, future Champion! Olympia's Psychic types fear bugs, ghosts and the dark. Choose well!
 === AnistarCity_Gym.Olympia
@@ -2702,6 +2712,16 @@ way -
   Boy> It's hard to win without one. Still, if you're set on it, I won't stop you.
   Boy> You could always practise at the counter on the right.
   + FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+=== CoumarineCity_EastHouse.GoodRod
+from Fisherman at 2,7 of CoumarineCity_EastHouse
+way -
+  Fisherman> I fish the harbour every morning before the flower sellers are up. The bigger ones won't look at an old rod.
+  Fisherman> You've got the look of an angler. Take my spare Good Rod and see what the deeper water holds.
+  > Lucas received the Good Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> Out by the coast you'll pull in things with claws. Mind your fingers!
+  * fanfare FanfareKeyItem
+  + FLAG_KALOS_RECEIVED_GOOD_ROD
 === CoumarineCity_Gym.GymGuide
 from Gym Guide at 9,15 of CoumarineCity_Gym
 way -
@@ -4182,7 +4202,7 @@ way 1, from answer 1
   Chef> Another time, then. The sauce only gets better.
   ? Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order? = No
 === LaverreCity_Gym.GymGuide
-from Gym Guide at 9,15 of LaverreCity_Gym
+from Gym Guide at 10,15 of LaverreCity_Gym
 way -
   Gym Guide> Hello there, future Champion! Valerie's Fairy types shrink from poison and steel. Choose well!
 === LaverreCity_Gym.Valerie
@@ -4360,6 +4380,79 @@ way 1, from answer 1
 from Gym Guide at 9,15 of LumioseCity_PrismTowerGym
 way -
   Gym Guide> Hello there, future Champion! Clemont's Electric types can't touch a Ground type. Dig in!
+=== LumioseCity_PrismTowerGym.Quiz1
+from Quiz Host at 5,14 of LumioseCity_PrismTowerGym
+way 0
+  Quiz Host> Welcome to the Prism Tower's quiz! Answer right and the gate opens. Answer wrong and, well, you'll see!
+  Quiz Host> Which type of move hits a Water-type Pokémon hard?
+  Quiz Host> Correct! A Water type shudders at a good jolt. Up you go!
+  > The electric gate crackled and switched off.
+  ? Which type of move hits a Water-type Pokémon hard? = Electric
+  + FLAG_KALOS_PRISM_GATE_1
+way 2, from answer 1
+  Quiz Host> Bzzzt! Water and electricity, remember? Never mind, the first gate opens for anyone who tries.
+  > The electric gate crackled and switched off.
+  ? Which type of move hits a Water-type Pokémon hard? = Rock
+  + FLAG_KALOS_PRISM_GATE_1
+way 1, from answer 1
+  Quiz Host> Bzzzt! Water and electricity, remember? Never mind, the first gate opens for anyone who tries.
+  > The electric gate crackled and switched off.
+  ? Which type of move hits a Water-type Pokémon hard? = Fire
+  + FLAG_KALOS_PRISM_GATE_1
+=== LumioseCity_PrismTowerGym.Quiz2
+from Quiz Host at 5,10 of LumioseCity_PrismTowerGym
+way 0.0
+  Quiz Host> Second question! Ready?
+  Quiz Host> Which of these Pokémon is an Electric type?
+  Quiz Host> Bzzzt! Wrong! Here comes your penalty!
+  > The electric gate crackled and switched off.
+  ? Which of these Pokémon is an Electric type? = Litleo
+  * battle kalos_schoolboy_hugo Won
+  + FLAG_KALOS_PRISM_GATE_2
+  + beaten kalos_schoolboy_hugo
+way 0.1, from answer 2
+  * battle kalos_schoolboy_hugo Lost
+way 2.0, from answer 1
+  Quiz Host> Bzzzt! Wrong! Here comes your penalty!
+  > The electric gate crackled and switched off.
+  ? Which of these Pokémon is an Electric type? = Skiddo
+  * battle kalos_schoolboy_hugo Won
+  + FLAG_KALOS_PRISM_GATE_2
+  + beaten kalos_schoolboy_hugo
+way 2.1, from answer 2
+  * battle kalos_schoolboy_hugo Lost
+way 1, from answer 1
+  Quiz Host> Correct! Helioptile soaks up the sun and turns it into electricity.
+  > The electric gate crackled and switched off.
+  ? Which of these Pokémon is an Electric type? = Helioptile
+  + FLAG_KALOS_PRISM_GATE_2
+=== LumioseCity_PrismTowerGym.Quiz3
+from Quiz Host at 5,7 of LumioseCity_PrismTowerGym
+way 0.0
+  Quiz Host> Last question! Clemont is waiting just beyond.
+  Quiz Host> With a Mega Stone held, what else does a Trainer need to Mega Evolve?
+  Quiz Host> Bzzzt! Wrong! One more battle, then!
+  > The electric gate crackled and switched off.
+  ? With a Mega Stone held, what else does a Trainer need to Mega Evolve? = A Poké Flute
+  * battle kalos_schoolgirl_adele Won
+  + FLAG_KALOS_PRISM_GATE_3
+  + beaten kalos_schoolgirl_adele
+way 0.1, from answer 2
+  * battle kalos_schoolgirl_adele Lost
+way 2, from answer 1
+  Quiz Host> Correct! A Key Stone, and a strong bond. Clemont's all yours!
+  > The electric gate crackled and switched off.
+  ? With a Mega Stone held, what else does a Trainer need to Mega Evolve? = A Key Stone
+  + FLAG_KALOS_PRISM_GATE_3
+way 1.0, from answer 1
+  Quiz Host> Bzzzt! Wrong! One more battle, then!
+  > The electric gate crackled and switched off.
+  ? With a Mega Stone held, what else does a Trainer need to Mega Evolve? = A Thunder Stone
+  * battle kalos_schoolgirl_adele Won
+  + FLAG_KALOS_PRISM_GATE_3
+  + beaten kalos_schoolgirl_adele
+way 1.1, from answer 2
+  * battle kalos_schoolgirl_adele Lost
 === LumioseCity_Station.Dexio
 from Dexio at 10,6 of LumioseCity_Station
 way -
@@ -6093,7 +6186,7 @@ way 0
 way 1, from answer 1
   * battle alola_manor_grunt_2 Lost
 === SnowbelleCity_Gym.GymGuide
-from Gym Guide at 9,15 of SnowbelleCity_Gym
+from Gym Guide at 10,15 of SnowbelleCity_Gym
 way -
   Gym Guide> Hello there, future Champion! Wulfric's Ice types crack under fire, fists, rock and steel. Choose well!
 === SnowbelleCity_Gym.Wulfric
@@ -15963,6 +16056,17 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== couriway_town.SuperRod
+from Fisherman at 640,364 of Kalos
+way -
+  Fisherman> Three rivers meet under the town and go over the falls together. The fishing's never dull.
+  Fisherman> But the big ones sit at the bottom of the pool under the falls. You need a proper rod for those.
+  Fisherman> I've worn out more rods than I can count. This one's still good, though. Take it.
+  > Lucas received the Super Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> That's a Super Rod. Whatever's down there, you'll meet it now.
+  * fanfare FanfareKeyItem
+  + FLAG_KALOS_RECEIVED_SUPER_ROD
 === cyllage_city.Neighbour
 from the trigger at 102,358 of Kalos
 way 0
@@ -20786,6 +20890,21 @@ way 1, from answer 1
 from {rival} at 360,272 of Kalos
 way -
   Barry> Watch your step. Half this trail is puddle.
+=== kalos_route_17.Mamoswine
+from Mamoswine at 532,204 of Kalos
+from Mamoswine at 546,204 of Kalos
+from Mamoswine at 568,209 of Kalos
+from Mamoswine at 594,209 of Kalos
+way 0
+  > A Mamoswine stands in the snow, a saddle on its broad back. It snorts, ready to plough through the drifts.
+  > Will you ride the Mamoswine?
+  > Lucas climbed onto the Mamoswine's back!
+  ? Will you ride the Mamoswine? = Yes
+  * cry Mamoswine
+  * ride Mamoswine
+way 1, from answer 1
+  > The Mamoswine went back to snuffling in the snow.
+  ? Will you ride the Mamoswine? = No
 === kalos_route_18.NotYet
 from the trigger at 632,239 of Kalos
 way -

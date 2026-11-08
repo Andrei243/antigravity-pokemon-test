@@ -18,6 +18,7 @@
     { "x": 605, "z": 120, "to": "kalos_victory_road", "toWarp": 0 }
   ],
   "objects": [
+    { "id": "sky_zoe", "looks": "pilot", "movement": "look_south", "x": 606, "z": 123, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_SKY_TRAINER_ZOE" },
     { "id": "guard", "looks": "gentleman", "movement": "look_south", "x": 606, "z": 121, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "rival", "looks": "Rival:SERENA:CALEM", "movement": "look_west", "x": 640, "z": 127, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_21", "script": "" },
     { "id": "veteran", "looks": "gentleman", "movement": "look_south", "x": 626, "z": 123, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_VETERAN_GERMAIN" }

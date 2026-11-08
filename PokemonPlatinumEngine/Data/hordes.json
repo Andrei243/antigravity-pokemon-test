@@ -22,5 +22,23 @@
     { "area": "route_115", "hordes": [ { "species": "Swablu", "minLevel": 20, "maxLevel": 22 }, { "species": "Taillow", "minLevel": 20, "maxLevel": 22 } ] },
     { "area": "route_118", "hordes": [ { "species": "Zigzagoon", "minLevel": 21, "maxLevel": 23 }, { "species": "Electrike", "minLevel": 21, "maxLevel": 23 } ] },
     { "area": "route_120", "hordes": [ { "species": "Poochyena", "minLevel": 22, "maxLevel": 24 }, { "species": "Oddish", "minLevel": 22, "maxLevel": 24 } ] }
+  ],
+  "Kalos": [
+    { "area": "kalos_route_4", "hordes": [ { "species": "Combee", "minLevel": 5, "maxLevel": 6 }, { "species": "Budew", "minLevel": 5, "maxLevel": 6 } ] },
+    { "area": "kalos_route_5", "hordes": [ { "species": "Gulpin", "minLevel": 7, "maxLevel": 8 }, { "species": "Bunnelby", "minLevel": 7, "maxLevel": 8 } ] },
+    { "area": "kalos_route_6", "hordes": [ { "species": "Oddish", "minLevel": 8, "maxLevel": 9 }, { "species": "Sentret", "minLevel": 8, "maxLevel": 9 } ] },
+    { "area": "kalos_route_7", "hordes": [ { "species": "Roselia", "minLevel": 7, "maxLevel": 7 }, { "species": "Hoppip", "minLevel": 7, "maxLevel": 7 } ] },
+    { "area": "kalos_route_8", "hordes": [ { "species": "Taillow", "minLevel": 7, "maxLevel": 7 }, { "species": "Wingull", "minLevel": 7, "maxLevel": 7 } ] },
+    { "area": "kalos_route_10", "hordes": [ { "species": "Houndour", "minLevel": 14, "maxLevel": 15 }, { "species": "Electrike", "minLevel": 14, "maxLevel": 15 } ] },
+    { "area": "kalos_route_11", "hordes": [ { "species": "Stunky", "minLevel": 16, "maxLevel": 17 }, { "species": "Makuhita", "minLevel": 16, "maxLevel": 17 } ] },
+    { "area": "kalos_route_12", "hordes": [ { "species": "Ledyba", "minLevel": 17, "maxLevel": 18 }, { "species": "Flabébé", "minLevel": 17, "maxLevel": 18 } ] },
+    { "area": "kalos_route_13", "hordes": [ { "species": "Trapinch", "minLevel": 22, "maxLevel": 24 }, { "species": "Sandile", "minLevel": 22, "maxLevel": 24 } ] },
+    { "area": "kalos_route_14", "hordes": [ { "species": "Ekans", "minLevel": 26, "maxLevel": 28 }, { "species": "Bellsprout", "minLevel": 26, "maxLevel": 28 } ] },
+    { "area": "kalos_route_15", "hordes": [ { "species": "Klefki", "minLevel": 19, "maxLevel": 19 }, { "species": "Murkrow", "minLevel": 18, "maxLevel": 18 }, { "species": "Foongus", "minLevel": 18, "maxLevel": 18 } ] },
+    { "area": "kalos_route_16", "hordes": [ { "species": "Bunnelby", "minLevel": 28, "maxLevel": 30 }, { "species": "Litleo", "minLevel": 28, "maxLevel": 30 } ] },
+    { "area": "kalos_route_17", "hordes": [ { "species": "Snover", "minLevel": 32, "maxLevel": 34 }, { "species": "Cubchoo", "minLevel": 32, "maxLevel": 34 } ] },
+    { "area": "kalos_route_18", "hordes": [ { "species": "Aron", "minLevel": 36, "maxLevel": 38 }, { "species": "Durant", "minLevel": 36, "maxLevel": 38 } ] },
+    { "area": "kalos_route_19", "hordes": [ { "species": "Bellsprout", "minLevel": 38, "maxLevel": 40 }, { "species": "Poliwag", "minLevel": 38, "maxLevel": 40 } ] },
+    { "area": "kalos_route_20", "hordes": [ { "species": "Pumpkaboo", "minLevel": 40, "maxLevel": 42 }, { "species": "Phantump", "minLevel": 40, "maxLevel": 42 } ] }
   ]
 }

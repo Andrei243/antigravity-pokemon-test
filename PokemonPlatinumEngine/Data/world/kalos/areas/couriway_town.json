@@ -24,5 +24,34 @@
   "signs": [
     { "x": 630, "z": 361, "type": 0, "script": "TownSign" }
   ],
-  "triggers": []
+  "triggers": [],
+  "water": [
+    { "species": "Lombre", "level": 36, "maxLevel": 38 },
+    { "species": "Lombre", "level": 36, "maxLevel": 38 },
+    { "species": "Floatzel", "level": 36, "maxLevel": 38 },
+    { "species": "Floatzel", "level": 36, "maxLevel": 38 },
+    { "species": "Floatzel", "level": 37, "maxLevel": 38 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 15 },
+    { "species": "Poliwag", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Basculin", "level": 35 }
+  ],
+  "superRodRate": 75
 }

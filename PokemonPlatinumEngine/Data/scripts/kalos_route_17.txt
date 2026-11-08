@@ -1,0 +1,31 @@
+# Route 17, the Mamoswine Road (plan 23, Kalos's Mamoswine ride; docs/mechanics/rulings.md, "Kalos's Gyms, its water
+# and the Mamoswine ride"). The lines are our own, on X and Y's beat as it is publicly described: the snow is too deep to
+# walk, and the Mamoswine kept at the road let a Trainer ride them through the drifts. Four stand on the road (at each
+# end and in each clearing), and any of them carries the player (`ride "Mamoswine"`, a ride the route lends:
+# RidePager.LentRides); spoken to from its back, one lets the player down again. The ride ends by itself as the player
+# leaves the route (GameEngine.DismountWhereNoRiding).
+
+
+script Mamoswine
+  speaker none
+  cry own
+  if var RIDING == 1 goto Off
+  text "A Mamoswine stands in the snow, a saddle on its broad back. It snorts, ready to plough through the drifts."
+  ask "Will you ride the Mamoswine?"
+  if no goto Stay
+  ride "Mamoswine"
+  if var RESULT == 0 goto Refused
+  text "{player} climbed onto the Mamoswine's back!"
+  end
+label Refused
+  text "The Mamoswine shook its head. It won't leave the snow of its own road."
+  end
+label Stay
+  text "The Mamoswine went back to snuffling in the snow."
+  end
+label Off
+  ask "Get down from the Mamoswine's back?"
+  if no end
+  ride off
+  text "{player} slid down into the snow, and the Mamoswine trundled back to its herd."
+  end

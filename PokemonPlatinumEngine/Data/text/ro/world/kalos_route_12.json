@@ -1,5 +1,31 @@
 {
   "people": {
+    "sky_mireille": {
+      "name": {
+        "en": [
+          "Mireille"
+        ],
+        "text": [
+          "Mireille"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sky Trainer Mireille: Flowers below, clouds above. A Sky Battle, here, would be heavenly!"
+        ],
+        "text": [
+          "Antrenoarea de Văzduh Mireille: Flori dedesubt, nori deasupra. O Luptă în Văzduh, aici, ar fi divină!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sky Trainer Mireille: Down to earth with a bump."
+        ],
+        "text": [
+          "Antrenoarea de Văzduh Mireille: Înapoi pe pământ, cu o bufnitură."
+        ]
+      }
+    },
     "lass": {
       "name": {
         "en": [

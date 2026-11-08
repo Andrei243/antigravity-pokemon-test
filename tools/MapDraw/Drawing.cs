@@ -98,6 +98,8 @@ public static class Drawing
         ['p'] = new('p', false, TileBehavior.Puddle),
         ['u'] = new('c', false, TileBehavior.EntranceNorth),
         ['n'] = new('M', false, TileBehavior.EntranceSouth),
+        // Plan 23, Kalos's Mamoswine ride: a drift of snow too deep to wade, crossed only on a ridden Pokémon's back
+        ['%'] = new('^', false, TileBehavior.SnowDrift),
     };
 
     /// <summary>What fills a drawn chunk where no drawing reaches: the woods every place is cut out of.</summary>

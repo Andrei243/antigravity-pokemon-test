@@ -228,6 +228,12 @@ trainers 4, 13-14: alola_ace_trainer_makoa 14, alola_hiker_keola 13, alola_lass_
 === altering_cave
 Altering Cave
 grass 6-16
+=== ambrette_town
+Ambrette Town
+surf 25-27
+old rod 10-15
+good rod 25
+super rod 35
 === ancient_poni_path
 Ancient Poni Path
 grass 40-42
@@ -260,6 +266,10 @@ trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug
 === azure_bay
 Azure Bay
 grass 58-61
+surf 56-58
+old rod 50-55
+good rod 55
+super rod 60
 trainers 2, 60-61: kalos_beauty_ondine 61, kalos_fisherman_yannick 61
 === bell_tower_10f
 Bell Tower
@@ -469,6 +479,18 @@ surf 20-40
 old rod 10
 good rod 20
 super rod 40
+=== couriway_town
+Couriway Town
+surf 36-38
+old rod 10-15
+good rod 25
+super rod 35
+=== cyllage_city
+Cyllage City
+surf 25-27
+old rod 10-15
+good rod 25
+super rod 35
 === dark_cave_route_31_side
 Dark Cave
 grass 2-4
@@ -1185,7 +1207,7 @@ trainers 2, 20-21: kalos_battle_girl_elodie 20, kalos_black_belt_gustave 21
 === kalos_route_12
 Route 12
 grass 20-22
-trainers 3, 21-22: kalos_lass_violette 22, kalos_picnicker_hortense 22, kalos_youngster_matthieu 22
+trainers 4, 21-22: kalos_lass_violette 22, kalos_picnicker_hortense 22, kalos_sky_trainer_mireille 22, kalos_youngster_matthieu 22
 === kalos_route_13
 Route 13
 grass 26-28
@@ -1197,10 +1219,18 @@ trainers 2, 31-32: kalos_lass_celestine 31, kalos_picnicker_odile 32
 === kalos_route_15
 Route 15
 grass 33-35
-trainers 3, 34-35: kalos_hiker_ambroise 35, kalos_lass_margot 34, kalos_youngster_felix 34
+surf 34-36
+old rod 10-15
+good rod 25
+super rod 35
+trainers 4, 34-35: kalos_hiker_ambroise 35, kalos_lass_margot 34, kalos_sky_trainer_thierry 35, kalos_youngster_felix 34
 === kalos_route_16
 Route 16
 grass 33-35
+surf 34-36
+old rod 10-15
+good rod 25
+super rod 35
 trainers 4, 33-35: kalos_backpacker_gaetan 34, kalos_lady_rosalie 35, kalos_picnicker_constance 34, kalos_youngster_corentin 34
 === kalos_route_17
 Route 17
@@ -1225,7 +1255,7 @@ trainers 2, 45-46: kalos_hiker_thibaut 46, kalos_lady_honorine 46
 === kalos_route_21
 Route 21
 grass 48-50
-trainers 1, 49-50: kalos_veteran_germain 50
+trainers 2, 49-51: kalos_sky_trainer_zoe 51, kalos_veteran_germain 50
 === kalos_route_3
 Route 3
 grass 4-6
@@ -1239,7 +1269,7 @@ trainers 3, 7-8: kalos_lass_elodie 8, kalos_picnicker_margaux 8, kalos_youngster
 === kalos_route_5
 Route 5
 grass 9-11
-trainers 3, 10-11: kalos_backpacker_gaspard 10, kalos_lass_noemie 11, kalos_youngster_julien 10
+trainers 4, 10-12: kalos_backpacker_gaspard 10, kalos_lass_noemie 11, kalos_sky_trainer_celeste 12, kalos_youngster_julien 10
 === kalos_route_6
 Route 6
 grass 10-12
@@ -1251,10 +1281,18 @@ trainers 3, 13-14: kalos_fisherman_rene 13, kalos_lass_sylvie 14, kalos_youngste
 === kalos_route_8
 Route 8
 grass 13-15
-trainers 5, 14-16: kalos_fisherman_pierrick 16, kalos_fisherman_yves 14, kalos_hiker_aurelien 16, kalos_hiker_marcel 15, kalos_picnicker_ysolde 16
+surf 25-27
+old rod 10-15
+good rod 25
+super rod 35
+trainers 6, 14-16: kalos_fisherman_pierrick 16, kalos_fisherman_yves 14, kalos_hiker_aurelien 16, kalos_hiker_marcel 15, kalos_picnicker_ysolde 16, kalos_sky_trainer_gaston 16
 === kalos_route_9
 Route 9
 grass 17-19
+surf 25-27
+old rod 10-15
+good rod 25
+super rod 35
 trainers 4, 17-18: kalos_backpacker_odile 18, kalos_fisherman_loic 18, kalos_lass_clemence 18, kalos_youngster_basile 18
 === kalos_victory_road
 Victory Road
@@ -1275,6 +1313,12 @@ Victory Road
 grass 32-46
 ours Molemount 104-108, Ossugard 105-109
 trainers 5, 41-45: kanto_cool_couple_ray_tyra 45, kanto_cooltrainer_alexa 42, kanto_cooltrainer_caroline 42, kanto_cooltrainer_colby 43, kanto_cooltrainer_george 42
+=== kiloude_city
+Kiloude City
+surf 56-58
+old rod 50-55
+good rod 55
+super rod 60
 === konikoni_city
 Konikoni City
 surf 22-24
@@ -1329,6 +1373,11 @@ trainers 4, 23: hoenn_axle 23, hoenn_cole 23, hoenn_danielle 23, hoenn_gerald 23
 === lavaridge_town_gym_b1f
 Lavaridge Town
 trainers 4, 22-23: hoenn_eli 23, hoenn_jace 23, hoenn_jeff 22, hoenn_keegan 23
+=== laverre_city
+Laverre City
+old rod 10-15
+good rod 25
+super rod 35
 === lilycove_city
 Lilycove City
 surf 5-35
@@ -1930,6 +1979,10 @@ trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26,
 === pokemon_village
 Pokémon Village
 grass 46-48
+surf 48-50
+old rod 10-15
+good rod 25
+super rod 35
 === poni_breakers
 Poni Breakers
 grass 43-45
@@ -3187,6 +3240,12 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 2, 48-52: kanto_psychic_dario 52, kanto_psychic_rodette 50
+=== shalour_city
+Shalour City
+surf 25-27
+old rod 10-15
+good rod 25
+super rod 35
 === shoal_cave_low_tide_entrance_room
 Shoal Cave
 grass 26-32

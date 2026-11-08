@@ -352,7 +352,7 @@ public sealed class ScriptLibrary
                     case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
-                    case Op.RidePokemon when i.Option && Overworld.RidePager.LandRideOf(i.Name) == null:
+                    case Op.RidePokemon when i.Option && Overworld.RidePager.SpeciesOf(i.Name) == null:
                         Wrong(i, $"the Ride Pager has no ride on land '{i.Name}'");
                         break;
                     case Op.GivePokemon when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:

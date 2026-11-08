@@ -90,7 +90,9 @@ internal sealed partial class Autoplayer
                 return Elsewhere(it, leg.Map);
             case LegKind.Reach:
                 if (map.Name == leg.Map && player.GridX == leg.X && player.GridY == leg.Y) { Next(it); return ActionFrame.None; }
-                return Toward(it, leg.Map, (x, y) => x == leg.X && y == leg.Y, leg.X, leg.Y, null);
+                // (onto a warp panel the last step taken is the leg done: the panel carries the player off it before it is stood on)
+                return Toward(it, leg.Map, (x, y) => x == leg.X && y == leg.Y, leg.X, leg.Y, null,
+                    onLastStep: map.Name == leg.Map && WarpPanels.IsPanel(map, leg.X, leg.Y) ? () => it.Taken = true : null);
             case LegKind.Trigger:
                 return ToTrigger(it, leg);
             case LegKind.Talk:
@@ -338,7 +340,12 @@ internal sealed partial class Autoplayer
             detoured = false;
             if (!Plan(map, px, py, goal, tx, ty, mine)
                 && !(detoured = Detour(map, px, py, tx, ty, out var through, out var door) && Plan(map, px, py, through, door.X, door.Y, null)))
+            {
+                // In Wulfric's hall a way that isn't there is turned into being: off a hub and back onto it turns its
+                // turntable a quarter (plan 23, Kalos's Gyms), as a player who has lost the thread of the itinerary would
+                if (map.Puzzle is SnowbelleTurntables tables && TurnATable(map, tables, px, py)) return ActionFrame.None;
                 return Failed(it, $"no route on {map.Name} from {px},{py} toward {tx},{ty}") ? ActionFrame.None : ActionFrame.None;
+            }
             at = 0;
             if (route!.Count == 0) return ActionFrame.None;
         }
@@ -370,6 +377,28 @@ internal sealed partial class Autoplayer
         var aim = new System.Numerics.Vector2(FreeMovement.CentreOf(player.GridX + dx) - player.SubX, FreeMovement.CentreOf(player.GridY + dy) - player.SubY);
         engine.Steering = null;
         engine.Stick = (aim == System.Numerics.Vector2.Zero ? new System.Numerics.Vector2(dx, dy) : System.Numerics.Vector2.Normalize(aim), run);
+    }
+
+    /// <summary>
+    /// A step that turns one of Wulfric's turntables: from a hub onto any arm it has now, or from an arm back onto its hub
+    /// (which turns it). False where neither is to hand. A few turns bring every arm round, so a way the bot needs comes.
+    /// </summary>
+    private bool TurnATable(Map map, SnowbelleTurntables tables, int px, int py)
+    {
+        var player = game.Player;
+        var walker = new Walker(player.Mode, player.HeightOn(map));
+        bool onHub = SnowbelleTurntables.HubAt(px, py) >= 0;
+        foreach (var way in new[] { Direction.Up, Direction.Right, Direction.Down, Direction.Left })
+        {
+            var (dx, dy) = FieldMovement.Delta(way);
+            bool hubThere = SnowbelleTurntables.HubAt(px + dx, py + dy) >= 0;
+            if (onHub == hubThere || !SnowbelleTurntables.Covers(px + dx, py + dy)) continue;
+            if (!FieldMovement.Step(map, px, py, way, walker).Moves) continue;
+            Forget();
+            Walk(way, false);
+            return true;
+        }
+        return false;
     }
 
     private bool Plan(Map map, int x, int y, Func<int, int, bool> goal, int tx, int ty, StepTrigger? mine)

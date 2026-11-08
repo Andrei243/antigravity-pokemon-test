@@ -43,11 +43,35 @@ public static class RidePager
         LandRides.FirstOrDefault(r => string.Equals(r.Species, species, StringComparison.OrdinalIgnoreCase)) is { Species: not null } ride ? ride : null;
 
     /// <summary>
-    /// Whether the player may get on a ride here: the region offers riding (<c>movement.modes</c> lists
-    /// <see cref="RegionMode.Ride"/>, Alola's) and the ride is registered by its flag.
+    /// The rides a place lends, with no pager and no flag (plan 23, Kalos's Mamoswine ride; docs/mechanics/rulings.md,
+    /// "Kalos's Gyms, its water and the Mamoswine ride"): X and Y's Mamoswine waits at both ends of Route 17, the
+    /// Mamoswine Road, whose drifts only a ridden Pokémon crosses (<see cref="TileBehavior.SnowDrift"/>). Got on there by
+    /// talking to it (<c>common.Mamoswine</c>'s <c>ride "Mamoswine"</c>), and got off as the player leaves the area.
     /// </summary>
-    public static bool CanRide(string species, StoryState story, Region region) =>
-        region.Movement.Offers(RegionMode.Ride) && LandRideOf(species) is { } ride && story.Has(ride.Flag);
+    public static readonly IReadOnlyList<(string Species, string Region, string Area)> LentRides = new[]
+    {
+        ("Mamoswine", RegionDatabase.Kalos, "kalos_route_17"),
+    };
+
+    /// <summary>A lent ride by its species; null where no place lends one.</summary>
+    public static (string Species, string Region, string Area)? LentRideOf(string? species) =>
+        LentRides.FirstOrDefault(r => string.Equals(r.Species, species, StringComparison.OrdinalIgnoreCase)) is { Species: not null } ride ? ride : null;
+
+    /// <summary>Whether a lent ride may be ridden in a region's area: only where it is lent.</summary>
+    public static bool LentHere(string? species, string region, string? area) =>
+        LentRideOf(species) is { } lent && lent.Region == region && string.Equals(lent.Area, area, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The species a ride is known by, the pager's or a lent one's; null for neither.</summary>
+    public static string? SpeciesOf(string species) => LandRideOf(species)?.Species ?? LentRideOf(species)?.Species;
+
+    /// <summary>
+    /// Whether the player may get on a ride here: the region offers riding (<c>movement.modes</c> lists
+    /// <see cref="RegionMode.Ride"/>, Alola's) and the ride is registered by its flag; or the ride is lent in the area the
+    /// player stands in (<paramref name="area"/>: Kalos's Mamoswine on Route 17), whatever the region offers.
+    /// </summary>
+    public static bool CanRide(string species, StoryState story, Region region, string? area = null) =>
+        LentHere(species, region.Id, area)
+        || region.Movement.Offers(RegionMode.Ride) && LandRideOf(species) is { } ride && story.Has(ride.Flag);
 
     /// <summary>Whether a ride breaks a cracked rock it runs into (Tauros's charge), as Rock Smash does.</summary>
     public static bool Charges(string? species) => string.Equals(species, "Tauros", StringComparison.OrdinalIgnoreCase);

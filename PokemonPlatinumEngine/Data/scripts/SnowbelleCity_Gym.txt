@@ -3,6 +3,10 @@
 # north, battles for the Iceberg Badge, Kalos's eighth (`givebadge iceberg`), once the Psychic Badge is won. VAR_KALOS_STORY
 # is vaniville_town.txt's count: 29, Team Flare stopped, becomes 30 here, and the objective points on through the woods
 # and the village to Victory Road. His team is Kalos's trainers.json's kalos_wulfric_1.
+#
+# Since Kalos's Gyms (plan 23; rulings, "Kalos's Gyms, its water and the Mamoswine ride") the hall is turntables of ice
+# over the dark (the map's puzzle, SnowbelleTurntables): each turns a quarter as its hub is stepped on, and only arms that
+# meet make a way to Wulfric.
 
 
 script Wulfric

@@ -16,6 +16,7 @@
   "fly": false,
   "warps": [],
   "objects": [
+    { "id": "sky_thierry", "looks": "pilot", "movement": "look_south", "x": 402, "z": 202, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_SKY_TRAINER_THIERRY" },
     { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 416, "z": 204, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_FELIX" },
     { "id": "lass", "looks": "lass", "movement": "look_north", "x": 432, "z": 209, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_MARGOT" },
     { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 460, "z": 204, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_AMBROISE" },
@@ -39,5 +40,34 @@
     { "species": "Skorupi", "level": 35 },
     { "species": "Pawniard", "level": 35 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Lombre", "level": 34, "maxLevel": 36 },
+    { "species": "Lombre", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 35, "maxLevel": 36 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 15 },
+    { "species": "Poliwag", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Basculin", "level": 35 }
+  ],
+  "superRodRate": 75
 }

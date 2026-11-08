@@ -17,6 +17,15 @@
     { "type": "Planter", "x": 274, "y": 355, "width": 1, "depth": 1 }
   ],
   "people": {
+    // Plan 23, Kalos's sky trainers: a Sky Battle when spoken to (Trainer.InTheAir, the team's fliers alone)
+    "sky_celeste": {
+      "name": "Céleste",
+      "npcType": "pilot",
+      "trainer": {
+        "dialogueBefore": "Sky Trainer Céleste: Up here on the hill the wind is perfect. Will you take to the sky with me?",
+        "dialogueAfter": "Sky Trainer Céleste: You flew circles round me!"
+      }
+    },
     "youngster": {
       "name": "Julien",
       "npcType": "Youngster",
