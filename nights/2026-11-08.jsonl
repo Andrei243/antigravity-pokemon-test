@@ -1,0 +1,22 @@
+{"what":"SaveManager.Read and Write of w5-s29-v3-in-an-open-map.json","ms":2.872}
+{"what":"PixelGround.Bake of one chunk","ms":120.682}
+{"what":"MapDatabase.Initialize","ms":2832.548}
+{"what":"ScriptLibrary.Load","ms":186.292}
+{"what":"World.LoadAll and WorldMapBuilder.Build of Sinnoh","ms":436.756}
+{"what":"species.json (PokemonDatabase)","ms":40.43}
+{"what":"moves.json (MoveDatabase)","ms":2.829}
+{"what":"abilities.json (AbilityDatabase)","ms":0.238}
+{"what":"items.json (ItemDatabase)","ms":2.034}
+{"what":"trainers.json (TrainerDatabase\u0027s first read)","ms":2.925}
+{"what":"SdfMesher.Mesh of Turtwig (PokemonModels.Build)","ms":391.619}
+{"what":"SdfMesher.Mesh of a rig (CharacterModels.Build)","ms":1135.239}
+{"what":"Mml.Parse of 494 songs","ms":55.362}
+{"what":"managed memory after the world\u0027s maps (MB)","ms":234}
+{"what":"start-up: moves","ms":0.09}
+{"what":"start-up: species","ms":0.047}
+{"what":"start-up: items","ms":0.014}
+{"what":"start-up: maps","ms":2609.69}
+{"what":"start-up: scripts","ms":104.863}
+{"what":"start-up: migrate folder","ms":1.259}
+{"what":"start-up: the save","ms":42.048}
+{"what":"headless start-up, in all","ms":2944.53}
