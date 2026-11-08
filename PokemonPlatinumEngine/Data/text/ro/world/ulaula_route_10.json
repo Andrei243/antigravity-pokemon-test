@@ -1,0 +1,118 @@
+{
+  "people": {
+    "kalani": {
+      "name": {
+        "en": [
+          "Kalani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Kalani: The mountain is the best hike in Alola. The air is thin up there, so it's easy to feel proud of yourself."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Kalani: My legs are fine. It's my pride that hurts."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "makana": {
+      "name": {
+        "en": [
+          "Makana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Makana: I've been practising on the grass here every day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Makana: Practice makes... not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "leilene": {
+      "name": {
+        "en": [
+          "Leilene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Leilene: Look at my Pokémon! They look like flowers and they're tougher than they look."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Leilene: Hmph. Flowers get trampled sometimes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kai": {
+      "name": {
+        "en": [
+          "Kai"
+        ],
+        "text": [
+          "Kai"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kai: The mountain wants Trainers who can climb and fight at once. Show me you can."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kai: You can. Good luck up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 10\nNorth: Mount Hokulani\nSouth: Malie City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

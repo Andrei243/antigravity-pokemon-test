@@ -1,0 +1,134 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Acerola"
+      ],
+      "text": [
+        "Acerola"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the old Thrifty Megamart! Everything's half off. Forever."
+      ],
+      "text": [
+        "Bun venit la vechiul Thrifty Megamart! Totul la jumătate de preț. Pe vecie."
+      ]
+    },
+    {
+      "en": [
+        "Three little ghosts live among the shelves. Find them, and be gentle, and I'll let you meet my Mimikyu."
+      ],
+      "text": [
+        "Trei fantome mici trăiesc printre rafturi. Găsește-le, fii blând și te las să-l cunoști pe Mimikyu al meu."
+      ]
+    },
+    {
+      "en": [
+        "He's very shy, so don't be surprised if he's very strong."
+      ],
+      "text": [
+        "E foarte timid, așa că nu te mira dacă e foarte puternic."
+      ]
+    }
+  ],
+  "AcerolaInside": [
+    {
+      "en": [
+        "Acerola"
+      ],
+      "text": [
+        "Acerola"
+      ]
+    },
+    {
+      "en": [
+        "Three ghosts, then Mimikyu. Mind the aisle with the cold spot. It's not a draught."
+      ],
+      "text": [
+        "Trei fantome, apoi Mimikyu. Ai grijă la culoarul cu locul rece. Nu e curent."
+      ]
+    }
+  ],
+  "Den1": [
+    {
+      "en": [
+        "A Gastly drifted out from between the shelves!"
+      ],
+      "text": [
+        "Un Gastly a plutit de printre rafturi!"
+      ]
+    }
+  ],
+  "Den2": [
+    {
+      "en": [
+        "A Misdreavus drifted out from between the shelves!"
+      ],
+      "text": [
+        "Un Misdreavus a plutit de printre rafturi!"
+      ]
+    }
+  ],
+  "Den3": [
+    {
+      "en": [
+        "A Duskull drifted out from between the shelves!"
+      ],
+      "text": [
+        "Un Duskull a plutit de printre rafturi!"
+      ]
+    }
+  ],
+  "Totem": [
+    {
+      "en": [
+        "A little cloth Pikachu peeked out from behind the counter... and the dark behind it began to move!"
+      ],
+      "text": [
+        "Un Pikachu mic de pânză a ieșit de după tejghea... iar întunericul din spatele lui a început să se miște!"
+      ]
+    },
+    {
+      "en": [
+        "Acerola"
+      ],
+      "text": [
+        "Acerola"
+      ]
+    },
+    {
+      "en": [
+        "You did it! Mimikyu likes you. I can tell, because he didn't eat you."
+      ],
+      "text": [
+        "Ai reușit! Lui Mimikyu îi placi. Îmi dau seama pentru că nu te-a mâncat."
+      ]
+    },
+    {
+      "en": [
+        "This is the Ghostium Z. With it, a Ghost-type move becomes a Z-Move. Look after it, and look after the ghosts."
+      ],
+      "text": [
+        "Ăsta e Ghostium Z. Cu el, o mișcare de tip Fantomă devine o mișcare Z. Ai grijă de el și ai grijă de fantome."
+      ]
+    },
+    {
+      "en": [
+        "Team Skull has taken over Po Town, north of the village. Their boss is bad news. Be careful, okay?"
+      ],
+      "text": [
+        "Team Skull a pus stăpânire pe Po Town, la nord de sat. Șeful lor e un necaz. Ai grijă, bine?"
+      ]
+    },
+    {
+      "en": [
+        "The counter's quiet. The ghosts among the shelves come first."
+      ],
+      "text": [
+        "Tejgheaua e liniștită. Fantomele dintre rafturi vin primele."
+      ]
+    }
+  ]
+}

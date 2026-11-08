@@ -1,0 +1,25 @@
+{
+  "people": {
+    "yveltal": {
+      "name": {
+        "en": [
+          "Yveltal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_banettite": {
+      "name": {
+        "en": [
+          "Banettite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

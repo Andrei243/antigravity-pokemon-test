@@ -1,0 +1,116 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A city of towers, and not one window lit. Only the street lamps burn, and the dark presses on them from above."
+      ],
+      "text": [
+        "Un oraș de turnuri și nicio fereastră luminată. Ard doar lămpile stradale, iar întunericul le apasă de sus."
+      ]
+    }
+  ],
+  "Resident1": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "My grandmother told me the sky here was bright once. I've only ever seen it like this."
+      ],
+      "text": [
+        "Bunica mea îmi spunea că cerul de aici era luminos odinioară. Eu l-am văzut doar așa."
+      ]
+    },
+    {
+      "en": [
+        "The Lightseekers say the one who took our light still sits at the top of Megalo Tower."
+      ],
+      "text": [
+        "Lightseekers zic că cel care ne-a luat lumina încă stă în vârful turnului Megalo."
+      ]
+    },
+    {
+      "en": [
+        "Look at it. Look at the sky! I didn't know it had a colour."
+      ],
+      "text": [
+        "Uită-te la el. Uită-te la cer! Nu știam că are o culoare."
+      ]
+    }
+  ],
+  "Resident2": [
+    {
+      "en": [
+        "Lamp Keeper"
+      ],
+      "text": [
+        "Paznicul lămpilor"
+      ]
+    },
+    {
+      "en": [
+        "I keep the lamps. Every lamp in this city burns on power we make ourselves, every hour of every day."
+      ],
+      "text": [
+        "Eu țin lămpile. Fiecare lampă din orașul ăsta arde pe curent pe care îl facem noi înșine, în fiecare oră din fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "If they ever went out, nobody could find their way home. So they never go out."
+      ],
+      "text": [
+        "Dacă s-ar stinge vreodată, nimeni nu și-ar mai găsi drumul spre casă. Așa că nu se sting niciodată."
+      ]
+    },
+    {
+      "en": [
+        "I turned a lamp off this morning, just to see what it was like. I could still see. I nearly cried."
+      ],
+      "text": [
+        "Azi-dimineață am stins o lampă, doar să văd cum e. Tot vedeam. Aproape că am plâns."
+      ]
+    }
+  ],
+  "Resident3": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "You came through the wormhole? From a world with a sun? ...Is it warm? I'm sorry. I just wondered."
+      ],
+      "text": [
+        "Ai venit prin vortex? Dintr-o lume cu soare? ...E cald? Scuze. M-am întrebat doar."
+      ]
+    },
+    {
+      "en": [
+        "So this is warm. You were right. It's wonderful."
+      ],
+      "text": [
+        "Deci asta e căldură. Aveai dreptate. E minunat."
+      ]
+    }
+  ],
+  "Blacephalon": [
+    {
+      "en": [
+        "Something like a clown made of fireworks juggled its own head on the square, and bowed to {player}."
+      ],
+      "text": [
+        "Ceva ca un clovn făcut din artificii a jonglat cu propriul cap în piață și s-a înclinat în fața lui {player}."
+      ]
+    }
+  ]
+}

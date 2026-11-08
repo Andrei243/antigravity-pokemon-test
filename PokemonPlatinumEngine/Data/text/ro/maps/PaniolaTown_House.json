@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Paniola Town"
+    ],
+    "text": [
+      "Paniola Town"
+    ]
+  },
+  "people": {
+    "rancher": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Mudbray kicks harder than a Tauros, believe it or not. Give it a few years and it'll be a Mudsdale that can carry a house."
+        ],
+        "text": [
+          "Un Mudbray lovește mai tare decât un Tauros, crezi sau nu. Dă-i câțiva ani și va fi un Mudsdale care poate căra o casă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

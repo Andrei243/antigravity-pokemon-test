@@ -1,0 +1,130 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}. I thought you'd come this way. Victory Road is just ahead, and the League past it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ever since Vaniville I've been chasing you. One more battle. Everything I've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "That's it, then. You're the one who's going to stand in front of the Champion. Go and win."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I won? I won! Then you'd better win twice as hard up there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll be cheering for you. Loudly. Embarrassingly."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Victory Road's mouth is just ahead. The guard checks your Badges."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gate": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Halt! Only a Trainer with all eight of Kalos's Badges may enter Victory Road."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eight Badges! Very well. Victory Road is open to you, and the Pokémon League lies beyond it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I guard the way to the League. Come back with all eight Badges of Kalos."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The League is beyond Victory Road. Good luck, Trainer."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

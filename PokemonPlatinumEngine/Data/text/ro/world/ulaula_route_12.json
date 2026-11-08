@@ -1,0 +1,154 @@
+{
+  "people": {
+    "hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "loke": {
+      "name": {
+        "en": [
+          "Loke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Loke: Fishing here is lovely. Quiet. Until someone like you comes along."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Loke: And now it's quiet again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lani": {
+      "name": {
+        "en": [
+          "Lani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Lani: I breed the Pokémon of Ula'ula's slopes. Healthy, happy, and ready to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Lani: A happy loss is still a loss."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "nalo": {
+      "name": {
+        "en": [
+          "Nalo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Nalo: This road is long. You'll want something to fight on the way."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Nalo: Okay. Not that long, after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wana": {
+      "name": {
+        "en": [
+          "Wana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Wana: Boulders, boulders everywhere! And I love them all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Wana: Boulders don't lose. I do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kalei": {
+      "name": {
+        "en": [
+          "Kalei"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Kalei: Tapu Village is just ahead, and so are my Mudsdale. They've got a race to win."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Kalei: Slow and steady, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 12\nEast: Tapu Village\nWest: Mount Hokulani"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

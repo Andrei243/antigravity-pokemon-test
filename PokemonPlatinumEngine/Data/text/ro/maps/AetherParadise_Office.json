@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Aether House"
+    ],
+    "text": [
+      "Casa Aether"
+    ]
+  },
+  "people": {
+    "lusamine": {
+      "name": {
+        "en": [
+          "Lusamine"
+        ],
+        "text": [
+          "Lusamine"
+        ]
+      }
+    },
+    "gladion": {
+      "name": {
+        "en": [
+          "Gladion"
+        ],
+        "text": [
+          "Gladion"
+        ]
+      }
+    },
+    "employee": {
+      "name": {
+        "en": [
+          "Aether Employee"
+        ],
+        "text": [
+          "Angajatul Aether"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The President is in a meeting. She's always in a meeting. Perhaps with the walls."
+        ],
+        "text": [
+          "Președinta e într-o ședință. E mereu într-o ședință. Poate chiar cu pereții."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

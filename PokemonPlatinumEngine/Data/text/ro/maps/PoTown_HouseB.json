@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Po Town"
+    ],
+    "text": [
+      "Po Town"
+    ]
+  },
+  "people": {
+    "grunt": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Skull painted their mark on every wall. Not very good art, if you ask me."
+        ],
+        "text": [
+          "Team Skull și-a pictat semnul pe fiecare perete. Nu prea e artă bună, dacă mă întrebi pe mine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

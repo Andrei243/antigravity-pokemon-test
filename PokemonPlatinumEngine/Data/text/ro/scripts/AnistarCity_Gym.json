@@ -1,0 +1,142 @@
+{
+  "Olympia": [
+    {
+      "en": [
+        "Olympia"
+      ],
+      "text": [
+        "Olympia"
+      ]
+    },
+    {
+      "en": [
+        "The stars said you would come today, at this very hour. I am Olympia."
+      ],
+      "text": [
+        "Stelele au zis că vei veni azi, la această oră exactă. Sunt Olympia."
+      ]
+    },
+    {
+      "en": [
+        "They did not say who would win. Fate is a thread. Let us see which way it pulls."
+      ],
+      "text": [
+        "Nu au zis cine va câștiga. Soarta e un fir. Să vedem încotro trage."
+      ]
+    },
+    {
+      "en": [
+        "Ah. The thread pulled your way. It so often does, for those who pull back."
+      ],
+      "text": [
+        "Ah. Firul a tras spre tine. O face atât de des pentru cei care trag înapoi."
+      ]
+    },
+    {
+      "en": [
+        "The Psychic Badge is yours."
+      ],
+      "text": [
+        "Psychic Badge e a ta."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Psychic Badge from Olympia!"
+      ],
+      "text": [
+        "{player} a primit Psychic Badge de la Olympia!"
+      ]
+    },
+    {
+      "en": [
+        "Wait. Something dark is coming. Look at the screen..."
+      ],
+      "text": [
+        "Așteaptă. Se apropie ceva întunecat. Uită-te la ecran..."
+      ]
+    },
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        "Lysandre"
+      ]
+    },
+    {
+      "en": [
+        "People of Kalos. I am Lysandre. This world grows ugly, crowded with those who take and never give."
+      ],
+      "text": [
+        "Oameni din Kalos. Sunt Lysandre. Lumea asta devine urâtă, supraaglomerată de cei care iau și nu dau niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Team Flare will make it beautiful again. The ultimate weapon will wake, and only the chosen will remain."
+      ],
+      "text": [
+        "Team Flare o va face frumoasă din nou. Arma supremă se va trezi, iar doar cei aleși vor rămâne."
+      ]
+    },
+    {
+      "en": [
+        "Olympia"
+      ],
+      "text": [
+        "Olympia"
+      ]
+    },
+    {
+      "en": [
+        "His café in Lumiose City. That is where the thread leads. Go, {player}, and quickly."
+      ],
+      "text": [
+        "Cafeneaua lui din Lumiose City. Acolo duce firul. Du-te, {player}, și repede."
+      ]
+    },
+    {
+      "en": [
+        "The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree."
+      ],
+      "text": [
+        "Stelele spun că nu ești încă pregătit să mă înfrunți. Vizitează mai întâi Sala Laverre și copacul ei."
+      ]
+    },
+    {
+      "en": [
+        "The stars over Kalos are troubled. Follow the thread, {player}."
+      ],
+      "text": [
+        "Stelele de deasupra Kalosului sunt tulburi. Urmează firul, {player}."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghid de sală"
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Olympia's Psychic types fear bugs, ghosts and the dark. Choose well!"
+      ],
+      "text": [
+        "Salut, viitorule Campion! Pokémonii Psihic ai Olympiei se tem de insecte, fantome și întuneric. Alege cu grijă!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Olympia! I bet she saw that coming."
+      ],
+      "text": [
+        "Ai învins-o pe Olympia! Pun pariu că a văzut asta venind."
+      ]
+    }
+  ]
+}

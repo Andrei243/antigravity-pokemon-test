@@ -1,0 +1,110 @@
+{
+  "NanuInside": [
+    {
+      "en": [
+        "Nanu"
+      ],
+      "text": [
+        "Nanu"
+      ]
+    },
+    {
+      "en": [
+        "Sit, sit. This is my house, so I make the rules. First rule: don't look at the Meowth."
+      ],
+      "text": [
+        "Stai, stai jos. Asta e casa mea, deci eu fac regulile. Prima regulă: nu te uita la Meowth."
+      ]
+    },
+    {
+      "en": [
+        "Ula'ula's grand trial is a battle with me. That's it. No totem, no dens, no tests. I can't be bothered."
+      ],
+      "text": [
+        "Încercarea cea mare din Ula'ula e o luptă cu mine. Atât. Fără totem, fără vizuini, fără teste. N-am chef."
+      ]
+    },
+    {
+      "en": [
+        "Do your best. I'll do mine, which is less, but it's enough."
+      ],
+      "text": [
+        "Fă ce poți. Eu fac ce pot, adică mai puțin, dar îmi ajunge."
+      ]
+    },
+    {
+      "en": [
+        "Nanu"
+      ],
+      "text": [
+        "Nanu"
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Not bad. You scrapped your way through Skull and now through me. The island has itself a decent one."
+      ],
+      "text": [
+        "Hmph. Nu e rău. Te-ai luptat prin Skull și acum prin mine. Insula are un Antrenor de nădejde."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Trainer card received Ula'ula's stamp!"
+      ],
+      "text": [
+        "Cardul de Antrenor al lui {player} a primit ștampila Ula'ula!"
+      ]
+    },
+    {
+      "en": [
+        "That's the Darkinium Z. Dark-type moves, made bigger. Don't get used to being bigger."
+      ],
+      "text": [
+        "Ăsta e Darkinium Z. Mișcările de tip Întuneric, făcute mai mari. Nu te obișnui să fii mai mare."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "...{player}! It's Kukui. Listen, Lillie went back to Aether Paradise, and Lusamine won't let her leave."
+      ],
+      "text": [
+        "...{player}! Sunt Kukui. Ascultă, Lillie s-a întors la Aether Paradise, iar Lusamine nu o lasă să plece."
+      ]
+    },
+    {
+      "en": [
+        "Gladion called me. He says his mother isn't herself, and Lillie's in danger. Go to Aether Paradise. Take the ferry from Malie's pier."
+      ],
+      "text": [
+        "Gladion m-a sunat. Zice că mama lui nu e ea însăși și că Lillie e în pericol. Mergi la Aether Paradise. Ia feribotul de la debarcaderul din Malie."
+      ]
+    },
+    {
+      "en": [
+        "Go. I'm napping."
+      ],
+      "text": [
+        "Du-te. Eu trag un pui de somn."
+      ]
+    }
+  ],
+  "MeowthTalk": [
+    {
+      "en": [
+        "Meowth: ...Mrrow."
+      ],
+      "text": [
+        "Meowth: ...Mrrow."
+      ]
+    }
+  ]
+}

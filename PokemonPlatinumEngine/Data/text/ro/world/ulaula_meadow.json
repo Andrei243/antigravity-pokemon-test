@@ -1,0 +1,76 @@
+{
+  "people": {
+    "kalena": {
+      "name": {
+        "en": [
+          "Kalena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kalena: The Oricorio here dance with fire. My Pokémon battle with it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kalena: I got burned. Not literally. Mostly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "liko": {
+      "name": {
+        "en": [
+          "Liko"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Liko: I'm looking for a red Oricorio. You're not one, but you'll do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Liko: Back to looking for Oricorio."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dancer": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          "Dansatoare"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MeadowSign": {
+      "en": [
+        "Ula'ula Meadow\nEast: Route 16\nNorth: Route 17"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

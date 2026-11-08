@@ -1,0 +1,93 @@
+{
+  "people": {
+    "ace": {
+      "name": {
+        "en": [
+          "Camille"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Camille: Victory Road is the last test before the League. I'm the test before the test!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Camille: You passed. Both, I'd say."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ace_2": {
+      "name": {
+        "en": [
+          "Maxime"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Maxime: Eight Badges? So do I. Let's see whose are shinier."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Maxime: Yours, clearly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Clovis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Clovis: The League's door is just past me. Many have stood here; few walked on."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Clovis: Walk on, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_garchompite": {
+      "name": {
+        "en": [
+          "Garchompite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,70 @@
+{
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Four trainers in one ring, every one for themselves! The Battle Royal is the loudest show on Akala."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The dome isn't taking challengers today, I'm afraid. Come back once you've made a name on the islands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "AvenueSign": {
+      "en": [
+        "Royal Avenue\nHome of the Battle Royal Dome."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

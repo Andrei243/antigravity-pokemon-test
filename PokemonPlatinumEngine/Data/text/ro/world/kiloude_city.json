@@ -1,0 +1,70 @@
+{
+  "people": {
+    "az": {
+      "name": {
+        "en": [
+          "AZ"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The pier is the best seat in Kalos. Everything the sea brings in passes under my feet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past the pier there is a landing nobody uses. An old man goes there some days, and just looks at the water."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rival_kiloude": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Kiloude City\nThe sea begins at the end of the street."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

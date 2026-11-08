@@ -1,0 +1,110 @@
+{
+  "people": {
+    "kaimi": {
+      "name": {
+        "en": [
+          "Kaimi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kaimi: I swam here from Route 14. Now I'm too tired to lose. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kaimi: I was too tired to win, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lehua": {
+      "name": {
+        "en": [
+          "Lehua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Lehua: Nobody walks this far along the coast by accident. You're here to battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Lehua: And you're good at it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mahina": {
+      "name": {
+        "en": [
+          "Mahina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Mahina: I bring my Pokémon to the Aether House to play with the children. Today they play with you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Mahina: They had fun. That's what matters!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aether_worker": {
+      "name": {
+        "en": [
+          "Aether Employee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Aether House looks after Pokémon and children with nowhere else to go. Do come in and say hello."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 15\nWest: Route 14\nThe Aether House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

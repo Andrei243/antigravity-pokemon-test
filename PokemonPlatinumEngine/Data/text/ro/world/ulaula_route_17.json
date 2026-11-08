@@ -1,0 +1,92 @@
+{
+  "people": {
+    "grunt_17a": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Yo! The cops' station is right there, and they don't do nothin'. So I'll do somethin'!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Okay, okay! I'll do nothin' too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "grunt_17b": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: This rain ruins my hair. You're gonna pay for it in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: My hair AND my pride. Brutal."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kona": {
+      "name": {
+        "en": [
+          "Kona"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Kona: I've walked this road in worse rain than this. Show me what you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Kona: Ha! Now that's a storm."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 17\nSouth: Ula'ula Meadow\nNorth: the police station"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

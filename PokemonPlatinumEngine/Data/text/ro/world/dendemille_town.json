@@ -1,0 +1,50 @@
+{
+  "people": {
+    "miller": {
+      "name": {
+        "en": [
+          "Miller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The wind off the snowfields turns our mill all winter. East of town the road is snow from here to Anistar."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Trainer rode a Mamoswine through town last week! Nothing stops those, not even deep snow."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Dendemille Town\nA town of millers where the cold begins."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

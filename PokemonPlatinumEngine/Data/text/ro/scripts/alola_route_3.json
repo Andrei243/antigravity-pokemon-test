@@ -1,0 +1,70 @@
+{
+  "HauOnRoute3": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! There you are! I passed Ilima's trial too, finally. Now you know what that means..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grandpa's grand trial is next! So let's warm up. Battle me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Ahh, you're too strong! Grandpa's going to have his hands full with you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yes! But you'll beat Grandpa for sure. He's waiting on the stage in Iki Town!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Wait, wait, don't go past yet!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

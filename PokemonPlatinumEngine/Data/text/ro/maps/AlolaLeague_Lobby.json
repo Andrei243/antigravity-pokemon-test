@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          "Ghidul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Alola Pokémon League! The first one ever. Four of the island's finest wait ahead, and the one who stands behind them hasn't lost a battle yet. Good luck!"
+        ],
+        "text": [
+          "Bun venit la Liga Pokémon din Alola! Prima din istorie. Patru dintre cei mai buni ai insulei te așteaptă înainte, iar cel care stă în spatele lor nu a pierdut încă nicio luptă. Mult noroc!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

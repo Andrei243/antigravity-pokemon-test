@@ -1,0 +1,92 @@
+{
+  "people": {
+    "ace": {
+      "name": {
+        "en": [
+          "Rosalie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Rosalie: Only the best get this far north. Prove you belong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Rosalie: You belong. I'll admit it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Urbain"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Urbain: Mud to the ankles, rain to the eyebrows. Perfect battling weather!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Urbain: Perfect for losing, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Éloi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Éloi: The pools up here hide the strangest catches. Want to meet one?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Éloi: Back in the pool with you, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 19\nNorth: Snowbelle City\nWest: Couriway Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

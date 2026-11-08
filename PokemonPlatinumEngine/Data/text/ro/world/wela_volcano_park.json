@@ -1,0 +1,107 @@
+{
+  "people": {
+    "second_totem": {
+      "name": {
+        "en": [
+          "Salazzle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kiawe": {
+      "name": {
+        "en": [
+          "Kiawe"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trial_1": {
+      "name": {
+        "en": [
+          "Salandit"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trial_2": {
+      "name": {
+        "en": [
+          "Cubone"
+        ],
+        "text": [
+          "Cubone"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Marowak"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Kanaloa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Kanaloa: The ground's warm under your boots up here, eh? My Pokémon are warmer!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Kanaloa: Cooled off, the lot of us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ace_trainer": {
+      "name": {
+        "en": [
+          "Kalani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kalani: Heading up to Kiawe's trial? You'll have to get past my fire first."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kalani: You'll do fine up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

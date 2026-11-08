@@ -1,0 +1,114 @@
+{
+  "HanoScene": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got Olivia's stamp? That's two islands done! We should celebrate. With malasadas."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations, {player}. I knew you could do it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello again! I've been telling your friends about Aether Paradise. Our ship can take all three of you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Aether Foundation would be honoured to have you as our guests. Do think about it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lillie": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "The sea here is so blue. I could watch it all day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "The resort's malasadas cost twice as much. They're also twice as big!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wicke": [
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aether Paradise is lovely this time of year. Well, it's lovely every time of year."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "people": {
+    "makalii": {
+      "name": {
+        "en": [
+          "Makalii"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Makalii: The mountain looks quiet from here. It's not."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Makalii: It's louder than I thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "akoni": {
+      "name": {
+        "en": [
+          "Akoni"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Akoni: Lanakila is the tallest mountain in Alola. Big mountains, big Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Akoni: The mountain wins either way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keala": {
+      "name": {
+        "en": [
+          "Keala"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Keala: I keep a bag of surprises. This team is one."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Keala: You were the surprise."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 13\nNorth: the foot of Mount Lanakila"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

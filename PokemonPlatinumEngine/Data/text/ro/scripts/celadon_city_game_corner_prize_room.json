@@ -1,4 +1,82 @@
 {
+  "PokemonPrizes": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! This counter trades coins for Pokémon. You have {coins} coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon would you like?",
+        "Abra: 180",
+        "Clefairy: 500",
+        "Dratini: 2,800",
+        "Scyther: 5,500",
+        "Porygon: 9,999",
+        "No, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here you are! Look after it well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your team is full, so we sent it to your PC's boxes. Look after it well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prizes are exchanged for coins. You'll need a Coin Case first."
+      ],
+      "text": [
+        "Premiile se dau pe fise. Întâi îți trebuie o Cutie de Fise."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough coins."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Prizes": [
     {
       "en": [

@@ -1,4 +1,30 @@
 {
+  "PrismTower": [
+    {
+      "en": [
+        "Lift Operator"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The power's back! Up you go: the Gym is at the very top of the tower."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, the lift has no power. The whole city's gone dark, and the tower with it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Assistants": [
     {
       "en": [
@@ -138,6 +164,324 @@
       ],
       "text": [
         "Drumul de dincolo e închis pentru reparații. Se va deschide în curând."
+      ]
+    }
+  ],
+  "AlleyNanette": [
+    {
+      "en": [
+        "Nanette"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're the Champion? Then you have to play with me! That's the rule of the park!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aww. Okay, you can play again tomorrow. That's the rule too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The girl with the pink hair? She's looking for her cat. It's a very grumpy cat."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlleyLou": [
+    {
+      "en": [
+        "Lou"
+      ],
+      "text": [
+        "Lou"
+      ]
+    },
+    {
+      "en": [
+        "I'm guarding the park! Nobody gets past without a battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Okay, you can get past. But only a little bit."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon are sleepy now. Shh."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlleyCerise": [
+    {
+      "en": [
+        "Cerise"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "School's out, and we battle here every afternoon. You're new. Let's see what you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Okay, that wasn't fair. You're the Champion, aren't you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma used to battle us here all the time, before she started working for that funny detective."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlleyBastien": [
+    {
+      "en": [
+        "Bastien"
+      ],
+      "text": [
+        "Bastien"
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon is very old and very spooky. Are you scared? You should be!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not scared at all? Not even a little?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma's Espurr hates noise. It always hides when we battle too loudly."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlleyEmma": [
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "You battled all four of them? The noise must have scared Mimi half to death. My Espurr, I mean. She's run off."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She hides somewhere small and dark when she's frightened. There are three alleys near here she likes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where would a frightened Espurr hide?",
+        "The alley beside the bureau",
+        "The alley beside the museum",
+        "The street by the restaurant"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No, she wouldn't go that far. Somewhere close, and quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} looked into the narrow alley beside the bureau. Two wide eyes stared back out of the dark."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} kept very still. After a while a small grey Pokémon crept out and sniffed {player}'s hand."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "Mimi! Oh, thank you! Nobody's ever been that patient with her. Not even me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You work with the detective, don't you? He asked me to help him. I said no, because of Mimi."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But if Mimi likes you, maybe she'll like the bureau too. Tell him Emma's coming. Both of us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shh! My Espurr's hiding around here somewhere, and those children won't stop battling. Can you quiet them down?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SuspectWoman": [
+    {
+      "en": [
+        "Vesper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're following me? Bad idea. Very bad idea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine! I only steal Poké Balls for someone who pays well. I've never seen her face. She wears a dark suit."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SuspectChild": [
+    {
+      "en": [
+        "Pip"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I didn't take anything! Okay, I took some things. Want to battle about it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A lady in a suit gives us sweets for every ball we bring her. She talks funny, like a machine."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SuspectLady": [
+    {
+      "en": [
+        "Odile"
+      ],
+      "text": [
+        "Odile"
+      ]
+    },
+    {
+      "en": [
+        "How dare you look at me like that. Do you know who I am? No? Good."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. I was told the balls would go to a good cause. A scientist's cause. I see now I was a fool."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

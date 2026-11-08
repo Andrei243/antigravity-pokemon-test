@@ -1,0 +1,60 @@
+{
+  "people": {
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym is inside the great tree! The Leader dresses like a doll and battles like a storm."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our tree is older than the town. The town grew up round it, as moss grows round a stone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_medichamite": {
+      "name": {
+        "en": [
+          "Medichamite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Laverre City\nA town of old timber beneath a great tree."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

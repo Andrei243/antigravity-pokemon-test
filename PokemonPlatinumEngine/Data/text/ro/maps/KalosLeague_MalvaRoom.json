@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "malva": {
+      "name": {
+        "en": [
+          "Malva"
+        ],
+        "text": [
+          "Malva"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

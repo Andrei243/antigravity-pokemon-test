@@ -79,6 +79,26 @@
           "Drumeț Armand: Ai trecut direct peste mine. Grant te așteaptă sus."
         ]
       }
+    },
+    "mega_aggronite": {
+      "name": {
+        "en": [
+          "Aggronite"
+        ],
+        "text": [
+          "Aggronite"
+        ]
+      }
+    },
+    "mega_tyranitarite": {
+      "name": {
+        "en": [
+          "Tyranitarite"
+        ],
+        "text": [
+          "Tyranitarite"
+        ]
+      }
     }
   },
   "signs": {}

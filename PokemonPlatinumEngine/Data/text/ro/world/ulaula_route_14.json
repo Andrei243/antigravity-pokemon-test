@@ -1,0 +1,110 @@
+{
+  "people": {
+    "noe": {
+      "name": {
+        "en": [
+          "Noe"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Noe: The water's cold on this side of the island. Warm me up with a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Noe: Still cold. Still lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pua": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Pua: I came here for the quiet. You don't look quiet."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Pua: You weren't. And neither was I."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ikaika": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ikaika: Nothing's biting today, so I'll catch a battle instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ikaika: That one got away from me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "surfer": {
+      "name": {
+        "en": [
+          "Surfer"
+        ],
+        "text": [
+          "Surfer"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The waves come all the way from Poni round this point. You can ride a Lapras right along the coast to Route 15."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 14\nNorth: Tapu Village\nEast: Route 15"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

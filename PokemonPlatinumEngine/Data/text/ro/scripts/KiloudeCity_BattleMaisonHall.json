@@ -1,0 +1,102 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maisonului"
+      ]
+    },
+    {
+      "en": [
+        "Battle {number} of seven! Your challenger is on the way."
+      ],
+      "text": [
+        "Lupta {number} din șapte! Provocatorul tău e pe drum."
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps forward!"
+      ],
+      "text": [
+        "{foe} face un pas înainte!"
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maisonului"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Your three have been made whole again. The next challenger is waiting."
+      ],
+      "text": [
+        "Splendid! Cei trei ai tăi au fost refăcuți complet. Următorul provocator așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maisonului"
+      ]
+    },
+    {
+      "en": [
+        "Seven in a row! The whole hall is on its feet for {player}."
+      ],
+      "text": [
+        "Șapte la rând! Toată sala e în picioare pentru {player}."
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} PL!"
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maisonului"
+      ]
+    },
+    {
+      "en": [
+        "The round ends here. Rest, and come back. The hall will remember you."
+      ],
+      "text": [
+        "Runda se termină aici. Odihnește-te și revino. Sala te va ține minte."
+      ]
+    }
+  ],
+  "Host": [
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maisonului"
+      ]
+    },
+    {
+      "en": [
+        "No round is under way. The receptionist in the lobby takes your three."
+      ],
+      "text": [
+        "Nicio rundă nu e în desfășurare. Recepționera din hol îți primește cei trei."
+      ]
+    }
+  ]
+}

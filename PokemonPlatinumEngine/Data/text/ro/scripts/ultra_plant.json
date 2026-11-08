@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A hall of metal, humming. Lamps burn along its corridors, though nobody tends them."
+      ],
+      "text": [
+        "O sală de metal, care bâzâie. Lămpi ard de-a lungul coridoarelor, deși nu le îngrijește nimeni."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "The cables over the floor stood up, and they weren't cables. A tangle of light and wire came crackling down the hall!"
+      ],
+      "text": [
+        "Cablurile de pe podea s-au ridicat și nu erau cabluri. Un ghem de lumină și sârmă a venit trosnind pe coridor!"
+      ]
+    }
+  ]
+}

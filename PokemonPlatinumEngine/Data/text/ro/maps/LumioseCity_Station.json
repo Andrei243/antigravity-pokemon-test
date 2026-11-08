@@ -1,0 +1,121 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose Station"
+    ],
+    "text": [
+      "Gara Lumiose"
+    ]
+  },
+  "people": {
+    "tmv": {
+      "name": {
+        "en": [
+          "TMV Attendant"
+        ],
+        "text": [
+          "Funcționarul TMV"
+        ]
+      }
+    },
+    "sycamore": {
+      "name": {
+        "en": [
+          "Prof. Sycamore"
+        ],
+        "text": [
+          "Prof. Sycamore"
+        ]
+      }
+    },
+    "sina": {
+      "name": {
+        "en": [
+          "Sina"
+        ],
+        "text": [
+          "Sina"
+        ]
+      }
+    },
+    "dexio": {
+      "name": {
+        "en": [
+          "Dexio"
+        ],
+        "text": [
+          "Dexio"
+        ]
+      }
+    },
+    "gang_rouille": {
+      "name": {
+        "en": [
+          "Rouille"
+        ],
+        "text": [
+          "Rouille"
+        ]
+      }
+    },
+    "gang_brutus": {
+      "name": {
+        "en": [
+          "Brutus"
+        ],
+        "text": [
+          "Brutus"
+        ]
+      }
+    },
+    "gang_fauve": {
+      "name": {
+        "en": [
+          "Fauve"
+        ],
+        "text": [
+          "Fauve"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      }
+    },
+    "emma_station": {
+      "name": {
+        "en": [
+          "Emma"
+        ],
+        "text": [
+          "Emma"
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The TMV crosses half of Kalos before you can finish a croissant. I always try anyway."
+        ],
+        "text": [
+          "TMV traversează jumătate din Kalos până apuci să termini un croissant. Eu încerc oricum."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

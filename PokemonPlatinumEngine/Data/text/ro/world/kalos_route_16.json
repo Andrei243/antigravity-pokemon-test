@@ -1,0 +1,138 @@
+{
+  "people": {
+    "corentin": {
+      "name": {
+        "en": [
+          "Corentin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Corentin: Hey! This road is quiet, and a quiet road is a dull road. Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Corentin: Quiet again. I liked it better when it was loud."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "constance": {
+      "name": {
+        "en": [
+          "Constance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Constance: I packed sandwiches for the whole day, and a battle for each one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Constance: Three battles, one sandwich left. I call that a good day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gaetan": {
+      "name": {
+        "en": [
+          "Gaetan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Gaetan: They say a hotel up the road lost its guests and never found them again. Care to find out with me? First, a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Gaetan: You win. I will let you go in first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rosalie": {
+      "name": {
+        "en": [
+          "Rosalie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Rosalie: I have walked this road every autumn for thirty years. I know every rustle, and yours is new!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Rosalie: Thirty years, and still a surprise. Lovely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_houndoominite": {
+      "name": {
+        "en": [
+          "Houndoominite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_manectite": {
+      "name": {
+        "en": [
+          "Manectite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 16\nSouth: Lumiose City\nNorth: the Lost Hotel"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

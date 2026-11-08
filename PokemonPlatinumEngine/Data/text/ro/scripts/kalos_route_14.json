@@ -1,0 +1,78 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got the power running again? Everyone in Lumiose is talking about the kid who beat Team Flare."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm not going to fall behind you now. Let's battle, right here in the mud!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Again! You're always one step ahead of me. I'll catch up, you'll see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Got you this time! Don't let it go to your head... or mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Laverre's Gym Leader uses fairies. They're prettier than they look, and tougher."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Watch your step. Half this trail is puddle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "Officer": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        "Polițistul"
+      ]
+    },
+    {
+      "en": [
+        "The chief? He's off in Po Town, keeping an eye on Team Skull. Or napping. With him it's hard to tell."
+      ],
+      "text": [
+        "Șeful? E plecat în Po Town, supraveghind Team Skull. Sau trage un pui de somn. La el e greu de spus."
+      ]
+    },
+    {
+      "en": [
+        "He leaves the station to his Meowth. They're better at it than he is, he says."
+      ],
+      "text": [
+        "Lasă secția în grija lui Meowth. Se pricep mai bine decât el, zice."
+      ]
+    }
+  ],
+  "Meowth": [
+    {
+      "en": [
+        "Meowth: Myaa... It stretched and stared at {player} as if it owned the place."
+      ],
+      "text": [
+        "Meowth: Myaa... S-a întins și s-a uitat la {player} de parcă ar fi fost stăpân pe loc."
+      ]
+    }
+  ]
+}

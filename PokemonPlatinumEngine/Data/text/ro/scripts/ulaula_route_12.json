@@ -1,0 +1,70 @@
+{
+  "HapuMudsdale": [
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey. You're the island challenger, aren't you? I'm Hapu. I'm from Poni Island, way out west."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been walking the islands to see how the people live. This ridge is hard going on foot, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here. My Mudsdale knows the way over any rock. Put her in your Ride Pager and she'll come when you call."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Mudsdale in the Ride Pager! Mudsdale can gallop over rough ground."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll be off. There's a shrine past the desert I want to see. Maybe I'll see you there."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HapuTalk": [
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look like you could use a strong pair of legs under you. Hold on a moment."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

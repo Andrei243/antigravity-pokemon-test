@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! Stock up before you go on. You won't come back this way between battles."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Fă-ți provizii înainte să mergi mai departe. Nu te vei mai întoarce pe aici între lupte."
+        ]
+      }
+    },
+    "guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          "Ghidul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

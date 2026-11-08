@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Hall of Fame"
+    ],
+    "text": [
+      "Sala Faimei"
+    ]
+  },
+  "people": {
+    "diantha_hof": {
+      "name": {
+        "en": [
+          "Diantha"
+        ],
+        "text": [
+          "Diantha"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

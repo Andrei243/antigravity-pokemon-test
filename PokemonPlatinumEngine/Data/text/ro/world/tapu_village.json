@@ -1,0 +1,104 @@
+{
+  "people": {
+    "acerola": {
+      "name": {
+        "en": [
+          "Acerola"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mudsdale": {
+      "name": {
+        "en": [
+          "Rancher Moke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mudsdale_pokemon": {
+      "name": {
+        "en": [
+          "Mudsdale"
+        ],
+        "text": [
+          "Mudsdale"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mudsdale: Brrr-hoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Tapu Village stands right up here with the clouds. The old market on the hill has been empty for years. Nobody wants to go in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a ghost sits in the old market, all by itself. I think it's a cat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VillageSign": {
+      "en": [
+        "Tapu Village\nHigh above the island, where the clouds drift past."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RouteSign": {
+      "en": [
+        "Tapu Village crossroads\nWest: Route 12, North: Route 16\nEast: Route 13"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MartSign": {
+      "en": [
+        "The old Thrifty Megamart\nClosed for good. Please keep out."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

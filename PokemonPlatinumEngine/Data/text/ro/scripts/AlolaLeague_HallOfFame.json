@@ -1,0 +1,94 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "This is the Hall of Fame. Every Champion of Alola is kept here, with the Pokémon who stood beside them."
+      ],
+      "text": [
+        "Asta e Sala Faimei. Fiecare Campion al Alolei e păstrat aici, împreună cu Pokémonii care au stat lângă el."
+      ]
+    },
+    {
+      "en": [
+        "You were the very first Trainer I handed a Z-Ring to, back on Melemele. Now look at us. Let's record your team."
+      ],
+      "text": [
+        "Ai fost primul Antrenor căruia i-am dat un Inel Z, pe Melemele. Și acum uită-te la noi. Hai să-ți înregistrăm echipa."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        "Jocul nu a putut fi salvat."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Back again, Champion! A defended title goes in the record too. Every team that kept the chair is kept here."
+      ],
+      "text": [
+        "Din nou aici, Campionule! Un titlu apărat intră și el în registru. Fiecare echipă care a păstrat scaunul e păstrată aici."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        "Jocul nu a putut fi salvat."
+      ]
+    }
+  ],
+  "KukuiWaits": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Alola is lucky to have you, {player}. Woo!"
+      ],
+      "text": [
+        "Alola are noroc cu tine, {player}. Woo!"
+      ]
+    }
+  ]
+}

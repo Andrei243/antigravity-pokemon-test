@@ -1,0 +1,96 @@
+{
+  "people": {
+    "grunt_motel": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "wicke": {
+      "name": {
+        "en": [
+          "Wicke"
+        ],
+        "text": [
+          "Wicke"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Kanoa"
+        ],
+        "text": [
+          "Kanoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kanoa: Everything I catch today goes straight into a battle. Starting with you!"
+        ],
+        "text": [
+          "Pescar Kanoa: Tot ce prind azi merge direct într-o luptă. Începând cu tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kanoa: Back to the sea, all of you."
+        ],
+        "text": [
+          "Pescar Kanoa: Înapoi în mare, toți."
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Kaipo"
+        ],
+        "text": [
+          "Kaipo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Kaipo: Three islands down, one to go! And one trainer to beat. That's you."
+        ],
+        "text": [
+          "Rucsăcar Kaipo: Trei insule făcute, mai e una! Și un Antrenor de învins. Tu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Kaipo: Three islands and one loss. Fair trade."
+        ],
+        "text": [
+          "Rucsăcar Kaipo: Trei insule și o înfrângere. Schimb corect."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 8\nSouth: Royal Avenue. North-east: Route 7.\nWest: Lush Jungle"
+      ],
+      "text": [
+        "Ruta 8\nSud: Royal Avenue. Nord-est: Ruta 7.\nVest: Lush Jungle"
+      ]
+    }
+  }
+}

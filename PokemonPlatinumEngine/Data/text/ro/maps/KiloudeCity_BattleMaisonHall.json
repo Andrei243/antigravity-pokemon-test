@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Maison"
+    ],
+    "text": [
+      "Battle Maison"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Maison Host"
+        ],
+        "text": [
+          "Gazda Maisonului"
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "onlooker": {
+      "name": {
+        "en": [
+          "Onlooker"
+        ],
+        "text": [
+          "Privitor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Trainer who walks in here has beaten somebody. Nobody walks out having beaten everybody."
+        ],
+        "text": [
+          "Fiecare Antrenor care intră aici a învins pe cineva. Nimeni nu iese de aici după ce i-a învins pe toți."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -742,5 +742,109 @@
         "Câștigă trei meciuri și titlul e al tău. Pierde unul și turneul s-a terminat pentru tine."
       ]
     }
+  ],
+  "RoyalDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Battle Royal corner! Four Trainers battle at once, and every one of them is everyone else's foe."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brisa, Corin and Dalla are ready. Will you join them for a Battle Royal?",
+        "Join",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then step into the ring! Every Trainer for themselves!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First place! You read all three of them at once. Come back whenever you'd like another round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The moment any Trainer has no Pokémon left, the battle is over."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The highest score takes first place. Nothing is won or lost but the placing, so battle freely!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready for a free-for-all, you know where to find us."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

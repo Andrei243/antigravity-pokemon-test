@@ -1,0 +1,54 @@
+{
+  "Employee": [
+    {
+      "en": [
+        "Aether Employee"
+      ],
+      "text": [
+        "Angajatul Aether"
+      ]
+    },
+    {
+      "en": [
+        "The Aether House takes in children and Pokémon who have nobody else. Captain Acerola grew up here, you know."
+      ],
+      "text": [
+        "Casa Aether primește copii și Pokémoni care nu au pe nimeni altcineva. Căpitanul Acerola a crescut aici, să știi."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon look tired. Let them rest a moment with ours."
+      ],
+      "text": [
+        "Pokémonii tăi par obosiți. Lasă-i să se odihnească o clipă cu ai noștri."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon played with the Aether House's and were full of energy again."
+      ],
+      "text": [
+        "Pokémonii lui {player} s-au jucat cu cei de la Casa Aether și au fost iar plini de energie."
+      ]
+    }
+  ],
+  "Child": [
+    {
+      "en": [
+        "Child"
+      ],
+      "text": [
+        "Copil"
+      ]
+    },
+    {
+      "en": [
+        "Acerola says ghosts are just people who miss somebody. I'm not scared of them any more. Mostly."
+      ],
+      "text": [
+        "Acerola zice că fantomele sunt doar oameni cărora le e dor de cineva. Nu mi-e frică de ele de acum. În mare parte."
+      ]
+    }
+  ]
+}

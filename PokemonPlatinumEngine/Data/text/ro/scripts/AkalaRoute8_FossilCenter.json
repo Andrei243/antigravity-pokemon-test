@@ -1,0 +1,144 @@
+{
+  "Restorer": [
+    {
+      "en": [
+        "Restorer"
+      ],
+      "text": [
+        "Restauratorul"
+      ]
+    },
+    {
+      "en": [
+        "This is the Fossil Restoration Center. Bring me a Fossil and I'll bring back the Pokémon in it."
+      ],
+      "text": [
+        "Aici e Centrul de Restaurare a Fosilelor. Adu-mi o fosilă și îți aduc înapoi Pokémonul din ea."
+      ]
+    },
+    {
+      "en": [
+        "Oh, you have one! Shall I restore it for you?"
+      ],
+      "text": [
+        "A, ai una! Ți-o restaurez?"
+      ]
+    },
+    {
+      "en": [
+        "Leave it with me! It takes a little while."
+      ],
+      "text": [
+        "Lasă-o la mine! Durează puțin."
+      ]
+    },
+    {
+      "en": [
+        "Have a walk along the road and come back. It'll be ready by then."
+      ],
+      "text": [
+        "Fă o plimbare pe drum și întoarce-te. Până atunci va fi gata."
+      ]
+    },
+    {
+      "en": [
+        "Your Fossil came back to life as {thing}! Isn't it wonderful?"
+      ],
+      "text": [
+        "Fosila ta a revenit la viață ca {thing}! Nu-i minunat?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Your team is full, though. Make some room and come back for it."
+      ],
+      "text": [
+        "Echipa ta e plină, însă. Fă puțin loc și vino să-l iei."
+      ]
+    },
+    {
+      "en": [
+        "My partner over there sells Fossils dug up on the islands. Buy one, and I'll do the rest."
+      ],
+      "text": [
+        "Partenerul meu de acolo vinde fosile scoase de pe insule. Cumpără una și mă ocup eu de restul."
+      ]
+    },
+    {
+      "en": [
+        "No? The machine will be here."
+      ],
+      "text": [
+        "Nu? Aparatul va fi aici."
+      ]
+    }
+  ],
+  "Seller": [
+    {
+      "en": [
+        "Fossil Seller"
+      ],
+      "text": [
+        "Vânzătorul de fosile"
+      ]
+    },
+    {
+      "en": [
+        "Fossils from all over Alola's cliffs! 7,000 dollars each. One of each kind, while they last."
+      ],
+      "text": [
+        "Fosile de pe toate stâncile din Alola! 7.000 de Poké Dolari bucata. Câte una din fiecare fel, cât timp mai sunt."
+      ]
+    },
+    {
+      "en": [
+        "Which Fossil would you like?",
+        "SKULL FOSSIL",
+        "ARMOR FOSSIL",
+        "COVER FOSSIL",
+        "PLUME FOSSIL",
+        "NO THANKS"
+      ],
+      "text": [
+        "Ce fosilă ai vrea?",
+        "FOSILĂ CRANIU",
+        "FOSILĂ SCUT",
+        "FOSILĂ CARAPACE",
+        "FOSILĂ PANĂ",
+        "NU, MULȚUMESC"
+      ]
+    },
+    {
+      "en": [
+        "Come back when one catches your eye."
+      ],
+      "text": [
+        "Vino înapoi când îți ia ochiul vreuna."
+      ]
+    },
+    {
+      "en": [
+        "That one's sold out, I'm afraid. I only had the one."
+      ],
+      "text": [
+        "Aia s-a vândut, din păcate. Aveam doar una."
+      ]
+    },
+    {
+      "en": [
+        "That's 7,000 dollars. Come back when your pockets are heavier."
+      ],
+      "text": [
+        "Fac 7.000 de Poké Dolari. Vino înapoi când ai buzunarele mai pline."
+      ]
+    }
+  ]
+}

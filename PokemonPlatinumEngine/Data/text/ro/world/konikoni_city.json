@@ -1,0 +1,60 @@
+{
+  "people": {
+    "olivia": {
+      "name": {
+        "en": [
+          "Olivia"
+        ],
+        "text": [
+          "Olivia"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every stone in Olivia's shop came out of Akala's own hills. She polishes them herself, you know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull up there, Wishiwashi down here, and me in the middle with nothing on the hook."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Konikoni City\nA market town of stones and lanterns."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

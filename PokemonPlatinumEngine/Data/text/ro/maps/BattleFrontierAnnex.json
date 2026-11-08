@@ -107,6 +107,76 @@
           "Recepționera"
         ]
       }
+    },
+    "royal_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "royal_brisa": {
+      "name": {
+        "en": [
+          "Brisa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In a Battle Royal nobody has your back. I like it that way.",
+          "Watch who is weakest, and strike before someone else takes the knock-out!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "royal_corin": {
+      "name": {
+        "en": [
+          "Corin"
+        ],
+        "text": [
+          "Corin"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three foes at once, and every one of them would gladly see me fall first.",
+          "It is the knock-outs that count. Lasting to the end only counts if you have something left."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "royal_dalla": {
+      "name": {
+        "en": [
+          "Dalla"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No switching, no items. Just you, your Pokémon and three people in your way!",
+          "Hit hard and hit first. That's the whole secret!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -1,0 +1,34 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mega_gyaradosite": {
+      "name": {
+        "en": [
+          "Gyaradosite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Couriway Town\nWhere the rivers meet and fall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

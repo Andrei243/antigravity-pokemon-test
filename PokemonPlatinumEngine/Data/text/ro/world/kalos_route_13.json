@@ -1,0 +1,92 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Bastien"
+        ],
+        "text": [
+          "Bastien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Bastien: The wind out here blows sand into everything. My Pokémon don't mind it one bit!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Bastien: I'll be shaking sand out of my boots for a week."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Maëlle"
+        ],
+        "text": [
+          "Maëlle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Maëlle: I'm crossing the whole plain on foot. Care to slow me down?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Maëlle: All right, all right. I'll take a rest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Romain"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Romain: I train where nothing grows. Nothing to hide behind, nothing to lean on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Romain: You found something to lean on: your team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 13 · The Badlands\nNorth: Route 5 and Lumiose City\nSouth: Coumarine City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

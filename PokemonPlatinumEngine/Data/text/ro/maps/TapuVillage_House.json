@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Tapu Village"
+    ],
+    "text": [
+      "Tapu Village"
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our village keeps watch over the island's guardian. Tapu Bulu's ruins aren't far, and I've never once heard it say hello."
+        ],
+        "text": [
+          "Satul nostru veghează asupra ocrotitorului insulei. Ruinele lui Tapu Bulu nu sunt departe și nu l-am auzit niciodată să spună bună ziua."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

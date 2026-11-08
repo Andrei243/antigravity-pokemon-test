@@ -1,0 +1,28 @@
+{
+  "Desk": [
+    {
+      "en": [
+        "Hotel Clerk"
+      ],
+      "text": [
+        "Recepționerul hotelului"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the hotel! I'm afraid every room is booked for the festival season. Even the broom cupboard."
+      ],
+      "text": [
+        "Bun venit la hotel! Din păcate, toate camerele sunt rezervate pentru sezonul festivalului. Chiar și debaraua."
+      ]
+    },
+    {
+      "en": [
+        "Do enjoy the lobby, though. The sofa is the softest on Akala."
+      ],
+      "text": [
+        "Bucurați-vă de hol, totuși. Canapeaua e cea mai moale din Akala."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "League": [
+    {
+      "en": [
+        "Olivia"
+      ],
+      "text": [
+        "Olivia"
+      ]
+    },
+    {
+      "en": [
+        "Aloha, {player}. I'm Olivia. I used to be the kahuna of Akala, and I'm still the one who knows the stones best."
+      ],
+      "text": [
+        "Aloha, {player}. Sunt Olivia. Eram kahuna din Akala și tot eu sunt cea care cunoaște cel mai bine pietrele."
+      ]
+    },
+    {
+      "en": [
+        "Rock endures. It takes the waves and the wind and is still standing at the end. Let's see if you can say the same."
+      ],
+      "text": [
+        "Stânca rezistă. Primește valurile și vântul și tot în picioare rămâne la sfârșit. Să vedem dacă poți spune și tu același lucru."
+      ]
+    },
+    {
+      "en": [
+        "Beautiful. Even the stones moved aside for you. Acerola is next, and she is... a lot."
+      ],
+      "text": [
+        "Frumos. Până și pietrele s-au dat la o parte din fața ta. Urmează Acerola, care e... destul de mult."
+      ]
+    },
+    {
+      "en": [
+        "Acerola's waiting. She likes visitors, and sometimes they like her back."
+      ],
+      "text": [
+        "Acerola așteaptă. Îi plac vizitatorii și uneori și lor le place de ea."
+      ]
+    }
+  ]
+}

@@ -140,10 +140,85 @@
     },
     {
       "en": [
+        "{player}. You stood up to Team Plasma for strangers on a bridge. There is something I would ask of you."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Nu putem desface ce am făcut. Putem doar să facem mai bine de acum, câte un Pokémon pe rând."
+      ]
+    },
+    {
+      "en": [
+        "A Zorua has lived with us since the team split. It was raised by people who wanted to keep Pokémon from the world."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It deserves to see that world with a Trainer it can trust. Will you take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you look after Zorua?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Zorua!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Zorua likes to wear other faces. Be patient with it, and it will show you its own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I understand. It will be here, with us, if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your team is full, I see. Make room for it, and come back to me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How is Zorua? I'm glad it went with someone who fights for Pokémon, not with them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "We cannot undo what we did. We can only do better now, one Pokémon at a time."
       ],
       "text": [
-        "Nu putem desface ce am făcut. Putem doar să facem mai bine de acum, câte un Pokémon pe rând."
+        ""
       ]
     }
   ],

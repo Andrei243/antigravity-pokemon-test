@@ -1,0 +1,458 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "There you are! The Champion of Kalos, in our little station!"
+      ],
+      "text": [
+        "Iată-te! Campionul din Kalos, în mica noastră gară!"
+      ]
+    },
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "The professor asked us to wait for you here. He wanted to give you something himself."
+      ],
+      "text": [
+        "Profesorul ne-a rugat să te așteptăm aici. A vrut să-ți dea ceva el însuși."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Congratulations, Champion. I always knew the bond between you and your Pokémon would carry you all the way."
+      ],
+      "text": [
+        "{player}! Felicitări, Campionule. Am știut mereu că legătura dintre tine și Pokémonii tăi te va duce până la capăt."
+      ]
+    },
+    {
+      "en": [
+        "With the League behind you, all of Kalos is open to you, even the corners most people never see."
+      ],
+      "text": [
+        "Cu Liga în spate, tot Kalos ți se deschide, chiar și colțurile pe care majoritatea oamenilor nu le văd niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Here. With this pass you can ride the TMV, our fast train, as often as you like."
+      ],
+      "text": [
+        "Poftim. Cu legitimația asta poți călători cu TMV, trenul nostru rapid, de câte ori vrei."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the TMV pass!"
+      ],
+      "text": [
+        "{player} a primit legitimația TMV!"
+      ]
+    },
+    {
+      "en": [
+        "The line runs out to Kiloude City, by the sea. {rival} took the first train there this morning, looking for you."
+      ],
+      "text": [
+        "Linia merge până la Kiloude City, la mare. {rival} a luat primul tren acolo azi-dimineață, căutându-te."
+      ]
+    },
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "Show your pass to the attendant by the platform, and off you go!"
+      ],
+      "text": [
+        "Arată legitimația funcționarului de lângă peron și poți pleca!"
+      ]
+    }
+  ],
+  "Sycamore": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "The TMV runs to Kiloude City. Off you go, Champion!"
+      ],
+      "text": [
+        "TMV merge până la Kiloude City. Du-te, Campionule!"
+      ]
+    }
+  ],
+  "Sina": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "We'll tell everyone at the laboratory the Champion came through our station!"
+      ],
+      "text": [
+        "Le vom spune tuturor de la laborator că Campionul a trecut prin gara noastră!"
+      ]
+    }
+  ],
+  "Dexio": [
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "The trains are very punctual. The professor, less so."
+      ],
+      "text": [
+        "Trenurile sunt foarte punctuale. Profesorul, mai puțin."
+      ]
+    }
+  ],
+  "Tmv": [
+    {
+      "en": [
+        "TMV Attendant"
+      ],
+      "text": [
+        "Funcționarul TMV"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the TMV. The next train leaves for Kiloude City. Will you be travelling?"
+      ],
+      "text": [
+        "Bun venit la TMV. Următorul tren pleacă spre Kiloude City. Călătorești?"
+      ]
+    },
+    {
+      "en": [
+        "Your pass, please... Thank you. All aboard!"
+      ],
+      "text": [
+        "Legitimația, vă rog... Mulțumesc. Îmbarcarea!"
+      ]
+    },
+    {
+      "en": [
+        "The trains run all day. Come back whenever you're ready."
+      ],
+      "text": [
+        "Trenurile circulă toată ziua. Revino când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory."
+      ],
+      "text": [
+        "Îmi pare rău, TMV e doar pentru deținătorii de legitimație. Legitimațiile se dau la laboratorul Profesorului Sycamore."
+      ]
+    }
+  ],
+  "Ticket": [
+    {
+      "en": [
+        "A card is tucked into the pot, with an eye drawn on it in ink.",
+        "{player} found one of Looker's tickets!"
+      ],
+      "text": [
+        "O carte e strecurată în ghiveci, cu un ochi desenat pe ea în cerneală.",
+        "{player} a găsit unul dintre biletele lui Looker!"
+      ]
+    },
+    {
+      "en": [
+        "A tall plant in a pot. Somebody waters it with great care."
+      ],
+      "text": [
+        "O plantă înaltă într-un ghiveci. Cineva o udă cu mare grijă."
+      ]
+    }
+  ],
+  "GangRouille": [
+    {
+      "en": [
+        "Rouille"
+      ],
+      "text": [
+        "Rouille"
+      ]
+    },
+    {
+      "en": [
+        "This station's ours today, sweetheart. Tourists pay a toll. You look like a tourist."
+      ],
+      "text": [
+        "Gara asta e a noastră azi, dulceață. Turiștii plătesc taxă. Arăți a turist."
+      ]
+    },
+    {
+      "en": [
+        "Tch. Fine. Not a tourist, then."
+      ],
+      "text": [
+        "Tch. Fie. Nu ești turist, atunci."
+      ]
+    },
+    {
+      "en": [
+        "Don't look at me. Look at those two. Nobody here's the boss."
+      ],
+      "text": [
+        "Nu te uita la mine. Uită-te la ăia doi. Aici nimeni nu e șeful."
+      ]
+    }
+  ],
+  "GangBrutus": [
+    {
+      "en": [
+        "Brutus"
+      ],
+      "text": [
+        "Brutus"
+      ]
+    },
+    {
+      "en": [
+        "You want through? Then you go through me, and nobody goes through me."
+      ],
+      "text": [
+        "Vrei să treci? Atunci treci prin mine, iar prin mine nu trece nimeni."
+      ]
+    },
+    {
+      "en": [
+        "...Somebody went through me."
+      ],
+      "text": [
+        "...Cineva a trecut prin mine."
+      ]
+    },
+    {
+      "en": [
+        "My back's still sore. Your Pokémon hit like a train."
+      ],
+      "text": [
+        "Mă doare încă spatele. Pokémonii tăi lovesc ca un tren."
+      ]
+    }
+  ],
+  "GangFauve": [
+    {
+      "en": [
+        "Fauve"
+      ],
+      "text": [
+        "Fauve"
+      ]
+    },
+    {
+      "en": [
+        "The tourist's Pokémon is ours now. Finders keepers. Want to argue?"
+      ],
+      "text": [
+        "Pokémonul turistei e al nostru acum. Cine găsește, păstrează. Vrei să te cerți?"
+      ]
+    },
+    {
+      "en": [
+        "Argument lost. Ugh."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We were only messing about. Mostly."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EmmaStation": [
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "I know these three. We grew up on the same streets. Beat them, and leave the talking to me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Tourist": [
+    {
+      "en": [
+        "Tourist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat them all! But they still have my Pokémon..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "Brutus. Rouille. Fauve. You remember me? From the alleys behind the restaurants. Give her Pokémon back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brutus"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Emma? Little Emma? You went straight?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "I found something better to do than this. So could you. The city's big enough for people who help."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rouille"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Here, take it back. We were bored, that's all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tourist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon! Oh, thank you, both of you! Lumiose isn't so frightening after all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "Let's tell Looker. He'll pretend he isn't impressed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those three took my Pokémon and won't give it back! They say I have to pay their toll first..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

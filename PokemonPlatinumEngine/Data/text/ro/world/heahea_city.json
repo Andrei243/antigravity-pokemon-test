@@ -1,0 +1,78 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aether_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "First stop, the tourist bureau. Second stop, the volcano. Third stop, the beach. Fourth stop, a nap."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trial captains of Akala are Lana, Kiawe and Mallow. The nearest is Lana's, up past Paniola."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Heahea City\nThe front door of Akala Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "PierSign": {
+      "en": [
+        "Heahea Pier\nFerries to Hau'oli City, Melemele Island."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

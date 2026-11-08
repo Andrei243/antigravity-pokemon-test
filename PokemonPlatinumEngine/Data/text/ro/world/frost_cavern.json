@@ -1,0 +1,119 @@
+{
+  "people": {
+    "noemie": {
+      "name": {
+        "en": [
+          "Noemie"
+        ],
+        "text": [
+          "Noemie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Noemie: The cave keeps the snow I lose on the slopes. I come here to find it again. And to battle!"
+        ],
+        "text": [
+          "Schior Noemie: Peștera păstrează zăpada pe care o pierd pe pârtii. Vin aici s-o regăsesc. Și să lupt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Noemie: My snow, your win. Fair is fair."
+        ],
+        "text": [
+          "Schior Noemie: Zăpada mea, victoria ta. Corect e corect."
+        ]
+      }
+    },
+    "octave": {
+      "name": {
+        "en": [
+          "Octave"
+        ],
+        "text": [
+          "Octave"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Octave: Cold in here, isn't it? Nothing a good battle won't fix!"
+        ],
+        "text": [
+          "Drumeț Octave: Frig aici, nu-i așa? Nimic ce o luptă bună nu repară!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Octave: Warm now. Warmer than I would like, in fact."
+        ],
+        "text": [
+          "Drumeț Octave: Cald acum. Mai cald decât mi-aș dori, de fapt."
+        ]
+      }
+    },
+    "brice": {
+      "name": {
+        "en": [
+          "Brice"
+        ],
+        "text": [
+          "Brice"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Brice: Glide in, glide out. That is how the cave is meant to be crossed. You are not gliding. You are walking into a battle!"
+        ],
+        "text": [
+          "Schior Brice: Alunecă înăuntru, alunecă afară. Așa se traversează peștera. Tu nu aluneci. Mergi într-o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Brice: You slid right past my guard. Nicely done."
+        ],
+        "text": [
+          "Schior Brice: Ai alunecat chiar pe lângă garda mea. Bine făcut."
+        ]
+      }
+    },
+    "sylvain": {
+      "name": {
+        "en": [
+          "Sylvain"
+        ],
+        "text": [
+          "Sylvain"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Sylvain: The deepest hall of Frost Cavern is mine for the afternoon. You will have to win it from me."
+        ],
+        "text": [
+          "Antrenor As Sylvain: Cea mai adâncă sală din Frost Cavern e a mea pentru după-amiază. Va trebui s-o câștigi de la mine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Sylvain: Take the hall. I will warm my hands somewhere else."
+        ],
+        "text": [
+          "Antrenor As Sylvain: Ia sala. Eu îmi încălzesc mâinile în altă parte."
+        ]
+      }
+    },
+    "mega_scizorite": {
+      "name": {
+        "en": [
+          "Scizorite"
+        ],
+        "text": [
+          "Scizorite"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Konikoni City"
+    ],
+    "text": [
+      "Konikoni City"
+    ]
+  },
+  "people": {
+    "chef": {
+      "name": {
+        "en": [
+          "Chef"
+        ],
+        "text": [
+          "Bucătarul"
+        ]
+      }
+    },
+    "diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Konikoni special: fish, rice, and a sauce that makes your eyes water. In a good way."
+        ],
+        "text": [
+          "Specialitatea din Konikoni: pește, orez și un sos care îți aduce lacrimi în ochi. În sens bun."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

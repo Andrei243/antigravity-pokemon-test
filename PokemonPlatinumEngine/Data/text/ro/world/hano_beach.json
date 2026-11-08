@@ -1,0 +1,79 @@
+{
+  "people": {
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "wicke": {
+      "name": {
+        "en": [
+          "Wicke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Nohea"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Nohea: Sun, sand and a battle. That's a holiday!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Nohea: Sun and sand will have to do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          "Înotătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Watch out for the Pyukumuku on the sand. Step on one and you'll know about it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

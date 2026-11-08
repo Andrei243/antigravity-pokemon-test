@@ -1,0 +1,109 @@
+{
+  "people": {
+    "ioane": {
+      "name": {
+        "en": [
+          "Ioane"
+        ],
+        "text": [
+          "Ioane"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ioane: The League is at the top. The cold gets worse on the way. So do I."
+        ],
+        "text": [
+          "Antrenor As Ioane: Liga e în vârf. Frigul se înrăutățește pe drum. La fel și eu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ioane: You made me cold. In a good way."
+        ],
+        "text": [
+          "Antrenor As Ioane: M-ai făcut să îngheț. În sens bun."
+        ]
+      }
+    },
+    "hina": {
+      "name": {
+        "en": [
+          "Hina"
+        ],
+        "text": [
+          "Hina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Hina: I train in the snow all year. Do you?"
+        ],
+        "text": [
+          "Antrenor As Hina: Mă antrenez în zăpadă tot anul. Tu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Hina: Maybe I should train in the sun."
+        ],
+        "text": [
+          "Antrenor As Hina: Poate ar trebui să mă antrenez la soare."
+        ]
+      }
+    },
+    "kaeo": {
+      "name": {
+        "en": [
+          "Kaeo"
+        ],
+        "text": [
+          "Kaeo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Kaeo: Almost at the League. Almost. Not past me."
+        ],
+        "text": [
+          "Veteran Kaeo: Aproape la Ligă. Aproape. Nu de mine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Kaeo: Almost, and then past."
+        ],
+        "text": [
+          "Veteran Kaeo: Aproape, apoi de mine."
+        ]
+      }
+    },
+    "pua": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          "Pua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Pua: Eat my fire, or my thunder, or my claws! Whichever you prefer!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Pua: Mănâncă focul meu, sau fulgerul meu, sau ghearele mele! Ce preferi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Pua: I'll eat my words."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Pua: Îmi mănânc cuvintele."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

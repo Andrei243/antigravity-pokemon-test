@@ -1,0 +1,106 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Gaspard"
+        ],
+        "text": [
+          "Gaspard"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Gaspard: The drifts are up to my knees and rising. Let's battle before we're buried!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Gaspard: Buried by you instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "skier": {
+      "name": {
+        "en": [
+          "Neige"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Neige: My name means snow, and so does my team. Brr!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Neige: Melted..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mamoswine_west": {
+      "name": {
+        "en": [
+          "Mamoswine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mamoswine_first": {
+      "name": {
+        "en": [
+          "Mamoswine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mamoswine_second": {
+      "name": {
+        "en": [
+          "Mamoswine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mamoswine_east": {
+      "name": {
+        "en": [
+          "Mamoswine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 17\nWest: Dendemille Town\nEast: Anistar City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

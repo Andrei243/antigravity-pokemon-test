@@ -1,0 +1,136 @@
+{
+  "RoyalScene": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here! You passed Lana's trial too? Awesome!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Alola, cousin! This is the Battle Royal Dome. Four trainers in one ring, each against the rest. It gets loud, yeah!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's not open to newcomers yet. So how about a regular battle out here instead, the two of you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Yes! I've been training the whole way from Paniola. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Aw, man! Your Pokémon are on fire today. I'm getting a malasada to recover."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I won! I won! Okay, I'm still getting a malasada."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! That's what I like to see. Kiawe's trial is on Wela Volcano Park: Route 8 north, then Route 7's beach."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Isn't the dome something? One day you'll stand in that ring, cousin. I can feel it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Royal Avenue's got everything! Shops, a dome, and a malasada stand somewhere. I just have to find it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

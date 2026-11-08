@@ -1,0 +1,176 @@
+{
+  "Arrival": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here. ...I wanted to say thank you. For what you did at the Foundation."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nebby is a little better. It wants to go home, I think. It keeps saying so, in its own way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Poni, cousin. The last island. There's a trial in Vast Poni Canyon, and a grand trial across the strait."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Captain Dulse is waiting up in Poni Wilds. His totem is a Kommo-o, and Kommo-o does not do small talk."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "I'm going to the Altar of the Sunne and Moone, on the other side of the island. I think that's where Nebby has to be."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please be careful, {player}. And I'll see you there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Machamp on the shore nodded at {player}, as if to say it was ready to lend a hand."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MachampRide": [
+    {
+      "en": [
+        "Machamp"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Machamp flexed all four arms and pushed a boulder along the shore without a sound."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Machamp in the Ride Pager! Machamp can shove boulders aside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Machamp flexed."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Dulse's trial is up in the Wilds. Go on, I'll be around."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Malie City, Ula'ula",
+        "Aether Paradise",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Seafolk Village..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Seafolk Village..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

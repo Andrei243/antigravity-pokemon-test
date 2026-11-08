@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Dendemille Town"
+    ],
+    "text": [
+      "Orașul Dendemille"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I grind flour for the whole north. Lumiose bakers swear by it, and I swear by them."
+        ],
+        "text": [
+          "Macin făină pentru tot nordul. Brutarii din Lumiose jură pe ea, iar eu jur pe ei."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,76 @@
+{
+  "people": {
+    "kawika": {
+      "name": {
+        "en": [
+          "Kawika"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Kawika: The ruins at the end of the desert! I've walked in circles for days to find them. Battle me while I rest!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Kawika: Now I'm rested AND lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "nalu": {
+      "name": {
+        "en": [
+          "Nalu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Nalu: Sand in my boots, sand in my hat, sand in my sandwich! Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Nalu: Sand in my pride now, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "DesertSign": {
+      "en": [
+        "Haina Desert\nNorth: the Ruins of Abundance\nKeep to the paths between the rocks!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

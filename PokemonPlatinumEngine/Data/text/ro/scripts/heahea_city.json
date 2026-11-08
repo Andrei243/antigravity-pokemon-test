@@ -1,0 +1,62 @@
+{
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This ferry sails for Hau'oli City on Melemele Island. All aboard?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Heahea's pier..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AetherFerry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That ferry is for the Aether Foundation's guests. It only takes those who've finished Akala's grand trial."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This ferry sails to Aether Paradise. All aboard?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Heahea's pier..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Route 8"
+    ],
+    "text": [
+      "Ruta 8"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kiawe trains up on Wela Volcano. Route 7 runs along the beach to it, just north-east of here."
+        ],
+        "text": [
+          "Kiawe se antrenează pe Wela Volcano. Ruta 7 merge de-a lungul plajei până acolo, chiar la nord-est de aici."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

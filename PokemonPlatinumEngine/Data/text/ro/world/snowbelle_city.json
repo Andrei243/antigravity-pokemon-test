@@ -1,0 +1,32 @@
+{
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The woods north of town wind round and round. People say they lead to a village where only Pokémon live."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Snowbelle City\nWhere the snow never quite melts."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

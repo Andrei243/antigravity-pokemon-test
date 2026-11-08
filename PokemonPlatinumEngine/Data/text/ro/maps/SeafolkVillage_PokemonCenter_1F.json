@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Seafolk Village"
+    ],
+    "text": [
+      "Seafolk Village"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poni Island is the last island. Past it there's nothing but open sea... and, they say, the sky."
+        ],
+        "text": [
+          "Poni e ultima insulă. După ea nu mai e decât marea deschisă... și, se zice, cerul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

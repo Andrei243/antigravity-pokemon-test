@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Royal Avenue"
+    ],
+    "text": [
+      "Royal Avenue"
+    ]
+  },
+  "people": {
+    "fan": {
+      "name": {
+        "en": [
+          "Battle Fan"
+        ],
+        "text": [
+          "Fan al luptelor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have seen every Battle Royal since the dome opened. Every single one! My mum says that is not a job."
+        ],
+        "text": [
+          "Am văzut fiecare Battle Royal de când s-a deschis domul. Fiecare! Mama zice că asta nu e o meserie."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

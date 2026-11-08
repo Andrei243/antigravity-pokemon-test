@@ -1,0 +1,98 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    },
+    "machamp": {
+      "name": {
+        "en": [
+          "Machamp"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          "Bătrâna înțeleaptă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea folk have lived on these stilts since before there were trials. The sea gives, and the sea takes, and we say thank you both times."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poni Island is the last island! The Altar of the Sunne and Moone is up past the ruins, where the sky touches the stone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PierSign": {
+      "en": [
+        "Seafolk Village Pier\nFerries to Malie City, Ula'ula Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "VillageSign": {
+      "en": [
+        "Seafolk Village\nA village of the sea folk, on the shore of Poni Island."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

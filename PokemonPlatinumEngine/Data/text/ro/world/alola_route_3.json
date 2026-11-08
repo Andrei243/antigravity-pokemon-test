@@ -1,0 +1,136 @@
+{
+  "people": {
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Kaimana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Kaimana: The view from up here is the best on the island. The battles are pretty good too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Kaimana: I got distracted by the view. That's my excuse."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Pua: My Ballerilly and I practise our battles up here where nobody can see us lose!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Pua: Oh no, somebody saw."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ace_trainer": {
+      "name": {
+        "en": [
+          "Makoa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Makoa: A trial-goer, are you? Then a battle with me is good practice for what comes next."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Makoa: Good. The kahuna will be glad to see you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Keola"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Keola: The cliffs are steep, but my Kirinine and I are steeper! Wait, that doesn't make sense..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Keola: I'll sit down and think about what I meant."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 3\nEast: Melemele Meadow\nSouth: Route 2"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MeadowSign": {
+      "en": [
+        "Melemele Meadow\nA field of yellow flowers."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

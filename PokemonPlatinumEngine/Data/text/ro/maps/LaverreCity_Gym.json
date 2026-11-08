@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Laverre Gym"
+    ],
+    "text": [
+      "Sala Laverre"
+    ]
+  },
+  "people": {
+    "valerie": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          "Valerie"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de sală"
+        ]
+      }
+    },
+    "kalos_lass_josette": {
+      "name": {
+        "en": [
+          "Josette"
+        ],
+        "text": [
+          "Josette"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Josette: Isn't the Gym lovely? Like a doll's house! Too lovely for you!"
+        ],
+        "text": [
+          "Domnișoară Josette: Nu-i drăguță sala? Ca o casă de păpuși! Prea drăguță pentru tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Josette: My dress got all creased..."
+        ],
+        "text": [
+          "Domnișoară Josette: Rochia mi s-a mototolit toată..."
+        ]
+      }
+    },
+    "kalos_lady_eleonore": {
+      "name": {
+        "en": [
+          "Éléonore"
+        ],
+        "text": [
+          "Éléonore"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Éléonore: One must battle with grace. Let me show you how it's done."
+        ],
+        "text": [
+          "Doamnă Éléonore: Trebuie să lupți cu grație. Lasă-mă să-ți arăt cum se face."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Éléonore: How very graceless of me."
+        ],
+        "text": [
+          "Doamnă Éléonore: Ce lipsit de grație din partea mea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

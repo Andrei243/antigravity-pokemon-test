@@ -29,9 +29,12 @@
       },
       "dialog": {
         "en": [
-          "The Gym is closed, but the Leader's Pokémon still come out to sunbathe on the rocks by the gate. They're huge!"
+          "The Gym Leader is an old gardener. His Pokémon come out to sunbathe on the rocks by the gate. They're huge!"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Sala e închisă, dar Pokémonii Liderului tot ies să se bronzeze pe stâncile de lângă poartă. Sunt uriași!"
         ]
       }

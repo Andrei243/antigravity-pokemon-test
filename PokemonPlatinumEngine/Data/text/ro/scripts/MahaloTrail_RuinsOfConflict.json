@@ -1,0 +1,20 @@
+{
+  "TapuKoko": [
+    {
+      "en": [
+        "A crack of yellow light split the ruins, and Tapu Koko hung over the stones before them!"
+      ],
+      "text": [
+        "O lumină galbenă a despicat ruinele, iar Tapu Koko a atârnat deasupra pietrelor în fața lor!"
+      ]
+    },
+    {
+      "en": [
+        "It looked {player} over, then vanished in a flash, as if it would rather wait."
+      ],
+      "text": [
+        "L-a măsurat pe {player} din priviri, apoi a dispărut într-o străfulgerare, ca și cum ar fi preferat să aștepte."
+      ]
+    }
+  ]
+}

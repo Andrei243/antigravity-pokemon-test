@@ -146,6 +146,16 @@
         ]
       }
     },
+    "lift_operator": {
+      "name": {
+        "en": [
+          "Lift Operator"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "lass": {
       "name": {
         "en": [
@@ -157,10 +167,93 @@
       },
       "dialog": {
         "en": [
-          "They've mended the road west to Route 5, but the others are still closed. I'm off to Camphrier on my skates!"
+          "Every road out of Lumiose goes somewhere lovely. Today I'm skating west to Camphrier!"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Au reparat drumul spre vest, către Ruta 5, dar celelalte sunt încă închise. Eu plec spre Camphrier, pe patine!"
+        ]
+      }
+    },
+    "alley_nanette": {
+      "name": {
+        "en": [
+          "Nanette"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "alley_lou": {
+      "name": {
+        "en": [
+          "Lou"
+        ],
+        "text": [
+          "Lou"
+        ]
+      }
+    },
+    "alley_cerise": {
+      "name": {
+        "en": [
+          "Cerise"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "alley_bastien": {
+      "name": {
+        "en": [
+          "Bastien"
+        ],
+        "text": [
+          "Bastien"
+        ]
+      }
+    },
+    "alley_emma": {
+      "name": {
+        "en": [
+          "Emma"
+        ],
+        "text": [
+          "Emma"
+        ]
+      }
+    },
+    "suspect_woman": {
+      "name": {
+        "en": [
+          "Woman in a hood"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "suspect_child": {
+      "name": {
+        "en": [
+          "Child in a cap"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "suspect_lady": {
+      "name": {
+        "en": [
+          "Lady in a veil"
+        ],
+        "text": [
+          ""
         ]
       }
     }
@@ -220,6 +313,14 @@
       ],
       "text": [
         "Piața Bleu\nLa sud-est de turn"
+      ]
+    },
+    "StationSign": {
+      "en": [
+        "Lumiose Station\nThe TMV to Kiloude City"
+      ],
+      "text": [
+        ""
       ]
     }
   }

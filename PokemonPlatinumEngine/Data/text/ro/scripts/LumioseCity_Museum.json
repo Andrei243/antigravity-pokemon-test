@@ -1,0 +1,146 @@
+{
+  "Curator": [
+    {
+      "en": [
+        "Curator"
+      ],
+      "text": [
+        "Curatorul"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Lumiose Museum. Every work here was made in Kalos, or found in its ground."
+      ],
+      "text": [
+        "Bun venit la Muzeul Lumiose. Fiecare lucrare de aici a fost făcută în Kalos sau găsită în pământul lui."
+      ]
+    },
+    {
+      "en": [
+        "You're from the bureau? Thank goodness. Last night someone broke in and smashed three of our cases."
+      ],
+      "text": [
+        "Ești de la birou? Slavă Domnului. Azi-noapte cineva a pătruns și a spart trei dintre vitrinele noastre."
+      ]
+    },
+    {
+      "en": [
+        "Nothing was taken from them, but a guard saw a figure in a dark suit running off toward the alleys."
+      ],
+      "text": [
+        "Nimic nu s-a luat din ele, dar un paznic a văzut o figură în costum închis fugind spre alei."
+      ]
+    },
+    {
+      "en": [
+        "And all week, Trainers have had Poké Balls snatched in the alleys of this city. Three suspects keep being seen there."
+      ],
+      "text": [
+        "Și toată săptămâna, Antrenorilor li s-au smuls Poké Balls în aleile orașului. Trei suspecți sunt văzuți mereu acolo."
+      ]
+    },
+    {
+      "en": [
+        "One in the alley beside the bureau, one in the alley beside this museum, and one near the restaurant to the west."
+      ],
+      "text": [
+        "Unul în aleea de lângă birou, unul în aleea de lângă muzeul ăsta și unul lângă restaurantul din vest."
+      ]
+    },
+    {
+      "en": [
+        "The alley beside the bureau, the alley beside this museum, and the street near the restaurant. Please, be careful."
+      ],
+      "text": [
+        "Aleea de lângă birou, aleea de lângă muzeul ăsta și strada de lângă restaurant. Te rog, ai grijă."
+      ]
+    }
+  ],
+  "Ticket": [
+    {
+      "en": [
+        "A card is propped against the statue's foot, with an eye drawn on it in ink.",
+        "{player} found one of Looker's tickets!"
+      ],
+      "text": [
+        "O carte e sprijinită la piciorul statuii, cu un ochi desenat pe ea în cerneală.",
+        "{player} a găsit unul dintre biletele lui Looker!"
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Trainer and a Pokémon, carved so long ago that nobody knows which Pokémon it was."
+      ],
+      "text": [
+        "O statuie a unui Antrenor și a unui Pokémon, sculptată atât de demult încât nimeni nu știe care Pokémon era."
+      ]
+    }
+  ],
+  "LookerFarewell": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "You came. Of course you did. You always find what you are looking for, {player}."
+      ],
+      "text": [
+        "Ai venit. Bineînțeles. Găsești mereu ce cauți, {player}."
+      ]
+    },
+    {
+      "en": [
+        "The city is safe. Xerosic is in custody, and Emma is free. My work in Lumiose is finished."
+      ],
+      "text": [
+        "Orașul e în siguranță. Xerosic e în custodie, iar Emma e liberă. Treaba mea în Lumiose s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "The International Police want me somewhere else. A detective's life is a suitcase and a train ticket."
+      ],
+      "text": [
+        "Poliția Internațională mă vrea în altă parte. Viața unui detectiv e o valiză și un bilet de tren."
+      ]
+    },
+    {
+      "en": [
+        "Emma will run the bureau now. She knows the streets, and she has a good heart. Look in on her from time to time."
+      ],
+      "text": [
+        "Emma va conduce biroul acum. Cunoaște străzile și are suflet bun. Treci pe la ea din când în când."
+      ]
+    },
+    {
+      "en": [
+        "And you... You have earned something. From today, you may call yourself Looker too. A secret name, for a secret job."
+      ],
+      "text": [
+        "Iar tu... Ai meritat ceva. Din ziua asta, îți poți spune și tu Looker. Un nume secret, pentru o treabă secretă."
+      ]
+    },
+    {
+      "en": [
+        "Farewell, partner. Look after this city of light."
+      ],
+      "text": [
+        "Rămas-bun, partenerule. Ai grijă de orașul ăsta al luminii."
+      ]
+    },
+    {
+      "en": [
+        "Looker turned up his collar and walked out of the museum without looking back."
+      ],
+      "text": [
+        "Looker și-a ridicat gulerul și a ieșit din muzeu fără să se uite înapoi."
+      ]
+    }
+  ]
+}

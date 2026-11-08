@@ -1,0 +1,23 @@
+{
+  "people": {
+    "swimmer": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          "Înotătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The pool in here is cold enough to make a Seel shiver. It's lovely. You should try it."
+        ],
+        "text": [
+          "Apa din piscina asta e destul de rece să facă un Seel să tremure. E încântătoare. Ar trebui să încerci."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

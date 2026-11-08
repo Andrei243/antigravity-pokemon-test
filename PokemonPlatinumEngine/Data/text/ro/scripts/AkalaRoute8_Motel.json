@@ -1,0 +1,52 @@
+{
+  "Clerk": [
+    {
+      "en": [
+        "Motel Clerk"
+      ],
+      "text": [
+        "Recepționerul motelului"
+      ]
+    },
+    {
+      "en": [
+        "Need a nap? A room is 500 dollars, Pokémon included. Would you like to rest?"
+      ],
+      "text": [
+        "Ai nevoie de un pui de somn? O cameră costă 500 de Poké Dolari, Pokémonii incluși. Vrei să te odihnești?"
+      ]
+    },
+    {
+      "en": [
+        "{player} and the Pokémon rested for a while."
+      ],
+      "text": [
+        "{player} și Pokémonii s-au odihnit o vreme."
+      ]
+    },
+    {
+      "en": [
+        "Feeling fresh? Mind the grunts outside."
+      ],
+      "text": [
+        "Te simți proaspăt? Ai grijă la bătăușii de afară."
+      ]
+    },
+    {
+      "en": [
+        "A little short, are we? There's a Pokémon Center just down the road."
+      ],
+      "text": [
+        "Ești puțin sub sumă, nu? E un Centru Pokémon chiar mai încolo pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Come back if you change your mind."
+      ],
+      "text": [
+        "Revino dacă te răzgândești."
+      ]
+    }
+  ]
+}

@@ -90,5 +90,129 @@
         "Cerul Hoenn e larg, {player}. Dacă traversezi vreodată marea într-acolo, uită-te în sus din când în când."
       ]
     }
+  ],
+  "Curator": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the museum. Mind the bones: some of them are older than the mountains outside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, you look like a Trainer who travels. We found a lump of amber in the back room, more than we can study."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's something caught inside it, from long, long ago. My colleague over there can tell you more."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FossilScientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We study how to bring Pokémon back from fossils here. And at last, we've managed it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've brought a Fossil, haven't you? Shall I bring it back to life for you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leave it with me. The machine needs a little while."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take a walk round Pewter City, then come back. It'll be ready by then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! Your Fossil came back to life as {thing}!"
+      ],
+      "text": [
+        "Iată-te! Fosila ta a revenit la viață ca {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "It's been asleep in that stone for longer than anyone can say. Show it the world."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But your team is full! Make room, and come back for it."
+      ],
+      "text": [
+        "Dar echipa ta e plină! Fă loc și vino după el."
+      ]
+    },
+    {
+      "en": [
+        "If you ever find a Fossil, bring it here. I'll show you what it used to be!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the machine will be here if you change your mind."
+      ],
+      "text": [
+        "Nu? Ei bine, aparatul rămâne aici dacă te răzgândești."
+      ]
+    }
   ]
 }

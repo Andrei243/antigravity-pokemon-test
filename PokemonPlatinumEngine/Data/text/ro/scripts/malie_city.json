@@ -1,0 +1,188 @@
+{
+  "Arrival": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here! The ferry was so fast I didn't think you'd make it before the malasadas were gone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Ula'ula, cousin. This island is the biggest of the four, and its trials are the toughest yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Captain Sophocles is waiting at the observatory on Mount Hokulani, up Route 10. After that comes Tapu Village, and Acerola's trial."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Hey, before we go anywhere, let's battle! I've got a new Pokémon since the last time, and I want you to see it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! Even with a Z-Move, you were faster than me. I'll catch up. Just you wait!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! That's what I like to see. Off you go, then. I'll be in my lab, taking Z-Moves on the chin."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Route 10 leads to the observatory on Mount Hokulani. The air's thin, so mind your lungs!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Go on, I'll catch up! After a malasada or two."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry's for trial-goers on their way from Aether Paradise. Come back once you've seen the Foundation."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Aether Paradise",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Aether Paradise",
+        "Seafolk Village, Poni",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Malie City's pier..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Malie City's pier and out across the sea to Poni Island..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

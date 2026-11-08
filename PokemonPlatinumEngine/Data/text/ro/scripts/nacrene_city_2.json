@@ -1,0 +1,164 @@
+{
+  "Ranger": [
+    {
+      "en": [
+        "Pokémon Ranger"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I bring things I find in the wild for the museum to study. They've more fossils than they have room for, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like one of these two?",
+        "The Cover Fossil",
+        "The Plume Fossil",
+        "No, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the offer stands."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The scientist over there can bring it back to life. It used to be part of a Pokémon's shell, from the old sea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The scientist over there can bring it back to life. It used to be part of a Pokémon's wing, from long ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, it's you! I dug up another fossil on my last trip. It's the kind you didn't take, so it ought to be yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I bring things I find in the wild for the museum to study. Every fossil has a story, if you know how to read it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FossilScientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We restore fossils here, at the museum's own laboratory."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You have a fossil with you! Shall I bring it back to life?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wonderful. Leave it with me for a little while."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have a look round Nacrene City, then come back. It will be ready by then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here it is! Your fossil came back to life as {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "It has waited in that stone a very long time. Take good care of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But your team is full! Make some room, and come back for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bring one in sometime, and we'll see what we can do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the laboratory will be here if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

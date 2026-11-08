@@ -1,0 +1,110 @@
+{
+  "people": {
+    "gladion": {
+      "name": {
+        "en": [
+          "Gladion"
+        ],
+        "text": [
+          "Gladion"
+        ]
+      }
+    },
+    "breeder": {
+      "name": {
+        "en": [
+          "Lehua"
+        ],
+        "text": [
+          "Lehua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Lehua: My two have been raised with love. And a little bit of mushroom."
+        ],
+        "text": [
+          "Crescător Pokémon Lehua: Cei doi ai mei au fost crescuți cu dragoste. Și puțină ciupercă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Lehua: More love next time. Maybe more mushroom."
+        ],
+        "text": [
+          "Crescător Pokémon Lehua: Mai multă dragoste data viitoare. Poate mai multă ciupercă."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Koapaka"
+        ],
+        "text": [
+          "Koapaka"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Koapaka: I've climbed the volcano three times this week. You don't look tired at all, so let's battle!"
+        ],
+        "text": [
+          "Drumeț Koapaka: Am urcat vulcanul de trei ori săptămâna asta. Tu nu pari deloc obosit, așa că hai să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Koapaka: Now I'm tired."
+        ],
+        "text": [
+          "Drumeț Koapaka: Acum sunt obosit."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Maile"
+        ],
+        "text": [
+          "Maile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Maile: My Lurantis looks like a flower, but it fights like a sword!"
+        ],
+        "text": [
+          "Domnișoară Maile: Lurantis al meu arată ca o floare, dar luptă ca o sabie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Maile: A wilted flower now."
+        ],
+        "text": [
+          "Domnișoară Maile: O floare ofilită acum."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 5\nNorth: Lush Jungle\nSouth: Paniola Ranch"
+      ],
+      "text": [
+        "Ruta 5\nNord: Lush Jungle\nSud: Paniola Ranch"
+      ]
+    },
+    "BrookletSign": {
+      "en": [
+        "Brooklet Hill\nWest. Trial site of Captain Lana."
+      ],
+      "text": [
+        "Brooklet Hill\nVest. Locul încercării Căpitanului Lana."
+      ]
+    }
+  }
+}

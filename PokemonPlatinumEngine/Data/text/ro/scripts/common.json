@@ -907,6 +907,24 @@
       ]
     }
   ],
+  "UltraWayHome": [
+    {
+      "en": [
+        "The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Water": [
     {
       "en": [
@@ -3077,7 +3095,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -3247,7 +3265,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -3443,7 +3461,7 @@
         "{player} traded {price} BP for the {item}."
       ],
       "text": [
-        ""
+        "{player} a dat {price} PL pentru {item}."
       ]
     },
     {

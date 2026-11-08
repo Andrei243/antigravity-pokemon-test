@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Route 2"
+    ],
+    "text": [
+      "Ruta 2"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Motel Clerk"
+        ],
+        "text": [
+          "Recepționerul motelului"
+        ]
+      }
+    },
+    "guest": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for the malasadas and stayed for the beaches. Well, I'm leaving tomorrow. Probably."
+        ],
+        "text": [
+          "Am venit pentru malasada și am rămas pentru plaje. Păi, plec mâine. Probabil."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

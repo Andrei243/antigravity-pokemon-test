@@ -1,0 +1,106 @@
+{
+  "Craftswoman": [
+    {
+      "en": [
+        "Craftswoman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, look at that! A Champion, and on my doorstep. Come in, come in, and mind the shavings."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is where I make things. Every Pokémon sheds something as it battles, and the countryside gives a good deal more to anyone who knows where to look."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item}!"
+      ],
+      "text": [
+        "{player} a primit {item}!"
+      ]
+    },
+    {
+      "en": [
+        "Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back again! Your kit's still in good order, I hope."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What can I do for you?",
+        "LOOK IN THE KIT",
+        "HOW IT WORKS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then I'll get on. Mind the shavings on your way out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every wild Pokémon leaves something of its own kind behind: a common thing almost every time, a rare one now and then. The higher its level, the more there is."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Trainers' Pokémon leave nothing, nor do the ones in a contest or a park. Those are sport, not the wild."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

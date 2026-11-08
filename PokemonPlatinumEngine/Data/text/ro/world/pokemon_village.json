@@ -1,0 +1,25 @@
+{
+  "people": {
+    "keeper": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "guardian": {
+      "name": {
+        "en": [
+          "Zoroark"
+        ],
+        "text": [
+          "Zoroark"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

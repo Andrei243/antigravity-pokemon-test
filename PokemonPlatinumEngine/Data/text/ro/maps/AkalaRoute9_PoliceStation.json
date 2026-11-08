@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Route 9"
+    ],
+    "text": [
+      "Ruta 9"
+    ]
+  },
+  "people": {
+    "officer": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I reported a lost Diglett. Turns out it was in the tunnel. Diglett are always in the tunnel."
+        ],
+        "text": [
+          "Am raportat un Diglett pierdut. S-a dovedit că era în tunel. Diglett sunt mereu în tunel."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

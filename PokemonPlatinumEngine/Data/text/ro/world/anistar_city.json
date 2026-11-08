@@ -1,0 +1,60 @@
+{
+  "people": {
+    "astronomer": {
+      "name": {
+        "en": [
+          "Astronomer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sundial was carved from a stone that fell from the sky. On clear nights it hums."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 18 runs south from here, down a narrow valley to Couriway Town."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sycamore_sundial": {
+      "name": {
+        "en": [
+          "Prof. Sycamore"
+        ],
+        "text": [
+          "Prof. Sycamore"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Anistar City\nThe city of the sundial, where the stars are read."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "people": {
+    "lady": {
+      "name": {
+        "en": [
+          "Honorine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Honorine: I lost my way in these woods an hour ago. You'll do for company. And a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Honorine: Would you show me the way out, at least?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Thibaut"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Thibaut: Every tree in this wood looks the same. Every battle doesn't!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Thibaut: That one I'll remember."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 20\nNorth: the Pokémon Village\nSouth: Snowbelle City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

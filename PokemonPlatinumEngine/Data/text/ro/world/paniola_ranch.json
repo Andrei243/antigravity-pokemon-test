@@ -1,0 +1,168 @@
+{
+  "people": {
+    "mallow": {
+      "name": {
+        "en": [
+          "Mallow"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tauros": {
+      "name": {
+        "en": [
+          "Tauros"
+        ],
+        "text": [
+          "Tauros"
+        ]
+      }
+    },
+    "tauros_2": {
+      "name": {
+        "en": [
+          "Tauros"
+        ],
+        "text": [
+          "Tauros"
+        ]
+      }
+    },
+    "miltank": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          "Miltank"
+        ]
+      }
+    },
+    "mudbray": {
+      "name": {
+        "en": [
+          "Mudbray"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rancher": {
+      "name": {
+        "en": [
+          "Koa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Koa: You're on my ranch, partner. That means you battle my Bovarch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Koa: Well, I'll be. My Bovarch is sulking now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "breeder": {
+      "name": {
+        "en": [
+          "Makani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Makani: My Mudsdale eats a mountain of hay a day. All that strength has to go somewhere!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Makani: More hay. We need more hay."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Hoku: I came to see the Miltank, and found a challenger. How delightful."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Hoku: How very delightful, still."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Kawika"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Kawika: A fine day for a ride, and a finer one for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Kawika: A fine day for losing, too, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RanchSign": {
+      "en": [
+        "Paniola Ranch\nNorth: Route 5\nSouth: Paniola Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

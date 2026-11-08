@@ -1,0 +1,120 @@
+{
+  "people": {
+    "ako": {
+      "name": {
+        "en": [
+          "Ako"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ako: I come here to clear my head. Battling clears it faster."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ako: My head is very clear now. Clearly, I lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tomo": {
+      "name": {
+        "en": [
+          "Tomo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Tomo: A garden is made to be walked slowly. A battle is not. Shall we?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Tomo: Splendid. I shall return to walking slowly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ume": {
+      "name": {
+        "en": [
+          "Ume"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Ume: The fish in the pond are watching. Let's give them something to see!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Ume: The fish looked away. How rude."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gardener": {
+      "name": {
+        "en": [
+          "Gardener"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tea_lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The garden was laid out by people who sailed here from far away. They missed their home, so they built a little of it here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "GardenSign": {
+      "en": [
+        "Malie Garden\nPlease walk gently. The Pokémon are napping."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

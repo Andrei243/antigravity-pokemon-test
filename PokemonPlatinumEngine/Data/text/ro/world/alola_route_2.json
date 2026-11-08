@@ -1,0 +1,198 @@
+{
+  "people": {
+    "ilima": {
+      "name": {
+        "en": [
+          "Ilima"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Leilani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Leilani: The sun is out, the breeze is warm, and you look like you want a battle. Perfect!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Leilani: Well, the breeze is still lovely, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "preschooler": {
+      "name": {
+        "en": [
+          "Kekoa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Preschooler Kekoa: My Lancerow can peck really, really fast. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Preschooler Kekoa: Aww. Lancerow, we need more snacks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Malia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Malia: I've walked every road on this island. Let's see if you can keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Malia: You kept up and then some."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "breeder": {
+      "name": {
+        "en": [
+          "Noelani"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Noelani: I raised my Butterfree from a tiny Caterpie. Let me show you how strong it got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Noelani: You've raised yours well, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Yo! These berries are ours now, see? Back off or get skulled!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Ugh, whatever. The berries weren't even ripe anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "farmer": {
+      "name": {
+        "en": [
+          "Farmer"
+        ],
+        "text": [
+          "Fermier"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The caretaker grows every kind of berry here. Some troublemakers in skull shirts have been helping themselves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 2\nNorth: Verdant Cavern and Route 3\nSouth: Hau'oli City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BerrySign": {
+      "en": [
+        "The Berry Fields\nPlease don't pick the berries without asking."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CavernSign": {
+      "en": [
+        "Verdant Cavern\nTrial site of Captain Ilima"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

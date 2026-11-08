@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Anistar Gym"
+    ],
+    "text": [
+      "Sala Anistar"
+    ]
+  },
+  "people": {
+    "olympia": {
+      "name": {
+        "en": [
+          "Olympia"
+        ],
+        "text": [
+          "Olympia"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de sală"
+        ]
+      }
+    },
+    "kalos_psychic_lucile": {
+      "name": {
+        "en": [
+          "Lucile"
+        ],
+        "text": [
+          "Lucile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Lucile: The stars told me you would come. They didn't say who would win."
+        ],
+        "text": [
+          "Medium Lucile: Stelele mi-au spus că vei veni. Nu mi-au spus cine va câștiga."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Lucile: The stars... were vague."
+        ],
+        "text": [
+          "Medium Lucile: Stelele... au fost vagi."
+        ]
+      }
+    },
+    "kalos_psychic_aurele": {
+      "name": {
+        "en": [
+          "Aurèle"
+        ],
+        "text": [
+          "Aurèle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Aurèle: I can see your next move. Can you see mine?"
+        ],
+        "text": [
+          "Medium Aurèle: Îți văd următoarea mișcare. Poți să o vezi pe a mea?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Aurèle: I saw that coming. Mostly."
+        ],
+        "text": [
+          "Medium Aurèle: Am văzut asta venind. În mare parte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

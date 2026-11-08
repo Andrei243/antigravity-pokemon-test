@@ -1,0 +1,118 @@
+{
+  "people": {
+    "ula1_1": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Po Town is ours, yo! No trials, no rules! Beat it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Yo... we still own the place."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ula2_2": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Skull's boss says we keep everybody out. Even you."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Boss won't like this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ula3_3": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: You're too nosy, yo!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Whatever. Go on in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hoku": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Hoku: I breed pups. All three of these ones are the best pups."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Hoku: Yours are good pups, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 16\nNorth: Po Town\nSouth: Tapu Village"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

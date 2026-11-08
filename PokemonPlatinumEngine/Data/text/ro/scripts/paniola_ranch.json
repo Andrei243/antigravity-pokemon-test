@@ -1,0 +1,100 @@
+{
+  "Mallow": [
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alola! You must be the trial-goer Kukui keeps talking about. I'm Mallow, one of Akala's trial captains."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My trial's up in the Lush Jungle, but you'll want to see Lana's at Brooklet Hill first. It's west off Route 5, just north of here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, and take this along. My Stoutland can sniff out things buried in the ground. It's registered in your Ride Pager now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Stoutland in the Ride Pager!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See you in the jungle!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MallowTalk": [
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you tried the moomoo milk here? It's the best!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Tauros": [
+    {
+      "en": [
+        "Tauros snorted and pawed at the ground."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Miltank": [
+    {
+      "en": [
+        "Miltank looks content."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Mudbray": [
+    {
+      "en": [
+        "Mudbray is rolling happily in the mud."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

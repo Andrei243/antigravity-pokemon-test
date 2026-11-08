@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Konikoni City"
+    ],
+    "text": [
+      "Konikoni City"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Olivia is the kahuna of Akala. Her grand trial is the last on this island, and she does not go easy."
+        ],
+        "text": [
+          "Olivia e kahuna din Akala. Încercarea ei cea mare e ultima de pe insula asta și nu se lasă ușor."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

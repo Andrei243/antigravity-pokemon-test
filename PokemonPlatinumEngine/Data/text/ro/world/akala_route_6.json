@@ -1,0 +1,84 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Kekoa"
+        ],
+        "text": [
+          "Kekoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Kekoa: I'm off to watch the Battle Royal! But first, a warm-up. You!"
+        ],
+        "text": [
+          "Puști Kekoa: Mă duc să văd Battle Royal! Dar mai întâi, o încălzire. Tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Kekoa: Some warm-up. I'm all sweaty now."
+        ],
+        "text": [
+          "Puști Kekoa: Ce încălzire. Acum sunt tot transpirat."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Noelani"
+        ],
+        "text": [
+          "Noelani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Noelani: My Pollenoble can tell when someone's heart is racing. Yours is!"
+        ],
+        "text": [
+          "Domnișoară Noelani: Pollenoble al meu simte când cuiva îi bate inima tare. A ta bate!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Noelani: Now mine is racing too."
+        ],
+        "text": [
+          "Domnișoară Noelani: Acum și a mea."
+        ]
+      }
+    },
+    "rancher": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This road's for walking slow. Watch the Mudbray graze, smell the grass. Royal Avenue's just east if you're in a hurry."
+        ],
+        "text": [
+          "Drumul ăsta e pentru mers încet. Uită-te la Mudbray cum pasc, miroase iarba. Royal Avenue e chiar la est, dacă te grăbești."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 6\nWest: Paniola Town\nEast: Royal Avenue"
+      ],
+      "text": [
+        "Ruta 6\nVest: Paniola Town\nEst: Royal Avenue"
+      ]
+    }
+  }
+}

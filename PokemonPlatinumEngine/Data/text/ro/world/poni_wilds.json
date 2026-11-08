@@ -1,0 +1,144 @@
+{
+  "people": {
+    "dulse": {
+      "name": {
+        "en": [
+          "Dulse"
+        ],
+        "text": [
+          "Dulse"
+        ]
+      }
+    },
+    "leilani": {
+      "name": {
+        "en": [
+          "Leilani"
+        ],
+        "text": [
+          "Leilani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Leilani: The Wilds are quiet, but the Pokémon are anything but. Let me show you!"
+        ],
+        "text": [
+          "Ranger Pokémon Leilani: Ținuturile sălbatice sunt liniștite, dar Pokémonii nu sunt deloc. Lasă-mă să-ți arăt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Leilani: You're tougher than the Wilds."
+        ],
+        "text": [
+          "Ranger Pokémon Leilani: Ești mai dur decât ținuturile sălbatice."
+        ]
+      }
+    },
+    "makoa": {
+      "name": {
+        "en": [
+          "Makoa"
+        ],
+        "text": [
+          "Makoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Makoa: I walk all the way to the canyon and back each morning. It makes a man strong!"
+        ],
+        "text": [
+          "Drumeț Makoa: Merg pe jos până la canion și înapoi în fiecare dimineață. Te face puternic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Makoa: Not strong enough this time."
+        ],
+        "text": [
+          "Drumeț Makoa: Nu destul de puternic de data asta."
+        ]
+      }
+    },
+    "pele": {
+      "name": {
+        "en": [
+          "Pele"
+        ],
+        "text": [
+          "Pele"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Pele: I came to find a good fight, and then I found you."
+        ],
+        "text": [
+          "Antrenor As Pele: Am venit să găsesc o luptă bună, apoi te-am găsit pe tine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Pele: That was a good fight."
+        ],
+        "text": [
+          "Antrenor As Pele: A fost o luptă bună."
+        ]
+      }
+    },
+    "nani": {
+      "name": {
+        "en": [
+          "Nani"
+        ],
+        "text": [
+          "Nani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Nani: My pack's full of snacks, and my team's full of attitude."
+        ],
+        "text": [
+          "Rucsăcar Nani: Rucsacul meu e plin de gustări, iar echipa mea e plină de atitudine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Nani: My pack's a bit lighter now."
+        ],
+        "text": [
+          "Rucsăcar Nani: Rucsacul meu e puțin mai ușor acum."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Poni Wilds\nNorth: Ancient Poni Path\nEast: Vast Poni Canyon"
+      ],
+      "text": [
+        "Poni Wilds\nNord: Ancient Poni Path\nEst: Vast Poni Canyon"
+      ]
+    },
+    "PathSign": {
+      "en": [
+        "Ancient Poni Path\nThe old road to the coast."
+      ],
+      "text": [
+        "Ancient Poni Path\nVechiul drum spre coastă."
+      ]
+    },
+    "CanyonSign": {
+      "en": [
+        "Vast Poni Canyon\nTrial site of Captain Dulse."
+      ],
+      "text": [
+        "Vast Poni Canyon\nLocul încercării Căpitanului Dulse."
+      ]
+    }
+  }
+}

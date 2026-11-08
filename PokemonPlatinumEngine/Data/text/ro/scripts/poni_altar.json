@@ -1,0 +1,432 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "All seven, {player}. Every one of them has met you, and every one of them has gone quiet since."
+      ],
+      "text": [
+        "Toți șapte, {player}. Fiecare te-a întâlnit, și fiecare a tăcut de atunci."
+      ]
+    },
+    {
+      "en": [
+        "The wormholes are calmer than they have been in years. I think they were only ever afraid."
+      ],
+      "text": [
+        "Vortexurile sunt mai calme decât în ultimii ani. Cred că le-a fost mereu frică."
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "Then it's time. The wormhole can reach our city now. Megalo Tower is at its head, and the thing that ate our light sits on top."
+      ],
+      "text": [
+        "Atunci e timpul. Vortexul poate ajunge acum în orașul nostru. Megalo Tower e în capul lui, iar lucrul care ne-a mâncat lumina stă în vârf."
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "We'll go ahead and wait for you at the top of the tower. Choose Ultra Megalopolis when you step into the light."
+      ],
+      "text": [
+        "Mergem înainte și te așteptăm în vârful turnului. Alege Ultra Megalopolis când pășești în lumină."
+      ]
+    }
+  ],
+  "Lightseekers": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "You came. This altar is where a wormhole first opened on Alola, the day your friend's Cosmog called the sun."
+      ],
+      "text": [
+        "Ai venit. Altarul ăsta e locul unde s-a deschis întâi un vortex în Alola, în ziua în care Cosmog al prietenului tău a chemat soarele."
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "The way between the worlds is thin here. With the right light, it opens. Watch the dais."
+      ],
+      "text": [
+        "Drumul dintre lumi e subțire aici. Cu lumina potrivită, se deschide. Privește estrada."
+      ]
+    },
+    {
+      "en": [
+        "Veyra held up a lens of black glass, and the light of the dais gathered in it and tore the air open!"
+      ],
+      "text": [
+        "Veyra a ridicat o lentilă de sticlă neagră, iar lumina estradei s-a adunat în ea și a sfâșiat aerul!"
+      ]
+    },
+    {
+      "en": [
+        "Solgaleo's mane blazed in its ball, and the light of the dais answered it and tore the air open!"
+      ],
+      "text": [
+        "Coama lui Solgaleo a ars în minge, iar lumina estradei i-a răspuns și a sfâșiat aerul!"
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "An Ultra Wormhole. Through it lie the worlds the Ultra Beasts come from: seven of them, each with its own."
+      ],
+      "text": [
+        "Un Ultra Wormhole. Prin el se află lumile din care vin Ultra Beasts: șapte, fiecare cu a ei."
+      ]
+    },
+    {
+      "en": [
+        "Meet them where they live, {player}. Catch them if you can, with the Beast Balls. Calm them, at the least."
+      ],
+      "text": [
+        "Întâlnește-i acolo unde trăiesc, {player}. Prinde-i dacă poți, cu Beast Balls. Măcar liniștește-i."
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "When all seven have met you, come back here. We'll be waiting."
+      ],
+      "text": [
+        "Când toți șapte te-au întâlnit, întoarce-te aici. Te vom aștepta."
+      ]
+    }
+  ],
+  "Wormhole": [
+    {
+      "en": [
+        "A tear in the air hangs over the dais. Through it, other worlds shimmer and turn."
+      ],
+      "text": [
+        "O ruptură în aer atârnă deasupra estradei. Prin ea, alte lumi sclipesc și se învârt."
+      ]
+    },
+    {
+      "en": [
+        "Where will the wormhole take you?",
+        "Ultra Deep Sea",
+        "Ultra Jungle",
+        "Ultra Desert",
+        "Ultra Plant",
+        "Further...",
+        "Stay here"
+      ],
+      "text": [
+        "Unde te va duce vortexul?",
+        "Ultra Deep Sea",
+        "Ultra Jungle",
+        "Ultra Desert",
+        "Ultra Plant",
+        "Mai departe...",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "Where will the wormhole take you?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Stay here"
+      ],
+      "text": [
+        "Unde te va duce vortexul?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "Where will the wormhole take you?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Ultra Megalopolis",
+        "Stay here"
+      ],
+      "text": [
+        "Unde te va duce vortexul?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Ultra Megalopolis",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "The stone of the dais is warm, as if the sun were still on it."
+      ],
+      "text": [
+        "Piatra estradei e caldă, de parcă soarele ar fi încă pe ea."
+      ]
+    }
+  ],
+  "Veyra": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "The wormhole will stay open while we are here. Step into its light and choose a world."
+      ],
+      "text": [
+        "Vortexul va rămâne deschis cât timp suntem aici. Pășește în lumina lui și alege o lume."
+      ]
+    }
+  ],
+  "Oskin": [
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "The Beast Balls are made for them. Anything else, and they'll barely notice they've been thrown at."
+      ],
+      "text": [
+        "Beast Balls sunt făcute pentru ei. Orice altceva, și abia vor observa că au fost aruncați la ei."
+      ]
+    }
+  ],
+  "Stakataka": [
+    {
+      "en": [
+        "One of the altar's walls shifted. Its stones were looking at {player}, every one of them."
+      ],
+      "text": [
+        "Unul dintre pereții altarului s-a mișcat. Pietrele lui se uitau la {player}, toate."
+      ]
+    }
+  ],
+  "LillieAtAltar": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "{player}... I'm so glad you're here. Nebby changed, on the way. Look."
+      ],
+      "text": [
+        "{player}... sunt atât de bucuroasă că ești aici. Nebby s-a schimbat pe drum. Uită-te."
+      ]
+    },
+    {
+      "en": [
+        "It wants to go home, and I think the dais is where home is. The sun is out, and the dais lights when the sun is."
+      ],
+      "text": [
+        "Vrea să meargă acasă și cred că estrada e acasă. Soarele e afară, iar estrada se aprinde când e soarele."
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid. But I'm not going to hide in my bag any more. Please, stay with me."
+      ],
+      "text": [
+        "Mi-e frică. Dar nu o să mă mai ascund în geantă. Te rog, rămâi cu mine."
+      ]
+    },
+    {
+      "en": [
+        "Lillie held her bag up to the dais, and the light in it rose into the cavern like a second sun!"
+      ],
+      "text": [
+        "Lillie a ridicat geanta spre estradă, iar lumina din ea s-a înălțat în peșteră ca un al doilea soare!"
+      ]
+    }
+  ],
+  "Legend": [
+    {
+      "en": [
+        "The light on the dais gathered into a great white shape: a lion of the sun, its mane ablaze!"
+      ],
+      "text": [
+        "Lumina de pe estradă s-a adunat într-o formă mare și albă: un leu al soarelui, cu coama în flăcări!"
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Nebby... you were Solgaleo all along. You're free to go home, now, if that's what you want."
+      ],
+      "text": [
+        "Nebby... ai fost Solgaleo tot timpul. Ești liber să te întorci acasă acum, dacă asta vrei."
+      ]
+    },
+    {
+      "en": [
+        "...{player}, thank you. For everything. Whatever happens, I'm going to be braver."
+      ],
+      "text": [
+        "...{player}, mulțumesc. Pentru tot. Orice s-ar întâmpla, voi fi mai curajoasă."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Hello, hello! Lillie told me what happened. The Pokémon League is finally open on Mount Lanakila, cousin."
+      ],
+      "text": [
+        "{player}! Salut, salut! Lillie mi-a spus ce s-a întâmplat. Liga Pokémon s-a deschis în sfârșit pe Mount Lanakila, verișorule."
+      ]
+    },
+    {
+      "en": [
+        "Hau's already there, I bet. Take the Route 13 road east from Tapu Village. And try not to enjoy yourself too much."
+      ],
+      "text": [
+        "Pun pariu că Hau e deja acolo. Ia drumul Rutei 13 spre est din Tapu Village. Și încearcă să nu te distrezi prea mult."
+      ]
+    }
+  ]
+}

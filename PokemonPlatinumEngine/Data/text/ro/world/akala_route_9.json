@@ -1,0 +1,50 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Skull's been hanging round the tunnel. If they bother you, you come straight here."
+        ],
+        "text": [
+          "Team Skull se tot învârte pe lângă tunel. Dacă te deranjează, vii direct aici."
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Konikoni's just south. Best market on Akala, and the kahuna runs a jewelry shop there!"
+        ],
+        "text": [
+          "Konikoni e chiar la sud. Cea mai bună piață din Akala, iar kahuna ține acolo un magazin de bijuterii!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 9\nSouth: Konikoni City\nEast: Memorial Hill"
+      ],
+      "text": [
+        "Ruta 9\nSud: Konikoni City\nEst: Memorial Hill"
+      ]
+    }
+  }
+}

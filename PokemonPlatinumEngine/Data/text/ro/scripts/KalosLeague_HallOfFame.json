@@ -1,0 +1,62 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Diantha"
+      ],
+      "text": [
+        "Diantha"
+      ]
+    },
+    {
+      "en": [
+        "This is the Hall of Fame. Every Champion of Kalos is kept here, with the Pokémon who stood beside them."
+      ],
+      "text": [
+        "Asta e Sala Faimei. Fiecare Campion al Kalosului e păstrat aici, împreună cu Pokémonii care au stat lângă el."
+      ]
+    },
+    {
+      "en": [
+        "Your journey began in a little town in the south, and look where it has brought you. Let's record your team."
+      ],
+      "text": [
+        "Călătoria ta a început într-un orășel din sud și uită-te unde te-a adus. Hai să-ți înregistrăm echipa."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        "Jocul nu a putut fi salvat."
+      ]
+    }
+  ],
+  "DianthaWaits": [
+    {
+      "en": [
+        "Diantha"
+      ],
+      "text": [
+        "Diantha"
+      ]
+    },
+    {
+      "en": [
+        "Kalos is lucky to have you, {player}."
+      ],
+      "text": [
+        "Kalos are noroc cu tine, {player}."
+      ]
+    }
+  ]
+}

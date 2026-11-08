@@ -1,0 +1,334 @@
+{
+  "Tour": [
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Aether Paradise! I'm Wicke, the Foundation's staff. Professor Kukui said to expect you."
+      ],
+      "text": [
+        "Bun venit la Aether Paradise! Sunt Wicke, din personalul Fundației. Profesorul Kukui a zis să te așteptăm."
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "...{player}! You came. Mother, this is the Trainer I told you about."
+      ],
+      "text": [
+        "...{player}! Ai venit. Mamă, ăsta e Antrenorul despre care ți-am vorbit."
+      ]
+    },
+    {
+      "en": [
+        "Lusamine"
+      ],
+      "text": [
+        "Lusamine"
+      ]
+    },
+    {
+      "en": [
+        "Welcome, welcome. Lusamine, president of the Aether Foundation. Lillie says you've been to Akala and back already."
+      ],
+      "text": [
+        "Bun venit, bun venit. Lusamine, președinta Fundației Aether. Lillie zice că ai fost deja în Akala și înapoi."
+      ]
+    },
+    {
+      "en": [
+        "Everything on this island is kept safe and warm, and every Pokémon here is loved. It's my whole life's work."
+      ],
+      "text": [
+        "Tot ce e pe insula asta e ținut în siguranță și la căldură, iar fiecare Pokémon de aici e iubit. E munca vieții mele."
+      ]
+    },
+    {
+      "en": [
+        "Lillie, dear, don't hide behind your bag. Look at how well you're doing out there with your friends!"
+      ],
+      "text": [
+        "Lillie, dragă, nu te ascunde în spatele genții. Uită-te cât de bine te descurci cu prietenii tăi!"
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Mother... I'm not doing it for them. I'm doing it for Nebby."
+      ],
+      "text": [
+        "Mamă... nu o fac pentru ei. O fac pentru Nebby."
+      ]
+    },
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "Shall we have a look at the garden? Our ferry will take you on to Ula'ula Island afterwards."
+      ],
+      "text": [
+        "Să aruncăm o privire la grădină? Feribotul nostru te duce apoi mai departe, pe Ula'ula."
+      ]
+    },
+    {
+      "en": [
+        "{player} was shown through the Foundation's garden, its clinic and its rows of resting Pokémon."
+      ],
+      "text": [
+        "{player} a fost condus prin grădina Fundației, prin clinica ei și printre rândurile de Pokémoni care se odihnesc."
+      ]
+    },
+    {
+      "en": [
+        "Lusamine"
+      ],
+      "text": [
+        "Lusamine"
+      ]
+    },
+    {
+      "en": [
+        "Go on, then, Trial-goer. Ula'ula's trials are harder than Akala's. Don't be late for them."
+      ],
+      "text": [
+        "Hai, mergi, atunci, participant la încercări. Încercările din Ula'ula sunt mai grele decât cele din Akala. Să nu întârzii."
+      ]
+    }
+  ],
+  "Rescue": [
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Thank goodness. The President has shut herself and Lillie inside the head office, and she isn't herself."
+      ],
+      "text": [
+        "{player}! Slavă Domnului. Președinta s-a închis cu Lillie în biroul central și nu mai e ea însăși."
+      ]
+    },
+    {
+      "en": [
+        "Mr. Gladion is in there too. I don't know what's happening to her. She talks about beauty, and she holds a creature I've never seen."
+      ],
+      "text": [
+        "Domnul Gladion e și el acolo. Nu știu ce i se întâmplă. Vorbește despre frumusețe și ține o creatură pe care nu am mai văzut-o."
+      ]
+    },
+    {
+      "en": [
+        "I'll open the door. Please... bring Lillie out."
+      ],
+      "text": [
+        "Deschid eu ușa. Te rog... scoate-o pe Lillie de acolo."
+      ]
+    }
+  ],
+  "Wicke": [
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "This island has lasted because every employee believes the President. Every one."
+      ],
+      "text": [
+        "Insula asta a rezistat pentru că fiecare angajat o crede pe Președintă. Fiecare."
+      ]
+    }
+  ],
+  "Lusamine": [
+    {
+      "en": [
+        "Lusamine"
+      ],
+      "text": [
+        "Lusamine"
+      ]
+    },
+    {
+      "en": [
+        "A Trial-goer should be in Ula'ula, not standing about on my square. Run along."
+      ],
+      "text": [
+        "Un participant la încercări ar trebui să fie în Ula'ula, nu să stea degeaba în piața mea. Fugi."
+      ]
+    }
+  ],
+  "AetherGuard": [
+    {
+      "en": [
+        "Aether Guard"
+      ],
+      "text": [
+        "Garda Aether"
+      ]
+    },
+    {
+      "en": [
+        "The head office is closed to visitors. President's orders."
+      ],
+      "text": [
+        "Biroul central este închis vizitatorilor. Ordinul Președintei."
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinarul"
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Heahea City, Akala",
+        "Malie City, Ula'ula",
+        "Stay here"
+      ],
+      "text": [
+        "Încotro?",
+        "Heahea City, Akala",
+        "Malie City, Ula'ula",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Heahea City, Akala",
+        "Malie City, Ula'ula",
+        "Seafolk Village, Poni",
+        "Stay here"
+      ],
+      "text": [
+        "Încotro?",
+        "Heahea City, Akala",
+        "Malie City, Ula'ula",
+        "Seafolk Village, Poni",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Aether Paradise..."
+      ],
+      "text": [
+        "Feribotul s-a desprins de Aether Paradise..."
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Aether Paradise..."
+      ],
+      "text": [
+        "Feribotul s-a desprins de Aether Paradise..."
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Aether Paradise and out across the sea to Poni Island..."
+      ],
+      "text": [
+        "Feribotul s-a desprins de Aether Paradise și a pornit peste mare spre insula Poni..."
+      ]
+    }
+  ],
+  "Gladion": [
+    {
+      "en": [
+        "Gladion"
+      ],
+      "text": [
+        "Gladion"
+      ]
+    },
+    {
+      "en": [
+        "So you're the champion now. Figures. You never did know when to quit."
+      ],
+      "text": [
+        "Deci tu ești campionul acum. Normal. Nu ai știut niciodată când să te oprești."
+      ]
+    },
+    {
+      "en": [
+        "This is Type: Null. The Foundation made it to fight things that come from beyond the sky. It deserves better than a cage."
+      ],
+      "text": [
+        "Ăsta e Type: Null. Fundația l-a creat ca să lupte cu lucrurile care vin din dincolo de cer. Merită mai mult decât o cușcă."
+      ]
+    },
+    {
+      "en": [
+        "Take it. Train it. Let it find out what it's for."
+      ],
+      "text": [
+        "Ia-l. Antrenează-l. Lasă-l să afle pentru ce e făcut."
+      ]
+    },
+    {
+      "en": [
+        "{player} received Type: Null!"
+      ],
+      "text": [
+        "{player} a primit Type: Null!"
+      ]
+    },
+    {
+      "en": [
+        "Don't make me regret this."
+      ],
+      "text": [
+        "Nu mă face să regret asta."
+      ]
+    },
+    {
+      "en": [
+        "Your team's full. Make room and come back. It's not going anywhere. Neither am I."
+      ],
+      "text": [
+        "Echipa ta e plină. Fă loc și vino înapoi. Nu pleacă nicăieri. Nici eu."
+      ]
+    }
+  ]
+}

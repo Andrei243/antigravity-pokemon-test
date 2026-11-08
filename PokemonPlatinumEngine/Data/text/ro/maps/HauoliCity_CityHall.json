@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          "Ghidul"
+        ]
+      }
+    },
+    "student": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elevul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They're putting up a plaque about the first island challenge. Some kid did all four islands in one summer!"
+        ],
+        "text": [
+          "Pun o placă despre prima provocare a insulelor. Un copil a făcut toate cele patru insule într-o singură vară!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

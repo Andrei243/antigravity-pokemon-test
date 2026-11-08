@@ -1,0 +1,75 @@
+{
+  "people": {
+    "grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Spooky up here, right? Not as spooky as Team Skull!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Sinistru aici sus, nu? Nu atât de sinistru ca Team Skull!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Okay, this hill is a little spooky."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Bine, dealul ăsta e puțin sinistru."
+        ]
+      }
+    },
+    "grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Nobody gets up to the ruins on our watch! Well, our watch starts now."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Nimeni nu urcă la ruine cât suntem noi de pază! Ei bine, garda noastră începe acum."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Our watch is over. Go on."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Garda noastră s-a terminat. Treci."
+        ]
+      }
+    },
+    "mourner": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon rests here. I come every week to tell it how the garden's doing."
+        ],
+        "text": [
+          "Pokémonul meu se odihnește aici. Vin în fiecare săptămână să-i spun cum merge grădina."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

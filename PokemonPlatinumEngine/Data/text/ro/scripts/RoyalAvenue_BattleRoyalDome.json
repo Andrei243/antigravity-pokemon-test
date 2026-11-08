@@ -1,0 +1,454 @@
+{
+  "TheShow": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Everybody, look who just walked in! It's Alola's brand-new Champion!"
+      ],
+      "text": [
+        "Toată lumea, uitați-vă cine tocmai a intrat! E noul Campion al Alolei!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I knew you'd come. Guess what? We're having a Battle Royal, and there's room in the ring for one more."
+      ],
+      "text": [
+        "{player}! Știam că vei veni. Ghici ce? Avem un Battle Royal și mai e loc în ring pentru încă unul."
+      ]
+    },
+    {
+      "en": [
+        "Gladion"
+      ],
+      "text": [
+        "Gladion"
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Four Trainers, every one of them against the others. It suits me. Nobody to protect but yourself."
+      ],
+      "text": [
+        "Hmph. Patru Antrenori, fiecare împotriva celorlalți. Mi se potrivește. Nu ai pe nimeni de protejat în afară de tine."
+      ]
+    },
+    {
+      "en": [
+        "Masked Royal"
+      ],
+      "text": [
+        "Regalul mascat"
+      ]
+    },
+    {
+      "en": [
+        "WOOO! The Champion! Step into the ring, and let's give these folks a show they'll talk about for a year!"
+      ],
+      "text": [
+        "WOOO! Campionul! Intră în ring și hai să dăm oamenilor ăstora un spectacol despre care să vorbească un an!"
+      ]
+    },
+    {
+      "en": [
+        "Masked Royal"
+      ],
+      "text": [
+        "Regalul mascat"
+      ]
+    },
+    {
+      "en": [
+        "What a show! You held your own against three at once, Champion. The ring'll be waiting for a rematch."
+      ],
+      "text": [
+        "Ce spectacol! Te-ai descurcat împotriva a trei deodată, Campionule. Ringul va aștepta o revanșă."
+      ]
+    },
+    {
+      "en": [
+        "First place! First place, folks, for the Champion of Alola! I'm going to be sore for a week. WOOO!"
+      ],
+      "text": [
+        "Locul întâi! Locul întâi, oameni buni, pentru Campionul Alolei! O să mă doară o săptămână. WOOO!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "That was the best! Hey... doesn't the Masked Royal kind of sound like Professor Kukui?"
+      ],
+      "text": [
+        "A fost cel mai tare! Hei... nu sună Regalul mascat cam ca Profesorul Kukui?"
+      ]
+    },
+    {
+      "en": [
+        "Gladion"
+      ],
+      "text": [
+        "Gladion"
+      ]
+    },
+    {
+      "en": [
+        "...Don't ask him. Let him have this."
+      ],
+      "text": [
+        "...Nu-l întreba. Lasă-l să se bucure."
+      ]
+    }
+  ],
+  "RoyalDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Royal Dome! Four Trainers, one ring, and every one of them is everyone else's foe."
+      ],
+      "text": [
+        "Bun venit la Domul Battle Royal! Patru Antrenori, un singur ring, și fiecare e dușmanul tuturor celorlalți."
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you battle in?",
+        "Normal Rank",
+        "The rules",
+        "Not now"
+      ],
+      "text": [
+        "În ce rang vei lupta?",
+        "Rang Normal",
+        "Regulile",
+        "Nu acum"
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you battle in?",
+        "Normal Rank",
+        "Great Rank",
+        "The rules",
+        "Not now"
+      ],
+      "text": [
+        "În ce rang vei lupta?",
+        "Rang Normal",
+        "Rang Mare",
+        "Regulile",
+        "Nu acum"
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you battle in?",
+        "Normal Rank",
+        "Great Rank",
+        "Ultra Rank",
+        "The rules",
+        "Not now"
+      ],
+      "text": [
+        "În ce rang vei lupta?",
+        "Rang Normal",
+        "Rang Mare",
+        "Rang Ultra",
+        "Regulile",
+        "Nu acum"
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you battle in?",
+        "Normal Rank",
+        "Great Rank",
+        "Ultra Rank",
+        "Master Rank",
+        "The rules",
+        "Not now"
+      ],
+      "text": [
+        "În ce rang vei lupta?",
+        "Rang Normal",
+        "Rang Mare",
+        "Rang Ultra",
+        "Rang Maestru",
+        "Regulile",
+        "Nu acum"
+      ]
+    },
+    {
+      "en": [
+        "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
+      ],
+      "text": [
+        "Fiecare dintre cei patru scoate câte un Pokémon pe rând. Nimeni nu poate schimba, iar din Rucsac nu se poate folosi nimic."
+      ]
+    },
+    {
+      "en": [
+        "The moment any Trainer has no Pokémon left, the battle is over, and everyone is placed."
+      ],
+      "text": [
+        "În clipa în care un Antrenor rămâne fără Pokémoni, lupta se termină și toți sunt clasați."
+      ]
+    },
+    {
+      "en": [
+        "A point for every Pokémon you knock out, and one for each of yours still standing. First place earns Battle Points!"
+      ],
+      "text": [
+        "Un punct pentru fiecare Pokémon pe care îl învingi și unul pentru fiecare al tău rămas în picioare. Locul întâi primește Puncte de Luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Take first place in a rank, and the next rank opens to you. There are four: Normal, Great, Ultra and Master."
+      ],
+      "text": [
+        "Ia locul întâi într-un rang și se deschide următorul. Sunt patru: Normal, Mare, Ultra și Maestru."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready for a free-for-all, the ring is right here."
+      ],
+      "text": [
+        "Când ești gata de o luptă de toți împotriva tuturor, ringul e chiar aici."
+      ]
+    }
+  ],
+  "RingNormal": [
+    {
+      "en": [
+        "The Normal Rank! Into the ring, please, and may the best Trainer win!"
+      ],
+      "text": [
+        "Rangul Normal! În ring, te rog, și să câștige cel mai bun Antrenor!"
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "First place in the Normal Rank! That's one Battle Point for you."
+      ],
+      "text": [
+        "Locul întâi în Rangul Normal! Asta înseamnă un Punct de Luptă pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "And the Great Rank is open to you now! The Trainers there won't go easy on you."
+      ],
+      "text": [
+        "Și Rangul Mare ți s-a deschis acum! Antrenorii de acolo nu te vor menaja."
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+      ],
+      "text": [
+        "Un loc câștigat greu! Fiecare Battle Royal e altfel, așa că revino și încearcă pentru locul întâi."
+      ]
+    }
+  ],
+  "RingGreat": [
+    {
+      "en": [
+        "The Great Rank! Into the ring, please, and may the best Trainer win!"
+      ],
+      "text": [
+        "Rangul Mare! În ring, te rog, și să câștige cel mai bun Antrenor!"
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "First place in the Great Rank! That's two Battle Points for you."
+      ],
+      "text": [
+        "Locul întâi în Rangul Mare! Asta înseamnă două Puncte de Luptă pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "And the Ultra Rank is open to you now! Only the toughest Trainers in Alola battle there."
+      ],
+      "text": [
+        "Și Rangul Ultra ți s-a deschis acum! Aici luptă doar cei mai duri Antrenori din Alola."
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+      ],
+      "text": [
+        "Un loc câștigat greu! Fiecare Battle Royal e altfel, așa că revino și încearcă pentru locul întâi."
+      ]
+    }
+  ],
+  "RingUltra": [
+    {
+      "en": [
+        "The Ultra Rank! Into the ring, please, and may the best Trainer win!"
+      ],
+      "text": [
+        "Rangul Ultra! În ring, te rog, și să câștige cel mai bun Antrenor!"
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "First place in the Ultra Rank! That's three Battle Points for you."
+      ],
+      "text": [
+        "Locul întâi în Rangul Ultra! Asta înseamnă trei Puncte de Luptă pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "And now... the Master Rank is open to you. Good luck, Champion. You'll need it."
+      ],
+      "text": [
+        "Și acum... Rangul Maestru ți s-a deschis. Mult noroc, Campionule. O să ai nevoie."
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+      ],
+      "text": [
+        "Un loc câștigat greu! Fiecare Battle Royal e altfel, așa că revino și încearcă pentru locul întâi."
+      ]
+    }
+  ],
+  "RingMaster": [
+    {
+      "en": [
+        "The Master Rank! Into the ring, please, and may the best Trainer win!"
+      ],
+      "text": [
+        "Rangul Maestru! În ring, te rog, și să câștige cel mai bun Antrenor!"
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "First place in the Master Rank! That's four Battle Points for you. The crowd is on its feet!"
+      ],
+      "text": [
+        "Locul întâi în Rangul Maestru! Asta înseamnă patru Puncte de Luptă pentru tine. Publicul e în picioare!"
+      ]
+    },
+    {
+      "en": [
+        "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+      ],
+      "text": [
+        "Un loc câștigat greu! Fiecare Battle Royal e altfel, așa că revino și încearcă pentru locul întâi."
+      ]
+    }
+  ],
+  "MaskedRoyal": [
+    {
+      "en": [
+        "Masked Royal"
+      ],
+      "text": [
+        "Regalul mascat"
+      ]
+    },
+    {
+      "en": [
+        "The Masked Royal never takes the mask off. Never! ...It's very warm under here, though."
+      ],
+      "text": [
+        "Regalul mascat nu își scoate niciodată masca. Niciodată! ...Dar e foarte cald aici sub ea."
+      ]
+    }
+  ],
+  "Fan": [
+    {
+      "en": [
+        "Battle Fan"
+      ],
+      "text": [
+        "Fan al luptelor"
+      ]
+    },
+    {
+      "en": [
+        "I've seen every Battle Royal since the dome opened. Every single one! Take first place and I'll keep count for you."
+      ],
+      "text": [
+        "Am văzut fiecare Battle Royal de când s-a deschis domul. Fiecare! Ia locul întâi și țin socoteala pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "First places in the dome by the Champion: {var:VAR_ALOLA_ROYAL_WINS}! I write every one of them down."
+      ],
+      "text": [
+        "Locuri întâi în dom ale Campionului: {var:VAR_ALOLA_ROYAL_WINS}! Le notez pe fiecare."
+      ]
+    }
+  ]
+}

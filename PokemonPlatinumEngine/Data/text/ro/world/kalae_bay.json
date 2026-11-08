@@ -1,0 +1,84 @@
+{
+  "people": {
+    "kalua": {
+      "name": {
+        "en": [
+          "Kalua"
+        ],
+        "text": [
+          "Kalua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kalua: Nobody ever finds this bay. You did, so you have to battle me. That's the rule!"
+        ],
+        "text": [
+          "Înotător Kalua: Nimeni nu găsește golful ăsta vreodată. Tu l-ai găsit, deci trebuie să lupți cu mine. Asta e regula!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kalua: I made that rule up. I'm sorry."
+        ],
+        "text": [
+          "Înotător Kalua: Regula aia am inventat-o eu. Scuze."
+        ]
+      }
+    },
+    "mele": {
+      "name": {
+        "en": [
+          "Mele"
+        ],
+        "text": [
+          "Mele"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Mele: I followed a Bagon through the cave and now I can't find it. Battle me instead!"
+        ],
+        "text": [
+          "Domnișoară Mele: Am urmărit un Bagon prin peșteră și acum nu-l mai găsesc. Luptă cu mine în schimb!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Mele: The Bagon was better at hiding than I am at battling."
+        ],
+        "text": [
+          "Domnișoară Mele: Bagon s-a ascuns mai bine decât mă pricep eu să lupt."
+        ]
+      }
+    },
+    "teen": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a Bagon dreams of flying, so it jumps off the cliffs here every day. It never flies. It never stops trying."
+        ],
+        "text": [
+          "Se zice că Bagon visează să zboare, așa că sare de pe stâncile de aici în fiecare zi. Nu zboară niciodată. Nu încetează niciodată să încerce."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BaySign": {
+      "en": [
+        "Kala'e Bay\nWest: Seaward Cave, to Melemele Meadow"
+      ],
+      "text": [
+        "Kala'e Bay\nVest: Seaward Cave, spre Melemele Meadow"
+      ]
+    }
+  }
+}

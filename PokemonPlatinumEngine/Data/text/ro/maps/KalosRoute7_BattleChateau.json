@@ -1,0 +1,173 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Château"
+    ],
+    "text": [
+      "Battle Château"
+    ]
+  },
+  "people": {
+    "maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Cameristă"
+        ]
+      }
+    },
+    "butler": {
+      "name": {
+        "en": [
+          "Butler"
+        ],
+        "text": [
+          "Majordom"
+        ]
+      }
+    },
+    "mirabelle": {
+      "name": {
+        "en": [
+          "Mirabelle"
+        ],
+        "text": [
+          "Mirabelle"
+        ]
+      }
+    },
+    "tristan": {
+      "name": {
+        "en": [
+          "Tristan"
+        ],
+        "text": [
+          "Tristan"
+        ]
+      }
+    },
+    "celeste": {
+      "name": {
+        "en": [
+          "Celeste"
+        ],
+        "text": [
+          "Celeste"
+        ]
+      }
+    },
+    "octave": {
+      "name": {
+        "en": [
+          "Octave"
+        ],
+        "text": [
+          "Octave"
+        ]
+      }
+    },
+    "isaure": {
+      "name": {
+        "en": [
+          "Isaure"
+        ],
+        "text": [
+          "Isaure"
+        ]
+      }
+    },
+    "corentin": {
+      "name": {
+        "en": [
+          "Corentin"
+        ],
+        "text": [
+          "Corentin"
+        ]
+      }
+    },
+    "viola": {
+      "name": {
+        "en": [
+          "Viola"
+        ],
+        "text": [
+          "Viola"
+        ]
+      }
+    },
+    "grant": {
+      "name": {
+        "en": [
+          "Grant"
+        ],
+        "text": [
+          "Grant"
+        ]
+      }
+    },
+    "korrina": {
+      "name": {
+        "en": [
+          "Korrina"
+        ],
+        "text": [
+          "Korrina"
+        ]
+      }
+    },
+    "ramos": {
+      "name": {
+        "en": [
+          "Ramos"
+        ],
+        "text": [
+          "Ramos"
+        ]
+      }
+    },
+    "clemont": {
+      "name": {
+        "en": [
+          "Clemont"
+        ],
+        "text": [
+          "Clemont"
+        ]
+      }
+    },
+    "valerie": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          "Valerie"
+        ]
+      }
+    },
+    "olympia": {
+      "name": {
+        "en": [
+          "Olympia"
+        ],
+        "text": [
+          "Olympia"
+        ]
+      }
+    },
+    "wulfric": {
+      "name": {
+        "en": [
+          "Wulfric"
+        ],
+        "text": [
+          "Wulfric"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

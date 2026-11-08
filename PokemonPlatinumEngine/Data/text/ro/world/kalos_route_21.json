@@ -1,0 +1,86 @@
+{
+  "people": {
+    "sky_zoe": {
+      "name": {
+        "en": [
+          "Zoé"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sky Trainer Zoé: This close to the League the sky belongs to the strong. Prove you belong in it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sky Trainer Zoé: You belong up here more than I do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Germain"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Germain: I've walked this road to the League twenty times. Twenty-one, if you beat me."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Germain: Twenty-one it is. Off you go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 21\nWest: Victory Road\nEast: the Pokémon Village"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

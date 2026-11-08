@@ -1,0 +1,118 @@
+{
+  "people": {
+    "sky_thierry": {
+      "name": {
+        "en": [
+          "Thierry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sky Trainer Thierry: The leaves fall, but my Pokémon only rise. A Sky Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sky Trainer Thierry: Grounded, like the leaves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Félix"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Félix: I kick the leaves all the way to Dendemille. Want to see what jumps out?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Félix: You jumped out at me, more like."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Margot"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Margot: Autumn is the best time for battles. Everything's so crunchy!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Margot: Crunch. That was me losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Ambroise"
+        ],
+        "text": [
+          "Ambroise"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Ambroise: The stream up ahead is cold as ice. My Pokémon are colder!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Ambroise: Brr. I'd better warm up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 15\nWest: Laverre City\nEast: Dendemille Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

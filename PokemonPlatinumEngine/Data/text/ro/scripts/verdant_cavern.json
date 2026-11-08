@@ -1,0 +1,134 @@
+{
+  "IlimaInside": [
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Three dens: one west, one east and one up the middle. Then the totem's den at the very top. Good luck!"
+      ],
+      "text": [
+        "Trei vizuini: una la vest, una la est și una pe mijloc. Apoi vizuina totemului, chiar în vârf. Mult noroc!"
+      ]
+    }
+  ],
+  "Den1": [
+    {
+      "en": [
+        "A Yungoos burst out of the den!"
+      ],
+      "text": [
+        "Un Yungoos a țâșnit din vizuină!"
+      ]
+    },
+    {
+      "en": [
+        "The den is empty now."
+      ],
+      "text": [
+        "Vizuina e goală acum."
+      ]
+    }
+  ],
+  "Den2": [
+    {
+      "en": [
+        "A Yungoos burst out of the den!"
+      ],
+      "text": [
+        "Un Yungoos a țâșnit din vizuină!"
+      ]
+    },
+    {
+      "en": [
+        "The den is empty now."
+      ],
+      "text": [
+        "Vizuina e goală acum."
+      ]
+    }
+  ],
+  "Den3": [
+    {
+      "en": [
+        "A Yungoos burst out of the den!"
+      ],
+      "text": [
+        "Un Yungoos a țâșnit din vizuină!"
+      ]
+    },
+    {
+      "en": [
+        "The den is empty now."
+      ],
+      "text": [
+        "Vizuina e goală acum."
+      ]
+    }
+  ],
+  "Totem": [
+    {
+      "en": [
+        "An enormous Gumshoos glares down from the top of the den. Its whole body seems to shimmer with power!"
+      ],
+      "text": [
+        "Un Gumshoos enorm privește de sus, din vârful vizuinii. Tot corpul lui pare să sclipească de putere!"
+      ]
+    },
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Bravo! Truly bravo! You have passed my trial, {player}."
+      ],
+      "text": [
+        "Bravo! Cu adevărat bravo! Ai trecut de încercarea mea, {player}."
+      ]
+    },
+    {
+      "en": [
+        "This crystal is proof of it. Hold it with your Z-Ring, and a Normal-type move becomes a Z-Move."
+      ],
+      "text": [
+        "Cristalul ăsta e dovada. Ține-l cu Inelul Z și o mișcare de tip Normal devine o mișcare Z."
+      ]
+    },
+    {
+      "en": [
+        "Professor Kukui came by while you were inside. He said the girl Lillie went looking for her Pokémon up on Route 3, past the end of Route 2. Perhaps you could help her?"
+      ],
+      "text": [
+        "Profesorul Kukui a trecut pe aici cât ai fost înăuntru. A zis că fata Lillie și-a căutat Pokémonul pe Ruta 3, dincolo de capătul Rutei 2. Poate o ajuți?"
+      ]
+    },
+    {
+      "en": [
+        "Something enormous stirs at the top of the den... It won't come out until the three dens below are clear."
+      ],
+      "text": [
+        "Ceva enorm se mișcă în vârful vizuinii... Nu va ieși până nu sunt curățate cele trei vizuini de jos."
+      ]
+    }
+  ],
+  "SecondTotem": [
+    {
+      "en": [
+        "A huge Raticate sits where the totem Gumshoos once stood, its cheeks stuffed and its eyes gleaming!"
+      ],
+      "text": [
+        "Un Raticate uriaș stă acolo unde stătea odinioară Gumshoos totemul, cu obrajii umpluți și ochii sclipind!"
+      ]
+    }
+  ]
+}
