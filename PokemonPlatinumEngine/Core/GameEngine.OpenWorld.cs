@@ -13,8 +13,9 @@ namespace PokemonPlatinumEngine.Core;
 /// is loaded by the game, so <c>flow.Open</c> is null in every game and every line here is passed by. A tool or a test
 /// lays an open map in (<see cref="AddOpenMap"/>) and puts the player there through the <c>Driver</c>.
 /// <para>
-/// What the open field does is count its ticks and walk the capsule (OW3) by the stick; the picture (OW8), doors and
-/// scripts (OW5) come later, so the field's frame runs no script, opens no menu and draws what the grid's field drew.
+/// What the open field does is count its ticks, walk the capsule (OW3) by the stick, and cross its triggers and doors
+/// and run its scripts (OW5, <c>GameEngine.OpenPlaces.cs</c>); the picture (OW8) comes later, so the field opens no menu
+/// and draws what the grid's field drew.
 /// </para>
 /// </summary>
 public partial class GameEngine

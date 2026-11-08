@@ -141,6 +141,16 @@ public static class RegionCommand
             int perMetre = Math.Clamp((int)(1024 / (box.Value.X1 - box.Value.X0)), 2, 16);
             Pictures.Save(RegionPictures.Plan(description, land, finest, box.Value, perMetre: perMetre), Path.Combine(planDir, $"plan_{name}.png"));
             Console.WriteLine($"wrote {Path.Combine(planDir, $"plan_{name}.png")} ({perMetre} pixels a metre)");
+            // ...and with its places laid over it (plan 32 · OW5), where the region has any
+            if (Directory.Exists(Path.Combine(description.Folder, PokemonPlatinumEngine.OpenWorld.OpenPlaceFiles.Folder)))
+            {
+                var placed = RegionPictures.Plan(description, land, finest, box.Value, perMetre: perMetre);
+                var placesKey = PlacePictures.Over(placed, PokemonPlatinumEngine.OpenWorld.OpenPlaceFiles.LoadRegion(description.Folder, withLand: false), box.Value, perMetre);
+                string placesPath = Path.Combine(planDir, $"plan_{name}_places.png");
+                Pictures.Save(placed, placesPath);
+                Console.WriteLine($"wrote {placesPath}; its key:");
+                foreach (string line in placesKey) Console.WriteLine("    " + line);
+            }
             for (int level = 1; level < RegionBake.Levels; level++)
             {
                 string path = Path.Combine(planDir, $"plan_{name}_level{level}.png");
