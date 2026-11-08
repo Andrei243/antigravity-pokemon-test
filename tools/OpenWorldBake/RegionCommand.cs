@@ -1,4 +1,5 @@
 using System.Globalization;
+using PokemonPlatinumEngine.OpenWorld;
 
 namespace OpenWorldBake;
 
@@ -41,7 +42,8 @@ public static class RegionCommand
         string? folder = null, outFolder = null, planDir = null, planArea = null, sectionDir = null, sectionArea = null;
         (int X, int Z)? onlyChunk = null;
         bool check = false, seams = false, swim = false;
-        string? walkDir = null;
+        string? walkDir = null, navDir = null, navArea = null;
+        var navPaths = new List<((double X, double? Y, double Z) From, (double X, double? Y, double Z) To)>();
         var walkPoints = new List<(double X, double Z, bool Run)>();
         var cuts = new List<((double, double) A, (double, double) B)>();
         for (int i = 1; i < args.Length; i++)
@@ -82,6 +84,16 @@ public static class RegionCommand
                     if (walkPoints.Count < 2) { Console.Error.WriteLine("--walk: a start and at least one stop, as x,z (a stop ending in ! is run to)"); return 2; }
                     break;
                 case "--swim": swim = true; break;
+                case "--nav":
+                    navDir = args[++i];
+                    if (i + 1 < args.Length && !args[i + 1].StartsWith("--") && (!args[i + 1].Contains(',') || args[i + 1].StartsWith("box:"))) navArea = args[++i];
+                    while (i + 1 < args.Length && !args[i + 1].StartsWith("--"))
+                    {
+                        var a = Place3(args[++i]);
+                        if (i + 1 >= args.Length || args[i + 1].StartsWith("--")) { Console.Error.WriteLine("--nav: a path needs two places"); return 2; }
+                        navPaths.Add((a, Place3(args[++i])));
+                    }
+                    break;
                 default: Console.Error.WriteLine($"unknown argument {args[i]}"); return 2;
             }
         }
@@ -101,7 +113,9 @@ public static class RegionCommand
             Console.Error.WriteLine($"chunk {wanted.X},{wanted.Z} is not the region's"); return 2;
         }
 
-        var files = RegionBake.Files(description, only);
+        if (navDir != null && only != null) { Console.Error.WriteLine("--nav: the navigation mesh is the whole region's, not a chunk's"); return 2; }
+        var navReport = new NavReport();
+        var files = RegionBake.Files(description, only, navReport);
         if (check)
         {
             var differences = RegionBake.Differences(baked, files, partial: only != null);
@@ -124,6 +138,8 @@ public static class RegionCommand
                 + $"the busiest chunk {at.Max(c => c.TriangleCount)} triangles; {at.Sum(c => files[PokemonPlatinumEngine.OpenWorld.BakedChunk.FileName(c.ChunkX, c.ChunkZ, c.Level)].Length):N0} bytes");
         }
         Console.WriteLine($"water over {chunks.Where(c => c.Level == 0).Sum(c => c.Water.Count(w => w != PokemonPlatinumEngine.OpenWorld.BakedChunk.NoWater))} cells of 2 m; wrote {files.Count} files under {baked}");
+        if (files.TryGetValue(OpenNavMesh.FileName, out var navBytes))
+            Console.WriteLine($"navigation ({OpenNavMesh.FileName}, {navBytes.Length:N0} bytes): {navReport}");
 
         var wantedChunks = RegionBake.ChunksOf(description.World).Where(c => only == null || only(c.X, c.Z)).ToList();
         Dictionary<(int, int), ChunkMesh[]>? meshes = null;
@@ -183,7 +199,51 @@ public static class RegionCommand
             Console.WriteLine("  key: rock grey, topsoil green, air pale with a line every 5 m; water's surface blue; where each level's surface crosses the cut, level 0 black, level 1 orange a pixel lower, level 2 magenta two lower");
         }
         if (walkDir != null) Walk(description, land, Meshes(), walkDir, walkPoints, swim);
+        if (navDir != null)
+        {
+            var box = BoxOf(description, navArea);
+            if (box == null) { Console.Error.WriteLine($"no area {navArea}"); return 2; }
+            Nav(description, land, Meshes(), OpenNavMesh.Read(new MemoryStream(files[OpenNavMesh.FileName])), navDir, navArea, box.Value, navPaths, swim);
+        }
         return 0;
+    }
+
+    /// <summary>
+    /// <c>--nav</c> (plan 32 · OW4): the navigation mesh over the region's plan (or an area's), and the paths between the
+    /// pairs of places given (each <c>x,z</c> on the highest ground there, or <c>x,y,z</c> on the ground nearest y), each
+    /// printed with its length, corners and what it crosses.
+    /// </summary>
+    static void Nav(RegionDescription description, TerrainWorld land, Dictionary<(int, int), ChunkMesh[]> meshes, OpenNavMesh mesh, string dir, string? area,
+        (double X0, double Z0, double X1, double Z1) box, List<((double X, double? Y, double Z) From, (double X, double? Y, double Z) To)> pairs, bool swim)
+    {
+        var ground = CapsuleRoute.GroundOf(description, land);
+        OpenPos? At((double X, double? Y, double Z) p) =>
+            ground.Footing(p.X, p.Z, (p.Y ?? 1000) + 0.5, p.Y is { } y ? y - 2 : -1000) is { } f ? OpenPos.FromMetres(p.X, f.Y, p.Z) : null;
+        var allowed = OpenNavMesh.Allowed(swim ? PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim : PokemonPlatinumEngine.OpenWorld.MovementGrants.None);
+        var paths = new List<NavPath>();
+        foreach (var (from, to) in pairs)
+        {
+            if (At(from) is not { } a || At(to) is not { } b) { Console.WriteLine($"  no ground at {from} or {to}"); continue; }
+            var path = NavPath.Find(mesh, a, b, allowed);
+            if (path == null) { Console.WriteLine($"  no way from {a} to {b}"); continue; }
+            paths.Add(path);
+            Console.WriteLine($"  from {a} to {b}: {path.Length:0.0} m, {path.Polygons.Count} polygons ({path.Visited} closed), crossing {path.Uses}: "
+                + string.Join(" ", path.Corners.Select(c => FormattableString.Invariant($"({c.MetresX:0.0},{c.MetresY:0.0},{c.MetresZ:0.0})"))));
+        }
+        int perMetre = Math.Clamp((int)(1024 / (box.X1 - box.X0)), 2, 16);
+        var finest = RegionPictures.Surface(meshes.Values.Select(m => m[0]));
+        var plan = RegionPictures.Plan(description, land, finest, box, perMetre: perMetre);
+        NavPictures.Over(plan, mesh, ground, box, perMetre, paths);
+        string path0 = Path.Combine(dir, $"nav_{(area ?? description.World.Region).Replace(':', '_').Replace(',', '_').Replace('-', 'm')}.png");
+        Pictures.Save(plan, path0);
+        Console.WriteLine($"wrote {path0} ({perMetre} pixels a metre)");
+        Console.WriteLine("  key: polygons outlined dark on the top, violet under other ground; swim polygons washed cyan; shared edges green; a step off the mesh yellow, a drop red (to a dot where it lands); paths white, their corners dotted");
+    }
+
+    static (double X, double? Y, double Z) Place3(string text)
+    {
+        var parts = text.Split(',').Select(p => double.Parse(p, CultureInfo.InvariantCulture)).ToArray();
+        return parts.Length == 3 ? (parts[0], parts[1], parts[2]) : (parts[0], null, parts[1]);
     }
 
     /// <summary>
@@ -227,6 +287,12 @@ public static class RegionCommand
     {
         var w = description.World;
         if (area == null) return (w.Chunks[0] * 32.0, w.Chunks[1] * 32.0, (w.Chunks[2] + 1) * 32.0, (w.Chunks[3] + 1) * 32.0);
+        if (area.StartsWith("box:"))
+        {
+            // A rectangle of the ground by hand: box:x0,z0,x1,z1
+            var c = area[4..].Split(',').Select(p => double.Parse(p, CultureInfo.InvariantCulture)).ToArray();
+            return c.Length == 4 && c[2] > c[0] && c[3] > c[1] ? (c[0], c[1], c[2], c[3]) : null;
+        }
         var found = w.Areas.FirstOrDefault(a => a.Key == area);
         if (found == null) return null;
         return Flat.Bounds(found.Polygon.Select(p => new P2(p[0], p[1])));
