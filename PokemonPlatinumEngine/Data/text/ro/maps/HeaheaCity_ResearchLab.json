@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Heahea City"
+    ],
+    "text": [
+      "Heahea City"
+    ]
+  },
+  "people": {
+    "researcher": {
+      "name": {
+        "en": [
+          "Researcher"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      }
+    },
+    "assistant": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We measure the strange tremors that ripple through the islands' air. The readings jump every few nights."
+        ],
+        "text": [
+          "Măsurăm tremurele ciudate care străbat aerul insulelor. Valorile sar la câteva nopți."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

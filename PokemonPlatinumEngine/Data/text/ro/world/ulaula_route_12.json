@@ -1,0 +1,154 @@
+{
+  "people": {
+    "hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          "Hapu"
+        ]
+      }
+    },
+    "loke": {
+      "name": {
+        "en": [
+          "Loke"
+        ],
+        "text": [
+          "Loke"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Loke: Fishing here is lovely. Quiet. Until someone like you comes along."
+        ],
+        "text": [
+          "Pescar Loke: Pescuitul de aici e încântător. Liniștit. Până vine cineva ca tine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Loke: And now it's quiet again."
+        ],
+        "text": [
+          "Pescar Loke: Și acum e iar liniște."
+        ]
+      }
+    },
+    "lani": {
+      "name": {
+        "en": [
+          "Lani"
+        ],
+        "text": [
+          "Lani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Lani: I breed the Pokémon of Ula'ula's slopes. Healthy, happy, and ready to battle!"
+        ],
+        "text": [
+          "Crescător Pokémon Lani: Cresc Pokémonii de pe pantele din Ula'ula. Sănătoși, fericiți și gata de luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Lani: A happy loss is still a loss."
+        ],
+        "text": [
+          "Crescător Pokémon Lani: O înfrângere fericită tot înfrângere e."
+        ]
+      }
+    },
+    "nalo": {
+      "name": {
+        "en": [
+          "Nalo"
+        ],
+        "text": [
+          "Nalo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Nalo: This road is long. You'll want something to fight on the way."
+        ],
+        "text": [
+          "Antrenor As Nalo: Drumul ăsta e lung. Vei vrea ceva cu care să lupți pe parcurs."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Nalo: Okay. Not that long, after all."
+        ],
+        "text": [
+          "Antrenor As Nalo: Bine. Nu chiar atât de lung, până la urmă."
+        ]
+      }
+    },
+    "wana": {
+      "name": {
+        "en": [
+          "Wana"
+        ],
+        "text": [
+          "Wana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Wana: Boulders, boulders everywhere! And I love them all!"
+        ],
+        "text": [
+          "Drumeț Wana: Bolovani, bolovani peste tot! Și îi iubesc pe toți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Wana: Boulders don't lose. I do."
+        ],
+        "text": [
+          "Drumeț Wana: Bolovanii nu pierd. Eu da."
+        ]
+      }
+    },
+    "kalei": {
+      "name": {
+        "en": [
+          "Kalei"
+        ],
+        "text": [
+          "Kalei"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Kalei: Tapu Village is just ahead, and so are my Mudsdale. They've got a race to win."
+        ],
+        "text": [
+          "Fermier Kalei: Tapu Village e chiar înainte, la fel și Mudsdale-ii mei. Au o cursă de câștigat."
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Kalei: Slow and steady, I guess."
+        ],
+        "text": [
+          "Fermier Kalei: Încet și sigur, cred."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 12\nEast: Tapu Village\nWest: Mount Hokulani"
+      ],
+      "text": [
+        "Ruta 12\nEst: Tapu Village\nVest: Mount Hokulani"
+      ]
+    }
+  }
+}

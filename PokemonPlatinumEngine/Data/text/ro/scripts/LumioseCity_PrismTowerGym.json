@@ -1,0 +1,310 @@
+{
+  "Clemont": [
+    {
+      "en": [
+        "Clemont"
+      ],
+      "text": [
+        "Clemont"
+      ]
+    },
+    {
+      "en": [
+        "You must be the one who switched the power back on! I'm Clemont. Thank you! My inventions were starving."
+      ],
+      "text": [
+        "Tu trebuie să fii cel care a pus curentul înapoi! Sunt Clemont. Mulțumesc! Invențiile mele mureau de foame."
+      ]
+    },
+    {
+      "en": [
+        "Science is amazing! And so is a good battle. Let me show you what my Pokémon and I have built together!"
+      ],
+      "text": [
+        "Știința e uimitoare! La fel și o luptă bună. Lasă-mă să-ți arăt ce am construit eu și Pokémonii mei împreună!"
+      ]
+    },
+    {
+      "en": [
+        "Incredible! My calculations had you losing at least three times. I'll have to check my numbers."
+      ],
+      "text": [
+        "Incredibil! Calculele mele te dădeau învins de cel puțin trei ori. Va trebui să-mi verific cifrele."
+      ]
+    },
+    {
+      "en": [
+        "Here, the Voltage Badge. You've more than earned it."
+      ],
+      "text": [
+        "Poftim, Voltage Badge. Ai meritat-o din plin."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Voltage Badge from Clemont!"
+      ],
+      "text": [
+        "{player} a primit Voltage Badge de la Clemont!"
+      ]
+    },
+    {
+      "en": [
+        "And take this machine. It throws a burst of electricity that stops a foe in its tracks!"
+      ],
+      "text": [
+        "Și ia mașinăria asta. Aruncă o rafală de electricitate care oprește un dușman pe loc!"
+      ]
+    },
+    {
+      "en": [
+        "The north gate is open again. Laverre City lies up Route 14, past the marsh."
+      ],
+      "text": [
+        "Poarta de nord e din nou deschisă. Laverre City se află în sus pe Ruta 14, dincolo de mlaștină."
+      ]
+    },
+    {
+      "en": [
+        "Next time I'll have an invention that can beat you. Probably!"
+      ],
+      "text": [
+        "Data viitoare voi avea o invenție care să te învingă. Probabil!"
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghid de sală"
+      ]
+    },
+    {
+      "en": [
+        "Hello there, future Champion! Clemont's Electric types can't touch a Ground type. Dig in!"
+      ],
+      "text": [
+        "Salut, viitorule Campion! Pokémonii Electric ai lui Clemont nu pot atinge un tip Pământ. Sapă adânc!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Clemont! He's already redesigning everything."
+      ],
+      "text": [
+        "L-ai învins pe Clemont! Deja reproiectează totul."
+      ]
+    }
+  ],
+  "Quiz1": [
+    {
+      "en": [
+        "Quiz Host"
+      ],
+      "text": [
+        "Prezentatorul testului"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Prism Tower's quiz! Answer right and the gate opens. Answer wrong and, well, you'll see!"
+      ],
+      "text": [
+        "Bun venit la testul din Prism Tower! Răspunde corect și poarta se deschide. Răspunde greșit și, ei bine, vei vedea!"
+      ]
+    },
+    {
+      "en": [
+        "Which type of move hits a Water-type Pokémon hard?",
+        "Electric",
+        "Fire",
+        "Rock"
+      ],
+      "text": [
+        "Ce tip de mișcare lovește tare un Pokémon de tip Apă?",
+        "Electric",
+        "Foc",
+        "Rocă"
+      ]
+    },
+    {
+      "en": [
+        "Bzzzt! Water and electricity, remember? Never mind, the first gate opens for anyone who tries."
+      ],
+      "text": [
+        "Bzzzt! Apă și electricitate, ține minte? Nu-i nimic, prima poartă se deschide pentru oricine încearcă."
+      ]
+    },
+    {
+      "en": [
+        "Correct! A Water type shudders at a good jolt. Up you go!"
+      ],
+      "text": [
+        "Corect! Un tip Apă tresare la o descărcare bună. Sus cu tine!"
+      ]
+    },
+    {
+      "en": [
+        "The electric gate crackled and switched off."
+      ],
+      "text": [
+        "Poarta electrică a trosnit și s-a oprit."
+      ]
+    },
+    {
+      "en": [
+        "The gate's open. More questions wait above!"
+      ],
+      "text": [
+        "Poarta e deschisă. Mai multe întrebări te așteaptă sus!"
+      ]
+    }
+  ],
+  "Quiz2": [
+    {
+      "en": [
+        "Quiz Host"
+      ],
+      "text": [
+        "Prezentatorul testului"
+      ]
+    },
+    {
+      "en": [
+        "Second question! Ready?"
+      ],
+      "text": [
+        "A doua întrebare! Gata?"
+      ]
+    },
+    {
+      "en": [
+        "Which of these Pokémon is an Electric type?",
+        "Litleo",
+        "Helioptile",
+        "Skiddo"
+      ],
+      "text": [
+        "Care dintre Pokémonii ăștia e de tip Electric?",
+        "Litleo",
+        "Helioptile",
+        "Skiddo"
+      ]
+    },
+    {
+      "en": [
+        "Bzzzt! Wrong! Here comes your penalty!"
+      ],
+      "text": [
+        "Bzzzt! Greșit! Vine penalizarea!"
+      ]
+    },
+    {
+      "en": [
+        "Correct! Helioptile soaks up the sun and turns it into electricity."
+      ],
+      "text": [
+        "Corect! Helioptile absoarbe soarele și îl transformă în electricitate."
+      ]
+    },
+    {
+      "en": [
+        "Quiz Host"
+      ],
+      "text": [
+        "Prezentatorul testului"
+      ]
+    },
+    {
+      "en": [
+        "The electric gate crackled and switched off."
+      ],
+      "text": [
+        "Poarta electrică a trosnit și s-a oprit."
+      ]
+    },
+    {
+      "en": [
+        "One more gate between you and the Leader!"
+      ],
+      "text": [
+        "Încă o poartă între tine și Lider!"
+      ]
+    }
+  ],
+  "Quiz3": [
+    {
+      "en": [
+        "Quiz Host"
+      ],
+      "text": [
+        "Prezentatorul testului"
+      ]
+    },
+    {
+      "en": [
+        "Last question! Clemont is waiting just beyond."
+      ],
+      "text": [
+        "Ultima întrebare! Clemont așteaptă chiar dincolo."
+      ]
+    },
+    {
+      "en": [
+        "With a Mega Stone held, what else does a Trainer need to Mega Evolve?",
+        "A Poké Flute",
+        "A Thunder Stone",
+        "A Key Stone"
+      ],
+      "text": [
+        "Cu o Piatră Mega ținută, de ce altceva mai are nevoie un Antrenor ca să facă Mega Evoluția?",
+        "De un Poké Flaut",
+        "De Piatra Fulgerului",
+        "De o Piatră-Cheie"
+      ]
+    },
+    {
+      "en": [
+        "Bzzzt! Wrong! One more battle, then!"
+      ],
+      "text": [
+        "Bzzzt! Greșit! Încă o luptă, atunci!"
+      ]
+    },
+    {
+      "en": [
+        "Correct! A Key Stone, and a strong bond. Clemont's all yours!"
+      ],
+      "text": [
+        "Corect! O Piatră-Cheie și o legătură puternică. Clemont e al tău!"
+      ]
+    },
+    {
+      "en": [
+        "Quiz Host"
+      ],
+      "text": [
+        "Prezentatorul testului"
+      ]
+    },
+    {
+      "en": [
+        "The electric gate crackled and switched off."
+      ],
+      "text": [
+        "Poarta electrică a trosnit și s-a oprit."
+      ]
+    },
+    {
+      "en": [
+        "The Leader is right through there. Good luck!"
+      ],
+      "text": [
+        "Liderul e chiar pe acolo. Mult noroc!"
+      ]
+    }
+  ]
+}

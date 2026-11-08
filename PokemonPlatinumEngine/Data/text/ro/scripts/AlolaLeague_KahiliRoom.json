@@ -1,0 +1,52 @@
+{
+  "League": [
+    {
+      "en": [
+        "Kahili"
+      ],
+      "text": [
+        "Kahili"
+      ]
+    },
+    {
+      "en": [
+        "Welcome, {player}. I'm Kahili, the last of the Elite Four. I fly, and so do my Pokémon, and so does my golf ball."
+      ],
+      "text": [
+        "Bun venit, {player}. Sunt Kahili, ultima din Elita celor Patru. Zbor eu, zboară Pokémonii mei și zboară și mingea mea de golf."
+      ]
+    },
+    {
+      "en": [
+        "Flying types are just a matter of freedom. See if you can keep up with mine!"
+      ],
+      "text": [
+        "Tipurile Zburător înseamnă doar libertate. Vezi dacă poți ține pasul cu ai mei!"
+      ]
+    },
+    {
+      "en": [
+        "A hole in one! ...For you, I mean. Not for me. Well played."
+      ],
+      "text": [
+        "Hole in one! ...Pentru tine, vreau să zic. Nu pentru mine. Bine jucat."
+      ]
+    },
+    {
+      "en": [
+        "The Champion's door is open. I think you'll recognise the Trainer waiting inside."
+      ],
+      "text": [
+        "Ușa Campionului e deschisă. Cred că vei recunoaște Antrenorul care așteaptă înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Go on. The Champion is waiting for you."
+      ],
+      "text": [
+        "Hai, mergi. Campionul te așteaptă."
+      ]
+    }
+  ]
+}

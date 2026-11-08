@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Paniola Ranch"
+    ],
+    "text": [
+      "Ferma Paniola"
+    ]
+  },
+  "people": {
+    "keeper": {
+      "name": {
+        "en": [
+          "Nursery Keeper"
+        ],
+        "text": [
+          "Îngrijitorul de creșă"
+        ]
+      }
+    },
+    "egg_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ranch's Pokémon lay eggs out in the paddocks. My job is to find them before the Tauros do."
+        ],
+        "text": [
+          "Pokémonii fermei depun ouă prin padocuri. Treaba mea e să le găsesc înainte să dea peste ele Tauros."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

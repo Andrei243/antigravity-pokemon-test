@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fresh malasadas, fried this morning! Sweet ones, sour ones, even the spicy ones the kahuna likes."
+        ],
+        "text": [
+          "Malasada proaspete, prăjite azi-dimineață! Dulci, acre, chiar și cele iuți pe care le place kahunei."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

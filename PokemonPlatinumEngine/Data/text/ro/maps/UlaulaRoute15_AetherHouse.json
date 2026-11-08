@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Aether House"
+    ],
+    "text": [
+      "Casa Aether"
+    ]
+  },
+  "people": {
+    "employee": {
+      "name": {
+        "en": [
+          "Aether Employee"
+        ],
+        "text": [
+          "Angajatul Aether"
+        ]
+      }
+    },
+    "child": {
+      "name": {
+        "en": [
+          "Child"
+        ],
+        "text": [
+          "Copil"
+        ]
+      }
+    },
+    "child_2": {
+      "name": {
+        "en": [
+          "Child"
+        ],
+        "text": [
+          "Copil"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Big sister Acerola brings us cake on Sundays. Once she brought a ghost. That was a fun Sunday."
+        ],
+        "text": [
+          "Sora mare Acerola ne aduce prăjitură duminica. Odată a adus o fantomă. A fost o duminică distractivă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

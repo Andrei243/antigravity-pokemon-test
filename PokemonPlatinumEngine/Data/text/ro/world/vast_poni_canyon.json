@@ -1,0 +1,116 @@
+{
+  "people": {
+    "dulse": {
+      "name": {
+        "en": [
+          "Dulse"
+        ],
+        "text": [
+          "Dulse"
+        ]
+      }
+    },
+    "den_1": {
+      "name": {
+        "en": [
+          "Jangmo-o"
+        ],
+        "text": [
+          "Jangmo-o"
+        ]
+      }
+    },
+    "den_2": {
+      "name": {
+        "en": [
+          "Jangmo-o"
+        ],
+        "text": [
+          "Jangmo-o"
+        ]
+      }
+    },
+    "den_3": {
+      "name": {
+        "en": [
+          "Jangmo-o"
+        ],
+        "text": [
+          "Jangmo-o"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Kommo-o"
+        ],
+        "text": [
+          "Kommo-o"
+        ]
+      }
+    },
+    "kaoni": {
+      "name": {
+        "en": [
+          "Kaoni"
+        ],
+        "text": [
+          "Kaoni"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Kaoni: The canyon is a dragon's home. Wait, so is mine. Let's battle!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Kaoni: Canionul e casa unui dragon. Stai, și a mea e. Hai să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Kaoni: The canyon has a new favourite."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Kaoni: Canionul are un nou favorit."
+        ]
+      }
+    },
+    "nalani": {
+      "name": {
+        "en": [
+          "Nalani"
+        ],
+        "text": [
+          "Nalani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Nalani: I've climbed every rock face in Alola. This one's my favourite."
+        ],
+        "text": [
+          "Drumeț Nalani: Am urcat fiecare perete de stâncă din Alola. Ăsta e preferatul meu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Nalani: Good climb. Good fight."
+        ],
+        "text": [
+          "Drumeț Nalani: Urcare bună. Luptă bună."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CanyonSign": {
+      "en": [
+        "Vast Poni Canyon\nTrial site of Captain Dulse. Totem: Kommo-o"
+      ],
+      "text": [
+        "Vast Poni Canyon\nLocul încercării Căpitanului Dulse. Totem: Kommo-o"
+      ]
+    }
+  }
+}

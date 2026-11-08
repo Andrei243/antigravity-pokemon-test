@@ -1,0 +1,98 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    },
+    "machamp": {
+      "name": {
+        "en": [
+          "Machamp"
+        ],
+        "text": [
+          "Machamp"
+        ]
+      }
+    },
+    "elder": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          "Bătrâna înțeleaptă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea folk have lived on these stilts since before there were trials. The sea gives, and the sea takes, and we say thank you both times."
+        ],
+        "text": [
+          "Oamenii mării locuiesc pe piloții ăștia de dinainte să existe încercări. Marea dă și marea ia, iar noi mulțumim de ambele ori."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poni Island is the last island! The Altar of the Sunne and Moone is up past the ruins, where the sky touches the stone."
+        ],
+        "text": [
+          "Insula Poni e ultima insulă! Altarul Soarelui și al Lunii e mai sus, dincolo de ruine, unde cerul atinge piatra."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PierSign": {
+      "en": [
+        "Seafolk Village Pier\nFerries to Malie City, Ula'ula Island."
+      ],
+      "text": [
+        "Debarcaderul Seafolk Village\nFeriboturi spre Malie City, insula Ula'ula."
+      ]
+    },
+    "VillageSign": {
+      "en": [
+        "Seafolk Village\nA village of the sea folk, on the shore of Poni Island."
+      ],
+      "text": [
+        "Seafolk Village\nUn sat al oamenilor mării, pe țărmul insulei Poni."
+      ]
+    }
+  }
+}

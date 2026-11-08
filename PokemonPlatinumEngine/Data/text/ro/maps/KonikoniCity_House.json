@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Konikoni City"
+    ],
+    "text": [
+      "Konikoni City"
+    ]
+  },
+  "people": {
+    "grandfather": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lanterns of Konikoni are lit for the island guardian. Tapu Lele likes a bright town, they say."
+        ],
+        "text": [
+          "Lanternele din Konikoni sunt aprinse pentru ocrotitorul insulei. Se zice că lui Tapu Lele îi place un oraș luminos."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

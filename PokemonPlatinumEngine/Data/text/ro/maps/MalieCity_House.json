@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Malie City"
+    ],
+    "text": [
+      "Malie City"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter lives in Hau'oli City. She says it's louder there, but they have more malasadas."
+        ],
+        "text": [
+          "Fiica mea locuiește în Hau'oli City. Zice că e mai gălăgios acolo, dar au mai multe malasada."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

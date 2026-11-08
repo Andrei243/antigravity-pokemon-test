@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Royal Avenue"
+    ],
+    "text": [
+      "Royal Avenue"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

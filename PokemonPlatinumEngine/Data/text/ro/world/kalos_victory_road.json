@@ -1,0 +1,93 @@
+{
+  "people": {
+    "ace": {
+      "name": {
+        "en": [
+          "Camille"
+        ],
+        "text": [
+          "Camille"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Camille: Victory Road is the last test before the League. I'm the test before the test!"
+        ],
+        "text": [
+          "Antrenor As Camille: Drumul Victoriei e ultimul test înainte de Ligă. Eu sunt testul dinaintea testului!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Camille: You passed. Both, I'd say."
+        ],
+        "text": [
+          "Antrenor As Camille: Ai trecut. Amândouă, aș zice."
+        ]
+      }
+    },
+    "ace_2": {
+      "name": {
+        "en": [
+          "Maxime"
+        ],
+        "text": [
+          "Maxime"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Maxime: Eight Badges? So do I. Let's see whose are shinier."
+        ],
+        "text": [
+          "Antrenor As Maxime: Opt Insigne? Și eu. Să vedem ale cui sunt mai strălucitoare."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Maxime: Yours, clearly."
+        ],
+        "text": [
+          "Antrenor As Maxime: Ale tale, evident."
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Clovis"
+        ],
+        "text": [
+          "Clovis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Clovis: The League's door is just past me. Many have stood here; few walked on."
+        ],
+        "text": [
+          "Veteran Clovis: Ușa Ligii e chiar după mine. Mulți au stat aici; puțini au trecut."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Clovis: Walk on, then."
+        ],
+        "text": [
+          "Veteran Clovis: Treci, atunci."
+        ]
+      }
+    },
+    "mega_garchompite": {
+      "name": {
+        "en": [
+          "Garchompite"
+        ],
+        "text": [
+          "Garchompite"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

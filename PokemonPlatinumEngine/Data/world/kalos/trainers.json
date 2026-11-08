@@ -5042,5 +5042,395 @@
         "personality": 9119453
       }
     ]
+  },
+  {
+    "id": "kalos_restaurant_bistro_odette",
+    "name": "Odette",
+    "class": "Waitress",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1200,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Spritzee",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 9120397
+      },
+      {
+        "species": "Swirlix",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 9120794
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_bistro_fabien",
+    "name": "Fabien",
+    "class": "Waiter",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1240,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Furfrou",
+        "level": 31,
+        "ivScale": 12,
+        "personality": 9121191
+      },
+      {
+        "species": "Pancham",
+        "level": 31,
+        "ivScale": 12,
+        "personality": 9121588
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_bistro_bertrand",
+    "name": "Bertrand",
+    "class": "Gentleman",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2560,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Litleo",
+        "level": 32,
+        "ivScale": 14,
+        "personality": 9121985
+      },
+      {
+        "species": "Meowstic",
+        "level": 32,
+        "ivScale": 14,
+        "personality": 9122382
+      },
+      {
+        "species": "Furfrou",
+        "level": 32,
+        "ivScale": 14,
+        "personality": 9122779
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_trois_raoul",
+    "name": "Raoul",
+    "class": "Waiter",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1320,
+    "format": "triple",
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 32,
+        "ivScale": 12,
+        "personality": 9123176
+      },
+      {
+        "species": "Bunnelby",
+        "level": 32,
+        "ivScale": 12,
+        "personality": 9123573
+      },
+      {
+        "species": "Fletchinder",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9123970
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_trois_agnes",
+    "name": "Agnès",
+    "class": "Waitress",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1320,
+    "format": "triple",
+    "party": [
+      {
+        "species": "Helioptile",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9124367
+      },
+      {
+        "species": "Dedenne",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9124764
+      },
+      {
+        "species": "Klefki",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9125161
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_trois_heloise",
+    "name": "Héloïse",
+    "class": "Lady",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2720,
+    "format": "triple",
+    "party": [
+      {
+        "species": "Gogoat",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9125558
+      },
+      {
+        "species": "Diggersby",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9125955
+      },
+      {
+        "species": "Slurpuff",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9126352
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_carrousel_marius",
+    "name": "Marius",
+    "class": "Waiter",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1280,
+    "format": "rotation",
+    "party": [
+      {
+        "species": "Honedge",
+        "level": 32,
+        "ivScale": 12,
+        "personality": 9126749
+      },
+      {
+        "species": "Inkay",
+        "level": 32,
+        "ivScale": 12,
+        "personality": 9127146
+      },
+      {
+        "species": "Binacle",
+        "level": 32,
+        "ivScale": 12,
+        "personality": 9127543
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_carrousel_capucine",
+    "name": "Capucine",
+    "class": "Waitress",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1320,
+    "format": "rotation",
+    "party": [
+      {
+        "species": "Skrelp",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9127940
+      },
+      {
+        "species": "Clauncher",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9128337
+      },
+      {
+        "species": "Noibat",
+        "level": 33,
+        "ivScale": 12,
+        "personality": 9128734
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_carrousel_ferdinand",
+    "name": "Ferdinand",
+    "class": "Gentleman",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2720,
+    "format": "rotation",
+    "party": [
+      {
+        "species": "Doublade",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9129131
+      },
+      {
+        "species": "Malamar",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9129528
+      },
+      {
+        "species": "Barbaracle",
+        "level": 34,
+        "ivScale": 14,
+        "personality": 9129925
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_grande_severine",
+    "name": "Séverine",
+    "class": "Waitress",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion"
+    ],
+    "prizeMoney": 1800,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Pyroar",
+        "level": 36,
+        "ivScale": 18,
+        "personality": 9130322
+      },
+      {
+        "species": "Meowstic",
+        "level": 36,
+        "ivScale": 18,
+        "personality": 9130719
+      },
+      {
+        "species": "Aromatisse",
+        "level": 36,
+        "ivScale": 18,
+        "personality": 9131116
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_grande_evrard",
+    "name": "Évrard",
+    "class": "Waiter",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion"
+    ],
+    "prizeMoney": 1850,
+    "format": "triple",
+    "party": [
+      {
+        "species": "Talonflame",
+        "level": 37,
+        "ivScale": 18,
+        "personality": 9131513
+      },
+      {
+        "species": "Heliolisk",
+        "level": 37,
+        "ivScale": 18,
+        "personality": 9131910
+      },
+      {
+        "species": "Clawitzer",
+        "level": 37,
+        "ivScale": 18,
+        "personality": 9132307
+      }
+    ]
+  },
+  {
+    "id": "kalos_restaurant_grande_hippolyte",
+    "name": "Hippolyte",
+    "class": "Gentleman",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 3040,
+    "format": "rotation",
+    "party": [
+      {
+        "species": "Hawlucha",
+        "level": 38,
+        "ivScale": 20,
+        "personality": 9132704
+      },
+      {
+        "species": "Dragalge",
+        "level": 38,
+        "ivScale": 20,
+        "personality": 9133101
+      },
+      {
+        "species": "Aegislash",
+        "level": 38,
+        "ivScale": 20,
+        "personality": 9133498
+      }
+    ]
   }
 ]

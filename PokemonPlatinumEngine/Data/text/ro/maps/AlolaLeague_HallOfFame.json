@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Hall of Fame"
+    ],
+    "text": [
+      "Sala Faimei"
+    ]
+  },
+  "people": {
+    "kukui_hof": {
+      "name": {
+        "en": [
+          "Kukui"
+        ],
+        "text": [
+          "Kukui"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

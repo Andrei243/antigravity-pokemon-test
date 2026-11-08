@@ -116,9 +116,21 @@ public static class RegionBake
     }
 
     /// <summary>
+    /// The solid boxes and the water laid by hand in a region's places (<c>places/*.json</c>, plan 32 · OW5), every map's
+    /// in the maps' order: what the navigation mesh is baked with beside the land, as the capsule collides with them.
+    /// </summary>
+    public static (List<OpenBox> Solids, List<OpenWaterBox> Waters) PlacedOf(RegionDescription description)
+    {
+        if (!Directory.Exists(Path.Combine(description.Folder, OpenPlaceFiles.Folder))) return (new(), new());
+        var maps = OpenPlaceFiles.LoadRegion(description.Folder, withLand: false);
+        return (maps.SelectMany(m => m.Solids).ToList(), maps.SelectMany(m => m.Waters).ToList());
+    }
+
+    /// <summary>
     /// Every file of the bake, by its path under <c>baked/</c> (<c>index.json</c> and <c>&lt;level&gt;/&lt;x&gt;_&lt;z&gt;.chunk</c>),
     /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all). With
-    /// every chunk, the navigation mesh too (<c>navmesh.bin</c>, plan 32 · OW4), what its bake found in <paramref name="navReport"/>.
+    /// every chunk, the navigation mesh too (<c>navmesh.bin</c>, plan 32 · OW4, with the places' solids and water since
+    /// OW6), what its bake found in <paramref name="navReport"/>.
     /// </summary>
     public static SortedDictionary<string, byte[]> Files(RegionDescription description, Func<int, int, bool>? only = null, NavReport? navReport = null)
     {
@@ -136,7 +148,12 @@ public static class RegionBake
             if (baked[i] != null)
                 foreach (var chunk in baked[i]) files[BakedChunk.FileName(chunk.ChunkX, chunk.ChunkZ, chunk.Level)] = chunk.Bytes();
         // The navigation mesh (plan 32 · OW4) is the whole region's: baked only with every chunk, after them, on one thread
-        if (only == null) files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), report: navReport).Bytes();
+        // with the places' solids and water laid by hand (plan 32 · OW6: a house's block is walked round, never through)
+        if (only == null)
+        {
+            var (solids, waters) = PlacedOf(description);
+            files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), solids, waters, report: navReport).Bytes();
+        }
         var index = new BakedIndexFile
         {
             Format = BakedChunk.Format,

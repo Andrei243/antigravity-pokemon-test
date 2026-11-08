@@ -1,0 +1,28 @@
+{
+  "Mewtwo": [
+    {
+      "en": [
+        "A Pokémon stands alone at the end of the cave, with its back to the wall. Slowly, it turns its head toward {player}."
+      ],
+      "text": [
+        "Un Pokémon stă singur la capătul peșterii, cu spatele la perete. Încet, își întoarce capul spre {player}."
+      ]
+    },
+    {
+      "en": [
+        "Where Mewtwo stood, two stones glimmer on the cave floor."
+      ],
+      "text": [
+        "Acolo unde stătea Mewtwo, două pietre sclipesc pe podeaua peșterii."
+      ]
+    },
+    {
+      "en": [
+        "Mewtwo watches {player} go, without moving."
+      ],
+      "text": [
+        "Mewtwo îl privește pe {player} cum pleacă, fără să se miște."
+      ]
+    }
+  ]
+}

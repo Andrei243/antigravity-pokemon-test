@@ -1,0 +1,144 @@
+{
+  "people": {
+    "gladion": {
+      "name": {
+        "en": [
+          "Gladion"
+        ],
+        "text": [
+          "Gladion"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "wicke": {
+      "name": {
+        "en": [
+          "Wicke"
+        ],
+        "text": [
+          "Wicke"
+        ]
+      }
+    },
+    "lusamine": {
+      "name": {
+        "en": [
+          "Lusamine"
+        ],
+        "text": [
+          "Lusamine"
+        ]
+      }
+    },
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    },
+    "guard": {
+      "name": {
+        "en": [
+          "Aether Guard"
+        ],
+        "text": [
+          "Garda Aether"
+        ]
+      }
+    },
+    "employee": {
+      "name": {
+        "en": [
+          "Aether Employee"
+        ],
+        "text": [
+          "Angajatul Aether"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Aether Paradise! Our foundation looks after injured Pokémon, and we have a whole floating island of them to prove it."
+        ],
+        "text": [
+          "Bun venit la Aether Paradise! Fundația noastră are grijă de Pokémonii răniți și avem o întreagă insulă plutitoare plină de ei ca dovadă."
+        ]
+      }
+    },
+    "child": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They let the hurt Pokémon rest in the garden until they're better. This one has been here a week and doesn't want to leave."
+        ],
+        "text": [
+          "Lasă Pokémonii răniți să se odihnească în grădină până se fac bine. Ăsta e aici de o săptămână și nu vrea să plece."
+        ]
+      }
+    },
+    "ito": {
+      "name": {
+        "en": [
+          "Ito"
+        ],
+        "text": [
+          "Ito"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Ito: You're going to take a tour, are you? Let me test your resolve first."
+        ],
+        "text": [
+          "Om de știință Ito: Vrei să faci turul, nu? Lasă-mă să-ți pun mai întâi hotărârea la încercare."
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Ito: You're well past the tour."
+        ],
+        "text": [
+          "Om de știință Ito: Ai trecut cu mult de tur."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "AetherSign": {
+      "en": [
+        "Aether Paradise\nThe Aether Foundation's floating haven for Pokémon."
+      ],
+      "text": [
+        "Aether Paradise\nHavenul plutitor al Fundației Aether pentru Pokémoni."
+      ]
+    },
+    "PierSign": {
+      "en": [
+        "Aether Paradise Pier\nFerries to Heahea City, Akala, and Malie City, Ula'ula."
+      ],
+      "text": [
+        "Debarcaderul Aether Paradise\nFeriboturi spre Heahea City, Akala, și Malie City, Ula'ula."
+      ]
+    }
+  }
+}

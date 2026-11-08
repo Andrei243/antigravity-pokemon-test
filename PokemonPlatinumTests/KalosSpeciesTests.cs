@@ -15,7 +15,6 @@ public class KalosSpeciesTests
     private const string Region = RegionDatabase.Kalos;
 
     private const string Wild = "plan 23: X and Y's wild Pokémon still to place in Kalos (the water, the hordes, the rest of the grass)";
-    private const string Cord = "GE3: a Linking Cord in Kalos";
     private const string Sites = "GE3: Kalos's places of evolution (a Moss Rock, an Ice Rock, a Magnetic Field)";
     private const string Fossils = "plan 23: Ambrette's fossil laboratory";
     private const string Mythicals = "plan 29 · LS11: Kalos's mythicals, by events of ours";
@@ -23,10 +22,6 @@ public class KalosSpeciesTests
     /// <summary>What Kalos's Pokédexes have that nothing in Kalos gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Evolved by trading, and Kalos gives no Linking Cord
-        ["Alakazam"] = Cord, ["Aromatisse"] = Cord, ["Slurpuff"] = Cord, ["Rhyperior"] = Cord, ["Steelix"] = Cord,
-        ["Machamp"] = Cord, ["Gigalith"] = Cord, ["Slowking"] = Cord, ["Golem"] = Cord, ["Escavalier"] = Cord,
-        ["Accelgor"] = Cord, ["Gengar"] = Cord, ["Politoed"] = Cord, ["Conkeldurr"] = Cord, ["Scizor"] = Cord,
         // Evolved by levelling at a place no area of Kalos names yet
         ["Leafeon"] = Sites, ["Glaceon"] = Sites, ["Probopass"] = Sites, ["Magnezone"] = Sites,
         // Ambrette's fossil laboratory, which plan 23 · Z3 left unbuilt
@@ -57,7 +52,6 @@ public class KalosSpeciesTests
     /// <summary>The items and places Kalos's evolutions ask for that nothing in Kalos gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = Cord,
         ["Moss Rock"] = Sites, ["Ice Rock"] = Sites, ["Magnetic Field"] = Sites,
     };
 

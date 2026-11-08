@@ -19,8 +19,12 @@ namespace ContentCheck;
 /// will be what it is held to);</item>
 /// <item>what <c>ScriptLibrary.OpenProblems</c> says of the scripts: a tile form in an open place, a marker its map
 /// hasn't, an open form in a grid place, a <c>warpto</c> to no open map's marker, a <c>warp</c> to an open map.</item>
+/// <item>someone (plan 32 · OW6) standing in rock, running a script that isn't there, battling as a trainer the data
+/// hasn't, saying nothing, hidden or shown by a flag nothing sets, wandering in bounds that don't hold them, and a
+/// trainer whose cone sees no ground at all; and in what the scripts say, a <c>walkto</c>, <c>placeat</c> or
+/// <c>faceto</c> of somebody the map hasn't.</item>
 /// </list>
-/// A trainer's cone that sees nothing waits for OW6's trainers, and a place nobody can come to for OW4's <c>OpenWalk</c>.
+/// A place nobody can come to waits for OW4's <c>OpenWalk</c> to be asked of a region of the game's.
 /// </summary>
 public static class OpenWorlds
 {
@@ -88,6 +92,25 @@ public static class OpenWorlds
                 found.Add(new Finding(Kind.Way, file, door.Name, $"goes into {door.Room}, where no way leads back out to {map.Name}: the player could never come out"));
         }
 
+        // The people (plan 32 · OW6)
+        foreach (var p in map.People)
+        {
+            string file = PlaceFile(region, p.Place);
+            if (InRock(OpenCrossings.CentreOf(p.Home))) found.Add(new Finding(Kind.Person, file, p.Key, $"stands in rock: a body at {p.Home} would have its middle inside the land"));
+            if (p.Script != null && scripts.Find(p.Script, p.Place) == null)
+                found.Add(new Finding(Kind.Script, file, p.Key, $"runs the script '{p.Script}', which is in neither scripts/{p.Place}.txt nor scripts/{PokemonPlatinumEngine.Story.ScriptLibrary.Common}.txt"));
+            if (p.TrainerId != null && (TrainerDatabase.Get(p.TrainerId, map.Region) ?? TrainerDatabase.Get(p.TrainerId)) == null)
+                found.Add(new Finding(Kind.Data, file, p.Key, $"battles as the trainer '{p.TrainerId}', whom the data hasn't"));
+            if (p.Script == null && p.TrainerId == null && p.Lines.Count == 0)
+                found.Add(new Finding(Kind.Person, file, p.Key, "says nothing when spoken to: no script, no trainer and no lines"));
+            flags?.Check(found, file, p.Key, p.HiddenBy, "is hidden by");
+            flags?.Check(found, file, p.Key, p.ShownBy, "is shown by");
+            if (land != null && p.Sight is { } sight && !ConeSeesGround(land, p, sight))
+                found.Add(new Finding(Kind.Person, file, p.Key, $"sees nothing: no ground within {sight.Length} mm of their cone can be seen from their eyes, so the player is never seen"));
+            if (p.Moves == OpenPersonMoves.Wander && !OpenPolygons.Holds(p.Bounds, p.Home.X, p.Home.Z))
+                found.Add(new Finding(Kind.Person, file, p.Key, "wanders within bounds that don't hold where they stand"));
+        }
+
         foreach (var zone in map.Zones)
         {
             string file = PlaceFile(region, zone.Place);
@@ -97,6 +120,37 @@ public static class OpenWorlds
             if (land != null && !HasGround(land, zone))
                 found.Add(new Finding(Kind.Place, file, zone.Name, $"has no ground to stand on between {zone.MinY} mm and {zone.MaxY} mm inside it: nothing of its table could stand there"));
         }
+    }
+
+    /// <summary>
+    /// Whether a trainer's cone sees any ground (plan 32 · OW6): places across it every two metres out and a tenth of
+    /// its width across, the ground at each within four metres of the trainer's feet, and a line from their eyes to a
+    /// chest there through air all the way (the land's field every quarter metre).
+    /// </summary>
+    static bool ConeSeesGround(TerrainWorld land, OpenPerson p, OpenSight sight)
+    {
+        var feet = p.Home;
+        double ex = feet.MetresX, ey = feet.MetresY + OpenSight.EyeHeight / 1000.0, ez = feet.MetresZ;
+        for (double r = 2; r * 1000 <= sight.Length; r += 2)
+            for (int k = -5; k <= 5; k++)
+            {
+                double yaw = OpenYaw.Radians(p.HomeYaw + sight.HalfAngle * k / 5);
+                double x = feet.MetresX + Math.Sin(yaw) * r, z = feet.MetresZ + Math.Cos(yaw) * r;
+                double? ground = null;
+                for (double y = feet.MetresY + 4; y >= feet.MetresY - 4; y -= 0.25)
+                    if (land.Field(new D3(x, y, z)) < 0) { ground = y + 0.25; break; }
+                if (ground is not { } gy || land.Field(new D3(x, feet.MetresY + 4, z)) < 0) continue;
+                double cy = gy + OpenSight.ChestHeight / 1000.0;
+                double length = Math.Sqrt((x - ex) * (x - ex) + (cy - ey) * (cy - ey) + (z - ez) * (z - ez));
+                bool clear = true;
+                for (double s = 0.25; s < length && clear; s += 0.25)
+                {
+                    double t = s / length;
+                    clear = land.Field(new D3(ex + (x - ex) * t, ey + (cy - ey) * t, ez + (z - ez) * t)) >= 0;
+                }
+                if (clear) return true;
+            }
+        return false;
     }
 
     /// <summary>Whether a zone holds ground facing up anywhere between its heights: a column of its, every two metres, crossing from air down into rock.</summary>
@@ -141,5 +195,6 @@ public static class OpenWorlds
     public static List<string> OpenProblems(PokemonPlatinumEngine.Story.ScriptLibrary scripts, IReadOnlyDictionary<string, OpenMap> mapOfArea, Func<string, OpenMap?> openMapNamed) =>
         scripts.OpenProblems(
             file => mapOfArea.TryGetValue(file, out var map) ? map.Markers.Select(m => m.Name).ToHashSet(StringComparer.OrdinalIgnoreCase) : null,
-            name => openMapNamed(name) is { } map ? map.Markers.Select(m => m.Name).ToHashSet(StringComparer.OrdinalIgnoreCase) : null);
+            name => openMapNamed(name) is { } map ? map.Markers.Select(m => m.Name).ToHashSet(StringComparer.OrdinalIgnoreCase) : null,
+            file => mapOfArea.TryGetValue(file, out var map) ? map.People.Select(p => p.Key).ToHashSet(StringComparer.OrdinalIgnoreCase) : null);
 }

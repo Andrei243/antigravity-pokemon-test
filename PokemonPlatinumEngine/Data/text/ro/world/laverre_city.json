@@ -1,0 +1,60 @@
+{
+  "people": {
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym is inside the great tree! The Leader dresses like a doll and battles like a storm."
+        ],
+        "text": [
+          "Sala e în copacul cel mare! Liderul se îmbracă precum o păpușă și luptă precum o furtună."
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our tree is older than the town. The town grew up round it, as moss grows round a stone."
+        ],
+        "text": [
+          "Copacul nostru e mai bătrân decât orașul. Orașul a crescut în jurul lui, cum crește mușchiul în jurul unei pietre."
+        ]
+      }
+    },
+    "mega_medichamite": {
+      "name": {
+        "en": [
+          "Medichamite"
+        ],
+        "text": [
+          "Medichamite"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Laverre City\nA town of old timber beneath a great tree."
+      ],
+      "text": [
+        "Laverre City\nUn oraș de lemn bătrân, sub un copac uriaș."
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Tall pale trees, their leaves as thin as paper. They rustle without any wind."
+      ],
+      "text": [
+        "Copaci înalți și palizi, cu frunze subțiri ca hârtia. Foșnesc fără nicio adiere."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "A leaf no bigger than a hand fell from the trees, and its edge flashed. It was looking at {player}."
+      ],
+      "text": [
+        "O frunză nu mai mare decât o palmă a căzut din copaci, iar marginea ei a sclipit. Se uita la {player}."
+      ]
+    }
+  ]
+}

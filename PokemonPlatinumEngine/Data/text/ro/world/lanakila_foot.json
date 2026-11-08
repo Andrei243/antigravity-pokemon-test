@@ -1,0 +1,76 @@
+{
+  "people": {
+    "guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      }
+    },
+    "nohea": {
+      "name": {
+        "en": [
+          "Nohea"
+        ],
+        "text": [
+          "Nohea"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Nohea: Anyone who wants the League has to get through me first. Just kidding. But battle me!"
+        ],
+        "text": [
+          "Antrenor As Nohea: Oricine vrea Liga trebuie să treacă mai întâi prin mine. Glumesc. Dar luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Nohea: Go on, then."
+        ],
+        "text": [
+          "Antrenor As Nohea: Hai, mergi, atunci."
+        ]
+      }
+    },
+    "ailani": {
+      "name": {
+        "en": [
+          "Ailani"
+        ],
+        "text": [
+          "Ailani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ailani: I've trained since Melemele. Every kahuna has seen my face."
+        ],
+        "text": [
+          "Antrenor As Ailani: M-am antrenat încă de la Melemele. Fiecare kahuna mi-a văzut fața."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ailani: And now you've seen what I can do."
+        ],
+        "text": [
+          "Antrenor As Ailani: Iar acum ai văzut ce pot."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MountSign": {
+      "en": [
+        "Mount Lanakila\nThe path to the Pokémon League"
+      ],
+      "text": [
+        "Mount Lanakila\nPoteca spre Liga Pokémon"
+      ]
+    }
+  }
+}

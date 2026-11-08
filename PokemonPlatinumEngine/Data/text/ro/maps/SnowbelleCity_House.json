@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Snowbelle City"
+    ],
+    "text": [
+      "Orașul Snowbelle"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've shovelled this step every morning for fifty years. It's never once stayed clear past noon."
+        ],
+        "text": [
+          "Dau cu lopata pe treapta asta în fiecare dimineață de cincizeci de ani. N-a rămas niciodată curată după prânz."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

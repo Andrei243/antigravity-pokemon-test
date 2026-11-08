@@ -1,0 +1,38 @@
+{
+  "Officer": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        "Polițistul"
+      ]
+    },
+    {
+      "en": [
+        "Team Skull? They're more of a nuisance than a menace. Mostly they shout and pull faces at people."
+      ],
+      "text": [
+        "Team Skull? Sunt mai mult o pacoste decât o amenințare. Mai ales strigă și fac grimase la oameni."
+      ]
+    },
+    {
+      "en": [
+        "If they bother you, battle them. That tends to quiet them down faster than we can."
+      ],
+      "text": [
+        "Dacă te deranjează, luptă cu ei. Asta tinde să-i aline mai repede decât putem noi."
+      ]
+    }
+  ],
+  "Meowth": [
+    {
+      "en": [
+        "Meowth: Mrrrow... It yawned and went back to sleep on the desk's papers."
+      ],
+      "text": [
+        "Meowth: Mrrrow... A căscat și a adormit la loc pe hârtiile de pe birou."
+      ]
+    }
+  ]
+}

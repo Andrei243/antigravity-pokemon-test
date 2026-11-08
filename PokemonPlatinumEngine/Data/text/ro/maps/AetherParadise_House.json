@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Aether Paradise"
+    ],
+    "text": [
+      "Aether Paradise"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Aether Employee"
+        ],
+        "text": [
+          "Angajatul Aether"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I look after the Pokémon that arrive with nowhere to go. They're good company, once they trust you."
+        ],
+        "text": [
+          "Am grijă de Pokémonii care ajung aici fără niciun loc unde să meargă. Sunt o companie bună, odată ce prind încredere în tine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

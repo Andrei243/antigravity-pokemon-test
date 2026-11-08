@@ -1,0 +1,78 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "aether_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "First stop, the tourist bureau. Second stop, the volcano. Third stop, the beach. Fourth stop, a nap."
+        ],
+        "text": [
+          "Prima oprire, biroul de turism. A doua oprire, vulcanul. A treia oprire, plaja. A patra oprire, un pui de somn."
+        ]
+      }
+    },
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trial captains of Akala are Lana, Kiawe and Mallow. The nearest is Lana's, up past Paniola."
+        ],
+        "text": [
+          "Căpitanii de încercare din Akala sunt Lana, Kiawe și Mallow. Cea mai apropiată e a lui Lana, dincolo de Paniola."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Heahea City\nThe front door of Akala Island."
+      ],
+      "text": [
+        "Heahea City\nUșa din față a insulei Akala."
+      ]
+    },
+    "PierSign": {
+      "en": [
+        "Heahea Pier\nFerries to Hau'oli City, Melemele Island."
+      ],
+      "text": [
+        "Debarcaderul Heahea\nFeriboturi spre Hau'oli City, insula Melemele."
+      ]
+    }
+  }
+}

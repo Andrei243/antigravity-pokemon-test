@@ -129,6 +129,16 @@
           "Ce premiu să aleg? Stau aici de o oră!"
         ]
       }
+    },
+    "battle_frontier_exchange_service_corner.TrainingClerk": {
+      "name": {
+        "en": [
+          "Club Clerk"
+        ],
+        "text": [
+          "Funcționarul clubului"
+        ]
+      }
     }
   },
   "signs": {}

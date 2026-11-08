@@ -38,8 +38,15 @@ public sealed partial class HeadlessScriptHost
         return marker;
     }
 
+    /// <summary>Someone a command names: the player, or (with a known map) someone of it (plan 32 · OW6); a name of nobody there is a problem.</summary>
+    private void Someone(string who)
+    {
+        if (who != "player" && OpenMap != null && OpenMap.Person(who) == null) Problems.Add($"there is nobody called '{who}' in the open map {OpenMap.Name}");
+    }
+
     private void Stand(string who, string marker)
     {
+        Someone(who);
         OnMarker[who] = marker;
         if (who == "player" && Marker(marker) is { } m && OpenMap != null) OpenPlayer = new OpenPlace(OpenMap.Name, m.Pos, m.Yaw);
     }
@@ -62,6 +69,9 @@ public sealed partial class HeadlessScriptHost
 
     public void FaceTo(string who, string target)
     {
+        Someone(who);
+        // A target is the player, someone of the map or one of its markers
+        if (OpenMap != null && target != "player" && OpenMap.Person(target) == null) Marker(target);
         FacingToward[who] = target;
         Log.Add($"faceto {who} {target}");
     }

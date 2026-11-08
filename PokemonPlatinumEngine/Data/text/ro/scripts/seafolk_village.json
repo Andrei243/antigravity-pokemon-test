@@ -1,0 +1,176 @@
+{
+  "Arrival": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here. ...I wanted to say thank you. For what you did at the Foundation."
+      ],
+      "text": [
+        "{player}! Aici. ...Am vrut să-ți mulțumesc. Pentru ce ai făcut la Fundație."
+      ]
+    },
+    {
+      "en": [
+        "Nebby is a little better. It wants to go home, I think. It keeps saying so, in its own way."
+      ],
+      "text": [
+        "Nebby e puțin mai bine. Vrea să meargă acasă, cred. Tot spune asta, în felul lui."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Poni, cousin. The last island. There's a trial in Vast Poni Canyon, and a grand trial across the strait."
+      ],
+      "text": [
+        "Bun venit în Poni, verișorule. Ultima insulă. E o încercare în Vast Poni Canyon și una mare peste strâmtoare."
+      ]
+    },
+    {
+      "en": [
+        "Captain Dulse is waiting up in Poni Wilds. His totem is a Kommo-o, and Kommo-o does not do small talk."
+      ],
+      "text": [
+        "Căpitanul Dulse așteaptă sus în Poni Wilds. Totemul lui e un Kommo-o, iar Kommo-o nu face conversație."
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "I'm going to the Altar of the Sunne and Moone, on the other side of the island. I think that's where Nebby has to be."
+      ],
+      "text": [
+        "Mă duc la Altarul Soarelui și al Lunii, de cealaltă parte a insulei. Cred că acolo trebuie să fie Nebby."
+      ]
+    },
+    {
+      "en": [
+        "Please be careful, {player}. And I'll see you there."
+      ],
+      "text": [
+        "Te rog, ai grijă, {player}. Ne vedem acolo."
+      ]
+    },
+    {
+      "en": [
+        "A Machamp on the shore nodded at {player}, as if to say it was ready to lend a hand."
+      ],
+      "text": [
+        "Un Machamp de pe țărm a dat din cap spre {player}, de parcă ar fi vrut să zică că e gata să dea o mână de ajutor."
+      ]
+    }
+  ],
+  "MachampRide": [
+    {
+      "en": [
+        "Machamp"
+      ],
+      "text": [
+        "Machamp"
+      ]
+    },
+    {
+      "en": [
+        "The Machamp flexed all four arms and pushed a boulder along the shore without a sound."
+      ],
+      "text": [
+        "Machamp și-a încordat toate cele patru brațe și a împins fără zgomot un bolovan de-a lungul țărmului."
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Machamp in the Ride Pager! Machamp can shove boulders aside."
+      ],
+      "text": [
+        "{player} a înregistrat Machamp în Ride Pager! Machamp poate da bolovanii la o parte."
+      ]
+    },
+    {
+      "en": [
+        "Machamp flexed."
+      ],
+      "text": [
+        "Machamp și-a încordat brațele."
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Dulse's trial is up in the Wilds. Go on, I'll be around."
+      ],
+      "text": [
+        "Încercarea lui Dulse e sus în Wilds. Hai, mă învârt pe aici."
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinarul"
+      ]
+    },
+    {
+      "en": [
+        "Where to?",
+        "Malie City, Ula'ula",
+        "Aether Paradise",
+        "Stay here"
+      ],
+      "text": [
+        "Încotro?",
+        "Malie City, Ula'ula",
+        "Aether Paradise",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Seafolk Village..."
+      ],
+      "text": [
+        "Feribotul s-a desprins de Seafolk Village..."
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled away from Seafolk Village..."
+      ],
+      "text": [
+        "Feribotul s-a desprins de Seafolk Village..."
+      ]
+    }
+  ]
+}

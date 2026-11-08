@@ -1,0 +1,349 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Royal Dome"
+    ],
+    "text": [
+      "Domul Battle Royal"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "masked_royal": {
+      "name": {
+        "en": [
+          "Masked Royal"
+        ],
+        "text": [
+          "Regalul mascat"
+        ]
+      }
+    },
+    "fan": {
+      "name": {
+        "en": [
+          "Battle Fan"
+        ],
+        "text": [
+          "Fan al luptelor"
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Four of them in one ring! You never know who the last one standing will be until the very end."
+        ],
+        "text": [
+          "Patru într-un singur ring! Nu știi cine rămâne ultimul în picioare până la sfârșit."
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          "Spectator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In my day we battled one at a time, and we liked it. ...I like this better, though."
+        ],
+        "text": [
+          "În vremea mea, luptam câte unul și ne plăcea. ...Dar îmi place mai mult asta."
+        ]
+      }
+    },
+    "show_hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "show_gladion": {
+      "name": {
+        "en": [
+          "Gladion"
+        ],
+        "text": [
+          "Gladion"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "show_masked": {
+      "name": {
+        "en": [
+          "Masked Royal"
+        ],
+        "text": [
+          "Regalul mascat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "normal_kalei": {
+      "name": {
+        "en": [
+          "Kalei"
+        ],
+        "text": [
+          "Kalei"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "normal_mano": {
+      "name": {
+        "en": [
+          "Mano"
+        ],
+        "text": [
+          "Mano"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "normal_leilani": {
+      "name": {
+        "en": [
+          "Leilani"
+        ],
+        "text": [
+          "Leilani"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "great_pua": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          "Pua"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "great_kaimana": {
+      "name": {
+        "en": [
+          "Kaimana"
+        ],
+        "text": [
+          "Kaimana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "great_nalani": {
+      "name": {
+        "en": [
+          "Nalani"
+        ],
+        "text": [
+          "Nalani"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "ultra_ikaika": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          "Ikaika"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "ultra_makana": {
+      "name": {
+        "en": [
+          "Makana"
+        ],
+        "text": [
+          "Makana"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "ultra_noelani": {
+      "name": {
+        "en": [
+          "Noelani"
+        ],
+        "text": [
+          "Noelani"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "master_kealoha": {
+      "name": {
+        "en": [
+          "Kealoha"
+        ],
+        "text": [
+          "Kealoha"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "master_pono": {
+      "name": {
+        "en": [
+          "Pono"
+        ],
+        "text": [
+          "Pono"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "master_malia": {
+      "name": {
+        "en": [
+          "Malia"
+        ],
+        "text": [
+          "Malia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

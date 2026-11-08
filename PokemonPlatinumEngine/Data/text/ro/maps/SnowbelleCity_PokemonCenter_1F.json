@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Snowbelle City"
+    ],
+    "text": [
+      "Orașul Snowbelle"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond the woods and the village is the road to the League. Only Trainers with every Badge get past its guard."
+        ],
+        "text": [
+          "Dincolo de păduri și de sat e drumul spre Ligă. Doar Antrenorii cu toate Insignele trec de paznicul lui."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Warm yourself by the counter! The nurse keeps a kettle on all day."
+        ],
+        "text": [
+          "Încălzește-te lângă tejghea! Asistenta ține un ceainic pe foc toată ziua."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

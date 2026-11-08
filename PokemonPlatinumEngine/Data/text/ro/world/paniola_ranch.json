@@ -1,0 +1,168 @@
+{
+  "people": {
+    "mallow": {
+      "name": {
+        "en": [
+          "Mallow"
+        ],
+        "text": [
+          "Mallow"
+        ]
+      }
+    },
+    "tauros": {
+      "name": {
+        "en": [
+          "Tauros"
+        ],
+        "text": [
+          "Tauros"
+        ]
+      }
+    },
+    "tauros_2": {
+      "name": {
+        "en": [
+          "Tauros"
+        ],
+        "text": [
+          "Tauros"
+        ]
+      }
+    },
+    "miltank": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          "Miltank"
+        ]
+      }
+    },
+    "mudbray": {
+      "name": {
+        "en": [
+          "Mudbray"
+        ],
+        "text": [
+          "Mudbray"
+        ]
+      }
+    },
+    "rancher": {
+      "name": {
+        "en": [
+          "Koa"
+        ],
+        "text": [
+          "Koa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Koa: You're on my ranch, partner. That means you battle my Bovarch!"
+        ],
+        "text": [
+          "Fermier Koa: Ești pe ferma mea, partenere. Asta înseamnă că lupți cu Bovarch-ul meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Koa: Well, I'll be. My Bovarch is sulking now."
+        ],
+        "text": [
+          "Fermier Koa: Ei, ia uite. Bovarch-ul meu se supără acum."
+        ]
+      }
+    },
+    "breeder": {
+      "name": {
+        "en": [
+          "Makani"
+        ],
+        "text": [
+          "Makani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Makani: My Mudsdale eats a mountain of hay a day. All that strength has to go somewhere!"
+        ],
+        "text": [
+          "Crescător Pokémon Makani: Mudsdale-ul meu mănâncă un munte de fân pe zi. Toată forța aia trebuie să meargă undeva!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Makani: More hay. We need more hay."
+        ],
+        "text": [
+          "Crescător Pokémon Makani: Mai mult fân. Avem nevoie de mai mult fân."
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          "Hoku"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Hoku: I came to see the Miltank, and found a challenger. How delightful."
+        ],
+        "text": [
+          "Doamnă Hoku: Am venit să văd Miltank și am găsit un provocator. Ce încântător."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Hoku: How very delightful, still."
+        ],
+        "text": [
+          "Doamnă Hoku: Tot atât de încântător."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Kawika"
+        ],
+        "text": [
+          "Kawika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Kawika: A fine day for a ride, and a finer one for a battle!"
+        ],
+        "text": [
+          "Gentleman Kawika: O zi frumoasă pentru o plimbare călare și una și mai frumoasă pentru o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Kawika: A fine day for losing, too, it turns out."
+        ],
+        "text": [
+          "Gentleman Kawika: Se pare că e o zi frumoasă și pentru pierdut."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RanchSign": {
+      "en": [
+        "Paniola Ranch\nNorth: Route 5\nSouth: Paniola Town"
+      ],
+      "text": [
+        "Paniola Ranch\nNord: Ruta 5\nSud: Paniola Town"
+      ]
+    }
+  }
+}

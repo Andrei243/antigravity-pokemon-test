@@ -1,0 +1,115 @@
+{
+  "displayName": {
+    "en": [
+      "Lysandre Labs"
+    ],
+    "text": [
+      "Laboratoarele Lysandre"
+    ]
+  },
+  "people": {
+    "kalos_flare_grunt_labs_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: The boss's guests come by the front door. You came by the back."
+        ],
+        "text": [
+          "Membru Team Flare: Oaspeții șefului vin pe ușa din față. Tu ai venit pe cea din spate."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Hmph. Go on, then. He's expecting you."
+        ],
+        "text": [
+          "Membru Team Flare: Hmph. Hai, mergi, atunci. Te așteaptă."
+        ]
+      }
+    },
+    "kalos_flare_grunt_labs_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: Team Flare only lets in the stylish. You're not on the list!"
+        ],
+        "text": [
+          "Membru Team Flare: Team Flare lasă să intre doar pe cei stilați. Nu ești pe listă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Fine. You're on the list."
+        ],
+        "text": [
+          "Membru Team Flare: Fie. Ești pe listă."
+        ]
+      }
+    },
+    "lysandre": {
+      "name": {
+        "en": [
+          "Lysandre"
+        ],
+        "text": [
+          "Lysandre"
+        ]
+      }
+    },
+    "xerosic": {
+      "name": {
+        "en": [
+          "Xerosic"
+        ],
+        "text": [
+          "Xerosic"
+        ]
+      }
+    },
+    "essentia": {
+      "name": {
+        "en": [
+          "Essentia"
+        ],
+        "text": [
+          "Essentia"
+        ]
+      }
+    },
+    "scientist_clothilde": {
+      "name": {
+        "en": [
+          "Clothilde"
+        ],
+        "text": [
+          "Clothilde"
+        ]
+      }
+    },
+    "scientist_ernest": {
+      "name": {
+        "en": [
+          "Ernest"
+        ],
+        "text": [
+          "Ernest"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

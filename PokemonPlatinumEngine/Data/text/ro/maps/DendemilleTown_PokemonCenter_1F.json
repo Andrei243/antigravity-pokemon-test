@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Dendemille Town"
+    ],
+    "text": [
+      "Orașul Dendemille"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Anistar City is east over the snow. Its Gym Leader can see what is coming, they say."
+        ],
+        "text": [
+          "Orașul Anistar e la est, peste zăpadă. Se zice că Liderul lui de sală vede ce urmează."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Laverre's Gym Leader walked through here once, in a dress! In the snow!"
+        ],
+        "text": [
+          "Liderul de sală din Laverre a trecut pe aici odată, într-o rochie! În zăpadă!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

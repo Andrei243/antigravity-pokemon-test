@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Anistar City"
+    ],
+    "text": [
+      "Orașul Anistar"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I chart the stars from my roof. Lately there have been fewer of them, as if something were dimming the sky."
+        ],
+        "text": [
+          "Cartografiez stelele de pe acoperișul meu. În ultima vreme sunt mai puține, ca și cum ceva ar întuneca cerul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

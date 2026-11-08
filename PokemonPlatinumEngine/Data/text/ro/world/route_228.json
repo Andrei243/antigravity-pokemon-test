@@ -207,6 +207,16 @@
           "Centură Neagră Davon: Învins... și cu nisip în urechi."
         ]
       }
+    },
+    "route_228.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {

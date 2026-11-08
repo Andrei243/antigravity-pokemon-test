@@ -1,0 +1,156 @@
+{
+  "Lana": [
+    {
+      "en": [
+        "Lana"
+      ],
+      "text": [
+        "Lana"
+      ]
+    },
+    {
+      "en": [
+        "...Hello. I'm Lana, the captain here. My trial is ready, but you look like you've somewhere else to be first. Route 5, maybe?"
+      ],
+      "text": [
+        "...Salut. Sunt Lana, căpitanul de aici. Încercarea mea e gata, dar pari să ai de mers altundeva mai întâi. Pe Ruta 5, poate?"
+      ]
+    },
+    {
+      "en": [
+        "Lana"
+      ],
+      "text": [
+        "Lana"
+      ]
+    },
+    {
+      "en": [
+        "...Hello. I'm Lana. This is Brooklet Hill, and my trial."
+      ],
+      "text": [
+        "...Salut. Sunt Lana. Asta e Brooklet Hill și încercarea mea."
+      ]
+    },
+    {
+      "en": [
+        "Something has been splashing in the lakes. Something big. Would you find out what it is?"
+      ],
+      "text": [
+        "Ceva s-a tot zbătut în lacuri. Ceva mare. Ai vrea să afli ce e?"
+      ]
+    },
+    {
+      "en": [
+        "You'll need to cross the water. Here, I'll register my Lapras in your Ride Pager. It's a very good swimmer."
+      ],
+      "text": [
+        "Va trebui să treci apa. Uite, îți înregistrez Lapras-ul meu în Ride Pager. Înoată foarte bine."
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Lapras in the Ride Pager! Lapras can carry you across water."
+      ],
+      "text": [
+        "{player} a înregistrat Lapras în Ride Pager! Lapras te poate duce peste apă."
+      ]
+    },
+    {
+      "en": [
+        "Look for the splashes on the shore of the first lake, then the far shore of the second. I'll be watching."
+      ],
+      "text": [
+        "Caută stropii de pe malul primului lac, apoi de pe malul îndepărtat al celui de-al doilea. Eu mă uit."
+      ]
+    },
+    {
+      "en": [
+        "Lana"
+      ],
+      "text": [
+        "Lana"
+      ]
+    },
+    {
+      "en": [
+        "The splashes are on the first lake's shores. Then cross the second lake to the far shore."
+      ],
+      "text": [
+        "Stropii sunt pe malurile primului lac. Apoi treci al doilea lac spre malul îndepărtat."
+      ]
+    }
+  ],
+  "Splash1": [
+    {
+      "en": [
+        "Something splashed! A Wishiwashi leapt out!"
+      ],
+      "text": [
+        "Ceva a plescăit! Un Wishiwashi a sărit afară!"
+      ]
+    }
+  ],
+  "Splash2": [
+    {
+      "en": [
+        "Something splashed! A Wishiwashi leapt out!"
+      ],
+      "text": [
+        "Ceva a plescăit! Un Wishiwashi a sărit afară!"
+      ]
+    }
+  ],
+  "Totem": [
+    {
+      "en": [
+        "A little Wishiwashi peeked out of the shallows... then hundreds more rose up around it!"
+      ],
+      "text": [
+        "Un Wishiwashi mic a ieșit din apa mică... apoi sute de alții s-au ridicat în jurul lui!"
+      ]
+    },
+    {
+      "en": [
+        "Lana"
+      ],
+      "text": [
+        "Lana"
+      ]
+    },
+    {
+      "en": [
+        "...You did it. You passed my trial. The whole school, all at once!"
+      ],
+      "text": [
+        "...Ai reușit. Ai trecut de încercarea mea. Tot bancul deodată!"
+      ]
+    },
+    {
+      "en": [
+        "This is the Waterium Z. With it, a Water-type move becomes a Z-Move. Keep Lapras too; you'll need it on Akala."
+      ],
+      "text": [
+        "Ăsta e Waterium Z. Cu el, o mișcare de tip Apă devine o mișcare Z. Păstrează și Lapras; ai să ai nevoie de el în Akala."
+      ]
+    },
+    {
+      "en": [
+        "The water by the far shore ripples strangely... Perhaps the splashes on the first lake come first."
+      ],
+      "text": [
+        "Apa de lângă malul îndepărtat se unduiește ciudat... Poate că întâi vin stropii de pe primul lac."
+      ]
+    }
+  ],
+  "SecondTotem": [
+    {
+      "en": [
+        "A great Araquanid rises from the lake inside a shining bubble of water!"
+      ],
+      "text": [
+        "Un Araquanid uriaș se ridică din lac într-o bulă de apă strălucitoare!"
+      ]
+    }
+  ]
+}

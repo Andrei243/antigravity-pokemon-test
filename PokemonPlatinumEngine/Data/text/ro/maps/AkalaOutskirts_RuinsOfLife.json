@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Ruins of Life"
+    ],
+    "text": [
+      "Ruinele Vieții"
+    ]
+  },
+  "people": {
+    "pilgrim": {
+      "name": {
+        "en": [
+          "Pilgrim"
+        ],
+        "text": [
+          "Pelerinul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is Tapu Lele's shrine. Its scales are said to heal any wound. Speak softly here."
+        ],
+        "text": [
+          "Asta e sanctuarul lui Tapu Lele. Se spune că solzii lui vindecă orice rană. Vorbește încet aici."
+        ]
+      }
+    },
+    "legend": {
+      "name": {
+        "en": [
+          "Tapu Lele"
+        ],
+        "text": [
+          "Tapu Lele"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

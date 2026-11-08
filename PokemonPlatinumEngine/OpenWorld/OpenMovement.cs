@@ -87,6 +87,16 @@ public sealed class OpenBody
     /// <summary>A body still in a wall by more than this after its pushes, beyond what it was in before, doesn't move that tick, in metres.</summary>
     public const double Tolerance = 0.001;
 
+    /// <summary>
+    /// A fall caught (plan 32 · OW6, OW4's finding): a body falling with nothing facing up and no water anywhere under
+    /// it in its column, once it has fallen more than this many metres, can land nowhere, and is put back where it
+    /// last stood. Below a body's height, so a step off a lip slantwise onto the ground beside it is no catch.
+    /// </summary>
+    public const double CatchDrop = Height;
+
+    /// <summary>The floor of the world (plan 32 · OW6): a fall longer than this many metres is caught whatever lies under it.</summary>
+    public const double LongestFall = 200;
+
     private const int MostPushes = 4;
 
     /// <summary>The heights of the three spheres' centres over the feet.</summary>
@@ -100,11 +110,21 @@ public sealed class OpenBody
     private double steepX, steepZ;   // the way down the face stood on, when it is steeper than 40°
     private readonly List<int> near = new();
 
+    // Where the body last stood on walkable ground, in micrometres: where a fall that can land nowhere puts it back
+    private long goodX, goodY, goodZ;
+
     public OpenBody(OpenPos feet, int yaw = 0)
     {
         mx = feet.X * 1000L; my = feet.Y * 1000L; mz = feet.Z * 1000L;
+        (goodX, goodY, goodZ) = (mx, my, mz);
         Yaw = OpenYaw.Normalize(yaw);
     }
+
+    /// <summary>Whether the last tick caught a fall that could land nowhere and put the body back where it last stood (plan 32 · OW6).</summary>
+    public bool Caught { get; private set; }
+
+    /// <summary>Where the body last stood on walkable ground, to the millimetre: where a caught fall puts it back.</summary>
+    public OpenPos LastGood => new(ToMm(goodX), ToMm(goodY), ToMm(goodZ));
 
     /// <summary>Where the feet are, in micrometres: the body's own state.</summary>
     public (long X, long Y, long Z) Micrometres => (mx, my, mz);
@@ -157,7 +177,7 @@ public sealed class OpenBody
     {
         Tick++;
         Pushes = 0;
-        Sliding = Refused = StoppedAtWater = HardLanding = Splashed = false;
+        Sliding = Refused = StoppedAtWater = HardLanding = Splashed = Caught = false;
         Landed = null;
 
         double x = mx / 1e6, y = my / 1e6, z = mz / 1e6;
@@ -215,9 +235,27 @@ public sealed class OpenBody
             case OpenStance.Standing: Stand(ground, nx, ref y, nz); break;
             case OpenStance.Swimming: Swim(ground, nx, ref y, nz); break;
         }
-        if (Stance == OpenStance.Falling) Fall(ground, nx, ref y, nz);
+        if (Stance == OpenStance.Falling && Fall(ground, nx, ref y, nz))
+        {
+            // Nowhere to land (plan 32 · OW6): back where the body last stood, settled afresh at its next tick
+            CatchTheFall();
+            return;
+        }
 
         mx = ToMicro(nx); my = ToMicro(y); mz = ToMicro(nz);
+        if (Stance == OpenStance.Standing && steepX == 0 && steepZ == 0) (goodX, goodY, goodZ) = (mx, my, mz);
+    }
+
+    /// <summary>A fall that can land nowhere caught: the body put back on the last walkable ground it stood on, still, to settle there at its next tick.</summary>
+    private void CatchTheFall()
+    {
+        (mx, my, mz) = (goodX, goodY, goodZ);
+        Stance = OpenStance.Standing;
+        settled = false;
+        fallSpeed = 0;
+        steepX = steepZ = 0;
+        residual = double.MaxValue;
+        Caught = true;
     }
 
     /// <summary>The body put down: on the ground within a step of its feet, in water deep enough to swim, or falling.</summary>
@@ -265,7 +303,8 @@ public sealed class OpenBody
         fallFrom = ToMicro(y);
     }
 
-    private void Fall(OpenGround ground, double x, ref double y, double z)
+    /// <summary>A tick of a fall: landed, splashed or still falling; true where it can land nowhere and is to be caught.</summary>
+    private bool Fall(OpenGround ground, double x, ref double y, double z)
     {
         double v = fallSpeed / 1e6 - Gravity / ((double)TicksPerSecond * TicksPerSecond);
         v = Math.Max(v, -FastestFall / TicksPerSecond);
@@ -280,7 +319,7 @@ public sealed class OpenBody
             Stance = OpenStance.Swimming;
             fallSpeed = 0;
             y = into;
-            return;
+            return false;
         }
         if (f is { } ground1)
         {
@@ -291,10 +330,15 @@ public sealed class OpenBody
             fallSpeed = 0;
             y = ground1.Y;
             TakeFace(ground, ground[ground1.Triangle], x, y, z);
-            return;
+            return false;
         }
         y = next;
         fallSpeed = ToMicro(v);
+        // The floor of the world: a fall too long, or one with nothing under it in its column to land on (OW4 found a
+        // body at the east cutting's lip falling past the overhang's underside to −669 m)
+        double drop = fallFrom / 1e6 - y;
+        if (drop > LongestFall) return true;
+        return drop > CatchDrop && ground.WaterAt(x, z) == null && ground.Footing(x, z, y, double.NegativeInfinity) == null;
     }
 
     private void Swim(OpenGround ground, double x, ref double y, double z)

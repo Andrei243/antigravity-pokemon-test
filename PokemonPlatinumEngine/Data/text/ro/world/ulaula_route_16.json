@@ -1,0 +1,118 @@
+{
+  "people": {
+    "ula1_1": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Po Town is ours, yo! No trials, no rules! Beat it!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Po Town e al nostru, yo! Fără încercări, fără reguli! Valea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Yo... we still own the place."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Yo... tot noi stăpânim locul."
+        ]
+      }
+    },
+    "ula2_2": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Skull's boss says we keep everybody out. Even you."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Șeful Skull zice că ținem pe toată lumea afară. Și pe tine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Boss won't like this."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Șefului nu-i va plăcea asta."
+        ]
+      }
+    },
+    "ula3_3": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: You're too nosy, yo!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Ești prea băgăreț, yo!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Whatever. Go on in."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Na. Intră."
+        ]
+      }
+    },
+    "hoku": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          "Hoku"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Hoku: I breed pups. All three of these ones are the best pups."
+        ],
+        "text": [
+          "Crescător Pokémon Hoku: Cresc cățeluși. Toți trei ăștia sunt cei mai buni cățeluși."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Hoku: Yours are good pups, too."
+        ],
+        "text": [
+          "Crescător Pokémon Hoku: Și ai tăi sunt cățeluși buni."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 16\nNorth: Po Town\nSouth: Tapu Village"
+      ],
+      "text": [
+        "Ruta 16\nNord: Po Town\nSud: Tapu Village"
+      ]
+    }
+  }
+}

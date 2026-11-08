@@ -1,0 +1,83 @@
+{
+  "people": {
+    "hoku": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          "Hoku"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Hoku: This path is older than the League, older than the trials! And so are my Pokémon!"
+        ],
+        "text": [
+          "Pasionat de ruine Hoku: Poteca asta e mai veche decât Liga, mai veche decât încercările! Și la fel sunt și Pokémonii mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Hoku: Not as old as my Pokémon, I guess."
+        ],
+        "text": [
+          "Pasionat de ruine Hoku: Nu la fel de vechi ca Pokémonii mei, cred."
+        ]
+      }
+    },
+    "anuenue": {
+      "name": {
+        "en": [
+          "Anuenue"
+        ],
+        "text": [
+          "Anuenue"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Anuenue: The stones whisper in here. They said you were coming."
+        ],
+        "text": [
+          "Medium Anuenue: Pietrele șoptesc aici. Mi-au spus că vei veni."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Anuenue: They didn't say how it would go."
+        ],
+        "text": [
+          "Medium Anuenue: Nu mi-au spus cum va merge."
+        ]
+      }
+    },
+    "kapono": {
+      "name": {
+        "en": [
+          "Kapono"
+        ],
+        "text": [
+          "Kapono"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kapono: Dark in here, isn't it? Perfect for a surprise!"
+        ],
+        "text": [
+          "Antrenor As Kapono: Întuneric aici, nu-i așa? Perfect pentru o surpriză!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kapono: No surprise at all in the end."
+        ],
+        "text": [
+          "Antrenor As Kapono: Nicio surpriză până la urmă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

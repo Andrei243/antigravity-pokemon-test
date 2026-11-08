@@ -1,0 +1,100 @@
+{
+  "Mallow": [
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "Alola! You must be the trial-goer Kukui keeps talking about. I'm Mallow, one of Akala's trial captains."
+      ],
+      "text": [
+        "Alola! Tu trebuie să fii participantul la încercări despre care tot vorbește Kukui. Sunt Mallow, unul dintre căpitanii de încercare din Akala."
+      ]
+    },
+    {
+      "en": [
+        "My trial's up in the Lush Jungle, but you'll want to see Lana's at Brooklet Hill first. It's west off Route 5, just north of here."
+      ],
+      "text": [
+        "Încercarea mea e în Lush Jungle, dar vei vrea să o vezi mai întâi pe a lui Lana, la Brooklet Hill. E la vest de Ruta 5, chiar la nord de aici."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and take this along. My Stoutland can sniff out things buried in the ground. It's registered in your Ride Pager now!"
+      ],
+      "text": [
+        "Ah, și ia asta. Stoutland-ul meu poate adulmeca lucruri îngropate în pământ. E înregistrat acum în Ride Pager!"
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Stoutland in the Ride Pager!"
+      ],
+      "text": [
+        "{player} a înregistrat Stoutland în Ride Pager!"
+      ]
+    },
+    {
+      "en": [
+        "See you in the jungle!"
+      ],
+      "text": [
+        "Ne vedem în junglă!"
+      ]
+    }
+  ],
+  "MallowTalk": [
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "Have you tried the moomoo milk here? It's the best!"
+      ],
+      "text": [
+        "Ai încercat laptele moomoo de aici? E cel mai bun!"
+      ]
+    }
+  ],
+  "Tauros": [
+    {
+      "en": [
+        "Tauros snorted and pawed at the ground."
+      ],
+      "text": [
+        "Tauros a pufnit și a scormonit pământul."
+      ]
+    }
+  ],
+  "Miltank": [
+    {
+      "en": [
+        "Miltank looks content."
+      ],
+      "text": [
+        "Miltank pare mulțumit."
+      ]
+    }
+  ],
+  "Mudbray": [
+    {
+      "en": [
+        "Mudbray is rolling happily in the mud."
+      ],
+      "text": [
+        "Mudbray se rostogolește fericit în noroi."
+      ]
+    }
+  ]
+}

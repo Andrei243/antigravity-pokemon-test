@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Heahea City"
+    ],
+    "text": [
+      "Heahea City"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ferries run between Hau'oli and Heahea all day. Akala's the island with the volcano, you know."
+        ],
+        "text": [
+          "Feriboturile fac naveta între Hau'oli și Heahea toată ziua. Akala e insula cu vulcanul, să știi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

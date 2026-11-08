@@ -1,0 +1,67 @@
+{
+  "people": {
+    "lillie": {
+      "name": {
+        "en": [
+          "Lillie"
+        ],
+        "text": [
+          "Lillie"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Makoa"
+        ],
+        "text": [
+          "Makoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Makoa: A fine view for a fine battle. Shall we?"
+        ],
+        "text": [
+          "Gentleman Makoa: O priveliște frumoasă pentru o luptă frumoasă. Începem?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Makoa: The view is still fine, at least."
+        ],
+        "text": [
+          "Gentleman Makoa: Măcar priveliștea e tot frumoasă."
+        ]
+      }
+    },
+    "lady": {
+      "name": {
+        "en": [
+          "Puanani"
+        ],
+        "text": [
+          "Puanani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Puanani: I walked all the way from the resort in these shoes. Make it worth my while!"
+        ],
+        "text": [
+          "Doamnă Puanani: Am venit pe jos tot drumul de la stațiune în pantofii ăștia. Fă să merite!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Puanani: My feet hurt AND I lost."
+        ],
+        "text": [
+          "Doamnă Puanani: Mă dor picioarele ȘI am pierdut."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

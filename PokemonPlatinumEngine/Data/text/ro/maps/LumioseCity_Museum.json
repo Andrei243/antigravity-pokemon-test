@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose Museum"
+    ],
+    "text": [
+      "Muzeul Lumiose"
+    ]
+  },
+  "people": {
+    "curator": {
+      "name": {
+        "en": [
+          "Curator"
+        ],
+        "text": [
+          "Curatorul"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          "Vizitator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every painting in this hall was painted in Lumiose. The city has always loved to look at itself."
+        ],
+        "text": [
+          "Fiecare tablou din sala asta a fost pictat în Lumiose. Orașul a iubit dintotdeauna să se privească pe sine."
+        ]
+      }
+    },
+    "looker_farewell": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

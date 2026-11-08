@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son Ilima is a trial captain, you know. He's been the island's pride since he was little."
+        ],
+        "text": [
+          "Fiul meu, Ilima, e căpitan de încercare, să știi. E mândria insulei de când era mic."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

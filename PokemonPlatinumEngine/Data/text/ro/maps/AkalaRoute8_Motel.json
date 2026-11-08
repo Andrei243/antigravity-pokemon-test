@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Route 8"
+    ],
+    "text": [
+      "Ruta 8"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Motel Clerk"
+        ],
+        "text": [
+          "Recepționerul motelului"
+        ]
+      }
+    },
+    "guest": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some loud kids in skull caps stayed here last week. They left their gum under every table."
+        ],
+        "text": [
+          "Câțiva puști gălăgioși cu șepci cu craniu au stat aici săptămâna trecută. Și-au lăsat guma de mestecat sub fiecare masă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

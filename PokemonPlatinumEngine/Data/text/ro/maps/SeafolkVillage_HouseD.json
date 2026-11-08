@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Seafolk Village"
+    ],
+    "text": [
+      "Seafolk Village"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A kahuna lives on the island across the strait. Hapu keeps an eye on everything that happens in Poni."
+        ],
+        "text": [
+          "Pe insula de peste strâmtoare locuiește o kahuna. Hapu ține ochii pe tot ce se întâmplă în Poni."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

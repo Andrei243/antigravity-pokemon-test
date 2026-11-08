@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Route 5"
+    ],
+    "text": [
+      "Ruta 5"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brooklet Hill's lakes are full of tiny Wishiwashi. Lately something big has been splashing about up there, though."
+        ],
+        "text": [
+          "Lacurile din Brooklet Hill sunt pline de Wishiwashi mărunți. În ultima vreme, însă, ceva mare se tot zbate pe acolo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,150 @@
+{
+  "name": "LumioseCity_GroomingSalon",
+  "displayName": "Grooming Salon",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..#####..#",
+    "#.........#",
+    "#.##...##.#",
+    "#.........#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 330,
+      "targetY": 388,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "groomer",
+      "name": "Groomer",
+      "npcType": "beauty",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "A trim, a fluff, a little ribbon. Bring your Pokémon by whenever its coat needs taming."
+      ]
+    },
+    {
+      "id": "client",
+      "name": "Client",
+      "npcType": "socialite",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "I booked a month ahead. In Lumiose, a good groomer is harder to find than a good chef."
+      ]
+    },
+    {
+      "id": "poodle",
+      "name": "Furfrou",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "It holds its freshly trimmed head very high."
+      ],
+      "species": "Furfrou"
+    },
+    {
+      "id": "apprentice",
+      "name": "Apprentice",
+      "npcType": "lass",
+      "x": 2,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "I've been practising on cushions. The cushions have never complained."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

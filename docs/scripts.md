@@ -1275,14 +1275,18 @@ comes out of a door or a `warpto` onto one of its markers.
 
 | Command | What it does |
 |---|---|
-| `walkto <who> <marker> [fast]` | Walks them straight at a marker of the open map and waits, as `walk` does: the capsule steered at a full tilt (a run with `fast`) by the same rules as the stick, sliding along what is in its way, until it is within 10 cm of the marker, where it is put on it facing the marker's way. A walk that comes no nearer for three quarters of a second is given up where it stands. In a hurry the walk is taken to its end unseen and ends on the marker the same way. The way round a wall is the navigation's (OW4), not this walk's. |
+| `walkto <who> <marker> [fast]` | Walks them to a marker of the open map and waits, as `walk` does: the capsule steered at a full tilt (a run with `fast`) by the same rules as the stick, sliding along what is in its way, until it is within 10 cm of the marker, where it is put on it facing the marker's way. The player walks straight at it; someone of the map (OW6) walks the navigation mesh's path to it, round what is in the way, and straight where there is no mesh or no path. A walk that comes no nearer for three quarters of a second is given up where it stands. In a hurry the walk is taken to its end unseen and ends on the marker the same way. |
 | `placeat <who> <marker>` | Puts them on a marker, facing its way. What they stand in is not crossed into: no trigger runs. |
-| `faceto <who> <marker\|who>` | Turns them toward a marker (`player` turns nobody toward themselves). |
+| `faceto <who> <marker\|who>` | Turns them toward a marker, the player or someone of the map (`player` turns nobody toward themselves). |
 | `warpto "<open map>" <marker>` | Through a fade to a marker of an open map, from a grid map or an open one; in a hurry at once. The place's `OnEnter` follows. |
 | `camera look <marker> [0.8] [nowait]` | Sends the open map's camera to look at a marker (OW8's orbit camera reads it), waited for as a pan is. |
 
-`<who>` is `player` until an open map has people of its own (OW6): anyone else is a script gone wrong in the game, and
-`HeadlessScriptHost` writes down whoever it is told of (`OnMarker`, `FacingToward`). In a file of an open map's place the
+`<who>` is `player` or someone of the open map by the name its place's file gives them (`people`, plan 32 · OW6;
+`docs/data-files.md`, "Open worlds"): a name of nobody there is a script gone wrong in the game, and a problem
+`HeadlessScriptHost` names when it is given the map (with none it writes down whoever it is told of: `OnMarker`,
+`FacingToward`). Someone of an open map spoken to runs their own `script`, or what they are: a trainer `common.Trainer`,
+anyone with lines `common.Talk`; a trainer whose cone sees the player walks up and runs `common.Trainer` (two who see the
+player at once, `common.TrainerPair`), as the grid's do. In a file of an open map's place the
 tile forms (`walk`, `move`, `place`, `camera pan`, `camera path`) are a problem, and so is a marker the map lacks; in a
 file of a grid place the open forms are; and anywhere `warp` to an open map (it is gone to by `warpto`) and `warpto` to
 no open map's marker are. `ScriptLibrary.OpenProblems` and `tools/ContentCheck` name each with its file and line.

@@ -1,0 +1,45 @@
+{
+  "people": {
+    "blacephalon": {
+      "name": {
+        "en": [
+          "Blacephalon"
+        ],
+        "text": [
+          "Blacephalon"
+        ]
+      }
+    },
+    "resident_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "resident_2": {
+      "name": {
+        "en": [
+          "Lamp Keeper"
+        ],
+        "text": [
+          "Paznicul lămpilor"
+        ]
+      }
+    },
+    "resident_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

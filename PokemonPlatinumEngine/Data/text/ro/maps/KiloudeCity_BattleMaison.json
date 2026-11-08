@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Maison"
+    ],
+    "text": [
+      "Battle Maison"
+    ]
+  },
+  "people": {
+    "desk": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "prizes": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "fan": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fanul"
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          "Veteranul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

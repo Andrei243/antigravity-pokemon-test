@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Malie City Hall"
+    ],
+    "text": [
+      "Primăria Malie City"
+    ]
+  },
+  "people": {
+    "mayor": {
+      "name": {
+        "en": [
+          "Mayor"
+        ],
+        "text": [
+          "Primarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the mayor of Malie City. We have a garden, a library, and a mountain. What else does a city need? A trial captain, you say? Well, we have that too."
+        ],
+        "text": [
+          "Sunt primarul orașului Malie City. Avem o grădină, o bibliotecă și un munte. Ce mai are nevoie un oraș? Un căpitan de încercare, zici? Păi, și pe ăla îl avem."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

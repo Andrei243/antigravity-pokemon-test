@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "shopper": {
+      "name": {
+        "en": [
+          "Shopper"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A sun hat AND a sun visor? Why not both? Alola is very sunny."
+        ],
+        "text": [
+          "O pălărie de soare ȘI un cozoroc? De ce nu amândouă? În Alola e foarte soare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

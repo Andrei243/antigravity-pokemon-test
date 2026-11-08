@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Paniola Town"
+    ],
+    "text": [
+      "Paniola Town"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Paniola's ranchers raise the finest Tauros and Miltank on the islands. Go and see the ranch north of town!"
+        ],
+        "text": [
+          "Fermierii din Paniola cresc cei mai buni Tauros și Miltank de pe insule. Mergi să vezi ferma la nord de oraș!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

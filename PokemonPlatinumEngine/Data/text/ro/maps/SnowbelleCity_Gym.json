@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Snowbelle Gym"
+    ],
+    "text": [
+      "Sala Snowbelle"
+    ]
+  },
+  "people": {
+    "wulfric": {
+      "name": {
+        "en": [
+          "Wulfric"
+        ],
+        "text": [
+          "Wulfric"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de sală"
+        ]
+      }
+    },
+    "kalos_skier_agathe": {
+      "name": {
+        "en": [
+          "Agathe"
+        ],
+        "text": [
+          "Agathe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Agathe: I slid all the way here from the mountains. Let's see if you can keep your footing!"
+        ],
+        "text": [
+          "Schioară Agathe: Am alunecat tot drumul până aici din munți. Să vedem dacă îți poți ține echilibrul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Agathe: Wipeout!"
+        ],
+        "text": [
+          "Schioară Agathe: Cădere!"
+        ]
+      }
+    },
+    "kalos_skier_basile": {
+      "name": {
+        "en": [
+          "Basile"
+        ],
+        "text": [
+          "Basile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Basile: The Leader laughs louder than an avalanche. I battle quieter."
+        ],
+        "text": [
+          "Schior Basile: Liderul râde mai tare decât o avalanșă. Eu lupt mai încet."
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Basile: Quiet as the snow I'm lying in."
+        ],
+        "text": [
+          "Schior Basile: Liniștit ca zăpada în care zac."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

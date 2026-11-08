@@ -1,0 +1,110 @@
+{
+  "people": {
+    "noe": {
+      "name": {
+        "en": [
+          "Noe"
+        ],
+        "text": [
+          "Noe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Noe: The water's cold on this side of the island. Warm me up with a battle!"
+        ],
+        "text": [
+          "Înotător Noe: Apa e rece pe partea asta a insulei. Încălzește-mă cu o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Noe: Still cold. Still lost."
+        ],
+        "text": [
+          "Înotător Noe: Tot rece. Tot pierdut."
+        ]
+      }
+    },
+    "pua": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          "Pua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Pua: I came here for the quiet. You don't look quiet."
+        ],
+        "text": [
+          "Frumoasă Pua: Am venit aici pentru liniște. Tu nu pari liniștit."
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Pua: You weren't. And neither was I."
+        ],
+        "text": [
+          "Frumoasă Pua: N-ai fost. Nici eu."
+        ]
+      }
+    },
+    "ikaika": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          "Ikaika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ikaika: Nothing's biting today, so I'll catch a battle instead!"
+        ],
+        "text": [
+          "Pescar Ikaika: Azi nu mușcă nimic, așa că prind o luptă în schimb!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ikaika: That one got away from me."
+        ],
+        "text": [
+          "Pescar Ikaika: Aia mi-a scăpat."
+        ]
+      }
+    },
+    "surfer": {
+      "name": {
+        "en": [
+          "Surfer"
+        ],
+        "text": [
+          "Surfer"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The waves come all the way from Poni round this point. You can ride a Lapras right along the coast to Route 15."
+        ],
+        "text": [
+          "Valurile vin tot drumul din Poni în jurul acestui promontoriu. Poți merge călare pe un Lapras de-a lungul coastei până la Ruta 15."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 14\nNorth: Tapu Village\nEast: Route 15"
+      ],
+      "text": [
+        "Ruta 14\nNord: Tapu Village\nEst: Ruta 15"
+      ]
+    }
+  }
+}

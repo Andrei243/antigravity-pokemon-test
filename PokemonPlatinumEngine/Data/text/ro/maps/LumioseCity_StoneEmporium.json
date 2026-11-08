@@ -19,10 +19,20 @@
       },
       "dialog": {
         "en": [
-          "Evolution stones, polished stones, stones from every mountain in Kalos! The rarest ones are not for sale yet, I am afraid."
+          "Evolution stones, polished stones, stones from every mountain in Kalos! Have a look at what I have on the shelf."
         ],
         "text": [
-          "Pietre de evoluție, pietre șlefuite, pietre din fiecare munte din Kalos! Din păcate, cele mai rare nu sunt încă de vânzare."
+          "Pietre de evoluție, pietre lustruite, pietre din fiecare munte din Kalos! Aruncă o privire la ce am pe raft."
+        ]
+      }
+    },
+    "owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
         ]
       }
     }

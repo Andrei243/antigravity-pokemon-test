@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The air is thick and warm, and the leaves are as broad as rooftops. Somewhere, something is lifting something heavy."
+      ],
+      "text": [
+        "Aerul e gros și cald, iar frunzele sunt late cât acoperișurile. Undeva, ceva ridică ceva greu."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "A great red shape swung down from the canopy and landed hard, flexing its arms. It wants to see how strong {player} is."
+      ],
+      "text": [
+        "O formă mare și roșie s-a lăsat din coroana copacilor și a aterizat greu, încordându-și brațele. Vrea să vadă cât de puternic e {player}."
+      ]
+    }
+  ]
+}

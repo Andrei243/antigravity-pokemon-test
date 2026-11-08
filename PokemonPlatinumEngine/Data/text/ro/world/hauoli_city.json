@@ -47,10 +47,114 @@
       },
       "dialog": {
         "en": [
-          "The Trainers' School is further along the promenade. Everyone on Melemele learns to battle there!"
+          "The shops are further along the promenade, and the marina's at the far end. That's where the boats go to the other islands!"
         ],
         "text": [
-          "Școala Antrenorilor e mai departe pe faleză. Toată lumea de pe Melemele învață să lupte acolo!"
+          "Magazinele sunt mai departe pe faleză, iar portul e la capătul celălalt. De acolo pleacă bărcile spre celelalte insule!"
+        ]
+      }
+    },
+    "grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "ilima": {
+      "name": {
+        "en": [
+          "Ilima"
+        ],
+        "text": [
+          "Ilima"
+        ]
+      }
+    },
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "shopper": {
+      "name": {
+        "en": [
+          "Shopper"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I always buy a bag of malasadas before the ferry. The trip to Akala is just long enough to eat them all."
+        ],
+        "text": [
+          "Cumpăr mereu o pungă de malasada înainte de feribot. Călătoria până în Akala ține exact cât să le mănânci pe toate."
+        ]
+      }
+    },
+    "officer": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those kids in the skull shirts have been hanging around the marina again. Keep an eye on your things."
+        ],
+        "text": [
+          "Puștii ăia în tricouri cu cranii s-au tot învârtit iar prin port. Ai grijă la lucrurile tale."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Captain Ilima lives just down the street. He's so polite, and he's never lost a battle to anyone from the school!"
+        ],
+        "text": [
+          "Căpitanul Ilima locuiește chiar mai jos pe stradă. E atât de politicos și n-a pierdut niciodată o luptă cu cineva de la școală!"
         ]
       }
     }
@@ -62,6 +166,22 @@
       ],
       "text": [
         "Hau'oli City\nOrașul plajelor și al magazinelor insulei."
+      ]
+    },
+    "ShopsSign": {
+      "en": [
+        "Hau'oli Shopping District\nCity Hall, the police station and the shops of the promenade."
+      ],
+      "text": [
+        "Cartierul comercial Hau'oli\nPrimăria, secția de poliție și magazinele de pe faleză."
+      ]
+    },
+    "MarinaSign": {
+      "en": [
+        "Hau'oli Marina\nFerries to Akala Island."
+      ],
+      "text": [
+        "Portul Hau'oli\nFeriboturi spre insula Akala."
       ]
     }
   }

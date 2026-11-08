@@ -237,6 +237,22 @@
       "text": [
         "Insula veghează asupra noastră, a tuturor, iar ocrotitorul veghează asupra insulei. Ai grijă de partenerul tău."
       ]
+    },
+    {
+      "en": [
+        "Pass Ilima's trial, and every captain's on Melemele that follows, and I will be waiting for you on this stage for your grand trial."
+      ],
+      "text": [
+        "Treci de încercarea lui Ilima și de a fiecărui căpitan din Melemele care urmează, și te voi aștepta pe scena asta pentru încercarea ta mare."
+      ]
+    },
+    {
+      "en": [
+        "Ho ho! Akala's kahuna is a fierce one. Show her the same fire you showed me."
+      ],
+      "text": [
+        "Ho ho! Kahuna din Akala e una aprigă. Arată-i același foc pe care mi l-ai arătat și mie."
+      ]
     }
   ],
   "Hau": [
@@ -254,6 +270,202 @@
       ],
       "text": [
         "Ai gustat malasada din Hau'oli City? Sunt cel mai bun lucru din Alola! Ei bine, după Pokémoni."
+      ]
+    }
+  ],
+  "Festival": [
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are! Tonight we hold the festival for Tapu Koko, the guardian of Melemele."
+      ],
+      "text": [
+        "Ah, iată-te! În seara asta ținem festivalul lui Tapu Koko, ocrotitorul din Melemele."
+      ]
+    },
+    {
+      "en": [
+        "And in Iki Town, a festival is never complete without a battle on the stage. Hau has been waiting all day!"
+      ],
+      "text": [
+        "Iar în Iki Town, un festival nu e complet fără o luptă pe scenă. Hau așteaptă de azi-dimineață!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Finally! I've been practising with my new Pokémon. And I caught a new friend too! Let's give the guardian a good show!"
+      ],
+      "text": [
+        "În sfârșit! M-am antrenat cu noul meu Pokémon. Și mi-am făcut un prieten nou! Hai să-i dăm ocrotitorului un spectacol bun!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, you got even stronger since this morning! The guardian must have liked that one."
+      ],
+      "text": [
+        "Whoa, ai devenit și mai puternic de azi-dimineață! Ocrotitorului trebuie să-i fi plăcut."
+      ]
+    },
+    {
+      "en": [
+        "We did it! But only just. That was the best festival battle ever!"
+      ],
+      "text": [
+        "Am reușit! Dar la mustață. A fost cea mai bună luptă de festival!"
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "A fine battle, both of you. Tapu Koko is surely pleased."
+      ],
+      "text": [
+        "O luptă frumoasă, amândoi. Tapu Koko e sigur mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "{player}, the guardian took an interest in you on the bridge. So I give you this, for the island challenge."
+      ],
+      "text": [
+        "{player}, ocrotitorul s-a interesat de tine pe pod. Așa că îți dau asta, pentru provocarea insulelor."
+      ]
+    },
+    {
+      "en": [
+        "Pass the trials of the island's captains, and the crystals they give you will let you and your Pokémon unleash Z-Moves through that ring."
+      ],
+      "text": [
+        "Treci de încercările căpitanilor insulei, iar cristalele pe care ți le dau vă vor lăsa pe tine și pe Pokémonii tăi să dezlănțuiți mișcări Z prin inelul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "Your first trial is Captain Ilima's, in Verdant Cavern at the end of Route 2. Go with the guardian's blessing!"
+      ],
+      "text": [
+        "Prima ta încercare e a Căpitanului Ilima, în Verdant Cavern, la capătul Rutei 2. Mergi cu binecuvântarea ocrotitorului!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "I'll go on ahead to Route 2! See you there, {player}!"
+      ],
+      "text": [
+        "Eu merg înainte pe Ruta 2! Ne vedem acolo, {player}!"
+      ]
+    }
+  ],
+  "GrandTrial": [
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Ho ho! Ilima's crystal, and the look of a Trainer who has walked every road of Melemele. Then the time has come."
+      ],
+      "text": [
+        "Ho ho! Cristalul lui Ilima și privirea unui Antrenor care a străbătut fiecare drum din Melemele. Atunci a venit timpul."
+      ]
+    },
+    {
+      "en": [
+        "I am Hala, kahuna of this island. As kahuna, I will face you with everything I have. Show me the strength you have found!"
+      ],
+      "text": [
+        "Sunt Hala, kahuna acestei insule. Ca kahuna, te voi înfrunta cu tot ce am. Arată-mi puterea pe care ai găsit-o!"
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Splendid, splendid! The guardian chose well."
+      ],
+      "text": [
+        "Ha! Splendid, splendid! Ocrotitorul a ales bine."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Trainer card received Melemele's stamp!"
+      ],
+      "text": [
+        "Cardul de Antrenor al lui {player} a primit ștampila Melemele!"
+      ]
+    },
+    {
+      "en": [
+        "And take this, too. With it, the Tauros of the island will come when you call."
+      ],
+      "text": [
+        "Și ia și asta. Cu ea, Tauros-ul insulei va veni când îl chemi."
+      ]
+    },
+    {
+      "en": [
+        "{player} registered Tauros in the Ride Pager! Tauros can charge through cracked rocks."
+      ],
+      "text": [
+        "{player} a înregistrat Tauros în Ride Pager! Tauros poate zdrobi stânci crăpate."
+      ]
+    },
+    {
+      "en": [
+        "Kukui is waiting at Hau'oli's marina with his boat. Akala Island is next, and its kahuna will not go easy on you!"
+      ],
+      "text": [
+        "Kukui te așteaptă la portul din Hau'oli cu barca lui. Urmează insula Akala, iar kahuna ei nu te va menaja!"
       ]
     }
   ]

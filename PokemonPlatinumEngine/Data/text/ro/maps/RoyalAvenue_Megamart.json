@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Royal Avenue"
+    ],
+    "text": [
+      "Royal Avenue"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "shopper": {
+      "name": {
+        "en": [
+          "Shopper"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everything for a trainer under one roof! The Megamart sells what the Pokémon Centers' counters don't."
+        ],
+        "text": [
+          "Totul pentru un antrenor sub același acoperiș! Megamart vinde ce nu au tejghelele Centrelor Pokémon."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

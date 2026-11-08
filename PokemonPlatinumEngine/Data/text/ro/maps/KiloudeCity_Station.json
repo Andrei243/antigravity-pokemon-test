@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Kiloude Station"
+    ],
+    "text": [
+      "Gara Kiloude"
+    ]
+  },
+  "people": {
+    "tmv": {
+      "name": {
+        "en": [
+          "TMV Attendant"
+        ],
+        "text": [
+          "Funcționarul TMV"
+        ]
+      }
+    },
+    "commuter": {
+      "name": {
+        "en": [
+          "Commuter"
+        ],
+        "text": [
+          "Navetistul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

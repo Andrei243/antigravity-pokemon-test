@@ -1,0 +1,118 @@
+{
+  "people": {
+    "noa": {
+      "name": {
+        "en": [
+          "Noa"
+        ],
+        "text": [
+          "Noa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Noa: My Magnezone and I came for the stars. I stayed for the battles."
+        ],
+        "text": [
+          "Rucsăcar Noa: Eu și Magnezone am venit pentru stele. Am rămas pentru lupte."
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Noa: The stars are pretty. You, too, I guess."
+        ],
+        "text": [
+          "Rucsăcar Noa: Stelele sunt frumoase. Și tu, presupun."
+        ]
+      }
+    },
+    "hiwa": {
+      "name": {
+        "en": [
+          "Hiwa"
+        ],
+        "text": [
+          "Hiwa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Hiwa: Fly high, strike hard. That's my style."
+        ],
+        "text": [
+          "Antrenor As Hiwa: Zboară sus, lovește tare. Asta e stilul meu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Hiwa: You fly higher."
+        ],
+        "text": [
+          "Antrenor As Hiwa: Tu zbori mai sus."
+        ]
+      }
+    },
+    "pono": {
+      "name": {
+        "en": [
+          "Pono"
+        ],
+        "text": [
+          "Pono"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Pono: I've got a rock collection and a rock team. Want to see the team?"
+        ],
+        "text": [
+          "Drumeț Pono: Am o colecție de pietre și o echipă de piatră. Vrei să vezi echipa?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Pono: You broke my rocks. I'll find more rocks."
+        ],
+        "text": [
+          "Drumeț Pono: Mi-ai spart pietrele. Voi găsi altele."
+        ]
+      }
+    },
+    "kuhio": {
+      "name": {
+        "en": [
+          "Kuhio"
+        ],
+        "text": [
+          "Kuhio"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Kuhio: Static, sparks, magnets: the observatory's power is my project. Let me test you!"
+        ],
+        "text": [
+          "Om de știință Kuhio: Static, scântei, magneți: puterea observatorului e proiectul meu. Lasă-mă să te pun la încercare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Kuhio: Hm. You carry a lot of charge."
+        ],
+        "text": [
+          "Om de știință Kuhio: Hm. Porți multă încărcătură."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Mount Hokulani\nUp: Hokulani Observatory, trial site of Captain Sophocles"
+      ],
+      "text": [
+        "Mount Hokulani\nSus: Observatorul Hokulani, locul încercării Căpitanului Sophocles"
+      ]
+    }
+  }
+}

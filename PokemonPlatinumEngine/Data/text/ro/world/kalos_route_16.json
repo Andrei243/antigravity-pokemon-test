@@ -1,0 +1,138 @@
+{
+  "people": {
+    "corentin": {
+      "name": {
+        "en": [
+          "Corentin"
+        ],
+        "text": [
+          "Corentin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Corentin: Hey! This road is quiet, and a quiet road is a dull road. Battle me!"
+        ],
+        "text": [
+          "Puști Corentin: Hei! Drumul ăsta e liniștit, iar un drum liniștit e un drum plictisitor. Luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Corentin: Quiet again. I liked it better when it was loud."
+        ],
+        "text": [
+          "Puști Corentin: Liniștit din nou. Îmi plăcea mai mult când era zgomotos."
+        ]
+      }
+    },
+    "constance": {
+      "name": {
+        "en": [
+          "Constance"
+        ],
+        "text": [
+          "Constance"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Constance: I packed sandwiches for the whole day, and a battle for each one!"
+        ],
+        "text": [
+          "Excursionistă Constance: Am împachetat sandvișuri pentru toată ziua și o luptă pentru fiecare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Constance: Three battles, one sandwich left. I call that a good day."
+        ],
+        "text": [
+          "Excursionistă Constance: Trei lupte, un sandviș rămas. Eu zic că e o zi bună."
+        ]
+      }
+    },
+    "gaetan": {
+      "name": {
+        "en": [
+          "Gaetan"
+        ],
+        "text": [
+          "Gaetan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Gaetan: They say a hotel up the road lost its guests and never found them again. Care to find out with me? First, a battle!"
+        ],
+        "text": [
+          "Rucsăcar Gaetan: Se zice că un hotel de pe drum și-a pierdut oaspeții și nu i-a mai găsit niciodată. Vrei să aflăm împreună? Mai întâi, o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Gaetan: You win. I will let you go in first."
+        ],
+        "text": [
+          "Rucsăcar Gaetan: Ai câștigat. Te las să intri primul."
+        ]
+      }
+    },
+    "rosalie": {
+      "name": {
+        "en": [
+          "Rosalie"
+        ],
+        "text": [
+          "Rosalie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Rosalie: I have walked this road every autumn for thirty years. I know every rustle, and yours is new!"
+        ],
+        "text": [
+          "Doamnă Rosalie: Merg pe drumul ăsta în fiecare toamnă de treizeci de ani. Cunosc fiecare foșnet, iar al tău e nou!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Rosalie: Thirty years, and still a surprise. Lovely."
+        ],
+        "text": [
+          "Doamnă Rosalie: Treizeci de ani și tot o surpriză. Încântător."
+        ]
+      }
+    },
+    "mega_houndoominite": {
+      "name": {
+        "en": [
+          "Houndoominite"
+        ],
+        "text": [
+          "Houndoominite"
+        ]
+      }
+    },
+    "mega_manectite": {
+      "name": {
+        "en": [
+          "Manectite"
+        ],
+        "text": [
+          "Manectite"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 16\nSouth: Lumiose City\nNorth: the Lost Hotel"
+      ],
+      "text": [
+        "Ruta 16\nSud: Lumiose City\nNord: Lost Hotel"
+      ]
+    }
+  }
+}

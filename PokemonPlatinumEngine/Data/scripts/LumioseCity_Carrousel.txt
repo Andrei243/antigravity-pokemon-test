@@ -1,0 +1,78 @@
+# Le Carrousel in Lumiose City (plan 37 · FC5, the third of Lumiose's restaurants). A restaurant of ours: its menu is
+# three courses, each a rotation battle against its staff (Marius, Capucine and Ferdinand, trainers of Kalos's table
+# whose "format" is "rotation"), fought one after another on the player's own team. The menu is taken once a day
+# (FLAG_DAILY_KALOS_RESTAURANT_3, set as it is served), and the dish is chosen by the turns the three courses took
+# together (TURNS): six or fewer two Rare Candies, ten or fewer two Lum Berries, fifteen or fewer two Sitrus Berries,
+# more a Leppa Berry.
+
+
+script Host
+  face self player
+  speaker "Philibert"
+  if flag FLAG_DAILY_KALOS_RESTAURANT_3 goto Served
+  say "Welcome to Le Carrousel, where the table turns and the courses turn with it."
+  ask "Will you take today's menu? Three courses, each a rotation battle against our staff."
+  if no goto Later
+  setflag FLAG_DAILY_KALOS_RESTAURANT_3
+  say "Very good. A quick meal earns a fine dish, so turn the table well."
+  speaker "Marius"
+  say "The first course goes round! Only the plate at the front is served, mind."
+  battle marius as "kalos_restaurant_carrousel_marius" canlose
+  if lost goto Lost
+  speaker "Capucine"
+  say "The main course is turning your way. Ready?"
+  battle capucine as "kalos_restaurant_carrousel_capucine" canlose
+  if lost goto Lost
+  speaker "Ferdinand"
+  say "The last turn of the evening is mine. Let us see how dizzy you are."
+  battle ferdinand as "kalos_restaurant_carrousel_ferdinand" canlose
+  if lost goto Lost
+  speaker "Philibert"
+  say "Round and round in {var:TURNS} turns! The kitchen will be delighted."
+  if var TURNS <= 6 goto Best
+  if var TURNS <= 10 goto Good
+  if var TURNS <= 15 goto Fair
+  say "A slow waltz of a meal. Here is a little something all the same."
+  give "Leppa Berry"
+  end
+label Best
+  say "Not a single turn wasted! The kitchen's best, a double helping."
+  give "Rare Candy" 2
+  end
+label Good
+  say "A lively meal. The kitchen sends out something fresh."
+  give "Lum Berry" 2
+  end
+label Fair
+  say "A pleasant turn about the table. Here is the dish of the day."
+  give "Sitrus Berry" 2
+  end
+label Lost
+  heal
+  speaker "Philibert"
+  say "The table has stopped turning for today. Your Pokémon have been seen to. Do come back tomorrow."
+  end
+label Later
+  say "Another evening, then. The table will keep turning without you."
+  end
+label Served
+  say "You have dined with us today already. The table turns for you again tomorrow."
+  end
+
+
+# The staff between meals
+script Staff
+  face self player
+  if subject "marius" goto Marius
+  if subject "capucine" goto Capucine
+  speaker "Ferdinand"
+  say "Turn the table at the right moment and a weak dish becomes a strong one."
+  end
+label Marius
+  speaker "Marius"
+  say "Three wait on the table, one at the front. Whoever is in front does the fighting!"
+  end
+label Capucine
+  speaker "Capucine"
+  say "Turning takes no time at all. Choosing when to turn takes all of it."
+  end

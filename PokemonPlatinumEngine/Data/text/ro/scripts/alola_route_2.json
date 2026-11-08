@@ -1,0 +1,78 @@
+{
+  "Ilima": [
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "This is Verdant Cavern, the site of my trial. But a trial-goer needs the kahuna's blessing first: the festival in Iki Town!"
+      ],
+      "text": [
+        "Aici e Verdant Cavern, locul încercării mele. Dar un participant la încercări are nevoie întâi de binecuvântarea kahunei: festivalul din Iki Town!"
+      ]
+    },
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Welcome, {player}! This is Verdant Cavern, and my trial begins here."
+      ],
+      "text": [
+        "Bun venit, {player}! Asta e Verdant Cavern, iar încercarea mea începe aici."
+      ]
+    },
+    {
+      "en": [
+        "Pokémon have made dens in the cavern's walls. Look in all three and deal with whoever comes out. Then, at the very top, the totem Pokémon awaits."
+      ],
+      "text": [
+        "Pokémonii și-au făcut vizuini în pereții peșterii. Uită-te în toate trei și ocupă-te de cine iese. Apoi, chiar în vârf, te așteaptă Pokémonul totem."
+      ]
+    },
+    {
+      "en": [
+        "No running from the totem, mind! I'll go in ahead and watch over you."
+      ],
+      "text": [
+        "Fără fugă de la totem, ține minte! Intru înainte și veghez asupra ta."
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! You're doing Ilima's trial? Take these, then. My grandpa says you can never have too many."
+      ],
+      "text": [
+        "Hei, {player}! Faci încercarea lui Ilima? Atunci ia astea. Bunicul zice că nu poți avea niciodată prea multe."
+      ]
+    },
+    {
+      "en": [
+        "I'm gonna get a malasada and then I'll do the trial too. Probably. After a nap."
+      ],
+      "text": [
+        "Eu iau o malasada și apoi fac și eu încercarea. Probabil. După un pui de somn."
+      ]
+    }
+  ]
+}

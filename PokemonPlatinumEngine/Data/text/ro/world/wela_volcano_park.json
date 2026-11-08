@@ -1,0 +1,107 @@
+{
+  "people": {
+    "second_totem": {
+      "name": {
+        "en": [
+          "Salazzle"
+        ],
+        "text": [
+          "Salazzle"
+        ]
+      }
+    },
+    "kiawe": {
+      "name": {
+        "en": [
+          "Kiawe"
+        ],
+        "text": [
+          "Kiawe"
+        ]
+      }
+    },
+    "trial_1": {
+      "name": {
+        "en": [
+          "Salandit"
+        ],
+        "text": [
+          "Salandit"
+        ]
+      }
+    },
+    "trial_2": {
+      "name": {
+        "en": [
+          "Cubone"
+        ],
+        "text": [
+          "Cubone"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Marowak"
+        ],
+        "text": [
+          "Marowak"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Kanaloa"
+        ],
+        "text": [
+          "Kanaloa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Kanaloa: The ground's warm under your boots up here, eh? My Pokémon are warmer!"
+        ],
+        "text": [
+          "Drumeț Kanaloa: Pământul e cald sub cizmele tale aici sus, nu? Pokémonii mei sunt și mai calzi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Kanaloa: Cooled off, the lot of us."
+        ],
+        "text": [
+          "Drumeț Kanaloa: Răcoriți, toți."
+        ]
+      }
+    },
+    "ace_trainer": {
+      "name": {
+        "en": [
+          "Kalani"
+        ],
+        "text": [
+          "Kalani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kalani: Heading up to Kiawe's trial? You'll have to get past my fire first."
+        ],
+        "text": [
+          "Antrenor As Kalani: Mergi la încercarea lui Kiawe? Va trebui să treci mai întâi de focul meu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kalani: You'll do fine up there."
+        ],
+        "text": [
+          "Antrenor As Kalani: Te vei descurca bine acolo sus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

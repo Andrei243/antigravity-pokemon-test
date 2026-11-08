@@ -1,0 +1,136 @@
+{
+  "people": {
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Kaimana"
+        ],
+        "text": [
+          "Kaimana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Kaimana: The view from up here is the best on the island. The battles are pretty good too!"
+        ],
+        "text": [
+          "Puști Kaimana: Priveliștea de aici de sus e cea mai bună din insulă. Și luptele sunt destul de bune!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Kaimana: I got distracted by the view. That's my excuse."
+        ],
+        "text": [
+          "Puști Kaimana: M-am distras de la priveliște. Asta e scuza mea."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          "Pua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Pua: My Ballerilly and I practise our battles up here where nobody can see us lose!"
+        ],
+        "text": [
+          "Domnișoară Pua: Eu și Ballerilly exersăm luptele aici sus, unde nu ne vede nimeni pierzând!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Pua: Oh no, somebody saw."
+        ],
+        "text": [
+          "Domnișoară Pua: Vai, nu, ne-a văzut cineva."
+        ]
+      }
+    },
+    "ace_trainer": {
+      "name": {
+        "en": [
+          "Makoa"
+        ],
+        "text": [
+          "Makoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Makoa: A trial-goer, are you? Then a battle with me is good practice for what comes next."
+        ],
+        "text": [
+          "Antrenor As Makoa: Un participant la încercări, nu? Atunci o luptă cu mine e un bun exercițiu pentru ce urmează."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Makoa: Good. The kahuna will be glad to see you."
+        ],
+        "text": [
+          "Antrenor As Makoa: Bine. Kahuna va fi bucuroasă să te vadă."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Keola"
+        ],
+        "text": [
+          "Keola"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Keola: The cliffs are steep, but my Kirinine and I are steeper! Wait, that doesn't make sense..."
+        ],
+        "text": [
+          "Drumeț Keola: Stâncile sunt abrupte, dar eu și Kirinine suntem mai abrupți! Stai, asta nu are sens..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Keola: I'll sit down and think about what I meant."
+        ],
+        "text": [
+          "Drumeț Keola: Mă așez și mă gândesc ce am vrut să zic."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 3\nEast: Melemele Meadow\nSouth: Route 2"
+      ],
+      "text": [
+        "Ruta 3\nEst: Melemele Meadow\nSud: Ruta 2"
+      ]
+    },
+    "MeadowSign": {
+      "en": [
+        "Melemele Meadow\nA field of yellow flowers."
+      ],
+      "text": [
+        "Melemele Meadow\nUn câmp de flori galbene."
+      ]
+    }
+  }
+}

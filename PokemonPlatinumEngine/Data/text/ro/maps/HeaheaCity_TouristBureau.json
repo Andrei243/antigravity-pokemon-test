@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Heahea City"
+    ],
+    "text": [
+      "Heahea City"
+    ]
+  },
+  "people": {
+    "guide": {
+      "name": {
+        "en": [
+          "Tourist Guide"
+        ],
+        "text": [
+          "Ghidul turistic"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The guide says Akala is the island of fire and water. I came for the fire. My suntan came for the water."
+        ],
+        "text": [
+          "Ghidul zice că Akala e insula focului și a apei. Eu am venit pentru foc. Bronzul meu a venit pentru apă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

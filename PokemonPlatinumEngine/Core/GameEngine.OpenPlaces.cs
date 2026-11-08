@@ -158,6 +158,8 @@ public partial class GameEngine
     /// <summary>A hurry's end of the open walk under way: taken to its end unseen, onto its marker (plan 12 · Q20's rule, plan 32 · OW5).</summary>
     private void FinishTheOpenWalk()
     {
+        // Everyone's walks to markers too (plan 32 · OW6)
+        FinishTheOpenPeoplesWalks();
         if (openWalk is not { } walk) return;
         if (flow.Open is { } field)
         {
@@ -172,12 +174,6 @@ public partial class GameEngine
     {
         var open = flow.Open ?? throw new ScriptException($"{command} {name}: the player is in no open map here, and a grid map has no markers");
         return open.Map.Marker(name) ?? throw new ScriptException($"{command}: there is no marker '{name}' in the open map {open.Map.Name}");
-    }
-
-    /// <summary>Who an open command means: the player (the people of an open map are OW6's).</summary>
-    private static void OnlyThePlayer(string who, string command)
-    {
-        if (who != "player") throw new ScriptException($"{command} {who}: an open map has nobody but the player yet (its people are plan 32 · OW6's)");
     }
 
     internal sealed partial class Driver
@@ -209,7 +205,12 @@ public partial class GameEngine
     {
         public void WalkTo(string who, string marker, bool fast)
         {
-            OnlyThePlayer(who, "walkto");
+            // Someone of the map walks there over the navigation mesh (plan 32 · OW6)
+            if (who != "player")
+            {
+                game.WalkSomeoneTo(who, marker, fast);
+                return;
+            }
             var target = game.MarkerHere(marker, "walkto");
             game.openWalk = new OpenMarkerWalk(who, target, fast);
             // In a hurry it is walked to its end where the scene waits for it (Arrive), as the grid's walks are
@@ -217,23 +218,19 @@ public partial class GameEngine
 
         public void PlaceAt(string who, string marker)
         {
-            OnlyThePlayer(who, "placeat");
+            if (who != "player")
+            {
+                game.PlaceSomeoneAt(who, marker);
+                return;
+            }
             var at = game.MarkerHere(marker, "placeat");
             var field = game.flow.Open!;
             field.Player.Place(at.Pos, at.Yaw);
             game.openCrossings.Settle(field.Map, at.Pos);
         }
 
-        public void FaceTo(string who, string target)
-        {
-            OnlyThePlayer(who, "faceto");
-            var field = game.flow.Open ?? throw new ScriptException($"faceto {who} {target}: the player is in no open map here");
-            if (target == "player") return;
-            var at = game.MarkerHere(target, "faceto");
-            var pos = field.Player.Pos;
-            if (pos.X == at.Pos.X && pos.Z == at.Pos.Z) return;
-            field.Player.Body.Face(OpenTriangles.YawOf(at.Pos.X - pos.X, at.Pos.Z - pos.Z));
-        }
+        // The player or someone of the map turned toward the player, someone or a marker (plan 32 · OW6)
+        public void FaceTo(string who, string target) => game.FaceSomeoneTo(who, target);
 
         public void WarpTo(string map, string marker)
         {

@@ -455,13 +455,16 @@ public sealed class ScriptLibrary
     /// in, null for a file of no open place; <paramref name="markersOfOpenMap"/> an open map's by its name, null for a
     /// name that is none. <c>common</c> is any place's, so only its warps are held.
     /// </summary>
-    public List<string> OpenProblems(Func<string, IReadOnlyCollection<string>?> markersOfPlace, Func<string, IReadOnlyCollection<string>?> markersOfOpenMap)
+    public List<string> OpenProblems(Func<string, IReadOnlyCollection<string>?> markersOfPlace, Func<string, IReadOnlyCollection<string>?> markersOfOpenMap,
+        Func<string, IReadOnlyCollection<string>?>? peopleOfPlace = null)
     {
         var problems = new List<string>();
         foreach (var script in All.OrderBy(s => s.FullName, StringComparer.Ordinal))
         {
             void Wrong(Instruction at, string what) => problems.Add($"{script.File}.txt({at.Line}): {what}.");
             var markers = markersOfPlace(script.File);
+            // The people of the place's open map (plan 32 · OW6): whom walkto, placeat and faceto may name beside the player
+            var people = markers == null ? null : peopleOfPlace?.Invoke(script.File);
             bool common = script.File == Common;
             foreach (var i in script.Everything())
             {
@@ -495,8 +498,11 @@ public sealed class ScriptLibrary
                     case Op.Camera when i.Camera is CameraMove.Pan or CameraMove.Path:
                         Wrong(i, $"'camera {i.Camera.ToString().ToLowerInvariant()}' names tiles, and {script.File} is a place of an open map: camera look <marker>");
                         break;
+                    case Op.WalkTo or Op.PlaceAt or Op.FaceTo when people != null && i.Name != "player" && !people.Contains(i.Name):
+                        Wrong(i, $"'{Verb(i)}' names '{i.Name}', who is neither the player nor anyone of the open map of {script.File}");
+                        break;
                     case Op.WalkTo or Op.PlaceAt when !markers.Contains(i.Other):
-                    case Op.FaceTo when i.Other != "player" && !markers.Contains(i.Other):
+                    case Op.FaceTo when i.Other != "player" && !markers.Contains(i.Other) && !(people?.Contains(i.Other) ?? false):
                         Wrong(i, $"'{Verb(i)}' names the marker '{i.Other}', which the open map of {script.File} hasn't");
                         break;
                     case Op.LookAt when !markers.Contains(i.Name):

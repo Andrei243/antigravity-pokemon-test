@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Laverre City"
+    ],
+    "text": [
+      "Orașul Laverre"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east runs through the autumn woods to Dendemille Town. Bring something warm; it's colder than it looks."
+        ],
+        "text": [
+          "Drumul spre est trece prin pădurile de toamnă până la Dendemille Town. Ia ceva cald; e mai frig decât pare."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all the way up the marsh trail. My shoes will never be dry again."
+        ],
+        "text": [
+          "Am venit tot drumul pe poteca mlaștinii. Pantofii mei nu se vor mai usca niciodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,77 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "kukui": {
+      "name": {
+        "en": [
+          "Kukui"
+        ],
+        "text": [
+          "Kukui"
+        ]
+      }
+    },
+    "challenger_hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "challenger_gladion": {
+      "name": {
+        "en": [
+          "Gladion"
+        ],
+        "text": [
+          "Gladion"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "challenger_hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          "Hapu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,78 @@
+{
+  "Neighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got the power running again? Everyone in Lumiose is talking about the kid who beat Team Flare."
+      ],
+      "text": [
+        "{player}! Ai pus curentul din nou în funcțiune? Toată lumea din Lumiose vorbește despre puștiul care a învins Team Flare."
+      ]
+    },
+    {
+      "en": [
+        "I'm not going to fall behind you now. Let's battle, right here in the mud!"
+      ],
+      "text": [
+        "Nu rămân în urma ta acum. Hai să luptăm, chiar aici în noroi!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Again! You're always one step ahead of me. I'll catch up, you'll see."
+      ],
+      "text": [
+        "Din nou! Ești mereu cu un pas înaintea mea. O să te ajung, vei vedea."
+      ]
+    },
+    {
+      "en": [
+        "Got you this time! Don't let it go to your head... or mine."
+      ],
+      "text": [
+        "Te-am prins de data asta! Să nu-ți suie la cap... sau la al meu."
+      ]
+    },
+    {
+      "en": [
+        "Laverre's Gym Leader uses fairies. They're prettier than they look, and tougher."
+      ],
+      "text": [
+        "Liderul de sală din Laverre folosește zâne. Sunt mai drăguțe decât par, și mai dure."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Watch your step. Half this trail is puddle."
+      ],
+      "text": [
+        "Ai grijă pe unde calci. Jumătate din poteca asta e băltoacă."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "people": {
+    "solenne": {
+      "name": {
+        "en": [
+          "Solenne"
+        ],
+        "text": [
+          "Solenne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Solenne: Only Champions come this deep. Prove it, and I'll let you go deeper still!"
+        ],
+        "text": [
+          "Antrenor As Solenne: Doar Campionii ajung atât de adânc. Dovedește-o și te las să mergi și mai adânc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Solenne: Proved. Mind the dark down there."
+        ],
+        "text": [
+          "Antrenor As Solenne: Dovedit. Ai grijă la întunericul de jos."
+        ]
+      }
+    },
+    "hector": {
+      "name": {
+        "en": [
+          "Hector"
+        ],
+        "text": [
+          "Hector"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Hector: I have heard something breathing below us for forty years. Show me what you're made of first!"
+        ],
+        "text": [
+          "Veteran Hector: Aud ceva respirând sub noi de patruzeci de ani. Arată-mi mai întâi din ce ești făcut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Hector: Go on, then. Tell me what's breathing."
+        ],
+        "text": [
+          "Veteran Hector: Hai, mergi, atunci. Spune-mi ce respiră."
+        ]
+      }
+    },
+    "eloi": {
+      "name": {
+        "en": [
+          "Eloi"
+        ],
+        "text": [
+          "Eloi"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Eloi: The rock gets warmer the deeper you go. Funny, isn't it? Warm up with a battle!"
+        ],
+        "text": [
+          "Drumeț Eloi: Stânca devine mai caldă cu cât mergi mai adânc. Amuzant, nu? Încălzește-te cu o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Eloi: Plenty warm now, thanks."
+        ],
+        "text": [
+          "Drumeț Eloi: Destul de cald acum, mulțumesc."
+        ]
+      }
+    },
+    "zygarde": {
+      "name": {
+        "en": [
+          "Zygarde"
+        ],
+        "text": [
+          "Zygarde"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,28 @@
+{
+  "Reshiram": [
+    {
+      "en": [
+        "Reshiram's tail blazes white!\nThe air at the tower's top shimmers with its heat!"
+      ],
+      "text": [
+        "Coada lui Reshiram arde în alb!\nAerul din vârful turnului sclipește de căldura lui!"
+      ]
+    },
+    {
+      "en": [
+        "The wind whistles over the empty tower top..."
+      ],
+      "text": [
+        "Vântul șuieră peste vârful gol al turnului..."
+      ]
+    },
+    {
+      "en": [
+        "Reshiram looks down on {player} from the tower's top..."
+      ],
+      "text": [
+        "Reshiram se uită de sus la {player}, din vârful turnului..."
+      ]
+    }
+  ]
+}

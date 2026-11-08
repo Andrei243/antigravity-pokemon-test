@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Route 2"
+    ],
+    "text": [
+      "Ruta 2"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "trainer": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Verdant Cavern is just up the road. That's Captain Ilima's trial. Bring something to heal with!"
+        ],
+        "text": [
+          "Verdant Cavern e chiar mai încolo pe drum. E încercarea Căpitanului Ilima. Ia ceva cu care să te vindeci!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

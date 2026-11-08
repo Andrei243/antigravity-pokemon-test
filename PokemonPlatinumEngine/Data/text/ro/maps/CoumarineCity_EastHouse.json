@@ -25,6 +25,16 @@
           "Sala e închisă cât timp Liderul ei lipsește. Zice că se întoarce când înfloresc trandafirii. Spune asta din primăvară."
         ]
       }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
     }
   },
   "signs": {}

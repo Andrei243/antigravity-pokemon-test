@@ -1,0 +1,111 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Ball Factory"
+    ],
+    "text": [
+      "Fabrica de Poké Ball"
+    ]
+  },
+  "people": {
+    "kalos_flare_grunt_factory_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: The factory makes balls for Team Flare now. Stylish red ones. Out!"
+        ],
+        "text": [
+          "Membru Team Flare: Fabrica face bile pentru Team Flare acum. Roșii și stilate. Afară!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: That was not the plan. The plan was very stylish."
+        ],
+        "text": [
+          "Membru Team Flare: Nu ăsta era planul. Planul era foarte stilat."
+        ]
+      }
+    },
+    "kalos_flare_grunt_factory_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: Every ball off this line is ours. You are not on the order sheet!"
+        ],
+        "text": [
+          "Membru Team Flare: Fiecare bilă de pe linia asta e a noastră. Tu nu ești pe lista de comenzi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Fine. Order cancelled."
+        ],
+        "text": [
+          "Membru Team Flare: Fie. Comandă anulată."
+        ]
+      }
+    },
+    "kalos_flare_grunt_factory_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: The president is busy signing things for us. He is not taking visitors."
+        ],
+        "text": [
+          "Membru Team Flare: Președintele e ocupat să semneze lucruri pentru noi. Nu primește vizitatori."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Go on, then. He is all yours. We are leaving."
+        ],
+        "text": [
+          "Membru Team Flare: Hai, mergi, atunci. E al tău. Noi plecăm."
+        ]
+      }
+    },
+    "president": {
+      "name": {
+        "en": [
+          "President"
+        ],
+        "text": [
+          "Președintele"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

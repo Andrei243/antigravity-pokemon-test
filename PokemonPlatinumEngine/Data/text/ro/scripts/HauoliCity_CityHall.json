@@ -1,0 +1,54 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Hau'oli City Hall! If you have questions about life on the islands, you've come to the right desk."
+      ],
+      "text": [
+        "Bun venit la Primăria din Hau'oli City! Dacă ai întrebări despre viața pe insule, ai ajuns la ghișeul potrivit."
+      ]
+    },
+    {
+      "en": [
+        "The island challenge? Every island has trials kept by its captains, and a grand trial held by its kahuna. Collect all four stamps!"
+      ],
+      "text": [
+        "Provocarea insulelor? Fiecare insulă are încercări păstrate de căpitanii ei și o încercare mare ținută de kahuna. Strânge toate cele patru ștampile!"
+      ]
+    }
+  ],
+  "Guide": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        "Ghidul"
+      ]
+    },
+    {
+      "en": [
+        "This hall keeps the records of every island challenge since the first. The oldest ones are written on bark."
+      ],
+      "text": [
+        "Sala asta păstrează registrele fiecărei provocări a insulelor de la prima încoace. Cele mai vechi sunt scrise pe scoarță."
+      ]
+    },
+    {
+      "en": [
+        "Melemele's kahuna, Hala, has seen more challengers than anyone. He still remembers every one of them, he says."
+      ],
+      "text": [
+        "Kahuna din Melemele, Hala, a văzut mai mulți provocatori decât oricine. Zice că și-i amintește pe fiecare."
+      ]
+    }
+  ]
+}

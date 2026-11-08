@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Seafolk Village"
+    ],
+    "text": [
+      "Seafolk Village"
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to be a trial captain when I grow up! Or a fisher. Or both."
+        ],
+        "text": [
+          "Vreau să mă fac căpitan de încercare când o să fiu mare! Sau pescar. Sau amândouă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

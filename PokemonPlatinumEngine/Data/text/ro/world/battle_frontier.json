@@ -473,6 +473,16 @@
           "Ghidul"
         ]
       }
+    },
+    "battle_frontier.TrainingClerk": {
+      "name": {
+        "en": [
+          "Club Clerk"
+        ],
+        "text": [
+          "Funcționarul clubului"
+        ]
+      }
     }
   },
   "signs": {

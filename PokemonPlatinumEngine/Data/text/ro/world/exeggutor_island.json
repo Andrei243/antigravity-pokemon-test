@@ -1,0 +1,76 @@
+{
+  "people": {
+    "hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          "Hapu"
+        ]
+      }
+    },
+    "keawe": {
+      "name": {
+        "en": [
+          "Keawe"
+        ],
+        "text": [
+          "Keawe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Keawe: Only a dragon's fire can climb the palms of this island. Show me yours!"
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Keawe: Doar focul unui dragon poate urca palmierii insulei ăsteia. Arată-mi-l pe al tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Keawe: Your fire burns hotter."
+        ],
+        "text": [
+          "Îmblânzitor de dragoni Keawe: Al tău arde mai tare."
+        ]
+      }
+    },
+    "iolana": {
+      "name": {
+        "en": [
+          "Iolana"
+        ],
+        "text": [
+          "Iolana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Iolana: The palms look calm until the Palmagus start to sway."
+        ],
+        "text": [
+          "Antrenor As Iolana: Palmierii par liniștiți până încep Palmagus să se legene."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Iolana: Calm again."
+        ],
+        "text": [
+          "Antrenor As Iolana: Liniștiți din nou."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "IslandSign": {
+      "en": [
+        "Exeggutor Island\nPoni's grand trial site."
+      ],
+      "text": [
+        "Exeggutor Island\nLocul încercării celei mari din Poni."
+      ]
+    }
+  }
+}

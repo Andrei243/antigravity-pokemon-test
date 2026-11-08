@@ -339,6 +339,24 @@ public class TripleTests
                 if (npc.TrainerData is { Format: { } format } && !(format == "sky" && npc.TrainerData.Id.StartsWith("kalos_sky_trainer_", StringComparison.Ordinal)))
                     later.Add($"{name}: {npc.TrainerData.Id} {format}");
         Assert.True(later.Count == 0, "Trainers of a later format:\n" + string.Join("\n", later));
+        // Of the regions' own tables, only Kalos's sky trainers and the staff of Lumiose's restaurants (plan 37 · FC5),
+        // whom the restaurants' menus battle by their records, ask for a later format: the restaurants' triples and
+        // rotations are the journey's first
+        var staff = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["kalos_restaurant_trois_raoul"] = "triple", ["kalos_restaurant_trois_agnes"] = "triple", ["kalos_restaurant_trois_heloise"] = "triple",
+            ["kalos_restaurant_carrousel_marius"] = "rotation", ["kalos_restaurant_carrousel_capucine"] = "rotation",
+            ["kalos_restaurant_carrousel_ferdinand"] = "rotation",
+            ["kalos_restaurant_grande_evrard"] = "triple", ["kalos_restaurant_grande_hippolyte"] = "rotation"
+        };
+        var others = new List<string>();
+        foreach (string region in TrainerDatabase.Regions)
+            foreach (var record in TrainerDatabase.OfRegion(region))
+                if (record.Format is { } format && !(format == "sky" && record.Id.StartsWith("kalos_sky_trainer_", StringComparison.Ordinal))
+                    && !(staff.TryGetValue(record.Id, out var theirs) && theirs == format))
+                    others.Add($"{region}: {record.Id} {format}");
+        Assert.True(others.Count == 0, "Trainers of a region's table in a later format:\n" + string.Join("\n", others));
+        foreach (var (id, format) in staff) Assert.Equal(format, TrainerDatabase.Get(id)!.Format);
         // And a trainer's format asks for a triple only by its word
         Assert.Equal(BattleFormat.Triple, new Trainer { Format = "triple" }.AskedFormat);
         Assert.Null(new Trainer().AskedFormat);

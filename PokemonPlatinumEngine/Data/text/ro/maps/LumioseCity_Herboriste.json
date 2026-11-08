@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Herboriste"
+    ],
+    "text": [
+      "Herboriste"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Herbs of the old kind. Bitter, yes, but they work, and they cost less than anything in a bottle."
+        ],
+        "text": [
+          "Ierburi de soi vechi. Amare, da, dar funcționează și costă mai puțin decât orice din sticlă."
+        ]
+      }
+    },
+    "customer": {
+      "name": {
+        "en": [
+          "Customer"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother swore by Energy Root. Her Pokémon swore at it, but they always got up again."
+        ],
+        "text": [
+          "Bunica mea jura pe Rădăcina Energiei. Pokémonii ei o înjurau, dar se ridicau mereu la loc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

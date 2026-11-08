@@ -112,5 +112,39 @@
         "Etajul de cercetare e chiar sus cu liftul. Ai grijă să nu-ți scape Rotomul prin copiatoare."
       ]
     }
+  ],
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Silph Co. We make Poké Balls, Potions and much else besides. Upstairs, our researchers study Rotom."
+      ],
+      "text": [
+        "Bun venit la Silph Co. Facem Poké Balls, Potions și multe altele. Sus, cercetătorii noștri studiază Rotom."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and our engineers left a spare of their newest gadget at the desk. They said a visiting Trainer should have it."
+      ],
+      "text": [
+        "Ah, și inginerii noștri au lăsat la recepție un exemplar de rezervă din cel mai nou gadget al lor. Au zis că un Antrenor în vizită ar trebui să-l aibă."
+      ]
+    },
+    {
+      "en": [
+        "It's a box of data a Porygon can make use of. Let one hold it, and see what happens when it's traded."
+      ],
+      "text": [
+        "E o cutie de date pe care un Porygon o poate folosi. Lasă-l să o țină și vezi ce se întâmplă când e schimbat."
+      ]
+    }
   ]
 }

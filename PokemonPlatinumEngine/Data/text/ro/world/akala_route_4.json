@@ -1,0 +1,118 @@
+{
+  "people": {
+    "collector": {
+      "name": {
+        "en": [
+          "Kanoa"
+        ],
+        "text": [
+          "Kanoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Kanoa: I collect rare Pokémon. Have you got anything I haven't seen? Let's find out!"
+        ],
+        "text": [
+          "Colecționar Kanoa: Colecționez Pokémoni rari. Ai ceva ce n-am văzut? Hai să aflăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Kanoa: Rare and strong. I'm writing that down."
+        ],
+        "text": [
+          "Colecționar Kanoa: Rar și puternic. Notez asta."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Palani"
+        ],
+        "text": [
+          "Palani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Palani: Ah, a young challenger on the road to Paniola. Allow me a friendly bout."
+        ],
+        "text": [
+          "Gentleman Palani: Ah, un tânăr provocator pe drumul spre Paniola. Permite-mi o luptă prietenească."
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Palani: Most invigorating. Do carry on."
+        ],
+        "text": [
+          "Gentleman Palani: Foarte revigorant. Continuă-ți drumul."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Anela"
+        ],
+        "text": [
+          "Anela"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Anela: My Ribombee loves the flowers here. And battles. Mostly battles!"
+        ],
+        "text": [
+          "Excursionistă Anela: Ribombee al meu iubește florile de aici. Și luptele. Mai ales luptele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Anela: Back to the flowers, then."
+        ],
+        "text": [
+          "Excursionistă Anela: Înapoi la flori, atunci."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          "Ikaika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Ikaika: I'm training to take on the trials too! You first, though!"
+        ],
+        "text": [
+          "Puști Ikaika: Mă antrenez și eu pentru încercări! Tu primul, însă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Ikaika: Maybe I'll wait another year."
+        ],
+        "text": [
+          "Puști Ikaika: Poate mai aștept un an."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 4\nNorth: Paniola Town\nSouth: Heahea City"
+      ],
+      "text": [
+        "Ruta 4\nNord: Paniola Town\nSud: Heahea City"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Shakes": [
+    {
+      "en": [
+        "The rubbish bin is shaking!"
+      ],
+      "text": [
+        "Coșul de gunoi se zguduie!"
+      ]
+    }
+  ],
+  "Quiet": [
+    {
+      "en": [
+        "An old rubbish bin of the hotel. Nothing stirs in it today."
+      ],
+      "text": [
+        "Un coș de gunoi vechi al hotelului. Nimic nu se mișcă în el azi."
+      ]
+    }
+  ]
+}

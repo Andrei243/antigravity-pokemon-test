@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A city once stood here. Its streets are broken, and ash falls without end. Whatever was here has been eaten."
+      ],
+      "text": [
+        "Un oraș a stat cândva aici. Străzile lui sunt sparte, iar cenușa cade fără sfârșit. Orice a fost aici a fost mâncat."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "The ground shook. Something vast and hungry dragged itself out of the ruins, its mouths wide open."
+      ],
+      "text": [
+        "Pământul s-a cutremurat. Ceva uriaș și flămând s-a târât afară din ruine, cu gurile larg deschise."
+      ]
+    }
+  ]
+}
