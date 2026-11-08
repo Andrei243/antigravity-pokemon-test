@@ -212,6 +212,15 @@ public class OpenRendererTests
         Assert.Equal(1, camera.LookShare);
     }
 
+    [Fact]
+    public void AScriptsZoomNarrowsTheLensAndAZoomOfOneIsTheLensItself()
+    {
+        Assert.Equal(OrbitCamera.LensDegrees, OrbitCamera.LensFor(1));
+        // Twice as large: half the lens's tangent
+        Assert.Equal(Math.Tan(25 * Degree) / 2, Math.Tan(OrbitCamera.LensFor(2) * Degree / 2), 9);
+        Assert.True(OrbitCamera.LensFor(0.5) > OrbitCamera.LensDegrees);
+    }
+
     // ------------------------------------------------------------------ rock overhead
 
     [Fact]
@@ -417,6 +426,25 @@ public class OpenRendererTests
         var far = OpenTerrainMesh.WaterOf(levels[2])!;
         // The pond, 16 quads to a 2 m cell at level 0 and one at level 2
         Assert.Equal(fine.Count, far.Count * 16);
+    }
+
+    [Fact]
+    public void AFarLevelsWaterIsNeverDeepAtItsWestAndNorthEdges()
+    {
+        // A thinned level has no apron: its west edge lies on its neighbour's ground, which once read as 4 m of water, a
+        // band of the deep across the river at every border between chunks
+        foreach (int x in new[] { 0, 1 })
+        {
+            var levels = RegionBake.Chunk(lab.Value.Land, lab.Value.Description.World, x, 1);
+            for (int level = 0; level < levels.Length; level++)
+            {
+                var water = OpenTerrainMesh.WaterOf(levels[level])!;
+                float west = x * 32f;
+                var edge = Enumerable.Range(0, water.Count).Where(v => MathF.Abs(water.Positions[v].X - west) < 1e-3f).Select(v => water.Uvs[v].X).ToList();
+                Assert.NotEmpty(edge);
+                Assert.True(edge.Max() < 2.5f, $"chunk {x},1 level {level}: {edge.Max()} m deep at its west edge");
+            }
+        }
     }
 
     // ------------------------------------------------------------------ the covers' atlas
@@ -646,6 +674,11 @@ public class OpenCameraGameTests
                   camera look tunnel_west 1.0
                   wait 1.5
                   end
+                script LookAndBack
+                  camera look tunnel_west 0.5
+                  camera release 0.5
+                  wait 2.0
+                  end
                 """), ("common", """
                 script Nothing
                   end
@@ -671,6 +704,15 @@ public class OpenCameraGameTests
             Assert.False(engine.ScriptRunning);
             Run(engine, 60);
             Assert.Null(game.OpenCamera.Looking);
+            // `camera release` brings it home while the script still runs
+            Assert.True(engine.StartScript("LookAndBack", file: "lab_meadow"));
+            Run(engine, 40);
+            Assert.True(engine.ScriptRunning);
+            Assert.NotNull(game.OpenCamera.Looking);
+            Run(engine, 60);
+            Assert.True(engine.ScriptRunning);
+            Assert.Null(game.OpenCamera.Looking);
+            for (int f = 0; f < 600 && engine.ScriptRunning; f++) Run(engine, 1);
             // The player wasn't moved by any of it
             Assert.Equal((placed.X, placed.Z), (game.OpenPlayer!.Pos.X, game.OpenPlayer.Pos.Z));
         });

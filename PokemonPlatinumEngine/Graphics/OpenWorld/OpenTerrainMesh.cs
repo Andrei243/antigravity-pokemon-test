@@ -249,6 +249,28 @@ internal static class OpenTerrainMesh
         for (int k = 0; k < points; k++)
             for (int i = 0; i < points; i++)
                 if (float.IsNaN(under[i, k])) under[i, k] = over[i, k];
+        // A point the chunk's own ground doesn't reach takes the mean of the points beside it that have some: a thinned
+        // level has no apron, so its west and north edges lie on its neighbours' ground, and left as nothing there they
+        // read as deep water, a band of the deep across a river at every border between chunks
+        for (int pass = 0; pass < 2; pass++)
+        {
+            var before = (float[,])under.Clone();
+            for (int k = 0; k < points; k++)
+                for (int i = 0; i < points; i++)
+                {
+                    if (!float.IsNaN(before[i, k])) continue;
+                    float sum = 0;
+                    int count = 0;
+                    foreach (var (di, dk) in new[] { (-1, 0), (1, 0), (0, -1), (0, 1) })
+                    {
+                        int ni = i + di, nk = k + dk;
+                        if (ni < 0 || nk < 0 || ni >= points || nk >= points || float.IsNaN(before[ni, nk])) continue;
+                        sum += before[ni, nk];
+                        count++;
+                    }
+                    if (count > 0) under[i, k] = sum / count;
+                }
+        }
         return under;
     }
 

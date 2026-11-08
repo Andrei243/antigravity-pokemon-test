@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Graphics.OpenWorld;
 internal sealed record OpenScene(
     OpenMap Map, Vector3 Feet, float Yaw, CharacterPose Pose, string? Look,
     Vector3 Eye, Vector3 Target, float Hour, FieldWeather Weather, float CaveShare, double Time,
-    bool Swimming = false);
+    bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees);
 
 /// <summary>
 /// The open world's renderer I (plan 32 · OW8; style guide, "Open world"): an open map's baked land streamed by its
@@ -104,9 +104,9 @@ internal sealed class OpenRenderer
         var rig = OpenLook.UnderRock(OpenLook.Weathered(OpenLook.Open(scene.Hour), scene.Weather), scene.CaveShare);
         Rig = rig;
         float aspect = (float)context.PartWidth / context.PartHeight;
-        var camera = new Camera3D(scene.Eye, scene.Target, Vector3.UnitY, (float)OrbitCamera.LensDegrees, CameraProjection.Perspective);
+        var camera = new Camera3D(scene.Eye, scene.Target, Vector3.UnitY, scene.Lens, CameraProjection.Perspective);
         Camera = camera;
-        var view = new OpenView(scene.Eye, scene.Target, (float)OrbitCamera.LensDegrees, aspect, (float)OrbitCamera.Near, (float)OrbitCamera.Far);
+        var view = new OpenView(scene.Eye, scene.Target, scene.Lens, aspect, (float)OrbitCamera.Near, (float)OrbitCamera.Far);
         var feet = new OpenVec(scene.Feet.X, scene.Feet.Y, scene.Feet.Z);
 
         // The chunks: what the camera sees first, then the rest within reach (another map begins the rings afresh)
@@ -159,7 +159,7 @@ internal sealed class OpenRenderer
         context.BeginScene();
         Raylib.ClearBackground(ToColour(rig.FogColor));
         var viewMatrix = Raymath.MatrixLookAt(scene.Eye, scene.Target, Vector3.UnitY);
-        var projection = Raymath.MatrixPerspective(OrbitCamera.LensDegrees * Math.PI / 180, aspect, OrbitCamera.Near, OrbitCamera.Far);
+        var projection = Raymath.MatrixPerspective(scene.Lens * Math.PI / 180, aspect, OrbitCamera.Near, OrbitCamera.Far);
         var inverse = Raymath.MatrixInvert(Raymath.MatrixMultiply(viewMatrix, projection));
         shaders.SetSky(inverse, new Vector2(context.PartWidth, context.PartHeight), scene.Eye, rig.Sky, (float)(scene.Time % 3600.0));
         Raylib.BeginShaderMode(shaders.Sky);
@@ -188,7 +188,7 @@ internal sealed class OpenRenderer
 
         var middle = Raylib.GetWorldToScreenEx(scene.Feet + new Vector3(0, 0.8f, 0), camera, 1920, 1080);
         PlayerOnPicture = new Vector2(middle.X / 1920f, middle.Y / 1080f);
-        context.PreparePost(rig.Post, new DepthRange((float)OrbitCamera.Near, (float)OrbitCamera.Far, (float)OrbitCamera.LensDegrees, aspect));
+        context.PreparePost(rig.Post, new DepthRange((float)OrbitCamera.Near, (float)OrbitCamera.Far, scene.Lens, aspect));
     }
 
     /// <summary>The composite into the current target (the virtual screen's 2D pass), with a storm's lightning over it.</summary>
@@ -216,7 +216,7 @@ internal sealed class OpenRenderer
         for (int i = 0; i < OpenCascades.Count; i++)
         {
             float near = i == 0 ? (float)OrbitCamera.Near : OpenCascades.Ends[i - 1] * (1f - OpenCascades.Blend);
-            var (centre, radius) = OpenCascades.Slice(scene.Eye, view.Forward, (float)OrbitCamera.LensDegrees, aspect, near, OpenCascades.Ends[i]);
+            var (centre, radius) = OpenCascades.Slice(scene.Eye, view.Forward, scene.Lens, aspect, near, OpenCascades.Ends[i]);
             int size = cascades.SizeOf(i);
             var (camera, clipNear, clipFar) = OpenCascades.Fit(centre, radius, sun, size);
             sliceRadius[i] = radius;
@@ -281,9 +281,9 @@ internal sealed class OpenRenderer
         MirrorPlane = plane;
         var eye = new Vector3(scene.Eye.X, 2f * plane - scene.Eye.Y, scene.Eye.Z);
         var target = new Vector3(scene.Target.X, 2f * plane - scene.Target.Y, scene.Target.Z);
-        var mirror = new Camera3D(eye, target, Vector3.UnitY, (float)OrbitCamera.LensDegrees, CameraProjection.Perspective);
+        var mirror = new Camera3D(eye, target, Vector3.UnitY, scene.Lens, CameraProjection.Perspective);
         float aspect = Reflections.TargetWidth / (float)Reflections.TargetHeight;
-        var view = new OpenView(eye, target, (float)OrbitCamera.LensDegrees, aspect, (float)OrbitCamera.Near, 300f);
+        var view = new OpenView(eye, target, scene.Lens, aspect, (float)OrbitCamera.Near, 300f);
 
         Raylib.BeginTextureMode(context.Mirror);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));

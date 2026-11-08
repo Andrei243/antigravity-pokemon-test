@@ -25,6 +25,13 @@ public sealed class OrbitCamera
     /// <summary>The vertical lens, in degrees (Platinum's 16° belongs to the grid).</summary>
     public const double LensDegrees = 50;
 
+    /// <summary>
+    /// The vertical lens under a script's zoom (<c>camera zoom</c>: 2 shows everything twice as large, 0.5 twice as much),
+    /// in degrees: <see cref="LensDegrees"/> itself, to the bit, at a zoom of 1.
+    /// </summary>
+    public static double LensFor(double zoom) =>
+        zoom == 1 || zoom <= 0 ? LensDegrees : 2 * Math.Atan(Math.Tan(LensDegrees * Math.PI / 360) / zoom) * 180 / Math.PI;
+
     /// <summary>The clip planes, in metres.</summary>
     public const double Near = 0.3, Far = 1400;
 

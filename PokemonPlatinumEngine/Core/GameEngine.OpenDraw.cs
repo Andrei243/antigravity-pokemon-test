@@ -113,9 +113,10 @@ public partial class GameEngine
             WalkBlend = speed > OrbitCamera.Walking ? 1f : 0f,
             Running = speed > 3.0
         };
+        // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm
         return new OpenScene(open.Map, V(feet), (float)OpenYaw.Radians(body.Yaw), pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
-            body.Stance == OpenStance.Swimming);
+            body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens));
     }
 
     private static Vector3 V(OpenVec v) => new((float)v.X, (float)v.Y, (float)v.Z);

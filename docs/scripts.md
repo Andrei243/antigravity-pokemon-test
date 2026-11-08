@@ -1279,7 +1279,7 @@ comes out of a door or a `warpto` onto one of its markers.
 | `placeat <who> <marker>` | Puts them on a marker, facing its way. What they stand in is not crossed into: no trigger runs. |
 | `faceto <who> <marker\|who>` | Turns them toward a marker (`player` turns nobody toward themselves). |
 | `warpto "<open map>" <marker>` | Through a fade to a marker of an open map, from a grid map or an open one; in a hurry at once. The place's `OnEnter` follows. |
-| `camera look <marker> [0.8] [nowait]` | Sends the open map's camera to look at a marker (OW8's orbit camera reads it), waited for as a pan is. |
+| `camera look <marker> [0.8] [nowait]` | Sends the open map's orbit camera to look at a marker (plan 32 · OW8): over the line's seconds the point it looks at goes from over the player to a metre over the marker and the camera turns round behind the player, away from it; waited for as a pan is, and there at once in a hurry. It holds there until the script ends, `camera release` or `camera follow player`, and comes home over 0.8 s (the camera keeps the way it was turned). `camera zoom` narrows or widens the orbit camera's lens, and `letterbox` and `slowmo` work in an open map as on the grid. |
 
 `<who>` is `player` until an open map has people of its own (OW6): anyone else is a script gone wrong in the game, and
 `HeadlessScriptHost` writes down whoever it is told of (`OnMarker`, `FacingToward`). In a file of an open map's place the
