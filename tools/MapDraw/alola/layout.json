@@ -163,7 +163,21 @@
     },
     // Plan 23 · Z6: Diglett's Tunnel, a cave of its own under Akala between Route 8 and Route 9. Its matrix number is
     // well clear of the islands' (Ula'ula and Poni are a parallel session's), so the two may be laid in either order
-    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] },
+    // Plan 23 · Z8: Ultra Space, after the Hall of Fame. Seven worlds of the Ultra Beasts and Ultra Megalopolis, each a
+    // map of its own, reached through the Ultra Wormhole that opens over the Altar's dais; none of them lies on the
+    // islands' grid. Matrices from 60, far clear of the islands' and the caves' numbers, so other sessions' maps may be
+    // laid in either order. Each is 64 tiles by 64: the wormhole one comes in by at 32,55, the arrival at 32,54, the
+    // world's Ultra Beast at 32,16. Our own drawings of worlds the games describe (rulings, "Ultra Space and the Battle
+    // Royal Dome")
+    { "matrix": 60, "area": "ultra_deep_sea", "width": 2, "height": 2, "pieces": [ { "file": "ultra_deep_sea.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 61, "area": "ultra_jungle", "width": 2, "height": 2, "fill": "O", "pieces": [ { "file": "ultra_jungle.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 62, "area": "ultra_desert", "width": 2, "height": 2, "pieces": [ { "file": "ultra_desert.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 63, "area": "ultra_plant", "width": 2, "height": 2, "pieces": [ { "file": "ultra_plant.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 64, "area": "ultra_crater", "width": 2, "height": 2, "pieces": [ { "file": "ultra_crater.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 65, "area": "ultra_forest", "width": 2, "height": 2, "fill": "T", "pieces": [ { "file": "ultra_forest.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 66, "area": "ultra_ruin", "width": 2, "height": 2, "pieces": [ { "file": "ultra_ruin.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 67, "area": "ultra_megalopolis", "width": 2, "height": 2, "pieces": [ { "file": "ultra_megalopolis.txt", "x": 0, "z": 0 } ] }
   ],
   "areas": [
     { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },

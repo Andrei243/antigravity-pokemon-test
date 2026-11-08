@@ -2874,6 +2874,236 @@
       { "species": "Electivire", "level": 55, "ivScale": 160, "personality": 7708342, "moves": [ "Thunder Punch", "Cross Chop", "Fire Punch", "Ice Punch" ] }
     ]
   },
+  // Plan 23 · Z8: the Battle Royal Dome on Royal Avenue (its first show and its four ranks) and the Champion of Alola's
+  // title defended, no prize from a Royal (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome")
+  {
+    "id": "royal_dome_hau",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Raichu", "form": "Raichu-Alola", "level": 60, "ivScale": 200, "personality": 241355, "moves": [ "Thunderbolt", "Psychic", "Focus Blast", "Nasty Plot" ] },
+      { "species": "Noivern", "level": 60, "ivScale": 200, "personality": 3029789, "moves": [ "Boomburst", "Air Slash", "Draco Meteor", "Flamethrower" ] },
+      { "species": "Tauros", "level": 60, "ivScale": 200, "personality": 4523498, "moves": [ "Body Slam", "Earthquake", "Zen Headbutt", "Rock Slide" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_gladion",
+    "name": "Gladion",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Silvally", "level": 60, "ivScale": 200, "personality": 3669479, "moves": [ "Multi-Attack", "Crunch", "Iron Head", "Swords Dance" ] },
+      { "species": "Lucario", "level": 60, "ivScale": 200, "personality": 3412237, "moves": [ "Aura Sphere", "Flash Cannon", "Dragon Pulse", "Extreme Speed" ] },
+      { "species": "Crobat", "level": 60, "ivScale": 200, "personality": 6780242, "moves": [ "Cross Poison", "Brave Bird", "U-turn", "Leech Life" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_masked",
+    "name": "Masked Royal",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Incineroar", "level": 60, "ivScale": 200, "personality": 4544618, "moves": [ "Darkest Lariat", "Flare Blitz", "Fake Out", "Close Combat" ] },
+      { "species": "Braviary", "level": 60, "ivScale": 200, "personality": 6100786, "moves": [ "Brave Bird", "Superpower", "Rock Slide", "Crunch" ] },
+      { "species": "Lycanroc", "level": 60, "ivScale": 200, "personality": 5450411, "moves": [ "Accelerock", "Stone Edge", "Drill Run", "Crunch" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_kalei",
+    "name": "Kalei",
+    "class": "Ace Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Sandslash", "form": "Sandslash-Alola", "level": 50, "ivScale": 200, "personality": 954600, "moves": [ "Icicle Crash", "Iron Head", "Drill Run", "Swords Dance" ] },
+      { "species": "Toucannon", "level": 50, "ivScale": 200, "personality": 1512719, "moves": [ "Beak Blast", "Bullet Seed", "Rock Blast", "U-turn" ] },
+      { "species": "Lurantis", "level": 50, "ivScale": 200, "personality": 2175289, "moves": [ "Solar Blade", "Leaf Blade", "X-Scissor", "Night Slash" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_mano",
+    "name": "Mano",
+    "class": "Veteran",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Mudsdale", "level": 50, "ivScale": 200, "personality": 6678196, "moves": [ "High Horsepower", "Heavy Slam", "Rock Slide", "Payback" ] },
+      { "species": "Bewear", "level": 50, "ivScale": 200, "personality": 2721247, "moves": [ "Hammer Arm", "Body Slam", "Payback", "Ice Punch" ] },
+      { "species": "Pelipper", "level": 50, "ivScale": 200, "personality": 714125, "moves": [ "Scald", "Hurricane", "Roost", "Ice Beam" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_leilani",
+    "name": "Leilani",
+    "class": "Battle Girl",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Hariyama", "level": 50, "ivScale": 200, "personality": 9505472, "moves": [ "Close Combat", "Bullet Punch", "Knock Off", "Ice Punch" ] },
+      { "species": "Crabominable", "level": 50, "ivScale": 200, "personality": 2850995, "moves": [ "Ice Hammer", "Drain Punch", "Thunder Punch", "Earthquake" ] },
+      { "species": "Passimian", "level": 50, "ivScale": 200, "personality": 4706263, "moves": [ "Close Combat", "U-turn", "Gunk Shot", "Rock Slide" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_pua",
+    "name": "Pua",
+    "class": "Cowgirl",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Tauros", "level": 55, "ivScale": 200, "personality": 5189389, "moves": [ "Body Slam", "Earthquake", "Zen Headbutt", "Iron Head" ] },
+      { "species": "Lycanroc", "form": "Lycanroc-Midnight", "level": 55, "ivScale": 200, "personality": 8977489, "moves": [ "Accelerock", "Stone Edge", "Crunch", "Play Rough" ] },
+      { "species": "Gumshoos", "level": 55, "ivScale": 200, "personality": 2629149, "moves": [ "Body Slam", "Crunch", "Earthquake", "Fire Fang" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_kaimana",
+    "name": "Kaimana",
+    "class": "Black Belt",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Hakamo-o", "level": 55, "ivScale": 200, "personality": 9718874, "moves": [ "Sky Uppercut", "Dragon Claw", "Iron Defense", "Bulldoze" ] },
+      { "species": "Pangoro", "level": 55, "ivScale": 200, "personality": 8349266, "moves": [ "Hammer Arm", "Crunch", "Bullet Punch", "Earthquake" ] },
+      { "species": "Primeape", "level": 55, "ivScale": 200, "personality": 9069998, "moves": [ "Close Combat", "U-turn", "Ice Punch", "Rock Slide" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_nalani",
+    "name": "Nalani",
+    "class": "Beauty",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Ninetales", "form": "Ninetales-Alola", "level": 55, "ivScale": 200, "personality": 217078, "moves": [ "Moonblast", "Ice Beam", "Dazzling Gleam", "Calm Mind" ] },
+      { "species": "Salazzle", "level": 55, "ivScale": 200, "personality": 4450109, "moves": [ "Flamethrower", "Sludge Bomb", "Dragon Pulse", "Nasty Plot" ] },
+      { "species": "Comfey", "level": 55, "ivScale": 200, "personality": 8593234, "moves": [ "Draining Kiss", "Giga Drain", "Calm Mind", "Psychic" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_ikaika",
+    "name": "Ikaika",
+    "class": "Ace Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Kommo-o", "level": 60, "ivScale": 200, "personality": 2634870, "moves": [ "Clanging Scales", "Close Combat", "Flamethrower", "Dragon Dance" ] },
+      { "species": "Golisopod", "level": 60, "ivScale": 200, "personality": 7235813, "moves": [ "First Impression", "Liquidation", "Leech Life", "Knock Off" ] },
+      { "species": "Togedemaru", "level": 60, "ivScale": 200, "personality": 9598988, "moves": [ "Zing Zap", "Iron Head", "Nuzzle", "U-turn" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_makana",
+    "name": "Makana",
+    "class": "Veteran",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Dhelmise", "level": 60, "ivScale": 200, "personality": 2905791, "moves": [ "Anchor Shot", "Power Whip", "Shadow Claw", "Earthquake" ] },
+      { "species": "Mimikyu", "level": 60, "ivScale": 200, "personality": 7245101, "moves": [ "Play Rough", "Shadow Claw", "Shadow Sneak", "Swords Dance" ] },
+      { "species": "Turtonator", "level": 60, "ivScale": 200, "personality": 4546332, "moves": [ "Shell Trap", "Dragon Pulse", "Flamethrower", "Iron Defense" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_noelani",
+    "name": "Noelani",
+    "class": "Psychic",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Oranguru", "level": 60, "ivScale": 200, "personality": 3654283, "moves": [ "Psychic", "Focus Blast", "Trick Room", "Hyper Voice" ] },
+      { "species": "Bruxish", "level": 60, "ivScale": 200, "personality": 8412914, "moves": [ "Psychic Fangs", "Liquidation", "Aqua Jet", "Crunch" ] },
+      { "species": "Gardevoir", "level": 60, "ivScale": 200, "personality": 7797721, "moves": [ "Moonblast", "Psychic", "Shadow Ball", "Calm Mind" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_kealoha",
+    "name": "Kealoha",
+    "class": "Ace Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Garchomp", "level": 66, "ivScale": 200, "personality": 7149294, "moves": [ "Earthquake", "Dragon Claw", "Stone Edge", "Swords Dance" ] },
+      { "species": "Primarina", "level": 66, "ivScale": 200, "personality": 9118797, "moves": [ "Sparkling Aria", "Moonblast", "Ice Beam", "Psychic" ] },
+      { "species": "Magnezone", "level": 66, "ivScale": 200, "personality": 5959695, "moves": [ "Thunderbolt", "Flash Cannon", "Volt Switch", "Tri Attack" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_pono",
+    "name": "Pono",
+    "class": "Veteran",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Snorlax", "level": 66, "ivScale": 200, "personality": 5344425, "moves": [ "Body Slam", "Earthquake", "Crunch", "Belly Drum" ] },
+      { "species": "Tyranitar", "level": 66, "ivScale": 200, "personality": 1840459, "moves": [ "Stone Edge", "Crunch", "Earthquake", "Dragon Dance" ] },
+      { "species": "Volcarona", "level": 66, "ivScale": 200, "personality": 6384322, "moves": [ "Heat Wave", "Bug Buzz", "Giga Drain", "Quiver Dance" ] }
+    ]
+  },
+  {
+    "id": "royal_dome_malia",
+    "name": "Malia",
+    "class": "Battle Girl",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Lucario", "level": 66, "ivScale": 200, "personality": 2646367, "moves": [ "Close Combat", "Extreme Speed", "Iron Tail", "Swords Dance" ] },
+      { "species": "Toxapex", "level": 66, "ivScale": 200, "personality": 2405129, "moves": [ "Scald", "Toxic", "Recover", "Haze" ] },
+      { "species": "Salamence", "level": 66, "ivScale": 200, "personality": 1945357, "moves": [ "Outrage", "Earthquake", "Fire Fang", "Dragon Dance" ] }
+    ]
+  },
+  {
+    "id": "defence_hau",
+    "name": "Hau",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "items": [ "Full Restore", "Full Restore" ],
+    "prizeMoney": 8000,
+    "party": [
+      { "species": "Raichu", "form": "Raichu-Alola", "level": 64, "ivScale": 200, "personality": 5926439, "moves": [ "Thunderbolt", "Psychic", "Focus Blast", "Nasty Plot" ] },
+      { "species": "Tauros", "level": 64, "ivScale": 200, "personality": 9464539, "moves": [ "Body Slam", "Earthquake", "Zen Headbutt", "Rock Slide" ] },
+      { "species": "Noivern", "level": 64, "ivScale": 200, "personality": 71694, "moves": [ "Boomburst", "Air Slash", "Draco Meteor", "Flamethrower" ] },
+      { "species": "Vaporeon", "level": 64, "ivScale": 200, "personality": 3488883, "moves": [ "Scald", "Ice Beam", "Shadow Ball", "Hyper Voice" ] },
+      { "species": "Komala", "level": 64, "ivScale": 200, "personality": 6675096, "moves": [ "Wood Hammer", "Sucker Punch", "Earthquake", "Superpower" ] },
+      { "species": "Decidueye", "level": 65, "ivScale": 200, "personality": 1591895, "moves": [ "Spirit Shackle", "Leaf Blade", "Brave Bird", "Sucker Punch" ] }
+    ]
+  },
+  {
+    "id": "defence_gladion",
+    "name": "Gladion",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "items": [ "Full Restore", "Full Restore" ],
+    "prizeMoney": 8000,
+    "party": [
+      { "species": "Crobat", "level": 64, "ivScale": 200, "personality": 7159326, "moves": [ "Cross Poison", "Brave Bird", "U-turn", "Leech Life" ] },
+      { "species": "Weavile", "level": 64, "ivScale": 200, "personality": 9282437, "moves": [ "Night Slash", "Icicle Crash", "Ice Punch", "Knock Off" ] },
+      { "species": "Lucario", "level": 64, "ivScale": 200, "personality": 3518929, "moves": [ "Aura Sphere", "Flash Cannon", "Dragon Pulse", "Extreme Speed" ] },
+      { "species": "Magnezone", "level": 64, "ivScale": 200, "personality": 5849120, "moves": [ "Thunderbolt", "Flash Cannon", "Tri Attack", "Discharge" ] },
+      { "species": "Togekiss", "level": 64, "ivScale": 200, "personality": 5478126, "moves": [ "Air Slash", "Dazzling Gleam", "Aura Sphere", "Calm Mind" ] },
+      { "species": "Silvally", "level": 65, "ivScale": 200, "personality": 7078695, "moves": [ "Multi-Attack", "Crunch", "Iron Head", "Swords Dance" ] }
+    ]
+  },
+  {
+    "id": "defence_hapu",
+    "name": "Hapu",
+    "class": "Pokémon Trainer",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "items": [ "Full Restore", "Full Restore" ],
+    "prizeMoney": 8000,
+    "party": [
+      { "species": "Dugtrio", "form": "Dugtrio-Alola", "level": 64, "ivScale": 200, "personality": 8683829, "moves": [ "Earthquake", "Iron Head", "Sucker Punch", "Rock Slide" ] },
+      { "species": "Gastrodon", "level": 64, "ivScale": 200, "personality": 9190311, "moves": [ "Scald", "Earthquake", "Ice Beam", "Recover" ] },
+      { "species": "Flygon", "level": 64, "ivScale": 200, "personality": 4866051, "moves": [ "Earthquake", "Dragon Claw", "U-turn", "Fire Fang" ] },
+      { "species": "Golurk", "level": 64, "ivScale": 200, "personality": 1146886, "moves": [ "Earthquake", "Shadow Punch", "Ice Punch", "Hammer Arm" ] },
+      { "species": "Krookodile", "level": 64, "ivScale": 200, "personality": 105029, "moves": [ "Earthquake", "Crunch", "Stone Edge", "Gunk Shot" ] },
+      { "species": "Mudsdale", "level": 65, "ivScale": 200, "personality": 7868279, "moves": [ "High Horsepower", "Heavy Slam", "Rock Slide", "Payback" ] }
+    ]
+  },
   {
     "id": "kanto_leader_brock_rematch",
     "name": "Brock",

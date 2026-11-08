@@ -1,0 +1,315 @@
+{
+  "name": "RoyalAvenue_BattleRoyalDome",
+  "displayName": "Battle Royal Dome",
+  "bgmTrack": "alola/trial",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 21,
+  "height": 17,
+  "ground": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "##########D##########"
+  ],
+  "solid": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "##.................##",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "##.................##",
+    "##########.##########"
+  ],
+  "props": [
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 5,
+      "width": 7,
+      "depth": 6
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 16,
+      "targetMap": "Akala",
+      "targetX": 265,
+      "targetY": 208,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 4,
+      "y": 12,
+      "facing": "Right",
+      "script": "RoyalDesk"
+    },
+    {
+      "id": "masked_royal",
+      "name": "Masked Royal",
+      "npcType": "masked_royal",
+      "x": 17,
+      "y": 5,
+      "facing": "Down",
+      "script": "MaskedRoyal",
+      "shownBy": "FLAG_ALOLA_ROYAL_SHOW_DONE"
+    },
+    {
+      "id": "fan",
+      "name": "Battle Fan",
+      "npcType": "youngster",
+      "x": 16,
+      "y": 12,
+      "facing": "Left",
+      "script": "Fan"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "middle_aged_woman",
+      "x": 2,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Four of them in one ring! You never know who the last one standing will be until the very end."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "old_man",
+      "x": 18,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "In my day we battled one at a time, and we liked it. ...I like this better, though."
+      ]
+    },
+    {
+      "id": "show_hau",
+      "name": "Hau",
+      "npcType": "hau",
+      "x": 7,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_SHOW"
+    },
+    {
+      "id": "show_gladion",
+      "name": "Gladion",
+      "npcType": "gladion",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_SHOW"
+    },
+    {
+      "id": "show_masked",
+      "name": "Masked Royal",
+      "npcType": "masked_royal",
+      "x": 10,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_SHOW"
+    },
+    {
+      "id": "normal_kalei",
+      "name": "Kalei",
+      "npcType": "ace_trainer_m",
+      "x": 10,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_NORMAL"
+    },
+    {
+      "id": "normal_mano",
+      "name": "Mano",
+      "npcType": "veteran",
+      "x": 7,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_NORMAL"
+    },
+    {
+      "id": "normal_leilani",
+      "name": "Leilani",
+      "npcType": "battle_girl",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_NORMAL"
+    },
+    {
+      "id": "great_pua",
+      "name": "Pua",
+      "npcType": "cowgirl",
+      "x": 10,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_GREAT"
+    },
+    {
+      "id": "great_kaimana",
+      "name": "Kaimana",
+      "npcType": "blackbelt",
+      "x": 7,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_GREAT"
+    },
+    {
+      "id": "great_nalani",
+      "name": "Nalani",
+      "npcType": "beauty",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_GREAT"
+    },
+    {
+      "id": "ultra_ikaika",
+      "name": "Ikaika",
+      "npcType": "ace_trainer_m",
+      "x": 10,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_ULTRA"
+    },
+    {
+      "id": "ultra_makana",
+      "name": "Makana",
+      "npcType": "veteran",
+      "x": 7,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_ULTRA"
+    },
+    {
+      "id": "ultra_noelani",
+      "name": "Noelani",
+      "npcType": "psychic_f",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_ULTRA"
+    },
+    {
+      "id": "master_kealoha",
+      "name": "Kealoha",
+      "npcType": "ace_trainer_f",
+      "x": 10,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_MASTER"
+    },
+    {
+      "id": "master_pono",
+      "name": "Pono",
+      "npcType": "veteran",
+      "x": 7,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_MASTER"
+    },
+    {
+      "id": "master_malia",
+      "name": "Malia",
+      "npcType": "battle_girl",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_ROYAL_RING_MASTER"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,33 @@
+{
+  "key": "ultra_plant",
+  "index": 303,
+  "name": "Ultra Plant",
+  "matrix": 63,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "beast",
+      "looks": "xurkitree",
+      "movement": "look_south",
+      "x": 32,
+      "z": 16,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
+  ],
+  "signs": [],
+  "triggers": []
+}

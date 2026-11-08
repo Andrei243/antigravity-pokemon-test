@@ -1,0 +1,97 @@
+{
+  "key": "ultra_megalopolis",
+  "index": 307,
+  "name": "Ultra Megalopolis",
+  "matrix": 67,
+  "kind": "City",
+  "sign": "Route",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 32,
+      "z": 21,
+      "to": "MegaloTower",
+      "toWarp": 0
+    },
+    {
+      "x": 12,
+      "z": 35,
+      "to": "UltraMegalopolis_House",
+      "toWarp": 0
+    },
+    {
+      "x": 51,
+      "z": 35,
+      "to": "UltraMegalopolis_House",
+      "toWarp": 0
+    },
+    {
+      "x": 11,
+      "z": 50,
+      "to": "UltraMegalopolis_House",
+      "toWarp": 0
+    },
+    {
+      "x": 52,
+      "z": 50,
+      "to": "UltraMegalopolis_House",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "blacephalon",
+      "looks": "blacephalon",
+      "movement": "look_south",
+      "x": 20,
+      "z": 40,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "resident_1",
+      "looks": "gentleman",
+      "movement": "look_south",
+      "x": 30,
+      "z": 26,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "resident_2",
+      "looks": "scientist",
+      "movement": "look_east",
+      "x": 22,
+      "z": 38,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "resident_3",
+      "looks": "lady",
+      "movement": "wander_around",
+      "x": 42,
+      "z": 46,
+      "facing": 1,
+      "rangeX": 2,
+      "rangeZ": 2,
+      "script": ""
+    }
+  ],
+  "signs": [],
+  "triggers": []
+}
