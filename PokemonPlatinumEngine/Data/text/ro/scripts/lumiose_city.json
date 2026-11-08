@@ -5,7 +5,7 @@
         "Lift Operator"
       ],
       "text": [
-        ""
+        "Operatorul liftului"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The power's back! Up you go: the Gym is at the very top of the tower."
       ],
       "text": [
-        ""
+        "Curentul s-a întors! Sus cu tine: sala e chiar în vârful turnului."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Sorry, the lift has no power. The whole city's gone dark, and the tower with it."
       ],
       "text": [
-        ""
+        "Scuze, liftul nu are curent. Tot orașul a rămas în întuneric, și turnul odată cu el."
       ]
     }
   ],
@@ -173,7 +173,7 @@
         "Nanette"
       ],
       "text": [
-        ""
+        "Nanette"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "You're the Champion? Then you have to play with me! That's the rule of the park!"
       ],
       "text": [
-        ""
+        "Tu ești Campionul? Atunci trebuie să te joci cu mine! Asta e regula parcului!"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Aww. Okay, you can play again tomorrow. That's the rule too."
       ],
       "text": [
-        ""
+        "Aww. Bine, te poți juca din nou mâine. Asta e tot regulă."
       ]
     },
     {
@@ -197,7 +197,7 @@
         "The girl with the pink hair? She's looking for her cat. It's a very grumpy cat."
       ],
       "text": [
-        ""
+        "Fata cu părul roz? Își caută pisica. E o pisică foarte morocănoasă."
       ]
     }
   ],
@@ -215,7 +215,7 @@
         "I'm guarding the park! Nobody gets past without a battle!"
       ],
       "text": [
-        ""
+        "Păzesc parcul! Nimeni nu trece fără o luptă!"
       ]
     },
     {
@@ -223,7 +223,7 @@
         "Okay, you can get past. But only a little bit."
       ],
       "text": [
-        ""
+        "Bine, poți trece. Dar doar puțin."
       ]
     },
     {
@@ -231,7 +231,7 @@
         "My Pokémon are sleepy now. Shh."
       ],
       "text": [
-        ""
+        "Pokémonii mei sunt somnoroși acum. Șșș."
       ]
     }
   ],
@@ -241,7 +241,7 @@
         "Cerise"
       ],
       "text": [
-        ""
+        "Cerise"
       ]
     },
     {
@@ -249,7 +249,7 @@
         "School's out, and we battle here every afternoon. You're new. Let's see what you've got!"
       ],
       "text": [
-        ""
+        "S-a terminat școala și luptăm aici în fiecare după-amiază. Tu ești nou. Să vedem ce poți!"
       ]
     },
     {
@@ -257,7 +257,7 @@
         "Okay, that wasn't fair. You're the Champion, aren't you?"
       ],
       "text": [
-        ""
+        "Bine, asta n-a fost corect. Tu ești Campionul, nu?"
       ]
     },
     {
@@ -265,7 +265,7 @@
         "Emma used to battle us here all the time, before she started working for that funny detective."
       ],
       "text": [
-        ""
+        "Emma lupta cu noi aici tot timpul, înainte să înceapă să lucreze pentru detectivul ăla ciudat."
       ]
     }
   ],
@@ -283,7 +283,7 @@
         "My Pokémon is very old and very spooky. Are you scared? You should be!"
       ],
       "text": [
-        ""
+        "Pokémonul meu e foarte bătrân și foarte sinistru. Ți-e frică? Ar trebui!"
       ]
     },
     {
@@ -291,7 +291,7 @@
         "Not scared at all? Not even a little?"
       ],
       "text": [
-        ""
+        "Nu ți-e frică deloc? Nici măcar puțin?"
       ]
     },
     {
@@ -299,7 +299,7 @@
         "Emma's Espurr hates noise. It always hides when we battle too loudly."
       ],
       "text": [
-        ""
+        "Espurr al Emmei urăște zgomotul. Se ascunde mereu când luptăm prea tare."
       ]
     }
   ],
@@ -317,7 +317,7 @@
         "You battled all four of them? The noise must have scared Mimi half to death. My Espurr, I mean. She's run off."
       ],
       "text": [
-        ""
+        "Ai luptat cu toți patru? Zgomotul trebuie să fi speriat-o de moarte pe Mimi. Espurr al meu, adică. A fugit."
       ]
     },
     {
@@ -325,7 +325,7 @@
         "She hides somewhere small and dark when she's frightened. There are three alleys near here she likes."
       ],
       "text": [
-        ""
+        "Se ascunde undeva mic și întunecat când se sperie. Sunt trei alei pe aici care îi plac."
       ]
     },
     {
@@ -336,10 +336,10 @@
         "The street by the restaurant"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Unde s-ar ascunde un Espurr speriat?",
+        "Aleea de lângă birou",
+        "Aleea de lângă muzeu",
+        "Strada de lângă restaurant"
       ]
     },
     {
@@ -347,7 +347,7 @@
         "No, she wouldn't go that far. Somewhere close, and quiet."
       ],
       "text": [
-        ""
+        "Nu, nu ar merge atât de departe. Undeva aproape și liniștit."
       ]
     },
     {
@@ -355,7 +355,7 @@
         "{player} looked into the narrow alley beside the bureau. Two wide eyes stared back out of the dark."
       ],
       "text": [
-        ""
+        "{player} s-a uitat în aleea îngustă de lângă birou. Doi ochi mari s-au uitat înapoi din întuneric."
       ]
     },
     {
@@ -363,7 +363,7 @@
         "{player} kept very still. After a while a small grey Pokémon crept out and sniffed {player}'s hand."
       ],
       "text": [
-        ""
+        "{player} a stat foarte nemișcat. După un timp, un Pokémon mic și cenușiu s-a strecurat afară și i-a adulmecat mâna lui {player}."
       ]
     },
     {
@@ -379,7 +379,7 @@
         "Mimi! Oh, thank you! Nobody's ever been that patient with her. Not even me."
       ],
       "text": [
-        ""
+        "Mimi! Oh, mulțumesc! Nimeni n-a fost vreodată atât de răbdător cu ea. Nici măcar eu."
       ]
     },
     {
@@ -387,7 +387,7 @@
         "You work with the detective, don't you? He asked me to help him. I said no, because of Mimi."
       ],
       "text": [
-        ""
+        "Lucrezi cu detectivul, nu? M-a rugat să-l ajut. Am zis nu, din cauza lui Mimi."
       ]
     },
     {
@@ -395,7 +395,7 @@
         "But if Mimi likes you, maybe she'll like the bureau too. Tell him Emma's coming. Both of us."
       ],
       "text": [
-        ""
+        "Dar dacă lui Mimi îi placi, poate îi va plăcea și biroul. Spune-i că vine Emma. Amândouă."
       ]
     },
     {
@@ -403,7 +403,7 @@
         "Shh! My Espurr's hiding around here somewhere, and those children won't stop battling. Can you quiet them down?"
       ],
       "text": [
-        ""
+        "Șșș! Espurr al meu se ascunde pe aici pe undeva, iar copiii ăia nu încetează să lupte. Poți să-i liniștești?"
       ]
     }
   ],
@@ -413,7 +413,7 @@
         "Vesper"
       ],
       "text": [
-        ""
+        "Vesper"
       ]
     },
     {
@@ -421,7 +421,7 @@
         "You're following me? Bad idea. Very bad idea."
       ],
       "text": [
-        ""
+        "Mă urmărești? Idee proastă. Foarte proastă."
       ]
     },
     {
@@ -429,7 +429,7 @@
         "Fine! I only steal Poké Balls for someone who pays well. I've never seen her face. She wears a dark suit."
       ],
       "text": [
-        ""
+        "Bine! Fur Poké Balls doar pentru cineva care plătește bine. Nu i-am văzut niciodată fața. Poartă un costum închis."
       ]
     }
   ],
@@ -439,7 +439,7 @@
         "Pip"
       ],
       "text": [
-        ""
+        "Pip"
       ]
     },
     {
@@ -447,7 +447,7 @@
         "I didn't take anything! Okay, I took some things. Want to battle about it?"
       ],
       "text": [
-        ""
+        "N-am luat nimic! Bine, am luat câteva lucruri. Vrei să luptăm pe tema asta?"
       ]
     },
     {
@@ -455,7 +455,7 @@
         "A lady in a suit gives us sweets for every ball we bring her. She talks funny, like a machine."
       ],
       "text": [
-        ""
+        "O doamnă în costum ne dă bomboane pentru fiecare bilă pe care i-o aducem. Vorbește ciudat, ca o mașină."
       ]
     }
   ],
@@ -473,7 +473,7 @@
         "How dare you look at me like that. Do you know who I am? No? Good."
       ],
       "text": [
-        ""
+        "Cum îndrăznești să te uiți așa la mine. Știi cine sunt? Nu? Bine."
       ]
     },
     {
@@ -481,7 +481,7 @@
         "Very well. I was told the balls would go to a good cause. A scientist's cause. I see now I was a fool."
       ],
       "text": [
-        ""
+        "Foarte bine. Mi s-a spus că bilele vor merge la o cauză bună. Cauza unui om de știință. Văd acum că am fost o proastă."
       ]
     }
   ]

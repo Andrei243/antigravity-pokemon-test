@@ -13,7 +13,7 @@
         "{player}! Have you heard the old story? This sundial's stone fell from the sky long ago, the night Kalos first saw a Mega Evolution."
       ],
       "text": [
-        ""
+        "{player}! Ai auzit povestea veche? Piatra cadranului ăstuia solar a căzut din cer demult, în noaptea în care Kalos a văzut prima Mega Evoluție."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Its light still reaches every Key Stone and Mega Stone in the region. Hold your Key Stone up to it, would you?"
       ],
       "text": [
-        ""
+        "Lumina ei ajunge încă la fiecare Piatră-Cheie și Piatră Mega din regiune. Ține-ți Piatra-Cheie în fața ei, vrei?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The sundial's stone gave off a soft light, and the Key Stone {player} carried shone back at it."
       ],
       "text": [
-        ""
+        "Piatra cadranului solar a dat o lumină blândă, iar Piatra-Cheie pe care o purta {player} a strălucit înapoi spre ea."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Magnifique! Now your Key Stone will feel the Mega Stones hidden all over Kalos. Trainers of old left them everywhere."
       ],
       "text": [
-        ""
+        "Magnifique! Acum Piatra-Cheie a ta va simți Pietrele Mega ascunse prin tot Kalosul. Antrenorii de odinioară le-au lăsat peste tot."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "In caves and forests, in a Gym and a castle, by the sea and in the snow. Go and find them all!"
       ],
       "text": [
-        ""
+        "În peșteri și păduri, într-o sală și un castel, lângă mare și în zăpadă. Mergi și găsește-le pe toate!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Oh, and before I forget. Someone left a note for you at my laboratory. It said only: the bureau south of Rouge Plaza. L."
       ],
       "text": [
-        ""
+        "Ah, și înainte să uit. Cineva ți-a lăsat un bilet la laboratorul meu. Zicea doar: biroul de la sud de Rouge Plaza. L."
       ]
     }
   ]

@@ -13,7 +13,7 @@
         "{player}! Over here! You passed Lana's trial too? Awesome!"
       ],
       "text": [
-        ""
+        "{player}! Aici! Ai trecut și de încercarea lui Lana? Grozav!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Alola, cousin! This is the Battle Royal Dome. Four trainers in one ring, each against the rest. It gets loud, yeah!"
       ],
       "text": [
-        ""
+        "Alola, verișorule! Asta e Domul Battle Royal. Patru Antrenori într-un ring, fiecare împotriva celorlalți. Se face zgomot, da!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "It's not open to newcomers yet. So how about a regular battle out here instead, the two of you?"
       ],
       "text": [
-        ""
+        "Încă nu e deschis pentru începători. Deci ce zici de o luptă obișnuită aici, voi doi?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Yes! I've been training the whole way from Paniola. Let's go!"
       ],
       "text": [
-        ""
+        "Da! M-am antrenat tot drumul de la Paniola. Hai!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Aw, man! Your Pokémon are on fire today. I'm getting a malasada to recover."
       ],
       "text": [
-        ""
+        "Aw, omule! Pokémonii tăi sunt în flăcări azi. Îmi iau o malasada să mă refac."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "I won! I won! Okay, I'm still getting a malasada."
       ],
       "text": [
-        ""
+        "Am câștigat! Am câștigat! Bine, tot îmi iau o malasada."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Woo! That's what I like to see. Kiawe's trial is on Wela Volcano Park: Route 8 north, then Route 7's beach."
       ],
       "text": [
-        ""
+        "Woo! Așa îmi place. Încercarea lui Kiawe e în Wela Volcano Park: Ruta 8 spre nord, apoi plaja Rutei 7."
       ]
     }
   ],
@@ -111,7 +111,7 @@
         "Isn't the dome something? One day you'll stand in that ring, cousin. I can feel it!"
       ],
       "text": [
-        ""
+        "Nu-i grozav domul? Într-o zi vei sta și tu în ringul ăla, verișorule. O simt!"
       ]
     }
   ],
@@ -129,7 +129,7 @@
         "Royal Avenue's got everything! Shops, a dome, and a malasada stand somewhere. I just have to find it."
       ],
       "text": [
-        ""
+        "Royal Avenue are de toate! Magazine, un dom și undeva o tarabă cu malasada. Trebuie doar s-o găsesc."
       ]
     }
   ]

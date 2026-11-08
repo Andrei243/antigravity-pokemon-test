@@ -152,7 +152,7 @@
           "Lift Operator"
         ],
         "text": [
-          ""
+          "Operatorul liftului"
         ]
       }
     },
@@ -170,10 +170,7 @@
           "Every road out of Lumiose goes somewhere lovely. Today I'm skating west to Camphrier!"
         ],
         "text": [
-          ""
-        ],
-        "was": [
-          "Au reparat drumul spre vest, către Ruta 5, dar celelalte sunt încă închise. Eu plec spre Camphrier, pe patine!"
+          "Fiecare drum care pleacă din Lumiose duce undeva frumos. Azi patinez spre vest, la Camphrier!"
         ]
       }
     },
@@ -183,7 +180,7 @@
           "Nanette"
         ],
         "text": [
-          ""
+          "Nanette"
         ]
       }
     },
@@ -203,7 +200,7 @@
           "Cerise"
         ],
         "text": [
-          ""
+          "Cerise"
         ]
       }
     },
@@ -233,7 +230,7 @@
           "Woman in a hood"
         ],
         "text": [
-          ""
+          "Femeie cu glugă"
         ]
       }
     },
@@ -243,7 +240,7 @@
           "Child in a cap"
         ],
         "text": [
-          ""
+          "Copil cu șapcă"
         ]
       }
     },
@@ -253,7 +250,7 @@
           "Lady in a veil"
         ],
         "text": [
-          ""
+          "Doamnă cu voal"
         ]
       }
     }
@@ -320,7 +317,7 @@
         "Lumiose Station\nThe TMV to Kiloude City"
       ],
       "text": [
-        ""
+        "Gara Lumiose\nTMV spre Kiloude City"
       ]
     }
   }

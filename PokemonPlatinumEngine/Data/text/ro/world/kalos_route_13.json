@@ -14,7 +14,7 @@
           "Hiker Bastien: The wind out here blows sand into everything. My Pokémon don't mind it one bit!"
         ],
         "text": [
-          ""
+          "Drumeț Bastien: Vântul de aici suflă nisip în toate. Pokémonilor mei nu le pasă deloc!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Bastien: I'll be shaking sand out of my boots for a week."
         ],
         "text": [
-          ""
+          "Drumeț Bastien: O să scutur nisip din ghete o săptămână."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Backpacker Maëlle: I'm crossing the whole plain on foot. Care to slow me down?"
         ],
         "text": [
-          ""
+          "Rucsăcar Maëlle: Traversez toată câmpia pe jos. Vrei să mă încetinești?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Backpacker Maëlle: All right, all right. I'll take a rest."
         ],
         "text": [
-          ""
+          "Rucsăcar Maëlle: Bine, bine. Mă odihnesc."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Romain"
         ],
         "text": [
-          ""
+          "Romain"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Black Belt Romain: I train where nothing grows. Nothing to hide behind, nothing to lean on!"
         ],
         "text": [
-          ""
+          "Centură Neagră Romain: Mă antrenez unde nu crește nimic. Nimic în spatele căruia să te ascunzi, nimic pe care să te sprijini!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Black Belt Romain: You found something to lean on: your team."
         ],
         "text": [
-          ""
+          "Centură Neagră Romain: Ai găsit ceva pe care să te sprijini: echipa ta."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 13 · The Badlands\nNorth: Route 5 and Lumiose City\nSouth: Coumarine City"
       ],
       "text": [
-        ""
+        "Ruta 13 · Pustiurile\nNord: Ruta 5 și Lumiose City\nSud: Coumarine City"
       ]
     }
   }

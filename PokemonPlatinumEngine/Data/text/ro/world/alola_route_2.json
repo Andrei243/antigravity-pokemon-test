@@ -6,7 +6,7 @@
           "Ilima"
         ],
         "text": [
-          ""
+          "Ilima"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Leilani"
         ],
         "text": [
-          ""
+          "Leilani"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Beauty Leilani: The sun is out, the breeze is warm, and you look like you want a battle. Perfect!"
         ],
         "text": [
-          ""
+          "Frumoasă Leilani: Soarele e afară, adierea e caldă, iar tu pari că vrei o luptă. Perfect!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Beauty Leilani: Well, the breeze is still lovely, at least."
         ],
         "text": [
-          ""
+          "Frumoasă Leilani: Ei bine, adierea e tot încântătoare, măcar."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Kekoa"
         ],
         "text": [
-          ""
+          "Kekoa"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Preschooler Kekoa: My Lancerow can peck really, really fast. Watch!"
         ],
         "text": [
-          ""
+          "Preșcolar Kekoa: Lancerow al meu poate ciuguli foarte, foarte repede. Uită-te!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Preschooler Kekoa: Aww. Lancerow, we need more snacks."
         ],
         "text": [
-          ""
+          "Preșcolar Kekoa: Aww. Lancerow, avem nevoie de mai multe gustări."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Malia"
         ],
         "text": [
-          ""
+          "Malia"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Backpacker Malia: I've walked every road on this island. Let's see if you can keep up!"
         ],
         "text": [
-          ""
+          "Rucsăcar Malia: Am mers pe fiecare drum din insulă. Să vedem dacă ții pasul!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Backpacker Malia: You kept up and then some."
         ],
         "text": [
-          ""
+          "Rucsăcar Malia: Ai ținut pasul și mai mult."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Noelani"
         ],
         "text": [
-          ""
+          "Noelani"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Pokémon Breeder Noelani: I raised my Butterfree from a tiny Caterpie. Let me show you how strong it got!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Noelani: Mi-am crescut Butterfree dintr-un Caterpie mititel. Lasă-mă să-ți arăt cât de puternic a ajuns!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Pokémon Breeder Noelani: You've raised yours well, too."
         ],
         "text": [
-          ""
+          "Crescător Pokémon Noelani: Ți-ai crescut bine și tu pe al tău."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Team Skull Grunt: Yo! These berries are ours now, see? Back off or get skulled!"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Yo! Boabele astea sunt ale noastre acum, vezi? Dă-te înapoi sau te skullim!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Team Skull Grunt: Ugh, whatever. The berries weren't even ripe anyway."
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Ugh, na. Boabele nici nu erau coapte oricum."
         ]
       }
     },
@@ -164,7 +164,7 @@
           "The caretaker grows every kind of berry here. Some troublemakers in skull shirts have been helping themselves."
         ],
         "text": [
-          ""
+          "Îngrijitorul crește tot felul de boabe aici. Niște ștrengari în tricouri cu cranii s-au servit singuri."
         ]
       }
     }
@@ -175,7 +175,7 @@
         "Route 2\nNorth: Verdant Cavern and Route 3\nSouth: Hau'oli City"
       ],
       "text": [
-        ""
+        "Ruta 2\nNord: Verdant Cavern și Ruta 3\nSud: Hau'oli City"
       ]
     },
     "BerrySign": {
@@ -183,7 +183,7 @@
         "The Berry Fields\nPlease don't pick the berries without asking."
       ],
       "text": [
-        ""
+        "Câmpurile cu Boabe\nVă rugăm să nu culegeți boabele fără să întrebați."
       ]
     },
     "CavernSign": {
@@ -191,7 +191,7 @@
         "Verdant Cavern\nTrial site of Captain Ilima"
       ],
       "text": [
-        ""
+        "Verdant Cavern\nLocul încercării Căpitanului Ilima"
       ]
     }
   }

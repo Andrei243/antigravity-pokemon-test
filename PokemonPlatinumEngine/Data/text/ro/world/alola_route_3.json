@@ -16,7 +16,7 @@
           "Kaimana"
         ],
         "text": [
-          ""
+          "Kaimana"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Youngster Kaimana: The view from up here is the best on the island. The battles are pretty good too!"
         ],
         "text": [
-          ""
+          "Puști Kaimana: Priveliștea de aici de sus e cea mai bună din insulă. Și luptele sunt destul de bune!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Youngster Kaimana: I got distracted by the view. That's my excuse."
         ],
         "text": [
-          ""
+          "Puști Kaimana: M-am distras de la priveliște. Asta e scuza mea."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Pua"
         ],
         "text": [
-          ""
+          "Pua"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Lass Pua: My Ballerilly and I practise our battles up here where nobody can see us lose!"
         ],
         "text": [
-          ""
+          "Domnișoară Pua: Eu și Ballerilly exersăm luptele aici sus, unde nu ne vede nimeni pierzând!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Lass Pua: Oh no, somebody saw."
         ],
         "text": [
-          ""
+          "Domnișoară Pua: Vai, nu, ne-a văzut cineva."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Makoa"
         ],
         "text": [
-          ""
+          "Makoa"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Ace Trainer Makoa: A trial-goer, are you? Then a battle with me is good practice for what comes next."
         ],
         "text": [
-          ""
+          "Antrenor As Makoa: Un participant la încercări, nu? Atunci o luptă cu mine e un bun exercițiu pentru ce urmează."
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Ace Trainer Makoa: Good. The kahuna will be glad to see you."
         ],
         "text": [
-          ""
+          "Antrenor As Makoa: Bine. Kahuna va fi bucuroasă să te vadă."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Keola"
         ],
         "text": [
-          ""
+          "Keola"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Hiker Keola: The cliffs are steep, but my Kirinine and I are steeper! Wait, that doesn't make sense..."
         ],
         "text": [
-          ""
+          "Drumeț Keola: Stâncile sunt abrupte, dar eu și Kirinine suntem mai abrupți! Stai, asta nu are sens..."
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Hiker Keola: I'll sit down and think about what I meant."
         ],
         "text": [
-          ""
+          "Drumeț Keola: Mă așez și mă gândesc ce am vrut să zic."
         ]
       }
     }
@@ -121,7 +121,7 @@
         "Route 3\nEast: Melemele Meadow\nSouth: Route 2"
       ],
       "text": [
-        ""
+        "Ruta 3\nEst: Melemele Meadow\nSud: Ruta 2"
       ]
     },
     "MeadowSign": {
@@ -129,7 +129,7 @@
         "Melemele Meadow\nA field of yellow flowers."
       ],
       "text": [
-        ""
+        "Melemele Meadow\nUn câmp de flori galbene."
       ]
     }
   }

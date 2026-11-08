@@ -6,7 +6,7 @@
           "Rosalie"
         ],
         "text": [
-          ""
+          "Rosalie"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Ace Trainer Rosalie: Only the best get this far north. Prove you belong!"
         ],
         "text": [
-          ""
+          "Antrenor As Rosalie: Doar cei mai buni ajung atât de la nord. Dovedește că ți-e locul!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Ace Trainer Rosalie: You belong. I'll admit it."
         ],
         "text": [
-          ""
+          "Antrenor As Rosalie: Ți-e locul. O recunosc."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Urbain"
         ],
         "text": [
-          ""
+          "Urbain"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Hiker Urbain: Mud to the ankles, rain to the eyebrows. Perfect battling weather!"
         ],
         "text": [
-          ""
+          "Drumeț Urbain: Noroi până la glezne, ploaie până la sprâncene. Vreme perfectă de luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Hiker Urbain: Perfect for losing, too."
         ],
         "text": [
-          ""
+          "Drumeț Urbain: Perfectă și pentru pierdut."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Éloi"
         ],
         "text": [
-          ""
+          "Éloi"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Fisherman Éloi: The pools up here hide the strangest catches. Want to meet one?"
         ],
         "text": [
-          ""
+          "Pescar Éloi: Bălțile de aici ascund cele mai ciudate capturi. Vrei să cunoști una?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Fisherman Éloi: Back in the pool with you, then."
         ],
         "text": [
-          ""
+          "Pescar Éloi: Înapoi în baltă cu tine, atunci."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 19\nNorth: Snowbelle City\nWest: Couriway Town"
       ],
       "text": [
-        ""
+        "Ruta 19\nNord: Snowbelle City\nVest: Couriway Town"
       ]
     }
   }

@@ -143,10 +143,7 @@
         "{player}. You stood up to Team Plasma for strangers on a bridge. There is something I would ask of you."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Nu putem desface ce am făcut. Putem doar să facem mai bine de acum, câte un Pokémon pe rând."
+        "{player}. Ai ținut piept Team Plasma pentru niște străini pe un pod. Am ceva să te rog."
       ]
     },
     {
@@ -154,7 +151,7 @@
         "A Zorua has lived with us since the team split. It was raised by people who wanted to keep Pokémon from the world."
       ],
       "text": [
-        ""
+        "Un Zorua trăiește cu noi de când s-a despărțit echipa. A fost crescut de oameni care voiau să țină Pokémonii departe de lume."
       ]
     },
     {
@@ -162,7 +159,7 @@
         "It deserves to see that world with a Trainer it can trust. Will you take it?"
       ],
       "text": [
-        ""
+        "Merită să vadă lumea aia alături de un Antrenor în care poate avea încredere. Îl iei?"
       ]
     },
     {
@@ -170,7 +167,7 @@
         "Will you look after Zorua?"
       ],
       "text": [
-        ""
+        "Vei avea grijă de Zorua?"
       ]
     },
     {
@@ -178,7 +175,7 @@
         "{player} received Zorua!"
       ],
       "text": [
-        ""
+        "{player} a primit Zorua!"
       ]
     },
     {
@@ -186,7 +183,7 @@
         "Zorua likes to wear other faces. Be patient with it, and it will show you its own."
       ],
       "text": [
-        ""
+        "Lui Zorua îi place să poarte alte fețe. Fii răbdător cu el și o să-ți arate pe a lui."
       ]
     },
     {
@@ -194,7 +191,7 @@
         "I understand. It will be here, with us, if you change your mind."
       ],
       "text": [
-        ""
+        "Înțeleg. Va fi aici, cu noi, dacă te răzgândești."
       ]
     },
     {
@@ -202,7 +199,7 @@
         "Your team is full, I see. Make room for it, and come back to me."
       ],
       "text": [
-        ""
+        "Echipa ta e plină, văd. Fă loc pentru el și revino la mine."
       ]
     },
     {
@@ -210,7 +207,7 @@
         "How is Zorua? I'm glad it went with someone who fights for Pokémon, not with them."
       ],
       "text": [
-        ""
+        "Cum e Zorua? Mă bucur că a plecat cu cineva care luptă pentru Pokémoni, nu împotriva lor."
       ]
     },
     {
@@ -218,7 +215,7 @@
         "We cannot undo what we did. We can only do better now, one Pokémon at a time."
       ],
       "text": [
-        ""
+        "Nu putem desface ce am făcut. Putem doar să facem mai bine acum, câte un Pokémon."
       ]
     }
   ],

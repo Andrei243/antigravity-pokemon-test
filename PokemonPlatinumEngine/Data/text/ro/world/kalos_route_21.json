@@ -6,7 +6,7 @@
           "Zoé"
         ],
         "text": [
-          ""
+          "Zoé"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Sky Trainer Zoé: This close to the League the sky belongs to the strong. Prove you belong in it!"
         ],
         "text": [
-          ""
+          "Antrenor din Cer Zoé: Atât de aproape de Ligă, cerul aparține celor puternici. Dovedește că ți-e locul în el!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Sky Trainer Zoé: You belong up here more than I do."
         ],
         "text": [
-          ""
+          "Antrenor din Cer Zoé: Ți-e locul aici sus mai mult decât mie."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznicul"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Germain"
         ],
         "text": [
-          ""
+          "Germain"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Veteran Germain: I've walked this road to the League twenty times. Twenty-one, if you beat me."
         ],
         "text": [
-          ""
+          "Veteran Germain: Am mers pe drumul spre Ligă de douăzeci de ori. De douăzeci și una, dacă mă învingi."
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Veteran Germain: Twenty-one it is. Off you go."
         ],
         "text": [
-          ""
+          "Veteran Germain: Douăzeci și una, deci. Hai, du-te."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Route 21\nWest: Victory Road\nEast: the Pokémon Village"
       ],
       "text": [
-        ""
+        "Ruta 21\nVest: Drumul Victoriei\nEst: Satul Pokémonilor"
       ]
     }
   }

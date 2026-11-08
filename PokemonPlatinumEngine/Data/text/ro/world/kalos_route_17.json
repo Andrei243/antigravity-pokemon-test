@@ -14,7 +14,7 @@
           "Hiker Gaspard: The drifts are up to my knees and rising. Let's battle before we're buried!"
         ],
         "text": [
-          ""
+          "Drumeț Gaspard: Nămeții îmi ajung până la genunchi și cresc. Hai să luptăm până nu ne îngroapă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Gaspard: Buried by you instead."
         ],
         "text": [
-          ""
+          "Drumeț Gaspard: Îngropat de tine în schimb."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Neige"
         ],
         "text": [
-          ""
+          "Neige"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Lass Neige: My name means snow, and so does my team. Brr!"
         ],
         "text": [
-          ""
+          "Domnișoară Neige: Numele meu înseamnă zăpadă, la fel și echipa mea. Brr!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Lass Neige: Melted..."
         ],
         "text": [
-          ""
+          "Domnișoară Neige: Topită..."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Mamoswine"
         ],
         "text": [
-          ""
+          "Mamoswine"
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Mamoswine"
         ],
         "text": [
-          ""
+          "Mamoswine"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Mamoswine"
         ],
         "text": [
-          ""
+          "Mamoswine"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Mamoswine"
         ],
         "text": [
-          ""
+          "Mamoswine"
         ]
       }
     }
@@ -99,7 +99,7 @@
         "Route 17\nWest: Dendemille Town\nEast: Anistar City"
       ],
       "text": [
-        ""
+        "Ruta 17\nVest: Dendemille Town\nEst: Anistar City"
       ]
     }
   }

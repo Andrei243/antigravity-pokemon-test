@@ -6,7 +6,7 @@
           "Honorine"
         ],
         "text": [
-          ""
+          "Honorine"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Lady Honorine: I lost my way in these woods an hour ago. You'll do for company. And a battle!"
         ],
         "text": [
-          ""
+          "Doamnă Honorine: Mi-am pierdut drumul prin pădurile astea acum o oră. Îmi ajungi pentru companie. Și pentru o luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Lady Honorine: Would you show me the way out, at least?"
         ],
         "text": [
-          ""
+          "Doamnă Honorine: Mi-ai arăta măcar drumul afară?"
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Thibaut"
         ],
         "text": [
-          ""
+          "Thibaut"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Hiker Thibaut: Every tree in this wood looks the same. Every battle doesn't!"
         ],
         "text": [
-          ""
+          "Drumeț Thibaut: Fiecare copac din pădurea asta arată la fel. Fiecare luptă nu!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Hiker Thibaut: That one I'll remember."
         ],
         "text": [
-          ""
+          "Drumeț Thibaut: Pe asta o țin minte."
         ]
       }
     }
@@ -59,7 +59,7 @@
         "Route 20\nNorth: the Pokémon Village\nSouth: Snowbelle City"
       ],
       "text": [
-        ""
+        "Ruta 20\nNord: Satul Pokémonilor\nSud: Snowbelle City"
       ]
     }
   }

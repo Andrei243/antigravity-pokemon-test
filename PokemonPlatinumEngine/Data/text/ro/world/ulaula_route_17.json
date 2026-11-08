@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Team Skull Grunt: Yo! The cops' station is right there, and they don't do nothin'. So I'll do somethin'!"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Yo! Secția de poliție e chiar acolo și ei nu fac nimic. Așa că fac eu ceva!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Team Skull Grunt: Okay, okay! I'll do nothin' too."
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Bine, bine! Nici eu nu fac nimic."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Skull Grunt: This rain ruins my hair. You're gonna pay for it in battle!"
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Ploaia asta îmi strică părul. O să plătești pentru asta într-o luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Skull Grunt: My hair AND my pride. Brutal."
         ],
         "text": [
-          ""
+          "Bătăuș Team Skull: Părul ȘI mândria mea. Brutal."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Kona"
         ],
         "text": [
-          ""
+          "Kona"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Veteran Kona: I've walked this road in worse rain than this. Show me what you've got!"
         ],
         "text": [
-          ""
+          "Veteran Kona: Am mers pe drumul ăsta în ploi mai rele decât asta. Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Veteran Kona: Ha! Now that's a storm."
         ],
         "text": [
-          ""
+          "Veteran Kona: Ha! Asta da furtună."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 17\nSouth: Ula'ula Meadow\nNorth: the police station"
       ],
       "text": [
-        ""
+        "Ruta 17\nSud: Ula'ula Meadow\nNord: secția de poliție"
       ]
     }
   }

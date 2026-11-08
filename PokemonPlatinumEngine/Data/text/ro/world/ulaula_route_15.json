@@ -6,7 +6,7 @@
           "Kaimi"
         ],
         "text": [
-          ""
+          "Kaimi"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swimmer Kaimi: I swam here from Route 14. Now I'm too tired to lose. Let's go!"
         ],
         "text": [
-          ""
+          "Înotător Kaimi: Am înotat până aici de pe Ruta 14. Acum sunt prea obosit să pierd. Hai!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swimmer Kaimi: I was too tired to win, it turns out."
         ],
         "text": [
-          ""
+          "Înotător Kaimi: Am fost prea obosit să câștig, se pare."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Lehua"
         ],
         "text": [
-          ""
+          "Lehua"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Ace Trainer Lehua: Nobody walks this far along the coast by accident. You're here to battle."
         ],
         "text": [
-          ""
+          "Antrenor As Lehua: Nimeni nu merge atât de departe pe coastă din greșeală. Ești aici să lupți."
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Ace Trainer Lehua: And you're good at it."
         ],
         "text": [
-          ""
+          "Antrenor As Lehua: Și te pricepi."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Mahina"
         ],
         "text": [
-          ""
+          "Mahina"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Pokémon Breeder Mahina: I bring my Pokémon to the Aether House to play with the children. Today they play with you!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Mahina: Îmi duc Pokémonii la Casa Aether să se joace cu copiii. Azi se joacă cu tine!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Pokémon Breeder Mahina: They had fun. That's what matters!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Mahina: S-au distrat. Asta contează!"
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Aether Employee"
         ],
         "text": [
-          ""
+          "Angajatul Aether"
         ]
       },
       "dialog": {
@@ -92,7 +92,7 @@
           "The Aether House looks after Pokémon and children with nowhere else to go. Do come in and say hello."
         ],
         "text": [
-          ""
+          "Casa Aether are grijă de Pokémoni și copii care nu au unde altundeva să meargă. Intră să saluți."
         ]
       }
     }
@@ -103,7 +103,7 @@
         "Route 15\nWest: Route 14\nThe Aether House"
       ],
       "text": [
-        ""
+        "Ruta 15\nVest: Ruta 14\nCasa Aether"
       ]
     }
   }

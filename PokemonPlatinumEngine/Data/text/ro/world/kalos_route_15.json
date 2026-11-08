@@ -6,7 +6,7 @@
           "Thierry"
         ],
         "text": [
-          ""
+          "Thierry"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Sky Trainer Thierry: The leaves fall, but my Pokémon only rise. A Sky Battle!"
         ],
         "text": [
-          ""
+          "Antrenor din Cer Thierry: Frunzele cad, dar Pokémonii mei doar se înalță. O Luptă din Cer!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Sky Trainer Thierry: Grounded, like the leaves."
         ],
         "text": [
-          ""
+          "Antrenor din Cer Thierry: Pe pământ, ca frunzele."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Félix"
         ],
         "text": [
-          ""
+          "Félix"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Youngster Félix: I kick the leaves all the way to Dendemille. Want to see what jumps out?"
         ],
         "text": [
-          ""
+          "Puști Félix: Dau cu piciorul în frunze până la Dendemille. Vrei să vezi ce sare din ele?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Youngster Félix: You jumped out at me, more like."
         ],
         "text": [
-          ""
+          "Puști Félix: Mai degrabă tu ai sărit la mine."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Margot"
         ],
         "text": [
-          ""
+          "Margot"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Lass Margot: Autumn is the best time for battles. Everything's so crunchy!"
         ],
         "text": [
-          ""
+          "Domnișoară Margot: Toamna e cel mai bun anotimp pentru lupte. Totul e atât de crocant!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Lass Margot: Crunch. That was me losing."
         ],
         "text": [
-          ""
+          "Domnișoară Margot: Crunch. Eu pierdeam."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Hiker Ambroise: The stream up ahead is cold as ice. My Pokémon are colder!"
         ],
         "text": [
-          ""
+          "Drumeț Ambroise: Pârâul de mai încolo e rece ca gheața. Pokémonii mei sunt și mai reci!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Hiker Ambroise: Brr. I'd better warm up."
         ],
         "text": [
-          ""
+          "Drumeț Ambroise: Brr. Mai bine mă încălzesc."
         ]
       }
     }
@@ -111,7 +111,7 @@
         "Route 15\nWest: Laverre City\nEast: Dendemille Town"
       ],
       "text": [
-        ""
+        "Ruta 15\nVest: Laverre City\nEst: Dendemille Town"
       ]
     }
   }

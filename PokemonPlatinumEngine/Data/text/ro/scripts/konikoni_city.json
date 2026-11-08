@@ -13,7 +13,7 @@
         "Alola! You must be the trial-goer Mallow keeps messaging me about. I'm Olivia, kahuna of Akala."
       ],
       "text": [
-        ""
+        "Alola! Tu trebuie să fii participantul la încercări despre care îmi tot scrie Mallow. Sunt Olivia, kahuna din Akala."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Before my grand trial, go up to the Ruins of Life past Memorial Hill. Your friend Lillie is waiting there."
       ],
       "text": [
-        ""
+        "Înainte de încercarea mea cea mare, urcă la Ruinele Vieții, dincolo de Memorial Hill. Prietena ta Lillie te așteaptă acolo."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Welcome to Konikoni! Mind the jewelry. It's all for sale."
       ],
       "text": [
-        ""
+        "Bun venit în Konikoni! Ai grijă la bijuterii. Sunt toate de vânzare."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "The Ruins of Life are past Memorial Hill, east of Route 9. Lillie's waiting, so off you go!"
       ],
       "text": [
-        ""
+        "Ruinele Vieții sunt dincolo de Memorial Hill, la est de Ruta 9. Lillie așteaptă, așa că hai!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "You've been to the guardian's shrine. Then you're ready. I'm Akala's kahuna, and I don't do anything halfway!"
       ],
       "text": [
-        ""
+        "Ai fost la sanctuarul ocrotitorului. Atunci ești pregătit. Sunt kahuna din Akala și nu fac nimic pe jumătate!"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Well! That was a gem of a battle. Akala's stamp is yours."
       ],
       "text": [
-        ""
+        "Ei bine! Asta a fost o luptă de nestemată. Ștampila Akala e a ta."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "{player}'s Trainer card received Akala's stamp!"
       ],
       "text": [
-        ""
+        "Cardul de Antrenor al lui {player} a primit ștampila Akala!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "And take Machamp along. With it in your Ride Pager, heavy boulders won't stand in your way."
       ],
       "text": [
-        ""
+        "Și ia-l cu tine pe Machamp. Cu el în Ride Pager, bolovanii grei nu-ți vor sta în cale."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "{player} registered Machamp in the Ride Pager! Machamp can shove heavy boulders."
       ],
       "text": [
-        ""
+        "{player} a înregistrat Machamp în Ride Pager! Machamp poate împinge bolovani grei."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Lillie and Hau went down to the Hano Grand Resort. Go south from Royal Avenue and say hello."
       ],
       "text": [
-        ""
+        "Lillie și Hau au coborât la Hano Grand Resort. Mergi spre sud de la Royal Avenue și salută-i."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Two stamps down, two to go! The other kahunas won't go easy on you either."
       ],
       "text": [
-        ""
+        "Două ștampile gata, încă două! Nici ceilalți kahuna nu te vor menaja."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Acerola"
         ],
         "text": [
-          ""
+          "Acerola"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Rancher Moke"
         ],
         "text": [
-          ""
+          "Fermierul Moke"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Mudsdale: Brrr-hoo!"
         ],
         "text": [
-          ""
+          "Mudsdale: Brrr-hoo!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Tapu Village stands right up here with the clouds. The old market on the hill has been empty for years. Nobody wants to go in."
         ],
         "text": [
-          ""
+          "Tapu Village stă aici sus, cu norii. Piața veche de pe deal e goală de ani. Nimeni nu vrea să intre."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "They say a ghost sits in the old market, all by itself. I think it's a cat."
         ],
         "text": [
-          ""
+          "Se zice că o fantomă stă în piața veche, singură. Eu cred că e o pisică."
         ]
       }
     }
@@ -81,7 +81,7 @@
         "Tapu Village\nHigh above the island, where the clouds drift past."
       ],
       "text": [
-        ""
+        "Tapu Village\nSus deasupra insulei, pe unde plutesc norii."
       ]
     },
     "RouteSign": {
@@ -89,7 +89,7 @@
         "Tapu Village crossroads\nWest: Route 12, North: Route 16\nEast: Route 13"
       ],
       "text": [
-        ""
+        "Răscrucea Tapu Village\nVest: Ruta 12, Nord: Ruta 16\nEst: Ruta 13"
       ]
     },
     "MartSign": {
@@ -97,7 +97,7 @@
         "The old Thrifty Megamart\nClosed for good. Please keep out."
       ],
       "text": [
-        ""
+        "Vechiul Thrifty Megamart\nÎnchis pentru totdeauna. Vă rugăm să nu intrați."
       ]
     }
   }

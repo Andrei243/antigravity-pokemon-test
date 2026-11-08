@@ -5,7 +5,7 @@
         "Craftswoman"
       ],
       "text": [
-        ""
+        "Meșteșugăreasa"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Well, look at that! A Champion, and on my doorstep. Come in, come in, and mind the shavings."
       ],
       "text": [
-        ""
+        "Păi, ia uite! Un Campion, și la ușa mea. Intră, intră, și ai grijă la rumeguș."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "This is where I make things. Every Pokémon sheds something as it battles, and the countryside gives a good deal more to anyone who knows where to look."
       ],
       "text": [
-        ""
+        "Aici fac lucruri. Fiecare Pokémon pierde ceva în lupte, iar natura dă mult mai mult oricui știe unde să caute."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours."
       ],
       "text": [
-        ""
+        "Nu te pot face meșteșugar într-o după-amiază. Dar îți pot da un set. Poftim, e al tău."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over."
       ],
       "text": [
-        ""
+        "Ține-l în rucsac. Când un Pokémon sălbatic e învins sau capturat, tot ce lasă în urmă intră singur în punga setului, iar ți se spune după lupta."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready."
       ],
       "text": [
-        ""
+        "Deschide-l oricând vrei să vezi ce ai. Restul ți-l arăt când banca mea e gata."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Back again! Your kit's still in good order, I hope."
       ],
       "text": [
-        ""
+        "Iar ai venit! Setul tău e încă în ordine, sper."
       ]
     },
     {
@@ -72,10 +72,10 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Cu ce te pot ajuta?",
+        "UITĂ-TE ÎN SET",
+        "CUM FUNCȚIONEAZĂ",
+        "CU NIMIC"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Then I'll get on. Mind the shavings on your way out."
       ],
       "text": [
-        ""
+        "Atunci mă văd de treabă. Ai grijă la rumeguș când ieși."
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Every wild Pokémon leaves something of its own kind behind: a common thing almost every time, a rare one now and then. The higher its level, the more there is."
       ],
       "text": [
-        ""
+        "Fiecare Pokémon sălbatic lasă în urmă ceva din felul lui: un lucru obișnuit aproape de fiecare dată, unul rar din când în când. Cu cât nivelul e mai mare, cu atât e mai mult."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Trainers' Pokémon leave nothing, nor do the ones in a contest or a park. Those are sport, not the wild."
       ],
       "text": [
-        ""
+        "Pokémonii Antrenorilor nu lasă nimic, nici cei dintr-un concurs sau dintr-un parc. Aceia sunt sport, nu sălbăticie."
       ]
     }
   ]

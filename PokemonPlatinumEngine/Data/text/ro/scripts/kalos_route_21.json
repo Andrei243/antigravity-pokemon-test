@@ -13,7 +13,7 @@
         "{player}. I thought you'd come this way. Victory Road is just ahead, and the League past it."
       ],
       "text": [
-        ""
+        "{player}. Mă gândeam că vei veni pe aici. Drumul Victoriei e chiar înainte, iar Liga dincolo de el."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Ever since Vaniville I've been chasing you. One more battle. Everything I've got!"
       ],
       "text": [
-        ""
+        "De la Vaniville te tot urmăresc. Încă o luptă. Cu tot ce am!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "That's it, then. You're the one who's going to stand in front of the Champion. Go and win."
       ],
       "text": [
-        ""
+        "Asta e, atunci. Tu ești cel care va sta în fața Campionului. Mergi și câștigă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I won? I won! Then you'd better win twice as hard up there."
       ],
       "text": [
-        ""
+        "Am câștigat? Am câștigat! Atunci ar fi bine să câștigi de două ori mai tare acolo sus."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I'll be cheering for you. Loudly. Embarrassingly."
       ],
       "text": [
-        ""
+        "Voi țipa pentru tine. Tare. Jenant."
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Victory Road's mouth is just ahead. The guard checks your Badges."
       ],
       "text": [
-        ""
+        "Gura Drumului Victoriei e chiar înainte. Paznicul îți verifică Insignele."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznicul"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Halt! Only a Trainer with all eight of Kalos's Badges may enter Victory Road."
       ],
       "text": [
-        ""
+        "Stai! Doar un Antrenor cu toate cele opt Insigne din Kalos poate intra pe Drumul Victoriei."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Eight Badges! Very well. Victory Road is open to you, and the Pokémon League lies beyond it."
       ],
       "text": [
-        ""
+        "Opt Insigne! Foarte bine. Drumul Victoriei îți e deschis, iar Liga Pokémon e dincolo de el."
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznicul"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "I guard the way to the League. Come back with all eight Badges of Kalos."
       ],
       "text": [
-        ""
+        "Păzesc drumul spre Ligă. Revino cu toate cele opt Insigne din Kalos."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "The League is beyond Victory Road. Good luck, Trainer."
       ],
       "text": [
-        ""
+        "Liga e dincolo de Drumul Victoriei. Mult noroc, Antrenorule."
       ]
     }
   ]

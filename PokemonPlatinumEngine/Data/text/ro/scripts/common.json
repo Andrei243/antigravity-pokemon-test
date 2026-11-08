@@ -619,11 +619,11 @@
         "SWITCH OFF"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care să fie deschis?",
+        "DEPOZIT POKéMON",
+        "SLUJBE POKé",
+        "APARAT DE TM",
+        "OPREȘTE"
       ]
     },
     {
@@ -636,12 +636,12 @@
         "SWITCH OFF"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care să fie deschis?",
+        "DEPOZIT POKéMON",
+        "SLUJBE POKé",
+        "CAPSULE DE BALL",
+        "APARAT DE TM",
+        "OPREȘTE"
       ]
     }
   ],
@@ -913,7 +913,7 @@
         "The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola?"
       ],
       "text": [
-        ""
+        "Ultra Wormhole-ul prin care ai venit plutește în aer, bâzâind. Te întorci prin el în Alola?"
       ]
     },
     {
@@ -921,7 +921,7 @@
         "{player} stepped into the light..."
       ],
       "text": [
-        ""
+        "{player} a pășit în lumină..."
       ]
     }
   ],
@@ -3087,7 +3087,7 @@
         "Hold on! Your golds have earned you something. Here you go!"
       ],
       "text": [
-        ""
+        "Stai puțin! Medaliile tale de aur ți-au adus ceva. Poftim!"
       ]
     },
     {
@@ -3103,7 +3103,7 @@
         "Welcome to the training hall! Here a Pokémon builds up one stat at a time, and it doesn't cost a thing."
       ],
       "text": [
-        ""
+        "Bun venit în sala de antrenament! Aici un Pokémon își dezvoltă câte o statistică pe rând, și nu costă nimic."
       ]
     },
     {
@@ -3115,11 +3115,11 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce începem azi?",
+        "UN EXERCIȚIU",
+        "RESETEAZĂ EFORTUL",
+        "CUM FUNCȚIONEAZĂ",
+        "CU NIMIC"
       ]
     },
     {
@@ -3127,7 +3127,7 @@
         "Then keep moving, and come back when you're warmed up!"
       ],
       "text": [
-        ""
+        "Atunci continuă să te miști și revino când te-ai încălzit!"
       ]
     },
     {
@@ -3140,12 +3140,12 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce începem azi?",
+        "UN EXERCIȚIU",
+        "ANTRENAMENT DE VÂRF",
+        "RESETEAZĂ EFORTUL",
+        "CUM FUNCȚIONEAZĂ",
+        "CU NIMIC"
       ]
     },
     {
@@ -3153,7 +3153,7 @@
         "Then keep moving, and come back when you're warmed up!"
       ],
       "text": [
-        ""
+        "Atunci continuă să te miști și revino când te-ai încălzit!"
       ]
     },
     {
@@ -3161,7 +3161,7 @@
         "Peak training! Hand me a Bottle Cap, and one stat grows as if it had been born the best it could be."
       ],
       "text": [
-        ""
+        "Antrenament de vârf! Dă-mi un Capac de Sticlă și o statistică crește de parcă s-ar fi născut cât de bună poate fi."
       ]
     },
     {
@@ -3169,7 +3169,7 @@
         "A Gold Bottle Cap does the same for all six. Only a Pokémon of level 50 or more has the grit for it, mind."
       ],
       "text": [
-        ""
+        "Un Capac de Sticlă Auriu face același lucru pentru toate șase. Doar un Pokémon de nivel 50 sau mai mult are tăria pentru asta, ține minte."
       ]
     },
     {
@@ -3177,7 +3177,7 @@
         "Who's reaching for the peak?"
       ],
       "text": [
-        ""
+        "Cine ajunge la vârf?"
       ]
     },
     {
@@ -3185,7 +3185,7 @@
         "There! Its {thing} is at its peak now. It'll grow as far as that stat can ever go."
       ],
       "text": [
-        ""
+        "Gata! {thing} a ajuns la vârf. Va crește cât de mult poate crește vreodată statistica aia."
       ]
     },
     {
@@ -3193,7 +3193,7 @@
         "There! Every one of its stats is at its peak now. That's a Pokémon at its very best!"
       ],
       "text": [
-        ""
+        "Gata! Fiecare dintre statisticile lui e la vârf acum. Un Pokémon la cea mai bună formă a lui!"
       ]
     },
     {
@@ -3201,7 +3201,7 @@
         "Hmm. It needs to be level 50 or more before it can take peak training. Bring it back once it's grown!"
       ],
       "text": [
-        ""
+        "Hmm. Trebuie să fie de nivel 50 sau mai mult ca să primească antrenament de vârf. Adu-l înapoi când a crescut!"
       ]
     },
     {
@@ -3209,7 +3209,7 @@
         "Every stat it has is at its peak already. There's nothing more I can do for this one!"
       ],
       "text": [
-        ""
+        "Fiecare statistică a lui e deja la vârf. Nu mai pot face nimic pentru ăsta!"
       ]
     },
     {
@@ -3217,7 +3217,7 @@
         "You'll need a Bottle Cap for that. The clerk at a Battle Points counter trades them, and golds in the drills earn them too."
       ],
       "text": [
-        ""
+        "Ai nevoie de un Capac de Sticlă pentru asta. Funcționarul de la o tejghea de Puncte de Luptă le schimbă, iar medaliile de aur din exerciții îți aduc și ele."
       ]
     },
     {
@@ -3225,7 +3225,7 @@
         "Who's training today?"
       ],
       "text": [
-        ""
+        "Cine se antrenează azi?"
       ]
     },
     {
@@ -3233,7 +3233,7 @@
         "Bronze! Everyone starts somewhere. Keep at it and you'll feel the difference."
       ],
       "text": [
-        ""
+        "Bronz! Toți pornim de undeva. Continuă și vei simți diferența."
       ]
     },
     {
@@ -3241,7 +3241,7 @@
         "Silver! Solid work. Gold is closer than you think."
       ],
       "text": [
-        ""
+        "Argint! Muncă solidă. Aurul e mai aproape decât crezi."
       ]
     },
     {
@@ -3249,7 +3249,7 @@
         "Gold! Now that's how it's done!"
       ],
       "text": [
-        ""
+        "Aur! Așa se face!"
       ]
     },
     {
@@ -3257,7 +3257,7 @@
         "And that gold has earned you something. Here!"
       ],
       "text": [
-        ""
+        "Iar aurul ăla ți-a adus ceva. Poftim!"
       ]
     },
     {
@@ -3273,7 +3273,7 @@
         "Talk to me again whenever you want another drill."
       ],
       "text": [
-        ""
+        "Vorbește din nou cu mine oricând vrei un alt exercițiu."
       ]
     },
     {
@@ -3281,7 +3281,7 @@
         "Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to?"
       ],
       "text": [
-        ""
+        "Efortul poate fi șters, gratuit, dar odată dispărut, a dispărut. Mai vrei?"
       ]
     },
     {
@@ -3289,7 +3289,7 @@
         "Whose effort is it?"
       ],
       "text": [
-        ""
+        "Al cui efort e?"
       ]
     },
     {
@@ -3300,10 +3300,10 @@
         "NEVER MIND"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care efort să dispară?",
+        "TOT",
+        "AL UNEI STATISTICI",
+        "NU MAI VREAU"
       ]
     },
     {
@@ -3317,13 +3317,13 @@
         "SPEED"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "A cărei statistici?",
+        "HP",
+        "ATAC",
+        "APĂRARE",
+        "ATAC SP.",
+        "AP. SP.",
+        "VITEZĂ"
       ]
     },
     {
@@ -3331,7 +3331,7 @@
         "There. A clean slate, ready for whatever you train next."
       ],
       "text": [
-        ""
+        "Gata. Un început curat, pregătit pentru ce antrenezi următorul."
       ]
     },
     {
@@ -3339,7 +3339,7 @@
         "There's nothing there to wipe! Train first, then come back."
       ],
       "text": [
-        ""
+        "Nu e nimic de șters aici! Antrenează mai întâi, apoi revino."
       ]
     },
     {
@@ -3347,7 +3347,7 @@
         "Every drill trains one stat and lasts half a minute. Bronze puts 8 points of effort into it, silver 16, gold 24."
       ],
       "text": [
-        ""
+        "Fiecare exercițiu antrenează o statistică și durează o jumătate de minut. Bronzul pune 8 puncte de efort în ea, argintul 16, aurul 24."
       ]
     },
     {
@@ -3355,7 +3355,7 @@
         "A stat holds 252 at most, and a Pokémon 510 in all. The effort counts the moment the drill is over."
       ],
       "text": [
-        ""
+        "O statistică ține cel mult 252, iar un Pokémon 510 în total. Efortul se numără în clipa în care exercițiul se termină."
       ]
     },
     {
@@ -3363,7 +3363,7 @@
         "And a stat's first gold earns you something from me. Keep winning golds, and there's more where that came from."
       ],
       "text": [
-        ""
+        "Iar prima medalie de aur la o statistică îți aduce ceva de la mine. Continuă să câștigi medalii de aur și mai am de unde să-ți dau."
       ]
     },
     {
@@ -3371,7 +3371,7 @@
         "No rush. Come back whenever you're ready."
       ],
       "text": [
-        ""
+        "Fără grabă. Revino când ești gata."
       ]
     }
   ],
@@ -3389,7 +3389,7 @@
         "Welcome! The shelf behind me is for the club's training goods, but the club only stocks it for Champions."
       ],
       "text": [
-        ""
+        "Bun venit! Raftul din spatele meu e pentru bunurile de antrenament ale clubului, dar clubul îl aprovizionează doar pentru Campioni."
       ]
     },
     {
@@ -3397,7 +3397,7 @@
         "The drills are open to everyone, though. Talk to the Head Coach!"
       ],
       "text": [
-        ""
+        "Exercițiile sunt deschise tuturor, totuși. Vorbește cu Antrenorul principal!"
       ]
     },
     {
@@ -3405,7 +3405,7 @@
         "Welcome, Champion! Candies, capsules and mints: everything a team in training needs is on this shelf."
       ],
       "text": [
-        ""
+        "Bun venit, Campionule! Bomboane, capsule și mente: tot ce are nevoie o echipă în antrenament e pe raftul ăsta."
       ]
     },
     {
@@ -3445,7 +3445,7 @@
         "Club Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul clubului"
       ]
     },
     {
@@ -3453,7 +3453,7 @@
         "Hello! I'm with the training club. Battle Points buy our very best goods here."
       ],
       "text": [
-        ""
+        "Bună! Sunt de la clubul de antrenament. Aici, Punctele de Luptă cumpără cele mai bune bunuri ale noastre."
       ]
     },
     {
@@ -3469,7 +3469,7 @@
         "Thank you! A Bottle Cap goes to the Head Coach of any training hall, if that's what you chose."
       ],
       "text": [
-        ""
+        "Mulțumesc! Un Capac de Sticlă ajunge la Antrenorul principal din orice sală de antrenament, dacă asta ai ales."
       ]
     },
     {
@@ -3477,7 +3477,7 @@
         "I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!"
       ],
       "text": [
-        ""
+        "Sunt de la clubul de antrenament. Cele mai bune bunuri ale noastre sunt păstrate pentru Campioni, din păcate. Revino după ce ești încoronat!"
       ]
     },
     {
@@ -3485,7 +3485,7 @@
         "Oh dear, you don't have the Battle Points for that."
       ],
       "text": [
-        ""
+        "Vai, nu ai Punctele de Luptă pentru asta."
       ]
     },
     {
@@ -3493,7 +3493,7 @@
         "Come back whenever your points pile up!"
       ],
       "text": [
-        ""
+        "Revino oricând ți se adună punctele!"
       ]
     }
   ],

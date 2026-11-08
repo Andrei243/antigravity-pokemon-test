@@ -6,7 +6,7 @@
           "Noe"
         ],
         "text": [
-          ""
+          "Noe"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swimmer Noe: The water's cold on this side of the island. Warm me up with a battle!"
         ],
         "text": [
-          ""
+          "Înotător Noe: Apa e rece pe partea asta a insulei. Încălzește-mă cu o luptă!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swimmer Noe: Still cold. Still lost."
         ],
         "text": [
-          ""
+          "Înotător Noe: Tot rece. Tot pierdut."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Pua"
         ],
         "text": [
-          ""
+          "Pua"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Beauty Pua: I came here for the quiet. You don't look quiet."
         ],
         "text": [
-          ""
+          "Frumoasă Pua: Am venit aici pentru liniște. Tu nu pari liniștit."
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Beauty Pua: You weren't. And neither was I."
         ],
         "text": [
-          ""
+          "Frumoasă Pua: N-ai fost. Nici eu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ikaika"
         ],
         "text": [
-          ""
+          "Ikaika"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Fisherman Ikaika: Nothing's biting today, so I'll catch a battle instead!"
         ],
         "text": [
-          ""
+          "Pescar Ikaika: Azi nu mușcă nimic, așa că prind o luptă în schimb!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Fisherman Ikaika: That one got away from me."
         ],
         "text": [
-          ""
+          "Pescar Ikaika: Aia mi-a scăpat."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "The waves come all the way from Poni round this point. You can ride a Lapras right along the coast to Route 15."
         ],
         "text": [
-          ""
+          "Valurile vin tot drumul din Poni în jurul acestui promontoriu. Poți merge călare pe un Lapras de-a lungul coastei până la Ruta 15."
         ]
       }
     }
@@ -103,7 +103,7 @@
         "Route 14\nNorth: Tapu Village\nEast: Route 15"
       ],
       "text": [
-        ""
+        "Ruta 14\nNord: Tapu Village\nEst: Ruta 15"
       ]
     }
   }

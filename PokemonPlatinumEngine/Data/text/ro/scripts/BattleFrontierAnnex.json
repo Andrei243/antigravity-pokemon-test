@@ -749,7 +749,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -757,7 +757,7 @@
         "This is the Battle Royal corner! Four Trainers battle at once, and every one of them is everyone else's foe."
       ],
       "text": [
-        ""
+        "Aici e colțul Battle Royal! Patru Antrenori luptă deodată, și fiecare e dușmanul tuturor celorlalți."
       ]
     },
     {
@@ -768,10 +768,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Brisa, Corin și Dalla sunt gata. Li te alături într-un Battle Royal?",
+        "Mă alătur",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -779,7 +779,7 @@
         "Then step into the ring! Every Trainer for themselves!"
       ],
       "text": [
-        ""
+        "Atunci în ring! Fiecare Antrenor pentru el!"
       ]
     },
     {
@@ -787,7 +787,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -795,7 +795,7 @@
         "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
       ],
       "text": [
-        ""
+        "Un loc câștigat greu! Fiecare Battle Royal e altfel, așa că revino și încearcă pentru locul întâi."
       ]
     },
     {
@@ -803,7 +803,7 @@
         "First place! You read all three of them at once. Come back whenever you'd like another round."
       ],
       "text": [
-        ""
+        "Locul întâi! I-ai citit pe toți trei deodată. Revino oricând vrei încă o rundă."
       ]
     },
     {
@@ -811,7 +811,7 @@
         "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
       ],
       "text": [
-        ""
+        "Fiecare dintre cei patru scoate câte un Pokémon pe rând. Nimeni nu poate schimba, iar din Rucsac nu se poate folosi nimic."
       ]
     },
     {
@@ -819,7 +819,7 @@
         "The moment any Trainer has no Pokémon left, the battle is over."
       ],
       "text": [
-        ""
+        "În clipa în care un Antrenor rămâne fără Pokémoni, lupta se termină."
       ]
     },
     {
@@ -827,7 +827,7 @@
         "Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing."
       ],
       "text": [
-        ""
+        "Fiecare Antrenor primește un punct pentru fiecare Pokémon eliminat și unul pentru fiecare al lui rămas în picioare."
       ]
     },
     {
@@ -835,7 +835,7 @@
         "The highest score takes first place. Nothing is won or lost but the placing, so battle freely!"
       ],
       "text": [
-        ""
+        "Scorul cel mai mare ia locul întâi. Nu se câștigă sau se pierde nimic în afară de loc, așa că luptă liber!"
       ]
     },
     {
@@ -843,7 +843,7 @@
         "Whenever you're ready for a free-for-all, you know where to find us."
       ],
       "text": [
-        ""
+        "Când ești gata de o luptă de toți împotriva tuturor, știi unde ne găsești."
       ]
     }
   ]

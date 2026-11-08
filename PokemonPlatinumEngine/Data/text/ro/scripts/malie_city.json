@@ -13,7 +13,7 @@
         "{player}! Over here! The ferry was so fast I didn't think you'd make it before the malasadas were gone."
       ],
       "text": [
-        ""
+        "{player}! Aici! Feribotul a fost atât de rapid că nu credeam că ajungi înainte să se termine malasadele."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Welcome to Ula'ula, cousin. This island is the biggest of the four, and its trials are the toughest yet."
       ],
       "text": [
-        ""
+        "Bun venit în Ula'ula, verișorule. Insula asta e cea mai mare dintre cele patru, iar încercările ei sunt cele mai dure."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Captain Sophocles is waiting at the observatory on Mount Hokulani, up Route 10. After that comes Tapu Village, and Acerola's trial."
       ],
       "text": [
-        ""
+        "Căpitanul Sophocles te așteaptă la observatorul de pe Mount Hokulani, pe Ruta 10. După aia vine Tapu Village și încercarea lui Acerola."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Hey, before we go anywhere, let's battle! I've got a new Pokémon since the last time, and I want you to see it!"
       ],
       "text": [
-        ""
+        "Hei, înainte să mergem undeva, hai să luptăm! Am un Pokémon nou de data trecută și vreau să-l vezi!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Whoa! Even with a Z-Move, you were faster than me. I'll catch up. Just you wait!"
       ],
       "text": [
-        ""
+        "Whoa! Chiar și cu o mișcare Z, ai fost mai rapid decât mine. Te ajung din urmă. Așteaptă și vei vedea!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Woo! That's what I like to see. Off you go, then. I'll be in my lab, taking Z-Moves on the chin."
       ],
       "text": [
-        ""
+        "Woo! Asta-mi place să văd. Hai, pleacă, atunci. Voi fi în laboratorul meu, primind mișcări Z în plin."
       ]
     }
   ],
@@ -103,7 +103,7 @@
         "Route 10 leads to the observatory on Mount Hokulani. The air's thin, so mind your lungs!"
       ],
       "text": [
-        ""
+        "Ruta 10 duce la observatorul de pe Mount Hokulani. Aerul e rar, așa că ai grijă la plămâni!"
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Go on, I'll catch up! After a malasada or two."
       ],
       "text": [
-        ""
+        "Mergi, te ajung eu! După o malasada sau două."
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinarul"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "The ferry's for trial-goers on their way from Aether Paradise. Come back once you've seen the Foundation."
       ],
       "text": [
-        ""
+        "Feribotul e pentru cei de la încercări care vin de la Aether Paradise. Revino după ce ai văzut Fundația."
       ]
     },
     {
@@ -149,9 +149,9 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Încotro?",
+        "Aether Paradise",
+        "Rămân aici"
       ]
     },
     {
@@ -162,10 +162,10 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Încotro?",
+        "Aether Paradise",
+        "Seafolk Village, Poni",
+        "Rămân aici"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "The ferry pulled away from Malie City's pier..."
       ],
       "text": [
-        ""
+        "Feribotul s-a desprins de debarcaderul din Malie City..."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "The ferry pulled away from Malie City's pier and out across the sea to Poni Island..."
       ],
       "text": [
-        ""
+        "Feribotul s-a desprins de debarcaderul din Malie City și a pornit peste mare spre insula Poni..."
       ]
     }
   ]

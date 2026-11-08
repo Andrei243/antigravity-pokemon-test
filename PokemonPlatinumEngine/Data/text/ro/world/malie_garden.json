@@ -6,7 +6,7 @@
           "Ako"
         ],
         "text": [
-          ""
+          "Ako"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Ace Trainer Ako: I come here to clear my head. Battling clears it faster."
         ],
         "text": [
-          ""
+          "Antrenor As Ako: Vin aici să-mi limpezesc mintea. O luptă o limpezește mai repede."
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Ace Trainer Ako: My head is very clear now. Clearly, I lost."
         ],
         "text": [
-          ""
+          "Antrenor As Ako: Mintea mi-e foarte limpede acum. Clar, am pierdut."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Tomo"
         ],
         "text": [
-          ""
+          "Tomo"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Gentleman Tomo: A garden is made to be walked slowly. A battle is not. Shall we?"
         ],
         "text": [
-          ""
+          "Gentleman Tomo: O grădină e făcută să fie străbătută încet. O luptă nu. Începem?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Gentleman Tomo: Splendid. I shall return to walking slowly."
         ],
         "text": [
-          ""
+          "Gentleman Tomo: Splendid. Mă întorc la mersul încet."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ume"
         ],
         "text": [
-          ""
+          "Ume"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Lass Ume: The fish in the pond are watching. Let's give them something to see!"
         ],
         "text": [
-          ""
+          "Domnișoară Ume: Peștii din iaz se uită. Hai să le dăm ceva de văzut!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Lass Ume: The fish looked away. How rude."
         ],
         "text": [
-          ""
+          "Domnișoară Ume: Peștii s-au uitat în altă parte. Ce nepoliticos."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Gardener"
         ],
         "text": [
-          ""
+          "Grădinarul"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "The garden was laid out by people who sailed here from far away. They missed their home, so they built a little of it here."
         ],
         "text": [
-          ""
+          "Grădina a fost amenajată de oameni care au venit pe mare de departe. Le era dor de casă, așa că au construit puțin din ea aici."
         ]
       }
     }
@@ -113,7 +113,7 @@
         "Malie Garden\nPlease walk gently. The Pokémon are napping."
       ],
       "text": [
-        ""
+        "Malie Garden\nTe rog, umblă blând. Pokémonii dorm."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Tourist"
         ],
         "text": [
-          ""
+          "Turistul"
         ]
       },
       "dialog": {
@@ -44,7 +44,7 @@
           "Malie City is the garden city, did you know? There's a library, a tea house, a grand garden... and a trial on the mountain."
         ],
         "text": [
-          ""
+          "Malie City e orașul grădinilor, știai? Are o bibliotecă, o ceainărie, o grădină mare... și o încercare pe munte."
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -62,7 +62,7 @@
           "The mountain behind the city has an observatory on top. The captain there keeps a lot of electric Pokémon."
         ],
         "text": [
-          ""
+          "Muntele din spatele orașului are un observator în vârf. Căpitanul de acolo are o mulțime de Pokémoni electrici."
         ]
       }
     }
@@ -73,7 +73,7 @@
         "Malie City\nA city of gardens and a library, on the shore of Ula'ula Island."
       ],
       "text": [
-        ""
+        "Malie City\nUn oraș de grădini și o bibliotecă, pe țărmul insulei Ula'ula."
       ]
     },
     "RouteSign": {
@@ -81,7 +81,7 @@
         "Route 10\nNorth: Mount Hokulani and its observatory"
       ],
       "text": [
-        ""
+        "Ruta 10\nNord: Mount Hokulani și observatorul lui"
       ]
     }
   }

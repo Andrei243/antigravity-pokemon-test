@@ -114,7 +114,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Brisa"
         ],
         "text": [
-          ""
+          "Brisa"
         ]
       },
       "dialog": {
@@ -133,8 +133,8 @@
           "Watch who is weakest, and strike before someone else takes the knock-out!"
         ],
         "text": [
-          "",
-          ""
+          "Într-un Battle Royal nu te acoperă nimeni. Așa îmi place.",
+          "Fii atent la cel mai slab și lovește înainte să-ți ia altcineva eliminarea!"
         ]
       }
     },
@@ -153,8 +153,8 @@
           "It is the knock-outs that count. Lasting to the end only counts if you have something left."
         ],
         "text": [
-          "",
-          ""
+          "Trei dușmani deodată, și fiecare m-ar vedea cu plăcere căzând primul.",
+          "Eliminările contează. Să reziști până la capăt contează doar dacă ți-a mai rămas ceva."
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Dalla"
         ],
         "text": [
-          ""
+          "Dalla"
         ]
       },
       "dialog": {
@@ -173,8 +173,8 @@
           "Hit hard and hit first. That's the whole secret!"
         ],
         "text": [
-          "",
-          ""
+          "Fără schimburi, fără obiecte. Doar tu, Pokémonii tăi și trei oameni în calea ta!",
+          "Lovește tare și lovește primul. Ăsta e tot secretul!"
         ]
       }
     }

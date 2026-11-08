@@ -5,7 +5,7 @@
         "A Mamoswine stands in the snow, a saddle on its broad back. It snorts, ready to plough through the drifts."
       ],
       "text": [
-        ""
+        "Un Mamoswine stă în zăpadă, cu o șa pe spinarea largă. Pufnește, gata să rupă nămeții."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Will you ride the Mamoswine?"
       ],
       "text": [
-        ""
+        "Te urci pe Mamoswine?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} climbed onto the Mamoswine's back!"
       ],
       "text": [
-        ""
+        "{player} s-a urcat pe spatele lui Mamoswine!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The Mamoswine shook its head. It won't leave the snow of its own road."
       ],
       "text": [
-        ""
+        "Mamoswine a clătinat din cap. Nu va părăsi zăpada drumului lui."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The Mamoswine went back to snuffling in the snow."
       ],
       "text": [
-        ""
+        "Mamoswine s-a întors să scormonească în zăpadă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Get down from the Mamoswine's back?"
       ],
       "text": [
-        ""
+        "Cobori de pe spatele lui Mamoswine?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player} slid down into the snow, and the Mamoswine trundled back to its herd."
       ],
       "text": [
-        ""
+        "{player} a alunecat în zăpadă, iar Mamoswine s-a întors greoi la turma lui."
       ]
     }
   ]

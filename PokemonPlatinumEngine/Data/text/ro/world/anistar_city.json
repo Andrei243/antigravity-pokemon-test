@@ -6,7 +6,7 @@
           "Astronomer"
         ],
         "text": [
-          ""
+          "Astronomul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The sundial was carved from a stone that fell from the sky. On clear nights it hums."
         ],
         "text": [
-          ""
+          "Cadranul solar a fost sculptat dintr-o piatră căzută din cer. În nopțile senine, zumzăie."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Route 18 runs south from here, down a narrow valley to Couriway Town."
         ],
         "text": [
-          ""
+          "Ruta 18 coboară spre sud de aici, pe o vale îngustă, până la Couriway Town."
         ]
       }
     },
@@ -53,7 +53,7 @@
         "Anistar City\nThe city of the sundial, where the stars are read."
       ],
       "text": [
-        ""
+        "Anistar City\nOrașul cadranului solar, unde se citesc stelele."
       ]
     }
   }

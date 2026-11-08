@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome! This counter trades coins for Pokémon. You have {coins} coins."
       ],
       "text": [
-        ""
+        "Bun venit! La tejgheaua asta se schimbă fise pe Pokémoni. Ai {coins} fise."
       ]
     },
     {
@@ -27,13 +27,13 @@
         "No, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce Pokémon ai vrea?",
+        "Abra: 180",
+        "Clefairy: 500",
+        "Dratini: 2.800",
+        "Scyther: 5.500",
+        "Porygon: 9,999",
+        "Nu, mulțumesc"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "Here you are! Look after it well."
       ],
       "text": [
-        ""
+        "Poftim! Ai grijă de el."
       ]
     },
     {
@@ -49,7 +49,7 @@
         "Your team is full, so we sent it to your PC's boxes. Look after it well."
       ],
       "text": [
-        ""
+        "Echipa ta e plină, așa că l-am trimis în cutiile PC-ului tău. Ai grijă de el."
       ]
     },
     {
@@ -57,7 +57,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai vino!"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "I'm sorry, you don't have enough coins."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destule fise."
       ]
     }
   ],

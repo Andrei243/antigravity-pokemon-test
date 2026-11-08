@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinarul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Tourist"
         ],
         "text": [
-          ""
+          "Turistul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "First stop, the tourist bureau. Second stop, the volcano. Third stop, the beach. Fourth stop, a nap."
         ],
         "text": [
-          ""
+          "Prima oprire, biroul de turism. A doua oprire, vulcanul. A treia oprire, plaja. A patra oprire, un pui de somn."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "The trial captains of Akala are Lana, Kiawe and Mallow. The nearest is Lana's, up past Paniola."
         ],
         "text": [
-          ""
+          "Căpitanii de încercare din Akala sunt Lana, Kiawe și Mallow. Cea mai apropiată e a lui Lana, dincolo de Paniola."
         ]
       }
     }
@@ -63,7 +63,7 @@
         "Heahea City\nThe front door of Akala Island."
       ],
       "text": [
-        ""
+        "Heahea City\nUșa din față a insulei Akala."
       ]
     },
     "PierSign": {
@@ -71,7 +71,7 @@
         "Heahea Pier\nFerries to Hau'oli City, Melemele Island."
       ],
       "text": [
-        ""
+        "Debarcaderul Heahea\nFeriboturi spre Hau'oli City, insula Melemele."
       ]
     }
   }
