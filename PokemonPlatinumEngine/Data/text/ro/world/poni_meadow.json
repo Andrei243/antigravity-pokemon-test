@@ -1,0 +1,76 @@
+{
+  "people": {
+    "dancer": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          "Dansatoarea"
+        ]
+      }
+    },
+    "kapono": {
+      "name": {
+        "en": [
+          "Kapono"
+        ],
+        "text": [
+          "Kapono"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Kapono: The purple flowers calm the mind. Mine is calm. Is yours?"
+        ],
+        "text": [
+          "Medium Kapono: Florile mov liniștesc mintea. A mea e liniștită. A ta?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Kapono: Not calm enough, it seems. Mine, I mean."
+        ],
+        "text": [
+          "Medium Kapono: Nu destul de liniștită, se pare. A mea, adică."
+        ]
+      }
+    },
+    "noelani": {
+      "name": {
+        "en": [
+          "Noelani"
+        ],
+        "text": [
+          "Noelani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Noelani: I come to the pond to admire the reflections. Mostly my own. Battle?"
+        ],
+        "text": [
+          "Frumoasă Noelani: Vin la iaz să admir reflexiile. Mai ales pe a mea. Luptăm?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Noelani: Even a loss looks lovely here."
+        ],
+        "text": [
+          "Frumoasă Noelani: Până și o înfrângere arată frumos aici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MeadowSign": {
+      "en": [
+        "Poni Meadow\nEast: Resolution Cave\nSouth: Poni Coast"
+      ],
+      "text": [
+        "Poni Meadow\nEst: Resolution Cave\nSud: Poni Coast"
+      ]
+    }
+  }
+}

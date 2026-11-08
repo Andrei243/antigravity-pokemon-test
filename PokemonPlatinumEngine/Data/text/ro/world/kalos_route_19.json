@@ -77,6 +77,16 @@
           "Pescar Éloi: Înapoi în baltă cu tine, atunci."
         ]
       }
+    },
+    "shauna_waterfall": {
+      "name": {
+        "en": [
+          "Shauna"
+        ],
+        "text": [
+          "Shauna"
+        ]
+      }
     }
   },
   "signs": {

@@ -21,7 +21,10 @@ public class UnovaTests
 
     private static World Unova => LoadedWorld.Value;
     private static Map Overworld => BuiltMaps.Value["Unova"];
-    private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
+    // The hand-made maps are asked of the database once each: another test that makes it afresh while the walk runs would
+    // otherwise hand the walk two instances of one map ("SkyarrowBridge" twice)
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, Map> HandMade = new();
+    private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : HandMade.GetOrAdd(name, MapDatabase.Get);
 
     private static readonly string[] FirstAreas = { "aspertia_city", "unova_route_19", "floccesy_town", "unova_route_20", "floccesy_ranch" };
 

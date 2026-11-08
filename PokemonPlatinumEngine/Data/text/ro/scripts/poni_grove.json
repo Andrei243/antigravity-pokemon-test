@@ -1,0 +1,48 @@
+{
+  "GroveRanger": [
+    {
+      "en": [
+        "Ranger"
+      ],
+      "text": [
+        "Rangerul"
+      ]
+    },
+    {
+      "en": [
+        "Sorry, the grove is closed. Something strange has been seen among the trees, and the rangers are keeping watch."
+      ],
+      "text": [
+        "Îmi pare rău, pădurea e închisă. S-a văzut ceva ciudat printre copaci, iar rangerii stau de pază."
+      ]
+    },
+    {
+      "en": [
+        "Only the island's Champion may go in. That's the rule the kahunas made, and I'm sticking to it!"
+      ],
+      "text": [
+        "Doar Campionul insulei are voie înăuntru. E regula făcută de kahuna, și o respect!"
+      ]
+    }
+  ],
+  "Stakataka": [
+    {
+      "en": [
+        "One of the stones of the ring shifted. Its bricks were looking at {player}, every one of them."
+      ],
+      "text": [
+        "Una dintre pietrele inelului s-a mișcat. Cărămizile ei se uitau la {player}, toate."
+      ]
+    }
+  ],
+  "Blacephalon": [
+    {
+      "en": [
+        "Something like a clown made of fireworks juggled its own head among the flowers, and bowed to {player}."
+      ],
+      "text": [
+        "Ceva ca un clovn făcut din artificii a jonglat cu propriul cap printre flori și s-a înclinat în fața lui {player}."
+      ]
+    }
+  ]
+}

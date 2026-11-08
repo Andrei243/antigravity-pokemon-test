@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Le Carrousel"
+    ],
+    "text": [
+      "Le Carrousel"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Philibert"
+        ],
+        "text": [
+          "Philibert"
+        ]
+      }
+    },
+    "marius": {
+      "name": {
+        "en": [
+          "Marius"
+        ],
+        "text": [
+          "Marius"
+        ]
+      }
+    },
+    "capucine": {
+      "name": {
+        "en": [
+          "Capucine"
+        ],
+        "text": [
+          "Capucine"
+        ]
+      }
+    },
+    "ferdinand": {
+      "name": {
+        "en": [
+          "Ferdinand"
+        ],
+        "text": [
+          "Ferdinand"
+        ]
+      }
+    },
+    "diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The table turns, the Pokémon turn, and by the end of the meal so does my head."
+        ],
+        "text": [
+          "Masa se rotește, Pokémonii se rotesc, și până la sfârșitul mesei și capul meu."
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whoever stands at the front is the one who fights. Turn the table at the right moment!"
+        ],
+        "text": [
+          "Cine stă în față e cel care se bate. Rotește masa la momentul potrivit!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

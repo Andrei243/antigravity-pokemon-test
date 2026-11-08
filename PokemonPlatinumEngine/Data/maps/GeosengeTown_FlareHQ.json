@@ -109,8 +109,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: How did you find the door? It's hidden under a flower bed!",
-        "dialogueAfter": "Team Flare Grunt Grunt: Under a flower bed... and now under your boot.",
+        "dialogueBefore": "Team Flare Grunt: How did you find the door? It's hidden under a flower bed!",
+        "dialogueAfter": "Team Flare Grunt: Under a flower bed... and now under your boot.",
         "sightRange": 3
       }
     },
@@ -127,8 +127,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: The weapon will make the world beautiful. Don't you want a beautiful world?",
-        "dialogueAfter": "Team Flare Grunt Grunt: Not like that, apparently.",
+        "dialogueBefore": "Team Flare Grunt: The weapon will make the world beautiful. Don't you want a beautiful world?",
+        "dialogueAfter": "Team Flare Grunt: Not like that, apparently.",
         "sightRange": 3
       }
     },

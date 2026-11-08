@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "La Grande Table"
+    ],
+    "text": [
+      "La Grande Table"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Ernestine"
+        ],
+        "text": [
+          "Ernestine"
+        ]
+      }
+    },
+    "severine": {
+      "name": {
+        "en": [
+          "Séverine"
+        ],
+        "text": [
+          "Séverine"
+        ]
+      }
+    },
+    "evrard": {
+      "name": {
+        "en": [
+          "Évrard"
+        ],
+        "text": [
+          "Évrard"
+        ]
+      }
+    },
+    "hippolyte": {
+      "name": {
+        "en": [
+          "Hippolyte"
+        ],
+        "text": [
+          "Hippolyte"
+        ]
+      }
+    },
+    "diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It costs a small fortune, but the dishes they bring out at the end are worth a large one."
+        ],
+        "text": [
+          "Costă o avere mică, dar felurile pe care le aduc la final valorează una mare."
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two at once, then three, then the table turns. The kitchen likes to keep its guests awake."
+        ],
+        "text": [
+          "Doi deodată, apoi trei, apoi masa se rotește. Bucătăriei îi place să-și țină oaspeții treji."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

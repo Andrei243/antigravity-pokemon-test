@@ -1,0 +1,118 @@
+{
+  "people": {
+    "keoni": {
+      "name": {
+        "en": [
+          "Keoni"
+        ],
+        "text": [
+          "Keoni"
+        ]
+      },
+      "before": {
+        "en": [
+          "Rancher Keoni: Nobody fences the plains. The herds go where they like, and so do I."
+        ],
+        "text": [
+          "Fermier Keoni: Nimeni nu îngrădește câmpia. Turmele merg unde vor, și eu la fel."
+        ]
+      },
+      "after": {
+        "en": [
+          "Rancher Keoni: Off you go, then. Mind the herds."
+        ],
+        "text": [
+          "Fermier Keoni: Hai, du-te atunci. Ai grijă la turme."
+        ]
+      }
+    },
+    "pua": {
+      "name": {
+        "en": [
+          "Pua"
+        ],
+        "text": [
+          "Pua"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Pua: I came to Poni to train where nobody would watch. Now you're watching. Battle!"
+        ],
+        "text": [
+          "Antrenoare As Pua: Am venit în Poni să mă antrenez unde nu mă vede nimeni. Acum te uiți tu. Luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Pua: Fine. You can watch me lose, then."
+        ],
+        "text": [
+          "Antrenoare As Pua: Bine. Poți să mă vezi pierzând, atunci."
+        ]
+      }
+    },
+    "ikaika": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          "Ikaika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Ikaika: Climbed the Gauntlet twice this morning! My Pokémon are warmed up. Are yours?"
+        ],
+        "text": [
+          "Drumeț Ikaika: Am urcat Gauntlet-ul de două ori azi-dimineață! Pokémonii mei sunt încălziți. Ai tăi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Ikaika: Yours were warmer."
+        ],
+        "text": [
+          "Drumeț Ikaika: Ai tăi erau mai încălziți."
+        ]
+      }
+    },
+    "lani": {
+      "name": {
+        "en": [
+          "Lani"
+        ],
+        "text": [
+          "Lani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Lani: Every Pokémon I've met on these plains is a little bit wild. Same goes for me!"
+        ],
+        "text": [
+          "Rucsăcară Lani: Fiecare Pokémon pe care l-am întâlnit pe câmpia asta e puțin sălbatic. Și eu la fel!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Lani: A little bit beaten, too."
+        ],
+        "text": [
+          "Rucsăcară Lani: Și puțin învinsă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PlainsSign": {
+      "en": [
+        "Poni Plains\nNorth-east: Poni Gauntlet\nSouth: Poni Meadow"
+      ],
+      "text": [
+        "Poni Plains\nNord-est: Poni Gauntlet\nSud: Poni Meadow"
+      ]
+    }
+  }
+}

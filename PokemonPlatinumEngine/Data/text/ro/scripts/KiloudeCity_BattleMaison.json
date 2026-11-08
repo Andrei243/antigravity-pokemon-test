@@ -18,32 +18,64 @@
     },
     {
       "en": [
-        "You've won {number} battles in a row in our hall. The regulars have started to talk about you!"
-      ],
-      "text": [
-        "Ai câștigat {number} lupte la rând în sala noastră. Obișnuiții au început să vorbească despre tine!"
-      ]
-    },
-    {
-      "en": [
         "Would you like to take on the Battle Maison?",
         "Enter",
         "The rules",
+        "The records",
         "No"
       ],
       "text": [
-        "Vrei să te înfrunți cu Battle Maison?",
+        "Vrei să încerci Battle Maison?",
         "Intră",
         "Regulile",
+        "Palmaresul",
         "Nu"
       ]
     },
     {
       "en": [
-        "You need three Pokémon that can take part, all of different species and holding different items."
+        "Which room will you battle in?",
+        "Single",
+        "Double",
+        "Triple",
+        "Rotation",
+        "Cancel"
       ],
       "text": [
-        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și purtând obiecte diferite."
+        "În ce sală vei lupta?",
+        "Simplă",
+        "Dublă",
+        "Triplă",
+        "Rotație",
+        "Anulează"
+      ]
+    },
+    {
+      "en": [
+        "You've beaten this room's host, so its grand room is open to you. Which will it be?",
+        "The usual room",
+        "The grand room"
+      ],
+      "text": [
+        "Ai învins gazda acestei săli, așa că sala ei mare ți-e deschisă. Pe care o alegi?",
+        "Sala obișnuită",
+        "Sala mare"
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} battles in a row in that room. The regulars have started to talk about you!"
+      ],
+      "text": [
+        "Ai câștigat {number} lupte la rând în sala aceea. Obișnuiții au început să vorbească despre tine!"
+      ]
+    },
+    {
+      "en": [
+        "You need {number} Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -56,34 +88,58 @@
     },
     {
       "en": [
-        "Please choose the three Pokémon you'll enter."
+        "Please choose the {number} Pokémon you'll enter."
       ],
       "text": [
-        "Alege, te rog, cei trei Pokémoni pe care îi înscrii."
+        "Alege, te rog, cei {number} Pokémoni pe care îi înscrii."
       ]
     },
     {
       "en": [
-        "Thank you! Seven Trainers are waiting in the hall. This way, please!"
+        "Thank you! Your first challenger is waiting in the hall. This way, please!"
       ],
       "text": [
-        "Mulțumesc! Șapte Antrenori așteaptă în sală. Pe aici, te rog!"
+        "Mulțumesc! Primul tău adversar te așteaptă în sală. Pe aici, te rog!"
       ]
     },
     {
       "en": [
-        "I'm sorry. The three entered must all be of different species."
+        "Welcome back! The challenge you put down is waiting for you, just as you left it."
       ],
       "text": [
-        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
+        "Bine ai revenit! Provocarea pe care ai lăsat-o te așteaptă, exact cum ai lăsat-o."
       ]
     },
     {
       "en": [
-        "I'm sorry. No two of the three entered may hold the same item."
+        "Your streak of {number} still stands. This way, please!"
       ],
       "text": [
-        "Îmi pare rău. Doi dintre cei trei înscriși nu pot purta același obiect."
+        "Seria ta de {number} încă se ține. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Oh... the Pokémon you entered aren't with you as they were. I'm sorry, but that challenge is over."
+      ],
+      "text": [
+        "Oh... Pokémonii pe care i-ai înscris nu mai sunt cu tine așa cum erau. Îmi pare rău, dar provocarea s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. Those entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei înscriși trebuie să fie toți de specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of those entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre cei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -91,31 +147,47 @@
         "We'll be here. The hall never really empties."
       ],
       "text": [
-        "Vom fi aici. Sala nu se golește niciodată cu adevărat."
+        "Vom fi aici. Sala nu se golește niciodată de tot."
       ]
     },
     {
       "en": [
-        "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+        "Every streak is written down. Somebody has to keep count!"
       ],
       "text": [
-        "Cei trei ai tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic. Sunt vindecați complet după fiecare luptă."
+        "Fiecare serie e scrisă. Cineva trebuie să țină socoteala!"
       ]
     },
     {
       "en": [
-        "Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak."
+        "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
       ],
       "text": [
-        "Învinge șapte Antrenori la rând ca să câștigi o rundă. Pierzi o dată și runda se termină, odată cu seria ta."
+        "Pokémonii tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic. Sunt refăcuți complet după fiecare luptă."
       ]
     },
     {
       "en": [
-        "The longer your streak, the stronger the Trainers who come to meet you."
+        "Three go into the single room, four into the double and the rotation rooms, and six into the triple room."
       ],
       "text": [
-        "Cu cât seria ta e mai lungă, cu atât mai puternici sunt Antrenorii care vin să te întâlnească."
+        "Trei intră în sala simplă, patru în cea dublă și în cele cu rotație, și șase în cea triplă."
+      ]
+    },
+    {
+      "en": [
+        "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
+      ],
+      "text": [
+        "Câștigi, și poți merge mai departe, te poți odihni și reveni mai târziu, sau te poți retrage. Pierzi o dată, și seria ta s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "The longer your streak, the stronger the Trainers. Reach the twentieth battle and the room's host will meet you."
+      ],
+      "text": [
+        "Cu cât seria e mai lungă, cu atât Antrenorii sunt mai puternici. Ajungi la lupta a douăzecea și te întâlnești cu gazda sălii."
       ]
     }
   ],
@@ -198,10 +270,10 @@
     },
     {
       "en": [
-        "Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat."
+        "Twenty in a row sounds easy until the fifteenth. Then you start to hear your own heartbeat."
       ],
       "text": [
-        "Șapte la rând sună ușor până la al cincilea. Apoi începi să-ți auzi propria inimă."
+        "Douăzeci la rând pare ușor până la a cincisprezecea. Apoi începi să-ți auzi propria inimă."
       ]
     }
   ]

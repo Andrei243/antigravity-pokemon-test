@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose Television"
+    ],
+    "text": [
+      "Lumiose Television"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The studios upstairs are closed to visitors today. They are recording the weather, very carefully."
+        ],
+        "text": [
+          "Studiourile de sus sunt închise vizitatorilor azi. Înregistrează vremea, foarte atent."
+        ]
+      }
+    },
+    "director": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          "Regizorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lights, cameras, Pokémon! The trouble is the Pokémon never read the script."
+        ],
+        "text": [
+          "Lumini, camere, Pokémoni! Problema e că Pokémonii nu citesc niciodată scenariul."
+        ]
+      }
+    },
+    "hopeful": {
+      "name": {
+        "en": [
+          "Hopeful"
+        ],
+        "text": [
+          "Aspirantul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've come for an audition every week this year. Next week is the one, I can feel it."
+        ],
+        "text": [
+          "Vin la audiție în fiecare săptămână anul ăsta. Săptămâna viitoare e cea bună, simt."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

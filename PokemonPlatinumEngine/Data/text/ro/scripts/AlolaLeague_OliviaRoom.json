@@ -34,10 +34,26 @@
     },
     {
       "en": [
+        "The Champion, back again. The stones remember you, {player}. They've been sharpening themselves."
+      ],
+      "text": [
+        "Campionul, din nou aici. Pietrele își amintesc de tine, {player}. S-au ascuțit special."
+      ]
+    },
+    {
+      "en": [
+        "Worn smooth by the tide again. Acerola's next, and she has new faces to show you."
+      ],
+      "text": [
+        "Șlefuite de maree din nou. Urmează Acerola, și are chipuri noi să-ți arate."
+      ]
+    },
+    {
+      "en": [
         "Acerola's waiting. She likes visitors, and sometimes they like her back."
       ],
       "text": [
-        "Acerola așteaptă. Îi plac vizitatorii și uneori și lor le place de ea."
+        "Acerola te așteaptă. Îi plac vizitatorii, iar uneori și ei o plac pe ea."
       ]
     }
   ]

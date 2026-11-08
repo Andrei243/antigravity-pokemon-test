@@ -880,14 +880,24 @@
         "Tauros",
         "Stoutland",
         "Mudsdale",
+        "Sharpedo",
         "Cancel"
       ],
       "text": [
-        "Ce Pokémon chemi?",
+        "Pe care Pokémon îl chemi?",
         "Tauros",
         "Stoutland",
         "Mudsdale",
+        "Sharpedo",
         "Anulează"
+      ]
+    },
+    {
+      "en": [
+        "Nothing came. Sharpedo comes only once it is registered in the Ride Pager, and only out on the water."
+      ],
+      "text": [
+        "N-a venit nimeni. Sharpedo vine doar dacă e înregistrat în Ride Pager, și doar pe apă."
       ]
     },
     {
@@ -895,7 +905,7 @@
         "Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors."
       ],
       "text": [
-        "Nu a venit nimic. Un Pokémon vine doar după ce e înregistrat în Pagerul de Călărie, și doar afară."
+        "N-a venit nimeni. Un Pokémon vine doar dacă e înregistrat în Ride Pager, și doar în aer liber."
       ]
     },
     {
@@ -904,6 +914,24 @@
       ],
       "text": [
         "Pokémonul a fost trimis acasă."
+      ]
+    }
+  ],
+  "SeaRock": [
+    {
+      "en": [
+        "A rock juts out of the sea, sheer and slippery. A fast and fierce Pokémon of the sea could ram it apart."
+      ],
+      "text": [
+        "O stâncă se ițește din mare, abruptă și alunecoasă. Un Pokémon rapid și aprig din mare ar putea s-o spargă."
+      ]
+    },
+    {
+      "en": [
+        "Sharpedo rammed the rock with its whole body, and it crumbled into the sea!"
+      ],
+      "text": [
+        "Sharpedo a lovit stânca cu tot corpul, iar ea s-a prăbușit în mare!"
       ]
     }
   ],

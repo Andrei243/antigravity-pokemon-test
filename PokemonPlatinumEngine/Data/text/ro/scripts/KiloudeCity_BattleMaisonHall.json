@@ -10,10 +10,26 @@
     },
     {
       "en": [
-        "Battle {number} of seven! Your challenger is on the way."
+        "Battle {number}! Your challenger is on the way."
       ],
       "text": [
-        "Lupta {number} din șapte! Provocatorul tău e pe drum."
+        "Lupta {number}! Adversarul tău e pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maison"
+      ]
+    },
+    {
+      "en": [
+        "Wait... the host of this room is coming down to meet you in person!"
+      ],
+      "text": [
+        "Stai... gazda sălii coboară să te întâlnească chiar ea!"
       ]
     },
     {
@@ -21,39 +37,7 @@
         "{foe} steps forward!"
       ],
       "text": [
-        "{foe} face un pas înainte!"
-      ]
-    },
-    {
-      "en": [
-        "Maison Host"
-      ],
-      "text": [
-        "Gazda Maisonului"
-      ]
-    },
-    {
-      "en": [
-        "Splendid! Your three have been made whole again. The next challenger is waiting."
-      ],
-      "text": [
-        "Splendid! Cei trei ai tăi au fost refăcuți complet. Următorul provocator așteaptă."
-      ]
-    },
-    {
-      "en": [
-        "Maison Host"
-      ],
-      "text": [
-        "Gazda Maisonului"
-      ]
-    },
-    {
-      "en": [
-        "Seven in a row! The whole hall is on its feet for {player}."
-      ],
-      "text": [
-        "Șapte la rând! Toată sala e în picioare pentru {player}."
+        "{foe} face un pas în față!"
       ]
     },
     {
@@ -61,7 +45,15 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        "{player} a primit {number} PL!"
+        "{player} a primit {number} BP!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received this room's trophy! It will stand on the Maison's board for good."
+      ],
+      "text": [
+        "{player} a primit trofeul sălii! Va rămâne pe tabloul Maison-ului pentru totdeauna."
       ]
     },
     {
@@ -69,15 +61,85 @@
         "Maison Host"
       ],
       "text": [
-        "Gazda Maisonului"
+        "Gazda Maison"
       ]
     },
     {
       "en": [
-        "The round ends here. Rest, and come back. The hall will remember you."
+        "You beat the host! From now on, the grand room of this hall is open to you as well."
       ],
       "text": [
-        "Runda se termină aici. Odihnește-te și revino. Sala te va ține minte."
+        "Ai învins gazda! De acum, și sala mare a acestei săli ți-e deschisă."
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maison"
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are whole again. What will you do?",
+        "Next battle",
+        "Rest",
+        "Retire"
+      ],
+      "text": [
+        "Pokémonii tăi sunt din nou întregi. Ce faci?",
+        "Următoarea luptă",
+        "Odihnă",
+        "Retragere"
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maison"
+      ]
+    },
+    {
+      "en": [
+        "You retire with your head held high. The hall will remember your streak."
+      ],
+      "text": [
+        "Te retragi cu fruntea sus. Sala va ține minte seria ta."
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maison"
+      ]
+    },
+    {
+      "en": [
+        "Then rest well. Your place is kept, and your progress is saved."
+      ],
+      "text": [
+        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
+      ]
+    },
+    {
+      "en": [
+        "Maison Host"
+      ],
+      "text": [
+        "Gazda Maison"
+      ]
+    },
+    {
+      "en": [
+        "The streak ends here. Rest, and come back. The hall will remember you."
+      ],
+      "text": [
+        "Seria se încheie aici. Odihnește-te și revino. Sala te va ține minte."
       ]
     }
   ],
@@ -92,10 +154,10 @@
     },
     {
       "en": [
-        "No round is under way. The receptionist in the lobby takes your three."
+        "No challenge is under way. The receptionist in the lobby takes your entries."
       ],
       "text": [
-        "Nicio rundă nu e în desfășurare. Recepționera din hol îți primește cei trei."
+        "Nicio provocare nu e în desfășurare. Recepționera din hol primește înscrierile."
       ]
     }
   ]

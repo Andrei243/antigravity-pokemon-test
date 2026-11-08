@@ -319,13 +319,45 @@
       ]
     }
   ],
-  "Stakataka": [
+  "Keeper": [
     {
       "en": [
-        "One of the altar's walls shifted. Its stones were looking at {player}, every one of them."
+        "Altar Keeper"
       ],
       "text": [
-        "Unul dintre pereții altarului s-a mișcat. Pietrele lui se uitau la {player}, toate."
+        "Păzitorul altarului"
+      ]
+    },
+    {
+      "en": [
+        "I tend the altar for the people of Seafolk Village. The night after your victory, something came down onto the dais."
+      ],
+      "text": [
+        "Eu am grijă de altar pentru oamenii din Seafolk Village. În noaptea de după victoria ta, ceva a coborât pe estradă."
+      ]
+    },
+    {
+      "en": [
+        "A little cloud with stars in it. It has been waiting there ever since, as if for someone. I think it was waiting for you."
+      ],
+      "text": [
+        "Un norișor cu stele în el. De atunci a stat acolo, ca și cum ar fi așteptat pe cineva. Cred că te aștepta pe tine."
+      ]
+    },
+    {
+      "en": [
+        "Look after it. They say it grows into the sun by day, or the moon by night, depending on when it is ready."
+      ],
+      "text": [
+        "Ai grijă de el. Se spune că devine soare ziua sau lună noaptea, după momentul în care e gata."
+      ]
+    },
+    {
+      "en": [
+        "The dais has been quiet since the little one left with you. I think it is glad."
+      ],
+      "text": [
+        "Estrada e liniștită de când cel mic a plecat cu tine. Cred că e fericit."
       ]
     }
   ],

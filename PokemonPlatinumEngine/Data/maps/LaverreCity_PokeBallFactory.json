@@ -161,8 +161,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: The factory makes balls for Team Flare now. Stylish red ones. Out!",
-        "dialogueAfter": "Team Flare Grunt Grunt: That was not the plan. The plan was very stylish.",
+        "dialogueBefore": "Team Flare Grunt: The factory makes balls for Team Flare now. Stylish red ones. Out!",
+        "dialogueAfter": "Team Flare Grunt: That was not the plan. The plan was very stylish.",
         "sightRange": 3
       }
     },
@@ -180,8 +180,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: Every ball off this line is ours. You are not on the order sheet!",
-        "dialogueAfter": "Team Flare Grunt Grunt: Fine. Order cancelled.",
+        "dialogueBefore": "Team Flare Grunt: Every ball off this line is ours. You are not on the order sheet!",
+        "dialogueAfter": "Team Flare Grunt: Fine. Order cancelled.",
         "sightRange": 2
       }
     },
@@ -199,8 +199,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: The president is busy signing things for us. He is not taking visitors.",
-        "dialogueAfter": "Team Flare Grunt Grunt: Go on, then. He is all yours. We are leaving.",
+        "dialogueBefore": "Team Flare Grunt: The president is busy signing things for us. He is not taking visitors.",
+        "dialogueAfter": "Team Flare Grunt: Go on, then. He is all yours. We are leaving.",
         "sightRange": 3
       }
     },

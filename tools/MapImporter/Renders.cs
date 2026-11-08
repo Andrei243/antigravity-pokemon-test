@@ -84,6 +84,8 @@ public sealed class Renders
         ("CATWALK", Rgb.Of(130, 130, 150), b => b == 0xB8),
         // Kalos's own (plan 23 · Z, our value after Black 2's: Route 17's drifts)
         ("SNOW DRIFT", Rgb.Of(222, 232, 250), b => b == 0xB9),
+        // Sun and Moon's own (plan 23, Alola drawn by hand): rough ground that only Mudsdale crosses
+        ("ROUGH GROUND", Rgb.Of(150, 120, 96), b => b == 0xBE),
     };
 
     private static Rgb OpenGround(Setting setting) => setting switch

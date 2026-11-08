@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose Gazette"
+    ],
+    "text": [
+      "Lumiose Gazette"
+    ]
+  },
+  "people": {
+    "editor": {
+      "name": {
+        "en": [
+          "Editor"
+        ],
+        "text": [
+          "Redactorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Tomorrow's front page is still empty. Do something remarkable today, and it needn't be."
+        ],
+        "text": [
+          "Prima pagină de mâine e încă goală. Fă ceva remarcabil azi, și n-o să mai fie."
+        ]
+      }
+    },
+    "reporter": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          "Reporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A reporter in Lumiose never runs out of stories. Only out of shoe leather."
+        ],
+        "text": [
+          "Un reporter din Lumiose nu rămâne niciodată fără povești. Doar fără tălpi de pantofi."
+        ]
+      }
+    },
+    "photographer": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          "Fotograful"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tower at dusk sells more papers than any headline. I take its picture every evening."
+        ],
+        "text": [
+          "Turnul la amurg vinde mai multe ziare decât orice titlu. Îi fac poza în fiecare seară."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,112 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "sea_rock": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          "Stâncă"
+        ]
+      }
+    },
+    "kawika": {
+      "name": {
+        "en": [
+          "Kawika"
+        ],
+        "text": [
+          "Kawika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kawika: The deep water off Poni hides the strangest fish. I've hooked a few. Have a look!"
+        ],
+        "text": [
+          "Pescar Kawika: Apa adâncă din largul Poni ascunde cei mai ciudați pești. Am prins câțiva. Uită-te!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kawika: That one got away from me too."
+        ],
+        "text": [
+          "Pescar Kawika: Și ăla mi-a scăpat."
+        ]
+      }
+    },
+    "kai": {
+      "name": {
+        "en": [
+          "Kai"
+        ],
+        "text": [
+          "Kai"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kai: The currents round Poni are fierce. Only the strong swim here. Like me!"
+        ],
+        "text": [
+          "Înotător Kai: Curenții din jurul Poni sunt aprigi. Doar cei puternici înoată aici. Ca mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kai: Like you, more like."
+        ],
+        "text": [
+          "Înotător Kai: Ca tine, mai degrabă."
+        ]
+      }
+    },
+    "leia": {
+      "name": {
+        "en": [
+          "Leia"
+        ],
+        "text": [
+          "Leia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Leia: You rode a Mudsdale over that rubble just to battle me? I'm flattered. And ready!"
+        ],
+        "text": [
+          "Antrenoare As Leia: Ai trecut cu un Mudsdale peste dărâmăturile alea doar ca să lupți cu mine? Mă flatezi. Și sunt gata!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Leia: Worth the ride, I hope."
+        ],
+        "text": [
+          "Antrenoare As Leia: Merită drumul, sper."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CoastSign": {
+      "en": [
+        "Poni Coast\nNorth: Poni Meadow"
+      ],
+      "text": [
+        "Poni Coast\nNord: Poni Meadow"
+      ]
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Grooming Salon"
+    ],
+    "text": [
+      "Salon de toaletare"
+    ]
+  },
+  "people": {
+    "groomer": {
+      "name": {
+        "en": [
+          "Groomer"
+        ],
+        "text": [
+          "Toaletatoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A trim, a fluff, a little ribbon. Bring your Pokémon by whenever its coat needs taming."
+        ],
+        "text": [
+          "Un tuns, o pufoșire, o fundiță. Adu-ți Pokémonul oricând blana lui are nevoie de îmblânzire."
+        ]
+      }
+    },
+    "client": {
+      "name": {
+        "en": [
+          "Client"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I booked a month ahead. In Lumiose, a good groomer is harder to find than a good chef."
+        ],
+        "text": [
+          "Am făcut programare cu o lună înainte. În Lumiose, un bun toaletator e mai greu de găsit decât un bun bucătar."
+        ]
+      }
+    },
+    "poodle": {
+      "name": {
+        "en": [
+          "Furfrou"
+        ],
+        "text": [
+          "Furfrou"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It holds its freshly trimmed head very high."
+        ],
+        "text": [
+          "Își ține capul proaspăt tuns foarte sus."
+        ]
+      }
+    },
+    "apprentice": {
+      "name": {
+        "en": [
+          "Apprentice"
+        ],
+        "text": [
+          "Ucenicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been practising on cushions. The cushions have never complained."
+        ],
+        "text": [
+          "Am exersat pe perne. Pernele nu s-au plâns niciodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

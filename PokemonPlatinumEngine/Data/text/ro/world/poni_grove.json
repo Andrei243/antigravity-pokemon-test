@@ -1,0 +1,122 @@
+{
+  "people": {
+    "ranger": {
+      "name": {
+        "en": [
+          "Ranger"
+        ],
+        "text": [
+          "Rangerul"
+        ]
+      }
+    },
+    "stakataka": {
+      "name": {
+        "en": [
+          "Stakataka"
+        ],
+        "text": [
+          "Stakataka"
+        ]
+      }
+    },
+    "blacephalon": {
+      "name": {
+        "en": [
+          "Blacephalon"
+        ],
+        "text": [
+          "Blacephalon"
+        ]
+      }
+    },
+    "kalea": {
+      "name": {
+        "en": [
+          "Kalea"
+        ],
+        "text": [
+          "Kalea"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Kalea: I've walked this grove since before the Pokémon League was built. Let me see what a Champion is made of."
+        ],
+        "text": [
+          "Veteran Kalea: Umblu prin pădurea asta de dinainte să fie construită Liga Pokémon. Să văd din ce e făcut un Campion."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Kalea: The islands chose well."
+        ],
+        "text": [
+          "Veteran Kalea: Insulele au ales bine."
+        ]
+      }
+    },
+    "kaleo": {
+      "name": {
+        "en": [
+          "Kaleo"
+        ],
+        "text": [
+          "Kaleo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kaleo: The trees here whisper at night. My Pokémon whisper back. Ready?"
+        ],
+        "text": [
+          "Antrenor As Kaleo: Copacii de aici șoptesc noaptea. Pokémonii mei șoptesc înapoi. Gata?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kaleo: They've gone very quiet now."
+        ],
+        "text": [
+          "Antrenor As Kaleo: Au amuțit de tot acum."
+        ]
+      }
+    },
+    "malia": {
+      "name": {
+        "en": [
+          "Malia"
+        ],
+        "text": [
+          "Malia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Malia: I raise my team in the shade of the grove. It keeps them calm and keen."
+        ],
+        "text": [
+          "Crescător Pokémon Malia: Îmi cresc echipa la umbra pădurii. Îi ține calmi și dornici."
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Malia: Calm, keen and beaten. Ah well."
+        ],
+        "text": [
+          "Crescător Pokémon Malia: Calmi, dornici și învinși. Ei bine."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "GroveSign": {
+      "en": [
+        "Poni Grove\nWest: Poni Wilds\nNorth-east: Poni Plains"
+      ],
+      "text": [
+        "Poni Grove\nVest: Poni Wilds\nNord-est: Poni Plains"
+      ]
+    }
+  }
+}

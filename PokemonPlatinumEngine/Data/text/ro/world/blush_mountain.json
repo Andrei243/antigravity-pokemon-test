@@ -1,0 +1,102 @@
+{
+  "people": {
+    "pono": {
+      "name": {
+        "en": [
+          "Plant Worker"
+        ],
+        "text": [
+          "Muncitorul de la centrală"
+        ]
+      }
+    },
+    "pekelo": {
+      "name": {
+        "en": [
+          "Pekelo"
+        ],
+        "text": [
+          "Pekelo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Pekelo: The ground's warm all over this mountain. Toasty for the feet, toasty for battles!"
+        ],
+        "text": [
+          "Drumeț Pekelo: Pământul e cald pe tot muntele ăsta. Cald pentru picioare, cald pentru lupte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Pekelo: My feet are toasty. My team is toast."
+        ],
+        "text": [
+          "Drumeț Pekelo: Picioarele mele sunt calde. Echipa mea e prăjită."
+        ]
+      }
+    },
+    "hoku": {
+      "name": {
+        "en": [
+          "Hoku"
+        ],
+        "text": [
+          "Hoku"
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Hoku: The power plant turns the mountain's heat into light for the whole island. Let me show you a spark!"
+        ],
+        "text": [
+          "Om de știință Hoku: Centrala transformă căldura muntelui în lumină pentru toată insula. Lasă-mă să-ți arăt o scânteie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Hoku: Your team has quite a spark of its own."
+        ],
+        "text": [
+          "Om de știință Hoku: Echipa ta are o scânteie a ei."
+        ]
+      }
+    },
+    "kiele": {
+      "name": {
+        "en": [
+          "Kiele"
+        ],
+        "text": [
+          "Kiele"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kiele: I climbed up here to watch the Minior fall at night. While I wait, battle!"
+        ],
+        "text": [
+          "Antrenoare As Kiele: Am urcat aici să privesc Minior căzând noaptea. Cât aștept, luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kiele: Now I'll watch the stars and sulk."
+        ],
+        "text": [
+          "Antrenoare As Kiele: Acum voi privi stelele și mă voi bosumfla."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MountainSign": {
+      "en": [
+        "Blush Mountain\nUp: Geothermal Power Plant\nSouth: Route 12"
+      ],
+      "text": [
+        "Blush Mountain\nSus: Geothermal Power Plant\nSud: Ruta 12"
+      ]
+    }
+  }
+}

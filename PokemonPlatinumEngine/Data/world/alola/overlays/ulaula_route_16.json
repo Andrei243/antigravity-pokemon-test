@@ -9,24 +9,24 @@
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: Po Town is ours, yo! No trials, no rules! Beat it!",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Yo... we still own the place."
+        "dialogueBefore": "Team Skull Grunt: Po Town is ours, yo! No trials, no rules! Beat it!",
+        "dialogueAfter": "Team Skull Grunt: Yo... we still own the place."
       }
     },
     "ula2_2": {
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: Skull's boss says we keep everybody out. Even you.",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Boss won't like this."
+        "dialogueBefore": "Team Skull Grunt: Skull's boss says we keep everybody out. Even you.",
+        "dialogueAfter": "Team Skull Grunt: Boss won't like this."
       }
     },
     "ula3_3": {
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: You're too nosy, yo!",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Whatever. Go on in."
+        "dialogueBefore": "Team Skull Grunt: You're too nosy, yo!",
+        "dialogueAfter": "Team Skull Grunt: Whatever. Go on in."
       }
     },
     "hoku": {

@@ -75,24 +75,24 @@
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: You made it to Po Town? Not past me, yo!",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Man, you're rough."
+        "dialogueBefore": "Team Skull Grunt: You made it to Po Town? Not past me, yo!",
+        "dialogueAfter": "Team Skull Grunt: Man, you're rough."
       }
     },
     "po2_2": {
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: Plumeria said no visitors. That includes you!",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Plumeria's gonna be mad at me."
+        "dialogueBefore": "Team Skull Grunt: Plumeria said no visitors. That includes you!",
+        "dialogueAfter": "Team Skull Grunt: Plumeria's gonna be mad at me."
       }
     },
     "po3_3": {
       "name": "Skull Grunt",
       "npcType": "skull_grunt",
       "trainer": {
-        "dialogueBefore": "Team Skull Grunt Skull Grunt: Everybody who wasn't picked for a trial is in Skull, yo. Let's show you why.",
-        "dialogueAfter": "Team Skull Grunt Skull Grunt: Ugh. We're not so strong after all."
+        "dialogueBefore": "Team Skull Grunt: Everybody who wasn't picked for a trial is in Skull, yo. Let's show you why.",
+        "dialogueAfter": "Team Skull Grunt: Ugh. We're not so strong after all."
       }
     }
   },

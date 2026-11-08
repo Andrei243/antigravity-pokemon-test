@@ -100,8 +100,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: Lumiose's lights are ours now. Stylish, isn't it?",
-        "dialogueAfter": "Team Flare Grunt Grunt: That wasn't stylish at all...",
+        "dialogueBefore": "Team Flare Grunt: Lumiose's lights are ours now. Stylish, isn't it?",
+        "dialogueAfter": "Team Flare Grunt: That wasn't stylish at all...",
         "sightRange": 3
       }
     },
@@ -118,8 +118,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: Every watt of this plant goes to Team Flare. Go home!",
-        "dialogueAfter": "Team Flare Grunt Grunt: Fine. Take your ugly victory.",
+        "dialogueBefore": "Team Flare Grunt: Every watt of this plant goes to Team Flare. Go home!",
+        "dialogueAfter": "Team Flare Grunt: Fine. Take your ugly victory.",
         "sightRange": 3
       }
     },
