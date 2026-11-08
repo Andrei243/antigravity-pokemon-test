@@ -131,7 +131,7 @@ public static class Itineraries
         Leg.Reach("LaverreCity_Gym", 4, 8),
         Leg.Talk("LaverreCity_Gym", "valerie") with { Until = story => story.HasBadge("Kalos", "Fairy") },
         // (and out by her own panel, which puts the player down by the door, as Olympia's and Wulfric's do)
-        Leg.Reach("LaverreCity_Gym", 4, 5),
+        Leg.Reach("LaverreCity_Gym", 3, 4),
         // (Route 17's drifts are crossed on a Mamoswine from its west end: plan 23, Kalos's Mamoswine ride)
         Leg.Talk("Kalos", "mamoswine_west", "kalos_route_17"),
         Leg.Heal("AnistarCity_PokemonCenter_1F"),
