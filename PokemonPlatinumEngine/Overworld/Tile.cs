@@ -542,6 +542,10 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? NightSpecies { get; set; }
 
+    /// <summary>The form the slot's Pokémon is met in (an Alolan Rattata); null for the base form. Put on by <c>GameEngine.MakeWild</c>.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? FormName { get; set; }
+
     /// <summary>The gender Cute Charm chose for the Pokémon met; never in a table.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public Gender? Gender { get; set; }

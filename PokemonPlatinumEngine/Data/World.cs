@@ -1728,7 +1728,8 @@ public static class WorldMapBuilder
                     MaxLevel = wild.MaxLevel ?? wild.Level,
                     Weight = wild.Weight ?? (slot < weights.Length ? weights[slot] : 1),
                     DaySpecies = wild.Day,
-                    NightSpecies = wild.Night
+                    NightSpecies = wild.Night,
+                    FormName = wild.Form
                 });
             }
         }

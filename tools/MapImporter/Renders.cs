@@ -82,6 +82,8 @@ public sealed class Renders
         ("CHARGED FLOOR", Rgb.Of(230, 210, 60), b => b == 0xB6),
         ("SURF EDGE", Rgb.Of(96, 150, 200), b => b == 0xB7),
         ("CATWALK", Rgb.Of(130, 130, 150), b => b == 0xB8),
+        // Kalos's own (plan 23 · Z, our value after Black 2's: Route 17's drifts)
+        ("SNOW DRIFT", Rgb.Of(222, 232, 250), b => b == 0xB9),
     };
 
     private static Rgb OpenGround(Setting setting) => setting switch

@@ -47,6 +47,13 @@ public partial class GameEngine
         // then (plan 38 · EX1); an outbreak of the region's own game also gives its Pokémon its moves, drawing nothing
         if (!entry.Shiny && OutbreakRolls(area, entry.SpeciesName) is > 0 and var outbreakRolls) wild.RerollForShiny(rng, outbreakRolls, entry.Gender, entry.Nature);
         if (entry.Moves is { Count: > 0 } outbreakMoves) Overworld.Outbreaks.GiveMoves(wild, outbreakMoves);
+        // A slot of a region's table met in a form of its species (an Alolan Rattata, plan 23): knowing what the form learns;
+        // a slot whose form name is no form of the species (the species' own, for the base form) is met as it is
+        if (entry.FormName is { } slotForm && wildSpecies.Form(slotForm) != null)
+        {
+            wild.ChangeForm(slotForm);
+            if (wild.FormData?.Learnset != null) wild.PopulateMovesForLevel();
+        }
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Met at or past an evolution of ours, one time in four it is met as it, by its own personality (plan 03 · D15-A)

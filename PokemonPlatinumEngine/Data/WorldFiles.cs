@@ -537,6 +537,13 @@ public sealed class AreaEncounter
     /// </summary>
     public string? Day { get; set; }
     public string? Night { get; set; }
+
+    /// <summary>
+    /// The form the slot's species is met in where it isn't the base one, named as <c>species.json</c> names it
+    /// (<c>Rattata-Alola</c>: plan 23, Alola's wild Pokémon); <c>GameEngine.MakeWild</c> puts the Pokémon in it. A name
+    /// that is no form of the species (the species' own, for its base form) leaves it as it is. Left out for the base form.
+    /// </summary>
+    public string? Form { get; set; }
 }
 
 /// <summary>
