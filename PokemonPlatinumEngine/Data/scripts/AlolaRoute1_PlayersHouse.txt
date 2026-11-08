@@ -31,3 +31,66 @@ label Rest
   fanfare heal
   call NextHint
   end
+
+
+# After the Hall of Fame (plan 23 · Z8; rulings, "Ultra Space and the Battle Royal Dome"): two visitors from beyond the
+# sky are waiting for the new Champion at home, the Lightseekers of Ultra Megalopolis, on Ultra Sun and Ultra Moon's
+# beats (the Ultra Recon Squad's) in our own words. They tell of the Ultra Beasts slipping through the wormholes, give
+# ten Beast Balls and the Poipole that followed them, and go ahead to the Altar of the Sunne and Moone (VAR_ALOLA_ULTRA
+# 1). Played as the house is come to after the credits, or as a game saved after them is continued here
+script OnEnter
+  if not flag AlolaHallOfFame end
+  if var VAR_ALOLA_ULTRA != 0 end
+  scene "Visitors from beyond the sky"
+  setflag FLAG_ALOLA_ULTRA_AT_HOME
+  show veyra
+  show oskin
+  face player down
+  speaker "Mom"
+  say "Oh, you're up! {player}, there are two people here to see you. They've been very polite about waiting."
+  speaker "Veyra"
+  say "Forgive us for calling so early, Champion. I am Veyra, and this is Oskin. We came here through a hole in the sky."
+  say "We are the Lightseekers, from a city called Ultra Megalopolis. Long ago, something took our city's light."
+  speaker "Oskin"
+  say "The holes between our worlds are opening wider. Creatures from the other side slip through: Ultra Beasts, we call them."
+  say "They aren't wicked. They're lost, and frightened, and very strong. Strong enough to hurt your islands."
+  speaker "Veyra"
+  say "You calmed the lion of the sun at the Altar of the Sunne and Moone. You could open the way and meet them where they live."
+  say "These are made for them. Any other ball barely catches their notice."
+  give "Beast Ball" 10
+  say "And one more thing. This little one followed us through the wormhole, and it won't go back without someone strong."
+  if not party < 6 goto ToTheBox
+  givepokemon "Poipole" 40
+  fanfare pokemon
+  text "{player} received Poipole!"
+  goto Given
+label ToTheBox
+  givepokemon "Poipole" 40
+  fanfare pokemon
+  text "{player} received Poipole! It was sent to the PC."
+label Given
+  speaker "Oskin"
+  say "We'll wait for you at the Altar, on Poni. Come when you're ready."
+  hide veyra
+  hide oskin
+  setflag FLAG_ALOLA_ULTRA_AT_ALTAR
+  setvar VAR_ALOLA_ULTRA 1
+  objective alolaUltraAltar
+  speaker "Mom"
+  say "Visitors from another world, and they took their shoes off at the door. Alola gets more interesting every day."
+  endscene
+  end
+
+
+script Veyra
+  face veyra player
+  speaker "Veyra"
+  say "We'll meet you at the Altar of the Sunne and Moone."
+  end
+
+
+script Oskin
+  face oskin player
+  speaker "Oskin"
+  say "Poni Island. The Altar. We'll be there."
+  end

@@ -1,0 +1,68 @@
+# Ultra Megalopolis (plan 23 · Z8), the Lightseekers' city in Ultra Space. The lines are our own, on Ultra Sun and Ultra
+# Moon's beats as they are publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): a
+# city whose light was taken long ago by the being at the top of Megalo Tower, lit by lamps alone. It is open through
+# the Ultra Wormhole once the seven Ultra Beasts have been met (VAR_ALOLA_ULTRA 3), and after Necrozma's battle the
+# light comes back (FLAG_ALOLA_LIGHT_RETURNED, VAR_ALOLA_ULTRA 4) and a Blacephalon drawn by it waits on the square.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  if flag FLAG_ALOLA_LIGHT_RETURNED end
+  if var VAR_ALOLA_ULTRA >= 4 end
+  text "A city of towers, and not one window lit. Only the street lamps burn, and the dark presses on them from above."
+  end
+
+
+script Resident1
+  face self player
+  speaker "Old Man"
+  if flag FLAG_ALOLA_LIGHT_RETURNED goto Lit
+  say "My grandmother told me the sky here was bright once. I've only ever seen it like this."
+  say "The Lightseekers say the one who took our light still sits at the top of Megalo Tower."
+  end
+label Lit
+  say "Look at it. Look at the sky! I didn't know it had a colour."
+  end
+
+
+script Resident2
+  face self player
+  speaker "Lamp Keeper"
+  if flag FLAG_ALOLA_LIGHT_RETURNED goto Lit
+  say "I keep the lamps. Every lamp in this city burns on power we make ourselves, every hour of every day."
+  say "If they ever went out, nobody could find their way home. So they never go out."
+  end
+label Lit
+  say "I turned a lamp off this morning, just to see what it was like. I could still see. I nearly cried."
+  end
+
+
+script Resident3
+  face self player
+  speaker "Woman"
+  if flag FLAG_ALOLA_LIGHT_RETURNED goto Lit
+  say "You came through the wormhole? From a world with a sun? ...Is it warm? I'm sorry. I just wondered."
+  end
+label Lit
+  say "So this is warm. You were right. It's wonderful."
+  end
+
+
+# Drawn here by the light coming back: a showman of Ultra Space, its head a fuse
+script Blacephalon
+  face self player
+  speaker none
+  scene "Blacephalon"
+  letterbox on 0.4
+  camera pan 20 40 1.0
+  camera zoom 1.4 0.8
+  effect burst 20 40 wait
+  cry "Blacephalon"
+  text "Something like a clown made of fireworks juggled its own head on the square, and bowed to {player}."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Blacephalon" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_BLACEPHALON
+  hide self
+  end

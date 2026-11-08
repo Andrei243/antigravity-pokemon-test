@@ -201,6 +201,10 @@
       "note": "first spoken at lumiose_city.txt(142)",
       "provisional": true
     },
+    "battle_fan": {
+      "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(227)",
+      "provisional": true
+    },
     "beauty": {
       "note": "first spoken at route_120.txt(75)",
       "brief": {
@@ -1416,6 +1420,10 @@
         "accent": "en-us"
       }
     },
+    "lamp_keeper": {
+      "note": "first spoken at ultra_megalopolis.txt(30)",
+      "provisional": true
+    },
     "lana": {
       "note": "first spoken at brooklet_hill.txt(13)",
       "provisional": true
@@ -1762,6 +1770,10 @@
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
       "provisional": true
     },
+    "masked_royal": {
+      "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(27)",
+      "provisional": true
+    },
     "master": {
       "note": "first spoken at MastersHall.txt(32)",
       "brief": {
@@ -2030,6 +2042,10 @@
     },
     "olympia": {
       "note": "first spoken at AnistarCity_Gym.txt(12)",
+      "provisional": true
+    },
+    "oskin": {
+      "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
       "provisional": true
     },
     "owner": {
@@ -2935,6 +2951,10 @@
       "note": "first spoken at unova_pokemon_league.txt(22)",
       "provisional": true
     },
+    "veyra": {
+      "note": "first spoken at AlolaRoute1_PlayersHouse.txt(51)",
+      "provisional": true
+    },
     "vicky": {
       "note": "first spoken at route_111.txt(89)",
       "provisional": true
@@ -3139,6 +3159,7 @@
     "Barber": "barber",
     "Barry": "barry",
     "Bastien": "bastien",
+    "Battle Fan": "battle_fan",
     "Beauty": "beauty",
     "Ben": "ben",
     "Benga": "benga",
@@ -3346,6 +3367,7 @@
     "Kurt": "kurt",
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
+    "Lamp Keeper": "lamp_keeper",
     "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",
@@ -3390,6 +3412,7 @@
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
+    "Masked Royal": "masked_royal",
     "Master": "master",
     "Matt": "matt",
     "Maxie": "maxie",
@@ -3438,6 +3461,7 @@
     "Old Woman": "look:old_woman",
     "Olivia": "olivia",
     "Olympia": "olympia",
+    "Oskin": "oskin",
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
@@ -3566,6 +3590,7 @@
     "Vance": "vance",
     "Vesper": "vesper",
     "Veteran": "veteran",
+    "Veyra": "veyra",
     "Vicky": "vicky",
     "Victor": "victor",
     "Victoria": "victoria",

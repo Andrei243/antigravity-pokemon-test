@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1504 | 1462 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11470 | 10984 | 486 | 17 | 0 |
+| People of the hand-made maps (`map:`) | 1524 | 1464 | 60 | 1 | 0 |
+| Scripts (`script:`) | 11555 | 11068 | 487 | 17 | 0 |
 | People of the world (`world:`) | 7980 | 7918 | 62 | 4 | 0 |
-| **All** | 21188 | 20595 | 593 | 22 | 0 |
+| **All** | 21293 | 20681 | 612 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 861 |
+| a question's answers | 879 |
 | a sign | 1743 |
-| the game's own voice (speaker none) | 289 |
-| the game's own voice (text) | 1873 |
+| the game's own voice (speaker none) | 293 |
+| the game's own voice (text) | 1908 |
 
 ## The cast
 
-- Named characters: 474 voices (373 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 479 voices (378 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
-- Archetypes in use: 241, with 728 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1952.
+- Archetypes in use: 242, with 731 voices to cast (V5).
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1956.
 
 ## Lines by voice
 
@@ -40,37 +40,37 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1952 | 142 |
+| `@self` | 1956 | 142 |
 | `look:gentleman (any)` | 745 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
 | `look:lady (any)` | 441 | 1 |
 | `look:clerk (any)` | 438 | 11 |
-| `look:youngster (any)` | 418 | 21 |
+| `look:youngster (any)` | 417 | 21 |
 | `look:lass (any)` | 359 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 258 | 0 |
 | `look:scientist (any)` | 236 | 6 |
+| `look:receptionist (any)` | 233 | 23 |
 | `look:gym_guide (any)` | 218 | 1 |
-| `look:receptionist (any)` | 211 | 23 |
 | `class:ace_trainer (any)` | 200 | 0 |
 | `class:hiker (any)` | 196 | 0 |
 | `class:fisherman (any)` | 174 | 0 |
 | `cynthia` | 170 | 2 |
 | `look:sailor (any)` | 166 | 0 |
 | `class:youngster (any)` | 162 | 0 |
-| `look:old_man (any)` | 158 | 4 |
+| `look:old_man (any)` | 162 | 4 |
 | `class:lass (any)` | 150 | 0 |
 | `rowan` | 147 | 12 |
 | `class:picnicker (any)` | 136 | 0 |
-| `look:woman (any)` | 133 | 14 |
+| `look:woman (any)` | 135 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `class:black_belt (any)` | 130 | 0 |
 | `look:boy (any)` | 129 | 4 |
 | `look:man (any)` | 128 | 4 |
+| `mom` | 127 | 7 |
 | `class:psychic (any)` | 126 | 0 |
 | `class:swimmer_m (any)` | 126 | 0 |
-| `mom` | 125 | 7 |
 | `look:guard (any)` | 121 | 0 |
 | `looker` | 121 | 2 |
 | `assistant` | 115 | 5 |
@@ -101,12 +101,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:backpacker (any)` | 64 | 0 |
 | `class:biker (any)` | 64 | 0 |
 | `class:sailor (any)` | 64 | 0 |
+| `prof_kukui` | 64 | 1 |
 | `beauty` | 63 | 4 |
 | `prof_elm` | 63 | 1 |
 | `class:scientist (any)` | 62 | 0 |
 | `class:worker (any)` | 62 | 0 |
 | `underground_man` | 62 | 0 |
-| `prof_kukui` | 61 | 1 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `artist` | 59 | 1 |
 | `officer` | 57 | 5 |
@@ -141,6 +141,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:pokefan_f (any)` | 40 | 0 |
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
+| `hau` | 39 | 2 |
 | `iris` | 39 | 0 |
 | `look:pokefan_m (any)` | 39 | 0 |
 | `owner` | 39 | 5 |
@@ -160,16 +161,15 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `gardenia` | 35 | 0 |
 | `kurt` | 35 | 6 |
 | `candice` | 34 | 0 |
+| `look:battle_girl (any)` | 34 | 2 |
 | `look:twin (any)` | 34 | 0 |
 | `mars` | 34 | 0 |
 | `mr_briney` | 34 | 1 |
 | `saturn` | 34 | 0 |
 | `clay` | 33 | 3 |
-| `hau` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
-| `look:battle_girl (any)` | 32 | 0 |
 | `look:expert_m (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `policeman` | 32 | 0 |
@@ -238,6 +238,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:poke_maniac (any)` | 22 | 0 |
 | `class:pokemaniac (any)` | 22 | 0 |
 | `curator` | 22 | 0 |
+| `hapu` | 22 | 2 |
 | `look:ninja_boy (any)` | 22 | 0 |
 | `look:pokemon_breeder_f (any)` | 22 | 0 |
 | `schoolboy` | 22 | 0 |
@@ -252,8 +253,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:double_team (any)` | 20 | 0 |
 | `class:sis_and_bro (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
+| `gladion` | 20 | 4 |
 | `juan` | 20 | 0 |
 | `look:announcer (any)` | 20 | 12 |
+| `look:middle_aged_woman (any)` | 20 | 0 |
 
 ## Casting problems
 

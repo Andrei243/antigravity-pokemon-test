@@ -107,6 +107,42 @@
       "y": 5,
       "facing": "Down",
       "script": "Kukui"
+    },
+    {
+      "id": "challenger_hau",
+      "name": "Hau",
+      "npcType": "hau",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_DEFENCE_HAU"
+    },
+    {
+      "id": "challenger_gladion",
+      "name": "Gladion",
+      "npcType": "gladion",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_DEFENCE_GLADION"
+    },
+    {
+      "id": "challenger_hapu",
+      "name": "Hapu",
+      "npcType": "hapu",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_DEFENCE_HAPU"
     }
   ],
   "wildEncounters": []

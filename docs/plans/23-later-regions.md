@@ -321,6 +321,22 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
 - Ultra Space's worlds as cave-set matrices, the Ultra Beast hunt, the Battle Tree's door, the Battle Royal from plan 14 · B13 in Royal Avenue if plan 14's decision 7 keeps B13; the link to Galar (`Transport.Plane`, its departure map a room of ours in Hau'oli City).
 - Tests: the hunt's script; with B13, a Royal in the harness. Shots: `wa50` to `wa56`.
 - **Done when** every Ultra Beast can be caught and, with B13, the Royal plays.
+- **Built** (2026-11-08; rulings, "Ultra Space and the Battle Royal Dome"; facts from public descriptions, never the
+  games' pictures or words): **the post-League story** on Ultra Sun and Ultra Moon's beats with people of ours, the
+  Lightseekers Veyra and Oskin of Ultra Megalopolis (`VAR_ALOLA_ULTRA` 0 to 4, objectives 690 to 693): their visit at
+  the player's house after the credits (ten Beast Balls, a Poipole), the Ultra Wormhole opened over the Altar's dais and
+  read there to choose a world, the seven Ultra Beasts each met after a staged beat at 60 in a **world of Ultra Space
+  drawn by hand** (`tools/MapDraw/alola`, matrices 60 to 67: the Ultra Deep Sea, Jungle, Desert, Plant, Crater, Forest
+  and Ruin) and back until caught, **Ultra Megalopolis** and **Necrozma** atop Megalo Tower (a room of ours) at 65, the
+  light given back, and Blacephalon and Stakataka drawn by it; **the Battle Royal Dome** open to the Champion: the Masked
+  Royal's show with Hau and Gladion, then four ranks (Normal to Master) each opened by a first place, Battle Points for
+  first; **the title defended** in the Champion's room against Hau, Gladion or Hapu, recorded again in the Hall of Fame
+  without the credits. A song of ours, `alola/ultra_space`. Tests: `AlolaUltraSpaceTests` (every world walked from its
+  wormhole to its beast, every Ultra Beast reachable, the hunt headless from the visit to Necrozma, a beast not caught
+  back again, the dome's door, its show and its ranks, a Master Rank Royal fought to a placing by the core, the title
+  defended against each of the three). Shots: the harness's `ultraspace` mode (`wa50` to `wa57`). **Left**: the Ultra
+  Warp Ride and its other regions' legendaries, Lunala and the N-Solarizer and N-Lunarizer, the Battle Tree, the link
+  to Galar (`Transport.Undecided`; plan 33's engine), Poni's plains and grove.
 
 ### Galar and Paldea
 
@@ -416,7 +432,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [x] Z4b Kalos after its Hall of Fame (written and built 2026-11-07, wave 92)
 - [x] Z6 Melemele and Akala: trials, totems and Z-Moves (2026-11-07: totems with their aura, first call and no ball; the trial sites calling for help; Alola's stamps; the rest of Akala drawn, Kiawe's and Mallow's trials, Olivia's grand trial and the Hano Grand Resort, headless; the harness's `akala` mode shoots the places, the rooms, the card and the totem Gumshoos calling an ally before the Normalium Z's Breakneck Blitz, which is the "done when"; left: the rulings' "Left")
 - [x] Z7 Ula'ula, Poni and the Aether Foundation (2026-11-07: Ula'ula, Poni, Aether Paradise, four caves and the League drawn by hand, the story from the Akala stamp to the Hall of Fame headless, `docs/mechanics/rulings.md`, "Ula'ula, Poni, Aether Paradise and the League"; the walk from Iki Town needs Z6's Akala between Brooklet Hill and the stamp; shots owed; left: the Ultra Beasts; the islands' Town Map, the three trials' totems and Tapu Fini's and Solgaleo's beats were wave 91's, "Alola's loose ends")
-- [ ] Z8 After the League: Ultra Space and the Battle Royal (optional)
+- [x] Z8 After the League: Ultra Space and the Battle Royal (optional) (2026-11-08: the Lightseekers, the Ultra Wormhole, the seven worlds and their Ultra Beasts, Ultra Megalopolis and Necrozma, Blacephalon and Stakataka, the Battle Royal Dome's show and four ranks, the title defended; left: the Ultra Warp Ride, Lunala, the Battle Tree, the link to Galar)
 - Z9 to Z16 moved to plans 33 and 34 (2026-11-04)
 - [ ] Z17 A side region: the branch and Jubilife Village (optional: a second check judged it low value)
 - [ ] Z18 The open areas and catching from the field (optional: a second check judged it low value)

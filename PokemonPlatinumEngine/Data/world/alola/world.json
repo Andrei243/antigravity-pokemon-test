@@ -32,7 +32,18 @@
     { "name": "DiglettsTunnel", "matrix": 20, "area": "digletts_tunnel", "trees": "Round", "setting": "Cave" },
     // The rest of the islands (plan 23, the wave after the loose ends): Seaward Cave under Melemele, from the meadow to
     // Kala'e Bay (matrix 40, clear of the other sessions' numbers)
-    { "name": "SeawardCave", "matrix": 40, "area": "seaward_cave", "trees": "Round", "setting": "Cave" }
+    { "name": "SeawardCave", "matrix": 40, "area": "seaward_cave", "trees": "Round", "setting": "Cave" },
+    // Plan 23 · Z8: Ultra Space after the Hall of Fame, a map to each world (matrices 60 to 67), reached through the Ultra
+    // Wormhole over the Altar's dais and left by the one each world is come in by. The two built inside (the deep sea's
+    // cavern and the plant's hall) are caves that name the tile they are come to by, since no warp leads into them
+    { "name": "UltraDeepSea", "matrix": 60, "area": "ultra_deep_sea", "trees": "Round", "setting": "Cave", "arrivals": [[32, 54]] },
+    { "name": "UltraJungle", "matrix": 61, "area": "ultra_jungle", "trees": "Round" },
+    { "name": "UltraDesert", "matrix": 62, "area": "ultra_desert", "trees": "Round" },
+    { "name": "UltraPlant", "matrix": 63, "area": "ultra_plant", "trees": "Round", "setting": "Cave", "arrivals": [[32, 54]] },
+    { "name": "UltraCrater", "matrix": 64, "area": "ultra_crater", "trees": "Round" },
+    { "name": "UltraForest", "matrix": 65, "area": "ultra_forest", "trees": "Pine" },
+    { "name": "UltraRuin", "matrix": 66, "area": "ultra_ruin", "trees": "Round" },
+    { "name": "UltraMegalopolis", "matrix": 67, "area": "ultra_megalopolis", "trees": "Round" }
   ],
   "areas": [
     "alola_route_1",
@@ -89,6 +100,15 @@
     "ulaula_route_15",
     "ulaula_meadow",
     "ulaula_route_17",
-    "haina_desert"
+    "haina_desert",
+    // Plan 23 · Z8: Ultra Space
+    "ultra_deep_sea",
+    "ultra_jungle",
+    "ultra_desert",
+    "ultra_plant",
+    "ultra_crater",
+    "ultra_forest",
+    "ultra_ruin",
+    "ultra_megalopolis"
   ]
 }

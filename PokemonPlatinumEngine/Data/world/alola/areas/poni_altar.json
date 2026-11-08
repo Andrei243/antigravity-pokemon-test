@@ -44,6 +44,39 @@
       "rangeX": 0,
       "rangeZ": 0,
       "script": ""
+    },
+    {
+      "id": "veyra",
+      "looks": "veyra",
+      "movement": "look_south",
+      "x": 30,
+      "z": 18,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "oskin",
+      "looks": "oskin",
+      "movement": "look_south",
+      "x": 34,
+      "z": 18,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "stakataka",
+      "looks": "stakataka",
+      "movement": "look_east",
+      "x": 16,
+      "z": 30,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

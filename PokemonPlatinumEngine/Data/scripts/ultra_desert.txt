@@ -1,0 +1,35 @@
+# Ultra Desert (plan 23 · Z8), a world of Ultra Space. The lines are our own, on Ultra Sun and Ultra Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): no picture, map, line or
+# script of the games is read. It is come to through the Ultra Wormhole over the Altar's dais (poni_altar.txt) and left
+# by the one it is come in by (common.UltraWayHome). Its Ultra Beast, Pheromosa, waits at 32,16: met as a wild Pokémon
+# after a staged beat, at level 60, and back each time the world is come to until it is caught
+# (FLAG_ALOLA_CAUGHT_PHEROMOSA); FLAG_ALOLA_MET_PHEROMOSA says it has been met, and the first meeting
+# counts in VAR_ALOLA_ULTRA_MET, which the Lightseekers count to seven at the Altar.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  if flag FLAG_ALOLA_MET_PHEROMOSA end
+  text "Sand without end, and a wind that never stops. Every step leaves a print the wind takes at once."
+  end
+
+
+script Beast
+  face self player
+  speaker none
+  scene "Pheromosa"
+  letterbox on 0.4
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect mist 32 16 wait
+  cry "Pheromosa"
+  text "A slender white figure stepped out of the sand, never quite touching it. It looked {player} over, unimpressed."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Pheromosa" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_PHEROMOSA
+  if not flag FLAG_ALOLA_MET_PHEROMOSA addvar VAR_ALOLA_ULTRA_MET 1
+  setflag FLAG_ALOLA_MET_PHEROMOSA
+  hide self
+  end

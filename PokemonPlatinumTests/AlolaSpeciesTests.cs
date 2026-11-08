@@ -18,7 +18,7 @@ public class AlolaSpeciesTests
     private const string Items = "plan 40 · GE3: Alola's evolution stones and items";
     private const string Cord = "plan 40 · GE3: a Linking Cord in Alola";
     private const string Sites = "plan 40 · GE3: Alola's places of evolution (a Moss Rock, an Ice Rock, a Magnetic Field)";
-    private const string UltraSpace = "plan 23 · Z8: Ultra Space, the Ultra Beasts and Necrozma, and Cosmog after the League";
+    private const string Nebby = "plan 23: a Cosmog given after the League, as Ultra Sun and Ultra Moon give one (Z8 built Ultra Space and its beasts, not this)";
     private const string Mythicals = "plan 29 · LS11: Alola's mythicals, by events of ours";
     private const string OtherVersion = "plan 23: Moon's legendary, in a place of its own (Alola meets Sun's Solgaleo)";
     private const string Cells = "plan 23: Zygarde's cells and the Zygarde Cube";
@@ -51,9 +51,8 @@ public class AlolaSpeciesTests
         ["Zygarde"] = Cells,
         // The Old Amber, which Sun and Moon give and nothing here does yet
         ["Aerodactyl"] = Amber,
-        // Ultra Space and what comes after the League there (plan 23 · Z8)
-        ["Cosmog"] = UltraSpace, ["Cosmoem"] = UltraSpace, ["Nihilego"] = UltraSpace, ["Buzzwole"] = UltraSpace, ["Pheromosa"] = UltraSpace, ["Xurkitree"] = UltraSpace,
-        ["Celesteela"] = UltraSpace, ["Kartana"] = UltraSpace, ["Guzzlord"] = UltraSpace, ["Necrozma"] = UltraSpace,
+        // A Cosmog of the player's own after the League (the Ultra Beasts and Necrozma are plan 23 · Z8's, in Ultra Space)
+        ["Cosmog"] = Nebby, ["Cosmoem"] = Nebby,
         // Moon's legendary (Alola meets Sun's Solgaleo)
         ["Lunala"] = OtherVersion,
         // Given by events alone in Sun and Moon

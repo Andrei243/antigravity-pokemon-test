@@ -1,0 +1,120 @@
+{
+  "name": "MegaloTower",
+  "displayName": "Megalo Tower",
+  "bgmTrack": "alola/ultra_space",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Psychic",
+  "hall": "HallOfFame",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "UltraMegalopolis",
+      "targetX": 32,
+      "targetY": 22,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "necrozma",
+      "name": "Necrozma",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Necrozma",
+      "hiddenBy": "FLAG_ALOLA_CAUGHT_NECROZMA",
+      "shownBy": "FLAG_ALOLA_ULTRA_AT_TOWER",
+      "species": "Necrozma"
+    },
+    {
+      "id": "veyra",
+      "name": "Veyra",
+      "npcType": "veyra",
+      "x": 5,
+      "y": 7,
+      "facing": "Up",
+      "script": "Veyra",
+      "shownBy": "FLAG_ALOLA_ULTRA_AT_TOWER"
+    },
+    {
+      "id": "oskin",
+      "name": "Oskin",
+      "npcType": "oskin",
+      "x": 9,
+      "y": 7,
+      "facing": "Up",
+      "script": "Oskin",
+      "shownBy": "FLAG_ALOLA_ULTRA_AT_TOWER"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,33 @@
+{
+  "key": "ultra_ruin",
+  "index": 306,
+  "name": "Ultra Ruin",
+  "matrix": 66,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "Ash",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "beast",
+      "looks": "guzzlord",
+      "movement": "look_south",
+      "x": 32,
+      "z": 16,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
+  ],
+  "signs": [],
+  "triggers": []
+}
