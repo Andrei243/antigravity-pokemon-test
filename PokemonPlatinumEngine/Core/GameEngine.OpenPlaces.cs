@@ -47,6 +47,14 @@ public partial class GameEngine
         }
     }
 
+    // Rooms a tool or a test laid in for an open map's doors (the open test world's houses), found before the game's
+    private readonly System.Collections.Generic.Dictionary<string, Map> roomsOfTools = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>A grid room an open map's door may lead into, by its name (a tool's or a test's: the game's own rooms are the data's).</summary>
+    internal void AddRoom(Map room) => roomsOfTools[room.Name] = room;
+
+    private Map RoomNamed(string name) => roomsOfTools.GetValueOrDefault(name) ?? MapDatabase.Get(name);
+
     // ------------------------------------------------------------------ crossings
 
     /// <summary>
@@ -78,7 +86,7 @@ public partial class GameEngine
     /// </summary>
     private void GoThroughADoor(OpenField field, OpenDoor door)
     {
-        var room = MapDatabase.Get(door.Room);
+        var room = RoomNamed(door.Room);
         AudioManager.PlaySound("door_open");
         PlayAreaMusic(room, door.RoomX, door.RoomY);
         StartTransition(GameState.Overworld, () =>
@@ -170,6 +178,21 @@ public partial class GameEngine
     private static void OnlyThePlayer(string who, string command)
     {
         if (who != "player") throw new ScriptException($"{command} {who}: an open map has nobody but the player yet (its people are plan 32 · OW6's)");
+    }
+
+    internal sealed partial class Driver
+    {
+        /// <summary>A grid room an open map's door may lead into (plan 32 · OW5: the open test world's houses).</summary>
+        public void AddRoom(Map room) => game.AddRoom(room);
+
+        /// <summary>Which of the open map's triggers and doors the capsule's centre is in (<c>t:name</c>, <c>d:name</c>).</summary>
+        public System.Collections.Generic.IReadOnlyCollection<string> OpenInside => game.openCrossings.Inside;
+
+        /// <summary>The marker a script's <c>camera look</c> sent the open map's camera to last, or null.</summary>
+        public string? OpenLook => game.OpenLook;
+
+        /// <summary>Whether a script's walk to a marker is under way.</summary>
+        public bool OpenWalking => game.openWalk != null;
     }
 
     private sealed partial class FieldHost

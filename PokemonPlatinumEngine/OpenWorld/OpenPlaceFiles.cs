@@ -203,13 +203,13 @@ public static class OpenPlaceFiles
     /// areas laid on it. A place whose key is no area of a map, or a file that doesn't read, stops the load with the
     /// file named, as the grid's overlays do.
     /// </summary>
-    public static List<OpenMap> LoadRegion(string folder)
+    public static List<OpenMap> LoadRegion(string folder, bool withLand = true)
     {
         string worldPath = Path.Combine(folder, "world.json");
         var index = JsonSerializer.Deserialize<OpenRegionIndexFile>(File.ReadAllText(worldPath), GameDataFiles.Json)
             ?? throw new InvalidDataException($"{worldPath}: the file is empty");
         string baked = Path.Combine(folder, "baked");
-        BakedRegion? land = File.Exists(Path.Combine(baked, "index.json")) ? BakedRegion.Open(baked) : null;
+        BakedRegion? land = withLand && File.Exists(Path.Combine(baked, "index.json")) ? BakedRegion.Open(baked) : null;
 
         var maps = new List<OpenMap>();
         var mapOfArea = new Dictionary<string, OpenMap>(StringComparer.OrdinalIgnoreCase);

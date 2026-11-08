@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+    <!-- The open regions' descriptions read as the baker reads them, and their land's field (plan 32 · OW5) -->
+    <ProjectReference Include="../OpenWorldBake/OpenWorldBake.csproj" />
   </ItemGroup>
 
 </Project>
