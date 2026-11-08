@@ -1164,6 +1164,8 @@ public sealed partial class WorldRenderer
         TileBehavior.DeepSnow => 4,
         TileBehavior.DeeperSnow => 7,
         TileBehavior.DeepestSnow => 10,
+        // A drift of Route 17 is ridden through on a Mamoswine, who sinks to its knees in it (plan 23, the Mamoswine ride)
+        TileBehavior.SnowDrift => 8,
         TileBehavior.Mud or TileBehavior.MarshGrass => 2,
         TileBehavior.DeepMud or TileBehavior.DeepMarshGrass => 6,
         _ => 0

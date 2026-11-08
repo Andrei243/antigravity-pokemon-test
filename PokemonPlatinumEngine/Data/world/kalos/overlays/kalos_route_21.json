@@ -12,6 +12,15 @@
     { "script": "Neighbour", "x": 642, "z": 126, "width": 1, "depth": 4, "variable": "VAR_KALOS_RIVAL_LEAGUE", "value": 0 }
   ],
   "people": {
+    // Plan 23, Kalos's sky trainers: a Sky Battle when spoken to (Trainer.InTheAir, the team's fliers alone)
+    "sky_zoe": {
+      "name": "Zoé",
+      "npcType": "pilot",
+      "trainer": {
+        "dialogueBefore": "Sky Trainer Zoé: This close to the League the sky belongs to the strong. Prove you belong in it!",
+        "dialogueAfter": "Sky Trainer Zoé: You belong up here more than I do."
+      }
+    },
     "guard": { "name": "Guard", "npcType": "Gentleman", "script": "Guard", "still": true },
     "rival": { "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "script": "Rival", "still": true, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_ROUTE_21" },
     "veteran": {

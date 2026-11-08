@@ -1,5 +1,31 @@
 {
   "people": {
+    "sky_gaston": {
+      "name": {
+        "en": [
+          "Gaston"
+        ],
+        "text": [
+          "Gaston"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sky Trainer Gaston: The sea wind lifts anything with wings. Let us battle on it, in the sky!"
+        ],
+        "text": [
+          "Antrenorul de Văzduh Gaston: Vântul mării ridică orice are aripi. Hai să ne luptăm pe el, în văzduh!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sky Trainer Gaston: The wind turned against me."
+        ],
+        "text": [
+          "Antrenorul de Văzduh Gaston: Vântul s-a întors împotriva mea."
+        ]
+      }
+    },
     "fisherman_2": {
       "name": {
         "en": [
@@ -138,9 +164,6 @@
       ],
       "text": [
         "Traseul 8 · Poteca Coastei Stâncoase\nNord: Cyllage City\nSud: Ambrette Town"
-      ],
-      "was": [
-        "Ruta 8 · Poteca Coastei Stâncoase\nNord: Orașul Cyllage\nSud: închis de o alunecare de teren"
       ]
     }
   }

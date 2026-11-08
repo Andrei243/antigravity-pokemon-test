@@ -1,8 +1,13 @@
 # Lumiose City's Gym at the top of the Prism Tower (plan 23 · Z4). The lines are our own, on X and Y's beats as they are
 # publicly described (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"): Clemont, an
-# inventor, battles for the Voltage Badge, Kalos's fifth (`givebadge voltage`). The hall is one room with no puzzle (X
-# and Y's quiz is not built). VAR_KALOS_STORY is vaniville_town.txt's count: 24, the power back, becomes 25 here, and the
-# objective points north up Route 14 to Laverre City. His team is Kalos's trainers.json's kalos_clemont_1.
+# inventor, battles for the Voltage Badge, Kalos's fifth (`givebadge voltage`). VAR_KALOS_STORY is vaniville_town.txt's
+# count: 24, the power back, becomes 25 here, and the objective points north up Route 14 to Laverre City. His team is
+# Kalos's trainers.json's kalos_clemont_1.
+#
+# The quiz (plan 23, Kalos's Gyms; rulings, "Kalos's Gyms, its water and the Mamoswine ride"): X and Y's climb answers a
+# quiz to go on. Here three electric gates cross the hall (things of the map, FLAG_KALOS_PRISM_GATE_1 to _3), each with a
+# quiz host beside it. A right answer opens the gate; a wrong one at the second or third sets that part of the hall's
+# trainer on the player first (unless already beaten), and the gate opens after the battle. The questions are our own.
 
 
 script Clemont
@@ -43,4 +48,70 @@ script GymGuide
   end
 label Won
   say "You beat Clemont! He's already redesigning everything."
+  end
+
+
+script Quiz1
+  face self player
+  speaker "Quiz Host"
+  if flag FLAG_KALOS_PRISM_GATE_1 goto Open
+  say "Welcome to the Prism Tower's quiz! Answer right and the gate opens. Answer wrong and, well, you'll see!"
+  choose "Which type of move hits a Water-type Pokémon hard?" "Electric" "Fire" "Rock"
+  if var RESULT == 0 goto Right
+  say "Bzzzt! Water and electricity, remember? Never mind, the first gate opens for anyone who tries."
+  goto Gate
+label Right
+  say "Correct! A Water type shudders at a good jolt. Up you go!"
+label Gate
+  setflag FLAG_KALOS_PRISM_GATE_1
+  text "The electric gate crackled and switched off."
+  end
+label Open
+  say "The gate's open. More questions wait above!"
+  end
+
+
+script Quiz2
+  face self player
+  speaker "Quiz Host"
+  if flag FLAG_KALOS_PRISM_GATE_2 goto Open
+  say "Second question! Ready?"
+  choose "Which of these Pokémon is an Electric type?" "Litleo" "Helioptile" "Skiddo"
+  if var RESULT == 1 goto Right
+  say "Bzzzt! Wrong! Here comes your penalty!"
+  if defeated "kalos_schoolboy_hugo" goto Gate
+  battle kalos_schoolboy_hugo
+  goto Gate
+label Right
+  say "Correct! Helioptile soaks up the sun and turns it into electricity."
+label Gate
+  speaker "Quiz Host"
+  setflag FLAG_KALOS_PRISM_GATE_2
+  text "The electric gate crackled and switched off."
+  end
+label Open
+  say "One more gate between you and the Leader!"
+  end
+
+
+script Quiz3
+  face self player
+  speaker "Quiz Host"
+  if flag FLAG_KALOS_PRISM_GATE_3 goto Open
+  say "Last question! Clemont is waiting just beyond."
+  choose "With a Mega Stone held, what else does a Trainer need to Mega Evolve?" "A Poké Flute" "A Thunder Stone" "A Key Stone"
+  if var RESULT == 2 goto Right
+  say "Bzzzt! Wrong! One more battle, then!"
+  if defeated "kalos_schoolgirl_adele" goto Gate
+  battle kalos_schoolgirl_adele
+  goto Gate
+label Right
+  say "Correct! A Key Stone, and a strong bond. Clemont's all yours!"
+label Gate
+  speaker "Quiz Host"
+  setflag FLAG_KALOS_PRISM_GATE_3
+  text "The electric gate crackled and switched off."
+  end
+label Open
+  say "The Leader is right through there. Good luck!"
   end

@@ -1066,6 +1066,9 @@ public partial class GameEngine
     private bool CanSaveNow => gameStarted && flow.State == GameState.Overworld && !flow.Runner.IsRunning && !flow.Arrived
         && flow.TrainerApproach == null && flow.Fishing == null && flow.Trap == null && panelRide == null && !PuzzleHoldsField;
 
+    /// <summary>Whether a warp panel has the player now, spinning before or after its carry (the playthrough bot waits it out).</summary>
+    internal bool RidingAPanel => panelRide != null;
+
     /// <summary>The close button's question answered: back to the game, or out of it (after saving, for SAVE AND QUIT).</summary>
     internal void AnswerClose(CloseChoice choice)
     {

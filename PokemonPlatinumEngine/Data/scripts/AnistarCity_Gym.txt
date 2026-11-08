@@ -5,6 +5,10 @@
 # VAR_KALOS_STORY is vaniville_town.txt's count: 26 becomes 27 here; Lysandre leaves his café's table for the
 # laboratory under it (FLAG_KALOS_HIDE_LYSANDRE_CAFE, LumioseCity_LysandreCafe.txt). Her team is Kalos's trainers.json's
 # kalos_olympia_1.
+#
+# Since Kalos's Gyms (plan 23; rulings, "Kalos's Gyms, its water and the Mamoswine ride") the hall is pads of light over
+# a starry dark, joined only by warp panels (the map's own, WarpPanels): the middle pad's east panel, the north-east
+# pad's west panel and the south-west pad's east panel lead to Olympia; the others go round, or back to the door.
 
 
 script Olympia

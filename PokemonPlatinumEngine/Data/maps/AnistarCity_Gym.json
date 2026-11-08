@@ -12,99 +12,58 @@
     "#############",
     "#############",
     "#############",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
+    "#VVV_____VVV#",
+    "#VVV_____VVV#",
+    "#VVV_____VVV#",
+    "#VVVVVVVVVVV#",
+    "#__VVVVVVV__#",
+    "#__VVVVVVV__#",
+    "#VVVV___VVVV#",
+    "#__VV___VV__#",
+    "#__VVV_VVV__#",
+    "#VVVVV_VVVVV#",
+    "#VV_______VV#",
+    "#VV_______VV#",
+    "#VV_______VV#",
+    "#VV_______VV#",
     "######D######"
   ],
   "solid": [
     "#############",
     "#############",
     "#############",
-    "##.........##",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "##.........##",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...#...#...#",
-    "#...........#",
+    "####.....####",
+    "####.....####",
+    "####.....####",
+    "#############",
+    "#..#######..#",
+    "#..#######..#",
+    "#####...#####",
+    "#..##...##..#",
+    "#..###.###..#",
+    "######.######",
+    "###.......###",
+    "###.......###",
+    "###.......###",
+    "###.......###",
     "######.######"
   ],
+  "behaviours": [
+    { "x": 5, "y": 9, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 1, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 7, "y": 9, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 11, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 2, "y": 7, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 11, "y": 11, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 10, "y": 7, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 1, "y": 11, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 2, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 4, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 10, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 3, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 8, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
   "props": [
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 4,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 8,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 10,
-      "width": 1,
-      "depth": 1
-    },
     {
       "type": "Window",
       "x": 3,
@@ -118,6 +77,97 @@
       "y": 2,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 11,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 2,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 3,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -127,6 +177,110 @@
       "targetMap": "Kalos",
       "targetX": 636,
       "targetY": 190,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 1,
+      "targetY": 8,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 8,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 5,
+      "targetY": 9,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 9,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 11,
+      "targetY": 8,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 8,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 7,
+      "targetY": 9,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 2,
+      "sourceY": 7,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 11,
+      "targetY": 11,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 11,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 2,
+      "targetY": 7,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 7,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 1,
+      "targetY": 11,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 11,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 10,
+      "targetY": 7,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 2,
+      "sourceY": 10,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 4,
+      "targetY": 5,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 5,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 2,
+      "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 10,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 3,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 14,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 10,
+      "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 5,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 5,
+      "targetY": 16,
       "targetFacing": "Down"
     }
   ],
@@ -145,7 +299,7 @@
       "id": "gym_guide",
       "name": "Gym Guide",
       "npcType": "Gentleman",
-      "x": 9,
+      "x": 8,
       "y": 15,
       "facing": "Down",
       "script": "GymGuide"
@@ -154,8 +308,8 @@
       "id": "kalos_psychic_lucile",
       "name": "Lucile",
       "npcType": "lady",
-      "x": 3,
-      "y": 11,
+      "x": 5,
+      "y": 10,
       "facing": "Right",
       "trainer": {
         "id": "kalos_psychic_lucile",
@@ -165,16 +319,16 @@
         "prizeMoney": 300,
         "dialogueBefore": "Psychic Lucile: The stars told me you would come. They didn't say who would win.",
         "dialogueAfter": "Psychic Lucile: The stars... were vague.",
-        "sightRange": 3
+        "sightRange": 2
       }
     },
     {
       "id": "kalos_psychic_aurele",
       "name": "Aurèle",
       "npcType": "gentleman",
-      "x": 9,
+      "x": 11,
       "y": 7,
-      "facing": "Left",
+      "facing": "Down",
       "trainer": {
         "id": "kalos_psychic_aurele",
         "name": "Aurèle",
@@ -183,7 +337,7 @@
         "prizeMoney": 300,
         "dialogueBefore": "Psychic Aurèle: I can see your next move. Can you see mine?",
         "dialogueAfter": "Psychic Aurèle: I saw that coming. Mostly.",
-        "sightRange": 3
+        "sightRange": 1
       }
     }
   ],

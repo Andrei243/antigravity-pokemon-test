@@ -2283,6 +2283,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(19)",
       "provisional": true
     },
+    "quiz_host": {
+      "note": "first spoken at LumioseCity_PrismTowerGym.txt(56)",
+      "provisional": true
+    },
     "quiz_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
       "provisional": true
@@ -3493,6 +3497,7 @@
     "Pryce": "pryce",
     "Psychic": "psychic",
     "Quinn": "quinn",
+    "Quiz Host": "quiz_host",
     "Quiz Lady": "quiz_lady",
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",

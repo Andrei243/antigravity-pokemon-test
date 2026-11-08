@@ -95,6 +95,8 @@ public abstract class GymPuzzle
         SootopolisIce.PuzzleName => new SootopolisIce(),
         // HeartGold's Blackthorn Gym (plan 20 · J11, part c), named by its room's entry in Johto's world.json
         BlackthornPlatforms.PuzzleName => new BlackthornPlatforms(),
+        // Wulfric's Gym in Snowbelle City (plan 23, Kalos's Gyms): turntables of ice whose hubs turn them
+        SnowbelleTurntables.PuzzleName => new SnowbelleTurntables(),
         // The League's platform lifts (plan 01 · M9, part 2d), one name to a shaft
         _ when LeagueLift.IsName(name) => new LeagueLift(name),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")

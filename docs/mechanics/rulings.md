@@ -9846,6 +9846,55 @@ neighbour beaten in Kiloude, 3 the Mega Ring upgraded); Looker's episode has its
   Chamber of Emptiness, the Poké Ball Factory, the Battle Château, Lumiose's other shut doors, the TMV's Kiloude station,
   the stones' evening hour, and every new place's own song (plan 31).
 
+## Kalos's Gyms, its water and the Mamoswine ride (2026-11-08, plan 23 after Z4b)
+
+X and Y's puzzles, water and ride as they are publicly described, in forms and words of our own; Kalos's movement stays
+`Eight` (the user's decision: `Free` once plan 30 · FM9 is past its gate).
+
+- **The Prism Tower's quiz** (Clemont): X and Y's climb answers "who's that" questions and picks a lift. Ours is one
+  hall cut by three low walls, each with one gap held by an electric gate (a thing of the map, `ElectricGate`, hidden by
+  `FLAG_KALOS_PRISM_GATE_1` to `_3`) and a quiz host beside it (`Quiz1` to `Quiz3`, questions of our own about types,
+  Kalos's species and Mega Evolution). A right answer opens the gate; a wrong one at the second or third sets that part
+  of the hall's trainer (Hugo, Adèle) on the player first, unless already beaten; the first gate opens for anyone.
+- **Valerie's and Olympia's halls**: X and Y's Laverre Gym is a warp-tile puzzle, and its Anistar Gym paths "on a
+  sphere" that end in warp tiles. Both are the map's own warp panels (`WarpPanels`, Team Galactic's rule, a panel to a
+  panel and back): Valerie's four rooms of a doll's house (the door's room, two side rooms, hers), Olympia's pads of
+  light over a starry dark (`V` void round floating pads). A wrong panel leads round, or back to the door.
+- **Wulfric's turntables** (`Overworld/SnowbelleTurntables.cs`, a `GymPuzzle`): X and Y's switches turn platforms.
+  Ours: five turntables of ice over the dark, each an L of two arms; the hub is the switch, turning its turntable a
+  quarter clockwise whenever it is stepped onto (`Crossed`), and an arm tile no arm lies on refuses the step (`Refuses`).
+  Two hubs three tiles apart are joined only when both point arms at each other. The hall is laid out afresh at the
+  door; the shortest way across turns the east pair and the middle one, nineteen steps (`KalosGymsAndWaterTests`
+  searches it). Santalune's web, Cyllage's climbing wall, Shalour's rails and Coumarine's poles are still plain halls.
+- **Water**: X and Y's own tables, read from public encounter lists: the west coast (Ambrette, Cyllage, Routes 8 and 9)
+  surfs Tentacool and Wailmer and fishes Luvdisc, Skrelp, Clauncher, Horsea (Shellder and Staryu off Route 8),
+  Relicanth, Seadra, Dragalge and Clawitzer; the north coast (Shalour) Tentacool and Mantyke, Remoraid, Chinchou,
+  Alomomola, Lanturn and Octillery; fresh water (Routes 15 and 16, Couriway, the Pokémon Village, and Laverre's, fished
+  only) Lombre, Floatzel and Poliwhirl, Poliwag and Basculin. Azure Bay and Kiloude City, which are post-game here
+  (Z4b), take the north coast's kinds grown, at 50 to 60. Aquacorde's and Camphrier's water, and Route 7's river, have no
+  Pokémon, as in X and Y. **The rods and Surf**: the Old Rod in Ambrette's aquarium (X and Y: its lower floor), the Good
+  Rod from a fisherman in Coumarine City's east house (X and Y: on the port, which our drawing doesn't have), the Super
+  Rod from Couriway's fisherman; HM03 from Gurkinn at the end of the Tower of Mastery's scene (X and Y: the neighbour, in
+  Shalour City), and by him to a save already past the scene when spoken to again. Kalos's flags are its own
+  (`FLAG_KALOS_RECEIVED_OLD_ROD` and the rest), so a Champion who brought Sinnoh's rods is given Kalos's too. X and Y ask
+  no badge of a field move, and `gates` stays empty.
+- **The Mamoswine ride**: X and Y's Route 17 is drifted from end to end and ridden on a Mamoswine. Ours has three bands
+  of drift from edge to edge (`TileBehavior.SnowDrift`, 0xB9, our own value after Black 2's; MapDraw's `%`), which stop
+  anyone on foot, on skates or cycling (`Obstacle.Drift`) and are ridden through at a walk. The Mamoswine is a ride the
+  route lends (`RidePager.LentRides`: no pager, no flag, only in `kalos_route_17`), got on by talking to one of four
+  that stand at each end and in each clearing (`kalos_route_17.Mamoswine`), so a save made riding, which wakes on foot,
+  is never stranded; spoken to from its back, one lets the player down; leaving the route ends the ride
+  (`DismountWhereNoRiding`). `WorldWalk` counts a drift as ridden through, and the playthrough rides it
+  (`Itineraries.KalosLastChapters`).
+- **Hordes and sky trainers**: X and Y's hordes for sixteen routes (Route 7's Roselia and Hoppip, Route 8's Taillow and
+  Wingull, Route 15's Klefki, Murkrow and Foongus as X and Y have them; the rest of families of each route's grass),
+  under the hordes' own rule (after Kalos's Hall of Fame, `Ruleset.Hordes`); the horde test now asks for any of a
+  region's Pokédexes. Five Sky Trainers of ours (Routes 5, 8, 12, 15 and 21, `kalos_sky_trainer_*`, `format` `sky`,
+  the pilot's look) battle only when spoken to (sight 0), so a team with nobody who flies is told so and never seen.
+- **Left.** The other four Gyms' pieces (Santalune's web, Cyllage's wall, Shalour's rails, Coumarine's poles),
+  Coumarine's port, X and Y's Surf-only places (the Unknown Dungeon's water mouth, Victory Road's lakes), Waterfall and
+  the other HMs' gifts, and every place's own song (plan 31's tools give no Kalos songs to these places yet).
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).

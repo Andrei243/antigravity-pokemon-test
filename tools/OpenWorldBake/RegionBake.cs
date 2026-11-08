@@ -117,9 +117,10 @@ public static class RegionBake
 
     /// <summary>
     /// Every file of the bake, by its path under <c>baked/</c> (<c>index.json</c> and <c>&lt;level&gt;/&lt;x&gt;_&lt;z&gt;.chunk</c>),
-    /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all).
+    /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all). With
+    /// every chunk, the navigation mesh too (<c>navmesh.bin</c>, plan 32 · OW4), what its bake found in <paramref name="navReport"/>.
     /// </summary>
-    public static SortedDictionary<string, byte[]> Files(RegionDescription description, Func<int, int, bool>? only = null)
+    public static SortedDictionary<string, byte[]> Files(RegionDescription description, Func<int, int, bool>? only = null, NavReport? navReport = null)
     {
         var world = description.World;
         var land = description.Land();
@@ -134,6 +135,8 @@ public static class RegionBake
         for (int i = 0; i < chunks.Count; i++)
             if (baked[i] != null)
                 foreach (var chunk in baked[i]) files[BakedChunk.FileName(chunk.ChunkX, chunk.ChunkZ, chunk.Level)] = chunk.Bytes();
+        // The navigation mesh (plan 32 · OW4) is the whole region's: baked only with every chunk, after them, on one thread
+        if (only == null) files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), report: navReport).Bytes();
         var index = new BakedIndexFile
         {
             Format = BakedChunk.Format,

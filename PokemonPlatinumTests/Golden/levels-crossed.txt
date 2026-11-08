@@ -1603,6 +1603,12 @@ trainers 4, 209 (own 13-14): alola_ace_trainer_makoa 209 (14) [Rockruff → Lyca
 === altering_cave
 Altering Cave, Hoenn
 grass 138-143 (own 6-16)
+=== ambrette_town
+Ambrette Town, Kalos
+surf 192-193 (own 25-27)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 === ancient_poni_path
 Ancient Poni Path, Alola
 grass 218-219 (own 40-42)
@@ -1635,6 +1641,10 @@ trainers 4, 107-111 (own 7-13): johto_bug_catcher_al 111 (12) [Caterpie → Butt
 === azure_bay
 Azure Bay, Kalos
 grass 202-203 (own 58-61)
+surf 201-202 (own 56-58)
+old rod 200-201 (own 50-55)
+good rod 201 (own 55)
+super rod 203 (own 60)
 trainers 2, 203 (own 60-61): kalos_beauty_ondine 203 (61) [Starmie → Stellamir, Lapras → Ferrisle], kalos_fisherman_yannick 203 (61) [Clawitzer → Salvoclaw, Barbaracle → Reefcolony, Gyarados → Typhonarch]
 === bell_tower_10f
 Bell Tower, Johto
@@ -1828,6 +1838,18 @@ surf 116-129 (own 20-40)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== couriway_town
+Couriway Town, Kalos
+surf 195-196 (own 36-38)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
+=== cyllage_city
+Cyllage City, Kalos
+surf 192-193 (own 25-27)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 === dark_cave_route_31_side
 Dark Cave, Johto
 grass 104-105 (own 2-4)
@@ -2425,7 +2447,7 @@ trainers 2, 190-191 (own 20-21): kalos_battle_girl_elodie 190 (20) [Mienfoo → 
 === kalos_route_12
 Route 12, Kalos
 grass 190-191 (own 20-22)
-trainers 3, 191 (own 21-22): kalos_lass_violette 191 (22) [Spritzee → Aromatisse, Floette → Florges], kalos_picnicker_hortense 191 (22) [Skiddo → Alpicorn, Bellsprout → Victreebel, Weepinbell → Victreebel], kalos_youngster_matthieu 191 (22) [Fletchinder → Talonflame, Pancham → Pangoro]
+trainers 4, 191 (own 21-22): kalos_lass_violette 191 (22) [Spritzee → Aromatisse, Floette → Florges], kalos_picnicker_hortense 191 (22) [Skiddo → Alpicorn, Bellsprout → Victreebel, Weepinbell → Victreebel], kalos_sky_trainer_mireille 191 (22) [Noibat → Noivern, Drifloon → Dirigeist], kalos_youngster_matthieu 191 (22) [Fletchinder → Talonflame, Pancham → Pangoro]
 === kalos_route_13
 Route 13, Kalos
 grass 192-193 (own 26-28)
@@ -2437,10 +2459,18 @@ trainers 2, 194 (own 31-32): kalos_lass_celestine 194 (31) [Spritzee → Perfume
 === kalos_route_15
 Route 15, Kalos
 grass 194-195 (own 33-35)
-trainers 3, 195 (own 34-35): kalos_hiker_ambroise 195 (35) [Graveler → Golem, Lairon → Aggron], kalos_lass_margot 195 (34) [Foongus → Sporemonarch], kalos_youngster_felix 195 (34) [Pawniard → Kingambit, Watchog → Beaconwatch]
+surf 195 (own 34-36)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
+trainers 4, 195 (own 34-35): kalos_hiker_ambroise 195 (35) [Graveler → Golem, Lairon → Aggron], kalos_lass_margot 195 (34) [Foongus → Sporemonarch], kalos_sky_trainer_thierry 195 (35) [Fletchinder → Talonflame, Noibat → Noivern], kalos_youngster_felix 195 (34) [Pawniard → Kingambit, Watchog → Beaconwatch]
 === kalos_route_16
 Route 16, Kalos
 grass 194-195 (own 33-35)
+surf 195 (own 34-36)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 trainers 4, 194-195 (own 33-35): kalos_backpacker_gaetan 195 (34) [Pancham → Bambrawler, Honedge → Aegislash], kalos_lady_rosalie 195 (35) [Furfrou → Majesthound, Meowstic → Occulynx], kalos_picnicker_constance 195 (34) [Skiddo → Alpicorn, Litleo → Blazemonarch, Espurr → Occulynx], kalos_youngster_corentin 195 (34) [Bunnelby → Excavabbit, Fletchinder → Talonflame]
 === kalos_route_17
 Route 17, Kalos
@@ -2465,7 +2495,7 @@ trainers 2, 198 (own 45-46): kalos_hiker_thibaut 198 (46) [Sudowoodo → Mimiced
 === kalos_route_21
 Route 21, Kalos
 grass 199-200 (own 48-50)
-trainers 1, 199-200 (own 49-50): kalos_veteran_germain 200 (50) [Skarmory → Rapierwing, Gliscor → Fangliscor, Altaria → Nimbusong]
+trainers 2, 199-200 (own 49-51): kalos_sky_trainer_zoe 200 (51) [Skarmory → Rapierwing, Altaria → Nimbusong], kalos_veteran_germain 200 (50) [Skarmory → Rapierwing, Gliscor → Fangliscor, Altaria → Nimbusong]
 === kalos_route_3
 Route 3, Kalos
 grass 186 (own 4-6)
@@ -2479,7 +2509,7 @@ trainers 3, 187 (own 7-8): kalos_lass_elodie 187 (8) [Flabébé → Florges], ka
 === kalos_route_5
 Route 5, Kalos
 grass 187-188 (own 9-11)
-trainers 3, 187-188 (own 10-11): kalos_backpacker_gaspard 187 (10) [Doduo → Tripluma, Gulpin → Gulpgorge], kalos_lass_noemie 188 (11), kalos_youngster_julien 187 (10) [Pancham → Pangoro, Skiddo → Gogoat]
+trainers 4, 187-188 (own 10-12): kalos_backpacker_gaspard 187 (10) [Doduo → Tripluma, Gulpin → Gulpgorge], kalos_lass_noemie 188 (11), kalos_sky_trainer_celeste 188 (12) [Fletchling → Talonflame, Pidgeotto → Pidgeot], kalos_youngster_julien 187 (10) [Pancham → Pangoro, Skiddo → Gogoat]
 === kalos_route_6
 Route 6, Kalos
 grass 187-188 (own 10-12)
@@ -2491,10 +2521,18 @@ trainers 3, 188-189 (own 13-14): kalos_fisherman_rene 188 (13) [Goldeen → Sabr
 === kalos_route_8
 Route 8, Kalos
 grass 188-189 (own 13-15)
-trainers 5, 189 (own 14-16): kalos_fisherman_pierrick 189 (16) [Remoraid → Krakannon, Corphish → Crayronin], kalos_fisherman_yves 189 (14) [Tentacool → Medusarch, Wingull → Pelicaptain], kalos_hiker_aurelien 189 (16) [Geodude → Golem, Machop → Machamp], kalos_hiker_marcel 189 (15) [Roggenrola → Gigalith, Nosepass → Lodestarch], kalos_picnicker_ysolde 189 (16) [Skiddo → Gogoat, Buneary → Lapinova, Fletchling → Talonflame]
+surf 192-193 (own 25-27)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
+trainers 6, 189 (own 14-16): kalos_fisherman_pierrick 189 (16) [Remoraid → Krakannon, Corphish → Crayronin], kalos_fisherman_yves 189 (14) [Tentacool → Medusarch, Wingull → Pelicaptain], kalos_hiker_aurelien 189 (16) [Geodude → Golem, Machop → Machamp], kalos_hiker_marcel 189 (15) [Roggenrola → Gigalith, Nosepass → Lodestarch], kalos_picnicker_ysolde 189 (16) [Skiddo → Gogoat, Buneary → Lapinova, Fletchling → Talonflame], kalos_sky_trainer_gaston 189 (16) [Wingull → Pelicaptain, Fletchinder → Talonflame]
 === kalos_route_9
 Route 9, Kalos
 grass 190 (own 17-19)
+surf 192-193 (own 25-27)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 trainers 4, 190 (own 17-18): kalos_backpacker_odile 190 (18) [Skiddo → Alpicorn, Zubat → Crobat, Mienfoo → Mienshifu], kalos_fisherman_loic 190 (18) [Barboach → Namazuro, Staryu → Stellamir], kalos_lass_clemence 190 (18) [Vulpix → Kitsunox, Spritzee → Aromatisse], kalos_youngster_basile 190 (18) [Fletchling → Talonflame, Pancham → Pangoro]
 === kalos_victory_road
 Victory Road, Kalos
@@ -2512,6 +2550,12 @@ trainers 5, 88-94 (own 40-48): kanto_black_belt_daisuke 90 (43) [Machoke → Mac
 Victory Road, Kanto
 grass 83-92 (own 32-46)
 trainers 5, 89-92 (own 41-45): kanto_cool_couple_ray_tyra 92 (45), kanto_cooltrainer_alexa 90 (42) [Clefairy → Clefable, Jigglypuff → Wigglytuff, Chansey → Blissey], kanto_cooltrainer_caroline 90 (42) [Bellsprout → Victreebel, Weepinbell → Victreebel, Paras → Parasect], kanto_cooltrainer_colby 90 (43) [Seadra → Kingdra], kanto_cooltrainer_george 90 (42)
+=== kiloude_city
+Kiloude City, Kalos
+surf 201-202 (own 56-58)
+old rod 200-201 (own 50-55)
+good rod 201 (own 55)
+super rod 203 (own 60)
 === konikoni_city
 Konikoni City, Alola
 surf 212 (own 22-24)
@@ -2532,6 +2576,11 @@ trainers 4, 146 (own 23): hoenn_axle 146 (23) [Numel → Camerupt], hoenn_cole 1
 === lavaridge_town_gym_b1f
 Lavaridge Town, Hoenn
 trainers 4, 145-146 (own 22-23): hoenn_eli 146 (23) [Numel → Camerupt], hoenn_jace 146 (23) [Slugma → Calderon], hoenn_jeff 145 (22) [Slugma → Calderon, Slugma → Calderon], hoenn_keegan 146 (23) [Slugma → Calderon]
+=== laverre_city
+Laverre City, Kalos
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 === lilycove_city
 Lilycove City, Hoenn
 surf 137-151 (own 5-35)
@@ -3026,6 +3075,10 @@ trainers 3, 76-79 (own 23-26): kanto_team_rocket_grunt_19 78 (25) [Zubat → Cro
 === pokemon_village
 Pokémon Village, Kalos
 grass 198-199 (own 46-48)
+surf 199-200 (own 48-50)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 === poni_breakers
 Poni Breakers, Alola
 grass 219-220 (own 43-45)
@@ -3978,6 +4031,12 @@ old rod 64 (own 5)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
 trainers 2, 94-96 (own 48-52): kanto_psychic_dario 96 (52) [Girafarig → Farigiraf], kanto_psychic_rodette 95 (50) [Natu → Xatu, Drowzee → Hypno]
+=== shalour_city
+Shalour City, Kalos
+surf 192-193 (own 25-27)
+old rod 187-189 (own 10-15)
+good rod 192 (own 25)
+super rod 195 (own 35)
 === shoal_cave_low_tide_entrance_room
 Shoal Cave, Hoenn
 grass 147-150 (own 26-32)

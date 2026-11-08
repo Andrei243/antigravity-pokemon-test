@@ -8,6 +8,15 @@
   "trees": "Round",
   "architecture": "OldTimber",
   "people": {
+    // Plan 23, Kalos's sky trainers: a Sky Battle when spoken to (Trainer.InTheAir, the team's fliers alone)
+    "sky_gaston": {
+      "name": "Gaston",
+      "npcType": "pilot",
+      "trainer": {
+        "dialogueBefore": "Sky Trainer Gaston: The sea wind lifts anything with wings. Let us battle on it, in the sky!",
+        "dialogueAfter": "Sky Trainer Gaston: The wind turned against me."
+      }
+    },
     "fisherman_2": {
       "name": "Pierrick",
       "npcType": "Fisherman",

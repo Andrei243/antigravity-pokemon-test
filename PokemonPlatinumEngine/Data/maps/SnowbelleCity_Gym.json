@@ -6,6 +6,7 @@
   "trees": "Round",
   "battleArena": "Gym",
   "arenaType": "Ice",
+  "puzzle": "SnowbelleTurntables",
   "width": 13,
   "height": 18,
   "ground": [
@@ -16,13 +17,13 @@
     "#___________#",
     "#___________#",
     "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
+    "#VVVVV_VVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
     "#___________#",
     "#___________#",
     "#___________#",
@@ -32,76 +33,30 @@
     "#############",
     "#############",
     "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "###.##.##.###",
     "##.........##",
+    "###.##.##.###",
+    "###.#####.###",
+    "##...###...##",
+    "###.#####.###",
     "#...........#",
     "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "##.........##",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...#...#...#",
     "#...........#",
     "######.######"
   ],
+  "behaviours": [
+    { "x": 10, "y": 4, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
   "props": [
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 4,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 8,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
     {
       "type": "Rug",
       "x": 6,
       "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 10,
       "width": 1,
       "depth": 1
     },
@@ -118,6 +73,13 @@
       "y": 2,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -127,6 +89,14 @@
       "targetMap": "Kalos",
       "targetX": 673,
       "targetY": 256,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 4,
+      "targetMap": "SnowbelleCity_Gym",
+      "targetX": 5,
+      "targetY": 16,
       "targetFacing": "Down"
     }
   ],
@@ -145,7 +115,7 @@
       "id": "gym_guide",
       "name": "Gym Guide",
       "npcType": "Gentleman",
-      "x": 9,
+      "x": 10,
       "y": 15,
       "facing": "Down",
       "script": "GymGuide"
@@ -154,9 +124,9 @@
       "id": "kalos_skier_agathe",
       "name": "Agathe",
       "npcType": "lass",
-      "x": 3,
-      "y": 11,
-      "facing": "Right",
+      "x": 2,
+      "y": 15,
+      "facing": "Up",
       "trainer": {
         "id": "kalos_skier_agathe",
         "name": "Agathe",
@@ -165,7 +135,7 @@
         "prizeMoney": 300,
         "dialogueBefore": "Skier Agathe: I slid all the way here from the mountains. Let's see if you can keep your footing!",
         "dialogueAfter": "Skier Agathe: Wipeout!",
-        "sightRange": 3
+        "sightRange": 2
       }
     },
     {
@@ -173,7 +143,7 @@
       "name": "Basile",
       "npcType": "youngster",
       "x": 9,
-      "y": 7,
+      "y": 5,
       "facing": "Left",
       "trainer": {
         "id": "kalos_skier_basile",

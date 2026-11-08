@@ -36,5 +36,34 @@
     { "species": "Zoroark", "level": 48 },
     { "species": "Lickilicky", "level": 48 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Poliwhirl", "level": 48, "maxLevel": 50 },
+    { "species": "Poliwhirl", "level": 48, "maxLevel": 50 },
+    { "species": "Lombre", "level": 48, "maxLevel": 50 },
+    { "species": "Lombre", "level": 48, "maxLevel": 50 },
+    { "species": "Lombre", "level": 49, "maxLevel": 50 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 15 },
+    { "species": "Poliwag", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Basculin", "level": 35 }
+  ],
+  "superRodRate": 75
 }

@@ -108,6 +108,11 @@ namespace PokemonPlatinumTests.Probes.OpenWorld
         public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
         public static System.DateTime Now() => PokemonPlatinumEngine.Core.WallClock.UtcNow;
         public static void Aside() => System.Threading.Tasks.Parallel.For(0, 2, _ => { });
+
+        // A navigation mesh built at run time (plan 32 · OW4: only the file's reader makes one)
+        public static object Navigation() => new PokemonPlatinumEngine.OpenWorld.OpenNavMesh(
+            System.Array.Empty<PokemonPlatinumEngine.OpenWorld.OpenPos>(), System.Array.Empty<PokemonPlatinumEngine.OpenWorld.OpenNavPolygon>(),
+            System.Array.Empty<PokemonPlatinumEngine.OpenWorld.OpenNavLink>());
     }
 }
 

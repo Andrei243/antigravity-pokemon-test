@@ -1,0 +1,17 @@
+# Coumarine City's east house (plan 23, Kalos's water; docs/mechanics/rulings.md, "Kalos's Gyms, its water and the
+# Mamoswine ride"). The lines are our own, on X and Y's beat as it is publicly described: a fisherman of the port gives
+# the Good Rod. The house stands in for the port, which the city's drawing doesn't have.
+
+
+script GoodRod
+  face self player
+  if flag FLAG_KALOS_RECEIVED_GOOD_ROD goto After
+  say "I fish the harbour every morning before the flower sellers are up. The bigger ones won't look at an old rod."
+  say "You've got the look of an angler. Take my spare Good Rod and see what the deeper water holds."
+  give "Good Rod"
+  setflag FLAG_KALOS_RECEIVED_GOOD_ROD
+  say "Out by the coast you'll pull in things with claws. Mind your fingers!"
+  end
+label After
+  say "A Good Rod reaches further down. Further down is where the strange ones live."
+  end

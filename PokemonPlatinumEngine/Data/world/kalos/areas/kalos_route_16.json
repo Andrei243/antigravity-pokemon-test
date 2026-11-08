@@ -43,5 +43,34 @@
     { "species": "Furfrou", "level": 35 },
     { "species": "Meowstic", "level": 35 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Lombre", "level": 34, "maxLevel": 36 },
+    { "species": "Lombre", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 34, "maxLevel": 36 },
+    { "species": "Floatzel", "level": 35, "maxLevel": 36 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 15 },
+    { "species": "Poliwag", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Basculin", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Poliwhirl", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Poliwhirl", "level": 35 },
+    { "species": "Basculin", "level": 35 },
+    { "species": "Basculin", "level": 35 }
+  ],
+  "superRodRate": 75
 }

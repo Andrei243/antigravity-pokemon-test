@@ -42,24 +42,23 @@ public class KalosSpeciesTests
         // Given by events alone in X and Y
         ["Diancie"] = Mythicals, ["Hoopa"] = Mythicals, ["Volcanion"] = Mythicals,
         ["Yveltal"] = OtherVersion,
-        // X and Y's wild Pokémon that the drawn tables (twelve to a place, no water) have no room for yet
+        // X and Y's wild Pokémon that the drawn tables (twelve to a place) have no room for yet; the water's own came with
+        // Kalos's water (plan 23, after Z4b)
         ["Surskit"] = Wild, ["Masquerain"] = Wild, ["Carvanha"] = Wild, ["Sharpedo"] = Wild, ["Psyduck"] = Wild,
         ["Golduck"] = Wild, ["Farfetch'd"] = Wild, ["Plusle"] = Wild, ["Minun"] = Wild, ["Scraggy"] = Wild,
         ["Scrafty"] = Wild, ["Venipede"] = Wild, ["Whirlipede"] = Wild, ["Scolipede"] = Wild, ["Whismur"] = Wild,
         ["Loudred"] = Wild, ["Exploud"] = Wild, ["Meditite"] = Wild, ["Medicham"] = Wild, ["Axew"] = Wild,
         ["Fraxure"] = Wild, ["Haxorus"] = Wild, ["Zangoose"] = Wild, ["Seviper"] = Wild, ["Lunatone"] = Wild,
         ["Solrock"] = Wild, ["Bagon"] = Wild, ["Shelgon"] = Wild, ["Salamence"] = Wild, ["Dwebble"] = Wild,
-        ["Crustle"] = Wild, ["Tentacool"] = Wild, ["Tentacruel"] = Wild, ["Wailmer"] = Wild, ["Wailord"] = Wild,
-        ["Luvdisc"] = Wild, ["Shellder"] = Wild, ["Cloyster"] = Wild, ["Qwilfish"] = Wild, ["Horsea"] = Wild,
-        ["Seadra"] = Wild, ["Kingdra"] = Wild, ["Relicanth"] = Wild, ["Woobat"] = Wild, ["Swoobat"] = Wild,
+        ["Crustle"] = Wild, ["Kingdra"] = Wild, ["Woobat"] = Wild, ["Swoobat"] = Wild,
         ["Cubone"] = Wild, ["Marowak"] = Wild, ["Kangaskhan"] = Wild, ["Ferroseed"] = Wild, ["Ferrothorn"] = Wild,
         ["Nidoran♀"] = Wild, ["Mime Jr."] = Wild, ["Mr. Mime"] = Wild, ["Solosis"] = Wild, ["Duosion"] = Wild,
         ["Reuniclus"] = Wild, ["Tauros"] = Wild, ["Miltank"] = Wild, ["Mareep"] = Wild, ["Flaaffy"] = Wild,
         ["Ampharos"] = Wild, ["Pinsir"] = Wild, ["Heracross"] = Wild, ["Pachirisu"] = Wild, ["Exeggcute"] = Wild,
-        ["Exeggutor"] = Wild, ["Chatot"] = Wild, ["Mantyke"] = Wild, ["Mantine"] = Wild, ["Clamperl"] = Wild,
-        ["Huntail"] = Wild, ["Gorebyss"] = Wild, ["Remoraid"] = Wild, ["Octillery"] = Wild, ["Corsola"] = Wild,
-        ["Chinchou"] = Wild, ["Lanturn"] = Wild, ["Alomomola"] = Wild, ["Lapras"] = Wild, ["Shuckle"] = Wild,
-        ["Barboach"] = Wild, ["Whiscash"] = Wild, ["Basculin"] = Wild, ["Rotom"] = Wild, ["Trubbish"] = Wild,
+        ["Exeggutor"] = Wild, ["Chatot"] = Wild, ["Clamperl"] = Wild,
+        ["Huntail"] = Wild, ["Gorebyss"] = Wild, ["Corsola"] = Wild,
+        ["Shuckle"] = Wild,
+        ["Barboach"] = Wild, ["Whiscash"] = Wild, ["Rotom"] = Wild, ["Trubbish"] = Wild,
         ["Garbodor"] = Wild, ["Smoochum"] = Wild, ["Jynx"] = Wild, ["Dratini"] = Wild, ["Dragonair"] = Wild,
         ["Dragonite"] = Wild,
     };
@@ -69,8 +68,8 @@ public class KalosSpeciesTests
     {
         ["Leaf Stone"] = Items, ["Fire Stone"] = Items, ["Water Stone"] = Items, ["Thunder Stone"] = Items,
         ["Dawn Stone"] = Items, ["Shiny Stone"] = Items, ["Moon Stone"] = Items, ["Sun Stone"] = Items, ["Dusk Stone"] = Items,
-        ["Sachet"] = Items, ["Whipped Dream"] = Items, ["Dragon Scale"] = Items, ["Protector"] = Items,
-        ["Deep Sea Tooth"] = Items, ["Deep Sea Scale"] = Items, ["Razor Claw"] = Items, ["Razor Fang"] = Items,
+        ["Sachet"] = Items, ["Whipped Dream"] = Items, ["Protector"] = Items,
+        ["Razor Claw"] = Items, ["Razor Fang"] = Items,
         ["Linking Cord"] = Cord,
         ["Moss Rock"] = Sites, ["Ice Rock"] = Sites, ["Magnetic Field"] = Sites,
     };

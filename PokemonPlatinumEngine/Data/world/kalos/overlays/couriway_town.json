@@ -11,7 +11,8 @@
     { "warp": 1, "map": "CouriwayTown_House", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
-    "fisher": { "name": "Fisherman", "npcType": "Fisherman", "still": true, "dialog": [ "Three rivers meet under the town and go over the falls together. The fishing's never dull." ] }
+    // Plan 23, Kalos's water: he gives the Super Rod (couriway_town.txt)
+    "fisher": { "name": "Fisherman", "npcType": "Fisherman", "still": true, "script": "SuperRod" }
   },
   "signs": {
     "TownSign": "Couriway Town\nWhere the rivers meet and fall."
