@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Tapu Village"
+    ],
+    "text": [
+      "Tapu Village"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mudsdale are the island's workhorses. A Mudsdale can carry a house, they say. Mine has carried two."
+        ],
+        "text": [
+          "Mudsdale sunt caii de povară ai insulei. Se spune că un Mudsdale poate căra o casă. Al meu a cărat două."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

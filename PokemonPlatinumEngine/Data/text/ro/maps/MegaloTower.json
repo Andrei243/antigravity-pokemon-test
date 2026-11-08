@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Megalo Tower"
+    ],
+    "text": [
+      "Turnul Megalo"
+    ]
+  },
+  "people": {
+    "necrozma": {
+      "name": {
+        "en": [
+          "Necrozma"
+        ],
+        "text": [
+          "Necrozma"
+        ]
+      }
+    },
+    "veyra": {
+      "name": {
+        "en": [
+          "Veyra"
+        ],
+        "text": [
+          "Veyra"
+        ]
+      }
+    },
+    "oskin": {
+      "name": {
+        "en": [
+          "Oskin"
+        ],
+        "text": [
+          "Oskin"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

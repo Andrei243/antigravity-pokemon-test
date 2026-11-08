@@ -1,0 +1,112 @@
+{
+  "people": {
+    "plumeria": {
+      "name": {
+        "en": [
+          "Plumeria"
+        ],
+        "text": [
+          "Plumeria"
+        ]
+      }
+    },
+    "nanu": {
+      "name": {
+        "en": [
+          "Nanu"
+        ],
+        "text": [
+          "Nanu"
+        ]
+      }
+    },
+    "po1_1": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: You made it to Po Town? Not past me, yo!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Ai ajuns în Po Town? Nu de mine, yo!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Man, you're rough."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Omule, ești dur."
+        ]
+      }
+    },
+    "po2_2": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Plumeria said no visitors. That includes you!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Plumeria a zis fără vizitatori. Inclusiv tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Plumeria's gonna be mad at me."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Plumeria o să se supere pe mine."
+        ]
+      }
+    },
+    "po3_3": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Everybody who wasn't picked for a trial is in Skull, yo. Let's show you why."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Toți cei care nu au fost aleși pentru o încercare sunt în Skull, yo. Hai să-ți arătăm de ce."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt Skull Grunt: Ugh. We're not so strong after all."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Ugh. Până la urmă nu suntem chiar atât de puternici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Po Town\nA town long abandoned. Team Skull's territory."
+      ],
+      "text": [
+        "Po Town\nUn oraș abandonat de mult. Teritoriul Team Skull."
+      ]
+    }
+  }
+}

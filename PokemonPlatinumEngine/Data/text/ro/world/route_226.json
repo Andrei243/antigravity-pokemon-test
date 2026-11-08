@@ -129,6 +129,16 @@
           "Înotător Wade: De trei ori, acum. Mereu se îmbufnează când pierdem."
         ]
       }
+    },
+    "route_226.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {

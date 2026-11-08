@@ -1,0 +1,23 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The walls sparkle because of the Carbink. Folk say there's a hollow up top where the sky comes right in."
+        ],
+        "text": [
+          "Pereții sclipesc din cauza lui Carbink. Lumea zice că sus există o scobitură în care cerul intră cu totul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

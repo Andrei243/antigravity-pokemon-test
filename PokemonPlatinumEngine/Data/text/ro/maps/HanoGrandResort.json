@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Hano Grand Resort"
+    ],
+    "text": [
+      "Hano Grand Resort"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Alola, and welcome to the Hano Grand Resort! I'm afraid every room is booked this season. The beach is free, though!"
+        ],
+        "text": [
+          "Alola și bun venit la Hano Grand Resort! Din păcate, toate camerele sunt rezervate în sezonul ăsta. Plaja e liberă, însă!"
+        ]
+      }
+    },
+    "concierge": {
+      "name": {
+        "en": [
+          "Concierge"
+        ],
+        "text": [
+          "Concierge"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our guests come for the sea and stay for the sunsets. Some of them never check out at all."
+        ],
+        "text": [
+          "Oaspeții noștri vin pentru mare și rămân pentru apusuri. Unii nu pleacă deloc."
+        ]
+      }
+    },
+    "guest": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for a week and I've stayed a month. Don't tell my boss."
+        ],
+        "text": [
+          "Am venit pentru o săptămână și am rămas o lună. Să nu-i spui șefului meu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

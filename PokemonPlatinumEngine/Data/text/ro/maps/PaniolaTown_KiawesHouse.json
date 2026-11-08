@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Paniola Town"
+    ],
+    "text": [
+      "Paniola Town"
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Mother"
+        ],
+        "text": [
+          "Mamă"
+        ]
+      }
+    },
+    "sister": {
+      "name": {
+        "en": [
+          "Mimo"
+        ],
+        "text": [
+          "Mimo"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Big brother dances with fire! I'm going to dance with fire too when I'm big. Mum says not yet."
+        ],
+        "text": [
+          "Fratele meu mare dansează cu focul! Și eu o să dansez cu focul când mă fac mare. Mama zice că încă nu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

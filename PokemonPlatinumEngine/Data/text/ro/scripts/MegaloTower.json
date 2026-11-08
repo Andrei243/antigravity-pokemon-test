@@ -1,0 +1,136 @@
+{
+  "Necrozma": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "There. That prism is what took our light. It has slept on it for longer than anyone in this city has been alive."
+      ],
+      "text": [
+        "Acolo. Prisma aia ne-a luat lumina. A dormit pe ea mai mult decât a trăit oricine din orașul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "We can't wake it and hope to stand. You can. Please, {player}."
+      ],
+      "text": [
+        "Nu o putem trezi și spera să rămânem în picioare. Tu poți. Te rog, {player}."
+      ]
+    },
+    {
+      "en": [
+        "The prism cracked, and light poured out of it as a shape of black crystal unfolded, hungry for more!"
+      ],
+      "text": [
+        "Prisma s-a crăpat și lumina s-a revărsat din ea, în timp ce o formă de cristal negru se desfăcea, flămândă de mai mult!"
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "The light... It's going back. All of it, back to the sky. Look, Oskin. Look at the windows!"
+      ],
+      "text": [
+        "Lumina... Se întoarce. Toată, înapoi pe cer. Uită-te, Oskin. Uită-te la ferestre!"
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "I can see my own hands without a lamp. {player}, everyone in the city will want to thank you."
+      ],
+      "text": [
+        "Îmi văd propriile mâini fără lampă. {player}, toți din oraș vor vrea să-ți mulțumească."
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "The wormholes will close now, mostly. The ones that stay open, we'll watch. Thank you for everything."
+      ],
+      "text": [
+        "Vortexurile se vor închide acum, în mare parte. Pe cele care rămân deschise le vom supraveghea. Mulțumim pentru tot."
+      ]
+    }
+  ],
+  "Veyra": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "Necrozma has never let anyone this close. It knows you are different."
+      ],
+      "text": [
+        "Necrozma nu a lăsat pe nimeni să se apropie atât de mult. Știe că ești diferit."
+      ]
+    },
+    {
+      "en": [
+        "We were the Lightseekers. I suppose we'll need a new name now. Come back whenever you like, {player}."
+      ],
+      "text": [
+        "Am fost Lightseekers. Presupun că vom avea nevoie de un nume nou acum. Vino oricând vrei, {player}."
+      ]
+    }
+  ],
+  "Oskin": [
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "Stay behind us if you like. No? Ha. Of course not."
+      ],
+      "text": [
+        "Rămâi în spatele nostru, dacă vrei. Nu? Ha. Bineînțeles că nu."
+      ]
+    },
+    {
+      "en": [
+        "Back home on Alola, they say there's a dome where four Trainers battle at once. You should see it."
+      ],
+      "text": [
+        "Acasă în Alola se zice că există un dom în care patru Antrenori luptă deodată. Ar trebui să-l vezi."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Poké Ball Boutique"
+    ],
+    "text": [
+      "Butic de Poké Ball"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the boutique! A ball for every Pokémon, and every Pokémon deserves a beautiful ball."
+        ],
+        "text": [
+          "Bun venit la butic! O bilă pentru fiecare Pokémon, iar fiecare Pokémon merită o bilă frumoasă."
+        ]
+      }
+    },
+    "customer": {
+      "name": {
+        "en": [
+          "Customer"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came in for one Poké Ball. I am leaving with a Luxury Ball, a Heal Ball and no money."
+        ],
+        "text": [
+          "Am intrat după o singură Poké Ball. Plec cu o Ball de Lux, o Ball Vindecare și fără bani."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

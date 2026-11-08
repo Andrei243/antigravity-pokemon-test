@@ -107,6 +107,76 @@
           "Recepționera"
         ]
       }
+    },
+    "royal_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "royal_brisa": {
+      "name": {
+        "en": [
+          "Brisa"
+        ],
+        "text": [
+          "Brisa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In a Battle Royal nobody has your back. I like it that way.",
+          "Watch who is weakest, and strike before someone else takes the knock-out!"
+        ],
+        "text": [
+          "Într-un Battle Royal nu te acoperă nimeni. Așa îmi place.",
+          "Fii atent la cel mai slab și lovește înainte să-ți ia altcineva eliminarea!"
+        ]
+      }
+    },
+    "royal_corin": {
+      "name": {
+        "en": [
+          "Corin"
+        ],
+        "text": [
+          "Corin"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three foes at once, and every one of them would gladly see me fall first.",
+          "It is the knock-outs that count. Lasting to the end only counts if you have something left."
+        ],
+        "text": [
+          "Trei dușmani deodată, și fiecare m-ar vedea cu plăcere căzând primul.",
+          "Eliminările contează. Să reziști până la capăt contează doar dacă ți-a mai rămas ceva."
+        ]
+      }
+    },
+    "royal_dalla": {
+      "name": {
+        "en": [
+          "Dalla"
+        ],
+        "text": [
+          "Dalla"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No switching, no items. Just you, your Pokémon and three people in your way!",
+          "Hit hard and hit first. That's the whole secret!"
+        ],
+        "text": [
+          "Fără schimburi, fără obiecte. Doar tu, Pokémonii tăi și trei oameni în calea ta!",
+          "Lovește tare și lovește primul. Ăsta e tot secretul!"
+        ]
+      }
     }
   },
   "signs": {}

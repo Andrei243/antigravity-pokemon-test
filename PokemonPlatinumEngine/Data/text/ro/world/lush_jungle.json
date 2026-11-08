@@ -1,0 +1,77 @@
+{
+  "people": {
+    "mallow": {
+      "name": {
+        "en": [
+          "Mallow"
+        ],
+        "text": [
+          "Mallow"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Lurantis"
+        ],
+        "text": [
+          "Lurantis"
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Keala"
+        ],
+        "text": [
+          "Keala"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Keala: I came to pick fruit and found a battle instead! Lucky me!"
+        ],
+        "text": [
+          "Excursionistă Keala: Am venit să culeg fructe și am găsit o luptă! Ce noroc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Keala: Unlucky me."
+        ],
+        "text": [
+          "Excursionistă Keala: Ce ghinion."
+        ]
+      }
+    },
+    "breeder": {
+      "name": {
+        "en": [
+          "Ululani"
+        ],
+        "text": [
+          "Ululani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Ululani: The jungle's damp air is so good for a growing Pokémon. Let me show you!"
+        ],
+        "text": [
+          "Crescător Pokémon Ululani: Aerul umed al junglei e atât de bun pentru un Pokémon în creștere. Lasă-mă să-ți arăt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Ululani: It needs more damp air."
+        ],
+        "text": [
+          "Crescător Pokémon Ululani: Are nevoie de mai mult aer umed."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

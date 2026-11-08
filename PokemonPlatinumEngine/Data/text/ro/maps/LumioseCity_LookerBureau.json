@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Looker Bureau"
+    ],
+    "text": [
+      "Biroul Looker"
+    ]
+  },
+  "people": {
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          "Looker"
+        ]
+      }
+    },
+    "emma": {
+      "name": {
+        "en": [
+          "Emma"
+        ],
+        "text": [
+          "Emma"
+        ]
+      }
+    },
+    "mimi": {
+      "name": {
+        "en": [
+          "Mimi"
+        ],
+        "text": [
+          "Mimi"
+        ]
+      }
+    },
+    "butler": {
+      "name": {
+        "en": [
+          "Anatole"
+        ],
+        "text": [
+          "Anatole"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

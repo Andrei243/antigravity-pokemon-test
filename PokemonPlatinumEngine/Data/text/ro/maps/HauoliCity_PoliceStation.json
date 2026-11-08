@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Hau'oli City"
+    ],
+    "text": [
+      "Hau'oli City"
+    ]
+  },
+  "people": {
+    "officer": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          "Meowth"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

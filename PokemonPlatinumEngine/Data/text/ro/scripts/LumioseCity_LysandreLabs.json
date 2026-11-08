@@ -1,0 +1,324 @@
+{
+  "Lysandre": [
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        "Lysandre"
+      ]
+    },
+    {
+      "en": [
+        "So you came. I hoped you would. You have strength, {player}, and strength should see what I have built."
+      ],
+      "text": [
+        "Deci ai venit. Speram. Ai putere, {player}, iar puterea ar trebui să vadă ce am construit."
+      ]
+    },
+    {
+      "en": [
+        "Three thousand years ago a king of Kalos built a weapon to end a war. It ended far more than that."
+      ],
+      "text": [
+        "Acum trei mii de ani, un rege din Kalos a construit o armă să pună capăt unui război. A pus capăt la mult mai mult de atât."
+      ]
+    },
+    {
+      "en": [
+        "I mean to use it again. Not for war: to sweep the world clean, and leave it to the few who deserve it."
+      ],
+      "text": [
+        "Intenționez s-o folosesc din nou. Nu pentru război: să curăț lumea și s-o las celor puțini care o merită."
+      ]
+    },
+    {
+      "en": [
+        "You disagree? Then show me your answer the only way it matters."
+      ],
+      "text": [
+        "Nu ești de acord? Atunci arată-mi răspunsul tău în singurul fel care contează."
+      ]
+    },
+    {
+      "en": [
+        "Your answer is strong. It changes nothing. The weapon lies under Geosenge Town, and it is already waking."
+      ],
+      "text": [
+        "Răspunsul tău e puternic. Nu schimbă nimic. Arma se află sub Geosenge Town și deja se trezește."
+      ]
+    },
+    {
+      "en": [
+        "Come and watch the world become beautiful, if you like."
+      ],
+      "text": [
+        "Vino și privește cum lumea devine frumoasă, dacă vrei."
+      ]
+    }
+  ],
+  "ScientistClothilde": [
+    {
+      "en": [
+        "Clothilde"
+      ],
+      "text": [
+        "Clothilde"
+      ]
+    },
+    {
+      "en": [
+        "Visitors? Dr. Xerosic is not to be disturbed. His work is nearly finished!"
+      ],
+      "text": [
+        "Vizitatori? Dr. Xerosic nu trebuie deranjat. Munca lui e aproape gata!"
+      ]
+    },
+    {
+      "en": [
+        "Disturbed anyway. He won't be pleased."
+      ],
+      "text": [
+        "Deranjat oricum. Nu va fi mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "The suit was only ever a test. Nobody was supposed to get hurt. That's what he told us."
+      ],
+      "text": [
+        "Costumul a fost doar un test. Nimeni nu trebuia să fie rănit. Așa ne-a spus."
+      ]
+    }
+  ],
+  "ScientistErnest": [
+    {
+      "en": [
+        "Ernest"
+      ],
+      "text": [
+        "Ernest"
+      ]
+    },
+    {
+      "en": [
+        "Team Flare is finished, but science goes on! Out of the way!"
+      ],
+      "text": [
+        "Team Flare s-a terminat, dar știința continuă! Din drum!"
+      ]
+    },
+    {
+      "en": [
+        "Science goes on... somewhere else, I suppose."
+      ],
+      "text": [
+        "Știința continuă... în altă parte, presupun."
+      ]
+    },
+    {
+      "en": [
+        "I'm going back to teaching. Children never control anybody with a suit."
+      ],
+      "text": [
+        "Mă întorc la predat. Copiii nu controlează niciodată pe nimeni cu un costum."
+      ]
+    }
+  ],
+  "Essentia": [
+    {
+      "en": [
+        "Essentia"
+      ],
+      "text": [
+        "Essentia"
+      ]
+    },
+    {
+      "en": [
+        "Intruder. Remove intruder."
+      ],
+      "text": [
+        "Intrus. Eliminați intrusul."
+      ]
+    },
+    {
+      "en": [
+        "{player} called out to the figure in the suit by Emma's name. It did not answer to it."
+      ],
+      "text": [
+        "{player} a strigat figura din costum pe numele Emmei. Nu a răspuns la el."
+      ]
+    },
+    {
+      "en": [
+        "Essentia"
+      ],
+      "text": [
+        "Essentia"
+      ]
+    },
+    {
+      "en": [
+        "Remove... intruder."
+      ],
+      "text": [
+        "Eliminați... intrusul."
+      ]
+    },
+    {
+      "en": [
+        "Order repeats. Remove intruder."
+      ],
+      "text": [
+        "Ordinul se repetă. Eliminați intrusul."
+      ]
+    },
+    {
+      "en": [
+        "Remove... {player}... Remove..."
+      ],
+      "text": [
+        "Eliminați... {player}... Eliminați..."
+      ]
+    },
+    {
+      "en": [
+        "A small grey Pokémon darted in past the machines and cried out at the figure in the suit: Mimi!"
+      ],
+      "text": [
+        "Un Pokémon mic și cenușiu a țâșnit pe lângă mașinării și a strigat la figura din costum: Mimi!"
+      ]
+    },
+    {
+      "en": [
+        "Essentia"
+      ],
+      "text": [
+        "Essentia"
+      ]
+    },
+    {
+      "en": [
+        "Mimi...? Mimi! {player}? Where am I? The suit... I can't take it off!"
+      ],
+      "text": [
+        "Mimi...? Mimi! {player}? Unde sunt? Costumul... nu pot să-l scot!"
+      ]
+    },
+    {
+      "en": [
+        "Xerosic"
+      ],
+      "text": [
+        "Xerosic"
+      ]
+    },
+    {
+      "en": [
+        "Remarkable. A Pokémon's cry, stronger than my signal. I did not account for affection."
+      ],
+      "text": [
+        "Remarcabil. Strigătul unui Pokémon, mai puternic decât semnalul meu. N-am luat în calcul afecțiunea."
+      ]
+    },
+    {
+      "en": [
+        "..."
+      ],
+      "text": [
+        "..."
+      ]
+    },
+    {
+      "en": [
+        "The figure in the dark suit stands perfectly still, as if waiting for an order."
+      ],
+      "text": [
+        "Figura în costum închis stă perfect nemișcată, ca și cum ar aștepta un ordin."
+      ]
+    },
+    {
+      "en": [
+        "Make him take it off, {player}. Please."
+      ],
+      "text": [
+        "Fă-l să-l scoată, {player}. Te rog."
+      ]
+    }
+  ],
+  "Xerosic": [
+    {
+      "en": [
+        "Xerosic"
+      ],
+      "text": [
+        "Xerosic"
+      ]
+    },
+    {
+      "en": [
+        "You beat my scientists, and then my best experiment, three times. And a little Espurr finished the job."
+      ],
+      "text": [
+        "Mi-ai învins oamenii de știință, apoi cel mai bun experiment al meu, de trei ori. Și un Espurr mic a terminat treaba."
+      ]
+    },
+    {
+      "en": [
+        "Lysandre wanted to remake the world. I only wanted to see what a person could become, with the right suit."
+      ],
+      "text": [
+        "Lysandre a vrut să refacă lumea. Eu am vrut doar să văd ce poate deveni un om, cu costumul potrivit."
+      ]
+    },
+    {
+      "en": [
+        "Very well. The signal is off. The suit is hers now, with nobody's orders in it but her own."
+      ],
+      "text": [
+        "Foarte bine. Semnalul e oprit. Costumul e al ei acum, fără ordinele nimănui în el, în afară de ale ei."
+      ]
+    },
+    {
+      "en": [
+        "Essentia"
+      ],
+      "text": [
+        "Essentia"
+      ]
+    },
+    {
+      "en": [
+        "...It still fits. Maybe I'll keep it. A bureau needs a secret agent, right?"
+      ],
+      "text": [
+        "...Încă mi se potrivește. Poate îl păstrez. Un birou are nevoie de un agent secret, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Xerosic"
+      ],
+      "text": [
+        "Xerosic"
+      ]
+    },
+    {
+      "en": [
+        "I suppose your detective will want to arrest me. Tell him I will be waiting at the café, with a very black coffee."
+      ],
+      "text": [
+        "Presupun că detectivul tău va vrea să mă aresteze. Spune-i că îl voi aștepta la cafenea, cu o cafea foarte neagră."
+      ]
+    },
+    {
+      "en": [
+        "My scientists will deal with you. And if not them, Essentia will. Do watch, it is quite something."
+      ],
+      "text": [
+        "Oamenii mei de știință se vor ocupa de tine. Iar dacă nu ei, Essentia. Uită-te, e ceva demn de văzut."
+      ]
+    }
+  ]
+}

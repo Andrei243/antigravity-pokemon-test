@@ -1,0 +1,92 @@
+{
+  "people": {
+    "makalii": {
+      "name": {
+        "en": [
+          "Makalii"
+        ],
+        "text": [
+          "Makalii"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Makalii: The mountain looks quiet from here. It's not."
+        ],
+        "text": [
+          "Antrenor As Makalii: Muntele pare liniștit de aici. Nu e."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Makalii: It's louder than I thought."
+        ],
+        "text": [
+          "Antrenor As Makalii: E mai zgomotos decât credeam."
+        ]
+      }
+    },
+    "akoni": {
+      "name": {
+        "en": [
+          "Akoni"
+        ],
+        "text": [
+          "Akoni"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Akoni: Lanakila is the tallest mountain in Alola. Big mountains, big Pokémon!"
+        ],
+        "text": [
+          "Drumeț Akoni: Lanakila e cel mai înalt munte din Alola. Munți mari, Pokémoni mari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Akoni: The mountain wins either way."
+        ],
+        "text": [
+          "Drumeț Akoni: Muntele câștigă oricum."
+        ]
+      }
+    },
+    "keala": {
+      "name": {
+        "en": [
+          "Keala"
+        ],
+        "text": [
+          "Keala"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Keala: I keep a bag of surprises. This team is one."
+        ],
+        "text": [
+          "Rucsăcar Keala: Țin un rucsac de surprize. Echipa asta e una."
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Keala: You were the surprise."
+        ],
+        "text": [
+          "Rucsăcar Keala: Tu ai fost surpriza."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 13\nNorth: the foot of Mount Lanakila"
+      ],
+      "text": [
+        "Ruta 13\nNord: poalele muntelui Lanakila"
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Tapu Village Stables"
+    ],
+    "text": [
+      "Grajdurile din Tapu Village"
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Stable Hand"
+        ],
+        "text": [
+          "Grăjdarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Look, the Mudsdale trots over rocks you could never cross on foot. Ride one, and you'll never walk the ridge again."
+        ],
+        "text": [
+          "Uite, Mudsdale trotează peste stânci pe care nu le-ai putea trece niciodată pe jos. Încalecă unul și n-o să mai mergi pe creastă pe picioare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

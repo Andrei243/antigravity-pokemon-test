@@ -1,0 +1,137 @@
+{
+  "displayName": {
+    "en": [
+      "Team Flare Secret HQ"
+    ],
+    "text": [
+      "Sediul secret Team Flare"
+    ]
+  },
+  "people": {
+    "kalos_flare_grunt_hq_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: How did you find the door? It's hidden under a flower bed!"
+        ],
+        "text": [
+          "Membru Team Flare: Cum ai găsit ușa? E ascunsă sub un strat de flori!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Under a flower bed... and now under your boot."
+        ],
+        "text": [
+          "Membru Team Flare: Sub un strat de flori... iar acum sub cizma ta."
+        ]
+      }
+    },
+    "kalos_flare_grunt_hq_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: The weapon will make the world beautiful. Don't you want a beautiful world?"
+        ],
+        "text": [
+          "Membru Team Flare: Arma va face lumea frumoasă. Nu vrei o lume frumoasă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Not like that, apparently."
+        ],
+        "text": [
+          "Membru Team Flare: Nu așa, se pare."
+        ]
+      }
+    },
+    "kalos_celosia_1": {
+      "name": {
+        "en": [
+          "Celosia"
+        ],
+        "text": [
+          "Celosia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Admin Celosia: You won't take one more step toward the boss. That would be so unfashionable."
+        ],
+        "text": [
+          "Administrator Team Flare Celosia: Nu mai faci niciun pas spre șef. Ar fi atât de nemodern."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Admin Celosia: So unfashionable to lose..."
+        ],
+        "text": [
+          "Administrator Team Flare Celosia: Atât de nemodern să pierzi..."
+        ]
+      }
+    },
+    "kalos_bryony_1": {
+      "name": {
+        "en": [
+          "Bryony"
+        ],
+        "text": [
+          "Bryony"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Admin Bryony: Calculations say you stop here. I've never once been wrong."
+        ],
+        "text": [
+          "Administrator Team Flare Bryony: Calculele spun că te oprești aici. Nu m-am înșelat niciodată."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Admin Bryony: I have now. How interesting."
+        ],
+        "text": [
+          "Administrator Team Flare Bryony: Acum da. Ce interesant."
+        ]
+      }
+    },
+    "lysandre": {
+      "name": {
+        "en": [
+          "Lysandre"
+        ],
+        "text": [
+          "Lysandre"
+        ]
+      }
+    },
+    "xerneas": {
+      "name": {
+        "en": [
+          "Xerneas"
+        ],
+        "text": [
+          "Xerneas"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

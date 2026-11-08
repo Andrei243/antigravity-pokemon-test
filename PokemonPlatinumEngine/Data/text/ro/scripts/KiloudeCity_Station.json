@@ -1,0 +1,62 @@
+{
+  "Tmv": [
+    {
+      "en": [
+        "TMV Attendant"
+      ],
+      "text": [
+        "Funcționarul TMV"
+      ]
+    },
+    {
+      "en": [
+        "The next train leaves for Lumiose City. Will you be travelling?"
+      ],
+      "text": [
+        "Următorul tren pleacă spre Lumiose City. Călătorești?"
+      ]
+    },
+    {
+      "en": [
+        "Your pass, please... Thank you. All aboard!"
+      ],
+      "text": [
+        "Legitimația, vă rog... Mulțumesc. Îmbarcarea!"
+      ]
+    },
+    {
+      "en": [
+        "The trains run all day. Enjoy the sea air in the meantime!"
+      ],
+      "text": [
+        "Trenurile circulă toată ziua. Între timp, bucură-te de aerul mării!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory in Lumiose City."
+      ],
+      "text": [
+        "Îmi pare rău, TMV e doar pentru deținătorii de legitimație. Legitimațiile se dau la laboratorul Profesorului Sycamore din Lumiose City."
+      ]
+    }
+  ],
+  "Commuter": [
+    {
+      "en": [
+        "Commuter"
+      ],
+      "text": [
+        "Navetistul"
+      ]
+    },
+    {
+      "en": [
+        "I live in Lumiose and battle in Kiloude. The train is the only quiet half hour of my day."
+      ],
+      "text": [
+        "Locuiesc în Lumiose și lupt în Kiloude. Trenul e singura jumătate de oră liniștită din ziua mea."
+      ]
+    }
+  ]
+}

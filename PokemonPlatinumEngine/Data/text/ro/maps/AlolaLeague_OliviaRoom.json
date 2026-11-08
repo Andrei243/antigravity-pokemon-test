@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "olivia": {
+      "name": {
+        "en": [
+          "Olivia"
+        ],
+        "text": [
+          "Olivia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

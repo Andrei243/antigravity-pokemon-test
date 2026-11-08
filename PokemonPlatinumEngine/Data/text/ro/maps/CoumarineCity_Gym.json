@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Coumarine Gym"
+    ],
+    "text": [
+      "Sala Coumarine"
+    ]
+  },
+  "people": {
+    "ramos": {
+      "name": {
+        "en": [
+          "Ramos"
+        ],
+        "text": [
+          "Ramos"
+        ]
+      }
+    },
+    "gym_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de sală"
+        ]
+      }
+    },
+    "kalos_gardener_flora": {
+      "name": {
+        "en": [
+          "Flora"
+        ],
+        "text": [
+          "Flora"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Flora: The Leader grew every plant in this Gym from seed. Mind the leaves!"
+        ],
+        "text": [
+          "Excursionistă Flora: Liderul a crescut fiecare plantă din sala asta din sămânță. Ai grijă la frunze!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Flora: Trampled flat..."
+        ],
+        "text": [
+          "Excursionistă Flora: Călcată în picioare..."
+        ]
+      }
+    },
+    "kalos_hiker_sylvain": {
+      "name": {
+        "en": [
+          "Sylvain"
+        ],
+        "text": [
+          "Sylvain"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Sylvain: I climbed every vine in this place. Now I'll climb over you!"
+        ],
+        "text": [
+          "Drumeț Sylvain: Am urcat fiecare liană din locul ăsta. Acum urc peste tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Sylvain: Fell off the vine, I did."
+        ],
+        "text": [
+          "Drumeț Sylvain: Am căzut de pe liană."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

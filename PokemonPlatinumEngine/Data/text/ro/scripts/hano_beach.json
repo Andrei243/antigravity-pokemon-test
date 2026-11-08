@@ -1,0 +1,114 @@
+{
+  "HanoScene": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got Olivia's stamp? That's two islands done! We should celebrate. With malasadas."
+      ],
+      "text": [
+        "{player}! Ai luat ștampila Oliviei? Două insule gata! Ar trebui să sărbătorim. Cu malasada."
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Congratulations, {player}. I knew you could do it."
+      ],
+      "text": [
+        "Felicitări, {player}. Știam că poți."
+      ]
+    },
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello again! I've been telling your friends about Aether Paradise. Our ship can take all three of you."
+      ],
+      "text": [
+        "Oh, salut din nou! Le-am povestit prietenilor tăi despre Aether Paradise. Vasul nostru vă poate lua pe toți trei."
+      ]
+    },
+    {
+      "en": [
+        "The Aether Foundation would be honoured to have you as our guests. Do think about it!"
+      ],
+      "text": [
+        "Fundația Aether ar fi onorată să vă aibă oaspeți. Gândiți-vă la asta!"
+      ]
+    }
+  ],
+  "Lillie": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "The sea here is so blue. I could watch it all day."
+      ],
+      "text": [
+        "Marea de aici e atât de albastră. Aș putea s-o privesc toată ziua."
+      ]
+    }
+  ],
+  "Hau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "The resort's malasadas cost twice as much. They're also twice as big!"
+      ],
+      "text": [
+        "Malasada de la stațiune costă dublu. Sunt și de două ori mai mari!"
+      ]
+    }
+  ],
+  "Wicke": [
+    {
+      "en": [
+        "Wicke"
+      ],
+      "text": [
+        "Wicke"
+      ]
+    },
+    {
+      "en": [
+        "Aether Paradise is lovely this time of year. Well, it's lovely every time of year."
+      ],
+      "text": [
+        "Aether Paradise e încântător în perioada asta a anului. Păi, e încântător în orice perioadă."
+      ]
+    }
+  ]
+}

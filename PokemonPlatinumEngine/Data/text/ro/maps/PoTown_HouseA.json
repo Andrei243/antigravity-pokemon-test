@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Po Town"
+    ],
+    "text": [
+      "Po Town"
+    ]
+  },
+  "people": {
+    "grunt": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The roof fell in years ago. Somebody swept it up anyway."
+        ],
+        "text": [
+          "Acoperișul s-a prăbușit acum ani. Cineva l-a măturat oricum."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

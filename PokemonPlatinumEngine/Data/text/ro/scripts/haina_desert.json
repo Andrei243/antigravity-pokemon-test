@@ -1,0 +1,44 @@
+{
+  "Hapu": [
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        "Hapu"
+      ]
+    },
+    {
+      "en": [
+        "So you found your way through the sand. Not bad. Mudsdale and I came straight across."
+      ],
+      "text": [
+        "Deci ai găsit drumul prin nisip. Nu e rău. Mudsdale și cu mine am venit direct."
+      ]
+    },
+    {
+      "en": [
+        "These are the Ruins of Abundance. Tapu Bulu sleeps in there. People say it gives the land its harvests, and takes them back when it's cross."
+      ],
+      "text": [
+        "Astea sunt Ruinele Abundenței. Tapu Bulu doarme acolo. Se zice că dă pământului recoltele și le ia înapoi când e supărat."
+      ]
+    },
+    {
+      "en": [
+        "Poni has a guardian too, but no kahuna. Not since my grandfather. Everyone is waiting for someone to step up."
+      ],
+      "text": [
+        "Poni are și ea un ocrotitor, dar nicio kahuna. Nu de pe vremea bunicului meu. Toți așteaptă pe cineva care să facă pasul."
+      ]
+    },
+    {
+      "en": [
+        "Maybe someone will. I'm going home to find out. Come to Poni when you've finished here, {player}."
+      ],
+      "text": [
+        "Poate cineva o va face. Mă duc acasă să aflu. Vino în Poni când termini aici, {player}."
+      ]
+    }
+  ]
+}

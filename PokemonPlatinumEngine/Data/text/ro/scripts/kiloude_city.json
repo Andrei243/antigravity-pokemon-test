@@ -1,0 +1,198 @@
+{
+  "Az": [
+    {
+      "en": [
+        "AZ"
+      ],
+      "text": [
+        "AZ"
+      ]
+    },
+    {
+      "en": [
+        "Hm? A young Trainer, out on the old landing. Not many walk this far."
+      ],
+      "text": [
+        "Hm? Un tânăr Antrenor, pe vechiul debarcader. Nu mulți ajung atât de departe."
+      ]
+    },
+    {
+      "en": [
+        "I am called AZ. I was a king, once. A very long time ago."
+      ],
+      "text": [
+        "Mă numesc AZ. Am fost rege, odinioară. Cu foarte mult timp în urmă."
+      ]
+    },
+    {
+      "en": [
+        "My land was at war, and I could not stop it. So I built a machine that could. A weapon, the greatest ever made."
+      ],
+      "text": [
+        "Țara mea era în război și nu l-am putut opri. Așa că am construit o mașinărie care putea. O armă, cea mai mare făcută vreodată."
+      ]
+    },
+    {
+      "en": [
+        "It ended the war. It also took the life of a small Floette who had been my dearest friend."
+      ],
+      "text": [
+        "A pus capăt războiului. A luat și viața unui Floette mic care îmi fusese cel mai drag prieten."
+      ]
+    },
+    {
+      "en": [
+        "I could not bear it. I gave my own life to the machine to find her. I have waited here, in one form or another, ever since."
+      ],
+      "text": [
+        "N-am putut îndura. Mi-am dat propria viață mașinăriei ca s-o găsesc. Am așteptat aici, într-o formă sau alta, de atunci."
+      ]
+    },
+    {
+      "en": [
+        "They tell me you have walked all of Kalos and stood in the Hall of Fame. You have shown that Pokémon and people can be strong together."
+      ],
+      "text": [
+        "Mi se spune că ai străbătut tot Kalos și ai stat în Sala Faimei. Ai arătat că Pokémonii și oamenii pot fi puternici împreună."
+      ]
+    },
+    {
+      "en": [
+        "I would like to see it for myself. Not a weapon. A bond. Show me!"
+      ],
+      "text": [
+        "Aș vrea să văd și eu asta. Nu o armă. O legătură. Arată-mi!"
+      ]
+    },
+    {
+      "en": [
+        "Ah... yes. That is what I forgot. Power is not what the war was missing. It was this."
+      ],
+      "text": [
+        "Ah... da. Asta am uitat. Puterea nu era ce lipsea războiului. Asta lipsea."
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}. Perhaps the long wait has been worth it. Take these, with an old man's thanks."
+      ],
+      "text": [
+        "Mulțumesc, {player}. Poate așteptarea lungă a meritat. Ia-le, cu mulțumirile unui bătrân."
+      ]
+    },
+    {
+      "en": [
+        "Some days I sit here and listen to the sea. It does not ask for anything. I am learning from it."
+      ],
+      "text": [
+        "Unele zile stau aici și ascult marea. Nu cere nimic. Învăț de la ea."
+      ]
+    }
+  ],
+  "RivalKiloude": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I came out on the first train. Kiloude's the end of the line, so I knew you'd turn up here sooner or later."
+      ],
+      "text": [
+        "{player}! Am venit cu primul tren. Kiloude e capătul liniei, așa că am știut că vei apărea aici mai devreme sau mai târziu."
+      ]
+    },
+    {
+      "en": [
+        "Champion, huh? I'm not jealous. Much. But I haven't stopped chasing you. Battle me!"
+      ],
+      "text": [
+        "Campion, hm? Nu-s gelos. Prea tare. Dar nu am încetat să te urmăresc. Luptă cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Still the Champion. All right. I'll keep training up here, where the wind off the sea is strong."
+      ],
+      "text": [
+        "Tot Campionul. Bine. Voi continua să mă antrenez aici, unde vântul de pe mare e puternic."
+      ]
+    },
+    {
+      "en": [
+        "Take this. I found it on the beach, of all places. It's a Mega Stone, for an Absol. It'll do more good with you."
+      ],
+      "text": [
+        "Ia asta. Am găsit-o pe plajă, dintre toate locurile. E o Piatră Mega, pentru un Absol. Va face mai mult bine la tine."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and the professor rang. He wants to meet you by the sundial in Anistar City. Something about your Key Stone."
+      ],
+      "text": [
+        "A, și profesorul a sunat. Vrea să te întâlnească la cadranul solar din Anistar City. Ceva despre Piatra-Cheie."
+      ]
+    },
+    {
+      "en": [
+        "I won? I won! Come back when you're ready. I'm not going anywhere."
+      ],
+      "text": [
+        "Am câștigat? Am câștigat! Revino când ești gata. Eu nu plec nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "Another battle? I train up here every day."
+      ],
+      "text": [
+        "Altă luptă? Mă antrenez aici în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Same time tomorrow?"
+      ],
+      "text": [
+        "La aceeași oră mâine?"
+      ]
+    },
+    {
+      "en": [
+        "Whenever you like. The sea's not going anywhere, and neither am I."
+      ],
+      "text": [
+        "Oricând vrei. Marea nu pleacă nicăieri, nici eu."
+      ]
+    },
+    {
+      "en": [
+        "That's enough for one day. Come back tomorrow, and I'll be stronger!"
+      ],
+      "text": [
+        "Destul pentru o zi. Revino mâine, iar eu voi fi mai puternic!"
+      ]
+    }
+  ]
+}

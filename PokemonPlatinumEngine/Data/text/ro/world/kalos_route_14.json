@@ -1,0 +1,76 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Célestine"
+        ],
+        "text": [
+          "Célestine"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Célestine: These pools are full of shy Pokémon. You'll scare them off! Battle me instead!"
+        ],
+        "text": [
+          "Domnișoară Célestine: Bălțile astea sunt pline de Pokémoni timizi. Îi vei speria! Luptă cu mine în schimb!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Célestine: Shh. You'll wake the whole marsh."
+        ],
+        "text": [
+          "Domnișoară Célestine: Șșș. Vei trezi toată mlaștina."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Odile"
+        ],
+        "text": [
+          "Odile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Odile: Nobody else picnics in a swamp. That's why it's my favourite spot!"
+        ],
+        "text": [
+          "Excursionistă Odile: Nimeni altcineva nu face picnic într-o mlaștină. De aceea e locul meu preferat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Odile: My sandwiches got soggy anyway."
+        ],
+        "text": [
+          "Excursionistă Odile: Sandvișurile mele s-au muiat oricum."
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 14\nNorth: Laverre City\nSouth: Lumiose City"
+      ],
+      "text": [
+        "Ruta 14\nNord: Laverre City\nSud: Lumiose City"
+      ]
+    }
+  }
+}

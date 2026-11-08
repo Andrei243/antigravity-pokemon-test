@@ -1,0 +1,70 @@
+{
+  "people": {
+    "az": {
+      "name": {
+        "en": [
+          "AZ"
+        ],
+        "text": [
+          "AZ"
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The pier is the best seat in Kalos. Everything the sea brings in passes under my feet."
+        ],
+        "text": [
+          "Debarcaderul e cel mai bun loc din Kalos. Tot ce aduce marea trece pe sub picioarele mele."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past the pier there is a landing nobody uses. An old man goes there some days, and just looks at the water."
+        ],
+        "text": [
+          "După debarcader e o plajă pe care n-o folosește nimeni. Un bătrân merge acolo în unele zile și doar se uită la apă."
+        ]
+      }
+    },
+    "rival_kiloude": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Kiloude City\nThe sea begins at the end of the street."
+      ],
+      "text": [
+        "Kiloude City\nMarea începe la capătul străzii."
+      ]
+    }
+  }
+}

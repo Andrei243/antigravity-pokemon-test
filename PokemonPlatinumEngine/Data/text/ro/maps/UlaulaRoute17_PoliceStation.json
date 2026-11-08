@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Route 17"
+    ],
+    "text": [
+      "Ruta 17"
+    ]
+  },
+  "people": {
+    "meowth_1": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          "Meowth"
+        ]
+      }
+    },
+    "meowth_2": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          "Meowth"
+        ]
+      }
+    },
+    "meowth_3": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          "Meowth"
+        ]
+      }
+    },
+    "officer": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

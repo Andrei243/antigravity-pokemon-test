@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Po Town"
+    ],
+    "text": [
+      "Po Town"
+    ]
+  },
+  "people": {
+    "guzma": {
+      "name": {
+        "en": [
+          "Guzma"
+        ],
+        "text": [
+          "Guzma"
+        ]
+      }
+    },
+    "grunt_1": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "grunt_2": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

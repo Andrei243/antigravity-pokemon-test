@@ -1,0 +1,88 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    },
+    "kukui": {
+      "name": {
+        "en": [
+          "Prof. Kukui"
+        ],
+        "text": [
+          "Prof. Kukui"
+        ]
+      }
+    },
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Malie City is the garden city, did you know? There's a library, a tea house, a grand garden... and a trial on the mountain."
+        ],
+        "text": [
+          "Malie City e orașul grădinilor, știai? Are o bibliotecă, o ceainărie, o grădină mare... și o încercare pe munte."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The mountain behind the city has an observatory on top. The captain there keeps a lot of electric Pokémon."
+        ],
+        "text": [
+          "Muntele din spatele orașului are un observator în vârf. Căpitanul de acolo are o mulțime de Pokémoni electrici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Malie City\nA city of gardens and a library, on the shore of Ula'ula Island."
+      ],
+      "text": [
+        "Malie City\nUn oraș de grădini și o bibliotecă, pe țărmul insulei Ula'ula."
+      ]
+    },
+    "RouteSign": {
+      "en": [
+        "Route 10\nNorth: Mount Hokulani and its observatory"
+      ],
+      "text": [
+        "Ruta 10\nNord: Mount Hokulani și observatorul lui"
+      ]
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! Welcome, {player}! You made it, cousin. The Elite Four are down, and nobody sits in this room's chair yet."
+      ],
+      "text": [
+        "Woo! Bun venit, {player}! Ai reușit, verișorule. Elita celor Patru e învinsă și nimeni nu stă încă pe scaunul din camera asta."
+      ]
+    },
+    {
+      "en": [
+        "I built this League with Hala and the others, because I wanted you kids to have something to aim for."
+      ],
+      "text": [
+        "Am construit Liga asta împreună cu Hala și ceilalți, pentru că am vrut ca voi, copiii, să aveți ceva spre care să țintiți."
+      ]
+    },
+    {
+      "en": [
+        "I wanted to be the first to try you out. Let's go. Show me every move you've learned!"
+      ],
+      "text": [
+        "Am vrut să fiu primul care te pune la încercare. Hai! Arată-mi fiecare mișcare pe care ai învățat-o!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "...Woo! Woooo! Yeah! That's what I'm talking about! You took me full on, and you came out on top!"
+      ],
+      "text": [
+        "...Woo! Wooooo! Da! Despre asta vorbesc! M-ai înfruntat direct și ai ieșit învingător!"
+      ]
+    },
+    {
+      "en": [
+        "Alola has its first Champion, {player}. The chair's yours. Come on, the Hall of Fame is just through here."
+      ],
+      "text": [
+        "Alola are primul ei Campion, {player}. Scaunul e al tău. Hai, Sala Faimei e chiar pe aici."
+      ]
+    },
+    {
+      "en": [
+        "The Hall of Fame is through here."
+      ],
+      "text": [
+        "Sala Faimei e pe aici."
+      ]
+    },
+    {
+      "en": [
+        "Champion! A challenger has made it through all four of the Elite Four. You know what that means. Defend that title!"
+      ],
+      "text": [
+        "Campionule! Un provocator a trecut de toți cei patru din Elita celor Patru. Știi ce înseamnă asta. Apără-ți titlul!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "...Woo! The Champion of Alola keeps the title! Come on, the Hall of Fame wants to hear about this."
+      ],
+      "text": [
+        "...Woo! Campionul Alolei își păstrează titlul! Hai, Sala Faimei vrea să audă despre asta."
+      ]
+    }
+  ],
+  "DefendAgainstHau": [
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Surprise! I trained every single day since the last time. Today I'm taking that chair, {player}. For real!"
+      ],
+      "text": [
+        "Surpriză! M-am antrenat în fiecare zi de data trecută. Azi îți iau scaunul ăla, {player}. Pe bune!"
+      ]
+    },
+    {
+      "en": [
+        "Hau"
+      ],
+      "text": [
+        "Hau"
+      ]
+    },
+    {
+      "en": [
+        "Aw, man... I really thought this was the day. Okay! Malasadas, then training. In that order."
+      ],
+      "text": [
+        "Aw, omule... chiar credeam că azi e ziua. Bine! Malasada, apoi antrenament. În ordinea asta."
+      ]
+    }
+  ],
+  "DefendAgainstGladion": [
+    {
+      "en": [
+        "Gladion"
+      ],
+      "text": [
+        "Gladion"
+      ]
+    },
+    {
+      "en": [
+        "I didn't come here to make friends. I came here because you're the one to beat. Let's go."
+      ],
+      "text": [
+        "N-am venit aici ca să-mi fac prieteni. Am venit pentru că tu ești cel care trebuie învins. Hai."
+      ]
+    },
+    {
+      "en": [
+        "Gladion"
+      ],
+      "text": [
+        "Gladion"
+      ]
+    },
+    {
+      "en": [
+        "...Fine. You're still the strongest. I'll be back, and next time it won't be fine."
+      ],
+      "text": [
+        "...Bine. Tot tu ești cel mai puternic. Mă întorc, iar data viitoare n-o să mai fie bine."
+      ]
+    }
+  ],
+  "DefendAgainstHapu": [
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        "Hapu"
+      ]
+    },
+    {
+      "en": [
+        "A kahuna should know where she stands. So I climbed the mountain to find out. Don't you dare hold back."
+      ],
+      "text": [
+        "O kahuna trebuie să știe unde se află. Așa că am urcat muntele ca să aflu. Nici să nu te gândești să te reții."
+      ]
+    },
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        "Hapu"
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Poni's ground is solid, and so are you. I'll tell the island the Champion is in good hands."
+      ],
+      "text": [
+        "Hmph. Pământul din Poni e solid, și tu la fel. Voi spune insulei că Campionul e pe mâini bune."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Hotel Richissime"
+    ],
+    "text": [
+      "Hotel Richissime"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Hotel Richissime. Our rooms are, I'm afraid, all taken this season."
+        ],
+        "text": [
+          "Bun venit la Hotel Richissime. Camerele noastre sunt, din păcate, toate ocupate în sezonul ăsta."
+        ]
+      }
+    },
+    "guest": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have stayed here every spring for twenty years. The lobby still has not learned my name."
+        ],
+        "text": [
+          "Stau aici în fiecare primăvară de douăzeci de ani. Holul tot nu mi-a învățat numele."
+        ]
+      }
+    },
+    "malva": {
+      "name": {
+        "en": [
+          "Malva"
+        ],
+        "text": [
+          "Malva"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

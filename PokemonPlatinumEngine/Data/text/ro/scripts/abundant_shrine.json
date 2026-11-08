@@ -21,10 +21,7 @@
         "Then thunder rolls overhead, and a gale tears through the trees!\nSomething else has come down to the shrine!"
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Landorus s-a înălțat departe peste pădure..."
+        "Apoi tunetul bubuie deasupra, iar o vijelie sfâșie copacii!\nCeva altceva a coborât la altar!"
       ]
     },
     {
@@ -42,7 +39,7 @@
         "Tornadus whips up a howling wind!\nThe leaves of the whole wood are torn into the air!"
       ],
       "text": [
-        ""
+        "Tornadus stârnește un vânt vuitor!\nFrunzele întregii păduri sunt smulse în aer!"
       ]
     },
     {
@@ -50,7 +47,7 @@
         "The wind drops. The leaves drift back down over the shrine..."
       ],
       "text": [
-        ""
+        "Vântul scade. Frunzele coboară înapoi peste altar..."
       ]
     },
     {
@@ -58,7 +55,7 @@
         "Tornadus rode the wind away over the wood..."
       ],
       "text": [
-        ""
+        "Tornadus a plecat călare pe vânt peste pădure..."
       ]
     }
   ],
@@ -68,7 +65,7 @@
         "Thundurus cracks the sky with lightning!\nThe air of the whole clearing hums!"
       ],
       "text": [
-        ""
+        "Thundurus despică cerul cu fulgere!\nAerul întregii poiene vâjâie!"
       ]
     },
     {
@@ -76,7 +73,7 @@
         "The thunder rolls away into the distance..."
       ],
       "text": [
-        ""
+        "Tunetul se pierde în depărtare..."
       ]
     },
     {
@@ -84,7 +81,7 @@
         "Thundurus rode the storm away over the wood..."
       ],
       "text": [
-        ""
+        "Thundurus a plecat călare pe furtună peste pădure..."
       ]
     }
   ],

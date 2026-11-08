@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Kiloude City"
+    ],
+    "text": [
+      "Orașul Kiloude"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our window looks straight down the pier. Some mornings an old man is already sitting at its end, as if he never left."
+        ],
+        "text": [
+          "Fereastra noastră dă direct spre debarcader. În unele dimineți, un bătrân stă deja la capătul lui, de parcă n-ar fi plecat niciodată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

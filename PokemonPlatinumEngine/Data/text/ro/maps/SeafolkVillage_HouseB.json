@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Seafolk Village"
+    ],
+    "text": [
+      "Seafolk Village"
+    ]
+  },
+  "people": {
+    "woman": {
+      "name": {
+        "en": [
+          "Weaver"
+        ],
+        "text": [
+          "Țesătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I weave nets from sea-silk. They hold a Wailord, if you ask nicely."
+        ],
+        "text": [
+          "Țes plase din mătase de mare. Ține și un Wailord, dacă ceri frumos."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

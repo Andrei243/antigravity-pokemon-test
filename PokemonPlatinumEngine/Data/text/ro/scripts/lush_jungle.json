@@ -1,0 +1,192 @@
+{
+  "Mallow": [
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "Alola again! My trial wants a fire-tested trainer. Go see Kiawe on the volcano, then come back to me!"
+      ],
+      "text": [
+        "Alola din nou! Încercarea mea vrea un Antrenor călit în foc. Mergi la Kiawe, pe vulcan, apoi vino înapoi la mine!"
+      ]
+    },
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Lush Jungle! My trial is a cooking trial. My dish will call the totem right out of the trees!"
+      ],
+      "text": [
+        "Bun venit în Lush Jungle! Încercarea mea e una de gătit. Felul meu de mâncare va chema totemul chiar din copaci!"
+      ]
+    },
+    {
+      "en": [
+        "Find me four things among the bushes: a sweet fruit, a fragrant leaf, a tiny mushroom and a bitter herb."
+      ],
+      "text": [
+        "Găsește-mi patru lucruri printre tufe: un fruct dulce, o frunză parfumată, o ciupercă mică și o plantă amară."
+      ]
+    },
+    {
+      "en": [
+        "Each one goes straight in the pot. Then wait for the totem in the clearing up north!"
+      ],
+      "text": [
+        "Fiecare merge direct în oală. Apoi așteaptă totemul în poiana din nord!"
+      ]
+    },
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "A sweet fruit, a fragrant leaf, a tiny mushroom and a bitter herb. Then the clearing up north!"
+      ],
+      "text": [
+        "Un fruct dulce, o frunză parfumată, o ciupercă mică și o plantă amară. Apoi poiana din nord!"
+      ]
+    }
+  ],
+  "Ingredient1": [
+    {
+      "en": [
+        "{player} found a sweet, ripe fruit among the leaves!"
+      ],
+      "text": [
+        "{player} a găsit un fruct dulce și copt printre frunze!"
+      ]
+    },
+    {
+      "en": [
+        "Thick green leaves. Nothing else here."
+      ],
+      "text": [
+        "Frunze verzi și dese. Nimic altceva aici."
+      ]
+    }
+  ],
+  "Ingredient2": [
+    {
+      "en": [
+        "{player} found a fragrant leaf that smells of spice!"
+      ],
+      "text": [
+        "{player} a găsit o frunză parfumată care miroase a condimente!"
+      ]
+    },
+    {
+      "en": [
+        "Thick green leaves. Nothing else here."
+      ],
+      "text": [
+        "Frunze verzi și dese. Nimic altceva aici."
+      ]
+    }
+  ],
+  "Ingredient3": [
+    {
+      "en": [
+        "{player} found a tiny mushroom growing in the shade!"
+      ],
+      "text": [
+        "{player} a găsit o ciupercă mică crescută la umbră!"
+      ]
+    },
+    {
+      "en": [
+        "Thick green leaves. Nothing else here."
+      ],
+      "text": [
+        "Frunze verzi și dese. Nimic altceva aici."
+      ]
+    }
+  ],
+  "Ingredient4": [
+    {
+      "en": [
+        "{player} found a bitter herb tucked under a root!"
+      ],
+      "text": [
+        "{player} a găsit o plantă amară ascunsă sub o rădăcină!"
+      ]
+    },
+    {
+      "en": [
+        "Thick green leaves. Nothing else here."
+      ],
+      "text": [
+        "Frunze verzi și dese. Nimic altceva aici."
+      ]
+    }
+  ],
+  "Gathered": [
+    {
+      "en": [
+        "That's all four! A rich smell drifts through the jungle... Something stirs in the clearing to the north."
+      ],
+      "text": [
+        "Gata, toate patru! Un miros bogat plutește prin junglă... Ceva se mișcă în poiana din nord."
+      ]
+    }
+  ],
+  "Totem": [
+    {
+      "en": [
+        "Drawn by the dish's scent, a Lurantis as tall as a tree stepped out of the leaves!"
+      ],
+      "text": [
+        "Atras de mirosul mâncării, un Lurantis înalt cât un copac a ieșit dintre frunze!"
+      ]
+    },
+    {
+      "en": [
+        "Mallow"
+      ],
+      "text": [
+        "Mallow"
+      ]
+    },
+    {
+      "en": [
+        "You did it! The whole jungle heard that one. My trial is passed!"
+      ],
+      "text": [
+        "Ai reușit! Toată jungla a auzit asta. Încercarea mea e trecută!"
+      ]
+    },
+    {
+      "en": [
+        "Here's the Grassium Z. With it, a Grass-type move becomes a Z-Move. Best seasoning there is!"
+      ],
+      "text": [
+        "Iată Grassium Z. Cu el, o mișcare de tip Iarbă devine o mișcare Z. Cel mai bun condiment!"
+      ]
+    },
+    {
+      "en": [
+        "Diglett's Tunnel should be open now. Konikoni City is on its far side, and Olivia, our kahuna, is there."
+      ],
+      "text": [
+        "Tunelul lui Diglett ar trebui să fie deschis acum. De partea cealaltă e Konikoni City, iar acolo e Olivia, kahuna noastră."
+      ]
+    }
+  ]
+}

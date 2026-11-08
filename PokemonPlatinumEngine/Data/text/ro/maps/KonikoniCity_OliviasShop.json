@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Konikoni City"
+    ],
+    "text": [
+      "Konikoni City"
+    ]
+  },
+  "people": {
+    "shopkeeper": {
+      "name": {
+        "en": [
+          "Shop Assistant"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the kahuna's jewelry shop! She cuts every stone herself, when she is not out testing trainers."
+        ],
+        "text": [
+          "Bun venit la magazinul de bijuterii al kahunei! Își taie singură fiecare piatră, când nu e plecată să pună antrenorii la încercare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

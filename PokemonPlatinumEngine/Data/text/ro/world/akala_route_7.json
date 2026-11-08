@@ -1,0 +1,23 @@
+{
+  "people": {
+    "swimmer": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          "Înotătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The volcano's right up there, and the sea's right down here. Best beach in Alola, if you ask me."
+        ],
+        "text": [
+          "Vulcanul e chiar acolo sus, iar marea chiar aici jos. Cea mai bună plajă din Alola, dacă mă întrebi pe mine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

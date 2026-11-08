@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Route 2"
+    ],
+    "text": [
+      "Ruta 2"
+    ]
+  },
+  "people": {
+    "caretaker": {
+      "name": {
+        "en": [
+          "Caretaker"
+        ],
+        "text": [
+          "Îngrijitorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

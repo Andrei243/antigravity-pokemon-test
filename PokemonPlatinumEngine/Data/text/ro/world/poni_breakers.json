@@ -1,0 +1,164 @@
+{
+  "people": {
+    "guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      }
+    },
+    "hapu": {
+      "name": {
+        "en": [
+          "Hapu"
+        ],
+        "text": [
+          "Hapu"
+        ]
+      }
+    },
+    "fini": {
+      "name": {
+        "en": [
+          "Tapu Fini"
+        ],
+        "text": [
+          "Tapu Fini"
+        ]
+      }
+    },
+    "kekoa": {
+      "name": {
+        "en": [
+          "Kekoa"
+        ],
+        "text": [
+          "Kekoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kekoa: Jump in! The water is perfect for a battle!"
+        ],
+        "text": [
+          "Înotător Kekoa: Sari! Apa e perfectă pentru o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kekoa: Ahh, I got all wet for nothing."
+        ],
+        "text": [
+          "Înotător Kekoa: Ahh, m-am udat degeaba."
+        ]
+      }
+    },
+    "nuka": {
+      "name": {
+        "en": [
+          "Nuka"
+        ],
+        "text": [
+          "Nuka"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Nuka: Where the breakers crash is where the fish run. Let's battle!"
+        ],
+        "text": [
+          "Pescar Nuka: Unde se sparg valurile, acolo aleargă peștii. Hai să luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Nuka: The fish got away. So did the battle."
+        ],
+        "text": [
+          "Pescar Nuka: Peștii au scăpat. La fel și lupta."
+        ]
+      }
+    },
+    "loio": {
+      "name": {
+        "en": [
+          "Loio"
+        ],
+        "text": [
+          "Loio"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Loio: I've walked this coast for forty years. You're nowhere near finished."
+        ],
+        "text": [
+          "Veteran Loio: Umblu pe țărmul ăsta de patruzeci de ani. Nici pe departe nu ai terminat."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Loio: Well. Maybe you are finished with this part."
+        ],
+        "text": [
+          "Veteran Loio: Ei bine. Poate ai terminat cu partea asta."
+        ]
+      }
+    },
+    "maile": {
+      "name": {
+        "en": [
+          "Maile"
+        ],
+        "text": [
+          "Maile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Maile: I felt your thoughts as you came up the path. Shall I tell you what you were thinking?"
+        ],
+        "text": [
+          "Medium Maile: Ți-am simțit gândurile când urcai poteca. Să-ți spun la ce te gândeai?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Maile: You were thinking you could win. Hm."
+        ],
+        "text": [
+          "Medium Maile: Te gândeai că poți câștiga. Hm."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Poni Breakers\nEast: Ruins of Hope\nNorth: the Altar of the Sunne and Moone"
+      ],
+      "text": [
+        "Poni Breakers\nEst: Ruins of Hope\nNord: Altarul Soarelui și al Lunii"
+      ]
+    },
+    "RuinsSign": {
+      "en": [
+        "Ruins of Hope\nThe sea guardian's shrine."
+      ],
+      "text": [
+        "Ruins of Hope\nSanctuarul ocrotitorului mării."
+      ]
+    },
+    "ShoreSign": {
+      "en": [
+        "Exeggutor Island lies across the strait. Only a swimmer will reach it."
+      ],
+      "text": [
+        "Exeggutor Island se află peste strâmtoare. Doar un înotător o va ajunge."
+      ]
+    }
+  }
+}

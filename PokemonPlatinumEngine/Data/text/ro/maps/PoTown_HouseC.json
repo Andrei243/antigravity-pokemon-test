@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Po Town"
+    ],
+    "text": [
+      "Po Town"
+    ]
+  },
+  "people": {
+    "grunt": {
+      "name": {
+        "en": [
+          "Skull Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Yo, this is a private party! ...There's no party. Shh."
+        ],
+        "text": [
+          "Yo, asta e o petrecere privată! ...Nu e nicio petrecere. Șșș."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Heahea City"
+    ],
+    "text": [
+      "Heahea City"
+    ]
+  },
+  "people": {
+    "desk": {
+      "name": {
+        "en": [
+          "Hotel Clerk"
+        ],
+        "text": [
+          "Recepționerul hotelului"
+        ]
+      }
+    },
+    "guest": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          "Oaspete"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Room service brought me a Pikachu-shaped cake. I couldn't eat it. It's still looking at me."
+        ],
+        "text": [
+          "Serviciul în cameră mi-a adus o prăjitură în formă de Pikachu. N-am putut s-o mănânc. Încă se uită la mine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

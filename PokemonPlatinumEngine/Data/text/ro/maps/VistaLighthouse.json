@@ -57,6 +57,16 @@
           "Volkner"
         ]
       }
+    },
+    "sky_trainer": {
+      "name": {
+        "en": [
+          "Sky Trainer"
+        ],
+        "text": [
+          "Antrenor din Cer"
+        ]
+      }
     }
   },
   "signs": {

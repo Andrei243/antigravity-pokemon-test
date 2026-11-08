@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Royal Avenue"
+    ],
+    "text": [
+      "Royal Avenue"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "tourist": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People come from all four islands to see the Battle Royal. The noise on a show night carries right down to the beach!"
+        ],
+        "text": [
+          "Oamenii vin de pe toate cele patru insule să vadă Battle Royal. Zgomotul din serile de spectacol se aude până pe plajă!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

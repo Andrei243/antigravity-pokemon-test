@@ -1,0 +1,91 @@
+{
+  "people": {
+    "second_totem": {
+      "name": {
+        "en": [
+          "Raticate"
+        ],
+        "text": [
+          "Raticate"
+        ]
+      }
+    },
+    "ilima": {
+      "name": {
+        "en": [
+          "Ilima"
+        ],
+        "text": [
+          "Ilima"
+        ]
+      }
+    },
+    "den_1": {
+      "name": {
+        "en": [
+          "Yungoos"
+        ],
+        "text": [
+          "Yungoos"
+        ]
+      }
+    },
+    "den_2": {
+      "name": {
+        "en": [
+          "Yungoos"
+        ],
+        "text": [
+          "Yungoos"
+        ]
+      }
+    },
+    "den_3": {
+      "name": {
+        "en": [
+          "Yungoos"
+        ],
+        "text": [
+          "Yungoos"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Gumshoos"
+        ],
+        "text": [
+          "Gumshoos"
+        ]
+      }
+    },
+    "grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Trials are for losers! Skull's here to wreck it. Bring it!"
+        ],
+        "text": [
+          "Bătăuș Team Skull: Încercările sunt pentru învinși! Skull e aici să le distrugă. Fă-te gata!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Whatever. Trials are still lame."
+        ],
+        "text": [
+          "Bătăuș Team Skull: Fie. Încercările tot nu valorează nimic."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

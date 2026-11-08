@@ -1,0 +1,116 @@
+{
+  "people": {
+    "second_totem": {
+      "name": {
+        "en": [
+          "Araquanid"
+        ],
+        "text": [
+          "Araquanid"
+        ]
+      }
+    },
+    "lana": {
+      "name": {
+        "en": [
+          "Lana"
+        ],
+        "text": [
+          "Lana"
+        ]
+      }
+    },
+    "splash": {
+      "name": {
+        "en": [
+          "Wishiwashi"
+        ],
+        "text": [
+          "Wishiwashi"
+        ]
+      }
+    },
+    "splash_2": {
+      "name": {
+        "en": [
+          "Wishiwashi"
+        ],
+        "text": [
+          "Wishiwashi"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Wishiwashi"
+        ],
+        "text": [
+          "Wishiwashi"
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Kaleo"
+        ],
+        "text": [
+          "Kaleo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kaleo: Shh! The fish can hear you! ...Too late. Battle!"
+        ],
+        "text": [
+          "Pescar Kaleo: Șșș! Peștii te aud! ...Prea târziu. Luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kaleo: And now the fish are laughing at me."
+        ],
+        "text": [
+          "Pescar Kaleo: Iar acum peștii râd de mine."
+        ]
+      }
+    },
+    "backpacker": {
+      "name": {
+        "en": [
+          "Nalu"
+        ],
+        "text": [
+          "Nalu"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Nalu: I hiked up for the view and stayed for the battles!"
+        ],
+        "text": [
+          "Rucsăcar Nalu: Am urcat pentru priveliște și am rămas pentru lupte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Nalu: The view is still great."
+        ],
+        "text": [
+          "Rucsăcar Nalu: Priveliștea e tot grozavă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "HillSign": {
+      "en": [
+        "Brooklet Hill\nTrial site of Captain Lana."
+      ],
+      "text": [
+        "Brooklet Hill\nLocul încercării Căpitanului Lana."
+      ]
+    }
+  }
+}

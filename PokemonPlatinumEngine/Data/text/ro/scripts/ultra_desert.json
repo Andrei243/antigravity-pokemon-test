@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Sand without end, and a wind that never stops. Every step leaves a print the wind takes at once."
+      ],
+      "text": [
+        "Nisip fără sfârșit și un vânt care nu se oprește niciodată. Fiecare pas lasă o urmă pe care vântul o ia pe loc."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "A slender white figure stepped out of the sand, never quite touching it. It looked {player} over, unimpressed."
+      ],
+      "text": [
+        "O siluetă albă și subțire a ieșit din nisip, fără să-l atingă cu adevărat. L-a măsurat pe {player}, nepăsătoare."
+      ]
+    }
+  ]
+}

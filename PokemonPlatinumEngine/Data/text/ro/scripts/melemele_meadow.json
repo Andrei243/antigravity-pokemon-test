@@ -1,0 +1,78 @@
+{
+  "Nebby": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's you again. Nebby, my little one, slipped out of my bag again and squeezed into a gap in the rocks over there."
+      ],
+      "text": [
+        "O! Tu erai din nou. Nebby, micuțul meu, a scăpat iar din geantă și s-a strecurat într-o crăpătură a stâncilor de acolo."
+      ]
+    },
+    {
+      "en": [
+        "It's too narrow for me, and the flowers are full of buzzing Pokémon... Could you, maybe...?"
+      ],
+      "text": [
+        "E prea îngustă pentru mine, iar florile sunt pline de Pokémoni care bâzâie... Ai putea, poate...?"
+      ]
+    },
+    {
+      "en": [
+        "{player} pushed through the flowers and found the little Pokémon curled up in the gap. It floated straight back to Lillie."
+      ],
+      "text": [
+        "{player} s-a strecurat printre flori și a găsit Pokémonul mic ghemuit în crăpătură. A plutit direct înapoi la Lillie."
+      ]
+    },
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Thank you so much. I'll keep the bag closed properly from now on, I promise."
+      ],
+      "text": [
+        "Mulțumesc! Mulțumesc mult. De acum țin geanta închisă cum trebuie, promit."
+      ]
+    },
+    {
+      "en": [
+        "Hau went past a little while ago. He said something about battling you before the grand trial. Good luck!"
+      ],
+      "text": [
+        "Hau a trecut pe aici acum puțin. A zis ceva despre o luptă cu tine înainte de încercarea cea mare. Mult noroc!"
+      ]
+    }
+  ],
+  "Lillie": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Nebby? Nebby, where are you?"
+      ],
+      "text": [
+        "Nebby? Nebby, unde ești?"
+      ]
+    }
+  ]
+}

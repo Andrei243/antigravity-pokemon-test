@@ -1,0 +1,208 @@
+{
+  "Desk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Maison! Trainers from every corner of the world come to Kiloude to test themselves here."
+      ],
+      "text": [
+        "Bun venit la Battle Maison! Antrenori din toate colțurile lumii vin la Kiloude să se pună aici la încercare."
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} battles in a row in our hall. The regulars have started to talk about you!"
+      ],
+      "text": [
+        "Ai câștigat {number} lupte la rând în sala noastră. Obișnuiții au început să vorbească despre tine!"
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Maison?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "Vrei să te înfrunți cu Battle Maison?",
+        "Intră",
+        "Regulile",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și purtând obiecte diferite."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        "Un Ou nu poate participa, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        "Alege, te rog, cei trei Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Seven Trainers are waiting in the hall. This way, please!"
+      ],
+      "text": [
+        "Mulțumesc! Șapte Antrenori așteaptă în sală. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot purta același obiect."
+      ]
+    },
+    {
+      "en": [
+        "We'll be here. The hall never really empties."
+      ],
+      "text": [
+        "Vom fi aici. Sala nu se golește niciodată cu adevărat."
+      ]
+    },
+    {
+      "en": [
+        "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+      ],
+      "text": [
+        "Cei trei ai tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic. Sunt vindecați complet după fiecare luptă."
+      ]
+    },
+    {
+      "en": [
+        "Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak."
+      ],
+      "text": [
+        "Învinge șapte Antrenori la rând ca să câștigi o rundă. Pierzi o dată și runda se termină, odată cu seria ta."
+      ]
+    },
+    {
+      "en": [
+        "The longer your streak, the stronger the Trainers who come to meet you."
+      ],
+      "text": [
+        "Cu cât seria ta e mai lungă, cu atât mai puternici sunt Antrenorii care vin să te întâlnească."
+      ]
+    }
+  ],
+  "Prizes": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Battle Points won here, or anywhere in the world's battle halls, are good at this counter."
+      ],
+      "text": [
+        "Bun venit! Punctele de Luptă câștigate aici, sau în orice sală de lupte din lume, sunt valabile la tejgheaua asta."
+      ]
+    },
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        "{player} a dat {price} PL pentru {item}."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Use it well."
+      ],
+      "text": [
+        "Mulțumesc! Folosește-l bine."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have the Battle Points for that."
+      ],
+      "text": [
+        "Îmi pare rău. Nu ai destule Puncte de Luptă pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you've won a few more!"
+      ],
+      "text": [
+        "Revino când ai mai câștigat câteva!"
+      ]
+    }
+  ],
+  "Fan": [
+    {
+      "en": [
+        "Fan"
+      ],
+      "text": [
+        "Fanul"
+      ]
+    },
+    {
+      "en": [
+        "I come every afternoon just to watch. You can tell a Trainer's whole journey from how they send out their first Pokémon."
+      ],
+      "text": [
+        "Vin în fiecare după-amiază doar să mă uit. Poți citi toată călătoria unui Antrenor din felul în care își scoate primul Pokémon."
+      ]
+    }
+  ],
+  "Veteran": [
+    {
+      "en": [
+        "Veteran"
+      ],
+      "text": [
+        "Veteranul"
+      ]
+    },
+    {
+      "en": [
+        "Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat."
+      ],
+      "text": [
+        "Șapte la rând sună ușor până la al cincilea. Apoi începi să-ți auzi propria inimă."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Kalos Power Plant"
+    ],
+    "text": [
+      "Centrala electrică din Kalos"
+    ]
+  },
+  "people": {
+    "kalos_flare_grunt_plant_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: Lumiose's lights are ours now. Stylish, isn't it?"
+        ],
+        "text": [
+          "Membru Team Flare: Luminile din Lumiose sunt ale noastre acum. Stilat, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: That wasn't stylish at all..."
+        ],
+        "text": [
+          "Membru Team Flare: Asta n-a fost deloc stilat..."
+        ]
+      }
+    },
+    "kalos_flare_grunt_plant_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru Team Flare"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Flare Grunt Grunt: Every watt of this plant goes to Team Flare. Go home!"
+        ],
+        "text": [
+          "Membru Team Flare: Fiecare watt din centrala asta merge la Team Flare. Du-te acasă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Flare Grunt Grunt: Fine. Take your ugly victory."
+        ],
+        "text": [
+          "Membru Team Flare: Fie. Ia-ți victoria urâtă."
+        ]
+      }
+    },
+    "aliana": {
+      "name": {
+        "en": [
+          "Aliana"
+        ],
+        "text": [
+          "Aliana"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

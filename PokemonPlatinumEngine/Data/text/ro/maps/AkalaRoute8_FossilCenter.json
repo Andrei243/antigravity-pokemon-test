@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Route 8"
+    ],
+    "text": [
+      "Ruta 8"
+    ]
+  },
+  "people": {
+    "restorer": {
+      "name": {
+        "en": [
+          "Restorer"
+        ],
+        "text": [
+          "Restauratorul"
+        ]
+      }
+    },
+    "seller": {
+      "name": {
+        "en": [
+          "Fossil Seller"
+        ],
+        "text": [
+          "Vânzătorul de fosile"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

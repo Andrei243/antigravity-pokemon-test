@@ -1,0 +1,34 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      }
+    },
+    "mega_gyaradosite": {
+      "name": {
+        "en": [
+          "Gyaradosite"
+        ],
+        "text": [
+          "Gyaradosite"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Couriway Town\nWhere the rivers meet and fall."
+      ],
+      "text": [
+        "Couriway Town\nUnde râurile se întâlnesc și cad."
+      ]
+    }
+  }
+}

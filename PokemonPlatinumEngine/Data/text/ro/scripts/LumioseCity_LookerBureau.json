@@ -1,0 +1,382 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. You caught all three in the alleys? Good work. But something is wrong."
+      ],
+      "text": [
+        "A, {player}. I-ai prins pe toți trei în alei? Bună treabă. Dar ceva nu e în regulă."
+      ]
+    },
+    {
+      "en": [
+        "Emma went out an hour ago and did not come back. Mimi is gone too. Emma never leaves without telling me."
+      ],
+      "text": [
+        "Emma a ieșit acum o oră și nu s-a mai întors. Nici Mimi nu mai e. Emma nu pleacă niciodată fără să-mi spună."
+      ]
+    },
+    {
+      "en": [
+        "Anatole"
+      ],
+      "text": [
+        "Anatole"
+      ]
+    },
+    {
+      "en": [
+        "Pardon the intrusion. My mistress has heard a great deal about the new partner of this bureau."
+      ],
+      "text": [
+        "Scuză intruziunea. Stăpâna mea a auzit multe despre noul partener al acestui birou."
+      ]
+    },
+    {
+      "en": [
+        "Before I carry her message, I must see whether the partner is worth it. Speak to me when you are ready."
+      ],
+      "text": [
+        "Înainte să-i duc mesajul, trebuie să văd dacă partenerul merită. Vorbește cu mine când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "So you came. You are {player}, the Champion of Kalos, no? I am called Looker. It is not my real name."
+      ],
+      "text": [
+        "Deci ai venit. Ești {player}, Campionul din Kalos, nu? Mă numesc Looker. Nu e numele meu adevărat."
+      ]
+    },
+    {
+      "en": [
+        "I am a detective of the International Police. I have opened a small bureau here, to keep an eye on this city."
+      ],
+      "text": [
+        "Sunt detectiv în Poliția Internațională. Am deschis un mic birou aici, ca să țin un ochi pe orașul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "Lumiose is beautiful, but its alleys keep secrets. I need a partner with sharp eyes and strong Pokémon."
+      ],
+      "text": [
+        "Lumiose e frumos, dar aleile lui păstrează secrete. Am nevoie de un partener cu ochi ageri și Pokémoni puternici."
+      ]
+    },
+    {
+      "en": [
+        "But first, a test. I have hidden three of my tickets in the city: a card with an eye on it."
+      ],
+      "text": [
+        "Dar mai întâi, un test. Am ascuns trei bilete de-ale mele în oraș: o carte de vizită cu un ochi pe ea."
+      ]
+    },
+    {
+      "en": [
+        "One waits where the trains leave from. One sleeps beside a statue among old things. One hides in a pot where the rich wait for their keys."
+      ],
+      "text": [
+        "Unul așteaptă de unde pornesc trenurile. Unul doarme lângă o statuie printre lucruri vechi. Unul se ascunde într-un ghiveci unde bogații își așteaptă cheile."
+      ]
+    },
+    {
+      "en": [
+        "Find all three and bring them back to me. Then we will talk about cases."
+      ],
+      "text": [
+        "Găsește-le pe toate trei și adu-le înapoi la mine. Apoi vom vorbi despre cazuri."
+      ]
+    }
+  ],
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        "Looker"
+      ]
+    },
+    {
+      "en": [
+        "Every case closed. The city sleeps better tonight, {player}."
+      ],
+      "text": [
+        "Fiecare caz închis. Orașul doarme mai bine în noaptea asta, {player}."
+      ]
+    },
+    {
+      "en": [
+        "All three! The station, the museum and the hotel. You see what other people walk past. Good."
+      ],
+      "text": [
+        "Toate trei! Gara, muzeul și hotelul. Vezi ce trec ceilalți pe lângă. Bine."
+      ]
+    },
+    {
+      "en": [
+        "Then here is a real case. Children have been playing at battles in the little park south of this bureau."
+      ],
+      "text": [
+        "Atunci iată un caz adevărat. Niște copii s-au jucat de-a luptele în parcul mic de la sud de biroul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "And with them, they say, a girl who knows every alley of Lumiose. I want her on our side. Go and find her."
+      ],
+      "text": [
+        "Și cu ei, se spune, o fată care cunoaște fiecare alee din Lumiose. O vreau de partea noastră. Du-te s-o găsești."
+      ]
+    },
+    {
+      "en": [
+        "Three tickets: where the trains leave, among old things, where the rich wait for their keys."
+      ],
+      "text": [
+        "Trei bilete: de unde pornesc trenurile, printre lucruri vechi, unde bogații își așteaptă cheile."
+      ]
+    },
+    {
+      "en": [
+        "So you found her, and her Espurr too. Emma will be a fine assistant. She knows the streets I do not."
+      ],
+      "text": [
+        "Deci ai găsit-o, și pe Espurr al ei. Emma va fi o asistentă bună. Cunoaște străzile pe care eu nu le cunosc."
+      ]
+    },
+    {
+      "en": [
+        "And already a new case. A tourist says a gang has taken her Pokémon at Lumiose Station, east of the city."
+      ],
+      "text": [
+        "Și deja un caz nou. O turistă zice că o bandă i-a luat Pokémonul în Gara Lumiose, la est de oraș."
+      ]
+    },
+    {
+      "en": [
+        "Emma has gone ahead. Go with her, {player}."
+      ],
+      "text": [
+        "Emma a mers înainte. Mergi cu ea, {player}."
+      ]
+    },
+    {
+      "en": [
+        "The little park south of the bureau. The children, and the girl. Go."
+      ],
+      "text": [
+        "Parcul mic de la sud de birou. Copiii și fata. Du-te."
+      ]
+    },
+    {
+      "en": [
+        "Emma told me everything. She talked a whole gang out of crime. I could not have done it myself."
+      ],
+      "text": [
+        "Emma mi-a povestit totul. A convins o întreagă bandă să renunțe la infracțiuni. Eu n-aș fi putut singur."
+      ]
+    },
+    {
+      "en": [
+        "Now, the museum on the north boulevard. Someone broke in last night, and the curator is very upset."
+      ],
+      "text": [
+        "Acum, muzeul de pe bulevardul de nord. Cineva a pătruns noaptea trecută, iar curatorul e foarte supărat."
+      ]
+    },
+    {
+      "en": [
+        "Speak to him. Find out what was taken, and by whom."
+      ],
+      "text": [
+        "Vorbește cu el. Află ce s-a luat și de către cine."
+      ]
+    },
+    {
+      "en": [
+        "Lumiose Station, past the east gate. Emma is waiting for you there."
+      ],
+      "text": [
+        "Gara Lumiose, dincolo de poarta de est. Emma te așteaptă acolo."
+      ]
+    },
+    {
+      "en": [
+        "The museum on the north boulevard, then the alleys. Whoever is stealing Poké Balls is close."
+      ],
+      "text": [
+        "Muzeul de pe bulevardul de nord, apoi aleile. Cine fură Poké Balls e aproape."
+      ]
+    },
+    {
+      "en": [
+        "That butler wants a battle. I suggest you give him one. He may know where Emma is."
+      ],
+      "text": [
+        "Majordomul ăla vrea o luptă. Îți sugerez să i-o dai. Poate știe unde e Emma."
+      ]
+    },
+    {
+      "en": [
+        "Malva of the Elite Four, at the Hotel Richissime... She knows something. Find out what."
+      ],
+      "text": [
+        "Malva din Elita celor Patru, la Hotel Richissime... Ea știe ceva. Află ce."
+      ]
+    }
+  ],
+  "Emma": [
+    {
+      "en": [
+        "Emma"
+      ],
+      "text": [
+        "Emma"
+      ]
+    },
+    {
+      "en": [
+        "Looker always says a detective should see everything and say nothing. So I'm practising saying nothing."
+      ],
+      "text": [
+        "Looker zice mereu că un detectiv trebuie să vadă tot și să nu spună nimic. Așa că exersez să nu spun nimic."
+      ]
+    },
+    {
+      "en": [
+        "{player}... Looker's gone. He left this on his desk."
+      ],
+      "text": [
+        "{player}... Looker a plecat. A lăsat asta pe birou."
+      ]
+    },
+    {
+      "en": [
+        "{player} read the letter.",
+        "The city is safe, and my work here is done. Before I go, meet me where the old things sleep. Bring nothing but yourself. L."
+      ],
+      "text": [
+        "{player} a citit scrisoarea.",
+        "Orașul e în siguranță, iar treaba mea aici s-a încheiat. Înainte să plec, întâlnește-mă unde dorm lucrurile vechi. Nu aduce nimic în afară de tine. L."
+      ]
+    },
+    {
+      "en": [
+        "Where the old things sleep... The museum! Go, quickly, before he leaves for good."
+      ],
+      "text": [
+        "Unde dorm lucrurile vechi... Muzeul! Du-te repede, înainte să plece pentru totdeauna."
+      ]
+    },
+    {
+      "en": [
+        "I'm the head of the bureau now. On Tuesdays, Thursdays and Saturdays I train in the suit. Come and battle me!"
+      ],
+      "text": [
+        "Acum sunt șefa biroului. Marțea, joia și sâmbăta mă antrenez în costum. Vino să lupți cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "It's a training day. Shall Essentia battle you?"
+      ],
+      "text": [
+        "E zi de antrenament. Să lupte Essentia cu tine?"
+      ]
+    },
+    {
+      "en": [
+        "Then let's go, partner!"
+      ],
+      "text": [
+        "Atunci hai, partenerule!"
+      ]
+    },
+    {
+      "en": [
+        "The suit's strong, but you're stronger. Come back on another training day!"
+      ],
+      "text": [
+        "Costumul e puternic, dar tu ești mai puternic. Revino într-o altă zi de antrenament!"
+      ]
+    },
+    {
+      "en": [
+        "That's enough for today. Essentia trains again on the next training day."
+      ],
+      "text": [
+        "E destul pentru azi. Essentia se antrenează din nou în următoarea zi de antrenament."
+      ]
+    }
+  ],
+  "Mimi": [
+    {
+      "en": [
+        "Mimi stares at {player} with wide, unblinking eyes. It seems to approve."
+      ],
+      "text": [
+        "Mimi se uită la {player} cu ochi mari, care nu clipesc. Pare să aprobe."
+      ]
+    }
+  ],
+  "Butler": [
+    {
+      "en": [
+        "Anatole"
+      ],
+      "text": [
+        "Anatole"
+      ]
+    },
+    {
+      "en": [
+        "Allow me to see what the partner of the Looker Bureau is made of."
+      ],
+      "text": [
+        "Permite-mi să văd din ce e făcut partenerul Biroului Looker."
+      ]
+    },
+    {
+      "en": [
+        "Splendid. You are worthy of the message."
+      ],
+      "text": [
+        "Splendid. Ești vrednic de mesaj."
+      ]
+    },
+    {
+      "en": [
+        "My mistress is Malva, of the Elite Four. She waits for you at the Hotel Richissime, by Rouge Plaza."
+      ],
+      "text": [
+        "Stăpâna mea este Malva, din Elita celor Patru. Te așteaptă la Hotel Richissime, lângă Rouge Plaza."
+      ]
+    },
+    {
+      "en": [
+        "She asked me to say this: the thief you seek is closer to this bureau than you think."
+      ],
+      "text": [
+        "M-a rugat să-ți spun asta: hoața pe care o cauți e mai aproape de biroul ăsta decât crezi."
+      ]
+    }
+  ]
+}

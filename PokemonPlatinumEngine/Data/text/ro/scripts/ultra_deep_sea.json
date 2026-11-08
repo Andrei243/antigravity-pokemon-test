@@ -1,0 +1,22 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Nothing here is water, yet everything drifts as if it were. Light falls like snow onto pale stone."
+      ],
+      "text": [
+        "Nimic de aici nu e apă, și totuși totul plutește ca și cum ar fi. Lumina cade ca zăpada peste piatră palidă."
+      ]
+    }
+  ],
+  "Beast": [
+    {
+      "en": [
+        "Something like a jellyfish of glass hung over the stone, its tendrils trailing light. It turned toward {player}."
+      ],
+      "text": [
+        "Ceva ca o meduză de sticlă atârna deasupra pietrei, cu tentaculele lăsând lumină în urmă. S-a întors spre {player}."
+      ]
+    }
+  ]
+}

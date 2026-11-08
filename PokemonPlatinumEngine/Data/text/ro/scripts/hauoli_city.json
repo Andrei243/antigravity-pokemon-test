@@ -1,0 +1,230 @@
+{
+  "Marina": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Bătăuș Team Skull"
+      ]
+    },
+    {
+      "en": [
+        "Yo yo yo! Look who's wandered onto our pier. A little island challenger, huh?"
+      ],
+      "text": [
+        "Yo yo yo! Uite cine a rătăcit pe debarcaderul nostru. Un mic provocator al insulelor, ha?"
+      ]
+    },
+    {
+      "en": [
+        "Team Skull says this pier's ours today. Wanna argue? Then let's battle!"
+      ],
+      "text": [
+        "Team Skull zice că debarcaderul e al nostru azi. Vrei să te cerți? Atunci hai la luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Bătăuș Team Skull"
+      ]
+    },
+    {
+      "en": [
+        "Tch! You got lucky. Come on, let's split. This place is boring anyway."
+      ],
+      "text": [
+        "Tch! Ai avut noroc. Hai, să plecăm. Oricum locul ăsta e plictisitor."
+      ]
+    },
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Well handled! I was about to step in, but you didn't need me at all. I'm Ilima, a trial captain of this island."
+      ],
+      "text": [
+        "Bine rezolvat! Eram pe cale să intervin, dar n-ai avut deloc nevoie de mine. Sunt Ilima, căpitan de încercare al insulei."
+      ]
+    },
+    {
+      "en": [
+        "A trial-goer who battles like that... Let me see it for myself. Your Pokémon are tired, so allow me."
+      ],
+      "text": [
+        "Un participant la încercări care luptă așa... Lasă-mă să văd cu ochii mei. Pokémonii tăi sunt obosiți, așa că permite-mi."
+      ]
+    },
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! You and your partner understand each other well."
+      ],
+      "text": [
+        "Splendid! Tu și partenerul tău vă înțelegeți bine."
+      ]
+    },
+    {
+      "en": [
+        "My trial waits in Verdant Cavern, up Route 2. But first you need the kahuna's blessing: the festival in Iki Town is tonight, and Hala will be expecting you."
+      ],
+      "text": [
+        "Încercarea mea așteaptă în Verdant Cavern, pe Ruta 2. Dar mai întâi ai nevoie de binecuvântarea kahunei: festivalul din Iki Town e diseară, iar Hala te va aștepta."
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Bătăuș Team Skull"
+      ]
+    },
+    {
+      "en": [
+        "What're you looking at?"
+      ],
+      "text": [
+        "La ce te uiți?"
+      ]
+    }
+  ],
+  "Ilima": [
+    {
+      "en": [
+        "Ilima"
+      ],
+      "text": [
+        "Ilima"
+      ]
+    },
+    {
+      "en": [
+        "Verdant Cavern is north up Route 2. I'll be waiting."
+      ],
+      "text": [
+        "Verdant Cavern e la nord pe Ruta 2. Te aștept."
+      ]
+    }
+  ],
+  "SailToAkala": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! There's the island's newest grand trial winner! Hala told me all about it, cousin."
+      ],
+      "text": [
+        "Woo! Iată cel mai nou câștigător al încercării mari din insulă! Hala mi-a povestit totul, verișorule."
+      ]
+    },
+    {
+      "en": [
+        "Melemele's done, so Akala's next. My boat's tied up right here. Hop in and I'll take you across!"
+      ],
+      "text": [
+        "Melemele e gata, deci urmează Akala. Barca mea e legată chiar aici. Urcă și te duc dincolo!"
+      ]
+    },
+    {
+      "en": [
+        "The professor's boat skimmed out of the marina and across the bright sea to Akala Island..."
+      ],
+      "text": [
+        "Barca profesorului a alunecat din port peste marea strălucitoare spre insula Akala..."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Akala! Heahea City's just up the beach. The nearest trial is north, past Route 4 and Paniola Town. Have fun out there!"
+      ],
+      "text": [
+        "Bun venit în Akala! Heahea City e chiar sus pe plajă. Cea mai apropiată încercare e la nord, dincolo de Ruta 4 și Paniola Town. Distracție plăcută acolo!"
+      ]
+    }
+  ],
+  "Kukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready, step onto the pier and we'll set sail for Akala."
+      ],
+      "text": [
+        "Când ești gata, pășește pe debarcader și pornim spre Akala."
+      ]
+    }
+  ],
+  "Ferry": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinarul"
+      ]
+    },
+    {
+      "en": [
+        "This ferry crosses to Akala Island. It's for trial-goers who've finished Melemele's grand trial, so come back once the kahuna's seen what you can do!"
+      ],
+      "text": [
+        "Feribotul ăsta trece la insula Akala. E pentru cei de la încercări care au terminat încercarea mare din Melemele, așa că revino după ce kahuna a văzut ce poți!"
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Akala Island! Shall we sail?"
+      ],
+      "text": [
+        "Toată lumea la bord pentru insula Akala! Pornim?"
+      ]
+    },
+    {
+      "en": [
+        "The ferry pulled out of Hau'oli Marina..."
+      ],
+      "text": [
+        "Feribotul a plecat din portul Hau'oli..."
+      ]
+    }
+  ]
+}

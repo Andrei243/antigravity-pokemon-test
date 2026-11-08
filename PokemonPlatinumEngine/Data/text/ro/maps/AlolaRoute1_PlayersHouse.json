@@ -27,6 +27,26 @@
           "Mama: ...Gata! Arătați mult mai bine amândoi."
         ]
       }
+    },
+    "veyra": {
+      "name": {
+        "en": [
+          "Veyra"
+        ],
+        "text": [
+          "Veyra"
+        ]
+      }
+    },
+    "oskin": {
+      "name": {
+        "en": [
+          "Oskin"
+        ],
+        "text": [
+          "Oskin"
+        ]
+      }
     }
   },
   "signs": {}

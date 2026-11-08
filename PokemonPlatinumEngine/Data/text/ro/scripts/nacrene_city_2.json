@@ -1,0 +1,164 @@
+{
+  "Ranger": [
+    {
+      "en": [
+        "Pokémon Ranger"
+      ],
+      "text": [
+        "Ranger Pokémon"
+      ]
+    },
+    {
+      "en": [
+        "I bring things I find in the wild for the museum to study. They've more fossils than they have room for, though."
+      ],
+      "text": [
+        "Aduc lucruri găsite în sălbăticie ca muzeul să le studieze. Au mai multe fosile decât au loc, totuși."
+      ]
+    },
+    {
+      "en": [
+        "Would you like one of these two?",
+        "The Cover Fossil",
+        "The Plume Fossil",
+        "No, thanks"
+      ],
+      "text": [
+        "Ai vrea una din cele două?",
+        "Fosila Carapace",
+        "Fosila Pană",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the offer stands."
+      ],
+      "text": [
+        "Nu? Păi, oferta rămâne."
+      ]
+    },
+    {
+      "en": [
+        "The scientist over there can bring it back to life. It used to be part of a Pokémon's shell, from the old sea."
+      ],
+      "text": [
+        "Omul de știință de acolo o poate readuce la viață. Era o parte din carapacea unui Pokémon din marea veche."
+      ]
+    },
+    {
+      "en": [
+        "The scientist over there can bring it back to life. It used to be part of a Pokémon's wing, from long ago."
+      ],
+      "text": [
+        "Omul de știință de acolo o poate readuce la viață. Era o parte din aripa unui Pokémon de demult."
+      ]
+    },
+    {
+      "en": [
+        "Oh, it's you! I dug up another fossil on my last trip. It's the kind you didn't take, so it ought to be yours."
+      ],
+      "text": [
+        "A, tu erai! Am mai dezgropat o fosilă în ultima excursie. E genul pe care nu l-ai luat, deci ar trebui să fie a ta."
+      ]
+    },
+    {
+      "en": [
+        "I bring things I find in the wild for the museum to study. Every fossil has a story, if you know how to read it."
+      ],
+      "text": [
+        "Aduc lucruri găsite în sălbăticie ca muzeul să le studieze. Fiecare fosilă are o poveste, dacă știi s-o citești."
+      ]
+    }
+  ],
+  "FossilScientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Omul de știință"
+      ]
+    },
+    {
+      "en": [
+        "We restore fossils here, at the museum's own laboratory."
+      ],
+      "text": [
+        "Restaurăm fosile aici, în laboratorul propriu al muzeului."
+      ]
+    },
+    {
+      "en": [
+        "You have a fossil with you! Shall I bring it back to life?"
+      ],
+      "text": [
+        "Ai o fosilă la tine! Să o readuc la viață?"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful. Leave it with me for a little while."
+      ],
+      "text": [
+        "Minunat. Lasă-mi-o pentru puțin timp."
+      ]
+    },
+    {
+      "en": [
+        "Have a look round Nacrene City, then come back. It will be ready by then."
+      ],
+      "text": [
+        "Aruncă o privire prin Nacrene City, apoi revino. Până atunci va fi gata."
+      ]
+    },
+    {
+      "en": [
+        "Here it is! Your fossil came back to life as {thing}!"
+      ],
+      "text": [
+        "Iată-o! Fosila ta a revenit la viață ca {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "It has waited in that stone a very long time. Take good care of it."
+      ],
+      "text": [
+        "A așteptat în piatra aia foarte mult. Ai grijă de el."
+      ]
+    },
+    {
+      "en": [
+        "But your team is full! Make some room, and come back for it."
+      ],
+      "text": [
+        "Dar echipa ta e plină! Fă puțin loc și vino să-l iei."
+      ]
+    },
+    {
+      "en": [
+        "Bring one in sometime, and we'll see what we can do."
+      ],
+      "text": [
+        "Adu una cândva și vedem ce putem face."
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the laboratory will be here if you change your mind."
+      ],
+      "text": [
+        "Nu? Păi, laboratorul va fi aici dacă te răzgândești."
+      ]
+    }
+  ]
+}

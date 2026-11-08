@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Kiloude City"
+    ],
+    "text": [
+      "Orașul Kiloude"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We moved here for the gulls. I did not know they would learn our names."
+        ],
+        "text": [
+          "Ne-am mutat aici pentru pescăruși. Nu știam că vor învăța cum ne cheamă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

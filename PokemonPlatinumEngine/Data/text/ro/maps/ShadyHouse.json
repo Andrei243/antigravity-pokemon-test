@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Shady House"
+    ],
+    "text": [
+      "Casa dubioasă"
+    ]
+  },
+  "people": {
+    "nanu": {
+      "name": {
+        "en": [
+          "Nanu"
+        ],
+        "text": [
+          "Nanu"
+        ]
+      }
+    },
+    "meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          "Meowth"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

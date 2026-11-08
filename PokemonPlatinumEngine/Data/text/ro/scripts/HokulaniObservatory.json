@@ -1,0 +1,144 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Sophocles"
+      ],
+      "text": [
+        "Sophocles"
+      ]
+    },
+    {
+      "en": [
+        "Oh! A visitor! ...Oh no, you're a trial-goer. I'm Sophocles, the captain. I get nervous with company."
+      ],
+      "text": [
+        "O! Un vizitator! ...O, nu, ești la încercări. Sunt Sophocles, căpitanul. Mă emoționez în compania altora."
+      ]
+    },
+    {
+      "en": [
+        "My trial is simple. Three Charjabug got in through the wiring, and they've been charging the whole observatory. Would you find them?"
+      ],
+      "text": [
+        "Încercarea mea e simplă. Trei Charjabug au intrat prin cabluri și încarcă tot observatorul. Ai vrea să-i găsești?"
+      ]
+    },
+    {
+      "en": [
+        "They're in the dome, around the room. And then the big one. The totem. I've kept it fed. Please be nice."
+      ],
+      "text": [
+        "Sunt în dom, prin cameră. Și apoi cel mare. Totemul. L-am ținut hrănit. Te rog, fii drăguț."
+      ]
+    }
+  ],
+  "SophoclesInside": [
+    {
+      "en": [
+        "Sophocles"
+      ],
+      "text": [
+        "Sophocles"
+      ]
+    },
+    {
+      "en": [
+        "The Charjabug are in the room, and the totem is waiting behind them. I'll hold the door. Metaphorically."
+      ],
+      "text": [
+        "Charjabug sunt în cameră, iar totemul așteaptă în spatele lor. Eu țin ușa. Metaforic."
+      ]
+    }
+  ],
+  "Den1": [
+    {
+      "en": [
+        "A Charjabug bolted out of the wiring!"
+      ],
+      "text": [
+        "Un Charjabug a țâșnit din cabluri!"
+      ]
+    }
+  ],
+  "Den2": [
+    {
+      "en": [
+        "A Charjabug bolted out of the wiring!"
+      ],
+      "text": [
+        "Un Charjabug a țâșnit din cabluri!"
+      ]
+    }
+  ],
+  "Den3": [
+    {
+      "en": [
+        "A Charjabug bolted out of the wiring!"
+      ],
+      "text": [
+        "Un Charjabug a țâșnit din cabluri!"
+      ]
+    }
+  ],
+  "Totem": [
+    {
+      "en": [
+        "The Togedemaru's spines crackled, and electricity ran up every wire in the room!"
+      ],
+      "text": [
+        "Țepii lui Togedemaru au trosnit, iar electricitatea a alergat pe fiecare cablu din cameră!"
+      ]
+    },
+    {
+      "en": [
+        "Sophocles"
+      ],
+      "text": [
+        "Sophocles"
+      ]
+    },
+    {
+      "en": [
+        "...You did it! You passed my trial! I've never seen the whole observatory glow like that."
+      ],
+      "text": [
+        "...Ai reușit! Ai trecut de încercarea mea! N-am mai văzut niciodată tot observatorul strălucind așa."
+      ]
+    },
+    {
+      "en": [
+        "This is the Electrium Z. With it, an Electric-type move becomes a Z-Move. Please keep it safe."
+      ],
+      "text": [
+        "Asta e Electrium Z. Cu el, o mișcare de tip Electric devine o mișcare Z. Te rog, păstrează-l în siguranță."
+      ]
+    },
+    {
+      "en": [
+        "Acerola's trial is next, in Tapu Village. Go east along Route 12, and... and don't tell her I sent you."
+      ],
+      "text": [
+        "Încercarea lui Acerola urmează, în Tapu Village. Mergi spre est pe Ruta 12 și... și nu-i spune că te-am trimis eu."
+      ]
+    },
+    {
+      "en": [
+        "The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first."
+      ],
+      "text": [
+        "Togedemaru n-a ieșit încă. Poate că întâi vin Charjabug din cameră."
+      ]
+    }
+  ],
+  "SecondTotem": [
+    {
+      "en": [
+        "A huge Vikavolt hums over the observatory's great lens, crackling with stolen power!"
+      ],
+      "text": [
+        "Un Vikavolt uriaș bâzâie deasupra marii lentile a observatorului, trosnind de energie furată!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "HapuShore": [
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        "Hapu"
+      ]
+    },
+    {
+      "en": [
+        "Hey. You're {player}, the one who's been collecting stamps. I've heard about you."
+      ],
+      "text": [
+        "Hei. Tu ești {player}, cel care strânge ștampile. Am auzit de tine."
+      ]
+    },
+    {
+      "en": [
+        "I'm Hapu, kahuna of Poni. My grand trial is on Exeggutor Island, across this strait."
+      ],
+      "text": [
+        "Sunt Hapu, kahuna din Poni. Încercarea mea cea mare e pe Exeggutor Island, peste strâmtoarea asta."
+      ]
+    },
+    {
+      "en": [
+        "You'll need something that swims. Lapras will carry you, if you've got it in the Ride Pager."
+      ],
+      "text": [
+        "O să ai nevoie de ceva care înoată. Lapras te va duce, dacă îl ai în Ride Pager."
+      ]
+    },
+    {
+      "en": [
+        "I'll be there. Don't dawdle. I get bored fast, and when I get bored I get strong."
+      ],
+      "text": [
+        "Voi fi acolo. Nu zăbovi. Mă plictisesc repede, iar când mă plictisesc devin puternică."
+      ]
+    }
+  ],
+  "AltarGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznicul"
+      ]
+    },
+    {
+      "en": [
+        "The road up to the Altar of the Sunne and Moone is closed to everyone but the one who holds Poni's stamp."
+      ],
+      "text": [
+        "Drumul spre Altarul Soarelui și al Lunii e închis tuturor, în afară de cel care deține ștampila Poni."
+      ]
+    }
+  ],
+  "TapuFini": [
+    {
+      "en": [
+        "Tapu Fini's mist rolled over the ruins, and it rose from the water."
+      ],
+      "text": [
+        "Ceața lui Tapu Fini s-a rostogolit peste ruine, iar el s-a ridicat din apă."
+      ]
+    },
+    {
+      "en": [
+        "It watched {player} for a moment, and then let the mist close again."
+      ],
+      "text": [
+        "L-a privit pe {player} o clipă, apoi a lăsat ceața să se închidă la loc."
+      ]
+    }
+  ]
+}

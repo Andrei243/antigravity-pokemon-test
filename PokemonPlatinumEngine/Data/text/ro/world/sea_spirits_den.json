@@ -1,0 +1,35 @@
+{
+  "people": {
+    "articuno": {
+      "name": {
+        "en": [
+          "Articuno"
+        ],
+        "text": [
+          "Articuno"
+        ]
+      }
+    },
+    "zapdos": {
+      "name": {
+        "en": [
+          "Zapdos"
+        ],
+        "text": [
+          "Zapdos"
+        ]
+      }
+    },
+    "moltres": {
+      "name": {
+        "en": [
+          "Moltres"
+        ],
+        "text": [
+          "Moltres"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

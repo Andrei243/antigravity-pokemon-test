@@ -1,0 +1,76 @@
+{
+  "people": {
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Firmin"
+        ],
+        "text": [
+          "Firmin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Firmin: This valley was cut by a river long gone. Let's see if your team is as tough as the rock!"
+        ],
+        "text": [
+          "Drumeț Firmin: Valea asta a fost tăiată de un râu dispărut de mult. Să vedem dacă echipa ta e la fel de dură ca piatra!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Firmin: Worn smooth, I am."
+        ],
+        "text": [
+          "Drumeț Firmin: Șlefuit de tot, sunt."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Léon"
+        ],
+        "text": [
+          "Léon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Léon: I run this valley twice a day. Today I'll run you over!"
+        ],
+        "text": [
+          "Centură Neagră Léon: Alerg prin valea asta de două ori pe zi. Azi te calc pe tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Léon: Out of breath..."
+        ],
+        "text": [
+          "Centură Neagră Léon: Fără suflare..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 18\nNorth: Anistar City\nSouth: Couriway Town"
+      ],
+      "text": [
+        "Ruta 18\nNord: Anistar City\nSud: Couriway Town"
+      ]
+    }
+  }
+}

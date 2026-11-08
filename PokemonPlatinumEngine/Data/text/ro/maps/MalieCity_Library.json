@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Malie Library"
+    ],
+    "text": [
+      "Biblioteca Malie"
+    ]
+  },
+  "people": {
+    "librarian": {
+      "name": {
+        "en": [
+          "Librarian"
+        ],
+        "text": [
+          "Bibliotecara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh... but not too much. Most of the books here are about the sun and moon guardians, if you're curious."
+        ],
+        "text": [
+          "Șșș... dar nu prea tare. Majoritatea cărților de aici sunt despre ocrotitorii soarelui și ai lunii, dacă te interesează."
+        ]
+      }
+    },
+    "scholar": {
+      "name": {
+        "en": [
+          "Scholar"
+        ],
+        "text": [
+          "Savant"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ula'ula was named for the red of the sunset over the mountain. At least, that's what the oldest book says. The oldest book may be a menu."
+        ],
+        "text": [
+          "Ula'ula a fost numită după roșul apusului de peste munte. Cel puțin așa zice cea mai veche carte. Cea mai veche carte poate fi un meniu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

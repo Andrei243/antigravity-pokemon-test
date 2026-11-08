@@ -50,5 +50,187 @@
         "Profesorul Kukui te așteaptă afară, dragă. Nu-l lăsa să stea în soare!"
       ]
     }
+  ],
+  "OnEnter": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Oh, you're up! {player}, there are two people here to see you. They've been very polite about waiting."
+      ],
+      "text": [
+        "A, te-ai trezit! {player}, sunt două persoane aici care vor să te vadă. Au fost foarte politicoase în așteptare."
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "Forgive us for calling so early, Champion. I am Veyra, and this is Oskin. We came here through a hole in the sky."
+      ],
+      "text": [
+        "Iartă-ne că te căutăm atât de devreme, Campionule. Eu sunt Veyra, iar el e Oskin. Am venit aici printr-o gaură din cer."
+      ]
+    },
+    {
+      "en": [
+        "We are the Lightseekers, from a city called Ultra Megalopolis. Long ago, something took our city's light."
+      ],
+      "text": [
+        "Suntem Lightseekers, dintr-un oraș numit Ultra Megalopolis. Cândva, ceva ne-a luat lumina orașului."
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "The holes between our worlds are opening wider. Creatures from the other side slip through: Ultra Beasts, we call them."
+      ],
+      "text": [
+        "Găurile dintre lumile noastre se deschid tot mai larg. Creaturi din cealaltă parte se strecoară: Ultra Beasts, le numim noi."
+      ]
+    },
+    {
+      "en": [
+        "They aren't wicked. They're lost, and frightened, and very strong. Strong enough to hurt your islands."
+      ],
+      "text": [
+        "Nu sunt rele. Sunt pierdute, speriate și foarte puternice. Destul de puternice cât să vă rănească insulele."
+      ]
+    },
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "You calmed the lion of the sun at the Altar of the Sunne and Moone. You could open the way and meet them where they live."
+      ],
+      "text": [
+        "Ai liniștit leul soarelui la Altarul Soarelui și al Lunii. Ai putea deschide drumul și să-i întâlnești acolo unde trăiesc."
+      ]
+    },
+    {
+      "en": [
+        "These are made for them. Any other ball barely catches their notice."
+      ],
+      "text": [
+        "Astea sunt făcute pentru ei. Orice altă minge abia le atrage atenția."
+      ]
+    },
+    {
+      "en": [
+        "And one more thing. This little one followed us through the wormhole, and it won't go back without someone strong."
+      ],
+      "text": [
+        "Și încă ceva. Cel mic ăsta ne-a urmat prin vortex și nu se întoarce fără cineva puternic."
+      ]
+    },
+    {
+      "en": [
+        "{player} received Poipole!"
+      ],
+      "text": [
+        "{player} a primit Poipole!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Poipole! It was sent to the PC."
+      ],
+      "text": [
+        "{player} a primit Poipole! A fost trimis la PC."
+      ]
+    },
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "We'll wait for you at the Altar, on Poni. Come when you're ready."
+      ],
+      "text": [
+        "Te așteptăm la Altar, pe Poni. Vino când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Visitors from another world, and they took their shoes off at the door. Alola gets more interesting every day."
+      ],
+      "text": [
+        "Vizitatori din altă lume și și-au scos pantofii la ușă. Alola devine mai interesantă cu fiecare zi."
+      ]
+    }
+  ],
+  "Veyra": [
+    {
+      "en": [
+        "Veyra"
+      ],
+      "text": [
+        "Veyra"
+      ]
+    },
+    {
+      "en": [
+        "We'll meet you at the Altar of the Sunne and Moone."
+      ],
+      "text": [
+        "Ne vedem la Altarul Soarelui și al Lunii."
+      ]
+    }
+  ],
+  "Oskin": [
+    {
+      "en": [
+        "Oskin"
+      ],
+      "text": [
+        "Oskin"
+      ]
+    },
+    {
+      "en": [
+        "Poni Island. The Altar. We'll be there."
+      ],
+      "text": [
+        "Insula Poni. Altarul. Vom fi acolo."
+      ]
+    }
   ]
 }

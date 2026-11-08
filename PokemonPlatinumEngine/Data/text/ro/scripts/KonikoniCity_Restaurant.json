@@ -1,0 +1,52 @@
+{
+  "Chef": [
+    {
+      "en": [
+        "Chef"
+      ],
+      "text": [
+        "Bucătarul"
+      ]
+    },
+    {
+      "en": [
+        "Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order?"
+      ],
+      "text": [
+        "Specialitatea zilei e pește la grătar cu sos de insulă, 1.000 de Poké Dolari. Antrenorii flămânzi și Pokémonii flămânzi mănâncă la fel. Comanzi?"
+      ]
+    },
+    {
+      "en": [
+        "{player} and the Pokémon ate every last bite."
+      ],
+      "text": [
+        "{player} și Pokémonii au mâncat până la ultima îmbucătură."
+      ]
+    },
+    {
+      "en": [
+        "Ha! Clean plates. That's what I like to see."
+      ],
+      "text": [
+        "Ha! Farfurii curate. Așa îmi place."
+      ]
+    },
+    {
+      "en": [
+        "Not enough for the special? Come back after a few battles."
+      ],
+      "text": [
+        "Nu ajung banii pentru specialitate? Vino după câteva lupte."
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The sauce only gets better."
+      ],
+      "text": [
+        "Altă dată, atunci. Sosul doar se îmbunătățește."
+      ]
+    }
+  ]
+}

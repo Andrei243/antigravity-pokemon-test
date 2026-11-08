@@ -1,0 +1,80 @@
+{
+  "Ticket": [
+    {
+      "en": [
+        "A card is tucked among the leaves, with an eye drawn on it in ink.",
+        "{player} found one of Looker's tickets!"
+      ],
+      "text": [
+        "O carte de vizită e strecurată printre frunze, cu un ochi desenat pe ea în cerneală.",
+        "{player} a găsit unul dintre biletele lui Looker!"
+      ]
+    },
+    {
+      "en": [
+        "A palm in a gilded pot. Even the plants here look expensive."
+      ],
+      "text": [
+        "O palmă într-un ghiveci aurit. Până și plantele de aici arată scumpe."
+      ]
+    }
+  ],
+  "Malva": [
+    {
+      "en": [
+        "Malva"
+      ],
+      "text": [
+        "Malva"
+      ]
+    },
+    {
+      "en": [
+        "So you're the Champion who keeps poking about in alleys. Anatole says you battle well. Let me see for myself."
+      ],
+      "text": [
+        "Deci tu ești Campionul care tot scotocește prin alei. Anatole zice că lupți bine. Lasă-mă să văd singură."
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Fine. You've earned an answer."
+      ],
+      "text": [
+        "Hmph. Fie. Ți-ai câștigat un răspuns."
+      ]
+    },
+    {
+      "en": [
+        "The thief in the dark suit calls herself Essentia. She's your little friend Emma, in a suit that isn't hers."
+      ],
+      "text": [
+        "Hoața în costum închis se numește Essentia. E mica ta prietenă Emma, într-un costum care nu e al ei."
+      ]
+    },
+    {
+      "en": [
+        "A scientist of what's left of Team Flare made it. Xerosic. The suit takes orders from him, and so does whoever wears it."
+      ],
+      "text": [
+        "L-a făcut un om de știință din ce a mai rămas din Team Flare. Xerosic. Costumul ascultă de ordinele lui, ca și cel care îl poartă."
+      ]
+    },
+    {
+      "en": [
+        "I wanted no part of his tinkering. He's set up in Lysandre's old laboratory, under the café. The waiter knows the way."
+      ],
+      "text": [
+        "N-am vrut să am de-a face cu ale lui. S-a instalat în vechiul laborator al lui Lysandre, sub cafenea. Chelnerul știe drumul."
+      ]
+    },
+    {
+      "en": [
+        "Go and get your friend back, Champion. I'd go myself, but I have a reputation to keep."
+      ],
+      "text": [
+        "Du-te și adu-ți prietena înapoi, Campionule. M-aș duce eu, dar am o reputație de păstrat."
+      ]
+    }
+  ]
+}

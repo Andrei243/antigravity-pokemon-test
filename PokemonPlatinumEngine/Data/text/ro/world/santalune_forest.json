@@ -105,6 +105,26 @@
           "Domnișoara Amélie: Tot niciun Pikachu, iar acum nici victorie. Ce zi."
         ]
       }
+    },
+    "mega_heracronite": {
+      "name": {
+        "en": [
+          "Heracronite"
+        ],
+        "text": [
+          "Heracronite"
+        ]
+      }
+    },
+    "mega_pinsirite": {
+      "name": {
+        "en": [
+          "Pinsirite"
+        ],
+        "text": [
+          "Pinsirite"
+        ]
+      }
     }
   },
   "signs": {

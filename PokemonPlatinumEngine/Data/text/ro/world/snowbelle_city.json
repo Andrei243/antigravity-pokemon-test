@@ -1,0 +1,32 @@
+{
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The woods north of town wind round and round. People say they lead to a village where only Pokémon live."
+        ],
+        "text": [
+          "Pădurile de la nord de oraș se răsucesc la nesfârșit. Se zice că duc la un sat în care locuiesc doar Pokémoni."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CitySign": {
+      "en": [
+        "Snowbelle City\nWhere the snow never quite melts."
+      ],
+      "text": [
+        "Snowbelle City\nUnde zăpada nu se topește niciodată de tot."
+      ]
+    }
+  }
+}

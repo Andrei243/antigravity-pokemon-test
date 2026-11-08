@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Thrifty Megamart"
+    ],
+    "text": [
+      "Thrifty Megamart"
+    ]
+  },
+  "people": {
+    "acerola": {
+      "name": {
+        "en": [
+          "Acerola"
+        ],
+        "text": [
+          "Acerola"
+        ]
+      }
+    },
+    "den_1": {
+      "name": {
+        "en": [
+          "Gastly"
+        ],
+        "text": [
+          "Gastly"
+        ]
+      }
+    },
+    "den_2": {
+      "name": {
+        "en": [
+          "Misdreavus"
+        ],
+        "text": [
+          "Misdreavus"
+        ]
+      }
+    },
+    "den_3": {
+      "name": {
+        "en": [
+          "Duskull"
+        ],
+        "text": [
+          "Duskull"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Mimikyu"
+        ],
+        "text": [
+          "Mimikyu"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

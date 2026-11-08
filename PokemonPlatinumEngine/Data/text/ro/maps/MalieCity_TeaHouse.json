@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Malie Tea House"
+    ],
+    "text": [
+      "Ceainăria Malie"
+    ]
+  },
+  "people": {
+    "cook": {
+      "name": {
+        "en": [
+          "Tea Master"
+        ],
+        "text": [
+          "Maestrul ceaiului"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The garden tea is picked at dawn and steeped for exactly three minutes. Longer, and it forgets how to be delicate."
+        ],
+        "text": [
+          "Ceaiul din grădină se culege în zori și se infuzează exact trei minute. Mai mult și uită să mai fie delicat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

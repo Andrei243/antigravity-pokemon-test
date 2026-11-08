@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Anistar City"
+    ],
+    "text": [
+      "Orașul Anistar"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came over the snow on Route 17. Next time I'm borrowing a Mamoswine."
+        ],
+        "text": [
+          "Am venit peste zăpadă pe Ruta 17. Data viitoare îmi împrumut un Mamoswine."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you seen the sundial glow? They say it shines when Kalos is in danger."
+        ],
+        "text": [
+          "Ai văzut cadranul solar strălucind? Se spune că strălucește când Kalos e în pericol."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

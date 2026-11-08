@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Seafolk Village"
+    ],
+    "text": [
+      "Seafolk Village"
+    ]
+  },
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Fisher"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea folk know three kinds of fish: the ones we eat, the ones we sell, and the ones that eat us."
+        ],
+        "text": [
+          "Oamenii mării știu trei feluri de pește: cel pe care îl mâncăm, cel pe care îl vindem și cel care ne mănâncă pe noi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

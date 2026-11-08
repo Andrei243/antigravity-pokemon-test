@@ -1,0 +1,109 @@
+{
+  "people": {
+    "lucien": {
+      "name": {
+        "en": [
+          "Lucien"
+        ],
+        "text": [
+          "Lucien"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Lucien: The lobby is full of guests who checked out long ago. They like company. So do I!"
+        ],
+        "text": [
+          "Medium Lucien: Holul e plin de oaspeți care au plecat de mult. Le place compania. Și mie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Lucien: The guests say you may stay. They say it very politely."
+        ],
+        "text": [
+          "Medium Lucien: Oaspeții zic că poți rămâne. O spun foarte politicos."
+        ]
+      }
+    },
+    "pomme": {
+      "name": {
+        "en": [
+          "Pomme"
+        ],
+        "text": [
+          "Pomme"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Pomme: Did you hear it? The little knock behind the wall? That was me, and now I am coming out!"
+        ],
+        "text": [
+          "Domnișoară Pomme: Ai auzit? Ciocănitul mic din spatele peretelui? Eram eu, iar acum ies!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Pomme: You were not even scared. I am a little scared of you."
+        ],
+        "text": [
+          "Domnișoară Pomme: Nici măcar nu ți-a fost frică. Mie îmi e puțin frică de tine."
+        ]
+      }
+    },
+    "ambrose": {
+      "name": {
+        "en": [
+          "Ambrose"
+        ],
+        "text": [
+          "Ambrose"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Ambrose: I was the doorman here when the hotel was grand. Old habits. Let me see your credentials, young Trainer."
+        ],
+        "text": [
+          "Veteran Ambrose: Eram portarul de aici pe vremea când hotelul era mare. Obiceiuri vechi. Să văd acreditările, tinere Antrenor."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Ambrose: Credentials accepted. Mind the gallery stairs; they have opinions."
+        ],
+        "text": [
+          "Veteran Ambrose: Acreditări acceptate. Ai grijă la scările galeriei; au păreri proprii."
+        ]
+      }
+    },
+    "odile": {
+      "name": {
+        "en": [
+          "Odile"
+        ],
+        "text": [
+          "Odile"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Odile: The gallery is the best room in the hotel. It still has the best view, too, if you are a ghost."
+        ],
+        "text": [
+          "Medium Odile: Galeria e cea mai frumoasă cameră din hotel. Are și cea mai bună priveliște, dacă ești fantomă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Odile: A view is better with a friend. I will remember that."
+        ],
+        "text": [
+          "Medium Odile: O priveliște e mai frumoasă cu un prieten. O să țin minte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

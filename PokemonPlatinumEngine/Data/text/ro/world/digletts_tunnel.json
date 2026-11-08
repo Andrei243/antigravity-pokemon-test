@@ -1,0 +1,75 @@
+{
+  "people": {
+    "grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: This tunnel's Skull turf now! Toll's a battle. Pay up!"
+        ],
+        "text": [
+          "Tunelul ăsta e teritoriul Skull acum! Taxa e o luptă. Plătește!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Fine, fine. Toll waived. Skull's generous like that."
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: Yo! You lost? Lost to me is what you're gonna be!"
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: That line sounded cooler in my head."
+        ],
+        "text": [
+          "Bătăuș Team Skull"
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We dug every one of these tunnels with our Diglett. Don't you go knocking any of them in, now."
+        ],
+        "text": [
+          "Fiecare tunel de aici l-am săpat cu Diglett-ii noștri. Să nu cumva să dărâmi vreunul, să știi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Couriway Town"
+    ],
+    "text": [
+      "Orașul Couriway"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! The Poké Mart counter is open. What can I get you?"
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Tejgheaua Poké Mart e deschisă. Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Snowbelle City is north and east of here, up the wide valley. Its Gym Leader is a big man with a bigger laugh."
+        ],
+        "text": [
+          "Orașul Snowbelle e la nord-est de aici, în sus pe valea largă. Liderul lui de sală e un om mare cu un râs și mai mare."
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you hear the falls on your way in? You can feel them through the floor."
+        ],
+        "text": [
+          "Ai auzit cascadele pe drum? Le simți prin podea."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

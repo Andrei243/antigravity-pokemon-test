@@ -1,0 +1,93 @@
+{
+  "people": {
+    "anselme": {
+      "name": {
+        "en": [
+          "Anselme"
+        ],
+        "text": [
+          "Anselme"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Anselme: Terminus Cave is where the badlands run out of road and keep going underground. Come on, I will walk you in with a battle!"
+        ],
+        "text": [
+          "Drumeț Anselme: Terminus Cave e locul unde pustiul rămâne fără drum și continuă sub pământ. Hai, te conduc înăuntru cu o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Anselme: You walk faster than I thought."
+        ],
+        "text": [
+          "Drumeț Anselme: Mergi mai repede decât credeam."
+        ]
+      }
+    },
+    "thibault": {
+      "name": {
+        "en": [
+          "Thibault"
+        ],
+        "text": [
+          "Thibault"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Thibault: The echo in this cave carries a punch. Let me show you what that sounds like!"
+        ],
+        "text": [
+          "Centură Neagră Thibault: Ecoul din peștera asta lovește. Lasă-mă să-ți arăt cum sună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Thibault: The echo is still ringing. So is my head."
+        ],
+        "text": [
+          "Centură Neagră Thibault: Ecoul încă răsună. La fel și capul meu."
+        ]
+      }
+    },
+    "ysolde": {
+      "name": {
+        "en": [
+          "Ysolde"
+        ],
+        "text": [
+          "Ysolde"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Ysolde: I mapped every tunnel of this cave, and the map says you should lose here. Maps are wrong sometimes. Let's see!"
+        ],
+        "text": [
+          "Rucsăcar Ysolde: Am cartografiat fiecare tunel din peștera asta, iar harta zice că ar trebui să pierzi aici. Hărțile greșesc uneori. Să vedem!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Ysolde: The map is wrong. I will have to draw it again."
+        ],
+        "text": [
+          "Rucsăcar Ysolde: Harta e greșită. Va trebui s-o desenez din nou."
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          "Muncitorul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

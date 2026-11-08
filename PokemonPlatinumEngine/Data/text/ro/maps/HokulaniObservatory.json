@@ -1,0 +1,109 @@
+{
+  "displayName": {
+    "en": [
+      "Hokulani Observatory"
+    ],
+    "text": [
+      "Observatorul Hokulani"
+    ]
+  },
+  "people": {
+    "sophocles": {
+      "name": {
+        "en": [
+          "Sophocles"
+        ],
+        "text": [
+          "Sophocles"
+        ]
+      }
+    },
+    "den_1": {
+      "name": {
+        "en": [
+          "Charjabug"
+        ],
+        "text": [
+          "Charjabug"
+        ]
+      }
+    },
+    "den_2": {
+      "name": {
+        "en": [
+          "Charjabug"
+        ],
+        "text": [
+          "Charjabug"
+        ]
+      }
+    },
+    "den_3": {
+      "name": {
+        "en": [
+          "Charjabug"
+        ],
+        "text": [
+          "Charjabug"
+        ]
+      }
+    },
+    "totem": {
+      "name": {
+        "en": [
+          "Togedemaru"
+        ],
+        "text": [
+          "Togedemaru"
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Omul de știință"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We count the stars here every night. Sophocles counts them twice, then taps them to check."
+        ],
+        "text": [
+          "Numărăm stelele de aici în fiecare noapte. Sophocles le numără de două ori, apoi le atinge ca să verifice."
+        ]
+      }
+    },
+    "kid": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sophocles let me look through the big telescope! I saw a star. It was a star."
+        ],
+        "text": [
+          "Sophocles m-a lăsat să mă uit prin telescopul cel mare! Am văzut o stea. Era o stea."
+        ]
+      }
+    },
+    "second_totem": {
+      "name": {
+        "en": [
+          "Vikavolt"
+        ],
+        "text": [
+          "Vikavolt"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

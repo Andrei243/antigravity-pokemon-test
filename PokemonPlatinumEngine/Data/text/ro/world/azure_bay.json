@@ -1,0 +1,66 @@
+{
+  "people": {
+    "ondine": {
+      "name": {
+        "en": [
+          "Ondine"
+        ],
+        "text": [
+          "Ondine"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Ondine: The bay is never the same blue twice. Let's see if your battle is as changeable!"
+        ],
+        "text": [
+          "Frumoasă Ondine: Golful nu are niciodată aceeași nuanță de albastru de două ori. Să vedem dacă lupta ta e la fel de schimbătoare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Ondine: The tide turned on me. It does that."
+        ],
+        "text": [
+          "Frumoasă Ondine: Fluxul s-a întors împotriva mea. Face asta."
+        ]
+      }
+    },
+    "yannick": {
+      "name": {
+        "en": [
+          "Yannick"
+        ],
+        "text": [
+          "Yannick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Yannick: Something big swims round that island at night. Until it bites, you'll do!"
+        ],
+        "text": [
+          "Pescar Yannick: Ceva mare înoată în jurul insulei noaptea. Până mușcă, mă mulțumesc cu tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Yannick: Reeled in, and by a Trainer. Well, well."
+        ],
+        "text": [
+          "Pescar Yannick: Prins la undiță, și de un Antrenor. Ei bine, ei bine."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BaySign": {
+      "en": [
+        "Azure Bay\nNorth: Lumiose City\nSouth: the shore and the sea cave"
+      ],
+      "text": [
+        "Golful Azure\nNord: Lumiose City\nSud: țărmul și peștera mării"
+      ]
+    }
+  }
+}

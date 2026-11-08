@@ -1,0 +1,60 @@
+{
+  "people": {
+    "hau": {
+      "name": {
+        "en": [
+          "Hau"
+        ],
+        "text": [
+          "Hau"
+        ]
+      }
+    },
+    "cowgirl": {
+      "name": {
+        "en": [
+          "Cowgirl"
+        ],
+        "text": [
+          "Cowgirl"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Yee-haw! Er, I mean, alola! The ranch is just north. Mind the Tauros, they don't stop for anybody."
+        ],
+        "text": [
+          "Yee-haw! Adică, alola! Ferma e chiar la nord. Ai grijă la Tauros, nu se opresc pentru nimeni."
+        ]
+      }
+    },
+    "rancher": {
+      "name": {
+        "en": [
+          "Rancher"
+        ],
+        "text": [
+          "Fermierul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That house over there is Kiawe's family's. He's a trial captain, and he dances with fire, if you can believe it."
+        ],
+        "text": [
+          "Casa de acolo e a familiei lui Kiawe. E căpitan de încercare și dansează cu focul, dacă îți vine să crezi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "Paniola Town\nA town of ranchers, where the Tauros run free."
+      ],
+      "text": [
+        "Paniola Town\nUn oraș de fermieri, unde Tauros aleargă liber."
+      ]
+    }
+  }
+}

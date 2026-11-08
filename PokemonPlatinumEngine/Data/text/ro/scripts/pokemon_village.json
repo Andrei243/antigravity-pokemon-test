@@ -1,0 +1,38 @@
+{
+  "Keeper": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        "Bătrâna"
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle."
+      ],
+      "text": [
+        "Pokémonii de aici au fost lăsați în urmă de oameni sau au fugit de ei. Trăiesc cum le place acum. Fii blând."
+      ]
+    },
+    {
+      "en": [
+        "The Zoroark let you by the cave, I see. What lives at the end of it was made by people, long ago. Go gently."
+      ],
+      "text": [
+        "Zoroark te-a lăsat să treci pe lângă peșteră, văd. Ce trăiește la capătul ei a fost făcut de oameni, demult. Mergi cu blândețe."
+      ]
+    }
+  ],
+  "Guardian": [
+    {
+      "en": [
+        "A Zoroark stands before the cave's mouth and won't let anyone near. Other eyes watch from the grass."
+      ],
+      "text": [
+        "Un Zoroark stă la gura peșterii și nu lasă pe nimeni să se apropie. Alți ochi privesc din iarbă."
+      ]
+    }
+  ]
+}

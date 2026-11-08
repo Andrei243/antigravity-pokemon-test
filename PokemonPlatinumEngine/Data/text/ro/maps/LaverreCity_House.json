@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Laverre City"
+    ],
+    "text": [
+      "Orașul Laverre"
+    ]
+  },
+  "people": {
+    "resident": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandmother sewed every dress the Gym Leader's mother ever wore. Laverre's tailors are the best in Kalos."
+        ],
+        "text": [
+          "Bunica mea a cusut fiecare rochie purtată vreodată de mama Liderului de sală. Croitorii din Laverre sunt cei mai buni din Kalos."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
