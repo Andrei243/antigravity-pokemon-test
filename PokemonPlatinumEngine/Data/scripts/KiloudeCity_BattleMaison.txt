@@ -1,54 +1,100 @@
-# The Battle Maison's lobby in Kiloude City (plan 23, Kalos's last places; plan 37's streak house). The lines are our own,
-# and so are the people: none of X and Y's hosts is here. X and Y's Maison is an endless streak of single, double, triple
-# and rotation battles; ours is the first part of it on the frame the Battle Frontier's annex already has
-# (Models/Frontier/BattleVenue.cs, `venue ... maison`): a round of seven single battles, three entered as copies at level 50,
-# whole again after every battle, against trainers of the later sets (Data/facility-sets.json) who grow stronger with the
-# rounds won in a row. The round itself is KiloudeCity_BattleMaisonHall.txt's arrival script. Battle Points go into the
-# Frontier's one purse, and the counter beside the desk trades them for the later games' items (Data/facility-prizes.json).
-# Plan 37 · FC2 builds the rest: the other three rooms, the hosts at the 20th and 50th battles, putting a round down.
+# The Battle Maison's lobby in Kiloude City (plan 23, Kalos's last places; plan 37 · FC2's streak house). The lines are
+# our own, and so are the people: none of X and Y's hosts is here. Four rooms, the original's counts: single (three
+# entered), double (four), triple (six) and rotation (four), each an endless streak a battle at a time against trainers
+# of the later sets (Data/facility-sets.json) who grow stronger with the streak, the entered going in as copies at level
+# 50, whole again after every battle (Models/Facilities/StreakHouse.cs, StreakChallenge.cs; `facility house ...`). A
+# room's host stands in the way at its 20th battle and, beaten, opens its grand room, whose host comes at the 50th. After
+# any battle the player goes on, rests (the challenge put down and saved, taken up again here) or retires. The battles
+# are KiloudeCity_BattleMaisonHall.txt's arrival script. Battle Points go into the Frontier's one purse, and the counter
+# beside the desk trades them for the later games' items (Data/facility-prizes.json).
 
 
 script Desk
   face self player
   speaker "Receptionist"
   say "Welcome to the Battle Maison! Trainers from every corner of the world come to Kiloude to test themselves here."
-  venue streak maison
-  if result == 0 goto Ask
-  say "You've won {number} battles in a row in our hall. The regulars have started to talk about you!"
+  facility house paused
+  if result == 1 goto Resume
 label Ask
-  choose "Would you like to take on the Battle Maison?" "Enter" "The rules" "No"
+  choose "Would you like to take on the Battle Maison?" "Enter" "The rules" "The records" "No"
   if result == 1 goto Rules
-  if result == 2 goto Later
-  venue enough
+  if result == 2 goto Records
+  if result == 3 goto Later
+  choose "Which room will you battle in?" "Single" "Double" "Triple" "Rotation" "Cancel"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  if result == 2 goto Triple
+  if result == 3 goto Rotation
+  goto Later
+label Single
+  facility house way single
+  goto Grand
+label Double
+  facility house way double
+  goto Grand
+label Triple
+  facility house way triple
+  goto Grand
+label Rotation
+  facility house way rotation
+label Grand
+  facility house hardopen
+  if result == 0 goto Streak
+  choose "You've beaten this room's host, so its grand room is open to you. Which will it be?" "The usual room" "The grand room"
+  if result == 0 goto Streak
+  facility house hard hard
+label Streak
+  facility house streak
+  if result == 0 goto Enough
+  say "You've won {number} battles in a row in that room. The regulars have started to talk about you!"
+label Enough
+  facility house enough
   if result == 1 goto Choose
-  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "You need {number} Pokémon that can take part, all of different species and holding different items."
   say "An Egg can't take part, and nor can {banned}."
   end
 label Choose
-  say "Please choose the three Pokémon you'll enter."
-  venue choose
+  say "Please choose the {number} Pokémon you'll enter."
+  facility house choose
   if result == 0 goto Later
-  venue check
+  facility house check
   if result == 1 goto SameSpecies
   if result == 2 goto SameItem
-  venue begin maison
-  say "Thank you! Seven Trainers are waiting in the hall. This way, please!"
+  facility house begin
+  say "Thank you! Your first challenger is waiting in the hall. This way, please!"
   fade out 0.6
   warp "KiloudeCity_BattleMaisonHall" 8 10 up
   fade in
   end
+label Resume
+  say "Welcome back! The challenge you put down is waiting for you, just as you left it."
+  facility house resume
+  if result == 0 goto Changed
+  say "Your streak of {number} still stands. This way, please!"
+  fade out 0.6
+  warp "KiloudeCity_BattleMaisonHall" 8 10 up
+  fade in
+  end
+label Changed
+  say "Oh... the Pokémon you entered aren't with you as they were. I'm sorry, but that challenge is over."
+  goto Ask
 label SameSpecies
-  say "I'm sorry. The three entered must all be of different species."
+  say "I'm sorry. Those entered must all be of different species."
   goto Later
 label SameItem
-  say "I'm sorry. No two of the three entered may hold the same item."
+  say "I'm sorry. No two of those entered may hold the same item."
 label Later
   say "We'll be here. The hall never really empties."
   end
+label Records
+  facility house board
+  say "Every streak is written down. Somebody has to keep count!"
+  end
 label Rules
-  say "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
-  say "Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak."
-  say "The longer your streak, the stronger the Trainers who come to meet you."
+  say "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+  say "Three go into the single room, four into the double and the rotation rooms, and six into the triple room."
+  say "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
+  say "The longer your streak, the stronger the Trainers. Reach the twentieth battle and the room's host will meet you."
   end
 
 
@@ -82,5 +128,5 @@ script Fan
 script Veteran
   face self player
   speaker "Veteran"
-  say "Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat."
+  say "Twenty in a row sounds easy until the fifteenth. Then you start to hear your own heartbeat."
   end

@@ -4244,5 +4244,561 @@
         ]
       }
     ]
+  },
+  // Plan 37 · FC2: the streak house's four hosts in Kiloude City's Battle Maison, ours, one to a room, each with a
+  // normal team met at the 20th battle and a hard one at the hard room's 50th, at level 50, each with a Mega Stone
+  {
+    "id": "house_host_corvin",
+    "name": "Corvin",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Lucario",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37027919,
+        "item": "Lucarionite",
+        "moves": [
+          "Aura Sphere",
+          "Flash Cannon",
+          "Dragon Pulse",
+          "Nasty Plot"
+        ]
+      },
+      {
+        "species": "Starmie",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37035838,
+        "item": "Life Orb",
+        "moves": [
+          "Surf",
+          "Psychic",
+          "Thunderbolt",
+          "Ice Beam"
+        ]
+      },
+      {
+        "species": "Scizor",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37043757,
+        "item": "Leftovers",
+        "moves": [
+          "X-Scissor",
+          "Bullet Punch",
+          "Swords Dance",
+          "Night Slash"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_corvin_hard",
+    "name": "Corvin",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37051676,
+        "item": "Garchompite",
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Swords Dance",
+          "Stone Edge"
+        ]
+      },
+      {
+        "species": "Gengar",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37059595,
+        "item": "Focus Sash",
+        "moves": [
+          "Shadow Ball",
+          "Sludge Bomb",
+          "Focus Blast",
+          "Thunderbolt"
+        ]
+      },
+      {
+        "species": "Metagross",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37067514,
+        "item": "Choice Band",
+        "moves": [
+          "Meteor Mash",
+          "Zen Headbutt",
+          "Earthquake",
+          "Bullet Punch"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_isaura",
+    "name": "Isaura",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Gardevoir",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37075433,
+        "item": "Gardevoirite",
+        "moves": [
+          "Psychic",
+          "Thunderbolt",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Hitmontop",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37083352,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Fake Out",
+          "Close Combat",
+          "Sucker Punch",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Arcanine",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37091271,
+        "item": "Charcoal",
+        "moves": [
+          "Flamethrower",
+          "Extreme Speed",
+          "Crunch",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Milotic",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37099190,
+        "item": "Leftovers",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Recover",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_isaura_hard",
+    "name": "Isaura",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Salamence",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37107109,
+        "item": "Salamencite",
+        "moves": [
+          "Dragon Claw",
+          "Earthquake",
+          "Flamethrower",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Togekiss",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37115028,
+        "item": "Scope Lens",
+        "moves": [
+          "Air Slash",
+          "Aura Sphere",
+          "Thunder Wave",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Gyarados",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37122947,
+        "item": "Wacan Berry",
+        "moves": [
+          "Waterfall",
+          "Ice Fang",
+          "Dragon Dance",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Abomasnow",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37130866,
+        "item": "Never-Melt Ice",
+        "moves": [
+          "Blizzard",
+          "Wood Hammer",
+          "Ice Shard",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_tamsin",
+    "name": "Tamsin",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Ampharos",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37138785,
+        "item": "Ampharosite",
+        "moves": [
+          "Thunderbolt",
+          "Dragon Pulse",
+          "Focus Blast",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Breloom",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37146704,
+        "item": "Focus Sash",
+        "moves": [
+          "Spore",
+          "Seed Bomb",
+          "Mach Punch",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Gyarados",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37154623,
+        "item": "Leftovers",
+        "moves": [
+          "Waterfall",
+          "Earthquake",
+          "Dragon Dance",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Chandelure",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37162542,
+        "item": "Life Orb",
+        "moves": [
+          "Flamethrower",
+          "Shadow Ball",
+          "Energy Ball",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Snorlax",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37170461,
+        "item": "Chesto Berry",
+        "moves": [
+          "Body Slam",
+          "Earthquake",
+          "Rest",
+          "Curse"
+        ]
+      },
+      {
+        "species": "Jolteon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37178380,
+        "item": "Magnet",
+        "moves": [
+          "Thunderbolt",
+          "Shadow Ball",
+          "Thunder Wave",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_tamsin_hard",
+    "name": "Tamsin",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Metagross",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37186299,
+        "item": "Metagrossite",
+        "moves": [
+          "Meteor Mash",
+          "Zen Headbutt",
+          "Earthquake",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Hydreigon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37194218,
+        "item": "Life Orb",
+        "moves": [
+          "Dark Pulse",
+          "Dragon Pulse",
+          "Flamethrower",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Volcarona",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37202137,
+        "item": "Lum Berry",
+        "moves": [
+          "Fire Blast",
+          "Bug Buzz",
+          "Quiver Dance",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Kingdra",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37210056,
+        "item": "Mystic Water",
+        "moves": [
+          "Surf",
+          "Dragon Pulse",
+          "Ice Beam",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Excadrill",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37217975,
+        "item": "Focus Sash",
+        "moves": [
+          "Earthquake",
+          "Iron Head",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Sylveon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37225894,
+        "item": "Pixie Plate",
+        "moves": [
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_ludovic",
+    "name": "Ludovic",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Aggron",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37233813,
+        "item": "Aggronite",
+        "moves": [
+          "Iron Head",
+          "Earthquake",
+          "Stone Edge",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Ferrothorn",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37241732,
+        "item": "Leftovers",
+        "moves": [
+          "Gyro Ball",
+          "Power Whip",
+          "Leech Seed",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Vaporeon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37249651,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Wish",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Weavile",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37257570,
+        "item": "Life Orb",
+        "moves": [
+          "Night Slash",
+          "Ice Shard",
+          "Swords Dance",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "house_host_ludovic_hard",
+    "name": "Ludovic",
+    "class": "House Host",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Tyranitar",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37265489,
+        "item": "Tyranitarite",
+        "moves": [
+          "Stone Edge",
+          "Crunch",
+          "Earthquake",
+          "Dragon Dance"
+        ]
+      },
+      {
+        "species": "Conkeldurr",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37273408,
+        "item": "Flame Orb",
+        "moves": [
+          "Mach Punch",
+          "Hammer Arm",
+          "Stone Edge",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Lapras",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37281327,
+        "item": "Leftovers",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Thunderbolt",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Haxorus",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 37289246,
+        "item": "Choice Scarf",
+        "moves": [
+          "Dragon Claw",
+          "Earthquake",
+          "Swords Dance",
+          "Protect"
+        ]
+      }
+    ]
   }
 ]

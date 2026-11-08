@@ -1012,7 +1012,7 @@ natures; the Arena's bouts are judged after three turns). The round lives betwee
 | Command | What it does |
 |---|---|
 | `venue enough`, `venue choose`, `venue check` | As `bracket`'s: three that could go in together (`{banned}`), the team opened for three to be chosen and waited on, two of a species (1) or the same item (2). |
-| `venue begin palace`, `venue begin arena`, `venue begin maison` | Draws the round's seven trainers and their teams with the three chosen; a round left unfinished before it ends that venue's streak first. `maison` is Kiloude City's Battle Maison (plan 23's Kalos): plain single battles, its seven trainers of the later places with three of FC1's sets each, of tiers that climb with the rounds won (`BattleVenueChallenge.BeginMaison`); `streak maison`, `best maison` its record. |
+| `venue begin palace`, `venue begin arena` | Draws the round's seven trainers and their teams with the three chosen; a round left unfinished before it ends that venue's streak first. (Kiloude City's Battle Maison, a third venue in plan 23's first build, is `facility house` since plan 37 · FC2, below.) |
 | `venue active`, `venue next` | `RESULT` 1 while a round is under way; the battle to come, 0 to 6, `{number}` 1 to 7. |
 | `venue opponent` | Stands the battle's trainer in the room as `opponent`, with their look; `{foe}` names them. |
 | `venue fight` | The battle, three copies against the trainer's three under the venue's rules (`RESULT` 1 won, 0 lost). |
@@ -1021,6 +1021,30 @@ natures; the Arena's bouts are judged after three turns). The round lives betwee
 | `venue streak palace`, `venue best arena`, `venue end` | A venue's battles won in a row and the most ever (`{number}`); lets go of the round. |
 | `venue tent verdanturf`, `venue tent fallarbor`, `venue tent slateport` | Hoenn's Battle Tents (plan 21 · H3's last part; rulings, "Hoenn's Battle Tents"): a round of three trainers on the Palace's, the Arena's or the Factory's rules (`BattleVenueChallenge.BeginTent`), met at the highest level of the three chosen and never under thirty as the region maps it (Slateport's at thirty, on rentals, with no three chosen); `{number}` the trainers' level. A tent keeps no streak and earns no Battle Points: `won` is 1 on the third win, `finish` writes nothing, `points` is 0. |
 | `venue rent`, `venue trade`, `venue length` | Slateport's six rentals on the Factory's own screen, three to be chosen (`RESULT` 1 once three are rented); after a win, one of the three for one of the trainer just beaten (`RESULT` 1 when one was swapped); the round's length (7, or a tent's 3). |
+
+### The later games' battle places
+
+Plan 37 · FC2; `docs/mechanics/rulings.md`, "The later games' battle places". One command for every place of plan 37,
+`facility <place> <word> [what]`, each place a word (`house`, the streak house in Kiloude City's Battle Maison:
+`KiloudeCity_BattleMaison.txt`, `KiloudeCity_BattleMaisonHall.txt`) and each later place more words of the same command,
+never a command of its own. A challenge (`Models/Facilities/StreakChallenge.cs`) is an endless streak a battle at a time:
+those entered go in as copies at the room's level, whole every battle, against trainers of the later sets of the tiers the
+streak has reached, or the room's host. It lives between the desk and the battle room as the host's `Facility` (a game
+closed in the middle of one finds none, and the next begun ends the streak); one put down (`pause`) is kept in the records
+and saved with them.
+
+| Command | What it does |
+|---|---|
+| `facility house way single`, `... way double`, `... way triple`, `... way rotation` | Chooses the room (the normal one); `facility house hard hard` (or `hard normal`) its hard room. |
+| `facility house hardopen`, `facility house size` | `RESULT` 1 once the way's hard room is open (its host beaten); how many go in (3, 4, 6 or 4; `{number}`). |
+| `facility house enough`, `... choose`, `... check` | As `venue`'s, for the room's count: that many who could go in together (`{number}`, `{banned}`), the team opened for them to be chosen and waited on, two of a species (1) or the same item (2). |
+| `facility house begin` | Begins the challenge with those chosen; a challenge walked out on ends the room's streak first. `RESULT` and `{number}` the streak it begins from. |
+| `facility house paused`, `facility house resume` | `RESULT` 1 when a challenge put down waits in any room of the place (that room is chosen); takes it up again (`RESULT` 0 when the team no longer holds the same Pokémon in the same places, which ends the streak; `{number}` the streak). |
+| `facility house streak`, `... best`, `... latest`, `... board` | The chosen room's battles won in a row, the most ever and the last streak's (`{number}`); the place's records' board, waited on. |
+| `facility house active`, `... next`, `... host` | `RESULT` 1 while a challenge of the place is under way (its room is chosen); the battle to come (`{number}`, from 1); `RESULT` 1 when it is the host's. |
+| `facility house opponent`, `facility house battle` | Stands the battle's trainer in the room as `opponent` (`{foe}`); the battle in the room's format (`RESULT` 1 won, 0 lost). |
+| `facility house won`, `... points`, `... opened`, `... trophy` | Counts the win (`RESULT` 1 when it was the host's; `{number}` the streak); hands over its Battle Points (`{number}`); `RESULT` 1 when it opened the hard room; `RESULT` 1 when it won the hard room's trophy, which it keeps in the story (`VAR_KALOS_HOUSE_TROPHY_<WAY>`). |
+| `facility house pause`, `facility house finish won`, `facility house finish lost`, `facility house end` | Puts the challenge down (the script saves with `frontier save`); ends it and its streak, kept as the latest (`{number}`); lets it go. |
 
 ### The Battle Pike and the Battle Pyramid
 

@@ -32,7 +32,7 @@ public sealed partial class ScriptRunner
     {
         var records = host.Frontier;
         BattleVenueChallenge Round() => host.Venue ?? throw Wrong(i, $"'venue {i.Name}' needs a round under way");
-        AnnexVenue Named() => i.Other switch { "arena" => AnnexVenue.Arena, "maison" => AnnexVenue.Maison, _ => AnnexVenue.Palace };
+        AnnexVenue Named() => i.Other == "arena" ? AnnexVenue.Arena : AnnexVenue.Palace;
         int Draw() => host.Chance.Next(0x10000);
         switch (i.Name)
         {
@@ -57,10 +57,7 @@ public sealed partial class ScriptRunner
             }
             case "begin":
                 if (venueSlots.Count != BattleVenueChallenge.TeamSize) throw Wrong(i, "'venue begin' needs the three to have been chosen ('venue choose')");
-                // Kiloude City's Battle Maison (plan 23, Kalos's last places): its trainers bring the later sets
-                host.Venue = Named() == AnnexVenue.Maison
-                    ? BattleVenueChallenge.BeginMaison(records, venueSlots, Draw)
-                    : BattleVenueChallenge.Begin(records, Named(), venueSlots, Draw);
+                host.Venue = BattleVenueChallenge.Begin(records, Named(), venueSlots, Draw);
                 records.ChallengesStarted++;
                 lastNumber = host.Venue.StreakBefore;
                 break;

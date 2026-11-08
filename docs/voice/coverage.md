@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1536 | 1475 | 61 | 1 | 0 |
-| Scripts (`script:`) | 11682 | 11191 | 491 | 17 | 0 |
+| Scripts (`script:`) | 11692 | 11199 | 493 | 17 | 0 |
 | People of the world (`world:`) | 7980 | 7918 | 62 | 4 | 0 |
-| **All** | 21432 | 20815 | 617 | 22 | 0 |
+| **All** | 21442 | 20823 | 619 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,10 +22,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 886 |
+| a question's answers | 897 |
 | a sign | 1743 |
 | the game's own voice (speaker none) | 293 |
-| the game's own voice (text) | 1918 |
+| the game's own voice (text) | 1919 |
 
 ## The cast
 
@@ -50,7 +50,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lass (any)` | 348 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 258 | 0 |
-| `look:receptionist (any)` | 246 | 25 |
+| `look:receptionist (any)` | 253 | 28 |
 | `look:scientist (any)` | 236 | 6 |
 | `look:gym_guide (any)` | 218 | 1 |
 | `class:ace_trainer (any)` | 198 | 0 |

@@ -188,6 +188,8 @@ public enum Op
     // The open world's places (plan 32 · OW5): someone walked to, put at and turned to a marker, the player warped to an
     // open map's marker, and the camera sent to look at one
     WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
+    // The later games' battle places (plan 37 · FC2): one command for all of them, `facility <place> <word> [what]`
+    Facility,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

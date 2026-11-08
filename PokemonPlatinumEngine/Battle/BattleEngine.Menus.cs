@@ -538,6 +538,10 @@ public partial class BattleEngine
             InCore(MenuBattler);
             refusal = core.WhyNot(BattleChoice.Switch(MenuBattler.Place, partyIndex));
         }
+        // A fainted place is filled only by whom the rules let in: never a rotation's seated Pokémon, which the rules
+        // refuse as no bench (plan 14 · B7; met first in plan 37 · FC2's rotation room, where it had been a crash)
+        else if (refusal == null && replacing && core.Request is ReplacementRequest wanted && !core.CanSendIn(core.At(wanted.Place), partyIndex))
+            refusal = Text.Of("battle.thatPokemonCantBe");
 
         if (refusal != null)
         {

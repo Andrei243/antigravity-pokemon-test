@@ -86,8 +86,8 @@ partial class Harness
         void Left(string what) =>
             Console.WriteLine($"  {what}: map {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), Yveltal gone {story.Has("FLAG_KALOS_YVELTAL_GONE")}, "
                 + $"factory {story.Has("FLAG_KALOS_FACTORY_DONE")}, Kanto stone {story.Has("FLAG_KALOS_KANTO_STONE_GIVEN")}, château points {story.Var("VAR_KALOS_CHATEAU_POINTS")} "
-                + $"title {story.Var("VAR_KALOS_CHATEAU_TITLE")}, glint {story.Has(ClockFlags.KalosStonesGlint)}, Maison streak {game.Frontier.Maison.Streak}, "
-                + $"round {(game.Venue == null ? "none" : $"{game.Venue.Venue} battle {game.Venue.Battle + 1}")}, BP {game.Frontier.BattlePoints}");
+                + $"title {story.Var("VAR_KALOS_CHATEAU_TITLE")}, glint {story.Has(ClockFlags.KalosStonesGlint)}, Maison streak {game.Frontier.PeekFacility("house", "single", false)?.Streak ?? 0}, "
+                + $"challenge {(game.Facility == null ? "none" : $"{game.Facility.Room.Key} battle {game.Facility.NextBattle(game.Frontier)}")}, BP {game.Frontier.BattlePoints}");
 
         // A game of Kalos past its Hall of Fame with the TMV pass and the Mega Ring upgraded
         engine.NewGameRegion = "Kalos";
@@ -217,10 +217,10 @@ partial class Harness
         Frames(30); Shot("wks308_kiloude_station_arrived");
         Left("the TMV");
 
-        // A round of the Battle Maison: the desk, three entered, the hall and its first battle
+        // A challenge of the Battle Maison's single room (plan 37 · FC2): the desk, three entered, the hall and its first battle
         Talk("KiloudeCity_BattleMaison", 4, 5, Direction.Up);
         ReadTo("Would you like to take on", fight: false); Frames(10); Shot("wks309_maison_desk");
-        ReadTo("Battle 1 of seven", fight: false); Frames(10); Shot("wks310_maison_first_battle");
+        ReadTo("Battle 1!", fight: false); Frames(10); Shot("wks310_maison_first_battle");
         ReadTo("steps forward", fight: false); Frames(10); Shot("wks311_maison_challenger");
         for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
         {
@@ -228,7 +228,7 @@ partial class Harness
             else Frames(1);
         }
         if (State() == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("wks312_maison_battle"); Win(); }
-        ReadTo("Battle 2 of seven", fight: false); Frames(10); Shot("wks313_maison_second");
+        ReadTo("Battle 2!", fight: false); Frames(10); Shot("wks313_maison_second");
         Left("the Maison");
     }
 }

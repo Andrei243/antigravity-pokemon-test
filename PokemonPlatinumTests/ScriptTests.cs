@@ -746,6 +746,33 @@ public class ScriptTests
           venue rent
           venue trade
           venue length
+          facility house way triple
+          facility house hard hard
+          facility house hardopen
+          facility house size
+          facility house enough
+          facility house choose
+          facility house check
+          facility house begin
+          facility house paused
+          facility house resume
+          facility house streak
+          facility house best
+          facility house latest
+          facility house board
+          facility house active
+          facility house next
+          facility house host
+          facility house opponent
+          facility house battle
+          facility house won
+          facility house points
+          facility house opened
+          facility house trophy
+          facility house pause
+          facility house finish won
+          facility house finish lost
+          facility house end
           favorlady which
           favorlady give
           favorlady new
@@ -1867,6 +1894,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleDomeChallenge? Dome { get => inner.Dome; set => inner.Dome = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleVenueChallenge? Venue { get => inner.Venue; set => inner.Venue = value; }
+        public PokemonPlatinumEngine.Models.Facilities.StreakChallenge? Facility { get => inner.Facility; set => inner.Facility = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePikeChallenge? Pike { get => inner.Pike; set => inner.Pike = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePyramidChallenge? Pyramid { get => inner.Pyramid; set => inner.Pyramid = value; }
         public PokemonPlatinumEngine.Models.Tournament? Tournament { get => inner.Tournament; set => inner.Tournament = value; }

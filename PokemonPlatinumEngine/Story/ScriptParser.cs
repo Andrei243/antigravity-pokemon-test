@@ -1227,14 +1227,29 @@ public static class ScriptParser
             // The Lilycove Lady's favour (plan 21 · H11, part c)
             case "favorlady":
                 return new Instruction { Op = Op.FavorLady, Line = line, Name = r.OneOf("which", "give", "new") };
+            // The later games' battle places (plan 37 · FC2): the place, then the frame's word, then what the word takes
+            case "facility":
+            {
+                string place = r.OneOf(Models.Facilities.FacilityPlaces.Names);
+                string what = r.OneOf("enough", "size", "choose", "check", "way", "hard", "hardopen", "begin", "active", "paused", "resume",
+                    "next", "host", "opponent", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
+                    "board", "end");
+                string which = what switch
+                {
+                    "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),
+                    "hard" => r.OneOf("normal", "hard"),
+                    "finish" => r.OneOf("won", "lost"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Facility, Line = line, Name = place, Other = what, Move = which };
+            }
             // The Battle Palace's and the Battle Arena's rounds (plan 14 · B9)
             case "venue":
             {
                 string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end",
                     "tent", "rent", "trade", "length");
                 // Hoenn's Battle Tents (plan 21 · H3's last part): a round of three begun in a tent, Slateport's rentals and trades
-                // (and Kiloude City's Battle Maison, plan 23's Kalos: maison)
-                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena", "maison") : what == "finish" ? r.OneOf("won", "lost")
+                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost")
                     : what == "tent" ? r.OneOf("verdanturf", "fallarbor", "slateport") : "";
                 return new Instruction { Op = Op.Venue, Line = line, Name = what, Other = which };
             }

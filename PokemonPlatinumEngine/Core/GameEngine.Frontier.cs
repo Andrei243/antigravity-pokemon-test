@@ -47,6 +47,7 @@ public partial class GameEngine
         flow.Arcade = null;
         flow.Pike = null;
         flow.Pyramid = null;
+        flow.Facility = null;
         flow.EnteredSlots = Array.Empty<int>();
         if (saved != null)
         {
@@ -76,6 +77,12 @@ public partial class GameEngine
             case "subwayrecords":
                 // The Battle Subway's board (plan 22 · U11): its trains' streaks, from the story's own variables
                 flow.FrontierRecordsScreen.Open(FrontierBoard.ForSubway(flow.Frontier, flow.Story));
+                flow.State = GameState.FrontierRecords;
+                return 1;
+            case "facilityboard":
+                // A later battle place's board (plan 37 · FC2), by the place's number
+                if (number < 0 || number >= Models.Facilities.FacilityPlaces.Names.Length) return 0;
+                flow.FrontierRecordsScreen.Open(FrontierBoard.ForFacility(Models.Facilities.FacilityPlaces.Names[number], flow.Frontier, flow.Story));
                 flow.State = GameState.FrontierRecords;
                 return 1;
             case "subwaypartner":

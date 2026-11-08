@@ -213,6 +213,8 @@ if (mode == "alolaends") h.AlolaLooseEndsMode();
 if (mode == "alolarest") h.AlolaRestMode();
 // Plan 23 · Z8: Alola after its Hall of Fame, Ultra Space and the Battle Royal Dome
 if (mode == "ultraspace") h.AlolaUltraSpaceMode();
+// Plan 37 · FC2: the streak house in Kiloude City's Battle Maison
+if (mode == "streakhouse") h.StreakHouseMode();
 if (mode == "freemove") h.FreeMoveMode();
 // Plan 30's free movement and grown kit (FM4's turntables first)
 if (mode == "freewalk") h.FreeWalkMode();
