@@ -7,8 +7,8 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Plan 40 · GE1's check, for Kalos (plan 23 · Z4b): every species of X and Y's three Pokédexes (Central, Coastal and
 /// Mountain Kalos, 457 together) can be had in Kalos with nobody else (<see cref="SpeciesSources.Of(string)"/>), but what
-/// <see cref="Owed"/> names, each with who owes it. Drawn by hand, Kalos has twelve species to a place's grass and no
-/// water yet, so most of what is owed is X and Y's wild Pokémon still to place.
+/// <see cref="Owed"/> names, each with who owes it. Since Kalos's port and its HMs
+/// (plan 23) only the Jaw and Sail Fossils' lines and the mythicals are owed.
 /// </summary>
 public class KalosSpeciesTests
 {
