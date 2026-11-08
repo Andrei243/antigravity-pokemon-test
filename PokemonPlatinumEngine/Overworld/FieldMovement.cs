@@ -117,7 +117,9 @@ public enum Obstacle
     /// <summary>A rail or a bumpy slope (the GBA's): taken only on the Acro Bike, a rail only along its length (plan 21 · H3).</summary>
     AcroBike,
     /// <summary>Ground skates don't take (plan 23 · Z1): tall grass and stairs; the step is taken on foot instead.</summary>
-    Skates
+    Skates,
+    /// <summary>A drift of snow too deep to wade (X and Y's Route 17): crossed only on a ridden Pokémon, Kalos's Mamoswine.</summary>
+    Drift
 }
 
 /// <summary>
@@ -429,6 +431,10 @@ public static class FieldMovement
         }
         else if (plank != null) return No(Obstacle.BicyclesOnly);
 
+        // A drift of snow too deep for anyone on foot, on skates or on a Bicycle is crossed only on a ridden Pokémon's back
+        // (X and Y's Route 17, the Mamoswine Road: plan 23, Kalos's Mamoswine ride)
+        if (there == TileBehavior.SnowDrift && walker.Mode != TravelMode.Riding) return No(Obstacle.Drift);
+
         // Skates take no tall grass and no stairs (plan 23 · Z1): X and Y's skater steps off them there
         if (walker.Mode == TravelMode.Skating && RefusesSkates(map, x, y, nx, ny, dir)) return No(Obstacle.Skates);
 
@@ -551,7 +557,7 @@ public static class FieldMovement
         // Skates go at a run's pace wherever they go at all (plan 23 · Z1)
         TravelMode.Skating => Pace.Fast,
         // A ride gallops at a run's pace, deep snow and mud included (plan 23, wave 91)
-        TravelMode.Riding => Pace.Fast,
+        TravelMode.Riding => underfoot == TileBehavior.SnowDrift ? Pace.Walk : Pace.Fast,
         _ => underfoot switch
         {
             TileBehavior.DeepestSnow => Pace.Slowest,

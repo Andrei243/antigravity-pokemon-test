@@ -29,19 +29,30 @@ public partial class GameEngine
             PlayFieldMusic();
             return true;
         }
-        if (!MovementHere.Offers(RegionMode.Ride) || !RidePager.CanRide(species, flow.Story, Here) || flow.Map.IsIndoors) return false;
-        if (!flow.Player.SetRiding(RidePager.LandRideOf(species)!.Value.Species)) return false;
+        string? area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key;
+        bool lent = RidePager.LentHere(species, Here.Id, area);
+        if (!lent && !MovementHere.Offers(RegionMode.Ride) || !RidePager.CanRide(species, flow.Story, Here, area) || flow.Map.IsIndoors) return false;
+        if (!flow.Player.SetRiding(RidePager.SpeciesOf(species))) return false;
         PlayFieldMusic();
         return true;
     }
 
     /// <summary>
     /// A ride ends where riding may not go (plan 23, wave 91): through a door indoors, into a region or place that offers
-    /// none. Run as a place changes, as the Bicycle is put away where it isn't allowed.
+    /// none; and a lent ride (Kalos's Mamoswine) anywhere but the area that lends it. Run as a place changes, as the
+    /// Bicycle is put away where it isn't allowed.
     /// </summary>
     private void DismountWhereNoRiding()
     {
-        if (flow.Player.Mode == TravelMode.Riding && (flow.Map.IsIndoors || !MovementHere.Offers(RegionMode.Ride)))
+        if (flow.Player.Mode != TravelMode.Riding) return;
+        string? steed = flow.Player.Steed;
+        if (RidePager.LentRideOf(steed) != null)
+        {
+            if (flow.Map.IsIndoors || !RidePager.LentHere(steed, Here.Id, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key))
+                flow.Player.SetRiding(null);
+            return;
+        }
+        if (flow.Map.IsIndoors || !MovementHere.Offers(RegionMode.Ride))
             flow.Player.SetRiding(null);
     }
 

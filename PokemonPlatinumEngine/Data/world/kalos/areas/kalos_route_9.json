@@ -42,5 +42,34 @@
     { "species": "Hawlucha", "level": 19 },
     { "species": "Pancham", "level": 19 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 25, "maxLevel": 27 },
+    { "species": "Tentacool", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 26, "maxLevel": 27 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Luvdisc", "level": 10, "maxLevel": 15 },
+    { "species": "Luvdisc", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Skrelp", "level": 25 },
+    { "species": "Clauncher", "level": 25 },
+    { "species": "Horsea", "level": 25 },
+    { "species": "Skrelp", "level": 25 },
+    { "species": "Clauncher", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Relicanth", "level": 35 },
+    { "species": "Seadra", "level": 35 },
+    { "species": "Dragalge", "level": 35 },
+    { "species": "Clawitzer", "level": 35 },
+    { "species": "Relicanth", "level": 35 }
+  ],
+  "superRodRate": 75
 }

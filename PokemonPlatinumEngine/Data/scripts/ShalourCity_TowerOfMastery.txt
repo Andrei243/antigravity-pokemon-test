@@ -72,14 +72,30 @@ label Gift
   setflag FLAG_KALOS_RECEIVED_LUCARIO
   say "In battle, choose its move with the Key Stone ready, and it'll Mega Evolve. Take good care of it!"
 label Done
+  call Surf
   setvar VAR_KALOS_STORY 22
   objective kalosFree
   endscene
   end
 
 label After
+  if not flag FLAG_KALOS_RECEIVED_HM03 goto Owed
   say "The bond between you and your Pokémon is the real stone. The rest is only rock."
   end
+label Owed
+  call Surf
+  end
+
+# Plan 23, Kalos's water: HM03 Surf, which X and Y hand over in Shalour City once the Rumble Badge and the Key Stone are
+# the player's (the neighbour gives it there; here the guru does, the neighbour being on the road ahead: rulings,
+# "Kalos's Gyms, its water and the Mamoswine ride"). A save already past the tower is given it by talking to him again
+script Surf
+  speaker "Gurkinn"
+  say "One thing more. Kalos is a land of rivers and coasts, and a Trainer who can't cross water sees only half of it."
+  give "HM03"
+  setflag FLAG_KALOS_RECEIVED_HM03
+  say "That is Surf. Teach it to a Pokémon that swims, and face the water to ride out on its back."
+  return
 
 
 script Korrina

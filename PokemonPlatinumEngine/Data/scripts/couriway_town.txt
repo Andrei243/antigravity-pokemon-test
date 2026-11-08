@@ -1,0 +1,18 @@
+# Couriway Town (plan 23, Kalos's water; docs/mechanics/rulings.md, "Kalos's Gyms, its water and the Mamoswine
+# ride"). The lines are our own, on X and Y's beat as it is publicly described: the fisherman by the falls gives the
+# Super Rod.
+
+
+script SuperRod
+  face self player
+  if flag FLAG_KALOS_RECEIVED_SUPER_ROD goto After
+  say "Three rivers meet under the town and go over the falls together. The fishing's never dull."
+  say "But the big ones sit at the bottom of the pool under the falls. You need a proper rod for those."
+  say "I've worn out more rods than I can count. This one's still good, though. Take it."
+  give "Super Rod"
+  setflag FLAG_KALOS_RECEIVED_SUPER_ROD
+  say "That's a Super Rod. Whatever's down there, you'll meet it now."
+  end
+label After
+  say "The falls carry everything down to Couriway sooner or later. Even the Pokémon."
+  end

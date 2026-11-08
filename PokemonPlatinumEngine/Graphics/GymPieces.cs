@@ -52,6 +52,9 @@ internal sealed class GymPieces
     // The Fortree Gym's (plan 21 · H6): a gate's post on its pivot, and a rail of one tile and of two, lying north
     private Piece? gatePost, gateArm, gateLongArm;
 
+    // Snowbelle's Gym (plan 23, Kalos's Gyms): a turntable's hub of ice, and an arm lying north from it
+    private Piece? turnHub, turnArm;
+
     // The Blackthorn Gym's (plan 20 · J11, part c): a slab of each size, built unturned round its middle button
     private Piece? slabWide, slabNarrow;
 
@@ -176,6 +179,21 @@ internal sealed class GymPieces
                     if ((longArm ? gateLongArm : gateArm) is { } rail)
                         yield return (rail, Matrix4x4.CreateRotationY(-way * MathF.PI / 2f) * pivot);
                 i++;
+            }
+            yield break;
+        }
+        if (map.Puzzle is SnowbelleTurntables tables)
+        {
+            // Each turntable's hub on its tile, and its two arms lying the ways it is turned to: an arm is built lying north
+            // from the hub's middle and turned clockwise as seen from above, a quarter for each way round
+            for (int i = 0; i < SnowbelleTurntables.Tables.Length; i++)
+            {
+                var t = SnowbelleTurntables.Tables[i];
+                var hub = Matrix4x4.CreateTranslation(t.X + 0.5f, Relief.At(map, t.X + 0.5f, t.Y + 0.5f), t.Y + 0.5f);
+                if (turnHub != null) yield return (turnHub, hub);
+                if (turnArm != null)
+                    foreach (int way in SnowbelleTurntables.ArmsIn(tables.States[i]))
+                        yield return (turnArm, Matrix4x4.CreateRotationY(-way * MathF.PI / 2f) * hub);
             }
             yield break;
         }
@@ -305,6 +323,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is BlackthornPlatforms) BuildBlackthorn(map);
         else if (map.Puzzle is MossdeepTiles) BuildMossdeep(map);
         else if (map.Puzzle is SootopolisIce) BuildSootopolis(map);
+        else if (map.Puzzle is SnowbelleTurntables) BuildSnowbelle(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         else if (falls) BuildWaterfall(map);
@@ -938,6 +957,35 @@ internal sealed class GymPieces
         stillParts = Make(still);
     }
 
+    // ------------------------------------------------------------------ the Snowbelle Gym
+
+    /// <summary>The ice of Wulfric's turntables and their rims (style guide, "Gyms", "The Snowbelle Gym's turntables").</summary>
+    private static readonly Tone TurnIce = Tone.Of(176, 214, 236, 214, 236, 248, 118, 160, 196);
+    private static readonly Tone TurnRim = Tone.Of(96, 132, 176, 132, 168, 206, 62, 92, 132);
+
+    /// <summary>
+    /// Wulfric's turntables (plan 23, Kalos's Gyms; style guide, "Gyms", "The Snowbelle Gym's turntables"): a hub, a slab
+    /// of ice a tile across with a raised ring round its switch, and an arm, a slab of ice a tile long lying north from
+    /// the hub's edge with a rim at its end, each a few texels thick under the floor's height so that its top is walked
+    /// on level with the platforms. Built at their own origin; the puzzle turns and places them as it draws.
+    /// </summary>
+    private void BuildSnowbelle(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var hub = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        hub.Block("turn.hub", TurnIce, -T / 2f, T / 2f, -T / 2f, T / 2f, -6, 0);
+        hub.Block("turn.ring", TurnRim, -9, 9, -9, 9, 0, 2);
+        hub.Block("turn.boss", TurnIce, -5, 5, -5, 5, 2, 3);
+        var arm = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        arm.Block("turn.arm", TurnIce, -T / 2f + 3, T / 2f - 3, -T * 1.5f, -T / 2f, -5, 0);
+        arm.Block("turn.edge", TurnRim, -T / 2f + 3, T / 2f - 3, -T * 1.5f, -T * 1.5f + 2, -5, 1);
+        art = Upload(sheet);
+        turnHub = Make(hub);
+        turnArm = Make(arm);
+    }
+
     // ------------------------------------------------------------------ the Sootopolis Gym
 
     /// <summary>
@@ -1474,6 +1522,7 @@ internal sealed class GymPieces
         snowball = null;
         waterfall.Clear();
         gatePost = gateArm = gateLongArm = null;
+        turnHub = turnArm = null;
         slabWide = slabNarrow = null;
         iceCrack = iceGlaze = null;
         pillar = null;

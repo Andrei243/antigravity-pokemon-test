@@ -15,13 +15,13 @@
     "#___________#",
     "#___________#",
     "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
+    "#############",
+    "#_____#_____#",
+    "#_____#_____#",
+    "#_____#_____#",
+    "#_____#_____#",
+    "#_____#_____#",
+    "#############",
     "#___________#",
     "#___________#",
     "#___________#",
@@ -32,76 +32,39 @@
     "#############",
     "#############",
     "#############",
-    "##.........##",
     "#...........#",
     "#...........#",
     "#...........#",
+    "#############",
+    "#.....#.....#",
+    "#.....#.....#",
+    "#.....#.....#",
+    "#.....#.....#",
+    "#.....#.....#",
+    "#############",
     "#...........#",
     "#...........#",
-    "##.........##",
     "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...#...#...#",
     "#...........#",
     "######.######"
   ],
+  "behaviours": [
+    { "x": 3, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 4, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 9, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 8, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 2, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 10, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 10, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 7, "y": 15, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 4, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 8, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
   "props": [
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 4,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 8,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
     {
       "type": "Rug",
       "x": 6,
       "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 10,
       "width": 1,
       "depth": 1
     },
@@ -118,6 +81,76 @@
       "y": 2,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 3,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 4,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 9,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 7,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -127,6 +160,86 @@
       "targetMap": "Kalos",
       "targetX": 360,
       "targetY": 194,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 14,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 4,
+      "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 10,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 3,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 14,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 8,
+      "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 10,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 9,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 2,
+      "sourceY": 8,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 10,
+      "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 10,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 2,
+      "targetY": 8,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 8,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 7,
+      "targetY": 15,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 10,
+      "targetY": 8,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 8,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 8,
+      "targetY": 5,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 5,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 4,
+      "targetY": 8,
       "targetFacing": "Down"
     }
   ],
@@ -145,7 +258,7 @@
       "id": "gym_guide",
       "name": "Gym Guide",
       "npcType": "Gentleman",
-      "x": 9,
+      "x": 10,
       "y": 15,
       "facing": "Down",
       "script": "GymGuide"
@@ -154,8 +267,8 @@
       "id": "kalos_lass_josette",
       "name": "Josette",
       "npcType": "Lass",
-      "x": 3,
-      "y": 11,
+      "x": 1,
+      "y": 9,
       "facing": "Right",
       "trainer": {
         "id": "kalos_lass_josette",
@@ -172,8 +285,8 @@
       "id": "kalos_lady_eleonore",
       "name": "Éléonore",
       "npcType": "Lady",
-      "x": 9,
-      "y": 7,
+      "x": 11,
+      "y": 9,
       "facing": "Left",
       "trainer": {
         "id": "kalos_lady_eleonore",

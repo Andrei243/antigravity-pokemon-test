@@ -227,9 +227,15 @@ internal static class WorldWalk
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // and so is a tile the Trick House's sixth puzzle's gates hold shut, which turning them frees (plan 21 ·
                 // H12, part j; HoennTrickHouseTests holds the gates)
-                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms
+                // and so is a tile of Wulfric's turntables (plan 23, Kalos's Gyms; SnowbelleGymTests turns them across)
+                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms or SnowbelleTurntables
                           || step.Obstacle == Obstacle.Rail && map.Puzzle is FortreeGates { Name: FortreeGates.TrickHouseName }) && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // A drift of snow is crossed on the Mamoswine its road lends at each end and in each clearing (plan 23, Kalos's
+                // Mamoswine ride; KalosWaterAndRideTests rides it): here every drift counts as ridden through
+                else if (step.Obstacle == Obstacle.Drift && mode == TravelMode.OnFoot
+                         && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too
                 else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } name } person)

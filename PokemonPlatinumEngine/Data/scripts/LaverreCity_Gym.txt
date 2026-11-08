@@ -3,6 +3,10 @@
 # designer of dresses, battles for the Fairy Badge, Kalos's sixth (`givebadge fairy`), once the Voltage Badge is won.
 # VAR_KALOS_STORY is vaniville_town.txt's count: 25 becomes 26 here, and the objective points east along Routes 15 and 17
 # to Anistar City. Her team is Kalos's trainers.json's kalos_valerie_1.
+#
+# Since Kalos's Gyms (plan 23; rulings, "Kalos's Gyms, its water and the Mamoswine ride") the hall is four rooms of a
+# doll's house, joined only by warp panels (the map's own, WarpPanels): from the door's room the west panel or the east
+# one, and on through the west room's north-east panel to Valerie's; the east room's north-east panel goes back to the door.
 
 
 script Valerie

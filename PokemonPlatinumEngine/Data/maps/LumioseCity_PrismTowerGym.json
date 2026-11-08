@@ -15,14 +15,14 @@
     "#___________#",
     "#___________#",
     "#___________#",
+    "######_######",
+    "#___________#",
+    "#___________#",
+    "######_######",
     "#___________#",
     "#___________#",
     "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
+    "######_######",
     "#___________#",
     "#___________#",
     "#___________#",
@@ -32,76 +32,27 @@
     "#############",
     "#############",
     "#############",
-    "##.........##",
     "#...........#",
     "#...........#",
     "#...........#",
+    "######.######",
     "#...........#",
     "#...........#",
-    "##.........##",
+    "######.######",
     "#...........#",
     "#...........#",
     "#...........#",
+    "######.######",
     "#...........#",
     "#...........#",
-    "#...#...#...#",
     "#...........#",
     "######.######"
   ],
   "props": [
     {
-      "type": "Statue",
-      "x": 1,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 1,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 11,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 4,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 8,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
       "type": "Rug",
       "x": 6,
       "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 10,
       "width": 1,
       "depth": 1
     },
@@ -154,9 +105,9 @@
       "id": "kalos_schoolboy_hugo",
       "name": "Hugo",
       "npcType": "school_kid_m",
-      "x": 3,
+      "x": 9,
       "y": 11,
-      "facing": "Right",
+      "facing": "Left",
       "trainer": {
         "id": "kalos_schoolboy_hugo",
         "name": "Hugo",
@@ -185,6 +136,60 @@
         "dialogueAfter": "School Kid Adèle: You get full marks for that one.",
         "sightRange": 3
       }
+    },
+    {
+      "id": "quiz_host_1",
+      "name": "Quiz Host",
+      "npcType": "school_kid_f",
+      "x": 5,
+      "y": 14,
+      "facing": "Right",
+      "script": "Quiz1"
+    },
+    {
+      "id": "gate_1",
+      "name": "Electric Gate",
+      "npcType": "ElectricGate",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_PRISM_GATE_1"
+    },
+    {
+      "id": "quiz_host_2",
+      "name": "Quiz Host",
+      "npcType": "school_kid_f",
+      "x": 5,
+      "y": 10,
+      "facing": "Right",
+      "script": "Quiz2"
+    },
+    {
+      "id": "gate_2",
+      "name": "Electric Gate",
+      "npcType": "ElectricGate",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_PRISM_GATE_2"
+    },
+    {
+      "id": "quiz_host_3",
+      "name": "Quiz Host",
+      "npcType": "school_kid_f",
+      "x": 5,
+      "y": 7,
+      "facing": "Right",
+      "script": "Quiz3"
+    },
+    {
+      "id": "gate_3",
+      "name": "Electric Gate",
+      "npcType": "ElectricGate",
+      "x": 6,
+      "y": 6,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_PRISM_GATE_3"
     }
   ],
   "wildEncounters": []
