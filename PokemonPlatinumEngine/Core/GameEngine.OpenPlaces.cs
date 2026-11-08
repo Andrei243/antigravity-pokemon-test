@@ -193,6 +193,16 @@ public partial class GameEngine
 
         /// <summary>Whether a script's walk to a marker is under way.</summary>
         public bool OpenWalking => game.openWalk != null;
+
+        /// <summary>
+        /// The game's scripts made these (a test's open places, whose files no data folder has), with a runner afresh,
+        /// as the console's reload makes one.
+        /// </summary>
+        public void UseScripts(ScriptLibrary library)
+        {
+            game.flow.Scripts = library;
+            game.flow.Runner = new ScriptRunner(library, new FieldHost(game));
+        }
     }
 
     private sealed partial class FieldHost
