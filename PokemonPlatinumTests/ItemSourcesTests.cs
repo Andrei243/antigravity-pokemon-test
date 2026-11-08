@@ -67,9 +67,7 @@ public class ItemSourcesTests
         return owed;
     }
 
-    private const string KantoStartersStone = "plan 23 · Z4: Kalos's story before its League, the professor's gift in Lumiose of the Kanto starter's stone (Z4b's \"Left\")";
     private const string KalosStory = "plan 23 · Z4: Kalos's story, the stones of X and Y that Z4b's post-game (its fourteen, the Absolite and the Mewtwonites) left unplaced";
-    private const string KalosItems = "plan 40 · GE3: Kalos's evolution stones and items (KalosSpeciesTests.OwedNeeds owes them so)";
     private const string WithDiancie = "plan 29 · LS11: Kalos's mythicals by events of ours (KalosSpeciesTests owes Diancie so); its stone with it";
     private const string WithHoopa = "plan 29 · LS11: Kalos's mythicals by events of ours (KalosSpeciesTests owes Hoopa so); its bottle with it";
     private const string Lumiose = "plan 23 · Z22: Lumiose's era, its Wild Zones, Rogue Megas and shops (Legends: Z-A's Mega Stones)";
@@ -94,8 +92,6 @@ public class ItemSourcesTests
     private const string TealMask = "plan 34 · PD10 (optional): the Teal Mask";
     private const string IndigoDisk = "plan 34 · PD11 (optional): the Indigo Disk";
     private const string Events = "plan 40 · GE7: the gift box; no game gave it but by an event";
-    private const string WeatherRocks = "plan 37 · FC2: the streak house's prize counter (Data/facility-prizes.json, the later games' battle items for Battle Points); only Sinnoh's Underground walls give it now, by chance";
-    private const string ThickClub = "plan 37 · FC2: the streak house's prize counter (Data/facility-prizes.json, battle items for Battle Points); only a wild Cubone or Marowak gives it now, by chance";
 
     /// <summary>
     /// What no region of the game gives yet by a sure way, and who owes it. Each line names a plan and a session; the
@@ -105,11 +101,9 @@ public class ItemSourcesTests
         // X's and Y's Mega Stones that Kalos's post-game (plan 23 · Z4b) didn't place (Omega Ruby's and Alpha Sapphire's are
         // Hoenn's: decision 11; the Lucarionite is the Tower of Mastery's Lucario's, the Blazikenite Hoenn's with its two
         // fellow starters')
-        (KantoStartersStone, new[] { "Venusaurite", "Charizardite X", "Charizardite Y", "Blastoisinite" }),
         (KalosStory, new[] { "Gengarite", "Aerodactylite", "Ampharosite", "Gardevoirite", "Abomasite" }),
         (WithDiancie, new[] { "Diancite" }),
         (WithHoopa, new[] { "Prison Bottle" }),
-        (KalosItems, new[] { "Whipped Dream", "Sachet" }),
         // Legends: Z-A's Mega Stones, the base game's and the Mega Dimension's
         (Lumiose, new[]
         {
@@ -138,8 +132,6 @@ public class ItemSourcesTests
         (Events, new[] { "Marshadium Z", "Pikashunium Z", "Fairy Gem" }),
         // What the evolutions of our own species ask for that only chance gives (plan 36 · TR3's sources count no chance):
         // Volcamel's, Gastromire's, Behemowdon's and Furnapede's rocks, Ossugard's club
-        (WeatherRocks, new[] { "Heat Rock", "Damp Rock", "Smooth Rock" }),
-        (ThickClub, new[] { "Thick Club" }),
         // Hisui
         (Hisui, new[] { "Black Augurite", "Peat Block" }),
         // Galar, with the Isle of Armor and the Crown Tundra

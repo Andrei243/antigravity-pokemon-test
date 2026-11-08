@@ -450,6 +450,10 @@
       "note": "first spoken at route_28_house.txt(9)",
       "provisional": true
     },
+    "celeste": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(126)",
+      "provisional": true
+    },
     "celio": {
       "note": "first spoken at one_island_pokemon_center_1f.txt(35)",
       "provisional": true
@@ -567,6 +571,10 @@
       "note": "first spoken at castelia_city_2.txt(29)",
       "provisional": true
     },
+    "commuter": {
+      "note": "first spoken at KiloudeCity_Station.txt(27)",
+      "provisional": true
+    },
     "contest_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(272)",
       "provisional": true
@@ -590,6 +598,10 @@
     },
     "cooltrainer": {
       "note": "first spoken at kanto_victory_road_2f.txt(34)",
+      "provisional": true
+    },
+    "corentin": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(183)",
       "provisional": true
     },
     "cowgirl": {
@@ -920,6 +932,10 @@
       "note": "first spoken at violet_gym.txt(11)",
       "provisional": true
     },
+    "fan": {
+      "note": "first spoken at KiloudeCity_BattleMaison.txt(78)",
+      "provisional": true
+    },
     "fantina": {
       "brief": {
         "register": "woman",
@@ -1069,6 +1085,10 @@
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
     },
+    "grant": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(221)",
+      "provisional": true
+    },
     "grimsley": {
       "note": "first spoken at unova_pokemon_league_6.txt(12)",
       "provisional": true
@@ -1202,6 +1222,10 @@
     },
     "isaiah": {
       "note": "first spoken at phone.txt(391)",
+      "provisional": true
+    },
+    "isaure": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(164)",
       "provisional": true
     },
     "jackson": {
@@ -1572,6 +1596,10 @@
       "note": "first spoken at vermilion_city.txt(103)",
       "provisional": true
     },
+    "maid": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
+      "provisional": true
+    },
     "maid_belinda": {
       "note": "first spoken at PokemonMansion.txt(47)",
       "brief": {
@@ -1656,6 +1684,10 @@
         "pitch": 1.01,
         "accent": "en-us"
       }
+    },
+    "maison_host": {
+      "note": "first spoken at KiloudeCity_BattleMaisonHall.txt(15)",
+      "provisional": true
     },
     "mallow": {
       "note": "first spoken at paniola_ranch.txt(12)",
@@ -1837,6 +1869,10 @@
         "accent": "en-us"
       }
     },
+    "mirabelle": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(88)",
+      "provisional": true
+    },
     "misty": {
       "note": "first spoken at cerulean_city_gym.txt(10)",
       "provisional": true
@@ -1957,6 +1993,10 @@
     },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
+      "provisional": true
+    },
+    "octave": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(145)",
       "provisional": true
     },
     "odile": {
@@ -2791,6 +2831,10 @@
       "note": "first spoken at route_110_trick_house_end.txt(19)",
       "provisional": true
     },
+    "tristan": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(107)",
+      "provisional": true
+    },
     "tuscany": {
       "note": "first spoken at route_29.txt(45)",
       "provisional": true
@@ -2852,6 +2896,10 @@
     },
     "unova_nate": {
       "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
+      "provisional": true
+    },
+    "valerie": {
+      "note": "first spoken at KalosRoute7_BattleChateau.txt(297)",
       "provisional": true
     },
     "valet": {
@@ -3125,6 +3173,7 @@
     "Castellan Aubert": "castellan_aubert",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
+    "Celeste": "celeste",
     "Celio": "celio",
     "Cerise": "cerise",
     "Chairman": "chairman",
@@ -3149,9 +3198,11 @@
     "Commander Jupiter": "jupiter",
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
+    "Commuter": "commuter",
     "Contest Lady": "contest_lady",
     "Cook": "cook",
     "Cooltrainer": "cooltrainer",
+    "Corentin": "corentin",
     "Cowgirl": "cowgirl",
     "Cozmo's Wife": "cozmos_wife",
     "Craftswoman": "craftswoman",
@@ -3199,6 +3250,7 @@
     "Eusine": "eusine",
     "Factory Staff": "factory_staff",
     "Falkner": "falkner",
+    "Fan": "fan",
     "Fantina": "fantina",
     "Farmer": "farmer",
     "Farmer's Wife": "farmers_wife",
@@ -3229,6 +3281,7 @@
     "Glacia": "glacia",
     "Gladion": "gladion",
     "Glass Worker": "glass_worker",
+    "Grant": "grant",
     "Grimsley": "grimsley",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
@@ -3259,6 +3312,7 @@
     "Isaac": "isaac",
     "Isabel": "isabel",
     "Isaiah": "isaiah",
+    "Isaure": "isaure",
     "Jackson": "jackson",
     "Janine": "janine",
     "Jasmine": "jasmine",
@@ -3316,11 +3370,13 @@
     "Lysandre": "lysandre",
     "Machamp": "machamp",
     "Machop": "machop",
+    "Maid": "maid",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
     "Maid Elena": "maid_elena",
     "Maid Emily": "maid_emily",
     "Maid Sophie": "maid_sophie",
+    "Maison Host": "maison_host",
     "Mallow": "mallow",
     "Malva": "malva",
     "Man": "look:man",
@@ -3344,6 +3400,7 @@
     "Miguel": "miguel",
     "Miki": "miki",
     "Mira": "mira",
+    "Mirabelle": "mirabelle",
     "Misty": "misty",
     "Mom": "mom",
     "Monica": "monica",
@@ -3369,6 +3426,7 @@
     "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
+    "Octave": "octave",
     "Odile": "odile",
     "Officer": "officer",
     "Old Lady": "old_lady",
@@ -3492,11 +3550,13 @@
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
+    "Tristan": "tristan",
     "Tuscany": "tuscany",
     "TV": "tv",
     "TV Producer": "tv_producer",
     "Ty": "ty",
     "Underground Man": "underground_man",
+    "Valerie": "valerie",
     "Valet": "valet",
     "Vance": "vance",
     "Vesper": "vesper",

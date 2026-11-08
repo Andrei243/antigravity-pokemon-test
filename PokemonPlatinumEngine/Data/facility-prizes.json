@@ -24,7 +24,12 @@
       { "item": "Choice Specs", "price": 48 },
       { "item": "Choice Scarf", "price": 48 },
       { "item": "Assault Vest", "price": 48 },
-      { "item": "Weakness Policy", "price": 48 }
+      { "item": "Weakness Policy", "price": 48 },
+      { "item": "Heat Rock", "price": 48 },
+      { "item": "Damp Rock", "price": 48 },
+      { "item": "Smooth Rock", "price": 48 },
+      { "item": "Icy Rock", "price": 48 },
+      { "item": "Thick Club", "price": 48 }
     ]
   }
 }

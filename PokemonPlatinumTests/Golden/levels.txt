@@ -48,6 +48,9 @@ trainers 2, 27-28: kalos_flare_grunt_plant_1 28, kalos_flare_grunt_plant_2 28
 === LaverreCity_Gym
 Laverre Gym
 trainers 2, 36-37: kalos_lady_eleonore 37, kalos_lass_josette 36
+=== LaverreCity_PokeBallFactory
+Poké Ball Factory
+trainers 3, 37-39: kalos_flare_grunt_factory_1 38, kalos_flare_grunt_factory_2 38, kalos_flare_grunt_factory_3 39
 === LostTower1F
 Lost Tower
 grass 17-20

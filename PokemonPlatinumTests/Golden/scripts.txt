@@ -4026,6 +4026,386 @@ way -
 from Worker at 3,11 of KalosPowerPlant
 way -
   Worker> They came in red suits and told us all to wait outside. Please, someone has to stop them!
+=== KalosRoute7_BattleChateau.Butler
+from Butler at 9,4 of KalosRoute7_BattleChateau
+way -
+  Butler> Welcome to the Château. Its guests battle whoever they please, once a day, and the house keeps count.
+  Butler> To the house you are a Visitor, for now. Win a few battles in this hall, and that will change.
+=== KalosRoute7_BattleChateau.Guest
+from Celeste at 5,6 of KalosRoute7_BattleChateau
+way 0.0
+  Celeste> My Pokémon are all very small and very proud. They would love to meet yours. Shall we?
+  Celeste> Will you battle Celeste?
+  Celeste> They are proud of you, too, now. That is rare.
+  ? Will you battle Celeste? = Yes
+  * battle kalos_chateau_celeste Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_CELESTE
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 1
+  + beaten kalos_chateau_celeste
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_celeste Lost
+way 1, from answer 1
+  Celeste> They will sulk, a little. Come back soon.
+  ? Will you battle Celeste? = No
+from Clemont at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Clemont> I built a machine to predict the outcome of this battle. It overheated. Let us do it the old way!
+  Clemont> Will you battle Clemont?
+  Clemont> Back to the workshop, then. Science never stops!
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Clemont? = Yes
+  * battle kalos_chateau_clemont Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_CLEMONT
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_clemont
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_clemont Lost
+way 1, from answer 1
+  Clemont> Another day, then. I am here every week.
+  ? Will you battle Clemont? = No
+from Corentin at 13,6 of KalosRoute7_BattleChateau
+way 0.0
+  Corentin> I saw this battle in my teacup this morning. I did not see who won. Let us find out.
+  Corentin> Will you battle Corentin?
+  Corentin> Ah. The tea leaves were right not to tell me.
+  ? Will you battle Corentin? = Yes
+  * battle kalos_chateau_corentin Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_CORENTIN
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 2
+  + beaten kalos_chateau_corentin
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_corentin Lost
+way 1, from answer 1
+  Corentin> The leaves say you will be back. They are rarely wrong.
+  ? Will you battle Corentin? = No
+from Grant at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Grant> In the Gym I wait for climbers to reach me. Here, I can climb toward you. Ready?
+  Grant> Will you battle Grant?
+  Grant> A good climb. The view from the top suits you.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Grant? = Yes
+  * battle kalos_chateau_grant Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_GRANT
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_grant
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_grant Lost
+way 1, from answer 1
+  Grant> Another day, then. I am here every week.
+  ? Will you battle Grant? = No
+from Isaure at 13,6 of KalosRoute7_BattleChateau
+way 0.0
+  Isaure> Friends of the house are given the good chairs and the hard battles. You have the chair already.
+  Isaure> Will you battle Isaure?
+  Isaure> Splendid. You may keep the chair.
+  ? Will you battle Isaure? = Yes
+  * battle kalos_chateau_isaure Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_ISAURE
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 2
+  + beaten kalos_chateau_isaure
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_isaure Lost
+way 1, from answer 1
+  Isaure> Another time, then. I am always here on the good days.
+  ? Will you battle Isaure? = No
+from Korrina at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Korrina> No roller skates on the parquet, they told me. They never said no battles!
+  Korrina> Will you battle Korrina?
+  Korrina> Wow! Grandpa would have loved that one.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Korrina? = Yes
+  * battle kalos_chateau_korrina Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_KORRINA
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_korrina
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_korrina Lost
+way 1, from answer 1
+  Korrina> Another day, then. I am here every week.
+  ? Will you battle Korrina? = No
+from Mirabelle at 5,6 of KalosRoute7_BattleChateau
+way 0.0
+  Mirabelle> The tea is cold, the company is warm, and I have been waiting all afternoon for a battle. Will you oblige?
+  Mirabelle> Will you battle Mirabelle?
+  Mirabelle> How lovely. I shall tell the others you play beautifully.
+  ? Will you battle Mirabelle? = Yes
+  * battle kalos_chateau_mirabelle Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_MIRABELLE
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 1
+  + beaten kalos_chateau_mirabelle
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_mirabelle Lost
+way 1, from answer 1
+  Mirabelle> Do come back. The house is never dull with you in it.
+  ? Will you battle Mirabelle? = No
+from Octave at 13,6 of KalosRoute7_BattleChateau
+way 0.0
+  Octave> I have been a guest of this house for forty years. I have learned one thing: no title ever battled for you. Show me.
+  Octave> Will you battle Octave?
+  Octave> Well battled. The house was right to call you a friend.
+  ? Will you battle Octave? = Yes
+  * battle kalos_chateau_octave Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_OCTAVE
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 2
+  + beaten kalos_chateau_octave
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_octave Lost
+way 1, from answer 1
+  Octave> Forty years, and I still lose my temper when someone walks away. Come back.
+  ? Will you battle Octave? = No
+from Olympia at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Olympia> The stars said you would come on this day. They were right, as always.
+  Olympia> Will you battle Olympia?
+  Olympia> This, too, the stars knew. Go well.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Olympia? = Yes
+  * battle kalos_chateau_olympia Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_OLYMPIA
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_olympia
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_olympia Lost
+way 1, from answer 1
+  Olympia> Another day, then. I am here every week.
+  ? Will you battle Olympia? = No
+from Ramos at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Ramos> Hoho! A garden needs tending even when the gardener visits friends. So does a team.
+  Ramos> Will you battle Ramos?
+  Ramos> You grew strong, young sprout. Strong and tall.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Ramos? = Yes
+  * battle kalos_chateau_ramos Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_RAMOS
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_ramos
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_ramos Lost
+way 1, from answer 1
+  Ramos> Another day, then. I am here every week.
+  ? Will you battle Ramos? = No
+from Tristan at 5,6 of KalosRoute7_BattleChateau
+way 0.0
+  Tristan> They say the house remembers every battle fought in this hall. Let us give it one worth remembering.
+  Tristan> Will you battle Tristan?
+  Tristan> A fine win. I will be training in the garden until tomorrow.
+  ? Will you battle Tristan? = Yes
+  * battle kalos_chateau_tristan Won
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_TRISTAN
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 1
+  + beaten kalos_chateau_tristan
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_tristan Lost
+way 1, from answer 1
+  Tristan> The hall will still be here. So will I.
+  ? Will you battle Tristan? = No
+from Valerie at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Valerie> The light in this hall is so gentle. It is a good light for a battle, I think.
+  Valerie> Will you battle Valerie?
+  Valerie> You were... lovely to watch. Thank you.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Valerie? = Yes
+  * battle kalos_chateau_valerie Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_VALERIE
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_valerie
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_valerie Lost
+way 1, from answer 1
+  Valerie> Another day, then. I am here every week.
+  ? Will you battle Valerie? = No
+from Viola at 9,8 of KalosRoute7_BattleChateau
+way 0.0
+  Viola> Off duty, I still carry my camera. Off duty, I still battle. Smile!
+  Viola> Will you battle Viola?
+  Viola> Got it! The look on your face when you won. That is the shot.
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Viola? = Yes
+  * battle kalos_chateau_viola Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_VIOLA
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_viola
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_viola Lost
+way 1, from answer 1
+  Viola> Another day, then. I am here every week.
+  ? Will you battle Viola? = No
+from Wulfric at 11,8 of KalosRoute7_BattleChateau
+way 0.0
+  Wulfric> Ha! Snowbelle is cold this time of year. The hall is warm, and so is a good battle!
+  Wulfric> Will you battle Wulfric?
+  Wulfric> Ha ha! I am warmer already!
+  Butler> The house is pleased with you, Lucas. From today you are its Guest.
+  ? Will you battle Wulfric? = Yes
+  * battle kalos_chateau_wulfric Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_CHATEAU_BEAT_WULFRIC
+  = VAR_KALOS_CHATEAU_POINTS 0 -> 3
+  = VAR_KALOS_CHATEAU_TITLE 0 -> 1
+  + beaten kalos_chateau_wulfric
+way 0.1, from answer 2
+  > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
+  * battle kalos_chateau_wulfric Lost
+way 1, from answer 1
+  Wulfric> Another day, then. I am here every week.
+  ? Will you battle Wulfric? = No
+=== KalosRoute7_BattleChateau.Maid
+from Maid at 7,12 of KalosRoute7_BattleChateau
+way -
+  Maid> The guests change every day. Some only come once the house knows you well, and some only on their own day of the week.
+=== KiloudeCity_BattleMaison.Desk
+from Receptionist at 4,4 of KiloudeCity_BattleMaison
+way 0
+  Receptionist> Welcome to the Battle Maison! Trainers from every corner of the world come to Kiloude to test themselves here.
+  Receptionist> Would you like to take on the Battle Maison?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Maison? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> We'll be here. The hall never really empties.
+  ? Would you like to take on the Battle Maison? = No
+way 1, from answer 1
+  Receptionist> Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
+  Receptionist> Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak.
+  Receptionist> The longer your streak, the stronger the Trainers who come to meet you.
+  ? Would you like to take on the Battle Maison? = The rules
+=== KiloudeCity_BattleMaison.Fan
+from Fan at 13,8 of KiloudeCity_BattleMaison
+way -
+  Fan> I come every afternoon just to watch. You can tell a Trainer's whole journey from how they send out their first Pokémon.
+=== KiloudeCity_BattleMaison.Prizes
+from Clerk at 12,4 of KiloudeCity_BattleMaison
+way 0
+  Clerk> Welcome! Battle Points won here, or anywhere in the world's battle halls, are good at this counter.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Dragon Scale   32 BP
+  * frontier points 1
+way 20, from answer 1
+  Clerk> Come back when you've won a few more!
+  ? Which prize would you like? = No thanks
+way 19, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Weakness Policy   48 BP
+way 18, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Assault Vest   48 BP
+way 17, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Scarf   48 BP
+way 16, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Specs   48 BP
+way 15, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Band   48 BP
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Sash   48 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Life Orb   48 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Prism Scale   32 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Whipped Dream   32 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Sachet   32 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Deep Sea Scale   32 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Deep Sea Tooth   32 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Razor Fang   32 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Razor Claw   32 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Dubious Disc   32 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Reaper Cloth   32 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Magmarizer   32 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Electirizer   32 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Protector   32 BP
+=== KiloudeCity_BattleMaison.Veteran
+from Veteran at 3,9 of KiloudeCity_BattleMaison
+way -
+  Veteran> Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat.
+=== KiloudeCity_BattleMaisonHall.Host
+from Maison Host at 3,7 of KiloudeCity_BattleMaisonHall
+way -
+  Maison Host> No round is under way. The receptionist in the lobby takes your three.
+=== KiloudeCity_Station.Commuter
+from Commuter at 9,5 of KiloudeCity_Station
+way -
+  Commuter> I live in Lumiose and battle in Kiloude. The train is the only quiet half hour of my day.
+=== KiloudeCity_Station.Tmv
+from TMV Attendant at 6,4 of KiloudeCity_Station
+way -
+  TMV Attendant> I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory in Lumiose City.
 === LaverreCity_Gym.GymGuide
 from Gym Guide at 9,15 of LaverreCity_Gym
 way -
@@ -4034,6 +4414,14 @@ way -
 from Valerie at 6,4 of LaverreCity_Gym
 way -
   Valerie> The Leader of Lumiose's tower has not yet met you, I think. Go to him first. Then come back to me.
+=== LaverreCity_PokeBallFactory.President
+from President at 10,4 of LaverreCity_PokeBallFactory
+way -
+  President> Please, be careful! Team Flare are all over the works. I can't get past them, and they won't let anyone in.
+=== LaverreCity_PokeBallFactory.Worker
+from Worker at 17,13 of LaverreCity_PokeBallFactory
+way -
+  Worker> They switched off half the lines and told us to make only their balls. Red ones, with an F. Hideous things.
 === LostTower5F.OldWoman1
 from Old Woman at 7,9 of LostTower5F
 way -
@@ -4263,6 +4651,10 @@ way -
 from Tourist at 2,6 of LumioseCity_Station
 way -
   Tourist> Those three took my Pokémon and won't give it back! They say I have to pay their toll first...
+=== LumioseCity_StoneEmporium.Owner
+from Owner at 2,4 of LumioseCity_StoneEmporium
+way -
+  Owner> Every stone in this shop has a story. The best ones I keep behind the counter, for the right Trainer.
 === LumioseCity_SycamoreLab.Dexio
 from Dexio at 10,8 of LumioseCity_SycamoreLab
 way -
@@ -10625,6 +11017,26 @@ from the tile read at 12,21 of Cerulean_Gym
 from the tile read at 8,21 of Cerulean_Gym
 way -
   > Cerulean City Pokémon Gym\nLeader: Misty
+=== chamber_of_emptiness.Yveltal
+from Yveltal at 16,7 of ChamberOfEmptiness
+way 0
+  > Something vast is folded in on itself against the far wall, its wings drawn round it like a cloak.
+  > The air grows cold. Its wings open.
+  > The chamber is empty again. Only the cold is left.
+  * scene chamber_of_emptiness.Yveltal in the Chamber of Emptiness
+  * letterbox on
+  * camera Pan 16 7
+  * camera Zoom 1.4
+  * cry Yveltal
+  * camera Release
+  * letterbox off
+  * wildbattle Yveltal 70 Won
+  * endscene
+  + FLAG_KALOS_YVELTAL_GONE
+  + seen chamber_of_emptiness.Yveltal in the Chamber of Emptiness
+way 1, from answer 1
+  * wildbattle Yveltal 70 Lost
+  * scene over, unseen
 === chargestone_cave_2.BiancaAtTheMouth
 from the trigger at 8,50 of ChargestoneCave
 way -
@@ -20790,16 +21202,6 @@ way 1, from answer 1
   * battle kalos_rival_kiloude_chespin Lost
   * endscene
   + seen kiloude_city.The neighbour in Kiloude
-=== kiloude_city.TmvBack
-from TMV Attendant at 537,355 of Kalos
-way 0
-  TMV Attendant> The next train leaves for Lumiose City. Will you be travelling?
-  TMV Attendant> Your pass, please... Thank you. All aboard!
-  ? The next train leaves for Lumiose City. Will you be travelling? = Yes
-  * warp LumioseCity_Station 12 5
-way 1, from answer 1
-  TMV Attendant> The trains run all day. Enjoy the sea air in the meantime!
-  ? The next train leaves for Lumiose City. Will you be travelling? = No
 === konikoni_city.Olivia
 from Olivia at 322,248 of Akala
 way -

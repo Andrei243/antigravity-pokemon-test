@@ -1400,6 +1400,20 @@ caps 188 192 194 195 196 197 199 202 205 (own 12 25 32 34 37 42 48 59 68)
 kalos_aliana_1 194 (31) [Mightyena → Hyaenarch, Houndoom → Cerberhound]
 kalos_az_1 205 (68) [Sigilyph → Glyphoracle, Golurk → Colossurk]
 kalos_butler_anatole 203 (62) [Braviary → Imperavia]
+kalos_chateau_celeste 194 (32) [Espurr → Occulynx, Swirlix → Slurpuff, Kirlia → Gardevoir]
+kalos_chateau_clemont 205 (67) [Emolga → Nimbolga, Heliolisk → Coronafrill]
+kalos_chateau_corentin 201 (56) [Meowstic → Occulynx, Malamar → Mesmerquid]
+kalos_chateau_grant 204 (66) [Aurorus → Borealosaur, Tyrantrum → Despotitan, Barbaracle → Reefcolony]
+kalos_chateau_isaure 202 (57) [Aromatisse → Perfumelle]
+kalos_chateau_korrina 205 (67) [Mienshao → Mienshifu, Hawlucha → Luchacondor, Lucario → Aurasage]
+kalos_chateau_mirabelle 194 (31) [Furfrou → Majesthound, Floette → Florges]
+kalos_chateau_octave 201 (56) [Bisharp → Kingambit, Scizor → Guillotyne, Lucario → Aurasage]
+kalos_chateau_olympia 205 (67) [Sigilyph → Glyphoracle, Slowking → Slowmonarch, Meowstic → Occulynx]
+kalos_chateau_ramos 205 (67) [Gogoat → Alpicorn]
+kalos_chateau_tristan 194 (32) [Pyroar → Blazemonarch, Absol → Omenblade, Doublade → Aegislash]
+kalos_chateau_valerie 205 (67) [Mawile → Deceivore, Mr. Mime → Mimestro, Sylveon → Faerieon]
+kalos_chateau_viola 204 (66) [Masquerain → Ocellwing, Heracross → Atlascross]
+kalos_chateau_wulfric 205 (68) [Abomasnow → Glaciarbor, Cryogonal → Cryohedron, Avalugg → Glacitadel]
 kalos_clemont_1 196 (37) [Emolga → Nimbolga, Magneton → Magnezone, Heliolisk → Coronafrill]
 kalos_diantha_1 205 (68) [Hawlucha → Luchacondor, Tyrantrum → Despotitan, Aurorus → Borealosaur, Gourgeist → Lanternhusk]
 kalos_drasna_1 204 (65) [Dragalge → Kelpdrake, Druddigon → Drudrakon, Altaria → Nimbusong, Noivern → Sonarwing]
@@ -1516,6 +1530,9 @@ trainers 2, 193 (own 27-28): kalos_flare_grunt_plant_1 193 (28) [Houndour → Ce
 === LaverreCity_Gym
 Laverre Gym, Kalos
 trainers 2, 195-196 (own 36-37): kalos_lady_eleonore 196 (37) [Mr. Mime → Mimestro, Granbull → Mastiffang], kalos_lass_josette 195 (36) [Spritzee → Perfumelle, Floette → Florges]
+=== LaverreCity_PokeBallFactory
+Poké Ball Factory, Kalos
+trainers 3, 196 (own 37-39): kalos_flare_grunt_factory_1 196 (38) [Houndoom → Cerberhound, Mightyena → Hyaenarch], kalos_flare_grunt_factory_2 196 (38) [Golbat → Crobat, Swalot → Gulpgorge], kalos_flare_grunt_factory_3 196 (39) [Liepard → Umbrapard, Toxicroak → Venomsensei, Houndoom → Cerberhound]
 === LumioseCity_LysandreLabs
 Lysandre Labs, Kalos
 trainers 2, 198 (own 45): kalos_flare_grunt_labs_1 198 (45) [Houndoom → Cerberhound, Scrafty → Brawlhood], kalos_flare_grunt_labs_2 198 (45) [Toxicroak → Venomsensei, Swalot → Gulpgorge]
