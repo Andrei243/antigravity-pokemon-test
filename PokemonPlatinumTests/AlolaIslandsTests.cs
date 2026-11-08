@@ -175,6 +175,6 @@ public class AlolaIslandsTests
         Play("brooklet_hill", "Totem", akala, "totem");
         Assert.Equal(18, story.Var("VAR_ALOLA_STORY"));
         Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Waterium Z")!));
-        Assert.Equal("alolaFree", Next());
+        Assert.Equal("alolaRoyal", Next());
     }
 }

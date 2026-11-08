@@ -2124,6 +2124,10 @@ grass 138-140 (own 6-10)
 === guidance_chamber
 Guidance Chamber, Unova
 grass 172-173 (own 27-30)
+=== haina_desert
+Haina Desert, Alola
+grass 214-215 (own 28-30)
+trainers 2, 215 (own 31-32): alola_hiker_nalu 215 (32) [Gabite → Garchomp, Vibrava → Flygon], alola_ruin_maniac_kawika 215 (31) [Krokorok → Krookodile]
 === hano_beach
 Hano Beach, Alola
 surf 212 (own 22-23)
@@ -2405,6 +2409,11 @@ grass 124-127 (own 32-36)
 Viridian Forest, Johto
 grass 105-107 (own 3-7)
 trainers 5, 121-141 (own 28-60): johto_bug_catcher_abner 132 (44) [Pikachu → Raichu], johto_bug_catcher_dane 135 (48), johto_bug_catcher_dion 136 (50) [Ariados → Orbweavix], johto_bug_catcher_ellis 133 (46) [Weedle → Beedrill, Kakuna → Beedrill], johto_bug_catcher_stacey 141 (60) [Metapod → Butterfree, Metapod → Butterfree, Metapod → Butterfree]
+=== kalae_bay
+Kala'e Bay, Alola
+grass 208-209 (own 11-13)
+surf 208-209 (own 11-14)
+trainers 2, 208 (own 11-12): alola_lass_mele 208 (12) [Smeargle → Muralist, Slowpoke → Slowmantle], alola_swimmer_kalua 208 (12) [Wingull → Pelicaptain]
 === kalos_route_10
 Route 10, Kalos
 grass 190 (own 17-19)
@@ -2582,6 +2591,11 @@ trainers 3, 119-122 (own 25-29): johto_boarder_deandre 120 (26) [Seel → Glacit
 === mahogany_gym_room_2
 Mahogany Town, Johto
 trainers 2, 121-122 (own 27-29): johto_boarder_patton 121 (27) [Swinub → Mamoswine, Swinub → Mamoswine], johto_skier_diana 122 (29) [Jynx → Aurorelle]
+=== malie_garden
+Malie Garden, Alola
+grass 212-213 (own 24-26)
+surf 212-213 (own 22-27)
+trainers 3, 213-215 (own 27-30): alola_ace_trainer_ako 215 (30) [Ledian → Coccinova, Lilligant → Ballerilly, Golduck → Psyduke], alola_gentleman_tomo 215 (30), alola_lass_ume 214 (28) [Cottonee → Cottonimbus, Petilil → Ballerilly, Ledyba → Coccinova]
 === mauville_city_gym
 Mauville City, Hoenn
 trainers 5, 143 (own 17): hoenn_angelo 143 (17), hoenn_ben 143 (17) [Zigzagoon → Streakoon, Gulpin → Swalot], hoenn_kirk 143 (17) [Electrike → Manectric, Voltorb → Dynamorb], hoenn_shawn 143 (17) [Voltorb → Dynamorb, Magnemite → Magnezone], hoenn_vivian 143 (17) [Meditite → Medicham, Meditite → Medicham]
@@ -3917,6 +3931,10 @@ trainers 5, 179-180 (own 44-47): unova_battle_girl_tia 180 (47) [Heracross → A
 Seaside Cave, Unova
 grass 177-178 (own 39-42)
 trainers 2, 180 (own 47): unova_battle_girl_maki 180 (47) [Mienfoo → Mienshifu], unova_black_belt_rich 180 (47) [Gurdurr → Conkeldurr]
+=== seaward_cave
+Seaward Cave, Alola
+grass 208 (own 10-12)
+surf 208-209 (own 10-13)
 === seven_island_sevault_canyon
 Sevault Canyon, Kanto
 grass 71-98 (own 15-54)
@@ -4252,6 +4270,10 @@ surf 64-88 (own 5-40)
 old rod 64 (own 5)
 good rod 64-71 (own 5-15)
 super rod 71-85 (own 15-35)
+=== ulaula_meadow
+Ula'ula Meadow, Alola
+grass 213-214 (own 26-28)
+trainers 2, 214-215 (own 28-31): alola_ace_trainer_kalena 215 (31) [Ribombee → Pollenoble, Whimsicott → Cottonimbus], alola_youngster_liko 214 (29) [Cutiefly → Pollenoble, Comfey → Wreathfey]
 === ulaula_route_10
 Route 10, Alola
 grass 210-211 (own 17-19)
@@ -4265,10 +4287,24 @@ trainers 5, 211-212 (own 20-22): alola_ace_trainer_nalo 212 (22) [Mudbray → Mu
 Route 13, Alola
 grass 212-213 (own 23-25)
 trainers 3, 212 (own 23-24): alola_ace_trainer_makalii 212 (24) [Pelipper → Pelicaptain, Wingull → Pelicaptain, Gliscor → Fangliscor], alola_backpacker_keala 212 (23) [Lombre → Ludicolo, Pyukumuku → Cucumbrawl], alola_hiker_akoni 212 (24)
+=== ulaula_route_14
+Route 14, Alola
+grass 213 (own 25-27)
+surf 213-214 (own 25-28)
+trainers 3, 214-215 (own 29-30): alola_beauty_pua 215 (30) [Pelipper → Pelicaptain, Gastrodon → Gastromire], alola_fisherman_ikaika 215 (30) [Lumineon → Lumifathom], alola_swimmer_noe 214 (29) [Pyukumuku → Cucumbrawl, Shellos → Gastromire]
+=== ulaula_route_15
+Route 15, Alola
+grass 213 (own 26-27)
+surf 213-214 (own 26-28)
+trainers 3, 214-215 (own 29-31): alola_ace_trainer_lehua 215 (31) [Shelgon → Salamence, Dartrix → Decidueye, Gumshoos → Inspectoose], alola_pokemon_breeder_mahina 215 (30) [Slowpoke → Slowmantle, Slowbro → Slowmantle], alola_swimmer_kaimi 215 (30) [Mantine → Raysail, Tentacruel → Medusarch]
 === ulaula_route_16
 Route 16, Alola
 grass 213 (own 26-27)
 trainers 4, 213-214 (own 25-28): alola_pokemon_breeder_hoku 213 (26) [Lillipup → Stoutland, Yungoos → Inspectoose, Rockruff → Lycanroc], alola_team_skull_grunt_ula1 213 (26) [Zubat → Crobat], alola_team_skull_grunt_ula2 213 (27) [Ekans → Najarok, Drowzee → Mesmeryx], alola_team_skull_grunt_ula3 214 (28) [Mareanie → Toxapex, Pancham → Bambrawler]
+=== ulaula_route_17
+Route 17, Alola
+grass 213-215 (own 27-30)
+trainers 3, 215 (own 30-32): alola_team_skull_grunt_route_17a 215 (30) [Golbat → Crobat], alola_team_skull_grunt_route_17b 215 (30) [Pancham → Bambrawler, Trubbish → Scrapodor], alola_veteran_kona 215 (32) [Absol → Omenblade, Pangoro → Bambrawler]
 === undella_bay
 Undella Bay, Unova
 surf 171-177 (own 25-40)

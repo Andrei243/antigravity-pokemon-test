@@ -207,6 +207,6 @@ public class AlolaAkalaTrialsTests
         Play("hano_beach", "HanoScene");
         Assert.Equal(8, story.Var("VAR_ALOLA_AKALA"));
         Assert.True(story.Has("FLAG_ALOLA_AKALA_DONE"));
-        Assert.Equal("alolaFree", Next());
+        Assert.Equal("alolaAether", Next());
     }
 }

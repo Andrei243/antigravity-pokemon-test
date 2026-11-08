@@ -65,7 +65,7 @@ script Totem
   give "Waterium Z"
   give "Dive Ball" 10
   setvar VAR_ALOLA_STORY 18
-  objective alolaFree
+  objective alolaRoyal
   endscene
   end
 label NotYet

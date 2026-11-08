@@ -34,7 +34,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -44,6 +44,10 @@
     },
     "admin": {
       "note": "first spoken at five_island_rocket_warehouse.txt(15)",
+      "provisional": true
+    },
+    "aether_employee": {
+      "note": "first spoken at UlaulaRoute15_AetherHouse.txt(7)",
       "provisional": true
     },
     "aether_guard": {
@@ -139,7 +143,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_puck:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.12,
         "accent": "en-us"
       }
@@ -376,7 +380,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "bm_george:0.5,am_fenrir:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 0.92,
         "accent": "en-gb"
       }
@@ -402,7 +406,7 @@
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_fenrir:0.5",
         "speed": 1.07,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -482,6 +486,10 @@
         "accent": "en-gb"
       }
     },
+    "chef": {
+      "note": "first spoken at KonikoniCity_Restaurant.txt(7)",
+      "provisional": true
+    },
     "cheren": {
       "note": "first spoken at aspertia_city.txt(286)",
       "provisional": true
@@ -498,9 +506,13 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.4,af_nicole:0.6",
         "speed": 0.9,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
+    },
+    "child": {
+      "note": "first spoken at UlaulaRoute15_AetherHouse.txt(18)",
+      "provisional": true
     },
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
@@ -711,6 +723,10 @@
       "note": "first spoken at phone.txt(301)",
       "provisional": true
     },
+    "dancer": {
+      "note": "first spoken at ulaula_meadow.txt(6)",
+      "provisional": true
+    },
     "darach": {
       "note": "first spoken at BattleCastleBattleRoom.txt(90)",
       "brief": {
@@ -724,7 +740,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_george:0.6,bm_daniel:0.4",
         "speed": 0.96,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -996,6 +1012,10 @@
       "note": "first spoken at route_114_fossil_maniacs_tunnel.txt(7)",
       "provisional": true
     },
+    "fossil_seller": {
+      "note": "first spoken at AkalaRoute8_FossilCenter.txt(44)",
+      "provisional": true
+    },
     "frieda": {
       "note": "first spoken at route_32.txt(100)",
       "provisional": true
@@ -1017,9 +1037,13 @@
         "engine": "kokoro-82m",
         "blend": "am_echo:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
+    },
+    "gardener": {
+      "note": "first spoken at malie_garden.txt(6)",
+      "provisional": true
     },
     "gardenia": {
       "brief": {
@@ -1167,6 +1191,10 @@
         "pitch": 1.01,
         "accent": "en-gb"
       }
+    },
+    "hotel_clerk": {
+      "note": "first spoken at HeaheaCity_Hotel.txt(7)",
+      "provisional": true
     },
     "huey": {
       "note": "first spoken at olivine_lighthouse_2f.txt(11)",
@@ -1384,7 +1412,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.5,af_kore:0.5",
         "speed": 0.99,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1527,7 +1555,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_daniel:0.5,bm_george:0.5",
         "speed": 0.94,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1548,7 +1576,7 @@
         "engine": "kokoro-82m",
         "blend": "bf_emma:0.5,af_river:0.5",
         "speed": 0.93,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1652,7 +1680,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_river:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -1854,7 +1882,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.98,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1864,6 +1892,14 @@
     },
     "morty": {
       "note": "first spoken at burned_tower_1f.txt(33)",
+      "provisional": true
+    },
+    "motel_clerk": {
+      "note": "first spoken at AkalaRoute8_Motel.txt(7)",
+      "provisional": true
+    },
+    "mother": {
+      "note": "first spoken at PaniolaTown_KiawesHouse.txt(7)",
       "provisional": true
     },
     "move_deleter": {
@@ -1957,6 +1993,10 @@
     },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
+      "provisional": true
+    },
+    "nursery_keeper": {
+      "note": "first spoken at PaniolaRanch_Nursery.txt(7)",
       "provisional": true
     },
     "odile": {
@@ -2142,7 +2182,7 @@
         "engine": "kokoro-82m",
         "blend": "am_eric:0.6,am_liam:0.4",
         "speed": 1.04,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2272,6 +2312,10 @@
         "accent": "en-us"
       }
     },
+    "restorer": {
+      "note": "first spoken at AkalaRoute8_FossilCenter.txt(7)",
+      "provisional": true
+    },
     "rhona": {
       "note": "first spoken at opelucid_city_gym.txt(66)",
       "provisional": true
@@ -2343,7 +2387,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.6,af_kore:0.4",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2363,7 +2407,7 @@
         "engine": "kokoro-82m",
         "blend": "am_fenrir:0.6,am_michael:0.4",
         "speed": 1.02,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2476,8 +2520,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_michael:0.5",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2720,7 +2764,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_bella:0.5,af_jessica:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -2758,8 +2802,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.6,am_echo:0.4",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2773,6 +2817,10 @@
     },
     "tourist": {
       "note": "first spoken at LumioseCity_Station.txt(139)",
+      "provisional": true
+    },
+    "tourist_guide": {
+      "note": "first spoken at HeaheaCity_TouristBureau.txt(7)",
       "provisional": true
     },
     "traveller": {
@@ -3057,6 +3105,7 @@
     "Ace Trainer": "ace_trainer",
     "Acerola": "acerola",
     "Admin": "admin",
+    "Aether Employee": "aether_employee",
     "Aether Guard": "aether_guard",
     "Agatha": "agatha",
     "Aide": "look:aide",
@@ -3130,8 +3179,10 @@
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
+    "Chef": "chef",
     "Cheren": "cheren",
     "Cheryl": "cheryl",
+    "Child": "child",
     "Chuck": "chuck",
     "Cindy": "cindy",
     "Citizen": "citizen",
@@ -3163,6 +3214,7 @@
     "Cyrus": "cyrus",
     "Dahlia": "dahlia",
     "Dalton": "dalton",
+    "Dancer": "dancer",
     "Darach": "darach",
     "Day-Care Lady": "day_care_lady",
     "Day-Care Man": "day_care_man",
@@ -3213,10 +3265,12 @@
     "Foreman": "foreman",
     "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
+    "Fossil Seller": "fossil_seller",
     "Frieda": "frieda",
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",
     "Gate Keeper": "look:guard",
@@ -3250,6 +3304,7 @@
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Hotel Clerk": "hotel_clerk",
     "Huey": "huey",
     "Ian": "ian",
     "Ilima": "ilima",
@@ -3348,6 +3403,8 @@
     "Mom": "mom",
     "Monica": "monica",
     "Morty": "morty",
+    "Motel Clerk": "motel_clerk",
+    "Mother": "mother",
     "Move Deleter": "move_deleter",
     "Move Relearner": "move_relearner",
     "Mr. Briney": "mr_briney",
@@ -3369,6 +3426,7 @@
     "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
+    "Nursery Keeper": "nursery_keeper",
     "Odile": "odile",
     "Officer": "officer",
     "Old Lady": "old_lady",
@@ -3421,6 +3479,7 @@
     "Red": "red",
     "Referee": "referee",
     "Researcher": "look:scientist",
+    "Restorer": "restorer",
     "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",
     "Ricky": "ricky",
@@ -3489,6 +3548,7 @@
     "Tierno": "tierno",
     "TMV Attendant": "tmv_attendant",
     "Tourist": "tourist",
+    "Tourist Guide": "tourist_guide",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
