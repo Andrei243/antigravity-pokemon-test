@@ -18,10 +18,73 @@
     },
     {
       "en": [
+        "Then thunder rolls overhead, and a gale tears through the trees!\nSomething else has come down to the shrine!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Landorus s-a înălțat departe peste pădure..."
+      ]
+    },
+    {
+      "en": [
         "Landorus soared away over the wood..."
       ],
       "text": [
         "Landorus s-a înălțat departe peste pădure..."
+      ]
+    }
+  ],
+  "Tornadus": [
+    {
+      "en": [
+        "Tornadus whips up a howling wind!\nThe leaves of the whole wood are torn into the air!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The wind drops. The leaves drift back down over the shrine..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tornadus rode the wind away over the wood..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Thundurus": [
+    {
+      "en": [
+        "Thundurus cracks the sky with lightning!\nThe air of the whole clearing hums!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The thunder rolls away into the distance..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thundurus rode the storm away over the wood..."
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -31,7 +94,7 @@
         "That Pokémon with you... It's one of the three from the old story! I never thought I'd see one with my own eyes."
       ],
       "text": [
-        ""
+        "Pokémonul ăla de lângă tine... E unul dintre cei trei din povestea veche! N-am crezut că o să văd vreodată unul cu ochii mei."
       ]
     },
     {
@@ -39,7 +102,7 @@
         "My grandmother left me this mirror. She said it shows such a Pokémon the shape it truly has. It's yours now."
       ],
       "text": [
-        ""
+        "Bunica mi-a lăsat oglinda asta. Zicea că îi arată unui asemenea Pokémon forma pe care o are cu adevărat. Acum e a ta."
       ]
     },
     {
@@ -47,7 +110,7 @@
         "Hold the Reveal Glass up to it, and its forme will change. Hold it up again, and back it goes."
       ],
       "text": [
-        ""
+        "Ține Oglinda Adevărului în fața lui și i se va schimba forma. Mai ține-o o dată și revine la cea dinainte."
       ]
     },
     {
@@ -55,7 +118,7 @@
         "Has the Reveal Glass shown you that Pokémon's true shape? My grandmother would have liked to see it."
       ],
       "text": [
-        ""
+        "Ți-a arătat Oglinda Adevărului forma adevărată a Pokémonului? Bunicii i-ar fi plăcut s-o vadă."
       ]
     }
   ]

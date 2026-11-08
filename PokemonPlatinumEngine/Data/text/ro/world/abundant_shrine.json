@@ -157,9 +157,37 @@
           "Landorus"
         ]
       }
+    },
+    "tornadus": {
+      "name": {
+        "en": [
+          "Tornadus"
+        ],
+        "text": [
+          "Tornadus"
+        ]
+      }
+    },
+    "thundurus": {
+      "name": {
+        "en": [
+          "Thundurus"
+        ],
+        "text": [
+          "Thundurus"
+        ]
+      }
     }
   },
   "signs": {
+    "4": {
+      "en": [
+        "The words on the stone are too worn to read."
+      ],
+      "text": [
+        "Cuvintele de pe piatră sunt prea tocite ca să poată fi citite."
+      ]
+    },
     "10807": {
       "en": [
         "Abundant Shrine\nA wood kept for the one who blesses the harvest"
@@ -174,14 +202,6 @@
       ],
       "text": [
         "Un altar mic, tocit de vreme. Cineva a lăsat o ofrandă de fructe."
-      ]
-    },
-    "4": {
-      "en": [
-        "The words on the stone are too worn to read."
-      ],
-      "text": [
-        "Cuvintele de pe piatră sunt prea tocite ca să poată fi citite."
       ]
     }
   }

@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Sunyshore City"
+    ],
+    "text": [
+      "Orașul Sunyshore"
+    ]
+  },
+  "people": {
+    "head_coach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "training_tutor": {
+      "name": {
+        "en": [
+          "Tutor Hale"
+        ],
+        "text": [
+          "Meditatorul Hale"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -609,6 +609,40 @@
         "CAPSULE DE BALL",
         "OPREȘTE"
       ]
+    },
+    {
+      "en": [
+        "Which should be opened?",
+        "POKéMON STORAGE",
+        "POKé JOBS",
+        "TM MAKER",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which should be opened?",
+        "POKéMON STORAGE",
+        "POKé JOBS",
+        "BALL CAPSULES",
+        "TM MAKER",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
     }
   ],
   "RibbonSyndicateEntry": [
@@ -3018,6 +3052,520 @@
       ],
       "text": [
         "Antrenorul prietenului tău a fost prea puternic de data asta. Încearcă din nou oricând vrei!"
+      ]
+    }
+  ],
+  "TrainingCoach": [
+    {
+      "en": [
+        "Head Coach"
+      ],
+      "text": [
+        "Antrenorul principal"
+      ]
+    },
+    {
+      "en": [
+        "Hold on! Your golds have earned you something. Here you go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the training hall! Here a Pokémon builds up one stat at a time, and it doesn't cost a thing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What'll it be today?",
+        "A DRILL",
+        "RESET EFFORT",
+        "HOW IT WORKS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then keep moving, and come back when you're warmed up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What'll it be today?",
+        "A DRILL",
+        "PEAK TRAINING",
+        "RESET EFFORT",
+        "HOW IT WORKS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then keep moving, and come back when you're warmed up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Peak training! Hand me a Bottle Cap, and one stat grows as if it had been born the best it could be."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Gold Bottle Cap does the same for all six. Only a Pokémon of level 50 or more has the grit for it, mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who's reaching for the peak?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! Its {thing} is at its peak now. It'll grow as far as that stat can ever go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! Every one of its stats is at its peak now. That's a Pokémon at its very best!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm. It needs to be level 50 or more before it can take peak training. Bring it back once it's grown!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every stat it has is at its peak already. There's nothing more I can do for this one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll need a Bottle Cap for that. The clerk at a Battle Points counter trades them, and golds in the drills earn them too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who's training today?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bronze! Everyone starts somewhere. Keep at it and you'll feel the difference."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Silver! Solid work. Gold is closer than you think."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gold! Now that's how it's done!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And that gold has earned you something. Here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Talk to me again whenever you want another drill."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Effort can be wiped clean, free of charge, but once it's gone, it's gone. Still want to?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whose effort is it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which effort shall go?",
+        "ALL OF IT",
+        "ONE STAT'S",
+        "NEVER MIND"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which stat's?",
+        "HP",
+        "ATTACK",
+        "DEFENSE",
+        "SP. ATK",
+        "SP. DEF",
+        "SPEED"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There. A clean slate, ready for whatever you train next."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's nothing there to wipe! Train first, then come back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every drill trains one stat and lasts half a minute. Bronze puts 8 points of effort into it, silver 16, gold 24."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A stat holds 252 at most, and a Pokémon 510 in all. The effort counts the moment the drill is over."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And a stat's first gold earns you something from me. Keep winning golds, and there's more where that came from."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No rush. Come back whenever you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TrainingClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! The shelf behind me is for the club's training goods, but the club only stocks it for Champions."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The drills are open to everyone, though. Talk to the Head Coach!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome, Champion! Candies, capsules and mints: everything a team in training needs is on this shelf."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which shelf would you like to look at?",
+        "TRAINING TOOLS",
+        "MACHINES",
+        "NOT NOW"
+      ],
+      "text": [
+        "Ce raft vrei să vezi?",
+        "UNELTE DE ANTRENAMENT",
+        "MAȘINI TEHNICE",
+        "NU ACUM"
+      ]
+    },
+    {
+      "en": [
+        "These machines teach the moves of the newer lands."
+      ],
+      "text": [
+        "Mașinile astea predau mișcările ținuturilor mai noi."
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you're ready to shape your team."
+      ],
+      "text": [
+        "Revino oricând ești gata să-ți modelezi echipa."
+      ]
+    }
+  ],
+  "TrainingExchange": [
+    {
+      "en": [
+        "Club Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! I'm with the training club. Battle Points buy our very best goods here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! A Bottle Cap goes to the Head Coach of any training hall, if that's what you chose."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you don't have the Battle Points for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever your points pile up!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TrainingTutor": [
+    {
+      "en": [
+        "I teach the moves the tutors of newer lands teach, each for a few of your Shards. Shall I teach one?"
+      ],
+      "text": [
+        "Predau mișcările pe care le predau profesorii din ținuturile mai noi, fiecare pe câteva Cioburi de-ale tale. Să predau una?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon am I to teach?"
+      ],
+      "text": [
+        "Pe care Pokémon să-l învăț?"
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... there! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... gata! {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you'd like a new move."
+      ],
+      "text": [
+        "Revino oricând vrei o mișcare nouă."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't learn a thing yet. Let it hatch first!"
+      ],
+      "text": [
+        "Un Ou nu poate învăța încă nimic. Lasă-l întâi să eclozeze!"
+      ]
+    },
+    {
+      "en": [
+        "There's no move of mine that this Pokémon can be taught, I'm afraid."
+      ],
+      "text": [
+        "Mă tem că nu am nicio mișcare pe care s-o poată învăța acest Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "You haven't the Shards for that one. They turn up in the ground, for anyone who digs."
+      ],
+      "text": [
+        "N-ai destule Cioburi pentru asta. Ies din pământ, pentru oricine sapă."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "I teach the moves of newer lands, but only to Champions. Come back once you've entered a Hall of Fame."
+      ],
+      "text": [
+        "Predau mișcările ținuturilor mai noi, dar doar Campionilor. Revino după ce intri într-o Sală a Faimei."
       ]
     }
   ]

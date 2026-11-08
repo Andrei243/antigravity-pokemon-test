@@ -37,10 +37,7 @@
         "Back for more? Good. I was getting bored. Show me how much you have grown."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Karen"
+        "Ai venit după încă una? Bine. Începusem să mă plictisesc. Arată-mi cât ai crescut."
       ]
     },
     {
@@ -48,10 +45,7 @@
         "Karen"
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Ei bine, ce bun ești. Îmi place asta la un antrenor."
+        "Karen"
       ]
     },
     {
@@ -59,10 +53,7 @@
         "Well, aren't you good. I like that in a trainer."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Oamenilor le place să împartă Pokémonii în tari și slabi. Eu n-am avut niciodată răbdare pentru asta. Cei mai buni antrenori câștigă cu cei pe care îi iubesc."
+        "Ei bine, ce bun ești. Îmi place asta la un antrenor."
       ]
     },
     {
@@ -70,10 +61,7 @@
         "People love to sort Pokémon into the strong and the weak. I've never had much patience for that. The best trainers win with the ones they love."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Lupți ca cineva care știe asta. Du-te. Campionul te așteaptă."
+        "Oamenilor le place să împartă Pokémonii în tari și slabi. Eu n-am avut niciodată răbdare pentru asta. Cei mai buni antrenori câștigă cu cei pe care îi iubesc."
       ]
     },
     {
@@ -81,10 +69,7 @@
         "You fight like someone who knows it. Go on. The Champion is waiting."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Campionul e dincolo de ușa aceea. Du-te. Nu-l face să aștepte."
+        "Lupți ca cineva care știe asta. Du-te. Campionul te așteaptă."
       ]
     },
     {
@@ -92,7 +77,7 @@
         "The Champion is through that door. Go on. Don't keep him waiting."
       ],
       "text": [
-        ""
+        "Campionul e dincolo de ușa aceea. Du-te. Nu-l face să aștepte."
       ]
     }
   ]

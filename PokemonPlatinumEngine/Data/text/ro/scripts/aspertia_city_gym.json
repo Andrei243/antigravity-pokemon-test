@@ -101,7 +101,7 @@
         "You have come a very long way since the day you won my Basic Badge, {player}. I have grown too. Shall we measure it?"
       ],
       "text": [
-        ""
+        "Ai parcurs un drum foarte lung din ziua în care ai câștigat Insigna Bazică, {player}. Am crescut și eu. Ne măsurăm?"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Thank you. I will not hold back, and I know you would not want me to."
       ],
       "text": [
-        ""
+        "Mulțumesc. N-o să mă rețin, și știu că nici n-ai vrea asta."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Still the same bond, and so much more of it. I am proud to have been your first. Come again tomorrow, if you like."
       ],
       "text": [
-        ""
+        "Aceeași legătură, și mult mai puternică. Sunt mândru că am fost primul tău Lider. Mai vino mâine, dacă vrei."
       ]
     }
   ],

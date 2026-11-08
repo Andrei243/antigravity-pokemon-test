@@ -55,7 +55,7 @@
         "{player}! Is that a Key Stone you're wearing? Then I've been keeping these for exactly the right Trainer."
       ],
       "text": [
-        ""
+        "{player}! Porți o Piatră-Cheie? Atunci astea le-am păstrat exact pentru antrenorul potrivit."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "They were dug out of the old ruins in Unova's south. Each one hums when a Pokémon of its own line comes near."
       ],
       "text": [
-        ""
+        "Au fost scoase din ruinele vechi din sudul regiunii Unova. Fiecare vibrează când se apropie un Pokémon din linia lui."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "One for Serperior and one for Samurott. Let one hold its stone in battle and watch it change. I can't wait!"
       ],
       "text": [
-        ""
+        "Una pentru Serperior și una pentru Samurott. Lasă-l pe unul să-și poarte piatra în luptă și uită-te cum se schimbă. Abia aștept!"
       ]
     }
   ]
