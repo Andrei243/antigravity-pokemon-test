@@ -94,6 +94,8 @@ public class ArchitectureTests
                     || u.Constructs && u.TargetType == "System.Random")),
         new("The open world's rules run on one thread (plan 32 · decision 2): OpenWorld starts no Thread or Task and uses no Parallel or ThreadPool",
             (root, u) => In(root, u, "OpenWorld") && Threads(u)),
+        new("The game never builds a navigation mesh (plan 32 · OW4: the baker does, offline): nothing makes an OpenNavMesh but its own reader",
+            (root, u) => u.Constructs && u.TargetType == $"{Engine}.OpenWorld.OpenNavMesh" && !(In(root, u, "OpenWorld") && u.Caller == "OpenNavMesh")),
         new("A player's own file is only read (plan 08 · P20): Foreign touches no File or Directory, and writes through no stream",
             (root, u) => In(root, u, "Foreign")
                 && (u.TargetType is "System.IO.File" or "System.IO.Directory" or "System.IO.StreamWriter" or "System.IO.BinaryWriter"

@@ -117,7 +117,8 @@ public static class RegionBake
 
     /// <summary>
     /// Every file of the bake, by its path under <c>baked/</c> (<c>index.json</c> and <c>&lt;level&gt;/&lt;x&gt;_&lt;z&gt;.chunk</c>),
-    /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all).
+    /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all). With
+    /// every chunk, the navigation mesh too (<c>navmesh.bin</c>, plan 32 · OW4), what its bake found in <paramref name="navReport"/>.
     /// </summary>
     public static SortedDictionary<string, byte[]> Files(RegionDescription description, Func<int, int, bool>? only = null, NavReport? navReport = null)
     {

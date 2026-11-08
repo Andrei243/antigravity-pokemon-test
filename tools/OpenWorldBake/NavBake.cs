@@ -184,7 +184,9 @@ public static class NavBake
                     if (!byKey.TryGetValue(ground[index].Key, out int id)) continue;
                     var t = tris[id];
                     if (!t.FacesUp) continue;
-                    bool swim = water is { } w && w - y > Body.SwimDepth;
+                    // Swum where the water is deeper than the body wades anywhere in the column (the capsule refuses a
+                    // step into deep water wherever it falls), waded only where it is shallower all over
+                    bool swim = water is { } w && (w - y > Body.SwimDepth || DeepestIn(ground, x, z, y) > Body.SwimDepth - 0.02);
                     if (!swim && !t.Walked) continue;
                     double feet = swim ? water!.Value - Body.SwimDepth : y;
                     if (cells.TryGetValue((i, k), out var here) && here.Any(s => Math.Abs(spans[s].Feet - feet) < 0.1)) continue;
@@ -469,6 +471,21 @@ public static class NavBake
             }
         }
         return false;
+    }
+
+    /// <summary>The deepest the water stands over the ground in the column round x, z (its corners, side middles and middle), ground near y; nought where there is none.</summary>
+    private static double DeepestIn(OpenGround ground, double x, double z, double y)
+    {
+        double deepest = 0;
+        for (int dz = -1; dz <= 1; dz++)
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                double cx = x + dx * (Cell / 2 - 0.01), cz = z + dz * (Cell / 2 - 0.01);
+                if (ground.WaterAt(cx, cz) is not { } surface) continue;
+                double bed = ground.Footing(cx, cz, y + Body.StepUp, y - 2)?.Y ?? y - 2;
+                deepest = Math.Max(deepest, surface - bed);
+            }
+        return deepest;
     }
 
     /// <summary>

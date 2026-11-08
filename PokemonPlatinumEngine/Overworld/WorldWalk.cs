@@ -360,6 +360,14 @@ internal static class WorldWalk
         new("FourIsland_IcefallCave_B1F", 15, 16, Direction.Down),
     };
 
+    /// <summary>
+    /// What can be come to in an open map (plan 32 · OW4): the flood of its navigation mesh (<see cref="OpenWorld.OpenWalk"/>)
+    /// from the places given, with everything the region can grant, through the ways that are no link of the mesh;
+    /// null for a map with no navigation mesh. An open map's doors into grid rooms are OW5's, as is joining the two walks.
+    /// </summary>
+    public static OpenWorld.OpenWalk? Open(OpenWorld.OpenMap map, IEnumerable<OpenWorld.OpenPos> starts, IEnumerable<OpenWorld.OpenWay>? ways = null) =>
+        OpenWorld.OpenWalk.Of(map, OpenWorld.MovementGrants.Swim, starts, ways);
+
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
         From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).Concat(FallenTo).Concat(NotYetLinked).ToArray());

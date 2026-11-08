@@ -116,7 +116,7 @@ public class OpenWorldNavTests
     public void EveryPolygonIsConvexNoWiderThanItsBoundAndKeepsToItsGround()
     {
         var mesh = Mesh;
-        int far = 0;
+        int far = 0, points = 0;
         double worst = 0;
         string where = "";
         foreach (var p in mesh.Polygons)
@@ -143,13 +143,15 @@ public class OpenWorldNavTests
                 var at = (hub + mesh.Corner(p, k)) * 0.5;
                 double fan = mesh.GroundIn(p, at.X, at.Z);
                 var column = ground.Value.Column(at.X, at.Z);
-                double nearest = column.Select(h => Math.Abs(h.Y - fan)).DefaultIfEmpty(99).Min();
+                if (column.Count == 0) continue;   // past the land's edge (a swim polygon at the region's border)
+                points++;
+                double nearest = column.Select(h => Math.Abs(h.Y - fan)).Min();
                 if (nearest > 0.12) far++;
                 if (nearest > worst) { worst = nearest; where = $"polygon {p.Id} at {at}"; }
             }
         }
         output.WriteLine($"{far} points more than 12 cm off their ground; the worst {worst:0.000} m, {where}");
-        Assert.True(far * 100 < mesh.Polygons.Count, $"{far} points stand more than 12 cm off their ground");
+        Assert.True(far * 100 < points, $"{far} of {points} points stand more than 12 cm off their ground");
         Assert.True(worst < 0.5, $"the worst {worst:0.000} m, {where}");
     }
 
@@ -225,6 +227,32 @@ public class OpenWorldNavTests
     }
 
     [Fact]
+    public void TheCapsuleWalksPathsBetweenPlacesDrawnAtRandom()
+    {
+        // Thirty pairs of polygons drawn from a seed, on foot: wherever a path is found, the game's capsule follows it
+        // to its end (on the right layer), never stuck and never giving a corner up
+        var rng = new Random(4032);
+        var mesh = Mesh;
+        int walked = 0;
+        var failures = new List<string>();
+        for (int n = 0; n < 30; n++)
+        {
+            var a = mesh.Polygons[rng.Next(mesh.Polygons.Count)];
+            var b = mesh.Polygons[rng.Next(mesh.Polygons.Count)];
+            OpenPos At(OpenNavPolygon p) => OpenPos.FromMetres(p.Hub.MetresX, mesh.FeetIn(p, p.Hub.MetresX, p.Hub.MetresZ), p.Hub.MetresZ);
+            if (a.Swim || b.Swim || NavPath.Find(mesh, At(a), At(b)) is not { } path) continue;
+            walked++;
+            var walk = Walk(path);
+            double off = Math.Sqrt(walk.End.DistanceSquared(path.Corners[^1])) / 1000;
+            if (!walk.Finished || walk.Stuck || walk.GivenUp.Count > 0 || off > 0.6)
+                failures.Add($"{a.Id} to {b.Id}: {(walk.Finished ? "finished" : walk.Stuck ? "stuck" : "unfinished")}, {walk.GivenUp.Count} given up, ended {off:0.00} m off\n  {Told(path)}\n  {Told(walk).Replace("\n", "\n  ")}");
+        }
+        output.WriteLine($"{walked} paths walked");
+        Assert.True(walked >= 20, $"{walked} paths");
+        Assert.True(failures.Count == 0, string.Join("\n", failures));
+    }
+
+    [Fact]
     public void FromTheCavernUpOutOfTheTunnelAndOverTheRockBridge()
     {
         var path = NavPath.Find(Mesh, CavernFloor, On(24, 58));
@@ -294,6 +322,73 @@ public class OpenWorldNavTests
         var warped = OpenWalk.From(Mesh, new[] { WestRoad }, ways: new[] { new OpenWay("a lift", On(-50, -32), On(-50, -52)) });
         Assert.True(warped.Reaches(On(-50, -52)));
         Assert.Equal(new[] { "a lift" }, warped.WaysTaken);
+    }
+
+    [Fact]
+    public void TheGameReadsTheMeshBesideTheChunksAndTheBotAndTheWalkOfTheGameAskIt()
+    {
+        // The lab's level 0 and its navigation mesh written as the baker writes them, opened as the game opens a region
+        string dir = Path.Combine(Path.GetTempPath(), "openlab-nav-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(Path.Combine(dir, "0"));
+        try
+        {
+            var (description, _) = lab.Value;
+            var index = new BakedIndexFile
+            {
+                Format = BakedChunk.Format, Region = description.World.Region, ChunkSide = OpenMap.ChunkSide,
+                CellMm = 500, LevelErrorsMm = new List<int> { 0 }, Source = description.Source
+            };
+            foreach (var chunk in level0.Value)
+            {
+                index.Chunks.Add(new[] { chunk.ChunkX, chunk.ChunkZ });
+                File.WriteAllBytes(Path.Combine(dir, BakedChunk.FileName(chunk.ChunkX, chunk.ChunkZ, 0)), chunk.Bytes());
+            }
+            File.WriteAllText(Path.Combine(dir, "index.json"), System.Text.Json.JsonSerializer.Serialize(index, PokemonPlatinumEngine.Data.GameDataFiles.Json));
+            var land = BakedRegion.Open(dir);
+            Assert.Null(land.Nav);   // a bake without its mesh has none
+            File.WriteAllBytes(Path.Combine(dir, OpenNavMesh.FileName), Mesh.Bytes());
+            var map = new OpenMap("OpenLab", "lab", Places()) { Land = BakedRegion.Open(dir) };
+            Assert.Equal(Mesh.Bytes(), map.Land!.Nav!.Bytes());
+
+            // The bot's route over it is the path's corners
+            var route = PokemonPlatinumEngine.Core.Autoplay.Policy.Route(map, WestRoad, HillTop);
+            Assert.Equal(NavPath.Find(Mesh, WestRoad, HillTop)!.Corners, route);
+            Assert.Null(PokemonPlatinumEngine.Core.Autoplay.Policy.Route(map, On(-50, -32), On(-50, -52)));
+            // The walk of the game takes an open map: every place, and with everything granted the water too
+            var walk = PokemonPlatinumEngine.Overworld.WorldWalk.Open(map, new[] { map.Marker("west_road")!.Pos })!;
+            Assert.Empty(walk.Unreached(map.Markers));
+            Assert.Contains(walk.Reached, p => Mesh.Polygons[p].Swim);
+            // A map with no mesh has neither
+            var bare = new OpenMap("Bare", "lab");
+            Assert.Null(PokemonPlatinumEngine.Core.Autoplay.Policy.Route(bare, WestRoad, HillTop));
+            Assert.Null(PokemonPlatinumEngine.Overworld.WorldWalk.Open(bare, new[] { WestRoad }));
+        }
+        finally { Directory.Delete(dir, true); }
+    }
+
+    [Fact]
+    public void TheBakeOfTheRegionWritesItsMeshBesideItsChunks()
+    {
+        // RegionBake.Files gives navmesh.bin with every chunk, and none when only some are baked
+        var (description, _) = lab.Value;
+        var some = RegionBake.Files(description, (x, z) => x == 0 && z == 0);
+        Assert.DoesNotContain(OpenNavMesh.FileName, some.Keys);
+        var report = new NavReport();
+        var all = RegionBake.Files(description, navReport: report);
+        Assert.Equal(Mesh.Bytes(), all[OpenNavMesh.FileName]);
+        Assert.Equal(nav.Value.Report.ToString(), report.ToString());
+        // --check holds it as it holds the chunks: a changed byte of the mesh is a difference
+        string dir = Path.Combine(Path.GetTempPath(), "openlab-navcheck-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            RegionBake.Write(dir, all);
+            Assert.Empty(RegionBake.Differences(dir, all));
+            var bytes = File.ReadAllBytes(Path.Combine(dir, OpenNavMesh.FileName));
+            bytes[^1] ^= 1;
+            File.WriteAllBytes(Path.Combine(dir, OpenNavMesh.FileName), bytes);
+            Assert.Contains(RegionBake.Differences(dir, all), d => d.StartsWith(OpenNavMesh.FileName));
+        }
+        finally { Directory.Delete(dir, true); }
     }
 
     [Fact]
