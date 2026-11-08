@@ -1867,6 +1867,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleArcadeChallenge? Arcade { get => inner.Arcade; set => inner.Arcade = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleDomeChallenge? Dome { get => inner.Dome; set => inner.Dome = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattleVenueChallenge? Venue { get => inner.Venue; set => inner.Venue = value; }
+        public PokemonPlatinumEngine.Models.Facilities.StreakChallenge? Facility { get => inner.Facility; set => inner.Facility = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePikeChallenge? Pike { get => inner.Pike; set => inner.Pike = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePyramidChallenge? Pyramid { get => inner.Pyramid; set => inner.Pyramid = value; }
         public PokemonPlatinumEngine.Models.Tournament? Tournament { get => inner.Tournament; set => inner.Tournament = value; }

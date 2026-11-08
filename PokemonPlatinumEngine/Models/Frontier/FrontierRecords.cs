@@ -174,10 +174,40 @@ public sealed class FrontierRecords
     public VenueRecord Pyramid { get; set; } = new();
 
     /// <summary>
-    /// The Battle Maison's in Kiloude City (plan 23, Kalos's last places; plan 37's streak house): rounds of seven on the
-    /// venues' frame, against trainers of the later sets.
+    /// The Battle Maison's of plan 23's first build (Kalos's last places), rounds of seven on the venues' frame. Kept only
+    /// so that a save of that build is read: the first time the house's single room is asked for
+    /// (<see cref="Facility"/>), its streak and best are taken over and this is emptied (plan 37 · FC2).
     /// </summary>
     public VenueRecord Maison { get; set; } = new();
+
+    /// <summary>
+    /// The later battle places' records (plan 37 · FC2), each way by <see cref="Models.Facilities.FacilityRecord.KeyOf"/>;
+    /// null until the first is entered, so a save that never went in is as it was.
+    /// </summary>
+    public Dictionary<string, Models.Facilities.FacilityRecord>? Facilities { get; set; }
+
+    /// <summary>A way's record, made the first time it is asked for (the Maison's single room taking over the first build's record).</summary>
+    public Models.Facilities.FacilityRecord Facility(string place, string way, bool hard)
+    {
+        Facilities ??= new Dictionary<string, Models.Facilities.FacilityRecord>(StringComparer.Ordinal);
+        string key = Models.Facilities.FacilityRecord.KeyOf(place, way, hard);
+        if (Facilities.TryGetValue(key, out var record)) return record;
+        record = new Models.Facilities.FacilityRecord();
+        if (key == Models.Facilities.FacilityRecord.KeyOf(Models.Facilities.StreakHouse.Place, "single", false) && (Maison.Best > 0 || Maison.Streak > 0))
+        {
+            // A round walked out on in the first build ends its streak as it would have there
+            record.Streak = Maison.InProgress ? 0 : Maison.Streak;
+            record.Best = Maison.Best;
+            record.Latest = Maison.InProgress ? Maison.Streak : 0;
+            Maison = new VenueRecord();
+        }
+        Facilities[key] = record;
+        return record;
+    }
+
+    /// <summary>A way's record if it has one, with nothing made.</summary>
+    public Models.Facilities.FacilityRecord? PeekFacility(string place, string way, bool hard) =>
+        Facilities != null && Facilities.TryGetValue(Models.Facilities.FacilityRecord.KeyOf(place, way, hard), out var record) ? record : null;
 
     /// <summary>The World Tournament's (plan 14 · B11, in the annex): the titles won by event, the tournaments entered and the matches won.</summary>
     public TournamentRecord Tournament { get; set; } = new();

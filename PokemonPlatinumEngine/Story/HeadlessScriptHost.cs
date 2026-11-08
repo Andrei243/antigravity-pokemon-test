@@ -1409,6 +1409,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public Models.Frontier.BattleArcadeChallenge? Arcade { get; set; }
     public Models.Frontier.BattleDomeChallenge? Dome { get; set; }
     public Models.Frontier.BattleVenueChallenge? Venue { get; set; }
+    public Models.Facilities.StreakChallenge? Facility { get; set; }
     public Models.Frontier.BattlePikeChallenge? Pike { get; set; }
     public Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
     public Models.Tournament? Tournament { get; set; }
@@ -1507,6 +1508,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
                 return 1;
             case "records":
             case "subwayrecords":
+            case "facilityboard":
                 Waits();
                 return 1;
             case "subwaypartner":

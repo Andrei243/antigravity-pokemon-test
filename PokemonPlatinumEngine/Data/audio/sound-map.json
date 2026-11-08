@@ -199,7 +199,8 @@
     "Boss Trainer": "ace",
     "Boss Trainer Benga": "ace",
     "Pike Queen": "ace",
-    "Pyramid King": "ace"
+    "Pyramid King": "ace",
+    "House Host": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -257,7 +258,8 @@
     "Pokémon Trainer Alder": "champion",
     "Pokémon Trainer Cynthia": "champion",
     "Pokémon Trainer Cheren": "rival",
-    "Pokémon Trainer Bianca": "rival"
+    "Pokémon Trainer Bianca": "rival",
+    "House Host": "eliteFour"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

@@ -201,33 +201,41 @@ public class KalosLastPlacesTests
     }
 
     [Fact]
-    public void ARoundOfTheBattleMaisonIsSevenTrainersOfTheLaterSetsGrowingWithTheStreak()
+    public void TheBattleMaisonsSingleRoomMeetsTrainersOfTheLaterSetsGrowingWithTheStreak()
     {
+        // Plan 37 · FC2 folded the first build's rounds of seven into the streak house's rooms (StreakHouseTests holds the rest)
         var records = new FrontierRecords();
         var rng = new Random(23);
         int Draw() => rng.Next(0x10000);
-        var round = BattleVenueChallenge.BeginMaison(records, new[] { 0, 1, 2 }, Draw);
-        Assert.Equal(AnnexVenue.Maison, round.Venue);
-        Assert.Equal(7, round.Foes.Count);
-        Assert.Equal(7, round.Foes.Select(f => f.Dress!.Id).Distinct().Count());
-        var (low, high) = BattleVenueChallenge.MaisonTiers(0);
-        foreach (var foe in round.Foes)
+        var party = new Party();
+        foreach (string species in new[] { "Greninja", "Talonflame", "Aegislash" }) party.Add(new Pokemon(PokemonDatabase.Get(species)!, 60));
+        var room = StreakHouse.Room("single", hard: false);
+        var challenge = StreakChallenge.Begin(records, room, new[] { 0, 1, 2 }, party, Draw);
+        var (low, high) = StreakHouse.TiersFor(0, hard: false);
+        var seen = new HashSet<string>();
+        for (int battle = 0; battle < 7; battle++)
         {
+            var foe = challenge.Opponent(records);
+            seen.Add(foe.Dress!.Id);
             Assert.Equal(3, foe.Pokemon.Count);
             Assert.All(foe.Pokemon, p => Assert.Equal(FrontierRules.Level, p.Level));
             Assert.All(foe.Pokemon, p => Assert.InRange(FacilitySetDatabase.Of(p.Species.Name).Min(s => s.Tier), 1, high));
+            Assert.Equal(foe.Dress.Name, challenge.OpponentAsTrainer(records).Name);
+            Assert.True(challenge.Won(records, trophyHeld: false).Points > 0);
         }
-        Assert.True(records.Maison.InProgress);
-        var trainer = round.OpponentAsTrainer();
-        Assert.Equal(round.Foes[0].Dress!.Name, trainer.Name);
-        Assert.False(round.Conditions.Palace);
-        for (int i = 0; i < 7; i++) round.Won(records);
-        round.Finish(records, won: true);
-        Assert.Equal(7, records.Maison.Streak);
-        Assert.Equal(1, records.Maison.Rounds);
-        Assert.True(round.PointsEarned > 0);
-        // The next round draws from stronger tiers, and the counter's prizes are the data's items
-        Assert.True(BattleVenueChallenge.MaisonTiers(1).Highest > high || BattleVenueChallenge.MaisonTiers(1).Lowest > low);
+        Assert.True(seen.Count > 1);
+        Assert.True(records.Facility(StreakHouse.Place, "single", false).InProgress);
+        Assert.Equal(7, records.Facility(StreakHouse.Place, "single", false).Streak);
+        Assert.False(challenge.Conditions.Palace);
+        // A save of the first build keeps its streak in the house's single room
+        var old = new FrontierRecords();
+        old.Maison.Streak = 14;
+        old.Maison.Best = 21;
+        Assert.Equal(14, old.Facility(StreakHouse.Place, "single", false).Streak);
+        Assert.Equal(21, old.Facility(StreakHouse.Place, "single", false).Best);
+        Assert.Equal(0, old.Maison.Best);
+        // Later battles draw from stronger tiers, and the counter's prizes are the data's items
+        Assert.True(StreakHouse.TiersFor(7, false).Highest > high || StreakHouse.TiersFor(7, false).Lowest > low);
         Assert.NotEmpty(FacilityPrizes.Of(FacilityPrizes.Maison));
         Assert.All(FacilityPrizes.Of(FacilityPrizes.Maison), p => Assert.NotNull(ItemDatabase.Get(p.Item)));
         Assert.Same(FacilityPrizes.Of(FacilityPrizes.Maison), FrontierExchange.Stock(FacilityPrizes.Maison));

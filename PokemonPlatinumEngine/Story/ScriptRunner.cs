@@ -418,6 +418,8 @@ public sealed partial class ScriptRunner
         Op.Bracket => true,
         // So do the Battle Palace and the Battle Arena (plan 14 · B9)
         Op.Venue => true,
+        // And the later games' battle places (plan 37 · FC2)
+        Op.Facility => true,
         // And the Battle Pike and the Battle Pyramid (plan 14 · B10)
         Op.Pike or Op.Pyramid => true,
         // And the World Tournament (plan 14 · B11)
@@ -1519,6 +1521,10 @@ public sealed partial class ScriptRunner
             // The Battle Palace and the Battle Arena (plan 14 · B9)
             case Op.Venue:
                 VenueRound(i);
+                break;
+            // The later games' battle places (plan 37 · FC2)
+            case Op.Facility:
+                FacilityCommand(i);
                 break;
             // The Lilycove Lady's favour (plan 21 · H11, part c)
             case Op.FavorLady:

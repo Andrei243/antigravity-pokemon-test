@@ -58,6 +58,31 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
         return new FrontierBoard(FrontierFacility.Tower, Text.Of("records.facility.subway"), rows, records.BattlePoints, SubwayRiders.PrintOf(story), 0);
     }
 
+    /// <summary>
+    /// A later battle place's board (plan 37 · FC2): a row for each of its rooms, normal and then hard once open (or once a
+    /// streak has been won there), with its longest streak and its latest, the challenge under way or put down counted as
+    /// it stands; its print is the hard rooms' trophies (silver for one, gold for all), and it counts no victories, the
+    /// Tower's frame as the Subway's is.
+    /// </summary>
+    public static FrontierBoard ForFacility(string place, FrontierRecords records, StoryState story)
+    {
+        var rows = new List<FrontierBoardRow>();
+        foreach (string way in Models.Facilities.FacilityPlaces.WaysOf(place))
+        {
+            var normal = records.Facility(place, way, false);
+            rows.Add(new FrontierBoardRow(Text.Of($"records.row.{place}.{way}"), normal.Best,
+                normal.InProgress || normal.Paused != null ? normal.Streak : normal.Latest, normal.InProgress || normal.Paused != null));
+            var hard = records.PeekFacility(place, way, true);
+            if (!normal.HardOpen && hard == null) continue;
+            hard ??= records.Facility(place, way, true);
+            string hardLabel = Text.Of($"records.row.{place}.hard.{way}");
+            rows.Add(new FrontierBoardRow(hardLabel, hard.Best, hard.InProgress || hard.Paused != null ? hard.Streak : hard.Latest, hard.InProgress || hard.Paused != null));
+        }
+        int trophies = place == Models.Facilities.StreakHouse.Place ? Models.Facilities.StreakHouse.Trophies(story) : 0;
+        var print = trophies == 0 ? FrontierPrint.None : trophies >= Models.Facilities.FacilityPlaces.WaysOf(place).Count ? FrontierPrint.Gold : FrontierPrint.Silver;
+        return new FrontierBoard(FrontierFacility.Tower, Text.Of($"records.facility.{place}"), rows, records.BattlePoints, print, 0);
+    }
+
     /// <summary>The board of a facility as the records stand: every one of the five has rows of its own.</summary>
     public static FrontierBoard For(FrontierFacility facility, FrontierRecords records, StoryState story)
     {

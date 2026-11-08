@@ -335,6 +335,13 @@ internal sealed class ScriptWalk
                     foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof" })
                         host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5, new Random(host.Party.Count)));
                 });
+            // A team that may enter any room of a later battle place (plan 37 · FC2): six of different species, for a triple room
+            if (i.Op == Op.Facility && i.Other == "enough")
+                Add("a team of six that may enter", host =>
+                {
+                    foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof", "Budew", "Buneary" })
+                        host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5, new Random(host.Party.Count)));
+                });
             // A Hidden Grotto gone into that holds a Pokémon (plan 22 · U11), which only the steps walked and the dice can make so
             if (i.Op == Op.Grotto && i.Name == "visit")
                 Add("a grotto with a Pokémon in it", host =>

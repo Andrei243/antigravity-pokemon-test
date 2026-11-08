@@ -2289,9 +2289,13 @@
   },
   "records": {
     "title": "RECORDURI DE LUPTĂ",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison" },
     "row": {
       "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
+      "house": {
+        "single": "Sala Simplă", "double": "Sala Dublă", "triple": "Sala Triplă", "rotation": "Sala Rotativă",
+        "hard": { "single": "Marea Sală Simplă", "double": "Marea Sală Dublă", "triple": "Marea Sală Triplă", "rotation": "Marea Sală Rotativă" }
+      },
       "subway": {
         "single": "Trenul Simplu", "double": "Trenul Dublu", "multi": "Trenul Multiplu",
         "supersingle": "Trenul Super Simplu", "superdouble": "Trenul Super Dublu", "supermulti": "Trenul Super Multiplu"
