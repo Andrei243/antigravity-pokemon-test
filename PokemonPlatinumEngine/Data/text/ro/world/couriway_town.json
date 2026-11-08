@@ -19,6 +19,16 @@
           "Gyaradosite"
         ]
       }
+    },
+    "falls_pool_plate": {
+      "name": {
+        "en": [
+          "Splash Plate"
+        ],
+        "text": [
+          "Placa Stropilor"
+        ]
+      }
     }
   },
   "signs": {

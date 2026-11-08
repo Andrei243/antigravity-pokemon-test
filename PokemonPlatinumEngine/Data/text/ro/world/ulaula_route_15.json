@@ -1,5 +1,25 @@
 {
   "people": {
+    "grimsley": {
+      "name": {
+        "en": [
+          "Grimsley"
+        ],
+        "text": [
+          "Grimsley"
+        ]
+      }
+    },
+    "sea_rock": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          "Stâncă"
+        ]
+      }
+    },
     "kaimi": {
       "name": {
         "en": [

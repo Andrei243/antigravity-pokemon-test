@@ -91,6 +91,8 @@ public class TextTests
     {
         ["UI/TitleScreen.cs"] = new[] { "Sinnoh", "Giratina", "PLATINUM", "Pokémon", "A  FAN  REMAKE" },
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
+        // The character look an open map's person is made with when its file names none: a name of characters.json, never drawn as a word (plan 32 · OW6)
+        ["Core/GameEngine.OpenPeople.cs"] = new[] { "Trainer" },
         // A name of the story's flags, which is data and no word (plan 21 · H12)
         ["Core/GameEngine.Salt.cs"] = new[] { "FLAG_HOENN_ABNORMAL_WEATHER_" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)

@@ -124,7 +124,7 @@ public class ItemSourcesTests
         {
             "Psychium Z", "Icium Z", "Steelium Z", "Fairium Z", "Flyinium Z", "Buginium Z", "Poisonium Z", "Decidium Z", "Incinium Z",
             "Primarium Z", "Aloraichium Z", "Snorlium Z", "Mimikium Z", "Lycanium Z", "Kommonium Z", "Solganium Z", "Lunalium Z",
-            "Zygarde Cube", "Ice Stone"
+            "Zygarde Cube"
         }),
         (Meltan, new[] { "Meltan Candy" }),
         (UltraSpace, new[] { "Tapunium Z", "Ultranecrozium Z", "Mewnium Z", "N-Solarizer", "N-Lunarizer" }),

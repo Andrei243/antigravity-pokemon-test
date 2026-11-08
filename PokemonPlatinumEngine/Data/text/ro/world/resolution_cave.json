@@ -1,0 +1,67 @@
+{
+  "people": {
+    "legend": {
+      "name": {
+        "en": [
+          "Zygarde"
+        ],
+        "text": [
+          "Zygarde"
+        ]
+      }
+    },
+    "kanoa": {
+      "name": {
+        "en": [
+          "Kanoa"
+        ],
+        "text": [
+          "Kanoa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Kanoa: Something old and green sleeps at the bottom of this cave. I've never dared go further than here."
+        ],
+        "text": [
+          "Veteran Kanoa: Ceva vechi și verde doarme în fundul peșterii ăsteia. N-am îndrăznit niciodată să merg mai departe de aici."
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Kanoa: You'd dare. I can tell."
+        ],
+        "text": [
+          "Veteran Kanoa: Tu ai îndrăzni. Se vede."
+        ]
+      }
+    },
+    "ululani": {
+      "name": {
+        "en": [
+          "Ululani"
+        ],
+        "text": [
+          "Ululani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ululani: The deeper you go, the stronger they get. I'm about as deep as it gets!"
+        ],
+        "text": [
+          "Antrenoare As Ululani: Cu cât mergi mai adânc, cu atât sunt mai puternici. Eu sunt cam cât de adânc se poate!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ululani: All right. You go deeper."
+        ],
+        "text": [
+          "Antrenoare As Ululani: Bine. Tu mergi mai adânc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

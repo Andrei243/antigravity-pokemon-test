@@ -87,6 +87,26 @@
           "Garchompite"
         ]
       }
+    },
+    "lake_max_revive": {
+      "name": {
+        "en": [
+          "Max Revive"
+        ],
+        "text": [
+          "Reînviere Maximă"
+        ]
+      }
+    },
+    "lake_dragon_fang": {
+      "name": {
+        "en": [
+          "Dragon Fang"
+        ],
+        "text": [
+          "Colț de Dragon"
+        ]
+      }
     }
   },
   "signs": {}

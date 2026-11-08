@@ -19,7 +19,7 @@
       },
       "before": {
         "en": [
-          "Team Flare Grunt Grunt: The boss's guests come by the front door. You came by the back."
+          "Team Flare Grunt: The boss's guests come by the front door. You came by the back."
         ],
         "text": [
           "Membru Team Flare: Oaspeții șefului vin pe ușa din față. Tu ai venit pe cea din spate."
@@ -27,7 +27,7 @@
       },
       "after": {
         "en": [
-          "Team Flare Grunt Grunt: Hmph. Go on, then. He's expecting you."
+          "Team Flare Grunt: Hmph. Go on, then. He's expecting you."
         ],
         "text": [
           "Membru Team Flare: Hmph. Hai, mergi, atunci. Te așteaptă."
@@ -45,7 +45,7 @@
       },
       "before": {
         "en": [
-          "Team Flare Grunt Grunt: Team Flare only lets in the stylish. You're not on the list!"
+          "Team Flare Grunt: Team Flare only lets in the stylish. You're not on the list!"
         ],
         "text": [
           "Membru Team Flare: Team Flare lasă să intre doar pe cei stilați. Nu ești pe listă!"
@@ -53,7 +53,7 @@
       },
       "after": {
         "en": [
-          "Team Flare Grunt Grunt: Fine. You're on the list."
+          "Team Flare Grunt: Fine. You're on the list."
         ],
         "text": [
           "Membru Team Flare: Fie. Ești pe listă."

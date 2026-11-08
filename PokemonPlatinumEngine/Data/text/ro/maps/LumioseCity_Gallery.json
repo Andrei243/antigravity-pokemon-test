@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Galerie Lumière"
+    ],
+    "text": [
+      "Galerie Lumière"
+    ]
+  },
+  "people": {
+    "curator": {
+      "name": {
+        "en": [
+          "Curator"
+        ],
+        "text": [
+          "Curatorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every painting here was made by someone who walked these streets. Most of them were hungry."
+        ],
+        "text": [
+          "Fiecare tablou de aici a fost făcut de cineva care a umblat pe străzile astea. Cei mai mulți erau flămânzi."
+        ]
+      }
+    },
+    "painter": {
+      "name": {
+        "en": [
+          "Painter"
+        ],
+        "text": [
+          "Pictorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have painted the same window for three years. The light has never once been the same."
+        ],
+        "text": [
+          "Pictez aceeași fereastră de trei ani. Lumina n-a fost niciodată la fel."
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          "Vizitatorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say you should stand back from a painting. I stood so far back I was in the street."
+        ],
+        "text": [
+          "Se spune că trebuie să te dai înapoi de la un tablou. Eu m-am dat atât de mult înapoi că am ajuns pe stradă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

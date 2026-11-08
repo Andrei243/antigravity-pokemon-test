@@ -61,6 +61,26 @@
           "Rucsacist Clément: Asta nu m-a înveselit deloc."
         ]
       }
+    },
+    "hedge_revive": {
+      "name": {
+        "en": [
+          "Revive"
+        ],
+        "text": [
+          "Reînviere"
+        ]
+      }
+    },
+    "hedge_protein": {
+      "name": {
+        "en": [
+          "Protein"
+        ],
+        "text": [
+          "Proteină"
+        ]
+      }
     }
   },
   "signs": {

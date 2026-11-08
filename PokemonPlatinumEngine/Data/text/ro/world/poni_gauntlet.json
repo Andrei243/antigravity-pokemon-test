@@ -1,0 +1,118 @@
+{
+  "people": {
+    "mikala": {
+      "name": {
+        "en": [
+          "Mikala"
+        ],
+        "text": [
+          "Mikala"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Mikala: This lake's the only cool place on the whole climb. I'm not letting you through dry!"
+        ],
+        "text": [
+          "Înotătoare Mikala: Lacul ăsta e singurul loc răcoros din tot urcușul. Nu te las să treci uscat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Mikala: Go on. Enjoy the swim."
+        ],
+        "text": [
+          "Înotătoare Mikala: Hai. Bucură-te de înot."
+        ]
+      }
+    },
+    "hina": {
+      "name": {
+        "en": [
+          "Hina"
+        ],
+        "text": [
+          "Hina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Hina: Dragons nest high on the Gauntlet. You'll have to get past mine first."
+        ],
+        "text": [
+          "Îmblânzitoare de dragoni Hina: Dragonii cuibăresc sus pe Gauntlet. Va trebui să treci mai întâi de ai mei."
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Hina: My dragons will want a rematch. One day."
+        ],
+        "text": [
+          "Îmblânzitoare de dragoni Hina: Dragonii mei vor vrea o revanșă. Într-o zi."
+        ]
+      }
+    },
+    "manu": {
+      "name": {
+        "en": [
+          "Manu"
+        ],
+        "text": [
+          "Manu"
+        ]
+      },
+      "before": {
+        "en": [
+          "Veteran Manu: Only Mudsdale gets over that ground down there. So you've a Mudsdale. Now show me the rest!"
+        ],
+        "text": [
+          "Veteran Manu: Doar Mudsdale trece peste pământul de acolo jos. Deci ai un Mudsdale. Acum arată-mi restul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Veteran Manu: The rest is very good indeed."
+        ],
+        "text": [
+          "Veteran Manu: Restul e foarte bun, într-adevăr."
+        ]
+      }
+    },
+    "lokelani": {
+      "name": {
+        "en": [
+          "Lokelani"
+        ],
+        "text": [
+          "Lokelani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Lokelani: They say the strongest Trainers in the world meet at the top of this climb. I'm the last test."
+        ],
+        "text": [
+          "Antrenoare As Lokelani: Se spune că cei mai puternici Antrenori din lume se întâlnesc în vârful urcușului ăstuia. Eu sunt ultimul test."
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Lokelani: You passed. With flying colours."
+        ],
+        "text": [
+          "Antrenoare As Lokelani: Ai trecut. Cu brio."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TreeSign": {
+      "en": [
+        "Battle Tree\nWhere the strongest Trainers of every land meet.\nClosed for now."
+      ],
+      "text": [
+        "Battle Tree\nUnde se întâlnesc cei mai puternici Antrenori din toate ținuturile.\nÎnchis deocamdată."
+      ]
+    }
+  }
+}

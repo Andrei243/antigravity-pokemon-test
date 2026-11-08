@@ -53,6 +53,26 @@
           "Am privit florile astea înflorind șaizeci de veri. Se întorc în fiecare an, la fel ca Pokémonii care le iubesc."
         ]
       }
+    },
+    "sycamore_port": {
+      "name": {
+        "en": [
+          "Prof. Sycamore"
+        ],
+        "text": [
+          "Prof. Sycamore"
+        ]
+      }
+    },
+    "port_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
     }
   },
   "signs": {

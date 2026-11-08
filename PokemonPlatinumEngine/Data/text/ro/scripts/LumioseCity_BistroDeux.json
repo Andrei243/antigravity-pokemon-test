@@ -1,0 +1,214 @@
+{
+  "Host": [
+    {
+      "en": [
+        "Clothilde"
+      ],
+      "text": [
+        "Clothilde"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Bistro des Deux. Here everything is served in pairs, the battles too."
+      ],
+      "text": [
+        "Bine ai venit la Bistro des Deux. Aici totul se servește în perechi, și luptele la fel."
+      ]
+    },
+    {
+      "en": [
+        "Will you take today's menu? Three courses, each a double battle against our staff."
+      ],
+      "text": [
+        "Iei meniul zilei? Trei feluri, fiecare o luptă dublă împotriva personalului nostru."
+      ]
+    },
+    {
+      "en": [
+        "Splendid. The quicker you finish, the finer the dish the kitchen sends out."
+      ],
+      "text": [
+        "Splendid. Cu cât termini mai repede, cu atât mai fin e felul pe care îl trimite bucătăria."
+      ]
+    },
+    {
+      "en": [
+        "Odette"
+      ],
+      "text": [
+        "Odette"
+      ]
+    },
+    {
+      "en": [
+        "The first course! Two of mine against two of yours."
+      ],
+      "text": [
+        "Primul fel! Doi de-ai mei împotriva a doi de-ai tăi."
+      ]
+    },
+    {
+      "en": [
+        "Fabien"
+      ],
+      "text": [
+        "Fabien"
+      ]
+    },
+    {
+      "en": [
+        "The main course, still steaming. Mind the plates!"
+      ],
+      "text": [
+        "Felul principal, încă aburind. Atenție la farfurii!"
+      ]
+    },
+    {
+      "en": [
+        "Bertrand"
+      ],
+      "text": [
+        "Bertrand"
+      ]
+    },
+    {
+      "en": [
+        "And to finish, something from my own stove."
+      ],
+      "text": [
+        "Și, la final, ceva de la aragazul meu."
+      ]
+    },
+    {
+      "en": [
+        "Clothilde"
+      ],
+      "text": [
+        "Clothilde"
+      ]
+    },
+    {
+      "en": [
+        "The whole menu in {var:TURNS} turns! Let us see what the kitchen sends out for you."
+      ],
+      "text": [
+        "Tot meniul în {var:TURNS} ture! Să vedem ce îți trimite bucătăria."
+      ]
+    },
+    {
+      "en": [
+        "A leisurely meal. The kitchen sends a little something all the same."
+      ],
+      "text": [
+        "O masă fără grabă. Bucătăria trimite totuși ceva mic."
+      ]
+    },
+    {
+      "en": [
+        "So quick the soup was still steaming! The chef's finest, with his compliments."
+      ],
+      "text": [
+        "Atât de rapid că supa încă aburea! Cel mai bun fel al bucătarului, cu complimentele lui."
+      ]
+    },
+    {
+      "en": [
+        "Brisk and stylish. The kitchen is quite pleased with you."
+      ],
+      "text": [
+        "Rapid și stilat. Bucătăria e destul de mulțumită de tine."
+      ]
+    },
+    {
+      "en": [
+        "A good, honest meal. Here is the dish of the day."
+      ],
+      "text": [
+        "O masă bună și cinstită. Iată felul zilei."
+      ]
+    },
+    {
+      "en": [
+        "Clothilde"
+      ],
+      "text": [
+        "Clothilde"
+      ]
+    },
+    {
+      "en": [
+        "The kitchen has closed for today, I'm afraid. Your Pokémon have been seen to. Do come back tomorrow."
+      ],
+      "text": [
+        "Bucătăria s-a închis pentru azi, din păcate. Ne-am ocupat de Pokémonii tăi. Revino mâine."
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The menu is new every day."
+      ],
+      "text": [
+        "Altădată, atunci. Meniul e nou în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "You have dined with us today already. The kitchen opens again tomorrow."
+      ],
+      "text": [
+        "Ai luat deja masa la noi azi. Bucătăria se deschide din nou mâine."
+      ]
+    }
+  ],
+  "Staff": [
+    {
+      "en": [
+        "Bertrand"
+      ],
+      "text": [
+        "Bertrand"
+      ]
+    },
+    {
+      "en": [
+        "A dish is like a battle. Too long on the fire and it is spoiled."
+      ],
+      "text": [
+        "Un fel de mâncare e ca o luptă. Prea mult pe foc și se strică."
+      ]
+    },
+    {
+      "en": [
+        "Odette"
+      ],
+      "text": [
+        "Odette"
+      ]
+    },
+    {
+      "en": [
+        "Two plates in each hand, two Pokémon on each side. You get used to it!"
+      ],
+      "text": [
+        "Două farfurii în fiecare mână, doi Pokémoni de fiecare parte. Te obișnuiești!"
+      ]
+    },
+    {
+      "en": [
+        "Fabien"
+      ],
+      "text": [
+        "Fabien"
+      ]
+    },
+    {
+      "en": [
+        "Ask Madame Clothilde for the menu. I'll be waiting with the main course."
+      ],
+      "text": [
+        "Cere-i meniul Doamnei Clothilde. Te aștept cu felul principal."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "people": {
+    "kale": {
+      "name": {
+        "en": [
+          "Kale"
+        ],
+        "text": [
+          "Kale"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Kale: I found a shortcut to Route 12! Well, a longcut. Battle me anyway!"
+        ],
+        "text": [
+          "Puști Kale: Am găsit o scurtătură spre Ruta 12! Ei bine, o lungătură. Luptă cu mine oricum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Kale: I'll take the shortcut home."
+        ],
+        "text": [
+          "Puști Kale: Mă duc acasă pe scurtătură."
+        ]
+      }
+    },
+    "meli": {
+      "name": {
+        "en": [
+          "Meli"
+        ],
+        "text": [
+          "Meli"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Meli: My Pokémon and I were having a picnic. You can join if you beat us!"
+        ],
+        "text": [
+          "Domnișoară Meli: Eu și Pokémonii mei făceam un picnic. Te poți alătura dacă ne învingi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Meli: Fine, have a sandwich anyway."
+        ],
+        "text": [
+          "Domnișoară Meli: Bine, ia totuși un sandviș."
+        ]
+      }
+    },
+    "kona": {
+      "name": {
+        "en": [
+          "Kona"
+        ],
+        "text": [
+          "Kona"
+        ]
+      },
+      "before": {
+        "en": [
+          "Backpacker Kona: I've walked every road on Ula'ula. This one's the quietest. Until now!"
+        ],
+        "text": [
+          "Rucsăcar Kona: Am străbătut fiecare drum din Ula'ula. Ăsta e cel mai liniștit. Până acum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Backpacker Kona: Back to quiet, then."
+        ],
+        "text": [
+          "Rucsăcar Kona: Înapoi la liniște, atunci."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": {
+      "en": [
+        "Route 11\nWest: Route 10\nNorth: Route 12"
+      ],
+      "text": [
+        "Ruta 11\nVest: Ruta 10\nNord: Ruta 12"
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "displayName": {
+    "en": [
+      "Cercle des Échanges"
+    ],
+    "text": [
+      "Cercle des Échanges"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Gustavine"
+        ],
+        "text": [
+          "Gustavine"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cords and stones for the trading-minded. Every member keeps a spare."
+        ],
+        "text": [
+          "Cordoane și pietre pentru cei înclinați spre schimburi. Fiecare membru ține unul de rezervă."
+        ]
+      }
+    },
+    "member": {
+      "name": {
+        "en": [
+          "Member"
+        ],
+        "text": [
+          "Membrul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I once traded a Pokémon to a friend and got it back twice as grand. Some of them only grow that way."
+        ],
+        "text": [
+          "Odată am schimbat un Pokémon cu un prieten și l-am primit înapoi de două ori mai măreț. Unii cresc doar așa."
+        ]
+      }
+    },
+    "newcomer": {
+      "name": {
+        "en": [
+          "Newcomer"
+        ],
+        "text": [
+          "Începătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My first trade! I was so nervous I nearly handed over my lunch instead."
+        ],
+        "text": [
+          "Primul meu schimb! Eram atât de emoționat că aproape că am dat în loc prânzul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

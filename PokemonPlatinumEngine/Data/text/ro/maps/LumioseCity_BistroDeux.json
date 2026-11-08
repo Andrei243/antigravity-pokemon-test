@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "Bistro des Deux"
+    ],
+    "text": [
+      "Bistro des Deux"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Clothilde"
+        ],
+        "text": [
+          "Clothilde"
+        ]
+      }
+    },
+    "odette": {
+      "name": {
+        "en": [
+          "Odette"
+        ],
+        "text": [
+          "Odette"
+        ]
+      }
+    },
+    "fabien": {
+      "name": {
+        "en": [
+          "Fabien"
+        ],
+        "text": [
+          "Fabien"
+        ]
+      }
+    },
+    "bertrand": {
+      "name": {
+        "en": [
+          "Bertrand"
+        ],
+        "text": [
+          "Bertrand"
+        ]
+      }
+    },
+    "diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two plates, two forks, two battles at once. Everything here comes in pairs, even the bill."
+        ],
+        "text": [
+          "Două farfurii, două furculițe, două lupte deodată. Totul vine în perechi aici, până și nota."
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every day and still haven't finished the menu quickly enough for the best dish."
+        ],
+        "text": [
+          "Vin în fiecare zi și tot n-am terminat meniul destul de repede pentru cel mai bun fel."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

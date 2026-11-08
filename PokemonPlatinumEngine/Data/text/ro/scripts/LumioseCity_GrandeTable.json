@@ -1,0 +1,222 @@
+{
+  "Host": [
+    {
+      "en": [
+        "Ernestine"
+      ],
+      "text": [
+        "Ernestine"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to La Grande Table. Our menu is three courses, a double, a triple and a rotation battle."
+      ],
+      "text": [
+        "Bine ai venit la La Grande Table. Meniul nostru are trei feluri: o luptă dublă, una triplă și una cu rotație."
+      ]
+    },
+    {
+      "en": [
+        "The menu is {money 15000}. Will you take it?"
+      ],
+      "text": [
+        "Meniul costă {money 15000}. Îl iei?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you. Our kitchen's dishes are rare ones, and the quicker the meal, the rarer the dish."
+      ],
+      "text": [
+        "Mulțumesc. Felurile bucătăriei noastre sunt rare, și cu cât masa e mai rapidă, cu atât felul e mai rar."
+      ]
+    },
+    {
+      "en": [
+        "Séverine"
+      ],
+      "text": [
+        "Séverine"
+      ]
+    },
+    {
+      "en": [
+        "The first course, served for two. Shall we begin?"
+      ],
+      "text": [
+        "Primul fel, servit pentru doi. Începem?"
+      ]
+    },
+    {
+      "en": [
+        "Évrard"
+      ],
+      "text": [
+        "Évrard"
+      ]
+    },
+    {
+      "en": [
+        "The main course comes in three. I hope you have room."
+      ],
+      "text": [
+        "Felul principal vine în trei. Sper că mai ai loc."
+      ]
+    },
+    {
+      "en": [
+        "Hippolyte"
+      ],
+      "text": [
+        "Hippolyte"
+      ]
+    },
+    {
+      "en": [
+        "The house's dessert turns on the table. It is my favourite course to serve."
+      ],
+      "text": [
+        "Desertul casei se rotește pe masă. E felul meu preferat de servit."
+      ]
+    },
+    {
+      "en": [
+        "Ernestine"
+      ],
+      "text": [
+        "Ernestine"
+      ]
+    },
+    {
+      "en": [
+        "Three courses in {var:TURNS} turns. The kitchen has prepared something worthy of it."
+      ],
+      "text": [
+        "Trei feluri în {var:TURNS} ture. Bucătăria a pregătit ceva pe măsură."
+      ]
+    },
+    {
+      "en": [
+        "An unhurried meal, as a grand one should be. Please accept this."
+      ],
+      "text": [
+        "O masă fără grabă, cum se cuvine uneia mărețe. Te rog, primește asta."
+      ]
+    },
+    {
+      "en": [
+        "Magnificent! The rarest thing our kitchen has ever sent out."
+      ],
+      "text": [
+        "Magnific! Cel mai rar lucru pe care l-a trimis vreodată bucătăria noastră."
+      ]
+    },
+    {
+      "en": [
+        "Splendid. The kitchen sends out one of its treasures."
+      ],
+      "text": [
+        "Splendid. Bucătăria trimite una dintre comorile ei."
+      ]
+    },
+    {
+      "en": [
+        "A meal well eaten. Here is the dish of the day."
+      ],
+      "text": [
+        "O masă bine mâncată. Iată felul zilei."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that is not quite enough. We shall keep your table for when you are ready."
+      ],
+      "text": [
+        "Vai, nu e tocmai de ajuns. Vom păstra masa ta până vei fi gata."
+      ]
+    },
+    {
+      "en": [
+        "Ernestine"
+      ],
+      "text": [
+        "Ernestine"
+      ]
+    },
+    {
+      "en": [
+        "The meal is over for today, I'm afraid. Your Pokémon have been seen to. We hope to see you tomorrow."
+      ],
+      "text": [
+        "Masa s-a încheiat pentru azi, din păcate. Ne-am ocupat de Pokémonii tăi. Sperăm să te vedem mâine."
+      ]
+    },
+    {
+      "en": [
+        "Of course. La Grande Table will be here when you are ready."
+      ],
+      "text": [
+        "Desigur. La Grande Table te va aștepta când vei fi gata."
+      ]
+    },
+    {
+      "en": [
+        "You have dined with us today already. The kitchen will be ready again tomorrow."
+      ],
+      "text": [
+        "Ai luat deja masa la noi azi. Bucătăria va fi gata din nou mâine."
+      ]
+    }
+  ],
+  "Staff": [
+    {
+      "en": [
+        "Hippolyte"
+      ],
+      "text": [
+        "Hippolyte"
+      ]
+    },
+    {
+      "en": [
+        "Two, then three, then the table turns. A guest must keep their wits about them here."
+      ],
+      "text": [
+        "Doi, apoi trei, apoi masa se rotește. Un oaspete trebuie să-și păstreze mintea limpede aici."
+      ]
+    },
+    {
+      "en": [
+        "Séverine"
+      ],
+      "text": [
+        "Séverine"
+      ]
+    },
+    {
+      "en": [
+        "Each course here is served differently. Guests who change their plans quickly do well."
+      ],
+      "text": [
+        "Fiecare fel se servește aici altfel. Oaspeților care își schimbă repede planurile le merge bine."
+      ]
+    },
+    {
+      "en": [
+        "Évrard"
+      ],
+      "text": [
+        "Évrard"
+      ]
+    },
+    {
+      "en": [
+        "Madame Ernestine takes the bill before the first course. That is how grand we are."
+      ],
+      "text": [
+        "Doamna Ernestine ia nota înainte de primul fel. Așa de mărețe suntem."
+      ]
+    }
+  ]
+}

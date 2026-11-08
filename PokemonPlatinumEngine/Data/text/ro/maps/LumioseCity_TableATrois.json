@@ -1,0 +1,89 @@
+{
+  "displayName": {
+    "en": [
+      "La Table à Trois"
+    ],
+    "text": [
+      "La Table à Trois"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Barnabé"
+        ],
+        "text": [
+          "Barnabé"
+        ]
+      }
+    },
+    "raoul": {
+      "name": {
+        "en": [
+          "Raoul"
+        ],
+        "text": [
+          "Raoul"
+        ]
+      }
+    },
+    "agnes": {
+      "name": {
+        "en": [
+          "Agnès"
+        ],
+        "text": [
+          "Agnès"
+        ]
+      }
+    },
+    "heloise": {
+      "name": {
+        "en": [
+          "Héloïse"
+        ],
+        "text": [
+          "Héloïse"
+        ]
+      }
+    },
+    "diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three at once! I never know whom to watch, so I watch the dessert instead."
+        ],
+        "text": [
+          "Trei deodată! Nu știu niciodată la cine să mă uit, așa că mă uit la desert."
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Put your quickest in the middle, I always say. Then nobody listens to me."
+        ],
+        "text": [
+          "Pune-l pe cel mai rapid la mijloc, zic mereu. Apoi nimeni nu mă ascultă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

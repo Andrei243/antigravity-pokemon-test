@@ -1,0 +1,214 @@
+{
+  "Host": [
+    {
+      "en": [
+        "Barnabé"
+      ],
+      "text": [
+        "Barnabé"
+      ]
+    },
+    {
+      "en": [
+        "Bienvenue to La Table à Trois! Every table seats three, and every battle sends out three."
+      ],
+      "text": [
+        "Bienvenue! Bine ai venit la La Table à Trois! La fiecare masă stau trei, și în fiecare luptă ies trei."
+      ]
+    },
+    {
+      "en": [
+        "Will you take today's menu? Three courses, each a triple battle against our staff."
+      ],
+      "text": [
+        "Iei meniul zilei? Trei feluri, fiecare o luptă triplă împotriva personalului nostru."
+      ]
+    },
+    {
+      "en": [
+        "Wonderful. Remember, the kitchen rewards a guest who doesn't dawdle."
+      ],
+      "text": [
+        "Minunat. Ține minte, bucătăria răsplătește un oaspete care nu zăbovește."
+      ]
+    },
+    {
+      "en": [
+        "Raoul"
+      ],
+      "text": [
+        "Raoul"
+      ]
+    },
+    {
+      "en": [
+        "The first course, three plates at once. Don't let anything go cold!"
+      ],
+      "text": [
+        "Primul fel, trei farfurii deodată. Nu lăsa nimic să se răcească!"
+      ]
+    },
+    {
+      "en": [
+        "Agnès"
+      ],
+      "text": [
+        "Agnès"
+      ]
+    },
+    {
+      "en": [
+        "The main course! Left, middle and right, all at the same time."
+      ],
+      "text": [
+        "Felul principal! Stânga, mijloc și dreapta, toate în același timp."
+      ]
+    },
+    {
+      "en": [
+        "Héloïse"
+      ],
+      "text": [
+        "Héloïse"
+      ]
+    },
+    {
+      "en": [
+        "Dessert is mine. I have never once served it slowly."
+      ],
+      "text": [
+        "Desertul e al meu. Nu l-am servit niciodată încet."
+      ]
+    },
+    {
+      "en": [
+        "Barnabé"
+      ],
+      "text": [
+        "Barnabé"
+      ]
+    },
+    {
+      "en": [
+        "Three courses in {var:TURNS} turns! The kitchen will want to hear of it."
+      ],
+      "text": [
+        "Trei feluri în {var:TURNS} ture! Bucătăria va vrea să afle."
+      ]
+    },
+    {
+      "en": [
+        "A long and lovely lunch. A small dish to send you on your way."
+      ],
+      "text": [
+        "Un prânz lung și plăcut. Un fel mic, pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Astonishing! The kitchen sends out its rarest dish, just for you."
+      ],
+      "text": [
+        "Uimitor! Bucătăria trimite cel mai rar fel al ei, doar pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Quick and clever. The kitchen sends out something special."
+      ],
+      "text": [
+        "Rapid și isteț. Bucătăria trimite ceva special."
+      ]
+    },
+    {
+      "en": [
+        "A fine meal at a fine pace. Here is the dish of the day."
+      ],
+      "text": [
+        "O masă bună într-un ritm bun. Iată felul zilei."
+      ]
+    },
+    {
+      "en": [
+        "Barnabé"
+      ],
+      "text": [
+        "Barnabé"
+      ]
+    },
+    {
+      "en": [
+        "Ah, the meal is over for today. We have seen to your Pokémon. Come back tomorrow for another try."
+      ],
+      "text": [
+        "Ah, masa s-a încheiat pentru azi. Ne-am ocupat de Pokémonii tăi. Revino mâine pentru o nouă încercare."
+      ]
+    },
+    {
+      "en": [
+        "As you wish. The table will be set for three tomorrow, too."
+      ],
+      "text": [
+        "Cum dorești. Masa va fi pusă pentru trei și mâine."
+      ]
+    },
+    {
+      "en": [
+        "You have eaten with us today already. Come back tomorrow, the menu will be new."
+      ],
+      "text": [
+        "Ai mâncat deja la noi azi. Revino mâine, meniul va fi nou."
+      ]
+    }
+  ],
+  "Staff": [
+    {
+      "en": [
+        "Héloïse"
+      ],
+      "text": [
+        "Héloïse"
+      ]
+    },
+    {
+      "en": [
+        "Whoever stands in the middle can reach everyone. So can whoever brings dessert."
+      ],
+      "text": [
+        "Cine stă la mijloc ajunge la toți. La fel și cine aduce desertul."
+      ]
+    },
+    {
+      "en": [
+        "Raoul"
+      ],
+      "text": [
+        "Raoul"
+      ]
+    },
+    {
+      "en": [
+        "Three at once is a lot of plates to carry. I dropped only two last week!"
+      ],
+      "text": [
+        "Trei deodată înseamnă multe farfurii de cărat. Eu am scăpat doar două săptămâna trecută!"
+      ]
+    },
+    {
+      "en": [
+        "Agnès"
+      ],
+      "text": [
+        "Agnès"
+      ]
+    },
+    {
+      "en": [
+        "Those at the ends can't always reach each other. Think about who sits where."
+      ],
+      "text": [
+        "Cei de la capete nu se pot atinge mereu între ei. Gândește-te cine stă unde."
+      ]
+    }
+  ]
+}

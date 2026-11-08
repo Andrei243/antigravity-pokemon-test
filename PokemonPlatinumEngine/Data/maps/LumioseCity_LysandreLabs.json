@@ -111,8 +111,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: The boss's guests come by the front door. You came by the back.",
-        "dialogueAfter": "Team Flare Grunt Grunt: Hmph. Go on, then. He's expecting you.",
+        "dialogueBefore": "Team Flare Grunt: The boss's guests come by the front door. You came by the back.",
+        "dialogueAfter": "Team Flare Grunt: Hmph. Go on, then. He's expecting you.",
         "sightRange": 3
       }
     },
@@ -129,8 +129,8 @@
         "trainerClass": "Team Flare Grunt",
         "party": [],
         "prizeMoney": 300,
-        "dialogueBefore": "Team Flare Grunt Grunt: Team Flare only lets in the stylish. You're not on the list!",
-        "dialogueAfter": "Team Flare Grunt Grunt: Fine. You're on the list.",
+        "dialogueBefore": "Team Flare Grunt: Team Flare only lets in the stylish. You're not on the list!",
+        "dialogueAfter": "Team Flare Grunt: Fine. You're on the list.",
         "sightRange": 3
       }
     },
