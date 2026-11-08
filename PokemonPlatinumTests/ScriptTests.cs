@@ -746,6 +746,33 @@ public class ScriptTests
           venue rent
           venue trade
           venue length
+          facility house way triple
+          facility house hard hard
+          facility house hardopen
+          facility house size
+          facility house enough
+          facility house choose
+          facility house check
+          facility house begin
+          facility house paused
+          facility house resume
+          facility house streak
+          facility house best
+          facility house latest
+          facility house board
+          facility house active
+          facility house next
+          facility house host
+          facility house opponent
+          facility house battle
+          facility house won
+          facility house points
+          facility house opened
+          facility house trophy
+          facility house pause
+          facility house finish won
+          facility house finish lost
+          facility house end
           favorlady which
           favorlady give
           favorlady new

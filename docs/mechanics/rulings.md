@@ -9886,7 +9886,8 @@ movement stays `Eight`.
   (plan 37's decision 6), and the counter beside the desk trades them for the later games' items
   (`Data/facility-prizes.json`, plan 37's file: evolution items, the weather rocks, the Thick Club and battle items, at
   32 and 48 points). The record is `FrontierRecords.Maison`. Not built (FC2's): the double, triple and rotation rooms, the
-  hosts at the 20th and 50th battles and the hard rooms, a round put down and taken up, a board of its own.
+  hosts at the 20th and 50th battles and the hard rooms, a round put down and taken up, a board of its own. **Since plan
+  37 · FC2 all of that is built and the rounds of seven are gone**: "The later games' battle places", below.
 - **The Poké Ball Factory.** X and Y's stands in Laverre City and its scene comes after the Fairy Badge, with the
   neighbour beside the player and Team Flare's two scientists at the back. Ours is the player's alone and no step of
   the story: its door on the town's east side opens with the Fairy Badge (`FLAG_KALOS_DEFEATED_LAVERRE_GYM`), three
@@ -10056,6 +10057,53 @@ The later battle places (plan 37) draw their trainers' teams from a pool of sets
 - **A team** (`Models/Facilities/FacilityTrainers.cs`): a class and a name of ours from `Data/facility-trainers.json` (fourteen classes of the tables with a look each, eight names each), then so many sets of the tiers a room allows, drawn one at a time from the pool in the file's order, refused where it shares a species or an item with one already drawn or with a team to keep clear of (a partner's), then the first trainer's number (two draws) and each set's personality for its nature (`FrontierTrainers.PersonalityFor`), every draw on the caller's sixteen-bit draw in that order. **No legendary or mythical species comes to a facility trainer** unless a place asks for them (`FacilityTrainers.MayCome`): the banlist is Platinum's eighteen, and the later legendaries would otherwise stand in every room. Every IV of a team is the room's (`FacilityTrainers.IvsFor`: 12 at rank 0, four more a rank, 31 from rank 5), its level the place's (50 unless asked), and a team kept by its sets, its first trainer's number and its personalities is built again with no draw (`Rebuild`), for FC2's challenge put down.
 - **A correction** to a weak set (the random battles' sets are not made for level 50) goes in `tools/DataImporter/Overrides/facility-sets.json`, by the set's id; none yet.
 - **Not done here.** The stall (TR3, done: "Peak training and the training tools"), the other regions' halls (TR4), the keeper (TR5) and the teacher (TR8). The coach's lines are not yet in Romanian (plan 17 · N6 takes the scripts a slice at a time); the screen's words are.
+
+## The later games' battle places (2026-11-08, plan 37 · FC2)
+
+Every number of plan 37's places that is ours is here, a part to a place. The rules of a battle are the Frontier's as they
+stand (copies, no EXP, money or items from the bag but its key items, the formats of plan 14); what is ours is how a
+challenge goes and what it pays.
+
+**The frame.** A place's challenge is `Models/Facilities/StreakChallenge.cs`, the venues' round with a place's rules as
+values (`StreakRoom`: how many go in, the format, the level, the tiers and IVs by the streak, the points of a win, the host
+and the battle they come at), a battle at a time with no round's end. Its records are `FrontierRecords.Facilities`, by
+place and way (`house.single`, and `house.single.hard` for the hard room: the streak, the best, the latest, whether the
+hard room is open, a challenge under way and one put down), null until the first is entered, so no save version was
+raised. Every draw is on a generator of the challenge's own (Platinum's, `BattleRandom`), seeded from two of the game's
+sixteen-bit draws as it begins; a trainer is drawn as their battle comes, and a challenge put down keeps the generator as
+it stood before that draw, so taking it up meets the same trainer (the Tower's rule). It is taken up only with the same
+Pokémon (by id and species) in the same places of the team; otherwise the pause is given up and the streak ends, as a
+challenge walked out on does. A challenge begun while another was under way (the game closed in the middle of one) ends
+that streak first. Battle Points go into the Frontier's one purse (decision 6). The bag's key items reach a place's
+battles as they reach every battle (`BattleEngine` reads them from the bag `StartFrontierBattle` hands it), so the Key
+Stone works there, and the Frontier's own five facilities are as they were. One script command for every place,
+`facility <place> <word>` (`docs/scripts.md`); each place's board is `FrontierBoard.ForFacility`, the Tower's frame as
+the Subway's is, with no victories counted and a print of its own.
+
+**The streak house** (after X and Y's Battle Maison). It stands in **Kiloude City**, in plan 23's `KiloudeCity_BattleMaison`
+and its hall, opened by Kalos's Hall of Fame: plan 37's decision 1 put it behind a Lumiose door only until plan 23 drew
+that town, which it has, so no Lumiose room or door is used. Four rooms behind one desk, the original's counts: single
+(three entered), double (four), triple (six) and rotation (four), each an endless streak; the trainer of the day brings
+as many as the player enters. After any win the player goes on, rests (the challenge put down and saved, taken up again
+at the desk) or retires (the streak ends there, kept as the latest).
+- **Tiers** (FC1's, 1 the weakest): in a normal room by the streak's sevens, 1 and 2, then 1 to 3, 2 and 3, 2 to 4 from
+  the 21st battle and 3 and 4 from the 50th (the first build's table by its rounds of seven); in a hard room 2 to 4 for the
+  first nineteen, 3 and 4 to the 49th, and 4 alone from the 50th. IVs are `FacilityTrainers.IvsFor` of the streak's sevens,
+  three ranks higher in a hard room.
+- **Hosts**: four of ours, one to a room (Corvin of the single room, Isaura of the double, Tamsin of the triple, Ludovic of
+  the rotation; class `House Host`, each in their own look), at the 20th battle of a normal room (X and Y's number) and at
+  the 50th of its hard room, the **grand room**, which the normal host's first defeat opens. Each has a normal and a hard
+  team in `our-trainers.json` (`house_host_<who>`, `_hard`) at level 50 with a Mega Stone and a Key Stone, as many as the
+  room enters, every move one the species can learn. The host comes once a streak, at that battle; a streak that runs on
+  past it meets the house's trainers. A hard room's host beaten for the first time leaves its trophy
+  (`VAR_KALOS_HOUSE_TROPHY_<WAY>`, 1), which counts toward none of the Frontier's prints; the board shows a silver print
+  for one trophy and a gold one for all four.
+- **Points**: one a win for the first ten of a streak, a point more each ten battles to five, one more in a grand room;
+  the normal host's win twenty and the grand host's forty in place of the battle's own.
+- **A save of plan 23's first build**: its Maison record (rounds of seven, single battles) becomes the single room's the
+  first time that room is asked for, its streak and best kept (a round that was under way ends its streak).
+- **Not built**: a song of its own (the lobby and the hall play Aquacorde's, as plan 23 left them, until plan 31 writes one; Kalos has no Lumiose song yet), the hosts' grown looks (plan 30's
+  kit, once it stands; they are chibi looks of the `Adult` build now), and the hosts' lines in battle.
 
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 

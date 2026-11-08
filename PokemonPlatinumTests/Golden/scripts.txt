@@ -4457,12 +4457,14 @@ way -
   Maid> The guests change every day. Some only come once the house knows you well, and some only on their own day of the week.
 === KiloudeCity_BattleMaison.Desk
 from Receptionist at 4,4 of KiloudeCity_BattleMaison
-way 0
+way 0.0
   Receptionist> Welcome to the Battle Maison! Trainers from every corner of the world come to Kiloude to test themselves here.
   Receptionist> Would you like to take on the Battle Maison?
-  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> Which room will you battle in?
+  Receptionist> You need 3 Pokémon that can take part, all of different species and holding different items.
   Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
   ? Would you like to take on the Battle Maison? = Enter
+  ? Which room will you battle in? = Single
   * frontier seen 150
   * frontier seen 151
   * frontier seen 249
@@ -4481,13 +4483,87 @@ way 0
   * frontier seen 491
   * frontier seen 492
   * frontier seen 493
-way 2, from answer 1
+way 0.4, from answer 2
+  Receptionist> We'll be here. The hall never really empties.
+  ? Which room will you battle in? = Cancel
+way 0.3, from answer 2
+  Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which room will you battle in? = Rotation
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 0.2, from answer 2
+  Receptionist> You need 6 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which room will you battle in? = Triple
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 0.1, from answer 2
+  Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which room will you battle in? = Double
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 3, from answer 1
   Receptionist> We'll be here. The hall never really empties.
   ? Would you like to take on the Battle Maison? = No
+way 2, from answer 1
+  Receptionist> Every streak is written down. Somebody has to keep count!
+  ? Would you like to take on the Battle Maison? = The records
+  * frontier facilityboard 0
 way 1, from answer 1
-  Receptionist> Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
-  Receptionist> Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak.
-  Receptionist> The longer your streak, the stronger the Trainers who come to meet you.
+  Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
+  Receptionist> Three go into the single room, four into the double and the rotation rooms, and six into the triple room.
+  Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
+  Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and the room's host will meet you.
   ? Would you like to take on the Battle Maison? = The rules
 === KiloudeCity_BattleMaison.Fan
 from Fan at 13,8 of KiloudeCity_BattleMaison
@@ -4579,11 +4655,11 @@ way 1, from answer 1
 === KiloudeCity_BattleMaison.Veteran
 from Veteran at 3,9 of KiloudeCity_BattleMaison
 way -
-  Veteran> Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat.
+  Veteran> Twenty in a row sounds easy until the fifteenth. Then you start to hear your own heartbeat.
 === KiloudeCity_BattleMaisonHall.Host
 from Maison Host at 3,7 of KiloudeCity_BattleMaisonHall
 way -
-  Maison Host> No round is under way. The receptionist in the lobby takes your three.
+  Maison Host> No challenge is under way. The receptionist in the lobby takes your entries.
 === KiloudeCity_Station.Commuter
 from Commuter at 9,5 of KiloudeCity_Station
 way -
