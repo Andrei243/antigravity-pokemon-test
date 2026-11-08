@@ -1,0 +1,154 @@
+{
+  "key": "ulaula_route_17",
+  "index": 404,
+  "name": "Route 17",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Rain",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULAULA_ROUTE_17",
+  "nightMusic": "ULAULA_ROUTE_17",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 172,
+      "z": 114,
+      "to": "UlaulaRoute17_PoliceStation",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "grunt_17a",
+      "looks": "skull_grunt",
+      "movement": "look_west",
+      "x": 178,
+      "z": 134,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_ROUTE_17A"
+    },
+    {
+      "id": "grunt_17b",
+      "looks": "skull_grunt",
+      "movement": "look_east",
+      "x": 177,
+      "z": 122,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_ROUTE_17B"
+    },
+    {
+      "id": "kona",
+      "looks": "veteran",
+      "movement": "look_east",
+      "x": 174,
+      "z": 142,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_VETERAN_KONA"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 194,
+      "z": 108,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_17_DUSK_STONE",
+      "item": "Dusk Stone",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 152,
+      "z": 148,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_17_FULL_HEAL",
+      "item": "Full Heal",
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 181,
+      "z": 148,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Raticate",
+      "form": "Raticate-Alola",
+      "level": 28
+    },
+    {
+      "species": "Gumshoos",
+      "level": 28
+    },
+    {
+      "species": "Fearow",
+      "level": 28
+    },
+    {
+      "species": "Pancham",
+      "level": 27
+    },
+    {
+      "species": "Pangoro",
+      "level": 29
+    },
+    {
+      "species": "Murkrow",
+      "level": 28
+    },
+    {
+      "species": "Trubbish",
+      "level": 28
+    },
+    {
+      "species": "Sableye",
+      "level": 29
+    },
+    {
+      "species": "Golbat",
+      "level": 29
+    },
+    {
+      "species": "Grimer",
+      "form": "Grimer-Alola",
+      "level": 28
+    },
+    {
+      "species": "Absol",
+      "level": 29
+    },
+    {
+      "species": "Absol",
+      "level": 30
+    }
+  ],
+  "landRate": 20
+}

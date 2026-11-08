@@ -71,3 +71,18 @@ script Totem
 label NotYet
   text "The water by the far shore ripples strangely... Perhaps the splashes on the first lake come first."
   end
+
+
+# After the Hall of Fame (plan 23, the wave after the loose ends): a second totem has come to Brooklet Hill, the one another
+# of Sun and Moon's versions keeps here. Fought as a totem (its aura, its first call answered) at 51, gone for good
+# once beaten (FLAG_ALOLA_TOTEM_ARAQUANID_DONE)
+script SecondTotem
+  speaker none
+  scene "The second totem"
+  text "A great Araquanid rises from the lake inside a shining bubble of water!"
+  cry "Araquanid"
+  endscene
+  wildbattle "Araquanid" 51 totem spdefense ally "Dewpider"
+  setflag FLAG_ALOLA_TOTEM_ARAQUANID_DONE
+  hide self
+  end

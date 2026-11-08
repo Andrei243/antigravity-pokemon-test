@@ -1,0 +1,81 @@
+{
+  "name": "MahaloTrail_RuinsOfConflict",
+  "displayName": "Ruins of Conflict",
+  "bgmTrack": "alola/trial",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#...#.....#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Melemele",
+      "targetX": 250,
+      "targetY": 72,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "legend",
+      "name": "Tapu Koko",
+      "npcType": "Pokemon",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "TapuKoko",
+      "hiddenBy": "FLAG_ALOLA_TAPU_KOKO_DONE",
+      "species": "Tapu Koko"
+    }
+  ],
+  "wildEncounters": []
+}

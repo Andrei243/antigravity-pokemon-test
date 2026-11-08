@@ -1,0 +1,23 @@
+# The Ruins of Life (plan 23, the wave after the loose ends; the room is Z6's). The lines are our own: after the Hall of
+# Fame Tapu Lele answers the champion it once only showed itself to, battled at 60 (FLAG_ALOLA_TAPU_LELE_DONE), met after
+# its beat as plan 29 asks.
+
+
+script TapuLele
+  face self player
+  speaker none
+  scene "Tapu Lele rises"
+  letterbox on 0.4
+  camera pan 5 4 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 5 4 wait
+  cry "Tapu Lele"
+  seen "Tapu Lele"
+  text "Pink scales drifted down like snow, and Tapu Lele floated over the altar, watching {player} closely."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Tapu Lele" 60 nofleeing
+  setflag FLAG_ALOLA_TAPU_LELE_DONE
+  hide self
+  end

@@ -1,0 +1,123 @@
+{
+  "name": "UlaulaRoute17_PoliceStation",
+  "displayName": "Route 17",
+  "bgmTrack": "alola/route4",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.......###",
+    "#.####....#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 4,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Ulaula",
+      "targetX": 172,
+      "targetY": 115,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "meowth_1",
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "Meowth",
+      "species": "Meowth"
+    },
+    {
+      "id": "meowth_2",
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 7,
+      "facing": "Left",
+      "script": "Meowth",
+      "species": "Meowth"
+    },
+    {
+      "id": "meowth_3",
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "script": "Meowth",
+      "species": "Meowth"
+    },
+    {
+      "id": "officer",
+      "name": "Officer",
+      "npcType": "policeman",
+      "x": 3,
+      "y": 3,
+      "facing": "Down",
+      "script": "Officer"
+    }
+  ],
+  "wildEncounters": []
+}

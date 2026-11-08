@@ -1,0 +1,136 @@
+{
+  "name": "HeaheaCity_TouristBureau",
+  "displayName": "Heahea City",
+  "bgmTrack": "alola/hauoli",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#....#####....#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 4,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 11,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Akala",
+      "targetX": 141,
+      "targetY": 309,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "guide",
+      "name": "Tourist Guide",
+      "npcType": "Lady",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Guide"
+    },
+    {
+      "id": "tourist",
+      "name": "Tourist",
+      "npcType": "backpacker_f",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "The guide says Akala is the island of fire and water. I came for the fire. My suntan came for the water."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,23 @@
+# Route 2's motel (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Clerk
+  speaker "Motel Clerk"
+  ask "A room for a nap is 500 dollars. Your Pokémon get a bed too. Would you like to rest?"
+  if no goto Later
+  takemoney 500
+  if result == 0 goto Poor
+  fade out
+  heal
+  text "{player} and the Pokémon rested for a while."
+  fade in
+  say "All rested? Come back any time."
+  end
+label Poor
+  say "Oh dear. You're a little short. The Pokémon Center down the road is free, you know."
+  end
+label Later
+  say "Suit yourself. The beds will be here."
+  end

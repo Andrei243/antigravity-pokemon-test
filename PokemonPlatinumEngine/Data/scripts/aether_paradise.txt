@@ -121,3 +121,25 @@ label PoniLate
   warp "Poni" 49 300 up
   fade in
   end
+
+
+# After the Hall of Fame (plan 23, the wave after the loose ends): Gladion waits on the plaza with the Pokémon the
+# Foundation made, and hands it to the champion, once (FLAG_ALOLA_TYPE_NULL_GIVEN), as Sun and Moon's post-game has him do.
+# The lines are our own.
+script Gladion
+  face gladion player
+  speaker "Gladion"
+  say "So you're the champion now. Figures. You never did know when to quit."
+  say "This is Type: Null. The Foundation made it to fight things that come from beyond the sky. It deserves better than a cage."
+  if not party < 6 goto Full
+  say "Take it. Train it. Let it find out what it's for."
+  givepokemon "Type: Null" 40
+  fanfare pokemon
+  text "{player} received Type: Null!"
+  say "Don't make me regret this."
+  hide gladion
+  setflag FLAG_ALOLA_TYPE_NULL_GIVEN
+  end
+label Full
+  say "Your team's full. Make room and come back. It's not going anywhere. Neither am I."
+  end

@@ -7,6 +7,7 @@
   "trees": "Round",
   "callsForHelp": true,
   "people": {
+    "second_totem": { "name": "Salazzle", "script": "SecondTotem", "still": true, "hiddenBy": "FLAG_ALOLA_TOTEM_SALAZZLE_DONE", "shownBy": "AlolaHallOfFame" },
     "kiawe": { "name": "Kiawe", "npcType": "kiawe", "script": "Kiawe", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_DONE" },
     "trial_1": { "name": "Salandit", "script": "Trial1", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_1", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },
     "trial_2": { "name": "Cubone", "script": "Trial2", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_2", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },

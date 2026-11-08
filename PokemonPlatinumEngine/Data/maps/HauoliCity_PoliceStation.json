@@ -1,0 +1,103 @@
+{
+  "name": "HauoliCity_PoliceStation",
+  "displayName": "Hau'oli City",
+  "bgmTrack": "alola/hauoli",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.......###",
+    "#.####....#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 4,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Melemele",
+      "targetX": 328,
+      "targetY": 166,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "officer",
+      "name": "Officer",
+      "npcType": "policeman",
+      "x": 3,
+      "y": 3,
+      "facing": "Down",
+      "script": "Officer"
+    },
+    {
+      "id": "meowth",
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "script": "Meowth",
+      "species": "Meowth"
+    }
+  ],
+  "wildEncounters": []
+}

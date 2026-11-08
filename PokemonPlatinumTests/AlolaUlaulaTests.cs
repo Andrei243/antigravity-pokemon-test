@@ -236,7 +236,7 @@ public class AlolaUlaulaTests
         Assert.Contains("warp AlolaRoute1_PlayersHouse 6 6", hall.Log);
         Assert.True(story.Has("AlolaHallOfFame"));
         Assert.Equal(54, Story());
-        Assert.Equal("alolaFree", Next());
+        Assert.Equal("alolaTapuKoko", Next());
         Assert.False(story.Has("FLAG_ALOLA_DEFEATED_KUKUI"));
     }
 }

@@ -10,6 +10,7 @@
   "callsForHelp": true,
   "trees": "Round",
   "people": {
+    "second_totem": { "name": "Araquanid", "script": "SecondTotem", "still": true, "hiddenBy": "FLAG_ALOLA_TOTEM_ARAQUANID_DONE", "shownBy": "AlolaHallOfFame" },
     "lana": { "name": "Lana", "npcType": "lana", "script": "Lana", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE" },
     "splash": { "name": "Wishiwashi", "script": "Splash1", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_SPLASH_1", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },
     "splash_2": { "name": "Wishiwashi", "script": "Splash2", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_SPLASH_2", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },

@@ -210,6 +210,7 @@ if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle
 if (mode == "akala") h.AlolaAkalaMode();
 if (mode == "alolaends") h.AlolaLooseEndsMode();
+if (mode == "alolarest") h.AlolaRestMode();
 if (mode == "freemove") h.FreeMoveMode();
 // Plan 30's free movement and grown kit (FM4's turntables first)
 if (mode == "freewalk") h.FreeWalkMode();
