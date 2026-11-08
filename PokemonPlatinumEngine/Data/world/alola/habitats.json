@@ -4,28 +4,28 @@
     "       ......                ",
     "       ........        .T.   ",
     "       ....  ..      ..TTT   ",
-    "       ....  ..      ....... ",
-    "      ...TTT     ... ....... ",
+    "       ....  ..    .T....... ",
+    "      ...TTT     ........... ",
     "                 ......TT....",
     "                 ......TT....",
     "                 ............",
-    "                 ...   ..~~. ",
+    "                 ........~~. ",
     "                 .TT..       ",
     "                 ~~~~~~~~~~~~",
     "                             ",
     "                          ...",
     "                  ....... ...",
     "                  ...........",
-    "                  ..........T",
-    "       ~~~          ... .....",
-    " ~...T~~.~          ....TTT..",
-    " ~...T.~.~          ....TTTT.",
-    " ~....~~             .. ..TT.",
-    " ~...               .TT      ",
-    " ~...               .T.      ",
-    " ~TT~                        ",
-    " ~TT                         ",
-    " ~~~                         "
+    "         ~T       ..........T",
+    "       ~~~.         ... .....",
+    " ~...T~~...         ....TTT..",
+    " ~...T.~...         ....TTTT.",
+    " ~....~...~          .. ..TT.",
+    " ~........~         .TT      ",
+    " ~.....~..~         .T.      ",
+    " ~TT~~~~..~                  ",
+    " ~TT~~~~~.~                  ",
+    " ~~~~~~~~~~                  "
   ],
   "areas": [
     {
@@ -341,6 +341,53 @@
       ]
     },
     {
+      "key": "blush_mountain",
+      "name": "Blush Mountain",
+      "cells": "19,4 20,4 21,4 20,5 21,5",
+      "morning": [
+        "Geodude",
+        "Magnemite",
+        "Mudbray",
+        "Togedemaru",
+        "Elekid",
+        "Minior",
+        "Klefki",
+        "Clefairy",
+        "Graveler",
+        "Castform",
+        "Electabuzz",
+        "Skarmory"
+      ],
+      "day": [
+        "Geodude",
+        "Magnemite",
+        "Mudbray",
+        "Togedemaru",
+        "Elekid",
+        "Minior",
+        "Klefki",
+        "Clefairy",
+        "Graveler",
+        "Castform",
+        "Electabuzz",
+        "Skarmory"
+      ],
+      "night": [
+        "Geodude",
+        "Magnemite",
+        "Mudbray",
+        "Togedemaru",
+        "Elekid",
+        "Minior",
+        "Klefki",
+        "Clefairy",
+        "Graveler",
+        "Castform",
+        "Electabuzz",
+        "Skarmory"
+      ]
+    },
+    {
       "key": "brooklet_hill",
       "name": "Brooklet Hill",
       "cells": "18,14 19,14 20,14 18,15 19,15 20,15 18,16 19,16 20,16",
@@ -398,7 +445,7 @@
     {
       "key": "exeggutor_island",
       "name": "Exeggutor Island",
-      "cells": "7,17 8,17 9,17 7,18 8,18 9,18 7,19 8,19 9,19",
+      "cells": "7,17 8,17 7,18 8,18 9,18 7,19 8,19 9,19",
       "morning": [
         "Exeggutor",
         "Stunfisk",
@@ -742,19 +789,25 @@
         "Sneasel",
         "Beartic",
         "Vanilluxe",
-        "Golduck"
+        "Snorunt",
+        "Vulpix",
+        "Glalie"
       ],
       "day": [
         "Sneasel",
         "Beartic",
         "Vanilluxe",
-        "Golduck"
+        "Snorunt",
+        "Vulpix",
+        "Glalie"
       ],
       "night": [
         "Sneasel",
         "Beartic",
         "Vanilluxe",
-        "Golduck"
+        "Snorunt",
+        "Vulpix",
+        "Glalie"
       ]
     },
     {
@@ -812,7 +865,7 @@
     {
       "key": "poni_breakers",
       "name": "Poni Breakers",
-      "cells": "1,18 2,18 3,18 4,18 5,18 6,18 1,19 2,19 3,19 4,19 5,19 6,19 1,20 2,20 3,20 4,20 5,20 6,20 7,20",
+      "cells": "1,18 2,18 3,18 4,18 5,18 6,18 1,19 2,19 3,19 4,19 5,19 6,19 1,20 2,20 3,20 4,20 5,20 6,20",
       "morning": [
         "Wingull",
         "Pelipper",
@@ -846,6 +899,269 @@
       ]
     },
     {
+      "key": "poni_coast",
+      "name": "Poni Coast",
+      "cells": "5,23 6,23 7,23 4,24 5,24 6,24 7,24 8,24 9,24 10,24 4,25 5,25 6,25 7,25 8,25 9,25 10,25",
+      "morning": [
+        "Wingull",
+        "Pelipper",
+        "Mudsdale",
+        "Tauros",
+        "Nosepass",
+        "Wimpod",
+        "Corsola",
+        "Mareanie",
+        "Drampa",
+        "Turtonator",
+        "Golisopod",
+        "Toxapex"
+      ],
+      "day": [
+        "Wingull",
+        "Pelipper",
+        "Mudsdale",
+        "Tauros",
+        "Nosepass",
+        "Wimpod",
+        "Corsola",
+        "Mareanie",
+        "Drampa",
+        "Turtonator",
+        "Golisopod",
+        "Toxapex"
+      ],
+      "night": [
+        "Wingull",
+        "Pelipper",
+        "Mudsdale",
+        "Tauros",
+        "Nosepass",
+        "Wimpod",
+        "Corsola",
+        "Mareanie",
+        "Drampa",
+        "Turtonator",
+        "Golisopod",
+        "Toxapex"
+      ],
+      "surf": [
+        "Carvanha",
+        "Wailmer",
+        "Alomomola",
+        "Sharpedo",
+        "Lapras"
+      ]
+    },
+    {
+      "key": "poni_gauntlet",
+      "name": "Poni Gauntlet",
+      "cells": "9,16 10,16 9,17 10,17 10,18 10,19",
+      "morning": [
+        "Golduck",
+        "Pelipper",
+        "Granbull",
+        "Hariyama",
+        "Sliggoo",
+        "Dragonair",
+        "Metang",
+        "Lucario",
+        "Snorlax",
+        "Electabuzz",
+        "Goodra",
+        "Dragonite"
+      ],
+      "day": [
+        "Golduck",
+        "Pelipper",
+        "Granbull",
+        "Hariyama",
+        "Sliggoo",
+        "Dragonair",
+        "Metang",
+        "Lucario",
+        "Snorlax",
+        "Electabuzz",
+        "Goodra",
+        "Dragonite"
+      ],
+      "night": [
+        "Golduck",
+        "Pelipper",
+        "Granbull",
+        "Hariyama",
+        "Sliggoo",
+        "Dragonair",
+        "Metang",
+        "Lucario",
+        "Snorlax",
+        "Electabuzz",
+        "Goodra",
+        "Dragonite"
+      ],
+      "surf": [
+        "Golduck",
+        "Dratini",
+        "Pelipper",
+        "Dragonair",
+        "Lapras"
+      ]
+    },
+    {
+      "key": "poni_grove",
+      "name": "Poni Grove",
+      "cells": "5,21 6,21 5,22 6,22 7,22",
+      "morning": [
+        "Snubbull",
+        "Phantump",
+        "Drifloon",
+        "Emolga",
+        "Scyther",
+        "Klefki",
+        "Granbull",
+        "Trevenant",
+        "Drifblim",
+        "Oranguru",
+        "Riolu",
+        "Lucario"
+      ],
+      "day": [
+        "Snubbull",
+        "Phantump",
+        "Drifloon",
+        "Emolga",
+        "Scyther",
+        "Klefki",
+        "Granbull",
+        "Trevenant",
+        "Drifblim",
+        "Oranguru",
+        "Riolu",
+        "Lucario"
+      ],
+      "night": [
+        "Snubbull",
+        "Phantump",
+        "Drifloon",
+        "Emolga",
+        "Scyther",
+        "Klefki",
+        "Granbull",
+        "Trevenant",
+        "Drifblim",
+        "Oranguru",
+        "Riolu",
+        "Lucario"
+      ]
+    },
+    {
+      "key": "poni_meadow",
+      "name": "Poni Meadow",
+      "cells": "8,22 9,22 10,22 8,23 9,23 10,23",
+      "morning": [
+        "Oricorio",
+        "Cleffa",
+        "Goomy",
+        "Clefairy",
+        "Bonsly",
+        "Vullaby",
+        "Castform",
+        "Sudowoodo",
+        "Sliggoo",
+        "Mandibuzz",
+        "Dratini",
+        "Clefable"
+      ],
+      "day": [
+        "Oricorio",
+        "Cleffa",
+        "Goomy",
+        "Clefairy",
+        "Bonsly",
+        "Vullaby",
+        "Castform",
+        "Sudowoodo",
+        "Sliggoo",
+        "Mandibuzz",
+        "Dratini",
+        "Clefable"
+      ],
+      "night": [
+        "Oricorio",
+        "Cleffa",
+        "Goomy",
+        "Clefairy",
+        "Bonsly",
+        "Vullaby",
+        "Castform",
+        "Sudowoodo",
+        "Sliggoo",
+        "Mandibuzz",
+        "Dratini",
+        "Clefable"
+      ],
+      "surf": [
+        "Barboach",
+        "Dratini",
+        "Feebas",
+        "Whiscash",
+        "Dragonair"
+      ]
+    },
+    {
+      "key": "poni_plains",
+      "name": "Poni Plains",
+      "cells": "7,20 8,20 9,20 10,20 7,21 8,21 9,21 10,21",
+      "morning": [
+        "Tauros",
+        "Stufful",
+        "Makuhita",
+        "Elekid",
+        "Happiny",
+        "Munchlax",
+        "Bewear",
+        "Hariyama",
+        "Electabuzz",
+        "Ditto",
+        "Miltank",
+        "Snorlax"
+      ],
+      "day": [
+        "Tauros",
+        "Stufful",
+        "Makuhita",
+        "Elekid",
+        "Happiny",
+        "Munchlax",
+        "Bewear",
+        "Hariyama",
+        "Electabuzz",
+        "Ditto",
+        "Miltank",
+        "Snorlax"
+      ],
+      "night": [
+        "Tauros",
+        "Stufful",
+        "Makuhita",
+        "Elekid",
+        "Happiny",
+        "Munchlax",
+        "Bewear",
+        "Hariyama",
+        "Electabuzz",
+        "Ditto",
+        "Miltank",
+        "Snorlax"
+      ],
+      "surf": [
+        "Barboach",
+        "Psyduck",
+        "Whiscash",
+        "Golduck",
+        "Feebas"
+      ]
+    },
+    {
       "key": "poni_wilds",
       "name": "Poni Wilds",
       "cells": "1,21 2,21 3,21 4,21 1,22 2,22 3,22 4,22 4,23",
@@ -872,6 +1188,47 @@
         "Pelipper",
         "Absol",
         "Komala"
+      ]
+    },
+    {
+      "key": "resolution_cave",
+      "name": "Resolution Cave",
+      "cells": "8,22",
+      "morning": [
+        "Golbat",
+        "Beldum",
+        "Porygon",
+        "Nosepass",
+        "Ditto",
+        "Metang",
+        "Druddigon",
+        "Crobat",
+        "Porygon2",
+        "Metagross"
+      ],
+      "day": [
+        "Golbat",
+        "Beldum",
+        "Porygon",
+        "Nosepass",
+        "Ditto",
+        "Metang",
+        "Druddigon",
+        "Crobat",
+        "Porygon2",
+        "Metagross"
+      ],
+      "night": [
+        "Golbat",
+        "Beldum",
+        "Porygon",
+        "Nosepass",
+        "Ditto",
+        "Metang",
+        "Druddigon",
+        "Crobat",
+        "Porygon2",
+        "Metagross"
       ]
     },
     {
@@ -937,7 +1294,7 @@
     {
       "key": "ulaula_meadow",
       "name": "Ula'ula Meadow",
-      "cells": "21,5 22,5 23,5",
+      "cells": "22,5 23,5",
       "morning": [
         "Oricorio",
         "Cutiefly",
@@ -1008,9 +1365,56 @@
       ]
     },
     {
+      "key": "ulaula_route_11",
+      "name": "Route 11",
+      "cells": "20,8 21,8 22,8 20,9 21,9 22,9",
+      "morning": [
+        "Paras",
+        "Trumbeak",
+        "Fomantis",
+        "Vullaby",
+        "Drifloon",
+        "Phantump",
+        "Emolga",
+        "Komala",
+        "Bonsly",
+        "Pinsir",
+        "Scyther",
+        "Sudowoodo"
+      ],
+      "day": [
+        "Paras",
+        "Trumbeak",
+        "Fomantis",
+        "Vullaby",
+        "Drifloon",
+        "Phantump",
+        "Emolga",
+        "Komala",
+        "Bonsly",
+        "Pinsir",
+        "Scyther",
+        "Sudowoodo"
+      ],
+      "night": [
+        "Paras",
+        "Trumbeak",
+        "Fomantis",
+        "Vullaby",
+        "Drifloon",
+        "Phantump",
+        "Emolga",
+        "Komala",
+        "Bonsly",
+        "Pinsir",
+        "Scyther",
+        "Sudowoodo"
+      ]
+    },
+    {
       "key": "ulaula_route_12",
       "name": "Route 12",
-      "cells": "20,6 21,6 22,6 20,7 21,7 22,7 20,8 21,8 22,8",
+      "cells": "20,6 21,6 22,6 20,7 21,7 22,7",
       "morning": [
         "Mudbray",
         "Ponyta",
@@ -1197,7 +1601,7 @@
     {
       "key": "ulaula_route_17",
       "name": "Route 17",
-      "cells": "21,3 22,3 21,4 22,4",
+      "cells": "21,3 22,3 22,4",
       "morning": [
         "Raticate",
         "Gumshoos",

@@ -1,0 +1,43 @@
+{
+  // Blush Mountain, Ula'ula Island (plan 23, the wave after Ultra Space): drawn by hand, our words. A slope of red earth
+  // north of Route 12, behind rough ground only Mudsdale crosses (Hapu registers hers on Route 12), up to the geothermal
+  // power plant, whose doors stay shut. The plant's pull on the earth makes the slope a Magnetic Field, as Sun and Moon's
+  // Blush Mountain is one
+  "area": "blush_mountain",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The geothermal power plant's doors, shut to visitors
+  "locked": [ 0 ],
+  "people": {
+    "pono": { "name": "Plant Worker", "npcType": "scientist", "script": "PlantWorker", "still": true },
+    "pekelo": {
+      "name": "Pekelo",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Pekelo: The ground's warm all over this mountain. Toasty for the feet, toasty for battles!",
+        "dialogueAfter": "Hiker Pekelo: My feet are toasty. My team is toast."
+      }
+    },
+    "hoku": {
+      "name": "Hoku",
+      "npcType": "scientist",
+      "trainer": {
+        "dialogueBefore": "Scientist Hoku: The power plant turns the mountain's heat into light for the whole island. Let me show you a spark!",
+        "dialogueAfter": "Scientist Hoku: Your team has quite a spark of its own."
+      }
+    },
+    "kiele": {
+      "name": "Kiele",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kiele: I climbed up here to watch the Minior fall at night. While I wait, battle!",
+        "dialogueAfter": "Ace Trainer Kiele: Now I'll watch the stars and sulk."
+      }
+    }
+  },
+  "signs": {
+    "MountainSign": "Blush Mountain\nUp: Geothermal Power Plant\nSouth: Route 12"
+  }
+}

@@ -1,0 +1,17 @@
+# Poni Coast, Poni Island (plan 23, the wave after Ultra Space). The lines are our own. A fisherman on the beach below
+# Poni Meadow hands over a Super Rod, once (FLAG_ALOLA_GOT_SUPER_ROD): Alola's waters are fished with it, Poni's deepest
+# above all (rulings, "Poni's last places..."). The islet out at sea is shut by a rock only Sharpedo rams (common.SeaRock).
+
+
+script Fisher
+  face fisher player
+  speaker "Fisherman"
+  if flag FLAG_ALOLA_GOT_SUPER_ROD goto Done
+  say "The fish of Poni are too strong for any old rod. They'd snap it like a twig!"
+  say "You look like someone who could use a proper one. Here, take my spare, and mind you cast it somewhere deep."
+  give "Super Rod"
+  setflag FLAG_ALOLA_GOT_SUPER_ROD
+  end
+label Done
+  say "Ponds, rivers, the open sea: every water has its own fish. Try the meadow's pond, there's a dragon in it, they say."
+  end

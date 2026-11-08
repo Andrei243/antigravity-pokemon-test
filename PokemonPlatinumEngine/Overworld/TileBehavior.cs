@@ -163,7 +163,11 @@ public enum TileBehavior : byte
     Catwalk = 0xB8,
 
     // What X and Y have and no game read so far has a value for (plan 23, Kalos drawn by hand), after Black 2's
-    SnowDrift = 0xB9
+    SnowDrift = 0xB9,
+
+    // What Sun and Moon have (plan 23, Alola drawn by hand): rough ground of rocks and rubble that only Mudsdale's Gallop
+    // crosses. 0xBE, a few values on from X and Y's, so that a session drawing Kalos may take the ones between
+    RoughGround = 0xBE
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -309,7 +313,8 @@ public static class TileBehaviors
         [TileBehavior.ChargedFloor] = "The charged floor of an electric cave (Black 2's).",
         [TileBehavior.SurfEdge] = "The edge of the water, where Surf may begin though a walker can't step (Black 2's).",
         [TileBehavior.Catwalk] = "A narrow catwalk, walked and never cycled (Black 2's).",
-        [TileBehavior.SnowDrift] = "A drift of snow deeper than a walker can wade (X and Y's Route 17)."
+        [TileBehavior.SnowDrift] = "A drift of snow deeper than a walker can wade (X and Y's Route 17).",
+        [TileBehavior.RoughGround] = "Rough ground of rocks and rubble, crossed only on Mudsdale's back (Sun and Moon's)."
     };
 
     /// <summary>True for the values the enum names: those Sinnoh's maps use, and those the GBA reader makes (plan 18 · W6).</summary>
@@ -427,6 +432,7 @@ public static class TileBehaviors
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
         TileBehavior.SnowDrift => (BehaviourSupport.Ruled, "Stops anyone on foot, on skates or on a Bicycle; crossed at a walk on a ridden Pokémon's back, Kalos's Mamoswine (FieldMovement.Step; plan 23, the Mamoswine ride). No Bicycles; every step leaves a footprint."),
+        TileBehavior.RoughGround => (BehaviourSupport.Ruled, "Stops anyone on foot, on a Bicycle or on any ride but Mudsdale, which gallops over it at a run (FieldMovement.Step; plan 23, Alola's rough ground: Blush Mountain, Poni Coast and Poni Gauntlet)."),
         TileBehavior.Magma => (BehaviourSupport.Ruled, "Lava: walked only on a slab of the Blackthorn Gym's that stands over it (BlackthornPlatforms.Refuses; plan 20 · J11, part c)."),
         TileBehavior.StopSliding or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),

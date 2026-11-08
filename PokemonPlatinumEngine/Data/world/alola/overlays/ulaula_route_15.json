@@ -10,6 +10,10 @@
     { "warp": 0, "map": "UlaulaRoute15_AetherHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
+    // The wave after Ultra Space: Grimsley on the beach, who registers Sharpedo in the Ride Pager, and the rock in the sea
+    // that shuts the islet off the beach, which only Sharpedo rams (common.SeaRock)
+    "grimsley": { "name": "Grimsley", "npcType": "gentleman", "script": "Grimsley", "still": true },
+    "sea_rock": { "name": "Rock", "script": "SeaRock" },
     "kaimi": {
       "name": "Kaimi",
       "npcType": "swimmer_m",

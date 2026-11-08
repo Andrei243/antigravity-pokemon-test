@@ -68,12 +68,12 @@
       "script": ""
     },
     {
-      "id": "stakataka",
-      "looks": "stakataka",
-      "movement": "look_east",
-      "x": 16,
+      "id": "keeper",
+      "looks": "old_man",
+      "movement": "look_west",
+      "x": 44,
       "z": 30,
-      "facing": 3,
+      "facing": 2,
       "rangeX": 0,
       "rangeZ": 0,
       "script": ""

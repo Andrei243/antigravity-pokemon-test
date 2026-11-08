@@ -1,0 +1,19 @@
+# Route 15, Ula'ula Island (plan 23, the wave after Ultra Space). The lines are our own, on Sun and Moon's beat as it is
+# publicly described (docs/mechanics/rulings.md, "Poni's last places..."): Grimsley, a gambler from far away, waits on the
+# beach and registers Sharpedo in the Ride Pager (RidePager.SharpedoFlag), once. Sharpedo is called under a surfer, goes at
+# a bicycle's top speed and rams the rock that shuts the islet off this beach (common.SeaRock).
+
+
+script Grimsley
+  face grimsley player
+  speaker "Grimsley"
+  if flag FLAG_ALOLA_RIDE_SHARPEDO goto Done
+  say "Life is a gamble, and the sea is the biggest gamble of all. I lost my way out here, and won a fine Sharpedo instead."
+  say "It is wasted on a man who only sits on the sand. You take it. Call it with your Ride Pager whenever you are on the water."
+  setflag FLAG_ALOLA_RIDE_SHARPEDO
+  text "Sharpedo was registered in the Ride Pager!"
+  say "It can ram rocks a Lapras would never dare. There is one off this very beach, if you fancy your luck."
+  end
+label Done
+  say "The tide comes in, the tide goes out. Win or lose, a gambler waits. And so do I."
+  end

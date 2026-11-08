@@ -7,6 +7,7 @@ script League
   face hala player
   speaker "Hala"
   if flag FLAG_ALOLA_DEFEATED_HALA goto Won
+  if flag AlolaHallOfFame goto Rematch
   scene "Hala"
   say "Ho ho! Here you are at last, {player}, and look how far the island's champion has come since Iki Town."
   say "I am Hala, once your kahuna and now the first of the Alola League. I will not hold back, as you must not hold back."
@@ -14,6 +15,16 @@ script League
   battle self as "alola_hala_league"
   say "Ha ha! Magnificent! My heart is as full as the first time I saw you stand up to Tapu Koko."
   say "Go on. Olivia is next. She has the strength of the rock beneath our islands."
+  setflag FLAG_ALOLA_DEFEATED_HALA
+  endscene
+  end
+# The second climb and every one after it (the wave after Ultra Space): the rematch team (alola_hala_rematch)
+label Rematch
+  scene "HalaRematch"
+  say "Ho ho! The Champion comes back to the bottom of the mountain to climb it again. That is the island way!"
+  say "My Pokémon have trained every morning since. Let us see whose sun shines hotter today!"
+  battle self as "alola_hala_rematch"
+  say "Ha! Still magnificent. Go on, Champion. The others are waiting to be beaten too."
   setflag FLAG_ALOLA_DEFEATED_HALA
   endscene
   end

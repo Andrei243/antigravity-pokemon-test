@@ -7,12 +7,22 @@ script League
   face kahili player
   speaker "Kahili"
   if flag FLAG_ALOLA_DEFEATED_KAHILI goto Won
+  if flag AlolaHallOfFame goto Rematch
   scene "Kahili"
   say "Welcome, {player}. I'm Kahili, the last of the Elite Four. I fly, and so do my Pokémon, and so does my golf ball."
   say "Flying types are just a matter of freedom. See if you can keep up with mine!"
   battle self as "alola_kahili_league"
   say "A hole in one! ...For you, I mean. Not for me. Well played."
   say "The Champion's door is open. I think you'll recognise the Trainer waiting inside."
+  setflag FLAG_ALOLA_DEFEATED_KAHILI
+  endscene
+  end
+# The second climb and every one after it (the wave after Ultra Space): the rematch team (alola_kahili_rematch)
+label Rematch
+  scene "KahiliRematch"
+  say "The Champion on the tee again. My Pokémon have been flying higher since you beat us. Let's see how high."
+  battle self as "alola_kahili_rematch"
+  say "Another hole in one, and still not mine. The Champion's room is open. Someone is waiting to take your title."
   setflag FLAG_ALOLA_DEFEATED_KAHILI
   endscene
   end

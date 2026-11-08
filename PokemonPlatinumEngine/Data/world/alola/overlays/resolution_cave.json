@@ -1,0 +1,28 @@
+{
+  // Resolution Cave (plan 23, the wave after Ultra Space): a cave of its own (matrix 70), drawn by hand
+  // (tools/MapDraw/alola/resolution_cave.txt), our words. From Poni Meadow down a long hall to the chamber where Zygarde
+  // waits, as Ultra Sun and Ultra Moon keep it at level 60 (rulings, "Poni's last places..."); the cells and the Zygarde
+  // Cube of Sun and Moon are not built
+  "area": "resolution_cave",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "legend": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_ZYGARDE" },
+    "kanoa": {
+      "name": "Kanoa",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Kanoa: Something old and green sleeps at the bottom of this cave. I've never dared go further than here.",
+        "dialogueAfter": "Veteran Kanoa: You'd dare. I can tell."
+      }
+    },
+    "ululani": {
+      "name": "Ululani",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Ululani: The deeper you go, the stronger they get. I'm about as deep as it gets!",
+        "dialogueAfter": "Ace Trainer Ululani: All right. You go deeper."
+      }
+    }
+  }
+}

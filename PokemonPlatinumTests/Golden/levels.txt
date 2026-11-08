@@ -310,6 +310,10 @@ super rod 40
 === blackthorn_gym
 Blackthorn City
 trainers 5, 35-38: johto_ace_trainer_f_fran 38, johto_ace_trainer_f_lola 37, johto_ace_trainer_m_cody 37, johto_ace_trainer_m_mike 38, johto_ace_trainer_m_paulo 35
+=== blush_mountain
+Blush Mountain
+grass 24-27
+trainers 3, 27-28: alola_ace_trainer_kiele 28, alola_hiker_pekelo 28, alola_scientist_hoku 28
 === brooklet_hill
 Brooklet Hill
 grass 14-16
@@ -1991,6 +1995,36 @@ Poni Breakers
 grass 43-45
 surf 43-45
 trainers 4, 43-45: alola_fisherman_nuka 44, alola_psychic_maile 45, alola_swimmer_kekoa 44, alola_veteran_loio 45
+=== poni_coast
+Poni Coast
+grass 52-56
+surf 52-55
+old rod 50
+good rod 52-54
+super rod 55-57
+trainers 3, 55-57: alola_ace_trainer_leia 57, alola_fisherman_kawika 56, alola_swimmer_kai 55
+=== poni_gauntlet
+Poni Gauntlet
+grass 54-58
+surf 52-55
+trainers 4, 55-57: alola_ace_trainer_lokelani 57, alola_dragon_tamer_hina 57, alola_swimmer_mikala 55, alola_veteran_manu 57
+=== poni_grove
+Poni Grove
+grass 52-55
+trainers 3, 53-55: alola_ace_trainer_kaleo 55, alola_pokemon_breeder_malia 54, alola_veteran_kalea 55
+=== poni_meadow
+Poni Meadow
+grass 50-56
+surf 50-55
+old rod 50
+good rod 52-55
+super rod 54-58
+trainers 2, 54-55: alola_beauty_noelani 55, alola_psychic_kapono 55
+=== poni_plains
+Poni Plains
+grass 51-56
+surf 50-55
+trainers 4, 53-56: alola_ace_trainer_pua 56, alola_backpacker_lani 54, alola_hiker_ikaika 55, alola_rancher_keoni 56
 === poni_wilds
 Poni Wilds
 grass 38-41
@@ -2051,6 +2085,10 @@ trainers 4, 31-33: unova_backpacker_annie 32, unova_hiker_tobias 31, unova_psych
 Relic Passage
 grass 27-30
 trainers 3, 31-32: unova_backpacker_eileen 32, unova_backpacker_randall 32, unova_hiker_keith 31
+=== resolution_cave
+Resolution Cave
+grass 52-58
+trainers 2, 58-59: alola_ace_trainer_ululani 59, alola_veteran_kanoa 59
 === resort_area
 Resort Area
 surf 35-55
@@ -3718,6 +3756,10 @@ trainers 2, 28-31: alola_ace_trainer_kalena 31, alola_youngster_liko 29
 Route 10
 grass 17-19
 trainers 4, 17-20: alola_ace_trainer_kai 20, alola_hiker_kalani 19, alola_lass_leilene 18, alola_youngster_makana 18
+=== ulaula_route_11
+Route 11
+grass 23-25
+trainers 3, 24-26: alola_backpacker_kona 26, alola_lass_meli 25, alola_youngster_kale 25
 === ulaula_route_12
 Route 12
 grass 21-22

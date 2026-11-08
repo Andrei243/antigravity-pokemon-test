@@ -7,11 +7,21 @@ script League
   face acerola player
   speaker "Acerola"
   if flag FLAG_ALOLA_DEFEATED_ACEROLA goto Won
+  if flag AlolaHallOfFame goto Rematch
   scene "Acerola"
   say "Hi hi! Remember me? Acerola! I'm in the Elite Four now. Isn't that spooky?"
   say "My Pokémon and I have been practising our scariest faces. Brace yourself!"
   battle self as "alola_acerola_league"
   say "Wow! You even beat my scariest face. Kahili's up next. She's a golfer, did you know? She hits things really, really far."
+  setflag FLAG_ALOLA_DEFEATED_ACEROLA
+  endscene
+  end
+# The second climb and every one after it (the wave after Ultra Space): the rematch team (alola_acerola_rematch)
+label Rematch
+  scene "AcerolaRematch"
+  say "You came back! The Champion came back to visit me! Okay, okay, no hugs. Battles!"
+  battle self as "alola_acerola_rematch"
+  say "Spooky AND strong. Kahili's been practising her swing just for you."
   setflag FLAG_ALOLA_DEFEATED_ACEROLA
   endscene
   end

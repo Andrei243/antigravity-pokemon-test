@@ -1,0 +1,201 @@
+{
+  "key": "poni_gauntlet",
+  "index": 504,
+  "name": "Poni Gauntlet",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_GAUNTLET",
+  "nightMusic": "PONI_GAUNTLET",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    {
+      "x": 299,
+      "z": 18,
+      "to": "PoniGauntlet_BattleTree",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "mikala",
+      "looks": "swimmer_m",
+      "movement": "look_east",
+      "x": 290,
+      "z": 70,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_MIKALA"
+    },
+    {
+      "id": "hina",
+      "looks": "dragon_tamer",
+      "movement": "look_south",
+      "x": 297,
+      "z": 46,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_DRAGON_TAMER_HINA"
+    },
+    {
+      "id": "manu",
+      "looks": "veteran",
+      "movement": "look_west",
+      "x": 300,
+      "z": 98,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_VETERAN_MANU"
+    },
+    {
+      "id": "lokelani",
+      "looks": "ace_trainer_f",
+      "movement": "look_south",
+      "x": 301,
+      "z": 24,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_LOKELANI"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 284,
+      "z": 104,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_GAUNTLET_ICE_STONE",
+      "item": "Ice Stone"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 314,
+      "z": 50,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_GAUNTLET_ELECTIRIZER",
+      "item": "Electirizer"
+    },
+    {
+      "id": "item_ball_3",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 284,
+      "z": 22,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_GAUNTLET_MAGMARIZER",
+      "item": "Magmarizer"
+    }
+  ],
+  "signs": [
+    {
+      "x": 302,
+      "z": 21,
+      "type": 0,
+      "script": "TreeSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Golduck",
+      "level": 54
+    },
+    {
+      "species": "Pelipper",
+      "level": 54
+    },
+    {
+      "species": "Granbull",
+      "level": 55
+    },
+    {
+      "species": "Hariyama",
+      "level": 55
+    },
+    {
+      "species": "Sliggoo",
+      "level": 55
+    },
+    {
+      "species": "Dragonair",
+      "level": 55
+    },
+    {
+      "species": "Metang",
+      "level": 56
+    },
+    {
+      "species": "Lucario",
+      "level": 56
+    },
+    {
+      "species": "Snorlax",
+      "level": 56
+    },
+    {
+      "species": "Electabuzz",
+      "level": 56
+    },
+    {
+      "species": "Goodra",
+      "level": 58
+    },
+    {
+      "species": "Dragonite",
+      "level": 58
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Golduck",
+      "level": 54
+    },
+    {
+      "species": "Dratini",
+      "level": 52
+    },
+    {
+      "species": "Pelipper",
+      "level": 54
+    },
+    {
+      "species": "Dragonair",
+      "level": 55
+    },
+    {
+      "species": "Lapras",
+      "level": 55
+    }
+  ],
+  "waterRate": 20
+}

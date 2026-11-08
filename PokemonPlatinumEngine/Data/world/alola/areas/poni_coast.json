@@ -1,0 +1,273 @@
+{
+  "key": "poni_coast",
+  "index": 503,
+  "name": "Poni Coast",
+  "matrix": 11,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PONI_COAST",
+  "nightMusic": "PONI_COAST",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [
+    {
+      "id": "fisher",
+      "looks": "fisherman",
+      "movement": "look_south",
+      "x": 256,
+      "z": 266,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "sea_rock",
+      "looks": "breakable_rock",
+      "movement": "look_south",
+      "x": 278,
+      "z": 279,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_MAP_LOCAL_ROCK_PONI_COAST_SEA"
+    },
+    {
+      "id": "kawika",
+      "looks": "fisherman",
+      "movement": "look_south",
+      "x": 212,
+      "z": 262,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_FISHERMAN_KAWIKA"
+    },
+    {
+      "id": "kai",
+      "looks": "swimmer_m",
+      "movement": "look_north",
+      "x": 240,
+      "z": 272,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_KAI"
+    },
+    {
+      "id": "leia",
+      "looks": "ace_trainer_f",
+      "movement": "look_east",
+      "x": 150,
+      "z": 256,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_LEIA"
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 278,
+      "z": 283,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_COAST_LINKING_CORD",
+      "item": "Linking Cord"
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 130,
+      "z": 252,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_COAST_MAX_REVIVE",
+      "item": "Max Revive"
+    },
+    {
+      "id": "item_ball_3",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 132,
+      "z": 258,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_COAST_OLD_AMBER",
+      "item": "Old Amber"
+    }
+  ],
+  "signs": [
+    {
+      "x": 258,
+      "z": 257,
+      "type": 0,
+      "script": "CoastSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Wingull",
+      "level": 52
+    },
+    {
+      "species": "Pelipper",
+      "level": 53
+    },
+    {
+      "species": "Mudsdale",
+      "level": 54
+    },
+    {
+      "species": "Tauros",
+      "level": 54
+    },
+    {
+      "species": "Nosepass",
+      "level": 53
+    },
+    {
+      "species": "Wimpod",
+      "level": 52
+    },
+    {
+      "species": "Corsola",
+      "level": 52
+    },
+    {
+      "species": "Mareanie",
+      "level": 52
+    },
+    {
+      "species": "Drampa",
+      "level": 54
+    },
+    {
+      "species": "Turtonator",
+      "level": 54
+    },
+    {
+      "species": "Golisopod",
+      "level": 56
+    },
+    {
+      "species": "Toxapex",
+      "level": 56
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Carvanha",
+      "level": 52
+    },
+    {
+      "species": "Wailmer",
+      "level": 53
+    },
+    {
+      "species": "Alomomola",
+      "level": 54
+    },
+    {
+      "species": "Sharpedo",
+      "level": 55
+    },
+    {
+      "species": "Lapras",
+      "level": 55
+    }
+  ],
+  "waterRate": 20,
+  "oldRod": [
+    {
+      "species": "Magikarp",
+      "level": 50
+    },
+    {
+      "species": "Luvdisc",
+      "level": 50
+    },
+    {
+      "species": "Shellder",
+      "level": 50
+    },
+    {
+      "species": "Chinchou",
+      "level": 50
+    },
+    {
+      "species": "Wishiwashi",
+      "level": 50
+    }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    {
+      "species": "Shellder",
+      "level": 52
+    },
+    {
+      "species": "Chinchou",
+      "level": 52
+    },
+    {
+      "species": "Luvdisc",
+      "level": 52
+    },
+    {
+      "species": "Corsola",
+      "level": 52
+    },
+    {
+      "species": "Relicanth",
+      "level": 54
+    }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    {
+      "species": "Lanturn",
+      "level": 55
+    },
+    {
+      "species": "Cloyster",
+      "level": 55
+    },
+    {
+      "species": "Relicanth",
+      "level": 55
+    },
+    {
+      "species": "Dhelmise",
+      "level": 56
+    },
+    {
+      "species": "Wailord",
+      "level": 57
+    }
+  ],
+  "superRodRate": 75
+}

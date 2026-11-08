@@ -10134,6 +10134,12 @@ way -
   Move Relearner> Ah, a young Trainer! I can help a Pokémon remember a move it has forgotten along the way.
   Move Relearner> All I ask in return is a Heart Scale.
   Move Relearner> No Heart Scale, no remembering. Come back when you have found one.
+=== blush_mountain.PlantWorker
+from Plant Worker at 124,150 of Ulaula
+way -
+  Plant Worker> Hot water from deep under the mountain turns the turbines inside. Half of Ula'ula's lights run on Blush Mountain!
+  Plant Worker> It pulls on the ground something fierce, too. Magnets go funny up here, and so do some Pokémon, they tell me.
+  Plant Worker> The plant's closed to visitors, I'm afraid. Safety rules. Enjoy the view instead!
 === bridge_gate_gate_8.TubeClosed
 from the trigger at 13,7 of MarineTubeGate_Undella
 way -
@@ -14215,8 +14221,12 @@ way 0
   > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
   ? Which Pokémon will you call? = Tauros
   * ride refused Tauros
-way 3, from answer 1
+way 4, from answer 1
   ? Which Pokémon will you call? = Cancel
+way 3, from answer 1
+  > Nothing came. Sharpedo comes only once it is registered in the Ride Pager, and only out on the water.
+  ? Which Pokémon will you call? = Sharpedo
+  * ride refused Sharpedo
 way 2, from answer 1
   > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
   ? Which Pokémon will you call? = Mudsdale
@@ -14280,6 +14290,10 @@ way -
   + FLAG_HIDE_CINNABAR_POKECENTER_BILL
   = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 2
   = VAR_MAP_SCENE_ONE_ISLAND_HARBOR 0 -> 1
+=== common.SeaRock
+from a trainer with lines of their own
+way -
+  > A rock juts out of the sea, sheer and slippery. A fast and fierce Pokémon of the sea could ram it apart.
 === common.SeagallopRainbow
 from a trainer with lines of their own
 way 0.0
@@ -27503,6 +27517,22 @@ way -
 from Old Woman at 690,130 of Kalos
 way -
   Old Woman> The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle.
+=== poni_altar.Keeper
+from Altar Keeper at 44,30 of PoniAltar
+way -
+  Altar Keeper> I tend the altar for the people of Seafolk Village. The night after your victory, something came down onto the dais.
+  Altar Keeper> A little cloud with stars in it. It has been waiting there ever since, as if for someone. I think it was waiting for you.
+  Altar Keeper> Look after it. They say it grows into the sun by day, or the moon by night, depending on when it is ready.
+  * scene poni_altar.Cosmog
+  * letterbox on
+  * camera Pan 32 14
+  * effect Sparkles 32 14
+  * cry Cosmog
+  * camera Release
+  * letterbox off
+  * endscene
+  + FLAG_ALOLA_COSMOG_GIVEN
+  + seen poni_altar.Cosmog
 === poni_altar.Legend
 from Solgaleo at 32,14 of PoniAltar
 way 0
@@ -27561,24 +27591,6 @@ way -
 from Oskin at 34,18 of PoniAltar
 way -
   Oskin> The Beast Balls are made for them. Anything else, and they'll barely notice they've been thrown at.
-=== poni_altar.Stakataka
-from Stakataka at 16,30 of PoniAltar
-way 0
-  > One of the altar's walls shifted. Its stones were looking at Lucas, every one of them.
-  * scene poni_altar.Stakataka
-  * letterbox on
-  * camera Pan 16 30
-  * camera Zoom 1.4
-  * shake Stakataka 3
-  * cry Stakataka
-  * camera Release
-  * letterbox off
-  * endscene
-  * wildbattle Stakataka 60 Won
-  + seen poni_altar.Stakataka
-way 1, from answer 1
-  * wildbattle Stakataka 60 Lost
-  + seen poni_altar.Stakataka
 === poni_altar.Veyra
 from Veyra at 30,18 of PoniAltar
 way -
@@ -27614,6 +27626,65 @@ way -
   * letterbox off
   * endscene
   + seen poni_breakers.Tapu Fini rises
+=== poni_coast.Fisher
+from Fisherman at 256,266 of Poni
+way -
+  Fisherman> The fish of Poni are too strong for any old rod. They'd snap it like a twig!
+  Fisherman> You look like someone who could use a proper one. Here, take my spare, and mind you cast it somewhere deep.
+  > Lucas received the Super Rod!
+  > Lucas put it away in the Key Items pocket.
+  * fanfare FanfareKeyItem
+  + FLAG_ALOLA_GOT_SUPER_ROD
+=== poni_grove.Blacephalon
+from Blacephalon at 145,213 of Poni
+way 0
+  > Something like a clown made of fireworks juggled its own head among the flowers, and bowed to Lucas.
+  * scene poni_grove.Blacephalon
+  * letterbox on
+  * camera Pan 145 213
+  * camera Zoom 1.4
+  * effect Burst 145 213
+  * cry Blacephalon
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Blacephalon 60 Won
+  + seen poni_grove.Blacephalon
+way 1, from answer 1
+  * wildbattle Blacephalon 60 Lost
+  + seen poni_grove.Blacephalon
+=== poni_grove.GroveRanger
+from Ranger at 124,190 of Poni
+way -
+  Ranger> Sorry, the grove is closed. Something strange has been seen among the trees, and the rangers are keeping watch.
+  Ranger> Only the island's Champion may go in. That's the rule the kahunas made, and I'm sticking to it!
+=== poni_grove.Stakataka
+from Stakataka at 182,206 of Poni
+way 0
+  > One of the stones of the ring shifted. Its bricks were looking at Lucas, every one of them.
+  * scene poni_grove.Stakataka
+  * letterbox on
+  * camera Pan 182 206
+  * camera Zoom 1.4
+  * shake Stakataka 3
+  * cry Stakataka
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Stakataka 60 Won
+  + seen poni_grove.Stakataka
+way 1, from answer 1
+  * wildbattle Stakataka 60 Lost
+  + seen poni_grove.Stakataka
+=== poni_meadow.Dancer
+from Dancer at 252,219 of Poni
+way -
+  Dancer> The Oricorio of Poni dance a slow, graceful dance. They learn it from the purple flowers, and so did I!
+  Dancer> Take this nectar. Give it to an Oricorio from any other island and it will dance like a ghost on a summer night.
+  > Lucas received the Purple Nectar!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_PONI_MEADOW_NECTAR
 === poni_wilds.Dulse
 from Dulse at 100,186 of Poni
 way -
@@ -27731,6 +27802,25 @@ way -
   > The boulder dropped into the hole and filled it in! The way across is open.
   * sound ledge
   + FLAG_UNOVA_RELIC_PASSAGE_HOLE_WEST
+=== resolution_cave.Zygarde
+from Zygarde at 48,14 of ResolutionCave
+way 0
+  > Green cells drifted out of the cracks in the rock and gathered into one great serpent, watching over the island.
+  * scene resolution_cave.Zygarde
+  * letterbox on
+  * camera Pan 48 14
+  * camera Zoom 1.4
+  * effect Ripple 48 14
+  * effect Sparkles 48 14
+  * cry Zygarde
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Zygarde 60 nofleeing Won
+  + seen resolution_cave.Zygarde
+way 1, from answer 1
+  * wildbattle Zygarde 60 nofleeing Lost
+  + seen resolution_cave.Zygarde
 === resort_area.Byron
 from Byron at 823,473 of Sinnoh
 way 0
@@ -35012,6 +35102,14 @@ way -
   + FLAG_ALOLA_RIDE_MUDSDALE
   = VAR_ALOLA_HAPU 0 -> 1
   + seen ulaula_route_12.Hapu on Route 12
+=== ulaula_route_15.Grimsley
+from Grimsley at 300,288 of Ulaula
+way -
+  Grimsley> Life is a gamble, and the sea is the biggest gamble of all. I lost my way out here, and won a fine Sharpedo instead.
+  Grimsley> It is wasted on a man who only sits on the sand. You take it. Call it with your Ride Pager whenever you are on the water.
+  > Sharpedo was registered in the Ride Pager!
+  Grimsley> It can ram rocks a Lapras would never dare. There is one off this very beach, if you fancy your luck.
+  + FLAG_ALOLA_RIDE_SHARPEDO
 === ultra_crater.Beast
 from Celesteela at 32,16 of UltraCrater
 way 0
@@ -35112,24 +35210,6 @@ way 0
 way 1, from answer 1
   * wildbattle Buzzwole 60 Lost
   + seen ultra_jungle.Buzzwole
-=== ultra_megalopolis.Blacephalon
-from Blacephalon at 20,40 of UltraMegalopolis
-way 0
-  > Something like a clown made of fireworks juggled its own head on the square, and bowed to Lucas.
-  * scene ultra_megalopolis.Blacephalon
-  * letterbox on
-  * camera Pan 20 40
-  * camera Zoom 1.4
-  * effect Burst 20 40
-  * cry Blacephalon
-  * camera Release
-  * letterbox off
-  * endscene
-  * wildbattle Blacephalon 60 Won
-  + seen ultra_megalopolis.Blacephalon
-way 1, from answer 1
-  * wildbattle Blacephalon 60 Lost
-  + seen ultra_megalopolis.Blacephalon
 === ultra_megalopolis.Resident1
 from Old Man at 30,26 of UltraMegalopolis
 way -
