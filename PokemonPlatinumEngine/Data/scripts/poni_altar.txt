@@ -19,16 +19,9 @@
 
 script OnEnter
   if var VAR_ALOLA_ULTRA >= 2 effect rift 32 14 hold
-  if var VAR_ALOLA_ULTRA == 2 goto Counting
-  goto Story
-label Counting
-  if not flag FLAG_ALOLA_MET_NIHILEGO goto Story
-  if not flag FLAG_ALOLA_MET_BUZZWOLE goto Story
-  if not flag FLAG_ALOLA_MET_PHEROMOSA goto Story
-  if not flag FLAG_ALOLA_MET_XURKITREE goto Story
-  if not flag FLAG_ALOLA_MET_CELESTEELA goto Story
-  if not flag FLAG_ALOLA_MET_KARTANA goto Story
-  if not flag FLAG_ALOLA_MET_GUZZLORD goto Story
+  if var VAR_ALOLA_ULTRA != 2 goto Story
+  # (each world's beast adds one to VAR_ALOLA_ULTRA_MET the first time it is met)
+  if var VAR_ALOLA_ULTRA_MET < 7 goto Story
   scene "The way to Ultra Megalopolis"
   face veyra player
   face oskin player

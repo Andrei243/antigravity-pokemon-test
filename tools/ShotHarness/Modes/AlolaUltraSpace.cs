@@ -47,7 +47,7 @@ partial class Harness
             Frames(2);
             game.LocationSign.Hide();
         }
-        void Told(string shot) => Console.WriteLine($"{shot}: {game.Map.Name} {game.Player.X},{game.Player.Y}; VAR_ALOLA_ULTRA {story.Var("VAR_ALOLA_ULTRA")}");
+        void Told(string shot) => Console.WriteLine($"{shot}: {game.Map.Name} {game.Player.GridX},{game.Player.GridY}; VAR_ALOLA_ULTRA {story.Var("VAR_ALOLA_ULTRA")}");
 
         // ---- Home after the credits: the Lightseekers' visit, shot as Veyra speaks
         Arrive("AlolaRoute1_PlayersHouse", 6, 6, Direction.Down);
@@ -72,7 +72,7 @@ partial class Harness
         foreach (var (map, key) in new[] { ("UltraDeepSea", "deep_sea"), ("UltraJungle", "jungle"), ("UltraDesert", "desert"), ("UltraPlant", "plant"),
                                            ("UltraCrater", "crater"), ("UltraForest", "forest"), ("UltraRuin", "ruin") })
         {
-            Arrive(map, 32, 23, Direction.Up);
+            Arrive(map, 32, 21, Direction.Up);
             ReadOn();
             Frames(40);
             Shot($"wa52_{key}"); Told($"wa52_{key}");
@@ -102,7 +102,7 @@ partial class Harness
         game.State = GameState.Overworld;
         story.SetVar("VAR_ALOLA_ULTRA", 3);
         story.Set("FLAG_ALOLA_ULTRA_AT_TOWER");
-        Arrive("UltraMegalopolis", 32, 30, Direction.Up);
+        Arrive("UltraMegalopolis", 32, 27, Direction.Up);
         ReadOn();
         Frames(40);
         Shot("wa54_megalopolis"); Told("wa54");

@@ -454,8 +454,8 @@
     // banded in violet and dark visors against light their city no longer has (Veyra, who leads them, tall with white
     // hair; Oskin, broad, with a crop of grey); and the Masked Royal of the Battle Royal Dome, a bare-chested showman in
     // a white cap with a dark visor over his eyes and a gold belt
-    "veyra": { "skin": "#d8b8a0", "hairColor": "#eceef4", "hair": "Long", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#e4e8f2", "shoes": "#5a4a9a", "eyes": "#5a4a8a", "glasses": "#2a2438", "lashes": true, "build": "Adult", "height": 1.1 },
-    "oskin": { "skin": "#9a7058", "hairColor": "#8a8c94", "hair": "Short", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#e4e8f2", "shoes": "#5a4a9a", "eyes": "#3a2a24", "glasses": "#2a2438", "bushyBrows": true, "build": "Adult", "height": 1.14 },
+    "veyra": { "skin": "#d8b8a0", "hairColor": "#c8bce8", "hair": "Long", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#4a3e7a", "shoes": "#5a4a9a", "eyes": "#5a4a8a", "glasses": "#2a2438", "lashes": true, "build": "Adult", "height": 1.1 },
+    "oskin": { "skin": "#9a7058", "hairColor": "#5a5c64", "hair": "Short", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#4a3e7a", "shoes": "#5a4a9a", "eyes": "#3a2a24", "glasses": "#2a2438", "bushyBrows": true, "build": "Adult", "height": 1.14 },
     "masked_royal": { "skin": "#b88864", "hairColor": "#2a2224", "hair": "Short", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#2a2438", "top": "#b88864", "accent": "#e8c040", "bottom": "#2a3a5a", "shoes": "#f4f4f6", "eyes": "#3a2a24", "glasses": "#1e1a24", "shortSleeves": true, "build": "Adult", "height": 1.12 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },

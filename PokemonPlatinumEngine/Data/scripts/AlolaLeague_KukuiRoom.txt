@@ -42,6 +42,7 @@ label Won
 # drawn from three who know the player (Hau, Gladion and Hapu), each with a team of our own (defence_*), and Professor
 # Kukui stands aside to announce them. A defence won goes on to the Hall of Fame as the first victory did.
 label Defence
+  scene "A title defence"
   say "Champion! A challenger has made it through all four of the Elite Four. You know what that means. Defend that title!"
   random 3
   if result == 1 goto Gladion
@@ -57,12 +58,12 @@ label Defended
   speaker "Prof. Kukui"
   say "...Woo! The Champion of Alola keeps the title! Come on, the Hall of Fame wants to hear about this."
   setflag FLAG_ALOLA_DEFEATED_KUKUI
+  endscene
   warp "AlolaLeague_HallOfFame" 6 10 up
   end
 
 
 script DefendAgainstHau
-  scene "Hau's challenge"
   setflag FLAG_ALOLA_DEFENCE_HAU
   show challenger_hau
   face challenger_hau player
@@ -73,12 +74,10 @@ script DefendAgainstHau
   say "Aw, man... I really thought this was the day. Okay! Malasadas, then training. In that order."
   hide challenger_hau
   clearflag FLAG_ALOLA_DEFENCE_HAU
-  endscene
   return
 
 
 script DefendAgainstGladion
-  scene "Gladion's challenge"
   setflag FLAG_ALOLA_DEFENCE_GLADION
   show challenger_gladion
   face challenger_gladion player
@@ -89,12 +88,10 @@ script DefendAgainstGladion
   say "...Fine. You're still the strongest. I'll be back, and next time it won't be fine."
   hide challenger_gladion
   clearflag FLAG_ALOLA_DEFENCE_GLADION
-  endscene
   return
 
 
 script DefendAgainstHapu
-  scene "Hapu's challenge"
   setflag FLAG_ALOLA_DEFENCE_HAPU
   show challenger_hapu
   face challenger_hapu player
@@ -105,5 +102,4 @@ script DefendAgainstHapu
   say "Hmph. Poni's ground is solid, and so are you. I'll tell the island the Champion is in good hands."
   hide challenger_hapu
   clearflag FLAG_ALOLA_DEFENCE_HAPU
-  endscene
   return

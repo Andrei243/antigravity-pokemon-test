@@ -3,7 +3,8 @@
 # script of the games is read. It is come to through the Ultra Wormhole over the Altar's dais (poni_altar.txt) and left
 # by the one it is come in by (common.UltraWayHome). Its Ultra Beast, Celesteela, waits at 32,16: met as a wild Pokémon
 # after a staged beat, at level 60, and back each time the world is come to until it is caught
-# (FLAG_ALOLA_CAUGHT_CELESTEELA); FLAG_ALOLA_MET_CELESTEELA says it has been met, which the Lightseekers count.
+# (FLAG_ALOLA_CAUGHT_CELESTEELA); FLAG_ALOLA_MET_CELESTEELA says it has been met, and the first meeting
+# counts in VAR_ALOLA_ULTRA_MET, which the Lightseekers count to seven at the Altar.
 
 
 script OnEnter
@@ -28,6 +29,7 @@ script Beast
   endscene
   wildbattle "Celesteela" 60
   if result == 3 setflag FLAG_ALOLA_CAUGHT_CELESTEELA
+  if not flag FLAG_ALOLA_MET_CELESTEELA addvar VAR_ALOLA_ULTRA_MET 1
   setflag FLAG_ALOLA_MET_CELESTEELA
   hide self
   end

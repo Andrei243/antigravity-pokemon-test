@@ -9504,14 +9504,15 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   (Xurkitree) are caves that name the tile they are come to by (`arrivals`), since no warp leads in; the Ultra Jungle
   (Buzzwole), the Ultra Desert (Pheromosa, under a sandstorm), the Ultra Crater (Celesteela, in the frozen climate), the
   Ultra Forest (Kartana, in pines) and the Ultra Ruin (Guzzlord, under ash in the volcanic climate) are open ground.
-  Ultra Megalopolis is a city of towers built as Castelia's (`Architecture.Metropolis`) under fog, its street lamps lit;
+  Ultra Megalopolis is a city of towers built as Castelia's (`Architecture.Metropolis`), its street lamps lit and its sky clouded over;
   its tower's door leads into Megalo Tower's top floor (`MegaloTower`, a room of ours), its other doors are shut. The
   plan had called every world a cave; the five open ones read better as land, and nothing in them needs a cave's rules.
 - **The Ultra Beasts** are each a person of its world standing as its species (`npcType` `Pokemon`), met after a staged
   beat (bars, the camera sent to it, the lens, an effect of its own) as a wild Pokémon at 60 that can be run from, and
   **back each time the world is come to until it is caught** (hidden by `FLAG_ALOLA_CAUGHT_<SPECIES>` alone): every one
   can be caught, which was the session's "done when". `FLAG_ALOLA_MET_<SPECIES>` says it has been met, whatever came of
-  it, which is what the Lightseekers count. All eleven are in reach: the seven in their worlds, Poipole given at home,
+  it, and the first meeting adds one to `VAR_ALOLA_ULTRA_MET`, which the Lightseekers count to seven (one count, not
+  seven flags asked one by one, so a scene's walk can find the story it needs). All eleven are in reach: the seven in their worlds, Poipole given at home,
   Naganadel by Poipole's own evolution, and, once the light is back, **Blacephalon** on Ultra Megalopolis's square and
   **Stakataka** among the Altar's stones (Ultra Sun and Ultra Moon have them on Poni's plains and grove, which are not
   drawn), each the same way. Every catch is the rules' own: a Beast Ball takes them at five times, any other ball at a
