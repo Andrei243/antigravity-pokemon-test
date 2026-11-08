@@ -32,7 +32,13 @@ public enum FrameSection
     /// <summary>The screen into the window.</summary>
     Present,
     /// <summary>The swap of the window's buffers, and the window's events.</summary>
-    Swap
+    Swap,
+    /// <summary>An open map's sky and land in the scene's pass (plan 32 · OW8).</summary>
+    Terrain,
+    /// <summary>An open map's water in the scene's pass (plan 32 · OW8).</summary>
+    Water,
+    /// <summary>The live rigs in an open map's scene (plan 32 · OW8: the player; OW9 the people and Pokémon).</summary>
+    Characters
 }
 
 /// <summary>

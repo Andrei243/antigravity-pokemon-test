@@ -52,6 +52,8 @@ public partial class GameEngine
         openWalk = null;
         // Everyone back where they were put, and whoever travels along behind the player (OW6)
         BeginTheOpenPeople(flow.Open);
+        // The orbit camera begun behind them (plan 32 · OW8)
+        BeginTheOpenCamera(yaw);
     }
 
     /// <summary>
@@ -104,6 +106,7 @@ public partial class GameEngine
             openCrossings.Settle(map, place.Pos);
             openWalk = null;
             BeginTheOpenPeople(flow.Open);
+            BeginTheOpenCamera(place.Yaw);
         }
         else Log.Warn($"The save stood in the open map {place.Map}, which isn't there: it wakes on its grid place, {flow.Map.Name} {flow.Player.GridX},{flow.Player.GridY}.");
     }

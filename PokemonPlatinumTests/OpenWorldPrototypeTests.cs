@@ -1,6 +1,7 @@
 using OpenWorldBake;
 using PokemonPlatinumEngine.OpenWorld;
 using OpenBody = OpenWorldBake.OpenBody;
+using OrbitCamera = OpenWorldBake.OrbitCamera;
 
 namespace PokemonPlatinumTests;
 

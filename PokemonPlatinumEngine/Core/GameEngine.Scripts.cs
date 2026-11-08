@@ -1117,6 +1117,8 @@ public partial class GameEngine
                     return seconds;
                 case CameraMove.Release:
                     rig.Release(seconds);
+                    // An open map's orbit camera comes home from a marker it was sent to (plan 32 · OW8)
+                    if (game.flow.Open != null) game.openCamera.Home(Skipping ? 0 : seconds);
                     game.flow.CameraSent = false;
                     return seconds;
                 case CameraMove.Zoom:
@@ -1125,7 +1127,11 @@ public partial class GameEngine
                     return seconds;
                 case CameraMove.Follow:
                     // The player followed is the camera back where it belongs, with the lens and the bars left alone
-                    if (who == null) rig.FollowPlayer(seconds);
+                    if (who == null)
+                    {
+                        rig.FollowPlayer(seconds);
+                        if (game.flow.Open != null) game.openCamera.Home(Skipping ? 0 : seconds);
+                    }
                     else rig.Follow(who, seconds);
                     game.flow.CameraSent = true;
                     return seconds;

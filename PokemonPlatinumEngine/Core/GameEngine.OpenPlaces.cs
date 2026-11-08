@@ -244,8 +244,10 @@ public partial class GameEngine
 
         public float LookAt(string marker, float seconds)
         {
-            game.MarkerHere(marker, nameof(Op.LookAt));
+            var at = game.MarkerHere(marker, nameof(Op.LookAt));
             game.OpenLook = marker;
+            // The orbit camera sent there (plan 32 · OW8), at once in a hurry; it comes home once the script has ended
+            if (game.flow.Open is { } field) game.openCamera.LookAt(OpenVec.Of(at.Pos), OpenVec.Of(field.Player.Pos), Skipping ? 0 : seconds);
             // (A hurry waits for nothing: the camera is where it was sent at once)
             return Skipping ? 0f : seconds;
         }

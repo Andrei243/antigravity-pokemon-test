@@ -1,0 +1,198 @@
+using System;
+using System.Numerics;
+using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.Graphics.OpenWorld;
+using PokemonPlatinumEngine.OpenWorld;
+using PokemonPlatinumEngine.Overworld;
+
+namespace PokemonPlatinumEngine.Core;
+
+/// <summary>
+/// The open field's picture (plan 32 · OW8; the <c>Draw</c> half OW1 left): while the player is in an open map the
+/// field's 3D scene is the open renderer's, its camera the orbit camera behind the player, and its picture is
+/// composited where the grid's was. Nothing of a region of today reaches it: no region's file says <c>open</c>, so
+/// <c>flow.Open</c> is null in every game and the grid's field is drawn as it always was.
+/// </summary>
+public partial class GameEngine
+{
+    private OpenRenderer? openRenderer;
+    private readonly OrbitCamera openCamera = new();
+    private readonly OpenUnderRock openUnderRock = new();
+    private float openFrameSeconds;
+    private bool openScriptWasRunning, openViewSettled;
+    private double openWalked;
+    private OpenVec? openLastFeet;
+
+    /// <summary>The open renderer, made the first time an open map is drawn (it needs the window).</summary>
+    private OpenRenderer OpenRendererNow => openRenderer ??= new OpenRenderer(renderContext);
+
+    /// <summary>The open field's weather in place of its area's (a tool's: the harness's rain), or null.</summary>
+    internal FieldWeather? OpenWeatherOverride { get; set; }
+
+    /// <summary>A camera placed by hand in place of the orbit camera's (a tool's: the harness's views from over the land), or null.</summary>
+    internal (Vector3 Eye, Vector3 Target)? OpenViewOverride { get; set; }
+
+    /// <summary>
+    /// The orbit camera begun afresh behind the player (a map come into, a save loaded, a place put down on): its arm let
+    /// out whole and the cave's share settled at the next frame drawn, and the player's grown rig asked for ahead.
+    /// </summary>
+    private void BeginTheOpenCamera(int yaw)
+    {
+        openCamera.Reset(yaw);
+        openViewSettled = false;
+        openLastFeet = null;
+        openWalked = 0;
+        if (!IsHeadless) CharacterModels.Preload(new[] { OpenPlayerLook });
+    }
+
+    /// <summary>The player's look in the open world: plan 30 · FM4's grown kit (<c>PLAYER~Teen</c>), dressed as the player is.</summary>
+    internal static string OpenPlayerLook => CharacterStyle.InKit(PlayerIdentity.Character, Data.CharacterKit.Grown);
+
+    /// <summary>
+    /// A frame of the open camera, beside the grid's camera rig (the field's states only): the shoulders turn it while
+    /// the field is the player's, it eases behind a walking player, a script's look eases on and comes home once the
+    /// script has ended, and the cave's share eases by whether rock is over it.
+    /// </summary>
+    private void KeepTheOpenCamera(float dt)
+    {
+        if (flow.Open is not { } open) return;
+        openFrameSeconds = dt;
+        bool theirs = flow.State == GameState.Overworld && !ScriptRunning && !flow.StartMenu.IsActive;
+        if (theirs)
+        {
+            double turn = (InputManager.IsActionDown(GameAction.PageRight) ? 1 : 0) - (InputManager.IsActionDown(GameAction.PageLeft) ? 1 : 0);
+            openCamera.Turn(turn, dt);
+        }
+        var feet = OpenVec.Of(open.Player.Pos);
+        double speed = 0;
+        if (openLastFeet is { } last && dt > 0)
+        {
+            double dx = feet.X - last.X, dz = feet.Z - last.Z;
+            double moved = Math.Sqrt(dx * dx + dz * dz);
+            speed = moved / dt;
+            openWalked += moved;
+        }
+        openLastFeet = feet;
+        openCamera.Advance(dt, open.Player.Yaw, speed);
+        if (openScriptWasRunning && !ScriptRunning) openCamera.Home();
+        openScriptWasRunning = ScriptRunning;
+    }
+
+    /// <summary>Where the player's feet are drawn: between the field's last two ticks, by how far the next has come.</summary>
+    private static OpenVec DrawnFeet(OpenField open)
+    {
+        var before = OpenVec.Of(open.Player.Before);
+        var now = OpenVec.Of(open.Player.Pos);
+        return before + (now - before) * open.Clock.Between;
+    }
+
+    /// <summary>The weather where the player stands: the tool's, else the area's by its name (a <see cref="FieldWeather"/>, or a header's of Platinum's).</summary>
+    private FieldWeather OpenWeatherHere(OpenField open)
+    {
+        if (OpenWeatherOverride is { } forced) return forced;
+        if (open.Map.AreaAt(open.Player.Pos)?.Weather is not { Length: > 0 } name) return FieldWeather.Clear;
+        return Enum.TryParse<FieldWeather>(name, ignoreCase: true, out var weather) ? weather : Weathers.Of(name);
+    }
+
+    /// <summary>The open frame's scene: the camera placed by its arm, the cave's share, the hour, the weather and the player's pose.</summary>
+    private OpenScene OpenSceneNow(OpenField open)
+    {
+        var feet = DrawnFeet(open);
+        var ground = open.Map.Ground;
+        var (eye, target) = openCamera.Place(ground, feet, openViewSettled ? openFrameSeconds : 0);
+        if (OpenViewOverride is { } byHand) (eye, target) = (new OpenVec(byHand.Eye.X, byHand.Eye.Y, byHand.Eye.Z), new OpenVec(byHand.Target.X, byHand.Target.Y, byHand.Target.Z));
+        if (!openViewSettled) { openUnderRock.Settle(ground, eye); openViewSettled = true; }
+        else openUnderRock.Advance(ground, eye, openFrameSeconds);
+        var body = open.Player.Body;
+        double perTick = Math.Sqrt(open.Player.Pos.GroundDistanceSquared(open.Player.Before)) / OpenPos.PerMetre;
+        double speed = perTick * OpenClock.TicksPerSecond;
+        var pose = new CharacterPose
+        {
+            Time = (float)(FrameClock.Now % 3600.0),
+            Walk = (float)(openWalked / 1.6 % 1.0),
+            WalkBlend = speed > OrbitCamera.Walking ? 1f : 0f,
+            Running = speed > 3.0
+        };
+        // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm
+        return new OpenScene(open.Map, V(feet), (float)OpenYaw.Radians(body.Yaw), pose, OpenPlayerLook,
+            V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
+            body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens));
+    }
+
+    private static Vector3 V(OpenVec v) => new((float)v.X, (float)v.Y, (float)v.Z);
+
+    /// <summary>The field's 3D scene this frame: the open map's where the player is in one, the grid's otherwise.</summary>
+    private void RenderTheField()
+    {
+        if (flow.Open is { } open)
+        {
+            OpenRendererNow.Render(OpenSceneNow(open));
+            return;
+        }
+        // Whose mouth is open is read as the frame is drawn, after the box's voice has moved on (plan 26 · V6)
+        world.Talking = SpeakerNow();
+        world.Render(flow.Map, flow.Player);
+    }
+
+    /// <summary>The field's picture composited into the 2D pass: the open map's or the grid's.</summary>
+    private void DrawTheField(SceneRipple ripple = default)
+    {
+        if (flow.Open != null && openRenderer != null) openRenderer.DrawToScreen(VirtualWidth, VirtualHeight, ripple);
+        else world.DrawToScreen(VirtualWidth, VirtualHeight, ripple);
+    }
+
+    /// <summary>Where the player's middle is on the field's picture, in shares of it: the open map's or the grid's.</summary>
+    private Vector2 FieldPlayerOnPicture => flow.Open != null && openRenderer != null ? openRenderer.PlayerOnPicture : world.PlayerOnPicture;
+
+    internal sealed partial class Driver
+    {
+        /// <summary>The open map's orbit camera (plan 32 · OW8): the harness turns it to its four yaws.</summary>
+        public OrbitCamera OpenCamera => game.openCamera;
+
+        /// <summary>Whether rock is over the camera, and how far the cave's light is in.</summary>
+        public OpenUnderRock OpenUnderRock => game.openUnderRock;
+
+        /// <summary>The open renderer, once an open map has been drawn: what its last frame drew.</summary>
+        public OpenRenderer? OpenRenderer => game.openRenderer;
+
+        /// <summary>The open field's weather in place of its area's, or null for the area's.</summary>
+        public FieldWeather? OpenWeather
+        {
+            get => game.OpenWeatherOverride;
+            set => game.OpenWeatherOverride = value;
+        }
+
+        /// <summary>A camera placed by hand in place of the orbit camera's, or null for the orbit camera.</summary>
+        public (Vector3 Eye, Vector3 Target)? OpenView
+        {
+            get => game.OpenViewOverride;
+            set => game.OpenViewOverride = value;
+        }
+
+        /// <summary>The open map's weather where the player stands, as the renderer takes it.</summary>
+        public FieldWeather OpenWeatherHere => game.flow.Open is { } open ? game.OpenWeatherHere(open) : FieldWeather.Clear;
+
+        /// <summary>The player's look in the open world (the grown kit).</summary>
+        public string OpenPlayerLook => GameEngine.OpenPlayerLook;
+
+        /// <summary>
+        /// The open view settled for a shot: the camera's arm let out whole where nothing holds it, the cave's share
+        /// whole or nothing, and every chunk on the card at the level its ring wants, with the player's rig made.
+        /// </summary>
+        public void SettleOpenView()
+        {
+            if (game.flow.Open is not { } open || game.IsHeadless) return;
+            game.openViewSettled = false;
+            game.openCamera.Settle();
+            CharacterModels.Get(GameEngine.OpenPlayerLook, game.renderContext.Shaders);
+            var renderer = game.OpenRendererNow;
+            var scene = game.OpenSceneNow(open);
+            game.openCamera.Settle();
+            renderer.Rings.Reset();
+            renderer.Rings.Move(new OpenVec(scene.Feet.X, scene.Feet.Y, scene.Feet.Z));
+            renderer.Stream.Use(open.Map);
+            renderer.Stream.Settle(renderer.Rings, new OpenVec(scene.Feet.X, scene.Feet.Y, scene.Feet.Z));
+            game.openViewSettled = false;
+        }
+    }
+}
