@@ -202,7 +202,6 @@ partial class Harness
         Frames(4);
         ReadTo(null);
         Talk("KiloudeCity_BattleMaison", 12, 5, Direction.Up);
-        Until(() => engine.Choice.IsOpen || !engine.ScriptRunning, "the counter's prizes", 1200);
         for (int i = 0; i < 1200 && !engine.Choice.IsOpen && engine.ScriptRunning; i++)
         {
             if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
