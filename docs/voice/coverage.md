@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1559 | 1498 | 61 | 1 | 0 |
-| Scripts (`script:`) | 11755 | 11260 | 495 | 17 | 0 |
+| Scripts (`script:`) | 11777 | 11281 | 496 | 17 | 0 |
 | People of the world (`world:`) | 7980 | 7918 | 62 | 4 | 0 |
-| **All** | 21528 | 20907 | 621 | 22 | 0 |
+| **All** | 21550 | 20928 | 622 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -25,14 +25,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 886 |
 | a sign | 1743 |
 | the game's own voice (speaker none) | 293 |
-| the game's own voice (text) | 1918 |
+| the game's own voice (text) | 1919 |
 
 ## The cast
 
 - Named characters: 507 voices (406 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
 - Archetypes in use: 242, with 731 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1956.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1960.
 
 ## Lines by voice
 
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1956 | 142 |
+| `@self` | 1960 | 142 |
 | `look:gentleman (any)` | 750 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
@@ -128,6 +128,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `flint` | 44 | 1 |
+| `prof_sycamore` | 44 | 1 |
 | `jasmine` | 43 | 0 |
 | `look:trainer (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
@@ -136,7 +137,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `buck` | 42 | 1 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
-| `prof_sycamore` | 41 | 1 |
 | `rood` | 41 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `look:pokefan_f (any)` | 40 | 0 |
@@ -223,6 +223,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `fantina` | 24 | 0 |
 | `hala` | 24 | 0 |
 | `move_deleter` | 24 | 3 |
+| `assistant_2` | 23 | 1 |
 | `curator` | 23 | 0 |
 | `eusine` | 23 | 0 |
 | `fishing_guru` | 23 | 3 |
@@ -250,8 +251,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:bug_catcher (any)` | 21 | 0 |
 | `look:pokemon_breeder_m (any)` | 21 | 0 |
 | `manager` | 21 | 0 |
+| `shauna` | 21 | 1 |
 | `tierno` | 21 | 0 |
-| `assistant_2` | 20 | 1 |
 | `class:double_team (any)` | 20 | 0 |
 | `class:sis_and_bro (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |

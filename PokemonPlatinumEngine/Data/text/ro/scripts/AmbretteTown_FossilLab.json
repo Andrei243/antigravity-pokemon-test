@@ -1,0 +1,118 @@
+{
+  "Restorer": [
+    {
+      "en": [
+        "Restorer"
+      ],
+      "text": [
+        "Restauratoare"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the fossil laboratory! The cave up the coast is full of them, and we bring them back to life."
+      ],
+      "text": [
+        "Bine ai venit la laboratorul de fosile! Peștera de pe coastă e plină de ele, iar noi le readucem la viață."
+      ]
+    },
+    {
+      "en": [
+        "You've brought a Fossil! Shall I wake up whatever is sleeping inside it?"
+      ],
+      "text": [
+        "Ai adus o fosilă! Să trezesc ce doarme înăuntrul ei?"
+      ]
+    },
+    {
+      "en": [
+        "Leave it with me. Take a stroll by the sea and come back."
+      ],
+      "text": [
+        "Las-o la mine. Fă o plimbare pe lângă mare și întoarce-te."
+      ]
+    },
+    {
+      "en": [
+        "The machine is still humming. Come back after a little walk."
+      ],
+      "text": [
+        "Aparatul încă bâzâie. Întoarce-te după o mică plimbare."
+      ]
+    },
+    {
+      "en": [
+        "It worked! Your Fossil is {thing} again, after all this time!"
+      ],
+      "text": [
+        "A mers! Fosila ta e din nou {thing}, după atâta vreme!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        "{player} a primit {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Your team is full, though. Make room and come back for it."
+      ],
+      "text": [
+        "Echipa ta e plină, totuși. Fă loc și vino după el."
+      ]
+    },
+    {
+      "en": [
+        "No Fossils? My assistant may have one to spare. Ask him."
+      ],
+      "text": [
+        "Nicio fosilă? Asistentul meu poate are una în plus. Întreabă-l."
+      ]
+    },
+    {
+      "en": [
+        "No? The machine will be here when you change your mind."
+      ],
+      "text": [
+        "Nu? Aparatul va fi aici când te răzgândești."
+      ]
+    }
+  ],
+  "Assistant": [
+    {
+      "en": [
+        "Assistant"
+      ],
+      "text": [
+        "Asistent"
+      ]
+    },
+    {
+      "en": [
+        "We found more amber in the cave than we have shelves for. Here, take a piece. There's a Pokémon of the sky in it."
+      ],
+      "text": [
+        "Am găsit în peșteră mai mult chihlimbar decât avem rafturi. Poftim, ia o bucată. E un Pokémon al cerului în ea."
+      ]
+    },
+    {
+      "en": [
+        "Show it to the restorer. She'll have it flying again in no time."
+      ],
+      "text": [
+        "Arată-i-o restauratoarei. Îl va face să zboare din nou cât ai clipi."
+      ]
+    },
+    {
+      "en": [
+        "Every Fossil is a Pokémon waiting. Some of them have waited a very long time."
+      ],
+      "text": [
+        "Fiecare fosilă e un Pokémon care așteaptă. Unii au așteptat foarte mult."
+      ]
+    }
+  ]
+}

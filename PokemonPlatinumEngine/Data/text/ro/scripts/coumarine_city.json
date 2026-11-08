@@ -1,0 +1,54 @@
+{
+  "Sycamore": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I came down on the morning train to see the boats. And to see you, of course. Four Badges already!"
+      ],
+      "text": [
+        "{player}! Am venit cu trenul de dimineață să văd vapoarele. Și să te văd pe tine, firește. Deja patru Insigne!"
+      ]
+    },
+    {
+      "en": [
+        "The further you go, the further Kalos's towns lie apart. Here, let a Pokémon carry you between them."
+      ],
+      "text": [
+        "Cu cât mergi mai departe, cu atât orașele din Kalos sunt mai depărtate. Ține, lasă un Pokémon să te poarte între ele."
+      ]
+    },
+    {
+      "en": [
+        "That HM teaches Fly. A Pokémon that knows it can take you to any town you've been to before. A bientôt!"
+      ],
+      "text": [
+        "HM-ul acela te învață Fly. Un Pokémon care o știe te poate duce în orice oraș în care ai mai fost. A bientôt!"
+      ]
+    }
+  ],
+  "Sailor": [
+    {
+      "en": [
+        "See the two little islands out in the bay? No boat calls there. You'd have to swim with a Pokémon."
+      ],
+      "text": [
+        "Vezi cele două insulițe din golf? Nicio barcă nu oprește acolo. Ar trebui să înoți cu un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "There's grass on both, and Pokémon nobody sees on the mainland. Or so the fishermen say."
+      ],
+      "text": [
+        "Pe amândouă e iarbă, și Pokémon pe care nimeni nu-i vede pe uscat. Sau așa zic pescarii."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Fossil Laboratory"
+    ],
+    "text": [
+      "Laboratorul de fosile"
+    ]
+  },
+  "people": {
+    "restorer": {
+      "name": {
+        "en": [
+          "Restorer"
+        ],
+        "text": [
+          "Restauratoare"
+        ]
+      }
+    },
+    "assistant": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          "Asistent"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
