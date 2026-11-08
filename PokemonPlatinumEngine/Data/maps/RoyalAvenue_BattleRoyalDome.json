@@ -311,5 +311,16 @@
       "shownBy": "FLAG_ALOLA_ROYAL_RING_MASTER"
     }
   ],
+  "triggers": [
+    {
+      "x": 10,
+      "y": 15,
+      "width": 1,
+      "depth": 1,
+      "script": "TheShow",
+      "variable": "VAR_ALOLA_ROYAL_SHOW",
+      "value": 0
+    }
+  ],
   "wildEncounters": []
 }

@@ -313,6 +313,13 @@ public static class Objectives
         (660, "alolaHapu", s => s.Var("VAR_ALOLA_STORY") >= 51 || s.HasBadge(RegionDatabase.Alola, "Poni"), false),
         (661, "alolaAltar", AtLeast("VAR_ALOLA_STORY", 52), false),
         (662, "alolaLanakila", s => s.Var("VAR_ALOLA_STORY") >= 54 || s.Has("AlolaHallOfFame"), false),
+        // Plan 23 · Z8, after the Hall of Fame: the Lightseekers at the Altar, the seven Ultra Beasts in their worlds,
+        // Necrozma at the top of Megalo Tower (VAR_ALOLA_ULTRA), and the Battle Royal Dome's first show. Its ids stand at
+        // the end of Alola's block, clear of any session that adds to the story before them
+        (690, "alolaUltraAltar", AtLeast("VAR_ALOLA_ULTRA", 2), false),
+        (691, "alolaUltraHunt", AtLeast("VAR_ALOLA_ULTRA", 3), false),
+        (692, "alolaMegalopolis", AtLeast("VAR_ALOLA_ULTRA", 4), false),
+        (693, "alolaRoyalDome", s => s.Has("FLAG_ALOLA_ROYAL_SHOW_DONE"), false),
         (699, "alolaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

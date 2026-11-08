@@ -1,0 +1,33 @@
+# Ultra Deep Sea (plan 23 · Z8), a world of Ultra Space. The lines are our own, on Ultra Sun and Ultra Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): no picture, map, line or
+# script of the games is read. It is come to through the Ultra Wormhole over the Altar's dais (poni_altar.txt) and left
+# by the one it is come in by (common.UltraWayHome). Its Ultra Beast, Nihilego, waits at 32,16: met as a wild Pokémon
+# after a staged beat, at level 60, and back each time the world is come to until it is caught
+# (FLAG_ALOLA_CAUGHT_NIHILEGO); FLAG_ALOLA_MET_NIHILEGO says it has been met, which the Lightseekers count.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  if flag FLAG_ALOLA_MET_NIHILEGO end
+  text "Nothing here is water, yet everything drifts as if it were. Light falls like snow onto pale stone."
+  end
+
+
+script Beast
+  face self player
+  speaker none
+  scene "Nihilego"
+  letterbox on 0.4
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 wait
+  cry "Nihilego"
+  text "Something like a jellyfish of glass hung over the stone, its tendrils trailing light. It turned toward {player}."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Nihilego" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_NIHILEGO
+  setflag FLAG_ALOLA_MET_NIHILEGO
+  hide self
+  end

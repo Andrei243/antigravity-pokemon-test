@@ -20,8 +20,19 @@
       "still": true,
       "hiddenBy": "FLAG_ALOLA_ALTAR_DONE",
       "shownBy": "FLAG_ALOLA_AT_ALTAR"
-    }
+    },
+    // Plan 23 · Z8: the Lightseekers by the dais from their visit to the player's house until they go ahead to Megalo
+    // Tower, and a Stakataka among the stones once the light is back in Ultra Megalopolis
+    "veyra": { "name": "Veyra", "npcType": "veyra", "script": "Veyra", "still": true, "hiddenBy": "FLAG_ALOLA_ULTRA_AT_TOWER", "shownBy": "FLAG_ALOLA_ULTRA_AT_ALTAR" },
+    "oskin": { "name": "Oskin", "npcType": "oskin", "script": "Oskin", "still": true, "hiddenBy": "FLAG_ALOLA_ULTRA_AT_TOWER", "shownBy": "FLAG_ALOLA_ULTRA_AT_ALTAR" },
+    "stakataka": { "name": "Stakataka", "npcType": "Pokemon", "species": "Stakataka", "script": "Stakataka", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_STAKATAKA", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" }
   },
+  // Plan 23 · Z8: the Ultra Wormhole over the dais, read where it hangs (and the dais's warm stone before it opens), and
+  // the Lightseekers' scene as the player comes up to the dais after their visit
+  "readAt": [ { "x": 32, "z": 14, "script": "Wormhole" } ],
+  "triggers": [
+    { "script": "Lightseekers", "x": 10, "z": 24, "width": 44, "depth": 1, "variable": "VAR_ALOLA_ULTRA", "value": 1 }
+  ],
   "signs": {
     "AltarSign": "The Altar of the Sunne and Moone\nThe place where the sun and the moon are said to meet."
   }

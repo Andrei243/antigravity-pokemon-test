@@ -87,13 +87,13 @@
       "id": "necrozma",
       "name": "Necrozma",
       "npcType": "Pokemon",
-      "species": "Necrozma",
       "x": 7,
       "y": 4,
       "facing": "Down",
       "script": "Necrozma",
+      "hiddenBy": "FLAG_ALOLA_CAUGHT_NECROZMA",
       "shownBy": "FLAG_ALOLA_ULTRA_AT_TOWER",
-      "hiddenBy": "FLAG_ALOLA_CAUGHT_NECROZMA"
+      "species": "Necrozma"
     },
     {
       "id": "veyra",

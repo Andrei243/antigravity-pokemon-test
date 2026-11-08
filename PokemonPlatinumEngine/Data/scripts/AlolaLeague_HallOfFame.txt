@@ -9,6 +9,7 @@
 
 script OnEnter
   if not flag FLAG_ALOLA_DEFEATED_KUKUI end
+  if flag AlolaHallOfFame goto Defended
   scene "Alola's Hall of Fame"
   face kukui_hof player
   speaker "Prof. Kukui"
@@ -34,6 +35,28 @@ label NotSaved
   text "The game could not be saved."
 label Roll
   credits
+  end
+# A title defended (plan 23 · Z8): the team is recorded again, with no credits, and Alola's story is left as it stands
+label Defended
+  scene "A title defended"
+  face kukui_hof player
+  speaker "Prof. Kukui"
+  say "Back again, Champion! A defended title goes in the record too. Every team that kept the chair is kept here."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  call ClearGame
+  halloffame show
+  heal
+  warp "AlolaRoute1_PlayersHouse" 6 6 down
+  save
+  if result == 0 goto DefenceNotSaved
+  sound "save"
+  text "{player} saved the game."
+  end
+label DefenceNotSaved
+  text "The game could not be saved."
   end
 
 

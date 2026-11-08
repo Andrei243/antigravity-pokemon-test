@@ -9477,6 +9477,72 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   rough ground only Mudsdale crosses, a ride's own song, the Fossil Restoration Center, Moon's totems, Malie Garden and
   Routes 14, 15 and 17 (still the rulings' "Left" above), Ultra Space (Z8) and the user's look at the new shots.
 
+## Ultra Space and the Battle Royal Dome (2026-11-08, plan 23 · Z8)
+
+- **Where it comes from.** As Z5 and Z7: the order of the beats and the names of the worlds from public descriptions
+  (Bulbapedia's and Serebii's lists of Ultra Space's worlds and which Ultra Beast lives in each, Smogon's guide to Ultra
+  Space), never a picture, map, line or script of the games. Sun and Moon's post-game hunt is the International
+  Police's; ours follows Ultra Sun and Ultra Moon's, the visitors from Ultra Megalopolis, with people of our own: the
+  **Lightseekers**, Veyra and Oskin (looks of ours in `characters.json`), in our own words.
+- **The story** (`VAR_ALOLA_ULTRA` 0 to 4, `objective` ids 690 to 693; poni_altar.txt's header has the count). **1**:
+  the first time the player's house is come to after the Hall of Fame (which ends there), the Lightseekers are inside
+  with Mom; they tell of their city's stolen light and the Ultra Beasts slipping through the wormholes, give ten Beast
+  Balls and a Poipole at 40 (as Ultra Sun and Ultra Moon give one), and go ahead to the Altar of the Sunne and Moone.
+  **2**: a trigger across the Altar's floor plays their scene there: the dais's light gathered (by Solgaleo if it is on
+  the team, by a lens of theirs if not) tears the air open into an Ultra Wormhole, held over the dais for good
+  (`effect rift`, laid again by the Altar's arrival). **3**: once the seven Ultra Beasts have each been met, the Altar's
+  arrival plays their word that the way to their city is open, and they go ahead to Megalo Tower. **4**: Necrozma's
+  first battle, whatever comes of it, gives the city its light back (`FLAG_ALOLA_LIGHT_RETURNED`).
+- **The Ultra Wormhole** is read where it hangs (the Altar overlay's `readAt` on the dais, `poni_altar.Wormhole`): a
+  `choose` of the worlds, two pages since a question holds six answers, Ultra Megalopolis on the second once the seven
+  have been met. Each world is left by the wormhole it is come in by, read behind the arrival (`common.UltraWayHome`),
+  back to the tile below the dais. Ultra Sun and Ultra Moon's Ultra Warp Ride (a flight through space at a distance
+  measured in light years, wormholes of colours that lead to legendary Pokémon of every earlier region) is not built:
+  the worlds are chosen by name, and the legendaries of other regions are met in their own.
+- **Ultra Space's worlds** are maps of their own drawn by hand (`tools/MapDraw/alola`, matrices 60 to 67, 64 tiles by 64,
+  the wormhole at 32,55 and each world's Ultra Beast at 32,16): the Ultra Deep Sea (Nihilego) and the Ultra Plant
+  (Xurkitree) are caves that name the tile they are come to by (`arrivals`), since no warp leads in; the Ultra Jungle
+  (Buzzwole), the Ultra Desert (Pheromosa, under a sandstorm), the Ultra Crater (Celesteela, in the frozen climate), the
+  Ultra Forest (Kartana, in pines) and the Ultra Ruin (Guzzlord, under ash in the volcanic climate) are open ground.
+  Ultra Megalopolis is a city of towers built as Castelia's (`Architecture.Metropolis`) under fog, its street lamps lit;
+  its tower's door leads into Megalo Tower's top floor (`MegaloTower`, a room of ours), its other doors are shut. The
+  plan had called every world a cave; the five open ones read better as land, and nothing in them needs a cave's rules.
+- **The Ultra Beasts** are each a person of its world standing as its species (`npcType` `Pokemon`), met after a staged
+  beat (bars, the camera sent to it, the lens, an effect of its own) as a wild Pokémon at 60 that can be run from, and
+  **back each time the world is come to until it is caught** (hidden by `FLAG_ALOLA_CAUGHT_<SPECIES>` alone): every one
+  can be caught, which was the session's "done when". `FLAG_ALOLA_MET_<SPECIES>` says it has been met, whatever came of
+  it, which is what the Lightseekers count. All eleven are in reach: the seven in their worlds, Poipole given at home,
+  Naganadel by Poipole's own evolution, and, once the light is back, **Blacephalon** on Ultra Megalopolis's square and
+  **Stakataka** among the Altar's stones (Ultra Sun and Ultra Moon have them on Poni's plains and grove, which are not
+  drawn), each the same way. Every catch is the rules' own: a Beast Ball takes them at five times, any other ball at a
+  tenth (`CatchCalculator.Later.cs`). Ultra Sun and Ultra Moon's level is 60 for all; it is kept.
+- **Necrozma** waits at Megalo Tower's top behind the Lightseekers (shown by `FLAG_ALOLA_ULTRA_AT_TOWER`, hidden once
+  caught), battled at 65 after a staged beat that meets plan 29's rule (`LegendaryScenesTests`), not to be run from, and
+  back until caught. Ultra Sun and Ultra Moon fight Ultra Necrozma in the story before the League; ours is after it and
+  is Necrozma alone: its fusions with Solgaleo and Lunala are the N-Solarizer's and the N-Lunarizer's, which no one gives
+  yet, and Ultra Burst is plan 06 · R21's, which the battle allows to whoever holds the crystal.
+- **The Battle Royal Dome** on Royal Avenue opens to Alola's Champion (the overlay's door, `openedBy` AlolaHallOfFame;
+  `RoyalAvenue_BattleRoyalDome`, a room of ours). The first time in, the **Masked Royal**'s show: Hau, Gladion and the
+  Masked Royal (a look of ours; that he sounds like Professor Kukui is said, never confirmed) against the Champion, a
+  `royal` of plan 14 · B13. Then the receptionist offers **four ranks** in the Battle Tree's and the Frontier's way of a
+  streak: Normal (level 50), Great (55), Ultra (60) and Master (66), each opened by a first place in the one before
+  (`VAR_ALOLA_ROYAL_RANK`), three trainers of ours each (`royal_dome_*` of `our-trainers.json`). **First place gives
+  Battle Points** (one to four by the rank, `frontier give`, the Battle Frontier's own), as Ultra Sun and Ultra Moon's
+  Royal does; a Royal otherwise gives nothing (plan 14 · B13's rule), and the Battle Fan counts the player's first
+  places (`VAR_ALOLA_ROYAL_WINS`). Whoever stands in the ring is a person of the room shown by the flag of the round
+  being fought (`FLAG_ALOLA_ROYAL_RING_*`), set before it and cleared after, so the ring is empty whenever the room is
+  come to. Ours, beside the games: the player brings the whole team, as B13's Royal is built, not three; no ring of four
+  platforms.
+- **The title defended** (the Hall of Fame's follow-up): once Alola has its Champion, a second climb of the League ends
+  with Professor Kukui announcing a challenger, drawn by `random 3` from Hau, Gladion and Hapu (`defence_*` of
+  `our-trainers.json`, six Pokémon each at 64 and 65), as Sun and Moon's Champion defends the title. Won, the Hall of
+  Fame records the team again with no credits and leaves the story as it stands (it no longer sets `alolaFree`'s
+  objective over a post-game one).
+- **Left**: the Ultra Warp Ride and its legendaries of other regions; Lunala (Moon's) and the N-Solarizer and
+  N-Lunarizer; Poni's plains and grove where the games keep Stakataka and Blacephalon; the Battle Tree's door at Poni
+  Gauntlet; the link to Galar (plan 33's engine, `Transport.Undecided` still); the Ultra Beasts' worlds' wild Pokémon
+  (they have none) and their own songs (all play `alola/ultra_space`, ours).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -1103,6 +1103,17 @@ label Able
   end
 
 
+# The Ultra Wormhole a world of Ultra Space is come in by (plan 23 · Z8), read where it hangs: back to the Altar of the
+# Sunne and Moone, under the wormhole over its dais
+script UltraWayHome
+  speaker none
+  ask "The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola?"
+  if no end
+  text "{player} stepped into the light..."
+  warp "PoniAltar" 32 15 down
+  end
+
+
 # Deep water at the player's feet. The field offers it only to someone who may surf (the move and the region's Badge
 # for it: the Fen Badge in Sinnoh, the Soul Badge in Kanto).
 script Water
