@@ -1,7 +1,8 @@
 # Cyllage City's Gym (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): Grant, a climber of
-# rock walls, battles for the Cliff Badge, Kalos's second (`givebadge cliff`), and gives a TM. The hall is one room with
-# no puzzle (X and Y's climbing wall is not built). VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes it 18.
+# rock walls, battles for the Cliff Badge, Kalos's second (`givebadge cliff`), and gives a TM. The hall is a climbing wall
+# in two pitches (the map's puzzle, CyllageWall: plan 23, Kalos's Gyms), climbed up and sideways by its grips, and gone
+# down by its ropes. VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes it 18.
 # His team is Kalos's trainers.json's kalos_grant_1; his two trainers are the hall's own.
 
 

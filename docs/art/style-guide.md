@@ -517,6 +517,34 @@ A Gym (plan 01 · M9) is a room rebuilt to the original's plan ("Rooms", above) 
   from the tile's sides, a tile long out from the hub's edge, with a rim of the deep blue across its far end. An arm is
   built lying north and turned a quarter clockwise for each way round; it is drawn where it lies now, with no turning
   between (the step onto the hub is the turn).
+- **The Santalune Gym's web** (plan 23, Kalos's Gyms): Viola's hall is the Bug hall's floor at the door and under her,
+  and between them the dark with a web of silk strung over it. A ring (a strand that always holds) is a band of pale silk
+  `226,228,236` (light `244,246,250`, shade `176,180,196`) eight texels wide and three thick, running east and west
+  through the middle of its tile, its top level with the floor; a knot is a pad of the same silk twenty texels square, a
+  texel proud of the ring, with a boss of amber `214,168,82` in its middle. A radial strand (north and south) is the same
+  silk with three drops of dew on it while the dew lies there, beads of clear blue `120,186,232` (light `196,230,250`,
+  shade `70,128,184`) six texels square and three high; once the dew has run off it is a thread of dull grey silk
+  `150,150,162` four texels wide sagging two texels under the floor's height. The dew moves all at once as a knot is
+  stepped on: there is no running between.
+- **The Cyllage Gym's wall** (plan 23, Kalos's Gyms): Grant's climbing wall lies over the Rock hall's floor in two pitches
+  with a ledge of the floor between. Each tile of a pitch is a slab of dark rock `118,104,96` (light `146,130,118`, shade
+  `84,74,70`) lying a hair over the floor, cracked with lines of the shade; a grip is a knob of terracotta `206,108,62`
+  (light `236,150,98`, shade `150,72,42`) twelve texels square and four high in the tile's middle, the only place a climber
+  stands. A rope is a cord of hemp `206,178,120` (shade `150,124,80`) six texels wide down its tile's middle with a knot of
+  the shade every eight texels. The pitches are flat on the floor: the camera's lean makes them a wall.
+- **The Shalour Gym's rink** (plan 23, Kalos's Gyms): Korrina's hall is a rink over a pit. The floor at the door and under
+  her and the rails between are the Fighting hall's boards; on a rail's tile beside a gap stands a ramp, a wedge of steel
+  `150,160,182` (light `196,204,220`, shade `100,108,128`) twenty-four texels wide in two steps (four and seven texels
+  high) over the half of the tile on the side it faces, with a stripe of hazard yellow `236,196,60` at its lip; the ramp
+  faces the way the gap is hopped now, and turns round, all ramps at once, when a lever is stepped on. A lever is a post
+  of the steel eight texels square and ten high with a handle of red `206,62,58` leaning west or east by the points.
+- **The Coumarine Gym's tree** (plan 23, Kalos's Gyms): Ramos's hall is a vine tree in three tiers of the Grass hall's
+  floor, two and four tiles up, with the field's faces between. A climbing pole is a vine of green `86,150,74` (light
+  `126,186,98`, shade `56,104,52`) six texels across up the face from the tier below to the tier above, with leaves of the
+  light green; a sliding pole is a pole of smooth wood `176,128,82` (light `210,166,112`, shade `122,86,56`) the same size.
+  The hanging pole is the vine, and hangs a third of the face's height from the tier above until its switch is pulled,
+  then reaches the tier below. The switch is a loop of vine `86,150,74` round a flower of pink `226,120,168` lying on its
+  tile. A hedge of the room's plants parts the top tier.
 - **The Sootopolis Gym's ice** (plan 21 · H8, part c): the room's floor of thin ice is the room's own ice; what the puzzle adds lies a hair over it, a tile at a time. A tile stepped on carries a crack, 32 texels square over nothing: five runs of dark blue `74,108,140` from a broken middle out toward the edges, each texel with a pale rim `232,246,252` on its lit side (up and left), and a star of chips where they meet. A flight of stairs above a field not yet crossed is glazed over, each step covered by a sheet of pale blue ice `176,214,236` lit along its top edge `222,242,252` and darker at its foot `132,176,210`, with two short glints; the glaze goes from a flight, all at once, as the last tile below it is cracked, and the stairs under it are the room's own. Nothing falls: a tile that gives way takes the player down behind the fade.
 - **Don't**: bake a puzzle's moving part into the floor, light a dark room fully, or let a bag or a hand move by itself while the player can act: the field waits until each has stopped.
 

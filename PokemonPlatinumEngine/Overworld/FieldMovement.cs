@@ -296,11 +296,12 @@ public static class FieldMovement
         }
 
         // The tip of the Eterna Gym's hour hand is hopped over along the hand, either way, like a ledge
-        // (DynamicMapFeatures_WillPlayerJumpEternaGymClock, plan 01 · M9)
+        // (DynamicMapFeatures_WillPlayerJumpEternaGymClock, plan 01 · M9); and so are Kalos's Gyms' ramps and poles,
+        // by a skater as by a walker (plan 23, Kalos's Gyms: Korrina's rink is skated)
         if (map.Puzzle?.HopsOver(nx, ny, dir) == true)
         {
             int lx = nx + dx, ly = ny + dy;
-            if (walker.Mode != TravelMode.OnFoot || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
+            if (walker.Mode is not (TravelMode.OnFoot or TravelMode.Skating) || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
             return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
         }
 

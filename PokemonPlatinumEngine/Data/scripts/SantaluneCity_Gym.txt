@@ -1,7 +1,8 @@
 # Santalune City's Gym (plan 23 · Z1, second part). The lines are our own, on X and Y's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Kalos drawn by hand, its first chapter and its roller skates"): Viola, a
 # photographer of Bug-type Pokémon, battles for the Bug Badge, Kalos's first (`givebadge bug`), and gives a TM. The
-# hall is one room with no puzzle (X and Y's web of threads is not built). VAR_KALOS_STORY is vaniville_town.txt's
+# hall is a web over the dark (the map's puzzle, SantaluneWeb: plan 23, Kalos's Gyms): its strands hold while the dew lies
+# on them, and a knot at a ring's end shakes the dew from one set to the other. VAR_KALOS_STORY is vaniville_town.txt's
 # count: the Badge makes it 9. Her team is Kalos's trainers.json's kalos_viola_1; her two trainers are the hall's own.
 
 
