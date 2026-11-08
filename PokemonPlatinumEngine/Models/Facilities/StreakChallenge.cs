@@ -92,7 +92,7 @@ public sealed class StreakChallenge
         record.Paused = null;
         bool same = pause.Slots.Count == room.Entered && pause.Slots.Count == pause.Ids.Count && pause.Slots.Count == pause.Species.Count
                     && pause.Slots.Select((slot, n) => (slot, n)).All(p => p.slot >= 0 && p.slot < party.Count
-                        && party.Members[p.slot].Id == pause.Ids[p.n] && party.Members[p.slot].Species.Name == pause.Species[p.n]);
+                        && (pause.Ids[p.n] == Guid.Empty || party.Members[p.slot].Id == pause.Ids[p.n]) && party.Members[p.slot].Species.Name == pause.Species[p.n]);
         if (!same)
         {
             record.Latest = record.Streak;

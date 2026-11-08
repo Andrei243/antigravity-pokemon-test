@@ -10072,7 +10072,7 @@ hard room is open, a challenge under way and one put down), null until the first
 raised. Every draw is on a generator of the challenge's own (Platinum's, `BattleRandom`), seeded from two of the game's
 sixteen-bit draws as it begins; a trainer is drawn as their battle comes, and a challenge put down keeps the generator as
 it stood before that draw, so taking it up meets the same trainer (the Tower's rule). It is taken up only with the same
-Pokémon (by id and species) in the same places of the team; otherwise the pause is given up and the streak ends, as a
+Pokémon in the same places of the team (by species, and by id where the Pokémon had one when it was put down); otherwise the pause is given up and the streak ends, as a
 challenge walked out on does. A challenge begun while another was under way (the game closed in the middle of one) ends
 that streak first. Battle Points go into the Frontier's one purse (decision 6). The bag's key items reach a place's
 battles as they reach every battle (`BattleEngine` reads them from the bag `StartFrontierBattle` hands it), so the Key
