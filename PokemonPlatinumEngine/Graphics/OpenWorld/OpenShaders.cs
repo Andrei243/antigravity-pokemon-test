@@ -339,8 +339,11 @@ void main()
     color *= skyAmbient + sunColor * sun + Lamp(fragWorld, vec3(0.0, 1.0, 0.0));
 
     // What stands over the water, mirrored: in the mid and deep bands of the water at the mirror's height alone, one
-    // colour per texel read at its middle, each row pushed a texel east or west on a slow swell, broken into runs
-    if (mirror.x > 0.5 && plain && depth + breathe >= 0.3 && abs(fragWorld.y - mirror.y) < 0.25)
+    // colour per texel read at its middle, each row pushed a texel east or west on a slow swell, broken into runs; from
+    // 0.1 m off the mirror's height to 0.25 m its texels thin out by a dither, so a sloping river shows no line where its
+    // mirror ends
+    float off = abs(fragWorld.y - mirror.y);
+    if (mirror.x > 0.5 && plain && depth + breathe >= 0.3 && off < 0.25 && Hash(t + 13.0) >= smoothstep(0.1, 0.25, off))
     {
         float swell = floor(1.2 * sin(time * 1.5 + t.y * 0.9) + 0.5);
         float run = floor((t.x - floor(time * 2.0)) / 6.0);

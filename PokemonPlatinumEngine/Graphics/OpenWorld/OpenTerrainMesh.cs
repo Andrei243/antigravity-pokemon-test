@@ -213,14 +213,17 @@ internal static class OpenTerrainMesh
 
     /// <summary>
     /// The ground under each point the water is laid through: the highest of the chunk's own ground and apron that
-    /// stands no more than 5 cm over the water's surface there (so the bed under a rock bridge, not the bridge), NaN
-    /// where none does.
+    /// stands no more than 5 cm over the water's surface there (so the bed under a rock bridge, not the bridge), or,
+    /// where none does, the lowest that stands over it (a bank: the depth there is less than nought, so the depth comes
+    /// to nought where the bank comes up out of the water and the shallows and the foam lie along the shore); NaN where
+    /// the chunk has no ground over the point at all.
     /// </summary>
     private static float[,] GroundUnder(BakedChunk chunk, float x0, float z0, float step, int points, float[,] surface)
     {
-        var best = new float[points, points];
+        var under = new float[points, points];
+        var over = new float[points, points];
         for (int k = 0; k < points; k++)
-            for (int i = 0; i < points; i++) best[i, k] = float.NaN;
+            for (int i = 0; i < points; i++) under[i, k] = over[i, k] = float.NaN;
         int triangles = chunk.GroundTriangles + chunk.ApronTriangles;
         for (int t = 0; t < triangles; t++)
         {
@@ -236,11 +239,17 @@ internal static class OpenTerrainMesh
                 {
                     float x = x0 + i * step, z = z0 + k * step;
                     if (HeightIn(x, z, a, b, c) is not { } y) continue;
-                    if (y > surface[i, k] + 0.05f) continue;
-                    if (float.IsNaN(best[i, k]) || y > best[i, k]) best[i, k] = y;
+                    if (y > surface[i, k] + 0.05f)
+                    {
+                        if (float.IsNaN(over[i, k]) || y < over[i, k]) over[i, k] = y;
+                    }
+                    else if (float.IsNaN(under[i, k]) || y > under[i, k]) under[i, k] = y;
                 }
         }
-        return best;
+        for (int k = 0; k < points; k++)
+            for (int i = 0; i < points; i++)
+                if (float.IsNaN(under[i, k])) under[i, k] = over[i, k];
+        return under;
     }
 
     /// <summary>The height of a triangle over a column, if the column passes through it (its edges included).</summary>

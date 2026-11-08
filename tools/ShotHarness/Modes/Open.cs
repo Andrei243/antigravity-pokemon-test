@@ -71,6 +71,32 @@ partial class Harness
             + $"the scene at {renderer.Step:0.000} of the target ({game.RenderContext.PartWidth}×{game.RenderContext.PartHeight})");
     }
 
+    /// <summary>
+    /// `profile`'s open_lab scenes (plan 32 · OW8): the game's own open renderer on the open test world, the player on
+    /// its west road looking east over the meadow, the hill, the river and its bridge (the most of the lab in view), by
+    /// day and in rain, and in the cavern under the hill, each at 1920×1080 in the preset's target. Laid in the first time
+    /// a preset times them; the player is put back on the grid afterwards.
+    /// </summary>
+    void OpenLabProfile()
+    {
+        const string label = "open_lab";
+        var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
+        bool look = Environment.GetEnvironmentVariable("SHOTS_LOOK") == "1";
+        if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase)) && !look) return;
+        var map = openLab ??= BuildOpenLab();
+        var (stood, x, y, facing) = (game.Map, game.Player.GridX, game.Player.GridY, game.Player.Facing);
+        game.OpenWeather = null;
+        PutInLab(map, map.Marker("west_road")!.Pos, 90, 90);
+        Profile("open_lab: the meadow from the west road, by day");
+        game.OpenWeather = FieldWeather.Rain;
+        PutInLab(map, map.Marker("west_road")!.Pos, 90, 90);
+        Profile("open_lab: the meadow from the west road, in rain");
+        game.OpenWeather = null;
+        PutInLab(map, map.Marker("cavern_middle")!.Pos, 90, 60);
+        Profile("open_lab: the cavern under the hill");
+        game.Place(stood, x, y, facing);
+    }
+
     double TimeOpenLab(int frames = 30)
     {
         Frames(1);
@@ -130,6 +156,12 @@ partial class Harness
         OpenLabShot("open05_cavern_day");
         PutInLab(map, OnLabGround(map, 8, -2, 4, -4), 270, 240);
         OpenLabShot("open06_cavern_back_day");
+        // The cavern from four yaws, the player in its middle
+        for (int k = 0; k < 4; k++)
+        {
+            PutInLab(map, map.Marker("cavern_middle")!.Pos, k * 90, k * 90);
+            OpenLabShot($"open06{(char)('a' + k)}_cavern_{ways[k]}");
+        }
 
         // The river by its rock bridge, and the pond with its stack: the water and its mirror
         PutInLab(map, OnLabGround(map, 14, 37), 90, 110);
@@ -145,8 +177,11 @@ partial class Harness
         // After dark
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);
-        PutInLab(map, west.Pos, 90, 90);
-        OpenLabShot("open20_meadow_night");
+        for (int k = 0; k < 4; k++)
+        {
+            PutInLab(map, west.Pos, 90, k * 90);
+            OpenLabShot($"open20_meadow_night_{ways[k]}");
+        }
         PutInLab(map, OnLabGround(map, -22, 0, 4, -4), 90);
         OpenLabShot("open21_tunnel_night");
         PutInLab(map, OnLabGround(map, 14, 37), 90, 110);
@@ -156,8 +191,11 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
         game.OpenWeather = FieldWeather.Rain;
-        PutInLab(map, west.Pos, 90, 90);
-        OpenLabShot("open30_meadow_rain");
+        for (int k = 0; k < 4; k++)
+        {
+            PutInLab(map, west.Pos, 90, k * 90);
+            OpenLabShot($"open30_meadow_rain_{ways[k]}");
+        }
         PutInLab(map, OnLabGround(map, 14, 37), 90, 110);
         OpenLabShot("open31_river_rain");
         PutInLab(map, OnLabGround(map, -22, 0, 4, -4), 90);

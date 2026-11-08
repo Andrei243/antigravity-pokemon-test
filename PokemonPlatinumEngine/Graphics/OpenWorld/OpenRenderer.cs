@@ -380,14 +380,22 @@ internal sealed class OpenRenderer
     /// <summary>How far under the region the plain's ring begins, and how far out it keeps the border's own heights, in metres.</summary>
     public const float HorizonUnder = 1f, HorizonNear = 4f;
 
+    /// <summary>How far out the plain has come to the border's median height (smoothstep from <see cref="HorizonNear"/>), in metres: in rings, so no crease is sharp enough for the outlines.</summary>
+    public const float HorizonLevel = 124f;
+
+    /// <summary>The rings the plain eases through between <see cref="HorizonNear"/> and <see cref="HorizonLevel"/>, in metres out.</summary>
+    private static readonly float[] HorizonEase = { 12f, 28f, 60f };
+
     /// <summary>How far under the border's own height the plain lies: enough to stay under the region's ground, too little for the outlines to draw a line along it.</summary>
     public const float HorizonDrop = 0.04f;
 
     /// <summary>
     /// The plain's ring as vertices (GPU-free): the region's extent in chunks, and the ground's height at a point
     /// (null where there is none). A point every 2 m round the border, its height there (the lower of the border's and
-    /// the ground's <see cref="HorizonUnder"/> inside it) less 0.1 m, kept out to <see cref="HorizonNear"/> metres and
-    /// eased to the border's median out at <see cref="HorizonReach"/>; every face up.
+    /// the ground's <see cref="HorizonUnder"/> inside it) less <see cref="HorizonDrop"/>, kept out to
+    /// <see cref="HorizonNear"/> metres, eased through rings to the border's median by <see cref="HorizonLevel"/>
+    /// (a river's channel cut by the border fades out into the plain instead of running 2 km to the horizon as a
+    /// crease) and level out to <see cref="HorizonReach"/>; every face up.
     /// </summary>
     public static OpenVertices Horizon((int X0, int Z0, int X1, int Z1) bounds, Func<float, float, float?> heightAt)
     {
@@ -430,7 +438,21 @@ internal sealed class OpenRenderer
         float median = all.Count > 0 ? all[all.Count / 2] : 0f;
         for (int i = 0; i < heights.Length; i++) if (float.IsNaN(heights[i])) heights[i] = median;
 
-        var plain = new OpenVertices(loop.Count * 12);
+        // The rings out from the border: under the region, the border's own heights, the ease, level, the horizon
+        var outs = new List<float> { -HorizonUnder, HorizonNear };
+        outs.AddRange(HorizonEase);
+        outs.Add(HorizonLevel);
+        outs.Add(HorizonReach);
+        float HeightAt(int i, float outward)
+        {
+            float own = heights[i] - HorizonDrop;
+            if (outward <= HorizonNear) return own;
+            if (outward >= HorizonLevel) return median;
+            float t = (outward - HorizonNear) / (HorizonLevel - HorizonNear);
+            return own + (median - own) * (t * t * (3f - 2f * t));
+        }
+
+        var plain = new OpenVertices(loop.Count * (outs.Count - 1) * 6);
         var covers = OpenTerrainMesh.Covers(OpenCover.Grass, OpenCover.Grass, OpenCover.Grass);
         void Tri(Vector3 a, Vector3 b, Vector3 c)
         {
@@ -439,29 +461,48 @@ internal sealed class OpenRenderer
             plain.Add(b, Vector3.UnitY, covers, OpenTerrainMesh.Corners[1]);
             plain.Add(c, Vector3.UnitY, covers, OpenTerrainMesh.Corners[2]);
         }
-        Vector3 Ring(int i, float outward, float height)
+        Vector3 Ring(int i, float outward)
         {
             var p = loop[i].At + loop[i].Out * outward;
-            return new Vector3(p.X, height, p.Y);
+            return new Vector3(p.X, HeightAt(i, outward), p.Y);
         }
         for (int i = 0; i < loop.Count; i++)
         {
             int j = (i + 1) % loop.Count;
-            float hi = heights[i] - HorizonDrop, hj = heights[j] - HorizonDrop;
-            var ai = Ring(i, -HorizonUnder, hi); var aj = Ring(j, -HorizonUnder, hj);
-            var bi = Ring(i, HorizonNear, hi); var bj = Ring(j, HorizonNear, hj);
-            var ci = Ring(i, HorizonReach, median); var cj = Ring(j, HorizonReach, median);
-            Tri(ai, bi, bj); Tri(ai, bj, aj);
-            Tri(bi, ci, cj); Tri(bi, cj, bj);
+            for (int r = 0; r + 1 < outs.Count; r++)
+            {
+                var ai = Ring(i, outs[r]); var aj = Ring(j, outs[r]);
+                var bi = Ring(i, outs[r + 1]); var bj = Ring(j, outs[r + 1]);
+                Tri(ai, bi, bj); Tri(ai, bj, aj);
+            }
         }
         return plain;
     }
 
     // ------------------------------------------------------------------ the weather
 
+    // Where the weather stops in each metre's column of the map: the first surface a ray down from the sky meets
+    private readonly Dictionary<(int, int), float> shelter = new();
+    private OpenMap? shelterMap;
+
+    /// <summary>How high the sky's weather comes down in a column of the map: the first ground a ray from far over it meets, kept once asked (a metre's column).</summary>
+    private float ShelterAt(OpenMap map, float x, float z)
+    {
+        if (!ReferenceEquals(shelterMap, map)) { shelter.Clear(); shelterMap = map; }
+        var key = ((int)MathF.Floor(x), (int)MathF.Floor(z));
+        if (shelter.TryGetValue(key, out float height)) return height;
+        const double From = 400;
+        var hit = map.Ground.Raycast(new OpenVec(key.Item1 + 0.5, From, key.Item2 + 0.5), new OpenVec(0, -1, 0), From * 2);
+        height = hit is { } t ? (float)(From - t) : float.MinValue;
+        shelter[key] = height;
+        return height;
+    }
+
     private void DrawWeather(OpenScene scene, LightRig rig)
     {
-        OpenWeatherFx.Pieces(scene.Weather, scene.Eye, scene.Time, 1f - scene.CaveShare, pieces);
+        // Nothing falls under what roofs it over (a tunnel seen from its mouth) or inside rock: only over the first ground
+        // the sky meets
+        OpenWeatherFx.Pieces(scene.Weather, scene.Eye, scene.Time, 1f - scene.CaveShare, pieces, (x, z) => ShelterAt(scene.Map, x, z));
         WeatherPieces = pieces.Count;
         if (pieces.Count == 0) return;
         // Lit by the scene's light as it stands: no rain glows at night

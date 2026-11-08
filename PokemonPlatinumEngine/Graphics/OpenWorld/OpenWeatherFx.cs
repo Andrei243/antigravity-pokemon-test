@@ -62,9 +62,12 @@ internal static class OpenWeatherFx
 
     /// <summary>
     /// The pieces in the air round <paramref name="camera"/> at <paramref name="time"/> seconds, <paramref name="share"/>
-    /// of the weather's count (the cave's share takes them away), into a list of the caller's, cleared first.
+    /// of the weather's count (the cave's share takes them away), into a list of the caller's, cleared first. Where
+    /// <paramref name="shelter"/> is given, a piece under its height at the piece's place (the first ground the sky meets
+    /// there) is left out: nothing falls in a tunnel or inside a hill.
     /// </summary>
-    public static void Pieces(FieldWeather weather, Vector3 camera, double time, float share, List<WeatherPiece> into)
+    public static void Pieces(FieldWeather weather, Vector3 camera, double time, float share, List<WeatherPiece> into,
+        Func<float, float, float>? shelter = null)
     {
         into.Clear();
         int count = (int)(CountOf(weather) * Math.Clamp(share, 0f, 1f));
@@ -86,6 +89,7 @@ internal static class OpenWeatherFx
             }
             var head = new Vector3(Round(x, camera.X, Across), Round(y, camera.Y, Tall), Round(z, camera.Z, Across));
             if (Vector3.DistanceSquared(head, camera) < Nearest * Nearest) continue;
+            if (shelter != null && head.Y < shelter(head.X, head.Z)) continue;
             into.Add(new WeatherPiece(head, head - along * length, width, colour));
         }
     }

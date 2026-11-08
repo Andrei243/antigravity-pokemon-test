@@ -414,6 +414,8 @@ partial class Harness
 
             // The open world's prototype (plan 32 · OW0): its scene at 1920×1080 in this preset's target, the gate's floor
             OpenPrototypeProfile();
+            // The game's own open renderer (plan 32 · OW8) on the open test world, against the same 8 ms
+            OpenLabProfile();
         }
         openScene?.Unload();
         openScene = null;
