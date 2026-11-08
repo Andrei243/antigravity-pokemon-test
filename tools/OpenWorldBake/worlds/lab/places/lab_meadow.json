@@ -1,12 +1,16 @@
 {
   // The open test world's meadow (plan 32 · OW5): the roads' ends, a house north of the hill with its door into a
-  // grid room (OpenLabHouse, which the harness and the tests lay in themselves) and the step it is come out onto
+  // grid room (OpenLabHouse, which the harness and the tests lay in themselves) and the step it is come out onto.
+  // OW6's people on the north meadow, east of the house and north of the pond: someone who wanders, and two trainers
+  // of Platinum's data facing one another across the meadow, who see whoever stands between them at once
   "markers": [
     { "name": "west_road", "at": [-58, 0.5, 22], "yaw": 90 },
     { "name": "east_mouth", "at": [38, 0, 0], "yaw": 270 },
     { "name": "hill_foot", "at": [0, 0, -27], "yaw": 0 },
     { "name": "house_step", "at": [-20, 0.1, -40], "yaw": 0 },
-    { "name": "house_path", "at": [-20, 0.1, -34], "yaw": 180 }
+    { "name": "house_path", "at": [-20, 0.1, -34], "yaw": 180 },
+    { "name": "twins_gap", "at": [38, 0.2, -58], "yaw": 180 },
+    { "name": "north_meadow", "at": [6, 0.2, -60], "yaw": 90 }
   ],
   "doors": [
     {
@@ -18,5 +22,20 @@
   ],
   "solids": [
     { "name": "the house", "min": [-24, -1, -50], "max": [-16, 4, -43] }
+  ],
+  "people": [
+    {
+      "name": "walker", "at": [6, 0.2, -54], "yaw": 0, "displayName": "Walker",
+      "lines": ["Fine weather for a walk round the meadow."],
+      "moves": "wander", "radius": 4
+    },
+    {
+      "name": "camper_west", "at": [24, 0.2, -58], "yaw": 90, "trainer": "camper_jacob",
+      "sight": { "length": 16, "angle": 40 }
+    },
+    {
+      "name": "picnicker_east", "at": [52, 0.2, -58], "yaw": 270, "trainer": "picnicker_siena",
+      "sight": { "length": 16, "angle": 40 }
+    }
   ]
 }

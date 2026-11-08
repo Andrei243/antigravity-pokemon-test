@@ -42,7 +42,7 @@ public sealed class OpenPlayer
 /// player beside it are where the player last stood on the grid (a room's door, the region's arrival), which nothing
 /// draws or walks meanwhile. GPU-free.
 /// </summary>
-public sealed class OpenField
+public sealed partial class OpenField
 {
     public OpenMap Map { get; }
     public OpenPlayer Player { get; }
@@ -63,7 +63,8 @@ public sealed class OpenField
 
     /// <summary>
     /// A frame of the field: the ticks the frame brings, each running the field's rules (OW3: the player's capsule,
-    /// steered the same way every tick of the frame by <paramref name="input"/>) and then <paramref name="tick"/>, if
+    /// steered the same way every tick of the frame by <paramref name="input"/>; OW6: then the people and the follower,
+    /// <see cref="StepTheRest"/>) and then <paramref name="tick"/>, if
     /// given. Returns the ticks run.
     /// </summary>
     public int Advance(double seconds, OpenInput input, Action<OpenField>? tick = null)
@@ -72,6 +73,7 @@ public sealed class OpenField
         for (int i = 0; i < ticks; i++)
         {
             Player.Step(Map, input, Grants);
+            StepTheRest();
             tick?.Invoke(this);
         }
         return ticks;

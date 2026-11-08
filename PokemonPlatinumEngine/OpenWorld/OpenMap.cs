@@ -88,6 +88,8 @@ public sealed partial class OpenMap
     /// <summary>Adds a marker; two of one name are refused, since a script names it.</summary>
     public void Add(OpenMarker marker)
     {
+        if (personByKey.ContainsKey(marker.Name))
+            throw new ArgumentException($"open map {Name} has a marker and someone both named {marker.Name}: a script's faceto couldn't tell them apart");
         if (!markers.TryAdd(marker.Name, marker))
             throw new ArgumentException($"open map {Name} has two markers named {marker.Name}");
         order.Add(marker);

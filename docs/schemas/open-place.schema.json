@@ -354,6 +354,119 @@
         ],
         "additionalProperties": false
       }
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "at": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "yaw": {
+            "type": "number"
+          },
+          "look": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "displayName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "script": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "trainer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sight": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "length": {
+                "type": "number"
+              },
+              "angle": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "length"
+            ],
+            "additionalProperties": false
+          },
+          "moves": {
+            "enum": [
+              "Still",
+              "LookAbout",
+              "Wander"
+            ]
+          },
+          "radius": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bounds": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/properties/zones/items/properties/polygon/items"
+            }
+          },
+          "hiddenBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "shownBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "at"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

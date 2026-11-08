@@ -1059,7 +1059,7 @@ public partial class GameEngine
             game.flow.NpcWalks.RemoveAll(w => w.Who == who);
         }
 
-        public bool Walking => game.flow.PlayerWalk != null || game.flow.NpcWalks.Count > 0 || game.openWalk != null;
+        public bool Walking => game.flow.PlayerWalk != null || game.flow.NpcWalks.Count > 0 || game.OpenWalksUnderWay;
 
         public void Emote(NPC? who, EmoteBubble bubble, float seconds)
         {

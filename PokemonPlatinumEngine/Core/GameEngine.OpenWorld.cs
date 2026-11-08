@@ -50,6 +50,8 @@ public partial class GameEngine
         // What the player is put down in is no crossing (plan 32 · OW5)
         openCrossings.Settle(map, pos);
         openWalk = null;
+        // Everyone back where they were put, and whoever travels along behind the player (OW6)
+        BeginTheOpenPeople(flow.Open);
     }
 
     /// <summary>
@@ -63,15 +65,28 @@ public partial class GameEngine
     /// </summary>
     private void UpdateOpenField(float dt)
     {
+        var field = flow.Open!;
+        // Who of the map is there (plan 32 · OW6), as the story has them
+        KeepTheOpenPeopleThere(field);
         if (ScriptRunning)
         {
+            field.PeopleMayWander = false;
             UpdateScript(dt);
             return;
         }
+        // A trainer who saw the player walks up, and nothing else happens meanwhile (OW6)
+        if (openApproach != null)
+        {
+            WalkTheTrainersUp(field, dt);
+            return;
+        }
+        field.PeopleMayWander = !PeopleStayPut;
+        LetTheOpenPeopleGo(field);
+        if (InputManager.IsActionPressed(GameAction.Confirm) && TalkInTheOpen(field)) return;
         var stick = InputManager.GetStick();
         bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
         var input = new OpenInput(stick.X, stick.Y, run);
-        flow.Open!.Run(dt, _ => input, CrossTheVolumes);
+        field.Run(dt, _ => input, f => CrossTheVolumes(f) || LookForOpenTrainers(f));
     }
 
     /// <summary>
@@ -88,6 +103,7 @@ public partial class GameEngine
             flow.Open = new OpenField(map, place.Pos, place.Yaw);
             openCrossings.Settle(map, place.Pos);
             openWalk = null;
+            BeginTheOpenPeople(flow.Open);
         }
         else Log.Warn($"The save stood in the open map {place.Map}, which isn't there: it wakes on its grid place, {flow.Map.Name} {flow.Player.GridX},{flow.Player.GridY}.");
     }

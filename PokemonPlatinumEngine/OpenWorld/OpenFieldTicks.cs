@@ -21,6 +21,7 @@ public static class OpenFieldTicks
         for (int i = 0; i < ticks; i++)
         {
             field.Player.Step(field.Map, input(field), field.Grants);
+            field.StepTheRest();
             if (after?.Invoke(field) == true) return i + 1;
         }
         return ticks;
