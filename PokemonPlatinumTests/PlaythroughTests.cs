@@ -102,7 +102,7 @@ public class PlaythroughTests
         {
             var game = engine.Drive;
             var story = game.Story;
-            foreach (var (species, level) in new[] { ("Talonflame", 76), ("Venusaur", 76), ("Lucario", 76), ("Garchomp", 76), ("Gardevoir", 76) })
+            foreach (var (species, level) in new[] { ("Talonflame", 80), ("Venusaur", 80), ("Lucario", 80), ("Garchomp", 80), ("Gardevoir", 80) })
                 game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
             game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
             game.Flow.EncounterAids.RepelSteps = 1_000_000;

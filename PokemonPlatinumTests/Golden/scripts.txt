@@ -246,6 +246,20 @@ way -
   Aquarium Keeper> Face the water and use it from your bag. When the line twitches, reel it in!
   * fanfare FanfareKeyItem
   + FLAG_KALOS_RECEIVED_OLD_ROD
+=== AmbretteTown_FossilLab.Assistant
+from Assistant at 2,6 of AmbretteTown_FossilLab
+way -
+  Assistant> We found more amber in the cave than we have shelves for. Here, take a piece. There's a Pokémon of the sky in it.
+  > Lucas received the Old Amber!
+  > Lucas put it away in the Items pocket.
+  Assistant> Show it to the restorer. She'll have it flying again in no time.
+  * fanfare FanfareItem
+  + FLAG_KALOS_RECEIVED_OLD_AMBER
+=== AmbretteTown_FossilLab.Restorer
+from Restorer at 6,4 of AmbretteTown_FossilLab
+way -
+  Restorer> Welcome to the fossil laboratory! The cave up the coast is full of them, and we bring them back to life.
+  Restorer> No Fossils? My assistant may have one to spare. Ask him.
 === AnistarCity_Gym.GymGuide
 from Gym Guide at 8,15 of AnistarCity_Gym
 way -
@@ -2752,6 +2766,10 @@ way 0
   > Lucas received the TM39!
   > TM39 holds the move Rock Tomb.
   > Lucas put it away in the TMs & HMs pocket.
+  Grant> And this. On a wall you can't always go round a boulder, so you learn to move it.
+  > Lucas received the HM04!
+  > HM04 holds the move Strength.
+  > Lucas put it away in the TMs & HMs pocket.
   Grant> There's more of Kalos to climb. Keep looking for the next hold.
   * scene CyllageCity_Gym.Grant
   * battle kalos_grant_1 Won
@@ -2759,8 +2777,10 @@ way 0
   * defeat kalos_hiker_bruno
   * defeat kalos_hiker_armand
   * fanfare FanfareTM
+  * fanfare FanfareTM
   * endscene
   + FLAG_KALOS_DEFEATED_CYLLAGE_GYM
+  + FLAG_KALOS_RECEIVED_HM04
   + FLAG_KALOS_RECEIVED_TM_GRANT
   = VAR_KALOS_STORY 0 -> 18
   = VAR_OBJECTIVE 0 -> 518
@@ -6736,7 +6756,7 @@ way -
   Little Sister> ... Oh! You're Lucas? You're doing that Pokédex thing for the professor!
   Little Sister> Wow! Just like my big sister! Go for it!
 === SantaluneCity_Gym.GymGuide
-from Gym Guide at 9,15 of SantaluneCity_Gym
+from Gym Guide at 10,15 of SantaluneCity_Gym
 way -
   Gym Guide> Hello there, future Champion! Viola's Bug types don't care for fire or wind. Pick your partner well!
 === SantaluneCity_Gym.Viola
@@ -16868,6 +16888,25 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== coumarine_city.Sailor
+from Sailor at 248,507 of Kalos
+way -
+  Sailor> See the two little islands out in the bay? No boat calls there. You'd have to swim with a Pokémon.
+  Sailor> There's grass on both, and Pokémon nobody sees on the mainland. Or so the fishermen say.
+=== coumarine_city.Sycamore
+from Prof. Sycamore at 264,506 of Kalos
+way -
+  Prof. Sycamore> Lucas! I came down on the morning train to see the boats. And to see you, of course. Four Badges already!
+  Prof. Sycamore> The further you go, the further Kalos's towns lie apart. Here, let a Pokémon carry you between them.
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Prof. Sycamore> That HM teaches Fly. A Pokémon that knows it can take you to any town you've been to before. A bientôt!
+  * scene coumarine_city.The professor on the quay
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_RECEIVED_HM02
+  + seen coumarine_city.The professor on the quay
 === couriway_town.SuperRod
 from Fisherman at 640,364 of Kalos
 way -
@@ -21725,6 +21764,20 @@ way -
 from Worker at 636,239 of Kalos
 way -
   Worker> The valley stays shut until the ground settles. Something deep under Kalos is stirring.
+=== kalos_route_19.Shauna
+from Shauna at 684,320 of Kalos
+way -
+  Shauna> Lucas! I knew you'd come this way. Everybody's heading for Snowbelle now, aren't they?
+  Shauna> I found this at the bottom of my bag. I think it's from a Gym? Anyway, I can't swim up anything, so it's yours!
+  > Lucas received the HM07!
+  > HM07 holds the move Waterfall.
+  > Lucas put it away in the TMs & HMs pocket.
+  Shauna> It teaches Waterfall. Couriway's falls go down into a pool nobody fishes. Maybe there's something in it!
+  * scene kalos_route_19.Shauna on Route 19
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_RECEIVED_HM07
+  + seen kalos_route_19.Shauna on Route 19
 === kalos_route_2.Lesson
 from the trigger at 254,636 of Kalos
 way -
