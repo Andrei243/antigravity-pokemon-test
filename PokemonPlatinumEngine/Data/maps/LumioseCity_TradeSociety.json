@@ -1,0 +1,135 @@
+{
+  "name": "LumioseCity_TradeSociety",
+  "displayName": "Cercle des Échanges",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#####..####",
+    "#.........#",
+    "#.........#",
+    "#......##.#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 3,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 7,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 340,
+      "targetY": 398,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "host",
+      "name": "Gustavine",
+      "npcType": "socialite",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Host"
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "clerk",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Cords and stones for the trading-minded. Every member keeps a spare."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "lumiose_trades"
+    },
+    {
+      "id": "member",
+      "name": "Member",
+      "npcType": "ace_trainer_m",
+      "x": 6,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "I once traded a Pokémon to a friend and got it back twice as grand. Some of them only grow that way."
+      ]
+    },
+    {
+      "id": "newcomer",
+      "name": "Newcomer",
+      "npcType": "school_kid_f",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "My first trade! I was so nervous I nearly handed over my lunch instead."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

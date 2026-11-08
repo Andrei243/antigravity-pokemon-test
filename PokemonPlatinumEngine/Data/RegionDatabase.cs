@@ -988,6 +988,10 @@ public static class RegionDatabase
                 // Maison, the Poké Ball Factory in Laverre City, the Battle Château on Route 7 and Lumiose's last shops
                 "ChamberOfEmptiness", "KiloudeCity_Station", "KiloudeCity_BattleMaison", "KiloudeCity_BattleMaisonHall",
                 "LaverreCity_PokeBallFactory", "KalosRoute7_BattleChateau", "LumioseCity_Herboriste", "LumioseCity_BallBoutique",
+                // Plan 37 · FC5: Lumiose's four restaurants and the five rooms opened beside them
+                "LumioseCity_BistroDeux", "LumioseCity_TableATrois", "LumioseCity_Carrousel", "LumioseCity_GrandeTable",
+                "LumioseCity_GroomingSalon", "LumioseCity_Gazette", "LumioseCity_Gallery", "LumioseCity_TelevisionLobby",
+                "LumioseCity_TradeSociety",
             }
         },
         new()

@@ -1,0 +1,18 @@
+# The Cercle des Échanges in Lumiose City (plan 37 · FC5's wave, beside the restaurants): a society of ours for those who
+# trade Pokémon. Its host gives the player a Linking Cord once (FLAG_KALOS_TRADE_SOCIETY_CORD), which is how Kalos's
+# Pokémon that grow when traded grow with nobody else, and its counter sells more (marts.json's lumiose_trades).
+
+
+script Host
+  face self player
+  speaker "Gustavine"
+  if flag FLAG_KALOS_TRADE_SOCIETY_CORD goto Given
+  say "Welcome to the Cercle des Échanges! Our members trade Pokémon with friends all over Kalos."
+  say "Some Pokémon only grow when they are traded. With this cord, no trade is needed at all."
+  give "Linking Cord"
+  setflag FLAG_KALOS_TRADE_SOCIETY_CORD
+  say "Use it on one of them from your bag. Our counter sells more, should you need another."
+  end
+label Given
+  say "A trade is a friendship. So, in its own way, is a cord. Do make good use of yours."
+  end

@@ -1,0 +1,84 @@
+# La Grande Table in Lumiose City (plan 37 · FC5, the fourth of Lumiose's restaurants, and the one that charges). A
+# restaurant of ours whose menu costs 15,000 and is three courses against its staff, one in each format: a double
+# battle (Séverine), a triple (Évrard) and a rotation (Hippolyte), trainers of Kalos's table a step above the other
+# three restaurants' staff. Without the money the menu isn't served and the day's menu is kept. Once paid, the menu is
+# taken once a day (FLAG_DAILY_KALOS_RESTAURANT_4), and the dish is rarer than the others' and chosen by the turns the
+# three courses took together (TURNS): six or fewer an Ability Capsule, ten or fewer a PP Max, fifteen or fewer two PP
+# Ups, more two Rare Candies.
+
+
+script Host
+  face self player
+  speaker "Ernestine"
+  if flag FLAG_DAILY_KALOS_RESTAURANT_4 goto Served
+  say "Welcome to La Grande Table. Our menu is three courses, a double, a triple and a rotation battle."
+  ask "The menu is {money 15000}. Will you take it?"
+  if no goto Later
+  takemoney 15000
+  if result == 0 goto Poor
+  setflag FLAG_DAILY_KALOS_RESTAURANT_4
+  say "Thank you. Our kitchen's dishes are rare ones, and the quicker the meal, the rarer the dish."
+  speaker "Séverine"
+  say "The first course, served for two. Shall we begin?"
+  battle severine as "kalos_restaurant_grande_severine" canlose
+  if lost goto Lost
+  speaker "Évrard"
+  say "The main course comes in three. I hope you have room."
+  battle evrard as "kalos_restaurant_grande_evrard" canlose
+  if lost goto Lost
+  speaker "Hippolyte"
+  say "The house's dessert turns on the table. It is my favourite course to serve."
+  battle hippolyte as "kalos_restaurant_grande_hippolyte" canlose
+  if lost goto Lost
+  speaker "Ernestine"
+  say "Three courses in {var:TURNS} turns. The kitchen has prepared something worthy of it."
+  if var TURNS <= 6 goto Best
+  if var TURNS <= 10 goto Good
+  if var TURNS <= 15 goto Fair
+  say "An unhurried meal, as a grand one should be. Please accept this."
+  give "Rare Candy" 2
+  end
+label Best
+  say "Magnificent! The rarest thing our kitchen has ever sent out."
+  give "Ability Capsule"
+  end
+label Good
+  say "Splendid. The kitchen sends out one of its treasures."
+  give "PP Max"
+  end
+label Fair
+  say "A meal well eaten. Here is the dish of the day."
+  give "PP Up" 2
+  end
+label Poor
+  say "Oh dear, that is not quite enough. We shall keep your table for when you are ready."
+  end
+label Lost
+  heal
+  speaker "Ernestine"
+  say "The meal is over for today, I'm afraid. Your Pokémon have been seen to. We hope to see you tomorrow."
+  end
+label Later
+  say "Of course. La Grande Table will be here when you are ready."
+  end
+label Served
+  say "You have dined with us today already. The kitchen will be ready again tomorrow."
+  end
+
+
+# The staff between meals
+script Staff
+  face self player
+  if subject "severine" goto Severine
+  if subject "evrard" goto Evrard
+  speaker "Hippolyte"
+  say "Two, then three, then the table turns. A guest must keep their wits about them here."
+  end
+label Severine
+  speaker "Séverine"
+  say "Each course here is served differently. Guests who change their plans quickly do well."
+  end
+label Evrard
+  speaker "Évrard"
+  say "Madame Ernestine takes the bill before the first course. That is how grand we are."
+  end

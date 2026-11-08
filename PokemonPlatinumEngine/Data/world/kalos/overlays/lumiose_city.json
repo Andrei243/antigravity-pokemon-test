@@ -34,9 +34,23 @@
     // Plan 23, Kalos's last places: the Herboriste on the north boulevard and the Poké Ball Boutique south of the middle
     // ring, two of the doors Z4b left shut (the restaurant behind 22 is plan 37 · FC5's)
     { "warp": 3, "map": "LumioseCity_Herboriste", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 29, "map": "LumioseCity_BallBoutique", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 29, "map": "LumioseCity_BallBoutique", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 37 · FC5, Lumiose's restaurants: three of ours, each a menu of three courses in one format (the Bistro des Deux
+    // behind 22 doubles, La Table à Trois behind 13 triples, Le Carrousel behind 24 rotations), and La Grande Table behind
+    // 6, whose paid menu is a course of each; and five rooms behind the doors beside them: the grooming salon, the
+    // Lumiose Gazette, the Galerie Lumière, Lumiose Television's lobby and the Cercle des Échanges, whose host gives the
+    // Linking Cord
+    { "warp": 22, "map": "LumioseCity_BistroDeux", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 13, "map": "LumioseCity_TableATrois", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 24, "map": "LumioseCity_Carrousel", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 6, "map": "LumioseCity_GrandeTable", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 26, "map": "LumioseCity_GroomingSalon", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 31, "map": "LumioseCity_Gazette", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "LumioseCity_Gallery", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 15, "map": "LumioseCity_TelevisionLobby", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 30, "map": "LumioseCity_TradeSociety", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 0, 1, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 20, 21, 22, 24, 25, 26, 30, 31 ],
+  "locked": [ 0, 1, 4, 7, 8, 11, 12, 14, 16, 17, 20, 21, 25 ],
   "triggers": [
     { "script": "Assistants", "x": 358, "z": 412, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 9 },
     { "script": "NotYetNorth", "x": 358, "z": 301, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 0 },

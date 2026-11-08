@@ -1,0 +1,79 @@
+# The Bistro des Deux in Lumiose City (plan 37 · FC5, the first of Lumiose's restaurants). A restaurant of ours: its menu
+# is three courses, each a double battle against its staff (Odette, Fabien and Bertrand, trainers of Kalos's table with
+# "doubleBattle"), fought one after another on the player's own team and paid as any trainer's battle. The menu is
+# taken once a day (FLAG_DAILY_KALOS_RESTAURANT_1, set as it is served, so a meal lost is the day's meal too), and the
+# dish the kitchen sends out at the end is chosen by the turns the three courses took together (TURNS: the fewer, the
+# better): four or fewer a Rare Candy, eight or fewer two Lum Berries, twelve or fewer two Sitrus Berries, more three
+# Oran Berries. The dishes are items and nothing more; plan 39 · CR7's meals with powers are served elsewhere.
+
+
+script Host
+  face self player
+  speaker "Clothilde"
+  if flag FLAG_DAILY_KALOS_RESTAURANT_1 goto Served
+  say "Welcome to the Bistro des Deux. Here everything is served in pairs, the battles too."
+  ask "Will you take today's menu? Three courses, each a double battle against our staff."
+  if no goto Later
+  setflag FLAG_DAILY_KALOS_RESTAURANT_1
+  say "Splendid. The quicker you finish, the finer the dish the kitchen sends out."
+  speaker "Odette"
+  say "The first course! Two of mine against two of yours."
+  battle odette as "kalos_restaurant_bistro_odette" canlose
+  if lost goto Lost
+  speaker "Fabien"
+  say "The main course, still steaming. Mind the plates!"
+  battle fabien as "kalos_restaurant_bistro_fabien" canlose
+  if lost goto Lost
+  speaker "Bertrand"
+  say "And to finish, something from my own stove."
+  battle bertrand as "kalos_restaurant_bistro_bertrand" canlose
+  if lost goto Lost
+  speaker "Clothilde"
+  say "The whole menu in {var:TURNS} turns! Let us see what the kitchen sends out for you."
+  if var TURNS <= 4 goto Best
+  if var TURNS <= 8 goto Good
+  if var TURNS <= 12 goto Fair
+  say "A leisurely meal. The kitchen sends a little something all the same."
+  give "Oran Berry" 3
+  end
+label Best
+  say "So quick the soup was still steaming! The chef's finest, with his compliments."
+  give "Rare Candy"
+  end
+label Good
+  say "Brisk and stylish. The kitchen is quite pleased with you."
+  give "Lum Berry" 2
+  end
+label Fair
+  say "A good, honest meal. Here is the dish of the day."
+  give "Sitrus Berry" 2
+  end
+label Lost
+  heal
+  speaker "Clothilde"
+  say "The kitchen has closed for today, I'm afraid. Your Pokémon have been seen to. Do come back tomorrow."
+  end
+label Later
+  say "Another time, then. The menu is new every day."
+  end
+label Served
+  say "You have dined with us today already. The kitchen opens again tomorrow."
+  end
+
+
+# The staff between meals
+script Staff
+  face self player
+  if subject "odette" goto Odette
+  if subject "fabien" goto Fabien
+  speaker "Bertrand"
+  say "A dish is like a battle. Too long on the fire and it is spoiled."
+  end
+label Odette
+  speaker "Odette"
+  say "Two plates in each hand, two Pokémon on each side. You get used to it!"
+  end
+label Fabien
+  speaker "Fabien"
+  say "Ask Madame Clothilde for the menu. I'll be waiting with the main course."
+  end
