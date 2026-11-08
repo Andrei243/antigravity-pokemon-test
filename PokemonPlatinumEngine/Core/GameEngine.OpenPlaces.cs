@@ -247,7 +247,7 @@ public partial class GameEngine
 
         public float LookAt(string marker, float seconds)
         {
-            game.MarkerHere(marker, "camera look");
+            game.MarkerHere(marker, nameof(Op.LookAt));
             game.OpenLook = marker;
             // (A hurry waits for nothing: the camera is where it was sent at once)
             return Skipping ? 0f : seconds;
