@@ -1,5 +1,31 @@
 {
   "people": {
+    "sky_celeste": {
+      "name": {
+        "en": [
+          "Céleste"
+        ],
+        "text": [
+          "Céleste"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sky Trainer Céleste: Up here on the hill the wind is perfect. Will you take to the sky with me?"
+        ],
+        "text": [
+          "Antrenoarea de Văzduh Céleste: Aici sus, pe deal, vântul e perfect. Îți iei zborul cu mine?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sky Trainer Céleste: You flew circles round me!"
+        ],
+        "text": [
+          "Antrenoarea de Văzduh Céleste: Ai zburat în cercuri în jurul meu!"
+        ]
+      }
+    },
     "youngster": {
       "name": {
         "en": [

@@ -66,8 +66,11 @@ public class KalosGymsAndWaterTests
         foreach (var w in panels)
         {
             Assert.Equal(TileBehavior.WarpPanel, hall.BehaviourAt(w.SourceX, w.SourceY));
-            // Every panel leads to a panel that leads back
-            Assert.Contains(panels, back => (back.SourceX, back.SourceY) == (w.TargetX, w.TargetY) && (back.TargetX, back.TargetY) == (w.SourceX, w.SourceY));
+            // Every panel leads to a panel that leads back, but the Leader's way out, which puts the player down by the door
+            if (WarpPanels.IsPanel(hall, w.TargetX, w.TargetY))
+                Assert.Contains(panels, back => (back.SourceX, back.SourceY) == (w.TargetX, w.TargetY) && (back.TargetX, back.TargetY) == (w.SourceX, w.SourceY));
+            else
+                Assert.True(w.TargetY >= hall.Height - 3, $"{room}: a panel at {w.SourceX},{w.SourceY} leads nowhere back but not to the door");
             Assert.Contains(hall.Props, p => p.Type == PropType.WarpPanel && (p.X, p.Y) == (w.SourceX, w.SourceY));
         }
         // From the door, walking alone, the Leader's tile before her is out of reach

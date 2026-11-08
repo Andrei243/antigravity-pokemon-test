@@ -49,6 +49,9 @@
     "#...........#",
     "######.######"
   ],
+  "behaviours": [
+    { "x": 10, "y": 4, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
   "props": [
     {
       "type": "Rug",
@@ -70,6 +73,13 @@
       "y": 2,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -79,6 +89,14 @@
       "targetMap": "Kalos",
       "targetX": 673,
       "targetY": 256,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 4,
+      "targetMap": "SnowbelleCity_Gym",
+      "targetX": 5,
+      "targetY": 16,
       "targetFacing": "Down"
     }
   ],

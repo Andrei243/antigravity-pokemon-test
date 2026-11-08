@@ -90,7 +90,9 @@ internal sealed partial class Autoplayer
                 return Elsewhere(it, leg.Map);
             case LegKind.Reach:
                 if (map.Name == leg.Map && player.GridX == leg.X && player.GridY == leg.Y) { Next(it); return ActionFrame.None; }
-                return Toward(it, leg.Map, (x, y) => x == leg.X && y == leg.Y, leg.X, leg.Y, null);
+                // (onto a warp panel the last step taken is the leg done: the panel carries the player off it before it is stood on)
+                return Toward(it, leg.Map, (x, y) => x == leg.X && y == leg.Y, leg.X, leg.Y, null,
+                    onLastStep: map.Name == leg.Map && WarpPanels.IsPanel(map, leg.X, leg.Y) ? () => it.Taken = true : null);
             case LegKind.Trigger:
                 return ToTrigger(it, leg);
             case LegKind.Talk:

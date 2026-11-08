@@ -58,7 +58,8 @@
     { "x": 10, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
     { "x": 7, "y": 15, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
     { "x": 4, "y": 8, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
-    { "x": 8, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+    { "x": 8, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 4, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
   ],
   "props": [
     {
@@ -151,6 +152,13 @@
       "y": 5,
       "width": 1,
       "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
     }
   ],
   "warps": [
@@ -240,6 +248,14 @@
       "targetMap": "LaverreCity_Gym",
       "targetX": 4,
       "targetY": 8,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 5,
+      "targetMap": "LaverreCity_Gym",
+      "targetX": 5,
+      "targetY": 16,
       "targetFacing": "Down"
     }
   ],

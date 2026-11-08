@@ -34,7 +34,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -139,7 +139,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_puck:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.12,
         "accent": "en-us"
       }
@@ -376,7 +376,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "bm_george:0.5,am_fenrir:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 0.92,
         "accent": "en-gb"
       }
@@ -402,7 +402,7 @@
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_fenrir:0.5",
         "speed": 1.07,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -498,7 +498,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.4,af_nicole:0.6",
         "speed": 0.9,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -724,7 +724,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_george:0.6,bm_daniel:0.4",
         "speed": 0.96,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1017,7 +1017,7 @@
         "engine": "kokoro-82m",
         "blend": "am_echo:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1384,7 +1384,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.5,af_kore:0.5",
         "speed": 0.99,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1527,7 +1527,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_daniel:0.5,bm_george:0.5",
         "speed": 0.94,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1548,7 +1548,7 @@
         "engine": "kokoro-82m",
         "blend": "bf_emma:0.5,af_river:0.5",
         "speed": 0.93,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1652,7 +1652,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_river:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -1854,7 +1854,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.98,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2142,7 +2142,7 @@
         "engine": "kokoro-82m",
         "blend": "am_eric:0.6,am_liam:0.4",
         "speed": 1.04,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2225,6 +2225,10 @@
     },
     "quinn": {
       "note": "first spoken at cinnabar_island_gym.txt(19)",
+      "provisional": true
+    },
+    "quiz_host": {
+      "note": "first spoken at LumioseCity_PrismTowerGym.txt(56)",
       "provisional": true
     },
     "quiz_lady": {
@@ -2343,7 +2347,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.6,af_kore:0.4",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2363,7 +2367,7 @@
         "engine": "kokoro-82m",
         "blend": "am_fenrir:0.6,am_michael:0.4",
         "speed": 1.02,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2476,8 +2480,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_michael:0.5",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2720,7 +2724,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_bella:0.5,af_jessica:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -2758,8 +2762,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.6,am_echo:0.4",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -3411,6 +3415,7 @@
     "Pryce": "pryce",
     "Psychic": "psychic",
     "Quinn": "quinn",
+    "Quiz Host": "quiz_host",
     "Quiz Lady": "quiz_lady",
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",

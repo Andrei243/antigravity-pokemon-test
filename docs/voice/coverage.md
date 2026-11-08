@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1491 | 1449 | 42 | 1 | 0 |
-| Scripts (`script:`) | 11368 | 10883 | 485 | 17 | 0 |
-| People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
-| **All** | 21023 | 20431 | 592 | 22 | 0 |
+| Scripts (`script:`) | 11398 | 10913 | 485 | 17 | 0 |
+| People of the world (`world:`) | 7939 | 7877 | 62 | 4 | 0 |
+| **All** | 21062 | 20470 | 592 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 847 |
+| a question's answers | 856 |
 | a sign | 1736 |
-| the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1847 |
+| the game's own voice (speaker none) | 289 |
+| the game's own voice (text) | 1855 |
 
 ## The cast
 
-- Named characters: 461 voices (360 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 462 voices (361 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
-- Archetypes in use: 243, with 734 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1943.
+- Archetypes in use: 244, with 737 voices to cast (V5).
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1952.
 
 ## Lines by voice
 
@@ -40,8 +40,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1943 | 142 |
-| `look:gentleman (any)` | 743 | 15 |
+| `@self` | 1952 | 142 |
+| `look:gentleman (any)` | 747 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
 | `look:lady (any)` | 448 | 1 |
@@ -82,9 +82,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `black_belt` | 99 | 14 |
 | `cyrus` | 92 | 7 |
 | `steven` | 91 | 1 |
-| `look:fisherman (any)` | 90 | 4 |
 | `look:hiker (any)` | 90 | 0 |
 | `prof_oak` | 90 | 3 |
+| `look:fisherman (any)` | 89 | 4 |
 | `class:bug_catcher (any)` | 88 | 0 |
 | `ace_trainer` | 84 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |

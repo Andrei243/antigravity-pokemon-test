@@ -236,6 +236,8 @@ internal sealed partial class Autoplayer
         }
         // Mid-step, or carried by ice or a moving floor: the step in hand goes on
         if (player.IsMoving || player.IsSliding || player.IsPushing) return ActionFrame.None;
+        // ...and so does a warp panel's ride, spin and all (plan 23, Kalos's Gyms: Valerie's and Olympia's panels)
+        if (engine.RidingAPanel) return ActionFrame.None;
 
         Arrived(map, player.GridX, player.GridY);
         if (Itinerary is { Finished: false } itinerary) return Follow(itinerary, dt);

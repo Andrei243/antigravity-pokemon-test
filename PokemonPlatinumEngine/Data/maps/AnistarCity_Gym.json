@@ -60,7 +60,8 @@
     { "x": 2, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
     { "x": 4, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
     { "x": 10, "y": 10, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
-    { "x": 3, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+    { "x": 3, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 8, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
   ],
   "props": [
     {
@@ -158,6 +159,13 @@
       "type": "WarpPanel",
       "x": 3,
       "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 8,
+      "y": 5,
       "width": 1,
       "depth": 1
     }
@@ -265,6 +273,14 @@
       "targetMap": "AnistarCity_Gym",
       "targetX": 10,
       "targetY": 10,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 5,
+      "targetMap": "AnistarCity_Gym",
+      "targetX": 5,
+      "targetY": 16,
       "targetFacing": "Down"
     }
   ],
