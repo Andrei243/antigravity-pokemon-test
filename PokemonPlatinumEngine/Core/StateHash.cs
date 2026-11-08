@@ -37,8 +37,13 @@ public static class StateHash
         if (flow.Open is { } open)
         {
             var at = open.Player.Pos;
+            // and its people and its follower where they stand (OW6), each who is there in the map's order
+            var people = new StringBuilder();
+            foreach (var p in open.Map.People)
+                if (p.Present) people.Append(' ').Append(p.Key).Append(' ').Append(Num(p.Pos.X)).Append(' ').Append(Num(p.Pos.Y)).Append(' ').Append(Num(p.Pos.Z)).Append(' ').Append(Num(p.Yaw));
+            if (open.Follower is { } follower) people.Append(" follower ").Append(Num(follower.Pos.X)).Append(' ').Append(Num(follower.Pos.Y)).Append(' ').Append(Num(follower.Pos.Z));
             row[1] = Fnv(string.Join(' ', row[1].ToString(CultureInfo.InvariantCulture), "open", open.Map.Name, Num(at.X), Num(at.Y), Num(at.Z), Num(open.Player.Yaw),
-                open.Clock.Tick.ToString(CultureInfo.InvariantCulture)));
+                open.Clock.Tick.ToString(CultureInfo.InvariantCulture)) + people);
         }
 
         var team = new StringBuilder();

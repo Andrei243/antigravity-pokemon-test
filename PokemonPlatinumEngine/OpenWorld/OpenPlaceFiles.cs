@@ -32,6 +32,41 @@ public sealed class OpenPlaceFile
 
     /// <summary>Solid boxes the capsule collides with (a building's block, a prop's), until the kit lays them itself (OW9).</summary>
     public List<OpenSolidFile> Solids { get; set; } = new();
+
+    /// <summary>People and trainers (plan 32 · OW6): unique in the map by name, and never named as a marker is.</summary>
+    public List<OpenPersonFile> People { get; set; } = new();
+}
+
+/// <summary>
+/// Someone of an open map (plan 32 · OW6): their name (what a script's <c>walkto</c> and <c>faceto</c> name), where they
+/// stand ([x, y, z], the feet's) and the way they face in degrees; their look, the name over their lines, their own
+/// script or their lines; the trainer of the data they battle as and their cone (<c>sight</c>); how they move
+/// (<c>still</c>, <c>lookAbout</c>, <c>wander</c>) within a <c>radius</c> of metres or a polygon (<c>bounds</c>); and
+/// the flags that hide or show them.
+/// </summary>
+public sealed class OpenPersonFile
+{
+    [DataRequired] public string Name { get; set; } = "";
+    [DataRequired] public double[] At { get; set; } = Array.Empty<double>();
+    public double Yaw { get; set; }
+    public string? Look { get; set; }
+    public string? DisplayName { get; set; }
+    public string? Script { get; set; }
+    public List<string> Lines { get; set; } = new();
+    public string? Trainer { get; set; }
+    public OpenSightFile? Sight { get; set; }
+    public OpenPersonMoves Moves { get; set; } = OpenPersonMoves.Still;
+    public double? Radius { get; set; }
+    public double[][]? Bounds { get; set; }
+    public string? HiddenBy { get; set; }
+    public string? ShownBy { get; set; }
+}
+
+/// <summary>A trainer's cone: how far they see, in metres, and how wide the cone is in all, in degrees.</summary>
+public sealed class OpenSightFile
+{
+    [DataRequired] public double Length { get; set; }
+    public double Angle { get; set; } = 60;
 }
 
 /// <summary>A marker: its name, its place in the air ([x, y, z], the feet's) and the way it faces in degrees (nought south, 90 east).</summary>
@@ -191,6 +226,26 @@ public static class OpenPlaceFiles
                 z.Slots.Select(s => new OpenSlot(s.Species, s.MinLevel, s.MaxLevel, s.Weight)).ToList(), z.Density, z.Cap));
         foreach (var w in place.Water) map.Add(OpenWaterBox.Metres(w.Name, w.Min[0], w.Min[1], w.Max[0], w.Max[1], w.Level));
         foreach (var s in place.Solids) map.Add(OpenBox.Metres(s.Name, s.Min[0], s.Min[1], s.Min[2], s.Max[0], s.Max[1], s.Max[2]));
+        foreach (var p in place.People) map.Add(PersonOf(key, p));
+    }
+
+    /// <summary>Someone of a place as the map keeps them (plan 32 · OW6).</summary>
+    public static OpenPerson PersonOf(string key, OpenPersonFile p)
+    {
+        var home = Air(p.At);
+        return new OpenPerson(p.Name, key, home, YawOfDegrees(p.Yaw))
+        {
+            Look = p.Look,
+            ShownName = p.DisplayName,
+            Script = p.Script,
+            Lines = p.Lines.ToList(),
+            TrainerId = p.Trainer,
+            Sight = p.Sight is { } s ? OpenSight.Of(s.Length, s.Angle) : null,
+            Moves = p.Moves,
+            Bounds = p.Bounds is { } bounds ? bounds.Select(Ground).ToList() : OpenPerson.Circle(home, OpenPos.Millimetres(p.Radius ?? OpenPerson.WanderRadius / 1000.0)),
+            HiddenBy = p.HiddenBy,
+            ShownBy = p.ShownBy
+        };
     }
 
     /// <summary>An area of <c>world.json</c> as the map keeps it.</summary>
@@ -291,6 +346,33 @@ public static class OpenPlaceFiles
             Point(place.Solids[i].Min, 3, file, $"$.solids[{i}].min");
             Point(place.Solids[i].Max, 3, file, $"$.solids[{i}].max");
             if (place.Solids[i].Min.Zip(place.Solids[i].Max).Any(p => p.Second <= p.First)) Fail(file, $"$.solids[{i}]", "max is more than min on every axis");
+        }
+        Validate(place.People, file);
+    }
+
+    static void Validate(List<OpenPersonFile> people, string file)
+    {
+        for (int i = 0; i < people.Count; i++)
+        {
+            var p = people[i];
+            string at = $"$.people[{i}]";
+            Name(p.Name, file, at + ".name");
+            if (p.Name == "player") Fail(file, at + ".name", "'player' is the player in a script; someone else has a name of their own");
+            Point(p.At, 3, file, at + ".at");
+            if (p.Trainer is { Length: 0 }) Fail(file, at + ".trainer", "names a trainer of the data, or is left out");
+            if (p.Sight is { } sight)
+            {
+                if (p.Trainer == null) Fail(file, at + ".sight", "only a trainer looks out for the player");
+                if (!(sight.Length > 0) || sight.Length * OpenPos.PerMetre > OpenSight.Longest) Fail(file, at + ".sight.length", $"is more than nought and {OpenSight.Longest / OpenPos.PerMetre} m at most");
+                if (!(sight.Angle > 0) || sight.Angle > 360) Fail(file, at + ".sight.angle", "is the cone's width in all, more than nought and 360° at most");
+            }
+            if (p.Radius is { } radius && !(radius > 0)) Fail(file, at + ".radius", "is more than nought");
+            if (p.Bounds is { } bounds)
+            {
+                if (p.Radius != null) Fail(file, at, "wanders within a radius or within bounds, not both");
+                Polygon(bounds, file, at + ".bounds");
+            }
+            if ((p.Radius != null || p.Bounds != null) && p.Moves != OpenPersonMoves.Wander) Fail(file, at, "has bounds to wander in and doesn't wander (moves: wander)");
         }
     }
 

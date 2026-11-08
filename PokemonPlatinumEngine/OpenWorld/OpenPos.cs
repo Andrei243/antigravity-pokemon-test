@@ -66,6 +66,13 @@ public static class OpenYaw
     /// <summary>Any count of 65,536ths brought into 0 to 65,535 (a turn and a half is a half).</summary>
     public static int Normalize(int yaw) => yaw & (Turn - 1);
 
+    /// <summary>How far <paramref name="to"/> is turned from <paramref name="from"/>, the shorter way: −32,767 to 32,768 (plan 32 · OW6).</summary>
+    public static int Between(int from, int to)
+    {
+        int d = Normalize(to - from);
+        return d > Turn / 2 ? d - Turn : d;
+    }
+
     /// <summary>The grid's facing as a yaw.</summary>
     public static int Of(Direction facing) => facing switch
     {

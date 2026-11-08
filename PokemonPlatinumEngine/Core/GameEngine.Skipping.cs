@@ -152,7 +152,7 @@ public partial class GameEngine
     // A frame of the walks a hurry takes unseen, and the longest wait it lets pass for them
     private const float SkipFrame = 1f / 60f, LongestElapsed = 30f;
 
-    private bool SomeoneWalks => flow.PlayerWalk != null || flow.NpcWalks.Count > 0 || flow.Player.IsMoving || openWalk != null;
+    private bool SomeoneWalks => flow.PlayerWalk != null || flow.NpcWalks.Count > 0 || flow.Player.IsMoving || OpenWalksUnderWay;
 
     /// <summary>
     /// Everyone a script set walking takes their steps to the end, a frame at a time and all together, as they would

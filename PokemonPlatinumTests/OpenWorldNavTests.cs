@@ -375,8 +375,13 @@ public class OpenWorldNavTests
         Assert.DoesNotContain(OpenNavMesh.FileName, some.Keys);
         var report = new NavReport();
         var all = RegionBake.Files(description, navReport: report);
-        Assert.Equal(Mesh.Bytes(), all[OpenNavMesh.FileName]);
-        Assert.Equal(nav.Value.Report.ToString(), report.ToString());
+        // baked with the places' solids and water (plan 32 · OW6: the house on the meadow is walked round)
+        var (solids, waters) = RegionBake.PlacedOf(description);
+        Assert.Contains(solids, s => s.Name == "the house");
+        var withPlaces = new NavReport();
+        Assert.Equal(NavBake.Build(level0.Value, solids, waters, report: withPlaces).Bytes(), all[OpenNavMesh.FileName]);
+        Assert.Equal(withPlaces.ToString(), report.ToString());
+        Assert.NotEqual(Mesh.Bytes(), all[OpenNavMesh.FileName]);
         // --check holds it as it holds the chunks: a changed byte of the mesh is a difference
         string dir = Path.Combine(Path.GetTempPath(), "openlab-navcheck-" + Guid.NewGuid().ToString("N"));
         try

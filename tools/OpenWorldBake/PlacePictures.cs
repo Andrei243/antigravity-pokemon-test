@@ -13,7 +13,7 @@ namespace OpenWorldBake;
 public static class PlacePictures
 {
     static readonly Color Solid = new(150, 96, 52, 255), Water = new(60, 140, 255, 255), Zone = new(110, 230, 90, 255),
-        Trigger = new(250, 220, 40, 255), Door = new(240, 70, 200, 255), Marker = new(255, 255, 255, 255), Ink = new(20, 18, 28, 255);
+        Trigger = new(250, 220, 40, 255), Door = new(240, 70, 200, 255), Marker = new(255, 255, 255, 255), Person = new(255, 150, 40, 255), Ink = new(20, 18, 28, 255);
 
     /// <summary>Draws the maps' places over <paramref name="plan"/> (drawn over <paramref name="box"/> at <paramref name="perMetre"/>), and returns its key, a line each.</summary>
     public static List<string> Over(PixelCanvas plan, IEnumerable<OpenMap> maps, (double X0, double Z0, double X1, double Z1) box, int perMetre)
@@ -90,6 +90,32 @@ public static class PlacePictures
                 double yaw = OpenYaw.Radians(m.Yaw);
                 plan.Line(px, py, px + (int)Math.Round(Math.Sin(yaw) * 7), py + (int)Math.Round(Math.Cos(yaw) * 7), Marker);
                 key.Add($"M{++n} marker {m.Name} at {P(m.Pos)}, facing {m.Yaw * 360 / OpenYaw.Turn}° (white, its tick the way it faces)");
+            }
+            // The people (plan 32 · OW6): a wanderer's bounds, a trainer's cone out to its length
+            foreach (var p in map.People)
+            {
+                if (p.Moves == OpenPersonMoves.Wander)
+                    for (int i = 0; i < p.Bounds.Count; i++)
+                    {
+                        var (ax, az) = p.Bounds[i]; var (bx, bz) = p.Bounds[(i + 1) % p.Bounds.Count];
+                        Line(ax, az, bx, bz, Person);
+                    }
+                if (p.Sight is { } sight)
+                {
+                    int Ex(int yaw) => p.Home.X + (int)Math.Round(Math.Sin(OpenYaw.Radians(yaw)) * sight.Length);
+                    int Ez(int yaw) => p.Home.Z + (int)Math.Round(Math.Cos(OpenYaw.Radians(yaw)) * sight.Length);
+                    int left = p.HomeYaw - sight.HalfAngle, right = p.HomeYaw + sight.HalfAngle;
+                    Line(p.Home.X, p.Home.Z, Ex(left), Ez(left), Person);
+                    Line(p.Home.X, p.Home.Z, Ex(right), Ez(right), Person);
+                    for (int i = 0; i < 8; i++)
+                    {
+                        int a = left + (right - left) * i / 8, b = left + (right - left) * (i + 1) / 8;
+                        Line(Ex(a), Ez(a), Ex(b), Ez(b), Person);
+                    }
+                }
+                Tag(p.Home.X, p.Home.Z, "P", Person);
+                key.Add($"P{++n} {(p.TrainerId != null ? $"trainer {p.TrainerId}" : "person")} {p.Key} ({p.Place}) at {P(p.Home)}, facing {p.HomeYaw * 360 / OpenYaw.Turn}°, {p.Moves}"
+                    + (p.Sight is { } s ? $", seeing {M(s.Length)} m over {s.HalfAngle * 720 / OpenYaw.Turn}°" : "") + " (orange: its bounds or its cone)");
             }
         }
         return key;
