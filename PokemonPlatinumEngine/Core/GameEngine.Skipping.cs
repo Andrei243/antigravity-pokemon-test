@@ -152,7 +152,7 @@ public partial class GameEngine
     // A frame of the walks a hurry takes unseen, and the longest wait it lets pass for them
     private const float SkipFrame = 1f / 60f, LongestElapsed = 30f;
 
-    private bool SomeoneWalks => flow.PlayerWalk != null || flow.NpcWalks.Count > 0 || flow.Player.IsMoving;
+    private bool SomeoneWalks => flow.PlayerWalk != null || flow.NpcWalks.Count > 0 || flow.Player.IsMoving || openWalk != null;
 
     /// <summary>
     /// Everyone a script set walking takes their steps to the end, a frame at a time and all together, as they would
@@ -167,6 +167,8 @@ public partial class GameEngine
         flow.NpcWalks.Clear();
         flow.PlayerWalk = null;
         flow.FieldMoveStep = false;
+        // (and an open map's walk to a marker, which gives up by itself too: plan 32 · OW5)
+        FinishTheOpenWalk();
     }
 
     /// <summary>
@@ -190,6 +192,7 @@ public partial class GameEngine
     {
         var target = MapDatabase.Get(mapName);
         PlayAreaMusic(target, x, y);
+        flow.Open = null;
         flow.Map = target;
         flow.Player.SetPosition(x, y, facing ?? flow.Player.Facing);
         world.Life.Clear();

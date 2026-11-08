@@ -18,7 +18,7 @@ namespace PokemonPlatinumEngine.Story;
 /// whole chapter's, to the end and then looks at the flags, the bag and the team; and with
 /// <see cref="ShowsNothing"/> it is where a script that may only set things up is run for a new game.
 /// </summary>
-public sealed class HeadlessScriptHost : IScriptHost
+public sealed partial class HeadlessScriptHost : IScriptHost
 {
     public StoryState Story { get; }
     public Party Party { get; }

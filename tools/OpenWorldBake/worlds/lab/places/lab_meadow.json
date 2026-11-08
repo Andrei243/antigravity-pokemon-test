@@ -1,0 +1,22 @@
+{
+  // The open test world's meadow (plan 32 · OW5): the roads' ends, a house north of the hill with its door into a
+  // grid room (OpenLabHouse, which the harness and the tests lay in themselves) and the step it is come out onto
+  "markers": [
+    { "name": "west_road", "at": [-58, 0.5, 22], "yaw": 90 },
+    { "name": "east_mouth", "at": [38, 0, 0], "yaw": 270 },
+    { "name": "hill_foot", "at": [0, 0, -27], "yaw": 0 },
+    { "name": "house_step", "at": [-20, 0.1, -40], "yaw": 0 },
+    { "name": "house_path", "at": [-20, 0.1, -34], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "house_door",
+      "box": { "min": [-21, -1, -43], "max": [-19, 2.5, -42] },
+      "room": "OpenLabHouse", "at": [3, 6], "facing": "up",
+      "out": "house_step"
+    }
+  ],
+  "solids": [
+    { "name": "the house", "min": [-24, -1, -50], "max": [-16, 4, -43] }
+  ]
+}

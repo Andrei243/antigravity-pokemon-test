@@ -15,7 +15,7 @@ namespace ContentCheck;
 /// a finding of its own (<see cref="Unreadable"/>), and what depends on it is left out of the checks.
 /// </para>
 /// </summary>
-public sealed class GameContent
+public sealed partial class GameContent
 {
     /// <summary>One region's world: its folder under the data folder, its overlays and the maps built of it (null when it wouldn't load).</summary>
     public sealed record Region(string Folder, World World, IReadOnlyList<OverlaySource> Overlays, IReadOnlyList<Map>? Maps);
@@ -69,6 +69,7 @@ public sealed class GameContent
         content.ReadRooms();
         content.ReadWorlds();
         content.ReadSoundMap();
+        content.ReadOpenWorlds();
         return content;
     }
 

@@ -11,22 +11,28 @@ namespace ContentCheck;
 /// </summary>
 public static class Scripts
 {
+    /// <summary>A problem the script library tells of ("file.txt(12): what.") as a finding of that file and line.</summary>
+    public static Finding FindingOf(string problem)
+    {
+        int bracket = problem.IndexOf(".txt(", StringComparison.Ordinal), close = problem.IndexOf("): ", StringComparison.Ordinal);
+        return bracket > 0 && close > bracket
+            ? new Finding(Kind.ScriptProblem, $"{ScriptLibrary.Folder}/{problem[..bracket]}.txt", "line " + problem[(bracket + 5)..close], problem[(close + 3)..].TrimEnd('.'))
+            : new Finding(Kind.ScriptProblem, ScriptLibrary.Folder, "scripts", problem);
+    }
+
     public static void Check(GameContent content, List<Finding> found)
     {
         var scripts = content.Scripts;
         string FileOf(string file) => $"{ScriptLibrary.Folder}/{file}.txt";
 
-        // "file.txt(12): what."
-        foreach (string problem in scripts.Problems(mapExists: name => content.MapNamed(name) != null, songExists: MusicLibrary.Exists, soundExists: AudioManager.SoundNames.Contains))
-        {
-            int bracket = problem.IndexOf(".txt(", StringComparison.Ordinal), close = problem.IndexOf("): ", StringComparison.Ordinal);
-            found.Add(bracket > 0 && close > bracket
-                ? new Finding(Kind.ScriptProblem, FileOf(problem[..bracket]), "line " + problem[(bracket + 5)..close], problem[(close + 3)..].TrimEnd('.'))
-                : new Finding(Kind.ScriptProblem, ScriptLibrary.Folder, "scripts", problem));
-        }
+        // "file.txt(12): what." (an open map is a map a warp may name too, plan 32 · OW5: OpenWorlds tells it to go by warpto)
+        foreach (string problem in scripts.Problems(mapExists: name => content.MapNamed(name) != null || content.OpenMapNamed(name) != null, songExists: MusicLibrary.Exists, soundExists: AudioManager.SoundNames.Contains))
+            found.Add(FindingOf(problem));
 
         // A file is looked in for the place it is named for: an open area, or a room. One named for nowhere is never read
         var open = content.Regions.SelectMany(r => r.World.Index.Areas).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        // (an open map's area is a place too, plan 32 · OW5)
+        open.UnionWith(content.OpenRegions.SelectMany(r => r.Maps ?? Array.Empty<PokemonPlatinumEngine.OpenWorld.OpenMap>()).SelectMany(m => m.Areas).Select(a => a.Key));
         // (the Pokégear's calls are a file of their own, which the game starts by its name, plan 20 · J3)
         foreach (string file in scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).OrderBy(f => f, StringComparer.Ordinal))
             if (!open.Contains(file) && content.MapNamed(file) == null)

@@ -185,6 +185,9 @@ public enum Op
     Train,
     // The charms of a Pokédex filled (plan 40 · GE5): how many are due, and the first handed over
     Charm,
+    // The open world's places (plan 32 · OW5): someone walked to, put at and turned to a marker, the player warped to an
+    // open map's marker, and the camera sent to look at one
+    WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
