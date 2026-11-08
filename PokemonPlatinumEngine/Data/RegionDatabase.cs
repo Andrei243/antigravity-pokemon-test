@@ -1036,6 +1036,10 @@ public static class RegionDatabase
                 "KonikoniCity_Restaurant", "PaniolaRanch_Nursery", "PaniolaTown_KiawesHouse", "RoyalAvenue_Megamart",
                 "RoyalAvenue_Shop", "AkalaRoute8_Motel", "AkalaRoute8_FossilCenter", "AkalaRoute9_PoliceStation",
                 "UlaulaRoute15_AetherHouse", "UlaulaRoute17_PoliceStation", "HainaDesert_RuinsOfAbundance",
+                // Plan 23 · Z8: Ultra Space's worlds (maps of the drawn kind, behind the Altar's wormhole), Megalo Tower's
+                // top and the Battle Royal Dome
+                "UltraDeepSea", "UltraJungle", "UltraDesert", "UltraPlant", "UltraCrater", "UltraForest", "UltraRuin",
+                "UltraMegalopolis", "MegaloTower", "RoyalAvenue_BattleRoyalDome",
             }
         },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

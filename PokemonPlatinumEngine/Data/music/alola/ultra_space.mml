@@ -1,0 +1,34 @@
+# Ultra Space (plan 23 · Z8): the worlds behind the Ultra Wormhole and Ultra Megalopolis, a city without light. A celesta
+# turning in whole tones over a choir that never resolves, a slow harp and a low synth bass on a drone of E; no drums,
+# so nothing here has a pulse anyone on Alola would know. The same by day and by night.
+# Original composition for this game, in the modern sound.
+title Ultra Space (Alola)
+tempo 72
+meter 4/4
+reverb 0.42
+night none
+room hall 2.6
+
+track lead celesta vol=0.92 pan=0.1 rev=0.48
+  r1 | L o5 e4 g+4 b4 g+4 | o6 c2 o5 a+4 e4 | o5 f+2. a4 | o5 g+1 |
+  o5 b4 g+4 e4 g+4 | o6 e2 c4 o5 a+4 | o5 a2. f+4 | o5 e1 |
+  o6 e4 c4 o5 a+4 e4 | o5 f+2 a4 f+4 | o5 g4 e4 c4 e4 | o5 g+1 |
+  o5 b4 g4 d4 g4 | o5 e2 g4 o6 c4 | o5 a2. f+4 | o5 e1 |
+
+track glow harp vol=0.62 pan=-0.3 rev=0.5
+  o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 | L o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 | o4 c8 g8 o5 c8 d8 e8 o4 g8 o5 c8 d8 | o4 d8 a8 o5 d8 e8 f+8 o4 a8 o5 d8 e8 | o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 |
+  o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 | o4 c8 g8 o5 c8 d8 e8 o4 g8 o5 c8 d8 | o4 d8 a8 o5 d8 e8 f+8 o4 a8 o5 d8 e8 | o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 |
+  o4 c8 g8 o5 c8 d8 e8 o4 g8 o5 c8 d8 | o4 d8 a8 o5 d8 e8 f+8 o4 a8 o5 d8 e8 | o4 c8 g8 o5 c8 d8 e8 o4 g8 o5 c8 d8 | o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 |
+  o4 g8 o5 d8 g8 a8 b8 d8 g8 a8 | o4 c8 g8 o5 c8 d8 e8 o4 g8 o5 c8 d8 | o4 d8 a8 o5 d8 e8 f+8 o4 a8 o5 d8 e8 | o4 e8 b8 o5 e8 f+8 g+8 o4 b8 o5 e8 f+8 |
+
+track air choir vol=0.46 rev=0.55
+  o4 (e g+ b)1 | L o4 (e g+ b)1 | o4 (c e a+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+  o4 (e g+ b)1 | o4 (c e a+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+  o4 (c e a+)1 | o4 (d f+ a)1 | o4 (c e g)1 | o4 (e g+ b)1 |
+  o4 (g b > d)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+
+track bass synthbass vol=0.76 rev=0.15
+  o2 e1 | L o2 e1 | o2 c1 | o2 d1 | o2 e1 |
+  o2 e1 | o2 c1 | o2 d1 | o2 e1 |
+  o2 c1 | o2 d1 | o2 c1 | o2 e1 |
+  o2 g1 | o2 c1 | o2 d1 | o2 e1 |

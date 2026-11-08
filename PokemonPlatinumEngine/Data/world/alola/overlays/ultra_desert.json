@@ -1,0 +1,25 @@
+{
+  // Ultra Desert (plan 23 · Z8): a world of Ultra Space, drawn by hand in our own drawing of what the games describe.
+  // It is come to through the Ultra Wormhole over the Altar of the Sunne and Moone's dais (poni_altar.txt) and left by
+  // the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Its Ultra Beast stands at 32,16 until caught.
+  "area": "ultra_desert",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "readAt": [
+    {
+      "x": 32,
+      "z": 55,
+      "script": "UltraWayHome"
+    }
+  ],
+  "people": {
+    "beast": {
+      "name": "Pheromosa",
+      "npcType": "Pokemon",
+      "species": "Pheromosa",
+      "script": "Beast",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CAUGHT_PHEROMOSA"
+    }
+  }
+}

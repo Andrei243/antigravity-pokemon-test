@@ -1,0 +1,64 @@
+# Megalo Tower's top floor, Ultra Megalopolis (plan 23 · Z8). The lines are our own, on Ultra Sun and Ultra Moon's beats
+# as they are publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"). The Lightseekers
+# wait here once the seven Ultra Beasts have been met (FLAG_ALOLA_ULTRA_AT_TOWER, set at the Altar), before Necrozma,
+# the being that took the city's light long ago. Necrozma is battled at 65 after a staged beat and back each time the
+# tower is come to until it is caught; the first battle, whatever comes of it, gives the light back (VAR_ALOLA_ULTRA 4,
+# FLAG_ALOLA_LIGHT_RETURNED), which draws Blacephalon to the city and Stakataka to the Altar.
+
+
+script Necrozma
+  if var VAR_ALOLA_ULTRA >= 4 goto Again
+  speaker "Veyra"
+  say "There. That prism is what took our light. It has slept on it for longer than anyone in this city has been alive."
+  say "We can't wake it and hope to stand. You can. Please, {player}."
+label Again
+  face self player
+  speaker none
+  scene "Necrozma"
+  letterbox on 0.4
+  camera pan 7 4 1.0
+  camera zoom 1.5 0.8
+  effect beam 7 4 wait
+  slowmo 0.4 1.2
+  cry "Necrozma"
+  text "The prism cracked, and light poured out of it as a shape of black crystal unfolded, hungry for more!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Necrozma" 65 nofleeing
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_NECROZMA
+  hide self
+  if var VAR_ALOLA_ULTRA >= 4 end
+  effect burst 7 4 wait
+  speaker "Veyra"
+  say "The light... It's going back. All of it, back to the sky. Look, Oskin. Look at the windows!"
+  speaker "Oskin"
+  say "I can see my own hands without a lamp. {player}, everyone in the city will want to thank you."
+  speaker "Veyra"
+  say "The wormholes will close now, mostly. The ones that stay open, we'll watch. Thank you for everything."
+  setflag FLAG_ALOLA_LIGHT_RETURNED
+  setvar VAR_ALOLA_ULTRA 4
+  objective alolaRoyalDome
+  end
+
+
+script Veyra
+  face veyra player
+  speaker "Veyra"
+  if var VAR_ALOLA_ULTRA >= 4 goto Lit
+  say "Necrozma has never let anyone this close. It knows you are different."
+  end
+label Lit
+  say "We were the Lightseekers. I suppose we'll need a new name now. Come back whenever you like, {player}."
+  end
+
+
+script Oskin
+  face oskin player
+  speaker "Oskin"
+  if var VAR_ALOLA_ULTRA >= 4 goto Lit
+  say "Stay behind us if you like. No? Ha. Of course not."
+  end
+label Lit
+  say "Back home on Alola, they say there's a dome where four Trainers battle at once. You should see it."
+  end

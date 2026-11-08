@@ -4,10 +4,177 @@
 # gone once it is caught or beaten (FLAG_ALOLA_ALTAR_DONE). VAR_ALOLA_STORY 51 is the way in, 52 the Altar passed.
 
 
+#
+# After the Hall of Fame (plan 23 · Z8; rulings, "Ultra Space and the Battle Royal Dome"): the Lightseekers of Ultra
+# Megalopolis wait here once they have called at the player's house (VAR_ALOLA_ULTRA 1, FLAG_ALOLA_ULTRA_AT_ALTAR), and
+# open the Ultra Wormhole over the dais (VAR_ALOLA_ULTRA 2), read where it hangs (Wormhole): a world of each of the
+# seven Ultra Beasts, and Ultra Megalopolis once all seven have been met (VAR_ALOLA_ULTRA 3, counted as the player
+# comes back). After Necrozma (VAR_ALOLA_ULTRA 4) a Stakataka stands among the altar's stones until it is caught.
+#   0  nothing yet
+#   1  the Lightseekers met at home, the Beast Balls and Poipole given (AlolaRoute1_PlayersHouse.txt)
+#   2  the Ultra Wormhole opened over the dais (this file)
+#   3  the seven Ultra Beasts met, Ultra Megalopolis open (this file)
+#   4  Necrozma met at the top of Megalo Tower and the city's light given back (MegaloTower.txt)
+
+
 script OnEnter
+  if var VAR_ALOLA_ULTRA >= 2 effect rift 32 14 hold
+  if var VAR_ALOLA_ULTRA != 2 goto Story
+  # (each world's beast adds one to VAR_ALOLA_ULTRA_MET the first time it is met)
+  if var VAR_ALOLA_ULTRA_MET < 7 goto Story
+  scene "The way to Ultra Megalopolis"
+  face veyra player
+  face oskin player
+  speaker "Veyra"
+  say "All seven, {player}. Every one of them has met you, and every one of them has gone quiet since."
+  say "The wormholes are calmer than they have been in years. I think they were only ever afraid."
+  speaker "Oskin"
+  say "Then it's time. The wormhole can reach our city now. Megalo Tower is at its head, and the thing that ate our light sits on top."
+  speaker "Veyra"
+  say "We'll go ahead and wait for you at the top of the tower. Choose Ultra Megalopolis when you step into the light."
+  hide veyra
+  hide oskin
+  setflag FLAG_ALOLA_ULTRA_AT_TOWER
+  setvar VAR_ALOLA_ULTRA 3
+  objective alolaMegalopolis
+  endscene
+  end
+label Story
   if var VAR_ALOLA_STORY != 51 end
   if flag FLAG_ALOLA_ALTAR_DONE end
   setflag FLAG_ALOLA_AT_ALTAR
+  end
+
+
+# The Lightseekers by the dais, the first time the player comes up the passage after their visit
+script Lightseekers
+  scene "The Ultra Wormhole opens"
+  face veyra player
+  speaker "Veyra"
+  say "You came. This altar is where a wormhole first opened on Alola, the day your friend's Cosmog called the sun."
+  speaker "Oskin"
+  say "The way between the worlds is thin here. With the right light, it opens. Watch the dais."
+  speaker none
+  letterbox on 0.4
+  camera pan 32 14 1.0
+  camera zoom 1.3 0.8
+  if has "Solgaleo" goto TheSun
+  effect burst 32 14 wait
+  text "Veyra held up a lens of black glass, and the light of the dais gathered in it and tore the air open!"
+  goto Opened
+label TheSun
+  cry "Solgaleo"
+  effect burst 32 14 wait
+  text "Solgaleo's mane blazed in its ball, and the light of the dais answered it and tore the air open!"
+label Opened
+  effect rift 32 14 hold
+  camera release 0.4
+  letterbox off 0.3
+  speaker "Veyra"
+  say "An Ultra Wormhole. Through it lie the worlds the Ultra Beasts come from: seven of them, each with its own."
+  say "Meet them where they live, {player}. Catch them if you can, with the Beast Balls. Calm them, at the least."
+  speaker "Oskin"
+  say "When all seven have met you, come back here. We'll be waiting."
+  setvar VAR_ALOLA_ULTRA 2
+  objective alolaUltraHunt
+  endscene
+  end
+
+
+# The Ultra Wormhole over the dais, read where it hangs (overlay readAt)
+script Wormhole
+  speaker none
+  if var VAR_ALOLA_ULTRA < 2 goto Quiet
+  text "A tear in the air hangs over the dais. Through it, other worlds shimmer and turn."
+  choose "Where will the wormhole take you?" "Ultra Deep Sea" "Ultra Jungle" "Ultra Desert" "Ultra Plant" "Further..." "Stay here"
+  if result == 0 goto DeepSea
+  if result == 1 goto Jungle
+  if result == 2 goto Desert
+  if result == 3 goto Plant
+  if result == 4 goto Further
+  end
+label Further
+  if var VAR_ALOLA_ULTRA >= 3 goto WithTheCity
+  choose "Where will the wormhole take you?" "Ultra Crater" "Ultra Forest" "Ultra Ruin" "Stay here"
+  if result == 0 goto Crater
+  if result == 1 goto Forest
+  if result == 2 goto Ruin
+  end
+label WithTheCity
+  choose "Where will the wormhole take you?" "Ultra Crater" "Ultra Forest" "Ultra Ruin" "Ultra Megalopolis" "Stay here"
+  if result == 0 goto Crater
+  if result == 1 goto Forest
+  if result == 2 goto Ruin
+  if result == 3 goto City
+  end
+label DeepSea
+  text "{player} stepped into the light..."
+  warp "UltraDeepSea" 32 54 up
+  end
+label Jungle
+  text "{player} stepped into the light..."
+  warp "UltraJungle" 32 54 up
+  end
+label Desert
+  text "{player} stepped into the light..."
+  warp "UltraDesert" 32 54 up
+  end
+label Plant
+  text "{player} stepped into the light..."
+  warp "UltraPlant" 32 54 up
+  end
+label Crater
+  text "{player} stepped into the light..."
+  warp "UltraCrater" 32 54 up
+  end
+label Forest
+  text "{player} stepped into the light..."
+  warp "UltraForest" 32 54 up
+  end
+label Ruin
+  text "{player} stepped into the light..."
+  warp "UltraRuin" 32 54 up
+  end
+label City
+  text "{player} stepped into the light..."
+  warp "UltraMegalopolis" 32 54 up
+  end
+label Quiet
+  text "The stone of the dais is warm, as if the sun were still on it."
+  end
+
+
+script Veyra
+  face veyra player
+  speaker "Veyra"
+  say "The wormhole will stay open while we are here. Step into its light and choose a world."
+  end
+
+
+script Oskin
+  face oskin player
+  speaker "Oskin"
+  say "The Beast Balls are made for them. Anything else, and they'll barely notice they've been thrown at."
+  end
+
+
+# Drawn to the altar's stones as the light came back to Ultra Megalopolis: a wall of stones that is one creature
+script Stakataka
+  face self player
+  speaker none
+  scene "Stakataka"
+  letterbox on 0.4
+  camera pan 16 30 1.0
+  camera zoom 1.4 0.8
+  shake self 3
+  cry "Stakataka"
+  text "One of the altar's walls shifted. Its stones were looking at {player}, every one of them."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Stakataka" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_STAKATAKA
+  hide self
   end
 
 

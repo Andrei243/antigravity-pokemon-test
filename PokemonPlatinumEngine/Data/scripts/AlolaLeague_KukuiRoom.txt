@@ -9,6 +9,7 @@ script Kukui
   face kukui player
   speaker "Prof. Kukui"
   if flag FLAG_ALOLA_DEFEATED_KUKUI goto Won
+  if flag AlolaHallOfFame goto Defence
   scene "Kukui"
   say "Woo! Welcome, {player}! You made it, cousin. The Elite Four are down, and nobody sits in this room's chair yet."
   say "I built this League with Hala and the others, because I wanted you kids to have something to aim for."
@@ -34,3 +35,71 @@ label Won
   say "The Hall of Fame is through here."
   warp "AlolaLeague_HallOfFame" 6 10 up
   end
+
+
+# The Champion's title defended (plan 23 · Z8; rulings, "Ultra Space and the Battle Royal Dome"): once Alola has its
+# Champion, whoever beats the Elite Four challenges the one in the chair, as in Sun and Moon. Ours: the challenger is
+# drawn from three who know the player (Hau, Gladion and Hapu), each with a team of our own (defence_*), and Professor
+# Kukui stands aside to announce them. A defence won goes on to the Hall of Fame as the first victory did.
+label Defence
+  scene "A title defence"
+  say "Champion! A challenger has made it through all four of the Elite Four. You know what that means. Defend that title!"
+  random 3
+  if result == 1 goto Gladion
+  if result == 2 goto Hapu
+  call DefendAgainstHau
+  goto Defended
+label Gladion
+  call DefendAgainstGladion
+  goto Defended
+label Hapu
+  call DefendAgainstHapu
+label Defended
+  speaker "Prof. Kukui"
+  say "...Woo! The Champion of Alola keeps the title! Come on, the Hall of Fame wants to hear about this."
+  setflag FLAG_ALOLA_DEFEATED_KUKUI
+  endscene
+  warp "AlolaLeague_HallOfFame" 6 10 up
+  end
+
+
+script DefendAgainstHau
+  setflag FLAG_ALOLA_DEFENCE_HAU
+  show challenger_hau
+  face challenger_hau player
+  speaker "Hau"
+  say "Surprise! I trained every single day since the last time. Today I'm taking that chair, {player}. For real!"
+  battle challenger_hau as "defence_hau"
+  speaker "Hau"
+  say "Aw, man... I really thought this was the day. Okay! Malasadas, then training. In that order."
+  hide challenger_hau
+  clearflag FLAG_ALOLA_DEFENCE_HAU
+  return
+
+
+script DefendAgainstGladion
+  setflag FLAG_ALOLA_DEFENCE_GLADION
+  show challenger_gladion
+  face challenger_gladion player
+  speaker "Gladion"
+  say "I didn't come here to make friends. I came here because you're the one to beat. Let's go."
+  battle challenger_gladion as "defence_gladion"
+  speaker "Gladion"
+  say "...Fine. You're still the strongest. I'll be back, and next time it won't be fine."
+  hide challenger_gladion
+  clearflag FLAG_ALOLA_DEFENCE_GLADION
+  return
+
+
+script DefendAgainstHapu
+  setflag FLAG_ALOLA_DEFENCE_HAPU
+  show challenger_hapu
+  face challenger_hapu player
+  speaker "Hapu"
+  say "A kahuna should know where she stands. So I climbed the mountain to find out. Don't you dare hold back."
+  battle challenger_hapu as "defence_hapu"
+  speaker "Hapu"
+  say "Hmph. Poni's ground is solid, and so are you. I'll tell the island the Champion is in good hands."
+  hide challenger_hapu
+  clearflag FLAG_ALOLA_DEFENCE_HAPU
+  return

@@ -45,15 +45,16 @@ public class AlolaRestTests
     }
 
     [Fact]
-    public void EveryRoomOfTheNewPlacesIsAlolasAndNoDoorIsLeftShutButTheBattleRoyalDomes()
+    public void EveryRoomOfTheNewPlacesIsAlolasAndNoDoorIsLeftShut()
     {
         foreach (string room in NewRooms)
             Assert.Equal(RegionDatabase.Alola, RegionDatabase.RegionOfMap(room)?.Id);
-        // The Battle Royal Dome is plan 23 · Z8's: the one door of the islands still shut
+        // The Battle Royal Dome's door, the last one shut, is plan 23 · Z8's, opened by the Hall of Fame
         var world = LoadedWorld.Value;
         var shut = world.Index.Areas.Where(k => world.Overlay(k)?.Locked is { Count: > 0 })
             .SelectMany(k => world.Overlay(k)!.Locked!.Select(w => (k, w))).ToList();
-        Assert.Equal(new[] { ("royal_avenue", 2) }, shut);
+        // (Ultra Megalopolis's houses other than Megalo Tower stay shut: the city is no place to visit door to door)
+        Assert.True(shut.All(s => s.Item1 == "ultra_megalopolis"), string.Join(", ", shut));
     }
 
     private sealed class Game
@@ -148,7 +149,8 @@ public class AlolaRestTests
             var host = game.Play(file, "SecondTotem", map, "second_totem");
             Assert.Contains(host.Log, l => l.StartsWith(start));
         }
-        Assert.Equal("alolaFree", Objectives.Current(game.Story, RegionDatabase.Alola)?.Name);
+        // and then the Lightseekers' hunt through Ultra Space (plan 23 · Z8), which begins at home after the Hall of Fame
+        Assert.Equal("alolaUltraAltar", Objectives.Current(game.Story, RegionDatabase.Alola)?.Name);
     }
 
     [Fact]

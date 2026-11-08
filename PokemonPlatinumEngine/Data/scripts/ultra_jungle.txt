@@ -1,0 +1,35 @@
+# Ultra Jungle (plan 23 · Z8), a world of Ultra Space. The lines are our own, on Ultra Sun and Ultra Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): no picture, map, line or
+# script of the games is read. It is come to through the Ultra Wormhole over the Altar's dais (poni_altar.txt) and left
+# by the one it is come in by (common.UltraWayHome). Its Ultra Beast, Buzzwole, waits at 32,16: met as a wild Pokémon
+# after a staged beat, at level 60, and back each time the world is come to until it is caught
+# (FLAG_ALOLA_CAUGHT_BUZZWOLE); FLAG_ALOLA_MET_BUZZWOLE says it has been met, and the first meeting
+# counts in VAR_ALOLA_ULTRA_MET, which the Lightseekers count to seven at the Altar.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  if flag FLAG_ALOLA_MET_BUZZWOLE end
+  text "The air is thick and warm, and the leaves are as broad as rooftops. Somewhere, something is lifting something heavy."
+  end
+
+
+script Beast
+  face self player
+  speaker none
+  scene "Buzzwole"
+  letterbox on 0.4
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect shadow 32 16 wait
+  cry "Buzzwole"
+  text "A great red shape swung down from the canopy and landed hard, flexing its arms. It wants to see how strong {player} is."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Buzzwole" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_BUZZWOLE
+  if not flag FLAG_ALOLA_MET_BUZZWOLE addvar VAR_ALOLA_ULTRA_MET 1
+  setflag FLAG_ALOLA_MET_BUZZWOLE
+  hide self
+  end

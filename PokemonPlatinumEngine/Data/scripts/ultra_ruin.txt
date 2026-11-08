@@ -1,0 +1,35 @@
+# Ultra Ruin (plan 23 · Z8), a world of Ultra Space. The lines are our own, on Ultra Sun and Ultra Moon's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"): no picture, map, line or
+# script of the games is read. It is come to through the Ultra Wormhole over the Altar's dais (poni_altar.txt) and left
+# by the one it is come in by (common.UltraWayHome). Its Ultra Beast, Guzzlord, waits at 32,16: met as a wild Pokémon
+# after a staged beat, at level 60, and back each time the world is come to until it is caught
+# (FLAG_ALOLA_CAUGHT_GUZZLORD); FLAG_ALOLA_MET_GUZZLORD says it has been met, and the first meeting
+# counts in VAR_ALOLA_ULTRA_MET, which the Lightseekers count to seven at the Altar.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  if flag FLAG_ALOLA_MET_GUZZLORD end
+  text "A city once stood here. Its streets are broken, and ash falls without end. Whatever was here has been eaten."
+  end
+
+
+script Beast
+  face self player
+  speaker none
+  scene "Guzzlord"
+  letterbox on 0.4
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect mist 32 16 wait
+  cry "Guzzlord"
+  text "The ground shook. Something vast and hungry dragged itself out of the ruins, its mouths wide open."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Guzzlord" 60
+  if result == 3 setflag FLAG_ALOLA_CAUGHT_GUZZLORD
+  if not flag FLAG_ALOLA_MET_GUZZLORD addvar VAR_ALOLA_ULTRA_MET 1
+  setflag FLAG_ALOLA_MET_GUZZLORD
+  hide self
+  end

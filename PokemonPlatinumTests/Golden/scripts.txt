@@ -207,6 +207,14 @@ way -
   = VAR_ALOLA_STORY 0 -> 1
   = VAR_OBJECTIVE 0 -> 601
   + seen AlolaRoute1_PlayersHouse.Mom on the first morning
+=== AlolaRoute1_PlayersHouse.Oskin
+from Oskin at 7,10 of AlolaRoute1_PlayersHouse
+way -
+  Oskin> Poni Island. The Altar. We'll be there.
+=== AlolaRoute1_PlayersHouse.Veyra
+from Veyra at 5,9 of AlolaRoute1_PlayersHouse
+way -
+  Veyra> We'll meet you at the Altar of the Sunne and Moone.
 === AlolaRoute2_BerryFieldsHouse.Caretaker
 from Caretaker at 7,6 of AlolaRoute2_BerryFieldsHouse
 way -
@@ -4994,6 +5002,42 @@ way 1.0.0, from answer 1
 way 1.0.1, from answer 3
   Master> Not this time. Raise Turtwig a little more, and the two of you come back to me.
   * battle master_turtwig alone Turtwig noitems Lost
+=== MegaloTower.Necrozma
+from Necrozma at 7,4 of MegaloTower
+way 0
+  Veyra> There. That prism is what took our light. It has slept on it for longer than anyone in this city has been alive.
+  Veyra> We can't wake it and hope to stand. You can. Please, Lucas.
+  > The prism cracked, and light poured out of it as a shape of black crystal unfolded, hungry for more!
+  Veyra> The light... It's going back. All of it, back to the sky. Look, Oskin. Look at the windows!
+  Oskin> I can see my own hands without a lamp. Lucas, everyone in the city will want to thank you.
+  Veyra> The wormholes will close now, mostly. The ones that stay open, we'll watch. Thank you for everything.
+  * scene MegaloTower.Necrozma
+  * letterbox on
+  * camera Pan 7 4
+  * camera Zoom 1.5
+  * effect Beam 7 4
+  * slowmo 0.4
+  * cry Necrozma
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Necrozma 65 nofleeing Won
+  * effect Burst 7 4
+  + FLAG_ALOLA_LIGHT_RETURNED
+  = VAR_ALOLA_ULTRA 0 -> 4
+  = VAR_OBJECTIVE 0 -> 693
+  + seen MegaloTower.Necrozma
+way 1, from answer 1
+  * wildbattle Necrozma 65 nofleeing Lost
+  + seen MegaloTower.Necrozma
+=== MegaloTower.Oskin
+from Oskin at 9,7 of MegaloTower
+way -
+  Oskin> Stay behind us if you like. No? Ha. Of course not.
+=== MegaloTower.Veyra
+from Veyra at 5,7 of MegaloTower
+way -
+  Veyra> Necrozma has never let anyone this close. It knows you are different.
 === OldChateauBackMiddleWestRoom.TV
 from the sign at 11,3 of OldChateauBackMiddleWestRoom
 from the sign at 12,3 of OldChateauBackMiddleWestRoom
@@ -6355,6 +6399,65 @@ from Scientist at 3,12 of RowanLab
 way -
   Scientist> Hello there! I'm Dawn's father. I work here with the professor.
   Scientist> It's a comfort to know there are two of you out there, I can tell you. Look out for each other, won't you?
+=== RoyalAvenue_BattleRoyalDome.Fan
+from Battle Fan at 16,12 of RoyalAvenue_BattleRoyalDome
+way -
+  Battle Fan> I've seen every Battle Royal since the dome opened. Every single one! Take first place and I'll keep count for you.
+=== RoyalAvenue_BattleRoyalDome.MaskedRoyal
+from Masked Royal at 17,5 of RoyalAvenue_BattleRoyalDome
+way -
+  Masked Royal> The Masked Royal never takes the mask off. Never! ...It's very warm under here, though.
+=== RoyalAvenue_BattleRoyalDome.RoyalDesk
+from Receptionist at 4,12 of RoyalAvenue_BattleRoyalDome
+way 0.0
+  Receptionist> Welcome to the Battle Royal Dome! Four Trainers, one ring, and every one of them is everyone else's foe.
+  Receptionist> Which rank will you battle in?
+  Receptionist> The Normal Rank! Into the ring, please, and may the best Trainer win!
+  Receptionist> First place in the Normal Rank! That's one Battle Point for you.
+  Receptionist> And the Great Rank is open to you now! The Trainers there won't go easy on you.
+  ? Which rank will you battle in? = Normal Rank
+  * fade out
+  * fade in
+  * royal royal_dome_kalei royal_dome_mano royal_dome_leilani Won
+  = VAR_ALOLA_ROYAL_RANK 0 -> 1
+  = VAR_ALOLA_ROYAL_WINS 0 -> 1
+way 0.1, from answer 2
+  Receptionist> A hard-fought placing! Every Battle Royal is different, so do come back and try for first.
+  * royal royal_dome_kalei royal_dome_mano royal_dome_leilani Lost
+way 2, from answer 1
+  Receptionist> Whenever you're ready for a free-for-all, the ring is right here.
+  ? Which rank will you battle in? = Not now
+way 1, from answer 1
+  Receptionist> Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag.
+  Receptionist> The moment any Trainer has no Pokémon left, the battle is over, and everyone is placed.
+  Receptionist> A point for every Pokémon you knock out, and one for each of yours still standing. First place earns Battle Points!
+  Receptionist> Take first place in a rank, and the next rank opens to you. There are four: Normal, Great, Ultra and Master.
+  ? Which rank will you battle in? = The rules
+=== RoyalAvenue_BattleRoyalDome.TheShow
+from the trigger at 10,15 of RoyalAvenue_BattleRoyalDome
+way 0
+  Receptionist> Everybody, look who just walked in! It's Alola's brand-new Champion!
+  Hau> Lucas! I knew you'd come. Guess what? We're having a Battle Royal, and there's room in the ring for one more.
+  Gladion> Hmph. Four Trainers, every one of them against the others. It suits me. Nobody to protect but yourself.
+  Masked Royal> WOOO! The Champion! Step into the ring, and let's give these folks a show they'll talk about for a year!
+  Masked Royal> First place! First place, folks, for the Champion of Alola! I'm going to be sore for a week. WOOO!
+  Hau> That was the best! Hey... doesn't the Masked Royal kind of sound like Professor Kukui?
+  Gladion> ...Don't ask him. Let him have this.
+  * scene RoyalAvenue_BattleRoyalDome.The Masked Royal
+  * royal royal_dome_hau royal_dome_gladion royal_dome_masked Won
+  * endscene
+  + FLAG_ALOLA_ROYAL_SHOW_DONE
+  = VAR_ALOLA_ROYAL_SHOW 0 -> 1
+  + seen RoyalAvenue_BattleRoyalDome.The Masked Royal
+way 1, from answer 1
+  Masked Royal> What a show! You held your own against three at once, Champion. The ring'll be waiting for a rematch.
+  Hau> That was the best! Hey... doesn't the Masked Royal kind of sound like Professor Kukui?
+  Gladion> ...Don't ask him. Let him have this.
+  * royal royal_dome_hau royal_dome_gladion royal_dome_masked Lost
+  * endscene
+  + FLAG_ALOLA_ROYAL_SHOW_DONE
+  = VAR_ALOLA_ROYAL_SHOW 0 -> 1
+  + seen RoyalAvenue_BattleRoyalDome.The Masked Royal
 === RoyalAvenue_Megamart.Clerk
 from Clerk at 7,3 of RoyalAvenue_Megamart
 way -
@@ -14427,6 +14530,15 @@ way -
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.UltraWayHome
+from a trainer with lines of their own
+way 0
+  > The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola?
+  > Lucas stepped into the light...
+  ? The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola? = Yes
+  * warp PoniAltar 32 15
+way 1, from answer 1
+  ? The Ultra Wormhole you came through hangs in the air, humming. Go back through it to Alola? = No
 === common.UnovaBiancaAsks
 from a trainer with lines of their own
 way 0
@@ -27338,6 +27450,27 @@ way 0
 way 1, from answer 1
   * wildbattle Solgaleo 55 nofleeing Lost
   + seen poni_altar.The legendary of the sun
+=== poni_altar.Lightseekers
+from the trigger at 10,24 of PoniAltar
+way -
+  Veyra> You came. This altar is where a wormhole first opened on Alola, the day your friend's Cosmog called the sun.
+  Oskin> The way between the worlds is thin here. With the right light, it opens. Watch the dais.
+  > Veyra held up a lens of black glass, and the light of the dais gathered in it and tore the air open!
+  Veyra> An Ultra Wormhole. Through it lie the worlds the Ultra Beasts come from: seven of them, each with its own.
+  Veyra> Meet them where they live, Lucas. Catch them if you can, with the Beast Balls. Calm them, at the least.
+  Oskin> When all seven have met you, come back here. We'll be waiting.
+  * scene poni_altar.The Ultra Wormhole opens
+  * letterbox on
+  * camera Pan 32 14
+  * camera Zoom 1.3
+  * effect Burst 32 14
+  * effect Rift 32 14 hold
+  * camera Release
+  * letterbox off
+  * endscene
+  = VAR_ALOLA_ULTRA 0 -> 2
+  = VAR_OBJECTIVE 0 -> 691
+  + seen poni_altar.The Ultra Wormhole opens
 === poni_altar.LillieAtAltar
 from Lillie at 31,24 of PoniAltar
 way -
@@ -27345,6 +27478,36 @@ way -
   Lillie> It wants to go home, and I think the dais is where home is. The sun is out, and the dais lights when the sun is.
   Lillie> I'm afraid. But I'm not going to hide in my bag any more. Please, stay with me.
   > Lillie held her bag up to the dais, and the light in it rose into the cavern like a second sun!
+=== poni_altar.Oskin
+from Oskin at 34,18 of PoniAltar
+way -
+  Oskin> The Beast Balls are made for them. Anything else, and they'll barely notice they've been thrown at.
+=== poni_altar.Stakataka
+from Stakataka at 16,30 of PoniAltar
+way 0
+  > One of the altar's walls shifted. Its stones were looking at Lucas, every one of them.
+  * scene poni_altar.Stakataka
+  * letterbox on
+  * camera Pan 16 30
+  * camera Zoom 1.4
+  * shake Stakataka 3
+  * cry Stakataka
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Stakataka 60 Won
+  + seen poni_altar.Stakataka
+way 1, from answer 1
+  * wildbattle Stakataka 60 Lost
+  + seen poni_altar.Stakataka
+=== poni_altar.Veyra
+from Veyra at 30,18 of PoniAltar
+way -
+  Veyra> The wormhole will stay open while we are here. Step into its light and choose a world.
+=== poni_altar.Wormhole
+from the tile read at 32,14 of PoniAltar
+way -
+  > The stone of the dais is warm, as if the sun were still on it.
 === poni_breakers.AltarGuard
 from Guard at 97,80 of Poni
 way -
@@ -34770,6 +34933,178 @@ way -
   + FLAG_ALOLA_RIDE_MUDSDALE
   = VAR_ALOLA_HAPU 0 -> 1
   + seen ulaula_route_12.Hapu on Route 12
+=== ultra_crater.Beast
+from Celesteela at 32,16 of UltraCrater
+way 0
+  > In the middle of the crater stood something like a tower of steel, its arms wide. It roared, and the snow lifted.
+  * scene ultra_crater.Celesteela
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Stair 32 16
+  * cry Celesteela
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Celesteela 60 Won
+  + FLAG_ALOLA_MET_CELESTEELA
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_crater.Celesteela
+way 1, from answer 1
+  * wildbattle Celesteela 60 Lost
+  + seen ultra_crater.Celesteela
+=== ultra_deep_sea.Beast
+from Nihilego at 32,16 of UltraDeepSea
+way 0
+  > Something like a jellyfish of glass hung over the stone, its tendrils trailing light. It turned toward Lucas.
+  * scene ultra_deep_sea.Nihilego
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Nihilego
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Nihilego 60 Won
+  + FLAG_ALOLA_MET_NIHILEGO
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_deep_sea.Nihilego
+way 1, from answer 1
+  * wildbattle Nihilego 60 Lost
+  + seen ultra_deep_sea.Nihilego
+=== ultra_desert.Beast
+from Pheromosa at 32,16 of UltraDesert
+way 0
+  > A slender white figure stepped out of the sand, never quite touching it. It looked Lucas over, unimpressed.
+  * scene ultra_desert.Pheromosa
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Mist 32 16
+  * cry Pheromosa
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Pheromosa 60 Won
+  + FLAG_ALOLA_MET_PHEROMOSA
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_desert.Pheromosa
+way 1, from answer 1
+  * wildbattle Pheromosa 60 Lost
+  + seen ultra_desert.Pheromosa
+=== ultra_forest.Beast
+from Kartana at 32,16 of UltraForest
+way 0
+  > A leaf no bigger than a hand fell from the trees, and its edge flashed. It was looking at Lucas.
+  * scene ultra_forest.Kartana
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Petals 32 16
+  * cry Kartana
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Kartana 60 Won
+  + FLAG_ALOLA_MET_KARTANA
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_forest.Kartana
+way 1, from answer 1
+  * wildbattle Kartana 60 Lost
+  + seen ultra_forest.Kartana
+=== ultra_jungle.Beast
+from Buzzwole at 32,16 of UltraJungle
+way 0
+  > A great red shape swung down from the canopy and landed hard, flexing its arms. It wants to see how strong Lucas is.
+  * scene ultra_jungle.Buzzwole
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Shadow 32 16
+  * cry Buzzwole
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Buzzwole 60 Won
+  + FLAG_ALOLA_MET_BUZZWOLE
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_jungle.Buzzwole
+way 1, from answer 1
+  * wildbattle Buzzwole 60 Lost
+  + seen ultra_jungle.Buzzwole
+=== ultra_megalopolis.Blacephalon
+from Blacephalon at 20,40 of UltraMegalopolis
+way 0
+  > Something like a clown made of fireworks juggled its own head on the square, and bowed to Lucas.
+  * scene ultra_megalopolis.Blacephalon
+  * letterbox on
+  * camera Pan 20 40
+  * camera Zoom 1.4
+  * effect Burst 20 40
+  * cry Blacephalon
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Blacephalon 60 Won
+  + seen ultra_megalopolis.Blacephalon
+way 1, from answer 1
+  * wildbattle Blacephalon 60 Lost
+  + seen ultra_megalopolis.Blacephalon
+=== ultra_megalopolis.Resident1
+from Old Man at 30,26 of UltraMegalopolis
+way -
+  Old Man> My grandmother told me the sky here was bright once. I've only ever seen it like this.
+  Old Man> The Lightseekers say the one who took our light still sits at the top of Megalo Tower.
+=== ultra_megalopolis.Resident2
+from Lamp Keeper at 22,38 of UltraMegalopolis
+way -
+  Lamp Keeper> I keep the lamps. Every lamp in this city burns on power we make ourselves, every hour of every day.
+  Lamp Keeper> If they ever went out, nobody could find their way home. So they never go out.
+=== ultra_megalopolis.Resident3
+from Woman at 42,46 of UltraMegalopolis
+way -
+  Woman> You came through the wormhole? From a world with a sun? ...Is it warm? I'm sorry. I just wondered.
+=== ultra_plant.Beast
+from Xurkitree at 32,16 of UltraPlant
+way 0
+  > The cables over the floor stood up, and they weren't cables. A tangle of light and wire came crackling down the hall!
+  * scene ultra_plant.Xurkitree
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Xurkitree
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Xurkitree 60 Won
+  + FLAG_ALOLA_MET_XURKITREE
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_plant.Xurkitree
+way 1, from answer 1
+  * wildbattle Xurkitree 60 Lost
+  + seen ultra_plant.Xurkitree
+=== ultra_ruin.Beast
+from Guzzlord at 32,16 of UltraRuin
+way 0
+  > The ground shook. Something vast and hungry dragged itself out of the ruins, its mouths wide open.
+  * scene ultra_ruin.Guzzlord
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Mist 32 16
+  * cry Guzzlord
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Guzzlord 60 Won
+  + FLAG_ALOLA_MET_GUZZLORD
+  = VAR_ALOLA_ULTRA_MET 0 -> 1
+  + seen ultra_ruin.Guzzlord
+way 1, from answer 1
+  * wildbattle Guzzlord 60 Lost
+  + seen ultra_ruin.Guzzlord
 === undella_town.HughAtTheEast
 from the trigger at 751,299 of Unova
 way 0

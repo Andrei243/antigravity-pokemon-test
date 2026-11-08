@@ -1,0 +1,233 @@
+# The Battle Royal Dome, Royal Avenue, Akala Island (plan 23 · Z8). The lines are our own, on Sun and Moon's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Ultra Space and the Battle Royal Dome"). Its doors open to
+# Alola's Champion (the overlay's door, FLAG AlolaHallOfFame). The first time in, the Masked Royal's show: Hau, Gladion
+# and the Masked Royal against the new Champion (FLAG_ALOLA_ROYAL_SHOW_DONE). Then the receptionist offers a Battle
+# Royal of four ranks, each opened by a first place in the one before (VAR_ALOLA_ROYAL_RANK 0 to 3), as the Battle
+# Frontier's facilities count a streak: first place gives Battle Points (1 to 4 by the rank), and the dome keeps the
+# player's first places (VAR_ALOLA_ROYAL_WINS). A Battle Royal is plan 14 · B13's: no EXP, no prize, nobody whites out.
+#
+# Whoever stands in the ring is a person of the room shown by the flag of the show being fought (FLAG_ALOLA_ROYAL_RING_*),
+# set before it and cleared after, so the ring is empty whenever the room is come to.
+
+
+# The first show, as the Champion walks in from the door (the room's trigger inside it, VAR_ALOLA_ROYAL_SHOW 0)
+script TheShow
+  if flag FLAG_ALOLA_ROYAL_SHOW_DONE end
+  scene "The Masked Royal"
+  setflag FLAG_ALOLA_ROYAL_RING_SHOW
+  show show_hau
+  show show_gladion
+  show show_masked
+  speaker "Receptionist"
+  say "Everybody, look who just walked in! It's Alola's brand-new Champion!"
+  speaker "Hau"
+  say "{player}! I knew you'd come. Guess what? We're having a Battle Royal, and there's room in the ring for one more."
+  speaker "Gladion"
+  say "Hmph. Four Trainers, every one of them against the others. It suits me. Nobody to protect but yourself."
+  speaker "Masked Royal"
+  say "WOOO! The Champion! Step into the ring, and let's give these folks a show they'll talk about for a year!"
+  walk player up 4
+  royal show_hau "royal_dome_hau" show_gladion "royal_dome_gladion" show_masked "royal_dome_masked" canlose
+  speaker "Masked Royal"
+  if won goto ShowWon
+  say "What a show! You held your own against three at once, Champion. The ring'll be waiting for a rematch."
+  goto ShowDone
+label ShowWon
+  say "First place! First place, folks, for the Champion of Alola! I'm going to be sore for a week. WOOO!"
+label ShowDone
+  speaker "Hau"
+  say "That was the best! Hey... doesn't the Masked Royal kind of sound like Professor Kukui?"
+  speaker "Gladion"
+  say "...Don't ask him. Let him have this."
+  hide show_hau
+  hide show_gladion
+  hide show_masked
+  clearflag FLAG_ALOLA_ROYAL_RING_SHOW
+  setflag FLAG_ALOLA_ROYAL_SHOW_DONE
+  setvar VAR_ALOLA_ROYAL_SHOW 1
+  show masked_royal
+  endscene
+  end
+
+
+# The receptionist: a Battle Royal of the rank chosen
+script RoyalDesk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Royal Dome! Four Trainers, one ring, and every one of them is everyone else's foe."
+  if var VAR_ALOLA_ROYAL_RANK >= 3 goto Four
+  if var VAR_ALOLA_ROYAL_RANK == 2 goto Three
+  if var VAR_ALOLA_ROYAL_RANK == 1 goto Two
+  choose "Which rank will you battle in?" "Normal Rank" "The rules" "Not now"
+  if result == 0 goto Normal
+  if result == 1 goto Rules
+  goto Later
+label Two
+  choose "Which rank will you battle in?" "Normal Rank" "Great Rank" "The rules" "Not now"
+  if result == 0 goto Normal
+  if result == 1 goto Great
+  if result == 2 goto Rules
+  goto Later
+label Three
+  choose "Which rank will you battle in?" "Normal Rank" "Great Rank" "Ultra Rank" "The rules" "Not now"
+  if result == 0 goto Normal
+  if result == 1 goto Great
+  if result == 2 goto Ultra
+  if result == 3 goto Rules
+  goto Later
+label Four
+  choose "Which rank will you battle in?" "Normal Rank" "Great Rank" "Ultra Rank" "Master Rank" "The rules" "Not now"
+  if result == 0 goto Normal
+  if result == 1 goto Great
+  if result == 2 goto Ultra
+  if result == 3 goto Master
+  if result == 4 goto Rules
+  goto Later
+label Normal
+  call RingNormal
+  end
+label Great
+  call RingGreat
+  end
+label Ultra
+  call RingUltra
+  end
+label Master
+  call RingMaster
+  end
+label Rules
+  say "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
+  say "The moment any Trainer has no Pokémon left, the battle is over, and everyone is placed."
+  say "A point for every Pokémon you knock out, and one for each of yours still standing. First place earns Battle Points!"
+  say "Take first place in a rank, and the next rank opens to you. There are four: Normal, Great, Ultra and Master."
+  end
+label Later
+  say "Whenever you're ready for a free-for-all, the ring is right here."
+  end
+
+
+script RingNormal
+  say "The Normal Rank! Into the ring, please, and may the best Trainer win!"
+  setflag FLAG_ALOLA_ROYAL_RING_NORMAL
+  show normal_kalei
+  show normal_mano
+  show normal_leilani
+  fade out 0.3
+  place player 10 10 up
+  fade in 0.3
+  royal normal_kalei "royal_dome_kalei" normal_mano "royal_dome_mano" normal_leilani "royal_dome_leilani" canlose
+  hide normal_kalei
+  hide normal_mano
+  hide normal_leilani
+  clearflag FLAG_ALOLA_ROYAL_RING_NORMAL
+  speaker "Receptionist"
+  if not won goto Placed
+  frontier give 1
+  addvar VAR_ALOLA_ROYAL_WINS 1
+  say "First place in the Normal Rank! That's one Battle Point for you."
+  if var VAR_ALOLA_ROYAL_RANK >= 1 return
+  setvar VAR_ALOLA_ROYAL_RANK 1
+  say "And the Great Rank is open to you now! The Trainers there won't go easy on you."
+  return
+label Placed
+  say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+  return
+
+
+script RingGreat
+  say "The Great Rank! Into the ring, please, and may the best Trainer win!"
+  setflag FLAG_ALOLA_ROYAL_RING_GREAT
+  show great_pua
+  show great_kaimana
+  show great_nalani
+  fade out 0.3
+  place player 10 10 up
+  fade in 0.3
+  royal great_pua "royal_dome_pua" great_kaimana "royal_dome_kaimana" great_nalani "royal_dome_nalani" canlose
+  hide great_pua
+  hide great_kaimana
+  hide great_nalani
+  clearflag FLAG_ALOLA_ROYAL_RING_GREAT
+  speaker "Receptionist"
+  if not won goto Placed
+  frontier give 2
+  addvar VAR_ALOLA_ROYAL_WINS 1
+  say "First place in the Great Rank! That's two Battle Points for you."
+  if var VAR_ALOLA_ROYAL_RANK >= 2 return
+  setvar VAR_ALOLA_ROYAL_RANK 2
+  say "And the Ultra Rank is open to you now! Only the toughest Trainers in Alola battle there."
+  return
+label Placed
+  say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+  return
+
+
+script RingUltra
+  say "The Ultra Rank! Into the ring, please, and may the best Trainer win!"
+  setflag FLAG_ALOLA_ROYAL_RING_ULTRA
+  show ultra_ikaika
+  show ultra_makana
+  show ultra_noelani
+  fade out 0.3
+  place player 10 10 up
+  fade in 0.3
+  royal ultra_ikaika "royal_dome_ikaika" ultra_makana "royal_dome_makana" ultra_noelani "royal_dome_noelani" canlose
+  hide ultra_ikaika
+  hide ultra_makana
+  hide ultra_noelani
+  clearflag FLAG_ALOLA_ROYAL_RING_ULTRA
+  speaker "Receptionist"
+  if not won goto Placed
+  frontier give 3
+  addvar VAR_ALOLA_ROYAL_WINS 1
+  say "First place in the Ultra Rank! That's three Battle Points for you."
+  if var VAR_ALOLA_ROYAL_RANK >= 3 return
+  setvar VAR_ALOLA_ROYAL_RANK 3
+  say "And now... the Master Rank is open to you. Good luck, Champion. You'll need it."
+  return
+label Placed
+  say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+  return
+
+
+script RingMaster
+  say "The Master Rank! Into the ring, please, and may the best Trainer win!"
+  setflag FLAG_ALOLA_ROYAL_RING_MASTER
+  show master_kealoha
+  show master_pono
+  show master_malia
+  fade out 0.3
+  place player 10 10 up
+  fade in 0.3
+  royal master_kealoha "royal_dome_kealoha" master_pono "royal_dome_pono" master_malia "royal_dome_malia" canlose
+  hide master_kealoha
+  hide master_pono
+  hide master_malia
+  clearflag FLAG_ALOLA_ROYAL_RING_MASTER
+  speaker "Receptionist"
+  if not won goto Placed
+  frontier give 4
+  addvar VAR_ALOLA_ROYAL_WINS 1
+  say "First place in the Master Rank! That's four Battle Points for you. The crowd is on its feet!"
+  return
+label Placed
+  say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
+  return
+
+
+script MaskedRoyal
+  face self player
+  speaker "Masked Royal"
+  say "The Masked Royal never takes the mask off. Never! ...It's very warm under here, though."
+  end
+
+
+script Fan
+  face self player
+  speaker "Battle Fan"
+  if var VAR_ALOLA_ROYAL_WINS > 0 goto Counted
+  say "I've seen every Battle Royal since the dome opened. Every single one! Take first place and I'll keep count for you."
+  end
+label Counted
+  say "First places in the dome by the Champion: {var:VAR_ALOLA_ROYAL_WINS}! I write every one of them down."
+  end

@@ -169,6 +169,28 @@
       ],
       "isHealingNurse": true,
       "script": "Mom"
+    },
+    {
+      "id": "veyra",
+      "name": "Veyra",
+      "npcType": "veyra",
+      "x": 5,
+      "y": 9,
+      "facing": "Up",
+      "script": "Veyra",
+      "hiddenBy": "FLAG_ALOLA_ULTRA_AT_ALTAR",
+      "shownBy": "FLAG_ALOLA_ULTRA_AT_HOME"
+    },
+    {
+      "id": "oskin",
+      "name": "Oskin",
+      "npcType": "oskin",
+      "x": 7,
+      "y": 10,
+      "facing": "Up",
+      "script": "Oskin",
+      "hiddenBy": "FLAG_ALOLA_ULTRA_AT_ALTAR",
+      "shownBy": "FLAG_ALOLA_ULTRA_AT_HOME"
     }
   ],
   "triggers": [

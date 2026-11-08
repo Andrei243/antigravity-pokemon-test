@@ -450,6 +450,13 @@
     "kiawe": { "skin": "#8a5a3a", "hairColor": "#2a1e1e", "hair": "Short", "hatBand": "#d8402a", "top": "#f4f4f6", "accent": "#d8402a", "bottom": "#3a302a", "shoes": "#2a2420", "eyes": "#3a2a24", "shortSleeves": true, "bushyBrows": true, "build": "Adult", "height": 1.14 },
     "olivia": { "skin": "#9a6a48", "hairColor": "#1e1a1e", "hair": "Long", "top": "#d8628a", "accent": "#f4d0dc", "bottom": "#f4f4f6", "shoes": "#d8628a", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.08 },
     "wicke": { "skin": "#e8c8a8", "hairColor": "#a890c8", "hair": "Short", "top": "#f4f4f6", "accent": "#d8c040", "bottom": "#f4f4f6", "shoes": "#f4f4f6", "eyes": "#4a3a5a", "glasses": "#3a3a46", "coat": true, "lashes": true, "build": "Adult", "height": 1.04 },
+    // After Alola's Hall of Fame (plan 23 · Z8; our own designs): the Lightseekers of Ultra Megalopolis, in pale suits
+    // banded in violet and dark visors against light their city no longer has (Veyra, who leads them, tall with white
+    // hair; Oskin, broad, with a crop of grey); and the Masked Royal of the Battle Royal Dome, a bare-chested showman in
+    // a white cap with a dark visor over his eyes and a gold belt
+    "veyra": { "skin": "#d8b8a0", "hairColor": "#c8bce8", "hair": "Long", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#4a3e7a", "shoes": "#5a4a9a", "eyes": "#5a4a8a", "glasses": "#2a2438", "lashes": true, "build": "Adult", "height": 1.1 },
+    "oskin": { "skin": "#9a7058", "hairColor": "#5a5c64", "hair": "Short", "top": "#e4e8f2", "accent": "#7a5ad8", "bottom": "#4a3e7a", "shoes": "#5a4a9a", "eyes": "#3a2a24", "glasses": "#2a2438", "bushyBrows": true, "build": "Adult", "height": 1.14 },
+    "masked_royal": { "skin": "#b88864", "hairColor": "#2a2224", "hair": "Short", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#2a2438", "top": "#b88864", "accent": "#e8c040", "bottom": "#2a3a5a", "shoes": "#f4f4f6", "eyes": "#3a2a24", "glasses": "#1e1a24", "shortSleeves": true, "build": "Adult", "height": 1.12 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },

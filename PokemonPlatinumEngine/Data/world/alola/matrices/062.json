@@ -1,0 +1,16 @@
+{
+  "id": 62,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    "300 301",
+    "302 303"
+  ],
+  "areas": [
+    "  0   0",
+    "  0   0"
+  ],
+  "areaKeys": [
+    "ultra_desert"
+  ]
+}

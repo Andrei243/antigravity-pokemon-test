@@ -1,0 +1,59 @@
+{
+  // Ultra Megalopolis (plan 23 · Z8): a world of Ultra Space, drawn by hand in our own drawing of what the games describe.
+  // It is come to through the Ultra Wormhole over the Altar of the Sunne and Moone's dais (poni_altar.txt) and left by
+  // the wormhole it is come in by, read at 32,55 (common.UltraWayHome).
+  "area": "ultra_megalopolis",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "architecture": "Metropolis",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "MegaloTower",
+      "x": 7,
+      "y": 12,
+      "facing": "Up"
+    }
+  ],
+  "locked": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "readAt": [
+    {
+      "x": 32,
+      "z": 55,
+      "script": "UltraWayHome"
+    }
+  ],
+  "people": {
+    "blacephalon": {
+      "name": "Blacephalon",
+      "npcType": "Pokemon",
+      "species": "Blacephalon",
+      "script": "Blacephalon",
+      "still": true,
+      "hiddenBy": "FLAG_ALOLA_CAUGHT_BLACEPHALON",
+      "shownBy": "FLAG_ALOLA_LIGHT_RETURNED"
+    },
+    "resident_1": {
+      "name": "Old Man",
+      "npcType": "gentleman",
+      "script": "Resident1",
+      "still": true
+    },
+    "resident_2": {
+      "name": "Lamp Keeper",
+      "npcType": "scientist",
+      "script": "Resident2",
+      "still": true
+    },
+    "resident_3": {
+      "name": "Woman",
+      "npcType": "lady",
+      "script": "Resident3"
+    }
+  }
+}
