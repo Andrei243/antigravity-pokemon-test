@@ -179,6 +179,28 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   `hordes.json` and five Sky Trainers; the bot's itinerary through the gates, panels, turntables and drifts;
   `KalosGymsAndWaterTests`. **Left**: Santalune's, Cyllage's, Shalour's and Coumarine's puzzle pieces, Coumarine's port,
   Waterfall and the other HMs, and the places' own songs (plan 31 has written none for them).
+- **Kalos's last places** (2026-11-08, a session after wave 92 beside another of Kalos's; rulings, "Kalos's last places:
+  the stone shop, the Battle Maison, the Chamber of Emptiness and the rest"). Drawn with `tools/MapDraw`: the **Chamber
+  of Emptiness** (matrix 20, a cave off Santalune City's north-west corner; the Banettite moved there from the Lost
+  Hotel, and Yveltal at 70 after the Hall of Fame, X and Y's other version's legendary), **Kiloude Station** and the
+  **Battle Maison** (two buildings on Kiloude's street; the train runs between the two stations' rooms; the Maison is a
+  round of seven single battles on the venues' frame, `venue ... maison`, against FC1's later sets by the rounds won,
+  with a prize counter, `frontier prize maison`, over the new `Data/facility-prizes.json`), the **Poké Ball Factory** on
+  Laverre City's east side (open with the Fairy Badge: three grunts and the president's Master Ball), the **Battle
+  Château** on Route 7 (the day's guests by `random`, Kalos's Leaders by the weekday after the Hall of Fame, eight titles
+  of ours), and two of **Lumiose's shut doors** opened on a Herboriste and a Poké Ball boutique. The **stone shop** sells
+  every evolution stone and its owner gives the Kanto Pokémon's Mega Stone after the Hall of Fame. The **stones'
+  evening hour**: `Story/ClockFlags.cs` keeps `FLAG_KALOS_STONES_GLINT` by the hour (20:00 to 20:59, with the Mega Ring
+  upgraded), which the fourteen stones' balls are shown by. Rooms `KiloudeCity_Station`, `KiloudeCity_BattleMaison`,
+  `KiloudeCity_BattleMaisonHall`, `LaverreCity_PokeBallFactory`, `KalosRoute7_BattleChateau`, `LumioseCity_Herboriste`,
+  `LumioseCity_BallBoutique`; seventeen trainers of ours in Kalos's `trainers.json` (`kalos_flare_grunt_factory_*`,
+  `kalos_chateau_*`). `KalosSpeciesTests.Owed` 143 → 115 (the stones' twenty-three, Weavile by the Maison's Razor Claw,
+  Yveltal, and Trubbish, Garbodor and Rotom out of three shaking bins in the Lost Hotel), its owed items 21 → 4; `ItemSourcesTests.Owed` loses the Kanto starters' stones, the Sachet, the Whipped
+  Dream, three weather rocks and the Thick Club. Tests `KalosLastPlacesTests`; shots the `kalos` mode's
+  `KALOS_FROM=lastplaces` (`wk500` to `wk520`, `wks300` to `wks313`), looked at. **Left**: the Friend Safari (no seam:
+  plan 07 · O7's friend list doesn't exist), the Maison's other three rooms, hosts, hard rooms and a round put down (plan
+  37 · FC2), the Château's levels by the title and other regions' guests (FC4), Lumiose's restaurants (FC5) and its other
+  shut doors, and the new places' own songs (plan 31).
 
 ### Alola
 

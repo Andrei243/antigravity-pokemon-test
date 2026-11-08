@@ -24,6 +24,8 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "loose") { KalosLooseEnds(); return; }
         // KALOS_FROM=postgame: plan 23 · Z4b, Kalos after its Hall of Fame, alone (wk400 on, wks200 on)
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "postgame") { KalosPostGame(); return; }
+        // KALOS_FROM=lastplaces: Kalos's last places alone (wk500 on, wks300 on), not part of the whole mode
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "lastplaces") { KalosLastPlaces(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;

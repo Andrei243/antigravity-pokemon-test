@@ -27,7 +27,9 @@
     { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 40, "z": 55, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_LOST_HOTEL_ULTRA_BALL", "item": "Ultra Ball", "script": "" }
   ],
   "signs": [
-
+    { "x": 23, "z": 46, "type": 0, "script": "BinLobby" },
+    { "x": 27, "z": 32, "type": 0, "script": "BinHall" },
+    { "x": 19, "z": 16, "type": 0, "script": "BinGallery" }
   ],
   "triggers": [],
   "land": [

@@ -1,0 +1,39 @@
+# Lumiose City's stone shop by Rouge Plaza (plan 23 · Z2, second part; its counter and its owner since the wave after
+# Z4b). The lines are our own, on X and Y's beats as they are publicly described (docs/mechanics/rulings.md, "Kalos's
+# last places: the stone shop, the Battle Maison, the Chamber of Emptiness and the rest"): the shopkeeper's counter sells
+# evolution stones (lumiose_stones in marts.json), and once a Champion of Kalos comes in the owner hands over the Mega
+# Stone of the Kanto Pokémon the professor gave, which X and Y give before the League. FLAG_KALOS_KANTO_STONE_GIVEN is ours.
+
+
+script Owner
+  face self player
+  speaker "Owner"
+  if flag FLAG_KALOS_KANTO_STONE_GIVEN goto Given
+  if not flag KalosHallOfFame goto Early
+  if not flag FLAG_KALOS_RECEIVED_KANTO_STARTER goto Early
+  say "The Champion, in my little shop! Professor Sycamore left something here for you before the League, and you never came by."
+  say "A Mega Stone, for the Pokémon he brought from Kanto. Which one is yours?"
+  choose "Which stone would you like?" "Venusaurite" "Charizardite X" "Charizardite Y" "Blastoisinite"
+  if var RESULT == 0 goto Venusaur
+  if var RESULT == 1 goto CharizardX
+  if var RESULT == 2 goto CharizardY
+  give "Blastoisinite"
+  goto Done
+label Venusaur
+  give "Venusaurite"
+  goto Done
+label CharizardX
+  give "Charizardite X"
+  goto Done
+label CharizardY
+  give "Charizardite Y"
+label Done
+  setflag FLAG_KALOS_KANTO_STONE_GIVEN
+  say "Hold it with your Key Stone, and see what that Pokémon really looks like."
+  end
+label Given
+  say "The stones on the shelf are for sale. The one I kept for you was a gift, and it's yours now."
+  end
+label Early
+  say "Every stone in this shop has a story. The best ones I keep behind the counter, for the right Trainer."
+  end

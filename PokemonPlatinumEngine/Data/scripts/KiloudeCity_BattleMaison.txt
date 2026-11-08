@@ -1,0 +1,86 @@
+# The Battle Maison's lobby in Kiloude City (plan 23, Kalos's last places; plan 37's streak house). The lines are our own,
+# and so are the people: none of X and Y's hosts is here. X and Y's Maison is an endless streak of single, double, triple
+# and rotation battles; ours is the first part of it on the frame the Battle Frontier's annex already has
+# (Models/Frontier/BattleVenue.cs, `venue ... maison`): a round of seven single battles, three entered as copies at level 50,
+# whole again after every battle, against trainers of the later sets (Data/facility-sets.json) who grow stronger with the
+# rounds won in a row. The round itself is KiloudeCity_BattleMaisonHall.txt's arrival script. Battle Points go into the
+# Frontier's one purse, and the counter beside the desk trades them for the later games' items (Data/facility-prizes.json).
+# Plan 37 · FC2 builds the rest: the other three rooms, the hosts at the 20th and 50th battles, putting a round down.
+
+
+script Desk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Maison! Trainers from every corner of the world come to Kiloude to test themselves here."
+  venue streak maison
+  if result == 0 goto Ask
+  say "You've won {number} battles in a row in our hall. The regulars have started to talk about you!"
+label Ask
+  choose "Would you like to take on the Battle Maison?" "Enter" "The rules" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Later
+  venue enough
+  if result == 1 goto Choose
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label Choose
+  say "Please choose the three Pokémon you'll enter."
+  venue choose
+  if result == 0 goto Later
+  venue check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  venue begin maison
+  say "Thank you! Seven Trainers are waiting in the hall. This way, please!"
+  fade out 0.6
+  warp "KiloudeCity_BattleMaisonHall" 8 10 up
+  fade in
+  end
+label SameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto Later
+label SameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label Later
+  say "We'll be here. The hall never really empties."
+  end
+label Rules
+  say "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+  say "Beat seven Trainers in a row to win a round. Lose once, and the round is over, and so is your streak."
+  say "The longer your streak, the stronger the Trainers who come to meet you."
+  end
+
+
+# The counter of prizes: the later games' items for Battle Points, the Frontier's one purse
+script Prizes
+  face self player
+  speaker "Clerk"
+  say "Welcome! Battle Points won here, or anywhere in the world's battle halls, are good at this counter."
+  frontier prize maison
+  if result == 0 goto Bye
+  frontier buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! Use it well."
+  end
+label Short
+  say "I'm sorry. You don't have the Battle Points for that."
+  end
+label Bye
+  say "Come back when you've won a few more!"
+  end
+
+
+script Fan
+  face self player
+  speaker "Fan"
+  say "I come every afternoon just to watch. You can tell a Trainer's whole journey from how they send out their first Pokémon."
+  end
+
+script Veteran
+  face self player
+  speaker "Veteran"
+  say "Seven in a row sounds easy until the fifth. Then you start to hear your own heartbeat."
+  end

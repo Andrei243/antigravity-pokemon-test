@@ -612,7 +612,7 @@ every facility shares (the records are the game's `FrontierRecords`, saved; the 
 |---|---|
 | `frontier points` | `RESULT` is the Battle Points held. `{points}` in a line says them. |
 | `frontier give 3` | Adds Battle Points (9,999 at most): `RESULT` is what is held afterwards. |
-| `frontier prize items`, `frontier prize machines`, `frontier prize training` | Asks which of a booth's prizes at the Exchange Service Corner, with the points shown: `RESULT` 1, or 0 for none. `{item}`, `{price}` in Battle Points, and `{thing}` the move a TM holds. `training` is the training club's list (plan 36 · TR3, `Data/training.json`'s `battlePoints`: the Bottle Caps, the Ability Capsule and Patch, the mints). |
+| `frontier prize items`, `frontier prize machines`, `frontier prize training`, `frontier prize maison` | Asks which of a booth's prizes at the Exchange Service Corner, with the points shown: `RESULT` 1, or 0 for none. `{item}`, `{price}` in Battle Points, and `{thing}` the move a TM holds. `training` is the training club's list (plan 36 · TR3, `Data/training.json`'s `battlePoints`: the Bottle Caps, the Ability Capsule and Patch, the mints); `maison` Kiloude City's Battle Maison's (plan 23's Kalos, `Data/facility-prizes.json`: a later place's counter by its word). |
 | `frontier buy` | Trades Battle Points for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `frontier records tower` | Opens a facility's board of records (`tower`, `factory`, `hall`, `castle`, `arcade`) and waits until it is closed. |
 | `frontier print tower` | Hands over the commemorative print that waits at a facility: `RESULT` 0 for none, 1 the silver one, 2 the gold one. The fifth gold print sets `FLAG_OBTAINED_ALL_BATTLE_FRONTIER_GOLD_PRINTS`. |
@@ -1012,7 +1012,7 @@ natures; the Arena's bouts are judged after three turns). The round lives betwee
 | Command | What it does |
 |---|---|
 | `venue enough`, `venue choose`, `venue check` | As `bracket`'s: three that could go in together (`{banned}`), the team opened for three to be chosen and waited on, two of a species (1) or the same item (2). |
-| `venue begin palace`, `venue begin arena` | Draws the round's seven trainers and their teams with the three chosen; a round left unfinished before it ends that venue's streak first. |
+| `venue begin palace`, `venue begin arena`, `venue begin maison` | Draws the round's seven trainers and their teams with the three chosen; a round left unfinished before it ends that venue's streak first. `maison` is Kiloude City's Battle Maison (plan 23's Kalos): plain single battles, its seven trainers of the later places with three of FC1's sets each, of tiers that climb with the rounds won (`BattleVenueChallenge.BeginMaison`); `streak maison`, `best maison` its record. |
 | `venue active`, `venue next` | `RESULT` 1 while a round is under way; the battle to come, 0 to 6, `{number}` 1 to 7. |
 | `venue opponent` | Stands the battle's trainer in the room as `opponent`, with their look; `{foe}` names them. |
 | `venue fight` | The battle, three copies against the trainer's three under the venue's rules (`RESULT` 1 won, 0 lost). |

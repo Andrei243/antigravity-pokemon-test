@@ -1,0 +1,42 @@
+# The Poké Ball Factory on Laverre City's east side (plan 23, Kalos's last places). The lines are our own, on X and Y's
+# beats as they are publicly described (docs/mechanics/rulings.md, "Kalos's last places"): once the Fairy Badge is won the
+# factory's door opens on Team Flare, who have taken the works over to fill their own Poké Balls; three grunts stand among
+# the machines (Kalos's trainers.json, kalos_flare_grunt_factory_1 to _3), and the president, held in his own office at
+# the back, gives the Master Ball to whoever sends them off. X and Y have the neighbour beside the player and two of Team
+# Flare's scientists at the back; ours is the player's alone, and those two are met under Geosenge (plan 23 · Z4). The
+# factory is no step of the story, so nothing waits on it. FLAG_KALOS_FACTORY_DONE (ours) sends the grunts away.
+
+
+script President
+  face self player
+  speaker "President"
+  if flag FLAG_KALOS_FACTORY_DONE goto Done
+  if not defeated "kalos_flare_grunt_factory_1" goto Held
+  if not defeated "kalos_flare_grunt_factory_2" goto Held
+  if not defeated "kalos_flare_grunt_factory_3" goto Held
+  scene "The factory president"
+  say "They've gone? All three? You've no idea how long they've had me sitting at this desk, signing orders for their balls."
+  say "Team Flare wanted every Poké Ball we could make, and they wanted the best of them for themselves."
+  say "This one they never found. It catches any Pokémon there is, without fail. We make very few, and I'd like you to have it."
+  give "Master Ball"
+  say "Use it on the one Pokémon you never want to lose the chance of meeting again."
+  setflag FLAG_KALOS_FACTORY_DONE
+  endscene
+  end
+label Held
+  say "Please, be careful! Team Flare are all over the works. I can't get past them, and they won't let anyone in."
+  end
+label Done
+  say "The lines are running again. Every ball you buy in Kalos started its life right here."
+  end
+
+
+script Worker
+  face self player
+  speaker "Worker"
+  if flag FLAG_KALOS_FACTORY_DONE goto Done
+  say "They switched off half the lines and told us to make only their balls. Red ones, with an F. Hideous things."
+  end
+label Done
+  say "Back to proper balls. You'd be amazed how many bad Poké Balls it takes to make one good one."
+  end

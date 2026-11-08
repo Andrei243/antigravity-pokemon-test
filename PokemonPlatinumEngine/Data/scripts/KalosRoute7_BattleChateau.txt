@@ -1,0 +1,465 @@
+# The Battle Château on Route 7 (plan 23, Kalos's last places; plan 37's house of titles, its first part). The lines are
+# our own, and so are the house's people and titles: none of X and Y's noble ranks is here. The player's own team battles
+# at its own levels and is paid as after any trainer's battle; a battle lost costs nothing and the team is made whole.
+#
+# Who is in today is drawn as the hall is first come into each day (FLAG_DAILY_KALOS_CHATEAU_DRAWN): one of three
+# guests in the west place (VAR_KALOS_CHATEAU_GUEST_1: Mirabelle, Tristan, Celeste), one of three stronger ones in the
+# east place once the house has made the player a friend (VAR_KALOS_CHATEAU_GUEST_2, title 3 and on: Octave, Isaure,
+# Corentin), and once Kalos's Hall of Fame is entered the Leader whose day it is in the middle (Viola on Mondays to
+# Olympia on Sundays, Wulfric beside her). Each guest is shown by a flag of ours (FLAG_KALOS_CHATEAU_HAS_<WHO>) and
+# battles once a day (FLAG_DAILY_KALOS_CHATEAU_BEAT_<WHO>). A win counts toward the house's titles
+# (VAR_KALOS_CHATEAU_POINTS: a guest of the west place 1, of the east 2, a Leader 3), which the butler hands out at
+# thresholds of ours (VAR_KALOS_CHATEAU_TITLE 0 to 7: Visitor, Guest, Regular, Friend of the House, Honoured Guest,
+# Patron, Steward, Master of the House). Plan 37 · FC4 builds the rest: the guests' levels by the title over the player's
+# highest, other regions' Leaders and Champions, the title on the Trainer Card.
+
+
+script OnEnter
+  if not flag FLAG_DAILY_KALOS_CHATEAU_DRAWN call Draw
+  call Show
+  end
+
+
+# The day's draw: a guest for each of the two places
+script Draw
+  setflag FLAG_DAILY_KALOS_CHATEAU_DRAWN
+  random 3
+  setvar VAR_KALOS_CHATEAU_GUEST_1 RESULT
+  random 3
+  setvar VAR_KALOS_CHATEAU_GUEST_2 RESULT
+  return
+
+
+# Who stands in the hall today, by the draw, the title and the day of the week
+script Show
+  clearflag FLAG_KALOS_CHATEAU_HAS_MIRABELLE
+  clearflag FLAG_KALOS_CHATEAU_HAS_TRISTAN
+  clearflag FLAG_KALOS_CHATEAU_HAS_CELESTE
+  clearflag FLAG_KALOS_CHATEAU_HAS_OCTAVE
+  clearflag FLAG_KALOS_CHATEAU_HAS_ISAURE
+  clearflag FLAG_KALOS_CHATEAU_HAS_CORENTIN
+  clearflag FLAG_KALOS_CHATEAU_HAS_VIOLA
+  clearflag FLAG_KALOS_CHATEAU_HAS_GRANT
+  clearflag FLAG_KALOS_CHATEAU_HAS_KORRINA
+  clearflag FLAG_KALOS_CHATEAU_HAS_RAMOS
+  clearflag FLAG_KALOS_CHATEAU_HAS_CLEMONT
+  clearflag FLAG_KALOS_CHATEAU_HAS_VALERIE
+  clearflag FLAG_KALOS_CHATEAU_HAS_OLYMPIA
+  clearflag FLAG_KALOS_CHATEAU_HAS_WULFRIC
+  if var VAR_KALOS_CHATEAU_GUEST_1 == 0 setflag FLAG_KALOS_CHATEAU_HAS_MIRABELLE
+  if var VAR_KALOS_CHATEAU_GUEST_1 == 1 setflag FLAG_KALOS_CHATEAU_HAS_TRISTAN
+  if var VAR_KALOS_CHATEAU_GUEST_1 == 2 setflag FLAG_KALOS_CHATEAU_HAS_CELESTE
+  if var VAR_KALOS_CHATEAU_TITLE < 3 goto Leaders
+  if var VAR_KALOS_CHATEAU_GUEST_2 == 0 setflag FLAG_KALOS_CHATEAU_HAS_OCTAVE
+  if var VAR_KALOS_CHATEAU_GUEST_2 == 1 setflag FLAG_KALOS_CHATEAU_HAS_ISAURE
+  if var VAR_KALOS_CHATEAU_GUEST_2 == 2 setflag FLAG_KALOS_CHATEAU_HAS_CORENTIN
+label Leaders
+  if not flag KalosHallOfFame return
+  if weekday monday setflag FLAG_KALOS_CHATEAU_HAS_VIOLA
+  if weekday tuesday setflag FLAG_KALOS_CHATEAU_HAS_GRANT
+  if weekday wednesday setflag FLAG_KALOS_CHATEAU_HAS_KORRINA
+  if weekday thursday setflag FLAG_KALOS_CHATEAU_HAS_RAMOS
+  if weekday friday setflag FLAG_KALOS_CHATEAU_HAS_CLEMONT
+  if weekday saturday setflag FLAG_KALOS_CHATEAU_HAS_VALERIE
+  if weekday sunday setflag FLAG_KALOS_CHATEAU_HAS_OLYMPIA
+  if weekday sunday setflag FLAG_KALOS_CHATEAU_HAS_WULFRIC
+  return
+
+
+# A guest of the hall, by who is spoken to
+script Guest
+  face self player
+  if subject "mirabelle" goto Mirabelle
+  if subject "tristan" goto Tristan
+  if subject "celeste" goto Celeste
+  if subject "octave" goto Octave
+  if subject "isaure" goto Isaure
+  if subject "corentin" goto Corentin
+  if subject "viola" goto Viola
+  if subject "grant" goto Grant
+  if subject "korrina" goto Korrina
+  if subject "ramos" goto Ramos
+  if subject "clemont" goto Clemont
+  if subject "valerie" goto Valerie
+  if subject "olympia" goto Olympia
+  if subject "wulfric" goto Wulfric
+  end
+label Mirabelle
+  speaker "Mirabelle"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_MIRABELLE goto MirabelleBeaten
+  say "The tea is cold, the company is warm, and I have been waiting all afternoon for a battle. Will you oblige?"
+  ask "Will you battle Mirabelle?"
+  if no goto MirabelleRefused
+  battle self as "kalos_chateau_mirabelle" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_MIRABELLE
+  addvar VAR_KALOS_CHATEAU_POINTS 1
+  speaker "Mirabelle"
+  say "How lovely. I shall tell the others you play beautifully."
+  goto Won
+label MirabelleBeaten
+  say "How lovely. I shall tell the others you play beautifully."
+  end
+label MirabelleRefused
+  say "Do come back. The house is never dull with you in it."
+  end
+label Tristan
+  speaker "Tristan"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_TRISTAN goto TristanBeaten
+  say "They say the house remembers every battle fought in this hall. Let us give it one worth remembering."
+  ask "Will you battle Tristan?"
+  if no goto TristanRefused
+  battle self as "kalos_chateau_tristan" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_TRISTAN
+  addvar VAR_KALOS_CHATEAU_POINTS 1
+  speaker "Tristan"
+  say "A fine win. I will be training in the garden until tomorrow."
+  goto Won
+label TristanBeaten
+  say "A fine win. I will be training in the garden until tomorrow."
+  end
+label TristanRefused
+  say "The hall will still be here. So will I."
+  end
+label Celeste
+  speaker "Celeste"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_CELESTE goto CelesteBeaten
+  say "My Pokémon are all very small and very proud. They would love to meet yours. Shall we?"
+  ask "Will you battle Celeste?"
+  if no goto CelesteRefused
+  battle self as "kalos_chateau_celeste" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CELESTE
+  addvar VAR_KALOS_CHATEAU_POINTS 1
+  speaker "Celeste"
+  say "They are proud of you, too, now. That is rare."
+  goto Won
+label CelesteBeaten
+  say "They are proud of you, too, now. That is rare."
+  end
+label CelesteRefused
+  say "They will sulk, a little. Come back soon."
+  end
+label Octave
+  speaker "Octave"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_OCTAVE goto OctaveBeaten
+  say "I have been a guest of this house for forty years. I have learned one thing: no title ever battled for you. Show me."
+  ask "Will you battle Octave?"
+  if no goto OctaveRefused
+  battle self as "kalos_chateau_octave" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_OCTAVE
+  addvar VAR_KALOS_CHATEAU_POINTS 2
+  speaker "Octave"
+  say "Well battled. The house was right to call you a friend."
+  goto Won
+label OctaveBeaten
+  say "Well battled. The house was right to call you a friend."
+  end
+label OctaveRefused
+  say "Forty years, and I still lose my temper when someone walks away. Come back."
+  end
+label Isaure
+  speaker "Isaure"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_ISAURE goto IsaureBeaten
+  say "Friends of the house are given the good chairs and the hard battles. You have the chair already."
+  ask "Will you battle Isaure?"
+  if no goto IsaureRefused
+  battle self as "kalos_chateau_isaure" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_ISAURE
+  addvar VAR_KALOS_CHATEAU_POINTS 2
+  speaker "Isaure"
+  say "Splendid. You may keep the chair."
+  goto Won
+label IsaureBeaten
+  say "Splendid. You may keep the chair."
+  end
+label IsaureRefused
+  say "Another time, then. I am always here on the good days."
+  end
+label Corentin
+  speaker "Corentin"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_CORENTIN goto CorentinBeaten
+  say "I saw this battle in my teacup this morning. I did not see who won. Let us find out."
+  ask "Will you battle Corentin?"
+  if no goto CorentinRefused
+  battle self as "kalos_chateau_corentin" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CORENTIN
+  addvar VAR_KALOS_CHATEAU_POINTS 2
+  speaker "Corentin"
+  say "Ah. The tea leaves were right not to tell me."
+  goto Won
+label CorentinBeaten
+  say "Ah. The tea leaves were right not to tell me."
+  end
+label CorentinRefused
+  say "The leaves say you will be back. They are rarely wrong."
+  end
+label Viola
+  speaker "Viola"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_VIOLA goto ViolaBeaten
+  say "Off duty, I still carry my camera. Off duty, I still battle. Smile!"
+  ask "Will you battle Viola?"
+  if no goto ViolaRefused
+  battle self as "kalos_chateau_viola" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_VIOLA
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Viola"
+  say "Got it! The look on your face when you won. That is the shot."
+  goto Won
+label ViolaBeaten
+  say "Got it! The look on your face when you won. That is the shot."
+  end
+label ViolaRefused
+  say "Another day, then. I am here every week."
+  end
+label Grant
+  speaker "Grant"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_GRANT goto GrantBeaten
+  say "In the Gym I wait for climbers to reach me. Here, I can climb toward you. Ready?"
+  ask "Will you battle Grant?"
+  if no goto GrantRefused
+  battle self as "kalos_chateau_grant" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_GRANT
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Grant"
+  say "A good climb. The view from the top suits you."
+  goto Won
+label GrantBeaten
+  say "A good climb. The view from the top suits you."
+  end
+label GrantRefused
+  say "Another day, then. I am here every week."
+  end
+label Korrina
+  speaker "Korrina"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_KORRINA goto KorrinaBeaten
+  say "No roller skates on the parquet, they told me. They never said no battles!"
+  ask "Will you battle Korrina?"
+  if no goto KorrinaRefused
+  battle self as "kalos_chateau_korrina" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_KORRINA
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Korrina"
+  say "Wow! Grandpa would have loved that one."
+  goto Won
+label KorrinaBeaten
+  say "Wow! Grandpa would have loved that one."
+  end
+label KorrinaRefused
+  say "Another day, then. I am here every week."
+  end
+label Ramos
+  speaker "Ramos"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_RAMOS goto RamosBeaten
+  say "Hoho! A garden needs tending even when the gardener visits friends. So does a team."
+  ask "Will you battle Ramos?"
+  if no goto RamosRefused
+  battle self as "kalos_chateau_ramos" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_RAMOS
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Ramos"
+  say "You grew strong, young sprout. Strong and tall."
+  goto Won
+label RamosBeaten
+  say "You grew strong, young sprout. Strong and tall."
+  end
+label RamosRefused
+  say "Another day, then. I am here every week."
+  end
+label Clemont
+  speaker "Clemont"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_CLEMONT goto ClemontBeaten
+  say "I built a machine to predict the outcome of this battle. It overheated. Let us do it the old way!"
+  ask "Will you battle Clemont?"
+  if no goto ClemontRefused
+  battle self as "kalos_chateau_clemont" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CLEMONT
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Clemont"
+  say "Back to the workshop, then. Science never stops!"
+  goto Won
+label ClemontBeaten
+  say "Back to the workshop, then. Science never stops!"
+  end
+label ClemontRefused
+  say "Another day, then. I am here every week."
+  end
+label Valerie
+  speaker "Valerie"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_VALERIE goto ValerieBeaten
+  say "The light in this hall is so gentle. It is a good light for a battle, I think."
+  ask "Will you battle Valerie?"
+  if no goto ValerieRefused
+  battle self as "kalos_chateau_valerie" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_VALERIE
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Valerie"
+  say "You were... lovely to watch. Thank you."
+  goto Won
+label ValerieBeaten
+  say "You were... lovely to watch. Thank you."
+  end
+label ValerieRefused
+  say "Another day, then. I am here every week."
+  end
+label Olympia
+  speaker "Olympia"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_OLYMPIA goto OlympiaBeaten
+  say "The stars said you would come on this day. They were right, as always."
+  ask "Will you battle Olympia?"
+  if no goto OlympiaRefused
+  battle self as "kalos_chateau_olympia" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_OLYMPIA
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Olympia"
+  say "This, too, the stars knew. Go well."
+  goto Won
+label OlympiaBeaten
+  say "This, too, the stars knew. Go well."
+  end
+label OlympiaRefused
+  say "Another day, then. I am here every week."
+  end
+label Wulfric
+  speaker "Wulfric"
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_WULFRIC goto WulfricBeaten
+  say "Ha! Snowbelle is cold this time of year. The hall is warm, and so is a good battle!"
+  ask "Will you battle Wulfric?"
+  if no goto WulfricRefused
+  battle self as "kalos_chateau_wulfric" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_WULFRIC
+  addvar VAR_KALOS_CHATEAU_POINTS 3
+  speaker "Wulfric"
+  say "Ha ha! I am warmer already!"
+  goto Won
+label WulfricBeaten
+  say "Ha ha! I am warmer already!"
+  end
+label WulfricRefused
+  say "Another day, then. I am here every week."
+  end
+label Lost
+  heal
+  speaker none
+  text "The house's staff see to {player}'s Pokémon. Nobody leaves the Château hurt."
+  end
+label Won
+  call Title
+  end
+
+
+# The house's titles, at thresholds of ours: the butler says when a new one is earned
+script Title
+  if var VAR_KALOS_CHATEAU_POINTS >= 90 goto Reach7
+  if var VAR_KALOS_CHATEAU_POINTS >= 60 goto Reach6
+  if var VAR_KALOS_CHATEAU_POINTS >= 40 goto Reach5
+  if var VAR_KALOS_CHATEAU_POINTS >= 25 goto Reach4
+  if var VAR_KALOS_CHATEAU_POINTS >= 15 goto Reach3
+  if var VAR_KALOS_CHATEAU_POINTS >= 8 goto Reach2
+  if var VAR_KALOS_CHATEAU_POINTS >= 3 goto Reach1
+  return
+label Reach1
+  if var VAR_KALOS_CHATEAU_TITLE >= 1 return
+  setvar VAR_KALOS_CHATEAU_TITLE 1
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Guest."
+  fanfare item
+  return
+label Reach2
+  if var VAR_KALOS_CHATEAU_TITLE >= 2 return
+  setvar VAR_KALOS_CHATEAU_TITLE 2
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Regular."
+  fanfare item
+  return
+label Reach3
+  if var VAR_KALOS_CHATEAU_TITLE >= 3 return
+  setvar VAR_KALOS_CHATEAU_TITLE 3
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Friend of the House."
+  fanfare item
+  return
+label Reach4
+  if var VAR_KALOS_CHATEAU_TITLE >= 4 return
+  setvar VAR_KALOS_CHATEAU_TITLE 4
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Honoured Guest."
+  fanfare item
+  return
+label Reach5
+  if var VAR_KALOS_CHATEAU_TITLE >= 5 return
+  setvar VAR_KALOS_CHATEAU_TITLE 5
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Patron."
+  fanfare item
+  return
+label Reach6
+  if var VAR_KALOS_CHATEAU_TITLE >= 6 return
+  setvar VAR_KALOS_CHATEAU_TITLE 6
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Steward."
+  fanfare item
+  return
+label Reach7
+  if var VAR_KALOS_CHATEAU_TITLE >= 7 return
+  setvar VAR_KALOS_CHATEAU_TITLE 7
+  speaker "Butler"
+  say "The house is pleased with you, {player}. From today you are its Master of the House."
+  fanfare item
+  return
+
+
+# The butler by the clock: the house's rules and the player's title
+script Butler
+  face self player
+  speaker "Butler"
+  say "Welcome to the Château. Its guests battle whoever they please, once a day, and the house keeps count."
+  if var VAR_KALOS_CHATEAU_TITLE == 7 goto Title7
+  if var VAR_KALOS_CHATEAU_TITLE == 6 goto Title6
+  if var VAR_KALOS_CHATEAU_TITLE == 5 goto Title5
+  if var VAR_KALOS_CHATEAU_TITLE == 4 goto Title4
+  if var VAR_KALOS_CHATEAU_TITLE == 3 goto Title3
+  if var VAR_KALOS_CHATEAU_TITLE == 2 goto Title2
+  if var VAR_KALOS_CHATEAU_TITLE == 1 goto Title1
+  say "To the house you are a Visitor, for now. Win a few battles in this hall, and that will change."
+  end
+label Title1
+  say "To the house you are its Guest. It wears well on you."
+  end
+label Title2
+  say "To the house you are its Regular. It wears well on you."
+  end
+label Title3
+  say "To the house you are its Friend of the House. It wears well on you."
+  end
+label Title4
+  say "To the house you are its Honoured Guest. It wears well on you."
+  end
+label Title5
+  say "To the house you are its Patron. It wears well on you."
+  end
+label Title6
+  say "To the house you are its Steward. It wears well on you."
+  end
+label Title7
+  say "To the house you are its Master of the House. It wears well on you."
+  end
+
+
+script Maid
+  face self player
+  speaker "Maid"
+  say "The guests change every day. Some only come once the house knows you well, and some only on their own day of the week."
+  end

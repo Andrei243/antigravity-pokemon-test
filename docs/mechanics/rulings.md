@@ -9844,7 +9844,77 @@ neighbour beaten in Kiloude, 3 the Mega Ring upgraded); Looker's episode has its
   places of evolution, Ambrette's fossil laboratory, Yveltal and the three mythicals.
 - **Left.** The Battle Maison, the Friend Safari, Kalos's water (surfing and the rods), the Kanto starter's stone, the
   Chamber of Emptiness, the Poké Ball Factory, the Battle Château, Lumiose's other shut doors, the TMV's Kiloude station,
-  the stones' evening hour, and every new place's own song (plan 31).
+  the stones' evening hour, and every new place's own song (plan 31). (Most of it since: "Kalos's last places", below.)
+
+## Kalos's last places: the stone shop, the Battle Maison, the Chamber of Emptiness and the rest (2026-11-08, plan 23, after Z4b)
+
+What Z4b left, in our own words on X and Y's beats as they are publicly described, drawn with `tools/MapDraw`; Kalos's
+movement stays `Eight`.
+
+- **The stone shop.** X and Y's Stone Emporium sells the Fire, Water and Leaf Stones and hides the other six in places
+  this Kalos doesn't draw; ours sells all nine at its counter (`lumiose_stones` in `marts.json`). After the Hall of Fame
+  its owner (a person of ours beside the shopkeeper) gives the Mega Stone of the Kanto Pokémon the professor gave, once
+  (`FLAG_KALOS_KANTO_STONE_GIVEN`): X and Y have the professor give it before the League; the save keeps no record of
+  which of the three was taken, so the owner asks (Charmander's two stones are two answers). The other two Kanto stones X
+  and Y sell for a price that falls with style are not sold: this game has no style.
+- **Lumiose's last doors.** Two of the city's shut doors open from the start on shops of ours: the Herboriste on the
+  north boulevard (`lumiose_herbs`: the four herbs) and a Poké Ball boutique south of the middle ring (`lumiose_balls`).
+  X and Y's restaurants stay plan 37 · FC5's (the door behind warp 22), and the other shut doors stay shut.
+- **The Mega Stones' evening hour.** Z4b laid the fourteen post-game stones at any hour; they now glint only between
+  20:00 and 20:59, X and Y's hour, once the Mega Ring is upgraded. The clock keeps a flag for it
+  (`Story/ClockFlags.cs`: `FLAG_KALOS_STONES_GLINT`, set and cleared by `GameEngine.KeepTheClock` as the hour turns, so a
+  stone shows or goes wherever the player stands), and the stones' balls are shown by it. A flag the clock keeps is
+  counted as set by the game itself (the content check).
+- **The Chamber of Emptiness.** X and Y's lies on Route 22 out of Santalune City, which this Kalos doesn't draw: ours is a
+  small cave of its own (matrix 20) whose mouth opens in the woods at the north-west corner of Santalune City, open from
+  the start, one winding way north to a round, empty chamber. The **Banettite** lies there now (Z4b had laid it in the
+  Lost Hotel). X and Y give Xerneas or Yveltal by the version; this game has no versions, Xerneas is met under Geosenge
+  in the story, and so **Yveltal sleeps in the chamber after the Hall of Fame**, at 70 like Zygarde and Mewtwo, gone for
+  good once beaten or caught (`FLAG_KALOS_YVELTAL_GONE`), staying if run from. A ruling of ours: X and Y's chamber holds
+  only the stone.
+- **Kiloude City's station.** The TMV's attendant stood on Kiloude's street (Z4b); Kiloude has a station building of its
+  own since, west of the flowers, and the train runs between the two stations' rooms (`LumioseCity_Station.Tmv` to
+  `KiloudeCity_Station` and back).
+- **The Battle Maison** (plan 37's streak house, its first part). It stands in Kiloude City, as X and Y's does (plan
+  37's decision 1 put it behind a Lumiose door "until plan 23 draws that town"), open once the Hall of Fame is entered.
+  Plan 37 · FC2's frame isn't built, so the Maison runs on the venues' frame (plan 14 · B9, `BattleVenueChallenge`,
+  `venue ... maison`): a round of seven **single** battles, three entered as copies at level 50 and made whole after
+  every battle, against trainers of the later places (`FacilityTrainers.Draw`, FC1's sets and `facility-trainers.json`'s
+  people), no two alike in a round, at tiers that climb with the rounds won in a row (`BattleVenueChallenge.MaisonTiers`:
+  tiers 1 and 2 for the first round, then 1 to 3, 2 and 3, 2 to 4, and 3 and 4 from the fifth) with IVs rising the same
+  way (`FacilityTrainers.IvsFor`). Battle Points for a round won are the Dome's rule, into the Frontier's one purse
+  (plan 37's decision 6), and the counter beside the desk trades them for the later games' items
+  (`Data/facility-prizes.json`, plan 37's file: evolution items, the weather rocks, the Thick Club and battle items, at
+  32 and 48 points). The record is `FrontierRecords.Maison`. Not built (FC2's): the double, triple and rotation rooms, the
+  hosts at the 20th and 50th battles and the hard rooms, a round put down and taken up, a board of its own.
+- **The Poké Ball Factory.** X and Y's stands in Laverre City and its scene comes after the Fairy Badge, with the
+  neighbour beside the player and Team Flare's two scientists at the back. Ours is the player's alone and no step of
+  the story: its door on the town's east side opens with the Fairy Badge (`FLAG_KALOS_DEFEATED_LAVERRE_GYM`), three
+  grunts of ours stand among the machines (Laverre's levels, 37 to 39), and the president, held in his office, gives the
+  **Master Ball** once all three are beaten (`FLAG_KALOS_FACTORY_DONE`, which sends them away). Celosia and Bryony are
+  met under Geosenge (plan 23 · Z4).
+- **The Battle Château** (plan 37's house of titles, its first part). A manor of ours on Route 7's north side by the
+  lane down from Camphrier, so it is reached once the Poké Flute has woken Snorlax. None of X and Y's noble ranks or
+  people is here. The player's own team battles at its own levels and is paid as after any trainer's battle; a battle
+  lost costs nothing and the house's staff heal the team. Each day (`FLAG_DAILY_KALOS_CHATEAU_DRAWN`) the west place
+  holds one of three guests (Mirabelle, Tristan, Celeste, about level 30), the east place one of three stronger ones once
+  the player is a Friend of the House (Octave, Isaure, Corentin, about 55), and after Kalos's Hall of Fame the middle
+  holds the Leader of the weekday (Viola on Mondays, Grant, Korrina, Ramos, Clemont, Valerie, Olympia on Sundays with
+  Wulfric beside her), with teams of theirs at 64 to 68. Each battles once a day; a win counts 1, 2 or 3 toward the
+  house's titles (`VAR_KALOS_CHATEAU_POINTS`): Guest at 3, Regular at 8, Friend of the House at 15, Honoured Guest at 25,
+  Patron at 40, Steward at 60 and Master of the House at 90 (`VAR_KALOS_CHATEAU_TITLE` 1 to 7; 0 is Visitor). Not built
+  (FC4's): the guests' levels by the title over the player's highest, other regions' Leaders and Champions, the title on
+  the Trainer Card.
+- **The Lost Hotel's bins.** X and Y's shake again and again and give Trubbish, Garbodor and, on Tuesdays, Rotom;
+  ours are three rubbish bins of the old hotel (props of the overlay, read by `lost_hotel.txt`) that shake once a day each
+  (`FLAG_DAILY_KALOS_LOST_HOTEL_BIN_*`): a Trubbish four times in five (35) and a Garbodor the fifth (37), and on a
+  Tuesday a Rotom three times in four (38), so the hotel can't be emptied of Rotom in one evening.
+- **The Friend Safari** is not built: X and Y's draws from the friends registered, and no plan gives it a seam yet
+  (plan 38 names it plan 23's; plan 07 · O7's friend list doesn't exist).
+- **Species.** The stone shop's counter gives Kalos every evolution by a stone (twenty-three of the owed species), the
+  Maison's counter its evolution items (the Razor Claw evolves Weavile), the chamber Yveltal, and the Lost Hotel's bins
+  Trubbish, Garbodor and Rotom: `KalosSpeciesTests.Owed` went from 143 to 115 and its owed items from 21 to 4. The later places' prize counters are counted where a region's
+  scripts open them (`SpeciesSources`, a `frontier prize` of `facility-prizes.json`'s).
 
 ## Kalos's Gyms, its water and the Mamoswine ride (2026-11-08, plan 23 after Z4b)
 

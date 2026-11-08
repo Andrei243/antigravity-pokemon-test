@@ -70,6 +70,8 @@ public static class Checks
             written.Add(BicycleRules.ForcedInGateFlag);
             // ...and the Bug-Catching Contest's, which `bugcontest` sets and clears itself (plan 15 · E5)
             written.UnionWith(PokemonPlatinumEngine.Story.ScriptRunner.BugContestFlags);
+            // ...and the flags the clock keeps (plan 23, Kalos's last places: the Mega Stones' evening hour)
+            written.UnionWith(PokemonPlatinumEngine.Story.ClockFlags.All.Select(f => f.Flag));
         }
 
         public bool IsSet(string flag) => written.Contains(flag);

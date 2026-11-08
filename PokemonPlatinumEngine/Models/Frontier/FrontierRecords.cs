@@ -173,6 +173,12 @@ public sealed class FrontierRecords
     public VenueRecord Pike { get; set; } = new();
     public VenueRecord Pyramid { get; set; } = new();
 
+    /// <summary>
+    /// The Battle Maison's in Kiloude City (plan 23, Kalos's last places; plan 37's streak house): rounds of seven on the
+    /// venues' frame, against trainers of the later sets.
+    /// </summary>
+    public VenueRecord Maison { get; set; } = new();
+
     /// <summary>The World Tournament's (plan 14 · B11, in the annex): the titles won by event, the tournaments entered and the matches won.</summary>
     public TournamentRecord Tournament { get; set; } = new();
 
@@ -375,7 +381,8 @@ public static class FrontierExchange
         Items => Data.FrontierDatabase.ExchangeItems,
         Machines => Data.FrontierDatabase.ExchangeMachines,
         Training => Models.TrainingData.BattlePoints,
-        _ => Array.Empty<Data.FrontierPrizeRecord>()
+        // The later battle places' counters (plan 37's decision 6; Kiloude City's Battle Maison, plan 23)
+        _ => Facilities.FacilityPrizes.Of(list)
     };
 
     /// <summary><c>Shop_GetItemBPPrice</c>: what something costs in Battle Points; 0 for what neither booth has.</summary>

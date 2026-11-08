@@ -194,7 +194,7 @@
       "y": 16,
       "facing": "Down",
       "hiddenBy": "FLAG_KALOS_ITEM_MEGA_AGGRONITE",
-      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "shownBy": "FLAG_KALOS_STONES_GLINT",
       "item": "Aggronite"
     },
     {
@@ -205,7 +205,7 @@
       "y": 16,
       "facing": "Down",
       "hiddenBy": "FLAG_KALOS_ITEM_MEGA_TYRANITARITE",
-      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "shownBy": "FLAG_KALOS_STONES_GLINT",
       "item": "Tyranitarite"
     }
   ],

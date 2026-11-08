@@ -28,7 +28,9 @@ public enum StrictKind
     Encounters,
     // Plan 37 · FC1: the later sets (generated) and the later places' trainers (written by hand)
     FacilitySets,
-    FacilityTrainers
+    FacilityTrainers,
+    // The later places' prize counters (written by hand: plan 23, Kiloude City's Battle Maison)
+    FacilityPrizes
 }
 
 /// <summary>A data file to read strictly: where it is, its name under <c>Data</c>, and its kind.</summary>
@@ -58,6 +60,8 @@ public static class StrictFiles
         if (File.Exists(sound)) yield return Make(data, sound, StrictKind.SoundMap);
         string facilityTrainers = Path.Combine(data, Models.Facilities.FacilityTrainers.FileName);
         if (File.Exists(facilityTrainers)) yield return Make(data, facilityTrainers, StrictKind.FacilityTrainers);
+        string facilityPrizes = Path.Combine(data, Models.Facilities.FacilityPrizes.FileName);
+        if (File.Exists(facilityPrizes)) yield return Make(data, facilityPrizes, StrictKind.FacilityPrizes);
     }
 
     public static IEnumerable<StrictFile> GeneratedFiles(string data)
@@ -121,6 +125,7 @@ public static class StrictFiles
                 case StrictKind.Encounters: GameDataFiles.ReadStrict<WorldEncountersFile>(text, file.Relative); break;
                 case StrictKind.FacilitySets: GameDataFiles.ReadStrict<FacilitySetData>(text, file.Relative); break;
                 case StrictKind.FacilityTrainers: GameDataFiles.ReadStrict<Models.Facilities.FacilityTrainersFile>(text, file.Relative); break;
+                case StrictKind.FacilityPrizes: GameDataFiles.ReadStrict<Models.Facilities.FacilityPrizesFile>(text, file.Relative); break;
             }
             return null;
         }

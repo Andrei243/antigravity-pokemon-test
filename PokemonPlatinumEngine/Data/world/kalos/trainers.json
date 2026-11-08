@@ -4494,5 +4494,553 @@
         "personality": 254240
       }
     ]
+  },
+  {
+    "id": "kalos_flare_grunt_factory_1",
+    "name": "Grunt",
+    "class": "Team Flare Grunt",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1520,
+    "party": [
+      {
+        "species": "Houndoom",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 9100397
+      },
+      {
+        "species": "Mightyena",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 9100794
+      }
+    ]
+  },
+  {
+    "id": "kalos_flare_grunt_factory_2",
+    "name": "Grunt",
+    "class": "Team Flare Grunt",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1520,
+    "party": [
+      {
+        "species": "Golbat",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 9101191
+      },
+      {
+        "species": "Swalot",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 9101588
+      }
+    ]
+  },
+  {
+    "id": "kalos_flare_grunt_factory_3",
+    "name": "Grunt",
+    "class": "Team Flare Grunt",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1560,
+    "party": [
+      {
+        "species": "Liepard",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 9101985
+      },
+      {
+        "species": "Toxicroak",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 9102382
+      },
+      {
+        "species": "Houndoom",
+        "level": 39,
+        "ivScale": 0,
+        "personality": 9102779
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_mirabelle",
+    "name": "Mirabelle",
+    "class": "Lady",
+    "ai": [
+      "Basic"
+    ],
+    "items": [
+      "Potion"
+    ],
+    "prizeMoney": 1488,
+    "party": [
+      {
+        "species": "Furfrou",
+        "level": 30,
+        "ivScale": 10,
+        "personality": 9103176
+      },
+      {
+        "species": "Floette",
+        "level": 31,
+        "ivScale": 10,
+        "personality": 9103573
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_tristan",
+    "name": "Tristan",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2560,
+    "party": [
+      {
+        "species": "Pyroar",
+        "level": 31,
+        "ivScale": 10,
+        "personality": 9103970
+      },
+      {
+        "species": "Absol",
+        "level": 31,
+        "ivScale": 10,
+        "personality": 9104367
+      },
+      {
+        "species": "Doublade",
+        "level": 32,
+        "ivScale": 10,
+        "personality": 9104764
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_celeste",
+    "name": "Celeste",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2560,
+    "party": [
+      {
+        "species": "Espurr",
+        "level": 30,
+        "ivScale": 10,
+        "personality": 9105161
+      },
+      {
+        "species": "Swirlix",
+        "level": 30,
+        "ivScale": 10,
+        "personality": 9105558
+      },
+      {
+        "species": "Kirlia",
+        "level": 32,
+        "ivScale": 10,
+        "personality": 9105955
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_octave",
+    "name": "Octave",
+    "class": "Veteran",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 4480,
+    "party": [
+      {
+        "species": "Bisharp",
+        "level": 54,
+        "ivScale": 20,
+        "personality": 9106352
+      },
+      {
+        "species": "Scizor",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 9106749
+      },
+      {
+        "species": "Lucario",
+        "level": 56,
+        "ivScale": 20,
+        "personality": 9107146
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_isaure",
+    "name": "Isaure",
+    "class": "Beauty",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 4560,
+    "party": [
+      {
+        "species": "Gardevoir",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 9107543
+      },
+      {
+        "species": "Aromatisse",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 9107940
+      },
+      {
+        "species": "Florges",
+        "level": 57,
+        "ivScale": 20,
+        "personality": 9108337
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_corentin",
+    "name": "Corentin",
+    "class": "Psychic",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 1870,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 54,
+        "ivScale": 20,
+        "personality": 9108734
+      },
+      {
+        "species": "Malamar",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 9109131
+      },
+      {
+        "species": "Reuniclus",
+        "level": 56,
+        "ivScale": 20,
+        "personality": 9109528
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_viola",
+    "name": "Viola",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 7920,
+    "party": [
+      {
+        "species": "Masquerain",
+        "level": 64,
+        "ivScale": 31,
+        "personality": 9109925
+      },
+      {
+        "species": "Vivillon",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9110322
+      },
+      {
+        "species": "Heracross",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 9110719
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_grant",
+    "name": "Grant",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 7920,
+    "party": [
+      {
+        "species": "Aurorus",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9111116
+      },
+      {
+        "species": "Tyrantrum",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9111513
+      },
+      {
+        "species": "Barbaracle",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 9111910
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_korrina",
+    "name": "Korrina",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8040,
+    "party": [
+      {
+        "species": "Mienshao",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9112307
+      },
+      {
+        "species": "Machamp",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9112704
+      },
+      {
+        "species": "Hawlucha",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 9113101
+      },
+      {
+        "species": "Lucario",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 9113498
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_ramos",
+    "name": "Ramos",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8040,
+    "party": [
+      {
+        "species": "Jumpluff",
+        "level": 64,
+        "ivScale": 31,
+        "personality": 9113895
+      },
+      {
+        "species": "Victreebel",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9114292
+      },
+      {
+        "species": "Gogoat",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 9114689
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_clemont",
+    "name": "Clemont",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8040,
+    "party": [
+      {
+        "species": "Emolga",
+        "level": 64,
+        "ivScale": 31,
+        "personality": 9115086
+      },
+      {
+        "species": "Magnezone",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9115483
+      },
+      {
+        "species": "Heliolisk",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 9115880
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_valerie",
+    "name": "Valerie",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8040,
+    "party": [
+      {
+        "species": "Mawile",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9116277
+      },
+      {
+        "species": "Mr. Mime",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9116674
+      },
+      {
+        "species": "Sylveon",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 9117071
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_olympia",
+    "name": "Olympia",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8040,
+    "party": [
+      {
+        "species": "Sigilyph",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9117468
+      },
+      {
+        "species": "Slowking",
+        "level": 65,
+        "ivScale": 31,
+        "personality": 9117865
+      },
+      {
+        "species": "Meowstic",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 9118262
+      }
+    ]
+  },
+  {
+    "id": "kalos_chateau_wulfric",
+    "name": "Wulfric",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore"
+    ],
+    "prizeMoney": 8160,
+    "party": [
+      {
+        "species": "Abomasnow",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 9118659
+      },
+      {
+        "species": "Cryogonal",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 9119056
+      },
+      {
+        "species": "Avalugg",
+        "level": 68,
+        "ivScale": 31,
+        "personality": 9119453
+      }
+    ]
   }
 ]

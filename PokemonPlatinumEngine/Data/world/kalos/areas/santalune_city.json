@@ -20,7 +20,8 @@
     { "x": 351, "z": 518, "to": "SantaluneCity_EastHouse", "toWarp": 0 },
     { "x": 325, "z": 519, "to": "SantaluneCity_PokemonCenter_1F", "toWarp": 0 },
     { "x": 324, "z": 537, "to": "SantaluneCity_SouthwestHouse", "toWarp": 0 },
-    { "x": 352, "z": 537, "to": "SantaluneCity_SoutheastHouse", "toWarp": 0 }
+    { "x": 352, "z": 537, "to": "SantaluneCity_SoutheastHouse", "toWarp": 0 },
+    { "x": 320, "z": 498, "to": "chamber_of_emptiness", "toWarp": 0 }
   ],
   "objects": [
     { "id": "rival", "looks": "rival", "movement": "look_west", "x": 324, "z": 527, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_RIVAL_SANTALUNE", "script": "" },

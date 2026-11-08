@@ -1,0 +1,29 @@
+# The Chamber of Emptiness off Santalune City (plan 23, Kalos's last places). The lines are our own. X and Y give one of
+# Kalos's two legendary Pokémon by the version, and this game has no versions: Xerneas wakes under Geosenge Town in the
+# story (plan 23 · Z4), and once the Hall of Fame is entered its other half sleeps in this empty chamber, at level 70
+# (docs/mechanics/rulings.md, "Kalos's last places"). Beaten or caught it is gone for good (FLAG_KALOS_YVELTAL_GONE);
+# run from, it stays.
+
+
+script Yveltal
+  speaker none
+  scene "Yveltal in the Chamber of Emptiness"
+  letterbox on 0.4
+  camera pan 16 7 1.2
+  camera zoom 1.4 0.8
+  text "Something vast is folded in on itself against the far wall, its wings drawn round it like a cloak."
+  text "The air grows cold. Its wings open."
+  cry "Yveltal"
+  camera release 0.4
+  letterbox off 0.3
+  wildbattle "Yveltal" 70
+  if result == 2 goto Stays
+  setflag FLAG_KALOS_YVELTAL_GONE
+  hide self
+  text "The chamber is empty again. Only the cold is left."
+  goto Done
+label Stays
+  text "Its wings close round it once more, and it waits."
+label Done
+  endscene
+  end

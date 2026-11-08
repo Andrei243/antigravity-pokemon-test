@@ -1,0 +1,227 @@
+{
+  "name": "LaverreCity_PokeBallFactory",
+  "displayName": "Poké Ball Factory",
+  "bgmTrack": "kalos/santalune",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 21,
+  "height": 16,
+  "ground": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "##########D##########"
+  ],
+  "solid": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#.#.#.#...#...#.#.#.#",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "##########.##########",
+    "#...................#",
+    "#...................#",
+    "#...................#",
+    "#######.......#######",
+    "#...................#",
+    "#...................#",
+    "##.................##",
+    "##########.##########"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 7,
+      "width": 9,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 7,
+      "width": 9,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 11,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 11,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 15,
+      "targetMap": "Kalos",
+      "targetX": 383,
+      "targetY": 191,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kalos_flare_grunt_factory_1",
+      "name": "Grunt",
+      "npcType": "flare_grunt",
+      "x": 8,
+      "y": 12,
+      "facing": "Right",
+      "hiddenBy": "FLAG_KALOS_FACTORY_DONE",
+      "trainer": {
+        "id": "kalos_flare_grunt_factory_1",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: The factory makes balls for Team Flare now. Stylish red ones. Out!",
+        "dialogueAfter": "Team Flare Grunt Grunt: That was not the plan. The plan was very stylish.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "kalos_flare_grunt_factory_2",
+      "name": "Grunt",
+      "npcType": "flare_grunt_f",
+      "x": 11,
+      "y": 9,
+      "facing": "Down",
+      "hiddenBy": "FLAG_KALOS_FACTORY_DONE",
+      "trainer": {
+        "id": "kalos_flare_grunt_factory_2",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: Every ball off this line is ours. You are not on the order sheet!",
+        "dialogueAfter": "Team Flare Grunt Grunt: Fine. Order cancelled.",
+        "sightRange": 2
+      }
+    },
+    {
+      "id": "kalos_flare_grunt_factory_3",
+      "name": "Grunt",
+      "npcType": "flare_grunt",
+      "x": 13,
+      "y": 5,
+      "facing": "Left",
+      "hiddenBy": "FLAG_KALOS_FACTORY_DONE",
+      "trainer": {
+        "id": "kalos_flare_grunt_factory_3",
+        "name": "Grunt",
+        "trainerClass": "Team Flare Grunt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Flare Grunt Grunt: The president is busy signing things for us. He is not taking visitors.",
+        "dialogueAfter": "Team Flare Grunt Grunt: Go on, then. He is all yours. We are leaving.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "president",
+      "name": "President",
+      "npcType": "gentleman",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "script": "President"
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "npcType": "scientist",
+      "x": 17,
+      "y": 13,
+      "facing": "Left",
+      "script": "Worker"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,25 @@
+{
+  "key": "chamber_of_emptiness",
+  "index": 70,
+  "name": "Chamber of Emptiness",
+  "matrix": 20,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "CHAMBER_OF_EMPTINESS",
+  "nightMusic": "CHAMBER_OF_EMPTINESS",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 27, "to": "santalune_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "yveltal", "looks": "yveltal", "movement": "look_south", "x": 16, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -239,6 +239,13 @@ public static class MapStructures
         // Plan 23 · Z3: Shalour City's Tower of Mastery, a tall hall of stone on the shore
         "ShalourCity_TowerOfMastery" => BuildingKind.Tower,
         "BattleFrontier_RankingHall" => BuildingKind.Hall,
+        // Plan 23, Kalos's last places: Kiloude City's Battle Maison and station, the Poké Ball Factory in Laverre City, the
+        // Battle Château on Route 7, and Lumiose City's shops behind its last doors
+        "KiloudeCity_BattleMaison" => BuildingKind.Hall,
+        "KiloudeCity_Station" => BuildingKind.Terminal,
+        "LaverreCity_PokeBallFactory" => BuildingKind.Factory,
+        "KalosRoute7_BattleChateau" => BuildingKind.Mansion,
+        "LumioseCity_BallBoutique" or "LumioseCity_Herboriste" => BuildingKind.Shop,
         "BattleFrontier_ExchangeServiceCorner" => BuildingKind.Shop,
         _ => null
     };

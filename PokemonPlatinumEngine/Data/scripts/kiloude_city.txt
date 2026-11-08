@@ -93,17 +93,3 @@ label Later
 label Tomorrow
   say "That's enough for one day. Come back tomorrow, and I'll be stronger!"
   end
-
-
-# Plan 23 · Z4b: the TMV's attendant on Kiloude's street, back to Lumiose Station
-script TmvBack
-  face self player
-  speaker "TMV Attendant"
-  ask "The next train leaves for Lumiose City. Will you be travelling?"
-  if no goto Later
-  say "Your pass, please... Thank you. All aboard!"
-  warp "LumioseCity_Station" 12 5 down
-  end
-label Later
-  say "The trains run all day. Enjoy the sea air in the meantime!"
-  end

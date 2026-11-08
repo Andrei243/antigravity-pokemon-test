@@ -1,0 +1,19 @@
+{
+  // The Chamber of Emptiness (plan 23, Kalos's last places): a map of its own, drawn by hand
+  // (tools/MapDraw/kalos/chamber_of_emptiness.txt), our words. A small, quiet cave whose mouth opens in the woods at the
+  // north-west corner of Santalune City (X and Y's lies on Route 22 out of Santalune, which this Kalos doesn't draw): a
+  // winding way north to one round chamber with nothing in it. Once the Hall of Fame is entered the Pokémon of
+  // destruction that X and Y give in Y alone sleeps there (chamber_of_emptiness.txt: Yveltal, at 70), and in the evening
+  // hour the Banettite glints by the chamber's wall once the Mega Ring is upgraded. It plays Santalune Forest's song until
+  // plan 31 writes it a cave song of its own
+  "area": "chamber_of_emptiness",
+  "bgmTrack": "kalos/santalune_forest",
+  "trees": "Round",
+  "people": {
+    "yveltal": { "name": "Yveltal", "npcType": "Pokemon", "species": "Yveltal", "script": "Yveltal", "still": true, "shownBy": "KalosHallOfFame", "hiddenBy": "FLAG_KALOS_YVELTAL_GONE" }
+  },
+  // X and Y's Banettite, at the evening hour once the professor has upgraded the Mega Ring by Anistar's sundial
+  "npcs": [
+    { "id": "mega_banettite", "name": "Banettite", "npcType": "ItemBall", "item": "Banettite", "x": 11, "y": 9, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_BANETTITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
+  ]
+}

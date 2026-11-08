@@ -6,6 +6,14 @@
   "area": "lost_hotel",
   "bgmTrack": "kalos/santalune_forest",
   "trees": "Round",
+  // Plan 23, Kalos's last places: three rubbish bins of the old hotel that shake now and then, as X and Y's do
+  // (lost_hotel.txt: Trubbish and Garbodor, and Rotom on Tuesdays)
+  "read": { "BinLobby": "BinLobby", "BinHall": "BinHall", "BinGallery": "BinGallery" },
+  "props": [
+    { "type": "TrashCan", "x": 23, "y": 46, "width": 1, "depth": 1 },
+    { "type": "TrashCan", "x": 27, "y": 32, "width": 1, "depth": 1 },
+    { "type": "TrashCan", "x": 19, "y": 16, "width": 1, "depth": 1 }
+  ],
   "people": {
     "lucien": {
       "name": "Lucien",
@@ -39,9 +47,6 @@
         "dialogueAfter": "Psychic Odile: A view is better with a friend. I will remember that."
       }
     }
-  },
-  // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
-  "npcs": [
-    { "id": "mega_banettite", "name": "Banettite", "npcType": "ItemBall", "item": "Banettite", "x": 53, "y": 24, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_BANETTITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
-  ]
+  }
+  // (Plan 23 · Z4b laid the Banettite here while the Chamber of Emptiness wasn't drawn; it lies there since, as X and Y's)
 }

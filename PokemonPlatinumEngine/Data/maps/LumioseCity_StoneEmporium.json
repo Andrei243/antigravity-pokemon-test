@@ -108,8 +108,19 @@
       "y": 6,
       "facing": "Down",
       "dialog": [
-        "Evolution stones, polished stones, stones from every mountain in Kalos! The rarest ones are not for sale yet, I am afraid."
-      ]
+        "Evolution stones, polished stones, stones from every mountain in Kalos! Have a look at what I have on the shelf."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "lumiose_stones"
+    },
+    {
+      "id": "owner",
+      "name": "Owner",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "script": "Owner"
     }
   ],
   "wildEncounters": []

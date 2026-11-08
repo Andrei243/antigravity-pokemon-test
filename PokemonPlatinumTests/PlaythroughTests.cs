@@ -63,6 +63,8 @@ public class PlaythroughTests
     {
         // Plan 23 · Z4: a Kalos game brought to where the Tower of Mastery leaves it (three Badges, in Coumarine City),
         // with a team strong enough for the League, played by the bot through every scene, Gym and battle to the Hall of Fame
+        // (the team a few levels higher since Kalos's last places joined Kalos's Gyms and water: the dice the maps draw had
+        // moved, and the bot lost to Diantha)
         Headless.Play(engine =>
         {
             var game = engine.Drive;
@@ -73,7 +75,7 @@ public class PlaythroughTests
             foreach (string badge in new[] { "Bug", "Cliff", "Rumble" }) story.GiveBadge(RegionDatabase.Kalos, badge);
             story.SetVar("VAR_KALOS_STORY", 22);
             story.SetVar("VAR_KALOS_LUMIOSE_ROADS", 1);
-            foreach (var (species, level) in new[] { ("Greninja", 78), ("Talonflame", 76), ("Venusaur", 76), ("Lucario", 76), ("Garchomp", 76), ("Gardevoir", 76) })
+            foreach (var (species, level) in new[] { ("Greninja", 82), ("Talonflame", 80), ("Venusaur", 80), ("Lucario", 80), ("Garchomp", 80), ("Gardevoir", 80) })
                 game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
             game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
             // (a Repel that lasts the whole way: the wild Pokémon are all weaker than the lead, and only the story is tried here)

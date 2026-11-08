@@ -300,6 +300,8 @@ public partial class GameEngine
         flow.LastDay = today;
         // The day's numbers, the daily flags and the honey trees' minutes (plan 06 · R13)
         KeepTheEncounterClock(days);
+        // The flags the clock keeps (Kalos's Mega Stones in the evening hour, plan 23)
+        ClockFlags.Keep(flow.Story, (int)GameClock.Hour);
         if (FormRules.ShayminNight((int)GameClock.Hour))
             foreach (var p in flow.Party.Members) FormRules.BackToLand(p);
     }

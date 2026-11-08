@@ -984,6 +984,10 @@ public static class RegionDatabase
                 // (maps of their own), Lumiose Station and the three rooms of Looker's episode
                 "TerminusCaveDepths", "UnknownDungeon", "SeaSpiritsDen",
                 "LumioseCity_Station", "LumioseCity_LookerBureau", "LumioseCity_Museum", "LumioseCity_HotelRichissime",
+                // Plan 23, Kalos's last places: the Chamber of Emptiness (a map of its own), Kiloude's station and Battle
+                // Maison, the Poké Ball Factory in Laverre City, the Battle Château on Route 7 and Lumiose's last shops
+                "ChamberOfEmptiness", "KiloudeCity_Station", "KiloudeCity_BattleMaison", "KiloudeCity_BattleMaisonHall",
+                "LaverreCity_PokeBallFactory", "KalosRoute7_BattleChateau", "LumioseCity_Herboriste", "LumioseCity_BallBoutique",
             }
         },
         new()

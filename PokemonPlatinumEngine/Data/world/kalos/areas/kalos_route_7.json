@@ -14,7 +14,9 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    { "x": 188, "z": 394, "to": "KalosRoute7_BattleChateau", "toWarp": 0 }
+  ],
   "objects": [
     { "id": "snorlax", "looks": "snorlax", "movement": "look_south", "x": 202, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_SNORLAX_ROUTE_7", "script": "" },
     { "id": "fisherman", "looks": "fisherman", "movement": "look_north", "x": 150, "z": 402, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_RENE" },

@@ -44,7 +44,7 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
-    { "id": "mega_houndoominite", "name": "Houndoominite", "npcType": "ItemBall", "item": "Houndoominite", "x": 383, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_HOUNDOOMINITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" },
-    { "id": "mega_manectite", "name": "Manectite", "npcType": "ItemBall", "item": "Manectite", "x": 432, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MANECTITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+    { "id": "mega_houndoominite", "name": "Houndoominite", "npcType": "ItemBall", "item": "Houndoominite", "x": 383, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_HOUNDOOMINITE", "shownBy": "FLAG_KALOS_STONES_GLINT" },
+    { "id": "mega_manectite", "name": "Manectite", "npcType": "ItemBall", "item": "Manectite", "x": 432, "y": 239, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MANECTITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }

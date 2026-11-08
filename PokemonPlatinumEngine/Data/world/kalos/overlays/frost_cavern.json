@@ -42,6 +42,6 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
-    { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+    { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }
