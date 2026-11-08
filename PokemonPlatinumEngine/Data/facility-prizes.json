@@ -1,0 +1,30 @@
+{
+  // The later battle places' prize counters (plan 37's decision 6: the Frontier's one purse of Battle Points), written by
+  // hand: a stock to each place by the word a script names it with (`frontier prize maison`). The items are the kinds the
+  // later games' counters hold (things an evolution or a battle asks for); which of them and every price are ours.
+  "places": {
+    // Kiloude City's Battle Maison (plan 23, Kalos's last places)
+    "maison": [
+      { "item": "Dragon Scale", "price": 32 },
+      { "item": "Protector", "price": 32 },
+      { "item": "Electirizer", "price": 32 },
+      { "item": "Magmarizer", "price": 32 },
+      { "item": "Reaper Cloth", "price": 32 },
+      { "item": "Dubious Disc", "price": 32 },
+      { "item": "Razor Claw", "price": 32 },
+      { "item": "Razor Fang", "price": 32 },
+      { "item": "Deep Sea Tooth", "price": 32 },
+      { "item": "Deep Sea Scale", "price": 32 },
+      { "item": "Sachet", "price": 32 },
+      { "item": "Whipped Dream", "price": 32 },
+      { "item": "Prism Scale", "price": 32 },
+      { "item": "Life Orb", "price": 48 },
+      { "item": "Focus Sash", "price": 48 },
+      { "item": "Choice Band", "price": 48 },
+      { "item": "Choice Specs", "price": 48 },
+      { "item": "Choice Scarf", "price": 48 },
+      { "item": "Assault Vest", "price": 48 },
+      { "item": "Weakness Policy", "price": 48 }
+    ]
+  }
+}

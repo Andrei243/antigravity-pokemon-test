@@ -140,7 +140,7 @@
       "y": 10,
       "facing": "Down",
       "hiddenBy": "FLAG_KALOS_ITEM_MEGA_MAWILITE",
-      "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED",
+      "shownBy": "FLAG_KALOS_STONES_GLINT",
       "item": "Mawilite"
     }
   ],

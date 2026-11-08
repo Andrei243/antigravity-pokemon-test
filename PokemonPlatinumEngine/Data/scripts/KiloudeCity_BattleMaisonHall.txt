@@ -1,0 +1,63 @@
+# The Battle Maison's hall in Kiloude City (plan 23, Kalos's last places). The lines are our own. A whole round is this
+# one arrival script, which loops battle by battle (Models/Frontier/BattleVenue.cs; `venue ... maison`), as the Battle
+# Palace's hall does: the round lives between the desk and the hall as the host's Venue, so a game closed in the middle of
+# one finds no round here, and the next one begun at the desk ends the streak.
+
+
+script OnEnter
+  venue active
+  if result == 0 end
+  clearflag FLAG_KALOS_MAISON_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Battle
+  venue next
+  speaker "Maison Host"
+  say "Battle {number} of seven! Your challenger is on the way."
+  venue opponent
+  place opponent 8 3 down
+  setflag FLAG_KALOS_MAISON_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps forward!"
+  venue fight
+  if result == 0 goto Lost
+  call Leaves
+  venue won
+  if result == 1 goto RoundWon
+  speaker "Maison Host"
+  say "Splendid! Your three have been made whole again. The next challenger is waiting."
+  goto Battle
+label RoundWon
+  speaker "Maison Host"
+  say "Seven in a row! The whole hall is on its feet for {player}."
+  venue finish won
+  venue points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Home
+label Lost
+  call Leaves
+  venue finish lost
+  speaker "Maison Host"
+  say "The round ends here. Rest, and come back. The hall will remember you."
+label Home
+  venue end
+  fade out 0.6
+  warp "KiloudeCity_BattleMaison" 8 12 down
+  fade in
+  end
+
+
+# The opponent goes off the floor again
+script Leaves
+  clearflag FLAG_KALOS_MAISON_SHOW_OPPONENT
+  hide opponent
+  return
+
+
+script Host
+  face self player
+  speaker "Maison Host"
+  say "No round is under way. The receptionist in the lobby takes your three."
+  end

@@ -85,7 +85,10 @@
     // (Mewtwo's) and Sea Spirit's Den on Azure Bay's island (where the roaming bird rests)
     { "matrix": 7, "area": "terminus_cave_depths", "width": 2, "height": 2, "cell": "7,12", "pieces": [ { "file": "terminus_cave_depths.txt", "x": 4, "z": 4 } ] },
     { "matrix": 8, "area": "unknown_dungeon", "width": 2, "height": 2, "cell": "21,3", "pieces": [ { "file": "unknown_dungeon.txt", "x": 4, "z": 4 } ] },
-    { "matrix": 9, "area": "sea_spirits_den", "width": 1, "height": 1, "cell": "13,14", "pieces": [ { "file": "sea_spirits_den.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 9, "area": "sea_spirits_den", "width": 1, "height": 1, "cell": "13,14", "pieces": [ { "file": "sea_spirits_den.txt", "x": 4, "z": 4 } ] },
+    // Plan 23, Kalos's last places: the Chamber of Emptiness off Santalune City's north-west corner (matrix 20, a number
+    // kept clear of the other sessions of the same wave)
+    { "matrix": 20, "area": "chamber_of_emptiness", "width": 1, "height": 1, "cell": "9,15", "pieces": [ { "file": "chamber_of_emptiness.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "vaniville_town", "x": 236, "z": 700, "width": 40, "depth": 30 },

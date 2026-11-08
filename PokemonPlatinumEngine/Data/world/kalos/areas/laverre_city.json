@@ -17,7 +17,8 @@
   "warps": [
     { "x": 360, "z": 193, "to": "LaverreCity_Gym", "toWarp": 0 },
     { "x": 335, "z": 200, "to": "LaverreCity_PokemonCenter_1F", "toWarp": 0 },
-    { "x": 379, "z": 200, "to": "LaverreCity_House", "toWarp": 0 }
+    { "x": 379, "z": 200, "to": "LaverreCity_House", "toWarp": 0 },
+    { "x": 383, "z": 190, "to": "LaverreCity_PokeBallFactory", "toWarp": 0 }
   ],
   "objects": [
     { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 344, "z": 210, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "" },

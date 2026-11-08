@@ -1,0 +1,302 @@
+{
+  "name": "KalosRoute7_BattleChateau",
+  "displayName": "Battle Château",
+  "bgmTrack": "kalos/santalune",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 19,
+  "height": 15,
+  "ground": [
+    "###################",
+    "###################",
+    "###################",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#########D#########"
+  ],
+  "solid": [
+    "###################",
+    "###################",
+    "###################",
+    "##...............##",
+    "#.................#",
+    "#.................#",
+    "#.##...........##.#",
+    "#.##...........##.#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#.##...........##.#",
+    "#.................#",
+    "##...............##",
+    "#########.#########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 14,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 5,
+      "width": 5,
+      "depth": 6
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 15,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 15,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 9,
+      "sourceY": 14,
+      "targetMap": "Kalos",
+      "targetX": 188,
+      "targetY": 395,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "maid",
+      "name": "Maid",
+      "npcType": "maid",
+      "x": 7,
+      "y": 12,
+      "facing": "Right",
+      "script": "Maid"
+    },
+    {
+      "id": "butler",
+      "name": "Butler",
+      "npcType": "gentleman",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "script": "Butler"
+    },
+    {
+      "id": "mirabelle",
+      "name": "Mirabelle",
+      "npcType": "lady",
+      "x": 5,
+      "y": 6,
+      "facing": "Right",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_MIRABELLE"
+    },
+    {
+      "id": "tristan",
+      "name": "Tristan",
+      "npcType": "ace_trainer_m",
+      "x": 5,
+      "y": 6,
+      "facing": "Right",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_TRISTAN"
+    },
+    {
+      "id": "celeste",
+      "name": "Celeste",
+      "npcType": "ace_trainer_f",
+      "x": 5,
+      "y": 6,
+      "facing": "Right",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_CELESTE"
+    },
+    {
+      "id": "octave",
+      "name": "Octave",
+      "npcType": "veteran",
+      "x": 13,
+      "y": 6,
+      "facing": "Left",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_OCTAVE"
+    },
+    {
+      "id": "isaure",
+      "name": "Isaure",
+      "npcType": "beauty",
+      "x": 13,
+      "y": 6,
+      "facing": "Left",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_ISAURE"
+    },
+    {
+      "id": "corentin",
+      "name": "Corentin",
+      "npcType": "psychic",
+      "x": 13,
+      "y": 6,
+      "facing": "Left",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_CORENTIN"
+    },
+    {
+      "id": "viola",
+      "name": "Viola",
+      "npcType": "viola",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_VIOLA"
+    },
+    {
+      "id": "grant",
+      "name": "Grant",
+      "npcType": "grant",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_GRANT"
+    },
+    {
+      "id": "korrina",
+      "name": "Korrina",
+      "npcType": "korrina",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_KORRINA"
+    },
+    {
+      "id": "ramos",
+      "name": "Ramos",
+      "npcType": "ramos",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_RAMOS"
+    },
+    {
+      "id": "clemont",
+      "name": "Clemont",
+      "npcType": "clemont",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_CLEMONT"
+    },
+    {
+      "id": "valerie",
+      "name": "Valerie",
+      "npcType": "valerie",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_VALERIE"
+    },
+    {
+      "id": "olympia",
+      "name": "Olympia",
+      "npcType": "olympia",
+      "x": 9,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_OLYMPIA"
+    },
+    {
+      "id": "wulfric",
+      "name": "Wulfric",
+      "npcType": "wulfric",
+      "x": 11,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_WULFRIC"
+    }
+  ],
+  "wildEncounters": []
+}

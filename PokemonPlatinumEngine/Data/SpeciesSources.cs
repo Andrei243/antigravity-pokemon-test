@@ -376,6 +376,10 @@ public sealed class SpeciesSources
                     case Op.Give or Op.AddItem or Op.Find: f.Item(i.Name, $"{where}: given"); break;
                     case Op.Fossil when i.Name == "revive": revives = true; break;
                     case Op.Shop when !string.IsNullOrEmpty(i.Name): counters.Add(i.Name); break;
+                    // The later battle places' prize counters, for Battle Points (plan 23's Kalos: the Battle Maison's)
+                    case Op.Frontier when i.Name == "prize" && i.Other != null && Models.Facilities.FacilityPrizes.Places.Contains(i.Other):
+                        foreach (var p in Models.Facilities.FacilityPrizes.Of(i.Other)) f.Item(p.Item, $"{where}: the prize counter");
+                        break;
                     // Join Avenue's shops, at every rank (plan 22 · U11)
                     case Op.JoinAvenue when i.Name == "shop":
                         for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)

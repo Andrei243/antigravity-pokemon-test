@@ -1,0 +1,108 @@
+{
+  "name": "LumioseCity_BallBoutique",
+  "displayName": "Poké Ball Boutique",
+  "bgmTrack": "kalos/santalune",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###..###..#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 331,
+      "targetY": 398,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to the boutique! A ball for every Pokémon, and every Pokémon deserves a beautiful ball."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "lumiose_balls"
+    },
+    {
+      "id": "customer",
+      "name": "Customer",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "I came in for one Poké Ball. I am leaving with a Luxury Ball, a Heal Ball and no money."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

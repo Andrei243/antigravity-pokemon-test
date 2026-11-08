@@ -17,7 +17,9 @@
   "warps": [
     { "x": 543, "z": 348, "to": "KiloudeCity_PokemonCenter_1F", "toWarp": 0 },
     { "x": 581, "z": 348, "to": "KiloudeCity_NorthHouse", "toWarp": 0 },
-    { "x": 591, "z": 364, "to": "KiloudeCity_SeaHouse", "toWarp": 0 }
+    { "x": 591, "z": 364, "to": "KiloudeCity_SeaHouse", "toWarp": 0 },
+    { "x": 551, "z": 348, "to": "KiloudeCity_Station", "toWarp": 0 },
+    { "x": 592, "z": 348, "to": "KiloudeCity_BattleMaison", "toWarp": 0 }
   ],
   "objects": [
     { "id": "az", "looks": "old_man", "movement": "look_south", "x": 563, "z": 381, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_HIDE_AZ", "script": "" },

@@ -851,7 +851,8 @@ public static class ScriptParser
                 string what = r.OneOf("points", "give", "prize", "buy", "records", "print", "judge", "judged", "save", "prints", "printed");
                 string which = what switch
                 {
-                    "prize" => r.OneOf("items", "machines", "training"),
+                    // (and the later places' counters, plan 37's decision 6: Kiloude City's Battle Maison)
+                    "prize" => r.OneOf("items", "machines", "training", "maison"),
                     "records" or "print" or "printed" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
                     "judged" => r.OneOf("total", "best"),
                     _ => ""
@@ -1204,7 +1205,8 @@ public static class ScriptParser
                 string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end",
                     "tent", "rent", "trade", "length");
                 // Hoenn's Battle Tents (plan 21 · H3's last part): a round of three begun in a tent, Slateport's rentals and trades
-                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost")
+                // (and Kiloude City's Battle Maison, plan 23's Kalos: maison)
+                string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena", "maison") : what == "finish" ? r.OneOf("won", "lost")
                     : what == "tent" ? r.OneOf("verdanturf", "fallarbor", "slateport") : "";
                 return new Instruction { Op = Op.Venue, Line = line, Name = what, Other = which };
             }

@@ -1,0 +1,29 @@
+# Kiloude Station, the TMV's end of the line (plan 23, Kalos's last places). The lines are our own. Z4b's attendant stood
+# on Kiloude's street; X and Y's Kiloude has a station of its own, and so does ours since: the attendant takes a pass
+# holder back to Lumiose Station (LumioseCity_Station.txt's Tmv brings them here).
+
+
+script Tmv
+  face tmv player
+  speaker "TMV Attendant"
+  if not flag FLAG_KALOS_TMV_PASS goto NoPass
+  ask "The next train leaves for Lumiose City. Will you be travelling?"
+  if no goto Later
+  say "Your pass, please... Thank you. All aboard!"
+  fade out 0.6
+  warp "LumioseCity_Station" 12 5 down
+  fade in
+  end
+label Later
+  say "The trains run all day. Enjoy the sea air in the meantime!"
+  end
+label NoPass
+  say "I'm sorry, the TMV is for pass holders only. Passes are given out by Professor Sycamore's laboratory in Lumiose City."
+  end
+
+
+script Commuter
+  face self player
+  speaker "Commuter"
+  say "I live in Lumiose and battle in Kiloude. The train is the only quiet half hour of my day."
+  end

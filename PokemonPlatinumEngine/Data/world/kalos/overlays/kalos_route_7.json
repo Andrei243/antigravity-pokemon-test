@@ -8,6 +8,11 @@
   "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "OldTimber",
+  // Plan 23, Kalos's last places: the Battle Château, a manor of ours on the road's north side by the lane down from
+  // Camphrier (KalosRoute7_BattleChateau.txt: the day's guests and the titles of the house)
+  "doors": [
+    { "warp": 0, "map": "KalosRoute7_BattleChateau", "x": 9, "y": 13, "facing": "Up" }
+  ],
   "props": [
     { "type": "Bench", "x": 160, "y": 401, "width": 2, "depth": 1 },
     { "type": "Bench", "x": 185, "y": 401, "width": 2, "depth": 1 }

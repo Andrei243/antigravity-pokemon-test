@@ -44,7 +44,7 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
-    { "id": "mega_heracronite", "name": "Heracronite", "npcType": "ItemBall", "item": "Heracronite", "x": 242, "y": 564, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_HERACRONITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" },
-    { "id": "mega_pinsirite", "name": "Pinsirite", "npcType": "ItemBall", "item": "Pinsirite", "x": 277, "y": 564, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_PINSIRITE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+    { "id": "mega_heracronite", "name": "Heracronite", "npcType": "ItemBall", "item": "Heracronite", "x": 242, "y": 564, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_HERACRONITE", "shownBy": "FLAG_KALOS_STONES_GLINT" },
+    { "id": "mega_pinsirite", "name": "Pinsirite", "npcType": "ItemBall", "item": "Pinsirite", "x": 277, "y": 564, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_PINSIRITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }

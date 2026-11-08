@@ -2,7 +2,7 @@
 # they are publicly described (docs/mechanics/rulings.md, "Kalos after its Hall of Fame"): the first time a Champion of
 # Kalos comes in, the professor's two assistants and the professor wait there, and the professor gives the TMV pass
 # (FLAG_KALOS_TMV_PASS, a flag: the data has no item of that name). The TMV's attendant then takes the player to Kiloude
-# City (kiloude_city.txt's TmvBack brings them back). VAR_KALOS_POSTGAME is Z4b's count: 0 the Hall of Fame entered, 1 the
+# City's own station (KiloudeCity_Station.txt's Tmv brings them back). VAR_KALOS_POSTGAME is Z4b's count: 0 the Hall of Fame entered, 1 the
 # pass given. In Looker's third case (LumioseCity_LookerBureau.txt, VAR_KALOS_LOOKER 3) a gang holds the hall and Emma
 # talks them round; and one of Looker's tickets (his first case) is tucked into the potted plant by the platform.
 #
@@ -65,7 +65,9 @@ script Tmv
   ask "Welcome to the TMV. The next train leaves for Kiloude City. Will you be travelling?"
   if no goto Later
   say "Your pass, please... Thank you. All aboard!"
-  warp "Kalos" 538 355 down
+  fade out 0.6
+  warp "KiloudeCity_Station" 6 5 down
+  fade in
   end
 label Later
   say "The trains run all day. Come back whenever you're ready."

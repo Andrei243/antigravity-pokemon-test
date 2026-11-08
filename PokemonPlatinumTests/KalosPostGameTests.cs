@@ -36,7 +36,7 @@ public class KalosPostGameTests
         ("Heracronite", "Kalos", 242, 564), ("Pinsirite", "Kalos", 277, 564), ("Houndoominite", "Kalos", 383, 239),
         ("Manectite", "Kalos", 432, 239), ("Gyaradosite", "Kalos", 659, 340), ("Medichamite", "Kalos", 328, 180),
         ("Alakazite", "ReflectionCave", 36, 8), ("Kangaskhanite", "GlitteringCave", 39, 7), ("Garchompite", "KalosVictoryRoad", 55, 8),
-        ("Scizorite", "FrostCavern", 55, 25), ("Banettite", "LostHotel", 53, 24), ("Aggronite", "CyllageCity_Gym", 1, 16),
+        ("Scizorite", "FrostCavern", 55, 25), ("Banettite", "ChamberOfEmptiness", 11, 9), ("Aggronite", "CyllageCity_Gym", 1, 16),
         ("Tyranitarite", "CyllageCity_Gym", 11, 16), ("Mawilite", "CamphrierTown_Castle", 13, 10)
     };
 
@@ -184,10 +184,11 @@ public class KalosPostGameTests
         // ...once only
         var again = Play(story, "LumioseCity_Station", "OnEnter", "LumioseCity_Station");
         Assert.Empty(again.Transcript);
-        Assert.Contains("warp Kalos 538 355", Play(story, "LumioseCity_Station", "Tmv", "LumioseCity_Station", "TMV Attendant").Log);
-        Assert.Contains("warp LumioseCity_Station 12 5", Play(story, "kiloude_city", "TmvBack", "Kalos", "TMV Attendant").Log);
-        // The attendant's tile in Kiloude and the arrival beside it are open ground
-        Assert.True(Overworld.IsWalkable(538, 355));
+        // (Kiloude's own station since Kalos's last places: the train runs between the two stations' rooms)
+        Assert.Contains("warp KiloudeCity_Station 6 5", Play(story, "LumioseCity_Station", "Tmv", "LumioseCity_Station", "TMV Attendant").Log);
+        Assert.Contains("warp LumioseCity_Station 12 5", Play(story, "KiloudeCity_Station", "Tmv", "KiloudeCity_Station", "TMV Attendant").Log);
+        // The arrivals before each attendant are open ground
+        Assert.True(MapNamed("KiloudeCity_Station").IsWalkable(6, 5));
         Assert.True(MapNamed("LumioseCity_Station").IsWalkable(12, 5));
     }
 
@@ -258,6 +259,11 @@ public class KalosPostGameTests
             Assert.True(map.IsWalkable(x, y) || map.GetNpcAt(x, y) != null, $"{stone} lies on a blocked tile of {mapName}");
             map.ApplyPresence(before.Has);
             Assert.DoesNotContain(map.NPCs, n => n.IsItemBall && n.Item == stone);
+            // ...glinting only in X and Y's hour of the evening (the clock's flag, plan 23's last places)
+            ClockFlags.Keep(story, 12);
+            map.ApplyPresence(story.Has);
+            Assert.DoesNotContain(map.NPCs, n => n.IsItemBall && n.Item == stone);
+            ClockFlags.Keep(story, ClockFlags.StonesHour);
             map.ApplyPresence(story.Has);
             var ball = map.NPCs.Single(n => n.IsItemBall && n.Item == stone);
             Assert.Equal((x, y), (ball.GridX, ball.GridY));

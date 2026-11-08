@@ -15,22 +15,14 @@ public class KalosSpeciesTests
     private const string Region = RegionDatabase.Kalos;
 
     private const string Wild = "plan 23: X and Y's wild Pokémon still to place in Kalos (the water, the hordes, the rest of the grass)";
-    private const string Items = "GE3: Kalos's evolution stones and items";
     private const string Cord = "GE3: a Linking Cord in Kalos";
     private const string Sites = "GE3: Kalos's places of evolution (a Moss Rock, an Ice Rock, a Magnetic Field)";
     private const string Fossils = "plan 23: Ambrette's fossil laboratory";
     private const string Mythicals = "plan 29 · LS11: Kalos's mythicals, by events of ours";
-    private const string OtherVersion = "plan 23: Y's legendary, in a place of its own (Kalos meets X's Xerneas)";
 
     /// <summary>What Kalos's Pokédexes have that nothing in Kalos gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Evolved by a stone or an item no place of Kalos gives yet
-        ["Simisage"] = Items, ["Simisear"] = Items, ["Simipour"] = Items, ["Raichu"] = Items, ["Gallade"] = Items,
-        ["Florges"] = Items, ["Roserade"] = Items, ["Delcatty"] = Items, ["Vileplume"] = Items, ["Bellossom"] = Items,
-        ["Aegislash"] = Items, ["Heliolisk"] = Items, ["Vaporeon"] = Items, ["Jolteon"] = Items, ["Flareon"] = Items,
-        ["Nidoqueen"] = Items, ["Nidoking"] = Items, ["Victreebel"] = Items, ["Poliwrath"] = Items, ["Honchkrow"] = Items,
-        ["Ludicolo"] = Items, ["Chandelure"] = Items, ["Weavile"] = Items, ["Wigglytuff"] = Items,
         // Evolved by trading, and Kalos gives no Linking Cord
         ["Alakazam"] = Cord, ["Aromatisse"] = Cord, ["Slurpuff"] = Cord, ["Rhyperior"] = Cord, ["Steelix"] = Cord,
         ["Machamp"] = Cord, ["Gigalith"] = Cord, ["Slowking"] = Cord, ["Golem"] = Cord, ["Escavalier"] = Cord,
@@ -41,7 +33,6 @@ public class KalosSpeciesTests
         ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils, ["Aerodactyl"] = Fossils,
         // Given by events alone in X and Y
         ["Diancie"] = Mythicals, ["Hoopa"] = Mythicals, ["Volcanion"] = Mythicals,
-        ["Yveltal"] = OtherVersion,
         // X and Y's wild Pokémon that the drawn tables (twelve to a place, no water) have no room for yet
         ["Surskit"] = Wild, ["Masquerain"] = Wild, ["Carvanha"] = Wild, ["Sharpedo"] = Wild, ["Psyduck"] = Wild,
         ["Golduck"] = Wild, ["Farfetch'd"] = Wild, ["Plusle"] = Wild, ["Minun"] = Wild, ["Scraggy"] = Wild,
@@ -67,10 +58,6 @@ public class KalosSpeciesTests
     /// <summary>The items and places Kalos's evolutions ask for that nothing in Kalos gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Leaf Stone"] = Items, ["Fire Stone"] = Items, ["Water Stone"] = Items, ["Thunder Stone"] = Items,
-        ["Dawn Stone"] = Items, ["Shiny Stone"] = Items, ["Moon Stone"] = Items, ["Sun Stone"] = Items, ["Dusk Stone"] = Items,
-        ["Sachet"] = Items, ["Whipped Dream"] = Items, ["Dragon Scale"] = Items, ["Protector"] = Items,
-        ["Deep Sea Tooth"] = Items, ["Deep Sea Scale"] = Items, ["Razor Claw"] = Items, ["Razor Fang"] = Items,
         ["Linking Cord"] = Cord,
         ["Moss Rock"] = Sites, ["Ice Rock"] = Sites, ["Magnetic Field"] = Sites,
     };
@@ -100,6 +87,10 @@ public class KalosSpeciesTests
         Assert.Contains("terminus_cave_depths", kalos.Ways["Zygarde"]);
         Assert.Contains("unknown_dungeon", kalos.Ways["Mewtwo"]);
         Assert.Contains("azure_bay", kalos.Ways["Binacle"]);
+        // Kalos's last places: Yveltal in the Chamber of Emptiness, the stone shop's stones, the Battle Maison's counter
+        Assert.Contains("chamber_of_emptiness", kalos.Ways["Yveltal"]);
+        Assert.Contains("lumiose_stones", kalos.Items["Dusk Stone"]);
+        Assert.Contains("KiloudeCity_BattleMaison", kalos.Items["Razor Claw"]);
         // Sinnoh's Game Corner, Underground and Battle Frontier give Kalos nothing
         Assert.DoesNotContain(kalos.Items.Values, w => w.Contains("Underground") || w.Contains("Battle Points"));
     }
