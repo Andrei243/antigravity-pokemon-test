@@ -34,7 +34,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -139,7 +139,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_puck:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.12,
         "accent": "en-us"
       }
@@ -195,6 +195,10 @@
     },
     "bastien": {
       "note": "first spoken at lumiose_city.txt(142)",
+      "provisional": true
+    },
+    "battle_fan": {
+      "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(227)",
       "provisional": true
     },
     "beauty": {
@@ -376,7 +380,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "bm_george:0.5,am_fenrir:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 0.92,
         "accent": "en-gb"
       }
@@ -402,7 +406,7 @@
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_fenrir:0.5",
         "speed": 1.07,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -498,7 +502,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.4,af_nicole:0.6",
         "speed": 0.9,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -724,7 +728,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_george:0.6,bm_daniel:0.4",
         "speed": 0.96,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1017,7 +1021,7 @@
         "engine": "kokoro-82m",
         "blend": "am_echo:0.5,am_liam:0.5",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1384,9 +1388,13 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.5,af_kore:0.5",
         "speed": 0.99,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
+    },
+    "lamp_keeper": {
+      "note": "first spoken at ultra_megalopolis.txt(30)",
+      "provisional": true
     },
     "lana": {
       "note": "first spoken at brooklet_hill.txt(13)",
@@ -1527,7 +1535,7 @@
         "engine": "kokoro-82m",
         "blend": "bm_daniel:0.5,bm_george:0.5",
         "speed": 0.94,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1548,7 +1556,7 @@
         "engine": "kokoro-82m",
         "blend": "bf_emma:0.5,af_river:0.5",
         "speed": 0.93,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-gb"
       }
     },
@@ -1652,7 +1660,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_river:0.4",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -1732,6 +1740,10 @@
     },
     "mary": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
+      "provisional": true
+    },
+    "masked_royal": {
+      "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(27)",
       "provisional": true
     },
     "master": {
@@ -1854,7 +1866,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.98,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -1990,6 +2002,10 @@
     },
     "olympia": {
       "note": "first spoken at AnistarCity_Gym.txt(12)",
+      "provisional": true
+    },
+    "oskin": {
+      "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
       "provisional": true
     },
     "owner": {
@@ -2142,7 +2158,7 @@
         "engine": "kokoro-82m",
         "blend": "am_eric:0.6,am_liam:0.4",
         "speed": 1.04,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2343,7 +2359,7 @@
         "engine": "kokoro-82m",
         "blend": "af_sarah:0.6,af_kore:0.4",
         "speed": 1.08,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2363,7 +2379,7 @@
         "engine": "kokoro-82m",
         "blend": "am_fenrir:0.6,am_michael:0.4",
         "speed": 1.02,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2476,8 +2492,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.5,am_michael:0.5",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2720,7 +2736,7 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "af_bella:0.5,af_jessica:0.5",
-        "speed": 1.0,
+        "speed": 1,
         "pitch": 1.01,
         "accent": "en-us"
       }
@@ -2758,8 +2774,8 @@
       "design": {
         "engine": "kokoro-82m",
         "blend": "am_liam:0.6,am_echo:0.4",
-        "speed": 1.0,
-        "pitch": 1.0,
+        "speed": 1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -2881,6 +2897,10 @@
     },
     "veteran": {
       "note": "first spoken at unova_pokemon_league.txt(22)",
+      "provisional": true
+    },
+    "veyra": {
+      "note": "first spoken at AlolaRoute1_PlayersHouse.txt(51)",
       "provisional": true
     },
     "vicky": {
@@ -3086,6 +3106,7 @@
     "Barber": "barber",
     "Barry": "barry",
     "Bastien": "bastien",
+    "Battle Fan": "battle_fan",
     "Beauty": "beauty",
     "Ben": "ben",
     "Benga": "benga",
@@ -3287,6 +3308,7 @@
     "Kurt": "kurt",
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
+    "Lamp Keeper": "lamp_keeper",
     "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",
@@ -3331,6 +3353,7 @@
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
+    "Masked Royal": "masked_royal",
     "Master": "master",
     "Matt": "matt",
     "Maxie": "maxie",
@@ -3376,6 +3399,7 @@
     "Old Woman": "look:old_woman",
     "Olivia": "olivia",
     "Olympia": "olympia",
+    "Oskin": "oskin",
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
@@ -3501,6 +3525,7 @@
     "Vance": "vance",
     "Vesper": "vesper",
     "Veteran": "veteran",
+    "Veyra": "veyra",
     "Vicky": "vicky",
     "Victor": "victor",
     "Victoria": "victoria",

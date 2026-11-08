@@ -201,11 +201,12 @@ public class AlolaUltraSpaceTests
     {
         var akala = MapNamed("Akala");
         var story = new StoryState();
+        Assert.Equal("RoyalAvenue_BattleRoyalDome", akala.GetWarpAt(265, 207)?.TargetMap);
         akala.ApplyDoors(story.Has);
-        Assert.Null(akala.GetWarpAt(265, 207));
+        Assert.True(akala.IsSolid(265, 207));
         story.Set("AlolaHallOfFame");
         akala.ApplyDoors(story.Has);
-        Assert.Equal("RoyalAvenue_BattleRoyalDome", akala.GetWarpAt(265, 207)?.TargetMap);
+        Assert.False(akala.IsSolid(265, 207));
 
         var game = new Play();
         game.Story.Set("AlolaHallOfFame");
