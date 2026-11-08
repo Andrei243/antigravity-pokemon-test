@@ -340,6 +340,8 @@ public sealed partial class ScriptRunner
         Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
+        // ...and in an open map a walk ends on its marker, a placing and a turn are made, a warp arrives, a look is over (plan 32 · OW5)
+        Op.WalkTo or Op.PlaceAt or Op.FaceTo or Op.WarpTo or Op.LookAt => false,
         // A voice is never heard in a hurry, so there is none to wait for (plan 26 · V2)
         Op.WaitVoice => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker or Op.Photograph => false,
@@ -911,6 +913,26 @@ public sealed partial class ScriptRunner
             case Op.Warp:
                 host.Warp(i.Name, i.X, i.Y, i.Direction);
                 break;
+            // The open world's forms (plan 32 · OW5): whoever they mean is the host's to find in its open map
+            case Op.WalkTo:
+                host.WalkTo(i.Name, i.Other, i.Option);
+                waitingForWalks = true;
+                break;
+            case Op.PlaceAt:
+                host.PlaceAt(i.Name, i.Other);
+                break;
+            case Op.FaceTo:
+                host.FaceTo(i.Name, i.Other);
+                break;
+            case Op.WarpTo:
+                host.WarpTo(i.Name, i.Other);
+                break;
+            case Op.LookAt:
+            {
+                float takes = host.LookAt(i.Name, i.Seconds);
+                if (!i.Option) waiting = takes;
+                break;
+            }
             case Op.Fade:
                 host.Fade(i.Option, i.Seconds);
                 break;

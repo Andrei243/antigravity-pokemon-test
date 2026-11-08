@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using PokemonPlatinumEngine.OpenWorld;
+
+namespace PokemonPlatinumEngine.Story;
+
+/// <summary>
+/// The open world's place commands with no screen (plan 32 · OW5): played at once, as the host's walks are. Who stands
+/// on which marker is written down (<see cref="OnMarker"/>); with an <see cref="OpenMap"/> the markers are held to it
+/// and the player's place follows them (<see cref="OpenPlayer"/>), and with none any marker is taken on trust, which is
+/// how a walk of every script plays an open place's without its map.
+/// </summary>
+public sealed partial class HeadlessScriptHost
+{
+    /// <summary>The open map the player is in; null for none known (markers are taken on trust).</summary>
+    public OpenMap? OpenMap { get; set; }
+
+    /// <summary>Looks an open map up by name for a <c>warpto</c>; left out, a warp only notes where it went.</summary>
+    public Func<string, OpenMap?>? OpenMapNamed { get; set; }
+
+    /// <summary>Who stands on which marker, as the open commands left them: <c>player</c> and the people by name.</summary>
+    public Dictionary<string, string> OnMarker { get; } = new(StringComparer.Ordinal);
+
+    /// <summary>Who a <c>faceto</c> turned toward what (a marker or someone).</summary>
+    public Dictionary<string, string> FacingToward { get; } = new(StringComparer.Ordinal);
+
+    /// <summary>The open map a <c>warpto</c> went to last, by name; null before any.</summary>
+    public string? OpenMapName { get; private set; }
+
+    /// <summary>The player's place in the open map, where a marker of a known map put them: millimetres and yaw.</summary>
+    public OpenPlace? OpenPlayer { get; private set; }
+
+    private OpenMarker? Marker(string name)
+    {
+        if (OpenMap == null) return null;
+        var marker = OpenMap.Marker(name);
+        if (marker == null) Problems.Add($"there is no marker '{name}' in the open map {OpenMap.Name}");
+        return marker;
+    }
+
+    private void Stand(string who, string marker)
+    {
+        OnMarker[who] = marker;
+        if (who == "player" && Marker(marker) is { } m && OpenMap != null) OpenPlayer = new OpenPlace(OpenMap.Name, m.Pos, m.Yaw);
+    }
+
+    public void WalkTo(string who, string marker, bool fast)
+    {
+        Shown("walk someone");
+        // (A test may hold the script at the walk, as at a grid's; a hurry never waits)
+        if (Pauses && !Skipping) Walking = true;
+        Stand(who, marker);
+        Log.Add($"walkto {who} {marker}" + (fast ? " fast" : ""));
+    }
+
+    public void PlaceAt(string who, string marker)
+    {
+        Shown("move someone");
+        Stand(who, marker);
+        Log.Add($"placeat {who} {marker}");
+    }
+
+    public void FaceTo(string who, string target)
+    {
+        FacingToward[who] = target;
+        Log.Add($"faceto {who} {target}");
+    }
+
+    public void WarpTo(string map, string marker)
+    {
+        Shown("go somewhere else");
+        // (In a hurry the player arrives at once, with no fade to see through)
+        if (!Skipping) Waits();
+        Log.Add($"warpto {map} {marker}");
+        OpenMapName = map;
+        if (OpenMapNamed != null)
+        {
+            if (OpenMapNamed(map) is { } open) OpenMap = open;
+            else Problems.Add($"there is no open map '{map}'");
+        }
+        Stand("player", marker);
+    }
+
+    public float LookAt(string marker, float seconds)
+    {
+        Shown("move the camera");
+        Marker(marker);
+        Log.Add($"camera look {marker}");
+        CameraOn = "marker " + marker;
+        return seconds;
+    }
+}

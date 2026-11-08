@@ -115,6 +115,9 @@ public sealed class OpenBody
     /// <summary>The way the body faces, in 65,536ths of a turn (<see cref="OpenYaw"/>): the stick's way as it last moved.</summary>
     public int Yaw { get; private set; }
 
+    /// <summary>Turns the body to face a way where it stands (a script's <c>faceto</c>, plan 32 · OW5): nothing else of it changes.</summary>
+    public void Face(int yaw) => Yaw = OpenYaw.Normalize(yaw);
+
     public OpenStance Stance { get; private set; } = OpenStance.Standing;
     public bool Grounded => Stance == OpenStance.Standing;
 
