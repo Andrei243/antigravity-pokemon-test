@@ -50,33 +50,9 @@
     "######.######"
   ],
   "heights": [
-    {
-      "x": 1,
-      "z": 3,
-      "width": 11,
-      "depth": 5,
-      "height": 4,
-      "slopeX": 0,
-      "slopeZ": 0
-    },
-    {
-      "x": 1,
-      "z": 8,
-      "width": 11,
-      "depth": 5,
-      "height": 2,
-      "slopeX": 0,
-      "slopeZ": 0
-    },
-    {
-      "x": 1,
-      "z": 13,
-      "width": 11,
-      "depth": 4,
-      "height": 0,
-      "slopeX": 0,
-      "slopeZ": 0
-    }
+    { "x": 1, "z": 3, "width": 11, "depth": 5, "height": 4, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 8, "width": 11, "depth": 5, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 13, "width": 11, "depth": 4, "height": 0, "slopeX": 0, "slopeZ": 0 }
   ],
   "props": [
     {
