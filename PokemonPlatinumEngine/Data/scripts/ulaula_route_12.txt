@@ -1,0 +1,31 @@
+# Route 12, Ula'ula Island (plan 23, the wave after the loose ends). The lines are our own, on Sun and Moon's beat as it
+# is publicly described (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the last
+# routes and the shut doors"): Hapu of Poni meets the player at the east end of the road and registers her Mudsdale in
+# the Ride Pager (Overworld/RidePager.cs: a flag alone). VAR_ALOLA_HAPU is her count: 0 before this road, 1 after it,
+# 2 once she has been heard out before the Ruins of Abundance (haina_desert.txt).
+#
+# The people: hapu stands by the road until her scene is played (FLAG_ALOLA_HAPU_ROUTE_12 hides her).
+
+
+script HapuMudsdale
+  scene "Hapu on Route 12"
+  face hapu player
+  speaker "Hapu"
+  say "Hey. You're the island challenger, aren't you? I'm Hapu. I'm from Poni Island, way out west."
+  say "I've been walking the islands to see how the people live. This ridge is hard going on foot, though."
+  say "Here. My Mudsdale knows the way over any rock. Put her in your Ride Pager and she'll come when you call."
+  setflag FLAG_ALOLA_RIDE_MUDSDALE
+  text "{player} registered Mudsdale in the Ride Pager! Mudsdale can gallop over rough ground."
+  say "I'll be off. There's a shrine past the desert I want to see. Maybe I'll see you there."
+  hide hapu
+  setflag FLAG_ALOLA_HAPU_ROUTE_12
+  setvar VAR_ALOLA_HAPU 1
+  endscene
+  end
+
+
+script HapuTalk
+  speaker "Hapu"
+  say "You look like you could use a strong pair of legs under you. Hold on a moment."
+  call HapuMudsdale
+  end

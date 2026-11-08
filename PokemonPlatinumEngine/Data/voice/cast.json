@@ -46,6 +46,10 @@
       "note": "first spoken at five_island_rocket_warehouse.txt(15)",
       "provisional": true
     },
+    "aether_employee": {
+      "note": "first spoken at UlaulaRoute15_AetherHouse.txt(7)",
+      "provisional": true
+    },
     "aether_guard": {
       "note": "first spoken at aether_paradise.txt(81)",
       "provisional": true
@@ -486,6 +490,10 @@
         "accent": "en-gb"
       }
     },
+    "chef": {
+      "note": "first spoken at KonikoniCity_Restaurant.txt(7)",
+      "provisional": true
+    },
     "cheren": {
       "note": "first spoken at aspertia_city.txt(286)",
       "provisional": true
@@ -505,6 +513,10 @@
         "pitch": 1.0,
         "accent": "en-us"
       }
+    },
+    "child": {
+      "note": "first spoken at UlaulaRoute15_AetherHouse.txt(18)",
+      "provisional": true
     },
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
@@ -721,6 +733,10 @@
     },
     "dalton": {
       "note": "first spoken at phone.txt(301)",
+      "provisional": true
+    },
+    "dancer": {
+      "note": "first spoken at ulaula_meadow.txt(6)",
       "provisional": true
     },
     "darach": {
@@ -1012,6 +1028,10 @@
       "note": "first spoken at route_114_fossil_maniacs_tunnel.txt(7)",
       "provisional": true
     },
+    "fossil_seller": {
+      "note": "first spoken at AkalaRoute8_FossilCenter.txt(44)",
+      "provisional": true
+    },
     "frieda": {
       "note": "first spoken at route_32.txt(100)",
       "provisional": true
@@ -1036,6 +1056,10 @@
         "pitch": 1.0,
         "accent": "en-us"
       }
+    },
+    "gardener": {
+      "note": "first spoken at malie_garden.txt(6)",
+      "provisional": true
     },
     "gardenia": {
       "brief": {
@@ -1187,6 +1211,10 @@
         "pitch": 1.01,
         "accent": "en-gb"
       }
+    },
+    "hotel_clerk": {
+      "note": "first spoken at HeaheaCity_Hotel.txt(7)",
+      "provisional": true
     },
     "huey": {
       "note": "first spoken at olivine_lighthouse_2f.txt(11)",
@@ -1902,6 +1930,14 @@
       "note": "first spoken at burned_tower_1f.txt(33)",
       "provisional": true
     },
+    "motel_clerk": {
+      "note": "first spoken at AkalaRoute8_Motel.txt(7)",
+      "provisional": true
+    },
+    "mother": {
+      "note": "first spoken at PaniolaTown_KiawesHouse.txt(7)",
+      "provisional": true
+    },
     "move_deleter": {
       "note": "first spoken at fuchsia_city_house_3.txt(9)",
       "provisional": true
@@ -1993,6 +2029,10 @@
     },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
+      "provisional": true
+    },
+    "nursery_keeper": {
+      "note": "first spoken at PaniolaRanch_Nursery.txt(7)",
       "provisional": true
     },
     "octave": {
@@ -2267,6 +2307,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(19)",
       "provisional": true
     },
+    "quiz_host": {
+      "note": "first spoken at LumioseCity_PrismTowerGym.txt(56)",
+      "provisional": true
+    },
     "quiz_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
       "provisional": true
@@ -2311,6 +2355,10 @@
         "pitch": 0.98,
         "accent": "en-us"
       }
+    },
+    "restorer": {
+      "note": "first spoken at AkalaRoute8_FossilCenter.txt(7)",
+      "provisional": true
     },
     "rhona": {
       "note": "first spoken at opelucid_city_gym.txt(66)",
@@ -2815,6 +2863,10 @@
       "note": "first spoken at LumioseCity_Station.txt(139)",
       "provisional": true
     },
+    "tourist_guide": {
+      "note": "first spoken at HeaheaCity_TouristBureau.txt(7)",
+      "provisional": true
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
@@ -3105,6 +3157,7 @@
     "Ace Trainer": "ace_trainer",
     "Acerola": "acerola",
     "Admin": "admin",
+    "Aether Employee": "aether_employee",
     "Aether Guard": "aether_guard",
     "Agatha": "agatha",
     "Aide": "look:aide",
@@ -3179,8 +3232,10 @@
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
+    "Chef": "chef",
     "Cheren": "cheren",
     "Cheryl": "cheryl",
+    "Child": "child",
     "Chuck": "chuck",
     "Cindy": "cindy",
     "Citizen": "citizen",
@@ -3214,6 +3269,7 @@
     "Cyrus": "cyrus",
     "Dahlia": "dahlia",
     "Dalton": "dalton",
+    "Dancer": "dancer",
     "Darach": "darach",
     "Day-Care Lady": "day_care_lady",
     "Day-Care Man": "day_care_man",
@@ -3265,10 +3321,12 @@
     "Foreman": "foreman",
     "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
+    "Fossil Seller": "fossil_seller",
     "Frieda": "frieda",
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",
     "Gate Keeper": "look:guard",
@@ -3303,6 +3361,7 @@
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Hotel Clerk": "hotel_clerk",
     "Huey": "huey",
     "Ian": "ian",
     "Ilima": "ilima",
@@ -3405,6 +3464,8 @@
     "Mom": "mom",
     "Monica": "monica",
     "Morty": "morty",
+    "Motel Clerk": "motel_clerk",
+    "Mother": "mother",
     "Move Deleter": "move_deleter",
     "Move Relearner": "move_relearner",
     "Mr. Briney": "mr_briney",
@@ -3426,6 +3487,7 @@
     "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
+    "Nursery Keeper": "nursery_keeper",
     "Octave": "octave",
     "Odile": "odile",
     "Officer": "officer",
@@ -3469,6 +3531,7 @@
     "Pryce": "pryce",
     "Psychic": "psychic",
     "Quinn": "quinn",
+    "Quiz Host": "quiz_host",
     "Quiz Lady": "quiz_lady",
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",
@@ -3479,6 +3542,7 @@
     "Red": "red",
     "Referee": "referee",
     "Researcher": "look:scientist",
+    "Restorer": "restorer",
     "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",
     "Ricky": "ricky",
@@ -3547,6 +3611,7 @@
     "Tierno": "tierno",
     "TMV Attendant": "tmv_attendant",
     "Tourist": "tourist",
+    "Tourist Guide": "tourist_guide",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",

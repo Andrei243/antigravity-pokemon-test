@@ -1,0 +1,16 @@
+# The police station on Route 17, where Ula'ula's kahuna Nanu keeps his Meowth. In our drawing he is met in Po Town, so his station is only the Meowth's (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Officer
+  speaker "Officer"
+  say "The chief? He's off in Po Town, keeping an eye on Team Skull. Or napping. With him it's hard to tell."
+  say "He leaves the station to his Meowth. They're better at it than he is, he says."
+  end
+
+
+script Meowth
+  cry "Meowth"
+  text "Meowth: Myaa... It stretched and stared at {player} as if it owned the place."
+  end

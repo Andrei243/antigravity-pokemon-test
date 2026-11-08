@@ -93,4 +93,19 @@ public sealed class BakedRegion
 
     /// <summary>Lets go of every chunk read (they are read again when next asked for).</summary>
     public void Forget() => loaded.Clear();
+
+    /// <summary>
+    /// The region's navigation mesh (plan 32 · OW4), <c>baked/navmesh.bin</c>, read the first time it is asked for;
+    /// null where the bake has none (a bake of some chunks alone).
+    /// </summary>
+    public OpenNavMesh? Nav
+    {
+        get
+        {
+            if (!navRead) { nav = OpenNavMesh.Open(Folder); navRead = true; }
+            return nav;
+        }
+    }
+    private OpenNavMesh? nav;
+    private bool navRead;
 }

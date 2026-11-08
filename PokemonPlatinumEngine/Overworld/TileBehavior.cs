@@ -160,7 +160,10 @@ public enum TileBehavior : byte
     StrengthHole = 0xB5,
     ChargedFloor = 0xB6,
     SurfEdge = 0xB7,
-    Catwalk = 0xB8
+    Catwalk = 0xB8,
+
+    // What X and Y have and no game read so far has a value for (plan 23, Kalos drawn by hand), after Black 2's
+    SnowDrift = 0xB9
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -305,7 +308,8 @@ public static class TileBehaviors
         [TileBehavior.StrengthHole] = "A hole a boulder pushed with Strength fills (Black 2's).",
         [TileBehavior.ChargedFloor] = "The charged floor of an electric cave (Black 2's).",
         [TileBehavior.SurfEdge] = "The edge of the water, where Surf may begin though a walker can't step (Black 2's).",
-        [TileBehavior.Catwalk] = "A narrow catwalk, walked and never cycled (Black 2's)."
+        [TileBehavior.Catwalk] = "A narrow catwalk, walked and never cycled (Black 2's).",
+        [TileBehavior.SnowDrift] = "A drift of snow deeper than a walker can wade (X and Y's Route 17)."
     };
 
     /// <summary>True for the values the enum names: those Sinnoh's maps use, and those the GBA reader makes (plan 18 · W6).</summary>
@@ -326,7 +330,7 @@ public static class TileBehaviors
 
     /// <summary>Ground that keeps the print of a shoe, as in Platinum: its sand, and snow of every depth.</summary>
     public static bool KeepsFootprints(TileBehavior behaviour) => behaviour is TileBehavior.Sand or TileBehavior.ShallowSnow
-        or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow;
+        or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow or TileBehavior.SnowDrift;
 
     /// <summary>
     /// What the game does with a behaviour today (plan 01 · M3), for <c>docs/tile-behaviours.md</c> and for the
@@ -422,6 +426,7 @@ public static class TileBehaviors
         TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
+        TileBehavior.SnowDrift => (BehaviourSupport.Ruled, "Stops anyone on foot, on skates or on a Bicycle; crossed at a walk on a ridden Pokémon's back, Kalos's Mamoswine (FieldMovement.Step; plan 23, the Mamoswine ride). No Bicycles; every step leaves a footprint."),
         TileBehavior.Magma => (BehaviourSupport.Ruled, "Lava: walked only on a slab of the Blackthorn Gym's that stands over it (BlackthornPlatforms.Refuses; plan 20 · J11, part c)."),
         TileBehavior.StopSliding or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),

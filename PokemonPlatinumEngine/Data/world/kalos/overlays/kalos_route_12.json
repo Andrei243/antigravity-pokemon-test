@@ -7,6 +7,15 @@
   "trees": "Round",
   "architecture": "Cyllage",
   "people": {
+    // Plan 23, Kalos's sky trainers: a Sky Battle when spoken to (Trainer.InTheAir, the team's fliers alone)
+    "sky_mireille": {
+      "name": "Mireille",
+      "npcType": "pilot",
+      "trainer": {
+        "dialogueBefore": "Sky Trainer Mireille: Flowers below, clouds above. A Sky Battle, here, would be heavenly!",
+        "dialogueAfter": "Sky Trainer Mireille: Down to earth with a bump."
+      }
+    },
     "lass": {
       "name": "Violette",
       "npcType": "Lass",

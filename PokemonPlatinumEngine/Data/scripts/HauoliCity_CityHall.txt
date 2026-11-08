@@ -1,0 +1,17 @@
+# Hau'oli City's city hall (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Receptionist
+  speaker "Receptionist"
+  say "Welcome to Hau'oli City Hall! If you have questions about life on the islands, you've come to the right desk."
+  say "The island challenge? Every island has trials kept by its captains, and a grand trial held by its kahuna. Collect all four stamps!"
+  end
+
+
+script Guide
+  speaker "Guide"
+  say "This hall keeps the records of every island challenge since the first. The oldest ones are written on bark."
+  say "Melemele's kahuna, Hala, has seen more challengers than anyone. He still remembers every one of them, he says."
+  end

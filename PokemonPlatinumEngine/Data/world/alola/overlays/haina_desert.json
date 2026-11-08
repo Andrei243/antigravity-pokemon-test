@@ -1,0 +1,35 @@
+{
+  // Haina Desert, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. A desert of sand and
+  // walls of rock east of Route 13, under a sandstorm that never stops, with the Ruins of Abundance, Tapu Bulu's shrine,
+  // at its head. Hapu waits before the ruins once Nanu's grand trial is passed, until the player has heard her out
+  // (haina_desert.txt)
+  "area": "haina_desert",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "HainaDesert_RuinsOfAbundance", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "kawika": {
+      "name": "Kawika",
+      "npcType": "ruin_maniac",
+      "trainer": {
+        "dialogueBefore": "Ruin Maniac Kawika: The ruins at the end of the desert! I've walked in circles for days to find them. Battle me while I rest!",
+        "dialogueAfter": "Ruin Maniac Kawika: Now I'm rested AND lost."
+      }
+    },
+    "nalu": {
+      "name": "Nalu",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "Hiker Nalu: Sand in my boots, sand in my hat, sand in my sandwich! Let's battle!",
+        "dialogueAfter": "Hiker Nalu: Sand in my pride now, too."
+      }
+    },
+    "hapu": { "name": "Hapu", "npcType": "hapu", "script": "Hapu", "still": true, "hiddenBy": "FLAG_ALOLA_HAPU_RUINS_DONE", "shownBy": "FLAG_ALOLA_HAPU_ROUTE_12" }
+  },
+  "signs": {
+    "DesertSign": "Haina Desert\nNorth: the Ruins of Abundance\nKeep to the paths between the rocks!"
+  }
+}

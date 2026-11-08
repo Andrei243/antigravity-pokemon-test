@@ -110,6 +110,15 @@
       "dialog": [
         "The Gym is shut while its Leader is away. He'll be back when the roses bloom, he says. He has said that since spring."
       ]
+    },
+    {
+      "id": "fisherman",
+      "name": "Fisherman",
+      "npcType": "Fisherman",
+      "x": 2,
+      "y": 7,
+      "facing": "Right",
+      "script": "GoodRod"
     }
   ],
   "wildEncounters": []

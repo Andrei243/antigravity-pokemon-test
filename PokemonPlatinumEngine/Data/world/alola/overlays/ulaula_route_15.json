@@ -1,0 +1,46 @@
+{
+  // Route 15, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. The coast east of Route
+  // 14 to the open sea, and the Aether House, the Aether Foundation's home for Pokémon and children in need, where
+  // Acerola lends a hand
+  "area": "ulaula_route_15",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "UlaulaRoute15_AetherHouse", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "kaimi": {
+      "name": "Kaimi",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kaimi: I swam here from Route 14. Now I'm too tired to lose. Let's go!",
+        "dialogueAfter": "Swimmer Kaimi: I was too tired to win, it turns out."
+      }
+    },
+    "lehua": {
+      "name": "Lehua",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Lehua: Nobody walks this far along the coast by accident. You're here to battle.",
+        "dialogueAfter": "Ace Trainer Lehua: And you're good at it."
+      }
+    },
+    "mahina": {
+      "name": "Mahina",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Mahina: I bring my Pokémon to the Aether House to play with the children. Today they play with you!",
+        "dialogueAfter": "Pokémon Breeder Mahina: They had fun. That's what matters!"
+      }
+    },
+    "aether_worker": {
+      "name": "Aether Employee",
+      "npcType": "scientist",
+      "dialog": [ "The Aether House looks after Pokémon and children with nowhere else to go. Do come in and say hello." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 15\nWest: Route 14\nThe Aether House"
+  }
+}

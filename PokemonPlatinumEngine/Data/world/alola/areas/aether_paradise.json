@@ -35,6 +35,7 @@
     }
   ],
   "objects": [
+    { "id": "gladion", "looks": "gladion", "movement": "look_south", "x": 54, "z": 76, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     {
       "id": "sailor",
       "looks": "sailor",

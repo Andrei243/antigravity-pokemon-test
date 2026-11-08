@@ -7,6 +7,9 @@
   "area": "mahalo_trail",
   "bgmTrack": "alola/iki_town",
   "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "MahaloTrail_RuinsOfConflict", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "architecture": "Islander",
   "triggers": [
     { "script": "Bridge", "x": 247, "z": 85, "width": 6, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 3 }

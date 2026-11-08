@@ -9477,6 +9477,64 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   rough ground only Mudsdale crosses, a ride's own song, the Fossil Restoration Center, Moon's totems, Malie Garden and
   Routes 14, 15 and 17 (still the rulings' "Left" above), Ultra Space (Z8) and the user's look at the new shots.
 
+## The rest of the islands: Hapu, the guardians' ruins, the last routes and the shut doors (2026-11-08, plan 23, the wave after the loose ends)
+
+- **Where it comes from.** As Z5 to Z7: drawn by hand from the places as they are publicly described (Bulbapedia's and
+  Serebii's pages of each place and a walkthrough for the order of Hapu's beats: Route 12, where she registers Mudsdale,
+  and the Ruins of Abundance north of Haina Desert; Seaward Cave from a hole in Melemele Meadow to Kala'e Bay; the Fossil
+  Restoration Center on Route 8, which revives the fossils at level 20), never a picture, map, line or script of the
+  games. Every line, name of a trainer and team is ours. The drawings are `tools/MapDraw/alola/*.txt`, written by a
+  throwaway generator kept outside the repository, and `dotnet run --project tools/MapDraw -- alola` writes the chunks,
+  matrices and habitats from them; the rooms are hand-made map files put in the game's own shape by MapDraw's `--rooms`.
+- **What is drawn.** On Ula'ula (matrix 10): **Malie Garden** east of Malie City (two ponds with a bridge each, stone
+  lanterns, flowers; its own wild Pokémon and fish), **Route 14** south of Tapu Village to a beach, **Route 15** east
+  along the coast to the **Aether House** and the open sea, **Ula'ula Meadow** west of Route 16 (red flowers, the Baile
+  Oricorio, a dancer's Red Nectar), **Route 17** north of the meadow under Po Town's rain to the island's **police
+  station** (Nanu's Meowth), and **Haina Desert** east of Route 13 under a lasting sandstorm, a maze of rock walls with
+  the **Ruins of Abundance** at its head. On Melemele (matrix 0): **Kala'e Bay** on the north-east shore, reached only
+  through **Seaward Cave** (matrix 40, a map of its own: matrices 40 on are this wave's, clear of the other islands'
+  sessions) from a hole in Melemele Meadow's south-west corner; and the **Ruins of Conflict** as a room at the Mahalo
+  Trail's head. On Akala (matrix 3): the **Fossil Restoration Center** beside Route 8's road. Area files are numbered from
+  400. 18 trainers of ours (`alola_<class>_<name>`), 19 rooms.
+- **Ours, beside Sun and Moon.** In Sun and Moon Route 17 leads on into Po Town through its gate and Route 16 to the
+  meadow; here Po Town's gate stays on Route 16, as Z7 drew it, so Route 17 ends at the police station, and Nanu is met in
+  Po Town as Z7 has it. Route 15's Aether House lets the team rest with its own Pokémon. Malie Garden, Haina Desert's
+  rocky maze and Kala'e Bay hold no scene; the desert's Mudsdale-only rough ground is still not drawn (no field rule of the
+  grid stops a walker there). The two motels and Konikoni's restaurant heal the team for money (500 and 1,000), as a
+  stand-in for Sun and Moon's meals and rooms; the nursery at Paniola Ranch is a house that talks of eggs, not a Day Care.
+- **Hapu.** `VAR_ALOLA_HAPU` is her count (ours): 0 until Route 12, whose trigger at the road's east end plays her
+  scene (she registers Mudsdale in the Ride Pager, `FLAG_ALOLA_RIDE_MUDSDALE`, and goes, `FLAG_ALOLA_HAPU_ROUTE_12`); 2
+  once she has been heard out before the Ruins of Abundance (`FLAG_ALOLA_HAPU_RUINS_DONE`). Z7's Tapu Village rancher
+  still lends a Mudsdale to a game that walked round her trigger, and says otherwise that the player has one. Her grand
+  trial on Exeggutor Island is Z7's, unchanged.
+- **The shut doors.** Every door Z5 and Z6 left `locked` is a room now but the Battle Royal Dome's (plan 23 · Z8):
+  Hau'oli City's city hall, police station and apparel shop (`wardrobe "hauoli"`), Route 2's and Route 8's motels,
+  Heahea City's tourist bureau, hotel and research laboratory, Konikoni City's restaurant, Paniola Ranch's nursery,
+  Kiawe's family's house in Paniola Town, Royal Avenue's Megamart (`shop "royal_megamart"`: the balls of the later games,
+  Max Repels and Revives) and boutique (`wardrobe "royal_avenue"`), and Route 9's police station. Five garments of Alola's
+  are added to `clothes.json` for the two shops.
+- **The fossils.** The Fossil Restoration Center's seller sells a Skull, Armor, Cover and Plume Fossil for 7,000 each,
+  one of each kind (`FLAG_ALOLA_BOUGHT_<KIND>`; Sun and Moon sell them in Konikoni City, and a version's two, where ours
+  sells all four), and its restorer revives any Fossil at level 20 once the player has gone out and come back (plan 06 ·
+  R16b's `fossil` command, a local flag, as Cinnabar Island's laboratory does). A Skull Fossil also lies in Haina Desert.
+- **After the Hall of Fame.** The four guardians answer the champion in their ruins, each battled at 60 and met after its
+  beat as plan 29 asks: Tapu Koko in the Ruins of Conflict, Tapu Lele in the Ruins of Life (only seen in Z6's scene
+  before), Tapu Bulu in the Ruins of Abundance (before the Hall of Fame Koko and Bulu show themselves and go), and Tapu
+  Fini where Z7 left it. **The second totems** stand for the totems Sun and Moon's other versions keep at the same sites:
+  a totem Raticate in Verdant Cavern (Moon's, at 50), an Araquanid at Brooklet Hill (51), a Salazzle at Wela Volcano Park
+  (52, Sun and Moon's own totem there, where ours had Marowak) and a Vikavolt in Hokulani Observatory (53, Sun and Moon's,
+  where ours had Togedemaru), each fought as Z6's totems are (`wildbattle … totem`) and gone once beaten
+  (`FLAG_ALOLA_TOTEM_<SPECIES>_DONE`). Gladion gives Type: Null at 40 on Aether Paradise's plaza, once
+  (`FLAG_ALOLA_TYPE_NULL_GIVEN`). The objectives after the Hall of Fame are 663 to 667 (the four guardians, then the
+  totems), before `alolaFree`.
+- **The species check** (plan 40 · GE1's, `AlolaSpeciesTests`): every species of the `original-alola` Pokédex can be
+  had in Alola but what its `Owed` names, each with the session that owes it (Sun and Moon's wild Pokémon still to place,
+  Island Scan, the Ultra Beasts of plan 23 · Z8, the version's other legendary and the event-only mythicals).
+- **Left**: the Battle Royal Dome and Ultra Space (Z8), the rough ground and Sharpedo's Jet, Poni's Plains, Grove, Coast,
+  Meadow and Gauntlet with Resolution Cave and the Battle Tree, Blush Mountain, Route 11 and the Secluded Shore, Big Wave
+  Beach and Hau'oli Cemetery, the Elite Four's rematches and the title defence, and the songs of the new places (they
+  play Alola's road and town songs).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.
@@ -9791,6 +9849,55 @@ movement stays `Eight`.
   Maison's counter its evolution items (the Razor Claw evolves Weavile), the chamber Yveltal, and the Lost Hotel's bins
   Trubbish, Garbodor and Rotom: `KalosSpeciesTests.Owed` went from 143 to 115 and its owed items from 21 to 4. The later places' prize counters are counted where a region's
   scripts open them (`SpeciesSources`, a `frontier prize` of `facility-prizes.json`'s).
+
+## Kalos's Gyms, its water and the Mamoswine ride (2026-11-08, plan 23 after Z4b)
+
+X and Y's puzzles, water and ride as they are publicly described, in forms and words of our own; Kalos's movement stays
+`Eight` (the user's decision: `Free` once plan 30 · FM9 is past its gate).
+
+- **The Prism Tower's quiz** (Clemont): X and Y's climb answers "who's that" questions and picks a lift. Ours is one
+  hall cut by three low walls, each with one gap held by an electric gate (a thing of the map, `ElectricGate`, hidden by
+  `FLAG_KALOS_PRISM_GATE_1` to `_3`) and a quiz host beside it (`Quiz1` to `Quiz3`, questions of our own about types,
+  Kalos's species and Mega Evolution). A right answer opens the gate; a wrong one at the second or third sets that part
+  of the hall's trainer (Hugo, Adèle) on the player first, unless already beaten; the first gate opens for anyone.
+- **Valerie's and Olympia's halls**: X and Y's Laverre Gym is a warp-tile puzzle, and its Anistar Gym paths "on a
+  sphere" that end in warp tiles. Both are the map's own warp panels (`WarpPanels`, Team Galactic's rule, a panel to a
+  panel and back): Valerie's four rooms of a doll's house (the door's room, two side rooms, hers), Olympia's pads of
+  light over a starry dark (`V` void round floating pads). A wrong panel leads round, or back to the door.
+- **Wulfric's turntables** (`Overworld/SnowbelleTurntables.cs`, a `GymPuzzle`): X and Y's switches turn platforms.
+  Ours: five turntables of ice over the dark, each an L of two arms; the hub is the switch, turning its turntable a
+  quarter clockwise whenever it is stepped onto (`Crossed`), and an arm tile no arm lies on refuses the step (`Refuses`).
+  Two hubs three tiles apart are joined only when both point arms at each other. The hall is laid out afresh at the
+  door; the shortest way across turns the east pair and the middle one, nineteen steps (`KalosGymsAndWaterTests`
+  searches it). Santalune's web, Cyllage's climbing wall, Shalour's rails and Coumarine's poles are still plain halls.
+- **Water**: X and Y's own tables, read from public encounter lists: the west coast (Ambrette, Cyllage, Routes 8 and 9)
+  surfs Tentacool and Wailmer and fishes Luvdisc, Skrelp, Clauncher, Horsea (Shellder and Staryu off Route 8),
+  Relicanth, Seadra, Dragalge and Clawitzer; the north coast (Shalour) Tentacool and Mantyke, Remoraid, Chinchou,
+  Alomomola, Lanturn and Octillery; fresh water (Routes 15 and 16, Couriway, the Pokémon Village, and Laverre's, fished
+  only) Lombre, Floatzel and Poliwhirl, Poliwag and Basculin. Azure Bay and Kiloude City, which are post-game here
+  (Z4b), take the north coast's kinds grown, at 50 to 60. Aquacorde's and Camphrier's water, and Route 7's river, have no
+  Pokémon, as in X and Y. **The rods and Surf**: the Old Rod in Ambrette's aquarium (X and Y: its lower floor), the Good
+  Rod from a fisherman in Coumarine City's east house (X and Y: on the port, which our drawing doesn't have), the Super
+  Rod from Couriway's fisherman; HM03 from Gurkinn at the end of the Tower of Mastery's scene (X and Y: the neighbour, in
+  Shalour City), and by him to a save already past the scene when spoken to again. Kalos's flags are its own
+  (`FLAG_KALOS_RECEIVED_OLD_ROD` and the rest), so a Champion who brought Sinnoh's rods is given Kalos's too. X and Y ask
+  no badge of a field move, and `gates` stays empty.
+- **The Mamoswine ride**: X and Y's Route 17 is drifted from end to end and ridden on a Mamoswine. Ours has three bands
+  of drift from edge to edge (`TileBehavior.SnowDrift`, 0xB9, our own value after Black 2's; MapDraw's `%`), which stop
+  anyone on foot, on skates or cycling (`Obstacle.Drift`) and are ridden through at a walk. The Mamoswine is a ride the
+  route lends (`RidePager.LentRides`: no pager, no flag, only in `kalos_route_17`), got on by talking to one of four
+  that stand at each end and in each clearing (`kalos_route_17.Mamoswine`), so a save made riding, which wakes on foot,
+  is never stranded; spoken to from its back, one lets the player down; leaving the route ends the ride
+  (`DismountWhereNoRiding`). `WorldWalk` counts a drift as ridden through, and the playthrough rides it
+  (`Itineraries.KalosLastChapters`).
+- **Hordes and sky trainers**: X and Y's hordes for sixteen routes (Route 7's Roselia and Hoppip, Route 8's Taillow and
+  Wingull, Route 15's Klefki, Murkrow and Foongus as X and Y have them; the rest of families of each route's grass),
+  under the hordes' own rule (after Kalos's Hall of Fame, `Ruleset.Hordes`); the horde test now asks for any of a
+  region's Pokédexes. Five Sky Trainers of ours (Routes 5, 8, 12, 15 and 21, `kalos_sky_trainer_*`, `format` `sky`,
+  the pilot's look) battle only when spoken to (sight 0), so a team with nobody who flies is told so and never seen.
+- **Left.** The other four Gyms' pieces (Santalune's web, Cyllage's wall, Shalour's rails, Coumarine's poles),
+  Coumarine's port, X and Y's Surf-only places (the Unknown Dungeon's water mouth, Victory Road's lakes), Waterfall and
+  the other HMs' gifts, and every place's own song (plan 31's tools give no Kalos songs to these places yet).
 
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
 

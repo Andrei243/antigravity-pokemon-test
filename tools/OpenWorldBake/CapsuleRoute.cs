@@ -13,7 +13,7 @@ public readonly record struct RouteSample(long Tick, OpenPos Pos, OpenStance Sta
 /// <summary>
 /// The game's own capsule (<see cref="Capsule"/>, plan 32 · OW3) walked along a route of stops on a region's baked
 /// ground, the stick at full tilt toward the next stop, with what happened: what tests hold, and what
-/// <c>--walk</c> draws over the region's plan and sections. A stop is passed once the feet are within 0.4 m of it on
+/// <c>--walk</c> draws over the region's plan and sections. A stop is passed once the feet are within <c>reach</c> (0.4 m unless told) of it on
 /// the ground; a stop the body can't come nearer to for half a second while a wall, a face or the water's edge holds
 /// it is given up (the walk goes on to the next); three seconds with under half a metre made good end the walk as stuck.
 /// </summary>
@@ -55,7 +55,7 @@ public sealed class CapsuleRoute
     }
 
     public static CapsuleRoute Walk(OpenGround ground, OpenPos start, IReadOnlyList<RouteStop> stops,
-        MovementGrants grants = MovementGrants.None, int yaw = 0, int mostTicks = OpenClock.TicksPerSecond * 600)
+        MovementGrants grants = MovementGrants.None, int yaw = 0, int mostTicks = OpenClock.TicksPerSecond * 600, double reach = 0.4)
     {
         var walk = new CapsuleRoute();
         var body = new Capsule(start, yaw);
@@ -70,7 +70,7 @@ public sealed class CapsuleRoute
             var target = stops[stop];
             var here = OpenVec.Of(body.Pos);
             double dx = target.X - here.X, dz = target.Z - here.Z, dist = Math.Sqrt(dx * dx + dz * dz);
-            if (dist < 0.4)
+            if (dist < reach)
             {
                 walk.Events.Add($"tick {body.Tick}: reached {target.Name} at {body.Pos} ({body.Stance})");
                 walk.Reached.Add(target.Name);

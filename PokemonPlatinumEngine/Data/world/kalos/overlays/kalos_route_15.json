@@ -7,6 +7,15 @@
   "trees": "Round",
   "architecture": "OldTimber",
   "people": {
+    // Plan 23, Kalos's sky trainers: a Sky Battle when spoken to (Trainer.InTheAir, the team's fliers alone)
+    "sky_thierry": {
+      "name": "Thierry",
+      "npcType": "pilot",
+      "trainer": {
+        "dialogueBefore": "Sky Trainer Thierry: The leaves fall, but my Pokémon only rise. A Sky Battle!",
+        "dialogueAfter": "Sky Trainer Thierry: Grounded, like the leaves."
+      }
+    },
     "youngster": {
       "name": "Félix",
       "npcType": "Youngster",

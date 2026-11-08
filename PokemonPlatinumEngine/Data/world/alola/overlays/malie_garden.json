@@ -1,0 +1,44 @@
+{
+  // Malie Garden, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. A walled garden east
+  // of Malie City in the old Johto style: two ponds with a bridge over each, stone lanterns along the path and beds of
+  // flowers. Its wild Pokémon live in its tall grass, its fish in the ponds
+  "area": "malie_garden",
+  "bgmTrack": "alola/hauoli",
+  "trees": "Round",
+  "architecture": "Shoreline",
+  "people": {
+    "ako": {
+      "name": "Ako",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Ako: I come here to clear my head. Battling clears it faster.",
+        "dialogueAfter": "Ace Trainer Ako: My head is very clear now. Clearly, I lost."
+      }
+    },
+    "tomo": {
+      "name": "Tomo",
+      "npcType": "gentleman",
+      "trainer": {
+        "dialogueBefore": "Gentleman Tomo: A garden is made to be walked slowly. A battle is not. Shall we?",
+        "dialogueAfter": "Gentleman Tomo: Splendid. I shall return to walking slowly."
+      }
+    },
+    "ume": {
+      "name": "Ume",
+      "npcType": "lass",
+      "trainer": {
+        "dialogueBefore": "Lass Ume: The fish in the pond are watching. Let's give them something to see!",
+        "dialogueAfter": "Lass Ume: The fish looked away. How rude."
+      }
+    },
+    "gardener": { "name": "Gardener", "npcType": "old_man", "script": "Gardener", "still": true },
+    "tea_lady": {
+      "name": "Lady",
+      "npcType": "Lady",
+      "dialog": [ "The garden was laid out by people who sailed here from far away. They missed their home, so they built a little of it here." ]
+    }
+  },
+  "signs": {
+    "GardenSign": "Malie Garden\nPlease walk gently. The Pokémon are napping."
+  }
+}

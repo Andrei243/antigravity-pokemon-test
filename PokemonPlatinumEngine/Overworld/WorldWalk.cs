@@ -227,9 +227,15 @@ internal static class WorldWalk
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // and so is a tile the Trick House's sixth puzzle's gates hold shut, which turning them frees (plan 21 ·
                 // H12, part j; HoennTrickHouseTests holds the gates)
-                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms
+                // and so is a tile of Wulfric's turntables (plan 23, Kalos's Gyms; SnowbelleGymTests turns them across)
+                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms or SnowbelleTurntables
                           || step.Obstacle == Obstacle.Rail && map.Puzzle is FortreeGates { Name: FortreeGates.TrickHouseName }) && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // A drift of snow is crossed on the Mamoswine its road lends at each end and in each clearing (plan 23, Kalos's
+                // Mamoswine ride; KalosWaterAndRideTests rides it): here every drift counts as ridden through
+                else if (step.Obstacle == Obstacle.Drift && mode == TravelMode.OnFoot
+                         && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too
                 else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } name } person)
@@ -359,6 +365,14 @@ internal static class WorldWalk
         new("FourIsland_IcefallCave_B1F", 12, 3, Direction.Down),
         new("FourIsland_IcefallCave_B1F", 15, 16, Direction.Down),
     };
+
+    /// <summary>
+    /// What can be come to in an open map (plan 32 · OW4): the flood of its navigation mesh (<see cref="OpenWorld.OpenWalk"/>)
+    /// from the places given, with everything the region can grant, through the ways that are no link of the mesh;
+    /// null for a map with no navigation mesh. An open map's doors into grid rooms are OW5's, as is joining the two walks.
+    /// </summary>
+    public static OpenWorld.OpenWalk? Open(OpenWorld.OpenMap map, IEnumerable<OpenWorld.OpenPos> starts, IEnumerable<OpenWorld.OpenWay>? ways = null) =>
+        OpenWorld.OpenWalk.Of(map, OpenWorld.MovementGrants.Swim, starts, ways);
 
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>

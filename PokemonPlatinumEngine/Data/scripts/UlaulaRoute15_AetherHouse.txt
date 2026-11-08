@@ -1,0 +1,20 @@
+# The Aether House on Route 15, the Aether Foundation's home for Pokémon and children (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Employee
+  speaker "Aether Employee"
+  say "The Aether House takes in children and Pokémon who have nobody else. Captain Acerola grew up here, you know."
+  say "Your Pokémon look tired. Let them rest a moment with ours."
+  fade out
+  heal
+  text "{player}'s Pokémon played with the Aether House's and were full of energy again."
+  fade in
+  end
+
+
+script Child
+  speaker "Child"
+  say "Acerola says ghosts are just people who miss somebody. I'm not scared of them any more. Mostly."
+  end

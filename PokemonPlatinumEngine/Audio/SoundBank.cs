@@ -76,7 +76,7 @@ public static partial class SoundBank
     /// </summary>
     public static string? StepSound(TileBehavior onto) => onto switch
     {
-        TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow => "step_snow",
+        TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow or TileBehavior.SnowDrift => "step_snow",
         TileBehavior.Puddle => "step_puddle",
         TileBehavior.ShallowWater => "step_shallows",
         TileBehavior.Mud => "step_mud",

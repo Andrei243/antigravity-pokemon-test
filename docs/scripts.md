@@ -1263,6 +1263,45 @@ label Give
   end
 ```
 
+### The open world's places
+
+Plan 32 · OW5. An open map (Galar's and Paldea's outdoors, plan 32; the open test world, `tools/OpenWorldBake/worlds/lab`)
+is walked in millimetres, not tiles, so its scripts name **markers**: named places with a way of facing, written in its
+places' files (`Data/world3d/<region>/places/<key>.json`, `docs/data-files.md`, "Open worlds"). A place's scripts are
+`scripts/<key>.txt`, its area's key, as an overlay's are; where two areas hold a spot (a cave under a hill) the later
+in `world.json`'s list is its place. A trigger's script runs once as the capsule's middle crosses into its volume, while
+the story is at its variable's value (as a grid trigger's step onto its tile), and a place's `OnEnter` runs as the player
+comes out of a door or a `warpto` onto one of its markers.
+
+| Command | What it does |
+|---|---|
+| `walkto <who> <marker> [fast]` | Walks them straight at a marker of the open map and waits, as `walk` does: the capsule steered at a full tilt (a run with `fast`) by the same rules as the stick, sliding along what is in its way, until it is within 10 cm of the marker, where it is put on it facing the marker's way. A walk that comes no nearer for three quarters of a second is given up where it stands. In a hurry the walk is taken to its end unseen and ends on the marker the same way. The way round a wall is the navigation's (OW4), not this walk's. |
+| `placeat <who> <marker>` | Puts them on a marker, facing its way. What they stand in is not crossed into: no trigger runs. |
+| `faceto <who> <marker\|who>` | Turns them toward a marker (`player` turns nobody toward themselves). |
+| `warpto "<open map>" <marker>` | Through a fade to a marker of an open map, from a grid map or an open one; in a hurry at once. The place's `OnEnter` follows. |
+| `camera look <marker> [0.8] [nowait]` | Sends the open map's camera to look at a marker (OW8's orbit camera reads it), waited for as a pan is. |
+
+`<who>` is `player` until an open map has people of its own (OW6): anyone else is a script gone wrong in the game, and
+`HeadlessScriptHost` writes down whoever it is told of (`OnMarker`, `FacingToward`). In a file of an open map's place the
+tile forms (`walk`, `move`, `place`, `camera pan`, `camera path`) are a problem, and so is a marker the map lacks; in a
+file of a grid place the open forms are; and anywhere `warp` to an open map (it is gone to by `warpto`) and `warpto` to
+no open map's marker are. `ScriptLibrary.OpenProblems` and `tools/ContentCheck` name each with its file and line.
+
+A door into a grid room is no command: it is a volume of the place's file, crossed into as a trigger is, and the room's
+way back out is an ordinary warp whose `targetMap` is the open map's name (its tile is passed over); it lands on the
+`out` marker of the door of that map that leads into the room (the one nearest the way out, where two do).
+
+```
+script Cavern
+  scene "Meeting"
+  walkto player cavern_middle
+  faceto player cavern_east
+  camera look cavern_east
+  say "Something moves at the far end of the cavern."
+  endscene
+  end
+```
+
 ## The Pokégear's phone
 
 Plan 20 · J3. Johto's Pokégear keeps its numbers in the story, a flag of ours to each (`FLAG_PHONE_CONTACT_JOEY`,

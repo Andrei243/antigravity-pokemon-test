@@ -1,0 +1,104 @@
+{
+  "name": "AlolaRoute2_Motel",
+  "displayName": "Route 2",
+  "bgmTrack": "alola/route1",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.#......#",
+    "##....###.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Melemele",
+      "targetX": 306,
+      "targetY": 139,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Motel Clerk",
+      "npcType": "middle_aged_woman",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Clerk"
+    },
+    {
+      "id": "guest",
+      "name": "Guest",
+      "npcType": "backpacker_m",
+      "x": 3,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "I came for the malasadas and stayed for the beaches. Well, I'm leaving tomorrow. Probably."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

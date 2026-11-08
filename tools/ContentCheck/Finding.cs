@@ -32,7 +32,9 @@ public enum Kind
     /// <summary>A song the place plays that isn't there.</summary>
     Music,
     /// <summary>What <c>ScriptLibrary.Problems</c> says of the scripts.</summary>
-    ScriptProblem
+    ScriptProblem,
+    /// <summary>An open region's land as described: a carve's roof thinner than half a metre (plan 32 · OW5).</summary>
+    Land
 }
 
 /// <summary>

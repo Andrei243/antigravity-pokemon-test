@@ -30,5 +30,34 @@
   "signs": [
     { "x": 563, "z": 362, "type": 0, "script": "TownSign" }
   ],
-  "triggers": []
+  "triggers": [],
+  "water": [
+    { "species": "Tentacruel", "level": 56, "maxLevel": 58 },
+    { "species": "Tentacruel", "level": 56, "maxLevel": 58 },
+    { "species": "Mantine", "level": 56, "maxLevel": 58 },
+    { "species": "Mantine", "level": 56, "maxLevel": 58 },
+    { "species": "Lapras", "level": 58 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Luvdisc", "level": 50, "maxLevel": 54 },
+    { "species": "Luvdisc", "level": 52, "maxLevel": 55 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Remoraid", "level": 55 },
+    { "species": "Chinchou", "level": 55 },
+    { "species": "Remoraid", "level": 55 },
+    { "species": "Chinchou", "level": 55 },
+    { "species": "Chinchou", "level": 55 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Alomomola", "level": 60 },
+    { "species": "Lanturn", "level": 60 },
+    { "species": "Octillery", "level": 60 },
+    { "species": "Alomomola", "level": 60 },
+    { "species": "Octillery", "level": 60 }
+  ],
+  "superRodRate": 75
 }

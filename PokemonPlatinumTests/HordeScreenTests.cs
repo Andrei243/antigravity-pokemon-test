@@ -304,7 +304,8 @@ public class HordeScreenTests
                 {
                     var kind = PokemonDatabase.Get(horde.Species);
                     Assert.True(kind != null, $"{horde.Species} is a species");
-                    Assert.True(kind!.DexNumbers.ContainsKey(region.File!.Dex), $"{horde.Species} of {place.Area} is in {regionId}'s own Pokédex");
+                    // (one of the region's own Pokédexes: Kalos has three, plan 23 · Z4)
+                    Assert.True(region.Dexes.Any(dex => kind!.DexNumbers.ContainsKey(dex)), $"{horde.Species} of {place.Area} is in one of {regionId}'s own Pokédexes");
                     Assert.True(grass.Any(g => Family(horde.Species).Contains(g.Species)), $"{horde.Species}'s family lives in {place.Area}'s grass");
                     Assert.InRange(horde.MinLevel, 1, horde.MaxLevel);
                     Assert.True(horde.MaxLevel <= lowest, $"{place.Area}'s {horde.Species} hordes ({horde.MaxLevel}) are no stronger than its grass's weakest ({lowest})");

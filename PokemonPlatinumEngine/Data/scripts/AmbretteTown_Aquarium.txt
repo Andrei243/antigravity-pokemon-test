@@ -1,0 +1,18 @@
+# Ambrette Town's aquarium (plan 23, Kalos's water; docs/mechanics/rulings.md, "Kalos's Gyms, its water and the
+# Mamoswine ride"). The lines are our own, on X and Y's beat as it is publicly described: a man of the aquarium hands
+# the player the Old Rod. FLAG_KALOS_RECEIVED_OLD_ROD is Kalos's own, so a Champion who brought Sinnoh's rod along is
+# offered one all the same.
+
+
+script OldRod
+  face self player
+  if flag FLAG_KALOS_RECEIVED_OLD_ROD goto After
+  say "Welcome to the Ambrette Aquarium! Every fish in these tide pools was caught off our own pier."
+  say "You look like someone who'd enjoy that. Here, take this rod. We keep a few for visitors."
+  give "Old Rod"
+  setflag FLAG_KALOS_RECEIVED_OLD_ROD
+  say "Face the water and use it from your bag. When the line twitches, reel it in!"
+  end
+label After
+  say "The sea off Ambrette is full of Luvdisc. They like to come in pairs, you know."
+  end

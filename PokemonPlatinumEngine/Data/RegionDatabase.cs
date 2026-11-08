@@ -1028,6 +1028,14 @@ public static class RegionDatabase
                 "RoyalAvenue_PokemonCenter_1F", "RoyalAvenue_House", "AkalaRoute8_PokemonCenter_1F",
                 "KonikoniCity_PokemonCenter_1F", "KonikoniCity_OliviasShop", "KonikoniCity_House",
                 "AkalaOutskirts_RuinsOfLife", "HanoGrandResort",
+                // Plan 23, the wave after the loose ends: Seaward Cave (a cave map of its own), the doors Z5 and Z6 left
+                // shut, the Fossil Restoration Center, the three guardians' ruins and Ula'ula's last rooms
+                "SeawardCave",
+                "HauoliCity_CityHall", "HauoliCity_PoliceStation", "HauoliCity_ApparelShop", "AlolaRoute2_Motel",
+                "MahaloTrail_RuinsOfConflict", "HeaheaCity_TouristBureau", "HeaheaCity_Hotel", "HeaheaCity_ResearchLab",
+                "KonikoniCity_Restaurant", "PaniolaRanch_Nursery", "PaniolaTown_KiawesHouse", "RoyalAvenue_Megamart",
+                "RoyalAvenue_Shop", "AkalaRoute8_Motel", "AkalaRoute8_FossilCenter", "AkalaRoute9_PoliceStation",
+                "UlaulaRoute15_AetherHouse", "UlaulaRoute17_PoliceStation", "HainaDesert_RuinsOfAbundance",
             }
         },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

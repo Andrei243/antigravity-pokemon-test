@@ -24,7 +24,11 @@
     { "file": "alola_route_2.txt", "x": 276, "z": 88 },
     { "file": "alola_route_3.txt", "x": 276, "z": 40 },
     { "file": "melemele_meadow.txt", "x": 372, "z": 40 },
-    { "file": "ten_carat_shore.txt", "x": 196, "z": 168 }
+    { "file": "ten_carat_shore.txt", "x": 196, "z": 168 },
+    // The rest of Melemele (plan 23, the wave after the loose ends): the Ruins of Conflict at the Mahalo Trail's head,
+    // and Kala'e Bay on the north-east shore, reached only through Seaward Cave from Melemele Meadow
+    { "file": "ruins_of_conflict.txt", "x": 242, "z": 62 },
+    { "file": "kalae_bay.txt", "x": 424, "z": 88 }
   ],
   // Caves and the other islands as maps of their own (plan 23's Alola decisions: each island a matrix of its own). Since
   // wave 91 an island's "island" is the cell of the region's map its north-west chunk is shown at, as the Town Map's
@@ -96,7 +100,16 @@
         { "file": "ulaula_route_13.txt", "x": 256, "z": 208 },
         { "file": "lanakila_foot.txt", "x": 264, "z": 136 },
         { "file": "ulaula_route_16.txt", "x": 216, "z": 136 },
-        { "file": "po_town.txt", "x": 200, "z": 64 }
+        { "file": "po_town.txt", "x": 200, "z": 64 },
+        // The rest of Ula'ula (plan 23, the wave after the loose ends): Malie Garden east of Malie City; Route 14 south
+        // of Tapu Village to the beach and Route 15 along the coast to the Aether House; Ula'ula Meadow west of Route 16
+        // and Route 17 north of it to the police station; and Haina Desert east of Route 13, the Ruins of Abundance at its head
+        { "file": "malie_garden.txt", "x": 96, "z": 320 },
+        { "file": "ulaula_route_14.txt", "x": 192, "z": 256 },
+        { "file": "ulaula_route_15.txt", "x": 256, "z": 256 },
+        { "file": "ulaula_meadow.txt", "x": 156, "z": 152 },
+        { "file": "ulaula_route_17.txt", "x": 148, "z": 104 },
+        { "file": "haina_desert.txt", "x": 304, "z": 212 }
       ],
       "areas": [
         { "key": "malie_city", "x": 24, "z": 320, "width": 72, "depth": 44 },
@@ -107,7 +120,13 @@
         { "key": "ulaula_route_13", "x": 256, "z": 208, "width": 48, "depth": 40 },
         { "key": "lanakila_foot", "x": 264, "z": 136, "width": 64, "depth": 72 },
         { "key": "ulaula_route_16", "x": 216, "z": 136, "width": 40, "depth": 64 },
-        { "key": "po_town", "x": 200, "z": 64, "width": 88, "depth": 72 }
+        { "key": "po_town", "x": 200, "z": 64, "width": 88, "depth": 72 },
+        { "key": "malie_garden", "x": 96, "z": 320, "width": 56, "depth": 44 },
+        { "key": "ulaula_route_14", "x": 192, "z": 256, "width": 64, "depth": 48 },
+        { "key": "ulaula_route_15", "x": 256, "z": 256, "width": 80, "depth": 56 },
+        { "key": "ulaula_meadow", "x": 156, "z": 152, "width": 60, "depth": 48 },
+        { "key": "ulaula_route_17", "x": 148, "z": 104, "width": 52, "depth": 48 },
+        { "key": "haina_desert", "x": 304, "z": 212, "width": 72, "depth": 56 }
       ]
     },
     // Poni
@@ -163,15 +182,19 @@
     },
     // Plan 23 · Z6: Diglett's Tunnel, a cave of its own under Akala between Route 8 and Route 9. Its matrix number is
     // well clear of the islands' (Ula'ula and Poni are a parallel session's), so the two may be laid in either order
-    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] }
+    { "matrix": 20, "area": "digletts_tunnel", "width": 2, "height": 2, "cell": "25,17", "pieces": [ { "file": "digletts_tunnel.txt", "x": 4, "z": 4 } ] },
+    // Seaward Cave, Melemele (the wave after the loose ends): from Melemele Meadow's south-west corner to Kala'e Bay, a
+    // map of its own. Matrices 40 on, clear of the other islands' sessions
+    { "matrix": 40, "area": "seaward_cave", "width": 2, "height": 2, "cell": "11,2", "pieces": [ { "file": "seaward_cave.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
     { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },
     { "key": "iki_town", "x": 230, "z": 112, "width": 40, "depth": 27 },
-    { "key": "mahalo_trail", "x": 236, "z": 72, "width": 28, "depth": 40 },
+    { "key": "mahalo_trail", "x": 236, "z": 62, "width": 28, "depth": 50 },
     { "key": "hauoli_city", "x": 272, "z": 160, "width": 96, "depth": 21 },
     { "key": "alola_route_2", "x": 276, "z": 88, "width": 60, "depth": 72 },
     { "key": "alola_route_3", "x": 276, "z": 40, "width": 96, "depth": 48 },
-    { "key": "melemele_meadow", "x": 372, "z": 40, "width": 44, "depth": 44 }
+    { "key": "melemele_meadow", "x": 372, "z": 40, "width": 44, "depth": 44 },
+    { "key": "kalae_bay", "x": 424, "z": 88, "width": 56, "depth": 48 }
   ]
 }

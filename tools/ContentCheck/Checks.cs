@@ -37,6 +37,8 @@ public static class Checks
         }
         foreach (var room in content.Rooms) Rooms.Check(content, room, flags, found);
         Scripts.Check(content, found);
+        // The open regions' land, places, doors and the scripts of their places (plan 32 · OW5)
+        OpenWorlds.Check(content, flags, found);
         Translations.Check(content, found);
         CraftingFiles.Check(content, found);
         OutbreakFiles.Check(content, found);
@@ -129,6 +131,8 @@ public static class Checks
     /// <summary>A tile somewhere lands on: it must be on the map and open (furniture, a wall and a fence never stand where somebody arrives).</summary>
     internal static void Landing(GameContent content, List<Finding> found, string file, string name, string mapName, int x, int y)
     {
+        // A way out to an open map lands on a door's marker, not a tile: OpenWorlds holds it to that (plan 32 · OW5)
+        if (content.OpenMapNamed(mapName) != null) return;
         if (content.MapNamed(mapName) is not { } target)
         {
             found.Add(new Finding(Kind.Way, file, name, $"leads to '{mapName}', which is no map (the game would put the player on the map of Sinnoh)"));

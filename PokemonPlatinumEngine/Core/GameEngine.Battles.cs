@@ -349,7 +349,7 @@ public partial class GameEngine
             case TileBehavior.Ice: return Battle.Sim.BattleTerrain.Ice;
             case TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass: return Battle.Sim.BattleTerrain.Grass;
             case TileBehavior.Sand: return Battle.Sim.BattleTerrain.Sand;
-            case TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow:
+            case TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow or TileBehavior.SnowDrift:
                 return Battle.Sim.BattleTerrain.Snow;
             case TileBehavior.Mud or TileBehavior.DeepMud or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass:
                 return Battle.Sim.BattleTerrain.GreatMarsh;

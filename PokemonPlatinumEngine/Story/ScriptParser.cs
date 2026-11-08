@@ -441,6 +441,27 @@ public static class ScriptParser
                 int x = r.Int("a tile's x"), y = r.Int("a tile's y");
                 return new Instruction { Op = Op.Warp, Line = line, Name = map, X = x, Y = y, Direction = r.More ? r.Direction() : null };
             }
+            // The open world's forms of the place commands (plan 32 · OW5): a marker's name where the grid's take a tile
+            case "walkto":
+            {
+                // walkto <who> <marker> [fast]: waited for as a walk is
+                string who = r.Who();
+                string marker = r.Identifier("a marker's name");
+                bool fast = false;
+                if (r.PeekIs("fast"))
+                {
+                    r.Next();
+                    fast = true;
+                }
+                return new Instruction { Op = Op.WalkTo, Line = line, Name = who, Other = marker, Option = fast };
+            }
+            case "placeat":
+                return new Instruction { Op = Op.PlaceAt, Line = line, Name = r.Who(), Other = r.Identifier("a marker's name") };
+            case "faceto":
+                // faceto <who> <marker|who>: turned toward a marker, or toward someone (the player)
+                return new Instruction { Op = Op.FaceTo, Line = line, Name = r.Who(), Other = r.Who() };
+            case "warpto":
+                return new Instruction { Op = Op.WarpTo, Line = line, Name = r.Text("an open map's name"), Other = r.Identifier("a marker's name") };
             case "fade":
             {
                 bool toBlack = r.OneOf("out", "in") == "out";
@@ -460,8 +481,15 @@ public static class ScriptParser
                     r.Next();
                     return true;
                 }
-                switch (r.OneOf("pan", "release", "shake", "zoom", "follow", "path"))
+                switch (r.OneOf("pan", "release", "shake", "zoom", "follow", "path", "look"))
                 {
+                    case "look":
+                    {
+                        // camera look <marker> [seconds] [nowait] (plan 32 · OW5): an open map's camera sent to a marker
+                        string marker = r.Identifier("a marker's name");
+                        float seconds = r.PeekSeconds ? r.Seconds() : PanSeconds;
+                        return new Instruction { Op = Op.LookAt, Line = line, Name = marker, Seconds = seconds, Option = NoWait() };
+                    }
                     case "pan":
                     {
                         int x = r.Int("a tile's x"), y = r.Int("a tile's y");

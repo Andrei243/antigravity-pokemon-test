@@ -6,8 +6,10 @@
   "area": "paniola_ranch",
   "bgmTrack": "alola/route4",
   "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "PaniolaRanch_Nursery", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "architecture": "Islander",
-  "locked": [ 0 ],
   "triggers": [
     { "script": "Mallow", "x": 148, "z": 202, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 15 }
   ],

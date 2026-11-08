@@ -165,6 +165,15 @@ public static class Policy
         Search(map, x, y, walker, reach, new List<StepTrigger>()).Keys;
 
     /// <summary>
+    /// The way across an open map (plan 32 · OW4): the corners of the navigation mesh's path from one place to another
+    /// with what the region grants (the first is where the body stands), for the bot to steer the stick at one after
+    /// another; null where the map has no navigation mesh or no way leads there. The grid's routes are the method below.
+    /// </summary>
+    public static List<OpenWorld.OpenPos>? Route(OpenWorld.OpenMap map, OpenWorld.OpenPos from, OpenWorld.OpenPos to,
+        OpenWorld.MovementGrants grants = OpenWorld.MovementGrants.None) =>
+        map.Land?.Nav is { } nav && OpenWorld.NavPath.Find(nav, from, to, OpenWorld.OpenNavMesh.Allowed(grants)) is { } path ? path.Corners.ToList() : null;
+
+    /// <summary>
     /// The steps to the nearest tile <paramref name="goal"/> accepts, by the field's own rules and with no bound but
     /// <paramref name="most"/> tiles looked at (plan 16 · T13: an itinerary's leg is often a route or two away), searched
     /// toward <paramref name="towardX"/>, <paramref name="towardY"/> first. A warp's tile ends a path unless it is a goal,

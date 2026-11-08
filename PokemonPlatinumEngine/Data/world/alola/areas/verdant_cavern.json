@@ -18,6 +18,7 @@
     { "x": 29, "z": 51, "to": "alola_route_2", "toWarp": 3 }
   ],
   "objects": [
+    { "id": "second_totem", "looks": "raticate", "movement": "look_south", "x": 29, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "ilima", "looks": "ilima", "movement": "look_south", "x": 29, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "den_1", "looks": "yungoos", "movement": "look_south", "x": 12, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "den_2", "looks": "yungoos", "movement": "look_south", "x": 46, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },

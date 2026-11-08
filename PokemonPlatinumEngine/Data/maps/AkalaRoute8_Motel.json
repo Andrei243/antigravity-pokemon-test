@@ -1,0 +1,104 @@
+{
+  "name": "AkalaRoute8_Motel",
+  "displayName": "Route 8",
+  "bgmTrack": "alola/route4",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "##.#......#",
+    "##....###.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Television",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Akala",
+      "targetX": 279,
+      "targetY": 137,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Motel Clerk",
+      "npcType": "gentleman",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Clerk"
+    },
+    {
+      "id": "guest",
+      "name": "Guest",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Some loud kids in skull caps stayed here last week. They left their gum under every table."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

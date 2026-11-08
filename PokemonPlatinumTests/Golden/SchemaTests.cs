@@ -43,6 +43,8 @@ public class SchemaTests
         ("open-carve.schema.json", typeof(OpenWorldBake.CarveFile), "What is cut out of an open region's land and added to it (Data/world3d/<region>/carve/*.json)"),
         ("open-water.schema.json", typeof(OpenWorldBake.WaterFile), "An open region's sea, lakes and rivers (Data/world3d/<region>/water.json)"),
         ("open-roads.schema.json", typeof(OpenWorldBake.RoadsFile), "An open region's roads (Data/world3d/<region>/roads.json)"),
+        // ...and what stands in its places (plan 32 · OW5), read strictly by the game
+        ("open-place.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenPlaceFile), "What stands in an open region's place: markers, triggers, doors, zones, water and solids (Data/world3d/<region>/places/<key>.json)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)")
     };

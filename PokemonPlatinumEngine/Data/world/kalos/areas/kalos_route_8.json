@@ -16,6 +16,7 @@
   "fly": false,
   "warps": [],
   "objects": [
+    { "id": "sky_gaston", "looks": "pilot", "movement": "look_south", "x": 108, "z": 419, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_SKY_TRAINER_GASTON" },
     { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 98, "z": 393, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_FISHERMAN_YVES" },
     { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 108, "z": 390, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_MARCEL" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 95, "z": 415, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_8_GREAT_BALL", "item": "Great Ball", "script": "" },
@@ -42,5 +43,34 @@
     { "species": "Drifloon", "level": 15 },
     { "species": "Inkay", "level": 15 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 25, "maxLevel": 27 },
+    { "species": "Tentacool", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 27 },
+    { "species": "Wailmer", "level": 26, "maxLevel": 27 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Luvdisc", "level": 10, "maxLevel": 15 },
+    { "species": "Luvdisc", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Skrelp", "level": 25 },
+    { "species": "Clauncher", "level": 25 },
+    { "species": "Shellder", "level": 25 },
+    { "species": "Staryu", "level": 25 },
+    { "species": "Staryu", "level": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Qwilfish", "level": 35 },
+    { "species": "Cloyster", "level": 35 },
+    { "species": "Starmie", "level": 35 },
+    { "species": "Dragalge", "level": 35 },
+    { "species": "Clawitzer", "level": 35 }
+  ],
+  "superRodRate": 75
 }

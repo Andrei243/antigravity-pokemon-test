@@ -4365,6 +4365,137 @@
     ]
   },
   {
+    "id": "kalos_sky_trainer_celeste",
+    "name": "Céleste",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 960,
+    "party": [
+      {
+        "species": "Fletchling",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 9903074
+      },
+      {
+        "species": "Pidgeotto",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 10611572
+      }
+    ]
+  },
+  {
+    "id": "kalos_sky_trainer_gaston",
+    "name": "Gaston",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1280,
+    "party": [
+      {
+        "species": "Wingull",
+        "level": 15,
+        "ivScale": 0,
+        "personality": 6736028
+      },
+      {
+        "species": "Fletchinder",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 9118373
+      }
+    ]
+  },
+  {
+    "id": "kalos_sky_trainer_mireille",
+    "name": "Mireille",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 1760,
+    "party": [
+      {
+        "species": "Noibat",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 6960760
+      },
+      {
+        "species": "Drifloon",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 10613073
+      }
+    ]
+  },
+  {
+    "id": "kalos_sky_trainer_thierry",
+    "name": "Thierry",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 2800,
+    "party": [
+      {
+        "species": "Fletchinder",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 2137524
+      },
+      {
+        "species": "Noibat",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 2633181
+      }
+    ]
+  },
+  {
+    "id": "kalos_sky_trainer_zoe",
+    "name": "Zoé",
+    "class": "Sky Trainer",
+    "format": "sky",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 4080,
+    "party": [
+      {
+        "species": "Skarmory",
+        "level": 50,
+        "ivScale": 0,
+        "personality": 200018
+      },
+      {
+        "species": "Altaria",
+        "level": 50,
+        "ivScale": 0,
+        "personality": 13096995
+      },
+      {
+        "species": "Noivern",
+        "level": 51,
+        "ivScale": 0,
+        "personality": 254240
+      }
+    ]
+  },
+  {
     "id": "kalos_flare_grunt_factory_1",
     "name": "Grunt",
     "class": "Team Flare Grunt",

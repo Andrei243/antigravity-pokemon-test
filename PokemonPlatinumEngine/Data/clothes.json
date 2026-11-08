@@ -42,6 +42,12 @@
     { "id": "boulevard_tee", "name": "Boulevard Tee", "slot": "Top", "price": 1400, "color": "#f4f2ec", "accent": "#2c3458", "shortSleeves": true, "stripes": true, "description": "A cream tee with navy stripes, as worn on every café terrace." },
     { "id": "trench_coat", "name": "Trench Coat", "slot": "Top", "price": 4200, "color": "#c8a66e", "accent": "#5a3a2a", "coat": true, "description": "A long sand trench coat for rainy evenings by the tower." },
     { "id": "grey_skirt", "name": "Grey Skirt", "slot": "Bottoms", "price": 1800, "color": "#6a6c78", "skirt": true, "description": "A pleated skirt in city grey." },
+    // Alola's own (plan 23, the wave after the loose ends: Hau'oli City's apparel shop and Royal Avenue's boutique)
+    { "id": "hibiscus_cap", "name": "Hibiscus Cap", "slot": "Hat", "price": 900, "hat": "Cap", "color": "#f0e4c8", "accent": "#e0485c", "description": "A sand-coloured cap with a red flower on its side." },
+    { "id": "flower_shirt", "name": "Flower Shirt", "slot": "Top", "price": 1500, "color": "#e0485c", "accent": "#f6e8a8", "shortSleeves": true, "stripes": true, "description": "A loud shirt of red and yellow flowers, as Alola wears them." },
+    { "id": "lagoon_tee", "name": "Lagoon Tee", "slot": "Top", "price": 1100, "color": "#3cc0c8", "accent": "#f8f4ea", "shortSleeves": true, "description": "A tee the colour of a shallow lagoon." },
+    { "id": "board_shorts", "name": "Board Shorts", "slot": "Bottoms", "price": 1200, "color": "#2c6ed0", "shorts": true, "description": "Bright blue shorts that dry before you reach the beach." },
+    { "id": "sand_sandals", "name": "Beach Sandals", "slot": "Shoes", "price": 900, "color": "#c8a06e", "accent": "#5a3a24", "description": "Woven sandals for warm sand." },
     { "id": "tan_brogues", "name": "Tan Brogues", "slot": "Shoes", "price": 2200, "color": "#a8683a", "accent": "#5a3a24", "description": "Polished tan shoes, made for cobbled streets." }
   ],
   "boutiques": {
@@ -60,7 +66,10 @@
       "grey_skirt", "black_trousers", "navy_skirt",
       "tan_brogues", "black_boots",
       "black_backpack"
-    ]
+    ],
+    // Hau'oli City's apparel shop and Royal Avenue's boutique (plan 23, the wave after the loose ends): Alola's own and a few classics
+    "hauoli": [ "hibiscus_cap", "red_cap", "blue_cap", "flower_shirt", "lagoon_tee", "sunny_tee", "board_shorts", "khaki_shorts", "sand_sandals", "white_sneakers" ],
+    "royal_avenue": [ "hibiscus_cap", "black_cap", "flower_shirt", "lagoon_tee", "black_jacket", "board_shorts", "denim_jeans", "sand_sandals", "red_sneakers", "black_backpack" ]
   },
   // The sets offered in the introduction (plan 11 · C10; style guide, "The new-game introduction"), after the look's
   // own clothes, which come first so that a press goes on as before. A set is garments of the list above, a slot left

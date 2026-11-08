@@ -1,0 +1,30 @@
+{
+  // Ula'ula Meadow (plan 23, the wave after the loose ends): drawn by hand, our words. A field of red flowers west of Route
+  // 16, where Oricorio dance in their Baile Style; Route 17 leaves it north
+  "area": "ulaula_meadow",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "kalena": {
+      "name": "Kalena",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kalena: The Oricorio here dance with fire. My Pokémon battle with it!",
+        "dialogueAfter": "Ace Trainer Kalena: I got burned. Not literally. Mostly."
+      }
+    },
+    "liko": {
+      "name": "Liko",
+      "npcType": "youngster",
+      "trainer": {
+        "dialogueBefore": "Youngster Liko: I'm looking for a red Oricorio. You're not one, but you'll do!",
+        "dialogueAfter": "Youngster Liko: Back to looking for Oricorio."
+      }
+    },
+    "dancer": { "name": "Dancer", "npcType": "beauty", "script": "Dancer", "still": true }
+  },
+  "signs": {
+    "MeadowSign": "Ula'ula Meadow\nEast: Route 16\nNorth: Route 17"
+  }
+}

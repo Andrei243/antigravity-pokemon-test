@@ -1,7 +1,9 @@
 {
   // Route 17, the snowfield (plan 23 · Z4): drawn by hand, our words. East from Dendemille Town across deep snow and
-  // snowy grass to Anistar City. X and Y have the player ride a Mamoswine through the drifts; here the snow is walked
-  // (docs/mechanics/rulings.md, "The mountain, Team Flare and the League, drawn by hand"). It plays Route 2's song until
+  // snowy grass to Anistar City. Since Kalos's Mamoswine ride (docs/mechanics/rulings.md, "Kalos's Gyms, its water and
+  // the Mamoswine ride") three bands of drift cross it from edge to edge, as X and Y's Mamoswine Road is drifted, and
+  // only a ridden Pokémon gets through them: a Mamoswine waits at each end and in each clearing between (kalos_route_17.txt's
+  // Mamoswine, RidePager.LentRides), and the ride ends as the player leaves the route. It plays Route 2's song until
   // plan 31 writes it its own
   "area": "kalos_route_17",
   "bgmTrack": "kalos/route2",
@@ -27,5 +29,11 @@
   },
   "signs": {
     "RouteSign": "Route 17\nWest: Dendemille Town\nEast: Anistar City"
-  }
+  },
+  "npcs": [
+    { "id": "mamoswine_west", "name": "Mamoswine", "npcType": "Pokemon", "species": "Mamoswine", "x": 532, "y": 204, "facing": "Right", "script": "Mamoswine" },
+    { "id": "mamoswine_first", "name": "Mamoswine", "npcType": "Pokemon", "species": "Mamoswine", "x": 546, "y": 204, "facing": "Down", "script": "Mamoswine" },
+    { "id": "mamoswine_second", "name": "Mamoswine", "npcType": "Pokemon", "species": "Mamoswine", "x": 568, "y": 209, "facing": "Down", "script": "Mamoswine" },
+    { "id": "mamoswine_east", "name": "Mamoswine", "npcType": "Pokemon", "species": "Mamoswine", "x": 594, "y": 209, "facing": "Left", "script": "Mamoswine" }
+  ]
 }

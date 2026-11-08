@@ -352,7 +352,7 @@ public sealed class ScriptLibrary
                     case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
-                    case Op.RidePokemon when i.Option && Overworld.RidePager.LandRideOf(i.Name) == null:
+                    case Op.RidePokemon when i.Option && Overworld.RidePager.SpeciesOf(i.Name) == null:
                         Wrong(i, $"the Ride Pager has no ride on land '{i.Name}'");
                         break;
                     case Op.GivePokemon when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:
@@ -443,6 +443,77 @@ public sealed class ScriptLibrary
             }
         }
         return problems;
+    }
+
+    /// <summary>
+    /// What is wrong with the open world's places in the scripts (plan 32 · OW5), a line each as <see cref="Problems"/>
+    /// writes them: in a file of an open map's place, a grid form that names a tile (<c>walk</c>, <c>move</c>,
+    /// <c>place</c>, <c>camera pan</c>, <c>camera path</c>) and a marker the place's map lacks; in a file of a grid
+    /// place, an open form (<c>walkto</c>, <c>placeat</c>, <c>faceto</c>, <c>camera look</c>), whose markers a grid map
+    /// hasn't; and anywhere, a <c>warpto</c> to no open map or to a marker it lacks, and a <c>warp</c> to an open map,
+    /// which is gone to by a marker. <paramref name="markersOfPlace"/> gives the markers of the map a file's place is
+    /// in, null for a file of no open place; <paramref name="markersOfOpenMap"/> an open map's by its name, null for a
+    /// name that is none. <c>common</c> is any place's, so only its warps are held.
+    /// </summary>
+    public List<string> OpenProblems(Func<string, IReadOnlyCollection<string>?> markersOfPlace, Func<string, IReadOnlyCollection<string>?> markersOfOpenMap)
+    {
+        var problems = new List<string>();
+        foreach (var script in All.OrderBy(s => s.FullName, StringComparer.Ordinal))
+        {
+            void Wrong(Instruction at, string what) => problems.Add($"{script.File}.txt({at.Line}): {what}.");
+            var markers = markersOfPlace(script.File);
+            bool common = script.File == Common;
+            foreach (var i in script.Everything())
+            {
+                switch (i.Op)
+                {
+                    case Op.WarpTo when markersOfOpenMap(i.Name) is null:
+                        Wrong(i, $"warpto goes to '{i.Name}', which is no open map");
+                        break;
+                    case Op.WarpTo when !markersOfOpenMap(i.Name)!.Contains(i.Other):
+                        Wrong(i, $"warpto goes to the marker '{i.Other}', which {i.Name} hasn't");
+                        break;
+                    case Op.Warp when markersOfOpenMap(i.Name) != null:
+                        Wrong(i, $"'{i.Name}' is an open map, gone to by a marker: warpto \"{i.Name}\" <marker>");
+                        break;
+                }
+                if (common) continue;
+                if (markers == null)
+                {
+                    if (i.Op is Op.WalkTo or Op.PlaceAt or Op.FaceTo or Op.LookAt)
+                        Wrong(i, $"'{Verb(i)}' names a marker of an open map, and {script.File} is a grid place: its forms name tiles");
+                    continue;
+                }
+                switch (i.Op)
+                {
+                    case Op.Walk or Op.Move:
+                        Wrong(i, $"'{(i.Op == Op.Walk ? "walk" : "move")}' takes steps of tiles, and {script.File} is a place of an open map: walkto <who> <marker>");
+                        break;
+                    case Op.Place:
+                        Wrong(i, $"'place' names a tile, and {script.File} is a place of an open map: placeat <who> <marker>");
+                        break;
+                    case Op.Camera when i.Camera is CameraMove.Pan or CameraMove.Path:
+                        Wrong(i, $"'camera {i.Camera.ToString().ToLowerInvariant()}' names tiles, and {script.File} is a place of an open map: camera look <marker>");
+                        break;
+                    case Op.WalkTo or Op.PlaceAt when !markers.Contains(i.Other):
+                    case Op.FaceTo when i.Other != "player" && !markers.Contains(i.Other):
+                        Wrong(i, $"'{Verb(i)}' names the marker '{i.Other}', which the open map of {script.File} hasn't");
+                        break;
+                    case Op.LookAt when !markers.Contains(i.Name):
+                        Wrong(i, $"'camera look' names the marker '{i.Name}', which the open map of {script.File} hasn't");
+                        break;
+                }
+            }
+        }
+        return problems;
+
+        static string Verb(Instruction i) => i.Op switch
+        {
+            Op.WalkTo => "walkto",
+            Op.PlaceAt => "placeat",
+            Op.FaceTo => "faceto",
+            _ => "camera look"
+        };
     }
 
     /// <summary>

@@ -1,0 +1,27 @@
+# The Ruins of Abundance at the head of Haina Desert, Tapu Bulu's shrine. After the Hall of Fame the guardian answers the champion: battled at 60 (FLAG_ALOLA_TAPU_BULU_DONE), met after its beat as plan 29 asks (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+script TapuBulu
+  face self player
+  speaker none
+  scene "Tapu Bulu rises"
+  letterbox on 0.4
+  camera pan 5 4 1.2
+  camera zoom 1.4 0.8
+  effect burst 5 4 wait
+  cry "Tapu Bulu"
+  seen "Tapu Bulu"
+  text "The ground shook. Vines crept over the stones, and Tapu Bulu stood among them with its horns raised!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  if flag AlolaHallOfFame goto Fight
+  text "It snorted once, and the vines drew back. It wasn't ready to answer yet."
+  end
+label Fight
+  wildbattle "Tapu Bulu" 60 nofleeing
+  setflag FLAG_ALOLA_TAPU_BULU_DONE
+  hide self
+  end
+

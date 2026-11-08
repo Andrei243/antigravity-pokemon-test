@@ -1,16 +1,16 @@
 {
   "map": [
     "                             ",
-    "        .....                ",
-    "       ......          .T.   ",
-    "       ....            TTT   ",
-    "       ....            ..... ",
-    "      ...TTT     ...   ..... ",
-    "                 ......TT... ",
-    "                 ......TT..  ",
-    "                 ......      ",
-    "                 ...         ",
-    "                 .TT         ",
+    "       ......                ",
+    "       ........        .T.   ",
+    "       ....  ..      ..TTT   ",
+    "       ....  ..      ....... ",
+    "      ...TTT     ... ....... ",
+    "                 ......TT....",
+    "                 ......TT....",
+    "                 ............",
+    "                 ...   ..~~. ",
+    "                 .TT..       ",
     "                 ~~~~~~~~~~~~",
     "                             ",
     "                          ...",
@@ -422,6 +422,44 @@
       ]
     },
     {
+      "key": "haina_desert",
+      "name": "Haina Desert",
+      "cells": "27,6 28,6 26,7 27,7 28,7 28,8",
+      "morning": [
+        "Dugtrio",
+        "Trapinch",
+        "Sandile",
+        "Krokorok",
+        "Gabite",
+        "Gible",
+        "Sandshrew",
+        "Cacnea",
+        "Vibrava"
+      ],
+      "day": [
+        "Dugtrio",
+        "Trapinch",
+        "Sandile",
+        "Krokorok",
+        "Gabite",
+        "Gible",
+        "Sandshrew",
+        "Cacnea",
+        "Vibrava"
+      ],
+      "night": [
+        "Dugtrio",
+        "Trapinch",
+        "Sandile",
+        "Krokorok",
+        "Gabite",
+        "Gible",
+        "Sandshrew",
+        "Cacnea",
+        "Vibrava"
+      ]
+    },
+    {
       "key": "hano_beach",
       "name": "Hano Beach",
       "cells": "24,20 25,20",
@@ -434,6 +472,45 @@
         "Pyukumuku",
         "Wishiwashi",
         "Mantyke"
+      ]
+    },
+    {
+      "key": "kalae_bay",
+      "name": "Kala'e Bay",
+      "cells": "13,2 14,2 13,3 14,3 13,4 14,4",
+      "morning": [
+        "Yungoos",
+        "Slowpoke",
+        "Wingull",
+        "Bagon",
+        "Pikipek",
+        "Smeargle",
+        "Rattata"
+      ],
+      "day": [
+        "Yungoos",
+        "Slowpoke",
+        "Wingull",
+        "Bagon",
+        "Pikipek",
+        "Smeargle",
+        "Rattata"
+      ],
+      "night": [
+        "Yungoos",
+        "Slowpoke",
+        "Wingull",
+        "Bagon",
+        "Pikipek",
+        "Smeargle",
+        "Rattata"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Finneon",
+        "Wishiwashi",
+        "Pelipper"
       ]
     },
     {
@@ -454,7 +531,7 @@
     {
       "key": "lanakila_foot",
       "name": "Foot of Mount Lanakila",
-      "cells": "25,4 26,4 27,4 25,5 26,5 27,5 26,6 27,6",
+      "cells": "25,4 26,4 27,4 25,5 26,5 27,5 26,6",
       "morning": [
         "Sneasel",
         "Beartic",
@@ -516,7 +593,7 @@
     {
       "key": "mahalo_trail",
       "name": "Mahalo Trail",
-      "cells": "7,2",
+      "cells": "7,1 7,2",
       "morning": [
         "Pikipek",
         "Yungoos",
@@ -534,6 +611,48 @@
         "Yungoos",
         "Caterpie",
         "Ledyba"
+      ]
+    },
+    {
+      "key": "malie_garden",
+      "name": "Malie Garden",
+      "cells": "20,10 21,10 20,11 21,11",
+      "morning": [
+        "Meowth",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Petilil",
+        "Psyduck",
+        "Poliwhirl",
+        "Ledyba"
+      ],
+      "day": [
+        "Meowth",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Petilil",
+        "Psyduck",
+        "Poliwhirl",
+        "Ledyba"
+      ],
+      "night": [
+        "Meowth",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Petilil",
+        "Psyduck",
+        "Poliwhirl",
+        "Ledyba"
+      ],
+      "surf": [
+        "Psyduck",
+        "Poliwag",
+        "Goldeen",
+        "Magikarp",
+        "Poliwhirl"
       ]
     },
     {
@@ -756,6 +875,37 @@
       ]
     },
     {
+      "key": "seaward_cave",
+      "name": "Seaward Cave",
+      "cells": "11,2",
+      "morning": [
+        "Zubat",
+        "Psyduck",
+        "Seel",
+        "Delibird",
+        "Diglett"
+      ],
+      "day": [
+        "Zubat",
+        "Psyduck",
+        "Seel",
+        "Delibird",
+        "Diglett"
+      ],
+      "night": [
+        "Zubat",
+        "Psyduck",
+        "Seel",
+        "Delibird",
+        "Diglett"
+      ],
+      "surf": [
+        "Psyduck",
+        "Seel",
+        "Zubat"
+      ]
+    },
+    {
       "key": "ten_carat_hill",
       "name": "Ten Carat Hill",
       "cells": "6,5",
@@ -782,6 +932,47 @@
         "Machop",
         "Rockruff",
         "Spinda"
+      ]
+    },
+    {
+      "key": "ulaula_meadow",
+      "name": "Ula'ula Meadow",
+      "cells": "21,5 22,5 23,5",
+      "morning": [
+        "Oricorio",
+        "Cutiefly",
+        "Ribombee",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Whimsicott",
+        "Petilil",
+        "Lilligant",
+        "Comfey"
+      ],
+      "day": [
+        "Oricorio",
+        "Cutiefly",
+        "Ribombee",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Whimsicott",
+        "Petilil",
+        "Lilligant",
+        "Comfey"
+      ],
+      "night": [
+        "Oricorio",
+        "Cutiefly",
+        "Ribombee",
+        "Ledian",
+        "Ariados",
+        "Cottonee",
+        "Whimsicott",
+        "Petilil",
+        "Lilligant",
+        "Comfey"
       ]
     },
     {
@@ -855,7 +1046,7 @@
     {
       "key": "ulaula_route_13",
       "name": "Route 13",
-      "cells": "25,6 25,7 26,7",
+      "cells": "25,6 25,7",
       "morning": [
         "Skarmory",
         "Trumbeak",
@@ -882,9 +1073,99 @@
       ]
     },
     {
+      "key": "ulaula_route_14",
+      "name": "Route 14",
+      "cells": "23,8 24,8 23,9 24,9",
+      "morning": [
+        "Wingull",
+        "Pelipper",
+        "Slowpoke",
+        "Sandygast",
+        "Pyukumuku",
+        "Crabrawler",
+        "Shellos",
+        "Gastrodon"
+      ],
+      "day": [
+        "Wingull",
+        "Pelipper",
+        "Slowpoke",
+        "Sandygast",
+        "Pyukumuku",
+        "Crabrawler",
+        "Shellos",
+        "Gastrodon"
+      ],
+      "night": [
+        "Wingull",
+        "Pelipper",
+        "Slowpoke",
+        "Sandygast",
+        "Pyukumuku",
+        "Crabrawler",
+        "Shellos",
+        "Gastrodon"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Pelipper",
+        "Finneon",
+        "Lumineon"
+      ]
+    },
+    {
+      "key": "ulaula_route_15",
+      "name": "Route 15",
+      "cells": "25,8 26,8 27,8 25,9 26,9 27,9",
+      "morning": [
+        "Pelipper",
+        "Wingull",
+        "Slowpoke",
+        "Trumbeak",
+        "Gumshoos",
+        "Raticate",
+        "Fearow",
+        "Spearow",
+        "Dartrix",
+        "Bagon"
+      ],
+      "day": [
+        "Pelipper",
+        "Wingull",
+        "Slowpoke",
+        "Trumbeak",
+        "Gumshoos",
+        "Raticate",
+        "Fearow",
+        "Spearow",
+        "Dartrix",
+        "Bagon"
+      ],
+      "night": [
+        "Pelipper",
+        "Wingull",
+        "Slowpoke",
+        "Trumbeak",
+        "Gumshoos",
+        "Raticate",
+        "Fearow",
+        "Spearow",
+        "Dartrix",
+        "Bagon"
+      ],
+      "surf": [
+        "Tentacool",
+        "Pelipper",
+        "Mantyke",
+        "Mantine",
+        "Finneon"
+      ]
+    },
+    {
       "key": "ulaula_route_16",
       "name": "Route 16",
-      "cells": "23,4 24,4 23,5 24,5",
+      "cells": "23,4 24,4 24,5",
       "morning": [
         "Grimer",
         "Salandit",
@@ -911,6 +1192,50 @@
         "Houndour",
         "Murkrow",
         "Pancham"
+      ]
+    },
+    {
+      "key": "ulaula_route_17",
+      "name": "Route 17",
+      "cells": "21,3 22,3 21,4 22,4",
+      "morning": [
+        "Raticate",
+        "Gumshoos",
+        "Fearow",
+        "Pancham",
+        "Pangoro",
+        "Murkrow",
+        "Trubbish",
+        "Sableye",
+        "Golbat",
+        "Grimer",
+        "Absol"
+      ],
+      "day": [
+        "Raticate",
+        "Gumshoos",
+        "Fearow",
+        "Pancham",
+        "Pangoro",
+        "Murkrow",
+        "Trubbish",
+        "Sableye",
+        "Golbat",
+        "Grimer",
+        "Absol"
+      ],
+      "night": [
+        "Raticate",
+        "Gumshoos",
+        "Fearow",
+        "Pancham",
+        "Pangoro",
+        "Murkrow",
+        "Trubbish",
+        "Sableye",
+        "Golbat",
+        "Grimer",
+        "Absol"
       ]
     },
     {

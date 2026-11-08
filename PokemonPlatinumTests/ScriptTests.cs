@@ -816,6 +816,11 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          walkto player cavern_east fast
+          placeat player tunnel_west
+          faceto player cavern_middle
+          warpto "OpenLab" hill_foot
+          camera look cavern_middle nowait
         script Other
           end
         """;

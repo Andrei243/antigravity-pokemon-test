@@ -18,7 +18,7 @@ namespace PokemonPlatinumEngine.Story;
 /// whole chapter's, to the end and then looks at the flags, the bag and the team; and with
 /// <see cref="ShowsNothing"/> it is where a script that may only set things up is run for a new game.
 /// </summary>
-public sealed class HeadlessScriptHost : IScriptHost
+public sealed partial class HeadlessScriptHost : IScriptHost
 {
     public StoryState Story { get; }
     public Party Party { get; }
@@ -1657,12 +1657,14 @@ public sealed class HeadlessScriptHost : IScriptHost
             return true;
         }
         var region = RegionDatabase.Get(Region);
-        if (region == null || !RidePager.CanRide(species, Story, region) || Map?.IsIndoors == true || PlayerMode is not (TravelMode.OnFoot or TravelMode.Riding))
+        // (a lent ride, Kalos's Mamoswine, is got on only in the area that lends it: plan 23)
+        string? area = Map?.AreaAt(PlayerTile.X, PlayerTile.Y)?.Key;
+        if (region == null || !RidePager.CanRide(species, Story, region, area) || Map?.IsIndoors == true || PlayerMode is not (TravelMode.OnFoot or TravelMode.Riding))
         {
             Log.Add("ride refused " + species);
             return false;
         }
-        Riding = RidePager.LandRideOf(species)!.Value.Species;
+        Riding = RidePager.SpeciesOf(species)!;
         PlayerMode = TravelMode.Riding;
         Log.Add("ride " + Riding);
         return true;

@@ -9,9 +9,9 @@
   "architecture": "Islander",
   "doors": [
     { "warp": 0, "map": "PaniolaTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
-    { "warp": 2, "map": "PaniolaTown_House", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "PaniolaTown_House", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "PaniolaTown_KiawesHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 1 ],
   "triggers": [
     { "script": "HauInPaniola", "x": 148, "z": 238, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 14 }
   ],

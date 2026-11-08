@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1503 | 1460 | 43 | 1 | 0 |
-| Scripts (`script:`) | 11495 | 11006 | 489 | 17 | 0 |
-| People of the world (`world:`) | 7930 | 7868 | 62 | 4 | 0 |
-| **All** | 21162 | 20565 | 597 | 22 | 0 |
+| People of the hand-made maps (`map:`) | 1516 | 1473 | 43 | 1 | 0 |
+| Scripts (`script:`) | 11597 | 11107 | 490 | 17 | 0 |
+| People of the world (`world:`) | 7980 | 7918 | 62 | 4 | 0 |
+| **All** | 21327 | 20729 | 598 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 251 |
-| a question's answers | 854 |
-| a sign | 1736 |
-| the game's own voice (speaker none) | 287 |
-| the game's own voice (text) | 1857 |
+| a question's answers | 868 |
+| a sign | 1743 |
+| the game's own voice (speaker none) | 289 |
+| the game's own voice (text) | 1883 |
 
 ## The cast
 
-- Named characters: 473 voices (372 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 486 voices (385 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
-- Archetypes in use: 241, with 728 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1943.
+- Archetypes in use: 239, with 722 voices to cast (V5).
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1952.
 
 ## Lines by voice
 
@@ -40,28 +40,28 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1943 | 142 |
-| `look:gentleman (any)` | 745 | 15 |
+| `@self` | 1952 | 142 |
+| `look:gentleman (any)` | 747 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
-| `look:lady (any)` | 449 | 1 |
-| `look:clerk (any)` | 439 | 11 |
-| `look:youngster (any)` | 418 | 22 |
-| `look:lass (any)` | 347 | 11 |
+| `look:clerk (any)` | 442 | 11 |
+| `look:lady (any)` | 442 | 1 |
+| `look:youngster (any)` | 419 | 22 |
+| `look:lass (any)` | 348 | 11 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 258 | 0 |
-| `look:scientist (any)` | 237 | 6 |
-| `look:receptionist (any)` | 222 | 25 |
-| `look:gym_guide (any)` | 216 | 1 |
-| `class:ace_trainer (any)` | 192 | 0 |
-| `class:hiker (any)` | 192 | 0 |
-| `class:fisherman (any)` | 172 | 0 |
+| `look:scientist (any)` | 236 | 6 |
+| `look:receptionist (any)` | 224 | 25 |
+| `look:gym_guide (any)` | 218 | 1 |
+| `class:ace_trainer (any)` | 198 | 0 |
+| `class:hiker (any)` | 194 | 0 |
+| `class:fisherman (any)` | 174 | 0 |
 | `cynthia` | 170 | 2 |
 | `look:sailor (any)` | 166 | 0 |
-| `look:old_man (any)` | 157 | 4 |
-| `class:youngster (any)` | 156 | 0 |
+| `class:youngster (any)` | 158 | 0 |
+| `look:old_man (any)` | 158 | 4 |
+| `class:lass (any)` | 150 | 0 |
 | `rowan` | 147 | 12 |
-| `class:lass (any)` | 146 | 0 |
 | `class:picnicker (any)` | 134 | 0 |
 | `look:woman (any)` | 133 | 14 |
 | `class:team_rocket (any)` | 132 | 0 |
@@ -81,21 +81,21 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `bianca` | 99 | 3 |
 | `black_belt` | 99 | 14 |
 | `cyrus` | 92 | 7 |
+| `look:hiker (any)` | 91 | 0 |
 | `steven` | 91 | 1 |
-| `look:fisherman (any)` | 90 | 4 |
-| `look:hiker (any)` | 90 | 0 |
 | `prof_oak` | 90 | 3 |
+| `look:fisherman (any)` | 89 | 4 |
 | `class:bug_catcher (any)` | 88 | 0 |
 | `ace_trainer` | 84 | 0 |
 | `class:bird_keeper (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
+| `class:swimmer (any)` | 84 | 0 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `class:twins (any)` | 82 | 0 |
-| `class:swimmer (any)` | 78 | 0 |
 | `class:camper (any)` | 76 | 0 |
+| `class:veteran (any)` | 72 | 0 |
 | `look:girl (any)` | 71 | 0 |
 | `class:pokémon_ranger (any)` | 70 | 0 |
-| `class:veteran (any)` | 70 | 0 |
 | `prof_juniper` | 67 | 0 |
 | `lance` | 65 | 0 |
 | `class:backpacker (any)` | 64 | 0 |
@@ -109,22 +109,22 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_kukui` | 61 | 1 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `artist` | 59 | 1 |
+| `officer` | 57 | 5 |
 | `cheren` | 56 | 1 |
 | `archie` | 55 | 3 |
 | `elder` | 55 | 0 |
 | `bill` | 53 | 2 |
-| `officer` | 51 | 5 |
-| `class:beauty (any)` | 50 | 0 |
+| `class:beauty (any)` | 52 | 0 |
 | `class:young_couple (any)` | 50 | 0 |
 | `crasher_wake` | 49 | 1 |
 | `depot_agent` | 49 | 3 |
 | `drayden` | 49 | 0 |
 | `clair` | 48 | 4 |
 | `maxie` | 48 | 1 |
+| `class:gentleman (any)` | 46 | 0 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
 | `owner` | 45 | 5 |
-| `class:gentleman (any)` | 44 | 0 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `flint` | 44 | 1 |
@@ -136,14 +136,15 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `buck` | 42 | 1 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
-| `look:pokefan_f (any)` | 41 | 0 |
 | `prof_sycamore` | 41 | 1 |
 | `rood` | 41 | 0 |
 | `look:host (any)` | 40 | 16 |
+| `look:pokefan_f (any)` | 40 | 0 |
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
 | `iris` | 39 | 0 |
 | `look:pokefan_m (any)` | 39 | 0 |
+| `class:ruin_maniac (any)` | 38 | 0 |
 | `jupiter` | 38 | 0 |
 | `prof_birch` | 38 | 3 |
 | `wally` | 38 | 0 |
@@ -151,7 +152,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `maylene` | 37 | 1 |
 | `school_kid` | 37 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
-| `class:ruin_maniac (any)` | 36 | 0 |
+| `class:pokémon_breeder (any)` | 36 | 0 |
 | `class:school_kid (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `roark` | 36 | 0 |
@@ -159,7 +160,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `gardenia` | 35 | 0 |
 | `kurt` | 35 | 6 |
 | `candice` | 34 | 0 |
-| `class:pokémon_breeder (any)` | 34 | 0 |
 | `look:twin (any)` | 34 | 0 |
 | `mars` | 34 | 0 |
 | `mr_briney` | 34 | 1 |
@@ -250,6 +250,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:pokemon_breeder_m (any)` | 21 | 0 |
 | `manager` | 21 | 0 |
 | `tierno` | 21 | 0 |
+| `assistant_2` | 20 | 1 |
 | `class:double_team (any)` | 20 | 0 |
 | `class:sis_and_bro (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |

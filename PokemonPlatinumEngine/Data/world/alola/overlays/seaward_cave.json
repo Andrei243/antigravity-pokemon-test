@@ -1,0 +1,15 @@
+{
+  // Seaward Cave, Melemele Island (plan 23, the wave after the loose ends): a cave of its own, drawn by hand
+  // (tools/MapDraw/alola/seaward_cave.txt), our words. A tunnel round a cold pool under the island's north shore, from a
+  // hole in Melemele Meadow's south-west corner to Kala'e Bay
+  "area": "seaward_cave",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "people": {
+    "swimmer": {
+      "name": "Swimmer",
+      "npcType": "swimmer_m",
+      "dialog": [ "The pool in here is cold enough to make a Seel shiver. It's lovely. You should try it." ]
+    }
+  }
+}

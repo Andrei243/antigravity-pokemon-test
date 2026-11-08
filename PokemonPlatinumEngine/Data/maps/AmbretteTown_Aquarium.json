@@ -109,7 +109,8 @@
       "facing": "Down",
       "dialog": [
         "Welcome to the Ambrette Aquarium! The big tanks are being rebuilt, so today there are only the tide pools. They're the best part anyway."
-      ]
+      ],
+      "script": "OldRod"
     }
   ],
   "wildEncounters": []

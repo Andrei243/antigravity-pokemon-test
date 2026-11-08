@@ -1,0 +1,10 @@
+# Royal Avenue's Megamart (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Clerk
+  speaker "Clerk"
+  say "Welcome to the Megamart! We stock what the Pokémon Centers' counters don't."
+  shop "royal_megamart"
+  end

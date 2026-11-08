@@ -1,0 +1,41 @@
+{
+  // Route 17, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. A wet road north out of
+  // Ula'ula Meadow under Po Town's endless rain to the island's police station, where the kahuna Nanu keeps his Meowth.
+  // In our drawing Po Town's gate is on Route 16, so this road ends at the station
+  "area": "ulaula_route_17",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "doors": [
+    { "warp": 0, "map": "UlaulaRoute17_PoliceStation", "x": 4, "y": 8, "facing": "Up" }
+  ],
+  "people": {
+    "grunt_17a": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: Yo! The cops' station is right there, and they don't do nothin'. So I'll do somethin'!",
+        "dialogueAfter": "Team Skull Grunt: Okay, okay! I'll do nothin' too."
+      }
+    },
+    "grunt_17b": {
+      "name": "Grunt",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: This rain ruins my hair. You're gonna pay for it in battle!",
+        "dialogueAfter": "Team Skull Grunt: My hair AND my pride. Brutal."
+      }
+    },
+    "kona": {
+      "name": "Kona",
+      "npcType": "veteran",
+      "trainer": {
+        "dialogueBefore": "Veteran Kona: I've walked this road in worse rain than this. Show me what you've got!",
+        "dialogueAfter": "Veteran Kona: Ha! Now that's a storm."
+      }
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 17\nSouth: Ula'ula Meadow\nNorth: the police station"
+  }
+}
