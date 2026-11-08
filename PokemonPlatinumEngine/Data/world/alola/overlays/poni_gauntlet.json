@@ -6,6 +6,8 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
+  // The Battle Tree's doors, shut until a later session builds it
+  "locked": [ 0 ],
   "people": {
     "mikala": {
       "name": "Mikala",

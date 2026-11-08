@@ -8,6 +8,8 @@
   "trees": "Round",
   "architecture": "Islander",
   "evolutionSites": [ "Magnetic Field" ],
+  // The geothermal power plant's doors, shut to visitors
+  "locked": [ 0 ],
   "people": {
     "pono": { "name": "Plant Worker", "npcType": "scientist", "script": "PlantWorker", "still": true },
     "pekelo": {

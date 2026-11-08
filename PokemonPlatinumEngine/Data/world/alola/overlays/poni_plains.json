@@ -11,7 +11,7 @@
       "npcType": "rancher",
       "trainer": {
         "dialogueBefore": "Rancher Keoni: Nobody fences the plains. The herds go where they like, and so do I.",
-        "dialogueAfter": "Rancher Keoni: Off you go, then. Mind the Tauros."
+        "dialogueAfter": "Rancher Keoni: Off you go, then. Mind the herds."
       }
     },
     "pua": {

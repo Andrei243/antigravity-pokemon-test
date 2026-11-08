@@ -374,8 +374,8 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   Altar keeper's Cosmog after the League (Cosmoem by night is Lunala). Wild tables for the eight places (and Mount
   Lanakila's three rarest slots), the owed items and the three places of evolution: `AlolaSpeciesTests` owes Magearna and
   Marshadow alone, and its `OwedNeeds` nothing. Ula'ula Meadow's `"form": "Oricorio"` removed (the Baile Style is the
-  species' own). Area files 500 to 507, 24 trainers of ours and four rematch teams. Tests: `AlolaPoniTests`. Shots owed
-  (one harness at a time; none taken this session). **Left**: the Battle Tree, the Zygarde Cube and cells, the power plant's
+  species' own). Area files 500 to 507, 24 trainers of ours and four rematch teams. Tests: `AlolaPoniTests`. Shots: the harness's
+  `alolaponi` mode (`wp01` to `wp19`), looked at. **Left**: the Battle Tree, the Zygarde Cube and cells, the power plant's
   inside, Sharpedo's currents, Stoutland's buried items, the Secluded Shore, Big Wave Beach, Hau'oli Cemetery, Island Scan,
   the mythicals and the new places' own songs.
 

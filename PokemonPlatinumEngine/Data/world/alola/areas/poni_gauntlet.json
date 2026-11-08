@@ -14,7 +14,14 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    {
+      "x": 299,
+      "z": 18,
+      "to": "PoniGauntlet_BattleTree",
+      "toWarp": 0
+    }
+  ],
   "objects": [
     {
       "id": "mikala",

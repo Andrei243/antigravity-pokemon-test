@@ -70,6 +70,10 @@
       "note": "first spoken at fuchsia_gym.txt(79)",
       "provisional": true
     },
+    "altar_keeper": {
+      "note": "first spoken at poni_altar.txt(167)",
+      "provisional": true
+    },
     "ampere": {
       "note": "first spoken at nimbasa_city_gym.txt(74)",
       "provisional": true
@@ -2196,6 +2200,10 @@
       "note": "first spoken at lumiose_city.txt(204)",
       "provisional": true
     },
+    "plant_worker": {
+      "note": "first spoken at blush_mountain.txt(7)",
+      "provisional": true
+    },
     "plumeria": {
       "note": "first spoken at po_town.txt(13)",
       "provisional": true
@@ -2349,6 +2357,10 @@
     },
     "rancher_moke": {
       "note": "first spoken at tapu_village.txt(34)",
+      "provisional": true
+    },
+    "ranger": {
+      "note": "first spoken at poni_grove.txt(12)",
       "provisional": true
     },
     "red": {
@@ -3184,6 +3196,7 @@
     "Alder": "alder",
     "Aliana": "aliana",
     "Alice": "alice",
+    "Altar Keeper": "altar_keeper",
     "Ampère": "ampere",
     "Anatole": "anatole",
     "Announcer": "look:announcer",
@@ -3534,6 +3547,7 @@
     "Pikachu": "pikachu",
     "Pilot": "pilot",
     "Pip": "pip",
+    "Plant Worker": "plant_worker",
     "Plumeria": "plumeria",
     "Pokémon Ranger": "pokemon_ranger",
     "Policeman": "policeman",
@@ -3562,6 +3576,7 @@
     "Ramon": "ramon",
     "Ramos": "ramos",
     "Rancher Moke": "rancher_moke",
+    "Ranger": "ranger",
     "Receptionist": "look:receptionist",
     "Red": "red",
     "Referee": "referee",

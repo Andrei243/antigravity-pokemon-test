@@ -53,8 +53,9 @@ public class AlolaRestTests
         var world = LoadedWorld.Value;
         var shut = world.Index.Areas.Where(k => world.Overlay(k)?.Locked is { Count: > 0 })
             .SelectMany(k => world.Overlay(k)!.Locked!.Select(w => (k, w))).ToList();
-        // (Ultra Megalopolis's houses other than Megalo Tower stay shut: the city is no place to visit door to door)
-        Assert.True(shut.All(s => s.Item1 == "ultra_megalopolis"), string.Join(", ", shut));
+        // (Ultra Megalopolis's houses other than Megalo Tower stay shut: the city is no place to visit door to door; and since
+        // the wave after Ultra Space the Battle Tree's doors at Poni Gauntlet's head and Blush Mountain's power plant's)
+        Assert.True(shut.All(s => s.Item1 is "ultra_megalopolis" or "poni_gauntlet" or "blush_mountain"), string.Join(", ", shut));
     }
 
     private sealed class Game

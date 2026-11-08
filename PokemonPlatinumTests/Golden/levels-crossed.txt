@@ -1472,11 +1472,13 @@ kalos_wulfric_1 202 (59) [Abomasnow → Glaciarbor, Cryogonal → Cryohedron, Av
 levels 2 → 205, 58 → 224, 70 → 238
 caps 209 213 218 223 224 (own 15 27 39 54 58)
 alola_acerola_league 223 (56) [Sableye → Gemwraith, Drifblim → Dirigeist, Dhelmise → Galleonghast, Froslass → Frostbride, Palossand → Sandcitadel, Mimikyu → Masqueradoll]
+alola_acerola_rematch 233 (66) [Sableye → Gemwraith, Drifblim → Dirigeist, Dhelmise → Galleonghast, Froslass → Frostbride, Palossand → Sandcitadel, Mimikyu → Masqueradoll]
 alola_gladion_1 210 (18) [Zubat → Crobat, Type: Null → Silvally]
 alola_grunt_marina 207 (8) [Zubat → Crobat]
 alola_guzma_1 217 (36) [Ariados → Orbweavix, Masquerain → Ocellwing]
 alola_hala_1 209 (15) [Mankey → Annihilape, Makuhita → Yokozan, Crabrawler → Crabominable]
 alola_hala_league 223 (56) [Hariyama → Yokozan, Primeape → Annihilape, Bewear → Huggrizzle, Crabominable → Glacipincer]
+alola_hala_rematch 233 (66) [Hariyama → Yokozan, Primeape → Annihilape, Hawlucha → Luchacondor, Bewear → Huggrizzle, Crabominable → Glacipincer]
 alola_hapu_1 221 (49) [Gastrodon → Gastromire, Mudsdale → Claysteed]
 alola_hau_1 206 (5) [Litten → Incineroar]
 alola_hau_2 206 (5) [Popplio → Primarina]
@@ -1498,6 +1500,7 @@ alola_hau_royal_2 211 (21) [Pikachu → Raichu, Brionne → Primarina]
 alola_hau_royal_3 211 (21) [Pikachu → Raichu, Dartrix → Decidueye]
 alola_ilima_1 208 (10) [Yungoos → Gumshoos, Smeargle → Muralist]
 alola_kahili_league 223 (56) [Skarmory → Rapierwing, Mandibuzz → Carrionqueen]
+alola_kahili_rematch 233 (66) [Skarmory → Rapierwing, Mandibuzz → Carrionqueen, Braviary → Imperavia]
 alola_kukui_1 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
 alola_kukui_2 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
 alola_kukui_3 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
@@ -1507,6 +1510,7 @@ alola_manor_grunt_2 215 (30) [Golbat → Crobat, Haunter → Gengar]
 alola_nanu_1 218 (39) [Sableye → Gemwraith, Krokorok → Krookodile]
 alola_olivia_1 213 (27) [Nosepass → Lodestarch, Boldore → Gigalith]
 alola_olivia_league 223 (56) [Relicanth → Aeonfin, Carbink → Druzarion, Lycanroc → Lupinacle, Probopass → Lodestarch]
+alola_olivia_rematch 233 (66) [Relicanth → Aeonfin, Carbink → Druzarion, Probopass → Lodestarch, Lycanroc → Lupinacle]
 alola_plumeria_1 216 (34) [Golbat → Crobat, Skuntank → Mephitarch, Salazzle → Smolderess]
 alola_team_skull_grunt_motel 210 (18) [Zubat → Crobat, Salandit → Salazzle]
 === AnistarCity_Gym
@@ -1699,6 +1703,10 @@ super rod 129 (own 40)
 === blackthorn_gym
 Blackthorn City, Johto
 trainers 5, 126-128 (own 35-38): johto_ace_trainer_f_fran 128 (38) [Seadra → Kingdra], johto_ace_trainer_f_lola 127 (37) [Dratini → Dragonite, Dragonair → Dragonite], johto_ace_trainer_m_cody 127 (37) [Horsea → Kingdra, Seadra → Kingdra], johto_ace_trainer_m_mike 128 (38) [Dragonair → Dragonite], johto_ace_trainer_m_paulo 126 (35) [Dratini → Dragonite, Seadra → Kingdra, Dratini → Dragonite]
+=== blush_mountain
+Blush Mountain, Alola
+grass 212-213 (own 24-27)
+trainers 3, 213-214 (own 27-28): alola_ace_trainer_kiele 214 (28) [Skarmory → Rapierwing], alola_hiker_pekelo 214 (28) [Graveler → Golem, Mudsdale → Claysteed], alola_scientist_hoku 214 (28) [Magneton → Magnezone, Togedemaru → Rollocupine, Electabuzz → Electivire]
 === brooklet_hill
 Brooklet Hill, Alola
 grass 209-210 (own 14-16)
@@ -3101,6 +3109,36 @@ Poni Breakers, Alola
 grass 219-220 (own 43-45)
 surf 219-220 (own 43-45)
 trainers 4, 219-220 (own 43-45): alola_fisherman_nuka 219 (44) [Wailmer → Leviawhale, Mantine → Raysail, Dewgong → Glacitusk], alola_psychic_maile 220 (45) [Hypno → Mesmeryx, Slowking → Slowmonarch, Oranguru → Arborsage], alola_swimmer_kekoa 219 (44) [Brionne → Primarina], alola_veteran_loio 220 (45) [Hariyama → Yokozan]
+=== poni_coast
+Poni Coast, Alola
+grass 222-223 (own 52-56)
+surf 222-223 (own 52-55)
+old rod 221 (own 50)
+good rod 222-223 (own 52-54)
+super rod 223-224 (own 55-57)
+trainers 3, 223-224 (own 55-57): alola_ace_trainer_leia 224 (57) [Turtonator → Caldertoise, Drampa → Elderdrake, Golisopod → Shogunpod], alola_fisherman_kawika 223 (56) [Lanturn → Abyssolux, Cloyster → Clamspire, Relicanth → Aeonfin], alola_swimmer_kai 223 (55) [Sharpedo → Megalodax, Alomomola → Alomatron]
+=== poni_gauntlet
+Poni Gauntlet, Alola
+grass 223-224 (own 54-58)
+surf 222-223 (own 52-55)
+trainers 4, 223-224 (own 55-57): alola_ace_trainer_lokelani 224 (57) [Lucario → Aurasage], alola_dragon_tamer_hina 224 (57) [Dragonair → Dragonite, Sliggoo → Goodra], alola_swimmer_mikala 223 (55) [Golduck → Psyduke, Lanturn → Abyssolux], alola_veteran_manu 224 (57) [Metang → Metagross, Hariyama → Yokozan]
+=== poni_grove
+Poni Grove, Alola
+grass 222-223 (own 52-55)
+trainers 3, 222-223 (own 53-55): alola_ace_trainer_kaleo 223 (55) [Trevenant → Sylvanshade, Drifblim → Dirigeist], alola_pokemon_breeder_malia 223 (54) [Emolga → Nimbolga, Klefki → Chatelkey], alola_veteran_kalea 223 (55) [Lucario → Aurasage, Granbull → Mastiffang]
+=== poni_meadow
+Poni Meadow, Alola
+grass 221-223 (own 50-56)
+surf 221-223 (own 50-55)
+old rod 221 (own 50)
+good rod 222-223 (own 52-55)
+super rod 223-224 (own 54-58)
+trainers 2, 223 (own 54-55): alola_beauty_noelani 223 (55) [Milotic → Prismaria, Whiscash → Namazuro], alola_psychic_kapono 223 (55)
+=== poni_plains
+Poni Plains, Alola
+grass 222-223 (own 51-56)
+surf 221-223 (own 50-55)
+trainers 4, 222-223 (own 53-56): alola_ace_trainer_pua 223 (56) [Bewear → Huggrizzle, Hariyama → Yokozan], alola_backpacker_lani 223 (54) [Electabuzz → Electivire, Happiny → Blissey], alola_hiker_ikaika 223 (55) [Snorlax → Dozemount], alola_rancher_keoni 223 (56) [Tauros → Bovarch, Miltank → Pastorine, Mudsdale → Claysteed]
 === poni_wilds
 Poni Wilds, Alola
 grass 217-218 (own 38-41)
@@ -3152,6 +3190,10 @@ trainers 4, 174-175 (own 31-33): unova_backpacker_annie 174 (32) [Watchog → Be
 Relic Passage, Unova
 grass 172-173 (own 27-30)
 trainers 3, 174 (own 31-32): unova_backpacker_eileen 174 (32) [Sandslash → Sandspire], unova_backpacker_randall 174 (32) [Raticate → Ratchisel], unova_hiker_keith 174 (31) [Drilbur → Excadrill, Roggenrola → Gigalith]
+=== resolution_cave
+Resolution Cave, Alola
+grass 222-224 (own 52-58)
+trainers 2, 224-225 (own 58-59): alola_ace_trainer_ululani 225 (59), alola_veteran_kanoa 225 (59)
 === reversal_mountain
 Reversal Mountain, Unova
 grass 174-175 (own 31-34)
@@ -4354,6 +4396,10 @@ trainers 2, 214-215 (own 28-31): alola_ace_trainer_kalena 215 (31) [Ribombee →
 Route 10, Alola
 grass 210-211 (own 17-19)
 trainers 4, 210-211 (own 17-20): alola_ace_trainer_kai 211 (20) [Mankey → Annihilape, Sandile → Krookodile, Rufflet → Imperavia], alola_hiker_kalani 211 (19) [Geodude → Golem, Roggenrola → Gigalith], alola_lass_leilene 210 (18) [Fomantis → Lurantis, Cottonee → Cottonimbus], alola_youngster_makana 210 (18) [Yungoos → Inspectoose, Pikipek → Toucannon]
+=== ulaula_route_11
+Route 11, Alola
+grass 212-213 (own 23-25)
+trainers 3, 212-213 (own 24-26): alola_backpacker_kona 213 (26) [Pinsir → Mandibron], alola_lass_meli 213 (25) [Emolga → Nimbolga, Bonsly → Mimicedar], alola_youngster_kale 213 (25) [Paras → Cordyhusk, Trumbeak → Toucannon]
 === ulaula_route_12
 Route 12, Alola
 grass 211-212 (own 21-22)

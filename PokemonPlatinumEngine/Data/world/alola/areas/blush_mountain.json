@@ -14,7 +14,14 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    {
+      "x": 119,
+      "z": 147,
+      "to": "BlushMountain_PowerPlant",
+      "toWarp": 0
+    }
+  ],
   "objects": [
     {
       "id": "pono",

@@ -9614,12 +9614,13 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **What is drawn.** On Poni (matrix 11), after the League: **Poni Grove** east of Poni Wilds, its one-tile way in kept
   by a ranger until the Hall of Fame (hidden by `AlolaHallOfFame`); **Poni Plains** north-east of it; **Poni Gauntlet** up
   the island's east edge from the plains, over rough ground, a lake crossed by Surf and a pass in the cliffs to the
-  **Battle Tree**, whose doors stay shut (a building with no warp: the Battle Tree is a later session's); **Poni Meadow**
+  **Battle Tree**, whose doors stay shut (a door `locked` in the overlay, as Ultra Megalopolis's houses are: the Battle Tree is a later
+  session's); **Poni Meadow**
   south of the plains, its pond and flowers, with **Resolution Cave**'s mouth in its rock (matrix 70, a map of its own);
   and **Poni Coast** below the meadow, whose west half lies behind rough ground and over cliffs from the sea, with an islet
   shut by a rock in the sea. On Ula'ula (matrix 10): **Route 11** from Route 10's east side under Mount Hokulani round to
   Route 12's south side, and **Blush Mountain** north of Route 12 behind rough ground, its geothermal power plant at the
-  top with its doors shut. Area files 500 to 507; 24 trainers of ours.
+  top with its doors `locked` too. Area files 500 to 507; 24 trainers of ours.
 - **Ours, beside Sun and Moon.** Sun and Moon's Poni Grove, Plains, Meadow, Coast and Gauntlet are walked in another
   order and shape; ours is one loop from Poni Wilds. Sun and Moon open them after the League by the story, ours by the
   ranger at the grove's way in. Blush Mountain in Sun and Moon lies between Route 12 and Route 13; Z7's Route 12 runs
