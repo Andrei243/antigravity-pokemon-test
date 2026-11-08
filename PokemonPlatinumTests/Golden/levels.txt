@@ -486,6 +486,19 @@ surf 20-40
 old rod 10
 good rod 20
 super rod 40
+=== coumarine_bay
+Coumarine Bay
+grass 29-32
+surf 28-32
+old rod 10-15
+good rod 28-29
+super rod 35-36
+=== coumarine_city
+Coumarine City
+surf 27-30
+old rod 10-15
+good rod 27-28
+super rod 34-35
 === couriway_town
 Couriway Town
 surf 36-38
@@ -1304,6 +1317,10 @@ trainers 4, 17-18: kalos_backpacker_odile 18, kalos_fisherman_loic 18, kalos_las
 === kalos_victory_road
 Victory Road
 grass 50-58
+surf 50-53
+old rod 10-15
+good rod 45-46
+super rod 50-52
 trainers 3, 55-56: kalos_ace_trainer_camille 56, kalos_ace_trainer_maxime 56, kalos_veteran_clovis 56
 === kanto_victory_road_1f
 Victory Road

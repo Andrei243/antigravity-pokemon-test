@@ -44,6 +44,26 @@ lists what a figure that isn't chibi needs, which plan 30 builds (the kit is not
 
 Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fast`, a slide of one tile on stopping like ice's `Carries`, refused on stairs and grass, taken with a key as the Bicycle's gear is); Lumiose's ring as a grid octagon with its plazas where they stand; the Central, Coastal and Mountain dexes as three listings of plan 18 · W3's `Pokedex.Dexes`; Mega Evolution at home in Shalour's Tower of Mastery as plan 06 · R20 builds it (the Key Stone only to a bag without one, the Tower's own gift of a Lucario and its stone beside it); sky battles and hordes placed from plan 14 · B2 to B4 (the sky battles only if plan 14's decision 7 keeps B2); the boutiques as plan 11 · C10's `WardrobeScreen` with Lumiose's stock; Pokémon-Amie is the camp (plan 10 · F6, F7; rulings.md folds affection into friendship); the Friend Safari is optional, its species drawn from plan 07 · O7's friend list, or from the player's own trainer id without it. Kalos's first 36 species, Chespin to Slurpuff, are hand-built since plan 03's first Kalos batch; the other 36 are generated until the batches reach them.
 
+- **Kalos's other four Gyms, its port and its HMs** (2026-11-08, a session after Kalos's last places; rulings, "Kalos's
+  other four Gyms", "Kalos's port, the bay's islets, Waterfall and the other HMs" and "Lumiose's restaurants and five
+  more of its doors"). **The Gyms**: Viola's web (`SantaluneWeb`: dew on two sets of strands, run from one to the other
+  by a knot), Grant's wall (`CyllageWall`: grips only, up and sideways, ropes down), Korrina's rink (`ShalourRails`:
+  ramps hopping the gaps, a lever throwing the points) and Ramos's tree (`CoumarinePoles`: tiers joined by one-way
+  poles, one let down by a vine), each a `GymPuzzle` drawn by `GymPieces`, walked by the bot's `Reach` legs and its
+  `StepOnAToggle` fallback, held by `KalosGymPuzzlesTests`. **The port**: Coumarine's quay and harbour (the professor
+  with HM02 after the Plant Badge, a sailor), and south-west of it **Coumarine Bay**, two islets of tall grass reached
+  only by Surf (`coumarine_bay`, a new area of twelve slots, water and rods); **Victory Road's lake** and the chamber
+  past it (the road's water and rods); **Couriway's falls** (MapDraw's `|`, a waterfall into a pool shut in by cliffs)
+  and **HM07** (Waterfall) from Shauna on Route 19; **HM01** from the palace's butler and **HM04** from Grant, with
+  Route 6's hedge holding Kalos's first small tree and boulder. **Species**: X and Y's wild Pokémon in the drawn tables'
+  second slots of a species held twice, the Moss Rock, Ice Rock and Magnetic Field named, **Ambrette's fossil
+  laboratory** (an Old Amber given, any Fossil revived) and Lumiose's **Linking Cord** (below): `KalosSpeciesTests.Owed`
+  115 → 7 (the Jaw and Sail Fossils' lines, which need items of the data, and the three mythicals). **Lumiose**: plan 37 ·
+  FC5's four restaurants (doubles, triples, rotations and a paid table, dishes by `TURNS`, once a day) and five more
+  doors (a grooming salon, the newspaper, a gallery, a television lobby, the Cercle des Échanges with the Linking Cord);
+  thirteen doors stay shut. Tests `KalosGymPuzzlesTests`, `KalosPortAndHmsTests`, `LumioseRestaurantTests`. **Left**:
+  the Jaw and Sail Fossils (two items of the data, the importer's), the Unknown Dungeon's water mouth, a monorail, the
+  Friend Safari (no seam), Lumiose's thirteen other doors, and the places' own songs (plan 31).
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

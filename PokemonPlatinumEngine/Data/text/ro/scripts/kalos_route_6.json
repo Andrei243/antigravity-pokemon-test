@@ -48,5 +48,23 @@
         "Cântați din flaut aproape de dormitor și se va trezi. Nu a dat greș niciodată palatului."
       ]
     }
+  ],
+  "GiveCut": [
+    {
+      "en": [
+        "And this, from the palace gardeners. They keep the hedges with it, and they will not miss one."
+      ],
+      "text": [
+        "Și asta, de la grădinarii palatului. Cu ea îngrijesc gardurile vii, și nu le va lipsi una."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that knows Cut can clear a small tree out of your way. There is one by the hedge, I believe."
+      ],
+      "text": [
+        "Un Pokémon care știe Cut îți poate da la o parte un copăcel din drum. Cred că e unul lângă gardul viu."
+      ]
+    }
   ]
 }

@@ -18,10 +18,27 @@ label Flute
   say "A Snorlax on the south road, again. The last one slept there for a whole summer, I recall."
   say "Very well. The master would want the road open. Take the palace's flute, and do bring it back one day."
   give "Poké Flute"
+  call GiveCut
   setvar VAR_KALOS_STORY 15
   objective kalosSnorlax
   endscene
   end
 label Lent
+  if not flag FLAG_KALOS_RECEIVED_HM01 goto LentCut
+label LentSay
   say "Play the flute close to the sleeper and it will wake. It has never failed the palace yet."
   end
+label LentCut
+  call GiveCut
+  goto LentSay
+
+
+# HM01 (plan 23, Kalos's HMs; X and Y find it in the hedge maze behind the palace, which this Kalos doesn't draw): the butler
+# hands it over with the flute, or to a save already past the flute when spoken to again. A small tree on the avenue's
+# north side stands before a gap in the hedge.
+script GiveCut
+  say "And this, from the palace gardeners. They keep the hedges with it, and they will not miss one."
+  give "HM01"
+  setflag FLAG_KALOS_RECEIVED_HM01
+  say "A Pokémon that knows Cut can clear a small tree out of your way. There is one by the hedge, I believe."
+  return

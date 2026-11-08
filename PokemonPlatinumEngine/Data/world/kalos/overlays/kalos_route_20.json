@@ -5,6 +5,8 @@
   "area": "kalos_route_20",
   "bgmTrack": "kalos/santalune_forest",
   "trees": "Round",
+  // X and Y's mossy rock stands in these woods: an Eevee that levels up here becomes a Leafeon (plan 23, Kalos's species; GE3)
+  "evolutionSites": [ "Moss Rock" ],
   "architecture": "OldTimber",
   "people": {
     "lady": {

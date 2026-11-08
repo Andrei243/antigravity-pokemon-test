@@ -4,6 +4,9 @@
 # (before it, he is busy with his plants and sends them on). VAR_KALOS_STORY is vaniville_town.txt's count: 22, the
 # Tower of Mastery's scene over, becomes 23 here, and the objective points north along Route 13 to the Power Plant. His
 # team is Kalos's trainers.json's kalos_ramos_1; his two trainers are the hall's own.
+#
+# Since Kalos's Gyms (plan 23) the hall is a vine tree in three tiers (the map's puzzle, CoumarinePoles): poles are climbed
+# up and slid down between the tiers, and the one up to Ramos's platform hangs short until a switch of vine lets it down.
 
 
 script Ramos

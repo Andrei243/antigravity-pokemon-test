@@ -10010,7 +10010,7 @@ X and Y's puzzles, water and ride as they are publicly described, in forms and w
   quarter clockwise whenever it is stepped onto (`Crossed`), and an arm tile no arm lies on refuses the step (`Refuses`).
   Two hubs three tiles apart are joined only when both point arms at each other. The hall is laid out afresh at the
   door; the shortest way across turns the east pair and the middle one, nineteen steps (`KalosGymsAndWaterTests`
-  searches it). Santalune's web, Cyllage's climbing wall, Shalour's rails and Coumarine's poles are still plain halls.
+  searches it). Santalune's web, Cyllage's climbing wall, Shalour's rails and Coumarine's poles were plain halls until "Kalos's other four Gyms", below.
 - **Water**: X and Y's own tables, read from public encounter lists: the west coast (Ambrette, Cyllage, Routes 8 and 9)
   surfs Tentacool and Wailmer and fishes Luvdisc, Skrelp, Clauncher, Horsea (Shellder and Staryu off Route 8),
   Relicanth, Seadra, Dragalge and Clawitzer; the north coast (Shalour) Tentacool and Mantyke, Remoraid, Chinchou,
@@ -10039,6 +10039,98 @@ X and Y's puzzles, water and ride as they are publicly described, in forms and w
 - **Left.** The other four Gyms' pieces (Santalune's web, Cyllage's wall, Shalour's rails, Coumarine's poles),
   Coumarine's port, X and Y's Surf-only places (the Unknown Dungeon's water mouth, Victory Road's lakes), Waterfall and
   the other HMs' gifts, and every place's own song (plan 31's tools give no Kalos songs to these places yet).
+
+## Kalos's other four Gyms: Viola's web, Grant's wall, Korrina's rink and Ramos's tree (2026-11-08, plan 23 after Kalos's Gyms)
+
+X and Y's halls as they are publicly described (a web where the water drops show the way, a climbing wall with grips, a
+roller-skating rink, a giant vine tree), each in a form of our own as a `GymPuzzle` beside Wulfric's turntables; Kalos's
+movement stays `Eight`.
+
+- **Viola's web** (`Overworld/SantaluneWeb.cs`). The hall between the door's floor (rows 13 to 16) and Viola's (rows 3
+  to 5) is the dark, with silk strung over it. Two rings, rows 10 and 7 from column 2 to 10, always hold, with a knot at
+  each end of each ring ((1,10), (11,10), (1,7), (11,7)). Radial strands run north and south between them in two sets,
+  A ((3,6), (9,6), (3,11) to (3,12), (9,11) to (9,12)) and B ((4,8) to (4,9), (8,8) to (8,9), (6,11) to (6,12)): a strand
+  holds only while the dew lies on its set (`Refuses` the dry set's tiles), and stepping onto a knot (`Crossed`) runs the
+  dew to the other set. The hall is laid out afresh with the dew on A. The door's floor reaches the first ring by A, the
+  first ring the second by B and the second Viola's floor by A, so the way to her shakes the web twice and the way back
+  once. Nobody is stranded: the dew moves only while its shaker stands on a knot, on a ring, which always holds.
+- **Grant's wall** (`Overworld/CyllageWall.cs`), nothing of which moves. The wall crosses the hall in two pitches (rows 6
+  to 8 and 11 to 13, columns 2 to 10) with a ledge of floor between them; on the wall a climber stands only on a grip
+  (bare rock is refused), a step south from a wall tile onto a wall tile is barred (the foot of a pitch steps off onto the
+  floor below), and the ropes in columns 1 and 11 are gone down only. Every grip leads up to the next floor or sideways to
+  a rope, so a wrong way ends at a rope and back on the floor. The two Mega Stones' balls stay on the bottom floor. The
+  wall lies flat on the floor (no heights), read as a wall by the camera's lean.
+- **Korrina's rink** (`Overworld/ShalourRails.cs`). Rails of floor over a pit, broken by three gaps of a tile ((3,13),
+  (6,10), (9,6)): a step onto a gap is a hop over it (`HopsOver`) when the ramp before it faces that way, and a lever
+  ((2,11), (10,8), (10,14), (10,3)) throws the points, turning every ramp round. The way to Korrina throws them twice,
+  the way back three times. A skater hops as well as anyone on foot (`FieldMovement.Step`'s puzzle hops take `Skating`
+  since: a Kalos player is mostly on skates).
+- **Ramos's tree** (`Overworld/CoumarinePoles.cs`). Three tiers from the map's heights, 0, 2 and 4, with solid faces
+  between them; a pole on a face is a hop over it, climbing poles north only and sliding poles south only. On the top tier
+  a hedge parts Ramos's platform from the west end, and the only way up to it is a hanging pole (7,7), no way up until the
+  vine switch at (1,4) is stepped on, then down while the player stays in the room. Sliding poles lead from every tier
+  back to the door.
+- The bot walks them by `Reach` legs and a `StepOnAToggle` fallback beside Wulfric's `TurnATable`; `KalosGymPuzzlesTests`
+  searches each hall by the field's own steps with its puzzle's state.
+
+## Kalos's port, the bay's islets, Waterfall and the other HMs (2026-11-08, plan 23 after Kalos's Gyms)
+
+In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are publicly described.
+
+- **Coumarine's port.** X and Y's Coumarine has a port side below the hill, with its monorail between. Ours is the city's
+  drawing's last rows: a quay of paving south of the garden and the harbour's water below it, with two piers, a sailor and,
+  once the Plant Badge is won (`FLAG_KALOS_DEFEATED_COUMARINE_GYM`), the professor, who hands over HM02 (X and Y: in
+  Coumarine City) and goes. The harbour surfs and fishes the south coast's kinds (`coumarine_city`'s new water and rods).
+  No monorail: the city is one level.
+- **The bay's islets** (`coumarine_bay`, "Coumarine Bay", an area of ours south-west of the harbour and west of Route 3),
+  two islets of tall grass reached only by Surf, as X and Y's Azure Bay is from Route 12 (ours is Z4b's, walked to over a
+  sandbar after the Hall of Fame). X and Y's Route 12 has more Pokémon in its flowers and hordes than a drawn place's twelve
+  slots: Tauros, Miltank, Mareep, Pinsir and the rest live on the islets at 29 to 32, with Clamperl, Horsea, Carvanha,
+  Corsola and Sharpedo on the rods, a Big Pearl and a Shell Bell on the islets.
+- **Victory Road's lake.** X and Y's Victory Road has water surfed for its items. Ours is a lake in the great hall's
+  south-west with a chamber past it reached only by Surf (a Max Revive and a Dragon Fang), and the road's water tables
+  (Poliwhirl, Lombre, Floatzel; Poliwag, Basculin, Barboach, Dratini and Dragonair on the rods, X and Y's Route 21 and
+  Victory Road ones). It is the road's own area.
+- **Waterfall and Couriway's falls.** X and Y's Shauna gives the HM of Waterfall on Route 19 (ours: on the road out of
+  Couriway Town, `kalos_route_19.Shauna`; this game's HMs keep Platinum's numbers, so it is HM07). Couriway is the town of
+  falls: MapDraw's legend gains `|`, a waterfall (`TileBehavior.Waterfall` on water), and the river under the town falls
+  three tiles into a pool shut in by cliffs, gone down with the move and up again with its question, a Splash Plate on its
+  sandbank. Kalos's `gates` stay empty: X and Y ask no Badge of a field move.
+- **HM01 and HM04.** X and Y find HM01 in the hedge maze behind Parfum Palace, which this Kalos doesn't draw: the palace's
+  butler gives it with the flute (`kalos_route_6.GiveCut`), and to a save already past the flute when spoken to again.
+  Grant gives HM04 after his TM (X and Y's beat), and to a save past it. Route 6's north hedge has a small tree before a
+  Revive and a Strength boulder before a Protein, the first obstacles of the drawn Kalos (area objects whose looks are
+  `cut_tree` and `strength_boulder`).
+- **Kalos's species.** X and Y's wild Pokémon that its drawn tables had no room for take the second slot of a species a
+  table held twice (`kalos_route_3` to `_18`, the Glittering and Reflection Caves, the Pokémon Village's and Couriway's
+  rods), each where X and Y has it (Route 5's Plusle, Minun and Scraggy, Route 8's Zangoose, Seviper and Bagon, the
+  Glittering Cave's Cubone, Kangaskhan, Lunatone, Solrock and Dwebble, the Reflection Cave's Mr. Mime, Solosis, Mime Jr.,
+  Woobat and Ferroseed, Route 21's Dratini on the Pokémon Village's rods...) or, for X and Y's Connecting Cave, which isn't
+  drawn (Route 7 and 8 join in the open), on Route 7's banks (Whismur, Meditite) and Route 9's (Axew). X and Y's three
+  places of evolution are named (`evolutionSites`): the Moss Rock on Route 20, the Ice Rock in Frost Cavern and the
+  Magnetic Field round Route 13's Power Plant. **Ambrette's fossil laboratory** (`AmbretteTown_FossilLab`, a door of the
+  town's south side) revives a Fossil at level 20 once the player has gone out and come back, and its assistant gives an
+  Old Amber once (`FLAG_KALOS_RECEIVED_OLD_AMBER`); X and Y's Jaw and Sail Fossils are no items of the data yet. With
+  Lumiose's Linking Cord (below) `KalosSpeciesTests.Owed` went from 115 to 7: the two fossil lines and the three mythicals.
+
+## Lumiose's restaurants and five more of its doors (2026-11-08, plan 37 · FC5 in plan 23's Kalos session)
+
+- **The restaurants** are four rooms of ours behind Lumiose's doors 22, 13, 24 and 6 (`LumioseCity_BistroDeux`,
+  `LumioseCity_TableATrois`, `LumioseCity_Carrousel`, `LumioseCity_GrandeTable`). Three serve a menu of three courses in
+  one format (doubles, triples, rotations) and the fourth charges 15,000 for one course of each. The courses are fought
+  against staff of Kalos's table (`kalos_restaurant_*`, twelve, at 30 to 34 and the paid table's at 36 to 38) on the
+  player's own team and paid like any trainer's battle; in a crossed region they are relevelled and grown, which is why
+  their lines name no species. A menu is taken once a day, its flag (`FLAG_DAILY_KALOS_RESTAURANT_1` to `_4`) set as it
+  is served, so a meal lost is the day's meal and the team is healed; nothing is served without the money. The dish is an
+  item chosen by the turns the three courses took together (`TURNS`), against bands of ours: 4, 8 and 12 for the
+  doubles, 6, 10 and 15 for the others (from a Rare Candy or an Ability Capsule for the quickest down to Oran Berries).
+  They are plain items, not plan 39's meals with powers. A team too small for a triple or a rotation fights what it can
+  field (`BattleFormats.FallBack`).
+- **Five more doors** open on rooms of ours: a Furfrou grooming salon (26), the city's newspaper (31), Galerie Lumière
+  (5), a television studio's lobby (15) and the **Cercle des Échanges** (30), whose host gives a **Linking Cord** once
+  (`FLAG_KALOS_TRADE_SOCIETY_CORD`) and whose counter (`lumiose_trades`) sells more with an Everstone: X and Y evolve
+  their trade Pokémon by trading, which a game of one player can't, so Kalos's fifteen trade evolutions (and Kingdra, with
+  a Dragon Scale) come by the cord. Thirteen doors stay shut.
 
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
 

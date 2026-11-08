@@ -87,7 +87,12 @@ public static class Itineraries
         Leg.Trigger("Kalos", "Meet", "santalune_forest"),
         Leg.Trigger("Kalos", "Friends", "kalos_route_3"),
         Leg.Trigger("Kalos", "Neighbour", "santalune_city"),
+        // (Viola's web: the knot at the first ring's west end shakes the dew onto the strands between the rings, the second
+        // ring's back onto those up to her floor, and the second ring's again onto the way back down: SantaluneWeb)
+        Leg.Reach("SantaluneCity_Gym", 1, 10),
+        Leg.Reach("SantaluneCity_Gym", 1, 7),
         Leg.Talk("SantaluneCity_Gym", "viola") with { Until = story => story.HasBadge("Kalos", "Bug") },
+        Leg.Reach("SantaluneCity_Gym", 1, 7),
         Leg.Trigger("Kalos", "Assistants", "lumiose_city"),
         Leg.Talk("LumioseCity_SycamoreLab", "sycamore") with { Until = story => story.Var("VAR_KALOS_STORY") >= 11 },
         Leg.Enter("LumioseCity_LysandreCafe") with { Until = story => story.Var("VAR_KALOS_STORY") >= 12 },
@@ -99,7 +104,14 @@ public static class Itineraries
         Leg.Talk("CyllageCity_Gym", "grant") with { Until = story => story.HasBadge("Kalos", "Cliff") },
         Leg.Trigger("Kalos", "Trevor", "geosenge_town"),
         Leg.Talk("ShalourCity_TowerOfMastery", "gurkinn") with { Until = story => story.Var("VAR_KALOS_STORY") >= 20 },
+        // (Korrina's rink: the levers on the two rails' stubs throw the points on the way up, and the levers on her floor
+        // and the stubs throw them back on the way down: ShalourRails)
+        Leg.Reach("ShalourCity_Gym", 2, 11),
+        Leg.Reach("ShalourCity_Gym", 10, 8),
         Leg.Talk("ShalourCity_Gym", "korrina") with { Until = story => story.HasBadge("Kalos", "Rumble") },
+        Leg.Reach("ShalourCity_Gym", 10, 3),
+        Leg.Reach("ShalourCity_Gym", 10, 8),
+        Leg.Reach("ShalourCity_Gym", 2, 11),
         Leg.Talk("ShalourCity_TowerOfMastery", "gurkinn") with { Until = story => story.Var("VAR_KALOS_STORY") >= 22 },
     };
 
@@ -115,6 +127,9 @@ public static class Itineraries
         // (the team is seen to at a Pokémon Center before each Gym and the League's doors, as a player would: a long chain of
         // trainers wears even a strong team down)
         Leg.Heal("CoumarineCity_PokemonCenter_1F"),
+        // (Ramos's tree: the vine at the top tier's west end lets down the pole up to his platform: CoumarinePoles; Grant's
+        // wall needs nothing of the itinerary's, since nothing of it moves)
+        Leg.Reach("CoumarineCity_Gym", 1, 4),
         Leg.Talk("CoumarineCity_Gym", "ramos") with { Until = story => story.HasBadge("Kalos", "Plant") },
         Leg.Talk("KalosPowerPlant", "aliana") with { Until = story => story.Var("VAR_KALOS_STORY") >= 24 },
         Leg.Heal("LumioseCity_PokemonCenter_1F"),

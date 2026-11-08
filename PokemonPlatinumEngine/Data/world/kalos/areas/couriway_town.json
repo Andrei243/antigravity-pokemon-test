@@ -41,7 +41,7 @@
   "goodRod": [
     { "species": "Basculin", "level": 25 },
     { "species": "Poliwhirl", "level": 25 },
-    { "species": "Basculin", "level": 25 },
+    { "species": "Barboach", "level": 25 },
     { "species": "Poliwhirl", "level": 25 },
     { "species": "Poliwhirl", "level": 25 }
   ],
@@ -51,7 +51,7 @@
     { "species": "Basculin", "level": 35 },
     { "species": "Poliwhirl", "level": 35 },
     { "species": "Basculin", "level": 35 },
-    { "species": "Basculin", "level": 35 }
+    { "species": "Whiscash", "level": 35 }
   ],
   "superRodRate": 75
 }

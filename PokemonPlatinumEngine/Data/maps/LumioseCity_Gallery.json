@@ -1,0 +1,138 @@
+{
+  "name": "LumioseCity_Gallery",
+  "displayName": "Galerie Lumière",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "#.........#",
+    "#..#...#..#",
+    "#.........#",
+    "#...###...#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 3,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 7,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 342,
+      "targetY": 328,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "curator",
+      "name": "Curator",
+      "npcType": "gentleman",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Every painting here was made by someone who walked these streets. Most of them were hungry."
+      ]
+    },
+    {
+      "id": "painter",
+      "name": "Painter",
+      "npcType": "artist",
+      "x": 2,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "I have painted the same window for three years. The light has never once been the same."
+      ]
+    },
+    {
+      "id": "visitor",
+      "name": "Visitor",
+      "npcType": "lady",
+      "x": 8,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "They say you should stand back from a painting. I stood so far back I was in the street."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

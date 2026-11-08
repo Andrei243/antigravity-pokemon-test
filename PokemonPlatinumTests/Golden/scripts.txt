@@ -246,6 +246,20 @@ way -
   Aquarium Keeper> Face the water and use it from your bag. When the line twitches, reel it in!
   * fanfare FanfareKeyItem
   + FLAG_KALOS_RECEIVED_OLD_ROD
+=== AmbretteTown_FossilLab.Assistant
+from Assistant at 2,6 of AmbretteTown_FossilLab
+way -
+  Assistant> We found more amber in the cave than we have shelves for. Here, take a piece. There's a Pokémon of the sky in it.
+  > Lucas received the Old Amber!
+  > Lucas put it away in the Items pocket.
+  Assistant> Show it to the restorer. She'll have it flying again in no time.
+  * fanfare FanfareItem
+  + FLAG_KALOS_RECEIVED_OLD_AMBER
+=== AmbretteTown_FossilLab.Restorer
+from Restorer at 6,4 of AmbretteTown_FossilLab
+way -
+  Restorer> Welcome to the fossil laboratory! The cave up the coast is full of them, and we bring them back to life.
+  Restorer> No Fossils? My assistant may have one to spare. Ask him.
 === AnistarCity_Gym.GymGuide
 from Gym Guide at 8,15 of AnistarCity_Gym
 way -
@@ -2752,6 +2766,10 @@ way 0
   > Lucas received the TM39!
   > TM39 holds the move Rock Tomb.
   > Lucas put it away in the TMs & HMs pocket.
+  Grant> And this. On a wall you can't always go round a boulder, so you learn to move it.
+  > Lucas received the HM04!
+  > HM04 holds the move Strength.
+  > Lucas put it away in the TMs & HMs pocket.
   Grant> There's more of Kalos to climb. Keep looking for the next hold.
   * scene CyllageCity_Gym.Grant
   * battle kalos_grant_1 Won
@@ -2759,8 +2777,10 @@ way 0
   * defeat kalos_hiker_bruno
   * defeat kalos_hiker_armand
   * fanfare FanfareTM
+  * fanfare FanfareTM
   * endscene
   + FLAG_KALOS_DEFEATED_CYLLAGE_GYM
+  + FLAG_KALOS_RECEIVED_HM04
   + FLAG_KALOS_RECEIVED_TM_GRANT
   = VAR_KALOS_STORY 0 -> 18
   = VAR_OBJECTIVE 0 -> 518
@@ -4704,6 +4724,56 @@ way -
 from Old Woman at 8,9 of LostTower5F
 way -
   Old Woman> Ohh... Who's there? I can hardly see a thing in this fog.
+=== LumioseCity_BistroDeux.Host
+from Clothilde at 7,4 of LumioseCity_BistroDeux
+way 0.0.0.0
+  Clothilde> Welcome to the Bistro des Deux. Here everything is served in pairs, the battles too.
+  Clothilde> Will you take today's menu? Three courses, each a double battle against our staff.
+  Clothilde> Splendid. The quicker you finish, the finer the dish the kitchen sends out.
+  Odette> The first course! Two of mine against two of yours.
+  Fabien> The main course, still steaming. Mind the plates!
+  Bertrand> And to finish, something from my own stove.
+  Clothilde> The whole menu in 0 turns! Let us see what the kitchen sends out for you.
+  Clothilde> So quick the soup was still steaming! The chef's finest, with his compliments.
+  > Lucas received the Rare Candy!
+  > Lucas put it away in the Medicine pocket.
+  ? Will you take today's menu? Three courses, each a double battle against our staff. = Yes
+  * battle kalos_restaurant_bistro_odette Won
+  * battle kalos_restaurant_bistro_fabien Won
+  * battle kalos_restaurant_bistro_bertrand Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_RESTAURANT_1
+  + beaten kalos_restaurant_bistro_bertrand
+  + beaten kalos_restaurant_bistro_fabien
+  + beaten kalos_restaurant_bistro_odette
+way 0.0.0.1, from answer 4
+  Clothilde> The kitchen has closed for today, I'm afraid. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_bistro_bertrand Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_1
+  + beaten kalos_restaurant_bistro_fabien
+  + beaten kalos_restaurant_bistro_odette
+way 0.0.1, from answer 3
+  Clothilde> The kitchen has closed for today, I'm afraid. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_bistro_fabien Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_1
+  + beaten kalos_restaurant_bistro_odette
+way 0.1, from answer 2
+  Clothilde> The kitchen has closed for today, I'm afraid. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_bistro_odette Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_1
+way 1, from answer 1
+  Clothilde> Another time, then. The menu is new every day.
+  ? Will you take today's menu? Three courses, each a double battle against our staff. = No
+=== LumioseCity_BistroDeux.Staff
+from Bertrand at 10,4 of LumioseCity_BistroDeux
+way -
+  Bertrand> A dish is like a battle. Too long on the fire and it is spoiled.
+from Fabien at 9,7 of LumioseCity_BistroDeux
+way -
+  Fabien> Ask Madame Clothilde for the menu. I'll be waiting with the main course.
+from Odette at 5,7 of LumioseCity_BistroDeux
+way -
+  Odette> Two plates in each hand, two Pokémon on each side. You get used to it!
 === LumioseCity_Boutique.Clerk
 from Clerk at 7,6 of LumioseCity_Boutique
 way -
@@ -4711,6 +4781,76 @@ way -
   Clerk> Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish.
   Clerk> Merci! Do come back when the new season arrives.
   * open Wardrobe lumiose
+=== LumioseCity_Carrousel.Host
+from Philibert at 7,4 of LumioseCity_Carrousel
+way 0.0.0.0
+  Philibert> Welcome to Le Carrousel, where the table turns and the courses turn with it.
+  Philibert> Will you take today's menu? Three courses, each a rotation battle against our staff.
+  Philibert> Very good. A quick meal earns a fine dish, so turn the table well.
+  Marius> The first course goes round! Only the plate at the front is served, mind.
+  Capucine> The main course is turning your way. Ready?
+  Ferdinand> The last turn of the evening is mine. Let us see how dizzy you are.
+  Philibert> Round and round in 0 turns! The kitchen will be delighted.
+  Philibert> Not a single turn wasted! The kitchen's best, a double helping.
+  > Lucas received 2 × Rare Candy!
+  > Lucas put them away in the Medicine pocket.
+  ? Will you take today's menu? Three courses, each a rotation battle against our staff. = Yes
+  * battle kalos_restaurant_carrousel_marius Won
+  * battle kalos_restaurant_carrousel_capucine Won
+  * battle kalos_restaurant_carrousel_ferdinand Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_RESTAURANT_3
+  + beaten kalos_restaurant_carrousel_capucine
+  + beaten kalos_restaurant_carrousel_ferdinand
+  + beaten kalos_restaurant_carrousel_marius
+way 0.0.0.1, from answer 4
+  Philibert> The table has stopped turning for today. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_carrousel_ferdinand Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_3
+  + beaten kalos_restaurant_carrousel_capucine
+  + beaten kalos_restaurant_carrousel_marius
+way 0.0.1, from answer 3
+  Philibert> The table has stopped turning for today. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_carrousel_capucine Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_3
+  + beaten kalos_restaurant_carrousel_marius
+way 0.1, from answer 2
+  Philibert> The table has stopped turning for today. Your Pokémon have been seen to. Do come back tomorrow.
+  * battle kalos_restaurant_carrousel_marius Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_3
+way 1, from answer 1
+  Philibert> Another evening, then. The table will keep turning without you.
+  ? Will you take today's menu? Three courses, each a rotation battle against our staff. = No
+=== LumioseCity_Carrousel.Staff
+from Capucine at 9,7 of LumioseCity_Carrousel
+way -
+  Capucine> Turning takes no time at all. Choosing when to turn takes all of it.
+from Ferdinand at 10,4 of LumioseCity_Carrousel
+way -
+  Ferdinand> Turn the table at the right moment and a weak dish becomes a strong one.
+from Marius at 5,7 of LumioseCity_Carrousel
+way -
+  Marius> Three wait on the table, one at the front. Whoever is in front does the fighting!
+=== LumioseCity_GrandeTable.Host
+from Ernestine at 7,4 of LumioseCity_GrandeTable
+way 0
+  Ernestine> Welcome to La Grande Table. Our menu is three courses, a double, a triple and a rotation battle.
+  Ernestine> The menu is P15,000. Will you take it?
+  Ernestine> Oh dear, that is not quite enough. We shall keep your table for when you are ready.
+  ? The menu is P15,000. Will you take it? = Yes
+way 1, from answer 1
+  Ernestine> Of course. La Grande Table will be here when you are ready.
+  ? The menu is P15,000. Will you take it? = No
+=== LumioseCity_GrandeTable.Staff
+from Hippolyte at 10,4 of LumioseCity_GrandeTable
+way -
+  Hippolyte> Two, then three, then the table turns. A guest must keep their wits about them here.
+from Séverine at 5,7 of LumioseCity_GrandeTable
+way -
+  Séverine> Each course here is served differently. Guests who change their plans quickly do well.
+from Évrard at 9,7 of LumioseCity_GrandeTable
+way -
+  Évrard> Madame Ernestine takes the bill before the first course. That is how grand we are.
 === LumioseCity_HotelRichissime.Malva
 from Malva at 12,6 of LumioseCity_HotelRichissime
 way 0
@@ -5014,6 +5154,66 @@ way -
 from Prof. Sycamore at 7,4 of LumioseCity_SycamoreLab
 way -
   Prof. Sycamore> Ah, a visitor! Do look around, but please don't touch the machines.
+=== LumioseCity_TableATrois.Host
+from Barnabé at 7,4 of LumioseCity_TableATrois
+way 0.0.0.0
+  Barnabé> Bienvenue to La Table à Trois! Every table seats three, and every battle sends out three.
+  Barnabé> Will you take today's menu? Three courses, each a triple battle against our staff.
+  Barnabé> Wonderful. Remember, the kitchen rewards a guest who doesn't dawdle.
+  Raoul> The first course, three plates at once. Don't let anything go cold!
+  Agnès> The main course! Left, middle and right, all at the same time.
+  Héloïse> Dessert is mine. I have never once served it slowly.
+  Barnabé> Three courses in 0 turns! The kitchen will want to hear of it.
+  Barnabé> Astonishing! The kitchen sends out its rarest dish, just for you.
+  > Lucas received the PP Up!
+  > Lucas put it away in the Medicine pocket.
+  ? Will you take today's menu? Three courses, each a triple battle against our staff. = Yes
+  * battle kalos_restaurant_trois_raoul Won
+  * battle kalos_restaurant_trois_agnes Won
+  * battle kalos_restaurant_trois_heloise Won
+  * fanfare FanfareItem
+  + FLAG_DAILY_KALOS_RESTAURANT_2
+  + beaten kalos_restaurant_trois_agnes
+  + beaten kalos_restaurant_trois_heloise
+  + beaten kalos_restaurant_trois_raoul
+way 0.0.0.1, from answer 4
+  Barnabé> Ah, the meal is over for today. We have seen to your Pokémon. Come back tomorrow for another try.
+  * battle kalos_restaurant_trois_heloise Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_2
+  + beaten kalos_restaurant_trois_agnes
+  + beaten kalos_restaurant_trois_raoul
+way 0.0.1, from answer 3
+  Barnabé> Ah, the meal is over for today. We have seen to your Pokémon. Come back tomorrow for another try.
+  * battle kalos_restaurant_trois_agnes Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_2
+  + beaten kalos_restaurant_trois_raoul
+way 0.1, from answer 2
+  Barnabé> Ah, the meal is over for today. We have seen to your Pokémon. Come back tomorrow for another try.
+  * battle kalos_restaurant_trois_raoul Lost
+  + FLAG_DAILY_KALOS_RESTAURANT_2
+way 1, from answer 1
+  Barnabé> As you wish. The table will be set for three tomorrow, too.
+  ? Will you take today's menu? Three courses, each a triple battle against our staff. = No
+=== LumioseCity_TableATrois.Staff
+from Agnès at 9,7 of LumioseCity_TableATrois
+way -
+  Agnès> Those at the ends can't always reach each other. Think about who sits where.
+from Héloïse at 10,4 of LumioseCity_TableATrois
+way -
+  Héloïse> Whoever stands in the middle can reach everyone. So can whoever brings dessert.
+from Raoul at 5,7 of LumioseCity_TableATrois
+way -
+  Raoul> Three at once is a lot of plates to carry. I dropped only two last week!
+=== LumioseCity_TradeSociety.Host
+from Gustavine at 5,4 of LumioseCity_TradeSociety
+way -
+  Gustavine> Welcome to the Cercle des Échanges! Our members trade Pokémon with friends all over Kalos.
+  Gustavine> Some Pokémon only grow when they are traded. With this cord, no trade is needed at all.
+  > Lucas received the Linking Cord!
+  > Lucas put it away in the Items pocket.
+  Gustavine> Use it on one of them from your bag. Our counter sells more, should you need another.
+  * fanfare FanfareItem
+  + FLAG_KALOS_TRADE_SOCIETY_CORD
 === MahaloTrail_RuinsOfConflict.TapuKoko
 from Tapu Koko at 5,4 of MahaloTrail_RuinsOfConflict
 way -
@@ -6556,7 +6756,7 @@ way -
   Little Sister> ... Oh! You're Lucas? You're doing that Pokédex thing for the professor!
   Little Sister> Wow! Just like my big sister! Go for it!
 === SantaluneCity_Gym.GymGuide
-from Gym Guide at 9,15 of SantaluneCity_Gym
+from Gym Guide at 10,15 of SantaluneCity_Gym
 way -
   Gym Guide> Hello there, future Champion! Viola's Bug types don't care for fire or wind. Pick your partner well!
 === SantaluneCity_Gym.Viola
@@ -16688,6 +16888,25 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== coumarine_city.Sailor
+from Sailor at 248,507 of Kalos
+way -
+  Sailor> See the two little islands out in the bay? No boat calls there. You'd have to swim with a Pokémon.
+  Sailor> There's grass on both, and Pokémon nobody sees on the mainland. Or so the fishermen say.
+=== coumarine_city.Sycamore
+from Prof. Sycamore at 264,506 of Kalos
+way -
+  Prof. Sycamore> Lucas! I came down on the morning train to see the boats. And to see you, of course. Four Badges already!
+  Prof. Sycamore> The further you go, the further Kalos's towns lie apart. Here, let a Pokémon carry you between them.
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Prof. Sycamore> That HM teaches Fly. A Pokémon that knows it can take you to any town you've been to before. A bientôt!
+  * scene coumarine_city.The professor on the quay
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_RECEIVED_HM02
+  + seen coumarine_city.The professor on the quay
 === couriway_town.SuperRod
 from Fisherman at 640,364 of Kalos
 way -
@@ -21545,6 +21764,20 @@ way -
 from Worker at 636,239 of Kalos
 way -
   Worker> The valley stays shut until the ground settles. Something deep under Kalos is stirring.
+=== kalos_route_19.Shauna
+from Shauna at 684,320 of Kalos
+way -
+  Shauna> Lucas! I knew you'd come this way. Everybody's heading for Snowbelle now, aren't they?
+  Shauna> I found this at the bottom of my bag. I think it's from a Gym? Anyway, I can't swim up anything, so it's yours!
+  > Lucas received the HM07!
+  > HM07 holds the move Waterfall.
+  > Lucas put it away in the TMs & HMs pocket.
+  Shauna> It teaches Waterfall. Couriway's falls go down into a pool nobody fishes. Maybe there's something in it!
+  * scene kalos_route_19.Shauna on Route 19
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_KALOS_RECEIVED_HM07
+  + seen kalos_route_19.Shauna on Route 19
 === kalos_route_2.Lesson
 from the trigger at 254,636 of Kalos
 way -

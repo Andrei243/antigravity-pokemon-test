@@ -227,11 +227,19 @@ internal static class WorldWalk
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // and so is a tile the Trick House's sixth puzzle's gates hold shut, which turning them frees (plan 21 ·
                 // H12, part j; HoennTrickHouseTests holds the gates)
-                // and so is a tile of Wulfric's turntables (plan 23, Kalos's Gyms; SnowbelleGymTests turns them across)
-                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms or SnowbelleTurntables
+                // and so is a tile of Wulfric's turntables (plan 23, Kalos's Gyms; SnowbelleGymTests turns them across), and a
+                // strand of Viola's web with no dew on it (KalosGymPuzzlesTests shakes the web)
+                else if ((step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms or SnowbelleTurntables or SantaluneWeb
                           || step.Obstacle == Obstacle.Rail && map.Puzzle is FortreeGates { Name: FortreeGates.TrickHouseName }) && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // A gap of Korrina's rink is hopped either way by its ramps, which a lever turns round, and the pole up to
+                // Ramos's platform is climbed once its vine is pulled (plan 23, Kalos's Gyms; KalosGymPuzzlesTests throws
+                // the points and pulls the vine): here every hop a ramp or a pole ever makes counts as one there to make
+                else if (step.Obstacle == Obstacle.Solid && mode == TravelMode.OnFoot
+                         && (map.Puzzle is ShalourRails && ShalourRails.MayHopOver(nx, ny, way) || map.Puzzle is CoumarinePoles && CoumarinePoles.MayHopOver(nx, ny, way))
+                         && map.IsWalkable(nx + dx, ny + dy))
+                    Visit(map, nx + dx, ny + dy, mode, map.HeightAt(nx + dx, ny + dy), arrived: false);
                 // A drift of snow is crossed on the Mamoswine its road lends at each end and in each clearing (plan 23, Kalos's
                 // Mamoswine ride; KalosWaterAndRideTests rides it): here every drift counts as ridden through
                 // and rough ground on Mudsdale's back, which the Ride Pager has registered by then (plan 23, Alola's rough

@@ -55,6 +55,13 @@ internal sealed class GymPieces
     // Snowbelle's Gym (plan 23, Kalos's Gyms): a turntable's hub of ice, and an arm lying north from it
     private Piece? turnHub, turnArm;
 
+    // Kalos's other Gyms (plan 23, Kalos's Gyms): Viola's radial strand with its dew and dry, lying north-south from its
+    // tile's corner (the rings and knots are still parts); Korrina's ramp, built facing north round its tile's middle,
+    // and her lever with its handle west and east; Ramos's hanging pole hung up and let down, and where it stands
+    // (Grant's wall, the rest of Ramos's poles and his switch are still parts)
+    private Piece? strandWet, strandDry, ramp, leverWest, leverEast, poleHung, poleDown;
+    private Vector3 hangingAt;
+
     // The Blackthorn Gym's (plan 20 · J11, part c): a slab of each size, built unturned round its middle button
     private Piece? slabWide, slabNarrow;
 
@@ -197,6 +204,45 @@ internal sealed class GymPieces
             }
             yield break;
         }
+        if (map.Puzzle is SantaluneWeb web)
+        {
+            // The rings and knots lie still; each radial strand shows its dew while it holds, and hangs dry when not
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            foreach (var ((x, y), strand) in SantaluneWeb.Web)
+                if (strand is SantaluneWeb.Strand.A or SantaluneWeb.Strand.B && (web.Holds(x, y) ? strandWet : strandDry) is { } piece)
+                    yield return (piece, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, y + 0.5f), y));
+            yield break;
+        }
+        if (map.Puzzle is CyllageWall)
+        {
+            // The wall, its grips and its ropes lie still
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            yield break;
+        }
+        if (map.Puzzle is ShalourRails rails)
+        {
+            // Both ramps of each gap face the way it is hopped now (a ramp is built facing north and turned clockwise as
+            // seen from above, a quarter for each way round), and every lever's handle leans the way the points lie
+            if (ramp != null)
+                for (int i = 0; i < ShalourRails.Gaps.Length; i++)
+                {
+                    var turn = Matrix4x4.CreateRotationY(-Quarter(rails.WayOver(i)) * MathF.PI / 2f);
+                    var (before, beyond) = ShalourRails.EndsOf(i);
+                    foreach (var (x, y) in new[] { before, beyond })
+                        yield return (ramp, turn * Matrix4x4.CreateTranslation(x + 0.5f, Relief.At(map, x + 0.5f, y + 0.5f), y + 0.5f));
+                }
+            if ((rails.Thrown ? leverEast : leverWest) is { } lever)
+                foreach (var (x, y) in ShalourRails.Levers)
+                    yield return (lever, Matrix4x4.CreateTranslation(x + 0.5f, Relief.At(map, x + 0.5f, y + 0.5f), y + 0.5f));
+            yield break;
+        }
+        if (map.Puzzle is CoumarinePoles poles)
+        {
+            // The poles that never change and the switch lie still; the hanging pole hangs short until it is let down
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            if ((poles.Down ? poleDown : poleHung) is { } hanging) yield return (hanging, Matrix4x4.CreateTranslation(hangingAt));
+            yield break;
+        }
         if (map.Puzzle is SootopolisIce ice)
         {
             // A crack on each tile of thin ice stepped on, and a glaze over each step of the stairs not yet clear
@@ -324,6 +370,10 @@ internal sealed class GymPieces
         else if (map.Puzzle is MossdeepTiles) BuildMossdeep(map);
         else if (map.Puzzle is SootopolisIce) BuildSootopolis(map);
         else if (map.Puzzle is SnowbelleTurntables) BuildSnowbelle(map);
+        else if (map.Puzzle is SantaluneWeb) BuildSantalune(map);
+        else if (map.Puzzle is CyllageWall) BuildCyllage(map);
+        else if (map.Puzzle is ShalourRails) BuildShalour(map);
+        else if (map.Puzzle is CoumarinePoles) BuildCoumarine(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         else if (falls) BuildWaterfall(map);
@@ -986,6 +1036,201 @@ internal sealed class GymPieces
         turnArm = Make(arm);
     }
 
+    /// <summary>A way as quarter turns clockwise from north, as a piece built facing north is turned.</summary>
+    private static int Quarter(Data.Direction way) => way switch
+    {
+        Data.Direction.Up => 0,
+        Data.Direction.Right => 1,
+        Data.Direction.Down => 2,
+        _ => 3
+    };
+
+    // ------------------------------------------------------------------ the Santalune Gym
+
+    /// <summary>Viola's silk, its dew and its knots' amber (style guide, "Gyms", "The Santalune Gym's web").</summary>
+    private static readonly Tone Silk = Tone.Of(226, 228, 236, 244, 246, 250, 176, 180, 196);
+    private static readonly Tone DrySilk = Tone.Of(150, 150, 162);
+    private static readonly Tone Dew = Tone.Of(120, 186, 232, 196, 230, 250, 70, 128, 184);
+    private static readonly Tone Amber = Tone.Of(214, 168, 82);
+
+    /// <summary>
+    /// Viola's web (plan 23, Kalos's Gyms; style guide, "Gyms", "The Santalune Gym's web"): each ring a band of silk
+    /// east and west through its tile, each knot a pad of silk with an amber boss, still; a radial strand built lying
+    /// north and south from its tile's corner, with its dew on it, or dry and sagging. Each strand's top is level with
+    /// the floor, as Wulfric's turntables' are.
+    /// </summary>
+    private void BuildSantalune(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var still = new KitBuilder(sheet, vs);
+        foreach (var ((x, y), strand) in SantaluneWeb.Web)
+        {
+            if (strand is not (SantaluneWeb.Strand.Ring or SantaluneWeb.Strand.Knot)) continue;
+            still.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
+            still.Block("web.silk", Silk, 0, T, 12, 20, -3, 0);
+            if (strand != SantaluneWeb.Strand.Knot) continue;
+            still.Block("web.knot", Silk, 6, 26, 6, 26, -3, 1);
+            still.Block("web.boss", Amber, 13, 19, 13, 19, 1, 2);
+        }
+        var wet = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        wet.Block("web.silk", Silk, 12, 20, 0, T, -3, 0);
+        foreach (int z in new[] { 3, 13, 23 }) wet.Block("web.dew", Dew, 13, 19, z, z + 6, 0, 3);
+        var dry = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        dry.Block("web.dry", DrySilk, 14, 18, 0, T, -5, -2);
+        art = Upload(sheet);
+        stillParts = Make(still);
+        strandWet = Make(wet);
+        strandDry = Make(dry);
+    }
+
+    // ------------------------------------------------------------------ the Cyllage Gym
+
+    /// <summary>Grant's rock, grips and ropes (style guide, "Gyms", "The Cyllage Gym's wall").</summary>
+    private static readonly Tone WallRock = Tone.Of(118, 104, 96, 146, 130, 118, 84, 74, 70);
+    private static readonly Tone Grip = Tone.Of(206, 108, 62, 236, 150, 98, 150, 72, 42);
+    private static readonly Tone Hemp = Tone.Of(206, 178, 120, 226, 204, 152, 150, 124, 80);
+    private static readonly Tone HempKnot = Tone.Of(150, 124, 80);
+
+    /// <summary>
+    /// Grant's wall (plan 23, Kalos's Gyms; style guide, "Gyms", "The Cyllage Gym's wall"): a slab of rock lying a hair
+    /// over every tile of each pitch, a knob of terracotta on each grip, and a cord of hemp knotted down each rope. Nothing
+    /// of it moves.
+    /// </summary>
+    private void BuildCyllage(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var still = new KitBuilder(sheet, vs);
+        var rock = still.Face("wall.rock", T, T, c =>
+        {
+            Pix.Raised(c, 0, 0, T, T, WallRock);
+            // a few cracks in the shade
+            c.HLine(4, 9, 9, WallRock.Dark);
+            c.VLine(12, 9, 7, WallRock.Dark);
+            c.HLine(18, 22, 10, WallRock.Dark);
+            c.VLine(18, 22, 6, WallRock.Dark);
+            c.HLine(6, 26, 6, WallRock.Dark);
+        });
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                bool wall = CyllageWall.IsWall(x, y), rope = CyllageWall.IsRope(x, y);
+                if (!wall && !rope) continue;
+                still.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
+                if (wall)
+                {
+                    still.Decal(0, T, 0, T, 0.012f, rock);
+                    if (CyllageWall.IsGrip(x, y)) still.Block("wall.grip", Grip, 10, 22, 10, 22, 0, 4);
+                }
+                else
+                {
+                    still.Block("wall.rope", Hemp, 13, 19, 0, T, 0, 2);
+                    foreach (int z in new[] { 2, 10, 18, 26 }) still.Block("wall.knot", HempKnot, 12, 20, z, z + 3, 0, 3);
+                }
+            }
+        art = Upload(sheet);
+        stillParts = Make(still);
+    }
+
+    // ------------------------------------------------------------------ the Shalour Gym
+
+    /// <summary>Korrina's ramps and levers (style guide, "Gyms", "The Shalour Gym's rink").</summary>
+    private static readonly Tone RampSteel = Tone.Of(150, 160, 182, 196, 204, 220, 100, 108, 128);
+    private static readonly Tone Hazard = Tone.Of(236, 196, 60);
+    private static readonly Tone Handle = Tone.Of(206, 62, 58);
+
+    /// <summary>
+    /// Korrina's rink (plan 23, Kalos's Gyms; style guide, "Gyms", "The Shalour Gym's rink"): a ramp of steel in two steps
+    /// over the north half of its tile with a hazard stripe at its lip, built round the tile's middle and turned to the
+    /// way it faces; a lever's post with its handle leaning west, and one leaning east.
+    /// </summary>
+    private void BuildShalour(Map map)
+    {
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        kit.Block("ramp.steel", RampSteel, -12, 12, -16, 0, 0, 4);
+        kit.Block("ramp.steel", RampSteel, -12, 12, -16, -8, 4, 7);
+        kit.Block("ramp.lip", Hazard, -12, 12, -16, -14, 7, 8);
+        var west = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        var east = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        foreach (var (lever, side) in new[] { (west, -1), (east, 1) })
+        {
+            lever.Block("lever.post", RampSteel, -4, 4, -4, 4, 0, 10);
+            lever.Block("lever.handle", Handle, side < 0 ? -10 : 4, side < 0 ? -4 : 10, -2, 2, 8, 14);
+        }
+        art = Upload(sheet);
+        ramp = Make(kit);
+        leverWest = Make(west);
+        leverEast = Make(east);
+    }
+
+    // ------------------------------------------------------------------ the Coumarine Gym
+
+    /// <summary>Ramos's vines, poles and switch (style guide, "Gyms", "The Coumarine Gym's tree").</summary>
+    private static readonly Tone Vine = Tone.Of(86, 150, 74, 126, 186, 98, 56, 104, 52);
+    private static readonly Tone Leaf = Tone.Of(126, 186, 98);
+    private static readonly Tone PoleWood = Tone.Of(176, 128, 82, 210, 166, 112, 122, 86, 56);
+    private static readonly Tone Blossom = Tone.Of(226, 120, 168);
+
+    /// <summary>
+    /// Ramos's tree (plan 23, Kalos's Gyms; style guide, "Gyms", "The Coumarine Gym's tree"): each pole an upright of vine
+    /// (to climb) or of wood (to slide) standing just before its face from the tier below to the tier above, the vines
+    /// leafed; the hanging pole hung a third of the way down, and let down to the foot; the switch a loop of vine round a
+    /// flower on its tile. Built where they stand, the hanging pole at its own place.
+    /// </summary>
+    private void BuildCoumarine(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var still = new KitBuilder(sheet, vs);
+        KitBuilder? hungKit = null, downKit = null;
+        // Texels of the face a pole stands before: from the tier below it (the tile south of the face) to its top
+        float Rise(int x, int y) => MathF.Max(8f, MathF.Round((Relief.At(map, x + 0.5f, y + 0.5f) - Relief.At(map, x + 0.5f, y + 1.5f)) / (KitBuilder.Texel * vs)));
+        void Pole(KitBuilder kit, CoumarinePoles.Kind kind, float from, float to)
+        {
+            bool vine = kind != CoumarinePoles.Kind.Slide;
+            kit.Block(vine ? "pole.vine" : "pole.wood", vine ? Vine : PoleWood, 13, 19, T, T + 6, from, to);
+            if (!vine) return;
+            int n = 0;
+            for (float y = from + 6; y < to - 4; y += 10, n++)
+                kit.Block("pole.leaf", Leaf, n % 2 == 0 ? 8 : 19, n % 2 == 0 ? 13 : 24, T + 1, T + 5, y, y + 4);
+        }
+        foreach (var p in CoumarinePoles.Poles)
+        {
+            var origin = new Vector3(p.X, Relief.At(map, p.X + 0.5f, p.Y + 1.5f), p.Y);
+            float rise = Rise(p.X, p.Y);
+            if (p.Kind == CoumarinePoles.Kind.Hanging)
+            {
+                hangingAt = origin;
+                var hung = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+                Pole(hung, p.Kind, MathF.Round(rise * 2f / 3f), rise);
+                var down = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+                Pole(down, p.Kind, 0f, rise);
+                hungKit = hung;
+                downKit = down;
+                continue;
+            }
+            still.Origin = origin;
+            Pole(still, p.Kind, 0f, rise);
+        }
+        var (sx, sy) = CoumarinePoles.Switch;
+        still.Origin = new Vector3(sx, Relief.At(map, sx + 0.5f, sy + 0.5f), sy);
+        still.Block("switch.loop", Vine, 6, 26, 6, 9, 0, 2);
+        still.Block("switch.loop", Vine, 6, 26, 23, 26, 0, 2);
+        still.Block("switch.side", Vine, 6, 9, 9, 23, 0, 2);
+        still.Block("switch.side", Vine, 23, 26, 9, 23, 0, 2);
+        still.Block("switch.flower", Blossom, 13, 19, 13, 19, 0, 3);
+        art = Upload(sheet);
+        stillParts = Make(still);
+        if (hungKit != null) poleHung = Make(hungKit);
+        if (downKit != null) poleDown = Make(downKit);
+    }
+
     // ------------------------------------------------------------------ the Sootopolis Gym
 
     /// <summary>
@@ -1523,6 +1768,7 @@ internal sealed class GymPieces
         waterfall.Clear();
         gatePost = gateArm = gateLongArm = null;
         turnHub = turnArm = null;
+        strandWet = strandDry = ramp = leverWest = leverEast = poleHung = poleDown = null;
         slabWide = slabNarrow = null;
         iceCrack = iceGlaze = null;
         pillar = null;

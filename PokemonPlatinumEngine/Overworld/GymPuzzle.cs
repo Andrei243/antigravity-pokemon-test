@@ -97,6 +97,11 @@ public abstract class GymPuzzle
         BlackthornPlatforms.PuzzleName => new BlackthornPlatforms(),
         // Wulfric's Gym in Snowbelle City (plan 23, Kalos's Gyms): turntables of ice whose hubs turn them
         SnowbelleTurntables.PuzzleName => new SnowbelleTurntables(),
+        // Kalos's other hand-drawn Gyms (plan 23, Kalos's Gyms): Viola's web, Grant's wall, Korrina's rink, Ramos's tree
+        SantaluneWeb.PuzzleName => new SantaluneWeb(),
+        CyllageWall.PuzzleName => new CyllageWall(),
+        ShalourRails.PuzzleName => new ShalourRails(),
+        CoumarinePoles.PuzzleName => new CoumarinePoles(),
         // The League's platform lifts (plan 01 · M9, part 2d), one name to a shaft
         _ when LeagueLift.IsName(name) => new LeagueLift(name),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")

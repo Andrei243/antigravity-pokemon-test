@@ -69,7 +69,10 @@
     // Plan 23 · Z4b, after the Hall of Fame: the station's square east of Lumiose's east gate (Lumiose City's own area),
     // and the shore road south from its south-east gate down to Azure Bay, with Sea Spirit's Den's island in the bay
     { "file": "lumiose_station.txt", "x": 420, "z": 340 },
-    { "file": "azure_bay.txt", "x": 384, "z": 420 }
+    { "file": "azure_bay.txt", "x": 384, "z": 420 },
+    // Plan 23, Kalos's port and its islets: Coumarine City's quay and harbour are its own drawing's last rows; south of
+    // them, and west of Route 3, the bay's islets, reached only by Surf
+    { "file": "coumarine_bay.txt", "x": 176, "z": 510 }
   ],
   // Plan 23 · Z3, second part: maps of their own beside the overworld, each on a grid of its own and its own matrix (the caves)
   "maps": [
@@ -133,6 +136,8 @@
     { "key": "kiloude_city", "x": 532, "z": 332, "width": 68, "depth": 56 },
     // Plan 23 · Z4b: the shore road and the bay south-east of Lumiose (the station's square is Lumiose's, which reaches
     // over it since Z4b)
-    { "key": "azure_bay", "x": 384, "z": 420, "width": 72, "depth": 96 }
+    { "key": "azure_bay", "x": 384, "z": 420, "width": 72, "depth": 96 },
+    // Plan 23, Kalos's port: the islets off Coumarine City's harbour and the bay round them
+    { "key": "coumarine_bay", "x": 176, "z": 510, "width": 80, "depth": 40 }
   ]
 }

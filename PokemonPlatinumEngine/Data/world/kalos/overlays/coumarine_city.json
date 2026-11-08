@@ -40,5 +40,10 @@
   },
   "signs": {
     "CitySign": "Coumarine City\nA garden city of a hundred flower beds."
-  }
+  },
+  // Plan 23, Kalos's port: the quay and harbour south of the garden, the professor with HM02 once the Plant Badge is won, and the sailor who tells of the islets
+  "npcs": [
+    { "id": "sycamore_port", "name": "Prof. Sycamore", "npcType": "sycamore", "x": 264, "y": 506, "facing": "Down", "script": "Sycamore", "shownBy": "FLAG_KALOS_DEFEATED_COUMARINE_GYM", "hiddenBy": "FLAG_KALOS_RECEIVED_HM02" },
+    { "id": "port_sailor", "name": "Sailor", "npcType": "sailor", "x": 248, "y": 507, "facing": "Down", "script": "Sailor" }
+  ]
 }

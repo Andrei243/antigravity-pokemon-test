@@ -32,5 +32,10 @@
   },
   "signs": {
     "RouteSign": "Route 6 · The Palace Avenue\nNorth: the palace\nSouth: Camphrier Town"
-  }
+  },
+  // Plan 23, Kalos's HMs: what lies behind the small tree and the boulder in the avenue's north hedge
+  "npcs": [
+    { "id": "hedge_revive", "name": "Revive", "npcType": "ItemBall", "item": "Revive", "x": 212, "y": 266, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_6_HEDGE" },
+    { "id": "hedge_protein", "name": "Protein", "npcType": "ItemBall", "item": "Protein", "x": 191, "y": 266, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_ROUTE_6_BOULDER" }
+  ]
 }

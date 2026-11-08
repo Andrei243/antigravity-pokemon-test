@@ -1,0 +1,25 @@
+{
+  "people": {
+    "bay_pearl": {
+      "name": {
+        "en": [
+          "Big Pearl"
+        ],
+        "text": [
+          "Big Pearl"
+        ]
+      }
+    },
+    "bay_shell_bell": {
+      "name": {
+        "en": [
+          "Shell Bell"
+        ],
+        "text": [
+          "Shell Bell"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -6,6 +6,7 @@
   "trees": "Round",
   "battleArena": "Gym",
   "arenaType": "Bug",
+  "puzzle": "SantaluneWeb",
   "width": 13,
   "height": 18,
   "ground": [
@@ -15,13 +16,13 @@
     "#___________#",
     "#___________#",
     "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
+    "#VVVVVVVVVVV#",
     "#___________#",
     "#___________#",
     "#___________#",
@@ -35,16 +36,16 @@
     "##.........##",
     "#...........#",
     "#...........#",
+    "###.#####.###",
+    "#...........#",
+    "####.###.####",
+    "####.###.####",
+    "#...........#",
+    "###.##.##.###",
+    "###.##.##.###",
     "#...........#",
     "#...........#",
     "#...........#",
-    "##.........##",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...........#",
-    "#...#...#...#",
     "#...........#",
     "######.######"
   ],
@@ -64,44 +65,9 @@
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 1,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 11,
-      "y": 9,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 4,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Statue",
-      "x": 8,
-      "y": 15,
-      "width": 1,
-      "depth": 1
-    },
-    {
       "type": "Rug",
       "x": 6,
       "y": 4,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Rug",
-      "x": 6,
-      "y": 10,
       "width": 1,
       "depth": 1
     },
@@ -145,7 +111,7 @@
       "id": "gym_guide",
       "name": "Gym Guide",
       "npcType": "Gentleman",
-      "x": 9,
+      "x": 10,
       "y": 15,
       "facing": "Down",
       "script": "GymGuide"
@@ -154,8 +120,8 @@
       "id": "kalos_lass_mireille",
       "name": "Mireille",
       "npcType": "Lass",
-      "x": 3,
-      "y": 11,
+      "x": 2,
+      "y": 14,
       "facing": "Right",
       "trainer": {
         "id": "kalos_lass_mireille",
@@ -172,8 +138,8 @@
       "id": "kalos_bug_catcher_luc",
       "name": "Luc",
       "npcType": "bug_catcher",
-      "x": 9,
-      "y": 7,
+      "x": 10,
+      "y": 5,
       "facing": "Left",
       "trainer": {
         "id": "kalos_bug_catcher_luc",

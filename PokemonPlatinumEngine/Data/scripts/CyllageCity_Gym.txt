@@ -1,7 +1,8 @@
 # Cyllage City's Gym (plan 23 · Z2, second part). The lines are our own, on X and Y's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Central Kalos, drawn by hand: Route 5 to Cyllage City"): Grant, a climber of
-# rock walls, battles for the Cliff Badge, Kalos's second (`givebadge cliff`), and gives a TM. The hall is one room with
-# no puzzle (X and Y's climbing wall is not built). VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes it 18.
+# rock walls, battles for the Cliff Badge, Kalos's second (`givebadge cliff`), and gives a TM. The hall is a climbing wall
+# in two pitches (the map's puzzle, CyllageWall: plan 23, Kalos's Gyms), climbed up and sideways by its grips, and gone
+# down by its ropes. VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes it 18.
 # His team is Kalos's trainers.json's kalos_grant_1; his two trainers are the hall's own.
 
 
@@ -27,11 +28,16 @@ label Tm
   say "Take this too. My Pokémon use it to bury a foe's feet in stone and slow it right down."
   give "TM39"
   setflag FLAG_KALOS_RECEIVED_TM_GRANT
+label Strength
+  say "And this. On a wall you can't always go round a boulder, so you learn to move it."
+  give "HM04"
+  setflag FLAG_KALOS_RECEIVED_HM04
   say "There's more of Kalos to climb. Keep looking for the next hold."
   endscene
   end
 label Won
   if not flag FLAG_KALOS_RECEIVED_TM_GRANT goto Tm
+  if not flag FLAG_KALOS_RECEIVED_HM04 goto Strength
   say "Every morning I climb this wall and think of our battle. I still haven't found where I slipped."
   end
 

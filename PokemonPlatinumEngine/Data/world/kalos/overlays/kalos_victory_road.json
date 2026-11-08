@@ -34,6 +34,9 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
-    { "id": "mega_garchompite", "name": "Garchompite", "npcType": "ItemBall", "item": "Garchompite", "x": 55, "y": 8, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_GARCHOMPITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
+    { "id": "mega_garchompite", "name": "Garchompite", "npcType": "ItemBall", "item": "Garchompite", "x": 55, "y": 8, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_GARCHOMPITE", "shownBy": "FLAG_KALOS_STONES_GLINT" },
+    // Plan 23, Kalos's Surf-only places: the lake in the great hall's south-west and the chamber beyond it, reached only by Surf
+    { "id": "lake_max_revive", "name": "Max Revive", "npcType": "ItemBall", "item": "Max Revive", "x": 12, "y": 56, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_LAKE_MAX_REVIVE" },
+    { "id": "lake_dragon_fang", "name": "Dragon Fang", "npcType": "ItemBall", "item": "Dragon Fang", "x": 19, "y": 57, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_LAKE_DRAGON_FANG" }
   ]
 }

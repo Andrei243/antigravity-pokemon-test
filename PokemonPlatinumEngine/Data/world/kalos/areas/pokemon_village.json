@@ -54,7 +54,7 @@
     { "species": "Basculin", "level": 25 },
     { "species": "Poliwhirl", "level": 25 },
     { "species": "Basculin", "level": 25 },
-    { "species": "Poliwhirl", "level": 25 },
+    { "species": "Dratini", "level": 25 },
     { "species": "Poliwhirl", "level": 25 }
   ],
   "goodRodRate": 50,
@@ -62,7 +62,7 @@
     { "species": "Poliwhirl", "level": 35 },
     { "species": "Basculin", "level": 35 },
     { "species": "Poliwhirl", "level": 35 },
-    { "species": "Basculin", "level": 35 },
+    { "species": "Dragonair", "level": 35 },
     { "species": "Basculin", "level": 35 }
   ],
   "superRodRate": 75

@@ -1,0 +1,131 @@
+{
+  "name": "LumioseCity_TelevisionLobby",
+  "displayName": "Lumiose Television",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..###.##.#",
+    "#.........#",
+    "#.........#",
+    "#.##...##.#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "ReceptionDesk",
+      "x": 3,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 406,
+      "targetY": 348,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "The studios upstairs are closed to visitors today. They are recording the weather, very carefully."
+      ]
+    },
+    {
+      "id": "director",
+      "name": "Director",
+      "npcType": "game_director",
+      "x": 8,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "Lights, cameras, Pokémon! The trouble is the Pokémon never read the script."
+      ]
+    },
+    {
+      "id": "hopeful",
+      "name": "Hopeful",
+      "npcType": "idol",
+      "x": 6,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "I've come for an audition every week this year. Next week is the one, I can feel it."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

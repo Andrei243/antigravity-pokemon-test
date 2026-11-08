@@ -100,6 +100,8 @@ public static class Drawing
         ['n'] = new('M', false, TileBehavior.EntranceSouth),
         // Plan 23, Kalos's Mamoswine ride: a drift of snow too deep to wade, crossed only on a ridden Pokémon's back
         ['%'] = new('^', false, TileBehavior.SnowDrift),
+        // Plan 23, Kalos's Waterfall: a waterfall, taken up or down with the field move (Couriway Town's falls)
+        ['|'] = new('~', false, TileBehavior.Waterfall),
         // Plan 23, Alola's rough ground: rocks and rubble only Mudsdale's Gallop crosses, open rock underfoot
         ['x'] = new('r', false, TileBehavior.RoughGround),
     };

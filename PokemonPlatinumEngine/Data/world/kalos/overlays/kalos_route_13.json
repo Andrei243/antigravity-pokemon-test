@@ -6,6 +6,8 @@
   "area": "kalos_route_13",
   "bgmTrack": "kalos/route2",
   "trees": "Round",
+  // The badlands round the Power Plant hum with its field, as X and Y's do: a Magneton, a Nosepass or a Charjabug levels up into its last form here (plan 23, Kalos's species; GE3)
+  "evolutionSites": [ "Magnetic Field" ],
   "architecture": "Cyllage",
   "doors": [
     { "warp": 0, "map": "KalosPowerPlant", "x": 8, "y": 12, "facing": "Up" }

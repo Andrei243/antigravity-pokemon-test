@@ -1,0 +1,18 @@
+# Route 19 (plan 23, Kalos's HMs; docs/mechanics/rulings.md, "Kalos's port, the bay's islets, Waterfall and the other
+# HMs"). The lines are our own, on X and Y's beat as it is publicly described: Shauna waits on the road out of Couriway
+# Town and hands over the HM that teaches Waterfall (Platinum's HM07: this game's HMs keep Platinum's numbers), with which
+# a surfer goes down Couriway's falls into the pool below them and back up again.
+
+
+script Shauna
+  face self player
+  speaker "Shauna"
+  scene "Shauna on Route 19"
+  say "{player}! I knew you'd come this way. Everybody's heading for Snowbelle now, aren't they?"
+  say "I found this at the bottom of my bag. I think it's from a Gym? Anyway, I can't swim up anything, so it's yours!"
+  give "HM07"
+  setflag FLAG_KALOS_RECEIVED_HM07
+  say "It teaches Waterfall. Couriway's falls go down into a pool nobody fishes. Maybe there's something in it!"
+  hide self
+  endscene
+  end

@@ -344,6 +344,8 @@ internal sealed partial class Autoplayer
                 // In Wulfric's hall a way that isn't there is turned into being: off a hub and back onto it turns its
                 // turntable a quarter (plan 23, Kalos's Gyms), as a player who has lost the thread of the itinerary would
                 if (map.Puzzle is SnowbelleTurntables tables && TurnATable(map, tables, px, py)) return ActionFrame.None;
+                // and so is one in Viola's web or Korrina's rink: onto a knot or a lever, or off it to come back on
+                if (map.Puzzle is SantaluneWeb or ShalourRails && StepOnAToggle(map, px, py)) return ActionFrame.None;
                 return Failed(it, $"no route on {map.Name} from {px},{py} toward {tx},{ty}") ? ActionFrame.None : ActionFrame.None;
             }
             at = 0;
@@ -394,6 +396,30 @@ internal sealed partial class Autoplayer
             bool hubThere = SnowbelleTurntables.HubAt(px + dx, py + dy) >= 0;
             if (onHub == hubThere || !SnowbelleTurntables.Covers(px + dx, py + dy)) continue;
             if (!FieldMovement.Step(map, px, py, way, walker).Moves) continue;
+            Forget();
+            Walk(way, false);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// A step that shakes Viola's web or throws Korrina's points (plan 23, Kalos's Gyms): onto a knot or a lever beside the
+    /// player, or off the one stood on (so that the next try steps back onto it). False where neither is to hand.
+    /// </summary>
+    private bool StepOnAToggle(Map map, int px, int py)
+    {
+        static bool Toggle(Map map, int x, int y) =>
+            map.Puzzle is SantaluneWeb ? SantaluneWeb.IsKnot(x, y) : ShalourRails.IsLever(x, y);
+        var player = game.Player;
+        var walker = new Walker(player.Mode, player.HeightOn(map));
+        bool onOne = Toggle(map, px, py);
+        foreach (var way in new[] { Direction.Up, Direction.Right, Direction.Down, Direction.Left })
+        {
+            var (dx, dy) = FieldMovement.Delta(way);
+            if (onOne == Toggle(map, px + dx, py + dy)) continue;
+            var step = FieldMovement.Step(map, px, py, way, walker);
+            if (!step.Moves || step.Kind != StepKind.Walk) continue;
             Forget();
             Walk(way, false);
             return true;

@@ -511,7 +511,9 @@ public class KalosTests
         Assert.Equal("CoumarineCity_Gym", Overworld.GetWarpAt(268, 472)?.TargetMap);
         Assert.Contains(MapNamed("CoumarineCity_PokemonCenter_1F").NPCs, n => n.IsHealingNurse);
         Assert.Contains(MapNamed("CoumarineCity_PokemonCenter_1F").NPCs, n => n.IsPokeMartClerk);
-        Assert.Equal(4, Overworld.PlacedBuildings.Count(b => b.X0 >= 72 && b.X1 < 128 && b.Y0 >= 462 && b.Y1 < 506));
+        // (and, since Kalos's species, the fossil laboratory on the town's south side)
+        Assert.Equal("AmbretteTown_FossilLab", Overworld.GetWarpAt(89, 490)?.TargetMap);
+        Assert.Equal(5, Overworld.PlacedBuildings.Count(b => b.X0 >= 72 && b.X1 < 128 && b.Y0 >= 462 && b.Y1 < 506));
         Assert.Contains(MapNamed("AmbretteTown_PokemonCenter_1F").NPCs, n => n.IsHealingNurse);
         Assert.Contains(MapNamed("AmbretteTown_PokemonCenter_1F").NPCs, n => n.IsPokeMartClerk);
         Assert.False(string.IsNullOrEmpty(Kalos.Overlay("ambrette_town")?.BgmTrack));

@@ -1,0 +1,78 @@
+# La Table à Trois in Lumiose City (plan 37 · FC5, the second of Lumiose's restaurants). A restaurant of ours: its menu
+# is three courses, each a triple battle against its staff (Raoul, Agnès and Héloïse, trainers of Kalos's table whose
+# "format" is "triple"; a team of fewer than three is met in the double or single it can field), fought one after
+# another on the player's own team. The menu is taken once a day (FLAG_DAILY_KALOS_RESTAURANT_2, set as it is served),
+# and the dish is chosen by the turns the three courses took together (TURNS): six or fewer a PP Up, ten or fewer a Rare
+# Candy, fifteen or fewer two Leppa Berries, more three Oran Berries.
+
+
+script Host
+  face self player
+  speaker "Barnabé"
+  if flag FLAG_DAILY_KALOS_RESTAURANT_2 goto Served
+  say "Bienvenue to La Table à Trois! Every table seats three, and every battle sends out three."
+  ask "Will you take today's menu? Three courses, each a triple battle against our staff."
+  if no goto Later
+  setflag FLAG_DAILY_KALOS_RESTAURANT_2
+  say "Wonderful. Remember, the kitchen rewards a guest who doesn't dawdle."
+  speaker "Raoul"
+  say "The first course, three plates at once. Don't let anything go cold!"
+  battle raoul as "kalos_restaurant_trois_raoul" canlose
+  if lost goto Lost
+  speaker "Agnès"
+  say "The main course! Left, middle and right, all at the same time."
+  battle agnes as "kalos_restaurant_trois_agnes" canlose
+  if lost goto Lost
+  speaker "Héloïse"
+  say "Dessert is mine. I have never once served it slowly."
+  battle heloise as "kalos_restaurant_trois_heloise" canlose
+  if lost goto Lost
+  speaker "Barnabé"
+  say "Three courses in {var:TURNS} turns! The kitchen will want to hear of it."
+  if var TURNS <= 6 goto Best
+  if var TURNS <= 10 goto Good
+  if var TURNS <= 15 goto Fair
+  say "A long and lovely lunch. A small dish to send you on your way."
+  give "Oran Berry" 3
+  end
+label Best
+  say "Astonishing! The kitchen sends out its rarest dish, just for you."
+  give "PP Up"
+  end
+label Good
+  say "Quick and clever. The kitchen sends out something special."
+  give "Rare Candy"
+  end
+label Fair
+  say "A fine meal at a fine pace. Here is the dish of the day."
+  give "Leppa Berry" 2
+  end
+label Lost
+  heal
+  speaker "Barnabé"
+  say "Ah, the meal is over for today. We have seen to your Pokémon. Come back tomorrow for another try."
+  end
+label Later
+  say "As you wish. The table will be set for three tomorrow, too."
+  end
+label Served
+  say "You have eaten with us today already. Come back tomorrow, the menu will be new."
+  end
+
+
+# The staff between meals
+script Staff
+  face self player
+  if subject "raoul" goto Raoul
+  if subject "agnes" goto Agnes
+  speaker "Héloïse"
+  say "Whoever stands in the middle can reach everyone. So can whoever brings dessert."
+  end
+label Raoul
+  speaker "Raoul"
+  say "Three at once is a lot of plates to carry. I dropped only two last week!"
+  end
+label Agnes
+  speaker "Agnès"
+  say "Those at the ends can't always reach each other. Think about who sits where."
+  end

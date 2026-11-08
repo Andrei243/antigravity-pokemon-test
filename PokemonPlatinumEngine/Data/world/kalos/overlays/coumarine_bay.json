@@ -1,0 +1,14 @@
+{
+  // Coumarine Bay (plan 23, Kalos's port; docs/mechanics/rulings.md, "Kalos's port, the bay's islets, Waterfall and the
+  // other HMs"): drawn by hand, our words. South of Coumarine City's harbour two islets of tall grass lie in the bay,
+  // reached only by Surf (as X and Y's Azure Bay is from Route 12): X and Y's Route 12 has more Pokémon in its flowers and
+  // hordes than the twelve slots a drawn place holds, and the rest of them live here. It plays Coumarine's song (Santalune's
+  // until plan 31 writes it its own)
+  "area": "coumarine_bay",
+  "bgmTrack": "kalos/santalune",
+  "trees": "Round",
+  "npcs": [
+    { "id": "bay_pearl", "name": "Big Pearl", "npcType": "ItemBall", "item": "Big Pearl", "x": 191, "y": 524, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_COUMARINE_BAY_BIG_PEARL" },
+    { "id": "bay_shell_bell", "name": "Shell Bell", "npcType": "ItemBall", "item": "Shell Bell", "x": 224, "y": 540, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_COUMARINE_BAY_SHELL_BELL" }
+  ]
+}

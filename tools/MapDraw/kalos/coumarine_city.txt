@@ -46,7 +46,7 @@ TTTT....OOOOOOO***********====***********OOOOOOO....TTTT
 TTTT....OOOOOOO***********====***********OOOOOOO....TTTT
 TTTT................................................TTTT
 TTTT................................................TTTT
-TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTT================================================TTTT
+TTTT================================================TTTT
+TTTT~~~~~~~~~~~~~~~~~~~~~~~~~~==~~~~~~~~~~~~==~~~~~~TTTT
+TTTT~~~~~~~~~~~~~~~~~~~~~~~~~~==~~~~~~~~~~~~==~~~~~~TTTT

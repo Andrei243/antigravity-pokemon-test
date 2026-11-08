@@ -7,58 +7,28 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Plan 40 · GE1's check, for Kalos (plan 23 · Z4b): every species of X and Y's three Pokédexes (Central, Coastal and
 /// Mountain Kalos, 457 together) can be had in Kalos with nobody else (<see cref="SpeciesSources.Of(string)"/>), but what
-/// <see cref="Owed"/> names, each with who owes it. Drawn by hand, Kalos has twelve species to a place's grass and no
-/// water yet, so most of what is owed is X and Y's wild Pokémon still to place.
+/// <see cref="Owed"/> names, each with who owes it. Since Kalos's port and its HMs
+/// (plan 23) only the Jaw and Sail Fossils' lines and the mythicals are owed.
 /// </summary>
 public class KalosSpeciesTests
 {
     private const string Region = RegionDatabase.Kalos;
 
-    private const string Wild = "plan 23: X and Y's wild Pokémon still to place in Kalos (the water, the hordes, the rest of the grass)";
-    private const string Cord = "GE3: a Linking Cord in Kalos";
-    private const string Sites = "GE3: Kalos's places of evolution (a Moss Rock, an Ice Rock, a Magnetic Field)";
-    private const string Fossils = "plan 23: Ambrette's fossil laboratory";
+    private const string Fossils = "the importer: X and Y's Jaw and Sail Fossils, no items of the data yet (Ambrette's laboratory revives what the data has)";
     private const string Mythicals = "plan 29 · LS11: Kalos's mythicals, by events of ours";
 
     /// <summary>What Kalos's Pokédexes have that nothing in Kalos gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Evolved by trading, and Kalos gives no Linking Cord
-        ["Alakazam"] = Cord, ["Aromatisse"] = Cord, ["Slurpuff"] = Cord, ["Rhyperior"] = Cord, ["Steelix"] = Cord,
-        ["Machamp"] = Cord, ["Gigalith"] = Cord, ["Slowking"] = Cord, ["Golem"] = Cord, ["Escavalier"] = Cord,
-        ["Accelgor"] = Cord, ["Gengar"] = Cord, ["Politoed"] = Cord, ["Conkeldurr"] = Cord, ["Scizor"] = Cord,
-        // Evolved by levelling at a place no area of Kalos names yet
-        ["Leafeon"] = Sites, ["Glaceon"] = Sites, ["Probopass"] = Sites, ["Magnezone"] = Sites,
-        // Ambrette's fossil laboratory, which plan 23 · Z3 left unbuilt
-        ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils, ["Aerodactyl"] = Fossils,
+        // Ambrette's fossil laboratory revives an Old Amber; X and Y's two Fossils of Kalos are no items of the data
+        ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils,
         // Given by events alone in X and Y
         ["Diancie"] = Mythicals, ["Hoopa"] = Mythicals, ["Volcanion"] = Mythicals,
-        // X and Y's wild Pokémon that the drawn tables (twelve to a place) have no room for yet; the water's own came with
-        // Kalos's water (plan 23, after Z4b)
-        ["Surskit"] = Wild, ["Masquerain"] = Wild, ["Carvanha"] = Wild, ["Sharpedo"] = Wild, ["Psyduck"] = Wild,
-        ["Golduck"] = Wild, ["Farfetch'd"] = Wild, ["Plusle"] = Wild, ["Minun"] = Wild, ["Scraggy"] = Wild,
-        ["Scrafty"] = Wild, ["Venipede"] = Wild, ["Whirlipede"] = Wild, ["Scolipede"] = Wild, ["Whismur"] = Wild,
-        ["Loudred"] = Wild, ["Exploud"] = Wild, ["Meditite"] = Wild, ["Medicham"] = Wild, ["Axew"] = Wild,
-        ["Fraxure"] = Wild, ["Haxorus"] = Wild, ["Zangoose"] = Wild, ["Seviper"] = Wild, ["Lunatone"] = Wild,
-        ["Solrock"] = Wild, ["Bagon"] = Wild, ["Shelgon"] = Wild, ["Salamence"] = Wild, ["Dwebble"] = Wild,
-        ["Crustle"] = Wild, ["Kingdra"] = Wild, ["Woobat"] = Wild, ["Swoobat"] = Wild,
-        ["Cubone"] = Wild, ["Marowak"] = Wild, ["Kangaskhan"] = Wild, ["Ferroseed"] = Wild, ["Ferrothorn"] = Wild,
-        ["Nidoran♀"] = Wild, ["Mime Jr."] = Wild, ["Mr. Mime"] = Wild, ["Solosis"] = Wild, ["Duosion"] = Wild,
-        ["Reuniclus"] = Wild, ["Tauros"] = Wild, ["Miltank"] = Wild, ["Mareep"] = Wild, ["Flaaffy"] = Wild,
-        ["Ampharos"] = Wild, ["Pinsir"] = Wild, ["Heracross"] = Wild, ["Pachirisu"] = Wild, ["Exeggcute"] = Wild,
-        ["Exeggutor"] = Wild, ["Chatot"] = Wild, ["Clamperl"] = Wild,
-        ["Huntail"] = Wild, ["Gorebyss"] = Wild, ["Corsola"] = Wild,
-        ["Shuckle"] = Wild,
-        ["Barboach"] = Wild, ["Whiscash"] = Wild,
-        ["Smoochum"] = Wild, ["Jynx"] = Wild, ["Dratini"] = Wild, ["Dragonair"] = Wild,
-        ["Dragonite"] = Wild,
     };
 
     /// <summary>The items and places Kalos's evolutions ask for that nothing in Kalos gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = new()
     {
-        ["Linking Cord"] = Cord,
-        ["Moss Rock"] = Sites, ["Ice Rock"] = Sites, ["Magnetic Field"] = Sites,
     };
 
     [Fact]

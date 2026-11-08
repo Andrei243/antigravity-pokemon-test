@@ -1,0 +1,56 @@
+# Ambrette Town's fossil laboratory (plan 23, Kalos's species; docs/mechanics/rulings.md, "Kalos's port, the bay's
+# islets, Waterfall and the other HMs"). The lines are our own, on X and Y's beat as it is publicly described: the
+# laboratory beside the aquarium revives Fossils dug out of the Glittering Cave. X and Y's Jaw and Sail Fossils are no
+# items of the data yet, so its assistant gives the one Fossil the data has, an Old Amber, once (FLAG_KALOS_RECEIVED_OLD_AMBER),
+# and the restorer revives any Fossil at level 20 once the player has gone out and come back (plan 06 · R16b's fossil
+# command, as Alola's Fossil Restoration Center does).
+
+
+script Restorer
+  speaker "Restorer"
+  if flag FLAG_MAP_LOCAL_KALOS_FOSSIL_REVIVING goto Working
+  fossil ready
+  if result == 1 goto Ready
+  say "Welcome to the fossil laboratory! The cave up the coast is full of them, and we bring them back to life."
+  fossil count
+  if result == 0 goto None
+  ask "You've brought a Fossil! Shall I wake up whatever is sleeping inside it?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+  say "Leave it with me. Take a stroll by the sea and come back."
+label Working
+  setflag FLAG_MAP_LOCAL_KALOS_FOSSIL_REVIVING
+  say "The machine is still humming. Come back after a little walk."
+  end
+label Ready
+  say "It worked! Your Fossil is {thing} again, after all this time!"
+  if not party < 6 goto Full
+  fossil give
+  fanfare pokemon
+  text "{player} received {thing}!"
+  end
+label Full
+  say "Your team is full, though. Make room and come back for it."
+  end
+label None
+  say "No Fossils? My assistant may have one to spare. Ask him."
+  end
+label Declined
+  say "No? The machine will be here when you change your mind."
+  end
+
+
+script Assistant
+  speaker "Assistant"
+  if flag FLAG_KALOS_RECEIVED_OLD_AMBER goto Given
+  say "We found more amber in the cave than we have shelves for. Here, take a piece. There's a Pokémon of the sky in it."
+  give "Old Amber"
+  setflag FLAG_KALOS_RECEIVED_OLD_AMBER
+  say "Show it to the restorer. She'll have it flying again in no time."
+  end
+label Given
+  say "Every Fossil is a Pokémon waiting. Some of them have waited a very long time."
+  end

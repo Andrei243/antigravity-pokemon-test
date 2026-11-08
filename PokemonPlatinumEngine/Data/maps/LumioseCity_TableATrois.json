@@ -1,0 +1,216 @@
+{
+  "name": "LumioseCity_TableATrois",
+  "displayName": "La Table à Trois",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##...#####.####",
+    "#.............#",
+    "#.##.......##.#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.##.......##.#",
+    "##...........##",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 11,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 11,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 11,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 6,
+      "width": 3,
+      "depth": 4
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Kalos",
+      "targetX": 344,
+      "targetY": 348,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "host",
+      "name": "Barnabé",
+      "npcType": "gentleman",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Host"
+    },
+    {
+      "id": "raoul",
+      "name": "Raoul",
+      "npcType": "waiter",
+      "x": 5,
+      "y": 7,
+      "facing": "Right",
+      "script": "Staff"
+    },
+    {
+      "id": "agnes",
+      "name": "Agnès",
+      "npcType": "waitress",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "script": "Staff"
+    },
+    {
+      "id": "heloise",
+      "name": "Héloïse",
+      "npcType": "lady",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "script": "Staff"
+    },
+    {
+      "id": "diner",
+      "name": "Diner",
+      "npcType": "ace_trainer_f",
+      "x": 4,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Three at once! I never know whom to watch, so I watch the dessert instead."
+      ]
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "npcType": "veteran",
+      "x": 10,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "Put your quickest in the middle, I always say. Then nobody listens to me."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

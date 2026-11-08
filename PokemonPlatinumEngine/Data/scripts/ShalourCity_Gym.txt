@@ -1,7 +1,8 @@
 # Shalour City's Gym (plan 23 · Z3, first part). The lines are our own, on X and Y's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Route 10 to Shalour City and the Key Stone, drawn by hand"): Korrina, a
-# fighter on skates, battles for the Rumble Badge, Kalos's third (`givebadge rumble`), and gives a TM. The hall is one
-# room with no puzzle (X and Y's rails are not built). VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes
+# fighter on skates, battles for the Rumble Badge, Kalos's third (`givebadge rumble`), and gives a TM. The hall is a
+# rink of rails over a pit (the map's puzzle, ShalourRails: plan 23, Kalos's Gyms), its gaps hopped from ramps that a
+# lever turns round. VAR_KALOS_STORY is vaniville_town.txt's count: the Badge makes
 # it 21, and Korrina is back at the tower (FLAG_KALOS_HIDE_KORRINA_TOWER cleared). Her team is Kalos's trainers.json's
 # kalos_korrina_1; her two trainers are the hall's own.
 

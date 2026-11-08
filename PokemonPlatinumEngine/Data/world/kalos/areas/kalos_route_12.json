@@ -33,12 +33,12 @@
     { "species": "Pancham", "level": 20 },
     { "species": "Dedenne", "level": 21 },
     { "species": "Ledyba", "level": 21 },
-    { "species": "Flabébé", "level": 21 },
-    { "species": "Skiddo", "level": 21 },
+    { "species": "Pachirisu", "level": 21 },
+    { "species": "Exeggcute", "level": 21 },
     { "species": "Mienfoo", "level": 21 },
     { "species": "Hawlucha", "level": 22 },
-    { "species": "Spritzee", "level": 22 },
-    { "species": "Floette", "level": 22 }
+    { "species": "Chatot", "level": 22 },
+    { "species": "Heracross", "level": 22 }
   ],
   "landRate": 20
 }

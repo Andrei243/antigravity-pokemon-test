@@ -1435,6 +1435,18 @@ kalos_olympia_1 199 (48) [Sigilyph → Glyphoracle, Slowking → Slowmonarch, Me
 kalos_preschooler_lou 201 (55) [Igglybuff → Wigglytuff]
 kalos_preschooler_nanette 200 (53) [Swinub → Mamoswine, Bonsly → Mimicedar]
 kalos_ramos_1 195 (34) [Weepinbell → Victreebel, Gogoat → Alpicorn]
+kalos_restaurant_bistro_bertrand 194 (32) [Litleo → Blazemonarch, Meowstic → Occulynx, Furfrou → Majesthound]
+kalos_restaurant_bistro_fabien 194 (31) [Furfrou → Majesthound, Pancham → Bambrawler]
+kalos_restaurant_bistro_odette 193 (30) [Spritzee → Aromatisse, Swirlix → Slurpuff]
+kalos_restaurant_carrousel_capucine 194 (33) [Skrelp → Dragalge, Clauncher → Clawitzer, Noibat → Noivern]
+kalos_restaurant_carrousel_ferdinand 195 (34) [Doublade → Aegislash, Malamar → Mesmerquid, Barbaracle → Reefcolony]
+kalos_restaurant_carrousel_marius 194 (32) [Honedge → Aegislash, Inkay → Mesmerquid, Binacle → Reefcolony]
+kalos_restaurant_grande_evrard 196 (37) [Heliolisk → Coronafrill, Clawitzer → Salvoclaw]
+kalos_restaurant_grande_hippolyte 196 (38) [Hawlucha → Luchacondor, Dragalge → Kelpdrake]
+kalos_restaurant_grande_severine 195 (36) [Pyroar → Blazemonarch, Meowstic → Occulynx, Aromatisse → Perfumelle]
+kalos_restaurant_trois_agnes 194 (33) [Helioptile → Coronafrill, Dedenne → Signalmus]
+kalos_restaurant_trois_heloise 195 (34) [Gogoat → Alpicorn, Diggersby → Excavabbit, Slurpuff → Soufflair]
+kalos_restaurant_trois_raoul 194 (33) [Skiddo → Alpicorn, Bunnelby → Excavabbit, Fletchinder → Talonflame]
 kalos_rival_cyllage_chespin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Quilladin → Chesnaught]
 kalos_rival_cyllage_fennekin 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Braixen → Delphox]
 kalos_rival_cyllage_froakie 190 (19) [Fletchling → Talonflame, Espurr → Occulynx, Frogadier → Greninja]
@@ -1863,6 +1875,19 @@ surf 116-129 (own 20-40)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== coumarine_bay
+Coumarine Bay, Kalos
+grass 193-194 (own 29-32)
+surf 193-194 (own 28-32)
+old rod 187-189 (own 10-15)
+good rod 193 (own 28-29)
+super rod 195 (own 35-36)
+=== coumarine_city
+Coumarine City, Kalos
+surf 193 (own 27-30)
+old rod 187-189 (own 10-15)
+good rod 193 (own 27-28)
+super rod 195 (own 34-35)
 === couriway_town
 Couriway Town, Kalos
 surf 195-196 (own 36-38)
@@ -2562,6 +2587,10 @@ trainers 4, 190 (own 17-18): kalos_backpacker_odile 190 (18) [Skiddo → Alpicor
 === kalos_victory_road
 Victory Road, Kalos
 grass 200-202 (own 50-58)
+surf 200 (own 50-53)
+old rod 187-189 (own 10-15)
+good rod 198 (own 45-46)
+super rod 200 (own 50-52)
 trainers 3, 201 (own 55-56): kalos_ace_trainer_camille 201 (56) [Aromatisse → Perfumelle, Clawitzer → Salvoclaw, Pangoro → Bambrawler], kalos_ace_trainer_maxime 201 (56) [Tyrantrum → Despotitan, Aurorus → Borealosaur], kalos_veteran_clovis 201 (56) [Druddigon → Drudrakon, Bisharp → Kingambit]
 === kanto_victory_road_1f
 Victory Road, Kanto
