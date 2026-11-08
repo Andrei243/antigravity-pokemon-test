@@ -90,10 +90,11 @@ public class AlolaUltraSpaceTests
         public BattleOutcome Fight = BattleOutcome.Won;
         public Map Fresh(string name) => cache.TryGetValue(name, out var m) ? m : cache[name] = built.TryGetValue(name, out var b) ? b : rooms(name);
 
-        public HeadlessScriptHost Run(string file, string script, string map, string? person = null, int[]? answers = null, int[]? rolls = null)
+        public HeadlessScriptHost Run(string file, string script, string map, string? person = null, int[]? answers = null, int[]? rolls = null, (int X, int Y)? stand = null)
         {
             var at = Fresh(map);
             var host = new HeadlessScriptHost(Story, Party, Bag) { Map = at, MapNamed = Fresh, Region = RegionDatabase.Alola, Fight = _ => Fight };
+            if (stand is { } tile) host.PlayerTile = tile;
             foreach (int a in answers ?? Array.Empty<int>()) host.Answers.Enqueue(a);
             foreach (int r in rolls ?? Array.Empty<int>()) host.Rolls.Enqueue(r);
             var runner = new ScriptRunner(ScriptLibrary.Default, host);
@@ -211,7 +212,7 @@ public class AlolaUltraSpaceTests
         var game = new Play();
         game.Story.Set("AlolaHallOfFame");
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Decidueye")!, 62));
-        var show = game.Run("RoyalAvenue_BattleRoyalDome", "TheShow", "RoyalAvenue_BattleRoyalDome");
+        var show = game.Run("RoyalAvenue_BattleRoyalDome", "TheShow", "RoyalAvenue_BattleRoyalDome", stand: (10, 15));
         Assert.Contains("royal royal_dome_hau royal_dome_gladion royal_dome_masked Won", show.Log);
         Assert.True(game.Story.Has("FLAG_ALOLA_ROYAL_SHOW_DONE"));
         Assert.False(game.Story.Has("FLAG_ALOLA_ROYAL_RING_SHOW"));
