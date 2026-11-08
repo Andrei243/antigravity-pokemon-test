@@ -39,9 +39,9 @@
     { "species": "Inkay", "level": 14 },
     { "species": "Starly", "level": 14 },
     { "species": "Mienfoo", "level": 14 },
-    { "species": "Wingull", "level": 14 },
-    { "species": "Drifloon", "level": 15 },
-    { "species": "Inkay", "level": 15 }
+    { "species": "Zangoose", "level": 14 },
+    { "species": "Seviper", "level": 15 },
+    { "species": "Bagon", "level": 15 }
   ],
   "landRate": 20,
   "water": [
@@ -62,7 +62,7 @@
     { "species": "Clauncher", "level": 25 },
     { "species": "Shellder", "level": 25 },
     { "species": "Staryu", "level": 25 },
-    { "species": "Staryu", "level": 25 }
+    { "species": "Carvanha", "level": 25 }
   ],
   "goodRodRate": 50,
   "superRod": [

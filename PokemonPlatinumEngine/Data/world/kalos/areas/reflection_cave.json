@@ -31,12 +31,12 @@
     { "species": "Sableye", "level": 18 },
     { "species": "Mawile", "level": 18 },
     { "species": "Gastly", "level": 19 },
-    { "species": "Zubat", "level": 19 },
-    { "species": "Roggenrola", "level": 19 },
+    { "species": "Mr. Mime", "level": 19 },
+    { "species": "Solosis", "level": 19 },
     { "species": "Carbink", "level": 19 },
-    { "species": "Sableye", "level": 20 },
-    { "species": "Mawile", "level": 20 },
-    { "species": "Carbink", "level": 20 },
+    { "species": "Mime Jr.", "level": 20 },
+    { "species": "Woobat", "level": 20 },
+    { "species": "Ferroseed", "level": 20 },
     { "species": "Golbat", "level": 20 }
   ],
   "landRate": 10

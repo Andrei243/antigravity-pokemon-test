@@ -40,7 +40,7 @@
     { "species": "Clauncher", "level": 18 },
     { "species": "Skrelp", "level": 18 },
     { "species": "Hawlucha", "level": 19 },
-    { "species": "Pancham", "level": 19 }
+    { "species": "Axew", "level": 19 }
   ],
   "landRate": 20,
   "water": [
@@ -60,7 +60,7 @@
     { "species": "Skrelp", "level": 25 },
     { "species": "Clauncher", "level": 25 },
     { "species": "Horsea", "level": 25 },
-    { "species": "Skrelp", "level": 25 },
+    { "species": "Clamperl", "level": 25 },
     { "species": "Clauncher", "level": 25 }
   ],
   "goodRodRate": 50,
@@ -69,7 +69,7 @@
     { "species": "Seadra", "level": 35 },
     { "species": "Dragalge", "level": 35 },
     { "species": "Clawitzer", "level": 35 },
-    { "species": "Relicanth", "level": 35 }
+    { "species": "Corsola", "level": 35 }
   ],
   "superRodRate": 75
 }

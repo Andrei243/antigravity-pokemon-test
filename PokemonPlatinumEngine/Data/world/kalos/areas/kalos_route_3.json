@@ -36,10 +36,10 @@
     { "species": "Pidgey", "level": 5 },
     { "species": "Burmy", "level": 4 },
     { "species": "Azurill", "level": 4 },
-    { "species": "Fletchling", "level": 5 },
+    { "species": "Farfetch'd", "level": 5 },
     { "species": "Bidoof", "level": 5 },
     { "species": "Dunsparce", "level": 5 },
-    { "species": "Burmy", "level": 5 },
+    { "species": "Surskit", "level": 5 },
     { "species": "Dunsparce", "level": 6 },
     { "species": "Azurill", "level": 6 }
   ],
@@ -47,7 +47,7 @@
   "water": [
     { "species": "Azurill", "level": 4, "maxLevel": 6 },
     { "species": "Marill", "level": 5, "maxLevel": 7 },
-    { "species": "Azurill", "level": 5, "maxLevel": 7 },
+    { "species": "Psyduck", "level": 5, "maxLevel": 7 },
     { "species": "Marill", "level": 6, "maxLevel": 8 },
     { "species": "Marill", "level": 7, "maxLevel": 9 }
   ],

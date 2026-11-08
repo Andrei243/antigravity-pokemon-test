@@ -38,9 +38,9 @@
     { "species": "Abra", "level": 10 },
     { "species": "Doduo", "level": 10 },
     { "species": "Smeargle", "level": 10 },
-    { "species": "Pancham", "level": 10 },
-    { "species": "Furfrou", "level": 10 },
-    { "species": "Skiddo", "level": 11 },
+    { "species": "Plusle", "level": 10 },
+    { "species": "Minun", "level": 10 },
+    { "species": "Scraggy", "level": 11 },
     { "species": "Doduo", "level": 11 }
   ],
   "landRate": 20
