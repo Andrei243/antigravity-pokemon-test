@@ -1,0 +1,102 @@
+{
+  "name": "AkalaRoute8_FossilCenter",
+  "displayName": "Route 8",
+  "bgmTrack": "alola/route4",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###....##.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "DisplayCase",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Akala",
+      "targetX": 245,
+      "targetY": 162,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "restorer",
+      "name": "Restorer",
+      "npcType": "scientist",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Restorer"
+    },
+    {
+      "id": "seller",
+      "name": "Fossil Seller",
+      "npcType": "ruin_maniac",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Seller"
+    }
+  ],
+  "wildEncounters": []
+}

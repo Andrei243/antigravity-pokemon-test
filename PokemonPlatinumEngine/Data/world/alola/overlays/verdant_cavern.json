@@ -9,6 +9,7 @@
   "callsForHelp": true,
   "trees": "Round",
   "people": {
+    "second_totem": { "name": "Raticate", "script": "SecondTotem", "still": true, "hiddenBy": "FLAG_ALOLA_TOTEM_RATICATE_DONE", "shownBy": "AlolaHallOfFame" },
     "ilima": { "name": "Ilima", "npcType": "ilima", "script": "IlimaInside", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL_DONE", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
     "den_1": { "name": "Yungoos", "script": "Den1", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_DEN_1", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },
     "den_2": { "name": "Yungoos", "script": "Den2", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_DEN_2", "shownBy": "FLAG_ALOLA_VERDANT_TRIAL" },

@@ -4,8 +4,10 @@
   "area": "akala_route_9",
   "bgmTrack": "alola/route4",
   "trees": "Round",
+  "doors": [
+    { "warp": 1, "map": "AkalaRoute9_PoliceStation", "x": 4, "y": 8, "facing": "Up" }
+  ],
   "architecture": "Islander",
-  "locked": [ 1 ],
   "people": {
     "policeman": {
       "name": "Policeman",

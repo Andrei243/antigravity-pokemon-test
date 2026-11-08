@@ -1,0 +1,107 @@
+{
+  "name": "RoyalAvenue_Shop",
+  "displayName": "Royal Avenue",
+  "bgmTrack": "alola/hauoli",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###......##",
+    "#.....###.#",
+    "#.........#",
+    "##........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Akala",
+      "targetX": 280,
+      "targetY": 229,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Clerk"
+    }
+  ],
+  "wildEncounters": []
+}

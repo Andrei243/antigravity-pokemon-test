@@ -1,0 +1,122 @@
+{
+  "name": "HeaheaCity_ResearchLab",
+  "displayName": "Heahea City",
+  "bgmTrack": "alola/hauoli",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.##.....#.##.#",
+    "#.............#",
+    "#.....###.....#",
+    "#.............#",
+    "#.............#",
+    "##............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 6,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Akala",
+      "targetX": 169,
+      "targetY": 309,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "npcType": "scientist",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Researcher"
+    },
+    {
+      "id": "assistant",
+      "name": "Assistant",
+      "npcType": "scientist",
+      "x": 11,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "We measure the strange tremors that ripple through the islands' air. The readings jump every few nights."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

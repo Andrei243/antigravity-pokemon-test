@@ -9,9 +9,11 @@
   "architecture": "Shoreline",
   "doors": [
     { "warp": 0, "map": "RoyalAvenue_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
-    { "warp": 1, "map": "RoyalAvenue_House", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 1, "map": "RoyalAvenue_House", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "RoyalAvenue_Megamart", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 4, "map": "RoyalAvenue_Shop", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 2, 3, 4 ],
+  "locked": [ 2 ],
   "triggers": [
     { "script": "RoyalScene", "x": 238, "z": 216, "width": 1, "depth": 4, "variable": "VAR_ALOLA_AKALA", "value": 0 }
   ],

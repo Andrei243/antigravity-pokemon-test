@@ -1,0 +1,15 @@
+# Malie Garden, Ula'ula Island (plan 23, the wave after the loose ends). The lines are our own. The gardener gives a
+# trainer who stops to talk a Miracle Seed, once (FLAG_ALOLA_MALIE_GARDENER_GIFT).
+
+
+script Gardener
+  speaker "Gardener"
+  if flag FLAG_ALOLA_MALIE_GARDENER_GIFT goto Done
+  say "Every stone here was carried across the sea by the people who built this garden. I only keep it tidy."
+  say "You stopped to look at it properly. Hardly anyone does. Take this. It grew in the bed by the bridge."
+  give "Miracle Seed"
+  setflag FLAG_ALOLA_MALIE_GARDENER_GIFT
+  end
+label Done
+  say "A Grass-type Pokémon holding that seed hits a little harder. Plants are stronger than they look."
+  end

@@ -16,6 +16,7 @@
   "fly": true,
   "warps": [],
   "objects": [
+    { "id": "second_totem", "looks": "araquanid", "movement": "look_south", "x": 89, "z": 96, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "lana", "looks": "lana", "movement": "look_east", "x": 115, "z": 133, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "splash", "looks": "wishiwashi", "movement": "look_west", "x": 110, "z": 125, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "splash_2", "looks": "wishiwashi", "movement": "look_east", "x": 85, "z": 130, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },

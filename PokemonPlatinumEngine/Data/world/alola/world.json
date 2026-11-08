@@ -29,7 +29,10 @@
     { "name": "MountLanakila", "matrix": 17, "area": "mount_lanakila", "trees": "Round", "setting": "Cave" },
     // Plan 23 · Z6: Diglett's Tunnel under Akala, between Route 8 and Route 9, a map of its own (matrix 20, clear of the
     // islands' numbers)
-    { "name": "DiglettsTunnel", "matrix": 20, "area": "digletts_tunnel", "trees": "Round", "setting": "Cave" }
+    { "name": "DiglettsTunnel", "matrix": 20, "area": "digletts_tunnel", "trees": "Round", "setting": "Cave" },
+    // The rest of the islands (plan 23, the wave after the loose ends): Seaward Cave under Melemele, from the meadow to
+    // Kala'e Bay (matrix 40, clear of the other sessions' numbers)
+    { "name": "SeawardCave", "matrix": 40, "area": "seaward_cave", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "alola_route_1",
@@ -77,6 +80,15 @@
     "konikoni_city",
     "memorial_hill",
     "akala_outskirts",
-    "hano_beach"
+    "hano_beach",
+    // The rest of the islands (plan 23, the wave after the loose ends)
+    "kalae_bay",
+    "seaward_cave",
+    "malie_garden",
+    "ulaula_route_14",
+    "ulaula_route_15",
+    "ulaula_meadow",
+    "ulaula_route_17",
+    "haina_desert"
   ]
 }

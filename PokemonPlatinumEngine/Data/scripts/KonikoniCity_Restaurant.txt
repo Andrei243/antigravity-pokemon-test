@@ -1,0 +1,23 @@
+# Konikoni City's restaurant (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Chef
+  speaker "Chef"
+  ask "Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order?"
+  if no goto Later
+  takemoney 1000
+  if result == 0 goto Poor
+  fade out
+  heal
+  text "{player} and the Pokémon ate every last bite."
+  fade in
+  say "Ha! Clean plates. That's what I like to see."
+  end
+label Poor
+  say "Not enough for the special? Come back after a few battles."
+  end
+label Later
+  say "Another time, then. The sauce only gets better."
+  end

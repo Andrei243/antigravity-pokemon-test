@@ -1,0 +1,118 @@
+{
+  "name": "KonikoniCity_Restaurant",
+  "displayName": "Konikoni City",
+  "bgmTrack": "alola/hauoli",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#......####",
+    "#.........#",
+    "#..##.....#",
+    "#..##..##.#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Akala",
+      "targetX": 346,
+      "targetY": 246,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "chef",
+      "name": "Chef",
+      "npcType": "chef",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Chef"
+    },
+    {
+      "id": "diner",
+      "name": "Diner",
+      "npcType": "old_man",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "The Konikoni special: fish, rice, and a sauce that makes your eyes water. In a good way."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

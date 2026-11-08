@@ -1,0 +1,16 @@
+# Hau'oli City's police station (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Officer
+  speaker "Officer"
+  say "Team Skull? They're more of a nuisance than a menace. Mostly they shout and pull faces at people."
+  say "If they bother you, battle them. That tends to quiet them down faster than we can."
+  end
+
+
+script Meowth
+  cry "Meowth"
+  text "Meowth: Mrrrow... It yawned and went back to sleep on the desk's papers."
+  end

@@ -848,6 +848,10 @@ super rod 20-55
 === guidance_chamber
 Guidance Chamber
 grass 27-30
+=== haina_desert
+Haina Desert
+grass 28-30
+trainers 2, 31-32: alola_hiker_nalu 32, alola_ruin_maniac_kawika 31
 === hano_beach
 Hano Beach
 surf 22-23
@@ -1165,6 +1169,11 @@ trainers 5, 28-60: johto_bug_catcher_abner 44, johto_bug_catcher_dane 48, johto_
 === jubilife_city
 Jubilife City
 trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
+=== kalae_bay
+Kala'e Bay
+grass 11-13
+surf 11-14
+trainers 2, 11-12: alola_lass_mele 12, alola_swimmer_kalua 12
 === kalos_route_10
 Route 10
 grass 17-19
@@ -1381,6 +1390,11 @@ trainers 3, 25-29: johto_boarder_deandre 26, johto_boarder_gerardo 26, johto_ski
 === mahogany_gym_room_2
 Mahogany Town
 trainers 2, 27-29: johto_boarder_patton 27, johto_skier_diana 29
+=== malie_garden
+Malie Garden
+grass 24-26
+surf 22-27
+trainers 3, 27-30: alola_ace_trainer_ako 30, alola_gentleman_tomo 30, alola_lass_ume 28
 === mauville_city_gym
 Mauville City
 trainers 5, 17: hoenn_angelo 17, hoenn_ben 17, hoenn_kirk 17, hoenn_shawn 17, hoenn_vivian 17
@@ -3116,6 +3130,10 @@ trainers 5, 44-47: unova_battle_girl_tia 47, unova_black_belt_drago 47, unova_bl
 Seaside Cave
 grass 39-42
 trainers 2, 47: unova_battle_girl_maki 47, unova_black_belt_rich 47
+=== seaward_cave
+Seaward Cave
+grass 10-12
+surf 10-13
 === sendoff_spring
 Sendoff Spring
 grass 37-40
@@ -3630,6 +3648,10 @@ old rod 5
 good rod 5-15
 super rod 15-35
 ours Lancerow 104-108, Porrigard 101-105, Slowmantle 120-124, Ammonarch 120-124
+=== ulaula_meadow
+Ula'ula Meadow
+grass 26-28
+trainers 2, 28-31: alola_ace_trainer_kalena 31, alola_youngster_liko 29
 === ulaula_route_10
 Route 10
 grass 17-19
@@ -3643,10 +3665,24 @@ trainers 5, 20-22: alola_ace_trainer_nalo 22, alola_fisherman_loke 21, alola_hik
 Route 13
 grass 23-25
 trainers 3, 23-24: alola_ace_trainer_makalii 24, alola_backpacker_keala 23, alola_hiker_akoni 24
+=== ulaula_route_14
+Route 14
+grass 25-27
+surf 25-28
+trainers 3, 29-30: alola_beauty_pua 30, alola_fisherman_ikaika 30, alola_swimmer_noe 29
+=== ulaula_route_15
+Route 15
+grass 26-27
+surf 26-28
+trainers 3, 29-31: alola_ace_trainer_lehua 31, alola_pokemon_breeder_mahina 30, alola_swimmer_kaimi 30
 === ulaula_route_16
 Route 16
 grass 26-27
 trainers 4, 25-28: alola_pokemon_breeder_hoku 26, alola_team_skull_grunt_ula1 26, alola_team_skull_grunt_ula2 27, alola_team_skull_grunt_ula3 28
+=== ulaula_route_17
+Route 17
+grass 27-30
+trainers 3, 30-32: alola_team_skull_grunt_route_17a 30, alola_team_skull_grunt_route_17b 30, alola_veteran_kona 32
 === undella_bay
 Undella Bay
 surf 25-40

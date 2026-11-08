@@ -57,14 +57,14 @@ The later generations, owed by their regions' plans until each plan's last sessi
 | Owed by | Species | Had somewhere | Not yet |
 |---|---:|---:|---:|
 | plan 23: Kalos | 72 | 62 | 10 |
-| plan 23: Alola | 88 | 49 | 39 |
+| plan 23: Alola | 88 | 56 | 32 |
 | plan 33: Galar | 89 | 0 | 89 |
 | plan 23: Hisui | 7 | 1 | 6 |
 | plan 34: Paldea | 120 | 4 | 116 |
 
 **plan 23: Kalos**, not yet had: Aromatisse, Slurpuff, Tyrunt, Tyrantrum, Amaura, Aurorus, Yveltal, Diancie, Hoopa, Volcanion.
 
-**plan 23: Alola**, not yet had: Crabominable, Mareanie, Toxapex, Stufful, Bewear, Oranguru, Wimpod, Golisopod, Sandygast, Palossand, Type: Null, Silvally, Minior, Turtonator, Drampa, Dhelmise, Tapu Koko, Tapu Lele, Tapu Bulu, Cosmog, Cosmoem, Lunala, Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Necrozma, Magearna, Marshadow, Poipole, Naganadel, Stakataka, Blacephalon, Zeraora, Meltan, Melmetal.
+**plan 23: Alola**, not yet had: Crabominable, Mareanie, Toxapex, Stufful, Bewear, Oranguru, Wimpod, Golisopod, Minior, Turtonator, Drampa, Dhelmise, Cosmog, Cosmoem, Lunala, Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Necrozma, Magearna, Marshadow, Poipole, Naganadel, Stakataka, Blacephalon, Zeraora, Meltan, Melmetal.
 
 **plan 33: Galar**, not yet had: Grookey, Thwackey, Rillaboom, Scorbunny, Raboot, Cinderace, Sobble, Drizzile, Inteleon, Skwovet, Greedent, Rookidee, Corvisquire, Corviknight, Blipbug, Dottler, Orbeetle, Nickit, Thievul, Gossifleur, Eldegoss, Wooloo, Dubwool, Chewtle, Drednaw, Yamper, Boltund, Rolycoly, Carkol, Coalossal, Applin, Flapple, Appletun, Silicobra, Sandaconda, Cramorant, Arrokuda, Barraskewda, Toxel, Toxtricity, Sizzlipede, Centiskorch, Clobbopus, Grapploct, Sinistea, Polteageist, Hatenna, Hattrem, Hatterene, Impidimp, Morgrem, Grimmsnarl, Obstagoon, Perrserker, Cursola, Sirfetch'd, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Snom, Frosmoth, Stonjourner, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Dreepy, Drakloak, Dragapult, Zacian, Zamazenta, Eternatus, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
 

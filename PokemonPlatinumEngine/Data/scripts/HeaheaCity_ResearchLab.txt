@@ -1,0 +1,10 @@
+# Heahea City's research laboratory (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Researcher
+  speaker "Researcher"
+  say "We study the strange lights seen over the islands at night. Some people say they're holes in the sky itself."
+  say "Professor Kukui drops by now and then. He says the lights look like the ones that brought Pokémon to Alola long ago."
+  end

@@ -4,6 +4,7 @@
   "bgmTrack": "alola/trial",
   "interior": "Museum",
   "trees": "Round",
+  "battleArena": "Cave",
   "width": 11,
   "height": 10,
   "ground": [
@@ -68,6 +69,18 @@
       "dialog": [
         "This is Tapu Lele's shrine. Its scales are said to heal any wound. Speak softly here."
       ]
+    },
+    {
+      "id": "legend",
+      "name": "Tapu Lele",
+      "npcType": "Pokemon",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "TapuLele",
+      "hiddenBy": "FLAG_ALOLA_TAPU_LELE_DONE",
+      "shownBy": "AlolaHallOfFame",
+      "species": "Tapu Lele"
     }
   ],
   "wildEncounters": []

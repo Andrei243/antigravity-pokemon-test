@@ -15,9 +15,11 @@
     { "warp": 1, "map": "HauoliCity_WestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 2, "map": "HauoliCity_EastHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 5, "map": "HauoliCity_MalasadaShop", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 7, "map": "HauoliCity_IlimasHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 7, "map": "HauoliCity_IlimasHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "HauoliCity_CityHall", "x": 7, "y": 10, "facing": "Up" },
+    { "warp": 4, "map": "HauoliCity_PoliceStation", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 6, "map": "HauoliCity_ApparelShop", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 3, 4, 6 ],
   "triggers": [
     { "script": "Marina", "x": 356, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 7 },
     { "script": "SailToAkala", "x": 356, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 13 }

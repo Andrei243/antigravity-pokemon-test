@@ -1,0 +1,42 @@
+{
+  // Route 14, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. A road south out of Tapu
+  // Village down to a grey beach and the sea, and east along the shore to Route 15
+  "area": "ulaula_route_14",
+  "bgmTrack": "alola/route4",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "noe": {
+      "name": "Noe",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Noe: The water's cold on this side of the island. Warm me up with a battle!",
+        "dialogueAfter": "Swimmer Noe: Still cold. Still lost."
+      }
+    },
+    "pua": {
+      "name": "Pua",
+      "npcType": "beauty",
+      "trainer": {
+        "dialogueBefore": "Beauty Pua: I came here for the quiet. You don't look quiet.",
+        "dialogueAfter": "Beauty Pua: You weren't. And neither was I."
+      }
+    },
+    "ikaika": {
+      "name": "Ikaika",
+      "npcType": "fisherman",
+      "trainer": {
+        "dialogueBefore": "Fisherman Ikaika: Nothing's biting today, so I'll catch a battle instead!",
+        "dialogueAfter": "Fisherman Ikaika: That one got away from me."
+      }
+    },
+    "surfer": {
+      "name": "Surfer",
+      "npcType": "backpacker_m",
+      "dialog": [ "The waves come all the way from Poni round this point. You can ride a Lapras right along the coast to Route 15." ]
+    }
+  },
+  "signs": {
+    "RouteSign": "Route 14\nNorth: Tapu Village\nEast: Route 15"
+  }
+}
