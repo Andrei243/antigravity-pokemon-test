@@ -18,7 +18,8 @@
     { "x": 89, "z": 474, "to": "AmbretteTown_WestHouse", "toWarp": 0 },
     { "x": 97, "z": 474, "to": "AmbretteTown_PokemonCenter_1F", "toWarp": 0 },
     { "x": 114, "z": 474, "to": "AmbretteTown_Aquarium", "toWarp": 0 },
-    { "x": 115, "z": 491, "to": "AmbretteTown_Cottage", "toWarp": 0 }
+    { "x": 115, "z": 491, "to": "AmbretteTown_Cottage", "toWarp": 0 },
+    { "x": 89, "z": 490, "to": "AmbretteTown_FossilLab", "toWarp": 0 }
   ],
   "objects": [
     { "id": "angler", "looks": "fisherman", "movement": "look_south", "x": 103, "z": 499, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },

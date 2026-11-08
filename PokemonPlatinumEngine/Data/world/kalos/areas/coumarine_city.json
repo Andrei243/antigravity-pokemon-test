@@ -28,5 +28,34 @@
   "signs": [
     { "x": 238, "z": 481, "type": 0, "script": "CitySign" }
   ],
-  "triggers": []
+  "triggers": [],
+  "water": [
+    { "species": "Tentacool", "level": 27, "maxLevel": 29 },
+    { "species": "Tentacool", "level": 27, "maxLevel": 29 },
+    { "species": "Wingull", "level": 27, "maxLevel": 29 },
+    { "species": "Wailmer", "level": 28, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 28, "maxLevel": 30 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 15 },
+    { "species": "Luvdisc", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Luvdisc", "level": 27 },
+    { "species": "Horsea", "level": 27 },
+    { "species": "Carvanha", "level": 27 },
+    { "species": "Luvdisc", "level": 27 },
+    { "species": "Horsea", "level": 28 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Seadra", "level": 34 },
+    { "species": "Sharpedo", "level": 34 },
+    { "species": "Corsola", "level": 34 },
+    { "species": "Seadra", "level": 35 },
+    { "species": "Lanturn", "level": 35 }
+  ],
+  "superRodRate": 75
 }

@@ -1,0 +1,65 @@
+{
+  "key": "coumarine_bay",
+  "index": 74,
+  "name": "Coumarine Bay",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "COUMARINE",
+  "nightMusic": "COUMARINE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    { "species": "Wingull", "level": 29 },
+    { "species": "Mareep", "level": 29 },
+    { "species": "Tauros", "level": 29 },
+    { "species": "Miltank", "level": 29 },
+    { "species": "Chatot", "level": 30 },
+    { "species": "Pachirisu", "level": 30 },
+    { "species": "Exeggcute", "level": 30 },
+    { "species": "Pinsir", "level": 30 },
+    { "species": "Heracross", "level": 31 },
+    { "species": "Zangoose", "level": 31 },
+    { "species": "Seviper", "level": 31 },
+    { "species": "Flaaffy", "level": 32 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 28, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 28, "maxLevel": 30 },
+    { "species": "Carvanha", "level": 28, "maxLevel": 30 },
+    { "species": "Wingull", "level": 29, "maxLevel": 31 },
+    { "species": "Pelipper", "level": 30, "maxLevel": 32 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 15 },
+    { "species": "Luvdisc", "level": 12, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Clamperl", "level": 28 },
+    { "species": "Horsea", "level": 28 },
+    { "species": "Carvanha", "level": 28 },
+    { "species": "Luvdisc", "level": 28 },
+    { "species": "Clamperl", "level": 29 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Corsola", "level": 35 },
+    { "species": "Sharpedo", "level": 35 },
+    { "species": "Seadra", "level": 35 },
+    { "species": "Relicanth", "level": 36 },
+    { "species": "Corsola", "level": 36 }
+  ],
+  "superRodRate": 75
+}

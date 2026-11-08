@@ -41,5 +41,34 @@
     { "species": "Noivern", "level": 56 },
     { "species": "Hydreigon", "level": 58 }
   ],
-  "landRate": 20
+  "landRate": 20,
+  "water": [
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 52 },
+    { "species": "Lombre", "level": 50, "maxLevel": 52 },
+    { "species": "Floatzel", "level": 50, "maxLevel": 52 },
+    { "species": "Floatzel", "level": 51, "maxLevel": 53 },
+    { "species": "Poliwhirl", "level": 51, "maxLevel": 53 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Basculin", "level": 45 },
+    { "species": "Poliwhirl", "level": 45 },
+    { "species": "Barboach", "level": 45 },
+    { "species": "Basculin", "level": 46 },
+    { "species": "Dratini", "level": 46 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwhirl", "level": 50 },
+    { "species": "Whiscash", "level": 50 },
+    { "species": "Basculin", "level": 50 },
+    { "species": "Poliwrath", "level": 52 },
+    { "species": "Dragonair", "level": 52 }
+  ],
+  "superRodRate": 75
 }

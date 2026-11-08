@@ -12,7 +12,9 @@
     { "warp": 0, "map": "AmbretteTown_WestHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 1, "map": "AmbretteTown_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
     { "warp": 2, "map": "AmbretteTown_Aquarium", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 3, "map": "AmbretteTown_Cottage", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 3, "map": "AmbretteTown_Cottage", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 23, Kalos's species: the fossil laboratory on the town's south side
+    { "warp": 4, "map": "AmbretteTown_FossilLab", "x": 4, "y": 8, "facing": "Up" }
   ],
   "props": [
     { "type": "LampPost", "x": 100, "y": 468, "width": 1, "depth": 1 },

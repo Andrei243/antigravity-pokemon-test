@@ -963,7 +963,7 @@ public static class RegionDatabase
                 "ShalourCity_SouthwestHouse", "ShalourCity_SoutheastHouse",
                 // Plan 23 · Z3, second part: the two caves, maps of their own (tools/MapDraw's layout "maps"), and Ambrette Town's rooms
                 "ReflectionCave", "GlitteringCave",
-                "AmbretteTown_PokemonCenter_1F", "AmbretteTown_WestHouse", "AmbretteTown_Aquarium", "AmbretteTown_Cottage",
+                "AmbretteTown_PokemonCenter_1F", "AmbretteTown_WestHouse", "AmbretteTown_Aquarium", "AmbretteTown_Cottage", "AmbretteTown_FossilLab",
                 "CoumarineCity_PokemonCenter_1F", "CoumarineCity_GardenHouse", "CoumarineCity_EastHouse",
                 // Plan 23 · Z4: Coumarine's Gym, the Power Plant, the Prism Tower's Gym, Lysandre's laboratory, Team Flare's
                 // base under Geosenge Town, the rooms of Laverre City, Dendemille Town, Anistar City, Couriway Town and

@@ -1,0 +1,25 @@
+# Coumarine City's port (plan 23, Kalos's port and its HMs; docs/mechanics/rulings.md, "Kalos's port, the bay's islets,
+# Waterfall and the other HMs"). The lines are our own, on X and Y's beat as it is publicly described: once Ramos's Plant
+# Badge is won the professor waits on the quay and hands over HM02, Fly. The port's sailor tells of the islets out in
+# the bay, which only a surfer reaches.
+
+
+script Sycamore
+  face self player
+  speaker "Prof. Sycamore"
+  scene "The professor on the quay"
+  say "{player}! I came down on the morning train to see the boats. And to see you, of course. Four Badges already!"
+  say "The further you go, the further Kalos's towns lie apart. Here, let a Pokémon carry you between them."
+  give "HM02"
+  setflag FLAG_KALOS_RECEIVED_HM02
+  say "That HM teaches Fly. A Pokémon that knows it can take you to any town you've been to before. A bientôt!"
+  hide self
+  endscene
+  end
+
+
+script Sailor
+  face self player
+  say "See the two little islands out in the bay? No boat calls there. You'd have to swim with a Pokémon."
+  say "There's grass on both, and Pokémon nobody sees on the mainland. Or so the fishermen say."
+  end

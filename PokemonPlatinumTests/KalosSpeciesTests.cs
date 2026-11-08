@@ -14,19 +14,16 @@ public class KalosSpeciesTests
 {
     private const string Region = RegionDatabase.Kalos;
 
-    private const string Wild = "plan 23: X and Y's wild Pokémon still to place in Kalos (the water, the hordes, the rest of the grass)";
-    private const string Fossils = "plan 23: Ambrette's fossil laboratory";
+    private const string Fossils = "the importer: X and Y's Jaw and Sail Fossils, no items of the data yet (Ambrette's laboratory revives what the data has)";
     private const string Mythicals = "plan 29 · LS11: Kalos's mythicals, by events of ours";
 
     /// <summary>What Kalos's Pokédexes have that nothing in Kalos gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Ambrette's fossil laboratory, which plan 23 · Z3 left unbuilt
-        ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils, ["Aerodactyl"] = Fossils,
+        // Ambrette's fossil laboratory revives an Old Amber; X and Y's two Fossils of Kalos are no items of the data
+        ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils,
         // Given by events alone in X and Y
         ["Diancie"] = Mythicals, ["Hoopa"] = Mythicals, ["Volcanion"] = Mythicals,
-        // X and Y's wild Pokémon that no drawn table holds yet
-        ["Tauros"] = Wild, ["Miltank"] = Wild, ["Mareep"] = Wild, ["Flaaffy"] = Wild, ["Ampharos"] = Wild, ["Pinsir"] = Wild,
     };
 
     /// <summary>The items and places Kalos's evolutions ask for that nothing in Kalos gives, and who owes each.</summary>

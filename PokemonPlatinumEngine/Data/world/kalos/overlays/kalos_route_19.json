@@ -33,5 +33,9 @@
   },
   "signs": {
     "RouteSign": "Route 19\nNorth: Snowbelle City\nWest: Couriway Town"
-  }
+  },
+  // Plan 23, Kalos's HMs: Shauna with the HM that teaches Waterfall
+  "npcs": [
+    { "id": "shauna_waterfall", "name": "Shauna", "npcType": "shauna", "x": 684, "y": 320, "facing": "Down", "script": "Shauna", "hiddenBy": "FLAG_KALOS_RECEIVED_HM07" }
+  ]
 }

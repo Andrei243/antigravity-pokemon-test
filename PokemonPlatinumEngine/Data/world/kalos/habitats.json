@@ -16,8 +16,8 @@
     "  .........T...         ",
     "  .T....T..T~~.         ",
     "  .T...TT.TT~~.         ",
-    "        ..TT...         ",
-    "       .....            ",
+    "     .~~..TT...         ",
+    "     .......            ",
     "       ..               ",
     "       ..               ",
     "       TT               ",
@@ -85,6 +85,69 @@
         "Tentacruel",
         "Mantine",
         "Lapras"
+      ]
+    },
+    {
+      "key": "coumarine_bay",
+      "name": "Coumarine Bay",
+      "cells": "5,16 6,16 7,16 5,17 6,17",
+      "morning": [
+        "Wingull",
+        "Mareep",
+        "Tauros",
+        "Miltank",
+        "Chatot",
+        "Pachirisu",
+        "Exeggcute",
+        "Pinsir",
+        "Heracross",
+        "Zangoose",
+        "Seviper",
+        "Flaaffy"
+      ],
+      "day": [
+        "Wingull",
+        "Mareep",
+        "Tauros",
+        "Miltank",
+        "Chatot",
+        "Pachirisu",
+        "Exeggcute",
+        "Pinsir",
+        "Heracross",
+        "Zangoose",
+        "Seviper",
+        "Flaaffy"
+      ],
+      "night": [
+        "Wingull",
+        "Mareep",
+        "Tauros",
+        "Miltank",
+        "Chatot",
+        "Pachirisu",
+        "Exeggcute",
+        "Pinsir",
+        "Heracross",
+        "Zangoose",
+        "Seviper",
+        "Flaaffy"
+      ],
+      "surf": [
+        "Tentacool",
+        "Carvanha",
+        "Wingull",
+        "Pelipper"
+      ]
+    },
+    {
+      "key": "coumarine_city",
+      "name": "Coumarine City",
+      "cells": "7,14 8,14 7,15 8,15",
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Wailmer"
       ]
     },
     {
@@ -162,6 +225,11 @@
         "Geodude",
         "Magnemite",
         "Onix",
+        "Cubone",
+        "Kangaskhan",
+        "Lunatone",
+        "Solrock",
+        "Dwebble",
         "Klefki",
         "Skarmory"
       ],
@@ -171,6 +239,11 @@
         "Geodude",
         "Magnemite",
         "Onix",
+        "Cubone",
+        "Kangaskhan",
+        "Lunatone",
+        "Solrock",
+        "Dwebble",
         "Klefki",
         "Skarmory"
       ],
@@ -180,6 +253,11 @@
         "Geodude",
         "Magnemite",
         "Onix",
+        "Cubone",
+        "Kangaskhan",
+        "Lunatone",
+        "Solrock",
+        "Dwebble",
         "Klefki",
         "Skarmory"
       ]
@@ -239,7 +317,8 @@
         "Dedenne",
         "Hawlucha",
         "Throh",
-        "Sawk"
+        "Sawk",
+        "Nidoran♀"
       ],
       "day": [
         "Nidorina",
@@ -251,7 +330,8 @@
         "Dedenne",
         "Hawlucha",
         "Throh",
-        "Sawk"
+        "Sawk",
+        "Nidoran♀"
       ],
       "night": [
         "Nidorina",
@@ -263,7 +343,8 @@
         "Dedenne",
         "Hawlucha",
         "Throh",
-        "Sawk"
+        "Sawk",
+        "Nidoran♀"
       ]
     },
     {
@@ -277,9 +358,12 @@
         "Pancham",
         "Dedenne",
         "Ledyba",
+        "Pachirisu",
+        "Exeggcute",
         "Mienfoo",
         "Hawlucha",
-        "Floette"
+        "Chatot",
+        "Heracross"
       ],
       "day": [
         "Flabébé",
@@ -288,9 +372,12 @@
         "Pancham",
         "Dedenne",
         "Ledyba",
+        "Pachirisu",
+        "Exeggcute",
         "Mienfoo",
         "Hawlucha",
-        "Floette"
+        "Chatot",
+        "Heracross"
       ],
       "night": [
         "Flabébé",
@@ -299,9 +386,12 @@
         "Pancham",
         "Dedenne",
         "Ledyba",
+        "Pachirisu",
+        "Exeggcute",
         "Mienfoo",
         "Hawlucha",
-        "Floette"
+        "Chatot",
+        "Heracross"
       ]
     },
     {
@@ -498,6 +588,7 @@
         "Vanillite",
         "Bergmite",
         "Piloswine",
+        "Smoochum",
         "Beartic",
         "Abomasnow",
         "Mamoswine"
@@ -511,6 +602,7 @@
         "Vanillite",
         "Bergmite",
         "Piloswine",
+        "Smoochum",
         "Beartic",
         "Abomasnow",
         "Mamoswine"
@@ -524,6 +616,7 @@
         "Vanillite",
         "Bergmite",
         "Piloswine",
+        "Smoochum",
         "Beartic",
         "Abomasnow",
         "Mamoswine"
@@ -541,7 +634,8 @@
         "Heatmor",
         "Gurdurr",
         "Graveler",
-        "Pupitar"
+        "Pupitar",
+        "Shuckle"
       ],
       "day": [
         "Torkoal",
@@ -551,7 +645,8 @@
         "Heatmor",
         "Gurdurr",
         "Graveler",
-        "Pupitar"
+        "Pupitar",
+        "Shuckle"
       ],
       "night": [
         "Torkoal",
@@ -561,7 +656,8 @@
         "Heatmor",
         "Gurdurr",
         "Graveler",
-        "Pupitar"
+        "Pupitar",
+        "Shuckle"
       ]
     },
     {
@@ -730,7 +826,9 @@
         "Pidgey",
         "Burmy",
         "Azurill",
-        "Dunsparce"
+        "Farfetch'd",
+        "Dunsparce",
+        "Surskit"
       ],
       "day": [
         "Fletchling",
@@ -739,7 +837,9 @@
         "Pidgey",
         "Burmy",
         "Azurill",
-        "Dunsparce"
+        "Farfetch'd",
+        "Dunsparce",
+        "Surskit"
       ],
       "night": [
         "Fletchling",
@@ -748,11 +848,14 @@
         "Pidgey",
         "Burmy",
         "Azurill",
-        "Dunsparce"
+        "Farfetch'd",
+        "Dunsparce",
+        "Surskit"
       ],
       "surf": [
         "Azurill",
-        "Marill"
+        "Marill",
+        "Psyduck"
       ]
     },
     {
@@ -799,7 +902,10 @@
         "Bunnelby",
         "Abra",
         "Doduo",
-        "Smeargle"
+        "Smeargle",
+        "Plusle",
+        "Minun",
+        "Scraggy"
       ],
       "day": [
         "Pancham",
@@ -809,7 +915,10 @@
         "Bunnelby",
         "Abra",
         "Doduo",
-        "Smeargle"
+        "Smeargle",
+        "Plusle",
+        "Minun",
+        "Scraggy"
       ],
       "night": [
         "Pancham",
@@ -819,7 +928,10 @@
         "Bunnelby",
         "Abra",
         "Doduo",
-        "Smeargle"
+        "Smeargle",
+        "Plusle",
+        "Minun",
+        "Scraggy"
       ]
     },
     {
@@ -833,7 +945,8 @@
         "Nincada",
         "Kecleon",
         "Audino",
-        "Honedge"
+        "Honedge",
+        "Venipede"
       ],
       "day": [
         "Espurr",
@@ -842,7 +955,8 @@
         "Nincada",
         "Kecleon",
         "Audino",
-        "Honedge"
+        "Honedge",
+        "Venipede"
       ],
       "night": [
         "Espurr",
@@ -851,7 +965,8 @@
         "Nincada",
         "Kecleon",
         "Audino",
-        "Honedge"
+        "Honedge",
+        "Venipede"
       ]
     },
     {
@@ -868,7 +983,9 @@
         "Swirlix",
         "Combee",
         "Croagunk",
-        "Smeargle"
+        "Smeargle",
+        "Whismur",
+        "Meditite"
       ],
       "day": [
         "Hoppip",
@@ -880,7 +997,9 @@
         "Swirlix",
         "Combee",
         "Croagunk",
-        "Smeargle"
+        "Smeargle",
+        "Whismur",
+        "Meditite"
       ],
       "night": [
         "Hoppip",
@@ -892,7 +1011,9 @@
         "Swirlix",
         "Combee",
         "Croagunk",
-        "Smeargle"
+        "Smeargle",
+        "Whismur",
+        "Meditite"
       ]
     },
     {
@@ -908,7 +1029,10 @@
         "Absol",
         "Inkay",
         "Starly",
-        "Mienfoo"
+        "Mienfoo",
+        "Zangoose",
+        "Seviper",
+        "Bagon"
       ],
       "day": [
         "Wingull",
@@ -919,7 +1043,10 @@
         "Absol",
         "Inkay",
         "Starly",
-        "Mienfoo"
+        "Mienfoo",
+        "Zangoose",
+        "Seviper",
+        "Bagon"
       ],
       "night": [
         "Wingull",
@@ -930,7 +1057,10 @@
         "Absol",
         "Inkay",
         "Starly",
-        "Mienfoo"
+        "Mienfoo",
+        "Zangoose",
+        "Seviper",
+        "Bagon"
       ],
       "surf": [
         "Tentacool",
@@ -952,7 +1082,8 @@
         "Inkay",
         "Clauncher",
         "Skrelp",
-        "Hawlucha"
+        "Hawlucha",
+        "Axew"
       ],
       "day": [
         "Skiddo",
@@ -965,7 +1096,8 @@
         "Inkay",
         "Clauncher",
         "Skrelp",
-        "Hawlucha"
+        "Hawlucha",
+        "Axew"
       ],
       "night": [
         "Skiddo",
@@ -978,7 +1110,8 @@
         "Inkay",
         "Clauncher",
         "Skrelp",
-        "Hawlucha"
+        "Hawlucha",
+        "Axew"
       ],
       "surf": [
         "Tentacool",
@@ -1030,6 +1163,11 @@
         "Skarmory",
         "Noivern",
         "Hydreigon"
+      ],
+      "surf": [
+        "Poliwhirl",
+        "Lombre",
+        "Floatzel"
       ]
     },
     {
@@ -1144,7 +1282,12 @@
         "Sableye",
         "Mawile",
         "Gastly",
+        "Mr. Mime",
+        "Solosis",
         "Carbink",
+        "Mime Jr.",
+        "Woobat",
+        "Ferroseed",
         "Golbat"
       ],
       "day": [
@@ -1153,7 +1296,12 @@
         "Sableye",
         "Mawile",
         "Gastly",
+        "Mr. Mime",
+        "Solosis",
         "Carbink",
+        "Mime Jr.",
+        "Woobat",
+        "Ferroseed",
         "Golbat"
       ],
       "night": [
@@ -1162,7 +1310,12 @@
         "Sableye",
         "Mawile",
         "Gastly",
+        "Mr. Mime",
+        "Solosis",
         "Carbink",
+        "Mime Jr.",
+        "Woobat",
+        "Ferroseed",
         "Golbat"
       ]
     },

@@ -66,6 +66,8 @@
     // Plan 23 · Z4b: Azure Bay in the open, then the three caves of the time after the Hall of Fame
     "azure_bay", "terminus_cave_depths", "unknown_dungeon", "sea_spirits_den",
     // Plan 23, Kalos's last places: the Chamber of Emptiness
-    "chamber_of_emptiness"
+    "chamber_of_emptiness",
+    // Plan 23, Kalos's port: the islets off Coumarine City's harbour, reached only by Surf
+    "coumarine_bay"
   ]
 }
