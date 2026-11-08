@@ -280,6 +280,44 @@ public class StreakHouseTests
     }
 
     [Fact]
+    public void ARotationsFallenFrontIsFilledFromTheBenchAndASeatedOneIsRefusedWithoutACrash()
+    {
+        // The rotation room's first harness run crashed here: the switch menu handed the rules a Pokémon on a seat for the
+        // fallen front, which they refuse. The menu says no to it now, and the bench's Pokémon goes in
+        var mine = new Party();
+        foreach (var s in new[] { "Bidoof", "Starly", "Shinx", "Budew" }) mine.Add(new Pokemon(PokemonDatabase.Get(s)!, 5, new Random(mine.Count)));
+        var foe = new Trainer { Id = "t", Name = "T", TrainerClass = "Ace Trainer" };
+        foreach (var s in new[] { "Garchomp", "Metagross", "Salamence", "Tyranitar" }) foe.Party.Add(new Pokemon(PokemonDatabase.Get(s)!, 90, new Random(foe.Party.Count + 9)));
+        var b = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = mine, Inventory = new Inventory(), Pokedex = new Pokedex(), Trainers = new List<Trainer> { foe },
+            Frontier = true, Format = BattleFormat.Rotation, Random = new BattleRandom(5), Rules = Ruleset.Modern
+        });
+        int refused = 0, sent = 0;
+        for (int i = 0; i < 2000 && !b.IsBattleOver; i++)
+        {
+            b.Update(1f);
+            if (b.HUD.MenuState == BattleMenuState.Main) { b.SelectMainMenuOption(0); b.SelectMove(0); }
+            else if (b.HUD.MenuState == BattleMenuState.SwitchPokemon)
+            {
+                // Each able one off the field in the team's order: a seated one is refused, the bench's goes in
+                var ask = b.Core.Request;
+                foreach (int k in Enumerable.Range(0, mine.Count).Where(k => !mine.Members[k].IsFainted && !b.PlayerSlots.Any(s => s.Pokemon == mine.Members[k])))
+                {
+                    b.SelectSwitch(k);
+                    if (b.Core.Request != ask) { sent++; break; }
+                    refused++;
+                    while (b.HUD.MenuState != BattleMenuState.SwitchPokemon && !b.IsBattleOver) { b.ConfirmMessage(); b.Update(1f); }
+                }
+            }
+            else b.ConfirmMessage();
+        }
+        Assert.True(b.IsBattleOver);
+        Assert.True(sent > 0, "nobody was sent in for the fallen front");
+        Assert.True(refused > 0, "no seated Pokémon was offered to be refused");
+    }
+
+    [Fact]
     public void ABattleOfTheHouseHasTheBagsKeyStone()
     {
         var bag = new Inventory();

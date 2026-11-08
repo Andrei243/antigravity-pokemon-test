@@ -48,12 +48,18 @@ partial class Harness
                 else if (fight.HUD.MenuState == BattleMenuState.SwitchPokemon)
                 {
                     // Whoever the rules let in next (in a rotation, never one on a seat)
+                    var ask = fight.Core.Request;
                     bool sent = false;
                     for (int i = 0; i < fight.PlayerParty.Count && !sent; i++)
                     {
-                        if (fight.PlayerParty.Members[i].IsFainted) continue;
-                        try { fight.SelectSwitch(i); sent = true; Console.WriteLine($"  !! {fight.PlayerParty.Members[i].DisplayName} sent in"); }
-                        catch (ArgumentException) { }
+                        var candidate = fight.PlayerParty.Members[i];
+                        if (candidate.IsFainted || fight.PlayerSlots.Any(s => s.Pokemon == candidate)) continue;
+                        fight.SelectSwitch(i);
+                        Frames(1);
+                        if (fight.Core.Request != ask) { sent = true; Console.WriteLine($"  !! {candidate.DisplayName} sent in"); break; }
+                        // Refused (a rotation's seat): read the refusal and try the next
+                        Console.WriteLine($"  {candidate.DisplayName} refused: {fight.CurrentMessage}");
+                        for (int k = 0; k < 20 && fight.HUD.MenuState != BattleMenuState.SwitchPokemon && !fight.IsBattleOver; k++) { fight.ConfirmMessage(); Skip(0.2); }
                     }
                     if (!sent) Confirm(fight);
                 }
