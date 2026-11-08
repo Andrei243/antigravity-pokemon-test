@@ -832,6 +832,34 @@ public interface IScriptHost
     /// </summary>
     bool RidePokemon(string? species) => false;
 
+    // ------------------------------------------------------------------ the open world's places (plan 32 · OW5)
+
+    /// <summary>
+    /// Starts <paramref name="who"/> (<c>player</c>, or someone of the open map, OW6) walking to a marker of the open map
+    /// the player is in (<c>walkto</c>), waited for as a walk is (<see cref="Walking"/>); in a hurry the walk is taken to
+    /// its end unseen (<see cref="Arrive"/>) and ends on the marker, facing its way, as a walk played does. A host
+    /// with no open map can't: the grid's places are tiles (<c>walk</c>).
+    /// </summary>
+    void WalkTo(string who, string marker, bool fast) => throw new ScriptException($"walkto {who} {marker}: the player is in no open map here; a grid map's walk is 'walk'");
+
+    /// <summary>Puts someone on a marker of the open map, facing its way (<c>placeat</c>). A host with no open map can't.</summary>
+    void PlaceAt(string who, string marker) => throw new ScriptException($"placeat {who} {marker}: the player is in no open map here; a grid map's is 'place'");
+
+    /// <summary>Turns someone toward a marker of the open map or toward someone (<c>faceto</c>). A host with no open map can't.</summary>
+    void FaceTo(string who, string target) => throw new ScriptException($"faceto {who} {target}: the player is in no open map here; a grid map's is 'face'");
+
+    /// <summary>
+    /// Goes to a marker of an open map through a fade, as a door does (<c>warpto</c>), from a grid map or an open one; in
+    /// a hurry the player arrives at once. A host that knows no open map can't.
+    /// </summary>
+    void WarpTo(string map, string marker) => throw new ScriptException($"warpto \"{map}\" {marker}: there is no open map called {map}");
+
+    /// <summary>
+    /// Sends the open map's camera to look at a marker (<c>camera look</c>, OW8's orbit camera reads it); returns how
+    /// long the move takes, which the runner waits unless the line says <c>nowait</c>. A host with no open map can't.
+    /// </summary>
+    float LookAt(string marker, float seconds) => throw new ScriptException($"camera look {marker}: the player is in no open map here; a grid map's is 'camera pan'");
+
     /// <summary>
     /// The Battle Arcade challenge under way (plan 06 · R18d); null while none is. <see cref="FrontierAct"/> takes one
     /// more word for it: <c>arcadeboard</c> opens the game board the challenge has brought up

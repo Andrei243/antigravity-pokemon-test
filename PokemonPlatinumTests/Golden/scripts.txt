@@ -29,6 +29,67 @@ way 0
 way 1, from answer 1
   * battle alola_lusamine_1 Lost
   * scene over, unseen
+=== AkalaOutskirts_RuinsOfLife.TapuLele
+from Tapu Lele at 5,4 of AkalaOutskirts_RuinsOfLife
+way 0
+  > Pink scales drifted down like snow, and Tapu Lele floated over the altar, watching Lucas closely.
+  * scene AkalaOutskirts_RuinsOfLife.Tapu Lele rises
+  * letterbox on
+  * camera Pan 5 4
+  * camera Zoom 1.4
+  * effect Sparkles 5 4
+  * cry Tapu Lele
+  * seen Tapu Lele
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Tapu Lele 60 nofleeing Won
+  + FLAG_ALOLA_TAPU_LELE_DONE
+  + seen AkalaOutskirts_RuinsOfLife.Tapu Lele rises
+way 1, from answer 1
+  * wildbattle Tapu Lele 60 nofleeing Lost
+  + seen AkalaOutskirts_RuinsOfLife.Tapu Lele rises
+=== AkalaRoute8_FossilCenter.Restorer
+from Restorer at 6,4 of AkalaRoute8_FossilCenter
+way -
+  Restorer> This is the Fossil Restoration Center. Bring me a Fossil and I'll bring back the Pokémon in it.
+  Restorer> My partner over there sells Fossils dug up on the islands. Buy one, and I'll do the rest.
+=== AkalaRoute8_FossilCenter.Seller
+from Fossil Seller at 3,5 of AkalaRoute8_FossilCenter
+way 0
+  Fossil Seller> Fossils from all over Alola's cliffs! 7,000 dollars each. One of each kind, while they last.
+  Fossil Seller> Which Fossil would you like?
+  Fossil Seller> That's 7,000 dollars. Come back when your pockets are heavier.
+  ? Which Fossil would you like? = SKULL FOSSIL
+way 4, from answer 1
+  Fossil Seller> Come back when one catches your eye.
+  ? Which Fossil would you like? = NO THANKS
+way 3, from answer 1
+  Fossil Seller> That's 7,000 dollars. Come back when your pockets are heavier.
+  ? Which Fossil would you like? = PLUME FOSSIL
+way 2, from answer 1
+  Fossil Seller> That's 7,000 dollars. Come back when your pockets are heavier.
+  ? Which Fossil would you like? = COVER FOSSIL
+way 1, from answer 1
+  Fossil Seller> That's 7,000 dollars. Come back when your pockets are heavier.
+  ? Which Fossil would you like? = ARMOR FOSSIL
+=== AkalaRoute8_Motel.Clerk
+from Motel Clerk at 7,3 of AkalaRoute8_Motel
+way 0
+  Motel Clerk> Need a nap? A room is 500 dollars, Pokémon included. Would you like to rest?
+  > Lucas and the Pokémon rested for a while.
+  Motel Clerk> Feeling fresh? Mind the grunts outside.
+  ? Need a nap? A room is 500 dollars, Pokémon included. Would you like to rest? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  Motel Clerk> Come back if you change your mind.
+  ? Need a nap? A room is 500 dollars, Pokémon included. Would you like to rest? = No
+=== AkalaRoute9_PoliceStation.Officer
+from Officer at 3,3 of AkalaRoute9_PoliceStation
+way -
+  Officer> Konikoni's quiet, mostly. The miners come through the tunnel, the tourists go to the market, and everybody behaves.
+  Officer> Except Team Skull. They don't behave anywhere.
 === AlolaLeague_AcerolaRoom.League
 from Acerola at 6,5 of AlolaLeague_AcerolaRoom
 way 0
@@ -163,6 +224,18 @@ way -
   > Lucas put them away in the Berries pocket.
   * fanfare FanfareItem
   + FLAG_ALOLA_CARETAKER_BERRY
+=== AlolaRoute2_Motel.Clerk
+from Motel Clerk at 7,3 of AlolaRoute2_Motel
+way 0
+  Motel Clerk> A room for a nap is 500 dollars. Your Pokémon get a bed too. Would you like to rest?
+  > Lucas and the Pokémon rested for a while.
+  Motel Clerk> All rested? Come back any time.
+  ? A room for a nap is 500 dollars. Your Pokémon get a bed too. Would you like to rest? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  Motel Clerk> Suit yourself. The beds will be here.
+  ? A room for a nap is 500 dollars. Your Pokémon get a bed too. Would you like to rest? = No
 === AnistarCity_Gym.GymGuide
 from Gym Guide at 9,15 of AnistarCity_Gym
 way -
@@ -3764,6 +3837,63 @@ way -
   Game Director> Hello there! I'm the game director!
   Game Director> Oh! You're filling in a Pokédex, I see!
   Game Director> Do come and show me again once there's more in it!
+=== HainaDesert_RuinsOfAbundance.TapuBulu
+from Tapu Bulu at 5,4 of HainaDesert_RuinsOfAbundance
+way -
+  > The ground shook. Vines crept over the stones, and Tapu Bulu stood among them with its horns raised!
+  > It snorted once, and the vines drew back. It wasn't ready to answer yet.
+  * scene HainaDesert_RuinsOfAbundance.Tapu Bulu rises
+  * letterbox on
+  * camera Pan 5 4
+  * camera Zoom 1.4
+  * effect Burst 5 4
+  * cry Tapu Bulu
+  * seen Tapu Bulu
+  * camera Release
+  * letterbox off
+  * endscene
+  + seen HainaDesert_RuinsOfAbundance.Tapu Bulu rises
+=== HauoliCity_ApparelShop.Clerk
+from Clerk at 7,3 of HauoliCity_ApparelShop
+way -
+  Clerk> Alola! Everything here is made for island weather. Try it on, look in the mirror, fall in love!
+  * open Wardrobe hauoli
+=== HauoliCity_CityHall.Guide
+from Guide at 3,6 of HauoliCity_CityHall
+way -
+  Guide> This hall keeps the records of every island challenge since the first. The oldest ones are written on bark.
+  Guide> Melemele's kahuna, Hala, has seen more challengers than anyone. He still remembers every one of them, he says.
+=== HauoliCity_CityHall.Receptionist
+from Receptionist at 7,3 of HauoliCity_CityHall
+way -
+  Receptionist> Welcome to Hau'oli City Hall! If you have questions about life on the islands, you've come to the right desk.
+  Receptionist> The island challenge? Every island has trials kept by its captains, and a grand trial held by its kahuna. Collect all four stamps!
+=== HauoliCity_PoliceStation.Meowth
+from Meowth at 7,6 of HauoliCity_PoliceStation
+way -
+  > Meowth: Mrrrow... It yawned and went back to sleep on the desk's papers.
+  * cry Meowth
+=== HauoliCity_PoliceStation.Officer
+from Officer at 3,3 of HauoliCity_PoliceStation
+way -
+  Officer> Team Skull? They're more of a nuisance than a menace. Mostly they shout and pull faces at people.
+  Officer> If they bother you, battle them. That tends to quiet them down faster than we can.
+=== HeaheaCity_Hotel.Desk
+from Hotel Clerk at 7,3 of HeaheaCity_Hotel
+way -
+  Hotel Clerk> Welcome to the hotel! I'm afraid every room is booked for the festival season. Even the broom cupboard.
+  Hotel Clerk> Do enjoy the lobby, though. The sofa is the softest on Akala.
+=== HeaheaCity_ResearchLab.Researcher
+from Researcher at 7,4 of HeaheaCity_ResearchLab
+way -
+  Researcher> We study the strange lights seen over the islands at night. Some people say they're holes in the sky itself.
+  Researcher> Professor Kukui drops by now and then. He says the lights look like the ones that brought Pokémon to Alola long ago.
+=== HeaheaCity_TouristBureau.Guide
+from Tourist Guide at 7,3 of HeaheaCity_TouristBureau
+way -
+  Tourist Guide> Welcome to Akala, the island of fire and water! Here's the short tour.
+  Tourist Guide> North of here is Paniola Town and its ranch. East is Royal Avenue and the Battle Royal Dome. Further north, Wela Volcano Park.
+  Tourist Guide> And on the far side of Diglett's Tunnel, Konikoni City, where Kahuna Olivia keeps her jewellery shop. Have a lovely stay!
 === HearthomeCityNorthwestHouse.Bebe
 from Bebe at 5,5 of HearthomeCityNorthwestHouse
 way 0
@@ -3888,6 +4018,19 @@ way 0
   + FLAG_ALOLA_HOKULANI_DEN_3
 way 1, from answer 1
   * wildbattle Charjabug 23 nofleeing Lost
+=== HokulaniObservatory.SecondTotem
+from Vikavolt at 7,4 of HokulaniObservatory
+way 0
+  > A huge Vikavolt hums over the observatory's great lens, crackling with stolen power!
+  * scene HokulaniObservatory.The second totem
+  * cry Vikavolt
+  * endscene
+  * totembattle Vikavolt 53 SpAttack+1 ally Charjabug Won
+  + FLAG_ALOLA_TOTEM_VIKAVOLT_DONE
+  + seen HokulaniObservatory.The second totem
+way 1, from answer 1
+  * totembattle Vikavolt 53 SpAttack+1 ally Charjabug Lost
+  + seen HokulaniObservatory.The second totem
 === HokulaniObservatory.SophoclesInside
 from Sophocles at 7,6 of HokulaniObservatory
 way -
@@ -4034,6 +4177,18 @@ way -
 from Worker at 3,11 of KalosPowerPlant
 way -
   Worker> They came in red suits and told us all to wait outside. Please, someone has to stop them!
+=== KonikoniCity_Restaurant.Chef
+from Chef at 8,4 of KonikoniCity_Restaurant
+way 0
+  Chef> Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order?
+  > Lucas and the Pokémon ate every last bite.
+  Chef> Ha! Clean plates. That's what I like to see.
+  ? Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order? = Yes
+  * fade out
+  * fade in
+way 1, from answer 1
+  Chef> Another time, then. The sauce only gets better.
+  ? Today's special is grilled fish with island sauce, 1,000 dollars. Hungry trainers and hungry Pokémon eat the same. Order? = No
 === LaverreCity_Gym.GymGuide
 from Gym Guide at 9,15 of LaverreCity_Gym
 way -
@@ -4283,6 +4438,22 @@ way -
 from Prof. Sycamore at 7,4 of LumioseCity_SycamoreLab
 way -
   Prof. Sycamore> Ah, a visitor! Do look around, but please don't touch the machines.
+=== MahaloTrail_RuinsOfConflict.TapuKoko
+from Tapu Koko at 5,4 of MahaloTrail_RuinsOfConflict
+way -
+  > A crack of yellow light split the ruins, and Tapu Koko hung over the stones before them!
+  > It looked Lucas over, then vanished in a flash, as if it would rather wait.
+  * scene MahaloTrail_RuinsOfConflict.Tapu Koko rises
+  * letterbox on
+  * camera Pan 5 4
+  * camera Zoom 1.4
+  * effect Burst 5 4
+  * cry Tapu Koko
+  * seen Tapu Koko
+  * camera Release
+  * letterbox off
+  * endscene
+  + seen MahaloTrail_RuinsOfConflict.Tapu Koko rises
 === MastersHall.Master
 from Master at 5,4 of MastersHall
 way -
@@ -4354,6 +4525,7 @@ way 0
   * effect Burst 7 4
   + FLAG_ALOLA_LIGHT_RETURNED
   = VAR_ALOLA_ULTRA 0 -> 4
+  = VAR_OBJECTIVE 0 -> 693
   + seen MegaloTower.Necrozma
 way 1, from answer 1
   * wildbattle Necrozma 65 nofleeing Lost
@@ -4533,6 +4705,16 @@ way 1.1, from answer 2
   Park Attendant> The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!
   ? What shall I read out of the manual? = The Catching Show
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
+=== PaniolaRanch_Nursery.Keeper
+from Nursery Keeper at 6,4 of PaniolaRanch_Nursery
+way -
+  Nursery Keeper> This is the ranch's nursery, dear. We look after the little ones until they're big enough for the paddocks.
+  Nursery Keeper> Sometimes we find an Egg out in the grass and nobody knows whose it is. We keep it warm until it hatches.
+=== PaniolaTown_KiawesHouse.Mother
+from Mother at 6,4 of PaniolaTown_KiawesHouse
+way -
+  Mother> You're one of Kiawe's challengers? Then you've seen him dance. He's practised that since he could walk.
+  Mother> His little sisters want to dance with fire too. I tell them: first learn to dance with water. Then we'll see.
 === PastoriaCityEastHouse.Relearner
 from Move Tutor at 8,4 of PastoriaCityEastHouse
 way -
@@ -5776,6 +5958,16 @@ way 1, from answer 1
   + FLAG_ALOLA_ROYAL_SHOW_DONE
   = VAR_ALOLA_ROYAL_SHOW 0 -> 1
   + seen RoyalAvenue_BattleRoyalDome.The Masked Royal
+=== RoyalAvenue_Megamart.Clerk
+from Clerk at 7,3 of RoyalAvenue_Megamart
+way -
+  Clerk> Welcome to the Megamart! We stock what the Pokémon Centers' counters don't.
+  * open Shop royal_megamart
+=== RoyalAvenue_Shop.Clerk
+from Clerk at 7,3 of RoyalAvenue_Shop
+way -
+  Clerk> Welcome! Royal Avenue style: bright, bold, and ready for a battle in the ring.
+  * open Wardrobe royal_avenue
 === SandgemTownCounterpartHouse1F.Grandfather
 from Grandfather at 3,9 of SandgemTownCounterpartHouse1F
 way -
@@ -6500,6 +6692,30 @@ way -
 from Little Girl at 8,6 of TwinleafTownSouthwestHouse
 way -
   Little Girl> Lucas, Lucas, listen! I want a Pokémon! A cute one!
+=== UlaulaRoute15_AetherHouse.Child
+from Child at 3,7 of UlaulaRoute15_AetherHouse
+way -
+  Child> Acerola says ghosts are just people who miss somebody. I'm not scared of them any more. Mostly.
+=== UlaulaRoute15_AetherHouse.Employee
+from Aether Employee at 6,4 of UlaulaRoute15_AetherHouse
+way -
+  Aether Employee> The Aether House takes in children and Pokémon who have nobody else. Captain Acerola grew up here, you know.
+  Aether Employee> Your Pokémon look tired. Let them rest a moment with ours.
+  > Lucas's Pokémon played with the Aether House's and were full of energy again.
+  * fade out
+  * fade in
+=== UlaulaRoute17_PoliceStation.Meowth
+from Meowth at 3,7 of UlaulaRoute17_PoliceStation
+from Meowth at 6,5 of UlaulaRoute17_PoliceStation
+from Meowth at 8,7 of UlaulaRoute17_PoliceStation
+way -
+  > Meowth: Myaa... It stretched and stared at Lucas as if it owned the place.
+  * cry Meowth
+=== UlaulaRoute17_PoliceStation.Officer
+from Officer at 3,3 of UlaulaRoute17_PoliceStation
+way -
+  Officer> The chief? He's off in Po Town, keeping an eye on Team Skull. Or napping. With him it's hard to tell.
+  Officer> He leaves the station to his Meowth. They're better at it than he is, he says.
 === ValleyWindworksBuilding.Girl
 from Little Girl at 10,8 of ValleyWindworksBuilding
 way -
@@ -7374,6 +7590,16 @@ way 1, from answer 1
   * warp Ulaula 59 366
   * fade in
   + FLAG_ALOLA_AT_MALIE
+=== aether_paradise.Gladion
+from Gladion at 54,76 of AetherParadise
+way -
+  Gladion> So you're the champion now. Figures. You never did know when to quit.
+  Gladion> This is Type: Null. The Foundation made it to fight things that come from beyond the sky. It deserves better than a cage.
+  Gladion> Take it. Train it. Let it find out what it's for.
+  > Lucas received Type: Null!
+  Gladion> Don't make me regret this.
+  * fanfare FanfarePokemon
+  + FLAG_ALOLA_TYPE_NULL_GIVEN
 === aether_paradise.Lusamine
 from Lusamine at 54,30 of AetherParadise
 way -
@@ -9340,6 +9566,19 @@ way -
 from Lana at 115,133 of Akala
 way -
   Lana> ...Hello. I'm Lana, the captain here. My trial is ready, but you look like you've somewhere else to be first. Route 5, maybe?
+=== brooklet_hill.SecondTotem
+from Araquanid at 89,96 of Akala
+way 0
+  > A great Araquanid rises from the lake inside a shining bubble of water!
+  * scene brooklet_hill.The second totem
+  * cry Araquanid
+  * endscene
+  * totembattle Araquanid 51 SpDefense+1 ally Dewpider Won
+  + FLAG_ALOLA_TOTEM_ARAQUANID_DONE
+  + seen brooklet_hill.The second totem
+way 1, from answer 1
+  * totembattle Araquanid 51 SpDefense+1 ally Dewpider Lost
+  + seen brooklet_hill.The second totem
 === brooklet_hill.Splash1
 from Wishiwashi at 110,125 of Akala
 way 0
@@ -19316,6 +19555,15 @@ way -
 from Artist at 10,24 of GuidanceChamber
 way -
   Artist> I have spent my whole life painting caves, hoping one day to paint Cobalion in one. It has never come.
+=== haina_desert.Hapu
+from Hapu at 340,220 of Ulaula
+way -
+  Hapu> So you found your way through the sand. Not bad. Mudsdale and I came straight across.
+  Hapu> These are the Ruins of Abundance. Tapu Bulu sleeps in there. People say it gives the land its harvests, and takes them back when it's cross.
+  Hapu> Poni has a guardian too, but no kahuna. Not since my grandfather. Everyone is waiting for someone to step up.
+  Hapu> Maybe someone will. I'm going home to find out. Come to Poni when you've finished here, Lucas.
+  + FLAG_ALOLA_HAPU_RUINS_DONE
+  = VAR_ALOLA_HAPU 0 -> 2
 === hall_of_origin.Arceus
 from Arceus at 31,27 of HallOfOrigin
 from the trigger at 30,35 of HallOfOrigin
@@ -19355,7 +19603,7 @@ way -
   + FLAG_ALOLA_AKALA_DONE
   + FLAG_ALOLA_HANO_DONE
   = VAR_ALOLA_AKALA 0 -> 8
-  = VAR_OBJECTIVE 0 -> 699
+  = VAR_OBJECTIVE 0 -> 650
   + seen hano_beach.The Hano Grand Resort
 === hano_beach.Hau
 from Hau at 268,257 of Akala
@@ -22797,6 +23045,15 @@ way -
 from Prof. Kukui at 59,340 of Ulaula
 way -
   Prof. Kukui> Route 10 leads to the observatory on Mount Hokulani. The air's thin, so mind your lungs!
+=== malie_garden.Gardener
+from Gardener at 104,341 of Ulaula
+way -
+  Gardener> Every stone here was carried across the sea by the people who built this garden. I only keep it tidy.
+  Gardener> You stopped to look at it properly. Hardly anyone does. Take this. It grew in the bed by the bridge.
+  > Lucas received the Miracle Seed!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_MALIE_GARDENER_GIFT
 === marine_cave_end.Kyogre
 from the trigger at 9,26 of MarineCave_End
 way 0
@@ -34075,6 +34332,44 @@ way -
 from Lostelle at 6,5 of TwoIsland_JoyfulGameCorner
 way -
   Lostelle> Thank you for saving me! I'll always remember it. Next time I go berry picking, I'll bring you some!
+=== ulaula_meadow.Dancer
+from Dancer at 186,174 of Ulaula
+way -
+  Dancer> The Oricorio here dance the fiery dance. They get it from the red flowers. One sip of their nectar and whoosh!
+  Dancer> Here, I gathered some this morning. Give it to an Oricorio from any other island and watch it change its tune.
+  > Lucas received the Red Nectar!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_MEADOW_NECTAR
+=== ulaula_route_12.HapuMudsdale
+from the trigger at 181,225 of Ulaula
+way -
+  Hapu> Hey. You're the island challenger, aren't you? I'm Hapu. I'm from Poni Island, way out west.
+  Hapu> I've been walking the islands to see how the people live. This ridge is hard going on foot, though.
+  Hapu> Here. My Mudsdale knows the way over any rock. Put her in your Ride Pager and she'll come when you call.
+  > Lucas registered Mudsdale in the Ride Pager! Mudsdale can gallop over rough ground.
+  Hapu> I'll be off. There's a shrine past the desert I want to see. Maybe I'll see you there.
+  * scene ulaula_route_12.Hapu on Route 12
+  * endscene
+  + FLAG_ALOLA_HAPU_ROUTE_12
+  + FLAG_ALOLA_RIDE_MUDSDALE
+  = VAR_ALOLA_HAPU 0 -> 1
+  + seen ulaula_route_12.Hapu on Route 12
+=== ulaula_route_12.HapuTalk
+from Hapu at 183,224 of Ulaula
+way -
+  Hapu> You look like you could use a strong pair of legs under you. Hold on a moment.
+  Hapu> Hey. You're the island challenger, aren't you? I'm Hapu. I'm from Poni Island, way out west.
+  Hapu> I've been walking the islands to see how the people live. This ridge is hard going on foot, though.
+  Hapu> Here. My Mudsdale knows the way over any rock. Put her in your Ride Pager and she'll come when you call.
+  > Lucas registered Mudsdale in the Ride Pager! Mudsdale can gallop over rough ground.
+  Hapu> I'll be off. There's a shrine past the desert I want to see. Maybe I'll see you there.
+  * scene ulaula_route_12.Hapu on Route 12
+  * endscene
+  + FLAG_ALOLA_HAPU_ROUTE_12
+  + FLAG_ALOLA_RIDE_MUDSDALE
+  = VAR_ALOLA_HAPU 0 -> 1
+  + seen ulaula_route_12.Hapu on Route 12
 === ultra_crater.Beast
 from Celesteela at 32,16 of UltraCrater
 way 0
@@ -35369,6 +35664,19 @@ way 1, from answer 1
 from Ilima at 29,36 of VerdantCavern
 way -
   Ilima> Three dens: one west, one east and one up the middle. Then the totem's den at the very top. Good luck!
+=== verdant_cavern.SecondTotem
+from Raticate at 29,8 of VerdantCavern
+way 0
+  > A huge Raticate sits where the totem Gumshoos once stood, its cheeks stuffed and its eyes gleaming!
+  * scene verdant_cavern.The second totem
+  * cry Raticate
+  * endscene
+  * totembattle Raticate 50 Attack+1 ally Raticate Won
+  + FLAG_ALOLA_TOTEM_RATICATE_DONE
+  + seen verdant_cavern.The second totem
+way 1, from answer 1
+  * totembattle Raticate 50 Attack+1 ally Raticate Lost
+  + seen verdant_cavern.The second totem
 === verdant_cavern.Totem
 from Gumshoos at 29,8 of VerdantCavern
 way -
@@ -36377,6 +36685,19 @@ way -
 from Kiawe at 331,46 of Akala
 way -
   Kiawe> I am Kiawe, captain of this volcano's trial. You are early. Walk Route 8 first, and come back when it is done.
+=== wela_volcano_park.SecondTotem
+from Salazzle at 331,39 of Akala
+way 0
+  > A Salazzle as big as a boulder slinks out of the smoke at the crater's edge!
+  * scene wela_volcano_park.The second totem
+  * cry Salazzle
+  * endscene
+  * totembattle Salazzle 52 SpDefense+1 ally Salandit Won
+  + FLAG_ALOLA_TOTEM_SALAZZLE_DONE
+  + seen wela_volcano_park.The second totem
+way 1, from answer 1
+  * totembattle Salazzle 52 SpDefense+1 ally Salandit Lost
+  + seen wela_volcano_park.The second totem
 === wela_volcano_park.Totem
 from Marowak at 331,39 of Akala
 way -

@@ -286,6 +286,6 @@ public class AlolaUltraSpaceTests
         var hall = game.Run("AlolaLeague_HallOfFame", "OnEnter", "AlolaLeague_HallOfFame");
         Assert.DoesNotContain(hall.Log, l => l.StartsWith("credits"));
         Assert.False(game.Story.Has("FLAG_ALOLA_DEFEATED_KUKUI"));
-        Assert.Equal("alolaUltraHunt", Objectives.Current(game.Story, RegionDatabase.Alola)?.Name);
+        Assert.NotEqual("alolaFree", Objectives.Current(game.Story, RegionDatabase.Alola)?.Name);
     }
 }

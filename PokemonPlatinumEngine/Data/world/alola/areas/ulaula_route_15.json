@@ -1,0 +1,187 @@
+{
+  "key": "ulaula_route_15",
+  "index": 402,
+  "name": "Route 15",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULAULA_ROUTE_15",
+  "nightMusic": "ULAULA_ROUTE_15",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 291,
+      "z": 265,
+      "to": "UlaulaRoute15_AetherHouse",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "kaimi",
+      "looks": "swimmer_m",
+      "movement": "look_south",
+      "x": 286,
+      "z": 288,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_KAIMI"
+    },
+    {
+      "id": "lehua",
+      "looks": "ace_trainer_f",
+      "movement": "look_west",
+      "x": 304,
+      "z": 274,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_ACE_TRAINER_LEHUA"
+    },
+    {
+      "id": "mahina",
+      "looks": "pokemon_breeder_f",
+      "movement": "look_south",
+      "x": 272,
+      "z": 276,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_POKEMON_BREEDER_MAHINA"
+    },
+    {
+      "id": "aether_worker",
+      "looks": "scientist",
+      "movement": "look_south",
+      "x": 294,
+      "z": 267,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 320,
+      "z": 266,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_15_MAX_REPEL",
+      "item": "Max Repel",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 266,
+      "z": 268,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_15_RARE_CANDY",
+      "item": "Rare Candy",
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 260,
+      "z": 271,
+      "type": 0,
+      "script": "RouteSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Pelipper",
+      "level": 27
+    },
+    {
+      "species": "Wingull",
+      "level": 26
+    },
+    {
+      "species": "Slowpoke",
+      "level": 26
+    },
+    {
+      "species": "Trumbeak",
+      "level": 26
+    },
+    {
+      "species": "Trumbeak",
+      "level": 27
+    },
+    {
+      "species": "Gumshoos",
+      "level": 27
+    },
+    {
+      "species": "Raticate",
+      "form": "Raticate-Alola",
+      "level": 27
+    },
+    {
+      "species": "Fearow",
+      "level": 27
+    },
+    {
+      "species": "Spearow",
+      "level": 26
+    },
+    {
+      "species": "Dartrix",
+      "level": 27
+    },
+    {
+      "species": "Bagon",
+      "level": 26
+    },
+    {
+      "species": "Bagon",
+      "level": 27
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Tentacool",
+      "level": 26
+    },
+    {
+      "species": "Pelipper",
+      "level": 27
+    },
+    {
+      "species": "Mantyke",
+      "level": 26
+    },
+    {
+      "species": "Mantine",
+      "level": 28
+    },
+    {
+      "species": "Finneon",
+      "level": 27
+    }
+  ],
+  "waterRate": 20
+}

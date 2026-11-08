@@ -22,7 +22,7 @@ script HanoScene
   setflag FLAG_ALOLA_HANO_DONE
   setflag FLAG_ALOLA_AKALA_DONE
   setvar VAR_ALOLA_AKALA 8
-  objective alolaFree
+  objective alolaAether
   endscene
   end
 

@@ -1,0 +1,11 @@
+# Heahea City's tourist bureau (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Guide
+  speaker "Tourist Guide"
+  say "Welcome to Akala, the island of fire and water! Here's the short tour."
+  say "North of here is Paniola Town and its ranch. East is Royal Avenue and the Battle Royal Dome. Further north, Wela Volcano Park."
+  say "And on the far side of Diglett's Tunnel, Konikoni City, where Kahuna Olivia keeps her jewellery shop. Have a lovely stay!"
+  end

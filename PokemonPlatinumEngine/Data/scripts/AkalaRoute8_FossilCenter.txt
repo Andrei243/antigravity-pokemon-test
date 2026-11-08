@@ -1,0 +1,86 @@
+# The Fossil Restoration Center on Route 8. As in Sun and Moon the fossils are bought here, 7,000 dollars each, one of each kind (FLAG_ALOLA_BOUGHT_<KIND>), and the restorer revives any Fossil at level 20 once the player has gone out and come back (plan 06 · R16b's fossil command, as Cinnabar Island's laboratory does) (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Restorer
+  speaker "Restorer"
+  if flag FLAG_MAP_LOCAL_ALOLA_FOSSIL_REVIVING goto Working
+  fossil ready
+  if result == 1 goto Ready
+  say "This is the Fossil Restoration Center. Bring me a Fossil and I'll bring back the Pokémon in it."
+  fossil count
+  if result == 0 goto None
+  ask "Oh, you have one! Shall I restore it for you?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+  say "Leave it with me! It takes a little while."
+label Working
+  setflag FLAG_MAP_LOCAL_ALOLA_FOSSIL_REVIVING
+  say "Have a walk along the road and come back. It'll be ready by then."
+  end
+label Ready
+  say "Your Fossil came back to life as {thing}! Isn't it wonderful?"
+  if not party < 6 goto Full
+  fossil give
+  fanfare pokemon
+  text "{player} received {thing}!"
+  end
+label Full
+  say "Your team is full, though. Make some room and come back for it."
+  end
+label None
+  say "My partner over there sells Fossils dug up on the islands. Buy one, and I'll do the rest."
+  end
+label Declined
+  say "No? The machine will be here."
+  end
+
+
+script Seller
+  speaker "Fossil Seller"
+  say "Fossils from all over Alola's cliffs! 7,000 dollars each. One of each kind, while they last."
+  choose "Which Fossil would you like?" "SKULL FOSSIL" "ARMOR FOSSIL" "COVER FOSSIL" "PLUME FOSSIL" "NO THANKS"
+  if result == 0 goto Skull
+  if result == 1 goto Armor
+  if result == 2 goto Cover
+  if result == 3 goto Plume
+  say "Come back when one catches your eye."
+  end
+label Skull
+  if flag FLAG_ALOLA_BOUGHT_SKULL goto Sold
+  takemoney 7000
+  if result == 0 goto Poor
+  give "Skull Fossil"
+  setflag FLAG_ALOLA_BOUGHT_SKULL
+  end
+label Armor
+  if flag FLAG_ALOLA_BOUGHT_ARMOR goto Sold
+  takemoney 7000
+  if result == 0 goto Poor
+  give "Armor Fossil"
+  setflag FLAG_ALOLA_BOUGHT_ARMOR
+  end
+label Cover
+  if flag FLAG_ALOLA_BOUGHT_COVER goto Sold
+  takemoney 7000
+  if result == 0 goto Poor
+  give "Cover Fossil"
+  setflag FLAG_ALOLA_BOUGHT_COVER
+  end
+label Plume
+  if flag FLAG_ALOLA_BOUGHT_PLUME goto Sold
+  takemoney 7000
+  if result == 0 goto Poor
+  give "Plume Fossil"
+  setflag FLAG_ALOLA_BOUGHT_PLUME
+  end
+label Sold
+  say "That one's sold out, I'm afraid. I only had the one."
+  end
+label Poor
+  say "That's 7,000 dollars. Come back when your pockets are heavier."
+  end

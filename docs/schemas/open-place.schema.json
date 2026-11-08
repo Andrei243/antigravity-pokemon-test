@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "What stands in an open region's place: markers, triggers, doors, zones, water and solids (Data/world3d/<region>/places/<key>.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "markers": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "at": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "yaw": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "box": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "min": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "max": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "cylinder": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "radius": {
+                "type": "number"
+              },
+              "bottom": {
+                "type": "number"
+              },
+              "top": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "at",
+              "radius",
+              "bottom",
+              "top"
+            ],
+            "additionalProperties": false
+          },
+          "script": {
+            "type": "string"
+          },
+          "var": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "script"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "doors": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "box": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "min": {
+                "$ref": "#/properties/triggers/items/properties/box/properties/min"
+              },
+              "max": {
+                "$ref": "#/properties/triggers/items/properties/box/properties/max"
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "cylinder": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "at": {
+                "$ref": "#/properties/triggers/items/properties/cylinder/properties/at"
+              },
+              "radius": {
+                "type": "number"
+              },
+              "bottom": {
+                "type": "number"
+              },
+              "top": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "at",
+              "radius",
+              "bottom",
+              "top"
+            ],
+            "additionalProperties": false
+          },
+          "room": {
+            "type": "string"
+          },
+          "at": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          },
+          "out": {
+            "type": "string"
+          },
+          "openedBy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "room",
+          "at",
+          "out"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "minY": {
+            "type": "number"
+          },
+          "maxY": {
+            "type": "number"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "species": {
+                  "type": "string"
+                },
+                "minLevel": {
+                  "type": "integer"
+                },
+                "maxLevel": {
+                  "type": "integer"
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "species",
+                "minLevel",
+                "maxLevel"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "density": {
+            "type": "integer"
+          },
+          "cap": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "polygon",
+          "slots"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "water": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "min": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "max": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "level": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "min",
+          "max",
+          "level"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "solids": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "min": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "max": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "min",
+          "max"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

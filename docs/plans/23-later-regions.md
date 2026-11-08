@@ -292,6 +292,21 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   and Stoutland's search, the rough ground, a ride's song, the Fossil Restoration Center, Moon's totems, Malie Garden,
   Routes 14, 15 and 17, the owed `wa30` on shots of Z5 and the `wu` and `wz` shots' review, and Z8.
 
+### The rest of the islands (the wave after the loose ends)
+- **Built** (2026-11-08; rulings, "The rest of the islands: Hapu, the guardians' ruins, the last routes and the shut
+  doors"; facts researched online as Z5's): on Ula'ula, Malie Garden, Routes 14, 15 (the Aether House) and 17 (the
+  police station), Ula'ula Meadow and Haina Desert with the Ruins of Abundance; on Melemele, Seaward Cave (matrix 40)
+  from the meadow to Kala'e Bay, and the Ruins of Conflict; on Akala, the Fossil Restoration Center (Route 8). Every door
+  Z5 and Z6 left shut but the Battle Royal Dome's: Hau'oli's city hall, police station and apparel shop, the two motels,
+  Heahea's tourist bureau, hotel and laboratory, Konikoni's restaurant, Paniola's nursery and Kiawe's house, Royal
+  Avenue's Megamart and boutique, Route 9's police station (19 rooms in all). Hapu's beats on Route 12 (Mudsdale) and
+  before the Ruins of Abundance (`VAR_ALOLA_HAPU`); after the Hall of Fame Tapu Koko, Lele and Bulu battled in their
+  ruins, the second totems (Raticate, Araquanid, Salazzle, Vikavolt) and Gladion's Type: Null; objectives 663 to 667;
+  18 trainers of ours; `AlolaSpeciesTests` (plan 40 · GE1's check for Alola) and `AlolaRestTests`. Shots: the harness's
+  `alolarest` mode (`wr01` on). **Left**: Z8 (the dome, Ultra Space, the Battle Tree), the rough ground and Sharpedo,
+  Poni's plains, grove, coast, meadow and gauntlet with Resolution Cave, Blush Mountain, Route 11, the Elite Four's
+  rematches, the new places' own songs, and what the species check owes.
+
 ### Z8 · After the League: Ultra Space and the Battle Royal (optional)
 - Ultra Space's worlds as cave-set matrices, the Ultra Beast hunt, the Battle Tree's door, the Battle Royal from plan 14 · B13 in Royal Avenue if plan 14's decision 7 keeps B13; the link to Galar (`Transport.Plane`, its departure map a room of ours in Hau'oli City).
 - Tests: the hunt's script; with B13, a Royal in the harness. Shots: `wa50` to `wa56`.

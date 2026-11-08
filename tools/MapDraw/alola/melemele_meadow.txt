@@ -31,10 +31,10 @@ TTTT******wwwwwwww::ww******wwwwwwwwww**TTTT
 ::::******wwwwwwww::ww******wwwwwwwwww**TTTT
 ::::******wwwwwwww::ww******wwwwwwwwww**TTTT
 TTTT******wwwwwwww::ww******wwwwwwwwww**TTTT
-TTTT******wwwwwwww::ww******wwwwwwwwww**TTTT
-TTTT**************::********wwwwwwwwww**TTTT
-TTTT**************::********wwwwwwwwww**TTTT
-TTTT**************::********************TTTT
+TTTTrrrrrrwwwwwwww::ww******wwwwwwwwww**TTTT
+TTTTrrrrrr********::********wwwwwwwwww**TTTT
+TTTTrrrrrr********::********wwwwwwwwww**TTTT
+TTTTrrMrrr********::********************TTTT
 TTTT**************::********************TTTT
 TTTT**************::********************TTTT
 TTTT**************::********************TTTT

@@ -45,6 +45,17 @@ What it looks for is, above all, what the game's readers pass over **without a w
 
 **The scripts** (`scripts/<place>.txt`): what `ScriptLibrary.Problems` says of them (a script called that doesn't exist, an item, a species, a trainer, a map, a song or a sound that isn't there), and that each file is named for an open area or a map.
 
+**An open region** (plan 32 · OW5; `OpenWorlds.cs`, `GameContent.Open.cs`: `world3d/<region>/`, its descriptions read strictly as the baker reads them and its `places/<key>.json` laid on its maps as the game lays them, each an `Unreadable` finding where it can't be):
+
+- a carve's roof with less than half a metre of rock under the land where the land runs beside it (`OpenWorldBake/CarveShells.cs`: columns half a metre apart over the carve, each its rock to a metre, a thin one told where no neighbour is half a metre thicker or thinner, so a portal's steep lip is not): the mesher turns faces in a shell thinner than a cell, OW2's finding at the open test world's tunnel, x −19.6, 7 cm (`Land`)
+- a marker whose body's middle (0.8 m over its feet) would be in rock, and a trigger or a door whose middle is
+- a door into a room that is no map, onto a tile off it or blocked, back out onto a marker its map hasn't, into a room with no way back out to the open map, or waiting for a flag nothing sets; and a room's way out to an open map that no door of that map leads back into
+- a trigger's script in neither its place's file nor the common one
+- a zone's species the data hasn't, and a zone with no ground facing up between its heights (OW4's navigation mesh is what it will be held to)
+- what `ScriptLibrary.OpenProblems` says of the scripts: a tile form (`walk`, `move`, `place`, `camera pan`, `camera path`) in an open place's file and a marker its map hasn't, an open form (`walkto`, `placeat`, `faceto`, `camera look`) in a grid place's, a `warpto` to no open map's marker and a `warp` to an open map. A script file named for an open map's area is named for a place
+
+A trainer's cone that sees nothing waits for plan 32 · OW6's trainers, and a place nobody can come to for OW4's `OpenWalk`.
+
 **Every line said**, wherever it is written (a person's `dialog`, a trainer's two lines, a sign, a script's `say`, `text`, `ask` and `choose`):
 
 - it fits the text box. A line is written whole into the box, wrapped to its width, and nothing scrolls or pages: the box holds three rows (`DialogueBox.Rows`), and a fourth runs out under the panel and off the screen. The line is measured as the game measures it (`TextMetrics`, which reads the typeface's own widths with no window and reckons as raylib does), with `{player}` and `{rival}` at the widest name the name keyboard takes (seven of its widest key), `{assistant}` at the wider of the two it can be, and what a script fills in as it runs (`{lead}`, `{item}`, `{money}`...) at the widest of its kind in the data. A line that begins with its speaker's name and a colon is measured without it, as the box shows it
@@ -77,6 +88,7 @@ A room is drawn whole. An open area is drawn from its own chunks, never from the
 | `GameContent.cs` | A data folder's overlays, rooms and scripts with their text, and the maps the game makes of them; what can't be read is a finding |
 | `Checks.cs` | Everything in order (`Checks.All`), the game's own findings (`Checks.OfTheGame`), the flags something sets, and what people and rooms share |
 | `Overlays.cs`, `Rooms.cs`, `Scripts.cs` | The checks of each |
+| `GameContent.Open.cs`, `OpenWorlds.cs` | The open regions (plan 32 · OW5): read as the baker and the game read them, and their rules |
 | `Lines.cs` | A line against the text box, and its characters |
 | `JsonShape.cs` | Fields a file's format doesn't have |
 | `Plans.cs` | The plans and their lettering |

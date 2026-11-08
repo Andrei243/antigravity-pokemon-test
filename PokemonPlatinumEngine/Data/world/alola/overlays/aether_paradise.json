@@ -50,6 +50,7 @@
     }
   ],
   "people": {
+    "gladion": { "name": "Gladion", "npcType": "gladion", "script": "Gladion", "still": true, "hiddenBy": "FLAG_ALOLA_TYPE_NULL_GIVEN", "shownBy": "AlolaHallOfFame" },
     "sailor": {
       "name": "Sailor",
       "npcType": "sailor",

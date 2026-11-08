@@ -19,7 +19,7 @@ public sealed record OpenMarker(string Name, OpenPos Pos, int Yaw = 0)
 /// belongs to and its markers; OW2 gives it its baked land (<see cref="Land"/>), OW5 its areas, volumes and
 /// doors, OW6 its people. Chunks are 32 m by 32 m columns of any height (<see cref="ChunkOf"/>). GPU-free.
 /// </summary>
-public sealed class OpenMap
+public sealed partial class OpenMap
 {
     /// <summary>A chunk's side, in millimetres.</summary>
     public const int ChunkSide = 32 * OpenPos.PerMetre;

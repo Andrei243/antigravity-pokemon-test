@@ -1,0 +1,34 @@
+{
+  // Kala'e Bay, Melemele Island (plan 23, the wave after the loose ends): drawn by hand, our words. A quiet bay on the
+  // island's north-east shore, reached only through Seaward Cave from Melemele Meadow: a lawn, a beach and the open sea
+  "area": "kalae_bay",
+  "bgmTrack": "alola/route1",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "kalua": {
+      "name": "Kalua",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kalua: Nobody ever finds this bay. You did, so you have to battle me. That's the rule!",
+        "dialogueAfter": "Swimmer Kalua: I made that rule up. I'm sorry."
+      }
+    },
+    "mele": {
+      "name": "Mele",
+      "npcType": "lass",
+      "trainer": {
+        "dialogueBefore": "Lass Mele: I followed a Bagon through the cave and now I can't find it. Battle me instead!",
+        "dialogueAfter": "Lass Mele: The Bagon was better at hiding than I am at battling."
+      }
+    },
+    "teen": {
+      "name": "Girl",
+      "npcType": "backpacker_f",
+      "dialog": [ "They say a Bagon dreams of flying, so it jumps off the cliffs here every day. It never flies. It never stops trying." ]
+    }
+  },
+  "signs": {
+    "BaySign": "Kala'e Bay\nWest: Seaward Cave, to Melemele Meadow"
+  }
+}

@@ -16,6 +16,7 @@
   "fly": false,
   "warps": [],
   "objects": [
+    { "id": "hapu", "looks": "hapu", "movement": "look_west", "x": 183, "z": 224, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
     {
       "id": "loke",
       "looks": "fisherman",

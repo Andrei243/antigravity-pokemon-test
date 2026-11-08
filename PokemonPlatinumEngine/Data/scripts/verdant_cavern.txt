@@ -68,3 +68,18 @@ script Totem
 label NotYet
   text "Something enormous stirs at the top of the den... It won't come out until the three dens below are clear."
   end
+
+
+# After the Hall of Fame (plan 23, the wave after the loose ends): a second totem has come to Verdant Cavern, the one another
+# of Sun and Moon's versions keeps here. Fought as a totem (its aura, its first call answered) at 50, gone for good
+# once beaten (FLAG_ALOLA_TOTEM_RATICATE_DONE)
+script SecondTotem
+  speaker none
+  scene "The second totem"
+  text "A huge Raticate sits where the totem Gumshoos once stood, its cheeks stuffed and its eyes gleaming!"
+  cry "Raticate"
+  endscene
+  wildbattle "Raticate-Alola" 50 totem attack ally "Raticate"
+  setflag FLAG_ALOLA_TOTEM_RATICATE_DONE
+  hide self
+  end

@@ -67,3 +67,18 @@ script Totem
 label NotYet
   text "Smoke curls from the crater's far side... The dancers come first."
   end
+
+
+# After the Hall of Fame (plan 23, the wave after the loose ends): a second totem has come to Wela Volcano Park, the one another
+# of Sun and Moon's versions keeps here. Fought as a totem (its aura, its first call answered) at 52, gone for good
+# once beaten (FLAG_ALOLA_TOTEM_SALAZZLE_DONE)
+script SecondTotem
+  speaker none
+  scene "The second totem"
+  text "A Salazzle as big as a boulder slinks out of the smoke at the crater's edge!"
+  cry "Salazzle"
+  endscene
+  wildbattle "Salazzle" 52 totem spdefense ally "Salandit"
+  setflag FLAG_ALOLA_TOTEM_SALAZZLE_DONE
+  hide self
+  end

@@ -210,6 +210,7 @@ if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle
 if (mode == "akala") h.AlolaAkalaMode();
 if (mode == "alolaends") h.AlolaLooseEndsMode();
+if (mode == "alolarest") h.AlolaRestMode();
 // Plan 23 · Z8: Alola after its Hall of Fame, Ultra Space and the Battle Royal Dome
 if (mode == "ultraspace") h.AlolaUltraSpaceMode();
 if (mode == "freemove") h.FreeMoveMode();

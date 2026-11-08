@@ -1,0 +1,15 @@
+# Ula'ula Meadow (plan 23, the wave after the loose ends). The lines are our own. The dancer explains the meadow's red
+# nectar and hands one over, once (FLAG_ALOLA_MEADOW_NECTAR): an Oricorio that sips it takes the Baile Style.
+
+
+script Dancer
+  speaker "Dancer"
+  if flag FLAG_ALOLA_MEADOW_NECTAR goto Done
+  say "The Oricorio here dance the fiery dance. They get it from the red flowers. One sip of their nectar and whoosh!"
+  say "Here, I gathered some this morning. Give it to an Oricorio from any other island and watch it change its tune."
+  give "Red Nectar"
+  setflag FLAG_ALOLA_MEADOW_NECTAR
+  end
+label Done
+  say "Every island's flowers teach the Oricorio a different dance. This one is my favourite. Obviously."
+  end

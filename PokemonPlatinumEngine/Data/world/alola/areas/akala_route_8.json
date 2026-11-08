@@ -17,7 +17,8 @@
   "warps": [
     { "x": 245, "z": 136, "to": "AkalaRoute8_PokemonCenter_1F", "toWarp": 0 },
     { "x": 279, "z": 136, "to": "AkalaRoute8_Motel", "toWarp": 0 },
-    { "x": 273, "z": 162, "to": "digletts_tunnel", "toWarp": 0 }
+    { "x": 273, "z": 162, "to": "digletts_tunnel", "toWarp": 0 },
+    { "x": 245, "z": 161, "to": "AkalaRoute8_FossilCenter", "toWarp": 0 }
   ],
   "objects": [
     { "id": "grunt_motel", "looks": "skull_grunt", "movement": "look_east", "x": 277, "z": 138, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },

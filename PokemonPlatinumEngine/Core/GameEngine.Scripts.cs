@@ -794,6 +794,8 @@ public partial class GameEngine
     /// <summary>People a script set walking take their steps, and the player theirs or stands still. Also under text.</summary>
     private void AdvanceScriptedWalks(float dt)
     {
+        // In an open map its own field ticks under the script, and its walk to a marker with it (plan 32 · OW5)
+        if (flow.Open != null) StepTheOpenFieldUnderAScript(dt);
         for (int i = flow.NpcWalks.Count - 1; i >= 0; i--)
         {
             flow.NpcWalks[i].Update(dt);
@@ -950,6 +952,8 @@ public partial class GameEngine
         {
             // A floor of the Battle Pyramid is laid afresh under the same name: the last one's scene goes (plan 14 · B10)
             if (target != flow.Map && target.Name == flow.Map.Name) world.Forget(target, 0, 0, target.Width, target.Height);
+            // Out of an open map, if the script was in one (plan 32 · OW5)
+            flow.Open = null;
             flow.Map = target;
             flow.Player.SetPosition(x, y, facing ?? flow.Player.Facing);
             world.Life.Clear();
@@ -1055,7 +1059,7 @@ public partial class GameEngine
             game.flow.NpcWalks.RemoveAll(w => w.Who == who);
         }
 
-        public bool Walking => game.flow.PlayerWalk != null || game.flow.NpcWalks.Count > 0;
+        public bool Walking => game.flow.PlayerWalk != null || game.flow.NpcWalks.Count > 0 || game.openWalk != null;
 
         public void Emote(NPC? who, EmoteBubble bubble, float seconds)
         {
@@ -1462,6 +1466,8 @@ public partial class GameEngine
 
         public void Warp(string map, int x, int y, Direction? facing)
         {
+            // An open map is gone to by a marker, never a tile (plan 32 · OW5)
+            if (game.OpenMapNamed(map) != null) throw new ScriptException($"warp \"{map}\" {x} {y}: {map} is an open map, gone to by 'warpto \"{map}\" <marker>'");
             // In a hurry the player arrives at once, behind the skip's dark, as at the middle of the warp's own fade
             if (Skipping) game.ArriveAtOnce(map, x, y, facing);
             else game.WarpTo(map, x, y, facing);

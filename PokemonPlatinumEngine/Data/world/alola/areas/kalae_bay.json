@@ -1,0 +1,174 @@
+{
+  "key": "kalae_bay",
+  "index": 406,
+  "name": "Kala'e Bay",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "KALAE_BAY",
+  "nightMusic": "KALAE_BAY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 430,
+      "z": 95,
+      "to": "seaward_cave",
+      "toWarp": 1
+    }
+  ],
+  "objects": [
+    {
+      "id": "kalua",
+      "looks": "swimmer_m",
+      "movement": "look_east",
+      "x": 444,
+      "z": 114,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_KALUA"
+    },
+    {
+      "id": "mele",
+      "looks": "lass",
+      "movement": "look_west",
+      "x": 454,
+      "z": 104,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_LASS_MELE"
+    },
+    {
+      "id": "teen",
+      "looks": "backpacker_f",
+      "movement": "look_west",
+      "x": 464,
+      "z": 114,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 474,
+      "z": 92,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_KALAE_BAY_HONEY",
+      "item": "Honey",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 428,
+      "z": 116,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_KALAE_BAY_PEARL",
+      "item": "Pearl",
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 433,
+      "z": 97,
+      "type": 0,
+      "script": "BaySign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Yungoos",
+      "level": 11
+    },
+    {
+      "species": "Yungoos",
+      "level": 12
+    },
+    {
+      "species": "Slowpoke",
+      "level": 11
+    },
+    {
+      "species": "Slowpoke",
+      "level": 12
+    },
+    {
+      "species": "Wingull",
+      "level": 11
+    },
+    {
+      "species": "Wingull",
+      "level": 12
+    },
+    {
+      "species": "Bagon",
+      "level": 11
+    },
+    {
+      "species": "Bagon",
+      "level": 12
+    },
+    {
+      "species": "Pikipek",
+      "level": 11
+    },
+    {
+      "species": "Smeargle",
+      "level": 12
+    },
+    {
+      "species": "Smeargle",
+      "level": 13
+    },
+    {
+      "species": "Rattata",
+      "form": "Rattata-Alola",
+      "level": 11
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Tentacool",
+      "level": 11
+    },
+    {
+      "species": "Wingull",
+      "level": 11
+    },
+    {
+      "species": "Finneon",
+      "level": 12
+    },
+    {
+      "species": "Wishiwashi",
+      "level": 11
+    },
+    {
+      "species": "Pelipper",
+      "level": 14
+    }
+  ],
+  "waterRate": 20
+}

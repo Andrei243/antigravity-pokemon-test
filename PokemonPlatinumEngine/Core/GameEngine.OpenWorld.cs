@@ -13,8 +13,9 @@ namespace PokemonPlatinumEngine.Core;
 /// is loaded by the game, so <c>flow.Open</c> is null in every game and every line here is passed by. A tool or a test
 /// lays an open map in (<see cref="AddOpenMap"/>) and puts the player there through the <c>Driver</c>.
 /// <para>
-/// What the open field does is count its ticks and walk the capsule (OW3) by the stick; the picture (OW8), doors and
-/// scripts (OW5) come later, so the field's frame runs no script, opens no menu and draws what the grid's field drew.
+/// What the open field does is count its ticks, walk the capsule (OW3) by the stick, and cross its triggers and doors
+/// and run its scripts (OW5, <c>GameEngine.OpenPlaces.cs</c>); the picture (OW8) comes later, so the field opens no menu
+/// and draws what the grid's field drew.
 /// </para>
 /// </summary>
 public partial class GameEngine
@@ -46,19 +47,31 @@ public partial class GameEngine
         if (OpenMapNamed(map.Name) != map) AddOpenMap(map);
         flow.Open = new OpenField(map, pos, yaw);
         flow.State = GameState.Overworld;
+        // What the player is put down in is no crossing (plan 32 · OW5)
+        openCrossings.Settle(map, pos);
+        openWalk = null;
     }
 
     /// <summary>
-    /// The field's frame in an open map (plan 32 · OW3): the frame's ticks, each stepping the player's capsule by the
-    /// stick (the frame's quantised tilt, or the direction actions as a full tilt: <c>InputManager.GetStick</c>, its
-    /// y down the screen being south) and the run button (turned round by the options' Autorun, as the grid's is).
-    /// Nothing else of the field runs yet: no script, menu, encounter or life.
+    /// The field's frame in an open map (plan 32 · OW3, OW5): while a script has the field, the script's frame (its
+    /// walk to a marker and the field's ticks under it, <see cref="StepTheOpenFieldUnderAScript"/>); otherwise the
+    /// frame's ticks, each stepping the player's capsule by the stick (the frame's quantised tilt, or the direction
+    /// actions as a full tilt: <c>InputManager.GetStick</c>, its y down the screen being south) and the run button
+    /// (turned round by the options' Autorun, as the grid's is), and after each the triggers and doors the capsule's
+    /// centre crossed into (<see cref="CrossTheVolumes"/>), the first of which ends the frame's walking. No menu,
+    /// encounter or life of the field runs yet.
     /// </summary>
     private void UpdateOpenField(float dt)
     {
+        if (ScriptRunning)
+        {
+            UpdateScript(dt);
+            return;
+        }
         var stick = InputManager.GetStick();
         bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
-        flow.Open!.Advance(dt, new OpenInput(stick.X, stick.Y, run));
+        var input = new OpenInput(stick.X, stick.Y, run);
+        flow.Open!.Run(dt, _ => input, CrossTheVolumes);
     }
 
     /// <summary>
@@ -70,7 +83,12 @@ public partial class GameEngine
         flow.Open = null;
         if (save.OpenPlace is not { } saved) return;
         var place = saved.ToPlace();
-        if (OpenMapNamed(place.Map) is { } map) flow.Open = new OpenField(map, place.Pos, place.Yaw);
+        if (OpenMapNamed(place.Map) is { } map)
+        {
+            flow.Open = new OpenField(map, place.Pos, place.Yaw);
+            openCrossings.Settle(map, place.Pos);
+            openWalk = null;
+        }
         else Log.Warn($"The save stood in the open map {place.Map}, which isn't there: it wakes on its grid place, {flow.Map.Name} {flow.Player.GridX},{flow.Player.GridY}.");
     }
 }

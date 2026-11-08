@@ -1,0 +1,165 @@
+{
+  "key": "haina_desert",
+  "index": 405,
+  "name": "Haina Desert",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Sandstorm",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HAINA_DESERT",
+  "nightMusic": "HAINA_DESERT",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    {
+      "x": 339,
+      "z": 218,
+      "to": "HainaDesert_RuinsOfAbundance",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "kawika",
+      "looks": "ruin_maniac",
+      "movement": "look_east",
+      "x": 324,
+      "z": 242,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_RUIN_MANIAC_KAWIKA"
+    },
+    {
+      "id": "nalu",
+      "looks": "hiker",
+      "movement": "look_west",
+      "x": 364,
+      "z": 238,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_HIKER_NALU"
+    },
+    {
+      "id": "hapu",
+      "looks": "hapu",
+      "movement": "look_south",
+      "x": 340,
+      "z": 220,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 370,
+      "z": 216,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_HAINA_DESERT_STAR_PIECE",
+      "item": "Star Piece",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 308,
+      "z": 262,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_HAINA_DESERT_SOFT_SAND",
+      "item": "Soft Sand",
+      "script": ""
+    },
+    {
+      "id": "item_ball_3",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 330,
+      "z": 224,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_HAINA_DESERT_FOSSIL",
+      "item": "Skull Fossil",
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 307,
+      "z": 227,
+      "type": 0,
+      "script": "DesertSign"
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Dugtrio",
+      "form": "Dugtrio-Alola",
+      "level": 29
+    },
+    {
+      "species": "Dugtrio",
+      "form": "Dugtrio-Alola",
+      "level": 30
+    },
+    {
+      "species": "Trapinch",
+      "level": 28
+    },
+    {
+      "species": "Trapinch",
+      "level": 29
+    },
+    {
+      "species": "Sandile",
+      "level": 28
+    },
+    {
+      "species": "Krokorok",
+      "level": 30
+    },
+    {
+      "species": "Gabite",
+      "level": 30
+    },
+    {
+      "species": "Gible",
+      "level": 28
+    },
+    {
+      "species": "Sandshrew",
+      "level": 28
+    },
+    {
+      "species": "Cacnea",
+      "level": 28
+    },
+    {
+      "species": "Vibrava",
+      "level": 30
+    },
+    {
+      "species": "Gible",
+      "level": 29
+    }
+  ],
+  "landRate": 25
+}

@@ -1,0 +1,12 @@
+{
+  // The tunnel and the cavern under the hill (plan 32 · OW5): a trigger in the cavern's middle that runs while the
+  // story is where it waits, and the marks a scene there walks between
+  "markers": [
+    { "name": "tunnel_west", "at": [-30, 0, 0], "yaw": 90 },
+    { "name": "cavern_middle", "at": [0, 0, 0], "yaw": 0 },
+    { "name": "cavern_east", "at": [9, 0, 1.5], "yaw": 270 }
+  ],
+  "triggers": [
+    { "name": "cavern", "cylinder": { "at": [0, 0], "radius": 6, "bottom": -1, "top": 3 }, "script": "Cavern", "var": "VAR_LAB_CAVE", "value": 0 }
+  ]
+}

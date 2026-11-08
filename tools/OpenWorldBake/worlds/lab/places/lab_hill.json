@@ -1,0 +1,18 @@
+{
+  // The hill's top over the cavern (plan 32 · OW5): an encounter zone of wild Pokémon (OW7 spawns from it)
+  "markers": [
+    { "name": "hill_top", "at": [0, 12, -2], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "hill_top",
+      "polygon": [[-9, -9], [9, -9], [9, 9], [-9, 9]],
+      "minY": 8, "maxY": 16,
+      "slots": [
+        { "species": "Wooloo", "minLevel": 3, "maxLevel": 5, "weight": 40 },
+        { "species": "Skwovet", "minLevel": 3, "maxLevel": 4, "weight": 20 }
+      ],
+      "density": 3, "cap": 4
+    }
+  ]
+}

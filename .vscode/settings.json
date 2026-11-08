@@ -20,7 +20,8 @@
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/terrain/*.json", "tools/OpenWorldBake/worlds/*/terrain/*.json"], "url": "./docs/schemas/open-terrain.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/carve/*.json", "tools/OpenWorldBake/worlds/*/carve/*.json"], "url": "./docs/schemas/open-carve.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/water.json", "tools/OpenWorldBake/worlds/*/water.json"], "url": "./docs/schemas/open-water.schema.json" },
-    { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/roads.json", "tools/OpenWorldBake/worlds/*/roads.json"], "url": "./docs/schemas/open-roads.schema.json" }
+    { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/roads.json", "tools/OpenWorldBake/worlds/*/roads.json"], "url": "./docs/schemas/open-roads.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/world3d/*/places/*.json", "tools/OpenWorldBake/worlds/*/places/*.json"], "url": "./docs/schemas/open-place.schema.json" }
   ],
   // The files the game reads with comments and trailing commas allowed
   "files.associations": {

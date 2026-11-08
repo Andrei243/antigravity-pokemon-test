@@ -78,6 +78,18 @@
     }
   ],
   "specialties": {
+    "royal_megamart": [
+      "Quick Ball",
+      "Dusk Ball",
+      "Timer Ball",
+      "Repeat Ball",
+      "Nest Ball",
+      "Net Ball",
+      "Dive Ball",
+      "Luxury Ball",
+      "Max Repel",
+      "Revive"
+    ],
     "jubilife": [
       "Air Mail",
       "Heal Ball"

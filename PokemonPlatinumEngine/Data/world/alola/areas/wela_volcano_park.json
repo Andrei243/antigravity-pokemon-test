@@ -16,6 +16,7 @@
   "fly": true,
   "warps": [],
   "objects": [
+    { "id": "second_totem", "looks": "salazzle", "movement": "look_south", "x": 331, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "kiawe", "looks": "kiawe", "movement": "look_south", "x": 331, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "trial_1", "looks": "salandit", "movement": "look_south", "x": 324, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "trial_2", "looks": "cubone", "movement": "look_south", "x": 339, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },

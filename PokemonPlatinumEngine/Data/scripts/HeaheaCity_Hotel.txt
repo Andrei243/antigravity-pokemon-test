@@ -1,0 +1,10 @@
+# Heahea City's hotel (plan 23, the wave after the loose ends: a door Z5, Z6 or Z7 left shut, or a room of the islands' last
+# places). The lines are our own (docs/mechanics/rulings.md, "The rest of the islands: Hapu, the guardians' ruins, the
+# last routes and the shut doors").
+
+
+script Desk
+  speaker "Hotel Clerk"
+  say "Welcome to the hotel! I'm afraid every room is booked for the festival season. Even the broom cupboard."
+  say "Do enjoy the lobby, though. The sofa is the softest on Akala."
+  end

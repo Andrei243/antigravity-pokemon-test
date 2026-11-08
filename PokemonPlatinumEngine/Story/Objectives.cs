@@ -313,6 +313,14 @@ public static class Objectives
         (660, "alolaHapu", s => s.Var("VAR_ALOLA_STORY") >= 51 || s.HasBadge(RegionDatabase.Alola, "Poni"), false),
         (661, "alolaAltar", AtLeast("VAR_ALOLA_STORY", 52), false),
         (662, "alolaLanakila", s => s.Var("VAR_ALOLA_STORY") >= 54 || s.Has("AlolaHallOfFame"), false),
+        // Plan 23, the wave after the loose ends: after the Hall of Fame, the four guardians in their ruins and the totems
+        // of the trials that came back (flags their scripts set once, never cleared)
+        (663, "alolaTapuKoko", F("FLAG_ALOLA_TAPU_KOKO_DONE"), false),
+        (664, "alolaTapuLele", F("FLAG_ALOLA_TAPU_LELE_DONE"), false),
+        (665, "alolaTapuBulu", F("FLAG_ALOLA_TAPU_BULU_DONE"), false),
+        (666, "alolaTapuFini", F("FLAG_ALOLA_TAPU_FINI_DONE"), false),
+        (667, "alolaTotems", s => s.Has("FLAG_ALOLA_TOTEM_RATICATE_DONE") && s.Has("FLAG_ALOLA_TOTEM_ARAQUANID_DONE")
+            && s.Has("FLAG_ALOLA_TOTEM_SALAZZLE_DONE") && s.Has("FLAG_ALOLA_TOTEM_VIKAVOLT_DONE"), false),
         // Plan 23 · Z8, after the Hall of Fame: the Lightseekers at the Altar, the seven Ultra Beasts in their worlds,
         // Necrozma at the top of Megalo Tower (VAR_ALOLA_ULTRA), and the Battle Royal Dome's first show. Its ids stand at
         // the end of Alola's block, clear of any session that adds to the story before them

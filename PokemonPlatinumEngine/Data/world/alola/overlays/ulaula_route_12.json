@@ -1,10 +1,16 @@
 {
-  // Route 12 (plan 23 · Z7): drawn by hand, our words. East from Mount Hokulani along the ridge to Tapu Village.
+  // Route 12 (plan 23 · Z7): drawn by hand, our words. East from Mount Hokulani along the ridge to Tapu Village. Hapu of
+  // Poni meets the player at its east end and registers her Mudsdale in the Ride Pager (plan 23, the wave after the loose
+  // ends: ulaula_route_12.txt)
   "area": "ulaula_route_12",
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
+  "triggers": [
+    { "script": "HapuMudsdale", "x": 181, "z": 225, "width": 1, "depth": 5, "variable": "VAR_ALOLA_HAPU", "value": 0 }
+  ],
   "people": {
+    "hapu": { "name": "Hapu", "npcType": "hapu", "script": "HapuTalk", "still": true, "hiddenBy": "FLAG_ALOLA_HAPU_ROUTE_12" },
     "loke": {
       "name": "Loke",
       "npcType": "fisherman",

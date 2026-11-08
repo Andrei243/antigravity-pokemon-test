@@ -21,7 +21,7 @@ script OnEnter
   halloffame
   setflag AlolaHallOfFame
   setvar VAR_ALOLA_STORY 54
-  objective alolaFree
+  objective alolaTapuKoko
   call ClearGame
   halloffame show
   heal

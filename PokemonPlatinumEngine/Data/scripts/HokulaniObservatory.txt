@@ -75,3 +75,18 @@ script Totem
 label NotYet
   text "The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first."
   end
+
+
+# After the Hall of Fame (plan 23, the wave after the loose ends): a second totem has come to Hokulani Observatory, the one another
+# of Sun and Moon's versions keeps here. Fought as a totem (its aura, its first call answered) at 53, gone for good
+# once beaten (FLAG_ALOLA_TOTEM_VIKAVOLT_DONE)
+script SecondTotem
+  speaker none
+  scene "The second totem"
+  text "A huge Vikavolt hums over the observatory's great lens, crackling with stolen power!"
+  cry "Vikavolt"
+  endscene
+  wildbattle "Vikavolt" 53 totem spattack ally "Charjabug"
+  setflag FLAG_ALOLA_TOTEM_VIKAVOLT_DONE
+  hide self
+  end

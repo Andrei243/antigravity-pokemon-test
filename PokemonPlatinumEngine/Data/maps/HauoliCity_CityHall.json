@@ -1,0 +1,145 @@
+{
+  "name": "HauoliCity_CityHall",
+  "displayName": "Hau'oli City",
+  "bgmTrack": "alola/hauoli",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#....#####....#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 4,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 11,
+      "y": 8,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Melemele",
+      "targetX": 318,
+      "targetY": 166,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "guide",
+      "name": "Guide",
+      "npcType": "gentleman",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "script": "Guide"
+    },
+    {
+      "id": "student",
+      "name": "Student",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "They're putting up a plaque about the first island challenge. Some kid did all four islands in one summer!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

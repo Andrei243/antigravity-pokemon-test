@@ -1,0 +1,20 @@
+# Haina Desert, Ula'ula Island (plan 23, the wave after the loose ends). The lines are our own (docs/mechanics/rulings.md,
+# "The rest of the islands: Hapu, the guardians' ruins, the last routes and the shut doors"): Hapu, met on Route 12,
+# waits before the Ruins of Abundance, Tapu Bulu's shrine, and speaks of her island and of the kahuna Poni lacks.
+# VAR_ALOLA_HAPU is ulaula_route_12.txt's count.
+#
+# The people: hapu, shown once Route 12's scene is played (FLAG_ALOLA_HAPU_ROUTE_12) until she has been heard out
+# (FLAG_ALOLA_HAPU_RUINS_DONE).
+
+
+script Hapu
+  face hapu player
+  speaker "Hapu"
+  say "So you found your way through the sand. Not bad. Mudsdale and I came straight across."
+  say "These are the Ruins of Abundance. Tapu Bulu sleeps in there. People say it gives the land its harvests, and takes them back when it's cross."
+  say "Poni has a guardian too, but no kahuna. Not since my grandfather. Everyone is waiting for someone to step up."
+  say "Maybe someone will. I'm going home to find out. Come to Poni when you've finished here, {player}."
+  hide hapu
+  setflag FLAG_ALOLA_HAPU_RUINS_DONE
+  setvar VAR_ALOLA_HAPU 2
+  end

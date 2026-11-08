@@ -1,0 +1,147 @@
+{
+  "key": "seaward_cave",
+  "index": 407,
+  "name": "Seaward Cave",
+  "matrix": 40,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SEAWARD_CAVE",
+  "nightMusic": "SEAWARD_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 7,
+      "z": 25,
+      "to": "melemele_meadow",
+      "toWarp": 0
+    },
+    {
+      "x": 56,
+      "z": 25,
+      "to": "kalae_bay",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "swimmer",
+      "looks": "swimmer_m",
+      "movement": "look_north",
+      "x": 34,
+      "z": 22,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 8,
+      "z": 8,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_SEAWARD_CAVE_WATER_STONE",
+      "item": "Water Stone",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 54,
+      "z": 8,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_SEAWARD_CAVE_NEVERMELTICE",
+      "item": "Never-Melt Ice",
+      "script": ""
+    }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Zubat",
+      "level": 10
+    },
+    {
+      "species": "Zubat",
+      "level": 11
+    },
+    {
+      "species": "Zubat",
+      "level": 12
+    },
+    {
+      "species": "Psyduck",
+      "level": 10
+    },
+    {
+      "species": "Psyduck",
+      "level": 11
+    },
+    {
+      "species": "Seel",
+      "level": 11
+    },
+    {
+      "species": "Seel",
+      "level": 12
+    },
+    {
+      "species": "Delibird",
+      "level": 11
+    },
+    {
+      "species": "Delibird",
+      "level": 12
+    },
+    {
+      "species": "Diglett",
+      "form": "Diglett-Alola",
+      "level": 10
+    },
+    {
+      "species": "Zubat",
+      "level": 10
+    },
+    {
+      "species": "Psyduck",
+      "level": 12
+    }
+  ],
+  "landRate": 10,
+  "water": [
+    {
+      "species": "Psyduck",
+      "level": 11
+    },
+    {
+      "species": "Seel",
+      "level": 12
+    },
+    {
+      "species": "Zubat",
+      "level": 10
+    },
+    {
+      "species": "Psyduck",
+      "level": 12
+    },
+    {
+      "species": "Seel",
+      "level": 13
+    }
+  ],
+  "waterRate": 20
+}

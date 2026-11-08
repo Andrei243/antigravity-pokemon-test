@@ -199,6 +199,18 @@
       "dialog": [
         "Sophocles let me look through the big telescope! I saw a star. It was a star."
       ]
+    },
+    {
+      "id": "second_totem",
+      "name": "Vikavolt",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "SecondTotem",
+      "hiddenBy": "FLAG_ALOLA_TOTEM_VIKAVOLT_DONE",
+      "shownBy": "AlolaHallOfFame",
+      "species": "Vikavolt"
     }
   ],
   "wildEncounters": []

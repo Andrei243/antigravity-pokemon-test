@@ -9,9 +9,9 @@
   "architecture": "Islander",
   "doors": [
     { "warp": 0, "map": "AlolaRoute2_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
-    { "warp": 2, "map": "AlolaRoute2_BerryFieldsHouse", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 2, "map": "AlolaRoute2_BerryFieldsHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "AlolaRoute2_Motel", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 1 ],
   "people": {
     "ilima": { "name": "Ilima", "npcType": "ilima", "script": "Ilima", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL" },
     "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_ROUTE_2_DONE", "shownBy": "FLAG_ALOLA_FESTIVAL_DONE" },

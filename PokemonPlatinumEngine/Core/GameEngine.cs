@@ -365,6 +365,8 @@ public partial class GameEngine
         using (Log.Phase("items")) ItemDatabase.Initialize();
         using (Log.Phase("maps")) MapDatabase.Initialize();
         using (Log.Phase("scripts")) LoadScripts();
+        // The open regions' maps (plan 32 · OW5): none says it is open yet, so none is loaded
+        LoadOpenRegions();
     }
 
     private void ReadTheSlots()
@@ -2573,6 +2575,12 @@ public partial class GameEngine
             StartScript(FieldScripts.CyclistsOnly);
             return;
         }
+        // A room's way out to an open map lands on the marker of the door that leads back in (plan 32 · OW5)
+        if (OpenMapNamed(warp.TargetMap) is { } open)
+        {
+            ComeOutOfARoom(open, warp);
+            return;
+        }
         NoteTheWayIn(warp);
 
         // A warp panel carries whoever ends a step on it: they turn where they stand, and the picture closes on that
@@ -2990,6 +2998,8 @@ public partial class GameEngine
         SetPartner(null, null);
         foreach (var p in flow.Party.Members) FormRules.ByHeldItem(p);
         var (room, home) = WhiteOutRoom();
+        // A battle lost in an open map wakes on the grid like any other (plan 32 · OW5)
+        flow.Open = null;
         flow.Map = MapDatabase.Get(room);
         var healer = flow.Map.Everyone.FirstOrDefault(n => n.IsHealingNurse);
         // In front of the nurse, the counter between them; at home, beside Mom

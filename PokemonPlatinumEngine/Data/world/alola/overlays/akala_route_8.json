@@ -8,9 +8,10 @@
   "trees": "Round",
   "architecture": "Islander",
   "doors": [
-    { "warp": 0, "map": "AkalaRoute8_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" }
+    { "warp": 0, "map": "AkalaRoute8_PokemonCenter_1F", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "AkalaRoute8_Motel", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "AkalaRoute8_FossilCenter", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 1 ],
   "triggers": [
     { "script": "MotelScene", "x": 264, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_AKALA", "value": 1 }
   ],
