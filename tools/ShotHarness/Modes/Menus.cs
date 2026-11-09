@@ -3,6 +3,8 @@ partial class Harness
     // ---------------------------------------------------------------- menus
     public void MenusMode()
     {
+        // What lives here alone (plan 10 · F11), for a quick look
+        if (Environment.GetEnvironmentVariable("MENUS_PART") == "here") { MenusHere(); return; }
         // Start menu: sliding in, open, and the prompt behind QUIT GAME
         GoTo("TwinleafTown", 11, 8, Direction.Down);
         var startMenu = game.StartMenu;
@@ -1178,5 +1180,8 @@ partial class Harness
 
         // The Pokédex's research and its TASKS page (plan 15 · E1, E2), last so that nothing before it moves
         MenusResearch();
+
+        // What lives here (plan 10 · F11), last of all
+        MenusHere();
     }
 }

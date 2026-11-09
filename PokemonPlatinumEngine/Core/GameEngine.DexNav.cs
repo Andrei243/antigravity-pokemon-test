@@ -9,8 +9,9 @@ namespace PokemonPlatinumEngine.Core;
 /// The DexNav as the game plays it (plan 10 · F11, F12; <see cref="DexNavRules"/>): USE switches it on or off; on,
 /// a step on foot now and then finds a Pokémon hiding in the grass in sight (a rustle), which the player creeps up on
 /// with Run held (<see cref="Pace.Sneak"/>) and meets by stepping onto it, with the search's bonus; running, riding or
-/// hopping near it scares it off and breaks the chain. Off, nothing here runs or draws. The rustle is not drawn yet
-/// (its cell of <c>LifeArt</c> waits for a session that can look at it), and the item is given by nobody yet.
+/// hopping near it scares it off and breaks the chain. Off, nothing here runs or draws. The rustle is drawn by the
+/// field's life (<see cref="Graphics.FieldLife.Hiding"/>, <see cref="Graphics.FieldLife.Fled"/>; style guide, "Life", "A
+/// rustle"), and the item comes with the National Pokédex.
 /// </summary>
 public partial class GameEngine
 {
@@ -22,6 +23,27 @@ public partial class GameEngine
 
     /// <summary>The DexNav's find in the grass now, for a tool (the harness, the tests).</summary>
     internal Rustle? DexNavRustle => rustle;
+
+    /// <summary>
+    /// A tool puts a find in the grass (the harness's rustle shots, plan 10 · F12): the DexNav switched on and the
+    /// Pokémon of the place's table at that tile hiding there, as a step would have found it; false where nothing lives.
+    /// </summary>
+    internal bool PlaceDexNavRustle(int x, int y)
+    {
+        flow.DexNav.On = true;
+        if (flow.Map.DrawOutWild(x, y, false, flow.Player.Lead, EncounterMomentNow()) is not { } entry) return false;
+        rustle = new Rustle(x, y, entry);
+        flow.Player.SneaksInsteadOfRunning = true;
+        return true;
+    }
+
+    /// <summary>A tool takes the find away and switches the DexNav off again, with no word.</summary>
+    internal void ForgetDexNavRustle()
+    {
+        rustle = null;
+        flow.DexNav.On = false;
+        flow.Player.SneaksInsteadOfRunning = false;
+    }
 
     /// <summary>The DexNav is in the bag (plan 10 · F11): the National Pokédex gives it, and a save that has the one is given the other.</summary>
     private bool HasTheDexNav => ItemDatabase.Get(DexNavRules.Item) is { } item && flow.Bag.GetQuantity(item) > 0;
@@ -85,6 +107,8 @@ public partial class GameEngine
                     return MeetTheFind(found);
                 case RustleAfterStep.Scared:
                     rustle = null;
+                    // It bursts out of the grass (style guide, "Life", "A rustle")
+                    world.Life.Fled(flow.Map, found.X, found.Y);
                     flow.DexNav.Break();
                     ShowNotification(Text.Of("engine.dexNav.scared"));
                     break;

@@ -58,7 +58,8 @@ internal static class PokemonRenderer
 
     /// <param name="root">Places the feet and turns the model (System.Numerics row-vector convention).</param>
     /// <param name="posed">The skeleton is posed already (<see cref="PokeModel.AnimateStrip"/>): it is drawn as it stands.</param>
-    public static void Draw(RenderContext context, PokeModel m, PokePose pose, Matrix4x4 root, CharacterPass pass, bool posed = false)
+    /// <param name="fierce">A held fierce look (plan 10 · F10: an alpha standing in battle), number 5 of the eyes' order (<see cref="PokemonAnimation.EyesOf(PokePose, bool)"/>).</param>
+    public static void Draw(RenderContext context, PokeModel m, PokePose pose, Matrix4x4 root, CharacterPass pass, bool posed = false, bool fierce = false)
     {
         EnsureUploaded(m, context.Shaders);
         if (m.Imported != null)
@@ -86,7 +87,7 @@ internal static class PokemonRenderer
             case CharacterPass.Color:
                 m.Body.Draw(context.ToonSkinned, m.Skin, root);
                 if (m.DecalModel != null && m.DecalMaterials.Length > 0)
-                    m.DecalModel.Draw(m.DecalMaterials[(int)PokemonAnimation.EyesOf(pose)], m.Skin, root);
+                    m.DecalModel.Draw(m.DecalMaterials[(int)PokemonAnimation.EyesOf(pose, fierce)], m.Skin, root);
                 break;
             case CharacterPass.Outline:
                 // A shell round the body, showing only its inside: a rim round the silhouette

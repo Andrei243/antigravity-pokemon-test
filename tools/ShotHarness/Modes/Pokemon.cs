@@ -1,5 +1,9 @@
 partial class Harness
 {
+    // An alpha named on a board (plan 10 · F10: Bidoof-alpha): its model is its species' own
+    static bool IsAlpha(string name) => name.EndsWith("-alpha", StringComparison.OrdinalIgnoreCase);
+    static string ModelOf(string name) => IsAlpha(name) ? name[..^"-alpha".Length] : name;
+
     // ---------------------------------------------------------------- Pokémon models (plan 04 · G7)
     public void PokemonMode()
     {
@@ -18,19 +22,21 @@ partial class Harness
             var board = Raylib.GenImageColor(4 * Box, named.Length * Box, backdrop);
             for (int i = 0; i < named.Length; i++)
             {
-                var row = Studio(named[i], "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, Box, Box);
+                var row = Studio(ModelOf(named[i]), "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, Box, Box);
                 Raylib.ImageDraw(ref board, row, new Rectangle(0, 0, row.Width, row.Height), new Rectangle(0, i * Box, row.Width, row.Height), Color.White);
                 Raylib.UnloadImage(row);
                 Raylib.ImageDrawText(ref board, named[i], 6, i * Box + 6, 20, new Color(30, 30, 40, 255));
             }
             Save(board, "91_turntables");
 
-            // Their field sprites (plan 10 · F1): the four facings, two idle frames each, enlarged
+            // Their field sprites (plan 10 · F1): the four facings, two idle frames each, enlarged; an alpha's (plan 10 · F10:
+            // Bidoof-alpha) is the species' own at Alphas.Scale, as the field draws it beside a plain one's
+            int Enlarged(string n) => (int)MathF.Round(6 * (IsAlpha(n) ? Alphas.Scale : 1f));
             foreach (var species in named)
-                if (Wanted("97_field_" + species.ToLowerInvariant())) Save(FieldSprites.Sheet(context, species, 6), "97_field_" + species.ToLowerInvariant());
+                if (Wanted("97_field_" + species.ToLowerInvariant())) Save(FieldSprites.Sheet(context, ModelOf(species), Enlarged(species)), "97_field_" + species.ToLowerInvariant());
             // and their walk strips (plan 10 · F2): eight frames to a stride, a facing to a row
             foreach (var species in named)
-                if (Wanted("97_field_walk_" + species.ToLowerInvariant())) Save(FieldSprites.WalkSheet(context, species, 6), "97_field_walk_" + species.ToLowerInvariant());
+                if (Wanted("97_field_walk_" + species.ToLowerInvariant())) Save(FieldSprites.WalkSheet(context, ModelOf(species), Enlarged(species)), "97_field_walk_" + species.ToLowerInvariant());
         }
 
         // Turntables: front, three-quarter, side and back, for every model and each body plan's sample

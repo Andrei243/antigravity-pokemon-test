@@ -7,6 +7,8 @@ partial class Harness
     // to look elsewhere, and the three ways into a battle caught as they close and open.
     public void LifeMode()
     {
+        // The DexNav's rustle alone (plan 10 · F12), for a quick look
+        if (Environment.GetEnvironmentVariable("LIFE_PART") == "rustle") { LifeRustle(); return; }
         var walker = game.Player;
         var sinnoh = MapDatabase.Get("Sinnoh");
         void Put(int x, int y, Direction facing, TravelMode travel = TravelMode.OnFoot)
@@ -491,6 +493,10 @@ partial class Harness
         {
             ("first_lenses", 0.3f), ("widest", 1.2f), ("last_lenses", 1.75f), ("the_white", 2.08f)
         });
+        Put(112, 880, Direction.Down);
+
+        // The DexNav's rustle (plan 10 · F12), after everything so that nothing before it moves
+        LifeRustle();
         Put(112, 880, Direction.Down);
     }
 }

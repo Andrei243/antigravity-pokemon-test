@@ -417,12 +417,15 @@ internal static class CharacterSprites
             art.Width / (float)TexelsPerUnit, art.Height / (float)TexelsPerUnit, partOfAWall);
     }
 
-    /// <summary>Stands a card with the middle of its foot on a point of the ground.</summary>
-    public static void DrawCard(Card card, Vector3 foot, float vs, CharacterPass pass)
+    /// <summary>
+    /// Stands a card with the middle of its foot on a point of the ground, at <paramref name="scale"/> times its size
+    /// (an alpha's field sprite, plan 10 · F10; at 1 the card is drawn as it always was, to the bit).
+    /// </summary>
+    public static void DrawCard(Card card, Vector3 foot, float vs, CharacterPass pass, float scale = 1f)
     {
         if (pass == CharacterPass.Outline) return;
         var at = new Vector3(WorldRenderer.SnapToTexel(foot.X), foot.Y, WorldRenderer.SnapToTexel(foot.Z));
-        var m = Matrix4x4.CreateScale(card.Width, card.Height * vs, 1f) * Matrix4x4.CreateTranslation(at);
+        var m = Matrix4x4.CreateScale(card.Width * scale, card.Height * vs * scale, 1f) * Matrix4x4.CreateTranslation(at);
         Raylib.DrawMesh(card.Wall ? wallQuad : quad, pass == CharacterPass.Depth ? card.Depth : card.Color, Matrix4x4.Transpose(m));
         FrameProfiler.Count(2);
     }

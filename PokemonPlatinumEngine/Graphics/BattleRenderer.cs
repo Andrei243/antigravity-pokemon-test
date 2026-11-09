@@ -1133,7 +1133,8 @@ public sealed class BattleRenderer
                 if (cast.Amount > 0f) context.Shaders.SetFlash(cast.Color, Math.Clamp(cast.Amount, 0f, 1f));
             }
         }
-        PokemonRenderer.Draw(context, model, pose, root, pass);
+        // An alpha's eyes are held fierce while it stands in battle (plan 10 · F10; style guide, the eyes' order, 5)
+        PokemonRenderer.Draw(context, model, pose, root, pass, fierce: v.Shown.IsAlpha);
         if (pass == CharacterPass.Color) context.Shaders.SetFlash(default, 0f);
     }
 
