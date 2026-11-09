@@ -168,15 +168,6 @@
         "Lumile Ultra Bestiilor",
         "Călătorește prin tunel",
         "Rămân aici"
-      ],
-      "was": [
-        "Unde te va duce vortexul?",
-        "Ultra Deep Sea",
-        "Ultra Jungle",
-        "Ultra Desert",
-        "Ultra Plant",
-        "Mai departe...",
-        "Rămân aici"
       ]
     },
     {
@@ -197,13 +188,6 @@
         "Ultra Plant",
         "Mai departe...",
         "Rămân aici"
-      ],
-      "was": [
-        "Unde te va duce vortexul?",
-        "Ultra Crater",
-        "Ultra Forest",
-        "Ultra Ruin",
-        "Rămân aici"
       ]
     },
     {
@@ -219,14 +203,6 @@
         "Ultra Crater",
         "Ultra Forest",
         "Ultra Ruin",
-        "Rămân aici"
-      ],
-      "was": [
-        "Unde te va duce vortexul?",
-        "Ultra Crater",
-        "Ultra Forest",
-        "Ultra Ruin",
-        "Ultra Megalopolis",
         "Rămân aici"
       ]
     },
@@ -246,9 +222,6 @@
         "Ultra Ruin",
         "Ultra Megalopolis",
         "Rămân aici"
-      ],
-      "was": [
-        "{player} a pășit în lumină..."
       ]
     },
     {
@@ -313,9 +286,6 @@
       ],
       "text": [
         "{player} a pășit în lumină..."
-      ],
-      "was": [
-        "Piatra estradei e caldă, de parcă soarele ar fi încă pe ea."
       ]
     },
     {
@@ -452,9 +422,6 @@
       ],
       "text": [
         "Astea două zăceau pe podium în dimineața de după. Unul cald ca amiaza, unul rece ca miezul nopții. Erau pentru tine."
-      ],
-      "was": [
-        "Estrada e liniștită de când cel mic a plecat cu tine. Cred că e fericit."
       ]
     },
     {

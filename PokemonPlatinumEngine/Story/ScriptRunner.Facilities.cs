@@ -23,6 +23,9 @@ public sealed partial class ScriptRunner
     private IReadOnlyList<int> facilitySlots = Array.Empty<int>();
     private StreakWin facilityWin;
     private FrontierOpponent? facilityPartner;
+    // A scouted trainer named at the desk (facility tree scout N), for {partner} until a challenge has one
+    private string scoutedName = "";
+    private int scoutCursor;
 
     /// <summary>The partner of the Multi room the script has stood in the room (<c>facility tree partner</c>), dressed by the engine.</summary>
     public FrontierOpponent? FacilityPartner => facilityPartner;
@@ -199,10 +202,42 @@ public sealed partial class ScriptRunner
                 Challenge().Finish(records);
                 Result = lastNumber = Challenge().RecordOf(records).Latest;
                 break;
+            // The Battle Tree's scouted partners (plan 23, Alola finished): how many are kept, one named for {partner} (RESULT 1,
+            // 0 when there is no such one), one chosen for the Multi room's challenges to come (0 the tree's own), and which is
+            case "scouted":
+                Result = lastNumber = records.PeekFacility(place, "multi", false)?.Scouted?.Count ?? 0;
+                break;
+            case "scout":
+            {
+                // The next scouted trainer, the most recent first, named for {partner}: RESULT its number, 0 past the last
+                var list = records.PeekFacility(place, "multi", false)?.Scouted;
+                int count = list?.Count ?? 0;
+                scoutCursor = scoutCursor <= 0 ? count : scoutCursor - 1;
+                bool there = scoutCursor >= 1 && scoutCursor <= count;
+                scoutedName = there ? $"{list![scoutCursor - 1].Class} {list[scoutCursor - 1].Name}" : "";
+                if (!there) scoutCursor = 0;
+                Result = there ? scoutCursor : 0;
+                break;
+            }
+            case "pick":
+            {
+                var record = records.Facility(place, "multi", false);
+                int which = i.Number >= 0 ? i.Number : scoutCursor;
+                record.Partner = which >= 1 && which <= (record.Scouted?.Count ?? 0) ? which : 0;
+                if (record.Partner == 0) scoutedName = "";
+                scoutCursor = 0;
+                Result = record.Partner;
+                break;
+            }
+            case "picked":
+                Result = lastNumber = records.PeekFacility(place, "multi", false)?.Partner ?? 0;
+                break;
             case "end":
                 host.Facility = null;
                 facilitySlots = Array.Empty<int>();
                 facilityPartner = null;
+                scoutedName = "";
+                scoutCursor = 0;
                 towerFoes = new List<FrontierOpponent>();
                 facilityWin = default;
                 break;

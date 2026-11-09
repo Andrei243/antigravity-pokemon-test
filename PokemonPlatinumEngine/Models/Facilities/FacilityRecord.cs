@@ -30,6 +30,15 @@ public sealed class FacilityRecord
     /// <summary>The challenge put down between battles, to be taken up again; null when none is.</summary>
     public FacilityPause? Paused { get; set; }
 
+    /// <summary>
+    /// The trainers beaten in a room of the place who may be asked to partner its Multi room (the Battle Tree's scouting,
+    /// plan 23, Alola finished), the most recent last; kept on the Multi room's record. Null while there are none.
+    /// </summary>
+    public List<ScoutedTrainer>? Scouted { get; set; }
+
+    /// <summary>The Multi room's partner chosen at the desk: 0 the place's own, or a scouted trainer's number from 1.</summary>
+    public int Partner { get; set; }
+
     /// <summary>A place's way as its record is kept: <c>house.single</c>, and <c>house.single.hard</c> for the hard room.</summary>
     public static string KeyOf(string place, string way, bool hard) => $"{place}.{way}{(hard ? ".hard" : "")}";
 }
@@ -53,4 +62,20 @@ public sealed class FacilityPause
     public uint Seed { get; set; }
     public uint State { get; set; }
     public long Drawn { get; set; }
+}
+
+/// <summary>
+/// A trainer beaten at the Battle Tree, kept to be asked to partner its Multi room (plan 23, Alola finished; Sun and
+/// Moon's scouting): who they are and the sets and personalities their team was drawn with, from which their two are
+/// built again (<see cref="FacilityTrainers.Rebuild"/>), so nothing but numbers is saved.
+/// </summary>
+public sealed class ScoutedTrainer
+{
+    public string Id { get; set; } = "";
+    public string Class { get; set; } = "";
+    public string Name { get; set; } = "";
+    public string Look { get; set; } = "";
+    public List<string> Sets { get; set; } = new();
+    public uint OtId { get; set; }
+    public List<uint> Personalities { get; set; } = new();
 }

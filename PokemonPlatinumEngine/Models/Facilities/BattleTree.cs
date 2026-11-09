@@ -113,6 +113,33 @@ public static class BattleTree
     /// <summary>Every room, normal and Super, in the board's order.</summary>
     public static IEnumerable<StreakRoom> Rooms => Ways.SelectMany(w => HasHost(w) ? new[] { Room(w, false), Room(w, true) } : new[] { Room(w, false) });
 
+    /// <summary>How many trainers the tree keeps as scouted partners for its Multi room, the most recent kept.</summary>
+    public const int MostScouted = 10;
+
+    /// <summary>The Multi room's record, where the scouted partners and the one chosen are kept.</summary>
+    public static FacilityRecord MultiRecord(Frontier.FrontierRecords records) => records.Facility(Place, "multi", false);
+
+    /// <summary>
+    /// A trainer beaten in a room of the tree scouted (plan 23, Alola finished; Sun and Moon's scouting, ours in its
+    /// numbers): kept, the most recent last, once a name, at most <see cref="MostScouted"/>; the partner chosen keeps pointing at
+    /// the same trainer as the list moves.
+    /// </summary>
+    public static void Scout(Frontier.FrontierRecords records, FacilityOpponent beaten)
+    {
+        var record = MultiRecord(records);
+        var list = record.Scouted ??= new List<ScoutedTrainer>();
+        string chosen = record.Partner > 0 && record.Partner <= list.Count ? list[record.Partner - 1].Id + "/" + list[record.Partner - 1].Name : "";
+        list.RemoveAll(s => s.Id == beaten.Id && s.Name == beaten.Name);
+        list.Add(new ScoutedTrainer
+        {
+            Id = beaten.Id, Class = beaten.Class, Name = beaten.Name, Look = beaten.Look, Sets = beaten.Sets.ToList(),
+            OtId = beaten.OtId, Personalities = beaten.Personalities.ToList()
+        });
+        while (list.Count > MostScouted) list.RemoveAt(0);
+        int at = list.FindIndex(s => s.Id + "/" + s.Name == chosen);
+        record.Partner = at >= 0 ? at + 1 : 0;
+    }
+
     /// <summary>How many Super rooms' trophies the story holds.</summary>
     public static int Trophies(Story.StoryState story) => Ways.Count(w => HasHost(w) && story.Var(TrophyVariable(w)) > 0);
 }

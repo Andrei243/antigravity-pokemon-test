@@ -2677,7 +2677,8 @@ public sealed partial class ScriptRunner
             "banned" => lastBanned.Length > 0 ? lastBanned : "certain rare Pokémon",
             "ally" when argument is "0" or "1" => allies[argument[0] - '0'],
             "allymove" when argument is "0" or "1" => allyMoves[argument[0] - '0'],
-            "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id] : host.Facility?.PartnerName ?? "",
+            "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id]
+                : scoutedName.Length > 0 ? scoutedName : host.Facility?.PartnerName ?? "",
             // The Battle Factory (plan 06 · R18b): what the staff's hint names, and the three rentals in hand
             "hint" when argument is "0" or "1" or "2" => hints[argument[0] - '0'],
             "rental" when argument is "0" or "1" or "2" => host.Factory?.Team is { } rented && argument[0] - '0' < rented.Count ? rented[argument[0] - '0'].Species : "",

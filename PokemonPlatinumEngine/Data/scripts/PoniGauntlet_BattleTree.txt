@@ -34,6 +34,23 @@ label Double
   goto Super
 label Multi
   facility tree way multi
+  # Plan 23, Alola finished: a Trainer beaten in the single or double room may be asked to partner the Multi room (Sun
+  # and Moon's scouting); they are offered the most recent first, and declined or never asked, the tree picks one
+  facility tree scouted
+  if result == 0 goto Super
+  ask "Trainers you've beaten in the tree have offered to fight beside you. Would you like to choose your partner?"
+  if no goto OwnPartner
+label Scout
+  facility tree scout
+  if result == 0 goto OwnPartner
+  ask "{partner} is ready to fight beside you. Will you choose them?"
+  if no goto Scout
+  facility tree pick
+  say "{partner} will be your partner, then. They're warming up already!"
+  goto Super
+label OwnPartner
+  facility tree pick 0
+  say "Then the tree will find you a partner of its own."
 label Super
   facility tree hardopen
   if result == 0 goto Streak
@@ -91,6 +108,7 @@ label Rules
   say "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
   say "Three go into single battles, and four into double battles."
   say "In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time."
+  say "Trainers you beat in the single and double rooms may offer to be that partner. You can choose one of them at this desk."
   say "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
   say "The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you."
   end

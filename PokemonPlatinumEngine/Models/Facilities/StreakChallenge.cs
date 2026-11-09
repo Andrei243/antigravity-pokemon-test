@@ -40,6 +40,12 @@ public sealed class StreakChallenge
     private FrontierOpponent? opponent, secondOpponent, partner;
     private bool opponentIsHost;
 
+    // The trainer of the battle to come as the sets drew them (none for a host or the Multi room's pair), which a win at the
+    // Battle Tree scouts; and the Multi room's partner chosen at the desk (0 the place's own, a scouted one's number from 1)
+    private FacilityOpponent? lastDrawn;
+    private int partnerChoice;
+    private IReadOnlyList<ScoutedTrainer> scouted = Array.Empty<ScoutedTrainer>();
+
     /// <summary>Their species, in the same order.</summary>
     public IReadOnlyList<string> Species { get; }
 
@@ -71,7 +77,8 @@ public sealed class StreakChallenge
         record.InProgress = true;
         uint seed = ((uint)next16() & 0xFFFF) | ((uint)next16() & 0xFFFF) << 16;
         return new StreakChallenge(room, slots.ToList(), IdsOf(party, slots),
-            slots.Select(s => s >= 0 && s < party.Count ? party.Members[s].Species.Name : "").ToList(), new BattleRandom(seed), record.Streak);
+            slots.Select(s => s >= 0 && s < party.Count ? party.Members[s].Species.Name : "").ToList(), new BattleRandom(seed), record.Streak)
+            .WithPartnerChosen(records);
     }
 
     private static List<Guid> IdsOf(Party party, IReadOnlyList<int> slots) =>
@@ -100,10 +107,21 @@ public sealed class StreakChallenge
             return null;
         }
         record.InProgress = true;
-        return new StreakChallenge(room, pause.Slots.ToList(), pause.Ids.ToList(), pause.Species.ToList(), BattleRandom.Resume(pause.Seed, pause.State, pause.Drawn), record.Streak);
+        return new StreakChallenge(room, pause.Slots.ToList(), pause.Ids.ToList(), pause.Species.ToList(), BattleRandom.Resume(pause.Seed, pause.State, pause.Drawn), record.Streak)
+            .WithPartnerChosen(records);
     }
 
     private FacilityRecord Record(FrontierRecords records) => records.Facility(Room.Place, Room.Way, Room.Hard);
+
+    // The Multi room's partner chosen at the desk, as the challenge begins or is taken up again (plan 23, Alola finished)
+    private StreakChallenge WithPartnerChosen(FrontierRecords records)
+    {
+        if (!Room.Multi) return this;
+        var kept = records.PeekFacility(Room.Place, Room.Way, false);
+        scouted = kept?.Scouted?.ToList() ?? new List<ScoutedTrainer>();
+        partnerChoice = kept?.Partner ?? 0;
+        return this;
+    }
 
     /// <summary>The battle to come, counted from 1 in the streak.</summary>
     public int NextBattle(FrontierRecords records) => Record(records).Streak + 1;
@@ -146,6 +164,7 @@ public sealed class StreakChallenge
         }
         var (low, high) = Room.Tiers(streak);
         var drawn = FacilityTrainers.Draw(Room.Entered, low, high, Room.Ivs(streak), rng.Next16, Room.Level);
+        lastDrawn = drawn;
         opponent = new FrontierOpponent
         {
             Number = 0, Pokemon = drawn.Pokemon, OtId = drawn.OtId, Personalities = drawn.Personalities,
@@ -195,6 +214,18 @@ public sealed class StreakChallenge
         {
             if (!Room.Multi) return null;
             if (partner != null) return partner;
+            // A scouted trainer chosen at the desk brings the first two of the team they were beaten with
+            if (partnerChoice > 0 && partnerChoice <= scouted.Count)
+            {
+                var kept = scouted[partnerChoice - 1];
+                var two = new FacilityOpponent
+                {
+                    Id = kept.Id, Class = kept.Class, Name = kept.Name, Look = kept.Look, Sets = kept.Sets.Take(Room.Entered).ToList(),
+                    OtId = kept.OtId, Personalities = kept.Personalities.Take(Room.Entered).ToList()
+                };
+                partner = Dressed(FacilityTrainers.Rebuild(two, FacilityTrainers.IvsFor(3), Room.Level));
+                return partner;
+            }
             var own = new BattleRandom(rng.Seed ^ PartnerSeedMix);
             partner = Dressed(FacilityTrainers.Draw(Room.Entered, 2, 3, FacilityTrainers.IvsFor(3), own.Next16, Room.Level));
             return partner;
@@ -253,6 +284,9 @@ public sealed class StreakChallenge
             normal.HardOpen = true;
         }
         if (host && Room.Hard && Room.TrophyVariable != null && !trophyHeld) trophy = true;
+        // The Battle Tree's scouting: a trainer of the sets beaten in a room of one's own may partner the Multi room
+        if (!host && !Room.Multi && Room.Place == BattleTree.Place && lastDrawn != null) BattleTree.Scout(records, lastDrawn);
+        lastDrawn = null;
         int points = Room.Points(record.Streak);
         opponent = null;
         secondOpponent = null;

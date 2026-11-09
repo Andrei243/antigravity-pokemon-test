@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1608 | 1545 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12153 | 11676 | 477 | 17 | 36 |
+| Scripts (`script:`) | 12158 | 11679 | 479 | 17 | 36 |
 | People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
-| **All** | 22079 | 21474 | 605 | 22 | 36 |
+| **All** | 22084 | 21477 | 607 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -51,7 +51,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:attendant (any)` | 321 | 12 |
 | `@self` | 319 | 38 |
 | `look:nurse (any)` | 296 | 2 |
-| `look:receptionist (any)` | 287 | 34 |
+| `look:receptionist (any)` | 292 | 36 |
 | `look:gym_guide (any)` | 236 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
 | `class:hiker (any)` | 198 | 0 |

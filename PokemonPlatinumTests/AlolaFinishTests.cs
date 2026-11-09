@@ -160,7 +160,59 @@ public class AlolaFinishTests
         Assert.Contains(plant.Log, l => l.StartsWith("wildbattle Zeraora 60"));
     }
 
-    private static readonly string[] Islands ={ "original-melemele", "original-akala", "original-ulaula", "original-poni" };
+    [Fact]
+    public void ATrainerBeatenInTheTreeIsScoutedAndCanBeChosenToPartnerTheMultiRoom()
+    {
+        var records = new PokemonPlatinumEngine.Models.Frontier.FrontierRecords();
+        var party = new Party();
+        foreach (var species in new[] { "Decidueye", "Lycanroc", "Toucannon", "Vikavolt" }) party.Add(Mon(species));
+        int n = 7;
+        int Next16() => (n = n * 1103 + 12345) & 0xFFFF;
+
+        // A single room's win scouts the trainer beaten; a host's doesn't
+        var single = PokemonPlatinumEngine.Models.Facilities.StreakChallenge.Begin(records,
+            PokemonPlatinumEngine.Models.Facilities.BattleTree.Room("single", false), new[] { 0, 1, 2 }, party, Next16);
+        var beaten = single.Opponent(records);
+        single.Won(records, trophyHeld: false);
+        var scouted = PokemonPlatinumEngine.Models.Facilities.BattleTree.MultiRecord(records).Scouted!;
+        Assert.Single(scouted);
+        Assert.Equal(beaten.ShownName, scouted[0].Name);
+        Assert.Equal(3, scouted[0].Sets.Count);
+
+        // The tree's own partner until one is chosen; then the scouted trainer with the first two of their team
+        var multiRoom = PokemonPlatinumEngine.Models.Facilities.BattleTree.Room("multi", false);
+        var own = PokemonPlatinumEngine.Models.Facilities.StreakChallenge.Begin(records, multiRoom, new[] { 0, 1 }, party, Next16).Partner!;
+        PokemonPlatinumEngine.Models.Facilities.BattleTree.MultiRecord(records).Partner = 1;
+        var chosen = PokemonPlatinumEngine.Models.Facilities.StreakChallenge.Begin(records, multiRoom, new[] { 0, 1 }, party, Next16).Partner!;
+        Assert.Equal(beaten.ShownName, chosen.ShownName);
+        Assert.Equal(2, chosen.Pokemon.Count);
+        Assert.Equal(beaten.Pokemon.Take(2).Select(p => p.Species.Name), chosen.Pokemon.Select(p => p.Species.Name));
+        Assert.All(chosen.Pokemon, p => Assert.Equal(50, p.Level));
+        Assert.NotEqual(own.ShownName + own.Pokemon[0].Species.Name, chosen.ShownName + chosen.Pokemon[0].Species.Name);
+    }
+
+    [Fact]
+    public void TheTreesDeskOffersTheScoutedPartnersMostRecentFirst()
+    {
+        var host = Champion("PoniGauntlet_BattleTree", "Decidueye", "Lycanroc");
+        var record = PokemonPlatinumEngine.Models.Facilities.BattleTree.MultiRecord(host.Frontier);
+        record.Scouted = new()
+        {
+            new() { Id = "a", Class = "Ace Trainer", Name = "Mele" },
+            new() { Id = "b", Class = "Veteran", Name = "Koa" },
+        };
+        // Enter, Multi, choose a partner: yes; Koa (the most recent): no; Mele: yes; then back out at the choice of Pokémon
+        foreach (int answer in new[] { 0, 2, 0, 1, 0 }) host.Answers.Enqueue(answer);
+        host.Decide = (_, answers) => answers.Count - 1;
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("Desk", "PoniGauntlet_BattleTree")!, host.Map!.Everyone.Single(n => n.Id == "desk"));
+        runner.RunToEnd();
+        Assert.Contains(host.Asked, a => a.Question.Contains("Veteran Koa", System.StringComparison.Ordinal));
+        Assert.Contains(host.Asked, a => a.Question.Contains("Ace Trainer Mele", System.StringComparison.Ordinal));
+        Assert.Equal(1, record.Partner);
+    }
+
+    private static readonly string[] Islands = { "original-melemele", "original-akala", "original-ulaula", "original-poni" };
 
     [Fact]
     public void AlolaHasItsFourIslandPokedexesBesideItsOwnEachWithItsDiplomaAndWords()

@@ -1244,7 +1244,7 @@ public static class ScriptParser
                 string place = r.OneOf(Models.Facilities.FacilityPlaces.Names);
                 string what = r.OneOf("enough", "size", "choose", "check", "way", "hard", "hardopen", "begin", "active", "paused", "resume",
                     "next", "host", "opponent", "partner", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
-                    "board", "end");
+                    "board", "end", "scouted", "scout", "pick", "picked");
                 string which = what switch
                 {
                     "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),
@@ -1252,7 +1252,10 @@ public static class ScriptParser
                     "finish" => r.OneOf("won", "lost"),
                     _ => ""
                 };
-                return new Instruction { Op = Op.Facility, Line = line, Name = place, Other = what, Move = which };
+                // The Battle Tree's scouted partners (plan 23, Alola finished): pick's number, 0 the tree's own and a scouted
+                // one's from 1; left out, the one 'scout' last named
+                int number = what == "pick" ? (r.More ? r.Int("a scouted partner's number") : -1) : 0;
+                return new Instruction { Op = Op.Facility, Line = line, Name = place, Other = what, Move = which, Number = number };
             }
             // The Battle Palace's and the Battle Arena's rounds (plan 14 · B9)
             case "venue":

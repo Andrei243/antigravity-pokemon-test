@@ -1,0 +1,14 @@
+# Alola finished: Marshadow by Hau'oli Cemetery's east lamp at night, after the Hall of Fame and the little girl's story
+newgame
+flag AlolaHallOfFame on
+var VAR_ALOLA_CEMETERY_GIRL 3
+time night
+pokemon Decidueye 60
+warp Melemele 366 131 up
+wait 1
+shot scn_alola_marshadow_0_shadow
+talk
+wait 1.2
+shot scn_alola_marshadow_1_look
+wait 1.8
+shot scn_alola_marshadow_2_sign

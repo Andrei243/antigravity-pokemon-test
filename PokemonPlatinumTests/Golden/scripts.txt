@@ -6390,6 +6390,7 @@ way 1, from answer 1
   Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
   Receptionist> Three go into single battles, and four into double battles.
   Receptionist> In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time.
+  Receptionist> Trainers you beat in the single and double rooms may offer to be that partner. You can choose one of them at this desk.
   Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
   Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
   ? Would you like to take on the Battle Tree? = The rules
