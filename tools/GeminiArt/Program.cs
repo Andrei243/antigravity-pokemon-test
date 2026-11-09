@@ -55,14 +55,14 @@ static class Cli
 
             case "prompt":
                 if (chosen.Count == 0) { Console.Error.WriteLine("no brief by that name"); return 2; }
-                foreach (var b in chosen.Take(3)) Console.WriteLine(b.Prompt(b.From != null) + "\n");
+                foreach (var b in chosen.Take(3)) Console.WriteLine((b.IsMegaDynamax ? b.Prompt(false) : b.Prompt(b.From != null, b.IsRegionalForm)) + "\n");
                 return 0;
 
             case "fetch-official":
                 return await FetchOfficial(root, chosen.Where(b => b.IsMegaDynamax).ToList(), delay);
 
             case "generate":
-                return await Generate(root, chosen, model, size, delay, limit, force);
+                return await Generate(root, all, chosen, model, size, delay, limit, force);
 
             default:
                 Console.Error.WriteLine($"unknown command {verb}");
@@ -70,7 +70,7 @@ static class Cli
         }
     }
 
-    static async Task<int> Generate(string root, List<Brief> chosen, string model, string size, int delay, int limit, bool force)
+    static async Task<int> Generate(string root, List<Brief> all, List<Brief> chosen, string model, string size, int delay, int limit, bool force)
     {
         string? key = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
         if (string.IsNullOrWhiteSpace(key))
@@ -101,20 +101,39 @@ static class Cli
                 if (File.Exists(basePath)) baseImage = await File.ReadAllBytesAsync(basePath);
                 else if (File.Exists(OfficialPath(root, b))) baseImage = await File.ReadAllBytesAsync(OfficialPath(root, b));
             }
+            // A Carpathian form is shown the official picture of the species it is a form of (fetched once into
+            // the git-ignored cache, never committed or shipped), so it keeps that species' body.
+            byte[]? original = null;
+            if (b.IsRegionalForm)
+            {
+                original = await FetchOriginal(root, b);
+                if (original == null)
+                {
+                    Console.WriteLine($"no picture of {b.Original} could be fetched; not drawn");
+                    failed++;
+                    continue;
+                }
+            }
             // A later stage of a line is drawn from the stage before it, which must be drawn first.
+            byte[]? before = null;
             if (b.From != null)
             {
-                var before = Briefs.Before(chosen, b);
-                string fromPath = Path.Combine(dir, (before?.Slug ?? Briefs.SlugOf(b.From)) + ".jpg");
+                var forebear = Briefs.Before(all, b);
+                string fromPath = Path.Combine(dir, (forebear?.Slug ?? Briefs.SlugOf(b.From)) + ".jpg");
                 if (!File.Exists(fromPath))
                 {
                     Console.WriteLine($"waits for {b.From}'s picture (generate it first)");
                     waiting++;
                     continue;
                 }
-                baseImage = await File.ReadAllBytesAsync(fromPath);
+                before = await File.ReadAllBytesAsync(fromPath);
             }
-            var result = await Ask(http, model, size, b.Prompt(baseImage != null), dir, baseImage);
+            var images = new List<byte[]>();
+            if (baseImage != null) images.Add(baseImage);
+            if (original != null) images.Add(original);
+            if (before != null) images.Add(before);
+            string prompt = b.IsMegaDynamax ? b.Prompt(baseImage != null) : b.Prompt(before != null, original != null);
+            var result = await Ask(http, model, size, prompt, dir, images);
             if (result.Bytes == null)
             {
                 Console.WriteLine("FAILED: " + result.Error);
@@ -135,11 +154,11 @@ static class Cli
 
     record Reply(byte[]? Bytes, string? Error, bool Fatal);
 
-    static async Task<Reply> Ask(HttpClient http, string model, string size, string prompt, string dumpDir, byte[]? baseImage = null)
+    static async Task<Reply> Ask(HttpClient http, string model, string size, string prompt, string dumpDir, IReadOnlyList<byte[]> images)
     {
         var input = new List<object> { new { type = "text", text = prompt } };
-        if (baseImage != null)
-            input.Add(new { type = "image", data = Convert.ToBase64String(baseImage), mime_type = "image/jpeg" });
+        foreach (var image in images)
+            input.Add(new { type = "image", data = Convert.ToBase64String(image), mime_type = "image/jpeg" });
         var body = JsonSerializer.Serialize(new
         {
             model,
@@ -227,6 +246,26 @@ static class Cli
     static string OfficialPath(string root, Brief b) =>
         Path.Combine(root, "tools", "GeminiArt", ".cache", "official", b.Form.Replace("-Mmax", "").ToLowerInvariant() + ".jpg");
 
+    // The official picture of the species a Carpathian form is a form of, in the same git-ignored cache.
+    static async Task<byte[]?> FetchOriginal(string root, Brief b)
+    {
+        string slug = Regex.Replace(b.Original.ToLowerInvariant(), "[^a-z0-9]+", "-").Trim('-');
+        string path = Path.Combine(root, "tools", "GeminiArt", ".cache", "official", slug + ".jpg");
+        if (File.Exists(path)) return await File.ReadAllBytesAsync(path);
+        using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(1) };
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+        try
+        {
+            var resp = await http.GetAsync($"https://img.pokemondb.net/artwork/large/{slug}.jpg");
+            var bytes = resp.IsSuccessStatusCode ? await resp.Content.ReadAsByteArrayAsync() : null;
+            if (bytes == null || bytes.Length < 2000 || bytes[0] != 0xFF || bytes[1] != 0xD8) return null;
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            await File.WriteAllBytesAsync(path, bytes);
+            return bytes;
+        }
+        catch (HttpRequestException) { return null; }
+    }
+
     static async Task<int> FetchOfficial(string root, List<Brief> chosen, int delay)
     {
         using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(1) };
@@ -294,24 +333,33 @@ record Brief(string Set, string Name, string Slug, string Typing, string Categor
     // A Carpathian form of a species of the games keeps that species' body; everything else is a design of ours.
     public bool IsRegionalForm => Set == "carpathia" && Name.StartsWith("Carpathian ", StringComparison.Ordinal);
 
+    /// <summary>The species of the games a Carpathian form is a form of: "Carpathian Loudred" is Loudred.</summary>
+    public string Original => IsRegionalForm ? Name["Carpathian ".Length..] : Name;
+
     // One prompt for every creature, so the sheet reads as one set of references.
     public bool IsMegaDynamax => Name.StartsWith("Mega Dynamax ", StringComparison.OrdinalIgnoreCase);
 
     // "Mega Dynamax Charizard X" grows from "Mega Charizard X".
     public string BaseMega => "Mega " + Name["Mega Dynamax ".Length..];
 
-    public string Prompt(bool baseAttached = false)
+    public string Prompt(bool baseAttached = false) => Prompt(baseAttached, false);
+
+    // The pictures go in this order: the original species' (a Carpathian form), then the stage before (a later stage).
+    public string Prompt(bool fromAttached, bool originalAttached)
     {
-        if (IsMegaDynamax) return MegaDynamaxPrompt(baseAttached);
+        if (IsMegaDynamax) return MegaDynamaxPrompt(fromAttached);
+        bool baseAttached = fromAttached;
         var sb = new StringBuilder();
         sb.AppendLine("Concept art for a 3D sculptor: one original fictional creature for a monster-collecting video game, drawn as a character design reference.");
         sb.AppendLine("Show the whole body in a clean three-quarter view, standing on nothing, centred on a plain white background, with enough room round it. Clean dark outlines, flat colours with one soft shade and one highlight, readable silhouette. No text, no labels, no logo, no border, no second creature, no scenery.");
         if (IsRegionalForm)
-            sb.AppendLine($"This is a regional variant of the existing Pokémon {Name["Carpathian ".Length..]}: keep that Pokémon's body, proportions and silhouette recognisable, and change only what the brief says.");
+            sb.AppendLine($"This is a regional variant of the existing Pokémon {Original}: keep that Pokémon's body, proportions and silhouette recognisable, and change only what the brief says.");
+        if (originalAttached)
+            sb.AppendLine($"The first attached picture is the original {Original}: draw this same creature with the same body, pose language and proportions, changed into its regional variant as the brief says (its colours, materials and decorations), as a new drawing in this sheet's style.");
         else
             sb.AppendLine("This is a new, original design. It must not copy or imitate any existing Pokémon or other franchise character.");
         if (baseAttached && From != null)
-            sb.AppendLine($"The attached picture is {From}, the stage this creature evolves from. Keep its colour palette, markings and design language so the two read clearly as one evolutionary line, and grow it into this later stage as the brief says; do not copy the picture as it is.");
+            sb.AppendLine($"The {(originalAttached ? "second" : "attached")} picture is {From}, the stage this creature evolves from. Keep its colour palette, markings and design language so the two read clearly as one evolutionary line, and grow it into this later stage as the brief says; do not copy the picture as it is.");
         sb.AppendLine();
         sb.AppendLine($"Name (do not write it in the picture): {Name}");
         if (Typing.Length > 0) sb.AppendLine($"Elemental typing, for mood and palette: {Typing}");
