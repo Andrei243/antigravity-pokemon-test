@@ -321,7 +321,9 @@ public class HubRegionTests
             // The guide there, shown once the hub is entered, stands beside the landing and crosses back
             var there = MapDatabase.Get(map);
             there.ApplyPresence(host.Story.Has);
-            var back = there.NPCs.Single(n => n.Script == "HubGuide");
+            var backs = there.NPCs.Where(n => n.Script == "HubGuide").ToList();
+            Assert.True(backs.Count == 1, $"{map}: {backs.Count} return guides, hidden by {string.Join(",", there.Everyone.Where(n => n.Script == "HubGuide").Select(n => n.HiddenBy + "/" + n.ShownBy))}");
+            var back = backs[0];
             Assert.Equal(1, Math.Abs(back.GridX - host.PlayerTile.X) + Math.Abs(back.GridY - host.PlayerTile.Y));
             Play(host, ScriptLibrary.Default.Find("HubGuide", back.ScriptFile ?? "common")!, back);
             Assert.Equal(new[] { region, RegionDatabase.Hub }, host.Crossings);

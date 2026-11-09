@@ -42,18 +42,15 @@
   // she takes the player back to its harbour hall (common.HubGuide)
   "npcs": [
     { "id": "battle_frontier_outside_west.HubGuide", "name": "Guide", "npcType": "hub_guide", "x": 21, "y": 67, "facing": "Left",
-      "script": "HubGuide", "shownBy": "HubEntered" }
+      "script": "HubGuide", "shownBy": "HubEntered" },
+    // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found in the Battle Frontier island's west half, on the paving south of its square
+    { "id": "battle_frontier_outside_west.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 25, "y": 50, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_HOENN_BATTLE_FRONTIER_BOTTLE_CAP" }
   ],
   "signs": {
     "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": "BATTLE DOME\nTournaments for the strongest. Held at Sinnoh's Frontier.",
     "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": "BATTLE PIKE\nThree paths to choose from. Held at Sinnoh's Frontier.",
     "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": "BATTLE FACTORY\nBattles with rented Pokémon. Held at Sinnoh's Frontier.",
     "Common_EventScript_ShowPokemartSign": "POKé MART\nFor all your Pokémon needs."
-  },
-  // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found in the Battle Frontier island's west half, on the paving south of its square as well as
-  // traded for Battle Points
-  "npcs": [
-    { "id": "battle_frontier_outside_west.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 25, "y": 50, "item": "Bottle Cap",
-      "hiddenBy": "FLAG_OBTAINED_HOENN_BATTLE_FRONTIER_BOTTLE_CAP" }
-  ]
+  }
 }
