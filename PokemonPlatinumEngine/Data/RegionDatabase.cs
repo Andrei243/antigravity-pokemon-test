@@ -1041,6 +1041,8 @@ public static class RegionDatabase
                 "KiloudeCity_FriendSafari", "KiloudeCity_FriendSafariGrounds",
                 // and Parfum Palace's hall at the head of Route 6
                 "KalosRoute6_ParfumPalace",
+                // Plan 23, after Kalos finished: the palace's garden maze behind its hall
+                "KalosRoute6_ParfumGarden",
             }
         },
         new()

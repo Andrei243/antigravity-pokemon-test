@@ -10394,6 +10394,44 @@ In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are pub
   the circuit's row, an agency case and a leader in the gathering (plan 41 · EG4, EG7 to EG9, not built for any region);
   `profile`'s Lumiose line (a quiet run on the Windows machine); and the skater's pose (plan 30's grown kit).
 
+## Parfum Palace's maze and fireworks, and the castle's keeper at home (2026-11-09, plan 23, after Kalos finished)
+
+In our own words, on X and Y's beats as they are publicly described. Kalos's movement stays `Eight`.
+
+- **The garden maze.** X and Y's palace has a maze of clipped hedges behind it. Ours is a map of its own
+  (`KalosRoute6_ParfumGarden`, 27 by 23, `interior` `None`), reached by a doorway in the hall's back wall (the hall's
+  warp at 10, 2; its clock moved a tile east) and left by the gap in the trees at its foot. The maze is ours, drawn
+  once by a seeded walk and kept as data: every path joined, a few loops, a paved plaza with a fountain in the middle
+  and a Max Ether at its far north-west dead end (`FLAG_KALOS_ITEM_PALACE_GARDEN_MAX_ETHER`). The hedges are the
+  `Hedge` prop (knee to waist high, so the maze is read from above as the field's camera sees it), the paths gravel,
+  the walls round it trees. No wild Pokémon.
+- **The fireworks.** X and Y's owner sets off fireworks after the player finds his Furfrou. Ours waits by the fountain
+  in the evening and at night (`twilight`, `night`, `latenight`) once he has given the Sun Stone
+  (`FLAG_KALOS_PALACE_GIFT`): the garden's `OnEnter` keeps `FLAG_KALOS_HIDE_PALACE_GARDEN_OWNER` by the hour. Asked, he
+  lights them: a scene (`The palace's fireworks`, skippable) under the bars with the camera on the sky over the hedges,
+  waves of the scene effects' sparkles over the hedges, more at each wave, and one burst to end (a burst throws a white
+  flash over the whole picture, so shells of bursts washed the night out), and his word after; `FLAG_KALOS_PALACE_FIREWORKS` the first time, and he offers them again on any evening. No gift: X and
+  Y's flute is already the butler's (`FLAG_KALOS_RECEIVED_HM01`), and the scene effects have no colours, so the shells
+  are white light.
+- **The castle's keeper at home.** Z2 had Aubert meet the player in Camphrier's street and then stand in his castle
+  with a line. Now the first time the player comes in at its door once he is home (`FLAG_KALOS_HIDE_CASTELLAN_STREET`,
+  the arrival on 7, 10), he comes down the hall to meet them and shows them the armour and the window over the road
+  south, which watches the Snorlax or, once it is woken, the carts (`FLAG_KALOS_CASTLE_TOUR`, a scene that may be
+  skipped); and once the Snorlax is woken (`VAR_KALOS_STORY` 16) he gives the Leftovers the road menders found where it
+  lay, once (`FLAG_KALOS_CASTLE_GIFT`, a gift of ours).
+- **Kalos's designer** (plan 40 · GE4 and GE5's row for Kalos). Every other built region has a designer who hands over
+  the charms a Pokédex filled has earned and reads the diplomas; Kalos had none. Ours stands in the Hotel
+  Richissime's lobby (`LumioseCity_HotelRichissime`, 4, 6), with the other designers' script and his own region's line
+  for all three of Kalos's diplomas (`if diploma Kalos`); `DiplomaTests.Designers` holds him with the others.
+- **What is still not built in Kalos, and why.** Pokémon-Amie is plan 10's camp, which is built and opened from the
+  start menu in every region alike (decision of plan 23's Kalos section), so Kalos needs no place of its own for it.
+  Super Training is plan 36's drills, whose halls in the regions after Sinnoh are TR4's ("Kalos and Alola too where
+  plan 23 has built their cities"), not built for any region yet: Kalos's hall waits for TR4. The Kalos Champion
+  ribbon is plan 41 · EG2's (its four later ribbons and `RibbonRules.GiveChampion` by region), and Kalos's circuit row,
+  agency case and leader in the gathering are EG4, EG7 and EG9's, none built for any region. The skater's pose and the
+  skating stretches' looks are plan 30's grown kit, which other sessions own. The Friend Safari's other friends and
+  Lumiose's online rooms are plan 07's. `profile`'s Lumiose line wants a quiet run on the Windows machine.
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).
