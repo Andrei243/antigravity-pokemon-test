@@ -587,7 +587,7 @@ public class OptionsScreen
                 s.Voices = (VoiceMode)Wrap((int)s.Voices + step, 3);
                 break;
             case OptionRow.VoiceVolume:
-                s.VoiceVolume = Math.Clamp(s.VoiceVolume + step * GameSettings.VolumeStep, 0, 100);
+                s.VoiceVolume = Math.Clamp(s.VoiceVolume + step * GameSettings.VolumeStep, 0, GameSettings.MaxVoiceVolume);
                 break;
             case OptionRow.LetVoicesFinish:
                 s.LetVoicesFinish = !s.LetVoicesFinish;

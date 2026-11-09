@@ -293,7 +293,10 @@ public sealed class GameSettings
     /// </summary>
     public VoiceMode Voices { get; set; } = VoiceMode.Off;
 
-    /// <summary>How loud the voices speak, 0 to 100 (plan 26 · V2): the voice bus's own volume.</summary>
+    /// <summary>The most VOICE VOLUME goes to: 200, twice the bus's level (the voices alone may be turned up past the others).</summary>
+    public const int MaxVoiceVolume = 200;
+
+    /// <summary>How loud the voices speak, 0 to 200 (plan 26 · V2): the voice bus's own volume, apart from the music's. 100 plays a take over the dipped music; 200 is 6 dB more.</summary>
     public int VoiceVolume { get; set; } = 100;
 
     /// <summary>Whether A at a finished line waits for its voice to end (plan 26 · V2); off, A goes on and cuts it.</summary>

@@ -31,6 +31,7 @@ Every bus's content is held to a window of loudness (`Audio/Loudness`, plan 05 �
 | Fanfares | −20.5 to −14.5 dB | |
 | Sound effects | −38 to −20 dB | A menu's tick at the bottom, a blow in battle at the top: short sounds sound louder than they measure |
 | Cries | −27 to −17 dB | |
+| Voices (plan 26) | −24 to −18 dB as a take (mono), −21.5 to −14.5 dB as played | The bus lifts a take by `AudioMixer.VoiceMakeUp` (+2.9 dB, in place of the −3 dB centre law) behind a soft limiter that never clips, dips the music and the ambience to 0.5 while it speaks, and its volume (VOICE VOLUME) runs 0 to 200 apart from the music's; `Loudness.VoicePlayed` is the second window |
 | Ambience | −30 to −26 dB | Every bed at full gain is about −28 dB, ten under the music; a layer's gain only says how near or how strong it is |
 
 `MusicTests` (every song's first ten seconds), `SoundTests` (every sound), `AmbienceTests` (every bed, a sample of cries) hold them there, and `MusicRender` prints each one's loudness and flags any outside its window (`QUIET by …`, `LOUD by …`).

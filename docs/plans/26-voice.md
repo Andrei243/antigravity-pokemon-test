@@ -147,7 +147,7 @@ loud and warm-hearted.
 ### In the game
 
 - **A sixth bus.** `AudioBus.Voice`, with its own volume in the options, carries one voice at a time. A new line cuts the one before it with a 30 ms fade.
-  - While a voice speaks, the music dips (about 0.6, like a cry's dip but gentler) and so does the ambience.
+  - While a voice speaks, the music dips (0.5 since 2026-11-09; was 0.6) and so does the ambience.
   - A cry still dips the music, and the voice not at all.
   - The handheld-speakers filter applies to the voice as it does to the rest.
 - **Finding and loading a line.** `Audio/VoiceLibrary` is free of the GPU and of the audio device:
@@ -513,3 +513,17 @@ up and made Sinnoh's named cast.
   gives several regions (`rival` speaks 432 lines outside Sinnoh, `mom` 97: each region's rival and mother want a
   `speaker <id>` or `people` entry of their own before their regions are generated); and a Romanian pack wants another
   engine, since Kokoro has no Romanian.
+
+## Voice loudness (2026-11-09)
+
+The user found the voices too quiet beside the music. Measured on the real pack (553 takes in 40-odd voices, a sample of
+about 200): see the numbers in the close-out below. A take is levelled by `VoiceBake` to the voice window (-24 to -18 dB,
+mono) and was then played centred at -3 dB (`cos(pi/4)`), 4 to 6 dB under the music's window of -20.5 to -15 and, with
+the music dipped by only 0.6 (-4.4 dB), level with it. Fixed in the voice bus alone, with no pack file rewritten:
+- **Make-up gain** `AudioMixer.VoiceMakeUp` 1.4 (+2.9 dB) in place of the pan law's 0.707 (a 6 dB lift in all), followed by a
+  soft knee (`VoiceLimit`: transparent to 0.7, bent toward 1) so a take at the file check's -1 dBFS peak never clips.
+  `Loudness.VoicePlayed` (-21.5 to -14.5) is the window a voice must measure in as the mixer plays it at VOICE VOLUME 100.
+- **Ducking** `VoiceDuckLevel` 0.6 -> 0.5 (-6 dB) for the music and the ambience.
+- **VOICE VOLUME runs 0 to 200** (`GameSettings.MaxVoiceVolume`, the bus clamps at `VoiceMaxVolume` 2), its own row with its
+  own words; MUSIC stays 0 to 100. 100 is the normal level; the default stays 100 (the lift is in the bus).
+- Tests: `VoicePlaybackTests` (played window, 200 never clips, the row's range, the dip).

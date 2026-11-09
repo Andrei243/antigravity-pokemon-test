@@ -41,6 +41,12 @@ public static class Loudness
         _ => (-30, -26)
     };
 
+    /// <summary>
+    /// The window a voice must measure within as the mixer plays it at VOICE VOLUME 100 (stereo, centred, after the
+    /// voice bus's make-up gain), in dBFS: over the music's window dipped by <see cref="AudioMixer.VoiceDuckLevel"/>.
+    /// </summary>
+    public static (double Low, double High) VoicePlayed => (-21.5, -14.5);
+
     public static float Linear(double db) => (float)Math.Pow(10, db / 20);
 
     public static double Db(double linear) => 20 * Math.Log10(Math.Max(linear, 1e-9));
