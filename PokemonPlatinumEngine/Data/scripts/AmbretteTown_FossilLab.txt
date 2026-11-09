@@ -3,7 +3,8 @@
 # laboratory beside the aquarium revives Fossils dug out of the Glittering Cave, whose fossil seeker hands over X and
 # Y's Jaw and Sail Fossils (glittering_cave.txt, since Kalos's last species); its assistant gives an Old Amber once
 # (FLAG_KALOS_RECEIVED_OLD_AMBER), and the restorer revives any Fossil at level 20 once the player has gone out and come
-# back (plan 06 · R16b's fossil command, as Alola's Fossil Restoration Center does).
+# back (plan 06 · R16b's fossil command, as Alola's Fossil Restoration Center does). Since Kalos was finished the
+# assistant also gives X and Y's Aerodactylite once the Mega Ring is upgraded (FLAG_KALOS_GOT_AERODACTYLITE).
 
 
 script Restorer
@@ -52,5 +53,12 @@ script Assistant
   say "Show it to the restorer. She'll have it flying again in no time."
   end
 label Given
+  if flag FLAG_KALOS_GOT_AERODACTYLITE goto Waiting
+  if not flag FLAG_KALOS_MEGA_RING_UPGRADED goto Waiting
+  say "Your ring has changed, hasn't it? Then this is yours. It was in the same amber, and it glows near an Aerodactyl."
+  give "Aerodactylite"
+  setflag FLAG_KALOS_GOT_AERODACTYLITE
+  end
+label Waiting
   say "Every Fossil is a Pokémon waiting. Some of them have waited a very long time."
   end

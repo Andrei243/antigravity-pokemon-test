@@ -32,6 +32,8 @@ label Look
   setflag FLAG_KALOS_DIANCIE_GONE
   hide self
   music area
+  text "Where Diancie stood, a stone of pink diamond is left glittering in the crystals."
+  find "Diancite"
   end
 label Stays
   music area

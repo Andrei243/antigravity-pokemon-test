@@ -91,6 +91,8 @@ label Look
   setflag FLAG_KALOS_HOOPA_GONE
   hide self
   music area
+  text "Something clatters out of the ring as it closes: an old bottle, its stopper sealed tight."
+  find "Prison Bottle"
   end
 label Stays
   music area

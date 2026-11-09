@@ -4321,7 +4321,7 @@ way -
 === KalosRoute6_ParfumPalace.FurfrouAway
 from Furfrou at 18,10 of KalosRoute6_ParfumPalace
 way -
-  Furfrou> Furfrou is hiding behind the curtains, its coat only half trimmed. It gives you a guilty look.
+  Furfrou> Furfrou is hiding in a corner of the east wing, its coat only half trimmed. It gives you a guilty look.
   Furfrou> It seems happy to be found, and trots off toward its master.
   * cry Furfrou
   + FLAG_KALOS_PALACE_FURFROU_FOUND
@@ -24300,6 +24300,9 @@ way 1, from answer 1
 from Hoopa at 40,11 of LostHotel
 way 0
   > A golden ring hangs over the gallery floor. A little Pokémon pops out of it, laughing, and points at Lucas!
+  > Something clatters out of the ring as it closes: an old bottle, its stopper sealed tight.
+  > Lucas found the Prison Bottle!
+  > Lucas put it away in the Key Items pocket.
   * scene lost_hotel.Hoopa in the Lost Hotel
   * music stop
   * letterbox on
@@ -24314,6 +24317,7 @@ way 0
   * endscene
   * wildbattle Hoopa 70 Won
   * music area
+  * fanfare FanfareKeyItem
   + FLAG_KALOS_HOOPA_GONE
   + seen lost_hotel.Hoopa in the Lost Hotel
 way 1, from answer 1

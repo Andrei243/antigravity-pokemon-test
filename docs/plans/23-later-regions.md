@@ -87,14 +87,18 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   Diantha fight teams of ours (`kalos_<who>_rematch`) once the Hall of Fame is entered, the Château's Leaders' teams are
   Kalos's rematch teams, and `RematchParityTests` holds Kalos's rows (plan 41 · EG5's parity). **Parfum Palace's hall**
   behind Route 6's railings (the owner's Furfrou found, a Sun Stone), **the bicycle shop's Bicycle** once the power is
-  back, and **the places' own songs**: eleven of ours in the modern sound and Kalos's own Team Flare themes (plan 31's
+  back, **X and Y's last seven Mega Stones and mythicals' items** (the Gengarite, Ampharosite and Abomasite at the
+  stones' hour, the Aerodactylite from Ambrette's laboratory, the Gardevoirite from Diantha, the Diancite and the Prison
+  Bottle where Diancie and Hoopa stood: `ItemSourcesTests.Owed` names no item of X and Y's), and **the places' own songs**: eleven of ours in the modern sound and Kalos's own Team Flare themes (plan 31's
   instruments; every song in the music window, no clashes, no clicks). The research toast a battle raises is let go
   before the harness's legendary beats (the Battle Institute's Doublade had been told over Diancie's chamber). Tests
   `KalosFinishedTests`, `RematchParityTests`. **Deliberately left**, each with its reason in the rulings: the Friend
   Safari's other friends (plan 07 · O7), the palace's maze and fireworks, Pokémon-Amie and Super Training (plan 10's
   camp and plan 36's drills, no Kalos place of their own), Lumiose's online rooms (plan 07), the castle's scene inside,
   plan 41's circuit, case and gathering (EG4, EG7 to EG9, built for no region), `profile`'s Lumiose line and the
-  skater's pose (plan 30). Shots of this part: none taken (the `kalos` mode's parts stand as they were).
+  skater's pose (plan 30). Shots: the `kalos` mode's `KALOS_FROM=finished` (`wk700` to `wk711`, `wks500` to `wks531`:
+  the gate, its guide, the grounds and one of their Pokémon in battle, the palace's front and hall, its Furfrou and
+  thanks, the bicycle shop, Malva's second round), looked at.
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

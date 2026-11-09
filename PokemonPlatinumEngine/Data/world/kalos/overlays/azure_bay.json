@@ -27,5 +27,9 @@
   },
   "signs": {
     "BaySign": "Azure Bay\nNorth: Lumiose City\nSouth: the shore and the sea cave"
-  }
+  },
+  // Plan 23, Kalos finished: X and Y's Ampharosite on the bay's shore, once the Mega Ring is upgraded, at the stones' hour
+  "npcs": [
+    { "id": "mega_ampharosite", "name": "Ampharosite", "npcType": "ItemBall", "item": "Ampharosite", "x": 449, "y": 447, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_AMPHAROSITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
+  ]
 }

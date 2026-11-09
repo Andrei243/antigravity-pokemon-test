@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1598 | 1535 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12165 | 11688 | 477 | 17 | 36 |
+| Scripts (`script:`) | 12167 | 11690 | 477 | 17 | 36 |
 | People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
-| **All** | 22081 | 21476 | 605 | 22 | 36 |
+| **All** | 22083 | 21478 | 605 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -25,7 +25,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 925 |
 | a sign | 1764 |
 | the game's own voice (speaker none) | 295 |
-| the game's own voice (text) | 2016 |
+| the game's own voice (text) | 2018 |
 
 ## The cast
 
@@ -226,6 +226,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `emma` | 25 | 0 |
 | `giovanni` | 25 | 2 |
 | `park_attendant` | 25 | 1 |
+| `assistant_2` | 24 | 1 |
 | `class:ace_trainer_f (any)` | 24 | 0 |
 | `class:cyclist (any)` | 24 | 0 |
 | `class:juggler (any)` | 24 | 0 |
@@ -235,7 +236,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `cook` | 24 | 0 |
 | `day_care_lady` | 24 | 3 |
 | `socialite` | 24 | 0 |
-| `assistant_2` | 23 | 1 |
 | `curator` | 23 | 0 |
 | `eusine` | 23 | 0 |
 | `fishing_guru` | 23 | 3 |

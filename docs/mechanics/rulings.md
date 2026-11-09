@@ -10368,6 +10368,14 @@ In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are pub
   them open once the butler has lent the flute: `FLAG_KALOS_RECEIVED_HM01`, set with it), where the owner's Furfrou has
   run off from its grooming into the east wing: found, it trots back (`FLAG_KALOS_PALACE_FURFROU_FOUND`) and its master
   gives a Sun Stone once (`FLAG_KALOS_PALACE_GIFT`, a gift of ours). The maze and the fireworks are not drawn.
+- **X and Y's last Mega Stones.** Z4b laid fourteen; the other five of X and Y, and the two mythicals' items, are
+  placed now, each where X and Y have it as publicly described: the **Gengarite** in Laverre City, the **Ampharosite** on
+  Azure Bay's shore and the **Abomasite** in Frost Cavern, as balls shown at the stones' evening hour like Z4b's
+  (`FLAG_KALOS_STONES_GLINT`); the **Aerodactylite** from Ambrette's laboratory, its assistant giving it once the Mega
+  Ring is upgraded (`FLAG_KALOS_GOT_AERODACTYLITE`); the **Gardevoirite** from Diantha after her first battle of the
+  League's second round (`FLAG_KALOS_GOT_GARDEVOIRITE`; X and Y's own way to it is not kept); and the **Diancite** and
+  the **Prison Bottle** found where Diancie and Hoopa stood once each is beaten or caught. `ItemSourcesTests.Owed` no
+  longer names any of X and Y's items.
 - **The bicycle shop.** X and Y's Cyllage shop gives a bicycle of the colour chosen. Ours waits for its parts until the
   power is back and Lumiose's roads open (`VAR_KALOS_LUMIOSE_ROADS` 2, the Power Plant's), then gives a Bicycle to a bag
   without one (plan 23's rule for a region's key items: a Champion of an earlier region already rides one). No colours.

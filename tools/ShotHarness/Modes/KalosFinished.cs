@@ -116,7 +116,7 @@ partial class Harness
         ReadTo("Have you seen it", fight: false); Frames(10); Shot("wks510_palace_owner");
         ReadTo(null);
         Talk("KalosRoute6_ParfumPalace", 17, 10, Direction.Right);
-        ReadTo("hiding behind the curtains", fight: false); Frames(10); Shot("wks511_palace_furfrou");
+        ReadTo("hiding in a corner of the east wing", fight: false); Frames(10); Shot("wks511_palace_furfrou");
         ReadTo(null);
         Talk("KalosRoute6_ParfumPalace", 10, 5, Direction.Up);
         ReadTo("accept this", fight: false); Frames(10); Shot("wks512_palace_thanks");

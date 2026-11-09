@@ -153,6 +153,48 @@ public class KalosFinishedTests
     }
 
     [Fact]
+    public void XAndYsLastMegaStonesAreAllInKalos()
+    {
+        // The three that lie at the stones' hour stand on ground the walk of the whole game comes to
+        foreach (var (map, key, item) in new[]
+                 {
+                     ("Kalos", "mega_gengarite", "Gengarite"), ("Kalos", "mega_ampharosite", "Ampharosite"), ("FrostCavern", "mega_abomasite", "Abomasite")
+                 })
+        {
+            var on = MapNamed(map);
+            var ball = on.Everyone.Single(n => n.Key == key);
+            Assert.Equal(item, ball.Item);
+            Assert.Equal("FLAG_KALOS_STONES_GLINT", ball.ShownBy);
+            var beside = new[] { (0, 1), (0, -1), (1, 0), (-1, 0) };
+            Assert.Contains(Walked.Value, p => p.Key.Name == map && beside.Any(d => p.Value.Contains((ball.GridX + d.Item1, ball.GridY + d.Item2))));
+        }
+        // The laboratory's assistant gives the Aerodactylite once the Mega Ring is upgraded, and only once
+        var lab = Rooms.Value("AmbretteTown_FossilLab");
+        var assistant = lab.Everyone.Single(n => n.Key == "assistant");
+        var story = new StoryState();
+        story.Set("FLAG_KALOS_RECEIVED_OLD_AMBER");
+        var bag = new Inventory();
+        Play(story, "AmbretteTown_FossilLab", "Assistant", lab, assistant, bag: bag);
+        Assert.Equal(0, bag.GetQuantity(ItemDatabase.Get("Aerodactylite")!));
+        story.Set("FLAG_KALOS_MEGA_RING_UPGRADED");
+        Play(story, "AmbretteTown_FossilLab", "Assistant", lab, assistant, bag: bag);
+        Play(story, "AmbretteTown_FossilLab", "Assistant", lab, assistant, bag: bag);
+        Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Aerodactylite")!));
+        // Diantha gives the Gardevoirite after her first second-round battle, and only once
+        var champion = Rooms.Value("KalosLeague_ChampionRoom");
+        var diantha = champion.Everyone.Single(n => n.Key == "diantha");
+        var after = new StoryState();
+        after.Set("KalosHallOfFame");
+        Play(after, "KalosLeague_ChampionRoom", "Diantha", champion, diantha, bag: bag);
+        after.Unset("FLAG_KALOS_DEFEATED_DIANTHA");
+        Play(after, "KalosLeague_ChampionRoom", "Diantha", champion, diantha, bag: bag);
+        Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Gardevoirite")!));
+        // Diancie and Hoopa leave their stone and their bottle
+        Assert.Contains(ScriptLibrary.Default.Find("Diancie", "reflection_cave")!.Everything(), i => i.Op == Op.Find && i.Name == "Diancite");
+        Assert.Contains(ScriptLibrary.Default.Find("Hoopa", "lost_hotel")!.Everything(), i => i.Op == Op.Find && i.Name == "Prison Bottle");
+    }
+
+    [Fact]
     public void TheBicycleShopGivesABicycleOnceThePowerIsBackToABagWithoutOne()
     {
         var shop = Rooms.Value("CyllageCity_BikeShop");

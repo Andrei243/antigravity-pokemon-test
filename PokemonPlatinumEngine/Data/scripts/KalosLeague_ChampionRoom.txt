@@ -25,6 +25,11 @@ label Again
   say "No script this time, for either of us. Let's give Kalos a battle to remember!"
   battle self as "kalos_diantha_rematch"
   say "Bravo... You've made it look easy all over again. Kalos couldn't ask for a better Champion."
+  if flag FLAG_KALOS_GOT_GARDEVOIRITE goto AgainDone
+  say "Here. My Gardevoir's stone has a twin, and I think it should travel with someone who wins like you do."
+  give "Gardevoirite"
+  setflag FLAG_KALOS_GOT_GARDEVOIRITE
+label AgainDone
   setflag FLAG_KALOS_DEFEATED_DIANTHA
   endscene
   warp "KalosLeague_HallOfFame" 6 10 up

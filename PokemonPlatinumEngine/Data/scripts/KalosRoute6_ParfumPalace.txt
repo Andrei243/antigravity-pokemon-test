@@ -36,7 +36,7 @@ script Maid
 script FurfrouAway
   face furfrou_away player
   cry "Furfrou"
-  say "Furfrou is hiding behind the curtains, its coat only half trimmed. It gives you a guilty look."
+  say "Furfrou is hiding in a corner of the east wing, its coat only half trimmed. It gives you a guilty look."
   say "It seems happy to be found, and trots off toward its master."
   setflag FLAG_KALOS_PALACE_FURFROU_FOUND
   end
