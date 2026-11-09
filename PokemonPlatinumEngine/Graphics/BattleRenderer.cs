@@ -514,15 +514,74 @@ public sealed class BattleRenderer
         // A trainer back at their platform's edge to call a Dynamax (plan 25 · YD1)
         if (anim.Call is { } call) trainers.Add(Caller(call, platformTop, anim.Time));
 
+        // The trainers behind their Pokémon once they are out, under a manner with the trainers in it (Alola's, plan 45 ·
+        // BC6's last part; style guide, "The battle's manners")
+        var manner = BattleCamera.MannerNow(director.Manner);
+        if (manner.TrainersIn) StandBehind(anim);
+
         // The player come back behind their Pokémon at a win, under a manner that closes (plan 45 · BC5): never under
-        // Classic, nor REDUCE MOTION, whose camera never looks at them
-        if (BattleCamera.MannerNow(director.Manner).Close && anim.Closing is { Kind: BattleClosing.Won } won
+        // Classic, nor REDUCE MOTION, whose camera never looks at them (where the trainers stand in the battle, the player
+        // steps from beside the platform to behind it, the walk in passing where they stood)
+        if (manner.Close && anim.Closing is { Kind: BattleClosing.Won } won
             && anim.PlayerTrainer == null && anim.Ball == null)
         {
             var (feet, yaw, scale, pose) = WinnerAt(anim.Time - won.Start, platformTop, anim.Time);
             trainers.Add(new TrainerPlacement(anim.PlayerTrainerLook ?? PlayerIdentity.Character,
                 Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose));
         }
+    }
+
+    /// <summary>How long a trainer takes to walk back in and stand behind their Pokémon under a manner with the trainers in it.</summary>
+    internal const float StandInWalk = 0.8f;
+
+    /// <summary>
+    /// Where the player stands under a manner with the trainers in it: beside the west edge of their platform and a
+    /// little behind it, off the overview's line to the field and on the far side from the side shot's camera, so they
+    /// hide none of their Pokémon.
+    /// </summary>
+    internal static readonly Vector3 StandSpot = BattleStage.PlayerSpot + new Vector3(-(BattleStage.PlayerPlatformRadius + 1.6f), 0f, -0.6f);
+
+    /// <summary>
+    /// The trainers standing behind their Pokémon (Alola's manner, <see cref="CameraManner.TrainersIn"/>): once a
+    /// trainer has run off after the send-out, they walk back in over <see cref="StandInWalk"/> and stand, the player at
+    /// <see cref="BattleCamera.WinnerSpot"/> turned toward the foe, a trainer across the field where a speaker stands
+    /// turned toward the player's side. Not while they are back on their platform to speak or call, nor the player while
+    /// running in to throw a ball or at a win (whose own placing takes them).
+    /// </summary>
+    private void StandBehind(BattleAnimator anim)
+    {
+        float behind = BattleAnimator.TrainerExitTime;
+        if (anim.PlayerTrainer == null && anim.PlayerTrainerExit >= behind && anim.Ball == null && anim.Call is not { Side: BattleSide.Player }
+            && anim.Closing is not { Kind: BattleClosing.Won })
+            trainers.Add(StandingAt(anim.PlayerTrainerLook ?? PlayerIdentity.Character, StandSpot, BattleStage.EnemySpot,
+                PlayerTrainerScale, -BattleStage.SpeakerFrom, anim.PlayerTrainerExit - behind, anim.Time));
+        if (anim.EnemyTrainer != null || anim.EnemyTrainerExit < behind || anim.Speaking != null || anim.Call is { Side: BattleSide.Enemy }) return;
+        bool two = anim.EnemyTrainer2Look != null;
+        float scale = two ? 2.1f : 2.3f;
+        if (anim.EnemyTrainerLook is { } first)
+            trainers.Add(StandingAt(first, BattleStage.SpeakerSpot(false), BattleStage.PlayerSpot, scale, BattleStage.SpeakerFrom, anim.EnemyTrainerExit - behind, anim.Time + 1.3f));
+        if (anim.EnemyTrainer2Look is { } second && anim.EnemyTrainer2 == null)
+            trainers.Add(StandingAt(second, BattleStage.SpeakerSpot(true), BattleStage.PlayerSpot, scale, -BattleStage.SpeakerFrom, anim.EnemyTrainerExit - behind, anim.Time + 0.6f));
+    }
+
+    /// <summary>
+    /// A trainer walking in along x from <paramref name="from"/> off their spot over <see cref="StandInWalk"/> (eased to a
+    /// stop), then standing at it turned toward <paramref name="toward"/>. A function of the age alone.
+    /// </summary>
+    private TrainerPlacement StandingAt(string look, Vector3 spot, Vector3 toward, float scale, float from, float age, float time)
+    {
+        var feet = spot + new Vector3(0, platformTop, 0);
+        var pose = new CharacterPose { Time = time, Blink = time % 3.7f < 0.12f };
+        float yaw = ThrowYaw(spot, toward);
+        if (age < StandInWalk)
+        {
+            float off = 1f - Math.Clamp(age / StandInWalk, 0f, 1f);
+            feet.X += off * off * from;
+            yaw = from < 0f ? MathF.PI / 2f : -MathF.PI / 2f;
+            pose.Walk = age * 2.6f;
+            pose.WalkBlend = Math.Clamp(off * 3f + 0.3f, 0f, 1f);
+        }
+        return new TrainerPlacement(look, Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
     }
 
     /// <summary>How long the player takes to walk back in behind their Pokémon at a win (plan 45 · BC5), and to turn to the camera.</summary>

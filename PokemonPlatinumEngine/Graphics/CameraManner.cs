@@ -108,6 +108,12 @@ internal sealed record CameraManner(string Name)
     /// <summary>How far the cycle's aim sways in the hand (BC6, Paldea's), radians; nought for none. Never a roll.</summary>
     public float Handheld { get; init; }
 
+    /// <summary>
+    /// The trainers stand behind their Pokémon once they have sent them out (Alola's, BC6's "with the trainers in them"):
+    /// the renderer's alone, nothing of the camera's.
+    /// </summary>
+    public bool TrainersIn { get; init; }
+
     /// <summary>True when the manner does nothing beyond the director's plain shots: Classic, or a manner with every switch off.</summary>
     public bool IsStill => Drift == 0f && Cycle.Count == 0 && Push == 0f && !React && !Open && !Close && !Crane
         && Splits == CameraSplits.None && Handheld == 0f;
@@ -191,12 +197,16 @@ internal static class CameraManners
         Splits = CameraSplits.Leads | CameraSplits.LastPokemon | CameraSplits.RoyalQuarters,
     };
 
-    /// <summary>Alola's (BC6): Kalos's, its shots standing lower and wider (<see cref="CameraManner.Reach"/> 1.15).</summary>
+    /// <summary>
+    /// Alola's (BC6): Kalos's, its shots standing lower and wider (<see cref="CameraManner.Reach"/> 1.15), with the
+    /// trainers standing behind their Pokémon in them (<see cref="CameraManner.TrainersIn"/>).
+    /// </summary>
     public static readonly CameraManner Alola = Kalos with
     {
         Name = "alola",
         Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace },
         Reach = 1.15f, Low = 0.12f,
+        TrainersIn = true,
     };
 
     /// <summary>
