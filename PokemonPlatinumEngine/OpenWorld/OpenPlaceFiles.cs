@@ -139,6 +139,9 @@ public sealed class OpenSlotFile
     [DataRequired] public int MinLevel { get; set; }
     [DataRequired] public int MaxLevel { get; set; }
     public int Weight { get; set; } = 10;
+
+    /// <summary>When in the day the row is met (plan 32 · OW7): <c>any</c> unless told, <c>morning</c>, <c>day</c> or <c>night</c>.</summary>
+    public OpenSlotTime Time { get; set; }
 }
 
 /// <summary>Water laid by hand: [x, z] corners and the surface's height.</summary>
@@ -223,7 +226,7 @@ public static class OpenPlaceFiles
             map.Add(new OpenDoor(d.Name, key, ShapeOf(d.Box, d.Cylinder), d.Room, d.At[0], d.At[1], d.Facing, d.Out, d.OpenedBy));
         foreach (var z in place.Zones)
             map.Add(new OpenZone(z.Name, key, z.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(z.MinY), OpenPos.Millimetres(z.MaxY),
-                z.Slots.Select(s => new OpenSlot(s.Species, s.MinLevel, s.MaxLevel, s.Weight)).ToList(), z.Density, z.Cap));
+                z.Slots.Select(s => new OpenSlot(s.Species, s.MinLevel, s.MaxLevel, s.Weight, s.Time)).ToList(), z.Density, z.Cap));
         foreach (var w in place.Water) map.Add(OpenWaterBox.Metres(w.Name, w.Min[0], w.Min[1], w.Max[0], w.Max[1], w.Level));
         foreach (var s in place.Solids) map.Add(OpenBox.Metres(s.Name, s.Min[0], s.Min[1], s.Min[2], s.Max[0], s.Max[1], s.Max[2]));
         foreach (var p in place.People) map.Add(PersonOf(key, p));
@@ -332,6 +335,8 @@ public static class OpenPlaceFiles
             {
                 var slot = z.Slots[s];
                 if (slot.MinLevel < 1 || slot.MaxLevel < slot.MinLevel) Fail(file, $"$.zones[{i}].slots[{s}]", "levels from one, maxLevel no less than minLevel");
+                if (slot.MaxLevel > Ruleset.HighestLevel) Fail(file, $"$.zones[{i}].slots[{s}].maxLevel", $"is no more than {Ruleset.HighestLevel}, the highest level a Pokémon may have");
+                if (!Enum.IsDefined(slot.Time)) Fail(file, $"$.zones[{i}].slots[{s}].time", "is any, morning, day or night");
                 if (slot.Weight < 1) Fail(file, $"$.zones[{i}].slots[{s}].weight", "is one or more");
             }
         }

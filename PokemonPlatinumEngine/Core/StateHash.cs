@@ -42,6 +42,9 @@ public static class StateHash
             foreach (var p in open.Map.People)
                 if (p.Present) people.Append(' ').Append(p.Key).Append(' ').Append(Num(p.Pos.X)).Append(' ').Append(Num(p.Pos.Y)).Append(' ').Append(Num(p.Pos.Z)).Append(' ').Append(Num(p.Yaw));
             if (open.Follower is { } follower) people.Append(" follower ").Append(Num(follower.Pos.X)).Append(' ').Append(Num(follower.Pos.Y)).Append(' ').Append(Num(follower.Pos.Z));
+            // and its wild Pokémon where they stand (OW7), in the order they came out
+            foreach (var w in open.Wild.All)
+                people.Append(" wild ").Append(w.Species).Append(' ').Append(Num(w.Level)).Append(' ').Append(Num(w.Pos.X)).Append(' ').Append(Num(w.Pos.Y)).Append(' ').Append(Num(w.Pos.Z)).Append(' ').Append(Num(w.Yaw));
             row[1] = Fnv(string.Join(' ', row[1].ToString(CultureInfo.InvariantCulture), "open", open.Map.Name, Num(at.X), Num(at.Y), Num(at.Z), Num(open.Player.Yaw),
                 open.Clock.Tick.ToString(CultureInfo.InvariantCulture)) + people);
         }

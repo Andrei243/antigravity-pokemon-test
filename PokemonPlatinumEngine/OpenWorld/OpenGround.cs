@@ -236,6 +236,31 @@ public sealed class OpenGround
         return best;
     }
 
+    /// <summary>
+    /// What covers the ground a body stands on at a column between two heights (plan 32 · OW7: the battle's ground is
+    /// read from it): the cover of the nearest corner of the footing's triangle, or null where the footing is a box's
+    /// (a building, a placed solid) or there is none.
+    /// </summary>
+    public OpenCover? CoverUnder(double x, double z, double top, double bottom)
+    {
+        if (Footing(x, z, top, bottom) is not { } footing) return null;
+        var t = triangles[footing.Triangle];
+        if (t.Key >= BoxKeys || chunks == null) return null;
+        int index = (int)(t.Key & 0xFFFFFF);
+        int cx = (int)((t.Key >> 24) & 0x7FFFF) - (1 << 18), cz = (int)(t.Key >> 43) - (1 << 18);
+        if (chunks(cx, cz) is not { } chunk) return null;
+        OpenCover? best = null;
+        double nearest = double.MaxValue;
+        for (int k = 0; k < 3; k++)
+        {
+            int v = chunk.Indices[index * 3 + k];
+            var corner = OpenVec.Of(chunk.Vertex(v));
+            double d = (corner.X - x) * (corner.X - x) + (corner.Z - z) * (corner.Z - z);
+            if (d < nearest) { nearest = d; best = chunk.Covers[v]; }
+        }
+        return best;
+    }
+
     /// <summary>Every surface a vertical line through x, z meets, either way up, highest first, each height once.</summary>
     public List<(double Y, int Triangle)> Column(double x, double z)
     {

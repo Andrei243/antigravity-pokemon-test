@@ -83,8 +83,11 @@ public sealed record OpenDoor(string Name, string Place, OpenShape Shape, string
     public bool Open(Func<string, bool> flag) => OpenedBy == null || flag(OpenedBy);
 }
 
-/// <summary>A row of an encounter zone's table (plan 32 · OW5; OW7 spawns from it): a species, its levels and how often it comes.</summary>
-public sealed record OpenSlot(string Species, int MinLevel, int MaxLevel, int Weight);
+/// <summary>When in the day a row of a zone's table is met (plan 32 · OW7): always, or in the morning, by day (twilight with it) or at night (late night with it).</summary>
+public enum OpenSlotTime { Any, Morning, Day, Night }
+
+/// <summary>A row of an encounter zone's table (plan 32 · OW5; OW7 spawns from it): a species, its levels, how often it comes and when in the day.</summary>
+public sealed record OpenSlot(string Species, int MinLevel, int MaxLevel, int Weight, OpenSlotTime Time = OpenSlotTime.Any);
 
 /// <summary>
 /// An encounter zone (plan 32, "Volumes"; OW5 lays it, OW7 spawns its Pokémon): a polygon on the ground between two
