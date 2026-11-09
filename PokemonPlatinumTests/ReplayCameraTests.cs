@@ -5,6 +5,7 @@ using System.Numerics;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Battle.Sim.Ai;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using Xunit;
