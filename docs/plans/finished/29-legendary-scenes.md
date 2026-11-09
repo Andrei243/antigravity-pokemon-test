@@ -235,3 +235,11 @@ The harness's new `beats` mode (`tools/ShotHarness/Modes/LegendBeats.cs`, not pa
   they moved Darkrai and Flower Paradise's Shaymin back a step when met from the south (else hidden behind the player's
   head), the stair's beams onto a camera path that doesn't wait, and the Ranger to the shore (682, 429). Left: LS10's own
   stair, petals and dream mist if wanted; the Harbor Inn is the original's house plan, furniture and all.
+- [x] LS11e Kalos (2026-11-09, plan 23's Kalos session "Kalos's last species", LS11's rule with no new piece: a post-game
+  condition of ours and a step of the place's own, the five beats, level 70 as Kalos's Zygarde and Mewtwo). Diancie in
+  Reflection Cave's north chamber after the Hall of Fame, out of the crystals only to a Trainer with a Carbink (sparkles,
+  a burst, a shake); Hoopa through its ring in the Lost Hotel's gallery once the Mega Ring is upgraded (a held rift, a
+  ripple); Volcanion in the steam at the foot of Couriway's falls after the Hall of Fame (a geyser and an eruption, waited
+  out so it is seen as they fall). Met from the tile south of it, the player steps back two tiles (Couriway's sandbank:
+  aside, the cliff behind). `KalosLastSpeciesTests`; rulings, "Kalos's last species". Shots: the `kalos` mode's
+  `KALOS_FROM=lastspecies` (`wks410` to `wks430`, each before, look, sign, voice and battle), looked at.

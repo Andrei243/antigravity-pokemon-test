@@ -133,7 +133,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - Shots: `fc50_restaurant_door`, `fc51_restaurant_table`, `fc52_restaurant_triple`, `fc53_restaurant_rotation`, `fc54_restaurant_dish`.
 - **Done when** a menu of triples is eaten in the harness, its dish given by its turns, and a second visit that day is turned away.
 
-- **FC5 as built** (2026-11-08, beside plan 23's Kalos session; rulings, "Lumiose's restaurants and five more of its doors"): four rooms behind doors 22, 13, 24 and 6 (`LumioseCity_BistroDeux` doubles, `LumioseCity_TableATrois` triples, `LumioseCity_Carrousel` rotations, `LumioseCity_GrandeTable` one of each for 15,000), twelve staff `kalos_restaurant_*` of Kalos's `trainers.json` (formats `triple` and `rotation`, doubles by `doubleBattle`), `FLAG_DAILY_KALOS_RESTAURANT_1` to `_4`, the dish by the three courses' `TURNS` (bands 4, 8 and 12 for the doubles, 6, 10 and 15 for the rest), `NoTrainerOfTheGamesOrOfTheWorldBattlesInALaterFormat` naming the staff alone, `LumioseRestaurantTests`. Left: the shots.
+- **FC5 as built** (2026-11-08, beside plan 23's Kalos session; rulings, "Lumiose's restaurants and five more of its doors"): four rooms behind doors 22, 13, 24 and 6 (`LumioseCity_BistroDeux` doubles, `LumioseCity_TableATrois` triples, `LumioseCity_Carrousel` rotations, `LumioseCity_GrandeTable` one of each for 15,000), twelve staff `kalos_restaurant_*` of Kalos's `trainers.json` (formats `triple` and `rotation`, doubles by `doubleBattle`), `FLAG_DAILY_KALOS_RESTAURANT_1` to `_4`, the dish by the three courses' `TURNS` (bands 4, 8 and 12 for the doubles, 6, 10 and 15 for the rest), `NoTrainerOfTheGamesOrOfTheWorldBattlesInALaterFormat` naming the staff alone, `LumioseRestaurantTests`. The shots were taken in plan 23's next Kalos session (2026-11-09, the `kalos` mode's `KALOS_FROM=lastspecies`): `fc50_restaurant_door` to `fc54_restaurant_dish`, and `fc55_restaurant_second_visit`, the same day's second visit turned away; looked at. Its "done when" holds: La Table à Trois's triple menu eaten, its dish given by its turns, and the second visit turned away.
 
 ### FC6 · The Trainer Tower on Seven Island (1 to 2 sessions)
 - `--trainer-tower` and `Data/trainer-tower.json`; the tower's rooms opened by the GBA reader and the grounds' door; `Models/Frontier/TrainerTower.cs` sharing the Hill's clock, level and prize rules; the Trainer House's draw from the friends' files; the rulings' line on the e-Reader corrected.
@@ -200,7 +200,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - [x] FC2 The facilities' frame and the streak house (2026-11-08; above, "FC2 as built")
 - [ ] FC3 The partners' tree
 - [ ] FC4 The house of titles
-- [x] FC5 Lumiose's restaurants (2026-11-08, beside plan 23's Kalos session; the shots fc50 to fc54 not taken)
+- [x] FC5 Lumiose's restaurants (2026-11-08, beside plan 23's Kalos session; the shots fc50 to fc55 taken 2026-11-09)
 - [ ] FC6 The Trainer Tower on Seven Island
 - [ ] FC7 The cups, the Leaders' round and the sparring room
 - [ ] FC8 The institute's test and the ladder

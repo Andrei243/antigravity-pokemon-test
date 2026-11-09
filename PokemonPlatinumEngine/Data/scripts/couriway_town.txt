@@ -38,6 +38,8 @@ label Look
   effect geyser 653 377 2
   effect eruption 653 377 2
   camera shake 0.6
+  # (the columns hide it while they stand: it is seen as they fall)
+  wait 1.6
   cry "Volcanion"
   speaker none
   text "Steam bursts up off the pool! A Pokémon of fire and water stands in it and glares at {player}."

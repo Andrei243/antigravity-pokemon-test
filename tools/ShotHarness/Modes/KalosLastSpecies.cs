@@ -121,7 +121,7 @@ partial class Harness
         ReadTo(null);
         Left("La Table à Trois");
         Talk("LumioseCity_TableATrois", 7, 5, Direction.Up);
-        ReadTo("You have dined", fight: false); Frames(10); Shot("fc55_restaurant_second_visit");
+        ReadTo("You have eaten with us", fight: false); Frames(10); Shot("fc55_restaurant_second_visit");
         ReadTo(null);
         ComeThrough("LumioseCity_Carrousel", 7, 10, Direction.Up); ReadTo(null); Frames(6);
         Talk("LumioseCity_Carrousel", 7, 5, Direction.Up);
