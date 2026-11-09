@@ -14,6 +14,10 @@ script Director
   face self player
   charm due
   if var RESULT > 0 goto Charms
+  if diploma Ours goto OursDiploma
+  if diploma Johto goto OwnDiploma
+  if var DIPLOMAS >= 3 goto ManyDiplomas
+  if var DIPLOMAS > 0 goto AnyDiploma
   sayown
   end
 label Charms
@@ -24,4 +28,18 @@ label Give
   charm due
   if var RESULT > 0 goto Give
   say "Carry it with you, and fill in another Pokédex if you can. We may have something more for you."
+  end
+# Plan 40 · GE4, ours: he reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). They sit after the lines
+# above so that the lines' numbers in the translation files stay where they were.
+label OursDiploma
+  say "The diploma for the Pokémon outside every region's list! Splendid! I'd hardly believe it if it weren't printed here." "Nobody planned those Pokémon, you know. They simply turned up, and you found them all."
+  end
+label OwnDiploma
+  say "A diploma for the whole Johto Pokédex! Every page seen, from the first Route to the last cave. Splendid!" "The Pokédex hands out that paper itself, but it's nice to see someone carry it as far as this office."
+  end
+label ManyDiplomas
+  say "Diplomas from several Pokédexes! You've been farther than any of our maps." "I'd love to ask which region was your favourite, but I suspect you can't choose."
+  end
+label AnyDiploma
+  say "A diploma on your Pokédex! Splendid! It's a real accomplishment." "Other regions have Pokédexes of their own, and a diploma waits in each. Take your time."
   end

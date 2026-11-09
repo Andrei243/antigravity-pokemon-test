@@ -2443,6 +2443,8 @@ public sealed partial class ScriptRunner
         "BIKE" => host.Bike,
         // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)
         "CAUGHT" => host.Caught,
+        // How many Pokédexes' diplomas are held (plan 40 · GE4: a designer counts them)
+        "DIPLOMAS" => host.Pokedex?.Diplomas.Count ?? 0,
         // How many of the team lie fainted just now, and the National Pokédex numbers of the first two that are no Egg
         // and can fight (0 for none): what Gabby and Ty ask of a battle once it is over (plan 21 · H6, part c)
         "FAINTED" => host.Party.Members.Count(p => !p.IsEgg && p.IsFainted),
@@ -2521,6 +2523,8 @@ public sealed partial class ScriptRunner
             // IsMirageIslandPresent (plan 21 · H12, part h)
             Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
             Query.Modern => host.Modern,
+            // The diploma of a Pokédex is held (plan 40 · GE4)
+            Query.Diploma => host.Pokedex?.HoldsDiplomaOf(c.Name) == true,
             // The phrase kept is these two words (plan 21 · H12, part k)
             Query.Phrase => story.PhraseOf(c.Name) is { Count: 2 } said && string.Join(" ", said) == c.Other,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")

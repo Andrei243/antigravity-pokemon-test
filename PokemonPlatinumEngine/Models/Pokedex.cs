@@ -40,6 +40,12 @@ public class Pokedex
     /// <summary>Platinum's Sinnoh Pokédex (210 species): PokeAPI's <c>extended-sinnoh</c>.</summary>
     public const string Sinnoh = "extended-sinnoh";
 
+    /// <summary>
+    /// The Pokédex of the species of our own (plan 40 · GE4): ours alone (<see cref="PokemonDatabase.Ours"/>), numbered
+    /// 1 to N in National order. Not a PokeAPI identifier: no species carries it in <see cref="PokemonSpecies.DexNumbers"/>.
+    /// </summary>
+    public const string Ours = "ours";
+
     /// <summary>Kalos's three regional Pokédexes (plan 23 · Z4), PokeAPI's identifiers.</summary>
     public const string KalosCentral = "kalos-central", KalosCoastal = "kalos-coastal", KalosMountain = "kalos-mountain";
 
@@ -187,8 +193,11 @@ public class Pokedex
     /// </summary>
     public static IReadOnlyList<PokedexEntry> Entries(string dex) => lists.GetOrAdd(dex, id => id == National
         ? PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => new PokedexEntry(s.DexNumber, s)).ToList()
-        : PokemonDatabase.GetAll().Where(s => s.DexNumbers.ContainsKey(id)).OrderBy(s => s.DexNumbers[id]).ThenBy(s => s.DexNumber)
-            .Select(s => new PokedexEntry(s.DexNumbers[id], s)).ToList());
+        : id == Ours
+            // The Pokédex of ours (plan 40 · GE4): the species of ours in National order, numbered from 1
+            ? PokemonDatabase.Ours().OrderBy(s => s.DexNumber).Select((s, i) => new PokedexEntry(i + 1, s)).ToList()
+            : PokemonDatabase.GetAll().Where(s => s.DexNumbers.ContainsKey(id)).OrderBy(s => s.DexNumbers[id]).ThenBy(s => s.DexNumber)
+                .Select(s => new PokedexEntry(s.DexNumbers[id], s)).ToList());
 
     /// <summary>The key the text table names a Pokédex by (<c>pokedex.mode.sinnoh</c>): its identifier, but for Sinnoh's, which is the region's name.</summary>
     public static string KeyOf(string dex) => dex == Sinnoh ? "sinnoh" : dex.Replace("-", "");
@@ -212,7 +221,14 @@ public class Pokedex
     public IReadOnlyList<string> Regional => RegionDatabase.All.SelectMany(r => r.Dexes).Where(entered.Contains).Distinct().ToList();
 
     /// <summary>The Pokédexes the player can open: the regional ones of the regions they have entered, then the National one once it is unlocked.</summary>
-    public IReadOnlyList<string> Dexes => NationalUnlocked ? Regional.Append(National).ToList() : Regional;
+    public IReadOnlyList<string> Dexes => !NationalUnlocked ? Regional
+        : OursOpen ? Regional.Append(National).Append(Ours).ToList() : Regional.Append(National).ToList();
+
+    /// <summary>
+    /// Whether the Pokédex of our own is offered (plan 40 · GE4, decision 6): after the National one, once that is open and
+    /// the player has seen one species of ours. Seen species stay seen, so it stays open.
+    /// </summary>
+    public bool OursOpen => NationalUnlocked && SeenSpecies.Any(n => n >= PokemonDatabase.OursFrom);
 
     public int SeenIn(string dex) => dex == National ? SeenCount : Entries(dex).Count(e => IsSeen(e.Species.DexNumber));
     public int CaughtIn(string dex) => dex == National ? CaughtCount : Entries(dex).Count(e => IsCaught(e.Species.DexNumber));
@@ -241,7 +257,24 @@ public class Pokedex
 
     public void UnlockNational() => NationalUnlocked = true;
 
-    /// <summary>The species a Pokédex's diploma asks for, and whether they must be caught or only seen.</summary>
+    /// <summary>
+    /// The Pokédexes a script's word names for a diploma (plan 40 · GE4, <c>if diploma Johto</c>): a region by its name
+    /// (all of its Pokédexes: Kalos has three), <c>National</c>, <c>Ours</c>, or a Pokédex by its identifier
+    /// (<c>kalos-coastal</c>); empty for a name that is none of them.
+    /// </summary>
+    public static IReadOnlyList<string> DiplomaDexes(string name)
+    {
+        if (string.Equals(name, "National", System.StringComparison.OrdinalIgnoreCase)) return new[] { National };
+        if (string.Equals(name, Ours, System.StringComparison.OrdinalIgnoreCase)) return new[] { Ours };
+        if (RegionDatabase.Get(name) is { } region) return region.Dexes;
+        if (name == Sinnoh || RegionDatabase.All.Any(r => r.Dexes.Contains(name))) return new[] { name };
+        return System.Array.Empty<string>();
+    }
+
+    /// <summary>Whether the diploma of every Pokédex <see cref="DiplomaDexes"/> names is held (never of a name that names none).</summary>
+    public bool HoldsDiplomaOf(string name) => DiplomaDexes(name) is { Count: > 0 } dexes && dexes.All(Diplomas.Contains);
+
+    /// <summary>The species a Pokédex's diploma asks for, and whether they must be caught or only seen: the National one every species of the games caught but the mythical ones, any other every one of its species seen (the Pokédex of ours too, plan 40 · GE4's decision 6, since most of ours are met in trainers' teams).</summary>
     public static (IReadOnlyList<PokemonSpecies> Species, bool Caught) Goal(string dex) => dex == National
         ? (Entries(dex).Select(e => e.Species).Where(s => !s.Mythical && !s.IsOurs).ToList(), true)
         : (Entries(dex).Select(e => e.Species).ToList(), false);
