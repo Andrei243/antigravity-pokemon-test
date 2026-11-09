@@ -9,9 +9,9 @@ script OnEnter
   # have been fought (FLAG_UNOVA_KELDEO_WAITS, kept here on every arrival)
   clearflag FLAG_UNOVA_KELDEO_WAITS
   if not flag UnovaHallOfFame end
-  if not flag FLAG_UNOVA_FOUGHT_COBALION end
-  if not flag FLAG_UNOVA_FOUGHT_VIRIZION end
-  if not flag FLAG_UNOVA_FOUGHT_TERRAKION end
+  if not flag FLAG_UNOVA_MET_COBALION end
+  if not flag FLAG_UNOVA_MET_VIRIZION end
+  if not flag FLAG_UNOVA_MET_TERRAKION end
   setflag FLAG_UNOVA_KELDEO_WAITS
   end
 
@@ -55,8 +55,10 @@ script Cobalion
   letterbox off 0.3
   endscene
   wildbattle "Cobalion" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_COBALION
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_COBALION
+  setflag FLAG_UNOVA_MET_COBALION
   hide self
   text "The road is quiet again. Only the sea breeze is left..."
   end
@@ -95,6 +97,7 @@ label Look
   letterbox off 0.3
   endscene
   wildbattle "Keldeo" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_KELDEO
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_KELDEO
   hide keldeo

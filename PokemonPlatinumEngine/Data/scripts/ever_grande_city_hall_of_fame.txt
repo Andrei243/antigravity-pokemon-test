@@ -33,6 +33,7 @@ script OnEnter
   objective hoennFree
   setflag FLAG_IS_CHAMPION
   call ClearGame
+  call LegendsAgain
   halloffame show
   heal
   warp "LittlerootTown_BrendansHouse_2F" 4 2 down
@@ -64,4 +65,29 @@ script ClearGame
   clearflag FLAG_DEFEATED_ELITE_4_GLACIA
   clearflag FLAG_DEFEATED_ELITE_4_DRAKE
   clearflag FLAG_HOENN_DEFEATED_WALLACE
+  return
+
+
+# Hoenn's legendaries met again (plan 40 · GE6): each one beaten and not caught is back in its place once the Hall of
+# Fame is entered again (its place's arrival shows it while its beaten flag is clear; Kyogre's and Groudon's caves open
+# again with the Weather Institute's next report), Jirachi wakes again the next night Steven is spoken to, Deoxys's stone
+# is back on Birth Island, and the eon roamer, knocked out, is set loose again. Steven's friend's pair in Pewter City is
+# a meeting once only
+script LegendsAgain
+  if not flag FLAG_HOENN_CAUGHT_REGIROCK clearflag FLAG_DEFEATED_REGIROCK
+  if not flag FLAG_HOENN_CAUGHT_REGICE clearflag FLAG_DEFEATED_REGICE
+  if not flag FLAG_HOENN_CAUGHT_REGISTEEL clearflag FLAG_DEFEATED_REGISTEEL
+  if not flag FLAG_HOENN_CAUGHT_RAYQUAZA clearflag FLAG_DEFEATED_RAYQUAZA
+  if not flag FLAG_HOENN_CAUGHT_KYOGRE clearflag FLAG_DEFEATED_KYOGRE
+  if not flag FLAG_HOENN_CAUGHT_GROUDON clearflag FLAG_DEFEATED_GROUDON
+  if not flag FLAG_HOENN_CAUGHT_JIRACHI clearflag FLAG_HOENN_JIRACHI_MET
+  if not flag FLAG_CAUGHT_HO_OH clearflag FLAG_DEFEATED_HO_OH
+  if not flag FLAG_CAUGHT_LUGIA clearflag FLAG_DEFEATED_LUGIA
+  if not flag FLAG_CAUGHT_MEW clearflag FLAG_DEFEATED_MEW
+  clearflag FLAG_DEFEATED_DEOXYS
+  if not flag FLAG_CAUGHT_LATIAS_OR_LATIOS clearflag FLAG_DEFEATED_LATIAS_OR_LATIOS
+  if var VAR_ROAMING_LATIAS_STATE == 2 roamer start "Latias"
+  if var VAR_ROAMING_LATIAS_STATE == 2 setvar VAR_ROAMING_LATIAS_STATE 0
+  if var VAR_ROAMING_LATIOS_STATE == 2 roamer start "Latios"
+  if var VAR_ROAMING_LATIOS_STATE == 2 setvar VAR_ROAMING_LATIOS_STATE 0
   return

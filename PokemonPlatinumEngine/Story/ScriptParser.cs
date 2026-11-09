@@ -1520,6 +1520,9 @@ public static class ScriptParser
                 if (Models.Pokedex.DiplomaDexes(named).Count == 0) throw r.Error($"'{named}' is no region, Pokédex, National or Ours");
                 return new Condition { Query = Query.Diploma, Negated = negated, Name = named };
             }
+            // The Pokédex holds this species caught (plan 40 · GE6: an older save's legendaries marked caught)
+            case "caught":
+                return new Condition { Query = Query.Caught, Negated = negated, Name = r.Text("a species' name") };
             // The phrase kept under a name is these two words (plan 21 · H12, part k: the Berry Master's wife)
             case "phrase":
             {

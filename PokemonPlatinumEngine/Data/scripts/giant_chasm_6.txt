@@ -204,6 +204,7 @@ script KyuremRests
   letterbox off 0.3
   endscene
   wildbattle "Kyurem" 70
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_KYUREM
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_KYUREM
   hide self

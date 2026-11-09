@@ -42,6 +42,7 @@ script Zapdos
   letterbox off 0.3
   endscene
   wildbattle "Zapdos" 50
+  if result == 3 setflag FLAG_KANTO_CAUGHT_ZAPDOS
   if result == 2 goto Fled
   setflag FLAG_FOUGHT_ZAPDOS
   setflag FLAG_HIDE_ZAPDOS

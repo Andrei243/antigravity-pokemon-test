@@ -42,6 +42,7 @@ script Rayquaza
   letterbox off 0.3
   endscene
   wildbattle "Rayquaza" 70
+  if result == 3 setflag FLAG_HOENN_CAUGHT_RAYQUAZA
   hide self
   setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
   if result == 2 goto Fled

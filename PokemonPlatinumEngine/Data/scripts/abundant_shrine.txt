@@ -24,8 +24,10 @@ script Landorus
   letterbox off 0.3
   endscene
   wildbattle "Landorus" 70
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_LANDORUS
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_LANDORUS
+  setflag FLAG_UNOVA_MET_LANDORUS
   hide self
   text "The wood settles. Only the wind over the pond is left..."
   # Plan 40 · GE3: its two fellows answer (abundant_shrine.json's tornadus and thundurus, shown by the flag just set)
@@ -43,7 +45,7 @@ label Fled
 # (FLAG_UNOVA_FOUGHT_TORNADUS, FLAG_UNOVA_FOUGHT_THUNDURUS); run from, it flies off and is back the next time the wood is
 # come to.
 script Tornadus
-  if not flag FLAG_UNOVA_FOUGHT_LANDORUS end
+  if not flag FLAG_UNOVA_MET_LANDORUS end
   scene "Tornadus at the Abundant Shrine"
   music stop
   face player self
@@ -54,6 +56,7 @@ script Tornadus
   letterbox off 0.3
   endscene
   wildbattle "Tornadus" 70
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_TORNADUS
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_TORNADUS
   hide self
@@ -66,7 +69,7 @@ label Fled
 
 
 script Thundurus
-  if not flag FLAG_UNOVA_FOUGHT_LANDORUS end
+  if not flag FLAG_UNOVA_MET_LANDORUS end
   scene "Thundurus at the Abundant Shrine"
   music stop
   face player self
@@ -77,6 +80,7 @@ script Thundurus
   letterbox off 0.3
   endscene
   wildbattle "Thundurus" 70
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_THUNDURUS
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_THUNDURUS
   hide self

@@ -2,13 +2,13 @@
   // The Dragonspiral Tower, its open top, where Black 2's scene of the dragon (its object 0 and trigger 2) is left out (plan 22 · U10, part e): Black 2's, empty but for what the importer reads
   // its hidden Comet Shard (8072) is held back, the item not being in the game's data
   // Plan 40 · GE3: White 2's dragon, Reshiram, waits where White 2 puts it, on the spot of Black 2's own dragon (object 0,
-  // held back), once Zekrom has been met in N's Castle (shownBy FLAG_UNOVA_FOUGHT_ZEKROM, which only the Hall of Fame's
+  // held back), once Zekrom has been met in N's Castle (shownBy FLAG_UNOVA_MET_ZEKROM, which only the Hall of Fame's
   // Zekrom sets), at White 2's level 70; caught or beaten it is gone for good (dragonspiral_tower_9.txt)
   "area": "dragonspiral_tower_9",
   "heldBack": [ "8072", "0" ],
   "bgmTrack": "unova/dragonspiral_tower",
   "battleArena": "Cave",
   "npcs": [
-    { "id": "reshiram", "name": "Reshiram", "npcType": "Pokemon", "species": "Reshiram", "x": 16, "y": 11, "facing": "Down", "script": "Reshiram", "shownBy": "FLAG_UNOVA_FOUGHT_ZEKROM", "hiddenBy": "FLAG_UNOVA_FOUGHT_RESHIRAM" }
+    { "id": "reshiram", "name": "Reshiram", "npcType": "Pokemon", "species": "Reshiram", "x": 16, "y": 11, "facing": "Down", "script": "Reshiram", "shownBy": "FLAG_UNOVA_MET_ZEKROM", "hiddenBy": "FLAG_UNOVA_FOUGHT_RESHIRAM" }
   ]
 }

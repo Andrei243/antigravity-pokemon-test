@@ -2530,6 +2530,8 @@ public sealed partial class ScriptRunner
             Query.Modern => host.Modern,
             // The diploma of a Pokédex is held (plan 40 · GE4)
             Query.Diploma => host.Pokedex?.HoldsDiplomaOf(c.Name) == true,
+            // The Pokédex holds the species caught (plan 40 · GE6)
+            Query.Caught => PokemonDatabase.Get(c.Name) is { } caughtSpecies && host.Pokedex?.IsCaught(caughtSpecies.DexNumber) == true,
             // The phrase kept is these two words (plan 21 · H12, part k)
             Query.Phrase => story.PhraseOf(c.Name) is { Count: 2 } said && string.Join(" ", said) == c.Other,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")

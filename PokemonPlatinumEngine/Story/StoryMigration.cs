@@ -45,8 +45,10 @@ public static class StoryMigration
     /// <c>StoryVersion</c>; <paramref name="owned"/> is every Pokémon the player has, on the team and in the PC, and
     /// <paramref name="bag"/> the player's bag, for what a step hands over.
     /// </summary>
-    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts, Inventory? bag = null)
+    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts, Inventory? bag = null,
+        Pokedex? pokedex = null)
     {
+        owned = owned as ICollection<Pokemon> ?? owned.ToList();
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
         if (savedVersion < 3) Run(story, scripts, ScriptLibrary.ChapterTwo);
@@ -120,6 +122,27 @@ public static class StoryMigration
         // Version 29: Hoenn's sixth stretch (plan 21 · H4, part b): the people of Mt. Chimney to Petalburg's Gym are hidden
         // until their scenes by common.HoennChapterSix, which a new game runs too
         if (savedVersion < 29) Run(story, scripts, "common.HoennChapterSix");
+        // Version 30: the legendaries met again (plan 40 · GE6). Each meeting now keeps a caught flag of its own, which
+        // the Hall of Fame asks before bringing a legendary back: a save from before has those caught flags set from its
+        // Pokédex by common.LegendariesCaughtBefore (if caught "Mewtwo"), so nothing it caught is met twice
+        if (savedVersion < 30) LegendariesCaughtBefore(story, scripts, owned, pokedex);
+    }
+
+    /// <summary>
+    /// Version 30 (plan 40 · GE6): <c>common.LegendariesCaughtBefore</c> on a host whose Pokédex is the save's, or, with
+    /// none handed over, one that knows the Pokémon the player owns as caught.
+    /// </summary>
+    private static void LegendariesCaughtBefore(StoryState story, ScriptLibrary scripts, IEnumerable<Pokemon> owned, Pokedex? pokedex)
+    {
+        if (scripts.Find("common.LegendariesCaughtBefore") is not { } script) return;
+        if (pokedex == null)
+        {
+            pokedex = new Pokedex();
+            foreach (var p in owned.Where(p => !p.IsEgg)) pokedex.RegisterCaught(p.Species.DexNumber);
+        }
+        var runner = new ScriptRunner(scripts, new HeadlessScriptHost(story) { ShowsNothing = true, Pokedex = pokedex });
+        runner.Start(script);
+        runner.RunToEnd();
     }
 
     /// <summary>

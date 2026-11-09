@@ -28,6 +28,7 @@ script OnEnter
   # Ho-Oh is back on the Bell Tower's roof unless it was caught (plan 20 · J11, part d)
   if not flag FLAG_JOHTO_CAUGHT_HO_OH clearflag FLAG_HIDE_BELL_TOWER_HO_OH
   if not flag FLAG_JOHTO_CAUGHT_LUGIA clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
+  call LegendsAgain
   halloffame show
   heal
   warp "NewBark_PlayersHouse_2F" 4 9 up
@@ -41,3 +42,30 @@ label NotSaved
 label Roll
   credits
   end
+
+
+# Johto's other legendaries met again (plan 40 · GE6): each one beaten and not caught is back in its place once the Hall
+# of Fame is entered again, as Ho-Oh and Lugia are above. The Embedded Tower's three keep their fought flags, which its
+# ways and Mr. Pokémon go by, and are shown again by flags of their own; Celebi comes to the shrine with no GS Ball; Raikou
+# and Entei, knocked out, are set loose again
+script LegendsAgain
+  if not flag FLAG_JOHTO_CAUGHT_MEWTWO clearflag FLAG_JOHTO_FOUGHT_MEWTWO
+  if not flag FLAG_JOHTO_CAUGHT_ZAPDOS clearflag FLAG_JOHTO_FOUGHT_ZAPDOS
+  if not flag FLAG_JOHTO_CAUGHT_ARTICUNO clearflag FLAG_JOHTO_FOUGHT_ARTICUNO
+  if not flag FLAG_JOHTO_CAUGHT_MOLTRES clearflag FLAG_JOHTO_FOUGHT_MOLTRES
+  if not flag FLAG_JOHTO_CAUGHT_SUICUNE clearflag FLAG_JOHTO_FOUGHT_SUICUNE
+  if flag FLAG_JOHTO_CELEBI_BEATEN clearflag FLAG_JOHTO_CELEBI_MET
+  if not flag FLAG_JOHTO_FOUGHT_GROUDON goto Kyogre
+  if not flag FLAG_JOHTO_CAUGHT_GROUDON setflag FLAG_JOHTO_GROUDON_AGAIN
+label Kyogre
+  if not flag FLAG_JOHTO_FOUGHT_KYOGRE goto Rayquaza
+  if not flag FLAG_JOHTO_CAUGHT_KYOGRE setflag FLAG_JOHTO_KYOGRE_AGAIN
+label Rayquaza
+  if not flag FLAG_JOHTO_FOUGHT_RAYQUAZA goto Roamers
+  if not flag FLAG_JOHTO_CAUGHT_RAYQUAZA setflag FLAG_JOHTO_RAYQUAZA_AGAIN
+label Roamers
+  if var VAR_ROAMING_RAIKOU_STATE == 2 roamer start "Raikou"
+  if var VAR_ROAMING_RAIKOU_STATE == 2 setvar VAR_ROAMING_RAIKOU_STATE 0
+  if var VAR_ROAMING_ENTEI_STATE == 2 roamer start "Entei"
+  if var VAR_ROAMING_ENTEI_STATE == 2 setvar VAR_ROAMING_ENTEI_STATE 0
+  return

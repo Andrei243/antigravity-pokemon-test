@@ -923,6 +923,7 @@ public class ScriptTests
               if modern end
               if phrase SAYING "feelings:cool" "pokemon:Latias" end
               if diploma Johto end
+              if caught "Mewtwo" end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

@@ -45,6 +45,7 @@ script Groudon
   endscene
   setvar VAR_TEMP_1 0
   wildbattle "Groudon" 70
+  if result == 3 setflag FLAG_HOENN_CAUGHT_GROUDON
   hide terra_cave_groudon
   setflag FLAG_HIDE_TERRA_CAVE_GROUDON
   if result == 2 goto Fled

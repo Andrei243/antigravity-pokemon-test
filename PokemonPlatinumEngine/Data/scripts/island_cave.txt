@@ -82,6 +82,7 @@ script Regice
   letterbox off 0.3
   endscene
   wildbattle "Regice" 40
+  if result == 3 setflag FLAG_HOENN_CAUGHT_REGICE
   hide self
   setflag FLAG_HIDE_REGICE
   if result == 2 goto Fled

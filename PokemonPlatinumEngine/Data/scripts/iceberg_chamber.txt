@@ -22,6 +22,7 @@ script Regice
   letterbox off 0.3
   endscene
   wildbattle "Regice" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_REGICE
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_REGICE
   hide self

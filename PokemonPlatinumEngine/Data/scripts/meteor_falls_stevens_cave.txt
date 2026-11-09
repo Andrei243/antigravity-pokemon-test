@@ -80,6 +80,8 @@ label Humming
   hide meteor_falls_jirachi
   clearflag FLAG_HOENN_SHOW_JIRACHI
   if result == 1 goto Gone
+  # (plan 40 · GE6: caught it is gone for good; beaten it is back the night after Hoenn's Hall of Fame is entered again)
+  if result == 3 setflag FLAG_HOENN_CAUGHT_JIRACHI
   if result == 3 goto Gone
   speaker none
   text "Jirachi drifted back into the stone's glow, and the humming stopped..."

@@ -243,7 +243,13 @@ public enum Query
     /// <c>diploma Ours</c> (the Pokédex of our own's), by a region's name (every Pokédex it has), <c>National</c>,
     /// <c>Ours</c> or a Pokédex's identifier (<see cref="Models.Pokedex.DiplomaDexes"/>). False with no Pokédex.
     /// </summary>
-    Diploma
+    Diploma,
+    /// <summary>
+    /// The Pokédex holds a species caught (plan 40 · GE6): <c>if caught "Mewtwo"</c>, which a story version step asks to
+    /// mark the legendaries an older save caught. Not the built-in <c>CAUGHT</c>, which is the count of species caught.
+    /// False with no Pokédex.
+    /// </summary>
+    Caught
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

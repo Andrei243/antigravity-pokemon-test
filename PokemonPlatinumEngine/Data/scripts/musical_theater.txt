@@ -41,6 +41,7 @@ label Look
   letterbox off 0.3
   endscene
   wildbattle "Meloetta" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_MELOETTA
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_MELOETTA
   hide meloetta

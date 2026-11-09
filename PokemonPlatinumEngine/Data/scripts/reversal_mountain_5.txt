@@ -71,6 +71,7 @@ script Heatran
   letterbox off 0.3
   endscene
   wildbattle "Heatran" 68
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_HEATRAN
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_HEATRAN
   hide self

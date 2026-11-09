@@ -31,8 +31,8 @@
   // caught or beaten (FLAG_UNOVA_FOUGHT_TORNADUS, FLAG_UNOVA_FOUGHT_THUNDURUS, ours)
   "npcs": [
     { "id": "landorus", "name": "Landorus", "npcType": "Pokemon", "species": "Landorus", "x": 22, "y": 14, "facing": "Down", "script": "Landorus", "shownBy": "UnovaHallOfFame", "hiddenBy": "FLAG_UNOVA_FOUGHT_LANDORUS" },
-    { "id": "tornadus", "name": "Tornadus", "npcType": "Pokemon", "species": "Tornadus", "x": 19, "y": 13, "facing": "Down", "script": "Tornadus", "shownBy": "FLAG_UNOVA_FOUGHT_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_TORNADUS" },
-    { "id": "thundurus", "name": "Thundurus", "npcType": "Pokemon", "species": "Thundurus", "x": 25, "y": 13, "facing": "Down", "script": "Thundurus", "shownBy": "FLAG_UNOVA_FOUGHT_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_THUNDURUS" }
+    { "id": "tornadus", "name": "Tornadus", "npcType": "Pokemon", "species": "Tornadus", "x": 19, "y": 13, "facing": "Down", "script": "Tornadus", "shownBy": "FLAG_UNOVA_MET_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_TORNADUS" },
+    { "id": "thundurus", "name": "Thundurus", "npcType": "Pokemon", "species": "Thundurus", "x": 25, "y": 13, "facing": "Down", "script": "Thundurus", "shownBy": "FLAG_UNOVA_MET_LANDORUS", "hiddenBy": "FLAG_UNOVA_FOUGHT_THUNDURUS" }
   ],
   "signs": {
     "10807": "Abundant Shrine\nA wood kept for the one who blesses the harvest",

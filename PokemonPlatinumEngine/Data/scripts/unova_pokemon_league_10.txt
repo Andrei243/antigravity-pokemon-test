@@ -22,6 +22,7 @@ script OnEnter
   setflag UnovaHallOfFame
   objective unovaFree
   call ClearGame
+  call LegendsAgain
   halloffame show
   heal
   warp "AspertiaCity_PlayersHouse" 14 5 down
@@ -47,4 +48,32 @@ script ClearGame
   setvar VAR_UNOVA_LEAGUE_IRIS 0
   setvar VAR_UNOVA_LEAGUE_GUARD 0
   setvar VAR_UNOVA_HOUSE 2
+  return
+
+
+# Unova's legendaries met again (plan 40 · GE6): each one beaten and not caught is back in its place once the Hall of Fame
+# is entered again (its overlay hides it by its fought flag alone). What waits on another having been met (Tornadus and
+# Thundurus on Landorus, Reshiram on Zekrom, Keldeo on the three Swords of Justice) goes by a met flag the Hall of Fame
+# never clears
+script LegendsAgain
+  if not flag FLAG_UNOVA_CAUGHT_LANDORUS clearflag FLAG_UNOVA_FOUGHT_LANDORUS
+  if not flag FLAG_UNOVA_CAUGHT_TORNADUS clearflag FLAG_UNOVA_FOUGHT_TORNADUS
+  if not flag FLAG_UNOVA_CAUGHT_THUNDURUS clearflag FLAG_UNOVA_FOUGHT_THUNDURUS
+  if not flag FLAG_UNOVA_CAUGHT_RESHIRAM clearflag FLAG_UNOVA_FOUGHT_RESHIRAM
+  if not flag FLAG_UNOVA_CAUGHT_ZEKROM clearflag FLAG_UNOVA_FOUGHT_ZEKROM
+  if not flag FLAG_UNOVA_CAUGHT_KYUREM clearflag FLAG_UNOVA_FOUGHT_KYUREM
+  if not flag FLAG_UNOVA_CAUGHT_REGIROCK clearflag FLAG_UNOVA_FOUGHT_REGIROCK
+  if not flag FLAG_UNOVA_CAUGHT_REGICE clearflag FLAG_UNOVA_FOUGHT_REGICE
+  if not flag FLAG_UNOVA_CAUGHT_REGISTEEL clearflag FLAG_UNOVA_FOUGHT_REGISTEEL
+  if not flag FLAG_UNOVA_CAUGHT_REGIGIGAS clearflag FLAG_UNOVA_FOUGHT_REGIGIGAS
+  if not flag FLAG_UNOVA_CAUGHT_HEATRAN clearflag FLAG_UNOVA_FOUGHT_HEATRAN
+  if not flag FLAG_UNOVA_CAUGHT_COBALION clearflag FLAG_UNOVA_FOUGHT_COBALION
+  if not flag FLAG_UNOVA_CAUGHT_TERRAKION clearflag FLAG_UNOVA_FOUGHT_TERRAKION
+  if not flag FLAG_UNOVA_CAUGHT_VIRIZION clearflag FLAG_UNOVA_FOUGHT_VIRIZION
+  if not flag FLAG_UNOVA_CAUGHT_KELDEO clearflag FLAG_UNOVA_FOUGHT_KELDEO
+  if not flag FLAG_UNOVA_CAUGHT_VICTINI clearflag FLAG_UNOVA_FOUGHT_VICTINI
+  if not flag FLAG_UNOVA_CAUGHT_MELOETTA clearflag FLAG_UNOVA_FOUGHT_MELOETTA
+  if not flag FLAG_UNOVA_CAUGHT_GENESECT clearflag FLAG_UNOVA_FOUGHT_GENESECT
+  if not flag FLAG_UNOVA_CAUGHT_MESPRIT clearflag FLAG_UNOVA_FOUGHT_MESPRIT
+  if not flag FLAG_UNOVA_CAUGHT_AZELF clearflag FLAG_UNOVA_FOUGHT_AZELF
   return

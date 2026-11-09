@@ -3947,3 +3947,142 @@ script GalarNewGame
   setflag FLAG_GALAR_HIDE_LEON_LAKE
   setflag FLAG_GALAR_STORY_BEGUN
   return
+
+
+
+# ---------------------------------------------------------------- Legendaries met again (plan 40 · GE6)
+#
+# Story version 30, for a save from before the legendaries' meetings kept a caught flag of their own: each meeting the save
+# has had (its fought, beaten or met flag) is marked caught when the Pokédex holds the species caught, so the Hall of Fame
+# brings back only the ones that were beaten. Unova's leaders' met flags, which the Pokémon waiting on them go by, are set
+# from their fought flags. It runs with no screen (StoryMigration), so it sets flags and nothing else.
+script LegendariesCaughtBefore
+  if flag FLAG_UNOVA_FOUGHT_LANDORUS setflag FLAG_UNOVA_MET_LANDORUS
+  if flag FLAG_UNOVA_FOUGHT_ZEKROM setflag FLAG_UNOVA_MET_ZEKROM
+  if flag FLAG_UNOVA_FOUGHT_COBALION setflag FLAG_UNOVA_MET_COBALION
+  if flag FLAG_UNOVA_FOUGHT_VIRIZION setflag FLAG_UNOVA_MET_VIRIZION
+  if flag FLAG_UNOVA_FOUGHT_TERRAKION setflag FLAG_UNOVA_MET_TERRAKION
+  if not flag FLAG_FOUGHT_MEWTWO goto Next1
+  if caught "Mewtwo" setflag FLAG_KANTO_CAUGHT_MEWTWO
+label Next1
+  if not flag FLAG_FOUGHT_ARTICUNO goto Next2
+  if caught "Articuno" setflag FLAG_KANTO_CAUGHT_ARTICUNO
+label Next2
+  if not flag FLAG_FOUGHT_ZAPDOS goto Next3
+  if caught "Zapdos" setflag FLAG_KANTO_CAUGHT_ZAPDOS
+label Next3
+  if not flag FLAG_FOUGHT_MOLTRES goto Next4
+  if caught "Moltres" setflag FLAG_KANTO_CAUGHT_MOLTRES
+label Next4
+  if not flag FLAG_JOHTO_FOUGHT_MEWTWO goto Next5
+  if caught "Mewtwo" setflag FLAG_JOHTO_CAUGHT_MEWTWO
+label Next5
+  if not flag FLAG_JOHTO_FOUGHT_ZAPDOS goto Next6
+  if caught "Zapdos" setflag FLAG_JOHTO_CAUGHT_ZAPDOS
+label Next6
+  if not flag FLAG_JOHTO_FOUGHT_ARTICUNO goto Next7
+  if caught "Articuno" setflag FLAG_JOHTO_CAUGHT_ARTICUNO
+label Next7
+  if not flag FLAG_JOHTO_FOUGHT_MOLTRES goto Next8
+  if caught "Moltres" setflag FLAG_JOHTO_CAUGHT_MOLTRES
+label Next8
+  if not flag FLAG_JOHTO_FOUGHT_GROUDON goto Next9
+  if caught "Groudon" setflag FLAG_JOHTO_CAUGHT_GROUDON
+label Next9
+  if not flag FLAG_JOHTO_FOUGHT_KYOGRE goto Next10
+  if caught "Kyogre" setflag FLAG_JOHTO_CAUGHT_KYOGRE
+label Next10
+  if not flag FLAG_JOHTO_FOUGHT_RAYQUAZA goto Next11
+  if caught "Rayquaza" setflag FLAG_JOHTO_CAUGHT_RAYQUAZA
+label Next11
+  if not flag FLAG_JOHTO_FOUGHT_SUICUNE goto Next12
+  if caught "Suicune" setflag FLAG_JOHTO_CAUGHT_SUICUNE
+label Next12
+  if not flag FLAG_JOHTO_CELEBI_MET goto Next13
+  if caught "Celebi" setflag FLAG_JOHTO_CAUGHT_CELEBI
+label Next13
+  if not flag FLAG_DEFEATED_REGIROCK goto Next14
+  if caught "Regirock" setflag FLAG_HOENN_CAUGHT_REGIROCK
+label Next14
+  if not flag FLAG_DEFEATED_REGICE goto Next15
+  if caught "Regice" setflag FLAG_HOENN_CAUGHT_REGICE
+label Next15
+  if not flag FLAG_DEFEATED_REGISTEEL goto Next16
+  if caught "Registeel" setflag FLAG_HOENN_CAUGHT_REGISTEEL
+label Next16
+  if not flag FLAG_DEFEATED_RAYQUAZA goto Next17
+  if caught "Rayquaza" setflag FLAG_HOENN_CAUGHT_RAYQUAZA
+label Next17
+  if not flag FLAG_DEFEATED_KYOGRE goto Next18
+  if caught "Kyogre" setflag FLAG_HOENN_CAUGHT_KYOGRE
+label Next18
+  if not flag FLAG_DEFEATED_GROUDON goto Next19
+  if caught "Groudon" setflag FLAG_HOENN_CAUGHT_GROUDON
+label Next19
+  if not flag FLAG_HOENN_JIRACHI_MET goto Next20
+  if caught "Jirachi" setflag FLAG_HOENN_CAUGHT_JIRACHI
+label Next20
+  if not flag FLAG_UNOVA_FOUGHT_LANDORUS goto Next21
+  if caught "Landorus" setflag FLAG_UNOVA_CAUGHT_LANDORUS
+label Next21
+  if not flag FLAG_UNOVA_FOUGHT_TORNADUS goto Next22
+  if caught "Tornadus" setflag FLAG_UNOVA_CAUGHT_TORNADUS
+label Next22
+  if not flag FLAG_UNOVA_FOUGHT_THUNDURUS goto Next23
+  if caught "Thundurus" setflag FLAG_UNOVA_CAUGHT_THUNDURUS
+label Next23
+  if not flag FLAG_UNOVA_FOUGHT_RESHIRAM goto Next24
+  if caught "Reshiram" setflag FLAG_UNOVA_CAUGHT_RESHIRAM
+label Next24
+  if not flag FLAG_UNOVA_FOUGHT_ZEKROM goto Next25
+  if caught "Zekrom" setflag FLAG_UNOVA_CAUGHT_ZEKROM
+label Next25
+  if not flag FLAG_UNOVA_FOUGHT_KYUREM goto Next26
+  if caught "Kyurem" setflag FLAG_UNOVA_CAUGHT_KYUREM
+label Next26
+  if not flag FLAG_UNOVA_FOUGHT_REGIROCK goto Next27
+  if caught "Regirock" setflag FLAG_UNOVA_CAUGHT_REGIROCK
+label Next27
+  if not flag FLAG_UNOVA_FOUGHT_REGICE goto Next28
+  if caught "Regice" setflag FLAG_UNOVA_CAUGHT_REGICE
+label Next28
+  if not flag FLAG_UNOVA_FOUGHT_REGISTEEL goto Next29
+  if caught "Registeel" setflag FLAG_UNOVA_CAUGHT_REGISTEEL
+label Next29
+  if not flag FLAG_UNOVA_FOUGHT_REGIGIGAS goto Next30
+  if caught "Regigigas" setflag FLAG_UNOVA_CAUGHT_REGIGIGAS
+label Next30
+  if not flag FLAG_UNOVA_FOUGHT_HEATRAN goto Next31
+  if caught "Heatran" setflag FLAG_UNOVA_CAUGHT_HEATRAN
+label Next31
+  if not flag FLAG_UNOVA_FOUGHT_COBALION goto Next32
+  if caught "Cobalion" setflag FLAG_UNOVA_CAUGHT_COBALION
+label Next32
+  if not flag FLAG_UNOVA_FOUGHT_TERRAKION goto Next33
+  if caught "Terrakion" setflag FLAG_UNOVA_CAUGHT_TERRAKION
+label Next33
+  if not flag FLAG_UNOVA_FOUGHT_VIRIZION goto Next34
+  if caught "Virizion" setflag FLAG_UNOVA_CAUGHT_VIRIZION
+label Next34
+  if not flag FLAG_UNOVA_FOUGHT_KELDEO goto Next35
+  if caught "Keldeo" setflag FLAG_UNOVA_CAUGHT_KELDEO
+label Next35
+  if not flag FLAG_UNOVA_FOUGHT_VICTINI goto Next36
+  if caught "Victini" setflag FLAG_UNOVA_CAUGHT_VICTINI
+label Next36
+  if not flag FLAG_UNOVA_FOUGHT_MELOETTA goto Next37
+  if caught "Meloetta" setflag FLAG_UNOVA_CAUGHT_MELOETTA
+label Next37
+  if not flag FLAG_UNOVA_FOUGHT_GENESECT goto Next38
+  if caught "Genesect" setflag FLAG_UNOVA_CAUGHT_GENESECT
+label Next38
+  if not flag FLAG_UNOVA_FOUGHT_MESPRIT goto Next39
+  if caught "Mesprit" setflag FLAG_UNOVA_CAUGHT_MESPRIT
+label Next39
+  if not flag FLAG_UNOVA_FOUGHT_AZELF goto Next40
+  if caught "Azelf" setflag FLAG_UNOVA_CAUGHT_AZELF
+label Next40
+  # A Celebi met and not caught was beaten, and comes back to the shrine with the next Hall of Fame
+  if not flag FLAG_JOHTO_CELEBI_MET return
+  if not flag FLAG_JOHTO_CAUGHT_CELEBI setflag FLAG_JOHTO_CELEBI_BEATEN
+  return

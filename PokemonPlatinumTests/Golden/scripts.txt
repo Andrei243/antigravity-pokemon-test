@@ -14915,6 +14915,9 @@ way -
   = VAR_MAP_SCENE_ROUTE22 0 -> 1
   = VAR_MAP_SCENE_VIRIDIAN_CITY_MART 0 -> 2
   = VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 0 -> 2
+=== common.LegendariesCaughtBefore
+from a trainer with lines of their own
+way -
 === common.NextHint
 from a trainer with lines of their own
 way 0
