@@ -468,7 +468,7 @@ public class TheBattlegroundAndTheLastLegendsTests
     {
         var game = BeforeTheTelevision(time);
         var looked = Thump(game);
-        Assert.Empty(looked.Asked);
+        Assert.Empty(looked.Asked.Where(a => !a.Item1.StartsWith("Reach out", StringComparison.Ordinal))); // (a Champion is offered the way into Hisui, plan 23 · Z17)
         Assert.Contains("staring", Words(looked));
         Assert.DoesNotContain(looked.Log, l => l.StartsWith("wildbattle"));
         Assert.False(game.Story.Has(RotomToday));
@@ -498,7 +498,7 @@ public class TheBattlegroundAndTheLastLegendsTests
         if (fight is BattleOutcome.Won or BattleOutcome.Fled) Assert.Contains("slipped back", Words(thumped));
         // Not again tonight
         var again = Thump(game);
-        Assert.Empty(again.Asked);
+        Assert.Empty(again.Asked.Where(a => !a.Item1.StartsWith("Reach out", StringComparison.Ordinal))); // (a Champion is offered the way into Hisui, plan 23 · Z17)
         Assert.Contains("staring", Words(again));
         // The next night it is back, unless it was caught
         game.Story.ClearDaily();
@@ -594,8 +594,11 @@ public class TheBattlegroundAndTheLastLegendsTests
         Assert.Equal((x, 3), game.Tile);
         Assert.NotEqual(x, beside);
         // The painting is only a painting from then on...
+        // (a Champion is offered the way into Hisui, plan 23 · Z17: look as one who has not yet entered the Hall of Fame)
+        game.Story.Unset("SinnohHallOfFame");
         var again = LookAtThePainting(game);
-        Assert.Empty(again.Asked);
+        game.Story.Set("SinnohHallOfFame");
+        Assert.Empty(again.Asked.Where(a => !a.Item1.StartsWith("Reach out", StringComparison.Ordinal))); // (a Champion is offered the way into Hisui, plan 23 · Z17)
         Assert.DoesNotContain(again.Transcript, l => l.Speaker == "Cynthia");
         // ...until the Hall of Fame has been entered again, whose script lets her be heard once more
         game.Play(Find("Victory", Hall));
@@ -625,7 +628,7 @@ public class TheBattlegroundAndTheLastLegendsTests
     {
         var game = BeforeThePainting(9, arrested: false);
         var looked = LookAtThePainting(game);
-        Assert.Empty(looked.Asked);
+        Assert.Empty(looked.Asked.Where(a => !a.Item1.StartsWith("Reach out", StringComparison.Ordinal))); // (a Champion is offered the way into Hisui, plan 23 · Z17)
         Assert.DoesNotContain(looked.Transcript, l => l.Speaker == "Cynthia");
         Assert.False(game.Story.Has(HeardCynthia));
     }

@@ -132,7 +132,7 @@ internal sealed partial class BattleCamera
         float age = anim.MenuAge;
         if (age < 0f) return null;
         if (manner.Cycle.Count == 0)
-            return manner.Drift > 0f ? (Breathing(anim.Time, age, manner), ShotKind.Overview, null) : null;
+            return manner.Drift > 0f ? (IdleDrift(anim.Time, age, manner), ShotKind.Overview, null) : null;
 
         var shots = CycleFor(anim, places, manner);
         if (shots.Count < 2) return null;
@@ -179,7 +179,7 @@ internal sealed partial class BattleCamera
     /// on a slow sine of the menu's open time and coming a little closer at the top of each breath, eased in from the
     /// plain overview over <see cref="BreathIn"/>, so a menu opened and closed at once is the overview.
     /// </summary>
-    public static CameraShot Breathing(float time, float menuAge, CameraManner manner)
+    public static CameraShot IdleDrift(float time, float menuAge, CameraManner manner)
     {
         float ramp = Smooth(menuAge / BreathIn);
         float phase = 2f * MathF.PI * menuAge / Math.Max(1f, manner.DriftPeriod);

@@ -209,7 +209,7 @@ public class CoopTests
     public void TheRowIsOffByDefaultAndStandsBeforeHelp()
     {
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(OptionRow.Coop, rows[Array.IndexOf(rows, OptionRow.Help) - 1]);
+        Assert.Equal(OptionRow.Coop, rows[Array.IndexOf(rows, OptionRow.Help) - 2]);
         var s = new GameSettings();
         Assert.False(s.Coop);
         OptionsScreen.Change(s, OptionRow.Coop, 1);
