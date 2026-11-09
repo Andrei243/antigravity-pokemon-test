@@ -146,7 +146,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 ## Status
 
 - [ ] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza
-- [ ] PD2 The mount on the open world
+- [ ] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12: `OpenWorld/MountRules.cs`, the five powers on the capsule, the `ClimbableRock` cover, the key, the dismounts and the saved mode, `MountTests` and `MountGameTests`; plan 30's "FM12 as built" has it. Left: the navigation mesh's power links, a climbable brush in the open test world and its ride in the harness, and FM13's rig)
 - [ ] PD3 The South and East Provinces and the first three gyms
 - [ ] PD4 The Path of Legends
 - [ ] PD5 Starfall Street and Let's Go

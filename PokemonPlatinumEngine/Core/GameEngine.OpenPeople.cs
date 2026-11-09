@@ -102,10 +102,14 @@ public partial class GameEngine
             field.Map.Moved(p);
         }
         KeepTheOpenPeopleThere(field);
-        field.Follower = flow.Along is { } along
+        field.Follower = OpenFollowerNow(field);
+    }
+
+    /// <summary>Whoever travels with the player, behind them on the player's own feet (none while the player rides, plan 30 · FM12).</summary>
+    private OpenFollower? OpenFollowerNow(OpenField field) =>
+        flow.Along is { } along && !field.Player.Body.Mounted
             ? new OpenFollower(along.Pokemon?.LookName ?? along.Who.Key ?? along.Who.Name, field.Player.Pos, field.Player.Yaw, along.TrainerId)
             : null;
-    }
 
     /// <summary>Lets go of whoever a script or a walk up held, once neither has the field.</summary>
     private void LetTheOpenPeopleGo(OpenField field)

@@ -46,11 +46,17 @@ public sealed class OpenPlayer
         Before = pos;
     }
 
+    /// <summary>
+    /// The mount's powers the story has granted (plan 30 · FM12, <see cref="MountRules.Grants"/>), handed to the body
+    /// only while it is mounted. The engine sets it every frame.
+    /// </summary>
+    public MovementGrants RideGrants { get; set; }
+
     /// <summary>A tick of the field: the capsule stepped on the map's ground by the stick.</summary>
     public void Step(OpenMap map, OpenInput input, MovementGrants grants)
     {
         Before = Body.Pos;
-        Body.Step(map.Ground, input, grants);
+        Body.Step(map.Ground, input, Body.Mounted ? grants | RideGrants : grants);
     }
 }
 

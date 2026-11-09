@@ -156,7 +156,7 @@ public static partial class RegionMapArt
             OpenCover.GrassLight => LawnColor,
             OpenCover.GrassDeep => grain ? GrassDark : GrassColor,
             OpenCover.Path => PathColor,
-            OpenCover.Rock => Rock[2],
+            OpenCover.Rock or OpenCover.ClimbableRock => Rock[2],
             OpenCover.RockDark => Rock[0],
             OpenCover.CaveFloor => DirtColor,
             OpenCover.Highland => grain ? Rock[3] : Rock[4],

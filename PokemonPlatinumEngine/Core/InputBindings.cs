@@ -158,7 +158,9 @@ public sealed class InputBindings
     {
         (GameAction.Cancel, GameAction.Run),
         (GameAction.PoketchApp, GameAction.PageRight),
-        (GameAction.PoketchTouch, GameAction.PageLeft)
+        (GameAction.PoketchTouch, GameAction.PageLeft),
+        // The registered item on the grid, the mount in an open map (plan 30 · FM12)
+        (GameAction.Item, GameAction.Mount)
     };
 
     private static ActionInputs Of(KeyboardKey[] keys, params GamepadButton[] pad) => new(keys, pad);
@@ -189,6 +191,7 @@ public sealed class InputBindings
         Set(GameAction.Screenshot, Of(K(KeyboardKey.F12)));
         Set(GameAction.Report, Of(K(KeyboardKey.F8)));
         Set(GameAction.Photo, Of(K(KeyboardKey.F9), GamepadButton.MiddleLeft));
+        Set(GameAction.Mount, Of(K(KeyboardKey.C), GamepadButton.RightFaceLeft));
         return table;
     }
 
@@ -202,6 +205,7 @@ public sealed class InputBindings
                 // The Start button and the left face button change places
                 table[(int)GameAction.Menu] = table[(int)GameAction.Menu] with { Pad = new[] { GamepadButton.RightFaceLeft } };
                 table[(int)GameAction.Item] = table[(int)GameAction.Item] with { Pad = new[] { GamepadButton.MiddleRight } };
+                table[(int)GameAction.Mount] = table[(int)GameAction.Mount] with { Pad = new[] { GamepadButton.MiddleRight } };
                 break;
             case ButtonMode.LIsA:
                 // L answers as A does; the Pokétch's touch gives up its button (it keeps I), and the left page moves to the second trigger

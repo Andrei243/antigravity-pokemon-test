@@ -3030,7 +3030,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto", "Mount": "Urcă sau coboară"
     },
     "page": {
       "title": "COMENZI",
@@ -5473,6 +5473,16 @@
     "continue": {
       "label": "CONTINUĂ",
       "help": "Păstrează aceste alegeri și trece la ecranul de titlu. Pagina aceasta nu va mai apărea."
+    }
+  },
+  "mount": {
+    "refused": {
+      "NotHere": "Aici nu ai pe ce călări.",
+      "OnTheGrid": "Aici nu e loc de călărit.",
+      "NoMount": "Încă nu ai pe ce călări.",
+      "Scripted": "Nu acum.",
+      "Company": "Nu când ești însoțit.",
+      "NotOnTheGround": "Mai întâi pune picioarele pe pământ."
     }
   },
   "photo": {

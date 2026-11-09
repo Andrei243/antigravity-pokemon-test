@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- The Controls page lists a key for getting on and off a ridden Pokémon (C, or the pad's left face button), ready for Paldea's Koraidon and Miraidon; nowhere in the game can be ridden yet.
 - The DexNav shows what it finds: the grass where a Pokémon hides parts and shakes, throws up leaves and shows little marks either side of it every moment, and a Pokémon you scare off bursts out of the grass. An alpha seen in the grass, or following you, stands one and a half times as big as others of its kind, and in battle it glares at you the whole time.
 - Kanto can be played with voices too: with a voice pack and `--region Kanto --voices <pack>`, Oak, Blue, the Gym Leaders, the Elite Four, Bill, Celio and the rest of Kanto's people and trainers speak their lines (Kanto's rival and mother have voices of their own, and its trainers are not given the voices of Sinnoh's named people). Trainers' names before their lines are not read out in Kanto.
 - Every region's credits now roll to a song of their own, with words, in the region's own style: retro power-pop for Kanto, koto and temple bells for Johto, tropical house for Hoenn, wintry symphonic pop for Sinnoh, hard techno for Unova, a French waltz for Kalos and island reggae for Alola. The roll is timed so its last card arrives as the song ends.

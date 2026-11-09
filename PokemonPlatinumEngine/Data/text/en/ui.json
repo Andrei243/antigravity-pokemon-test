@@ -3058,7 +3058,7 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode", "Mount": "Ride or get off"
     },
     "page": {
       "title": "CONTROLS",
@@ -5364,6 +5364,16 @@
     "continue": {
       "label": "CONTINUE",
       "help": "Keeps these choices and goes on to the title screen. This page won't be shown again."
+    }
+  },
+  "mount": {
+    "refused": {
+      "NotHere": "There's nothing to ride here.",
+      "OnTheGrid": "There's no room to ride here.",
+      "NoMount": "You have nothing to ride yet.",
+      "Scripted": "Not now.",
+      "Company": "Not with company.",
+      "NotOnTheGround": "Find your feet first."
     }
   },
   "photo": {

@@ -924,7 +924,7 @@ public partial class GameEngine
             PlayerFacing = flow.Player.Facing,
             PlayerSubX = flow.Player.Offset.X,
             PlayerSubY = flow.Player.Offset.Y,
-            OpenPlace = flow.Open is { } open ? SavedOpenPlace.From(open.Place) : null,
+            OpenPlace = flow.Open is { } open ? SavedOpenPlace.From(open.Place, open.Player.Body.Mounted) : null,
             Travel = flow.Player.Mode,
             PlayerHeight = flow.Player.HeightOn(flow.Map),
             Exit = flow.ExitSpot,
@@ -3082,7 +3082,8 @@ public partial class GameEngine
 
     private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)
     {
-        flow.StartTransition(nextState, onMidpoint, kind);
+        // Behind any fade over an open field the player gets off the mount (plan 30 · FM12)
+        flow.StartTransition(nextState, OffTheMountBehind(onMidpoint), kind);
         // (A band left over from a transition that was never played out goes; whoever starts one begins it after this.
         // So does a lens a way into a battle held, plan 09 · L14)
         band.End();

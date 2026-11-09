@@ -233,7 +233,8 @@
               "Highland",
               "Sand",
               "Snow",
-              "Mud"
+              "Mud",
+              "ClimbableRock"
             ]
           },
           "polygon": {
