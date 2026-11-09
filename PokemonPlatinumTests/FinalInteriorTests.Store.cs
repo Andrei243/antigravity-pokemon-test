@@ -54,7 +54,8 @@ public partial class FinalInteriorTests
         {
             var map = Room(name);
             Assert.True(map.IsIndoors, name);
-            Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(name)!.Id);
+            // (Sinnoh's, and the hub's own Center on the same plan, plan 41 · EG1)
+            Assert.Contains(RegionDatabase.RegionOfMap(name)!.Id, new[] { RegionDatabase.Sinnoh, RegionDatabase.Hub });
             Assert.NotEmpty(map.Everyone);
             foreach (var who in map.Everyone)
             {
@@ -63,7 +64,7 @@ public partial class FinalInteriorTests
                 bool speaks = who.DialogLines.Count > 0 || who.IsPokeMartClerk || who.Script != null && ScriptLibrary.Default.Find(who.Script, name) != null;
                 Assert.True(speaks, where + " has nothing to say");
             }
-            foreach (var way in map.Warps.Where(w => w.TargetMap != "Sinnoh")) LeadsBack(name, way);
+            foreach (var way in map.Warps.Where(w => w.TargetMap is not ("Sinnoh" or "Hub"))) LeadsBack(name, way);
             Assert.DoesNotContain(ScriptLibrary.Default.Problems().ToList(), p => p.Contains(name + ".txt", StringComparison.Ordinal));
         }
     }

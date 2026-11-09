@@ -23,7 +23,7 @@ public class RegionTests
         Assert.Equal(
             new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Kalos", "Alola", "Galar", "Paldea" },
             regions.Select(r => r.Id));
-        Assert.Equal(new[] { "Hisui" }, RegionDatabase.All.Skip(regions.Count).Select(r => r.Id));
+        Assert.Equal(new[] { "Hisui", "Hub" }, RegionDatabase.All.Skip(regions.Count).Select(r => r.Id));
         Assert.All(RegionDatabase.All.Skip(regions.Count), r => Assert.True(r.Side));
     }
 
@@ -53,7 +53,7 @@ public class RegionTests
         Assert.Null(RegionDatabase.LinkFrom(regions[^1].Id));
         Assert.Equal(regions.Count - 1, RegionDatabase.Links.Count(l => l.Kind == LinkKind.Next));
         // Every side region has one branch into it, from a region of the chain, and no way on of its own
-        foreach (var side in RegionDatabase.All.Where(r => r.Side))
+        foreach (var side in RegionDatabase.All.Where(r => r.Side && !r.IsHub))
         {
             var into = Assert.Single(RegionDatabase.Links, l => l.To == side.Id);
             Assert.Equal(LinkKind.Side, into.Kind);
@@ -61,6 +61,12 @@ public class RegionTests
             Assert.Null(RegionDatabase.LinkFrom(side.Id));
             Assert.DoesNotContain(RegionDatabase.Links, l => l.From == side.Id);
         }
+        // The hub (plan 41 · EG1) has no branch into it: its one link is its own harbour, whose attendant stands in its hall
+        var hub = Assert.Single(RegionDatabase.Links, l => l.From == RegionDatabase.Hub || l.To == RegionDatabase.Hub);
+        Assert.Equal(LinkKind.Hub, hub.Kind);
+        Assert.Equal((RegionDatabase.Hub, RegionDatabase.Hub), (hub.From, hub.To));
+        Assert.Null(RegionDatabase.LinkFrom(RegionDatabase.Hub));
+        Assert.Contains(MapDatabase.Get(hub.DepartureMap!).Everyone, n => n.IsTransportAttendant);
     }
 
     [Fact]

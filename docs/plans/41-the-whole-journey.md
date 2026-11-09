@@ -141,7 +141,7 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 
 ## Status
 
-- [ ] EG1 The hub: a region of our own, its ways in and its rules
+- [x] EG1 The hub: a region of our own, its ways in and its rules (2026-11-09; "EG1 as built", below)
 - [ ] EG2 Every region's Hall of Fame in one hall
 - [ ] EG3 The plaza: stalls the player sets out and ranks up
 - [ ] EG4 The Champions' circuit and its final
@@ -150,3 +150,33 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - [ ] EG7 The agency and its first case
 - [ ] EG8 Cases in Kanto, Johto, Hoenn and Unova
 - [ ] EG9 The gathering
+
+## EG1 as built (2026-11-09)
+
+- **The region**: `Data/regions/hub.json` and `RegionDatabase`'s `Hub` (a side region, `Generation` 0, after Hisui in
+  `All`), with `Region.IsHub` and `Region.BorrowsRules` (a side region with no story: the hub; Hisui keeps its own rules).
+  The seam is Z17's, already written: `Region.Side` is set in code as Hisui's is, and `LinkKind` gained `Hub` for the hub's
+  own harbour (one link from the hub to itself, `RegionDatabase.HarbourLinkOf`). The ways in are not links of the table:
+  `LinksFrom` adds the hub last to every finished region's answers once `HubOpen` (two Halls of Fame of the chain).
+- **The world**: `tools/MapDraw/hub` (one drawing, two chunks by two) writes `Data/world/hub`'s chunks, matrix and empty
+  habitats; `world.json`, `areas/hub_town.json`, `overlays/hub_town.json` and `townmap.json` by hand. Rooms
+  `Hub_HarbourHall`, `Hub_PokemonCenter` with `2F` (plan 07's counter, `common.GlobalLink`) and `B1F`, on the Centers' plan.
+  The plaza (`Hub_Plaza`), the hall of Champions (`Hub_HallOfChampions`), the office (`Hub_Office`) and the arena
+  (`Hub_Arena`) are locked warps 2 to 5 of the area, their kinds in `MapStructures.KindOfDoor`: each later session writes its
+  room under that name and takes its number off `locked`. The board's place is the west sign by the avenue
+  (`BoardSign`, at 27,21), and the islet (44..55, 52..59) is rock and trees in the sea for EG9 to open.
+- **Its rules**: `GameEngine.RulesHere` / `RulesOf(region, story)`, asked by the battle's Badges, the Mart's stock, the
+  field helpers, `CrossedLevels` (so the levels met and the crossed EXP), `CurrentLevelCap`, the Trainer Card's regions
+  (no hub page) and `SaveData.BadgesHere`. The run timer keeps no split for it; `--region Hub` is refused.
+- **The town's people**: `hub_harbourmaster` and `hub_guide` in `characters.json`; `Architecture.Crossroads` (pale stone
+  under harbour-blue gables); the song `hub/town` (day and night, the classic sound). The facility guide
+  (`Hub_HarbourHall.txt`) crosses to Sinnoh's Battle Frontier (54,51), Hoenn's island's quay (20,67) and the Gear Station
+  (3,11), and `common.HubGuide` at each (shown by `HubEntered`, which `ContentCheck` now counts as a flag the game sets)
+  crosses back to the hall (9,4).
+- **Tests and shots**: `HubRegionTests` (14), and `RegionTests`, `HarbourTests`, `FinalInteriorTests.Store` and
+  `RoomPlanTests` made to know the hub; the `journey` mode's `JOURNEY_FROM=hub` shoots `eg10` to `eg16`.
+- **Names for the user to choose** (decision 3; "Hub" until then): for the town, *Wayfare*, *Meridian Port*, *Concord
+  Harbour* or *Crossway*; for the region, the town's name alone, as the hub is one town.
+- **Owed**: the user's look at the town (the shots); the halls' insides (EG2, EG3, EG4, EG7) and the islet (EG9); plan 31's
+  fuller sound for its song once MU1 lands; the Town Map of a region smaller than the map's window repeats its picture
+  across the spare width (a fault of `ModernUi.DrawTownMap` that EG1 found and made safe, not fixed).

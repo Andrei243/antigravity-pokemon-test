@@ -10809,3 +10809,37 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   steering the stick over the navigation mesh is not built), Fly's places and a Town Map for an open region (OW10),
   Escape Rope, Dig and Teleport in an open map (each still notes a grid place), the train's run north (GL2), and every
   species of the Galar Pokédex but the sixteen the two routes and the three give (`GalarSpeciesTests.Owed`).
+
+## The hub: a region of our own between the regions (2026-11-09, plan 41 · EG1)
+
+- **What it is.** A small region of our own, `Hub` (the plan's working word, decision 3: the user names it later), off the
+  chain as a side region (`Region.Side`) whose rules are borrowed (`Region.BorrowsRules`: a side region with no story of
+  its own; Hisui keeps its own). It has no story, Pokédex, Badges, levels, cap, wild Pokémon or Hall of Fame. Drawn by hand
+  (`tools/MapDraw/hub`, `Data/world/hub`): one town of two chunks by two round an avenue that runs down to the quay, with
+  the Pokémon Center (on the Centers' plan, with its floor above and below), the harbour hall, the shells of the plaza's
+  hall (EG3), the hall of Champions (EG2), Looker's office (EG7) and the circuit's arena (EG4) locked until their sessions,
+  the place of the weekly board (EG6) by the avenue's west sign, and the islet out in the sea shut by its rocks until EG9.
+- **When it opens** (decision 2): with the second Hall of Fame of the chain (`RegionDatabase.HubOpen`, two of the chain's
+  `<Region>HallOfFame` flags; Hisui's counts for nothing). From then every finished region's harbour offers it last, after
+  the regions entered, on the harbour's own vessel (`LinksFrom`); the first sailing lands on its quay (its arrival), every
+  later one in the harbour hall beside the harbourmaster (`Region.Harbour`, `LandingOf`).
+- **Its own harbour** is the one link of kind `LinkKind.Hub` (from the hub to itself): its harbourmaster sails to every
+  region of the chain entered, asking no Hall of Fame (`RegionDatabase.HarbourLinkOf`, `CheckTravel`), and speaks a line of
+  his own (`attendant.hubHarbour`), since the hub crowns nobody.
+- **Fly** reaches it once entered, last of the tabs (`Crossing.CanFly`: of the side regions only the hub), and leaves it for
+  every region entered; it lands before the Pokémon Center (its one spawn).
+- **Its rules are borrowed**: `GameEngine.RulesHere` is the furthest finished region of the chain
+  (`RematchLevels.Furthest`) while the player stands at the hub, and `Here` everywhere else. The battle's Badges (obedience
+  and the money lost), the Marts' stock, the field helpers, the levels met, the run's cap and the crossed ceiling ask it,
+  so a traded Pokémon of 150 obeys at the hub as in the region last won. A save made there shows that region's Badges
+  (`SaveData.BadgesHere`), and the Trainer Card has no page for the hub. Its field moves ask no Badge (its `gates` are
+  empty): it is reached only by Champions.
+- **The facility guide** in the harbour hall crosses a Champion to Sinnoh's Battle Frontier, Hoenn's Battle Frontier
+  island and Unova's Gear Station (`travel to`, each once that region's Hall of Fame is entered), and a guide of ours at
+  each (shown by `HubEntered`, `common.HubGuide`) crosses back to the hall. Plan 37 · FC7's cups hall joins the list once it
+  stands.
+- **What steps round it**: `--region Hub` is refused (no new game begins there), the run timer keeps no split for it, a
+  pack's region joins after the last region of the chain (as it did), and a region's Hall of Fame moves no rematch by it.
+- **Owed**: the user's judgement of the town's look (shots `eg10` to `eg16`) and its name; songs of plan 31's fuller sound
+  once MU1 lands (the town's song, `hub/town`, is in the classic sound); the halls' insides (EG2, EG3, EG4, EG7) and the
+  islet (EG9); a small Town Map draws its picture repeated across the window's spare width (`ModernUi.DrawTownMap`).

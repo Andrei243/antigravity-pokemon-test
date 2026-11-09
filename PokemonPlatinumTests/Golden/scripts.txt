@@ -4204,6 +4204,22 @@ way -
 from Togedemaru at 7,4 of HokulaniObservatory
 way -
   > The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first.
+=== Hub_HarbourHall.FacilityGuide
+from Guide at 9,3 of Hub_HarbourHall
+way 0
+  Guide> I guide Champions to the great battle facilities of the regions, and back here whenever they like.
+  Guide> Where would you like to go?
+  Guide> I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame.
+  ? Where would you like to go? = SINNOH'S FRONTIER
+way 3, from answer 1
+  Guide> Take your time. I'll be at this desk whenever you'd like to go.
+  ? Where would you like to go? = NOWHERE
+way 2, from answer 1
+  Guide> I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame.
+  ? Where would you like to go? = THE GEAR STATION
+way 1, from answer 1
+  Guide> I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame.
+  ? Where would you like to go? = HOENN'S FRONTIER
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -14736,6 +14752,21 @@ way 0.1, from answer 2
   ? Spread some Honey on the bark? = No
 way 1, from answer 1
   * wildbattle Combee 12 Lost
+=== common.HubGuide
+from a trainer with lines of their own
+way 0
+  Anyone> I guide Trainers between the great battle facilities and the Hub.
+  Anyone> Shall I take you back to the Hub?
+  Anyone> Very good. Follow me, and keep close.
+  > Lucas followed the guide back to the Hub...
+  ? Shall I take you back to the Hub? = Yes
+  * fade out
+  * travel to Hub Hub_HarbourHall 9 4
+  * fade in
+  + HubEntered
+way 1, from answer 1
+  Anyone> Whenever you are ready. I will be right here.
+  ? Shall I take you back to the Hub? = No
 === common.ItemBall
 from an item's ball
 way -

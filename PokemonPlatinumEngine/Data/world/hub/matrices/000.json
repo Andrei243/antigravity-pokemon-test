@@ -1,0 +1,16 @@
+{
+  "id": 0,
+  "width": 2,
+  "height": 2,
+  "chunks": [
+    " 0  1",
+    " 2  3"
+  ],
+  "areas": [
+    " 0  0",
+    " 0  0"
+  ],
+  "areaKeys": [
+    "hub_town"
+  ]
+}

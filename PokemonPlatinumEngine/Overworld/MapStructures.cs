@@ -257,6 +257,12 @@ public static class MapStructures
         // Plan 23, Alola's last places: the Battle Tree at Poni Gauntlet's head and the power plant on Blush Mountain
         "PoniGauntlet_BattleTree" => BuildingKind.BattleTree,
         "BlushMountain_PowerPlant" => BuildingKind.PowerPlant,
+        // Plan 41 · EG1: the hub's harbour hall, its plaza (EG3), hall of Champions (EG2) and arena (EG4), and Looker's office (EG7)
+        "Hub_HarbourHall" => BuildingKind.Terminal,
+        "Hub_Plaza" => BuildingKind.Shop,
+        "Hub_HallOfChampions" => BuildingKind.Hall,
+        "Hub_Arena" => BuildingKind.Hall,
+        "Hub_Office" => BuildingKind.Office,
         _ => null
     };
 

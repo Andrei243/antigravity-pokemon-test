@@ -1,0 +1,45 @@
+# The hub's harbour hall (plan 41 · EG1). docs/scripts.md describes the language; the lines are our own.
+#
+# The harbourmaster at the west desk is the hub's attendant (common.Attendant): its harbour sails to every region
+# entered, asking no Hall of Fame (RegionDatabase.LinksFrom). The guide at the east desk crosses a Champion to the doors
+# of the regions' battle facilities by `travel to` (GameEngine.CrossTo), as Route 40's guide does: Sinnoh's Battle
+# Frontier, Hoenn's Battle Frontier island and Unova's Gear Station, each once that region's Hall of Fame is entered. A
+# guide of ours waits at each to cross back (common.HubGuide). Plan 37 · FC7's cups hall joins the list once it stands.
+
+
+script FacilityGuide
+  face self player
+  say "I guide Champions to the great battle facilities of the regions, and back here whenever they like."
+  choose "Where would you like to go?" "SINNOH'S FRONTIER" "HOENN'S FRONTIER" "THE GEAR STATION" "NOWHERE"
+  if result == 3 goto Stay
+  if result == 1 goto Hoenn
+  if result == 2 goto Unova
+  if not flag SinnohHallOfFame goto NotYet
+  say "Sinnoh's Battle Frontier it is. Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide to Sinnoh's Battle Frontier..."
+  travel to "BattleFrontier" 54 51 right
+  fade in 0.8
+  end
+label Hoenn
+  if not flag HoennHallOfFame goto NotYet
+  say "Hoenn's Battle Frontier island it is. Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide to Hoenn's Battle Frontier..."
+  travel to "HoennBattleFrontier" 20 67 right
+  fade in 0.8
+  end
+label Unova
+  if not flag UnovaHallOfFame goto NotYet
+  say "Unova's Gear Station it is. Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide to Unova's Gear Station..."
+  travel to "GearStation" 3 11 left
+  fade in 0.8
+  end
+label NotYet
+  say "I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame."
+  end
+label Stay
+  say "Take your time. I'll be at this desk whenever you'd like to go."
+  end

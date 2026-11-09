@@ -292,9 +292,10 @@ internal static partial class ModernUi
             float windowWidth = MathF.Floor((wide - 2 * MapFrameWidth) / (Near * 2f)) * Near * 2f;
             var window = new Rectangle(x0 + (wide - windowWidth) / 2f, windowTop, windowWidth, WindowHeight);
             float cellsWide = windowWidth / (Near * RegionMapArt.CellTexels), cellsHigh = WindowHeight / (Near * RegionMapArt.CellTexels);
+            // (a map smaller than the window, the hub's two cells by two, stands at its corner: plan 41 · EG1)
             var near = new Rectangle(
-                Math.Clamp(screen.CursorX - view.X + 0.5f - cellsWide / 2f, 0f, view.Width - cellsWide),
-                Math.Clamp(screen.CursorY - view.Y + 0.5f - cellsHigh / 2f, 0f, view.Height - cellsHigh), cellsWide, cellsHigh);
+                Math.Clamp(screen.CursorX - view.X + 0.5f - cellsWide / 2f, 0f, Math.Max(0f, view.Width - cellsWide)),
+                Math.Clamp(screen.CursorY - view.Y + 0.5f - cellsHigh / 2f, 0f, Math.Max(0f, view.Height - cellsHigh)), cellsWide, cellsHigh);
             RegionPicture(window, region, cells: near);
             // The cursor's own cell, marked by its corners
             float big = Near * RegionMapArt.CellTexels;

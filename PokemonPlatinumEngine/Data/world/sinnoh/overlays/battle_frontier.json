@@ -223,6 +223,10 @@
     // Fame, he takes the player back to the harbour beside Scott (battle_frontier.txt, HoennGuide)
     { "id": "battle_frontier.HoennGuide", "name": "Guide", "npcType": "Gentleman", "x": 50, "y": 51, "facing": "Left",
       "script": "HoennGuide", "shownBy": "HoennHallOfFame" },
+    // The hub's guide (plan 41 · EG1), east of the gate: shown once the hub has been entered, she takes the player back
+    // to its harbour hall (common.HubGuide); the hub's own guide sets the player down on the tile beside her
+    { "id": "battle_frontier.HubGuide", "name": "Guide", "npcType": "hub_guide", "x": 55, "y": 51, "facing": "Left",
+      "script": "HubGuide", "shownBy": "HubEntered" },
     // The guide of the Frontier's annex (plan 14 · B8), before the lodge on the plaza's south side: he shows the player into
     // its lobby, the Battle Dome's (battle_frontier.txt, AnnexGuide)
     { "id": "battle_frontier.AnnexGuide", "name": "Guide", "npcType": "Gentleman", "x": 44, "y": 64, "facing": "Up",

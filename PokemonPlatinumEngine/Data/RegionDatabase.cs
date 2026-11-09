@@ -52,6 +52,19 @@ public sealed class Region
     /// </summary>
     public bool Side { get; init; }
 
+    /// <summary>
+    /// The hub (plan 41 · EG1): the one side region that harbours sail to and Fly reaches, unlike a branch (Hisui) whose
+    /// own way in and out is its only one.
+    /// </summary>
+    public bool IsHub => string.Equals(Id, RegionDatabase.Hub, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Whether the rules underfoot here are another region's (plan 41 · EG1): a side region with no story of its own (the
+    /// hub) has no Badges, levels or cap, and borrows the furthest finished region's (<c>GameEngine.RulesHere</c>). A
+    /// side region with a story (Hisui) keeps its own.
+    /// </summary>
+    public bool BorrowsRules => Side && !HasStory;
+
     /// <summary>The story flag set when the player enters this region's Hall of Fame, which ends its story.</summary>
     public string StoryCompleteFlag => $"{Id}HallOfFame";
 
@@ -196,7 +209,14 @@ public enum LinkKind
     /// A branch to a side region (<see cref="Region.Side"/>; <see cref="RegionDatabase.SideLinksFrom"/>), open once the
     /// root's Hall of Fame is entered and taken by a scene of the root's own (Celestic Town's ruins for Hisui), not an attendant.
     /// </summary>
-    Side
+    Side,
+
+    /// <summary>
+    /// The hub's own harbour (plan 41 · EG1): the one link that leaves the hub, whose vessel and departure its attendant
+    /// sails to every region entered (<see cref="RegionDatabase.HarbourLinkOf"/>, <see cref="RegionDatabase.LinksFrom"/>).
+    /// The ways into the hub are made from each finished region's own harbour and are no links of the table.
+    /// </summary>
+    Hub
 }
 
 /// <summary>The way from one region to the next, open once the first region's story is finished.</summary>
@@ -266,6 +286,23 @@ public static class RegionDatabase
 
     /// <summary>Sinnoh's past, a side region off the chain (plan 23 · Z17), reached through Celestic Town's ruins.</summary>
     public const string Hisui = "Hisui";
+
+    /// <summary>
+    /// The hub (plan 41 · EG1), a small region of our own off the chain between the regions: opened by the second Hall of
+    /// Fame (<see cref="HubOpen"/>), sailed to from every finished region's harbour and flown to once entered, with no
+    /// story, Pokédex, Badges or levels of its own (<see cref="Region.BorrowsRules"/>). "Hub" is the plan's working word.
+    /// </summary>
+    public const string Hub = "Hub";
+
+    /// <summary>How many Halls of Fame of the chain open the hub (plan 41, decision 2: the second, when there are two regions to tie).</summary>
+    public const int HallsOfFameForTheHub = 2;
+
+    /// <summary>
+    /// Whether the hub is open (plan 41 · EG1, decision 2): once the Halls of Fame of two regions of the chain are entered.
+    /// A side region's (Hisui's) counts for nothing, as it moves no rematch either.
+    /// </summary>
+    public static bool HubOpen(StoryState story) =>
+        Get(Hub) is { IsBuilt: true } && All.Count(r => !r.Side && story.Has(r.StoryCompleteFlag)) >= HallsOfFameForTheHub;
 
     private static readonly Region[] regions =
     {
@@ -1142,6 +1179,21 @@ public static class RegionDatabase
                 // Plan 23 · Z17: Galaxy Hall, the player's quarters, the Wallflower and the general store, hand-made map files
                 "JubilifeVillage_GalaxyHall", "JubilifeVillage_Quarters", "JubilifeVillage_Wallflower", "JubilifeVillage_GeneralStore",
             }
+        },
+        new()
+        {
+            Id = Hub, Name = "Hub", Generation = 0, Side = true, File = RegionFiles.Load(Hub),
+            // The hub drawn by hand (plan 41 · EG1; tools/MapDraw/hub). No new game begins here (--region refuses it): the
+            // start is its first landing, on the quay before the harbour hall, and every return lands in the hall beside
+            // its attendant
+            Start = new MapSpot("Hub", 42, 42, Direction.Up),
+            Harbour = new MapSpot("Hub_HarbourHall", 3, 4, Direction.Up),
+            Maps = new[]
+            {
+                "Hub",
+                // Plan 41 · EG1: the harbour hall and the Pokémon Center with its floor above and below, hand-made map files (Data/maps)
+                "Hub_HarbourHall", "Hub_PokemonCenter", "Hub_PokemonCenter2F", "Hub_PokemonCenterB1F",
+            }
         }
     };
 
@@ -1175,7 +1227,11 @@ public static class RegionDatabase
         // The branches (plan 23 · Z17, decision 3): Hisui off Sinnoh, through the light at the heart of the ancient painting
         // in Celestic Town's ruins once Sinnoh's Hall of Fame is entered (celestic_town_cave.txt's Painting, `travel to`),
         // and back by the stone on Prelude Beach (prelude_beach.txt's Stone). No attendant: the scene is the way
-        new() { From = Sinnoh, To = Hisui, Kind = LinkKind.Side, Transport = Transport.Undecided, Vessel = "rift", DepartureMap = "CelesticTownCave" }
+        new() { From = Sinnoh, To = Hisui, Kind = LinkKind.Side, Transport = Transport.Undecided, Vessel = "rift", DepartureMap = "CelesticTownCave" },
+        // The hub's own harbour (plan 41 · EG1): its attendant in the harbour hall sails to every region entered, asking no
+        // Hall of Fame of the hub (LinksFrom); it names the hub at both ends. The way in is every finished region's own
+        // harbour, on that harbour's vessel, once the hub is open
+        new() { From = Hub, To = Hub, Kind = LinkKind.Hub, Transport = Transport.Boat, Vessel = "ship", DepartureMap = "Hub_HarbourHall" }
     };
 
     // The chain as the packs in use make it (plan 16 · T14): worked out again whenever DataLayers.Use puts other packs
@@ -1331,6 +1387,15 @@ public static class RegionDatabase
     public static IReadOnlyList<RegionLink> LinksFrom(Region region, StoryState story)
     {
         var ways = new List<RegionLink>();
+        // The hub's own harbour (plan 41 · EG1) sails to every region of the chain entered, with no Hall of Fame asked
+        if (region.IsHub)
+        {
+            if (HarbourLinkOf(region.Id) is not { } own) return ways;
+            foreach (var other in All)
+                if (other.IsBuilt && !other.Side && story.HasEntered(other.Id))
+                    ways.Add(new RegionLink { From = region.Id, To = other.Id, Transport = own.Transport, Vessel = own.Vessel, DepartureMap = own.DepartureMap });
+            return ways;
+        }
         if (!story.Has(region.StoryCompleteFlag) || LinkFrom(region.Id) is not { } onward) return ways;
         if (Get(onward.To) is { IsBuilt: true }) ways.Add(onward);
         foreach (var other in All)
@@ -1342,8 +1407,18 @@ public static class RegionDatabase
                 From = region.Id, To = other.Id, Transport = onward.Transport, Vessel = onward.Vessel, DepartureMap = onward.DepartureMap
             });
         }
+        // The hub after the regions entered, on this harbour's own vessel, once two Halls of Fame have opened it (plan 41 · EG1)
+        if (!region.Side && HubOpen(story) && Get(Hub) is { } hub)
+            ways.Add(new RegionLink { From = region.Id, To = hub.Id, Transport = onward.Transport, Vessel = onward.Vessel, DepartureMap = onward.DepartureMap });
         return ways;
     }
+
+    /// <summary>
+    /// The link whose vessel and departure a region's harbour uses: the chain's way on, or the hub's own (plan 41 · EG1);
+    /// null for a region with no harbour (a branch, Paldea).
+    /// </summary>
+    public static RegionLink? HarbourLinkOf(string regionId) =>
+        LinkFrom(regionId) ?? Links.FirstOrDefault(l => l.Kind == LinkKind.Hub && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>The most answers a harbour's question shows besides STAY before it asks in two steps (the field's <c>ChoiceBox</c> holds six).</summary>
     public const int HarbourAnswers = 5;
@@ -1359,6 +1434,8 @@ public static class RegionDatabase
     {
         var onward = ways[0];
         string vessel = Core.Text.Of($"attendant.vessel.{onward.VesselWord}");
+        // The hub crowns nobody: its harbour only says where it sails (plan 41 · EG1)
+        if (from.IsHub) return new() { Core.Text.Of("attendant.hubHarbour", ("vessel", vessel)) };
         return new() { Core.Text.Of("attendant.harbour", ("from", from.Name), ("vessel", vessel)) };
     }
 
@@ -1366,7 +1443,8 @@ public static class RegionDatabase
     public static TravelCheck CheckTravel(RegionLink link, StoryState progress)
     {
         var from = Get(link.From)!;
-        if (!progress.Has(from.StoryCompleteFlag)) return TravelCheck.StoryUnfinished;
+        // The hub has no story to finish: its harbour sails as soon as it is stood in (plan 41 · EG1)
+        if (!from.IsHub && !progress.Has(from.StoryCompleteFlag)) return TravelCheck.StoryUnfinished;
         return Get(link.To)!.IsBuilt ? TravelCheck.Ready : TravelCheck.DestinationNotBuilt;
     }
 

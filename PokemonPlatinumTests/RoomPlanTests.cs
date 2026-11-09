@@ -1209,6 +1209,7 @@ public class RoomPlanTests
             var map = Room(name);
             if (!map.IsIndoors || rebuilt.Contains(name) || map.Interior == InteriorStyle.Gym) continue; // Gyms: GymTests
             if (RegionDatabase.RegionOfMap(name)?.Id is "Kalos" or "Alola" or "Hisui" or "Galar") continue; // Kalos, Alola and Hisui's rooms are drawn by hand to their own scale (plan 23 · Z1, Z17, plan 30)
+            if (name.StartsWith("Hub_PokemonCenter", StringComparison.Ordinal)) continue; // the hub's Center and its two floors are laid out on the Centers' own plan (plan 41 · EG1), which FinalInteriorTests hold
             Assert.True((1, 2) == map.RoomCorner(), $"{name}: {map.RoomCorner()}");
             // No hand-made room has walls of its own inside it
             for (int ty = 2; ty < map.Height - 1; ty++)

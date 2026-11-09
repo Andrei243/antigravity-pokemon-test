@@ -296,6 +296,16 @@
       "dialog": [
         "I rode the Battle Subway all the way to the seventh car! Then I lost. Next time, the Subway Bosses!"
       ]
+    },
+    {
+      "id": "hub_guide",
+      "name": "Guide",
+      "npcType": "hub_guide",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "script": "HubGuide",
+      "shownBy": "HubEntered"
     }
   ],
   "wildEncounters": []

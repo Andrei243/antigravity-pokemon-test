@@ -1,0 +1,37 @@
+{
+  "key": "hub_town",
+  "index": 0,
+  "name": "The Hub",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HUB_TOWN",
+  "nightMusic": "HUB_TOWN",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 11, "z": 14, "to": "Hub_PokemonCenter", "toWarp": 0 },
+    { "x": 42, "z": 38, "to": "Hub_HarbourHall", "toWarp": 0 },
+    { "x": 22, "z": 14, "to": "Hub_Plaza", "toWarp": 0 },
+    { "x": 40, "z": 14, "to": "Hub_HallOfChampions", "toWarp": 0 },
+    { "x": 51, "z": 14, "to": "Hub_Office", "toWarp": 0 },
+    { "x": 12, "z": 28, "to": "Hub_Arena", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "look_south", "x": 20, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "traveller", "looks": "lady", "movement": "wander_around", "x": 24, "z": 33, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "veteran", "looks": "gentleman", "movement": "look_around", "x": 46, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 15, "z": 20, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "worker", "looks": "worker", "movement": "look_north", "x": 22, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [
+    { "x": 35, "z": 21, "type": 0, "script": "TownSign" },
+    { "x": 27, "z": 21, "type": 0, "script": "BoardSign" }
+  ],
+  "triggers": []
+}

@@ -187,6 +187,8 @@ public sealed class RunTimer
         var list = new List<SplitPoint>();
         foreach (var region in RegionDatabase.All)
         {
+            // The hub has no Badges and no Hall of Fame to split at (plan 41 · EG1)
+            if (region.BorrowsRules) continue;
             string key = region.Id.ToLowerInvariant();
             foreach (var badge in region.BadgeNames)
                 list.Add(new($"badge.{key}.{badge}", SplitKind.Badge, region.Id, badge));
