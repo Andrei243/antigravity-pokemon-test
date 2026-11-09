@@ -20,6 +20,8 @@ partial class Harness
         if (part == "" || part == "peak") TrainingPeak();
         // Plan 36 · TR9: the later machines' shelf, a machine taught and a Dipplin into Hydrapple, the hall's tutor (tr80 to tr83)
         if (part == "" || part == "machines") TrainingMachines();
+        // Plan 36 · TR6: the modern Day Care's Egg with its mother's hidden ability and ball, and Unova's Day Care (tr50 to tr52)
+        if (part == "" || part == "breeding") TrainingBreeding();
     }
 
     /// <summary>
