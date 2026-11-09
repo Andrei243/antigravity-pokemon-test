@@ -879,6 +879,23 @@ public class Pokemon
     }
 
     /// <summary>
+    /// Takes a shiny personality in place of its own (the Shiny Charm's roll for a Day-Care Egg, plan 36 · TR6, which
+    /// <see cref="RerollForShiny"/> leaves an Egg out of): the gender, form, nature and ability that follow from it, the
+    /// IVs, level and moves as they were.
+    /// </summary>
+    internal void TakeShinyPersonality(uint candidate)
+    {
+        Personality = candidate;
+        Gender = Models.Personality.GenderOf(Species, candidate);
+        Form = FormOfGender();
+        Nature = Models.Personality.NatureOf(candidate);
+        AbilityName = Models.Personality.AbilityOf(Abilities, candidate);
+        IsShiny = true;
+        RecalculateStats();
+        CurrentHP = MaxHP;
+    }
+
+    /// <summary>
     /// The Shiny Charm's extra rolls (plan 13 · V5): up to <paramref name="rolls"/> more personalities are drawn for a
     /// Pokémon that came out plain, and the first that is shiny for the player's number becomes its personality, with the
     /// nature and gender it was asked to keep (<paramref name="gender"/>, <paramref name="nature"/>: what a lead's Cute

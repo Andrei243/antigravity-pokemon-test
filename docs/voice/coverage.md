@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1559 | 1498 | 61 | 1 | 0 |
 | Scripts (`script:`) | 11815 | 11317 | 498 | 17 | 0 |
-| People of the world (`world:`) | 8028 | 7966 | 62 | 4 | 0 |
-| **All** | 21636 | 21012 | 624 | 22 | 0 |
+| People of the world (`world:`) | 8026 | 7964 | 62 | 4 | 0 |
+| **All** | 21634 | 21010 | 624 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -133,10 +133,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:trainer (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
 | `volkner` | 43 | 1 |
-| `backers` | 42 | 0 |
 | `buck` | 42 | 1 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
+| `backers` | 41 | 0 |
 | `rood` | 41 | 0 |
 | `look:host (any)` | 40 | 16 |
 | `look:pokefan_f (any)` | 40 | 0 |
@@ -157,9 +157,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:school_kid (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `roark` | 36 | 0 |
-| `roughneck` | 36 | 0 |
 | `gardenia` | 35 | 0 |
 | `kurt` | 35 | 6 |
+| `roughneck` | 35 | 0 |
 | `candice` | 34 | 0 |
 | `look:battle_girl (any)` | 34 | 2 |
 | `look:twin (any)` | 34 | 0 |
