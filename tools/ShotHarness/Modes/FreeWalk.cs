@@ -147,5 +147,8 @@ partial class Harness
                 }
             Save(board, "fw40_poses");
         }
+
+        // FM3: the crowd of thirty drawn as a grown region's people (last: it begins a game of its own in Kalos)
+        FreeWalkCrowd();
     }
 }

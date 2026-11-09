@@ -138,6 +138,8 @@ public partial class GameEngine
         }
         // Whose mouth is open is read as the frame is drawn, after the box's voice has moved on (plan 26 · V6)
         world.Talking = SpeakerNow();
+        // A grown region's people are live rigs (plan 30 · FM3); everywhere else the sprites they always were
+        world.GrownField = KitHere == Data.CharacterKit.Grown;
         world.Render(flow.Map, flow.Player);
     }
 

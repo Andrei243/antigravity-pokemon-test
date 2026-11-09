@@ -668,7 +668,7 @@ public sealed partial class WorldRenderer
         VerticalScale = vs;
         GatherActors(map, player, px, pz, groundY, lift, time);
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
-        PreparePeople(camera);
+        PreparePeople(camera, pitchDeg);
         foreach (var p in pokemon)
         {
             FieldSprites.Prepare(context, p.Name, p.Facing, ref fieldBakes);
@@ -708,7 +708,7 @@ public sealed partial class WorldRenderer
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
         gymPieces.DrawDepth(map, viewer);
-        DrawPeople(CharacterPass.Depth);
+        DrawPeople(CharacterPass.Depth, FrameSection.Shadows);
         DrawThings(CharacterPass.Depth);
         DrawPokemon(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
@@ -768,7 +768,7 @@ public sealed partial class WorldRenderer
         // In a room the people and the Pokémon stand straight on screen, though the room keeps its perspective
         if (indoors) shaders.SetUprightCards(ArtLook.FieldUpright, pitchDeg);
         DrawPokemon(CharacterPass.Color);
-        DrawPeople(CharacterPass.Color);
+        DrawPeople(CharacterPass.Color, FrameSection.Scene);
         if (indoors) shaders.SetUprightCards(0f, pitchDeg);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
@@ -1114,14 +1114,20 @@ public sealed partial class WorldRenderer
         public readonly CharacterPose Pose;
         /// <summary>The bridge's deck over them, which hides what of them stands above it (style guide, "Relief").</summary>
         public readonly (float X0, float X1, float Top)? Over;
+        /// <summary>Who they are (the person of the map, or the player): what keeps a grown region's live rig live (plan 30 · FM3).</summary>
+        public readonly object? Who;
+        /// <summary>Drawn as their sprite whatever the region's kit: a stance or a ride, which the grown kit has no clips for yet (plan 30 · FM3).</summary>
+        public readonly bool Sprite;
 
-        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null)
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false)
         {
             Rig = rig;
             Feet = feet;
             Yaw = yaw;
             Pose = pose;
             Over = over;
+            Who = who;
+            Sprite = sprite;
         }
     }
 
@@ -1293,7 +1299,8 @@ public sealed partial class WorldRenderer
                 Life.Strokes(map, nx + nudge, nz, npc.Facing, strokesSince, Life.Now, phase);
             }
             if (pose.Stance != Overworld.Stance.Stand) at = Seated(rig, pose.Stance, at, npc.Facing, map.SeatUnder(npc), npc.Level != null, MapScene.PitchOf(map));
-            actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose, Relief.DeckOver(map, at.X, at.Z, at.Y)));
+            actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose, Relief.DeckOver(map, at.X, at.Z, at.Y), npc,
+                pose.Stance != Overworld.Stance.Stand || rig.Kind != RigKind.Humanoid));
         }
         strokesSince = Life.Now;
 
@@ -1352,7 +1359,8 @@ public sealed partial class WorldRenderer
             playerPose.Stance = posed;
             playerAt = Seated(playerRig, posed, playerAt, player.Facing, map.SeatAt(player.GridX, player.GridY), false, MapScene.PitchOf(map));
         }
-        actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y)));
+        actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y), player,
+            playerPose.Stance != Overworld.Stance.Stand || player.Mount != null || riding || fishing));
 
         if (player.Mount is { } ridden)
         {
@@ -1493,6 +1501,12 @@ public sealed partial class WorldRenderer
             CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
             if (actor.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(null);
         }
+        DrawMount(pass);
+    }
+
+    /// <summary>The Pokémon the player rides: its own field sprite, or the swimmer every Pokémon shares.</summary>
+    private void DrawMount(CharacterPass pass)
+    {
         if (mount is { Own: { } own } carried)
             CharacterSprites.DrawCard(own.Frames[0], carried.At, VerticalScale, pass);
         else if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
@@ -1538,7 +1552,8 @@ public sealed partial class WorldRenderer
             var art = SceneTextures.Bubble(kind);
             float size = age < 0.04f ? 0.5f : age < 0.08f ? 0.8f : 1f;
             float w = LifeArt.BubbleWidth / 32f * size, h = LifeArt.BubbleHeight / 32f * size * vs;
-            DrawUpright(art, new Rectangle(0, 0, art.Width, art.Height), x + 0.5f, z + 0.15f, ground + 1.95f, w, h, paper, straight, pitchDeg);
+            // (over a grown head where the region's people are grown: plan 30 · FM3)
+            DrawUpright(art, new Rectangle(0, 0, art.Width, art.Height), x + 0.5f, z + 0.15f, ground + FieldRigChoice.BubbleLift(GrownField, vs), w, h, paper, straight, pitchDeg);
         }
 
         foreach (var npc in PeopleInSight(map))
@@ -1791,7 +1806,9 @@ public sealed partial class WorldRenderer
             if (Reaches(scene, reach)) scene.DrawStanding(reach);
         DrawThings(CharacterPass.Color);
         DrawPokemon(CharacterPass.Color);
-        DrawPeople(CharacterPass.Color);
+        liveRigs.MirrorPlane = plane;
+        DrawPeople(CharacterPass.Color, FrameSection.Reflections);
+        liveRigs.MirrorPlane = null;
 
         shaders.EndMirrorPass();
         context.UnbindShadowMap();
@@ -1812,13 +1829,17 @@ public sealed partial class WorldRenderer
         float pitchDeg = MapScene.PitchOf(map);
         Camera3D? straight = map.IsIndoors ? null : camera;
         bool any = false;
-        foreach (var actor in actors)
+        for (int i = 0; i < actors.Count; i++)
         {
+            var actor = actors[i];
             if (Reflections.WalkerReach(map, actor.Feet) is not { } reach) continue;
             var tint = Reflections.TintOf(map.BehaviourAt((int)MathF.Floor(actor.Feet.X), (int)MathF.Floor(actor.Feet.Z)));
             if (!any) Rlgl.DisableDepthMask();
             any = true;
-            CharacterSprites.DrawReflection(actor.Rig, actor.Pose, actor.Yaw, actor.Feet, pitchDeg, reach, straight, tint);
+            // Where the region's people are grown, a puddle mirrors the impostor of the way they face (plan 30 · FM3)
+            if (LivePeople && liveRigs.ReflectionOf(i) is { } grown)
+                CharacterSprites.DrawReflection(grown.Texture, grown.Width, grown.Height, actor.Feet, pitchDeg, reach, straight, tint);
+            else CharacterSprites.DrawReflection(actor.Rig, actor.Pose, actor.Yaw, actor.Feet, pitchDeg, reach, straight, tint);
         }
         if (!any) return;
         Rlgl.SetTexture(0);

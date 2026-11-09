@@ -46,6 +46,30 @@ partial class Harness
             if (MeasuredPrepareMs > 0 && median > budget) { Console.WriteLine($"!! {name}'s chunk took {median:F1} ms to prepare; its budget is {budget:F1} ms"); broken++; }
         }
 
+        // Plan 30 · FM3: a grown region's crowd of thirty on Aquacorde's promenade, as live rigs and impostors; its figure is
+        // a mean frame, the plan's done-when 8 ms on High (judged by `profile`'s freewalk_crowd floor, never by this line)
+        const double MeasuredCrowdMs = 0;     // measured: not yet (FM3 was written on a card other runs shared)
+        {
+            var (stood, x, y, facing) = (game.Map, game.Player.GridX, game.Player.GridY, game.Player.Facing);
+            At("Kalos", CrowdX, CrowdZ, Direction.Down);
+            Frames(20);
+            LayTheCrowd();
+            engine.RegionKitOverride = CharacterKit.Grown;
+            WaitForTheCrowd();
+            var watch = Stopwatch.StartNew();
+            Frames(60);
+            double crowd = watch.Elapsed.TotalMilliseconds / 60;
+            results["freewalk_crowd_frame_ms"] = crowd;
+            results["freewalk_crowd_live"] = game.World.LiveRigs.Live;
+            results["freewalk_crowd_impostors"] = game.World.LiveRigs.Impostors;
+            Console.WriteLine($"freewalk_crowd: {crowd:F2} ms a frame, {game.World.LiveRigs.Live} live and {game.World.LiveRigs.Impostors} impostors"
+                + (MeasuredCrowdMs > 0 ? $", budget {MeasuredCrowdMs * headroom:F2} ms" : ", no budget yet (the plan's is 8 ms on High)"));
+            if (MeasuredCrowdMs > 0 && crowd > MeasuredCrowdMs * headroom) { Console.WriteLine($"!! the crowd of thirty took {crowd:F2} ms a frame"); broken++; }
+            engine.RegionKitOverride = null;
+            LiftTheCrowd();
+            game.Place(stood, x, y, facing);
+        }
+
         results["start_ms"] = startMs;
         if (MeasuredStartMs > 0 && startMs > MeasuredStartMs * headroom)
         {

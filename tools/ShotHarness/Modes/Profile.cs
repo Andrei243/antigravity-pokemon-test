@@ -438,6 +438,8 @@ partial class Harness
             OpenPrototypeProfile();
             // The game's own open renderer (plan 32 · OW8) on the open test world, against the same 8 ms
             OpenLabProfile();
+            // A grown region's crowd of thirty as live rigs and impostors (plan 30 · FM3), when SHOTS_ONLY names it
+            FreeWalkCrowdProfile();
         }
         openScene?.Unload();
         openScene = null;
