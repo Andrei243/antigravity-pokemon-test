@@ -505,6 +505,19 @@
         "on": "Before a battle beside a partner, you are asked whether a friend will choose for them. A second pad answers the friend's turns."
       }
     },
+    "battleCamera": {
+      "label": "Battle camera",
+      "value": {
+        "Classic": "Classic",
+        "Region": "Region",
+        "Lively": "Lively"
+      },
+      "help": {
+        "Classic": "Battles are filmed from one seat, as they always were.",
+        "Region": "Each region films its battles in a manner of its own, from Kanto's quiet seat to Galar's camera that never rests.",
+        "Lively": "Every battle is filmed in Galar's manner: the camera keeps moving while you choose."
+      }
+    },
     "captions": {
       "label": "Captions",
       "help": {

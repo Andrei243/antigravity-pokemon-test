@@ -53,6 +53,9 @@ partial class Harness
         // ... and in spring whatever the fixed date's month (plan 22 · U3): only Unova has seasons, and the first of June
         // would give every mode its summer (the "seasons" mode sets the others)
         engine.Settings.Season = Season.Spring;
+        // ... and battles filmed as they always were (plan 45 · BC1): a manner that moves the camera at the menu would move
+        // every battle mode's shots; the "camera" mode chooses the manners it shoots
+        engine.Settings.BattleCamera = BattleCameraChoice.Classic;
         // SHOTS_LANGUAGE=xx shoots in another language (plan 17 · N1): the pseudo-language brackets every string, so a
         // word the table doesn't give shows bare
         if (Environment.GetEnvironmentVariable("SHOTS_LANGUAGE") is { Length: > 0 } language) engine.Settings.Language = language;

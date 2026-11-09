@@ -36,6 +36,9 @@ public sealed class BattleRenderer
     /// <summary>What the camera director is showing (for the harness and tests).</summary>
     internal ShotKind Shot => director.Kind;
 
+    /// <summary>The manner the director films in (plan 45 · BC1): the game sets it every frame before <see cref="Render"/>.</summary>
+    internal CameraManner Manner { get => director.Manner; set => director.Manner = value; }
+
     /// <summary>The effects drawn in the last frame.</summary>
     internal FxList Effects => fx;
 

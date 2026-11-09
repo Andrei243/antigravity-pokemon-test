@@ -49,6 +49,7 @@ public enum OptionRow
     Packs,
     StreamFeed, StreamSafe,
     Coop,
+    BattleCamera,
     Help,
     ResetDefaults
 }
@@ -115,7 +116,7 @@ public class OptionsScreen
         OptionRow.Autorun or OptionRow.Movement or OptionRow.Follower or OptionRow.WildPokemon or OptionRow.FieldHelpers
             or OptionRow.PartyTools or OptionRow.BoxesAnywhere or OptionRow.BoxTools or OptionRow.AreaChecklist => OptionCategory.Field,
         OptionRow.BattleScene or OptionRow.BattleStyle or OptionRow.MoveHints or OptionRow.TrainerLines or OptionRow.AutoBattle
-            or OptionRow.RetryBattles or OptionRow.RecordBattles or OptionRow.Coop => OptionCategory.Battle,
+            or OptionRow.RetryBattles or OptionRow.RecordBattles or OptionRow.Coop or OptionRow.BattleCamera => OptionCategory.Battle,
         OptionRow.Quality or OptionRow.WindowSize or OptionRow.Fullscreen or OptionRow.VSync or OptionRow.FrameCap
             or OptionRow.DynamicResolution or OptionRow.FocusPause or OptionRow.Frame => OptionCategory.Display,
         OptionRow.Sound or OptionRow.MusicVolume or OptionRow.SoundVolume or OptionRow.CryVolume or OptionRow.AmbienceVolume
@@ -644,6 +645,10 @@ public class OptionsScreen
             case OptionRow.Coop:
                 s.Coop = !s.Coop; // plan 13 · V20
                 break;
+            case OptionRow.BattleCamera:
+                // Classic, Region, Lively, and round again (plan 45 · BC1)
+                s.BattleCamera = (BattleCameraChoice)Wrap((int)s.BattleCamera + step, 3);
+                break;
             case OptionRow.Captions:
                 s.Captions = !s.Captions; // plan 12 · Q9
                 break;
@@ -754,6 +759,7 @@ public class OptionsScreen
         OptionRow.StreamFeed => (Text.Of("options.streamFeed.label"), Text.Of($"options.streamFeed.value.{s.StreamFeed}"), Text.Of($"options.streamFeed.help.{s.StreamFeed}")),
         OptionRow.StreamSafe => (Text.Of("options.streamSafe.label"), OnOff(s.StreamSafe), Text.Of(s.StreamSafe ? "options.streamSafe.help.on" : "options.streamSafe.help.off")),
         OptionRow.Coop => (Text.Of("options.coop.label"), OnOff(s.Coop), Text.Of(s.Coop ? "options.coop.help.on" : "options.coop.help.off")),
+        OptionRow.BattleCamera => (Text.Of("options.battleCamera.label"), Text.Of($"options.battleCamera.value.{s.BattleCamera}"), Text.Of($"options.battleCamera.help.{s.BattleCamera}")),
         OptionRow.Captions => (Text.Of("options.captions.label"), OnOff(s.Captions), Text.Of(s.Captions ? "options.captions.help.on" : "options.captions.help.off")),
         OptionRow.HoldToConfirm => (Text.Of("options.holdToConfirm.label"), OnOff(s.HoldToConfirm), Text.Of(s.HoldToConfirm ? "options.holdToConfirm.help.on" : "options.holdToConfirm.help.off")),
         OptionRow.TextSize => (Text.Of("options.textSize.label"), Text.Of($"options.textSize.value.{s.TextSize}"), Text.Of($"options.textSize.help.{s.TextSize}")),

@@ -76,7 +76,13 @@ public static class PackCheck
             else if (rel.Contains("/overlays/", StringComparison.Ordinal))
                 Read(rel, () => GameDataFiles.Deserialize<WorldOverlayFile>(File.ReadAllText(path)), findings);
             else if (rel.StartsWith("regions/", StringComparison.Ordinal))
-                Read(rel, () => GameDataFiles.Deserialize<RegionFile>(File.ReadAllText(path)).MusicSound ?? (object)rel, findings);
+                Read(rel, () =>
+                {
+                    var region = GameDataFiles.Deserialize<RegionFile>(File.ReadAllText(path));
+                    // The manner its battles are filmed in must be one of the table's (plan 45 · BC1)
+                    Graphics.CameraManners.OfRegion(region.BattleCamera);
+                    return region.MusicSound ?? (object)rel;
+                }, findings);
             else if (rel.StartsWith(MapDatabase.Folder + "/", StringComparison.Ordinal))
                 Read(rel, () => GameDataFiles.Deserialize<MapFile>(File.ReadAllText(path)).ToMap(), findings);
             else if (DataLayers.Patchable.ContainsKey(Path.GetFileName(rel)))

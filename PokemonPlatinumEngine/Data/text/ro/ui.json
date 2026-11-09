@@ -521,6 +521,19 @@
         "on": "Înaintea unei lupte lângă un partener, ești întrebat dacă un prieten alege pentru el. Un al doilea controler răspunde la rândurile prietenului."
       }
     },
+    "battleCamera": {
+      "label": "Camera în luptă",
+      "value": {
+        "Classic": "Clasică",
+        "Region": "Regiune",
+        "Lively": "Vie"
+      },
+      "help": {
+        "Classic": "Luptele sunt filmate dintr-un singur loc, ca dintotdeauna.",
+        "Region": "Fiecare regiune își filmează luptele în felul ei, de la locul liniștit din Kanto la camera din Galar, care nu stă niciodată pe loc.",
+        "Lively": "Fiecare luptă e filmată ca în Galar: camera se mișcă tot timpul cât alegi."
+      }
+    },
     "captions": {
       "label": "Subtitrări",
       "help": {
