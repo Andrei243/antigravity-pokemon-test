@@ -1,0 +1,16 @@
+# Lumiose City's Café Kizahashi (plan 23, Kalos's last species: one of the thirteen doors left shut). A café of ours on X
+# and Y's place as it is publicly described, a café for its regulars. Its owner serves only those the city knows: until
+# Kalos's Hall of Fame he turns the player away kindly, and after it pours the Champion a cup.
+
+
+script Kizahashi
+  face self player
+  speaker "Owner"
+  if flag KalosHallOfFame goto Champion
+  say "I'm sorry, young Trainer. Every stool in here belongs to a regular, and has for years."
+  say "Make a name for yourself in Kalos, and there will be a cup waiting for you."
+  end
+label Champion
+  say "The Champion of Kalos! Sit, sit. That stool by the window has been waiting for you."
+  say "Your cup is on the house, today and every day after. That's what it means to be a regular here."
+  end

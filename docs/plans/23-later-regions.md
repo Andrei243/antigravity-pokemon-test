@@ -64,6 +64,20 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   thirteen doors stay shut. Tests `KalosGymPuzzlesTests`, `KalosPortAndHmsTests`, `LumioseRestaurantTests`. **Left**:
   the Jaw and Sail Fossils (two items of the data, the importer's), the Unknown Dungeon's water mouth, a monorail, the
   Friend Safari (no seam), Lumiose's thirteen other doors, and the places' own songs (plan 31).
+- **Kalos's last species** (2026-11-09; rulings, "Kalos's last species: the two Fossils, the three mythicals, the
+  village's water mouth and Lumiose's last doors"). **The Fossils**: the Jaw and Sail Fossils as items of the importer's
+  overrides (9596, 9597), restored as Tyrunt and Amaura by every laboratory (`Fossils.All`), the Glittering Cave's fossil
+  seeker giving one by choice and the other on a later visit (`glittering_cave.txt`). **The mythicals**, each a staged
+  beat and a battle at 70 after the Hall of Fame: Diancie in Reflection Cave's north chamber to a Trainer with a Carbink,
+  Hoopa through its ring in the Lost Hotel's gallery once the Mega Ring is upgraded, Volcanion in the steam at the foot of
+  Couriway's falls. `KalosSpeciesTests.Owed` 7 → 0: every species of the three Pokédexes can be had in Kalos. **The
+  Unknown Dungeon's water mouth**: the village's pond reaches the cliff and the mouth stands over a landing reached only
+  by Surf. **Lumiose's last thirteen doors** on rooms of ours: the Battle Institute (a test of three battles a day, marked
+  by its turns: `kalos_institute_*`, `FLAG_DAILY_KALOS_BATTLE_INSTITUTE`), the PR Video Studio, six cafés (Introversion,
+  Ultimo, Woof, Soleil, Shutterbug, Kizahashi), a hat shop on the wardrobe screen (`lumiose_hats`), Coiffure Clips and three
+  flats; no door of the city is shut now. No monorail (Coumarine is one level). Shots: the `kalos` mode's
+  `KALOS_FROM=lastspecies` (`fc50` to `fc55`, plan 37 · FC5's owed shots; `wk600` to `wk616`; `wks400` to `wks430`), looked at.
+  **Left**: the Friend Safari (no seam), and the places' own songs (plan 31).
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

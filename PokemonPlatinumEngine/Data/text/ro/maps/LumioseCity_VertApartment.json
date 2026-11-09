@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Lumiose City"
+    ]
+  },
+  "people": {
+    "mother": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From our window you can see the whole of Vert Plaza. My children watch the Trainers skate by all day."
+        ],
+        "text": [
+          "De la fereastra noastră se vede toată Piața Vert. Copiii mei se uită toată ziua la Antrenorii care trec pe patine."
+        ]
+      }
+    },
+    "daughter": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I'm big I'm going to skate all the way to the tower and battle the Gym Leader at the top!"
+        ],
+        "text": [
+          "Când o să fiu mare, o să patinez până la turn și o să mă lupt cu Liderul de Sală din vârf!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

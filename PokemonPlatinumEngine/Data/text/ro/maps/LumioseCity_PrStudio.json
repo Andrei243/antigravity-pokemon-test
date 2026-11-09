@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "PR Video Studio"
+    ],
+    "text": [
+      "Studioul de Filmări PR"
+    ]
+  },
+  "people": {
+    "director": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          "Regizorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lights, camera, Pokémon! Every Trainer has a story worth ten seconds of film. Mine took three years."
+        ],
+        "text": [
+          "Lumini, cameră, Pokémon! Fiecare Antrenor are o poveste de zece secunde de film. A mea a durat trei ani."
+        ]
+      }
+    },
+    "camerawoman": {
+      "name": {
+        "en": [
+          "Camerawoman"
+        ],
+        "text": [
+          "Operatoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hold still... and smile with your eyes. The lens loves a Trainer who looks like they mean it."
+        ],
+        "text": [
+          "Nu te mișca... și zâmbește cu ochii. Obiectivul iubește un Antrenor care pare să creadă ce face."
+        ]
+      }
+    },
+    "hopeful": {
+      "name": {
+        "en": [
+          "Hopeful"
+        ],
+        "text": [
+          "Aspiranta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I rehearsed my line all morning. Then my Pokémon stole the scene in one take!"
+        ],
+        "text": [
+          "Mi-am repetat replica toată dimineața. Apoi Pokémonul meu a furat scena dintr-o singură dublă!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

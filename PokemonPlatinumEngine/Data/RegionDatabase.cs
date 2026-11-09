@@ -998,6 +998,11 @@ public static class RegionDatabase
                 "LumioseCity_BistroDeux", "LumioseCity_TableATrois", "LumioseCity_Carrousel", "LumioseCity_GrandeTable",
                 "LumioseCity_GroomingSalon", "LumioseCity_Gazette", "LumioseCity_Gallery", "LumioseCity_TelevisionLobby",
                 "LumioseCity_TradeSociety",
+                // Plan 23, Kalos's last species: Lumiose's last thirteen doors
+                "LumioseCity_BattleInstitute", "LumioseCity_PrStudio", "LumioseCity_CafeIntroversion", "LumioseCity_CafeUltimo",
+                "LumioseCity_HatShop", "LumioseCity_CafeWoof", "LumioseCity_CafeSoleil", "LumioseCity_ShutterbugCafe",
+                "LumioseCity_CafeKizahashi", "LumioseCity_CoiffureClips", "LumioseCity_VertApartment", "LumioseCity_PainterHouse",
+                "LumioseCity_OldCoupleHouse",
             }
         },
         new()

@@ -5432,5 +5432,101 @@
         "personality": 9133498
       }
     ]
+  },
+  {
+    "id": "kalos_institute_ombeline",
+    "name": "Ombeline",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion"
+    ],
+    "prizeMoney": 2220,
+    "party": [
+      {
+        "species": "Meowstic",
+        "level": 36,
+        "ivScale": 16,
+        "personality": 9140117
+      },
+      {
+        "species": "Pyroar",
+        "level": 37,
+        "ivScale": 16,
+        "personality": 9140514
+      }
+    ]
+  },
+  {
+    "id": "kalos_institute_eustache",
+    "name": "Eustache",
+    "class": "Ace Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Super Potion"
+    ],
+    "prizeMoney": 2280,
+    "party": [
+      {
+        "species": "Clawitzer",
+        "level": 37,
+        "ivScale": 16,
+        "personality": 9140911
+      },
+      {
+        "species": "Heliolisk",
+        "level": 37,
+        "ivScale": 16,
+        "personality": 9141308
+      },
+      {
+        "species": "Doublade",
+        "level": 38,
+        "ivScale": 16,
+        "personality": 9141705
+      }
+    ]
+  },
+  {
+    "id": "kalos_institute_philippine",
+    "name": "Philippine",
+    "class": "Veteran",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 3200,
+    "party": [
+      {
+        "species": "Florges",
+        "level": 39,
+        "ivScale": 18,
+        "personality": 9142102
+      },
+      {
+        "species": "Talonflame",
+        "level": 39,
+        "ivScale": 18,
+        "personality": 9142499
+      },
+      {
+        "species": "Goodra",
+        "level": 40,
+        "ivScale": 18,
+        "personality": 9142896
+      }
+    ]
   }
 ]

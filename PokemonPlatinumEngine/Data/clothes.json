@@ -67,6 +67,9 @@
       "tan_brogues", "black_boots",
       "black_backpack"
     ],
+    // Lumiose City's Chapellerie (plan 23, Kalos's last species; Data/maps/LumioseCity_HatShop.json): every hat of the
+    // mainland's boutiques under one roof
+    "lumiose_hats": [ "cream_beret", "rouge_beret", "navy_beret", "mint_beret", "plum_beret", "red_cap", "blue_cap", "black_cap" ],
     // Hau'oli City's apparel shop and Royal Avenue's boutique (plan 23, the wave after the loose ends): Alola's own and a few classics
     "hauoli": [ "hibiscus_cap", "red_cap", "blue_cap", "flower_shirt", "lagoon_tee", "sunny_tee", "board_shorts", "khaki_shorts", "sand_sandals", "white_sneakers", "blue_backpack", "green_backpack" ],
     "royal_avenue": [ "hibiscus_cap", "black_cap", "flower_shirt", "lagoon_tee", "black_jacket", "board_shorts", "denim_jeans", "sand_sandals", "red_sneakers", "black_backpack" ]

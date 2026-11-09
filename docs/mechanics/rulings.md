@@ -10141,6 +10141,53 @@ In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are pub
   their trade Pokémon by trading, which a game of one player can't, so Kalos's fifteen trade evolutions (and Kingdra, with
   a Dragon Scale) come by the cord. Thirteen doors stay shut.
 
+## Kalos's last species: the two Fossils, the three mythicals, the village's water mouth and Lumiose's last doors (2026-11-09, plan 23)
+
+In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are publicly described. Kalos's movement stays
+`Eight`.
+
+- **The Jaw and Sail Fossils** are items of the data now (`tools/DataImporter/Overrides/items.json`, ids 9596 and 9597,
+  kept clear of the numbers beside Black 2's pair; their descriptions ours, their names in other languages PokeAPI's),
+  and `Fossils.All` restores them as Tyrunt and Amaura, so every laboratory that restores fossils does. X and Y's fossil
+  seeker in the Glittering Cave gives X's Jaw Fossil or Y's Sail Fossil by the version; ours has no versions, so he
+  offers the choice (`FLAG_KALOS_GOT_CAVE_FOSSIL`, `VAR_KALOS_CAVE_FOSSIL` 1 the jaw, 2 the sail) and hands over the
+  other once the player has been away and come back (`FLAG_MAP_LOCAL_KALOS_FOSSIL_DIGGING`, `FLAG_KALOS_GOT_SECOND_FOSSIL`),
+  as Unova's museum ranger does with Black 2's pair. Ambrette's laboratory revives them at level 20 as it revives the rest.
+  Running the importer found that it took five counters written into `marts.json` by hand out again (Lumiose's stone
+  shop, Poké Ball boutique, Herboriste and Cercle des Échanges, and Alola's Royal Megamart): all five are in
+  `Overrides/marts.json` now, so the importer keeps them.
+- **Kalos's mythicals** (plan 29 · LS11's rule for an event Pokémon: a post-game condition of ours and a place's own step,
+  the five beats before the battle, at the region's post-game level, 70 as Zygarde and Mewtwo are; beaten or caught,
+  gone for good, run from, it stays):
+  - **Diancie**, a Carbink changed, in Reflection Cave's north chamber after the Hall of Fame (the overlay shows it by
+    `KalosHallOfFame`); it comes out of the crystals only to a Trainer with a Carbink on the team (`if has "Carbink"`),
+    and shrinks back otherwise. Its beat: sparkles and a burst on the crystals, a shake (`FLAG_KALOS_DIANCIE_GONE`).
+  - **Hoopa**, which brings things through its rings, in the Lost Hotel's gallery once the professor has upgraded the
+    Mega Ring (`FLAG_KALOS_MEGA_RING_UPGRADED`): a rift held over the floor for its ring and the picture wavering
+    (`FLAG_KALOS_HOOPA_GONE`).
+  - **Volcanion**, which keeps far from people, in the steam on the sandbank at the foot of Couriway's falls after the
+    Hall of Fame, a place reached only by going down the falls: a geyser and an eruption for its steam, a shake
+    (`FLAG_KALOS_VOLCANION_GONE`).
+  With them and the two Fossils `KalosSpeciesTests.Owed` is empty: every species of Kalos's three Pokédexes can be had in
+  Kalos with nobody else.
+- **The Unknown Dungeon's water mouth.** X and Y's cave behind the Pokémon Village is reached by Surf across its pond.
+  Ours had its mouth on the meadow's head; the pond now reaches up to the cliff, and the mouth stands over a landing of
+  one tile with water on three sides, so it is come to only surfing (the village's Zoroark still stands in it until the
+  Hall of Fame, and whoever comes out of the cave steps out onto the landing).
+- **Lumiose's last thirteen doors** open on rooms of ours (no door of the city is shut now): the **Battle Institute** (0)
+  on X and Y's place, where Trainers sit a test of battles in a row: ours is three single battles against its examiners
+  (`kalos_institute_ombeline`, `_eustache`, `_philippine`, at 36 to 40), with nothing healed between, once a day
+  (`FLAG_DAILY_KALOS_BATTLE_INSTITUTE`), marked A to D by the turns they took together (`TURNS`, bands of ours: 9, 15 and
+  21), from a PP Up to two Super Potions, and an A remembered (`FLAG_KALOS_BATTLE_INSTITUTE_TOP`); the **PR Video Studio**
+  (1), where X and Y film a Trainer's video, a studio of people here (nothing is filmed); X and Y's cafés, **Introversion**
+  (4), **Ultimo** (7), **Café Woof** (11, its regulars Pokémon), **Soleil** (12), the **Shutterbug Café** (14) and
+  **Kizahashi** (16), whose owner serves only regulars, the player after the Hall of Fame; a hat shop of ours, the
+  **Chapellerie** (8), selling the mainland's hats on the wardrobe screen (`clothes.json`'s `lumiose_hats`); **Coiffure
+  Clips** (17), X and Y's hair salon, whose stylist cuts nobody here, since an outfit has no slot for hair; and three
+  flats of the city's people (20, 21, 25).
+- **No monorail.** Coumarine's port is the city's last rows on one level (the ruling of "Kalos's port"), so there is no
+  hill for a monorail to climb; nothing is built for it.
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).

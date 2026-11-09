@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Chapellerie"
+    ],
+    "text": [
+      "Chapellerie"
+    ]
+  },
+  "people": {
+    "milliner": {
+      "name": {
+        "en": [
+          "Milliner"
+        ],
+        "text": [
+          "Pălărierul"
+        ]
+      }
+    },
+    "customer": {
+      "name": {
+        "en": [
+          "Customer"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A beret for the morning, a cap for the afternoon. A hat for every hour, that's the Lumiose way."
+        ],
+        "text": [
+          "O beretă pentru dimineață, o șapcă pentru după-amiază. O pălărie pentru fiecare oră, așa e în Lumiose."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

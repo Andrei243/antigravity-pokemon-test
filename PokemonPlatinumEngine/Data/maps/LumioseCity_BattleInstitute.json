@@ -1,0 +1,127 @@
+{
+  "name": "LumioseCity_BattleInstitute",
+  "displayName": "Battle Institute",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..###..###",
+    "#.........#",
+    "#.........#",
+    "##........#",
+    "##........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "ReceptionDesk",
+      "x": 3,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 342,
+      "targetY": 318,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "ombeline",
+      "name": "Ombeline",
+      "npcType": "ace_trainer_f",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "script": "Examiner"
+    },
+    {
+      "id": "eustache",
+      "name": "Eustache",
+      "npcType": "ace_trainer_m",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "script": "Examiner"
+    },
+    {
+      "id": "philippine",
+      "name": "Philippine",
+      "npcType": "veteran",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Examiner"
+    }
+  ],
+  "wildEncounters": []
+}

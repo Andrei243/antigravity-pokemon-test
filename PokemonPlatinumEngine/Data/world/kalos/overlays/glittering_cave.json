@@ -26,6 +26,9 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
+    // Plan 23, Kalos's last species: a fossil seeker in the west pocket, who gives the Jaw Fossil or the Sail Fossil and the
+    // other on a later visit (glittering_cave.txt; Ambrette Town's laboratory restores them)
+    { "id": "fossil_seeker", "name": "Fossil Seeker", "npcType": "hiker", "x": 11, "y": 9, "facing": "Down", "script": "FossilSeeker" },
     { "id": "mega_kangaskhanite", "name": "Kangaskhanite", "npcType": "ItemBall", "item": "Kangaskhanite", "x": 39, "y": 7, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_KANGASKHANITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }

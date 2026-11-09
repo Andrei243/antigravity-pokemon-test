@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Coiffure Clips"
+    ],
+    "text": [
+      "Coiffure Clips"
+    ]
+  },
+  "people": {
+    "stylist": {
+      "name": {
+        "en": [
+          "Stylist"
+        ],
+        "text": [
+          "Stilista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A cut, a colour, a little volume... Hair says who you are before you say a word. Sit, sit!"
+        ],
+        "text": [
+          "O tunsoare, o culoare, puțin volum... Părul spune cine ești înainte să scoți o vorbă. Ia loc, ia loc!"
+        ]
+      }
+    },
+    "client": {
+      "name": {
+        "en": [
+          "Client"
+        ],
+        "text": [
+          "Clienta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I asked for something new. She said, \"Trust me.\" I'm keeping my eyes shut until she's done."
+        ],
+        "text": [
+          "Am cerut ceva nou. Ea a zis: „Ai încredere în mine.” Țin ochii închiși până termină."
+        ]
+      }
+    },
+    "apprentice": {
+      "name": {
+        "en": [
+          "Apprentice"
+        ],
+        "text": [
+          "Ucenica"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I practise on Furfrou first. If a Furfrou likes the cut, a person will love it."
+        ],
+        "text": [
+          "Exersez întâi pe Furfrou. Dacă unui Furfrou îi place tunsoarea, unui om o să-i placă la nebunie."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

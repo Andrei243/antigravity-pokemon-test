@@ -1,0 +1,222 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Institute. Here Trainers sit a test of three battles, one after another, with no rest between."
+      ],
+      "text": [
+        "Bine ai venit la Institutul de Luptă. Aici Antrenorii dau un test de trei lupte, una după alta, fără odihnă între ele."
+      ]
+    },
+    {
+      "en": [
+        "Will you sit today's test? Our three examiners are ready."
+      ],
+      "text": [
+        "Dai testul de azi? Cei trei examinatori ai noștri sunt gata."
+      ]
+    },
+    {
+      "en": [
+        "Very good. Your mark goes by how quickly you finish. Good luck!"
+      ],
+      "text": [
+        "Foarte bine. Nota ta depinde de cât de repede termini. Mult noroc!"
+      ]
+    },
+    {
+      "en": [
+        "Ombeline"
+      ],
+      "text": [
+        "Ombeline"
+      ]
+    },
+    {
+      "en": [
+        "First examiner, Ombeline. Show me how you open a battle."
+      ],
+      "text": [
+        "Primul examinator, Ombeline. Arată-mi cum începi o luptă."
+      ]
+    },
+    {
+      "en": [
+        "Eustache"
+      ],
+      "text": [
+        "Eustache"
+      ]
+    },
+    {
+      "en": [
+        "Second examiner, Eustache. Now show me how you keep going."
+      ],
+      "text": [
+        "Al doilea examinator, Eustache. Acum arată-mi cum mergi mai departe."
+      ]
+    },
+    {
+      "en": [
+        "Philippine"
+      ],
+      "text": [
+        "Philippine"
+      ]
+    },
+    {
+      "en": [
+        "Last examiner, Philippine. Let us see how you finish."
+      ],
+      "text": [
+        "Ultimul examinator, Philippine. Să vedem cum termini."
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "The test is done, in {var:TURNS} turns. Here is your mark."
+      ],
+      "text": [
+        "Testul s-a încheiat, în {var:TURNS} ture. Iată nota ta."
+      ]
+    },
+    {
+      "en": [
+        "A mark of D. You passed, and that is what counts. Come and sit it again tomorrow."
+      ],
+      "text": [
+        "Nota D. Ai trecut, și asta contează. Vino să-l dai din nou mâine."
+      ]
+    },
+    {
+      "en": [
+        "A mark of A! The examiners will be talking about this one for a week."
+      ],
+      "text": [
+        "Nota A! Examinatorii o să vorbească despre asta o săptămână întreagă."
+      ]
+    },
+    {
+      "en": [
+        "A mark of B. Quick and sure. A little more and it would have been an A."
+      ],
+      "text": [
+        "Nota B. Rapid și sigur. Încă puțin și ar fi fost un A."
+      ]
+    },
+    {
+      "en": [
+        "A mark of C. A steady test, from start to finish."
+      ],
+      "text": [
+        "Nota C. Un test echilibrat, de la început până la sfârșit."
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "The test is over for today. Your Pokémon have been seen to. Come back tomorrow and try again."
+      ],
+      "text": [
+        "Testul s-a încheiat pentru azi. Ne-am îngrijit de Pokémonii tăi. Revino mâine și încearcă din nou."
+      ]
+    },
+    {
+      "en": [
+        "The examiners will wait. They are very patient people."
+      ],
+      "text": [
+        "Examinatorii vor aștepta. Sunt oameni foarte răbdători."
+      ]
+    },
+    {
+      "en": [
+        "You have sat today's test already. The examiners need their rest too. Come back tomorrow."
+      ],
+      "text": [
+        "Ai dat deja testul de azi. Și examinatorii au nevoie de odihnă. Revino mâine."
+      ]
+    },
+    {
+      "en": [
+        "You have sat today's test already. Your A is still up on our board, by the way."
+      ],
+      "text": [
+        "Ai dat deja testul de azi. Apropo, A-ul tău e încă afișat pe panoul nostru."
+      ]
+    }
+  ],
+  "Examiner": [
+    {
+      "en": [
+        "Philippine"
+      ],
+      "text": [
+        "Philippine"
+      ]
+    },
+    {
+      "en": [
+        "A test is not about winning. It is about winning well."
+      ],
+      "text": [
+        "Un test nu înseamnă să câștigi. Înseamnă să câștigi frumos."
+      ]
+    },
+    {
+      "en": [
+        "Ombeline"
+      ],
+      "text": [
+        "Ombeline"
+      ]
+    },
+    {
+      "en": [
+        "The first turn tells me most of what I need to know about a Trainer."
+      ],
+      "text": [
+        "Prima tură îmi spune aproape tot ce trebuie să știu despre un Antrenor."
+      ]
+    },
+    {
+      "en": [
+        "Eustache"
+      ],
+      "text": [
+        "Eustache"
+      ]
+    },
+    {
+      "en": [
+        "No healing between battles. Plan for the third one before you start the first."
+      ],
+      "text": [
+        "Nicio vindecare între lupte. Gândește-te la a treia înainte s-o începi pe prima."
+      ]
+    }
+  ]
+}

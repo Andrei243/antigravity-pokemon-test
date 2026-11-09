@@ -26,6 +26,8 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "postgame") { KalosPostGame(); return; }
         // KALOS_FROM=lastplaces: Kalos's last places alone (wk500 on, wks300 on), not part of the whole mode
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "lastplaces") { KalosLastPlaces(); return; }
+        // KALOS_FROM=lastspecies: Kalos's last species and Lumiose's restaurants' shots alone (fc50 on, wk600 on, wks400 on)
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "lastspecies") { KalosLastSpecies(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;

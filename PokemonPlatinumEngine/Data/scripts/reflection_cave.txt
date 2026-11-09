@@ -1,0 +1,43 @@
+# Reflection Cave (plan 23, Kalos's last species; plan 29 · LS11's beat for Kalos's mythicals, docs/mechanics/rulings.md,
+# "Kalos's last species"). The lines are our own. Diancie, a Carbink changed, is given by events alone in X and Y; ours
+# keeps to the north chamber once Kalos's Hall of Fame is entered (the overlay shows it by KalosHallOfFame) and comes out
+# of the crystals only to a Trainer who brings a Carbink, one of its own kind, at level 70. Beaten or caught it is gone
+# for good (FLAG_KALOS_DIANCIE_GONE); run from, it stays.
+
+
+script Diancie
+  if not has "Carbink" goto Shy
+  scene "Diancie in Reflection Cave"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 26 goto Look
+  if var PLAYER_Y != 8 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 26 7 1.2
+  camera zoom 1.4 0.8
+  effect sparkles 26 7 2.5
+  effect burst 26 7
+  camera shake 0.4
+  cry "Diancie"
+  speaker none
+  text "Your Carbink glitters back at the crystals. A Pokémon of pink diamond steps out of the wall to meet it!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Diancie" 70
+  if result == 2 goto Stays
+  setflag FLAG_KALOS_DIANCIE_GONE
+  hide self
+  music area
+  end
+label Stays
+  music area
+  text "The pink light sinks back into the crystals, but it doesn't go far."
+  end
+label Shy
+  speaker none
+  text "Something pink gleams deep in the crystals of the wall. It shrinks away, as if waiting for a friend of its own kind."
+  end

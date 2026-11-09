@@ -1,0 +1,117 @@
+{
+  "name": "LumioseCity_PrStudio",
+  "displayName": "PR Video Studio",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###....##.#",
+    "#.........#",
+    "#.........#",
+    "#.##......#",
+    "#.........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 349,
+      "targetY": 318,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "director",
+      "name": "Director",
+      "npcType": "game_director",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Lights, camera, Pokémon! Every Trainer has a story worth ten seconds of film. Mine took three years."
+      ]
+    },
+    {
+      "id": "camerawoman",
+      "name": "Camerawoman",
+      "npcType": "cameraman",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Hold still... and smile with your eyes. The lens loves a Trainer who looks like they mean it."
+      ]
+    },
+    {
+      "id": "hopeful",
+      "name": "Hopeful",
+      "npcType": "idol",
+      "x": 6,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "I rehearsed my line all morning. Then my Pokémon stole the scene in one take!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

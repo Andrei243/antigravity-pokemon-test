@@ -328,13 +328,16 @@ public static class Fossils
 
     /// <summary>
     /// <c>sFossilItemToSpeciesMapping</c>, in its order, then Black 2's two of Unova (plan 40 · GE3: Nacrene City's museum
-    /// restores them, and so does any museum that restores fossils, as Black 2's restores every fossil of the games before).
+    /// restores them, and so does any museum that restores fossils, as Black 2's restores every fossil of the games before),
+    /// then X and Y's two of Kalos (plan 23: the Glittering Cave's fossil seeker gives them, Ambrette Town's laboratory
+    /// restores them).
     /// </summary>
     public static readonly (string Item, string Species)[] All =
     {
         ("Old Amber", "Aerodactyl"), ("Helix Fossil", "Omanyte"), ("Dome Fossil", "Kabuto"), ("Root Fossil", "Lileep"),
         ("Claw Fossil", "Anorith"), ("Armor Fossil", "Shieldon"), ("Skull Fossil", "Cranidos"),
-        ("Cover Fossil", "Tirtouga"), ("Plume Fossil", "Archen")
+        ("Cover Fossil", "Tirtouga"), ("Plume Fossil", "Archen"),
+        ("Jaw Fossil", "Tyrunt"), ("Sail Fossil", "Amaura")
     };
 
     public static string? SpeciesOf(string item) => All.FirstOrDefault(f => f.Item == item).Species;

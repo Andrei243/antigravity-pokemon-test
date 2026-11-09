@@ -1,0 +1,117 @@
+{
+  "name": "LumioseCity_ShutterbugCafe",
+  "displayName": "Shutterbug Café",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#####.....#",
+    "#.........#",
+    "#.....##..#",
+    "#.........#",
+    "#.##......#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 3,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 397,
+      "targetY": 348,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "owner",
+      "name": "Owner",
+      "npcType": "waitress",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Every photo on these walls was taken by a customer. Bring us a good one and it goes up beside them."
+      ]
+    },
+    {
+      "id": "photographer",
+      "name": "Photographer",
+      "npcType": "cameraman",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "The trick is to shoot your Pokémon from its own height. Kneel down, and the whole picture changes."
+      ]
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "npcType": "reporter",
+      "x": 5,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "I came in for a coffee and an interview. I've had three coffees, and the interview hasn't come in yet."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

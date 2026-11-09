@@ -1,0 +1,48 @@
+# The Glittering Cave (plan 23, Kalos's last species). The lines are our own, on X and Y's beat as it is publicly
+# described: a fossil seeker in the cave's back hands over one of the two Fossils of Kalos, the Jaw Fossil (X's) or the
+# Sail Fossil (Y's). The game has no versions, so the player chooses (FLAG_KALOS_GOT_CAVE_FOSSIL, ours;
+# VAR_KALOS_CAVE_FOSSIL says which came first, 1 the jaw and 2 the sail) and is handed the other on a later visit
+# (FLAG_KALOS_GOT_SECOND_FOSSIL, ours), once the player has been away (FLAG_MAP_LOCAL_KALOS_FOSSIL_DIGGING, which the
+# first gift sets and leaving the cave clears). Ambrette Town's laboratory restores both, as Tyrunt and Amaura.
+
+
+script FossilSeeker
+  face self player
+  speaker "Fossil Seeker"
+  if flag FLAG_KALOS_GOT_SECOND_FOSSIL goto Done
+  if flag FLAG_KALOS_GOT_CAVE_FOSSIL goto Second
+  say "This cave keeps its old bones well. I've dug two good Fossils out of the west wall today, and I can carry only one."
+  choose "Which would you like to take?" "The Jaw Fossil" "The Sail Fossil" "No, thanks"
+  if result == 0 goto Jaw
+  if result == 1 goto Sail
+  say "No? I'll keep digging, then. The offer stands."
+  end
+label Jaw
+  give "Jaw Fossil"
+  setvar VAR_KALOS_CAVE_FOSSIL 1
+  goto Given
+label Sail
+  give "Sail Fossil"
+  setvar VAR_KALOS_CAVE_FOSSIL 2
+label Given
+  setflag FLAG_KALOS_GOT_CAVE_FOSSIL
+  setflag FLAG_MAP_LOCAL_KALOS_FOSSIL_DIGGING
+  say "The laboratory in Ambrette Town can wake what's sleeping in it. It's just down the coast road."
+  end
+label Second
+  if flag FLAG_MAP_LOCAL_KALOS_FOSSIL_DIGGING goto Digging
+  say "You came back! I've dug the other one clean while you were gone. It ought to go to you, too."
+  if var VAR_KALOS_CAVE_FOSSIL == 2 goto SecondJaw
+  give "Sail Fossil"
+  setflag FLAG_KALOS_GOT_SECOND_FOSSIL
+  end
+label SecondJaw
+  give "Jaw Fossil"
+  setflag FLAG_KALOS_GOT_SECOND_FOSSIL
+  end
+label Digging
+  say "The other one is still half in the wall. Come back by later and it should be free."
+  end
+label Done
+  say "A Fossil is a letter from a very long time ago. You only need someone to open it."
+  end

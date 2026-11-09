@@ -1,0 +1,74 @@
+{
+  "FossilSeeker": [
+    {
+      "en": [
+        "Fossil Seeker"
+      ],
+      "text": [
+        "Căutătorul de fosile"
+      ]
+    },
+    {
+      "en": [
+        "This cave keeps its old bones well. I've dug two good Fossils out of the west wall today, and I can carry only one."
+      ],
+      "text": [
+        "Peștera asta își păstrează bine oasele vechi. Am scos azi două Fosile bune din peretele de vest și nu pot căra decât una."
+      ]
+    },
+    {
+      "en": [
+        "Which would you like to take?",
+        "The Jaw Fossil",
+        "The Sail Fossil",
+        "No, thanks"
+      ],
+      "text": [
+        "Pe care vrei s-o iei?",
+        "Fosila Falcă",
+        "Fosila Velă",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "No? I'll keep digging, then. The offer stands."
+      ],
+      "text": [
+        "Nu? Atunci sap mai departe. Oferta rămâne valabilă."
+      ]
+    },
+    {
+      "en": [
+        "The laboratory in Ambrette Town can wake what's sleeping in it. It's just down the coast road."
+      ],
+      "text": [
+        "Laboratorul din Ambrette Town poate trezi ce doarme în ea. E puțin mai jos, pe drumul de pe coastă."
+      ]
+    },
+    {
+      "en": [
+        "You came back! I've dug the other one clean while you were gone. It ought to go to you, too."
+      ],
+      "text": [
+        "Te-ai întors! Am curățat-o și pe cealaltă cât ai fost plecat. Ar trebui să fie tot a ta."
+      ]
+    },
+    {
+      "en": [
+        "The other one is still half in the wall. Come back by later and it should be free."
+      ],
+      "text": [
+        "Cealaltă e încă pe jumătate în perete. Mai treci pe aici mai târziu și ar trebui să fie liberă."
+      ]
+    },
+    {
+      "en": [
+        "A Fossil is a letter from a very long time ago. You only need someone to open it."
+      ],
+      "text": [
+        "O Fosilă e o scrisoare de demult. Ai nevoie doar de cineva care s-o deschidă."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Café Ultimo"
+    ],
+    "text": [
+      "Café Ultimo"
+    ]
+  },
+  "people": {
+    "barista": {
+      "name": {
+        "en": [
+          "Barista"
+        ],
+        "text": [
+          "Barista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The last café before the boulevard, and the strongest cup in Lumiose. One sip and you'll skate to Camphrier!"
+        ],
+        "text": [
+          "Ultima cafenea dinainte de bulevard și cea mai tare cafea din Lumiose. O gură și patinezi până la Camphrier!"
+        ]
+      }
+    },
+    "student": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Studentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Exams tomorrow. Third cup today. My Pokémon is asleep on my notes, so I'm calling it a study break."
+        ],
+        "text": [
+          "Mâine am examene. A treia ceașcă azi. Pokémonul meu doarme pe notițe, așa că iau o pauză de învățat."
+        ]
+      }
+    },
+    "socialite": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Doamna din lumea bună"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Darling, everyone who is anyone ends the evening here. Everyone else ends it at the tower."
+        ],
+        "text": [
+          "Dragă, toată lumea care contează își încheie seara aici. Restul și-o încheie la turn."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
