@@ -140,9 +140,7 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
   die, once a day (`FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_*`). `EveryToolCanBeHad` holds each of the five regions with
   only Sinnoh's other-plan lines owed. Tests `TrainingHallsTests` (17: the people on open floor and spoken to, the coach
   and the clerk's stall for a Champion, Laverre's way in and out and `WorldWalk` to its coach, each cap on open ground,
-  the feathers once a day and back the next, every tool in each region, and plan 41 · EG2's ribbons). **No shots**: the
-  session ran on a copy of the tree on another drive while the repository's drive was full, and the harness's `training`
-  mode gained no `tr30` to `tr34`; the halls want looking at in the harness. The rulings' "The training halls of the
+  the feathers once a day and back the next, every tool in each region, and plan 41 · EG2's ribbons). **Shots**: a scenario of the harness (Laverre's hall from the street and inside, Celadon's corner) was looked at; the `training` mode's `tr30` to `tr34` and the other three corners are left for a run on the tree itself (the session ran on a copy while the repository's drive was full). The rulings' "The training halls of the
   other regions".
 
 ### TR5 · Tera Shards and the Tera keeper
@@ -211,7 +209,7 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
 - [x] TR1 Effort on screen and the drills' rules (2026-11-07: `Models/TrainingDrills.cs`, `TrainingDrillTests`, SKILLS' effort bars and total, the rulings' "Effort drills, and effort on the summary"; the PEAK tag is described in the style guide and left to TR3; the harness's `training` mode, shots tr01 and tr02, identical on two runs)
 - [x] TR2 The training hall and its drills (2026-11-07: Sunyshore City's hall by an exit of ours at the north houses' alley, the drill screen, `train`, the records and prizes, `TrainingHallTests`, the harness's `hall` part, tr10 to tr19b; the outcome above)
 - [x] TR3 Peak training, the tools and every tool's source (2026-11-07: `train peak` and `train peak check`, the PEAK tag on SKILLS and the judge, the stall `training_hall` and the tools' prices, `training.json`'s `battlePoints` and `frontier prize training` with the club's clerk at three counters, two Bottle Caps in the Battle Zone, `Data/ItemSources.cs`, `PeakTrainingTests`, `TrainingToolsTests`; the outcome above)
-- [x] TR4 The halls of Kanto, Johto, Hoenn and Unova (2026-11-09: the club's people in the four department stores, Kalos's hall in Laverre City, a Bottle Cap in each post-game ground, Unova's feathers on the Drawbridge, `TrainingHallsTests`; no shots yet, as the outcome above says)
+- [x] TR4 The halls of Kanto, Johto, Hoenn and Unova (2026-11-09: the club's people in the four department stores, Kalos's hall in Laverre City, a Bottle Cap in each post-game ground, Unova's feathers on the Drawbridge, `TrainingHallsTests`; the halls looked at in a scenario, the mode's shots still to take)
 - [ ] TR5 Tera Shards and the Tera keeper
 - [x] TR6 Hidden abilities handed down: the modern Day Care (2026-11-09: `Ruleset.ModernBreeding`, `Breeding.HandDownAbility`, `BallFor`, `CharmRolls`, `BuildMoveset` by the rules, Unova's Day Care people, `ModernBreedingTests`, the rulings' "The modern Day Care". As built below)
 - [ ] TR7 Powers: the rule and its readers
