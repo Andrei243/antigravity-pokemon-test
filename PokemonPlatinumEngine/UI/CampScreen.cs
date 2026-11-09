@@ -202,7 +202,7 @@ public sealed class CampScreen
     public int PantryFirst { get; private set; }
 
     /// <summary>The rows the pantry's list shows.</summary>
-    public const int PantryRows = 7;
+    public const int PantryRows = 5;
 
     /// <summary>Whether the pantry's cursor is on COOK.</summary>
     public bool OnCook => PantryCursor == OnHand.Count;
