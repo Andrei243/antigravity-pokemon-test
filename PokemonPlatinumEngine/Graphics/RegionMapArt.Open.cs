@@ -38,7 +38,13 @@ public static partial class RegionMapArt
     /// An open region painted from above: its land's chunks at <paramref name="level"/> (nought, the finest, unless told:
     /// the far levels keep every hole but lose the small slopes the light reads). A texel no ground lies under is clear.
     /// </summary>
-    public static PixelCanvas PaintOpen(BakedRegion land, int level = 0)
+    public static PixelCanvas PaintOpen(BakedRegion land, int level = 0) => PaintOpen(land, Array.Empty<OpenBox>(), level);
+
+    /// <summary>
+    /// An open region painted from above with the solid boxes of its places over the land, each a roof (lighter along
+    /// its north edge) over a wall's row along its south, as the grid's map draws a building.
+    /// </summary>
+    public static PixelCanvas PaintOpen(BakedRegion land, System.Collections.Generic.IEnumerable<OpenBox> solids, int level = 0)
     {
         const int T = CellTexels;
         var (x0, z0, columns, rows) = OpenBoundsOf(land);
@@ -119,6 +125,20 @@ public static partial class RegionMapArt
                 else if (rise < -0.12f) colour = PixelCanvas.Shadow(colour, Math.Min(0.4f, -rise * 0.45f));
                 canvas.SetRaw(tx, ty, colour);
             }
+
+        // The places' solids: roofs over a wall's row, as the grid's buildings are drawn
+        var roof = new Color(178, 92, 70, 255);
+        foreach (var box in solids)
+        {
+            int bx0 = (int)Math.Floor(box.Min.X / 1000.0) - x0 * T, bx1 = (int)Math.Ceiling(box.Max.X / 1000.0) - 1 - x0 * T;
+            int bz0 = (int)Math.Floor(box.Min.Z / 1000.0) - z0 * T, bz1 = (int)Math.Ceiling(box.Max.Z / 1000.0) - 1 - z0 * T;
+            for (int ty = Math.Max(0, bz0); ty <= Math.Min(h - 1, bz1); ty++)
+                for (int tx = Math.Max(0, bx0); tx <= Math.Min(w - 1, bx1); tx++)
+                {
+                    bool wall = ty == bz1 && bz1 > bz0;
+                    canvas.SetRaw(tx, ty, wall ? WallColor : ty == bz0 ? PixelCanvas.Mix(roof, Color.White, 0.22f) : roof);
+                }
+        }
         return canvas;
     }
 

@@ -61,7 +61,7 @@ internal static class OpenDebugLayers
     public static readonly Color DoorColour = DebugLayers.WarpColour with { A = 240 };
     public static readonly Color SightColour = DebugLayers.SightColour with { A = 240 };
     public static readonly Color AreaColour = DebugLayers.AreaColour;
-    public static readonly Color ZoneColour = DebugLayers.LandColour with { A = 240 };
+    public static readonly Color ZoneColour = new(230, 255, 90, 240);
     public static readonly Color WildColour = new(120, 250, 120, 255);
     public static readonly Color MarkerColour = new(255, 255, 255, 240);
 

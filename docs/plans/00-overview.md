@@ -218,7 +218,7 @@ These run beside whichever main wave is current when the gate opens, a row to a 
 | O3 | 32 · OW4 The navigation mesh; beside it OW8, part b: the camera and shadows | Opus high | OW3 | M + M | H |
 | O4 | 32 · OW5 Volumes, markers, doors and scripts; beside it OW6 People, trainers and followers | Opus high | OW4 | M + M | C |
 | O5 | 32 · OW7 Wild Pokémon in the field; beside it OW9, part a | Opus high, Opus max | OW6; OW8 and FM3 to FM6 (waves 94 to 96) | M + L | H |
-| O6 | 32 · OW9, part b, with `profile`'s floor read by the user; beside it OW10 The tools, whole | Opus max, Sonnet high | OW9a | L + M | H U |
+| O6 | 32 · OW9, part b, with `profile`'s floor read by the user; beside it OW10 The tools, whole (OW10 built 2026-11-09: plan 32's "OW10 as built") | Opus max, Sonnet high | OW9a | L + M | H U |
 | O7 to O13 | 33 · GL1 to GL7, one a wave: Galar's file, Postwick to Routes 1 and 2; the Wild Area (curry on CR6's pot); Max Raid dens (`BattleFormat.Raid`); Motostoke and the first three gyms; Stow-on-Side to Hammerlocke; the Champion Cup, the Darkest Day and Leon; after the Hall of Fame, with 03 · D15's Galar placements | Opus max | plan 32 whole; 23 · Z8a's plane; GL3 before GL4 | L each | H |
 | O14 to O22 | 34 · PD1 to PD9, one a wave: Paldea's file to Mesagoza; the mount on the open world (30 · FM12), with 30 · FM13 the mount as a rig beside PD3; the provinces and their gyms, the Path of Legends, Starfall Street and Let's Go, Tera Raids and picnics (sandwiches on CR6's pot), the League, Area Zero and the Way Home, after the Hall of Fame with 03 · D15's Paldea placements | Opus max | GL3's raids, GL7's plane; FM5 for FM13 | L each | H |
 

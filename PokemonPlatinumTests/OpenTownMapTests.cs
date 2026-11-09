@@ -71,6 +71,23 @@ public class OpenTownMapTests
     }
 
     [Fact]
+    public void ThePlacesSolidsAreRoofsOverTheLand()
+    {
+        var map = OpenWorldPeopleTests.LabWithPeople();
+        var land = map.Land!;
+        var bare = RegionMapArt.PaintOpen(land);
+        var built = RegionMapArt.PaintOpen(land, map.Solids);
+        var (x0, z0, _, _) = RegionMapArt.OpenBoundsOf(land);
+        int T = RegionMapArt.CellTexels;
+        // The house (x -24 to -16, z -50 to -43): its middle a roof, its south row a wall, the meadow beside it as it was
+        Color Of(PixelCanvas p, int x, int z) => p.Get(x - x0 * T, z - z0 * T);
+        Assert.NotEqual(Of(bare, -20, -47), Of(built, -20, -47));
+        Assert.NotEqual(Of(built, -20, -47), Of(built, -20, -43 - 1));
+        Assert.Equal(Of(bare, -26, -47), Of(built, -26, -47));
+        Assert.Equal(Of(bare, -20, -40), Of(built, -20, -40));
+    }
+
+    [Fact]
     public void FlysPlacesOfAnOpenRegionNameMarkersAndFlyLandsOnThem()
     {
         var file = new RegionMapFile

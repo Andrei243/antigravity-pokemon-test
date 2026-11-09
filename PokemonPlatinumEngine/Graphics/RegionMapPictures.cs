@@ -26,10 +26,10 @@ public static class RegionMapPictures
     private static readonly Dictionary<string, Entry> entries = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    /// The baked land of an open map by its name, which the game tells (plan 32 · OW10): a region whose map is no grid
-    /// map but an open one is painted from above out of its bake (<see cref="RegionMapArt.PaintOpen"/>).
+    /// An open map by its name, which the game tells (plan 32 · OW10): a region whose map is no grid
+    /// map but an open one is painted from above out of its bake, with its places' solids (<see cref="RegionMapArt.PaintOpen"/>).
     /// </summary>
-    public static Func<string, PokemonPlatinumEngine.OpenWorld.BakedRegion?>? OpenLandOf { get; set; }
+    public static Func<string, PokemonPlatinumEngine.OpenWorld.OpenMap?>? OpenMapOf { get; set; }
 
     private static Entry Of(RegionMap region)
     {
@@ -54,10 +54,10 @@ public static class RegionMapPictures
         var entry = Of(region);
         if (entry.Loaded && entry.Painted == entry.Wanted) return (entry.Full, entry.Small);
         PixelCanvas canvas;
-        if (!MapDatabase.MapNames.Contains(region.Map) && OpenLandOf?.Invoke(region.Map) is { } land)
+        if (!MapDatabase.MapNames.Contains(region.Map) && OpenMapOf?.Invoke(region.Map) is { Land: { } land } open)
         {
             // An open region's map, painted from above out of its bake (plan 32 · OW10)
-            canvas = RegionMapArt.PaintOpen(land);
+            canvas = RegionMapArt.PaintOpen(land, open.Solids);
         }
         else
         {

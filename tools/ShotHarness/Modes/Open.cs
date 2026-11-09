@@ -179,6 +179,12 @@ partial class Harness
         game.OpenWeather = null;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
+        // OPEN_FROM=tools shoots plan 32 · OW10's part alone: the layers, the door, the bot, the camera posed and the Town Map
+        if (Environment.GetEnvironmentVariable("OPEN_FROM") == "tools")
+        {
+            OpenToolShots(map);
+            return;
+        }
 
         // By day, from the west road: four yaws
         var west = map.Marker("west_road")!;
@@ -299,5 +305,8 @@ partial class Harness
 
         // Plan 32 · OW9: the buildings, trees, grass, people, follower, the rings to the horizon and the village's crowd
         OpenSceneryShots(map);
+
+        // Plan 32 · OW10: the layers, the door, the bot, the camera posed and the Town Map's picture
+        OpenToolShots(map);
     }
 }
