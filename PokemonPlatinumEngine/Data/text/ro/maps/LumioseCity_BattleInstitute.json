@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Institute"
+    ],
+    "text": [
+      "Institutul de Luptă"
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "ombeline": {
+      "name": {
+        "en": [
+          "Ombeline"
+        ],
+        "text": [
+          "Ombeline"
+        ]
+      }
+    },
+    "eustache": {
+      "name": {
+        "en": [
+          "Eustache"
+        ],
+        "text": [
+          "Eustache"
+        ]
+      }
+    },
+    "philippine": {
+      "name": {
+        "en": [
+          "Philippine"
+        ],
+        "text": [
+          "Philippine"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

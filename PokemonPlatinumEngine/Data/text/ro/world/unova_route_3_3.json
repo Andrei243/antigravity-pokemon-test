@@ -3,39 +3,22 @@
     "1": {
       "name": {
         "en": [
-          "Roughneck"
+          "Day-Care Man"
         ],
         "text": [
-          "Golan"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "I look tough, but I'm the best Pokémon babysitter in Unova."
-        ],
-        "text": [
-          "Arăt dur, dar sunt cea mai bună babysitter de Pokémoni din Unova."
+          "Omul de la Pensiune"
         ]
       }
     },
     "2": {
       "name": {
         "en": [
-          "Backers"
+          "Day-Care Lady"
         ],
         "text": [
-          "Susținători"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "We left our Pokémon here while we cheer at the matches. They come back so happy!"
-        ],
-        "text": [
-          "Ne-am lăsat Pokémonii aici cât încurajăm la meciuri. Se întorc atât de fericiți!"
+          "Doamna de la Pensiune"
         ]
       }
     }
-  },
-  "signs": {}
+  }
 }

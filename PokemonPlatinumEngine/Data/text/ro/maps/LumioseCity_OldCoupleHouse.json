@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Lumiose City"
+    ]
+  },
+  "people": {
+    "grandpa": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We met at a café on the boulevard, sixty years ago. It's a shoe shop now, but we still walk past it."
+        ],
+        "text": [
+          "Ne-am cunoscut la o cafenea de pe bulevard, acum șaizeci de ani. Acum e un magazin de pantofi, dar tot trecem pe acolo."
+        ]
+      }
+    },
+    "grandma": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He always says it was a café. It was a bakery! But I let him tell it his way."
+        ],
+        "text": [
+          "El zice mereu că era o cafenea. Era o brutărie! Dar îl las să povestească în felul lui."
+        ]
+      }
+    },
+    "skiddo": {
+      "name": {
+        "en": [
+          "Skiddo"
+        ],
+        "text": [
+          "Skiddo"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It nibbles a cushion thoughtfully."
+        ],
+        "text": [
+          "Ronțăie gânditor o pernă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

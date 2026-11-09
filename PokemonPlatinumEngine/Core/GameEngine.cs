@@ -3129,6 +3129,8 @@ public partial class GameEngine
         }
         else if (showBattle)
         {
+            // The manner the battle is filmed in, from the options' BATTLE CAMERA row and the region's file (plan 45 · BC1)
+            battleRenderer.Manner = FixedCameraManner ?? CameraManners.For(Settings.BattleCamera, Here.BattleCamera);
             battleRenderer.Render(flow.Battle!);
         }
         else if (showTitle && !MeasuringQuality)

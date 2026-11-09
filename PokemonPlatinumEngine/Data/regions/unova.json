@@ -13,6 +13,9 @@
   // U3 hands the month to them)
   "hasSeasons": true,
   "rival": "Hugh",
+  // How its battles are filmed (plan 45; style guide, "The battle's manners"): a swing at the menu between the
+  // overview and a shot over the player's Pokémon's shoulder
+  "battleCamera": "unova",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Snivy", "Tepig", "Oshawott" ],
   "badges": [ "Basic", "Toxic", "Insect", "Bolt", "Quake", "Jet", "Legend", "Wave" ],

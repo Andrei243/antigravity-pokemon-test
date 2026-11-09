@@ -45,6 +45,8 @@ public class SchemaTests
         ("open-roads.schema.json", typeof(OpenWorldBake.RoadsFile), "An open region's roads (Data/world3d/<region>/roads.json)"),
         // ...and what stands in its places (plan 32 · OW5), read strictly by the game
         ("open-place.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenPlaceFile), "What stands in an open region's place: markers, triggers, doors, zones, water and solids (Data/world3d/<region>/places/<key>.json)"),
+        // ...and how its wild Pokémon take the player (plan 32 · OW7)
+        ("open-wild.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenWildFile), "The wild Pokémon of an open map: each temperament's senses, and which species has which (Data/open-wild.json)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)")
     };

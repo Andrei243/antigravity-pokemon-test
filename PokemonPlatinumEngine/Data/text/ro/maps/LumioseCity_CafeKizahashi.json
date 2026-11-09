@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Café Kizahashi"
+    ],
+    "text": [
+      "Café Kizahashi"
+    ]
+  },
+  "people": {
+    "owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clientul fidel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've sat on this stool for thirty years. The owner learned my order in the first week and never asked again."
+        ],
+        "text": [
+          "Stau pe scaunul ăsta de treizeci de ani. Proprietarul mi-a învățat comanda în prima săptămână și n-a mai întrebat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

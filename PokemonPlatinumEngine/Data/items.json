@@ -14606,6 +14606,30 @@
     "flingPower": 100
   },
   {
+    "id": 9596,
+    "name": "Jaw Fossil",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a great-jawed Pokémon that ruled the land long ago. Its teeth are still sharp.",
+    "flingPower": 100
+  },
+  {
+    "id": 9597,
+    "name": "Sail Fossil",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that lived in the cold long ago. It seems to be part of the sail on its back.",
+    "flingPower": 100
+  },
+  {
     "id": 9900,
     "name": "Crafting Kit",
     "pocket": "KeyItems",

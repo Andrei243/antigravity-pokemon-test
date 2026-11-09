@@ -40,5 +40,71 @@
         "Ai încă un Șnur de Legătură. Folosește-l pe un Pokémon care evoluează prin schimb, apoi revino după altul."
       ]
     }
+  ],
+  "Designer": [
+    {
+      "en": [
+        "Excuse me, is that a full Pokédex? Every page! I have to shake your hand."
+      ],
+      "text": [
+        "Scuză-mă, e un Pokédex complet? Fiecare pagină! Trebuie să-ți strâng mâna."
+      ]
+    },
+    {
+      "en": [
+        "Those of us who draw these Pokémon keep a few charms for the ones who see them all. Please, take this."
+      ],
+      "text": [
+        "Noi, cei care desenăm Pokémonii ăștia, păstrăm câteva talismane pentru cei care îi văd pe toți. Te rog, ia-l pe acesta."
+      ]
+    },
+    {
+      "en": [
+        "Fill in another Pokédex, somewhere else, and look me up. I may have another one for you."
+      ],
+      "text": [
+        "Completează încă un Pokédex, în altă parte, și caută-mă. S-ar putea să mai am unul pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "That diploma isn't for any region's list at all. It's for the Pokémon we added ourselves!",
+        "You saw every one of them? I should hire you as a proofreader."
+      ],
+      "text": [
+        "Diploma aceea nu e pentru lista vreunei regiuni. E pentru Pokémonii pe care i-am adăugat noi înșine!",
+        "I-ai văzut pe toți? Ar trebui să te angajez corector."
+      ]
+    },
+    {
+      "en": [
+        "A diploma for the whole Unova Pokédex! Castelia's towers are tall, but that's taller.",
+        "Every page seen. I draw for a living and I haven't seen them all myself."
+      ],
+      "text": [
+        "O diplomă pentru tot Pokédexul Unova! Turnurile Casteliei sunt înalte, dar asta e mai înaltă.",
+        "Fiecare pagină văzută. Eu desenez din meserie și nu i-am văzut pe toți nici eu."
+      ]
+    },
+    {
+      "en": [
+        "Several diplomas on one Pokédex? You must have more pages seen than I have sketches.",
+        "Do you ever stay in one place long enough to unpack?"
+      ],
+      "text": [
+        "Mai multe diplome pe un singur Pokédex? Trebuie să fi văzut mai multe pagini decât am eu schițe.",
+        "Rămâi vreodată într-un loc destul cât să-ți despachetezi bagajul?"
+      ]
+    },
+    {
+      "en": [
+        "That's a diploma on your Pokédex! Congratulations! A whole region's list is a lot of pages.",
+        "There are Pokédexes in other regions too. Fill in another and come and show me."
+      ],
+      "text": [
+        "E o diplomă pe Pokédexul tău! Felicitări! Lista unei regiuni întregi înseamnă multe pagini.",
+        "Există Pokédexuri și în alte regiuni. Completează încă unul și vino să mi-l arăți."
+      ]
+    }
   ]
 }

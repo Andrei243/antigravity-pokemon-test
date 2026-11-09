@@ -262,6 +262,14 @@
                 },
                 "weight": {
                   "type": "integer"
+                },
+                "time": {
+                  "enum": [
+                    "Any",
+                    "Morning",
+                    "Day",
+                    "Night"
+                  ]
                 }
               },
               "required": [

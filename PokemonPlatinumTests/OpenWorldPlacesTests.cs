@@ -143,7 +143,9 @@ public class OpenWorldPlacesTests
         Assert.Same(door, map.DoorBackFrom("OpenLabHouse", 3, 7));
         Assert.Null(map.DoorBackFrom("ElsewhereHouse", 3, 7));
 
-        var zone = Assert.Single(map.Zones);
+        // The hill's top (and OW7's south meadow, OpenWorldWildTests's)
+        Assert.Equal(new[] { "south_meadow", "hill_top" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
+        var zone = Assert.Single(map.Zones, z => z.Name == "hill_top");
         Assert.Equal(new[] { "Wooloo", "Skwovet" }, zone.Slots.Select(s => s.Species));
         Assert.True(zone.Contains(new OpenPos(0, 12_000, -2_000)));
         Assert.False(zone.Contains(new OpenPos(0, 0, 0)));   // the cavern under it is no part of it

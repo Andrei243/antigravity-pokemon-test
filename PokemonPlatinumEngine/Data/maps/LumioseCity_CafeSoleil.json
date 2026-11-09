@@ -1,0 +1,131 @@
+{
+  "name": "LumioseCity_CafeSoleil",
+  "displayName": "Café Soleil",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.......###",
+    "#.........#",
+    "#.##......#",
+    "#.....##..#",
+    "#.........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 322,
+      "targetY": 348,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "waiter",
+      "name": "Waiter",
+      "npcType": "waiter",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Café Soleil, the sunniest tables in Lumiose. On a fine day the whole room smells of lemon tart."
+      ]
+    },
+    {
+      "id": "actress",
+      "name": "Lady",
+      "npcType": "beauty",
+      "x": 4,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "They say a famous actress takes her tea at this very table. I've been waiting for her since breakfast."
+      ]
+    },
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 5,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "The sun comes in through those windows just after noon. That is the hour to sit here, no other."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

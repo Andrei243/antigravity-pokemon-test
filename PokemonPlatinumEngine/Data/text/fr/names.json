@@ -4700,6 +4700,8 @@
     "Liberty Pass": "Passe Liberté",
     "Cover Fossil": "Fossile Plaque",
     "Plume Fossil": "Fossile Plume",
+    "Jaw Fossil": "Fossile Mâchoire",
+    "Sail Fossil": "Fossile Nageoire",
     "TM93": "CT93",
     "TM94": "CT94",
     "TM95": "CT95",
@@ -7502,7 +7504,9 @@
       "Ride Pager": "Permet au joueur d'invoquer une Poké Monture.",
       "Liberty Pass": "Permet d'accéder à l'Île Liberté et Victini.",
       "Cover Fossil": "Peut être ressuscité en un Carapagos.",
-      "Plume Fossil": "Peut être ressuscité en un Arkéapti."
+      "Plume Fossil": "Peut être ressuscité en un Arkéapti.",
+      "Jaw Fossil": "Peut être ressuscité en Ptyranidur.",
+      "Sail Fossil": "Peut être ressuscité en Amagara."
     }
   }
 }

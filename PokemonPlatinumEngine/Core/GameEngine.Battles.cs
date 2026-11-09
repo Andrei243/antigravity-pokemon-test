@@ -236,7 +236,7 @@ public partial class GameEngine
                 Partner = beside,
                 Conditions = BattleConditionsHere(totem: totem),
                 // When, under what sky and how it was met, for a catch's mark (plan 10 · F9), and the Mark Charm's three tries (plan 40 · GE5)
-                Encounter = new MarkMoment(GameClock.Now, flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), flow.Hooked, Charms.Held(flow.Bag, Charms.Mark)),
+                Encounter = new MarkMoment(GameClock.Now, FieldWeatherHere(), flow.Hooked, Charms.Held(flow.Bag, Charms.Mark)),
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
@@ -257,6 +257,8 @@ public partial class GameEngine
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
             // terrain gives both the same platforms), whatever ground the player cast from
             if (flow.Hooked) battleRenderer.SetArena(BattleArena.Water, trees: flow.Map.TreesAt(flow.Player.GridX, flow.Player.GridY));
+            // In an open map the stage of the ground under the player (plan 32 · OW7)
+            else if (flow.Open is { } open) battleRenderer.SetArena(ArenaOf(OpenTerrainHere(open)));
             else battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
         }, SceneTransition.ForBattle(meeting));
     }
@@ -276,11 +278,12 @@ public partial class GameEngine
         // A sky trainer's battle is fought in the air (plan 14 · B2)
         InTheAir = inTheAir,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
-        Terrain = flow.Hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
+        // (in an open map, the cover under the player's capsule: plan 32 · OW7)
+        Terrain = flow.Hooked ? Battle.Sim.BattleTerrain.Water : flow.Open is { } open ? OpenTerrainHere(open) : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
         Fishing = flow.Hooked,
         Night = GameClock.IsNight,
         HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
-        Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
+        Weather = Weathers.InBattle(FieldWeatherHere()),
         Badges = flow.Story.BadgeCount(Here.Id),
         Money = flow.Money,
         Player = PlayerMark,
@@ -293,6 +296,9 @@ public partial class GameEngine
         CatchingCharm = Charms.Held(flow.Bag, Charms.Catching),
         ExpCharm = Charms.Held(flow.Bag, Charms.Exp)
     };
+
+    /// <summary>The weather where the player stands: the open map's area's in an open map (plan 32 · OW7), the grid map's otherwise.</summary>
+    private FieldWeather FieldWeatherHere() => flow.Open is { } open ? OpenWeatherHere(open) : flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY);
 
     /// <summary>
     /// What the clock does to the team (plan 06 · R10): each new day takes a day off Pokérus
@@ -648,7 +654,9 @@ public partial class GameEngine
                 Restrictions = RunTermsFor(BattleKind.Normal),
                 Scene = Settings.BattleScene
             });
-            battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
+            // (in an open map, the stage of the ground under the player: plan 32 · OW7)
+            if (flow.Open is { } open) battleRenderer.SetArena(ArenaOf(OpenTerrainHere(open)));
+            else battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             // A sky battle's stage is the sky's, wherever it is met (plan 14 · B2)
             if (inTheAir) battleRenderer.SetArena(BattleArena.Sky);
             flow.BattleTrainers.Clear();
@@ -753,6 +761,8 @@ public partial class GameEngine
         SilenceTheRadio();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
         if (flow.Battle != null) EncountersAfterBattle(flow.Battle, isDefeat);
+        // A wild Pokémon met in an open map is gone from it, and its zone waits (plan 32 · OW7)
+        OpenWildAfterBattle(flow.Battle);
         // Wild Pokémon felled or caught leave materials in the kit's pouch, if the kit is in the bag (plan 39 · CR1)
         if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss

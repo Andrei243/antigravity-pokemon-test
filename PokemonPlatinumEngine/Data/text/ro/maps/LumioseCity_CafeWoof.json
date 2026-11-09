@@ -1,0 +1,103 @@
+{
+  "displayName": {
+    "en": [
+      "Café Woof"
+    ],
+    "text": [
+      "Café Woof"
+    ]
+  },
+  "people": {
+    "waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelnerița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Café Woof, where the Pokémon are the regulars and the people are their guests!"
+        ],
+        "text": [
+          "Bine ai venit la Café Woof, unde Pokémonii sunt clienții fideli, iar oamenii sunt oaspeții lor!"
+        ]
+      }
+    },
+    "furfrou": {
+      "name": {
+        "en": [
+          "Furfrou"
+        ],
+        "text": [
+          "Furfrou"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It wags its tail and waits for a scratch behind the ear."
+        ],
+        "text": [
+          "Dă din coadă și așteaptă să fie scărpinat după ureche."
+        ]
+      }
+    },
+    "skitty": {
+      "name": {
+        "en": [
+          "Skitty"
+        ],
+        "text": [
+          "Skitty"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It chases its own tail round the table legs."
+        ],
+        "text": [
+          "Își fugărește coada printre picioarele mesei."
+        ]
+      }
+    },
+    "espurr": {
+      "name": {
+        "en": [
+          "Espurr"
+        ],
+        "text": [
+          "Espurr"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It stares at nothing in particular. Its ears twitch."
+        ],
+        "text": [
+          "Se uită fix la nimic anume. Îi tresar urechile."
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Regular"
+        ],
+        "text": [
+          "Clienta fidelă"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every afternoon. The Furfrou knows my footsteps before I open the door."
+        ],
+        "text": [
+          "Vin în fiecare după-amiază. Furfrou îmi recunoaște pașii înainte să deschid ușa."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

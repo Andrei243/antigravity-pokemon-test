@@ -48,9 +48,26 @@
     { "warp": 31, "map": "LumioseCity_Gazette", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 5, "map": "LumioseCity_Gallery", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 15, "map": "LumioseCity_TelevisionLobby", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 30, "map": "LumioseCity_TradeSociety", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 30, "map": "LumioseCity_TradeSociety", "x": 4, "y": 8, "facing": "Up" },
+    // Plan 23, Kalos's last species: the thirteen doors left shut, on rooms of ours. The Battle Institute (0: three
+    // examiners fought one after another, once a day, rated by the turns they took), the PR Video Studio (1), six cafés
+    // (Introversion 4, Ultimo 7, Woof 11, Soleil 12, the Shutterbug Café 14 and Kizahashi 16), the Chapellerie's hats on
+    // the wardrobe screen (8), Coiffure Clips (17), and three flats of the city's people (20, 21, 25)
+    { "warp": 0, "map": "LumioseCity_BattleInstitute", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 1, "map": "LumioseCity_PrStudio", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "LumioseCity_CafeIntroversion", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 7, "map": "LumioseCity_CafeUltimo", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 8, "map": "LumioseCity_HatShop", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 11, "map": "LumioseCity_CafeWoof", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 12, "map": "LumioseCity_CafeSoleil", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 14, "map": "LumioseCity_ShutterbugCafe", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 16, "map": "LumioseCity_CafeKizahashi", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 17, "map": "LumioseCity_CoiffureClips", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 20, "map": "LumioseCity_VertApartment", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 21, "map": "LumioseCity_PainterHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 25, "map": "LumioseCity_OldCoupleHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  "locked": [ 0, 1, 4, 7, 8, 11, 12, 14, 16, 17, 20, 21, 25 ],
+  "locked": [],
   "triggers": [
     { "script": "Assistants", "x": 358, "z": 412, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 9 },
     { "script": "NotYetNorth", "x": 358, "z": 301, "width": 4, "depth": 1, "variable": "VAR_KALOS_LUMIOSE_ROADS", "value": 0 },

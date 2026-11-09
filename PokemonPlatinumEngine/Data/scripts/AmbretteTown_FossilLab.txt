@@ -1,9 +1,9 @@
 # Ambrette Town's fossil laboratory (plan 23, Kalos's species; docs/mechanics/rulings.md, "Kalos's port, the bay's
 # islets, Waterfall and the other HMs"). The lines are our own, on X and Y's beat as it is publicly described: the
-# laboratory beside the aquarium revives Fossils dug out of the Glittering Cave. X and Y's Jaw and Sail Fossils are no
-# items of the data yet, so its assistant gives the one Fossil the data has, an Old Amber, once (FLAG_KALOS_RECEIVED_OLD_AMBER),
-# and the restorer revives any Fossil at level 20 once the player has gone out and come back (plan 06 · R16b's fossil
-# command, as Alola's Fossil Restoration Center does).
+# laboratory beside the aquarium revives Fossils dug out of the Glittering Cave, whose fossil seeker hands over X and
+# Y's Jaw and Sail Fossils (glittering_cave.txt, since Kalos's last species); its assistant gives an Old Amber once
+# (FLAG_KALOS_RECEIVED_OLD_AMBER), and the restorer revives any Fossil at level 20 once the player has gone out and come
+# back (plan 06 · R16b's fossil command, as Alola's Fossil Restoration Center does).
 
 
 script Restorer

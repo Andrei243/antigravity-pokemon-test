@@ -47,6 +47,11 @@
         "dialogueAfter": "Psychic Odile: A view is better with a friend. I will remember that."
       }
     }
-  }
+  },
+  // Plan 23, Kalos's last species: Hoopa come through one of its rings into the gallery once the Mega Ring is upgraded
+  // (lost_hotel.txt)
+  "npcs": [
+    { "id": "hoopa", "name": "Hoopa", "npcType": "Pokemon", "species": "Hoopa", "x": 40, "y": 11, "facing": "Down", "script": "Hoopa", "hiddenBy": "FLAG_KALOS_HOOPA_GONE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
+  ]
   // (Plan 23 · Z4b laid the Banettite here while the Chamber of Emptiness wasn't drawn; it lies there since, as X and Y's)
 }

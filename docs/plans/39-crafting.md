@@ -36,7 +36,7 @@ Written 2026-11-07, before any session, at the user's request: one of ten plans 
 ### Making things
 
 - **The kit's MAKE tab** (CR3): the recipes of `Data/recipes.json`'s `kit` section, each the materials and items it takes and what it gives: the Poké, Great and Ultra Balls, Hisui's five throwing balls (their first source), a little medicine, Repels, Escape Ropes, Honey and the four mulches (which feed CR5's berries). `Models/Crafting.cs` (`CraftRecipe`, `CraftRecipes`, `Crafting.WhyNot`, `Make`) takes and gives exactly, refuses a full bag and makes nothing for less than its Mart price in its materials' worth. A made thing is no find: the randomiser leaves it as its recipe names it, and the code says so (CLAUDE.md's rule for a place that gives an item). The workshop's apprentice trades three of a type's common material for one of its rare.
-- **The TM maker** (CR4, decision 4): a tab of the same screen, opened from a PC (`common.PC`'s modern branch offers it once the kit is in the bag, through `craft tm`). It lists every TM and TR the player has ever had in the bag (`Inventory.MachinesHad`, noted as a machine is added and saved as `SaveData.MachinesHad`; an older save knows those in its bag) and makes one at a cost by its move: that type's common material, its rare one for a strong move, and money by the move's power (`recipes.json`'s `machines` tiers). A made TM teaches as a found one does (`MoveTeaching.Learn`) and is used up the same way; an HM is never made. It makes the machines the data has (Platinum's 92 TMs and the 100 TRs): a TM for every move would be a new table of machines and every species' `TmMoves`, which no session of this plan owns.
+- **The TM maker** (CR4, decision 4): a tab of the same screen, opened from a PC (`common.PC`'s modern branch offers it once the kit is in the bag, through `craft tm`). It lists every TM and TR the player has ever had in the bag (`Inventory.MachinesHad`, noted as a machine is added and saved as `SaveData.MachinesHad`; an older save knows those in its bag) and makes one at a cost by its move: that type's common material, its rare one for a strong move, and money by the move's power (`recipes.json`'s `machines` tiers). A made TM teaches as a found one does (`MoveTeaching.Learn`) and is used up the same way; an HM is never made. It makes the machines the data has (Platinum's 92 TMs and the 100 TRs, and the later TMs 93 to 304 plan 36 · TR9 added): a TM for every move would be a new table of machines and every species' `TmMoves`, which no session of this plan owns.
 
 ### Crossing berries
 
@@ -93,6 +93,13 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Tests (`TmMakerTests`): a machine known from its first time in the bag, and an older save knowing those in its bag; the cost by type and tier; made into the bag with materials and money taken, refused short; no HM listed; a made TM teaches and is used up as a found one; the PC offers the maker with the kit and not without (`StoryTests`).
 - Shots: `cr30_pc_menu`, `cr31_tm_list`, `cr32_tm_cost`, `cr33_tm_made`.
 - **Done when** TM27 (Return), taught and gone, is made again at a Pokémon Center's PC and teaches.
+
+**CR4 outcome (2026-11-07)**
+
+- **Built**: `Inventory.MachinesHad` (TMs and TRs noted as added, kept when used up, never an HM; `NoteMachinesHad`) and `SaveData.MachinesHad` (null while empty and in an older save, which knows the machines in its bag as it loads; no version raised), `Models/Recipes.cs` (`RecipesFile`, `RecipeTable`) and `Data/recipes.json` with `machines` (four tiers by base power; a status move falls in the first, a damaging move with no power in the data counts as `variablePower`, 80), its schema `docs/schemas/recipes.schema.json`, `Models/TmMaker.cs` (`Known`, `TierOf`, `CostOf`, `WhyNot`, `Make`), the TMS tab of `CraftingScreen` (opened by `Open(state, bag, money, atMaker)`; `Machines`, `Confirm`, `TakeSpent`, `Notice`; the tab exists only at a PC) with `ModernUi.DrawMachines`, `craft tm` (the sixth word of `craft`: `RESULT` 1 with the kit, and the kit opens on its TMs tab), `common.PC`'s modern branch offering TM MAKER once the kit is held (with and without the Seal Case), the money taken by `UpdateCrafting` as the screen makes a machine, the content check's rules for `recipes.json` (tiers named once and climbing, the last holding every move, every TM and TR of the items having a cost), the words (`crafting.tm.*`, `crafting.hint.*`, Romanian too), the rulings' TMs row rewritten, the style guide's "The kit's TMS tab", `docs/scripts.md`, `docs/data-files.md`, the changelog, and `TmMakerTests`.
+- **Deviations**: none of substance. The price is a tier table of money and counts only (the plan's `machines` tiers); a TM is not held to its Mart price in materials, which is CR3's rule for the kit's recipes. `recipes.json` is created here with `machines` alone: CR3 adds `kit` beside it.
+- **Later (2026-11-09)**: plan 36 · TR9 has since added the newer games' machines (TM93 to TM304) to the data, so the maker makes those too once they have been in the bag; the plan's note above that it makes only Platinum's 92 TMs and the 100 TRs is out of date. This outcome had been lost from the plan by a later merge and is restored.
+- **Shots**: `cr30_pc_menu`, `cr31_tm_list`, `cr32_tm_cost` and `cr33_tm_made` are written in the harness's `crafting` mode and are still owed (no GPU in the sessions that built and re-checked it).
 
 ### CR5 · Crossing berries
 - Style guide first: "The kit" gains the CROSSES page.
@@ -152,7 +159,7 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - [x] CR1 The workshop, the kit and what Pokémon leave behind (2026-11-07; the outcome below)
 - [ ] CR2 Gathering in the field
 - [ ] CR3 Making things at the kit
-- [ ] CR4 The TM maker
+- [x] CR4 The TM maker (2026-11-07; the outcome below)
 - [ ] CR5 Crossing berries (with Johto's Berry Pots)
 - [ ] CR6 Cooking at the camp (plan 10 · F8, taken over)
 - [ ] CR7 Restaurants and stalls

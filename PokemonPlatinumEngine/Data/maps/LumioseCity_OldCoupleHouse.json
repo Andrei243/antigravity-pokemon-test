@@ -1,0 +1,132 @@
+{
+  "name": "LumioseCity_OldCoupleHouse",
+  "displayName": "Lumiose City",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#......####",
+    "#.........#",
+    "#.##......#",
+    "#.....##..#",
+    "#.........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 2,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 321,
+      "targetY": 388,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "grandpa",
+      "name": "Old Man",
+      "npcType": "old_man",
+      "x": 4,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "We met at a café on the boulevard, sixty years ago. It's a shoe shop now, but we still walk past it."
+      ]
+    },
+    {
+      "id": "grandma",
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "He always says it was a café. It was a bakery! But I let him tell it his way."
+      ]
+    },
+    {
+      "id": "skiddo",
+      "name": "Skiddo",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "It nibbles a cushion thoughtfully."
+      ],
+      "species": "Skiddo"
+    }
+  ],
+  "wildEncounters": []
+}

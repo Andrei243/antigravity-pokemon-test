@@ -1,0 +1,104 @@
+{
+  "name": "LumioseCity_HatShop",
+  "displayName": "Chapellerie",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###.###.###",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "ClothesRack",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 332,
+      "targetY": 338,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "milliner",
+      "name": "Milliner",
+      "npcType": "Clerk",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Milliner"
+    },
+    {
+      "id": "customer",
+      "name": "Customer",
+      "npcType": "lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "A beret for the morning, a cap for the afternoon. A hat for every hour, that's the Lumiose way."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -237,7 +237,13 @@ public enum Query
     /// <c>BerryMastersHouse</c> easy-chat checks): <c>phrase NAME "feelings:great" "people:rival"</c>, the words by key, so
     /// any language asks alike. <see cref="Condition.Name"/> is the phrase's name and <see cref="Condition.Other"/> the two keys.
     /// </summary>
-    Phrase
+    Phrase,
+    /// <summary>
+    /// The player holds the diploma of a Pokédex (plan 40 · GE4): <c>if diploma Johto</c>, <c>diploma National</c>,
+    /// <c>diploma Ours</c> (the Pokédex of our own's), by a region's name (every Pokédex it has), <c>National</c>,
+    /// <c>Ours</c> or a Pokédex's identifier (<see cref="Models.Pokedex.DiplomaDexes"/>). False with no Pokédex.
+    /// </summary>
+    Diploma
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

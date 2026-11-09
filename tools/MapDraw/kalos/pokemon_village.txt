@@ -2,10 +2,10 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTCCCCCCCCTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTCCCCMCCCTTTTTTTTTTTT
-TTTT............................................TTTT
-TTTT............................................TTTT
-TTTT..wwwwwwwwwwwwwwww..........................TTTT
-TTTT..wwwwwwwwwwwwwwww..........................TTTT
+TTTT..........................~~~~~~.~~~~~......TTTT
+TTTT..........................~~~~~~~~~~~~......TTTT
+TTTT..wwwwwwwwwwwwwwww........~~~~~~~~~~~~......TTTT
+TTTT..wwwwwwwwwwwwwwww........~~~~~~~~~~~~......TTTT
 TTTT..wwwwwwwwwwwwwwww........~~~~~~~~~~~~......TTTT
 TTTT..wwwwwwwwwwwwwwww........~~~~~~~~~~~~......TTTT
 TTTT..wwwwwwwwwwwwwwww........~~~~~~~~~~~~......TTTT

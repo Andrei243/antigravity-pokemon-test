@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Shutterbug Café"
+    ],
+    "text": [
+      "Shutterbug Café"
+    ]
+  },
+  "people": {
+    "owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every photo on these walls was taken by a customer. Bring us a good one and it goes up beside them."
+        ],
+        "text": [
+          "Fiecare fotografie de pe pereți e făcută de un client. Adu-ne una bună și o atârnăm lângă ele."
+        ]
+      }
+    },
+    "photographer": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          "Fotograful"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trick is to shoot your Pokémon from its own height. Kneel down, and the whole picture changes."
+        ],
+        "text": [
+          "Secretul e să-ți fotografiezi Pokémonul de la înălțimea lui. Îngenunchează și se schimbă toată poza."
+        ]
+      }
+    },
+    "reporter": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          "Reporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came in for a coffee and an interview. I've had three coffees, and the interview hasn't come in yet."
+        ],
+        "text": [
+          "Am venit pentru o cafea și un interviu. Am băut trei cafele, iar interviul încă n-a venit."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

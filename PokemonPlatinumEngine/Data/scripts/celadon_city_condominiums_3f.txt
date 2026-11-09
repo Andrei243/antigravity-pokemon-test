@@ -10,6 +10,10 @@ script Designer
   face self player
   charm due
   if var RESULT > 0 goto Charms
+  if diploma Ours goto OursDiploma
+  if diploma Kanto goto OwnDiploma
+  if var DIPLOMAS >= 3 goto ManyDiplomas
+  if var DIPLOMAS > 0 goto AnyDiploma
   sayown
   end
 label Charms
@@ -20,4 +24,18 @@ label Give
   charm due
   if var RESULT > 0 goto Give
   say "Fill in another Pokédex and drop by again. I'll find something more for you."
+  end
+# Plan 40 · GE4, ours: he reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). They sit after the lines
+# above so that the lines' numbers in the translation files stay where they were.
+label OursDiploma
+  say "Is that the diploma for the Pokémon that no region lists? Nobody on this floor has ever got one!" "We keep drawing new ones faster than we can number them, and you saw every single one."
+  end
+label OwnDiploma
+  say "A diploma for the whole Kanto Pokédex! We worked on that map for years, and you've seen everything we put in it." "Well, nearly everything. Not the stuff we left in the cupboard."
+  end
+label ManyDiplomas
+  say "Diplomas from several Pokédexes? You've seen more Pokémon than our whole team has drawn!" "Come to think of it, that's not a high bar. But it's a long way to walk, so well done."
+  end
+label AnyDiploma
+  say "Hey, that's a diploma on your Pokédex! Somebody did the hard part." "Every region lists different Pokémon. Go and fill in another, and come and show us."
   end

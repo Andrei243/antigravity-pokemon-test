@@ -92,6 +92,12 @@ public sealed class Region
     /// </summary>
     public RegionMovement Movement => File?.Movement ?? RegionMovement.Grid;
 
+    /// <summary>
+    /// The name of the manner its battles are filmed in (plan 45 · BC1): the file's <c>battleCamera</c>, null where it
+    /// names none (Sinnoh's). <c>Graphics.CameraManners.For</c> reads it beside the options' BATTLE CAMERA row.
+    /// </summary>
+    public string? BattleCamera => File?.BattleCamera;
+
     /// <summary>The body kit the region's people are drawn in (plan 30); chibi where the file says nothing.</summary>
     public CharacterKit Kit => File?.Kit ?? CharacterKit.Chibi;
 
@@ -992,6 +998,11 @@ public static class RegionDatabase
                 "LumioseCity_BistroDeux", "LumioseCity_TableATrois", "LumioseCity_Carrousel", "LumioseCity_GrandeTable",
                 "LumioseCity_GroomingSalon", "LumioseCity_Gazette", "LumioseCity_Gallery", "LumioseCity_TelevisionLobby",
                 "LumioseCity_TradeSociety",
+                // Plan 23, Kalos's last species: Lumiose's last thirteen doors
+                "LumioseCity_BattleInstitute", "LumioseCity_PrStudio", "LumioseCity_CafeIntroversion", "LumioseCity_CafeUltimo",
+                "LumioseCity_HatShop", "LumioseCity_CafeWoof", "LumioseCity_CafeSoleil", "LumioseCity_ShutterbugCafe",
+                "LumioseCity_CafeKizahashi", "LumioseCity_CoiffureClips", "LumioseCity_VertApartment", "LumioseCity_PainterHouse",
+                "LumioseCity_OldCoupleHouse",
             }
         },
         new()

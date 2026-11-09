@@ -29,6 +29,16 @@
           "Placa Stropilor"
         ]
       }
+    },
+    "volcanion": {
+      "name": {
+        "en": [
+          "Volcanion"
+        ],
+        "text": [
+          "Volcanion"
+        ]
+      }
     }
   },
   "signs": {

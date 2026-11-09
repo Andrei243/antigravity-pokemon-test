@@ -1292,6 +1292,8 @@ public partial class BattleEngine
         // A link battle takes in what the server sent (plan 28 · I3)
         PumpLink();
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
+        // How long the commands or the move cards have been open, which a manner's idle cycle films by (plan 45 · BC2)
+        Anim.NoteMenu(HUD.MenuState is BattleMenuState.Main or BattleMenuState.Moves);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);
         // A trainer's line is spoken in their voice, and their mouth moves with it (plan 26 · V6)

@@ -1,0 +1,104 @@
+{
+  "name": "LumioseCity_CafeKizahashi",
+  "displayName": "Café Kizahashi",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "#......##.#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 332,
+      "targetY": 358,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "owner",
+      "name": "Owner",
+      "npcType": "old_man",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Kizahashi"
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "npcType": "veteran",
+      "x": 2,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "I've sat on this stool for thirty years. The owner learned my order in the first week and never asked again."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}
