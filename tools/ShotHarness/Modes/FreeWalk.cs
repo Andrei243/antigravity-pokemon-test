@@ -14,7 +14,7 @@ partial class Harness
     // scale, with a curved Teen and Grown beside them (fw40_builds); their heads close up from the front, three-quarter
     // and side (fw40_heads); and the chibi kit's clips on a grown Teen: standing, two frames of the walk, the run, a bow,
     // sitting (fw40_poses). It prints each rig's bones, vertices and triangles and its height. Later sessions of plan 30
-    // add their parts (FM5's fw41 to fw44, FM6's fw45 to fw47, FM3's fw50).
+    // add their parts (FM5's fw41 to fw44, FM6's fw45 to fw47, FM3's fw50, FM10's fw60 and fw61).
     public void FreeWalkMode()
     {
         var context = game.RenderContext;
@@ -151,6 +151,9 @@ partial class Harness
                 }
             Save(board, "fw40_poses");
         }
+
+        // FM10: Kalos's cast in the grown kit (fw60_kalos_NN) and the sculpt's two fixes at work (fw61_kalos_fixes)
+        FreeWalkCast(context, pose, backdrop);
 
         // FM3: the crowd of thirty drawn as a grown region's people (last: it begins a game of its own in Kalos)
         FreeWalkCrowd();

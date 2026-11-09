@@ -56,6 +56,14 @@ internal sealed class SdfPrimitive
     /// <summary>Smooth-union or smooth-cut radius (0 joins with a crease).</summary>
     public float Blend;
 
+    /// <summary>
+    /// How far round this shape its bone's weight reaches into the surface it joins, where that is wider than the model's
+    /// <see cref="SdfModel.WeightBlend"/> and the shape's own <see cref="Blend"/>; the shape's surface is untouched. A
+    /// grown shoulder's (plan 30 · FM10): the bend of a raised arm spread over the side of the chest, so no edge under
+    /// the arm stretches. Nought for every shape that doesn't say, and then no part of the model's description.
+    /// </summary>
+    public float WeightReach;
+
     public Color Color = Color.White;
     public SurfaceMaterial Material;
 
@@ -206,7 +214,9 @@ internal sealed class SdfPrimitive
         sb.Append(Rounding.ToString("R")).Append(',').Append(Rotation.X.ToString("R")).Append(',').Append(Rotation.Y.ToString("R")).Append(',')
             .Append(Rotation.Z.ToString("R")).Append(',').Append(Rotation.W.ToString("R")).Append(',').Append(Blend.ToString("R")).Append(',')
             .Append(Color.R).Append(',').Append(Color.G).Append(',').Append(Color.B).Append(',').Append((int)Material).Append(',')
-            .Append(PaintsMaterial ? 1 : 0).Append(',').Append(PaintBones).Append(',').Append(Bone).Append(';');
+            .Append(PaintsMaterial ? 1 : 0).Append(',').Append(PaintBones).Append(',').Append(Bone);
+        if (WeightReach > 0f) sb.Append(",w").Append(WeightReach.ToString("R"));
+        sb.Append(';');
     }
 }
 
@@ -390,6 +400,9 @@ internal sealed class SdfModel
         var color = Vector3.One;
         var material = SurfaceMaterial.Default;
         bool any = false;
+        // The weight reach of the surface so far (plan 30 · FM10): a shape blended over one that reaches far blends its
+        // weight as far, whichever was added first (a garment's chest over its sleeve's shoulder)
+        float reach = 0f;
 
         foreach (var s in shapes)
         {
@@ -397,7 +410,7 @@ internal sealed class SdfModel
             {
                 case SdfOp.Add:
                 {
-                    float wBlend = Math.Max(WeightBlend, s.Blend);
+                    float wBlend = Math.Max(Math.Max(WeightBlend, s.Blend), Math.Max(s.WeightReach, reach));
                     float box = s.BoundsDistance(p);
                     if (any && box > 0f && box > d + wBlend) continue;
                     float di = s.Distance(p);
@@ -408,6 +421,7 @@ internal sealed class SdfModel
                         color = ci;
                         material = s.Material;
                         weights[s.Bone] = 1f;
+                        reach = s.WeightReach;
                         any = true;
                         break;
                     }
@@ -419,6 +433,7 @@ internal sealed class SdfModel
                     d = s.Blend > 0f ? Lerp(di, d, h) - s.Blend * h * (1f - h) : Math.Min(d, di);
                     color = Vector3.Lerp(ci, color, hc);
                     if (h < 0.5f) material = s.Material;
+                    if (reach > 0f || s.WeightReach > 0f) reach = Lerp(s.WeightReach, reach, hw);
                     if (hw < 1f)
                     {
                         for (int b = 0; b < weights.Length; b++) weights[b] *= hw;

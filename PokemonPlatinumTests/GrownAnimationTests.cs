@@ -396,9 +396,14 @@ public class GrownAnimationTests
         Assert.True(Joint(rig, talk, HumanBones.HandR).Z > Joint(rig, still, HumanBones.HandR).Z + 0.08f);
     }
 
-    // The clips that raise an arm to the shoulder's height or over it, where the sculpt's weights stretch the armpit (FM4's
-    // shoulder weights, plan 30, "FM5 as built": the armpit is left to them, and nothing else may tear)
+    // The clips that raise an arm to the shoulder's height or over it. Since plan 30 · FM10 the shoulder's weight reaches
+    // down the chest (GrownShoulderReach, GrownSleeveReach) and the body and its outline stretch nowhere; a garment's deep
+    // crease under the arm still stretches a few edges past four times at the top of a throw, a wave or a cheer (linear
+    // skinning's own limit there), which the test holds under MostAtTheArmpit for each clip, and nothing else may tear
     private static bool ArmsUp(string clip) => clip is "cheer" or "wave" or "throw" or "hop" or "bicycle" or "mount" or "surf";
+
+    /// <summary>The most edges of a garment or its outline the armpit may stretch in one clip (FM5 found up to 250).</summary>
+    private const int MostAtTheArmpit = 60;
 
     private static bool AtTheArmpit(CharacterRig rig, Vector3 p)
     {
@@ -408,6 +413,94 @@ public class GrownAnimationTests
             if (Vector3.Distance(p, shoulder) < 0.28f && p.Y < shoulder.Y + 0.04f && MathF.Abs(p.X) > 0.4f * MathF.Abs(shoulder.X)) return true;
         }
         return false;
+    }
+
+    /// <summary>A mesh's vertices and normals as a pose carries them.</summary>
+    private static (Vector3[] At, Vector3[] Normal) Skinned(SdfMesh mesh, Matrix4x4[] skin)
+    {
+        var at = new Vector3[mesh.VertexCount];
+        var normal = new Vector3[mesh.VertexCount];
+        for (int v = 0; v < mesh.VertexCount; v++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                float w = mesh.BoneWeights[v * 4 + k];
+                if (w == 0f) continue;
+                var m = skin[mesh.BoneIndices[v * 4 + k]];
+                at[v] += Vector3.Transform(mesh.Positions[v], m) * w;
+                normal[v] += Vector3.TransformNormal(mesh.Normals[v], m) * w;
+            }
+            if (normal[v] != Vector3.Zero) normal[v] = Vector3.Normalize(normal[v]);
+        }
+        return (at, normal);
+    }
+
+    /// <summary>The bone a vertex of a mesh follows most.</summary>
+    private static int Heaviest(SdfMesh mesh, int v)
+    {
+        int best = mesh.BoneIndices[v * 4];
+        float most = -1f;
+        for (int k = 0; k < 4; k++)
+            if (mesh.BoneWeights[v * 4 + k] > most) { most = mesh.BoneWeights[v * 4 + k]; best = mesh.BoneIndices[v * 4 + k]; }
+        return best;
+    }
+
+    /// <summary>How far a thigh may stand out of a skirt and not be seen: half the garment's outline, a few millimetres.</summary>
+    private const float Through = CharacterModels.GrownOutlineThickness / 2f;
+
+    [Theory]
+    [InlineData("LASS~Teen")]
+    [InlineData("SERENA~Teen")]
+    [InlineData("NURSE~Grown")]
+    [InlineData("MALVA~Grown")]
+    public void TheThighsStayUnderASkirtThroughAStride(string type)
+    {
+        // Plan 30 · FM10 (FM5's finding (2)): at the widest of a walk's and a run's stride the forward thigh came out
+        // through a skirt's side. No vertex of a thigh between the skirt's hem and the hips stands out of the skirt
+        var rig = Rig(type);
+        var clothes = rig.Clothes!;
+        var skirt = Enumerable.Range(0, clothes.VertexCount).Where(v => Heaviest(clothes, v) == HumanBones.Skirt).ToArray();
+        Assert.NotEmpty(skirt);
+        float hem = skirt.Min(v => clothes.Positions[v].Y), hip = rig.Skeleton[HumanBones.ThighL].Joint.Y;
+        var body = rig.Mesh;
+        var thighs = Enumerable.Range(0, body.VertexCount)
+            .Where(v => Heaviest(body, v) is HumanBones.ThighL or HumanBones.ThighR && body.Positions[v].Y > hem + 0.03f && body.Positions[v].Y < hip - 0.02f).ToArray();
+        int worst = 0;
+        string at = "";
+        foreach (float run in new[] { -1f, 0f, 1f })
+            for (int step = 0; step < (run < 0f ? 1 : 8); step++)
+            {
+                // (standing first: the skirt over the thighs as it was sculpted)
+                var skin = Posed(rig, run < 0f ? new CharacterPose { Time = 0.4f } : new CharacterPose { Walk = step / 8f, WalkBlend = 1f, RunBlend = run, Time = 0.4f });
+                var (bodyAt, _) = Skinned(body, skin);
+                var (clothAt, clothNormal) = Skinned(clothes, skin);
+                int out_ = 0, deep = 0;
+                float deepest = 0f;
+                foreach (int v in thighs)
+                {
+                    var p = bodyAt[v];
+                    int near = skirt[0];
+                    float best = float.MaxValue;
+                    foreach (int c in skirt)
+                    {
+                        float d = Vector3.DistanceSquared(p, clothAt[c]);
+                        if (d < best) { best = d; near = c; }
+                    }
+                    // A thigh seen below the hem (nearest the hem's cut face or its rim) is no thigh through the skirt: only
+                    // where the skirt's side is nearest, a little above its hem, does it count
+                    float by = Vector3.Dot(p - clothAt[near], clothNormal[near]);
+                    if (clothNormal[near].Y > -0.7f && clothes.Positions[near].Y > hem + 0.02f && by > Through)
+                    {
+                        out_++;
+                        deepest = Math.Max(deepest, by);
+                        if (by > CharacterModels.GrownOutlineThickness) deep++;
+                    }
+                }
+                if (out_ > 0) output.WriteLine($"  {(run < 0f ? "standing" : run > 0f ? "run" : "walk")} {step}/8: {out_} out, {deep} deeper than an outline, the deepest {deepest:0.000}");
+                if (out_ > worst) { worst = out_; at = run < 0f ? "standing" : $"{(run > 0f ? "run" : "walk")} at {step}/8"; }
+            }
+        output.WriteLine($"{type}: {thighs.Length} vertices of the thighs under the skirt; at worst {worst} out of it ({at})");
+        Assert.True(worst == 0, $"{worst} vertices of a thigh stand out of the skirt in the {at}");
     }
 
     public static IEnumerable<object[]> Looks => new[] { "PLAYER~Teen", "ROWAN~Grown", "LASS~Teen", "BLACKBELT~GrownBroad", "YOUNGSTER~Child", "OLD_MAN~GrownElder" }.Select(t => new object[] { t });
@@ -451,10 +544,11 @@ public class GrownAnimationTests
                         int a = mesh.Indices[i + k], b = mesh.Indices[i + (k + 1) % 3];
                         float now = Vector3.Distance(at[a], at[b]);
                         if (now <= 0.02f || now <= 4f * Vector3.Distance(mesh.Positions[a], mesh.Positions[b])) continue;
-                        if (ArmsUp(name) && AtTheArmpit(rig, mesh.Positions[a]) && AtTheArmpit(rig, mesh.Positions[b])) armpit++;
+                        if (part.StartsWith("clothes", StringComparison.Ordinal) && ArmsUp(name) && AtTheArmpit(rig, mesh.Positions[a]) && AtTheArmpit(rig, mesh.Positions[b])) armpit++;
                         else { torn++; where = mesh.Positions[a]; }
                     }
                 if (armpit > 0) output.WriteLine($"{type}: {armpit} edges of the {part} stretch at the armpit in the {name}");
+                if (armpit > MostAtTheArmpit) failures.Add($"{armpit} edges of the {part} stretch at the armpit in the {name}, more than {MostAtTheArmpit}");
                 if (torn > 0) failures.Add($"{torn} edges of the {part} in the {name}, one at {where}");
             }
         }
