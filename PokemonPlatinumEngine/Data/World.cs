@@ -2848,6 +2848,9 @@ public static class WorldMapBuilder
             // (drawn there only: they are spoken to from the floor before the furniture, as from beside it)
             if (person.Level is { } above) npc.RaisedBy = above;
             if (person.Stance is { } stance) npc.Stance = stance;
+            // A legendary that waits where it is met stands at an alpha's size (Resolution Cave's Zygarde; style guide,
+            // "Pokémon in the field"), never larger
+            if (person.Scale is { } scale && npc.IsPokemon) npc.Scale = Math.Clamp(scale, 1f, Overworld.Alphas.Scale);
             // Someone seen only while a flag is set (Faraway Island's Mew in the grass, plan 21 · H12, part k)
             npc.SeenBy = person.SeenBy;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's

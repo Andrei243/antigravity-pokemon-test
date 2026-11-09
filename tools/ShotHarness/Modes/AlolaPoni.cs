@@ -8,7 +8,8 @@ partial class Harness
     /// <c>wp15</c>: Poni Grove and Stakataka's ring, Poni Plains, the Gauntlet's rough ground and the Battle Tree's doors,
     /// Poni Meadow and Resolution Cave's mouth, Poni Coast and its islet, the cave's hall and Zygarde's chamber, Route 11,
     /// Blush Mountain's foot and its power plant, Route 15's islet), the rides (<c>wp16</c> Mudsdale on the rough ground,
-    /// <c>wp17</c> Sharpedo under a surfer), the altar's keeper (<c>wp18</c>) and Poni Plains after dark (<c>wp19</c>).
+    /// <c>wp17</c> Sharpedo under a surfer), the altar's keeper (<c>wp18</c>) and Poni Plains after dark (<c>wp19</c>), and
+    /// last the Battle Tree and the power plant from before their doors by day and after dark (<c>wp20</c> to <c>wp23</c>).
     /// </summary>
     public void AlolaPoniMode()
     {
@@ -73,6 +74,18 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);
         At("Poni", 232, 172, Direction.Right); Frames(2); game.LocationSign.Hide(); Shot("wp19_poni_plains_night");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+
+        // The Battle Tree and the power plant from two tiles before their doors, where the trunk, the crown, the pipes
+        // and the cooling tower are all in the picture (wp20, wp21), and the tree's crown and the plant's lights after
+        // dark (wp22, wp23)
+        At("Poni", 299, 20, Direction.Up); Frames(2); game.LocationSign.Hide(); Shot("wp20_battle_tree_door");
+        At("Ulaula", 119, 149, Direction.Up); Frames(2); game.LocationSign.Hide(); Shot("wp21_power_plant_door");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        At("Poni", 299, 20, Direction.Up); Frames(2); game.LocationSign.Hide(); Shot("wp22_battle_tree_night");
+        At("Ulaula", 119, 149, Direction.Up); Frames(2); game.LocationSign.Hide(); Shot("wp23_power_plant_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
         game.DeleteSave();

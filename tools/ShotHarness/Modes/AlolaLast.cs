@@ -13,7 +13,8 @@ partial class Harness
     /// the Battle Tree's lobby and hall, the power plant), a Zygarde Cell on Kala'e Bay and Dexio and Sina on Route 16
     /// (<c>wt08</c>, <c>wt09</c>), the Island Scan's Totodile in Seaward Cave (<c>wt10</c>), Stoutland ridden beside a
     /// buried item (<c>wt11</c>, shot a step on so the nose's "!" is up) and the cemetery's ghost girl after dark (<c>wt12</c>);
-    /// then <see cref="AlolaOddsAndEnds"/>'s <c>wt20</c> to <c>wt41</c> (<c>AlolaLastOdds.cs</c>).
+    /// then <see cref="AlolaOddsAndEnds"/>'s <c>wt20</c> to <c>wt41</c> (<c>AlolaLastOdds.cs</c>), and last the reef gap's
+    /// strong current at two moments a quarter of a second apart (<c>wt50</c>, <c>wt51</c>).
     /// </summary>
     public void AlolaLastMode()
     {
@@ -72,6 +73,20 @@ partial class Harness
         engine.ApplySettings(window: false);
 
         AlolaOddsAndEnds(story);
+
+        // The reef gap's strong current at two moments a quarter of a second apart, from a Lapras three tiles west of
+        // it: the streaks run west with the flow (wt50, wt51, each with its crop at the screen's own resolution)
+        game.Player.SetJet(null);
+        game.Player.SetMode(TravelMode.OnFoot);
+        At("Ulaula", 173, 344, Direction.Right);
+        game.Player.SetMode(TravelMode.Surfing);
+        game.Player.Carrier = "Lapras";
+        Frames(6); game.LocationSign.Hide();
+        Shot("wt50_current_a"); ShotCrop("wt50_current_a_close", 1080, 430, 200, 200, 4);
+        Frames(15);
+        Shot("wt51_current_b"); ShotCrop("wt51_current_b_close", 1080, 430, 200, 200, 4);
+        Console.WriteLine($"  the current: {game.Map.BehaviourAt(176, 344)} at 176,344; the player at {game.Player.GridX},{game.Player.GridY}");
+        game.Player.SetMode(TravelMode.OnFoot);
         game.DeleteSave();
     }
 

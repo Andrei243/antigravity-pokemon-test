@@ -140,7 +140,9 @@ public enum AreaClimate
     /// <summary>Stark Mountain: a sun dimmed and reddened by ash outdoors, rock lit from below by its own heat inside.</summary>
     Volcanic,
     /// <summary>Snowpoint Temple: stone and ice under a cold, blue light.</summary>
-    Frozen
+    Frozen,
+    /// <summary>Resolution Cave (plan 23): rock lit green by the cells drifting out of its cracks. Nothing outdoors.</summary>
+    Verdant
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>

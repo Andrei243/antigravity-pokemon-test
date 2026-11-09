@@ -431,7 +431,8 @@ public static partial class RegionMapArt
         BuildingKind.PokeMart => new Color(70, 128, 220, 255),
         BuildingKind.Gym => new Color(236, 172, 60, 255),
         BuildingKind.Lab or BuildingKind.Office or BuildingKind.TvStation or BuildingKind.Terminal or BuildingKind.Factory or BuildingKind.Warehouse
-            => new Color(132, 150, 176, 255),
+            or BuildingKind.PowerPlant => new Color(132, 150, 176, 255),
+        BuildingKind.BattleTree => new Color(84, 140, 76, 255),
         BuildingKind.Galactic => new Color(104, 112, 150, 255),
         BuildingKind.Gate => new Color(110, 160, 150, 255),
         BuildingKind.League or BuildingKind.Temple or BuildingKind.Shrine or BuildingKind.Tower or BuildingKind.Lighthouse or BuildingKind.Chapel

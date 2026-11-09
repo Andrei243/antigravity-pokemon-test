@@ -455,6 +455,44 @@ public class WorldModelTests
         Assert.True(built >= 80 * 5);
     }
 
+    /// <summary>
+    /// Alola's Battle Tree and geothermal power plant (plan 23; style guide, "Kinds of building"), found by the rooms
+    /// their doors lead into: a hall with a trunk round its door and a crown of leaves over it, and a plant with pipes,
+    /// stacks and a cooling tower. Both build without a GPU, paint clean pixel art and stand on their own tiles.
+    /// </summary>
+    [Theory]
+    [InlineData("PoniGauntlet_BattleTree", BuildingKind.BattleTree, 20, 8)]
+    [InlineData("BlushMountain_PowerPlant", BuildingKind.PowerPlant, 24, 9)]
+    public void AlolasBattleTreeAndPowerPlantBuildAndPaintCleanly(string room, BuildingKind kind, int width, int depth)
+    {
+        Assert.Equal(kind, MapStructures.KindOfDoor(room));
+        var b = new BuildingInfo { X0 = 10, Y0 = 10, X1 = 10 + width - 1, Y1 = 10 + depth - 1, Kind = kind, RoofTile = TileType.RoofRed, TownsRoof = true };
+        b.Doors.Add((10 + width / 2, room));
+        var style = BuildingArt.StyleOf(b, Architecture.Islander);
+        var kit = new KitBuilder(new ArtSheet(), OutdoorVS);
+        var targets = new BuildingTargets { RoofTiles = _ => new MeshBuilder(), PublicLight = new MeshBuilder(), HomeLight = new MeshBuilder() };
+        BuildingModels.Add(kit, b, style, targets);
+        AssertClean(kit.Sheet, room);
+        var (min, max) = kit.Solid.Bounds();
+        Assert.InRange(min.Y, -0.01f, 0.01f);
+        Assert.True(min.X >= b.X0 - 0.6f && max.X <= b.X1 + 1.6f, $"{room} reaches from {min.X} to {max.X}");
+        // Both stand well over their walls: the tree's crown and the plant's cooling tower
+        Assert.True(max.Y > style.WallHeight * KitBuilder.Texel * OutdoorVS + 4f, $"{room} stands only {max.Y} tall");
+        if (kind == BuildingKind.BattleTree)
+        {
+            Assert.True(style.Gear.HasFlag(RoofGear.GreatTree));
+            Assert.Contains(kit.Sheet.Faces, f => f.Key.EndsWith(".trunk"));
+            Assert.Contains(kit.Sheet.Faces, f => f.Key.EndsWith(".crown.front"));
+        }
+        else
+        {
+            Assert.True(style.Gear.HasFlag(RoofGear.Pipes) && style.Gear.HasFlag(RoofGear.Cooling));
+            Assert.Equal((SignKind.Text, "POWER PLANT"), (style.Sign, style.SignText));
+            Assert.Contains(kit.Sheet.Faces, f => f.Key == "coolingtower");
+            Assert.Contains(kit.Sheet.Faces, f => f.Key.StartsWith("pipe.riser"));
+        }
+    }
+
     [Fact]
     public void SnowAndSheetMetalAreRoofsOfTheirOwn()
     {

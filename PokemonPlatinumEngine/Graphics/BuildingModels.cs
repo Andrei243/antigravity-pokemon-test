@@ -121,6 +121,11 @@ internal static class BuildingModels
         if (s.Gear.HasFlag(RoofGear.Turrets) && !b.Annex) Turrets(kit, s, targets, id, x0, x1, zF, h);
 
         var bays = BuildingArt.BaysOf(b);
+        bool tree = s.Gear.HasFlag(RoofGear.GreatTree) && !b.Annex;
+        if (tree) GreatTree(kit, b, id, bays, x0, x1, zB, zF, h);
+        if (s.Gear.HasFlag(RoofGear.Pipes) && !b.Annex)
+            Pipes(kit, b, id, bays, x0, x1, zF, h, towers: s.Gear.HasFlag(RoofGear.Cooling),
+                signHalf: s.SignText == null ? 0 : Pix.TextWidth(s.SignText, 2) / 2 + 14);
         byte windows = BuildingArt.WindowLight(b, s);
         var windowPools = windows == ArtSheet.HomeLight ? targets.HomeLight : targets.PublicLight;
         // A porch the world's data builds out takes the place of the entrance block the style would add
@@ -134,7 +139,8 @@ internal static class BuildingModels
             {
                 bool portal = s.Portal > 0 && s.Pitched && !porch && !s.SlidingDoor;
                 if (portal) Portal(kit, b, s, id, cx, zF);
-                float doorZ = zF + (portal ? BuildingArt.PortalDepth : 0);
+                // (A great tree's door is cut into its trunk, which stands proud of the wall)
+                float doorZ = zF + (portal ? BuildingArt.PortalDepth : 0) + (tree ? TrunkProud : 0);
                 float stepHalf = s.SlidingDoor ? 28 : s.GlassDoor ? 21 : portal ? 23 : 14;
                 // In front of an entrance block the step is shallow, so it stays behind whoever stands at the door
                 kit.Block("step", BuildingArt.StepStone, cx - stepHalf, cx + stepHalf, doorZ, doorZ + (portal ? 4 : 7), 0, 3);
@@ -335,6 +341,149 @@ internal static class BuildingModels
         }
     }
 
+    // ------------------------------------------------------------------ Alola's Battle Tree and power plant
+
+    /// <summary>How far a great tree's trunk stands in front of the wall, how wide it is and how deep, in texels.</summary>
+    public const int TrunkProud = 14, TrunkWidth = 128, TrunkDepth = 74;
+
+    /// <summary>How far a great tree's trunk rises over the top of the walls (into the crown), in screen rows.</summary>
+    public const int TrunkRise = 40;
+
+    /// <summary>The heights of the crown's three cards, in screen rows: the fringe in front, the middle and the back.</summary>
+    public const int FringeRows = 112, MiddleRows = 150, BackRows = 190;
+
+    /// <summary>How far the fringe's leaves reach down below the top of the wall, and how far its vines hang under them, in screen rows.</summary>
+    public const int FringeDrop = 18, VineRows = 44;
+
+    /// <summary>
+    /// A great tree grown through a hall (the Battle Tree; style guide, "Kinds of building"): a trunk of bark round the
+    /// door, standing proud of the wall from the ground up into the crown; roots either side of it at the wall's foot;
+    /// and the crown over the roof in three upright cards, the fringe in front of the wall and the trunk, a middle
+    /// one, and the back, round on top.
+    /// </summary>
+    private static void GreatTree(KitBuilder kit, BuildingInfo b, string id, BuildingArt.BayKind[] bays, int x0, int x1, int zB, int zF, int h)
+    {
+        int door = Array.IndexOf(bays, BuildingArt.BayKind.Door);
+        float cx = door < 0 ? (x0 + x1) / 2f : door * BuildingArt.Bay + BuildingArt.Bay / 2f;
+        float tx0 = MathF.Max(x0 + 8, cx - TrunkWidth / 2f), tx1 = MathF.Min(x1 - 8, cx + TrunkWidth / 2f);
+        int tw = (int)MathF.Round(tx1 - tx0), top = h + TrunkRise;
+        var front = kit.Face($"{id}.trunk", tw, top, c => BuildingArt.PaintTrunkFront(c, b.X0));
+        var side = kit.Face($"trunk.side.{top}", TrunkDepth, top, c => BuildingArt.PaintBark(c, 5));
+        var crown = kit.Face($"trunk.top.{tw}", tw, TrunkDepth, c => BuildingArt.PaintBark(c, 3));
+        kit.Box(tx0, tx1, zF + TrunkProud - TrunkDepth, zF + TrunkProud, 0, top, crown, front, side, side);
+
+        // The roots, behind the trunk's front so they leave it from its sides
+        var west = kit.Face("roots.west", 120, 26, c => BuildingArt.PaintRoots(c, mirror: false));
+        var east = kit.Face("roots.east", 120, 26, c => BuildingArt.PaintRoots(c, mirror: true));
+        kit.Card(tx0 - 114, tx0 + 6, zF + 6, 0, 26, west);
+        kit.Card(tx1 - 6, tx1 + 114, zF + 6, 0, 26, east);
+
+        // The crown: the back round on top, then the middle, then the fringe hanging over the top of the wall in front
+        int width = x1 - x0;
+        var back = kit.Face($"{id}.crown.back", width + 24, BackRows, c => BuildingArt.PaintCrown(c, b.X0 + 2, dome: true));
+        kit.Card(x0 - 12, x1 + 12, zB + 24, h - 5, h - 5 + BackRows, back);
+        var middle = kit.Face($"{id}.crown.middle", width + 12, MiddleRows, c => BuildingArt.PaintCrown(c, b.X0 + 1, dome: true));
+        kit.Card(x0 - 6, x1 + 6, (zB + zF) / 2f, h - 5, h - 5 + MiddleRows, middle);
+        // (The fringe's foot hangs over the band along the top of the wall, and its vines over the upper windows)
+        int clearFrom = (int)(tx0 - (x0 - 12)), clearTo = (int)(tx1 - (x0 - 12));
+        var fringe = kit.Face($"{id}.crown.front", width + 24, FringeRows + VineRows,
+            c => BuildingArt.PaintCrown(c, b.X0, dome: false, vineRows: VineRows, clearFrom: clearFrom, clearTo: clearTo));
+        kit.Card(x0 - 12, x1 + 12, zF + TrunkProud + 2, h - FringeDrop - VineRows, h - FringeDrop + FringeRows, fringe);
+    }
+
+    /// <summary>
+    /// A power plant's pipes (style guide, "Kinds of building"): a run of steel along the front at the top of the
+    /// ground storey, leaving the doors clear, and a drop from it to the ground every four bays with a valve wheel.
+    /// </summary>
+    private static void Pipes(KitBuilder kit, BuildingInfo b, string id, BuildingArt.BayKind[] bays, int x0, int x1, int zF, int h, bool towers, int signHalf)
+    {
+        const int thick = 8, y0 = 20;
+        // The doors (a sliding door takes the bay east of it too) stay clear of the run, and so do the bays a cooling
+        // tower and stacks stand before
+        bool Clear(int bay) => bay >= 0 && bay < bays.Length && bays[bay] == BuildingArt.BayKind.Door
+            || bay - 1 >= 0 && bay - 1 < bays.Length && bays[bay - 1] == BuildingArt.BayKind.Door
+            || towers && (bay < TowerBays || bay >= bays.Length - StackBays);
+        var runs = new List<(int A, int B)>();
+        int start = -1;
+        for (int i = 0; i <= bays.Length; i++)
+        {
+            bool free = i < bays.Length && !Clear(i);
+            if (free && start < 0) start = i;
+            if (!free && start >= 0) { runs.Add((start, i - 1)); start = -1; }
+        }
+        var topArt = kit.Face("pipe.top", 64, thick, c => BuildingArt.PaintPipe(c, upright: false));
+        foreach (var (a, z) in runs)
+        {
+            float px0 = MathF.Max(x0 + 6, a * BuildingArt.Bay + 4), px1 = MathF.Min(x1 - 6, (z + 1) * BuildingArt.Bay - 4);
+            int len = (int)MathF.Round(px1 - px0);
+            if (len < 16) continue;
+            var run = kit.Face($"pipe.run.{len}", len, thick, c => BuildingArt.PaintPipe(c, upright: false));
+            var lid = kit.Face($"pipe.lid.{len}", len, thick, BuildingArt.PaintPipeTop);
+            var end = kit.Face("pipe.end", thick, thick, c => BuildingArt.PaintPipe(c, upright: true));
+            kit.Box(px0, px1, zF, zF + thick, y0, y0 + thick, lid, run, end, end);
+        }
+
+        // Risers every four bays: from the ground up the whole wall and bent back over the parapet onto the roof, each
+        // with a valve wheel where the run meets it
+        int rise = h + 6;
+        var riser = kit.Face($"pipe.riser.{rise}", RiserThick, rise, c => BuildingArt.PaintPipe(c, upright: true));
+        var riserTop = kit.Face("pipe.risertop", RiserThick, RiserThick, BuildingArt.PaintPipeTop);
+        var bendSide = kit.Face("pipe.bend.side", 34, RiserThick, c => BuildingArt.PaintPipe(c, upright: false));
+        var bendTop = kit.Face("pipe.bend.top", RiserThick, 34, BuildingArt.PaintPipeTop);
+        var bendFront = kit.Face("pipe.bend.front", RiserThick, RiserThick, c => BuildingArt.PaintPipe(c, upright: true));
+        var valve = kit.Face("valve", 14, 14, BuildingArt.PaintValve);
+        for (int i = towers ? TowerBays + 1 : 1; i < bays.Length - 1; i += 3)
+        {
+            if (Clear(i)) continue;
+            float dx = i * BuildingArt.Bay + BuildingArt.Bay / 2f - RiserThick / 2f;
+            // (and none climbs over the name on the cornice)
+            if (MathF.Abs(dx + RiserThick / 2f - (x0 + x1) / 2f) < signHalf) continue;
+            kit.Box(dx, dx + RiserThick, zF, zF + RiserThick, 0, rise, riserTop, riser, riser, riser);
+            kit.Box(dx, dx + RiserThick, zF - 24, zF + RiserThick, rise, rise + RiserThick, bendTop, bendFront, bendSide, bendSide);
+            kit.Sprite(valve, dx + RiserThick / 2f, zF + RiserThick + 1, y0 - 2);
+        }
+    }
+
+    /// <summary>How thick a power plant's risers are, in texels.</summary>
+    public const int RiserThick = 10;
+
+    /// <summary>How many bays at each end of a power plant's front its cooling tower and its stacks stand before.</summary>
+    public const int TowerBays = 4, StackBays = 3;
+
+    /// <summary>How tall a power plant's stacks stand from the ground, in screen rows.</summary>
+    public const int StackRows = 170;
+
+    /// <summary>The cooling tower's card, in texels across and screen rows up (its plume of steam included).</summary>
+    public const int TowerWidth = 152, TowerRows = 150;
+
+    /// <summary>
+    /// A power plant's tower and stacks (style guide, "Kinds of building"): the cooling tower on the ground before the
+    /// first bays of its west end, two steel stacks before the last bays of its east end, and a pipe along the roof
+    /// from the one to the others. From the field, which looks down at a wall from a few tiles away, a roof is out of
+    /// the picture: what stands before the wall is what says what the building is.
+    /// </summary>
+    private static void CoolingTower(KitBuilder kit, int x0, int x1, int zF, int roofY)
+    {
+        var tower = kit.Face("coolingtower", TowerWidth, TowerRows, BuildingArt.PaintCoolingTower);
+        float tx = x0 + TowerBays * BuildingArt.Bay / 2f;
+        kit.Card(tx - TowerWidth / 2f, tx + TowerWidth / 2f, zF + 3, 0, TowerRows, tower);
+
+        var stack = kit.Face($"steelstack.{StackRows}", 18, StackRows, BuildingArt.PaintSteelStack);
+        var rim = kit.Face("steelstack.top", 18, 18, BuildingArt.PaintSteelStackTop);
+        float east = x1 - StackBays * BuildingArt.Bay;
+        foreach (float sx in new[] { east + 16f, east + 58f })
+            kit.Box(sx, sx + 18, zF + 2, zF + 20, 0, StackRows, rim, stack, stack, stack);
+
+        const int thick = 10;
+        float px0 = tx, px1 = east + 40;
+        int len = (int)MathF.Round(px1 - px0);
+        if (len < 16) return;
+        var run = kit.Face($"pipe.run.{len}", len, thick, c => BuildingArt.PaintPipe(c, upright: false));
+        var lid = kit.Face($"pipe.lid.{len}", len, thick, BuildingArt.PaintPipeTop);
+        var end = kit.Face("pipe.end", thick, thick, c => BuildingArt.PaintPipe(c, upright: true));
+        kit.Box(px0, px1, zF - 30, zF - 20, roofY + 14, roofY + 14 + thick, lid, run, end, end);
+    }
+
     // ------------------------------------------------------------------ roofs
 
     /// <summary>A gable roof with its ridge running east–west: the south slope faces the camera, tile rows level.</summary>
@@ -461,7 +610,10 @@ internal static class BuildingModels
         const int wall = 3;
         int roofY = h - 5, w = x1 - x0, d = zF - zB;
         bool snow = s.RoofColor.Equals(BuildingArt.SnowRoof);
-        var surface = kit.Face($"flatroof{(snow ? ".snow" : "")}.{w - 2 * wall}x{d - 2 * wall}", w - 2 * wall, d - 2 * wall, c => BuildingArt.PaintFlatRoof(c, snow));
+        // Under a great tree's crown the roof is leaves, where the crown's cards leave it to be seen
+        var surface = s.Gear.HasFlag(RoofGear.GreatTree)
+            ? kit.Face($"leafroof.{w - 2 * wall}x{d - 2 * wall}", w - 2 * wall, d - 2 * wall, c => BuildingArt.PaintCrown(c, 7, dome: false, solid: true))
+            : kit.Face($"flatroof{(snow ? ".snow" : "")}.{w - 2 * wall}x{d - 2 * wall}", w - 2 * wall, d - 2 * wall, c => BuildingArt.PaintFlatRoof(c, snow));
         kit.Box(x0 + wall, x1 - wall, zB + wall, zF - wall, roofY - 1, roofY, top: surface);
 
         Art Cap(int cw, int cd) => kit.Face($"parapet.cap.{cw}x{cd}", cw, cd, c => BuildingArt.PaintParapet(c, cap: true));
@@ -512,6 +664,7 @@ internal static class BuildingModels
             foreach (float sx in new[] { x1 - 46f, x1 - 78f })
                 if (sx > x0 + 20) kit.Box(sx, sx + 16, back, back + 16, roofY, roofY + 84, rim, stack, stack, stack);
         }
+        if (s.Gear.HasFlag(RoofGear.Cooling) && !b.Annex) CoolingTower(kit, x0, x1, zF, roofY);
         if (s.Gear.HasFlag(RoofGear.Spikes))
         {
             var spike = kit.Face("spike", 12, 30, BuildingArt.PaintSpike);
