@@ -74,3 +74,38 @@ script Totem
 label NotYet
   text "The counter's quiet. The ghosts among the shelves come first."
   end
+
+
+# Meltan (plan 23, Alola finished; plan 29 · LS11's rule for Alola, docs/plans/decisions/LS11-proposals-event-legendaries.md,
+# "Alola", built to its recommended answers, which the user may still change). No game of Alola has it: the games give it
+# from elsewhere. Ours nibbles the old shop's bolts once Alola's Hall of Fame is entered (the room shows it by the region's
+# flag), at level 60, and leaves behind it the 400 Meltan Candy that Melmetal's evolution asks for, once
+# (FLAG_ALOLA_MELTAN_MET hides it, whatever the battle's end).
+script Meltan
+  scene "Meltan in the old Thrifty Megamart"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 13 goto Look
+  if var PLAYER_Y != 12 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 13 11 1.0
+  camera zoom 1.4 0.8
+  shake self 6
+  effect sparkles 13 11 1.5
+  cry "Meltan"
+  speaker none
+  text "A little drop of liquid metal was gnawing a shelf's last bolt. Its hex nut of a head swung round to {player}!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Meltan" 60
+  setflag FLAG_ALOLA_MELTAN_MET
+  hide self
+  music area
+  text "Where it had fed, the shelf's floor glittered with little nuggets of metal, sweet-smelling and warm."
+  give "Meltan Candy" 400
+  text "They are what a Meltan sheds as it grows. Enough of them in the Bag, and a Meltan becomes something greater."
+  end

@@ -223,6 +223,18 @@
       "hiddenBy": "FLAG_ALOLA_MEGAMART_TRIAL_DONE",
       "shownBy": "FLAG_ALOLA_MEGAMART_TRIAL",
       "species": "Mimikyu"
+    },
+    {
+      "id": "meltan",
+      "name": "Meltan",
+      "npcType": "Pokemon",
+      "x": 13,
+      "y": 11,
+      "facing": "Down",
+      "script": "Meltan",
+      "hiddenBy": "FLAG_ALOLA_MELTAN_MET",
+      "shownBy": "AlolaHallOfFame",
+      "species": "Meltan"
     }
   ],
   "wildEncounters": []

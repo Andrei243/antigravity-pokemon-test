@@ -10,9 +10,13 @@ script OnEnter
   if time night goto Night
   if time latenight goto Night
   clearflag FLAG_ALOLA_CEMETERY_NIGHT
+  clearflag FLAG_ALOLA_MARSHADOW_NEAR
   end
 label Night
   setflag FLAG_ALOLA_CEMETERY_NIGHT
+  if not flag AlolaHallOfFame end
+  if var VAR_ALOLA_CEMETERY_GIRL != 3 end
+  setflag FLAG_ALOLA_MARSHADOW_NEAR
   end
 
 
@@ -105,4 +109,44 @@ script ScanLitwick
   text "It's the Litwick the Island Scan picked up! It's ready to battle!"
   wildbattle "Litwick" 10
   setflag FLAG_DAILY_ALOLA_SCAN_LITWICK_MET
+  end
+
+
+# Marshadow (plan 23, Alola finished; plan 29 · LS11's rule for Alola, docs/plans/decisions/LS11-proposals-event-legendaries.md,
+# "Alola", built to its recommended answers, which the user may still change). Sun and Moon give it by an event alone;
+# ours is a shadow that keeps to the cemetery after dark once Alola's Hall of Fame is entered and the little girl has gone
+# after her friend (the arrival sets FLAG_ALOLA_MARSHADOW_NEAR then, and clears it by day). Level 60. Beaten or caught it
+# is gone for good (FLAG_ALOLA_MARSHADOW_GONE); run from, it stays.
+script Marshadow
+  scene "Marshadow in Hau'oli Cemetery"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 366 goto Look
+  if var PLAYER_Y != 131 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 366 130 1.0
+  camera zoom 1.4 0.8
+  effect shadow 352 130 2 right wait
+  flicker self 6
+  effect mist 366 130 2.0
+  cry "Marshadow"
+  speaker none
+  text "The shadow by the lamp didn't move with the light. It stood up out of the dark and looked straight at {player}!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Marshadow" 60
+  if result == 2 goto Stays
+  setflag FLAG_ALOLA_MARSHADOW_GONE
+  hide self
+  music area
+  text "Where the shadow had stood, something small and dark glinted in the lamp's light."
+  give "Marshadium Z"
+  end
+label Stays
+  music area
+  text "The shadow slid back under the lamp's light, and waited."
   end

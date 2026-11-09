@@ -40,6 +40,11 @@
     "widow": { "name": "Old Woman", "npcType": "old_woman", "script": "Widow", "still": true },
     "widow_machamp": { "name": "Machamp", "npcType": "Pokemon", "species": "Machamp", "script": "WidowMachamp", "still": true }
   },
+  // Plan 23, Alola finished: Marshadow, a shadow by the east lamp after dark once the Hall of Fame is entered and the
+  // little girl has gone after her friend (hauoli_cemetery.Marshadow; plan 29 · LS11's rule for Alola)
+  "npcs": [
+    { "id": "marshadow", "name": "Marshadow", "npcType": "Pokemon", "species": "Marshadow", "x": 366, "y": 130, "facing": "Down", "script": "Marshadow", "hiddenBy": "FLAG_ALOLA_MARSHADOW_GONE", "shownBy": "FLAG_ALOLA_MARSHADOW_NEAR" }
+  ],
   // The flowers by the east lamp, where the girl's friend left something
   "readAt": [ { "x": 362, "z": 132, "script": "LampFlowers" } ],
   "signs": {

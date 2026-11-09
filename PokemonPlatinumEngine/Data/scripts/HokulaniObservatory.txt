@@ -90,3 +90,42 @@ script SecondTotem
   setflag FLAG_ALOLA_TOTEM_VIKAVOLT_DONE
   hide self
   end
+
+
+# Magearna (plan 23, Alola finished; plan 29 · LS11's rule for Alola, docs/plans/decisions/LS11-proposals-event-legendaries.md,
+# "Alola", built to its recommended answers, which the user may still change). Sun and Moon give it by an event alone;
+# ours waits in the observatory once Alola's Hall of Fame is entered and the second totem has been beaten here: the
+# Vikavolt had been feeding on the old machine's power, and with it gone the machine wakes (the room shows it by
+# FLAG_ALOLA_TOTEM_VIKAVOLT_DONE). Level 60, as Alola's other legends after the League. Beaten or caught it is gone for
+# good (FLAG_ALOLA_MAGEARNA_GONE); run from, it stays.
+script Magearna
+  scene "Magearna in Hokulani Observatory"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 12 goto Look
+  if var PLAYER_Y != 5 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 12 4 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 12 4 2.0
+  shake self 6
+  effect burst 12 4
+  cry "Magearna"
+  speaker none
+  text "Gears turned inside the old machine, and a little figure of pink and steel lifted its head. Its heart glowed!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Magearna" 60
+  if result == 2 goto Stays
+  setflag FLAG_ALOLA_MAGEARNA_GONE
+  hide self
+  music area
+  end
+label Stays
+  music area
+  text "The little machine sat back down among the wires, still ticking softly."
+  end

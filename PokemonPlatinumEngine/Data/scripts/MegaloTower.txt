@@ -49,6 +49,18 @@ script Veyra
   say "Necrozma has never let anyone this close. It knows you are different."
   end
 label Lit
+  if flag FLAG_ALOLA_LIGHTSEEKER_GIFTS goto Thanks
+  # Plan 23, Alola finished: the light's own crystal and the two machines that join Necrozma to the sun and the moon,
+  # once; and the Ultra Warp Ride, which the Altar's wormhole offers from now on (poni_altar.Wormhole)
+  say "Before you go: these are what our people made, long ago, to share the light with Necrozma rather than fight for it."
+  give "Ultranecrozium Z"
+  give "N-Solarizer"
+  give "N-Lunarizer"
+  say "And the wormhole at your altar knows the way now. Ride it further than the seven worlds, and it carries you wherever the light remembers."
+  say "Pokémon of every land have fallen through it over the years. You may meet some of them, waiting on the other side."
+  setflag FLAG_ALOLA_LIGHTSEEKER_GIFTS
+  end
+label Thanks
   say "We were the Lightseekers. I suppose we'll need a new name now. Come back whenever you like, {player}."
   end
 

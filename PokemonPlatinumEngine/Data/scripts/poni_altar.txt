@@ -181,6 +181,14 @@ script Keeper
   say "Look after it. They say it grows into the sun by day, or the moon by night, depending on when it is ready."
   end
 label Given
+  if flag FLAG_ALOLA_ALTAR_CRYSTALS goto Quiet
+  # Plan 23, Alola finished: the crystals of the sun and the moon, kept on the dais for whoever the little one chose, once
+  say "These two lay on the dais the morning after. One warm as noon, one cool as midnight. They were meant for you."
+  give "Solganium Z"
+  give "Lunalium Z"
+  setflag FLAG_ALOLA_ALTAR_CRYSTALS
+  end
+label Quiet
   say "The dais has been quiet since the little one left with you. I think it is glad."
   end
 
