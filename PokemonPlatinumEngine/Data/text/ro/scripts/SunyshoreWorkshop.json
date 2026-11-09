@@ -50,10 +50,18 @@
     },
     {
       "en": [
-        "Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready."
+        "Open it whenever you like. Its MAKE page turns what you've gathered into balls, medicine and the like, wherever you stand."
       ],
       "text": [
-        "Deschide-l oricând vrei să vezi ce ai. Restul ți-l arăt când banca mea e gata."
+        "Deschide-l oricând vrei. Pagina CREEAZĂ face din ce ai adunat mingi, leacuri și altele, oriunde te-ai afla."
+      ]
+    },
+    {
+      "en": [
+        "And with the kit along you can make camp anywhere. There's a pot in it, and I keep a pantry here for whatever you want to cook."
+      ],
+      "text": [
+        "Și cu setul la tine poți face tabără oriunde. Are o oală în el, iar eu țin aici o cămară pentru tot ce vrei să gătești."
       ]
     },
     {
@@ -68,12 +76,14 @@
       "en": [
         "What can I do for you?",
         "LOOK IN THE KIT",
+        "THE PANTRY",
         "HOW IT WORKS",
         "NOTHING"
       ],
       "text": [
         "Cu ce te pot ajuta?",
         "UITĂ-TE ÎN SET",
+        "CĂMARA",
         "CUM FUNCȚIONEAZĂ",
         "CU NIMIC"
       ]
@@ -84,6 +94,22 @@
       ],
       "text": [
         "Atunci mă văd de treabă. Ai grijă la rumeguș când ieși."
+      ]
+    },
+    {
+      "en": [
+        "Flour, rice, beans and the rest, fresh in this morning. Take what you need for the pot."
+      ],
+      "text": [
+        "Făină, orez, fasole și restul, proaspăt aduse azi-dimineață. Ia ce-ți trebuie pentru oală."
+      ]
+    },
+    {
+      "en": [
+        "Cook it at your camp. A good meal does a team a world of good, and it brings the wild ones round, or keeps them off."
+      ],
+      "text": [
+        "Gătește în tabăra ta. O masă bună face minuni pentru o echipă și îi aduce pe cei sălbatici prin preajmă, sau îi ține departe."
       ]
     },
     {
@@ -100,6 +126,80 @@
       ],
       "text": [
         "Pokémonii Antrenorilor nu lasă nimic, nici cei dintr-un concurs sau dintr-un parc. Aceia sunt sport, nu sălbăticie."
+      ]
+    },
+    {
+      "en": [
+        "The kit's MAKE page lists what it can make and what each one takes. Nothing it makes comes cheaper than the shop's price, mind. You're paying in work, not money."
+      ],
+      "text": [
+        "Pagina CREEAZĂ a setului arată ce poate face și de ce are nevoie fiecare lucru. Dar nimic nu iese mai ieftin decât la magazin, să știi. Plătești cu muncă, nu cu bani."
+      ]
+    },
+    {
+      "en": [
+        "Make camp from the menu and put the pot on. Stir when the heat is right and the dish comes out the better for it."
+      ],
+      "text": [
+        "Fă tabără din meniu și pune oala pe foc. Amestecă atunci când căldura e potrivită, și mâncarea iese mai bună."
+      ]
+    }
+  ],
+  "Apprentice": [
+    {
+      "en": [
+        "Apprentice"
+      ],
+      "text": [
+        "Ucenic"
+      ]
+    },
+    {
+      "en": [
+        "I'm learning to press the rare stuff out of the common. Three of your {material} would make one of the good kind."
+      ],
+      "text": [
+        "Învăț să scot lucrurile rare din cele obișnuite. Trei bucăți din {material} ar face una de soi bun."
+      ]
+    },
+    {
+      "en": [
+        "Shall I have a go?"
+      ],
+      "text": [
+        "Să încerc?"
+      ]
+    },
+    {
+      "en": [
+        "There! One {material}, good as any I've seen. Well, nearly."
+      ],
+      "text": [
+        "Gata! Un {material}, bun ca oricare am văzut. Mă rog, aproape."
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. I need the practice."
+      ],
+      "text": [
+        "Altă dată, atunci. Am nevoie de exercițiu."
+      ]
+    },
+    {
+      "en": [
+        "Bring me three of any Pokémon's leavings and I'll press them into one of the rare kind. I need the practice."
+      ],
+      "text": [
+        "Adu-mi trei bucăți din ce lasă orice Pokémon, și le presez într-una de soi rar. Am nevoie de exercițiu."
+      ]
+    },
+    {
+      "en": [
+        "I'm only the apprentice. Talk to the craftswoman first."
+      ],
+      "text": [
+        "Sunt doar ucenicul. Vorbește întâi cu meșteșugăreasa."
       ]
     }
   ]

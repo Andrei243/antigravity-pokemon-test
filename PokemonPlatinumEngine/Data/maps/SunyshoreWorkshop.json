@@ -126,7 +126,7 @@
     {
       "id": "apprentice",
       "name": "Apprentice",
-      "npcType": "worker_m",
+      "npcType": "worker",
       "x": 2,
       "y": 5,
       "facing": "Right",
