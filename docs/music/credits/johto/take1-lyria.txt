@@ -1,0 +1,42 @@
+[[A0]]
+[0.0:] (ah)
+[[B1]]
+[6.0:] A quiet town where the new wind blows
+[9.0:] The leaves turn red on the river road
+[12.0:] A sprouting tower sways but never falls
+[15.0:] I hear the old monks humming through the walls
+[18.0:] A bell tower burned and three beasts ran free
+[21.0:] A rainbow feather fell in front of me
+[24.0:] A lighthouse burning for a sickly friend
+[27.0:] Every road I walked is a road that bends
+[[C2]]
+[30.0:] And the bells ring out
+[36.0:] Over the old town
+[[D3]]
+[42.0:] Hold the lantern high, let the old songs guide
+[45.0:] Through the cherry rain and the silver tide
+[48.0:] Every shrine I passed left a light inside
+[51.0:] I carry it home, I carry it home
+[54.0:] Hold the lantern high where the north wind cries
+[57.0:] Past the icy path where the dragons hide
+[60.0:] Every friend I made is a star tonight
+[63.0:] I carry it home, I carry it home
+[[B4]]
+[66.0:] The radio sang on the golden street
+[69.0:] A lake of rage and a red scale at my feet
+[72.0:] I bowed at the den where the old ones pray
+[75.0:] Then crossed the sea to the land far away
+[[E5]]
+[78.0:] (shakuhachi solo)
+[81.0:] La, la-la, la-la
+[[D6]]
+[90.0:] Hold the lantern high, let the old songs guide
+[93.0:] Through the cherry rain and the silver tide
+[96.0:] Every shrine I passed left a light inside
+[99.0:] I carry it home, I carry it home
+[102.0:] Hold the lantern high on the mountain side
+[105.0:] Where the silent one waits in the snowy night
+[108.0:] Every friend I made is a star tonight
+[111.0:] I carry it home, I carry it home
+[[F7]]
+[114.0:] The bells ring home

@@ -1,0 +1,44 @@
+[[A0]]
+[0.0:] (Go)
+[[B1]]
+[6.6:] Two years on and a new town by the sea
+[9.9:] A friend in a ball and a map and a key
+[13.2:] A ship to the city where the towers touch the sky
+[16.6:] Steel on the bridges and the trains going by
+[19.9:] Gears on the station and a wheel that spins
+[23.2:] Drawbridge open and the cold wind comes in
+[26.5:] A ship full of ice in a crater of stone
+[29.8:] We learned what it costs to stand on your own
+[[C2]]
+[33.1:] The city never sleeps
+[36.4:] The city never sleeps
+[[D3]]
+[39.7:] City of a thousand lights
+[43.0:] Every window burning bright tonight
+[46.3:] Black and white, now every color in sight
+[49.6:] City of a thousand lights
+[53.0:] City of a thousand lights
+[56.3:] Run the bridge till the morning light
+[59.6:] Truth or ideals, we'll be alright
+[62.9:] City of a thousand lights
+[[B4]]
+[66.2:] Dragon of ice and a frozen town
+[69.5:] We stood together and we didn't back down
+[72.8:] Champion's hall at the top of the stairs
+[76.1:] Nobody once, now we're everywhere
+[[E5]]
+[79.4:] Truth or ideals
+[82.8:] I choose you
+[86.1:] Whatever we believe
+[89.4:] We see it through
+[[D6]]
+[92.7:] City of a thousand lights
+[96.0:] Every window burning bright tonight
+[99.3:] Black and white, now every color in sight
+[102.6:] City of a thousand lights
+[105.9:] City of a thousand lights
+[109.2:] Run the bridge till the morning light
+[112.5:] Truth or ideals, we'll be alright
+[115.8:] City of a thousand lights
+[[F7]]
+[119.2:] A thousand lights

@@ -145,6 +145,25 @@ public sealed class CreditsScreen
     /// <summary>How far the roll climbs before the last card: until its last line has faded at the top of the picture.</summary>
     public float Length => Height + ViewHeight - FadeBand;
 
+    /// <summary>
+    /// How fast the roll climbs, in units a second: <see cref="Pace"/>, or under a recorded song (2026-11-09, the
+    /// regions' credits songs) whatever brings the last card in <see cref="LastCardLead"/> seconds before the song ends,
+    /// within half and three times <see cref="Pace"/>.
+    /// </summary>
+    public float RollPace { get; private set; } = Pace;
+
+    /// <summary>How long before a recorded song's end the last card arrives: the song's last line, under the card.</summary>
+    public const float LastCardLead = 4f;
+
+    /// <summary>The roll's pace for a roll of <paramref name="length"/> under a song of <paramref name="songSeconds"/> (none: <see cref="Pace"/>).</summary>
+    public static float PaceFor(float length, double? songSeconds)
+    {
+        if (songSeconds is not { } seconds) return Pace;
+        double rolling = seconds - TitleTime - LastCardLead;
+        if (rolling <= 0) return Pace * 3f;
+        return Math.Clamp((float)(length / rolling), Pace / 2f, Pace * 3f);
+    }
+
     /// <summary>The button kept down by a tool (the game reads the key itself): the title card and the roll go by four times as fast.</summary>
     public bool Held { get; set; }
     private bool keyHeld;
@@ -154,10 +173,15 @@ public sealed class CreditsScreen
 
     /// <summary>Begins the credits for a Champion and their team (Eggs are left out, as the Hall of Fame leaves them out).</summary>
     public void Begin(string player, IReadOnlyList<Pokemon> champions, Func<string, IReadOnlyList<string>>? wrap = null)
+        => Begin(player, champions, wrap, AudioManager.RecordedSceneSeconds(AudioManager.Region, "credits"));
+
+    /// <summary>Begins the credits with the roll timed to a recorded song of <paramref name="songSeconds"/> (null: <see cref="Pace"/>).</summary>
+    public void Begin(string player, IReadOnlyList<Pokemon> champions, Func<string, IReadOnlyList<string>>? wrap, double? songSeconds)
     {
         team = champions.Where(p => !p.IsEgg).ToList();
         (lines, Height) = CreditsRoll.Lay(CreditsDatabase.Sections, player, team.Select(CreditsRoll.Listing).ToList(), wrap);
         Scroll = 0f;
+        RollPace = PaceFor(Length, songSeconds);
         time = 0f;
         Held = keyHeld = false;
         pictured = -1;
@@ -193,7 +217,7 @@ public sealed class CreditsScreen
                 if (phaseTime >= TitleTime) Go(CreditsPhase.Roll);
                 break;
             case CreditsPhase.Roll:
-                Scroll = Math.Min(Length, Scroll + Pace * pace * dt);
+                Scroll = Math.Min(Length, Scroll + RollPace * pace * dt);
                 if (Scroll >= Length) Go(CreditsPhase.End);
                 break;
             case CreditsPhase.End:
@@ -261,7 +285,7 @@ public sealed class CreditsScreen
         float share = Length / team.Count;
         int member = Math.Clamp((int)(scroll / share), 0, team.Count - 1);
         float into = scroll - member * share;
-        float fade = Math.Min(MemberFade * Pace, share / 2f);
+        float fade = Math.Min(MemberFade * RollPace, share / 2f);
         return (member, Math.Clamp(Math.Min(into, share - into) / fade, 0f, 1f));
     }
 

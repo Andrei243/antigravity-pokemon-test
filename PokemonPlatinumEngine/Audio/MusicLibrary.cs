@@ -37,6 +37,64 @@ public static class MusicLibrary
 
     public static Song? Get(string id) => Songs.TryGetValue(id, out var s) ? s : null;
 
+    private static Dictionary<string, string>? recordingFiles;
+    private static Song? lastRecording;
+
+    /// <summary>
+    /// The recorded songs (2026-11-09: each region's credits song, generated with Lyria 3.5), by id: an Ogg Vorbis file
+    /// <c>Data/music/&lt;id&gt;.ogg</c>, a pack's over the game's. They are not among <see cref="All"/>, which is the songs
+    /// of notes every check of the music holds, and a recording of an id wins over a song of notes of the same id.
+    /// </summary>
+    private static Dictionary<string, string> RecordingFiles
+    {
+        get
+        {
+            lock (loadLock)
+            {
+                if (recordingFiles != null) return recordingFiles;
+                var files = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                foreach (var (key, path) in DataLayers.FilesIn("music", "*.ogg", recursive: true))
+                    files[key[..^".ogg".Length]] = path;
+                return recordingFiles = files;
+            }
+        }
+    }
+
+    /// <summary>The ids that have a recording.</summary>
+    public static IReadOnlyCollection<string> RecordingIds => RecordingFiles.Keys;
+
+    public static bool HasRecording(string id) => RecordingFiles.ContainsKey(id);
+
+    /// <summary>
+    /// A recorded song by id, its file read (about two megabytes; the last one asked for is kept) and its length taken
+    /// from the file's header; null where there is none or the file isn't a readable Ogg Vorbis file.
+    /// </summary>
+    public static Song? GetRecording(string id)
+    {
+        if (!RecordingFiles.TryGetValue(id, out var path)) return null;
+        lock (loadLock)
+        {
+            if (lastRecording is { } kept && string.Equals(kept.Id, id, StringComparison.OrdinalIgnoreCase)) return kept;
+        }
+        try
+        {
+            var bytes = File.ReadAllBytes(path);
+            using var reader = new NVorbis.VorbisReader(new MemoryStream(bytes), true);
+            var song = new Song
+            {
+                Id = id, Title = Path.GetFileNameWithoutExtension(path), Recording = bytes,
+                RecordedSeconds = reader.TotalTime.TotalSeconds, HasNight = false, Sound = SynthSound.Modern,
+            };
+            lock (loadLock) lastRecording = song;
+            return song;
+        }
+        catch (Exception e) when (e is not OutOfMemoryException)
+        {
+            Core.Diagnostics.Log.Warn($"AUDIO: the recording '{id}' can't be read: {e.Message}");
+            return null;
+        }
+    }
+
     /// <summary>
     /// Reads every song again while the game runs (plan 16 · T6, the developer's live reload): the new set takes the
     /// old one's place only when every file reads; otherwise what was wrong is handed back and the songs stay as they were.
@@ -46,7 +104,7 @@ public static class MusicLibrary
         try
         {
             var fresh = Load();
-            lock (loadLock) songs = fresh;
+            lock (loadLock) { songs = fresh; recordingFiles = null; lastRecording = null; }
             return new List<string>();
         }
         catch (Exception e) when (e is not OutOfMemoryException)

@@ -1,0 +1,44 @@
+[[A0]]
+[0.0:] (ooh)
+[[B1]]
+[6.0:] A lake in the morning and a briefcase in the grass
+[9.0:] Two kids with a dream that was moving way too fast
+[12.0:] Coal in the mountain and flowers in the field
+[15.0:] A forest of shadows where the old ghosts kneel
+[18.0:] Three lakes were sleeping with a spirit in each one
+[21.0:] A man in a grey coat wanted to undo the sun
+[24.0:] Up the pillar in the snow where the legends are told
+[27.0:] I stood at the edge of the world in the cold
+[[C2]]
+[30.0:] And the sky tore open
+[36.0:] And the sky tore open wide
+[[D3]]
+[42.0:] Where time and space began
+[45.0:] I held the line with my hand in your hand
+[48.0:] Through the snow and the stone and the burning sand
+[51.0:] We were the light where the darkness ran
+[54.0:] Where time and space began
+[57.0:] The mountain's heart, the forgotten land
+[60.0:] When the world turned over, we still could stand
+[63.0:] Where time and space began
+[[B4]]
+[66.0:] The ground was the sky and the water ran up
+[72.0:] A shadow with wings and a world out of luck
+[75.0:] We fell through the mirror, we fought in the gray
+[78.0:] And we found our way back to the light of day
+[[E5]]
+[84.0:] And when it's over
+[87.0:] I'll remember every name
+[90.0:] The snow will fall again
+[93.0:] And it will never be the same
+[[D6]]
+[96.0:] Where time and space began
+[99.0:] I held the line with my hand in your hand
+[102.0:] Through the snow and the stone and the burning sand
+[105.0:] We were the light where the darkness ran
+[108.0:] Where time and space began
+[111.0:] The summit calls, and I understand
+[114.0:] Every ending is where the journey began
+[117.0:] Where time and space began
+[[F7]]
+[120.0:] Where it all began

@@ -100,6 +100,18 @@ public sealed class Song
 
     public List<SongTrack> Tracks { get; } = new();
 
+    /// <summary>
+    /// A recorded song's own file (2026-11-09, the regions' credits songs): Ogg Vorbis, stereo at
+    /// <see cref="Synthesizer.ModernRate"/>, which a modern player streams as it plays in place of its notes. Null for
+    /// every song written in MML. <see cref="MusicLibrary.GetRecording"/> makes such songs; they have no tracks.
+    /// </summary>
+    public byte[]? Recording { get; init; }
+
+    /// <summary>A recorded song's length in seconds; nought for a song of notes, whose length is <see cref="Duration"/>.</summary>
+    public double RecordedSeconds { get; init; }
+
+    public bool IsRecorded => Recording != null;
+
     public bool Loops => LoopTick >= 0;
 
     /// <summary>Whether the song has a low-HP arrangement (plan 12 · Q15): a faster tempo, a track of the alarm figure or a track that plays only out of it.</summary>

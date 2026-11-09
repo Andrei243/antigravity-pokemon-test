@@ -1,0 +1,42 @@
+[[A0]]
+[0.0:] (hey!)
+[[B1]]
+[6.0:] Little town where the ocean starts
+[9.0:] Three round shells on a scientist's desk
+[12.0:] Picked the one with the fire in its heart
+[15.0:] Walked out the door like I'd never rest
+[18.0:] Bugs in the woods and a mountain of stone
+[21.0:] Mist on the river and a moonlit cave
+[24.0:] Every gym door was a test of my own
+[27.0:] Every badge I carried, every friend I saved
+[[C2]]
+[30.0:] (go, go) out on the first route
+[36.0:] (go, go) nothing to lose
+[[D3]]
+[42.0:] We were just a kid and a dream
+[45.0:] Running through the grass where the wild ones sleep
+[48.0:] One more town, one more road, one more friend to keep
+[51.0:] I'll catch the world before it gets away from me
+[54.0:] We were just a kid and a dream
+[57.0:] Now the sky is ours from the plateau to the sea
+[60.0:] One more town, one more road, one more friend to keep
+[63.0:] I'll catch the world before it gets away from me
+[[B4]]
+[66.0:] Ghost tower quiet in the purple rain
+[69.0:] Bicycle downhill with the wind in my hair
+[72.0:] Rival ahead and he's calling my name
+[75.0:] I was one step behind, now I'm already there
+[[E5]]
+[78.0:] (chiptune solo)
+[84.0:] Oh-oh, oh-oh, oh-oh-oh
+[[D6]]
+[90.0:] We were just a kid and a dream
+[93.0:] Running through the grass where the wild ones sleep
+[96.0:] One more town, one more road, one more friend to keep
+[99.0:] I'll catch the world before it gets away from me
+[102.0:] We were just a kid and a dream
+[105.0:] And the road goes on past the edge of the screen
+[108.0:] One more town, one more road, one more friend to keep
+[111.0:] I'll catch the world before it gets away from me
+[[F7]]
+[114.0:] The first route home

@@ -201,7 +201,8 @@ public static class AudioManager
     /// </summary>
     public static void PlayMusic(string songId, bool immediate = false)
     {
-        var song = MusicLibrary.Get(songId);
+        // A recording of the id wins over a song of notes (2026-11-09: the regions' credits songs)
+        var song = MusicLibrary.GetRecording(songId) ?? MusicLibrary.Get(songId);
         if (song == null)
         {
             Log.Warn($"AUDIO: no song '{songId}'");
@@ -271,9 +272,20 @@ public static class AudioManager
     public static void PlaySceneMusic(string scene, MusicRole fallback, bool immediate = false)
     {
         if (!isInitialized) return;
-        if (MusicDirector.SceneSong(Region, scene, MusicLibrary.Exists) is { } own) PlayMusic(own, immediate);
+        if (SceneSongOf(Region, scene) is { } own) PlayMusic(own, immediate);
         else PlayMusic(fallback, immediate);
     }
+
+    /// <summary>The song a region plays for a scene, a recording or a song of notes (<see cref="MusicDirector.SceneSong"/>), or null.</summary>
+    public static string? SceneSongOf(string? region, string scene) =>
+        MusicDirector.SceneSong(region, scene, id => MusicLibrary.HasRecording(id) || MusicLibrary.Exists(id));
+
+    /// <summary>
+    /// How long the region's recorded song for a scene lasts, in seconds, with or without an audio device; null where the
+    /// scene's song is one of notes or there is none. The credits time their roll by it.
+    /// </summary>
+    public static double? RecordedSceneSeconds(string? region, string scene) =>
+        SceneSongOf(region, scene) is { } id && MusicLibrary.GetRecording(id) is { } song ? song.RecordedSeconds : null;
 
     /// <summary>What the field sounds like now (the beds asked for last), with or without an audio device: how tests hear the ambience.</summary>
     public static IReadOnlyList<AmbienceLayer> CurrentAmbience { get; private set; } = Array.Empty<AmbienceLayer>();

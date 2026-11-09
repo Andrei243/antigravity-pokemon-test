@@ -1,0 +1,41 @@
+[[A0]]
+[0.0:] (whistle)
+[[B1]]
+[6.0:] Moved to the islands with a box and a cat
+[9.0:] A festival dance and a kid in a hat
+[12.0:] A guardian saved me on a broken bridge
+[15.0:] Then gave me a stone with a spark in the edge
+[18.0:] Four islands, four trials, a totem on each
+[21.0:] Lava and rain and a crystal on the beach
+[24.0:] The captains, the kahunas, the friends that I made
+[27.0:] We laughed in the sun and we sang in the shade
+[[C2]]
+[30.0:] Oh, the tide comes in
+[36.0:] And the trial begins
+[[D3]]
+[42.0:] Four islands in the sun
+[45.0:] Every wave says we're not done
+[48.0:] From the mountain to the shore, we've only just begun
+[51.0:] Four islands, we are one
+[54.0:] Dancing till the day is done
+[57.0:] When the moon meets the sun, we're the lucky ones
+[60.0:] Four islands in the sun
+[[B4]]
+[66.0:] A hole in the sky and a girl with a bag
+[69.0:] A little lost cloud that she never let drag
+[72.0:] The moon and the sun at the altar of light
+[75.0:] She found her own way, and she said goodbye
+[[E5]]
+[78.0:] (steel guitar, starlight)
+[81.0:] And the stars all fall
+[84.0:] Into the sea
+[[D6]]
+[90.0:] Four islands in the sun
+[93.0:] Every wave says we're not done
+[96.0:] From the mountain to the shore, we've only just begun
+[99.0:] Four islands, we are one
+[102.0:] Dancing till the day is done
+[105.0:] When the moon meets the sun, we're the lucky ones
+[108.0:] Four islands in the sun
+[[F7]]
+[114.0:] In the sun

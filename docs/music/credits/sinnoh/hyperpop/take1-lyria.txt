@@ -1,0 +1,47 @@
+[[A0]]
+[0.0:] New g-g-game
+[3.0:] New game, new g-
+[[B1]]
+[6.0:] Woke up in a tiny room with the tv on
+[9.0:] Mom said take your shoes, the tall grass hums a song
+[12.0:] One friend in a ball and a map I couldn't read
+[15.0:] Lost in the forest, but the forest followed me
+[18.0:] Rival on the bridge with a grin and a bet
+[21.0:] Lost my first fight, but I didn't lose it yet
+[24.0:] Potions in my pocket like a glitter grenade
+[27.0:] Every badge a heartbeat, every town a parade
+[[C2]]
+[30.0:] And the screen goes white (white)
+[34.0:] And my hands hold tight (tight)
+[38.0:] Hold on, hold on, it's alright, alright
+[[D3]]
+[42.0:] We were level one, we were barely anyone
+[45.0:] Now we're running every route till the morning comes
+[48.0:] Hit save, don't fade, keep the team up in the sun
+[51.0:] New game, new game, new game plus
+[54.0:] We were level one, we were barely anyone
+[57.0:] Now the whole map's lit and we're never really done
+[60.0:] Hit save, don't fade, every ending's a beginning, so
+[63.0:] New game, new game, new game plus
+[[B4]]
+[66.0:] Snow cap, lava lake, a ferry to a brand-new map
+[69.0:] Fly back home and I remember every gap
+[72.0:] Cave went dark, so I lit it with a friend
+[75.0:] Every goodbye was a road around the bend
+[[E5]]
+[78.0:] If the credits roll and the lights go low
+[82.0:] I'll still know the way, I'll still know the road
+[86.0:] Every name on the screen is a name I keep
+[90.0:] You were there at the start, you're here when I sleep
+[[D6]]
+[94.0:] We were level one, we were barely anyone
+[97.0:] Now we're running every route till the morning comes
+[100.0:] Hit save, don't fade, keep the team up in the sun
+[103.0:] New game, new game, new game plus
+[106.0:] We were level one, now we're everything we've won
+[109.0:] And the whole map sings every time we're back for more
+[112.0:] Hit save, don't fade, every ending's a beginning, so
+[115.0:] New game, new game, new game plus
+[[F7]]
+[118.0:] Saving... don't let go
+[119.0:] New game plus

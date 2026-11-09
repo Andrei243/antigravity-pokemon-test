@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using NVorbis;
 
 namespace PokemonPlatinumEngine.Audio;
 
@@ -101,10 +103,37 @@ public sealed class SongPlayer
     public int Loops { get; private set; }
 
     /// <summary>The position in the song, in seconds at its own tempo (the low-HP arrangement plays it faster but keeps its place).</summary>
-    public double Position => song == null ? 0 : tick * song.SecondsPerTick(night);
+    public double Position => song == null ? 0 : song.IsRecorded ? (double)recordedFrames / synth.Rate : tick * song.SecondsPerTick(night);
+
+    /// <summary>
+    /// How loud a recorded song is played (2026-11-09): the generated songs come mastered at about -14 dBFS RMS with
+    /// their peaks at full scale, three decibels over the music bus's window (<see cref="Loudness.Target"/>).
+    /// </summary>
+    public const float RecordingGain = 0.7f;
+
+    private VorbisReader? recording;
+    private long recordedFrames;
+    private float[] recordingBlock = Array.Empty<float>();
 
     public void Start(Song s, bool atNight)
     {
+        CloseRecording();
+        if (s.IsRecorded)
+        {
+            // A recorded song is streamed from its file as it plays, never decoded whole; only a player at the
+            // file's own rate plays it (the old path's DS player sounds nothing)
+            song = s;
+            night = false;
+            Loops = 0;
+            next = Array.Empty<int>();
+            synth.AllNotesOff(immediate: true);
+            compressor?.Reset();
+            var reader = new VorbisReader(new MemoryStream(s.Recording!), true);
+            if (reader.SampleRate == synth.Rate && reader.Channels == 2) recording = reader;
+            else reader.Dispose();
+            Playing = recording != null;
+            return;
+        }
         song = s;
         night = atNight && s.HasNight;
         tick = 0;
@@ -123,8 +152,16 @@ public sealed class SongPlayer
         Playing = true;
     }
 
+    private void CloseRecording()
+    {
+        recording?.Dispose();
+        recording = null;
+        recordedFrames = 0;
+    }
+
     public void Stop()
     {
+        CloseRecording();
         Playing = false;
         song = null;
         synth.AllNotesOff(immediate: true);
@@ -140,6 +177,11 @@ public sealed class SongPlayer
     /// <summary>Renders interleaved stereo, adding it into <paramref name="output"/> at <paramref name="gain"/>.</summary>
     public void Render(Span<float> output, float gain)
     {
+        if (song?.IsRecorded == true)
+        {
+            RenderRecording(output, gain);
+            return;
+        }
         int frames = output.Length / 2;
         for (int done = 0; done < frames; done += Block)
         {
@@ -151,6 +193,23 @@ public sealed class SongPlayer
             var o = output.Slice(done * 2, n * 2);
             for (int i = 0; i < b.Length; i++) o[i] += b[i] * gain;
         }
+    }
+
+    /// <summary>The next stretch of a recorded song, straight from its file: no synthesiser and no compressor.</summary>
+    private void RenderRecording(Span<float> output, float gain)
+    {
+        if (!Playing || recording == null) return;
+        if (recordingBlock.Length < output.Length) recordingBlock = new float[output.Length];
+        int filled = 0;
+        while (filled < output.Length)
+        {
+            int read = recording.ReadSamples(recordingBlock, filled, output.Length - filled);
+            if (read <= 0) { Playing = false; break; }
+            filled += read;
+        }
+        recordedFrames += filled / 2;
+        float g = gain * RecordingGain;
+        for (int i = 0; i < filled; i++) output[i] += recordingBlock[i] * g;
     }
 
     /// <summary>Starts the notes that fall within the next <paramref name="samples"/> samples.</summary>

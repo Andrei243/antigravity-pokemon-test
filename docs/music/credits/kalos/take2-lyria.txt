@@ -1,0 +1,43 @@
+[[A0]]
+[0.0:] (la, la-la)
+[[B1]]
+[6.0:] A little town where the skaters glide
+[9.0:] New neighbors waving from the other side
+[12.0:] A letter, a café, a city of light
+[15.0:] A tower that sparkles every night
+[18.0:] Gardens in bloom by the palace stair
+[21.0:] Mirrors and roses and the scent of the air
+[24.0:] A stone that glows when your heart is true
+[27.0:] I evolved with the friend who believed in you
+[[C2]]
+[30.0:] Oh mon ami, don't let go
+[36.0:] La belle route, where the flowers grow
+[[D3]]
+[42.0:] La belle route, la belle vie
+[45.0:] Every road a melody
+[48.0:] Under the arch and down to the sea
+[51.0:] La belle route, come waltz with me
+[54.0:] La belle route, la belle vie
+[57.0:] If the world was a garden, it was you and me
+[60.0:] Every petal falls, but the root runs deep
+[63.0:] La belle route, come home with me
+[[B4]]
+[66.0:] A man in red with a burning creed
+[72.0:] Said beauty must end for the few to be freed
+[75.0:] A flower of fire beneath the town
+[78.0:] And we stood in the light as it all came down
+[[E5]]
+[84.0:] (Violin and harpsichord)
+[90.0:] Toujours, toujours
+[93.0:] I'll keep the light of the city for you
+[[D6]]
+[96.0:] La belle route, la belle vie
+[99.0:] Every road a melody
+[102.0:] Under the arch and down to the sea
+[105.0:] La belle route, come waltz with me
+[108.0:] La belle route, la belle vie
+[111.0:] Three thousand years and a love set free
+[114.0:] Every petal falls, but the root runs deep
+[117.0:] La belle route, come home with me
+[[F7]]
+[120.0:] La belle route

@@ -1,0 +1,43 @@
+[[A0]]
+[0.0:] (Oh, oh-oh)
+[[B1]]
+[6.0:] Moving truck rolled to a little green town
+[9.0:] Dad's in the city where the fighters are crowned
+[12.0:] Saved a man from a dog in the grass
+[15.0:] Took my first friend and I never looked back
+[18.0:] Sailed with an old man on a wooden boat
+[21.0:] Ash in the air where the mountains smoke
+[24.0:] Desert of sand and a tower in the haze
+[27.0:] I chased the sun through the longest days
+[[C2]]
+[30.0:] And the tide keeps calling
+[36.0:] And the tide keeps calling me
+[[D3]]
+[42.0:] Salt and sunlight on my skin
+[45.0:] Every wave a place I've been
+[48.0:] Dive down deep, come up again
+[51.0:] I found a world beneath the wind
+[54.0:] Salt and sunlight, here we go
+[57.0:] From the fire mountain to the ocean floor
+[60.0:] Dive down deep and ride it home
+[63.0:] I'll never be alone
+[[B4]]
+[66.0:] The sea went dark and the sky went wild
+[69.0:] A drought and a storm fighting like a child
+[72.0:] Then the green one came from the sky so high
+[75.0:] And the world stood still, and the clouds went by
+[[E5]]
+[78.0:] (Drum storm)
+[84.0:] Sun and rain, sun and rain
+[87.0:] I'm still standing in the hurricane
+[[D6]]
+[90.0:] Salt and sunlight on my skin
+[93.0:] Every wave a place I've been
+[96.0:] Dive down deep, come up again
+[99.0:] I found a world beneath the wind
+[102.0:] Salt and sunlight, here we go
+[105.0:] From the fire mountain to the ocean floor
+[108.0:] Dive down deep and ride it home
+[111.0:] I'll never be alone
+[[F7]]
+[114.0:] Salt and sunlight

@@ -1,0 +1,41 @@
+[[A0]]
+[0.0:] (Yeah)
+[[B1]]
+[6.0:] Two years on and a new town by the sea
+[12.0:] Mom gave me a friend and a map and a key
+[15.0:] A rival with a promise burning in his eyes
+[18.0:] A ship to the city where the towers touch the sky
+[21.0:] Gears on the station and a ferris wheel spin
+[24.0:] Drawbridge open and the cold wind coming in
+[27.0:] A ship full of pirates in a crater of ice
+[[C2]]
+[30.0:] I learned what the truth and the ideals both cost the price
+[30.0:] And the city never sleeps
+[36.0:] No, the city never sleeps
+[[D3]]
+[42.0:] City of a thousand lights
+[45.0:] Every window burning bright tonight
+[48.0:] We were black and white, now we're every color in sight
+[51.0:] City of a thousand lights
+[54.0:] Hand in hand on the bridge, it feels so right
+[57.0:] Take the long way home, we'll be alright
+[60.0:] City of a thousand lights
+[[B4]]
+[66.0:] The dragon of ice and the frozen town
+[72.0:] We stood together and we didn't back down
+[75.0:] The champion's hall at the top of the stairs
+[[E5]]
+[78.0:] We were nobody once, now we're everywhere
+[78.0:] (Horn solo)
+[81.0:] Truth or ideals, I choose you
+[84.0:] Whatever we believe, we'll see it through
+[[D6]]
+[90.0:] City of a thousand lights
+[93.0:] Every window burning bright tonight
+[96.0:] We were black and white, now we're every color in sight
+[99.0:] City of a thousand lights
+[102.0:] Hand in hand on the bridge, it feels so right
+[105.0:] Take the long way home, we'll be alright
+[108.0:] City of a thousand lights
+[[F7]]
+[114.0:] A thousand lights
