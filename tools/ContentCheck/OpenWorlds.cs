@@ -15,8 +15,10 @@ namespace ContentCheck;
 /// room with no way back out to the map, and a flag it waits for that nothing sets;</item>
 /// <item>a room's way out to an open map that no door of that map leads back into;</item>
 /// <item>a trigger's script that neither its place's file nor the common one has;</item>
-/// <item>a zone's species that the data hasn't, and a zone with no ground to stand on inside it (OW4's navigation mesh
-/// will be what it is held to);</item>
+/// <item>a zone's species that the data hasn't, a zone with no ground to stand on inside it, and one with no polygon
+/// of the navigation mesh inside it where the map's land is baked (plan 32 · OW7: its Pokémon come out only on the
+/// mesh); and <c>open-wild.json</c>'s temperaments read as the game reads them, each species it names one the data
+/// has;</item>
 /// <item>what <c>ScriptLibrary.OpenProblems</c> says of the scripts: a tile form in an open place, a marker its map
 /// hasn't, an open form in a grid place, a <c>warpto</c> to no open map's marker, a <c>warp</c> to an open map.</item>
 /// <item>someone (plan 32 · OW6) standing in rock, running a script that isn't there, battling as a trainer the data
@@ -34,6 +36,30 @@ public static class OpenWorlds
         foreach (var region in content.OpenRegions) CheckRegion(region, content.MapNamed, content.Scripts, flags, found);
         CheckWaysIn(content.Rooms.Where(r => r.Map != null).Select(r => (r.File, r.Map!)), content.OpenMapNamed, found);
         CheckScripts(content, found);
+        CheckTemperaments(content.Root, found);
+    }
+
+    /// <summary>
+    /// The wild Pokémon's temperaments (plan 32 · OW7, <c>open-wild.json</c>): read as the game reads them (a finding
+    /// where it can't be), and every species it names one the data has.
+    /// </summary>
+    public static void CheckTemperaments(string root, List<Finding> found)
+    {
+        string path = Path.Combine(root, OpenWildKinds.FileName);
+        if (!File.Exists(path)) return;
+        OpenWildKinds kinds;
+        try
+        {
+            kinds = OpenWildKinds.From(GameDataFiles.ReadStrict<OpenWildFile>(File.ReadAllText(path), OpenWildKinds.FileName), OpenWildKinds.FileName);
+        }
+        catch (InvalidDataException e)
+        {
+            found.Add(new Finding(Kind.Unreadable, OpenWildKinds.FileName, "temperaments", "the game stops on it: " + e.Message));
+            return;
+        }
+        foreach (string species in kinds.NamedSpecies)
+            if (PokemonDatabase.Get(species) == null && PokemonDatabase.SpeciesOfForm(species) == null)
+                found.Add(new Finding(Kind.Data, OpenWildKinds.FileName, species, "is no species or form"));
     }
 
     /// <summary>One open region's land, places and doors (a test holds the baker's open test world to them with rooms of its own).</summary>
@@ -119,6 +145,10 @@ public static class OpenWorlds
                     found.Add(new Finding(Kind.Data, file, zone.Name, $"has a '{slot.Species}', which is no species or form"));
             if (land != null && !HasGround(land, zone))
                 found.Add(new Finding(Kind.Place, file, zone.Name, $"has no ground to stand on between {zone.MinY} mm and {zone.MaxY} mm inside it: nothing of its table could stand there"));
+            // Where the map's land is baked, a zone's Pokémon come out only on its navigation mesh (plan 32 · OW7)
+            if (map.Land?.Nav is { } mesh && !mesh.Polygons.Any(p => !p.Swim && zone.Contains(p.Hub)))
+                found.Add(new Finding(Kind.Place, file, zone.Name, "has no polygon of the navigation mesh walked inside it: nothing of its table could come out there"));
+            // A species whose temperament the file can't give is a finding of the file's own (CheckTemperaments)
         }
     }
 

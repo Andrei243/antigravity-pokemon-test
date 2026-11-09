@@ -1,0 +1,43 @@
+{
+  // How a wild Pokémon of an open map takes the player (plan 32 · OW7; ours, nothing of it taken from any game):
+  // each temperament's senses in metres and degrees, then which species has which. A species named here has its own;
+  // any other takes the first of its types that has a row, and the default otherwise. A calm one pays the player no
+  // heed and is met only when walked into; a shy one runs once it has seen or smelt them; a curious one comes over and
+  // stands its "keep" off watching; an aggressive one charges and meets them by running into them. Scent reaches twice
+  // as far for a player who runs. See docs/data-files.md, "Open worlds".
+  "kinds": {
+    "Calm": { "sight": 0, "angle": 0, "scent": 0 },
+    "Shy": { "sight": 14, "angle": 140, "scent": 5 },
+    "Curious": { "sight": 12, "angle": 140, "scent": 4, "keep": 3 },
+    "Aggressive": { "sight": 16, "angle": 100, "scent": 6 }
+  },
+  "species": {
+    "Wooloo": "Curious",
+    "Dubwool": "Curious",
+    "Skwovet": "Shy",
+    "Greedent": "Calm",
+    "Starly": "Shy",
+    "Staravia": "Aggressive",
+    "Staraptor": "Aggressive",
+    "Bidoof": "Calm",
+    "Hoothoot": "Calm",
+    "Rookidee": "Shy",
+    "Nickit": "Shy",
+    "Lechonk": "Calm",
+    "Pikachu": "Curious",
+    "Eevee": "Curious",
+    "Tauros": "Aggressive",
+    "Gyarados": "Aggressive"
+  },
+  "types": {
+    "Dragon": "Aggressive",
+    "Dark": "Aggressive",
+    "Fighting": "Aggressive",
+    "Fairy": "Curious",
+    "Psychic": "Curious",
+    "Electric": "Curious",
+    "Bug": "Shy",
+    "Flying": "Shy"
+  },
+  "default": "Calm"
+}

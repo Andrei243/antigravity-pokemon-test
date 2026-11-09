@@ -62,33 +62,39 @@ public partial class GameEngine
     /// frame's ticks, each stepping the player's capsule by the stick (the frame's quantised tilt, or the direction
     /// actions as a full tilt: <c>InputManager.GetStick</c>, its y down the screen being south) and the run button
     /// (turned round by the options' Autorun, as the grid's is), and after each the triggers and doors the capsule's
-    /// centre crossed into (<see cref="CrossTheVolumes"/>), the first of which ends the frame's walking. No menu,
-    /// encounter or life of the field runs yet.
+    /// centre crossed into (<see cref="CrossTheVolumes"/>), a trainer who sees the player (OW6) and a wild Pokémon the
+    /// player touches (OW7, <see cref="MeetOpenWild"/>), the first of which ends the frame's walking. No menu or life of
+    /// the field runs yet.
     /// </summary>
     private void UpdateOpenField(float dt)
     {
         var field = flow.Open!;
         // Who of the map is there (plan 32 · OW6), as the story has them
         KeepTheOpenPeopleThere(field);
+        // The zones' tables are read at the game's time of day (plan 32 · OW7)
+        field.Wild.Now = GameClock.Now;
         if (ScriptRunning)
         {
             field.PeopleMayWander = false;
+            field.WildMayAct = false;
             UpdateScript(dt);
             return;
         }
         // A trainer who saw the player walks up, and nothing else happens meanwhile (OW6)
         if (openApproach != null)
         {
+            field.WildMayAct = false;
             WalkTheTrainersUp(field, dt);
             return;
         }
         field.PeopleMayWander = !PeopleStayPut;
+        field.WildMayAct = true;
         LetTheOpenPeopleGo(field);
         if (InputManager.IsActionPressed(GameAction.Confirm) && TalkInTheOpen(field)) return;
         var stick = InputManager.GetStick();
         bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
         var input = new OpenInput(stick.X, stick.Y, run);
-        field.Run(dt, _ => input, f => CrossTheVolumes(f) || LookForOpenTrainers(f));
+        field.Run(dt, _ => input, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
     }
 
     /// <summary>

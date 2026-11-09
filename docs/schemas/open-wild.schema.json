@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The wild Pokémon of an open map: each temperament's senses, and which species has which (Data/open-wild.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "kinds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "sight": {
+            "type": "number"
+          },
+          "angle": {
+            "type": "number"
+          },
+          "scent": {
+            "type": "number"
+          },
+          "keep": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "species": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "types": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "default": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "kinds"
+  ],
+  "additionalProperties": false
+}

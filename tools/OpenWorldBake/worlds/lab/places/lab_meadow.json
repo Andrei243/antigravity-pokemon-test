@@ -2,7 +2,8 @@
   // The open test world's meadow (plan 32 · OW5): the roads' ends, a house north of the hill with its door into a
   // grid room (OpenLabHouse, which the harness and the tests lay in themselves) and the step it is come out onto.
   // OW6's people on the north meadow, east of the house and north of the pond: someone who wanders, and two trainers
-  // of Platinum's data facing one another across the meadow, who see whoever stands between them at once
+  // of Platinum's data facing one another across the meadow, who see whoever stands between them at once. OW7's zone of
+  // wild Pokémon on the south meadow
   "markers": [
     { "name": "west_road", "at": [-58, 0.5, 22], "yaw": 90 },
     { "name": "east_mouth", "at": [38, 0, 0], "yaw": 270 },
@@ -18,6 +19,21 @@
       "box": { "min": [-21, -1, -43], "max": [-19, 2.5, -42] },
       "room": "OpenLabHouse", "at": [3, 6], "facing": "up",
       "out": "house_step"
+    }
+  ],
+  // OW7's wild Pokémon on the south meadow, between the east road and the river: Starly by day, Hoothoot at night and
+  // Bidoof at any hour, two at once at most
+  "zones": [
+    {
+      "name": "south_meadow",
+      "polygon": [[8, 14], [40, 14], [40, 30], [8, 30]],
+      "minY": -2, "maxY": 6,
+      "slots": [
+        { "species": "Starly", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "Day" },
+        { "species": "Hoothoot", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "Night" },
+        { "species": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 20 }
+      ],
+      "density": 4, "cap": 3
     }
   ],
   "solids": [
