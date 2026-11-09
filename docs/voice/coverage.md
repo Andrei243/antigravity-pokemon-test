@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1599 | 1536 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12135 | 11658 | 477 | 17 | 36 |
+| Scripts (`script:`) | 12152 | 11675 | 477 | 17 | 36 |
 | People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
-| **All** | 22052 | 21447 | 605 | 22 | 36 |
+| **All** | 22069 | 21464 | 605 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,14 +22,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 259 |
-| a question's answers | 921 |
-| a sign | 1763 |
+| a question's answers | 925 |
+| a sign | 1764 |
 | the game's own voice (speaker none) | 295 |
 | the game's own voice (text) | 2016 |
 
 ## The cast
 
-- Named characters: 891 voices (332 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 893 voices (334 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 554 voices.
 - Archetypes in use: 246, with 743 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 319.

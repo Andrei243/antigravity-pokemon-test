@@ -420,6 +420,10 @@
         "accent": "en-us"
       }
     },
+    "bird_keeper": {
+      "note": "first spoken at KiloudeCity_FriendSafari.txt(29)",
+      "provisional": true
+    },
     "black_belt": {
       "note": "first spoken at route_4.txt(10)",
       "brief": {
@@ -9534,6 +9538,10 @@
         "accent": "en-us"
       }
     },
+    "safari_guide": {
+      "note": "first spoken at KiloudeCity_FriendSafari.txt(11)",
+      "provisional": true
+    },
     "sage": {
       "note": "first spoken at giant_chasm_3.txt(22)",
       "provisional": true
@@ -10437,6 +10445,7 @@
     "Bike Shop owner": "bike_shop_owner",
     "Biker": "look:biker",
     "Bill": "bill",
+    "Bird Keeper": "bird_keeper",
     "Black Belt": "black_belt",
     "Blaine": "blaine",
     "Blue": "blue",
@@ -10834,6 +10843,7 @@
     "Roxie": "roxie",
     "Rydel": "rydel",
     "Sabrina": "sabrina",
+    "Safari Guide": "safari_guide",
     "Sage": "sage",
     "Sailor": "look:sailor",
     "Sailor Eldritch": "sailor_eldritch",

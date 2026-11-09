@@ -202,13 +202,19 @@ public class RematchParityTests
         // The Leaders' and the League's teams of a region gone past take the furthest region's post-game levels (RematchLevels)
         var story = new StoryState();
         story.Set("UnovaHallOfFame");
-        foreach (var (region, _, again) in Table.Where(r => r.Region != RegionDatabase.Unova))
+        var order = RegionDatabase.All.Select(r => r.Id).ToList();
+        int unova = order.IndexOf(RegionDatabase.Unova);
+        foreach (var (region, _, again) in Table.Where(r => order.IndexOf(r.Region) < unova))
         {
             Assert.NotNull(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
         }
-        // ... and Unova's own, while Unova is the furthest, are met as they are
-        foreach (var (_, _, again) in Table.Where(r => r.Region == RegionDatabase.Unova))
+        // ... and Unova's own, while Unova is the furthest, are met as they are, as are those of a region past it (Kalos's)
+        foreach (var (_, _, again) in Table.Where(r => order.IndexOf(r.Region) >= unova))
             Assert.Null(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
+        // Kalos's are lifted once a region past Kalos is finished
+        story.Set("AlolaHallOfFame");
+        foreach (var (_, _, again) in Table.Where(r => r.Region == RegionDatabase.Kalos))
+            Assert.NotNull(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
     }
 
     [Fact]

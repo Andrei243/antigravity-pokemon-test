@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Friend Safari"
+    ],
+    "text": [
+      "Safariul Prieteniei"
+    ]
+  },
+  "people": {
+    "guide": {
+      "name": {
+        "en": [
+          "Safari Guide"
+        ],
+        "text": [
+          "Ghidul Safariului"
+        ]
+      }
+    },
+    "birder": {
+      "name": {
+        "en": [
+          "Bird Keeper"
+        ],
+        "text": [
+          "Îngrijitoarea de păsări"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -164,7 +164,9 @@ public class KalosLastPlacesTests
     public void TheChateauDrawsItsGuestsByTheTitleAndTheDayAndHandsOutTitles()
     {
         var hall = Rooms.Value("KalosRoute7_BattleChateau");
-        foreach (var n in hall.Everyone.Where(n => n.Script == "Guest")) Assert.NotNull(TrainerDatabase.Get("kalos_chateau_" + n.Key));
+        // The house's own guests are kalos_chateau_<who>; its Leaders battle with Kalos's rematch teams (plan 23, Kalos finished)
+        foreach (var n in hall.Everyone.Where(n => n.Script == "Guest"))
+            Assert.True(TrainerDatabase.Get("kalos_chateau_" + n.Key) != null || TrainerDatabase.Get($"kalos_{n.Key}_rematch") != null, n.Key);
         var story = new StoryState();
         // A Visitor's day: the west place drawn, nobody in the east, no Leader before the Hall of Fame
         var host = Play(story, "KalosRoute7_BattleChateau", "OnEnter", hall, rolls: new[] { 1, 2 }, day: DayOfWeek.Tuesday);
