@@ -123,6 +123,9 @@ internal sealed partial class BattleCamera
             || (kind == ShotKind.Punch && lastKind != ShotKind.Punch)
             // A Max Move's finisher follows its own function frame by frame: its whip is an ease of its own (plan 25 · YD2)
             || (kind == ShotKind.MaxMove && lastKind == ShotKind.MaxMove && cue == lastCue)
+            // The player's own front is only ever cut to and from: it stands on the far side of their Pokémon from every
+            // other shot (plan 45 · BC2, the corridors' rule)
+            || (kind == ShotKind.OwnFront) != (lastKind == ShotKind.OwnFront)
             || CrossesPlayerSide(Current.Position, shot.Position);
         Current = cut ? shot : CameraShot.Lerp(Current, shot, 1f - MathF.Exp(-Math.Max(0f, dt) / Smoothing));
         started = true;
@@ -232,7 +235,12 @@ internal sealed partial class BattleCamera
         CameraManner? manner = null)
     {
         var m = MannerNow(manner);
-        if (choosing && anim.Time >= 1.8f) return (Overview(anim.Time), ShotKind.Overview, null);
+        if (choosing && anim.Time >= 1.8f)
+        {
+            // A manner that films the menu: Sinnoh's breathing overview, a cycle's shots (plan 45 · BC2)
+            if (!m.IsStill && IdleNow(anim, places, m) is { } idle) return idle;
+            return (Overview(anim.Time), ShotKind.Overview, null);
+        }
 
         // A thrown ball takes the camera with it
         if (anim.Ball is { } ball && !(ball.Caught && ball.Age > BattleAnimator.BallThrowTime(ball.Shakes, ball.Critical)))

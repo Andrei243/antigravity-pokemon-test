@@ -647,6 +647,22 @@ public sealed class BattleAnimator
     public float Time { get; private set; }
 
     /// <summary>
+    /// When the commands or the move cards last opened, in <see cref="Time"/>, or -1 while neither is open (plan 45 ·
+    /// BC2): the face notes it every frame (<see cref="NoteMenu"/>), and a manner's idle cycle films by its age.
+    /// </summary>
+    public float MenuOpenedAt { get; private set; } = -1f;
+
+    /// <summary>How long the commands or the move cards have been open, seconds of <see cref="Time"/>; -1 while neither is.</summary>
+    public float MenuAge => MenuOpenedAt < 0f ? -1f : Time - MenuOpenedAt;
+
+    /// <summary>Notes whether the commands or the move cards are open now (plan 45 · BC2): the time they opened is kept until they close.</summary>
+    public void NoteMenu(bool open)
+    {
+        if (!open) MenuOpenedAt = -1f;
+        else if (MenuOpenedAt < 0f) MenuOpenedAt = Time;
+    }
+
+    /// <summary>
     /// The most places a side of a battle has: five, a horde's wild side (plan 14 · B4). Every look kept for a place
     /// (the views, what lasts on each Pokémon, what waits for it, the effects' places) is sized by it.
     /// </summary>
