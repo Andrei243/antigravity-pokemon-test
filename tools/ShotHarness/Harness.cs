@@ -202,7 +202,8 @@ partial class Harness
     // SHOTS_FILTER=text saves only the shots whose name contains it, for quick looks at one thing. It also skips the
     // timings unless SHOTS_TIMING=1 (a filter that matches nothing then gives a run of timings alone)
     readonly string filter = Environment.GetEnvironmentVariable("SHOTS_FILTER") ?? "";
-    bool Wanted(string name) => filter.Length == 0 || name.Contains(filter);
+    // (several texts may be given, a comma between: a shot is saved whose name contains any of them)
+    bool Wanted(string name) => filter.Length == 0 || filter.Split(',').Any(f => f.Length > 0 && name.Contains(f));
 
     void Shot(string name)
     {

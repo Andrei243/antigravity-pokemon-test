@@ -510,10 +510,25 @@ internal static class PixelGround
             for (int x = 0; x < w; x++)
             {
                 int i = y * w + x;
-                if (surface[i]) mask.SetRaw(x, y, new Color(Math.Min(252, (int)MathF.Round(distance[i] * MaskScale)), 0, 0, 255));
+                if (surface[i])
+                    mask.SetRaw(x, y, new Color(Math.Min(252, (int)MathF.Round(distance[i] * MaskScale)),
+                        CurrentCode(map, originX + (int)MathF.Floor(x / (float)T), originY + (int)MathF.Floor(y / (float)T)), 0, 255));
             }
         return mask;
     }
+
+    /// <summary>
+    /// What the water's mask carries in its green for a tile (style guide, "Water", "Strong current"): the way a current
+    /// carries a surfer (64 east, 128 west, 192 north, 255 south), nought for still water.
+    /// </summary>
+    public static int CurrentCode(Map map, int x, int y) => !map.InBounds(x, y) ? 0 : map.BehaviourAt(x, y) switch
+    {
+        TileBehavior.CurrentEast => 64,
+        TileBehavior.CurrentWest => 128,
+        TileBehavior.CurrentNorth => 192,
+        TileBehavior.CurrentSouth => 255,
+        _ => 0
+    };
 
     private static bool SameColor(Color a, Color b) => a.R == b.R && a.G == b.G && a.B == b.B;
 

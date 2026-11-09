@@ -135,6 +135,20 @@ public class BattleCameraMannerTests
         }
     }
 
+    /// <summary>
+    /// Alola's manner alone keeps the trainers in the picture (plan 45 · BC6's last part): the player stands wholly off
+    /// the overview's line, beside the west of their platform and on the far side from the side shot's camera.
+    /// </summary>
+    [Fact]
+    public void OnlyAlolasMannerKeepsTheTrainersInThePicture()
+    {
+        Assert.Equal(new[] { "alola" }, CameraManners.All.Where(m => m.TrainersIn).Select(m => m.Name));
+        Assert.False(CameraManners.Classic.TrainersIn);
+        var spot = BattleRenderer.StandSpot;
+        Assert.True(spot.X < BattleStage.PlayerSpot.X - BattleStage.PlayerPlatformRadius - 1f, "the player stands well west of their platform");
+        Assert.True(spot.Z <= BattleStage.PlayerSpot.Z, "and no nearer the lens than its middle");
+    }
+
     [Fact]
     public void EveryRegionsFileNamesAMannerOfTheTable()
     {

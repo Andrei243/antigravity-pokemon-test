@@ -577,6 +577,27 @@ void main()
     if (dist < lap) color = foam;
     else if (abs(dist - ring) < 0.55 && Hash(floor(t / 3.0) + 5.0) > 0.42) color = foamThin;
 
+    // A strong current (the style guide's water, 'Strong current'; the mask's green: 64 east, 128 west, 192 north,
+    // 255 south): streaks along the flow, one to a cell 16 along by 4 across, a head of foam two texels long at the
+    // leading end, thin foam behind it and a last texel of wave light, running 8 texels a second in whole texels
+    float flow = floor(mask.g * 4.0 + 0.5);
+    if (flow > 0.5 && dist >= lap)
+    {
+        vec2 q = flow < 1.5 ? vec2(t.x, t.y) : flow < 2.5 ? vec2(-t.x, t.y) : flow < 3.5 ? vec2(-t.y, t.x) : vec2(t.y, t.x);
+        q.x -= floor(time * 8.0);
+        vec2 qc = floor(q / vec2(16.0, 4.0));
+        vec2 qf = q - qc * vec2(16.0, 4.0);
+        float k1 = Hash(qc + 211.0), k2 = Hash(qc + 223.0), k3 = Hash(qc + 227.0);
+        float slen = 6.0 + floor(k2 * 6.0);
+        vec2 so = vec2(floor(k1 * (16.0 - slen)), floor(k3 * 3.0));
+        if (Hash(qc + 229.0) > 0.2 && qf.x >= so.x && qf.x < so.x + slen)
+        {
+            float from = qf.x - so.x;
+            if (qf.y == so.y) color = from >= slen - 2.0 ? foam : from < 1.0 ? waveLight : foamThin;
+            else if (qf.y == so.y + 1.0 && from >= 1.0) color = waveDark;
+        }
+    }
+
     float shadow = Shadow(fragLight);
     float sun = max(sunDir.y, 0.0) * shadow * CloudLight(fragWorld);
 

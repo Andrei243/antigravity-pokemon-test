@@ -41,6 +41,25 @@ public class AlolaPoniTests
         Assert.Equal(RegionDatabase.Alola, RegionDatabase.RegionOfMap("ResolutionCave")?.Id);
     }
 
+    /// <summary>
+    /// The Battle Tree and the power plant are found at their doors as buildings of their own kinds (style guide, "Kinds
+    /// of building"), and Zygarde waits at an alpha's size in a cave lit green by its cells.
+    /// </summary>
+    [Fact]
+    public void TheBattleTreeAndThePowerPlantAreBuildingsOfTheirOwnAndZygardeStandsLarge()
+    {
+        var tree = Assert.Single(MapNamed("Poni").PlacedBuildings, b => b.Kind == BuildingKind.BattleTree);
+        Assert.Contains(tree.Doors, d => d.Target == "PoniGauntlet_BattleTree");
+        var plant = Assert.Single(MapNamed("Ulaula").PlacedBuildings, b => b.Kind == BuildingKind.PowerPlant);
+        Assert.Contains(plant.Doors, d => d.Target == "BlushMountain_PowerPlant");
+        // (Found at their doors, each as wide as a building found there may be: WorldMapBuilder.DoorBuildingWidth)
+        Assert.True(plant.Width >= 14 && tree.Width >= 14, $"the plant is {plant.X0}..{plant.X1}; the tree {tree.X0}..{tree.X1}");
+        var cave = MapNamed("ResolutionCave");
+        var zygarde = cave.Everyone.Single(n => n.Key == "legend");
+        Assert.Equal(Alphas.Scale, zygarde.Scale);
+        Assert.Equal(AreaClimate.Verdant, cave.Areas.Single(a => a.Key == "resolution_cave").Climate);
+    }
+
     [Fact]
     public void RoughGroundIsCrossedOnlyOnMudsdalesBack()
     {

@@ -43,7 +43,11 @@ public enum BuildingKind
     Mansion,
     /// <summary>Team Galactic's buildings: grey panels, slit windows, spikes on the roof.</summary>
     Galactic,
-    League
+    League,
+    /// <summary>Alola's Battle Tree on Poni Gauntlet: a hall grown into a great tree, its crown over the roof.</summary>
+    BattleTree,
+    /// <summary>Alola's geothermal power plant on Blush Mountain: panels, pipes, stacks and a cooling tower.</summary>
+    PowerPlant
 }
 
 /// <summary>A building found on an outdoor map: the rectangle of roof/wall tiles and what sits on its front row.</summary>
@@ -247,6 +251,9 @@ public static class MapStructures
         "KalosRoute7_BattleChateau" => BuildingKind.Mansion,
         "LumioseCity_BallBoutique" or "LumioseCity_Herboriste" => BuildingKind.Shop,
         "BattleFrontier_ExchangeServiceCorner" => BuildingKind.Shop,
+        // Plan 23, Alola's last places: the Battle Tree at Poni Gauntlet's head and the power plant on Blush Mountain
+        "PoniGauntlet_BattleTree" => BuildingKind.BattleTree,
+        "BlushMountain_PowerPlant" => BuildingKind.PowerPlant,
         _ => null
     };
 

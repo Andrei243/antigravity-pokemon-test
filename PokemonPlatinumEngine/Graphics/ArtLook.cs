@@ -413,6 +413,20 @@ internal static class ArtLook
                 };
             case Overworld.AreaClimate.Frozen:
                 return Snowbound(rig);
+            // Resolution Cave (plan 23): rock lit by the green cells drifting out of its cracks, brighter than a cave's
+            // own light and green in the shade, so what waits at its bottom is seen
+            case Overworld.AreaClimate.Verdant when cave:
+                return rig with
+                {
+                    Light = new SceneLighting(rig.Light.SunDirection, V(0.7f, 0.7f, 0.6f), V(0.48f, 0.56f, 0.54f), V(0.42f, 0.48f, 0.4f)),
+                    Background = Rgb(16, 28, 22),
+                    FogColor = V(0.06f, 0.11f, 0.08f),
+                    Post = rig.Post with
+                    {
+                        ShadowTint = V(0.88f, 1.02f, 0.98f),
+                        HighlightTint = V(1.02f, 1.04f, 0.94f)
+                    }
+                };
             default:
                 return rig;
         }

@@ -34,6 +34,9 @@ internal static partial class BuildingArt
     public static readonly Color FrontierBlue = Rgb(58, 92, 170), CastleViolet = Rgb(124, 98, 170), FactoryOrange = Rgb(232, 140, 52),
         ArcadeMagenta = Rgb(214, 92, 150), HallGold = Rgb(214, 170, 72);
 
+    /// <summary>The band of Alola's geothermal power plant (plan 23).</summary>
+    public static readonly Color PlantOrange = Rgb(214, 104, 52);
+
     private static Color TileRoof(TileType roof) => roof switch
     {
         TileType.RoofRed => Red,
@@ -373,6 +376,22 @@ internal static partial class BuildingArt
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 3, Window = WindowKind.Arched, GlassDoor = true,
                 Band = true, Sign = SignKind.Center, Accent = Rgb(196, 60, 70), Tiers = 2
+            },
+            // Alola's Battle Tree (plan 23): a hall of logs grown into a great tree, its trunk round the door and its crown
+            // over the roof (style guide, "Kinds of building")
+            BuildingKind.BattleTree => new BuildingStyle
+            {
+                Wall = WallKind.Log, Roof = RoofShape.Flat, RoofColor = Rgb(62, 128, 68), Storeys = 2, Window = WindowKind.Arched,
+                Accent = Rgb(116, 80, 54), Gear = RoofGear.GreatTree
+            },
+            // Alola's geothermal power plant on Blush Mountain: pale panels with a band of plant orange, its name on the
+            // cornice, pipes along its front and its roof, and a cooling tower and two stacks toward the roof's front
+            // (RoofGear.Cooling: the Battle Factory's stacks stand at the back, out of the field's sight from the door)
+            BuildingKind.PowerPlant => new BuildingStyle
+            {
+                Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 2, Window = WindowKind.Ribbon, SlidingDoor = true,
+                Band = true, Accent = PlantOrange, Sign = SignKind.Text, SignText = "POWER PLANT",
+                Gear = RoofGear.Vents | RoofGear.Pipes | RoofGear.Cooling
             },
             _ => house
         };
