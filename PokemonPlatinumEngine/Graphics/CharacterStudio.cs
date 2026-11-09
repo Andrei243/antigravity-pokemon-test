@@ -48,6 +48,26 @@ internal static class CharacterStudio
     /// <summary>How much of a figure a bust shows, in model units, and how far over the point between the eyes its middle lies.</summary>
     public const float BustHeight = 0.84f, BustLift = 0.04f;
 
+    /// <summary>
+    /// A grown bust (plan 30 · FM6; style guide, "Scale in a grown region"): how many of the head's half heights it shows
+    /// (a head and shoulders: a crown's room over the hair, the head, the neck and the shoulders to the chest), and how far
+    /// under the eyes its middle lies, in the same.
+    /// </summary>
+    public const float GrownBustHalfHeads = 5.4f, GrownBustDrop = 0.6f;
+
+    /// <summary>
+    /// Where a bust's middle stands and how tall it is, in model units before the rig's scale (plan 30 · FM6): a chibi
+    /// rig's as it always was (<see cref="BustHeight"/> round the eyes lifted by <see cref="BustLift"/>); a grown rig's by
+    /// its own head (<see cref="GrownBustHalfHeads"/> of its half height, the middle <see cref="GrownBustDrop"/> of it
+    /// under the eyes), so a grown portrait shows a head and shoulders, not a chest. GPU-free.
+    /// </summary>
+    public static (float Middle, float Height) BustOf(Data.CharacterKit kit, BodyBuild build, bool curved, float eyes)
+    {
+        if (kit != Data.CharacterKit.Grown) return (eyes + BustLift, BustHeight);
+        float headR = CharacterModels.GrownFrameOf(build, curved).HeadR;
+        return (eyes - GrownBustDrop * headR, GrownBustHalfHeads * headR);
+    }
+
     // A bust is lit from the front more than from above: this close, the studio's high light leaves the neck and the
     // jaw in a band of shade that reads as a beard
     private static readonly SceneLighting BustLight = Light with { SunDirection = Vector3.Normalize(new Vector3(-0.3f, 0.3f, 0.9f)) };
@@ -62,9 +82,10 @@ internal static class CharacterStudio
     {
         context.EnsureLoaded();
         var shaders = context.Shaders;
-        var look = new Vector3(0, (rig.Face.Anchor.Y + BustLift) * rig.Scale, 0);
+        var (middle, height) = BustOf(rig.Style.Kit, rig.Style.Build, rig.Style.CurvedFigure(), rig.Face.Anchor.Y);
+        var look = new Vector3(0, middle * rig.Scale, 0);
         float pitch = 4f * MathF.PI / 180f;
-        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 6f, look, Vector3.UnitY, BustHeight * rig.Scale, CameraProjection.Orthographic);
+        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 6f, look, Vector3.UnitY, height * rig.Scale, CameraProjection.Orthographic);
 
         Raylib.BeginTextureMode(target);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));

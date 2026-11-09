@@ -2096,7 +2096,8 @@ public partial class GameEngine
         foreach (string species in flow.Map.Everyone
                      .Where(n => n.IsPokemon && n.Species != null && Math.Abs(n.GridX - flow.Player.GridX) <= CharacterReach && Math.Abs(n.GridY - flow.Player.GridY) <= CharacterReach)
                      .Select(n => n.Species!).Distinct())
-            if (!FieldSprites.Ready(species)) flow.WantModel(species);
+            // (in a region whose people are grown, the sprites of a grown region's scale: plan 30 · FM6)
+            if (!FieldSprites.Ready(KitHere == Data.CharacterKit.Grown ? FieldSprites.GrownName(species) : species)) flow.WantModel(species);
     }
 
     private readonly HeldKey poketchAcross = new(), poketchDown = new();
@@ -3163,6 +3164,8 @@ public partial class GameEngine
         {
             // The manner the battle is filmed in, from the options' BATTLE CAMERA row and the region's file (plan 45 · BC1)
             battleRenderer.Manner = FixedCameraManner ?? CameraManners.For(Settings.BattleCamera, Here.BattleCamera);
+            // A grown region's trainers are their looks in the grown kit (plan 30 · FM6); everywhere else as they were handed
+            battleRenderer.GrownTrainers = KitHere == Data.CharacterKit.Grown;
             battleRenderer.Render(flow.Battle!);
         }
         else if (showTitle && !MeasuringQuality)

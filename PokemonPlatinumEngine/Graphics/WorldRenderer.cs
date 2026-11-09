@@ -1116,11 +1116,14 @@ public sealed partial class WorldRenderer
         public readonly (float X0, float X1, float Top)? Over;
         /// <summary>Who they are (the person of the map, or the player): what keeps a grown region's live rig live (plan 30 · FM3).</summary>
         public readonly object? Who;
-        /// <summary>Drawn as their sprite whatever the region's kit: a stance or a ride, which the grown kit has no clips for yet (plan 30 · FM3).</summary>
+        /// <summary>Drawn as their sprite whatever the region's kit: a stance the grown kit isn't placed in, or a ride (plan 30 · FM3, FM6).</summary>
         public readonly bool Sprite;
+        /// <summary>A sitter's own place, way and seat, which a grown rig is seated from (plan 30 · FM6); null for anyone standing.</summary>
+        public readonly FieldSeating? Seating;
 
-        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false)
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false, FieldSeating? seating = null)
         {
+            Seating = seating;
             Rig = rig;
             Feet = feet;
             Yaw = yaw;
@@ -1223,8 +1226,11 @@ public sealed partial class WorldRenderer
             // drawn at the moments they don't show (plan 09 · L12; style guide, "Life", "Set pieces")
             if (!Seen(npc)) continue;
             float nudge = NudgeOf(npc);
-            if (npc is { IsPokemon: true, Species: { } species })
+            if (npc is { IsPokemon: true, Species: { } own })
             {
+                // In a region whose people are grown it stands at a grown region's scale (plan 30 · FM6), its sprites
+                // baked and kept under a name of their own
+                string species = GrownField ? FieldSprites.GrownName(own) : own;
                 // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two, a hop to
                 // each tile, and shows its second frame while it is off the ground (style guide, "Pokémon in the field")
                 float sx = npc.DrawX + 0.5f, sz = npc.DrawY + 0.5f;
@@ -1298,9 +1304,16 @@ public sealed partial class WorldRenderer
                 pose.Time = (float)(Life.Now - phase);
                 Life.Strokes(map, nx + nudge, nz, npc.Facing, strokesSince, Life.Now, phase);
             }
-            if (pose.Stance != Overworld.Stance.Stand) at = Seated(rig, pose.Stance, at, npc.Facing, map.SeatUnder(npc), npc.Level != null, MapScene.PitchOf(map));
+            // (a grown rig sits from where they would stand, on a grown region's seat: plan 30 · FM6)
+            FieldSeating? seating = null;
+            if (pose.Stance != Overworld.Stance.Stand)
+            {
+                var underThem = map.SeatUnder(npc);
+                seating = new FieldSeating(at, npc.Facing, underThem?.Type, npc.Level != null);
+                at = Seated(rig, pose.Stance, at, npc.Facing, underThem, npc.Level != null, MapScene.PitchOf(map));
+            }
             actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose, Relief.DeckOver(map, at.X, at.Z, at.Y), npc,
-                pose.Stance != Overworld.Stance.Stand || rig.Kind != RigKind.Humanoid));
+                !FieldRigChoice.LiveIn(pose.Stance) || rig.Kind != RigKind.Humanoid, seating));
         }
         strokesSince = Life.Now;
 
@@ -1354,13 +1367,16 @@ public sealed partial class WorldRenderer
             ?? CharacterModels.Get(PlayerIdentity.Character, shaders);
         var playerAt = new Vector3(px + NudgeOf(null), feet, pz);
         // A stance a script set them in, while they stand still on foot (plan 11 · C7): a step stands them up again
+        FieldSeating? playerSeating = null;
         if (player.Posed is { } posed && player.Mount == null && player.WalkBlend < 0.5f && player.HopProgress <= 0f)
         {
             playerPose.Stance = posed;
-            playerAt = Seated(playerRig, posed, playerAt, player.Facing, map.SeatAt(player.GridX, player.GridY), false, MapScene.PitchOf(map));
+            var underThem = map.SeatAt(player.GridX, player.GridY);
+            playerSeating = new FieldSeating(playerAt, player.Facing, underThem?.Type, false);
+            playerAt = Seated(playerRig, posed, playerAt, player.Facing, underThem, false, MapScene.PitchOf(map));
         }
         actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y), player,
-            playerPose.Stance != Overworld.Stance.Stand || player.Mount != null || riding || fishing));
+            !FieldRigChoice.LiveIn(playerPose.Stance) || player.Mount != null || riding || fishing, playerSeating));
 
         if (player.Mount is { } ridden)
         {

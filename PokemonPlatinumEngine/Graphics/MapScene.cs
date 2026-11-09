@@ -59,6 +59,12 @@ internal sealed class MapScene
     public const float DrawbridgeFovYDeg = 17f;
     public const float DrawbridgeDistance = 760f / 16f;
 
+    // A region whose people are grown (plan 30 · FM6, decision 3; style guide, "Scale in a grown region"): FM0's 50°,
+    // a wider lens a little nearer, so a body 1.5 tiles tall shows its face and the ground across is about Platinum's
+    public const float KalosPitchDeg = 50f;
+    public const float KalosFovYDeg = 20f;
+    public const float KalosDistance = 520f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -154,6 +160,7 @@ internal sealed class MapScene
             FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
             FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
             FieldCamera.Drawbridge => new FieldView(DrawbridgePitchDeg, DrawbridgeFovYDeg, DrawbridgeDistance),
+            FieldCamera.Kalos => OutdoorOverride ?? new FieldView(KalosPitchDeg, KalosFovYDeg, KalosDistance),
             _ => OutdoorOverride ?? FieldView.Outdoor
         };
     }

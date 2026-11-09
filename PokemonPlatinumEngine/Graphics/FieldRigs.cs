@@ -10,10 +10,16 @@ namespace PokemonPlatinumEngine.Graphics;
 /// (which their grown look is named from, and which stands in as a sprite where the grown one isn't ready), where their
 /// feet are, the way they face, their pose, a bridge's deck over them, who they are (the person of the map or the player:
 /// what keeps them live from one frame to the next) and whether they are drawn as their sprite whatever the kit
-/// (<paramref name="Sprite"/>: a stance, a ride, a rig that is no person).
+/// (<paramref name="Sprite"/>: a stance the grown kit isn't placed in, a ride, a rig that is no person). Someone sitting
+/// (plan 30 · FM6) carries <paramref name="Seating"/>: where they would stand, the way they face, the seat under them and
+/// whether they stand at a height of their own, which a grown rig is seated from (<see cref="FieldRigChoice.GrownSeated"/>);
+/// <paramref name="Feet"/> is then where their chibi sprite sits.
 /// </summary>
 internal readonly record struct FieldFigure(CharacterRig Rig, Vector3 Feet, float Yaw, CharacterPose Pose,
-    (float X0, float X1, float Top)? Over, object? Who, bool Sprite);
+    (float X0, float X1, float Top)? Over, object? Who, bool Sprite, FieldSeating? Seating = null);
+
+/// <summary>Where a sitter of the field would stand, the way they face, the seat under them and whether they stand at a height of their own (plan 30 · FM6).</summary>
+internal readonly record struct FieldSeating(Vector3 Stood, Data.Direction Facing, Overworld.PropType? Seat, bool Raised);
 
 /// <summary>
 /// Which of a grown region's people are drawn live and which as impostors (plan 30 · FM3; style guide, "Live rigs in the
@@ -59,6 +65,53 @@ internal static class FieldRigChoice
     /// </summary>
     public static float BubbleLift(bool grown, float verticalScale) => grown ? 1.95f + GrownHeadRise * verticalScale : 1.95f;
 
+    /// <summary>
+    /// How far a grown sitter's feet stand from their tile's middle along the way they face, in tiles (plan 30 · FM6;
+    /// style guide, "Scale in a grown region"): the grown sit puts the hip joints over the feet's root and the feet
+    /// ahead, so the root stands a little past the seat's middle (a sofa's seat is deeper).
+    /// </summary>
+    public static float GrownForwardOn(Overworld.PropType? type) => type switch
+    {
+        Overworld.PropType.Sofa => 0.18f,
+        Overworld.PropType.Cushion => 0f,
+        _ => 0.08f
+    };
+
+    /// <summary>
+    /// Where a grown sitter's feet stand (plan 30 · FM6): sitting, on the floor in front of the seat, lifted only where
+    /// the seat stands higher (<see cref="Overworld.Seats.GrownHeightOf"/>) than the grown sit's own seat
+    /// (<paramref name="seatHeight"/>, <see cref="GrownAnimation.SeatOf"/> times the rig's scale), so a grown region's
+    /// chairs, benches and sofas take a grown body with its feet on the floor; on the ground, on the cushion's top. Whoever
+    /// stands at a height of their own (<paramref name="raised"/>) is lifted no more.
+    /// </summary>
+    public static Vector3 GrownSeated(Vector3 stood, Overworld.Stance stance, Data.Direction facing, Overworld.PropType? seat, bool raised, float seatHeight)
+    {
+        var (dx, dz) = Overworld.FieldMovement.Delta(facing);
+        float height = raised || seat == null ? 0f : Overworld.Seats.GrownHeightOf(seat.Value);
+        float forward = GrownForwardOn(seat);
+        float lift = stance == Overworld.Stance.Sit ? MathF.Max(0f, height - seatHeight) : height;
+        return stood + new Vector3(dx * forward, lift, dz * forward);
+    }
+
+    /// <summary>Whether the grown kit draws someone in a stance live (plan 30 · FM6): standing, sitting on a seat or on the ground.</summary>
+    public static bool LiveIn(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround;
+
+    /// <summary>
+    /// How fast someone moved over the ground between two frames, in a grown rig's model units a second (plan 30 · FM6,
+    /// what <see cref="GrownMotion"/> is handed): the feet's way over the ground over the frame's time and the rig's
+    /// scale, nought for a frame of no time and for a jump of more than <see cref="Teleport"/> tiles (a warp, a place
+    /// put down), which starts the motion again.
+    /// </summary>
+    public static Vector2 VelocityOf(Vector3 from, Vector3 to, float dt, float scale)
+    {
+        var way = new Vector2(to.X - from.X, to.Z - from.Z);
+        if (dt <= 0f || way.Length() > Teleport) return Vector2.Zero;
+        return way / dt / MathF.Max(0.05f, scale);
+    }
+
+    /// <summary>A move over the ground longer than this in one frame, in tiles, is a jump, not a walk.</summary>
+    public const float Teleport = 2f;
+
     /// <summary>The nearest of eight facings to a way (radians, nought south), as an impostor is baked at.</summary>
     public static int Facing8(float yaw) => (((int)MathF.Round(yaw / (MathF.PI / 4f))) % 8 + 8) % 8;
 }
@@ -92,6 +145,11 @@ internal sealed class FieldRigs
     private readonly Dictionary<string, (CharacterSprites.Card[] Views, double Used)> impostors = new(StringComparer.OrdinalIgnoreCase);
     private readonly List<FieldFigure> figures = new();
     private readonly List<CharacterRig?> grown = new();
+    // Each person's grown motion (plan 30 · FM6), the feet it last saw and the frame's pose, yaw and where they are drawn
+    private readonly Dictionary<object, (GrownMotion Motion, Vector3 Feet, CharacterRig Rig)> motions = new();
+    private readonly List<(CharacterPose Pose, float Yaw, Vector3 Feet)> posed = new();
+    private readonly HashSet<object> moved = new();
+    private double lastTime = double.NaN;
     private readonly List<int> live = new();
     private readonly HashSet<object> liveBefore = new(), liveNow = new();
     private readonly List<Vector3> feet = new();
@@ -132,9 +190,16 @@ internal sealed class FieldRigs
         pitchDeg = pitch;
         figures.Clear();
         grown.Clear();
+        posed.Clear();
         feet.Clear();
         who.Clear();
         Waiting = 0;
+        // The frame's time on the field's clock: nought on the first frame and while it stands still, and a clock gone
+        // back (a new place) starts every motion again
+        float dt = double.IsNaN(lastTime) || time < lastTime ? 0f : (float)Math.Min(time - lastTime, 0.25);
+        if (!double.IsNaN(lastTime) && time < lastTime) motions.Clear();
+        lastTime = time;
+        moved.Clear();
         foreach (var f in people)
         {
             figures.Add(f);
@@ -145,14 +210,16 @@ internal sealed class FieldRigs
                 if (rig == null) Waiting++;
             }
             grown.Add(rig);
+            posed.Add(rig == null ? (f.Pose, f.Yaw, f.Feet) : Posed(f, rig, dt));
         }
+        foreach (var key in new List<object>(motions.Keys)) if (!moved.Contains(key)) motions.Remove(key);
         // Only those with a grown rig ready are chosen among; the rest are their sprites whatever their distance
         var index = new List<int>();
         for (int i = 0; i < figures.Count; i++)
         {
             if (grown[i] == null) continue;
             index.Add(i);
-            feet.Add(figures[i].Feet);
+            feet.Add(posed[i].Feet);
             who.Add(figures[i].Who);
         }
         var chosen = new List<int>();
@@ -177,6 +244,34 @@ internal sealed class FieldRigs
         }
     }
 
+    /// <summary>
+    /// A grown person's pose, way and feet this frame (plan 30 · FM6): their gait, yaw, lean, step-turn, start and stop
+    /// from their own <see cref="GrownMotion"/>, handed how fast their feet moved over the ground (standing, the way the
+    /// grid has them face is where they turn to); a sitter's feet where a grown body sits
+    /// (<see cref="FieldRigChoice.GrownSeated"/>). Whoever is nobody (a tool's figure) keeps the pose they came with.
+    /// </summary>
+    private (CharacterPose Pose, float Yaw, Vector3 Feet) Posed(FieldFigure f, CharacterRig rig, float dt)
+    {
+        var at = f.Feet;
+        if (f.Seating is { } seating && f.Pose.Stance != Overworld.Stance.Stand)
+            at = FieldRigChoice.GrownSeated(seating.Stood, f.Pose.Stance, seating.Facing, seating.Seat, seating.Raised,
+                GrownAnimation.SeatOf(rig.Skeleton) * rig.Scale);
+        if (f.Who is not { } key) return (f.Pose, f.Yaw, at);
+        var ground = f.Seating?.Stood ?? f.Feet;
+        if (!motions.TryGetValue(key, out var m) || !ReferenceEquals(m.Rig, rig)) m = (GrownMotion.For(rig, f.Yaw), ground, rig);
+        var velocity = FieldRigChoice.VelocityOf(m.Feet, ground, dt, rig.Scale);
+        // A jump (a warp, someone put down) starts the motion again where they are, facing their way
+        if (dt > 0f && new Vector2(ground.X - m.Feet.X, ground.Z - m.Feet.Z).Length() > FieldRigChoice.Teleport) m = (GrownMotion.For(rig, f.Yaw), ground, rig);
+        // A sitter turns to the way they sit at once and never walks
+        if (f.Pose.Stance != Overworld.Stance.Stand) { m = (GrownMotion.For(rig, f.Yaw), ground, rig); velocity = Vector2.Zero; }
+        m.Motion.Step(dt, velocity, f.Yaw);
+        motions[key] = m with { Feet = ground };
+        moved.Add(key);
+        var pose = f.Pose;
+        m.Motion.Fill(ref pose);
+        return (pose, m.Motion.Yaw, at);
+    }
+
     /// <summary>The people in a pass, in place of their sprites: live, as impostors, or as their sprite.</summary>
     public void Draw(CharacterPass pass)
     {
@@ -189,18 +284,18 @@ internal sealed class FieldRigs
         if (pass == CharacterPass.Color) shaders.SetSkinnedStraightening(ArtLook.FieldUpright, pitchDeg, MirrorPlane);
         foreach (int i in live)
         {
-            var f = figures[i];
+            var (pose, yaw, at) = posed[i];
             var rig = grown[i]!;
             if (pass == CharacterPass.Depth)
             {
                 // The sun sees the body as it stands, not stretched for the camera
-                CharacterRenderer.Draw(context, rig, f.Pose, Matrix4x4.CreateRotationY(f.Yaw) * Matrix4x4.CreateTranslation(f.Feet), CharacterPass.Depth);
+                CharacterRenderer.Draw(context, rig, pose, Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(at), CharacterPass.Depth);
                 ShadowTriangles += TrianglesOf(rig, outline: false);
                 continue;
             }
-            var root = Matrix4x4.CreateRotationY(f.Yaw) * Matrix4x4.CreateScale(1f, vs, 1f) * Matrix4x4.CreateTranslation(f.Feet);
-            CharacterRenderer.Draw(context, rig, f.Pose, root, CharacterPass.Color);
-            CharacterRenderer.Draw(context, rig, f.Pose, root, CharacterPass.Outline);
+            var root = Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateScale(1f, vs, 1f) * Matrix4x4.CreateTranslation(at);
+            CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Color);
+            CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Outline);
             // (the outline leaves culling on; the field draws with it off)
             Rlgl.DisableBackfaceCulling();
             Triangles += TrianglesOf(rig, outline: true);
@@ -217,11 +312,13 @@ internal sealed class FieldRigs
             if (live.Contains(i)) continue;
             var f = figures[i];
             if (f.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(f.Over);
-            if (grown[i] is { } rig && impostors.TryGetValue(rig.Type, out var views))
+            // (an impostor stands: a sitter beyond the live twelve is their sprite, seated as ever)
+            if (grown[i] is { } rig && f.Pose.Stance == Overworld.Stance.Stand && impostors.TryGetValue(rig.Type, out var views))
             {
                 // An impostor: the facing of eight nearest the way they face, its foot as a sprite's is
-                var card = views.Views[FieldRigChoice.Facing8(f.Yaw)];
-                CharacterSprites.DrawCard(card, new Vector3(f.Feet.X, f.Feet.Y - Margin * vs, f.Feet.Z + 0.02f), vs, pass);
+                var (_, yaw, at) = posed[i];
+                var card = views.Views[FieldRigChoice.Facing8(yaw)];
+                CharacterSprites.DrawCard(card, new Vector3(at.X, at.Y - Margin * vs, at.Z + 0.02f), vs, pass);
                 if (pass == CharacterPass.Color) { Impostors++; Triangles += 2; }
             }
             else
@@ -322,5 +419,7 @@ internal sealed class FieldRigs
         if (loaded) Gpu.Unload(bakeTarget);
         loaded = false;
         liveBefore.Clear();
+        motions.Clear();
+        lastTime = double.NaN;
     }
 }
