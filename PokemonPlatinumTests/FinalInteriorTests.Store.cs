@@ -12,7 +12,8 @@ public partial class FinalInteriorTests
     private static readonly string[] Store = { "VeilstoneStoreB1F", "VeilstoneStore1F", "VeilstoneStore2F", "VeilstoneStore3F", "VeilstoneStore4F", "VeilstoneStore5F" };
     private static readonly string[] Terminal = { "GlobalTerminal1F", "GlobalTerminal2F", "GlobalTerminal3F" };
 
-    private static IEnumerable<string> Centers => Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*PokemonCenter.json").Select(Path.GetFileNameWithoutExtension)!;
+    // (Sinnoh's Centers have a floor above and below; the later regions' one-floor Centers are no part of this check)
+    private static IEnumerable<string> Centers => Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*PokemonCenter.json").Select(Path.GetFileNameWithoutExtension).Where(n => File.Exists(Path.Combine(GameDataFiles.PathOf(MapDatabase.Folder), n + "2F.json")))!;
 
     /// <summary>Whoever takes a way of a room is put down on a tile one can stand on, beside a way that leads back to the room.</summary>
     private static void LeadsBack(string from, Warp way)
