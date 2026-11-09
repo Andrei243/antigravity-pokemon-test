@@ -23,6 +23,7 @@ Each item says what the user decides or runs, and what waits for it. Nothing els
 9. **Questions with a default that holds until answered**: real-time battles for the Lumiose era (the study's question 1: no, turn-based); the order of plans 35 to 44 and whether 42 to 44 are wanted (question 2: built last, waves 103 to 111; the user may drop 42, 43 or 44 whole); Hisui (plan 23 · decision 9: Z17 to Z20 optional, asked again after Paldea); Alola drawn by hand (23 · Z5: unless the user rules on the Moon decompilation otherwise).
 10. **What only the user does**: plan 07 · O7's first deployment of the online server; plan 16 · T2's first public release; plan 13 · V25's Discord application; every optional session (the list after wave 112) on the user's word; plan 27's six decisions when its spike comes.
 11. ~~**The credits song**~~ *Done 2026-11-09*: the user asked for a song for each region in its own style, chose take 1 of each (Unova's in hard techno), and they play under each region's credits (`Data/music/<region>/credits.ogg`, every take kept in [`docs/music/credits/`](../music/credits/README.md)). Galar and Paldea get theirs as they are built.
+12. **Carpathia's first proposals** (plan 46, written 2026-11-09). *Answer* [the starters, legendaries and people](decisions/CP-proposals-starters-legendaries.md) and the Sound type's matchups (plan 46 · decisions 13 and 14). **Waits for it**: plan 46 · CP3 to CP9 (the species' batches, which run beside the waves, decision 9); CP1 and CP2 go ahead on the recommendations.
 
 ## Where we are
 

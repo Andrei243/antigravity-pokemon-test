@@ -1,0 +1,245 @@
+# Plan 46 · Carpathia, a region of our own after Romania
+
+Written 2026-11-09, before any session, at the user's request, from [the study](studies/romania-region-study.md) and the user's answers of the same day (decisions 1 to 12, below).
+
+**Goal**: a tenth region, **Carpathia**, that has no original game at all. It is drawn from Romania: the ring of the Carpathians round the Transylvanian plateau, the plains outside it, the Danube to its delta and the Black Sea. It is built on [plan 32](32-open-world-engine.md)'s open-world engine and comes after Paldea in the chain. It has:
+- **its own Pokédex of about 120 new species** with no forebear in any game, three starter lines, a trio of legendaries and the Dacian draco as its mythical;
+- **a nineteenth type, Sound**, because music is at the heart of Romania;
+- **a primary gimmick of our own, the Tales (*basme*)**: once a battle a trainer tells a tale learned in the world, which changes the field for both sides for five turns and wakes the Pokémon bound to it; the other trainer may answer with a tale of their own;
+- **a secondary gimmick, the winter masks**: the bear, goat, horse and stag of the New Year's dances, crafted or found at the festivals, giving a Pokémon a role for a battle;
+- a story of a team that wants **the sun to stand still**, with the Zmeu;
+- gyms in **any order**, levels that **climb past Paldea** under a cap raised to about 300.
+
+Everything in it is ours: places, people, species, words, art and music. Real places of Romania inspire its landmarks; the map's names are invented with Romanian roots (decision 4).
+
+## Where we are
+
+- **The engine.** Plan 32 · OW0 to OW9 are built (OW10 and the user's gates left); plans 33 and 34 will have proven it twice, with a mount (plan 34 · PD2's `MovementGrants` on the capsule) and raids, before this plan starts. Rooms stay grid rooms behind doors (plan 32 · decision 6).
+- **Regions.** Nine regions are chained Sinnoh to Paldea (`RegionDatabase`), and plan 34 says the chain ends at Paldea. Each region has a file (`Data/regions/<id>.json`), a crossing (`GameEngine.CrossTo`), harbours and Fly between regions. Carpathia is a tenth `Region`, after Paldea, with a link from Paldea's harbour.
+- **Species of ours** (plan 03 · D14) are 400 evolutions past level 100 of existing species, numbered from `PokemonDatabase.OursFrom` (2000) and in regional blocks of a thousand from 4000 to about 8025, made by the importer from a hand-written table (`SpeciesPastHundred`), each grown from a forebear's values. **No species can yet be made from nothing.**
+- **Types** are an enum of eighteen (`Data/Enums.cs`) and a chart in code (`TypeChart`); 37 engine files name Fairy, the last type added, which is about the reach of a new one.
+- **The cap** is `Ruleset.HighestLevel` = 260 (plan 18 · W4), read by 26 places, nearly all as a clamp; Paldea's fair climb puts its Champion at about 258 and its post-game at 262 ([the W4 study](studies/W4-level-curve-study.md), section 4).
+- **The later-mechanic pattern** (plan 06 · R20 to R23, R30) has been followed five times: a `Ruleset` flag, a key item, a flag on the choice, a `WhyNot`, an event, the AI's use, `RunTerms.NoLaterMechanics`, a field of the Vs. Recorder's file. Its looks (plan 25) and a layer of the battle songs (plan Y · YD5) have a pattern too.
+- **Seasons** exist on the grid only (plan 22 · U3, U4); the open renderer has none.
+- **Crafting** (plan 39 · CR1) has the kit, materials and drops; CR3 to CR5 add making.
+
+## Design
+
+### The region's file and its place in the chain
+
+`Data/regions/carpathia.json`: `field: open`, plan 30's `movement` (`Free`, `Analog`, `Grown`, the region's own traversal grants), its professor and rival, its three starters, eight badges, the `Arrival` marker a Champion crossing from Paldea lands on, `levels` and `caps` (below), the Carpathian Pokédex. A `Region` value after Paldea with `Generation` 0 (ours, as D14's species). Paldea's harbour gains the link (plan 34 is amended by this plan: the chain no longer ends there). A new game may also begin in Carpathia (`--region Carpathia`), as in every region, at its own levels.
+
+### The map
+
+Built as plan 32's data (`Data/world3d/carpathia/`), hand-written terrain, carves, water and roads, at about **3.5 km by 2.5 km**. The shape is Romania's: the Carpathian arc, the plateau inside it, plains to the south and east, the river along the south to a delta, the sea on the east. The study's table of places is the list to draw from; the region's first session (CP18) writes the map's sketch and names with the user. Landmarks to build:
+
+- the **hairpin road** over the ridge with its glacial lake and its tunnel (the Transfăgărășan);
+- the **plateau of stone faces** (Bucegi's Sphinx and Babele), a legendary's place;
+- **castles on crags** (Bran, Corvin, Peleș): the Ghost gym, the villain's stronghold, the League's palace;
+- **walled old towns** of painted houses whose roofs have eyes (Sibiu, Brașov, Sighișoara) and fortified churches;
+- the **salt mine** as a cavern with a lake and a wheel (Turda), and the **ice cave** (Scărișoara);
+- the **river's gorge** with a face carved in the cliff (the Iron Gates), and the **delta** of reed channels and floating islands;
+- the **sea coast** with its resort and its old casino on the shore, the region's harbour;
+- **the capital**: boulevards, an arch, park lakes and a palace too big for its square;
+- the **wooden north**: needle-spired wooden churches, carved gates, painted monasteries, a cemetery of painted crosses (Maramureș, Bucovina), where many tales are found;
+- the **mud volcanoes**' grey moonscape, and the **Dacian sanctuary** of stone circles in the forest (the post-game).
+
+**Traversal**: the region's own way about, on `MovementGrants`: a pony for the plains and passes, a boat for the delta's channels, a glide from the heights; each granted by the story.
+
+**Architecture**: new `Architecture`s and style-guide rows first: *Plateau* (painted walled towns, eyed roofs), *Castle* (on crags, built over carves), *Wooden* (Maramureș), *Monastery* (painted walls), *Capital* (belle-époque boulevards), *Delta* (reed and timber), *Coast* (resort blocks).
+
+**Seasons**: the open renderer gains the grid's seasons (`SeasonPalette`, season swaps of chunks, tables by season) and Carpathia has them, a month each as Unova's: snow on the ridge in winter, the plateau gold in autumn.
+
+### Gyms and the story
+
+**Gyms in any order** (decision 8), as Paldea's: the levels of the first three fixed, the later ones scaled to the badges held. Suggested types and places, the region's session to settle them with the user: Water on the coast, Flying in the delta, Rock on the pass, Ice in the ice cave, Grass in the wooden north, Ghost in the castle, Psychic among the stone faces, **Sound in the capital's opera**. Each has a test before the leader, as a grid room's puzzle or a task in the open world: a *căluș* dance, a shepherd's round-up, a sledge run, a painted-egg hunt, a tale told to an old woman.
+
+**The villain** (decision 11) is a team of ours that wants **the sun to stand still**: an endless day, no more winters or nights, by binding the **Zmeu**, who in the tales steals the sun. The tales are how the player undoes it, and the Vârcolac, who eats the moon, is the balance. The story stays with folklore and away from the country's real politics.
+
+**The calendar**: Carpathia keeps Romania's days through plan 40's festivals: **Mărțișor** (1 March, a red-and-white charm, Baba Dochia's days to 9 March), **Dragobete** (24 February), **Sânziene** (24 June, the fairies' night), Easter's painted eggs, the Christmas carollers, and the **New Year's mask dances**, where the masks are won.
+
+### The new species
+
+About **120** (decision 2), numbered **from 10001** in the order of the Carpathian Pokédex, outside the National 1,025 (`GetAll()` stays the games' alone) and outside the Pokédex of our own (`Pokedex.Ours` stays D14's). A **Carpathian Pokédex** of its own, with a diploma (plan 40 · GE4's pattern) and the charm a regional Pokédex earns (decision 6).
+
+- **Made from nothing**: a hand-written table `tools/DataImporter/Overrides/species-carpathia.json` with every value a species has (stats, types, abilities, catch rate, growth, egg groups, effort, base experience, height, weight, colour, shape, gender ratio, learnset, TMs, tutors, evolutions), which the importer makes whole species of (`SpeciesOfNothing.cs`, beside `SpeciesPastHundred.cs`); a test holds every field present and every move and ability existing and run.
+- **Designed in batches** that the user approves, as D14's were (`decisions/CP-proposals-*.md`), the first being the starters and legendaries ([CP-proposals-starters-legendaries.md](decisions/CP-proposals-starters-legendaries.md)). About **15 regional forms** of existing species (a Carpathian Ursaring line, a delta Pelipper, a salt-mine Sableye, a shepherd's Lycanroc, a Bucovina Smeargle…) in the region's own block of a thousand (10000 + the species' number would collide with the Pokédex's own numbers, so forms take **11000 + the species' number**).
+- **Sculpted** from pictures, as D14's 400 were (`PokemonModels.Carpathia*.cs`), a batch of about 25 a session.
+- **Named** in English and Romanian together; **the user reviews the Romanian** (decision 7): `Data/text/ro/names.json` gains the Carpathian species, written by hand.
+- **Pokédex entries** written by hand (`dex-entries.json`), the check run as always.
+- **About 20 signature moves and 15 abilities** of our own (moves from **3101**, after R31's 3001 to 3072), each with its effect, its look (`MoveFx`), its sound and scenario tests (Showdown's oracle knows none of them).
+
+### The Sound type
+
+A **nineteenth type** (decision 5), at the end of `PokemonType`. Its matchups are proposed below and approved by the user in CP2:
+
+| Sound attacking | |
+|---|---|
+| Super effective against | Rock, Ice, Psychic (resonance shatters stone, ice and thought) |
+| Not very effective against | Steel, Ground, Sound (metal rings it back, earth swallows it) |
+| No effect on | — |
+
+| Sound defending | |
+|---|---|
+| Weak to | Dark (silence), Electric (feedback), Ground (it swallows sound) |
+| Resists | Normal, Flying, Sound |
+| Immune to | — |
+
+**The rules round it**:
+- **Every Sound-type move is a sound move** (carries `MoveFlags.Sound`), so Soundproof is the type's immunity, Throat Spray and Punk Rock answer it, and the Throat Chop silence stops it. Liquid Voice turns it Water as it turns any sound move.
+- **The games' existing sound moves keep their types** (Hyper Voice stays Normal, Boomburst stays Normal); the Sound type's own moves are new ones of ours.
+- **Inverse battles** turn its row round as every row (`TypeChart.GetEffectiveness(..., inverse)`).
+- **What is per type gains a Sound entry**: `Words`, `TypeSigns` (a note for its sign), its colour, the trainer AI's 40ths chart, Tera Sound (a Tera type and Tera Blast), a Sound gem, a type-boosting held item (a tuning fork), a resist berry, a Z-crystal and a Max Move of its own (each a row of the later mechanics), the Hidden Power table **not** (Platinum's sixteen), Arceus and Silvally **not** (no plate, no memory: decision 13 below), the Battle Hall's board **not** (Platinum's seventeen).
+- **What must not move**: the golden battles under Platinum's rules (no Sound in them), the oracle (Sound left out of its scenarios: Showdown has no such type), the coverage report's floors.
+
+### The Tales, the primary gimmick
+
+A *basm* is a Romanian fairy tale (decision 1).
+
+- **What a battle does**: once a battle, with the **Book of Tales** (a key item) in the bag and a tale learned, a trainer **tells a tale** with their move (`BattleChoice.Tale`, `WhyNotTale`). For **five turns** the tale's rule holds over the whole field for **both** sides (a `TaleState` in `FieldState`, with its turns, beside the weathers and terrains). Each Pokémon **bound to that tale** on the teller's side **wakes into its Tale Form** (`FormKind.Tale`) for as long as the tale is told, and goes back as it ends. The other trainer may **answer** with a tale of their own, once, which ends the first tale at once and begins theirs (`TaleAnswered`). A tale already told can't be told again in the same battle.
+- **The tales**, about twelve, each a rule, a sky (`StageLight`), a layer of the battle song and a Tale Form for the species bound to it. A first list for CP11 to settle: **the Zmeu's** (the sun cannot set: Fire stronger, no night forms), **the Vârcolac's** (the eclipse: the field dark, Dark and Ghost stronger, accuracy down), **the Solomonar's** (the storm: a weather the teller owns), **Baba Dochia's** (the cold returns: each switch-in sheds a layer of its defence), **the Ielele's** (the night dance: Sound moves strike twice), **Miorița's** (the shepherd's lament: when a Pokémon faints, an ally takes its strength), **Muma Pădurii's** (the forest closes: Grass heals, the foe's switches are held), **Făt-Frumos'** (youth without age: no stat may fall), **the Uriași's** (the giants: the heaviest hit hardest), **the Spiriduș'** (the house sprite: items work twice), **the Sânziene's** (midsummer: healing doubled), **the Draco's** (the war banner: the team's attacks rise each turn), each to be balanced in CP11.
+- **Found in the world**, never bought: from an elder in a village, a painted monastery wall, a carved gate, a stone of the sanctuary, a festival. The Book keeps each tale with a page of its story (a screen of its own, like the Journal). Trainers of the region know tales by their place in the story.
+- **The trainer AI** tells its best tale when it helps its side more than the foe's (worked out on the battle's own numbers, like R30's `TeraNow`) and answers a tale that hurts it.
+- **On screen**: the sky changes, the field shows the tale's look, a Tale Form wakes with a cue, the song gains its tale layer (folk instruments over the theme, as the giant layer does), a line names the tale.
+- **The pattern's rows**: `Ruleset.Tales`, the key item, `RunTerms.NoLaterMechanics` asking it, `BattleRecord` and the Vs. Recorder's file keeping the tales told, `TaleTold` and `TaleAnswered` events on their lines.
+
+### The winter masks, the secondary gimmick
+
+At New Year Romanian villages fill with masked dancers.
+
+- **What a battle does**: once a battle, a trainer **masks a Pokémon** (`BattleChoice.Mask`, `WhyNotMask`); a mask is a role for the rest of the battle, changing its ability and its second type to the mask's:
+  - the **bear** (*ursul*): bulk, takes hits meant for an ally;
+  - the **goat** (*capra*): speed and mischief, steals the foe's raised stats;
+  - the **horse** (*căluțul*): carries an ally out, a free switch each turn;
+  - the **stag** (*cerbul*): the leader, raises the team each turn.
+  A battle may see **one tale and one mask** from each side.
+- **Where masks come from**: crafted with plan 39's kit from materials (fur, horn, wood, felt) once the workshop's mask pattern is learned, and won at the New Year's dances. A mask is a held thing of the bag's own pocket, worn only in battle.
+- **The look**: a mask is an accessory fitted on the head bone of any body plan (`PokemonModels`' role bones), sculpted once per mask and scaled to the head, never a sculpt per species.
+
+### Levels and the cap
+
+The cap is **raised** (decision 3): `Ruleset.HighestLevel` to **300**. Carpathia's world files keep levels of its own (1 to about 70), and its `levels` map them as every crossed region's are: its story from about **262 to 286**, its Champion about **286**, its post-game to about **296**, its `caps` by badge in its own levels. What the raise touches: the 26 readers of `HighestLevel` (mostly clamps, nothing to change), Erratic and Fluctuating past 260 (`GetExpForLevel`), an overflow check of the damage formula at 300, `LevelMapping`'s bounds, the online check, R31's moves past 100 extended to 300 (moves of our own learned from 261 to 300), the crossed region's soft ceiling (`LevelCaps.Ceiling`), the golden levels files (`levels.txt`, `levels-crossed.txt`) and the ladder's test (`LevelLadderTests`). A new game begun in Carpathia plays at its own levels as any region does.
+
+### Sound, voice and words
+
+- **Music** of the region on its folk instruments: the *nai*, *cobză*, *țambal*, *bucium*, *fluier*, *taragot*; the free *doină* for nights and laments, the *hora* for towns, uneven 7/16 for battles; new instruments for the synthesiser where plan 31's set lacks them. Each tale has its layer. A credits song through Lyria in the region's own style.
+- **Voices**: Kokoro designs with a Romanian accent for the cast (plan 26).
+- **Words**: English is the source as everywhere; the Romanian of this region is **reviewed by the user** (decision 7), names first.
+
+## Decisions for the user
+
+Answered on 2026-11-09:
+
+1. **The gimmick**: the Tales as the primary, the winter masks as the secondary.
+2. **New species**: about 120.
+3. **Levels**: the cap raised past 260 (to about 300), Carpathia climbing on from Paldea.
+4. **Names**: invented with Romanian roots.
+5. **A new type**: yes, **Sound**.
+6. **The Pokédex**: a Carpathian Pokédex with its diploma, outside the National 1,025.
+7. **Romanian text**: the user reviews.
+8. **Gyms**: in any order.
+9. **The species' work**: starts early, beside the waves.
+10. **The region's name**: Carpathia.
+11. **The villain's goal**: to make the sun stand still, with the Zmeu.
+12. **The legendaries**: the Zmeu, the Vârcolac and the Solomonar's storm-dragon, with the Dacian draco as the mythical.
+
+Open, each with its recommendation (the session named goes ahead on it unless the user says otherwise):
+
+13. **Sound's matchups** (CP2). *Recommended:* the tables above. Arceus and Silvally get no Sound form.
+14. **Existing sound moves** (CP2). *Recommended:* they keep their types; Sound-type moves are new. The alternative retypes a few (Boomburst, Hyper Voice), which moves the golden battles and the oracle.
+15. **One tale and one mask a battle** (CP11, CP13). *Recommended:* each side may tell one tale (and answer once) and mask one Pokémon. The alternative lets a mask be worn only by a Pokémon bound to the tale being told.
+16. **The map's sketch and the towns' names** (CP18). The user judges the sketch, the first town and the names before the rest is built.
+17. **The professor, the rival and the villain team's name** (CP18). Proposed with the starters' file.
+
+## Sessions
+
+Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now (decision 9); **the gimmicks and the engine** (CP11 to CP17) need no region and may run once their seams are free; **the region** (CP18 to CP27) starts after plan 34 and every other plan but plan 27.
+
+### CP1 · Species made from nothing (1 session)
+- The table and `SpeciesOfNothing.cs`, the block from 10001 and forms from 11000, the Carpathian Pokédex (`Pokedex.Carpathia`, its words, its diploma), `GetAll()` and `Ours()` untouched, `Everyone()` taking them. Tests for the table's completeness and the counts. A placeholder species for the tests until CP3's are approved.
+
+### CP2 · The Sound type (1 to 2 sessions; lane 3)
+- `PokemonType.Sound`, the chart and its inverse, every per-type row (words, sign, colour, AI chart, Tera, gem, booster, berry, Z-crystal, Max Move), Soundproof's immunity through the flag, the golden battles and the oracle held still. Decisions 13 and 14 carried out.
+
+### CP3 · The first proposals approved (beside; docs)
+- The starters and legendaries ([the file](decisions/CP-proposals-starters-legendaries.md)) answered by the user; then the proposals of the rest in batches of 25 to 30 (the Delta and coast, the plateau, the ridge and caves, the north and the capital) and the regional forms.
+
+### CP4 to CP8 · Sculpts (5 sessions, H)
+- About 25 species a session from the approved pictures, with their eyes, decals and shiny palettes, held by the model tests; the regional forms in the last.
+
+### CP9 · Entries and names (1 session)
+- Two entries and a habitat for each, the Romanian names for the user's review.
+
+### CP10 · Signature moves and abilities (2 sessions; lane 3)
+- About 20 moves (3101 on) and 15 abilities, their effects, looks and sounds, scenario tests.
+
+### CP11 · The Tales: rules (1 to 2 sessions; lane 3)
+- `Ruleset.Tales`, the Book, `BattleChoice.Tale`, `TaleState`, the dozen tales' rules where the field's rules bite, `TaleTold` and `TaleAnswered`, the AI, the Vs. Recorder, `NoLaterMechanics`; balance by scenario tests.
+
+### CP12 · The Tales: forms, looks, songs and the Book (2 sessions; H)
+- Tale Forms (`FormKind.Tale`) and their sculpts for the species bound to tales, each tale's sky and field look, the tale layer of the battle songs, the Book of Tales' screen, `tale learn` in scripts.
+
+### CP13 · The masks: rules and making (1 session; lane 3)
+- `BattleChoice.Mask`, the four roles, `WhyNotMask`, the AI, the mask pocket, the crafting pattern (plan 39) and the festival's gift.
+
+### CP14 · The masks: on every body (1 session; H)
+- The four masks sculpted, fitted to the head bone of every body plan, held by a test on one species of each plan.
+
+### CP15 · The cap to 300 (1 session; lane 3)
+- Everything the levels section lists, the golden files accepted with what moved and why.
+
+### CP16 · Seasons in the open world (1 session; lane 7)
+- `SeasonPalette` in the open renderer's cover, season swaps of chunks in the baker and the reader, tables by season in the zones.
+
+### CP17 · Carpathian architecture (1 to 2 sessions; H)
+- The style guide's rows, then the seven styles in the building kit, and the castle on a crag over a carve.
+
+### CP18 · Carpathia's file and the first town (1 session; H, U)
+- The map's sketch, names, professor, rival and villain team agreed with the user; the region's file, the link from Paldea, `--region Carpathia`, the player's home town, the lab, the starters, the first route. The user judges the first town before the rest.
+
+### CP19 to CP24 · The provinces (6 sessions; H)
+- CP19 the coast and the delta (the boat), CP20 the plateau's towns, CP21 the ridge and its road (the pony, the glide), CP22 the caves (the salt mine, the ice cave), CP23 the wooden north, CP24 the capital; each with its gyms, rooms, people, wild zones, tales to find and its part of the story.
+
+### CP25 · The villain team and the sun (1 to 2 sessions)
+- The villain's chapters, the stronghold castle, the Zmeu and the Vârcolac, the Solomonar's storm.
+
+### CP26 · The League and the crossing (1 session)
+- The League in the capital's palace, the Champion, the Hall of Fame, the credits, Fly and harbours both ways with Paldea.
+
+### CP27 · After the Hall of Fame (1 to 2 sessions)
+- The Dacian sanctuary and the draco, the festivals' days in full (the New Year's mask dances, Sânziene, Mărțișor), rematches, the Carpathian diploma.
+
+## Needs and gives
+
+- **Needs** plan 32 whole, plans 33 and 34 (the engine proven, Paldea's harbour), plan 30 · FM3 to FM9, plan 39 (crafting, for the masks), plan 40 (festivals, GE4's diplomas), plan 31's sound, plan 26's voices, plan 18 · W4b's ladder.
+- **Gives** the chain a tenth region, the game a nineteenth type, and plan 27 one more region to carry over as data.
+
+## Status
+
+- [ ] CP1 Species made from nothing
+- [ ] CP2 The Sound type
+- [ ] CP3 The first proposals approved (starters and legendaries written 2026-11-09, waiting for the user)
+- [ ] CP4 Sculpts I
+- [ ] CP5 Sculpts II
+- [ ] CP6 Sculpts III
+- [ ] CP7 Sculpts IV
+- [ ] CP8 Sculpts V and the regional forms
+- [ ] CP9 Entries and names
+- [ ] CP10 Signature moves and abilities
+- [ ] CP11 The Tales: rules
+- [ ] CP12 The Tales: forms, looks, songs and the Book
+- [ ] CP13 The masks: rules and making
+- [ ] CP14 The masks: on every body
+- [ ] CP15 The cap to 300
+- [ ] CP16 Seasons in the open world
+- [ ] CP17 Carpathian architecture
+- [ ] CP18 Carpathia's file and the first town
+- [ ] CP19 The coast and the delta
+- [ ] CP20 The plateau's towns
+- [ ] CP21 The ridge and its road
+- [ ] CP22 The caves
+- [ ] CP23 The wooden north
+- [ ] CP24 The capital
+- [ ] CP25 The villain team and the sun
+- [ ] CP26 The League and the crossing
+- [ ] CP27 After the Hall of Fame
