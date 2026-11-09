@@ -135,7 +135,8 @@ public class KalosFinishedTests
         Assert.Equal("KalosRoute6_ParfumPalace", warp?.TargetMap);
         var hall = MapNamed("KalosRoute6_ParfumPalace");
         Assert.True(hall.IsWalkable(warp!.TargetX, warp.TargetY));
-        Assert.True(map.IsWalkable(hall.Warps.Single().TargetX, hall.Warps.Single().TargetY));
+        var front = hall.Warps.Single(w => w.TargetMap == "Kalos");
+        Assert.True(map.IsWalkable(front.TargetX, front.TargetY));
         Assert.Contains(Walked.Value, p => p.Key.Name == "KalosRoute6_ParfumPalace");
 
         var owner = hall.Everyone.Single(n => n.Key == "owner");

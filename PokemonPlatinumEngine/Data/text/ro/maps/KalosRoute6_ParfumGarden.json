@@ -1,0 +1,42 @@
+{
+  "displayName": {
+    "en": [
+      "Parfum Palace"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "owner": {
+      "name": {
+        "en": [
+          "Palace Owner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_max_ether": {
+      "name": {
+        "en": [
+          "Max Ether"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12,21": {
+      "en": [
+        "Parfum Palace Gardens\nThe fountain waits at the heart of the hedges."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

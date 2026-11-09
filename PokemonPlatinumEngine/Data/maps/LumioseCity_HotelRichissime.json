@@ -134,6 +134,18 @@
       ]
     },
     {
+      "id": "designer",
+      "name": "Designer",
+      "npcType": "artist",
+      "x": 4,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "I'm here for a week of sketching Lumiose's Pokémon. The hotel bill will be drawn in my nightmares."
+      ],
+      "script": "Designer"
+    },
+    {
       "id": "malva",
       "name": "Malva",
       "npcType": "malva",

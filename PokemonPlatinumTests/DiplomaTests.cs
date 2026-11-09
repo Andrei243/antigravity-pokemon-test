@@ -262,7 +262,8 @@ public class DiplomaTests
     private static Pokedex Holding(params string[] diplomas)
     {
         var pokedex = new Pokedex();
-        foreach (string dex in diplomas)
+        // A comma joins the Pokédexes of a region that has several (Kalos's three)
+        foreach (string dex in diplomas.SelectMany(d => d.Split(',')))
         {
             pokedex.Diplomas.Add(dex);
             // A Pokédex of a region is the player's once the region is entered
@@ -271,7 +272,7 @@ public class DiplomaTests
         return pokedex;
     }
 
-    // The five designers, each with the script and file that hold him and the region's Pokédex he reads as his own
+    // The six designers, each with the script and file that hold him and the region's Pokédex he reads as his own
     public static IEnumerable<object[]> Designers => new[]
     {
         new object[] { "Director", "GrandLakeValorLakefrontWestHouse", Pokedex.Sinnoh },
@@ -279,6 +280,7 @@ public class DiplomaTests
         new object[] { "Director", "celadon_condominiums_3f", "updated-johto" },
         new object[] { "Designer", "lilycove_city_cove_lily_motel_2f", "hoenn" },
         new object[] { "Designer", "castelia_city_pokemon_center", "updated-unova" },
+        new object[] { "Designer", "LumioseCity_HotelRichissime", "kalos-central,kalos-coastal,kalos-mountain" },
     };
 
     [Theory]

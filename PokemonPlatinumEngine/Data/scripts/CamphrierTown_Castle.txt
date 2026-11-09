@@ -2,6 +2,44 @@
 # met the player in the street (camphrier_town.txt; he is shown here by FLAG_KALOS_HIDE_CASTELLAN_STREET).
 
 
+#
+# The first time the player comes in once he is home (plan 23, after Kalos finished; docs/mechanics/rulings.md, "Parfum
+# Palace's maze and fireworks, and the castle's keeper at home"), he comes down the hall to meet them and shows them
+# the castle: its armour and its window over the town (FLAG_KALOS_CASTLE_TOUR). Once the Snorlax is woken he gives
+# the Leftovers it was found clutching once (FLAG_KALOS_CASTLE_GIFT), a gift of ours.
+
+
+script OnEnter
+  if not flag FLAG_KALOS_HIDE_CASTELLAN_STREET goto Nobody
+  if flag FLAG_KALOS_CASTLE_TOUR goto Nobody
+  if var PLAYER_Y != 10 goto Nobody
+  scene "The castle's keeper at home"
+  letterbox on
+  speaker "Castellan Aubert"
+  say "Ah, my young friend! Come in, come in. Welcome to the castle of Camphrier."
+  walk castellan down 5
+  face castellan player
+  say "It has stood here for some three hundred years. The town grew up round its walls, not the other way about."
+  camera pan 4 6
+  say "These suits of armour were made for the knights who rode out from here with their Pokémon at their sides."
+  camera pan 7 2
+  if var VAR_KALOS_STORY >= 16 goto TourWoken
+  say "And from that window my forebears watched the road south. Today it watches a sleeping Snorlax, I am sorry to say."
+  goto TourEnd
+label TourWoken
+  say "And from that window my forebears watched the road south. Thanks to you, it watches carts rolling again."
+label TourEnd
+  camera release
+  say "Well, I mustn't keep you. Do make yourself at home whenever you pass through."
+  walk castellan up 5
+  face castellan down
+  letterbox off
+  setflag FLAG_KALOS_CASTLE_TOUR
+  endscene
+label Nobody
+  end
+
+
 script Castellan
   face castellan player
   speaker "Castellan Aubert"
@@ -13,5 +51,12 @@ label Flute
   say "You have the palace's flute! Then go and play it to our sleeper on Route 7. The whole town will thank you."
   end
 label Woken
+  if flag FLAG_KALOS_CASTLE_GIFT goto Thanked
+  say "The road south is open again, and the carts are rolling to the coast. Camphrier owes you a great deal."
+  say "The road menders found this where the Snorlax had lain. It must have been clutching it in its sleep. Take it, please."
+  give "Leftovers"
+  setflag FLAG_KALOS_CASTLE_GIFT
+  end
+label Thanked
   say "The road south is open again, and the carts are rolling to the coast. Camphrier owes you a great deal."
   end

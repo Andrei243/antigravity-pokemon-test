@@ -99,6 +99,20 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   skater's pose (plan 30). Shots: the `kalos` mode's `KALOS_FROM=finished` (`wk700` to `wk711`, `wks500` to `wks531`:
   the gate, its guide, the grounds and one of their Pokémon in battle, the palace's front and hall, its Furfrou and
   thanks, the bicycle shop, Malva's second round), looked at.
+- **Parfum Palace's maze and fireworks, the castle's keeper at home** (2026-11-09, after Kalos finished; rulings, under
+  that name). **The maze**: a map of its own behind the hall's back wall (`KalosRoute6_ParfumGarden`, clipped hedges
+  round a fountain's plaza, a Max Ether at its far dead end), every path of it walked by `WorldWalk`. **The fireworks**:
+  the owner by the fountain in the evening and at night once he has given his thanks, lighting them when asked (the
+  scene effects' sparkles in waves and one burst under the bars; `FLAG_KALOS_PALACE_FIREWORKS`). **The castle**:
+  Aubert's tour the first time the player comes in once he is home (`FLAG_KALOS_CASTLE_TOUR`) and the Leftovers once
+  the Snorlax is woken. **Plan 40 · GE4 and GE5's Kalos row**: a designer in the Hotel Richissime's lobby who hands
+  over the charms due and reads Kalos's three diplomas (`DiplomaTests.Designers`). Tests `KalosPalaceGardenTests`;
+  shots the `kalos` mode's `KALOS_FROM=garden` (`wk720` to `wk723`, `wks540` to `wks560`), looked at. **Kalos is done**
+  as far as plan 23 goes; what is not built belongs elsewhere, each named in the ruling: Pokémon-Amie (plan 10's camp,
+  built and the same in every region), Super Training's hall (plan 36 · TR4), the Kalos Champion ribbon, circuit row,
+  agency case and gathering (plan 41 · EG2, EG4, EG7, EG9), the skater's pose (plan 30's grown kit), the Friend
+  Safari's other friends and the online rooms (plan 07), and `profile`'s Lumiose line (a quiet run on the Windows
+  machine).
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

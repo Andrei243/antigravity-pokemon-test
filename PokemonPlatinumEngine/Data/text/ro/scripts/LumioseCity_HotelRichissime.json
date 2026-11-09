@@ -76,5 +76,71 @@
         "Du-te și adu-ți prietena înapoi, Campionule. M-aș duce eu, dar am o reputație de păstrat."
       ]
     }
+  ],
+  "Designer": [
+    {
+      "en": [
+        "Pardon me, but is that Pokédex full? Every last page! Allow me to shake your hand."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We who draw the Pokémon keep a few charms for those who see them all. Here, this is yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fill in another Pokédex, in some other region, and come and find me. There may be another charm in it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That diploma is for no region's list at all. It's for the Pokémon added beyond them!",
+        "You saw every one? I could use you to check my sketches."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All three of Kalos's Pokédexes, every page seen! The Central, the Coast and the Mountains.",
+        "Lumiose's painters would weep. I nearly am."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Several diplomas on one Pokédex? You must have seen more Pokémon than I have drawn.",
+        "Does your bag have room for anything but paper?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A diploma on your Pokédex! A whole region's list is a great many pages.",
+        "Kalos has three lists of its own. Fill them in and show me."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    }
   ]
 }

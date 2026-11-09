@@ -1,0 +1,66 @@
+# Parfum Palace's garden maze, behind the hall (plan 23, after Kalos finished; docs/mechanics/rulings.md, "Parfum
+# Palace's maze and fireworks, and the castle's keeper at home"). The lines are our own, on X and Y's beat as it is
+# publicly described: a maze of clipped hedges behind the palace, and fireworks over it after dark. The hedges are a
+# maze of ours with a fountain in the middle; once the owner has given his thanks for his Furfrou
+# (FLAG_KALOS_PALACE_GIFT) he waits by the fountain in the evening and at night, and lights the fireworks for whoever
+# finds the way to him. FLAG_KALOS_HIDE_PALACE_GARDEN_OWNER keeps him indoors the rest of the time; the fireworks set
+# FLAG_KALOS_PALACE_FIREWORKS the first time and may be watched again on any evening.
+
+
+script OnEnter
+  if not flag FLAG_KALOS_PALACE_GIFT goto Indoors
+  if time twilight goto Outdoors
+  if time night goto Outdoors
+  if time latenight goto Outdoors
+label Indoors
+  setflag FLAG_KALOS_HIDE_PALACE_GARDEN_OWNER
+  end
+label Outdoors
+  clearflag FLAG_KALOS_HIDE_PALACE_GARDEN_OWNER
+  end
+
+
+script Owner
+  face owner player
+  speaker "Palace Owner"
+  if flag FLAG_KALOS_PALACE_FIREWORKS goto Again
+  say "You found your way through the hedges in the dark! My gardener swears even he gets lost in here."
+  ask "Every evening I have a few fireworks set off over the fountain. Would you care to watch them with me?"
+  if no goto Later
+  goto Show
+label Again
+  ask "Back for the fireworks again? There are always a few left. Shall I give the signal?"
+  if no goto Later
+label Show
+  scene "The palace's fireworks"
+  letterbox on
+  camera pan 13 6
+  effect sparkles 9 4
+  wait 0.4
+  effect sparkles 17 3
+  wait 0.4
+  effect sparkles 13 2
+  effect sparkles 6 6
+  wait 0.4
+  effect sparkles 20 5
+  effect sparkles 11 5
+  wait 0.4
+  effect sparkles 15 4
+  effect sparkles 8 2
+  effect sparkles 18 6
+  wait 0.6
+  effect sparkles 10 3
+  effect sparkles 16 2
+  effect sparkles 13 5
+  effect sparkles 5 3
+  effect sparkles 21 3 wait
+  effect burst 13 3 wait
+  camera release
+  speaker "Palace Owner"
+  say "Magnificent! My Furfrou hides under the bench for them, mind you. Come back any evening you like."
+  setflag FLAG_KALOS_PALACE_FIREWORKS
+  endscene
+  end
+label Later
+  say "As you wish. They will light up the sky every evening, whenever you are ready."
+  end

@@ -44,6 +44,24 @@
         ]
       }
     },
+    "designer": {
+      "name": {
+        "en": [
+          "Designer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm here for a week of sketching Lumiose's Pokémon. The hotel bill will be drawn in my nightmares."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "malva": {
       "name": {
         "en": [

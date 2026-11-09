@@ -4,7 +4,8 @@
 # Elite Four waits in the lobby, battles, and tells who Essentia is and who controls her, which opens the way down under
 # Lysandre's old café to his laboratory (FLAG_KALOS_LOOKER_LABS, LumioseCity_LysandreLabs.txt).
 #
-# The people: a receptionist, a guest, malva (FLAG_KALOS_LOOKER_MALVA until FLAG_KALOS_LOOKER_MALVA_DONE).
+# The people: a receptionist, a guest, the designer (Designer, below), malva (FLAG_KALOS_LOOKER_MALVA until
+# FLAG_KALOS_LOOKER_MALVA_DONE).
 
 
 # Looker's first case: one of his tickets, in the pot where the rich wait for their keys
@@ -37,4 +38,41 @@ script Malva
   setflag FLAG_KALOS_LOOKER_MALVA_DONE
   setflag FLAG_KALOS_LOOKER_LABS
   endscene
+  end
+
+
+# Plan 40 · GE4 and GE5, for Kalos (plan 23, after Kalos finished): Kalos's designer, of ours, in the hotel's lobby.
+# Like the other regions' designers he hands over the charms a Pokédex filled has earned (charm due, charm give;
+# Models/Charms.cs) and reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). With nothing to say of
+# either he says his own line (the map's).
+script Designer
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  if diploma Ours goto OursDiploma
+  if diploma Kalos goto OwnDiploma
+  if var DIPLOMAS >= 3 goto ManyDiplomas
+  if var DIPLOMAS > 0 goto AnyDiploma
+  sayown
+  end
+label Charms
+  say "Pardon me, but is that Pokédex full? Every last page! Allow me to shake your hand."
+  say "We who draw the Pokémon keep a few charms for those who see them all. Here, this is yours."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  say "Fill in another Pokédex, in some other region, and come and find me. There may be another charm in it."
+  end
+label OursDiploma
+  say "That diploma is for no region's list at all. It's for the Pokémon added beyond them!" "You saw every one? I could use you to check my sketches."
+  end
+label OwnDiploma
+  say "All three of Kalos's Pokédexes, every page seen! The Central, the Coast and the Mountains." "Lumiose's painters would weep. I nearly am."
+  end
+label ManyDiplomas
+  say "Several diplomas on one Pokédex? You must have seen more Pokémon than I have drawn." "Does your bag have room for anything but paper?"
+  end
+label AnyDiploma
+  say "A diploma on your Pokédex! A whole region's list is a great many pages." "Kalos has three lists of its own. Fill them in and show me."
   end

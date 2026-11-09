@@ -23,6 +23,7 @@ label Thanks
   end
 label Done
   say "My Furfrou has not left my side since. I think it rather enjoyed its adventure."
+  say "Do try the gardens behind the hall. Find the fountain in the evening, and I shall show you something splendid."
   end
 
 
