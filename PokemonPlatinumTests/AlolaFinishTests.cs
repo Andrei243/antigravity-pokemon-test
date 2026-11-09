@@ -43,7 +43,124 @@ public class AlolaFinishTests
         Assert.Equal(team, host.Party.Members);
     }
 
-    private static readonly string[] Islands = { "original-melemele", "original-akala", "original-ulaula", "original-poni" };
+    private static HeadlessScriptHost Champion(string map, params string[] team)
+    {
+        var host = new HeadlessScriptHost { Map = MapDatabase.Get(map), MapNamed = MapDatabase.Get, Region = RegionDatabase.Alola };
+        host.Story.Set("AlolaHallOfFame");
+        foreach (string species in team.Length > 0 ? team : new[] { "Decidueye" }) host.Party.Add(Mon(species));
+        return host;
+    }
+
+    private static void Run(HeadlessScriptHost host, string place, string script, NPC? self = null)
+    {
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find(script, place)!, self);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+    }
+
+    [Fact]
+    public void TheUltraWarpRideIsOfferedOnceNecrozmaIsMetAndEachLightLeadsToItsWorld()
+    {
+        var host = Champion("PoniAltar");
+        host.Story.SetVar("VAR_ALOLA_ULTRA", 3);
+        // Before Necrozma the wormhole offers the Ultra Beasts' worlds alone
+        host.Answers.Enqueue(5);
+        Run(host, "poni_altar", "Wormhole");
+        Assert.DoesNotContain(host.Asked, a => a.Answer == "Ride the warp");
+
+        var worlds = new[] { "UltraWildsWater", "UltraWildsField", "UltraWildsCliff", "UltraWildsCave" };
+        for (int light = 0; light < 4; light++)
+        {
+            host.Story.SetVar("VAR_ALOLA_ULTRA", 4);
+            host.Map = MapDatabase.Get("PoniAltar");
+            host.Answers.Enqueue(1);
+            host.Answers.Enqueue(light);
+            Run(host, "poni_altar", "Wormhole");
+            Assert.Equal(worlds[light], host.Map!.Name);
+        }
+    }
+
+    [Theory]
+    [InlineData("ultra_wilds_water", "UltraWildsWater", 9, "Entei,Raikou,Reshiram,Zekrom")]
+    [InlineData("ultra_wilds_field", "UltraWildsField", 10, "Decidueye")]
+    [InlineData("ultra_wilds_cliff", "UltraWildsCliff", 10, "Kyogre,Groudon,Tornadus,Thundurus")]
+    [InlineData("ultra_wilds_cave", "UltraWildsCave", 8, "Regirock,Regice,Registeel,Dialga,Palkia")]
+    public void EachWorldShowsALegendNotYetCaughtAndItsCallersOnlyWithTheirKin(string place, string map, int count, string kin)
+    {
+        var legends = MapDatabase.Get(map).Everyone.Where(n => n.Id.StartsWith("warp_")).ToList();
+        Assert.Equal(count, legends.Count);
+        Assert.All(legends, n => Assert.Equal((32, 16), (n.GridX, n.GridY)));
+        var seen = new System.Collections.Generic.HashSet<string>();
+        var caught = new System.Collections.Generic.HashSet<string>();
+        // Every die's face shows somebody while nobody is caught; with all caught but one, every face finds that one
+        for (int round = 0; round < count; round++)
+        {
+            var host = Champion(map, kin.Split(","));
+            foreach (string c in caught) host.Story.Set(c);
+            host.Rolls.Enqueue(round);
+            Run(host, place, "OnEnter");
+            var shown = legends.Where(n => host.Story.Has(n.ShownBy!) && !host.Story.Has(n.HiddenBy!)).ToList();
+            Assert.Single(shown);
+            seen.Add(shown[0].Name);
+            // Its meeting comes after its beat, at level 60, and a catch keeps it from the dais for good
+            host.Fight = _ => BattleOutcome.Caught;
+            Run(host, place, shown[0].Script!, shown[0]);
+            Assert.Contains(host.Log, l => l.StartsWith($"wildbattle {shown[0].Name} 60"));
+            Assert.True(host.Story.Has(shown[0].HiddenBy!));
+            caught.Add(shown[0].HiddenBy!);
+        }
+        // With every one caught the world is empty, and says so
+        var empty = Champion(map);
+        foreach (string c in caught) empty.Story.Set(c);
+        Run(empty, place, "OnEnter");
+        Assert.DoesNotContain(legends, n => empty.Story.Has(n.ShownBy!));
+        Assert.Single(empty.Transcript);
+    }
+
+    [Fact]
+    public void ACallerOfTheWarpWaitsForItsKinInTheTeam()
+    {
+        // Suicune is the blue light's first; with no Entei and Raikou in the team the die passes it by
+        var host = Champion("UltraWildsWater");
+        host.Rolls.Enqueue(0);
+        Run(host, "ultra_wilds_water", "OnEnter");
+        Assert.False(host.Story.Has("FLAG_MAP_LOCAL_WARP_SUICUNE"));
+        Assert.True(host.Story.Has("FLAG_MAP_LOCAL_WARP_LUGIA"));
+    }
+
+    [Fact]
+    public void AlolasMythicalsAreMetAfterTheHallOfFameAndLeaveWhatTheyOwe()
+    {
+        // Marshadow: a shadow in the cemetery at night, once the little girl has gone after her friend
+        var cemetery = Champion("Melemele");
+        cemetery.Story.SetVar("VAR_ALOLA_CEMETERY_GIRL", 3);
+        cemetery.TimeOfDay = PokemonPlatinumEngine.Core.TimeOfDay.Night;
+        Run(cemetery, "hauoli_cemetery", "OnEnter");
+        Assert.True(cemetery.Story.Has("FLAG_ALOLA_MARSHADOW_NEAR"));
+        var shadow = MapDatabase.Get("Melemele").Everyone.Single(n => n.Id == "marshadow");
+        Run(cemetery, "hauoli_cemetery", "Marshadow", shadow);
+        Assert.Contains(cemetery.Log, l => l.StartsWith("wildbattle Marshadow 60"));
+        Assert.Equal(1, cemetery.Bag.GetQuantity(ItemDatabase.Get("Marshadium Z")!));
+
+        // Meltan: the old Megamart's, which leaves the candy Melmetal's evolution asks for
+        var mart = Champion("ThriftyMegamart");
+        var meltan = mart.Map!.Everyone.Single(n => n.Id == "meltan");
+        Run(mart, "ThriftyMegamart", "Meltan", meltan);
+        Assert.Equal(400, mart.Bag.GetQuantity(ItemDatabase.Get("Meltan Candy")!));
+
+        // Magearna and Zeraora each in their rooms, by flags their places keep
+        var observatory = Champion("HokulaniObservatory");
+        Assert.Equal("FLAG_ALOLA_TOTEM_VIKAVOLT_DONE", observatory.Map!.Everyone.Single(n => n.Id == "magearna").ShownBy);
+        Run(observatory, "HokulaniObservatory", "Magearna", observatory.Map.Everyone.Single(n => n.Id == "magearna"));
+        Assert.Contains(observatory.Log, l => l.StartsWith("wildbattle Magearna 60"));
+        var plant = Champion("BlushMountain_PowerPlant");
+        Assert.Equal("FLAG_ALOLA_ZERAORA_NEAR", plant.Map!.Everyone.Single(n => n.Id == "zeraora").ShownBy);
+        Run(plant, "BlushMountain_PowerPlant", "Zeraora", plant.Map.Everyone.Single(n => n.Id == "zeraora"));
+        Assert.Contains(plant.Log, l => l.StartsWith("wildbattle Zeraora 60"));
+    }
+
+    private static readonly string[] Islands ={ "original-melemele", "original-akala", "original-ulaula", "original-poni" };
 
     [Fact]
     public void AlolaHasItsFourIslandPokedexesBesideItsOwnEachWithItsDiplomaAndWords()

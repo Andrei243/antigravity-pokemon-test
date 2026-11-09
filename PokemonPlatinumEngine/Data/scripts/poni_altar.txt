@@ -87,6 +87,13 @@ script Wormhole
   speaker none
   if var VAR_ALOLA_ULTRA < 2 goto Quiet
   text "A tear in the air hangs over the dais. Through it, other worlds shimmer and turn."
+  # Plan 23, Alola finished: once Necrozma has been met the wormhole also offers the Ultra Warp Ride, four lights to the
+  # worlds of the wilds where legendary Pokémon of the other regions have fallen through (ultra_wilds_*.txt)
+  if var VAR_ALOLA_ULTRA < 4 goto Worlds
+  choose "The light pulls two ways at once." "The Ultra Beasts' worlds" "Ride the warp" "Stay here"
+  if result == 1 goto Ride
+  if result != 0 end
+label Worlds
   choose "Where will the wormhole take you?" "Ultra Deep Sea" "Ultra Jungle" "Ultra Desert" "Ultra Plant" "Further..." "Stay here"
   if result == 0 goto DeepSea
   if result == 1 goto Jungle
@@ -139,6 +146,29 @@ label Ruin
 label City
   text "{player} stepped into the light..."
   warp "UltraMegalopolis" 32 54 up
+  end
+label Ride
+  choose "Which light will you ride?" "The blue light" "The green light" "The red light" "The yellow light" "Stay here"
+  if result == 0 goto Blue
+  if result == 1 goto Green
+  if result == 2 goto Red
+  if result == 3 goto Yellow
+  end
+label Blue
+  text "{player} rode the blue light through the wormhole, faster and further than before..."
+  warp "UltraWildsWater" 32 54 up
+  end
+label Green
+  text "{player} rode the green light through the wormhole, faster and further than before..."
+  warp "UltraWildsField" 32 54 up
+  end
+label Red
+  text "{player} rode the red light through the wormhole, faster and further than before..."
+  warp "UltraWildsCliff" 32 54 up
+  end
+label Yellow
+  text "{player} rode the yellow light through the wormhole, faster and further than before..."
+  warp "UltraWildsCave" 32 54 up
   end
 label Quiet
   text "The stone of the dais is warm, as if the sun were still on it."

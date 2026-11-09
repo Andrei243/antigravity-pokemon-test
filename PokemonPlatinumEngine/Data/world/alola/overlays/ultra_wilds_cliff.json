@@ -1,0 +1,26 @@
+{
+  // Ultra Space Wilds, the red light's world (plan 23, Alola finished: the Ultra Warp Ride). Our own drawing of a world the
+  // games describe, reached from the Ultra Wormhole over the Altar's dais once Necrozma has been met (poni_altar.Wormhole)
+  // and left by the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Each time it is come to, one of the
+  // legendary Pokémon of the other regions that fell through to it stands on the dais at 32,16, drawn by the arrival
+  // (ultra_wilds_cliff.txt) among those not yet caught here; the people below are all on that one tile, each shown by a flag of
+  // the place that the arrival sets for one of them alone
+  "area": "ultra_wilds_cliff",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "readAt": [
+    { "x": 32, "z": 55, "script": "UltraWayHome" }
+  ],
+  "npcs": [
+    { "id": "warp_articuno", "name": "Articuno", "npcType": "Pokemon", "species": "Articuno", "x": 32, "y": 16, "facing": "Down", "script": "Articuno", "shownBy": "FLAG_MAP_LOCAL_WARP_ARTICUNO", "hiddenBy": "FLAG_ALOLA_WARP_ARTICUNO_CAUGHT" },
+    { "id": "warp_zapdos", "name": "Zapdos", "npcType": "Pokemon", "species": "Zapdos", "x": 32, "y": 16, "facing": "Down", "script": "Zapdos", "shownBy": "FLAG_MAP_LOCAL_WARP_ZAPDOS", "hiddenBy": "FLAG_ALOLA_WARP_ZAPDOS_CAUGHT" },
+    { "id": "warp_moltres", "name": "Moltres", "npcType": "Pokemon", "species": "Moltres", "x": 32, "y": 16, "facing": "Down", "script": "Moltres", "shownBy": "FLAG_MAP_LOCAL_WARP_MOLTRES", "hiddenBy": "FLAG_ALOLA_WARP_MOLTRES_CAUGHT" },
+    { "id": "warp_ho_oh", "name": "Ho-Oh", "npcType": "Pokemon", "species": "Ho-Oh", "x": 32, "y": 16, "facing": "Down", "script": "HoOh", "shownBy": "FLAG_MAP_LOCAL_WARP_HO_OH", "hiddenBy": "FLAG_ALOLA_WARP_HO_OH_CAUGHT" },
+    { "id": "warp_rayquaza", "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "x": 32, "y": 16, "facing": "Down", "script": "Rayquaza", "shownBy": "FLAG_MAP_LOCAL_WARP_RAYQUAZA", "hiddenBy": "FLAG_ALOLA_WARP_RAYQUAZA_CAUGHT" },
+    { "id": "warp_cresselia", "name": "Cresselia", "npcType": "Pokemon", "species": "Cresselia", "x": 32, "y": 16, "facing": "Down", "script": "Cresselia", "shownBy": "FLAG_MAP_LOCAL_WARP_CRESSELIA", "hiddenBy": "FLAG_ALOLA_WARP_CRESSELIA_CAUGHT" },
+    { "id": "warp_tornadus", "name": "Tornadus", "npcType": "Pokemon", "species": "Tornadus", "x": 32, "y": 16, "facing": "Down", "script": "Tornadus", "shownBy": "FLAG_MAP_LOCAL_WARP_TORNADUS", "hiddenBy": "FLAG_ALOLA_WARP_TORNADUS_CAUGHT" },
+    { "id": "warp_thundurus", "name": "Thundurus", "npcType": "Pokemon", "species": "Thundurus", "x": 32, "y": 16, "facing": "Down", "script": "Thundurus", "shownBy": "FLAG_MAP_LOCAL_WARP_THUNDURUS", "hiddenBy": "FLAG_ALOLA_WARP_THUNDURUS_CAUGHT" },
+    { "id": "warp_landorus", "name": "Landorus", "npcType": "Pokemon", "species": "Landorus", "x": 32, "y": 16, "facing": "Down", "script": "Landorus", "shownBy": "FLAG_MAP_LOCAL_WARP_LANDORUS", "hiddenBy": "FLAG_ALOLA_WARP_LANDORUS_CAUGHT" },
+    { "id": "warp_yveltal", "name": "Yveltal", "npcType": "Pokemon", "species": "Yveltal", "x": 32, "y": 16, "facing": "Down", "script": "Yveltal", "shownBy": "FLAG_MAP_LOCAL_WARP_YVELTAL", "hiddenBy": "FLAG_ALOLA_WARP_YVELTAL_CAUGHT" }
+  ]
+}

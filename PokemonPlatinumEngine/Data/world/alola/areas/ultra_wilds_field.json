@@ -1,0 +1,72 @@
+{
+  "key": "ultra_wilds_field",
+  "index": 544,
+  "name": "Ultra Space Wilds",
+  "matrix": 72,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Nuzleaf",
+      "level": 58
+    },
+    {
+      "species": "Grumpig",
+      "level": 61
+    },
+    {
+      "species": "Drapion",
+      "level": 59
+    },
+    {
+      "species": "Audino",
+      "level": 62
+    },
+    {
+      "species": "Heliolisk",
+      "level": 60
+    },
+    {
+      "species": "Nuzleaf",
+      "level": 58
+    },
+    {
+      "species": "Grumpig",
+      "level": 61
+    },
+    {
+      "species": "Drapion",
+      "level": 59
+    },
+    {
+      "species": "Audino",
+      "level": 62
+    },
+    {
+      "species": "Heliolisk",
+      "level": 60
+    },
+    {
+      "species": "Nuzleaf",
+      "level": 58
+    },
+    {
+      "species": "Grumpig",
+      "level": 61
+    }
+  ],
+  "landRate": 15
+}

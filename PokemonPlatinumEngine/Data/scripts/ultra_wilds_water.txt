@@ -1,0 +1,310 @@
+# Ultra Space Wilds, the blue light's world (plan 23, Alola finished: the Ultra Warp Ride; docs/mechanics/rulings.md,
+# "Alola finished"). The lines are our own; which legendary Pokémon live in which of the four worlds, and that three need
+# others of their kind in the team, follows Ultra Sun and Ultra Moon as they are publicly described (Serebii's and
+# Smogon's lists), both versions' together. No picture, map, line or script of the games is read.
+# Each arrival draws one of the world's legendary Pokémon not yet caught here (FLAG_ALOLA_WARP_<NAME>_CAUGHT) and shows it
+# on the dais (FLAG_MAP_LOCAL_WARP_<NAME>, which lasts only while the player stays); the draw begins at a die of 9 and
+# goes on round the list past those caught or not yet called. Each is met at level 60 after a beat of its own, and is
+# back on a later ride until it is caught.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  random 9
+  setvar VAR_ALOLA_WARP_PICK RESULT
+  setvar VAR_ALOLA_WARP_TRIES 0
+label Try
+  if var VAR_ALOLA_WARP_TRIES >= 9 goto Nobody
+  addvar VAR_ALOLA_WARP_TRIES 1
+  if var VAR_ALOLA_WARP_PICK == 0 goto P0
+  if var VAR_ALOLA_WARP_PICK == 1 goto P1
+  if var VAR_ALOLA_WARP_PICK == 2 goto P2
+  if var VAR_ALOLA_WARP_PICK == 3 goto P3
+  if var VAR_ALOLA_WARP_PICK == 4 goto P4
+  if var VAR_ALOLA_WARP_PICK == 5 goto P5
+  if var VAR_ALOLA_WARP_PICK == 6 goto P6
+  if var VAR_ALOLA_WARP_PICK == 7 goto P7
+  if var VAR_ALOLA_WARP_PICK == 8 goto P8
+  goto Nobody
+label P0
+  if flag FLAG_ALOLA_WARP_SUICUNE_CAUGHT goto Next
+  if not has "Entei" goto Next
+  if not has "Raikou" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_SUICUNE
+  end
+label P1
+  if flag FLAG_ALOLA_WARP_LUGIA_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_LUGIA
+  end
+label P2
+  if flag FLAG_ALOLA_WARP_LATIAS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_LATIAS
+  end
+label P3
+  if flag FLAG_ALOLA_WARP_LATIOS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_LATIOS
+  end
+label P4
+  if flag FLAG_ALOLA_WARP_KYOGRE_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_KYOGRE
+  end
+label P5
+  if flag FLAG_ALOLA_WARP_UXIE_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_UXIE
+  end
+label P6
+  if flag FLAG_ALOLA_WARP_MESPRIT_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_MESPRIT
+  end
+label P7
+  if flag FLAG_ALOLA_WARP_AZELF_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_AZELF
+  end
+label P8
+  if flag FLAG_ALOLA_WARP_KYUREM_CAUGHT goto Next
+  if not has "Reshiram" goto Next
+  if not has "Zekrom" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_KYUREM
+  end
+label Next
+  addvar VAR_ALOLA_WARP_PICK 1
+  if var VAR_ALOLA_WARP_PICK >= 9 setvar VAR_ALOLA_WARP_PICK 0
+  goto Try
+label Nobody
+  speaker none
+  text "Water falls from nowhere into a sea with no shore. Rocks float on it like lily pads."
+  end
+
+
+script Suicune
+  scene "Suicune in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect geyser 32 16 wait
+  cry "Suicune"
+  speaker none
+  text "A geyser rose and fell, and where it had been stood Suicune, the north wind made into a Pokémon!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Suicune" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_SUICUNE_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Lugia
+  scene "Lugia in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect geyser 32 16 wait
+  cry "Lugia"
+  speaker none
+  text "The water heaved, and Lugia rose out of it on silver wings, shaking off the spray!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Lugia" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_LUGIA_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Latias
+  scene "Latias in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 1.5
+  cry "Latias"
+  speaker none
+  text "The air shimmered like a mirage, and a red-feathered Pokémon blinked into sight. Latias!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Latias" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_LATIAS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Latios
+  scene "Latios in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 1.5
+  cry "Latios"
+  speaker none
+  text "The air shimmered like a mirage, and a blue-feathered Pokémon blinked into sight. Latios!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Latios" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_LATIOS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Kyogre
+  scene "Kyogre in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect geyser 32 16 wait
+  cry "Kyogre"
+  speaker none
+  text "The sea swelled into a wall, and Kyogre burst through it, its lines glowing a deep red!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Kyogre" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_KYOGRE_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Uxie
+  scene "Uxie in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect ripple 32 16 1.2
+  cry "Uxie"
+  speaker none
+  text "Everything wavered for a moment. When it settled, Uxie was there, its eyes still closed."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Uxie" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_UXIE_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Mesprit
+  scene "Mesprit in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect ripple 32 16 1.2
+  cry "Mesprit"
+  speaker none
+  text "Everything wavered for a moment. When it settled, Mesprit was there, its tails trailing."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Mesprit" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_MESPRIT_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Azelf
+  scene "Azelf in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect ripple 32 16 1.2
+  cry "Azelf"
+  speaker none
+  text "Everything wavered for a moment. When it settled, Azelf was there, already watching you."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Azelf" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_AZELF_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Kyurem
+  scene "Kyurem in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect mist 32 16 2.0
+  cry "Kyurem"
+  speaker none
+  text "A freezing mist crept over the water and hardened into ice. Kyurem stood on it, hollow-eyed!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Kyurem" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_KYUREM_CAUGHT
+  hide self
+  music area
+  end

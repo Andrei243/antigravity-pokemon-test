@@ -1,0 +1,25 @@
+{
+  // Ultra Space Wilds, the blue light's world (plan 23, Alola finished: the Ultra Warp Ride). Our own drawing of a world the
+  // games describe, reached from the Ultra Wormhole over the Altar's dais once Necrozma has been met (poni_altar.Wormhole)
+  // and left by the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Each time it is come to, one of the
+  // legendary Pokémon of the other regions that fell through to it stands on the dais at 32,16, drawn by the arrival
+  // (ultra_wilds_water.txt) among those not yet caught here; the people below are all on that one tile, each shown by a flag of
+  // the place that the arrival sets for one of them alone
+  "area": "ultra_wilds_water",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "readAt": [
+    { "x": 32, "z": 55, "script": "UltraWayHome" }
+  ],
+  "npcs": [
+    { "id": "warp_suicune", "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "x": 32, "y": 16, "facing": "Down", "script": "Suicune", "shownBy": "FLAG_MAP_LOCAL_WARP_SUICUNE", "hiddenBy": "FLAG_ALOLA_WARP_SUICUNE_CAUGHT" },
+    { "id": "warp_lugia", "name": "Lugia", "npcType": "Pokemon", "species": "Lugia", "x": 32, "y": 16, "facing": "Down", "script": "Lugia", "shownBy": "FLAG_MAP_LOCAL_WARP_LUGIA", "hiddenBy": "FLAG_ALOLA_WARP_LUGIA_CAUGHT" },
+    { "id": "warp_latias", "name": "Latias", "npcType": "Pokemon", "species": "Latias", "x": 32, "y": 16, "facing": "Down", "script": "Latias", "shownBy": "FLAG_MAP_LOCAL_WARP_LATIAS", "hiddenBy": "FLAG_ALOLA_WARP_LATIAS_CAUGHT" },
+    { "id": "warp_latios", "name": "Latios", "npcType": "Pokemon", "species": "Latios", "x": 32, "y": 16, "facing": "Down", "script": "Latios", "shownBy": "FLAG_MAP_LOCAL_WARP_LATIOS", "hiddenBy": "FLAG_ALOLA_WARP_LATIOS_CAUGHT" },
+    { "id": "warp_kyogre", "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "x": 32, "y": 16, "facing": "Down", "script": "Kyogre", "shownBy": "FLAG_MAP_LOCAL_WARP_KYOGRE", "hiddenBy": "FLAG_ALOLA_WARP_KYOGRE_CAUGHT" },
+    { "id": "warp_uxie", "name": "Uxie", "npcType": "Pokemon", "species": "Uxie", "x": 32, "y": 16, "facing": "Down", "script": "Uxie", "shownBy": "FLAG_MAP_LOCAL_WARP_UXIE", "hiddenBy": "FLAG_ALOLA_WARP_UXIE_CAUGHT" },
+    { "id": "warp_mesprit", "name": "Mesprit", "npcType": "Pokemon", "species": "Mesprit", "x": 32, "y": 16, "facing": "Down", "script": "Mesprit", "shownBy": "FLAG_MAP_LOCAL_WARP_MESPRIT", "hiddenBy": "FLAG_ALOLA_WARP_MESPRIT_CAUGHT" },
+    { "id": "warp_azelf", "name": "Azelf", "npcType": "Pokemon", "species": "Azelf", "x": 32, "y": 16, "facing": "Down", "script": "Azelf", "shownBy": "FLAG_MAP_LOCAL_WARP_AZELF", "hiddenBy": "FLAG_ALOLA_WARP_AZELF_CAUGHT" },
+    { "id": "warp_kyurem", "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem", "x": 32, "y": 16, "facing": "Down", "script": "Kyurem", "shownBy": "FLAG_MAP_LOCAL_WARP_KYUREM", "hiddenBy": "FLAG_ALOLA_WARP_KYUREM_CAUGHT" }
+  ]
+}

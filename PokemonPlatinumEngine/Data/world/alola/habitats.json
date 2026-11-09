@@ -1702,6 +1702,110 @@
       ]
     },
     {
+      "key": "ultra_wilds_cave",
+      "name": "Ultra Space Wilds",
+      "cells": "",
+      "morning": [
+        "Magcargo",
+        "Medicham",
+        "Hippowdon",
+        "Abomasnow",
+        "Crustle"
+      ],
+      "day": [
+        "Magcargo",
+        "Medicham",
+        "Hippowdon",
+        "Abomasnow",
+        "Crustle"
+      ],
+      "night": [
+        "Magcargo",
+        "Medicham",
+        "Hippowdon",
+        "Abomasnow",
+        "Crustle"
+      ]
+    },
+    {
+      "key": "ultra_wilds_cliff",
+      "name": "Ultra Space Wilds",
+      "cells": "",
+      "morning": [
+        "Swellow",
+        "Altaria",
+        "Yanmega",
+        "Sigilyph",
+        "Swanna"
+      ],
+      "day": [
+        "Swellow",
+        "Altaria",
+        "Yanmega",
+        "Sigilyph",
+        "Swanna"
+      ],
+      "night": [
+        "Swellow",
+        "Altaria",
+        "Yanmega",
+        "Sigilyph",
+        "Swanna"
+      ]
+    },
+    {
+      "key": "ultra_wilds_field",
+      "name": "Ultra Space Wilds",
+      "cells": "",
+      "morning": [
+        "Nuzleaf",
+        "Grumpig",
+        "Drapion",
+        "Audino",
+        "Heliolisk"
+      ],
+      "day": [
+        "Nuzleaf",
+        "Grumpig",
+        "Drapion",
+        "Audino",
+        "Heliolisk"
+      ],
+      "night": [
+        "Nuzleaf",
+        "Grumpig",
+        "Drapion",
+        "Audino",
+        "Heliolisk"
+      ]
+    },
+    {
+      "key": "ultra_wilds_water",
+      "name": "Ultra Space Wilds",
+      "cells": "",
+      "morning": [
+        "Quagsire",
+        "Lombre",
+        "Floatzel",
+        "Stunfisk",
+        "Barbaracle"
+      ],
+      "day": [
+        "Quagsire",
+        "Lombre",
+        "Floatzel",
+        "Stunfisk",
+        "Barbaracle"
+      ],
+      "night": [
+        "Quagsire",
+        "Lombre",
+        "Floatzel",
+        "Stunfisk",
+        "Barbaracle"
+      ]
+    },
+    {
       "key": "vast_poni_canyon",
       "name": "Vast Poni Canyon",
       "cells": "4,20",

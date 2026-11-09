@@ -1,0 +1,72 @@
+{
+  "key": "ultra_wilds_cave",
+  "index": 546,
+  "name": "Ultra Space Wilds",
+  "matrix": 74,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Magcargo",
+      "level": 58
+    },
+    {
+      "species": "Medicham",
+      "level": 61
+    },
+    {
+      "species": "Hippowdon",
+      "level": 59
+    },
+    {
+      "species": "Abomasnow",
+      "level": 62
+    },
+    {
+      "species": "Crustle",
+      "level": 60
+    },
+    {
+      "species": "Magcargo",
+      "level": 58
+    },
+    {
+      "species": "Medicham",
+      "level": 61
+    },
+    {
+      "species": "Hippowdon",
+      "level": 59
+    },
+    {
+      "species": "Abomasnow",
+      "level": 62
+    },
+    {
+      "species": "Crustle",
+      "level": 60
+    },
+    {
+      "species": "Magcargo",
+      "level": 58
+    },
+    {
+      "species": "Medicham",
+      "level": 61
+    }
+  ],
+  "landRate": 15
+}

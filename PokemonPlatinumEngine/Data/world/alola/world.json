@@ -46,7 +46,13 @@
     { "name": "UltraCrater", "matrix": 64, "area": "ultra_crater", "trees": "Round" },
     { "name": "UltraForest", "matrix": 65, "area": "ultra_forest", "trees": "Pine" },
     { "name": "UltraRuin", "matrix": 66, "area": "ultra_ruin", "trees": "Round" },
-    { "name": "UltraMegalopolis", "matrix": 67, "area": "ultra_megalopolis", "trees": "Round" }
+    { "name": "UltraMegalopolis", "matrix": 67, "area": "ultra_megalopolis", "trees": "Round" },
+    // Plan 23, Alola finished: the Ultra Warp Ride's four worlds of the wilds (matrices 71 to 74), reached from the same
+    // wormhole once Necrozma has been met; the cave names the tile it is come to by, as the deep sea's does
+    { "name": "UltraWildsWater", "matrix": 71, "area": "ultra_wilds_water", "trees": "Round" },
+    { "name": "UltraWildsField", "matrix": 72, "area": "ultra_wilds_field", "trees": "Round" },
+    { "name": "UltraWildsCliff", "matrix": 73, "area": "ultra_wilds_cliff", "trees": "Pine" },
+    { "name": "UltraWildsCave", "matrix": 74, "area": "ultra_wilds_cave", "trees": "Round", "setting": "Cave", "arrivals": [[32, 54]] }
   ],
   "areas": [
     "alola_route_1",
@@ -113,6 +119,10 @@
     "ultra_forest",
     "ultra_ruin",
     "ultra_megalopolis",
+    "ultra_wilds_water",
+    "ultra_wilds_field",
+    "ultra_wilds_cliff",
+    "ultra_wilds_cave",
     // The wave after Ultra Space: Poni's last places, Resolution Cave, Route 11 and Blush Mountain
     "poni_grove",
     "poni_plains",

@@ -229,7 +229,14 @@
     { "matrix": 64, "area": "ultra_crater", "width": 2, "height": 2, "pieces": [ { "file": "ultra_crater.txt", "x": 0, "z": 0 } ] },
     { "matrix": 65, "area": "ultra_forest", "width": 2, "height": 2, "fill": "T", "pieces": [ { "file": "ultra_forest.txt", "x": 0, "z": 0 } ] },
     { "matrix": 66, "area": "ultra_ruin", "width": 2, "height": 2, "pieces": [ { "file": "ultra_ruin.txt", "x": 0, "z": 0 } ] },
-    { "matrix": 67, "area": "ultra_megalopolis", "width": 2, "height": 2, "pieces": [ { "file": "ultra_megalopolis.txt", "x": 0, "z": 0 } ] }
+    { "matrix": 67, "area": "ultra_megalopolis", "width": 2, "height": 2, "pieces": [ { "file": "ultra_megalopolis.txt", "x": 0, "z": 0 } ] },
+    // Plan 23, Alola finished: the Ultra Warp Ride's four worlds of the wilds (the blue, green, red and yellow lights:
+    // water, field, cliff and cave), reached from the same wormhole once Necrozma has been met. Matrices 71 to 74; the same
+    // shape as the Ultra Beasts' worlds, the wormhole at 32,55 and the dais at 32,16
+    { "matrix": 71, "area": "ultra_wilds_water", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_water.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 72, "area": "ultra_wilds_field", "width": 2, "height": 2, "fill": "T", "pieces": [ { "file": "ultra_wilds_field.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 73, "area": "ultra_wilds_cliff", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_cliff.txt", "x": 0, "z": 0 } ] },
+    { "matrix": 74, "area": "ultra_wilds_cave", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_cave.txt", "x": 0, "z": 0 } ] }
   ],
   "areas": [
     { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },

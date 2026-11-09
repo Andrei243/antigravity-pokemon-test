@@ -1,0 +1,341 @@
+# Ultra Space Wilds, the red light's world (plan 23, Alola finished: the Ultra Warp Ride; docs/mechanics/rulings.md,
+# "Alola finished"). The lines are our own; which legendary Pokémon live in which of the four worlds, and that three need
+# others of their kind in the team, follows Ultra Sun and Ultra Moon as they are publicly described (Serebii's and
+# Smogon's lists), both versions' together. No picture, map, line or script of the games is read.
+# Each arrival draws one of the world's legendary Pokémon not yet caught here (FLAG_ALOLA_WARP_<NAME>_CAUGHT) and shows it
+# on the dais (FLAG_MAP_LOCAL_WARP_<NAME>, which lasts only while the player stays); the draw begins at a die of 10 and
+# goes on round the list past those caught or not yet called. Each is met at level 60 after a beat of its own, and is
+# back on a later ride until it is caught.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  random 10
+  setvar VAR_ALOLA_WARP_PICK RESULT
+  setvar VAR_ALOLA_WARP_TRIES 0
+label Try
+  if var VAR_ALOLA_WARP_TRIES >= 10 goto Nobody
+  addvar VAR_ALOLA_WARP_TRIES 1
+  if var VAR_ALOLA_WARP_PICK == 0 goto P0
+  if var VAR_ALOLA_WARP_PICK == 1 goto P1
+  if var VAR_ALOLA_WARP_PICK == 2 goto P2
+  if var VAR_ALOLA_WARP_PICK == 3 goto P3
+  if var VAR_ALOLA_WARP_PICK == 4 goto P4
+  if var VAR_ALOLA_WARP_PICK == 5 goto P5
+  if var VAR_ALOLA_WARP_PICK == 6 goto P6
+  if var VAR_ALOLA_WARP_PICK == 7 goto P7
+  if var VAR_ALOLA_WARP_PICK == 8 goto P8
+  if var VAR_ALOLA_WARP_PICK == 9 goto P9
+  goto Nobody
+label P0
+  if flag FLAG_ALOLA_WARP_ARTICUNO_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_ARTICUNO
+  end
+label P1
+  if flag FLAG_ALOLA_WARP_ZAPDOS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_ZAPDOS
+  end
+label P2
+  if flag FLAG_ALOLA_WARP_MOLTRES_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_MOLTRES
+  end
+label P3
+  if flag FLAG_ALOLA_WARP_HO_OH_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_HO_OH
+  end
+label P4
+  if flag FLAG_ALOLA_WARP_RAYQUAZA_CAUGHT goto Next
+  if not has "Kyogre" goto Next
+  if not has "Groudon" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_RAYQUAZA
+  end
+label P5
+  if flag FLAG_ALOLA_WARP_CRESSELIA_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_CRESSELIA
+  end
+label P6
+  if flag FLAG_ALOLA_WARP_TORNADUS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_TORNADUS
+  end
+label P7
+  if flag FLAG_ALOLA_WARP_THUNDURUS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_THUNDURUS
+  end
+label P8
+  if flag FLAG_ALOLA_WARP_LANDORUS_CAUGHT goto Next
+  if not has "Tornadus" goto Next
+  if not has "Thundurus" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_LANDORUS
+  end
+label P9
+  if flag FLAG_ALOLA_WARP_YVELTAL_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_YVELTAL
+  end
+label Next
+  addvar VAR_ALOLA_WARP_PICK 1
+  if var VAR_ALOLA_WARP_PICK >= 10 setvar VAR_ALOLA_WARP_PICK 0
+  goto Try
+label Nobody
+  speaker none
+  text "Red cliffs rise into a sky full of wind. Something huge circles far above the peaks."
+  end
+
+
+script Articuno
+  scene "Articuno in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect mist 32 16 2.0
+  cry "Articuno"
+  speaker none
+  text "Snow began to fall from a clear sky, and Articuno glided down through it onto the ledge!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Articuno" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_ARTICUNO_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Zapdos
+  scene "Zapdos in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect beam 32 16 1.2
+  cry "Zapdos"
+  speaker none
+  text "Lightning cracked over the cliffs, and Zapdos landed on the ledge with a crackling cry!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Zapdos" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_ZAPDOS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Moltres
+  scene "Moltres in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect eruption 32 16 wait
+  cry "Moltres"
+  speaker none
+  text "The wind turned hot, and Moltres swept down onto the ledge in a shower of embers!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Moltres" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_MOLTRES_CAUGHT
+  hide self
+  music area
+  end
+
+
+script HoOh
+  scene "Ho-Oh in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 2.0
+  cry "Ho-Oh"
+  speaker none
+  text "A rainbow arched over the cliffs, and Ho-Oh came down along it, its feathers blazing!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Ho-Oh" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_HO_OH_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Rayquaza
+  scene "Rayquaza in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect beam 32 16 1.5
+  cry "Rayquaza"
+  speaker none
+  text "A green streak tore down out of the sky and coiled on the ledge. Rayquaza had come to see!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Rayquaza" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_RAYQUAZA_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Cresselia
+  scene "Cresselia in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 1.5
+  cry "Cresselia"
+  speaker none
+  text "Moonlight fell where no moon was, and Cresselia drifted down through it like a dream."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Cresselia" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_CRESSELIA_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Tornadus
+  scene "Tornadus in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect shadow 26 16 2 right wait
+  cry "Tornadus"
+  speaker none
+  text "A gale screamed across the cliffs, and Tornadus rode it down onto the ledge!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Tornadus" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_TORNADUS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Thundurus
+  scene "Thundurus in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect beam 32 16 1.2
+  cry "Thundurus"
+  speaker none
+  text "Thunder rolled over the peaks, and Thundurus dropped out of a cloud onto the ledge!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Thundurus" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_THUNDURUS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Landorus
+  scene "Landorus in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect burst 32 16
+  cry "Landorus"
+  speaker none
+  text "The cliffs rumbled, and Landorus came down on its cloud to see who had called the other two!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Landorus" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_LANDORUS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Yveltal
+  scene "Yveltal in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect shadow 26 16 2 right wait
+  cry "Yveltal"
+  speaker none
+  text "A great shadow swept across the ledge, and Yveltal folded its red wings and landed!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Yveltal" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_YVELTAL_CAUGHT
+  hide self
+  music area
+  end

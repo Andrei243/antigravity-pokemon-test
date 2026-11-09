@@ -1,0 +1,26 @@
+{
+  // Ultra Space Wilds, the green light's world (plan 23, Alola finished: the Ultra Warp Ride). Our own drawing of a world the
+  // games describe, reached from the Ultra Wormhole over the Altar's dais once Necrozma has been met (poni_altar.Wormhole)
+  // and left by the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Each time it is come to, one of the
+  // legendary Pokémon of the other regions that fell through to it stands on the dais at 32,16, drawn by the arrival
+  // (ultra_wilds_field.txt) among those not yet caught here; the people below are all on that one tile, each shown by a flag of
+  // the place that the arrival sets for one of them alone
+  "area": "ultra_wilds_field",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "readAt": [
+    { "x": 32, "z": 55, "script": "UltraWayHome" }
+  ],
+  "npcs": [
+    { "id": "warp_mewtwo", "name": "Mewtwo", "npcType": "Pokemon", "species": "Mewtwo", "x": 32, "y": 16, "facing": "Down", "script": "Mewtwo", "shownBy": "FLAG_MAP_LOCAL_WARP_MEWTWO", "hiddenBy": "FLAG_ALOLA_WARP_MEWTWO_CAUGHT" },
+    { "id": "warp_raikou", "name": "Raikou", "npcType": "Pokemon", "species": "Raikou", "x": 32, "y": 16, "facing": "Down", "script": "Raikou", "shownBy": "FLAG_MAP_LOCAL_WARP_RAIKOU", "hiddenBy": "FLAG_ALOLA_WARP_RAIKOU_CAUGHT" },
+    { "id": "warp_entei", "name": "Entei", "npcType": "Pokemon", "species": "Entei", "x": 32, "y": 16, "facing": "Down", "script": "Entei", "shownBy": "FLAG_MAP_LOCAL_WARP_ENTEI", "hiddenBy": "FLAG_ALOLA_WARP_ENTEI_CAUGHT" },
+    { "id": "warp_dialga", "name": "Dialga", "npcType": "Pokemon", "species": "Dialga", "x": 32, "y": 16, "facing": "Down", "script": "Dialga", "shownBy": "FLAG_MAP_LOCAL_WARP_DIALGA", "hiddenBy": "FLAG_ALOLA_WARP_DIALGA_CAUGHT" },
+    { "id": "warp_cobalion", "name": "Cobalion", "npcType": "Pokemon", "species": "Cobalion", "x": 32, "y": 16, "facing": "Down", "script": "Cobalion", "shownBy": "FLAG_MAP_LOCAL_WARP_COBALION", "hiddenBy": "FLAG_ALOLA_WARP_COBALION_CAUGHT" },
+    { "id": "warp_terrakion", "name": "Terrakion", "npcType": "Pokemon", "species": "Terrakion", "x": 32, "y": 16, "facing": "Down", "script": "Terrakion", "shownBy": "FLAG_MAP_LOCAL_WARP_TERRAKION", "hiddenBy": "FLAG_ALOLA_WARP_TERRAKION_CAUGHT" },
+    { "id": "warp_virizion", "name": "Virizion", "npcType": "Pokemon", "species": "Virizion", "x": 32, "y": 16, "facing": "Down", "script": "Virizion", "shownBy": "FLAG_MAP_LOCAL_WARP_VIRIZION", "hiddenBy": "FLAG_ALOLA_WARP_VIRIZION_CAUGHT" },
+    { "id": "warp_reshiram", "name": "Reshiram", "npcType": "Pokemon", "species": "Reshiram", "x": 32, "y": 16, "facing": "Down", "script": "Reshiram", "shownBy": "FLAG_MAP_LOCAL_WARP_RESHIRAM", "hiddenBy": "FLAG_ALOLA_WARP_RESHIRAM_CAUGHT" },
+    { "id": "warp_zekrom", "name": "Zekrom", "npcType": "Pokemon", "species": "Zekrom", "x": 32, "y": 16, "facing": "Down", "script": "Zekrom", "shownBy": "FLAG_MAP_LOCAL_WARP_ZEKROM", "hiddenBy": "FLAG_ALOLA_WARP_ZEKROM_CAUGHT" },
+    { "id": "warp_xerneas", "name": "Xerneas", "npcType": "Pokemon", "species": "Xerneas", "x": 32, "y": 16, "facing": "Down", "script": "Xerneas", "shownBy": "FLAG_MAP_LOCAL_WARP_XERNEAS", "hiddenBy": "FLAG_ALOLA_WARP_XERNEAS_CAUGHT" }
+  ]
+}

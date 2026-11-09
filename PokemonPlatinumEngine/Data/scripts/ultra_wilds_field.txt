@@ -1,0 +1,337 @@
+# Ultra Space Wilds, the green light's world (plan 23, Alola finished: the Ultra Warp Ride; docs/mechanics/rulings.md,
+# "Alola finished"). The lines are our own; which legendary Pokémon live in which of the four worlds, and that three need
+# others of their kind in the team, follows Ultra Sun and Ultra Moon as they are publicly described (Serebii's and
+# Smogon's lists), both versions' together. No picture, map, line or script of the games is read.
+# Each arrival draws one of the world's legendary Pokémon not yet caught here (FLAG_ALOLA_WARP_<NAME>_CAUGHT) and shows it
+# on the dais (FLAG_MAP_LOCAL_WARP_<NAME>, which lasts only while the player stays); the draw begins at a die of 10 and
+# goes on round the list past those caught or not yet called. Each is met at level 60 after a beat of its own, and is
+# back on a later ride until it is caught.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  random 10
+  setvar VAR_ALOLA_WARP_PICK RESULT
+  setvar VAR_ALOLA_WARP_TRIES 0
+label Try
+  if var VAR_ALOLA_WARP_TRIES >= 10 goto Nobody
+  addvar VAR_ALOLA_WARP_TRIES 1
+  if var VAR_ALOLA_WARP_PICK == 0 goto P0
+  if var VAR_ALOLA_WARP_PICK == 1 goto P1
+  if var VAR_ALOLA_WARP_PICK == 2 goto P2
+  if var VAR_ALOLA_WARP_PICK == 3 goto P3
+  if var VAR_ALOLA_WARP_PICK == 4 goto P4
+  if var VAR_ALOLA_WARP_PICK == 5 goto P5
+  if var VAR_ALOLA_WARP_PICK == 6 goto P6
+  if var VAR_ALOLA_WARP_PICK == 7 goto P7
+  if var VAR_ALOLA_WARP_PICK == 8 goto P8
+  if var VAR_ALOLA_WARP_PICK == 9 goto P9
+  goto Nobody
+label P0
+  if flag FLAG_ALOLA_WARP_MEWTWO_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_MEWTWO
+  end
+label P1
+  if flag FLAG_ALOLA_WARP_RAIKOU_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_RAIKOU
+  end
+label P2
+  if flag FLAG_ALOLA_WARP_ENTEI_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_ENTEI
+  end
+label P3
+  if flag FLAG_ALOLA_WARP_DIALGA_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_DIALGA
+  end
+label P4
+  if flag FLAG_ALOLA_WARP_COBALION_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_COBALION
+  end
+label P5
+  if flag FLAG_ALOLA_WARP_TERRAKION_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_TERRAKION
+  end
+label P6
+  if flag FLAG_ALOLA_WARP_VIRIZION_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_VIRIZION
+  end
+label P7
+  if flag FLAG_ALOLA_WARP_RESHIRAM_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_RESHIRAM
+  end
+label P8
+  if flag FLAG_ALOLA_WARP_ZEKROM_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_ZEKROM
+  end
+label P9
+  if flag FLAG_ALOLA_WARP_XERNEAS_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_XERNEAS
+  end
+label Next
+  addvar VAR_ALOLA_WARP_PICK 1
+  if var VAR_ALOLA_WARP_PICK >= 10 setvar VAR_ALOLA_WARP_PICK 0
+  goto Try
+label Nobody
+  speaker none
+  text "A field of grass under a green sky, with no sun in it. The wind smells of rain that never falls."
+  end
+
+
+script Mewtwo
+  scene "Mewtwo in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect burst 32 16
+  cry "Mewtwo"
+  speaker none
+  text "A Pokémon floated down onto the grass, its eyes cold and bright. Mewtwo had been waiting."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Mewtwo" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_MEWTWO_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Raikou
+  scene "Raikou in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect beam 32 16 1.2
+  cry "Raikou"
+  speaker none
+  text "Lightning struck the field, and Raikou stood in the scorched grass where it had hit!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Raikou" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_RAIKOU_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Entei
+  scene "Entei in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect eruption 32 16 wait
+  cry "Entei"
+  speaker none
+  text "Flame burst up out of the ground, and Entei strode out of it with a volcano's roar!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Entei" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_ENTEI_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Dialga
+  scene "Dialga in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect rift 32 16 2.0
+  cry "Dialga"
+  speaker none
+  text "The air tore open, and time seemed to stop. Dialga stepped out of the tear, its chest glowing!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Dialga" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_DIALGA_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Cobalion
+  scene "Cobalion in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect burst 32 16
+  cry "Cobalion"
+  speaker none
+  text "A Pokémon of steel stepped out of the grass with a knight's calm. Cobalion lowered its horn."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Cobalion" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_COBALION_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Terrakion
+  scene "Terrakion in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect burst 32 16
+  cry "Terrakion"
+  speaker none
+  text "The ground shook under heavy hooves, and Terrakion charged out of the tall grass!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Terrakion" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_TERRAKION_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Virizion
+  scene "Virizion in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect petals 32 16 1.6
+  cry "Virizion"
+  speaker none
+  text "Leaves whirled up from the grass, and Virizion leapt lightly out of them, horns gleaming."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Virizion" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_VIRIZION_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Reshiram
+  scene "Reshiram in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect eruption 32 16 wait
+  cry "Reshiram"
+  speaker none
+  text "White fire roared across the field, and Reshiram landed in the heart of it!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Reshiram" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_RESHIRAM_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Zekrom
+  scene "Zekrom in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect beam 32 16 1.2
+  cry "Zekrom"
+  speaker none
+  text "Black thunder split the green sky, and Zekrom dropped out of it with its tail crackling!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Zekrom" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_ZEKROM_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Xerneas
+  scene "Xerneas in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect sparkles 32 16 2.0
+  cry "Xerneas"
+  speaker none
+  text "A rainbow of light spread across the grass, and Xerneas stood in it, its antlers shining."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Xerneas" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_XERNEAS_CAUGHT
+  hide self
+  music area
+  end
