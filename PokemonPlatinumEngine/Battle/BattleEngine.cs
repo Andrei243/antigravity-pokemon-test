@@ -381,6 +381,10 @@ public partial class BattleEngine
         ShowsMoveHints = setup.MoveHints;
         SpeaksTrainerLines = setup.TrainerLines;
         Scene = setup.Scene;
+        // The leads' coming out is a moment the picture may split at (plan 45 · BC3): a trainer's battle, or a wild
+        // legendary or mythical Pokémon (decision 3); the camera's manner decides whether it does
+        Anim.LeadsMayDivide = Kind is BattleKind.Normal or BattleKind.Roamer
+            && (setup.Trainers.Count > 0 || setup.WildPokemon.Any(p => p.Species.Legendary || p.Species.Mythical));
         seenBefore = PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
             .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())
             .Select(p => p.Species.DexNumber).Where(Pokedex.IsSeen).ToHashSet();
@@ -1228,6 +1232,11 @@ public partial class BattleEngine
                 break;
             }
             case TrainerReacts reacts:
+                // A trainer's last Pokémon coming out is a moment the picture may split at (plan 45 · BC3), whatever the
+                // options say of their lines: the camera's manner decides
+                if (reacts.Cue == TrainerCue.LastPokemon)
+                    Anim.NoteLastPokemon(reacts.Place.Side, reacts.Place.Slot,
+                        At(reacts.Place).Trainer is { } last && BattleMeeting.ClassRow(last.TrainerClass) is MeetingRow.Leader or MeetingRow.EliteFour or MeetingRow.Champion);
                 // What the trainer says, read straight after the line it came with (plan 11 · C12): the face's own
                 // line, so the screen never takes the rules' state while it waits. Nothing with the option off. The
                 // words are the chosen language's (plan 17 · N6): the data files' table keyed by the English line
@@ -1294,6 +1303,8 @@ public partial class BattleEngine
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         // How long the commands or the move cards have been open, which a manner's idle cycle films by (plan 45 · BC2)
         Anim.NoteMenu(HUD.MenuState is BattleMenuState.Main or BattleMenuState.Moves);
+        // Anything that waits on the player cuts a split short (plan 45 · BC3)
+        Anim.NoteChoosing(HUD.MenuState != BattleMenuState.Message);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);
         // A trainer's line is spoken in their voice, and their mouth moves with it (plan 26 · V6)

@@ -117,30 +117,35 @@ internal static class CameraManners
 
     /// <summary>
     /// Sinnoh's, Platinum's own seat: today's shots with a breathing overview (BC2), then the opening and the closing
-    /// (BC5) and a split for a Leader's, an Elite Four's or a Champion's last Pokémon (BC3), each switched on by its session.
+    /// (BC5, still to come) and a split for a Leader's, an Elite Four's or a Champion's last Pokémon (BC3).
     /// The manner of a region whose file names none.
     /// </summary>
-    public static readonly CameraManner Sinnoh = new("sinnoh") { Drift = 0.07f, DriftPeriod = 18f };
+    public static readonly CameraManner Sinnoh = new("sinnoh") { Drift = 0.07f, DriftPeriod = 18f, Splits = CameraSplits.BossLast };
 
     /// <summary>
     /// Unova's (Black and White moved their camera between commands): a slow swing between the overview and a shot low
-    /// behind the player's Pokémon looking at the foe (BC2); its push and its split at the leads come with BC4 and BC3.
+    /// behind the player's Pokémon looking at the foe (BC2), and a split as the leads face each other (BC3), and half Galar's push on a move's shots (BC4).
     /// </summary>
     public static readonly CameraManner Unova = new("unova")
     {
         Cycle = new[] { IdleShot.Overview, IdleShot.Shoulder },
         CycleHold = 4.5f, CycleEase = 2.5f,
+        Splits = CameraSplits.Leads,
+        Push = 0.5f,
     };
 
     /// <summary>
     /// Galar's, and the options' LIVELY: the camera never rests. At the menu, the cycle through the side, over the
-    /// shoulder, the foe's face and the player's own front (BC2); its push, reactions, splits, opening, closing and crane
-    /// come with BC3 to BC5.
+    /// shoulder, the foe's face and the player's own front (BC2), and a split at the leads and at any trainer's last Pokémon
+    /// (BC3), every move pushed in on its user and pulled out past its target with a reaction after a
+    /// super-effective or critical blow (BC4); its opening, closing and crane come with BC5.
     /// </summary>
     public static readonly CameraManner Galar = new("galar")
     {
         Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.OwnFace },
         CycleHold = 3.5f, CycleEase = 1.4f,
+        Splits = CameraSplits.Leads | CameraSplits.LastPokemon,
+        Push = 1f, React = true,
     };
 
     /// <summary>Every manner of the table, by its name.</summary>
