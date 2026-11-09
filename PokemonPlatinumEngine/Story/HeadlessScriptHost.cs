@@ -476,7 +476,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     // ------------------------------------------------------------------ the field
 
-    public NPC? FindNpc(string name, string? place) => Map?.FindPerson(name, place);
+    public NPC? FindNpc(string name, string? place) => Map?.FindPerson(name, place) ?? OpenPersonNamed(name, place);
 
     public (int X, int Y) TileOf(NPC? who) => who == null ? PlayerTile : (who.GridX, who.GridY);
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.OpenWorld;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Story;
 
@@ -29,6 +30,27 @@ public sealed partial class HeadlessScriptHost
 
     /// <summary>The player's place in the open map, where a marker of a known map put them: millimetres and yaw.</summary>
     public OpenPlace? OpenPlayer { get; private set; }
+
+    // The people of an open map as the scripts know them, made once each (plan 33 · GL1)
+    private readonly Dictionary<OpenPerson, NPC> openPeople = new();
+
+    /// <summary>
+    /// Someone of an open map by name, as a person of the grid's kind (a scene's <c>battle hop</c>): in the open map
+    /// the host is in, or with none the data's open map the script's place is an area of (<see cref="OpenRegions"/>);
+    /// null for nobody there.
+    /// </summary>
+    private NPC? OpenPersonNamed(string name, string? place)
+    {
+        var map = OpenMap ?? (place != null && OpenRegions.MapOfArea(place) is { } of ? OpenRegions.Shared(of) : null);
+        if (map?.Person(name) is not { } person) return null;
+        if (!openPeople.TryGetValue(person, out var npc))
+            openPeople[person] = npc = new NPC
+            {
+                Name = person.ShownName ?? person.Key, Key = person.Key, NpcType = person.Look ?? "Trainer",
+                ScriptFile = person.Place, HiddenBy = person.HiddenBy, ShownBy = person.ShownBy
+            };
+        return npc;
+    }
 
     private OpenMarker? Marker(string name)
     {

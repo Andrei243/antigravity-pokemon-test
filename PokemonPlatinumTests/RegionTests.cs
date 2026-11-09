@@ -111,7 +111,9 @@ public class RegionTests
         {
             foreach (var map in region.Maps.Select(MapDatabase.Get))
             {
-                Assert.All(map.Warps, w => Assert.Contains(w.TargetMap, region.Maps));
+                // (or to one of the region's open maps: plan 33 · GL1, Galar's rooms' ways out)
+                Assert.All(map.Warps, w => Assert.True(region.Maps.Contains(w.TargetMap) || region.OpenMaps.Contains(w.TargetMap),
+                    $"{map.Name}'s warp at {w.SourceX},{w.SourceY} leads out of {region.Id}, to {w.TargetMap}"));
             }
         }
     }

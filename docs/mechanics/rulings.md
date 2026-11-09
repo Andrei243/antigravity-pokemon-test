@@ -10500,3 +10500,55 @@ The critic's third finding: the rules run items that nothing in the game gives. 
 - **The stones of our own Megas** (`decisions/R20b-mega-proposals.md`, "Where the stones are found", approved 2026-10-26): a region's professor gives its starters' stones once its Hall of Fame is entered and the bag holds a Key Stone, once, the talk ending there: Prof. Rowan the Torterrite, Infernapite and Empoleonite (`RowanLab.OurMegaStones`), Prof. Elm the Typhlosionite (`new_bark_elms_lab_1f.OurMegaStone`), Prof. Juniper the Serperiorite and Samurottite (`nuvema_town_lab.OurMegaStones`). The other nine wait for their regions' professors after their Halls of Fame, as the proposal says ("until then, nothing gives them"): Alola's plan 23 · Z8, after its League (its Hall of Fame stands since Z7), Galar's plan 33 · GL7, Paldea's plan 34 · PD9. Meganium's, Feraligatr's and Emboar's stones are Legends: Z-A's and owed with them. The Key Stone itself is Kalos's (the Tower of Mastery): plan 02's proposed beat that gave it in Sinnoh was never written.
 - **Omega Ruby's and Alpha Sapphire's Mega Stones in Hoenn's post-game** (plan 40 · decision 11, its recommended answer): the nineteen those games brought (Diancie's stone, an event's, aside) and the Blazikenite, which X and Y gave only by an event and Omega Ruby and Alpha Sapphire with the other two starters', are given or found in Hoenn once its Hall of Fame is entered, each where those games placed it or, where the place is none of Emerald's, its nearest. Found: the Steelixite in Granite Cave, the Sablenite in Sootopolis City, the Glalitite in Shoal Cave's lower room, the Beedrillite in the Abandoned Ship's storage room (Sea Mauville's stand-in), the Sharpedonite in the Aqua Hideout and the Cameruptite in the Magma Hideout (overlay balls shown by `HoennHallOfFame`). Given: the Latiasite and Latiosite by Mom; the Metagrossite on the Beldum of Steven's house; the Sceptilite, Blazikenite and Swampertite by Steven after his battle in his cave (those games give the starter's on Route 120 and the other two on Route 114: one giver here); the Pidgeotite by Mr. Stone; the Slowbronite by Shoal Cave's old man with the Shell Bell his salt and shells make; the Altarianite by Lilycove's art dealer to a Trainer with an Altaria; the Lopunnite by a man of Mauville; the Galladite by Prof. Cozmo; the Audinite by a gentleman of the Battle Frontier's island, which stands for those games' Battle Resort; the Salamencite by an elder of Meteor Falls (a person of ours where Zinnia's grandmother stood). X's and Y's other stones, which Omega Ruby and Alpha Sapphire also scattered over Hoenn, stay Kalos's (plan 23 · Z4b placed seventeen of them; the other nine are owed to plan 23 · Z4).
 - **What holds it**: `ItemSourcesTests` (every item the rules run had or owed, a source taken away or an owed one given caught on a world of its own, the four new kinds, the professors on every way of the Hall of Fame and the Key Stone, Unova's scenes and people, Hoenn's givers and found stones before and after the Hall of Fame, and the balls and the elder where the whole game's walk comes); `TrainingToolsTests` keeps its own.
+
+## Galar's first chapter, on the open world (2026-11-09, plan 33 · GL1)
+
+- **The plan's decisions, unanswered, at their recommendations** (plan 33 · "Decisions for the user"; the outline sheet
+  `decisions/APPROVAL-plans-35-44.md` has no question of plan 33's): (1) about half the original's distances; (2) the
+  version is the player's choice, kept as `VAR_GALAR_VERSION` (1 Sword, 2 Shield); (3) rustling grass kept, for GL2's
+  Wild Area (none of GL1's places has it); (4) neither decompilation of Sword pinned: the region is hand-built from
+  public descriptions, and every table, team and line here is ours; (5) and (6) are later sessions'. Each is open to
+  the user's word.
+- **Where Galar's land comes from.** Hand-built on plan 32's engine as data (`Data/world3d/galar`: `world.json`, a
+  control grid and brushes in `terrain/`, `water.json`, `roads.json`, `places/<area>.json`), baked by
+  `dotnet run --project tools/OpenWorldBake -- galar` into `baked/` (committed, kept to the byte by `.gitattributes` and
+  held by `GalarTests.TheBakeIsWhatTheDescriptionsGive`). One open map, `Galar`, of five areas south to north:
+  Postwick (the player's house, Hop's house and garden, the Wooloo's paddock), the Slumbering Weald behind the hedge on
+  its west side (fog, by its area's weather), Route 1, Wedgehurst (the station, the Pokémon Center, the research lab, a
+  house) and Route 2 east and north to Professor Magnolia's house by her lake. Its edges are banks too steep to climb
+  (plateaus of the terrain). Keys: `postwick`, `slumbering_weald`, `galar_route_1`, `wedgehurst`, `galar_route_2`.
+  The region's file says `"field": "open"`, the movement record of plan 30's table (`Free`, `Analog`, `RotomBike`) and
+  the grown kit; it names no grid overworld (`map`).
+- **Rooms**: eight grid map files (the player's house on two floors, Hop's house, Wedgehurst's station, Pokémon Center,
+  research lab and house, the professor's house), laid out from rooms of the same shape already in the game, each with
+  a way out whose `targetMap` is `Galar` and which lands on the `out` marker of the door leading back in. A new game
+  (`--region Galar`) wakes in the bedroom (4, 6); **a Champion crossing in from Alola lands inside the house's door**
+  (`Postwick_PlayersHouse_1F` 6, 10): an open marker can't be a `MapSpot`, and the first morning's scene is Mum's
+  either way. **Ours**: the plane from Alola leaves from Hau'oli City's Pokémon Center (plan 23 · Z8's link, owed
+  until now), its attendant there once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos.
+- **The first chapter** (our words on Sword and Shield's beats as they are publicly told; nothing of the originals'
+  scripts is read): Mum on the first morning asks which crest goes on the scarf for the opening ceremony (**ours**: the
+  version chosen in the story's own voice); Hop at the door, off to meet his brother's train; Leon home at Wedgehurst
+  Station; back in Hop's garden the three Pokémon (`starter`) and Hop's first battle with the one the player's is
+  strong against (`galar_hop_1a` to `_1c`, Sobble against Grookey, Grookey against Scorbunny, Scorbunny against Sobble);
+  Hop's Wooloo through the Weald's gate; the shadow in the fog, the version's legendary seen (`seen "Zacian"` or
+  `"Zamazenta"`) and never battled, Leon finding them; Mum's five Poké Balls the next morning; Hop's second battle at
+  the top of Route 1; the Pokédex from Sonia at the professor's; Hop's third battle in the garden; two Wishing Stars at
+  the lake that night, the professor's Dynamax Band (only to a bag without one, plan 33's design) and Leon's
+  endorsement; aboard the train at Wedgehurst Station, which waits there for GL2's line north. `VAR_GALAR_STORY` counts
+  it (0 to 11, `postwick.txt`'s header), `common.GalarNewGame` hides its people for every new game, and the objectives
+  are Galar's block (700 to 799). **Ours**: the order of the starters before the Weald (Sword gives them the evening
+  Leon comes home, and so does this); Hop's teams and levels, Route 2's three trainers (Alfie, Poppy, Reggie: names of
+  ours), the zones' tables (the species Sword shows on the two routes, by weights of ours), and no Rotom Phone (the
+  Pokédex is the flag every region's is).
+- **The engine for the first open region of the data**: `OpenWorld/OpenRegions.cs` names the data's open maps (a grid
+  room's way out to one is told from a grid map's, which `MapDatabase.Get` would answer with Sinnoh), `Region.OpenMaps`,
+  `WorldWalk.From` joining a room's way out to the open map's door and its navigation mesh's flood back into every
+  room whose door's marker is come to, a script's names meaning the open map's people first (`FindNpc`, both hosts),
+  an open trainer's two `lines` their lines before and after a battle, and `SpeciesSources` counting an open region's
+  zones (met in the field) and rooms. `Architecture.Galar`: grey field stone under dark slate (style guide, "Buildings").
+- **Left for later sessions**: GL1's second session (the user judges Postwick and Wedgehurst first; plan 33), the
+  harness's `galar` mode and its shots, the bot's itinerary to the train in `PlaythroughTests` (plan 32 · OW10's bot
+  steering the stick over the navigation mesh is not built), Fly's places and a Town Map for an open region (OW10),
+  Escape Rope, Dig and Teleport in an open map (each still notes a grid place), the train's run north (GL2), and every
+  species of the Galar Pokédex but the sixteen the two routes and the three give (`GalarSpeciesTests.Owed`).

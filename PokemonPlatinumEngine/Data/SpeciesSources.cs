@@ -119,10 +119,25 @@ public sealed class SpeciesSources
             var world = Worlds.FirstOrDefault(w => string.Equals(w.Index.Region, region, StringComparison.OrdinalIgnoreCase));
             var own = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             var rooms = new List<MapFile>();
-            if (world != null)
+            // An open region (plan 33 · GL1: Galar) has no grid world: its areas are its open maps' (their scripts are
+            // the areas' own files), and its wild Pokémon its zones' rows, all of them met in the field
+            var open = RegionDatabase.Get(region) is { Field: FieldKind.Open } openRegion
+                ? OpenWorld.OpenRegions.Load(openRegion, withLand: false) : new List<OpenWorld.OpenMap>();
+            var inTheField = new List<(string Species, string Way)>();
+            foreach (var map in open)
             {
-                own.UnionWith(world.Index.Areas);
-                own.UnionWith(world.Index.Maps.Select(m => m.Name));
+                own.Add(map.Name);
+                own.UnionWith(map.Areas.Select(a => a.Key));
+                foreach (var zone in map.Zones)
+                    foreach (var slot in zone.Slots) inTheField.Add((slot.Species, $"{zone.Place}: {zone.Name}, in the field"));
+            }
+            if (world != null || open.Count > 0)
+            {
+                if (world != null)
+                {
+                    own.UnionWith(world.Index.Areas);
+                    own.UnionWith(world.Index.Maps.Select(m => m.Name));
+                }
                 foreach (var room in Rooms())
                     if (string.Equals(RegionDatabase.RegionOfMap(room.Name)?.Id, region, StringComparison.OrdinalIgnoreCase))
                     {
@@ -134,7 +149,7 @@ public sealed class SpeciesSources
             var library = ScriptLibrary.Default;
             var scripts = Reached(library, library.All.Where(s => own.Contains(s.File) || OwnCommon(s, region)));
             var found = Gather(world == null ? new List<World>() : new List<World> { world }, null, library, rooms,
-                scripts.Contains, starters.Select(s => (s, "the professor's three")), ownCounters: true);
+                scripts.Contains, starters.Select(s => (s, "the professor's three")).Concat(inTheField), ownCounters: true);
             return regions[region] = Make(found, HighestOf(region));
         }
     }
@@ -152,7 +167,11 @@ public sealed class SpeciesSources
                 if (everywhere != null) return everywhere;
                 var worlds = Worlds;
                 var sinnohWorld = worlds.FirstOrDefault(w => string.Equals(w.Index.Region, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase));
-                var given = RegionDatabase.All.SelectMany(r => r.Starters.Select(s => (s, $"{r.Id}'s professor's three")));
+                var given = RegionDatabase.All.SelectMany(r => r.Starters.Select(s => (s, $"{r.Id}'s professor's three")))
+                    // and the open regions' zones, whose Pokémon are met in the field (plan 33 · GL1)
+                    .Concat(RegionDatabase.All.Where(r => r.Field == FieldKind.Open)
+                        .SelectMany(r => OpenWorld.OpenRegions.Load(r, withLand: false))
+                        .SelectMany(m => m.Zones.SelectMany(z => z.Slots.Select(s => (s.Species, $"{z.Place}: {z.Name}, in the field")))));
                 var found = Gather(worlds, sinnohWorld, ScriptLibrary.Default, Rooms().ToList(), _ => true, given, ownCounters: false);
                 return everywhere = Make(found, PokemonDatabase.GetAll().Max(s => s.DexNumber));
             }

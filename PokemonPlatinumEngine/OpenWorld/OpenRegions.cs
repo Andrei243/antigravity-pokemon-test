@@ -19,6 +19,7 @@ public static class OpenRegions
 {
     private static readonly object reading = new();
     private static Dictionary<string, string>? names;
+    private static Dictionary<string, string>? areas;
     private static Dictionary<string, OpenMap>? shared;
 
     /// <summary>Where an open region's descriptions and bake live, or null where it has none.</summary>
@@ -38,15 +39,28 @@ public static class OpenRegions
             {
                 if (names != null) return names;
                 var found = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                var ofArea = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                 foreach (var region in RegionDatabase.All)
                 {
                     if (FolderOf(region) is not { } folder) continue;
                     var index = JsonSerializer.Deserialize<OpenRegionIndexFile>(File.ReadAllText(Path.Combine(folder, "world.json")), GameDataFiles.Json);
-                    foreach (var map in index?.Maps ?? new()) found[map.Name] = region.Id;
+                    foreach (var map in index?.Maps ?? new())
+                    {
+                        found[map.Name] = region.Id;
+                        foreach (string area in map.Areas) ofArea[area] = map.Name;
+                    }
                 }
+                areas = ofArea;
                 return names = found;
             }
         }
+    }
+
+    /// <summary>The open map an area of the data's open regions belongs to (an area's key is its script file's name); null for none.</summary>
+    public static string? MapOfArea(string area)
+    {
+        _ = MapNames;
+        return areas!.GetValueOrDefault(area);
     }
 
     /// <summary>Whether a name is an open map's.</summary>
