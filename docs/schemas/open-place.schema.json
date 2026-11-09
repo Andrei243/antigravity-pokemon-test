@@ -353,6 +353,138 @@
             "items": {
               "type": "number"
             }
+          },
+          "building": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "House",
+                  "PokemonCenter",
+                  "PokeMart",
+                  "Lab",
+                  "School",
+                  "Office",
+                  "TvStation",
+                  "Terminal",
+                  "Apartments",
+                  "Gym",
+                  "Gate",
+                  "Museum",
+                  "Library",
+                  "Shop",
+                  "Hotel",
+                  "Hall",
+                  "Chapel",
+                  "Temple",
+                  "Shrine",
+                  "Tower",
+                  "Lighthouse",
+                  "Factory",
+                  "Warehouse",
+                  "Mansion",
+                  "Galactic",
+                  "League"
+                ]
+              },
+              "town": {
+                "enum": [
+                  "Timber",
+                  "Plaster",
+                  "City",
+                  "Clapboard",
+                  "Brick",
+                  "Cottage",
+                  "HalfTimber",
+                  "Townhouse",
+                  "Farm",
+                  "Stone",
+                  "Marsh",
+                  "Harbour",
+                  "Snow",
+                  "Seaside",
+                  "Resort",
+                  "Evergreen",
+                  "Granite",
+                  "Riverside",
+                  "Portside",
+                  "Lilac",
+                  "Wildwood",
+                  "Breeze",
+                  "Bayside",
+                  "OldTimber",
+                  "Woodland",
+                  "Boulevard",
+                  "Heritage",
+                  "Seaport",
+                  "Cliffside",
+                  "Upland",
+                  "Dragonstone",
+                  "Sapling",
+                  "Meadow",
+                  "Parkside",
+                  "Quarry",
+                  "Islet",
+                  "Wharf",
+                  "Jade",
+                  "Uptown",
+                  "Cinder",
+                  "Dynamo",
+                  "Glade",
+                  "Hayloft",
+                  "Isle",
+                  "Spa",
+                  "Treetop",
+                  "Starward",
+                  "Crater",
+                  "Raft",
+                  "Bloomstone",
+                  "Hillside",
+                  "Bellfield",
+                  "Dockyard",
+                  "Metropolis",
+                  "Funfair",
+                  "Storehouse",
+                  "Railyard",
+                  "Airfield",
+                  "Skyline",
+                  "Stilts",
+                  "Hamlet",
+                  "Canalside",
+                  "Lumiose",
+                  "Cyllage",
+                  "Islander",
+                  "Shoreline",
+                  "Seabreeze",
+                  "Plaza",
+                  "Teahouse",
+                  "Gallery",
+                  "Mire",
+                  "Nightfall"
+                ]
+              },
+              "storeys": {
+                "type": "integer"
+              },
+              "faces": {
+                "enum": [
+                  "Down",
+                  "Up",
+                  "Left",
+                  "Right"
+                ]
+              },
+              "sign": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -472,6 +604,79 @@
         "required": [
           "name",
           "at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "trees": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "at": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "kind": {
+            "enum": [
+              "Pine",
+              "Round"
+            ]
+          },
+          "size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "groves": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "polygon": {
+            "type": "array",
+            "items": {
+              "$ref": "#/properties/zones/items/properties/polygon/items"
+            }
+          },
+          "spacing": {
+            "type": "number"
+          },
+          "fill": {
+            "type": "number"
+          },
+          "pines": {
+            "type": "number"
+          },
+          "size": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "seed": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "polygon"
         ],
         "additionalProperties": false
       }

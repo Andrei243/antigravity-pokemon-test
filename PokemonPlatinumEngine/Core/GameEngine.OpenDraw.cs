@@ -43,6 +43,8 @@ public partial class GameEngine
         openLastFeet = null;
         openWalked = 0;
         if (!IsHeadless) CharacterModels.Preload(new[] { OpenPlayerLook });
+        // The people's looks and the follower's, asked for behind the same fade (plan 32 · OW9)
+        if (flow.Open is { } field) PreloadTheOpenLooks(field);
     }
 
     /// <summary>The player's look in the open world: plan 30 · FM4's grown kit (<c>PLAYER~Teen</c>), dressed as the player is.</summary>
@@ -113,10 +115,12 @@ public partial class GameEngine
             WalkBlend = speed > OrbitCamera.Walking ? 1f : 0f,
             Running = speed > 3.0
         };
+        // Who and what stands there beside the player, and whom the grass parts round (plan 32 · OW9)
+        var figures = GatherOpenFigures(open);
         // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm
         return new OpenScene(open.Map, V(feet), (float)OpenYaw.Radians(body.Yaw), pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
-            body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens));
+            body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens), figures, OpenWalkersOf(open, figures));
     }
 
     private static Vector3 V(OpenVec v) => new((float)v.X, (float)v.Y, (float)v.Z);
@@ -187,6 +191,10 @@ public partial class GameEngine
             CharacterModels.Get(GameEngine.OpenPlayerLook, game.renderContext.Shaders);
             var renderer = game.OpenRendererNow;
             var scene = game.OpenSceneNow(open);
+            // Every figure's rig or model made now, so what a shot shows never waits on a background build (plan 32 · OW9)
+            foreach (var figure in scene.Figures ?? Array.Empty<OpenFigure>())
+                if (figure.Kind == OpenFigureKind.Person) CharacterModels.Get(figure.Look, game.renderContext.Shaders);
+                else PokemonModels.Get(figure.Look);
             game.openCamera.Settle();
             renderer.Rings.Reset();
             renderer.Rings.Move(new OpenVec(scene.Feet.X, scene.Feet.Y, scene.Feet.Z));

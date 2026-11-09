@@ -10,7 +10,7 @@
     { "name": "hill_foot", "at": [0, 0, -27], "yaw": 0 },
     { "name": "house_step", "at": [-20, 0.1, -40], "yaw": 0 },
     { "name": "house_path", "at": [-20, 0.1, -34], "yaw": 180 },
-    { "name": "twins_gap", "at": [38, 0.2, -58], "yaw": 180 },
+    { "name": "twins_gap", "at": [38, 0.6, -58], "yaw": 180 },
     { "name": "north_meadow", "at": [6, 0.2, -60], "yaw": 90 }
   ],
   "doors": [
@@ -36,12 +36,13 @@
       "density": 4, "cap": 3
     }
   ],
+  // The house is the kit's at metre scale (plan 32 · OW9), its front and door to the south
   "solids": [
-    { "name": "the house", "min": [-24, -1, -50], "max": [-16, 4, -43] }
+    { "name": "the house", "min": [-24, -1, -50], "max": [-16, 4, -43], "building": { "kind": "house", "town": "timber" } }
   ],
   "people": [
     {
-      "name": "walker", "at": [6, 0.2, -54], "yaw": 0, "displayName": "Walker",
+      "name": "walker", "at": [6, 0.2, -54], "yaw": 0, "look": "gentleman", "displayName": "Walker",
       "lines": ["Fine weather for a walk round the meadow."],
       "moves": "wander", "radius": 4
     },
@@ -53,5 +54,23 @@
       "name": "picnicker_east", "at": [52, 0.2, -58], "yaw": 270, "trainer": "picnicker_siena",
       "sight": { "length": 16, "angle": 40 }
     }
+  ],
+  // Scenery (plan 32 · OW9): trees about the house and along the west road, and groves where nothing walks: south of
+  // the river, the south-east meadow, the plateau over the ledge and the north-west corner. None of them is a solid
+  "trees": [
+    { "at": [-28.5, -46], "kind": "round" },
+    { "at": [-11.5, -47.5], "kind": "pine", "size": 1.15 },
+    { "at": [-27, -38.5], "kind": "pine", "size": 0.95 },
+    { "at": [-53, 33], "kind": "round", "size": 1.1 },
+    { "at": [-45.5, 31], "kind": "pine" },
+    { "at": [-34, 14], "kind": "round", "size": 0.9 },
+    { "at": [16, 26], "kind": "pine", "size": 1.2 },
+    { "at": [-16, 27], "kind": "round" }
+  ],
+  "groves": [
+    { "name": "south of the river", "polygon": [[-63, 54], [63, 56], [63, 63], [-63, 63]], "spacing": 5, "fill": 0.75, "pines": 0.6, "seed": 1 },
+    { "name": "the south-east meadow", "polygon": [[38, 14], [62, 9], [62, 34], [42, 35]], "spacing": 6, "fill": 0.7, "pines": 0.35, "seed": 2 },
+    { "name": "the plateau", "polygon": [[-62, -62], [-41, -62], [-41, -47], [-62, -43]], "spacing": 5.5, "fill": 0.8, "pines": 0.8, "seed": 3 },
+    { "name": "the north-west corner", "polygon": [[-37, -63], [-27, -63], [-27, -54], [-36, -52]], "spacing": 5, "fill": 0.85, "pines": 0.5, "seed": 4 }
   ]
 }

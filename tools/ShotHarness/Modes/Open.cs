@@ -39,8 +39,12 @@ partial class Harness
     static OpenPos OnLabGround(OpenMap map, double x, double z, double top = 60, double bottom = -60) =>
         OpenPos.FromMetres(x, map.Ground.Footing(x, z, top, bottom)?.Y ?? 0, z);
 
-    /// <summary>The player put down at a place facing a way (degrees: nought south, 90 east), settled, the camera turned to a yaw of its own if given.</summary>
-    void PutInLab(OpenMap map, OpenPos at, double yawDegrees, double? cameraDegrees = null)
+    /// <summary>
+    /// The player put down at a place facing a way (degrees: nought south, 90 east), settled, the camera turned to a yaw
+    /// of its own if given, and (plan 32 · OW9) every far figure's impostor baked unless <paramref name="bake"/> is false
+    /// (a shot that must be taken within a few frames of the placing: a trainer's "!").
+    /// </summary>
+    void PutInLab(OpenMap map, OpenPos at, double yawDegrees, double? cameraDegrees = null, bool bake = true)
     {
         game.OpenView = null;
         game.PlaceOpen(map, at, OpenPlaceFiles.YawOfDegrees(yawDegrees));
@@ -48,6 +52,7 @@ partial class Harness
         if (cameraDegrees is { } c) game.OpenCamera.Face(c * Math.PI / 180);
         game.SettleOpenView();
         Frames(2);
+        if (bake) BakeTheFiguresImpostors();
     }
 
     /// <summary>What a shot of the open world shows, printed: the place, the area, the camera, the light and what was drawn.</summary>
@@ -94,6 +99,11 @@ partial class Harness
         game.OpenWeather = null;
         PutInLab(map, map.Marker("cavern_middle")!.Pos, 90, 60);
         Profile("open_lab: the cavern under the hill");
+        // Plan 32 · OW9's done-when: thirty people, twelve field Pokémon and the village in view, by day
+        LayTheVillage(map);
+        PutInLab(map, OnLabGround(map, -14, -24), 180, 200);
+        Profile("open_lab: the village with thirty people and twelve Pokémon");
+        game.OpenFiguresByHand = null;
         game.Place(stood, x, y, facing);
     }
 
@@ -111,6 +121,7 @@ partial class Harness
         double ms = TimeOpenLab();
         Shot(name);
         TellOpenShot(name);
+        TellOpenScenery(name);
         Console.WriteLine($"    frame {ms:0.00} ms (a mean of 30 on this machine, a card other runs share: the user's `profile` is what is judged)");
     }
 
@@ -247,5 +258,8 @@ partial class Harness
         OpenLabShot("open42_levels_from_the_corner");
         game.OpenView = null;
         game.OpenWeather = null;
+
+        // Plan 32 · OW9: the buildings, trees, grass, people, follower, the rings to the horizon and the village's crowd
+        OpenSceneryShots(map);
     }
 }
