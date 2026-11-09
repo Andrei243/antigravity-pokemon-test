@@ -231,6 +231,19 @@ partial class Harness
             ToMainMenu(wild);
             Profile("battle, at the menu");
 
+            // Plan 45: the same battle at its menu filmed in Galar's manner (its idle cycle, BC2) and with the picture
+            // split and held (BC3), each judged by its floor against the battle at the menu (decision 4: a split may cost
+            // no more than the scene does today); the pixels each frame's views draw into are printed, a count
+            engine.FixedCameraManner = CameraManners.Find("galar");
+            Profile("battle, Galar's cycle at the menu");
+            game.BattleRenderer.HeldSplit = 1f;
+            Frames(2);
+            Profile("battle, a split held");
+            Console.WriteLine($"  a split held draws {game.BattleRenderer.PixelsDrawn:N0} pixels into its two halves; the scene alone draws {game.BattleRenderer.ScenePixels:N0}");
+            game.BattleRenderer.HeldSplit = null;
+            engine.FixedCameraManner = null;
+            Frames(2);
+
             // The same in the rain (plan 25 · Y1): the weather's layer over the whole stage
             var rainy = Wild(32, new BattleConditions { Weather = BattleWeather.Rain });
             ToMainMenu(rainy);
