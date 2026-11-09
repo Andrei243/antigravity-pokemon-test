@@ -1,0 +1,10 @@
+{
+  "seconds": 600,
+  "powers": [
+    { "kind": "Encounter", "strength": [10, 20, 30] },
+    { "kind": "Stealth", "strength": [-10, -20, -30] },
+    { "kind": "Hatch", "strength": [1, 2, 3] },
+    { "kind": "TypeEncounter", "strength": [2, 4, 6] },
+    { "kind": "Materials", "strength": [1, 2, 3] }
+  ]
+}

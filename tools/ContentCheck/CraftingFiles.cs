@@ -16,6 +16,7 @@ public static class CraftingFiles
     {
         CheckMaterials(content, found);
         CheckRecipes(content, found);
+        CheckPowers(content, found);
     }
 
     /// <summary>
@@ -62,6 +63,39 @@ public static class CraftingFiles
             if (item.TeachesMove == null || !MoveDatabase.Has(item.TeachesMove)) { Add(item.Name, $"teaches {item.TeachesMove}, which is no move"); continue; }
             if (tiers.Count > 0 && TmMaker.CostOf(item) == null) Add(item.Name, "has no cost: its move's type has no common material, or its tier a rare one");
         }
+
+        // The kit's recipes (plan 39 · CR3): named once, what they make and take exists, never cheaper than the Mart
+        foreach (var (name, what) in Crafting.Problems(data.Kit)) Add(name, what);
+        // The camp's dishes (plan 39 · CR6): the plain dish, four climbing grades, needs of the pantry, powers something reads
+        foreach (var (name, what) in Meals.Problems(data.Kitchen)) Add(name, what);
+    }
+
+    /// <summary>
+    /// <c>Data/powers.json</c> (plan 39 · CR6, in plan 36's shape): read strictly; a length of play; each kind's row once,
+    /// with three strengths, and every kind something reads has its row.
+    /// </summary>
+    private static void CheckPowers(GameContent content, List<Finding> found)
+    {
+        string path = Path.Combine(content.Root, "powers.json");
+        if (!File.Exists(path)) return;
+        string file = content.Relative(path);
+        PowersFile data;
+        try
+        {
+            data = GameDataFiles.ReadStrict<PowersFile>(File.ReadAllText(path), file);
+        }
+        catch (InvalidDataException e)
+        {
+            found.Add(new Finding(Kind.Unreadable, file, "powers", e.Message));
+            return;
+        }
+        void Add(string name, string what) => found.Add(new Finding(Kind.Data, file, name, what));
+        if (data.Seconds < 1) Add("seconds", "is under one: a power lasts no time");
+        foreach (var group in data.Powers.GroupBy(r => r.Kind).Where(g => g.Count() > 1)) Add(group.Key.ToString(), "has two rows");
+        foreach (var row in data.Powers)
+            if (row.Strength.Count != PowerTable.TopLevel) Add(row.Kind.ToString(), $"has {row.Strength.Count} strengths, not one for each of the {PowerTable.TopLevel} levels");
+        foreach (var kind in PowerTable.Read)
+            if (data.Powers.All(r => r.Kind != kind)) Add(kind.ToString(), "is read and has no row");
     }
 
     private static void CheckMaterials(GameContent content, List<Finding> found)

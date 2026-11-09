@@ -1340,7 +1340,7 @@
 
   "camp": {
     "title": "TABĂRĂ",
-    "hint": { "pet": "Mângâie", "feed": "Hrănește" },
+    "hint": { "pet": "Mângâie", "feed": "Hrănește", "cook": "Gătește" },
     "friendship": "PRIETENIE",
     "petted": "MÂNGÂIAT",
     "fed": "HRĂNIT",
@@ -6212,11 +6212,36 @@
     "title": "TRUSA DE CREAȚIE",
     "tab": {
       "materials": "MATERIALE",
-      "machines": "TM-URI"
+      "machines": "TM-URI",
+      "make": "CREEAZĂ",
+      "pantry": "CĂMARĂ"
     },
     "hint": {
       "make": "Creează",
-      "tab": "Filă"
+      "tab": "Filă",
+      "howMany": "Câte",
+      "buy": "Cumpără"
+    },
+    "make": {
+      "empty": "Trusa nu are nicio rețetă.",
+      "makes": "IESE",
+      "each": "×{n} de fiecare dată",
+      "howMany": "Câte?",
+      "times": "×{n}",
+      "made": "Ai creat {name} ×{n}!",
+      "why": {
+        "nothing": "Asta nu se poate crea.",
+        "short": "Nu ai destul {name}.",
+        "full": "Rucsacul tău nu mai poate ține {name}."
+      }
+    },
+    "pantry": {
+      "price": "{money} bucata",
+      "bought": "Ai cumpărat {name} ×{n} cu {money}.",
+      "why": {
+        "money": "Nu ai destui bani.",
+        "full": "Săculețul nu mai poate ține {name}."
+      }
     },
     "tm": {
       "empty": "Niciun TM sau TR nu s-a aflat încă în rucsacul tău. Pe cele pe care le porți, și pe cele pe care le-ai folosit, le poți crea din nou aici.",
@@ -6299,7 +6324,9 @@
         "seaShell": "Scoică",
         "coarseSalt": "Sare Grunjoasă",
         "frostCrystal": "Cristal de Chiciură",
-        "riverClay": "Argilă de Râu"
+        "riverClay": "Argilă de Râu",
+        "flour": "Făină", "rice": "Orez", "beans": "Fasole", "potatoes": "Cartofi", "onions": "Ceapă",
+        "cheese": "Brânză", "butter": "Unt", "oats": "Ovăz", "tomatoes": "Roșii", "spices": "Mirodenii"
       },
       "desc": {
         "softFluff": "Puf moale, lăsat de Pokémonii blânzi și obișnuiți.",
@@ -6347,9 +6374,72 @@
         "seaShell": "O scoică aruncată de valuri pe țărm.",
         "coarseSalt": "Cristale de sare grunjoasă de la linia mareei.",
         "frostCrystal": "Un cristal de chiciură găsit unde zăpada stă adâncă.",
-        "riverClay": "Argilă fină care își păstrează forma când se usucă."
+        "riverClay": "Argilă fină care își păstrează forma când se usucă.",
+        "flour": "Un sac de făină fină, pentru lipii și aluat.",
+        "rice": "O pungă de orez cu bob scurt, care se lipește când fierbe.",
+        "beans": "Fasole uscată, care se înmoaie încet în oală.",
+        "potatoes": "O plasă de cartofi mici, încă puțin pământoși.",
+        "onions": "Ceapă dulce, care se înmoaie frumos pe foc.",
+        "cheese": "O felie de brânză tare, care se topește aurie.",
+        "butter": "O bucată de unt sărat, învelită în hârtie.",
+        "oats": "Fulgi de ovăz care îngroașă tot ce ating.",
+        "tomatoes": "Roșii coapte, care se fac sos la foc mic.",
+        "spices": "O cutie de mirodenii care încălzesc și ard puțin."
       }
     }
+  },
+  "campPot": {
+    "title": "OALA",
+    "pantry": "LA ÎNDEMÂNĂ",
+    "pot": "ÎN OALĂ",
+    "cook": "GĂTEȘTE",
+    "makes": "IESE",
+    "held": "×{n}",
+    "round": "RUNDA {n} DIN {of}",
+    "hint": { "add": "Adaugă", "takeOut": "Scoate", "stir": "Amestecă", "takeOff": "Ia de pe foc" },
+    "score": { "miss": "RATAT", "good": "BINE", "perfect": "PERFECT" },
+    "grade": { "plain": "Simplu", "good": "Bun", "great": "Foarte bun", "superb": "Excelent" },
+    "served": "{dish}: {grade}",
+    "healed": "PV refăcute cu {n}%",
+    "noPower": "Nicio putere, doar o masă bună.",
+    "power": "{power} Nv. {level} timp de {minutes} min",
+    "note": {
+      "nothing": "Nu ai cu ce găti. Cămara atelierului vinde alimente pentru oală.",
+      "choose": "Pune în oală cel mult {n} lucruri, apoi alege GĂTEȘTE.",
+      "added": "Pui {name}. Pare să iasă {dish}.",
+      "empty": "Oala e goală.",
+      "short": "O parte din ele nu mai sunt în săculeț sau în rucsac.",
+      "full": "Oala ține cel mult {n} lucruri.",
+      "noMore": "Nu mai ai {name} de pus.",
+      "stir": "Amestecă atunci când acul e în zona fierbinte!",
+      "takenOff": "Oala e luată de pe foc. Nu s-a folosit nimic.",
+      "served": "{dish}: {grade}! Toată lumea se înfruptă.",
+      "powerOn": "{power} Nv. {level} e activă."
+    },
+    "dish": {
+      "name": {
+        "campStew": "Tocăniță de Tabără", "beanHotpot": "Ghiveci de Fasole", "berryPilaf": "Pilaf cu Boabe", "honeyOatCakes": "Turte de Ovăz cu Miere",
+        "mushroomBake": "Ciuperci la Cuptor", "quietBroth": "Supă Liniștită", "spicedFlatbread": "Lipie Picantă", "potatoHash": "Cartofi Rumeniți"
+      },
+      "desc": {
+        "campStew": "Ce s-a găsit la îndemână, fiert laolaltă. Sățioasă, și atât.",
+        "beanHotpot": "Un ghiveci consistent al cărui miros ajunge departe. Pokémonii sălbatici vin să caute.",
+        "berryPilaf": "Orez lipicios cu o boabă amestecată. Pokémonii de tipul boabei se apropie.",
+        "honeyOatCakes": "Turte dulci care țin Ouăle calde și vioaie. Eclozează mai repede.",
+        "mushroomBake": "Bogat și auriu. Pokémonii sălbatici învinși apoi lasă mai multe în urmă.",
+        "quietBroth": "O supă blândă care liniștește. Mai puțini Pokémoni sălbatici te deranjează.",
+        "spicedFlatbread": "Lipie fierbinte cu margine afumată. Pokémonii sălbatici urmează mirosul.",
+        "potatoHash": "Cartofi crocanți prăjiți în unt. Pokémonii învinși lasă mai multe în urmă."
+      }
+    }
+  },
+  "timedPowers": {
+    "kind": {
+      "exp": "Puterea EXP", "effort": "Puterea Efortului", "money": "Puterea Premiilor", "bargain": "Puterea Reducerilor", "catch": "Puterea Capturii",
+      "encounter": "Puterea Întâlnirilor", "stealth": "Puterea Discreției", "hatch": "Puterea Eclozării", "typeEncounter": "Puterea Tipului",
+      "materials": "Puterea Culesului"
+    },
+    "wornOff": "{list} a expirat."
   },
   "versus": {
     "first": "Jucătorul 1",

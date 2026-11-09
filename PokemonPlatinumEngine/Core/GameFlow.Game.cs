@@ -164,6 +164,9 @@ public sealed partial class GameFlow
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 
+    /// <summary>The timed powers in force (plan 36's powers, granted by plan 39 · CR6's dishes; saved).</summary>
+    public PowerState Powers { get; } = new();
+
     /// <summary>The training drills' records and the prizes they have earned (plan 36 · TR2; saved).</summary>
     public TrainingRecords Training { get; } = new();
 

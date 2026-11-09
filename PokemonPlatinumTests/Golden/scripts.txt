@@ -7574,6 +7574,10 @@ from Ninja Boy at 10,7 of SunyshorePokemonCenter
 way -
   Ninja Boy> Whoa, seven Gym Badges! You're amazing!
   Ninja Boy> Just one to go, and it's the Pokémon League for you!
+=== SunyshoreWorkshop.Apprentice
+from Apprentice at 2,5 of SunyshoreWorkshop
+way -
+  Apprentice> I'm only the apprentice. Talk to the craftswoman first.
 === SunyshoreWorkshop.Craftswoman
 from Craftswoman at 6,3 of SunyshoreWorkshop
 way -
@@ -7582,7 +7586,8 @@ way -
   Craftswoman> I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours.
   > Lucas received the Crafting Kit!
   Craftswoman> Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over.
-  Craftswoman> Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready.
+  Craftswoman> Open it whenever you like. Its MAKE page turns what you've gathered into balls, medicine and the like, wherever you stand.
+  Craftswoman> And with the kit along you can make camp anywhere. There's a pot in it, and I keep a pantry here for whatever you want to cook.
   * fanfare FanfareKeyItem
   + FLAG_GOT_CRAFTING_KIT
 === SurvivalAreaNorthHouse.Tutor

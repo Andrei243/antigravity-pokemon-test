@@ -545,6 +545,9 @@ public interface IScriptHost
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1); none where a host keeps none, and <c>craft</c> then does nothing.</summary>
     CraftingState? Crafting => null;
 
+    /// <summary>The timed powers in force (plan 36; plan 39 · CR6's dishes start them); none where a host keeps none, and a meal then starts nothing.</summary>
+    PowerState? Powers => null;
+
     /// <summary>The training drills' records (plan 36 · TR2); none where a host keeps none, and <c>train prize</c> then gives nothing.</summary>
     TrainingRecords? Training => null;
 

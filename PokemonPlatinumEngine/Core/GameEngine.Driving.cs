@@ -170,7 +170,9 @@ public partial class GameEngine
         public void OpenApricornBox() => game.OpenApricornBox(fromBag: false);
         public CraftingScreen CraftingScreen => game.flow.CraftingScreen;
         public CraftingState Crafting => game.flow.Crafting;
+        public PowerState Powers => game.flow.Powers;
         public void OpenCrafting(bool atMaker = false) => game.OpenCrafting(fromBag: false, atMaker: atMaker);
+        public void OpenCraftingAt(CraftingPlace place) => game.OpenCrafting(fromBag: false, place);
         public TrainingScreen TrainingScreen => game.flow.TrainingScreen;
         public TrainingRecords Training => game.flow.Training;
         public Toast Toast => game.flow.Toast;

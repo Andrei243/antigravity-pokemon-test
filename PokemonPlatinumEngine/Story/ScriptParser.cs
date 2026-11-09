@@ -1137,10 +1137,19 @@ public static class ScriptParser
             }
 
             // The crafting kit and its pouch (plan 39 · CR1): `craft has`, `craft give kit`, `craft give "Soft Fluff" 3`,
-            // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name
+            // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name;
+            // CR4's `craft tm`, CR3's apprentice's `craft tradable` and `craft trade`, CR6's `craft pantry` and `craft meal`
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal");
+                // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
+                if (what == "meal")
+                {
+                    string dish = r.Text("a dish's id");
+                    if (Models.Meals.Dish(dish) == null) throw r.Error($"'{dish}' is no dish (Data/recipes.json's kitchen)");
+                    string grade = r.More ? r.OneOf("plain", "good", "great", "superb") : "great";
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = dish, Number = (int)System.Enum.Parse<Models.DishGrade>(grade, ignoreCase: true) };
+                }
                 if (what == "give" && r.PeekWord("kit"))
                 {
                     r.Next();

@@ -453,6 +453,8 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Powers.Clear();
+        ForgetWornOff();
         flow.Training.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
@@ -720,6 +722,8 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Powers.Load(save.Powers);
+        ForgetWornOff();
         flow.Training.Load(save.Training);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
@@ -937,6 +941,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Powers = flow.Powers.ToSave(),
             MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             Training = flow.Training.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
@@ -1158,12 +1163,18 @@ public partial class GameEngine
         // The developer's console holds the game while it is open, and what was saved is read again (plan 16 · T6)
         if (UpdateDev(dt)) return;
 
-        if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
+        if (gameStarted && flow.State != GameState.WindowClosing)
+        {
+            flow.PlayTime += dt;
+            // The powers in force count down from the play time (plan 36; plan 39 · CR6), never the wall clock
+            KeepThePowers(dt);
+        }
 
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
         KeepTheResearch();
         KeepWhatWasLeft();
+        TellWornOff();
         KeepTheTimer(dt);
         KeepTheStream(dt);
         KeepTheAutosave(dt);

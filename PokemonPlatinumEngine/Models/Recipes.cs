@@ -36,6 +36,12 @@ public sealed class MachineRecipes
 public sealed class RecipesFile
 {
     public MachineRecipes Machines { get; set; } = new();
+
+    /// <summary>The kit's MAKE tab (plan 39 · CR3): what the kit makes and what each takes.</summary>
+    public List<CraftRecipe> Kit { get; set; } = new();
+
+    /// <summary>The camp's pot (plan 39 · CR6): its dishes and what a grade gives.</summary>
+    public KitchenRecipes Kitchen { get; set; } = new();
 }
 
 /// <summary>The tables of the recipes (plan 39; <c>Data/recipes.json</c>). No drawing or input.</summary>
@@ -48,4 +54,10 @@ public static class RecipeTable
     public static MachineRecipes Machines => File.Machines;
 
     public static IReadOnlyList<TmTier> Tiers => Machines.Tiers;
+
+    /// <summary>The kit's recipes, in the file's order (plan 39 · CR3).</summary>
+    public static IReadOnlyList<CraftRecipe> Kit => File.Kit;
+
+    /// <summary>The camp's dishes and grades (plan 39 · CR6).</summary>
+    public static KitchenRecipes Kitchen => File.Kitchen;
 }

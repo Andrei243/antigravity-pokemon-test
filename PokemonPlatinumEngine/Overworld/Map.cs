@@ -1767,7 +1767,9 @@ public class Map
         var (table, rate) = WildAt(x, y, water, moment);
         if (table.Count == 0 || rate <= 0) return null;
         rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));
-        bool meets = steps.Meets(rate, thick, rng, moment?.Today, Models.Pokegear.RadioRateBonus(moment?.Radio ?? Models.RadioSong.None));
+        // The radio's March and Lullaby (plan 20 · J3) and the encounters' or stealth's power (plan 39 · CR6) move the flat chance alike
+        bool meets = steps.Meets(rate, thick, rng, moment?.Today,
+            Models.Pokegear.RadioRateBonus(moment?.Radio ?? Models.RadioSong.None) + (moment?.PowerRate ?? 0));
         // A shaking patch always has its Pokémon (PokeRadar_ShouldDoRadarEncounter)
         var radar = moment?.Radar?.StepOnto(x, y);
         if (!meets && radar == null) return null;
