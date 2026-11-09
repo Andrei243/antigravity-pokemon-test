@@ -1530,6 +1530,8 @@ alola_plumeria_1 216 (34) [Golbat → Crobat, Skuntank → Mephitarch, Salazzle 
 alola_scientist_ola 215 (32) [Togedemaru → Rollocupine, Elekid → Electivire]
 alola_team_skull_grunt_motel 210 (18) [Zubat → Crobat, Salandit → Salazzle]
 alola_worker_kanoa 215 (31) [Magnemite → Magnezone, Charjabug → Vikavolt, Magneton → Magnezone]
+=== region Hisui
+levels 2 → 62, 75 → 104
 === AnistarCity_Gym
 Anistar Gym, Kalos
 trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]

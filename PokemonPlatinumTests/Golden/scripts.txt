@@ -4192,6 +4192,34 @@ way 0
 way 1, from answer 1
   Lottery Clerk> Of course. Come back whenever you feel lucky!
   ? Shall I check today's number against your Pokémon? = No
+=== JubilifeVillage_GalaxyHall.Cyllene
+from Captain Cyllene at 11,7 of JubilifeVillage_GalaxyHall
+way -
+  Captain Cyllene> The Survey Corps walks the wilds and writes down what it finds. It is not a life for the faint-hearted.
+=== JubilifeVillage_GalaxyHall.Kamado
+from Commander Kamado at 8,4 of JubilifeVillage_GalaxyHall
+way -
+  Commander Kamado> The professor tells me a stranger is waiting at the Wallflower. I will see them when they are brought to me.
+=== JubilifeVillage_GalaxyHall.Laventon
+from Prof. Laventon at 3,5 of JubilifeVillage_GalaxyHall
+way -
+  Prof. Laventon> A complete Pokédex of Hisui, the first ever made! With your help, Lucas, I believe we can do it.
+=== JubilifeVillage_GalaxyHall.Partner
+from {rival} at 5,8 of JubilifeVillage_GalaxyHall
+way -
+  Barry> I joined the Survey Corps last spring. Once you pass your trial, we'll be out in the Fieldlands together!
+=== JubilifeVillage_Wallflower.Beni
+from Beni at 5,3 of JubilifeVillage_Wallflower
+way -
+  Beni> The Wallflower feeds whoever works hard. Galaxy Team or not, an empty belly helps no one.
+=== JubilifeVillage_Wallflower.Cyllene
+from Captain Cyllene at 3,8 of JubilifeVillage_Wallflower
+way -
+  Captain Cyllene> Galaxy Hall. Now, if you please.
+=== JubilifeVillage_Wallflower.Partner
+from {rival} at 7,8 of JubilifeVillage_Wallflower
+way -
+  Barry> Galaxy Hall's just up the street. I'll see you there!
 === KalosLeague_ChampionRoom.Diantha
 from Diantha at 7,4 of KalosLeague_ChampionRoom
 way 0
@@ -13990,6 +14018,19 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HisuiNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  + FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  + FLAG_HISUI_HIDE_BEACH_ROWLET
+  + FLAG_HISUI_HIDE_CYLLENE_HALL
+  + FLAG_HISUI_HIDE_CYLLENE_WALLFLOWER
+  + FLAG_HISUI_HIDE_LAVENTON_HALL
+  + FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  + FLAG_HISUI_HIDE_PARTNER_HALL
+  + FLAG_HISUI_HIDE_PARTNER_WALLFLOWER
+  + FLAG_HISUI_STORY_BEGUN
 === common.HoennAbnormalWeather
 from a trainer with lines of their own
 way -
@@ -22226,6 +22267,32 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== jubilife_village.FrontGate
+from Gate Guard at 47,10 of JubilifeVillage
+from Gate Guard at 48,10 of JubilifeVillage
+way -
+  Gate Guard> Beyond this gate lie the Obsidian Fieldlands. Only members of the Galaxy Team may pass, and you're not one of us. Not yet.
+=== jubilife_village.Laventon
+from Prof. Laventon at 47,58 of JubilifeVillage
+way -
+  Prof. Laventon> The Wallflower is on Canala Avenue, to the west. Wait for me there!
+=== jubilife_village.Pastures
+from Pasture Keeper at 28,46 of JubilifeVillage
+way -
+  Pasture Keeper> These are the pastures. Leave any Pokémon you can't carry with me, and I'll see that they eat well and sleep warm.
+  * open Pc
+=== jubilife_village.Welcome
+from the trigger at 46,60 of JubilifeVillage
+way -
+  Prof. Laventon> Here we are: Jubilife Village, home of the Galaxy Team. When the Team first came ashore there was nothing here but grass and wind.
+  Prof. Laventon> I must tell the Commander about you before anyone else does. A stranger who fell out of the sky will take some explaining!
+  Prof. Laventon> Would you wait for me at the Wallflower? It's on Canala Avenue, down the west side of the village. I shan't be long!
+  * scene jubilife_village.The professor at the south gate
+  * endscene
+  + FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  = VAR_HISUI_STORY 0 -> 4
+  = VAR_OBJECTIVE 0 -> 904
+  + seen jubilife_village.The professor at the south gate
 === kalae_bay.ScanHorsea
 from Horsea at 434,114 of Melemele
 way 0
@@ -28563,6 +28630,70 @@ way 0
 way 1, from answer 1
   * wildbattle Zapdos 50 Lost
   + seen power_plant.Zapdos at the Power Plant
+=== prelude_beach.Cyndaquil
+from Cyndaquil at 59,74 of JubilifeVillage
+way -
+  > The flames on Cyndaquil's back flickered low... and it trotted back to the professor's satchel.
+  * cry Cyndaquil
+  + FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Laventon
+from Prof. Laventon at 51,77 of JubilifeVillage
+way -
+  Prof. Laventon> Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?
+  Prof. Laventon> I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path.
+  Prof. Laventon> Lucas, is it? What a curious name. And what curious clothes! Wherever have you come from?
+  Prof. Laventon> ...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth.
+  Prof. Laventon> Oh, no! My satchel! Come back, you three!
+  Prof. Laventon> I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?
+  Prof. Laventon> Speak to each one gently. They'll come to someone who means them no harm.
+  * scene prelude_beach.The professor on the beach
+  * emote Prof. Laventon Exclaim
+  * cry Rowlet
+  * endscene
+  = VAR_HISUI_STORY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 901
+  + seen prelude_beach.The professor on the beach
+=== prelude_beach.Meeting
+from the trigger at 46,67 of JubilifeVillage
+way -
+  Prof. Laventon> Hold on there! Wait a moment!
+  Prof. Laventon> Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?
+  Prof. Laventon> I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path.
+  Prof. Laventon> Lucas, is it? What a curious name. And what curious clothes! Wherever have you come from?
+  Prof. Laventon> ...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth.
+  Prof. Laventon> Oh, no! My satchel! Come back, you three!
+  Prof. Laventon> I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?
+  Prof. Laventon> Speak to each one gently. They'll come to someone who means them no harm.
+  * scene prelude_beach.The professor on the beach
+  * emote Prof. Laventon Exclaim
+  * cry Rowlet
+  * endscene
+  = VAR_HISUI_STORY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 901
+  + seen prelude_beach.The professor on the beach
+=== prelude_beach.NotYet
+from the trigger at 46,67 of JubilifeVillage
+from the trigger at 46,67 of JubilifeVillage
+way -
+=== prelude_beach.Oshawott
+from Oshawott at 55,80 of JubilifeVillage
+way -
+  > Oshawott stopped splashing about in the shallows... and waddled back to the professor's satchel.
+  * cry Oshawott
+  + FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Rowlet
+from Rowlet at 36,72 of JubilifeVillage
+way -
+  > Rowlet blinked its big round eyes... and fluttered back to the professor's satchel.
+  * cry Rowlet
+  + FLAG_HISUI_HIDE_BEACH_ROWLET
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Stone
+from the tile read at 48,76 of JubilifeVillage
+way -
+  > A smooth grey stone, warm to the touch. The air above it shimmers faintly.
 === pwt.PlasmaAtThePier
 from the trigger at 196,476 of Unova
 way -
