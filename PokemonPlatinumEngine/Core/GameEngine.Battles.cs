@@ -284,7 +284,7 @@ public partial class GameEngine
         Night = GameClock.IsNight,
         HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(FieldWeatherHere()),
-        Badges = flow.Story.BadgeCount(Here.Id),
+        Badges = flow.Story.BadgeCount(RulesHere.Id),
         Money = flow.Money,
         Player = PlayerMark,
         // The Bug-Catching Contest throws its Sport Balls and nothing else (plan 15 · E5)
@@ -472,7 +472,8 @@ public partial class GameEngine
     /// </summary>
     private LevelMapping? CrossedLevels()
     {
-        var here = Here;
+        // At the hub, the furthest finished region's (plan 41 · EG1)
+        var here = RulesHere;
         return string.Equals(here.Id, flow.BeganIn, StringComparison.OrdinalIgnoreCase) ? null : here.Levels;
     }
 
@@ -490,8 +491,8 @@ public partial class GameEngine
     internal int? CurrentLevelCap()
     {
         bool crossed = CrossedLevels() != null;
-        var run = LevelCaps.For(flow.Run, Here.Id, flow.Story, crossed);
-        return crossed ? LevelCaps.Lower(run, LevelCaps.Ceiling(Here.Id, flow.Story)) : run;
+        var run = LevelCaps.For(flow.Run, RulesHere.Id, flow.Story, crossed);
+        return crossed ? LevelCaps.Lower(run, LevelCaps.Ceiling(RulesHere.Id, flow.Story)) : run;
     }
 
     /// <summary>Whether the region the player stands in was crossed into, so its foes give half as much EXP again (plan 18 · W4b-3).</summary>

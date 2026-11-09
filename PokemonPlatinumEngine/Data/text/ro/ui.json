@@ -741,6 +741,7 @@
     "ready": "Felicitări, Campion al regiunii {from}! Acest {vessel} spre {to} e gata de plecare.",
     "welcome": "Pokémonii tăi sunt bineveniți la bord, toți până la unul. Îmbarcarea!",
     "harbour": "Bine ai venit, Campion al regiunii {from}! Acest {vessel} merge mai departe și înapoi în orice regiune ai fost.",
+    "hubHarbour": "Bine ai venit la Hub! Acest {vessel} merge în orice regiune ai fost.",
     "whereTo": "Unde ai vrea să mergi?",
     "otherRegions": "ALTE REGIUNI",
     "stay": "RĂMÂN"

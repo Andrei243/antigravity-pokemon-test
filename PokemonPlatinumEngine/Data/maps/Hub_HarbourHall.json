@@ -1,0 +1,126 @@
+{
+  "name": "Hub_HarbourHall",
+  "displayName": "Harbour Hall",
+  "bgmTrack": "hub/town",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 9,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "##....#....##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 8,
+      "targetMap": "Hub",
+      "targetX": 42,
+      "targetY": 39,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Harbourmaster",
+      "npcType": "hub_harbourmaster",
+      "x": 3,
+      "y": 3,
+      "facing": "Down",
+      "isTransportAttendant": true
+    },
+    {
+      "id": "guide",
+      "name": "Guide",
+      "npcType": "hub_guide",
+      "x": 9,
+      "y": 3,
+      "facing": "Down",
+      "script": "FacilityGuide"
+    },
+    {
+      "id": "traveller",
+      "name": "Traveller",
+      "npcType": "gentleman",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Every ship in this harbour flies a different flag. I like to guess where each one has come from."
+      ],
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

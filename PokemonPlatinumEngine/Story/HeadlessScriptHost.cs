@@ -975,7 +975,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// </summary>
     private void Travel(NPC? subject)
     {
-        if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) return;
+        if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.HarbourLinkOf(here.Id) is not { } link) return;
         string? who = subject != null ? Named(Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name)) : null;
         Talks++;
         // A harbour with ways back as well as on (plan 18 · W8): 3, and common.Crossing asks where

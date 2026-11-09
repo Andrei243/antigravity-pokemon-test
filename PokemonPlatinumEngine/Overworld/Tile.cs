@@ -364,7 +364,10 @@ public enum Architecture
     Hisuian,
     // Galar (plan 33 · GL1): built on the open world's engine at metre scale, a row of the style guide's "Buildings" first
     /// <summary>Grey field stone under dark slate gable roofs with a chimney and flower boxes: the farming village and the little station town of the far south (Postwick, Wedgehurst).</summary>
-    Galar
+    Galar,
+    // The hub (plan 41 · EG1): drawn by hand, a row of the style guide's "Buildings" first
+    /// <summary>Warm pale stone under harbour-blue gable roofs with shutters and flower boxes: the harbour town between the regions (the hub).</summary>
+    Crossroads
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

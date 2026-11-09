@@ -254,7 +254,7 @@ public partial class GameEngine
 
     /// <summary>The field moves a wild helper does now (plan 12 · Q18), worked out afresh and never stored.</summary>
     public IReadOnlyCollection<FieldMove> GrantedMoves =>
-        FieldHelp.Granted(Settings.FieldHelpers, Ruleset.Current.Preset, flow.Story, flow.Bag, Here.Id);
+        FieldHelp.Granted(Settings.FieldHelpers, Ruleset.Current.Preset, flow.Story, flow.Bag, RulesHere.Id);
 
     /// <summary>
     /// The region the player stands in (plan 18 · W1): the one that lists the map they are on, the chain's first
@@ -262,6 +262,19 @@ public partial class GameEngine
     /// and handed to the screens, never read from a static.
     /// </summary>
     public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(flow.Map.Name) : null) ?? RegionDatabase.First;
+
+    /// <summary>
+    /// The region whose rules hold underfoot (plan 41 · EG1): <see cref="Here"/> everywhere but in a side region with none
+    /// of its own (the hub, <see cref="Region.BorrowsRules"/>), where it is the furthest finished region of the chain
+    /// (<see cref="RematchLevels.Furthest"/>). The battle's Badges (obedience and the money lost), the Marts' stock, the
+    /// field helpers, the levels met and the cap ask this, so a traded Pokémon obeys at the hub as where the player last
+    /// won. <b>A new reader of the region's Badges, levels or cap asks this, never <see cref="Here"/>.</b>
+    /// </summary>
+    public Region RulesHere => RulesOf(Here, flow.Story);
+
+    /// <summary>The region whose rules hold in <paramref name="here"/> for a story (<see cref="RulesHere"/>), GPU-free and without a game.</summary>
+    public static Region RulesOf(Region here, StoryState story) =>
+        here.BorrowsRules && RematchLevels.Furthest(story) is { } furthest ? furthest : here;
 
     /// <summary>
     /// How the player moves where they stand (plan 30 · FM1): the region's record (<see cref="Region.Movement"/>), the
@@ -2929,10 +2942,11 @@ public partial class GameEngine
     /// </summary>
     private List<CardRegion> CardRegions()
     {
-        var here = Here;
+        // The hub has no page of its own: there the card stands on the region whose rules it borrows (plan 41 · EG1)
+        var here = RulesHere;
         return RegionDatabase.All
-            .Where(r => r == here || flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
-                || r.Dexes.Any(flow.Pokedex.Entered.Contains))
+            .Where(r => r == here || !r.BorrowsRules && ( flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
+                || r.Dexes.Any(flow.Pokedex.Entered.Contains)))
             .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
             {
                 // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
@@ -2950,7 +2964,7 @@ public partial class GameEngine
         int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(flow.Pokedex.CaughtSpecies), TowerBestStreak, IsContestMaster, 0);
         var regions = CardRegions();
         return new TrainerCardInfo(playerName, flow.TrainerId, flow.Money, flow.Pokedex.SeenCount, flow.Pokedex.CaughtCount, flow.PlayTime,
-            regions.First(r => r.Id == Here.Id), flow.AdventureStarted)
+            regions.First(r => r.Id == RulesHere.Id), flow.AdventureStarted)
         {
             Regions = regions,
             Run = flow.Run.IsNormal ? null : flow.Run,

@@ -1,0 +1,53 @@
+{
+  // The hub (plan 41 · EG1): drawn by hand, our words. A harbour town of our own between the regions, opened by the second
+  // Hall of Fame: every finished region's harbour sails here, and the harbour hall's attendant sails back to every region
+  // entered. Round the avenue stand the Pokémon Center, the plaza's hall (plan 41 · EG3), the hall of Champions (EG2),
+  // Looker's office (EG7) and the circuit's arena (EG4), their doors locked until their sessions; the weekly board (EG6)
+  // will stand by the avenue's west sign, and the islet out in the sea is shut by its rocks until EG9. No wild Pokémon
+  // live here, and the rules underfoot are the furthest finished region's (GameEngine.RulesHere)
+  "area": "hub_town",
+  "bgmTrack": "hub/town",
+  "trees": "Round",
+  "architecture": "Crossroads",
+  "doors": [
+    { "warp": 0, "map": "Hub_PokemonCenter", "x": 8, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "Hub_HarbourHall", "x": 6, "y": 7, "facing": "Up" }
+  ],
+  "locked": [ 2, 3, 4, 5 ],
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "still": true,
+      "dialog": [ "Every harbour that has crowned a Champion sends a boat here now. Some days the quay is a forest of masts!" ]
+    },
+    "traveller": {
+      "name": "Traveller",
+      "npcType": "lady",
+      "dialog": [ "I came over from Hoenn this morning, and tomorrow I'm off to Unova. This town is everybody's halfway house." ]
+    },
+    "veteran": {
+      "name": "Veteran",
+      "npcType": "gentleman",
+      "dialog": [
+        "Nobody here keeps Badges of their own. The town goes by the rules of the furthest place you've been crowned in.",
+        "So a Pokémon that heeds you there heeds you here too. Handy, eh?"
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "npcType": "youngster",
+      "dialog": [ "They say the big halls round here will open one by one. I want to be first through every door!" ]
+    },
+    "worker": {
+      "name": "Worker",
+      "npcType": "worker",
+      "still": true,
+      "dialog": [ "This hall's going to be a covered market, stalls from every region under one roof. It's not ready yet, though." ]
+    }
+  },
+  "signs": {
+    "TownSign": "The Hub\nWhere the ways between the regions meet",
+    "BoardSign": "Notice board\nNothing is posted here yet."
+  }
+}

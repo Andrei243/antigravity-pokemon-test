@@ -668,6 +668,10 @@ public class SaveData
     public (int Mask, int Of) BadgesHere()
     {
         string region = RegionId;
+        // A save made at the hub shows the Badges of the region whose rules it borrows (plan 41 · EG1)
+        if (RegionDatabase.Get(region) is { BorrowsRules: true }
+            && RegionDatabase.All.LastOrDefault(r => !r.Side && StoryFlags.Contains(r.StoryCompleteFlag)) is { } furthest)
+            region = furthest.Id;
         int mask = RegionalBadges().FirstOrDefault(b => string.Equals(b.Key, region, StringComparison.OrdinalIgnoreCase)).Value;
         return (mask, RegionDatabase.Get(region)?.BadgeNames.Count ?? 0);
     }

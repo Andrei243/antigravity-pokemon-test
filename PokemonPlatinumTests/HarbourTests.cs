@@ -67,8 +67,8 @@ public class HarbourTests
             story.EnterRegion(r.Id);
             story.CompleteRegion(r.Id);
         }
-        // (no harbour sails to a side region, plan 23 · Z17: Hisui is entered by its own way alone)
-        var built = RegionDatabase.All.Where(r => r.IsBuilt && !r.Side).Select(r => r.Id).ToList();
+        // (no harbour sails to a branch, plan 23 · Z17: Hisui is entered by its own way alone; the hub, plan 41 · EG1, is sailed to)
+        var built = RegionDatabase.All.Where(r => r.IsBuilt && (!r.Side || r.IsHub)).Select(r => r.Id).ToList();
         Assert.NotEmpty(Harbours);
         foreach (var region in Harbours)
         {

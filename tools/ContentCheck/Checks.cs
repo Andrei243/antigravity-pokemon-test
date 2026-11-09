@@ -61,6 +61,8 @@ public static class Checks
             // landmark of the region's map, the field moves in force, the Pokédex and the Running Shoes, the
             // Underground Man's missions, the Villa's furniture, the Contest Hall visited, the Cycling Road's gates
             written.UnionWith(RegionDatabase.All.Select(r => r.StoryCompleteFlag));
+            // ...and a region first stood in (plan 18 · W8, StoryState.EnterRegion: the hub's guides wait for HubEntered)
+            written.UnionWith(RegionDatabase.All.Select(r => r.EnteredFlag));
             written.UnionWith(SpawnLocations.All.Select(s => s.ArrivalFlag));
             written.UnionWith(SpawnLocations.All.Select(SpawnLocations.FlyFlag));
             written.UnionWith(new[] { FieldMoveRules.StrengthFlag, FieldMoveRules.FlashFlag, FieldMoveRules.DefogFlag, StoryState.PokedexFlag, StoryState.RunningShoesFlag });

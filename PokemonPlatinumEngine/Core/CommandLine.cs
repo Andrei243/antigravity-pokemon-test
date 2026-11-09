@@ -154,7 +154,9 @@ public static class CommandLine
         new("--region", "name", $"New games start in this region instead of Sinnoh, for testing: {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}.",
             (o, v) => o with { Region = v })
         {
-            Check = v => RegionDatabase.Get(v) == null ? $"There is no region '{v}'. The regions are {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}." : null
+            Check = v => RegionDatabase.Get(v) is not { } region ? $"There is no region '{v}'. The regions are {string.Join(", ", RegionDatabase.All.Select(r => r.Id))}." :
+                // A side region with no story of its own (the hub, plan 41 · EG1) is no place for a game to begin
+                region.BorrowsRules ? $"No new game begins in {region.Id}: it is reached from the harbours once two regions' Halls of Fame are entered." : null
         },
         new("--windowed", null, "Open in a window this time, whatever the options say.", (o, _) => o with { Windowed = true }),
         new("--fullscreen", null, "Open full screen this time, whatever the options say.", (o, _) => o with { Fullscreen = true }),

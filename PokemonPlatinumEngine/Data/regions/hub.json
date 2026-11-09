@@ -1,0 +1,18 @@
+{
+  "id": "Hub",
+  "folder": "hub",
+  "models": "hub",
+  // The hub (plan 41 · EG1, decisions 1 to 3): a small region of our own off the chain, drawn by hand
+  // (tools/MapDraw/hub). "Hub" is the plan's working word until the user names it
+  "map": "Hub",
+  // It opens with the second Hall of Fame (RegionDatabase.HubOpen) and is reached from every finished region's harbour
+  // and by Fly once entered. It has no story, Pokédex, Badges, levels or cap of its own: the rules underfoot are the
+  // furthest finished region's (GameEngine.RulesHere), and no new game begins here (--region refuses it)
+  "hasStory": false,
+  "badges": [],
+  "gates": {},
+  // Where Fly lands and a white-out wakes: before the Pokémon Center
+  "spawns": [
+    { "id": 1, "area": "hub_town", "x": 11, "y": 15, "room": "Hub_PokemonCenter" }
+  ]
+}

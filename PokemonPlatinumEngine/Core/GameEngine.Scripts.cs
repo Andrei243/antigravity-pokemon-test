@@ -1256,7 +1256,7 @@ public partial class GameEngine
                     game.flow.State = GameState.Shop;
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
                     game.flow.ShopScreen.Open(game.flow.Map.ShownNameAt(game.flow.Player.GridX, game.flow.Player.GridY),
-                        MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.Here.Id)));
+                        MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.RulesHere.Id)));
                     // Easy takes a quarter off what a counter asks (plan 13 · V2)
                     game.flow.ShopScreen.Difficulty = game.flow.Run.Difficulty;
                     break;
@@ -1393,7 +1393,7 @@ public partial class GameEngine
                     // The way to the next region, where this map has one: the attendant says how things stand, and
                     // the script hears 2 when the story of this region is done and the vessel may leave (plan 18 · W5:
                     // common.Crossing asks, and crosses with "travel go"), 1 when it may not
-                    if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) break;
+                    if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.HarbourLinkOf(here.Id) is not { } link) break;
                     string who = subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name);
                     // A harbour with ways back as well as on (plan 18 · W8): 3, and common.Crossing asks where
                     var ways = RegionDatabase.LinksFrom(here, game.flow.Story);

@@ -4086,3 +4086,20 @@ label Next40
   if not flag FLAG_JOHTO_CELEBI_MET return
   if not flag FLAG_JOHTO_CAUGHT_CELEBI setflag FLAG_JOHTO_CELEBI_BEATEN
   return
+# The hub's guides at the battle facilities (plan 41 · EG1): one of ours beside the door of Sinnoh's Battle Frontier, of
+# Hoenn's Battle Frontier island and of Unova's Gear Station, shown once the hub has been entered (HubEntered), who
+# crosses the player back to the hub's harbour hall (`travel to`, GameEngine.CrossTo), beside the guide there.
+script HubGuide
+  face self player
+  say "I guide Trainers between the great battle facilities and the Hub."
+  ask "Shall I take you back to the Hub?"
+  if no goto HubGuideStay
+  say "Very good. Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide back to the Hub..."
+  travel to "Hub_HarbourHall" 9 4 up
+  fade in 0.8
+  end
+label HubGuideStay
+  say "Whenever you are ready. I will be right here."
+  end

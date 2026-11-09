@@ -38,6 +38,12 @@
     "frontier_man_4": { "name": "Man", "dialog": [ "Those three over there were famous Trainers once. One defeat at the Dome, and now they only cheer for the one who beat them." ] },
     "pokefan_f": { "name": "Pokéfan", "dialog": [ "I came to see the Dome's champion. Isn't he wonderful? He looked my way, I'm sure of it!" ] }
   },
+  // The hub's guide (plan 41 · EG1), a person of ours on the quay beside the ferry's: shown once the hub has been entered,
+  // she takes the player back to its harbour hall (common.HubGuide)
+  "npcs": [
+    { "id": "battle_frontier_outside_west.HubGuide", "name": "Guide", "npcType": "hub_guide", "x": 21, "y": 67, "facing": "Left",
+      "script": "HubGuide", "shownBy": "HubEntered" }
+  ],
   "signs": {
     "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": "BATTLE DOME\nTournaments for the strongest. Held at Sinnoh's Frontier.",
     "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": "BATTLE PIKE\nThree paths to choose from. Held at Sinnoh's Frontier.",

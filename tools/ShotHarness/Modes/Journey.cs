@@ -9,6 +9,7 @@ partial class Harness
     {
         string? from = Environment.GetEnvironmentVariable("JOURNEY_FROM");
         bool Wants(string part) => string.IsNullOrEmpty(from) || string.Equals(from, part, StringComparison.OrdinalIgnoreCase);
+        if (Wants("hub")) JourneyHub();
         if (Wants("rematches")) JourneyRematches();
     }
 }

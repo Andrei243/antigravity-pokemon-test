@@ -184,6 +184,8 @@ internal static partial class BuildingArt
             // Galar (plan 33 · GL1): grey field stone under dark slate gables, a chimney and flower boxes, the cottages of
             // the far south, at the open world's metre scale
             Architecture.Galar => Pitched(WallKind.Stone, Rgb(70, 76, 92)) with { Chimney = true, FlowerBoxes = true },
+            // The hub (plan 41 · EG1): warm pale stone under harbour-blue gables with shutters and flower boxes
+            Architecture.Crossroads => Pitched(WallKind.PaleStone, Rgb(52, 98, 156)) with { Shutters = true, FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

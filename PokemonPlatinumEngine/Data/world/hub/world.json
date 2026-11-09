@@ -1,0 +1,17 @@
+{
+  // The hub (plan 41 · EG1): a small region of our own off the chain, the harbour town between the regions. It has no
+  // decompilation and no original: drawn by hand on the tile grid (tools/MapDraw/hub), and `dotnet run --project
+  // tools/MapDraw -- hub` writes the chunks, the matrix and the habitats here from the drawings. The area file, the
+  // overlay, the Town Map and this index are written by hand; the rooms are hand-made map files (Data/maps), reached by
+  // the overlay's doors.
+  "region": "Hub",
+  // The buildings are drawn into the tiles, each found at its door (WorldMapBuilder.BuildingsAtDoors), as Kalos's are
+  "buildingsAtDoors": true,
+  "maps": [
+    // The town, two chunks by two: the overworld, where Fly and Teleport land
+    { "name": "Hub", "matrix": 0, "trees": "Round" }
+  ],
+  "areas": [
+    "hub_town"
+  ]
+}

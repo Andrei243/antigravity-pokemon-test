@@ -1,0 +1,23 @@
+// The Town Map of the hub (plan 41 · EG1; docs/data-files.md, "The region map"): a cell for each of its four chunks, the
+// town on the upper two and the sea with the islet below. Every word is ours. Fly lands before the Pokémon Center once
+// the town has been come to (the first arrival's flag, set by the area's own "arrival").
+{
+  "map": "Hub",
+  "columns": 2,
+  "rows": 2,
+  "view": [ 0, 0, 2, 2 ],
+  "cursor": [ 0, 0, 1, 1 ],
+  "start": [ 0, 0 ],
+  "hidden": [],
+  "areas": [
+    { "key": "hub_town", "flag": "FLAG_FIRST_ARRIVAL_HUB_TOWN", "arrival": [ "hub_town" ], "about": "A harbour town of its own between the regions, where every crowned Champion's ship calls." }
+  ],
+  "landmarks": [],
+  "blocks": [
+    { "x": 0, "y": 0, "kind": "Town", "name": "The Hub", "area": "hub_town" },
+    { "x": 1, "y": 0, "kind": "Town", "name": "The Hub", "area": "hub_town" }
+  ],
+  "fly": [
+    { "spawn": 1, "cells": "0,0 1,0" }
+  ]
+}

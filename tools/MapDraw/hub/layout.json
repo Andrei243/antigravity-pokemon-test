@@ -1,0 +1,18 @@
+{
+  // The hub (plan 41 · EG1): a small region of our own off the chain, the harbour town between the regions, drawn by hand
+  // as Kalos, Alola and Hisui are. One town of two chunks by two: the Pokémon Center, the plaza's hall (EG3), the hall of
+  // Champions (EG2), Looker's office (EG7) and the circuit's arena (EG4) round the avenue and its two cross streets, the
+  // harbour hall on the quay, the place of the weekly board (EG6) by the avenue, and out in the sea the islet, shut by its
+  // rocks until EG9. Every drawing is ours.
+  // After changing a drawing run `dotnet run --project tools/MapDraw -- hub` (`--check` says whether the world files are
+  // what the drawings give).
+  "region": "Hub",
+  "width": 2,
+  "height": 2,
+  "pieces": [
+    { "file": "hub_town.txt", "x": 0, "z": 0 }
+  ],
+  "areas": [
+    { "key": "hub_town", "x": 0, "z": 0, "width": 64, "depth": 64 }
+  ]
+}

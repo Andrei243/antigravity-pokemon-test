@@ -1,0 +1,50 @@
+# The Hub (plan 41 · EG1): the harbour town between all the regions, where every finished region's ships call.
+# A welcoming, gently grand flute tune in G over a nylon guitar's rocking arpeggio, a warm pad and a light
+# brushed step like small waves against the quay, a clarinet joining in the second half as another ship comes in;
+# at night an oboe and a harp. Original composition for this game, in the modern sound.
+title The Hub
+tempo 100
+meter 4/4
+reverb 0.32
+nighttempo 0.92
+room chamber 1.4
+
+track lead flute night=oboe vol=0.66 pan=0 rev=0.3
+  o5 g2. r4 | L o5 g4 b8 a8 g4 d4 | o5 f+4 a4 o6 d4 o5 a4 | o5 g4 e8 f+8 g4 b4 | o6 c4 o5 b8 a8 g4 e4 |
+  o5 g4 b8 o6 d8 o5 b4 g4 | o5 b4 a8 g8 f+4 d4 | o5 e4 g8 a8 o6 c2 | o5 a4 f+4 d2 |
+  o5 b4 o6 d4 g4 d4 | o6 e4 d8 c8 o5 b4 g4 | o6 c4 o5 b8 a8 g4 a4 | o5 f+4 a4 o6 d2 |
+  o6 c4 o5 b8 a8 g4 e4 | o5 f+4 a8 o6 c8 o5 b4 a4 | o5 g4 b4 o6 d4 o5 b4 | o5 a4 f+4 a4 b4 |
+
+track answer clarinet night=oboe vol=0.34 pan=0.35 rev=0.36
+  r1 | L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 d1 | o5 e1 | o5 e1 | o5 f+1 |
+  o5 e1 | o5 f+1 | o5 d1 | o5 c+1 |
+
+track guitar nylonguitar night=harp vol=0.46 pan=-0.3 rev=0.28
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+  L o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o3 b8 o4 d8 o4 f+8 o4 d8 o3 b8 o4 d8 o4 f+8 o4 d8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 |
+  o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 e8 o4 g8 o4 b8 o4 g8 o4 e8 o4 g8 o4 b8 o4 g8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 |
+  o3 a8 o4 c8 o4 e8 o4 c8 o3 a8 o4 c8 o4 e8 o4 c8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o4 f+8 o4 a8 o4 f+8 |
+
+track pad orchestra night=warmpad vol=0.15 pan=0.2 rev=0.4 width=0.9
+  o4 (g b > d)1 |
+  L o4 (g b > d)1 | o4 (d f+ a)1 | o4 (e g b)1 | o4 (c e g)1 |
+  o4 (g b > d)1 | o4 (b > d f+)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (g b > d)1 | o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (a > c e)1 | o4 (d f+ a)1 | o4 (g b > d)1 | o4 (d f+ a)1 |
+
+track bass contrabass vol=0.50 rev=0.1
+  o3 g2 d2 |
+  L o3 g2 d2 | o3 d2 a2 | o3 e2 b2 | o3 c2 g2 |
+  o3 g2 d2 | o3 b2 f+2 | o3 c2 g2 | o3 d2 a2 |
+  o3 g2 d2 | o3 e2 b2 | o3 c2 g2 | o3 d2 a2 |
+  o3 a2 e2 | o3 d2 a2 | o3 g2 d2 | o3 d2 a2 |
+
+track step kit vol=0.22 pan=0.1 rev=0.12
+  v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 |
+  L v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 |
+  v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 |
+  v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 |
+  v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 | v56 b4 v34 k8 k8 v46 x4 v34 k8 k8 |
