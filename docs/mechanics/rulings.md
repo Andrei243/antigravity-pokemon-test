@@ -10334,6 +10334,58 @@ In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are pub
 - **No monorail.** Coumarine's port is the city's last rows on one level (the ruling of "Kalos's port"), so there is no
   hill for a monorail to climb; nothing is built for it.
 
+## Kalos finished: the Friend Safari, the League's second round, Parfum Palace, the bicycle shop and the places' songs (2026-11-09, plan 23)
+
+In our own words, drawn with `tools/MapDraw`, on X and Y's beats as they are publicly described. Kalos's movement stays
+`Eight`.
+
+- **The Friend Safari.** X and Y's stands in Kiloude City and gives each friend registered a set of grounds of one type
+  holding two Pokémon, a third once the friend is online, drawn from the friend's code. This game has no friend list
+  (plan 07 · O7), so plan 23's Kalos decision holds: **every Trainer has three grounds of their own, drawn from their own
+  trainer number** (`Overworld/FriendSafari.cs`: three types told apart and three species of each, by `SplitMix` over the
+  number and a salt of the safari's own, never `Dice`, worked out whenever asked and never saved), the same however often
+  the gate is come to. Each type's species are a table of ours, six to a type, each of the type under the modern rules and
+  none legendary (`FriendSafari.SpeciesOfType`), and all three of a grounds' species are met in its grass alike, at level 30
+  as X and Y's are (Kalos's own levels, mapped as any of the region's in a region crossed into). X and Y's two perfect
+  IVs are not kept: a table's slot gives none. The gate (`KiloudeCity_FriendSafari`, Kiloude's door 5, a building of ours
+  south of the street, east of the pier) opens with Kalos's Hall of Fame; its guide names the three types
+  (`{friendsafari:1}` to `{friendsafari:3}`) and sends the player to the one chosen (`VAR_KALOS_FRIEND_SAFARI` 0 to 2) on
+  one map of grounds (`KiloudeCity_FriendSafariGrounds`, a meadow walled by trees with four patches of tall grass), whose
+  own file keeps no table: the engine lays the chosen grounds' three species as the player arrives
+  (`GameEngine.LayFriendSafari`, from `ArriveOnMap`). The grounds are a place of nobody's habitats and `SpeciesSources`
+  counts nothing there, since what lives in them is the Trainer's own. The walk of the whole game speaks to someone behind
+  a counter across it now (`WorldWalk`), as the game does, which is how it finds the guide's way to the grounds.
+- **The League's second round.** X and Y's Elite Four and Champion fight the same teams every time. Ours, for plan 41 ·
+  EG5's parity: once Kalos's Hall of Fame is entered (the Hall of Fame's scene puts the doors back for a second
+  challenge), Malva, Siebold, Wikstrom and Drasna each fight a team of five of ours at 71 to 74 and Diantha six at 73 to
+  76 with her Gardevoir's stone (`kalos_<who>_rematch` in Kalos's `trainers.json`), with lines of their own. The Leaders'
+  rematch teams are the Battle Château's (plan 23, Kalos's last places), renamed `kalos_<who>_rematch` so that they are
+  met as every rematch is (`TrainerDatabase.IsRematchTeam`; lifted by `RematchLevels` once a region past Kalos is
+  finished), and Korrina's tower battle and Malva's of Looker's episode answer to the same rematch teams.
+  `RematchParityTests` holds Kalos's rows and no longer names it as owing them.
+- **Parfum Palace.** X and Y's palace has its owner, his Furfrou and a garden maze. Ours is the palace's hall
+  (`KalosRoute6_ParfumPalace`, a `BuildingKind.Mansion` front drawn at the head of Route 6 behind its railings, the gate in
+  them open once the butler has lent the flute: `FLAG_KALOS_RECEIVED_HM01`, set with it), where the owner's Furfrou has
+  run off from its grooming into the east wing: found, it trots back (`FLAG_KALOS_PALACE_FURFROU_FOUND`) and its master
+  gives a Sun Stone once (`FLAG_KALOS_PALACE_GIFT`, a gift of ours). The maze and the fireworks are not drawn.
+- **The bicycle shop.** X and Y's Cyllage shop gives a bicycle of the colour chosen. Ours waits for its parts until the
+  power is back and Lumiose's roads open (`VAR_KALOS_LUMIOSE_ROADS` 2, the Power Plant's), then gives a Bicycle to a bag
+  without one (plan 23's rule for a region's key items: a Champion of an earlier region already rides one). No colours.
+- **The places' own songs** (plan 31's instruments, MU3's way; `docs/plans/finished/31-later-music.md`): eleven songs of ours
+  in `Data/music/kalos/` in the modern sound, `lumiose`, `seaside` (Ambrette, Cyllage, Shalour, Coumarine and the bays),
+  `old_town` (Camphrier, Geosenge, Dendemille, Route 10 and the palace), `laverre` (Laverre, Anistar, Route 14),
+  `snowbelle` (Snowbelle, Route 17), `route_late` (Routes 12, 13, 15, 16, 18, 19 and 21, and the Friend Safari's grounds),
+  `cave` (every cave), `victory_road`, `team_flare` (its four rooms), `pokemon_village` (the village and Route 20) and
+  `kiloude`, and Kalos's own Team Flare themes as the region's `eye_galactic`, `battle_galactic` and
+  `battle_galactic_boss` (the sound map's Team Flare classes already ask Galactic's roles, and `MusicDirector` looks in the
+  region's folder first). Routes 1 to 9 and 11, Couriway Town and the League keep the songs they had.
+- **What is left of Kalos**, each for a reason: the Friend Safari's other friends (plan 07 · O7's friend list); the
+  palace's hedge maze and its fireworks; X and Y's Pokémon-Amie and Super Training, which are plan 10's camp and plan 36's
+  drills where they are built, and no Kalos place of their own; Lumiose's Wi-Fi and Global Link rooms (plan 07, the
+  online plan, which no session deploys); the castle's own scene inside (its keeper meets the player in the street, Z2);
+  the circuit's row, an agency case and a leader in the gathering (plan 41 · EG4, EG7 to EG9, not built for any region);
+  `profile`'s Lumiose line (a quiet run on the Windows machine); and the skater's pose (plan 30's grown kit).
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).

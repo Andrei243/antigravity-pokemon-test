@@ -107,9 +107,7 @@
       "x": 7,
       "y": 6,
       "facing": "Down",
-      "dialog": [
-        "Welcome! I am afraid the shelves are empty. The parts for my bicycles are stuck in Lumiose until the roads open."
-      ]
+      "script": "Owner"
     }
   ],
   "wildEncounters": []

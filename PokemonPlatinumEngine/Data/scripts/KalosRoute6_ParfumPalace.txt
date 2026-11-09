@@ -1,0 +1,49 @@
+# Parfum Palace's hall, at the head of Route 6 (plan 23, Kalos finished; docs/mechanics/rulings.md, "Parfum Palace,
+# the bicycle shop and the rest"). The lines are our own, on X and Y's beat as it is publicly described: the palace's
+# owner, fond of his Furfrou, which has run off from its grooming. Its gate opens once the butler has lent the player the
+# palace's flute (FLAG_KALOS_RECEIVED_HM01, set with it). Found in the east wing, the Furfrou trots back to its master
+# (FLAG_KALOS_PALACE_FURFROU_FOUND), who gives a Sun Stone once (FLAG_KALOS_PALACE_GIFT).
+
+
+script Owner
+  face owner player
+  speaker "Palace Owner"
+  if flag FLAG_KALOS_PALACE_GIFT goto Done
+  if flag FLAG_KALOS_PALACE_FURFROU_FOUND goto Thanks
+  say "Welcome to my palace! You are the Trainer my butler lent the flute to, I believe. Do look around."
+  say "Though I confess I am distracted. My Furfrou slipped away halfway through its grooming. Have you seen it?"
+  end
+label Thanks
+  scene "The palace's thanks"
+  say "My Furfrou, home again and half groomed! You found it in the east wing? You have my deepest thanks."
+  say "Please, accept this. It came from the palace's own sun garden, and it is far more use to a Trainer than to me."
+  give "Sun Stone"
+  setflag FLAG_KALOS_PALACE_GIFT
+  endscene
+  end
+label Done
+  say "My Furfrou has not left my side since. I think it rather enjoyed its adventure."
+  end
+
+
+script Maid
+  face maid player
+  speaker "Maid"
+  say "The master spends more on his Furfrou's grooming than on the whole palace's dusting. Not that I'm complaining."
+  end
+
+
+script FurfrouAway
+  face furfrou_away player
+  cry "Furfrou"
+  say "Furfrou is hiding behind the curtains, its coat only half trimmed. It gives you a guilty look."
+  say "It seems happy to be found, and trots off toward its master."
+  setflag FLAG_KALOS_PALACE_FURFROU_FOUND
+  end
+
+
+script FurfrouHome
+  face furfrou_home player
+  cry "Furfrou"
+  say "Furfrou sits proudly beside its master, waiting for the rest of its grooming."
+  end

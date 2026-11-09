@@ -1,0 +1,209 @@
+{
+  "name": "KalosRoute6_ParfumPalace",
+  "displayName": "Parfum Palace",
+  "bgmTrack": "kalos/old_town",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 21,
+  "height": 14,
+  "ground": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "#___________________#",
+    "##########D##########"
+  ],
+  "solid": [
+    "#####################",
+    "#####################",
+    "#####################",
+    "##.................##",
+    "#...................#",
+    "#......#.....#......#",
+    "#...................#",
+    "#..##...........##..#",
+    "#...................#",
+    "#......#.....#......#",
+    "#...................#",
+    "#...................#",
+    "##.................##",
+    "##########.##########"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 13,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 9
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "Kalos",
+      "targetX": 201,
+      "targetY": 266,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "owner",
+      "name": "Palace Owner",
+      "npcType": "Gentleman",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "script": "Owner"
+    },
+    {
+      "id": "maid",
+      "name": "Maid",
+      "npcType": "maid",
+      "x": 12,
+      "y": 11,
+      "facing": "Left",
+      "script": "Maid"
+    },
+    {
+      "id": "furfrou_away",
+      "name": "Furfrou",
+      "npcType": "Pokemon",
+      "x": 18,
+      "y": 10,
+      "facing": "Left",
+      "script": "FurfrouAway",
+      "hiddenBy": "FLAG_KALOS_PALACE_FURFROU_FOUND",
+      "species": "Furfrou"
+    },
+    {
+      "id": "furfrou_home",
+      "name": "Furfrou",
+      "npcType": "Pokemon",
+      "x": 11,
+      "y": 4,
+      "facing": "Down",
+      "script": "FurfrouHome",
+      "shownBy": "FLAG_KALOS_PALACE_FURFROU_FOUND",
+      "species": "Furfrou"
+    }
+  ],
+  "wildEncounters": []
+}

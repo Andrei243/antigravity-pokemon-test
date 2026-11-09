@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Parfum Palace"
+    ],
+    "text": [
+      "Palatul Parfum"
+    ]
+  },
+  "people": {
+    "owner": {
+      "name": {
+        "en": [
+          "Palace Owner"
+        ],
+        "text": [
+          "Stăpânul palatului"
+        ]
+      }
+    },
+    "maid": {
+      "name": {
+        "en": [
+          "Maid"
+        ],
+        "text": [
+          "Menajera"
+        ]
+      }
+    },
+    "furfrou_away": {
+      "name": {
+        "en": [
+          "Furfrou"
+        ],
+        "text": [
+          "Furfrou"
+        ]
+      }
+    },
+    "furfrou_home": {
+      "name": {
+        "en": [
+          "Furfrou"
+        ],
+        "text": [
+          "Furfrou"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

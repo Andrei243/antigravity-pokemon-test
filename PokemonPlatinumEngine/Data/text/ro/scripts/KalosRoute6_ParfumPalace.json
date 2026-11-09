@@ -1,0 +1,98 @@
+{
+  "Owner": [
+    {
+      "en": [
+        "Palace Owner"
+      ],
+      "text": [
+        "Stăpânul palatului"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to my palace! You are the Trainer my butler lent the flute to, I believe. Do look around."
+      ],
+      "text": [
+        "Bun venit în palatul meu! Tu ești Antrenorul căruia majordomul meu i-a împrumutat flautul, cred. Te rog, privește în jur."
+      ]
+    },
+    {
+      "en": [
+        "Though I confess I am distracted. My Furfrou slipped away halfway through its grooming. Have you seen it?"
+      ],
+      "text": [
+        "Deși mărturisesc că sunt distras. Furfrou-ul meu a fugit la jumătatea toaletării. L-ai văzut cumva?"
+      ]
+    },
+    {
+      "en": [
+        "My Furfrou, home again and half groomed! You found it in the east wing? You have my deepest thanks."
+      ],
+      "text": [
+        "Furfrou-ul meu, din nou acasă și pe jumătate tuns! L-ai găsit în aripa de est? Îți mulțumesc din suflet."
+      ]
+    },
+    {
+      "en": [
+        "Please, accept this. It came from the palace's own sun garden, and it is far more use to a Trainer than to me."
+      ],
+      "text": [
+        "Te rog, primește asta. Vine din grădina însorită a palatului și îi e mult mai de folos unui Antrenor decât mie."
+      ]
+    },
+    {
+      "en": [
+        "My Furfrou has not left my side since. I think it rather enjoyed its adventure."
+      ],
+      "text": [
+        "De atunci Furfrou-ul meu nu s-a mai dezlipit de mine. Cred că aventura i-a plăcut destul de mult."
+      ]
+    }
+  ],
+  "Maid": [
+    {
+      "en": [
+        "Maid"
+      ],
+      "text": [
+        "Menajera"
+      ]
+    },
+    {
+      "en": [
+        "The master spends more on his Furfrou's grooming than on the whole palace's dusting. Not that I'm complaining."
+      ],
+      "text": [
+        "Stăpânul cheltuiește mai mult pe toaleta lui Furfrou decât pe curățenia întregului palat. Nu că m-aș plânge."
+      ]
+    }
+  ],
+  "FurfrouAway": [
+    {
+      "en": [
+        "Furfrou is hiding behind the curtains, its coat only half trimmed. It gives you a guilty look."
+      ],
+      "text": [
+        "Furfrou se ascunde după perdele, cu blana tunsă doar pe jumătate. Te privește cu un aer vinovat."
+      ]
+    },
+    {
+      "en": [
+        "It seems happy to be found, and trots off toward its master."
+      ],
+      "text": [
+        "Pare bucuros că a fost găsit și pornește în trap spre stăpânul lui."
+      ]
+    }
+  ],
+  "FurfrouHome": [
+    {
+      "en": [
+        "Furfrou sits proudly beside its master, waiting for the rest of its grooming."
+      ],
+      "text": [
+        "Furfrou stă mândru lângă stăpânul lui și așteaptă restul toaletării."
+      ]
+    }
+  ]
+}

@@ -8962,6 +8962,10 @@
         "accent": "en-us"
       }
     },
+    "palace_owner": {
+      "note": "first spoken at KalosRoute6_ParfumPalace.txt(10)",
+      "provisional": true
+    },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
       "brief": {
@@ -9743,6 +9747,10 @@
     },
     "shop_girl": {
       "note": "first spoken at join_avenue.txt(76)",
+      "provisional": true
+    },
+    "shop_owner": {
+      "note": "first spoken at CyllageCity_BikeShop.txt(10)",
       "provisional": true
     },
     "shopkeeper": {
@@ -10773,6 +10781,7 @@
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
+    "Palace Owner": "palace_owner",
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
@@ -10867,6 +10876,7 @@
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
     "Shop Girl": "shop_girl",
+    "Shop Owner": "shop_owner",
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Siebold": "siebold",

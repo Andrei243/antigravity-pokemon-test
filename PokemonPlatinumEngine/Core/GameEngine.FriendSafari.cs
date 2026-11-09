@@ -10,7 +10,7 @@ namespace PokemonPlatinumEngine.Core;
 public partial class GameEngine
 {
     /// <summary>The Friend Safari's gate in Kiloude City and its grounds.</summary>
-    public const string FriendSafariGate = "KiloudeCity_FriendSafari", FriendSafariMap = "KiloudeCity_FriendSafariGrounds";
+    public const string FriendSafariGate = FriendSafari.Gate, FriendSafariMap = FriendSafari.Grounds;
 
     /// <summary>Lays the grounds' grass with the chosen grounds' three species.</summary>
     private void LayFriendSafari()

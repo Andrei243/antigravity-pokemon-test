@@ -28,6 +28,9 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "lastplaces") { KalosLastPlaces(); return; }
         // KALOS_FROM=lastspecies: Kalos's last species and Lumiose's restaurants' shots alone (fc50 on, wk600 on, wks400 on)
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "lastspecies") { KalosLastSpecies(); return; }
+        // KALOS_FROM=finished: what finished Kalos alone (wk700 on, wks500 on): the Friend Safari, Parfum Palace, the
+        // bicycle shop and Malva's second round, not part of the whole mode
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "finished") { KalosFinished(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;

@@ -14,7 +14,9 @@
   "running": true,
   "escapeRope": false,
   "fly": false,
-  "warps": [],
+  "warps": [
+    { "x": 201, "z": 265, "to": "KalosRoute6_ParfumPalace", "toWarp": 0 }
+  ],
   "objects": [
     { "id": "hedge_tree", "looks": "cut_tree", "movement": "look_around", "x": 212, "z": 267, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HEDGE_TREE", "script": "" },
     { "id": "hedge_boulder", "looks": "strength_boulder", "movement": "look_around", "x": 190, "z": 266, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },

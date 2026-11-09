@@ -2791,6 +2791,10 @@ from Ramos at 6,4 of CoumarineCity_Gym
 way -
   Ramos> Hoo, a visitor! I'm Ramos. I'm tending my seedlings just now, sprout.
   Ramos> Come back once you've seen the tower up in Shalour. Then we'll have ourselves a proper battle.
+=== CyllageCity_BikeShop.Owner
+from Shop Owner at 7,6 of CyllageCity_BikeShop
+way -
+  Shop Owner> Welcome! I am afraid the shelves are empty. The parts for my bicycles are stuck in Lumiose until the roads open.
 === CyllageCity_Gym.Grant
 from Grant at 6,4 of CyllageCity_Gym
 way 0
@@ -4314,6 +4318,27 @@ way -
 from Worker at 3,11 of KalosPowerPlant
 way -
   Worker> They came in red suits and told us all to wait outside. Please, someone has to stop them!
+=== KalosRoute6_ParfumPalace.FurfrouAway
+from Furfrou at 18,10 of KalosRoute6_ParfumPalace
+way -
+  Furfrou> Furfrou is hiding behind the curtains, its coat only half trimmed. It gives you a guilty look.
+  Furfrou> It seems happy to be found, and trots off toward its master.
+  * cry Furfrou
+  + FLAG_KALOS_PALACE_FURFROU_FOUND
+=== KalosRoute6_ParfumPalace.FurfrouHome
+from Furfrou at 11,4 of KalosRoute6_ParfumPalace
+way -
+  Furfrou> Furfrou sits proudly beside its master, waiting for the rest of its grooming.
+  * cry Furfrou
+=== KalosRoute6_ParfumPalace.Maid
+from Maid at 12,11 of KalosRoute6_ParfumPalace
+way -
+  Maid> The master spends more on his Furfrou's grooming than on the whole palace's dusting. Not that I'm complaining.
+=== KalosRoute6_ParfumPalace.Owner
+from Palace Owner at 10,4 of KalosRoute6_ParfumPalace
+way -
+  Palace Owner> Welcome to my palace! You are the Trainer my butler lent the flute to, I believe. Do look around.
+  Palace Owner> Though I confess I am distracted. My Furfrou slipped away halfway through its grooming. Have you seen it?
 === KalosRoute7_BattleChateau.Butler
 from Butler at 9,4 of KalosRoute7_BattleChateau
 way -

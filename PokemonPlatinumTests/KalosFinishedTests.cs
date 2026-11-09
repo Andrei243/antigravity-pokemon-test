@@ -121,6 +121,54 @@ public class KalosFinishedTests
         Assert.DoesNotContain(later.Log, l => l.StartsWith("warp", StringComparison.Ordinal));
     }
 
+    [Fact]
+    public void ParfumPalaceOpensWithTheFluteAndItsOwnerThanksTheFinderOfHisFurfrou()
+    {
+        Assert.Contains("KalosRoute6_ParfumPalace", RegionDatabase.Get(RegionDatabase.Kalos)!.Maps);
+        var map = LoadedWorld.Value.BuildMaps().Single(m => m.Name == "Kalos");
+        var story = new StoryState();
+        map.ApplyDoors(story.Has);
+        Assert.True(map.IsSolid(201, 265), "the palace is shut before the flute");
+        story.Set("FLAG_KALOS_RECEIVED_HM01");
+        map.ApplyDoors(story.Has);
+        var warp = map.GetWarpAt(201, 265);
+        Assert.Equal("KalosRoute6_ParfumPalace", warp?.TargetMap);
+        var hall = MapNamed("KalosRoute6_ParfumPalace");
+        Assert.True(hall.IsWalkable(warp!.TargetX, warp.TargetY));
+        Assert.True(map.IsWalkable(hall.Warps.Single().TargetX, hall.Warps.Single().TargetY));
+        Assert.Contains(Walked.Value, p => p.Key.Name == "KalosRoute6_ParfumPalace");
+
+        var owner = hall.Everyone.Single(n => n.Key == "owner");
+        var bag = new Inventory();
+        Play(story, "KalosRoute6_ParfumPalace", "Owner", hall, owner, bag: bag);
+        Assert.Equal(0, bag.GetQuantity(ItemDatabase.Get("Sun Stone")!));
+        Play(story, "KalosRoute6_ParfumPalace", "FurfrouAway", hall, hall.Everyone.Single(n => n.Key == "furfrou_away"), bag: bag);
+        Assert.True(story.Has("FLAG_KALOS_PALACE_FURFROU_FOUND"));
+        hall.ApplyPresence(story.Has);
+        Assert.DoesNotContain(hall.NPCs, n => n.Key == "furfrou_away");
+        Assert.Contains(hall.NPCs, n => n.Key == "furfrou_home");
+        Play(story, "KalosRoute6_ParfumPalace", "Owner", hall, owner, bag: bag);
+        Play(story, "KalosRoute6_ParfumPalace", "Owner", hall, owner, bag: bag);
+        Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Sun Stone")!));
+    }
+
+    [Fact]
+    public void TheBicycleShopGivesABicycleOnceThePowerIsBackToABagWithoutOne()
+    {
+        var shop = Rooms.Value("CyllageCity_BikeShop");
+        var owner = shop.Everyone.Single(n => n.Key == "owner");
+        var bicycle = ItemDatabase.Get("Bicycle")!;
+        var story = new StoryState();
+        var bag = new Inventory();
+        Play(story, "CyllageCity_BikeShop", "Owner", shop, owner, bag: bag);
+        Assert.Equal(0, bag.GetQuantity(bicycle));
+        story.SetVar("VAR_KALOS_LUMIOSE_ROADS", 2);
+        Play(story, "CyllageCity_BikeShop", "Owner", shop, owner, bag: bag);
+        Assert.Equal(1, bag.GetQuantity(bicycle));
+        Play(story, "CyllageCity_BikeShop", "Owner", shop, owner, bag: bag);
+        Assert.Equal(1, bag.GetQuantity(bicycle));
+    }
+
     [Theory]
     [InlineData("KalosLeague_MalvaRoom", "Malva", "malva")]
     [InlineData("KalosLeague_SieboldRoom", "Siebold", "siebold")]
@@ -147,13 +195,13 @@ public class KalosFinishedTests
     }
 
     private static HeadlessScriptHost Play(StoryState story, string file, string script, Map at, NPC? who = null, int[]? answers = null,
-        Func<string, IReadOnlyList<string>, int>? decide = null)
+        Func<string, IReadOnlyList<string>, int>? decide = null, Inventory? bag = null)
     {
         at.ForgetForced();
         at.ApplyPresence(story.Has);
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Greninja")!, 80));
-        var host = new HeadlessScriptHost(story, party, new Inventory()) { Map = at, Region = RegionDatabase.Kalos, MapNamed = MapNamed, Decide = decide };
+        var host = new HeadlessScriptHost(story, party, bag ?? new Inventory()) { Map = at, Region = RegionDatabase.Kalos, MapNamed = MapNamed, Decide = decide };
         foreach (int a in answers ?? Array.Empty<int>()) host.Answers.Enqueue(a);
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
         runner.Start(ScriptLibrary.Default.Find(script, file) ?? throw new Xunit.Sdk.XunitException($"{file}.{script} is missing"), who);

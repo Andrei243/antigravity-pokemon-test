@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1599 | 1536 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12152 | 11675 | 477 | 17 | 36 |
+| People of the hand-made maps (`map:`) | 1598 | 1535 | 63 | 1 | 0 |
+| Scripts (`script:`) | 12165 | 11688 | 477 | 17 | 36 |
 | People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
-| **All** | 22069 | 21464 | 605 | 22 | 36 |
+| **All** | 22081 | 21476 | 605 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -29,10 +29,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 893 voices (334 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 895 voices (336 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 554 voices.
 - Archetypes in use: 246, with 743 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 319.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 322.
 
 ## Lines by voice
 
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1206 | 50 |
+| `look:gentleman (any)` | 1205 | 50 |
 | `look:grunt (any)` | 603 | 0 |
 | `rival` | 600 | 20 |
 | `look:clerk (any)` | 571 | 13 |
@@ -48,8 +48,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lass (any)` | 544 | 22 |
 | `look:youngster (any)` | 515 | 32 |
 | `look:scientist (any)` | 325 | 13 |
+| `@self` | 322 | 38 |
 | `look:attendant (any)` | 321 | 12 |
-| `@self` | 319 | 38 |
 | `look:nurse (any)` | 296 | 2 |
 | `look:receptionist (any)` | 287 | 34 |
 | `look:gym_guide (any)` | 236 | 1 |
@@ -129,9 +129,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `scott` | 48 | 0 |
 | `volkner` | 48 | 1 |
 | `look:pokefan_m (any)` | 47 | 0 |
+| `maid` | 47 | 4 |
 | `prof_birch` | 47 | 4 |
 | `buck` | 46 | 1 |
-| `maid` | 46 | 4 |
 | `wallace` | 46 | 2 |
 | `jasmine` | 45 | 0 |
 | `maylene` | 45 | 1 |

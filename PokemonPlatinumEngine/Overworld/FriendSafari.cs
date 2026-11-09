@@ -25,6 +25,9 @@ public static class FriendSafari
     /// <summary>How many grounds a Trainer has, and how many species each holds.</summary>
     public const int GroundsCount = 3, SpeciesPerGrounds = 3;
 
+    /// <summary>The Friend Safari's gate in Kiloude City and its grounds, by their maps' names.</summary>
+    public const string Gate = "KiloudeCity_FriendSafari", Grounds = "KiloudeCity_FriendSafariGrounds";
+
     /// <summary>The story's variable that names the grounds the guide sent the player to (0 to 2).</summary>
     public const string ChosenVar = "VAR_KALOS_FRIEND_SAFARI";
 
