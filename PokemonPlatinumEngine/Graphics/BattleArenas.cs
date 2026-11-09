@@ -878,9 +878,9 @@ internal static class BattleArenas
         var panel = Rgb(176, 138, 102);
         var trim = Rgb(120, 86, 62);
         // Back wall and the side walls
-        Wall(walls, new Vector3(-44f, 0, -16f), new Vector3(40f, 0, -16f), 14f, plaster, panel, trim);
-        Wall(walls, new Vector3(-21f, 0, 40f), new Vector3(-21f, 0, -16f), 14f, plaster, panel, trim);
-        Wall(walls, new Vector3(19f, 0, -16f), new Vector3(19f, 0, 40f), 14f, plaster, panel, trim);
+        Wall(walls, new Vector3(-44f, 0, BattleStage.RoomNorth), new Vector3(40f, 0, BattleStage.RoomNorth), 14f, plaster, panel, trim);
+        Wall(walls, new Vector3(BattleStage.RoomWest, 0, BattleStage.WallsSouth), new Vector3(BattleStage.RoomWest, 0, BattleStage.RoomNorth), 14f, plaster, panel, trim);
+        Wall(walls, new Vector3(BattleStage.RoomEast, 0, BattleStage.RoomNorth), new Vector3(BattleStage.RoomEast, 0, BattleStage.WallsSouth), 14f, plaster, panel, trim);
 
         // Windows on the back wall: dark glass that the light outside fills (the rig's window colour: daylight,
         // an orange dusk, the dark blue night)
@@ -990,9 +990,9 @@ internal static class BattleArenas
         var white = batches.For(SceneTextures.White);
         var walls = Backdrop(batches);
         // Walls: a dark plinth, the wall, a band of the type's colour and a cornice
-        Wall(walls, new Vector3(-46f, 0, -22f), new Vector3(42f, 0, -22f), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
-        Wall(walls, new Vector3(-24f, 0, 40f), new Vector3(-24f, 0, -22f), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
-        Wall(walls, new Vector3(21f, 0, -22f), new Vector3(21f, 0, 40f), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
+        Wall(walls, new Vector3(-46f, 0, BattleStage.HallNorth), new Vector3(42f, 0, BattleStage.HallNorth), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
+        Wall(walls, new Vector3(BattleStage.HallWest, 0, BattleStage.WallsSouth), new Vector3(BattleStage.HallWest, 0, BattleStage.HallNorth), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
+        Wall(walls, new Vector3(BattleStage.HallEast, 0, BattleStage.HallNorth), new Vector3(BattleStage.HallEast, 0, BattleStage.WallsSouth), 18f, wall, MeshBuilder.Scale(wall, 0.7f), trim);
 
         // Banners down the back wall
         foreach (float x in new[] { -26f, -13f, 0f, 13f, 26f })

@@ -206,11 +206,18 @@ internal sealed partial class BattleCamera
         return list;
     }
 
-    /// <summary>The places of a side that stand there now (at least the first).</summary>
+    /// <summary>
+    /// The places of a side that stand there now (plan 45 · BC7: those with a Pokémon out, so an SOS battle's wild side
+    /// before its ally has landed and a place whose Pokémon has gone are no subjects); every place of the side where
+    /// none is out, and at least the first.
+    /// </summary>
     private static List<(BattleSide Side, int Slot)> SideOf(BattleAnimator anim, BattleSide side)
     {
         var list = new List<(BattleSide, int)>();
-        for (int slot = 0; slot < anim.SlotsOf(side); slot++) list.Add((side, slot));
+        for (int slot = 0; slot < anim.SlotsOf(side); slot++)
+            if (anim[side, slot].Present) list.Add((side, slot));
+        if (list.Count == 0)
+            for (int slot = 0; slot < anim.SlotsOf(side); slot++) list.Add((side, slot));
         if (list.Count == 0) list.Add((side, 0));
         return list;
     }

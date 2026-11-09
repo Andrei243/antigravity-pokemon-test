@@ -56,6 +56,12 @@ public sealed class BattleRenderer
     /// <summary>The shot the director has on screen: what a photo begins from (the overview before the first frame).</summary>
     internal CameraShot CurrentShot => director.Current.Fov > 0f ? director.Current : BattleCamera.Overview(0f);
 
+    /// <summary>
+    /// Where a photo begins (plan 45 · BC7): the shot on screen, so a photo is composed from the cycle's idle shot and
+    /// not from the overview; the foe's half while the picture is split (<see cref="BattleCamera.PhotoStart"/>).
+    /// </summary>
+    internal CameraShot PhotoStart => BattleCamera.PhotoStart(CurrentShot, Split);
+
     /// <summary>The stage for a battle starting with the player on (<paramref name="x"/>, <paramref name="y"/>) of <paramref name="map"/>.</summary>
     public void SetArena(Map map, int x, int y) => Arena = ArenaSpec.For(map, x, y);
 
@@ -124,6 +130,8 @@ public sealed class BattleRenderer
         PlaceBalls(anim);
 
         float shake = (anim.ShakeAge >= 0f ? (1f - anim.ShakeAge / 0.4f) * anim.ShakeStrength : 0f) + fx.Shake;
+        // With the Battle Scene off the camera has no moves of its own: Classic films it (plan 45 · BC7)
+        director.SceneOn = battle.Scene;
         if (Photo != null) director.Hold(Photo.Shot);
         else if (director.Held != null) director.LetGo();
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
@@ -171,9 +179,19 @@ public sealed class BattleRenderer
             // of the picture and the band over their edges (plan 45 · BC3)
             if (!split.Whole) context.Composite(whole);
             float sx = screenWidth / SplitBand.Width, sy = screenHeight / SplitBand.Height;
-            foreach (bool foe in new[] { true, false })
-                context.CompositeHalf(foe, SplitBand.Region(foe, split.In).ConvertAll(p => new Vector2(p.X * sx, p.Y * sy)), whole);
-            UI.ModernUi.SplitBands(split.In, sx, sy);
+            if (split.Royal)
+            {
+                // A Battle Royal's four quarters, each from its own target (plan 45 · BC7)
+                for (int i = 0; i < RoyalBand.Camps; i++)
+                    context.CompositeHalf(RoyalBand.InFoeTarget(i), RoyalBand.Region(i, split.In).ConvertAll(p => new Vector2(p.X * sx, p.Y * sy)), whole);
+                UI.ModernUi.RoyalBands(split.In, sx, sy);
+            }
+            else
+            {
+                foreach (bool foe in new[] { true, false })
+                    context.CompositeHalf(foe, SplitBand.Region(foe, split.In).ConvertAll(p => new Vector2(p.X * sx, p.Y * sy)), whole);
+                UI.ModernUi.SplitBands(split.In, sx, sy);
+            }
         }
         else context.Composite(whole);
         if (fx.Flash > 0.004f)
@@ -281,7 +299,20 @@ public sealed class BattleRenderer
             RenderView(stage, anim, rig, stageLight, lightView, lightProjection, camera, null, default);
             PixelsDrawn += (long)context.PartWidth * context.PartHeight;
         }
-        if (split is { } s)
+        if (split is { Camps: { } camps } royal)
+        {
+            // A Battle Royal's four quarters (plan 45 · BC7): quarters 0 and 2 into the foe's target, 1 and 3 into the
+            // player's, each only within its own column, so no two views of a target overlap
+            for (int i = 0; i < camps.Length; i++)
+            {
+                var box = SplitBand.Box(RoyalBand.Region(i, royal.In));
+                if (box.Width <= 0f || box.Height <= 0f) continue;
+                RenderView(stage, anim, rig, stageLight, lightView, lightProjection, camps[i].ToCamera(), RoyalBand.InFoeTarget(i), box);
+                var px = context.SplitPixels(box);
+                PixelsDrawn += (long)(px.Width * px.Height);
+            }
+        }
+        else if (split is { } s)
             foreach (bool foe in new[] { true, false })
             {
                 var box = SplitBand.Box(SplitBand.Region(foe, s.In));

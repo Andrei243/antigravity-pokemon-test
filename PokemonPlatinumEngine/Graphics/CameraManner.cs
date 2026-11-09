@@ -44,6 +44,11 @@ internal enum CameraSplits
     Giants = 16,
     /// <summary>A Pokémon Terastallizing facing its foe.</summary>
     Terastal = 32,
+    /// <summary>
+    /// A Battle Royal's splits are four quarters, one to a camp (plan 45 · BC7); a manner that splits but lacks this leaves
+    /// a Royal unsplit. It is no moment of its own: it says how the moments the manner has are filmed in a Royal.
+    /// </summary>
+    RoyalQuarters = 64,
 }
 
 /// <summary>
@@ -151,7 +156,7 @@ internal static class CameraManners
     {
         Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.Crane, IdleShot.OwnFace },
         CycleHold = 3.5f, CycleEase = 1.4f,
-        Splits = CameraSplits.Leads | CameraSplits.SendOuts | CameraSplits.LastPokemon | CameraSplits.Giants,
+        Splits = CameraSplits.Leads | CameraSplits.SendOuts | CameraSplits.LastPokemon | CameraSplits.Giants | CameraSplits.RoyalQuarters,
         Push = 1f, React = true,
         Open = true, Close = true, Crane = true,
     };
@@ -183,7 +188,7 @@ internal static class CameraManners
         CycleHold = 4f, CycleEase = 1.8f,
         Low = 0.06f, Push = 0.6f,
         Open = true, Close = true,
-        Splits = CameraSplits.Leads | CameraSplits.LastPokemon,
+        Splits = CameraSplits.Leads | CameraSplits.LastPokemon | CameraSplits.RoyalQuarters,
     };
 
     /// <summary>Alola's (BC6): Kalos's, its shots standing lower and wider (<see cref="CameraManner.Reach"/> 1.15).</summary>

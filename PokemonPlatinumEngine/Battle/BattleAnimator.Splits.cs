@@ -54,6 +54,13 @@ public sealed partial class BattleAnimator
     /// </summary>
     public bool LeadsMayDivide { get; set; }
 
+    /// <summary>
+    /// A Battle Royal (plan 45 · BC7): four camps each for itself, which a manner with
+    /// <see cref="Graphics.CameraSplits.RoyalQuarters"/> films in four quarters and any other manner doesn't split at
+    /// all. The face sets it as the battle is made.
+    /// </summary>
+    public bool Royal { get; set; }
+
     private readonly List<SplitMoment> splitMoments = new();
     private bool leadsNoted;
     private (BattleSide Side, int Slot, bool Boss, float Since)? lastComing;
