@@ -7,6 +7,8 @@
   "nationalUnlock": "HallOfFameAndSeenAll",
   "hasStory": true,
   "rival": "Barry",
+  // How its battles are filmed (plan 45; style guide, "The battle's manners"): Platinum's own seat, breathing
+  "battleCamera": "sinnoh",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Turtwig", "Chimchar", "Piplup" ],
   "badges": [ "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" ],

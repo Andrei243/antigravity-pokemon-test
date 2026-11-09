@@ -173,6 +173,13 @@ public sealed class RegionFile
     /// </summary>
     public RegionMovement? Movement { get; set; }
 
+    /// <summary>
+    /// The manner its battles are filmed in (plan 45 · BC1; style guide, "The battle's manners"): a name of
+    /// <c>Graphics.CameraManners</c>' table (<c>"sinnoh"</c>, <c>"galar"</c>...), Sinnoh's when left out. The options'
+    /// BATTLE CAMERA row decides whether it is used; a name the table lacks is refused by the pack check and the tests.
+    /// </summary>
+    public string? BattleCamera { get; set; }
+
     /// <summary>The body kit the region's people are drawn in (plan 30 · FM4 builds the grown one); chibi when left out.</summary>
     public CharacterKit Kit { get; set; } = CharacterKit.Chibi;
 

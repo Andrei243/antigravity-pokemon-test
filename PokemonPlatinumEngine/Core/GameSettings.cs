@@ -72,6 +72,12 @@ public enum SlotTwoGame { None, Ruby, Sapphire, Emerald, FireRed, LeafGreen }
 /// <summary>The options' MOVEMENT row (plan 30 · FM1): as the region says, or the grid's four ways everywhere.</summary>
 public enum MovementChoice { AsTheRegion, FourWays }
 
+/// <summary>
+/// The options' BATTLE CAMERA row (plan 45 · BC1): the battle's camera as it was before plan 45, to the bit; each
+/// region filmed in its own manner (its file's <c>battleCamera</c>); or Galar's lively manner everywhere.
+/// </summary>
+public enum BattleCameraChoice { Classic, Region, Lively }
+
 public static class RulesDefaults
 {
     /// <summary>Whether the help is on in a game played by these rules.</summary>
@@ -430,6 +436,12 @@ public sealed class GameSettings
     /// one is plugged in, answering their turns).
     /// </summary>
     public bool Coop { get; set; }
+
+    /// <summary>
+    /// How battles are filmed (plan 45 · BC1, decision 1): each region in its own manner unless chosen, Galar's
+    /// everywhere, or the camera as it was (Classic). REDUCE MOTION films every manner as Classic.
+    /// </summary>
+    public BattleCameraChoice BattleCamera { get; set; } = BattleCameraChoice.Region;
 
     /// <summary>
     /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles
