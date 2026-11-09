@@ -124,25 +124,28 @@ internal static class CameraManners
 
     /// <summary>
     /// Unova's (Black and White moved their camera between commands): a slow swing between the overview and a shot low
-    /// behind the player's Pokémon looking at the foe (BC2), and a split as the leads face each other (BC3); its push comes with BC4.
+    /// behind the player's Pokémon looking at the foe (BC2), and a split as the leads face each other (BC3), and half Galar's push on a move's shots (BC4).
     /// </summary>
     public static readonly CameraManner Unova = new("unova")
     {
         Cycle = new[] { IdleShot.Overview, IdleShot.Shoulder },
         CycleHold = 4.5f, CycleEase = 2.5f,
         Splits = CameraSplits.Leads,
+        Push = 0.5f,
     };
 
     /// <summary>
     /// Galar's, and the options' LIVELY: the camera never rests. At the menu, the cycle through the side, over the
     /// shoulder, the foe's face and the player's own front (BC2), and a split at the leads and at any trainer's last Pokémon
-    /// (BC3); its push, reactions, opening, closing and crane come with BC4 and BC5.
+    /// (BC3), every move pushed in on its user and pulled out past its target with a reaction after a
+    /// super-effective or critical blow (BC4); its opening, closing and crane come with BC5.
     /// </summary>
     public static readonly CameraManner Galar = new("galar")
     {
         Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.OwnFace },
         CycleHold = 3.5f, CycleEase = 1.4f,
         Splits = CameraSplits.Leads | CameraSplits.LastPokemon,
+        Push = 1f, React = true,
     };
 
     /// <summary>Every manner of the table, by its name.</summary>

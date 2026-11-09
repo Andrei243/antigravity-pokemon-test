@@ -1138,6 +1138,8 @@ public sealed partial class BattleAnimator
         cue.Seed = ++cueCount * 7919 + cue.Move.Length;
         cue.Age = 0f;
         if (Shows(cue)) cues.Add(cue);
+        // A super-effective or critical hit landed, which a manner may react to (plan 45 · BC4)
+        NoteStrike(cue);
         // A move that spends its user collapses it until it faints (plan 25 · Y16)
         if (cue.Kind == CueKind.Move && !cue.Charging && !cue.Arriving && Graphics.BodyMotions.SpendsTheUser(cue.Move))
             this[cue.FromSide, Within(cue.FromSlot)].SpentAge = 0f;

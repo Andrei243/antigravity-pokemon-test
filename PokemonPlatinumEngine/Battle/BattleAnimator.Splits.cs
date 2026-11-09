@@ -99,6 +99,18 @@ public sealed partial class BattleAnimator
         }
     }
 
+    /// <summary>
+    /// The newest super-effective or critical hit that landed on another Pokémon (plan 45 · BC4), and when its cue
+    /// began in <see cref="Time"/>: what a manner that reacts films once the move's own shots are over. Null for none.
+    /// </summary>
+    public (EffectCue Cue, float Start)? LastStrike { get; private set; }
+
+    private void NoteStrike(EffectCue cue)
+    {
+        if (cue.Kind != CueKind.Move || cue.Charging || cue.OnSelf || !cue.Landed) return;
+        if (cue.SuperEffective || cue.Critical) LastStrike = (cue, Time);
+    }
+
     private bool SidesStand()
     {
         for (int side = 0; side < 2; side++)

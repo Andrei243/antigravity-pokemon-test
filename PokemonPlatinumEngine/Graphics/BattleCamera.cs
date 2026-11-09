@@ -24,6 +24,8 @@ internal enum ShotKind
     Idle,
     /// <summary>The player's own side from the front (plan 45 · BC2): a camera between the platforms looking south, only ever cut to and from.</summary>
     OwnFront,
+    /// <summary>The one a super-effective or critical blow landed on, held a moment once the move's shots are over (plan 45 · BC4).</summary>
+    React,
 }
 
 /// <summary>
@@ -272,7 +274,7 @@ internal sealed partial class BattleCamera
                 && MaxMoveShot(anim, places, move) is { } max)
             {
                 if (motion >= 1f) return (max, ShotKind.MaxMove, move);
-                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move) : (Overview(anim.Time), ShotKind.Overview);
+                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move, m) : (Overview(anim.Time), ShotKind.Overview);
                 return (CameraShot.Lerp(plain, max, motion), motion >= 0.5f ? ShotKind.MaxMove : plainKind, move);
             }
             // A signature move's own shot (plan 25 · Y17), laid over the ordinary one by the motion number
@@ -280,12 +282,12 @@ internal sealed partial class BattleCamera
             {
                 var (sig, sigKind) = SignatureShotOf(signature, anim, places, move);
                 if (motion >= 1f) return (sig, sigKind, move);
-                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move) : (Overview(anim.Time), ShotKind.Overview);
+                var (plain, plainKind) = move.Age < MoveShotEnd ? MoveShot(anim, places, move, m) : (Overview(anim.Time), ShotKind.Overview);
                 return (CameraShot.Lerp(plain, sig, motion), motion >= 0.5f ? sigKind : plainKind, move);
             }
             if (move.Age < MoveShotEnd)
             {
-                var (shot, kind) = MoveShot(anim, places, move);
+                var (shot, kind) = MoveShot(anim, places, move, m);
                 return (shot, kind, move);
             }
         }
@@ -339,19 +341,31 @@ internal sealed partial class BattleCamera
                     return (Close(places, (BattleSide)side, slot, 3.4f, (BattleSide)side == BattleSide.Player ? 0.4f : 0f), ShotKind.Faint, null);
             }
 
+        // A manner that reacts: the one a super-effective or critical blow landed on, held a moment once the move's
+        // shots are over, unless another move has begun (plan 45 · BC4)
+        if (m.React && motionNow > 0f && ReactNow(anim, places, move) is { } react) return react;
+
         if (anim.Time < 1.8f) return (Intro(anim.Time), ShotKind.Intro, null);
         return (Overview(anim.Time), ShotKind.Overview, null);
     }
 
     /// <summary>An ordinary move's shots: the attacker, the cut to its target, a critical hit's punch-in.</summary>
-    private static (CameraShot Shot, ShotKind Kind) MoveShot(BattleAnimator anim, FxPlaces places, EffectCue move)
+    /// <param name="manner">The manner the battle is filmed in: one that pushes (plan 45 · BC4) moves the attacker's and the target's shots.</param>
+    private static (CameraShot Shot, ShotKind Kind) MoveShot(BattleAnimator anim, FxPlaces places, EffectCue move, CameraManner? manner = null)
     {
         if (move.OnSelf) return (Close(places, move.FromSide, move.FromSlot, 2.9f), ShotKind.Self);
         float cut = move.Category == MoveCategory.Status ? 0.3f : CutTime;
+        float push = PushOf(manner);
         // An attack sent ahead is watched where it lands from the start: nobody need stand where it was sent from (plan 25 · Y3)
-        if (move.Age < cut && !move.Arriving) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker);
+        if (move.Age < cut && !move.Arriving)
+        {
+            if (push <= 0f) return (Close(places, move.FromSide, move.FromSlot, 3.0f), ShotKind.Attacker);
+            return (PushedAttacker(places, move, cut, push), ShotKind.Attacker);
+        }
         var targets = TargetsOf(anim, move);
-        var target = TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f);
+        var target = push <= 0f
+            ? TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f)
+            : PulledTarget(places, targets, move, push);
         if (Motion > 0f && move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
             return (TargetShot(places, targets, 2.1f), ShotKind.Critical);
         return (target, ShotKind.Target);
