@@ -52,6 +52,13 @@ public class GrownKitTests
     private static int Nearest(SdfMesh mesh, Vector3 to) =>
         Enumerable.Range(0, mesh.VertexCount).OrderBy(v => Vector3.DistanceSquared(mesh.Positions[v], to)).First();
 
+    /// <summary>The chibi kit's clips on a rig (since plan 30 · FM5 a grown rig's own <c>Animate</c> plays the grown clips).</summary>
+    internal static void Chibi(CharacterRig rig, CharacterPose pose)
+    {
+        CharacterAnimation.ApplyChibi(rig, pose, rig.Pose);
+        rig.Skeleton.Evaluate(rig.Pose, rig.Skin);
+    }
+
     private static bool Near(Color a, Color b, int by = 30) => Math.Abs(a.R - b.R) + Math.Abs(a.G - b.G) + Math.Abs(a.B - b.B) < by;
 
     [Theory]
@@ -278,7 +285,7 @@ public class GrownKitTests
         foreach (var (part, mesh) in new[] { ("body", rig.Mesh), ("outline", rig.Shell) })
             foreach (var (name, pose) in clips)
             {
-                rig.Animate(pose);
+                Chibi(rig, pose);
                 var at = new Vector3[mesh.VertexCount];
                 for (int v = 0; v < mesh.VertexCount; v++)
                     for (int k = 0; k < 4; k++)
@@ -321,11 +328,11 @@ public class GrownKitTests
         // The walk keeps a foot on the ground, as on a chibi body
         for (int f = 0; f < 8; f++)
         {
-            rig.Animate(new CharacterPose { Walk = (f + 0.5f) / 8f, WalkBlend = 1f, Time = 0.4f });
+            Chibi(rig, new CharacterPose { Walk = (f + 0.5f) / 8f, WalkBlend = 1f, Time = 0.4f });
             Assert.InRange(MathF.Min(Joint(HumanBones.FootL).Y, Joint(HumanBones.FootR).Y), ankle - 0.04f, ankle + 0.04f);
         }
         // Standing, the arms hang closer than they were sculpted
-        rig.Animate(new CharacterPose { Time = 0.4f });
+        Chibi(rig, new CharacterPose { Time = 0.4f });
         Assert.True(Joint(HumanBones.HandL).X < rig.Skeleton[HumanBones.HandL].Joint.X - 0.03f);
         // The head goes where the neck takes it: turned by a clip, the neck carries it
         Assert.True(Vector3.Distance(Joint(HumanBones.Head), rig.Skeleton[HumanBones.Head].Joint) < 0.05f);
@@ -334,12 +341,12 @@ public class GrownKitTests
         foreach (var emote in Enum.GetValues<Emote>().Where(e => e != Emote.None))
         {
             var idle = new SkeletonPose(rig.Skeleton.Count);
-            CharacterAnimation.Apply(rig, new CharacterPose { Time = 0.4f }, idle);
+            CharacterAnimation.ApplyChibi(rig, new CharacterPose { Time = 0.4f }, idle);
             float d = CharacterAnimation.Duration(emote);
             foreach (float t in new[] { 0f, 0.5f * d, d })
             {
                 var pose = new SkeletonPose(rig.Skeleton.Count);
-                CharacterAnimation.Apply(rig, new CharacterPose { Time = 0.4f, Emote = emote, EmoteTime = t }, pose);
+                CharacterAnimation.ApplyChibi(rig, new CharacterPose { Time = 0.4f, Emote = emote, EmoteTime = t }, pose);
                 for (int b = HumanBones.Count; b < HumanBones.GrownCount; b++)
                     Assert.True(MathF.Abs(Quaternion.Dot(pose.Rotation[b], Quaternion.Identity)) > 0.99999f && pose.Offset[b] == Vector3.Zero, $"{emote} moves bone {b}");
                 if (t == 0.5f * d) continue;

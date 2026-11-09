@@ -96,7 +96,22 @@ internal static class CharacterAnimation
 
     private static SkeletonPose? walkScratch, extraScratch;
 
+    /// <summary>
+    /// Poses a rig for a frame: a humanoid of the grown kit by its own clips (plan 30 · FM5, <see cref="GrownAnimation"/>),
+    /// everything else by the chibi kit's (<see cref="ApplyChibi"/>), which are as they always were.
+    /// </summary>
     public static void Apply(CharacterRig rig, CharacterPose p, SkeletonPose pose)
+    {
+        if (rig.Kind == RigKind.Humanoid && rig.Style.Kit == Data.CharacterKit.Grown && pose.Count >= HumanBones.GrownCount)
+        {
+            GrownAnimation.Apply(rig, p, pose);
+            return;
+        }
+        ApplyChibi(rig, p, pose);
+    }
+
+    /// <summary>The chibi kit's clips, on any humanoid: a grown body follows them with its seven appended bones at rest.</summary>
+    public static void ApplyChibi(CharacterRig rig, CharacterPose p, SkeletonPose pose)
     {
         pose.Reset();
         switch (rig.Kind)

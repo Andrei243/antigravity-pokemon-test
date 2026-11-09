@@ -31,6 +31,19 @@ public static class Seats
         _ => 0f
     };
 
+    /// <summary>
+    /// How high a seat or a mattress is in a region of grown people (plan 30 · FM5; style guide, "Grown animation"), in
+    /// tiles: a chair's seat 0.45 of a grown adult's leg, so a grown sitter's feet reach the floor.
+    /// </summary>
+    public static float GrownHeightOf(PropType type) => type switch
+    {
+        PropType.Chair => 12f / 32f,
+        PropType.Bed => 14f / 32f,
+        PropType.Sofa or PropType.Bench => 11f / 32f,
+        PropType.Cushion => 3f / 32f,
+        _ => 0f
+    };
+
     /// <summary>A swimmer's stroke, in seconds of the field's clock (plan 11 · C8): a ring spreads behind them at each.</summary>
     public const float StrokeSeconds = 1.2f;
 

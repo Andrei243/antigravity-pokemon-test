@@ -47,7 +47,33 @@ internal struct CharacterPose
 
     /// <summary>How they are set (plan 11 · C7): standing, sitting on a seat or on the ground, or lying; nobody walks, hops or plays a gesture but standing.</summary>
     public Overworld.Stance Stance;
+
+    // ---- the grown kit's alone (plan 30 · FM5; style guide, "Grown animation"): a chibi rig never reads them. GrownMotion fills them
+
+    /// <summary>0 walking .. 1 running: the grown gait's blend (0 with <see cref="Running"/> set reads as 1).</summary>
+    public float RunBlend;
+
+    /// <summary>How far one walk cycle (two steps) carries the body, in model units; 0 for the gait's own by <see cref="RunBlend"/>.</summary>
+    public float Stride;
+
+    /// <summary>How far the body leans into a turn, in radians: positive toward its left (+X), at most 8°.</summary>
+    public float Lean;
+
+    /// <summary>Progress through a step-turn from standing (0 for none), and the turn's whole angle, positive to the left.</summary>
+    public float StepTurn, StepTurnAngle;
+
+    /// <summary>Progress through the weight shift into a first step, and through the settle on stopping (0 for none).</summary>
+    public float Start, Stop;
+
+    /// <summary>Speaking with a hand: the right forearm raised before the body, beating with the words.</summary>
+    public bool Talking;
+
+    /// <summary>What a grown body rides on: kneeling on a Surfer's back, on a Bicycle, astride a mount.</summary>
+    public Riding Riding;
 }
+
+/// <summary>What a grown body is riding (plan 30 · FM5): nothing, a Pokémon it surfs on, a Bicycle, a mount (plan 30 · FM13).</summary>
+internal enum Riding { None, Surf, Bicycle, Mount }
 
 /// <summary>
 /// Bone numbers of every humanoid skeleton (L is the character's left, +X). The chibi kit's are the first
