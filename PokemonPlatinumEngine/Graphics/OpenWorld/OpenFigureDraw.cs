@@ -33,6 +33,8 @@ internal sealed class OpenFigureDraw
 
     private readonly Dictionary<string, (int Row, float Frame, double Used)> rows = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, (Vector3 Last, float Walk, float Speed, double Exclaimed)> motion = new();
+    // Each person's grown motion (plan 30 · FM6): its gait, yaw, lean and turns from how fast its feet moved over the ground
+    private readonly Dictionary<string, GrownMotion> grownMotion = new();
     private Texture2D atlas;
     private RenderTexture2D bakeTarget;
     private Mesh cards;
@@ -93,9 +95,17 @@ internal sealed class OpenFigureDraw
             float stride = f.Kind == OpenFigureKind.Person ? 1.6f : MathF.Max(0.6f, f.Height * 1.4f);
             double exclaimed = f.Exclaiming ? (double.IsNaN(m.Exclaimed) ? time : m.Exclaimed) : double.NaN;
             motion[f.Key] = (f.Feet, (m.Walk + moved / stride) % 1f, m.Speed + (speed - m.Speed) * Math.Min(1f, dt * 10f), exclaimed);
+            // A person's rig of the grown kit walks by its own motion, handed the velocity over the ground in metres a
+            // second (an open figure's model unit is the rig's own, drawn unscaled)
+            if (f.Kind == OpenFigureKind.Person && CharacterModels.TryGet(f.Look, context.Shaders) is { Style.Kit: Data.CharacterKit.Grown } rig)
+            {
+                if (!grownMotion.TryGetValue(f.Key, out var gm)) grownMotion[f.Key] = gm = GrownMotion.For(rig, f.Yaw);
+                gm.Step(dt, Graphics.FieldRigChoice.VelocityOf(m.Last, f.Feet, dt, 1f), f.Yaw);
+            }
             if (f.Exclaiming) Exclaiming++;
         }
         foreach (var key in new List<string>(motion.Keys)) if (!seen.Contains(key)) motion.Remove(key);
+        foreach (var key in new List<string>(grownMotion.Keys)) if (!seen.Contains(key)) grownMotion.Remove(key);
 
         // The looks asked for ahead, and one impostor's look baked a frame
         Waiting = 0;
@@ -133,6 +143,8 @@ internal sealed class OpenFigureDraw
         // Each figure breathes on its own time, by its key
         float offset = (Core.SplitMix.Fnv(f.Key) & 1023) / 1023f * 4f;
         var person = new CharacterPose { Time = (float)(time % 3600.0) + offset, Walk = m.Walk, WalkBlend = moving ? 1f : 0f, Running = m.Speed > 3f };
+        // (a grown rig's gait from its own motion: plan 30 · FM6)
+        if (f.Kind == OpenFigureKind.Person && grownMotion.TryGetValue(f.Key, out var gm)) gm.Fill(ref person);
         var pokemon = new PokePose { Time = (float)(time % 3600.0) + offset, Walk = m.Walk, Moving = moving ? 1f : 0f };
         return (person, pokemon);
     }
@@ -155,7 +167,9 @@ internal sealed class OpenFigureDraw
             if (f.Kind == OpenFigureKind.Person)
             {
                 if (CharacterModels.TryGet(f.Look, context.Shaders) is not { } rig) continue;
-                CharacterRenderer.Draw(context, rig, person, RootOf(f), pass);
+                // (turned the way its grown motion has it, which eases and step-turns: plan 30 · FM6)
+                var root = grownMotion.TryGetValue(f.Key, out var gm) ? Matrix4x4.CreateRotationY(gm.Yaw) * Matrix4x4.CreateTranslation(f.Feet) : RootOf(f);
+                CharacterRenderer.Draw(context, rig, person, root, pass);
             }
             else
             {

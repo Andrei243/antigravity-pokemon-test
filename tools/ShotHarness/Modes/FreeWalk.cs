@@ -154,5 +154,8 @@ partial class Harness
 
         // FM3: the crowd of thirty drawn as a grown region's people (last: it begins a game of its own in Kalos)
         FreeWalkCrowd();
+
+        // FM6: the scale of a grown region, the field's and the battle's (fw45 to fw47; each part begins a game of its own)
+        FreeWalkScale();
     }
 }

@@ -22,6 +22,9 @@ public partial class GameEngine
     private bool openScriptWasRunning, openViewSettled;
     private double openWalked;
     private OpenVec? openLastFeet;
+    // The player's grown body's motion (plan 30 · FM6): its gait, yaw, lean and turns from how fast the drawn feet moved
+    private GrownMotion? openMotion;
+    private Vector3 openMotionFeet;
 
     /// <summary>The open renderer, made the first time an open map is drawn (it needs the window).</summary>
     private OpenRenderer OpenRendererNow => openRenderer ??= new OpenRenderer(renderContext);
@@ -42,6 +45,7 @@ public partial class GameEngine
         openViewSettled = false;
         openLastFeet = null;
         openWalked = 0;
+        openMotion = null;
         if (!IsHeadless) CharacterModels.Preload(new[] { OpenPlayerLook });
         // The people's looks and the follower's, asked for behind the same fade (plan 32 · OW9)
         if (flow.Open is { } field) PreloadTheOpenLooks(field);
@@ -115,10 +119,24 @@ public partial class GameEngine
             WalkBlend = speed > OrbitCamera.Walking ? 1f : 0f,
             Running = speed > 3.0
         };
+        // The grown rig's gait, way, lean and turns from its own motion, handed the drawn feet's speed over the ground
+        // (plan 30 · FM6); until the rig is made the walk above stands
+        float yaw = (float)OpenYaw.Radians(body.Yaw);
+        var drawn = V(feet);
+        if (CharacterModels.TryGet(OpenPlayerLook, renderContext.Shaders) is { Style.Kit: Data.CharacterKit.Grown } rig)
+        {
+            if (openMotion == null || MathF.Abs(openMotion.Leg - GrownAnimation.LegsOf(rig.Skeleton).Length) > 1e-4f)
+                (openMotion, openMotionFeet) = (GrownMotion.For(rig, yaw), drawn);
+            float dt = openViewSettled ? openFrameSeconds : 0f;
+            openMotion.Step(dt, FieldRigChoice.VelocityOf(openMotionFeet, drawn, dt, 1f), yaw);
+            openMotionFeet = drawn;
+            openMotion.Fill(ref pose);
+            yaw = openMotion.Yaw;
+        }
         // Who and what stands there beside the player, and whom the grass parts round (plan 32 · OW9)
         var figures = GatherOpenFigures(open);
         // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm
-        return new OpenScene(open.Map, V(feet), (float)OpenYaw.Radians(body.Yaw), pose, OpenPlayerLook,
+        return new OpenScene(open.Map, V(feet), yaw, pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
             body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens), figures, OpenWalkersOf(open, figures));
     }

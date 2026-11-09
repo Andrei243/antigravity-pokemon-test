@@ -364,6 +364,9 @@ public static class WorldMapBuilder
             // Cave, Rock Tunnel and the Whirl Islands' upper floors; plan 20 · J15, part o)
             map.IsDark = own.Weather is "DarkFlash" or "11";
         }
+        // A region whose people are grown is looked at outdoors with its own camera (plan 30 · FM6, decision 3), where
+        // the place's header names none of its own; the chibi regions keep Platinum's
+        map.Camera = GrownCamera(map.Camera, world.Index.Region, outdoors: !room && !cave && !nothing && !sea);
 
         // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level; a
         // cave is rock, and the Distortion World nothing
@@ -1275,8 +1278,17 @@ public static class WorldMapBuilder
         "MtCoronetExtSouth" => FieldCamera.CoronetSouth,
         "StarkMountainRoom2" => FieldCamera.StarkMountain,
         "Drawbridge" => FieldCamera.Drawbridge,
+        "Kalos" => FieldCamera.Kalos,
         _ => FieldCamera.Default
     };
+
+    /// <summary>
+    /// The camera of an outdoor place of a region (plan 30 · FM6): <see cref="FieldCamera.Kalos"/> in place of the
+    /// default where the region's file says its people are grown (<see cref="Region.Kit"/>), and whatever it was
+    /// everywhere else, so no chibi region's place changes.
+    /// </summary>
+    public static FieldCamera GrownCamera(FieldCamera camera, string region, bool outdoors) =>
+        outdoors && camera == FieldCamera.Default && RegionDatabase.Get(region)?.Kit == CharacterKit.Grown ? FieldCamera.Kalos : camera;
 
     /// <summary>How far a cave's rock stands above the floor before it (seen from the south), in tiles.</summary>
     public const float CaveWallRise = 2f;

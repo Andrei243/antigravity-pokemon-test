@@ -21,6 +21,36 @@ internal static class FieldSprites
 {
     public const int Small = 32, Medium = 48, Large = 64;
 
+    /// <summary>
+    /// The cards a grown region's tall Pokémon stand on (plan 30 · FM6; style guide, "Scale in a grown region"): three
+    /// and four tiles across, for heights the chibi regions' 1.9-tile cap never reaches.
+    /// </summary>
+    public const int Huge = 96, Giant = 128;
+
+    /// <summary>
+    /// What a species' or a form's name carries where it is drawn at a grown region's scale (<see cref="GrownName"/>):
+    /// its sprites are baked, kept and cached apart from the chibi regions' under the name with this after it.
+    /// </summary>
+    public const string GrownMark = "|grown";
+
+    /// <summary>The name a Pokémon is drawn under in a region whose people are grown (plan 30 · FM6).</summary>
+    public static string GrownName(string name) => IsGrown(name) ? name : name + GrownMark;
+
+    /// <summary>Whether a name is drawn at a grown region's scale.</summary>
+    public static bool IsGrown(string name) => name.EndsWith(GrownMark, StringComparison.Ordinal);
+
+    /// <summary>The model a name is baked from: the name without its grown mark.</summary>
+    public static string ModelOf(string name) => IsGrown(name) ? name[..^GrownMark.Length] : name;
+
+    /// <summary>
+    /// How tall a Pokémon stands in a region whose people are grown, in tiles (plan 30 · FM6): 0.85 of its height in
+    /// metres, beside a grown adult of about 1.6 tiles, from 0.35 to 3.5 tiles.
+    /// </summary>
+    public static float GrownHeight(float metres) => Math.Clamp(0.85f * metres, 0.35f, 3.5f);
+
+    /// <summary>How tall a name stands in the field: <see cref="GrownHeight"/> where it carries the grown mark, else <see cref="FieldHeight"/>.</summary>
+    public static float HeightOf(string name) => IsGrown(name) ? GrownHeight(MetresOf(name)) : FieldHeight(MetresOf(name));
+
     /// <summary>Raise when the field's baking changes, so cached field sprites are baked again.</summary>
     public const int BakeVersion = 1;
 
@@ -43,13 +73,27 @@ internal static class FieldSprites
     public static float FieldHeight(float metres) => Math.Clamp(0.3f + 0.75f * metres, 0.4f, 1.9f);
 
     /// <summary>The card a Pokémon of that height in the field stands on: small under 0.7 tiles, big over 1.6.</summary>
-    public static int ClassOf(float fieldHeight) => fieldHeight < 0.7f ? Small : fieldHeight <= 1.6f ? Medium : Large;
+    public static int ClassOf(float fieldHeight) => fieldHeight < 0.7f ? Small : fieldHeight <= 1.6f ? Medium
+        // (a grown region's tall ones, plan 30 · FM6: no chibi height reaches past 1.9)
+        : fieldHeight <= 1.9f ? Large : fieldHeight <= 2.85f ? Huge : Giant;
+
+    /// <summary>
+    /// The card a Pokémon stands on at a grown region's scale (plan 30 · FM6): the smallest whose height, less its foot
+    /// and outline, holds it (a chibi height between 1.42 and 1.6 tiles is shrunk onto 48 to keep the cards as they were).
+    /// </summary>
+    public static int GrownClassOf(float fieldHeight)
+    {
+        foreach (int size in new[] { Medium, Large, Huge, Giant })
+            if (fieldHeight < 0.7f && size == Medium) return Small;
+            else if ((size - FootRows - 1f) / CharacterSprites.TexelsPerUnit >= fieldHeight) return size;
+        return Giant;
+    }
 
     /// <summary>A species' or a form's height in metres, from its data; half a metre for a name the data doesn't know.</summary>
     public static float MetresOf(string name)
     {
         // A shiny look stands as tall as its model (plan 09 · L1)
-        name = PokemonPlatinumEngine.Models.PokemonLook.Base(name);
+        name = PokemonPlatinumEngine.Models.PokemonLook.Base(ModelOf(name));
         if (PokemonDatabase.Get(name) is { } species) return species.Height;
         if (PokemonDatabase.SpeciesOfForm(name) is { } of) return of.Form(name)?.Height ?? of.Height;
         return 0.5f;
@@ -112,10 +156,10 @@ internal static class FieldSprites
         if (TryOverride(context, name, facing, walk) || TryLoad(context, name, facing, walk)) return;
         if (bakes <= 0 && !Patient) return;
         PokeModel model;
-        if (Patient) model = PokemonModels.Get(name);
-        else if (!PokemonModels.TryGet(name, out model))
+        if (Patient) model = PokemonModels.Get(ModelOf(name));
+        else if (!PokemonModels.TryGet(ModelOf(name), out model))
         {
-            PokemonModels.Request(name);
+            PokemonModels.Request(ModelOf(name));
             return;
         }
         bakes--;
@@ -137,6 +181,9 @@ internal static class FieldSprites
         for (int facing = 0; facing < 4; facing++)
         {
             if (Baked.ContainsKey((name, facing))) continue;
+            // (a grown region's sprites are never drawn by hand: the hand-drawn frames are the chibi regions' size)
+            if (IsGrown(name) && (!PokemonSprites.CacheEnabled || !File.Exists(FileOf(name, facing)))) return false;
+            if (IsGrown(name)) continue;
             string folder = DrawnFolder(name);
             bool drawn = true;
             for (int f = 0; f < IdleFrames && drawn; f++) drawn = File.Exists(Path.Combine(folder, OverrideName(facing, f)));
@@ -146,7 +193,7 @@ internal static class FieldSprites
         return true;
     }
 
-    private static string SignatureOf(string name) => $"{PokemonModels.Signature(name)}{PokemonSprites.BakeVersion}{BakeVersion}";
+    private static string SignatureOf(string name) => $"{PokemonModels.Signature(ModelOf(name))}{PokemonSprites.BakeVersion}{BakeVersion}";
 
     private static string FileOf(string name, int facing, bool walk = false)
     {
@@ -161,7 +208,7 @@ internal static class FieldSprites
 
     private static bool TryOverride(RenderContext context, string name, int facing, bool walk)
     {
-        if (!Overrides.Enabled) return false;
+        if (!Overrides.Enabled || IsGrown(name)) return false;
         string folder = DrawnFolder(name);
         if (!Directory.Exists(folder)) return false;
         PixelCanvas? sheet = null;
@@ -196,7 +243,7 @@ internal static class FieldSprites
         var image = Raylib.LoadImage(file);
         try
         {
-            if (image.Width != image.Height * (walk ? WalkFrames : IdleFrames) || image.Height is not (Small or Medium or Large)) return false;
+            if (image.Width != image.Height * (walk ? WalkFrames : IdleFrames) || image.Height is not (Small or Medium or Large or Huge or Giant)) return false;
             Keep(context, name, facing, PixelCanvas.FromImage(image), walk);
             return true;
         }
@@ -240,8 +287,8 @@ internal static class FieldSprites
             minY = MathF.Min(minY, p.Y);
         }
         if (maxY <= minY) return (Small, 1f);
-        float height = FieldHeight(MetresOf(name));
-        int size = ClassOf(height);
+        float height = HeightOf(name);
+        int size = IsGrown(name) ? GrownClassOf(height) : ClassOf(height);
         float scale = height / (maxY - MathF.Min(0f, minY));
 
         // Shrunk until it fits the card from every side: half the card less the outline across, and the card less
@@ -338,7 +385,7 @@ internal static class FieldSprites
     /// </summary>
     internal static Image Sheet(RenderContext context, string name, int scale)
     {
-        var model = PokemonModels.Get(name);
+        var model = PokemonModels.Get(ModelOf(name));
         PixelCanvas? all = null;
         for (int facing = 0; facing < 4; facing++)
         {
@@ -355,7 +402,7 @@ internal static class FieldSprites
     /// </summary>
     internal static Image WalkSheet(RenderContext context, string name, int scale)
     {
-        var model = PokemonModels.Get(name);
+        var model = PokemonModels.Get(ModelOf(name));
         PixelCanvas? all = null;
         for (int facing = 0; facing < 4; facing++)
         {

@@ -551,6 +551,12 @@ public partial class GameEngine
             partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : flow.Map.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
         CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
             .Select(t => CharacterStyles.Default.InBattle(t)));
+        // In a region whose people are grown, each look in the grown kit too, and the player's, which the battle draws
+        // (plan 30 · FM6); the chibi looks stand in until they are made
+        if (KitHere == Data.CharacterKit.Grown)
+            CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
+                .Select(t => CharacterStyles.Default.InBattle(t)).Append(PlayerIdentity.Character)
+                .Where(l => CharacterModels.KindOf(l) == RigKind.Humanoid).Select(l => CharacterStyle.InKit(l, Data.CharacterKit.Grown)));
         // In a region the game crossed into, everyone fights at the region's mapped levels (plan 18 · W4): the battle is
         // handed copies, and the trainers of the map keep their teams at their game's levels. Each Pokémon takes the
         // stage its new level allows, the games' and then ours (plan 18 · W4b-2, plan 03 · D15-A), the partner's too. Not
@@ -668,8 +674,15 @@ public partial class GameEngine
         // of the look the battle itself will draw them in, and beside the player's own in the League's. The rigs
         // are asked for above; the portraits are rendered as the closing's frames find them ready
         if (SceneTransition.BandFor(meeting) is { } whose)
-            band.Begin(whose, CharacterStyles.Default.InBattle(trainer), flow.Kind == TransitionKind.EliteBand ? PlayerIdentity.Character : null);
+            band.Begin(whose, InTheKitHere(CharacterStyles.Default.InBattle(trainer)), flow.Kind == TransitionKind.EliteBand ? InTheKitHere(PlayerIdentity.Character) : null);
     }
+
+    /// <summary>
+    /// A look as the region the player is in draws it (plan 30 · FM6): in the grown kit where the region's people are
+    /// grown and the look is a person, and as it is everywhere else (the band's portraits).
+    /// </summary>
+    internal string InTheKitHere(string look) =>
+        KitHere == Data.CharacterKit.Grown && CharacterModels.KindOf(look) == RigKind.Humanoid ? CharacterStyle.InKit(look, Data.CharacterKit.Grown) : look;
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
     private bool MoveHintsOn => Settings.MoveHints.Holds(Ruleset.Current.Preset);

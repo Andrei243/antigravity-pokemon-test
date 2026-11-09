@@ -55,7 +55,7 @@ public sealed partial class WorldRenderer
         }
         if (!GrownField) return;
         figuresShown.Clear();
-        foreach (var actor in actors) figuresShown.Add(new FieldFigure(actor.Rig, actor.Feet, actor.Yaw, actor.Pose, actor.Over, actor.Who, actor.Sprite));
+        foreach (var actor in actors) figuresShown.Add(new FieldFigure(actor.Rig, actor.Feet, actor.Yaw, actor.Pose, actor.Over, actor.Who, actor.Sprite, actor.Seating));
         liveRigs.Prepare(context, figuresShown, camera.Target, VerticalScale, pitchDeg, Life.Now);
     }
 

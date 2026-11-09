@@ -127,7 +127,14 @@ public enum FieldCamera
     /// 760 units away, pitched 48°, 17° of view: the Driftveil Drawbridge (plan 22 · U6, part b; Black 2's camera 9),
     /// lower and further off than the overworld's, so the sea under the deck shows beside it.
     /// </summary>
-    Drawbridge
+    Drawbridge,
+    /// <summary>
+    /// 520 units away, pitched 50°, 20° of view: the outdoors of a region whose people are grown (plan 30 · FM6,
+    /// decision 3; style guide, "Scale in a grown region"), lower so a tall body isn't a column of foreshortened head,
+    /// the ground across about what Platinum's shows. Every outdoor place of such a region whose own header names no
+    /// camera has it (<c>World</c>'s builder); an area may name it as <c>Kalos</c>.
+    /// </summary>
+    Kalos
 }
 
 /// <summary>

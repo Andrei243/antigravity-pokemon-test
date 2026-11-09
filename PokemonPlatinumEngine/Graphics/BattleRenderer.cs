@@ -751,13 +751,50 @@ public sealed class BattleRenderer
     private void DrawTrainers(CharacterPass pass)
     {
         foreach (var t in trainers)
-            CharacterRenderer.Draw(context, CharacterModels.Get(t.Type, context.Shaders), t.Pose, t.Root, pass);
+        {
+            var rig = TrainerRig(t.Type);
+            CharacterRenderer.Draw(context, rig, t.Pose, InItsKit(rig, t.Root), pass);
+        }
     }
+
+    /// <summary>
+    /// Whether the battle is fought in a region whose people are grown (plan 30 · FM6): the engine sets it as it starts a
+    /// battle, from the region's kit. Where it is false every trainer is the look they were handed, drawn as always.
+    /// </summary>
+    internal bool GrownTrainers { get; set; }
+
+    /// <summary>
+    /// How much smaller a grown trainer is drawn on their platform than the scale the battle hands every trainer
+    /// (plan 30 · FM6; style guide, "Scale in a grown region"): a grown body is about 1.6 model units tall where a chibi
+    /// one is 1.2, so at three quarters it reaches the same height on the platform's screen (2.3 × 0.75, about 1.7).
+    /// </summary>
+    public const float GrownBattleShare = 0.75f;
+
+    private readonly Dictionary<string, string> grownLooks = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The rig a trainer is drawn with: in a grown region (<see cref="GrownTrainers"/>) their look in the grown kit once it
+    /// is made (asked for, never waited for; the chibi look stands in meanwhile), and everywhere else their look.
+    /// </summary>
+    private CharacterRig TrainerRig(string type)
+    {
+        if (GrownTrainers && CharacterModels.KindOf(type) == RigKind.Humanoid)
+        {
+            if (!grownLooks.TryGetValue(type, out var grown)) grownLooks[type] = grown = CharacterStyle.InKit(type, Data.CharacterKit.Grown);
+            if (CharacterModels.TryGet(grown, context.Shaders) is { } ready) return ready;
+        }
+        return CharacterModels.Get(type, context.Shaders);
+    }
+
+    /// <summary>A trainer's root, a grown rig's drawn at <see cref="GrownBattleShare"/> of it about their feet; a chibi rig's as it is.</summary>
+    internal static Matrix4x4 InItsKit(CharacterRig rig, Matrix4x4 root) =>
+        rig.Style.Kit == Data.CharacterKit.Grown ? Matrix4x4.CreateScale(GrownBattleShare) * root : root;
 
     /// <summary>Where a trainer's right hand is in this pose (the ball rests there until it is thrown).</summary>
     private Vector3 HandOf(string type, Matrix4x4 root, CharacterPose pose)
     {
-        var rig = CharacterModels.Get(type, context.Shaders);
+        var rig = TrainerRig(type);
+        root = InItsKit(rig, root);
         if (rig.Skeleton.Count <= HumanBones.HandR) return Vector3.Transform(new Vector3(0, 1.3f, 0.2f), root);
         rig.Animate(pose);
         var hand = rig.Skeleton[HumanBones.HandR].Joint;
