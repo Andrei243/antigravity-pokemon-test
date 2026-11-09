@@ -27,6 +27,13 @@ partial class Harness
                 for (int dx = -reach; dx <= reach; dx++)
                     if (!sinnoh.IsTallGrass(grass.X, grass.Y) && sinnoh.IsTallGrass(115 + dx, 854 + dy) && sinnoh.IsWalkable(115 + dx, 854 + dy)) grass = (115 + dx, 854 + dy);
         At("Sinnoh", grass.X, grass.Y, Direction.Up);
+        // What the rows tell: Starly seen and Bidoof caught (as the mode's Pokédex already has them), Kricketot not
+        // seen, and a search level on Bidoof's row, taken off again after
+        var dex = game.Pokedex;
+        dex.RegisterSeen(PokemonDatabase.Get("Starly")!.DexNumber);
+        dex.RegisterCaught(PokemonDatabase.Get("Bidoof")!.DexNumber);
+        bool hadLevel = game.DexNav.Levels.TryGetValue("Bidoof", out int keptLevel);
+        game.DexNav.Levels["Bidoof"] = 12;
         var dexScreen = game.PokedexScreen;
         foreach (var (shot, hour) in new[] { ("26n_pokedex_here_morning", TimeOfDay.Morning), ("26o_pokedex_here_night", TimeOfDay.Night) })
         {
@@ -47,6 +54,8 @@ partial class Harness
             dexScreen.Close();
             game.State = GameState.Overworld;
         }
+        if (hadLevel) game.DexNav.Levels["Bidoof"] = keptLevel;
+        else game.DexNav.Levels.Remove("Bidoof");
         engine.Settings.TimeOfDay = time;
         engine.ApplySettings(window: false);
         if (!had) game.Bag.RemoveItem(dexNav, 1);

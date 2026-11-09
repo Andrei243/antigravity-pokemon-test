@@ -2,7 +2,7 @@ partial class Harness
 {
     // ---------------------------------------------------------------- the DexNav's rustle (plan 10 · F12)
 
-    // The last of `life` (LIFE_PART=rustle runs it alone): on Route 202 a find put hiding in the grass by the DexNav, its
+    // The last of `life` (LIFE_PART=rustle runs it alone): on Route 201 (where no trainer looks) a find put hiding in the grass by the DexNav, its
     // tile parting and its shiver marks up (l70_rustle), the player creeping up on it with the run button held
     // (l71_sneaking_up), and a plain walk within three tiles scaring it out of the grass (l72_rustle_scared). The player
     // keeps to ground that is no tall grass, so no wild Pokémon is met on the way; the find is taken away after.
@@ -11,21 +11,21 @@ partial class Harness
         var sinnoh = MapDatabase.Get("Sinnoh");
         var walker = game.Player;
         bool Open(int x, int y) => sinnoh.InBounds(x, y) && sinnoh.IsWalkable(x, y) && !sinnoh.IsTallGrass(x, y);
-        // A row of five open tiles running east, and tall grass six east of its first (or a row up)
+        // A row of five open tiles running east, and tall grass six east of its first
         (int X, int Y, int GrassX, int GrassY)? spot = null;
         for (int reach = 0; reach < 40 && spot == null; reach++)
             for (int dy = -reach; dy <= reach && spot == null; dy++)
                 for (int dx = -reach; dx <= reach && spot == null; dx++)
                 {
                     if (Math.Max(Math.Abs(dx), Math.Abs(dy)) != reach) continue;
-                    int x = 174 + dx, y = 815 + dy;
+                    int x = 116 + dx, y = 868 + dy;
                     if (!Enumerable.Range(0, 5).All(i => Open(x + i, y))) continue;
-                    foreach (int gy in new[] { y, y - 1 })
-                        if (sinnoh.IsTallGrass(x + 6, gy) && sinnoh.IsWalkable(x + 6, gy) && spot == null) spot = (x, y, x + 6, gy);
+                    // (on the row walked, with walkable ground south of it, so nothing tall stands in front of it)
+                    if (sinnoh.IsTallGrass(x + 6, y) && sinnoh.IsWalkable(x + 6, y) && sinnoh.IsWalkable(x + 6, y + 1)) spot = (x, y, x + 6, y);
                 }
         if (spot is not { } s)
         {
-            Console.WriteLine("!! rustle: no row of open ground beside tall grass near Route 202");
+            Console.WriteLine("!! rustle: no row of open ground beside tall grass near Route 201");
             return;
         }
         At("Sinnoh", s.X, s.Y, Direction.Right);
@@ -70,7 +70,7 @@ partial class Harness
         for (int guard = 0; guard < 120 && walker.GridX == fromX; guard++) Frames(1);
         engine.Steering = (null, false);
         for (int guard = 0; guard < 60 && walker.IsMoving; guard++) Frames(1);
-        Frames(4);
+        Frames(10);
         Console.WriteLine($"l72: the find {(game.DexNavRustle == null ? "scared off" : "!! still there")}, the chain {game.DexNav.Chain}");
         Shot("l72_rustle_scared");
         ShotCrop("l72b_rustle_scared_native", 760, 300, 640, 360, 2);
