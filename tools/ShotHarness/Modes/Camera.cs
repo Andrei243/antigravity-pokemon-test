@@ -166,6 +166,9 @@ partial class Harness
                 MoveReel(b, $"bc_{manner.Name}_close_{battle}", 40, confirmEvery: 10, every: 0.2);
             }
         }
+        // The formats and the rest (plan 45 · BC7), only asked for: CAMERA_PART=formats, or triple, rotation, royal, sos, photo, halls, link, replay
+        if (parts.Any(p => p is "formats" or "triple" or "rotation" or "royal" or "sos" or "photo" or "halls" or "link" or "replay"))
+            CameraFormats(manners, p => parts.Contains("formats", StringComparer.OrdinalIgnoreCase) || parts.Contains(p, StringComparer.OrdinalIgnoreCase));
         engine.FixedCameraManner = null;
         game.State = GameState.Overworld;
     }

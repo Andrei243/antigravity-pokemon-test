@@ -47,6 +47,29 @@ internal sealed class BattleStage
     public const float PitchDeg = 9f;
     public const float FovYDeg = 24f;
 
+    /// <summary>
+    /// The walls of a walled arena (plan 45 · BC7): the room's (<c>BattleArena.Indoors</c>) and the hall's (a Gym's, the
+    /// League's, and so the Battle Frontier's facilities, which are fought on the hall), whose coordinates
+    /// <see cref="BattleArenas"/> draws the walls from; no camera of any manner stands outside them. Null for an arena open
+    /// on every side. The back wall stands at <c>MinZ</c>, the side walls at <c>MinX</c> and <c>MaxX</c>, and the room is
+    /// open to the camera at the south (<c>MaxZ</c>).
+    /// </summary>
+    public static (float MinX, float MaxX, float MinZ, float MaxZ, float Height)? Enclosure(BattleArena arena) => arena switch
+    {
+        BattleArena.Indoors => (RoomWest, RoomEast, RoomNorth, WallsSouth, 14f),
+        BattleArena.Gym or BattleArena.League => (HallWest, HallEast, HallNorth, WallsSouth, 18f),
+        _ => null
+    };
+
+    /// <summary>The room's walls: the west and east side walls and the back wall's z (the room is 40 deep to the south).</summary>
+    public const float RoomWest = -21f, RoomEast = 19f, RoomNorth = -16f;
+
+    /// <summary>The hall's walls: the same.</summary>
+    public const float HallWest = -24f, HallEast = 21f, HallNorth = -22f;
+
+    /// <summary>How far south the side walls reach.</summary>
+    public const float WallsSouth = 40f;
+
     /// <summary>Where the Pokémon stand: the top of the arena's platforms.</summary>
     public static float PlatformTopOf(BattleArena arena) => arena switch
     {

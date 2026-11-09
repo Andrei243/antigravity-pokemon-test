@@ -28,7 +28,7 @@ public partial class GameEngine
     internal bool OpenBattlePhoto()
     {
         if (IsHeadless || flow.State != GameState.Battle || flow.Battle == null || battlePhoto != null) return false;
-        battlePhoto = new BattlePhotoView(battleRenderer.CurrentShot);
+        battlePhoto = new BattlePhotoView(battleRenderer.PhotoStart);
         battlePhotographed = flow.Battle;
         battleRenderer.Photo = battlePhoto;
         AudioManager.PlaySound("menu_open");
