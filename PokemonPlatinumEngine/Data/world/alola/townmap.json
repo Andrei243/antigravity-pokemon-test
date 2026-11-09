@@ -399,6 +399,10 @@
     "UltraWildsField": "4,18",
     "UltraWildsCliff": "4,18",
     "UltraWildsCave": "4,18",
+    "UltraMegalopolis_LampHouse": "4,18",
+    "UltraMegalopolis_VeyrasHome": "4,18",
+    "UltraMegalopolis_Archive": "4,18",
+    "UltraMegalopolis_Workshop": "4,18",
     // The Battle Tree's hall is come to by its desk's script alone: shown at the Gauntlet's head
     "PoniGauntlet_BattleTreeHall": "10,16"
   }

@@ -1,0 +1,128 @@
+{
+  "name": "UltraMegalopolis_VeyrasHome",
+  "displayName": "Veyra's Home",
+  "bgmTrack": "alola/ultra_space",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "UltraMegalopolis",
+      "targetX": 51,
+      "targetY": 36,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "veyra_mother",
+      "name": "Woman",
+      "npcType": "lady",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "My daughter Veyra spent her whole life looking for the light. Now she spends it looking at it.",
+        "Thank you for bringing it home. She talks about you as if you were a sunrise."
+      ]
+    },
+    {
+      "id": "veyra_brother",
+      "name": "Young Man",
+      "npcType": "scientist",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "I studied the old lenses with my sister. We never thought anyone could wake Necrozma and walk away."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

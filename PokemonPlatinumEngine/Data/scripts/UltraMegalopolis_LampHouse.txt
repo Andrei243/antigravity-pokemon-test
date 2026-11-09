@@ -1,0 +1,21 @@
+# The lamp keeper's house, Ultra Megalopolis (plan 23, Alola finished: a door Z8 left shut, a room of ours). The lines
+# are our own. Once the light is back (FLAG_ALOLA_LIGHT_RETURNED, MegaloTower.txt) the lamp keeper's wife gives the
+# player a Star Piece once, a shard of the old light her husband kept (FLAG_ALOLA_MEGALOPOLIS_STAR_PIECE).
+
+
+script Wife
+  face self player
+  speaker "Lamp Keeper's Wife"
+  if not flag FLAG_ALOLA_LIGHT_RETURNED goto Dark
+  if flag FLAG_ALOLA_MEGALOPOLIS_STAR_PIECE goto Thanks
+  say "You're the one who brought the light back! My husband has kept a shard of the old light in a jar for forty years."
+  say "He says it belongs to you now. He's too proud to give it to you himself, so here."
+  give "Star Piece"
+  setflag FLAG_ALOLA_MEGALOPOLIS_STAR_PIECE
+  end
+label Thanks
+  say "My husband still lights the lamps every evening. Old habits. I don't have the heart to tell him to stop."
+  end
+label Dark
+  say "My husband keeps the city's lamps. Without them we'd never find our own front doors."
+  end

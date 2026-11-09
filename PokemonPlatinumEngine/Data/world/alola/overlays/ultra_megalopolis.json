@@ -1,7 +1,8 @@
 {
   // Ultra Megalopolis (plan 23 · Z8): a world of Ultra Space, drawn by hand in our own drawing of what the games describe.
   // It is come to through the Ultra Wormhole over the Altar of the Sunne and Moone's dais (poni_altar.txt) and left by
-  // the wormhole it is come in by, read at 32,55 (common.UltraWayHome).
+  // the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Its four houses, shut until plan 23's last Alola
+  // session, are rooms of ours: the lamp keeper's, Veyra's family's, the archive and a lens workshop.
   "area": "ultra_megalopolis",
   "bgmTrack": "alola/ultra_space",
   "trees": "Round",
@@ -13,13 +14,11 @@
       "x": 7,
       "y": 12,
       "facing": "Up"
-    }
-  ],
-  "locked": [
-    1,
-    2,
-    3,
-    4
+    },
+    { "warp": 1, "map": "UltraMegalopolis_LampHouse", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 2, "map": "UltraMegalopolis_VeyrasHome", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "UltraMegalopolis_Archive", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 4, "map": "UltraMegalopolis_Workshop", "x": 4, "y": 8, "facing": "Up" }
   ],
   "readAt": [
     {

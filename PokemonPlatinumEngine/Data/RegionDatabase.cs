@@ -1094,6 +1094,8 @@ public static class RegionDatabase
                 "UltraMegalopolis", "MegaloTower", "RoyalAvenue_BattleRoyalDome",
                 // Plan 23, Alola finished: the Ultra Warp Ride's four worlds of the wilds
                 "UltraWildsWater", "UltraWildsField", "UltraWildsCliff", "UltraWildsCave",
+                // and Ultra Megalopolis's four houses
+                "UltraMegalopolis_LampHouse", "UltraMegalopolis_VeyrasHome", "UltraMegalopolis_Archive", "UltraMegalopolis_Workshop",
                 // The wave after Ultra Space: Resolution Cave, a cave map of its own under Poni Meadow
                 "ResolutionCave",
                 // Plan 23, the Battle Tree's inside and the rest of the islands: the Battle Tree's lobby and hall at the head of
