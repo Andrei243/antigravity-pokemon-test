@@ -6,10 +6,12 @@ using System.Text.RegularExpressions;
 // Concept art for the sculpting sessions, drawn by Gemini from the proposals' written briefs.
 //   dotnet run --project tools/GeminiArt -- list
 //   dotnet run --project tools/GeminiArt -- prompt <name>
-//   dotnet run --project tools/GeminiArt -- generate [--set kanto|johto|hoenn|sinnoh|megas] [--model <id>] [--size 1K|2K]
+//   dotnet run --project tools/GeminiArt -- generate [--set kanto|johto|hoenn|sinnoh|megas|carpathia] [--model <id>] [--size 1K|2K]
 //                                                   [--force] [--delay <ms>] [--limit <n>] [name ...]
 // The key is read from the GEMINI_API_KEY environment variable and never written anywhere.
 // Pictures go to docs/art/reference/gemini/<set>/: references for the sculptors, not game art, not shipped.
+// A brief that evolves from another brief of its set (the other's "- **Evolution**: into <Name>") is sent the other's
+// picture beside its words, so a line reads as one design: the first stage is drawn first, and a later stage waits for it.
 
 return await Cli.Run(args);
 
@@ -53,7 +55,7 @@ static class Cli
 
             case "prompt":
                 if (chosen.Count == 0) { Console.Error.WriteLine("no brief by that name"); return 2; }
-                foreach (var b in chosen.Take(3)) Console.WriteLine(b.Prompt() + "\n");
+                foreach (var b in chosen.Take(3)) Console.WriteLine(b.Prompt(b.From != null) + "\n");
                 return 0;
 
             case "fetch-official":
@@ -81,7 +83,7 @@ static class Cli
         using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(3) };
         http.DefaultRequestHeaders.Add("x-goog-api-key", key);
 
-        int made = 0, skipped = 0, failed = 0;
+        int made = 0, skipped = 0, failed = 0, waiting = 0;
         foreach (var b in chosen)
         {
             if (made >= limit) break;
@@ -99,6 +101,19 @@ static class Cli
                 if (File.Exists(basePath)) baseImage = await File.ReadAllBytesAsync(basePath);
                 else if (File.Exists(OfficialPath(root, b))) baseImage = await File.ReadAllBytesAsync(OfficialPath(root, b));
             }
+            // A later stage of a line is drawn from the stage before it, which must be drawn first.
+            if (b.From != null)
+            {
+                var before = Briefs.Before(chosen, b);
+                string fromPath = Path.Combine(dir, (before?.Slug ?? Briefs.SlugOf(b.From)) + ".jpg");
+                if (!File.Exists(fromPath))
+                {
+                    Console.WriteLine($"waits for {b.From}'s picture (generate it first)");
+                    waiting++;
+                    continue;
+                }
+                baseImage = await File.ReadAllBytesAsync(fromPath);
+            }
             var result = await Ask(http, model, size, b.Prompt(baseImage != null), dir, baseImage);
             if (result.Bytes == null)
             {
@@ -114,7 +129,7 @@ static class Cli
             }
             await Task.Delay(delay);
         }
-        Console.WriteLine($"made {made}, kept {skipped}, failed {failed}");
+        Console.WriteLine($"made {made}, kept {skipped}, failed {failed}" + (waiting > 0 ? $", waiting for the stage before {waiting}" : ""));
         return failed == 0 ? 0 : 1;
     }
 
@@ -270,6 +285,15 @@ static class Cli
 
 record Brief(string Set, string Name, string Slug, string Typing, string Category, string Look, string Size, string Form = "")
 {
+    /// <summary>The brief of the same set this one evolves from, when that brief names it ("- **Evolution**: into …").</summary>
+    public string? From { get; set; }
+
+    /// <summary>What this brief evolves into, read from its own Evolution line.</summary>
+    public string? Into { get; init; }
+
+    // A Carpathian form of a species of the games keeps that species' body; everything else is a design of ours.
+    public bool IsRegionalForm => Set == "carpathia" && Name.StartsWith("Carpathian ", StringComparison.Ordinal);
+
     // One prompt for every creature, so the sheet reads as one set of references.
     public bool IsMegaDynamax => Name.StartsWith("Mega Dynamax ", StringComparison.OrdinalIgnoreCase);
 
@@ -282,7 +306,12 @@ record Brief(string Set, string Name, string Slug, string Typing, string Categor
         var sb = new StringBuilder();
         sb.AppendLine("Concept art for a 3D sculptor: one original fictional creature for a monster-collecting video game, drawn as a character design reference.");
         sb.AppendLine("Show the whole body in a clean three-quarter view, standing on nothing, centred on a plain white background, with enough room round it. Clean dark outlines, flat colours with one soft shade and one highlight, readable silhouette. No text, no labels, no logo, no border, no second creature, no scenery.");
-        sb.AppendLine("This is a new, original design. It must not copy or imitate any existing Pokémon or other franchise character.");
+        if (IsRegionalForm)
+            sb.AppendLine($"This is a regional variant of the existing Pokémon {Name["Carpathian ".Length..]}: keep that Pokémon's body, proportions and silhouette recognisable, and change only what the brief says.");
+        else
+            sb.AppendLine("This is a new, original design. It must not copy or imitate any existing Pokémon or other franchise character.");
+        if (baseAttached && From != null)
+            sb.AppendLine($"The attached picture is {From}, the stage this creature evolves from. Keep its colour palette, markings and design language so the two read clearly as one evolutionary line, and grow it into this later stage as the brief says; do not copy the picture as it is.");
         sb.AppendLine();
         sb.AppendLine($"Name (do not write it in the picture): {Name}");
         if (Typing.Length > 0) sb.AppendLine($"Elemental typing, for mood and palette: {Typing}");
@@ -323,6 +352,8 @@ static class Briefs
         ("paldea", "D14-proposals-paldea.md"), ("megas", "R20b-mega-proposals.md"), ("megadynamax", "R20c-mega-dynamax-proposals.md"),
         ("alola", "D14-proposals-alola-supplement.md"), ("galar", "D14-proposals-galar-supplement.md"),
         ("kalos", "D14-proposals-kalos-supplement.md"), ("paldea", "D14-proposals-paldea-supplement.md"),
+        ("carpathia", "CP-dex-1-plateau.md"), ("carpathia", "CP-dex-2-mountains.md"), ("carpathia", "CP-dex-3-river-and-caves.md"),
+        ("carpathia", "CP-dex-4-folk-and-legends.md"), ("carpathia", "CP-dex-5-forms.md"),
     };
 
     public static List<Brief> ReadAll(string root)
@@ -330,12 +361,22 @@ static class Briefs
         var list = new List<Brief>();
         foreach (var (set, file) in Files)
         {
-            string path = Path.Combine(root, "docs", "plans", file);
+            // The proposals moved into docs/plans/decisions; either place is read.
+            string path = Path.Combine(root, "docs", "plans", "decisions", file);
+            if (!File.Exists(path)) path = Path.Combine(root, "docs", "plans", file);
             if (!File.Exists(path)) continue;
             list.AddRange(Read(set, File.ReadAllLines(path)));
         }
+        // Each brief that names what it evolves into gives that brief of its set its forebear.
+        foreach (var b in list.Where(b => b.Into != null))
+            foreach (var next in list.Where(n => n.Set == b.Set && n.Name.Equals(b.Into, StringComparison.OrdinalIgnoreCase)))
+                next.From = b.Name;
         return list;
     }
+
+    /// <summary>The brief a brief evolves from, among those given.</summary>
+    public static Brief? Before(IEnumerable<Brief> all, Brief b) =>
+        b.From == null ? null : all.FirstOrDefault(x => x.Set == b.Set && x.Name == b.From);
 
     static readonly Regex Heading = new(@"^### \d+\. (?<head>.+)$");
 
@@ -350,13 +391,18 @@ static class Briefs
             // "Name, from Forebear (20): say"  or  "Mega Name: `Form`, Stone"
             string head = m.Groups["head"].Value;
             string name = Regex.Match(head, @"^[^,:(]+").Value.Trim();
-            string typing = "", look = "", category = "", size = "", number = "";
+            string typing = "", look = "", category = "", size = "", number = "", into = "";
             string form = Regex.Match(head, "`(?<f>[^`]+)`").Groups["f"].Value; // "Venusaur-Mega-Mmax"
             for (int j = i + 1; j < lines.Length && !lines[j].StartsWith("### ") && !lines[j].StartsWith("## "); j++)
             {
                 string t = lines[j];
                 if (t.StartsWith("- **Typing**:")) typing = Clean(After(t));
                 else if (t.StartsWith("- **Look**:")) look = Clean(After(t));
+                else if (t.StartsWith("- **Evolution**:"))
+                {
+                    var m2 = Regex.Match(After(t), @"^into (?<n>.+?) (at|with|when|on|in|by)\b");
+                    if (m2.Success) into = m2.Groups["n"].Value.Trim();
+                }
                 else
                 {
                     var cat = Regex.Match(t, @"^- \*\*(?<c>The [^*]+)\*\*, No\. (?<n>\d+)\.? ?(?<s>.*)$");
@@ -375,7 +421,7 @@ static class Briefs
             typing = Regex.Match(typing.Trim(), @"^[A-Za-z /]+").Value.Trim();
 
             string slug = Slug(number.Length > 0 ? $"{number}-{name}" : name);
-            found.Add(new Brief(set, name, slug, typing, category, look, size, form));
+            found.Add(new Brief(set, name, slug, typing, category, look, size, form) { Into = into.Length > 0 ? into : null });
         }
         return found;
     }
