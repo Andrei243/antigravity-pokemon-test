@@ -1,0 +1,11 @@
+# akala_route_6 (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanGothita
+  speaker none
+  cry "Gothita"
+  text "It's the Gothita the Island Scan picked up! It's ready to battle!"
+  wildbattle "Gothita" 17
+  setflag FLAG_DAILY_ALOLA_SCAN_GOTHITA_MET
+  end

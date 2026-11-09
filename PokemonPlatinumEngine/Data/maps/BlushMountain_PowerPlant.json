@@ -1,0 +1,138 @@
+{
+  "name": "BlushMountain_PowerPlant",
+  "displayName": "Geothermal Power Plant",
+  "bgmTrack": "alola/power_plant",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#.#..#..#..#..#.#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Tank",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tank",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Ulaula",
+      "targetX": 119,
+      "targetY": 148,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "chief",
+      "name": "Plant Chief",
+      "npcType": "scientist",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Chief"
+    },
+    {
+      "id": "kanoa",
+      "name": "Kanoa",
+      "npcType": "worker",
+      "x": 3,
+      "y": 8,
+      "facing": "Right",
+      "script": "Kanoa"
+    },
+    {
+      "id": "ola",
+      "name": "Ola",
+      "npcType": "scientist",
+      "x": 13,
+      "y": 7,
+      "facing": "Left",
+      "script": "Ola"
+    },
+    {
+      "id": "engineer",
+      "name": "Engineer",
+      "npcType": "worker",
+      "x": 12,
+      "y": 11,
+      "facing": "Up",
+      "script": "Engineer"
+    },
+    {
+      "id": "zygarde_cell_plant",
+      "name": "Zygarde Cell",
+      "npcType": "ZygardeCell",
+      "x": 2,
+      "y": 11,
+      "facing": "Down",
+      "script": "PlantCell",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PLANT"
+    }
+  ],
+  "wildEncounters": []
+}

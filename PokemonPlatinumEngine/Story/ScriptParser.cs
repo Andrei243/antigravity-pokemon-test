@@ -880,7 +880,7 @@ public static class ScriptParser
                 string which = what switch
                 {
                     // (and the later places' counters, plan 37's decision 6: Kiloude City's Battle Maison)
-                    "prize" => r.OneOf("items", "machines", "training", "maison"),
+                    "prize" => r.OneOf("items", "machines", "training", "maison", "tree"),
                     "records" or "print" or "printed" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
                     "judged" => r.OneOf("total", "best"),
                     _ => ""

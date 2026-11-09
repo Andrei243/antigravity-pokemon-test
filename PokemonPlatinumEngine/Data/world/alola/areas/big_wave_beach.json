@@ -1,0 +1,178 @@
+{
+  "key": "big_wave_beach",
+  "index": 541,
+  "name": "Big Wave Beach",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "BIG_WAVE_BEACH",
+  "nightMusic": "BIG_WAVE_BEACH",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    {
+      "id": "kahale",
+      "looks": "skull_grunt",
+      "movement": "look_west",
+      "x": 182,
+      "z": 154,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 4,
+      "script": "TRAINER_TEAM_SKULL_GRUNT_KAHALE"
+    },
+    {
+      "id": "surfer",
+      "looks": "swimmer_m",
+      "movement": "look_south",
+      "x": 162,
+      "z": 158,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "sightseer",
+      "looks": "lady",
+      "movement": "look_west",
+      "x": 186,
+      "z": 162,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "youngster",
+      "looks": "youngster",
+      "movement": "look_east",
+      "x": 166,
+      "z": 150,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball_1",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 192,
+      "z": 144,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_BIG_WAVE_WHITE_HERB",
+      "item": "White Herb"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 185,
+      "z": 148,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_BIG_WAVE_BEACH_1"
+    }
+  ],
+  "signs": [
+    {
+      "x": 172,
+      "z": 165,
+      "type": 0,
+      "script": "BeachSign"
+    },
+    {
+      "x": 156,
+      "z": 149,
+      "type": 2,
+      "script": "HIDDEN_1",
+      "item": "Pearl",
+      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_1"
+    },
+    {
+      "x": 175,
+      "z": 164,
+      "type": 2,
+      "script": "HIDDEN_2",
+      "item": "Pearl",
+      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_2"
+    },
+    {
+      "x": 182,
+      "z": 148,
+      "type": 2,
+      "script": "HIDDEN_3",
+      "item": "Pearl",
+      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_3"
+    },
+    {
+      "x": 188,
+      "z": 156,
+      "type": 2,
+      "script": "HIDDEN_4",
+      "item": "Soda Pop",
+      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_SODA_POP"
+    }
+  ],
+  "triggers": [],
+  "water": [
+    {
+      "species": "Tentacool",
+      "level": 10
+    },
+    {
+      "species": "Tentacool",
+      "level": 12
+    },
+    {
+      "species": "Wingull",
+      "level": 10
+    },
+    {
+      "species": "Wingull",
+      "level": 12
+    },
+    {
+      "species": "Finneon",
+      "level": 11
+    },
+    {
+      "species": "Mantyke",
+      "level": 12
+    }
+  ],
+  "waterRate": 20,
+  "superRod": [
+    {
+      "species": "Magikarp",
+      "level": 10
+    },
+    {
+      "species": "Wishiwashi",
+      "level": 11
+    },
+    {
+      "species": "Shellder",
+      "level": 12
+    },
+    {
+      "species": "Luvdisc",
+      "level": 12
+    }
+  ],
+  "superRodRate": 20
+}

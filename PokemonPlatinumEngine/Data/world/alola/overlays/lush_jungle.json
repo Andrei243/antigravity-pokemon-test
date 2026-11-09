@@ -13,6 +13,7 @@
     { "x": 202, "z": 138, "script": "Ingredient4" }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Core", "npcType": "ZygardeCell", "script": "ZygardeCore", "still": true },
     "mallow": { "name": "Mallow", "npcType": "mallow", "script": "Mallow", "still": true, "hiddenBy": "FLAG_ALOLA_LUSH_TRIAL_DONE" },
     "totem": { "name": "Lurantis", "script": "Totem", "still": true, "hiddenBy": "FLAG_ALOLA_LUSH_TRIAL_DONE", "shownBy": "FLAG_ALOLA_LUSH_TOTEM" },
     "picnicker": {

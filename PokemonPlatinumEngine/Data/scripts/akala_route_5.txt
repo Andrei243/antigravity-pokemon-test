@@ -33,3 +33,13 @@ script GladionTalk
   speaker "Gladion"
   say "..."
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanBellsprout
+  speaker none
+  cry "Bellsprout"
+  text "It's the Bellsprout the Island Scan picked up! It's ready to battle!"
+  wildbattle "Bellsprout" 16
+  setflag FLAG_DAILY_ALOLA_SCAN_BELLSPROUT_MET
+  end

@@ -36,3 +36,13 @@ script Hau
 label Talk
   say "I'm gonna get a malasada and then I'll do the trial too. Probably. After a nap."
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanChikorita
+  speaker none
+  cry "Chikorita"
+  text "It's the Chikorita the Island Scan picked up! It's ready to battle!"
+  wildbattle "Chikorita" 10
+  setflag FLAG_DAILY_ALOLA_SCAN_CHIKORITA_MET
+  end

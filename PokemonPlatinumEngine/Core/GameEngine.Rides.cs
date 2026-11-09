@@ -71,6 +71,24 @@ public partial class GameEngine
         return StartScript(TaurosChargeScript, rock);
     }
 
+    // The hidden thing Stoutland last stopped for, so its nose doesn't stop at every step beside the same one
+    private (string Map, int X, int Y)? sniffed;
+
+    /// <summary>
+    /// Stoutland's Search on a step (plan 23, the rest of the islands): ridden, it stops with its nose down where something
+    /// hidden lies within reach (<see cref="StoutlandSearch"/>), the player's bubble and a sound saying so, once for each.
+    /// </summary>
+    private void SniffOnStoutland()
+    {
+        if (flow.Player.Mode != TravelMode.Riding || !StoutlandSearch.Sniffs(flow.Player.Steed)) return;
+        if (StoutlandSearch.Nearest(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Story) is not { } found) return;
+        var spot = (flow.Map.Name, found.X, found.Y);
+        if (sniffed == spot) return;
+        sniffed = spot;
+        ShowEmote(null, EmoteBubble.Exclaim);
+        AudioManager.PlaySound("dowsing_ping");
+    }
+
     /// <summary>A save with a ride registered and no pager in the bag is owed the pager as it loads (no story version).</summary>
     private void OweTheRidePager()
     {

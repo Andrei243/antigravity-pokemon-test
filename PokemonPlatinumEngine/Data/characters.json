@@ -646,7 +646,12 @@
     "house_corvin": { "hairColor": "#c8ccd6", "hair": "Swept", "top": "#7a2436", "accent": "#e2c254", "bottom": "#2a2228", "shoes": "#1e1a1e", "eyes": "#4a3a46", "coat": true, "build": "Adult", "height": 1.12 },
     "house_isaura": { "hairColor": "#26202e", "hair": "Long", "top": "#1e6a6e", "accent": "#e2c254", "bottom": "#1e3a40", "shoes": "#1e2226", "eyes": "#2a5a5e", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.06 },
     "house_tamsin": { "hairColor": "#5a3a2a", "hair": "Bun", "top": "#5a3a8a", "accent": "#e2c254", "bottom": "#2e2440", "shoes": "#221e2a", "eyes": "#5a3a6a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
-    "house_ludovic": { "hairColor": "#2a2224", "hair": "Short", "top": "#263a6a", "accent": "#e2c254", "bottom": "#1e2638", "shoes": "#1a1c22", "eyes": "#2a3046", "coat": true, "mustache": true, "build": "Adult", "height": 1.1 }
+    "house_ludovic": { "hairColor": "#2a2224", "hair": "Short", "top": "#263a6a", "accent": "#e2c254", "bottom": "#1e2638", "shoes": "#1a1c22", "eyes": "#2a3046", "coat": true, "mustache": true, "build": "Adult", "height": 1.1 },
+    // Plan 23, the Battle Tree's inside: its two Tree Masters, ours, in the tree's greens with a gold trim: Kaimana of the
+    // single room, a tall islander with his hair tied back, in a long moss coat; Leilani of the double, in a leaf-green dress
+    // with a pink bow in her long hair
+    "tree_kaimana": { "skin": "#9a6a48", "hairColor": "#1e1a1a", "hair": "Ponytail", "top": "#3e6a3a", "accent": "#e2c254", "bottom": "#2a3a26", "shoes": "#2a2420", "eyes": "#3a2a24", "coat": true, "build": "Adult", "height": 1.14 },
+    "tree_leilani": { "skin": "#c89068", "hairColor": "#2a1e1a", "hair": "Long", "hat": "Bow", "hatColor": "#e85a7a", "top": "#4e8a3e", "accent": "#e2c254", "bottom": "#3a6a30", "shoes": "#3a2e28", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },

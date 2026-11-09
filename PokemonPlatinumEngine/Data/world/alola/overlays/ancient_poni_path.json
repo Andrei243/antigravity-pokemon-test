@@ -4,6 +4,9 @@
   "bgmTrack": "alola/trial",
   "trees": "Round",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_emboar": { "name": "Emboar", "npcType": "Pokemon", "species": "Emboar", "script": "ScanEmboar", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_EMBOAR", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_EMBOAR_MET" },
     "hoku": {
       "name": "Hoku",
       "npcType": "ruin_maniac",

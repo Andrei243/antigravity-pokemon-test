@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Models.Facilities;
 public static class FacilityPlaces
 {
     /// <summary>The places' words, in order; a place's number is its place here.</summary>
-    public static readonly string[] Names = { StreakHouse.Place };
+    public static readonly string[] Names = { StreakHouse.Place, BattleTree.Place };
 
     public static bool IsPlace(string word) => Array.IndexOf(Names, word) >= 0;
 
@@ -21,6 +21,7 @@ public static class FacilityPlaces
     public static IReadOnlyList<string> WaysOf(string place) => place switch
     {
         StreakHouse.Place => StreakHouse.Ways,
+        BattleTree.Place => BattleTree.Ways,
         _ => throw new ArgumentException($"No later battle place is called {place}", nameof(place))
     };
 
@@ -28,7 +29,16 @@ public static class FacilityPlaces
     public static StreakRoom RoomOf(string place, string way, bool hard) => place switch
     {
         StreakHouse.Place => StreakHouse.Room(way, hard),
+        BattleTree.Place => BattleTree.Room(way, hard),
         _ => throw new ArgumentException($"No later battle place is called {place}", nameof(place))
+    };
+
+    /// <summary>How many of a place's hard rooms' trophies the story holds (the records' board's print).</summary>
+    public static int Trophies(string place, Story.StoryState story) => place switch
+    {
+        StreakHouse.Place => StreakHouse.Trophies(story),
+        BattleTree.Place => BattleTree.Trophies(story),
+        _ => 0
     };
 
     /// <summary>Every word of every place's ways, which the script reader takes after <c>way</c>.</summary>

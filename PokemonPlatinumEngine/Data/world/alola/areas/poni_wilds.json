@@ -117,6 +117,53 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_WILDS_MAX_REVIVE",
       "item": "Max Revive"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 105,
+      "z": 176,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_WILDS_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 63,
+      "z": 176,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_WILDS_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 53,
+      "z": 186,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_WILDS_3"
+    },
+    {
+      "id": "scan_samurott",
+      "looks": "samurott",
+      "movement": "look_south",
+      "x": 52,
+      "z": 193,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [
@@ -137,6 +184,15 @@
       "z": 192,
       "type": 0,
       "script": "CanyonSign"
+    },
+    {
+      "x": 89,
+      "z": 185,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Nugget",
+      "flag": "FLAG_ALOLA_BURIED_PONI_WILDS_1",
+      "buried": true
     }
   ],
   "triggers": [],

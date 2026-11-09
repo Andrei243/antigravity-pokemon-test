@@ -10,6 +10,10 @@
   "architecture": "Islander",
   "evolutionSites": [ "Moss Rock" ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_3": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_eelektross": { "name": "Eelektross", "npcType": "Pokemon", "species": "Eelektross", "script": "ScanEelektross", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_EELEKTROSS", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_EELEKTROSS_MET" },
     "ranger": { "name": "Ranger", "npcType": "ranger_f", "script": "GroveRanger", "still": true, "hiddenBy": "AlolaHallOfFame" },
     "stakataka": { "name": "Stakataka", "npcType": "Pokemon", "species": "Stakataka", "script": "Stakataka", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_STAKATAKA", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" },
     "blacephalon": { "name": "Blacephalon", "npcType": "Pokemon", "species": "Blacephalon", "script": "Blacephalon", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_BLACEPHALON", "shownBy": "FLAG_ALOLA_LIGHT_RETURNED" },

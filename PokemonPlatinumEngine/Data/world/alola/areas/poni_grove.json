@@ -113,6 +113,53 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_GROVE_LEAF_STONE",
       "item": "Leaf Stone"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 165,
+      "z": 181,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_GROVE_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 143,
+      "z": 185,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_GROVE_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 155,
+      "z": 189,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_GROVE_3"
+    },
+    {
+      "id": "scan_eelektross",
+      "looks": "eelektross",
+      "movement": "look_south",
+      "x": 162,
+      "z": 174,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

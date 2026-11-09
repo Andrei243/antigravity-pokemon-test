@@ -19,7 +19,30 @@
     { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 196, "z": 214, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_KEKOA" },
     { "id": "lass", "looks": "lass", "movement": "look_north", "x": 220, "z": 221, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_NOELANI" },
     { "id": "rancher", "looks": "rancher", "movement": "wander_around", "x": 206, "z": 236, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 188, "z": 226, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_6_GREAT_BALL", "item": "Great Ball", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 188, "z": 226, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_6_GREAT_BALL", "item": "Great Ball", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 190,
+      "z": 217,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_6_1"
+    },
+    {
+      "id": "scan_gothita",
+      "looks": "gothita",
+      "movement": "look_south",
+      "x": 203,
+      "z": 220,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
     { "x": 186, "z": 223, "type": 0, "script": "RouteSign" }

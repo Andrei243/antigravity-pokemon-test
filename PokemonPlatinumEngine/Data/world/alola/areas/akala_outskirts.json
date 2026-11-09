@@ -21,7 +21,18 @@
     { "id": "lillie", "looks": "lillie", "movement": "look_east", "x": 359, "z": 152, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 362, "z": 165, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_MAKOA" },
     { "id": "lady", "looks": "lady", "movement": "look_west", "x": 370, "z": 180, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LADY_PUANANI" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 346, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_AKALA_OUTSKIRTS_HARD_STONE", "item": "Hard Stone", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 346, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_AKALA_OUTSKIRTS_HARD_STONE", "item": "Hard Stone", "script": "" },
+    {
+      "id": "scan_honedge",
+      "looks": "honedge",
+      "movement": "look_south",
+      "x": 371,
+      "z": 152,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [],
   "triggers": [],

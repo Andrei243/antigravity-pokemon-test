@@ -20,7 +20,19 @@
   ],
   "objects": [
     { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 311, "z": 217, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
-    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 334, "z": 226, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" }
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 334, "z": 226, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 320,
+      "z": 232,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_9_1"
+    }
   ],
   "signs": [
     { "x": 318, "z": 216, "type": 0, "script": "RouteSign" }

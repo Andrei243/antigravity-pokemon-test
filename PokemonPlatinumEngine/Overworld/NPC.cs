@@ -394,6 +394,12 @@ public class NPC
     /// </summary>
     public const string DeoxysTriangleType = "DeoxysTriangle";
 
+    /// <summary>
+    /// A Zygarde Cell or Core (plan 23, the rest of the islands; Sun and Moon's): a thing of the map, in the way like a person
+    /// and spoken to like one (<c>common.ZygardeCell</c> gathers it into the Zygarde Cube). Drawn as a card of our own.
+    /// </summary>
+    public const string ZygardeCellType = "ZygardeCell";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -426,6 +432,7 @@ public class NPC
         ElectricFanType => PropType.ElectricFan,
         LawnmowerType => PropType.Lawnmower,
         DeoxysTriangleType => PropType.DeoxysTriangle,
+        ZygardeCellType => PropType.ZygardeCell,
         _ => null
     };
 

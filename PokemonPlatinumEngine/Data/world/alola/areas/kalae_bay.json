@@ -85,6 +85,29 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_KALAE_BAY_PEARL",
       "item": "Pearl",
       "script": ""
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 440,
+      "z": 108,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_KALAE_BAY_1"
+    },
+    {
+      "id": "scan_horsea",
+      "looks": "horsea",
+      "movement": "look_south",
+      "x": 434,
+      "z": 114,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

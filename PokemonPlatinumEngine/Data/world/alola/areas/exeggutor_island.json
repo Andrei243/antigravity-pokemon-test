@@ -52,6 +52,41 @@
       "trainer": "normal",
       "sight": 3,
       "script": "TRAINER_ACE_TRAINER_IOLANA"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 272,
+      "z": 95,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_EXEGGUTOR_ISLAND_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 233,
+      "z": 100,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_EXEGGUTOR_ISLAND_2"
+    },
+    {
+      "id": "scan_serperior",
+      "looks": "serperior",
+      "movement": "look_south",
+      "x": 210,
+      "z": 81,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [
@@ -60,6 +95,15 @@
       "z": 98,
       "type": 0,
       "script": "IslandSign"
+    },
+    {
+      "x": 242,
+      "z": 86,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Rare Candy",
+      "flag": "FLAG_ALOLA_BURIED_EXEGGUTOR_ISLAND_1",
+      "buried": true
     }
   ],
   "triggers": [],

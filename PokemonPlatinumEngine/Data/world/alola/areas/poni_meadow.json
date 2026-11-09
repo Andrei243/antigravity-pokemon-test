@@ -72,6 +72,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_MEADOW_OVAL_STONE",
       "item": "Oval Stone"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 262,
+      "z": 224,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_MEADOW_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 246,
+      "z": 242,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_MEADOW_2"
+    },
+    {
+      "id": "scan_leavanny",
+      "looks": "leavanny",
+      "movement": "look_south",
+      "x": 237,
+      "z": 222,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

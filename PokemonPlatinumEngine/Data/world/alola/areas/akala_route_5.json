@@ -22,7 +22,30 @@
     { "id": "breeder", "looks": "pokemon_breeder_f", "movement": "look_east", "x": 140, "z": 146, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_POKEMON_BREEDER_LEHUA" },
     { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 158, "z": 140, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_KOAPAKA" },
     { "id": "lass", "looks": "lass", "movement": "look_east", "x": 140, "z": 120, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_MAILE" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_5_STAR_PIECE", "item": "Star Piece", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_5_STAR_PIECE", "item": "Star Piece", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 165,
+      "z": 131,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_5_1"
+    },
+    {
+      "id": "scan_bellsprout",
+      "looks": "bellsprout",
+      "movement": "look_south",
+      "x": 175,
+      "z": 132,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
     { "x": 152, "z": 148, "type": 0, "script": "RouteSign" },

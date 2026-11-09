@@ -1046,6 +1046,9 @@ public static class RegionDatabase
                 "UltraMegalopolis", "MegaloTower", "RoyalAvenue_BattleRoyalDome",
                 // The wave after Ultra Space: Resolution Cave, a cave map of its own under Poni Meadow
                 "ResolutionCave",
+                // Plan 23, the Battle Tree's inside and the rest of the islands: the Battle Tree's lobby and hall at the head of
+                // Poni Gauntlet, and the geothermal power plant at the top of Blush Mountain
+                "PoniGauntlet_BattleTree", "PoniGauntlet_BattleTreeHall", "BlushMountain_PowerPlant",
             }
         },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

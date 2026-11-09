@@ -20,3 +20,13 @@ label During
 label TooEarly
   say "The canyon isn't safe for the unready. Take the ferry back, speak with the Professor, and then come."
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanSamurott
+  speaker none
+  cry "Samurott"
+  text "It's the Samurott the Island Scan picked up! It's ready to battle!"
+  wildbattle "Samurott" 43
+  setflag FLAG_DAILY_ALOLA_SCAN_SAMUROTT_MET
+  end

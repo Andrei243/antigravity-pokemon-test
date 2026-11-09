@@ -1,0 +1,198 @@
+{
+  "key": "hauoli_cemetery",
+  "index": 540,
+  "name": "Hau'oli Cemetery",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "HAUOLI_CEMETERY",
+  "nightMusic": "HAUOLI_CEMETERY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    {
+      "id": "akoni",
+      "looks": "gentleman",
+      "movement": "look_east",
+      "x": 341,
+      "z": 130,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_GENTLEMAN_AKONI"
+    },
+    {
+      "id": "noe",
+      "looks": "pokemon_breeder_f",
+      "movement": "look_west",
+      "x": 366,
+      "z": 122,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_POKEMON_BREEDER_NOE"
+    },
+    {
+      "id": "malia",
+      "looks": "preschooler_f",
+      "movement": "look_south",
+      "x": 360,
+      "z": 131,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_PRESCHOOLER_MALIA"
+    },
+    {
+      "id": "ghost_girl",
+      "looks": "school_kid_f",
+      "movement": "look_south",
+      "x": 352,
+      "z": 139,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "mourner",
+      "looks": "middle_aged_woman",
+      "movement": "look_north",
+      "x": 344,
+      "z": 118,
+      "facing": 0,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball_1",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 338,
+      "z": 114,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_CEMETERY_SUPER_POTION",
+      "item": "Super Potion"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 352,
+      "z": 133,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_HAUOLI_CEMETERY_1"
+    },
+    {
+      "id": "scan_litwick",
+      "looks": "litwick",
+      "movement": "look_south",
+      "x": 355,
+      "z": 140,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
+  ],
+  "signs": [
+    {
+      "x": 347,
+      "z": 132,
+      "type": 0,
+      "script": "CemeterySign"
+    },
+    {
+      "x": 338,
+      "z": 129,
+      "type": 2,
+      "script": "HIDDEN_1",
+      "item": "Great Ball",
+      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_GREAT_BALL"
+    },
+    {
+      "x": 350,
+      "z": 140,
+      "type": 2,
+      "script": "HIDDEN_2",
+      "item": "Ether",
+      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_ETHER"
+    },
+    {
+      "x": 369,
+      "z": 115,
+      "type": 2,
+      "script": "HIDDEN_3",
+      "item": "Big Mushroom",
+      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_BIG_MUSHROOM"
+    },
+    {
+      "x": 363,
+      "z": 129,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Balm Mushroom",
+      "flag": "FLAG_ALOLA_BURIED_HAUOLI_CEMETERY_1",
+      "buried": true
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Zubat",
+      "level": 7
+    },
+    {
+      "species": "Zubat",
+      "level": 9
+    },
+    {
+      "species": "Gastly",
+      "level": 7
+    },
+    {
+      "species": "Gastly",
+      "level": 8
+    },
+    {
+      "species": "Gastly",
+      "level": 9
+    },
+    {
+      "species": "Gastly",
+      "level": 10
+    },
+    {
+      "species": "Drifloon",
+      "level": 8,
+      "day": "Drifloon",
+      "night": "Misdreavus"
+    },
+    {
+      "species": "Drifloon",
+      "level": 10,
+      "day": "Drifloon",
+      "night": "Misdreavus"
+    }
+  ],
+  "landRate": 20
+}

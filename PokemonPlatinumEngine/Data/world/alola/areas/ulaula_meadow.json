@@ -78,6 +78,29 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_ULAULA_MEADOW_MOON_STONE",
       "item": "Moon Stone",
       "script": ""
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 212,
+      "z": 179,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_MEADOW_1"
+    },
+    {
+      "id": "scan_roselia",
+      "looks": "roselia",
+      "movement": "look_south",
+      "x": 178,
+      "z": 175,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

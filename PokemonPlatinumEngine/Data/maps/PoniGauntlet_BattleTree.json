@@ -1,0 +1,163 @@
+{
+  "name": "PoniGauntlet_BattleTree",
+  "displayName": "Battle Tree",
+  "bgmTrack": "alola/tree",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 17,
+  "height": 14,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.###.....###.##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "###...........###",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 10,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 14,
+      "y": 10,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 6,
+      "width": 3,
+      "depth": 4
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 13,
+      "targetMap": "Poni",
+      "targetX": 299,
+      "targetY": 19,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "desk",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "script": "Desk"
+    },
+    {
+      "id": "prizes",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Prizes"
+    },
+    {
+      "id": "hiker",
+      "name": "Hiker",
+      "npcType": "hiker",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "script": "Climber"
+    },
+    {
+      "id": "surfer",
+      "name": "Surfer",
+      "npcType": "swimmer_m",
+      "x": 3,
+      "y": 9,
+      "facing": "Right",
+      "script": "Watcher"
+    }
+  ],
+  "wildEncounters": []
+}

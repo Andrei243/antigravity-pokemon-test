@@ -78,7 +78,7 @@ public sealed record FrontierBoard(FrontierFacility Facility, string Title, IRea
             string hardLabel = Text.Of($"records.row.{place}.hard.{way}");
             rows.Add(new FrontierBoardRow(hardLabel, hard.Best, hard.InProgress || hard.Paused != null ? hard.Streak : hard.Latest, hard.InProgress || hard.Paused != null));
         }
-        int trophies = place == Models.Facilities.StreakHouse.Place ? Models.Facilities.StreakHouse.Trophies(story) : 0;
+        int trophies = Models.Facilities.FacilityPlaces.Trophies(place, story);
         var print = trophies == 0 ? FrontierPrint.None : trophies >= Models.Facilities.FacilityPlaces.WaysOf(place).Count ? FrontierPrint.Gold : FrontierPrint.Silver;
         return new FrontierBoard(FrontierFacility.Tower, Text.Of($"records.facility.{place}"), rows, records.BattlePoints, print, 0);
     }

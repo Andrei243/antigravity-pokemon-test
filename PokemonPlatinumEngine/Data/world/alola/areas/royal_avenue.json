@@ -25,7 +25,31 @@
     { "id": "kukui", "looks": "kukui", "movement": "look_west", "x": 264, "z": 209, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "hau", "looks": "hau", "movement": "look_west", "x": 266, "z": 209, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "woman", "looks": "middle_aged_woman", "movement": "wander_around", "x": 252, "z": 216, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" },
-    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 276, "z": 214, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 276, "z": 214, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 257,
+      "z": 218,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ROYAL_AVENUE_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 264,
+      "z": 215,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ROYAL_AVENUE_2"
+    }
   ],
   "signs": [
     { "x": 268, "z": 230, "type": 0, "script": "AvenueSign" }

@@ -116,6 +116,42 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_COAST_OLD_AMBER",
       "item": "Old Amber"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 156,
+      "z": 263,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_COAST_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 156,
+      "z": 253,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_COAST_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 261,
+      "z": 263,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_COAST_3"
     }
   ],
   "signs": [
@@ -124,6 +160,15 @@
       "z": 257,
       "type": 0,
       "script": "CoastSign"
+    },
+    {
+      "x": 203,
+      "z": 266,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Pearl String",
+      "flag": "FLAG_ALOLA_BURIED_PONI_COAST_1",
+      "buried": true
     }
   ],
   "triggers": [],

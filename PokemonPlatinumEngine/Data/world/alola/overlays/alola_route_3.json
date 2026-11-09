@@ -11,6 +11,9 @@
     { "script": "HauOnRoute3", "x": 336, "z": 68, "width": 1, "depth": 4, "variable": "VAR_ALOLA_STORY", "value": 11 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_cyndaquil": { "name": "Cyndaquil", "npcType": "Pokemon", "species": "Cyndaquil", "script": "ScanCyndaquil", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_CYNDAQUIL", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_CYNDAQUIL_MET" },
     "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_ROUTE_3_DONE", "shownBy": "FLAG_ALOLA_NEBBY_FOUND" },
     "youngster": {
       "name": "Kaimana",

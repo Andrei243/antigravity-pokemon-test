@@ -30,6 +30,9 @@
     { "type": "Planter", "x": 304, "y": 169, "width": 1, "depth": 1 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_klink": { "name": "Klink", "npcType": "Pokemon", "species": "Klink", "script": "ScanKlink", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_KLINK", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_KLINK_MET" },
     "tourist": {
       "name": "Tourist",
       "npcType": "Lady",

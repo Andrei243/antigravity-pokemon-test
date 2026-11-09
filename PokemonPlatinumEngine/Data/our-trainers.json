@@ -4800,5 +4800,245 @@
         ]
       }
     ]
+  },
+  // The Battle Tree's two Tree Masters at the head of Poni Gauntlet (plan 23, the Battle Tree's inside), ours, one to a
+  // room: a normal team met at the 20th battle and a Super one at the Super room's 50th, at level 50, each with a Z-Crystal
+  {
+    "id": "tree_master_kaimana",
+    "name": "Kaimana",
+    "class": "Tree Master",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Primarina",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41007920,
+        "item": "Waterium Z",
+        "moves": [
+          "Sparkling Aria",
+          "Moonblast",
+          "Psychic",
+          "Calm Mind"
+        ]
+      },
+      {
+        "species": "Kommo-o",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41015839,
+        "item": "Life Orb",
+        "moves": [
+          "Clanging Scales",
+          "Close Combat",
+          "Dragon Claw",
+          "Iron Defense"
+        ]
+      },
+      {
+        "species": "Toxapex",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41023758,
+        "item": "Black Sludge",
+        "moves": [
+          "Baneful Bunker",
+          "Recover",
+          "Toxic",
+          "Venoshock"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tree_master_kaimana_super",
+    "name": "Kaimana",
+    "class": "Tree Master",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Incineroar",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41031677,
+        "item": "Darkinium Z",
+        "moves": [
+          "Darkest Lariat",
+          "Flare Blitz",
+          "U-turn",
+          "Bulk Up"
+        ]
+      },
+      {
+        "species": "Mimikyu",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41039596,
+        "item": "Mimikium Z",
+        "moves": [
+          "Play Rough",
+          "Shadow Claw",
+          "Swords Dance",
+          "Shadow Sneak"
+        ]
+      },
+      {
+        "species": "Lycanroc",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41047515,
+        "item": "Focus Sash",
+        "moves": [
+          "Stone Edge",
+          "Accelerock",
+          "Crunch",
+          "Swords Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tree_master_leilani",
+    "name": "Leilani",
+    "class": "Tree Master",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Araquanid",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41055434,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Liquidation",
+          "Leech Life",
+          "Wide Guard",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Togedemaru",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41063353,
+        "item": "Focus Sash",
+        "moves": [
+          "Zing Zap",
+          "Spiky Shield",
+          "U-turn",
+          "Iron Head"
+        ]
+      },
+      {
+        "species": "Salazzle",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41071272,
+        "item": "Firium Z",
+        "moves": [
+          "Flamethrower",
+          "Sludge Bomb",
+          "Protect",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "species": "Bewear",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41079191,
+        "item": "Life Orb",
+        "moves": [
+          "Hammer Arm",
+          "Shadow Claw",
+          "Protect",
+          "Swords Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tree_master_leilani_super",
+    "name": "Leilani",
+    "class": "Tree Master",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "zRing": true,
+    "party": [
+      {
+        "species": "Golisopod",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41087110,
+        "item": "Leftovers",
+        "moves": [
+          "First Impression",
+          "Liquidation",
+          "Protect",
+          "Swords Dance"
+        ]
+      },
+      {
+        "species": "Vikavolt",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41095029,
+        "item": "Electrium Z",
+        "moves": [
+          "Thunderbolt",
+          "Bug Buzz",
+          "Energy Ball",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Palossand",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41102948,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Shadow Ball",
+          "Earth Power",
+          "Shore Up",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Kommo-o",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 41110867,
+        "item": "Kommonium Z",
+        "moves": [
+          "Clanging Scales",
+          "Close Combat",
+          "Protect",
+          "Flamethrower"
+        ]
+      }
+    ]
   }
 ]

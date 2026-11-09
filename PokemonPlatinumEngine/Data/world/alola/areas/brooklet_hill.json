@@ -23,7 +23,30 @@
     { "id": "totem", "looks": "wishiwashi", "movement": "look_south", "x": 89, "z": 96, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "fisherman", "looks": "fisherman", "movement": "look_west", "x": 111, "z": 140, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_KALEO" },
     { "id": "backpacker", "looks": "backpacker_m", "movement": "look_south", "x": 90, "z": 117, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_NALU" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 72, "z": 118, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_BROOKLET_HILL_NET_BALL", "item": "Net Ball", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 72, "z": 118, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_BROOKLET_HILL_NET_BALL", "item": "Net Ball", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 116,
+      "z": 130,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_BROOKLET_HILL_1"
+    },
+    {
+      "id": "scan_marill",
+      "looks": "marill",
+      "movement": "look_south",
+      "x": 82,
+      "z": 126,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
     { "x": 116, "z": 136, "type": 0, "script": "HillSign" }

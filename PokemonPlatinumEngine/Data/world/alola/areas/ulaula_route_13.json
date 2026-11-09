@@ -54,6 +54,18 @@
       "trainer": "normal",
       "sight": 3,
       "script": "TRAINER_BACKPACKER_KEALA"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 257,
+      "z": 227,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_13_1"
     }
   ],
   "signs": [

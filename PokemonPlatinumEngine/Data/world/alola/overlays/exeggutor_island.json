@@ -5,6 +5,9 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_serperior": { "name": "Serperior", "npcType": "Pokemon", "species": "Serperior", "script": "ScanSerperior", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_SERPERIOR", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_SERPERIOR_MET" },
     "hapu": {
       "name": "Hapu",
       "npcType": "hapu",

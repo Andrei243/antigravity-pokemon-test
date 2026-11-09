@@ -6,6 +6,7 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "people": {
+    "scan_totodile": { "name": "Totodile", "npcType": "Pokemon", "species": "Totodile", "script": "ScanTotodile", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_TOTODILE", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_TOTODILE_MET" },
     "swimmer": {
       "name": "Swimmer",
       "npcType": "swimmer_m",

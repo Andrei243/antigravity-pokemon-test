@@ -1,0 +1,26 @@
+{
+  // Big Wave Beach, Melemele Island (plan 23, the rest of the islands): drawn by hand, our words. A wide beach on the open
+  // sea west of Route 1's woods, where Alola's surfers ride the swell; a Team Skull grunt has come to spoil it. Ultra Sun
+  // and Ultra Moon's Mantine Surf is not built: the sea here is surfed as any other
+  "area": "big_wave_beach",
+  "bgmTrack": "alola/beach",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "kahale": {
+      "name": "Kahale",
+      "npcType": "skull_grunt",
+      "trainer": {
+        "dialogueBefore": "Team Skull Grunt: This beach is Skull turf now, yo! Surfers gotta pay up in Pokémon battles!",
+        "dialogueAfter": "Team Skull Grunt: Waves are too big anyway. I'm out."
+      }
+    },
+    "surfer": { "name": "Surfer", "npcType": "swimmer_m", "script": "Surfer", "still": true },
+    "sightseer": { "name": "Sightseer", "npcType": "lady", "script": "Sightseer", "still": true },
+    "youngster": { "name": "Boy", "npcType": "youngster", "dialog": [ "The waves here are the biggest on Melemele. My Mantyke and I are going to ride one, one day." ] }
+  },
+  "signs": {
+    "BeachSign": "Big Wave Beach\nThe biggest swell on Melemele. Surf with care!"
+  }
+}

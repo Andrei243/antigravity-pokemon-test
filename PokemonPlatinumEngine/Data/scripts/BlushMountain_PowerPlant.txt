@@ -1,0 +1,63 @@
+# The geothermal power plant at the top of Blush Mountain, Ula'ula Island (plan 23, the rest of the islands; rulings,
+# "The Battle Tree, the power plant, Zygarde's cells and the rest of the islands"). The lines and the people are our own.
+# Its chief shows the plant and gives an Electric Seed once (FLAG_ALOLA_POWER_PLANT_GIFT); a worker and a scientist
+# battle a visitor once each, and a Zygarde Cell hides in its south-west corner, as Sun and Moon keep one here.
+
+
+script Chief
+  face self player
+  speaker "Plant Chief"
+  if flag FLAG_ALOLA_POWER_PLANT_GIFT goto Again
+  say "Welcome to Blush Mountain's geothermal power plant! Hot water rises from deep under the mountain, right here."
+  say "Its steam turns our turbines, and the turbines light half of Ula'ula. Clean power, straight from the island's heart!"
+  say "Visitors who climb all this way get a souvenir. It's charged with the same energy as the plant itself."
+  give "Electric Seed"
+  setflag FLAG_ALOLA_POWER_PLANT_GIFT
+  end
+label Again
+  say "On clear nights the plant's lights draw Minior down from the sky. They say the mountain blushes red at dawn because of them."
+  end
+
+
+script Kanoa
+  face self player
+  speaker "Kanoa"
+  if flag FLAG_ALOLA_POWER_PLANT_KANOA goto After
+  say "A visitor! The chief says I should be welcoming. My Pokémon say I should be battling. They usually win the argument."
+  battle self as "alola_worker_kanoa"
+  setflag FLAG_ALOLA_POWER_PLANT_KANOA
+  speaker "Kanoa"
+  say "Overloaded. Totally overloaded. I'll go and check the fuses."
+  end
+label After
+  say "Every gauge in here reads a little higher when a strong Trainer walks in. Funny, that."
+  end
+
+
+script Ola
+  face self player
+  speaker "Ola"
+  if flag FLAG_ALOLA_POWER_PLANT_OLA goto After
+  say "I study how the mountain's pull changes Pokémon. Magnemite evolve here that never would anywhere else. Care to see why?"
+  battle self as "alola_scientist_ola"
+  setflag FLAG_ALOLA_POWER_PLANT_OLA
+  speaker "Ola"
+  say "Fascinating. Your team's output exceeds the plant's. I'll be writing that down."
+  end
+label After
+  say "Bring a Magneton or a Nosepass up here and train it. The magnetic field does the rest."
+  end
+
+
+script Engineer
+  face self player
+  speaker "Engineer"
+  say "The pipes run hot enough to cook an egg. Ask me how I know. Actually, don't."
+  end
+
+
+# The plant's own Zygarde Cell (Sun and Moon keep one here): common.ZygardeCell, its flag named for the check of flags
+script PlantCell
+  if item "Zygarde Cube" setflag FLAG_ALOLA_ZYGARDE_CELL_PLANT
+  call ZygardeCell
+  end

@@ -349,7 +349,10 @@ public sealed class ScriptLibrary
                     case Op.AddContact when Models.PhoneBook.Get(i.Name) == null:
                         Wrong(i, $"the phone book has no contact '{i.Name}'");
                         break;
-                    case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
+                    case Op.GivePokemon when PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
+                        Wrong(i, $"there is no species or form '{i.Name}'");
+                        break;
+                    case Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
                     case Op.RidePokemon when i.Option && Overworld.RidePager.SpeciesOf(i.Name) == null:

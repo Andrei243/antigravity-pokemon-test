@@ -98,6 +98,29 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_BLUSH_ULTRA_BALL",
       "item": "Ultra Ball"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 123,
+      "z": 189,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_BLUSH_MOUNTAIN_1"
+    },
+    {
+      "id": "scan_rhyhorn",
+      "looks": "rhyhorn",
+      "movement": "look_south",
+      "x": 116,
+      "z": 169,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

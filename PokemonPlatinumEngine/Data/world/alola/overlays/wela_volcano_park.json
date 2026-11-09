@@ -7,6 +7,7 @@
   "trees": "Round",
   "callsForHelp": true,
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "second_totem": { "name": "Salazzle", "script": "SecondTotem", "still": true, "hiddenBy": "FLAG_ALOLA_TOTEM_SALAZZLE_DONE", "shownBy": "AlolaHallOfFame" },
     "kiawe": { "name": "Kiawe", "npcType": "kiawe", "script": "Kiawe", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_DONE" },
     "trial_1": { "name": "Salandit", "script": "Trial1", "still": true, "hiddenBy": "FLAG_ALOLA_WELA_TRIAL_1", "shownBy": "FLAG_ALOLA_WELA_TRIAL" },

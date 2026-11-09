@@ -22,6 +22,9 @@ public static class FacilityPrizes
     /// <summary>The Battle Maison's counter in Kiloude City.</summary>
     public const string Maison = "maison";
 
+    /// <summary>The Battle Tree's counter at the head of Poni Gauntlet (plan 23, the Battle Tree's inside).</summary>
+    public const string Tree = "tree";
+
     private static readonly Lazy<FacilityPrizesFile> file = new(() => GameDataFiles.Load<FacilityPrizesFile>(FileName, strict: true));
 
     /// <summary>The places that have a counter, by their words.</summary>

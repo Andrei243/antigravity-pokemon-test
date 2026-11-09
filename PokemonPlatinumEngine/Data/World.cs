@@ -2911,7 +2911,7 @@ public static class WorldMapBuilder
                 // (an overlay holds a hidden thing back by its script's number, as it holds an object back by its id: plan 22 ·
                 // U10, part b, Clay Tunnel's Big Nugget, an item this game's data hasn't)
                 if (overlay?.HeldBack?.Contains(s.Script) != true)
-                    map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
+                    map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0, s.Buried == true);
             }
             else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
                 map.TileScripts[(s.X, s.Z)] = read;

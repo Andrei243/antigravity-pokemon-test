@@ -86,3 +86,13 @@ script SecondTotem
   setflag FLAG_ALOLA_TOTEM_ARAQUANID_DONE
   hide self
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanMarill
+  speaker none
+  cry "Marill"
+  text "It's the Marill the Island Scan picked up! It's ready to battle!"
+  wildbattle "Marill" 17
+  setflag FLAG_DAILY_ALOLA_SCAN_MARILL_MET
+  end

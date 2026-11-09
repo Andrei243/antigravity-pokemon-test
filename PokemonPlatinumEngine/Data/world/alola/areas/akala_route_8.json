@@ -27,10 +27,54 @@
     { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 286, "z": 150, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_KANOA" },
     { "id": "backpacker", "looks": "backpacker_m", "movement": "look_east", "x": 262, "z": 121, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BACKPACKER_KAIPO" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 240, "z": 175, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_8_SUPER_POTION", "item": "Super Potion", "script": "" },
-    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 284, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_8_FRESH_WATER", "item": "Fresh Water", "script": "" }
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 284, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_8_FRESH_WATER", "item": "Fresh Water", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 276,
+      "z": 188,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_8_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 280,
+      "z": 183,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_8_2"
+    },
+    {
+      "id": "scan_luxio",
+      "looks": "luxio",
+      "movement": "look_south",
+      "x": 266,
+      "z": 122,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
-    { "x": 262, "z": 138, "type": 0, "script": "RouteSign" }
+    { "x": 262, "z": 138, "type": 0, "script": "RouteSign" },
+    {
+      "x": 285,
+      "z": 107,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Star Piece",
+      "flag": "FLAG_ALOLA_BURIED_AKALA_ROUTE_8_1",
+      "buried": true
+    }
   ],
   "triggers": [],
   "land": [

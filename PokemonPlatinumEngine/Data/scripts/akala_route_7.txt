@@ -1,0 +1,11 @@
+# akala_route_7 (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanSpheal
+  speaker none
+  cry "Spheal"
+  text "It's the Spheal the Island Scan picked up! It's ready to battle!"
+  wildbattle "Spheal" 19
+  setflag FLAG_DAILY_ALOLA_SCAN_SPHEAL_MET
+  end

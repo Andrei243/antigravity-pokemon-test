@@ -1,14 +1,15 @@
 {
   // Poni Gauntlet (plan 23, the wave after Ultra Space): drawn by hand, our words. A climb north from Poni Plains over
-  // rough ground only Mudsdale crosses, a lake crossed by Surf and a pass in the cliffs, to the Battle Tree at its head,
-  // whose doors are shut (the Battle Tree is a later session's)
+  // rough ground only Mudsdale crosses, a lake crossed by Surf and a pass in the cliffs, to the Battle Tree at its head
+  // (PoniGauntlet_BattleTree and its hall, plan 23, the Battle Tree's inside)
   "area": "poni_gauntlet",
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
-  // The Battle Tree's doors, shut until a later session builds it
-  "locked": [ 0 ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_togekiss": { "name": "Togekiss", "npcType": "Pokemon", "species": "Togekiss", "script": "ScanTogekiss", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_TOGEKISS", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_TOGEKISS_MET" },
     "mikala": {
       "name": "Mikala",
       "npcType": "swimmer_m",
@@ -43,6 +44,6 @@
     }
   },
   "signs": {
-    "TreeSign": "Battle Tree\nWhere the strongest Trainers of every land meet.\nClosed for now."
+    "TreeSign": "Battle Tree\nWhere the strongest Trainers of every land meet."
   }
 }

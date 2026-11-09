@@ -17,6 +17,7 @@
     { "script": "OliviaMeets", "x": 320, "z": 237, "width": 4, "depth": 1, "variable": "VAR_ALOLA_AKALA", "value": 4 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "olivia": { "name": "Olivia", "npcType": "olivia", "script": "Olivia", "still": true },
     "old_woman": {
       "name": "Old Woman",

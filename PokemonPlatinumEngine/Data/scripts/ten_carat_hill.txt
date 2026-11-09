@@ -1,0 +1,11 @@
+# ten_carat_hill (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanDeino
+  speaker none
+  cry "Deino"
+  text "It's the Deino the Island Scan picked up! It's ready to battle!"
+  wildbattle "Deino" 13
+  setflag FLAG_DAILY_ALOLA_SCAN_DEINO_MET
+  end

@@ -628,10 +628,12 @@ public sealed partial class ScriptRunner
             }
             case Op.GivePokemon:
             {
-                var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
+                // A form's name gives the Pokémon in that form (plan 23, the rest of the islands: the Zygarde Cube's 10% Forme)
+                string? form = PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) != null ? i.Name : null;
+                var species = PokemonDatabase.Get(i.Name) ?? PokemonDatabase.SpeciesOfForm(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
                 // A randomised run gives the species the gift goes to, unless the gift comes with a move of its own (plan 13 · V6)
-                if (i.Move.Length == 0 && Randomizer.For(host.Rules) is { MapsSpecies: true } random) species = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
-                var gift = new Pokemon(species, i.Number);
+                if (form == null && i.Move.Length == 0 && Randomizer.For(host.Rules) is { MapsSpecies: true } random) species = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
+                var gift = form != null ? Pokemon.InForm(species, form, i.Number) : new Pokemon(species, i.Number);
                 if (i.Other.Length > 0) gift.HeldItem = ItemDatabase.Get(i.Other) ?? throw Wrong(i, $"there is no item '{i.Other}'");
                 // A move in its first place, as HeartGold's SetMonMove puts one (the Dragon Shrine's Dratini)
                 if (i.Move.Length > 0)

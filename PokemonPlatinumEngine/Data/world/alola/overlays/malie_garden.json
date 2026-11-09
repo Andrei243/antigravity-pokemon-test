@@ -7,6 +7,7 @@
   "trees": "Round",
   "architecture": "Shoreline",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "ako": {
       "name": "Ako",
       "npcType": "ace_trainer_f",

@@ -15,6 +15,9 @@
     }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_axew": { "name": "Axew", "npcType": "Pokemon", "species": "Axew", "script": "ScanAxew", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_AXEW", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_AXEW_MET" },
     "noa": {
       "name": "Noa",
       "npcType": "backpacker_f",

@@ -113,6 +113,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_GAUNTLET_MAGMARIZER",
       "item": "Magmarizer"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 296,
+      "z": 82,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_GAUNTLET_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 303,
+      "z": 53,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_GAUNTLET_2"
+    },
+    {
+      "id": "scan_togekiss",
+      "looks": "togekiss",
+      "movement": "look_south",
+      "x": 302,
+      "z": 86,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

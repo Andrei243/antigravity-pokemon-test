@@ -7,6 +7,8 @@
   "bgmTrack": "alola/trial",
   "trees": "Round",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_deino": { "name": "Deino", "npcType": "Pokemon", "species": "Deino", "script": "ScanDeino", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_DEINO", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_DEINO_MET" },
     "hiker": {
       "name": "Hiker",
       "npcType": "hiker",

@@ -5,6 +5,11 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_duosion": { "name": "Duosion", "npcType": "Pokemon", "species": "Duosion", "script": "ScanDuosion", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_DUOSION", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_DUOSION_MET" },
+    "dexio": { "name": "Dexio", "npcType": "dexio", "script": "Dexio", "still": true },
+    "sina": { "name": "Sina", "npcType": "sina", "script": "Sina", "still": true },
     "ula1_1": {
       "name": "Skull Grunt",
       "npcType": "skull_grunt",

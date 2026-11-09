@@ -67,6 +67,63 @@
       "trainer": "normal",
       "sight": 3,
       "script": "TRAINER_POKEMON_BREEDER_HOKU"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 228,
+      "z": 164,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_16_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 238,
+      "z": 164,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_16_2"
+    },
+    {
+      "id": "scan_duosion",
+      "looks": "duosion",
+      "movement": "look_south",
+      "x": 236,
+      "z": 169,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "dexio",
+      "looks": "dexio",
+      "movement": "look_south",
+      "x": 247,
+      "z": 142,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "sina",
+      "looks": "sina",
+      "movement": "look_south",
+      "x": 249,
+      "z": 142,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

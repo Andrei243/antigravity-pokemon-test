@@ -1,0 +1,45 @@
+{
+  // Hau'oli Cemetery, Melemele Island (plan 23, the rest of the islands): drawn by hand, our words. A quiet field of
+  // graves and flowers east of Route 2, where Ghost-type Pokémon drift through the grass. At night a little girl waits by
+  // a grave for a friend who went ahead of her, the cemetery's own story in three visits (hauoli_cemetery.txt)
+  "area": "hauoli_cemetery",
+  "bgmTrack": "alola/cemetery",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_litwick": { "name": "Litwick", "npcType": "Pokemon", "species": "Litwick", "script": "ScanLitwick", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_LITWICK", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_LITWICK_MET" },
+    "akoni": {
+      "name": "Akoni",
+      "npcType": "gentleman",
+      "trainer": {
+        "dialogueBefore": "Gentleman Akoni: I come every week to tell my late wife how our team is doing. Today, I'll tell her about you!",
+        "dialogueAfter": "Gentleman Akoni: She would have laughed at how quickly that went."
+      }
+    },
+    "noe": {
+      "name": "Noe",
+      "npcType": "pokemon_breeder_f",
+      "trainer": {
+        "dialogueBefore": "Pokémon Breeder Noe: My grandmother bred Pikachu her whole life. This one is the great-great-grandchild of her first!",
+        "dialogueAfter": "Pokémon Breeder Noe: Grandma's line is still strong. Just not today."
+      }
+    },
+    "malia": {
+      "name": "Malia",
+      "npcType": "preschooler_f",
+      "trainer": {
+        "dialogueBefore": "Preschooler Malia: I'm not scared of ghosts! My Happiny isn't scared either! Battle!",
+        "dialogueAfter": "Preschooler Malia: ...Can you walk me back to Route 2? Not because I'm scared."
+      }
+    },
+    "ghost_girl": { "name": "Little Girl", "npcType": "school_kid_f", "script": "GhostGirl", "still": true,
+      "shownBy": "FLAG_ALOLA_CEMETERY_NIGHT", "hiddenBy": "FLAG_ALOLA_CEMETERY_GIRL_GONE" },
+    "mourner": { "name": "Woman", "npcType": "middle_aged_woman", "script": "Mourner", "still": true }
+  },
+  // The flowers by the east lamp, where the girl's friend left something
+  "readAt": [ { "x": 362, "z": 132, "script": "LampFlowers" } ],
+  "signs": {
+    "CemeterySign": "Hau'oli Cemetery\nPlease keep the paths quiet for those who rest here."
+  }
+}

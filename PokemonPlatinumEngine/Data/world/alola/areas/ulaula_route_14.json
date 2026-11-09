@@ -91,6 +91,18 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_14_ULTRA_BALL",
       "item": "Ultra Ball",
       "script": ""
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 228,
+      "z": 277,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_14_1"
     }
   ],
   "signs": [

@@ -30,12 +30,56 @@
     { "id": "grunt", "looks": "skull_grunt", "movement": "look_west", "x": 287, "z": 98, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_TEAM_SKULL_GRUNT_BERRY" },
     { "id": "farmer", "looks": "rancher", "movement": "look_around", "x": 284, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 280, "z": 141, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_2_REVIVE", "item": "Revive", "script": "" },
-    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 316, "z": 126, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_2_SUPER_POTION", "item": "Super Potion", "script": "" }
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 316, "z": 126, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_2_SUPER_POTION", "item": "Super Potion", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 284,
+      "z": 101,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_2_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 293,
+      "z": 148,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_2_2"
+    },
+    {
+      "id": "scan_chikorita",
+      "looks": "chikorita",
+      "movement": "look_south",
+      "x": 295,
+      "z": 141,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
     { "x": 292, "z": 141, "type": 0, "script": "RouteSign" },
     { "x": 292, "z": 106, "type": 0, "script": "BerrySign" },
-    { "x": 322, "z": 109, "type": 0, "script": "CavernSign" }
+    { "x": 322, "z": 109, "type": 0, "script": "CavernSign" },
+    {
+      "x": 304,
+      "z": 144,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Rare Candy",
+      "flag": "FLAG_ALOLA_BURIED_ALOLA_ROUTE_2_1",
+      "buried": true
+    }
   ],
   "triggers": [],
   "land": [
