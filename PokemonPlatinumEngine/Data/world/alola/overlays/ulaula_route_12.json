@@ -3,7 +3,7 @@
   // Poni meets the player at its east end and registers her Mudsdale in the Ride Pager (plan 23, the wave after the loose
   // ends: ulaula_route_12.txt)
   "area": "ulaula_route_12",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "triggers": [

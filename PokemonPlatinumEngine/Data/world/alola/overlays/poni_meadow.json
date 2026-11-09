@@ -2,7 +2,7 @@
   // Poni Meadow (plan 23, the wave after Ultra Space): drawn by hand, our words. Purple flowers round a pond south of Poni
   // Plains, where the Oricorio dance the Sensu Style, with the mouth of Resolution Cave in its rock to the east
   "area": "poni_meadow",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

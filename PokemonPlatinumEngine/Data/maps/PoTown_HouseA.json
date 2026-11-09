@@ -1,7 +1,7 @@
 {
   "name": "PoTown_HouseA",
   "displayName": "Po Town",
-  "bgmTrack": "alola/hauoli",
+  "bgmTrack": "alola/po_town",
   "interior": "House",
   "trees": "Round",
   "width": 11,

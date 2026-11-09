@@ -4,7 +4,7 @@
   // at its head. Hapu waits before the ruins once Nanu's grand trial is passed, until the player has heard her out
   // (haina_desert.txt)
   "area": "haina_desert",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

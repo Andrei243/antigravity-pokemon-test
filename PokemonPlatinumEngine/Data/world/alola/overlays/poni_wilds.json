@@ -2,7 +2,7 @@
   // Poni Wilds (plan 23 · Z7): drawn by hand, our words. Grass and rock north of the village, with two mouths in its northern cliff:
   // the Ancient Poni Path in the west and Vast Poni Canyon in the east, where Captain Dulse waits.
   "area": "poni_wilds",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

@@ -3,7 +3,7 @@
   // rough ground only Mudsdale crosses, a lake crossed by Surf and a pass in the cliffs, to the Battle Tree at its head
   // (PoniGauntlet_BattleTree and its hall, plan 23, the Battle Tree's inside)
   "area": "poni_gauntlet",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   // The Battle Tree's doors (plan 23, the Battle Tree's inside)

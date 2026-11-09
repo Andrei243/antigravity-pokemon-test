@@ -3,7 +3,7 @@
   // of Malie City in the old Johto style: two ponds with a bridge over each, stone lanterns along the path and beds of
   // flowers. Its wild Pokémon live in its tall grass, its fish in the ponds
   "area": "malie_garden",
-  "bgmTrack": "alola/hauoli",
+  "bgmTrack": "alola/malie",
   "trees": "Round",
   "architecture": "Shoreline",
   "people": {

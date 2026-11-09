@@ -3,7 +3,7 @@
   // Ula'ula Meadow under Po Town's endless rain to the island's police station, where the kahuna Nanu keeps his Meowth.
   // In our drawing Po Town's gate is on Route 16, so this road ends at the station
   "area": "ulaula_route_17",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

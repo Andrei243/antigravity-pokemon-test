@@ -3,7 +3,7 @@
   // 14 to the open sea, and the Aether House, the Aether Foundation's home for Pokémon and children in need, where
   // Acerola lends a hand
   "area": "ulaula_route_15",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

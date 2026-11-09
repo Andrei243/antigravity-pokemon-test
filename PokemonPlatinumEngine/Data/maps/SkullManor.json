@@ -1,7 +1,7 @@
 {
   "name": "SkullManor",
   "displayName": "Po Town",
-  "bgmTrack": "alola/trial",
+  "bgmTrack": "alola/po_town",
   "interior": "House",
   "trees": "Round",
   "width": 15,

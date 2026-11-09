@@ -4,7 +4,7 @@
   // waits, as Ultra Sun and Ultra Moon keep it at level 60 (rulings, "Poni's last places..."); the cells and the Zygarde
   // Cube of Sun and Moon are not built
   "area": "resolution_cave",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/cave",
   "trees": "Round",
   "people": {
     "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },

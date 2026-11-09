@@ -3,7 +3,7 @@
   // our words. A loop of tunnels the island's miners dug with their Diglett, from Route 8 in the west to Route 9 in the
   // east; Team Skull loiters in it
   "area": "digletts_tunnel",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/cave",
   "trees": "Round",
   "people": {
     "grunt_1": {

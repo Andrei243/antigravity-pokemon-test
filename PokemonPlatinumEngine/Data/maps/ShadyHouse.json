@@ -1,7 +1,7 @@
 {
   "name": "ShadyHouse",
   "displayName": "Shady House",
-  "bgmTrack": "alola/trial",
+  "bgmTrack": "alola/po_town",
   "interior": "House",
   "trees": "Round",
   "width": 13,

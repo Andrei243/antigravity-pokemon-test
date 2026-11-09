@@ -3,7 +3,7 @@
   // west half lies behind rough ground only Mudsdale crosses and over cliffs from the sea, and an islet out at sea is shut
   // by a rock only Sharpedo rams (common.SeaRock). A fisherman hands over a Super Rod, once
   "area": "poni_coast",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

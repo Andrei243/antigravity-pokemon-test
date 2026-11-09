@@ -1,0 +1,65 @@
+# Po Town: Team Skull's town, rain on empty streets and spray paint on the walls, and a crew that thinks it owns the place.
+# A saw lead riffing in A minor, syncopated and sure of itself, a hook of the same lead in the middle, an overdriven guitar
+# palm-muting power chords, an electric piano stabbing on the offbeats, a synth bass and a hard kit with a fill every eighth
+# bar. One arrangement for day and night, as the town sits under the same grey sky.
+# Original composition for this game, in the modern sound.
+title Po Town
+tempo 96
+meter 4/4
+reverb 0.22
+night none
+room plate 1.5
+
+track lead sawlead vol=0.68 pan=0.08 rev=0.2
+  o5 a8 r8 a8 c8 r8 e8 r8 c8 |
+  L o5 a8 r8 a8 c8 r8 e8 r8 c8 | o5 a8 r8 a8 c8 r8 e8 r8 c8 | o5 f8 r8 f8 a8 r8 c8 r8 a8 | o5 g8 r8 g8 b8 r8 o6 d8 r8 o5 b8 |
+  o5 a8 r8 a8 c8 r8 e8 r8 c8 | o5 a8 r8 a8 c8 r8 e8 r8 c8 | o5 d8 r8 d8 f8 r8 a8 r8 f8 | o5 e8 r8 e8 g8 r8 b8 r8 g8 |
+  o5 f4 a8 o6 d8 r4 o5 a4 | o6 f4 d8 o5 a8 r4 f4 | o5 a4 o6 c8 e8 r4 c4 | o6 e4 c8 o5 a8 r4 e4 |
+  o5 a4 o6 c8 f8 r4 c4 | o5 b4 o6 d8 g8 r4 d4 | o5 g4 b8 o6 e8 r4 o5 b4 | o6 e2 r2 |
+  o5 a8 r8 a8 c8 r8 e8 r8 c8 | o5 f8 r8 f8 a8 r8 c8 r8 a8 | o5 g8 r8 g8 b8 r8 o6 d8 r8 o5 b8 | o5 a8 r8 a8 c8 r8 e8 r8 c8 |
+  o5 d8 r8 d8 f8 r8 a8 r8 f8 | o5 f8 r8 f8 a8 r8 c8 r8 a8 | o5 e8 r8 e8 g8 r8 b8 r8 g8 | o5 a8 r8 a8 c8 r8 e8 r8 c8 |
+
+track stab epiano vol=0.36 pan=-0.25 rev=0.3
+  r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 |
+  L r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (f a > c)8 r8 r4 o4 (f a > c)8 r8 | r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 |
+  r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (d f a)8 r8 r4 o4 (d f a)8 r8 | r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 |
+  r4 o4 (d f a)8 r8 r4 o4 (d f a)8 r8 | r4 o4 (d f a)8 r8 r4 o4 (d f a)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 |
+  r4 o4 (f a > c)8 r8 r4 o4 (f a > c)8 r8 | r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 | r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 | r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 |
+  r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 | r4 o4 (f a > c)8 r8 r4 o4 (f a > c)8 r8 | r4 o4 (g b > d)8 r8 r4 o4 (g b > d)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 |
+  r4 o4 (d f a)8 r8 r4 o4 (d f a)8 r8 | r4 o4 (f a > c)8 r8 r4 o4 (f a > c)8 r8 | r4 o4 (e g b)8 r8 r4 o4 (e g b)8 r8 | r4 o4 (a > c e)8 r8 r4 o4 (a > c e)8 r8 |
+
+track guitar driveguitar vol=0.36 pan=0.28 rev=0.15
+  o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 |
+  L o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (f > c)8 (f > c)8 r8 (f > c)8 r8 (f > c)8 r8 (f > c)8 | o3 (g > d)8 (g > d)8 r8 (g > d)8 r8 (g > d)8 r8 (g > d)8 |
+  o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (d a)8 (d a)8 r8 (d a)8 r8 (d a)8 r8 (d a)8 | o3 (e b)8 (e b)8 r8 (e b)8 r8 (e b)8 r8 (e b)8 |
+  o3 (d a)8 (d a)8 r8 (d a)8 r8 (d a)8 r8 (d a)8 | o3 (d a)8 (d a)8 r8 (d a)8 r8 (d a)8 r8 (d a)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 |
+  o3 (f > c)8 (f > c)8 r8 (f > c)8 r8 (f > c)8 r8 (f > c)8 | o3 (g > d)8 (g > d)8 r8 (g > d)8 r8 (g > d)8 r8 (g > d)8 | o3 (e b)8 (e b)8 r8 (e b)8 r8 (e b)8 r8 (e b)8 | o3 (e b)8 (e b)8 r8 (e b)8 r8 (e b)8 r8 (e b)8 |
+  o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 | o3 (f > c)8 (f > c)8 r8 (f > c)8 r8 (f > c)8 r8 (f > c)8 | o3 (g > d)8 (g > d)8 r8 (g > d)8 r8 (g > d)8 r8 (g > d)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 |
+  o3 (d a)8 (d a)8 r8 (d a)8 r8 (d a)8 r8 (d a)8 | o3 (f > c)8 (f > c)8 r8 (f > c)8 r8 (f > c)8 r8 (f > c)8 | o3 (e b)8 (e b)8 r8 (e b)8 r8 (e b)8 r8 (e b)8 | o3 (a > e)8 (a > e)8 r8 (a > e)8 r8 (a > e)8 r8 (a > e)8 |
+
+track pad warmpad vol=0.24 pan=0.2 rev=0.4
+  o3 (a > c e)1 |
+  L o3 (a > c e)1 | o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 |
+  o3 (a > c e)1 | o3 (a > c e)1 | o3 (d f a)1 | o3 (e g b)1 |
+  o3 (d f a)1 | o3 (d f a)1 | o3 (a > c e)1 | o3 (a > c e)1 |
+  o3 (f a > c)1 | o3 (g b > d)1 | o3 (e g b)1 | o3 (e g b)1 |
+  o3 (a > c e)1 | o3 (f a > c)1 | o3 (g b > d)1 | o3 (a > c e)1 |
+  o3 (d f a)1 | o3 (f a > c)1 | o3 (e g b)1 | o3 (a > c e)1 |
+
+track bass synthbass vol=0.8 rev=0.06
+  o3 a8 r8 a8 a8 r8 a8 r8 > a8 |
+  L o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 f8 r8 f8 f8 r8 f8 r8 > f8 | o3 g8 r8 g8 g8 r8 g8 r8 > g8 |
+  o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 d8 r8 d8 d8 r8 d8 r8 > d8 | o3 e8 r8 e8 e8 r8 e8 r8 > e8 |
+  o3 d8 r8 d8 d8 r8 d8 r8 > d8 | o3 d8 r8 d8 d8 r8 d8 r8 > d8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 |
+  o3 f8 r8 f8 f8 r8 f8 r8 > f8 | o3 g8 r8 g8 g8 r8 g8 r8 > g8 | o3 e8 r8 e8 e8 r8 e8 r8 > e8 | o3 e8 r8 e8 e8 r8 e8 r8 > e8 |
+  o3 a8 r8 a8 a8 r8 a8 r8 > a8 | o3 f8 r8 f8 f8 r8 f8 r8 > f8 | o3 g8 r8 g8 g8 r8 g8 r8 > g8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 |
+  o3 d8 r8 d8 d8 r8 d8 r8 > d8 | o3 f8 r8 f8 f8 r8 f8 r8 > f8 | o3 e8 r8 e8 e8 r8 e8 r8 > e8 | o3 a8 r8 a8 a8 r8 a8 r8 > a8 |
+
+track kit kit vol=0.72 pan=0 rev=0.18
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v80 s16 s16 v84 t8 v84 f8 |
+  L v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v80 s16 s16 v84 t8 v84 f8 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v80 s16 s16 v84 t8 v84 f8 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h8 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v80 s16 s16 v84 t8 v84 f8 |

@@ -1,7 +1,7 @@
 {
   // Route 13 (plan 23 · Z7): drawn by hand, our words. East from Tapu Village to the foot of Mount Lanakila.
   "area": "ulaula_route_13",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

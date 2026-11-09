@@ -1,0 +1,73 @@
+# Poni Island's wild places: the oldest island, a long way from anywhere, rock and thin grass under a salt wind. A bamboo flute
+# in E minor, slow and hollow, a slide guitar answering from the second part, a warm pad, a bass walking its root and fifth,
+# timpani and a log drum like a slow heartbeat and a few low congas and wood blocks; at night an ocarina and a harp.
+# Original composition for this game, in the modern sound.
+title Poni Island
+tempo 84
+meter 4/4
+reverb 0.34
+nighttempo 0.9
+room hall 2.6
+
+track lead bambooflute night=ocarina vol=0.78 pan=0.05 rev=0.4
+  o5 e1 |
+  L o5 e2 g4 b4 | o6 e2 d4 o5 b4 | o6 c2 o5 g4 e4 | o5 f+2 a4 o6 d4 |
+  o6 e2. d4 | o5 a2 f+2 | o5 g2 e2 | o5 f+2 a2 |
+  o5 a2 o6 c4 e4 | o6 d2 o5 b4 g4 | o5 g4 b4 o6 d2 | o6 d2 o5 a4 f+4 |
+  o5 a4 o6 c4 e2 | o6 e2 c4 o5 g4 | o5 a4 o6 d4 f+2 | o6 e2 o5 b2 |
+  o5 e4 g4 b2 | o6 c4 e4 g2 | o5 b4 o6 d4 g2 | o6 f+2 d4 o5 a4 |
+  o6 e2 c4 o5 g4 | o5 a4 o6 d4 f+4 a4 | o6 g2 e4 o5 b4 | o5 e1 |
+
+track guitar slideguitar night=harp vol=0.4 pan=-0.25 rev=0.35
+  o4 b2 g2 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o4 e2 c2 | o4 b2 g2 | o4 d2 b2 | o4 a2 f+2 |
+  o4 e2 c2 | o4 g2 e2 | o4 a2 f+2 | o4 b2 g2 |
+  o4 b2 g2 | o4 g2 e2 | o4 d2 b2 | o4 a2 f+2 |
+  o4 g2 e2 | o4 a2 f+2 | o4 b2 g2 | o4 b2 g2 |
+
+track pad warmpad vol=0.36 pan=0.2 rev=0.5
+  o3 (e g b)1 |
+  L o3 (e g b)1 | o3 (e g b)1 | o3 (c e g)1 | o3 (d f+ a)1 |
+  o3 (e g b)1 | o3 (d f+ a)1 | o3 (c e g)1 | o3 (d f+ a)1 |
+  o3 (a > c e)1 | o3 (e g b)1 | o3 (g b > d)1 | o3 (d f+ a)1 |
+  o3 (a > c e)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (e g b)1 |
+  o3 (e g b)1 | o3 (c e g)1 | o3 (g b > d)1 | o3 (d f+ a)1 |
+  o3 (c e g)1 | o3 (d f+ a)1 | o3 (e g b)1 | o3 (e g b)1 |
+
+track bass bass vol=0.56 rev=0.08
+  o3 e2 e4 o3 b4 |
+  L o3 e2 e4 o3 b4 | o3 e2 e4 o3 b4 | o3 c2 c4 o3 g4 | o3 d2 d4 o3 a4 |
+  o3 e2 e4 o3 b4 | o3 d2 d4 o3 a4 | o3 c2 c4 o3 g4 | o3 d2 d4 o3 a4 |
+  o3 a2 a4 o4 e4 | o3 e2 e4 o3 b4 | o3 g2 g4 o4 d4 | o3 d2 d4 o3 a4 |
+  o3 a2 a4 o4 e4 | o3 c2 c4 o3 g4 | o3 d2 d4 o3 a4 | o3 e2 e4 o3 b4 |
+  o3 e2 e4 o3 b4 | o3 c2 c4 o3 g4 | o3 g2 g4 o4 d4 | o3 d2 d4 o3 a4 |
+  o3 c2 c4 o3 g4 | o3 d2 d4 o3 a4 | o3 e2 e4 o3 b4 | o3 e2 e4 o3 b4 |
+
+track timp timpani vol=0.42 pan=-0.05 rev=0.25
+  v90 o4 e4 r4 e8 e8 r4 |
+  L v70 o4 e4 r2. | v70 o4 e4 r2. | v70 o4 c4 r2. | v70 o4 d4 r2. |
+  v70 o4 e4 r2. | v70 o4 d4 r2. | v70 o4 c4 r2. | v70 o4 d4 r2. |
+  v90 o4 a4 r4 a8 a8 r4 | v90 o4 e4 r4 e8 e8 r4 | v90 o4 g4 r4 g8 g8 r4 | v90 o4 d4 r4 d8 d8 r4 |
+  v90 o4 a4 r4 a8 a8 r4 | v90 o4 c4 r4 c8 c8 r4 | v90 o4 d4 r4 d8 d8 r4 | v90 o4 e4 r4 e8 e8 r4 |
+  v90 o4 e4 r4 e8 e8 r4 | v90 o4 c4 r4 c8 c8 r4 | v90 o4 g4 r4 g8 g8 r4 | v90 o4 d4 r4 d8 d8 r4 |
+  v90 o4 c4 r4 c8 c8 r4 | v90 o4 d4 r4 d8 d8 r4 | v90 o4 e4 r4 e8 e8 r4 | v90 o4 e4 r4 e8 e8 r4 |
+
+track log logdrum vol=0.4 pan=-0.12 rev=0.2
+  o4 e4 r4 e8 r8 b4 |
+  L o4 e4 r4 e8 r8 b4 | o4 e4 r4 e8 r8 b4 | o4 c4 r4 c8 r8 g4 | o4 d4 r4 d8 r8 a4 |
+  o4 e4 r4 e8 r8 b4 | o4 d4 r4 d8 r8 a4 | o4 c4 r4 c8 r8 g4 | o4 d4 r4 d8 r8 a4 |
+  o4 a4 r4 a8 r8 e4 | o4 e4 r4 e8 r8 b4 | o4 g4 r4 g8 r8 d4 | o4 d4 r4 d8 r8 a4 |
+  o4 a4 r4 a8 r8 e4 | o4 c4 r4 c8 r8 g4 | o4 d4 r4 d8 r8 a4 | o4 e4 r4 e8 r8 b4 |
+  o4 e4 r4 e8 r8 b4 | o4 c4 r4 c8 r8 g4 | o4 g4 r4 g8 r8 d4 | o4 d4 r4 d8 r8 a4 |
+  o4 c4 r4 c8 r8 g4 | o4 d4 r4 d8 r8 a4 | o4 e4 r4 e8 r8 b4 | o4 e4 r4 e8 r8 b4 |
+
+track kit kit vol=0.3 pan=0.2 rev=0.25
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |
+  L r1 | r1 | r1 | r1 |
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |
+  v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 | v84 f4 r8 v56 w8 v66 d8 r8 v56 w8 v70 d8 |

@@ -2,7 +2,7 @@
   // Route 14, Ula'ula Island (plan 23, the wave after the loose ends): drawn by hand, our words. A road south out of Tapu
   // Village down to a grey beach and the sea, and east along the shore to Route 15
   "area": "ulaula_route_14",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

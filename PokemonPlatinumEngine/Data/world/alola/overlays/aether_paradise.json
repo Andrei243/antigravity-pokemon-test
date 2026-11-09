@@ -2,7 +2,7 @@
   // Aether Paradise (plan 23 · Z7): drawn by hand, our words. The Aether Foundation's floating island: its pier in the south, the
   // Foundation's head office in the north, a clinic, a house and a garden of tall grass with a pond where hurt Pokémon rest.
   "area": "aether_paradise",
-  "bgmTrack": "alola/pokecenter",
+  "bgmTrack": "alola/aether",
   "trees": "Round",
   "architecture": "Shoreline",
   "doors": [
