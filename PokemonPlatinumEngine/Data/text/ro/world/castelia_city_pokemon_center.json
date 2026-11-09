@@ -127,6 +127,24 @@
           "Feribotul de la Debarcaderul Prim circulă toată ziua. Virbank City e doar o scurtă călătorie peste golf."
         ]
       }
+    },
+    "designer": {
+      "name": {
+        "en": [
+          "Designer"
+        ],
+        "text": [
+          "Designerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I draw the Pokémon of this region for a living. If you ever fill in your whole Pokédex, I'd love to see it."
+        ],
+        "text": [
+          "Desenez Pokémonii din regiunea asta ca să-mi câștig pâinea. Dacă îți completezi vreodată tot Pokédexul, aș vrea să-l văd."
+        ]
+      }
     }
   },
   "signs": {}
