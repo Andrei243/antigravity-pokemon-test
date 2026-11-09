@@ -142,6 +142,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
 
+    /// <summary>The timed powers in force, which a meal starts (plan 39 · CR6).</summary>
+    public PowerState? Powers { get; set; } = new();
+
     /// <summary>The training drills' records (plan 36 · TR2).</summary>
     public TrainingRecords? Training { get; set; } = new();
 

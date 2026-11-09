@@ -331,6 +331,9 @@ public class SaveData
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
 
+    /// <summary>The timed powers in force (plan 36; granted by plan 39 · CR6's dishes). Null in saves from before them, and while none is.</summary>
+    public Models.PowersSave? Powers { get; set; }
+
     /// <summary>Every TM and TR (never an HM) that has been in the bag, by item name, for the TM maker (plan 39 · CR4). Null in saves from before it, which know those in their bag, and while none has.</summary>
     public List<string>? MachinesHad { get; set; }
     /// <summary>The training drills' records and prizes handed over (plan 36 · TR2). Null in saves from before them, and while none has been played.</summary>

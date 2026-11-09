@@ -400,8 +400,8 @@ public class PastimeTests
     [Fact]
     public void TheFossilsAreTheirSpecies()
     {
-        // Platinum's seven, then Black 2's two of Unova (plan 40 · GE3)
-        Assert.Equal(new[] { "Aerodactyl", "Omanyte", "Kabuto", "Lileep", "Anorith", "Shieldon", "Cranidos", "Tirtouga", "Archen" },
+        // Platinum's seven, Black 2's two of Unova (plan 40 · GE3), then Kalos's two
+        Assert.Equal(new[] { "Aerodactyl", "Omanyte", "Kabuto", "Lileep", "Anorith", "Shieldon", "Cranidos", "Tirtouga", "Archen", "Tyrunt", "Amaura" },
             Fossils.All.Select(f => f.Species).ToArray());
         Assert.All(Fossils.All, f =>
         {

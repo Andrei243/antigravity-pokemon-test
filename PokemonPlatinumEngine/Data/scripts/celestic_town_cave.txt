@@ -20,7 +20,10 @@
 # Fame, whose script clears the flag (PokemonLeagueHallOfFame.txt).
 #
 # What plan 23 · Z17 adds here, and Platinum has not: the way into Hisui, a side region reached from these ruins by a
-# Champion (its plan's decision 3). Nothing of it is written; the painting's script is where its question would go.
+# Champion (its plan's decision 3). Once Sinnoh's Hall of Fame is entered, the painting looked at again glows at its
+# heart, and a Champion who reaches into the light falls through to Hisui long ago: onto Prelude Beach until their story
+# there has reached the village (VAR_HISUI_STORY 3, prelude_beach.txt), into Jubilife Village before Galaxy Hall after.
+# The stone on the beach brings them back to these two tiles. Our own lines; RegionDatabase's side link names it.
 
 
 # Coming in while Cyrus is still here (refused, or a battle lost): he stands before the painting and the elder beside
@@ -107,7 +110,27 @@ label ShoveWest
   endscene
   end
 label Again
+  if flag SinnohHallOfFame goto Light
   text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light..."
+  end
+# The way into Hisui (plan 23 · Z17): the light at the painting's heart, for a Champion
+label Light
+  speaker none
+  text "{player} looked closely at the ancient painting." "Three figures stand in a triangle... and the sphere of light at their heart is glowing, softly, as if from the far side of the rock."
+  ask "Reach out and touch the light?"
+  if no end
+  effect sparkles 9 2
+  effect sparkles 10 2 wait
+  text "The light swells until there is nothing else, and the ground falls away beneath {player}'s feet..."
+  if not flag FLAG_HISUI_STORY_BEGUN call HisuiNewGame
+  fade out 1.0
+  if var VAR_HISUI_STORY < 3 goto ToTheBeach
+  travel to "JubilifeVillage" 47 21 down
+  fade in
+  end
+label ToTheBeach
+  travel to "JubilifeVillage" 48 77 up
+  fade in
   end
 label Fight
   call CyrusBattle

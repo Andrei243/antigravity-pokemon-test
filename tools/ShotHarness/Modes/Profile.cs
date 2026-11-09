@@ -50,6 +50,15 @@ partial class Harness
             At("Sinnoh", 110, 850, Direction.Up); Frames(40); Profile("route 201, in the trees");
             At("Sinnoh", 178, 845, Direction.Down); Frames(40); Profile("sandgem town");
             At("Sinnoh", 174, 815, Direction.Up); Frames(40); Profile("route 202");
+            // The same with the DexNav's find rustling in the grass in view (plan 10 · F12): what the rustle costs
+            {
+                var grassMap = MapDatabase.Get("Sinnoh");
+                var tile = Enumerable.Range(-4, 9).SelectMany(dy => Enumerable.Range(-6, 13).Select(dx => (X: 174 + dx, Y: 815 + dy)))
+                    .Where(t => Math.Max(Math.Abs(t.X - 174), Math.Abs(t.Y - 815)) > 2 && grassMap.IsTallGrass(t.X, t.Y))
+                    .OrderBy(t => Math.Abs(t.X - 174) + Math.Abs(t.Y - 815)).Select(t => ((int X, int Y)?)t).FirstOrDefault();
+                if (tile is { } t && game.PlaceDexNavRustle(t.X, t.Y)) { Frames(40); Profile("route 202, a rustle in view"); }
+                game.ForgetDexNavRustle();
+            }
             At("LakeVerity", 44, 46, Direction.Up); Frames(40); Profile("lake verity");
             // The lake from its east shore, the most water in the picture (plan 09 · L10: the mirror's pass is heaviest
             // where the water is widest and the trees stand all round it; its own line is "reflections")

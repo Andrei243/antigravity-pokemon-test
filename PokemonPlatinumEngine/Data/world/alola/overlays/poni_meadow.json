@@ -6,7 +6,7 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_NIGHTFALL" },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "scan_leavanny": { "name": "Leavanny", "npcType": "Pokemon", "species": "Leavanny", "script": "ScanLeavanny", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_LEAVANNY", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_LEAVANNY_MET" },
     "dancer": { "name": "Dancer", "npcType": "beauty", "script": "Dancer", "still": true },

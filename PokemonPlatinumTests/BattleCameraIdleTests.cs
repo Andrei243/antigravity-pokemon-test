@@ -64,7 +64,7 @@ public class BattleCameraIdleTests
                     if (idle == IdleShot.Shoulder && (BattleSide)side == BattleSide.Player) continue;
                     bool subject = idle switch
                     {
-                        IdleShot.FoeFace or IdleShot.Shoulder => (BattleSide)side == BattleSide.Enemy,
+                        IdleShot.FoeFace or IdleShot.Shoulder or IdleShot.FoeZoom => (BattleSide)side == BattleSide.Enemy,
                         IdleShot.OwnFace => (BattleSide)side == BattleSide.Player,
                         _ => true
                     };
@@ -76,7 +76,8 @@ public class BattleCameraIdleTests
         }
         // A single of ordinary bodies films every shot its manner names
         if (foes == 1 && own == 1 && foeH < 2f)
-            Assert.Equal(Math.Max(1, manner.Cycle.Count), BattleCamera.CycleFor(anim, places, manner).Count);
+            // (the crane is a Leader's, an Elite Four's or a Champion's battle's alone, plan 45 · BC5)
+            Assert.Equal(Math.Max(1, manner.Cycle.Count(s => s != IdleShot.Crane || anim.BossBattle)), BattleCamera.CycleFor(anim, places, manner).Count);
     }
 
     [Theory]

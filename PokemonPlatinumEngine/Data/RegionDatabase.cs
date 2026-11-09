@@ -44,6 +44,14 @@ public sealed class Region
     /// </summary>
     public IReadOnlyList<string> OpenMaps => OpenWorld.OpenRegions.NamesOf(Id);
 
+    /// <summary>
+    /// A side region off the chain (plan 23 · Z17: Hisui, Sinnoh's past): reached by a <see cref="LinkKind.Side"/> link
+    /// from its root after the root's Hall of Fame, and left the same way. It is no step of the journey: no harbour sails
+    /// to it, Fly neither lands there nor leaves it for another region, a pack's region never joins after it, and its Hall
+    /// of Fame moves no other region's rematches. It stands after the chain in <see cref="RegionDatabase.All"/>.
+    /// </summary>
+    public bool Side { get; init; }
+
     /// <summary>The story flag set when the player enters this region's Hall of Fame, which ends its story.</summary>
     public string StoryCompleteFlag => $"{Id}HallOfFame";
 
@@ -178,12 +186,28 @@ public sealed class Region
     }
 }
 
+/// <summary>Whether a link is a step of the journey or a branch off it (plan 23 · Z17).</summary>
+public enum LinkKind
+{
+    /// <summary>The chain's way on, from a region to the next (<see cref="RegionDatabase.LinkFrom"/>).</summary>
+    Next,
+
+    /// <summary>
+    /// A branch to a side region (<see cref="Region.Side"/>; <see cref="RegionDatabase.SideLinksFrom"/>), open once the
+    /// root's Hall of Fame is entered and taken by a scene of the root's own (Celestic Town's ruins for Hisui), not an attendant.
+    /// </summary>
+    Side
+}
+
 /// <summary>The way from one region to the next, open once the first region's story is finished.</summary>
 public sealed class RegionLink
 {
     public required string From { get; init; }
     public required string To { get; init; }
     public required Transport Transport { get; init; }
+
+    /// <summary>A step of the chain, or a branch to a side region (plan 23 · Z17).</summary>
+    public LinkKind Kind { get; init; } = LinkKind.Next;
 
     /// <summary>The map in <see cref="From"/> where the attendant who takes the player across stands.</summary>
     public string? DepartureMap { get; init; }
@@ -239,6 +263,9 @@ public static class RegionDatabase
     public const string Alola = "Alola";
     public const string Galar = "Galar";
     public const string Paldea = "Paldea";
+
+    /// <summary>Sinnoh's past, a side region off the chain (plan 23 · Z17), reached through Celestic Town's ruins.</summary>
+    public const string Hisui = "Hisui";
 
     private static readonly Region[] regions =
     {
@@ -1089,7 +1116,23 @@ public static class RegionDatabase
                 "Route2_MagnoliasHouse",
             }
         },
-        new() { Id = Paldea, Name = "Paldea", Generation = 9 }
+        new() { Id = Paldea, Name = "Paldea", Generation = 9 },
+        // Side regions stand after the chain (plan 23 · Z17)
+        new()
+        {
+            Id = Hisui, Name = "Hisui", Generation = 8, Side = true, File = RegionFiles.Load(Hisui),
+            // Hisui drawn by hand on the tile grid (plan 23 · Z17; tools/MapDraw/hisui). A new game begun there, and a Champion
+            // of Sinnoh the first time through Celestic Town's ruins, wakes on Prelude Beach beside the stone that is the way
+            // back; a return lands in Jubilife Village before Galaxy Hall's door
+            Start = new MapSpot("JubilifeVillage", 48, 77, Direction.Up),
+            Arrival = new MapSpot("JubilifeVillage", 47, 21, Direction.Down),
+            Maps = new[]
+            {
+                "JubilifeVillage",
+                // Plan 23 · Z17: Galaxy Hall, the player's quarters, the Wallflower and the general store, hand-made map files
+                "JubilifeVillage_GalaxyHall", "JubilifeVillage_Quarters", "JubilifeVillage_Wallflower", "JubilifeVillage_GeneralStore",
+            }
+        }
     };
 
     private static readonly RegionLink[] links =
@@ -1118,7 +1161,11 @@ public static class RegionDatabase
         // From Alola by air (plan 23 · Z8's link, built with plan 33 · GL1 once Galar had maps): the airline's attendant
         // stands in Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "HauoliCity_PokemonCenter_1F" },
-        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }
+        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" },
+        // The branches (plan 23 · Z17, decision 3): Hisui off Sinnoh, through the light at the heart of the ancient painting
+        // in Celestic Town's ruins once Sinnoh's Hall of Fame is entered (celestic_town_cave.txt's Painting, `travel to`),
+        // and back by the stone on Prelude Beach (prelude_beach.txt's Stone). No attendant: the scene is the way
+        new() { From = Sinnoh, To = Hisui, Kind = LinkKind.Side, Transport = Transport.Undecided, Vessel = "rift", DepartureMap = "CelesticTownCave" }
     };
 
     // The chain as the packs in use make it (plan 16 · T14): worked out again whenever DataLayers.Use puts other packs
@@ -1182,7 +1229,8 @@ public static class RegionDatabase
                     Maps = (IReadOnlyList<string>?)file.Maps ?? Array.Empty<string>()
                 };
                 // The last region with maps: where a new region may join
-                int last = chain.FindLastIndex(r => r.IsBuilt);
+                // (a side region is no step of the journey, and nothing joins after it: plan 23 · Z17)
+                int last = chain.FindLastIndex(r => r.IsBuilt && !r.Side);
                 if (file.After == null)
                 {
                     problems.Add($"{path}: {id} names no region in \"after\", so nothing sails to it.");
@@ -1197,7 +1245,7 @@ public static class RegionDatabase
                 }
                 chain.Insert(last + 1, region);
                 string before = chain[last].Id;
-                var onward = ways.FirstOrDefault(l => string.Equals(l.From, before, StringComparison.OrdinalIgnoreCase));
+                var onward = ways.FirstOrDefault(l => l.Kind == LinkKind.Next && string.Equals(l.From, before, StringComparison.OrdinalIgnoreCase));
                 int at = onward == null ? ways.Count : ways.IndexOf(onward);
                 if (onward != null) ways.RemoveAt(at);
                 var into = file.Link ?? new RegionLinkFile();
@@ -1249,8 +1297,19 @@ public static class RegionDatabase
     /// <summary>The region a map belongs to, or null for a map no region lists.</summary>
     public static Region? RegionOfMap(string mapName) => Chain.RegionOfMap(mapName);
 
-    /// <summary>The way on from a region to the next one, or null for the last region.</summary>
+    /// <summary>The way on from a region to the next one, or null for the last region (and for a side region, which has none).</summary>
     public static RegionLink? LinkFrom(string regionId) => Chain.LinkFrom(regionId);
+
+    /// <summary>
+    /// The branches from a region to its side regions (plan 23 · Z17: Sinnoh's to Hisui), each open once the region's
+    /// Hall of Fame is entered (<see cref="CheckTravel"/>) and taken by a scene of its own, never by its attendant.
+    /// </summary>
+    public static IReadOnlyList<RegionLink> SideLinksFrom(string regionId) =>
+        Chain.Links.Where(l => l.Kind == LinkKind.Side && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    /// <summary>The branch that leads into a side region, or null for a region of the chain (plan 23 · Z17).</summary>
+    public static RegionLink? SideLinkInto(string regionId) =>
+        Chain.Links.FirstOrDefault(l => l.Kind == LinkKind.Side && string.Equals(l.To, regionId, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>
     /// Every way a region's harbour sails now (plan 18 · W8, decision 9 (a), answered 2026-11-03): nothing before the
@@ -1266,7 +1325,7 @@ public static class RegionDatabase
         if (Get(onward.To) is { IsBuilt: true }) ways.Add(onward);
         foreach (var other in All)
         {
-            if (other == region || !other.IsBuilt || ways.Any(w => string.Equals(w.To, other.Id, StringComparison.OrdinalIgnoreCase))) continue;
+            if (other == region || !other.IsBuilt || other.Side || ways.Any(w => string.Equals(w.To, other.Id, StringComparison.OrdinalIgnoreCase))) continue;
             if (!story.HasEntered(other.Id)) continue;
             ways.Add(new RegionLink
             {
@@ -1370,7 +1429,7 @@ public sealed class RegionChain
         Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
 
     public RegionLink? LinkFrom(string regionId) =>
-        Links.FirstOrDefault(l => string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
+        Links.FirstOrDefault(l => l.Kind == LinkKind.Next && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>The regions packs add, in the chain's order.</summary>
     public IEnumerable<Region> OfPacks => Regions.Where(r => r.Pack != null);

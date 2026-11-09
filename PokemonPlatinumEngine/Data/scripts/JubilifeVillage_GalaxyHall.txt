@@ -1,0 +1,64 @@
+# Galaxy Hall, the Galaxy Team's headquarters in Jubilife Village (plan 23 · Z17). The lines are our own, on Legends:
+# Arceus's beats as they are publicly described (docs/mechanics/rulings.md, "Hisui's first steps"). VAR_HISUI_STORY is
+# prelude_beach.txt's count.
+#
+# The people: kamado at his desk and the medic behind her counter, always; laventon (FLAG_HISUI_HIDE_LAVENTON_HALL,
+# cleared as he goes to report), cyllene and partner (FLAG_HISUI_HIDE_CYLLENE_HALL, FLAG_HISUI_HIDE_PARTNER_HALL,
+# cleared as they leave the Wallflower). Legends: Arceus puts the Commander's office upstairs; this hall is one room.
+
+
+# Called to the Commander: the stranger questioned, a place offered on the Survey Corps after an entry trial, the
+# Pokédex from the professor and a bed for the night (ours: Legends: Arceus holds the trial first and gives the quarters
+# after; here the night comes first, and the trial is plan 23 · Z18's)
+script OnEnter
+  if var VAR_HISUI_STORY != 5 end
+  scene "The Commander"
+  walk player up 5
+  speaker "Commander Kamado"
+  say "So. You are the one who fell out of a crack in the sky."
+  say "I am Kamado, commander of the Galaxy Team. This land of Hisui is harsh, and its people fear the Pokémon that roam it."
+  speaker "Prof. Laventon"
+  say "Commander, this young one brought my three back without a single Poké Ball thrown in anger. A rare gift!"
+  speaker "Commander Kamado"
+  say "A gift is no proof. The Galaxy Team has no place for idle hands, nor for strangers who can't pull their weight."
+  say "Here is my offer. Join the Survey Corps, and help the professor fill his Pokédex. But first you will pass an entry trial in the Obsidian Fieldlands."
+  say "Until then you may sleep under our roof. There are quarters free just east of this hall."
+  speaker "Prof. Laventon"
+  say "And you'll want this, {player}. The Pokédex! Every Pokémon you meet will be written down in it."
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex!"
+  speaker "{rival}"
+  say "Welcome aboard, almost! Any Pokémon you can't carry, leave at the pastures on Canala Avenue. The keeper looks after them."
+  speaker "Captain Cyllene"
+  say "Rest tonight. The trial will not wait for you in the morning."
+  setvar VAR_HISUI_STORY 6
+  objective hisuiQuarters
+  endscene
+  end
+
+
+# The people of the hall, after their scene
+script Kamado
+  speaker "Commander Kamado"
+  if var VAR_HISUI_STORY < 6 goto Waiting
+  say "The Obsidian Fieldlands are where you will prove yourself. Do not disappoint the professor."
+  end
+label Waiting
+  say "The professor tells me a stranger is waiting at the Wallflower. I will see them when they are brought to me."
+  end
+
+script Laventon
+  speaker "Prof. Laventon"
+  say "A complete Pokédex of Hisui, the first ever made! With your help, {player}, I believe we can do it."
+  end
+
+script Cyllene
+  speaker "Captain Cyllene"
+  say "The Survey Corps walks the wilds and writes down what it finds. It is not a life for the faint-hearted."
+  end
+
+script Partner
+  speaker "{rival}"
+  say "I joined the Survey Corps last spring. Once you pass your trial, we'll be out in the Fieldlands together!"
+  end

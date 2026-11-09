@@ -428,6 +428,23 @@ public class OpenWorldPlacesTests
     }
 
     [Fact]
+    public void TheContentCheckFindsAMarkerSunkUnderTheGroundAndNotOneAStepUnder()
+    {
+        // Plan 32 · OW10 (OW9's finding: twins_gap stood 0.37 m under the meadow, and whoever was put on it fell and was
+        // caught over and over): a marker more than a step under the ground is told, one a few centimetres under isn't
+        var region = LabRegion(new List<Finding>());
+        var map = region.Maps!.Single();
+        var meadow = map.Marker("north_meadow")!.Pos;
+        map.Add(new OpenMarker("sunk", meadow with { Y = meadow.Y - 500 }));
+        map.Add(new OpenMarker("just_under", meadow with { Y = meadow.Y - 50 }));
+        var found = new List<Finding>();
+        var house = LabHouse();
+        OpenWorlds.CheckRegion(region, name => name == house.Name ? house : null, LabScripts, null, found);
+        Assert.Contains(found, f => f.Name == "sunk" && f.What.StartsWith("stands under the ground"));
+        Assert.DoesNotContain(found, f => f.Name == "just_under");
+    }
+
+    [Fact]
     public void TheContentCheckFindsAPlaceWrittenWrong()
     {
         var unreadable = new List<Finding>();

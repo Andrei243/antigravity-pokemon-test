@@ -99,7 +99,9 @@ const named = c => /^(Leader|Elite Four|Champion|Rival|Commander|Boss|Aqua|Magma
 const trainers = new Map(); // id -> { region, folder, name, named, changes: Map(old -> new) }
 const ourTrainers = read(path.join(data, 'our-trainers.json'));
 for (const region of regions) {
-  const list = read(path.join(data, 'world', region.folder, 'trainers.json'))
+  // (a region with no trainers' table of its own yet, Hisui's, has only those of ours)
+  const table = path.join(data, 'world', region.folder, 'trainers.json');
+  const list = (fs.existsSync(table) ? read(table) : [])
     .concat(ourTrainers.filter(t => t.id.startsWith(region.folder + '_')));
   for (const t of list) {
     const changes = new Map();
@@ -174,6 +176,8 @@ const namedIn = (region, line) => [...trainers].filter(([, t]) => t.named && t.r
 // Overlays: each person's trainer lines belong to their trainer; the rest of the place's lines loosely to all of them
 for (const region of regions) {
   const overlays = path.join(data, 'world', region.folder, 'overlays');
+  // (an open region, Galar's, has no grid world's areas and overlays: its people are its places' files, plan 33 · GL1)
+  if (!fs.existsSync(overlays)) continue;
   for (const file of fs.readdirSync(path.join(data, 'world', region.folder, 'areas'))) areaRegion.set(file.replace(/\.json$/, ''), region.id);
   for (const file of fs.readdirSync(overlays)) {
     const key = file.replace(/\.json$/, '');

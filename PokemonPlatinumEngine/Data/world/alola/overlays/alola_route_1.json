@@ -13,7 +13,7 @@
     { "warp": 1, "map": "AlolaRoute1_KukuiLab", "x": 7, "y": 10, "facing": "Up" }
   ],
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_NIGHTFALL" },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_HOME" },
     "youngster": {

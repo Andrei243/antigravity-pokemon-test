@@ -12,8 +12,9 @@ namespace PokemonPlatinumEngine.Models.Facilities;
 /// against trainers of the later sets (<see cref="FacilityTrainers"/>) at level 50. Sun and Moon's Battle Legends stand
 /// in the way at the 20th battle and their Super rooms at the 50th; here two Tree Masters of ours, one to a room, whose
 /// defeat at the 20th opens the room's Super room, where they come again at the 50th and leave a trophy the first time.
-/// Sun and Moon's Multi room (a partner beside the player) is not built: the frame plays one trainer to a side. The
-/// numbers are ours. No drawing or input.
+/// A third room, the Multi room, is Sun and Moon's partner room with a partner of ours (<see cref="StreakChallenge.Partner"/>):
+/// the player enters two, a partner brings two, and two trainers bring two each, a double battle of four against four (no
+/// host, no Super room). The numbers are ours. No drawing or input.
 /// </summary>
 public static class BattleTree
 {
@@ -21,7 +22,7 @@ public static class BattleTree
     public const string Place = "tree";
 
     /// <summary>The tree's rooms, in the order the desk and the board give them.</summary>
-    public static readonly string[] Ways = { "single", "double" };
+    public static readonly string[] Ways = { "single", "double", "multi" };
 
     /// <summary>Sun and Moon's battles: the normal room's master at the 20th, the Super room's at the 50th.</summary>
     public const int HostAtNormal = 20, HostAtSuper = 50;
@@ -33,15 +34,19 @@ public static class BattleTree
         ["double"] = new("Leilani", "tree_leilani", "tree_master_leilani", "tree_master_leilani_super"),
     };
 
-    /// <summary>How many each side brings in a room: Sun and Moon's counts.</summary>
+    /// <summary>Whether a way has a Tree Master to stand in it, and so a Super room and a trophy (the Multi room has none).</summary>
+    public static bool HasHost(string way) => Hosts.ContainsKey(way);
+
+    /// <summary>How many each side brings in a room: Sun and Moon's counts (and two for each side's pair in the Multi room).</summary>
     public static int EnteredIn(string way) => way switch
     {
         "single" => 3,
         "double" => 4,
+        "multi" => 2,
         _ => throw new ArgumentException($"The Battle Tree has no {way} room", nameof(way))
     };
 
-    public static BattleFormat FormatOf(string way) => way == "double" ? BattleFormat.Double : BattleFormat.Single;
+    public static BattleFormat FormatOf(string way) => way is "double" or "multi" ? BattleFormat.Double : BattleFormat.Single;
 
     /// <summary>
     /// The tiers a trainer's sets are of by the streak (a table of ours): a normal room from the weakest two to the strongest
@@ -73,9 +78,9 @@ public static class BattleTree
     /// two for each of the first ten, three to the 20th, four after, one more in a Super room, and the master's win twenty
     /// (forty in a Super room) in place of the battle's own.
     /// </summary>
-    public static int PointsFor(int streak, bool super)
+    public static int PointsFor(int streak, bool super, bool host = true)
     {
-        if (streak == (super ? HostAtSuper : HostAtNormal)) return super ? 40 : 20;
+        if (host && streak == (super ? HostAtSuper : HostAtNormal)) return super ? 40 : 20;
         int points = streak <= 10 ? 2 : streak <= 20 ? 3 : 4;
         return points + (super ? 1 : 0);
     }
@@ -86,6 +91,15 @@ public static class BattleTree
     /// <summary>A room of the tree.</summary>
     public static StreakRoom Room(string way, bool super)
     {
+        if (!HasHost(way))
+        {
+            // The Multi room: a partner beside the player, no host, no Super room (asked for one, it is the normal room)
+            return new StreakRoom
+            {
+                Place = Place, Way = way, Hard = false, Entered = EnteredIn(way), Format = FormatOf(way), Multi = true,
+                Tiers = streak => TiersFor(streak, false), Ivs = streak => IvsFor(streak, false), Points = streak => PointsFor(streak, false, host: false)
+            };
+        }
         var host = Hosts[way];
         return new StreakRoom
         {
@@ -97,8 +111,8 @@ public static class BattleTree
     }
 
     /// <summary>Every room, normal and Super, in the board's order.</summary>
-    public static IEnumerable<StreakRoom> Rooms => Ways.SelectMany(w => new[] { Room(w, false), Room(w, true) });
+    public static IEnumerable<StreakRoom> Rooms => Ways.SelectMany(w => HasHost(w) ? new[] { Room(w, false), Room(w, true) } : new[] { Room(w, false) });
 
     /// <summary>How many Super rooms' trophies the story holds.</summary>
-    public static int Trophies(Story.StoryState story) => Ways.Count(w => story.Var(TrophyVariable(w)) > 0);
+    public static int Trophies(Story.StoryState story) => Ways.Count(w => HasHost(w) && story.Var(TrophyVariable(w)) > 0);
 }

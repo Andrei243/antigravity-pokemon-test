@@ -140,13 +140,34 @@ internal sealed partial class BattleCamera
         int i = (int)MathF.Floor(age / step);
         float into = age - i * step;
         var (a, aKind) = shots[i % shots.Count];
-        if (into < manner.CycleHold) return (a, aKind, null);
+        if (into < manner.CycleHold) return (InTheHand(a, anim.Time, manner.Handheld * Smooth(age / BreathIn)), aKind, null);
         var (b, bKind) = shots[(i + 1) % shots.Count];
         float t = Smooth((into - manner.CycleHold) / manner.CycleEase);
         // A shot of the player's own front is cut to and from, and so is any ease that would pass the player's platform
         // (the corridors' rule): halfway through the ease's time
-        if (!Eases(a, aKind, b, bKind)) return t < 0.5f ? (a, aKind, null) : (b, bKind, null);
-        return (CameraShot.Lerp(a, b, t), t < 0.5f ? aKind : bKind, null);
+        if (!Eases(a, aKind, b, bKind)) return t < 0.5f ? (InTheHand(a, anim.Time, manner.Handheld * Smooth(age / BreathIn)), aKind, null) : (InTheHand(b, anim.Time, manner.Handheld * Smooth(age / BreathIn)), bKind, null);
+        return (InTheHand(CameraShot.Lerp(a, b, t), anim.Time, manner.Handheld * Smooth(age / BreathIn)), t < 0.5f ? aKind : bKind, null);
+    }
+
+    /// <summary>
+    /// A shot held in the hand (plan 45 · BC6, Paldea's <see cref="CameraManner.Handheld"/>): its aim swayed across and up
+    /// by up to <paramref name="sway"/> radians on a noise of our own of the battle's clock (two sines each way, of
+    /// unrelated periods), the camera where it stands and level: never a roll. The shot itself where the sway is nought.
+    /// </summary>
+    public static CameraShot InTheHand(CameraShot shot, float time, float sway)
+    {
+        if (sway <= 0f) return shot;
+        var forward = shot.Target - shot.Position;
+        float dist = forward.Length();
+        if (dist < 1e-4f) return shot;
+        forward /= dist;
+        var right = Vector3.Cross(forward, Vector3.UnitY);
+        if (right.LengthSquared() < 1e-6f) return shot;
+        right = Vector3.Normalize(right);
+        var up = Vector3.Cross(right, forward);
+        float across = 0.6f * MathF.Sin(time * 1.31f) + 0.4f * MathF.Sin(time * 2.87f + 1.1f);
+        float lift = 0.55f * MathF.Sin(time * 1.07f + 2.3f) + 0.45f * MathF.Sin(time * 2.41f + 0.4f);
+        return shot with { Target = shot.Target + (right * across + up * lift) * (sway * dist) };
     }
 
     /// <summary>Whether the cycle eases from one shot to the next rather than cutting: never to or from the player's own front, never past the player's platform.</summary>
@@ -185,11 +206,18 @@ internal sealed partial class BattleCamera
         return list;
     }
 
-    /// <summary>The places of a side that stand there now (at least the first).</summary>
+    /// <summary>
+    /// The places of a side that stand there now (plan 45 · BC7: those with a Pokémon out, so an SOS battle's wild side
+    /// before its ally has landed and a place whose Pokémon has gone are no subjects); every place of the side where
+    /// none is out, and at least the first.
+    /// </summary>
     private static List<(BattleSide Side, int Slot)> SideOf(BattleAnimator anim, BattleSide side)
     {
         var list = new List<(BattleSide, int)>();
-        for (int slot = 0; slot < anim.SlotsOf(side); slot++) list.Add((side, slot));
+        for (int slot = 0; slot < anim.SlotsOf(side); slot++)
+            if (anim[side, slot].Present) list.Add((side, slot));
+        if (list.Count == 0)
+            for (int slot = 0; slot < anim.SlotsOf(side); slot++) list.Add((side, slot));
         if (list.Count == 0) list.Add((side, 0));
         return list;
     }
@@ -209,6 +237,10 @@ internal sealed partial class BattleCamera
             IdleShot.FoeFace => (FoeFaceShot(places, foes, manner), foes),
             IdleShot.OwnFace => (OwnFaceShot(places, own, foes, manner), own),
             IdleShot.Side => (SideShot(places, own, foes, manner), Both(own, foes)),
+            // The crane over the stage, only at a Leader's, an Elite Four's or a Champion's battle (plan 45 · BC5)
+            IdleShot.Crane when manner.Crane && anim.BossBattle => (CraneShot(anim, places, manner), Both(own, foes)),
+            // The overview's own lens narrowed onto the foe (plan 45 · BC6, Kanto's, Johto's and Hoenn's)
+            IdleShot.FoeZoom => FoeZoomShot(anim, places, foes, own) is { } zoom ? (zoom, foes) : null,
             _ => null,
         };
         if (framed is not { } f) return null;
@@ -285,11 +317,39 @@ internal sealed partial class BattleCamera
         return new CameraShot(at, look, ShoulderFov);
     }
 
+    /// <summary>How much of the foes' height the foe zoom frames (plan 45 · BC6).</summary>
+    public const float FoeZoomFrame = 4.2f;
+
+    /// <summary>
+    /// The foe zoom (plan 45 · BC6): the overview's own stand, its lens narrowed onto the foes' middle until they fill
+    /// <see cref="FoeZoomFrame"/> × their height. The camera never moves, so an ease to and from the overview is a push of
+    /// the lens alone. Where the player's own Pokémon would stand half in its corner, the lens is narrowed a step at a
+    /// time (to 2.4 × the foes' height) until it is out of the picture or wholly in its free part; null where it never is.
+    /// </summary>
+    public static CameraShot? FoeZoomShot(BattleAnimator anim, FxPlaces places, List<(BattleSide Side, int Slot)> foes,
+        List<(BattleSide Side, int Slot)> own)
+    {
+        var overview = Overview(anim.Time);
+        var (middle, h, spread) = Group(places, foes);
+        float dist = Math.Max(1f, Vector3.Distance(overview.Position, middle));
+        var panels = IdleFrame.Panels(anim.SlotsOf(BattleSide.Enemy), anim.SlotsOf(BattleSide.Player));
+        for (float frame = FoeZoomFrame; frame >= 2.4f - 1e-3f; frame -= 0.3f)
+        {
+            float size = Math.Max(h * frame, spread * 3.6f * frame / FoeZoomFrame);
+            float fov = Math.Clamp(2f * MathF.Atan(size / (2f * dist)) * 180f / MathF.PI, 6f, OverviewFov);
+            var shot = new CameraShot(overview.Position, middle, fov);
+            if (foes.TrueForAll(s => IdleFrame.BoxOf(shot, places, s.Side, s.Slot) is { } b && IdleFrame.Holds(b, panels))
+                && own.TrueForAll(s => IdleFrame.BoxOf(shot, places, s.Side, s.Slot) is var box && (IdleFrame.Outside(box) || IdleFrame.Holds(box!.Value, panels))))
+                return shot;
+        }
+        return null;
+    }
+
     /// <summary>The foe's face: the foes from the front, close and turned a little, standing in front of the player's platform.</summary>
     public static CameraShot FoeFaceShot(FxPlaces places, List<(BattleSide Side, int Slot)> foes, CameraManner manner)
     {
         var (middle, h, spread) = Group(places, foes);
-        float size = Math.Max(h * FoeFaceFrame, spread * 3.2f) / manner.Reach;
+        float size = Math.Max(h * FoeFaceFrame, spread * 3.2f) * manner.Reach;
         return Frame(middle, size, -0.18f + FaceTurn, 0.08f - manner.Low, IdleFov, FoeShotLimit);
     }
 
@@ -301,7 +361,7 @@ internal sealed partial class BattleCamera
     {
         var d = TowardFoe(places, own, foes);
         var (middle, h, spread) = Group(places, own);
-        float size = Math.Max(h * OwnFaceFrame, spread * 3.2f) / manner.Reach;
+        float size = Math.Max(h * OwnFaceFrame, spread * 3.2f) * manner.Reach;
         var from = Vector3.Transform(d, Matrix4x4.CreateRotationY(-FaceTurn));
         float lift = OwnFaceLift - manner.Low;
         var dir = Vector3.Normalize(from * MathF.Cos(lift) + Vector3.UnitY * MathF.Sin(lift));

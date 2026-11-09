@@ -26,6 +26,12 @@ internal enum ShotKind
     OwnFront,
     /// <summary>The one a super-effective or critical blow landed on, held a moment once the move's shots are over (plan 45 · BC4).</summary>
     React,
+    /// <summary>A manner's opening (plan 45 · BC5): a wild Pokémon close through the overview's lens, a trainer on their platform, the crane down onto them.</summary>
+    Opening,
+    /// <summary>A manner's closing (plan 45 · BC5): the win's face-on shot of the player's Pokémon and trainer, the crane rising, the foe's side at a loss.</summary>
+    Closing,
+    /// <summary>An ally answering a call for help hopping onto its place (plan 45 · BC7): the foes' side from the front while it lands.</summary>
+    Ally,
 }
 
 /// <summary>
@@ -84,13 +90,30 @@ internal sealed partial class BattleCamera
     public static CameraManner MannerNow(CameraManner? manner) =>
         manner is null || Motion <= 0f ? CameraManners.Classic : manner;
 
+    /// <summary>
+    /// Whether the battle's Battle Scene is on (plan 45 · BC7): with it off the battle is filmed as Classic whatever
+    /// manner is set, as it has no camera moves of its own to show (the face sets it every frame).
+    /// </summary>
+    public bool SceneOn { get; set; } = true;
+
     public CameraShot Current { get; private set; }
     public ShotKind Kind { get; private set; } = ShotKind.Intro;
+
+    /// <summary>The shot the director last wanted, before any easing (plan 45 · BC7): where its cycle stands.</summary>
+    public CameraShot Wanted { get; private set; }
+
     private bool started;
     private ShotKind lastKind;
     private EffectCue? lastCue;
 
     public void Reset() => started = false;
+
+    /// <summary>
+    /// Where a photo begins (plan 45 · BC7; style guide, "Formats and the rest"): the shot on screen as the key is
+    /// pressed, so a photo is composed from the cycle's idle shot and not from the overview; while the picture is split
+    /// the foe's half (a Royal's first quarter), the half at the top.
+    /// </summary>
+    public static CameraShot PhotoStart(CameraShot current, SplitShot? split) => split is { In: >= 0.5f } s ? s.Foe : current;
 
     /// <summary>The shot a photo holds the camera on (plan 12 · Q17); null while the director directs.</summary>
     public CameraShot? Held { get; private set; }
@@ -114,7 +137,8 @@ internal sealed partial class BattleCamera
             lastCue = null;
             return held.ToCamera();
         }
-        var (shot, kind, cue) = Direct(anim, places, choosing, Manner);
+        var (shot, kind, cue) = Direct(anim, places, choosing, SceneOn ? Manner : CameraManners.Classic);
+        Wanted = shot;
         // Cut from the attacker to its target, into a critical hit's punch-in, onto the intro's own path, and
         // wherever easing would fly the camera past the player's side of the field; ease everything else
         bool cut = !started || kind == ShotKind.Intro
@@ -128,6 +152,10 @@ internal sealed partial class BattleCamera
             // The player's own front is only ever cut to and from: it stands on the far side of their Pokémon from every
             // other shot (plan 45 · BC2, the corridors' rule)
             || (kind == ShotKind.OwnFront) != (lastKind == ShotKind.OwnFront)
+            // A manner's opening and closing follow their own functions frame by frame, and the closing is cut to: its
+            // win stands on the far side of the player's Pokémon from every other shot (plan 45 · BC5)
+            || (kind == ShotKind.Opening && lastKind == ShotKind.Opening)
+            || kind == ShotKind.Closing
             || CrossesPlayerSide(Current.Position, shot.Position);
         Current = cut ? shot : CameraShot.Lerp(Current, shot, 1f - MathF.Exp(-Math.Max(0f, dt) / Smoothing));
         started = true;
@@ -239,6 +267,8 @@ internal sealed partial class BattleCamera
         var m = MannerNow(manner);
         if (choosing && anim.Time >= 1.8f)
         {
+            // A battle over is filmed by its closing even under a question (plan 45 · BC5)
+            if (m.Close && ClosingNow(anim, places, m) is { } closed) return closed;
             // A manner that films the menu: Sinnoh's breathing overview, a cycle's shots (plan 45 · BC2)
             if (!m.IsStill && IdleNow(anim, places, m) is { } idle) return idle;
             return (Overview(anim.Time), ShotKind.Overview, null);
@@ -332,6 +362,10 @@ internal sealed partial class BattleCamera
                 return (Close(places, s, 0, RotationShotScale, s == BattleSide.Player ? 0.35f : 0f), ShotKind.Rotation, null);
         }
 
+        // An ally answering a call for help hopping onto its place (plan 45 · BC7, a manner that reacts): the foes' side
+        // from the front while it lands, in place of the overview over an empty place
+        if (m.React && motionNow > 0f && AllyNow(anim, places) is { } ally) return (ally, ShotKind.Ally, null);
+
         // A Pokémon fainting
         for (int side = 0; side < 2; side++)
             for (int slot = 0; slot < anim.SlotsOf((BattleSide)side); slot++)
@@ -344,6 +378,15 @@ internal sealed partial class BattleCamera
         // A manner that reacts: the one a super-effective or critical blow landed on, held a moment once the move's
         // shots are over, unless another move has begun (plan 45 · BC4)
         if (m.React && motionNow > 0f && ReactNow(anim, places, move) is { } react) return react;
+
+        // A manner's closing once the battle has ended, and its opening in the battle's first moments (plan 45 · BC5)
+        if (m.Close && ClosingNow(anim, places, m) is { } closing) return closing;
+        if (m.Open && motionNow > 0f)
+        {
+            if (OpeningNow(anim, places, m) is { } opening) return opening;
+            // The sweep is Classic's opening and stays its own: a manner that opens goes to the overview after its own
+            return (Overview(anim.Time), ShotKind.Overview, null);
+        }
 
         if (anim.Time < 1.8f) return (Intro(anim.Time), ShotKind.Intro, null);
         return (Overview(anim.Time), ShotKind.Overview, null);
@@ -365,7 +408,7 @@ internal sealed partial class BattleCamera
         var targets = TargetsOf(anim, move);
         var target = push <= 0f
             ? TargetShot(places, targets, move.Category == MoveCategory.Status ? 3.4f : 3.0f)
-            : PulledTarget(places, targets, move, push);
+            : PulledTarget(places, targets, move, push, (manner?.Low ?? 0f) * Math.Clamp(Motion, 0f, 1f));
         if (Motion > 0f && move.Critical && move.Age >= BattleAnimator.ImpactTime && move.Age < BattleAnimator.ImpactTime + 0.4f)
             return (TargetShot(places, targets, 2.1f), ShotKind.Critical);
         return (target, ShotKind.Target);

@@ -1,0 +1,28 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A futon, a chest and a lamp. Plain, but it's a roof over your head."
+      ],
+      "text": [
+        "Un futon, o ladă și o lampă. Simplu, dar e un acoperiș deasupra capului."
+      ]
+    },
+    {
+      "en": [
+        "{player} lay down to rest..."
+      ],
+      "text": [
+        "{player} s-a întins să se odihnească..."
+      ]
+    },
+    {
+      "en": [
+        "Morning came to Jubilife Village."
+      ],
+      "text": [
+        "Dimineața a venit peste Jubilife Village."
+      ]
+    }
+  ]
+}

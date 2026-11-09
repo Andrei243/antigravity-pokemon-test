@@ -134,6 +134,14 @@ public sealed record BattleMeeting
         trainers.Select(t => new MetTrainer(t.TrainerClass, t.Name, t.Id)).ToList();
 
     /// <summary>
+    /// Whether a trainer's class is a boss of the camera's (plan 45 · BC5, BC7): a Gym Leader, one of the Elite Four, the
+    /// Champion or a Frontier Brain, whose battle a manner may film with the crane and whose last Pokémon with a boss's
+    /// split. The face's alone: nothing of it reaches the rules.
+    /// </summary>
+    public static bool IsBoss(string trainerClass) =>
+        ClassRow(trainerClass) is MeetingRow.Leader or MeetingRow.EliteFour or MeetingRow.Champion or MeetingRow.FrontierBrain;
+
+    /// <summary>
     /// How the first trainer's class is told (<c>EncEffects_TrainerClassEffect</c>): the classes with a way or a
     /// music of their own, and everyone else. The original has a class to each Gym Leader, to each of the Elite
     /// Four, to each Commander and to the grunts of either sex; <c>trainers.json</c> names them by the class's word

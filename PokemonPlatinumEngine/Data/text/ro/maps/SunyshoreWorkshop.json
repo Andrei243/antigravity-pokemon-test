@@ -17,6 +17,16 @@
           "Meșteșugăreasa"
         ]
       }
+    },
+    "apprentice": {
+      "name": {
+        "en": [
+          "Apprentice"
+        ],
+        "text": [
+          "Ucenic"
+        ]
+      }
     }
   },
   "signs": {}

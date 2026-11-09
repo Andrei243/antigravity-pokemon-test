@@ -242,6 +242,12 @@ public class BagScreen
     /// </summary>
     public int? RunCap { get; set; }
 
+    /// <summary>
+    /// The moves the Zygarde Cube may teach, as the game's Cores have unlocked them (plan 23, the Cores' own moves; set each
+    /// frame by the engine from <see cref="FormChanges.CubeMovesFor"/>); all five until told otherwise.
+    /// </summary>
+    public IReadOnlyList<string> CubeMoves { get; set; } = FormChanges.CubeMoves;
+
     /// <summary>Under the Nuzlocke (plan 13 · V4), set each frame by the engine: no revive is used, and the bag says why.</summary>
     public bool NoRevives { get; set; }
 
@@ -776,7 +782,7 @@ public class BagScreen
             // The later games' key items that change a form (plan 06 · R29): never used up, and the move a form brings
             // that doesn't fit is asked about as a level's is. The Rotom Catalog and the Zygarde Cube list what they
             // can do for it first (plan 06 · R29b)
-            if (FormChanges.WouldHelp(item, target, party) && FormChanges.OptionsFor(item, target) is { } rows)
+            if (FormChanges.WouldHelp(item, target, party) && FormChanges.OptionsFor(item, target, CubeMoves) is { } rows)
             {
                 Options = rows;
                 OptionIndex = 0;
@@ -878,7 +884,7 @@ public class BagScreen
     {
         if (Options == null || choosingFor is not { } item || TargetIndex >= party.Count) return;
         var target = party.Members[TargetIndex];
-        var result = FormChanges.Choose(item, target, party, OptionIndex);
+        var result = FormChanges.Choose(item, target, party, OptionIndex, CubeMoves);
         if (!result.Applied)
         {
             onNotification(result.Message);

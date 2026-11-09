@@ -100,6 +100,19 @@ public sealed record EncounterMoment
 
     /// <summary>The story's variable that picks the grass's table (<see cref="LandSet"/>): Emerald's own name.</summary>
     public const string LandSetVariable = "VAR_ALTERING_CAVE_WILD_SET";
+
+    /// <summary>
+    /// The encounters' or stealth's power in force (plan 36's powers, plan 39 · CR6's dishes): what it adds to a step's
+    /// flat chance of meeting anything, as the Pokégear's March does (<see cref="EncounterSteps.Meets"/>); nought for none.
+    /// </summary>
+    public int PowerRate { get; init; }
+
+    /// <summary>
+    /// A type's encounters in force (plan 39 · CR6): the type, and how many of the grass's commonest slots of another
+    /// type take the place's first species of it (<see cref="EncounterSlots.Grass"/>); null and nought for none.
+    /// </summary>
+    public PokemonType? PowerType { get; init; }
+    public int PowerSlots { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>
@@ -211,7 +224,30 @@ public static class EncounterSlots
         if (moment.OursOpen)
             for (int i = 0; i < area.OursLand.Count && i < OverlayOurs.MostOnLand; i++)
                 OursSlots.Put(slots[OverlayOurs.FirstLandSlot + i], area.OursLand[i]);
+        if (moment.PowerType is { } type && moment.PowerSlots > 0) ToTheType(slots, type, moment.PowerSlots);
         return slots;
+    }
+
+    /// <summary>
+    /// A type's encounters (plan 39 · CR6, a power of plan 36's table): the first <paramref name="count"/> slots, the
+    /// commonest, whose species is not of the type take the first species of it the table holds now, at their own levels and
+    /// weights. A place with none of the type is left as it is. Nothing is drawn: the power only changes which species a
+    /// slot gives, so a step meets as often as without it. Our own species' slots (from 10) are never taken.
+    /// </summary>
+    internal static void ToTheType(List<WildEncounterEntry> slots, PokemonType type, int count)
+    {
+        static bool Of(string name, PokemonType type) =>
+            PokemonDatabase.Get(name) is { } s && (s.PrimaryType == type || s.SecondaryType == type);
+        int reach = Math.Min(slots.Count, OverlayOurs.FirstLandSlot);
+        string? species = slots.Take(reach).Select(s => s.SpeciesName).FirstOrDefault(n => Of(n, type));
+        if (species == null) return;
+        int taken = 0;
+        for (int slot = 0; slot < reach && taken < count; slot++)
+        {
+            if (Of(slots[slot].SpeciesName, type)) continue;
+            slots[slot].SpeciesName = species;
+            taken++;
+        }
     }
 
     /// <summary>

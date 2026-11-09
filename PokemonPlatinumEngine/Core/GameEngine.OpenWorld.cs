@@ -39,6 +39,8 @@ public partial class GameEngine
     {
         if (MapDatabase.TryGet(map.Name) != null) throw new ArgumentException($"{map.Name} is a grid map's name; an open map's must be its own");
         openMaps[map.Name] = map;
+        // The Town Map of an open region is painted from its bake (plan 32 · OW10)
+        Graphics.RegionMapPictures.OpenMapOf = OpenMapNamed;
     }
 
     /// <summary>Puts the player in an open map at a place, facing a way, with the field's clock begun afresh; the grid's place is kept beside it.</summary>

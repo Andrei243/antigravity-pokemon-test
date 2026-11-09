@@ -13,7 +13,7 @@
     { "script": "HanoScene", "x": 264, "z": 245, "width": 4, "depth": 1, "variable": "VAR_ALOLA_AKALA", "value": 7 }
   ],
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_DAYLIGHT" },
     "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_HANO_DONE", "shownBy": "FLAG_ALOLA_OLIVIA_DONE" },
     "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HANO_DONE", "shownBy": "FLAG_ALOLA_OLIVIA_DONE" },
     "wicke": { "name": "Wicke", "npcType": "wicke", "script": "Wicke", "still": true, "hiddenBy": "FLAG_ALOLA_HANO_DONE", "shownBy": "FLAG_ALOLA_OLIVIA_DONE" },

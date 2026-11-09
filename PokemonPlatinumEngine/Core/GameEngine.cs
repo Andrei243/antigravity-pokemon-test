@@ -246,6 +246,7 @@ public partial class GameEngine
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
         flow.BagScreen.RunCap = CurrentLevelCap();
+        flow.BagScreen.CubeMoves = FormChanges.CubeMovesFor(flow.Story.Has);
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
         flow.PartyScreen.RunCap = flow.DayCare.LevelCap = flow.BagScreen.RunCap;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
@@ -452,6 +453,8 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Powers.Clear();
+        ForgetWornOff();
         flow.Training.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
@@ -719,6 +722,8 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Powers.Load(save.Powers);
+        ForgetWornOff();
         flow.Training.Load(save.Training);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
@@ -936,6 +941,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Powers = flow.Powers.ToSave(),
             MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             Training = flow.Training.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
@@ -1157,12 +1163,18 @@ public partial class GameEngine
         // The developer's console holds the game while it is open, and what was saved is read again (plan 16 · T6)
         if (UpdateDev(dt)) return;
 
-        if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
+        if (gameStarted && flow.State != GameState.WindowClosing)
+        {
+            flow.PlayTime += dt;
+            // The powers in force count down from the play time (plan 36; plan 39 · CR6), never the wall clock
+            KeepThePowers(dt);
+        }
 
         flow.Toast.Update(dt);
         KeepTheMedals(dt);
         KeepTheResearch();
         KeepWhatWasLeft();
+        TellWornOff();
         KeepTheTimer(dt);
         KeepTheStream(dt);
         KeepTheAutosave(dt);
@@ -2058,6 +2070,9 @@ public partial class GameEngine
             .Select(n => PlayerIdentity.CharacterFor(n.NpcType))
             .Append(PlayerIdentity.Character).Append("PLAYER").Append("DAWN")
             .ToList();
+        // Where the game knows an open map, the player's grown look there is kept through a grid room's warp, or coming
+        // back out the player is not drawn until it is made again (plan 32 · OW10, the harness's open86); none in a game of today
+        if (openMaps.Count > 0) looks.Add(OpenPlayerLook);
         // (and the player's look holding a rod, which a cast builds: plan 11 · C8)
         if (trim) CharacterModels.Trim(looks.Append(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod)));
         CharacterModels.Preload(looks);

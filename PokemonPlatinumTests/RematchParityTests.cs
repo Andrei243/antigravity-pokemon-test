@@ -122,6 +122,10 @@ public class RematchParityTests
     {
         [RegionDatabase.Kalos] = "plan 23 · Z4 (Kalos's Leaders and League)",
         [RegionDatabase.Alola] = "plan 23 · Z7 (Alola's trials and League)",
+        [RegionDatabase.Galar] = "plan 33 · GL4 to GL7 (Galar's Gym Challenge, Champion Cup and after the Hall of Fame)",
+        // A side region with no Gyms and no League (plan 23 · Z17): its Nobles and the Pearl and Diamond Clans' wardens
+        // are fought in plan 23 · Z19 and Z20, whose sessions decide whether they are fought again
+        [RegionDatabase.Hisui] = "plan 23 · Z19 and Z20 (Hisui's Nobles and wardens)",
     };
 
     private static IEnumerable<TrainerRecord> Everyone() =>

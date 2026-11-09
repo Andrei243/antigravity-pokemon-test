@@ -57,7 +57,20 @@
     },
     "admin": {
       "note": "first spoken at five_island_rocket_warehouse.txt(15)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Team Rocket admin: cold, cruel and sure the islands are hers"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,af_kore:0.5",
+        "speed": 1,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "aether_employee": {
       "note": "first spoken at UlaulaRoute15_AetherHouse.txt(7)",
@@ -69,7 +82,20 @@
     },
     "agatha": {
       "note": "first spoken at pokemon_league_agathas_room.txt(8)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "an Elite Four ghost master: old, sharp-tongued and cackling, scornful of weak trainers"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_isabella:0.6,af_nicole:0.4",
+        "speed": 0.88,
+        "pitch": 0.9,
+        "accent": "en-us"
+      }
     },
     "agnes": {
       "note": "first spoken at LumioseCity_TableATrois.txt(22)",
@@ -227,7 +253,20 @@
     },
     "avery": {
       "note": "first spoken at cinnabar_island_gym.txt(38)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "Avery: stern and plain-spoken"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_fable:0.5,am_fenrir:0.5",
+        "speed": 0.97,
+        "pitch": 0.924,
+        "accent": "en-us"
+      }
     },
     "az": {
       "note": "first spoken at kiloude_city.txt(11)",
@@ -294,6 +333,10 @@
       "note": "first spoken at black_city_5.txt(86)",
       "provisional": true
     },
+    "beni": {
+      "note": "first spoken at JubilifeVillage_Wallflower.txt(14)",
+      "provisional": true
+    },
     "benjamin": {
       "note": "first spoken at phone.txt(245)",
       "provisional": true
@@ -341,7 +384,20 @@
     },
     "big_man": {
       "note": "first spoken at four_island_house_1.txt(9)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a big man: hearty and proud of his strength"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.7,am_echo:0.3",
+        "speed": 1.02,
+        "pitch": 0.994,
+        "accent": "en-us"
+      }
     },
     "bike_shop_owner": {
       "note": "first spoken at phone.txt(62)",
@@ -349,7 +405,20 @@
     },
     "bill": {
       "note": "first spoken at cinnabar_island.txt(54)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a kind, shy Pokémon researcher: earnest, a little nervous, glad of company"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,am_echo:0.4",
+        "speed": 1,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
     },
     "black_belt": {
       "note": "first spoken at route_4.txt(10)",
@@ -370,7 +439,20 @@
     },
     "blaine": {
       "note": "first spoken at cinnabar_island_gym.txt(152)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a hot-blooded old Gym Leader: loud, fiery and fond of a pun about heat"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.6,am_echo:0.4",
+        "speed": 1.04,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "blue": {
       "note": "first spoken at johto_cinnabar_island.txt(11)",
@@ -416,11 +498,37 @@
     },
     "brock": {
       "note": "first spoken at pewter_city_gym.txt(11)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a gentle giant of a Gym Leader: earnest, steady as a rock, caring like an older brother"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_onyx:0.4",
+        "speed": 0.94,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "bruno": {
       "note": "first spoken at pokemon_league_bruno_room.txt(9)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "an Elite Four fighter: gruff, hearty and plain, trusts training over talk"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.55,am_michael:0.45",
+        "speed": 0.95,
+        "pitch": 0.91,
+        "accent": "en-us"
+      }
     },
     "brutus": {
       "note": "first spoken at LumioseCity_Station.txt(107)",
@@ -532,6 +640,10 @@
         "accent": "en-us"
       }
     },
+    "captain_cyllene": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(33)",
+      "provisional": true
+    },
     "captain_stern": {
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
       "provisional": true
@@ -575,7 +687,20 @@
     },
     "celio": {
       "note": "first spoken at one_island_pokemon_center_1f.txt(35)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an earnest young inventor: polite, hopeful and a little overworked"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,bm_lewis:0.5",
+        "speed": 1.02,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
     },
     "cerise": {
       "note": "first spoken at lumiose_city.txt(129)",
@@ -620,7 +745,20 @@
     },
     "chef": {
       "note": "first spoken at KonikoniCity_Restaurant.txt(7)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a chef: harried, loud and proud of his kitchen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,am_adam:0.3",
+        "speed": 1.11,
+        "pitch": 0.994,
+        "accent": "en-us"
+      }
     },
     "cheren": {
       "note": "first spoken at aspertia_city.txt(286)",
@@ -902,6 +1040,54 @@
         "accent": "en-us"
       }
     },
+    "class:biker#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,bm_daniel:0.4",
+        "speed": 1.06,
+        "pitch": 1.026,
+        "accent": "en-us"
+      }
+    },
+    "class:biker#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,bm_daniel:0.4",
+        "speed": 1.11,
+        "pitch": 1.018,
+        "accent": "en-us"
+      }
+    },
+    "class:biker#3": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,bm_lewis:0.4",
+        "speed": 1.11,
+        "pitch": 0.986,
+        "accent": "en-us"
+      }
+    },
     "class:bird_keeper#1": {
       "brief": {
         "register": "woman",
@@ -1030,6 +1216,70 @@
         "accent": "en-us"
       }
     },
+    "class:bug_catcher#3": {
+      "brief": {
+        "register": "boy",
+        "age": "child",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Bug Catcher: bug-mad and excitable"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.5,am_liam:0.5",
+        "speed": 1.1,
+        "pitch": 1.196,
+        "accent": "en-us"
+      }
+    },
+    "class:burglar#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Burglar: sly and jumpy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.7,am_fenrir:0.3",
+        "speed": 1.06,
+        "pitch": 0.976,
+        "accent": "en-us"
+      }
+    },
+    "class:burglar#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Burglar: sly and jumpy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,bm_lewis:0.5",
+        "speed": 1.06,
+        "pitch": 0.992,
+        "accent": "en-gb"
+      }
+    },
+    "class:burglar#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Burglar: sly and jumpy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.7,am_michael:0.3",
+        "speed": 1.05,
+        "pitch": 0.992,
+        "accent": "en-us"
+      }
+    },
     "class:cameraman#2": {
       "brief": {
         "register": "man",
@@ -1094,6 +1344,54 @@
         "accent": "en-us"
       }
     },
+    "class:channeler#1": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Channeler: trance-like and wavering"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_nicole:0.4",
+        "speed": 0.9,
+        "pitch": 0.954,
+        "accent": "en-us"
+      }
+    },
+    "class:channeler#2": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Channeler: trance-like and wavering"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.5,af_river:0.5",
+        "speed": 0.9,
+        "pitch": 0.906,
+        "accent": "en-us"
+      }
+    },
+    "class:channeler#3": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Channeler: trance-like and wavering"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.6,af_nicole:0.4",
+        "speed": 0.92,
+        "pitch": 0.906,
+        "accent": "en-us"
+      }
+    },
     "class:collector#1": {
       "brief": {
         "register": "man",
@@ -1142,6 +1440,86 @@
         "accent": "en-us"
       }
     },
+    "class:cool_couple#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a cool couple: confident and in step"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,am_puck:0.5",
+        "speed": 0.97,
+        "pitch": 1.048,
+        "accent": "en-us"
+      }
+    },
+    "class:cool_couple#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a cool couple: confident and in step"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.5,af_sarah:0.5",
+        "speed": 0.97,
+        "pitch": 0.976,
+        "accent": "en-us"
+      }
+    },
+    "class:cooltrainer#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,af_bella:0.5",
+        "speed": 1.07,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "class:cooltrainer#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_michael:0.4",
+        "speed": 1.09,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "class:cooltrainer#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.5,af_sarah:0.5",
+        "speed": 1.09,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
     "class:cowgirl#3": {
       "brief": {
         "register": "woman",
@@ -1155,6 +1533,150 @@
         "blend": "af_river:0.5,bf_lily:0.5",
         "speed": 1.06,
         "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_girl#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Girl: fierce and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_river:0.4",
+        "speed": 1.11,
+        "pitch": 1.048,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_girl#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Girl: fierce and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.6,af_jessica:0.4",
+        "speed": 1.1,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_girl#3": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Girl: fierce and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,af_alloy:0.4",
+        "speed": 1.07,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_kin#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Kin: fierce and in tune with her sister"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,af_aoede:0.5",
+        "speed": 1.05,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_kin#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Kin: fierce and in tune with her sister"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,am_puck:0.4",
+        "speed": 1.1,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:crush_kin#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Crush Kin: fierce and in tune with her sister"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.7,af_alloy:0.3",
+        "speed": 1.09,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:cue_ball#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Cue Ball: tough, swaggering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.5,am_liam:0.5",
+        "speed": 1.06,
+        "pitch": 0.986,
+        "accent": "en-us"
+      }
+    },
+    "class:cue_ball#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Cue Ball: tough, swaggering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.7,am_michael:0.3",
+        "speed": 1.09,
+        "pitch": 0.994,
+        "accent": "en-us"
+      }
+    },
+    "class:cue_ball#3": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Cue Ball: tough, swaggering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,am_eric:0.5",
+        "speed": 1.06,
+        "pitch": 1.01,
         "accent": "en-us"
       }
     },
@@ -1270,6 +1792,38 @@
         "accent": "en-us"
       }
     },
+    "class:engineer#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an engineer: dry and exact"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.7,am_echo:0.3",
+        "speed": 1.03,
+        "pitch": 0.976,
+        "accent": "en-us"
+      }
+    },
+    "class:engineer#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an engineer: dry and exact"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,bm_lewis:0.4",
+        "speed": 1.03,
+        "pitch": 0.984,
+        "accent": "en-us"
+      }
+    },
     "class:fisherman#1": {
       "brief": {
         "register": "man",
@@ -1366,6 +1920,54 @@
         "accent": "en-us"
       }
     },
+    "class:gamer#1": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Gamer: absorbed, boastful and nasal"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_echo:0.5",
+        "speed": 1.06,
+        "pitch": 1.144,
+        "accent": "en-us"
+      }
+    },
+    "class:gamer#2": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Gamer: absorbed, boastful and nasal"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.7,bm_lewis:0.3",
+        "speed": 1.09,
+        "pitch": 1.128,
+        "accent": "en-us"
+      }
+    },
+    "class:gamer#3": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Gamer: absorbed, boastful and nasal"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,am_liam:0.5",
+        "speed": 1.09,
+        "pitch": 1.104,
+        "accent": "en-us"
+      }
+    },
     "class:gentleman#1": {
       "brief": {
         "register": "man",
@@ -1379,6 +1981,22 @@
         "blend": "am_fenrir:0.5,am_santa:0.5",
         "speed": 0.88,
         "pitch": 0.876,
+        "accent": "en-us"
+      }
+    },
+    "class:gentleman#2": {
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Gentleman: courtly and measured"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,bm_george:0.4",
+        "speed": 0.92,
+        "pitch": 0.908,
         "accent": "en-us"
       }
     },
@@ -1542,6 +2160,54 @@
         "accent": "en-us"
       }
     },
+    "class:juggler#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Juggler: showy and a little smug"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.7,am_fenrir:0.3",
+        "speed": 1.06,
+        "pitch": 1.008,
+        "accent": "en-us"
+      }
+    },
+    "class:juggler#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Juggler: showy and a little smug"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,am_michael:0.4",
+        "speed": 1.06,
+        "pitch": 0.992,
+        "accent": "en-us"
+      }
+    },
+    "class:juggler#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Juggler: showy and a little smug"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,bm_daniel:0.4",
+        "speed": 1.08,
+        "pitch": 1.008,
+        "accent": "en-us"
+      }
+    },
     "class:lady#1": {
       "brief": {
         "register": "woman",
@@ -1670,6 +2336,54 @@
         "accent": "en-us"
       }
     },
+    "class:painter#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Painter: dreamy and absorbed"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,af_aoede:0.5",
+        "speed": 0.92,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "class:painter#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Painter: dreamy and absorbed"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.6,bf_lily:0.4",
+        "speed": 0.95,
+        "pitch": 1.056,
+        "accent": "en-us"
+      }
+    },
+    "class:painter#3": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Painter: dreamy and absorbed"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_lily:0.7,af_nova:0.3",
+        "speed": 0.92,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
+    },
     "class:parasol_lady#3": {
       "brief": {
         "register": "woman",
@@ -1766,6 +2480,70 @@
         "accent": "en-us"
       }
     },
+    "class:pkmn_breeder#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Breeder: kind and patient"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,am_echo:0.3",
+        "speed": 0.89,
+        "pitch": 0.984,
+        "accent": "en-us"
+      }
+    },
+    "class:pkmn_breeder#3": {
+      "brief": {
+        "register": "woman",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Breeder: kind and patient"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.6,bf_emma:0.4",
+        "speed": 0.9,
+        "pitch": 0.986,
+        "accent": "en-us"
+      }
+    },
+    "class:pkmn_ranger#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Ranger: upright and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.5,am_michael:0.5",
+        "speed": 0.99,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:pkmn_ranger#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Ranger: upright and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.7,af_heart:0.3",
+        "speed": 1.03,
+        "pitch": 0.976,
+        "accent": "en-us"
+      }
+    },
     "class:poké_kid#1": {
       "brief": {
         "register": "girl",
@@ -1811,6 +2589,54 @@
         "blend": "am_fenrir:0.7,bm_george:0.3",
         "speed": 1.01,
         "pitch": 0.978,
+        "accent": "en-us"
+      }
+    },
+    "class:pokemaniac#1": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Pokémaniac: obsessed, wheezy and fond of rare Pokémon"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,bm_george:0.5",
+        "speed": 0.95,
+        "pitch": 0.924,
+        "accent": "en-us"
+      }
+    },
+    "class:pokemaniac#2": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Pokémaniac: obsessed, wheezy and fond of rare Pokémon"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,bm_george:0.4",
+        "speed": 0.91,
+        "pitch": 0.924,
+        "accent": "en-us"
+      }
+    },
+    "class:pokemaniac#3": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Pokémaniac: obsessed, wheezy and fond of rare Pokémon"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.7,am_echo:0.3",
+        "speed": 0.94,
+        "pitch": 0.956,
         "accent": "en-us"
       }
     },
@@ -2038,6 +2864,22 @@
         "accent": "en-us"
       }
     },
+    "class:rocker#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Rocker: loud, laid-back and full of himself"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,bm_lewis:0.4",
+        "speed": 1.1,
+        "pitch": 1.064,
+        "accent": "en-us"
+      }
+    },
     "class:roughneck#3": {
       "brief": {
         "register": "man",
@@ -2214,6 +3056,22 @@
         "accent": "en-us"
       }
     },
+    "class:scientist#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Scientist: precise and distracted"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,bm_daniel:0.3",
+        "speed": 0.99,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
     "class:scientist#3": {
       "brief": {
         "register": "woman",
@@ -2228,6 +3086,54 @@
         "speed": 1.03,
         "pitch": 0.978,
         "accent": "en-gb"
+      }
+    },
+    "class:sis_and_bro#1": {
+      "brief": {
+        "register": "man",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a sister and a brother: bickering and bright"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.7,am_eric:0.3",
+        "speed": 1.09,
+        "pitch": 1.218,
+        "accent": "en-us"
+      }
+    },
+    "class:sis_and_bro#2": {
+      "brief": {
+        "register": "woman",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a sister and a brother: bickering and bright"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.6,af_nova:0.4",
+        "speed": 1.11,
+        "pitch": 1.126,
+        "accent": "en-us"
+      }
+    },
+    "class:sis_and_bro#3": {
+      "brief": {
+        "register": "man",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a sister and a brother: bickering and bright"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_puck:0.4",
+        "speed": 1.11,
+        "pitch": 1.226,
+        "accent": "en-us"
       }
     },
     "class:skier#1": {
@@ -2294,6 +3200,150 @@
         "accent": "en-gb"
       }
     },
+    "class:super_nerd#1": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Super Nerd: nasal, earnest and a know-it-all"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,am_michael:0.3",
+        "speed": 1.07,
+        "pitch": 1.096,
+        "accent": "en-us"
+      }
+    },
+    "class:super_nerd#2": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Super Nerd: nasal, earnest and a know-it-all"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_puck:0.5",
+        "speed": 1.09,
+        "pitch": 1.144,
+        "accent": "en-us"
+      }
+    },
+    "class:super_nerd#3": {
+      "brief": {
+        "register": "man",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Super Nerd: nasal, earnest and a know-it-all"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.5,bm_lewis:0.5",
+        "speed": 1.09,
+        "pitch": 1.112,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_f#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.7,af_bella:0.3",
+        "speed": 1.07,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_f#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.7,bf_alice:0.3",
+        "speed": 1.06,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_f#3": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,bf_lily:0.5",
+        "speed": 1.09,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_m#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,am_michael:0.3",
+        "speed": 1.1,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_m#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,am_liam:0.4",
+        "speed": 1.1,
+        "pitch": 1.056,
+        "accent": "en-us"
+      }
+    },
+    "class:swimmer_m#3": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Swimmer: sunny, splashy and sporty"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 1.07,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
     "class:swimmer#1": {
       "brief": {
         "register": "woman",
@@ -2339,6 +3389,102 @@
         "blend": "af_heart:0.5,af_river:0.5",
         "speed": 1.06,
         "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "class:tamer#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Tamer: commanding and proud of his beasts"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.5,bm_daniel:0.5",
+        "speed": 1.01,
+        "pitch": 0.946,
+        "accent": "en-us"
+      }
+    },
+    "class:tamer#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Tamer: commanding and proud of his beasts"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_fenrir:0.5",
+        "speed": 1.01,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
+    "class:tamer#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Tamer: commanding and proud of his beasts"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.5,am_fenrir:0.5",
+        "speed": 0.98,
+        "pitch": 0.994,
+        "accent": "en-us"
+      }
+    },
+    "class:team_rocket#1": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: gruff, smug and threatening"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.7,af_alloy:0.3",
+        "speed": 0.98,
+        "pitch": 0.946,
+        "accent": "en-us"
+      }
+    },
+    "class:team_rocket#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: gruff, smug and threatening"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,bm_daniel:0.4",
+        "speed": 1.02,
+        "pitch": 0.97,
+        "accent": "en-gb"
+      }
+    },
+    "class:team_rocket#3": {
+      "brief": {
+        "register": "woman",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: gruff, smug and threatening"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.7,af_heart:0.3",
+        "speed": 0.98,
+        "pitch": 0.932,
         "accent": "en-us"
       }
     },
@@ -2550,6 +3696,22 @@
         "accent": "en-us"
       }
     },
+    "class:young_couple#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a young couple: warm and a little shy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.6,am_echo:0.4",
+        "speed": 0.97,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
     "class:young_couple#2": {
       "brief": {
         "register": "woman",
@@ -2657,7 +3819,20 @@
     },
     "clifton": {
       "note": "first spoken at cinnabar_island_pokemon_lab_lounge.txt(5)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Clifton: courteous and fond of a good trade"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.7,am_fenrir:0.3",
+        "speed": 0.97,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "clothilde": {
       "note": "first spoken at LumioseCity_LysandreLabs.txt(42)",
@@ -2705,6 +3880,10 @@
       "note": "first spoken at castelia_city_2.txt(29)",
       "provisional": true
     },
+    "commander_kamado": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(17)",
+      "provisional": true
+    },
     "commuter": {
       "note": "first spoken at KiloudeCity_Station.txt(27)",
       "provisional": true
@@ -2732,7 +3911,20 @@
     },
     "cooltrainer": {
       "note": "first spoken at kanto_victory_road_2f.txt(34)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.6,af_bella:0.4",
+        "speed": 1.09,
+        "pitch": 1.024,
+        "accent": "en-us"
+      }
     },
     "corentin": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(183)",
@@ -2862,6 +4054,23 @@
         "engine": "kokoro-82m",
         "blend": "af_nova:0.6,af_heart:0.4",
         "speed": 1.08,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
+    },
+    "daisy": {
+      "note": "Daisy, the rival's sister in Pallet Town.",
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an easygoing big sister: kind, a little conspiratorial about her brother"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_jessica:0.6,af_bella:0.4",
+        "speed": 1,
         "pitch": 1.03,
         "accent": "en-us"
       }
@@ -3043,7 +4252,20 @@
     },
     "dusty": {
       "note": "first spoken at cinnabar_island_gym.txt(95)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Dusty: sly and sure he will win"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,bm_lewis:0.3",
+        "speed": 1.1,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
     },
     "dylan": {
       "note": "first spoken at phone.txt(280)",
@@ -3148,7 +4370,20 @@
     },
     "erika": {
       "note": "first spoken at celadon_city_gym.txt(10)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a graceful, dreamy Gym Leader: polite and sleepy among her flowers"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.5,bf_emma:0.5",
+        "speed": 0.9,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "erin": {
       "note": "first spoken at phone.txt(226)",
@@ -3280,7 +4515,20 @@
     },
     "fishing_guru": {
       "note": "first spoken at route_32_pokecenter_1f.txt(6)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "the Fishing Guru: rambling and proud of his rod"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.7,am_adam:0.3",
+        "speed": 0.89,
+        "pitch": 0.924,
+        "accent": "en-us"
+      }
     },
     "flannery": {
       "note": "first spoken at lavaridge_town_gym_1f.txt(12)",
@@ -3394,6 +4642,23 @@
     },
     "garett": {
       "note": "first spoken at cinnabar_island_pokemon_lab_experiment_room.txt(49)",
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Garett: friendly and fond of a trade"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.7,am_liam:0.3",
+        "speed": 1.03,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "gate_guard": {
+      "note": "first spoken at jubilife_village.txt(37)",
       "provisional": true
     },
     "ghetsis": {
@@ -3402,15 +4667,54 @@
     },
     "ghost": {
       "note": "first spoken at pokemon_tower_6f.txt(15)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a ghost's hollow voice"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,bm_lewis:0.4",
+        "speed": 0.9,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "gideon": {
       "note": "first spoken at five_island_rocket_warehouse.txt(45)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a greedy gem hunter: slippery and defensive, caught red-handed"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,am_michael:0.5",
+        "speed": 1.04,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "giovanni": {
       "note": "first spoken at rocket_hideout_b4f.txt(66)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Team Rocket's boss: smooth, cold and courteous, menace under good manners"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.5,bm_fable:0.5",
+        "speed": 0.9,
+        "pitch": 0.93,
+        "accent": "en-gb"
+      }
     },
     "glacia": {
       "note": "first spoken at ever_grande_city_glacias_room.txt(8)",
@@ -3793,6 +5097,40 @@
         "accent": "en-gb"
       }
     },
+    "kanto_mom": {
+      "note": "The player's mother in Kanto (not Sinnoh's `mom`).",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "warm, a little teasing, easy with a hug: the player's mother at home in Pallet Town"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.5,af_heart:0.5",
+        "speed": 0.97,
+        "pitch": 0.99,
+        "accent": "en-us"
+      }
+    },
+    "kanto_rival": {
+      "note": "Kanto's rival and Champion (FireRed's rival class): not Sinnoh's Barry, who is `rival`.",
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Kanto's rival, Blue or whatever the player names him: smug, cocky and competitive, a showman who brags, mocks and sulks when he loses, a flash of real worry now and then, Oak's grandson"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_echo:0.4",
+        "speed": 1.06,
+        "pitch": 1.03,
+        "accent": "en-us"
+      }
+    },
     "karate_master": {
       "note": "first spoken at mount_mortar_b1f.txt(12)",
       "provisional": true
@@ -3857,11 +5195,37 @@
     },
     "koga": {
       "note": "first spoken at fuchsia_city_gym.txt(11)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a ninja master Gym Leader: dry, proud, sure of his craft and his poisons"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_daniel:0.5,am_adam:0.5",
+        "speed": 0.96,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
     },
     "koichi": {
       "note": "first spoken at saffron_city_dojo.txt(14)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a dojo master: shouting, formal and fierce, honours a fair loss"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,am_fenrir:0.5",
+        "speed": 1,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "koji": {
       "note": "first spoken at phone.txt(384)",
@@ -3919,7 +5283,20 @@
     },
     "lance": {
       "note": "first spoken at johto_pokemon_league_hall_of_fame.txt(14)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a dragon master: confident, formal and quietly proud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.5,am_adam:0.5",
+        "speed": 1,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "lanette": {
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
@@ -4113,6 +5490,38 @@
         "accent": "en-us"
       }
     },
+    "look:aide#2": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "one of the Professor's aides: helpful and busy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.6,af_sarah:0.4",
+        "speed": 0.98,
+        "pitch": 1.008,
+        "accent": "en-us"
+      }
+    },
+    "look:aide#3": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "one of the Professor's aides: helpful and busy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,bm_fable:0.4",
+        "speed": 1.03,
+        "pitch": 0.978,
+        "accent": "en-us"
+      }
+    },
     "look:announcer#3": {
       "brief": {
         "register": "woman",
@@ -4238,6 +5647,70 @@
         "blend": "af_nova:0.6,af_aoede:0.4",
         "speed": 1.07,
         "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "look:beauty#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "even",
+        "manner": "a Beauty: poised and a touch vain"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,af_sarah:0.4",
+        "speed": 1.03,
+        "pitch": 1.094,
+        "accent": "en-us"
+      }
+    },
+    "look:biker#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,bm_daniel:0.5",
+        "speed": 1.08,
+        "pitch": 0.994,
+        "accent": "en-us"
+      }
+    },
+    "look:biker#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.6,am_liam:0.4",
+        "speed": 1.07,
+        "pitch": 1.018,
+        "accent": "en-us"
+      }
+    },
+    "look:biker#3": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a Biker: rowdy, sneering and loud"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,am_puck:0.4",
+        "speed": 1.06,
+        "pitch": 1.018,
         "accent": "en-us"
       }
     },
@@ -4417,6 +5890,38 @@
         "accent": "en-us"
       }
     },
+    "look:camper#3": {
+      "brief": {
+        "register": "boy",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Camper: cheerful and outdoorsy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.5,am_michael:0.5",
+        "speed": 1.02,
+        "pitch": 1.136,
+        "accent": "en-us"
+      }
+    },
+    "look:captain#2": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a ship's captain: weathered and firm"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_george:0.5,am_adam:0.5",
+        "speed": 0.89,
+        "pitch": 0.948,
+        "accent": "en-us"
+      }
+    },
     "look:cashier_m#3": {
       "brief": {
         "register": "man",
@@ -4431,6 +5936,38 @@
         "speed": 1.03,
         "pitch": 1.016,
         "accent": "en-us"
+      }
+    },
+    "look:channeler#1": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Channeler: trance-like and wavering"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_river:0.4",
+        "speed": 0.88,
+        "pitch": 0.938,
+        "accent": "en-us"
+      }
+    },
+    "look:channeler#3": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "a Channeler: trance-like and wavering"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_isabella:0.7,bf_emma:0.3",
+        "speed": 0.86,
+        "pitch": 0.938,
+        "accent": "en-gb"
       }
     },
     "look:clerk#1": {
@@ -4561,6 +6098,102 @@
         "accent": "en-us"
       }
     },
+    "look:cooltrainer_f#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.5,af_jessica:0.5",
+        "speed": 1.05,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
+    },
+    "look:cooltrainer_f#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.5,af_nova:0.5",
+        "speed": 1.07,
+        "pitch": 1.048,
+        "accent": "en-us"
+      }
+    },
+    "look:cooltrainer_f#3": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.7,bf_alice:0.3",
+        "speed": 1.05,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "look:cooltrainer_m#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.6,am_eric:0.4",
+        "speed": 1.08,
+        "pitch": 1.064,
+        "accent": "en-us"
+      }
+    },
+    "look:cooltrainer_m#3": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Cooltrainer: confident and keen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,am_eric:0.3",
+        "speed": 1.07,
+        "pitch": 1.048,
+        "accent": "en-us"
+      }
+    },
+    "look:domefossil#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a pedestal's plain description"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_eric:0.4",
+        "speed": 0.92,
+        "pitch": 0.986,
+        "accent": "en-us"
+      }
+    },
     "look:expert_m#1": {
       "brief": {
         "register": "man",
@@ -4590,6 +6223,22 @@
         "blend": "bm_fable:0.5,am_fenrir:0.5",
         "speed": 0.86,
         "pitch": 0.876,
+        "accent": "en-us"
+      }
+    },
+    "look:fisherman#1": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Fisherman: weathered and patient"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_echo:0.4",
+        "speed": 0.95,
+        "pitch": 0.94,
         "accent": "en-us"
       }
     },
@@ -4686,6 +6335,38 @@
         "blend": "am_adam:0.5,am_echo:0.5",
         "speed": 0.89,
         "pitch": 0.908,
+        "accent": "en-us"
+      }
+    },
+    "look:girl#1": {
+      "brief": {
+        "register": "girl",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a girl: chatty and bright"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_aoede:0.6,af_nova:0.4",
+        "speed": 1.1,
+        "pitch": 1.158,
+        "accent": "en-us"
+      }
+    },
+    "look:girl#2": {
+      "brief": {
+        "register": "girl",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a girl: chatty and bright"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.5,af_aoede:0.5",
+        "speed": 1.11,
+        "pitch": 1.158,
         "accent": "en-us"
       }
     },
@@ -4942,6 +6623,22 @@
         "blend": "af_heart:0.5,af_alloy:0.5",
         "speed": 1.07,
         "pitch": 1.008,
+        "accent": "en-us"
+      }
+    },
+    "look:helixfossil#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a pedestal's plain description"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.5,am_adam:0.5",
+        "speed": 0.94,
+        "pitch": 0.986,
         "accent": "en-us"
       }
     },
@@ -5217,6 +6914,70 @@
         "accent": "en-us"
       }
     },
+    "look:man#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a man of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,am_eric:0.3",
+        "speed": 1,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "look:man#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a man of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.5,am_michael:0.5",
+        "speed": 0.98,
+        "pitch": 0.992,
+        "accent": "en-us"
+      }
+    },
+    "look:man#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a man of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.5,bm_daniel:0.5",
+        "speed": 1,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "look:man#4": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a man of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.7,bm_daniel:0.3",
+        "speed": 0.97,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
     "look:ninja_boy#1": {
       "brief": {
         "register": "boy",
@@ -5329,6 +7090,54 @@
         "accent": "en-us"
       }
     },
+    "look:old_woman#1": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "an old woman: kindly and slow"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.6,af_kore:0.4",
+        "speed": 0.91,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
+    },
+    "look:old_woman#3": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "an old woman: kindly and slow"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_isabella:0.5,bf_emma:0.5",
+        "speed": 0.91,
+        "pitch": 0.954,
+        "accent": "en-gb"
+      }
+    },
+    "look:oldamber#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a pedestal's plain description"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_fenrir:0.4",
+        "speed": 0.92,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
     "look:parasol_lady#1": {
       "brief": {
         "register": "woman",
@@ -5406,6 +7215,38 @@
         "blend": "bm_daniel:0.5,am_echo:0.5",
         "speed": 1.01,
         "pitch": 0.984,
+        "accent": "en-us"
+      }
+    },
+    "look:poke_maniac#2": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Pokémaniac: obsessed, wheezy and fond of rare Pokémon"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_fable:0.6,am_adam:0.4",
+        "speed": 0.89,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
+    },
+    "look:pokedex#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a device's plain description"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.5,af_sarah:0.5",
+        "speed": 0.97,
+        "pitch": 0.976,
         "accent": "en-us"
       }
     },
@@ -5585,6 +7426,38 @@
         "accent": "en-us"
       }
     },
+    "look:policeman#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Policeman: clipped and official"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,bm_daniel:0.5",
+        "speed": 1,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
+    "look:policeman#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Policeman: clipped and official"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,am_michael:0.3",
+        "speed": 1.02,
+        "pitch": 0.962,
+        "accent": "en-us"
+      }
+    },
     "look:rancher#1": {
       "brief": {
         "register": "man",
@@ -5665,6 +7538,54 @@
         "accent": "en-us"
       }
     },
+    "look:rocket#1": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: sneering and clipped"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_jessica:0.7,af_river:0.3",
+        "speed": 1.03,
+        "pitch": 1.056,
+        "accent": "en-us"
+      }
+    },
+    "look:rocket#2": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: sneering and clipped"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,am_michael:0.5",
+        "speed": 1.01,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "look:rocket#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Team Rocket grunt: sneering and clipped"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.6,af_sarah:0.4",
+        "speed": 1.01,
+        "pitch": 0.976,
+        "accent": "en-us"
+      }
+    },
     "look:roughneck#3": {
       "brief": {
         "register": "man",
@@ -5713,6 +7634,22 @@
         "accent": "en-us"
       }
     },
+    "look:sailor#1": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Sailor: hearty and salt-weathered"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.5,am_santa:0.5",
+        "speed": 0.97,
+        "pitch": 0.924,
+        "accent": "en-us"
+      }
+    },
     "look:sailor#2": {
       "brief": {
         "register": "man",
@@ -5726,6 +7663,22 @@
         "blend": "am_fenrir:0.6,bm_fable:0.4",
         "speed": 1.03,
         "pitch": 0.948,
+        "accent": "en-us"
+      }
+    },
+    "look:sailor#3": {
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Sailor: hearty and salt-weathered"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,am_santa:0.4",
+        "speed": 0.97,
+        "pitch": 0.964,
         "accent": "en-us"
       }
     },
@@ -5806,6 +7759,70 @@
         "blend": "af_river:0.6,af_heart:0.4",
         "speed": 0.9,
         "pitch": 0.962,
+        "accent": "en-us"
+      }
+    },
+    "look:townmap#2": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a map's plain description"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.7,af_nicole:0.3",
+        "speed": 1,
+        "pitch": 0.992,
+        "accent": "en-us"
+      }
+    },
+    "look:trainer#1": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a trainer: keen and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.5,am_eric:0.5",
+        "speed": 0.97,
+        "pitch": 1.032,
+        "accent": "en-us"
+      }
+    },
+    "look:trainer#2": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a trainer: keen and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.5,bf_lily:0.5",
+        "speed": 1.01,
+        "pitch": 1.016,
+        "accent": "en-us"
+      }
+    },
+    "look:trainer#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a trainer: keen and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.7,am_adam:0.3",
+        "speed": 0.99,
+        "pitch": 1.024,
         "accent": "en-us"
       }
     },
@@ -5918,6 +7935,38 @@
         "blend": "bf_emma:0.5,af_alloy:0.5",
         "speed": 0.97,
         "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "look:woman#3": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a woman of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.6,af_river:0.4",
+        "speed": 1.03,
+        "pitch": 0.984,
+        "accent": "en-us"
+      }
+    },
+    "look:woman#4": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a woman of the town: plain and friendly"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_alice:0.5,af_kore:0.5",
+        "speed": 0.99,
+        "pitch": 0.976,
         "accent": "en-us"
       }
     },
@@ -6051,15 +8100,54 @@
     },
     "lorelei": {
       "note": "first spoken at four_island_icefall_cave_back.txt(23)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "an Elite Four member of the ice: cool, composed and a little aloof"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.5,bf_isabella:0.5",
+        "speed": 0.95,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "lostelle": {
       "note": "first spoken at three_island_berry_forest.txt(20)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "child",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "a small girl who got lost picking berries: frightened, then grateful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.5,af_sarah:0.5",
+        "speed": 1.05,
+        "pitch": 1.1,
+        "accent": "en-us"
+      }
     },
     "lostelles_daddy": {
       "note": "first spoken at two_island_joyful_game_corner.txt(23)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a worried father, a game corner owner: harried and fond"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.5,am_eric:0.5",
+        "speed": 1,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "lottery_clerk": {
       "note": "first spoken at JubilifeTV1F.txt(12)",
@@ -6084,7 +8172,20 @@
     },
     "lt_surge": {
       "note": "first spoken at vermilion_city_gym.txt(244)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a booming soldier of a Gym Leader: loud, brash and blunt, calls everyone kid"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_onyx:0.4",
+        "speed": 1.03,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
     },
     "lucian": {
       "brief": {
@@ -6154,7 +8255,20 @@
     },
     "machop": {
       "note": "first spoken at vermilion_city.txt(103)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Machop's grunting words"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,bm_lewis:0.4",
+        "speed": 1,
+        "pitch": 0.986,
+        "accent": "en-us"
+      }
     },
     "maid": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
@@ -6512,7 +8626,20 @@
     },
     "misty": {
       "note": "first spoken at cerulean_city_gym.txt(10)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a feisty Gym Leader: hot-tempered, proud of her water Pokémon, quick to tease"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,af_sky:0.4",
+        "speed": 1.09,
+        "pitch": 1.05,
+        "accent": "en-us"
+      }
     },
     "mom": {
       "note": "The player's mother.",
@@ -6604,7 +8731,20 @@
     },
     "mr_fuji": {
       "note": "first spoken at lavender_town_volunteer_pokemon_house.txt(20)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a gentle old man who cares for lost Pokémon: soft, kindly and unhurried"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.7,bm_fable:0.3",
+        "speed": 0.88,
+        "pitch": 0.92,
+        "accent": "en-us"
+      }
     },
     "mr_pokemon": {
       "note": "first spoken at route_30_mr_pokemon_house.txt(15)",
@@ -6612,7 +8752,20 @@
     },
     "mr_psychic": {
       "note": "first spoken at saffron_city_mr_psychics_house.txt(8)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a psychic who knows what you came for: dreamy, unhurried and a little smug"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_fable:0.5,am_santa:0.5",
+        "speed": 0.85,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
     },
     "mr_stone": {
       "note": "first spoken at phone.txt(162)",
@@ -6682,7 +8835,20 @@
     },
     "norma": {
       "note": "first spoken at cinnabar_island_pokemon_lab_lounge.txt(27)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Norma: motherly and fond of a trade"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_kore:0.7,af_heart:0.3",
+        "speed": 0.97,
+        "pitch": 0.946,
+        "accent": "en-us"
+      }
     },
     "norman": {},
     "nugget_boy": {
@@ -6847,9 +9013,26 @@
       "note": "first spoken at phone.txt(145)",
       "provisional": true
     },
+    "pasture_keeper": {
+      "note": "first spoken at jubilife_village.txt(48)",
+      "provisional": true
+    },
     "paxton": {
       "note": "first spoken at three_island.txt(28)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "a swaggering biker gang boss: loud, mocking and threatening"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.5,bm_lewis:0.5",
+        "speed": 1.08,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "petrel": {
       "note": "first spoken at goldenrod_radio_tower_5f.txt(51)",
@@ -6974,6 +9157,10 @@
       "note": "first spoken at AlolaRoute1_KukuiLab.txt(8)",
       "provisional": true
     },
+    "prof_laventon": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(20)",
+      "provisional": true
+    },
     "prof_magnolia": {
       "note": "first spoken at Route2_MagnoliasHouse.txt(11)",
       "provisional": true
@@ -7004,7 +9191,20 @@
     },
     "prospector": {
       "note": "first spoken at three_island_dunsparce_tunnel.txt(16)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Prospector: dusty, slow and hopeful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_adam:0.4",
+        "speed": 0.94,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "proton": {
       "note": "first spoken at slowpoke_well_b1f.txt(15)",
@@ -7066,7 +9266,20 @@
     },
     "ramon": {
       "note": "first spoken at cinnabar_island_gym.txt(57)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Ramon: brisk and plain-spoken"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bm_lewis:0.6,am_michael:0.4",
+        "speed": 1.07,
+        "pitch": 0.984,
+        "accent": "en-us"
+      }
     },
     "ramos": {
       "note": "first spoken at CoumarineCity_Gym.txt(11)",
@@ -7468,7 +9681,20 @@
     },
     "selphy": {
       "note": "first spoken at five_island_lost_cave_room_10.txt(17)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a rich girl lost in the dark: wide-eyed, polite and a little dramatic"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.5,af_bella:0.5",
+        "speed": 1,
+        "pitch": 1.06,
+        "accent": "en-us"
+      }
     },
     "severine": {
       "note": "first spoken at LumioseCity_GrandeTable.txt(21)",
@@ -7575,7 +9801,20 @@
     },
     "slowbro": {
       "note": "first spoken at cerulean_city.txt(165)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Slowbro's sluggish words"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,bm_daniel:0.4",
+        "speed": 0.92,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "socialite": {
       "note": "first spoken at FightAreaPokeMart.txt(9)",
@@ -8034,7 +10273,20 @@
     },
     "warden": {
       "note": "first spoken at fuchsia_city_wardens_house.txt(11)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "the Safari Zone warden who lost his teeth: mumbling, mostly gibberish, endearing"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.5,am_fenrir:0.5",
+        "speed": 0.85,
+        "pitch": 0.9,
+        "accent": "en-us"
+      }
     },
     "wattson": {
       "note": "first spoken at mauville_city_gym.txt(86)",
@@ -8175,6 +10427,7 @@
     "Beauty": "beauty",
     "Ben": "ben",
     "Benga": "benga",
+    "Beni": "beni",
     "Benjamin": "benjamin",
     "Berry Master": "berry_master",
     "Bertha": "bertha",
@@ -8207,6 +10460,7 @@
     "Cameron": "cameron",
     "Candice": "candice",
     "Captain": "captain",
+    "Captain Cyllene": "captain_cyllene",
     "Captain Stern": "captain_stern",
     "Capucine": "capucine",
     "Caretaker": "caretaker",
@@ -8238,6 +10492,7 @@
     "Collector": "collector",
     "Colress": "colress",
     "Commander Jupiter": "jupiter",
+    "Commander Kamado": "commander_kamado",
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
     "Commuter": "commuter",
@@ -8322,6 +10577,7 @@
     "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",
+    "Gate Guard": "gate_guard",
     "Gate Keeper": "look:guard",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
@@ -8512,6 +10768,7 @@
     "Papa": "papa",
     "Park Attendant": "park_attendant",
     "Parry": "parry",
+    "Pasture Keeper": "pasture_keeper",
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
@@ -8534,6 +10791,7 @@
     "Prof. Elm": "prof_elm",
     "Prof. Juniper": "prof_juniper",
     "Prof. Kukui": "prof_kukui",
+    "Prof. Laventon": "prof_laventon",
     "Prof. Magnolia": "prof_magnolia",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
@@ -8721,7 +10979,9 @@
     "volkner": "volkner",
     "wally": "wally"
   },
-  "people": {},
+  "people": {
+    "pallet_town_rivals_house.daisy": "daisy"
+  },
   "archetypes": {
     "look:aqua_grunt": {
       "voices": 3
@@ -8754,6 +11014,41 @@
     },
     "look:youngster": {
       "voices": 4
+    }
+  },
+  "regions": {
+    "kanto": {
+      "names": {
+        "{rival}": "kanto_rival",
+        "Admin": "admin",
+        "Agatha": "agatha",
+        "Blaine": "blaine",
+        "Brock": "brock",
+        "Bruno": "bruno",
+        "Derek": "class:super_nerd",
+        "Dusty": "class:burglar",
+        "Erika": "erika",
+        "Gideon": "gideon",
+        "Giovanni": "giovanni",
+        "Koga": "koga",
+        "Koichi": "koichi",
+        "Lance": "lance",
+        "Lorelei": "lorelei",
+        "Lt. Surge": "lt_surge",
+        "Misty": "misty",
+        "Mom": "kanto_mom",
+        "Paxton": "paxton",
+        "Professor Oak": "prof_oak",
+        "Sabrina": "sabrina",
+        "Selphy": "selphy",
+        "Zac": "class:super_nerd"
+      },
+      "looks": {},
+      "classes": {
+        "champion": "kanto_rival"
+      },
+      "rival": "kanto_rival",
+      "trainerNamesByClass": true
     }
   }
 }

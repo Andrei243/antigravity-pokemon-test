@@ -11,10 +11,16 @@ namespace PokemonPlatinumEngine.Graphics;
 /// the front in the upper left, the player's in the lower right, each its own camera, and how far the two halves have
 /// come in from their corners (0, none of them; 1, meeting at the band). A pure function of the animator's clock.
 /// </summary>
-internal readonly record struct SplitShot(CameraShot Foe, CameraShot Own, float In)
+internal readonly record struct SplitShot(CameraShot Foe, CameraShot Own, float In, CameraShot[]? Camps = null)
 {
     /// <summary>Whether the halves cover the whole picture: nothing of the director's own shot shows between them.</summary>
     public bool Whole => In >= 1f;
+
+    /// <summary>
+    /// A Battle Royal's four quarters (plan 45 · BC7): the three others' shots left to right and then the player's, in
+    /// place of the two halves; <see cref="Foe"/> is the first of them and <see cref="Own"/> the last. Null for halves.
+    /// </summary>
+    public bool Royal => Camps != null;
 }
 
 /// <summary>
@@ -154,13 +160,27 @@ internal sealed partial class BattleCamera
     {
         SplitReason.Leads => (manner.Splits & CameraSplits.Leads) != 0,
         SplitReason.LastPokemon => (manner.Splits & CameraSplits.LastPokemon) != 0 || (moment.Boss && (manner.Splits & CameraSplits.BossLast) != 0),
+        // Plan 45 · BC6: every send-out after the leads, both sides with a giant, a Terastallization
+        SplitReason.SendOut => (manner.Splits & CameraSplits.SendOuts) != 0,
+        SplitReason.Giants => (manner.Splits & CameraSplits.Giants) != 0,
+        SplitReason.Terastal => (manner.Splits & CameraSplits.Terastal) != 0,
         _ => false,
     };
+
+    /// <summary>How long a split is held at a send-out after the leads, at both giants and at a Terastallization (plan 45 · BC6).</summary>
+    public const float SplitHoldSendOut = 1.1f, SplitHoldGiants = 1.6f, SplitHoldTerastal = 1.4f;
 
     /// <summary>When a split of a moment goes out (it is held its time, or cut short by what waits on the player once it is in) and when it is gone.</summary>
     public static (float Out, float End) SplitWindow(SplitMoment moment)
     {
-        float hold = moment.Reason == SplitReason.Leads ? SplitHoldLeads : SplitHoldLast;
+        float hold = moment.Reason switch
+        {
+            SplitReason.Leads => SplitHoldLeads,
+            SplitReason.SendOut => SplitHoldSendOut,
+            SplitReason.Giants => SplitHoldGiants,
+            SplitReason.Terastal => SplitHoldTerastal,
+            _ => SplitHoldLast,
+        };
         float outAt = moment.Start + SplitIn + hold;
         if (moment.CutShortAt >= 0f) outAt = Math.Min(outAt, Math.Max(moment.CutShortAt, moment.Start + SplitIn));
         return (outAt, outAt + SplitOut);
@@ -187,6 +207,8 @@ internal sealed partial class BattleCamera
     {
         var m = MannerNow(manner);
         if (!scene || m.Splits == CameraSplits.None || Motion < 0.5f) return null;
+        // A Battle Royal is split in quarters or not at all (plan 45 · BC7)
+        if (anim.Royal && (m.Splits & CameraSplits.RoyalQuarters) == 0) return null;
         var moments = anim.SplitMoments;
         for (int i = moments.Count - 1; i >= 0; i--)
         {
@@ -203,6 +225,8 @@ internal sealed partial class BattleCamera
     public static SplitShot SplitOf(BattleAnimator anim, FxPlaces places, CameraManner? manner, float amount)
     {
         var m = manner ?? CameraManners.Classic;
+        // A Battle Royal standing whole is split in four quarters, one to a camp (plan 45 · BC7)
+        if (RoyalStands(anim)) return RoyalOf(anim, places, m, amount);
         var foes = SideOf(anim, BattleSide.Enemy);
         var own = SideOf(anim, BattleSide.Player);
         var panels = IdleFrame.Panels(anim.SlotsOf(BattleSide.Enemy), anim.SlotsOf(BattleSide.Player));
@@ -210,26 +234,33 @@ internal sealed partial class BattleCamera
     }
 
     /// <summary>The foe's half: the foes from the front, close, placed in their half clear of the panels (<see cref="Placed"/>).</summary>
-    public static CameraShot FoeSplitShot(FxPlaces places, List<(BattleSide Side, int Slot)> foes, CameraManner manner, List<Rectangle> panels)
+    public static CameraShot FoeSplitShot(FxPlaces places, List<(BattleSide Side, int Slot)> foes, CameraManner manner, List<Rectangle> panels) =>
+        Placed(FoeFacing(places, foes, manner), places, foes, true, panels);
+
+    /// <summary>The foes from the front, close, turned a little: a split's foe shot before it is placed in its half or quarter.</summary>
+    public static CameraShot FoeFacing(FxPlaces places, List<(BattleSide Side, int Slot)> foes, CameraManner manner)
     {
         var (middle, h, spread) = Group(places, foes);
-        float size = Math.Max(h * SplitFrame, spread * 3.4f) / manner.Reach;
-        var shot = Frame(middle, size, -0.18f + FaceTurn, 0.08f - manner.Low, IdleFov, FoeShotLimit);
-        return Placed(shot, places, foes, true, panels);
+        float size = Math.Max(h * SplitFrame, spread * 3.4f) * manner.Reach;
+        return Frame(middle, size, -0.18f + FaceTurn, 0.08f - manner.Low, IdleFov, FoeShotLimit);
     }
 
     /// <summary>The player's half: the player's own from the front, between the platforms looking south, placed in their half clear of the panels.</summary>
     public static CameraShot OwnSplitShot(FxPlaces places, List<(BattleSide Side, int Slot)> own, List<(BattleSide Side, int Slot)> foes, CameraManner manner,
-        List<Rectangle> panels)
+        List<Rectangle> panels) =>
+        Placed(OwnFacing(places, own, foes, manner), places, own, false, panels);
+
+    /// <summary>The player's own from the front, between the platforms looking south: a split's own shot before it is placed in its half or quarter.</summary>
+    public static CameraShot OwnFacing(FxPlaces places, List<(BattleSide Side, int Slot)> own, List<(BattleSide Side, int Slot)> foes, CameraManner manner)
     {
         var d = TowardFoe(places, own, foes);
         var (middle, h, spread) = Group(places, own);
-        float size = Math.Max(h * SplitFrame, spread * 3.4f) / manner.Reach;
+        float size = Math.Max(h * SplitFrame, spread * 3.4f) * manner.Reach;
         var from = Vector3.Transform(d, Matrix4x4.CreateRotationY(-FaceTurn));
         float lift = OwnFaceLift - manner.Low;
         var dir = Vector3.Normalize(from * MathF.Cos(lift) + Vector3.UnitY * MathF.Sin(lift));
         float dist = size / (2f * MathF.Tan(IdleFov * MathF.PI / 360f));
-        return Placed(new CameraShot(middle + dir * dist, middle, IdleFov), places, own, false, panels);
+        return new CameraShot(middle + dir * dist, middle, IdleFov);
     }
 
     /// <summary>

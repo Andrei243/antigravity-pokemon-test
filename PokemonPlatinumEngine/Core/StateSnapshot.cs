@@ -62,6 +62,22 @@ public sealed class StateSnapshot
             s.Add("height", player.HeightOn(map));
             s.Add("travel", player.Mode);
         }
+        // In an open map (plan 32 · OW10): its name, the area, the feet in millimetres, the yaw (65,536ths), the stance,
+        // the field's tick and the wild Pokémon standing; the grid's fields above stay where the player last stood on it
+        if (flow.Open is { } open)
+        {
+            var feet = open.Player.Pos;
+            s.Add("open.map", open.Map.Name);
+            s.Add("open.area", open.Map.AreaAt(feet)?.Key);
+            s.Add("open.zone", open.Map.ZoneAt(feet)?.Name);
+            s.Add("open.x", feet.X);
+            s.Add("open.y", feet.Y);
+            s.Add("open.z", feet.Z);
+            s.Add("open.yaw", open.Player.Yaw);
+            s.Add("open.stance", open.Player.Body.Stance.ToString().ToLowerInvariant());
+            s.Add("open.tick", open.Clock.Tick);
+            s.Add("open.wild", open.Wild.All.Count);
+        }
 
         var box = flow.Dialogue;
         if (box.IsActive)

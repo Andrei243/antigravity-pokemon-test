@@ -4192,6 +4192,34 @@ way 0
 way 1, from answer 1
   Lottery Clerk> Of course. Come back whenever you feel lucky!
   ? Shall I check today's number against your Pokémon? = No
+=== JubilifeVillage_GalaxyHall.Cyllene
+from Captain Cyllene at 11,7 of JubilifeVillage_GalaxyHall
+way -
+  Captain Cyllene> The Survey Corps walks the wilds and writes down what it finds. It is not a life for the faint-hearted.
+=== JubilifeVillage_GalaxyHall.Kamado
+from Commander Kamado at 8,4 of JubilifeVillage_GalaxyHall
+way -
+  Commander Kamado> The professor tells me a stranger is waiting at the Wallflower. I will see them when they are brought to me.
+=== JubilifeVillage_GalaxyHall.Laventon
+from Prof. Laventon at 3,5 of JubilifeVillage_GalaxyHall
+way -
+  Prof. Laventon> A complete Pokédex of Hisui, the first ever made! With your help, Lucas, I believe we can do it.
+=== JubilifeVillage_GalaxyHall.Partner
+from {rival} at 5,8 of JubilifeVillage_GalaxyHall
+way -
+  Barry> I joined the Survey Corps last spring. Once you pass your trial, we'll be out in the Fieldlands together!
+=== JubilifeVillage_Wallflower.Beni
+from Beni at 5,3 of JubilifeVillage_Wallflower
+way -
+  Beni> The Wallflower feeds whoever works hard. Galaxy Team or not, an empty belly helps no one.
+=== JubilifeVillage_Wallflower.Cyllene
+from Captain Cyllene at 3,8 of JubilifeVillage_Wallflower
+way -
+  Captain Cyllene> Galaxy Hall. Now, if you please.
+=== JubilifeVillage_Wallflower.Partner
+from {rival} at 7,8 of JubilifeVillage_Wallflower
+way -
+  Barry> Galaxy Hall's just up the street. I'll see you there!
 === KalosLeague_ChampionRoom.Diantha
 from Diantha at 7,4 of KalosLeague_ChampionRoom
 way 0
@@ -6252,9 +6280,31 @@ way 0.0
   * frontier seen 491
   * frontier seen 492
   * frontier seen 493
-way 0.2, from answer 2
+way 0.3, from answer 2
   Receptionist> The tree isn't going anywhere. Come back whenever you like.
   ? Which battles will you take on? = Cancel
+way 0.2, from answer 2
+  Receptionist> You need 2 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which battles will you take on? = Multi
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
 way 0.1, from answer 2
   Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
   Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
@@ -6287,6 +6337,7 @@ way 2, from answer 1
 way 1, from answer 1
   Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
   Receptionist> Three go into single battles, and four into double battles.
+  Receptionist> In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time.
   Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
   Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
   ? Would you like to take on the Battle Tree? = The rules
@@ -7578,6 +7629,10 @@ from Ninja Boy at 10,7 of SunyshorePokemonCenter
 way -
   Ninja Boy> Whoa, seven Gym Badges! You're amazing!
   Ninja Boy> Just one to go, and it's the Pokémon League for you!
+=== SunyshoreWorkshop.Apprentice
+from Apprentice at 2,5 of SunyshoreWorkshop
+way -
+  Apprentice> I'm only the apprentice. Talk to the craftswoman first.
 === SunyshoreWorkshop.Craftswoman
 from Craftswoman at 6,3 of SunyshoreWorkshop
 way -
@@ -7586,7 +7641,8 @@ way -
   Craftswoman> I can't turn you into a craftsman in an afternoon. But I can hand you a kit. Here, it's yours.
   > Lucas received the Crafting Kit!
   Craftswoman> Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over.
-  Craftswoman> Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready.
+  Craftswoman> Open it whenever you like. Its MAKE page turns what you've gathered into balls, medicine and the like, wherever you stand.
+  Craftswoman> And with the kit along you can make camp anywhere. There's a pot in it, and I keep a pantry here for whatever you want to cook.
   * fanfare FanfareKeyItem
   + FLAG_GOT_CRAFTING_KIT
 === SurvivalAreaNorthHouse.Tutor
@@ -10562,6 +10618,22 @@ way 0
 way 1, from answer 1
   * wildbattle Ho-Oh 45 nofleeing Lost
   + seen bell_tower_roof.Ho-Oh on the Bell Tower
+=== big_wave_beach.MantineGate1
+from the trigger at 160,170 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate2
+from the trigger at 172,173 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate3
+from the trigger at 162,176 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate4
+from the trigger at 174,178 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
 === big_wave_beach.Sightseer
 from Sightseer at 186,162 of Melemele
 way -
@@ -14040,6 +14112,19 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HisuiNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  + FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  + FLAG_HISUI_HIDE_BEACH_ROWLET
+  + FLAG_HISUI_HIDE_CYLLENE_HALL
+  + FLAG_HISUI_HIDE_CYLLENE_WALLFLOWER
+  + FLAG_HISUI_HIDE_LAVENTON_HALL
+  + FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  + FLAG_HISUI_HIDE_PARTNER_HALL
+  + FLAG_HISUI_HIDE_PARTNER_WALLFLOWER
+  + FLAG_HISUI_STORY_BEGUN
 === common.HoennAbnormalWeather
 from a trainer with lines of their own
 way -
@@ -14883,8 +14968,12 @@ way 0
   > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
   ? Which Pokémon will you call? = Tauros
   * ride refused Tauros
-way 4, from answer 1
+way 5, from answer 1
   ? Which Pokémon will you call? = Cancel
+way 4, from answer 1
+  > Nothing came. Mantine comes only once it is registered in the Ride Pager, and only out on the water.
+  ? Which Pokémon will you call? = Mantine
+  * ride refused Mantine
 way 3, from answer 1
   > Nothing came. Sharpedo comes only once it is registered in the Ride Pager, and only out on the water.
   ? Which Pokémon will you call? = Sharpedo
@@ -21012,6 +21101,16 @@ way 0
   + FLAG_DAILY_ALOLA_SCAN_LITWICK_MET
 way 1, from answer 1
   * wildbattle Litwick 10 Lost
+=== hauoli_cemetery.Widow
+from Old Woman at 356,120 of Melemele
+way -
+  Old Woman> My husband is buried here. I come every morning and tell him what the island is up to. Machamp carries the water.
+  Old Woman> He found a strange old plate once, on a night walk through these graves. It belongs with someone who helps the lost find their way.
+=== hauoli_cemetery.WidowMachamp
+from Machamp at 357,120 of Melemele
+way -
+  > Machamp tipped its head to you and went on carrying water to the grave.
+  * cry Machamp
 === hauoli_city.Ferry
 from Sailor at 357,180 of Melemele
 way -
@@ -22276,6 +22375,32 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== jubilife_village.FrontGate
+from Gate Guard at 47,10 of JubilifeVillage
+from Gate Guard at 48,10 of JubilifeVillage
+way -
+  Gate Guard> Beyond this gate lie the Obsidian Fieldlands. Only members of the Galaxy Team may pass, and you're not one of us. Not yet.
+=== jubilife_village.Laventon
+from Prof. Laventon at 47,58 of JubilifeVillage
+way -
+  Prof. Laventon> The Wallflower is on Canala Avenue, to the west. Wait for me there!
+=== jubilife_village.Pastures
+from Pasture Keeper at 28,46 of JubilifeVillage
+way -
+  Pasture Keeper> These are the pastures. Leave any Pokémon you can't carry with me, and I'll see that they eat well and sleep warm.
+  * open Pc
+=== jubilife_village.Welcome
+from the trigger at 46,60 of JubilifeVillage
+way -
+  Prof. Laventon> Here we are: Jubilife Village, home of the Galaxy Team. When the Team first came ashore there was nothing here but grass and wind.
+  Prof. Laventon> I must tell the Commander about you before anyone else does. A stranger who fell out of the sky will take some explaining!
+  Prof. Laventon> Would you wait for me at the Wallflower? It's on Canala Avenue, down the west side of the village. I shan't be long!
+  * scene jubilife_village.The professor at the south gate
+  * endscene
+  + FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  = VAR_HISUI_STORY 0 -> 4
+  = VAR_OBJECTIVE 0 -> 904
+  + seen jubilife_village.The professor at the south gate
 === kalae_bay.ScanHorsea
 from Horsea at 434,114 of Melemele
 way 0
@@ -28613,6 +28738,70 @@ way 0
 way 1, from answer 1
   * wildbattle Zapdos 50 Lost
   + seen power_plant.Zapdos at the Power Plant
+=== prelude_beach.Cyndaquil
+from Cyndaquil at 59,74 of JubilifeVillage
+way -
+  > The flames on Cyndaquil's back flickered low... and it trotted back to the professor's satchel.
+  * cry Cyndaquil
+  + FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Laventon
+from Prof. Laventon at 51,77 of JubilifeVillage
+way -
+  Prof. Laventon> Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?
+  Prof. Laventon> I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path.
+  Prof. Laventon> Lucas, is it? What a curious name. And what curious clothes! Wherever have you come from?
+  Prof. Laventon> ...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth.
+  Prof. Laventon> Oh, no! My satchel! Come back, you three!
+  Prof. Laventon> I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?
+  Prof. Laventon> Speak to each one gently. They'll come to someone who means them no harm.
+  * scene prelude_beach.The professor on the beach
+  * emote Prof. Laventon Exclaim
+  * cry Rowlet
+  * endscene
+  = VAR_HISUI_STORY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 901
+  + seen prelude_beach.The professor on the beach
+=== prelude_beach.Meeting
+from the trigger at 46,67 of JubilifeVillage
+way -
+  Prof. Laventon> Hold on there! Wait a moment!
+  Prof. Laventon> Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?
+  Prof. Laventon> I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path.
+  Prof. Laventon> Lucas, is it? What a curious name. And what curious clothes! Wherever have you come from?
+  Prof. Laventon> ...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth.
+  Prof. Laventon> Oh, no! My satchel! Come back, you three!
+  Prof. Laventon> I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?
+  Prof. Laventon> Speak to each one gently. They'll come to someone who means them no harm.
+  * scene prelude_beach.The professor on the beach
+  * emote Prof. Laventon Exclaim
+  * cry Rowlet
+  * endscene
+  = VAR_HISUI_STORY 0 -> 1
+  = VAR_OBJECTIVE 0 -> 901
+  + seen prelude_beach.The professor on the beach
+=== prelude_beach.NotYet
+from the trigger at 46,67 of JubilifeVillage
+from the trigger at 46,67 of JubilifeVillage
+way -
+=== prelude_beach.Oshawott
+from Oshawott at 55,80 of JubilifeVillage
+way -
+  > Oshawott stopped splashing about in the shallows... and waddled back to the professor's satchel.
+  * cry Oshawott
+  + FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Rowlet
+from Rowlet at 36,72 of JubilifeVillage
+way -
+  > Rowlet blinked its big round eyes... and fluttered back to the professor's satchel.
+  * cry Rowlet
+  + FLAG_HISUI_HIDE_BEACH_ROWLET
+  = VAR_HISUI_RUNAWAYS 0 -> 1
+=== prelude_beach.Stone
+from the tile read at 48,76 of JubilifeVillage
+way -
+  > A smooth grey stone, warm to the touch. The air above it shimmers faintly.
 === pwt.PlasmaAtThePier
 from the trigger at 196,476 of Unova
 way -
@@ -36063,6 +36252,7 @@ way -
   > Lucas put it away in the Key Items pocket.
   Dexio> Bring the Cube back whenever you've found ten or more. We'll be here, keeping the caravan warm.
   * fanfare FanfareKeyItem
+  + FLAG_ALOLA_GOT_ZYGARDE_CUBE
 === ulaula_route_16.ScanDuosion
 from Duosion at 236,169 of Ulaula
 way 0

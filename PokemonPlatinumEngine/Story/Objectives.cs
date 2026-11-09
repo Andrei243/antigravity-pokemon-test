@@ -94,7 +94,7 @@ public static class Objectives
         // Nothing presses any more
         S(34, "free", null),
     }
-    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Galar).ToArray();
+    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Galar).Concat(Hisui).ToArray();
 
     // The later regions (plan 12 · Q14, their part). Each has a block of a hundred numbers of its own, its derived
     // conditions read from what only its own chapters set (its badges, its own flags and counts, never a flag another
@@ -329,6 +329,18 @@ public static class Objectives
         (692, "alolaMegalopolis", AtLeast("VAR_ALOLA_ULTRA", 4), false),
         (693, "alolaRoyalDome", s => s.Has("FLAG_ALOLA_ROYAL_SHOW_DONE"), false),
         (699, "alolaFree", null, false));
+    private static Objective[] Hisui => Region(RegionDatabase.Hisui,
+        // Plan 23 · Z17: VAR_HISUI_STORY, prelude_beach.txt's count, from Prelude Beach to a night in the quarters (a block
+        // of a hundred after Galar's and Paldea's, which keep 700 and 800 for their own)
+        (900, "hisuiLaventon", AtLeast("VAR_HISUI_STORY", 1), true),
+        (901, "hisuiGather", AtLeast("VAR_HISUI_STORY", 2), true),
+        (902, "hisuiPartner", AtLeast("VAR_HISUI_STORY", 3), true),
+        (903, "hisuiVillage", AtLeast("VAR_HISUI_STORY", 4), true),
+        (904, "hisuiWallflower", AtLeast("VAR_HISUI_STORY", 5), true),
+        (905, "hisuiHall", AtLeast("VAR_HISUI_STORY", 6), true),
+        (906, "hisuiQuarters", AtLeast("VAR_HISUI_STORY", 7), true),
+        // The entry trial in the Obsidian Fieldlands is plan 23 · Z18's
+        (999, "hisuiTrial", null, false));
 
     // Galar (plan 33 · GL1): the first chapter, Postwick to the train at Wedgehurst Station, by VAR_GALAR_STORY
     // (postwick.txt's header has its count). Its ids are the 700s; a later chapter adds its own before galarFree

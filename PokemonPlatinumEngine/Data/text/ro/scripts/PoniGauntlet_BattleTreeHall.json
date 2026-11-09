@@ -10,6 +10,22 @@
     },
     {
       "en": [
+        "{partner} will battle beside you, and the two of you will meet pairs of Trainers. Good luck!"
+      ],
+      "text": [
+        "{partner} va lupta alături de tine, iar voi doi veți înfrunta perechi de Antrenori. Mult noroc!"
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
         "Battle {number}! Your opponent is climbing up to meet you."
       ],
       "text": [
@@ -38,6 +54,14 @@
       ],
       "text": [
         "{foe} pășește înainte!"
+      ]
+    },
+    {
+      "en": [
+        "{foe} step forward!"
+      ],
+      "text": [
+        "{foe} fac un pas înainte!"
       ]
     },
     {

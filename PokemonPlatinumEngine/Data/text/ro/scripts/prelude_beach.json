@@ -1,0 +1,262 @@
+{
+  "Meeting": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Hold on there! Wait a moment!"
+      ],
+      "text": [
+        "Stai puțin! Așteaptă o clipă!"
+      ]
+    }
+  ],
+  "Laventon": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Jubilife Village is just up the path to the north. Off we go!"
+      ],
+      "text": [
+        "Jubilife Village e chiar pe potecă, spre nord. Haidem!"
+      ]
+    },
+    {
+      "en": [
+        "Rowlet, Cyndaquil and Oshawott are scattered all along the beach. Speak to them gently and they'll come back."
+      ],
+      "text": [
+        "Rowlet, Cyndaquil și Oshawott sunt împrăștiați pe toată plaja. Vorbește-le blând și se vor întoarce."
+      ]
+    }
+  ],
+  "Meet": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?"
+      ],
+      "text": [
+        "Cerule mare, te-ai trezit! Ai căzut de-a berbeleacul dintr-o crăpătură a cerului, aș putea să jur. Te-ai lovit?"
+      ]
+    },
+    {
+      "en": [
+        "I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path."
+      ],
+      "text": [
+        "Eu sunt Laventon, profesor de Pokémoni. Am venit în Hisui cu Galaxy Team, al cărei sat se află chiar pe potecă în sus."
+      ]
+    },
+    {
+      "en": [
+        "{player}, is it? What a curious name. And what curious clothes! Wherever have you come from?"
+      ],
+      "text": [
+        "{player}, zici? Ce nume ciudat. Și ce haine ciudate! De unde Dumnezeu ai venit?"
+      ]
+    },
+    {
+      "en": [
+        "...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth."
+      ],
+      "text": [
+        "...Dintr-o vreme ce va să vină? Ei bine! N-o să mă prefac că înțeleg o vorbă, dar văd că spui adevărul."
+      ]
+    },
+    {
+      "en": [
+        "Oh, no! My satchel! Come back, you three!"
+      ],
+      "text": [
+        "Vai, nu! Desaga mea! Întoarceți-vă, voi trei!"
+      ]
+    },
+    {
+      "en": [
+        "I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?"
+      ],
+      "text": [
+        "Abia le-am câștigat încrederea, și acum s-au împrăștiat pe plajă! M-ai ajuta să-i aduc înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "Speak to each one gently. They'll come to someone who means them no harm."
+      ],
+      "text": [
+        "Vorbește-i blând fiecăruia. Vin la cine nu le vrea răul."
+      ]
+    }
+  ],
+  "Rowlet": [
+    {
+      "en": [
+        "Rowlet blinked its big round eyes... and fluttered back to the professor's satchel."
+      ],
+      "text": [
+        "Rowlet a clipit din ochii mari și rotunzi... și a zburat înapoi în desaga profesorului."
+      ]
+    }
+  ],
+  "Cyndaquil": [
+    {
+      "en": [
+        "The flames on Cyndaquil's back flickered low... and it trotted back to the professor's satchel."
+      ],
+      "text": [
+        "Flăcările de pe spatele lui Cyndaquil au pâlpâit mai încet... și s-a dus în trap înapoi în desaga profesorului."
+      ]
+    }
+  ],
+  "Oshawott": [
+    {
+      "en": [
+        "Oshawott stopped splashing about in the shallows... and waddled back to the professor's satchel."
+      ],
+      "text": [
+        "Oshawott s-a oprit din bălăcit în apa mică... și s-a întors legănându-se în desaga profesorului."
+      ]
+    }
+  ],
+  "Gathered": [
+    {
+      "en": [
+        "That's all three of them! The professor will want to hear."
+      ],
+      "text": [
+        "Asta-i tot trei! Profesorul va vrea să afle."
+      ]
+    }
+  ],
+  "PartnerChosen": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "All three, safe and sound! You have a real way with Pokémon, {player}. They don't take to just anyone."
+      ],
+      "text": [
+        "Toți trei, teferi și nevătămați! Chiar te pricepi la Pokémoni, {player}. Nu se apropie de oricine."
+      ]
+    },
+    {
+      "en": [
+        "The wilds of Hisui are no place to walk without a companion. Would you choose one of these three to come along with you?"
+      ],
+      "text": [
+        "Sălbăticia din Hisui nu e loc de umblat fără tovarăș. Ai vrea să alegi unul dintre acești trei să vină cu tine?"
+      ]
+    },
+    {
+      "en": [
+        "{player} chose {starter}!"
+      ],
+      "text": [
+        "{player} l-a ales pe {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! I can see the two of you will get along. And take these too, in case something crosses your path."
+      ],
+      "text": [
+        "Splendid! Văd că vă veți înțelege voi doi. Și ia și astea, în caz că-ți iese ceva în cale."
+      ]
+    },
+    {
+      "en": [
+        "Now then, come up to Jubilife Village, just north of here. The Galaxy Team will want to meet you!"
+      ],
+      "text": [
+        "Ei bine, haide sus, în Jubilife Village, chiar la nord de aici. Galaxy Team va vrea să te cunoască!"
+      ]
+    }
+  ],
+  "NotYet": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Wait! Please don't leave my three behind on the beach!"
+      ],
+      "text": [
+        "Stai! Te rog, nu-mi lăsa cei trei pe plajă!"
+      ]
+    },
+    {
+      "en": [
+        "Wait! Come and see me before you go up to the village."
+      ],
+      "text": [
+        "Stai! Treci pe la mine înainte să urci în sat."
+      ]
+    }
+  ],
+  "Stone": [
+    {
+      "en": [
+        "The air over the smooth stone shimmers, as it did when you woke here. Reach into it, and go back to your own time?"
+      ],
+      "text": [
+        "Aerul de deasupra pietrei netede sclipește, ca atunci când te-ai trezit aici. Întinzi mâna în el și te întorci în vremea ta?"
+      ]
+    },
+    {
+      "en": [
+        "{player} reached into the shimmering air..."
+      ],
+      "text": [
+        "{player} a întins mâna în aerul care sclipea..."
+      ]
+    },
+    {
+      "en": [
+        "A smooth grey stone, warm to the touch. The air above it shimmers faintly."
+      ],
+      "text": [
+        "O piatră cenușie și netedă, caldă la atingere. Aerul de deasupra ei sclipește slab."
+      ]
+    }
+  ]
+}

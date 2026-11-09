@@ -1545,6 +1545,8 @@ galar_hop_3c 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Scorbunny �
 galar_lass_poppy 225 (6) [Chewtle → Drednaw]
 galar_youngster_alfie 225 (6) [Skwovet → Greedent]
 galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
+=== region Hisui
+levels 2 → 62, 75 → 104
 === AnistarCity_Gym
 Anistar Gym, Kalos
 trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]

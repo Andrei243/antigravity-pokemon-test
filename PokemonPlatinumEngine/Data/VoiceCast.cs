@@ -28,6 +28,35 @@ public sealed class CastFile
 
     /// <summary>Archetypes that need a count of voices or a note; any other archetype has <see cref="ArchetypeVoices"/>.</summary>
     public SortedDictionary<string, CastArchetype> Archetypes { get; set; } = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// What a region says differently (plan 26, Kanto's session): the same display name or class is another person in another
+    /// region (Kanto's rival, Kanto's mother), by region id in lower case (<c>kanto</c>). A region with no entry here is cast
+    /// by the tables above alone, so no line of Sinnoh changes its voice.
+    /// </summary>
+    public SortedDictionary<string, CastRegion> Regions { get; set; } = new(StringComparer.Ordinal);
+}
+
+/// <summary>A region's own casting: its entries are looked at before the cast's own tables, for lines of that region's places and scripts.</summary>
+public sealed class CastRegion
+{
+    /// <summary>A display name (a script's <c>speaker</c>, a person's name or their trainer's) to this region's voice id or archetype.</summary>
+    public SortedDictionary<string, string> Names { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>A character look (<c>npcType</c>) to this region's voice id or archetype.</summary>
+    public SortedDictionary<string, string> Looks { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>A trainer's class (<c>champion</c>, in lower case with underscores) to this region's voice id or archetype.</summary>
+    public SortedDictionary<string, string> Classes { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>The voice of this region's rival: his class and his placeholder name (<c>{rival}</c>); the cast's <c>rival</c> where none.</summary>
+    public string? Rival { get; set; }
+
+    /// <summary>
+    /// A trainer's own name picks no voice here, only their class does (unless <see cref="Names"/> says it): a route's Youngster Ben
+    /// is a Youngster of this region, not the Ben some other region's cast gave a voice.
+    /// </summary>
+    public bool? TrainerNamesByClass { get; set; }
 }
 
 public sealed class CastVoice
@@ -205,7 +234,42 @@ public sealed class VoiceCast
     public string? ForSpeaker(string voiceId, string displayName, string seed)
     {
         if (voiceId.Length > 0) return HasVoice(voiceId) ? voiceId : null;
+        if (RegionCast(seed, person: false) is { } region)
+        {
+            if (region.Names.TryGetValue(displayName, out var own)) return Settle(own, seed);
+            if (region.Rival != null && displayName == "{rival}") return region.Rival;
+        }
         return names.TryGetValue(displayName, out var target) ? Settle(target, seed) : null;
+    }
+
+    private readonly System.Collections.Concurrent.ConcurrentDictionary<string, CastRegion?> regionOfPlace = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The region's own casting for a seed, or null where the region has none (every line of Sinnoh, and of a place no region
+    /// lists). A script's seed is <c>file.Name/speaker</c>, a person's <c>place.key</c>, an introduction's <c>intro/region</c>.
+    /// </summary>
+    private CastRegion? RegionCast(string seed, bool person)
+    {
+        if (File.Regions.Count == 0) return null;
+        string place;
+        if (seed.StartsWith("intro/", StringComparison.Ordinal)) place = seed;
+        else
+        {
+            int slash = person ? -1 : seed.IndexOf('/');
+            string head = slash < 0 ? seed : seed[..slash];
+            int dot = head.IndexOf('.');
+            place = dot < 0 ? head : head[..dot];
+            // (a common script by its name, a battle line by its set)
+            if (dot >= 0 && place is "common" or "battle") place = head;
+        }
+        string key = (person ? "p|" : "s|") + place;
+        return regionOfPlace.GetOrAdd(key, _ =>
+        {
+            string? region = person
+                ? place.StartsWith("battle.", StringComparison.Ordinal) ? VoiceCatalogue.RegionOf("battle:" + place[7..]) : VoiceCatalogue.RegionOf("world:" + place) ?? VoiceCatalogue.RegionOf("map:" + place)
+                : place.StartsWith("intro/", StringComparison.Ordinal) ? place[6..].ToLowerInvariant() : VoiceCatalogue.RegionOf("script:" + place);
+            return region != null && File.Regions.TryGetValue(region, out var cast) ? cast : null;
+        });
     }
 
     /// <summary>
@@ -218,11 +282,24 @@ public sealed class VoiceCast
     {
         string seed = place + "." + key;
         if (File.People.TryGetValue(seed, out var own)) return Settle(own, seed);
+        var region = RegionCast(seed, person: true);
         string? lookKey = look?.Trim();
+        if (region != null)
+        {
+            if (!string.IsNullOrEmpty(lookKey) && region.Looks.TryGetValue(lookKey, out var regional)) return Settle(regional, seed);
+            if (name.Length > 0 && region.Names.TryGetValue(name, out var regionName)) return Settle(regionName, seed);
+        }
         if (!string.IsNullOrEmpty(lookKey) && looks.TryGetValue(lookKey, out var named) && !IsArchetype(named)) return named;
-        if (name.Length > 0 && names.TryGetValue(name, out var byName) && !IsArchetype(byName)) return byName;
-        if (rivalClass) return Rival;
-        if (!string.IsNullOrEmpty(trainerName) && names.TryGetValue(trainerName, out var byTrainer) && !IsArchetype(byTrainer)) return byTrainer;
+        // (where a region's trainers are cast by class, a trainer's name is no one else's voice, whether it is the person's or the trainer's)
+        bool classOnly = region?.TrainerNamesByClass == true && !string.IsNullOrEmpty(trainerClass);
+        if (!classOnly && name.Length > 0 && names.TryGetValue(name, out var byName) && !IsArchetype(byName)) return byName;
+        if (rivalClass) return region?.Rival ?? Rival;
+        if (region != null && !string.IsNullOrEmpty(trainerClass) && region.Classes.TryGetValue(trainerClass.ToLowerInvariant().Replace(' ', '_'), out var byClass)) return Settle(byClass, seed);
+        if (!string.IsNullOrEmpty(trainerName))
+        {
+            if (region != null && region.Names.TryGetValue(trainerName, out var regionTrainer)) return Settle(regionTrainer, seed);
+            if (!classOnly && names.TryGetValue(trainerName, out var byTrainer) && !IsArchetype(byTrainer)) return byTrainer;
+        }
         if (!string.IsNullOrEmpty(trainerClass)) return Pick("class:" + trainerClass.ToLowerInvariant().Replace(' ', '_'), seed);
         if (!string.IsNullOrEmpty(lookKey))
             return looks.TryGetValue(lookKey, out var viaLook) ? Settle(viaLook, seed) : Pick("look:" + lookKey.ToLowerInvariant().Replace(' ', '_'), seed);

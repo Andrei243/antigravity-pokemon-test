@@ -90,6 +90,10 @@ public partial class GameEngine
         {
             voicePackLanguage = wanted;
             voicePack = VoiceLibrary.Choose(language, Settings.EnglishVoices, VoiceLibrary.Find);
+            // Said once a language, so a pack that isn't found is no silent failure (log.txt, and the console)
+            if (voicePack == null)
+                PokemonPlatinumEngine.Core.Diagnostics.Log.Warn($"Voices are on but no '{language}' pack was found. Looked in: {string.Join("; ", VoiceLibrary.FoldersFor(language))}");
+            else PokemonPlatinumEngine.Core.Diagnostics.Log.Info($"Voices: the '{language}' pack is in use.");
         }
         talk.Library = voicePack;
     }

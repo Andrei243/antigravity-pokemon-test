@@ -104,6 +104,12 @@ public sealed class RegionFlyRecord
 
     /// <summary>Nothing is drawn of it until it is open.</summary>
     public bool Unseen { get; set; }
+
+    /// <summary>
+    /// Where Fly lands in an open region (plan 32 · OW10): a marker of the open map's places files, which the player is
+    /// put down on facing as it does, in place of the spawn location's tile. Null on the grid.
+    /// </summary>
+    public string? Marker { get; set; }
 }
 
 /// <summary>What a block is, which the original shows as the kind of signpost its name stands on.</summary>
@@ -124,7 +130,7 @@ public sealed record RegionPlace(string Key, string? Name, string About, string?
 public sealed record RegionBlock(int X, int Y, RegionBlockKind Kind, string Name, RegionPlace Area, RegionPlace? Landmark, RegionHiddenPlace? Hidden);
 
 /// <summary>Where Fly lands, as the map shows it (the original's <c>sFlyLocations</c>).</summary>
-public sealed record RegionFlySpot(int Spawn, IReadOnlyList<(int X, int Y)> Cells, string? Flag, bool Unseen);
+public sealed record RegionFlySpot(int Spawn, IReadOnlyList<(int X, int Y)> Cells, string? Flag, bool Unseen, string? Marker = null);
 
 /// <summary>
 /// A region's map (plan 01 · M12): the one model the Town Map, Fly's map and whatever else shows the region are
@@ -162,6 +168,9 @@ public sealed class RegionMap
     public IReadOnlyList<RegionPlace> Landmarks { get; }
     public IReadOnlyList<RegionBlock> Blocks { get; }
     public IReadOnlyList<RegionFlySpot> FlySpots { get; }
+
+    /// <summary>The marker of an open map Fly lands on for a spawn location (plan 32 · OW10), or null where it lands on the spawn's tile.</summary>
+    public string? FlyMarkerOf(int spawn) => FlySpots.FirstOrDefault(f => f.Spawn == spawn)?.Marker;
 
     /// <summary>The rooms and maps the file places itself (<see cref="RegionMapFile.Places"/>), by name.</summary>
     public IReadOnlyDictionary<string, (int X, int Y)> Placed => placed;
@@ -228,7 +237,7 @@ public sealed class RegionMap
             if (cells.Count == 0) throw new InvalidDataException($"The map of {region}: Fly's place {f.Spawn} has no cell.");
             foreach (var cell in cells)
                 if (!byCell.ContainsKey(cell)) throw new InvalidDataException($"The map of {region}: Fly's place {f.Spawn} has a cell with no block, {cell.X},{cell.Y}.");
-            spots.Add(new RegionFlySpot(f.Spawn, cells, f.Flag, f.Unseen));
+            spots.Add(new RegionFlySpot(f.Spawn, cells, f.Flag, f.Unseen, string.IsNullOrWhiteSpace(f.Marker) ? null : f.Marker));
         }
         FlySpots = spots;
 

@@ -5,7 +5,7 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_NIGHTFALL" },
     "scan_gothita": { "name": "Gothita", "npcType": "Pokemon", "species": "Gothita", "script": "ScanGothita", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_GOTHITA", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_GOTHITA_MET" },
     "youngster": {
       "name": "Kekoa",

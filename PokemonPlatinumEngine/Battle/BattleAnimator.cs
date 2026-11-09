@@ -1475,12 +1475,16 @@ public sealed partial class BattleAnimator
     /// crown stays (the crown and the sheen that last are read from its Pokémon's own Tera Type). Seeded as the move
     /// cue it stands in for was.
     /// </summary>
-    public EffectCue Terastallize(BattleSide side, int slot, Models.TeraType tera) =>
-        Cue(new EffectCue
+    public EffectCue Terastallize(BattleSide side, int slot, Models.TeraType tera)
+    {
+        // A moment the picture may split at once its shell has shattered (plan 45 · BC6)
+        NoteTerastal();
+        return Cue(new EffectCue
         {
             Kind = CueKind.Tera, Type = tera.Type, Stellar = tera.IsStellar, Move = "Transform",
             FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot
         });
+    }
 
     /// <summary>
     /// The Seals of a Ball Capsule bursting round a Pokémon as it is sent out (plan 06 · R17b). It begins with the

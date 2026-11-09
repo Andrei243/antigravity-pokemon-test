@@ -1297,7 +1297,7 @@ public partial class GameEngine
                     break;
                 // The crafting kit looked into (plan 39 · CR1)
                 case ScriptScreen.Crafting:
-                    game.OpenCrafting(fromBag: false, atMaker: counter == "tm");
+                    game.OpenCrafting(fromBag: false, counter switch { "tm" => CraftingPlace.Maker, "pantry" => CraftingPlace.Pantry, _ => CraftingPlace.Anywhere });
                     break;
                 // A drill on the Pokémon the coach's script chose (plan 36 · TR2)
                 case ScriptScreen.Training when int.TryParse(counter, out int trainee):
@@ -1537,6 +1537,12 @@ public partial class GameEngine
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
+            // ...onto a marker of an open map where the region's map says so (plan 32 · OW10)
+            if (game.OpenFlyLanding(town) is { } landing)
+            {
+                game.StartTransition(GameState.Overworld, () => game.ArriveInTheOpen(landing.Map, landing.Marker));
+                return true;
+            }
             // ...to the overworld of the town's own region (plan 20 · J9); a town of another region is a crossing
             // there, under Fly's own fade (plan 18 · W9)
             if (RegionDatabase.RegionOfMap(town.Map) is { } to && !string.Equals(to.Id, game.Here.Id, StringComparison.OrdinalIgnoreCase))
@@ -1660,6 +1666,7 @@ public partial class GameEngine
         public BerryPatches Berries => game.flow.Berries;
         public ApricornBox Apricorns => game.flow.Apricorns;
         public CraftingState Crafting => game.flow.Crafting;
+        public PowerState Powers => game.flow.Powers;
         public TrainingRecords Training => game.flow.Training;
         public PhotoAlbum? Photos => game.flow.Photos;
         public bool OnlineServerSet => game.OnlineServer != null;

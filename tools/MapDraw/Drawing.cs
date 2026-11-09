@@ -104,6 +104,12 @@ public static class Drawing
         ['|'] = new('~', false, TileBehavior.Waterfall),
         // Plan 23, Alola's rough ground: rocks and rubble only Mudsdale's Gallop crosses, open rock underfoot
         ['x'] = new('r', false, TileBehavior.RoughGround),
+        // Plan 23, Alola's strong currents: water that carries a surfer on its way (west, east, north, south), which only a
+        // Sharpedo's Jet stems; a gap in a reef (R) with one holds an islet shut against a Lapras
+        ['<'] = new('~', false, TileBehavior.CurrentWest),
+        ['>'] = new('~', false, TileBehavior.CurrentEast),
+        ['A'] = new('~', false, TileBehavior.CurrentNorth),
+        ['V'] = new('~', false, TileBehavior.CurrentSouth),
     };
 
     /// <summary>What fills a drawn chunk where no drawing reaches: the woods every place is cut out of.</summary>

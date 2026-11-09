@@ -240,6 +240,12 @@ public class ScriptTests
           craft take "Soft Fluff" 2
           craft count "Soft Fluff"
           craft open
+          craft tm
+          craft tradable
+          craft trade
+          craft pantry
+          craft meal "beanHotpot"
+          craft meal "campStew" superb
           train open
           train drill
           train reset all
@@ -764,6 +770,8 @@ public class ScriptTests
           facility house next
           facility house host
           facility house opponent
+          facility tree partner
+          facility tree way multi
           facility house battle
           facility house won
           facility house points

@@ -3,7 +3,9 @@
 # since nothing of this is the original's.
 #
 # She gives the Crafting Kit once, to whoever comes in (`craft give kit` puts it in the bag and sets FLAG_GOT_CRAFTING_KIT,
-# which the rest of plan 39 waits for), and afterwards looks into it with the player or says how it goes.
+# which the rest of plan 39 waits for), and afterwards looks into it with the player, keeps the pantry's counter (CR6: the
+# goods for the camp's pot, `craft pantry`), or says how it goes. Her apprentice (CR3) trades three of a type's common
+# material for one of its rare (`craft tradable`, `craft trade`).
 
 
 script Craftswoman
@@ -16,19 +18,50 @@ script Craftswoman
   fanfare keyitem
   text "{player} received the {item}!"
   say "Keep it in your bag. When a wild Pokémon is beaten or caught, whatever it leaves behind goes into the kit's pouch by itself, and you'll be told so once the battle is over."
-  say "Open it whenever you like to see what you're holding. The rest I'll show you when my bench is ready."
+  say "Open it whenever you like. Its MAKE page turns what you've gathered into balls, medicine and the like, wherever you stand."
+  say "And with the kit along you can make camp anywhere. There's a pot in it, and I keep a pantry here for whatever you want to cook."
   end
 label Again
   say "Back again! Your kit's still in good order, I hope."
-  choose "What can I do for you?" "LOOK IN THE KIT" "HOW IT WORKS" "NOTHING"
+  choose "What can I do for you?" "LOOK IN THE KIT" "THE PANTRY" "HOW IT WORKS" "NOTHING"
   if result == 0 goto Open
-  if result == 1 goto How
+  if result == 1 goto Pantry
+  if result == 2 goto How
   say "Then I'll get on. Mind the shavings on your way out."
   end
 label Open
   craft open
   end
+label Pantry
+  say "Flour, rice, beans and the rest, fresh in this morning. Take what you need for the pot."
+  craft pantry
+  say "Cook it at your camp. A good meal does a team a world of good, and it brings the wild ones round, or keeps them off."
+  end
 label How
   say "Every wild Pokémon leaves something of its own kind behind: a common thing almost every time, a rare one now and then. The higher its level, the more there is."
   say "Trainers' Pokémon leave nothing, nor do the ones in a contest or a park. Those are sport, not the wild."
+  say "The kit's MAKE page lists what it can make and what each one takes. Nothing it makes comes cheaper than the shop's price, mind. You're paying in work, not money."
+  say "Make camp from the menu and put the pot on. Stir when the heat is right and the dish comes out the better for it."
+  end
+
+
+script Apprentice
+  speaker "Apprentice"
+  if not item "Crafting Kit" goto NoKit
+  craft tradable
+  if result == 0 goto Nothing
+  say "I'm learning to press the rare stuff out of the common. Three of your {material} would make one of the good kind."
+  ask "Shall I have a go?"
+  if no goto No
+  craft trade
+  say "There! One {material}, good as any I've seen. Well, nearly."
+  end
+label No
+  say "Another time, then. I need the practice."
+  end
+label Nothing
+  say "Bring me three of any Pokémon's leavings and I'll press them into one of the rare kind. I need the practice."
+  end
+label NoKit
+  say "I'm only the apprentice. Talk to the craftswoman first."
   end

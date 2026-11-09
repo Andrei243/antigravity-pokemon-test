@@ -141,7 +141,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 ## Needs and gives
 
 - **Needs** plan 32 (all of it before PD1's areas; OW3, OW4 and OW7 before PD2 and PD5), plan 33 · GL3's `Raid` and GL7's plane, plan 30 · FM3 to FM9 and FM13, plan 10 · F5 to F8, plan 12 · Q12, plan 14 · B8, plan 18 · W1, W3, W4b-1 and W5, plan 31's sound.
-- **Gives** plan 06 · R23 its home and the Tera Raids, plan 30 its mount on the open world (FM12 and FM14 are this plan's PD2 and PD1 to PD8), plan 03 · D12 a region to meet the Paldean forms and the Paradox Pokémon in, and plan 13 · V3 a cap table for Paldea. The chain ends here, as plan 18 has it: no link leaves Paldea.
+- **Gives** plan 06 · R23 its home and the Tera Raids, plan 30 its mount on the open world (FM12 and FM14 are this plan's PD2 and PD1 to PD8), plan 03 · D12 a region to meet the Paldean forms and the Paradox Pokémon in, and plan 13 · V3 a cap table for Paldea. The chain ended here, as plan 18 had it, until plan 46 (2026-11-09) put Carpathia after Paldea: Paldea's harbour gains its link.
 
 ## Status
 

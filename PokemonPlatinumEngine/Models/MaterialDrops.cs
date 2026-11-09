@@ -19,12 +19,14 @@ public readonly record struct MaterialCount(string Id, int Count);
 public static class MaterialDrops
 {
     /// <summary>What <paramref name="foe"/> leaves, as the rules above say; empty when nothing is left.</summary>
-    public static List<MaterialCount> For(Pokemon foe, Random rng)
+    /// <param name="power">The materials' power in force (plan 39 · CR6, a power of plan 36's table): this many more of each
+    /// common material left. It draws nothing more, so the leavings' rolls are the same with it as without.</param>
+    public static List<MaterialCount> For(Pokemon foe, Random rng, int power = 0)
     {
         var rules = MaterialTable.Drops;
         var left = new List<MaterialCount>();
         int level = Math.Max(1, foe.Level);
-        int extra = Math.Min(rules.LevelExtraMost, level / Math.Max(1, rules.LevelStep));
+        int extra = Math.Min(rules.LevelExtraMost, level / Math.Max(1, rules.LevelStep)) + Math.Max(0, power);
         PokemonType first = foe.PrimaryType;
         PokemonType? second = foe.SecondaryType is { } s && s != first ? s : null;
 
@@ -47,11 +49,11 @@ public static class MaterialDrops
     }
 
     /// <summary>The leavings of every foe of a battle, one list: the same material from two foes is one line.</summary>
-    public static List<MaterialCount> For(IEnumerable<Pokemon> foes, Random rng)
+    public static List<MaterialCount> For(IEnumerable<Pokemon> foes, Random rng, int power = 0)
     {
         var all = new List<MaterialCount>();
         foreach (var foe in foes)
-            foreach (var (id, n) in For(foe, rng)) Add(all, id, n);
+            foreach (var (id, n) in For(foe, rng, power)) Add(all, id, n);
         return all;
     }
 

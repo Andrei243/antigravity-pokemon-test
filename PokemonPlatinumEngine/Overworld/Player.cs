@@ -472,9 +472,17 @@ public class Player
         if (!TileBehaviors.IsSurfable(underfoot) || underfoot == TileBehavior.Waterfall) return;
         Mode = TravelMode.Surfing;
         height = float.NaN;
-        carried = FieldMovement.Carries(underfoot, Facing);
+        carried = CarriedBy(underfoot, Facing);
         IsSliding = carried != null;
     }
+
+    /// <summary>
+    /// What the tile just come onto carries the player on by (<see cref="FieldMovement.Carries"/>), but for a surfer on
+    /// Sharpedo's back, who shoots through a current as it flows (<see cref="RidePager.StemsCurrents"/>; plan 23, Alola's
+    /// strong currents) and is carried nowhere.
+    /// </summary>
+    private Direction? CarriedBy(TileBehavior underfoot, Direction arrivedMoving) =>
+        Mode == TravelMode.Surfing && RidePager.StemsCurrents(Steed) ? null : FieldMovement.Carries(underfoot, arrivedMoving);
 
     /// <summary>The height of the ground (or deck, or water) under the player on a map, in tiles; eased from tile to tile while moving.</summary>
     public float HeightOn(Map map) => float.IsNaN(height) ? map.HeightAt(GridX, GridY) : height;
@@ -860,7 +868,7 @@ public class Player
         // Ice carries the player on, unless this was a slip back down its slope, after which they stand; off the ice,
         // or stopped, the slide's speed is gone
         var underfoot = map.BehaviourAt(GridX, GridY);
-        carried = interrupted || slipping ? null : FieldMovement.Carries(underfoot, movingDir);
+        carried = interrupted || slipping ? null : CarriedBy(underfoot, movingDir);
         // A GBA spin (plan 19 · K5, part b): a slide on a map with stop tiles goes on over plain floor until one
         spinning = interrupted ? null : FieldMovement.Spins(map, underfoot, carried, spinning);
         carried ??= spinning;
@@ -878,6 +886,8 @@ public class Player
         bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : onWater == TileBehaviors.IsSurfable(underfoot);
         // With wild Pokémon in sight (plan 10 · F5) the tall grass and the water roll nothing: what is seen there is what is met
         bool seenInstead = WildInSight && !diving && (onWater || InTallGrass);
+        // Mantine skims the water so lightly that nothing in it notices the rider (plan 23, Mantine Surf)
+        if (Mode == TravelMode.Surfing && RidePager.Skims(Steed)) seenInstead = true;
         if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where && !seenInstead)
         {
             bool thick = underfoot is TileBehavior.VeryTallGrass or TileBehavior.VeryTallDarkGrass || Mode == TravelMode.Cycling;

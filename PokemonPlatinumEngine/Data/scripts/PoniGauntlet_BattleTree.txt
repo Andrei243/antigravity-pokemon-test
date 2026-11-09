@@ -4,7 +4,8 @@
 # trainers of the later sets (Data/facility-sets.json) who grow stronger with the streak, the entered going in as copies
 # at level 50, whole again after every battle (Models/Facilities/BattleTree.cs, StreakChallenge.cs; `facility tree ...`).
 # A room's Tree Master stands in the way at its 20th battle and, beaten, opens its Super room, where the master comes
-# again at the 50th. Sun and Moon's Multi room, with a partner beside the player, is not built. The battles are
+# again at the 50th. The Multi room (plan 23, the Multi room) has no master: a partner of ours is drawn for the whole
+# challenge and fights beside the player, two Pokémon each, against two trainers who bring two each. The battles are
 # PoniGauntlet_BattleTreeHall.txt's arrival script. Battle Points go into the Frontier's one purse, and the counter
 # beside the desk trades them for the later games' items (Data/facility-prizes.json, `tree`).
 
@@ -20,15 +21,19 @@ label Ask
   if result == 1 goto Rules
   if result == 2 goto Records
   if result == 3 goto Later
-  choose "Which battles will you take on?" "Single" "Double" "Cancel"
+  choose "Which battles will you take on?" "Single" "Double" "Multi" "Cancel"
   if result == 0 goto Single
   if result == 1 goto Double
+  if result == 2 goto Multi
   goto Later
 label Single
   facility tree way single
   goto Super
 label Double
   facility tree way double
+  goto Super
+label Multi
+  facility tree way multi
 label Super
   facility tree hardopen
   if result == 0 goto Streak
@@ -85,6 +90,7 @@ label Records
 label Rules
   say "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
   say "Three go into single battles, and four into double battles."
+  say "In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time."
   say "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
   say "The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you."
   end

@@ -76,8 +76,15 @@ internal sealed class BattlePhotoView
     /// <summary>How far the camera has been turned round the vertical from the shot it began on, radians.</summary>
     public float Yaw { get; private set; }
 
-    /// <summary>The camera's pitch looking down, radians, within <see cref="LowestPitch"/> and <see cref="HighestPitch"/>.</summary>
-    public float Pitch => Math.Clamp(BasePitch + Lift, LowestPitch, HighestPitch);
+    /// <summary>
+    /// The camera's pitch looking down, radians, within <see cref="LowestPitch"/> and <see cref="HighestPitch"/>, or
+    /// wherever the shot it began from stood where that lay outside them (plan 45 · BC7: a photo composed over the cycle's
+    /// low shoulder shot begins exactly on it, and the arrows only bring it back inside).
+    /// </summary>
+    public float Pitch => Math.Clamp(BasePitch + Lift, PitchFloor, PitchCeiling);
+
+    private float PitchFloor => Math.Min(LowestPitch, BasePitch);
+    private float PitchCeiling => Math.Max(HighestPitch, BasePitch);
 
     // How far the arrows have raised (or lowered) it, kept so the pitch never leaves its bounds
     private float Lift { get; set; }
@@ -131,7 +138,7 @@ internal sealed class BattlePhotoView
         if (seconds <= 0f) return;
         Yaw = Wrap(Yaw + way.X * TurnSpeed * seconds);
         // Up on the arrows raises the camera, which looks down more
-        Lift = Math.Clamp(Lift - way.Y * LiftSpeed * seconds, LowestPitch - BasePitch, HighestPitch - BasePitch);
+        Lift = Math.Clamp(Lift - way.Y * LiftSpeed * seconds, PitchFloor - BasePitch, PitchCeiling - BasePitch);
     }
 
     private static float Wrap(float a)

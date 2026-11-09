@@ -115,6 +115,33 @@ public sealed class FieldFuzzer : IFuzzer
     }
 
     /// <summary>
+    /// Where in an open map the fuzzer is set down (plan 32 · OW10): <paramref name="count"/> places drawn by a seed of
+    /// their own from the hubs of the navigation mesh's walked polygons (never a swum one), each in no trigger and no door,
+    /// more than three metres from anyone of the map, with a way to face drawn beside it. None where the map has no mesh.
+    /// </summary>
+    public static List<(OpenWorld.OpenPos Pos, int Yaw)> OpenSpots(OpenWorld.OpenMap map, int count, int seed)
+    {
+        var spots = new List<(OpenWorld.OpenPos, int)>();
+        if (map.Land?.Nav is not { } nav || nav.Polygons.Count == 0) return spots;
+        var random = new Random(seed);
+        for (int tries = 0; spots.Count < count && tries < count * 2000; tries++)
+        {
+            var polygon = nav.Polygons[random.Next(nav.Polygons.Count)];
+            int yaw = random.Next(OpenWorld.OpenYaw.Turn);
+            if (polygon.Swim) continue;
+            var at = polygon.Hub;
+            var centre = OpenWorld.OpenCrossings.CentreOf(at);
+            bool inside = false;
+            foreach (var t in map.Triggers) inside |= t.Shape.Contains(centre);
+            foreach (var d in map.Doors) inside |= d.Shape.Contains(centre);
+            foreach (var p in map.People) inside |= p.Pos.GroundDistanceSquared(at) < 3_000L * 3_000;
+            if (inside) continue;
+            spots.Add((at, yaw));
+        }
+        return spots;
+    }
+
+    /// <summary>
     /// Spots over many maps (plan 16 · T13's leftover: the rooms, the caves and the other regions, beyond Sinnoh's
     /// overworld): the maps taken in an order drawn by the seed, one spot on each (<see cref="Spots"/>), until there
     /// are <paramref name="count"/>; a map with no spot to give is passed over.

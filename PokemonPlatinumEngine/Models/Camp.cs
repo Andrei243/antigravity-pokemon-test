@@ -20,8 +20,8 @@ public enum CampRefusal
 /// each Pokémon once a visit, which raises its friendship by the table's <see cref="FriendshipEvent.Petted"/> and
 /// <see cref="FriendshipEvent.Fed"/> (with the Luxury Ball's and the Soothe Bell's bonus, as every event has), and a
 /// visit after a battle cures the team's status conditions as Refresh does, once for each battle
-/// (<see cref="CampCare"/>). Its meals are the bag's berries (decision 4: no cooking). Nothing here draws, and
-/// nothing is drawn by chance.
+/// (<see cref="CampCare"/>). Its meals are the bag's berries, and with the crafting kit the pot's dishes (plan 39 · CR6,
+/// which took plan 10 · F8's cooking over: <see cref="Meals"/>). Nothing here draws, and nothing is drawn by chance.
 /// </summary>
 public sealed class CampVisit
 {
@@ -56,6 +56,17 @@ public sealed class CampVisit
         if (WhyNotFeed(p, berry, bag) != CampRefusal.None) return false;
         bag.RemoveItem(berry);
         fed.Add(p);
+        FriendshipRules.Apply(p, FriendshipEvent.Fed);
+        return true;
+    }
+
+    /// <summary>
+    /// It eats from the camp's pot (plan 39 · CR6): its friendship rises as a berry's would, once a visit, shared with the
+    /// berry (a Pokémon fed a berry this visit eats and is not befriended again). True if it rose.
+    /// </summary>
+    public bool Eat(Pokemon p)
+    {
+        if (p.IsEgg || !fed.Add(p)) return false;
         FriendshipRules.Apply(p, FriendshipEvent.Fed);
         return true;
     }

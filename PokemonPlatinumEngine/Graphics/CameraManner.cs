@@ -23,6 +23,8 @@ internal enum IdleShot
     Side,
     /// <summary>High over the stage, both sides and the ground (Galar's Leaders and Champions, plan 45 · BC5).</summary>
     Crane,
+    /// <summary>The overview's own stand, its lens narrowed onto the foe: a slow push in and back with no move of the camera (Kanto's, Johto's and Hoenn's, BC6).</summary>
+    FoeZoom,
 }
 
 /// <summary>When a manner splits the picture in two (plan 45 · BC3): none, or any of these.</summary>
@@ -42,6 +44,11 @@ internal enum CameraSplits
     Giants = 16,
     /// <summary>A Pokémon Terastallizing facing its foe.</summary>
     Terastal = 32,
+    /// <summary>
+    /// A Battle Royal's splits are four quarters, one to a camp (plan 45 · BC7); a manner that splits but lacks this leaves
+    /// a Royal unsplit. It is no moment of its own: it says how the moments the manner has are filmed in a Royal.
+    /// </summary>
+    RoyalQuarters = 64,
 }
 
 /// <summary>
@@ -120,7 +127,11 @@ internal static class CameraManners
     /// (BC5, still to come) and a split for a Leader's, an Elite Four's or a Champion's last Pokémon (BC3).
     /// The manner of a region whose file names none.
     /// </summary>
-    public static readonly CameraManner Sinnoh = new("sinnoh") { Drift = 0.07f, DriftPeriod = 18f, Splits = CameraSplits.BossLast };
+    public static readonly CameraManner Sinnoh = new("sinnoh")
+    {
+        Drift = 0.07f, DriftPeriod = 18f, Splits = CameraSplits.BossLast,
+        Open = true, Close = true,
+    };
 
     /// <summary>
     /// Unova's (Black and White moved their camera between commands): a slow swing between the overview and a shot low
@@ -132,6 +143,7 @@ internal static class CameraManners
         CycleHold = 4.5f, CycleEase = 2.5f,
         Splits = CameraSplits.Leads,
         Push = 0.5f,
+        Open = true, Close = true,
     };
 
     /// <summary>
@@ -142,14 +154,76 @@ internal static class CameraManners
     /// </summary>
     public static readonly CameraManner Galar = new("galar")
     {
-        Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.OwnFace },
+        Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.Crane, IdleShot.OwnFace },
         CycleHold = 3.5f, CycleEase = 1.4f,
-        Splits = CameraSplits.Leads | CameraSplits.LastPokemon,
+        Splits = CameraSplits.Leads | CameraSplits.SendOuts | CameraSplits.LastPokemon | CameraSplits.Giants | CameraSplits.RoyalQuarters,
         Push = 1f, React = true,
+        Open = true, Close = true, Crane = true,
+    };
+
+    /// <summary>
+    /// Kanto's, Johto's and Hoenn's (BC6; games filmed flat, the quietest manner with something new): the overview held
+    /// at the menu with a slow push of its own lens in on the foe and back (<see cref="IdleShot.FoeZoom"/>), the opening and
+    /// the closing; no splits, no push on a move.
+    /// </summary>
+    public static readonly CameraManner Kanto = Flat("kanto", 6f, 3.5f);
+    public static readonly CameraManner Johto = Flat("johto", 5.5f, 3.5f);
+    public static readonly CameraManner Hoenn = Flat("hoenn", 5f, 3f);
+
+    private static CameraManner Flat(string name, float hold, float ease) => new(name)
+    {
+        Cycle = new[] { IdleShot.Overview, IdleShot.FoeZoom },
+        CycleHold = hold, CycleEase = ease,
+        Open = true, Close = true,
+    };
+
+    /// <summary>
+    /// Kalos's (BC6; the first fully 3D generation): a cycle through over the shoulder, the foe's face and the side, a
+    /// move pushed in a little (<see cref="CameraManner.Push"/> 0.6) with its target's shot standing low as it is hit
+    /// (<see cref="CameraManner.Low"/>), the opening and the closing, and a split at the leads and at the last Pokémon.
+    /// </summary>
+    public static readonly CameraManner Kalos = new("kalos")
+    {
+        Cycle = new[] { IdleShot.Overview, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.Side },
+        CycleHold = 4f, CycleEase = 1.8f,
+        Low = 0.06f, Push = 0.6f,
+        Open = true, Close = true,
+        Splits = CameraSplits.Leads | CameraSplits.LastPokemon | CameraSplits.RoyalQuarters,
+    };
+
+    /// <summary>Alola's (BC6): Kalos's, its shots standing lower and wider (<see cref="CameraManner.Reach"/> 1.15).</summary>
+    public static readonly CameraManner Alola = Kalos with
+    {
+        Name = "alola",
+        Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace },
+        Reach = 1.15f, Low = 0.12f,
+    };
+
+    /// <summary>
+    /// Hisui's (BC6; Legends: Arceus's battles were close and low): Galar's cycle at a smaller reach and lower, its push
+    /// and reactions, the opening and the closing; no splits and no crane.
+    /// </summary>
+    public static readonly CameraManner Hisui = Galar with
+    {
+        Name = "hisui",
+        Cycle = new[] { IdleShot.Overview, IdleShot.Side, IdleShot.Shoulder, IdleShot.FoeFace, IdleShot.OwnFace },
+        Reach = 0.85f, Low = 0.1f,
+        Splits = CameraSplits.None, Crane = false,
+    };
+
+    /// <summary>
+    /// Paldea's (BC6): Galar's with the cycle's aim held in the hand (<see cref="CameraManner.Handheld"/>, a sway of our
+    /// own noise of the battle's clock, never a roll) and a split as a Pokémon Terastallizes facing its foe.
+    /// </summary>
+    public static readonly CameraManner Paldea = Galar with
+    {
+        Name = "paldea",
+        Handheld = 0.012f,
+        Splits = Galar.Splits | CameraSplits.Terastal,
     };
 
     /// <summary>Every manner of the table, by its name.</summary>
-    public static IReadOnlyList<CameraManner> All { get; } = new[] { Classic, Sinnoh, Unova, Galar };
+    public static IReadOnlyList<CameraManner> All { get; } = new[] { Classic, Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, Galar, Hisui, Paldea };
 
     /// <summary>The manner of the name (case ignored); null for a name the table lacks.</summary>
     public static CameraManner? Find(string? name) =>

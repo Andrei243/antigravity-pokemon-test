@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
@@ -14,12 +18,25 @@ public enum CampRequest
     Close
 }
 
+/// <summary>What the camp's screen shows: the team, the pot's pantry (choosing what goes in), the pot on the fire, the dish served.</summary>
+public enum CampPhase { Team, Pantry, Stirring, Served }
+
+/// <summary>
+/// What the camp cooks with (plan 39 · CR6): the kit's pouch, the bag, the powers a dish starts, the timing assist and the
+/// seed the pots of this visit are worked out from. The camp has none without the crafting kit.
+/// </summary>
+public sealed record CampKitchen(MaterialPouch Pouch, Inventory Bag, PowerState Powers, TimingAssist Assist, uint Seed);
+
 /// <summary>
 /// The camp's screen (plan 10 · F6; style guide, "Menu screens (G10)", "The camp"): the team stands in two rows of
 /// three (or one row of as many as there are) on a clearing, the cursor moves over them, Confirm pets the one under it
 /// and the item button asks for a berry to feed it. Its logic takes no input (<see cref="MoveCursor"/>, <see cref="Pet"/>,
 /// <see cref="AskToFeed"/>, <see cref="Feed"/>, <see cref="Cancel"/>), so tests drive it; <see cref="Update"/> reads the
 /// keys into those, and <c>ModernUi.DrawCamp</c> draws it. The rules are <see cref="CampVisit"/>'s and <see cref="CampCare"/>'s.
+/// With the crafting kit the start button opens the pot (plan 39 · CR6; <see cref="AskToCook"/>): the pantry lists what can go
+/// in (<see cref="PantryMove"/>, <see cref="PantryConfirm"/>, <see cref="PantryCancel"/>), the pot is stirred four rounds
+/// (<see cref="Stir"/>, <see cref="StepPot"/>, <see cref="TakeOff"/>; the rules are <see cref="Kitchen"/>'s), and the dish is
+/// served to the team (<see cref="Meals.Serve"/>) and looked at until Confirm (<see cref="ServedConfirm"/>).
 /// </summary>
 public sealed class CampScreen
 {
@@ -51,13 +68,24 @@ public sealed class CampScreen
 
     private CampRequest request;
 
-    /// <summary>Opens a visit with the team: a fresh visit (each may be petted and fed again), and the cure if a battle came between.</summary>
-    public void Open(Party party, CampCare care)
+    /// <summary>
+    /// Opens a visit with the team: a fresh visit (each may be petted and fed again), and the cure if a battle came between;
+    /// with the crafting kit's <paramref name="kitchen"/> the pot may be put on (plan 39 · CR6).
+    /// </summary>
+    public void Open(Party party, CampCare care, CampKitchen? kitchen = null)
     {
         Party = party;
         Visit = new CampVisit();
         Cursor = 0;
         request = CampRequest.None;
+        Supplies = kitchen;
+        Phase = CampPhase.Team;
+        Pot.Clear();
+        OnHand = new();
+        Stirring = null;
+        Served = null;
+        pressPending = false;
+        cooked = 0;
         CuredOnArrival = care.Cure(party);
         Age = 0f;
         Array.Fill(petAge, -1f);
@@ -157,6 +185,186 @@ public sealed class CampScreen
         _ => ""
     };
 
+    // ------------------------------------------------------------------ the pot (plan 39 · CR6)
+
+    /// <summary>What the camp cooks with; null without the crafting kit, and the pot isn't offered.</summary>
+    public CampKitchen? Supplies { get; private set; }
+
+    public bool CanCook => Supplies != null;
+
+    public CampPhase Phase { get; private set; }
+
+    /// <summary>What may go in the pot, from the pouch's pantry and the bag; the pantry's list has a last row, COOK.</summary>
+    public List<KitchenIngredient> OnHand { get; private set; } = new();
+
+    /// <summary>The pantry's cursor (the row past the last ingredient is COOK) and its first row showing.</summary>
+    public int PantryCursor { get; private set; }
+    public int PantryFirst { get; private set; }
+
+    /// <summary>The rows the pantry's list shows.</summary>
+    public const int PantryRows = 5;
+
+    /// <summary>Whether the pantry's cursor is on COOK.</summary>
+    public bool OnCook => PantryCursor == OnHand.Count;
+
+    /// <summary>What is in the pot, in the order put in.</summary>
+    public List<KitchenIngredient> Pot { get; } = new();
+
+    /// <summary>The dish the pot would cook now.</summary>
+    public KitchenDish Expected => Meals.DishFor(Pot);
+
+    /// <summary>The pot on the fire while it is stirred; null otherwise.</summary>
+    public Kitchen? Stirring { get; private set; }
+
+    /// <summary>The dish just served and what it came to; null until one is.</summary>
+    public MealServed? Served { get; private set; }
+
+    /// <summary>Seconds since the dish was served, for its look.</summary>
+    public float ServedFor { get; private set; }
+
+    private bool pressPending;
+    private float stirClock;
+    private int cooked;
+
+    /// <summary>How many of an ingredient are in the pot.</summary>
+    public int InPot(KitchenIngredient ingredient) => Pot.Count(i => i == ingredient);
+
+    /// <summary>The start button: the pot's pantry opens with what can go in, or the note says there is nothing to cook with.</summary>
+    public void AskToCook()
+    {
+        if (Supplies is not { } s || Phase != CampPhase.Team) return;
+        OnHand = Meals.OnHand(s.Pouch, s.Bag);
+        if (OnHand.Count == 0)
+        {
+            Note = Text.Of("campPot.note.nothing");
+            AudioManager.PlaySound("error");
+            return;
+        }
+        Pot.Clear();
+        PantryCursor = 0;
+        PantryFirst = 0;
+        Phase = CampPhase.Pantry;
+        Note = Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
+        AudioManager.PlaySound("select");
+    }
+
+    /// <summary>The pantry's cursor up (−1) or down (+1), over the ingredients and COOK, wrapping round.</summary>
+    public void PantryMove(int delta)
+    {
+        if (Phase != CampPhase.Pantry || delta == 0) return;
+        int rows = OnHand.Count + 1;
+        int next = UiNav.Wrap(PantryCursor, Math.Sign(delta), rows);
+        if (next == PantryCursor) return;
+        PantryCursor = next;
+        PantryFirst = UiNav.Window(PantryFirst, PantryCursor, rows, PantryRows);
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>A in the pantry: one of the ingredient under the cursor into the pot, or, on COOK, the pot on the fire.</summary>
+    public void PantryConfirm()
+    {
+        if (Phase != CampPhase.Pantry || Supplies is not { } s) return;
+        if (OnCook)
+        {
+            if (Pot.Count == 0) { Refuse(Text.Of("campPot.note.empty")); return; }
+            if (!Meals.AllHeld(Pot, s.Pouch, s.Bag)) { Refuse(Text.Of("campPot.note.short")); return; }
+            // Each pot of the visit is worked out from the visit's seed, what is in it and how many came before
+            uint seed = SplitMix.Mix(s.Seed, (uint)cooked, SplitMix.Fnv(string.Join("|", Pot.Select(i => i.Id))));
+            Stirring = new Kitchen(seed, s.Assist);
+            stirClock = 0f;
+            pressPending = false;
+            Phase = CampPhase.Stirring;
+            Note = Text.Of("campPot.note.stir");
+            AudioManager.PlaySound("select");
+            return;
+        }
+        var ingredient = OnHand[PantryCursor];
+        if (Pot.Count >= Meals.Table.Most) { Refuse(Text.Of("campPot.note.full", ("n", Meals.Table.Most))); return; }
+        if (InPot(ingredient) >= Meals.Held(ingredient, s.Pouch, s.Bag)) { Refuse(Text.Of("campPot.note.noMore", ("name", ingredient.Name))); return; }
+        Pot.Add(ingredient);
+        Note = Text.Of("campPot.note.added", ("name", ingredient.Name), ("dish", Meals.NameOf(Expected)));
+        AudioManager.PlaySound("select");
+    }
+
+    /// <summary>B in the pantry: the last thing put in comes out again, or with the pot empty the team is back.</summary>
+    public void PantryCancel()
+    {
+        if (Phase != CampPhase.Pantry) return;
+        if (Pot.Count > 0)
+        {
+            Pot.RemoveAt(Pot.Count - 1);
+            Note = Pot.Count > 0 ? Text.Of("campPot.note.added", ("name", Pot[^1].Name), ("dish", Meals.NameOf(Expected))) : Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
+            AudioManager.PlaySound("cancel");
+            return;
+        }
+        Phase = CampPhase.Team;
+        Note = Text.Of("camp.note.welcome");
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>A on the fire: the stir counts on the pot's next frame.</summary>
+    public void Stir()
+    {
+        if (Phase == CampPhase.Stirring) pressPending = true;
+    }
+
+    /// <summary>One frame of the pot, a press or not (what <see cref="Advance"/> runs at thirty a second); the dish is served when the fourth round is scored.</summary>
+    public void StepPot(bool press)
+    {
+        if (Phase != CampPhase.Stirring || Stirring is not { } pot) return;
+        int before = pot.Scores.Count;
+        pot.Step(press);
+        if (pot.Scores.Count > before) AudioManager.PlaySound(pot.Scores[^1] == StirScore.Miss ? "error" : "select");
+        if (pot.Done) Serve();
+    }
+
+    /// <summary>B on the fire: the pot comes off with nothing cooked and nothing used, and the pantry is back.</summary>
+    public void TakeOff()
+    {
+        if (Phase != CampPhase.Stirring) return;
+        Stirring = null;
+        pressPending = false;
+        Phase = CampPhase.Pantry;
+        Note = Text.Of("campPot.note.takenOff");
+        AudioManager.PlaySound("cancel");
+    }
+
+    // The dish is done: what was in the pot is used, the team eats, and the dish is shown
+    private void Serve()
+    {
+        if (Supplies is not { } s || Stirring is not { } pot || Party == null) return;
+        var dish = Expected;
+        var type = Meals.TypeFor(Pot);
+        Meals.Use(Pot, s.Pouch, s.Bag);
+        Served = Meals.Serve(Party, dish, pot.Grade, s.Powers, Visit, type);
+        cooked++;
+        Stirring = null;
+        ServedFor = 0f;
+        Phase = CampPhase.Served;
+        for (int i = 0; i < Count; i++)
+            if (!Party.Members[i].IsEgg) fedAge[i] = 0f;
+        Note = Text.Of("campPot.note.served", ("dish", Meals.NameOf(dish)), ("grade", Meals.NameOf(pot.Grade)));
+        Pot.Clear();
+        AudioManager.PlaySound("heal");
+    }
+
+    /// <summary>A on the dish served: the team is back, and the pot may go on again.</summary>
+    public void ServedConfirm()
+    {
+        if (Phase != CampPhase.Served) return;
+        Phase = CampPhase.Team;
+        Note = Served?.Power is { } power
+            ? Text.Of("campPot.note.powerOn", ("power", PowerTable.NameOf(power.Kind)), ("level", power.Level))
+            : Text.Of("camp.note.welcome");
+        AudioManager.PlaySound("select");
+    }
+
+    private void Refuse(string why)
+    {
+        Note = why;
+        AudioManager.PlaySound("error");
+    }
+
     /// <summary>Leaves the camp.</summary>
     public void Cancel()
     {
@@ -177,6 +385,18 @@ public sealed class CampScreen
     public void Advance(float dt)
     {
         Age += dt;
+        if (Phase == CampPhase.Served) ServedFor += dt;
+        // The pot runs at thirty frames a second, a stir counting on the frame after it was pressed
+        if (Phase == CampPhase.Stirring && Stirring is { } pot)
+        {
+            stirClock += dt;
+            while (Phase == CampPhase.Stirring && pot.Frame < (int)(stirClock * Kitchen.FramesPerSecond))
+            {
+                bool press = pressPending;
+                pressPending = false;
+                StepPot(press);
+            }
+        }
         for (int i = 0; i < petAge.Length; i++)
         {
             if (petAge[i] >= 0f) petAge[i] += dt;
@@ -189,6 +409,27 @@ public sealed class CampScreen
     {
         if (!IsActive) return;
         Advance(dt);
+        switch (Phase)
+        {
+            case CampPhase.Pantry:
+                if (InputManager.IsActionPressed(GameAction.Up)) PantryMove(-1);
+                else if (InputManager.IsActionPressed(GameAction.Down)) PantryMove(1);
+                else if (InputManager.IsActionPressed(GameAction.Confirm)) PantryConfirm();
+                else if (InputManager.IsActionPressed(GameAction.Cancel)) PantryCancel();
+                return;
+            case CampPhase.Stirring:
+                if (InputManager.IsActionPressed(GameAction.Confirm)) Stir();
+                else if (InputManager.IsActionPressed(GameAction.Cancel)) TakeOff();
+                return;
+            case CampPhase.Served:
+                if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Cancel)) ServedConfirm();
+                return;
+        }
+        if (CanCook && InputManager.IsActionPressed(GameAction.Menu))
+        {
+            AskToCook();
+            return;
+        }
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right), dy = InputManager.Axis(GameAction.Up, GameAction.Down);
         if (dx != 0 || dy != 0) MoveCursor(dx, dy);
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Pet();

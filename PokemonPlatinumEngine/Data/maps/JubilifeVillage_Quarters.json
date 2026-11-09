@@ -1,0 +1,80 @@
+{
+  "name": "JubilifeVillage_Quarters",
+  "displayName": "Your Quarters",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "House",
+  "trees": "Pine",
+  "width": 9,
+  "height": 9,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "####D####"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#########",
+    "##.....##",
+    "##......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "####.####"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Wardrobe",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 8,
+      "targetMap": "JubilifeVillage",
+      "targetX": 60,
+      "targetY": 21,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 3,
+      "text": "A chest of plain wood. Your Survey Corps clothes will go in here, once you have some."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": []
+}

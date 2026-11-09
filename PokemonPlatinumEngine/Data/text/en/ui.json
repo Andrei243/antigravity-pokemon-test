@@ -886,6 +886,14 @@
     "alolaMegalopolis": "Take the Ultra Wormhole to Ultra Megalopolis and climb Megalo Tower.",
     "alolaRoyalDome": "The Battle Royal Dome on Akala's Royal Avenue is open to Alola's Champion.",
     "alolaFree": "That is as far as the road runs for now. Alola is yours to explore.",
+    "hisuiLaventon": "Speak to the man in the long coat on the beach.",
+    "hisuiGather": "Bring back the professor's three Pokémon, scattered along Prelude Beach.",
+    "hisuiPartner": "Go back to Professor Laventon on the beach.",
+    "hisuiVillage": "Follow the path north from the beach to Jubilife Village.",
+    "hisuiWallflower": "Wait for the professor at the Wallflower, on Canala Avenue down the west side of the village.",
+    "hisuiHall": "Go to Galaxy Hall on Floaro Main Street. Commander Kamado will see you.",
+    "hisuiQuarters": "Rest in your quarters, just east of Galaxy Hall.",
+    "hisuiTrial": "The Survey Corps' entry trial waits beyond the front gate, in the Obsidian Fieldlands. That is as far as Hisui goes for now.",
     "galarDownstairs": "Go downstairs. Mum has news about Hop.",
     "galarHop": "Hop is waiting in front of the house.",
     "galarStation": "Go up Route 1 to Wedgehurst Station and welcome Leon home.",
@@ -948,7 +956,7 @@
 
   "camp": {
     "title": "CAMP",
-    "hint": { "pet": "Pet", "feed": "Feed" },
+    "hint": { "pet": "Pet", "feed": "Feed", "cook": "Cook" },
     "friendship": "FRIENDSHIP",
     "petted": "PETTED",
     "fed": "FED",
@@ -1389,11 +1397,10 @@
     "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth",
     "Zephyr": "Zephyr", "Hive": "Hive", "Plain": "Plain", "Fog": "Fog", "Storm": "Storm", "Mineral": "Mineral", "Glacier": "Glacier", "Rising": "Rising",
     "Stone": "Stone", "Knuckle": "Knuckle", "Dynamo": "Dynamo", "Heat": "Heat", "Balance": "Balance", "Feather": "Feather", "Mind": "Mind", "Rain": "Rain",
-    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave"
-,
-    "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg"
-,
-    "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni"
+    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
+    "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg",
+    "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
+    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon"
   },
   "run": {
     "heading": "WAYS TO PLAY",
@@ -2178,7 +2185,7 @@
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
       "tree": {
-        "single": "Single Battle", "double": "Double Battle",
+        "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
         "hard": { "single": "Super Single Battle", "double": "Super Double Battle" }
       },
       "house": {
@@ -2695,8 +2702,29 @@
   },
   "crafting": {
     "title": "CRAFTING KIT",
-    "tab": { "materials": "MATERIALS", "machines": "TMS" },
-    "hint": { "make": "Make", "tab": "Tab" },
+    "tab": { "materials": "MATERIALS", "machines": "TMS", "make": "MAKE", "pantry": "PANTRY" },
+    "hint": { "make": "Make", "tab": "Tab", "howMany": "How many", "buy": "Buy" },
+    "make": {
+      "empty": "The kit has no recipes.",
+      "makes": "MAKES",
+      "each": "×{n} each time",
+      "howMany": "How many?",
+      "times": "×{n}",
+      "made": "Made {name} ×{n}!",
+      "why": {
+        "nothing": "That can't be made.",
+        "short": "Not enough {name}.",
+        "full": "Your bag can't hold any more {name}."
+      }
+    },
+    "pantry": {
+      "price": "{money} each",
+      "bought": "Bought {name} ×{n} for {money}.",
+      "why": {
+        "money": "Not enough money.",
+        "full": "The pouch can't hold any more {name}."
+      }
+    },
     "tm": {
       "empty": "No TM or TR has been in your bag yet. Any you carry, and any you use up, can be made here again.",
       "money": "MONEY",
@@ -2740,7 +2768,9 @@
         "nightFur": "Night Fur", "umbralClaw": "Umbral Claw", "charmGlitter": "Charm Glitter", "moonRibbon": "Moon Ribbon",
         "quarryStone": "Quarry Stone", "rawOre": "Raw Ore", "timber": "Timber", "amberResin": "Amber Resin",
         "plantFibre": "Plant Fibre", "wildHerbs": "Wild Herbs", "seaShell": "Sea Shell", "coarseSalt": "Coarse Salt",
-        "frostCrystal": "Frost Crystal", "riverClay": "River Clay"
+        "frostCrystal": "Frost Crystal", "riverClay": "River Clay",
+        "flour": "Flour", "rice": "Rice", "beans": "Beans", "potatoes": "Potatoes", "onions": "Onions",
+        "cheese": "Cheese", "butter": "Butter", "oats": "Oats", "tomatoes": "Tomatoes", "spices": "Spices"
       },
       "desc": {
         "softFluff": "Soft fluff shed by plain, friendly Pokémon.",
@@ -2788,9 +2818,72 @@
         "seaShell": "A shell washed up on the shore.",
         "coarseSalt": "Coarse salt crystals from the tideline.",
         "frostCrystal": "A crystal of frost found where the snow lies deep.",
-        "riverClay": "Fine clay that holds its shape when it dries."
+        "riverClay": "Fine clay that holds its shape when it dries.",
+        "flour": "A sack of fine flour for flatbread and batter.",
+        "rice": "A bag of short grain rice that cooks up sticky.",
+        "beans": "Dried beans that soften slowly in the pot.",
+        "potatoes": "A net of small potatoes, still a little earthy.",
+        "onions": "Sweet onions that soften well over the fire.",
+        "cheese": "A wedge of hard cheese that melts golden.",
+        "butter": "A pat of salted butter wrapped in paper.",
+        "oats": "Rolled oats that thicken anything they touch.",
+        "tomatoes": "Ripe tomatoes that cook down into a sauce.",
+        "spices": "A tin of warming spices with a kick to them."
       }
     }
+  },
+  "campPot": {
+    "title": "THE POT",
+    "pantry": "IN REACH",
+    "pot": "IN THE POT",
+    "cook": "COOK",
+    "makes": "MAKES",
+    "held": "×{n}",
+    "round": "ROUND {n} OF {of}",
+    "hint": { "add": "Add", "takeOut": "Take out", "stir": "Stir", "takeOff": "Take off" },
+    "score": { "miss": "MISS", "good": "GOOD", "perfect": "PERFECT" },
+    "grade": { "plain": "Plain", "good": "Good", "great": "Great", "superb": "Superb" },
+    "served": "{grade} {dish}",
+    "healed": "HP restored by {n}%",
+    "noPower": "No power, just a good meal.",
+    "power": "{power} Lv. {level} for {minutes} min",
+    "note": {
+      "nothing": "There's nothing to cook with. The workshop's pantry sells goods for the pot.",
+      "choose": "Put up to {n} things in the pot, then choose COOK.",
+      "added": "{name} goes in. It looks like {dish}.",
+      "empty": "The pot is empty.",
+      "short": "Some of that isn't in the pouch or the bag any more.",
+      "full": "The pot holds {n} things at most.",
+      "noMore": "There's no more {name} to put in.",
+      "stir": "Stir when the needle is in the heat!",
+      "takenOff": "The pot comes off the fire. Nothing was used.",
+      "served": "{grade} {dish}! Everyone digs in.",
+      "powerOn": "{power} Lv. {level} is on."
+    },
+    "dish": {
+      "name": {
+        "campStew": "Camp Stew", "beanHotpot": "Bean Hotpot", "berryPilaf": "Berry Pilaf", "honeyOatCakes": "Honey Oat Cakes",
+        "mushroomBake": "Mushroom Bake", "quietBroth": "Quiet Broth", "spicedFlatbread": "Spiced Flatbread", "potatoHash": "Potato Hash"
+      },
+      "desc": {
+        "campStew": "Whatever was to hand, simmered together. Filling, if nothing more.",
+        "beanHotpot": "A hearty hotpot whose smell carries far. Wild Pokémon come looking.",
+        "berryPilaf": "Sticky rice with a berry folded through. Pokémon of the berry's type come near.",
+        "honeyOatCakes": "Sweet cakes that keep Eggs warm and lively. They hatch sooner.",
+        "mushroomBake": "Rich and golden. Wild Pokémon beaten afterwards leave more behind.",
+        "quietBroth": "A gentle broth that calms the nerves. Fewer wild Pokémon bother you.",
+        "spicedFlatbread": "Hot flatbread with a smoky edge. Wild Pokémon follow the scent.",
+        "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind."
+      }
+    }
+  },
+  "timedPowers": {
+    "kind": {
+      "exp": "EXP Power", "effort": "Effort Power", "money": "Prize Power", "bargain": "Bargain Power", "catch": "Catching Power",
+      "encounter": "Encounter Power", "stealth": "Stealth Power", "hatch": "Hatching Power", "typeEncounter": "Type Power",
+      "materials": "Gathering Power"
+    },
+    "wornOff": "Your {list} wore off."
   },
   "ribbonPage": {
     "title": "RIBBONS",

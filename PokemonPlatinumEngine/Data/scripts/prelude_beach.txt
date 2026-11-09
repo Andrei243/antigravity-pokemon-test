@@ -1,0 +1,151 @@
+# Prelude Beach, Hisui (plan 23 · Z17). docs/scripts.md describes the language; the lines are our own, on Legends:
+# Arceus's beats as they are publicly described (docs/mechanics/rulings.md, "Hisui's first steps"): no script of the
+# original is read.
+#
+# VAR_HISUI_STORY, Hisui's first chapter's count: 0 a new game, or a Champion of Sinnoh just fallen out of the sky
+# beside the stone; 1 Professor Laventon met, his three Pokémon run off along the sand; 2 the three brought back
+# (VAR_HISUI_RUNAWAYS counts them); 3 a partner chosen of the three, off up to the village; 4 the professor gone to
+# report, the player sent to wait at the Wallflower (jubilife_village.txt); 5 the Survey Corps' captain and young member
+# met there (JubilifeVillage_Wallflower.txt); 6 Commander Kamado met in Galaxy Hall, the Pokédex had
+# (JubilifeVillage_GalaxyHall.txt); 7 a night slept in the quarters (JubilifeVillage_Quarters.txt): the entry trial
+# in the Obsidian Fieldlands waits, plan 23 · Z18's.
+#
+# The people: laventon on the sand (FLAG_HISUI_HIDE_LAVENTON_BEACH, set once he goes up to the village), and rowlet,
+# cyndaquil and oshawott (FLAG_HISUI_HIDE_BEACH_ROWLET and the others, hidden by common.HisuiNewGame until they run off,
+# and again once each is brought back).
+
+
+# Up the path to the village before the professor has been spoken to: he calls the player back
+script Meeting
+  speaker "Prof. Laventon"
+  say "Hold on there! Wait a moment!"
+  place laventon 50 68 left
+  face player right
+  call Meet
+  end
+
+# The professor on the sand
+script Laventon
+  speaker "Prof. Laventon"
+  if var VAR_HISUI_STORY >= 3 goto Village
+  if var VAR_HISUI_STORY == 2 goto Partner
+  if var VAR_HISUI_STORY == 1 goto Scattered
+  call Meet
+  end
+label Village
+  say "Jubilife Village is just up the path to the north. Off we go!"
+  end
+label Scattered
+  say "Rowlet, Cyndaquil and Oshawott are scattered all along the beach. Speak to them gently and they'll come back."
+  end
+label Partner
+  call PartnerChosen
+  end
+
+# Meeting the professor (Legends: Arceus's first beat: a stranger fallen from the sky, and a professor's three running off)
+script Meet
+  scene "The professor on the beach"
+  speaker "Prof. Laventon"
+  say "Good heavens, you're awake! You came tumbling out of a crack in the sky, I'd swear to it. Are you hurt?"
+  say "I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team, whose village stands just up the path."
+  say "{player}, is it? What a curious name. And what curious clothes! Wherever have you come from?"
+  say "...A time to come? Well! I won't pretend I understand a word of it, but I can see you're telling the truth."
+  emote laventon exclaim 0.8
+  say "Oh, no! My satchel! Come back, you three!"
+  clearflag FLAG_HISUI_HIDE_BEACH_ROWLET
+  clearflag FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  clearflag FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  show rowlet
+  show cyndaquil
+  show oshawott
+  cry "Rowlet"
+  say "I've only just won their trust, and now they've scattered across the beach! Would you help me bring them back?"
+  say "Speak to each one gently. They'll come to someone who means them no harm."
+  setvar VAR_HISUI_STORY 1
+  objective hisuiGather
+  endscene
+  end
+
+
+# The three on the sand, each brought back by a word
+script Rowlet
+  cry "Rowlet"
+  text "Rowlet blinked its big round eyes... and fluttered back to the professor's satchel."
+  setflag FLAG_HISUI_HIDE_BEACH_ROWLET
+  hide rowlet
+  call Gathered
+  end
+
+script Cyndaquil
+  cry "Cyndaquil"
+  text "The flames on Cyndaquil's back flickered low... and it trotted back to the professor's satchel."
+  setflag FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  hide cyndaquil
+  call Gathered
+  end
+
+script Oshawott
+  cry "Oshawott"
+  text "Oshawott stopped splashing about in the shallows... and waddled back to the professor's satchel."
+  setflag FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  hide oshawott
+  call Gathered
+  end
+
+script Gathered
+  addvar VAR_HISUI_RUNAWAYS 1
+  if var VAR_HISUI_RUNAWAYS < 3 return
+  setvar VAR_HISUI_STORY 2
+  objective hisuiPartner
+  text "That's all three of them! The professor will want to hear."
+  return
+
+
+# The three brought back: the professor offers one of them as a partner (ours: Legends: Arceus hands it over after the
+# entry trial; here it comes before, so a Champion's team and a new game's empty one alike have a Pokémon of Hisui's own)
+script PartnerChosen
+  scene "A partner of the three"
+  speaker "Prof. Laventon"
+  say "All three, safe and sound! You have a real way with Pokémon, {player}. They don't take to just anyone."
+  say "The wilds of Hisui are no place to walk without a companion. Would you choose one of these three to come along with you?"
+  starter
+  text "{player} chose {starter}!"
+  speaker "Prof. Laventon"
+  say "Splendid! I can see the two of you will get along. And take these too, in case something crosses your path."
+  give "Poké Ball" 5
+  say "Now then, come up to Jubilife Village, just north of here. The Galaxy Team will want to meet you!"
+  walk laventon up 2
+  hide laventon
+  setflag FLAG_HISUI_HIDE_LAVENTON_BEACH
+  clearflag FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  setvar VAR_HISUI_STORY 3
+  objective hisuiVillage
+  endscene
+  return
+
+
+# Up the path while the professor's three, or his word, still wait on the beach
+script NotYet
+  speaker "Prof. Laventon"
+  if var VAR_HISUI_STORY == 1 say "Wait! Please don't leave my three behind on the beach!"
+  if var VAR_HISUI_STORY == 2 say "Wait! Come and see me before you go up to the village."
+  walk player down 1
+  end
+
+
+# The stone the player woke beside: the way back to their own time, for a Champion of Sinnoh who came through the
+# ruins' painting (plan 23 · Z17, the side link's way back; ours: Legends: Arceus has none)
+script Stone
+  speaker none
+  if var CROSSED_IN != 1 goto Plain
+  ask "The air over the smooth stone shimmers, as it did when you woke here. Reach into it, and go back to your own time?"
+  if no end
+  text "{player} reached into the shimmering air..."
+  effect sparkles 48 76 wait
+  fade out 0.8
+  travel to "CelesticTownCave" 9 3 up
+  fade in
+  end
+label Plain
+  text "A smooth grey stone, warm to the touch. The air above it shimmers faintly."
+  end

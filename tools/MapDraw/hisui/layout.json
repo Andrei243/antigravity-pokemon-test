@@ -1,0 +1,24 @@
+{
+  // Hisui drawn by hand on the tile grid (plan 23 · Z17; the way Kalos and Alola are drawn, the user's decision of
+  // 2026-11-02, since Legends: Arceus has no decompilation and no dump is read): Jubilife Village and Prelude Beach as
+  // they are publicly described, in our own drawing, never a picture of the original's. The village is the overworld,
+  // matrix 0 (the map JubilifeVillage), three chunks by three: the village inside its palisade, Galaxy Hall on the
+  // north side of Floaro Main Street with the player's quarters east of it, Canala Avenue down the west side past the
+  // Wallflower, the general store and the craftworks to the pastures, the training grounds to the east, the front gate
+  // north to the Obsidian Fieldlands (plan 23 · Z18) and the south gate down a short path to Prelude Beach and the
+  // open sea. The open areas of Z18 to Z20 are matrices of their own.
+  // After changing a drawing run `dotnet run --project tools/MapDraw -- hisui` (`--check` says whether the world files
+  // are what the drawings give).
+  "region": "Hisui",
+  "width": 3,
+  "height": 3,
+  "pieces": [
+    { "file": "open_sea.txt", "x": 0, "z": 82 },
+    { "file": "jubilife_village.txt", "x": 16, "z": 8 },
+    { "file": "prelude_beach.txt", "x": 28, "z": 64 }
+  ],
+  "areas": [
+    { "key": "jubilife_village", "x": 0, "z": 0, "width": 96, "depth": 64 },
+    { "key": "prelude_beach", "x": 0, "z": 64, "width": 96, "depth": 32 }
+  ]
+}

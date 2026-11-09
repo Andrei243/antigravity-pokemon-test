@@ -510,9 +510,13 @@ public static class Breeding
     /// cycles (or the one it has left); the first found with none left hatches, and the Eggs after it wait for the
     /// next cycle. The Egg that hatches is returned; null when none does.
     /// </summary>
-    public static Pokemon? CountDown(Party party)
+    /// <remarks>
+    /// The hatching power of plan 36's table (plan 39 · CR6's dishes) takes <paramref name="hatchPower"/> more cycles off
+    /// each Egg at each cycle's end; with none in force the count is the original's.
+    /// </remarks>
+    public static Pokemon? CountDown(Party party, int hatchPower = 0)
     {
-        int less = CyclesPerCycle(party);
+        int less = CyclesPerCycle(party) + Math.Max(0, hatchPower);
         foreach (var egg in party.Members.Where(p => p.IsEgg))
         {
             int cycles = egg.EggCycles;

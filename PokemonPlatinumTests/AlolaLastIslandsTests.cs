@@ -200,7 +200,7 @@ public class AlolaLastIslandsTests
     [Fact]
     public void TheTreeMastersAreOursAtFiftyWithAZCrystalAndEveryMoveTheirOwn()
     {
-        foreach (string way in BattleTree.Ways)
+        foreach (string way in BattleTree.Ways.Where(BattleTree.HasHost))
         {
             var host = BattleTree.Hosts[way];
             Assert.True(CharacterStyles.Default.Has(host.Look), $"no look {host.Look}");
@@ -240,7 +240,7 @@ public class AlolaLastIslandsTests
         story.SetVar(BattleTree.TrophyVariable("single"), 1);
         var board = FrontierBoard.ForFacility(BattleTree.Place, records, story);
         Assert.Equal(FrontierPrint.Silver, board.Print);
-        Assert.Equal(3, board.Rows.Count);
+        Assert.Equal(4, board.Rows.Count);   // single, its Super room, double and the Multi room (no Super room there)
     }
 
     [Fact]

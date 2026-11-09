@@ -58,6 +58,16 @@
     { "id": "seaShell", "kind": "Field", "rare": false, "worth": 15 },
     { "id": "coarseSalt", "kind": "Field", "rare": false, "worth": 12 },
     { "id": "frostCrystal", "kind": "Field", "rare": false, "worth": 25 },
-    { "id": "riverClay", "kind": "Field", "rare": false, "worth": 12 }
+    { "id": "riverClay", "kind": "Field", "rare": false, "worth": 12 },
+    { "id": "flour", "kind": "Pantry", "rare": false, "worth": 60 },
+    { "id": "rice", "kind": "Pantry", "rare": false, "worth": 80 },
+    { "id": "beans", "kind": "Pantry", "rare": false, "worth": 60 },
+    { "id": "potatoes", "kind": "Pantry", "rare": false, "worth": 50 },
+    { "id": "onions", "kind": "Pantry", "rare": false, "worth": 40 },
+    { "id": "cheese", "kind": "Pantry", "rare": false, "worth": 120 },
+    { "id": "butter", "kind": "Pantry", "rare": false, "worth": 100 },
+    { "id": "oats", "kind": "Pantry", "rare": false, "worth": 50 },
+    { "id": "tomatoes", "kind": "Pantry", "rare": false, "worth": 60 },
+    { "id": "spices", "kind": "Pantry", "rare": false, "worth": 90 }
   ]
 }

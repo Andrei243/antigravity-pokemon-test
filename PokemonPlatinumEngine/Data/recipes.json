@@ -7,5 +7,71 @@
       { "id": "strong", "maxPower": 110, "common": 6, "rare": 1, "money": 6000 },
       { "id": "mighty", "maxPower": 999, "common": 8, "rare": 2, "money": 12000 }
     ]
+  },
+  "kit": [
+    { "id": "pokeBall", "makes": "Poké Ball", "takes": [
+      { "material": "softFluff", "count": 6 }, { "material": "rockFlake", "count": 4 }, { "material": "ironFilings", "count": 3 } ] },
+    { "id": "greatBall", "makes": "Great Ball", "takes": [
+      { "material": "brightAlloy", "count": 3 }, { "material": "ironFilings", "count": 10 }, { "material": "geodeHeart", "count": 2 }, { "material": "rockFlake", "count": 2 } ] },
+    { "id": "ultraBall", "makes": "Ultra Ball", "takes": [
+      { "material": "brightAlloy", "count": 6 }, { "material": "geodeHeart", "count": 4 }, { "material": "stormCoil", "count": 3 }, { "material": "ironFilings", "count": 10 } ] },
+    { "id": "featherBall", "makes": "Feather Ball", "value": 300, "takes": [
+      { "material": "looseFeather", "count": 8 }, { "material": "leafScrap", "count": 6 }, { "material": "softFluff", "count": 6 } ] },
+    { "id": "wingBall", "makes": "Wing Ball", "value": 600, "takes": [
+      { "material": "galePlume", "count": 4 }, { "material": "looseFeather", "count": 10 }, { "material": "leafScrap", "count": 6 }, { "material": "ironFilings", "count": 4 } ] },
+    { "id": "jetBall", "makes": "Jet Ball", "value": 1000, "takes": [
+      { "material": "galePlume", "count": 6 }, { "material": "stormCoil", "count": 3 }, { "material": "looseFeather", "count": 10 }, { "material": "brightAlloy", "count": 2 } ] },
+    { "id": "heavyBall", "makes": "Heavy Ball", "value": 300, "takes": [
+      { "material": "ironFilings", "count": 6 }, { "material": "rockFlake", "count": 8 }, { "material": "grittySand", "count": 5 } ] },
+    { "id": "leadenBall", "makes": "Leaden Ball", "value": 300, "takes": [
+      { "material": "ironFilings", "count": 8 }, { "material": "rockFlake", "count": 6 }, { "material": "grittySand", "count": 5 } ] },
+    { "id": "gigatonBall", "makes": "Gigaton Ball", "value": 600, "takes": [
+      { "material": "geodeHeart", "count": 4 }, { "material": "brightAlloy", "count": 2 }, { "material": "rockFlake", "count": 10 } ] },
+    { "id": "potion", "makes": "Potion", "takes": [
+      { "material": "leafScrap", "count": 6 }, { "material": "sunBloom", "count": 1 }, { "material": "clearDroplet", "count": 7 }, { "item": "Oran Berry", "count": 2 } ] },
+    { "id": "antidote", "makes": "Antidote", "takes": [
+      { "material": "leafScrap", "count": 3 }, { "material": "murkDrop", "count": 2 }, { "item": "Pecha Berry", "count": 1 } ] },
+    { "id": "paralyzeHeal", "makes": "Paralyze Heal", "takes": [
+      { "material": "sparkDust", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "clearDroplet", "count": 1 }, { "item": "Cheri Berry", "count": 1 } ] },
+    { "id": "awakening", "makes": "Awakening", "takes": [
+      { "material": "faintGlimmer", "count": 6 }, { "material": "leafScrap", "count": 6 }, { "item": "Chesto Berry", "count": 2 } ] },
+    { "id": "burnHeal", "makes": "Burn Heal", "takes": [
+      { "material": "clearDroplet", "count": 8 }, { "material": "leafScrap", "count": 6 }, { "item": "Rawst Berry", "count": 2 } ] },
+    { "id": "iceHeal", "makes": "Ice Heal", "takes": [
+      { "material": "cinderAsh", "count": 6 }, { "material": "leafScrap", "count": 6 }, { "item": "Aspear Berry", "count": 3 } ] },
+    { "id": "repel", "makes": "Repel", "takes": [
+      { "material": "murkDrop", "count": 10 }, { "material": "paleWisp", "count": 5 }, { "material": "nightFur", "count": 4 } ] },
+    { "id": "escapeRope", "makes": "Escape Rope", "takes": [
+      { "material": "silkStrand", "count": 20 }, { "material": "chitinShard", "count": 2 }, { "material": "leafScrap", "count": 8 } ] },
+    { "id": "honey", "makes": "Honey", "takes": [
+      { "material": "charmGlitter", "count": 2 }, { "material": "leafScrap", "count": 2 }, { "material": "silkStrand", "count": 2 } ] },
+    { "id": "growthMulch", "makes": "Growth Mulch", "takes": [
+      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "sparkDust", "count": 3 } ] },
+    { "id": "dampMulch", "makes": "Damp Mulch", "takes": [
+      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "clearDroplet", "count": 4 } ] },
+    { "id": "stableMulch", "makes": "Stable Mulch", "takes": [
+      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "rockFlake", "count": 4 } ] },
+    { "id": "gooeyMulch", "makes": "Gooey Mulch", "takes": [
+      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "murkDrop", "count": 3 } ] }
+  ],
+  "kitchen": {
+    "most": 4,
+    "plain": "campStew",
+    "grades": [
+      { "heal": 25, "level": 1, "seconds": 300 },
+      { "heal": 50, "level": 1, "seconds": 600 },
+      { "heal": 75, "level": 2, "seconds": 600 },
+      { "heal": 100, "level": 3, "seconds": 900 }
+    ],
+    "dishes": [
+      { "id": "campStew" },
+      { "id": "beanHotpot", "needs": [ { "material": "beans" }, { "material": "onions" }, { "material": "potatoes" } ], "power": "Encounter" },
+      { "id": "berryPilaf", "needs": [ { "material": "rice" }, { "berry": true } ], "power": "TypeEncounter" },
+      { "id": "honeyOatCakes", "needs": [ { "material": "oats" }, { "items": [ "Honey" ] } ], "power": "Hatch" },
+      { "id": "mushroomBake", "needs": [ { "material": "cheese" }, { "material": "butter" }, { "items": [ "Tiny Mushroom", "Big Mushroom" ] } ], "power": "Materials" },
+      { "id": "quietBroth", "needs": [ { "material": "tomatoes" }, { "material": "onions" }, { "material": "spices" } ], "power": "Stealth" },
+      { "id": "spicedFlatbread", "needs": [ { "material": "flour" }, { "material": "spices" } ], "power": "Encounter" },
+      { "id": "potatoHash", "needs": [ { "material": "potatoes" }, { "material": "butter" } ], "power": "Materials" }
+    ]
   }
 }

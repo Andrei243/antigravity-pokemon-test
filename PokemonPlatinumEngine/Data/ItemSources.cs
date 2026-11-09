@@ -28,7 +28,12 @@ public enum ItemSourceKind
     /// </summary>
     Held,
     /// <summary>A person's in-game trade sends it with its Pokémon (<c>trades.json</c>'s <c>item</c>, by the script's <c>trade</c>).</summary>
-    Traded
+    Traded,
+    /// <summary>
+    /// The crafting kit makes it (plan 39 · CR3, <c>recipes.json</c>'s <c>kit</c>), where a script gives the kit
+    /// (<c>craft give kit</c>): a sure way once the kit is held, the kit going with the team into every region.
+    /// </summary>
+    Made
 }
 
 /// <summary>One way an item is had: its kind and where (an area, a room, a script, a counter, a list).</summary>
@@ -212,6 +217,10 @@ public sealed class ItemSources
                             Add(item, ItemSourceKind.Prize, $"{where}: coins");
                         break;
                     // A designer hands over whichever charm a Pokédex filled has earned (plan 40 · GE5): every charm of the table
+                    // The crafting kit given (plan 39 · CR1) makes every item of its recipes (CR3)
+                    case Op.Craft when i.Name == "give" && i.Other == "kit":
+                        foreach (var recipe in Crafting.Recipes) Add(recipe.Makes, ItemSourceKind.Made, $"{where}: the crafting kit ({recipe.Id})");
+                        break;
                     case Op.Charm when i.Name == "give":
                         foreach (string charm in Charms.Table.Regional.Append(Charms.Table.National)) Add(charm, ItemSourceKind.Given, where);
                         break;

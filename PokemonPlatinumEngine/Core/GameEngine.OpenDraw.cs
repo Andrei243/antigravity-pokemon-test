@@ -130,6 +130,9 @@ public partial class GameEngine
     {
         if (flow.Open is { } open)
         {
+            // The layers the console, a scenario or the harness turned on are the grid's and the open world's alike (plan 32 · OW10)
+            OpenRendererNow.Layers = world.Layers;
+            OpenRendererNow.LayerField = open;
             OpenRendererNow.Render(OpenSceneNow(open));
             return;
         }

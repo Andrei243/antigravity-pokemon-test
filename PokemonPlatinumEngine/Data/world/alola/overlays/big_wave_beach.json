@@ -1,7 +1,8 @@
 {
   // Big Wave Beach, Melemele Island (plan 23, the rest of the islands): drawn by hand, our words. A wide beach on the open
   // sea west of Route 1's woods, where Alola's surfers ride the swell; a Team Skull grunt has come to spoil it. Ultra Sun
-  // and Ultra Moon's Mantine Surf is not built: the sea here is surfed as any other
+  // and Ultra Moon's Mantine Surf is ours here: the surfer registers Mantine in the Ride Pager (FLAG_ALOLA_RIDE_MANTINE) and
+  // sets a course of four gates of buoys on the swell, ridden in order on its back (VAR_ALOLA_MANTINE 1 to 4)
   "area": "big_wave_beach",
   "bgmTrack": "alola/beach",
   "trees": "Round",
@@ -22,5 +23,13 @@
   },
   "signs": {
     "BeachSign": "Big Wave Beach\nThe biggest swell on Melemele. Surf with care!"
-  }
+  },
+  // The Mantine Surf course: four gates of three buoys across the swell south of the beach, each a trigger that waits for
+  // the run's number (the surfer starts it at 1) and ends the run if the rider is not on a Mantine
+  "triggers": [
+    { "script": "MantineGate1", "x": 160, "z": 170, "width": 3, "depth": 1, "variable": "VAR_ALOLA_MANTINE", "value": 1 },
+    { "script": "MantineGate2", "x": 172, "z": 173, "width": 3, "depth": 1, "variable": "VAR_ALOLA_MANTINE", "value": 2 },
+    { "script": "MantineGate3", "x": 162, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_MANTINE", "value": 3 },
+    { "script": "MantineGate4", "x": 174, "z": 178, "width": 3, "depth": 1, "variable": "VAR_ALOLA_MANTINE", "value": 4 }
+  ]
 }

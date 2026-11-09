@@ -22,6 +22,10 @@ public sealed partial class ScriptRunner
     private bool facilityHard;
     private IReadOnlyList<int> facilitySlots = Array.Empty<int>();
     private StreakWin facilityWin;
+    private FrontierOpponent? facilityPartner;
+
+    /// <summary>The partner of the Multi room the script has stood in the room (<c>facility tree partner</c>), dressed by the engine.</summary>
+    public FrontierOpponent? FacilityPartner => facilityPartner;
 
     /// <summary>
     /// At a desk: <c>way single|double|triple|rotation</c> and <c>hard normal|hard</c> choose the room;
@@ -33,7 +37,8 @@ public sealed partial class ScriptRunner
     /// streak); <c>streak</c>, <c>best</c> and <c>latest</c> are the chosen room's (<c>{number}</c>); <c>board</c> opens the
     /// place's records' board. In the battle room: <c>active</c> is 1 while one of the place's challenges is under way;
     /// <c>next</c> is the battle to come (<c>{number}</c>); <c>host</c> is 1 when it is the host's; <c>opponent</c> stands
-    /// its trainer in the room (<c>{foe}</c>); <c>battle</c> is fought (RESULT 1 won, 0 lost); <c>won</c> counts the win;
+    /// its trainer in the room (<c>{foe}</c>), or in the Multi room its two (<c>opponent</c> and <c>opponent_2</c>, RESULT 2);
+    /// <c>partner</c> stands the Multi room's partner beside the player (<c>{partner}</c>, RESULT 1, 0 in a room with none); <c>battle</c> is fought (RESULT 1 won, 0 lost); <c>won</c> counts the win;
     /// <c>points</c> hands over its Battle Points (<c>{number}</c>); <c>opened</c> is 1 when it opened the hard room;
     /// <c>trophy</c> is 1 when it won the hard room's trophy, which it keeps; <c>pause</c> puts the challenge down to be
     /// saved; <c>finish won|lost</c> ends it and its streak; <c>end</c> lets it go.
@@ -132,19 +137,26 @@ public sealed partial class ScriptRunner
                 break;
             case "opponent":
             {
-                var opponent = Challenge().Opponent(records);
-                towerFoes = new List<FrontierOpponent> { opponent };
-                lastFoe = $"{opponent.ShownClass} {opponent.ShownName}";
+                var opponents = Challenge().Opponents(records);
+                towerFoes = opponents.ToList();
+                lastFoe = string.Join(" and ", opponents.Select(o => $"{o.ShownClass} {o.ShownName}"));
                 host.FrontierAct("opponents", 0, Subject);
-                Result = 1;
+                Result = opponents.Count;
+                break;
+            }
+            case "partner":
+            {
+                facilityPartner = Challenge().Partner;
+                if (facilityPartner != null) host.FrontierAct("facilitypartner", 0, Subject);
+                Result = facilityPartner != null ? 1 : 0;
                 break;
             }
             case "battle":
             {
                 var challenge = Challenge();
-                var foe = challenge.OpponentAsTrainer(records);
+                var foes = challenge.OpponentsAsTrainers(records);
                 towerFoes = new List<FrontierOpponent>();
-                host.FrontierBattle(challenge.TeamForBattle(host.Party), new List<Trainer> { foe }, null, challenge.Doubles, challenge.Conditions);
+                host.FrontierBattle(challenge.TeamForBattle(host.Party), foes, challenge.PartnerAsTrainer(), challenge.Doubles, challenge.Conditions);
                 afterBusy = () => Result = host.Outcome == BattleOutcome.Won ? 1 : 0;
                 break;
             }
@@ -190,6 +202,7 @@ public sealed partial class ScriptRunner
             case "end":
                 host.Facility = null;
                 facilitySlots = Array.Empty<int>();
+                facilityPartner = null;
                 towerFoes = new List<FrontierOpponent>();
                 facilityWin = default;
                 break;

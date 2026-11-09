@@ -197,7 +197,8 @@ public sealed class DayCare
     /// (<paramref name="ovalCharm"/>, plan 40 · GE5) the chance is the later games' (<see cref="Charms.OvalChance"/>) and
     /// the roll the same.
     /// </summary>
-    public Pokemon? Step(Party party, Random rng, DateTime today, Ruleset rules, bool ovalCharm = false)
+    /// <param name="hatchPower">The hatching power in force (plan 39 · CR6): more cycles off each Egg at a cycle's end.</param>
+    public Pokemon? Step(Party party, Random rng, DateTime today, Ruleset rules, bool ovalCharm = false, int hatchPower = 0)
     {
         int count = 0;
         for (int i = 0; i < Places; i++)
@@ -217,7 +218,7 @@ public sealed class DayCare
         StepCounter = (StepCounter + 1) & 0xFF;
         if (StepCounter != Breeding.CycleLength(today)) return null;
         StepCounter = 0;
-        return Breeding.CountDown(party);
+        return Breeding.CountDown(party, hatchPower);
     }
 
     // ------------------------------------------------------------------ saving

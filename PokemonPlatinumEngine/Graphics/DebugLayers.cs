@@ -35,7 +35,11 @@ internal enum DebugLayer
     Encounters = 128,
     /// <summary>The chunks' borders of a streamed map, with what each chunk's scene has come to.</summary>
     Chunks = 256,
-    All = Solid | Behaviour | Height | Triggers | Warps | Sight | Areas | Encounters | Chunks
+    /// <summary>An open map's navigation mesh (plan 32 · OW10): its polygons, steps, drops and swum water. Nothing on the grid.</summary>
+    Nav = 512,
+    /// <summary>An open map's markers, with their names and the way each faces (plan 32 · OW10). Nothing on the grid.</summary>
+    Markers = 1024,
+    All = Solid | Behaviour | Height | Triggers | Warps | Sight | Areas | Encounters | Chunks | Nav | Markers
 }
 
 /// <summary>What a chunk's scene has come to this frame, for the <see cref="DebugLayer.Chunks"/> layer.</summary>
@@ -103,7 +107,8 @@ internal static class DebugLayers
     {
         ("solid", DebugLayer.Solid), ("behaviour", DebugLayer.Behaviour), ("height", DebugLayer.Height),
         ("triggers", DebugLayer.Triggers), ("warps", DebugLayer.Warps), ("sight", DebugLayer.Sight),
-        ("areas", DebugLayer.Areas), ("encounters", DebugLayer.Encounters), ("chunks", DebugLayer.Chunks)
+        ("areas", DebugLayer.Areas), ("encounters", DebugLayer.Encounters), ("chunks", DebugLayer.Chunks),
+        ("nav", DebugLayer.Nav), ("markers", DebugLayer.Markers)
     };
 
     /// <summary>

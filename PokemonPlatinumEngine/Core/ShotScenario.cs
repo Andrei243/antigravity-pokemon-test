@@ -60,6 +60,10 @@ public sealed class ShotScenario
         new("newgame", "newgame [seed] [room]", 0, 2, a => a.Select(w => w == "room" ? null : DevCommands.Int(w, "the seed")).FirstOrDefault(p => p != null)),
         new("load", "load <save> [seed]", 1, 2, a => a.Count > 1 ? DevCommands.Int(a[1], "the seed") : null),
         new("at", "at <map> <x> <y> <up|down|left|right>", 4, 4, a => DevCommands.Int(a[1], "x") ?? DevCommands.Int(a[2], "y") ?? DevCommands.Facing(a[3])),
+        // A place in an open map (plan 32 · OW10): a marker of it, or x, y and z in metres with a yaw in degrees (nought south, 90 east)
+        new("at3", "at3 <open map> <marker> | at3 <open map> <x> <y> <z> [yaw]", 2, 5, CheckAt3),
+        // The open map's orbit camera (plan 32 · OW10): posed by its yaw, pitch and arm, sent to look at a marker, or brought home
+        new("look", "look <yaw> [pitch] [arm] | look <marker> [seconds] | look home", 1, 3, CheckLook),
         new("step", "step <up|down|left|right> <n> [running]", 2, 3,
             a => DevCommands.Facing(a[0]) ?? DevCommands.Int(a[1], "the steps", 1, 500) ?? (a.Count > 2 && a[2] != "running" ? $"'{a[2]}' is not 'running'" : null)),
         new("press", "press <action>", 1, 1, a => ActionOf(a[0]) != null ? null : $"'{a[0]}' is no action ({string.Join(", ", Enum.GetNames<GameAction>())})"),
@@ -84,6 +88,34 @@ public sealed class ShotScenario
     };
 
     public static Verb? FindVerb(string name) => Verbs.FirstOrDefault(v => v.Name == name);
+
+    /// <summary>A number in metres or degrees as a scenario writes it (a point, never a comma), or null.</summary>
+    public static double? NumberOf(string word) =>
+        double.TryParse(word, NumberStyles.Float, CultureInfo.InvariantCulture, out double n) && double.IsFinite(n) ? n : null;
+
+    // at3's words: a map and a marker (a word that is no number), or a map, x, y, z in metres and a yaw in degrees
+    private static string? CheckAt3(IReadOnlyList<string> a)
+    {
+        if (a.Count == 2) return NumberOf(a[1]) == null ? null : $"'{a[1]}' is a number: a place is a marker, or x, y and z";
+        if (a.Count < 4) return "a place is a marker, or x, y and z in metres (and a yaw in degrees)";
+        string[] names = { "x", "y", "z", "the yaw" };
+        for (int i = 1; i < a.Count; i++)
+            if (NumberOf(a[i]) is not { } n || Math.Abs(n) > 1_000_000) return $"{names[i - 1]} must be a number of {(i == 4 ? "degrees" : "metres")}, not '{a[i]}'";
+        return null;
+    }
+
+    // look's words: home; a yaw with a pitch and an arm in degrees and metres; or a marker with the seconds the look takes
+    private static string? CheckLook(IReadOnlyList<string> a)
+    {
+        if (a[0] == "home") return a.Count == 1 ? null : "'look home' takes nothing after it";
+        if (NumberOf(a[0]) == null)
+            return a.Count > 2 ? "a look at a marker is its name and the seconds it takes"
+                : a.Count == 2 && SecondsOf(a[1]) == null ? $"the look's seconds must be a number from 0 to 600, not '{a[1]}'" : null;
+        if (a.Count > 1 && NumberOf(a[1]) == null) return $"the pitch must be a number of degrees, not '{a[1]}'";
+        if (a.Count > 1 && NumberOf(a[1])!.Value is < -60 or > 89) return "the pitch is from -60 to 89 degrees";
+        if (a.Count > 2 && (NumberOf(a[2]) is not { } arm || arm <= 0 || arm > 120)) return $"the arm must be a number of metres over nought and up to 120, not '{a[2]}'";
+        return null;
+    }
 
     /// <summary>An action by its name, any case (<c>confirm</c>, <c>Menu</c>).</summary>
     public static GameAction? ActionOf(string word) =>

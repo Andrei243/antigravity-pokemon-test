@@ -130,6 +130,15 @@ public sealed class VoiceLibrary
         }
         yield return Path.Combine(AppContext.BaseDirectory, "voice", language);
         yield return Path.Combine(Directory.GetCurrentDirectory(), "voice", language);
+        // Then up from both, so a game started from Visual Studio's project folder or from bin/ still finds the pack kept at
+        // the repository's root (voice/<language>, ignored by git)
+        foreach (string start in new[] { Directory.GetCurrentDirectory(), AppContext.BaseDirectory })
+            for (var dir = new DirectoryInfo(start).Parent; dir != null; dir = dir.Parent)
+                if (File.Exists(Path.Combine(dir.FullName, "voice", language, "pack.json")))
+                {
+                    yield return Path.Combine(dir.FullName, "voice", language);
+                    break;
+                }
     }
 
     /// <summary>

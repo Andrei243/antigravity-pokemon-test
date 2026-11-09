@@ -13,8 +13,11 @@ partial class Harness
         var manners = CameraManners.All.Where(m => m != CameraManners.Classic
             && (wanted.Length == 0 || wanted.Contains(m.Name, StringComparer.OrdinalIgnoreCase))).ToList();
         if (party.Count < 2) party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 8));
+        // CAMERA_PART=cycles,splits,moves,ends shoots some of the parts below
+        var parts = (Environment.GetEnvironmentVariable("CAMERA_PART") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        bool Part(string p) => parts.Length == 0 || parts.Contains(p, StringComparer.OrdinalIgnoreCase);
 
-        foreach (var manner in manners)
+        foreach (var manner in manners.Where(_ => Part("cycles")))
         {
             engine.FixedCameraManner = manner;
             float cycle = manner.Cycle.Count > 0 ? manner.Cycle.Count * (manner.CycleHold + manner.CycleEase) : manner.DriftPeriod;
@@ -48,7 +51,7 @@ partial class Harness
         // The split (plan 45 · BC3): for each manner that splits, a Leader's single battle's leads and the last
         // Pokémon, and a double's leads, a picture every tenth of a second from the moment the split begins until it
         // has gone (bc_<manner>_split_<moment>_<nn>); the lines are left waiting, as a player reading them would
-        foreach (var manner in manners.Where(m => m.Splits != CameraSplits.None))
+        foreach (var manner in manners.Where(m => m.Splits != CameraSplits.None && Part("splits")))
         {
             engine.FixedCameraManner = manner;
             Console.WriteLine($"manner {manner.Name}: splits at {manner.Splits}");
@@ -90,7 +93,7 @@ partial class Harness
         // Push in, pull out, reactions (plan 45 · BC4): for each manner that pushes or reacts, a wild battle with a
         // Chimchar of its own: a plain move (Fury Swipes), a super-effective one (Ember on a Turtwig) and the faint it brings,
         // a picture every tenth of a second (bc_<manner>_move_<what>_<nn>), the line left waiting through the move
-        foreach (var manner in manners.Where(m => m.Push > 0f || m.React))
+        foreach (var manner in manners.Where(m => (m.Push > 0f || m.React) && Part("moves")))
         {
             engine.FixedCameraManner = manner;
             Console.WriteLine($"manner {manner.Name}: push {manner.Push}, reactions {(manner.React ? "on" : "off")}");
@@ -120,13 +123,59 @@ partial class Harness
                 MoveReel(b, $"bc_{manner.Name}_move_{what}", what == "faint" ? 50 : 22, confirmEvery: what == "faint" ? 10 : 0);
             }
         }
+        // Opening and closing (plan 45 · BC5): for each manner that opens or closes, a wild battle and a Leader's (whose
+        // battle Galar's crane films), each from its first frame a picture every tenth of a second, the first line left
+        // waiting 1.5 s (bc_<manner>_open_<battle>_<nn>), then won with the foes left one HP and filmed from the win's
+        // line a picture every fifth of a second, a line read every two seconds, to the battle's end (bc_<manner>_close_<battle>_<nn>)
+        foreach (var manner in manners.Where(m => (m.Open || m.Close) && Part("ends")))
+        {
+            engine.FixedCameraManner = manner;
+            Console.WriteLine($"manner {manner.Name}: opens {manner.Open}, closes {manner.Close}, crane {manner.Crane}");
+            foreach (string battle in new[] { "wild", "leader" })
+            {
+                party.HealAll();
+                Trainer leader = null;
+                if (battle == "leader")
+                {
+                    leader = new Trainer { Name = "Roark", TrainerClass = "Leader" };
+                    leader.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 6));
+                    leader.Party.Add(new Pokemon(PokemonDatabase.Get("Onix")!, 7));
+                }
+                var b = StartBattle(battle == "wild" ? "Starly" : null, 8, leader);
+                MoveReel(b, $"bc_{manner.Name}_open_{battle}", 36, confirmEvery: 15);
+                // Won: every foe left one HP and struck
+                for (int guard = 0; guard < 8 && b.Anim.Closing == null && !b.IsBattleOver; guard++)
+                {
+                    for (int read = 0; read < 16 && b.HUD.MenuState != BattleMenuState.Main && !b.IsBattleOver && b.Anim.Closing == null; read++) { Confirm(b); Skip(0.8); }
+                    if (b.HUD.MenuState != BattleMenuState.Main) continue;
+                    b.EnemyPokemon.CurrentHP = 1;
+                    party.Members[0].CurrentHP = party.Members[0].MaxHP;
+                    b.SelectMove(0);
+                    for (int wait = 0; wait < 60 && b.Anim.Closing == null && !b.IsBattleOver; wait++)
+                    {
+                        Skip(0.1);
+                        if (wait % 12 == 11 && b.HUD.MenuState == BattleMenuState.Message) Confirm(b);
+                    }
+                }
+                if (b.Anim.Closing == null)
+                {
+                    Console.WriteLine($"  !! {manner.Name} {battle}: the battle never closed");
+                    continue;
+                }
+                Console.WriteLine($"  closing {b.Anim.Closing}, a boss's battle {b.Anim.BossBattle}");
+                MoveReel(b, $"bc_{manner.Name}_close_{battle}", 40, confirmEvery: 10, every: 0.2);
+            }
+        }
+        // The formats and the rest (plan 45 · BC7), only asked for: CAMERA_PART=formats, or triple, rotation, royal, sos, photo, halls, link, replay
+        if (parts.Any(p => p is "formats" or "triple" or "rotation" or "royal" or "sos" or "photo" or "halls" or "link" or "replay"))
+            CameraFormats(manners, p => parts.Contains("formats", StringComparer.OrdinalIgnoreCase) || parts.Contains(p, StringComparer.OrdinalIgnoreCase));
         engine.FixedCameraManner = null;
         game.State = GameState.Overworld;
     }
 
     // A picture every tenth of a second, at half size, n of them, with the director's shot printed for each; the line
     // read on every so many pictures (none for 0)
-    void MoveReel(BattleEngine b, string prefix, int n, int confirmEvery)
+    void MoveReel(BattleEngine b, string prefix, int n, int confirmEvery, double every = 0.1)
     {
         for (int i = 0; i < n && !b.IsBattleOver; i++)
         {
@@ -138,7 +187,7 @@ partial class Harness
                 Save(img, name);
             }
             Console.WriteLine($"  {name}: {game.BattleRenderer.Shot}, the line \"{b.CurrentMessage}\"");
-            Skip(0.1);
+            Skip(every);
             if (confirmEvery > 0 && i % confirmEvery == confirmEvery - 1 && b.HUD.MenuState == BattleMenuState.Message) Confirm(b);
         }
     }

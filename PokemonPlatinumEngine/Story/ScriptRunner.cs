@@ -376,7 +376,7 @@ public sealed partial class ScriptRunner
         Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
         Op.Tutor or Op.Amity => true,
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
-        Op.Craft => i.Name is "open" or "tm",
+        Op.Craft => i.Name is "open" or "tm" or "pantry",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name == "peak" && i.Other != "check",
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
@@ -2441,6 +2441,8 @@ public sealed partial class ScriptRunner
         "CYCLING" => host.Cycling ? 1 : 0,
         // Whether the player rides a Ride Pager's Pokémon on land (plan 23, wave 91)
         "RIDING" => host.Riding != null ? 1 : 0,
+        // Whether the ride the player is on rams the rocks of the sea (Sharpedo's Jet; plan 23, Mantine Surf)
+        "RAMMING" => Overworld.RidePager.Rams(host.Riding) ? 1 : 0,
         // Which bicycle (plan 21 · H12, part k; Emerald's GetPlayerAvatarBike: 1 the Acro Bike, 2 the Mach Bike)
         "BIKE" => host.Bike,
         // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)
@@ -2675,7 +2677,7 @@ public sealed partial class ScriptRunner
             "banned" => lastBanned.Length > 0 ? lastBanned : "certain rare Pokémon",
             "ally" when argument is "0" or "1" => allies[argument[0] - '0'],
             "allymove" when argument is "0" or "1" => allyMoves[argument[0] - '0'],
-            "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id] : "",
+            "partner" => host.Tower?.Partner is { } beside ? Models.Frontier.BattleTowerChallenge.PartnerNames[beside.Id] : host.Facility?.PartnerName ?? "",
             // The Battle Factory (plan 06 · R18b): what the staff's hint names, and the three rentals in hand
             "hint" when argument is "0" or "1" or "2" => hints[argument[0] - '0'],
             "rental" when argument is "0" or "1" or "2" => host.Factory?.Team is { } rented && argument[0] - '0' < rented.Count ? rented[argument[0] - '0'].Species : "",

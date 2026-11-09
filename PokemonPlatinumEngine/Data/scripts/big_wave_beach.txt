@@ -1,6 +1,9 @@
 # Big Wave Beach, Melemele Island (plan 23, the rest of the islands). The lines are our own. Once the Team Skull grunt
 # on the sand has been beaten, the surfer hands over a Fresh Water for the trouble (FLAG_ALOLA_BIG_WAVE_THANKS), as
-# Ultra Sun and Ultra Moon's attendant does.
+# Ultra Sun and Ultra Moon's attendant does. Then, to a trainer with the Ride Pager, the surfer's Mantine joins it
+# (FLAG_ALOLA_RIDE_MANTINE; plan 23, Mantine Surf) and the beach's course of four gates is set: the surfer starts a run
+# (VAR_ALOLA_MANTINE 1), each gate (a trigger across three tiles of the swell) waits for its number and moves it on, and
+# the fourth ends the run (VAR_ALOLA_MANTINE_RUNS counts them: a Big Pearl for the first, a Star Piece for the third).
 
 
 script Surfer
@@ -16,7 +19,29 @@ label Grunt
   say "A Team Skull grunt has been chasing everybody off the sand. I'd deal with him, but my Pokémon are all for riding waves."
   end
 label Done
+  if item "Ride Pager" goto Pager
   say "The swell's perfect today. Can you hear it? That's Melemele breathing."
+  end
+label Pager
+  if flag FLAG_ALOLA_RIDE_MANTINE goto Course
+  say "Is that a Ride Pager? Then you can have my Mantine! It was a Mantyke when I came here, and the swell grew it."
+  setflag FLAG_ALOLA_RIDE_MANTINE
+  text "Mantine was registered in the Ride Pager!"
+  say "Call it out on the water. It skims the swell so lightly that nothing down there will notice you."
+  say "Talk to me when you want to ride the course. Four gates of buoys, one after the other, and not one missed."
+  end
+label Course
+  if var VAR_ALOLA_MANTINE != 0 goto Running
+  ask "Shall I send you off on the course? Four gates of buoys on the swell, on a Mantine's back."
+  if no goto Another
+  setvar VAR_ALOLA_MANTINE 1
+  say "Out onto the water, then! The first gate is the buoys just off the sand. Miss one and the run is over."
+  end
+label Another
+  say "The swell will keep. Come back when you are ready to ride."
+  end
+label Running
+  say "You are on a run! Ride your Mantine through the gates in order, from the one just off the sand."
   end
 
 
@@ -24,4 +49,69 @@ script Sightseer
   face self player
   speaker "Sightseer"
   say "I flew all the way from Kalos for these waves, and now I'm too scared to go in. The beach is lovely, though!"
+  end
+
+
+# Gate one: the buoys just off the sand. Only a rider on Mantine's back goes through (RIDING, and not RAMMING: Sharpedo
+# ploughs through the buoys); anyone else ends the run (VAR_ALOLA_MANTINE back to nought)
+script MantineGate1
+  speaker none
+  if var RIDING == 0 goto Out
+  if var RAMMING == 1 goto Out
+  setvar VAR_ALOLA_MANTINE 2
+  text "Gate one! The buoys bobbed past on either side. On to the second!"
+  end
+label Out
+  setvar VAR_ALOLA_MANTINE 0
+  text "The run is over. Only a Mantine skims through the buoys without scattering them."
+  end
+
+
+script MantineGate2
+  speaker none
+  if var RIDING == 0 goto Out
+  if var RAMMING == 1 goto Out
+  setvar VAR_ALOLA_MANTINE 3
+  text "Gate two! Mantine leaped the swell with its fins spread wide."
+  end
+label Out
+  setvar VAR_ALOLA_MANTINE 0
+  text "The run is over. Only a Mantine skims through the buoys without scattering them."
+  end
+
+
+script MantineGate3
+  speaker none
+  if var RIDING == 0 goto Out
+  if var RAMMING == 1 goto Out
+  setvar VAR_ALOLA_MANTINE 4
+  text "Gate three! One more to go, back toward the open sea."
+  end
+label Out
+  setvar VAR_ALOLA_MANTINE 0
+  text "The run is over. Only a Mantine skims through the buoys without scattering them."
+  end
+
+
+script MantineGate4
+  speaker none
+  if var RIDING == 0 goto Out
+  if var RAMMING == 1 goto Out
+  setvar VAR_ALOLA_MANTINE 0
+  addvar VAR_ALOLA_MANTINE_RUNS 1
+  text "Gate four! The course is done, and not one buoy missed. Ride back and tell the surfer."
+  if var VAR_ALOLA_MANTINE_RUNS == 1 goto First
+  if var VAR_ALOLA_MANTINE_RUNS == 3 goto Third
+  end
+label First
+  text "The surfer's cheer carried over the water all the way to you. A Big Pearl was tied to the last buoy!"
+  give "Big Pearl"
+  end
+label Third
+  text "Three runs of the course! A Star Piece was tied to the last buoy!"
+  give "Star Piece"
+  end
+label Out
+  setvar VAR_ALOLA_MANTINE 0
+  text "The run is over. Only a Mantine skims through the buoys without scattering them."
   end
