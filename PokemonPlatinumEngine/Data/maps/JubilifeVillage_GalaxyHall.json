@@ -37,20 +37,8 @@
     "########.########"
   ],
   "behaviours": [
-    {
-      "x": 7,
-      "y": 5,
-      "width": 3,
-      "depth": 1,
-      "behaviour": "Counter"
-    },
-    {
-      "x": 13,
-      "y": 5,
-      "width": 3,
-      "depth": 1,
-      "behaviour": "Counter"
-    }
+    { "x": 7, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" },
+    { "x": 13, "y": 5, "width": 3, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
@@ -68,7 +56,7 @@
       "depth": 1
     },
     {
-      "type": "WallEmblem",
+      "type": "Painting",
       "x": 8,
       "y": 2,
       "width": 1,

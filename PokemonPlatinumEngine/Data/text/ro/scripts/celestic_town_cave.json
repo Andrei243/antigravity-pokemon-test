@@ -193,6 +193,32 @@
         "Forme ciudate acoperă o bucată întreagă de stâncă.",
         "Trei figuri stau în triunghi... iar în mijlocul lor, o sferă de lumină..."
       ]
+    },
+    {
+      "en": [
+        "{player} looked closely at the ancient painting.",
+        "Three figures stand in a triangle... and the sphere of light at their heart is glowing, softly, as if from the far side of the rock."
+      ],
+      "text": [
+        "{player} s-a uitat cu atenție la pictura străveche.",
+        "Trei figuri stau în triunghi... iar sfera de lumină din mijlocul lor strălucește încet, ca venind din cealaltă parte a stâncii."
+      ]
+    },
+    {
+      "en": [
+        "Reach out and touch the light?"
+      ],
+      "text": [
+        "Întinzi mâna și atingi lumina?"
+      ]
+    },
+    {
+      "en": [
+        "The light swells until there is nothing else, and the ground falls away beneath {player}'s feet..."
+      ],
+      "text": [
+        "Lumina crește până nu mai rămâne nimic altceva, iar pământul fuge de sub picioarele lui {player}..."
+      ]
     }
   ],
   "CynthiaReads": [

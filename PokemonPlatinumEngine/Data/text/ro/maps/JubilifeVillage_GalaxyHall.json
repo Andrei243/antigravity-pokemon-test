@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Galaxy Hall"
+    ],
+    "text": [
+      "Galaxy Hall"
+    ]
+  },
+  "people": {
+    "kamado": {
+      "name": {
+        "en": [
+          "Commander Kamado"
+        ],
+        "text": [
+          "Comandantul Kamado"
+        ]
+      }
+    },
+    "laventon": {
+      "name": {
+        "en": [
+          "Prof. Laventon"
+        ],
+        "text": [
+          "Prof. Laventon"
+        ]
+      }
+    },
+    "cyllene": {
+      "name": {
+        "en": [
+          "Captain Cyllene"
+        ],
+        "text": [
+          "Căpitana Cyllene"
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "medic": {
+      "name": {
+        "en": [
+          "Medic"
+        ],
+        "text": [
+          "Medicul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

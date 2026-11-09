@@ -1,0 +1,54 @@
+{
+  "people": {
+    "laventon": {
+      "name": {
+        "en": [
+          "Prof. Laventon"
+        ],
+        "text": [
+          "Prof. Laventon"
+        ]
+      }
+    },
+    "rowlet": {
+      "name": {
+        "en": [
+          "Rowlet"
+        ],
+        "text": [
+          "Rowlet"
+        ]
+      }
+    },
+    "cyndaquil": {
+      "name": {
+        "en": [
+          "Cyndaquil"
+        ],
+        "text": [
+          "Cyndaquil"
+        ]
+      }
+    },
+    "oshawott": {
+      "name": {
+        "en": [
+          "Oshawott"
+        ],
+        "text": [
+          "Oshawott"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BeachSign": {
+      "en": [
+        "Prelude Beach\nNorth: Jubilife Village"
+      ],
+      "text": [
+        "Prelude Beach\nNord: Jubilife Village"
+      ]
+    }
+  }
+}

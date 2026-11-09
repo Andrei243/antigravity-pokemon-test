@@ -31,13 +31,7 @@
     "#####.#####"
   ],
   "behaviours": [
-    {
-      "x": 1,
-      "y": 4,
-      "width": 9,
-      "depth": 1,
-      "behaviour": "Counter"
-    }
+    { "x": 1, "y": 4, "width": 9, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {

@@ -1,0 +1,170 @@
+{
+  "people": {
+    "laventon": {
+      "name": {
+        "en": [
+          "Prof. Laventon"
+        ],
+        "text": [
+          "Prof. Laventon"
+        ]
+      }
+    },
+    "gate_guard_west": {
+      "name": {
+        "en": [
+          "Gate Guard"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      }
+    },
+    "gate_guard_east": {
+      "name": {
+        "en": [
+          "Gate Guard"
+        ],
+        "text": [
+          "Paznicul porții"
+        ]
+      }
+    },
+    "farmer": {
+      "name": {
+        "en": [
+          "Farmer"
+        ],
+        "text": [
+          "Fermier"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The soil here gives potatoes and not much else. Still, a village that grows its own food doesn't go hungry in winter."
+        ],
+        "text": [
+          "Pământul de aici dă cartofi și cam atât. Totuși, un sat care își crește singur hrana nu flămânzește iarna."
+        ]
+      }
+    },
+    "keeper": {
+      "name": {
+        "en": [
+          "Pasture Keeper"
+        ],
+        "text": [
+          "Îngrijitorul pășunilor"
+        ]
+      }
+    },
+    "pasture_bidoof": {
+      "name": {
+        "en": [
+          "Bidoof"
+        ],
+        "text": [
+          "Bidoof"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bidoof: Bidoo! It chews happily on a stalk of grass."
+        ],
+        "text": [
+          "Bidoof: Bidoo! Mestecă fericit un fir de iarbă."
+        ]
+      }
+    },
+    "pasture_ponyta": {
+      "name": {
+        "en": [
+          "Ponyta"
+        ],
+        "text": [
+          "Ponyta"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ponyta: Neigh! Its mane of flame flickers in the breeze."
+        ],
+        "text": [
+          "Ponyta: Nihaha! Coama de flăcări îi pâlpâie în adiere."
+        ]
+      }
+    },
+    "trainee": {
+      "name": {
+        "en": [
+          "Galaxy Team Member"
+        ],
+        "text": [
+          "Membru Galaxy Team"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hup! Hup! The Survey Corps walks the wilds every day. If your legs give out, the wilds won't wait for you."
+        ],
+        "text": [
+          "Hop! Hop! Survey Corps străbate sălbăticia în fiecare zi. Dacă te lasă picioarele, sălbăticia nu te așteaptă."
+        ]
+      }
+    },
+    "child": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandma says nobody lived here when the Galaxy Team came. Now look at it! There's even a shop!"
+        ],
+        "text": [
+          "Bunica zice că nu locuia nimeni aici când a venit Galaxy Team. Acum uită-te! Avem chiar și un magazin!"
+        ]
+      }
+    },
+    "villager": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrână"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Most of us crossed the sea to get here. Some folk still lock their doors when a Pokémon walks past."
+        ],
+        "text": [
+          "Cei mai mulți dintre noi am trecut marea ca să ajungem aici. Unii încă își încuie ușa când trece un Pokémon pe lângă casă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VillageSign": {
+      "en": [
+        "Jubilife Village\nThe Galaxy Team's home in the land of Hisui"
+      ],
+      "text": [
+        "Jubilife Village\nCasa Galaxy Team în ținutul Hisui"
+      ]
+    },
+    "GateSign": {
+      "en": [
+        "Front Gate\nNorth: the Obsidian Fieldlands\nOnly members of the Galaxy Team may pass."
+      ],
+      "text": [
+        "Poarta din față\nNord: Obsidian Fieldlands\nPot trece doar membrii Galaxy Team."
+      ]
+    }
+  }
+}

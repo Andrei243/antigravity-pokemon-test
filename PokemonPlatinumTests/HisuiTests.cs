@@ -151,7 +151,7 @@ public class HisuiTests
         var story = new StoryState();
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Torterra")!, 62));
-        story.SetFlag("FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING");
+        story.Set("FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING");
         var library = ScriptLibrary.Default;
 
         // Before Sinnoh's Hall of Fame the painting is only a painting

@@ -1,0 +1,106 @@
+{
+  "Welcome": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Here we are: Jubilife Village, home of the Galaxy Team. When the Team first came ashore there was nothing here but grass and wind."
+      ],
+      "text": [
+        "Iată-ne: Jubilife Village, casa Galaxy Team. Când echipa a pus prima oară piciorul pe țărm, aici nu era decât iarbă și vânt."
+      ]
+    },
+    {
+      "en": [
+        "I must tell the Commander about you before anyone else does. A stranger who fell out of the sky will take some explaining!"
+      ],
+      "text": [
+        "Trebuie să-i spun comandantului despre tine înainte s-o facă altcineva. Un străin căzut din cer cere ceva explicații!"
+      ]
+    },
+    {
+      "en": [
+        "Would you wait for me at the Wallflower? It's on Canala Avenue, down the west side of the village. I shan't be long!"
+      ],
+      "text": [
+        "Mă aștepți la Wallflower? E pe Canala Avenue, în partea de vest a satului. Nu stau mult!"
+      ]
+    }
+  ],
+  "Laventon": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "The Wallflower is on Canala Avenue, to the west. Wait for me there!"
+      ],
+      "text": [
+        "Wallflower e pe Canala Avenue, spre vest. Așteaptă-mă acolo!"
+      ]
+    }
+  ],
+  "FrontGate": [
+    {
+      "en": [
+        "Gate Guard"
+      ],
+      "text": [
+        "Paznicul porții"
+      ]
+    },
+    {
+      "en": [
+        "Beyond this gate lie the Obsidian Fieldlands. Only members of the Galaxy Team may pass, and you're not one of us. Not yet."
+      ],
+      "text": [
+        "Dincolo de poarta asta se întind Obsidian Fieldlands. Pot trece doar membrii Galaxy Team, iar tu nu ești unul dintre noi. Încă nu."
+      ]
+    },
+    {
+      "en": [
+        "Your entry trial is out in the Fieldlands, is it? The captain will send for you when everything's ready. Rest up till then."
+      ],
+      "text": [
+        "Proba ta de intrare e afară, în Fieldlands, nu? Căpitana va trimite după tine când totul e gata. Odihnește-te până atunci."
+      ]
+    }
+  ],
+  "Pastures": [
+    {
+      "en": [
+        "Pasture Keeper"
+      ],
+      "text": [
+        "Îngrijitorul pășunilor"
+      ]
+    },
+    {
+      "en": [
+        "These are the pastures. Leave any Pokémon you can't carry with me, and I'll see that they eat well and sleep warm."
+      ],
+      "text": [
+        "Acestea sunt pășunile. Lasă-mi Pokémonii pe care nu-i poți purta și voi avea grijă să mănânce bine și să doarmă la căldură."
+      ]
+    },
+    {
+      "en": [
+        "These are the pastures, where the Galaxy Team keeps its Pokémon. Come back once you have some to leave with me."
+      ],
+      "text": [
+        "Acestea sunt pășunile, unde Galaxy Team își ține Pokémonii. Revino când ai și tu câțiva să-mi lași."
+      ]
+    }
+  ]
+}

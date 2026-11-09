@@ -1,0 +1,212 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Commander Kamado"
+      ],
+      "text": [
+        "Comandantul Kamado"
+      ]
+    },
+    {
+      "en": [
+        "So. You are the one who fell out of a crack in the sky."
+      ],
+      "text": [
+        "Așadar. Tu ești cel căzut dintr-o crăpătură a cerului."
+      ]
+    },
+    {
+      "en": [
+        "I am Kamado, commander of the Galaxy Team. This land of Hisui is harsh, and its people fear the Pokémon that roam it."
+      ],
+      "text": [
+        "Eu sunt Kamado, comandantul Galaxy Team. Ținutul Hisui e aspru, iar oamenii lui se tem de Pokémonii care îl cutreieră."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "Commander, this young one brought my three back without a single Poké Ball thrown in anger. A rare gift!"
+      ],
+      "text": [
+        "Comandante, tânărul acesta mi-a adus înapoi cei trei fără să arunce cu mânie nici măcar un Poké Ball. Un dar rar!"
+      ]
+    },
+    {
+      "en": [
+        "Commander Kamado"
+      ],
+      "text": [
+        "Comandantul Kamado"
+      ]
+    },
+    {
+      "en": [
+        "A gift is no proof. The Galaxy Team has no place for idle hands, nor for strangers who can't pull their weight."
+      ],
+      "text": [
+        "Un dar nu e o dovadă. În Galaxy Team nu e loc pentru mâini leneșe, nici pentru străini care nu-și duc partea de muncă."
+      ]
+    },
+    {
+      "en": [
+        "Here is my offer. Join the Survey Corps, and help the professor fill his Pokédex. But first you will pass an entry trial in the Obsidian Fieldlands."
+      ],
+      "text": [
+        "Iată oferta mea. Intră în Survey Corps și ajută-l pe profesor să-și umple Pokédex-ul. Dar mai întâi vei trece o probă de intrare în Obsidian Fieldlands."
+      ]
+    },
+    {
+      "en": [
+        "Until then you may sleep under our roof. There are quarters free just east of this hall."
+      ],
+      "text": [
+        "Până atunci poți dormi sub acoperișul nostru. Chiar la est de sala aceasta e o locuință liberă."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "And you'll want this, {player}. The Pokédex! Every Pokémon you meet will be written down in it."
+      ],
+      "text": [
+        "Și o să-ți trebuiască asta, {player}. Pokédex-ul! Fiecare Pokémon pe care îl întâlnești va fi scris în el."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex!"
+      ],
+      "text": [
+        "{player} a primit Pokédex-ul!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Welcome aboard, almost! Any Pokémon you can't carry, leave at the pastures on Canala Avenue. The keeper looks after them."
+      ],
+      "text": [
+        "Bun venit printre noi, aproape! Pokémonii pe care nu-i poți purta lasă-i la pășunile de pe Canala Avenue. Îngrijitorul are grijă de ei."
+      ]
+    },
+    {
+      "en": [
+        "Captain Cyllene"
+      ],
+      "text": [
+        "Căpitana Cyllene"
+      ]
+    },
+    {
+      "en": [
+        "Rest tonight. The trial will not wait for you in the morning."
+      ],
+      "text": [
+        "Odihnește-te în noaptea asta. Dimineață, proba nu te va aștepta."
+      ]
+    }
+  ],
+  "Kamado": [
+    {
+      "en": [
+        "Commander Kamado"
+      ],
+      "text": [
+        "Comandantul Kamado"
+      ]
+    },
+    {
+      "en": [
+        "The Obsidian Fieldlands are where you will prove yourself. Do not disappoint the professor."
+      ],
+      "text": [
+        "În Obsidian Fieldlands îți vei dovedi valoarea. Nu-l dezamăgi pe profesor."
+      ]
+    },
+    {
+      "en": [
+        "The professor tells me a stranger is waiting at the Wallflower. I will see them when they are brought to me."
+      ],
+      "text": [
+        "Profesorul îmi spune că un străin așteaptă la Wallflower. Îl voi primi când mi-l vor aduce."
+      ]
+    }
+  ],
+  "Laventon": [
+    {
+      "en": [
+        "Prof. Laventon"
+      ],
+      "text": [
+        "Prof. Laventon"
+      ]
+    },
+    {
+      "en": [
+        "A complete Pokédex of Hisui, the first ever made! With your help, {player}, I believe we can do it."
+      ],
+      "text": [
+        "Un Pokédex complet al ținutului Hisui, primul făcut vreodată! Cu ajutorul tău, {player}, cred că putem reuși."
+      ]
+    }
+  ],
+  "Cyllene": [
+    {
+      "en": [
+        "Captain Cyllene"
+      ],
+      "text": [
+        "Căpitana Cyllene"
+      ]
+    },
+    {
+      "en": [
+        "The Survey Corps walks the wilds and writes down what it finds. It is not a life for the faint-hearted."
+      ],
+      "text": [
+        "Survey Corps străbate sălbăticia și notează tot ce găsește. Nu e o viață pentru cei slabi de inimă."
+      ]
+    }
+  ],
+  "Partner": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "I joined the Survey Corps last spring. Once you pass your trial, we'll be out in the Fieldlands together!"
+      ],
+      "text": [
+        "Am intrat în Survey Corps primăvara trecută. După ce treci proba, o să ieșim împreună în Fieldlands!"
+      ]
+    }
+  ]
+}

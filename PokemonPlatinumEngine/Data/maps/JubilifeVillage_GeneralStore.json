@@ -29,13 +29,7 @@
     "#####.#####"
   ],
   "behaviours": [
-    {
-      "x": 2,
-      "y": 4,
-      "width": 7,
-      "depth": 1,
-      "behaviour": "Counter"
-    }
+    { "x": 2, "y": 4, "width": 7, "depth": 1, "behaviour": "Counter" }
   ],
   "props": [
     {
@@ -86,10 +80,10 @@
       "x": 5,
       "y": 3,
       "facing": "Down",
-      "isPokeMartClerk": true,
       "dialog": [
         "Clerk: Welcome! Poké Balls, medicine, everything a body needs out in the wilds."
-      ]
+      ],
+      "isPokeMartClerk": true
     }
   ],
   "wildEncounters": []

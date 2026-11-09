@@ -17,15 +17,27 @@ public class HisuiSpeciesTests
 
     private const string OpenAreas = "plan 23 · Z18 to Z20: Hisui's open areas, their wild Pokémon seen in the field";
 
-    /// <summary>What Hisui gives today: the professor's three on Prelude Beach (plan 23 · Z17).</summary>
-    private static readonly string[] Given = { "Rowlet", "Cyndaquil", "Oshawott" };
+    /// <summary>What Hisui gives today: the professor's three on Prelude Beach (plan 23 · Z17), and what they grow into.</summary>
+    private static readonly string[] Given =
+    {
+        "Rowlet", "Dartrix", "Decidueye", "Cyndaquil", "Quilava", "Typhlosion", "Oshawott", "Dewott", "Samurott"
+    };
 
     /// <summary>What the Hisui Pokédex has that nothing in Hisui gives yet, and who owes it. A session that gives one adds it to <see cref="Given"/>.</summary>
     public static Dictionary<string, string> Owed =>
         SpeciesSources.DexOf(Region).Where(s => !Given.Contains(s)).ToDictionary(s => s, _ => OpenAreas);
 
-    /// <summary>The items and places Hisui's evolutions ask for that nothing in Hisui gives, and who owes each.</summary>
-    public static readonly Dictionary<string, string> OwedNeeds = new();
+    /// <summary>The items and places Hisui's evolutions ask for that Hisui gives today: none (plan 23 · Z17).</summary>
+    private static readonly string[] NeedsGiven = { };
+
+    /// <summary>
+    /// The items and places Hisui's evolutions ask for that nothing in Hisui gives, and who owes each: every one of them
+    /// (the stones, the Linking Cord, Legends: Arceus's own items and places), owed to the open areas with their wild
+    /// Pokémon. A session that gives one adds it to <see cref="NeedsGiven"/>.
+    /// </summary>
+    public static Dictionary<string, string> OwedNeeds =>
+        RegionSpeciesCheck.Needs(SpeciesSources.Of(Region), SpeciesSources.DexOf(Region))
+            .Keys.Where(k => !NeedsGiven.Contains(k)).ToDictionary(k => k, _ => OpenAreas);
 
     [Fact]
     public void EverySpeciesOfTheHisuiPokedexCanBeHadInHisuiButWhatIsOwed()
@@ -48,7 +60,7 @@ public class HisuiSpeciesTests
     public void HisuisOwnWaysAreCountedTheProfessorsThree()
     {
         var hisui = SpeciesSources.Of(Region);
-        foreach (string s in Given) Assert.Contains("professor", hisui.Ways[s]);
+        foreach (string s in new[] { "Rowlet", "Cyndaquil", "Oshawott" }) Assert.Contains("professor", hisui.Ways[s]);
         // Sinnoh's Game Corner, Underground and Battle Frontier give Hisui nothing
         Assert.DoesNotContain(hisui.Items.Values, w => w.Contains("Underground") || w.Contains("Battle Points"));
     }

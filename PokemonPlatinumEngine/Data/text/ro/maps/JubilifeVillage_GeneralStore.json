@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "General Store"
+    ],
+    "text": [
+      "Magazinul general"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! Poké Balls, medicine, everything a body needs out in the wilds."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! Poké Balls, leacuri, tot ce-i trebuie omului în sălbăticie."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

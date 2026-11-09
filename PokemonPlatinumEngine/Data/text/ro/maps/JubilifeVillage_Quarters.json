@@ -1,0 +1,21 @@
+{
+  "displayName": {
+    "en": [
+      "Your Quarters"
+    ],
+    "text": [
+      "Locuința ta"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "7,3": {
+      "en": [
+        "A chest of plain wood. Your Survey Corps clothes will go in here, once you have some."
+      ],
+      "text": [
+        "O ladă din lemn simplu. Hainele tale de la Survey Corps vor sta aici, odată ce le vei avea."
+      ]
+    }
+  }
+}
