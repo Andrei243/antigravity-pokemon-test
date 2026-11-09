@@ -2813,7 +2813,7 @@
       }
     }
   },
-  "kitchen": {
+  "campPot": {
     "title": "THE POT",
     "pantry": "IN REACH",
     "pot": "IN THE POT",
@@ -2858,7 +2858,7 @@
       }
     }
   },
-  "powers": {
+  "timedPowers": {
     "kind": {
       "exp": "EXP Power", "effort": "Effort Power", "money": "Prize Power", "bargain": "Bargain Power", "catch": "Catching Power",
       "encounter": "Encounter Power", "stealth": "Stealth Power", "hatch": "Hatching Power", "typeEncounter": "Type Power",

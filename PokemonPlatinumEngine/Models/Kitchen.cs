@@ -24,8 +24,8 @@ public sealed class KitchenNeed
 }
 
 /// <summary>
-/// A dish of the camp's pot (ours): an id of letters and digits (its words are <c>kitchen.dish.name.&lt;id&gt;</c> and
-/// <c>kitchen.dish.desc.&lt;id&gt;</c>), what it wants in the pot, and the power it starts (none for the plain dish). A type's
+/// A dish of the camp's pot (ours): an id of letters and digits (its words are <c>campPot.dish.name.&lt;id&gt;</c> and
+/// <c>campPot.dish.desc.&lt;id&gt;</c>), what it wants in the pot, and the power it starts (none for the plain dish). A type's
 /// encounters takes its type from the first berry in the pot (its Natural Gift's type).
 /// </summary>
 public sealed class KitchenDish
@@ -187,24 +187,24 @@ public static class Meals
     public static KitchenGrade GradeRow(DishGrade grade) =>
         Table.Grades.Count == 0 ? new KitchenGrade { Heal = 25, Level = 1, Seconds = PowerTable.Seconds } : Table.Grades[Math.Min((int)grade, Table.Grades.Count - 1)];
 
-    /// <summary>The name a dish is shown by, and what it is (<c>kitchen.dish.name.*</c>, <c>kitchen.dish.desc.*</c>).</summary>
+    /// <summary>The name a dish is shown by, and what it is (<c>campPot.dish.name.*</c>, <c>campPot.dish.desc.*</c>).</summary>
     public static string NameOf(KitchenDish dish)
     {
         string id = dish.Id;
-        return Text.Of($"kitchen.dish.name.{id}");
+        return Text.Of($"campPot.dish.name.{id}");
     }
 
     public static string DescriptionOf(KitchenDish dish)
     {
         string id = dish.Id;
-        return Text.Of($"kitchen.dish.desc.{id}");
+        return Text.Of($"campPot.dish.desc.{id}");
     }
 
-    /// <summary>The words of a grade (<c>kitchen.grade.*</c>).</summary>
+    /// <summary>The words of a grade (<c>campPot.grade.*</c>).</summary>
     public static string NameOf(DishGrade grade)
     {
         string key = grade.ToString().ToLowerInvariant();
-        return Text.Of($"kitchen.grade.{key}");
+        return Text.Of($"campPot.grade.{key}");
     }
 
     /// <summary>Whether something of the pouch or the bag may go in the pot: the pantry's goods, the bag's berries, and the items a dish names.</summary>
@@ -337,8 +337,8 @@ public static class Meals
                 if (need.Material != null && MaterialTable.Get(need.Material)?.Kind != MaterialKind.Pantry) yield return (dish.Id, $"wants '{need.Material}', which is no good of the pantry");
                 foreach (string item in need.Items ?? new()) if (ItemDatabase.Get(item) == null) yield return (dish.Id, $"wants '{item}', which is no item");
             }
-            if (!Text.Has($"kitchen.dish.name.{dish.Id}")) yield return (dish.Id, $"has no name (kitchen.dish.name.{dish.Id} in ui.json)");
-            if (!Text.Has($"kitchen.dish.desc.{dish.Id}")) yield return (dish.Id, $"has no description (kitchen.dish.desc.{dish.Id} in ui.json)");
+            if (!Text.Has($"campPot.dish.name.{dish.Id}")) yield return (dish.Id, $"has no name (campPot.dish.name.{dish.Id} in ui.json)");
+            if (!Text.Has($"campPot.dish.desc.{dish.Id}")) yield return (dish.Id, $"has no description (campPot.dish.desc.{dish.Id} in ui.json)");
         }
     }
 }

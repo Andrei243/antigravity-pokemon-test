@@ -44,7 +44,7 @@ public partial class GameEngine
 
     /// <summary>The toast's line for powers that wore off: "Your Encounter Power wore off." (one line for all of them).</summary>
     internal static string WornOffLine(IEnumerable<PowerKind> worn) =>
-        Text.Of("powers.wornOff", ("list", string.Join(Text.Of("crafting.leftSeparator"), worn.Distinct().Select(PowerTable.NameOf))));
+        Text.Of("timedPowers.wornOff", ("list", string.Join(Text.Of("crafting.leftSeparator"), worn.Distinct().Select(PowerTable.NameOf))));
 
     /// <summary>Forgets what was waiting to be told (a game begun or loaded).</summary>
     private void ForgetWornOff() => wornOffToTell = null;

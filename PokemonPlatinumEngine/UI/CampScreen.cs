@@ -236,7 +236,7 @@ public sealed class CampScreen
         OnHand = Meals.OnHand(s.Pouch, s.Bag);
         if (OnHand.Count == 0)
         {
-            Note = Text.Of("kitchen.note.nothing");
+            Note = Text.Of("campPot.note.nothing");
             AudioManager.PlaySound("error");
             return;
         }
@@ -244,7 +244,7 @@ public sealed class CampScreen
         PantryCursor = 0;
         PantryFirst = 0;
         Phase = CampPhase.Pantry;
-        Note = Text.Of("kitchen.note.choose", ("n", Meals.Table.Most));
+        Note = Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
         AudioManager.PlaySound("select");
     }
 
@@ -266,23 +266,23 @@ public sealed class CampScreen
         if (Phase != CampPhase.Pantry || Supplies is not { } s) return;
         if (OnCook)
         {
-            if (Pot.Count == 0) { Refuse(Text.Of("kitchen.note.empty")); return; }
-            if (!Meals.AllHeld(Pot, s.Pouch, s.Bag)) { Refuse(Text.Of("kitchen.note.short")); return; }
+            if (Pot.Count == 0) { Refuse(Text.Of("campPot.note.empty")); return; }
+            if (!Meals.AllHeld(Pot, s.Pouch, s.Bag)) { Refuse(Text.Of("campPot.note.short")); return; }
             // Each pot of the visit is worked out from the visit's seed, what is in it and how many came before
             uint seed = SplitMix.Mix(s.Seed, (uint)cooked, SplitMix.Fnv(string.Join("|", Pot.Select(i => i.Id))));
             Stirring = new Kitchen(seed, s.Assist);
             stirClock = 0f;
             pressPending = false;
             Phase = CampPhase.Stirring;
-            Note = Text.Of("kitchen.note.stir");
+            Note = Text.Of("campPot.note.stir");
             AudioManager.PlaySound("select");
             return;
         }
         var ingredient = OnHand[PantryCursor];
-        if (Pot.Count >= Meals.Table.Most) { Refuse(Text.Of("kitchen.note.full", ("n", Meals.Table.Most))); return; }
-        if (InPot(ingredient) >= Meals.Held(ingredient, s.Pouch, s.Bag)) { Refuse(Text.Of("kitchen.note.noMore", ("name", ingredient.Name))); return; }
+        if (Pot.Count >= Meals.Table.Most) { Refuse(Text.Of("campPot.note.full", ("n", Meals.Table.Most))); return; }
+        if (InPot(ingredient) >= Meals.Held(ingredient, s.Pouch, s.Bag)) { Refuse(Text.Of("campPot.note.noMore", ("name", ingredient.Name))); return; }
         Pot.Add(ingredient);
-        Note = Text.Of("kitchen.note.added", ("name", ingredient.Name), ("dish", Meals.NameOf(Expected)));
+        Note = Text.Of("campPot.note.added", ("name", ingredient.Name), ("dish", Meals.NameOf(Expected)));
         AudioManager.PlaySound("select");
     }
 
@@ -293,7 +293,7 @@ public sealed class CampScreen
         if (Pot.Count > 0)
         {
             Pot.RemoveAt(Pot.Count - 1);
-            Note = Pot.Count > 0 ? Text.Of("kitchen.note.added", ("name", Pot[^1].Name), ("dish", Meals.NameOf(Expected))) : Text.Of("kitchen.note.choose", ("n", Meals.Table.Most));
+            Note = Pot.Count > 0 ? Text.Of("campPot.note.added", ("name", Pot[^1].Name), ("dish", Meals.NameOf(Expected))) : Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
             AudioManager.PlaySound("cancel");
             return;
         }
@@ -325,7 +325,7 @@ public sealed class CampScreen
         Stirring = null;
         pressPending = false;
         Phase = CampPhase.Pantry;
-        Note = Text.Of("kitchen.note.takenOff");
+        Note = Text.Of("campPot.note.takenOff");
         AudioManager.PlaySound("cancel");
     }
 
@@ -343,7 +343,7 @@ public sealed class CampScreen
         Phase = CampPhase.Served;
         for (int i = 0; i < Count; i++)
             if (!Party.Members[i].IsEgg) fedAge[i] = 0f;
-        Note = Text.Of("kitchen.note.served", ("dish", Meals.NameOf(dish)), ("grade", Meals.NameOf(pot.Grade)));
+        Note = Text.Of("campPot.note.served", ("dish", Meals.NameOf(dish)), ("grade", Meals.NameOf(pot.Grade)));
         Pot.Clear();
         AudioManager.PlaySound("heal");
     }
@@ -354,7 +354,7 @@ public sealed class CampScreen
         if (Phase != CampPhase.Served) return;
         Phase = CampPhase.Team;
         Note = Served?.Power is { } power
-            ? Text.Of("kitchen.note.powerOn", ("power", PowerTable.NameOf(power.Kind)), ("level", power.Level))
+            ? Text.Of("campPot.note.powerOn", ("power", PowerTable.NameOf(power.Kind)), ("level", power.Level))
             : Text.Of("camp.note.welcome");
         AudioManager.PlaySound("select");
     }

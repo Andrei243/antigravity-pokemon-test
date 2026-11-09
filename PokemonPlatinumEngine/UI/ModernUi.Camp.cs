@@ -53,15 +53,15 @@ internal static partial class ModernUi
     public static void DrawCamp(int sw, int sh, CampScreen screen, float appear)
     {
         Backdrop(sw, sh);
-        ScreenTitle(screen.Phase == CampPhase.Team ? Text.Of("camp.title") : Text.Of("kitchen.title"));
+        ScreenTitle(screen.Phase == CampPhase.Team ? Text.Of("camp.title") : Text.Of("campPot.title"));
         switch (screen.Phase)
         {
             case CampPhase.Pantry:
-                Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.move"), Hint("shared.keys.z", "kitchen.hint.add"),
-                    Hint("shared.keys.esc", "kitchen.hint.takeOut"));
+                Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.move"), Hint("shared.keys.z", "campPot.hint.add"),
+                    Hint("shared.keys.esc", "campPot.hint.takeOut"));
                 break;
             case CampPhase.Stirring:
-                Hints(sw - Margin, 44, Hint("shared.keys.z", "kitchen.hint.stir"), Hint("shared.keys.esc", "kitchen.hint.takeOff"));
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "campPot.hint.stir"), Hint("shared.keys.esc", "campPot.hint.takeOff"));
                 break;
             case CampPhase.Served:
                 Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.back"));
@@ -156,7 +156,7 @@ internal static partial class ModernUi
 
         // The pantry: what can go in, and COOK last
         Panel(left, 34);
-        Label(Text.Of("kitchen.pantry"), left.X + 44, left.Y + 30);
+        Label(Text.Of("campPot.pantry"), left.X + 44, left.Y + 30);
         var list = new Rectangle(left.X, left.Y + 60, left.Width, left.Height - 60);
         int rows = screen.OnHand.Count + 1;
         for (int row = 0; row < CampScreen.PantryRows && screen.PantryFirst + row < rows; row++)
@@ -167,19 +167,19 @@ internal static partial class ModernUi
             if (index == screen.OnHand.Count)
             {
                 ListRow(r, selected, "", nameX: 112, size: 30);
-                UiFonts.DrawCentered(Text.Of("kitchen.cook"), r.X + 112, r.Y + r.Height / 2f, 30, selected ? Color.White : Green, UiWeight.Black);
+                UiFonts.DrawCentered(Text.Of("campPot.cook"), r.X + 112, r.Y + r.Height / 2f, 30, selected ? Color.White : Green, UiWeight.Black);
                 continue;
             }
             var ingredient = screen.OnHand[index];
             int held = screen.Supplies is { } s ? Meals.Held(ingredient, s.Pouch, s.Bag) - screen.InPot(ingredient) : 0;
             var ink = ListRow(r, selected, ingredient.Name, enabled: held > 0, nameX: 112, size: 30);
             IngredientSign(new Vector2(r.X + 56, r.Y + r.Height / 2f), 26, ingredient);
-            RowValue(r, Text.Of("kitchen.held", ("n", held)), ink);
+            RowValue(r, Text.Of("campPot.held", ("n", held)), ink);
         }
         ScrollBar(list, screen.PantryFirst, CampScreen.PantryRows, rows, 10);
 
         // What is in the pot, and the dish it would make
-        Label(Text.Of("kitchen.pot"), rx, right.Y + 30);
+        Label(Text.Of("campPot.pot"), rx, right.Y + 30);
         float y = right.Y + 86;
         foreach (var ingredient in screen.Pot)
         {
@@ -189,7 +189,7 @@ internal static partial class ModernUi
         }
         y = right.Y + 86 + 52 * Meals.Table.Most + 10;
         UiShapes.Fill(new Rectangle(rx, y, room, 3), 1.5f, Rule);
-        Label(Text.Of("kitchen.makes"), rx, y + 20);
+        Label(Text.Of("campPot.makes"), rx, y + 20);
         if (screen.Pot.Count == 0) return;
         var dish = screen.Expected;
         string name = Meals.NameOf(dish);
@@ -203,7 +203,7 @@ internal static partial class ModernUi
     private static void DrawPotGauge(Kitchen pot, Rectangle panel)
     {
         float cx = panel.X + panel.Width / 2f;
-        Label(Text.Of("kitchen.round", ("n", Math.Min(pot.Round + 1, Kitchen.Rounds)), ("of", Kitchen.Rounds)), panel.X + 44, panel.Y + 30);
+        Label(Text.Of("campPot.round", ("n", Math.Min(pot.Round + 1, Kitchen.Rounds)), ("of", Kitchen.Rounds)), panel.X + 44, panel.Y + 30);
         var middle = new Vector2(cx, panel.Y + 180);
         UiShapes.Circle(middle, 78, Rule);
         UiShapes.Circle(middle, 75, Ink);
@@ -234,7 +234,7 @@ internal static partial class ModernUi
         {
             var last = pot.Scores[^1];
             string key = last.ToString().ToLowerInvariant();
-            string word = Text.Of($"kitchen.score.{key}");
+            string word = Text.Of($"campPot.score.{key}");
             UiFonts.DrawCentered(word, cx - UiFonts.Measure(word, 36, UiWeight.Black) / 2f, panel.Y + 490, 36, ScoreColour(last), UiWeight.Black);
         }
     }
@@ -246,18 +246,18 @@ internal static partial class ModernUi
         var card = new Rectangle(clearing.X + (clearing.Width - 900) / 2f, clearing.Y + (clearing.Height - 400) / 2f, 900, 400);
         Panel(card, 34);
         float cx = card.X + card.Width / 2f;
-        string title = Text.Of("kitchen.served", ("grade", Meals.NameOf(served.Grade)), ("dish", Meals.NameOf(served.Dish)));
+        string title = Text.Of("campPot.served", ("grade", Meals.NameOf(served.Grade)), ("dish", Meals.NameOf(served.Dish)));
         float size = 48, w = UiFonts.Measure(title, size, UiWeight.Black);
         if (w > card.Width - 88) size = MathF.Floor(size * (card.Width - 88) / w);
         UiFonts.DrawCentered(title, cx - Math.Min(w, card.Width - 88) / 2f, card.Y + 70, size, Ink, UiWeight.Black);
         for (int s = 0; s < 4; s++)
             Star(new Vector2(cx + (s - 1.5f) * 64, card.Y + 150), 24, s <= (int)served.Grade ? Gold : Rule);
         var row = Meals.GradeRow(served.Grade);
-        string healed = Text.Of("kitchen.healed", ("n", row.Heal));
+        string healed = Text.Of("campPot.healed", ("n", row.Heal));
         UiFonts.DrawCentered(healed, cx - UiFonts.Measure(healed, 30, UiWeight.ExtraBold) / 2f, card.Y + 230, 30, Ink, UiWeight.ExtraBold);
         string power = served.Power is { } p
-            ? Text.Of("kitchen.power", ("power", PowerTable.NameOf(p.Kind)), ("level", p.Level), ("minutes", (int)MathF.Round(p.SecondsLeft / 60f)))
-            : Text.Of("kitchen.noPower");
+            ? Text.Of("campPot.power", ("power", PowerTable.NameOf(p.Kind)), ("level", p.Level), ("minutes", (int)MathF.Round(p.SecondsLeft / 60f)))
+            : Text.Of("campPot.noPower");
         UiFonts.DrawCentered(power, cx - UiFonts.Measure(power, 30, UiWeight.ExtraBold) / 2f, card.Y + 300, 30, served.Power != null ? Green : Muted, UiWeight.ExtraBold);
     }
 

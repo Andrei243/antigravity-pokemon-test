@@ -84,7 +84,7 @@ public static class PowerTable
     {
         string key = kind.ToString();
         key = char.ToLowerInvariant(key[0]) + key[1..];
-        return Text.Of($"powers.kind.{key}");
+        return Text.Of($"timedPowers.kind.{key}");
     }
 }
 

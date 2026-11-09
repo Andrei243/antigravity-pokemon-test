@@ -6388,7 +6388,7 @@
       }
     }
   },
-  "kitchen": {
+  "campPot": {
     "title": "OALA",
     "pantry": "LA ÎNDEMÂNĂ",
     "pot": "ÎN OALĂ",
@@ -6433,7 +6433,7 @@
       }
     }
   },
-  "powers": {
+  "timedPowers": {
     "kind": {
       "exp": "Puterea EXP", "effort": "Puterea Efortului", "money": "Puterea Premiilor", "bargain": "Puterea Reducerilor", "catch": "Puterea Capturii",
       "encounter": "Puterea Întâlnirilor", "stealth": "Puterea Discreției", "hatch": "Puterea Eclozării", "typeEncounter": "Puterea Tipului",
