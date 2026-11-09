@@ -38,7 +38,9 @@ public enum FrameSection
     /// <summary>An open map's water in the scene's pass (plan 32 · OW8).</summary>
     Water,
     /// <summary>The live rigs in an open map's scene (plan 32 · OW8: the player; OW9 the people and Pokémon).</summary>
-    Characters
+    Characters,
+    /// <summary>An open map's buildings, near trees and grass in the scene's pass (plan 32 · OW9).</summary>
+    Foliage
 }
 
 /// <summary>

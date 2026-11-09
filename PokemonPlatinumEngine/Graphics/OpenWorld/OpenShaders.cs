@@ -15,6 +15,19 @@ internal sealed class OpenShaders
     public Shader Terrain { get; private set; }
     public Shader Water { get; private set; }
     public Shader Sky { get; private set; }
+
+    /// <summary>What stands on the ground, drawn as it was built (plan 32 · OW9): the buildings, lit through the three maps, its lit glass glowing after dark.</summary>
+    public Shader Scenery { get; private set; }
+
+    /// <summary>The same, a mesh drawn many times by a transform each (the near trees, the grass's tufts): <c>Raylib.DrawMeshInstanced</c>.</summary>
+    public Shader Instanced { get; private set; }
+
+    /// <summary>The instanced meshes' depth, for the shadow maps.</summary>
+    public Shader InstancedDepth { get; private set; }
+
+    /// <summary>The far trees and anyone drawn far off: cards turned to the camera by the program, each showing the one of its eight views nearest the camera's side.</summary>
+    public Shader Impostor { get; private set; }
+
     public bool Loaded { get; private set; }
 
     // ------------------------------------------------------------------ the ground
@@ -438,9 +451,198 @@ void main()
     finalColor = vec4(color, 1.0);
 }";
 
+    // ------------------------------------------------------------------ what stands on the ground (plan 32 · OW9)
+
+    // Static scenery is drawn with an identity model (its places are in its vertices), and a mesh drawn many times is
+    // given a transform each (raylib's DrawMeshInstanced binds them to instanceTransform, whose place is pinned so every
+    // program agrees on it). Vertex alpha under 1 sways in the wind, and what sways fully (a tuft's tips) parts round
+    // whoever walks through it, as the field's grass does; both offsets are worked out in the world
+    private const string SceneryVertex = @"#version 330
+in vec3 vertexPosition;
+in vec2 vertexTexCoord;
+in vec3 vertexNormal;
+in vec4 vertexColor;
+#ifdef INSTANCED
+layout(location = 9) in mat4 instanceTransform;
+#endif
+uniform mat4 mvp;
+uniform mat4 matModel;
+uniform float time;
+uniform float wind;
+uniform float still;
+uniform vec4 walkers[8];
+uniform int walkerCount;
+out vec2 fragTexCoord;
+out vec4 fragColor;
+out vec3 fragNormal;
+out vec3 fragWorld;
+
+vec3 SwayOffset(vec3 p, float weight)
+{
+    if (weight <= 0.0 || still >= 1.0) return vec3(0.0);
+    float t = time * 1.6 + p.x * 0.42 + p.z * 0.27;
+    float gust = 0.5 + 0.5 * sin(time * 0.52 - p.x * 0.07 - p.z * 0.03);
+    gust *= gust;
+    float strength = 0.75 + 0.6 * gust + wind * (0.6 + gust);
+    return vec3(sin(t) * 0.07 * strength + 0.05 * gust * (0.5 + wind), 0.0, cos(t * 0.83) * 0.035 * strength) * weight;
+}
+
+vec3 PartOffset(vec3 p, float weight)
+{
+    vec3 offset = vec3(0.0);
+    float bend = smoothstep(0.7, 1.0, weight);
+    if (bend <= 0.0) return offset;
+    for (int i = 0; i < walkerCount; i++)
+    {
+        vec2 d = p.xz - walkers[i].xz;
+        float k = 1.0 - smoothstep(0.25, 0.75, length(d));
+        if (k <= 0.0) continue;
+        vec2 away = normalize(d + vec2(0.0001, 0.0));
+        offset += vec3(away.x * 0.22, -0.16, away.y * 0.22) * k * bend;
+    }
+    return offset;
+}
+
+void main()
+{
+#ifdef INSTANCED
+    mat4 model = instanceTransform;
+#else
+    mat4 model = matModel;
+#endif
+    vec3 world = (model * vec4(vertexPosition, 1.0)).xyz;
+    float weight = 1.0 - vertexColor.a;
+    vec3 sway = SwayOffset(world, weight) + PartOffset(world, weight);
+    fragTexCoord = vertexTexCoord;
+    fragColor = vec4(vertexColor.rgb, 1.0);
+    fragNormal = normalize(mat3(model) * vertexNormal);
+    fragWorld = world + sway;
+#ifdef INSTANCED
+    gl_Position = mvp * vec4(fragWorld, 1.0);
+#else
+    gl_Position = mvp * vec4(vertexPosition + sway, 1.0);
+#endif
+}";
+
+    // Lit as the ground is (the battle scenery's band, the three maps' shadows, the cloud shade, the light about the
+    // player under rock, the fog), and glass marked lit in the art's alpha glowing after dark as the field's does
+    private const string SceneryFragment = @"#version 330
+in vec2 fragTexCoord;
+in vec4 fragColor;
+in vec3 fragNormal;
+in vec3 fragWorld;
+uniform sampler2D texture0;
+uniform vec4 colDiffuse;
+uniform vec3 sunDir;
+uniform vec3 sunColor;
+uniform vec3 skyAmbient;
+uniform vec3 groundAmbient;
+uniform float worldRamp;
+uniform float glowPublic;
+uniform float glowHome;
+uniform vec3 glowColor;
+out vec4 finalColor;
+" + Shared + CascadeFunctions + @"
+void main()
+{
+    if (mirrorClip.x > 0.5 && fragWorld.y < mirrorClip.y) discard;
+    vec4 texel = texture(texture0, fragTexCoord);
+    if (texel.a < 0.5) discard;
+    vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
+    vec3 n = normalize(fragNormal);
+#ifdef TWO_SIDED
+    // A building is seen from every side: the underside of an eave, seen from below, is lit as facing down
+    if (!gl_FrontFacing) n = -n;
+#endif
+    float ndl = dot(n, sunDir);
+    float shadow = ndl > 0.0 ? CascadeShadow(fragWorld, n) : 0.0;
+    vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
+    float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
+    vec3 color = albedo * (ambient + sunColor * diffuse * shadow * CloudLight(fragWorld) + Lamp(fragWorld, n));
+    if (texel.a < 0.95)
+    {
+        float amount = texel.a > 0.7 ? glowPublic : glowHome;
+        float tone = dot(texel.rgb, vec3(0.3, 0.5, 0.2));
+        color = mix(color, glowColor * (0.62 + 0.5 * tone), amount);
+    }
+    finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
+}";
+
+    // The instanced meshes into the shadow maps: their depth alone, with what is cut out of the art cut out
+    private const string DepthFragment = @"#version 330
+in vec2 fragTexCoord;
+uniform sampler2D texture0;
+out vec4 finalColor;
+void main()
+{
+    if (texture(texture0, fragTexCoord).a < 0.5) discard;
+    finalColor = vec4(1.0);
+}";
+
+    // A card standing on its foot (vertexPosition) and turned to the camera by the program: its corner across and up in
+    // the first texture coordinate, its width, height and row of the atlas in the normal, the way the thing faces in the
+    // colour's alpha (a whole turn in 255ths: a tree's 255 is as good as nought). It shows the one of eight views (a turn
+    // of an eighth each, as they were baked, round the thing facing south) nearest the camera's side of it, and nothing
+    // nearer the camera than reach.x, where the thing itself is drawn
+    private const string ImpostorVertex = @"#version 330
+in vec3 vertexPosition;
+in vec2 vertexTexCoord;
+in vec3 vertexNormal;
+in vec4 vertexColor;
+uniform mat4 mvp;
+uniform vec3 eye;
+uniform vec2 reach;
+uniform vec2 atlasCells;
+out vec2 fragTexCoord;
+out vec3 fragWorld;
+out vec4 fragColor;
+out float fragShow;
+void main()
+{
+    vec3 foot = vertexPosition;
+    vec2 to = eye.xz - foot.xz;
+    float d = length(to);
+    vec2 t = d > 0.001 ? to / d : vec2(0.0, 1.0);
+    vec3 right = vec3(t.y, 0.0, -t.x);
+    float way = vertexColor.a * 6.2831853;
+    float view = mod(floor((atan(t.x, t.y) - way) / 0.78539816 + 0.5) + 16.0, 8.0);
+    float w = vertexNormal.x, h = vertexNormal.y, row = vertexNormal.z;
+    fragTexCoord = vec2((view + vertexTexCoord.x) / atlasCells.x, (row + 1.0 - vertexTexCoord.y) / atlasCells.y);
+    vec3 p = foot + right * ((vertexTexCoord.x - 0.5) * w) + vec3(0.0, vertexTexCoord.y * h, 0.0);
+    fragShow = d >= reach.x ? 1.0 : 0.0;
+    fragWorld = p;
+    fragColor = vec4(vertexColor.rgb, 1.0);
+    gl_Position = mvp * vec4(fragShow > 0.5 ? p : foot, 1.0);
+}";
+
+    // Lit as the field's sprites are (the sky's light and the sun's, no shade of their own: their bake has it), and fogged
+    private const string ImpostorFragment = @"#version 330
+in vec2 fragTexCoord;
+in vec3 fragWorld;
+in vec4 fragColor;
+in float fragShow;
+uniform sampler2D texture0;
+uniform vec3 sunDir;
+uniform vec3 sunColor;
+uniform vec3 skyAmbient;
+out vec4 finalColor;
+" + Shared + @"
+void main()
+{
+    if (fragShow < 0.5) discard;
+    vec4 texel = texture(texture0, fragTexCoord);
+    if (texel.a < 0.5) discard;
+    float sun = max(sunDir.y, 0.0);
+    vec3 light = skyAmbient * 0.7 + sunColor * (0.35 + 0.45 * sun) * CloudLight(fragWorld);
+    finalColor = vec4(ApplyFog(texel.rgb * fragColor.rgb * light, fragWorld), 1.0);
+}";
+
     /// <summary>A program that reads the shadow maps, compiled for the way this machine filters them (as the field's are).</summary>
     private static string Shadowed(string fragment) =>
         FieldShaders.HardwareShadows ? fragment.Replace("#version 330", "#version 330\n#define HARDWARE_PCF") : fragment;
+
+    /// <summary>The vertex program of a mesh drawn many times, a transform to each.</summary>
+    private static string InstancedOf(string vertex) => vertex.Replace("#version 330", "#version 330\n#define INSTANCED");
 
     public void Load()
     {
@@ -448,7 +650,11 @@ void main()
         Terrain = Gpu.ShaderFrom(TerrainVertex, Shadowed(TerrainFragment), "shader");
         Water = Gpu.ShaderFrom(WaterVertex, Shadowed(WaterFragment), "shader");
         Sky = Gpu.ShaderFrom(SkyVertex, SkyFragment, "shader");
-        foreach (var shader in new[] { Terrain, Water })
+        Scenery = Gpu.ShaderFrom(SceneryVertex, Shadowed(SceneryFragment).Replace("#version 330", "#version 330\n#define TWO_SIDED"), "shader");
+        Instanced = Gpu.ShaderFrom(InstancedOf(SceneryVertex), Shadowed(SceneryFragment), "shader");
+        InstancedDepth = Gpu.ShaderFrom(InstancedOf(SceneryVertex), DepthFragment, "shader");
+        Impostor = Gpu.ShaderFrom(ImpostorVertex, ImpostorFragment, "shader");
+        foreach (var shader in new[] { Terrain, Water, Scenery, Instanced })
             for (int i = 0; i < OpenCascades.Count; i++) SetInt(shader, $"shadow{i}", OpenCascades.Slots[i]);
         Loaded = true;
     }
@@ -459,10 +665,50 @@ void main()
         Gpu.Unload(Terrain);
         Gpu.Unload(Water);
         Gpu.Unload(Sky);
+        Gpu.Unload(Scenery);
+        Gpu.Unload(Instanced);
+        Gpu.Unload(InstancedDepth);
+        Gpu.Unload(Impostor);
         Loaded = false;
     }
 
-    private Shader[] Lit => new[] { Terrain, Water };
+    private Shader[] Lit => new[] { Terrain, Water, Scenery, Instanced, Impostor };
+
+    /// <summary>What sways and parts (plan 32 · OW9): the time, the wind, the options' REDUCE MOTION and up to eight walkers' feet.</summary>
+    public void SetMotion(float time, float wind, bool still, System.Collections.Generic.IReadOnlyList<Vector3> walkers)
+    {
+        int count = System.Math.Min(walkerBuffer.Length, walkers.Count);
+        for (int i = 0; i < count; i++) walkerBuffer[i] = new Vector4(walkers[i], 1f);
+        foreach (var shader in new[] { Scenery, Instanced, InstancedDepth })
+        {
+            Set(shader, "time", time);
+            Set(shader, "wind", wind);
+            Set(shader, "still", still ? 1f : 0f);
+            SetInt(shader, "walkerCount", count);
+            int loc = FieldShaders.Location(shader, "walkers");
+            if (loc >= 0 && count > 0) Raylib.SetShaderValueV(shader, loc, walkerBuffer, ShaderUniformDataType.Vec4, count);
+        }
+    }
+
+    private readonly Vector4[] walkerBuffer = new Vector4[8];
+
+    /// <summary>The glow of lit glass after dark (plan 32 · OW9): lights that burn all night, the windows of homes, and their colour.</summary>
+    public void SetGlow(float publicLevel, float homeLevel, Vector3 colour)
+    {
+        Set(Scenery, "glowPublic", publicLevel);
+        Set(Scenery, "glowHome", homeLevel);
+        Set(Scenery, "glowColor", colour);
+        Set(Instanced, "glowPublic", 0f);
+        Set(Instanced, "glowHome", 0f);
+    }
+
+    /// <summary>Where the camera is, how near it the impostors give way to the things themselves, and how many views and rows their atlas has.</summary>
+    public void SetImpostors(Vector3 eye, float reach, int views, int rows)
+    {
+        Set(Impostor, "eye", eye);
+        Set(Impostor, "reach", new Vector2(reach, 0f));
+        Set(Impostor, "atlasCells", new Vector2(views, rows));
+    }
 
     /// <summary>The sun and the sky's light, the camera's place and way, and the ground's band (the battle scenery's).</summary>
     public void SetLight(SceneLighting light, Vector3 eye, Vector3 forward, float worldRamp)
@@ -476,7 +722,7 @@ void main()
             Set(shader, "viewPos", eye);
             Set(shader, "viewForward", Vector3.Normalize(forward));
         }
-        Set(Terrain, "worldRamp", worldRamp);
+        foreach (var shader in new[] { Terrain, Scenery, Instanced }) Set(shader, "worldRamp", worldRamp);
     }
 
     public void SetFog(Vector3 colour, float amount, float near, float far, float cloudShade, float time)
@@ -519,7 +765,10 @@ void main()
     }
 
     /// <summary>The mirror pass's cut: nothing under the plane is drawn while it runs (off: nought).</summary>
-    public void SetMirrorClip(bool on, float plane) => Set(Terrain, "mirrorClip", on ? new Vector2(1f, plane) : Vector2.Zero);
+    public void SetMirrorClip(bool on, float plane)
+    {
+        foreach (var shader in new[] { Terrain, Scenery, Instanced }) Set(shader, "mirrorClip", on ? new Vector2(1f, plane) : Vector2.Zero);
+    }
 
     /// <summary>What the water reads of the mirror: whether it mirrors, the plane and the mirrored camera's view and projection.</summary>
     public void SetWaterMirror(bool on, float plane, Matrix4x4 mirrorVP)

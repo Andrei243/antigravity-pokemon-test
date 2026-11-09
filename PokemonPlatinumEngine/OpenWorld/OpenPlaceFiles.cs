@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.OpenWorld;
 
@@ -30,11 +31,53 @@ public sealed class OpenPlaceFile
     /// <summary>Water laid by hand: a rectangle on the ground and its surface (a fountain's basin, a pool).</summary>
     public List<OpenWaterFile> Water { get; set; } = new();
 
-    /// <summary>Solid boxes the capsule collides with (a building's block, a prop's), until the kit lays them itself (OW9).</summary>
+    /// <summary>Solid boxes the capsule collides with (a building's block, a prop's), each drawn as a building where it says how it is built (OW9).</summary>
     public List<OpenSolidFile> Solids { get; set; } = new();
 
     /// <summary>People and trainers (plan 32 · OW6): unique in the map by name, and never named as a marker is.</summary>
     public List<OpenPersonFile> People { get; set; } = new();
+
+    /// <summary>Trees standing one by one (plan 32 · OW9): scenery, which the capsule walks through.</summary>
+    public List<OpenTreeFile> Trees { get; set; } = new();
+
+    /// <summary>Groves (plan 32 · OW9): polygons filled with trees on a jittered grid.</summary>
+    public List<OpenGroveFile> Groves { get; set; } = new();
+}
+
+/// <summary>A tree: its foot ([x, z] on the highest ground there, or [x, y, z] on the ground nearest y), its kind and its size.</summary>
+public sealed class OpenTreeFile
+{
+    [DataRequired] public double[] At { get; set; } = Array.Empty<double>();
+    public OpenTreeKind Kind { get; set; } = OpenTreeKind.Pine;
+    public double Size { get; set; } = 1;
+}
+
+/// <summary>
+/// A grove: a polygon on the ground, how far apart its trees stand (<c>spacing</c>, metres), the share of its cells
+/// that hold one (<c>fill</c>), the share of those that are pines (<c>pines</c>), their sizes ([least, most]) and a seed.
+/// </summary>
+public sealed class OpenGroveFile
+{
+    [DataRequired] public string Name { get; set; } = "";
+    [DataRequired] public double[][] Polygon { get; set; } = Array.Empty<double[]>();
+    public double Spacing { get; set; } = 6;
+    public double Fill { get; set; } = 0.8;
+    public double Pines { get; set; } = 0.5;
+    public double[] Size { get; set; } = { 0.9, 1.25 };
+    public int Seed { get; set; }
+}
+
+/// <summary>
+/// How a solid is built (plan 32 · OW9): the kit's kind of building, the town whose way of building a house follows,
+/// its storeys (nought: its style's), the way its front faces (<c>down</c>, south, unless told) and the name over its door.
+/// </summary>
+public sealed class OpenBuildingFile
+{
+    public BuildingKind Kind { get; set; } = BuildingKind.House;
+    public Architecture Town { get; set; } = Architecture.Timber;
+    public int Storeys { get; set; }
+    public Direction Faces { get; set; } = Direction.Down;
+    public string? Sign { get; set; }
 }
 
 /// <summary>
@@ -150,12 +193,13 @@ public sealed class OpenWaterFile
     [DataRequired] public double Level { get; set; }
 }
 
-/// <summary>A solid box: its name and two corners in the air.</summary>
+/// <summary>A solid box: its name and two corners in the air, and how it is built where it is a building (plan 32 · OW9).</summary>
 public sealed class OpenSolidFile
 {
     [DataRequired] public string Name { get; set; } = "";
     [DataRequired] public double[] Min { get; set; } = Array.Empty<double>();
     [DataRequired] public double[] Max { get; set; } = Array.Empty<double>();
+    public OpenBuildingFile? Building { get; set; }
 }
 
 /// <summary>What the game reads of a region's <c>world.json</c>: its areas and its maps (the baker reads the whole file strictly).</summary>
@@ -225,9 +269,34 @@ public static class OpenPlaceFiles
             map.Add(new OpenZone(z.Name, key, z.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(z.MinY), OpenPos.Millimetres(z.MaxY),
                 z.Slots.Select(s => new OpenSlot(s.Species, s.MinLevel, s.MaxLevel, s.Weight)).ToList(), z.Density, z.Cap));
         foreach (var w in place.Water) map.Add(OpenWaterBox.Metres(w.Name, w.Min[0], w.Min[1], w.Max[0], w.Max[1], w.Level));
-        foreach (var s in place.Solids) map.Add(OpenBox.Metres(s.Name, s.Min[0], s.Min[1], s.Min[2], s.Max[0], s.Max[1], s.Max[2]));
+        foreach (var s in place.Solids)
+        {
+            var box = OpenBox.Metres(s.Name, s.Min[0], s.Min[1], s.Min[2], s.Max[0], s.Max[1], s.Max[2]);
+            map.Add(box);
+            if (s.Building is { } b) map.Add(new OpenBuilding(box, b.Kind, b.Town, b.Storeys, b.Faces, b.Sign));
+        }
         foreach (var p in place.People) map.Add(PersonOf(key, p));
+        // Scenery (plan 32 · OW9): the trees standing one by one, then the groves'
+        foreach (var t in place.Trees) map.Add(TreeOf(t));
+        foreach (var g in place.Groves) map.Add(GroveOf(g));
     }
+
+    /// <summary>A tree of a place as the map keeps it (plan 32 · OW9).</summary>
+    public static OpenTree TreeOf(OpenTreeFile t)
+    {
+        bool high = t.At.Length == 3;
+        int x = OpenPos.Millimetres(t.At[0]), z = OpenPos.Millimetres(t.At[^1]);
+        // A tree standing by itself takes its shape and its turn from where it stands
+        uint h = Core.SplitMix.Mix(0x7e3f1a2bu, (uint)x, (uint)z);
+        return new OpenTree(x, z, high ? OpenPos.Millimetres(t.At[1]) : null, t.Kind, (int)Math.Round(t.Size * 1000, MidpointRounding.AwayFromZero),
+            (int)(h % OpenTree.Variants), (int)((h >> 8) & 0xFFFF));
+    }
+
+    /// <summary>A grove of a place as the map keeps it (plan 32 · OW9): its numbers in whole millimetres and thousandths.</summary>
+    public static OpenGrove GroveOf(OpenGroveFile g) =>
+        new(g.Name, g.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(g.Spacing),
+            (int)Math.Round(g.Fill * 1000, MidpointRounding.AwayFromZero), (int)Math.Round(g.Pines * 1000, MidpointRounding.AwayFromZero),
+            (int)Math.Round(g.Size[0] * 1000, MidpointRounding.AwayFromZero), (int)Math.Round(g.Size[1] * 1000, MidpointRounding.AwayFromZero), g.Seed);
 
     /// <summary>Someone of a place as the map keeps them (plan 32 · OW6).</summary>
     public static OpenPerson PersonOf(string key, OpenPersonFile p)
@@ -346,9 +415,33 @@ public static class OpenPlaceFiles
             Point(place.Solids[i].Min, 3, file, $"$.solids[{i}].min");
             Point(place.Solids[i].Max, 3, file, $"$.solids[{i}].max");
             if (place.Solids[i].Min.Zip(place.Solids[i].Max).Any(p => p.Second <= p.First)) Fail(file, $"$.solids[{i}]", "max is more than min on every axis");
+            if (place.Solids[i].Building is { } b && (b.Storeys < 0 || b.Storeys > MostStoreys)) Fail(file, $"$.solids[{i}].building.storeys", $"is nought (its style's own) to {MostStoreys}");
         }
         Validate(place.People, file);
+        for (int i = 0; i < place.Trees.Count; i++)
+        {
+            var t = place.Trees[i];
+            if (t.At.Length is not (2 or 3)) Fail(file, $"$.trees[{i}].at", "a tree's foot is [x, z], or [x, y, z] near a height");
+            if (!(t.Size > 0) || t.Size * 1000 > OpenTree.Largest) Fail(file, $"$.trees[{i}].size", $"is more than nought and {OpenTree.Largest / 1000} at most");
+        }
+        for (int i = 0; i < place.Groves.Count; i++)
+        {
+            var g = place.Groves[i];
+            string at = $"$.groves[{i}]";
+            Polygon(g.Polygon, file, at + ".polygon");
+            if (!(g.Spacing >= LeastSpacing) || g.Spacing > MostSpacing) Fail(file, at + ".spacing", $"is {LeastSpacing} to {MostSpacing} metres");
+            if (!(g.Fill > 0) || g.Fill > 1) Fail(file, at + ".fill", "is a share of the cells, more than nought and one at most");
+            if (!(g.Pines >= 0) || g.Pines > 1) Fail(file, at + ".pines", "is a share of the trees, nought to one");
+            if (g.Size.Length != 2 || !(g.Size[0] > 0) || g.Size[1] < g.Size[0] || g.Size[1] * 1000 > OpenTree.Largest)
+                Fail(file, at + ".size", $"is [least, most], more than nought, the most no less than the least and {OpenTree.Largest / 1000} at most");
+        }
     }
+
+    /// <summary>How many storeys a building of a place may have.</summary>
+    public const int MostStoreys = 6;
+
+    /// <summary>How near and how far apart a grove's trees may stand, in metres.</summary>
+    public const double LeastSpacing = 1.5, MostSpacing = 50;
 
     static void Validate(List<OpenPersonFile> people, string file)
     {

@@ -22,6 +22,9 @@ internal sealed class OpenChunkMeshes
     public Vector3 Min, Max;
     public required int[] WaterCells { get; init; }
     public required List<float> EdgeHeights { get; init; }
+
+    /// <summary>The grass's tufts on the chunk's finest ground (plan 32 · OW9), none at a thinned level.</summary>
+    public IReadOnlyList<OpenTuft> Tufts { get; init; } = Array.Empty<OpenTuft>();
     public bool HasWater => Water != null;
 
     public void Unload()
@@ -216,6 +219,7 @@ internal sealed class OpenStream
             {
                 X = x, Z = z, Level = level, WaterCells = chunk.Water,
                 EdgeHeights = OpenTerrainMesh.EdgeHeights(chunk, x == bounds.X0, x == bounds.X1, z == bounds.Z0, z == bounds.Z1),
+                Tufts = OpenGrass.Of(chunk),
                 SurfaceTriangles = surface.Triangles, WaterTriangles = water?.Triangles ?? 0,
                 Min = surface.Min, Max = surface.Max
             };

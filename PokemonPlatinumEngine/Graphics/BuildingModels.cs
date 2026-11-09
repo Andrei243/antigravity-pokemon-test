@@ -56,7 +56,11 @@ internal static class BuildingModels
     }
 
     /// <param name="baseY">The height of the ground the building stands on.</param>
-    public static void Add(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, float baseY = 0f)
+    /// <param name="allSides">
+    /// Seen from every side (plan 32 · OW9, the open world's orbiting camera): the back wall and the roof's back fascia
+    /// are drawn too, which the field's camera, always looking north, never sees. Off, nothing is drawn that wasn't.
+    /// </param>
+    public static void Add(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, float baseY = 0f, bool allSides = false)
     {
         kit.Origin = new Vector3(b.X0, baseY, b.Y0);
         string id = $"b{b.X0}_{b.Y0}";
@@ -94,8 +98,9 @@ internal static class BuildingModels
             east = kit.Face(id + ".east", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h, along.Select(d => depth - d).ToList()));
         }
         else west = east = kit.Face(id + ".side", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h));
+        Art? back = allSides ? kit.Face(id + ".back", x1 - x0, h, c => BuildingArt.PaintSide(c, b, s, h)) : null;
         kit.Box(x0, x1, zB, zF, 0, h, south: front,
-            west: new Art(west.X, west.Y + gable, west.Width, h), east: new Art(east.X, east.Y + gable, east.Width, h));
+            west: new Art(west.X, west.Y + gable, west.Width, h), east: new Art(east.X, east.Y + gable, east.Width, h), north: back);
         if (gable > 0)
         {
             float apex = gable - (ridgeY - h);
@@ -107,8 +112,8 @@ internal static class BuildingModels
 
         switch (s.Roof)
         {
-            case RoofShape.Gable: GableRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave); break;
-            case RoofShape.Hip: HipRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave); break;
+            case RoofShape.Gable: GableRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave, allSides); break;
+            case RoofShape.Hip: HipRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave, allSides); break;
             default: FlatRoof(kit, b, s, x0, x1, zB, zF, h); break;
         }
         if (stages) Stages(kit, b, whole, targets, id, x0, x1, zB, zF, h);
@@ -333,7 +338,7 @@ internal static class BuildingModels
     // ------------------------------------------------------------------ roofs
 
     /// <summary>A gable roof with its ridge running east–west: the south slope faces the camera, tile rows level.</summary>
-    private static void GableRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave)
+    private static void GableRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave, bool allSides = false)
     {
         var tiles = targets.RoofTiles(s.RoofColor);
         float vs = kit.VS, half = (zF - zB) / 2f, zMid = zB + half;
@@ -356,6 +361,7 @@ internal static class BuildingModels
         // The board along the front eave, and the bargeboards that follow the slopes at both gable ends
         var fascia = kit.Face($"fascia.{Key(Trim)}.{width}", width, Fascia, c => BuildingArt.PaintFascia(c, Trim));
         kit.Box(rx0, rx1, zF + Eave - 1, zF + Eave, eaveY - Fascia, eaveY, south: fascia);
+        if (allSides) kit.Box(rx0, rx1, zB - BackEave, zB - BackEave + 1, backY - Fascia, backY, north: fascia);
 
         int len = (int)MathF.Round(p.Slope);
         var verge = kit.Face($"fascia.{Key(Trim)}.{len}", len, Fascia, c => BuildingArt.PaintFascia(c, Trim));
@@ -380,7 +386,7 @@ internal static class BuildingModels
             }
         }
 
-        if (s.Chimney) Chimney(kit, x0 + 20, zMid + 5, h, ridgeY);
+        if (s.Chimney) Chimney(kit, x0 + 20, zMid + 5, h, ridgeY, allSides);
         if (s.Gear.HasFlag(RoofGear.Spire))
             kit.Sprite(kit.Face("spire", 16, 44, BuildingArt.PaintSpire), cx, zMid + 1, ridgeY - 3);
         if (s.Gear.HasFlag(RoofGear.Solar)) SolarPanel(kit, cx, eaveY, zF + Eave, ridgeY, zMid, southN);
@@ -395,7 +401,7 @@ internal static class BuildingModels
     }
 
     /// <summary>A hip roof: four slopes of the same pitch meeting at a short ridge.</summary>
-    private static void HipRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave)
+    private static void HipRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave, bool allSides = false)
     {
         var tiles = targets.RoofTiles(s.RoofColor);
         float vs = kit.VS, zMid = (zB + zF) / 2f, cx = (x0 + x1) / 2f;
@@ -436,7 +442,7 @@ internal static class BuildingModels
         int width = (int)(rx1 - rx0), depth = (int)(rz1 - rz0);
         var front = kit.Face($"fascia.{Key(dark)}.{width}", width, Fascia, c => BuildingArt.PaintFascia(c, dark));
         var flank = kit.Face($"fascia.{Key(dark)}.{depth}", depth, Fascia, c => BuildingArt.PaintFascia(c, dark));
-        kit.Box(rx0, rx1, rz0, rz1, eaveY - Fascia, eaveY, south: front, west: flank, east: flank);
+        kit.Box(rx0, rx1, rz0, rz1, eaveY - Fascia, eaveY, south: front, west: flank, east: flank, north: allSides ? front : null);
         if (s.Gear.HasFlag(RoofGear.Solar) && ex1 - ex0 >= 40)
             SolarPanel(kit, cx, eaveY, rz1, ridgeY, zMid, Vector3.Normalize(new Vector3(0, p.Run, rise)));
     }
@@ -530,12 +536,12 @@ internal static class BuildingModels
     }
 
     /// <summary>A stone chimney, 12 texels square, rising from the south slope to above the ridge.</summary>
-    private static void Chimney(KitBuilder kit, float x, float z, int wallTop, float ridgeY)
+    private static void Chimney(KitBuilder kit, float x, float z, int wallTop, float ridgeY, bool allSides = false)
     {
         int height = (int)MathF.Round(ridgeY + 9 - wallTop);
         var side = kit.Face($"chimney.{height}", 12, height, c => BuildingArt.PaintChimney(c, top: false));
         var top = kit.Face("chimney.top", 12, 12, c => BuildingArt.PaintChimney(c, top: true));
-        kit.Box(x, x + 12, z, z + 12, wallTop, wallTop + height, top, side, side, side);
+        kit.Box(x, x + 12, z, z + 12, wallTop, wallTop + height, top, side, side, side, allSides ? side : null);
     }
 
     /// <summary>

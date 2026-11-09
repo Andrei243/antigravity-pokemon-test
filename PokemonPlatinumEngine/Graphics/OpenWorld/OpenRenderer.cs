@@ -7,28 +7,34 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics.OpenWorld;
 
-/// <summary>What one frame of an open map shows: the map, the player, the camera, the hour, the weather and the cave's share, in metres.</summary>
+/// <summary>
+/// What one frame of an open map shows: the map, the player, the camera, the hour, the weather and the cave's share, in
+/// metres; and (plan 32 · OW9) who and what stands there beside the player, and whom the grass parts round.
+/// </summary>
 internal sealed record OpenScene(
     OpenMap Map, Vector3 Feet, float Yaw, CharacterPose Pose, string? Look,
     Vector3 Eye, Vector3 Target, float Hour, FieldWeather Weather, float CaveShare, double Time,
-    bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees);
+    bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees,
+    IReadOnlyList<OpenFigure>? Figures = null, IReadOnlyList<Vector3>? Walkers = null);
 
 /// <summary>
-/// The open world's renderer I (plan 32 · OW8; style guide, "Open world"): an open map's baked land streamed by its
-/// rings, its cover chosen texel by texel and lit through three shadow maps from the sun, its water in the field's
-/// pixel art with the mirror on High and Medium, the sky of the hour by the camera's own pitch, the plain beyond the
-/// region's last chunks, the weather in the air, the cave's light under rock and the player as plan 30's grown rig, all
-/// drawn into the scene target at 1920×1080 and composited under the interface's 4K as the field is. It shares the
-/// <see cref="RenderContext"/> with the grid's and the battle's renderers, so every uniform it reads it sets each frame;
-/// nothing of theirs changes for it. Trees, grass, buildings, people and the far rings are OW9's.
+/// The open world's renderer (plan 32 · OW8 and OW9; style guide, "Open world"): an open map's baked land streamed by
+/// its rings, its cover chosen texel by texel and lit through three shadow maps from the sun, its water in the field's
+/// pixel art with the mirror on High and Medium, the sky of the hour by the camera's own pitch, the rings to the horizon
+/// beyond the region's last chunks (<see cref="OpenHorizon"/>), the weather in the air, the cave's light under rock and
+/// the player as plan 30's grown rig; and (OW9) the map's buildings and solids (<see cref="OpenBuildingKit"/>), its trees
+/// near and far and the grass's tufts (<see cref="OpenFoliage"/>), and its people, follower and Pokémon
+/// (<see cref="OpenFigureDraw"/>), all drawn into the scene target at 1920×1080 and composited under the interface's 4K
+/// as the field is. It shares the <see cref="RenderContext"/> with the grid's and the battle's renderers, so every
+/// uniform it reads it sets each frame; nothing of theirs changes for it.
 /// </summary>
 internal sealed class OpenRenderer
 {
     /// <summary>The width the scene is drawn at in an open map, on every preset (decision 5).</summary>
     public const int SceneWidth = 1920;
 
-    /// <summary>How far past the region's last chunks the plain reaches, in metres.</summary>
-    public const float HorizonReach = 2000f;
+    /// <summary>How far past the region's last chunks the land reaches, in metres (<see cref="OpenHorizon.Reach"/>).</summary>
+    public const float HorizonReach = OpenHorizon.Reach;
 
     private readonly RenderContext context;
     private readonly OpenShaders shaders = new();
@@ -36,6 +42,18 @@ internal sealed class OpenRenderer
     private readonly OpenStream stream = new();
     private readonly OpenRings rings = new();
     private readonly List<WeatherPiece> pieces = new();
+    private readonly OpenFoliage foliage = new();
+    private readonly OpenBuildingKit buildings = new();
+    private readonly OpenFigureDraw figureDraw = new();
+
+    /// <summary>The trees and grass (what they drew last frame), the buildings and the figures (plan 32 · OW9).</summary>
+    public OpenFoliage Foliage => foliage;
+    public OpenBuildingKit Buildings => buildings;
+    public OpenFigureDraw Figures => figureDraw;
+
+    /// <summary>The land beyond the region as it was made for the map in use (its mesh's triangles, its far trees).</summary>
+    public int HorizonTriangles { get; private set; }
+    public int HorizonTrees { get; private set; }
     private Texture2D atlas;
     private Material terrain, water, depth;
     private bool resources;
@@ -79,6 +97,9 @@ internal sealed class OpenRenderer
         context.EnsureLoaded();
         shaders.Load();
         cascades.Ensure(context.Quality.ShadowMapSize);
+        foliage.Ensure(shaders);
+        // The trees' impostors are baked once, before anything of a frame is set (the bake has its own light)
+        foliage.BakeImpostors(context, shaders);
         if (resources) return;
         atlas = OpenCoverArt.Upload();
         terrain = RenderContext.MaterialFor(shaders.Terrain, atlas);
@@ -115,6 +136,14 @@ internal sealed class OpenRenderer
         rings.Move(feet);
         stream.Update(rings, feet, (x, z) => view.Sees(new Vector3(x * 32f, -400f, z * 32f), new Vector3(x * 32f + 32f, 800f, z * 32f + 32f)));
         PrepareHorizon(scene.Map);
+        // What stands on the land (plan 32 · OW9): the map's buildings and trees made once a map, the frame's near trees
+        // and tufts, and the figures in view, an impostor's look baked where one is wanted (before any of the frame's
+        // uniforms: a bake sets its own light)
+        buildings.Use(scene.Map, context, shaders);
+        foliage.Prepare(scene.Eye, scene.Feet, stream.Ready);
+        var figures = scene.Figures ?? Array.Empty<OpenFigure>();
+        figureDraw.SetEye(scene.Eye);
+        figureDraw.Prepare(context, shaders, figures, scene.Eye, scene.Time);
         FrameProfiler.Lap(FrameSection.Prepare);
 
         var fs = context.Shaders;
@@ -125,6 +154,7 @@ internal sealed class OpenRenderer
         fs.SetGlow(0f, 0f, Vector3.Zero);
         fs.SetFlash(default, 0f);
         fs.SetStageWash(StageLight.None);
+        shaders.SetMotion((float)(scene.Time % 3600.0), Weathers.Wind(scene.Weather), Core.Accessibility.ReduceMotion, scene.Walkers ?? Array.Empty<Vector3>());
 
         // The rig on the screen: the player at the capsule's feet, facing its yaw
         var rigModel = scene.Look is { } look ? CharacterModels.TryGet(look, fs) : null;
@@ -144,6 +174,8 @@ internal sealed class OpenRenderer
         var lampAt = scene.Feet + new Vector3(0, (float)(OrbitCamera.Above + OpenLook.LampAbove), 0);
         shaders.SetLamp(lampAt, OpenLook.LampStrength(scene.CaveShare), OpenLook.LampColour, OpenLook.LampReach);
         shaders.SetMirrorClip(false, 0f);
+        // Lit glass after dark, as the field's (plan 32 · OW9): lamps and shops all night, homes into the evening
+        shaders.SetGlow(rig.LampGlow, rig.HomeGlow, rig.GlowColor);
         // The player is lit by the light about them under rock too, as the rock round them is
         float lamp = OpenLook.LampStrength(scene.CaveShare);
         var peopleLight = lamp > 0f ? rig.Light with { SkyAmbient = rig.Light.SkyAmbient + OpenLook.LampColour * (lamp * 0.6f) } : rig.Light;
@@ -169,8 +201,14 @@ internal sealed class OpenRenderer
         Rlgl.SetClipPlanes(OrbitCamera.Near, OrbitCamera.Far);
         Raylib.BeginMode3D(camera);
         cascades.Bind();
+        // What stands on the ground first, so the ground is not shaded where it stands
+        buildings.Draw();
+        foliage.Draw();
+        FrameProfiler.Lap(FrameSection.Foliage);
         DrawLand(view, scene);
         FrameProfiler.Lap(FrameSection.Terrain);
+        foliage.DrawImpostors(shaders, scene.Eye);
+        figureDraw.DrawImpostors(shaders, scene.Eye);
         DrawWater(view);
         FrameProfiler.Lap(FrameSection.Water);
         if (rigModel != null)
@@ -178,7 +216,12 @@ internal sealed class OpenRenderer
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Color);
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Outline);
         }
+        figureDraw.DrawLive(context, CharacterPass.Color, scene.Time);
+        figureDraw.DrawLive(context, CharacterPass.Outline, scene.Time);
         FrameProfiler.Lap(FrameSection.Characters);
+        // The light the buildings throw on the ground after dark, the "!" over a trainer, then the weather
+        buildings.DrawLights(rig);
+        figureDraw.DrawBubbles(camera, Paper(rig), scene.Time);
         DrawWeather(scene, rig);
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -239,7 +282,12 @@ internal sealed class OpenRenderer
                 Raylib.DrawMesh(chunk.Surface, depth, Matrix4x4.Identity);
                 ShadowTriangles[i] += chunk.SurfaceTriangles;
             }
+            // The buildings and the near trees cast into every map (plan 32 · OW9), the people and Pokémon into the first two, as the player
+            ShadowTriangles[i] += buildings.DrawDepth();
+            var lightCentre = camera.Target;
+            ShadowTriangles[i] += foliage.DrawDepth((min, max) => InLightBox(min, max, lightCentre, right, up, forward, radius, back));
             if (rigModel != null && i < 2) CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Depth);
+            if (i < 2) figureDraw.DrawLive(context, CharacterPass.Depth, scene.Time, centre, radius);
             Rlgl.EnableBackfaceCulling();
             Raylib.EndMode3D();
             Raylib.EndTextureMode();
@@ -296,11 +344,15 @@ internal sealed class OpenRenderer
         Rlgl.EnableBackfaceCulling();
         foreach (var chunk in stream.Ready)
             if (view.Sees(chunk.Min, chunk.Max) && chunk.Max.Y > plane) Raylib.DrawMesh(chunk.Surface, terrain, Matrix4x4.Identity);
+        // What stands over the water is mirrored too (plan 32 · OW9): the buildings, the near trees and the live figures
+        buildings.Draw();
+        foliage.Draw();
         if (rigModel != null && !scene.Swimming)
         {
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Color);
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Outline);
         }
+        figureDraw.DrawLive(context, CharacterPass.Color, scene.Time);
         shaders.SetMirrorClip(false, 0f);
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -355,129 +407,51 @@ internal sealed class OpenRenderer
     }
 
     /// <summary>
-    /// The plain beyond the region's last chunks (style guide, "Open world", "Beyond the region"), made once a map: a
-    /// ring round the region's extent that meets its border at the border's own heights, a metre under the region's
-    /// last ground and level with it a few metres out, then out to <see cref="HorizonReach"/> at the border's median
-    /// height, in the grass's tile. The heights are the ground's the rules collide with, read every 2 m round the border.
+    /// The land beyond the region's last chunks (style guide, "Open world", "Beyond the region"; plan 32 · OW9's rings
+    /// to the horizon, <see cref="OpenHorizon"/>), made once a map: rings round the region's extent that meet its border
+    /// at the border's own heights and ease to its median by 124 m, as OW8's plain did, and rise from there into far hills
+    /// with their forests out to the fog. The heights are the ground's the rules collide with, read every 2 m round the border.
     /// </summary>
     private void PrepareHorizon(OpenMap map)
     {
         var bounds = stream.Bounds;
-        if (bounds.X1 < bounds.X0) return;
+        if (bounds.X1 < bounds.X0)
+        {
+            foliage.Use(map, null);
+            return;
+        }
         if (horizonLoaded && ReferenceEquals(horizonMap, map)) return;
         if (horizonLoaded) Gpu.Unload(horizon);
         horizonLoaded = false;
         var ground = map.Ground;
-        var plain = Horizon(bounds, (x, z) => ground.Footing(x, z, 2000, -2000)?.Y is { } y ? (float)y : null);
-        horizon = plain.Pack();
+        // The rings to the horizon (plan 32 · OW9), their hills the map's own by its name, and their far forests
+        var land = OpenHorizon.Of(bounds, (x, z) => ground.Footing(x, z, 2000, -2000)?.Y is { } y ? (float)y : null, Core.SplitMix.Fnv(map.Name));
+        horizon = land.Mesh.Pack();
         Gpu.Upload(ref horizon, "openchunk");
+        HorizonTriangles = land.Mesh.Triangles;
+        HorizonTrees = land.Trees.Count;
         horizonLoaded = true;
         horizonMap = map;
+        foliage.Use(map, land.Trees);
     }
 
     private OpenMap? horizonMap;
 
-    /// <summary>How far under the region the plain's ring begins, and how far out it keeps the border's own heights, in metres.</summary>
-    public const float HorizonUnder = 1f, HorizonNear = 4f;
+    /// <summary>How far under the region the first ring begins, and how far out it keeps the border's own heights, in metres (<see cref="OpenHorizon"/>'s).</summary>
+    public const float HorizonUnder = OpenHorizon.Under, HorizonNear = OpenHorizon.Near;
 
-    /// <summary>How far out the plain has come to the border's median height (smoothstep from <see cref="HorizonNear"/>), in metres: in rings, so no crease is sharp enough for the outlines.</summary>
-    public const float HorizonLevel = 124f;
+    /// <summary>How far out the land has come to the border's median height, in metres, where the far hills begin.</summary>
+    public const float HorizonLevel = OpenHorizon.Level;
 
-    /// <summary>The rings the plain eases through between <see cref="HorizonNear"/> and <see cref="HorizonLevel"/>, in metres out.</summary>
-    private static readonly float[] HorizonEase = { 12f, 28f, 60f };
-
-    /// <summary>How far under the border's own height the plain lies: enough to stay under the region's ground, too little for the outlines to draw a line along it.</summary>
-    public const float HorizonDrop = 0.04f;
+    /// <summary>How far under the border's own height the first rings lie: under the region's ground, too little for the outlines.</summary>
+    public const float HorizonDrop = OpenHorizon.Drop;
 
     /// <summary>
-    /// The plain's ring as vertices (GPU-free): the region's extent in chunks, and the ground's height at a point
-    /// (null where there is none). A point every 2 m round the border, its height there (the lower of the border's and
-    /// the ground's <see cref="HorizonUnder"/> inside it) less <see cref="HorizonDrop"/>, kept out to
-    /// <see cref="HorizonNear"/> metres, eased through rings to the border's median by <see cref="HorizonLevel"/>
-    /// (a river's channel cut by the border fades out into the plain instead of running 2 km to the horizon as a
-    /// crease) and level out to <see cref="HorizonReach"/>; every face up.
+    /// The land beyond a region as vertices (GPU-free; <see cref="OpenHorizon.Of"/> without its trees, the hills of seed
+    /// nought): the region's extent in chunks, and the ground's height at a point (null where there is none).
     /// </summary>
-    public static OpenVertices Horizon((int X0, int Z0, int X1, int Z1) bounds, Func<float, float, float?> heightAt)
-    {
-        float side = OpenMap.ChunkSide / (float)OpenPos.PerMetre;
-        float x0 = bounds.X0 * side, z0 = bounds.Z0 * side, x1 = (bounds.X1 + 1) * side, z1 = (bounds.Z1 + 1) * side;
-        // The loop round the border, west to east along the north, then south, west and north again, a point every 2 m
-        var loop = new List<(Vector2 At, Vector2 Out)>();
-        void Side(Vector2 from, Vector2 to, Vector2 outward)
-        {
-            float length = Vector2.Distance(from, to);
-            int steps = Math.Max(1, (int)MathF.Ceiling(length / 2f));
-            for (int i = 0; i < steps; i++) loop.Add((Vector2.Lerp(from, to, i / (float)steps), outward));
-        }
-        var nw = new Vector2(x0, z0); var ne = new Vector2(x1, z0); var se = new Vector2(x1, z1); var sw = new Vector2(x0, z1);
-        Side(nw, ne, new Vector2(0, -1));
-        Side(ne, se, new Vector2(1, 0));
-        Side(se, sw, new Vector2(0, 1));
-        Side(sw, nw, new Vector2(-1, 0));
-        // A corner looks out both ways
-        for (int i = 0; i < loop.Count; i++)
-        {
-            var at = loop[i].At;
-            bool cornerX = MathF.Abs(at.X - x0) < 1e-3f || MathF.Abs(at.X - x1) < 1e-3f;
-            bool cornerZ = MathF.Abs(at.Y - z0) < 1e-3f || MathF.Abs(at.Y - z1) < 1e-3f;
-            if (cornerX && cornerZ) loop[i] = (at, Vector2.Normalize(new Vector2(at.X - (x0 + x1) / 2f, at.Y - (z0 + z1) / 2f)));
-        }
-        var heights = new float[loop.Count];
-        var all = new List<float>();
-        for (int i = 0; i < loop.Count; i++)
-        {
-            var (at, outward) = loop[i];
-            var edge = at - outward * 0.3f;
-            var inner = at - outward * HorizonUnder;
-            float? h = heightAt(edge.X, edge.Y), hi = heightAt(inner.X, inner.Y);
-            float best = h is { } a && hi is { } b ? MathF.Min(a, b) : h ?? hi ?? float.NaN;
-            heights[i] = best;
-            if (!float.IsNaN(best)) all.Add(best);
-        }
-        all.Sort();
-        float median = all.Count > 0 ? all[all.Count / 2] : 0f;
-        for (int i = 0; i < heights.Length; i++) if (float.IsNaN(heights[i])) heights[i] = median;
-
-        // The rings out from the border: under the region, the border's own heights, the ease, level, the horizon
-        var outs = new List<float> { -HorizonUnder, HorizonNear };
-        outs.AddRange(HorizonEase);
-        outs.Add(HorizonLevel);
-        outs.Add(HorizonReach);
-        float HeightAt(int i, float outward)
-        {
-            float own = heights[i] - HorizonDrop;
-            if (outward <= HorizonNear) return own;
-            if (outward >= HorizonLevel) return median;
-            float t = (outward - HorizonNear) / (HorizonLevel - HorizonNear);
-            return own + (median - own) * (t * t * (3f - 2f * t));
-        }
-
-        var plain = new OpenVertices(loop.Count * (outs.Count - 1) * 6);
-        var covers = OpenTerrainMesh.Covers(OpenCover.Grass, OpenCover.Grass, OpenCover.Grass);
-        void Tri(Vector3 a, Vector3 b, Vector3 c)
-        {
-            if (Vector3.Cross(b - a, c - a).Y < 0) (b, c) = (c, b);
-            plain.Add(a, Vector3.UnitY, covers, OpenTerrainMesh.Corners[0]);
-            plain.Add(b, Vector3.UnitY, covers, OpenTerrainMesh.Corners[1]);
-            plain.Add(c, Vector3.UnitY, covers, OpenTerrainMesh.Corners[2]);
-        }
-        Vector3 Ring(int i, float outward)
-        {
-            var p = loop[i].At + loop[i].Out * outward;
-            return new Vector3(p.X, HeightAt(i, outward), p.Y);
-        }
-        for (int i = 0; i < loop.Count; i++)
-        {
-            int j = (i + 1) % loop.Count;
-            for (int r = 0; r + 1 < outs.Count; r++)
-            {
-                var ai = Ring(i, outs[r]); var aj = Ring(j, outs[r]);
-                var bi = Ring(i, outs[r + 1]); var bj = Ring(j, outs[r + 1]);
-                Tri(ai, bi, bj); Tri(ai, bj, aj);
-            }
-        }
-        return plain;
-    }
+    public static OpenVertices Horizon((int X0, int Z0, int X1, int Z1) bounds, Func<float, float, float?> heightAt) =>
+        OpenHorizon.Of(bounds, heightAt, 0u, trees: false).Mesh;
 
     // ------------------------------------------------------------------ the weather
 
@@ -540,8 +514,23 @@ internal sealed class OpenRenderer
     private static Color ToColour(Vector3 c) =>
         new((int)Math.Clamp(c.X * 255f, 0f, 255f), (int)Math.Clamp(c.Y * 255f, 0f, 255f), (int)Math.Clamp(c.Z * 255f, 0f, 255f), 255);
 
-    /// <summary>Lets go of the map's chunks (another map, or none).</summary>
-    public void Forget() => stream.Use(null);
+    /// <summary>How bright a bubble's paper is under a rig: dimmed some of the way with the scene after dark, as the grid's (it is paper, not a lamp).</summary>
+    private static float Paper(LightRig rig)
+    {
+        var level = rig.Light.SkyAmbient * 0.8f + rig.Light.SunColor * MathF.Max(0f, rig.Light.SunDirection.Y) * 0.9f;
+        float brightness = Math.Clamp((level.X + level.Y + level.Z) / 3f * 1.35f, 0f, 1f);
+        return 0.35f + 0.65f * brightness;
+    }
+
+    /// <summary>Lets go of the map's chunks, buildings and trees (another map, or none).</summary>
+    public void Forget()
+    {
+        stream.Use(null);
+        buildings.Use(null, context, shaders);
+        foliage.Use(null, null);
+        // The land beyond is made again with the trees, whatever map comes next
+        horizonMap = null;
+    }
 
     public void Unload()
     {
@@ -552,6 +541,9 @@ internal sealed class OpenRenderer
         horizonMap = null;
         if (resources) Gpu.Unload(atlas);
         resources = false;
+        buildings.Unload();
+        foliage.Unload();
+        figureDraw.Unload();
         shaders.Unload();
     }
 }
