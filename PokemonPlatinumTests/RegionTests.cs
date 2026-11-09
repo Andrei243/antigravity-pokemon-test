@@ -192,7 +192,9 @@ public class RegionTests
         progress.CompleteRegion(RegionDatabase.Kalos);
         Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Kalos)!, progress));
         progress.CompleteRegion(RegionDatabase.Alola);
-        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Alola)!, progress));
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Alola)!, progress));
+        progress.CompleteRegion(RegionDatabase.Galar);
+        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Galar)!, progress));
     }
 
     [Fact]

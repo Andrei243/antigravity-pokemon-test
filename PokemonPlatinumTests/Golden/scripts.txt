@@ -6390,6 +6390,25 @@ way -
 from Referee at 3,7 of PoniGauntlet_BattleTreeHall
 way -
   Referee> No challenge is under way. The receptionist in the lobby takes your entries.
+=== Postwick_HopsHouse.HopsMum
+from Hop's Mum at 7,6 of Postwick_HopsHouse
+way -
+  Hop's Mum> Hop's been up since dawn waiting for Leon's train. I don't think he slept a wink.
+=== Postwick_PlayersHouse_1F.Mum
+from Mum at 7,8 of Postwick_PlayersHouse_1F
+way 0
+  Mum> Mum: Home again, love? Sit down a minute and let your Pokémon rest.
+  Mum> Mum: ...There. All of you are fit as fiddles again.
+  Mum> By the way, would you like a reminder of what to do next?
+  Mum> Let me see... Go downstairs. Mum has news about Hop.
+  ? By the way, would you like a reminder of what to do next? = Yes
+  * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
+=== Postwick_PlayersHouse_2F.Wardrobe
+from the sign at 5,4 of Postwick_PlayersHouse_2F
+way -
+  * open Wardrobe
 === ResortAreaHouse.Boy
 from Boy at 8,7 of ResortAreaHouse
 way -
@@ -6955,6 +6974,14 @@ way 1, from answer 1
   Old Gentleman> Ah... Never mind me, then.
   Old Gentleman> I had only hoped to ease a guilty mind a little...
   ? Would you... would you hear an old man's tale? = No
+=== Route2_MagnoliasHouse.Magnolia
+from Prof. Magnolia at 7,5 of Route2_MagnoliasHouse
+way -
+  Prof. Magnolia> A Pokémon that grows to the size of a house. Galar is the only place it happens, and I mean to learn why.
+=== Route2_MagnoliasHouse.Sonia
+from Sonia at 2,4 of Route2_MagnoliasHouse
+way -
+  Sonia> Gran's been studying Dynamaxing since before I was born. I keep telling her to write it all down somewhere sensible.
 === RowanLab.Assistant
 from {assistant} at 7,14 of RowanLab
 way -
@@ -8535,6 +8562,14 @@ way -
   + FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
   + FLAG_VOLKNER_RETURNED_TO_GYM
   + seen VistaLighthouse.Volkner at the lighthouse
+=== Wedgehurst_ResearchLab.Researcher
+from Researcher at 7,4 of Wedgehurst_ResearchLab
+way -
+  Researcher> Sonia works here, the professor's granddaughter. She's out at her gran's on Route 2 most days, digging through old books.
+=== Wedgehurst_Station.Attendant
+from Station Attendant at 7,5 of Wedgehurst_Station
+way -
+  Station Attendant> Trains north to the Wild Area and Motostoke. Gym challengers travel free, with an endorsement.
 === abandoned_ship_captains_office.SternsAide
 from Scientist at 3,4 of AbandonedShip_CaptainsOffice
 way -
@@ -13918,6 +13953,21 @@ way -
 === common.GabbyAndTyUpdateLocation
 from a trainer with lines of their own
 way -
+=== common.GalarNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_GALAR_HIDE_HOP_GARDEN
+  + FLAG_GALAR_HIDE_HOP_GARDEN2
+  + FLAG_GALAR_HIDE_HOP_GATE
+  + FLAG_GALAR_HIDE_HOP_LAKE
+  + FLAG_GALAR_HIDE_HOP_STATION
+  + FLAG_GALAR_HIDE_HOP_WEALD
+  + FLAG_GALAR_HIDE_HOP_WEDGEHURST
+  + FLAG_GALAR_HIDE_LEON_GARDEN
+  + FLAG_GALAR_HIDE_LEON_LAKE
+  + FLAG_GALAR_HIDE_LEON_STATION
+  + FLAG_GALAR_HIDE_MAGNOLIA_LAKE
+  + FLAG_GALAR_STORY_BEGUN
 === common.GlobalLink
 from a trainer with lines of their own
 way -
