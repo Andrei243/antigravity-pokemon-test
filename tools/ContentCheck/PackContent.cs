@@ -14,7 +14,7 @@ namespace ContentCheck;
 public static class PackContent
 {
     /// <summary>The folders of a data folder the checks read, and so the ones a merge copies.</summary>
-    public static readonly string[] Folders = { "scripts", "maps", "world", "text" };
+    public static readonly string[] Folders = { "scripts", "maps", "world", "text", GameContent.OpenFolder };
 
     /// <summary>Lays the game's checked folders and the packs' files over them into <paramref name="into"/> (emptied first).</summary>
     public static void Merge(string gameRoot, IReadOnlyList<DataLayer> packs, string into)
@@ -32,6 +32,8 @@ public static class PackContent
         foreach (string path in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories))
         {
             string relative = Path.GetRelativePath(from, path);
+            // An open region's bake is no file the checks read (they read its descriptions and places: plan 33 · GL1)
+            if (folder == GameContent.OpenFolder && relative.Replace('\\', '/').Split('/').Contains("baked")) continue;
             // A region's world.json is the game's own, but a region a pack adds, which the game has none of (plan 16 · T14)
             if (fromPack && (DataLayers.IsFixed(Path.Combine(folder, relative), gameRoot) || path.EndsWith(DataLayers.PatchSuffix, StringComparison.OrdinalIgnoreCase))) continue;
             string target = Path.Combine(to, relative);

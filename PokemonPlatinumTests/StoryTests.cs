@@ -643,7 +643,9 @@ public class StoryTests
     {
         // (but the Pokégear's calls, which the game starts by its name, plan 20 · J3)
         foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts))
-            Assert.True(Walk.MapOfFile(file) != null, $"scripts/{file}.txt is named for no open area and no map");
+            // (or an area of an open map, plan 33 · GL1)
+            Assert.True(Walk.MapOfFile(file) != null || PokemonPlatinumEngine.OpenWorld.OpenRegions.MapOfArea(file) != null,
+                $"scripts/{file}.txt is named for no open area and no map");
     }
 
     [Fact]

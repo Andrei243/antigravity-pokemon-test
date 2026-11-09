@@ -245,6 +245,39 @@ public class GalarTests
     }
 
     [Fact]
+    public void EveryOpenSceneOfTheChapterPlayedAndSkippedLeavesTheSame()
+    {
+        // The scenes the open places' triggers start (SceneSkipTests' walk plays only what a grid map starts): each from
+        // the story it waits at, played and then hurried as a player holding the button would, the same story, team,
+        // bag and markers afterwards
+        foreach (var (file, script, story) in new[]
+        {
+            ("postwick", "HopAtTheDoor", 1), ("postwick", "WealdGate", 3), ("slumbering_weald", "Shadow", 4),
+            ("wedgehurst", "LeonArrives", 2), ("wedgehurst", "HopWaits", 6), ("galar_route_2", "HopsBattle", 8),
+            ("galar_route_2", "WishingStars", 9)
+        })
+        {
+            var ends = new List<string>();
+            foreach (bool hurry in new[] { false, true })
+            {
+                var host = new HeadlessScriptHost { Region = RegionDatabase.Galar, OpenMap = Open.Value, OpenMapNamed = n => n == "Galar" ? Open.Value : null };
+                StoryMigration.BeginNewGame(host.Story, ScriptLibrary.Default);
+                host.Story.SetVar("VAR_GALAR_STORY", story);
+                host.Story.SetVar("VAR_GALAR_VERSION", 1);
+                host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
+                var runner = new ScriptRunner(ScriptLibrary.Default, host) { Impatient = hurry };
+                runner.Start(ScriptLibrary.Default.Find(script, file)!, null);
+                runner.RunToEnd();
+                Assert.Empty(host.Problems);
+                Assert.True(host.Story.Var("VAR_GALAR_STORY") > story, $"{file}.{script} left the story where it was");
+                ends.Add(System.Text.Json.JsonSerializer.Serialize(host.Story.Snapshot()) + "|" + string.Join(",", host.Party.Members.Select(p => p.Species.Name))
+                    + "|" + host.Bag.GetQuantity(ItemDatabase.Get("Dynamax Band")!) + "|" + string.Join(",", host.OnMarker.OrderBy(m => m.Key).Select(m => m.Key + "=" + m.Value)));
+            }
+            Assert.True(ends[0] == ends[1], $"{file}.{script} skipped leaves otherwise than played:\n{ends[0]}\n{ends[1]}");
+        }
+    }
+
+    [Fact]
     public void AShieldGameSeesZamazentaInTheFogAndASwordGameZacian()
     {
         foreach (var (version, seen) in new[] { (1, "Zacian"), (2, "Zamazenta") })

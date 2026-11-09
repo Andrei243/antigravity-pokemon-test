@@ -67,7 +67,7 @@ public class GrownNamesTests
     [Fact]
     public void SomeTrainersOfEveryCrossedRegionAreMetWithSpeciesOfOurs()
     {
-        foreach (var region in RegionDatabase.All.Where(r => r.Levels != null && r.Id != RegionDatabase.First.Id && r.Id != RegionDatabase.Kanto && r.Id != RegionDatabase.Kalos && r.Id != RegionDatabase.Alola)) // (Kalos has trainers of its own at Z1's first part only: its stages are grown when its teams are written; Alola, at Z5's first part, only Hau and a youngster, whose games' stages are all they reach)
+        foreach (var region in RegionDatabase.All.Where(r => r.Levels != null && r.Id != RegionDatabase.First.Id && r.Id != RegionDatabase.Kanto && r.Id != RegionDatabase.Kalos && r.Id != RegionDatabase.Alola && r.Id != RegionDatabase.Galar)) // (Galar, at GL1, only Hop and three of Route 2, whose games' stages are all they reach; Kalos has trainers of its own at Z1's first part only: its stages are grown when its teams are written; Alola, at Z5's first part, only Hau and a youngster, whose games' stages are all they reach)
             Assert.Contains(Changes.Value, kv => kv.Key.StartsWith(region.Folder + "_", StringComparison.Ordinal)
                 && kv.Value.Values.Any(s => PokemonDatabase.Get(s) is { IsOurs: true }));
     }
