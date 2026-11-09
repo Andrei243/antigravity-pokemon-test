@@ -200,7 +200,9 @@ internal static class OpenHorizon
     private static void Tri(OpenVertices mesh, Vector3 a, Vector3 b, Vector3 c, float median, bool level)
     {
         var n = Vector3.Cross(b - a, c - a);
-        if (n.LengthSquared() < 1e-10f) return;
+        // Nothing from above: a sliver standing upright (the first ring's corner, whose points stand on one spot at
+        // their own heights, under the region's ground) is left out, as a triangle of no size is
+        if (n.LengthSquared() < 1e-10f || MathF.Abs(n.Y) <= 1e-6f * n.Length()) return;
         if (n.Y < 0) { (b, c) = (c, b); n = -n; }
         var face = Vector3.Normalize(n);
         // Each corner its own cover by its height and the face's slope, so the program draws their borders texel by
