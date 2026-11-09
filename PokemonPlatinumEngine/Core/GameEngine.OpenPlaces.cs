@@ -37,13 +37,12 @@ public partial class GameEngine
         foreach (var region in RegionDatabase.All)
         {
             if (region.Field != FieldKind.Open) continue;
-            string world = GameDataFiles.PathOf($"world3d/{region.Folder}/world.json");
-            if (!File.Exists(world))
+            if (OpenRegions.FolderOf(region) == null)
             {
                 Log.Warn($"{region.Name} is open, and has no world3d/{region.Folder}/world.json: it has no open maps.");
                 continue;
             }
-            foreach (var map in OpenPlaceFiles.LoadRegion(Path.GetDirectoryName(world)!)) AddOpenMap(map);
+            foreach (var map in OpenRegions.Load(region)) AddOpenMap(map);
         }
     }
 

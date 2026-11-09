@@ -58,6 +58,10 @@ public partial class GameEngine
         {
             var trainer = new Trainer { Id = record.Id };
             TrainerDatabase.Fill(trainer, record);
+            // A trainer's lines in a place's file are theirs before the battle and once beaten, as an overlay's trainer's
+            // two lines are (plan 33 · GL1: Galar's trainers, the first of the data's open places with lines)
+            if (p.Lines.Count > 0) trainer.DialogueBefore = p.Lines[0];
+            if (p.Lines.Count > 1) trainer.DialogueAfter = p.Lines[1];
             npc.IsTrainer = true;
             npc.TrainerData = trainer;
             if (p.ShownName == null) npc.Name = trainer.Name;

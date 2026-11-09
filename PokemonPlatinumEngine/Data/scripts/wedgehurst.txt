@@ -1,0 +1,92 @@
+# Wedgehurst (plan 33 · GL1): the Champion's homecoming at the station, the three Pokémon in Hop's garden back in
+# Postwick and the first battle, and Hop's second battle at the top of Route 1 the morning after the Weald. The lines
+# are our own; VAR_GALAR_STORY is postwick.txt's count. Hop's teams are Data/world/galar/trainers.json's galar_hop_1
+# to _3, each in three by the player's starter: Sobble against Grookey (a), Grookey against Scorbunny (b), Scorbunny
+# against Sobble (c), the one the player's is strong against.
+
+
+# The square before the station as the train comes in: Leon home, and back to Postwick with a present
+script LeonArrives
+  scene "The Champion comes home"
+  faceto player leon_station
+  speaker "Hop"
+  say "Here he comes! Lee! Over here! Lee!"
+  speaker "Leon"
+  say "Hop! Look at you, you've grown a foot. And you must be {player}. Hop writes about you in every letter."
+  say "I've brought something home for the two of you. Come on, back to Postwick, and I'll show you there."
+  setflag FLAG_GALAR_HIDE_LEON_STATION
+  setflag FLAG_GALAR_HIDE_HOP_STATION
+  clearflag FLAG_GALAR_HIDE_LEON_GARDEN
+  clearflag FLAG_GALAR_HIDE_HOP_GARDEN
+  warpto "Galar" hops_garden
+  speaker "Leon"
+  say "Right, then! Every Trainer needs a partner, and these three have been waiting for theirs. Have a look."
+  say "Go on, {player}. Guests choose first."
+  starter
+  text "{player} chose {starter}!"
+  speaker "Hop"
+  say "Then I'll take this one! Brother, can we battle now? Please? Our first battle ever!"
+  speaker "Leon"
+  say "Go on, then. Let's see what you're made of!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop_garden as "galar_hop_1c" canlose
+  goto Fought
+label AgainstGrookey
+  battle hop_garden as "galar_hop_1a" canlose
+  goto Fought
+label AgainstScorbunny
+  battle hop_garden as "galar_hop_1b" canlose
+label Fought
+  heal
+  speaker "Hop"
+  if lost goto HopWon
+  say "You beat me! On my very first try! Ah, that just makes me want to battle you even more."
+  goto Gate
+label HopWon
+  say "We won! Our first ever battle and we won! Mind you, it was close. Really close."
+label Gate
+  speaker "Leon"
+  say "What a match! You two are going to keep each other on your toes. I'm off in to see Mum."
+  speaker "Hop"
+  say "Hang on... where's my Wooloo got to? It was right here a minute ago! I'll check by the Weald's gate!"
+  setflag FLAG_GALAR_HIDE_HOP_GARDEN
+  setflag FLAG_GALAR_HIDE_LEON_GARDEN
+  clearflag FLAG_GALAR_HIDE_HOP_GATE
+  setvar VAR_GALAR_STORY 3
+  objective galarGate
+  endscene
+  end
+
+
+# Up into Wedgehurst from Route 1 the morning after the Weald: Hop's second battle, and the way to the professor
+script HopWaits
+  scene "Hop in Wedgehurst"
+  faceto player hop_wedgehurst
+  speaker "Hop"
+  say "Morning! Leon says we're to go and see Professor Magnolia. She knows more about Pokémon than anyone."
+  say "But first, I've been training since sunrise. Let's battle!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop_wedgehurst as "galar_hop_2c" canlose
+  goto Fought
+label AgainstGrookey
+  battle hop_wedgehurst as "galar_hop_2a" canlose
+  goto Fought
+label AgainstScorbunny
+  battle hop_wedgehurst as "galar_hop_2b" canlose
+label Fought
+  heal
+  speaker "Hop"
+  if lost goto HopWon
+  say "Again! You beat me again! Right, I'll catch up with you at the professor's."
+  goto Way
+label HopWon
+  say "That's one each now! Right, I'll see you at the professor's."
+label Way
+  say "Her house is at the end of Route 2, east of town, by the big lake. I'll race you there!"
+  setflag FLAG_GALAR_HIDE_HOP_WEDGEHURST
+  setvar VAR_GALAR_STORY 7
+  objective galarMagnolia
+  endscene
+  end

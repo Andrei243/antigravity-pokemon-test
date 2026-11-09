@@ -1,0 +1,87 @@
+{
+  // Postwick (plan 33 · GL1): a farming village in Galar's far south, at about half the original's distances. The
+  // player's house on the lane's west end, Hop's house to the north-east with its garden before it, the Wooloo's
+  // paddock in the east, and the gate in the hedge on the west side that leads into the Slumbering Weald. Scripts:
+  // Data/scripts/postwick.txt, whose header has VAR_GALAR_STORY's count
+  "markers": [
+    { "name": "players_door", "at": [-25, 0.2, 22.5], "yaw": 0 },
+    { "name": "hops_door", "at": [26, 0.5, 0.6], "yaw": 0 },
+    { "name": "hops_garden", "at": [26, 0.5, 6], "yaw": 180 },
+    { "name": "weald_back", "at": [-48, 0.6, 20], "yaw": 90 },
+    { "name": "postwick_lane", "at": [0, 0.5, 26], "yaw": 90 },
+    { "name": "postwick_north", "at": [0, 0.2, -22], "yaw": 180 },
+    { "name": "paddock", "at": [46, 0.6, 30], "yaw": 90 }
+  ],
+  "doors": [
+    {
+      "name": "players_house_door",
+      "box": { "min": [-26, -0.8, 19], "max": [-24, 2.5, 20] },
+      "room": "Postwick_PlayersHouse_1F", "at": [6, 10], "facing": "up",
+      "out": "players_door"
+    },
+    {
+      "name": "hops_house_door",
+      "box": { "min": [25, -0.5, -3], "max": [27, 2.8, -2] },
+      "room": "Postwick_HopsHouse", "at": [4, 8], "facing": "up",
+      "out": "hops_door"
+    }
+  ],
+  "triggers": [
+    // Out of the house on the first morning: Hop is at the door, off to meet his brother's train
+    { "name": "hop_at_the_door", "box": { "min": [-34, -1, 23.6], "max": [-14, 3, 32] }, "script": "HopAtTheDoor", "var": "VAR_GALAR_STORY", "value": 1 },
+    // The gap in the hedge that leads into the Slumbering Weald: latched until Hop's Wooloo slips through it
+    { "name": "weald_gate", "box": { "min": [-62, -1, 14], "max": [-53, 4, 26] }, "script": "WealdGate" }
+  ],
+  "solids": [
+    { "name": "the player's house", "min": [-31, -1, 11], "max": [-19, 6, 19], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "Hop's house", "min": [20, -1, -12], "max": [32, 6, -3], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    // Hop before the player's door on the first morning (hidden once he has gone ahead to the station)
+    {
+      "name": "hop_postwick", "at": [-21, 0.3, 25.5], "yaw": 270, "look": "hop", "displayName": "Hop",
+      "lines": ["Come on, the train gets in any minute!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_POSTWICK"
+    },
+    // Hop and Leon in the garden for the three Pokémon, once the Champion is home
+    {
+      "name": "hop_garden", "at": [22, 0.6, 6], "yaw": 90, "look": "hop", "displayName": "Hop",
+      "lines": ["My brother's the best Trainer in all of Galar. One day I'll beat him!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_GARDEN"
+    },
+    {
+      "name": "leon_garden", "at": [26, 0.5, 2.6], "yaw": 0, "look": "leon", "displayName": "Leon",
+      "lines": ["Take good care of your partner. A Champion-time battle starts with a good friendship!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_LEON_GARDEN"
+    },
+    // Hop by the Weald's gate after the first battle, where his Wooloo slipped through
+    {
+      "name": "hop_gate", "at": [-46, 0.6, 22], "yaw": 270, "look": "hop", "displayName": "Hop",
+      "lines": ["My Wooloo got through the gate! Come on, we have to fetch it back!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_GATE"
+    },
+    // The village's own
+    {
+      "name": "farmer", "at": [44, 0.6, 28], "yaw": 90, "look": "man", "displayName": "Farmer",
+      "lines": ["The Wooloo wander off if you so much as look away. Half of them sleep on Route 1 most afternoons."],
+      "moves": "wander", "radius": 5
+    },
+    {
+      "name": "postwick_girl", "at": [4, 0.5, 22], "yaw": 180, "look": "lass", "displayName": "Girl",
+      "lines": ["Leon is coming home today! The whole of Postwick is going to the station to see him."]
+    }
+  ],
+  "trees": [
+    { "at": [-36, 12], "kind": "round", "size": 1.1 },
+    { "at": [-14, 12], "kind": "round" },
+    { "at": [-38, 30], "kind": "round", "size": 0.9 },
+    { "at": [12, -14], "kind": "pine" },
+    { "at": [36, -10], "kind": "round", "size": 1.15 },
+    { "at": [16, 40], "kind": "round" },
+    { "at": [-8, 44], "kind": "round", "size": 1.2 }
+  ],
+  "groves": [
+    { "name": "the south hedgerow", "polygon": [[-50, 48], [64, 48], [64, 55], [-50, 55]], "spacing": 4.5, "fill": 0.7, "pines": 0.2, "seed": 101 },
+    { "name": "the copse by the north lane", "polygon": [[-48, -20], [-20, -20], [-20, -4], [-48, -4]], "spacing": 5, "fill": 0.6, "pines": 0.3, "seed": 102 }
+  ]
+}

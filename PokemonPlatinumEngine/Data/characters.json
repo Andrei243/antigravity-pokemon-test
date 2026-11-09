@@ -651,7 +651,19 @@
     // single room, a tall islander with his hair tied back, in a long moss coat; Leilani of the double, in a leaf-green dress
     // with a pink bow in her long hair
     "tree_kaimana": { "skin": "#9a6a48", "hairColor": "#1e1a1a", "hair": "Ponytail", "top": "#3e6a3a", "accent": "#e2c254", "bottom": "#2a3a26", "shoes": "#2a2420", "eyes": "#3a2a24", "coat": true, "build": "Adult", "height": 1.14 },
-    "tree_leilani": { "skin": "#c89068", "hairColor": "#2a1e1a", "hair": "Long", "hat": "Bow", "hatColor": "#e85a7a", "top": "#4e8a3e", "accent": "#e2c254", "bottom": "#3a6a30", "shoes": "#3a2e28", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 }
+    "tree_leilani": { "skin": "#c89068", "hairColor": "#2a1e1a", "hair": "Long", "hat": "Bow", "hatColor": "#e85a7a", "top": "#4e8a3e", "accent": "#e2c254", "bottom": "#3a6a30", "shoes": "#3a2e28", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    // Galar's first chapter (plan 33 · GL1; our own designs, on the Adult build as Alola's cast is, drawn in the grown
+    // kit in Galar): Hop, the Champion's younger brother and the player's rival, short dark-violet hair, a fawn hoodie
+    // over a dark shirt and grey trousers; Leon, the Champion, long dark-violet hair under a cap, a long red cape-coat
+    // over dark clothes; Professor Magnolia, white hair in a bun, round glasses, a long dark-green coat; her
+    // granddaughter Sonia, long auburn hair in a side tail, a teal coat over a pale top; the player's Mum and Hop's, in
+    // plain house clothes
+    "hop": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Spiky", "top": "#d8b88a", "accent": "#2a2a34", "bottom": "#5a5a64", "shoes": "#d8d0c0", "eyes": "#c8a83a", "jacket": true, "build": "Adult", "height": 1.02 },
+    "leon": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Long", "hat": "Cap", "hatColor": "#f2f2ee", "hatBand": "#c8302a", "top": "#c8302a", "accent": "#e8c040", "bottom": "#2a2a34", "shoes": "#2a2420", "eyes": "#c8a83a", "coat": true, "build": "Adult", "height": 1.12 },
+    "magnolia": { "skin": "#e8c4a8", "hairColor": "#ecece8", "hair": "Bun", "top": "#2e5a46", "accent": "#e8e0c8", "bottom": "#2e5a46", "shoes": "#3a302a", "eyes": "#3a4a3a", "glasses": "#8a7a5a", "coat": true, "skirt": true, "build": "Adult", "height": 1.0 },
+    "sonia": { "skin": "#ecc8ac", "hairColor": "#c86a3a", "hair": "Ponytail", "top": "#3a9a9a", "accent": "#f2ece0", "bottom": "#e8c8a8", "shoes": "#c86a3a", "eyes": "#3a6a5a", "coat": true, "lashes": true, "build": "Adult", "height": 1.04 },
+    "galar_mum": { "skin": "#e8c4a8", "hairColor": "#6a4a2e", "hair": "Bun", "top": "#c89a6a", "accent": "#f2ece0", "bottom": "#5a6a8a", "shoes": "#3a302a", "eyes": "#4a3a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "hops_mum": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Long", "top": "#8a5a9a", "accent": "#f2ece0", "bottom": "#4a3a5a", "shoes": "#3a302a", "eyes": "#c8a83a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },

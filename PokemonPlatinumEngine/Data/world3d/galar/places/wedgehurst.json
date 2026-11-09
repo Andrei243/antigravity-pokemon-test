@@ -1,0 +1,92 @@
+{
+  // Wedgehurst (plan 33 · GL1): the little town at the top of Route 1, its station in the north-west where the line
+  // runs north to the Wild Area, the Pokémon Center and a house either side of the high street, the Pokémon Research
+  // Lab in the north-east, and the way east to Route 2. Scripts: Data/scripts/wedgehurst.txt
+  "markers": [
+    { "name": "wedgehurst_south", "at": [0, 1.8, -116], "yaw": 180 },
+    { "name": "station_door", "at": [-39, 2.2, -164.3], "yaw": 0 },
+    { "name": "station_square", "at": [-30, 2.1, -158], "yaw": 270 },
+    { "name": "center_door", "at": [11, 1.8, -129], "yaw": 0 },
+    { "name": "lab_door", "at": [28, 1.7, -164.5], "yaw": 0 },
+    { "name": "house_door", "at": [-25, 2.0, -129.4], "yaw": 0 },
+    { "name": "wedgehurst_east", "at": [52, 2.1, -146], "yaw": 90 }
+  ],
+  "doors": [
+    {
+      "name": "station_door",
+      "box": { "min": [-40, 1, -168], "max": [-38, 4.5, -167] },
+      "room": "Wedgehurst_Station", "at": [4, 8], "facing": "up",
+      "out": "station_door"
+    },
+    {
+      "name": "center_door",
+      "box": { "min": [10, 0.6, -132], "max": [12, 4, -131] },
+      "room": "Wedgehurst_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "center_door"
+    },
+    {
+      "name": "lab_door",
+      "box": { "min": [27, 0.5, -168], "max": [29, 4, -167] },
+      "room": "Wedgehurst_ResearchLab", "at": [7, 10], "facing": "up",
+      "out": "lab_door"
+    },
+    {
+      "name": "house_door",
+      "box": { "min": [-26, 0.8, -132], "max": [-24, 4.2, -131] },
+      "room": "Wedgehurst_House", "at": [4, 8], "facing": "up",
+      "out": "house_door"
+    }
+  ],
+  "triggers": [
+    // The square before the station as the Champion's train comes in
+    { "name": "leon_arrives", "box": { "min": [-46, 0, -163.5], "max": [-30, 5, -150] }, "script": "LeonArrives", "var": "VAR_GALAR_STORY", "value": 2 },
+    // Up into the town from Route 1 the next morning: Hop's second battle
+    { "name": "hop_waits", "box": { "min": [-8, 0, -122], "max": [8, 5, -116.5] }, "script": "HopWaits", "var": "VAR_GALAR_STORY", "value": 6 }
+  ],
+  "solids": [
+    { "name": "the station", "min": [-48, 1, -178], "max": [-30, 7, -168], "building": { "kind": "terminal", "town": "galar", "sign": "STATION" } },
+    { "name": "the Pokémon Center", "min": [6, 0.5, -140], "max": [16, 6, -132], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "the research lab", "min": [20, 0.5, -178], "max": [36, 7, -168], "building": { "kind": "lab", "town": "galar", "sign": "RESEARCH LAB" } },
+    { "name": "the house by the high street", "min": [-30, 1, -140], "max": [-20, 6, -132], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    // The Champion off the train and his brother beside him, once Hop has gone ahead (FLAG_GALAR_HIDE_LEON_STATION)
+    {
+      "name": "leon_station", "at": [-38, 2.2, -162], "yaw": 0, "look": "leon", "displayName": "Leon",
+      "lines": ["It's good to be home!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_LEON_STATION"
+    },
+    {
+      "name": "hop_station", "at": [-35, 2.1, -158], "yaw": 270, "look": "hop", "displayName": "Hop",
+      "lines": ["He'll be on this train, I just know it!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_STATION"
+    },
+    // Hop at the top of Route 1 the morning after the Weald
+    {
+      "name": "hop_wedgehurst", "at": [2, 1.8, -124], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["Ready for another go?"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_WEDGEHURST"
+    },
+    // The town's own
+    {
+      "name": "porter", "at": [-26, 2.1, -162], "yaw": 180, "look": "worker", "displayName": "Porter",
+      "lines": ["The line runs north to the Wild Area and on to Motostoke. Every Trainer on the gym challenge passes through here."]
+    },
+    {
+      "name": "wedgehurst_lady", "at": [10, 1.9, -150], "yaw": 90, "look": "lady", "displayName": "Lady",
+      "lines": ["Sonia from the lab is the professor's granddaughter. She's terribly clever, though she'd never say so."],
+      "moves": "wander", "radius": 4
+    },
+    {
+      "name": "wedgehurst_boy", "at": [-12, 1.9, -122], "yaw": 0, "look": "boy", "displayName": "Boy",
+      "lines": ["The road east of town goes to the professor's house by the lake. There are Pokémon in the grass all the way."]
+    }
+  ],
+  "trees": [
+    { "at": [-14, -136], "kind": "round" },
+    { "at": [22, -126], "kind": "round", "size": 1.1 },
+    { "at": [40, -160], "kind": "pine" },
+    { "at": [-50, -146], "kind": "round", "size": 0.95 },
+    { "at": [44, -126], "kind": "round" }
+  ]
+}

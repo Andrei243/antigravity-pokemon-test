@@ -1002,7 +1002,10 @@ public partial class GameEngine
 
         // ---- the field
 
-        public NPC? FindNpc(string name, string? place) => game.flow.Map.FindPerson(name, place);
+        // In an open map a script's names mean its people first (plan 33 · GL1: a scene's `battle hop`, `speaker` aside),
+        // each the person of the grid's kind they are to the scripts; the grid room the player last stood in otherwise
+        public NPC? FindNpc(string name, string? place) =>
+            game.flow.Open is { } open && open.Map.Person(name) is { } person ? game.NpcOf(open.Map, person) : game.flow.Map.FindPerson(name, place);
 
         public (int X, int Y) TileOf(NPC? who) => who == null ? (game.flow.Player.GridX, game.flow.Player.GridY) : (who.GridX, who.GridY);
 

@@ -37,6 +37,13 @@ public sealed class Region
     /// <summary>Every map (outdoor and indoor) that belongs to this region.</summary>
     public IReadOnlyList<string> Maps { get; init; } = Array.Empty<string>();
 
+    /// <summary>
+    /// The open maps of the region (plan 32; plan 33 · GL1): its <c>Data/world3d/&lt;folder&gt;/world.json</c>'s maps,
+    /// none for a region whose file says nothing of an open field. They are no maps of <see cref="Maps"/>, which are grid
+    /// maps of <c>MapDatabase</c>: a grid room's way out may lead to one.
+    /// </summary>
+    public IReadOnlyList<string> OpenMaps => OpenWorld.OpenRegions.NamesOf(Id);
+
     /// <summary>The story flag set when the player enters this region's Hall of Fame, which ends its story.</summary>
     public string StoryCompleteFlag => $"{Id}HallOfFame";
 
@@ -1012,6 +1019,9 @@ public static class RegionDatabase
             // begun there wakes in the player's new home on Route 1; a Champion come across stands before its door
             Start = new MapSpot("AlolaRoute1_PlayersHouse", 6, 6, Direction.Down),
             Arrival = new MapSpot("Melemele", 238, 158, Direction.Down),
+            // Where a return from Galar lands: beside the airline attendant of Hau'oli City's Pokémon Center (plan 18 · W8;
+            // the departure plan 33 · GL1 opened)
+            Harbour = new MapSpot("HauoliCity_PokemonCenter_1F", 12, 10, Direction.Right),
             Maps = new[]
             {
                 "Melemele",
@@ -1062,7 +1072,23 @@ public static class RegionDatabase
                 "PoniGauntlet_BattleTree", "PoniGauntlet_BattleTreeHall", "BlushMountain_PowerPlant",
             }
         },
-        new() { Id = Galar, Name = "Galar", Generation = 8 },
+        new()
+        {
+            Id = Galar, Name = "Galar", Generation = 8, File = RegionFiles.Load(Galar),
+            // Galar on the open world's engine (plan 33 · GL1; plan 32): its outdoors are the open map "Galar"
+            // (Data/world3d/galar, Region.OpenMaps), and these its grid rooms behind their doors. A new game begun
+            // there wakes in the player's room in Postwick; a Champion come across from Alola is inside the house's door
+            Start = new MapSpot("Postwick_PlayersHouse_2F", 4, 6, Direction.Down),
+            Arrival = new MapSpot("Postwick_PlayersHouse_1F", 6, 10, Direction.Up),
+            Maps = new[]
+            {
+                // Plan 33 · GL1: Postwick's two houses, Wedgehurst's station, Pokémon Center, research lab and house, and
+                // Professor Magnolia's house at the end of Route 2
+                "Postwick_PlayersHouse_1F", "Postwick_PlayersHouse_2F", "Postwick_HopsHouse",
+                "Wedgehurst_Station", "Wedgehurst_PokemonCenter", "Wedgehurst_ResearchLab", "Wedgehurst_House",
+                "Route2_MagnoliasHouse",
+            }
+        },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 }
     };
 
@@ -1089,7 +1115,9 @@ public static class RegionDatabase
         // airport in the original): the airline's attendant stands in Lumiose City's Pokémon Center once Kalos's Hall of Fame
         // is entered (KalosLeague_HallOfFame.txt sets KalosHallOfFame; common.Attendant)
         new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "LumioseCity_PokemonCenter_1F" },
-        new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane" },
+        // From Alola by air (plan 23 · Z8's link, built with plan 33 · GL1 once Galar had maps): the airline's attendant
+        // stands in Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos
+        new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "HauoliCity_PokemonCenter_1F" },
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }
     };
 

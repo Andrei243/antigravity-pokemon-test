@@ -1,0 +1,12 @@
+# Wedgehurst's Pokémon Research Lab (plan 33 · GL1): Sonia's lab, where she is seldom found in the first chapter.
+# The lab's own scenes are later chapters'. VAR_GALAR_STORY is postwick.txt's count.
+
+
+script Researcher
+  speaker "Researcher"
+  if var VAR_GALAR_STORY >= 8 goto Met
+  sayown
+  end
+label Met
+  say "You've met Sonia, then! She'll make a professor of herself one day, if she ever stops reading long enough."
+  end

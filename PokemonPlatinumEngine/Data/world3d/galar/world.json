@@ -1,0 +1,22 @@
+{
+  // Galar as plan 33 · GL1 opens it, hand-built at about half the original's distances (plan 33 · decision 1) from
+  // public descriptions of Sword and Shield and memory of play, nothing traced or taken: Postwick, a farming village in
+  // the far south with the player's house, Hop's house and the Wooloo's paddock; the Slumbering Weald beyond the hedge
+  // on its west side, low and foggy; Route 1 north to Wedgehurst, a small town of the station, the Pokémon Center and
+  // the research lab; and Route 2 east and north of it to Professor Magnolia's house by her lake. x runs east, z south,
+  // y up, in metres; a chunk is 32 m. Nothing is drawn of the railway beyond the station, which is plan 33 · GL2's
+  "region": "Galar",
+  "chunks": [-3, -9, 2, 1],
+  "baseHeight": 0.4,
+  "cover": { "shore": 0.6 },
+  "areas": [
+    { "key": "postwick", "name": "Postwick", "polygon": [[-55, -24], [69, -24], [69, 58], [-55, 58]], "music": "galar/postwick" },
+    { "key": "slumbering_weald", "name": "Slumbering Weald", "polygon": [[-93, -16], [-55, -16], [-55, 58], [-93, 58]], "music": "galar/route1", "weather": "Fog" },
+    { "key": "galar_route_1", "name": "Route 1", "polygon": [[-60, -112], [48, -112], [48, -24], [-60, -24]], "music": "galar/route1" },
+    { "key": "wedgehurst", "name": "Wedgehurst", "polygon": [[-60, -199], [56, -199], [56, -112], [-60, -112]], "music": "galar/wedgehurst" },
+    { "key": "galar_route_2", "name": "Route 2", "polygon": [[56, -112], [93, -112], [93, -285], [4, -285], [4, -199], [56, -199]], "music": "galar/route1" }
+  ],
+  "maps": [
+    { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2"] }
+  ]
+}

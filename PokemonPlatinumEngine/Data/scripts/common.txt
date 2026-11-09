@@ -3893,3 +3893,26 @@ script ZygardeCore
 label NoCube
   text "A green blob with a bright red heart pulses on the ground. As soon as it is touched, it sinks out of sight..."
   end
+
+
+# ------------------------------------------------------------------ Galar (plan 33 · GL1)
+
+# What every game starts with in Galar: Hop before the player's door is there, and everyone the first chapter's scenes
+# bring on is hidden until then (Leon and Hop at Wedgehurst Station, the two in Hop's garden, Hop by the Weald's gate
+# and in the Weald, Hop in Wedgehurst and in the professor's garden, and the three at the lake). Run with no screen after
+# NewGame for every new game (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame). It may only set
+# flags and variables, and ends in return.
+script GalarNewGame
+  setflag FLAG_GALAR_HIDE_LEON_STATION
+  setflag FLAG_GALAR_HIDE_HOP_STATION
+  setflag FLAG_GALAR_HIDE_HOP_GARDEN
+  setflag FLAG_GALAR_HIDE_LEON_GARDEN
+  setflag FLAG_GALAR_HIDE_HOP_GATE
+  setflag FLAG_GALAR_HIDE_HOP_WEALD
+  setflag FLAG_GALAR_HIDE_HOP_WEDGEHURST
+  setflag FLAG_GALAR_HIDE_HOP_GARDEN2
+  setflag FLAG_GALAR_HIDE_HOP_LAKE
+  setflag FLAG_GALAR_HIDE_MAGNOLIA_LAKE
+  setflag FLAG_GALAR_HIDE_LEON_LAKE
+  setflag FLAG_GALAR_STORY_BEGUN
+  return

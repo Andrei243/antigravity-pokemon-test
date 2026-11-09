@@ -348,7 +348,11 @@ public enum Architecture
     /// <summary>Weathered planks under moss-grey hip roofs with a chimney: the town on the marsh under the tower (Icirrus).</summary>
     Mire,
     /// <summary>Dark panel blocks under flat roofs with ribbon windows lit all night: the city that never sleeps (Black City).</summary>
-    Nightfall
+    Nightfall,
+
+    // Galar (plan 33 · GL1): built on the open world's engine at metre scale, a row of the style guide's "Buildings" first
+    /// <summary>Grey field stone under dark slate gable roofs with a chimney and flower boxes: the farming village and the little station town of the far south (Postwick, Wedgehurst).</summary>
+    Galar
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

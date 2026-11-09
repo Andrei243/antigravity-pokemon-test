@@ -1,0 +1,53 @@
+{
+  // Route 1 (plan 33 · GL1): the short road north from Postwick to Wedgehurst, a path up the middle and long grass
+  // either side where its Pokémon live, all of them seen in the field (plan 32 · decision 7). The tables are ours, of
+  // the species Sword and Shield show here, at their levels
+  "markers": [
+    { "name": "route1_south", "at": [0, 0.2, -28], "yaw": 180 },
+    { "name": "route1_north", "at": [0, 1.7, -108], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "route1_west",
+      "polygon": [[-36, -96], [-12, -96], [-12, -44], [-36, -44]],
+      "minY": -2, "maxY": 8,
+      "slots": [
+        { "species": "Skwovet", "minLevel": 2, "maxLevel": 5, "weight": 35 },
+        { "species": "Rookidee", "minLevel": 3, "maxLevel": 5, "weight": 25 },
+        { "species": "Blipbug", "minLevel": 2, "maxLevel": 4, "weight": 20 },
+        { "species": "Wooloo", "minLevel": 3, "maxLevel": 5, "weight": 10, "time": "Day" },
+        { "species": "Hoothoot", "minLevel": 3, "maxLevel": 5, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 4
+    },
+    {
+      "name": "route1_east",
+      "polygon": [[14, -100], [38, -100], [38, -56], [14, -56]],
+      "minY": -2, "maxY": 8,
+      "slots": [
+        { "species": "Skwovet", "minLevel": 2, "maxLevel": 5, "weight": 30 },
+        { "species": "Caterpie", "minLevel": 2, "maxLevel": 4, "weight": 20 },
+        { "species": "Grubbin", "minLevel": 2, "maxLevel": 4, "weight": 20 },
+        { "species": "Nickit", "minLevel": 3, "maxLevel": 6, "weight": 15 },
+        { "species": "Rookidee", "minLevel": 3, "maxLevel": 5, "weight": 15 }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "route1_walker", "at": [-6, 0.9, -70], "yaw": 90, "look": "gentleman", "displayName": "Gentleman",
+      "lines": ["The grass either side of the path is thick with Pokémon. Walk straight up the middle if you have none of your own."],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-44, -40], "kind": "round", "size": 1.1 },
+    { "at": [-48, -80], "kind": "pine" },
+    { "at": [44, -40], "kind": "round" },
+    { "at": [8, -104], "kind": "round", "size": 0.9 }
+  ],
+  "groves": [
+    { "name": "Route 1's west edge", "polygon": [[-58, -108], [-42, -108], [-42, -30], [-58, -30]], "spacing": 5, "fill": 0.7, "pines": 0.4, "seed": 301 }
+  ]
+}

@@ -348,6 +348,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Cyllage (Cyllage) | white stucco | hip, sun-baked ochre `204,142,66` | shutters, flower boxes: the seaside town of terraces on the cliffs over the beach, its streets joined by steps cut in the rock; drawn by hand (plan 23 · Z2, second part) |
 | Iki Town (Islander) | weathered boards | hip, thatch brown `146,112,70` | shutters: the island village on its hill round the festival's stage of stone, and the homes along Melemele's Route 1 and the professor's laboratory on its beach; drawn by hand (plan 23 · Z5, `tools/MapDraw/alola`), its houses found at their doors |
 | Hau'oli (Shoreline) | pastel clapboard | hip, coral `226,120,104` | flower boxes: the island's city along its beach promenade; drawn by hand (plan 23 · Z5) |
+| Postwick and Wedgehurst (Galar) | grey field stone | gable, dark slate `70,76,92` | a chimney, flower boxes: the farming village and the little station town of Galar's far south, cottages of two storeys among hedged fields; built by hand on the open world's engine at metre scale (plan 33 · GL1, `Data/world3d/galar`), each a place's solid with its `building` |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):

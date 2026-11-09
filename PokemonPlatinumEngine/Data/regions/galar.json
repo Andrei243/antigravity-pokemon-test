@@ -1,0 +1,68 @@
+{
+  "id": "Galar",
+  "folder": "galar",
+  // Galar's songs play in the modern sound (plan 31), as Kalos's and Alola's do
+  "sound": "modern",
+  // Galar is built on the open world's engine (plan 32; plan 33 · GL1): its outdoors are open maps described in
+  // Data/world3d/galar and baked by tools/OpenWorldBake, its rooms grid maps behind their doors. It has no grid
+  // overworld, so it names no "map"
+  "field": "open",
+  // Sword and Shield's own Galar Pokédex; the two expansions' are further Pokédexes their sessions add (GL8, GL9)
+  "dex": "galar",
+  "nationalUnlock": "HallOfFame",
+  // A new game begun here (--region Galar) wakes in the player's room in Postwick with nothing, and the Champion hands
+  // over the first Pokémon in his brother's garden (plan 33 · GL1)
+  "hasStory": true,
+  // How the player moves here (plan 30 · FM1, its region table): free, at the stick's tilt, with the Rotom Bike as the
+  // region's own mode; the grown body kit (FM4)
+  "movement": { "directions": "Free", "speed": "Analog", "modes": [ "RotomBike" ] },
+  "kit": "Grown",
+  "battleCamera": "galar",
+  // The rival is the Champion's younger brother, who has the same name in both versions
+  "rival": "Hop",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Grookey", "Scorbunny", "Sobble" ],
+  // Galar's eight badges in the gym challenge's order. The fourth and the sixth are the version's (plan 33 · decision
+  // 2): Fighting or Ghost, Rock or Ice; the card names them by the version the save chose (VAR_GALAR_VERSION), and
+  // these are Sword's names, which a Shield game's GL5 swaps
+  "badges": [ "Grass", "Water", "Fire", "Fighting", "Fairy", "Rock", "Dark", "Dragon" ],
+  // Sword and Shield ask no badge of a field move outside battle
+  "gates": {},
+  "professor": {
+    "name": "Prof. Magnolia",
+    "look": "MAGNOLIA",
+    "species": "Wooloo",
+    "lines": {
+      "hello": "Ah, there you are. Do sit down, my dear. A pot of tea is never far off in this house.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Magnolia. For most of my life I have studied a puzzle of this region: why some Pokémon here grow to a giant's size.",
+      "world": "Pokémon live all over Galar: in the meadows and the moors, along its rivers, in its mines and in its great cities.",
+      "oneOfThem": "This woolly one wanders over from the farm next door whenever the kettle is on.",
+      "liveAlongside": "In Galar, battles are a sport the whole region gathers to watch, and the best Trainers fill stadiums.",
+      "study": "And when a Pokémon grows huge in one of those stadiums, I want to know where the power comes from, and why here.",
+      "enough": "Goodness, I do go on. Let us hear about you instead.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what is your name, my dear?",
+      "nextDoor": "A boy just along the lane has been waiting for a friend to go on the gym challenge with. His brother is the Champion, you know.",
+      "neverStill": "He talks of little else.",
+      "fineName": "{name}. A fine name, and easy to cheer for.",
+      "ofCourse": "I suspect the two of you will be rivals before the week is out.",
+      "story": "{name}, your journey through Galar begins in Postwick, a farming village in the far south of the region.",
+      "offYouGo": "Off you go, then. Galar is waiting for you!"
+    }
+  },
+  // The heal places of the places built so far: the player's house in Postwick, where a white-out goes before any
+  // Pokémon Center, and Wedgehurst's Pokémon Center. An open region's spawns name their rooms; the tiles a grid region
+  // gives for Fly's landing are nought, since Fly over an open map lands on a marker (plan 32 · OW10's, not built)
+  "spawns": [
+    { "id": 1, "area": "postwick", "x": 0, "y": 0, "room": "Postwick_PlayersHouse_1F" },
+    { "id": 2, "area": "wedgehurst", "x": 0, "y": 0, "room": "Wedgehurst_PokemonCenter" }
+  ],
+  // Plan 18 · W4 with plan 03 · D14's Galar proposals: Sword and Shield's levels for a team that crossed from Alola,
+  // from Alola's post-game at 238 the first route stands at 224 (a crossed region's climb starts under the region
+  // before's post-game, as every later region's does) to the Champion's 65 at 242
+  "levels": [[2, 224], [65, 242]],
+  // Plan 18 · W4b-1: the level cap by badges held, Sword's own levels (each Gym Leader's best in the challenge's order,
+  // then the Champion's); mapped by "levels" where the region is crossed into
+  "caps": [20, 24, 27, 36, 38, 42, 46, 48, 65]
+}

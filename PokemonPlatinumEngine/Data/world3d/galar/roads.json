@@ -1,0 +1,16 @@
+{
+  // Galar's first ways (plan 33 · GL1): Postwick's lane from the player's door past Hop's house to Route 1, the path up
+  // Route 1 to Wedgehurst, the high street with its ways to the station, the lab and Route 2, and Route 2's path east
+  // and north to the professor's house by the lake. The Weald's track is a path through its grass from the gate
+  "roads": [
+    { "name": "Postwick's lane", "points": [[-25, 23], [-6, 27], [16, 18], [26, 6], [10, -10], [0, -26]], "width": 3, "shoulder": 2.5 },
+    { "name": "the track to the Weald's gate", "points": [[-25, 23], [-42, 21], [-58, 20]], "width": 2.4, "shoulder": 2 },
+    { "name": "Route 1's path", "points": [[0, -26], [-4, -54], [4, -80], [0, -112]], "width": 3, "shoulder": 2.5 },
+    { "name": "Wedgehurst's high street", "points": [[0, -112], [-2, -132], [-4, -146], [-6, -160]], "width": 4, "shoulder": 2.5 },
+    { "name": "the way to the station", "points": [[-6, -152], [-22, -158], [-39, -160]], "width": 3.5, "shoulder": 2 },
+    { "name": "the way to the lab", "points": [[-6, -152], [14, -156], [28, -160]], "width": 3, "shoulder": 2 },
+    { "name": "the way east to Route 2", "points": [[-4, -146], [24, -142], [48, -146], [64, -150]], "width": 3, "shoulder": 2 },
+    { "name": "Route 2's path", "points": [[64, -150], [78, -166], [82, -200], [78, -236], [72, -260]], "width": 3, "shoulder": 2.5 },
+    { "name": "the Weald's track", "points": [[-58, 20], [-70, 18], [-82, 30], [-78, 46]], "width": 2, "shoulder": 1.5 }
+  ]
+}

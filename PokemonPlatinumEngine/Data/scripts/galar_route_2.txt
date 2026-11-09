@@ -1,0 +1,73 @@
+# Route 2 (plan 33 · GL1): Hop's third battle in the professor's garden once the Pokédex is the player's, and the
+# Wishing Stars that fall by the lake that night, set by the professor into a Dynamax Band, with the Champion's
+# endorsement for the gym challenge. The lines are our own; VAR_GALAR_STORY is postwick.txt's count. Hop's teams as
+# wedgehurst.txt's header says.
+
+
+# Out into the garden with the Pokédex: Hop's third battle
+script HopsBattle
+  scene "Hop in the professor's garden"
+  faceto player hop_garden2
+  speaker "Hop"
+  say "A Pokédex of our own! Right, before we fill a single page, let's see whose team is stronger now!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop_garden2 as "galar_hop_3c" canlose
+  goto Fought
+label AgainstGrookey
+  battle hop_garden2 as "galar_hop_3a" canlose
+  goto Fought
+label AgainstScorbunny
+  battle hop_garden2 as "galar_hop_3b" canlose
+label Fought
+  heal
+  speaker "Hop"
+  if lost goto HopWon
+  say "Beaten again! You're a natural, {player}. Leon would say the same."
+  goto Night
+label HopWon
+  say "Yes! That's two to me! But I can tell you're catching up fast."
+label Night
+  text "The sun goes down over the lake, and the first stars come out."
+  speaker "Hop"
+  say "The professor says Wishing Stars fall round here on clear nights. Let's go down to the water and look!"
+  setflag FLAG_GALAR_HIDE_HOP_GARDEN2
+  clearflag FLAG_GALAR_HIDE_HOP_LAKE
+  setvar VAR_GALAR_STORY 9
+  objective galarLake
+  endscene
+  end
+
+
+# By the lake after dark: two Wishing Stars, the Dynamax Bands and Leon's word for the gym challenge
+script WishingStars
+  scene "The Wishing Stars"
+  faceto player hop_lake
+  speaker "Hop"
+  say "Look, up there! Two of them, falling right toward us!"
+  text "Two points of light streak down out of the night and land in the grass by the water, glowing faintly."
+  text "{player} picked up a Wishing Star! It is warm, and hums in the hand."
+  clearflag FLAG_GALAR_HIDE_MAGNOLIA_LAKE
+  clearflag FLAG_GALAR_HIDE_LEON_LAKE
+  faceto player magnolia_lake
+  speaker "Prof. Magnolia"
+  say "Wishing Stars, and two at once. They chose you, I think. That power is what lets a Pokémon grow giant."
+  say "Give me a moment with them. A Wishing Star set into a band lets its Trainer call that power out in battle."
+  if item "Dynamax Band" goto HasBand
+  give "Dynamax Band"
+  goto Leon
+label HasBand
+  say "Oh, but you have a Dynamax Band already! Then keep the star as it is. It will remember tonight."
+label Leon
+  faceto player leon_lake
+  speaker "Leon"
+  say "Two stars, and two Trainers who battled their hearts out today. I'd say that settles it."
+  say "I'll endorse you both for the gym challenge. The opening ceremony is in Motostoke: take the train from Wedgehurst."
+  setflag FLAG_GALAR_ENDORSED
+  setflag FLAG_GALAR_HIDE_HOP_LAKE
+  setflag FLAG_GALAR_HIDE_MAGNOLIA_LAKE
+  setflag FLAG_GALAR_HIDE_LEON_LAKE
+  setvar VAR_GALAR_STORY 10
+  objective galarTrain
+  endscene
+  end

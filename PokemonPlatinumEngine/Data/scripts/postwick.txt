@@ -1,0 +1,53 @@
+# Postwick, Galar's first place (plan 33 · GL1), on the open world's engine: its places are
+# Data/world3d/galar/places/postwick.json, and a scene here names markers, never tiles. The lines are our own, on Sword
+# and Shield's beats as they are publicly described (docs/mechanics/rulings.md, "Galar's first chapter").
+#
+# VAR_GALAR_STORY, the first chapter's count, kept here for every place of it:
+#   0 a new game, in the bedroom          6 Mum's Poké Balls; Hop waits in Wedgehurst
+#   1 Mum's word on the first morning      7 Hop's second battle won or lost
+#   2 Hop at the door, off to the station  8 the Pokédex at the professor's house
+#   3 Leon home, the three, Hop's battle   9 Hop's third battle in the garden; night falls
+#   4 into the Weald after Hop's Wooloo   10 the Wishing Stars, the Dynamax Band and Leon's endorsement
+#   5 the shadow in the fog; home again   11 aboard the train at Wedgehurst Station
+# VAR_GALAR_VERSION is the version the game is (plan 33 · decision 2): 1 Sword, 2 Shield, asked by Mum on the first
+# morning (Postwick_PlayersHouse_1F.txt).
+
+
+# Out of the door on the first morning: Hop, off to meet his brother's train
+script HopAtTheDoor
+  scene "Hop at the door"
+  faceto player hop_postwick
+  speaker "Hop"
+  say "There you are! You're never going to believe it, Leon's coming home today, on the train to Wedgehurst!"
+  say "The Champion of all Galar, back in Postwick. Come on, we have to be at the station when it pulls in!"
+  say "It's straight up Route 1. Stick to the path: we've got no Pokémon of our own yet, and the grass is full of them."
+  setflag FLAG_GALAR_HIDE_HOP_POSTWICK
+  clearflag FLAG_GALAR_HIDE_HOP_STATION
+  clearflag FLAG_GALAR_HIDE_LEON_STATION
+  setvar VAR_GALAR_STORY 2
+  objective galarStation
+  endscene
+  end
+
+
+# The gap in the hedge into the Slumbering Weald: latched until Hop's Wooloo slips through it, after the first battle
+script WealdGate
+  if var VAR_GALAR_STORY == 3 goto Wooloo
+  if var VAR_GALAR_STORY < 3 goto Latched
+  end
+label Latched
+  text "The gate into the Slumbering Weald is latched. Nobody in Postwick goes in there, and nobody says why."
+  walkto player weald_back
+  end
+label Wooloo
+  scene "Into the Weald"
+  faceto player hop_gate
+  speaker "Hop"
+  say "{player}! My Wooloo squeezed through the gate and ran off into the Weald!"
+  say "Everyone says to keep out of there. But it's my Wooloo, I can't just leave it. Come on, we'll find it together!"
+  setflag FLAG_GALAR_HIDE_HOP_GATE
+  clearflag FLAG_GALAR_HIDE_HOP_WEALD
+  setvar VAR_GALAR_STORY 4
+  objective galarWooloo
+  endscene
+  end
