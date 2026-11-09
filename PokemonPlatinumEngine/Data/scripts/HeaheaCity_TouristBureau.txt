@@ -9,3 +9,64 @@ script Guide
   say "North of here is Paniola Town and its ranch. East is Royal Avenue and the Battle Royal Dome. Further north, Wela Volcano Park."
   say "And on the far side of Diglett's Tunnel, Konikoni City, where Kahuna Olivia keeps her jewellery shop. Have a lovely stay!"
   end
+
+
+# Plan 23, Alola finished: a crystal carver of ours, who cuts a Pokémon's own Z-Crystal for a Trainer who brings that
+# Pokémon in the team, each once (FLAG_ALOLA_CARVED_<CRYSTAL>). Sun and Moon give these about the islands from people
+# of their own; ours are one carver's, so that every one of them can be had (ItemSourcesTests)
+script Carver
+  face self player
+  speaker "Crystal Carver"
+  say "I cut Z-Crystals for Pokémon with moves of their very own. Show me one in your team, and I'll cut its crystal."
+  if not has "Pikachu" goto NoPikachu
+  if flag FLAG_ALOLA_CARVED_PIKANIUM goto NoPikachu
+  give "Pikanium Z"
+  setflag FLAG_ALOLA_CARVED_PIKANIUM
+label NoPikachu
+  if not has "Eevee" goto NoEevee
+  if flag FLAG_ALOLA_CARVED_EEVIUM goto NoEevee
+  give "Eevium Z"
+  setflag FLAG_ALOLA_CARVED_EEVIUM
+label NoEevee
+  if not has "Raichu" goto NoRaichu
+  if flag FLAG_ALOLA_CARVED_ALORAICHIUM goto NoRaichu
+  give "Aloraichium Z"
+  setflag FLAG_ALOLA_CARVED_ALORAICHIUM
+label NoRaichu
+  if not has "Snorlax" goto NoSnorlax
+  if flag FLAG_ALOLA_CARVED_SNORLIUM goto NoSnorlax
+  give "Snorlium Z"
+  setflag FLAG_ALOLA_CARVED_SNORLIUM
+label NoSnorlax
+  if not has "Mimikyu" goto NoMimikyu
+  if flag FLAG_ALOLA_CARVED_MIMIKIUM goto NoMimikyu
+  give "Mimikium Z"
+  setflag FLAG_ALOLA_CARVED_MIMIKIUM
+label NoMimikyu
+  if not has "Lycanroc" goto NoLycanroc
+  if flag FLAG_ALOLA_CARVED_LYCANIUM goto NoLycanroc
+  give "Lycanium Z"
+  setflag FLAG_ALOLA_CARVED_LYCANIUM
+label NoLycanroc
+  if not has "Kommo-o" goto NoKommoo
+  if flag FLAG_ALOLA_CARVED_KOMMONIUM goto NoKommoo
+  give "Kommonium Z"
+  setflag FLAG_ALOLA_CARVED_KOMMONIUM
+label NoKommoo
+  if has "Tapu Koko" goto Tapu
+  if has "Tapu Lele" goto Tapu
+  if has "Tapu Bulu" goto Tapu
+  if has "Tapu Fini" goto Tapu
+  goto NoTapu
+label Tapu
+  if flag FLAG_ALOLA_CARVED_TAPUNIUM goto NoTapu
+  give "Tapunium Z"
+  setflag FLAG_ALOLA_CARVED_TAPUNIUM
+label NoTapu
+  if not has "Mew" goto NoMew
+  if flag FLAG_ALOLA_CARVED_MEWNIUM goto NoMew
+  give "Mewnium Z"
+  setflag FLAG_ALOLA_CARVED_MEWNIUM
+label NoMew
+  say "Pikachu, Eevee, Raichu, Snorlax, Mimikyu, Lycanroc, Kommo-o, an island guardian, even Mew. Bring me any of them."
+  end

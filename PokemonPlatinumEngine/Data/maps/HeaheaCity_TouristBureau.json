@@ -130,6 +130,15 @@
       "dialog": [
         "The guide says Akala is the island of fire and water. I came for the fire. My suntan came for the water."
       ]
+    },
+    {
+      "id": "carver",
+      "name": "Crystal Carver",
+      "npcType": "old_man",
+      "x": 12,
+      "y": 6,
+      "facing": "Left",
+      "script": "Carver"
     }
   ],
   "wildEncounters": []

@@ -4,7 +4,7 @@
   // beach, and the road north to Route 10. Kukui and Hau wait on the plaza once the player has come from Aether Paradise
   // (FLAG_ALOLA_AT_MALIE, ulaula_malie_city.txt).
   "area": "malie_city",
-  "bgmTrack": "alola/hauoli",
+  "bgmTrack": "alola/malie",
   "trees": "Round",
   "architecture": "Shoreline",
   "doors": [

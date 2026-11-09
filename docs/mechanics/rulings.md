@@ -9830,6 +9830,71 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **Left**: the Battle Tree's partner choice and scouting; the Ultra Warp Ride; Magearna and Marshadow (plan 29 · LS11); a
   Mantine that does tricks; the new places' own songs.
 
+## Alola finished: the Ultra Warp Ride, the mythicals, the owed crystals, the tree's scouting, the island Pokédexes and the last shut doors (2026-11-09, plan 23, Alola's last session)
+
+- **Where it comes from.** As Z5 to Z8: the features as they are publicly described (Serebii's and Smogon's lists of the
+  Ultra Wormholes' legendary Pokémon by colour, their level 60 and the three that need others of their kind; Bulbapedia's
+  scouting at the Battle Tree), never a picture, map, line or script of the games. Every line, name and drawing is ours.
+- **The Ultra Warp Ride.** Ultra Sun and Ultra Moon fly Solgaleo or Lunala through wormholes of four colours; ours is the
+  Altar's own wormhole, which once Necrozma has been met (`VAR_ALOLA_ULTRA` 4) asks first whether to go to the Ultra Beasts'
+  worlds or to ride the warp, and then which light: **blue, green, red or yellow**, each to a **world of the wilds** drawn
+  by hand (`tools/MapDraw/alola/ultra_wilds_*.txt`, matrices 71 to 74, `UltraWildsWater`, `Field`, `Cliff` and `Cave`, the
+  same shape as the Ultra Beasts' worlds: in at 32,54, the way home read at 32,55, a dais at 32,16). The games' legendary
+  Pokémon of both versions are kept by colour: water Suicune, Lugia, Latias, Latios, Kyogre, Uxie, Mesprit, Azelf and Kyurem;
+  field Mewtwo, Raikou, Entei, Dialga, Cobalion, Terrakion, Virizion, Reshiram, Zekrom and Xerneas; cliff Articuno, Zapdos,
+  Moltres, Ho-Oh, Rayquaza, Cresselia, Tornadus, Thundurus, Landorus and Yveltal; cave Regirock, Regice, Registeel, Groudon,
+  Palkia, Heatran, Regigigas and Giratina. **Each arrival shows one** on the dais (all stand on that tile, each shown by a
+  local flag, `FLAG_MAP_LOCAL_WARP_<NAME>`, that the world's arrival sets for one alone): a die picks a place in the list and
+  the draw goes on round it past those caught here (`FLAG_ALOLA_WARP_<NAME>_CAUGHT`) and those whose kin is not in the team
+  (Suicune with Entei and Raikou, Kyurem with Reshiram and Zekrom, Rayquaza with Kyogre and Groudon, Landorus with Tornadus and
+  Thundurus, Giratina with Dialga and Palkia, as the games ask; Regigigas with the three Regis, ours). **Each meeting has its
+  own beat** (bars, the camera to the dais and a zoom, an effect of its own kind: a geyser, an eruption, a rift, a beam, a
+  shadow, mist, a ripple, sparkles or petals, or the legend shaken), at level 60, and comes again on a later ride until it
+  is caught. Each world has the games' five wild species of its colour in its grass at 58 to 62, and none has a song of its
+  own (they play `alola/ultra_space`). Two versions' legendaries in one game is ours; nothing caught in its own region keeps
+  one from the warp.
+- **The mythicals and Meltan** (plan 29 · LS11's rule, with Alola's proposals written into
+  `docs/plans/decisions/LS11-proposals-event-legendaries.md`, rows 12 to 15, built to their recommended answers, which the user
+  may still change): **Magearna** in Hokulani Observatory once the second totem (the Vikavolt) has been beaten there, after
+  the Hall of Fame; **Marshadow** by Hau'oli Cemetery's east lamp at night once the Hall of Fame is entered and the little
+  girl has gone after her friend (`FLAG_ALOLA_MARSHADOW_NEAR`, kept by the cemetery's arrival), leaving the **Marshadium Z**;
+  **Zeraora** in the geothermal power plant at night after the Hall of Fame (`FLAG_ALOLA_ZERAORA_NEAR`), its chief's line about
+  the meters dipping; **Meltan** gnawing the old Thrifty Megamart's shelves after the Hall of Fame, met once whatever the
+  battle's end, leaving **400 Meltan Candy**, which the data's Melmetal evolution asks for in the bag. All four at level 60,
+  each after its beat; gone once beaten or caught (Meltan once met), staying when run from.
+- **The items Alola owed** (`ItemSourcesTests.Owed` has nothing of Alola left): Kukui, after the Hall of Fame, gives the three
+  partners' Z-Crystals (Decidium, Incinium, Primarium) and, to a bag with a Key Stone, the three Mega Stones of ours
+  (`R20b-mega-proposals.md`); a **crystal carver** of ours in Heahea City's tourist bureau cuts the Pikanium, Eevium,
+  Aloraichium, Snorlium, Mimikium, Lycanium, Kommonium, Tapunium and Mewnium Z for a team that holds the species (an island
+  guardian for the Tapunium Z), each once; the Altar's keeper gives the Solganium and Lunalium Z after the Cosmog; Veyra gives
+  the Ultranecrozium Z, the N-Solarizer and the N-Lunarizer once the light is back. Sun and Moon spread these among people
+  of their own; ours gathers them where the game has room. The Pikashunium Z and the Fairy Gem stay plan 40 · GE7's gift box.
+- **The Battle Tree's scouting** (Sun and Moon's, ours in its numbers): every trainer of the sets beaten in the single or
+  double room (never a Tree Master) is kept on the Multi room's record (`FacilityRecord.Scouted`, ten at most, the most recent
+  kept, once a name; their sets and personalities, so nothing but numbers is saved), and the desk asks, as the Multi room is
+  chosen, whether to choose a partner from them, the most recent first; the one chosen (`FacilityRecord.Partner`) brings the
+  first two of the team they were beaten with, rebuilt at 50 with the third rank's IVs, for every Multi challenge after;
+  declined, the tree's own partner, as before. A friend over a link is not built.
+- **The island Pokédexes**: Alola's region file lists Sun and Moon's four island Pokédexes beside the Alola one
+  (`original-melemele`, `-akala`, `-ulaula`, `-poni`, PokeAPI's numbering), as Kalos lists its three, each with its words and
+  a diploma of its own.
+- **The last shut doors**: Ultra Megalopolis's four houses are rooms of ours on Po Town's house plan (the lamp keeper's
+  family, whose wife gives a Star Piece once the light is back; Veyra's family; the archive; a lens workshop). No door of
+  Alola is `locked` any more.
+- **The plane to Galar** works from Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered (plan 33 · GL1 put
+  the attendant there); `AlolaFinishTests` plays it.
+- **Built beside it** (an agent of the session, its own report): the Battle Tree's and the geothermal power plant's outsides
+  as buildings of their own (`BuildingKind.BattleTree`, `PowerPlant`; style guide, "Kinds of building"), a strong current
+  drawn moving in its direction (style guide, "Water", "Strong current"; Hoenn's and Kanto's currents show it too), Resolution
+  Cave lit (`AreaClimate.Verdant`) and Zygarde standing large (an overlay person's `scale`), and Alola's battle manner keeping
+  both trainers in the picture (`CameraManner.TrainersIn`); and six songs of ours (`alola/ulaula_road`, `poni`, `cave`,
+  `po_town`, `malie`, `aether`).
+- **Not built, and why.** *A Mantine that does tricks* is plan 42 · PS7's trick surfing (an event of the Pokéathlon's kind on
+  Big Wave Beach), a plan of its own; Alola's course of gates stands until it comes. *Poké Pelago, Pokémon Refresh and the
+  Festival Plaza* were left out by plan 23's Alola decisions; plan 35 (bonding) holds the care and the pasture in their
+  place, plan 41 the plaza. *The Island Scan* is built (the rest of the islands). *A friend in the Multi room over a link*
+  is plan 07's.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -57,6 +57,16 @@
           "Celulă Zygarde"
         ]
       }
+    },
+    "zeraora": {
+      "name": {
+        "en": [
+          "Zeraora"
+        ],
+        "text": [
+          "Zeraora"
+        ]
+      }
     }
   },
   "signs": {}

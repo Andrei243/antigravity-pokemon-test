@@ -69,11 +69,6 @@ public class ItemSourcesTests
 
     private const string Lumiose = "plan 23 · Z22: Lumiose's era, its Wild Zones, Rogue Megas and shops (Legends: Z-A's Mega Stones)";
     private const string MegaDimension = "plan 23 · Z24 (optional): the Mega Dimension (Legends: Z-A's own)";
-    private const string AlolaFirst = "plan 23 · Z5: the four islands, still open: Melemele's and Akala's people and places that Z6 left (its rulings' \"Left\"), where Sun and Moon give them";
-    private const string AlolaLast = "plan 23 · Z5: the four islands, still open: Ula'ula's and Poni's places, people and post-game that Z7 left (its rulings' \"Left\"), where Sun and Moon give them";
-    private const string Meltan = "plan 23 · Z5: Alola, still open, which owes Meltan's line with Alola's species (NationalSpeciesTests.OwnerOf) and a way of its own to the candies (Pokémon GO's alone)";
-    private const string AlolaStones = "plan 23 · Z8: after Alola's League (its Hall of Fame stands since Z7), its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
-    private const string UltraSpace = "plan 23 · Z8 (optional): after the League, Ultra Space and the Ultra Megalopolis";
     private const string Hisui = "plan 23 · Z20 (optional): Hisui, which owes Kleavor and Ursaluna (NationalSpeciesTests)";
     // (Galar's professor gives the Dynamax Band to a bag without one since plan 33 · GL1: the Wishing Stars at her lake)
     private const string GalarCafes = "plan 33 · GL4: the cafés whose battles give the Sweets (or GL5's, the study's finding)";
@@ -111,19 +106,10 @@ public class ItemSourcesTests
             "Heatranite", "Darkranite", "Zeraorite", "Raichunite X", "Raichunite Y", "Chimechite", "Absolite Z", "Staraptite",
             "Garchompite Z", "Lucarionite Z", "Golurkite", "Crabominite", "Golisopite", "Scovillainite", "Baxcalibrite", "Glimmoranite"
         }),
-        // Alola: the crystals its trials don't give (the eleven trials' and grand trials' are given since plan 23 · Z5 to Z7, and
-        // every type's at the Battle Tree's counter since its inside was built; the Zygarde Cube is Dexio's on Route 16),
-        // its species' crystals, its form items and its evolution items
-        (AlolaFirst, new[] { "Pikanium Z", "Eevium Z" }),
-        (AlolaLast, new[]
-        {
-            "Decidium Z", "Incinium Z",
-            "Primarium Z", "Aloraichium Z", "Snorlium Z", "Mimikium Z", "Lycanium Z", "Kommonium Z", "Solganium Z", "Lunalium Z"
-        }),
-        (Meltan, new[] { "Meltan Candy" }),
-        (UltraSpace, new[] { "Tapunium Z", "Ultranecrozium Z", "Mewnium Z", "N-Solarizer", "N-Lunarizer" }),
-        (AlolaStones, new[] { "Decidueyite", "Incineroarite", "Primarinite" }),
-        (Events, new[] { "Marshadium Z", "Pikashunium Z", "Fairy Gem" }),
+        // (Alola owes nothing since plan 23's last Alola session: the partners' crystals and stones are Kukui's after the Hall
+        // of Fame, the species' crystals Heahea's carver's, the sun's and the moon's the Altar keeper's, Necrozma's and its two
+        // machines Veyra's, the Marshadium Z Marshadow's, the Meltan Candy the old Megamart's Meltan's)
+        (Events, new[] { "Pikashunium Z", "Fairy Gem" }),
         // What the evolutions of our own species ask for that only chance gives (plan 36 · TR3's sources count no chance):
         // Volcamel's, Gastromire's, Behemowdon's and Furnapede's rocks, Ossugard's club
         // Hisui
@@ -300,7 +286,9 @@ public class ItemSourcesTests
     {
         (RegionDatabase.Sinnoh, "RowanLab", "prof_rowan", "SinnohHallOfFame", new[] { "Torterrite", "Infernapite", "Empoleonite" }),
         (RegionDatabase.Johto, "new_bark_elms_lab_1f", "t20r0101_doctor", "JohtoHallOfFame", new[] { "Typhlosionite" }),
-        (RegionDatabase.Unova, "nuvema_town_lab", "0", "UnovaHallOfFame", new[] { "Serperiorite", "Samurottite" })
+        (RegionDatabase.Unova, "nuvema_town_lab", "0", "UnovaHallOfFame", new[] { "Serperiorite", "Samurottite" }),
+        // Plan 23, Alola finished: Kukui in his laboratory, after the partners' Z-Crystals
+        (RegionDatabase.Alola, "AlolaRoute1_KukuiLab", "kukui", "AlolaHallOfFame", new[] { "Decidueyite", "Incineroarite", "Primarinite" })
     };
 
     [Fact]
@@ -313,6 +301,8 @@ public class ItemSourcesTests
                     var game = new Game(region);
                     // (past the opening of Sinnoh's laboratory, where the professor's own talk waits for its scene)
                     game.Story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 4);
+                    // (and past Alola's first chapter, whose laboratory has given its Pokédex)
+                    game.Story.SetVar("VAR_ALOLA_STORY", 60);
                     if (champion) game.Story.Set(hallOfFame);
                     if (keyStone) game.Bag.AddItem(ItemDatabase.Get(BattleCore.KeyStoneItem)!, 1);
                     game.At(place).Talk(key);
@@ -335,10 +325,10 @@ public class ItemSourcesTests
         foreach (var (region, _, _, _, stones) in Professors)
             foreach (string stone in stones)
                 Assert.True(ItemSources.In(region).Has(stone, ItemSourceKind.Given), $"{region} gives no {stone}");
-        // The other nine wait for their regions' professors after their Halls of Fame (Alola's stands since plan 23 · Z7)
+        // The other six wait for their regions' professors after their Halls of Fame
         var given = Professors.SelectMany(p => p.Stones).ToHashSet();
         Assert.All(ours.Where(s => !given.Contains(s)), stone => Assert.Contains("the bag holds a Key Stone", Owed[stone], StringComparison.Ordinal));
-        Assert.Equal(9, ours.Count(s => !given.Contains(s)));
+        Assert.Equal(6, ours.Count(s => !given.Contains(s)));
     }
 
     // ------------------------------------------------------------------ Unova's form items

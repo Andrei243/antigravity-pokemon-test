@@ -25,7 +25,34 @@ label Before
   say "Alola! You'll want to see the kahuna in Iki Town first."
   end
 label After
+  if flag AlolaHallOfFame goto Champion
   say "Every move a Pokémon uses tells me something. Go and see as many as you can, yeah?"
+  end
+# Plan 23, Alola finished: after the Hall of Fame the professor hands over the three partners' own Z-Crystals, once
+# (FLAG_ALOLA_KUKUI_STARTER_CRYSTALS), and, once the bag holds a Key Stone, the stones of the Megas of our own whose line
+# is Alola's (docs/plans/decisions/R20b-mega-proposals.md, "Where the stones are found"; FLAG_ALOLA_KUKUI_MEGA_STONES)
+label Champion
+  if flag FLAG_ALOLA_KUKUI_STARTER_CRYSTALS goto Stones
+  say "Champion! Woo! I still can't get used to saying it. My lab's roof is in pieces from celebrating."
+  say "These were made for the three partners of the islands. A Z-Crystal for each of their final moves, all in one go!"
+  give "Decidium Z"
+  give "Incinium Z"
+  give "Primarium Z"
+  setflag FLAG_ALOLA_KUKUI_STARTER_CRYSTALS
+  say "Whichever partner you raised, it's got a move nobody else has now. Show me, yeah?"
+label Stones
+  if flag FLAG_ALOLA_KUKUI_MEGA_STONES goto Done
+  if not item "Key Stone" goto Done
+  say "Hold on... a Key Stone? Mega Evolution, out here in Alola? Then these three stones finally make sense!"
+  say "They washed up on the beach out front, one by one, each warm whenever a partner Pokémon came near."
+  give "Decidueyite"
+  give "Incineroarite"
+  give "Primarinite"
+  setflag FLAG_ALOLA_KUKUI_MEGA_STONES
+  say "One for each of the three. Whichever you raised, it can go further still. I can't wait to take one of those hits!"
+  end
+label Done
+  say "Every move a Pokémon uses tells me something. Even a Champion's. Especially a Champion's!"
   end
 
 

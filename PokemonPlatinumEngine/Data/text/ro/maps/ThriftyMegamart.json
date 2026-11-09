@@ -57,6 +57,16 @@
           "Mimikyu"
         ]
       }
+    },
+    "meltan": {
+      "name": {
+        "en": [
+          "Meltan"
+        ],
+        "text": [
+          "Meltan"
+        ]
+      }
     }
   },
   "signs": {}

@@ -2,7 +2,7 @@
   // Poni Plains (plan 23, the wave after Ultra Space): drawn by hand, our words. Wide grass where Tauros and Miltank
   // graze, between Poni Grove in the south-west, Poni Gauntlet in the north-east and Poni Meadow in the south
   "area": "poni_plains",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

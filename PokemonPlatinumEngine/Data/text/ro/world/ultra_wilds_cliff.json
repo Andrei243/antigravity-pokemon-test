@@ -1,0 +1,105 @@
+{
+  "people": {
+    "warp_articuno": {
+      "name": {
+        "en": [
+          "Articuno"
+        ],
+        "text": [
+          "Articuno"
+        ]
+      }
+    },
+    "warp_zapdos": {
+      "name": {
+        "en": [
+          "Zapdos"
+        ],
+        "text": [
+          "Zapdos"
+        ]
+      }
+    },
+    "warp_moltres": {
+      "name": {
+        "en": [
+          "Moltres"
+        ],
+        "text": [
+          "Moltres"
+        ]
+      }
+    },
+    "warp_ho_oh": {
+      "name": {
+        "en": [
+          "Ho-Oh"
+        ],
+        "text": [
+          "Ho-Oh"
+        ]
+      }
+    },
+    "warp_rayquaza": {
+      "name": {
+        "en": [
+          "Rayquaza"
+        ],
+        "text": [
+          "Rayquaza"
+        ]
+      }
+    },
+    "warp_cresselia": {
+      "name": {
+        "en": [
+          "Cresselia"
+        ],
+        "text": [
+          "Cresselia"
+        ]
+      }
+    },
+    "warp_tornadus": {
+      "name": {
+        "en": [
+          "Tornadus"
+        ],
+        "text": [
+          "Tornadus"
+        ]
+      }
+    },
+    "warp_thundurus": {
+      "name": {
+        "en": [
+          "Thundurus"
+        ],
+        "text": [
+          "Thundurus"
+        ]
+      }
+    },
+    "warp_landorus": {
+      "name": {
+        "en": [
+          "Landorus"
+        ],
+        "text": [
+          "Landorus"
+        ]
+      }
+    },
+    "warp_yveltal": {
+      "name": {
+        "en": [
+          "Yveltal"
+        ],
+        "text": [
+          "Yveltal"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -132,6 +132,18 @@
       "facing": "Down",
       "script": "PlantCell",
       "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PLANT"
+    },
+    {
+      "id": "zeraora",
+      "name": "Zeraora",
+      "npcType": "Pokemon",
+      "x": 14,
+      "y": 5,
+      "facing": "Down",
+      "script": "Zeraora",
+      "hiddenBy": "FLAG_ALOLA_ZERAORA_GONE",
+      "shownBy": "FLAG_ALOLA_ZERAORA_NEAR",
+      "species": "Zeraora"
     }
   ],
   "wildEncounters": []

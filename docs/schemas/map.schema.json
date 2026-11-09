@@ -673,7 +673,9 @@
               "Warehouse",
               "Mansion",
               "Galactic",
-              "League"
+              "League",
+              "BattleTree",
+              "PowerPlant"
             ]
           }
         },

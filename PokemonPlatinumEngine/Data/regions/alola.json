@@ -13,6 +13,9 @@
   // decompilation that holds their maps and no dump is read, so the island is laid in its shape on the grid. Sun and
   // Moon's own Alola Pokédex, until a later session decides between it and Ultra Sun and Ultra Moon's
   "dex": "original-alola",
+  // Plan 23, Alola finished: Sun and Moon's four island Pokédexes beside the Alola one, each listed and with its
+  // diploma, as Kalos's three are
+  "dexes": [ "original-alola", "original-melemele", "original-akala", "original-ulaula", "original-poni" ],
   "nationalUnlock": "HallOfFame",
   // A new game begun here (--region Alola) wakes in the player's new home on Route 1 with nothing, and the kahuna of
   // Iki Town hands over the first Pokémon (plan 23 · Z5)

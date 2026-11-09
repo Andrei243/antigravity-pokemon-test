@@ -1,0 +1,74 @@
+# The caves of Alola: a long way under the island, water dripping into dark pools and every sound coming back a moment
+# late. A harp turning a minor chord over and over in C, high drips of a celesta at no particular time, a low warm pad and a
+# bowed bass, an ocarina wandering in from the middle, a bell that tolls the root now and then and a timpani far off. The same
+# by day and night, as the caves keep no hours.
+# Original composition for this game, in the modern sound.
+title Cave (Alola)
+tempo 72
+meter 4/4
+reverb 0.42
+night none
+room hall 3.4
+
+track harp harp vol=0.74 pan=-0.2 rev=0.5
+  o3 g8 o4 d8 o3 b8 o4 g8 r8 o4 d8 o3 b8 r8 |
+  L o4 c8 o4 e-8 o4 g8 o5 c8 o4 g8 o4 e-8 r8 r8 | o4 c8 o4 g8 o4 e-8 o5 c8 r8 o4 g8 o4 e-8 r8 | o3 a-8 o4 c8 o4 e-8 o4 a-8 o4 e-8 o4 c8 r8 r8 | o3 f8 o4 c8 o3 a-8 o4 f8 r8 o4 c8 o3 a-8 r8 |
+  o4 c8 o4 e-8 o4 g8 o5 c8 o4 g8 o4 e-8 r8 r8 | o3 e-8 o3 b-8 o3 g8 o4 e-8 r8 o3 b-8 o3 g8 r8 | o3 b-8 o4 d8 o4 f8 o4 b-8 o4 f8 o4 d8 r8 r8 | o3 g8 o4 d8 o3 b8 o4 g8 r8 o4 d8 o3 b8 r8 |
+  o3 a-8 o4 c8 o4 e-8 o4 a-8 o4 e-8 o4 c8 r8 r8 | o3 e-8 o3 b-8 o3 g8 o4 e-8 r8 o3 b-8 o3 g8 r8 | o3 f8 o3 a-8 o4 c8 o4 f8 o4 c8 o3 a-8 r8 r8 | o4 c8 o4 g8 o4 e-8 o5 c8 r8 o4 g8 o4 e-8 r8 |
+  o3 a-8 o4 c8 o4 e-8 o4 a-8 o4 e-8 o4 c8 r8 r8 | o3 b-8 o4 f8 o4 d8 o4 b-8 r8 o4 f8 o4 d8 r8 | o3 g8 o3 b8 o4 d8 o4 g8 o4 d8 o3 b8 r8 r8 | o3 g8 o4 d8 o3 b8 o4 g8 r8 o4 d8 o3 b8 r8 |
+  o4 c8 o4 e-8 o4 g8 o5 c8 o4 g8 o4 e-8 r8 r8 | o4 c8 o4 g8 o4 e-8 o5 c8 r8 o4 g8 o4 e-8 r8 | o3 f8 o3 a-8 o4 c8 o4 f8 o4 c8 o3 a-8 r8 r8 | o3 a-8 o4 e-8 o4 c8 o4 a-8 r8 o4 e-8 o4 c8 r8 |
+  o4 c8 o4 e-8 o4 g8 o5 c8 o4 g8 o4 e-8 r8 r8 | o3 e-8 o3 b-8 o3 g8 o4 e-8 r8 o3 b-8 o3 g8 r8 | o3 b-8 o4 d8 o4 f8 o4 b-8 o4 f8 o4 d8 r8 r8 | o3 g8 o4 d8 o3 b8 o4 g8 r8 o4 d8 o3 b8 r8 |
+
+track drips celesta vol=0.5 pan=0.35 rev=0.6
+  o6 g16 r16 r8 r2 r4 |
+  L r1 | r4 o6 g8 r8 r2 | r2 r8 o6 c8 r4 | r1 |
+  r4 r8 o6 e-8 r4 o6 g8 r8 | r4 o6 b-8 r8 r2 | r1 | o6 g16 r16 r8 r2 r4 |
+  r1 | r4 o6 b-8 r8 r2 | r2 r8 o6 a-8 r4 | r1 |
+  r4 r8 o6 c8 r4 o6 e-8 r8 | r4 o6 f8 r8 r2 | r1 | o6 g16 r16 r8 r2 r4 |
+  r1 | r4 o6 g8 r8 r2 | r2 r8 o6 a-8 r4 | r1 |
+  r4 r8 o6 e-8 r4 o6 g8 r8 | r4 o6 b-8 r8 r2 | r1 | o6 g16 r16 r8 r2 r4 |
+
+track ocarina ocarina vol=0.56 pan=0.15 rev=0.5
+  o5 b1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 e-2 c2 | o5 g2 b-2 | o6 c2 o5 a-2 | o5 g2 e-2 |
+  o5 a-2 o6 c2 | o6 d2 o5 b-2 | o5 b2 o6 d2 | o5 g1 |
+  o5 g2 e-2 | o6 c2 o5 g2 | o5 a-2 f2 | o5 e-2 c2 |
+  o5 g2 o6 c2 | o5 b-2 g2 | o6 d2 f2 | o5 b1 |
+
+track pad warmpad vol=0.44 pan=0.2 rev=0.55
+  o3 (g b > d)1 |
+  L o3 (c e- g)1 | o3 (c e- g)1 | o3 (a- > c e-)1 | o3 (f a- > c)1 |
+  o3 (c e- g)1 | o3 (e- g b-)1 | o3 (b- > d f)1 | o3 (g b > d)1 |
+  o3 (a- > c e-)1 | o3 (e- g b-)1 | o3 (f a- > c)1 | o3 (c e- g)1 |
+  o3 (a- > c e-)1 | o3 (b- > d f)1 | o3 (g b > d)1 | o3 (g b > d)1 |
+  o3 (c e- g)1 | o3 (c e- g)1 | o3 (f a- > c)1 | o3 (a- > c e-)1 |
+  o3 (c e- g)1 | o3 (e- g b-)1 | o3 (b- > d f)1 | o3 (g b > d)1 |
+
+track bass contrabass vol=0.62 rev=0.1
+  o3 g2. r4 |
+  L o3 c2. r4 | o3 c2. r4 | o3 a-2. r4 | o3 f2. r4 |
+  o3 c2. r4 | o3 e-2. r4 | o3 b-2. r4 | o3 g2. r4 |
+  o3 a-2. r4 | o3 e-2. r4 | o3 f2. r4 | o3 c2. r4 |
+  o3 a-2. r4 | o3 b-2. r4 | o3 g2. r4 | o3 g2. r4 |
+  o3 c2. r4 | o3 c2. r4 | o3 f2. r4 | o3 a-2. r4 |
+  o3 c2. r4 | o3 e-2. r4 | o3 b-2. r4 | o3 g2. r4 |
+
+track timp timpani vol=0.36 pan=-0.05 rev=0.4
+  v80 o4 g4 r2. |
+  L r1 | r1 | r1 | v80 o4 f4 r2. |
+  r1 | r1 | r1 | v80 o4 g4 r2. |
+  r1 | r1 | r1 | v80 o4 c4 r2. |
+  r1 | r1 | r1 | v80 o4 g4 r2. |
+  r1 | r1 | r1 | v80 o4 a-4 r2. |
+  r1 | r1 | r1 | v80 o4 g4 r2. |
+
+track toll bell vol=0.34 pan=0 rev=0.55
+  r1 |
+  L o5 c2 r2 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 a-2 r2 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 c2 r2 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |

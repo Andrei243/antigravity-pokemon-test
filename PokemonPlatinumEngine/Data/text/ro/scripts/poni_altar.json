@@ -158,6 +158,20 @@
     },
     {
       "en": [
+        "The light pulls two ways at once.",
+        "The Ultra Beasts' worlds",
+        "Ride the warp",
+        "Stay here"
+      ],
+      "text": [
+        "Lumina trage în două părți deodată.",
+        "Lumile Ultra Bestiilor",
+        "Călătorește prin tunel",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
         "Where will the wormhole take you?",
         "Ultra Deep Sea",
         "Ultra Jungle",
@@ -276,6 +290,56 @@
     },
     {
       "en": [
+        "Which light will you ride?",
+        "The blue light",
+        "The green light",
+        "The red light",
+        "The yellow light",
+        "Stay here"
+      ],
+      "text": [
+        "Pe ce lumină vei merge?",
+        "Lumina albastră",
+        "Lumina verde",
+        "Lumina roșie",
+        "Lumina galbenă",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the blue light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina albastră prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the green light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina verde prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the red light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina roșie prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the yellow light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina galbenă prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
         "The stone of the dais is warm, as if the sun were still on it."
       ],
       "text": [
@@ -350,6 +414,14 @@
       ],
       "text": [
         "Ai grijă de el. Se spune că devine soare ziua sau lună noaptea, după momentul în care e gata."
+      ]
+    },
+    {
+      "en": [
+        "These two lay on the dais the morning after. One warm as noon, one cool as midnight. They were meant for you."
+      ],
+      "text": [
+        "Astea două zăceau pe podium în dimineața de după. Unul cald ca amiaza, unul rece ca miezul nopții. Erau pentru tine."
       ]
     },
     {

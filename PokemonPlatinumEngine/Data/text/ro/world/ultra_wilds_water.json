@@ -1,0 +1,95 @@
+{
+  "people": {
+    "warp_suicune": {
+      "name": {
+        "en": [
+          "Suicune"
+        ],
+        "text": [
+          "Suicune"
+        ]
+      }
+    },
+    "warp_lugia": {
+      "name": {
+        "en": [
+          "Lugia"
+        ],
+        "text": [
+          "Lugia"
+        ]
+      }
+    },
+    "warp_latias": {
+      "name": {
+        "en": [
+          "Latias"
+        ],
+        "text": [
+          "Latias"
+        ]
+      }
+    },
+    "warp_latios": {
+      "name": {
+        "en": [
+          "Latios"
+        ],
+        "text": [
+          "Latios"
+        ]
+      }
+    },
+    "warp_kyogre": {
+      "name": {
+        "en": [
+          "Kyogre"
+        ],
+        "text": [
+          "Kyogre"
+        ]
+      }
+    },
+    "warp_uxie": {
+      "name": {
+        "en": [
+          "Uxie"
+        ],
+        "text": [
+          "Uxie"
+        ]
+      }
+    },
+    "warp_mesprit": {
+      "name": {
+        "en": [
+          "Mesprit"
+        ],
+        "text": [
+          "Mesprit"
+        ]
+      }
+    },
+    "warp_azelf": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    },
+    "warp_kyurem": {
+      "name": {
+        "en": [
+          "Kyurem"
+        ],
+        "text": [
+          "Kyurem"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

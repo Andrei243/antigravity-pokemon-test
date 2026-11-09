@@ -1248,8 +1248,8 @@
       "left": "Left {n}", "right": "Right {n}", "ready": "Press to hear", "sounding": "Sounding",
       "hint": "Press the confirm key to bend this cry."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "originalalola": "ALOLA", "national": "NATIONAL", "ours": "OF OUR OWN" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "originalalola": "Alola", "national": "National", "ours": "Of our own" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "national": "NATIONAL", "ours": "OF OUR OWN" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "national": "National", "ours": "Of our own" },
     "oursMark": "OURS",
     "found": "FOUND",
     "order": "ORDER",
@@ -1325,6 +1325,10 @@
       "kaloscoastal": "COASTAL KALOS POKÉDEX",
       "kalosmountain": "MOUNTAIN KALOS POKÉDEX",
       "originalalola": "ALOLA POKÉDEX",
+      "originalmelemele": "MELEMELE POKÉDEX",
+      "originalakala": "AKALA POKÉDEX",
+      "originalulaula": "ULA'ULA POKÉDEX",
+      "originalponi": "PONI POKÉDEX",
       "national": "NATIONAL POKÉDEX",
       "research": "SINNOH RESEARCH",
       "line": {
@@ -1339,6 +1343,10 @@
         "kaloscoastal": "has seen every one of the {count} Pokémon of the Coastal Kalos Pokédex, from the tide pools to the open sea.",
         "kalosmountain": "has seen every one of the {count} Pokémon of the Mountain Kalos Pokédex, from the high snow to the old stone.",
         "originalalola": "has seen every one of the {count} Pokémon of the Alola Pokédex, on all four islands from the beaches to the peaks.",
+        "originalmelemele": "has seen every one of the {count} Pokémon of Melemele Island, from Iki Town's hill to the bay behind the cave.",
+        "originalakala": "has seen every one of the {count} Pokémon of Akala Island, from the ranch's paddocks to the volcano's rim.",
+        "originalulaula": "has seen every one of the {count} Pokémon of Ula'ula Island, from the desert sands to the snow on the summit.",
+        "originalponi": "has seen every one of the {count} Pokémon of Poni Island, the wildest of the four: canyon, grove and shore.",
         "national": "has caught every Pokémon of the National Pokédex that a trainer can meet. The work of a true Pokémon Master."
       }
     }

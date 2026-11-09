@@ -1,0 +1,16 @@
+# Alola finished: the Ultra Warp Ride's yellow world, a cave, with the legend the arrival drew on its dais
+newgame
+flag AlolaHallOfFame on
+var VAR_ALOLA_ULTRA 4
+pokemon Decidueye 60
+warp UltraWildsCave 32 19 up
+step up 2
+wait 0.5
+step up 1
+wait 1
+shot scn_alola_warp_cave_0_arrival
+talk
+wait 1.2
+shot scn_alola_warp_cave_1_look
+wait 1.4
+shot scn_alola_warp_cave_2_sign

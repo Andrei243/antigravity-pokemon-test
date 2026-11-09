@@ -14,7 +14,6 @@ public class AlolaSpeciesTests
 {
     private const string Region = RegionDatabase.Alola;
 
-    private const string Mythicals = "plan 29 · LS11: Alola's mythicals, by events of ours";
 
     /// <summary>What the Alola Pokédex has that nothing in Alola gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
@@ -23,8 +22,8 @@ public class AlolaSpeciesTests
         // the player's own and Lunala by it were given by the wave after Ultra Space: Poni's last places, Route 11, Blush
         // Mountain and Resolution Cave; rulings, "Poni's last places, Blush Mountain, Route 11 and the rides of the rough
         // ground and the sea")
-        // Given by events alone in Sun and Moon
-        ["Magearna"] = Mythicals, ["Marshadow"] = Mythicals,
+        // (Magearna and Marshadow, given by events alone in Sun and Moon, are met after the Hall of Fame since plan 23's last
+        // Alola session: Hokulani Observatory and Hau'oli Cemetery, plan 29 · LS11's rule)
     };
 
     /// <summary>The items and places Alola's evolutions ask for that nothing in Alola gives, and who owes each.</summary>

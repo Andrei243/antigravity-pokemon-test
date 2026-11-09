@@ -1,0 +1,72 @@
+{
+  "key": "ultra_wilds_water",
+  "index": 543,
+  "name": "Ultra Space Wilds",
+  "matrix": 71,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Quagsire",
+      "level": 58
+    },
+    {
+      "species": "Lombre",
+      "level": 61
+    },
+    {
+      "species": "Floatzel",
+      "level": 59
+    },
+    {
+      "species": "Stunfisk",
+      "level": 62
+    },
+    {
+      "species": "Barbaracle",
+      "level": 60
+    },
+    {
+      "species": "Quagsire",
+      "level": 58
+    },
+    {
+      "species": "Lombre",
+      "level": 61
+    },
+    {
+      "species": "Floatzel",
+      "level": 59
+    },
+    {
+      "species": "Stunfisk",
+      "level": 62
+    },
+    {
+      "species": "Barbaracle",
+      "level": 60
+    },
+    {
+      "species": "Quagsire",
+      "level": 58
+    },
+    {
+      "species": "Lombre",
+      "level": 61
+    }
+  ],
+  "landRate": 15
+}

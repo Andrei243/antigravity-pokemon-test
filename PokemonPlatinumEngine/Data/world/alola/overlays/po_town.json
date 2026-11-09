@@ -2,7 +2,7 @@
   // Po Town (plan 23 · Z7): drawn by hand, our words. Team Skull's abandoned town: the manor where Guzma waits, the Shady House where
   // the kahuna of Ula'ula is found, and three empty houses round a paved square.
   "area": "po_town",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/po_town",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

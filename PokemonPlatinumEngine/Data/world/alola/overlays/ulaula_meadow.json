@@ -2,7 +2,7 @@
   // Ula'ula Meadow (plan 23, the wave after the loose ends): drawn by hand, our words. A field of red flowers west of Route
   // 16, where Oricorio dance in their Baile Style; Route 17 leaves it north
   "area": "ulaula_meadow",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

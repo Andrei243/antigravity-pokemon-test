@@ -130,5 +130,31 @@
         "Tejgheaua e liniștită. Fantomele dintre rafturi vin primele."
       ]
     }
+  ],
+  "Meltan": [
+    {
+      "en": [
+        "A little drop of liquid metal was gnawing a shelf's last bolt. Its hex nut of a head swung round to {player}!"
+      ],
+      "text": [
+        "O picătură mică de metal lichid rodea ultimul șurub al unui raft. Capul ei ca o piuliță s-a întors spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Where it had fed, the shelf's floor glittered with little nuggets of metal, sweet-smelling and warm."
+      ],
+      "text": [
+        "Acolo unde se hrănise, podeaua raftului sclipea de mici pepite de metal, calde și cu miros dulce."
+      ]
+    },
+    {
+      "en": [
+        "They are what a Meltan sheds as it grows. Enough of them in the Bag, and a Meltan becomes something greater."
+      ],
+      "text": [
+        "Sunt ce leapădă un Meltan când crește. Cu destule în Rucsac, un Meltan devine ceva mai mare."
+      ]
+    }
   ]
 }

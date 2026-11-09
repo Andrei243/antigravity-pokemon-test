@@ -1,7 +1,7 @@
 {
   // Route 10 (plan 23 · Z7): drawn by hand, our words. North from Malie City over grass and flowers to the foot of Mount Hokulani.
   "area": "ulaula_route_10",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

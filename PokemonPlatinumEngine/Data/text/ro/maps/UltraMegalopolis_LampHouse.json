@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Lamp Keeper's House"
+    ],
+    "text": [
+      "Casa paznicului de felinare"
+    ]
+  },
+  "people": {
+    "keeper_wife": {
+      "name": {
+        "en": [
+          "Lamp Keeper's Wife"
+        ],
+        "text": [
+          "Soția paznicului de felinare"
+        ]
+      }
+    },
+    "keeper_son": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dad says he can put the lamps away now. He keeps lighting them anyway. I think he likes them."
+        ],
+        "text": [
+          "Tata zice că acum poate să strângă felinarele. Le aprinde oricum. Cred că îi plac."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

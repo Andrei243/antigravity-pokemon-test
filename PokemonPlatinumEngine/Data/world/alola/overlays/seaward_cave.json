@@ -3,7 +3,7 @@
   // (tools/MapDraw/alola/seaward_cave.txt), our words. A tunnel round a cold pool under the island's north shore, from a
   // hole in Melemele Meadow's south-west corner to Kala'e Bay
   "area": "seaward_cave",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/cave",
   "trees": "Round",
   "people": {
     "scan_totodile": { "name": "Totodile", "npcType": "Pokemon", "species": "Totodile", "script": "ScanTotodile", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_TOTODILE", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_TOTODILE_MET" },

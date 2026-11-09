@@ -1,0 +1,280 @@
+# Ultra Space Wilds, the yellow light's world (plan 23, Alola finished: the Ultra Warp Ride; docs/mechanics/rulings.md,
+# "Alola finished"). The lines are our own; which legendary Pokémon live in which of the four worlds, and that three need
+# others of their kind in the team, follows Ultra Sun and Ultra Moon as they are publicly described (Serebii's and
+# Smogon's lists), both versions' together. No picture, map, line or script of the games is read.
+# Each arrival draws one of the world's legendary Pokémon not yet caught here (FLAG_ALOLA_WARP_<NAME>_CAUGHT) and shows it
+# on the dais (FLAG_MAP_LOCAL_WARP_<NAME>, which lasts only while the player stays); the draw begins at a die of 8 and
+# goes on round the list past those caught or not yet called. Each is met at level 60 after a beat of its own, and is
+# back on a later ride until it is caught.
+
+
+script OnEnter
+  effect rift 32 55 hold
+  random 8
+  setvar VAR_ALOLA_WARP_PICK RESULT
+  setvar VAR_ALOLA_WARP_TRIES 0
+label Try
+  if var VAR_ALOLA_WARP_TRIES >= 8 goto Nobody
+  addvar VAR_ALOLA_WARP_TRIES 1
+  if var VAR_ALOLA_WARP_PICK == 0 goto P0
+  if var VAR_ALOLA_WARP_PICK == 1 goto P1
+  if var VAR_ALOLA_WARP_PICK == 2 goto P2
+  if var VAR_ALOLA_WARP_PICK == 3 goto P3
+  if var VAR_ALOLA_WARP_PICK == 4 goto P4
+  if var VAR_ALOLA_WARP_PICK == 5 goto P5
+  if var VAR_ALOLA_WARP_PICK == 6 goto P6
+  if var VAR_ALOLA_WARP_PICK == 7 goto P7
+  goto Nobody
+label P0
+  if flag FLAG_ALOLA_WARP_REGIROCK_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_REGIROCK
+  end
+label P1
+  if flag FLAG_ALOLA_WARP_REGICE_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_REGICE
+  end
+label P2
+  if flag FLAG_ALOLA_WARP_REGISTEEL_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_REGISTEEL
+  end
+label P3
+  if flag FLAG_ALOLA_WARP_GROUDON_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_GROUDON
+  end
+label P4
+  if flag FLAG_ALOLA_WARP_PALKIA_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_PALKIA
+  end
+label P5
+  if flag FLAG_ALOLA_WARP_HEATRAN_CAUGHT goto Next
+  setflag FLAG_MAP_LOCAL_WARP_HEATRAN
+  end
+label P6
+  if flag FLAG_ALOLA_WARP_REGIGIGAS_CAUGHT goto Next
+  if not has "Regirock" goto Next
+  if not has "Regice" goto Next
+  if not has "Registeel" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_REGIGIGAS
+  end
+label P7
+  if flag FLAG_ALOLA_WARP_GIRATINA_CAUGHT goto Next
+  if not has "Dialga" goto Next
+  if not has "Palkia" goto Next
+  setflag FLAG_MAP_LOCAL_WARP_GIRATINA
+  end
+label Next
+  addvar VAR_ALOLA_WARP_PICK 1
+  if var VAR_ALOLA_WARP_PICK >= 8 setvar VAR_ALOLA_WARP_PICK 0
+  goto Try
+label Nobody
+  speaker none
+  text "A cave of yellow stone, warm to the touch. Deep inside, something breathes like a slow furnace."
+  end
+
+
+script Regirock
+  scene "Regirock in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  shake self 6
+  cry "Regirock"
+  speaker none
+  text "The rock wall shook, and a giant of stone pulled itself free of it. Regirock!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Regirock" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_REGIROCK_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Regice
+  scene "Regice in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect mist 32 16 2.0
+  cry "Regice"
+  speaker none
+  text "The cave turned bitter cold, and a giant of ice stood where the frost was thickest. Regice!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Regice" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_REGICE_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Registeel
+  scene "Registeel in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  shake self 6
+  cry "Registeel"
+  speaker none
+  text "Metal rang against stone, and a giant of steel stepped out of the dark. Registeel!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Registeel" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_REGISTEEL_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Groudon
+  scene "Groudon in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect eruption 32 16 wait
+  cry "Groudon"
+  speaker none
+  text "Magma burst up through the floor, and Groudon climbed out of it with a roar that shook the cave!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Groudon" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_GROUDON_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Palkia
+  scene "Palkia in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect rift 32 16 2.0
+  cry "Palkia"
+  speaker none
+  text "The cave seemed to stretch away in every direction, and Palkia stepped out of the space between!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Palkia" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_PALKIA_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Heatran
+  scene "Heatran in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect eruption 32 16 wait
+  cry "Heatran"
+  speaker none
+  text "The floor glowed red, and Heatran crawled out of a pool of molten rock on its iron claws!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Heatran" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_HEATRAN_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Regigigas
+  scene "Regigigas in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  shake self 8
+  cry "Regigigas"
+  speaker none
+  text "The three giants in your team stirred, and the colossus they answer to woke in the dark. Regigigas!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Regigigas" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_REGIGIGAS_CAUGHT
+  hide self
+  music area
+  end
+
+
+script Giratina
+  scene "Giratina in the Ultra Space Wilds"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 32 goto Look
+  if var PLAYER_Y != 17 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 32 16 1.0
+  camera zoom 1.4 0.8
+  effect shadow 26 16 2 right wait
+  cry "Giratina"
+  speaker none
+  text "A shadow slid across the cave floor against the light, and Giratina rose out of it!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Giratina" 60
+  if result == 3 setflag FLAG_ALOLA_WARP_GIRATINA_CAUGHT
+  hide self
+  music area
+  end

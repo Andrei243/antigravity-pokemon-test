@@ -1657,8 +1657,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "ours": "ALE NOASTRE" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "ours": "Ale noastre" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "ours": "ALE NOASTRE" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "ours": "Ale noastre" },
     "oursMark": "ALE NOASTRE",
     "found": "GĂSIȚI",
     "order": "ORDINE",
@@ -1741,12 +1741,20 @@
         "kaloscentral": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Central: grădinile, pădurile și străzile din Lumiose, toate înregistrate.",
         "kaloscoastal": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Costier, de la bălțile de maree până în larg.",
         "kalosmountain": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Munte, de la zăpezile înalte până la piatra veche.",
-        "originalalola": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Alola, pe toate cele patru insule, de la plaje până la culmi."
+        "originalalola": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Alola, pe toate cele patru insule, de la plaje până la culmi.",
+        "originalmelemele": "a văzut fiecare dintre cei {count} Pokémoni ai insulei Melemele, de pe dealul din Iki Town până în golful din spatele peșterii.",
+        "originalakala": "a văzut fiecare dintre cei {count} Pokémoni ai insulei Akala, de la țarcurile fermei până la marginea vulcanului.",
+        "originalulaula": "a văzut fiecare dintre cei {count} Pokémoni ai insulei Ula'ula, de la nisipurile deșertului până la zăpada de pe vârf.",
+        "originalponi": "a văzut fiecare dintre cei {count} Pokémoni ai insulei Poni, cea mai sălbatică dintre cele patru: canion, crâng și țărm."
       },
       "kaloscentral": "POKÉDEX KALOS CENTRAL",
       "kaloscoastal": "POKÉDEX KALOS COSTIER",
       "kalosmountain": "POKÉDEX KALOS MUNTE",
-      "originalalola": "POKÉDEX ALOLA"
+      "originalalola": "POKÉDEX ALOLA",
+      "originalmelemele": "POKÉDEX MELEMELE",
+      "originalakala": "POKÉDEX AKALA",
+      "originalulaula": "POKÉDEX ULA'ULA",
+      "originalponi": "POKÉDEX PONI"
     },
     "here": {
       "title": "TRĂIEȘTE AICI",

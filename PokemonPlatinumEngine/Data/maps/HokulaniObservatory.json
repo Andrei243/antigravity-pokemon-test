@@ -211,6 +211,18 @@
       "hiddenBy": "FLAG_ALOLA_TOTEM_VIKAVOLT_DONE",
       "shownBy": "AlolaHallOfFame",
       "species": "Vikavolt"
+    },
+    {
+      "id": "magearna",
+      "name": "Magearna",
+      "npcType": "Pokemon",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Magearna",
+      "hiddenBy": "FLAG_ALOLA_MAGEARNA_GONE",
+      "shownBy": "FLAG_ALOLA_TOTEM_VIKAVOLT_DONE",
+      "species": "Magearna"
     }
   ],
   "wildEncounters": []

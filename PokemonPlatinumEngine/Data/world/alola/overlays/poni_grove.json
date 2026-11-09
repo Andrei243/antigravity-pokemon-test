@@ -5,7 +5,7 @@
   // is back in Ultra Megalopolis (rulings, "Poni's last places, Blush Mountain, Route 11 and the rides of the rough
   // ground and the sea"). The grove's mossy stone is a Moss Rock, as Sun and Moon's is in the Lush Jungle
   "area": "poni_grove",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "evolutionSites": [ "Moss Rock" ],

@@ -1371,6 +1371,12 @@ public sealed class OverlayPerson
     public string? SeenBy { get; set; }
 
     /// <summary>
+    /// For a Pokémon of the overlay's: how much larger than its field sprite it is drawn, from 1 to an alpha's 1.5
+    /// (plan 23: Resolution Cave's Zygarde, a legendary that waits where it is met). Null for its own size.
+    /// </summary>
+    public float? Scale { get; set; }
+
+    /// <summary>
     /// For someone the overlay makes a Pokémon (<c>npcType</c> <c>Pokemon</c>) whose looks the original sets by
     /// script: the species it stands as until one dresses it (plan 06 · R16c: Amity Square's <c>follower_mon</c>, the
     /// Pokémon of the team let out of its ball there).

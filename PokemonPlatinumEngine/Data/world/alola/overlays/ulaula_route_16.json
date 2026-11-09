@@ -1,7 +1,7 @@
 {
   // Route 16 (plan 23 · Z7): drawn by hand, our words. North from Tapu Village through Team Skull's outposts to Po Town.
   "area": "ulaula_route_16",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

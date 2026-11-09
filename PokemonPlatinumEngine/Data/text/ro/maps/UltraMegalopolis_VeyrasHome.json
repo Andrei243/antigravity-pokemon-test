@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Veyra's Home"
+    ],
+    "text": [
+      "Casa lui Veyra"
+    ]
+  },
+  "people": {
+    "veyra_mother": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter Veyra spent her whole life looking for the light. Now she spends it looking at it.",
+          "Thank you for bringing it home. She talks about you as if you were a sunrise."
+        ],
+        "text": [
+          "Fiica mea Veyra și-a petrecut toată viața căutând lumina. Acum și-o petrece uitându-se la ea.",
+          "Mulțumesc că ai adus-o acasă. Vorbește despre tine de parcă ai fi un răsărit."
+        ]
+      }
+    },
+    "veyra_brother": {
+      "name": {
+        "en": [
+          "Young Man"
+        ],
+        "text": [
+          "Tânăr"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I studied the old lenses with my sister. We never thought anyone could wake Necrozma and walk away."
+        ],
+        "text": [
+          "Am studiat lentilele vechi cu sora mea. N-am crezut niciodată că cineva l-ar putea trezi pe Necrozma și să plece teafăr."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

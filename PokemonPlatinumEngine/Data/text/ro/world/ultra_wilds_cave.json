@@ -1,0 +1,85 @@
+{
+  "people": {
+    "warp_regirock": {
+      "name": {
+        "en": [
+          "Regirock"
+        ],
+        "text": [
+          "Regirock"
+        ]
+      }
+    },
+    "warp_regice": {
+      "name": {
+        "en": [
+          "Regice"
+        ],
+        "text": [
+          "Regice"
+        ]
+      }
+    },
+    "warp_registeel": {
+      "name": {
+        "en": [
+          "Registeel"
+        ],
+        "text": [
+          "Registeel"
+        ]
+      }
+    },
+    "warp_groudon": {
+      "name": {
+        "en": [
+          "Groudon"
+        ],
+        "text": [
+          "Groudon"
+        ]
+      }
+    },
+    "warp_palkia": {
+      "name": {
+        "en": [
+          "Palkia"
+        ],
+        "text": [
+          "Palkia"
+        ]
+      }
+    },
+    "warp_heatran": {
+      "name": {
+        "en": [
+          "Heatran"
+        ],
+        "text": [
+          "Heatran"
+        ]
+      }
+    },
+    "warp_regigigas": {
+      "name": {
+        "en": [
+          "Regigigas"
+        ],
+        "text": [
+          "Regigigas"
+        ]
+      }
+    },
+    "warp_giratina": {
+      "name": {
+        "en": [
+          "Giratina"
+        ],
+        "text": [
+          "Giratina"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

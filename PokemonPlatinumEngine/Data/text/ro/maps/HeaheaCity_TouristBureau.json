@@ -35,6 +35,16 @@
           "Ghidul zice că Akala e insula focului și a apei. Eu am venit pentru foc. Bronzul meu a venit pentru apă."
         ]
       }
+    },
+    "carver": {
+      "name": {
+        "en": [
+          "Crystal Carver"
+        ],
+        "text": [
+          "Cioplitor de cristale"
+        ]
+      }
     }
   },
   "signs": {}

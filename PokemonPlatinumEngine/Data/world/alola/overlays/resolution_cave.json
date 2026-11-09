@@ -4,12 +4,15 @@
   // waits, as Ultra Sun and Ultra Moon keep it at level 60 (rulings, "Poni's last places..."); the cells and the Zygarde
   // Cube of Sun and Moon are not built
   "area": "resolution_cave",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/cave",
   "trees": "Round",
+  // Lit green by the cells drifting out of its rock (style guide, "Climates"), so what waits at its bottom is seen
+  "climate": "Verdant",
   "people": {
     "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
-    "legend": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_ZYGARDE" },
+    // Zygarde stands at an alpha's size, in a chamber lit green by its cells (the area's climate, Verdant)
+    "legend": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_ZYGARDE", "scale": 1.5 },
     "kanoa": {
       "name": "Kanoa",
       "npcType": "veteran",

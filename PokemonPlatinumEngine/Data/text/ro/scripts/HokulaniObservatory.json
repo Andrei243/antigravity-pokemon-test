@@ -140,5 +140,23 @@
         "Un Vikavolt uriaș bâzâie deasupra marii lentile a observatorului, trosnind de energie furată!"
       ]
     }
+  ],
+  "Magearna": [
+    {
+      "en": [
+        "Gears turned inside the old machine, and a little figure of pink and steel lifted its head. Its heart glowed!"
+      ],
+      "text": [
+        "Rotițe s-au învârtit în mașinăria veche, iar o mică făptură roz cu oțel și-a ridicat capul. Inima îi strălucea!"
+      ]
+    },
+    {
+      "en": [
+        "The little machine sat back down among the wires, still ticking softly."
+      ],
+      "text": [
+        "Mașinăria cea mică s-a așezat la loc printre fire, ticăind încet."
+      ]
+    }
   ]
 }

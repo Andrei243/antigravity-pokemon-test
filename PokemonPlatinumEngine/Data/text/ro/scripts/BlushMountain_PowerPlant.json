@@ -39,6 +39,32 @@
       "text": [
         "În nopțile senine, luminile centralei îi atrag pe Minior din cer. Se spune că din cauza lor muntele se înroșește în zori."
       ]
+    },
+    {
+      "en": [
+        "Every night the meters dip, and something crackles by the east tank. I've never been fast enough to see it."
+      ],
+      "text": [
+        "În fiecare noapte contoarele scad și ceva trosnește lângă rezervorul de est. N-am fost niciodată destul de rapid să-l văd."
+      ]
+    }
+  ],
+  "Zeraora": [
+    {
+      "en": [
+        "Lightning crackled along the pipes and gathered into a crouching shape. It bared its claws at {player}!"
+      ],
+      "text": [
+        "Fulgere au trosnit de-a lungul țevilor și s-au strâns într-o formă ghemuită. Și-a arătat ghearele spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The crackling sank back into the pipes, but the meters still flickered."
+      ],
+      "text": [
+        "Trosnetul s-a retras în țevi, dar contoarele încă pâlpâiau."
+      ]
     }
   ],
   "Kanoa": [

@@ -1,0 +1,72 @@
+{
+  "key": "ultra_wilds_cliff",
+  "index": 545,
+  "name": "Ultra Space Wilds",
+  "matrix": 73,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "ULTRA_SPACE",
+  "nightMusic": "ULTRA_SPACE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Swellow",
+      "level": 58
+    },
+    {
+      "species": "Altaria",
+      "level": 61
+    },
+    {
+      "species": "Yanmega",
+      "level": 59
+    },
+    {
+      "species": "Sigilyph",
+      "level": 62
+    },
+    {
+      "species": "Swanna",
+      "level": 60
+    },
+    {
+      "species": "Swellow",
+      "level": 58
+    },
+    {
+      "species": "Altaria",
+      "level": 61
+    },
+    {
+      "species": "Yanmega",
+      "level": 59
+    },
+    {
+      "species": "Sigilyph",
+      "level": 62
+    },
+    {
+      "species": "Swanna",
+      "level": 60
+    },
+    {
+      "species": "Swellow",
+      "level": 58
+    },
+    {
+      "species": "Altaria",
+      "level": 61
+    }
+  ],
+  "landRate": 15
+}

@@ -1,0 +1,24 @@
+{
+  // Ultra Space Wilds, the yellow light's world (plan 23, Alola finished: the Ultra Warp Ride). Our own drawing of a world the
+  // games describe, reached from the Ultra Wormhole over the Altar's dais once Necrozma has been met (poni_altar.Wormhole)
+  // and left by the wormhole it is come in by, read at 32,55 (common.UltraWayHome). Each time it is come to, one of the
+  // legendary Pokémon of the other regions that fell through to it stands on the dais at 32,16, drawn by the arrival
+  // (ultra_wilds_cave.txt) among those not yet caught here; the people below are all on that one tile, each shown by a flag of
+  // the place that the arrival sets for one of them alone
+  "area": "ultra_wilds_cave",
+  "bgmTrack": "alola/ultra_space",
+  "trees": "Round",
+  "readAt": [
+    { "x": 32, "z": 55, "script": "UltraWayHome" }
+  ],
+  "npcs": [
+    { "id": "warp_regirock", "name": "Regirock", "npcType": "Pokemon", "species": "Regirock", "x": 32, "y": 16, "facing": "Down", "script": "Regirock", "shownBy": "FLAG_MAP_LOCAL_WARP_REGIROCK", "hiddenBy": "FLAG_ALOLA_WARP_REGIROCK_CAUGHT" },
+    { "id": "warp_regice", "name": "Regice", "npcType": "Pokemon", "species": "Regice", "x": 32, "y": 16, "facing": "Down", "script": "Regice", "shownBy": "FLAG_MAP_LOCAL_WARP_REGICE", "hiddenBy": "FLAG_ALOLA_WARP_REGICE_CAUGHT" },
+    { "id": "warp_registeel", "name": "Registeel", "npcType": "Pokemon", "species": "Registeel", "x": 32, "y": 16, "facing": "Down", "script": "Registeel", "shownBy": "FLAG_MAP_LOCAL_WARP_REGISTEEL", "hiddenBy": "FLAG_ALOLA_WARP_REGISTEEL_CAUGHT" },
+    { "id": "warp_groudon", "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "x": 32, "y": 16, "facing": "Down", "script": "Groudon", "shownBy": "FLAG_MAP_LOCAL_WARP_GROUDON", "hiddenBy": "FLAG_ALOLA_WARP_GROUDON_CAUGHT" },
+    { "id": "warp_palkia", "name": "Palkia", "npcType": "Pokemon", "species": "Palkia", "x": 32, "y": 16, "facing": "Down", "script": "Palkia", "shownBy": "FLAG_MAP_LOCAL_WARP_PALKIA", "hiddenBy": "FLAG_ALOLA_WARP_PALKIA_CAUGHT" },
+    { "id": "warp_heatran", "name": "Heatran", "npcType": "Pokemon", "species": "Heatran", "x": 32, "y": 16, "facing": "Down", "script": "Heatran", "shownBy": "FLAG_MAP_LOCAL_WARP_HEATRAN", "hiddenBy": "FLAG_ALOLA_WARP_HEATRAN_CAUGHT" },
+    { "id": "warp_regigigas", "name": "Regigigas", "npcType": "Pokemon", "species": "Regigigas", "x": 32, "y": 16, "facing": "Down", "script": "Regigigas", "shownBy": "FLAG_MAP_LOCAL_WARP_REGIGIGAS", "hiddenBy": "FLAG_ALOLA_WARP_REGIGIGAS_CAUGHT" },
+    { "id": "warp_giratina", "name": "Giratina", "npcType": "Pokemon", "species": "Giratina", "x": 32, "y": 16, "facing": "Down", "script": "Giratina", "shownBy": "FLAG_MAP_LOCAL_WARP_GIRATINA", "hiddenBy": "FLAG_ALOLA_WARP_GIRATINA_CAUGHT" }
+  ]
+}

@@ -116,6 +116,46 @@ Unova's event Pokémon all had places in Black and White or Black 2 that this ga
 - **The beat**, the "lightning" row (Genesect is a machine of Team Plasma's): two `burst`s 0.4 s apart with a shake each, the camera on its pod; `cry "Genesect"`, one line; `wildbattle "Genesect" 65`. A scientist of ours afterwards gives the Shock Drive (in the data already) and says where the others are kept; the other three drives are not proposed.
 - **Risks**: nothing can be built until U10's place is: if the user wants Genesect now, the fallback is a room of the Plasma Frigate (`plasma_frigate_*`, built), which has its own story states to keep (question 10).
 
+## Alola (added 2026-11-09, plan 23's last Alola session; built to the ★ answers, which the user may still veto)
+
+Kalos's part (LS11e) was built with LS11's rule and no proposal of its own; Alola's two are written here first, so the
+user can change them. Sun and Moon give both by events alone. Both are built as ★ says; a veto changes a script and an
+overlay, nothing else.
+
+### 12. Magearna in Hokulani Observatory
+
+- **Unlocked by** ★ Alola's Hall of Fame and the second totem (the Vikavolt) beaten in the observatory: the totem had been
+  feeding on an old machine's power, and with it gone the machine wakes (`FLAG_ALOLA_TOTEM_VIKAVOLT_DONE` shows it). The
+  alternative: Aether Paradise's lowest floor, after Lusamine is beaten.
+- **The beat**, the "machine" row: the camera to it and a zoom, sparkles, the machine shaken, a burst, `cry`, one line;
+  `wildbattle "Magearna" 60` ★ (Alola's post-League band, as its Ultra Beasts and Zygarde); the alternative is the event's
+  level 50. Beaten or caught it is gone (`FLAG_ALOLA_MAGEARNA_GONE`); run from, it stays.
+
+### 13. Marshadow in Hau'oli Cemetery
+
+- **Unlocked by** ★ Alola's Hall of Fame, the night, and the cemetery's little girl gone after her friend (`VAR_ALOLA_CEMETERY_GIRL`
+  3): a shadow by the east lamp that doesn't move with the light (`FLAG_ALOLA_MARSHADOW_NEAR`, set by the arrival at
+  night). The alternative: the Ruins of Conflict's shadows, by day, once the four island guardians have been battled.
+- **The beat**, the "shadow" row: a shadow crossing the ground to it, the camera and a zoom, it flickers, a dark mist,
+  `cry`, one line; `wildbattle "Marshadow" 60` ★ (the alternative, the event's 50). Beaten or caught it is gone
+  (`FLAG_ALOLA_MARSHADOW_GONE`).
+
+### 14. Zeraora in the geothermal power plant
+
+- **Unlocked by** ★ Alola's Hall of Fame and the night: something drinks the plant's power after dark and the chief has
+  never caught it (`FLAG_ALOLA_ZERAORA_NEAR`, set by the plant's arrival at night). Ultra Sun and Ultra Moon gave it by an
+  event alone. The alternative: Route 12's road at night, in a thunderstorm.
+- **The beat**, the "lightning" row: the camera to it and a zoom, a beam and a burst, the camera and Zeraora shaken, `cry`,
+  one line; `wildbattle "Zeraora" 60` ★ (the alternative, the event's 50). Gone once beaten or caught.
+
+### 15. Meltan and Melmetal in the old Thrifty Megamart
+
+- **Unlocked by** ★ Alola's Hall of Fame: a Meltan gnaws the abandoned shop's shelves (no Alola game has it: Let's Go and
+  GO give it from a Mystery Box). Met once at level 60 ★; whatever the battle's end it leaves 400 **Meltan Candy**, which
+  Melmetal's evolution asks for in the Bag (`LevelWithItemsInBag`, as the data has it from GO). The alternative: a Meltan
+  a day for a week, 50 candy each.
+- **The beat**, the "machine" row: the camera to it and a zoom, it shakes, sparkles, `cry`, one line.
+
 ## What needs new engine pieces
 
 - **Maps**: the Harbor Inn (a room on the original's plan, M11's recipe); the Hall of Origin (an imported Sinnoh matrix, `world.json` and an overlay); the Liberty Garden (a Black 2 zone, `--game black2 --data`); the P2 Laboratory (plan 22 · U10's, not LS11's).

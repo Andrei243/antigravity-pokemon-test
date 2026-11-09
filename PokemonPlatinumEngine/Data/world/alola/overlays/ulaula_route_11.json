@@ -2,7 +2,7 @@
   // Route 11, Ula'ula Island (plan 23, the wave after Ultra Space): drawn by hand, our words. A wooded road from Route
   // 10's east side, under Mount Hokulani, round to Route 12's south side
   "area": "ulaula_route_11",
-  "bgmTrack": "alola/route4",
+  "bgmTrack": "alola/ulaula_road",
   "trees": "Round",
   "architecture": "Islander",
   "people": {

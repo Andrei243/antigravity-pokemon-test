@@ -4,6 +4,19 @@
 # battle a visitor once each, and a Zygarde Cell hides in its south-west corner, as Sun and Moon keep one here.
 
 
+# Plan 23, Alola finished: after dark, once Alola's Hall of Fame is entered, something drinks from the turbines' power
+# (FLAG_ALOLA_ZERAORA_NEAR, set here by night and cleared by day, shows Zeraora by the east tank)
+script OnEnter
+  if not flag AlolaHallOfFame end
+  if time night goto Night
+  if time latenight goto Night
+  clearflag FLAG_ALOLA_ZERAORA_NEAR
+  end
+label Night
+  setflag FLAG_ALOLA_ZERAORA_NEAR
+  end
+
+
 script Chief
   face self player
   speaker "Plant Chief"
@@ -15,7 +28,49 @@ script Chief
   setflag FLAG_ALOLA_POWER_PLANT_GIFT
   end
 label Again
+  if flag FLAG_ALOLA_ZERAORA_NEAR goto Thief
   say "On clear nights the plant's lights draw Minior down from the sky. They say the mountain blushes red at dawn because of them."
+  end
+label Thief
+  say "Every night the meters dip, and something crackles by the east tank. I've never been fast enough to see it."
+  end
+
+
+# Zeraora (plan 23, Alola finished; plan 29 · LS11's rule for Alola, docs/plans/decisions/LS11-proposals-event-legendaries.md,
+# "Alola", built to its recommended answers, which the user may still change). Ultra Sun and Ultra Moon give it by an event
+# alone; ours drinks the plant's power at night after Alola's Hall of Fame. Level 60. Beaten or caught it is gone for
+# good (FLAG_ALOLA_ZERAORA_GONE); run from, it stays.
+script Zeraora
+  scene "Zeraora in the power plant"
+  music stop
+  letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 14 goto Look
+  if var PLAYER_Y != 6 goto Look
+  walk player down 2
+  face player up
+label Look
+  camera pan 14 5 1.0
+  camera zoom 1.4 0.8
+  effect beam 14 5 1.2
+  effect burst 14 5
+  camera shake 0.4
+  shake self 6
+  cry "Zeraora"
+  speaker none
+  text "Lightning crackled along the pipes and gathered into a crouching shape. It bared its claws at {player}!"
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Zeraora" 60
+  if result == 2 goto Stays
+  setflag FLAG_ALOLA_ZERAORA_GONE
+  hide self
+  music area
+  end
+label Stays
+  music area
+  text "The crackling sank back into the pipes, but the meters still flickered."
   end
 
 

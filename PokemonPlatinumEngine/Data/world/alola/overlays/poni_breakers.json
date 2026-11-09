@@ -2,7 +2,7 @@
   // Poni Breakers (plan 23 · Z7): drawn by hand, our words. The northern coast, from the Ancient Poni Path's north mouth east to the Ruins
   // of Hope, with a strait to Exeggutor Island that a swimmer crosses, and the road north to the Altar of the Sunne and Moone.
   "area": "poni_breakers",
-  "bgmTrack": "alola/route1",
+  "bgmTrack": "alola/poni",
   "trees": "Round",
   "architecture": "Islander",
   "doors": [

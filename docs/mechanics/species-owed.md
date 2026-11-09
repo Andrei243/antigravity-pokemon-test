@@ -47,12 +47,10 @@ The later generations, owed by their regions' plans until each plan's last sessi
 | Owed by | Species | Had somewhere | Not yet |
 |---|---:|---:|---:|
 | plan 23: Kalos | 72 | 72 | 0 |
-| plan 23: Alola | 88 | 83 | 5 |
+| plan 23: Alola | 88 | 88 | 0 |
 | plan 33: Galar | 89 | 25 | 64 |
 | plan 23: Hisui | 7 | 1 | 6 |
 | plan 34: Paldea | 120 | 4 | 116 |
-
-**plan 23: Alola**, not yet had: Magearna, Marshadow, Zeraora, Meltan, Melmetal.
 
 **plan 33: Galar**, not yet had: Gossifleur, Eldegoss, Rolycoly, Carkol, Coalossal, Applin, Flapple, Appletun, Silicobra, Sandaconda, Cramorant, Arrokuda, Barraskewda, Toxel, Toxtricity, Sizzlipede, Centiskorch, Clobbopus, Grapploct, Sinistea, Polteageist, Hatenna, Hattrem, Hatterene, Impidimp, Morgrem, Grimmsnarl, Obstagoon, Perrserker, Cursola, Sirfetch'd, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Snom, Frosmoth, Stonjourner, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Dreepy, Drakloak, Dragapult, Zacian, Zamazenta, Eternatus, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
 

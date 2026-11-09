@@ -1,0 +1,112 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A field of grass under a green sky, with no sun in it. The wind smells of rain that never falls."
+      ],
+      "text": [
+        "Un câmp de iarbă sub un cer verde, fără soare. Vântul miroase a ploaie care nu cade niciodată."
+      ]
+    }
+  ],
+  "Mewtwo": [
+    {
+      "en": [
+        "A Pokémon floated down onto the grass, its eyes cold and bright. Mewtwo had been waiting."
+      ],
+      "text": [
+        "Un Pokémon a coborât plutind pe iarbă, cu ochii reci și strălucitori. Mewtwo așteptase."
+      ]
+    }
+  ],
+  "Raikou": [
+    {
+      "en": [
+        "Lightning struck the field, and Raikou stood in the scorched grass where it had hit!"
+      ],
+      "text": [
+        "Un fulger a lovit câmpul, iar Raikou stătea în iarba pârlită unde căzuse!"
+      ]
+    }
+  ],
+  "Entei": [
+    {
+      "en": [
+        "Flame burst up out of the ground, and Entei strode out of it with a volcano's roar!"
+      ],
+      "text": [
+        "Flăcări au țâșnit din pământ, iar Entei a ieșit din ele cu un răget de vulcan!"
+      ]
+    }
+  ],
+  "Dialga": [
+    {
+      "en": [
+        "The air tore open, and time seemed to stop. Dialga stepped out of the tear, its chest glowing!"
+      ],
+      "text": [
+        "Aerul s-a sfâșiat și timpul parcă s-a oprit. Dialga a pășit afară din ruptură, cu pieptul strălucind!"
+      ]
+    }
+  ],
+  "Cobalion": [
+    {
+      "en": [
+        "A Pokémon of steel stepped out of the grass with a knight's calm. Cobalion lowered its horn."
+      ],
+      "text": [
+        "Un Pokémon de oțel a ieșit din iarbă cu calmul unui cavaler. Cobalion și-a coborât cornul."
+      ]
+    }
+  ],
+  "Terrakion": [
+    {
+      "en": [
+        "The ground shook under heavy hooves, and Terrakion charged out of the tall grass!"
+      ],
+      "text": [
+        "Pământul s-a cutremurat sub copite grele, iar Terrakion a năvălit din iarba înaltă!"
+      ]
+    }
+  ],
+  "Virizion": [
+    {
+      "en": [
+        "Leaves whirled up from the grass, and Virizion leapt lightly out of them, horns gleaming."
+      ],
+      "text": [
+        "Frunze s-au rotit din iarbă, iar Virizion a sărit ușor din ele, cu coarnele lucind."
+      ]
+    }
+  ],
+  "Reshiram": [
+    {
+      "en": [
+        "White fire roared across the field, and Reshiram landed in the heart of it!"
+      ],
+      "text": [
+        "Un foc alb a vuit peste câmp, iar Reshiram a aterizat chiar în inima lui!"
+      ]
+    }
+  ],
+  "Zekrom": [
+    {
+      "en": [
+        "Black thunder split the green sky, and Zekrom dropped out of it with its tail crackling!"
+      ],
+      "text": [
+        "Un tunet negru a despicat cerul verde, iar Zekrom a căzut din el cu coada trosnind!"
+      ]
+    }
+  ],
+  "Xerneas": [
+    {
+      "en": [
+        "A rainbow of light spread across the grass, and Xerneas stood in it, its antlers shining."
+      ],
+      "text": [
+        "Un curcubeu de lumină s-a întins peste iarbă, iar Xerneas stătea în el, cu coarnele strălucind."
+      ]
+    }
+  ]
+}

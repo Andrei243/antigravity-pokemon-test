@@ -19,7 +19,10 @@ internal enum RoofGear
     None = 0, Vents = 1, Mast = 2, Dish = 4, Globe = 8, Skylight = 16, Stack = 32, Spikes = 64, Solar = 128, Spire = 256,
     // The Battle Frontier (plan 01 · M10, part b): merlons along a flat roof's parapet, a turret at each front corner,
     // and a lantern room that burns all night on top of a tower's last stage
-    Battlements = 512, Turrets = 1024, Beacon = 2048
+    Battlements = 512, Turrets = 1024, Beacon = 2048,
+    // Alola's last places (plan 23): a power plant's pipes along its front and its roof, a great tree grown through a
+    // hall (the Battle Tree: its trunk round the door, roots at its foot and a crown over the roof), and a cooling tower
+    Pipes = 4096, GreatTree = 8192, Cooling = 16384
 }
 
 /// <summary>How one building is put together: its wall material, roof, windows, door, sign and extras.</summary>
