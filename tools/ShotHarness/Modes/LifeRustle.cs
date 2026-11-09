@@ -31,6 +31,8 @@ partial class Harness
         At("Sinnoh", s.X, s.Y, Direction.Right);
         walker.SetMode(TravelMode.OnFoot);
         engine.Steering = (null, false);
+        // Come into the place as the game knows it, or the first step counts as walking in and forgets the find
+        game.EnterArea();
         Frames(20);
         if (!game.PlaceDexNavRustle(s.GrassX, s.GrassY))
         {
