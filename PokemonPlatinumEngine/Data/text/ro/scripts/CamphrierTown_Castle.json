@@ -1,4 +1,62 @@
 {
+  "OnEnter": [
+    {
+      "en": [
+        "Castellan Aubert"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, my young friend! Come in, come in. Welcome to the castle of Camphrier."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It has stood here for some three hundred years. The town grew up round its walls, not the other way about."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These suits of armour were made for the knights who rode out from here with their Pokémon at their sides."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And from that window my forebears watched the road south. Today it watches a sleeping Snorlax, I am sorry to say."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And from that window my forebears watched the road south. Thanks to you, it watches carts rolling again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I mustn't keep you. Do make yourself at home whenever you pass through."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Castellan": [
     {
       "en": [
@@ -30,6 +88,22 @@
       ],
       "text": [
         "Drumul spre sud e din nou deschis și căruțele pornesc spre coastă. Camphrier îți datorează enorm."
+      ]
+    },
+    {
+      "en": [
+        "The road menders found this where the Snorlax had lain. It must have been clutching it in its sleep. Take it, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The road south is open again, and the carts are rolling to the coast. Camphrier owes you a great deal."
+      ],
+      "text": [
+        ""
       ]
     }
   ]
