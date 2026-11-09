@@ -38,6 +38,7 @@ partial class Harness
         team.Clear();
         team.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 18));
         team.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 15));
+        if (Environment.GetEnvironmentVariable("COMPANIONS_PART") == "wild") { CompanionsWild(sinnoh); return; }
         engine.Settings.Follower = true;
 
         // ---- The lead behind the player in Twinleaf Town, standing and walking
@@ -136,7 +137,17 @@ partial class Harness
         engine.Settings.Follower = false;
         Frames(4);
 
-        // ---- Wild Pokémon in sight on Route 201
+        // ---- Wild Pokémon in sight on Route 201 (COMPANIONS_PART=wild runs this part alone)
+        CompanionsWild(sinnoh);
+    }
+
+    void CompanionsWild(Map sinnoh)
+    {
+        void Until(Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++) Frames(1);
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
         engine.Settings.WildInSight = true;
         (int X, int Y) spot = (116, 870);
         for (int r = 0; r < 60; r++)
@@ -178,6 +189,30 @@ partial class Harness
             Console.WriteLine($"cp12: the battle's foe is {game.Battle?.EnemyPokemon.DisplayName} Lv.{game.Battle?.EnemyPokemon.Level}, the one seen {(ReferenceEquals(game.Battle?.EnemyPokemon, met.Pokemon) ? "itself" : "!! another")}");
             if (game.Battle is { } battle) ToMainMenu(battle);
             Shot("cp13_wild_touched_battle");
+        }
+
+        // ---- An alpha in sight (plan 10 · F10), after the rest so that nothing before it moves: the Pokémon in sight
+        // nearest the player made one as the field makes it (Alphas.Apply on the Pokémon it stands for, dressed again),
+        // standing at one and a half times its kind beside the others, and met: in battle at the same size with its
+        // eyes held fierce
+        game.State = GameState.Overworld;
+        Frames(10);
+        if (game.WildInSight.All.Where(w => !w.Water).OrderBy(w => Math.Abs(w.Body.GridX - game.Player.GridX) + Math.Abs(w.Body.GridY - game.Player.GridY)).FirstOrDefault() is { } big)
+        {
+            Alphas.Apply(big.Pokemon, new Random(20));
+            Follower.Dress(big.Body, big.Pokemon);
+            Frames(20);
+            Console.WriteLine($"cp20: {big.Pokemon.DisplayName} Lv.{big.Pokemon.Level} made an alpha at {big.Body.GridX},{big.Body.GridY}: drawn at {big.Body.Scale}, its look {big.Body.Species}");
+            Shot("cp20_alpha_in_the_grass");
+            game.MeetSeen(big);
+            Until(() => game.State == GameState.Battle, "the alpha's battle", 600);
+            if (game.Battle is { } alphaBattle)
+            {
+                ToMainMenu(alphaBattle);
+                Console.WriteLine($"cp21: the foe {alphaBattle.EnemyPokemon.DisplayName} at {alphaBattle.EnemyPokemon.Scale}, an alpha {alphaBattle.EnemyPokemon.IsAlpha}, its marks {string.Join(",", alphaBattle.EnemyPokemon.EncounterMarks)}");
+                Shot("cp21_alpha_battle");
+            }
+            game.State = GameState.Overworld;
         }
         engine.Settings.WildInSight = false;
     }

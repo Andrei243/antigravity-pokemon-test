@@ -124,8 +124,13 @@ public partial class GameEngine
         flow.Map.NPCs.Near(flow.Player.GridX, flow.Player.GridY, HiddenStirReach, hidden);
         hidden.RemoveAll(n => !n.OutOfSight || !flow.Map.IsTallGrass(n.GridX, n.GridY));
         foreach (var npc in hidden) world.Stirring.Add((npc.GridX, npc.GridY, false));
+        // The DexNav's find hiding in the grass (plan 10 · F12; style guide, "Life", "A rustle") parts it as a hard shake
+        // does, and every 0.6 s throws up leaf bits and its shiver marks. With nothing found nothing is added here
+        var hiding = DexNavHere ? rustle : null;
+        if (hiding != null) world.Stirring.Add((hiding.X, hiding.Y, true));
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
+        if (hiding != null) life.Hiding(flow.Map, hiding.X, hiding.Y);
         foreach (var patch in flow.Radar.Patches.Where(p => p.Active))
             life.Rustle(flow.Map, patch.X, patch.Y, patch.Shake == PatchShake.Hard, patch.Shiny);
         foreach (var npc in hidden) life.Rustle(flow.Map, npc.GridX, npc.GridY, false, false);

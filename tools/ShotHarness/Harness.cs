@@ -482,6 +482,13 @@ partial class Harness
             shiny.IsShiny = true;
             return shiny;
         }
+        // An alpha (plan 10 · F10: versus Turtwig Bidoof-alpha): the Pokémon as ever, then made one as the field makes it
+        if (name.EndsWith("-alpha", StringComparison.OrdinalIgnoreCase))
+        {
+            var alpha = Meet(name[..^"-alpha".Length], level);
+            Alphas.Apply(alpha, new Random(level));
+            return alpha;
+        }
         if (PokemonDatabase.Get(name) is { } species) return new Pokemon(species, level);
         // (with the form's own moves, where it has a learnset of its own: plan 03 · D13)
         return Pokemon.InForm(PokemonDatabase.SpeciesOfForm(name) ?? throw new ArgumentException($"No species or form is called {name}"), name, level);

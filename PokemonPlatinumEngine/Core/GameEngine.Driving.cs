@@ -51,6 +51,10 @@ public partial class GameEngine
         public Overworld.DexNavState DexNav => Flow.DexNav;
         public Overworld.Rustle? DexNavRustle => game.DexNavRustle;
 
+        /// <summary>A find put hiding in the grass at a tile, the DexNav switched on (false where nothing lives), and taken away again.</summary>
+        public bool PlaceDexNavRustle(int x, int y) => game.PlaceDexNavRustle(x, y);
+        public void ForgetDexNavRustle() => game.ForgetDexNavRustle();
+
         /// <summary>The Pokédex's HERE list for where the player stands, as the engine tells the screen (null without the DexNav).</summary>
         public IReadOnlyList<Overworld.DexNavEntry>? DexNavHere => game.DexNavHereList();
         public PcBoxes Boxes { get => Flow.Boxes; set => Flow.Boxes = value; }

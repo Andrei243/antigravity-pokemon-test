@@ -76,8 +76,10 @@ internal static class PokemonAnimation
     /// <summary>
     /// Which eyes the pose shows: the first that holds, in the order the style guide keeps ("The pose's fields and
     /// the eyes' order"; plan 09 · L2). Plan 25 · Y5's and plan 10 · F6's and F10's cases go in the places it names.
+    /// <paramref name="fierce"/> is a held fierce look (plan 10 · F10: an alpha standing in battle), which the renderer is
+    /// told of beside the pose rather than through a field of it.
     /// </summary>
-    public static EyeState EyesOf(PokePose p)
+    public static EyeState EyesOf(PokePose p, bool fierce = false)
     {
         // 1. A faint
         if (p.Faint > 0.2f) return EyeState.Shut;
@@ -88,7 +90,8 @@ internal static class PokemonAnimation
         // 4. An attack that is no status move, or a charge (Y5)
         if (p.Attack > 0.06f && p.Attack < 0.8f && p.Kind != MoveCategory.Status) return EyeState.Fierce;
         if (p.Charge > 0.3f) return EyeState.Fierce;
-        // 5. A held fierce look (F10) goes here
+        // 5. A held fierce look (F10: an alpha in battle)
+        if (fierce) return EyeState.Fierce;
         // 6. A stat falling, squeezed, or rising, fierce, for its 0.6 s (Y5)
         if (p.Stat < 0f) return EyeState.Squeeze;
         if (p.Stat > 0f) return EyeState.Fierce;

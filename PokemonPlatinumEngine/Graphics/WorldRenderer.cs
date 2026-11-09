@@ -1181,7 +1181,7 @@ public sealed partial class WorldRenderer
     private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
 
     // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
-    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving)> pokemon = new();
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale)> pokemon = new();
     private int fieldBakes = 1;
 
     /// <summary>How many rows of the card a hop over a ledge lifts a Pokémon of the map at its height (plan 10 · F3): a quarter of a tile, as the player's.</summary>
@@ -1231,7 +1231,7 @@ public sealed partial class WorldRenderer
                 float hop = (up ? Rows(2f) : 0f) + Rows(npc.Hop * HopRows);
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz) - Rows(npc.Wading);
                 pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, facingIndex,
-                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving));
+                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale));
                 continue;
             }
             if (npc.IsBerrySoil)
@@ -1504,17 +1504,18 @@ public sealed partial class WorldRenderer
     /// </summary>
     private void DrawPokemon(CharacterPass pass)
     {
-        foreach (var (at, name, facing, frame, moving) in pokemon)
+        // An alpha's sprite is its species' drawn at its own size, its foot where a plain one's is (plan 10 · F10)
+        foreach (var (at, name, facing, frame, moving, scale) in pokemon)
         {
             // The walk strip once it is baked and the Pokémon is on the move (plan 10 · F2)
             if (moving && FieldSprites.GetWalk(name, facing) is { } walk)
             {
-                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows), 0), VerticalScale, pass);
+                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
                 continue;
             }
             if (FieldSprites.Get(name, facing) is { } strip)
             {
-                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows), 0), VerticalScale, pass);
+                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
                 continue;
             }
             if (!thingCards.TryGetValue(PropType.Mailbox, out var ball)) thingCards[PropType.Mailbox] = ball = CharacterSprites.MakeCard(context, ThingCards.Paint(PropType.Mailbox));
@@ -1587,7 +1588,7 @@ public sealed partial class WorldRenderer
         foreach (var q in quads)
         {
             // Water thrown up catches the sky: it dims only half as far as the ground does
-            bool wet = q.Cell >= FieldLife.Ring && !FieldLife.IsMark(q.Cell);
+            bool wet = FieldLife.IsWet(q.Cell);
             var tint = Dimmed(q.Tint, wet ? 0.5f + 0.5f * lit : lit);
             // A mark (plan 21 · part r) is a block of two cells by two
             float span = FieldLife.IsMark(q.Cell) ? cell * 2 : cell;

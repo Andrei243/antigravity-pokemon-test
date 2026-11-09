@@ -227,6 +227,12 @@ public class NPC
     /// <summary>For a Pokémon of the map: its species, or a form by the name <see cref="Models.Pokemon.ModelName"/> gives it.</summary>
     public string? Species { get; set; }
 
+    /// <summary>
+    /// For a Pokémon of the map: the size its field sprite is drawn at against its species' (plan 10 · F10): 1 for nearly
+    /// everyone, <see cref="Alphas.Scale"/> for an alpha (<see cref="Follower.Dress"/> takes it from the Pokémon).
+    /// </summary>
+    public float Scale { get; set; } = 1f;
+
     public bool IsPokemon => NpcType == PokemonType;
 
     // ---- Obstacles a field move clears (plan 02 · S2)

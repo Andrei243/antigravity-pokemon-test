@@ -55,7 +55,7 @@ internal sealed partial class FieldLife
     /// <summary>The stretch of ground rain is seen landing on, in tiles, round the middle of the view.</summary>
     public const float RainWidth = 24f, RainDepth = 16f;
 
-    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck, Star, Bubble }
+    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck, Star, Bubble, Shiver }
 
     private readonly record struct Piece(Kind Kind, Vector3 At, double Born, Color Tint, int Turn, float Seed, float Size);
 
@@ -108,6 +108,7 @@ internal sealed partial class FieldLife
         Kind.Fleck => FleckTime,
         Kind.Star => StarTime,
         Kind.Bubble => BubbleTime,
+        Kind.Shiver => ShiverTime,
         _ => DropTime
     };
 
@@ -457,6 +458,12 @@ internal sealed partial class FieldLife
                     // Up in whole texels, a texel aside and back, small, grown, then bursting
                     var (up, aside, cell) = BubbleAt(age, p.Turn);
                     upright.Add(new LifeQuad(p.At + new Vector3(p.Seed + aside, up, 0), 0.5f, 0.5f, cell, p.Tint with { A = cell == Bubble + 2 ? (byte)170 : (byte)230 }));
+                    break;
+                }
+                case Kind.Shiver:
+                {
+                    // The DexNav's rustle (plan 10 · F12): whole, then a texel further out and fainter
+                    if (ShiverAt(p, age) is { } shiver) upright.Add(shiver);
                     break;
                 }
                 case Kind.Star:
@@ -955,6 +962,8 @@ internal static partial class LifeArt
         c.SetRaw(kx + 10, ky + 11, white);
         // The marks of plan 21 · part r: a plank pressed down, a heap of salt and the little left of one
         PaintMarks(c);
+        // The DexNav's shiver marks (plan 10 · F12), in two cells of the marks' rows no block takes
+        PaintShivers(c);
         return c;
     }
 

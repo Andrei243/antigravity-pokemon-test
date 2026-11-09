@@ -119,7 +119,10 @@ internal sealed partial class FieldLife
     }
 
     /// <summary>Whether a cell of the atlas is the top-left of one of the marks' blocks, drawn two cells by two and lit as the ground is (not as water thrown up).</summary>
-    public static bool IsMark(int cell) => cell >= PressedPlank;
+    public static bool IsMark(int cell) => cell >= PressedPlank && cell is not (ShiverLeft or ShiverRight);
+
+    /// <summary>Whether a cell is water thrown up (rings, drops, flecks, bubbles), which catches the sky and dims only half as far as the ground does.</summary>
+    public static bool IsWet(int cell) => cell >= Ring && cell < PressedPlank;
 }
 
 internal static partial class LifeArt

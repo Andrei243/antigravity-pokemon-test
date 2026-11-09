@@ -59,6 +59,8 @@ public sealed class Follower
         body.NpcType = NPC.PokemonType;
         body.Species = pokemon.LookName;
         body.Name = pokemon.DisplayName;
+        // An alpha's field sprite is its species' at its own size (plan 10 · F10)
+        body.Scale = pokemon.Scale;
     }
 
     /// <summary>
