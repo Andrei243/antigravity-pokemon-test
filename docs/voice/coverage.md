@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1607 | 1544 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12190 | 11711 | 479 | 17 | 36 |
+| People of the hand-made maps (`map:`) | 1608 | 1545 | 63 | 1 | 0 |
+| Scripts (`script:`) | 12215 | 11736 | 479 | 17 | 36 |
 | People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
-| **All** | 22115 | 21508 | 607 | 22 | 36 |
+| **All** | 22141 | 21534 | 607 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -23,7 +23,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 259 |
 | a question's answers | 925 |
-| a sign | 1764 |
+| a sign | 1765 |
 | the game's own voice (speaker none) | 297 |
 | the game's own voice (text) | 2073 |
 
@@ -208,6 +208,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lillie` | 28 | 0 |
 | `misty` | 28 | 0 |
 | `hala` | 27 | 0 |
+| `look:artist (any)` | 27 | 0 |
 | `marlon` | 27 | 0 |
 | `sailor_eldritch` | 27 | 0 |
 | `trick_master` | 27 | 0 |
