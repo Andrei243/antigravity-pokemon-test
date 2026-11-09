@@ -45,6 +45,7 @@ script Mesprit
   letterbox off 0.3
   endscene
   wildbattle "Mesprit" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_MESPRIT
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_MESPRIT
   hide self

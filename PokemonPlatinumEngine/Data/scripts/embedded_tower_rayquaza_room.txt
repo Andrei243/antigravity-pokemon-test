@@ -9,6 +9,8 @@
 
 script OnEnter
   setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+  # (plan 40 · GE6) beaten and not caught, it is back once Johto's Hall of Fame is entered again
+  if flag FLAG_JOHTO_RAYQUAZA_AGAIN clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
   if flag FLAG_JOHTO_FOUGHT_RAYQUAZA end
   if flag FLAG_JOHTO_GOT_JADE_ORB clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
   end
@@ -36,8 +38,10 @@ script Rayquaza
   letterbox off 0.3
   endscene
   wildbattle "Rayquaza" 50
+  if result == 3 setflag FLAG_JOHTO_CAUGHT_RAYQUAZA
   if result == 2 goto Fled
   setflag FLAG_JOHTO_FOUGHT_RAYQUAZA
+  clearflag FLAG_JOHTO_RAYQUAZA_AGAIN
   setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
   hide self
   end

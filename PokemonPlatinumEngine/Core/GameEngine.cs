@@ -804,7 +804,7 @@ public partial class GameEngine
         world.Camera.Reset();
         flow.CameraSent = false;
         flow.Story.Restore(save.ToStory());
-        StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag);
+        StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag, flow.Pokedex);
         // The region the save stands in is entered, which an older save never noted (plan 18 · W8; no version: the
         // regions it crossed out of are counted by their Halls of Fame, StoryState.HasEntered)
         flow.Story.EnterRegion(Here.Id);

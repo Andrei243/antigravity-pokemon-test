@@ -672,6 +672,8 @@ public class StoryTests
         started.Add("common.HoennOpeningDone");
         // The Pokégear's numbers for an older save of Johto, and the calls, which the game starts by the contact (plan 20 · J3)
         started.Add("common.JohtoPokegear");
+        // The legendaries an older save caught, marked by story version 30 (plan 40 · GE6)
+        started.Add("common.LegendariesCaughtBefore");
         started.UnionWith(Scripts.All.Where(s => s.File == PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).Select(s => s.FullName));
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace, FieldScripts.Whirlpool });

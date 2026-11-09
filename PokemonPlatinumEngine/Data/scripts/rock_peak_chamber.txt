@@ -21,6 +21,7 @@ script Regirock
   letterbox off 0.3
   endscene
   wildbattle "Regirock" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_REGIROCK
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_REGIROCK
   hide self

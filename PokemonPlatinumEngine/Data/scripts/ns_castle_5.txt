@@ -38,8 +38,10 @@ script Zekrom
   letterbox off 0.3
   endscene
   wildbattle "Zekrom" 70
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_ZEKROM
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_ZEKROM
+  setflag FLAG_UNOVA_MET_ZEKROM
   hide self
   text "The throne room is quiet once more..."
   end

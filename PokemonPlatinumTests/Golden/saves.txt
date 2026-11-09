@@ -18210,3 +18210,16 @@ wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv30 "Turtwig" Female Jolly, Overgrow, holds nothing, HP 77/77, Curse 10/10, Bite 25/25, Mega Drain 15/15, Leech Seed 10/10, id 02cda9da#0
 bag: Poké Ball x10
 upgrade: nothing
+=== w5-s30-v3-new-game-in-the-bedroom.json
+save 3, ids issued 0
+world 5, story 30, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
+bag: nothing
+upgrade: nothing
+=== w5-s30-v3-past-the-opening.json
+save 3, ids issued 1
+world 5, story 30, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Male Bashful, Overgrow, holds nothing, HP 22/22, Tackle 35/35, Withdraw 40/40, id a0c41538#0
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing

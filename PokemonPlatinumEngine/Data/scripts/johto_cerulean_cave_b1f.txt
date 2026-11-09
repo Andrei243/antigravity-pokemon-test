@@ -38,6 +38,7 @@ script Mewtwo
   letterbox off 0.3
   endscene
   wildbattle "Mewtwo" 70
+  if result == 3 setflag FLAG_JOHTO_CAUGHT_MEWTWO
   if result == 2 goto Fled
   setflag FLAG_JOHTO_FOUGHT_MEWTWO
   setflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO

@@ -23,6 +23,7 @@ script OnEnter
   setflag KantoHallOfFame
   objective kantoSevii
   setflag FLAG_SYS_GAME_CLEAR
+  call LegendsAgain
   halloffame show
   heal
   warp "PalletTown_PlayersHouse_2F" 6 6 up
@@ -36,3 +37,20 @@ label NotSaved
 label Roll
   credits
   end
+
+
+# Kanto's legendaries met again (plan 40 · GE6): each one beaten and not caught is back in its place once the Hall of
+# Fame is entered again (its place's arrival shows it while its fought flag is clear), and the roaming beast, knocked
+# out, is set loose again, as Platinum's Hall of Fame brings Sinnoh's back
+script LegendsAgain
+  if not flag FLAG_KANTO_CAUGHT_MEWTWO clearflag FLAG_FOUGHT_MEWTWO
+  if not flag FLAG_KANTO_CAUGHT_ARTICUNO clearflag FLAG_FOUGHT_ARTICUNO
+  if not flag FLAG_KANTO_CAUGHT_ZAPDOS clearflag FLAG_FOUGHT_ZAPDOS
+  if not flag FLAG_KANTO_CAUGHT_MOLTRES clearflag FLAG_FOUGHT_MOLTRES
+  if var VAR_ROAMING_KANTO_RAIKOU_STATE == 2 roamer start "Raikou" kanto
+  if var VAR_ROAMING_KANTO_RAIKOU_STATE == 2 setvar VAR_ROAMING_KANTO_RAIKOU_STATE 0
+  if var VAR_ROAMING_KANTO_ENTEI_STATE == 2 roamer start "Entei" kanto
+  if var VAR_ROAMING_KANTO_ENTEI_STATE == 2 setvar VAR_ROAMING_KANTO_ENTEI_STATE 0
+  if var VAR_ROAMING_KANTO_SUICUNE_STATE == 2 roamer start "Suicune" kanto
+  if var VAR_ROAMING_KANTO_SUICUNE_STATE == 2 setvar VAR_ROAMING_KANTO_SUICUNE_STATE 0
+  return

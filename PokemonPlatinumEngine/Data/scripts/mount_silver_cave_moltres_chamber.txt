@@ -30,6 +30,7 @@ script Moltres
   letterbox off 0.3
   endscene
   wildbattle "Moltres" 50
+  if result == 3 setflag FLAG_JOHTO_CAUGHT_MOLTRES
   if result == 2 goto Fled
   setflag FLAG_JOHTO_FOUGHT_MOLTRES
   setflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES

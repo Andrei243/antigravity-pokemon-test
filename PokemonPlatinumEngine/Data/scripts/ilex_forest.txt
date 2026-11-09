@@ -176,6 +176,7 @@ script Master
 script Shrine
   speaker none
   if flag FLAG_JOHTO_CELEBI_MET goto Plain
+  if flag FLAG_JOHTO_CELEBI_BEATEN goto Again
   if flag FLAG_JOHTO_GS_BALL_ON_SHRINE goto Waiting
   if not item "GS Ball" goto Plain
   sayown
@@ -220,15 +221,23 @@ label Comes
   end
 label Gone
   setflag FLAG_JOHTO_CELEBI_MET
+  setflag FLAG_JOHTO_CELEBI_BEATEN
   speaker none
   text "Celebi faded into the trees, and the GS Ball crumbled into leaves."
   end
 label Caught
   setflag FLAG_JOHTO_CELEBI_MET
+  setflag FLAG_JOHTO_CAUGHT_CELEBI
+  clearflag FLAG_JOHTO_CELEBI_BEATEN
   end
 label Plain
   sayown
   end
+# (plan 40 · GE6: beaten and not caught, it comes back to the shrine after Johto's Hall of Fame
+# (johto_pokemon_league_hall_of_fame.txt's LegendsAgain clears FLAG_JOHTO_CELEBI_MET), with no GS Ball needed)
+label Again
+  text "The shrine's glow stirs, as though something is waiting in the trees..."
+  goto Comes
 
 
 # Celebi looked at before its battle has begun (it is only shown in the scene)

@@ -112,6 +112,7 @@ script Suicune
   letterbox off 0.3
   endscene
   wildbattle "Suicune" 40
+  if result == 3 setflag FLAG_JOHTO_CAUGHT_SUICUNE
   if result == 2 goto Fled
   setflag FLAG_JOHTO_FOUGHT_SUICUNE
   setflag FLAG_HIDE_ROUTE_25_SUICUNE

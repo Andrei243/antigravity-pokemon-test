@@ -45,6 +45,7 @@ script Kyogre
   endscene
   setvar VAR_TEMP_1 0
   wildbattle "Kyogre" 70
+  if result == 3 setflag FLAG_HOENN_CAUGHT_KYOGRE
   hide marine_cave_kyogre
   setflag FLAG_HIDE_MARINE_CAVE_KYOGRE
   if result == 2 goto Fled

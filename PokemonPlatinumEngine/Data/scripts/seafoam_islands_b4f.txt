@@ -39,6 +39,7 @@ script Articuno
   letterbox off 0.3
   endscene
   wildbattle "Articuno" 50
+  if result == 3 setflag FLAG_KANTO_CAUGHT_ARTICUNO
   if result == 2 goto Fled
   setflag FLAG_FOUGHT_ARTICUNO
   setflag FLAG_HIDE_ARTICUNO

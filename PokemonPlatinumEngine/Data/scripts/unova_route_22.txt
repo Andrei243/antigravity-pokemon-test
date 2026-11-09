@@ -73,8 +73,10 @@ script Terrakion
   letterbox off 0.3
   endscene
   wildbattle "Terrakion" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_TERRAKION
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_TERRAKION
+  setflag FLAG_UNOVA_MET_TERRAKION
   hide self
   text "The hills are still once more..."
   end

@@ -9,6 +9,8 @@
 
 script OnEnter
   setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
+  # (plan 40 · GE6) beaten and not caught, it is back once Johto's Hall of Fame is entered again
+  if flag FLAG_JOHTO_KYOGRE_AGAIN clearflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
   if flag FLAG_JOHTO_FOUGHT_KYOGRE end
   if flag FLAG_JOHTO_FOUGHT_GROUDON clearflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
   end
@@ -36,8 +38,10 @@ script Kyogre
   letterbox off 0.3
   endscene
   wildbattle "Kyogre" 50
+  if result == 3 setflag FLAG_JOHTO_CAUGHT_KYOGRE
   if result == 2 goto Fled
   setflag FLAG_JOHTO_FOUGHT_KYOGRE
+  clearflag FLAG_JOHTO_KYOGRE_AGAIN
   setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
   hide self
   end

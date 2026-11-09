@@ -29,8 +29,10 @@ script Virizion
   letterbox off 0.3
   endscene
   wildbattle "Virizion" 65
+  if result == 3 setflag FLAG_UNOVA_CAUGHT_VIRIZION
   if result == 2 goto Fled
   setflag FLAG_UNOVA_FOUGHT_VIRIZION
+  setflag FLAG_UNOVA_MET_VIRIZION
   hide self
   text "The grass by the road sways, and nothing more..."
   end
