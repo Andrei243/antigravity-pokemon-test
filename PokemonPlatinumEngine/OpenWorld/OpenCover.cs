@@ -18,7 +18,13 @@ public enum OpenCover : byte
     Highland,
     Sand,
     Snow,
-    Mud
+    Mud,
+
+    /// <summary>
+    /// Rock the mount climbs (plan 30 · FM12, plan 34 · PD2): laid only by the baker's paint on a cliff, never by its
+    /// rules; a steep face of it is climbed once the climb is granted (<see cref="MovementGrants.Climb"/>).
+    /// </summary>
+    ClimbableRock
 }
 
 /// <summary>Which covers are one family (plan 32 · OW2): what the far levels may blend across as they are thinned.</summary>
@@ -28,7 +34,7 @@ public static class OpenCovers
     public static int FamilyOf(OpenCover cover) => cover switch
     {
         OpenCover.Grass or OpenCover.GrassLight or OpenCover.GrassDeep or OpenCover.Highland => 0,
-        OpenCover.Rock or OpenCover.RockDark => 1,
+        OpenCover.Rock or OpenCover.RockDark or OpenCover.ClimbableRock => 1,
         _ => 2 + (int)cover
     };
 }

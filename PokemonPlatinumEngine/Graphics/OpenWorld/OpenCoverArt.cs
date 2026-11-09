@@ -35,7 +35,7 @@ internal static class OpenCoverArt
     public static readonly OpenCover[] Order =
     {
         OpenCover.Grass, OpenCover.GrassLight, OpenCover.GrassDeep, OpenCover.Highland, OpenCover.Mud, OpenCover.Path,
-        OpenCover.Sand, OpenCover.CaveFloor, OpenCover.Rock, OpenCover.RockDark, OpenCover.Snow
+        OpenCover.Sand, OpenCover.CaveFloor, OpenCover.Rock, OpenCover.RockDark, OpenCover.Snow, OpenCover.ClimbableRock
     };
 
     private static readonly int[] slots = BuildSlots();
@@ -67,6 +67,7 @@ internal static class OpenCoverArt
         OpenCover.Sand => (Rgb(238, 224, 172), Rgb(246, 236, 196), Rgb(214, 196, 140), Rgb(246, 236, 196)),
         OpenCover.Snow => (Rgb(186, 204, 232), Rgb(196, 212, 238), Rgb(168, 188, 224), Rgb(206, 220, 242)),
         OpenCover.Mud => (Rgb(124, 106, 86), Rgb(140, 122, 98), Rgb(98, 112, 108), Rgb(150, 160, 150)),
+        OpenCover.ClimbableRock => (Rgb(138, 124, 108), Rgb(150, 136, 118), Rgb(96, 86, 78), Rgb(188, 176, 158)),
         _ => (Rgb(255, 0, 255), Rgb(255, 0, 255), Rgb(255, 0, 255), Rgb(255, 0, 255))
     };
 
@@ -216,6 +217,21 @@ internal static class OpenCoverArt
                     for (int s = 0; s < 5; s++) Put(x + s, y, dark);
                     for (int s = 1; s < 4; s++) Put(x + s, y + 1, dark);
                     Put(x + 1, y, light);
+                }
+                break;
+            case OpenCover.ClimbableRock:
+                // Ledges: level lines four to seven texels long with a lip over each, and holds of 2×2 with a light texel
+                for (int k = 0; k < 5; k++)
+                {
+                    int x = (int)(Rand(k, 0, salt) * Tile), y = (int)(Rand(k, 1, salt) * Tile);
+                    int length = 4 + (int)(Rand(k, 2, salt) * 4);
+                    for (int s = 0; s < length; s++) { Put(x + s, y - 1, light); Put(x + s, y, dark); }
+                }
+                for (int k = 0; k < 4; k++)
+                {
+                    int x = (int)(Rand(k, 20, salt) * Tile), y = (int)(Rand(k, 21, salt) * Tile);
+                    Put(x, y, dark); Put(x + 1, y, dark); Put(x, y + 1, dark); Put(x + 1, y + 1, dark);
+                    Put(x, y, light);
                 }
                 break;
         }

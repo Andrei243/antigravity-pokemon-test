@@ -140,9 +140,14 @@ public sealed class OpenNavMesh
     /// <summary>The links leaving a polygon, by their number.</summary>
     public IReadOnlyList<int> LinksFrom(int polygon) => linksFrom[polygon];
 
-    /// <summary>What a body may cross with what the region grants it: walking and drops always, swimming with the grant.</summary>
+    /// <summary>
+    /// What a body may cross with what the region grants it: walking and drops always, swimming with the grant, and
+    /// (plan 30 · FM12) the mount's climbs and glides with theirs; the baker makes no link of either yet.
+    /// </summary>
     public static OpenNavFlags Allowed(MovementGrants grants) =>
-        OpenNavFlags.Walk | OpenNavFlags.Drop | ((grants & MovementGrants.Swim) != 0 ? OpenNavFlags.Swim : OpenNavFlags.None);
+        OpenNavFlags.Walk | OpenNavFlags.Drop | ((grants & MovementGrants.Swim) != 0 ? OpenNavFlags.Swim : OpenNavFlags.None)
+        | ((grants & MovementGrants.Climb) != 0 ? OpenNavFlags.Climb : OpenNavFlags.None)
+        | ((grants & MovementGrants.Glide) != 0 ? OpenNavFlags.Glide : OpenNavFlags.None);
 
     /// <summary>
     /// Twice the signed area of a, b, c on the ground (x and z): positive one way round, negative the other. The

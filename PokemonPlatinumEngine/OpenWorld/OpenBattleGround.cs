@@ -17,7 +17,7 @@ public static class OpenBattleGround
     {
         OpenCover.GrassDeep => BattleTerrain.Grass,
         OpenCover.Grass or OpenCover.GrassLight or OpenCover.Highland or OpenCover.Path => BattleTerrain.Plain,
-        OpenCover.Rock or OpenCover.RockDark => BattleTerrain.Mountain,
+        OpenCover.Rock or OpenCover.RockDark or OpenCover.ClimbableRock => BattleTerrain.Mountain,
         OpenCover.CaveFloor => BattleTerrain.Cave,
         OpenCover.Sand => BattleTerrain.Sand,
         OpenCover.Snow => BattleTerrain.Snow,

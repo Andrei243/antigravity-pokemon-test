@@ -14,25 +14,46 @@ public enum MovementGrants
     None = 0,
 
     /// <summary>The capsule goes into water deeper than <see cref="OpenBody.SwimDepth"/> and swims; without it, it stops at the edge.</summary>
-    Swim = 1
+    Swim = 1,
+
+    // The mount's powers (plan 30 · FM12, plan 34 · PD2), read only while the body is mounted (OpenBody.Mounted)
+
+    /// <summary>The mount sprints on the run button (<see cref="OpenBody.SprintSpeed"/>).</summary>
+    Dash = 2,
+
+    /// <summary>The mount's jump clears <see cref="OpenBody.HighJumpHeight"/>, not only <see cref="OpenBody.HopHeight"/>.</summary>
+    HighJump = 4,
+
+    /// <summary>A press in the air holds a glide (<see cref="OpenStance.Gliding"/>).</summary>
+    Glide = 8,
+
+    /// <summary>The mount clings to and climbs a steep face that is climbable (<see cref="OpenGround.Climbable"/>).</summary>
+    Climb = 16
 }
 
 /// <summary>
 /// A tick's steering (plan 32 · OW3): the stick's tilt east and south, each −1 to 1 (as <c>InputManager.GetStick</c>
-/// gives it, its x east and its y down the screen, which is south), and whether the body runs.
+/// gives it, its x east and its y down the screen, which is south), and whether the body runs; and (plan 30 · FM12)
+/// whether the mount's button was pressed this tick, to jump, glide or let go, which only a mounted body reads.
 /// </summary>
-public readonly record struct OpenInput(double StickX, double StickZ, bool Run = false)
+public readonly record struct OpenInput(double StickX, double StickZ, bool Run = false, bool Jump = false)
 {
     public static readonly OpenInput None = default;
 }
 
-/// <summary>What the capsule is doing (plan 32 · OW3).</summary>
+/// <summary>What the capsule is doing (plan 32 · OW3; plan 30 · FM12's two at the end, a mounted body's alone).</summary>
 public enum OpenStance
 {
     /// <summary>On the ground (walkable or steep: a steep face is stood on and slid down, decision 14).</summary>
     Standing,
     Falling,
-    Swimming
+    Swimming,
+
+    /// <summary>The mount gliding down (plan 30 · FM12): sinking at <see cref="OpenBody.GlideSink"/>, steered at the trot's speed.</summary>
+    Gliding,
+
+    /// <summary>The mount clinging to a climbable face (plan 30 · FM12), moved up, down and along it by the stick.</summary>
+    Climbing
 }
 
 /// <summary>
@@ -97,6 +118,29 @@ public sealed class OpenBody
     /// <summary>The floor of the world (plan 32 · OW6): a fall longer than this many metres is caught whatever lies under it.</summary>
     public const double LongestFall = 200;
 
+    // The mount (plan 30 · FM12, plan 34 · PD2): numbers of plan 34's and ours, metres and metres a second
+
+    /// <summary>The mount at the stick's full tilt, and sprinting once the dash is granted.</summary>
+    public const double TrotSpeed = 6.0, SprintSpeed = 11.0;
+
+    /// <summary>The mount swimming (once the swim is granted), and climbing a face.</summary>
+    public const double MountSwimSpeed = 4.0, ClimbSpeed = 1.5;
+
+    /// <summary>
+    /// How far the feet rise in the mount's own jump, and in the high jump once granted. A body lands on ground a step
+    /// over its feet, so each clears a ledge <see cref="StepUp"/> higher: 1.25 m, and 2.75 m (plan 34: "clears 2.5 m").
+    /// </summary>
+    public const double HopHeight = 0.9, HighJumpHeight = 2.4;
+
+    /// <summary>How fast a glide sinks.</summary>
+    public const double GlideSink = 2.0;
+
+    /// <summary>How near a sphere's centre a climbable face must be to be clung to, past the radius.</summary>
+    private const double ClingReach = 0.08;
+
+    /// <summary>How far a clinging body is drawn into its face a tick (the walls' own pushes put it back).</summary>
+    private const double ClingPull = 0.02;
+
     private const int MostPushes = 4;
 
     /// <summary>The heights of the three spheres' centres over the feet.</summary>
@@ -112,6 +156,57 @@ public sealed class OpenBody
 
     // Where the body last stood on walkable ground, in micrometres: where a fall that can land nowhere puts it back
     private long goodX, goodY, goodZ;
+
+    // The face a mounted body clings to: its way out along the ground (plan 30 · FM12)
+    private double clingX, clingZ;
+
+    /// <summary>
+    /// Whether the body is the mount ridden (plan 30 · FM12, plan 34 · PD2): its speeds, its jump, and the powers its
+    /// grants give (<see cref="MovementGrants.Dash"/> and on), which a walker never reads.
+    /// </summary>
+    public bool Mounted { get; private set; }
+
+    /// <summary>The player gets on (<see cref="OpenWorld.MountRules.WhyNot"/> has said yes): nothing else of the body changes.</summary>
+    public void Mount() => Mounted = true;
+
+    /// <summary>
+    /// The player gets off, wherever the body is (a fade's or a script's dismount is forced): gliding or clinging, it
+    /// falls on foot from there; swimming, it swims on.
+    /// </summary>
+    public void Dismount()
+    {
+        if (!Mounted) return;
+        Mounted = false;
+        if (Stance is OpenStance.Gliding or OpenStance.Climbing) LetGo();
+    }
+
+    /// <summary>A glide or a cling ended in the air: falling from where the body is, with no speed.</summary>
+    private void LetGo()
+    {
+        if (Stance == OpenStance.Climbing)
+        {
+            // Off the face a little, so the fall doesn't begin in it
+            mx += ToMicro(clingX * 0.05);
+            mz += ToMicro(clingZ * 0.05);
+        }
+        Stance = OpenStance.Falling;
+        fallSpeed = 0;
+        fallFrom = my;
+    }
+
+    /// <summary>The way out of the face clung to, along the ground (nought unless climbing).</summary>
+    public (double X, double Z) Cling => Stance == OpenStance.Climbing ? (clingX, clingZ) : (0, 0);
+
+    /// <summary>
+    /// The speed a jump leaves the ground with, in metres a tick, for the feet to rise <paramref name="height"/>: the
+    /// fall's own sum (each tick the speed less gravity's share of a tick, then the move) worked backward.
+    /// </summary>
+    public static double JumpSpeed(double height)
+    {
+        double g = Gravity / ((double)TicksPerSecond * TicksPerSecond);
+        // Rising n ticks of v − g, v − 2g, …: about v²/2g − v/2 metres
+        return g / 2 + Math.Sqrt(g * g / 4 + 2 * g * height);
+    }
 
     public OpenBody(OpenPos feet, int yaw = 0)
     {
@@ -179,6 +274,8 @@ public sealed class OpenBody
         Pushes = 0;
         Sliding = Refused = StoppedAtWater = HardLanding = Splashed = Caught = false;
         Landed = null;
+        // A walker reads the swim alone: the mount's powers are the mount's (plan 30 · FM12)
+        if (!Mounted) grants &= MovementGrants.Swim;
 
         double x = mx / 1e6, y = my / 1e6, z = mz / 1e6;
 
@@ -186,17 +283,50 @@ public sealed class OpenBody
         double sx = input.StickX, sz = input.StickZ;
         double length = Math.Sqrt(sx * sx + sz * sz);
         double dx = 0, dz = 0;
-        if (length > DeadZone && !double.IsNaN(length))
+        bool steered = length > DeadZone && !double.IsNaN(length);
+        if (steered)
         {
             double tilt = Math.Min(1, length);
-            double speed = (Stance == OpenStance.Swimming ? SwimSpeed : input.Run ? RunSpeed : WalkSpeed) * tilt / TicksPerSecond;
+            double pace = Stance == OpenStance.Swimming ? (Mounted ? MountSwimSpeed : SwimSpeed)
+                : Mounted ? (input.Run && (grants & MovementGrants.Dash) != 0 && Stance != OpenStance.Gliding ? SprintSpeed : TrotSpeed)
+                : input.Run ? RunSpeed : WalkSpeed;
+            double speed = pace * tilt / TicksPerSecond;
             dx = sx / length * speed;
             dz = sz / length * speed;
-            Yaw = OpenTriangles.YawOf(sx, sz);
+            // A body clinging to a face keeps facing it
+            if (Stance != OpenStance.Climbing) Yaw = OpenTriangles.YawOf(sx, sz);
         }
         // A map with nothing in it to stand on is a place to stand (OW1's empty maps): the body only turns
         if (!ground.HasAnything) return;
         if (!settled) Settle(ground, ref y, x, z);
+
+        if (Mounted)
+        {
+            // Clinging: the stick moves the body over the face, and the button lets go
+            if (Stance == OpenStance.Climbing)
+            {
+                Climb(ground, input, x, y, z, steered ? sx / length * Math.Min(1, length) : 0, steered ? sz / length * Math.Min(1, length) : 0);
+                return;
+            }
+            // The button: a jump from the ground, a glide in the air, and a glide let go
+            if (input.Jump)
+            {
+                if (Stance == OpenStance.Standing) Jump((grants & MovementGrants.HighJump) != 0 ? HighJumpHeight : HopHeight);
+                else if (Stance == OpenStance.Falling && (grants & MovementGrants.Glide) != 0) Stance = OpenStance.Gliding;
+                else if (Stance == OpenStance.Gliding) LetGo();
+            }
+            // Steered into a climbable face: the body clings to it
+            if ((grants & MovementGrants.Climb) != 0 && steered && Stance is OpenStance.Standing or OpenStance.Falling or OpenStance.Gliding
+                && ClingTo(ground, x, y, z, sx / length, sz / length) is { } face)
+            {
+                (clingX, clingZ) = face;
+                Stance = OpenStance.Climbing;
+                steepX = steepZ = 0;
+                fallSpeed = 0;
+                Yaw = OpenTriangles.YawOf(-clingX, -clingZ);
+                return;
+            }
+        }
 
         if (Stance == OpenStance.Standing && (steepX != 0 || steepZ != 0))
         {
@@ -235,7 +365,13 @@ public sealed class OpenBody
             case OpenStance.Standing: Stand(ground, nx, ref y, nz); break;
             case OpenStance.Swimming: Swim(ground, nx, ref y, nz); break;
         }
-        if (Stance == OpenStance.Falling && Fall(ground, nx, ref y, nz))
+        bool nowhere = Stance switch
+        {
+            OpenStance.Falling => Fall(ground, nx, ref y, nz),
+            OpenStance.Gliding => Glide(ground, nx, ref y, nz),
+            _ => false
+        };
+        if (nowhere)
         {
             // Nowhere to land (plan 32 · OW6): back where the body last stood, settled afresh at its next tick
             CatchTheFall();
@@ -309,7 +445,23 @@ public sealed class OpenBody
         double v = fallSpeed / 1e6 - Gravity / ((double)TicksPerSecond * TicksPerSecond);
         v = Math.Max(v, -FastestFall / TicksPerSecond);
         double next = y + v;
-        var f = ground.Footing(x, z, y + 1e-6, next);
+        if (v > 0)
+        {
+            // Rising in a jump (plan 30 · FM12; a walker never rises): stopped by a face turned down over the head, and
+            // the fall counted from the highest the feet came to
+            if (ground.Underside(x, z, y + Height, next + Height) is { } roof)
+            {
+                next = Math.Max(y, roof - Height - 1e-4);
+                v = 0;
+            }
+            y = next;
+            fallSpeed = ToMicro(v);
+            fallFrom = ToMicro(y);
+            return false;
+        }
+        // A mounted body coming down lands on ground up to a step over its feet (a jump level with a ledge's top stands
+        // on it); a walker's fall lands only under them, as OW3 has it
+        var f = ground.Footing(x, z, Mounted ? y + StepUp : y + 1e-6, next);
         if (ground.WaterAt(x, z) is { } surface && next <= surface - SwimDepth && (f == null || f.Value.Y < surface - SwimDepth))
         {
             // Into the water: the body comes up to swim
@@ -339,6 +491,136 @@ public sealed class OpenBody
         double drop = fallFrom / 1e6 - y;
         if (drop > LongestFall) return true;
         return drop > CatchDrop && ground.WaterAt(x, z) == null && ground.Footing(x, z, y, double.NegativeInfinity) == null;
+    }
+
+    /// <summary>The mount leaves the ground with the speed that raises its feet <paramref name="height"/> (plan 30 · FM12).</summary>
+    private void Jump(double height)
+    {
+        Stance = OpenStance.Falling;
+        steepX = steepZ = 0;
+        fallSpeed = ToMicro(JumpSpeed(height));
+        fallFrom = my;
+    }
+
+    /// <summary>
+    /// A tick of a glide (plan 30 · FM12): the body sinks at <see cref="GlideSink"/>, landing on ground up to a step
+    /// over its feet (never hard) or coming down into deep water to swim; true where it can land nowhere and is to be
+    /// caught, as a fall is.
+    /// </summary>
+    private bool Glide(OpenGround ground, double x, ref double y, double z)
+    {
+        double next = y - GlideSink / TicksPerSecond;
+        var f = ground.Footing(x, z, y + StepUp, next);
+        if (ground.WaterAt(x, z) is { } surface && next <= surface - SwimDepth && (f == null || f.Value.Y < surface - SwimDepth))
+        {
+            double into = surface - SwimDepth;
+            Landed = ToMm(fallFrom - ToMicro(into));
+            Splashed = true;
+            Stance = OpenStance.Swimming;
+            fallSpeed = 0;
+            y = into;
+            return false;
+        }
+        if (f is { } landing)
+        {
+            Landed = ToMm(fallFrom - ToMicro(landing.Y));
+            Stance = OpenStance.Standing;
+            fallSpeed = 0;
+            y = landing.Y;
+            TakeFace(ground, ground[landing.Triangle], x, y, z);
+            return false;
+        }
+        y = next;
+        fallSpeed = 0;
+        double drop = fallFrom / 1e6 - y;
+        if (drop > LongestFall) return true;
+        return drop > CatchDrop && ground.WaterAt(x, z) == null && ground.Footing(x, z, y, double.NegativeInfinity) == null;
+    }
+
+    /// <summary>
+    /// The climbable face a body at x, y, z clings to (plan 30 · FM12): the nearest steep face of a climbable triangle
+    /// (<see cref="OpenGround.Climbable"/>; not walkable, and not turned down past a third) within a sphere's reach of
+    /// any of its three spheres' centres, as its way out along the ground; and with <paramref name="wantX"/>,
+    /// <paramref name="wantZ"/> given, only a face the stick pushes into. Null where there is none.
+    /// </summary>
+    private (double X, double Z)? ClingTo(OpenGround ground, double x, double y, double z, double? wantX = null, double? wantZ = null)
+    {
+        ground.Near(x, z, Radius + ClingReach + 0.1, near);
+        (double X, double Z)? best = null;
+        double nearest = double.MaxValue;
+        foreach (double above in Spheres)
+        {
+            var centre = new OpenVec(x, y + above, z);
+            foreach (int i in near)
+            {
+                if (!ground.Climbable(i)) continue;
+                var t = ground[i];
+                if (t.Walkable || t.Normal.Y < -0.3) continue;
+                double hx = t.Normal.X, hz = t.Normal.Z, hl = Math.Sqrt(hx * hx + hz * hz);
+                if (hl < 1e-6) continue;
+                hx /= hl; hz /= hl;
+                if (wantX is { } wx && wantZ is { } wz && wx * hx + wz * hz > -0.5) continue;
+                var cp = OpenTriangles.ClosestPoint(centre, t.A, t.B, t.C);
+                var away = centre - cp;
+                double d = Math.Sqrt(OpenVec.Dot(away, away));
+                if (d > Radius + ClingReach || d >= nearest) continue;
+                nearest = d;
+                best = (hx, hz);
+            }
+        }
+        return best;
+    }
+
+    /// <summary>
+    /// A tick on a face (plan 30 · FM12): the stick into the face is up, away from it down, along it sideways, at
+    /// <see cref="ClimbSpeed"/> by the tilt. At the top, walkable ground just past the face within a step of the feet
+    /// is stepped onto; at the foot, the ground. Otherwise the body is drawn into the face a little and pushed out by
+    /// the walls, and a move that would leave every climbable face is not made. The button lets go.
+    /// </summary>
+    private void Climb(OpenGround ground, OpenInput input, double x, double y, double z, double ux, double uz)
+    {
+        if (input.Jump)
+        {
+            LetGo();
+            return;
+        }
+        if (ux == 0 && uz == 0) return;
+        double up = -(ux * clingX + uz * clingZ);
+        double tx = -clingZ, tz = clingX;
+        double side = ux * tx + uz * tz;
+        double step = ClimbSpeed / TicksPerSecond;
+        double ny = y + up * step, nx = x + tx * side * step, nz = z + tz * side * step;
+        if (up > 0)
+        {
+            double ax = nx - clingX * (Radius + 0.2), az = nz - clingZ * (Radius + 0.2);
+            // (and open over it: ground with rock just over it is the floor inside the cliff, not its top)
+            if (ground.Footing(ax, az, ny + StepUp, ny - 0.1, walkableOnly: true) is { } top
+                && ground.Underside(ax, az, top.Y - 1e-3, top.Y + Height) == null)
+            {
+                StandAfterTheClimb(ground, ax, top, az);
+                return;
+            }
+        }
+        else if (up < 0 && ground.Footing(nx, nz, y + 0.01, ny, walkableOnly: true) is { } foot)
+        {
+            StandAfterTheClimb(ground, nx, foot, nz);
+            return;
+        }
+        double px = nx - clingX * ClingPull, pz = nz - clingZ * ClingPull;
+        PushOut(ground, ref px, ny, ref pz);
+        if (ClingTo(ground, px, ny, pz) is not { } face) return;
+        (clingX, clingZ) = face;
+        mx = ToMicro(px); my = ToMicro(ny); mz = ToMicro(pz);
+    }
+
+    private void StandAfterTheClimb(OpenGround ground, double x, (double Y, int Triangle) footing, double z)
+    {
+        Stance = OpenStance.Standing;
+        clingX = clingZ = 0;
+        residual = double.MaxValue;
+        TakeFace(ground, ground[footing.Triangle], x, footing.Y, z);
+        mx = ToMicro(x); my = ToMicro(footing.Y); mz = ToMicro(z);
+        if (steepX == 0 && steepZ == 0) (goodX, goodY, goodZ) = (mx, my, mz);
     }
 
     private void Swim(OpenGround ground, double x, ref double y, double z)

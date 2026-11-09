@@ -11,6 +11,9 @@ namespace PokemonPlatinumEngine.OpenWorld;
 /// </summary>
 public sealed record OpenBox(string Name, OpenPos Min, OpenPos Max)
 {
+    /// <summary>Whether the mount climbs the box's sides (plan 30 · FM12, plan 34 · PD2): a placed cliff, or a test's.</summary>
+    public bool Climbable { get; init; }
+
     public OpenBox Checked()
     {
         if (Min.X >= Max.X || Min.Y >= Max.Y || Min.Z >= Max.Z) throw new ArgumentException($"the box {Name} has no inside: {Min} to {Max}");
@@ -78,6 +81,7 @@ public sealed class OpenGround
     private readonly HashSet<(int, int)> read = new();
     private readonly List<Triangle> triangles = new();
     private readonly List<int> marks = new();
+    private readonly List<bool> climbables = new();
     private int stamp;
     private readonly Dictionary<(int, int), List<int>> squares = new();
     private readonly Dictionary<(int, int), int[]> water = new();
@@ -93,7 +97,7 @@ public sealed class OpenGround
         long key = BoxKeys;
         foreach (var box in boxes ?? Enumerable.Empty<OpenBox>())
         {
-            AddBox(box.Checked(), key);
+            AddBox(box.Checked(), key, box.Climbable);
             key += 12;
         }
         waterBoxes.AddRange(waters ?? Enumerable.Empty<OpenWaterBox>());
@@ -116,7 +120,7 @@ public sealed class OpenGround
     private static long KeyOf(int chunkX, int chunkZ, int t) =>
         ((((long)(chunkZ + (1 << 18)) << 19) | (long)(chunkX + (1 << 18))) << 24) | (long)t;
 
-    private void AddBox(OpenBox box, long key)
+    private void AddBox(OpenBox box, long key, bool climbable)
     {
         var lo = OpenVec.Of(box.Min);
         var hi = OpenVec.Of(box.Max);
@@ -133,12 +137,12 @@ public sealed class OpenGround
         };
         foreach (var f in faces)
         {
-            Add(P(f[0]), P(f[1]), P(f[2]), key++);
-            Add(P(f[0]), P(f[2]), P(f[3]), key++);
+            Add(P(f[0]), P(f[1]), P(f[2]), key++, climbable);
+            Add(P(f[0]), P(f[2]), P(f[3]), key++, climbable);
         }
     }
 
-    private void Add(OpenVec a, OpenVec b, OpenVec c, long key)
+    private void Add(OpenVec a, OpenVec b, OpenVec c, long key, bool climbable = false)
     {
         var normal = OpenVec.Cross(b - a, c - a).Normalized();
         var t = new Triangle(a, b, c, normal, key,
@@ -147,6 +151,7 @@ public sealed class OpenGround
         int index = triangles.Count;
         triangles.Add(t);
         marks.Add(0);
+        climbables.Add(climbable);
         for (int z = Cell(t.MinZ); z <= Cell(t.MaxZ); z++)
             for (int x = Cell(t.MinX); x <= Cell(t.MaxX); x++)
             {
@@ -181,14 +186,48 @@ public sealed class OpenGround
                 if (chunks(cx, cz) is not { } chunk) continue;
                 if (chunk.Level != 0) throw new InvalidOperationException($"the ground of chunk {cx},{cz} must be level 0, not {chunk.Level}");
                 for (int t = 0; t < chunk.GroundTriangles; t++)
-                    Add(OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3])), OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3 + 1])),
-                        OpenVec.Of(chunk.Vertex(chunk.Indices[t * 3 + 2])), KeyOf(cx, cz, t));
+                {
+                    int ia = chunk.Indices[t * 3], ib = chunk.Indices[t * 3 + 1], ic = chunk.Indices[t * 3 + 2];
+                    // Climbable where two corners of three are painted so (plan 30 · FM12)
+                    int painted = (chunk.Covers[ia] == OpenCover.ClimbableRock ? 1 : 0) + (chunk.Covers[ib] == OpenCover.ClimbableRock ? 1 : 0)
+                        + (chunk.Covers[ic] == OpenCover.ClimbableRock ? 1 : 0);
+                    Add(OpenVec.Of(chunk.Vertex(ia)), OpenVec.Of(chunk.Vertex(ib)), OpenVec.Of(chunk.Vertex(ic)), KeyOf(cx, cz, t), painted >= 2);
+                }
                 if (chunk.HasWater) water[(cx, cz)] = chunk.Water;
             }
     }
 
     /// <summary>A triangle by its index in what was read (the index a query gives back).</summary>
     public Triangle this[int index] => triangles[index];
+
+    /// <summary>
+    /// Whether the mount climbs a triangle once granted (plan 30 · FM12): a chunk's where two of its corners are painted
+    /// <see cref="OpenCover.ClimbableRock"/>, a box's where the box is <see cref="OpenBox.Climbable"/>. Only its steep
+    /// faces are climbed; this says nothing of whether it is steep.
+    /// </summary>
+    public bool Climbable(int index) => climbables[index];
+
+    /// <summary>
+    /// The lowest face turned down over a column between two heights, in metres, or null (plan 30 · FM12: what stops a
+    /// jump's rise, the inside of a roof or the rock over a cave).
+    /// </summary>
+    public double? Underside(double x, double z, double bottom, double top)
+    {
+        ReadAround(x, z, x, z);
+        SortIfNeeded();
+        if (!squares.TryGetValue((Cell(x), Cell(z)), out var list)) return null;
+        double? best = null;
+        foreach (int i in list)
+        {
+            var t = triangles[i];
+            if (t.Normal.Y > -FacesUpY) continue;
+            if (x < t.MinX - 1e-9 || x > t.MaxX + 1e-9 || z < t.MinZ - 1e-9 || z > t.MaxZ + 1e-9) continue;
+            if (OpenTriangles.HeightIn(x, z, t.A, t.B, t.C) is not { } y) continue;
+            if (y < bottom - 1e-9 || y > top + 1e-9) continue;
+            if (best == null || y < best) best = y;
+        }
+        return best;
+    }
 
     /// <summary>
     /// The triangles near a column, each once, in the order of the squares (north to south, west to east) and of the

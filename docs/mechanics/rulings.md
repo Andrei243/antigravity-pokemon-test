@@ -10849,3 +10849,48 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   regions' Halls of Fame (`WaitsFor`).
 - **Not yet**: the rest of EG2 (an entry's region, each region's first team kept, the hall of Champions and the screen's
   tabs).
+## The mount on the open world: its rules and powers (2026-11-09, plan 30 · FM12, built as plan 34 · PD2)
+
+- **Where it was built.** Plan 30 · FM12 was written for the grid; since 2026-11-04 Paldea is plan 32's open world, and
+  plan 34 · PD2 re-expresses FM12 on the capsule. This session built that: `OpenWorld/MountRules.cs` (GPU-free) and the
+  mount's ways in `OpenBody` (`OpenWorld/OpenMovement.cs`), with plan 30's decisions 13 to 17 kept. Nothing of the grid
+  changed: no `TravelMode`, no `Overworld/MountRules.cs`, and no region's file lists `Mount` yet (plan 34 · PD1 writes
+  Paldea's), so no game of today can mount.
+- **The same capsule.** Ridden, the body is the walker's capsule (0.35 m round, 1.6 m tall): the mount goes where the
+  walker goes and is never wedged where the walker would pass. Its speeds are plan 34's: a trot of 6 m/s at the stick's
+  full tilt, a sprint of 11 m/s on the run button once the dash is granted (0.09 m a tick, under the capsule's radius,
+  so nothing is passed through), and a swim of 4 m/s (ours). Without the dash the run button does nothing on the mount.
+- **The powers are story flags**, set by a Titan's scene (plan 34 · PD4) with `setflag`, read by
+  `MountRules.Grants(story)`: `FLAG_PALDEA_MOUNT_DASH`, `_SWIM`, `_HIGH_JUMP`, `_GLIDE`, `_CLIMB`, in plan 30 ·
+  decision 16's order. Plan 23's `grant` and `granted` words were never built and are not needed: a power is a flag the
+  way the Ride Pager's rides are. Which of the two is ridden is `VAR_PALDEA_MOUNT` (1 Koraidon, 2 Miraidon; nought,
+  none). They are `MovementGrants` (`Dash`, `HighJump`, `Glide`, `Climb` after OW3's `Swim`) handed to the body only
+  while it is mounted (`OpenPlayer.RideGrants`), so a walker in Paldea never swims or jumps by them; the region's own
+  grants (`OpenField.Grants`) are handed either way.
+- **The jump.** The mount always jumps (a press of A with nobody to speak to): a hop whose feet rise 0.9 m. The high
+  jump raises them 2.4 m. It is worked as the fall is, a vertical speed lost to gravity a tick at a time, stopped by a
+  face turned down over the head. Airborne and coming down, a mounted body lands on ground up to a step (0.35 m) over
+  its feet (a walker's fall lands only under them, as OW3 has it), as a walker steps up a kerb: so a jump never sinks
+  into the ledge it reaches, and each clears a step more than its rise, the hop a ledge of 1.25 m (a metre's, not
+  1.5 m's) and the high jump one of 2.75 m (plan 34's 2.5 m, not 3 m's).
+- **The glide.** Once granted, a press while falling or jumping holds a glide: the body sinks at 2 m/s and moves at the
+  trot's speed by the stick, until it lands, comes down into deep water (it then swims, as any fall into deep water
+  does), or is steered into a climbable face (with the climb, it clings). A second press lets go and it falls. A glide
+  that can land nowhere is caught as a fall is (plan 32 · OW6), and a glide's landing is never a hard one.
+- **The climb.** Once granted, a mounted body steered into a steep face whose cover is `ClimbableRock` (a cover the
+  baker's paint lays on cliffs; two corners of three make a triangle climbable) or a solid box marked `Climbable` clings
+  to it: the stick into the face is up, away from it down, along it sideways, at 1.5 m/s. It keeps to the face (drawn
+  in 2 cm a tick and pushed out by the walls' own pushes); a move that would leave the face is not made; at the top,
+  walkable ground just past the face within a step of the feet is stepped onto; at the foot, the ground. A press lets
+  go. Faces of any other cover stay what OW3 made them: slid down, never climbed.
+- **What the mount refuses** (`MountRules.WhyNot`, the first reason of): a region whose movement doesn't list `Mount`;
+  the grid (rooms, Gyms, a map entry with no modes); no mount had; a script running; company (a partner who battles
+  beside the player); not standing on the ground (falling, gliding, swimming, climbing). Getting off is refused but on
+  the ground. Getting on puts a Pokémon following the player in its ball; getting off lets it out again behind them.
+- **Getting off by itself** (whatever the ground): at the midpoint of every fade the game closes over an open field
+  (a battle's way in, a door, a warp, a crossing), and as a script begins in the open field. A save keeps whether the
+  player rides (`SavedOpenPlace.Mounted`, absent when on foot, so no save version was raised), and a game taken up
+  wakes mounted only where the movement in force lists `Mount` and a mount is had; anywhere else on foot.
+- **Owed**: the navigation mesh's links for the jump, the glide and the climb (the baker makes none yet;
+  `OpenNavMesh.Allowed` lets the `Climb` and `Glide` flags through once granted), the bot riding, the camera's lead,
+  the picnic, Let's Go from the saddle, and the rig (FM13).

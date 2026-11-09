@@ -77,6 +77,8 @@ public partial class GameEngine
         field.Wild.Now = GameClock.Now;
         if (ScriptRunning)
         {
+            // A script that begins takes the player off the mount (plan 30 · FM12)
+            GetOffTheMount();
             field.PeopleMayWander = false;
             field.WildMayAct = false;
             UpdateScript(dt);
@@ -92,11 +94,22 @@ public partial class GameEngine
         field.PeopleMayWander = !PeopleStayPut;
         field.WildMayAct = true;
         LetTheOpenPeopleGo(field);
-        if (InputManager.IsActionPressed(GameAction.Confirm) && TalkInTheOpen(field)) return;
+        // A on someone speaks to them; ridden, A with nobody to speak to is the mount's button (plan 30 · FM12)
+        bool pressed = InputManager.IsActionPressed(GameAction.Confirm);
+        if (pressed && TalkInTheOpen(field)) return;
+        if (InputManager.IsActionPressed(GameAction.Mount)) ToggleMount();
+        KeepTheMountsPowers(field);
         var stick = InputManager.GetStick();
         bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
         var input = new OpenInput(stick.X, stick.Y, run);
-        field.Run(dt, _ => input, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
+        // The press is the frame's first tick's alone
+        bool jump = pressed && OpenMounted;
+        field.Run(dt, _ =>
+        {
+            var tick = jump ? input with { Jump = true } : input;
+            jump = false;
+            return tick;
+        }, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
     }
 
     /// <summary>
@@ -111,6 +124,8 @@ public partial class GameEngine
         if (OpenMapNamed(place.Map) is { } map)
         {
             flow.Open = new OpenField(map, place.Pos, place.Yaw);
+            // Saved riding, and where the mount may be ridden: wakes riding (plan 30 · FM12); anywhere else on foot
+            if (saved.Mounted == true && MayWakeMounted()) flow.Open.Player.Body.Mount();
             openCrossings.Settle(map, place.Pos);
             openWalk = null;
             BeginTheOpenPeople(flow.Open);

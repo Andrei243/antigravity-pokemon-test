@@ -41,6 +41,8 @@ public static class StateHash
             var people = new StringBuilder();
             foreach (var p in open.Map.People)
                 if (p.Present) people.Append(' ').Append(p.Key).Append(' ').Append(Num(p.Pos.X)).Append(' ').Append(Num(p.Pos.Y)).Append(' ').Append(Num(p.Pos.Z)).Append(' ').Append(Num(p.Yaw));
+            // and the mount ridden with its stance (plan 30 · FM12; nothing on foot, so a walker's rows are what they were)
+            if (open.Player.Body.Mounted) people.Append(" mounted ").Append(open.Player.Body.Stance.ToString());
             if (open.Follower is { } follower) people.Append(" follower ").Append(Num(follower.Pos.X)).Append(' ').Append(Num(follower.Pos.Y)).Append(' ').Append(Num(follower.Pos.Z));
             // and its wild Pokémon where they stand (OW7), in the order they came out
             foreach (var w in open.Wild.All)

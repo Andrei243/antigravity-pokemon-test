@@ -91,7 +91,9 @@ public class PadInputTests
         Assert.Equal(normal[GameAction.Menu].Pad, swapped[GameAction.Item].Pad);
         Assert.Equal(normal[GameAction.Item].Pad, swapped[GameAction.Menu].Pad);
         Assert.Equal(normal[GameAction.Menu].Keys, swapped[GameAction.Menu].Keys);
-        foreach (var action in Enum.GetValues<GameAction>().Except(new[] { GameAction.Menu, GameAction.Item }))
+        // (the mount, in the item's place in an open map, moves with it: plan 30 · FM12)
+        Assert.Equal(swapped[GameAction.Item].Pad, swapped[GameAction.Mount].Pad);
+        foreach (var action in Enum.GetValues<GameAction>().Except(new[] { GameAction.Menu, GameAction.Item, GameAction.Mount }))
             Assert.Equal(normal[action].Pad, swapped[action].Pad);
 
         // Pressed on the pad: the left face button opens the menu, Start the registered item

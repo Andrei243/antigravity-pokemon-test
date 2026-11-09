@@ -27,8 +27,12 @@ public sealed class SavedOpenPlace
     public int Z { get; set; }
     public int Yaw { get; set; }
 
-    public static SavedOpenPlace From(OpenWorld.OpenPlace place) =>
-        new() { Map = place.Map, X = place.Pos.X, Y = place.Pos.Y, Z = place.Pos.Z, Yaw = place.Yaw };
+    /// <summary>Whether the player rode the mount (plan 30 · FM12): true, or absent on foot, so no older save differs.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public bool? Mounted { get; set; }
+
+    public static SavedOpenPlace From(OpenWorld.OpenPlace place, bool mounted = false) =>
+        new() { Map = place.Map, X = place.Pos.X, Y = place.Pos.Y, Z = place.Pos.Z, Yaw = place.Yaw, Mounted = mounted ? true : null };
 
     /// <summary>The place as the field takes it (a yaw out of range brought into a turn).</summary>
     public OpenWorld.OpenPlace ToPlace() => new(Map, new OpenWorld.OpenPos(X, Y, Z), Yaw);
