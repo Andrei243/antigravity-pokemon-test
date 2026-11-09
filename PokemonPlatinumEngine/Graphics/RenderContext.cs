@@ -327,9 +327,141 @@ public sealed class RenderContext
         FrameProfiler.Lap(FrameSection.Composite);
     }
 
+    // ------------------------------------------------------------------ the split's halves (plan 45 · BC3)
+
+    /// <summary>The largest a half of a split is drawn: 1920×1080, or the scene's own size where that is smaller.</summary>
+    public const int SplitMostWidth = 1920, SplitMostHeight = 1080;
+
+    private RenderTexture2D splitFoe, splitOwn;
+
+    /// <summary>Whether the split's two targets are made: only while a split is on screen (<see cref="EnsureSplit"/>, <see cref="FreeSplit"/>).</summary>
+    internal bool HasSplit => splitFoe.Id != 0;
+
+    /// <summary>The target of a split's half: the foe's or the player's.</summary>
+    internal RenderTexture2D SplitTarget(bool foe) => foe ? splitFoe : splitOwn;
+
+    /// <summary>A half's target's part (dynamic resolution's step, as the scene's): pixels across and down.</summary>
+    internal int SplitPartWidth => !HasSplit ? 0 : ResolutionStep >= 1f ? splitFoe.Texture.Width : Math.Max(1, (int)(splitFoe.Texture.Width * ResolutionStep));
+
+    /// <inheritdoc cref="SplitPartWidth"/>
+    internal int SplitPartHeight => !HasSplit ? 0 : ResolutionStep >= 1f ? splitFoe.Texture.Height : Math.Max(1, (int)(splitFoe.Texture.Height * ResolutionStep));
+
+    /// <summary>Makes the split's two targets, each the scene target's shape at most 1920×1080, with a depth texture as the scene's has.</summary>
+    internal void EnsureSplit()
+    {
+        if (HasSplit || !targetsLoaded) return;
+        int w = Math.Min(SplitMostWidth, Target.Texture.Width), h = Math.Min(SplitMostHeight, Target.Texture.Height);
+        splitFoe = LoadSceneTarget(w, h);
+        splitOwn = LoadSceneTarget(w, h);
+    }
+
+    /// <summary>Lets the split's targets go once no split is on screen.</summary>
+    internal void FreeSplit()
+    {
+        if (!HasSplit) return;
+        foreach (var rt in new[] { splitFoe, splitOwn })
+        {
+            Gpu.UnloadFramebuffer(rt.Id);
+            Gpu.UnloadRawTexture(rt.Texture.Id);
+            Gpu.UnloadRawTexture(rt.Depth.Id);
+        }
+        splitFoe = splitOwn = default;
+    }
+
+    /// <summary>
+    /// Opens a half's target for its view, drawing into its part (as <see cref="BeginScene"/>) and only into
+    /// <paramref name="box"/> of it (layout units of the 1920×1080 picture): a scissor, so a half draws only what is
+    /// seen of it. Closed with <see cref="EndSplitHalf"/>.
+    /// </summary>
+    internal void BeginSplitHalf(bool foe, Rectangle box)
+    {
+        int pw = SplitPartWidth, ph = SplitPartHeight;
+        Raylib.BeginTextureMode(SplitTarget(foe));
+        Rlgl.Viewport(0, 0, pw, ph);
+        Rlgl.MatrixMode(MatrixMode.Projection);
+        Rlgl.LoadIdentity();
+        Rlgl.Ortho(0, pw, ph, 0, 0, 1);
+        Rlgl.MatrixMode(MatrixMode.ModelView);
+        Rlgl.LoadIdentity();
+        var px = SplitPixels(box);
+        // The target's rows go up from its bottom, where the part's lowest row is
+        Rlgl.EnableScissorTest();
+        Rlgl.Scissor((int)px.X, ph - (int)(px.Y + px.Height), (int)px.Width, (int)px.Height);
+    }
+
+    /// <summary>A box of the picture (layout units) in a half's part's pixels, rounded out to whole pixels.</summary>
+    internal Rectangle SplitPixels(Rectangle box)
+    {
+        float sx = SplitPartWidth / SplitBand.Width, sy = SplitPartHeight / SplitBand.Height;
+        float x0 = MathF.Floor(box.X * sx), y0 = MathF.Floor(box.Y * sy);
+        float x1 = MathF.Ceiling((box.X + box.Width) * sx), y1 = MathF.Ceiling((box.Y + box.Height) * sy);
+        return new Rectangle(x0, y0, x1 - x0, y1 - y0);
+    }
+
+    /// <summary>Closes a half's target.</summary>
+    internal void EndSplitHalf()
+    {
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.DisableScissorTest();
+        Raylib.EndTextureMode();
+    }
+
+    /// <summary>
+    /// The grading for halves drawn while the scene's own passes are not (a split whole on screen): what
+    /// <see cref="PreparePost"/> would choose, with nothing rendered.
+    /// </summary>
+    internal void KeepPost(PostSettings settings, DepthRange depth)
+    {
+        post = settings;
+        depthRange = depth;
+        if (!Quality.DepthOfField || Core.Accessibility.ReduceMotion) post = post with { Dof = 0f };
+        if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
+    }
+
+    /// <summary>
+    /// Draws a half of a split into the current target over <paramref name="polygon"/> (layout units of
+    /// <paramref name="destination"/>, a convex polygon) through the composite's own grading: its tilt, outlines, tints,
+    /// saturation, contrast and vignette, as the scene has them. The scene's blur, glow and occlusion, made from the
+    /// scene target, are not laid on a half.
+    /// </summary>
+    internal void CompositeHalf(bool foe, IReadOnlyList<Vector2> polygon, Rectangle destination)
+    {
+        if (!targetsLoaded || !HasSplit || polygon.Count < 3) return;
+        var rt = SplitTarget(foe);
+        int pw = SplitPartWidth, ph = SplitPartHeight;
+        var part = new Vector2((float)pw / rt.Texture.Width, (float)ph / rt.Texture.Height);
+        bool fxaa = NeedsFxaa(Quality, pw, OutputWidth);
+        var half = post with { Dof = 0f, AoStrength = 0f, BloomStrength = 0f };
+        Shaders.SetPost(Texel(rt.Texture), half, depthRange, fxaa, (float)rt.Texture.Width / Width * part.X, default, part);
+        Rlgl.DisableBackfaceCulling();
+        Raylib.BeginShaderMode(Shaders.Post);
+        Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, rt.Depth);
+        Rlgl.SetTexture(rt.Texture.Id);
+        Rlgl.Begin(DrawMode.Triangles);
+        Rlgl.Color4ub(255, 255, 255, 255);
+        void Corner(Vector2 p)
+        {
+            float u = (p.X - destination.X) / destination.Width, v = (p.Y - destination.Y) / destination.Height;
+            // The target's rows go up from its bottom: the picture's top is the part's top row
+            Rlgl.TexCoord2f(u * part.X, (1f - v) * part.Y);
+            Rlgl.Vertex2f(p.X, p.Y);
+        }
+        for (int i = 1; i + 1 < polygon.Count; i++)
+        {
+            Corner(polygon[0]);
+            Corner(polygon[i]);
+            Corner(polygon[i + 1]);
+        }
+        Rlgl.End();
+        Rlgl.SetTexture(0);
+        Raylib.EndShaderMode();
+        Rlgl.EnableBackfaceCulling();
+    }
+
     private void UnloadTargets()
     {
         if (!targetsLoaded) return;
+        FreeSplit();
         Gpu.UnloadFramebuffer(Target.Id);
         Gpu.UnloadRawTexture(Target.Texture.Id);
         Gpu.UnloadRawTexture(Target.Depth.Id);

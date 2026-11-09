@@ -403,7 +403,7 @@ public sealed class BallThrowView
 /// Presentation state for a battle, driven by events from <see cref="BattleEngine"/>. It holds no graphics, so
 /// the renderer reads it and tests can check it.
 /// </summary>
-public sealed class BattleAnimator
+public sealed partial class BattleAnimator
 {
     /// <summary>A send-out: the ball flies onto the platform in <see cref="SendOutBallTime"/>, then the Pokémon grows out of it.</summary>
     public const float SendOutTime = 1.0f;
@@ -1681,6 +1681,8 @@ public sealed class BattleAnimator
         for (int side = 0; side < 2; side++)
             for (int slot = 0; slot < SlotsOf((BattleSide)side); slot++)
                 Advance(views[side, slot], dt, logical((BattleSide)side, slot));
+        // The moments the picture may split at (plan 45 · BC3): noted whatever the manner, which decides
+        NoteSplitMoments();
     }
 
     private static void Advance(CombatantView v, float dt, Pokemon? logical)

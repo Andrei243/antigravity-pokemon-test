@@ -131,17 +131,48 @@ public sealed class BattleRenderer
         // A move's light over the stage alone (plan 25 · Y16): the Pokémon and the effects keep the scene's own
         StageLit = StageLights.Of(anim);
 
+        // The picture split in two (plan 45 · BC3): never while a photo holds the shot; its halves' targets are made
+        // only while it is on screen
+        Split = Photo != null ? null
+            : HeldSplit is { } held ? BattleCamera.SplitOf(anim, places, director.Manner, held)
+            : BattleCamera.SplitNow(anim, places, director.Manner, battle.Scene);
+        if (Split != null) context.EnsureSplit();
+        else context.FreeSplit();
+
         FrameProfiler.Lap(FrameSection.Prepare);
-        RenderStage(stage, anim, rig, StageLit);
+        RenderStage(stage, anim, rig, StageLit, Split);
         FrameProfiler.Lap(FrameSection.Scene);
-        context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
+        var range = new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height);
+        // A split whole on screen hides the scene's own view, which is then neither drawn nor passed through the post
+        if (Split is { Whole: true }) context.KeepPost(rig.Post, range);
+        else context.PreparePost(rig.Post, range);
     }
+
+    /// <summary>The split on screen in the last frame (plan 45 · BC3), or null.</summary>
+    internal SplitShot? Split { get; private set; }
+
+    /// <summary>
+    /// A split held this far in whatever the moment (a tool's: the harness's <c>profile</c> times one held), framed for
+    /// who stands there now; null to let the director decide.
+    /// </summary>
+    internal float? HeldSplit { get; set; }
 
     /// <summary>Draws the stage and the Pokémon into the current target (the virtual screen), and any flash over them.</summary>
     public void DrawField(BattleEngine battle, int screenWidth, int screenHeight)
     {
         if (!context.Loaded) return;
-        context.Composite(new Rectangle(0, 0, screenWidth, screenHeight));
+        var whole = new Rectangle(0, 0, screenWidth, screenHeight);
+        if (Split is { } split && context.HasSplit)
+        {
+            // The scene's own view between the halves while they come in or go out, then each half over its own part
+            // of the picture and the band over their edges (plan 45 · BC3)
+            if (!split.Whole) context.Composite(whole);
+            float sx = screenWidth / SplitBand.Width, sy = screenHeight / SplitBand.Height;
+            foreach (bool foe in new[] { true, false })
+                context.CompositeHalf(foe, SplitBand.Region(foe, split.In).ConvertAll(p => new Vector2(p.X * sx, p.Y * sy)), whole);
+            UI.ModernUi.SplitBands(split.In, sx, sy);
+        }
+        else context.Composite(whole);
         if (fx.Flash > 0.004f)
             Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, new Color(fx.FlashColor.R, fx.FlashColor.G, fx.FlashColor.B, (byte)(255 * fx.Flash)));
     }
@@ -212,7 +243,7 @@ public sealed class BattleRenderer
 
     // ------------------------------------------------------------------ offscreen passes
 
-    private void RenderStage(BattleStage stage, BattleAnimator anim, LightRig rig, StageLight stageLight)
+    private void RenderStage(BattleStage stage, BattleAnimator anim, LightRig rig, StageLight stageLight, SplitShot? split)
     {
         var shaders = context.Shaders;
         var light = rig.Light;
@@ -220,7 +251,7 @@ public sealed class BattleRenderer
         shaders.SetWind(0f);
         shaders.SetWalkers(Array.Empty<Vector3>());
 
-        // 1. Shadow map over the whole field
+        // 1. Shadow map over the whole field: one for every view of the frame
         var lightCamera = context.Shadows.LightCamera(new Vector3(-6f, 0, -6f), light.SunDirection, 72f);
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
@@ -239,7 +270,44 @@ public sealed class BattleRenderer
         Raylib.EndTextureMode();
         FrameProfiler.Lap(FrameSection.Shadows);
 
-        shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
+        // 2. The director's own view, unless a split covers the whole picture; then each half of a split, each into
+        // its own target and only into the part of it that is seen (plan 45 · BC3)
+        PixelsDrawn = 0;
+        if (split is not { Whole: true })
+        {
+            RenderView(stage, anim, rig, stageLight, lightView, lightProjection, camera, null, default);
+            PixelsDrawn += (long)context.PartWidth * context.PartHeight;
+        }
+        if (split is { } s)
+            foreach (bool foe in new[] { true, false })
+            {
+                var box = SplitBand.Box(SplitBand.Region(foe, s.In));
+                if (box.Width <= 0f || box.Height <= 0f) continue;
+                RenderView(stage, anim, rig, stageLight, lightView, lightProjection, (foe ? s.Foe : s.Own).ToCamera(), foe, box);
+                var px = context.SplitPixels(box);
+                PixelsDrawn += (long)(px.Width * px.Height);
+            }
+    }
+
+    /// <summary>
+    /// How many pixels the last frame's views were drawn into (plan 45 · BC3, decision 4's count): the scene target's
+    /// part, and each half of a split within its box. A count, the same on any machine.
+    /// </summary>
+    internal long PixelsDrawn { get; private set; }
+
+    /// <summary>The pixels of the scene target's part alone: what one view of the battle draws into.</summary>
+    internal long ScenePixels => (long)context.PartWidth * context.PartHeight;
+
+    /// <summary>
+    /// One view of the stage: the scene target's (<paramref name="half"/> null), or a split's half's into its own
+    /// target within <paramref name="box"/> of the picture (plan 45 · BC3).
+    /// </summary>
+    private void RenderView(BattleStage stage, BattleAnimator anim, LightRig rig, StageLight stageLight, Matrix4x4 lightView, Matrix4x4 lightProjection,
+        Camera3D view, bool? half, Rectangle box)
+    {
+        var shaders = context.Shaders;
+        var light = rig.Light;
+        shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, view.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
         shaders.SetWorldRamp(ArtLook.BattleRamp);
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
@@ -247,15 +315,26 @@ public sealed class BattleRenderer
         shaders.SetGlow(0f, 0f, Vector3.Zero);
         shaders.SetUpright(0f, 0f);
 
-        // 2. Sky (or the dark behind a cave's walls), then the field
+        // Sky (or the dark behind a cave's walls), then the field
         // (The part of the target dynamic resolution allows, plan 16 · T23: all of it at a step of 1)
-        int tw = context.PartWidth, th = context.PartHeight;
-        context.BeginScene();
+        int tw, th;
+        if (half is bool foe)
+        {
+            tw = context.SplitPartWidth;
+            th = context.SplitPartHeight;
+            context.BeginSplitHalf(foe, box);
+        }
+        else
+        {
+            tw = context.PartWidth;
+            th = context.PartHeight;
+            context.BeginScene();
+        }
         // The sky, the stage, its lights and whoever stands on it take a move's light; the Pokémon do not (plan 25 · Y16)
         SkyPainter.Draw(anim.Time, tw, th, stageLight.Apply(rig.Sky), clouds: Arena.Outdoors);
 
         Rlgl.SetClipPlanes(Near, Far);
-        Raylib.BeginMode3D(camera);
+        Raylib.BeginMode3D(view);
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
 
@@ -274,10 +353,11 @@ public sealed class BattleRenderer
         DrawPokemon3D(anim, CharacterPass.Outline);
         DrawDolls(anim, CharacterPass.Outline);
         DrawBalls(CharacterPass.Outline);
-        FxRenderer.Draw(fx, camera);
+        FxRenderer.Draw(fx, view);
 
         Raylib.EndMode3D();
-        Raylib.EndTextureMode();
+        if (half != null) context.EndSplitHalf();
+        else Raylib.EndTextureMode();
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
