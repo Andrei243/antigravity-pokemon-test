@@ -128,7 +128,7 @@ public class ModernBreedingTests
         var egg = Breeding.MakeEgg(father, mother, Offspring, 0, rng, Platinum, shinyCharm: true);
         // Bit 0 of the couple's personality says which regular ability, whatever the mother's hidden one
         Assert.Equal(Personality.AbilityOf(egg.Abilities, Offspring), egg.AbilityName);
-        Assert.Equal((Breeding.EggBall, false), (egg.Ball, egg.IsShiny));
+        Assert.Equal((Breeding.EggBall, true), (egg.Ball, egg.IsEgg));
 
         // The draws: the Egg's own two for its IVs and the three picks and three coins of Platinum's inheritance, nothing else
         var expected = new Random(5);
