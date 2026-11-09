@@ -122,6 +122,12 @@ public sealed class VoiceLibrary
     /// </summary>
     public static IEnumerable<string> FoldersFor(string language)
     {
+        // The pack the game was told to speak with (--voices): a folder of languages, else the folder itself
+        if (PokemonPlatinumEngine.Core.CommandLine.Launched.VoicePack is { Length: > 0 } given)
+        {
+            yield return Path.Combine(given, language);
+            yield return given;
+        }
         yield return Path.Combine(AppContext.BaseDirectory, "voice", language);
         yield return Path.Combine(Directory.GetCurrentDirectory(), "voice", language);
     }
@@ -136,8 +142,10 @@ public sealed class VoiceLibrary
     /// <summary>The first pack of <paramref name="language"/> found where the game looks, or null.</summary>
     public static VoiceLibrary? Find(string language)
     {
+        string? given = PokemonPlatinumEngine.Core.CommandLine.Launched.VoicePack;
         foreach (string folder in FoldersFor(language))
-            if (Open(folder) is { } pack) return pack;
+            // (the folder --voices names itself is the pack of the one language its pack.json says)
+            if (Open(folder) is { } pack && (folder != given || string.Equals(pack.Language, language, StringComparison.OrdinalIgnoreCase))) return pack;
         return null;
     }
 

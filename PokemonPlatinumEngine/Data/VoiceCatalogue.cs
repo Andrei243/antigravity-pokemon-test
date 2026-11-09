@@ -102,7 +102,7 @@ public static class VoiceCatalogue
 
         // Who runs which script: the voice of "the person spoken to" is known where one voice does
         var owners = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
-        foreach (var p in persons.Where(p => !string.IsNullOrEmpty(p.Script)))
+        foreach (var p in persons.Where(p => !string.IsNullOrEmpty(p.Script) && !string.Equals(p.Look, NPCPokemon, StringComparison.OrdinalIgnoreCase)))
         {
             string full = p.Script!.Contains('.') ? p.Script : p.Place + "." + p.Script;
             if (!owners.TryGetValue(full, out var set)) owners[full] = set = new HashSet<string>(StringComparer.Ordinal);
@@ -165,7 +165,7 @@ public static class VoiceCatalogue
         }
 
         // The people of the world and of the hand-made maps
-        foreach (var p in persons)
+        foreach (var p in persons.Where(p => p.Dialog.Count > 0 || p.Before != null || p.After != null))
         {
             string voice = voiceOf[p];
             string? region = regions.GetValueOrDefault(p.Place);
@@ -282,6 +282,14 @@ public static class VoiceCatalogue
 
     private static readonly Lazy<Dictionary<string, string>> placesByRegion = new(RegionOfFiles);
 
+    /// <summary>The prefixes of the common scripts written for one region: by the script's name, since <c>common.txt</c> is every region's.</summary>
+    private static readonly (string Prefix, string Region)[] CommonScriptsOfARegion =
+    {
+        ("Kanto", "kanto"), ("Johto", "johto"), ("Hoenn", "hoenn"), ("Unova", "unova"), ("Kalos", "kalos"), ("Alola", "alola"),
+        ("GabbyAndTy", "johto"), ("BugContest", "johto"), ("Athlon", "johto"), ("Cameron", "johto"), ("Seagallop", "kanto"), ("Apricorn", "johto"),
+        ("GlobalLink", "sinnoh")
+    };
+
     /// <summary>
     /// The region whose place a line's key names, by its id in lower case (<c>sinnoh</c>), or null for a line of no place
     /// (<c>common</c>'s scripts, the phone's): an area by the world folder its files are in, a hand-made map or a script named
@@ -303,6 +311,17 @@ public static class VoiceCatalogue
             return "sinnoh";
         }
         if (kind == "intro") return place.ToLowerInvariant();
+        // The Pokégear's and Match Call's calls (phone.txt) are Johto's and Hoenn's together: no region's pack goes by them yet
+        if (kind == "script" && place == "phone") return "phone";
+        // The common scripts belong to every region but those written for one (JohtoTakeoverCall, UnovaBiancaAsks, the Bug-Catching Contest's desk)
+        if (kind == "script" && place == "common" && dot >= 0)
+        {
+            string script = rest[(dot + 1)..];
+            int hash = script.IndexOf('#');
+            if (hash >= 0) script = script[..hash];
+            foreach (var (prefix, home) in CommonScriptsOfARegion)
+                if (script.StartsWith(prefix, StringComparison.Ordinal)) return home;
+        }
         if (placesByRegion.Value.TryGetValue(place, out var region)) return region;
         if (kind is "map" or "script" && RegionDatabase.RegionOfMap(place) is { } owner) return owner.Id.ToLowerInvariant();
         return kind == "map" ? "sinnoh" : null;
@@ -349,7 +368,7 @@ public static class VoiceCatalogue
 
                     foreach (var (id, person) in overlay.People ?? new())
                     {
-                        if (person.Dialog is not { Count: > 0 } && person.Trainer == null) continue;
+                        if (person.Dialog is not { Count: > 0 } && person.Trainer == null && string.IsNullOrEmpty(person.Script)) continue;
                         var o = ObjectOf(id);
                         string? trainerClass = null, trainerName = null;
                         if (person.Trainer is { } lines)
@@ -375,7 +394,7 @@ public static class VoiceCatalogue
             string name = Path.GetFileNameWithoutExtension(path);
             foreach (var n in map.Npcs) persons.Add(PersonOfRecord("map", name, n, null));
         }
-        return persons.Where(p => p.Dialog.Count > 0 || p.Before != null || p.After != null).ToList();
+        return persons;
     }
 
     private static Person PersonOfRecord(string kind, string place, MapFile.NpcRecord n, string? region)

@@ -335,7 +335,9 @@ ever want a recorded or cloned part. What it was written for:
   - [ ] the user approves each main character's voice by ear from its reel (`reel --voice <id>`); a voice turned down gets another design
 - [ ] V5 Everyone else
   - [x] `reel <prefix>`: a town's takes one after another for spot listening; `jobs`/`generate` take an archetype (`look:lass`) for all its voices
-  - [ ] the archetypes' voices designed and generated (needs V4's engine)
+  - [x] Sinnoh's archetypes and role-named people designed (`VoiceTool design --region sinnoh`: 313 voices, a brief and a Kokoro design each, tools/VoiceTool/Designs.cs) and every Sinnoh line generated (2026-11-09: 6,580 takes in 408 voices, none missing or stale, `check` clean; the pack is `~/.cache/pokemon-voicegen/voice/en`)
+  - [ ] the user approves the archetypes' voices by ear (`reel --voice look:lass#1`...); a voice turned down gets another design (or a profile edited in Designs.cs and `reroll`)
+  - [ ] the other regions' archetypes and named people (`design --region kanto`...)
 - [ ] V6 The face and the stage
   - [x] mouths in the field, in battle and in the introduction, moved by the take's own level (`MouthFlap`); Rowan's introduction voiced
   - [x] plan 11 · C12's battle lines (and plan 25 · YD6's giant lines) catalogued and voiced; auto-advance waits for a voice in battle as in the field
@@ -445,6 +447,18 @@ the user's.
    no voice for Kanto's rival apart from Barry's; a `people` entry or a voice of his own would change it.
 
 Items 1 to 4 were answered on 2026-11-07 (no recordings, no clone, Kokoro-82M, no whisper.cpp): the section below.
+
+## Sinnoh with voice, V5 (2026-11-09)
+
+The goal of this session: the whole of Sinnoh (the story from the bedroom to the Hall of Fame and the post-game) playable with voice.
+
+- **Who speaks "the person spoken to"** (`@self`): the catalogue now counts a person of an overlay that has a `script` but no lines of their own as the script's owner (`VoiceCatalogue.Build`), so 1,650 lines of scripts that one person runs (the Day Care, the Frontier's counters, the museum's researcher...) have their person's voice; `@self` fell from 1,968 lines to 318. What is left is a script several people run (`common.Nurse`, `Clerk`, `Rumour`...) or none: `tools/VoiceTool/SelfVoices.cs` walks every person of every map, finds the script talking to them runs (`FieldScripts.For`, and the scripts it calls) and the voice the game itself gives them (`ScriptRunner.VoiceOf`), and `generate` makes such a line once in each of those voices.
+- **What belongs to a region**: `VoiceCatalogue.RegionOf` gives the common scripts written for one region (`JohtoTakeoverCall`, `UnovaBiancaAsks`, `HoennFeeder`, the Bug-Catching Contest's desk...) that region, the Pokégear's and Match Call's calls (`phone.txt`) their own `phone`, and the other `common` scripts none; `--region sinnoh` takes a line of no region as every region's (the Day Care, the training hall).
+- **Designs for everyone**: `VoiceTool design [--region <id>]` gives a brief and a Kokoro design to each voice that speaks the catalogue (or the region) and has none, from a table of profiles by archetype or name (`Designs.cs`: register, age, pitch, pace, manner) and pools of Kokoro's own voices; the blend, pace and pitch are drawn by a hash of the voice's id, so the same cast file always makes the same voices, no two voices of the whole cast are alike (`VoiceTests`), and the voices of one archetype differ (a `mixed` archetype alternates man and woman). A voice with a design is never touched, so a voice tuned by ear stays tuned. `status` (`--voices`, `--missing`, `--shown`) says what a pack has of the catalogue voice by voice.
+- **Making the pack**: four `generate` runs side by side (`KOKORO_THREADS=4` each, a pack folder each, merged), the first 650 lines at three takes a line and the rest at one (`generate --takes 1`: the machine was shared and a take every 12 seconds was too slow; a take with findings is reported, none was). 4,350 new lines for Sinnoh in all, 33 more for the hand-written spoken texts below.
+- **Spoken texts written by hand** (`VoiceTool speak <file>`): 31 lines whose text names the player or the rival (Mom, the rival's mother, the guitarist, the assistant at Sandgem, Rowan's questions...) say the line without the name ("your friend", "that boy"); the rest of the 271 lines still shown only are the ones that name a Pokémon, a move, a number, a price or a ribbon (`{wearer}`, `{thing}`, `{number}`, `{lead}`...), which need a take per value and are not voiced.
+- **Finding the pack**: `--voices <folder>` (a `LaunchOptions.VoicePack`, `VoiceLibrary.FoldersFor`) points the game at a pack anywhere and sets VOICES to ALL for the run alone; `docs/voice/playing.md` says what to run. VOICES stays OFF by default (decision 4): no pack ships with the game, and the voices wait for the user's ear.
+- **Checked**: `VoicePackSwitchTests.TheFirstChapterOfANewGameResolvesEveryLineToATake` plays the first chapter with the bot and the real pack (105 lines asked, all with current takes; it passes quietly when there is no pack).
 
 ## V3 to V5 with Kokoro (2026-11-07)
 

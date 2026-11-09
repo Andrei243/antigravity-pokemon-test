@@ -73,6 +73,13 @@ public sealed record LaunchOptions
     /// <summary><c>--validate-packs</c> (plan 16 · T15): check every pack beside the game and the saves, say what is wrong, and exit.</summary>
     public bool ValidatePacks { get; init; }
 
+    /// <summary>
+    /// <c>--voices &lt;folder&gt;</c> (plan 26): the voice pack to speak with, in place of <c>voice/&lt;language&gt;</c> beside the game
+    /// (<see cref="Audio.VoiceLibrary.FoldersFor"/>): the folder with a <c>pack.json</c> in it, or one holding a folder per language. The
+    /// options' VOICES row is All for this run (<see cref="ApplyTo"/>). A full path (<see cref="CommandLine.Parse"/>'s switch makes it one).
+    /// </summary>
+    public string? VoicePack { get; init; }
+
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
 
@@ -97,6 +104,7 @@ public sealed record LaunchOptions
         }
         if (SafeMode || Windowed) settings.SetForThisRun(nameof(GameSettings.Fullscreen), false);
         if (Fullscreen) settings.SetForThisRun(nameof(GameSettings.Fullscreen), true);
+        if (VoicePack != null) settings.SetForThisRun(nameof(GameSettings.Voices), VoiceMode.All);
     }
 }
 
@@ -177,7 +185,16 @@ public static class CommandLine
         new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null },
         new("--replay", "folder", "Play a report's folder (written with F8, or after a crash) back in the window, from the title to where it was written, saving into its replayed folder and never over your save. Menu leaves; hold Run to go four times as fast.", (o, v) => o with { ReplayFolder = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--replay takes a folder, and '{v}' can't be one." : null },
         new("--packs", "none", "With none, read no pack this time: the game's own data alone, whatever the packs folders beside the game and the saves hold.", (o, _) => o with { NoPacks = true }) { Check = v => v == "none" ? null : $"--packs takes none, not '{v}'." },
-        new("--validate-packs", null, "Check every pack beside the game and the saves (its manifest, patches, overlays, rooms, scripts and songs) and exit: 0 when all pass, 6 when one has a finding. Nothing is put in use.", (o, _) => o with { ValidatePacks = true })
+        new("--validate-packs", null, "Check every pack beside the game and the saves (its manifest, patches, overlays, rooms, scripts and songs) and exit: 0 when all pass, 6 when one has a finding. Nothing is put in use.", (o, _) => o with { ValidatePacks = true }),
+        new("--voices", "folder", "Speak the lines with the voice pack in this folder (the folder with pack.json in it, or one holding a folder for each language, en/ and the rest) "
+            + "and set the options' VOICES row to All this time. Without it the game looks for voice/<language> beside the executable and in the folder it is started in, "
+            + "and speaks only if the options' VOICES row is Story or All. The voice pack is a download of its own; docs/voice/playing.md says how it is made and used.",
+            (o, v) => o with { VoicePack = Path.GetFullPath(v!) })
+        {
+            Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--voices takes a folder, and '{v}' can't be one."
+                : !Directory.Exists(v) ? $"--voices takes a folder that is there, and '{v}' is not."
+                : null
+        }
     };
 
     /// <summary>
