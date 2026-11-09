@@ -140,7 +140,7 @@
         { "key": "haina_desert", "x": 304, "z": 212, "width": 72, "depth": 56 },
         { "key": "ulaula_route_11", "x": 80, "z": 268, "width": 100, "depth": 48 },
         { "key": "blush_mountain", "x": 92, "z": 136, "width": 56, "depth": 72 },
-        { "key": "secluded_shore", "x": 156, "z": 316, "width": 36, "depth": 34 }
+        { "key": "secluded_shore", "x": 156, "z": 316, "width": 36, "depth": 48 }
       ]
     },
     // Poni

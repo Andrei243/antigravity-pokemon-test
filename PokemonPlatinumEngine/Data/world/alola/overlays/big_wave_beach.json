@@ -17,6 +17,14 @@
         "dialogueAfter": "Team Skull Grunt: Waves are too big anyway. I'm out."
       }
     },
+    "buoy_1": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_2": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_3": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_4": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_5": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_6": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_7": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
+    "buoy_8": { "name": "Buoy", "npcType": "Bollard", "still": true, "dialog": [ "A course buoy, bobbing on the swell." ] },
     "surfer": { "name": "Surfer", "npcType": "swimmer_m", "script": "Surfer", "still": true },
     "sightseer": { "name": "Sightseer", "npcType": "lady", "script": "Sightseer", "still": true },
     "youngster": { "name": "Boy", "npcType": "youngster", "dialog": [ "The waves here are the biggest on Melemele. My Mantyke and I are going to ride one, one day." ] }

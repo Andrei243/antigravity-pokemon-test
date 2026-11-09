@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 128 | 128 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1591 | 1528 | 63 | 1 | 0 |
 | Scripts (`script:`) | 12073 | 11597 | 476 | 17 | 36 |
-| People of the world (`world:`) | 8044 | 7982 | 62 | 4 | 0 |
-| **All** | 21958 | 21354 | 604 | 22 | 36 |
+| People of the world (`world:`) | 8052 | 7990 | 62 | 4 | 0 |
+| **All** | 21966 | 21362 | 604 | 22 | 36 |
 
 ## Not voiced, by decision
 
