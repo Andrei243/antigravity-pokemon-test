@@ -1,0 +1,92 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "A cave of yellow stone, warm to the touch. Deep inside, something breathes like a slow furnace."
+      ],
+      "text": [
+        "O peșteră de piatră galbenă, caldă la atingere. Adânc înăuntru, ceva respiră ca un cuptor domol."
+      ]
+    }
+  ],
+  "Regirock": [
+    {
+      "en": [
+        "The rock wall shook, and a giant of stone pulled itself free of it. Regirock!"
+      ],
+      "text": [
+        "Peretele de stâncă s-a cutremurat, iar un uriaș de piatră s-a desprins din el. Regirock!"
+      ]
+    }
+  ],
+  "Regice": [
+    {
+      "en": [
+        "The cave turned bitter cold, and a giant of ice stood where the frost was thickest. Regice!"
+      ],
+      "text": [
+        "Peștera s-a făcut rece de tot, iar un uriaș de gheață stătea acolo unde bruma era mai groasă. Regice!"
+      ]
+    }
+  ],
+  "Registeel": [
+    {
+      "en": [
+        "Metal rang against stone, and a giant of steel stepped out of the dark. Registeel!"
+      ],
+      "text": [
+        "Metalul a sunat pe piatră, iar un uriaș de oțel a ieșit din întuneric. Registeel!"
+      ]
+    }
+  ],
+  "Groudon": [
+    {
+      "en": [
+        "Magma burst up through the floor, and Groudon climbed out of it with a roar that shook the cave!"
+      ],
+      "text": [
+        "Magma a țâșnit prin podea, iar Groudon a ieșit din ea cu un răget care a zguduit peștera!"
+      ]
+    }
+  ],
+  "Palkia": [
+    {
+      "en": [
+        "The cave seemed to stretch away in every direction, and Palkia stepped out of the space between!"
+      ],
+      "text": [
+        "Peștera parcă s-a întins în toate părțile, iar Palkia a pășit afară din spațiul dintre ele!"
+      ]
+    }
+  ],
+  "Heatran": [
+    {
+      "en": [
+        "The floor glowed red, and Heatran crawled out of a pool of molten rock on its iron claws!"
+      ],
+      "text": [
+        "Podeaua s-a înroșit, iar Heatran s-a târât dintr-un lac de rocă topită pe ghearele lui de fier!"
+      ]
+    }
+  ],
+  "Regigigas": [
+    {
+      "en": [
+        "The three giants in your team stirred, and the colossus they answer to woke in the dark. Regigigas!"
+      ],
+      "text": [
+        "Cei trei uriași din echipa ta s-au mișcat, iar colosul căruia îi răspund s-a trezit în întuneric. Regigigas!"
+      ]
+    }
+  ],
+  "Giratina": [
+    {
+      "en": [
+        "A shadow slid across the cave floor against the light, and Giratina rose out of it!"
+      ],
+      "text": [
+        "O umbră a alunecat pe podeaua peșterii împotriva luminii, iar Giratina s-a ridicat din ea!"
+      ]
+    }
+  ]
+}

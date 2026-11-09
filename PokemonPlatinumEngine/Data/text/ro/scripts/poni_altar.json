@@ -158,6 +158,29 @@
     },
     {
       "en": [
+        "The light pulls two ways at once.",
+        "The Ultra Beasts' worlds",
+        "Ride the warp",
+        "Stay here"
+      ],
+      "text": [
+        "Lumina trage în două părți deodată.",
+        "Lumile Ultra Bestiilor",
+        "Călătorește prin tunel",
+        "Rămân aici"
+      ],
+      "was": [
+        "Unde te va duce vortexul?",
+        "Ultra Deep Sea",
+        "Ultra Jungle",
+        "Ultra Desert",
+        "Ultra Plant",
+        "Mai departe...",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
         "Where will the wormhole take you?",
         "Ultra Deep Sea",
         "Ultra Jungle",
@@ -174,6 +197,13 @@
         "Ultra Plant",
         "Mai departe...",
         "Rămân aici"
+      ],
+      "was": [
+        "Unde te va duce vortexul?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Rămân aici"
       ]
     },
     {
@@ -189,6 +219,14 @@
         "Ultra Crater",
         "Ultra Forest",
         "Ultra Ruin",
+        "Rămân aici"
+      ],
+      "was": [
+        "Unde te va duce vortexul?",
+        "Ultra Crater",
+        "Ultra Forest",
+        "Ultra Ruin",
+        "Ultra Megalopolis",
         "Rămân aici"
       ]
     },
@@ -208,13 +246,8 @@
         "Ultra Ruin",
         "Ultra Megalopolis",
         "Rămân aici"
-      ]
-    },
-    {
-      "en": [
-        "{player} stepped into the light..."
       ],
-      "text": [
+      "was": [
         "{player} a pășit în lumină..."
       ]
     },
@@ -272,6 +305,67 @@
       ],
       "text": [
         "{player} a pășit în lumină..."
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped into the light..."
+      ],
+      "text": [
+        "{player} a pășit în lumină..."
+      ],
+      "was": [
+        "Piatra estradei e caldă, de parcă soarele ar fi încă pe ea."
+      ]
+    },
+    {
+      "en": [
+        "Which light will you ride?",
+        "The blue light",
+        "The green light",
+        "The red light",
+        "The yellow light",
+        "Stay here"
+      ],
+      "text": [
+        "Pe ce lumină vei merge?",
+        "Lumina albastră",
+        "Lumina verde",
+        "Lumina roșie",
+        "Lumina galbenă",
+        "Rămân aici"
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the blue light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina albastră prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the green light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina verde prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the red light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina roșie prin tunelul cosmic, mai repede și mai departe ca înainte..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rode the yellow light through the wormhole, faster and further than before..."
+      ],
+      "text": [
+        "{player} a mers pe lumina galbenă prin tunelul cosmic, mai repede și mai departe ca înainte..."
       ]
     },
     {
@@ -350,6 +444,17 @@
       ],
       "text": [
         "Ai grijă de el. Se spune că devine soare ziua sau lună noaptea, după momentul în care e gata."
+      ]
+    },
+    {
+      "en": [
+        "These two lay on the dais the morning after. One warm as noon, one cool as midnight. They were meant for you."
+      ],
+      "text": [
+        "Astea două zăceau pe podium în dimineața de după. Unul cald ca amiaza, unul rece ca miezul nopții. Erau pentru tine."
+      ],
+      "was": [
+        "Estrada e liniștită de când cel mic a plecat cu tine. Cred că e fericit."
       ]
     },
     {

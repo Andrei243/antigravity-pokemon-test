@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Lens Workshop"
+    ],
+    "text": [
+      "Atelierul de lentile"
+    ]
+  },
+  "people": {
+    "lens_maker": {
+      "name": {
+        "en": [
+          "Lens Maker"
+        ],
+        "text": [
+          "Lentilar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I grind the lenses that gather what little light we had. Now they gather far too much. Business is terrible!",
+          "...I'm joking. Look at that sky. I'll make sunglasses instead."
+        ],
+        "text": [
+          "Șlefuiesc lentilele care adunau puțina lumină pe care o aveam. Acum adună mult prea multă. Afacerile merg groaznic!",
+          "...Glumesc. Uită-te la cerul ăla. O să fac ochelari de soare în schimb."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

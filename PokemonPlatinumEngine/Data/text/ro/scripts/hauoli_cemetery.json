@@ -202,5 +202,31 @@
         "E Litwick găsit de Scanarea Insulei! E gata de luptă!"
       ]
     }
+  ],
+  "Marshadow": [
+    {
+      "en": [
+        "The shadow by the lamp didn't move with the light. It stood up out of the dark and looked straight at {player}!"
+      ],
+      "text": [
+        "Umbra de lângă felinar nu se mișca odată cu lumina. S-a ridicat din întuneric și s-a uitat drept la {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Where the shadow had stood, something small and dark glinted in the lamp's light."
+      ],
+      "text": [
+        "Acolo unde stătuse umbra, ceva mic și întunecat sclipea în lumina felinarului."
+      ]
+    },
+    {
+      "en": [
+        "The shadow slid back under the lamp's light, and waited."
+      ],
+      "text": [
+        "Umbra a alunecat înapoi sub lumina felinarului și a așteptat."
+      ]
+    }
   ]
 }

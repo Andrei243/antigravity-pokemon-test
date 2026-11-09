@@ -1,0 +1,35 @@
+{
+  "displayName": {
+    "en": [
+      "Archive"
+    ],
+    "text": [
+      "Arhiva"
+    ]
+  },
+  "people": {
+    "archivist": {
+      "name": {
+        "en": [
+          "Archivist"
+        ],
+        "text": [
+          "Arhivar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These records go back further than the dark. Once, the light came down the tower every morning like water.",
+          "Then something hungry curled around it, and we built lamps and forgot what the sky looked like.",
+          "I am writing a new page now. It begins with a stranger from a place called Alola."
+        ],
+        "text": [
+          "Aceste însemnări sunt mai vechi decât întunericul. Odată, lumina cobora pe turn în fiecare dimineață ca apa.",
+          "Apoi ceva flămând s-a încolăcit în jurul ei, iar noi am construit felinare și am uitat cum arată cerul.",
+          "Acum scriu o pagină nouă. Începe cu un străin dintr-un loc numit Alola."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

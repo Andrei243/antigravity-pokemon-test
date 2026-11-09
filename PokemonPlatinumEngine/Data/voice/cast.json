@@ -3988,6 +3988,10 @@
       "note": "first spoken at phone.txt(350)",
       "provisional": true
     },
+    "crystal_carver": {
+      "note": "first spoken at HeaheaCity_TouristBureau.txt(19)",
+      "provisional": true
+    },
     "curator": {
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
       "provisional": true
@@ -5275,6 +5279,10 @@
     },
     "lamp_keeper": {
       "note": "first spoken at ultra_megalopolis.txt(30)",
+      "provisional": true
+    },
+    "lamp_keepers_wife": {
+      "note": "first spoken at UltraMegalopolis_LampHouse.txt(8)",
       "provisional": true
     },
     "lana": {
@@ -10505,6 +10513,7 @@
     "Craftswoman": "craftswoman",
     "Crasher Wake": "crasher_wake",
     "Cristin": "cristin",
+    "Crystal Carver": "crystal_carver",
     "Curator": "curator",
     "Cyclist": "cyclist",
     "Cynthia": "cynthia",
@@ -10656,6 +10665,7 @@
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
     "Lamp Keeper": "lamp_keeper",
+    "Lamp Keeper's Wife": "lamp_keepers_wife",
     "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",

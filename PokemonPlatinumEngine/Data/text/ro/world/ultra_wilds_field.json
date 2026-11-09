@@ -1,0 +1,105 @@
+{
+  "people": {
+    "warp_mewtwo": {
+      "name": {
+        "en": [
+          "Mewtwo"
+        ],
+        "text": [
+          "Mewtwo"
+        ]
+      }
+    },
+    "warp_raikou": {
+      "name": {
+        "en": [
+          "Raikou"
+        ],
+        "text": [
+          "Raikou"
+        ]
+      }
+    },
+    "warp_entei": {
+      "name": {
+        "en": [
+          "Entei"
+        ],
+        "text": [
+          "Entei"
+        ]
+      }
+    },
+    "warp_dialga": {
+      "name": {
+        "en": [
+          "Dialga"
+        ],
+        "text": [
+          "Dialga"
+        ]
+      }
+    },
+    "warp_cobalion": {
+      "name": {
+        "en": [
+          "Cobalion"
+        ],
+        "text": [
+          "Cobalion"
+        ]
+      }
+    },
+    "warp_terrakion": {
+      "name": {
+        "en": [
+          "Terrakion"
+        ],
+        "text": [
+          "Terrakion"
+        ]
+      }
+    },
+    "warp_virizion": {
+      "name": {
+        "en": [
+          "Virizion"
+        ],
+        "text": [
+          "Virizion"
+        ]
+      }
+    },
+    "warp_reshiram": {
+      "name": {
+        "en": [
+          "Reshiram"
+        ],
+        "text": [
+          "Reshiram"
+        ]
+      }
+    },
+    "warp_zekrom": {
+      "name": {
+        "en": [
+          "Zekrom"
+        ],
+        "text": [
+          "Zekrom"
+        ]
+      }
+    },
+    "warp_xerneas": {
+      "name": {
+        "en": [
+          "Xerneas"
+        ],
+        "text": [
+          "Xerneas"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

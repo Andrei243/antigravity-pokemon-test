@@ -32,5 +32,31 @@
         "Iar de cealaltă parte a Tunelului lui Diglett, Konikoni City, unde Kahuna Olivia își ține magazinul de bijuterii. Ședere plăcută!"
       ]
     }
+  ],
+  "Carver": [
+    {
+      "en": [
+        "Crystal Carver"
+      ],
+      "text": [
+        "Cioplitor de cristale"
+      ]
+    },
+    {
+      "en": [
+        "I cut Z-Crystals for Pokémon with moves of their very own. Show me one in your team, and I'll cut its crystal."
+      ],
+      "text": [
+        "Cioplesc Cristale Z pentru Pokémoni cu mișcări numai ale lor. Arată-mi unul din echipa ta și îi cioplesc cristalul."
+      ]
+    },
+    {
+      "en": [
+        "Pikachu, Eevee, Raichu, Snorlax, Mimikyu, Lycanroc, Kommo-o, an island guardian, even Mew. Bring me any of them."
+      ],
+      "text": [
+        "Pikachu, Eevee, Raichu, Snorlax, Mimikyu, Lycanroc, Kommo-o, un gardian al insulelor, chiar și Mew. Adu-mi pe oricare."
+      ]
+    }
   ]
 }

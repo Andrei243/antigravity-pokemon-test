@@ -1,0 +1,112 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Red cliffs rise into a sky full of wind. Something huge circles far above the peaks."
+      ],
+      "text": [
+        "Stânci roșii se înalță într-un cer plin de vânt. Ceva uriaș se rotește departe, deasupra piscurilor."
+      ]
+    }
+  ],
+  "Articuno": [
+    {
+      "en": [
+        "Snow began to fall from a clear sky, and Articuno glided down through it onto the ledge!"
+      ],
+      "text": [
+        "A început să ningă dintr-un cer senin, iar Articuno a coborât planând prin ninsoare pe buza stâncii!"
+      ]
+    }
+  ],
+  "Zapdos": [
+    {
+      "en": [
+        "Lightning cracked over the cliffs, and Zapdos landed on the ledge with a crackling cry!"
+      ],
+      "text": [
+        "Un fulger a trosnit deasupra stâncilor, iar Zapdos a aterizat pe buza lor cu un strigăt trosnitor!"
+      ]
+    }
+  ],
+  "Moltres": [
+    {
+      "en": [
+        "The wind turned hot, and Moltres swept down onto the ledge in a shower of embers!"
+      ],
+      "text": [
+        "Vântul s-a încins, iar Moltres a coborât în zbor pe buza stâncii într-o ploaie de scântei!"
+      ]
+    }
+  ],
+  "HoOh": [
+    {
+      "en": [
+        "A rainbow arched over the cliffs, and Ho-Oh came down along it, its feathers blazing!"
+      ],
+      "text": [
+        "Un curcubeu s-a arcuit peste stânci, iar Ho-Oh a coborât pe el, cu penele în flăcări!"
+      ]
+    }
+  ],
+  "Rayquaza": [
+    {
+      "en": [
+        "A green streak tore down out of the sky and coiled on the ledge. Rayquaza had come to see!"
+      ],
+      "text": [
+        "O dâră verde a coborât smulgând cerul și s-a încolăcit pe buza stâncii. Rayquaza venise să vadă!"
+      ]
+    }
+  ],
+  "Cresselia": [
+    {
+      "en": [
+        "Moonlight fell where no moon was, and Cresselia drifted down through it like a dream."
+      ],
+      "text": [
+        "Lumina lunii a căzut acolo unde nu era lună, iar Cresselia a coborât plutind prin ea ca un vis."
+      ]
+    }
+  ],
+  "Tornadus": [
+    {
+      "en": [
+        "A gale screamed across the cliffs, and Tornadus rode it down onto the ledge!"
+      ],
+      "text": [
+        "O vijelie a urlat peste stânci, iar Tornadus a coborât pe ea până pe buza stâncii!"
+      ]
+    }
+  ],
+  "Thundurus": [
+    {
+      "en": [
+        "Thunder rolled over the peaks, and Thundurus dropped out of a cloud onto the ledge!"
+      ],
+      "text": [
+        "Tunetul s-a rostogolit peste piscuri, iar Thundurus a căzut dintr-un nor pe buza stâncii!"
+      ]
+    }
+  ],
+  "Landorus": [
+    {
+      "en": [
+        "The cliffs rumbled, and Landorus came down on its cloud to see who had called the other two!"
+      ],
+      "text": [
+        "Stâncile au bubuit, iar Landorus a coborât pe norul lui să vadă cine îi chemase pe ceilalți doi!"
+      ]
+    }
+  ],
+  "Yveltal": [
+    {
+      "en": [
+        "A great shadow swept across the ledge, and Yveltal folded its red wings and landed!"
+      ],
+      "text": [
+        "O umbră uriașă a măturat buza stâncii, iar Yveltal și-a strâns aripile roșii și a aterizat!"
+      ]
+    }
+  ]
+}

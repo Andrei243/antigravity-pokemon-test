@@ -103,6 +103,16 @@
           "Vikavolt"
         ]
       }
+    },
+    "magearna": {
+      "name": {
+        "en": [
+          "Magearna"
+        ],
+        "text": [
+          "Magearna"
+        ]
+      }
     }
   },
   "signs": {}
