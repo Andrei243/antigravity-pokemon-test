@@ -29,6 +29,26 @@ The game also finds a pack by itself, in `voice/<language>` beside the executabl
 repository's root, while it is developed). Put or link the pack there (`mklink /J voice\en <the pack>` on Windows), start the
 game as usual and set VOICES in the options (the SOUND tab) to STORY ONLY or ALL.
 
+## Playing Kanto with voices
+
+Kanto (FireRed's story from Pallet Town to the League, the Sevii Islands, Cerulean Cave and the post-game) has its own voices in
+the same pack. The pack is the same folder as Sinnoh's:
+
+```bash
+dotnet run -c Release --project PokemonPlatinumEngine -- --save C:/scratch/voices-kanto --region Kanto --voices "C:/Users/andre/.cache/pokemon-voicegen/voice/en"
+```
+
+Kanto's rival and mother are not Sinnoh's (`kanto_rival`, `kanto_mom`), nor are its trainers: a Youngster on Route 3 is a
+Youngster voice of the pack, not the Ben or Aaron some other region's cast gave a voice. Professor Oak, Brock, Misty, Lt. Surge,
+Erika, Koga, Sabrina, Blaine, Giovanni, the Elite Four, Bill, Celio and the rest of Kanto's named people each have a voice of their
+own. A trainer's tag ("Youngster Tristan:") is not spoken in Kanto (Sinnoh's pack still says it). What is not voiced is as in
+Sinnoh, and `docs/voice/coverage.md` counts it.
+
+```bash
+dotnet run --project tools/VoiceTool -- status --region kanto --pack <pack> [--voices] [--missing] [--shown]
+dotnet run --project tools/VoiceTool -- reel --voice kanto_rival --pack <pack>
+```
+
 ## The options (SOUND tab)
 
 | Row | What it does |

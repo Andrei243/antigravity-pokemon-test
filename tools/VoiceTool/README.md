@@ -6,7 +6,7 @@ The catalogue of every line a character says, the cast that speaks them and the 
 dotnet run --project tools/VoiceTool -- catalogue                 # rewrite Data/voice/lines.json and docs/voice/coverage.md; says which lines are new, stale (their English changed), recast or gone
 dotnet run --project tools/VoiceTool -- catalogue --add-missing   # first give every speaker with no cast entry a provisional voice of its own in Data/voice/cast.json
 dotnet run --project tools/VoiceTool -- catalogue --check         # write nothing; ends with 1 if the files are not what the game gives, or a speaker has no cast entry
-dotnet run --project tools/VoiceTool -- export <voice> [file]     # a voice's lines in the catalogue's order, for reading through (or for a human actor)
+dotnet run --project tools/VoiceTool -- export <voice|all> [file] [--region <id>] [--tsv]     # a voice's lines in the catalogue's order, for reading through (or for a human actor)
 dotnet run --project tools/VoiceTool -- manifest [folder]         # (plan 26 · V2) write a pack's pack.json from the files it holds: <voice>/<key>.wav, the colons written '+'; default folder voice/en at the repository's root
 dotnet run --project tools/VoiceTool -- check [folder]            # hold a pack to the game: keys, files, decoding, loudness (-24 to -18 dB), peak under -1 dB, silent ends; stale takes listed; ends with 1 on a fault
 dotnet run --project tools/VoiceTool -- vowels [folder] --voice rival   # a pack of stand-in takes (synthesised vowels) for a voice's lines, or --all; turn VOICES on in the options to hear them
@@ -15,7 +15,7 @@ dotnet run --project tools/VoiceTool -- vowels [folder] --voice rival   # a pack
 Making the voices (plan 26 · V3 to V5; no window, no engine needed until `generate`). The engine is Kokoro-82M (approved 2026-11-07), set up by `bash tools/VoiceGen/setup-kokoro.sh` as `tools/VoiceGen/README.md` says; every voice, the rival's too, is a `design` in `cast.json`:
 
 ```bash
-dotnet run --project tools/VoiceTool -- generate <voice>... [--region <id>] | --jobs <file>   # runs tools/VoiceGen/engine.json's engine over the voices' lines with no current take (with --region sinnoh, only that region's places), three takes a line, the best baked into the pack; one engine process for the whole run (says so and stops while no engine is set up)
+dotnet run --project tools/VoiceTool -- generate <voice>... [--region <id>] [--into <folder>] | --jobs <file>   # (--into: new takes written in another folder, the missing ones still decided by --pack, so runs side by side never meet) runs tools/VoiceGen/engine.json's engine over the voices' lines with no current take (with --region sinnoh, only that region's places), three takes a line, the best baked into the pack; one engine process for the whole run (says so and stops while no engine is set up)
 dotnet run --project tools/VoiceTool -- reel --voice <id> [--count 12] [--region <id>]          # a voice's sample reel: its first lines with a take, spread over their directions, one after another: voice/reels/<voice>.wav and its keys
 dotnet run --project tools/VoiceTool -- reel <key prefix>                         # a place's current takes one after another, for spot listening (reel world:jubilife_city.): voice/reels/<prefix>.wav and its keys
 dotnet run --project tools/VoiceTool -- jobs <voice> [--which missing|stale|all] [--region <id>]  # a voice's lines an engine still has to speak, with directions (guessed where none is written), respellings and three seeds each: voice/jobs/<voice>.json
@@ -34,6 +34,8 @@ dotnet run --project tools/VoiceTool -- design --region sinnoh                  
 dotnet run --project tools/VoiceTool -- speak <file.json>                         # spoken texts written by hand: {"line key": "what is said"} for lines whose English names the player or the rival
 dotnet run --project tools/VoiceTool -- generate <voice>... --region sinnoh --takes 1 --pack <folder>   # --takes n: a take a line (3 by default, the best kept)
 ```
+
+Kanto (plan 26, Kanto's session) is made the same way with `--region kanto`: its casting is `cast.json`'s `regions.kanto` (a region's own rival, mother and trainers by class), who speaks a script's line is found by the way through the script (`catalogue --check --ways --region <id>` lists where that parts from the file's order), and `export all --tsv <file> --region kanto` writes a region's lines as a table.
 
 A line whose voice chooses at run time (`assistant`) is made in each voice it chooses from (`assistant_boy`, `assistant_girl`).
 

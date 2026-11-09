@@ -83,6 +83,12 @@ public static class VoiceCatalogue
 
         /// <summary>What is not voiced by decision, by reason, with how many lines.</summary>
         public SortedDictionary<string, int> Unvoiced { get; } = new(StringComparer.Ordinal);
+
+        /// <summary>Lines of scripts whose speaker depends on the way the script is carried out to them (<see cref="VoiceFlow"/>): the key, and the voices it can have.</summary>
+        public SortedDictionary<string, SortedSet<string>> Ways { get; } = new(StringComparer.Ordinal);
+
+        /// <summary>Lines whose voice the way through the script decides differently from the file read in order: key, the file-order voice, the voice by the ways.</summary>
+        public List<(string Key, string Linear, string Ways)> Differs { get; } = new();
     }
 
     // ------------------------------------------------------------------ reading the game
@@ -117,6 +123,8 @@ public static class VoiceCatalogue
             _ => null
         };
 
+        var flow = new VoiceFlow(library.All, (s, i) => cast.ForSpeaker(i.VoiceId, i.Name, s.FullName + "/" + i.Name) ?? VoiceCast.Self, (name, file) => library.Find(name, file));
+
         // Scripts, in the files' order
         foreach (var script in library.All.OrderBy(s => s.File, StringComparer.Ordinal).ThenBy(s => s.Line))
         {
@@ -126,6 +134,23 @@ public static class VoiceCatalogue
             bool none = false;
             foreach (var i in script.Everything())
             {
+                // By the way the script is carried out to this line, not by the file's order: what the runner finds at run time.
+                // (Sinnoh's pack was made by the file's order, and a line of no region is every region's: both keep it, and Differs
+                // reports where it parts. A line with several ways keeps the file's order as well: its callers decide.)
+                string? lineVoice = voice;
+                if (i.Op is Op.Say or Op.Ask or Op.Choose && flow.Before(i).Count > 0)
+                {
+                    var ways = new SortedSet<string>(StringComparer.Ordinal);
+                    foreach (string token in flow.Before(i)) if (token != VoiceFlow.None) ways.Add(token == VoiceFlow.Self ? selfVoice! : token);
+                    string linear = none ? VoiceFlow.None : voice!;
+                    if (ways.Count > 0)
+                    {
+                        string firstKey = Text.ScriptLineKey(script.FullName, i.TextIndex, 0);
+                        if (ways.Count > 1) result.Ways[firstKey] = ways;
+                        if (!ways.Contains(linear)) result.Differs.Add((firstKey, linear, string.Join("|", ways)));
+                        if (ways.Count == 1 && !none && region is not (null or "sinnoh")) lineVoice = ways.First();
+                    }
+                }
                 switch (i.Op)
                 {
                     case Op.Speaker:
@@ -151,13 +176,13 @@ public static class VoiceCatalogue
                         break;
                     case Op.Say:
                         for (int k = 0; k < i.Lines.Count; k++)
-                            result.Lines.Add(Make(Text.ScriptLineKey(script.FullName, i.TextIndex, k), voice!, speaker, i.Lines[k], ValuesFor(region)));
+                            result.Lines.Add(Make(Text.ScriptLineKey(script.FullName, i.TextIndex, k), lineVoice!, speaker, i.Lines[k], ValuesFor(region)));
                         break;
                     case Op.Ask or Op.Choose when none:
                         result.Unvoiced["the game's own voice (speaker none)"] = result.Unvoiced.GetValueOrDefault("the game's own voice (speaker none)") + 1;
                         break;
                     case Op.Ask or Op.Choose:
-                        result.Lines.Add(Make(Text.ScriptLineKey(script.FullName, i.TextIndex, 0), voice!, speaker, i.Lines[0], ValuesFor(region)));
+                        result.Lines.Add(Make(Text.ScriptLineKey(script.FullName, i.TextIndex, 0), lineVoice!, speaker, i.Lines[0], ValuesFor(region)));
                         if (i.Op == Op.Choose) result.Unvoiced["a question's answers"] = result.Unvoiced.GetValueOrDefault("a question's answers") + i.Lines.Count - 1;
                         break;
                 }
@@ -210,9 +235,16 @@ public static class VoiceCatalogue
 
     private const string NPCPokemon = "Pokemon";
 
+    private static readonly System.Text.RegularExpressions.Regex TrainerTag = new(@"^[A-Z][^:\n]{2,40}: ");
+
     private static VoiceLine Make(string key, string voice, string? speaker, string english, Func<string, IReadOnlyList<string>?> values)
     {
-        var made = SpokenText.Make(english, values);
+        // A trainer's line begins with who they are ("Youngster Tristan: ..."), which Sinnoh's pack says aloud; the other regions' leave the tag out (Kanto's session)
+        string said = english;
+        if ((key.Contains(".before.", StringComparison.Ordinal) || key.Contains(".after.", StringComparison.Ordinal)) && TrainerTag.Match(english) is { Success: true } tag
+            && RegionOf(key) is not (null or "sinnoh"))
+            said = english[tag.Length..];
+        var made = SpokenText.Make(said, values);
         var line = new VoiceLine
         {
             Key = key, Voice = voice, Speaker = speaker, En = english, Hash = HashOf(english),
