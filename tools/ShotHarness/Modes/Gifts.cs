@@ -12,13 +12,17 @@ partial class Harness
     //   items (plan 40 · GE11, Modes/GiftsItems.cs): what the finished regions owed of the items the rules run, the DNA
     //     Splicers in the Giant Chasm, a drive in Driftveil, Prof. Rowan's stones of our own Megas and Mom's eon stones in
     //     Hoenn's post-game (gf100 to gf103).
+    //   diplomas (plan 40 · GE4, Modes/GiftsDiplomas.cs): the Pokédex of our own's list and an entry of it, the OURS pill
+    //     in the National list, the diplomas of Johto's and of our own Pokédex and Hoenn's game designer reading them
+    //     (gf30 to gf34); last, each part beginning a game of its own, so nothing before it moves.
     // Later sessions of plan 40 add parts of their own, a line each above.
-    // GIFTS_PART=charms,items (a list, by commas) runs those parts alone; every part with none named, in this order.
+    // GIFTS_PART=charms,items,diplomas (a list, by commas) runs those parts alone; every part with none named, in this order.
     public void GiftsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIFTS_PART") ?? "";
         bool Part(string name) => only.Length == 0 || only.Split(',', StringSplitOptions.TrimEntries).Contains(name);
         if (Part("charms")) GiftsCharms();
         if (Part("items")) GiftsItems();
+        if (Part("diplomas")) GiftsDiplomas();
     }
 }
