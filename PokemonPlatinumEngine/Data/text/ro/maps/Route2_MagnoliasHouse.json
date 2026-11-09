@@ -1,0 +1,42 @@
+{
+  "displayName": {
+    "en": [
+      "Prof. Magnolia's House"
+    ],
+    "text": [
+      "Casa Profesoarei Magnolia"
+    ]
+  },
+  "people": {
+    "magnolia": {
+      "name": {
+        "en": [
+          "Prof. Magnolia"
+        ],
+        "text": [
+          "Prof. Magnolia"
+        ]
+      }
+    },
+    "sonia": {
+      "name": {
+        "en": [
+          "Sonia"
+        ],
+        "text": [
+          "Sonia"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3,5": {
+      "en": [
+        "Stacks of notes on giant Pokémon and the lights that rise from the ground on certain nights."
+      ],
+      "text": [
+        "Teancuri de notițe despre Pokémoni uriași și luminile care se ridică din pământ în anumite nopți."
+      ]
+    }
+  }
+}

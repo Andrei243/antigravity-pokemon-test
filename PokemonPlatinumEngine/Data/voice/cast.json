@@ -3548,6 +3548,14 @@
         "accent": "en-gb"
       }
     },
+    "hop": {
+      "note": "first spoken at galar_route_2.txt(11)",
+      "provisional": true
+    },
+    "hops_mum": {
+      "note": "first spoken at Postwick_HopsHouse.txt(5)",
+      "provisional": true
+    },
     "hostess": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
       "brief": {
@@ -3915,6 +3923,10 @@
     },
     "lanette": {
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
+      "provisional": true
+    },
+    "leon": {
+      "note": "first spoken at galar_route_2.txt(63)",
       "provisional": true
     },
     "librarian": {
@@ -6606,6 +6618,10 @@
       "note": "first spoken at phone.txt(162)",
       "provisional": true
     },
+    "mum": {
+      "note": "first spoken at Postwick_PlayersHouse_1F.txt(16)",
+      "provisional": true
+    },
     "murkrow": {
       "note": "first spoken at team_rocket_headquarters_b2f.txt(114)",
       "provisional": true
@@ -6956,6 +6972,10 @@
     },
     "prof_kukui": {
       "note": "first spoken at AlolaRoute1_KukuiLab.txt(8)",
+      "provisional": true
+    },
+    "prof_magnolia": {
+      "note": "first spoken at Route2_MagnoliasHouse.txt(11)",
       "provisional": true
     },
     "prof_oak": {
@@ -7574,6 +7594,10 @@
         "accent": "en-us"
       }
     },
+    "sonia": {
+      "note": "first spoken at Route2_MagnoliasHouse.txt(13)",
+      "provisional": true
+    },
     "sophocles": {
       "note": "first spoken at HokulaniObservatory.txt(17)",
       "provisional": true
@@ -7584,6 +7608,10 @@
     },
     "station_agent": {
       "note": "first spoken at GearStation.txt(13)",
+      "provisional": true
+    },
+    "station_attendant": {
+      "note": "first spoken at Wedgehurst_Station.txt(7)",
       "provisional": true
     },
     "steven": {},
@@ -8327,6 +8355,8 @@
     "Hiker": "look:hiker",
     "Hippolyte": "hippolyte",
     "Honey Man": "honey_man",
+    "Hop": "hop",
+    "Hop's Mum": "hops_mum",
     "Host": "look:host",
     "Hostess": "hostess",
     "Hotel Clerk": "hotel_clerk",
@@ -8374,6 +8404,7 @@
     "Lance": "lance",
     "Lanette": "lanette",
     "Lass": "look:lass",
+    "Leon": "leon",
     "Librarian": "librarian",
     "Lift Attendant": "lift_attendant",
     "Lift Operator": "lift_operator",
@@ -8447,6 +8478,7 @@
     "Mr. Pokémon": "mr_pokemon",
     "Mr. Psychic": "mr_psychic",
     "Mr. Stone": "mr_stone",
+    "Mum": "mum",
     "Murkrow": "murkrow",
     "N": "n",
     "Nanette": "nanette",
@@ -8502,6 +8534,7 @@
     "Prof. Elm": "prof_elm",
     "Prof. Juniper": "prof_juniper",
     "Prof. Kukui": "prof_kukui",
+    "Prof. Magnolia": "prof_magnolia",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
     "Prof. Sycamore": "prof_sycamore",
@@ -8577,9 +8610,11 @@
     "Skyla": "skyla",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
+    "Sonia": "sonia",
     "Sophocles": "sophocles",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
+    "Station Attendant": "station_attendant",
     "Steven": "steven",
     "Storyteller": "storyteller",
     "Studio Hand": "studio_hand",

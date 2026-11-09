@@ -1,0 +1,45 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Acasă la {player}"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "1,4": {
+      "en": [
+        "A games console sits under the desk. The last match of the Champion Cup is still saved on it."
+      ],
+      "text": [
+        "Sub birou e o consolă de jocuri. Ultimul meci al Cupei Campionilor e încă salvat pe ea."
+      ]
+    },
+    "3,4": {
+      "en": [
+        "Books about Galar: its old castles, its stadiums, and the giant Pokémon of its legends."
+      ],
+      "text": [
+        "Cărți despre Galar: castelele lui vechi, stadioanele și Pokémonii uriași din legendele lui."
+      ]
+    },
+    "5,4": {
+      "en": [
+        "It's your wardrobe. Clothes for the farm, and one good jacket for best."
+      ],
+      "text": [
+        "E dulapul tău. Haine pentru fermă și o haină bună pentru ocazii."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "A poster of the Champion, cape flying, over the desk. It has been there for years."
+      ],
+      "text": [
+        "Deasupra biroului, un poster cu Campionul, cu pelerina fluturând. E acolo de ani de zile."
+      ]
+    }
+  }
+}

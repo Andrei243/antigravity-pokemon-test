@@ -1,0 +1,222 @@
+{
+  "LeonArrives": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Here he comes! Lee! Over here! Lee!"
+      ],
+      "text": [
+        "Uite-l că vine! Lee! Aici! Lee!"
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Hop! Look at you, you've grown a foot. And you must be {player}. Hop writes about you in every letter."
+      ],
+      "text": [
+        "Hop! Ia uite, ai crescut de-o palmă. Iar tu trebuie să fii {player}. Hop scrie despre tine în fiecare scrisoare."
+      ]
+    },
+    {
+      "en": [
+        "I've brought something home for the two of you. Come on, back to Postwick, and I'll show you there."
+      ],
+      "text": [
+        "V-am adus ceva acasă, amândurora. Haideți înapoi în Postwick și vă arăt acolo."
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Right, then! Every Trainer needs a partner, and these three have been waiting for theirs. Have a look."
+      ],
+      "text": [
+        "Ei bine! Orice Antrenor are nevoie de un partener, iar acești trei își așteaptă partenerul. Uitați-vă."
+      ]
+    },
+    {
+      "en": [
+        "Go on, {player}. Guests choose first."
+      ],
+      "text": [
+        "Haide, {player}. Musafirii aleg primii."
+      ]
+    },
+    {
+      "en": [
+        "{player} chose {starter}!"
+      ],
+      "text": [
+        "{player} l-a ales pe {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Then I'll take this one! Brother, can we battle now? Please? Our first battle ever!"
+      ],
+      "text": [
+        "Atunci îl iau pe acesta! Frate, putem lupta acum? Te rog? Prima noastră luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Go on, then. Let's see what you're made of!"
+      ],
+      "text": [
+        "Haideți, atunci. Să vedem din ce aluat sunteți făcuți!"
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "You beat me! On my very first try! Ah, that just makes me want to battle you even more."
+      ],
+      "text": [
+        "M-ai bătut! Chiar la prima încercare! Ah, asta mă face să vreau să mă lupt cu tine și mai mult."
+      ]
+    },
+    {
+      "en": [
+        "We won! Our first ever battle and we won! Mind you, it was close. Really close."
+      ],
+      "text": [
+        "Am câștigat! Prima noastră luptă și am câștigat! Ce-i drept, a fost la limită. Chiar la limită."
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "What a match! You two are going to keep each other on your toes. I'm off in to see Mum."
+      ],
+      "text": [
+        "Ce meci! Voi doi o să vă țineți mereu în alertă. Eu intru s-o văd pe mama."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Hang on... where's my Wooloo got to? It was right here a minute ago! I'll check by the Weald's gate!"
+      ],
+      "text": [
+        "Stai... unde a dispărut Wooloo al meu? Era chiar aici acum un minut! Mă uit la poarta pădurii!"
+      ]
+    }
+  ],
+  "HopWaits": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Morning! Leon says we're to go and see Professor Magnolia. She knows more about Pokémon than anyone."
+      ],
+      "text": [
+        "Bună dimineața! Leon zice să mergem la Profesoara Magnolia. Ea știe despre Pokémoni mai mult decât oricine."
+      ]
+    },
+    {
+      "en": [
+        "But first, I've been training since sunrise. Let's battle!"
+      ],
+      "text": [
+        "Dar mai întâi: m-am antrenat de la răsărit. Hai să luptăm!"
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Again! You beat me again! Right, I'll catch up with you at the professor's."
+      ],
+      "text": [
+        "Iar! Iar m-ai bătut! Bine, ne vedem la profesoară."
+      ]
+    },
+    {
+      "en": [
+        "That's one each now! Right, I'll see you at the professor's."
+      ],
+      "text": [
+        "Acum e unu la unu! Bine, ne vedem la profesoară."
+      ]
+    },
+    {
+      "en": [
+        "Her house is at the end of Route 2, east of town, by the big lake. I'll race you there!"
+      ],
+      "text": [
+        "Casa ei e la capătul Drumului 2, la est de oraș, lângă lacul cel mare. Hai să ne întrecem până acolo!"
+      ]
+    }
+  ]
+}

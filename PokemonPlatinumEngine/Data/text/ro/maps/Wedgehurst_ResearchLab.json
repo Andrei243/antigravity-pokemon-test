@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Research Lab"
+    ],
+    "text": [
+      "Laboratorul de Cercetare Pokémon"
+    ]
+  },
+  "people": {
+    "researcher": {
+      "name": {
+        "en": [
+          "Researcher"
+        ],
+        "text": [
+          "Cercetător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sonia works here, the professor's granddaughter. She's out at her gran's on Route 2 most days, digging through old books."
+        ],
+        "text": [
+          "Aici lucrează Sonia, nepoata profesoarei. Cele mai multe zile e la bunica ei, pe Drumul 2, scotocind prin cărți vechi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

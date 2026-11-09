@@ -1,0 +1,70 @@
+{
+  "HopAtTheDoor": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "There you are! You're never going to believe it, Leon's coming home today, on the train to Wedgehurst!"
+      ],
+      "text": [
+        "Aici erai! N-o să-ți vină să crezi: Leon vine acasă azi, cu trenul spre Wedgehurst!"
+      ]
+    },
+    {
+      "en": [
+        "The Champion of all Galar, back in Postwick. Come on, we have to be at the station when it pulls in!"
+      ],
+      "text": [
+        "Campionul întregului Galar, înapoi în Postwick. Haide, trebuie să fim la gară când intră trenul!"
+      ]
+    },
+    {
+      "en": [
+        "It's straight up Route 1. Stick to the path: we've got no Pokémon of our own yet, and the grass is full of them."
+      ],
+      "text": [
+        "E drept în sus pe Drumul 1. Ține-te de potecă: n-avem încă Pokémoni ai noștri, iar iarba e plină de ei."
+      ]
+    }
+  ],
+  "WealdGate": [
+    {
+      "en": [
+        "The gate into the Slumbering Weald is latched. Nobody in Postwick goes in there, and nobody says why."
+      ],
+      "text": [
+        "Poarta spre Pădurea Adormită e zăvorâtă. Nimeni din Postwick nu intră acolo, și nimeni nu spune de ce."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "{player}! My Wooloo squeezed through the gate and ran off into the Weald!"
+      ],
+      "text": [
+        "{player}! Wooloo al meu s-a strecurat pe sub poartă și a fugit în pădure!"
+      ]
+    },
+    {
+      "en": [
+        "Everyone says to keep out of there. But it's my Wooloo, I can't just leave it. Come on, we'll find it together!"
+      ],
+      "text": [
+        "Toată lumea zice să stăm departe de acolo. Dar e Wooloo al meu, nu-l pot lăsa așa. Haide, îl găsim împreună!"
+      ]
+    }
+  ]
+}
