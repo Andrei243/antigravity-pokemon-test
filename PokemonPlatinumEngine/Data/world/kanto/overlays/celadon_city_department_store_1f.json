@@ -9,5 +9,18 @@
   "signs": {
     "CeladonCity_DepartmentStore_1F_EventScript_LayoutSign": "2F: Trainer's Market. 3F: TV Games.\n4F: Gifts. 5F: Drugstore. Roof: Square.",
     "CeladonCity_DepartmentStore_1F_EventScript_FloorSign": "1F: Service Counter"
-  }
+  },
+  // Kanto's training hall (plan 36 · TR4): Kanto has no house left to give it, so the training club's people stand in
+  // a corner of the store's ground floor along its west wall: the head coach's drills (common.TrainingCoach), the
+  // clerk's shelves, the tutor's moves and the club's Battle Points counter, as Sunyshore City's hall has them
+  "npcs": [
+    { "id": "celadon_city_department_store_1f.TrainingExchange", "name": "Club Clerk", "npcType": "training_clerk",
+      "x": 1, "y": 8, "facing": "Right", "script": "TrainingExchange" },
+    { "id": "celadon_city_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
+      "x": 1, "y": 9, "facing": "Right", "script": "TrainingCoach" },
+    { "id": "celadon_city_department_store_1f.TrainingTutor", "name": "Tutor Rowe", "npcType": "training_tutor",
+      "x": 1, "y": 10, "facing": "Right", "script": "TrainingTutor" },
+    { "id": "celadon_city_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
+      "x": 1, "y": 11, "facing": "Right", "script": "TrainingClerk" }
+  ]
 }

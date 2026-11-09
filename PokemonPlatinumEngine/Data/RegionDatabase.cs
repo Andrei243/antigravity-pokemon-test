@@ -1043,6 +1043,8 @@ public static class RegionDatabase
                 "KalosRoute6_ParfumPalace",
                 // Plan 23, after Kalos finished: the palace's garden maze behind its hall
                 "KalosRoute6_ParfumGarden",
+                // Plan 36 · TR4: Kalos's training hall in Laverre City, a map of ours on the hall's one plan
+                "LaverreCity_TrainingHall",
             }
         },
         new()

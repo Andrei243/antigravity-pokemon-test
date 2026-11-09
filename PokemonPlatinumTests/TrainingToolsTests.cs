@@ -35,7 +35,7 @@ public class TrainingToolsTests
     /// candies, Sword and Shield's TRs and the charms; and since TR9 the later games' machines of ours (TM93 on), sold on a
     /// hall's machine shelf.
     /// </summary>
-    private static IReadOnlyList<string> Tools()
+    internal static IReadOnlyList<string> Tools()
     {
         var candies = new Regex(@"^(Health|Mighty|Tough|Smart|Courage|Quick) Candy( L| XL)?$");
         var uses = new HashSet<string> { LaterItemUse.Mint, LaterItemUse.ExpCandy, LaterItemUse.AbilityCapsule, LaterItemUse.AbilityPatch,
@@ -50,7 +50,7 @@ public class TrainingToolsTests
     /// The tools no way of Sinnoh gives yet, each with the plan that owes it (plan 36's list). The session that places one
     /// takes its line off; a line whose tool has a way fails as stale.
     /// </summary>
-    private static readonly Dictionary<string, string> Owed = Owing();
+    internal static readonly Dictionary<string, string> Owed = Owing();
 
     private static Dictionary<string, string> Owing()
     {

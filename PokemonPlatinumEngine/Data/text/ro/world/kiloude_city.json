@@ -55,6 +55,16 @@
           "{rival}"
         ]
       }
+    },
+    "kiloude_city.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {

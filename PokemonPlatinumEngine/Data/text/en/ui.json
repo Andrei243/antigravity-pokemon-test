@@ -2950,6 +2950,10 @@
     "hoennEarth": "For a hundred battles won in a row.",
     "hoennWorld": "For a champion of a tournament held across the world.",
     "sinnohChampion": "For beating Sinnoh's Champion and entering the Hall of Fame.",
+    "kalosChampion": "For beating Kalos's Champion and entering its Hall of Fame.",
+    "alolaChampion": "For becoming Alola's first Champion and entering its Hall of Fame.",
+    "galarChampion": "For beating Galar's Champion and entering its Hall of Fame.",
+    "paldeaChampion": "For beating Paldea's Champion and entering its Hall of Fame.",
     "ability": "For beating the Tower Tycoon at the Battle Tower.",
     "greatAbility": "For beating the Tower Tycoon a second, harder time.",
     "doubleAbility": "For a long streak in the Battle Tower's Double Battles.",
@@ -2981,7 +2985,9 @@
       "syndicate": "the Resort Area's Ribbon Syndicate",
       "friend": "a friend to battle beside in the Battle Tower",
       "world": "the Battle Tower's battles with the world",
-      "event": "an event"
+      "event": "an event",
+      "galar": "Galar's Hall of Fame",
+      "paldea": "Paldea's Hall of Fame"
     }
   },
   "baseRules": {

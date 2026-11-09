@@ -2922,6 +2922,10 @@
     "hoennEarth": "Pentru o sută de lupte câștigate la rând.",
     "hoennWorld": "Pentru campionul unui turneu ținut în toată lumea.",
     "sinnohChampion": "Pentru învingerea Campionului din Sinnoh și intrarea în Sala Faimei.",
+    "kalosChampion": "Pentru învingerea Campionului din Kalos și intrarea în Sala Faimei de acolo.",
+    "alolaChampion": "Pentru devenirea primului Campion din Alola și intrarea în Sala Faimei de acolo.",
+    "galarChampion": "Pentru învingerea Campionului din Galar și intrarea în Sala Faimei de acolo.",
+    "paldeaChampion": "Pentru învingerea Campionului din Paldea și intrarea în Sala Faimei de acolo.",
     "ability": "Pentru învingerea Magnatului Turnului la Battle Tower.",
     "greatAbility": "Pentru învingerea Magnatului Turnului a doua oară, mai greu.",
     "doubleAbility": "Pentru o serie lungă în Luptele duble ale Battle Tower.",
@@ -2953,7 +2957,9 @@
       "syndicate": "Ribbon Syndicate din Resort Area",
       "friend": "un prieten alături de care să lupți la Battle Tower",
       "world": "luptele cu lumea de la Battle Tower",
-      "event": "un eveniment"
+      "event": "un eveniment",
+      "galar": "Sala Faimei din Galar",
+      "paldea": "Sala Faimei din Paldea"
     }
   },
   "baseRules": {

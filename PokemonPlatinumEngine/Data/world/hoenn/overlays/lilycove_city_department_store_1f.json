@@ -14,5 +14,16 @@
   },
   "signs": {
     "LilycoveCity_DepartmentStore_1F_EventScript_FloorNamesSign": "Floor guide: 1F Lottery Corner, 2F Trainer's Zone, 3F Battle Collection, 4F TM Corner, 5F Pokédolls, and the Rooftop Plaza."
-  }
+  },
+  // Hoenn's training hall (plan 36 · TR4): the training club's people in the east corner of the store's ground floor:
+  // the head coach's drills, the tutor's moves and the clerk's shelves (the club's Battle Points counter is the Battle
+  // Frontier island's, plan 36 · TR3)
+  "npcs": [
+    { "id": "lilycove_city_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
+      "x": 17, "y": 3, "facing": "Left", "script": "TrainingCoach" },
+    { "id": "lilycove_city_department_store_1f.TrainingTutor", "name": "Tutor Marlo", "npcType": "training_tutor",
+      "x": 17, "y": 4, "facing": "Left", "script": "TrainingTutor" },
+    { "id": "lilycove_city_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
+      "x": 17, "y": 5, "facing": "Left", "script": "TrainingClerk" }
+  ]
 }

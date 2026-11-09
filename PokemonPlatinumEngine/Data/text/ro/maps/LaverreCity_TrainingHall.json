@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Laverre City"
+    ],
+    "text": [
+      "Orașul Laverre"
+    ]
+  },
+  "people": {
+    "head_coach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "club_clerk": {
+      "name": {
+        "en": [
+          "Club Clerk"
+        ],
+        "text": [
+          "Funcționarul clubului"
+        ]
+      }
+    },
+    "training_tutor": {
+      "name": {
+        "en": [
+          "Tutor Odile"
+        ],
+        "text": [
+          "Meditatoarea Odile"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

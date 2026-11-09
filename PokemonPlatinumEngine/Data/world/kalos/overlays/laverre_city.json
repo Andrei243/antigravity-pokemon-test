@@ -13,7 +13,11 @@
     { "warp": 2, "map": "LaverreCity_House", "x": 4, "y": 8, "facing": "Up" },
     // Plan 23, Kalos's last places: the Poké Ball Factory on the town's east side, open once the Fairy Badge is won
     // (LaverreCity_PokeBallFactory.txt: Team Flare in the works and the president's thanks)
-    { "warp": 3, "map": "LaverreCity_PokeBallFactory", "x": 10, "y": 14, "facing": "Up", "openedBy": "FLAG_KALOS_DEFEATED_LAVERRE_GYM" }
+    { "warp": 3, "map": "LaverreCity_PokeBallFactory", "x": 10, "y": 14, "facing": "Up", "openedBy": "FLAG_KALOS_DEFEATED_LAVERRE_GYM" },
+    // Plan 36 · TR4: Kalos's training hall, a house of timber drawn south of the avenue's crossing, open from the first
+    // visit as Sunyshore City's is (the drills are everyone's): the head coach, the clerk's shelves, the tutor and the
+    // club's Battle Points counter, on the hall's one plan (LaverreCity_TrainingHall)
+    { "warp": 4, "map": "LaverreCity_TrainingHall", "x": 7, "y": 9, "facing": "Up" }
   ],
   "people": {
     "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "The Gym is inside the great tree! The Leader dresses like a doll and battles like a storm." ] },

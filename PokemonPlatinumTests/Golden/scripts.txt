@@ -18454,6 +18454,27 @@ way -
   Guide> Clay's Ground types don't care for Water or Grass moves. And Electric moves won't touch them at all!
   * fanfare FanfareItem
   + FLAG_UNOVA_GOT_WATER_DRIFTVEIL
+=== driftveil_drawbridge.FeatherEast
+from the tile read at 175,48 of DriftveilDrawbridge
+way -
+  > Lucas found the Health Feather!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_EAST
+=== driftveil_drawbridge.FeatherMiddle
+from the tile read at 155,45 of DriftveilDrawbridge
+way -
+  > Lucas found the Health Feather!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_MIDDLE
+=== driftveil_drawbridge.FeatherWest
+from the tile read at 130,47 of DriftveilDrawbridge
+way -
+  > Lucas found the Health Feather!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST
 === ecruteak.RivalBumps
 from the trigger at 397,174 of Johto
 way -

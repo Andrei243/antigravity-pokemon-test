@@ -139,6 +139,14 @@ var contests = importer.Contests();
 contests.Backdrops = importer.Backdrops();
 var seals = importer.Seals();
 var ribbons = importer.Ribbons();
+// Plan 41 · EG2: the later regions' Champion ribbons, rows of ours after Platinum's eighty (names and art names ours)
+ribbons.AddRange(new[]
+{
+    new RibbonRecord { Id = "RIBBON_KALOS_CHAMPION", Name = "Kalos Champion Ribbon", Art = "kalos_champion" },
+    new RibbonRecord { Id = "RIBBON_ALOLA_CHAMPION", Name = "Alola Champion Ribbon", Art = "alola_champion" },
+    new RibbonRecord { Id = "RIBBON_GALAR_CHAMPION", Name = "Galar Champion Ribbon", Art = "galar_champion" },
+    new RibbonRecord { Id = "RIBBON_PALDEA_CHAMPION", Name = "Paldea Champion Ribbon", Art = "paldea_champion" },
+});
 var underground = importer.Underground(items.Select(i => i.Name).ToHashSet());
 var frontier = importer.Frontier();
 var migration = importer.Migration(items, moves);

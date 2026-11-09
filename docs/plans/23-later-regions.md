@@ -113,6 +113,17 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   agency case and gathering (plan 41 · EG2, EG4, EG7, EG9), the skater's pose (plan 30's grown kit), the Friend
   Safari's other friends and the online rooms (plan 07), and `profile`'s Lumiose line (a quiet run on the Windows
   machine).
+- **Kalos's training hall and Champion Ribbon** (2026-11-09, plan 36 · TR4 and plan 41 · EG2's ribbons; rulings, "The
+  training halls of the other regions" and "The later regions' Champion ribbons"). **The hall**: a house of timber
+  drawn in Laverre City south of the avenue's crossing (`tools/MapDraw/kalos/laverre_city.txt`, the door at 347, 217,
+  warp 4 of the area), open from the first visit, on the hall's one plan (`LaverreCity_TrainingHall`: the head coach's
+  drills, the clerk's two shelves, Tutor Odile and the club's Battle Points counter); a Bottle Cap of ours on Kiloude
+  City's shore (542, 384). **The ribbon**: `RIBBON_KALOS_CHAMPION`, handed by Kalos's Hall of Fame scene
+  (`RibbonRules.ChampionOf`). Tests `TrainingHallsTests`. **Still owed by plan 41, and why**: Kalos's row of
+  `circuit.json` (EG4), its case at Looker's office (EG7, EG8) and Lysandre in the gathering (EG9) wait for those
+  systems, which no region has yet: the hub (EG1) they stand in, the circuit, the agency and the fortress are each
+  unbuilt, and a row written before its reader would be read by nothing. Kalos's part of each is one row once its
+  session lands (plan 41's "Later regions add their rows").
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

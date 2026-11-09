@@ -1075,8 +1075,9 @@ public sealed partial class ScriptRunner
                     host.Open(ScriptScreen.Ceremony, Subject);
                     break;
                 }
-                // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears Sinnoh's Champion Ribbon (plan 06 · R17b)
-                RibbonRules.GiveChampion(host.Party);
+                // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears its region's Champion Ribbon (plan 06
+                // · R17b; plan 41 · EG2: Hoenn's, Kalos's and Alola's their own, the rest Sinnoh's)
+                RibbonRules.GiveChampion(host.Party, host.Region);
                 host.EnterHallOfFame();
                 break;
             case Op.Travel:
