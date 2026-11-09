@@ -76,7 +76,7 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   by its turns: `kalos_institute_*`, `FLAG_DAILY_KALOS_BATTLE_INSTITUTE`), the PR Video Studio, six cafés (Introversion,
   Ultimo, Woof, Soleil, Shutterbug, Kizahashi), a hat shop on the wardrobe screen (`lumiose_hats`), Coiffure Clips and three
   flats; no door of the city is shut now. No monorail (Coumarine is one level). Shots: the `kalos` mode's
-  `KALOS_FROM=lastspecies` (`fc50` to `fc55`, plan 37 · FC5's owed shots; `wk600` to `wk616`; `wks400` to `wks434`).
+  `KALOS_FROM=lastspecies` (`fc50` to `fc55`, plan 37 · FC5's owed shots; `wk600` to `wk616`; `wks400` to `wks430`), looked at.
   **Left**: the Friend Safari (no seam), and the places' own songs (plan 31).
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
