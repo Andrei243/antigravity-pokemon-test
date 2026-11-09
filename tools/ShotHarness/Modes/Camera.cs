@@ -88,7 +88,7 @@ partial class Harness
         }
 
         // Push in, pull out, reactions (plan 45 · BC4): for each manner that pushes or reacts, a wild battle with a
-        // Chimchar of its own: a plain move (Scratch), a super-effective one (Ember on a Turtwig) and the faint it brings,
+        // Chimchar of its own: a plain move (Fury Swipes), a super-effective one (Ember on a Turtwig) and the faint it brings,
         // a picture every tenth of a second (bc_<manner>_move_<what>_<nn>), the line left waiting through the move
         foreach (var manner in manners.Where(m => m.Push > 0f || m.React))
         {
@@ -96,7 +96,7 @@ partial class Harness
             Console.WriteLine($"manner {manner.Name}: push {manner.Push}, reactions {(manner.React ? "on" : "off")}");
             var mine = new Party();
             mine.Add(new Pokemon(PokemonDatabase.Get("Chimchar")!, 20, new Random(3)));
-            var turtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 30, new Random(4));
+            var turtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 22, new Random(4));
             var (stage, x, y) = Harness.Place("Route201", -1, -1);
             game.Map = MapDatabase.Get(stage);
             if (x >= 0) game.Player.SetPosition(x, y, Direction.Up);
@@ -108,11 +108,12 @@ partial class Harness
             game.Battle = b;
             game.State = GameState.Battle;
             ToMainMenu(b);
-            foreach (var (what, move) in new[] { ("plain", "Scratch"), ("super", "Ember"), ("faint", "Ember") })
+            foreach (var (what, move) in new[] { ("plain", "Fury Swipes"), ("super", "Ember"), ("faint", "Ember") })
             {
                 for (int guard = 0; guard < 16 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++) { Confirm(b); Skip(0.8); }
                 if (b.IsBattleOver) break;
                 turtwig.CurrentHP = what == "faint" ? 1 : turtwig.MaxHP;
+                mine.Members[0].CurrentHP = mine.Members[0].MaxHP;
                 int index = b.PlayerPokemon!.Moves.FindIndex(m => m.Data.Name == move);
                 Console.WriteLine($"  {what}: {move} ({index})");
                 b.SelectMove(Math.Max(0, index));
