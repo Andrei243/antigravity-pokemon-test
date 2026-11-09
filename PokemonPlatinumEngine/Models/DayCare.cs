@@ -171,10 +171,10 @@ public sealed class DayCare
     /// The Egg the couple found, handed to the team (<c>Daycare_GiveEggFromDaycare</c>; <see cref="Breeding.MakeEgg"/>)
     /// and the cycle started afresh. Null, with nothing changed, when there is no Egg or no room.
     /// </summary>
-    public Pokemon? GiveEgg(Party party, uint trainer, Random rng, Ruleset rules)
+    public Pokemon? GiveEgg(Party party, uint trainer, Random rng, Ruleset rules, bool shinyCharm = false)
     {
         if (!HasEgg || party.IsFull || pokemon[0] is not { } a || pokemon[1] is not { } b) return null;
-        var egg = Breeding.MakeEgg(a, b, Offspring, trainer, rng, rules);
+        var egg = Breeding.MakeEgg(a, b, Offspring, trainer, rng, rules, shinyCharm);
         party.Add(egg);
         Offspring = 0;
         StepCounter = 0;

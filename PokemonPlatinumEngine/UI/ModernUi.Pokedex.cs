@@ -46,7 +46,7 @@ internal static partial class ModernUi
     public static string Kilograms(float kilograms) => Text.Of("pokedex.kilograms", ("n", Text.Decimal(kilograms, 1)));
 
     /// <summary>The colour of a Pokédex's tag (plan 18 · W3): Sinnoh's Blue, Kanto's Green, the National one's Red, and Gold for a Pokédex whose region has no colour of its own yet.</summary>
-    public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, Pokedex.KalosCentral => Red, Pokedex.KalosCoastal => Blue, Pokedex.KalosMountain => Green, _ => Gold };
+    public static Color DexColour(string dex) => dex switch { Pokedex.Sinnoh => Blue, "kanto" => Green, Pokedex.National => Red, Pokedex.KalosCentral => Red, Pokedex.KalosCoastal => Blue, Pokedex.KalosMountain => Green, Pokedex.Ours => FormsTeal, _ => Gold };
 
     private static readonly Color Cream = new(252, 246, 228, 255);
     private static readonly Color DeepGold = new(176, 120, 30, 255);
@@ -172,6 +172,9 @@ internal static partial class ModernUi
                 // Its research level, once it has one (plan 15 · E2)
                 if (seen) ResearchLevelChip(r, pokedex.Research.LevelOf(s), selected);
             }
+            // A species of our own in the National list wears a small mark (plan 40 · GE4, D14's heading of ours): its
+            // number there is far past the games' last, and the Pokédex of our own numbers them from 1
+            if (mode == Pokedex.National && s.IsOurs && PokedexSearch.SizeLabel(order, s) == null) OursMark(r);
             if (PokedexSearch.SizeLabel(order, s) == null && caught)
             {
                 var c = new Vector2(r.X + r.Width - 44, r.Y + r.Height / 2f);
@@ -183,6 +186,18 @@ internal static partial class ModernUi
             }
         }
         ScrollBar(list, dex.FirstRow, PokedexScreen.VisibleRows, rows.Count, top);
+    }
+
+    /// <summary>
+    /// The mark a row of the National list carries for a species of our own: a teal pill of 24 with OURS in Black capitals,
+    /// its right end 196 from the row's right edge (before the research level's disc and the footprint).
+    /// </summary>
+    private static void OursMark(Rectangle r)
+    {
+        const float height = 24f;
+        string text = Text.Of("pokedex.oursMark");
+        float w = UiFonts.Measure(text, height * 0.58f, UiWeight.Black) + height * 0.9f;
+        Tag(r.X + r.Width - 196 - w, r.Y + (r.Height - height) / 2f, text, FormsTeal, height);
     }
 
     // ------------------------------------------------------------------ the pages of an entry

@@ -10708,6 +10708,10 @@ way -
   > Lucas put it away in the Medicine pocket.
   * fanfare FanfareItem
   + FLAG_UNOVA_GOT_WATER_CASTELIA
+=== castelia_city_pokemon_center.Designer
+from Designer at 7,12 of CasteliaCity_PokemonCenter
+way -
+  Designer> I draw the Pokémon of this region for a living. If you ever fill in your whole Pokédex, I'd love to see it.
 === castelia_city_pokemon_center.LinkingCord
 from Receptionist at 4,4 of CasteliaCity_PokemonCenter
 way -

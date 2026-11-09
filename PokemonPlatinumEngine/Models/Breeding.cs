@@ -251,21 +251,103 @@ public static class Breeding
     /// the level-up moves both parents know (<see cref="BuildMoveset"/>), a Pichu Volt Tackle when a parent holds a
     /// Light Ball; in a Poké Ball, its egg cycles in its friendship, the player's own, met at level nought.
     /// </summary>
-    public static Pokemon MakeEgg(Pokemon first, Pokemon second, uint offspring, uint trainer, Random rng, Ruleset rules)
+    public static Pokemon MakeEgg(Pokemon first, Pokemon second, uint offspring, uint trainer, Random rng, Ruleset rules,
+        bool shinyCharm = false)
     {
         var species = EggSpecies(first, second, offspring);
         var pair = new[] { first, second };
         var (mother, father) = Parents(first, second);
         uint personality = Masuda(offspring, trainer, first, second, rules);
         var egg = NewEgg(species, personality, trainer, rng, rules);
-        if (EggForm(pair[mother], species) is { } form) egg.RestoreForm(form);
+        string? eggForm = EggForm(pair[mother], species);
+        if (eggForm != null) egg.RestoreForm(eggForm);
         InheritIvs(egg, first, second, rng, rules);
-        BuildMoveset(egg, pair[father], pair[mother]);
+        BuildMoveset(egg, pair[father], pair[mother], rules);
         if (species.Name == "Pichu" && (first.HeldItem?.Name == "Light Ball" || second.HeldItem?.Name == "Light Ball"))
             Push(egg, "Volt Tackle");
+        if (rules.ModernBreeding)
+        {
+            // Every draw the later breeding adds comes after Platinum's, in this order: the Shiny Charm's rolls, the
+            // ability, the ball
+            if (shinyCharm) CharmRolls(egg, first, second, trainer, rng, rules, eggForm);
+            HandDownAbility(egg, ParentWhoseTraitsPass(first, second), rng);
+            egg.Ball = BallFor(first, second, rng);
+        }
         egg.RecalculateStats();
         egg.CurrentHP = egg.MaxHP;
         return egg;
+    }
+
+    /// <summary>
+    /// The parent whose ability and ball an Egg takes by the later rules: the mother, or beside Ditto the one that isn't
+    /// Ditto, whatever its gender (two Dittos can't have an Egg; the first stands in).
+    /// </summary>
+    public static Pokemon ParentWhoseTraitsPass(Pokemon first, Pokemon second)
+    {
+        if (IsDitto(first)) return IsDitto(second) ? first : second;
+        if (IsDitto(second)) return first;
+        return Parents(first, second).Mother == 0 ? first : second;
+    }
+
+    /// <summary>
+    /// The mother's ability handed down (plan 36 · TR6; the later games' rule, one draw of a hundred): her hidden ability
+    /// 60 times in 100, and the regular ones 20 in 100 each (the other place of the species when it has two); a regular
+    /// ability keeps its place 80 times in 100 and goes to the other 20. A species with no hidden ability, or one with a
+    /// single regular one, keeps the one it has. The Egg's personality is left as it is: its bit 0 no longer says which
+    /// ability the Pokémon has, the ability itself is kept (and saved) beside it.
+    /// </summary>
+    public static void HandDownAbility(Pokemon egg, Pokemon source, Random rng)
+    {
+        int roll = rng.Next(100);
+        var regular = egg.Abilities;
+        bool wasHidden = source.AbilityName != null && source.AbilityName == source.HiddenAbilityName
+            && !source.Abilities.Contains(source.AbilityName);
+        string? hidden = egg.HiddenAbilityName;
+        if (wasHidden && hidden != null && roll < 60)
+        {
+            egg.AbilityName = hidden;
+            return;
+        }
+        if (regular.Count == 0) return;
+        int slot = Math.Max(0, source.Abilities.ToList().IndexOf(source.AbilityName ?? ""));
+        if (wasHidden) slot = roll < 80 ? 0 : 1;
+        else if (roll >= 80) slot ^= 1;
+        egg.AbilityName = regular[Math.Min(slot, regular.Count - 1)];
+    }
+
+    /// <summary>
+    /// The ball an Egg is in by the later rules (plan 36 · TR6): its mother's (or, beside Ditto, the other parent's), a
+    /// coin between the two for two of one species; a Master Ball or a Cherish Ball is a Poké Ball. The coin is drawn
+    /// only for two of one species.
+    /// </summary>
+    public static string BallFor(Pokemon first, Pokemon second, Random rng)
+    {
+        var source = ParentWhoseTraitsPass(first, second);
+        if (!IsDitto(first) && !IsDitto(second) && first.Species == second.Species)
+            source = rng.Next(2) == 0 ? source : source == first ? second : first;
+        string? ball = source.Ball;
+        return string.IsNullOrEmpty(ball) || ball is "Master Ball" or "Cherish Ball" ? EggBall : ball;
+    }
+
+    /// <summary>
+    /// The Shiny Charm's two extra rolls for a Day-Care Egg (plan 36 · TR6): another personality is drawn each time for an
+    /// Egg that came out plain, keeping its species (the Nidoran and Illumise bit) and its nature where an Everstone chose
+    /// it, and the first that is shiny for the player's number is taken. Two draws' worth of personality, a roll that
+    /// would change the Egg's species wasted.
+    /// </summary>
+    private static void CharmRolls(Pokemon egg, Pokemon first, Pokemon second, uint trainer, Random rng, Ruleset rules, string? eggForm)
+    {
+        if (egg.IsShiny) return;
+        Nature? keep = HoldsEverstone(first) || HoldsEverstone(second) ? egg.Nature : null;
+        for (int i = 0; i < ShinyCharm.ExtraRolls; i++)
+        {
+            uint candidate = Personality.Candidate(egg.Species, rng, null, keep);
+            if (!Personality.IsShiny(trainer, candidate, rules.ShinyOdds)) continue;
+            if (EggSpecies(first, second, candidate) != egg.Species) continue;
+            egg.TakeShinyPersonality(candidate);
+            if (eggForm != null) egg.RestoreForm(eggForm);
+            return;
+        }
     }
 
     /// <summary>
@@ -364,9 +446,10 @@ public static class Breeding
     /// An Egg's moves (<c>Egg_BuildMoveset</c>), on top of its species' at level 1, each one learned into a free place
     /// or, with four known, pushing the first out (<c>Pokemon_ReplaceMove</c>): the father's moves that are its egg
     /// moves, in his order; then his moves a TM or HM teaches that its species can learn by that machine; then the moves
-    /// both parents know that its species learns by level at any level.
+    /// both parents know that its species learns by level at any level. By the later rules (<c>rules</c> given, plan 36 ·
+    /// TR6) the mother's egg moves follow the father's and no machine's move is handed down.
     /// </summary>
-    public static void BuildMoveset(Pokemon egg, Pokemon father, Pokemon mother)
+    public static void BuildMoveset(Pokemon egg, Pokemon father, Pokemon mother, Ruleset? rules = null)
     {
         var fatherMoves = father.Moves.Select(m => m.Name).ToList();
         var motherMoves = mother.Moves.Select(m => m.Name).ToList();
@@ -374,9 +457,19 @@ public static class Breeding
         foreach (string move in fatherMoves)
             if (eggMoves.Contains(move)) Push(egg, move);
 
-        foreach (string move in fatherMoves)
-            foreach (var machine in Machines.Value.Where(m => m.TeachesMove == move))
-                if (egg.Species.TmMoves?.Contains(machine.Name) == true) Push(egg, move);
+        if (rules?.ModernBreeding == true)
+        {
+            // The later games: the mother's egg moves as well (a Ditto's moves are none worth the name, and it has none
+            // of its own species' egg moves), and no machine's move at all (plan 36 · TR6)
+            foreach (string move in motherMoves)
+                if (eggMoves.Contains(move)) Push(egg, move);
+        }
+        else
+        {
+            foreach (string move in fatherMoves)
+                foreach (var machine in Machines.Value.Where(m => m.TeachesMove == move))
+                    if (egg.Species.TmMoves?.Contains(machine.Name) == true) Push(egg, move);
+        }
 
         var shared = fatherMoves.Where(motherMoves.Contains).ToList();
         foreach (string move in shared)
@@ -442,7 +535,7 @@ public static class Breeding
         egg.IsEgg = false;
         egg.Friendship = HatchedFriendship;
         egg.Nickname = string.Empty; // called what its species is called, in whatever language
-        egg.Ball = EggBall;
+        if (string.IsNullOrEmpty(egg.Ball)) egg.Ball = EggBall; // the Egg's own ball (the later rules give its mother's)
         egg.Met(place, day);
         egg.MetLevel = 0;
         int oldMax = egg.MaxHP;

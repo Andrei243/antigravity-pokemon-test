@@ -67,6 +67,46 @@
       "text": [
         "Ține-l la tine oriunde ai merge. Completează încă un Pokédex și vino să mi-l arăți: s-ar putea să mai am ceva pentru tine."
       ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "A diploma for the Pokémon that aren't in any region's Pokédex, and you saw every one of them! Nobody asked us for those."
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "O diplomă pentru Pokémonii care nu sunt în niciun Pokédex regional, și i-ai văzut pe toți! Nimeni nu ne-a cerut-o pe aceea."
+      ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "That diploma on your Pokédex is for all of Sinnoh, every page seen with your own eyes. I could pick that paper out of a hundred!"
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "Diploma aceea de pe Pokédex e pentru tot Sinnohul, fiecare pagină văzută cu ochii tăi. Hârtia aia o recunosc dintr-o sută!"
+      ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "Diplomas from several Pokédexes! You've seen more of the world than all of us who made the game put together."
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "Diplome de la mai multe Pokédexuri! Ai văzut mai mult din lume decât toți cei care am făcut jocul la un loc."
+      ]
+    },
+    {
+      "en": [
+        "Hello there! I'm the game director!",
+        "I see a diploma on your Pokédex! Other regions have lists of their own, you know. Fill in another and show me."
+      ],
+      "text": [
+        "Salut! Eu sunt directorul de jocuri!",
+        "Văd o diplomă pe Pokédexul tău! Alte regiuni au liste ale lor, să știi. Completează încă una și arată-mi-o."
+      ]
     }
   ]
 }

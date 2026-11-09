@@ -27,6 +27,8 @@ public static class ScriptParser
         "LEAGUE_VICTORIES",
         "CYCLING", "BIKE", "RIDING",
         "CAUGHT",
+        // How many Pokédexes' diplomas the player holds (plan 40 · GE4)
+        "DIPLOMAS",
         "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
         "CROSSED_IN",
         "PASSWORD",
@@ -1499,6 +1501,13 @@ public static class ScriptParser
                 return new Condition { Query = Query.Mirage, Negated = negated };
             case "modern":
                 return new Condition { Query = Query.Modern, Negated = negated };
+            // The diploma of a Pokédex is held (plan 40 · GE4)
+            case "diploma":
+            {
+                string named = r.Word("a region, National or Ours");
+                if (Models.Pokedex.DiplomaDexes(named).Count == 0) throw r.Error($"'{named}' is no region, Pokédex, National or Ours");
+                return new Condition { Query = Query.Diploma, Negated = negated, Name = named };
+            }
             // The phrase kept under a name is these two words (plan 21 · H12, part k: the Berry Master's wife)
             case "phrase":
             {

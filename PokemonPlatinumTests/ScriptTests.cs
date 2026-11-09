@@ -914,6 +914,7 @@ public class ScriptTests
               if mirage end
               if modern end
               if phrase SAYING "feelings:cool" "pokemon:Latias" end
+              if diploma Johto end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

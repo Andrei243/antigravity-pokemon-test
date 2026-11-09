@@ -212,6 +212,15 @@ public sealed class Ruleset
     public int MasudaRerolls { get; private init; } = 4;
 
     /// <summary>
+    /// The later games' breeding (plan 36 · TR6; rulings, "Breeding and what a personality decides"): the mother's ability
+    /// handed down (her hidden one 60 times in 100, a regular one's place 80 and the other 20; the other parent's beside
+    /// Ditto, whatever its gender), her ball (a Master or Cherish Ball as a Poké Ball; a coin between two of one species),
+    /// egg moves from both parents and no machine's move, and the Shiny Charm's two extra rolls for a Day-Care Egg. Every
+    /// draw it adds comes after those Platinum's breeding makes, so an Egg under Platinum's rules is what it was.
+    /// </summary>
+    public bool ModernBreeding { get; private init; }
+
+    /// <summary>
     /// Hail is snow (Generation 9, plan 06 · R19b): whatever would whip up a hailstorm (the move Hail, Snow Warning,
     /// a snowy place's sky) brings snow instead, which hurts nobody and raises an Ice type's Defense by half
     /// (<see cref="Battle.Sim.BattleWeather.Snow"/>); everything else hail does, snow does.
@@ -411,6 +420,7 @@ public sealed class Ruleset
         EverstoneAlwaysPassesNature = true,
         ModernInheritance = true,
         MasudaRerolls = 5,
+        ModernBreeding = true,
         SnowInPlaceOfHail = true,
         LaterMoveReach = true,
         ModernDamageFormula = true,

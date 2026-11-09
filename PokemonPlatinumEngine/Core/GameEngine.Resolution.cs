@@ -30,6 +30,12 @@ public partial class GameEngine
     /// <summary>A share of the preset the scene is held at whatever the options say (the harness's <c>SHOTS_SCALE</c>); null for none.</summary>
     public float? FixedResolutionStep { get; set; }
 
+    /// <summary>
+    /// A manner the battles are filmed in whatever the options and the region say (plan 45): the harness's <c>camera</c>
+    /// mode shoots each manner by it; null, as the game has it, for the options' BATTLE CAMERA row and the region's file.
+    /// </summary>
+    internal Graphics.CameraManner? FixedCameraManner { get; set; }
+
     /// <summary>Whether the first run's measuring is under way.</summary>
     public bool MeasuringQuality => measuring is { Done: false };
 

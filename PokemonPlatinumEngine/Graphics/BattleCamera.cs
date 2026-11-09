@@ -17,7 +17,14 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant, MaxMove, Held }
+internal enum ShotKind
+{
+    Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation, Push, Follow, Punch, Orbit, Giant, MaxMove, Held,
+    /// <summary>A shot of a manner's idle cycle at the menu (plan 45 · BC2), but the overview and the player's own front.</summary>
+    Idle,
+    /// <summary>The player's own side from the front (plan 45 · BC2): a camera between the platforms looking south, only ever cut to and from.</summary>
+    OwnFront,
+}
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -27,7 +34,7 @@ internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Criti
 /// wherever easing would fly past the player's side), all as a function of the animator's state, so tests can check
 /// every shot without a window.
 /// </summary>
-internal sealed class BattleCamera
+internal sealed partial class BattleCamera
 {
     /// <summary>Time constant of the easing between shots, seconds.</summary>
     public const float Smoothing = 0.18f;
@@ -61,6 +68,20 @@ internal sealed class BattleCamera
     /// </summary>
     public static float Motion { get; set; } = 1f;
 
+    /// <summary>
+    /// The manner the battle is filmed in (plan 45; style guide, "The battle's manners"): Classic, the director as it
+    /// was, unless the game says otherwise. Set by the game every frame from the options' BATTLE CAMERA row and the
+    /// region's file (<see cref="CameraManners.For"/>); the harness's options keep it Classic.
+    /// </summary>
+    public CameraManner Manner { get; set; } = CameraManners.Classic;
+
+    /// <summary>
+    /// The manner as it is filmed now: Classic under REDUCE MOTION (<see cref="Motion"/> at nought), whatever was
+    /// chosen, and Classic where none is given.
+    /// </summary>
+    public static CameraManner MannerNow(CameraManner? manner) =>
+        manner is null || Motion <= 0f ? CameraManners.Classic : manner;
+
     public CameraShot Current { get; private set; }
     public ShotKind Kind { get; private set; } = ShotKind.Intro;
     private bool started;
@@ -91,7 +112,7 @@ internal sealed class BattleCamera
             lastCue = null;
             return held.ToCamera();
         }
-        var (shot, kind, cue) = Direct(anim, places, choosing);
+        var (shot, kind, cue) = Direct(anim, places, choosing, Manner);
         // Cut from the attacker to its target, into a critical hit's punch-in, onto the intro's own path, and
         // wherever easing would fly the camera past the player's side of the field; ease everything else
         bool cut = !started || kind == ShotKind.Intro
@@ -102,6 +123,9 @@ internal sealed class BattleCamera
             || (kind == ShotKind.Punch && lastKind != ShotKind.Punch)
             // A Max Move's finisher follows its own function frame by frame: its whip is an ease of its own (plan 25 · YD2)
             || (kind == ShotKind.MaxMove && lastKind == ShotKind.MaxMove && cue == lastCue)
+            // The player's own front is only ever cut to and from: it stands on the far side of their Pokémon from every
+            // other shot (plan 45 · BC2, the corridors' rule)
+            || (kind == ShotKind.OwnFront) != (lastKind == ShotKind.OwnFront)
             || CrossesPlayerSide(Current.Position, shot.Position);
         Current = cut ? shot : CameraShot.Lerp(Current, shot, 1f - MathF.Exp(-Math.Max(0f, dt) / Smoothing));
         started = true;
@@ -205,10 +229,18 @@ internal sealed class BattleCamera
     }
 
     /// <summary>The shot the director wants now, what kind it is, and the move cue it follows (if any).</summary>
-    /// <param name="choosing">The player is choosing a command, which is always done from the overview.</param>
-    public static (CameraShot Shot, ShotKind Kind, EffectCue? Cue) Direct(BattleAnimator anim, FxPlaces places, bool choosing = false)
+    /// <param name="choosing">The player is choosing a command, which Classic always films from the overview.</param>
+    /// <param name="manner">The manner the battle is filmed in (plan 45): Classic when none, and under REDUCE MOTION.</param>
+    public static (CameraShot Shot, ShotKind Kind, EffectCue? Cue) Direct(BattleAnimator anim, FxPlaces places, bool choosing = false,
+        CameraManner? manner = null)
     {
-        if (choosing && anim.Time >= 1.8f) return (Overview(anim.Time), ShotKind.Overview, null);
+        var m = MannerNow(manner);
+        if (choosing && anim.Time >= 1.8f)
+        {
+            // A manner that films the menu: Sinnoh's breathing overview, a cycle's shots (plan 45 · BC2)
+            if (!m.IsStill && IdleNow(anim, places, m) is { } idle) return idle;
+            return (Overview(anim.Time), ShotKind.Overview, null);
+        }
 
         // A thrown ball takes the camera with it
         if (anim.Ball is { } ball && !(ball.Caught && ball.Age > BattleAnimator.BallThrowTime(ball.Shakes, ball.Critical)))
