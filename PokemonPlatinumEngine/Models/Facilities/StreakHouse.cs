@@ -44,6 +44,13 @@ public sealed class StreakRoom
     /// <summary>The story variable the trophy of this hard room is kept in (1 once its host is first beaten); null for a normal room.</summary>
     public string? TrophyVariable { get; init; }
 
+    /// <summary>
+    /// A room played with a partner of the place's own beside the player and two trainers against them (plan 23, the Battle
+    /// Tree's Multi room): <see cref="Entered"/> is how many go in for the player alone, the partner brings as many, and each
+    /// of the two trainers too. Such a room has no host and no hard room.
+    /// </summary>
+    public bool Multi { get; init; }
+
     /// <summary>The key its record is kept under.</summary>
     public string Key => FacilityRecord.KeyOf(Place, Way, Hard);
 }

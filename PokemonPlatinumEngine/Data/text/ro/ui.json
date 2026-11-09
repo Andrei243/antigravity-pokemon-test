@@ -2315,7 +2315,7 @@
     "row": {
       "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
       "tree": {
-        "single": "Luptă simplă", "double": "Luptă dublă",
+        "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
         "hard": { "single": "Super luptă simplă", "double": "Super luptă dublă" }
       },
       "house": {

@@ -1,13 +1,15 @@
 {
   // The Secluded Shore, Ula'ula Island (plan 23, the rest of the islands): drawn by hand, our words. A shelf of rock and a
   // quiet beach on the open sea south of Route 11 (Sun and Moon's lies south of Route 13 and is reached by sea), where
-  // pearls wash up and a girl looks for the right sand for her Sandygast
+  // pearls wash up and a girl looks for the right sand for her Sandygast. Out at sea a reef rings an islet with a Rare Candy
+  // on it, and the reef's one gap holds a strong current (TileBehavior.CurrentWest) that carries a Lapras's rider straight
+  // back out and that only Sharpedo's Jet stems (RidePager.StemsCurrents)
   "area": "secluded_shore",
   "bgmTrack": "alola/beach",
   "trees": "Round",
   "architecture": "Islander",
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_NIGHTFALL" },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "nalani": {
       "name": "Nalani",

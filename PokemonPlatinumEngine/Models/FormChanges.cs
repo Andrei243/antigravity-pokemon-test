@@ -165,19 +165,37 @@ public static class FormChanges
     public static IReadOnlyList<string> CubeMoves { get; } = new[] { "Thousand Arrows", "Thousand Waves", "Core Enforcer", "Extreme Speed", "Dragon Dance" };
 
     /// <summary>
+    /// The five Zygarde Cores of Alola (plan 23, the Cores' own moves; rulings, "Sharpedo's currents, Mantine Surf, ..."): the
+    /// story flag each one's pickup sets (<c>common.ZygardeCore</c>, <c>setflag own</c>) and the move of the Cube's five it
+    /// unlocks, in the Cube's own order. A move is offered once its Core is in the Cube.
+    /// </summary>
+    public static IReadOnlyList<(string Move, string Core)> CoreMoves { get; } = new[]
+    {
+        ("Thousand Arrows", "FLAG_ALOLA_ZYGARDE_CORE_VAST_PONI_CANYON_1"),
+        ("Thousand Waves", "FLAG_ALOLA_ZYGARDE_CORE_ULAULA_ROUTE_17_1"),
+        ("Core Enforcer", "FLAG_ALOLA_ZYGARDE_CORE_AETHER_PARADISE_1"),
+        ("Extreme Speed", "FLAG_ALOLA_ZYGARDE_CORE_MAHALO_TRAIL_1"),
+        ("Dragon Dance", "FLAG_ALOLA_ZYGARDE_CORE_LUSH_JUNGLE_1")
+    };
+
+    /// <summary>The Cube's moves a game has unlocked: those whose Core's flag <paramref name="has"/> says is set, in the Cube's order.</summary>
+    public static IReadOnlyList<string> CubeMovesFor(Func<string, bool> has) => CoreMoves.Where(c => has(c.Core)).Select(c => c.Move).ToList();
+
+    /// <summary>
     /// What the bag lists when this item is used on this Pokémon, a row to an answer (plan 06 · R29b): the Rotom
     /// Catalog's appliances, and the Zygarde Cube's CHANGE FORME (where its form can change) with the five moves it
     /// teaches. Null for an item that does its one thing at once.
     /// </summary>
-    public static IReadOnlyList<string>? OptionsFor(ItemData item, Pokemon p)
+    public static IReadOnlyList<string>? OptionsFor(ItemData item, Pokemon p, IReadOnlyList<string>? cubeMoves = null)
     {
         if (!Handles(item) || p.IsEgg) return null;
+        var moves = cubeMoves ?? CubeMoves;
         return item.Name switch
         {
             "Rotom Catalog" when p.Species.Name == "Rotom" => CatalogRows,
             "Zygarde Cube" when p.Species.Name == "Zygarde" =>
                 (ZygardeOther(p.Form) != p.Form ? new[] { Text.Of("bag.cube.changeForme") } : Array.Empty<string>())
-                    .Concat(CubeMoves.Select(LocalNames.Move)).ToArray(),
+                    .Concat(moves.Select(LocalNames.Move)).ToArray() is { Length: > 0 } rows ? rows : null,
             _ => null
         };
     }
@@ -187,9 +205,9 @@ public static class FormChanges
     /// or a move to teach. A move that doesn't fit is <see cref="ItemUseResult.Wanted"/>; one known already, or the
     /// appliance Rotom is in, changes nothing and says why.
     /// </summary>
-    public static ItemUseResult Choose(ItemData item, Pokemon p, Party? party, int option)
+    public static ItemUseResult Choose(ItemData item, Pokemon p, Party? party, int option, IReadOnlyList<string>? cubeMoves = null)
     {
-        if (OptionsFor(item, p) is not { } rows || option < 0 || option >= rows.Count) return ItemUseResult.Nothing;
+        if (OptionsFor(item, p, cubeMoves) is not { } rows || option < 0 || option >= rows.Count) return ItemUseResult.Nothing;
         if (item.Name == "Rotom Catalog")
         {
             // Rows 0 to 4 are pages 1 to 5, the bulb page 0
@@ -203,7 +221,7 @@ public static class FormChanges
             p.ChangeForm(ZygardeOther(p.Form));
             return Changed(p.DisplayName);
         }
-        string move = CubeMoves[option - (changes ? 1 : 0)];
+        string move = (cubeMoves ?? CubeMoves)[option - (changes ? 1 : 0)];
         if (p.Knows(move)) return new ItemUseResult(false, Text.Of("bag.knowsAlready", ("name", p.DisplayName), ("move", LocalNames.Move(move))));
         if (p.TryLearn(move)) return new ItemUseResult(true, Text.Of("bag.learned", ("name", p.DisplayName), ("move", LocalNames.Move(move))));
         return new ItemUseResult(true, "") { Wanted = new[] { move } };

@@ -1,7 +1,9 @@
 # The Battle Tree's battle hall (plan 23, the Battle Tree's inside; plan 37 · FC2's frame). The lines are our own. A
 # whole challenge is this one arrival script, which loops a battle at a time (Models/Facilities/StreakChallenge.cs;
 # `facility tree ...`), as the Battle Maison's hall does: the challenge lives between the desk and the hall as the host's
-# Facility, and a challenge rested is put down in the records and saved, and the desk takes it up again.
+# Facility, and a challenge rested is put down in the records and saved, and the desk takes it up again. In the Multi room
+# a partner of ours (Models/Facilities/StreakChallenge.cs, `facility tree partner`) stands beside the player for the whole
+# challenge and two trainers come down for each battle (`opponent` and `opponent_2`, RESULT 2).
 
 
 script OnEnter
@@ -9,7 +11,15 @@ script OnEnter
   if result == 0 end
   clearflag FLAG_ALOLA_TREE_SHOW_OPPONENT
   hide opponent
+  call Leaves
   place player 8 10 up
+  facility tree partner
+  if result == 0 goto Battle
+  place partner 9 10 up
+  setflag FLAG_ALOLA_TREE_SHOW_PARTNER
+  show partner
+  speaker "Referee"
+  say "{partner} will battle beside you, and the two of you will meet pairs of Trainers. Good luck!"
 label Battle
   facility tree next
   speaker "Referee"
@@ -20,11 +30,24 @@ label Battle
   say "Hold on... a Tree Master is coming down from the highest branch to battle you!"
 label Drawn
   facility tree opponent
+  if result == 2 goto Pair
   place opponent 8 3 down
   setflag FLAG_ALOLA_TREE_SHOW_OPPONENT
   show opponent
   walk opponent down 2
   text "{foe} steps forward!"
+  goto Fight
+label Pair
+  place opponent 7 3 down
+  place opponent_2 9 3 down
+  setflag FLAG_ALOLA_TREE_SHOW_OPPONENT
+  setflag FLAG_ALOLA_TREE_SHOW_OPPONENT_2
+  show opponent
+  show opponent_2
+  walk opponent down 2
+  walk opponent_2 down 2
+  text "{foe} step forward!"
+label Fight
   facility tree battle
   if result == 0 goto Lost
   call Leaves
@@ -62,6 +85,7 @@ label Lost
   speaker "Referee"
   say "The streak ends here. Catch your breath, and climb back up. The tree will be waiting."
 label Home
+  call PartnerLeaves
   facility tree end
   fade out 0.6
   warp "PoniGauntlet_BattleTree" 8 12 down
@@ -69,10 +93,19 @@ label Home
   end
 
 
-# The opponent goes off the floor again
+# The opponents go off the floor again (the partner stays until the challenge ends: Home)
 script Leaves
   clearflag FLAG_ALOLA_TREE_SHOW_OPPONENT
+  clearflag FLAG_ALOLA_TREE_SHOW_OPPONENT_2
   hide opponent
+  hide opponent_2
+  return
+
+
+# The partner goes too
+script PartnerLeaves
+  clearflag FLAG_ALOLA_TREE_SHOW_PARTNER
+  hide partner
   return
 
 

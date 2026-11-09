@@ -46,7 +46,18 @@ public static class RidePager
     public static readonly IReadOnlyList<(string Species, string Flag)> WaterRides = new[]
     {
         ("Sharpedo", SharpedoFlag),
+        ("Mantine", MantineFlag),
     };
+
+    /// <summary>The flag that registers Mantine (Big Wave Beach's surfer, once the player has ridden the beach's course).</summary>
+    public const string MantineFlag = "FLAG_ALOLA_RIDE_MANTINE";
+
+    /// <summary>
+    /// Whether a ride over the water skims the sea so lightly that nothing in it notices the rider (Mantine Surf): a surfer
+    /// on its back meets no wild Pokémon in the water (plan 23, Mantine Surf; rulings, "Sharpedo's currents, Mantine Surf,
+    /// ...").
+    /// </summary>
+    public static bool Skims(string? species) => string.Equals(species, "Mantine", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The flag that registers Sharpedo (Route 15's gambler).</summary>
     public const string SharpedoFlag = "FLAG_ALOLA_RIDE_SHARPEDO";
@@ -63,6 +74,13 @@ public static class RidePager
 
     /// <summary>Whether a ride rams the rocks of the sea apart (Sharpedo's Jet).</summary>
     public static bool Rams(string? species) => string.Equals(species, "Sharpedo", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Whether a ride goes through a current against its flow (Sharpedo's Jet): a surfer on Lapras's back is carried on by a
+    /// current (<see cref="FieldMovement.Carries"/>) and cannot fight it; on Sharpedo's they cross it as calm water (plan 23,
+    /// Alola's strong currents; rulings, "Sharpedo's currents, Mantine Surf, ...").
+    /// </summary>
+    public static bool StemsCurrents(string? species) => string.Equals(species, "Sharpedo", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>A ride on land by its species; null where the pager has none.</summary>
     public static (string Species, string Flag)? LandRideOf(string species) =>

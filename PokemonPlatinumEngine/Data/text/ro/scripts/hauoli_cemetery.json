@@ -125,6 +125,74 @@
       ]
     }
   ],
+  "Widow": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        "Bătrâna"
+      ]
+    },
+    {
+      "en": [
+        "My husband is buried here. I come every morning and tell him what the island is up to. Machamp carries the water."
+      ],
+      "text": [
+        "Soțul meu e înmormântat aici. Vin în fiecare dimineață și îi povestesc ce se mai întâmplă pe insulă. Machamp cară apa."
+      ]
+    },
+    {
+      "en": [
+        "He found a strange old plate once, on a night walk through these graves. It belongs with someone who helps the lost find their way."
+      ],
+      "text": [
+        "A găsit odată o placă veche și ciudată, într-o plimbare de noapte printre mormintele astea. Îi aparține cuiva care îi ajută pe cei pierduți să-și găsească drumul."
+      ]
+    },
+    {
+      "en": [
+        "You gave that poor little girl her friend back. I felt it when the night grew quiet. My husband would have liked you."
+      ],
+      "text": [
+        "Ai dat fetiței aceleia sărmane prietena înapoi. Am simțit-o când noaptea s-a liniștit. Soțului meu i-ai fi plăcut."
+      ]
+    },
+    {
+      "en": [
+        "Take his plate. He found it on this very island, and I have kept it long enough. It should go on its way."
+      ],
+      "text": [
+        "Ia-i placa. A găsit-o chiar pe insula asta, iar eu am păstrat-o destul. E timpul să-și urmeze drumul."
+      ]
+    },
+    {
+      "en": [
+        "It hums when the dark is near. Do not be afraid of it. It is only keeping the dead company."
+      ],
+      "text": [
+        "Zumzăie când întunericul e aproape. Să nu te sperii de ea. Doar ține companie morților."
+      ]
+    },
+    {
+      "en": [
+        "Machamp and I will keep him company. Go well, dear. Walk gently among the graves."
+      ],
+      "text": [
+        "Machamp și cu mine îi vom ține companie. Drum bun, dragă. Calcă ușor printre morminte."
+      ]
+    }
+  ],
+  "WidowMachamp": [
+    {
+      "en": [
+        "Machamp tipped its head to you and went on carrying water to the grave."
+      ],
+      "text": [
+        "Machamp a dat din cap spre tine și a continuat să care apă la mormânt."
+      ]
+    }
+  ],
   "ScanLitwick": [
     {
       "en": [

@@ -36,6 +36,42 @@
         ]
       }
     },
+    "opponent_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "Partner"
+        ],
+        "text": [
+          "Partener"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let's climb together!"
+        ],
+        "text": [
+          "Să urcăm împreună!"
+        ]
+      }
+    },
     "onlooker": {
       "name": {
         "en": [

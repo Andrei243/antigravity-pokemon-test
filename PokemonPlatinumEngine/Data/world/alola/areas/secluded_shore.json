@@ -67,6 +67,19 @@
       "item": "Revive"
     },
     {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 181,
+      "z": 344,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_SECLUDED_SHORE_RARE_CANDY",
+      "item": "Rare Candy"
+    },
+    {
       "id": "zygarde_cell_1",
       "looks": "zygarde_cell",
       "movement": "look_south",

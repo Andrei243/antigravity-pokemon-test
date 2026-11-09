@@ -102,6 +102,15 @@ public partial class GameEngine
                     KeepCharactersNear(trim: false);
                 }
                 return 1;
+            case "facilitypartner":
+                // The Battle Tree's Multi room: whoever stands as the partner takes the look and the name of the one drawn (plan 23)
+                if (flow.Runner.FacilityPartner is { } drawn && flow.Map.FindPerson(TowerPartnerPerson) is { } standing)
+                {
+                    standing.NpcType = drawn.ShownLook;
+                    standing.Name = $"{drawn.ShownClass} {drawn.ShownName}";
+                    KeepCharactersNear(trim: false);
+                }
+                return 1;
             case "seen":
                 return flow.Pokedex.IsSeen(number) ? 1 : 0;
             case "score":

@@ -1,7 +1,8 @@
 {
   // Hau'oli Cemetery, Melemele Island (plan 23, the rest of the islands): drawn by hand, our words. A quiet field of
   // graves and flowers east of Route 2, where Ghost-type Pokémon drift through the grass. At night a little girl waits by
-  // a grave for a friend who went ahead of her, the cemetery's own story in three visits (hauoli_cemetery.txt)
+  // a grave for a friend who went ahead of her, the cemetery's own story in three visits (hauoli_cemetery.txt). An old woman
+  // keeps her husband's grave by day with her Machamp and, once the girl has found her friend, gives the Spooky Plate
   "area": "hauoli_cemetery",
   "bgmTrack": "alola/cemetery",
   "trees": "Round",
@@ -35,7 +36,9 @@
     },
     "ghost_girl": { "name": "Little Girl", "npcType": "school_kid_f", "script": "GhostGirl", "still": true,
       "shownBy": "FLAG_ALOLA_CEMETERY_NIGHT", "hiddenBy": "FLAG_ALOLA_CEMETERY_GIRL_GONE" },
-    "mourner": { "name": "Woman", "npcType": "middle_aged_woman", "script": "Mourner", "still": true }
+    "mourner": { "name": "Woman", "npcType": "middle_aged_woman", "script": "Mourner", "still": true },
+    "widow": { "name": "Old Woman", "npcType": "old_woman", "script": "Widow", "still": true },
+    "widow_machamp": { "name": "Machamp", "npcType": "Pokemon", "species": "Machamp", "script": "WidowMachamp", "still": true }
   },
   // The flowers by the east lamp, where the girl's friend left something
   "readAt": [ { "x": 362, "z": 132, "script": "LampFlowers" } ],

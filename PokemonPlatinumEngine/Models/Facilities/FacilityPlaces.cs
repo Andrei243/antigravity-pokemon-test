@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PokemonPlatinumEngine.Models.Facilities;
 
@@ -32,6 +33,9 @@ public static class FacilityPlaces
         BattleTree.Place => BattleTree.Room(way, hard),
         _ => throw new ArgumentException($"No later battle place is called {place}", nameof(place))
     };
+
+    /// <summary>How many of a place's ways have a hard room and so a trophy (every way but one with no host: the Battle Tree's Multi room).</summary>
+    public static int TrophyWays(string place) => WaysOf(place).Count(w => RoomOf(place, w, true).Hard);
 
     /// <summary>How many of a place's hard rooms' trophies the story holds (the records' board's print).</summary>
     public static int Trophies(string place, Story.StoryState story) => place switch

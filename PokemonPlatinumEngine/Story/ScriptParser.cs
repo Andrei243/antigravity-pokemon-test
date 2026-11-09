@@ -25,7 +25,7 @@ public static class ScriptParser
         "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP",
         "TURNS", "SAFARI_CAUGHT",
         "LEAGUE_VICTORIES",
-        "CYCLING", "BIKE", "RIDING",
+        "CYCLING", "BIKE", "RIDING", "RAMMING",
         "CAUGHT",
         // How many Pokédexes' diplomas the player holds (plan 40 · GE4)
         "DIPLOMAS",
@@ -1234,7 +1234,7 @@ public static class ScriptParser
             {
                 string place = r.OneOf(Models.Facilities.FacilityPlaces.Names);
                 string what = r.OneOf("enough", "size", "choose", "check", "way", "hard", "hardopen", "begin", "active", "paused", "resume",
-                    "next", "host", "opponent", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
+                    "next", "host", "opponent", "partner", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
                     "board", "end");
                 string which = what switch
                 {

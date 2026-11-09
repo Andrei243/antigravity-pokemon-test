@@ -14,10 +14,12 @@ script Dexio
   say "Tiny Zygarde Cells, scattered all over Alola! On their own they're shy, but this Cube gathers them right up."
   say "We'd love for you to collect them. The more you find, the more of Zygarde we can put back together!"
   give "Zygarde Cube"
+  setflag FLAG_ALOLA_GOT_ZYGARDE_CUBE
   speaker "Dexio"
   say "Bring the Cube back whenever you've found ten or more. We'll be here, keeping the caravan warm."
   end
 label Assemble
+  setflag FLAG_ALOLA_GOT_ZYGARDE_CUBE
   if not flag FLAG_ALOLA_ZYGARDE_10_MADE goto Ten
   if not flag FLAG_ALOLA_ZYGARDE_50_MADE goto Fifty
   if not flag FLAG_ALOLA_ZYGARDE_100_MADE goto Hundred

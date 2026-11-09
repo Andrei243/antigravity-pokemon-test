@@ -37,7 +37,7 @@ public sealed class StreakChallenge
     private readonly BattleRandom rng;
     private uint stateAtBattle;
     private long drawnAtBattle;
-    private FrontierOpponent? opponent;
+    private FrontierOpponent? opponent, secondOpponent, partner;
     private bool opponentIsHost;
 
     /// <summary>Their species, in the same order.</summary>
@@ -121,6 +121,17 @@ public sealed class StreakChallenge
         int streak = Record(records).Streak;
         stateAtBattle = rng.State;
         drawnAtBattle = rng.Drawn;
+        if (Room.Multi)
+        {
+            // Two trainers with a team each, the second kept clear of the first's species and items; no host comes
+            var (low2, high2) = Room.Tiers(streak);
+            var first = FacilityTrainers.Draw(Room.Entered, low2, high2, Room.Ivs(streak), rng.Next16, Room.Level);
+            var second = FacilityTrainers.Draw(Room.Entered, low2, high2, Room.Ivs(streak), rng.Next16, Room.Level, keepClearOf: first.Pokemon);
+            opponent = Dressed(first);
+            secondOpponent = Dressed(second);
+            opponentIsHost = false;
+            return opponent;
+        }
         if (HostComes(records))
         {
             var record = TrainerDatabase.Get(Room.HostTrainer) ?? throw new InvalidOperationException($"No trainer {Room.HostTrainer} for the {Room.Way} room's host");
@@ -143,6 +154,60 @@ public sealed class StreakChallenge
         opponentIsHost = false;
         return opponent;
     }
+
+    private static FrontierOpponent Dressed(FacilityOpponent drawn) => new()
+    {
+        Number = 0, Pokemon = drawn.Pokemon, OtId = drawn.OtId, Personalities = drawn.Personalities,
+        Dress = new FrontierDress(drawn.Id, drawn.Class, drawn.Name, drawn.Look)
+    };
+
+    /// <summary>The trainers of the battle to come: one, or in the Multi room the pair (drawn together, once a battle).</summary>
+    public IReadOnlyList<FrontierOpponent> Opponents(FrontierRecords records)
+    {
+        var first = Opponent(records);
+        return secondOpponent != null ? new[] { first, secondOpponent } : new[] { first };
+    }
+
+    /// <summary>The trainers of the battle to come as a battle takes them, each with copies of their Pokémon.</summary>
+    public List<Trainer> OpponentsAsTrainers(FrontierRecords records) =>
+        Room.Multi ? Opponents(records).Select(AsTrainer).ToList() : new List<Trainer> { OpponentAsTrainer(records) };
+
+    private Trainer AsTrainer(FrontierOpponent o)
+    {
+        var party = new Party();
+        foreach (var p in o.Pokemon) party.Add(FrontierRules.ForBattle(p, Room.Level));
+        return new Trainer
+        {
+            Id = o.Dress?.Id ?? "facility", Name = o.ShownName, TrainerClass = o.ShownClass, PrizeMoney = 0,
+            Ai = FrontierTrainers.Mind, Look = o.ShownLook, Party = party
+        };
+    }
+
+    /// <summary>
+    /// The partner of the Multi room (null in any other): a trainer of the later sets with a team of two, the same for the
+    /// whole challenge. Drawn from a generator of its own that the challenge's seed gives (so a challenge put down and taken up
+    /// again has the same partner without keeping it, and the opponents' draws are not moved by it): tiers two and three,
+    /// the IVs of the third rank.
+    /// </summary>
+    public FrontierOpponent? Partner
+    {
+        get
+        {
+            if (!Room.Multi) return null;
+            if (partner != null) return partner;
+            var own = new BattleRandom(rng.Seed ^ PartnerSeedMix);
+            partner = Dressed(FacilityTrainers.Draw(Room.Entered, 2, 3, FacilityTrainers.IvsFor(3), own.Next16, Room.Level));
+            return partner;
+        }
+    }
+
+    private const uint PartnerSeedMix = 0x7A12_4C0D;
+
+    /// <summary>The partner as a battle takes them: a trainer beside the player with whole copies of their two.</summary>
+    public Trainer? PartnerAsTrainer() => Partner is { } beside ? AsTrainer(beside) : null;
+
+    /// <summary>The partner's name for a line of the script (<c>{partner}</c>), or nothing in a room with none.</summary>
+    public string PartnerName => Partner is { } beside ? $"{beside.ShownClass} {beside.ShownName}" : "";
 
     /// <summary>The trainer of the battle to come as a battle takes them, with copies of their Pokémon; the host holds a Key Stone.</summary>
     public Trainer OpponentAsTrainer(FrontierRecords records)
@@ -190,6 +255,7 @@ public sealed class StreakChallenge
         if (host && Room.Hard && Room.TrophyVariable != null && !trophyHeld) trophy = true;
         int points = Room.Points(record.Streak);
         opponent = null;
+        secondOpponent = null;
         opponentIsHost = false;
         return new StreakWin(points, opened, trophy, host);
     }

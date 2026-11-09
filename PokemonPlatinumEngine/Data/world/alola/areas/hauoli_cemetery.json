@@ -103,6 +103,28 @@
       "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_HAUOLI_CEMETERY_1"
     },
     {
+      "id": "widow",
+      "looks": "old_woman",
+      "movement": "look_south",
+      "x": 356,
+      "z": 120,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "widow_machamp",
+      "looks": "machamp",
+      "movement": "look_south",
+      "x": 357,
+      "z": 120,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
       "id": "scan_litwick",
       "looks": "litwick",
       "movement": "look_south",

@@ -13,7 +13,7 @@
     { "warp": 1, "map": "AlolaRoute2_Motel", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_DAYLIGHT" },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "scan_chikorita": { "name": "Chikorita", "npcType": "Pokemon", "species": "Chikorita", "script": "ScanChikorita", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_CHIKORITA", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_CHIKORITA_MET" },
     "ilima": { "name": "Ilima", "npcType": "ilima", "script": "Ilima", "still": true, "hiddenBy": "FLAG_ALOLA_VERDANT_TRIAL" },

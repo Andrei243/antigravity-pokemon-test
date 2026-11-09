@@ -9750,6 +9750,77 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **Left**: the Battle Tree's Multi room; Mantine Surf; Sharpedo's currents; the Ultra Warp Ride; the widow on Machamp and the
   Spooky Plate; the day and night cells; the Zygarde Cores' own moves; Magearna and Marshadow (plan 29 · LS11).
 
+## Sharpedo's currents, Mantine Surf, the day and night cells, the Cores' moves, the widow's Spooky Plate and the Battle Tree's Multi room (2026-11-09, plan 23, the wave after the Battle Tree)
+
+- **Where it comes from.** As Z5 to Z8: from the features as they are publicly described (Bulbapedia's pages of the Ride Pager,
+  Mantine Surf, the Zygarde Cores and Cells and the Battle Tree), never a picture, map, line or script of the games. Every
+  line, name and number here is ours.
+- **Sharpedo's currents.** A strong current is the GBA's own (`TileBehavior.CurrentWest` and its three kin, which `Carries`
+  has always read, drawn in a MapDraw drawing as `<`, `>`, `A` and `V`): whoever surfs onto one is carried on its way until
+  calm water, and cannot fight it. **A surfer on Sharpedo's back is carried nowhere** (`RidePager.StemsCurrents`, read by
+  `Player.CarriedBy` where a step lands): the Jet shoots through the flow as through calm water, which is what Sun and Moon say of
+  Sharpedo Jet crossing strong currents. Sun and Moon's currents lie across open sea; ours lies where it can bar something, in
+  the one gap of a ring of reef (`R`, blocked rock in the water, as Poni Coast's islet has) off the Secluded Shore: its islet
+  holds a Rare Candy and is shut against a Lapras (its rider steps onto the gap and is carried straight back out) and open to
+  Sharpedo. Leaving it is never a trap, since the current carries anyone leaving west to calm water. No new behaviour value;
+  the walk of the whole game (`WorldWalk`) counts a current as water, so the islet counts as reached.
+- **Mantine Surf** is the Ride Pager's second water ride (`RidePager.WaterRides`, `MantineFlag`), called under a surfer like
+  Sharpedo (`ride "Mantine"`, a sixth answer of `common.RidePager`) and registered by Big Wave Beach's surfer, whose Mantyke
+  has grown into one, once to a trainer who has the Pager (`FLAG_ALOLA_RIDE_MANTINE`). It goes at a run's pace, as a Lapras
+  does (`Pace.Fastest` is Sharpedo's alone now, asked as `RidePager.Rams`) and **skims the water so lightly that nothing in
+  it notices the rider**: a surfer on Mantine meets no wild Pokémon in the water (`RidePager.Skims`, read by
+  `Player.Landed`; the rods and a battle begun by script are not changed). The built-in `RIDING` is 1 on any ride, so the
+  sea's rocks asked it of Sharpedo alone no longer: **`RAMMING`** (new, a built-in read-only variable) is 1 on a ride that
+  rams (Sharpedo), and `common.SeaRock` asks it. Sun and Moon's Mantine Surf is a minigame of tricks on waves; ours is the
+  beach's **course**: four gates of three buoys across the swell south of the beach (overlay triggers on
+  `VAR_ALOLA_MANTINE` 1 to 4, `MantineGate1` to `4` in `big_wave_beach.txt`), each a trigger that waits for the run's number
+  (the surfer starts it at 1 once asked) and moves it on, ridden in order on a Mantine's back; a rider on anything else
+  (RIDING 0, or RAMMING 1: Sharpedo ploughs the buoys) ends the run at once. A finished run is counted
+  (`VAR_ALOLA_MANTINE_RUNS`) and pays a Big Pearl the first time and a Star Piece the third. No timer: nothing in the field
+  counts a script's seconds, and the gates' order is the course.
+- **The cells by day and night.** Twelve of the ninety-five Cells (none of the five Cores) are shown by an overlay's
+  `shownBy` on a flag the clock keeps (`Story/ClockFlags.cs`, Kalos's evening glint's mechanism): six by day,
+  `FLAG_ALOLA_DAYLIGHT`, from six in the morning to six in the evening, six by night, `FLAG_ALOLA_NIGHTFALL`, the rest (the
+  clock's range now runs through midnight: a `ClockFlag` whose `To` is before its `From`). Sun and Moon's differ by which
+  show only at which time and by island; ours are on the route and place tables' plain open ground (Routes 1, 2, 10, 12
+  and 13, Akala's Routes 4 and 6, Hano Beach, Heahea City, Poni Plains and Poni Meadow, the Secluded Shore). **Neither flag is
+  kept before the Zygarde Cube is had** (`FLAG_ALOLA_GOT_ZYGARDE_CUBE`, set when Dexio hands it over, and again by any Cell or
+  Core touched with the Cube in the bag, so an older save with the Cube gets it the first time it finds one): until then the
+  twelve are hidden, since a Cell is only a slipping blob without the Cube. The cell count of a hundred, each with a flag of
+  its own, stands as before.
+- **The Cores' own moves.** Each of the five Cores unlocks one of the Cube's five moves (`FormChanges.CoreMoves`, by the
+  Core's own pickup flag, so no save needs a field): Vast Poni Canyon's, Thousand Arrows; Route 17's, Thousand Waves; Aether
+  Paradise's, Core Enforcer; the Mahalo Trail's, Extreme Speed; the Lush Jungle's, Dragon Dance. The Cube's list offers a move
+  once its Core has been found (`FormChanges.CubeMovesFor`, handed to `BagScreen.CubeMoves` every frame); a tool or test that
+  hands no list has all five, as R29b always had. Sun and Moon have the Cores teach by their count; one Core to one move is ours.
+- **The old woman and her Machamp** (Sun and Moon's widow, in our words) keep Hau'oli Cemetery's graves by day: the old
+  woman gives the **Spooky Plate**, her husband's find, to a trainer who has seen the little girl and her friend reunited
+  (`VAR_ALOLA_CEMETERY_GIRL` 3), once (`FLAG_ALOLA_SPOOKY_PLATE`); her Machamp, a Pokémon of the map, only cries. No ride.
+- **The Battle Tree's Multi room** (`BattleTree.Ways` gains `multi`; `StreakRoom.Multi`): Sun and Moon's partner room on the
+  frame as it stands. The player enters **two**, a **partner of ours** brings two and two trainers bring two each, a double
+  battle of four against four, at level 50 as the other rooms. There is no host, no Super room and no trophy (the print is gold
+  when every room that has one has its trophy: `FacilityPlaces.TrophyWays`), and Battle Points are the normal room's table without
+  the host's twenty. The partner is a trainer of the later sets with two Pokémon (tiers two and three, the third rank's IVs),
+  drawn once for the whole challenge **from a generator of its own that the challenge's seed gives** (`StreakChallenge.Partner`), so
+  the opponents' draws are not moved by it and a challenge put down and taken up again keeps its partner without keeping a
+  thing. The pair of trainers is drawn together on the challenge's generator with the second kept clear of the first's species and
+  items. The battle is the Frontier's double with a partner (`host.FrontierBattle(team, foes, partner, ...)`, the Tower's
+  Multi room's own path), the partner's AI the Frontier's three routines, and a Tree hall's script stands the partner
+  (`facility tree partner`, `{partner}`, a new word that the hall's people `partner` and `opponent_2` take their looks from) and the
+  pair. **Not built**: choosing the partner, scouting trainers to battle beside (Sun and Moon's), and a friend over a link.
+- **Not built, and why.** *The Ultra Warp Ride*: Ultra Sun and Ultra Moon's flight meets legendary Pokémon of every earlier
+  region, which each would need its species given a way (`SpeciesSources`, the regions' owed lists) and its own beat; the
+  worlds are chosen by name at the wormhole as Z8 left them, and the other regions' legendaries are met in their own. *The link
+  to Galar*: `Transport.Plane` from Alola to Galar is already in the chain (`RegionDatabase`), and Galar has no region file nor maps
+  yet (plan 33's engine), so there is no departure to name and no attendant to stand on it; the attendant arrives with plan 33's
+  first session.
+- **Shots owed** (no GPU session ran): the `alolalast` mode gains `wt20` on: the reef's islet from the sea with the current in its gap
+  by day and after dark, a Lapras carried back and Sharpedo through it, Mantine called on the water and the four gates, the old woman
+  and her Machamp in Hau'oli Cemetery, a timed cell by day and the same place after dark, and the Battle Tree's hall with the partner
+  and the pair of trainers in the Multi room.
+- **Left**: the Battle Tree's partner choice and scouting; the Ultra Warp Ride; Magearna and Marshadow (plan 29 · LS11); a
+  Mantine that does tricks; the new places' own songs.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.
