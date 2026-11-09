@@ -271,6 +271,8 @@ public class PokemonTests
         // Lighthouse, where the lift's car puts its rider down)
         if (arrivals.Count == 0)
             arrivals.AddRange(walkScriptArrivals![mapName]);
+        // Galar's rooms are entered by the open world's doors (plan 32 · OW5), which are no warps of the grid
+        if (arrivals.Count == 0 && RegionDatabase.RegionOfMap(mapName)?.Id == "Galar") return;
         Assert.NotEmpty(arrivals);
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
