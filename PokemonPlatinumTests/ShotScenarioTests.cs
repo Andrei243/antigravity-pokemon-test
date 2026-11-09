@@ -24,6 +24,11 @@ public class ShotScenarioTests
             newgame 12 room
             load saves/one.json 3
             at Sinnoh 116 886 up
+            at3 OpenLab house_step
+            at3 OpenLab 0 0.5 -27 90
+            look 200 30 9
+            look tunnel_west 1.5
+            look home
             step left 3 running
             press confirm
             talk
@@ -48,7 +53,7 @@ public class ShotScenarioTests
             flag FLAG_HAS_POKEDEX on
             var VAR_SPAWN_LOCATION 2
             """, File);
-        string[] verbs = { "newgame", "load", "at", "step", "press", "talk", "answer", "read", "next", "wait", "wild", "trainer", "menu", "move", "shot", "shot", "state", "expect",
+        string[] verbs = { "newgame", "load", "at", "at3", "at3", "look", "look", "look", "step", "press", "talk", "answer", "read", "next", "wait", "wild", "trainer", "menu", "move", "shot", "shot", "state", "expect",
                            "warp", "time", "weather", "give", "pokemon", "heal", "flag", "var" };
         Assert.Equal(verbs, scenario.Steps.Select(s => s.Verb));
         Assert.Equal(2, scenario.Steps[0].Line);
@@ -59,6 +64,43 @@ public class ShotScenarioTests
         Assert.Equal("look", scenario.Name);
         // Every harness verb is in the scenario above
         Assert.Empty(ShotScenario.Verbs.Select(v => v.Name).Except(verbs).Except(new[] { "replay" })); // (replay: AReplayBeginsAGameToo)
+    }
+
+    [Fact]
+    public void AnOpenPlaceAndTheOrbitCamerasLookAreReadAndBadOnesNamed()
+    {
+        // Plan 32 · OW10: at3 on a marker or at x, y, z in metres with a yaw in degrees; look by a yaw, a pitch and an
+        // arm, at a marker over some seconds, or home
+        var good = ShotScenario.Parse("""
+            newgame
+            at3 OpenLab twins_gap
+            at3 OpenLab -20 0.1 -40
+            at3 OpenLab 1.5 2 3 270
+            look 90
+            look 90 -10 30
+            look cavern_east
+            look cavern_east 2
+            look home
+            """, File);
+        Assert.Equal(new[] { "OpenLab", "-20", "0.1", "-40" }, good.Steps[2].Args);
+        foreach (var (line, why) in new[]
+        {
+            ("at3 OpenLab", "takes 2 to 5"),
+            ("at3 OpenLab 12", "is a number"),
+            ("at3 OpenLab 1 2", "x, y and z"),
+            ("at3 OpenLab 1 two 3", "y must be a number"),
+            ("at3 OpenLab 1 2 3 east", "the yaw must be a number"),
+            ("look 90 95", "the pitch is from -60 to 89"),
+            ("look 90 10 0", "the arm must be"),
+            ("look 90 ten", "the pitch must be a number"),
+            ("look home now", "'look home' takes nothing"),
+            ("look cavern_east soon", "the look's seconds"),
+            ("look cavern_east 1 2", "its name and the seconds")
+        })
+        {
+            var e = Assert.Throws<ScenarioException>(() => ShotScenario.Parse("newgame\n" + line, File));
+            Assert.Contains(why, e.Problems.Single());
+        }
     }
 
     [Fact]

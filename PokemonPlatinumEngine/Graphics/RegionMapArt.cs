@@ -17,7 +17,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// volcano), forest is frosted in snow country, a building is a roof over a wall. No GPU call: it paints into a
 /// <see cref="PixelCanvas"/>, the same picture every time.
 /// </summary>
-public static class RegionMapArt
+public static partial class RegionMapArt
 {
     /// <summary>Texels to a cell: one to a tile.</summary>
     public const int CellTexels = Map.ChunkTiles;

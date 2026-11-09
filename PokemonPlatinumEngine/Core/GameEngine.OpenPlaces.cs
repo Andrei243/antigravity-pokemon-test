@@ -134,6 +134,18 @@ public partial class GameEngine
         if (flow.Scripts.In(file, ScriptLibrary.OnEnter) is { } script) flow.Runner.Start(script);
     }
 
+    /// <summary>
+    /// Where Fly lands for a spawn location of an open region (plan 32 · OW10): the marker its region's map names for it
+    /// (<see cref="RegionMap.FlyMarkerOf"/>) in the open map of the spawn's name the game knows; null for a spawn on the
+    /// grid, as every spawn of today's regions is.
+    /// </summary>
+    internal (OpenMap Map, OpenMarker Marker)? OpenFlyLanding(SpawnLocation town) =>
+        OpenMapNamed(town.Map) is { } open ? FlyLandingIn(open, RegionMap.ForMap(town.Map) ?? RegionMap.Of(open.Region), town.Id) : null;
+
+    /// <summary>The marker Fly lands on in an open map for a spawn location, as its region's map names it; null where it names none or the map lacks it.</summary>
+    internal static (OpenMap Map, OpenMarker Marker)? FlyLandingIn(OpenMap open, RegionMap? region, int spawn) =>
+        region?.FlyMarkerOf(spawn) is { } name && open.Marker(name) is { } marker ? (open, marker) : null;
+
     // ------------------------------------------------------------------ under a script
 
     /// <summary>

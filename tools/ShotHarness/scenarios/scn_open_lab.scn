@@ -1,0 +1,26 @@
+# Plan 32 · OW10: the open test world (the lab, which the harness bakes) through a scenario: `at3` on a marker and at a
+# place in metres, the orbit camera posed by `look` and sent to look at a marker, the open place in the state, and the
+# open world's layers over the picture
+newgame
+at3 OpenLab house_step
+expect open.map OpenLab
+expect open.area lab_meadow
+shot scn_open_0_house_step
+look 200 30 9
+shot scn_open_1_posed
+look tunnel_west 1.0
+shot scn_open_2_look_tunnel
+look home
+at3 OpenLab 0 0 0 90
+expect open.area lab_cave
+layers triggers,markers,nav,solid
+shot scn_open_3_cavern_layers
+at3 OpenLab north_meadow
+look 90 38 16
+layers sight,markers,areas
+shot scn_open_4_cones
+at3 OpenLab 24 0.5 22 0
+layers encounters,chunks
+wait 3
+shot scn_open_5_zone_chunks
+layers off
