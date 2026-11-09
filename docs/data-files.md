@@ -679,7 +679,7 @@ An open region's land (plan 32 · OW2; `tools/OpenWorldBake`) is written as data
 
 ## Voice packs
 
-Plan 26 · V2. A pack is the spoken lines of one language, never in git (`/voice/` is ignored): a folder `voice/<language>/` beside the executable, or at the repository's root while the game is developed (`VoiceLibrary.FoldersFor`). It holds a file to a take and `pack.json` listing them (`Audio/VoiceLibrary.cs`, `VoicePackFile`):
+Plan 26 · V2. A pack is the spoken lines of one language, never in git (`/voice/` is ignored): a folder `voice/<language>/` beside the executable, or at the repository's root while the game is developed (`VoiceLibrary.FoldersFor`), or anywhere with the switch `--voices <folder>` (the folder with `pack.json` in it, or one holding a folder per language), which also sets the options' VOICES row to ALL for that run; `docs/voice/playing.md` says what to run. It holds a file to a take and `pack.json` listing them (`Audio/VoiceLibrary.cs`, `VoicePackFile`):
 
 ```json
 {

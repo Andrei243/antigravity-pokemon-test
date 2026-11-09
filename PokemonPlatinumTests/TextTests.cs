@@ -93,6 +93,8 @@ public class TextTests
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
         // The character look an open map's person is made with when its file names none: a name of characters.json, never drawn as a word (plan 32 · OW6)
         ["Core/GameEngine.OpenPeople.cs"] = new[] { "Trainer" },
+        // Key prefixes of the open map's figures list (a person's name or a wild one's id), data and no words (plan 32 · OW9)
+        ["Core/GameEngine.OpenFigures.cs"] = new[] { "person:", "wild:" },
         // A name of the story's flags, which is data and no word (plan 21 · H12)
         ["Core/GameEngine.Salt.cs"] = new[] { "FLAG_HOENN_ABNORMAL_WEATHER_" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)

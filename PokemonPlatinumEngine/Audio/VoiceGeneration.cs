@@ -94,14 +94,22 @@ public static class VoiceGeneration
     /// chooses from, by <paramref name="cast"/> (the game's when none is given), since the game plays the chosen one's take.
     /// </summary>
     public static VoiceJobFile Plan(VoiceFile catalogue, string voice, VoiceLibrary? pack, Which which, string language = "en",
-        Func<string, string, (string Path, string Text)?>? samples = null, VoiceLexicon? lexicon = null, int round = 0, int takes = Takes, VoiceCast? cast = null)
+        Func<string, string, (string Path, string Text)?>? samples = null, VoiceLexicon? lexicon = null, int round = 0, int takes = Takes, VoiceCast? cast = null,
+        Func<string, IReadOnlyCollection<string>>? selfSpeakers = null)
     {
         var file = new VoiceJobFile { Voice = voice, Language = language };
         foreach (var line in catalogue.Lines)
         {
-            if (line.Status != VoiceLine.StatusSpoken || line.Spoken == null || line.Voice == VoiceCast.Self) continue;
+            if (line.Status != VoiceLine.StatusSpoken || line.Spoken == null) continue;
+            List<string> speakers;
+            if (line.Voice == VoiceCast.Self)
+            {
+                // Said by whoever is spoken to: made in each voice of the people who run the script (selfSpeakers), if the caller knows them
+                if (selfSpeakers?.Invoke(line.Key) is not { Count: > 0 } people) continue;
+                speakers = people.Where(p => Matches(p, voice)).ToList();
+            }
             // A voice chosen at run time (the assistant, by the player's look) is made in each of the voices it chooses from
-            var speakers = (cast ?? VoiceCast.Default).File.Voices.TryGetValue(line.Voice, out var entry) && entry.Chooses is { Count: > 0 } chooses
+            else speakers = (cast ?? VoiceCast.Default).File.Voices.TryGetValue(line.Voice, out var entry) && entry.Chooses is { Count: > 0 } chooses
                 ? chooses.Where(c => Matches(line.Voice, voice) || Matches(c, voice)).ToList()
                 : Matches(line.Voice, voice) ? new List<string> { line.Voice } : new List<string>();
             var keyed = line.Variants is { Count: > 0 } variants

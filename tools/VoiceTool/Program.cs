@@ -17,12 +17,13 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
+Dictionary<string, SortedSet<string>>? selfMap = null;
 string lexiconPath = Path.Combine(engine, "Data", "voice", "lexicon.json");
-string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon" };
+string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon", "status", "design", "speak" };
 if (words.Count == 0 || !commands.Contains(words[0]))
 {
     Console.Error.WriteLine("Say one of: " + string.Join(", ", commands) + ". tools/VoiceTool/README.md says what each does.");
@@ -43,6 +44,9 @@ return words[0] switch
     "trial" => Trial(),
     "reel" => Reel(),
     "lexicon" => Lexicon(),
+    "status" => Status(),
+    "design" => Design(),
+    "speak" => Speak(),
     _ => Vowels()
 };
 
@@ -103,8 +107,16 @@ VoiceFile CatalogueNow()
 {
     var file = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
     if (Option("--region") is { } region)
-        file.Lines.RemoveAll(l => !string.Equals(VoiceCatalogue.RegionOf(l.Key), region, StringComparison.OrdinalIgnoreCase));
+        // (a line of no region, the common scripts' and the phone's, belongs to every region)
+        file.Lines.RemoveAll(l => VoiceCatalogue.RegionOf(l.Key) is { } of && !string.Equals(of, region, StringComparison.OrdinalIgnoreCase));
     return file;
+}
+
+// The voices of the people who run a script whose lines are the person spoken to's (found once, by walking the game's maps)
+IReadOnlyCollection<string> SelfSpeakers(string key)
+{
+    selfMap ??= SelfVoices.Of(new VoiceCast(GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath))), Option("--region"));
+    return SelfVoices.ScriptOf(key) is { } script && selfMap.TryGetValue(script, out var set) ? set : Array.Empty<string>();
 }
 
 VoiceLibrary? PackNow() => VoiceLibrary.Open(Option("--pack") is { } p ? Path.GetFullPath(p) : Path.Combine(repo, "voice", LanguageOf()));
@@ -137,7 +149,7 @@ int Jobs()
 {
     if (words.Count < 2) { Console.Error.WriteLine("jobs <voice> [--which missing|stale|all] [--out <file>]"); return 2; }
     var which = Enum.TryParse<VoiceGeneration.Which>(Option("--which") ?? "missing", true, out var w) ? w : VoiceGeneration.Which.Missing;
-    var jobs = VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), which, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default);
+    var jobs = VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), which, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default, selfSpeakers: SelfSpeakers);
     string output = Option("--out") ?? Path.Combine(repo, "voice", "jobs", VoicePacks.FileNameOf(words[1]) + ".json");
     Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
     File.WriteAllText(output, GameDataFiles.Serialize(jobs));
@@ -156,7 +168,7 @@ int Generate()
         var catalogue = CatalogueNow();
         var pack = PackNow();
         foreach (string voice in words.Skip(1))
-            files.Add(VoiceGeneration.Plan(catalogue, voice, pack, VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default));
+            files.Add(VoiceGeneration.Plan(catalogue, voice, pack, VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default, takes: int.TryParse(Option("--takes"), out int takes) && takes > 0 ? takes : VoiceGeneration.Takes, selfSpeakers: SelfSpeakers));
     }
     if (files.Count == 0) { Console.Error.WriteLine("generate <voice>... [--region <id>] | --jobs <file>"); return 2; }
     if (!File.Exists(config))
@@ -238,6 +250,110 @@ int Reel()
     var spoken = VoicePacks.KeysOf(catalogue).GroupBy(k => k.Key).ToDictionary(g => g.Key, g => g.First().English);
     File.WriteAllLines(Path.ChangeExtension(output, ".txt"), keys.Select(k => { string key = k[..k.IndexOf(' ')]; return spoken.TryGetValue(key, out var en) ? $"{k}: {en}" : k; }));
     Console.WriteLine($"{keys.Count} takes, {samples.Length / (double)Synthesizer.DsRate:0} seconds, in {output} (their keys in order beside it).");
+    return 0;
+}
+
+// What a pack has of the catalogue (or of a region's part of it) voice by voice: current, stale, missing, and whether the voice has a design
+int Status()
+{
+    var cast = GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath));
+    var catalogue = CatalogueNow();
+    var pack = PackNow();
+    var have = new Dictionary<(string Key, string Voice), VoicePackEntry>();
+    if (pack != null) foreach (var e in pack.Entries) have[(e.Key, e.Voice)] = e;
+    var rows = new SortedDictionary<string, int[]>(StringComparer.Ordinal); // current, stale, missing
+    var missingKeys = new List<(string Voice, string Key)>();
+    int self = 0, shownOnly = 0;
+    foreach (var line in catalogue.Lines)
+    {
+        if (line.Status != VoiceLine.StatusSpoken || line.Spoken == null) { shownOnly++; continue; }
+        IReadOnlyCollection<string> speakers;
+        if (line.Voice == VoiceCast.Self)
+        {
+            speakers = SelfSpeakers(line.Key);
+            if (speakers.Count == 0) { self++; continue; }
+        }
+        else speakers = cast.Voices.TryGetValue(line.Voice, out var entry) && entry.Chooses is { Count: > 0 } chooses ? chooses : new List<string> { line.Voice };
+        var keys = line.Variants is { Count: > 0 } v ? v.Select(x => line.Key + x.Key).ToList() : new List<string> { line.Key };
+        foreach (string speaker in speakers)
+            foreach (string key in keys)
+            {
+                if (!rows.TryGetValue(speaker, out var counts)) rows[speaker] = counts = new int[3];
+                int state = have.TryGetValue((key, speaker), out var take) ? (take.TextHash == VoiceCatalogue.HashOf(line.En) ? 0 : 1) : 2;
+                counts[state]++;
+                if (state > 0) missingKeys.Add((speaker, key));
+            }
+    }
+    bool Designed(string voice) => cast.Voices.TryGetValue(voice, out var c) && c.Design != null;
+    int[] total = new int[3];
+    var undesigned = new List<(string Voice, int Lines)>();
+    foreach (var (voice, counts) in rows)
+    {
+        for (int i = 0; i < 3; i++) total[i] += counts[i];
+        if (!Designed(voice)) undesigned.Add((voice, counts.Sum()));
+    }
+    if (switches.Contains("--voices"))
+        foreach (var (voice, counts) in rows) Console.WriteLine($"{voice,-34} current {counts[0],5}  stale {counts[1],4}  missing {counts[2],5}  {(Designed(voice) ? "" : "NO DESIGN")}");
+    Console.WriteLine($"{rows.Count} voices speak {total.Sum()} takes' worth of spoken lines: {total[0]} current, {total[1]} stale, {total[2]} missing; {self} lines of no voice (said by whoever is spoken to in scripts no person runs) and are nobody's; {shownOnly} shown only (no spoken text).");
+    Console.WriteLine($"{undesigned.Count} of those voices have no design ({undesigned.Sum(u => u.Lines)} takes).");
+    if (switches.Contains("--shown"))
+        foreach (var line in catalogue.Lines.Where(l => l.Status != VoiceLine.StatusSpoken || l.Spoken == null)) Console.WriteLine($"  {line.Voice}	{line.Key}	{line.En}");
+    if (switches.Contains("--missing"))
+        foreach (var (voice, key) in missingKeys) Console.WriteLine($"  {voice}\t{key}");
+    return 0;
+}
+
+// Brief and design for every voice that speaks the catalogue (or the region) and has none: tools/VoiceTool/Designs.cs
+int Design()
+{
+    var cast = GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath));
+    var catalogue = CatalogueNow();
+    var wanted = new SortedSet<string>(StringComparer.Ordinal);
+    foreach (var line in catalogue.Lines)
+    {
+        if (line.Status != VoiceLine.StatusSpoken) continue;
+        if (line.Voice == VoiceCast.Self) { foreach (string s in SelfSpeakers(line.Key)) wanted.Add(s); }
+        else if (cast.Voices.TryGetValue(line.Voice, out var entry) && entry.Chooses is { Count: > 0 } chooses) foreach (string c in chooses) wanted.Add(c);
+        else wanted.Add(line.Voice);
+    }
+    var taken = new HashSet<(string, double, double)>(cast.Voices.Values.Where(v => v.Design != null).Select(v => (v.Design!.Blend, v.Design.Speed, v.Design.Pitch)));
+    int made = 0, generic = 0;
+    foreach (string voice in wanted)
+    {
+        if (cast.Voices.TryGetValue(voice, out var existing) && (existing.Design != null || existing.Chooses != null || existing.Clone != null)) continue;
+        var (brief, design, plain) = Designs.Make(voice, taken);
+        if (existing == null) cast.Voices[voice] = existing = new CastVoice();
+        existing.Brief = brief;
+        existing.Design = design;
+        existing.Provisional = null;
+        made++;
+        if (plain) { generic++; Console.WriteLine($"plain: {voice} has no profile in Designs.cs, so it speaks as a person of the town"); }
+    }
+    File.WriteAllText(castPath, GameDataFiles.Serialize(cast));
+    Console.WriteLine($"{made} voices designed ({generic} from the plain profile), written to {castPath}; {wanted.Count - made} already had a design.");
+    return 0;
+}
+
+// A line shown only (its text names the player or the rival) given a spoken text written by hand: speak <file of {"key": "spoken text"}>
+int Speak()
+{
+    if (words.Count < 2) { Console.Error.WriteLine("speak <file>: a JSON object of line keys to the text that is said in place of the line (no placeholders; kept across catalogue runs while the line's English holds)."); return 2; }
+    var given = GameDataFiles.Deserialize<Dictionary<string, string>>(File.ReadAllText(words[1]));
+    var catalogue = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
+    int set = 0;
+    foreach (var (key, text) in given)
+    {
+        var line = catalogue.Lines.FirstOrDefault(l => l.Key == key);
+        if (line == null) { Console.WriteLine($"wrong: no line {key}"); continue; }
+        if (text.Contains('{')) { Console.WriteLine($"wrong: {key}: a spoken text holds no placeholder"); continue; }
+        line.Spoken = text;
+        line.Status = VoiceLine.StatusSpoken;
+        line.Manual = true;
+        line.Variants = null;
+        set++;
+    }
+    File.WriteAllText(linesFile, VoiceCatalogue.Serialize(catalogue.Lines));
+    Console.WriteLine($"{set} lines given a spoken text by hand; run catalogue to rewrite the report.");
     return 0;
 }
 

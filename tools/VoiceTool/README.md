@@ -26,6 +26,15 @@ dotnet run --project tools/VoiceTool -- lexicon [--top 60]                      
 dotnet run --project tools/VoiceTool -- check-samples | bake-samples              # the recording kit of the first draft (a cloned rival), kept but unused since the user's ruling of 2026-11-07
 ```
 
+Sinnoh's whole pack, and the voices it needs (plan 26 · V5):
+
+```bash
+dotnet run --project tools/VoiceTool -- status --region sinnoh --pack <pack> [--voices] [--missing] [--shown]   # what a pack has of the catalogue (or of a region's part), voice by voice: current, stale, missing; the voices with no design; the lines shown only (--shown)
+dotnet run --project tools/VoiceTool -- design --region sinnoh                    # a brief and a Kokoro design for every voice that speaks the region and has none (Designs.cs: profiles by archetype, pools of Kokoro's voices, drawn by a hash of the id); voices with a design are left as they are
+dotnet run --project tools/VoiceTool -- speak <file.json>                         # spoken texts written by hand: {"line key": "what is said"} for lines whose English names the player or the rival
+dotnet run --project tools/VoiceTool -- generate <voice>... --region sinnoh --takes 1 --pack <folder>   # --takes n: a take a line (3 by default, the best kept)
+```
+
 A line whose voice chooses at run time (`assistant`) is made in each voice it chooses from (`assistant_boy`, `assistant_girl`).
 
 A pack (`docs/data-files.md`, "Voice packs") is `voice/<language>/` beside the game or at the repository's root, ignored by git. The game plays a take only while its `textHash` is the hash of the line's English now; a rewritten line is stale and silent until its take is made again.

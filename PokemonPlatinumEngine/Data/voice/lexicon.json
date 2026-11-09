@@ -51,6 +51,24 @@
     { "name": "Palkia", "say": "PAL-kee-uh", "kind": "species" },
     { "name": "Uxie", "say": "YOOK-see", "kind": "species" },
     { "name": "Mesprit", "say": "MESS-pree", "kind": "species" },
-    { "name": "Azelf", "say": "AZ-elf", "kind": "species" }
+    { "name": "Azelf", "say": "AZ-elf", "kind": "species" },
+    { "name": "Psyduck", "say": "SY-duck", "kind": "species" },
+    { "name": "Clefairy", "say": "kleh-FAIR-ee", "kind": "species" },
+    { "name": "Pikachu", "say": "PEE-kuh-choo", "kind": "species" },
+    { "name": "Buneary", "say": "BUN-air-ee", "kind": "species" },
+    { "name": "Magikarp", "say": "MAJ-ih-karp", "kind": "species" },
+    { "name": "Ponyta", "say": "poh-NEE-tuh", "kind": "species" },
+    { "name": "Remoraid", "say": "REM-or-ayd", "kind": "species" },
+    { "name": "Chatot", "say": "chuh-TOT", "kind": "species" },
+    { "name": "Combee", "say": "KOM-bee", "kind": "species" },
+    { "name": "Pachirisu", "say": "pah-chee-REE-soo", "kind": "species" },
+    { "name": "Buizel", "say": "BWEE-zel", "kind": "species" },
+    { "name": "Eevee", "say": "EE-vee", "kind": "species" },
+    { "name": "Gyarados", "say": "GYAIR-uh-dose", "kind": "species" },
+    { "name": "Porygon", "say": "POR-ee-gon", "kind": "species" },
+    { "name": "Croagunk", "say": "KROH-uh-gunk", "kind": "species" },
+    { "name": "Electivire", "say": "ee-LEK-tih-vire", "kind": "species" },
+    { "name": "Finneon", "say": "FIN-ee-on", "kind": "species" },
+    { "name": "Heatran", "say": "HEE-tran", "kind": "species" }
   ]
 }
