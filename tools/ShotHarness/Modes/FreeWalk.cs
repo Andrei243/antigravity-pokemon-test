@@ -121,7 +121,11 @@ partial class Harness
         // FM4, part b: every cut, every hat, every garment and everything held at grown scale, and the grown face
         FreeWalkPartB(context, pose, backdrop);
 
-        // The chibi kit's clips on a grown body, which follows them with its seven appended bones at rest
+        // FM5's shots of the grown clips (fw41 to fw44)
+        FreeWalkMotion(context, pose, backdrop);
+
+        // A grown body standing, walking, running, bowing and sitting: the chibi kit's clips in FM4, the grown kit's own
+        // since FM5 (a grown rig's Animate plays them)
         if (Wanted("fw40_poses"))
         {
             (string Text, CharacterPose Pose, string Type)[] poses =
