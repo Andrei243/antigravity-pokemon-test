@@ -278,6 +278,17 @@ public partial class GameEngine
     /// </summary>
     internal RegionMovement? RegionMovementOverride { get; set; }
 
+    /// <summary>
+    /// The body kit the people of the place are drawn in (plan 30 · FM3): the region's (<see cref="Region.Kit"/>), or a
+    /// test region's word in its place. Where it is grown the field draws its people as live rigs and impostors of the
+    /// grown kit (style guide, "Live rigs in the field"); chibi everywhere a region's file says nothing, which is every
+    /// region today.
+    /// </summary>
+    public Data.CharacterKit KitHere => RegionKitOverride ?? Here.Kit;
+
+    /// <summary>A test region's body kit in place of the region's own (plan 30 · FM3): what a test or a tool lays to see a place's people grown. Null in the game.</summary>
+    internal Data.CharacterKit? RegionKitOverride { get; set; }
+
     // The band a Gym Leader's, an Elite Four's or the Champion's battle opens on, and its portraits (plan 09 · L15):
     // begun with the transition, rendered offscreen as its frames find the rigs ready, ended at the midpoint
     private readonly BandPortraits band = new();
@@ -2073,6 +2084,10 @@ public partial class GameEngine
         // Where the game knows an open map, the player's grown look there is kept through a grid room's warp, or coming
         // back out the player is not drawn until it is made again (plan 32 · OW10, the harness's open86); none in a game of today
         if (openMaps.Count > 0) looks.Add(OpenPlayerLook);
+        // Where the region's people are grown, each look in the grown kit too, which the field draws them as (plan 30 · FM3);
+        // the chibi looks stay, standing in until a grown one is made
+        if (KitHere == Data.CharacterKit.Grown)
+            looks.AddRange(looks.Where(l => CharacterModels.KindOf(l) == RigKind.Humanoid).Select(l => CharacterStyle.InKit(l, Data.CharacterKit.Grown)).ToList());
         // (and the player's look holding a rod, which a cast builds: plan 11 · C8)
         if (trim) CharacterModels.Trim(looks.Append(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod)));
         CharacterModels.Preload(looks);

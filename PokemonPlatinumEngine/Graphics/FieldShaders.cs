@@ -193,7 +193,7 @@ void Skin(out vec3 p, out vec3 n)
 }";
 
     private static readonly string SkinnedVertex = @"#version 330
-" + SkinningFunctions + @"
+" + SkinningFunctions + SkinnedUpright + @"
 uniform mat4 mvp;
 uniform mat4 matModel;
 uniform mat4 matNormal;
@@ -217,32 +217,58 @@ void main()
     fragNormal = wn;
     fragWorld = world;
     fragLight = lightVP * vec4(world + wn * 0.035, 1.0);
-    gl_Position = mvp * vec4(p, 1.0);
+    gl_Position = Straightened(mvp * vec4(p, 1.0), world);
+}";
+
+    // The field's straightening of upright things for a skinned model (plan 30 · FM3: the live rigs of a grown region
+    // stand as the scenery does; the scenery's own vertex program says how). Nought everywhere but while the field draws
+    // its people (FieldShaders.SetSkinnedStraightening), where it changes nothing
+    private const string SkinnedUpright = @"
+uniform float upright;
+uniform float pitchSin;
+uniform float uprightBase;
+
+vec4 Straightened(vec4 clip, vec3 world)
+{
+    if (upright > 0.0)
+    {
+        float foot = clip.w + (world.y * pitchSin + uprightBase) * upright;
+        clip.yz *= foot / clip.w;
+        clip.w = foot;
+    }
+    return clip;
 }";
 
     // The outline of a skinned model is the model itself pushed out along its normals, drawn with its front faces
     // culled, in the surface colour mixed toward ink
     private static readonly string SkinnedOutlineVertex = @"#version 330
-" + SkinningFunctions + @"
+" + SkinningFunctions + SkinnedUpright + @"
 uniform mat4 mvp;
+uniform mat4 matModel;
 uniform float outlineWidth;
 out vec4 fragColor;
+out vec3 fragWorld;
 
 void main()
 {
     vec3 p, n;
     Skin(p, n);
+    vec3 at = p + normalize(n) * outlineWidth;
     fragColor = vertexColor;
-    gl_Position = mvp * vec4(p + normalize(n) * outlineWidth, 1.0);
+    fragWorld = (matModel * vec4(at, 1.0)).xyz;
+    gl_Position = Straightened(mvp * vec4(at, 1.0), fragWorld);
 }";
 
     private const string SkinnedOutlineFragment = @"#version 330
 in vec4 fragColor;
+in vec3 fragWorld;
 uniform vec3 inkColor;
 uniform float inkAmount;
 out vec4 finalColor;
+" + MirrorFunctions + @"
 void main()
 {
+    MirrorClip(fragWorld);
     finalColor = vec4(mix(fragColor.rgb, inkColor, inkAmount), 1.0);
 }";
 
@@ -1127,6 +1153,37 @@ void main()
     public void EndMirrorPass()
     {
         foreach (var shader in MirroredPrograms) Set(shader, "mirrorClip", Vector2.Zero);
+    }
+
+    /// <summary>
+    /// Straightens the skinned programs (the body's and the outline's) as the scenery's are straightened, for the live rigs
+    /// of a grown region's field alone (plan 30 · FM3; style guide, "Live rigs in the field"): by <paramref name="amount"/>
+    /// under a camera pitched by <paramref name="pitchDeg"/>, or in the mirror pass about the water's
+    /// <paramref name="mirrorPlane"/> and cut off under it. <see cref="ClearSkinnedStraightening"/> puts both back to
+    /// nought straight after, so no battle, title or studio ever draws a rig straightened.
+    /// </summary>
+    public void SetSkinnedStraightening(float amount, float pitchDeg, float? mirrorPlane)
+    {
+        var (sin, b) = mirrorPlane is { } plane ? Reflections.Straightening(pitchDeg, plane) : (MathF.Sin(pitchDeg * MathF.PI / 180f), 0f);
+        foreach (var shader in new[] { CharacterSkinned, OutlineSkinned })
+        {
+            Set(shader, "upright", amount);
+            Set(shader, "pitchSin", sin);
+            Set(shader, "uprightBase", b);
+            Set(shader, "mirrorClip", mirrorPlane is { } p ? new Vector2(1f, p - Reflections.Clearance) : Vector2.Zero);
+        }
+    }
+
+    /// <summary>The skinned programs as every other drawer of a rig finds them: nothing straightened, nothing cut off.</summary>
+    public void ClearSkinnedStraightening()
+    {
+        foreach (var shader in new[] { CharacterSkinned, OutlineSkinned })
+        {
+            Set(shader, "upright", 0f);
+            Set(shader, "pitchSin", 0f);
+            Set(shader, "uprightBase", 0f);
+            Set(shader, "mirrorClip", Vector2.Zero);
+        }
     }
 
     /// <summary>

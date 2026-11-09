@@ -358,6 +358,15 @@ internal static class CharacterSprites
     public static void DrawReflection(CharacterRig rig, CharacterPose pose, float yaw, Vector3 feet, float pitchDeg, float reach, Camera3D? straight, Reflections.Tint tint)
     {
         if (!Cache.TryGetValue(KeyOf(rig, pose, yaw), out var baked)) return;
+        DrawReflection(baked.Texture, FrameW, FrameH, feet, pitchDeg, reach, straight, tint);
+    }
+
+    /// <summary>
+    /// A frame of <paramref name="FrameW"/> by <paramref name="FrameH"/> tiles mirrored in a puddle as a sprite is, its feet
+    /// 0.05 over its bottom row: a sprite's own, or a grown region's impostor (plan 30 · FM3).
+    /// </summary>
+    internal static void DrawReflection(Texture2D texture, float FrameW, float FrameH, Vector3 feet, float pitchDeg, float reach, Camera3D? straight, Reflections.Tint tint)
+    {
         float sin = MathF.Sin(pitchDeg * MathF.PI / 180f);
         float length = FrameH / sin;
         float shown = MathF.Min(length, reach);
@@ -373,7 +382,7 @@ internal static class CharacterSprites
 
         float X(float x, float z) => straight is { } cam && feet.Y != 0f ? WorldRenderer.Straighten(cam, pitchDeg, x, y, z) : x;
         Rlgl.CheckRenderBatchLimit(4);
-        Rlgl.SetTexture(baked.Texture.Id);
+        Rlgl.SetTexture(texture.Id);
         Rlgl.Begin(DrawMode.Quads);
         Rlgl.Color4ub(tint.R, tint.G, tint.B, near);
         Rlgl.TexCoord2f(0, footV); Rlgl.Vertex3f(X(x0, z0), y, z0);
