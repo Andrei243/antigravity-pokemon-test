@@ -51,7 +51,7 @@ public class CrossedExpTests
     {
         var story = new StoryState();
         Assert.Null(LevelCaps.Ceiling(RegionDatabase.Sinnoh, story));
-        Assert.Null(LevelCaps.Ceiling("Galar", story));
+        Assert.Null(LevelCaps.Ceiling("Paldea", story));
     }
 
     [Fact]

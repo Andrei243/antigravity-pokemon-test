@@ -252,13 +252,11 @@ public class GalarTests
             var story = new StoryState();
             story.SetVar("VAR_GALAR_VERSION", version);
             story.SetVar("VAR_GALAR_STORY", 4);
-            var pokedex = new Pokedex();
-            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Region = RegionDatabase.Galar, OpenMap = Open.Value, Pokedex = pokedex };
+            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Region = RegionDatabase.Galar, OpenMap = Open.Value };
             var runner = new ScriptRunner(ScriptLibrary.Default, host);
             runner.Start(ScriptLibrary.Default.Find("Shadow", "slumbering_weald")!, null);
             runner.RunToEnd();
-            Assert.True(pokedex.IsSeen(PokemonDatabase.Get(seen)!.DexNumber), seen);
-            Assert.False(pokedex.IsSeen(PokemonDatabase.Get(version == 1 ? "Zamazenta" : "Zacian")!.DexNumber));
+            Assert.Equal(new[] { seen }, host.SeenSpecies);
         }
     }
 }

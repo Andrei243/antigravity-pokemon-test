@@ -243,7 +243,7 @@ public class PokedexTests
         Assert.Equal("updated-unova", RegionDatabase.Get("Unova")!.Dex);
         Assert.Equal("kalos-central", RegionDatabase.Get("Kalos")!.Dex);
         Assert.Equal("original-alola", RegionDatabase.Get("Alola")!.Dex);
-        Assert.Null(RegionDatabase.Get("Galar")!.Dex);
+        Assert.Null(RegionDatabase.Get("Paldea")!.Dex);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse(null).Rule);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse("Caught").Rule);
         Assert.Equal(new NationalUnlock(NationalUnlockRule.Caught, 100), NationalUnlock.Parse("Caught100"));
@@ -274,7 +274,7 @@ public class PokedexTests
     {
         var dex = new Pokedex();
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
-        dex.Enter(RegionDatabase.Get("Galar")!);   // no Pokédex yet: nothing is added
+        dex.Enter(RegionDatabase.Get("Paldea")!);   // no Pokédex yet: nothing is added
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
         dex.Enter(RegionDatabase.Get("Kanto")!);
         dex.Enter(RegionDatabase.Get("Kanto")!);
@@ -320,7 +320,7 @@ public class PokedexTests
     {
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Sinnoh")!));
         Assert.Same(Habitats.Sinnoh, Habitats.Of(RegionDatabase.Get("Sinnoh")!));
-        Assert.Null(Habitats.Of(RegionDatabase.Get("Galar")!));
+        Assert.Null(Habitats.Of(RegionDatabase.Get("Paldea")!));
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Alola")!));
         // Unova has its own since plan 22 · U2 (Black 2's tables of the areas open)
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Unova")!));

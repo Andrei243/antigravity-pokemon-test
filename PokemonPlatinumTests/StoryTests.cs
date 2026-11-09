@@ -717,6 +717,13 @@ public class StoryTests
         foreach (var map in Walk.OwnMaps.Values)
             foreach (var (at, puzzle) in map.BrailleSpots)
                 started.Add(Scripts.Find(puzzle.Script, map.ScriptFileAt(at.X, at.Y))!.FullName);
+        // An open map's triggers and people (plan 33 · GL1: Galar's places), each looked for in its place's file first
+        foreach (var region in RegionDatabase.All)
+            foreach (var open in PokemonPlatinumEngine.OpenWorld.OpenRegions.Load(region, withLand: false))
+            {
+                foreach (var trigger in open.Triggers) started.Add(Scripts.Find(trigger.Script, trigger.Place)!.FullName);
+                foreach (var person in open.People.Where(p => p.Script != null)) started.Add(Scripts.Find(person.Script!, person.Place)!.FullName);
+            }
         foreach (var script in Scripts.All)
         {
             if (script.Name is ScriptLibrary.OnEnter or ScriptLibrary.OnTransition) started.Add(script.FullName);
@@ -732,6 +739,14 @@ public class StoryTests
     {
         foreach (var script in Scripts.All.Where(s => s.File != ScriptLibrary.Common))
         {
+            // An open place's scripts name the open map's people (plan 33 · GL1)
+            if (Walk.MapOfFile(script.File) == null && PokemonPlatinumEngine.OpenWorld.OpenRegions.MapOfArea(script.File) is { } openName)
+            {
+                var open = PokemonPlatinumEngine.OpenWorld.OpenRegions.Shared(openName)!;
+                foreach (var (who, line) in ScriptLibrary.PeopleNamed(script))
+                    Assert.True(open.Person(who) != null, $"{script.File}.txt({line}): nobody of the open map {open.Name} is called '{who}'");
+                continue;
+            }
             var map = Walk.MapOfFile(script.File)!;
             foreach (var (who, line) in ScriptLibrary.PeopleNamed(script))
                 Assert.True(map.FindPerson(who, script.File) != null, $"{script.File}.txt({line}): nobody of {map.Name} is called '{who}'");

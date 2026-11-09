@@ -42,7 +42,7 @@ Counted on 2026-11-07 from every plan's status list. About 190 to 230 sittings a
 | 27 · Moving to Unity | — | 7 | last, after everything |
 | 30 · Free movement | FM0–FM2, FM7–FM9 on test regions | ~10 | FM4 (waves 91 and 93), FM3, FM5, FM6, FM10, the crossing's scene, FM9's close-out (waves 94 to 99), then the Kalos gate; FM13 with plan 34 · PD2; FM11 optional |
 | 32 · Open-world engine | OW0 (its gate waits); **running**: OW1 | 13–17 | after the gate: the open world's column |
-| 33 · Galar | — | 12–16 (GL8, GL9 optional) | after plan 32 |
+| 33 · Galar | GL1's first session (2026-11-09: the file, Postwick to Route 2 on the open world, eight rooms, the chapter to the train headless; decisions 1 to 4 at their recommendations) | 11–15 (GL8, GL9 optional) | GL1's second session (the user judges Postwick and Wedgehurst from its shots; the bot's walk waits for plan 32 · OW10), then GL2 on |
 | 34 · Paldea | — | 16–20 (PD10–PD12 optional) | after GL7 |
 | 35 · Bonding | — | 8 (+2 optional) | waves 94 to 105 |
 | 36 · Training | — | 10–12 | waves 91 to 97 |
