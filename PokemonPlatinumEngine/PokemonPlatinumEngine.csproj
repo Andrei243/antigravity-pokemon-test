@@ -35,6 +35,9 @@
     <None Include="Data\**\*.mml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\**\*.ogg" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\scripts\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
+    <!-- An open region's bake (plan 32 · OW2; plan 33 · GL1, Galar's): its chunks and its navigation mesh -->
+    <None Include="Data\world3d\**\baked\**\*.chunk" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\world3d\**\baked\**\*.bin" CopyToOutputDirectory="PreserveNewest" />
     <!-- The title's CREDITS reads the repository's two records (plan 16 · T1, Models/TitleCredits.cs) -->
     <None Include="..\docs\art\CREDITS.md" Link="Credits\CREDITS.md" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\THIRD-PARTY-NOTICES.md" Link="Credits\THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />

@@ -81,6 +81,16 @@
           "Sunt patru insule în Alola și fiecare are propriul kahuna. Al insulei Melemele este Hala, sus în Iki Town."
         ]
       }
+    },
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitor"
+        ]
+      }
     }
   },
   "signs": {}

@@ -178,6 +178,9 @@ internal static partial class BuildingArt
                 Wall = WallKind.DarkPanel, Roof = RoofShape.Flat, RoofColor = Rgb(66, 62, 82), Storeys = 2, Window = WindowKind.Ribbon, Band = true,
                 Home = true, Accent = roof ?? Rgb(52, 48, 72), Gear = RoofGear.Vents
             },
+            // Galar (plan 33 · GL1): grey field stone under dark slate gables, a chimney and flower boxes, the cottages of
+            // the far south, at the open world's metre scale
+            Architecture.Galar => Pitched(WallKind.Stone, Rgb(70, 76, 92)) with { Chimney = true, FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

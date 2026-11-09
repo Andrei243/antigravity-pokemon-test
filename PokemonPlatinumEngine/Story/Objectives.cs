@@ -94,7 +94,7 @@ public static class Objectives
         // Nothing presses any more
         S(34, "free", null),
     }
-    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Hisui).ToArray();
+    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Galar).Concat(Hisui).ToArray();
 
     // The later regions (plan 12 · Q14, their part). Each has a block of a hundred numbers of its own, its derived
     // conditions read from what only its own chapters set (its badges, its own flags and counts, never a flag another
@@ -341,6 +341,22 @@ public static class Objectives
         (906, "hisuiQuarters", AtLeast("VAR_HISUI_STORY", 7), true),
         // The entry trial in the Obsidian Fieldlands is plan 23 · Z18's
         (999, "hisuiTrial", null, false));
+
+    // Galar (plan 33 · GL1): the first chapter, Postwick to the train at Wedgehurst Station, by VAR_GALAR_STORY
+    // (postwick.txt's header has its count). Its ids are the 700s; a later chapter adds its own before galarFree
+    private static Objective[] Galar => Region(RegionDatabase.Galar,
+        (700, "galarDownstairs", AtLeast("VAR_GALAR_STORY", 1), true),
+        (701, "galarHop", AtLeast("VAR_GALAR_STORY", 2), true),
+        (702, "galarStation", AtLeast("VAR_GALAR_STORY", 3), true),
+        (703, "galarGate", AtLeast("VAR_GALAR_STORY", 4), true),
+        (704, "galarWooloo", AtLeast("VAR_GALAR_STORY", 5), true),
+        (705, "galarMum", AtLeast("VAR_GALAR_STORY", 6), true),
+        (706, "galarWedgehurst", AtLeast("VAR_GALAR_STORY", 7), true),
+        (707, "galarMagnolia", AtLeast("VAR_GALAR_STORY", 8), true),
+        (708, "galarGarden", AtLeast("VAR_GALAR_STORY", 9), true),
+        (709, "galarLake", AtLeast("VAR_GALAR_STORY", 10), true),
+        (710, "galarTrain", AtLeast("VAR_GALAR_STORY", 11), true),
+        (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
 

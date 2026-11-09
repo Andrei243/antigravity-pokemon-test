@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Wedgehurst Station"
+    ],
+    "text": [
+      "Gara din Wedgehurst"
+    ]
+  },
+  "people": {
+    "station_attendant": {
+      "name": {
+        "en": [
+          "Station Attendant"
+        ],
+        "text": [
+          "Însoțitoarea gării"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Wedgehurst Station. Trains for the Wild Area and Motostoke leave from the platform."
+        ],
+        "text": [
+          "Bun venit la Gara din Wedgehurst. Trenurile spre Zona Sălbatică și Motostoke pleacă de pe peron."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

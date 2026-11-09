@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Wedgehurst"
+    ],
+    "text": [
+      "Wedgehurst"
+    ]
+  },
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrână"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When the Champion comes home the whole town turns out at the station. You would think it was Christmas."
+        ],
+        "text": [
+          "Când vine Campionul acasă, tot orașul iese la gară. Ai zice că e Crăciunul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,114 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mum"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Morning, love! Did you sleep? You were up half the night watching the Champion's last match again."
+      ],
+      "text": [
+        "Bună dimineața, dragule! Ai dormit? Ai stat jumătate de noapte să te uiți iar la ultimul meci al Campionului."
+      ]
+    },
+    {
+      "en": [
+        "I've finished your scarf for the opening ceremony, by the way. Which crest should I stitch on it?"
+      ],
+      "text": [
+        "Apropo, ți-am terminat fularul pentru ceremonia de deschidere. Ce blazon să-i cos?"
+      ]
+    },
+    {
+      "en": [
+        "Which crest for the scarf?",
+        "The sword",
+        "The shield"
+      ],
+      "text": [
+        "Ce blazon pentru fular?",
+        "Sabia",
+        "Scutul"
+      ]
+    },
+    {
+      "en": [
+        "The sword it is. Sharp and bold, just like you."
+      ],
+      "text": [
+        "Sabia să fie. Ascuțită și îndrăzneață, ca tine."
+      ]
+    },
+    {
+      "en": [
+        "The shield it is. Steady and true, just like you."
+      ],
+      "text": [
+        "Scutul să fie. Neclintit și credincios, ca tine."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and Hop came round. He's waiting out front. Something about his brother's train?"
+      ],
+      "text": [
+        "A, și a trecut Hop pe aici. Te așteaptă în față. Ceva despre trenul fratelui lui?"
+      ]
+    },
+    {
+      "en": [
+        "Mum"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "There you are. Leon carried the pair of you home last night, fast asleep. The Weald, of all places!"
+      ],
+      "text": [
+        "Aici erai. Leon v-a adus pe amândoi acasă aseară, adormiți buștean. Tocmai în pădure!"
+      ]
+    },
+    {
+      "en": [
+        "He says you're both to go and see Professor Magnolia today. Here, take these. You'll want to catch a friend or two."
+      ],
+      "text": [
+        "Zice că trebuie să mergeți amândoi azi la Profesoara Magnolia. Poftim, ia-le. O să vrei să prinzi un prieten sau doi."
+      ]
+    },
+    {
+      "en": [
+        "Hop's gone on ahead to Wedgehurst. Mind the grass on Route 1, and come home if you're tired."
+      ],
+      "text": [
+        "Hop a luat-o înainte spre Wedgehurst. Ai grijă la iarba de pe Drumul 1 și vino acasă dacă obosești."
+      ]
+    }
+  ],
+  "Mum": [
+    {
+      "en": [
+        "Mum"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Hop's waiting for you outside. Go on, don't keep him standing there!"
+      ],
+      "text": [
+        "Hop te așteaptă afară. Hai, nu-l lăsa să stea acolo!"
+      ]
+    }
+  ]
+}

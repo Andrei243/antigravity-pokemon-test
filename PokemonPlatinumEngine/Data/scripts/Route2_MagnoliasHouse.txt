@@ -1,0 +1,43 @@
+# Professor Magnolia's house at the end of Route 2 (plan 33 · GL1): the professor and her granddaughter Sonia, and the
+# Pokédex put on the player's phone. The lines are our own, on Sword and Shield's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Galar's first chapter"). VAR_GALAR_STORY is postwick.txt's count.
+
+
+# In at the door for the first time: the professor, Sonia and the Pokédex
+script OnEnter
+  if var VAR_GALAR_STORY != 7 end
+  scene "The professor and the Pokedex"
+  face magnolia player
+  speaker "Prof. Magnolia"
+  say "Ah, the young Trainer from Postwick. Do come in. Hop has been here ten minutes and has eaten all the biscuits."
+  speaker "Sonia"
+  say "Hi! I'm Sonia, Gran's assistant. Well, sort of. Can I see your phone? It needs something every Trainer needs."
+  text "Sonia tapped at the phone for a moment and handed it back."
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "The Pokédex was added to {player}'s phone!"
+  speaker "Sonia"
+  say "There! It records every Pokémon you meet. Leon never filled his in, so don't you follow his example."
+  speaker "Prof. Magnolia"
+  say "Hop is waiting in the garden, I believe, rather impatiently. Go on, then. We'll talk more this evening."
+  clearflag FLAG_GALAR_HIDE_HOP_GARDEN2
+  setvar VAR_GALAR_STORY 8
+  objective galarGarden
+  endscene
+  end
+
+
+script Magnolia
+  speaker "Prof. Magnolia"
+  if var VAR_GALAR_STORY >= 10 goto Band
+  say "A Pokémon that grows to the size of a house. Galar is the only place it happens, and I mean to learn why."
+  end
+label Band
+  say "Look after that band. The power in a Wishing Star is no toy, but in a good Trainer's hands it is a wonder."
+  end
+
+
+script Sonia
+  speaker "Sonia"
+  say "Gran's been studying Dynamaxing since before I was born. I keep telling her to write it all down somewhere sensible."
+  end

@@ -1,0 +1,76 @@
+{
+  "Attendant": [
+    {
+      "en": [
+        "Station Attendant"
+      ],
+      "text": [
+        "Însoțitoarea gării"
+      ]
+    },
+    {
+      "en": [
+        "Trains north to the Wild Area and Motostoke. Gym challengers travel free, with an endorsement."
+      ],
+      "text": [
+        "Trenuri spre nord, spre Zona Sălbatică și Motostoke. Concurenții provocării călătoresc gratis, cu o recomandare."
+      ]
+    },
+    {
+      "en": [
+        "An endorsement from the Champion himself! Then you'll be on your way to the opening ceremony in Motostoke."
+      ],
+      "text": [
+        "O recomandare chiar de la Campion! Atunci pornești spre ceremonia de deschidere din Motostoke."
+      ]
+    },
+    {
+      "en": [
+        "Board the train north?"
+      ],
+      "text": [
+        "Urci în trenul spre nord?"
+      ]
+    },
+    {
+      "en": [
+        "{player} stepped aboard. Hop is already at a window seat, waving like mad."
+      ],
+      "text": [
+        "{player} a urcat. Hop stă deja la geam și face semne cu mâna ca nebunul."
+      ]
+    },
+    {
+      "en": [
+        "Station Attendant"
+      ],
+      "text": [
+        "Însoțitoarea gării"
+      ]
+    },
+    {
+      "en": [
+        "We'll be off as soon as the line ahead is clear. There's a flock of Wooloo on it again, I'm told."
+      ],
+      "text": [
+        "Plecăm de îndată ce linia din față e liberă. Mi s-a spus că iar e o turmă de Wooloo pe ea."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're ready. The trains wait for gym challengers."
+      ],
+      "text": [
+        "Întoarce-te când ești gata. Trenurile îi așteaptă pe concurenții provocării."
+      ]
+    },
+    {
+      "en": [
+        "Still waiting on those Wooloo up the line, I'm afraid. The train won't be long."
+      ],
+      "text": [
+        "Încă așteptăm Wooloo-ii aceia de pe linie, mă tem. Trenul nu mai întârzie mult."
+      ]
+    }
+  ]
+}

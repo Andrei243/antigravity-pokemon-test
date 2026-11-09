@@ -91,11 +91,11 @@ public class WorldTournamentEventsTests
         // A made-up region with no table of its own
         data.Regions.Add(new TournamentRegionRecord
         {
-            Region = "Galar",
+            Region = "Paldea",
             Events = { new TournamentEventRecord { Id = "kalosLeaders", Kind = "leaders", Pool = { new TournamentEntrantRecord { Trainer = "kalos_leader_viola", Look = "viola" } } } }
         });
         Assert.DoesNotContain(Tournament.Offered(data, Exists, TournamentDatabase.HasData), e => e.Id == "kalosLeaders");
-        Assert.False(TournamentDatabase.HasData("Galar"));
+        Assert.False(TournamentDatabase.HasData("Paldea"));
     }
 
     // ------------------------------------------------------------------ seating

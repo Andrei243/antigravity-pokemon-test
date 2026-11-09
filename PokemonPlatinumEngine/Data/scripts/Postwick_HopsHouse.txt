@@ -1,0 +1,15 @@
+# Hop's house in Postwick (plan 33 · GL1). The lines are our own; VAR_GALAR_STORY is postwick.txt's count.
+
+
+script HopsMum
+  speaker "Hop's Mum"
+  if var VAR_GALAR_STORY >= 10 goto Endorsed
+  if var VAR_GALAR_STORY >= 3 goto Partner
+  say "Hop's been up since dawn waiting for Leon's train. I don't think he slept a wink."
+  end
+label Partner
+  say "So you've a partner of your own now! Hop won't stop talking about your battle."
+  end
+label Endorsed
+  say "Both of you endorsed by the Champion himself! Look after Hop out there for me, won't you?"
+  end

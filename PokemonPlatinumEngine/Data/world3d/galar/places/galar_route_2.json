@@ -1,0 +1,107 @@
+{
+  // Route 2 (plan 33 · GL1): east out of Wedgehurst and north along a winding path to Professor Magnolia's house at its
+  // end, with her lake beside it to the west. Grass along the way with its Pokémon seen in the field, three trainers of
+  // ours, the garden before the house where Hop battles, and the lakeside where the Wishing Stars fall that night.
+  // Scripts: Data/scripts/galar_route_2.txt
+  "markers": [
+    { "name": "route2_west", "at": [60, 2.1, -150], "yaw": 90 },
+    { "name": "magnolia_door", "at": [72, 3.1, -260.6], "yaw": 0 },
+    { "name": "magnolia_garden", "at": [72, 2.9, -254], "yaw": 180 },
+    { "name": "lakeside", "at": [44, 3.1, -222], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "magnolia_door",
+      "box": { "min": [71, 2, -264], "max": [73, 5.5, -263] },
+      "room": "Route2_MagnoliasHouse", "at": [4, 8], "facing": "up",
+      "out": "magnolia_door"
+    }
+  ],
+  "triggers": [
+    // Out into the garden with the Pokédex: Hop's third battle
+    { "name": "hops_battle", "cylinder": { "at": [70, -252], "radius": 3, "bottom": 1.5, "top": 7 }, "script": "HopsBattle", "var": "VAR_GALAR_STORY", "value": 8 },
+    // Down by the lake after dark: the Wishing Stars
+    { "name": "wishing_stars", "cylinder": { "at": [46, -222], "radius": 4, "bottom": 1.5, "top": 7 }, "script": "WishingStars", "var": "VAR_GALAR_STORY", "value": 9 }
+  ],
+  "zones": [
+    {
+      "name": "route2_south",
+      "polygon": [[62, -196], [88, -196], [88, -168], [62, -168]],
+      "minY": -1, "maxY": 9,
+      "slots": [
+        { "species": "Skwovet", "minLevel": 5, "maxLevel": 7, "weight": 25 },
+        { "species": "Rookidee", "minLevel": 5, "maxLevel": 7, "weight": 20 },
+        { "species": "Nickit", "minLevel": 5, "maxLevel": 7, "weight": 15 },
+        { "species": "Chewtle", "minLevel": 5, "maxLevel": 7, "weight": 15 },
+        { "species": "Yamper", "minLevel": 5, "maxLevel": 7, "weight": 10 },
+        { "species": "Seedot", "minLevel": 4, "maxLevel": 6, "weight": 15 }
+      ],
+      "density": 3, "cap": 4
+    },
+    {
+      "name": "route2_north",
+      "polygon": [[60, -248], [88, -248], [88, -214], [60, -214]],
+      "minY": -1, "maxY": 9,
+      "slots": [
+        { "species": "Blipbug", "minLevel": 4, "maxLevel": 6, "weight": 25 },
+        { "species": "Rookidee", "minLevel": 4, "maxLevel": 6, "weight": 20 },
+        { "species": "Purrloin", "minLevel": 4, "maxLevel": 6, "weight": 15, "time": "Night" },
+        { "species": "Seedot", "minLevel": 4, "maxLevel": 6, "weight": 15 },
+        { "species": "Zigzagoon-Galar", "minLevel": 5, "maxLevel": 7, "weight": 15 },
+        { "species": "Hoothoot", "minLevel": 4, "maxLevel": 6, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "solids": [
+    { "name": "the professor's house", "min": [64, 2, -274], "max": [80, 8, -264], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "youngster_alfie", "at": [74, 2.3, -180], "yaw": 270, "trainer": "galar_youngster_alfie",
+      "lines": ["You've got a Pokémon! So have I. That means we battle, that's the rule!", "Fair enough. You and your Pokémon are better friends than we are, for now."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "lass_poppy", "at": [87, 2.6, -205], "yaw": 270, "trainer": "galar_lass_poppy",
+      "lines": ["My Chewtle bites anything that moves. Including you, if you're not careful!", "Ow, ow. I think it bit me that time."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "youngster_reggie", "at": [72, 2.7, -236], "yaw": 90, "trainer": "galar_youngster_reggie",
+      "lines": ["I'm off on the gym challenge next year. You can be my warm-up!", "Warm-up's over. I think I need more of one."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    // Hop in the garden once the Pokédex is the player's, and at the lake that night with the professor, Sonia and Leon
+    {
+      "name": "hop_garden2", "at": [68, 3.1, -254], "yaw": 90, "look": "hop", "displayName": "Hop",
+      "lines": ["Right then! Let's see whose Pokédex fills up first!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_GARDEN2"
+    },
+    {
+      "name": "hop_lake", "at": [41, 3.1, -221], "yaw": 180, "look": "hop", "displayName": "Hop",
+      "lines": ["Look at the stars over the water! Something's going to happen tonight, I can feel it."],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_LAKE"
+    },
+    {
+      "name": "magnolia_lake", "at": [48, 3.1, -218], "yaw": 180, "look": "magnolia", "displayName": "Prof. Magnolia",
+      "lines": ["Wishing Stars fall here more often than anywhere I know."],
+      "hiddenBy": "FLAG_GALAR_HIDE_MAGNOLIA_LAKE"
+    },
+    {
+      "name": "leon_lake", "at": [44, 3.1, -217], "yaw": 180, "look": "leon", "displayName": "Leon",
+      "lines": ["Two Wishing Stars on the same night. That's no accident."],
+      "hiddenBy": "FLAG_GALAR_HIDE_LEON_LAKE"
+    }
+  ],
+  "trees": [
+    { "at": [86, -150], "kind": "round" },
+    { "at": [60, -176], "kind": "pine", "size": 1.1 },
+    { "at": [90, -226], "kind": "round", "size": 1.05 },
+    { "at": [62, -262], "kind": "round" },
+    { "at": [84, -268], "kind": "pine" }
+  ],
+  "groves": [
+    { "name": "the lake's west shore", "polygon": [[6, -282], [14, -282], [14, -204], [6, -204]], "spacing": 4.5, "fill": 0.8, "pines": 0.5, "seed": 401 }
+  ]
+}

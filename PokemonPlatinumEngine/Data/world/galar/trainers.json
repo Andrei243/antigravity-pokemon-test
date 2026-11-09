@@ -1,0 +1,278 @@
+[
+  {
+    "id": "galar_hop_1a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Sobble",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 1382606588
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_1b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Grookey",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 804475136
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_1c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Scorbunny",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 860335360
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_2a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 4,
+        "ivScale": 0,
+        "personality": 2050676992
+      },
+      {
+        "species": "Sobble",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1328321792
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_2b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 4,
+        "ivScale": 0,
+        "personality": 157393152
+      },
+      {
+        "species": "Grookey",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1134542144
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_2c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 4,
+        "ivScale": 0,
+        "personality": 372065280
+      },
+      {
+        "species": "Scorbunny",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1409164352
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_3a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 2076253952
+      },
+      {
+        "species": "Rookidee",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 44851968
+      },
+      {
+        "species": "Sobble",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 999315256
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_3b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 72901376
+      },
+      {
+        "species": "Rookidee",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 1506563904
+      },
+      {
+        "species": "Grookey",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 974575104
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_3c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 887967232
+      },
+      {
+        "species": "Rookidee",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 718169600
+      },
+      {
+        "species": "Scorbunny",
+        "level": 8,
+        "ivScale": 0,
+        "personality": 16096768
+      }
+    ]
+  },
+  {
+    "id": "galar_youngster_alfie",
+    "name": "Alfie",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 16,
+    "party": [
+      {
+        "species": "Skwovet",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1924691512
+      }
+    ]
+  },
+  {
+    "id": "galar_lass_poppy",
+    "name": "Poppy",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 16,
+    "party": [
+      {
+        "species": "Chewtle",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 870290944
+      }
+    ]
+  },
+  {
+    "id": "galar_youngster_reggie",
+    "name": "Reggie",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 16,
+    "party": [
+      {
+        "species": "Blipbug",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 971443712
+      },
+      {
+        "species": "Nickit",
+        "level": 7,
+        "ivScale": 0,
+        "personality": 1638213120
+      }
+    ]
+  }
+]

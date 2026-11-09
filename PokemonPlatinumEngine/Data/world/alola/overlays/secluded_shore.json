@@ -23,7 +23,7 @@
       "name": "Ikaika",
       "npcType": "swimmer_m",
       "trainer": {
-        "dialogueBefore": "Swimmer Ikaika: My Sandygast lives in the sand here. Disturb its castle and you'll answer to us both!",
+        "dialogueBefore": "Swimmer Ikaika: My Sandcitadel lives in the sand here. Disturb its castle and you'll answer to us both!",
         "dialogueAfter": "Swimmer Ikaika: It's rebuilding. It always rebuilds."
       }
     },

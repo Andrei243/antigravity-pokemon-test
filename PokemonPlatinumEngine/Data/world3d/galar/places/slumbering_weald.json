@@ -1,0 +1,27 @@
+{
+  // The Slumbering Weald (plan 33 · GL1): the old wood beyond the hedge on Postwick's west side, low and always in fog
+  // (world.json gives the area its weather). The first visit only: Hop's Wooloo found deep in, and the shadow in the
+  // fog. Nothing lives here for the player to meet yet; the Weald's own Pokémon and its legend are GL7's
+  "markers": [
+    { "name": "weald_entry", "at": [-62, 0.8, 20], "yaw": 270 },
+    { "name": "weald_deep", "at": [-80, 0.4, 40], "yaw": 0 },
+    { "name": "wooloo_spot", "at": [-83, 0.7, 46], "yaw": 180 }
+  ],
+  "triggers": [
+    // Deep in the fog after Hop's Wooloo: the shadow
+    { "name": "the_shadow", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Shadow", "var": "VAR_GALAR_STORY", "value": 4 }
+  ],
+  "people": [
+    {
+      "name": "hop_weald", "at": [-82, 0.7, 44], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["Wooloo! Where are you? It's so quiet in here..."],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_WEALD"
+    }
+  ],
+  "groves": [
+    { "name": "the Weald's north", "polygon": [[-92, -14], [-64, -14], [-64, 12], [-92, 12]], "spacing": 3.5, "fill": 0.9, "pines": 0.7, "seed": 201 },
+    { "name": "the Weald's west", "polygon": [[-92, 12], [-86, 12], [-86, 56], [-92, 56]], "spacing": 3.5, "fill": 0.9, "pines": 0.7, "seed": 202 },
+    { "name": "the Weald's south", "polygon": [[-74, 50], [-64, 50], [-64, 56], [-74, 56]], "spacing": 3.5, "fill": 0.85, "pines": 0.6, "seed": 203 },
+    { "name": "the Weald's middle", "polygon": [[-74, 26], [-66, 26], [-66, 46], [-74, 46]], "spacing": 4, "fill": 0.8, "pines": 0.6, "seed": 204 }
+  ]
+}

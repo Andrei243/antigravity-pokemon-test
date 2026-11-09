@@ -1,0 +1,128 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Magnolia"
+      ],
+      "text": [
+        "Prof. Magnolia"
+      ]
+    },
+    {
+      "en": [
+        "Ah, the young Trainer from Postwick. Do come in. Hop has been here ten minutes and has eaten all the biscuits."
+      ],
+      "text": [
+        "A, tânărul Antrenor din Postwick. Intră, te rog. Hop e aici de zece minute și a mâncat toți biscuiții."
+      ]
+    },
+    {
+      "en": [
+        "Sonia"
+      ],
+      "text": [
+        "Sonia"
+      ]
+    },
+    {
+      "en": [
+        "Hi! I'm Sonia, Gran's assistant. Well, sort of. Can I see your phone? It needs something every Trainer needs."
+      ],
+      "text": [
+        "Bună! Eu sunt Sonia, asistenta bunicii. Mă rog, cam așa ceva. Îmi arăți telefonul? Îi lipsește ceva de care are nevoie orice Antrenor."
+      ]
+    },
+    {
+      "en": [
+        "Sonia tapped at the phone for a moment and handed it back."
+      ],
+      "text": [
+        "Sonia a atins de câteva ori telefonul și ți l-a dat înapoi."
+      ]
+    },
+    {
+      "en": [
+        "The Pokédex was added to {player}'s phone!"
+      ],
+      "text": [
+        "Pokédexul a fost adăugat pe telefonul lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Sonia"
+      ],
+      "text": [
+        "Sonia"
+      ]
+    },
+    {
+      "en": [
+        "There! It records every Pokémon you meet. Leon never filled his in, so don't you follow his example."
+      ],
+      "text": [
+        "Gata! Înregistrează fiecare Pokémon pe care îl întâlnești. Leon nu și l-a completat niciodată, așa că nu-i urma exemplul."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Magnolia"
+      ],
+      "text": [
+        "Prof. Magnolia"
+      ]
+    },
+    {
+      "en": [
+        "Hop is waiting in the garden, I believe, rather impatiently. Go on, then. We'll talk more this evening."
+      ],
+      "text": [
+        "Hop te așteaptă în grădină, cred, destul de nerăbdător. Haide, atunci. Mai vorbim diseară."
+      ]
+    }
+  ],
+  "Magnolia": [
+    {
+      "en": [
+        "Prof. Magnolia"
+      ],
+      "text": [
+        "Prof. Magnolia"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that grows to the size of a house. Galar is the only place it happens, and I mean to learn why."
+      ],
+      "text": [
+        "Un Pokémon care crește cât o casă. Galar e singurul loc unde se întâmplă, și vreau să aflu de ce."
+      ]
+    },
+    {
+      "en": [
+        "Look after that band. The power in a Wishing Star is no toy, but in a good Trainer's hands it is a wonder."
+      ],
+      "text": [
+        "Ai grijă de brățara aceea. Puterea unei Stele a Dorinței nu e o jucărie, dar în mâinile unui Antrenor bun e o minune."
+      ]
+    }
+  ],
+  "Sonia": [
+    {
+      "en": [
+        "Sonia"
+      ],
+      "text": [
+        "Sonia"
+      ]
+    },
+    {
+      "en": [
+        "Gran's been studying Dynamaxing since before I was born. I keep telling her to write it all down somewhere sensible."
+      ],
+      "text": [
+        "Bunica studiază Dynamaxul de dinainte să mă nasc eu. Tot îi spun să scrie totul undeva cu cap."
+      ]
+    }
+  ]
+}

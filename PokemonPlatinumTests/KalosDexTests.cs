@@ -28,7 +28,7 @@ public class KalosDexTests
         }
         // A region with one Pokédex still has it as its only entry
         Assert.Equal(new[] { "kanto" }, RegionDatabase.Get("Kanto")!.Dexes);
-        Assert.Empty(RegionDatabase.Get("Galar")!.Dexes);
+        Assert.Empty(RegionDatabase.Get("Paldea")!.Dexes);
     }
 
     [Fact]

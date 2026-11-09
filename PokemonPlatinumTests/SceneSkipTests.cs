@@ -1081,6 +1081,11 @@ public class SceneSkipTests
     /// </summary>
     private static readonly HashSet<string> BeyondTheWalk = new(StringComparer.Ordinal)
     {
+        // Galar's scenes of its open map (plan 33 · GL1), started by the open places' triggers, which are no map's starters:
+        // GalarTests.EveryOpenSceneOfTheChapterPlayedAndSkippedLeavesTheSame plays each both ways
+        "postwick.Hop at the door", "postwick.Into the Weald", "slumbering_weald.The shadow in the fog",
+        "wedgehurst.The Champion comes home", "wedgehurst.Hop in Wedgehurst",
+        "galar_route_2.Hop in the professor's garden", "galar_route_2.The Wishing Stars",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

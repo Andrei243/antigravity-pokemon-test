@@ -1,0 +1,61 @@
+# The player's house in Postwick, downstairs (plan 33 · GL1). The lines are our own, on Sword and Shield's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Galar's first chapter"). VAR_GALAR_STORY is postwick.txt's
+# count. A Champion who crosses in from Alola lands inside the door with the story at 0, and has the same first morning.
+
+
+# Coming down on the first morning (or in through the door from Alola): Mum asks which of the two the player will
+# wear at the opening ceremony, which is the version the game is (VAR_GALAR_VERSION, plan 33 · decision 2), and says
+# Hop is at the door. Coming down the morning after the Weald: Poké Balls for the road, and the way to the professor
+script OnEnter
+  if var VAR_GALAR_STORY == 0 goto Morning
+  if var VAR_GALAR_STORY == 5 goto AfterTheWeald
+  end
+label Morning
+  scene "Mum on the first morning"
+  face mum player
+  speaker "Mum"
+  say "Morning, love! Did you sleep? You were up half the night watching the Champion's last match again."
+  if var VAR_GALAR_VERSION != 0 goto Hop
+  say "I've finished your scarf for the opening ceremony, by the way. Which crest should I stitch on it?"
+  choose "Which crest for the scarf?" "The sword" "The shield"
+  if result == 1 goto Shield
+  setvar VAR_GALAR_VERSION 1
+  say "The sword it is. Sharp and bold, just like you."
+  goto Hop
+label Shield
+  setvar VAR_GALAR_VERSION 2
+  say "The shield it is. Steady and true, just like you."
+label Hop
+  say "Oh, and Hop came round. He's waiting out front. Something about his brother's train?"
+  setflag FLAG_HAS_RUNNING_SHOES
+  setvar VAR_GALAR_STORY 1
+  objective galarHop
+  endscene
+  end
+label AfterTheWeald
+  scene "Mum after the Weald"
+  face mum player
+  speaker "Mum"
+  say "There you are. Leon carried the pair of you home last night, fast asleep. The Weald, of all places!"
+  say "He says you're both to go and see Professor Magnolia today. Here, take these. You'll want to catch a friend or two."
+  give "Poké Ball" 5
+  say "Hop's gone on ahead to Wedgehurst. Mind the grass on Route 1, and come home if you're tired."
+  clearflag FLAG_GALAR_HIDE_HOP_WEDGEHURST
+  setvar VAR_GALAR_STORY 6
+  objective galarWedgehurst
+  endscene
+  end
+
+
+# Mum: a rest whenever the team has one
+script Mum
+  if party > 0 goto Rest
+  speaker "Mum"
+  say "Hop's waiting for you outside. Go on, don't keep him standing there!"
+  end
+label Rest
+  sayown
+  heal
+  fanfare heal
+  call NextHint
+  end

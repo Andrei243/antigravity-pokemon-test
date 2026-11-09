@@ -893,7 +893,19 @@
     "hisuiWallflower": "Wait for the professor at the Wallflower, on Canala Avenue down the west side of the village.",
     "hisuiHall": "Go to Galaxy Hall on Floaro Main Street. Commander Kamado will see you.",
     "hisuiQuarters": "Rest in your quarters, just east of Galaxy Hall.",
-    "hisuiTrial": "The Survey Corps' entry trial waits beyond the front gate, in the Obsidian Fieldlands. That is as far as Hisui goes for now."
+    "hisuiTrial": "The Survey Corps' entry trial waits beyond the front gate, in the Obsidian Fieldlands. That is as far as Hisui goes for now.",
+    "galarDownstairs": "Go downstairs. Mum has news about Hop.",
+    "galarHop": "Hop is waiting in front of the house.",
+    "galarStation": "Go up Route 1 to Wedgehurst Station and welcome Leon home.",
+    "galarGate": "Find Hop by the gate to the Slumbering Weald, on the west side of Postwick.",
+    "galarWooloo": "Follow Hop's Wooloo into the Slumbering Weald.",
+    "galarMum": "Go downstairs. Mum has something for the journey.",
+    "galarWedgehurst": "Go up Route 1 to Wedgehurst. Hop is waiting there.",
+    "galarMagnolia": "Follow Route 2 east of Wedgehurst to Professor Magnolia's house by the lake.",
+    "galarGarden": "Hop wants a battle in the professor's garden.",
+    "galarLake": "Go down to the lakeside with Hop now the night has come.",
+    "galarTrain": "Board the train at Wedgehurst Station.",
+    "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
   },
 
   "close": {
@@ -1385,11 +1397,10 @@
     "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth",
     "Zephyr": "Zephyr", "Hive": "Hive", "Plain": "Plain", "Fog": "Fog", "Storm": "Storm", "Mineral": "Mineral", "Glacier": "Glacier", "Rising": "Rising",
     "Stone": "Stone", "Knuckle": "Knuckle", "Dynamo": "Dynamo", "Heat": "Heat", "Balance": "Balance", "Feather": "Feather", "Mind": "Mind", "Rain": "Rain",
-    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave"
-,
-    "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg"
-,
-    "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni"
+    "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
+    "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg",
+    "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
+    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon"
   },
   "run": {
     "heading": "WAYS TO PLAY",

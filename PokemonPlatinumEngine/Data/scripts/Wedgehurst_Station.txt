@@ -1,0 +1,29 @@
+# Wedgehurst Station (plan 33 · GL1): the attendant sells a ticket north only to a Trainer endorsed for the gym
+# challenge. Boarding is the end of Galar's first chapter; the train's run north and its stop at the Wild Area's
+# station are plan 33 · GL2's, so for now it waits at the platform. VAR_GALAR_STORY is postwick.txt's count.
+
+
+script Attendant
+  speaker "Station Attendant"
+  if var VAR_GALAR_STORY >= 11 goto Waiting
+  if var VAR_GALAR_STORY == 10 goto Board
+  say "Trains north to the Wild Area and Motostoke. Gym challengers travel free, with an endorsement."
+  end
+label Board
+  say "An endorsement from the Champion himself! Then you'll be on your way to the opening ceremony in Motostoke."
+  ask "Board the train north?"
+  if no goto Later
+  scene "Aboard the train north"
+  text "{player} stepped aboard. Hop is already at a window seat, waving like mad."
+  speaker "Station Attendant"
+  say "We'll be off as soon as the line ahead is clear. There's a flock of Wooloo on it again, I'm told."
+  setvar VAR_GALAR_STORY 11
+  objective galarFree
+  endscene
+  end
+label Later
+  say "Come back when you're ready. The trains wait for gym challengers."
+  end
+label Waiting
+  say "Still waiting on those Wooloo up the line, I'm afraid. The train won't be long."
+  end

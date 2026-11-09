@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzător: Bun venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumeț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trains from here run north to the Wild Area. Mind you, they stop for nothing but Wooloo."
+        ],
+        "text": [
+          "Trenurile de aici merg spre nord, spre Zona Sălbatică. Doar că se opresc numai pentru Wooloo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

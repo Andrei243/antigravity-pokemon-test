@@ -352,7 +352,10 @@ public enum Architecture
 
     // Hisui (plan 23 · Z17): drawn by hand, a row of the style guide's "Buildings" first
     /// <summary>Dark timber frames over white plaster under steep slate-grey gables with shutters: the Galaxy Team's village inside its palisade (Jubilife Village, plan 23 · Z17).</summary>
-    Hisuian
+    Hisuian,
+    // Galar (plan 33 · GL1): built on the open world's engine at metre scale, a row of the style guide's "Buildings" first
+    /// <summary>Grey field stone under dark slate gable roofs with a chimney and flower boxes: the farming village and the little station town of the far south (Postwick, Wedgehurst).</summary>
+    Galar
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

@@ -1,0 +1,116 @@
+{
+  "name": "Postwick_HopsHouse",
+  "displayName": "Hop's House",
+  "bgmTrack": "galar/postwick",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 3,
+      "y": 5,
+      "text": "A cabinet full of trophies, every one of them Leon's. There is a space left at one end, polished clean."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "hops_mum",
+      "name": "Hop's Mum",
+      "npcType": "hops_mum",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Hop talks about nothing but his brother and the gym challenge. I hope he finds his own way to be strong."
+      ],
+      "script": "HopsMum"
+    }
+  ],
+  "wildEncounters": []
+}

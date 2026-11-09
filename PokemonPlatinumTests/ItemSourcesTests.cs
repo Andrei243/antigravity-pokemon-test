@@ -78,7 +78,7 @@ public class ItemSourcesTests
     private const string AlolaStones = "plan 23 · Z8: after Alola's League (its Hall of Fame stands since Z7), its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
     private const string UltraSpace = "plan 23 · Z8 (optional): after the League, Ultra Space and the Ultra Megalopolis";
     private const string Hisui = "plan 23 · Z20 (optional): Hisui, which owes Kleavor and Ursaluna (NationalSpeciesTests)";
-    private const string GalarProfessor = "plan 33 · GL1: Galar's professor, the Dynamax Band to a bag without one";
+    // (Galar's professor gives the Dynamax Band to a bag without one since plan 33 · GL1: the Wishing Stars at her lake)
     private const string GalarCafes = "plan 33 · GL4: the cafés whose battles give the Sweets (or GL5's, the study's finding)";
     private const string Galar = "plan 33 · GL7: Galar's last session, after its Hall of Fame";
     private const string GalarStones = "plan 33 · GL7: Galar's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
@@ -135,7 +135,6 @@ public class ItemSourcesTests
         // Hisui
         (Hisui, new[] { "Black Augurite", "Peat Block" }),
         // Galar, with the Isle of Armor and the Crown Tundra
-        (GalarProfessor, new[] { BattleCore.DynamaxBandItem }),
         (GalarCafes, new[] { "Strawberry Sweet", "Love Sweet", "Berry Sweet", "Clover Sweet", "Flower Sweet", "Star Sweet", "Ribbon Sweet" }),
         (Galar, new[] { "Sweet Apple", "Tart Apple", "Cracked Pot", "Chipped Pot", "Rotom Catalog" }),
         (GalarBand, new[] { BattleCore.MegaMaxBandItem }),

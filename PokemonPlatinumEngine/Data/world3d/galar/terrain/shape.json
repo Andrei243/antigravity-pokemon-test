@@ -1,0 +1,34 @@
+{
+  // What shapes Galar's first places (plan 33 · GL1) over the control grid: the banks that hem the way in on every
+  // side (Galar's hedged and walled lanes, at a bank's height, too steep to climb), the hedge between Postwick and the
+  // Slumbering Weald with its gate's gap, the Weald's hollow, and the bowl of the professor's lake on Route 2
+  "brushes": [
+    // The region's edges: the west and north of the moor, the east beyond the fields and Route 2, the south of Postwick
+    { "kind": "plateau", "name": "the west bank", "polygon": [[-100, -300], [-60, -300], [-60, -16], [-100, -16]], "height": 9, "falloff": 4 },
+    { "kind": "plateau", "name": "the north bank", "polygon": [[-100, -300], [100, -300], [100, -285], [-100, -285]], "height": 9, "falloff": 4 },
+    { "kind": "plateau", "name": "the railway's cutting", "polygon": [[-60, -300], [4, -300], [4, -192], [-60, -192]], "height": 9, "falloff": 4 },
+    { "kind": "plateau", "name": "the bank between Wedgehurst and the lake", "polygon": [[4, -199], [52, -199], [52, -190], [4, -190]], "height": 8, "falloff": 3 },
+    { "kind": "plateau", "name": "the east edge", "polygon": [[93, -300], [100, -300], [100, -104], [93, -104]], "height": 9, "falloff": 3 },
+    { "kind": "plateau", "name": "the fields' east bank", "polygon": [[48, -106], [100, -106], [100, 68], [69, 68], [69, -26], [48, -26]], "height": 7, "falloff": 4 },
+    { "kind": "plateau", "name": "the south bank", "polygon": [[-100, 58], [100, 58], [100, 68], [-100, 68]], "height": 6, "falloff": 3 },
+    { "kind": "plateau", "name": "the Weald's west bank", "polygon": [[-100, -16], [-93, -16], [-93, 68], [-100, 68]], "height": 8, "falloff": 3 },
+    // The hedge-bank between Postwick and the Weald, its gate's gap from z 14 to 26
+    { "kind": "plateau", "name": "the hedge north of the Weald's gate", "polygon": [[-63, -16], [-55, -16], [-55, 13], [-63, 13]], "height": 5, "falloff": 2.5 },
+    { "kind": "plateau", "name": "the hedge south of the Weald's gate", "polygon": [[-63, 27], [-55, 27], [-55, 68], [-63, 68]], "height": 5, "falloff": 2.5 },
+    // The Weald lies a little low and damp, and the lake's bowl on Route 2
+    { "kind": "crater", "name": "the Weald's hollow", "at": [-76, 24], "radius": 20, "depth": 1.0, "rim": 0.4 },
+    { "kind": "crater", "name": "the lake's bowl", "at": [34, -250], "radius": 28, "depth": 4.0, "rim": 0.3 }
+  ],
+  "paint": [
+    // The Weald's floor, deep and dark under its trees
+    { "cover": "GrassDeep", "polygon": [[-92, -12], [-64, -12], [-64, 56], [-92, 56]] },
+    // Route 1's long grass either side of the path, where its Pokémon live
+    { "cover": "GrassDeep", "polygon": [[-36, -96], [-12, -96], [-12, -44], [-36, -44]] },
+    { "cover": "GrassDeep", "polygon": [[14, -100], [38, -100], [38, -56], [14, -56]] },
+    // Route 2's along the way east and north, and the lakeside's
+    { "cover": "GrassDeep", "polygon": [[62, -196], [88, -196], [88, -168], [62, -168]] },
+    { "cover": "GrassDeep", "polygon": [[60, -248], [88, -248], [88, -214], [60, -214]] },
+    // Postwick's paddock, kept short by the Wooloo
+    { "cover": "GrassLight", "polygon": [[30, 8], [64, 8], [64, 54], [30, 54]] }
+  ]
+}

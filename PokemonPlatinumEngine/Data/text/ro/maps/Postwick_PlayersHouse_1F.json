@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Acasă la {player}"
+    ]
+  },
+  "people": {
+    "mum": {
+      "name": {
+        "en": [
+          "Mum"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mum: Home again, love? Sit down a minute and let your Pokémon rest.",
+          "Mum: ...There. All of you are fit as fiddles again."
+        ],
+        "text": [
+          "Mama: Iar acasă, dragule? Stai jos un minut și lasă-ți Pokémonii să se odihnească.",
+          "Mama: ...Gata. Sunteți toți iar în putere."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

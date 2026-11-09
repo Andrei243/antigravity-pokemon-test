@@ -18,8 +18,20 @@ internal static class WorldWalk
     private const FieldMoves Everything = FieldMoves.Surf | FieldMoves.Waterfall | FieldMoves.RockClimb | FieldMoves.Whirlpool | FieldMoves.Dive;
 
     /// <summary>The tiles reached on each map, from one place or several.</summary>
-    public static Dictionary<Map, HashSet<(int X, int Y)>> From(Func<string, Map> mapOf, params MapSpot[] starts)
+    public static Dictionary<Map, HashSet<(int X, int Y)>> From(Func<string, Map> mapOf, params MapSpot[] starts) =>
+        From(mapOf, null, starts);
+
+    /// <summary>
+    /// The tiles reached on each map, and in <paramref name="open"/> what was come to of each open map the walk went into
+    /// (plan 33 · GL1, the first open region of the data): a grid room's way out to an open map is the door of that map
+    /// leading back into the room (its <c>out</c> marker), the open map is flooded over its navigation mesh from every
+    /// such marker (<see cref="Open"/>), and every door whose own marker is come to leads into its room on its tile.
+    /// </summary>
+    public static Dictionary<Map, HashSet<(int X, int Y)>> From(Func<string, Map> mapOf, Dictionary<string, OpenWorld.OpenWalk>? open,
+        params MapSpot[] starts)
     {
+        var openStarts = new Dictionary<string, List<OpenWorld.OpenPos>>(StringComparer.OrdinalIgnoreCase);
+        var openDone = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         var reached = new Dictionary<Map, HashSet<(int X, int Y)>>();
         var seen = new HashSet<(Map Map, int X, int Y, TravelMode Mode, int Level)>();
         var queue = new Queue<(Map Map, int X, int Y, TravelMode Mode, float Height, bool Arrived)>();
@@ -60,6 +72,7 @@ internal static class WorldWalk
             return found;
         }
 
+        do
         while (queue.Count > 0)
         {
             var (map, x, y, mode, height, arrived) = queue.Dequeue();
@@ -98,6 +111,17 @@ internal static class WorldWalk
                 // Galactic comes and another after (plan 02 · S10)
                 foreach (var warp in map.WarpsAt(x, y))
                 {
+                    // A way out to an open map lands on the marker of its door leading back in (plan 33 · GL1)
+                    if (OpenWorld.OpenRegions.IsOpenMap(warp.TargetMap))
+                    {
+                        if (OpenWorld.OpenRegions.Shared(warp.TargetMap) is { } outside
+                            && outside.DoorBackFrom(map.Name, warp.SourceX, warp.SourceY) is { } back && outside.Marker(back.Out) is { } landing)
+                        {
+                            if (!openStarts.TryGetValue(outside.Name, out var list)) openStarts[outside.Name] = list = new();
+                            list.Add(landing.Pos);
+                        }
+                        continue;
+                    }
                     var onto = mapOf(warp.TargetMap);
                     // (a way along the sea floor into another floor of its own keeps the diver diving: plan 21 · H8,
                     // part b, the passages into the Seafloor Cavern's pool and the pool under Sootopolis)
@@ -263,7 +287,31 @@ internal static class WorldWalk
                     }
             }
         }
+        while (FloodTheOpenMaps());
         return reached;
+
+        // Each open map come into since it was last flooded is flooded again from every marker it was come into by, and
+        // its doors whose markers are come to lead into their rooms; true while that brought a room's tile into the walk
+        bool FloodTheOpenMaps()
+        {
+            foreach (var (name, entries) in openStarts)
+            {
+                if (openDone.TryGetValue(name, out int done) && done == entries.Count) continue;
+                openDone[name] = entries.Count;
+                var outside = OpenWorld.OpenRegions.Shared(name)!;
+                OpenWorld.OpenWalk? walk;
+                lock (OpenWorld.OpenRegions.Reading) walk = Open(outside, entries);
+                if (walk == null) continue;
+                if (open != null) open[name] = walk;
+                foreach (var door in outside.Doors)
+                    if (outside.Marker(door.Out) is { } marker && walk.Reaches(marker.Pos))
+                    {
+                        var room = mapOf(door.Room);
+                        Visit(room, door.RoomX, door.RoomY, TravelMode.OnFoot, room.HeightAt(door.RoomX, door.RoomY), arrived: true);
+                    }
+            }
+            return queue.Count > 0;
+        }
     }
 
     /// <summary>The flags a new game starts with set (common.NewGame): whoever they hide is off the map when the walk sets out.</summary>

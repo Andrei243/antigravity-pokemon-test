@@ -2,6 +2,7 @@
   "id": "Hisui",
   "folder": "hisui",
   "models": "hisui",
+  "battleCamera": "hisui",
   // Jubilife Village and Prelude Beach below it (plan 23 · Z17; tools/MapDraw/hisui), drawn by hand as Kalos and Alola
   // are: Legends: Arceus has no decompilation and no dump is read. The open areas are matrices of their own (Z18 on)
   "map": "JubilifeVillage",

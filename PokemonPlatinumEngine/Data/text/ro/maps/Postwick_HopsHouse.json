@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Hop's House"
+    ],
+    "text": [
+      "Casa lui Hop"
+    ]
+  },
+  "people": {
+    "hops_mum": {
+      "name": {
+        "en": [
+          "Hop's Mum"
+        ],
+        "text": [
+          "Mama lui Hop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hop talks about nothing but his brother and the gym challenge. I hope he finds his own way to be strong."
+        ],
+        "text": [
+          "Hop nu vorbește decât despre fratele lui și provocarea sălilor. Sper să-și găsească propriul fel de a fi puternic."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3,5": {
+      "en": [
+        "A cabinet full of trophies, every one of them Leon's. There is a space left at one end, polished clean."
+      ],
+      "text": [
+        "O vitrină plină de trofee, toate ale lui Leon. La un capăt a rămas un loc gol, lustruit curat."
+      ]
+    }
+  }
+}

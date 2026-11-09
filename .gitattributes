@@ -5,3 +5,6 @@
 docs/online/Caddyfile text eol=lf
 
 *.glb binary
+
+# An open region's bake is the baker's bytes, which its --check compares to the byte (plan 33 · GL1): never a line ending changed
+PokemonPlatinumEngine/Data/world3d/*/baked/** -text

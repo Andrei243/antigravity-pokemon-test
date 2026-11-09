@@ -40,23 +40,24 @@
   "spawns": [
     { "id": 1, "area": "tidemark_town", "x": 6, "y": 8, "room": "TidemarkTown_House" }
   ],
-  // Its place in the chain: after the last region with maps, Alola; a ferry from Hau'oli City, whose ferryman stands on
-  // its beach (laid onto Melemele's map by the game, so the pack copies none of Alola's files)
+  // Its place in the chain: after the last region with maps, Galar (since plan 33 · GL1; Alola before it); a ferry
+  // whose ferryman waits in Wedgehurst's station hall (laid onto the station's room by the game, so the pack copies none
+  // of Galar's files)
   "generation": 0,
   "start": { "map": "TidemarkTown_House", "x": 4, "y": 7, "facing": "Up" },
   "arrival": { "map": "Tidemark", "x": 14, "y": 23, "facing": "Up" },
   "maps": [ "Tidemark", "TidemarkTown_House" ],
-  "after": "Alola",
+  "after": "Galar",
   "link": {
     "transport": "Boat",
     "vessel": "ferry",
-    "departureMap": "Melemele",
+    "departureMap": "Wedgehurst_Station",
     "attendant": {
       "id": "tidemark_ferryman",
       "name": "Ferryman",
       "npcType": "sailor",
-      "x": 274,
-      "y": 177,
+      "x": 2,
+      "y": 4,
       "facing": "Down",
       "isTransportAttendant": true
     }
