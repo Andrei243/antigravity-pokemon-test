@@ -1,6 +1,6 @@
 # "new game plus": the credits song
 
-Written 2026-11-09 at the user's request: a whole song for the credits, generated from these lyrics and this prompt by an AI music generator (Suno v6 first, ElevenLabs Music v2.5 to compare), in a hyperpop style. Everything here is our own: the lyrics, the title, the structure and the prompts. No game, artist, song or company is named in them. Plan 31's decision 4 records the choice, and the overview's "Waiting on the user" (item 11) holds the session that puts the song in the game.
+Written 2026-11-09 at the user's request: a whole song for the credits, generated from these lyrics and this prompt by an AI music generator, in a hyperpop style. The user chose Google's Lyria 3.5 (2026-11-09), through the Gemini API with their own key: [`credits-song-lyria-prompt.txt`](credits-song-lyria-prompt.txt) is the prompt it was given, the structure with its timings and the lyrics below. The Suno and ElevenLabs prompts are kept for a comparison. Everything here is our own: the lyrics, the title, the structure and the prompts. No game, artist, song or company is named in them. Plan 31's decision 4 records the choice, and the overview's "Waiting on the user" (item 11) holds the session that puts the song in the game.
 
 ## The song at a glance
 
@@ -127,4 +127,4 @@ followed by the lyrics block. Set the length to 2:00.
 
 ## What happens next
 
-The take that's chosen comes back as a WAV with its stems. Putting it in the game is one session, in the first wave after the file arrives (the overview's "Waiting on the user", item 11): the first audio file in the repository (with its line in `docs/art/CREDITS.md`, naming the tool and its terms), a way for the credits to play a file instead of an MML song, and the roll's pace set from the song's length.
+Three takes were made with Lyria 3.5 on 2026-11-09 (`lyria-3.5`, `generateContent`, WAV asked for): each came back at 48 kHz stereo, 2:02 to 2:05, with every line of the lyrics sung at the sections' times and the final chorus from 1:30 to 1:34, mastered loud (about −14 dBFS RMS, peaks at full scale, a few samples clipped) and carrying Google's SynthID watermark; Lyria gives no stems. Take 3 ends hardest (full level until 2:00, gone within a second). The user chooses one by ear. The take that's chosen is a WAV. Putting it in the game is one session, in the first wave after the file arrives (the overview's "Waiting on the user", item 11): the first audio file in the repository (with its line in `docs/art/CREDITS.md`, naming the tool and its terms), a way for the credits to play a file instead of an MML song, and the roll's pace set from the song's length.
