@@ -1,0 +1,142 @@
+{
+  "name": "LumioseCity_CafeWoof",
+  "displayName": "Café Woof",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 6,
+      "width": 5,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 313,
+      "targetY": 348,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "waitress",
+      "name": "Waitress",
+      "npcType": "waitress",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to Café Woof, where the Pokémon are the regulars and the people are their guests!"
+      ]
+    },
+    {
+      "id": "furfrou",
+      "name": "Furfrou",
+      "npcType": "Pokemon",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "It wags its tail and waits for a scratch behind the ear."
+      ],
+      "species": "Furfrou"
+    },
+    {
+      "id": "skitty",
+      "name": "Skitty",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "It chases its own tail round the table legs."
+      ],
+      "species": "Skitty"
+    },
+    {
+      "id": "espurr",
+      "name": "Espurr",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "It stares at nothing in particular. Its ears twitch."
+      ],
+      "species": "Espurr"
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "npcType": "old_woman",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "I come every afternoon. The Furfrou knows my footsteps before I open the door."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

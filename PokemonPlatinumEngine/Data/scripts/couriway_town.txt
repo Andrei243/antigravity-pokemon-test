@@ -16,3 +16,35 @@ script SuperRod
 label After
   say "The falls carry everything down to Couriway sooner or later. Even the Pokémon."
   end
+
+
+# Volcanion on the falls pool's sandbank (plan 23, Kalos's last species; plan 29 · LS11's beat for Kalos's mythicals,
+# docs/mechanics/rulings.md, "Kalos's last species"). Volcanion, given by events alone in X and Y, keeps far from people
+# in the mountains; ours stands in the steam at the foot of Couriway's falls once Kalos's Hall of Fame is entered (the
+# overlay shows it by KalosHallOfFame), at level 70. Beaten or caught it is gone for good (FLAG_KALOS_VOLCANION_GONE);
+# run from, it stays.
+script Volcanion
+  scene "Volcanion at the foot of the falls"
+  music stop
+  letterbox on 0.4
+  camera pan 655 377 1.2
+  camera zoom 1.4 0.8
+  effect geyser 655 377 2
+  effect eruption 655 377 2
+  camera shake 0.6
+  cry "Volcanion"
+  speaker none
+  text "Steam bursts up off the pool! A Pokémon of fire and water stands in it and glares at {player}."
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Volcanion" 70
+  if result == 2 goto Stays
+  setflag FLAG_KALOS_VOLCANION_GONE
+  hide self
+  music area
+  end
+label Stays
+  music area
+  text "Volcanion turns its back and lets the steam hide it again."
+  end

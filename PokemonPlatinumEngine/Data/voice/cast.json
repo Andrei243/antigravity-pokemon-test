@@ -955,6 +955,10 @@
       "note": "first spoken at burned_tower_1f.txt(14)",
       "provisional": true
     },
+    "eustache": {
+      "note": "first spoken at LumioseCity_BattleInstitute.txt(25)",
+      "provisional": true
+    },
     "evrard": {
       "note": "first spoken at LumioseCity_GrandeTable.txt(25)",
       "provisional": true
@@ -1066,6 +1070,10 @@
     },
     "fossil_maniac": {
       "note": "first spoken at route_114_fossil_maniacs_tunnel.txt(7)",
+      "provisional": true
+    },
+    "fossil_seeker": {
+      "note": "first spoken at glittering_cave.txt(11)",
       "provisional": true
     },
     "fossil_seller": {
@@ -1944,6 +1952,10 @@
       "note": "first spoken at ecruteak_dance_theater.txt(89)",
       "provisional": true
     },
+    "milliner": {
+      "note": "first spoken at LumioseCity_HatShop.txt(7)",
+      "provisional": true
+    },
     "mira": {
       "note": "first spoken at Battleground.txt(821)",
       "brief": {
@@ -2140,6 +2152,10 @@
       "note": "first spoken at AnistarCity_Gym.txt(12)",
       "provisional": true
     },
+    "ombeline": {
+      "note": "first spoken at LumioseCity_BattleInstitute.txt(21)",
+      "provisional": true
+    },
     "oskin": {
       "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
       "provisional": true
@@ -2238,6 +2254,10 @@
     },
     "philibert": {
       "note": "first spoken at LumioseCity_Carrousel.txt(11)",
+      "provisional": true
+    },
+    "philippine": {
+      "note": "first spoken at LumioseCity_BattleInstitute.txt(29)",
       "provisional": true
     },
     "phoebe": {
@@ -3407,6 +3427,7 @@
     "Ernestine": "ernestine",
     "Essentia": "essentia",
     "Eusine": "eusine",
+    "Eustache": "eustache",
     "Évrard": "evrard",
     "Fabien": "fabien",
     "Factory Staff": "factory_staff",
@@ -3427,6 +3448,7 @@
     "Foreman": "foreman",
     "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
+    "Fossil Seeker": "fossil_seeker",
     "Fossil Seller": "fossil_seller",
     "Frieda": "frieda",
     "Gabby": "gabby",
@@ -3570,6 +3592,7 @@
     "Member": "member",
     "Miguel": "miguel",
     "Miki": "miki",
+    "Milliner": "milliner",
     "Mira": "mira",
     "Mirabelle": "mirabelle",
     "Misty": "misty",
@@ -3609,6 +3632,7 @@
     "Old Woman": "look:old_woman",
     "Olivia": "olivia",
     "Olympia": "olympia",
+    "Ombeline": "ombeline",
     "Oskin": "oskin",
     "Owner": "owner",
     "Pablo": "pablo",
@@ -3621,6 +3645,7 @@
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
     "Philibert": "philibert",
+    "Philippine": "philippine",
     "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Pilot": "pilot",

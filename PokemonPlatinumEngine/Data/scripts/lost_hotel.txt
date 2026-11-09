@@ -58,3 +58,35 @@ script Quiet
   speaker none
   text "An old rubbish bin of the hotel. Nothing stirs in it today."
   return
+
+
+# Hoopa in the gallery (plan 23, Kalos's last species; plan 29 · LS11's beat for Kalos's mythicals,
+# docs/mechanics/rulings.md, "Kalos's last species"). Hoopa, given by events alone in X and Y, brings things through its
+# rings from far away; ours has come through one into the old hotel's gallery once the professor has upgraded the Mega
+# Ring (the overlay shows it by FLAG_KALOS_MEGA_RING_UPGRADED), at level 70. Beaten or caught it is gone for good
+# (FLAG_KALOS_HOOPA_GONE); run from, it stays.
+script Hoopa
+  scene "Hoopa in the Lost Hotel"
+  music stop
+  letterbox on 0.4
+  camera pan 40 11 1.2
+  camera zoom 1.4 0.8
+  effect rift 40 10 hold
+  effect ripple 40 11
+  cry "Hoopa"
+  speaker none
+  text "A golden ring hangs over the gallery floor. A little Pokémon pops out of it, laughing, and points at {player}!"
+  effect stop 40 10
+  camera release 0.4
+  letterbox off 0.3
+  endscene
+  wildbattle "Hoopa" 70
+  if result == 2 goto Stays
+  setflag FLAG_KALOS_HOOPA_GONE
+  hide self
+  music area
+  end
+label Stays
+  music area
+  text "Hoopa tumbles back through its ring, still laughing, and peeks out again."
+  end

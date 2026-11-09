@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1559 | 1498 | 61 | 1 | 0 |
-| Scripts (`script:`) | 11815 | 11317 | 498 | 17 | 0 |
+| People of the hand-made maps (`map:`) | 1586 | 1525 | 61 | 1 | 0 |
+| Scripts (`script:`) | 11846 | 11347 | 499 | 17 | 0 |
 | People of the world (`world:`) | 8028 | 7966 | 62 | 4 | 0 |
-| **All** | 21636 | 21012 | 624 | 22 | 0 |
+| **All** | 21694 | 21069 | 625 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 252 |
-| a question's answers | 897 |
+| a Pokémon's cry | 257 |
+| a question's answers | 900 |
 | a sign | 1750 |
 | the game's own voice (speaker none) | 293 |
-| the game's own voice (text) | 1925 |
+| the game's own voice (text) | 1932 |
 
 ## The cast
 
-- Named characters: 510 voices (409 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 515 voices (414 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
-- Archetypes in use: 241, with 728 voices to cast (V5).
+- Archetypes in use: 242, with 731 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1960.
 
 ## Lines by voice
@@ -41,16 +41,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1960 | 142 |
-| `look:gentleman (any)` | 750 | 15 |
+| `look:gentleman (any)` | 752 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
+| `look:lady (any)` | 448 | 1 |
 | `look:clerk (any)` | 443 | 11 |
-| `look:lady (any)` | 443 | 1 |
 | `look:youngster (any)` | 418 | 22 |
-| `look:lass (any)` | 349 | 11 |
+| `look:lass (any)` | 350 | 11 |
 | `look:attendant (any)` | 321 | 12 |
+| `look:receptionist (any)` | 266 | 29 |
 | `look:nurse (any)` | 258 | 0 |
-| `look:receptionist (any)` | 254 | 28 |
 | `look:scientist (any)` | 236 | 6 |
 | `look:gym_guide (any)` | 218 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
@@ -58,7 +58,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:fisherman (any)` | 176 | 0 |
 | `cynthia` | 170 | 2 |
 | `look:sailor (any)` | 166 | 0 |
-| `look:old_man (any)` | 162 | 4 |
+| `look:old_man (any)` | 163 | 4 |
 | `class:youngster (any)` | 160 | 0 |
 | `class:lass (any)` | 152 | 0 |
 | `rowan` | 147 | 12 |
@@ -74,9 +74,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:guard (any)` | 121 | 0 |
 | `looker` | 121 | 2 |
 | `assistant` | 115 | 5 |
+| `look:old_woman (any)` | 104 | 5 |
 | `look:worker (any)` | 104 | 0 |
 | `class:swimmer_f (any)` | 102 | 0 |
-| `look:old_woman (any)` | 102 | 5 |
 | `class:cooltrainer (any)` | 100 | 0 |
 | `bianca` | 99 | 3 |
 | `black_belt` | 99 | 14 |
@@ -115,6 +115,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `elder` | 55 | 0 |
 | `class:beauty (any)` | 54 | 0 |
 | `bill` | 53 | 2 |
+| `owner` | 51 | 5 |
 | `class:young_couple (any)` | 50 | 0 |
 | `crasher_wake` | 49 | 1 |
 | `depot_agent` | 49 | 3 |
@@ -124,7 +125,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:gentleman (any)` | 46 | 0 |
 | `scott` | 46 | 0 |
 | `wallace` | 46 | 2 |
-| `owner` | 45 | 5 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `flint` | 44 | 1 |
@@ -171,10 +171,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
+| `director` | 32 | 1 |
 | `look:expert_m (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `policeman` | 32 | 0 |
-| `director` | 31 | 1 |
 | `kimono_girl` | 31 | 0 |
 | `breeder` | 30 | 4 |
 | `captain` | 30 | 0 |

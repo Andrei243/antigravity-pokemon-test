@@ -1,0 +1,131 @@
+{
+  "name": "LumioseCity_CafeUltimo",
+  "displayName": "Café Ultimo",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "#.##...##.#",
+    "#.........#",
+    "##.......##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 323,
+      "targetY": 338,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "barista",
+      "name": "Barista",
+      "npcType": "waitress",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "The last café before the boulevard, and the strongest cup in Lumiose. One sip and you'll skate to Camphrier!"
+      ]
+    },
+    {
+      "id": "student",
+      "name": "Student",
+      "npcType": "school_kid_m",
+      "x": 3,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "Exams tomorrow. Third cup today. My Pokémon is asleep on my notes, so I'm calling it a study break."
+      ]
+    },
+    {
+      "id": "socialite",
+      "name": "Socialite",
+      "npcType": "socialite",
+      "x": 8,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "Darling, everyone who is anyone ends the evening here. Everyone else ends it at the tower."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

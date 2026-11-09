@@ -1,0 +1,113 @@
+{
+  "name": "LumioseCity_VertApartment",
+  "displayName": "Lumiose City",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 312,
+      "targetY": 378,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "mother",
+      "name": "Lady",
+      "npcType": "lady",
+      "x": 5,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "From our window you can see the whole of Vert Plaza. My children watch the Trainers skate by all day."
+      ]
+    },
+    {
+      "id": "daughter",
+      "name": "Little Girl",
+      "npcType": "preschooler_f",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "When I'm big I'm going to skate all the way to the tower and battle the Gym Leader at the top!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,86 @@
+# Lumiose City's Battle Institute (plan 23, Kalos's last species: one of the thirteen doors left shut). A room of ours on
+# X and Y's place as it is publicly described, a hall on the north boulevard where Trainers sit a test of battles in a
+# row. Ours is three single battles against its examiners (Ombeline, Eustache and Philippine, trainers of Kalos's table at 36
+# to 40), fought one after another on the player's own team with nothing healed between, and paid as any trainer's
+# battle. The test is taken once a day (FLAG_DAILY_KALOS_BATTLE_INSTITUTE, set as it begins, so a test failed is the
+# day's test too), and its mark is the turns the three battles took together (TURNS: the fewer, the better), against
+# bands of ours: nine or fewer an A and a PP Up, fifteen or fewer a B and a Protein, twenty-one or fewer a C and two
+# Hyper Potions, more a D and two Super Potions. A first A sets FLAG_KALOS_BATTLE_INSTITUTE_TOP, which the receptionist
+# remembers.
+
+
+script Receptionist
+  face self player
+  speaker "Receptionist"
+  if flag FLAG_DAILY_KALOS_BATTLE_INSTITUTE goto Taken
+  say "Welcome to the Battle Institute. Here Trainers sit a test of three battles, one after another, with no rest between."
+  ask "Will you sit today's test? Our three examiners are ready."
+  if no goto Later
+  setflag FLAG_DAILY_KALOS_BATTLE_INSTITUTE
+  say "Very good. Your mark goes by how quickly you finish. Good luck!"
+  speaker "Ombeline"
+  say "First examiner, Ombeline. Show me how you open a battle."
+  battle ombeline as "kalos_institute_ombeline" canlose
+  if lost goto Failed
+  speaker "Eustache"
+  say "Second examiner, Eustache. Now show me how you keep going."
+  battle eustache as "kalos_institute_eustache" canlose
+  if lost goto Failed
+  speaker "Philippine"
+  say "Last examiner, Philippine. Let us see how you finish."
+  battle philippine as "kalos_institute_philippine" canlose
+  if lost goto Failed
+  speaker "Receptionist"
+  say "The test is done, in {var:TURNS} turns. Here is your mark."
+  if var TURNS <= 9 goto MarkA
+  if var TURNS <= 15 goto MarkB
+  if var TURNS <= 21 goto MarkC
+  say "A mark of D. You passed, and that is what counts. Come and sit it again tomorrow."
+  give "Super Potion" 2
+  end
+label MarkA
+  say "A mark of A! The examiners will be talking about this one for a week."
+  setflag FLAG_KALOS_BATTLE_INSTITUTE_TOP
+  give "PP Up"
+  end
+label MarkB
+  say "A mark of B. Quick and sure. A little more and it would have been an A."
+  give "Protein"
+  end
+label MarkC
+  say "A mark of C. A steady test, from start to finish."
+  give "Hyper Potion" 2
+  end
+label Failed
+  heal
+  speaker "Receptionist"
+  say "The test is over for today. Your Pokémon have been seen to. Come back tomorrow and try again."
+  end
+label Later
+  say "The examiners will wait. They are very patient people."
+  end
+label Taken
+  if flag FLAG_KALOS_BATTLE_INSTITUTE_TOP goto TakenTop
+  say "You have sat today's test already. The examiners need their rest too. Come back tomorrow."
+  end
+label TakenTop
+  say "You have sat today's test already. Your A is still up on our board, by the way."
+  end
+
+
+# The examiners between tests
+script Examiner
+  face self player
+  if subject "ombeline" goto Ombeline
+  if subject "eustache" goto Eustache
+  speaker "Philippine"
+  say "A test is not about winning. It is about winning well."
+  end
+label Ombeline
+  speaker "Ombeline"
+  say "The first turn tells me most of what I need to know about a Trainer."
+  end
+label Eustache
+  speaker "Eustache"
+  say "No healing between battles. Plan for the third one before you start the first."
+  end

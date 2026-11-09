@@ -1,0 +1,12 @@
+# Lumiose City's Chapellerie (plan 23, Kalos's last species: one of the thirteen doors left shut). A hat shop of ours on
+# the west side of the city, whose milliner sells the boutiques' hats on the wardrobe screen (plan 11 · C10's,
+# clothes.json's "lumiose_hats").
+
+
+script Milliner
+  speaker "Milliner"
+  say "Bonjour! A Trainer without a hat is a Trainer the sun can find. Let us fix that."
+  wardrobe "lumiose_hats"
+  speaker "Milliner"
+  say "It suits you! Do come back when you fancy a change of hat."
+  end

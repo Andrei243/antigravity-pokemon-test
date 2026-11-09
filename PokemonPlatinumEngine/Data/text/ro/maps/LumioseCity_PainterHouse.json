@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose City"
+    ],
+    "text": [
+      "Lumiose City"
+    ]
+  },
+  "people": {
+    "painter": {
+      "name": {
+        "en": [
+          "Painter"
+        ],
+        "text": [
+          "Pictorița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I paint the tower every day, and it never comes out the same. Today it is blue. Tomorrow, who knows?"
+        ],
+        "text": [
+          "Pictez turnul în fiecare zi și nu iese niciodată la fel. Azi e albastru. Mâine, cine știe?"
+        ]
+      }
+    },
+    "smeargle": {
+      "name": {
+        "en": [
+          "Smeargle"
+        ],
+        "text": [
+          "Smeargle"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It has paint all over its tail, and a little on its nose."
+        ],
+        "text": [
+          "Are vopsea pe toată coada și puțină pe nas."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

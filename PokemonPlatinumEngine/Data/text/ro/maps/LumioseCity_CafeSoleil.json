@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Café Soleil"
+    ],
+    "text": [
+      "Café Soleil"
+    ]
+  },
+  "people": {
+    "waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelnerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Café Soleil, the sunniest tables in Lumiose. On a fine day the whole room smells of lemon tart."
+        ],
+        "text": [
+          "Café Soleil, cele mai însorite mese din Lumiose. Într-o zi frumoasă, toată sala miroase a tartă cu lămâie."
+        ]
+      }
+    },
+    "actress": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a famous actress takes her tea at this very table. I've been waiting for her since breakfast."
+        ],
+        "text": [
+          "Se zice că o actriță faimoasă își bea ceaiul chiar la masa asta. O aștept de la micul dejun."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Domnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sun comes in through those windows just after noon. That is the hour to sit here, no other."
+        ],
+        "text": [
+          "Soarele intră pe ferestrele acelea puțin după prânz. Atunci e ora să stai aici, nu alta."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

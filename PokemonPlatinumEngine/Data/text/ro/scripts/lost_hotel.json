@@ -18,5 +18,23 @@
         "Un coș de gunoi vechi al hotelului. Nimic nu se mișcă în el azi."
       ]
     }
+  ],
+  "Hoopa": [
+    {
+      "en": [
+        "A golden ring hangs over the gallery floor. A little Pokémon pops out of it, laughing, and points at {player}!"
+      ],
+      "text": [
+        "Un inel auriu atârnă deasupra podelei galeriei. Un Pokémon mic iese din el râzând și arată spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Hoopa tumbles back through its ring, still laughing, and peeks out again."
+      ],
+      "text": [
+        "Hoopa se rostogolește înapoi prin inelul lui, tot râzând, și apoi trage cu ochiul afară."
+      ]
+    }
   ]
 }

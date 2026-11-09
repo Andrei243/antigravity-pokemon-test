@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Café Introversion"
+    ],
+    "text": [
+      "Café Introversion"
+    ]
+  },
+  "people": {
+    "owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "...Welcome. Here we speak softly, or not at all. The coffee says the rest."
+        ],
+        "text": [
+          "...Bine ai venit. Aici vorbim încet sau deloc. Cafeaua spune restul."
+        ]
+      }
+    },
+    "reader": {
+      "name": {
+        "en": [
+          "Reader"
+        ],
+        "text": [
+          "Cititorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have read the same page four times. It is a very good page."
+        ],
+        "text": [
+          "Am citit aceeași pagină de patru ori. E o pagină foarte bună."
+        ]
+      }
+    },
+    "quiet_girl": {
+      "name": {
+        "en": [
+          "Quiet Girl"
+        ],
+        "text": [
+          "Fata tăcută"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "...Oh! Sorry. I come here to hear myself think. Today it is thinking about cake."
+        ],
+        "text": [
+          "...Oh! Scuze. Vin aici ca să-mi aud gândurile. Azi se gândesc la prăjituri."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

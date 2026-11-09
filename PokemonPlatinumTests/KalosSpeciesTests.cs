@@ -7,23 +7,16 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// Plan 40 · GE1's check, for Kalos (plan 23 · Z4b): every species of X and Y's three Pokédexes (Central, Coastal and
 /// Mountain Kalos, 457 together) can be had in Kalos with nobody else (<see cref="SpeciesSources.Of(string)"/>), but what
-/// <see cref="Owed"/> names, each with who owes it. Since Kalos's port and its HMs
-/// (plan 23) only the Jaw and Sail Fossils' lines and the mythicals are owed.
+/// <see cref="Owed"/> names, each with who owes it. Since Kalos's last species (plan 23: the Jaw and Sail Fossils of the
+/// Glittering Cave, and Diancie, Hoopa and Volcanion each met in a place of its own after the Hall of Fame) nothing is owed.
 /// </summary>
 public class KalosSpeciesTests
 {
     private const string Region = RegionDatabase.Kalos;
 
-    private const string Fossils = "the importer: X and Y's Jaw and Sail Fossils, no items of the data yet (Ambrette's laboratory revives what the data has)";
-    private const string Mythicals = "plan 29 · LS11: Kalos's mythicals, by events of ours";
-
     /// <summary>What Kalos's Pokédexes have that nothing in Kalos gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        // Ambrette's fossil laboratory revives an Old Amber; X and Y's two Fossils of Kalos are no items of the data
-        ["Tyrunt"] = Fossils, ["Tyrantrum"] = Fossils, ["Amaura"] = Fossils, ["Aurorus"] = Fossils,
-        // Given by events alone in X and Y
-        ["Diancie"] = Mythicals, ["Hoopa"] = Mythicals, ["Volcanion"] = Mythicals,
     };
 
     /// <summary>The items and places Kalos's evolutions ask for that nothing in Kalos gives, and who owes each.</summary>
@@ -61,6 +54,12 @@ public class KalosSpeciesTests
         Assert.Contains("lumiose_stones", kalos.Items["Dusk Stone"]);
         Assert.Contains("KiloudeCity_BattleMaison", kalos.Items["Razor Claw"]);
         Assert.Contains("lost_hotel", kalos.Ways["Rotom"]);
+        // Kalos's last species: the two Fossils of the Glittering Cave, revived in Ambrette, and the three mythicals
+        Assert.Contains("glittering_cave", kalos.Items["Jaw Fossil"]);
+        Assert.Contains("glittering_cave", kalos.Items["Sail Fossil"]);
+        Assert.Contains("reflection_cave", kalos.Ways["Diancie"]);
+        Assert.Contains("lost_hotel", kalos.Ways["Hoopa"]);
+        Assert.Contains("couriway_town", kalos.Ways["Volcanion"]);
         // Sinnoh's Game Corner, Underground and Battle Frontier give Kalos nothing
         Assert.DoesNotContain(kalos.Items.Values, w => w.Contains("Underground") || w.Contains("Battle Points"));
     }
