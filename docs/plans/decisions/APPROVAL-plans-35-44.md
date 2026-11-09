@@ -322,3 +322,23 @@ a ★ a clipped, businesslike march  b a skulking pizzicato.
 ---
 
 **Answer key format:** one line, "1a, 2★, 3b, ... 66x: text" (number then letter; ★ or omitted means the default; for lists "20 keep all" or "20 drop 8,9"; for Q21 "21a" or "21 Hearthome b, ...").
+
+---
+
+## Answers (the user, 2026-11-10, from the answer sheet)
+
+Changed from the ★ default: **6b, 9b, 13b, 14b, 16b, 17b, 18b, 19b, 22b, 41c, 52c**. Every other question stands at its ★ default.
+
+- 6b: the Looker office is a cluttered room of boxes and maps, Looker half-disguised as a clerk.
+- 9b: Johto's case is **The Alph Etchings**.
+- 13b: the leaders are tricked by a rumour that their old machine has returned.
+- 14b: the gathering ends in a showman's finale (curtains, bows, the gatherer sells tickets; light comedy).
+- 16b: the gatherer's battle song and the fortress song are a quick, bright, taunting waltz.
+- 17b: the questionnaire man is **Madame Ottilie Fray**.
+- 18b: the couriers are **Gift Runners** in yellow scarves.
+- 19b: the words that open the box are **SPARROW** and **CLOCKWORK**.
+- 22b: add one festival to every region now: Kanto Harvest Moon (Sep), Johto Bellfall (Nov), Hoenn Tide Day (Jun 20), Unova Bridgelight (Feb).
+- 41c, 52c: as the sheet's option c.
+- Note (part D): in **every region**, add something for the three big yearly events (Easter, Christmas, New Year) and something subtle for Valentine's Day.
+
+Session questions: voices default **All** once approved (answer 5); everything else at its default. Next work, **all to start next week after the user's usage resets**: plan 41 EG6 and EG3; plan 30 FM13; plan 40 GE7, GE8, GE9; plan 41 EG2, EG4, EG7, EG9; plan 36 remaining.
