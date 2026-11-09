@@ -8,5 +8,11 @@
   "people": {},
   "signs": {
     "R28_001+1": "Route 28\nMt. Silver lies to the west."
-  }
+  },
+  // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found in Route 28, on the path before the reception gate as well as
+  // traded for Battle Points
+  "npcs": [
+    { "id": "route_28.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 884, "y": 272, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_JOHTO_ROUTE_28_BOTTLE_CAP" }
+  ]
 }

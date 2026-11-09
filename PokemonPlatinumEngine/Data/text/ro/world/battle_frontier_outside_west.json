@@ -413,6 +413,16 @@
           "Am venit să-l văd pe campionul de la Dome. Nu e minunat? M-a privit, sunt sigură!"
         ]
       }
+    },
+    "battle_frontier_outside_west.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {

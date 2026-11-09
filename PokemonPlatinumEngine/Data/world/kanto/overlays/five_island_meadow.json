@@ -17,5 +17,11 @@
   },
   "read": {
     "FiveIsland_Meadow_EventScript_WarehouseDoor": "WarehouseDoor"
-  }
+  },
+  // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found in Five Island's meadow, on the grass of its south end as well as
+  // traded for Battle Points
+  "npcs": [
+    { "id": "five_island_meadow.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 88, "y": 72, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_FIVE_ISLAND_MEADOW_BOTTLE_CAP" }
+  ]
 }

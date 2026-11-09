@@ -27,7 +27,11 @@
     "girl": { "name": "Girl", "npcType": "Lass", "dialog": [ "Past the pier there is a landing nobody uses. An old man goes there some days, and just looks at the water." ] }
   },
   "npcs": [
-    { "id": "rival_kiloude", "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "x": 565, "y": 336, "facing": "Down", "script": "RivalKiloude", "shownBy": "FLAG_KALOS_TMV_PASS" }
+    { "id": "rival_kiloude", "name": "{rival}", "npcType": "Rival:SERENA:CALEM", "x": 565, "y": 336, "facing": "Down", "script": "RivalKiloude", "shownBy": "FLAG_KALOS_TMV_PASS" },
+    // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found on the shore west of the
+    // pier as well as traded for Battle Points
+    { "id": "kiloude_city.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 542, "y": 384, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_KALOS_KILOUDE_BOTTLE_CAP" }
   ],
   "signs": {
     "TownSign": "Kiloude City\nThe sea begins at the end of the street."

@@ -99,6 +99,36 @@
           "Azumarill: Rurii!"
         ]
       }
+    },
+    "lilycove_city_department_store_1f.TrainingCoach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "lilycove_city_department_store_1f.TrainingTutor": {
+      "name": {
+        "en": [
+          "Tutor Marlo"
+        ],
+        "text": [
+          "Meditatorul Marlo"
+        ]
+      }
+    },
+    "lilycove_city_department_store_1f.TrainingClerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
     }
   },
   "signs": {

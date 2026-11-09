@@ -18,5 +18,11 @@
       "script": "Haxorus",
       "still": true
     }
-  }
+  },
+  // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found in the Nature Preserve, on the sand of the clearing by the landing strip as well as
+  // traded for Battle Points
+  "npcs": [
+    { "id": "nature_preserve.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 24, "y": 30, "item": "Bottle Cap",
+      "hiddenBy": "FLAG_OBTAINED_UNOVA_NATURE_PRESERVE_BOTTLE_CAP" }
+  ]
 }

@@ -7,6 +7,13 @@
   "area": "driftveil_drawbridge",
   "bgmTrack": "unova/drawbridge",
   "camera": "Drawbridge",
+  // Plan 36 · TR4: three places on the deck where a feather lies each day, found by looking at the tile
+  // (driftveil_drawbridge.txt)
+  "readAt": [
+    { "x": 130, "z": 47, "script": "FeatherWest" },
+    { "x": 155, "z": 45, "script": "FeatherMiddle" },
+    { "x": 175, "z": 48, "script": "FeatherEast" }
+  ],
   "people": {
     "0": {
       "name": "Pokéfan",

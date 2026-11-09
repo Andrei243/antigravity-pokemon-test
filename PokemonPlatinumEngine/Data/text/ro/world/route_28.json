@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "route_28.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
+    }
+  },
   "signs": {
     "R28_001+1": {
       "en": [

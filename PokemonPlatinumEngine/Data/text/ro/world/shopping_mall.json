@@ -321,6 +321,36 @@
           "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
+    },
+    "shopping_mall.TrainingCoach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "shopping_mall.TrainingTutor": {
+      "name": {
+        "en": [
+          "Tutor Petra"
+        ],
+        "text": [
+          "Meditatoarea Petra"
+        ]
+      }
+    },
+    "shopping_mall.TrainingClerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
     }
   },
   "signs": {}

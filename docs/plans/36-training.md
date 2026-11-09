@@ -125,6 +125,25 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
 - Tests: `WorldWalk` reaches each hall; `StoryTests`; `EveryToolCanBeHad` for each region after its Hall of Fame; the feathers come back the next day (`DailyEvents`).
 - Shots: `tr30_kanto_hall`, `tr31_johto_hall`, `tr32_hoenn_hall`, `tr33_unova_hall`, `tr34_drawbridge_feather`.
 - **Done when** in each of the four regions the harness walks into the hall, plays a drill and buys from the stall.
+- **Outcome (2026-11-09).** Built in one session, for Kalos too. **Kanto, Johto, Hoenn and Unova have no house left
+  worth opening** (their unused doors are the plans' other rooms, and a GBA house of FireRed's or Emerald's opened by an
+  overlay is drawn from its own tiles with no room behind it), so as the design's fallback **the club's people stand in a
+  corner of each department store's ground floor**, overlay `npcs` of ours: Celadon's west wall (1, 8 to 11), Goldenrod's
+  south of its west hall (5 to 8, 10), Lilycove's east corner (17, 3 to 5), Shopping Mall Nine's lower hall (6 to 8, 18):
+  the head coach (`common.TrainingCoach`), the clerk's shelves (`TrainingClerk`), a tutor of the region's own name
+  (`TrainingTutor`: Rowe, Ines, Marlo, Petra) and, in Kanto and Johto, which have no Battle Points counter of their own,
+  the club's clerk (`TrainingExchange`). **Kalos's is a hall**: a house drawn in Laverre City (door 347, 217; warp 4),
+  `LaverreCity_TrainingHall` on Sunyshore's plan with the club's clerk beside the counter, open from the first visit.
+  **Bottle Caps** of ours as balls in each region's post-game ground (Five Island's meadow, Route 28, the Battle Frontier
+  island's west half, the Nature Preserve, Kiloude City's shore; `FLAG_OBTAINED_<…>_BOTTLE_CAP`). **Unova's feathers**:
+  three tiles of the Driftveil Drawbridge's deck read (`readAt`, `driftveil_drawbridge.txt`), a feather each by the day's
+  die, once a day (`FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_*`). `EveryToolCanBeHad` holds each of the five regions with
+  only Sinnoh's other-plan lines owed. Tests `TrainingHallsTests` (17: the people on open floor and spoken to, the coach
+  and the clerk's stall for a Champion, Laverre's way in and out and `WorldWalk` to its coach, each cap on open ground,
+  the feathers once a day and back the next, every tool in each region, and plan 41 · EG2's ribbons). **No shots**: the
+  session ran on a copy of the tree on another drive while the repository's drive was full, and the harness's `training`
+  mode gained no `tr30` to `tr34`; the halls want looking at in the harness. The rulings' "The training halls of the
+  other regions".
 
 ### TR5 · Tera Shards and the Tera keeper
 - The importer: the eighteen shards by name and the Stellar one ours, the coverage report and its floor; `Models/TeraChange.cs`; `train tera` and `common.TeraKeeper` in every hall behind `if item "Tera Orb"`; INFO's Tera Type pill (the style guide first); the shards in `drillPrizes` and the Battle Points list behind the orb.
@@ -192,7 +211,7 @@ Each session: the rule in GPU-free code with its tests; the screen on the kit wi
 - [x] TR1 Effort on screen and the drills' rules (2026-11-07: `Models/TrainingDrills.cs`, `TrainingDrillTests`, SKILLS' effort bars and total, the rulings' "Effort drills, and effort on the summary"; the PEAK tag is described in the style guide and left to TR3; the harness's `training` mode, shots tr01 and tr02, identical on two runs)
 - [x] TR2 The training hall and its drills (2026-11-07: Sunyshore City's hall by an exit of ours at the north houses' alley, the drill screen, `train`, the records and prizes, `TrainingHallTests`, the harness's `hall` part, tr10 to tr19b; the outcome above)
 - [x] TR3 Peak training, the tools and every tool's source (2026-11-07: `train peak` and `train peak check`, the PEAK tag on SKILLS and the judge, the stall `training_hall` and the tools' prices, `training.json`'s `battlePoints` and `frontier prize training` with the club's clerk at three counters, two Bottle Caps in the Battle Zone, `Data/ItemSources.cs`, `PeakTrainingTests`, `TrainingToolsTests`; the outcome above)
-- [ ] TR4 The halls of Kanto, Johto, Hoenn and Unova
+- [x] TR4 The halls of Kanto, Johto, Hoenn and Unova (2026-11-09: the club's people in the four department stores, Kalos's hall in Laverre City, a Bottle Cap in each post-game ground, Unova's feathers on the Drawbridge, `TrainingHallsTests`; no shots yet, as the outcome above says)
 - [ ] TR5 Tera Shards and the Tera keeper
 - [x] TR6 Hidden abilities handed down: the modern Day Care (2026-11-09: `Ruleset.ModernBreeding`, `Breeding.HandDownAbility`, `BallFor`, `CharmRolls`, `BuildMoveset` by the rules, Unova's Day Care people, `ModernBreedingTests`, the rulings' "The modern Day Care". As built below)
 - [ ] TR7 Powers: the rule and its readers

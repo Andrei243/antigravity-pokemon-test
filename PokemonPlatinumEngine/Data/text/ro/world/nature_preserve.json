@@ -19,6 +19,16 @@
           "Haxorus"
         ]
       }
+    },
+    "nature_preserve.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {}

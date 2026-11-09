@@ -676,7 +676,8 @@ public class CapsuleTests
     {
         // generated/ribbons.txt and sRibbonDataTable (src/ribbon.c)
         var all = RibbonDatabase.All;
-        Assert.Equal(80, all.Count);
+        // Platinum's eighty, then the later regions' four Champion ribbons of ours (plan 41 · EG2)
+        Assert.Equal(84, all.Count);
         Assert.Equal(("RIBBON_HOENN_CHAMPION", "RIBBON_SINNOH_CHAMP", "RIBBON_COOL", "RIBBON_PREMIER"), (all[0].Id, all[32].Id, all[33].Id, all[79].Id));
         Assert.Equal(("Champion Ribbon", "Cool Ribbon Great", "Effort Ribbon", "Footprint Ribbon"),
             (RibbonDatabase.Name("RIBBON_HOENN_CHAMPION"), RibbonDatabase.Name("RIBBON_COOL_GREAT"), RibbonDatabase.Name(RibbonRules.Effort), RibbonDatabase.Name(RibbonRules.Footprint)));
@@ -697,13 +698,13 @@ public class CapsuleTests
         Assert.Equal(8, all.Count(r => RibbonRules.Kind(r.Id) == RibbonKind.Tower));
         Assert.Equal(7, all.Count(r => RibbonRules.Kind(r.Id) == RibbonKind.Daily));
         Assert.Equal(3, all.Count(r => RibbonRules.Kind(r.Id) == RibbonKind.Syndicate));
-        Assert.Equal(2, all.Count(r => RibbonRules.Kind(r.Id) == RibbonKind.Champion));
+        Assert.Equal(6, all.Count(r => RibbonRules.Kind(r.Id) == RibbonKind.Champion));
         // The ones the original marks as an event's are all of the kind nobody gives
         Assert.All(all.Where(r => r.Event), r => Assert.Equal(RibbonKind.Event, RibbonRules.Kind(r.Id)));
         // Every one has a line of its own to say what it is for
         Assert.All(all, r => Assert.NotEqual("A ribbon.", RibbonRules.Describe(r.Id)));
         // Those that can be had in this game already, and those that wait
-        Assert.Equal(55, all.Count(r => RibbonRules.WaitsFor(r.Id) == null));
+        Assert.Equal(58, all.Count(r => RibbonRules.WaitsFor(r.Id) == null));
         // The Battle Tower gives four of its six (plan 06 · R18a); the two that take another player wait for one
         Assert.All(new[] { "RIBBON_ABILITY", "RIBBON_GREAT_ABILITY", "RIBBON_DOUBLE_ABILITY", "RIBBON_MULTI_ABILITY" }, r => Assert.Null(RibbonRules.WaitsFor(r)));
         Assert.Equal("a friend to battle beside in the Battle Tower", RibbonRules.WaitsFor("RIBBON_PAIR_ABILITY"));

@@ -1,0 +1,48 @@
+# The Driftveil Drawbridge (plan 22 · U6, part b; plan 36 · TR4). Three places on its deck where a feather lies every day,
+# dropped by the birds whose shadows cross it (Black 2's feathers as a mechanic, our words): each is found once a day by
+# looking at its tile (the overlay's readAt), its daily flag cleared by the new day (Models/DailyEvents.cs), and which of
+# the six feathers it is is the day's die. Plan 38's glints will show them by themselves once they are built.
+
+script FeatherWest
+  if flag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST end
+  setflag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST
+  call Feather
+  end
+
+script FeatherMiddle
+  if flag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_MIDDLE end
+  setflag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_MIDDLE
+  call Feather
+  end
+
+script FeatherEast
+  if flag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_EAST end
+  setflag FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_EAST
+  call Feather
+  end
+
+# One of the six feathers, by the die: each raises the effort of its own stat by one (Models/Effort.cs)
+script Feather
+  random 6
+  if result == 1 goto Muscle
+  if result == 2 goto Resist
+  if result == 3 goto Genius
+  if result == 4 goto Clever
+  if result == 5 goto Swift
+  find "Health Feather"
+  return
+label Muscle
+  find "Muscle Feather"
+  return
+label Resist
+  find "Resist Feather"
+  return
+label Genius
+  find "Genius Feather"
+  return
+label Clever
+  find "Clever Feather"
+  return
+label Swift
+  find "Swift Feather"
+  return

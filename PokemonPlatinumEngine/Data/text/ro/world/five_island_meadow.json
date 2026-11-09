@@ -85,6 +85,16 @@
           "Rocket Grunt: Poate trebuia să mă uit în altă parte."
         ]
       }
+    },
+    "five_island_meadow.BottleCap": {
+      "name": {
+        "en": [
+          "Bottle Cap"
+        ],
+        "text": [
+          "Capac de Sticlă"
+        ]
+      }
     }
   },
   "signs": {}

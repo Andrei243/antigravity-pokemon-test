@@ -120,19 +120,42 @@ public static class RibbonRules
         return SyndicateRibbons[0];
     }
 
+    /// <summary>Hoenn's Champion Ribbon, Emerald's and the data's first.</summary>
+    public const string HoennChamp = "RIBBON_HOENN_CHAMPION";
+
+    /// <summary>The later regions' Champion ribbons, rows of ours after Platinum's eighty (plan 41 · EG2).</summary>
+    public const string KalosChamp = "RIBBON_KALOS_CHAMPION", AlolaChamp = "RIBBON_ALOLA_CHAMPION",
+        GalarChamp = "RIBBON_GALAR_CHAMPION", PaldeaChamp = "RIBBON_PALDEA_CHAMPION";
+
     /// <summary>
-    /// Every Pokémon of the team that is no Egg gets Sinnoh's Champion Ribbon as the team enters the Hall of Fame
-    /// (<c>Party_GiveChampionRibbons</c>).
+    /// The Champion Ribbon a region's Hall of Fame hands its team (plan 41 · EG2): Hoenn's, Kalos's, Alola's, Galar's and
+    /// Paldea's own; Sinnoh's for Sinnoh and for the regions whose games give none of their own (Kanto, Johto, Unova).
     /// </summary>
-    public static void GiveChampion(Party party)
+    public static string ChampionOf(string? region) => region switch
     {
-        foreach (var p in party.Members.Where(p => !p.IsEgg)) p.Ribbons.Add(SinnohChamp);
+        RegionDatabase.Hoenn => HoennChamp,
+        RegionDatabase.Kalos => KalosChamp,
+        RegionDatabase.Alola => AlolaChamp,
+        RegionDatabase.Galar => GalarChamp,
+        RegionDatabase.Paldea => PaldeaChamp,
+        _ => SinnohChamp
+    };
+
+    /// <summary>
+    /// Every Pokémon of the team that is no Egg gets the region's Champion Ribbon as the team enters its Hall of Fame
+    /// (<c>Party_GiveChampionRibbons</c>; plan 41 · EG2: by the region, <see cref="ChampionOf"/>). With no region named it
+    /// is Sinnoh's, as the original's.
+    /// </summary>
+    public static void GiveChampion(Party party, string? region = null)
+    {
+        string ribbon = ChampionOf(region);
+        foreach (var p in party.Members.Where(p => !p.IsEgg)) p.Ribbons.Add(ribbon);
     }
 
     /// <summary>What a ribbon is given for.</summary>
     public static RibbonKind Kind(string ribbon) => ribbon switch
     {
-        "RIBBON_HOENN_CHAMPION" or SinnohChamp => RibbonKind.Champion,
+        HoennChamp or SinnohChamp or KalosChamp or AlolaChamp or GalarChamp or PaldeaChamp => RibbonKind.Champion,
         Effort => RibbonKind.Effort,
         "RIBBON_HOENN_WINNING" or "RIBBON_HOENN_VICTORY" => RibbonKind.Tower,
         "RIBBON_ABILITY" or "RIBBON_GREAT_ABILITY" or "RIBBON_DOUBLE_ABILITY" or "RIBBON_MULTI_ABILITY" or "RIBBON_PAIR_ABILITY" or "RIBBON_WORLD_ABILITY" => RibbonKind.Tower,
@@ -173,7 +196,9 @@ public static class RibbonRules
     {
         RibbonKind.Contest or RibbonKind.Daily or RibbonKind.Footprint => null,
         RibbonKind.Effort => null,
-        RibbonKind.Champion => ribbon == SinnohChamp ? null : Text.Of("ribbonDeeds.waitsFor.hoenn"),
+        // Every built region's Hall of Fame hands its own (plan 41 · EG2); Galar's and Paldea's wait for their regions
+        RibbonKind.Champion => ribbon == GalarChamp ? Text.Of("ribbonDeeds.waitsFor.galar")
+            : ribbon == PaldeaChamp ? Text.Of("ribbonDeeds.waitsFor.paldea") : null,
         RibbonKind.Syndicate => Text.Of("ribbonDeeds.waitsFor.syndicate"),
         // The Battle Tower gives its four (plan 06 · R18a); the two that take another player wait for one (plan 07)
         RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? Text.Of("ribbonDeeds.waitsFor.hoenn")
@@ -211,6 +236,10 @@ public static class RibbonRules
             "RIBBON_HOENN_EARTH" => Text.Of("ribbonDeeds.hoennEarth"),
             "RIBBON_HOENN_WORLD" => Text.Of("ribbonDeeds.hoennWorld"),
             SinnohChamp => Text.Of("ribbonDeeds.sinnohChampion"),
+            KalosChamp => Text.Of("ribbonDeeds.kalosChampion"),
+            AlolaChamp => Text.Of("ribbonDeeds.alolaChampion"),
+            GalarChamp => Text.Of("ribbonDeeds.galarChampion"),
+            PaldeaChamp => Text.Of("ribbonDeeds.paldeaChampion"),
             "RIBBON_ABILITY" => Text.Of("ribbonDeeds.ability"),
             "RIBBON_GREAT_ABILITY" => Text.Of("ribbonDeeds.greatAbility"),
             "RIBBON_DOUBLE_ABILITY" => Text.Of("ribbonDeeds.doubleAbility"),

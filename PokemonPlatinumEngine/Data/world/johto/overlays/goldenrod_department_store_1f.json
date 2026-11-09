@@ -33,5 +33,17 @@
   },
   "signs": {
     "T25R1001_004+1": "1F Service Counter  2F Market  3F Battle Items\n4F Medicine  5F TM Corner  6F Tranquil Square"
-  }
+  },
+  // Johto's training hall (plan 36 · TR4): the training club's people in a corner of the store's ground floor, south of
+  // its west hall: the head coach's drills, the tutor's moves, the clerk's shelves and the club's Battle Points counter
+  "npcs": [
+    { "id": "goldenrod_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
+      "x": 5, "y": 10, "facing": "Down", "script": "TrainingCoach" },
+    { "id": "goldenrod_department_store_1f.TrainingTutor", "name": "Tutor Ines", "npcType": "training_tutor",
+      "x": 6, "y": 10, "facing": "Down", "script": "TrainingTutor" },
+    { "id": "goldenrod_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
+      "x": 7, "y": 10, "facing": "Down", "script": "TrainingClerk" },
+    { "id": "goldenrod_department_store_1f.TrainingExchange", "name": "Club Clerk", "npcType": "training_clerk",
+      "x": 8, "y": 10, "facing": "Down", "script": "TrainingExchange" }
+  ]
 }

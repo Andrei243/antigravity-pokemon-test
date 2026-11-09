@@ -127,5 +127,16 @@
         "Welcome! How can I help you?"
       ]
     }
-  }
+  },
+  // Unova's training hall (plan 36 · TR4): the training club's people in the mall's lower hall, west of the middle
+  // counter: the head coach's drills, the tutor's moves and the clerk's shelves (the club's Battle Points counter is
+  // the Gear Station's, plan 36 · TR3)
+  "npcs": [
+    { "id": "shopping_mall.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
+      "x": 6, "y": 18, "facing": "Down", "script": "TrainingCoach" },
+    { "id": "shopping_mall.TrainingTutor", "name": "Tutor Petra", "npcType": "training_tutor",
+      "x": 7, "y": 18, "facing": "Down", "script": "TrainingTutor" },
+    { "id": "shopping_mall.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
+      "x": 8, "y": 18, "facing": "Down", "script": "TrainingClerk" }
+  ]
 }

@@ -10809,3 +10809,43 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   steering the stick over the navigation mesh is not built), Fly's places and a Town Map for an open region (OW10),
   Escape Rope, Dig and Teleport in an open map (each still notes a grid place), the train's run north (GL2), and every
   species of the Galar Pokédex but the sixteen the two routes and the three give (`GalarSpeciesTests.Owed`).
+
+## The training halls of the other regions (2026-11-09, plan 36 · TR4)
+
+- **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or
+  failing that in a corner of its department store. Kanto's, Johto's, Hoenn's and Unova's unused doors are other plans'
+  rooms or FireRed's, HeartGold's, Emerald's and Black 2's own houses drawn into their tiles with no room behind them,
+  so **the club's people stand in a corner of each department store's ground floor**: Celadon's (along its west wall),
+  Goldenrod's (south of its west hall), Lilycove's (its east corner) and Shopping Mall Nine's (its lower hall). The
+  drills are a screen of their own and need no court, so a corner holds everything the hall's room does. **Kalos's is a
+  hall**: X and Y have no department store, and Kalos is drawn by hand, so a house of ours is drawn in Laverre City
+  (south of the avenue's crossing) on the hall's one plan, `LaverreCity_TrainingHall`, its people in Kalos looks that
+  have their grown twins (a veteran, two clerks, a scientist) rather than the club's own looks, which have none and
+  which plan 30's gate holds every look of Kalos to. Alola's, Galar's and Paldea's
+  wait for their regions' sessions; Hisui has none.
+- **Who stands there**: the head coach (`common.TrainingCoach`), the clerk with her two shelves (`TrainingClerk`), a
+  tutor of the region's own name (`TrainingTutor`: Rowe in Kanto, Ines in Johto, Marlo in Hoenn, Petra in Unova, Odile in
+  Kalos) and the club's Battle Points clerk (`TrainingExchange`) where a region has no Battle Points counter of its own
+  (Kanto, Johto, Kalos): the points are the Frontier's one set, wherever they were won, so every region's Champion can
+  have the Gold Bottle Cap and the Ability Patch at home. As in Sunyshore, the drills are open from the first visit and
+  the rest for a Champion of any region.
+- **Found**: a Bottle Cap of ours as a ball in each region's post-game ground (Five Island's meadow, Route 28 before
+  the reception gate, the Battle Frontier island's west half, the Nature Preserve's clearing, Kiloude City's shore),
+  each with a flag of ours (`FLAG_OBTAINED_<…>_BOTTLE_CAP`).
+- **Unova's feathers** (Black 2's feathers on the Driftveil Drawbridge as a mechanic): three tiles of the deck read
+  (the overlay's `readAt`), each giving one feather a day, which of the six by the script's die (`random 6`), its daily
+  flag (`FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST`, `_MIDDLE`, `_EAST`) cleared by the new day. Nothing marks them yet:
+  plan 38 · EX3's glints will.
+
+## The later regions' Champion ribbons (2026-11-09, plan 41 · EG2, its ribbons)
+
+- **Four rows of ours after Platinum's eighty** (`RIBBON_KALOS_CHAMPION`, `_ALOLA_`, `_GALAR_`, `_PALDEA_`; names
+  "Kalos Champion Ribbon" and so on, art names `kalos_champion` and so on), added by `tools/DataImporter/Program.cs` after
+  the decompilation's table, so `ribbons.json` holds 84.
+- **A Hall of Fame hands its region's own** (`RibbonRules.ChampionOf`, `GiveChampion(party, region)`, the region the
+  script's host stands in): Hoenn's (Emerald's `RIBBON_HOENN_CHAMPION`, which the data already had and nothing gave),
+  Kalos's, Alola's, Galar's and Paldea's their own; Sinnoh's for Sinnoh and for Kanto, Johto and Unova, whose games give
+  none of their own. A Pokémon wears only the ribbon of the Hall of Fame it entered. Galar's and Paldea's wait for those
+  regions' Halls of Fame (`WaitsFor`).
+- **Not yet**: the rest of EG2 (an entry's region, each region's first team kept, the hall of Champions and the screen's
+  tabs).

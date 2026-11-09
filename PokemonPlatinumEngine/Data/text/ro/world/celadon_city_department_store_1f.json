@@ -17,6 +17,46 @@
           "Bună! Bun venit la Magazinul Universal Celadon. Panoul din dreapta arată ce e la fiecare etaj."
         ]
       }
+    },
+    "celadon_city_department_store_1f.TrainingExchange": {
+      "name": {
+        "en": [
+          "Club Clerk"
+        ],
+        "text": [
+          "Funcționarul clubului"
+        ]
+      }
+    },
+    "celadon_city_department_store_1f.TrainingCoach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "celadon_city_department_store_1f.TrainingTutor": {
+      "name": {
+        "en": [
+          "Tutor Rowe"
+        ],
+        "text": [
+          "Meditatorul Rowe"
+        ]
+      }
+    },
+    "celadon_city_department_store_1f.TrainingClerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
     }
   },
   "signs": {

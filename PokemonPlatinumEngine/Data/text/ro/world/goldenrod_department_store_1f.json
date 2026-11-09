@@ -71,6 +71,46 @@
           "Mă duc pe terasă! De acolo de sus se vede tot orașul."
         ]
       }
+    },
+    "goldenrod_department_store_1f.TrainingCoach": {
+      "name": {
+        "en": [
+          "Head Coach"
+        ],
+        "text": [
+          "Antrenorul principal"
+        ]
+      }
+    },
+    "goldenrod_department_store_1f.TrainingTutor": {
+      "name": {
+        "en": [
+          "Tutor Ines"
+        ],
+        "text": [
+          "Meditatoarea Ines"
+        ]
+      }
+    },
+    "goldenrod_department_store_1f.TrainingClerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "goldenrod_department_store_1f.TrainingExchange": {
+      "name": {
+        "en": [
+          "Club Clerk"
+        ],
+        "text": [
+          "Funcționarul clubului"
+        ]
+      }
     }
   },
   "signs": {

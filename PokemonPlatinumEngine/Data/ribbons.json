@@ -558,5 +558,33 @@
     "art": "premier",
     "palette": 0,
     "event": true
+  },
+  {
+    "id": "RIBBON_KALOS_CHAMPION",
+    "name": "Kalos Champion Ribbon",
+    "art": "kalos_champion",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_ALOLA_CHAMPION",
+    "name": "Alola Champion Ribbon",
+    "art": "alola_champion",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_GALAR_CHAMPION",
+    "name": "Galar Champion Ribbon",
+    "art": "galar_champion",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_PALDEA_CHAMPION",
+    "name": "Paldea Champion Ribbon",
+    "art": "paldea_champion",
+    "palette": 0,
+    "event": false
   }
 ]
