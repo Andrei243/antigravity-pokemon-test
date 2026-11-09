@@ -123,7 +123,26 @@ public sealed class AudioMixer
     private float voiceDuck = 1f, voiceEnvelope;
 
     /// <summary>How far the music and the ambience dip under a voice (plan 26 · V2): gentler than a cry's dip.</summary>
-    public const float VoiceDuckLevel = 0.6f;
+    public const float VoiceDuckLevel = 0.5f;
+
+    /// <summary>The voice bus alone may be turned up past 1, to 2 (the options' VOICE VOLUME runs 0 to 200).</summary>
+    public const float VoiceMaxVolume = 2f;
+
+    /// <summary>
+    /// The voice bus's make-up gain. A take is levelled to the voice window (mono, -24 to -18 dBFS) and was played
+    /// centred at -3 dB, so it sat under the song; this lifts it to read over the song and over its own dip. What
+    /// would pass 0.7 of full scale is soft-limited by <see cref="VoiceLimit"/>, so the lift never clips.
+    /// </summary>
+    public const float VoiceMakeUp = 1.4f;
+
+    /// <summary>Unchanged below 0.7, then bent smoothly toward 1 (a soft knee): a loud take at a high VOICE VOLUME never clips.</summary>
+    public static float VoiceLimit(float x)
+    {
+        float a = MathF.Abs(x);
+        if (a <= 0.7f) return x;
+        float y = 0.7f + 0.3f * MathF.Tanh((a - 0.7f) / 0.3f);
+        return x < 0 ? -y : y;
+    }
 
     /// <summary>How long a voice that is cut takes to fade out (plan 26: 30 ms), so a cut never clicks.</summary>
     public const float VoiceCutTime = 0.03f;
@@ -247,7 +266,7 @@ public sealed class AudioMixer
 
     public void SetVolume(AudioBus bus, float volume)
     {
-        lock (gate) busVolume[(int)bus] = Math.Clamp(volume, 0f, 1f);
+        lock (gate) busVolume[(int)bus] = Math.Clamp(volume, 0f, bus == AudioBus.Voice ? VoiceMaxVolume : 1f);
     }
 
     /// <summary>The song that is playing or about to, or null.</summary>
@@ -455,14 +474,14 @@ public sealed class AudioMixer
     {
         int n = o.Length / 2;
         float bus = busVolume[(int)AudioBus.Voice];
-        float centre = MathF.Cos(MathF.PI / 4f) * bus;
+        float centre = VoiceMakeUp * bus;
         if (voiceFading != null)
         {
             var data = voiceFading.Samples;
             int total = (int)(VoiceCutTime * Synthesizer.DsRate);
             for (int i = 0; i < n && voiceFadeLeft > 0 && voiceFadingPosition < data.Length; i++, voiceFadeLeft--)
             {
-                float x = data[voiceFadingPosition++] * centre * voiceFadeLeft / total;
+                float x = VoiceLimit(data[voiceFadingPosition++] * centre) * voiceFadeLeft / total;
                 o[i * 2] += x;
                 o[i * 2 + 1] += x;
             }
@@ -477,7 +496,7 @@ public sealed class AudioMixer
             {
                 float s = data[voicePosition + i];
                 peak = MathF.Max(peak, MathF.Abs(s));
-                float x = s * centre;
+                float x = VoiceLimit(s * centre);
                 o[i * 2] += x;
                 o[i * 2 + 1] += x;
             }

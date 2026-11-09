@@ -328,6 +328,47 @@ public sealed class VoicePlaybackTests : IDisposable
     }
 
     [Fact]
+    public void AVoiceLevelledToItsTakeWindowPlaysInsideTheVoicesPlayedWindow()
+    {
+        var (takeLow, takeHigh) = Loudness.Target(AudioBus.Voice);
+        var (low, high) = Loudness.VoicePlayed;
+        foreach (double mono in new[] { takeLow, (takeLow + takeHigh) / 2, takeHigh })
+        {
+            var mixer = new AudioMixer(Synthesizer.DsRate) { Volume = 1f }; // the bus as it stands before the mix's 0.8 trim, as the windows are
+            float amp = (float)(Math.Pow(10, mono / 20) * Math.Sqrt(2)); // a sine's loudness is its peak less 3 dB
+            mixer.PlayVoice(Tone(200, amp, 1.5f));
+            var o = Render(mixer, (int)(Synthesizer.DsRate * 1.4));
+            double played = Loudness.Of(o, 2, Synthesizer.DsRate);
+            Assert.True(played >= low && played <= high, $"take {mono:0.0} played {played:0.00} window {low}..{high}");
+            // The voice stands over the music's window dipped under it
+            Assert.True(played > Loudness.Target(AudioBus.Music).High + 20 * Math.Log10(AudioMixer.VoiceDuckLevel) - 3, $"{played:0.0} dB");
+        }
+    }
+
+    [Fact]
+    public void TheVoiceVolumeRunsToTwoAndNeverClips()
+    {
+        var mixer = new AudioMixer(Synthesizer.DsRate);
+        mixer.SetVolume(AudioBus.Voice, 5f);
+        Assert.Equal(AudioMixer.VoiceMaxVolume, mixer.VolumeOf(AudioBus.Voice));
+        mixer.SetVolume(AudioBus.Music, 5f);
+        Assert.Equal(1f, mixer.VolumeOf(AudioBus.Music));
+        // A take at the file check's peak ceiling, at the loudest setting
+        mixer.PlayVoice(Tone(200, Loudness.Linear(Loudness.VoicePeak), 0.5f));
+        var o = Render(mixer, Synthesizer.DsRate / 3);
+        Assert.True(o.Max(MathF.Abs) <= 1f);
+        // Louder at 200 than at 100
+        var a = new AudioMixer(Synthesizer.DsRate); a.SetVolume(AudioBus.Voice, 1f);
+        var b = new AudioMixer(Synthesizer.DsRate); b.SetVolume(AudioBus.Voice, 2f);
+        a.PlayVoice(Tone(200, 0.1f, 0.5f)); b.PlayVoice(Tone(200, 0.1f, 0.5f));
+        Assert.True(Loudness.Of(Render(b, Synthesizer.DsRate / 3), 2, Synthesizer.DsRate) > Loudness.Of(Render(a, Synthesizer.DsRate / 3), 2, Synthesizer.DsRate) + 5.5);
+        // Soft limit: transparent below its knee, bounded above
+        Assert.Equal(0.5f, AudioMixer.VoiceLimit(0.5f));
+        Assert.InRange(AudioMixer.VoiceLimit(4f), 0.99f, 1f);
+        Assert.Equal(-AudioMixer.VoiceLimit(0.9f), AudioMixer.VoiceLimit(-0.9f));
+    }
+
+    [Fact]
     public void ACryDipsNoVoice()
     {
         // The mix is linear below its limiter: a voice heard with a cry is the voice alone and the cry alone, added
@@ -453,6 +494,11 @@ public sealed class VoicePlaybackTests : IDisposable
         Assert.Equal(new[] { VoiceMode.Story, VoiceMode.All, VoiceMode.Off }, seen);
         OptionsScreen.Change(s, OptionRow.VoiceVolume, -1);
         Assert.Equal(100 - GameSettings.VolumeStep, s.VoiceVolume);
+        for (int i = 0; i < 30; i++) OptionsScreen.Change(s, OptionRow.VoiceVolume, 1);
+        Assert.Equal(GameSettings.MaxVoiceVolume, s.VoiceVolume);
+        Assert.Equal(100, new GameSettings().MusicVolume);
+        OptionsScreen.Change(s, OptionRow.MusicVolume, 1);
+        Assert.Equal(100, s.MusicVolume); // the music's row still ends at 100: the voice row is its own
         OptionsScreen.Change(s, OptionRow.LetVoicesFinish, 1);
         Assert.True(s.LetVoicesFinish);
         foreach (var row in new[] { OptionRow.Voices, OptionRow.VoiceVolume, OptionRow.LetVoicesFinish })

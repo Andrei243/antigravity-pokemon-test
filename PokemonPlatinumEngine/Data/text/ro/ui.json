@@ -399,7 +399,7 @@
     },
     "voiceVolume": {
       "label": "Volumul vocilor",
-      "help": "Cât de tare vorbesc vocile personajelor. Muzica și sunetele din jur se coboară puțin cât vorbește cineva."
+      "help": "Cât de tare vorbesc vocile personajelor, separat de volumul muzicii. 100 este nivelul obișnuit, iar 200 este de două ori mai tare. Muzica și sunetele din jur se coboară cât vorbește cineva."
     },
     "letVoicesFinish": {
       "label": "Lasă vocile să termine",

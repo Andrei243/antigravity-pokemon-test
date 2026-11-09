@@ -246,7 +246,7 @@
     },
     "voiceVolume": {
       "label": "Voice volume",
-      "help": "How loud the characters' voices speak. The music and the ambience dip a little while someone speaks."
+      "help": "How loud the characters' voices speak, on their own, apart from the music's volume. 100 is the normal level and 200 is twice as loud. The music and the ambience dip while someone speaks."
     },
     "letVoicesFinish": {
       "label": "Let voices finish",
