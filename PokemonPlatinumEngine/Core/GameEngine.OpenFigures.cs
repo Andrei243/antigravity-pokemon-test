@@ -12,9 +12,10 @@ namespace PokemonPlatinumEngine.Core;
 /// What stands in an open map beside the player, as the open renderer draws it (plan 32 · OW9): the map's people who are
 /// there within <see cref="OpenFigures.DrawReach"/> of the player, each in their look in the grown kit (their own, else
 /// their trainer class's as a battle draws them, else the plain townsperson), the "!" over a trainer walking up while it
-/// shows, and whoever follows the player (a Pokémon of the team at its height, or a partner). <b>Whatever else stands in
-/// an open map and is drawn is an <see cref="OpenFigure"/> added in <see cref="GatherOpenFigures"/></b>: plan 32 · OW7's
-/// wild Pokémon join the list there. Nothing of the rules reads any of it, and nothing of a region of today reaches it.
+/// shows, whoever follows the player (a Pokémon of the team at its height, or a partner), and plan 32 · OW7's wild
+/// Pokémon of the field at their species' heights. <b>Whatever else stands in an open map and is drawn is an
+/// <see cref="OpenFigure"/> added in <see cref="GatherOpenFigures"/></b>. Nothing of the rules reads any of it, and
+/// nothing of a region of today reaches it.
 /// </summary>
 public partial class GameEngine
 {
@@ -53,10 +54,25 @@ public partial class GameEngine
                 openFigures.Add(new OpenFigure(OpenFigureKind.Person, "follower", look, Feet(follower.Pos), (float)OpenYaw.Radians(follower.Yaw)));
             }
         }
-        // Plan 32 · OW7: the field's wild Pokémon are added here, each an OpenFigure of the Pokemon kind at its height
-        // A tool's figures put in by hand (the harness's crowd, until OW7's spawner stands Pokémon in the field)
+        // Plan 32 · OW7: the field's wild Pokémon, each at its feet, facing its way, at its species' or form's height
+        var player = Feet(field.Player.Pos);
+        foreach (var wild in field.Wild.All)
+        {
+            var feet = Feet(wild.Pos);
+            if (Vector3.DistanceSquared(feet, player) > OpenFigures.DrawReach * OpenFigures.DrawReach) continue;
+            openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "wild:" + wild.Id, wild.Species, feet, (float)OpenYaw.Radians(wild.Yaw), Height: HeightOf(wild.Species)));
+        }
+        // A tool's figures put in by hand (the harness's crowd, standing about the village)
         if (OpenFiguresByHand is { } byHand) openFigures.AddRange(byHand);
         return openFigures;
+    }
+
+    /// <summary>A species' or a form's height in metres (a form's own where it has one), by the name a zone's row gives it.</summary>
+    private static float HeightOf(string name)
+    {
+        if (PokemonDatabase.Get(name) is { } species) return species.Height;
+        if (PokemonDatabase.SpeciesOfForm(name) is { } of) return of.Form(name)?.Height ?? of.Height;
+        return 0.6f;
     }
 
     /// <summary>Figures a tool stands in the open field by hand (the harness's crowd and field Pokémon), drawn as the game's own are; null for none.</summary>
@@ -101,6 +117,9 @@ public partial class GameEngine
         foreach (var p in field.Map.People) looks.Add(OpenLookOf(field.Map, p));
         CharacterModels.Preload(looks);
         if (field.Follower is { TrainerId: null } f) PokemonModels.Request(f.Who);
+        // The species the map's zones bring out (plan 32 · OW7), so a wild Pokémon coming into view has its model
+        foreach (var zone in field.Map.Zones)
+            foreach (var slot in zone.Slots) PokemonModels.Request(slot.Species);
     }
 
     internal sealed partial class Driver

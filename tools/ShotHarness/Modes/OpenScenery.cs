@@ -92,11 +92,11 @@ partial class Harness
     }
 
     /// <summary>
-    /// Plan 32 · OW9's shots, the last of the <c>open</c> mode (<c>open50</c> to <c>open72</c>): the lab's house from the
+    /// Plan 32 · OW9's shots, the last of the <c>open</c> mode (<c>open50</c> to <c>open73</c>): the lab's house from the
     /// front, behind and after dark; the trees near the west road, the grove south of the river and the far ones from the
     /// hill's top; the grass's tufts parting round the player as they run; the meadow's people, a trainer's "!", a
-    /// Pokémon following; the rings to the horizon by day and after dark; and the village with its crowd near and far,
-    /// with the impostors' atlases written beside them.
+    /// Pokémon following, OW7's wild Pokémon of the south meadow; the rings to the horizon by day and after dark; and
+    /// the village with its crowd near and far, with the impostors' atlases written beside them.
     /// </summary>
     void OpenSceneryShots(OpenMap map)
     {
@@ -178,6 +178,26 @@ partial class Harness
         Frames(2);
         OpenSceneryShot("open61_follower_day");
         game.OpenField.Follower = null;
+
+        // OW7's wild Pokémon, drawn: the player put west of the south meadow's zone facing away from it, so that it brings
+        // them out (never ahead of the player, OW7's rule), and the camera turned east across the zone once they are out
+        PutInLab(map, OnLabGround(map, -4, 24), 270, 90);
+        for (int f = 0; f < 480 && game.OpenField!.Wild.All.Count < 2; f++) Frames(1);
+        Frames(20);
+        game.SettleOpenView();
+        BakeTheFiguresImpostors();
+        OpenSceneryShot("open72_wild_south_meadow");
+        if (Wanted("open72_wild_south_meadow"))
+            Console.WriteLine($"    the wild: {(game.OpenField!.Wild.All.Count == 0 ? "!! nobody came out" : string.Join("; ", game.OpenField.Wild.All))}");
+        // ... and the first of the meadow's close, the camera put by hand three or four metres off it
+        if (game.OpenField!.Wild.All.FirstOrDefault(w => w.Zone.Name == "south_meadow") is { } wild)
+        {
+            var at = new Vector3((float)wild.Pos.MetresX, (float)wild.Pos.MetresY, (float)wild.Pos.MetresZ);
+            game.OpenView = (at + new Vector3(-3.2f, 1.6f, 2.0f), at + new Vector3(0f, 0.3f, 0f));
+            OpenSceneryShot("open73_wild_close");
+            if (Wanted("open73_wild_close")) Console.WriteLine($"    close: {wild}");
+            game.OpenView = null;
+        }
 
         // The rings to the horizon: from over the lab's west edge looking out west, by day and after dark, and over all of it
         PutInLab(map, OnLabGround(map, -60, -10), 270, 270);
