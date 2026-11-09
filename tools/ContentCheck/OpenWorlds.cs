@@ -81,6 +81,9 @@ public static class OpenWorlds
         foreach (var map in maps) CheckMap(region, map, roomNamed, scripts, flags, found);
     }
 
+    /// <summary>How far under the ground a marker's feet may stand, in millimetres: a step, which a body put there climbs (<c>OpenBody</c>'s 0.35 m).</summary>
+    public const int MarkerSunk = 350;
+
     static string PlaceFile(GameContent.OpenRegion region, string key) => $"{region.Folder}/{OpenPlaceFiles.Folder}/{key}.json";
 
     static void CheckMap(GameContent.OpenRegion region, OpenMap map, Func<string, Map?> roomNamed, PokemonPlatinumEngine.Story.ScriptLibrary scripts, Checks.Flags? flags, List<Finding> found)
@@ -92,6 +95,10 @@ public static class OpenWorlds
         foreach (var marker in map.Markers)
             if (InRock(OpenCrossings.CentreOf(marker.Pos)))
                 found.Add(new Finding(Kind.Place, FileOfMarker(marker), marker.Name, $"stands in rock: a body on it at {marker.Pos} would have its middle inside the land"));
+            // Plan 32 · OW10 (OW9's finding): feet more than a step under the ground, which a body put there falls
+            // through, finds nothing facing up under it and is caught, over and over
+            else if (InRock(marker.Pos.Plus(0, MarkerSunk, 0)))
+                found.Add(new Finding(Kind.Place, FileOfMarker(marker), marker.Name, $"stands under the ground: the land at {marker.Pos} is more than {MarkerSunk / 10} cm over its feet, more than a body steps up; raise it to the ground"));
 
         foreach (var trigger in map.Triggers)
         {

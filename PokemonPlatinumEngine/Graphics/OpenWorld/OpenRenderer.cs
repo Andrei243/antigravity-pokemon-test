@@ -223,6 +223,8 @@ internal sealed class OpenRenderer
         buildings.DrawLights(rig);
         figureDraw.DrawBubbles(camera, Paper(rig), scene.Time);
         DrawWeather(scene, rig);
+        // The rules as layers over everything (plan 32 · OW10), only where a tool has turned some on
+        DrawLayers(scene, camera);
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         cascades.Unbind();
@@ -240,6 +242,75 @@ internal sealed class OpenRenderer
         context.Composite(new Rectangle(0, 0, destWidth, destHeight), ripple);
         float flash = WeatherFx.Lightning(weather, time);
         if (flash > 0f) Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
+        DrawLayerLabels(destWidth, destHeight);
+    }
+
+    // ------------------------------------------------------------------ the layers (plan 32 · OW10)
+
+    /// <summary>The layers drawn over the open field (the console's, a scenario's or the harness's <c>layers</c>); none unless turned on.</summary>
+    public DebugLayer Layers { get; set; }
+
+    /// <summary>The field whose people and wild Pokémon the layers tell of (the game's), or null.</summary>
+    public OpenField? LayerField { get; set; }
+
+    /// <summary>What the layers drew the last frame (null while none is on).</summary>
+    public OpenLayerPicture? LastLayers { get; private set; }
+
+    private readonly List<(Vector2 At, string Text, Color Colour)> layerLabels = new();
+
+    /// <summary>The level each chunk is drawn at this frame, for the chunks' layer.</summary>
+    private int? LevelDrawn(int x, int z)
+    {
+        foreach (var chunk in stream.Ready)
+            if (chunk.X == x && chunk.Z == z) return chunk.Level;
+        return null;
+    }
+
+    private void DrawLayers(OpenScene scene, Camera3D camera)
+    {
+        layerLabels.Clear();
+        if (Layers == DebugLayer.None)
+        {
+            LastLayers = null;
+            return;
+        }
+        var picture = OpenDebugLayers.Build(scene.Map, LayerField, scene.Feet, Layers, LevelDrawn);
+        LastLayers = picture;
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.DisableDepthTest();
+        Rlgl.DisableDepthMask();
+        Rlgl.SetTexture(0);
+        foreach (var line in picture.Lines)
+        {
+            Rlgl.CheckRenderBatchLimit(2);
+            Raylib.DrawLine3D(line.A, line.B, line.Colour);
+        }
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+        Rlgl.EnableDepthTest();
+        foreach (var label in picture.Labels)
+        {
+            // (only what stands before the camera)
+            if (Vector3.Dot(label.At - camera.Position, Vector3.Normalize(camera.Target - camera.Position)) <= 0.5f) continue;
+            layerLabels.Add((Raylib.GetWorldToScreenEx(label.At, camera, 1920, 1080), label.Text, label.Colour));
+        }
+    }
+
+    /// <summary>The layers' labels in the 2D pass, at caption size over a shadow of their own, as the grid's.</summary>
+    private void DrawLayerLabels(int destWidth, int destHeight)
+    {
+        if (layerLabels.Count == 0) return;
+        const float size = 15f;
+        var shadow = new Color(0, 0, 0, 200);
+        foreach (var (at, text, colour) in layerLabels)
+        {
+            float x = at.X * destWidth / 1920f, y = at.Y * destHeight / 1080f;
+            if (x < -200f || y < -20f || x > destWidth || y > destHeight) continue;
+            float w = UI.Kit.UiFonts.Measure(text, size);
+            float left = MathF.Round(x - w / 2f), top = MathF.Round(y - size / 2f);
+            UI.Kit.UiFonts.Draw(text, left + 1f, top + 1f, size, shadow);
+            UI.Kit.UiFonts.Draw(text, left, top, size, colour);
+        }
     }
 
     // ------------------------------------------------------------------ the shadows

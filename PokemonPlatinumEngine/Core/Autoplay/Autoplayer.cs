@@ -109,7 +109,7 @@ internal sealed partial class Autoplayer
 
     /// <summary>The field is the player's: nothing running, shown or open over it.</summary>
     public bool FieldIsFree => game.State == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null
-        && !game.StartMenu.IsActive && !game.Dialogue.IsActive && !engine.TipShown;
+        && game.OpenApproach == null && !game.StartMenu.IsActive && !game.Dialogue.IsActive && !engine.TipShown;
 
     private bool settling;
 
@@ -163,7 +163,8 @@ internal sealed partial class Autoplayer
         switch (state)
         {
             case GameState.Overworld:
-                return InTheField(dt);
+                // An open map's field is steered by the stick along the navigation mesh (plan 32 · OW10)
+                return engine.InOpenField ? InTheOpenField(dt) : InTheField(dt);
             case GameState.Battle when game.Battle is { } battle:
                 return InBattle(battle);
             case GameState.Transition:
@@ -363,6 +364,8 @@ internal sealed partial class Autoplayer
         {
             battleSeen = battle;
             Report.Battles++;
+            // A wild Pokémon met by touch in an open map (plan 32 · OW10: an open itinerary's leg waits for one)
+            if (engine.InOpenField && !battle.IsTrainerBattle) openWildBattles++;
         }
         if (battleSeen != null && state != GameState.Battle && state != GameState.Transition)
         {
@@ -371,7 +374,8 @@ internal sealed partial class Autoplayer
         }
         Report.TrainersBeaten = game.Story.DefeatedTrainers.Count;
         // A fuzzer's run decides nothing, so the places it comes to are noted here
-        if (fuzzer != null && !settling && state == GameState.Overworld && !game.Player.IsMoving) Arrived(game.Map, game.Player.GridX, game.Player.GridY);
+        if (fuzzer != null && !settling && state == GameState.Overworld && game.OpenField is { } open) ArrivedOpen(open);
+        else if (fuzzer != null && !settling && state == GameState.Overworld && !game.Player.IsMoving) Arrived(game.Map, game.Player.GridX, game.Player.GridY);
         if (game.ScriptNow is { } script) Report.Scripts.Add(script);
 
         // Scripts that went wrong, as the game noted them
@@ -392,7 +396,7 @@ internal sealed partial class Autoplayer
         // A softlock: whatever the game holds, standing still while input goes in
         {
             // (a Hall of Fame's ceremony and the credits play by themselves to their end, whatever is pressed: no softlock)
-            bool free = state == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null && !game.StartMenu.IsActive
+            bool free = state == GameState.Overworld && !engine.ScriptRunning && game.Flow.TrainerApproach == null && game.OpenApproach == null && !game.StartMenu.IsActive
                 || state is GameState.Credits or GameState.HallOfFameCeremony;
             float limit = state is GameState.Overworld or GameState.Dialogue or GameState.Battle or GameState.Transition ? Softlock.Limit : 3 * Softlock.Limit;
             // Random presses get through a screen slowly: a fuzzer's run is given six times as long (plan 16 · T13)
@@ -412,7 +416,9 @@ internal sealed partial class Autoplayer
         var player = game.Player;
         var battle = game.Battle;
         var dialogue = game.Dialogue;
-        return $"{game.State}|{game.Map.Name}|{player.GridX},{player.GridY}|{player.IsMoving}|{game.Story.Revision}|{game.ScriptNow}|"
+        // In an open map, where the player and a trainer walking up stand (plan 32 · OW10), never the field's ticks, which always run
+        string open = game.OpenField is { } field ? $"{field.Map.Name} {field.Player.Pos} {game.OpenApproach?.Trainer.Pos}|" : "";
+        return $"{game.State}|{open}{game.Map.Name}|{player.GridX},{player.GridY}|{player.IsMoving}|{game.Story.Revision}|{game.ScriptNow}|"
             + $"{dialogue.IsCurrentLineComplete}:{dialogue.CurrentLine}|{battle?.CurrentMessage}|{battle?.HUD.MenuState}|{game.TransitionSeconds:0.0}";
     }
 }

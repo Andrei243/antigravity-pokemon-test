@@ -134,6 +134,18 @@ public partial class GameEngine
         if (flow.Scripts.In(file, ScriptLibrary.OnEnter) is { } script) flow.Runner.Start(script);
     }
 
+    /// <summary>
+    /// Where Fly lands for a spawn location of an open region (plan 32 · OW10): the marker its region's map names for it
+    /// (<see cref="RegionMap.FlyMarkerOf"/>) in the open map of the spawn's name the game knows; null for a spawn on the
+    /// grid, as every spawn of today's regions is.
+    /// </summary>
+    internal (OpenMap Map, OpenMarker Marker)? OpenFlyLanding(SpawnLocation town) =>
+        OpenMapNamed(town.Map) is { } open ? FlyLandingIn(open, RegionMap.ForMap(town.Map) ?? RegionMap.Of(open.Region), town.Id) : null;
+
+    /// <summary>The marker Fly lands on in an open map for a spawn location, as its region's map names it; null where it names none or the map lacks it.</summary>
+    internal static (OpenMap Map, OpenMarker Marker)? FlyLandingIn(OpenMap open, RegionMap? region, int spawn) =>
+        region?.FlyMarkerOf(spawn) is { } name && open.Marker(name) is { } marker ? (open, marker) : null;
+
     // ------------------------------------------------------------------ under a script
 
     /// <summary>
@@ -186,6 +198,26 @@ public partial class GameEngine
 
         /// <summary>The marker a script's <c>camera look</c> sent the open map's camera to last, or null.</summary>
         public string? OpenLook => game.OpenLook;
+
+        /// <summary>
+        /// The orbit camera sent to look at a marker of the open map the player is in, as a script's <c>camera look</c>
+        /// sends it (plan 32 · OW10: a scenario's <c>look</c>), over so many seconds; it stays until <see cref="OpenLookHome"/>
+        /// or a script's end brings it home. False where the player is in no open map or the map has no such marker.
+        /// </summary>
+        public bool OpenLookAt(string marker, float seconds)
+        {
+            if (game.flow.Open is not { } field || field.Map.Marker(marker) is not { } at) return false;
+            game.OpenLook = marker;
+            game.openCamera.LookAt(OpenVec.Of(at.Pos), OpenVec.Of(field.Player.Pos), seconds);
+            return true;
+        }
+
+        /// <summary>The orbit camera brought home from a look at once.</summary>
+        public void OpenLookHome()
+        {
+            game.OpenLook = null;
+            game.openCamera.Home(0);
+        }
 
         /// <summary>Whether a script's walk to a marker is under way.</summary>
         public bool OpenWalking => game.openWalk != null;

@@ -1534,6 +1534,12 @@ public partial class GameEngine
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
+            // ...onto a marker of an open map where the region's map says so (plan 32 · OW10)
+            if (game.OpenFlyLanding(town) is { } landing)
+            {
+                game.StartTransition(GameState.Overworld, () => game.ArriveInTheOpen(landing.Map, landing.Marker));
+                return true;
+            }
             // ...to the overworld of the town's own region (plan 20 · J9); a town of another region is a crossing
             // there, under Fly's own fade (plan 18 · W9)
             if (RegionDatabase.RegionOfMap(town.Map) is { } to && !string.Equals(to.Id, game.Here.Id, StringComparison.OrdinalIgnoreCase))

@@ -340,6 +340,72 @@ public class OpenFieldGameTests
         Assert.Equal(Rows(recording.Checkpoints), Rows(secondRows!));
     }
 
+    [Fact]
+    public void AWalkAmongTheOpenTestWorldsPeopleAndWildPokemonRecordedPlaysBackTheSameTwice()
+    {
+        // Plan 32 · OW10: as above, on the lab with its places, people, zones and navigation mesh: from the tunnel's east
+        // mouth south into the south meadow's zone and about it, while its wild Pokémon come out round the player and wander
+        // (OW7) with the meadow's people about (OW6), and the hash keeps both every second
+        InputRecording? recording = null;
+        string recorded = "", first = "", second = "";
+        List<MovieCheckpoint>? firstRows = null, secondRows = null;
+        int mostWild = 0;
+
+        Sandbox(folder =>
+        {
+            string written = "";
+            Headless.Play(engine =>
+            {
+                Headless.PastTheOpening(engine);
+                engine.Drive.PlaceOpen(OpenWorldPeopleTests.LabWithPeople(), "east_mouth");
+                written = SaveManager.Write(engine.Drive.BuildSave());
+            });
+            File.WriteAllText(SavePaths.Current.Slot(1), written);
+
+            var settings = new GameSettings { Muted = true };
+            var recorder = MovieRecorder.Begin(settings, folder, "Sinnoh", seed: 987, fixFrameClock: true);
+            var engine = new GameEngine(settings) { NewGameRegion = "Sinnoh" };
+            engine.InitializeHeadless();
+            engine.Drive.AddOpenMap(OpenWorldPeopleTests.LabWithPeople());
+            int inField = -1;
+            var source = new ListInput(f =>
+            {
+                if (inField < 0 && engine.InOpenField && engine.Drive.State == GameState.Overworld) inField = f;
+                if (inField >= 0 && f >= inField + 60 * 15) return null;
+                if (f >= 60 * 60) return null;
+                if (inField < 0) return f % 6 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None;
+                if (engine.Drive.OpenWild is { } wild) mostWild = Math.Max(mostWild, wild.All.Count);
+                // In a battle or under a line, the confirm button; in the field, south-west into the zone and about it
+                if (engine.Drive.State != GameState.Overworld || engine.ScriptRunning) return f % 6 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None;
+                int k = (f - inField) / 90;
+                double angle = Math.PI * 0.62 + k % 5 * 0.7;
+                return Stick((sbyte)Math.Round(Math.Cos(angle) * 127), (sbyte)Math.Round(Math.Sin(angle) * 127), run: k % 2 == 0);
+            }, Start);
+            while (source.Next(Frame) is { } frame) recorder.Step(engine, frame);
+            Assert.True(inField >= 0, $"the game never came into the open map: {engine.Drive.State}");
+            recorded = Final(engine);
+            recording = recorder.Recording;
+            Movie.Release();
+        });
+        Assert.NotNull(recording);
+        Assert.True(mostWild > 0, "no wild Pokémon came out while the walk was recorded");
+
+        using (var stream = new MemoryStream())
+        {
+            recording!.Write(stream);
+            stream.Position = 0;
+            recording = InputRecording.Read(stream);
+        }
+
+        Sandbox(folder => (first, firstRows) = PlayBack(recording, folder, OpenWorldPeopleTests.LabWithPeople));
+        Sandbox(folder => (second, secondRows) = PlayBack(recording, folder, OpenWorldPeopleTests.LabWithPeople));
+
+        Assert.Equal(recorded, first);
+        Assert.Equal(recorded, second);
+        Assert.Equal(Rows(recording.Checkpoints), Rows(firstRows!));
+        Assert.Equal(Rows(recording.Checkpoints), Rows(secondRows!));
+    }
+
     // ---------------------------------------------------------------- helpers (as RecordingTests')
 
     private static (string Final, List<MovieCheckpoint> Rows) PlayBack(InputRecording recording, string folder, Func<OpenMap>? map = null)
