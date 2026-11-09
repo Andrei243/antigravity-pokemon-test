@@ -2,11 +2,13 @@
   // Kiloude City (plan 23 · Z4, the loose ends): drawn by hand, our words. A seafront city at the west end of the long
   // street that runs out of Couriway Town, a Pokémon Center (with the Mart's counter inside) and two houses, a beach and a
   // pier that crosses the water to a paved landing on the far shore. Once the Hall of Fame is entered an old man called AZ
-  // sits at the landing (kiloude_city.txt: his story and his battle). It plays Aquacorde's song until plan 31 writes it its own.
+  // sits at the landing (kiloude_city.txt: his story and his battle). Its song is its own since Kalos was finished.
   // Plan 23 · Z4b: once the professor has given the TMV pass in Lumiose Station, the neighbour waits on the city's northern
   // hill, and the TMV's attendant takes the player back to Lumiose. Plan 23, Kalos's last places: the TMV's attendant
   // stands in Kiloude's own station since (a building west of the flowers), and the Battle Maison stands east of the north
-  // house, open once the Hall of Fame is entered (KiloudeCity_BattleMaison.txt: rounds of seven against the later sets)
+  // house, open once the Hall of Fame is entered (KiloudeCity_BattleMaison.txt: rounds of seven against the later sets).
+  // Plan 23, Kalos finished: the Friend Safari's gate south of the street, east of the pier, open once the Hall of Fame is
+  // entered (KiloudeCity_FriendSafari.txt: three grounds of the player's own, drawn from the trainer number)
   "area": "kiloude_city",
   "bgmTrack": "kalos/kiloude",
   "trees": "Round",
@@ -16,7 +18,8 @@
     { "warp": 1, "map": "KiloudeCity_NorthHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 2, "map": "KiloudeCity_SeaHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 3, "map": "KiloudeCity_Station", "x": 6, "y": 8, "facing": "Up" },
-    { "warp": 4, "map": "KiloudeCity_BattleMaison", "x": 8, "y": 12, "facing": "Up", "openedBy": "KalosHallOfFame" }
+    { "warp": 4, "map": "KiloudeCity_BattleMaison", "x": 8, "y": 12, "facing": "Up", "openedBy": "KalosHallOfFame" },
+    { "warp": 5, "map": "KiloudeCity_FriendSafari", "x": 6, "y": 8, "facing": "Up", "openedBy": "KalosHallOfFame" }
   ],
   "people": {
     "az": { "name": "AZ", "npcType": "old_man", "script": "Az", "still": true, "shownBy": "KalosHallOfFame" },

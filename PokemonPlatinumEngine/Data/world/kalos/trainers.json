@@ -4766,7 +4766,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_viola",
+    "id": "kalos_viola_rematch",
     "name": "Viola",
     "class": "Leader",
     "ai": [
@@ -4800,7 +4800,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_grant",
+    "id": "kalos_grant_rematch",
     "name": "Grant",
     "class": "Leader",
     "ai": [
@@ -4834,7 +4834,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_korrina",
+    "id": "kalos_korrina_rematch",
     "name": "Korrina",
     "class": "Leader",
     "ai": [
@@ -4874,7 +4874,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_ramos",
+    "id": "kalos_ramos_rematch",
     "name": "Ramos",
     "class": "Leader",
     "ai": [
@@ -4908,7 +4908,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_clemont",
+    "id": "kalos_clemont_rematch",
     "name": "Clemont",
     "class": "Leader",
     "ai": [
@@ -4942,7 +4942,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_valerie",
+    "id": "kalos_valerie_rematch",
     "name": "Valerie",
     "class": "Leader",
     "ai": [
@@ -4976,7 +4976,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_olympia",
+    "id": "kalos_olympia_rematch",
     "name": "Olympia",
     "class": "Leader",
     "ai": [
@@ -5010,7 +5010,7 @@
     ]
   },
   {
-    "id": "kalos_chateau_wulfric",
+    "id": "kalos_wulfric_rematch",
     "name": "Wulfric",
     "class": "Leader",
     "ai": [
@@ -5526,6 +5526,250 @@
         "level": 40,
         "ivScale": 18,
         "personality": 9142896
+      }
+    ]
+  },
+  {
+    "id": "kalos_malva_rematch",
+    "name": "Malva",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8000,
+    "party": [
+      {
+        "species": "Pyroar",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 15575780
+      },
+      {
+        "species": "Torkoal",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 10185472
+      },
+      {
+        "species": "Houndoom",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 13025280
+      },
+      {
+        "species": "Chandelure",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 2093056
+      },
+      {
+        "species": "Talonflame",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 12148736
+      }
+    ]
+  },
+  {
+    "id": "kalos_siebold_rematch",
+    "name": "Siebold",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8000,
+    "party": [
+      {
+        "species": "Clawitzer",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 3018752
+      },
+      {
+        "species": "Gyarados",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 8192064
+      },
+      {
+        "species": "Kingdra",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 13421568
+      },
+      {
+        "species": "Starmie",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 5966848
+      },
+      {
+        "species": "Barbaracle",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 7097408
+      }
+    ]
+  },
+  {
+    "id": "kalos_wikstrom_rematch",
+    "name": "Wikstrom",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8000,
+    "party": [
+      {
+        "species": "Klefki",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 14166016
+      },
+      {
+        "species": "Probopass",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 3749888
+      },
+      {
+        "species": "Bisharp",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 7145472
+      },
+      {
+        "species": "Scizor",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 14456832
+      },
+      {
+        "species": "Aegislash",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 3991552
+      }
+    ]
+  },
+  {
+    "id": "kalos_drasna_rematch",
+    "name": "Drasna",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8000,
+    "party": [
+      {
+        "species": "Dragalge",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 10418176
+      },
+      {
+        "species": "Druddigon",
+        "level": 71,
+        "ivScale": 200,
+        "personality": 4179968
+      },
+      {
+        "species": "Haxorus",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 1595392
+      },
+      {
+        "species": "Altaria",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 2992128
+      },
+      {
+        "species": "Noivern",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 10532864
+      }
+    ]
+  },
+  {
+    "id": "kalos_diantha_rematch",
+    "name": "Diantha",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15200,
+    "keyStone": true,
+    "party": [
+      {
+        "species": "Hawlucha",
+        "level": 73,
+        "ivScale": 200,
+        "personality": 8292352
+      },
+      {
+        "species": "Tyrantrum",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 5249024
+      },
+      {
+        "species": "Aurorus",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 6973440
+      },
+      {
+        "species": "Gourgeist",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 16676864
+      },
+      {
+        "species": "Goodra",
+        "level": 75,
+        "ivScale": 200,
+        "personality": 15288320
+      },
+      {
+        "species": "Gardevoir",
+        "level": 76,
+        "ivScale": 200,
+        "personality": 4446208,
+        "item": "Gardevoirite"
       }
     ]
   }

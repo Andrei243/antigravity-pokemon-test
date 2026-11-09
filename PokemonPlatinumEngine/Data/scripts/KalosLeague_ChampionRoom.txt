@@ -8,12 +8,23 @@ script Diantha
   face diantha player
   speaker "Diantha"
   if flag FLAG_KALOS_DEFEATED_DIANTHA goto Won
+  if flag KalosHallOfFame goto Again
   scene "Diantha"
   say "Welcome. I'm Diantha. You've been all over the news, {player}: the Trainer who stopped Team Flare."
   say "I've played heroes on the screen. Today I want to meet a real one. Show me everything!"
   battle self as "kalos_diantha_1"
   say "Wonderful... That was the most thrilling battle of my life. Kalos has a new Champion."
   say "Come, {player}. There's a room where every Champion is remembered. Yours is waiting."
+  setflag FLAG_KALOS_DEFEATED_DIANTHA
+  endscene
+  warp "KalosLeague_HallOfFame" 6 10 up
+  end
+label Again
+  scene "DianthaAgain"
+  say "{player}! I hoped you'd come back. I've been rehearsing for this, you know. The sequel is never the same show."
+  say "No script this time, for either of us. Let's give Kalos a battle to remember!"
+  battle self as "kalos_diantha_rematch"
+  say "Bravo... You've made it look easy all over again. Kalos couldn't ask for a better Champion."
   setflag FLAG_KALOS_DEFEATED_DIANTHA
   endscene
   warp "KalosLeague_HallOfFame" 6 10 up

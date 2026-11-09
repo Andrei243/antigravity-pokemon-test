@@ -11,7 +11,8 @@
 # (VAR_KALOS_CHATEAU_POINTS: a guest of the west place 1, of the east 2, a Leader 3), which the butler hands out at
 # thresholds of ours (VAR_KALOS_CHATEAU_TITLE 0 to 7: Visitor, Guest, Regular, Friend of the House, Honoured Guest,
 # Patron, Steward, Master of the House). Plan 37 · FC4 builds the rest: the guests' levels by the title over the player's
-# highest, other regions' Leaders and Champions, the title on the Trainer Card.
+# highest, other regions' Leaders and Champions, the title on the Trainer Card. The Leaders' teams here are Kalos's
+# Leaders' rematch teams (kalos_<who>_rematch, plan 41 · EG5's parity): met as every rematch is, a region gone past lifts them.
 
 
 script OnEnter
@@ -204,7 +205,7 @@ label Viola
   say "Off duty, I still carry my camera. Off duty, I still battle. Smile!"
   ask "Will you battle Viola?"
   if no goto ViolaRefused
-  battle self as "kalos_chateau_viola" canlose
+  battle self as "kalos_viola_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_VIOLA
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -223,7 +224,7 @@ label Grant
   say "In the Gym I wait for climbers to reach me. Here, I can climb toward you. Ready?"
   ask "Will you battle Grant?"
   if no goto GrantRefused
-  battle self as "kalos_chateau_grant" canlose
+  battle self as "kalos_grant_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_GRANT
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -242,7 +243,7 @@ label Korrina
   say "No roller skates on the parquet, they told me. They never said no battles!"
   ask "Will you battle Korrina?"
   if no goto KorrinaRefused
-  battle self as "kalos_chateau_korrina" canlose
+  battle self as "kalos_korrina_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_KORRINA
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -261,7 +262,7 @@ label Ramos
   say "Hoho! A garden needs tending even when the gardener visits friends. So does a team."
   ask "Will you battle Ramos?"
   if no goto RamosRefused
-  battle self as "kalos_chateau_ramos" canlose
+  battle self as "kalos_ramos_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_RAMOS
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -280,7 +281,7 @@ label Clemont
   say "I built a machine to predict the outcome of this battle. It overheated. Let us do it the old way!"
   ask "Will you battle Clemont?"
   if no goto ClemontRefused
-  battle self as "kalos_chateau_clemont" canlose
+  battle self as "kalos_clemont_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CLEMONT
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -299,7 +300,7 @@ label Valerie
   say "The light in this hall is so gentle. It is a good light for a battle, I think."
   ask "Will you battle Valerie?"
   if no goto ValerieRefused
-  battle self as "kalos_chateau_valerie" canlose
+  battle self as "kalos_valerie_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_VALERIE
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -318,7 +319,7 @@ label Olympia
   say "The stars said you would come on this day. They were right, as always."
   ask "Will you battle Olympia?"
   if no goto OlympiaRefused
-  battle self as "kalos_chateau_olympia" canlose
+  battle self as "kalos_olympia_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_OLYMPIA
   addvar VAR_KALOS_CHATEAU_POINTS 3
@@ -337,7 +338,7 @@ label Wulfric
   say "Ha! Snowbelle is cold this time of year. The hall is warm, and so is a good battle!"
   ask "Will you battle Wulfric?"
   if no goto WulfricRefused
-  battle self as "kalos_chateau_wulfric" canlose
+  battle self as "kalos_wulfric_rematch" canlose
   if lost goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_WULFRIC
   addvar VAR_KALOS_CHATEAU_POINTS 3

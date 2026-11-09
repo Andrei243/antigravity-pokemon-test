@@ -2641,6 +2641,10 @@ public sealed partial class ScriptRunner
             // part b: the observatory's binoculars); the Sinnoh list's, as nothing a script can ask says the National one
             "marsh" when int.TryParse(argument, out int marshArea) && marshArea >= 1 && marshArea <= GreatMarsh.Areas.Length =>
                 NameOfSpecies(GreatMarsh.DailySpecies(SpecialEncounterTables.Sinnoh.GreatMarsh, host.Encounters.MarshDaily, GreatMarsh.Areas[marshArea - 1], nationalDex: false)),
+            // The type of one of the player's three grounds of Kalos's Friend Safari, {friendsafari:1} to {friendsafari:3}
+            // (plan 23, Kalos finished; drawn from the trainer number alone)
+            "friendsafari" when int.TryParse(argument, out int grounds) && grounds >= 1 && grounds <= FriendSafari.GroundsCount =>
+                Words.Type(FriendSafari.Of(PlayerIdentity.Number)[grounds - 1].Type),
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
             "winner" => lottery.Winner?.DisplayName ?? "",

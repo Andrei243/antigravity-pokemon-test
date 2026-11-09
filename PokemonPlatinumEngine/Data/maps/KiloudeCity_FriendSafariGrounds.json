@@ -1,0 +1,79 @@
+{
+  "name": "KiloudeCity_FriendSafariGrounds",
+  "displayName": "Friend Safari",
+  "bgmTrack": "kalos/route_late",
+  "interior": "None",
+  "trees": "Round",
+  "architecture": "Cyllage",
+  "encounterRate": 25,
+  "width": 22,
+  "height": 18,
+  "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTT",
+    "TT........::........TT",
+    "TT.wwwwwww::wwwwwww.TT",
+    "TT.wwwwwww::wwwwwww.TT",
+    "TT.wwwwwww::wwwwwww.TT",
+    "TT.wwwwwww::wwwwwww.TT",
+    "TT.wwwwwww::wwwwwww.TT",
+    "TT........::wwwwwww.TT",
+    "TT...*....::*......*TT",
+    "TT.wwwwww.::......*.TT",
+    "TT.wwwwww.::..wwwww.TT",
+    "TT*wwwwww*::..wwwww.TT",
+    "TT.wwwwww.::..wwwww.TT",
+    "TT.wwwwww.::..wwwww.TT",
+    "TT....*...::S*......TT",
+    "TT...*....::*......*TT",
+    "TTTTTTTTTT::TTTTTTTTTT"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..................##",
+    "##..........#.......##",
+    "##..................##",
+    "##########..##########"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 17,
+      "targetMap": "KiloudeCity_FriendSafari",
+      "targetX": 6,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 17,
+      "targetMap": "KiloudeCity_FriendSafari",
+      "targetX": 6,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 12,
+      "y": 15,
+      "text": "Friend Safari\nThese grounds are kept for you alone."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": []
+}
