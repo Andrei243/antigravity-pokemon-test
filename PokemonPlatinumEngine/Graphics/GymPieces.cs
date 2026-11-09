@@ -713,18 +713,18 @@ internal sealed class GymPieces
                         or TileBehavior.PastoriaGymLow && map.HeightAt(x, y) < 1.5f && map.DeckAt(x, y) == null)
                     rafts.Add((x, y));
 
-        // The water over the pool: its deep tiles, the rafts' own, the walkways it can rise over and the low blocks
-        // between them, so no block shows as a pit beside it. A tile's water shows only once the water is above the
-        // tile, so a walkway is never under it at its own level; a block's and the deep water's always, under
-        // whatever stands higher
+        // The water over the pool: the pool's walls (drawn at its floor, PastoriaWater.DrawnHeight), the rafts' own,
+        // the walkways it can rise over and the pool's floor. A tile's water shows only once the water is above the
+        // tile, so a walkway is never under it at its own level, and the floor of the pool, walked once the water is
+        // all the way down, is dry then; a wall's always, so what can't be walked on never looks as if it could
         var groups = new Dictionary<(float Height, bool Deep), KitBuilder>();
         for (int y = PastoriaWater.Top; y < PastoriaWater.Top + PastoriaWater.Depth; y++)
             for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
             {
-                float height = map.HeightAt(x, y) - map.GroundLevel;
-                bool solid = map.IsSolid(x, y), moving = map.BehaviourAt(x, y) == TileBehavior.MovingFloor;
+                bool wall = PastoriaWater.PoolWall(map, x, y);
+                float height = wall ? 0f : map.HeightAt(x, y) - map.GroundLevel;
                 if (height >= 3.5f) continue;
-                var key = (MathF.Round(height * 4f) / 4f, solid || moving && height < 0.01f);
+                var key = (MathF.Round(height * 4f) / 4f, wall || map.IsSolid(x, y));
                 if (!groups.TryGetValue(key, out var water)) groups[key] = water = new KitBuilder(sheet, vs);
                 water.Origin = new Vector3(x, 0f, y);
                 water.Decal(0, T, 0, T, 0f, water.Face("pool.water", T, T, PaintWater));

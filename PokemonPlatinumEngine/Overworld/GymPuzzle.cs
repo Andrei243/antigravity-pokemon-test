@@ -52,6 +52,13 @@ public abstract class GymPuzzle
     /// </summary>
     public virtual bool Refuses(Map map, int x, int y, float from, bool afloat) => false;
 
+    /// <summary>
+    /// Where the room's ground is drawn under a tile, given the height it is walked at (the Pastoria Gym's walls in
+    /// its pool, drawn at the pool's floor so nobody takes them for a walkway). Only the picture asks
+    /// (<c>Relief</c>): the walking rules never do.
+    /// </summary>
+    public virtual float DrawnHeight(Map map, int x, int y, float height) => height;
+
     /// <summary>Whether a trainer standing at a height can't see past a tile (the Canalave Gym's floors).</summary>
     public virtual bool BlocksSight(int x, int y, float level) => false;
 

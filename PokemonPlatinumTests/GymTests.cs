@@ -266,6 +266,34 @@ public class GymTests
     }
 
     /// <summary>
+    /// No blocked tile of the pool is drawn as walkway: the original's plates give the pool's walls the walkways'
+    /// height, so drawn as walked the walk round the room and the platforms ran together with invisible walls between.
+    /// Every one is drawn at the pool's floor, under the water; what is walked is drawn where it is walked.
+    /// </summary>
+    [Fact]
+    public void ThePastoriaGymsWallsAreDrawnUnderTheWaterNotAsWalkway()
+    {
+        var map = Room("PastoriaGym");
+        int walls = 0;
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                float drawn = PokemonPlatinumEngine.Graphics.Relief.At(map, x + 0.5f, y + 0.5f);
+                if (PastoriaWater.PoolWall(map, x, y))
+                {
+                    walls++;
+                    Assert.True(drawn < 0.76f, $"the wall at {x},{y} is drawn at {drawn}, like a walkway");
+                }
+                else if (!map.IsSolid(x, y) && map.GetWarpAt(x, y) == null)
+                    Assert.Equal(map.HeightAt(x, y) - map.GroundLevel, map.Puzzle!.DrawnHeight(map, x, y, map.HeightAt(x, y)) - map.GroundLevel);
+            }
+        // The strips between the walk round the room and the platforms are among them
+        Assert.True(PastoriaWater.PoolWall(map, 2, 20));
+        Assert.True(PastoriaWater.PoolWall(map, 24, 20));
+        Assert.True(walls > 100, $"only {walls} walls in the pool");
+    }
+
+    /// <summary>
     /// The floor on the water carries someone only where the original's heights say so: onto a raft at the water's
     /// height from a walkway at the same, never where the room's own plate is as near (the plate wins a tie) or the
     /// water is too far below; and the high, middle and low ground are stepped onto only from nought, two and four.

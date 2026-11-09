@@ -120,6 +120,22 @@ public sealed class PastoriaWater : GymPuzzle
 
     public override float? FloorAt(int x, int y, float near) => Covers(x, y) ? Floor : null;
 
+    /// <summary>
+    /// The last row of the pool proper: the walls round it end here, south of it is the walk along the room's south
+    /// wall and the way in with its statues, which stand on their own blocks.
+    /// </summary>
+    public const int LastPoolRow = Top + Depth - 4;
+
+    /// <summary>Whether a tile is a blocked one of the pool proper, which is drawn as water at the pool's floor.</summary>
+    public static bool PoolWall(Map map, int x, int y) => Covers(x, y) && y <= LastPoolRow && map.IsSolid(x, y);
+
+    /// <summary>
+    /// The original's plates give the pool's walls (the strips between the walkways, and between them and the walk
+    /// round the room) the height of the walkways beside them, so drawn as they are walked they look like more
+    /// walkway. They are drawn at the pool's floor instead, under the water, where nobody takes them for a way.
+    /// </summary>
+    public override float DrawnHeight(Map map, int x, int y, float height) => PoolWall(map, x, y) ? 0f : height;
+
     public override bool Refuses(Map map, int x, int y, float from, bool afloat)
     {
         var behaviour = map.BehaviourAt(x, y);

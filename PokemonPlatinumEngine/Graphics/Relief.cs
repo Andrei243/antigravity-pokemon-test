@@ -25,6 +25,7 @@ internal static class Relief
     private static float Own(Map map, int tx, int ty, int vx, int vy)
     {
         float h = map.HeightAt(tx, ty, vx - tx, vy - ty);
+        if (map.Puzzle is { } puzzle) h = puzzle.DrawnHeight(map, tx, ty, h);
         if (map.IsDeepWater(tx, ty)) h = MathF.Ceiling(h - 0.01f);
         return h - map.GroundLevel;
     }
