@@ -115,7 +115,7 @@ Decisions: four islands as four matrices of one world folder, joined by a ferry 
   places that borrowed one. Tests `AlolaFinishTests`. **Left, and why**: a Mantine that does tricks (plan 42 · PS7); Poké
   Pelago, Refresh and the Festival Plaza (left out by this plan's Alola decisions; plans 35 and 41); a friend in the Multi
   room over a link (plan 07); the Pikashunium Z and the Fairy Gem (plan 40 · GE7's gift box); shots of the warp's worlds,
-  the mythicals' beats and the new rooms (the GPU went to the agent's look at the buildings, the current and Zygarde).
+  the new rooms and the four other mythicals (three scenarios shot and looked at: `scn_alola_warp_field`, `scn_alola_warp_cave`, `scn_alola_marshadow`).
 
 ### Galar and Paldea
 Moved on 2026-11-04 at the user's request to plans of their own, on an open-world engine instead of this plan's grid: [plan 32](32-open-world-engine.md) (the engine), [plan 33](33-galar.md) (Galar, the Isle of Armor and the Crown Tundra) and [plan 34](34-paldea.md) (Paldea, the Teal Mask, the Indigo Disk and Mochi Mayhem). The two decompilations of Sword this section recorded are in plan 33's "Where we are".

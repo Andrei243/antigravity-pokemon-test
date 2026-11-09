@@ -2,9 +2,13 @@
 newgame
 flag AlolaHallOfFame on
 var VAR_ALOLA_CEMETERY_GIRL 3
+flag FLAG_ALOLA_CEMETERY_GIRL_GONE on
 time night
 pokemon Decidueye 60
-warp Melemele 366 131 up
+warp Melemele 366 133 up
+step up 2
+wait 0.5
+step up 1
 wait 1
 shot scn_alola_marshadow_0_shadow
 talk
