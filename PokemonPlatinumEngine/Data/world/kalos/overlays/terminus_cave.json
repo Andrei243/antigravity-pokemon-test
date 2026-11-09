@@ -5,7 +5,7 @@
   // Santalune Forest's song until plan 31 writes it a cave song of its own. Plan 23 · Z4b: a narrow way north out of the
   // great hall's head leads down to the depths (terminus_cave_depths), where a worker stands until the Hall of Fame
   "area": "terminus_cave",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   "people": {
     "anselme": {

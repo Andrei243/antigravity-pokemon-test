@@ -1,7 +1,7 @@
 {
   "name": "KalosPowerPlant",
   "displayName": "Kalos Power Plant",
-  "bgmTrack": "kalos/gym",
+  "bgmTrack": "kalos/team_flare",
   "interior": "Lab",
   "trees": "Round",
   "width": 17,

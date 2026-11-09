@@ -5,7 +5,7 @@
   // times). Nobody sails or surfs in Kalos yet, so the island is walked to. It plays Aquacorde's song until plan 31 writes
   // it its own
   "area": "azure_bay",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "people": {
     "ondine": {

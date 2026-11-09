@@ -3,7 +3,7 @@
   // raised trail between pools and tall grass to Laverre City. The neighbour waits half way for a battle
   // (kalos_route_14.txt). It plays Santalune Forest's song until plan 31 writes it its own
   "area": "kalos_route_14",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/laverre",
   "trees": "Round",
   "architecture": "Lumiose",
   "triggers": [

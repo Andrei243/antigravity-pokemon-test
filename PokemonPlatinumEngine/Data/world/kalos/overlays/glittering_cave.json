@@ -4,7 +4,7 @@
   // chamber, with three items, two trainers and the steel and rock Pokémon of the coast. It plays Santalune Forest's
   // song until plan 31 writes it a cave song of its own
   "area": "glittering_cave",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   "people": {
     "hiker": {

@@ -7,7 +7,7 @@
   // hour the Banettite glints by the chamber's wall once the Mega Ring is upgraded. It plays Santalune Forest's song until
   // plan 31 writes it a cave song of its own
   "area": "chamber_of_emptiness",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   "people": {
     "yveltal": { "name": "Yveltal", "npcType": "Pokemon", "species": "Yveltal", "script": "Yveltal", "still": true, "shownBy": "KalosHallOfFame", "hiddenBy": "FLAG_KALOS_YVELTAL_GONE" }

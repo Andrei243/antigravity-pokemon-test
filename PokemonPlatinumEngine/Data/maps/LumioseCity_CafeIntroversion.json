@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_CafeIntroversion",
   "displayName": "Café Introversion",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 11,

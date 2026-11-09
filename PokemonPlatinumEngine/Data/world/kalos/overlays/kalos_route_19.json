@@ -2,7 +2,7 @@
   // Route 19, the wide valley (plan 23 · Z4): drawn by hand, our words. East out of Couriway Town and north up a wet
   // valley of pools and tall grass to Snowbelle City. It plays Santalune Forest's song until plan 31 writes it its own
   "area": "kalos_route_19",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/route_late",
   "trees": "Round",
   "architecture": "Canalside",
   "people": {

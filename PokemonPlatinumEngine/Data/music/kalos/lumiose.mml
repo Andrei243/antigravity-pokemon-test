@@ -1,0 +1,51 @@
+# Lumiose City: the capital's boulevards round the tower, a musette's tune in F lilting over pizzicato strings,
+# a cello walking under it and the string orchestra; brushes on the kit. At night a clarinet and a harp, the pad softer.
+# Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Lumiose City
+tempo 112
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+room hall 1.9
+
+track lead musette night=clarinet vol=0.68 pan=0.05 rev=0.3 width=0.6
+  o5 e4. o5 f8 o5 g4 o5 b-4 | L o6 c4. o5 a8 o5 f4 o5 a4 | o6 d2 o6 c4 o5 a4 | o5 b-4. o5 a8 o5 g4 o5 f4 |
+  o5 g2 o5 e4 o5 c4 | o5 f4 o5 a8 o6 c8 o6 f4 o6 e8 o6 d8 | o6 c2 o5 a4 o5 e4 | o5 g4. o5 a8 o5 b-4 o6 d4 |
+  o6 c2 o5 b-4 o5 g4 | o6 d4. o6 c8 o5 b-4 o5 f4 | o5 e4. o5 f8 o5 g4 o6 c4 | o6 e4. o6 d8 o6 c4 o5 a4 |
+  o6 f2 o6 d4 o5 a4 | o5 b-4. o5 a8 o5 g4 o6 d4 | o6 c4 o5 b-4 o5 g4 o5 e4 | o5 f2 o5 a4 o6 c4 |
+  o5 e4. o5 f8 o5 g4 o5 b-4 |
+
+track pizz pizzicato night=harp vol=0.27 pan=-0.3 rev=0.3
+  q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 | L q4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 | q4 o4 (d f a)4 o4 (d f a)4 o4 (d f a)4 o4 (d f a)4 | q4 o4 (b- > d f)4 o4 (b- > d f)4 o4 (b- > d f)4 o4 (b- > d f)4 |
+  q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 | q4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 | q4 o4 (a > c e)4 o4 (a > c e)4 o4 (a > c e)4 o4 (a > c e)4 | q4 o4 (g b- > d)4 o4 (g b- > d)4 o4 (g b- > d)4 o4 (g b- > d)4 |
+  q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 | q4 o4 (b- > d f)4 o4 (b- > d f)4 o4 (b- > d f)4 o4 (b- > d f)4 | q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 | q4 o4 (a > c e)4 o4 (a > c e)4 o4 (a > c e)4 o4 (a > c e)4 |
+  q4 o4 (d f a)4 o4 (d f a)4 o4 (d f a)4 o4 (d f a)4 | q4 o4 (g b- > d)4 o4 (g b- > d)4 o4 (g b- > d)4 o4 (g b- > d)4 | q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 | q4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 o4 (f a > c)4 |
+  q4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 o4 (c e g)4 |
+
+track cello cello night=horn vol=0.3 pan=0.3 rev=0.32
+  o3 e2 o3 g2 | L o3 a2 o4 c2 | o3 f2 o3 a2 | o4 d2 o4 f2 |
+  o3 e2 o3 g2 | o3 a2 o4 c2 | o4 c2 o4 e2 | o3 b-2 o4 d2 |
+  o3 e2 o3 g2 | o4 d2 o4 f2 | o3 e2 o3 g2 | o4 c2 o4 e2 |
+  o3 f2 o3 a2 | o3 b-2 o4 d2 | o3 e2 o3 g2 | o3 a2 o4 c2 |
+  o3 e2 o3 g2 |
+
+track pad orchestra night=warmpad vol=0.14 pan=0.15 rev=0.4 width=0.9
+  o3 (c e g)1 | L o3 (f a > c)1 | o3 (d f a)1 | o3 (b- > d f)1 |
+  o3 (c e g)1 | o3 (f a > c)1 | o3 (a > c e)1 | o3 (g b- > d)1 |
+  o3 (c e g)1 | o3 (b- > d f)1 | o3 (c e g)1 | o3 (a > c e)1 |
+  o3 (d f a)1 | o3 (g b- > d)1 | o3 (c e g)1 | o3 (f a > c)1 |
+  o3 (c e g)1 |
+
+track bass contrabass vol=0.5 rev=0.1
+  o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 | L o3 f4 o4 c8 o3 f8 o3 a4 o4 c4 | o3 d4 o3 a8 o3 d8 o3 f4 o3 a4 | o3 b-4 o4 f8 o3 b-8 o4 d4 o4 f4 |
+  o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 | o3 f4 o4 c8 o3 f8 o3 a4 o4 c4 | o3 a4 o4 e8 o3 a8 o4 c4 o4 e4 | o3 g4 o4 d8 o3 g8 o3 b-4 o4 d4 |
+  o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 | o3 b-4 o4 f8 o3 b-8 o4 d4 o4 f4 | o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 | o3 a4 o4 e8 o3 a8 o4 c4 o4 e4 |
+  o3 d4 o3 a8 o3 d8 o3 f4 o3 a4 | o3 g4 o4 d8 o3 g8 o3 b-4 o4 d4 | o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 | o3 f4 o4 c8 o3 f8 o3 a4 o4 c4 |
+  o3 c4 o3 g8 o3 c8 o3 e4 o3 g4 |
+
+track brush kit vol=0.17 pan=0.15 rev=0.15
+  v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | L v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 |
+  v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 |
+  v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 |
+  v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 | v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 |
+  v46 b4 v28 h8 v22 h8 v38 x4 v28 h8 v22 h8 |

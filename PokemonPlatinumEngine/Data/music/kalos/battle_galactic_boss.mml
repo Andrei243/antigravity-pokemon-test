@@ -1,0 +1,66 @@
+# A battle with Team Flare's admins and its boss (Kalos's own song for the villains' leaders' theme): brass in D minor,
+# grave and grand, over a harpsichord, timpani and the string orchestra, a dark turn to E flat before the climb back.
+# Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Battle! Team Flare's Leaders
+tempo 152
+meter 4/4
+reverb 0.22
+night none
+lowhptempo 1.08
+room hall 1.8
+
+track lead brass lowhp=sawlead vol=0.72 pan=0.05 rev=0.22
+  o6 d-2 o5 a4 o5 e4 | L o5 d4 o5 f8 o5 a8 o6 d4 o5 a4 | o5 b-4. o5 a8 o5 f4 o5 d4 | o5 g4 o5 b-4 o6 d4 o6 g4 |
+  o6 e2 o6 d-4 o5 a4 | o6 f4. o6 e8 o6 d4 o5 a4 | o6 d2 o5 b-4 o5 f4 | o5 g4 o5 b-4 o6 e-4 o6 g4 |
+  o6 g4 o6 e4 o6 d-4 o5 a4 | o5 b-4. o5 a8 o5 g4 o5 d4 | o5 a4. o5 f8 o5 d4 o5 f4 | o6 d4 o6 f4 o5 b-4 o6 d4 |
+  o6 d-2 o5 a4 o5 e4 |
+
+track pad orchestra unless=lowhp vol=0.24 pan=-0.25 rev=0.28 width=0.9
+  o4 (a > d- e)1 | L o4 (d f a)1 | o4 (b- > d f)1 | o4 (g b- > d)1 |
+  o4 (a > d- e)1 | o4 (d f a)1 | o4 (b- > d f)1 | o4 (e- g b-)1 |
+  o4 (a > d- e)1 | o4 (g b- > d)1 | o4 (d f a)1 | o4 (b- > d f)1 |
+  o4 (a > d- e)1 |
+
+track harpsi harpsichord vol=0.28 pan=0.35 rev=0.2
+  o4 a8 o5 d-8 o5 e8 o5 a8 o5 e8 o5 d-8 o4 a8 o5 d-8 | L o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 b-8 o5 d8 o5 f8 o5 b-8 o5 f8 o5 d8 o4 b-8 o5 d8 | o4 g8 o4 b-8 o5 d8 o5 g8 o5 d8 o4 b-8 o4 g8 o4 b-8 |
+  o4 a8 o5 d-8 o5 e8 o5 a8 o5 e8 o5 d-8 o4 a8 o5 d-8 | o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 b-8 o5 d8 o5 f8 o5 b-8 o5 f8 o5 d8 o4 b-8 o5 d8 | o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 |
+  o4 a8 o5 d-8 o5 e8 o5 a8 o5 e8 o5 d-8 o4 a8 o5 d-8 | o4 g8 o4 b-8 o5 d8 o5 g8 o5 d8 o4 b-8 o4 g8 o4 b-8 | o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 b-8 o5 d8 o5 f8 o5 b-8 o5 f8 o5 d8 o4 b-8 o5 d8 |
+  o4 a8 o5 d-8 o5 e8 o5 a8 o5 e8 o5 d-8 o4 a8 o5 d-8 |
+
+track bass synthbass vol=0.6 rev=0.05
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | L o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 | o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 o2 g8 o3 g8 | o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 o2 a8 o3 a8 |
+
+track timpani timpani vol=0.26 rev=0.2
+  v100 o3 a4 v50 o3 a4 o4 e4 o4 e4 | L v100 o3 d4 v50 o3 d4 o3 a4 o3 a4 | v100 o3 b-4 v50 o3 b-4 o4 f4 o4 f4 | v100 o3 g4 v50 o3 g4 o4 d4 o4 d4 |
+  v100 o3 a4 v50 o3 a4 o4 e4 o4 e4 | v100 o3 d4 v50 o3 d4 o3 a4 o3 a4 | v100 o3 b-4 v50 o3 b-4 o4 f4 o4 f4 | v100 o3 e-4 v50 o3 e-4 o3 b-4 o3 b-4 |
+  v100 o3 a4 v50 o3 a4 o4 e4 o4 e4 | v100 o3 g4 v50 o3 g4 o4 d4 o4 d4 | v100 o3 d4 v50 o3 d4 o3 a4 o3 a4 | v100 o3 b-4 v50 o3 b-4 o4 f4 o4 f4 |
+  v100 o3 a4 v50 o3 a4 o4 e4 o4 e4 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 b8 r8 s8 b8 r8 b8 s8 r8 | L v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 |
+  v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 |
+  v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 | v95 b8 r8 s8 b8 r8 b8 s8 r8 |
+  v95 b8 r8 s8 b8 r8 b8 s8 r8 |
+
+track hats kit vol=0.34 pan=0.15 rev=0.1
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | L v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 | v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+  v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 o8 v38 h8 |
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red, on each bar's root
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | L v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | v110 o6 b-16 r16 b-16 r16 r4 b-16 r16 b-16 r16 r4 | v110 o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 |
+  v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | v110 o6 b-16 r16 b-16 r16 r4 b-16 r16 b-16 r16 r4 | v110 o6 e-16 r16 e-16 r16 r4 e-16 r16 e-16 r16 r4 |
+  v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | v110 o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | v110 o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | v110 o6 b-16 r16 b-16 r16 r4 b-16 r16 b-16 r16 r4 |
+  v110 o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 |
+
+# Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords, brass on the roots and timpani on the bass's beats
+track giantchoir choir only=giant double=pad vol=0.2 pan=-0.25 rev=0.4
+
+track giantbrass brass only=giant double=bass beats=4 shift=24 vol=0.2 pan=0.25 rev=0.28
+
+track gianttimpani timpani only=giant double=bass beats=4 shift=24 vol=0.3 rev=0.2

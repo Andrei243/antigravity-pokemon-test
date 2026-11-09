@@ -5,7 +5,7 @@
   // are its rooms. Its houses are Cyllage's coastal stone (Architecture.Cyllage), and it plays Santalune's song until
   // plan 31 writes it its own. X and Y's fossil laboratory is not built (no fossil of Kalos is in the game's items yet)
   "area": "ambrette_town",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

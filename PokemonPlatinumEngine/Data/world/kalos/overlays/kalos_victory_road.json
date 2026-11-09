@@ -4,7 +4,7 @@
   // entered from the south and left by a mouth in the north onto the League's terrace, with Ace Trainers and the
   // strongest wild Pokémon of Kalos. It plays Santalune Forest's song until plan 31 writes it a cave song of its own
   "area": "kalos_victory_road",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/victory_road",
   "trees": "Round",
   "people": {
     "ace": {

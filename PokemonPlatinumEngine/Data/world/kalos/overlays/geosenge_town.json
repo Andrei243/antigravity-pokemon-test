@@ -5,7 +5,7 @@
   // (geosenge_town.txt). Its houses are old timber (Architecture.OldTimber), and it plays Santalune's song until
   // plan 31 writes it its own
   "area": "geosenge_town",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/old_town",
   "trees": "Round",
   "architecture": "OldTimber",
   "doors": [

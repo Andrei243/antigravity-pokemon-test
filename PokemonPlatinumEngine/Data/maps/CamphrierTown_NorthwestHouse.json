@@ -1,7 +1,7 @@
 {
   "name": "CamphrierTown_NorthwestHouse",
   "displayName": "Camphrier Town",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/old_town",
   "interior": "House",
   "trees": "Round",
   "width": 11,

@@ -1,7 +1,7 @@
 {
   "name": "GeosengeTown_FlareHQ",
   "displayName": "Team Flare Secret HQ",
-  "bgmTrack": "kalos/gym",
+  "bgmTrack": "kalos/team_flare",
   "interior": "Lab",
   "trees": "Round",
   "width": 21,

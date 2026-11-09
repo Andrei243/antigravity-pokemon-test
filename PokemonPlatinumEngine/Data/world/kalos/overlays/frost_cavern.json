@@ -4,7 +4,7 @@
   // the cold Pokémon of the north and four Trainers. It plays Santalune Forest's song until plan 31 writes it a cave
   // song of its own
   "area": "frost_cavern",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   // X and Y's frozen rock is in this cave: an Eevee that levels up here becomes a Glaceon (plan 23, Kalos's species; GE3)
   "evolutionSites": [ "Ice Rock" ],

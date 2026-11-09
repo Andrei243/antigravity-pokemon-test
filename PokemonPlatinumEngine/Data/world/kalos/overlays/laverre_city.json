@@ -4,7 +4,7 @@
   // counter inside) and a house on its avenue, Route 14 coming up from the south and Route 15 going east. It plays
   // Santalune's song until plan 31 writes it its own
   "area": "laverre_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/laverre",
   "trees": "Round",
   "architecture": "OldTimber",
   "doors": [

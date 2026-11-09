@@ -8,7 +8,7 @@
   // stands in Kiloude's own station since (a building west of the flowers), and the Battle Maison stands east of the north
   // house, open once the Hall of Fame is entered (KiloudeCity_BattleMaison.txt: rounds of seven against the later sets)
   "area": "kiloude_city",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/kiloude",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

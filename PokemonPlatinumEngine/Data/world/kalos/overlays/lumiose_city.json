@@ -11,7 +11,7 @@
   // roads out of the city wait for later sessions, and the city's own song for a later session of plan 31, so it plays
   // Santalune's
   "area": "lumiose_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/lumiose",
   "trees": "Round",
   "architecture": "Lumiose",
   "doors": [

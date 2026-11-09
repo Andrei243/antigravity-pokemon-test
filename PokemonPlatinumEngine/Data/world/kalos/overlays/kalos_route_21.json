@@ -4,7 +4,7 @@
   // (kalos_route_21.txt). The neighbour waits on the road for one last battle. It plays Route 2's song until plan 31
   // writes it its own
   "area": "kalos_route_21",
-  "bgmTrack": "kalos/route2",
+  "bgmTrack": "kalos/route_late",
   "trees": "Round",
   "architecture": "OldTimber",
   "triggers": [

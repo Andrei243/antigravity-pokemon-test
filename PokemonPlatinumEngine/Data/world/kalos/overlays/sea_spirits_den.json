@@ -5,7 +5,7 @@
   // place's arrival shows the one at rest (sea_spirits_den.txt). It plays Santalune Forest's song until plan 31 writes it
   // a cave song of its own
   "area": "sea_spirits_den",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   "people": {
     "articuno": { "name": "Articuno", "npcType": "Pokemon", "species": "Articuno", "script": "Bird", "still": true, "shownBy": "FLAG_KALOS_DEN_ARTICUNO", "hiddenBy": "FLAG_KALOS_DEN_DONE" },
