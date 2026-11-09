@@ -65,6 +65,28 @@ public class BattleCameraSplitTests
             Assert.True(SplitBand.InRegion(false, 1f, new Vector2(p.X, p.Y), SplitBand.BandWidth / 2f));
     }
 
+    [Theory]
+    [InlineData(PokemonPlatinumEngine.Core.GraphicsQuality.High)]
+    [InlineData(PokemonPlatinumEngine.Core.GraphicsQuality.Medium)]
+    [InlineData(PokemonPlatinumEngine.Core.GraphicsQuality.Low)]
+    public void ASplitHeldDrawsNoMorePixelsThanTheScene(PokemonPlatinumEngine.Core.GraphicsQuality quality)
+    {
+        // Decision 4, as a count: the two halves' boxes, held whole, in their targets, against the scene target's pixels
+        var profile = PokemonPlatinumEngine.Core.QualityProfile.For(quality);
+        int sw = (int)(1920 * profile.SceneScale), sh = (int)(1080 * profile.SceneScale);
+        var (w, h) = RenderContext.SplitSize(sw, sh);
+        Assert.InRange(w, 1, RenderContext.SplitMostWidth);
+        Assert.InRange(h, 1, RenderContext.SplitMostHeight);
+        Assert.InRange((float)w / h, 16f / 9f - 0.01f, 16f / 9f + 0.01f);
+        double halves = 0;
+        foreach (bool foe in new[] { true, false })
+        {
+            var box = SplitBand.Box(SplitBand.Region(foe, 1f));
+            halves += Math.Ceiling(box.Width * w / SplitBand.Width) * Math.Ceiling(box.Height * h / SplitBand.Height);
+        }
+        Assert.True(halves <= (double)sw * sh * 1.002, $"{quality}: the halves draw {halves:N0} pixels, the scene {sw * sh:N0}");
+    }
+
     [Fact]
     public void TheLeadsAreNotedOnceBothSidesStandAfterTheSweep()
     {

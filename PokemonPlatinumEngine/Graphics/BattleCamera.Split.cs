@@ -33,6 +33,12 @@ internal static class SplitBand
     /// <summary>The band's whole width (layout units): a rim of the interface's frame colour either side of a white core with a line of the selection colour down its middle.</summary>
     public const float BandWidth = 30f, CoreWidth = 18f, LineWidth = 4f;
 
+    /// <summary>
+    /// The share of the picture a half's bounding box covers once the halves are whole: from the picture's edge to where
+    /// the band's line meets its far edge, the same for both halves (what a half draws into, scissored).
+    /// </summary>
+    public static float BoxShare => MathF.Max(TopX, Width - BottomX) / Width;
+
     /// <summary>The middle of the picture, which the band's line passes through.</summary>
     public static readonly Vector2 Middle = new(Width / 2f, Height / 2f);
 

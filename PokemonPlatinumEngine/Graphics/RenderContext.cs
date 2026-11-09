@@ -346,13 +346,35 @@ public sealed class RenderContext
     /// <inheritdoc cref="SplitPartWidth"/>
     internal int SplitPartHeight => !HasSplit ? 0 : ResolutionStep >= 1f ? splitFoe.Texture.Height : Math.Max(1, (int)(splitFoe.Texture.Height * ResolutionStep));
 
-    /// <summary>Makes the split's two targets, each the scene target's shape at most 1920×1080, with a depth texture as the scene's has.</summary>
+    /// <summary>
+    /// Makes the split's two targets, each the scene target's shape at most 1920×1080, with a depth texture as the
+    /// scene's has, and smaller still where the two halves' boxes would draw more pixels than the scene target holds
+    /// (plan 45 · BC3, decision 4: the low preset's 1080p scene), by <see cref="SplitSize"/>.
+    /// </summary>
     internal void EnsureSplit()
     {
         if (HasSplit || !targetsLoaded) return;
-        int w = Math.Min(SplitMostWidth, Target.Texture.Width), h = Math.Min(SplitMostHeight, Target.Texture.Height);
+        var (w, h) = SplitSize(Target.Texture.Width, Target.Texture.Height);
         splitFoe = LoadSceneTarget(w, h);
         splitOwn = LoadSceneTarget(w, h);
+    }
+
+    /// <summary>
+    /// The size of a split's half's target for a scene target of this size: 1920×1080 at most, and no larger than lets
+    /// the two halves' boxes (each <see cref="SplitBand.BoxShare"/> of its picture, held whole) draw more pixels than
+    /// the scene target holds. GPU-free.
+    /// </summary>
+    public static (int Width, int Height) SplitSize(int sceneWidth, int sceneHeight)
+    {
+        float w = Math.Min(SplitMostWidth, sceneWidth), h = Math.Min(SplitMostHeight, sceneHeight);
+        float most = (float)sceneWidth * sceneHeight / (2f * SplitBand.BoxShare);
+        if (w * h > most)
+        {
+            float g = MathF.Sqrt(most / (w * h));
+            w *= g;
+            h *= g;
+        }
+        return (Math.Max(1, (int)w), Math.Max(1, (int)h));
     }
 
     /// <summary>Lets the split's targets go once no split is on screen.</summary>

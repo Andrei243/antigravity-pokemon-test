@@ -86,8 +86,60 @@ partial class Harness
             game.State = GameState.Battle;
             SplitReel(two, $"bc_{manner.Name}_split_leads_double");
         }
+
+        // Push in, pull out, reactions (plan 45 · BC4): for each manner that pushes or reacts, a wild battle with a
+        // Chimchar of its own: a plain move (Scratch), a super-effective one (Ember on a Turtwig) and the faint it brings,
+        // a picture every tenth of a second (bc_<manner>_move_<what>_<nn>), the line left waiting through the move
+        foreach (var manner in manners.Where(m => m.Push > 0f || m.React))
+        {
+            engine.FixedCameraManner = manner;
+            Console.WriteLine($"manner {manner.Name}: push {manner.Push}, reactions {(manner.React ? "on" : "off")}");
+            var mine = new Party();
+            mine.Add(new Pokemon(PokemonDatabase.Get("Chimchar")!, 20, new Random(3)));
+            var turtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 30, new Random(4));
+            var (stage, x, y) = Harness.Place("Route201", -1, -1);
+            game.Map = MapDatabase.Get(stage);
+            if (x >= 0) game.Player.SetPosition(x, y, Direction.Up);
+            var b = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = mine, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { turtwig }, Random = new Random(9)
+            });
+            game.BattleRenderer.SetArena(game.Map, x, y);
+            game.Battle = b;
+            game.State = GameState.Battle;
+            ToMainMenu(b);
+            foreach (var (what, move) in new[] { ("plain", "Scratch"), ("super", "Ember"), ("faint", "Ember") })
+            {
+                for (int guard = 0; guard < 16 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++) { Confirm(b); Skip(0.8); }
+                if (b.IsBattleOver) break;
+                turtwig.CurrentHP = what == "faint" ? 1 : turtwig.MaxHP;
+                int index = b.PlayerPokemon!.Moves.FindIndex(m => m.Data.Name == move);
+                Console.WriteLine($"  {what}: {move} ({index})");
+                b.SelectMove(Math.Max(0, index));
+                MoveReel(b, $"bc_{manner.Name}_move_{what}", what == "faint" ? 50 : 22, confirmEvery: what == "faint" ? 10 : 0);
+            }
+        }
         engine.FixedCameraManner = null;
         game.State = GameState.Overworld;
+    }
+
+    // A picture every tenth of a second, at half size, n of them, with the director's shot printed for each; the line
+    // read on every so many pictures (none for 0)
+    void MoveReel(BattleEngine b, string prefix, int n, int confirmEvery)
+    {
+        for (int i = 0; i < n && !b.IsBattleOver; i++)
+        {
+            string name = $"{prefix}_{i:00}";
+            if (Wanted(name))
+            {
+                var img = Capture();
+                Raylib.ImageResize(ref img, GameEngine.VirtualWidth / 2, GameEngine.VirtualHeight / 2);
+                Save(img, name);
+            }
+            Console.WriteLine($"  {name}: {game.BattleRenderer.Shot}, the line \"{b.CurrentMessage}\"");
+            Skip(0.1);
+            if (confirmEvery > 0 && i % confirmEvery == confirmEvery - 1 && b.HUD.MenuState == BattleMenuState.Message) Confirm(b);
+        }
     }
 
     // Reads the battle on (a line every 2 s, long enough for a send-out to end) until the picture splits, then a picture every tenth of a second, at
