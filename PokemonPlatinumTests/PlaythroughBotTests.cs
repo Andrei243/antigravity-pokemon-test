@@ -284,6 +284,73 @@ public class PlaythroughBotTests
         game.State = GameState.Overworld;
     }
 
+    /// <summary>
+    /// Plan 32 · OW10: the bot walks the open test world by its navigation mesh, steering the stick at each corner, from
+    /// the house's door past the two trainers on the north meadow (who see it, walk up and are battled), into the south
+    /// meadow's zone to meet a wild Pokémon by touch, in at the tunnel's east mouth, through the cavern (whose trigger
+    /// runs its scene) to the tunnel's west end, and back through the cave to the door, with no leg given up and nothing
+    /// found wrong.
+    /// </summary>
+    [Fact]
+    public void TheBotWalksTheOpenTestWorldFromItsDoorToItsCavesFarEndAndBack()
+    {
+        // After dark, when the south meadow's zone brings out Hoothoot and Bidoof, who let the player come (by day its
+        // Starly are shy, and run from a player on foot faster than they can be caught up with)
+        try
+        {
+            PlayTheOpenTestWorld();
+        }
+        finally { GameClock.Fixed = null; }
+    }
+
+    private static void PlayTheOpenTestWorld()
+    {
+        PokemonPlatinumTests.Headless.Play(engine =>
+        {
+            var map = OpenLabGame.Lay(engine);
+            engine.Settings.TimeOfDay = TimeOfDay.Night;
+            GameClock.Fixed = TimeOfDay.Night;
+            var game = engine.Drive;
+            game.PlaceOpen(map, "house_step");
+            var bot = new Autoplayer(engine)
+            {
+                OpenWay = new OpenItinerary(new[]
+                {
+                    OpenLeg.Marker("north_meadow"), OpenLeg.Marker("twins_gap"), OpenLeg.MeetWild("south_meadow"),
+                    OpenLeg.Marker("east_mouth"), OpenLeg.Marker("cavern_east"), OpenLeg.Marker("cavern_middle"), OpenLeg.Marker("tunnel_west"),
+                    OpenLeg.Marker("cavern_middle"), OpenLeg.Marker("east_mouth"), OpenLeg.Marker("house_path"), OpenLeg.Marker("house_step")
+                })
+            };
+            var started = DateTime.UtcNow;
+            var trace = new List<string>();
+            for (int f = 0; f < 60 * 60 * 8 && !bot.Stopped && !bot.OpenWay.Finished; f++)
+            {
+                bot.Frame(1f / 60f);
+                if (f % 60 == 0) trace.Add($"{f / 60}s {game.State} {game.OpenPlayer?.Pos} {game.OpenPlayer?.Body.Stance} leg {bot.OpenWay.Current} script {game.ScriptNow} wild {game.OpenWild?.All.Count} {bot.OpenSteering} {string.Join(";", game.OpenWild?.All.Select(w => w.Pos.ToString()) ?? Array.Empty<string>())}");
+            }
+            bot.Release();
+            var report = bot.Report;
+            var md = report.ToMarkdown() + "\nthe last half minute, a line a second:\n" + string.Join("\n", trace.TakeLast(30));
+            Assert.True(report.Clean, md);
+            Assert.True(bot.OpenWay.Finished, $"{bot.OpenWay.Current} not reached in {report.Seconds:0} s\n{md}");
+            Assert.True(report.LegsGivenUp.Count == 0, md);
+            Assert.Equal(bot.OpenWay.Legs.Count, report.Legs.Count);
+            // Past a trainer: seen, walked up to and beaten in the open map, the battle coming back there
+            Assert.True(game.Story.HasDefeated("camper_jacob") || game.Story.HasDefeated("picnicker_siena"), md);
+            Assert.True(engine.InOpenField);
+            // Through the wild zone: a wild Pokémon met by touch
+            Assert.True(bot.OpenWildBattles >= 1, md);
+            // Through the cave: the cavern's trigger ran its scene once, and the cave's area was come to
+            Assert.Equal(1, game.Story.Var("VAR_LAB_CAVE"));
+            Assert.Contains("lab_cave", report.Places);
+            // And back on the door's step
+            var step = map.Marker("house_step")!.Pos;
+            Assert.InRange(Math.Sqrt(game.OpenPlayer!.Pos.GroundDistanceSquared(step)), 0, OpenItinerary.Reached);
+            Assert.True(bot.OpenMetres > 250, $"{bot.OpenMetres:0} m");
+            Console.WriteLine($"open bot: {report.Seconds:0} s of game time, {bot.OpenMetres:0} m walked, {report.Battles} battles ({bot.OpenWildBattles} wild), in {(DateTime.UtcNow - started).TotalSeconds:0} s");
+        });
+    }
+
     private static (int X, int Y) OpenTileNearTheMiddle(Map map)
     {
         int cx = map.Width / 2, cy = map.Height / 2;

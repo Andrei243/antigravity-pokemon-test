@@ -105,6 +105,80 @@ public class FieldFuzzTests
         });
     }
 
+    /// <summary>
+    /// Plan 32 · OW10: the fuzzer in the open test world, a stick's walk at random (<see cref="FieldFuzzer"/> with its
+    /// stick) with random presses among it, set down at seeded places on its navigation mesh
+    /// (<see cref="FieldFuzzer.OpenSpots"/>): the trainers, the walker, the wild Pokémon of both zones, the cavern's
+    /// trigger and the house's door (into its grid room and out) all within reach. A minute unless
+    /// <c>FIELD_FUZZ_SECONDS</c> says otherwise; nothing may be found wrong.
+    /// </summary>
+    [Fact]
+    public void TheFieldFuzzerWalksTheOpenTestWorldAndFindsNothingWrong()
+    {
+        double seconds = double.TryParse(Environment.GetEnvironmentVariable("FIELD_FUZZ_SECONDS"), out double s) ? s : 60;
+        int seed = int.TryParse(Environment.GetEnvironmentVariable("FIELD_FUZZ_SEED"), out int n) ? n : 3;
+        Headless.Play(engine =>
+        {
+            var map = OpenLabGame.Lay(engine);
+            var game = engine.Drive;
+            // The map's own markers first (where the trainers look, the zones, the tunnel's mouths, the house's step),
+            // then places drawn from its mesh
+            int count = (int)Math.Ceiling(seconds / SecondsASpot);
+            var spots = map.Markers.Where(m => !map.Triggers.Any(t => t.Shape.Contains(PokemonPlatinumEngine.OpenWorld.OpenCrossings.CentreOf(m.Pos))))
+                .Select(m => (m.Pos, m.Yaw)).Take(count / 2).ToList();
+            spots.AddRange(FieldFuzzer.OpenSpots(map, count - spots.Count, seed));
+            Assert.NotEmpty(spots);
+            var fuzzer = new Autoplayer(engine, new FieldFuzzer(seed, stick: true));
+            string? unsettled = null;
+            int openFrames = 0;
+            var feet = new HashSet<(int, int)>();
+            const float dt = 1f / 60f;
+            foreach (var (pos, yaw) in spots)
+            {
+                if (fuzzer.Stopped) break;
+                if (!fuzzer.Settle(60)) { unsettled = $"{game.State}, open {engine.InOpenField} at {game.OpenPlayer?.Pos}, script {game.ScriptNow}, line '{game.Dialogue.CurrentLine}'"; break; }
+                foreach (var p in game.Party.Members) p.HealFull();
+                game.PlaceOpen(map, pos, yaw);
+                for (double t = 0; t < SecondsASpot && !fuzzer.Stopped; t += dt)
+                {
+                    fuzzer.Frame(dt);
+                    if (game.OpenPlayer is { } player) { openFrames++; feet.Add((player.Pos.X / 4000, player.Pos.Z / 4000)); }
+                }
+            }
+            fuzzer.Release();
+            var report = fuzzer.Report;
+            output.WriteLine($"{report.Seconds:0} s of game time at {spots.Count} places, {openFrames} frames in the open map over {feet.Count} squares of 4 m");
+            output.WriteLine(report.ToMarkdown());
+            Assert.Empty(report.Exceptions);
+            Assert.Empty(report.Softlocks);
+            Assert.Empty(report.OutOfRange);
+            Assert.Empty(report.ScriptsGoneWrong);
+            Assert.Null(unsettled);
+            // It went places: over a good stretch of the meadow, not stood at the spots
+            Assert.True(feet.Count > 3 * spots.Count, $"{feet.Count} squares");
+        });
+    }
+
+    [Fact]
+    public void TheOpenSpotsAreOnTheMeshInNoVolumeAndTheSameForASeed()
+    {
+        var map = OpenWorldPeopleTests.LabWithPeople();
+        var spots = FieldFuzzer.OpenSpots(map, 20, 7);
+        Assert.Equal(20, spots.Count);
+        Assert.Equal(spots, FieldFuzzer.OpenSpots(map, 20, 7));
+        var nav = map.Land!.Nav!;
+        Assert.All(spots, s =>
+        {
+            Assert.NotNull(nav.PolygonAt(s.Pos));
+            var centre = PokemonPlatinumEngine.OpenWorld.OpenCrossings.CentreOf(s.Pos);
+            Assert.DoesNotContain(map.Triggers, t => t.Shape.Contains(centre));
+            Assert.DoesNotContain(map.Doors, d => d.Shape.Contains(centre));
+        });
+        // Spread over the map, not one corner of it
+        Assert.True(spots.Select(s => (s.Pos.X / 16000, s.Pos.Z / 16000)).Distinct().Count() > 8);
+        Assert.Empty(FieldFuzzer.OpenSpots(new PokemonPlatinumEngine.OpenWorld.OpenMap("Empty", "lab"), 5, 1));
+    }
+
     [Fact]
     public void ThePlacesBeyondTheOverworldAreOneSpotAMapAndTheSameForASeed()
     {
