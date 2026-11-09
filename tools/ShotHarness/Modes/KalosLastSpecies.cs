@@ -195,7 +195,7 @@ partial class Harness
                  {
                      ("Diancie", "ReflectionCave", 26, 8, "glitters back at the crystals", "wks410_diancie"),
                      ("Hoopa", "LostHotel", 40, 12, "pops out of it, laughing", "wks420_hoopa"),
-                     ("Volcanion", "Kalos", 655, 378, "Steam bursts up off the pool", "wks430_volcanion")
+                     ("Volcanion", "Kalos", 653, 378, "Steam bursts up off the pool", "wks430_volcanion")
                  })
         {
             ComeThrough(map, x, y, Direction.Up);

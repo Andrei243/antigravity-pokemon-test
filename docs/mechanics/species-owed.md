@@ -9,7 +9,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Johto | `updated-johto` | 256 | 248 | 8 |
 | Hoenn | `hoenn` | 202 | 200 | 2 |
 | Unova | `updated-unova` | 301 | 283 | 18 |
-| Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 450 | 7 |
+| Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 457 | 0 |
 
 Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (76 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
 
@@ -35,8 +35,6 @@ Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's Nation
 
 ## Kalos
 
-- **plan 29 · LS11: Kalos's mythicals, by events of ours**: Diancie, Hoopa, Volcanion
-- **the importer: X and Y's Jaw and Sail Fossils, no items of the data yet (Ambrette's laboratory revives what the data has)**: Tyrunt, Tyrantrum, Amaura, Aurorus
 
 ## The National Pokédex
 
@@ -48,13 +46,11 @@ The later generations, owed by their regions' plans until each plan's last sessi
 
 | Owed by | Species | Had somewhere | Not yet |
 |---|---:|---:|---:|
-| plan 23: Kalos | 72 | 65 | 7 |
+| plan 23: Kalos | 72 | 72 | 0 |
 | plan 23: Alola | 88 | 83 | 5 |
 | plan 33: Galar | 89 | 0 | 89 |
 | plan 23: Hisui | 7 | 1 | 6 |
 | plan 34: Paldea | 120 | 4 | 116 |
-
-**plan 23: Kalos**, not yet had: Tyrunt, Tyrantrum, Amaura, Aurorus, Diancie, Hoopa, Volcanion.
 
 **plan 23: Alola**, not yet had: Magearna, Marshadow, Zeraora, Meltan, Melmetal.
 

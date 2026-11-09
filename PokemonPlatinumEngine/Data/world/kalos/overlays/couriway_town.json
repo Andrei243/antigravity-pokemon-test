@@ -23,6 +23,6 @@
     // Plan 23, Kalos's Waterfall: the pool under the falls, reached only by going down them
     { "id": "falls_pool_plate", "name": "Splash Plate", "npcType": "ItemBall", "item": "Splash Plate", "x": 654, "y": 377, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_COURIWAY_FALLS_POOL" },
     // Plan 23, Kalos's last species: Volcanion in the steam on the pool's sandbank after the Hall of Fame (couriway_town.txt)
-    { "id": "volcanion", "name": "Volcanion", "npcType": "Pokemon", "species": "Volcanion", "x": 655, "y": 377, "facing": "Down", "script": "Volcanion", "hiddenBy": "FLAG_KALOS_VOLCANION_GONE", "shownBy": "KalosHallOfFame" }
+    { "id": "volcanion", "name": "Volcanion", "npcType": "Pokemon", "species": "Volcanion", "x": 653, "y": 377, "facing": "Down", "script": "Volcanion", "hiddenBy": "FLAG_KALOS_VOLCANION_GONE", "shownBy": "KalosHallOfFame" }
   ]
 }

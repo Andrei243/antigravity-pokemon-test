@@ -79,8 +79,9 @@ public class LocalNamesTests
         // (and plan 21 · H3, part b three more: the Mach and Acro Bikes and the Orange Mail; and plan 21 · H4, part a four:
         // the Go-Goggles, the Soot Sack, the Harbor Mail and the Meteorite; plan 19 · K7 the Tri-Pass; plan 19 · K9, part a the Ruby and the Rainbow Pass; and five whose names the import of wave 41 found: plan 19 · K9's Sapphire, plan 21 · H6's Devon Scope and H7's Magma Emblem, plan 20 · J11's Basement Key and Rainbow Wing, and part d's Silver Wing; and plan 20 · J15, part n's Machine Part;
         // and Johto's leftovers two: the Red Scale and the Rage Candy Bar; and Johto's last leftovers the Blue Card and the Jade Orb; and Alola's Ride Pager;
-        // and plan 40 · GE5 the Oval Charm, the one of the four charms whose French PokeAPI describes: 583)
-        Assert.Equal((764, 305, 583), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
+        // and plan 40 · GE5 the Oval Charm, the one of the four charms whose French PokeAPI describes: 583;
+        // plan 23 the Jaw and Sail Fossils: 585)
+        Assert.Equal((764, 305, 585), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
             LocalNames.Section("fr", "descriptions.items").Count));
         Assert.Equal(191, LocalNames.Section("de", "descriptions.abilities").Count);
         Assert.Empty(LocalNames.Section("es", "descriptions.moves"));

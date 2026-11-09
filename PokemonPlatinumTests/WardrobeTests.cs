@@ -47,6 +47,9 @@ public class WardrobeTests
         }
     }
 
+    /// <summary>The shops that sell one kind of garment alone, and which.</summary>
+    private static readonly Dictionary<string, ClothingSlot> OneSlotShops = new() { ["lumiose_hats"] = ClothingSlot.Hat };
+
     [Fact]
     public void EveryBoutiqueSellsGarmentsThatExist()
     {
@@ -55,8 +58,11 @@ public class WardrobeTests
         {
             Assert.All(ids, id => Assert.NotNull(ClothingDatabase.Get(id)));
             Assert.Equal(ids.Count, ClothingDatabase.Stock(key).Count);
-            // Something for every slot
-            Assert.All(Outfit.Slots, slot => Assert.Contains(ClothingDatabase.Stock(key), g => g.Slot == slot && !g.IsFree));
+            // Something for every slot, but in a shop of one kind of garment (Lumiose's Chapellerie, plan 23: hats)
+            if (OneSlotShops.TryGetValue(key, out var only))
+                Assert.All(ClothingDatabase.Stock(key), g => Assert.Equal(only, g.Slot));
+            else
+                Assert.All(Outfit.Slots, slot => Assert.Contains(ClothingDatabase.Stock(key), g => g.Slot == slot && !g.IsFree));
         }
         Assert.Empty(ClothingDatabase.Stock("nowhere"));
     }

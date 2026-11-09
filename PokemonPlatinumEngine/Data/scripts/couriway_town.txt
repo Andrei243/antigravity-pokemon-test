@@ -27,10 +27,16 @@ script Volcanion
   scene "Volcanion at the foot of the falls"
   music stop
   letterbox on 0.4
-  camera pan 655 377 1.2
+  # (one tile south of it, the player would hide it behind their head: the cliff is behind them, so they step aside)
+  if var PLAYER_X != 653 goto Look
+  if var PLAYER_Y != 378 goto Look
+  walk player right 1
+  face player up
+label Look
+  camera pan 653 377 1.2
   camera zoom 1.4 0.8
-  effect geyser 655 377 2
-  effect eruption 655 377 2
+  effect geyser 653 377 2
+  effect eruption 653 377 2
   camera shake 0.6
   cry "Volcanion"
   speaker none

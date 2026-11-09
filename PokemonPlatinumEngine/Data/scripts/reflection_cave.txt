@@ -10,6 +10,12 @@ script Diancie
   scene "Diancie in Reflection Cave"
   music stop
   letterbox on 0.4
+  # (one tile south of it, the player would hide it behind their head: they step back first)
+  if var PLAYER_X != 26 goto Look
+  if var PLAYER_Y != 8 goto Look
+  walk player down 2
+  face player up
+label Look
   camera pan 26 7 1.2
   camera zoom 1.4 0.8
   effect sparkles 26 7 2.5

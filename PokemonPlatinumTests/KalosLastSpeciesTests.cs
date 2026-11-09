@@ -114,6 +114,25 @@ public class KalosLastSpeciesTests
         Assert.DoesNotContain(map.NPCs, n => n.Key == key);
     }
 
+    [Theory]
+    [InlineData("ReflectionCave", "reflection_cave", "diancie", "Diancie", 26, 10, "Carbink")]
+    [InlineData("LostHotel", "lost_hotel", "hoopa", "Hoopa", 40, 14, null)]
+    [InlineData("Kalos", "couriway_town", "volcanion", "Volcanion", 654, 378, null)]
+    public void APlayerWhoSpeaksFromTheTileSouthStepsOutOfTheWayFirst(string mapName, string file, string key, string species, int x, int y, string? brings)
+    {
+        // One tile south of it, the player would hide it behind their head (plan 29 · LS11d's rule)
+        var map = MapNamed(mapName);
+        var story = new StoryState();
+        story.Set("KalosHallOfFame");
+        story.Set("FLAG_KALOS_MEGA_RING_UPGRADED");
+        map.ForgetForced();
+        map.ApplyPresence(story.Has);
+        var who = map.NPCs.Single(n => n.Key == key);
+        var host = Play(story, file, species, map, who, extra: brings, from: (who.GridX, who.GridY + 1));
+        Assert.Equal((x, y), host.PlayerTile);
+        Assert.True(map.IsWalkable(x, y), $"{species}'s scene walks the player onto a blocked tile");
+    }
+
     [Fact]
     public void TheUnknownDungeonsMouthIsComeToOnlyAcrossThePond()
     {
@@ -215,7 +234,7 @@ public class KalosLastSpeciesTests
     // ------------------------------------------------------------------ helpers
 
     private static HeadlessScriptHost Play(StoryState story, string file, string script, Map at, NPC? who = null, Inventory? bag = null,
-        int[]? answers = null, BattleOutcome fight = BattleOutcome.Won, Action<HeadlessScriptHost>? turns = null, string? extra = null)
+        int[]? answers = null, BattleOutcome fight = BattleOutcome.Won, Action<HeadlessScriptHost>? turns = null, string? extra = null, (int X, int Y)? from = null)
     {
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Greninja")!, 70));
@@ -225,6 +244,7 @@ public class KalosLastSpeciesTests
         {
             Map = at, Region = RegionDatabase.Kalos, MapNamed = MapNamed, Money = 3000
         };
+        if (from is { } tile) host.PlayerTile = tile;
         host.Fight = _ =>
         {
             turns?.Invoke(host);
