@@ -68,169 +68,169 @@ label MelemeleMonday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_TOTODILE
   sound "select"
-  say "The scan picked something up! A Totodile has appeared at Seaward Cave. Hurry, before the day is out!"
+  say "The scan picked something up: Totodile, at Seaward Cave! Hurry, before the day is out!"
   end
 label MelemeleTuesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_DEINO
   sound "select"
-  say "The scan picked something up! A Deino has appeared at Ten Carat Hill. Hurry, before the day is out!"
+  say "The scan picked something up: Deino, at Ten Carat Hill! Hurry, before the day is out!"
   end
 label MelemeleWednesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_HORSEA
   sound "select"
-  say "The scan picked something up! A Horsea has appeared at Kala'e Bay. Hurry, before the day is out!"
+  say "The scan picked something up: Horsea, at Kala'e Bay! Hurry, before the day is out!"
   end
 label MelemeleThursday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_KLINK
   sound "select"
-  say "The scan picked something up! A Klink has appeared at Hau'oli City. Hurry, before the day is out!"
+  say "The scan picked something up: Klink, at Hau'oli City! Hurry, before the day is out!"
   end
 label MelemeleFriday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_CHIKORITA
   sound "select"
-  say "The scan picked something up! A Chikorita has appeared at Route 2. Hurry, before the day is out!"
+  say "The scan picked something up: Chikorita, at Route 2! Hurry, before the day is out!"
   end
 label MelemeleSaturday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_LITWICK
   sound "select"
-  say "The scan picked something up! A Litwick has appeared at Hau'oli Cemetery. Hurry, before the day is out!"
+  say "The scan picked something up: Litwick, at Hau'oli Cemetery! Hurry, before the day is out!"
   end
 label MelemeleSunday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_CYNDAQUIL
   sound "select"
-  say "The scan picked something up! A Cyndaquil has appeared at Route 3. Hurry, before the day is out!"
+  say "The scan picked something up: Cyndaquil, at Route 3! Hurry, before the day is out!"
   end
 label AkalaMonday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_SPHEAL
   sound "select"
-  say "The scan picked something up! A Spheal has appeared at Route 7. Hurry, before the day is out!"
+  say "The scan picked something up: Spheal, at Route 7! Hurry, before the day is out!"
   end
 label AkalaTuesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_LUXIO
   sound "select"
-  say "The scan picked something up! A Luxio has appeared at Route 8. Hurry, before the day is out!"
+  say "The scan picked something up: Luxio, at Route 8! Hurry, before the day is out!"
   end
 label AkalaWednesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_HONEDGE
   sound "select"
-  say "The scan picked something up! A Honedge has appeared at the Akala Outskirts. Hurry, before the day is out!"
+  say "The scan picked something up: Honedge, at the Akala Outskirts! Hurry, before the day is out!"
   end
 label AkalaThursday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_VENIPEDE
   sound "select"
-  say "The scan picked something up! A Venipede has appeared at Route 4. Hurry, before the day is out!"
+  say "The scan picked something up: Venipede, at Route 4! Hurry, before the day is out!"
   end
 label AkalaFriday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_BELLSPROUT
   sound "select"
-  say "The scan picked something up! A Bellsprout has appeared at Route 5. Hurry, before the day is out!"
+  say "The scan picked something up: Bellsprout, at Route 5! Hurry, before the day is out!"
   end
 label AkalaSaturday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_MARILL
   sound "select"
-  say "The scan picked something up! A Marill has appeared at Brooklet Hill. Hurry, before the day is out!"
+  say "The scan picked something up: Marill, at Brooklet Hill! Hurry, before the day is out!"
   end
 label AkalaSunday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_GOTHITA
   sound "select"
-  say "The scan picked something up! A Gothita has appeared at Route 6. Hurry, before the day is out!"
+  say "The scan picked something up: Gothita, at Route 6! Hurry, before the day is out!"
   end
 label UlaulaMonday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_SWINUB
   sound "select"
-  say "The scan picked something up! A Swinub has appeared at Tapu Village. Hurry, before the day is out!"
+  say "The scan picked something up: Swinub, at Tapu Village! Hurry, before the day is out!"
   end
 label UlaulaTuesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_DUOSION
   sound "select"
-  say "The scan picked something up! A Duosion has appeared at Route 16. Hurry, before the day is out!"
+  say "The scan picked something up: Duosion, at Route 16! Hurry, before the day is out!"
   end
 label UlaulaWednesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_ROSELIA
   sound "select"
-  say "The scan picked something up! A Roselia has appeared at Ula'ula Meadow. Hurry, before the day is out!"
+  say "The scan picked something up: Roselia, at Ula'ula Meadow! Hurry, before the day is out!"
   end
 label UlaulaThursday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_STARAVIA
   sound "select"
-  say "The scan picked something up! A Staravia has appeared at Route 10. Hurry, before the day is out!"
+  say "The scan picked something up: Staravia, at Route 10! Hurry, before the day is out!"
   end
 label UlaulaFriday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_VIGOROTH
   sound "select"
-  say "The scan picked something up! A Vigoroth has appeared at Route 11. Hurry, before the day is out!"
+  say "The scan picked something up: Vigoroth, at Route 11! Hurry, before the day is out!"
   end
 label UlaulaSaturday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_AXEW
   sound "select"
-  say "The scan picked something up! A Axew has appeared at Mount Hokulani. Hurry, before the day is out!"
+  say "The scan picked something up: Axew, at Mount Hokulani! Hurry, before the day is out!"
   end
 label UlaulaSunday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_RHYHORN
   sound "select"
-  say "The scan picked something up! A Rhyhorn has appeared at Blush Mountain. Hurry, before the day is out!"
+  say "The scan picked something up: Rhyhorn, at Blush Mountain! Hurry, before the day is out!"
   end
 label PoniMonday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_CONKELDURR
   sound "select"
-  say "The scan picked something up! A Conkeldurr has appeared at Poni Plains. Hurry, before the day is out!"
+  say "The scan picked something up: Conkeldurr, at Poni Plains! Hurry, before the day is out!"
   end
 label PoniTuesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_TOGEKISS
   sound "select"
-  say "The scan picked something up! A Togekiss has appeared at Poni Gauntlet. Hurry, before the day is out!"
+  say "The scan picked something up: Togekiss, at Poni Gauntlet! Hurry, before the day is out!"
   end
 label PoniWednesday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_LEAVANNY
   sound "select"
-  say "The scan picked something up! A Leavanny has appeared at Poni Meadow. Hurry, before the day is out!"
+  say "The scan picked something up: Leavanny, at Poni Meadow! Hurry, before the day is out!"
   end
 label PoniThursday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_SERPERIOR
   sound "select"
-  say "The scan picked something up! A Serperior has appeared at Exeggutor Island. Hurry, before the day is out!"
+  say "The scan picked something up: Serperior, at Exeggutor Island! Hurry, before the day is out!"
   end
 label PoniFriday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_SAMUROTT
   sound "select"
-  say "The scan picked something up! A Samurott has appeared at Poni Wilds. Hurry, before the day is out!"
+  say "The scan picked something up: Samurott, at Poni Wilds! Hurry, before the day is out!"
   end
 label PoniSaturday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_EMBOAR
   sound "select"
-  say "The scan picked something up! A Emboar has appeared at the Ancient Poni Path. Hurry, before the day is out!"
+  say "The scan picked something up: Emboar, at the Ancient Poni Path! Hurry, before the day is out!"
   end
 label PoniSunday
   setflag FLAG_DAILY_ALOLA_ISLAND_SCAN
   setflag FLAG_DAILY_ALOLA_SCAN_EELEKTROSS
   sound "select"
-  say "The scan picked something up! A Eelektross has appeared at Poni Grove. Hurry, before the day is out!"
+  say "The scan picked something up: Eelektross, at Poni Grove! Hurry, before the day is out!"
   end
 label Spent
   say "The scanner's spent for today. Whatever it found is still out there waiting for you, until the day is done."

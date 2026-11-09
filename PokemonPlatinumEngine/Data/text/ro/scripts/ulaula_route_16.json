@@ -1,0 +1,224 @@
+{
+  "Dexio": [
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "Alola! We came all the way from Kalos, following something green that slipped through the islands' soil."
+      ],
+      "text": [
+        "Alola! Am venit tocmai din Kalos, urmărind ceva verde care s-a strecurat prin pământul insulelor."
+      ]
+    },
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "Tiny Zygarde Cells, scattered all over Alola! On their own they're shy, but this Cube gathers them right up."
+      ],
+      "text": [
+        "Celule Zygarde mititele, împrăștiate prin toată Alola! Singure sunt sfioase, dar Cubul ăsta le adună pe loc."
+      ]
+    },
+    {
+      "en": [
+        "We'd love for you to collect them. The more you find, the more of Zygarde we can put back together!"
+      ],
+      "text": [
+        "Ne-ar plăcea să le aduni tu. Cu cât găsești mai multe, cu atât putem reface mai mult din Zygarde!"
+      ]
+    },
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "Bring the Cube back whenever you've found ten or more. We'll be here, keeping the caravan warm."
+      ],
+      "text": [
+        "Adu Cubul înapoi când ai găsit zece sau mai multe. Noi vom fi aici, ținând rulota caldă."
+      ]
+    },
+    {
+      "en": [
+        "Every cell of Alola, gathered and put together. Professor Sycamore won't believe us!"
+      ],
+      "text": [
+        "Fiecare celulă din Alola, adunată și pusă laolaltă. Profesorul Sycamore n-o să ne creadă!"
+      ]
+    },
+    {
+      "en": [
+        "Your Cube holds {var:VAR_ALOLA_ZYGARDE_CELLS} cells. Shall we put ten of them together into a Zygarde?"
+      ],
+      "text": [
+        "Cubul tău are {var:VAR_ALOLA_ZYGARDE_CELLS} celule. Punem zece dintre ele laolaltă într-un Zygarde?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Zygarde!"
+      ],
+      "text": [
+        "{player} a primit Zygarde!"
+      ]
+    },
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "Ten cells make a swift little Zygarde. Find fifty, and we can make a bigger one!"
+      ],
+      "text": [
+        "Zece celule fac un Zygarde mic și iute. Găsește cincizeci și putem face unul mai mare!"
+      ]
+    },
+    {
+      "en": [
+        "Your Cube holds {var:VAR_ALOLA_ZYGARDE_CELLS} cells. Shall we put fifty of them together into a Zygarde?"
+      ],
+      "text": [
+        "Cubul tău are {var:VAR_ALOLA_ZYGARDE_CELLS} celule. Punem cincizeci dintre ele laolaltă într-un Zygarde?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Zygarde!"
+      ],
+      "text": [
+        "{player} a primit Zygarde!"
+      ]
+    },
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "Fifty cells! And yet... the Cube feels like it wants more. Every last one of them, maybe."
+      ],
+      "text": [
+        "Cincizeci de celule! Și totuși... Cubul parcă vrea mai multe. Pe toate, poate."
+      ]
+    },
+    {
+      "en": [
+        "All one hundred! Shall we put them together into a Zygarde whose cells never let go of one another?"
+      ],
+      "text": [
+        "Toate o sută! Le punem laolaltă într-un Zygarde ale cărui celule nu se mai despart niciodată?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received Zygarde!"
+      ],
+      "text": [
+        "{player} a primit Zygarde!"
+      ]
+    },
+    {
+      "en": [
+        "Dexio"
+      ],
+      "text": [
+        "Dexio"
+      ]
+    },
+    {
+      "en": [
+        "When it's pushed to its limit in battle, its scattered cells will rush back to it. You'll see its true shape!"
+      ],
+      "text": [
+        "Când e împins la limită în luptă, celulele lui împrăștiate se vor grăbi înapoi la el. Îi vei vedea adevărata formă!"
+      ]
+    },
+    {
+      "en": [
+        "The Cube holds {var:VAR_ALOLA_ZYGARDE_CELLS} cells for now. Keep searching! They hide in the grass, by the sea, even in caves."
+      ],
+      "text": [
+        "Cubul are deocamdată {var:VAR_ALOLA_ZYGARDE_CELLS} celule. Caută mai departe! Se ascund în iarbă, lângă mare, chiar și în peșteri."
+      ]
+    },
+    {
+      "en": [
+        "Your team is full! Make some room, and we'll put the Zygarde together for you."
+      ],
+      "text": [
+        "Echipa ta e plină! Fă puțin loc și îți alcătuim Zygarde."
+      ]
+    },
+    {
+      "en": [
+        "No hurry. The cells aren't going anywhere. Well, they wriggle a bit."
+      ],
+      "text": [
+        "Nicio grabă. Celulele nu pleacă nicăieri. Mă rog, se zvârcolesc puțin."
+      ]
+    }
+  ],
+  "Sina": [
+    {
+      "en": [
+        "Sina"
+      ],
+      "text": [
+        "Sina"
+      ]
+    },
+    {
+      "en": [
+        "Have you talked to Dexio? He's the one holding the box. Well, he thinks he is. I packed it!"
+      ],
+      "text": [
+        "Ai vorbit cu Dexio? El e cel care ține cutia. Mă rog, așa crede el. Eu am împachetat-o!"
+      ]
+    },
+    {
+      "en": [
+        "Some cells only come out in the quiet places: a cemetery, a beach no one visits, the top of a mountain."
+      ],
+      "text": [
+        "Unele celule ies doar în locurile liniștite: un cimitir, o plajă pe care n-o vizitează nimeni, vârful unui munte."
+      ]
+    }
+  ],
+  "ScanDuosion": [
+    {
+      "en": [
+        "It's the Duosion the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Duosion găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
+  ]
+}

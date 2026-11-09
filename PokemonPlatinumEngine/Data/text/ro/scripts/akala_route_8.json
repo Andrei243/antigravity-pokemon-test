@@ -158,5 +158,15 @@
         "Aproape am terminat aici. Trece încercarea Căpitanului Mallow din junglă și tunelul va fi deschis când te întorci."
       ]
     }
+  ],
+  "ScanLuxio": [
+    {
+      "en": [
+        "It's the Luxio the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Luxio găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

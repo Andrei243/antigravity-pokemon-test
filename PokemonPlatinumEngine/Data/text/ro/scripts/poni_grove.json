@@ -44,5 +44,15 @@
         "Ceva ca un clovn făcut din artificii a jonglat cu propriul cap printre flori și s-a înclinat în fața lui {player}."
       ]
     }
+  ],
+  "ScanEelektross": [
+    {
+      "en": [
+        "It's the Eelektross the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Eelektross găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

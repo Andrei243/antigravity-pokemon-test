@@ -26,10 +26,23 @@
     },
     {
       "en": [
-        "The plant's closed to visitors, I'm afraid. Safety rules. Enjoy the view instead!"
+        "The plant takes visitors, if you keep your hands off the valves. The chief inside loves to show it off!"
       ],
       "text": [
+        "Centrala primește vizitatori, dacă nu atingi robinetele. Șeful dinăuntru adoră să se laude cu ea!"
+      ],
+      "was": [
         "Centrala e închisă vizitatorilor, din păcate. Reguli de siguranță. Bucură-te de priveliște!"
+      ]
+    }
+  ],
+  "ScanRhyhorn": [
+    {
+      "en": [
+        "It's the Rhyhorn the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Rhyhorn găsit de Scanarea Insulei! E gata de luptă!"
       ]
     }
   ]

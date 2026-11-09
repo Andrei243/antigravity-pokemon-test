@@ -6,6 +6,8 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
+  // The Battle Tree's doors (plan 23, the Battle Tree's inside)
+  "doors": [ { "warp": 0, "map": "PoniGauntlet_BattleTree", "x": 8, "y": 12, "facing": "Up" } ],
   "people": {
     "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },

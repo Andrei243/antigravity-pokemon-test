@@ -1385,6 +1385,10 @@
       "note": "Valerie of Laverre City's Gym (plan 23 · Z4), named by her id so the other Trainers called Valerie keep their voices; first spoken at LaverreCity_Gym.txt(10)",
       "provisional": true
     },
+    "kanoa": {
+      "note": "first spoken at BlushMountain_PowerPlant.txt(24)",
+      "provisional": true
+    },
     "kanto_attendant": {
       "note": "first spoken at PalParkLobby.txt(210)",
       "brief": {
@@ -2115,6 +2119,10 @@
       "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
       "provisional": true
     },
+    "ola": {
+      "note": "first spoken at BlushMountain_PowerPlant.txt(39)",
+      "provisional": true
+    },
     "old_lady": {
       "note": "first spoken at route_111_old_ladys_rest_stop.txt(7)",
       "brief": {
@@ -2254,6 +2262,10 @@
     },
     "pip": {
       "note": "first spoken at lumiose_city.txt(204)",
+      "provisional": true
+    },
+    "plant_chief": {
+      "note": "first spoken at BlushMountain_PowerPlant.txt(9)",
       "provisional": true
     },
     "plant_worker": {
@@ -2810,6 +2822,10 @@
       "note": "first spoken at KalosLeague_SieboldRoom.txt(8)",
       "provisional": true
     },
+    "sightseer": {
+      "note": "first spoken at big_wave_beach.txt(25)",
+      "provisional": true
+    },
     "sign": {
       "note": "first spoken at common.txt(379)",
       "provisional": true
@@ -2878,6 +2894,10 @@
     },
     "sunny": {
       "note": "first spoken at route_37.txt(19)",
+      "provisional": true
+    },
+    "surfer": {
+      "note": "first spoken at PoniGauntlet_BattleTree.txt(122)",
       "provisional": true
     },
     "tabitha": {
@@ -3491,6 +3511,7 @@
     "Juan": "juan",
     "Jupiter": "jupiter",
     "Kahili": "kahili",
+    "Kanoa": "kanoa",
     "Kanto Attendant": "kanto_attendant",
     "Karate Master": "karate_master",
     "Karen": "karen",
@@ -3604,6 +3625,7 @@
     "Odette": "odette",
     "Odile": "odile",
     "Officer": "officer",
+    "Ola": "ola",
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
@@ -3625,6 +3647,7 @@
     "Pikachu": "pikachu",
     "Pilot": "pilot",
     "Pip": "pip",
+    "Plant Chief": "plant_chief",
     "Plant Worker": "plant_worker",
     "Plumeria": "plumeria",
     "Pokémon Ranger": "pokemon_ranger",
@@ -3704,6 +3727,7 @@
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Siebold": "siebold",
+    "Sightseer": "sightseer",
     "Sign": "sign",
     "Sina": "sina",
     "Skitty": "skitty",
@@ -3719,6 +3743,7 @@
     "Studio Hand": "studio_hand",
     "Stylist": "stylist",
     "Sunny": "sunny",
+    "Surfer": "surfer",
     "Tabitha": "tabitha",
     "Tate": "tate",
     "Teala": "teala",

@@ -74,5 +74,15 @@
         "Eu iau o malasada și apoi fac și eu încercarea. Probabil. După un pui de somn."
       ]
     }
+  ],
+  "ScanChikorita": [
+    {
+      "en": [
+        "It's the Chikorita the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Chikorita găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

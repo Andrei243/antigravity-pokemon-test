@@ -32,5 +32,15 @@
         "Patru insule, patru flori, patru dansuri. Le-am văzut pe toate, iar cel din Poni e cel care mă face să plâng."
       ]
     }
+  ],
+  "ScanLeavanny": [
+    {
+      "en": [
+        "It's the Leavanny the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Leavanny găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

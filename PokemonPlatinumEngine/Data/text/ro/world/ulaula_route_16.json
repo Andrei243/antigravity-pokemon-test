@@ -1,5 +1,55 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "zygarde_cell_2": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "scan_duosion": {
+      "name": {
+        "en": [
+          "Duosion"
+        ],
+        "text": [
+          "Duosion"
+        ]
+      }
+    },
+    "dexio": {
+      "name": {
+        "en": [
+          "Dexio"
+        ],
+        "text": [
+          "Dexio"
+        ]
+      }
+    },
+    "sina": {
+      "name": {
+        "en": [
+          "Sina"
+        ],
+        "text": [
+          "Sina"
+        ]
+      }
+    },
     "ula1_1": {
       "name": {
         "en": [

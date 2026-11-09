@@ -1,5 +1,35 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "zygarde_cell_2": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "scan_togekiss": {
+      "name": {
+        "en": [
+          "Togekiss"
+        ],
+        "text": [
+          "Togekiss"
+        ]
+      }
+    },
     "mikala": {
       "name": {
         "en": [
@@ -108,9 +138,12 @@
   "signs": {
     "TreeSign": {
       "en": [
-        "Battle Tree\nWhere the strongest Trainers of every land meet.\nClosed for now."
+        "Battle Tree\nWhere the strongest Trainers of every land meet."
       ],
       "text": [
+        "Battle Tree\nUnde se întâlnesc cei mai puternici Antrenori din toate ținuturile."
+      ],
+      "was": [
         "Battle Tree\nUnde se întâlnesc cei mai puternici Antrenori din toate ținuturile.\nÎnchis deocamdată."
       ]
     }

@@ -66,5 +66,15 @@
         "Stai, stai, nu trece încă!"
       ]
     }
+  ],
+  "ScanCyndaquil": [
+    {
+      "en": [
+        "It's the Cyndaquil the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Cyndaquil găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

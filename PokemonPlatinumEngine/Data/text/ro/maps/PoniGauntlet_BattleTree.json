@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Tree"
+    ],
+    "text": [
+      "Battle Tree"
+    ]
+  },
+  "people": {
+    "desk": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționeră"
+        ]
+      }
+    },
+    "prizes": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzător"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumeț"
+        ]
+      }
+    },
+    "surfer": {
+      "name": {
+        "en": [
+          "Surfer"
+        ],
+        "text": [
+          "Surfer"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

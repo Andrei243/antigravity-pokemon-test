@@ -24,5 +24,281 @@
         "Profesorul Kukui trece pe aici din când în când. Zice că luminile seamănă cu cele care au adus Pokémonii în Alola, demult."
       ]
     }
+  ],
+  "Scanner": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Om de știință"
+      ]
+    },
+    {
+      "en": [
+        "This machine scans an island for Pokémon that don't usually live in Alola. One scan a day, it's all the power we can spare."
+      ],
+      "text": [
+        "Aparatul ăsta scanează o insulă după Pokémoni care nu trăiesc de obicei în Alola. O scanare pe zi, atâta energie ne permitem."
+      ]
+    },
+    {
+      "en": [
+        "Which island shall we scan?",
+        "Melemele",
+        "Akala",
+        "Ula'ula",
+        "Poni",
+        "Not now"
+      ],
+      "text": [
+        "Ce insulă scanăm?",
+        "Melemele",
+        "Akala",
+        "Ula'ula",
+        "Poni",
+        "Nu acum"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you like. The scanner warms up again every morning."
+      ],
+      "text": [
+        "Revino oricând vrei. Scanerul se încălzește din nou în fiecare dimineață."
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Totodile, at Seaward Cave! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Totodile, la Seaward Cave! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Deino, at Ten Carat Hill! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Deino, la Ten Carat Hill! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Horsea, at Kala'e Bay! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Horsea, la Golful Kala'e! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Klink, at Hau'oli City! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Klink, la Hau'oli City! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Chikorita, at Route 2! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Chikorita, la Drumul 2! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Litwick, at Hau'oli Cemetery! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Litwick, la Cimitirul Hau'oli! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Cyndaquil, at Route 3! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Cyndaquil, la Drumul 3! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Spheal, at Route 7! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Spheal, la Drumul 7! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Luxio, at Route 8! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Luxio, la Drumul 8! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Honedge, at the Akala Outskirts! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Honedge, la Marginea Akalei! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Venipede, at Route 4! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Venipede, la Drumul 4! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Bellsprout, at Route 5! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Bellsprout, la Drumul 5! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Marill, at Brooklet Hill! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Marill, la Brooklet Hill! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Gothita, at Route 6! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Gothita, la Drumul 6! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Swinub, at Tapu Village! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Swinub, la Tapu Village! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Duosion, at Route 16! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Duosion, la Drumul 16! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Roselia, at Ula'ula Meadow! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Roselia, la Pajiștea Ula'ula! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Staravia, at Route 10! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Staravia, la Drumul 10! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Vigoroth, at Route 11! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Vigoroth, la Drumul 11! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Axew, at Mount Hokulani! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Axew, la Muntele Hokulani! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Rhyhorn, at Blush Mountain! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Rhyhorn, la Muntele Blush! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Conkeldurr, at Poni Plains! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Conkeldurr, la Câmpiile Poni! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Togekiss, at Poni Gauntlet! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Togekiss, la Poni Gauntlet! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Leavanny, at Poni Meadow! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Leavanny, la Pajiștea Poni! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Serperior, at Exeggutor Island! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Serperior, la Insula Exeggutor! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Samurott, at Poni Wilds! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Samurott, la Sălbăticia Poni! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Emboar, at the Ancient Poni Path! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Emboar, la Vechea Cărare Poni! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scan picked something up: Eelektross, at Poni Grove! Hurry, before the day is out!"
+      ],
+      "text": [
+        "Scanarea a găsit ceva: Eelektross, la Dumbrava Poni! Grăbește-te, până nu se termină ziua!"
+      ]
+    },
+    {
+      "en": [
+        "The scanner's spent for today. Whatever it found is still out there waiting for you, until the day is done."
+      ],
+      "text": [
+        "Scanerul s-a epuizat pentru azi. Ce a găsit încă te așteaptă acolo, până se termină ziua."
+      ]
+    }
   ]
 }

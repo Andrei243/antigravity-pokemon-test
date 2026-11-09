@@ -7,6 +7,8 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
+  // The geothermal power plant's doors (plan 23, the rest of the islands)
+  "doors": [ { "warp": 0, "map": "BlushMountain_PowerPlant", "x": 8, "y": 12, "facing": "Up" } ],
   "evolutionSites": [ "Magnetic Field" ],
   "people": {
     "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },

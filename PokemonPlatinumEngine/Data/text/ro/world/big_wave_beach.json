@@ -1,0 +1,88 @@
+{
+  "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "kahale": {
+      "name": {
+        "en": [
+          "Kahale"
+        ],
+        "text": [
+          "Kahale"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Skull Grunt: This beach is Skull turf now, yo! Surfers gotta pay up in Pokémon battles!"
+        ],
+        "text": [
+          "Golan Team Skull: Plaja asta e teritoriul Skull acum, yo! Surferii plătesc în lupte Pokémon!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Skull Grunt: Waves are too big anyway. I'm out."
+        ],
+        "text": [
+          "Golan Team Skull: Oricum valurile sunt prea mari. Am plecat."
+        ]
+      }
+    },
+    "surfer": {
+      "name": {
+        "en": [
+          "Surfer"
+        ],
+        "text": [
+          "Surfer"
+        ]
+      }
+    },
+    "sightseer": {
+      "name": {
+        "en": [
+          "Sightseer"
+        ],
+        "text": [
+          "Turistă"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The waves here are the biggest on Melemele. My Mantyke and I are going to ride one, one day."
+        ],
+        "text": [
+          "Valurile de aici sunt cele mai mari din Melemele. Eu și Mantyke-ul meu o să călărim unul, într-o zi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BeachSign": {
+      "en": [
+        "Big Wave Beach\nThe biggest swell on Melemele. Surf with care!"
+      ],
+      "text": [
+        "Plaja Valurilor Mari\nCea mai mare hulă din Melemele. Faceți surf cu grijă!"
+      ]
+    }
+  }
+}

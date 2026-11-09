@@ -3614,5 +3614,49 @@
         "Predau mișcările ținuturilor mai noi, dar doar Campionilor. Revino după ce intri într-o Sală a Faimei."
       ]
     }
+  ],
+  "ZygardeCell": [
+    {
+      "en": [
+        "{player} found a Zygarde Cell! The Zygarde Cube now holds {var:VAR_ALOLA_ZYGARDE_CELLS} of 100."
+      ],
+      "text": [
+        "{player} a găsit o Celulă Zygarde! Cubul Zygarde are acum {var:VAR_ALOLA_ZYGARDE_CELLS} din 100."
+      ]
+    },
+    {
+      "en": [
+        "A small green blob trembles on the ground. As soon as it is touched, it squirms away into the earth..."
+      ],
+      "text": [
+        "O mică pată verde tremură pe pământ. Cum o atingi, se strecoară în pământ..."
+      ]
+    }
+  ],
+  "ZygardeCore": [
+    {
+      "en": [
+        "{player} found a Zygarde Core! The Zygarde Cube now holds {var:VAR_ALOLA_ZYGARDE_CELLS} of 100."
+      ],
+      "text": [
+        "{player} a găsit un Nucleu Zygarde! Cubul Zygarde are acum {var:VAR_ALOLA_ZYGARDE_CELLS} din 100."
+      ]
+    },
+    {
+      "en": [
+        "The Core hums inside the Cube. A Zygarde put together by the Cube will know more of its moves."
+      ],
+      "text": [
+        "Nucleul zumzăie în Cub. Un Zygarde alcătuit de Cub va cunoaște mai multe dintre mișcările sale."
+      ]
+    },
+    {
+      "en": [
+        "A green blob with a bright red heart pulses on the ground. As soon as it is touched, it sinks out of sight..."
+      ],
+      "text": [
+        "O pată verde cu o inimă roșie strălucitoare pulsează pe pământ. Cum o atingi, se scufundă din vedere..."
+      ]
+    }
   ]
 }

@@ -152,5 +152,15 @@
         "Un Araquanid uriaș se ridică din lac într-o bulă de apă strălucitoare!"
       ]
     }
+  ],
+  "ScanMarill": [
+    {
+      "en": [
+        "It's the Marill the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Marill găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

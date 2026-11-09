@@ -74,5 +74,15 @@
         "..."
       ]
     }
+  ],
+  "ScanBellsprout": [
+    {
+      "en": [
+        "It's the Bellsprout the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Bellsprout găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

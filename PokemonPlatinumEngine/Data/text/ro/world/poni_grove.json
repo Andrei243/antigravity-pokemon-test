@@ -1,5 +1,45 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "zygarde_cell_2": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "zygarde_cell_3": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "scan_eelektross": {
+      "name": {
+        "en": [
+          "Eelektross"
+        ],
+        "text": [
+          "Eelektross"
+        ]
+      }
+    },
     "ranger": {
       "name": {
         "en": [

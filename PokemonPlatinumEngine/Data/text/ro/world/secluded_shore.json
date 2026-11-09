@@ -1,0 +1,96 @@
+{
+  "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "zygarde_cell_2": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "nalani": {
+      "name": {
+        "en": [
+          "Nalani"
+        ],
+        "text": [
+          "Nalani"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nalani: Nobody comes down to this shore. Which means nobody's here to see me win!"
+        ],
+        "text": [
+          "Înotătoarea Nalani: Nimeni nu coboară pe țărmul ăsta. Deci nu e nimeni să mă vadă câștigând!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nalani: Good thing nobody saw that."
+        ],
+        "text": [
+          "Înotătoarea Nalani: Bine că n-a văzut nimeni."
+        ]
+      }
+    },
+    "ikaika": {
+      "name": {
+        "en": [
+          "Ikaika"
+        ],
+        "text": [
+          "Ikaika"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Ikaika: My Sandygast lives in the sand here. Disturb its castle and you'll answer to us both!"
+        ],
+        "text": [
+          "Înotătorul Ikaika: Sandygast-ul meu trăiește în nisipul de aici. Strică-i castelul și vei da socoteală amândurora!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Ikaika: It's rebuilding. It always rebuilds."
+        ],
+        "text": [
+          "Înotătorul Ikaika: Se reconstruiește. Mereu se reconstruiește."
+        ]
+      }
+    },
+    "sandgirl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ShoreSign": {
+      "en": [
+        "Secluded Shore\nNorth: Route 11"
+      ],
+      "text": [
+        "Țărmul Retras\nNord: Drumul 11"
+      ]
+    }
+  }
+}

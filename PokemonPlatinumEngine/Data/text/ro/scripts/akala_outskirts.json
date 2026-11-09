@@ -64,5 +64,15 @@
         "Olivia își așteaptă încercarea cea mare în Konikoni City. Ne vedem mai târziu, {player}."
       ]
     }
+  ],
+  "ScanHonedge": [
+    {
+      "en": [
+        "It's the Honedge the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Honedge găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }
