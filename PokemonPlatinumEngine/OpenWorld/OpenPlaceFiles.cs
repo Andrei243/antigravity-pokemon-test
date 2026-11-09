@@ -140,7 +140,7 @@ public sealed class OpenSlotFile
     [DataRequired] public int MaxLevel { get; set; }
     public int Weight { get; set; } = 10;
 
-    /// <summary>When in the day the row is met (plan 32 · OW7): <c>any</c> unless told, <c>morning</c>, <c>day</c> or <c>night</c>.</summary>
+    /// <summary>When in the day the row is met (plan 32 · OW7): <c>Any</c> unless told, <c>Morning</c>, <c>Day</c> or <c>Night</c>.</summary>
     public OpenSlotTime Time { get; set; }
 }
 

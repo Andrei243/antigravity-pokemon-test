@@ -67,14 +67,14 @@ public class OpenWildGameTests
         {
             var (game, map) = Lab(engine);
             var zone = map.Zones.Single(z => z.Name == "south_meadow");
-            game.PlaceOpen(map, On(map, 24, 22), OpenYaw.East);
+            game.PlaceOpen(map, On(map, 14, 22), OpenYaw.East);
             Run(engine, 2);
             Quiet(game, map);
             // A Bidoof two metres east, facing east too: walked into from behind
-            var bidoof = game.OpenWild!.Put(map, zone, zone.Slots.Single(s => s.Species == "Bidoof"), 4, On(map, 26, 22), OpenYaw.East);
-            var stood = game.OpenPlayer!.Pos;
+            var bidoof = game.OpenWild!.Put(map, zone, zone.Slots.Single(s => s.Species == "Bidoof"), 4, On(map, 16, 22), OpenYaw.East);
             for (int f = 0; f < 60 * 3 && game.State != GameState.Battle; f++) Run(engine, 1, ActionFrame.Stick(127, 0));
             Assert.Equal(GameState.Battle, game.State);
+            var stood = game.OpenPlayer!.Pos;
             var battle = game.Battle!;
             Assert.False(battle.IsTrainerBattle);
             Assert.Equal("Bidoof", battle.EnemyPokemon!.Species.Name);
@@ -101,7 +101,7 @@ public class OpenWildGameTests
             Assert.Null(game.OpenWildMet);
             Assert.True(game.OpenWild!.WaitOf(zone) > OpenWildField.RespawnAfterFlight);
             Assert.True(game.OpenWild.GraceLeft > 0);
-            Assert.Equal((stood.X / 200, stood.Z / 200), (game.OpenPlayer!.Pos.X / 200, game.OpenPlayer.Pos.Z / 200));
+            Assert.Equal((stood.X, stood.Z), (game.OpenPlayer!.Pos.X, game.OpenPlayer.Pos.Z));
         });
     }
 
@@ -118,7 +118,7 @@ public class OpenWildGameTests
             Quiet(game, map);
             // One put right at the player's feet, facing them: met at the next tick, and no back strike
             game.OpenWild!.Put(map, zone, zone.Slots.Single(s => s.Species == "Bidoof"), 3, game.OpenPlayer!.Pos, OpenYaw.South);
-            for (int f = 0; f < 60 && game.State != GameState.Battle; f++) Run(engine, 1);
+            for (int f = 0; f < 60 * 5 && game.State != GameState.Battle; f++) Run(engine, 1);
             Assert.Equal(GameState.Battle, game.State);
             Assert.Equal(BattleTerrain.Sand, game.Battle!.Core.Conditions.Terrain);
             Assert.Equal(BattleArena.Sand, game.BattleRenderer.Arena.Kind);

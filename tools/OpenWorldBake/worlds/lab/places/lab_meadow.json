@@ -29,8 +29,8 @@
       "polygon": [[8, 14], [40, 14], [40, 30], [8, 30]],
       "minY": -2, "maxY": 6,
       "slots": [
-        { "species": "Starly", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "day" },
-        { "species": "Hoothoot", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "night" },
+        { "species": "Starly", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "Day" },
+        { "species": "Hoothoot", "minLevel": 3, "maxLevel": 5, "weight": 30, "time": "Night" },
         { "species": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 20 }
       ],
       "density": 4, "cap": 3

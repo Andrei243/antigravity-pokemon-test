@@ -119,7 +119,7 @@ public class OpenWorldWildTests
                     Assert.InRange(d2, (long)OpenWildField.SpawnNear * OpenWildField.SpawnNear, (long)OpenWildField.SpawnFar * OpenWildField.SpawnFar);
                     int toward = OpenTriangles.YawOf(w.Home.X - player.Pos.X, w.Home.Z - player.Pos.Z);
                     Assert.True(Math.Abs(OpenYaw.Between(player.Yaw, toward)) > OpenWildField.AheadHalfAngle, $"{w} came out ahead of the player");
-                    Assert.True(zone.Contains(w.Home), $"{w} came out outside its zone");
+                    Assert.True(w.Zone.Contains(w.Home), $"{w} came out outside its zone");
                 }
             }, input);
         }
@@ -139,7 +139,7 @@ public class OpenWorldWildTests
             for (int round = 0; round < 6; round++)
             {
                 Tick(field, 8 * T, () => { foreach (var w in field.Wild.All) species.Add(w.Species); });
-                field.Player.Place(On(map, -58, 22), OpenYaw.East);
+                field.Player.Place(On(map, -60, -60), OpenYaw.East);
                 Tick(field, 1);
                 Assert.DoesNotContain(field.Wild.All, w => w.Zone.Name == "south_meadow");
                 field.Player.Place(On(map, 24, 6), OpenYaw.North);
@@ -160,8 +160,8 @@ public class OpenWorldWildTests
         int Here() => field.Wild.All.Count(w => w.Zone == zone);
         Tick(field, 10 * T);
         Assert.True(Here() > 0);
-        // Put down on the west road, more than 72 m off the meadow: gone at the next tick
-        field.Player.Place(On(map, -58, 22), OpenYaw.East);
+        // Put down in the far north-west, more than 72 m off the meadow: gone at the next tick
+        field.Player.Place(On(map, -60, -60), OpenYaw.East);
         Tick(field, 1);
         Assert.Equal(0, Here());
         // Back, with the field held (a script): nothing comes out
@@ -376,8 +376,9 @@ public class OpenWorldWildTests
         Assert.Equal(BattleTerrain.Mountain, OpenBattleGround.TerrainOf(OpenCover.Rock, false));
         Assert.Equal(BattleTerrain.Building, OpenBattleGround.TerrainOf(null, false));
         var map = Lab();
-        // The meadow's grass, the cavern's floor, and a box's top (the house) a building's floor
-        Assert.Equal(BattleTerrain.Plain, OpenBattleGround.Under(map, On(map, 24, 22), swimming: false));
+        // The meadow's grass, its muddy square a marsh, the cavern's floor, and a box's top (the house) a building's floor
+        Assert.Equal(BattleTerrain.Plain, OpenBattleGround.Under(map, On(map, 14, 22), swimming: false));
+        Assert.Equal(BattleTerrain.GreatMarsh, OpenBattleGround.Under(map, On(map, 25, 22), swimming: false));
         Assert.Equal(BattleTerrain.Cave, OpenBattleGround.Under(map, map.Marker("cavern_middle")!.Pos, swimming: false));
         var roof = OpenPos.FromMetres(-20, 4, -46);
         Assert.Equal(BattleTerrain.Building, OpenBattleGround.Under(map, roof, swimming: false));
