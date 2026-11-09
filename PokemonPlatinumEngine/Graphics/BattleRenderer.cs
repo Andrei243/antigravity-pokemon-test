@@ -127,6 +127,9 @@ public sealed class BattleRenderer
         if (Photo != null) director.Hold(Photo.Shot);
         else if (director.Held != null) director.LetGo();
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
+        // A shot of the player's own side from the front takes a fill from the camera's side (plan 45 · BC5)
+        if (director.Kind == ShotKind.OwnFront || (director.Kind == ShotKind.Closing && anim.Closing is { Kind: BattleClosing.Won }))
+            rig = ArtLook.FaceFill(rig);
 
         // A move's light over the stage alone (plan 25 · Y16): the Pokémon and the effects keep the scene's own
         StageLit = StageLights.Of(anim);
@@ -479,6 +482,50 @@ public sealed class BattleRenderer
 
         // A trainer back at their platform's edge to call a Dynamax (plan 25 · YD1)
         if (anim.Call is { } call) trainers.Add(Caller(call, platformTop, anim.Time));
+
+        // The player come back behind their Pokémon at a win, under a manner that closes (plan 45 · BC5): never under
+        // Classic, nor REDUCE MOTION, whose camera never looks at them
+        if (BattleCamera.MannerNow(director.Manner).Close && anim.Closing is { Kind: BattleClosing.Won } won
+            && anim.PlayerTrainer == null && anim.Ball == null)
+        {
+            var (feet, yaw, scale, pose) = WinnerAt(anim.Time - won.Start, platformTop, anim.Time);
+            trainers.Add(new TrainerPlacement(anim.PlayerTrainerLook ?? PlayerIdentity.Character,
+                Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose));
+        }
+    }
+
+    /// <summary>How long the player takes to walk back in behind their Pokémon at a win (plan 45 · BC5), and to turn to the camera.</summary>
+    internal const float WinnerWalk = 0.8f, WinnerTurn = 0.25f;
+
+    /// <summary>How far west of their spot the player walks back in from at a win.</summary>
+    internal const float WinnerFrom = 4.5f;
+
+    /// <summary>
+    /// The player at a win (plan 45 · BC5): walking in from the west behind their platform over <see cref="WinnerWalk"/>,
+    /// eased to a stop at <see cref="BattleCamera.WinnerSpot"/>, turning toward the field and the camera, then cheering.
+    /// A function of the closing's age alone.
+    /// </summary>
+    internal static (Vector3 Feet, float Yaw, float Scale, CharacterPose Pose) WinnerAt(float age, float platformTop, float time)
+    {
+        var feet = BattleCamera.WinnerSpot + new Vector3(0, platformTop, 0);
+        var pose = new CharacterPose { Time = time, Blink = time % 3.7f < 0.12f, Expression = CharacterAnimation.ExpressionOf(Overworld.Mood.Happy) };
+        float facing = ThrowYaw(BattleCamera.WinnerSpot, BattleStage.EnemySpot) - BattleCamera.FaceTurn;
+        if (age < WinnerWalk)
+        {
+            float off = 1f - Math.Clamp(age / WinnerWalk, 0f, 1f);
+            feet.X -= off * off * WinnerFrom;
+            pose.Walk = age * 2.6f;
+            pose.WalkBlend = Math.Clamp(off * 3f + 0.3f, 0f, 1f);
+            return (feet, MathF.PI / 2f, PlayerTrainerScale, pose);
+        }
+        float turn = Math.Clamp((age - WinnerWalk) / WinnerTurn, 0f, 1f);
+        float yaw = MathF.PI / 2f + (facing - MathF.PI / 2f) * turn * turn * (3f - 2f * turn);
+        if (turn >= 1f)
+        {
+            pose.Emote = Emote.Cheer;
+            pose.EmoteTime = age - WinnerWalk - WinnerTurn;
+        }
+        return (feet, yaw, PlayerTrainerScale, pose);
     }
 
     /// <summary>How tall a trainer who calls a Dynamax stands: the foe's as a speaker, the player's as on their platform.</summary>

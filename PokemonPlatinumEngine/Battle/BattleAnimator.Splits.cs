@@ -10,6 +10,12 @@ public enum SplitReason
     Leads,
     /// <summary>A trainer's last Pokémon out of its ball.</summary>
     LastPokemon,
+    /// <summary>Any Pokémon of a trainer's battle out of its ball after the leads (plan 45 · BC6, Galar's).</summary>
+    SendOut,
+    /// <summary>Both sides with a giant grown at once (plan 45 · BC6, Galar's).</summary>
+    Giants,
+    /// <summary>A Pokémon Terastallized, its shell shattered (plan 45 · BC6, Paldea's).</summary>
+    Terastal,
 }
 
 /// <summary>
@@ -51,6 +57,13 @@ public sealed partial class BattleAnimator
     private readonly List<SplitMoment> splitMoments = new();
     private bool leadsNoted;
     private (BattleSide Side, int Slot, bool Boss, float Since)? lastComing;
+    private readonly bool[,] wasComing = new bool[2, MostSlots];
+    private bool bothGiants;
+    private float leadsAt;
+    private readonly List<float> teraComing = new();
+
+    /// <summary>A Pokémon begins to Terastallize (plan 45 · BC6): its moment comes as its shell has shattered.</summary>
+    internal void NoteTerastal() => teraComing.Add(Time);
 
     /// <summary>The moments the picture may split at, oldest first (plan 45 · BC3).</summary>
     public IReadOnlyList<SplitMoment> SplitMoments => splitMoments;
@@ -83,8 +96,35 @@ public sealed partial class BattleAnimator
         if (LeadsMayDivide && !leadsNoted && Time >= 1.8f && SidesStand())
         {
             leadsNoted = true;
+            leadsAt = Time;
             splitMoments.Add(new SplitMoment(SplitReason.Leads, Time, false));
         }
+
+        // A send-out after the leads in a trainer's battle, both sides with a giant, a Terastallization over (plan 45 · BC6)
+        bool trainers = EnemyTrainerLook != null;
+        int giantSides = 0;
+        for (int side = 0; side < 2; side++)
+        {
+            bool giant = false;
+            for (int slot = 0; slot < SlotsOf((BattleSide)side); slot++)
+            {
+                var v = this[(BattleSide)side, slot];
+                bool out_ = v.Present && v.SendOutAge < 0f;
+                if (trainers && leadsNoted && Time > leadsAt && wasComing[side, slot] && out_)
+                    splitMoments.Add(new SplitMoment(SplitReason.SendOut, Time, false));
+                wasComing[side, slot] = v.Present && v.SendOutAge >= 0f;
+                if (v.Present && v.Dynamaxed && v.FaintAge < 0f && (v.GiantAge < 0f || v.GiantAge >= v.GiantLead + DynamaxGrown)) giant = true;
+            }
+            if (giant) giantSides++;
+        }
+        if (giantSides == 2 && !bothGiants) splitMoments.Add(new SplitMoment(SplitReason.Giants, Time, false));
+        bothGiants = giantSides == 2;
+        for (int i = teraComing.Count - 1; i >= 0; i--)
+            if (Time >= teraComing[i] + TeraTime)
+            {
+                splitMoments.Add(new SplitMoment(SplitReason.Terastal, Time, false));
+                teraComing.RemoveAt(i);
+            }
 
         if (lastComing is { } coming)
         {
