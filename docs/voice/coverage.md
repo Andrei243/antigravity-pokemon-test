@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1559 | 1498 | 61 | 1 | 0 |
-| Scripts (`script:`) | 11815 | 11317 | 498 | 17 | 0 |
-| People of the world (`world:`) | 8026 | 7964 | 62 | 4 | 0 |
-| **All** | 21634 | 21010 | 624 | 22 | 0 |
+| Scripts (`script:`) | 11858 | 11360 | 498 | 17 | 0 |
+| People of the world (`world:`) | 8027 | 7965 | 62 | 4 | 0 |
+| **All** | 21678 | 21054 | 624 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -32,7 +32,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 510 voices (409 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 95 voices.
 - Archetypes in use: 241, with 728 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1960.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1968.
 
 ## Lines by voice
 
@@ -40,8 +40,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1960 | 142 |
-| `look:gentleman (any)` | 750 | 15 |
+| `@self` | 1968 | 142 |
+| `look:gentleman (any)` | 766 | 15 |
 | `rival` | 657 | 20 |
 | `look:grunt (any)` | 594 | 0 |
 | `look:clerk (any)` | 443 | 11 |
@@ -142,6 +142,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:pokefan_f (any)` | 40 | 0 |
 | `collector` | 39 | 0 |
 | `colress` | 39 | 1 |
+| `director` | 39 | 1 |
 | `hau` | 39 | 2 |
 | `iris` | 39 | 0 |
 | `look:pokefan_m (any)` | 39 | 0 |
@@ -174,7 +175,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:expert_m (any)` | 32 | 0 |
 | `norman` | 32 | 0 |
 | `policeman` | 32 | 0 |
-| `director` | 31 | 1 |
 | `kimono_girl` | 31 | 0 |
 | `breeder` | 30 | 4 |
 | `captain` | 30 | 0 |

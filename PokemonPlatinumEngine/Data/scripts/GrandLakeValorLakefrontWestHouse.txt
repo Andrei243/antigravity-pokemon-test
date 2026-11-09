@@ -16,6 +16,10 @@
 script Director
   charm due
   if var RESULT > 0 goto Charms
+  if diploma Ours goto OursDiploma
+  if diploma Sinnoh goto OwnDiploma
+  if var DIPLOMAS >= 3 goto ManyDiplomas
+  if var DIPLOMAS > 0 goto AnyDiploma
   if flag FLAG_MAP_LOCAL_GAME_DIRECTOR_SPOKE goto Stories
   if var SEEN >= 210 goto Complete
   say "Hello there! I'm the game director!" "Oh! You're filling in a Pokédex, I see!" "Do come and show me again once there's more in it!"
@@ -37,4 +41,18 @@ label GiveCharm
   charm due
   if var RESULT > 0 goto GiveCharm
   say "Keep it with you wherever you go. Fill in another Pokédex and come and show me: I may have something more for you."
+  end
+# Plan 40 · GE4, ours: the director reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). They sit here, after
+# the lines above, so that the lines' numbers in the translation files stay where they were.
+label OursDiploma
+  say "Hello there! I'm the game director!" "A diploma for the Pokémon that aren't in any region's Pokédex, and you saw every one of them! Nobody asked us for those."
+  end
+label OwnDiploma
+  say "Hello there! I'm the game director!" "That diploma on your Pokédex is for all of Sinnoh, every page seen with your own eyes. I could pick that paper out of a hundred!"
+  end
+label ManyDiplomas
+  say "Hello there! I'm the game director!" "Diplomas from several Pokédexes! You've seen more of the world than all of us who made the game put together."
+  end
+label AnyDiploma
+  say "Hello there! I'm the game director!" "I see a diploma on your Pokédex! Other regions have lists of their own, you know. Fill in another and show me."
   end

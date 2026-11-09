@@ -16,3 +16,40 @@ script LinkingCord
 label Holding
   say "You still have a Linking Cord. Use it on a Pokémon that grows through a trade, then come back for another."
   end
+
+
+# Plan 40 · GE4, ours: Unova's designer, who stands in Castelia City's Pokémon Center where Black 2 keeps its own
+# elsewhere. Like the other regions' designers he hands over the charms a Pokédex filled has earned (charm due, charm
+# give; Models/Charms.cs) and reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). With nothing to say
+# of either he says his own line (the overlay's).
+script Designer
+  face self player
+  charm due
+  if var RESULT > 0 goto Charms
+  if diploma Ours goto OursDiploma
+  if diploma Unova goto OwnDiploma
+  if var DIPLOMAS >= 3 goto ManyDiplomas
+  if var DIPLOMAS > 0 goto AnyDiploma
+  sayown
+  end
+label Charms
+  say "Excuse me, is that a full Pokédex? Every page! I have to shake your hand."
+  say "Those of us who draw these Pokémon keep a few charms for the ones who see them all. Please, take this."
+label Give
+  charm give
+  charm due
+  if var RESULT > 0 goto Give
+  say "Fill in another Pokédex, somewhere else, and look me up. I may have another one for you."
+  end
+label OursDiploma
+  say "That diploma isn't for any region's list at all. It's for the Pokémon we added ourselves!" "You saw every one of them? I should hire you as a proofreader."
+  end
+label OwnDiploma
+  say "A diploma for the whole Unova Pokédex! Castelia's towers are tall, but that's taller." "Every page seen. I draw for a living and I haven't seen them all myself."
+  end
+label ManyDiplomas
+  say "Several diplomas on one Pokédex? You must have more pages seen than I have sketches." "Do you ever stay in one place long enough to unpack?"
+  end
+label AnyDiploma
+  say "That's a diploma on your Pokédex! Congratulations! A whole region's list is a lot of pages." "There are Pokédexes in other regions too. Fill in another and come and show me."
+  end
