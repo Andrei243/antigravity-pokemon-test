@@ -41,13 +41,28 @@ internal sealed partial class BattleCamera
     /// to the impact (and <see cref="HeavyHold"/> more for a heavy blow), then out to its usual frame plus
     /// <see cref="PullOut"/> × the push by the move's end, so the set piece is in the picture; kept clear of the player's platform.
     /// </summary>
-    public static CameraShot PulledTarget(FxPlaces places, List<(BattleSide Side, int Slot)> targets, EffectCue move, float push)
+    /// <param name="low">How much lower the shot stands as the target is hit, radians of pitch taken off (plan 45 · BC6: a manner's <see cref="CameraManner.Low"/>, Kalos's and Alola's).</param>
+    public static CameraShot PulledTarget(FxPlaces places, List<(BattleSide Side, int Slot)> targets, EffectCue move, float push, float low = 0f)
     {
         float usual = move.Category == MoveCategory.Status ? 3.4f : 3.0f;
         float tight = usual - PullTight * push, wide = usual + PullOut * push;
         float from = BattleAnimator.ImpactTime + (Directions.For(move) is { Heavy: true } ? HeavyHold : 0f);
         float scale = tight + (wide - tight) * Smooth((move.Age - from) / Math.Max(0.05f, MoveShotEnd - from));
-        return Clear(s => TargetShot(places, targets, s), scale);
+        if (low <= 0f) return Clear(s => TargetShot(places, targets, s), scale);
+        return Clear(s => LoweredBy(TargetShot(places, targets, s), low), scale);
+    }
+
+    /// <summary>A shot swung down round what it looks at by <paramref name="low"/> radians of pitch, never under a quarter unit over the ground.</summary>
+    public static CameraShot LoweredBy(CameraShot shot, float low)
+    {
+        var d = shot.Position - shot.Target;
+        float flat = MathF.Sqrt(d.X * d.X + d.Z * d.Z), len = d.Length();
+        if (flat < 1e-4f) return shot;
+        float pitch = MathF.Atan2(d.Y, flat) - low;
+        var to = new Vector3(d.X / flat * MathF.Cos(pitch), MathF.Sin(pitch), d.Z / flat * MathF.Cos(pitch)) * len;
+        var at = shot.Target + to;
+        if (at.Y < 0.25f) at.Y = 0.25f;
+        return shot with { Position = at };
     }
 
     /// <summary>

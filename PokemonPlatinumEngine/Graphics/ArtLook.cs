@@ -597,6 +597,24 @@ internal static class ArtLook
         };
     }
 
+    /// <summary>How much of the sun's colour the face-on fill adds to the ground's ambient and to the sky's (plan 45 · BC5).</summary>
+    public const float FaceFillGround = 0.3f, FaceFillSky = 0.1f;
+
+    /// <summary>
+    /// The fill of a shot of the player's own side from the front (plan 45 · BC5; style guide, "The battle's manners",
+    /// "Opening and closing"): the battle's sun stands behind the player's platform, so a face turned to such a shot is
+    /// in its own shade; a light from the camera's side lifts it, the ground's ambient by <see cref="FaceFillGround"/> of
+    /// the sun's colour and the sky's by <see cref="FaceFillSky"/>. Only those shots take it; every other shot's rig is untouched.
+    /// </summary>
+    public static LightRig FaceFill(LightRig r) => r with
+    {
+        Light = r.Light with
+        {
+            GroundAmbient = r.Light.GroundAmbient + r.Light.SunColor * FaceFillGround,
+            SkyAmbient = r.Light.SkyAmbient + r.Light.SunColor * FaceFillSky,
+        }
+    };
+
     /// <summary>
     /// The stage's light under Gravity (plan 25 · Y2; style guide, "What lies on the field"), eased in by
     /// <paramref name="strength"/> (0..1): the key and both ambients lowered to 84 %, the shadows drawn a little

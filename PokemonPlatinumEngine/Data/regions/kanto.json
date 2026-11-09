@@ -1,6 +1,8 @@
 {
   "id": "Kanto",
   "folder": "kanto",
+  // How its battles are filmed (plan 45 · BC6; style guide, "The battle's manners"): flat, a slow push in on the foe
+  "battleCamera": "kanto",
   "models": "kanto",
   "map": "Kanto",
   "dex": "kanto",

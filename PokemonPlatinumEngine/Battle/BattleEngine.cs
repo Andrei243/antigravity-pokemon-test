@@ -385,6 +385,9 @@ public partial class BattleEngine
         // legendary or mythical Pokémon (decision 3); the camera's manner decides whether it does
         Anim.LeadsMayDivide = Kind is BattleKind.Normal or BattleKind.Roamer
             && (setup.Trainers.Count > 0 || setup.WildPokemon.Any(p => p.Species.Legendary || p.Species.Mythical));
+        // A Gym Leader's, an Elite Four's or a Champion's battle, which a manner may film with a crane (plan 45 · BC5)
+        Anim.BossBattle = setup.Trainers.Count > 0
+            && BattleMeeting.ClassRow(setup.Trainers[0].TrainerClass) is MeetingRow.Leader or MeetingRow.EliteFour or MeetingRow.Champion;
         seenBefore = PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
             .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())
             .Select(p => p.Species.DexNumber).Where(Pokedex.IsSeen).ToHashSet();
@@ -576,7 +579,12 @@ public partial class BattleEngine
             if (i == cheerBefore)
                 steps.Enqueue(new Happening(() =>
                 {
-                    if (Scene) Anim.Cheer(BattleSide.Enemy);
+                    if (Scene)
+                    {
+                        Anim.Cheer(BattleSide.Enemy);
+                        // ...and a manner's closing films the foe's side (plan 45 · BC5)
+                        Anim.NoteClosing(BattleClosing.Lost);
+                    }
                 }));
             if (happening is Said said)
             {
@@ -1204,6 +1212,8 @@ public partial class BattleEngine
             {
                 var mine = mirror.Shown(caught.Pokemon);
                 AudioManager.PlayMusic(MusicRole.VictoryWild);
+                // A catch closes on the ball's own shots, whatever the manner (plan 45 · BC5)
+                if (Scene) Anim.NoteClosing(BattleClosing.Caught);
                 // The catching lesson's catch is the assistant's: neither the player's Pokédex nor their team hears of it
                 if (Kind == BattleKind.CatchingLesson) break;
                 // The player's Pokémon cheer for the catch (plan 25 · Y5)
@@ -1254,7 +1264,12 @@ public partial class BattleEngine
             case Won:
                 AudioManager.PlayMusic(victoryMusic ?? MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
                 // Whoever of the player's still stands cheers (plan 25 · Y5)
-                if (Scene) Anim.Cheer(BattleSide.Player);
+                if (Scene)
+                {
+                    Anim.Cheer(BattleSide.Player);
+                    // ...and a manner's closing films them from the front, their trainer behind (plan 45 · BC5)
+                    Anim.NoteClosing(BattleClosing.Won);
+                }
                 break;
             case Ended ended:
                 Result = ended.Result;

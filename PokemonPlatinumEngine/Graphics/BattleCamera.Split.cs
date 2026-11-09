@@ -154,13 +154,27 @@ internal sealed partial class BattleCamera
     {
         SplitReason.Leads => (manner.Splits & CameraSplits.Leads) != 0,
         SplitReason.LastPokemon => (manner.Splits & CameraSplits.LastPokemon) != 0 || (moment.Boss && (manner.Splits & CameraSplits.BossLast) != 0),
+        // Plan 45 · BC6: every send-out after the leads, both sides with a giant, a Terastallization
+        SplitReason.SendOut => (manner.Splits & CameraSplits.SendOuts) != 0,
+        SplitReason.Giants => (manner.Splits & CameraSplits.Giants) != 0,
+        SplitReason.Terastal => (manner.Splits & CameraSplits.Terastal) != 0,
         _ => false,
     };
+
+    /// <summary>How long a split is held at a send-out after the leads, at both giants and at a Terastallization (plan 45 · BC6).</summary>
+    public const float SplitHoldSendOut = 1.1f, SplitHoldGiants = 1.6f, SplitHoldTerastal = 1.4f;
 
     /// <summary>When a split of a moment goes out (it is held its time, or cut short by what waits on the player once it is in) and when it is gone.</summary>
     public static (float Out, float End) SplitWindow(SplitMoment moment)
     {
-        float hold = moment.Reason == SplitReason.Leads ? SplitHoldLeads : SplitHoldLast;
+        float hold = moment.Reason switch
+        {
+            SplitReason.Leads => SplitHoldLeads,
+            SplitReason.SendOut => SplitHoldSendOut,
+            SplitReason.Giants => SplitHoldGiants,
+            SplitReason.Terastal => SplitHoldTerastal,
+            _ => SplitHoldLast,
+        };
         float outAt = moment.Start + SplitIn + hold;
         if (moment.CutShortAt >= 0f) outAt = Math.Min(outAt, Math.Max(moment.CutShortAt, moment.Start + SplitIn));
         return (outAt, outAt + SplitOut);
@@ -213,7 +227,7 @@ internal sealed partial class BattleCamera
     public static CameraShot FoeSplitShot(FxPlaces places, List<(BattleSide Side, int Slot)> foes, CameraManner manner, List<Rectangle> panels)
     {
         var (middle, h, spread) = Group(places, foes);
-        float size = Math.Max(h * SplitFrame, spread * 3.4f) / manner.Reach;
+        float size = Math.Max(h * SplitFrame, spread * 3.4f) * manner.Reach;
         var shot = Frame(middle, size, -0.18f + FaceTurn, 0.08f - manner.Low, IdleFov, FoeShotLimit);
         return Placed(shot, places, foes, true, panels);
     }
@@ -224,7 +238,7 @@ internal sealed partial class BattleCamera
     {
         var d = TowardFoe(places, own, foes);
         var (middle, h, spread) = Group(places, own);
-        float size = Math.Max(h * SplitFrame, spread * 3.4f) / manner.Reach;
+        float size = Math.Max(h * SplitFrame, spread * 3.4f) * manner.Reach;
         var from = Vector3.Transform(d, Matrix4x4.CreateRotationY(-FaceTurn));
         float lift = OwnFaceLift - manner.Low;
         var dir = Vector3.Normalize(from * MathF.Cos(lift) + Vector3.UnitY * MathF.Sin(lift));
