@@ -71,6 +71,8 @@ partial class Harness
         game.Steering = null;
         for (int f = 0; f < 120 && game.State != GameState.Overworld; f++) Frames(1);
         Frames(30);
+        // (the camera turned to look back north at the house, the player on its step before it)
+        if (engine.InOpenField) { game.OpenCamera.Face(Math.PI); game.SettleOpenView(); Frames(2); }
         if (Wanted("open86_house_step_again") && engine.InOpenField) { Shot("open86_house_step_again"); TellOpenShot("open86_house_step_again"); }
 
         // The playthrough bot from the house's path through the tunnel into the cavern, whose trigger runs its scene

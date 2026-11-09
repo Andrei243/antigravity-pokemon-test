@@ -456,6 +456,7 @@ One session, by an agent beside the battle camera's (BC5, BC6) and others, on OW
 **What OW10 found**
 - **Steering straight at a corner from wherever the body has drifted walks it off a narrow way**: on the rock bridge the body passed a corner half a metre to its west and, steered straight at the next 19 m off, came down into the river's channel beside the bridge and stopped at its water. Pure pursuit along the funnel's leg keeps it within centimetres of the line the funnel laid.
 - **A shy Pokémon can't be met on foot**: it runs 12 m each time it senses the player, and a bot that chased the day's Starly across the meadow and the river never caught one. By day the south meadow's zone is mostly Starly and its cap is two, so a zone full of shy ones brings out no other; the bot's leg is played after dark, when its Pokémon are Hoothoot and Bidoof. A region whose zones are shy by day will want its own answer (a Poké Ball thrown from afar, plan 34's, or a sneak by the back).
+- **Coming back out of a grid room the player was not drawn**: a warp lets every rig go that the room has no use for (`KeepCharactersNear`), the open world's grown player among them, and it was made again only after the fade (the harness's first `open86`). Where the game knows an open map it is kept now.
 - **The lab's trainers both see a player stopped between them**: the second's walk up (15 m) holds the field for ten seconds, which a softlock's watch must count as moving (the signature has the walker's place).
 
 **What it assumed**

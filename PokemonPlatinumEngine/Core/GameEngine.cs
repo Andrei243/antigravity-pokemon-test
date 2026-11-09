@@ -2058,6 +2058,9 @@ public partial class GameEngine
             .Select(n => PlayerIdentity.CharacterFor(n.NpcType))
             .Append(PlayerIdentity.Character).Append("PLAYER").Append("DAWN")
             .ToList();
+        // Where the game knows an open map, the player's grown look there is kept through a grid room's warp, or coming
+        // back out the player is not drawn until it is made again (plan 32 · OW10, the harness's open86); none in a game of today
+        if (openMaps.Count > 0) looks.Add(OpenPlayerLook);
         // (and the player's look holding a rod, which a cast builds: plan 11 · C8)
         if (trim) CharacterModels.Trim(looks.Append(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod)));
         CharacterModels.Preload(looks);
