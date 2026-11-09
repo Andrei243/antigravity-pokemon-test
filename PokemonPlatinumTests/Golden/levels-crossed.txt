@@ -4493,6 +4493,18 @@ trainers 4, 213-214 (own 25-28): alola_pokemon_breeder_hoku 213 (26) [Lillipup �
 Route 17, Alola
 grass 213-215 (own 27-30)
 trainers 3, 215 (own 30-32): alola_team_skull_grunt_route_17a 215 (30) [Golbat → Crobat], alola_team_skull_grunt_route_17b 215 (30) [Pancham → Bambrawler, Trubbish → Scrapodor], alola_veteran_kona 215 (32) [Absol → Omenblade, Pangoro → Bambrawler]
+=== ultra_wilds_cave
+Ultra Space Wilds, Alola
+grass 224-229 (own 58-62)
+=== ultra_wilds_cliff
+Ultra Space Wilds, Alola
+grass 224-229 (own 58-62)
+=== ultra_wilds_field
+Ultra Space Wilds, Alola
+grass 224-229 (own 58-62)
+=== ultra_wilds_water
+Ultra Space Wilds, Alola
+grass 224-229 (own 58-62)
 === undella_bay
 Undella Bay, Unova
 surf 171-177 (own 25-40)

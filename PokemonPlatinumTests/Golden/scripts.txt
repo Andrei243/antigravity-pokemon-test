@@ -1578,6 +1578,30 @@ way 1, from answer 1
 from Zygarde Cell at 2,11 of BlushMountain_PowerPlant
 way -
   > A small green blob trembles on the ground. As soon as it is touched, it squirms away into the earth...
+=== BlushMountain_PowerPlant.Zeraora
+from Zeraora at 14,5 of BlushMountain_PowerPlant
+way 0
+  > Lightning crackled along the pipes and gathered into a crouching shape. It bared its claws at Lucas!
+  * scene BlushMountain_PowerPlant.Zeraora in the power plant
+  * music stop
+  * letterbox on
+  * camera Pan 14 5
+  * camera Zoom 1.4
+  * effect Beam 14 5
+  * effect Burst 14 5
+  * camera Shake
+  * shake Zeraora 6
+  * cry Zeraora
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Zeraora 60 Won
+  * music area
+  + FLAG_ALOLA_ZERAORA_GONE
+  + seen BlushMountain_PowerPlant.Zeraora in the power plant
+way 1, from answer 1
+  * wildbattle Zeraora 60 Lost
+  + seen BlushMountain_PowerPlant.Zeraora in the power plant
 === CafeCabin.Milk
 from Waitress at 8,4 of CafeCabin
 way 0
@@ -3997,6 +4021,11 @@ way 1, from answer 1
   * sound select
   + FLAG_DAILY_ALOLA_ISLAND_SCAN
   + FLAG_DAILY_ALOLA_SCAN_SPHEAL
+=== HeaheaCity_TouristBureau.Carver
+from Crystal Carver at 12,6 of HeaheaCity_TouristBureau
+way -
+  Crystal Carver> I cut Z-Crystals for Pokémon with moves of their very own. Show me one in your team, and I'll cut its crystal.
+  Crystal Carver> Pikachu, Eevee, Raichu, Snorlax, Mimikyu, Lycanroc, Kommo-o, an island guardian, even Mew. Bring me any of them.
 === HeaheaCity_TouristBureau.Guide
 from Tourist Guide at 7,3 of HeaheaCity_TouristBureau
 way -
@@ -4127,6 +4156,29 @@ way 0
   + FLAG_ALOLA_HOKULANI_DEN_3
 way 1, from answer 1
   * wildbattle Charjabug 23 nofleeing Lost
+=== HokulaniObservatory.Magearna
+from Magearna at 12,4 of HokulaniObservatory
+way 0
+  > Gears turned inside the old machine, and a little figure of pink and steel lifted its head. Its heart glowed!
+  * scene HokulaniObservatory.Magearna in Hokulani Observatory
+  * music stop
+  * letterbox on
+  * camera Pan 12 4
+  * camera Zoom 1.4
+  * effect Sparkles 12 4
+  * shake Magearna 6
+  * effect Burst 12 4
+  * cry Magearna
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Magearna 60 Won
+  * music area
+  + FLAG_ALOLA_MAGEARNA_GONE
+  + seen HokulaniObservatory.Magearna in Hokulani Observatory
+way 1, from answer 1
+  * wildbattle Magearna 60 Lost
+  + seen HokulaniObservatory.Magearna in Hokulani Observatory
 === HokulaniObservatory.SecondTotem
 from Vikavolt at 7,4 of HokulaniObservatory
 way 0
@@ -7768,6 +7820,33 @@ way 0
   + FLAG_ALOLA_MEGAMART_DEN_3
 way 1, from answer 1
   * wildbattle Duskull 24 nofleeing Lost
+=== ThriftyMegamart.Meltan
+from Meltan at 13,11 of ThriftyMegamart
+way 0
+  > A little drop of liquid metal was gnawing a shelf's last bolt. Its hex nut of a head swung round to Lucas!
+  > Where it had fed, the shelf's floor glittered with little nuggets of metal, sweet-smelling and warm.
+  > Lucas received 400 × Meltan Candy!
+  > Lucas put them away in the Items pocket.
+  > They are what a Meltan sheds as it grows. Enough of them in the Bag, and a Meltan becomes something greater.
+  * scene ThriftyMegamart.Meltan in the old Thrifty Megamart
+  * music stop
+  * letterbox on
+  * camera Pan 13 11
+  * camera Zoom 1.4
+  * shake Meltan 6
+  * effect Sparkles 13 11
+  * cry Meltan
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Meltan 60 Won
+  * music area
+  * fanfare FanfareItem
+  + FLAG_ALOLA_MELTAN_MET
+  + seen ThriftyMegamart.Meltan in the old Thrifty Megamart
+way 1, from answer 1
+  * wildbattle Meltan 60 Lost
+  + seen ThriftyMegamart.Meltan in the old Thrifty Megamart
 === ThriftyMegamart.Totem
 from Mimikyu at 8,6 of ThriftyMegamart
 way -
@@ -7876,6 +7955,10 @@ from Officer at 3,3 of UlaulaRoute17_PoliceStation
 way -
   Officer> The chief? He's off in Po Town, keeping an eye on Team Skull. Or napping. With him it's hard to tell.
   Officer> He leaves the station to his Meowth. They're better at it than he is, he says.
+=== UltraMegalopolis_LampHouse.Wife
+from Lamp Keeper's Wife at 7,6 of UltraMegalopolis_LampHouse
+way -
+  Lamp Keeper's Wife> My husband keeps the city's lamps. Without them we'd never find our own front doors.
 === ValleyWindworksBuilding.Girl
 from Little Girl at 10,8 of ValleyWindworksBuilding
 way -
@@ -21087,6 +21170,33 @@ way -
 from the tile read at 362,132 of Melemele
 way -
   > Flowers grow thick around the foot of the lamp. They glow faintly in its light.
+=== hauoli_cemetery.Marshadow
+from Marshadow at 366,130 of Melemele
+way 0
+  > The shadow by the lamp didn't move with the light. It stood up out of the dark and looked straight at Lucas!
+  > Where the shadow had stood, something small and dark glinted in the lamp's light.
+  > Lucas received the Marshadium Z!
+  > Lucas put it away in the Items pocket.
+  * scene hauoli_cemetery.Marshadow in Hau'oli Cemetery
+  * music stop
+  * letterbox on
+  * camera Pan 366 130
+  * camera Zoom 1.4
+  * effect Shadow 352 130 Right
+  * flicker Marshadow 6
+  * effect Mist 366 130
+  * cry Marshadow
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Marshadow 60 Won
+  * music area
+  * fanfare FanfareItem
+  + FLAG_ALOLA_MARSHADOW_GONE
+  + seen hauoli_cemetery.Marshadow in Hau'oli Cemetery
+way 1, from answer 1
+  * wildbattle Marshadow 60 Lost
+  + seen hauoli_cemetery.Marshadow in Hau'oli Cemetery
 === hauoli_cemetery.Mourner
 from Woman at 344,118 of Melemele
 way -
@@ -36420,6 +36530,746 @@ way 0
 way 1, from answer 1
   * wildbattle Guzzlord 60 Lost
   + seen ultra_ruin.Guzzlord
+=== ultra_wilds_cave.Giratina
+from Giratina at 32,16 of UltraWildsCave
+way 0
+  > A shadow slid across the cave floor against the light, and Giratina rose out of it!
+  * scene ultra_wilds_cave.Giratina in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Shadow 26 16 Right
+  * cry Giratina
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Giratina 60 Won
+  * music area
+  + seen ultra_wilds_cave.Giratina in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Giratina 60 Lost
+  + seen ultra_wilds_cave.Giratina in the Ultra Space Wilds
+=== ultra_wilds_cave.Groudon
+from Groudon at 32,16 of UltraWildsCave
+way 0
+  > Magma burst up through the floor, and Groudon climbed out of it with a roar that shook the cave!
+  * scene ultra_wilds_cave.Groudon in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Eruption 32 16
+  * cry Groudon
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Groudon 60 Won
+  * music area
+  + seen ultra_wilds_cave.Groudon in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Groudon 60 Lost
+  + seen ultra_wilds_cave.Groudon in the Ultra Space Wilds
+=== ultra_wilds_cave.Heatran
+from Heatran at 32,16 of UltraWildsCave
+way 0
+  > The floor glowed red, and Heatran crawled out of a pool of molten rock on its iron claws!
+  * scene ultra_wilds_cave.Heatran in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Eruption 32 16
+  * cry Heatran
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Heatran 60 Won
+  * music area
+  + seen ultra_wilds_cave.Heatran in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Heatran 60 Lost
+  + seen ultra_wilds_cave.Heatran in the Ultra Space Wilds
+=== ultra_wilds_cave.Palkia
+from Palkia at 32,16 of UltraWildsCave
+way 0
+  > The cave seemed to stretch away in every direction, and Palkia stepped out of the space between!
+  * scene ultra_wilds_cave.Palkia in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Rift 32 16
+  * cry Palkia
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Palkia 60 Won
+  * music area
+  + seen ultra_wilds_cave.Palkia in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Palkia 60 Lost
+  + seen ultra_wilds_cave.Palkia in the Ultra Space Wilds
+=== ultra_wilds_cave.Regice
+from Regice at 32,16 of UltraWildsCave
+way 0
+  > The cave turned bitter cold, and a giant of ice stood where the frost was thickest. Regice!
+  * scene ultra_wilds_cave.Regice in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Mist 32 16
+  * cry Regice
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Regice 60 Won
+  * music area
+  + seen ultra_wilds_cave.Regice in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Regice 60 Lost
+  + seen ultra_wilds_cave.Regice in the Ultra Space Wilds
+=== ultra_wilds_cave.Regigigas
+from Regigigas at 32,16 of UltraWildsCave
+way 0
+  > The three giants in your team stirred, and the colossus they answer to woke in the dark. Regigigas!
+  * scene ultra_wilds_cave.Regigigas in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * shake Regigigas 8
+  * cry Regigigas
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Regigigas 60 Won
+  * music area
+  + seen ultra_wilds_cave.Regigigas in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Regigigas 60 Lost
+  + seen ultra_wilds_cave.Regigigas in the Ultra Space Wilds
+=== ultra_wilds_cave.Regirock
+from Regirock at 32,16 of UltraWildsCave
+way 0
+  > The rock wall shook, and a giant of stone pulled itself free of it. Regirock!
+  * scene ultra_wilds_cave.Regirock in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * shake Regirock 6
+  * cry Regirock
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Regirock 60 Won
+  * music area
+  + seen ultra_wilds_cave.Regirock in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Regirock 60 Lost
+  + seen ultra_wilds_cave.Regirock in the Ultra Space Wilds
+=== ultra_wilds_cave.Registeel
+from Registeel at 32,16 of UltraWildsCave
+way 0
+  > Metal rang against stone, and a giant of steel stepped out of the dark. Registeel!
+  * scene ultra_wilds_cave.Registeel in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * shake Registeel 6
+  * cry Registeel
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Registeel 60 Won
+  * music area
+  + seen ultra_wilds_cave.Registeel in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Registeel 60 Lost
+  + seen ultra_wilds_cave.Registeel in the Ultra Space Wilds
+=== ultra_wilds_cliff.Articuno
+from Articuno at 32,16 of UltraWildsCliff
+way 0
+  > Snow began to fall from a clear sky, and Articuno glided down through it onto the ledge!
+  * scene ultra_wilds_cliff.Articuno in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Mist 32 16
+  * cry Articuno
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Articuno 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Articuno in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Articuno 60 Lost
+  + seen ultra_wilds_cliff.Articuno in the Ultra Space Wilds
+=== ultra_wilds_cliff.Cresselia
+from Cresselia at 32,16 of UltraWildsCliff
+way 0
+  > Moonlight fell where no moon was, and Cresselia drifted down through it like a dream.
+  * scene ultra_wilds_cliff.Cresselia in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Cresselia
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Cresselia 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Cresselia in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Cresselia 60 Lost
+  + seen ultra_wilds_cliff.Cresselia in the Ultra Space Wilds
+=== ultra_wilds_cliff.HoOh
+from Ho-Oh at 32,16 of UltraWildsCliff
+way 0
+  > A rainbow arched over the cliffs, and Ho-Oh came down along it, its feathers blazing!
+  * scene ultra_wilds_cliff.Ho-Oh in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Ho-Oh
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Ho-Oh 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Ho-Oh in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Ho-Oh 60 Lost
+  + seen ultra_wilds_cliff.Ho-Oh in the Ultra Space Wilds
+=== ultra_wilds_cliff.Landorus
+from Landorus at 32,16 of UltraWildsCliff
+way 0
+  > The cliffs rumbled, and Landorus came down on its cloud to see who had called the other two!
+  * scene ultra_wilds_cliff.Landorus in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Burst 32 16
+  * cry Landorus
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Landorus 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Landorus in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Landorus 60 Lost
+  + seen ultra_wilds_cliff.Landorus in the Ultra Space Wilds
+=== ultra_wilds_cliff.Moltres
+from Moltres at 32,16 of UltraWildsCliff
+way 0
+  > The wind turned hot, and Moltres swept down onto the ledge in a shower of embers!
+  * scene ultra_wilds_cliff.Moltres in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Eruption 32 16
+  * cry Moltres
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Moltres 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Moltres in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Moltres 60 Lost
+  + seen ultra_wilds_cliff.Moltres in the Ultra Space Wilds
+=== ultra_wilds_cliff.Rayquaza
+from Rayquaza at 32,16 of UltraWildsCliff
+way 0
+  > A green streak tore down out of the sky and coiled on the ledge. Rayquaza had come to see!
+  * scene ultra_wilds_cliff.Rayquaza in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Rayquaza
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Rayquaza 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Rayquaza in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Rayquaza 60 Lost
+  + seen ultra_wilds_cliff.Rayquaza in the Ultra Space Wilds
+=== ultra_wilds_cliff.Thundurus
+from Thundurus at 32,16 of UltraWildsCliff
+way 0
+  > Thunder rolled over the peaks, and Thundurus dropped out of a cloud onto the ledge!
+  * scene ultra_wilds_cliff.Thundurus in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Thundurus
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Thundurus 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Thundurus in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Thundurus 60 Lost
+  + seen ultra_wilds_cliff.Thundurus in the Ultra Space Wilds
+=== ultra_wilds_cliff.Tornadus
+from Tornadus at 32,16 of UltraWildsCliff
+way 0
+  > A gale screamed across the cliffs, and Tornadus rode it down onto the ledge!
+  * scene ultra_wilds_cliff.Tornadus in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Shadow 26 16 Right
+  * cry Tornadus
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Tornadus 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Tornadus in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Tornadus 60 Lost
+  + seen ultra_wilds_cliff.Tornadus in the Ultra Space Wilds
+=== ultra_wilds_cliff.Yveltal
+from Yveltal at 32,16 of UltraWildsCliff
+way 0
+  > A great shadow swept across the ledge, and Yveltal folded its red wings and landed!
+  * scene ultra_wilds_cliff.Yveltal in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Shadow 26 16 Right
+  * cry Yveltal
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Yveltal 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Yveltal in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Yveltal 60 Lost
+  + seen ultra_wilds_cliff.Yveltal in the Ultra Space Wilds
+=== ultra_wilds_cliff.Zapdos
+from Zapdos at 32,16 of UltraWildsCliff
+way 0
+  > Lightning cracked over the cliffs, and Zapdos landed on the ledge with a crackling cry!
+  * scene ultra_wilds_cliff.Zapdos in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Zapdos
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Zapdos 60 Won
+  * music area
+  + seen ultra_wilds_cliff.Zapdos in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Zapdos 60 Lost
+  + seen ultra_wilds_cliff.Zapdos in the Ultra Space Wilds
+=== ultra_wilds_field.Cobalion
+from Cobalion at 32,16 of UltraWildsField
+way 0
+  > A Pokémon of steel stepped out of the grass with a knight's calm. Cobalion lowered its horn.
+  * scene ultra_wilds_field.Cobalion in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Burst 32 16
+  * cry Cobalion
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Cobalion 60 Won
+  * music area
+  + seen ultra_wilds_field.Cobalion in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Cobalion 60 Lost
+  + seen ultra_wilds_field.Cobalion in the Ultra Space Wilds
+=== ultra_wilds_field.Dialga
+from Dialga at 32,16 of UltraWildsField
+way 0
+  > The air tore open, and time seemed to stop. Dialga stepped out of the tear, its chest glowing!
+  * scene ultra_wilds_field.Dialga in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Rift 32 16
+  * cry Dialga
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Dialga 60 Won
+  * music area
+  + seen ultra_wilds_field.Dialga in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Dialga 60 Lost
+  + seen ultra_wilds_field.Dialga in the Ultra Space Wilds
+=== ultra_wilds_field.Entei
+from Entei at 32,16 of UltraWildsField
+way 0
+  > Flame burst up out of the ground, and Entei strode out of it with a volcano's roar!
+  * scene ultra_wilds_field.Entei in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Eruption 32 16
+  * cry Entei
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Entei 60 Won
+  * music area
+  + seen ultra_wilds_field.Entei in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Entei 60 Lost
+  + seen ultra_wilds_field.Entei in the Ultra Space Wilds
+=== ultra_wilds_field.Mewtwo
+from Mewtwo at 32,16 of UltraWildsField
+way 0
+  > A Pokémon floated down onto the grass, its eyes cold and bright. Mewtwo had been waiting.
+  * scene ultra_wilds_field.Mewtwo in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Burst 32 16
+  * cry Mewtwo
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Mewtwo 60 Won
+  * music area
+  + seen ultra_wilds_field.Mewtwo in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Mewtwo 60 Lost
+  + seen ultra_wilds_field.Mewtwo in the Ultra Space Wilds
+=== ultra_wilds_field.Raikou
+from Raikou at 32,16 of UltraWildsField
+way 0
+  > Lightning struck the field, and Raikou stood in the scorched grass where it had hit!
+  * scene ultra_wilds_field.Raikou in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Raikou
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Raikou 60 Won
+  * music area
+  + seen ultra_wilds_field.Raikou in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Raikou 60 Lost
+  + seen ultra_wilds_field.Raikou in the Ultra Space Wilds
+=== ultra_wilds_field.Reshiram
+from Reshiram at 32,16 of UltraWildsField
+way 0
+  > White fire roared across the field, and Reshiram landed in the heart of it!
+  * scene ultra_wilds_field.Reshiram in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Eruption 32 16
+  * cry Reshiram
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Reshiram 60 Won
+  * music area
+  + seen ultra_wilds_field.Reshiram in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Reshiram 60 Lost
+  + seen ultra_wilds_field.Reshiram in the Ultra Space Wilds
+=== ultra_wilds_field.Terrakion
+from Terrakion at 32,16 of UltraWildsField
+way 0
+  > The ground shook under heavy hooves, and Terrakion charged out of the tall grass!
+  * scene ultra_wilds_field.Terrakion in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Burst 32 16
+  * cry Terrakion
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Terrakion 60 Won
+  * music area
+  + seen ultra_wilds_field.Terrakion in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Terrakion 60 Lost
+  + seen ultra_wilds_field.Terrakion in the Ultra Space Wilds
+=== ultra_wilds_field.Virizion
+from Virizion at 32,16 of UltraWildsField
+way 0
+  > Leaves whirled up from the grass, and Virizion leapt lightly out of them, horns gleaming.
+  * scene ultra_wilds_field.Virizion in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Petals 32 16
+  * cry Virizion
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Virizion 60 Won
+  * music area
+  + seen ultra_wilds_field.Virizion in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Virizion 60 Lost
+  + seen ultra_wilds_field.Virizion in the Ultra Space Wilds
+=== ultra_wilds_field.Xerneas
+from Xerneas at 32,16 of UltraWildsField
+way 0
+  > A rainbow of light spread across the grass, and Xerneas stood in it, its antlers shining.
+  * scene ultra_wilds_field.Xerneas in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Xerneas
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Xerneas 60 Won
+  * music area
+  + seen ultra_wilds_field.Xerneas in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Xerneas 60 Lost
+  + seen ultra_wilds_field.Xerneas in the Ultra Space Wilds
+=== ultra_wilds_field.Zekrom
+from Zekrom at 32,16 of UltraWildsField
+way 0
+  > Black thunder split the green sky, and Zekrom dropped out of it with its tail crackling!
+  * scene ultra_wilds_field.Zekrom in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Beam 32 16
+  * cry Zekrom
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Zekrom 60 Won
+  * music area
+  + seen ultra_wilds_field.Zekrom in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Zekrom 60 Lost
+  + seen ultra_wilds_field.Zekrom in the Ultra Space Wilds
+=== ultra_wilds_water.Azelf
+from Azelf at 32,16 of UltraWildsWater
+way 0
+  > Everything wavered for a moment. When it settled, Azelf was there, already watching you.
+  * scene ultra_wilds_water.Azelf in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Ripple 32 16
+  * cry Azelf
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Azelf 60 Won
+  * music area
+  + seen ultra_wilds_water.Azelf in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Azelf 60 Lost
+  + seen ultra_wilds_water.Azelf in the Ultra Space Wilds
+=== ultra_wilds_water.Kyogre
+from Kyogre at 32,16 of UltraWildsWater
+way 0
+  > The sea swelled into a wall, and Kyogre burst through it, its lines glowing a deep red!
+  * scene ultra_wilds_water.Kyogre in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Geyser 32 16
+  * cry Kyogre
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Kyogre 60 Won
+  * music area
+  + seen ultra_wilds_water.Kyogre in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Kyogre 60 Lost
+  + seen ultra_wilds_water.Kyogre in the Ultra Space Wilds
+=== ultra_wilds_water.Kyurem
+from Kyurem at 32,16 of UltraWildsWater
+way 0
+  > A freezing mist crept over the water and hardened into ice. Kyurem stood on it, hollow-eyed!
+  * scene ultra_wilds_water.Kyurem in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Mist 32 16
+  * cry Kyurem
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Kyurem 60 Won
+  * music area
+  + seen ultra_wilds_water.Kyurem in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Kyurem 60 Lost
+  + seen ultra_wilds_water.Kyurem in the Ultra Space Wilds
+=== ultra_wilds_water.Latias
+from Latias at 32,16 of UltraWildsWater
+way 0
+  > The air shimmered like a mirage, and a red-feathered Pokémon blinked into sight. Latias!
+  * scene ultra_wilds_water.Latias in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Latias
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Latias 60 Won
+  * music area
+  + seen ultra_wilds_water.Latias in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Latias 60 Lost
+  + seen ultra_wilds_water.Latias in the Ultra Space Wilds
+=== ultra_wilds_water.Latios
+from Latios at 32,16 of UltraWildsWater
+way 0
+  > The air shimmered like a mirage, and a blue-feathered Pokémon blinked into sight. Latios!
+  * scene ultra_wilds_water.Latios in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Sparkles 32 16
+  * cry Latios
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Latios 60 Won
+  * music area
+  + seen ultra_wilds_water.Latios in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Latios 60 Lost
+  + seen ultra_wilds_water.Latios in the Ultra Space Wilds
+=== ultra_wilds_water.Lugia
+from Lugia at 32,16 of UltraWildsWater
+way 0
+  > The water heaved, and Lugia rose out of it on silver wings, shaking off the spray!
+  * scene ultra_wilds_water.Lugia in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Geyser 32 16
+  * cry Lugia
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Lugia 60 Won
+  * music area
+  + seen ultra_wilds_water.Lugia in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Lugia 60 Lost
+  + seen ultra_wilds_water.Lugia in the Ultra Space Wilds
+=== ultra_wilds_water.Mesprit
+from Mesprit at 32,16 of UltraWildsWater
+way 0
+  > Everything wavered for a moment. When it settled, Mesprit was there, its tails trailing.
+  * scene ultra_wilds_water.Mesprit in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Ripple 32 16
+  * cry Mesprit
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Mesprit 60 Won
+  * music area
+  + seen ultra_wilds_water.Mesprit in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Mesprit 60 Lost
+  + seen ultra_wilds_water.Mesprit in the Ultra Space Wilds
+=== ultra_wilds_water.Suicune
+from Suicune at 32,16 of UltraWildsWater
+way 0
+  > A geyser rose and fell, and where it had been stood Suicune, the north wind made into a Pokémon!
+  * scene ultra_wilds_water.Suicune in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Geyser 32 16
+  * cry Suicune
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Suicune 60 Won
+  * music area
+  + seen ultra_wilds_water.Suicune in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Suicune 60 Lost
+  + seen ultra_wilds_water.Suicune in the Ultra Space Wilds
+=== ultra_wilds_water.Uxie
+from Uxie at 32,16 of UltraWildsWater
+way 0
+  > Everything wavered for a moment. When it settled, Uxie was there, its eyes still closed.
+  * scene ultra_wilds_water.Uxie in the Ultra Space Wilds
+  * music stop
+  * letterbox on
+  * camera Pan 32 16
+  * camera Zoom 1.4
+  * effect Ripple 32 16
+  * cry Uxie
+  * camera Release
+  * letterbox off
+  * endscene
+  * wildbattle Uxie 60 Won
+  * music area
+  + seen ultra_wilds_water.Uxie in the Ultra Space Wilds
+way 1, from answer 1
+  * wildbattle Uxie 60 Lost
+  + seen ultra_wilds_water.Uxie in the Ultra Space Wilds
 === undella_town.HughAtTheEast
 from the trigger at 751,299 of Unova
 way 0
