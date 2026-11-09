@@ -101,7 +101,7 @@
       "type": 2,
       "script": "HIDDEN_1",
       "item": "Pearl",
-      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_1"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BIG_WAVE_PEARL_1"
     },
     {
       "x": 175,
@@ -109,7 +109,7 @@
       "type": 2,
       "script": "HIDDEN_2",
       "item": "Pearl",
-      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_2"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BIG_WAVE_PEARL_2"
     },
     {
       "x": 182,
@@ -117,7 +117,7 @@
       "type": 2,
       "script": "HIDDEN_3",
       "item": "Pearl",
-      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_PEARL_3"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BIG_WAVE_PEARL_3"
     },
     {
       "x": 188,
@@ -125,7 +125,7 @@
       "type": 2,
       "script": "HIDDEN_4",
       "item": "Soda Pop",
-      "flag": "FLAG_ALOLA_HIDDEN_BIG_WAVE_SODA_POP"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BIG_WAVE_SODA_POP"
     }
   ],
   "triggers": [],

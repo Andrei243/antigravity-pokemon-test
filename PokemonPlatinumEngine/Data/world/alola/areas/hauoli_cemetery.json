@@ -127,7 +127,7 @@
       "type": 2,
       "script": "HIDDEN_1",
       "item": "Great Ball",
-      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_GREAT_BALL"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_CEMETERY_GREAT_BALL"
     },
     {
       "x": 350,
@@ -135,7 +135,7 @@
       "type": 2,
       "script": "HIDDEN_2",
       "item": "Ether",
-      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_ETHER"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_CEMETERY_ETHER"
     },
     {
       "x": 369,
@@ -143,15 +143,15 @@
       "type": 2,
       "script": "HIDDEN_3",
       "item": "Big Mushroom",
-      "flag": "FLAG_ALOLA_HIDDEN_CEMETERY_BIG_MUSHROOM"
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_CEMETERY_BIG_MUSHROOM"
     },
     {
       "x": 363,
       "z": 129,
       "type": 2,
       "script": "BURIED_1",
-      "item": "Balm Mushroom",
-      "flag": "FLAG_ALOLA_BURIED_HAUOLI_CEMETERY_1",
+      "item": "Tiny Mushroom",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_HAUOLI_CEMETERY_1",
       "buried": true
     }
   ],

@@ -1540,6 +1540,44 @@ way 1, from answer 1
   Crasher Wake> "He'll douse every fire and wash you away! Crash! Crash! ...But lightning, he'd rather not say!" Thank you, thank you.
   ? What is there for a Trainer to do in a place like this? As far as I can see, nothing but battle! Well? = No
   + FLAG_MAP_LOCAL_BATTLEGROUND_DECLINED_WAKE
+=== BlushMountain_PowerPlant.Chief
+from Plant Chief at 8,4 of BlushMountain_PowerPlant
+way -
+  Plant Chief> Welcome to Blush Mountain's geothermal power plant! Hot water rises from deep under the mountain, right here.
+  Plant Chief> Its steam turns our turbines, and the turbines light half of Ula'ula. Clean power, straight from the island's heart!
+  Plant Chief> Visitors who climb all this way get a souvenir. It's charged with the same energy as the plant itself.
+  > Lucas received the Electric Seed!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_ALOLA_POWER_PLANT_GIFT
+=== BlushMountain_PowerPlant.Engineer
+from Engineer at 12,11 of BlushMountain_PowerPlant
+way -
+  Engineer> The pipes run hot enough to cook an egg. Ask me how I know. Actually, don't.
+=== BlushMountain_PowerPlant.Kanoa
+from Kanoa at 3,8 of BlushMountain_PowerPlant
+way 0
+  Kanoa> A visitor! The chief says I should be welcoming. My Pokémon say I should be battling. They usually win the argument.
+  Kanoa> Overloaded. Totally overloaded. I'll go and check the fuses.
+  * battle alola_worker_kanoa Won
+  + FLAG_ALOLA_POWER_PLANT_KANOA
+  + beaten alola_worker_kanoa
+way 1, from answer 1
+  * battle alola_worker_kanoa Lost
+=== BlushMountain_PowerPlant.Ola
+from Ola at 13,7 of BlushMountain_PowerPlant
+way 0
+  Ola> I study how the mountain's pull changes Pokémon. Magnemite evolve here that never would anywhere else. Care to see why?
+  Ola> Fascinating. Your team's output exceeds the plant's. I'll be writing that down.
+  * battle alola_scientist_ola Won
+  + FLAG_ALOLA_POWER_PLANT_OLA
+  + beaten alola_scientist_ola
+way 1, from answer 1
+  * battle alola_scientist_ola Lost
+=== BlushMountain_PowerPlant.PlantCell
+from Zygarde Cell at 2,11 of BlushMountain_PowerPlant
+way -
+  > A small green blob trembles on the ground. As soon as it is touched, it squirms away into the earth...
 === CafeCabin.Milk
 from Waitress at 8,4 of CafeCabin
 way 0
@@ -3928,6 +3966,37 @@ from Researcher at 7,4 of HeaheaCity_ResearchLab
 way -
   Researcher> We study the strange lights seen over the islands at night. Some people say they're holes in the sky itself.
   Researcher> Professor Kukui drops by now and then. He says the lights look like the ones that brought Pokémon to Alola long ago.
+=== HeaheaCity_ResearchLab.Scanner
+from Scientist at 3,4 of HeaheaCity_ResearchLab
+way 0
+  Scientist> This machine scans an island for Pokémon that don't usually live in Alola. One scan a day, it's all the power we can spare.
+  Scientist> Which island shall we scan?
+  Scientist> The scan picked something up: Totodile, at Seaward Cave! Hurry, before the day is out!
+  ? Which island shall we scan? = Melemele
+  * sound select
+  + FLAG_DAILY_ALOLA_ISLAND_SCAN
+  + FLAG_DAILY_ALOLA_SCAN_TOTODILE
+way 4, from answer 1
+  Scientist> Come back whenever you like. The scanner warms up again every morning.
+  ? Which island shall we scan? = Not now
+way 3, from answer 1
+  Scientist> The scan picked something up: Conkeldurr, at Poni Plains! Hurry, before the day is out!
+  ? Which island shall we scan? = Poni
+  * sound select
+  + FLAG_DAILY_ALOLA_ISLAND_SCAN
+  + FLAG_DAILY_ALOLA_SCAN_CONKELDURR
+way 2, from answer 1
+  Scientist> The scan picked something up: Swinub, at Tapu Village! Hurry, before the day is out!
+  ? Which island shall we scan? = Ula'ula
+  * sound select
+  + FLAG_DAILY_ALOLA_ISLAND_SCAN
+  + FLAG_DAILY_ALOLA_SCAN_SWINUB
+way 1, from answer 1
+  Scientist> The scan picked something up: Spheal, at Route 7! Hurry, before the day is out!
+  ? Which island shall we scan? = Akala
+  * sound select
+  + FLAG_DAILY_ALOLA_ISLAND_SCAN
+  + FLAG_DAILY_ALOLA_SCAN_SPHEAL
 === HeaheaCity_TouristBureau.Guide
 from Tourist Guide at 7,3 of HeaheaCity_TouristBureau
 way -
@@ -6089,6 +6158,176 @@ from President at 18,5 of PoketchCompany
 way -
   President> Ah, the young Trainer from the campaign! I am the president of the Pokétch Company. How is that Pokétch treating you?
   President> Our engineers are always dreaming up new apps. Win a Gym Badge, and I'll have one ready for you!
+=== PoniGauntlet_BattleTree.Climber
+from Hiker at 13,8 of PoniGauntlet_BattleTree
+way -
+  Hiker> I came all the way up the Gauntlet just to sit here and watch. My knees say it was worth it.
+=== PoniGauntlet_BattleTree.Desk
+from Receptionist at 4,4 of PoniGauntlet_BattleTree
+way 0.0
+  Receptionist> Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches.
+  Receptionist> Would you like to take on the Battle Tree?
+  Receptionist> Which battles will you take on?
+  Receptionist> You need 3 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Tree? = Enter
+  ? Which battles will you take on? = Single
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 0.2, from answer 2
+  Receptionist> The tree isn't going anywhere. Come back whenever you like.
+  ? Which battles will you take on? = Cancel
+way 0.1, from answer 2
+  Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which battles will you take on? = Double
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 3, from answer 1
+  Receptionist> The tree isn't going anywhere. Come back whenever you like.
+  ? Would you like to take on the Battle Tree? = No
+way 2, from answer 1
+  Receptionist> Every streak is carved into the records. The tree remembers.
+  ? Would you like to take on the Battle Tree? = The records
+  * frontier facilityboard 1
+way 1, from answer 1
+  Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
+  Receptionist> Three go into single battles, and four into double battles.
+  Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
+  Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
+  ? Would you like to take on the Battle Tree? = The rules
+=== PoniGauntlet_BattleTree.Prizes
+from Clerk at 12,4 of PoniGauntlet_BattleTree
+way 0
+  Clerk> Welcome! Battle Points won in the tree, or in any battle hall in the world, are good at this counter.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Normalium Z   48 BP
+  * frontier points 1
+way 28, from answer 1
+  Clerk> Come back when you've won a few more!
+  ? Which prize would you like? = No thanks
+way 27, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Ability Capsule   100 BP
+way 26, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Eviolite   48 BP
+way 25, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rocky Helmet   48 BP
+way 24, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Weakness Policy   48 BP
+way 23, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Assault Vest   48 BP
+way 22, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Scarf   48 BP
+way 21, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Specs   48 BP
+way 20, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Band   48 BP
+way 19, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Sash   48 BP
+way 18, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Life Orb   48 BP
+way 17, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Fairium Z   48 BP
+way 16, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Steelium Z   48 BP
+way 15, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Darkinium Z   48 BP
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Dragonium Z   48 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Ghostium Z   48 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rockium Z   48 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Buginium Z   48 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Psychium Z   48 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Flyinium Z   48 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Groundium Z   48 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Poisonium Z   48 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Fightinium Z   48 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Icium Z   48 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Electrium Z   48 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Grassium Z   48 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Waterium Z   48 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Firium Z   48 BP
+=== PoniGauntlet_BattleTree.Watcher
+from Surfer at 3,9 of PoniGauntlet_BattleTree
+way -
+  Surfer> Every Trainer in here beat the island challenge. Somehow that makes losing feel better and worse at once.
+=== PoniGauntlet_BattleTreeHall.Referee
+from Referee at 3,7 of PoniGauntlet_BattleTreeHall
+way -
+  Referee> No challenge is under way. The receptionist in the lobby takes your entries.
 === ResortAreaHouse.Boy
 from Boy at 8,7 of ResortAreaHouse
 way -
@@ -8438,6 +8677,24 @@ way -
   = VAR_ALOLA_AKALA 0 -> 6
   = VAR_OBJECTIVE 0 -> 624
   + seen akala_outskirts.The Ruins of Life
+=== akala_outskirts.ScanHonedge
+from Honedge at 371,152 of Akala
+way 0
+  > It's the Honedge the Island Scan picked up! It's ready to battle!
+  * cry Honedge
+  * wildbattle Honedge 23 Won
+  + FLAG_DAILY_ALOLA_SCAN_HONEDGE_MET
+way 1, from answer 1
+  * wildbattle Honedge 23 Lost
+=== akala_route_4.ScanVenipede
+from Venipede at 147,257 of Akala
+way 0
+  > It's the Venipede the Island Scan picked up! It's ready to battle!
+  * cry Venipede
+  * wildbattle Venipede 14 Won
+  + FLAG_DAILY_ALOLA_SCAN_VENIPEDE_MET
+way 1, from answer 1
+  * wildbattle Venipede 14 Lost
 === akala_route_5.Gladion
 from the trigger at 148,145 of Akala
 way 0
@@ -8466,6 +8723,33 @@ way 1, from answer 1
 from Gladion at 150,140 of Akala
 way -
   Gladion> ...
+=== akala_route_5.ScanBellsprout
+from Bellsprout at 175,132 of Akala
+way 0
+  > It's the Bellsprout the Island Scan picked up! It's ready to battle!
+  * cry Bellsprout
+  * wildbattle Bellsprout 16 Won
+  + FLAG_DAILY_ALOLA_SCAN_BELLSPROUT_MET
+way 1, from answer 1
+  * wildbattle Bellsprout 16 Lost
+=== akala_route_6.ScanGothita
+from Gothita at 203,220 of Akala
+way 0
+  > It's the Gothita the Island Scan picked up! It's ready to battle!
+  * cry Gothita
+  * wildbattle Gothita 17 Won
+  + FLAG_DAILY_ALOLA_SCAN_GOTHITA_MET
+way 1, from answer 1
+  * wildbattle Gothita 17 Lost
+=== akala_route_7.ScanSpheal
+from Spheal at 314,116 of Akala
+way 0
+  > It's the Spheal the Island Scan picked up! It's ready to battle!
+  * cry Spheal
+  * wildbattle Spheal 19 Won
+  + FLAG_DAILY_ALOLA_SCAN_SPHEAL_MET
+way 1, from answer 1
+  * wildbattle Spheal 19 Lost
 === akala_route_8.MotelGrunt
 from Grunt at 277,138 of Akala
 way -
@@ -8491,6 +8775,15 @@ way 0
 way 1, from answer 1
   * battle alola_team_skull_grunt_motel Lost
   * scene over, unseen
+=== akala_route_8.ScanLuxio
+from Luxio at 266,122 of Akala
+way 0
+  > It's the Luxio the Island Scan picked up! It's ready to battle!
+  * cry Luxio
+  * wildbattle Luxio 20 Won
+  + FLAG_DAILY_ALOLA_SCAN_LUXIO_MET
+way 1, from answer 1
+  * wildbattle Luxio 20 Lost
 === akala_route_8.Wicke
 from Wicke at 279,138 of Akala
 way -
@@ -8515,6 +8808,15 @@ way -
 from Ilima at 326,107 of Melemele
 way -
   Ilima> This is Verdant Cavern, the site of my trial. But a trial-goer needs the kahuna's blessing first: the festival in Iki Town!
+=== alola_route_2.ScanChikorita
+from Chikorita at 295,141 of Melemele
+way 0
+  > It's the Chikorita the Island Scan picked up! It's ready to battle!
+  * cry Chikorita
+  * wildbattle Chikorita 10 Won
+  + FLAG_DAILY_ALOLA_SCAN_CHIKORITA_MET
+way 1, from answer 1
+  * wildbattle Chikorita 10 Lost
 === alola_route_3.Hau
 from Hau at 340,69 of Melemele
 way -
@@ -8541,6 +8843,15 @@ way 1, from answer 1
   = VAR_ALOLA_STORY 0 -> 12
   = VAR_OBJECTIVE 0 -> 612
   + seen alola_route_3.Hau on Route 3
+=== alola_route_3.ScanCyndaquil
+from Cyndaquil at 300,70 of Melemele
+way 0
+  > It's the Cyndaquil the Island Scan picked up! It's ready to battle!
+  * cry Cyndaquil
+  * wildbattle Cyndaquil 12 Won
+  + FLAG_DAILY_ALOLA_SCAN_CYNDAQUIL_MET
+way 1, from answer 1
+  * wildbattle Cyndaquil 12 Lost
 === amity_square.EastGate
 from the trigger at 51,46 of AmitySquare
 way 0
@@ -8783,6 +9094,15 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== ancient_poni_path.ScanEmboar
+from Emboar at 37,42 of AncientPoniPath
+way 0
+  > It's the Emboar the Island Scan picked up! It's ready to battle!
+  * cry Emboar
+  * wildbattle Emboar 43 Won
+  + FLAG_DAILY_ALOLA_SCAN_EMBOAR_MET
+way 1, from answer 1
+  * wildbattle Emboar 43 Lost
 === ancient_tomb.Registeel
 from Registeel at 8,7 of AncientTomb
 way 0
@@ -10145,6 +10465,14 @@ way 0
 way 1, from answer 1
   * wildbattle Ho-Oh 45 nofleeing Lost
   + seen bell_tower_roof.Ho-Oh on the Bell Tower
+=== big_wave_beach.Sightseer
+from Sightseer at 186,162 of Melemele
+way -
+  Sightseer> I flew all the way from Kalos for these waves, and now I'm too scared to go in. The beach is lovely, though!
+=== big_wave_beach.Surfer
+from Surfer at 162,158 of Melemele
+way -
+  Surfer> A Team Skull grunt has been chasing everybody off the sand. I'd deal with him, but my Pokémon are all for riding waves.
 === birth_island_exterior.Deoxys
 from Deoxys at 15,3 of BirthIsland_Exterior
 way -
@@ -10339,7 +10667,16 @@ from Plant Worker at 124,150 of Ulaula
 way -
   Plant Worker> Hot water from deep under the mountain turns the turbines inside. Half of Ula'ula's lights run on Blush Mountain!
   Plant Worker> It pulls on the ground something fierce, too. Magnets go funny up here, and so do some Pokémon, they tell me.
-  Plant Worker> The plant's closed to visitors, I'm afraid. Safety rules. Enjoy the view instead!
+  Plant Worker> The plant takes visitors, if you keep your hands off the valves. The chief inside loves to show it off!
+=== blush_mountain.ScanRhyhorn
+from Rhyhorn at 116,169 of Ulaula
+way 0
+  > It's the Rhyhorn the Island Scan picked up! It's ready to battle!
+  * cry Rhyhorn
+  * wildbattle Rhyhorn 30 Won
+  + FLAG_DAILY_ALOLA_SCAN_RHYHORN_MET
+way 1, from answer 1
+  * wildbattle Rhyhorn 30 Lost
 === bridge_gate_gate_8.TubeClosed
 from the trigger at 13,7 of MarineTubeGate_Undella
 way -
@@ -10348,6 +10685,15 @@ way -
 from Lana at 115,133 of Akala
 way -
   Lana> ...Hello. I'm Lana, the captain here. My trial is ready, but you look like you've somewhere else to be first. Route 5, maybe?
+=== brooklet_hill.ScanMarill
+from Marill at 82,126 of Akala
+way 0
+  > It's the Marill the Island Scan picked up! It's ready to battle!
+  * cry Marill
+  * wildbattle Marill 17 Won
+  + FLAG_DAILY_ALOLA_SCAN_MARILL_MET
+way 1, from answer 1
+  * wildbattle Marill 17 Lost
 === brooklet_hill.SecondTotem
 from Araquanid at 89,96 of Akala
 way 0
@@ -16888,6 +17234,14 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== common.ZygardeCell
+from a trainer with lines of their own
+way -
+  > A small green blob trembles on the ground. As soon as it is touched, it squirms away into the earth...
+=== common.ZygardeCore
+from a trainer with lines of their own
+way -
+  > A green blob with a bright red heart pulses on the ground. As soon as it is touched, it sinks out of sight...
 === coumarine_city.Sailor
 from Sailor at 248,507 of Kalos
 way -
@@ -18222,6 +18576,15 @@ way 0
 way 1, from answer 1
   * battle alola_hapu_1 Lost
   * scene over, unseen
+=== exeggutor_island.ScanSerperior
+from Serperior at 210,81 of Poni
+way 0
+  > It's the Serperior the Island Scan picked up! It's ready to battle!
+  * cry Serperior
+  * wildbattle Serperior 43 Won
+  + FLAG_DAILY_ALOLA_SCAN_SERPERIOR_MET
+way 1, from answer 1
+  * wildbattle Serperior 43 Lost
 === fallarbor_town.Azurill
 from Azurill at 88,12 of Hoenn
 way -
@@ -20460,6 +20823,31 @@ way -
 from Wicke at 270,258 of Akala
 way -
   Wicke> Aether Paradise is lovely this time of year. Well, it's lovely every time of year.
+=== hauoli_cemetery.GhostGirl
+from Little Girl at 352,139 of Melemele
+way -
+  Little Girl> Oh! You can see me? Most people walk right past.
+  Little Girl> I'm waiting for my friend. She's a Misdreavus. She floated off ahead of me a long, long time ago.
+  Little Girl> She always said she'd leave me a sign where the flowers grow brightest. But I can't find it in the dark...
+  = VAR_ALOLA_CEMETERY_GIRL 0 -> 1
+=== hauoli_cemetery.LampFlowers
+from the tile read at 362,132 of Melemele
+way -
+  > Flowers grow thick around the foot of the lamp. They glow faintly in its light.
+=== hauoli_cemetery.Mourner
+from Woman at 344,118 of Melemele
+way -
+  Woman> My grandmother used to tell a story about a little girl and her Misdreavus. They were never apart, until they were.
+  Woman> She said that on quiet nights, the girl still comes here looking for her friend.
+=== hauoli_cemetery.ScanLitwick
+from Litwick at 355,140 of Melemele
+way 0
+  > It's the Litwick the Island Scan picked up! It's ready to battle!
+  * cry Litwick
+  * wildbattle Litwick 10 Won
+  + FLAG_DAILY_ALOLA_SCAN_LITWICK_MET
+way 1, from answer 1
+  * wildbattle Litwick 10 Lost
 === hauoli_city.Ferry
 from Sailor at 357,180 of Melemele
 way -
@@ -20521,6 +20909,15 @@ way -
   = VAR_ALOLA_STORY 0 -> 14
   = VAR_OBJECTIVE 0 -> 614
   + seen hauoli_city.The boat to Akala
+=== hauoli_city.ScanKlink
+from Klink at 362,174 of Melemele
+way 0
+  > It's the Klink the Island Scan picked up! It's ready to battle!
+  * cry Klink
+  * wildbattle Klink 8 Won
+  + FLAG_DAILY_ALOLA_SCAN_KLINK_MET
+way 1, from answer 1
+  * wildbattle Klink 8 Lost
 === heahea_city.AetherFerry
 from Sailor at 126,339 of Akala
 way -
@@ -21715,6 +22112,15 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== kalae_bay.ScanHorsea
+from Horsea at 434,114 of Melemele
+way 0
+  > It's the Horsea the Island Scan picked up! It's ready to battle!
+  * cry Horsea
+  * wildbattle Horsea 18 Won
+  + FLAG_DAILY_ALOLA_SCAN_HORSEA_MET
+way 1, from answer 1
+  * wildbattle Horsea 18 Lost
 === kalos_route_14.Neighbour
 from the trigger at 358,276 of Kalos
 way 0
@@ -24939,6 +25345,15 @@ way -
 from Steven at 9,6 of MossdeepCity_StevensHouse
 way -
   Steven> They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine.
+=== mount_hokulani.ScanAxew
+from Axew at 46,212 of Ulaula
+way 0
+  > It's the Axew the Island Scan picked up! It's ready to battle!
+  * cry Axew
+  * wildbattle Axew 28 Won
+  + FLAG_DAILY_ALOLA_SCAN_AXEW_MET
+way 1, from answer 1
+  * wildbattle Axew 28 Lost
 === mount_moon.Rival
 from {rival} at 10,4 of MountMoon
 way 0
@@ -27868,6 +28283,15 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_ALOLA_GOT_SUPER_ROD
+=== poni_gauntlet.ScanTogekiss
+from Togekiss at 302,86 of Poni
+way 0
+  > It's the Togekiss the Island Scan picked up! It's ready to battle!
+  * cry Togekiss
+  * wildbattle Togekiss 59 Won
+  + FLAG_DAILY_ALOLA_SCAN_TOGEKISS_MET
+way 1, from answer 1
+  * wildbattle Togekiss 59 Lost
 === poni_grove.Blacephalon
 from Blacephalon at 145,213 of Poni
 way 0
@@ -27891,6 +28315,15 @@ from Ranger at 124,190 of Poni
 way -
   Ranger> Sorry, the grove is closed. Something strange has been seen among the trees, and the rangers are keeping watch.
   Ranger> Only the island's Champion may go in. That's the rule the kahunas made, and I'm sticking to it!
+=== poni_grove.ScanEelektross
+from Eelektross at 162,174 of Poni
+way 0
+  > It's the Eelektross the Island Scan picked up! It's ready to battle!
+  * cry Eelektross
+  * wildbattle Eelektross 55 Won
+  + FLAG_DAILY_ALOLA_SCAN_EELEKTROSS_MET
+way 1, from answer 1
+  * wildbattle Eelektross 55 Lost
 === poni_grove.Stakataka
 from Stakataka at 182,206 of Poni
 way 0
@@ -27918,10 +28351,37 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_ALOLA_PONI_MEADOW_NECTAR
+=== poni_meadow.ScanLeavanny
+from Leavanny at 237,222 of Poni
+way 0
+  > It's the Leavanny the Island Scan picked up! It's ready to battle!
+  * cry Leavanny
+  * wildbattle Leavanny 57 Won
+  + FLAG_DAILY_ALOLA_SCAN_LEAVANNY_MET
+way 1, from answer 1
+  * wildbattle Leavanny 57 Lost
+=== poni_plains.ScanConkeldurr
+from Conkeldurr at 280,134 of Poni
+way 0
+  > It's the Conkeldurr the Island Scan picked up! It's ready to battle!
+  * cry Conkeldurr
+  * wildbattle Conkeldurr 57 Won
+  + FLAG_DAILY_ALOLA_SCAN_CONKELDURR_MET
+way 1, from answer 1
+  * wildbattle Conkeldurr 57 Lost
 === poni_wilds.Dulse
 from Dulse at 100,186 of Poni
 way -
   Dulse> The canyon isn't safe for the unready. Take the ferry back, speak with the Professor, and then come.
+=== poni_wilds.ScanSamurott
+from Samurott at 52,193 of Poni
+way 0
+  > It's the Samurott the Island Scan picked up! It's ready to battle!
+  * cry Samurott
+  * wildbattle Samurott 43 Won
+  + FLAG_DAILY_ALOLA_SCAN_SAMUROTT_MET
+way 1, from answer 1
+  * wildbattle Samurott 43 Lost
 === power_plant.Electrode
 from Poké Ball at 30,38 of PowerPlant
 way 0
@@ -32705,6 +33165,20 @@ way 0
   + beaten unova_black_belt_rocky
 way 1, from answer 1
   * battle unova_black_belt_rocky Lost
+=== seaward_cave.ScanTotodile
+from Totodile at 13,7 of SeawardCave
+way 0
+  > It's the Totodile the Island Scan picked up! It's ready to battle!
+  * cry Totodile
+  * wildbattle Totodile 12 Won
+  + FLAG_DAILY_ALOLA_SCAN_TOTODILE_MET
+way 1, from answer 1
+  * wildbattle Totodile 12 Lost
+=== secluded_shore.SandGirl
+from Girl at 174,322 of Ulaula
+way -
+  Girl> My Sandygast wants new sand for its body, but it's so fussy! It needs sand that a Ghost-type has already chosen.
+  Girl> If you had a Sandygast of your own, maybe it could show us which sand is best...
 === sendoff_spring.Cynthia
 from Cynthia at 31,17 of SendoffSpring
 way -
@@ -34478,6 +34952,15 @@ way -
 from Rancher Moke at 240,238 of Ulaula
 way -
   Rancher Moke> This ridge is no road for the weak-kneed. Come back when you've been to the observatory and I'll lend you a Mudsdale.
+=== tapu_village.ScanSwinub
+from Swinub at 213,232 of Ulaula
+way 0
+  > It's the Swinub the Island Scan picked up! It's ready to battle!
+  * cry Swinub
+  * wildbattle Swinub 31 Won
+  + FLAG_DAILY_ALOLA_SCAN_SWINUB_MET
+way 1, from answer 1
+  * wildbattle Swinub 31 Lost
 === team_rocket_headquarters_b1f.BackToTheStairs
 from the trigger at 16,28 of TeamRocketHQ_B1F
 way -
@@ -34979,6 +35462,15 @@ way -
   + FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
   = VAR_UNK_40AC 0 -> 3
   + seen team_rocket_headquarters_b3f.The rival in the hideout
+=== ten_carat_hill.ScanDeino
+from Deino at 37,18 of TenCaratHill
+way 0
+  > It's the Deino the Island Scan picked up! It's ready to battle!
+  * cry Deino
+  * wildbattle Deino 13 Won
+  + FLAG_DAILY_ALOLA_SCAN_DEINO_MET
+way 1, from answer 1
+  * wildbattle Deino 13 Lost
 === terminus_cave.Worker
 from Worker at 31,17 of TerminusCave
 way -
@@ -35306,6 +35798,33 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_ALOLA_MEADOW_NECTAR
+=== ulaula_meadow.ScanRoselia
+from Roselia at 178,175 of Ulaula
+way 0
+  > It's the Roselia the Island Scan picked up! It's ready to battle!
+  * cry Roselia
+  * wildbattle Roselia 34 Won
+  + FLAG_DAILY_ALOLA_SCAN_ROSELIA_MET
+way 1, from answer 1
+  * wildbattle Roselia 34 Lost
+=== ulaula_route_10.ScanStaravia
+from Staravia at 58,314 of Ulaula
+way 0
+  > It's the Staravia the Island Scan picked up! It's ready to battle!
+  * cry Staravia
+  * wildbattle Staravia 27 Won
+  + FLAG_DAILY_ALOLA_SCAN_STARAVIA_MET
+way 1, from answer 1
+  * wildbattle Staravia 27 Lost
+=== ulaula_route_11.ScanVigoroth
+from Vigoroth at 141,288 of Ulaula
+way 0
+  > It's the Vigoroth the Island Scan picked up! It's ready to battle!
+  * cry Vigoroth
+  * wildbattle Vigoroth 27 Won
+  + FLAG_DAILY_ALOLA_SCAN_VIGOROTH_MET
+way 1, from answer 1
+  * wildbattle Vigoroth 27 Lost
 === ulaula_route_12.HapuMudsdale
 from the trigger at 181,225 of Ulaula
 way -
@@ -35343,6 +35862,29 @@ way -
   > Sharpedo was registered in the Ride Pager!
   Grimsley> It can ram rocks a Lapras would never dare. There is one off this very beach, if you fancy your luck.
   + FLAG_ALOLA_RIDE_SHARPEDO
+=== ulaula_route_16.Dexio
+from Dexio at 247,142 of Ulaula
+way -
+  Dexio> Alola! We came all the way from Kalos, following something green that slipped through the islands' soil.
+  Sina> Tiny Zygarde Cells, scattered all over Alola! On their own they're shy, but this Cube gathers them right up.
+  Sina> We'd love for you to collect them. The more you find, the more of Zygarde we can put back together!
+  > Lucas received the Zygarde Cube!
+  > Lucas put it away in the Key Items pocket.
+  Dexio> Bring the Cube back whenever you've found ten or more. We'll be here, keeping the caravan warm.
+  * fanfare FanfareKeyItem
+=== ulaula_route_16.ScanDuosion
+from Duosion at 236,169 of Ulaula
+way 0
+  > It's the Duosion the Island Scan picked up! It's ready to battle!
+  * cry Duosion
+  * wildbattle Duosion 33 Won
+  + FLAG_DAILY_ALOLA_SCAN_DUOSION_MET
+way 1, from answer 1
+  * wildbattle Duosion 33 Lost
+=== ulaula_route_16.Sina
+from Sina at 249,142 of Ulaula
+way -
+  Sina> Have you talked to Dexio? He's the one holding the box. Well, he thinks he is. I packed it!
 === ultra_crater.Beast
 from Celesteela at 32,16 of UltraCrater
 way 0

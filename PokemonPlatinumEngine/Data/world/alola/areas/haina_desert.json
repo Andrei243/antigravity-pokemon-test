@@ -137,7 +137,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "Rare Bone",
-      "flag": "FLAG_ALOLA_BURIED_HAINA_DESERT_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_HAINA_DESERT_1",
       "buried": true
     }
   ],

@@ -41,7 +41,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "Big Mushroom",
-      "flag": "FLAG_ALOLA_BURIED_MELEMELE_MEADOW_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_MELEMELE_MEADOW_1",
       "buried": true
     }
   ],

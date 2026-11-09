@@ -129,8 +129,8 @@
       "z": 289,
       "type": 2,
       "script": "BURIED_1",
-      "item": "Comet Shard",
-      "flag": "FLAG_ALOLA_BURIED_ULAULA_ROUTE_10_1",
+      "item": "Star Piece",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_ULAULA_ROUTE_10_1",
       "buried": true
     }
   ],

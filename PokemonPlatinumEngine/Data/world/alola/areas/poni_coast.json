@@ -166,8 +166,8 @@
       "z": 266,
       "type": 2,
       "script": "BURIED_1",
-      "item": "Pearl String",
-      "flag": "FLAG_ALOLA_BURIED_PONI_COAST_1",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_PONI_COAST_1",
       "buried": true
     }
   ],

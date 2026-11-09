@@ -132,8 +132,8 @@
       "z": 241,
       "type": 2,
       "script": "BURIED_1",
-      "item": "Big Nugget",
-      "flag": "FLAG_ALOLA_BURIED_ULAULA_ROUTE_12_1",
+      "item": "Nugget",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_ULAULA_ROUTE_12_1",
       "buried": true
     }
   ],

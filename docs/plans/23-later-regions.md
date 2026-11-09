@@ -399,6 +399,23 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   inside, Sharpedo's currents, Stoutland's buried items, the Secluded Shore, Big Wave Beach, Hau'oli Cemetery, Island Scan,
   the mythicals and the new places' own songs.
 
+### The Battle Tree, the power plant, Zygarde's cells and the rest of the islands (the wave after Poni's last places)
+- **Built** (2026-11-09; rulings, "The Battle Tree, the power plant, Zygarde's cells and the rest of the islands"; facts from
+  public descriptions, never the games' pictures or words): **the Battle Tree's inside** on plan 37 · FC2's frame
+  (`Models/Facilities/BattleTree.cs`, `facility tree …`, a row of `FacilityPlaces`; `PoniGauntlet_BattleTree` and its hall),
+  single and double streaks at 50 with two Tree Masters of ours (`tree_master_*`, Z-Crystals and a Z-Ring) at the 20th and,
+  in the Super rooms, the 50th, and a prize counter (`frontier prize tree`); **the geothermal power plant** inside Blush
+  Mountain (`BlushMountain_PowerPlant`); **Hau'oli Cemetery** east of Route 2 with its ghost girl's three night visits, **Big
+  Wave Beach** west of Route 1's woods and **the Secluded Shore** below Route 11 (area files 540 to 542 on matrices 0 and 10;
+  no new matrix); **the Zygarde Cube** from Dexio and Sina on Route 16 and Sun and Moon's **hundred cells and cores**
+  (`NPC.ZygardeCellType`, `common.ZygardeCell`), put together at ten, fifty and a hundred (`givepokemon` now takes a form's
+  name); **Stoutland's Search** and fifteen **buried items** (`Overworld/StoutlandSearch.cs`, `HiddenItem.Buried`); **the
+  Island Scan** in Heahea's laboratory, once a day, Sun and Moon's 28 Pokémon by island and day at their places; four songs of
+  ours (`alola/tree`, `cemetery`, `beach`, `power_plant`); eight trainers of ours and four Tree Master teams. Tests:
+  `AlolaLastIslandsTests`. Shots: the harness's `alolalast` mode (`wt01` on). **Left**: the Battle Tree's Multi room, Mantine
+  Surf, Sharpedo's currents, the Ultra Warp Ride, the cells by day and night, Magearna and Marshadow (plan 29 · LS11's
+  proposals), the link to Galar.
+
 ### Galar and Paldea
 
 Z9 to Z16 moved to [plan 33](33-galar.md) (GL1 to GL9) and [plan 34](34-paldea.md) (PD1 to PD12) on 2026-11-04; their numbers are not reused.

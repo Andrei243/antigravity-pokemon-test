@@ -42,8 +42,8 @@
       "z": 257,
       "type": 2,
       "script": "BURIED_1",
-      "item": "Pearl String",
-      "flag": "FLAG_ALOLA_BURIED_HANO_BEACH_1",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_HANO_BEACH_1",
       "buried": true
     }
   ],

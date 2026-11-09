@@ -167,7 +167,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "PP Max",
-      "flag": "FLAG_ALOLA_BURIED_PONI_PLAINS_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_PONI_PLAINS_1",
       "buried": true
     }
   ],

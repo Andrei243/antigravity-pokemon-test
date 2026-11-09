@@ -77,7 +77,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "Rare Candy",
-      "flag": "FLAG_ALOLA_BURIED_ALOLA_ROUTE_2_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_ALOLA_ROUTE_2_1",
       "buried": true
     }
   ],

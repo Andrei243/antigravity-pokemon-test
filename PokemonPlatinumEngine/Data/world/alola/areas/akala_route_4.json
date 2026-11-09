@@ -66,7 +66,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "PP Up",
-      "flag": "FLAG_ALOLA_BURIED_AKALA_ROUTE_4_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_AKALA_ROUTE_4_1",
       "buried": true
     }
   ],

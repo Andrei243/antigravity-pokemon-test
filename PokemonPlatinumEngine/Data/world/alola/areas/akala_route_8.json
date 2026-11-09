@@ -72,7 +72,7 @@
       "type": 2,
       "script": "BURIED_1",
       "item": "Star Piece",
-      "flag": "FLAG_ALOLA_BURIED_AKALA_ROUTE_8_1",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_AKALA_ROUTE_8_1",
       "buried": true
     }
   ],
