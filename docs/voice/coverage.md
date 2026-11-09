@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 112 | 112 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1588 | 1526 | 62 | 1 | 0 |
-| Scripts (`script:`) | 12000 | 11523 | 477 | 17 | 31 |
+| People of the hand-made maps (`map:`) | 1590 | 1527 | 63 | 1 | 0 |
+| Scripts (`script:`) | 12015 | 11537 | 478 | 17 | 31 |
 | People of the world (`world:`) | 8040 | 7978 | 62 | 4 | 0 |
-| **All** | 21862 | 21258 | 604 | 22 | 31 |
+| **All** | 21879 | 21273 | 606 | 22 | 31 |
 
 ## Not voiced, by decision
 
@@ -22,10 +22,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 257 |
-| a question's answers | 917 |
+| a question's answers | 918 |
 | a sign | 1753 |
 | the game's own voice (speaker none) | 293 |
-| the game's own voice (text) | 1976 |
+| the game's own voice (text) | 1990 |
 
 ## The cast
 
@@ -45,13 +45,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:grunt (any)` | 602 | 0 |
 | `look:lady (any)` | 573 | 10 |
 | `look:clerk (any)` | 569 | 13 |
-| `look:lass (any)` | 542 | 22 |
-| `look:youngster (any)` | 512 | 31 |
+| `look:lass (any)` | 543 | 22 |
+| `look:youngster (any)` | 513 | 32 |
 | `look:scientist (any)` | 323 | 13 |
 | `look:attendant (any)` | 321 | 12 |
 | `@self` | 318 | 38 |
 | `look:nurse (any)` | 296 | 2 |
-| `look:receptionist (any)` | 286 | 34 |
+| `look:receptionist (any)` | 287 | 34 |
 | `look:gym_guide (any)` | 236 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
 | `class:hiker (any)` | 198 | 0 |
@@ -76,7 +76,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:guard (any)` | 121 | 0 |
 | `look:fisherman (any)` | 119 | 4 |
 | `black_belt` | 115 | 14 |
-| `look:old_woman (any)` | 104 | 5 |
+| `look:old_woman (any)` | 110 | 5 |
 | `look:worker (any)` | 104 | 0 |
 | `class:swimmer_f (any)` | 102 | 0 |
 | `class:cooltrainer (any)` | 100 | 0 |
