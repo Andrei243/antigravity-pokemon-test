@@ -1,0 +1,54 @@
+{
+  "id": "Hisui",
+  "folder": "hisui",
+  "models": "hisui",
+  // Jubilife Village and Prelude Beach below it (plan 23 · Z17; tools/MapDraw/hisui), drawn by hand as Kalos and Alola
+  // are: Legends: Arceus has no decompilation and no dump is read. The open areas are matrices of their own (Z18 on)
+  "map": "JubilifeVillage",
+  // Legends: Arceus's own Pokédex of 242, PokeAPI's "hisui"
+  "dex": "hisui",
+  "nationalUnlock": "HallOfFame",
+  // Hisui is a side region (plan 23 · Z17, decision 3): Sinnoh's past, reached by a Champion of Sinnoh through Celestic
+  // Town's ruins and left by the stone the player wakes beside on Prelude Beach. A new game begun here (--region Hisui)
+  // wakes on Prelude Beach with nothing, and Professor Laventon hands over the first Pokémon
+  "hasStory": true,
+  // The rival is the Survey Corps' young member the player isn't: Akari beside the boy, Rei beside the girl
+  "rivals": { "boy": "Akari", "girl": "Rei" },
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Rowlet", "Cyndaquil", "Oshawott" ],
+  // Hisui has no Gyms and no badges (plan 23's Hisui decisions): the Galaxy Team's ranks take their place (Z19)
+  "challenge": "none",
+  "badges": [],
+  "gates": {},
+  "professor": {
+    "name": "Prof. Laventon",
+    "look": "LAVENTON",
+    "species": "Rowlet",
+    "lines": {
+      "hello": "Ah! You're awake! You gave me quite a turn, lying there on the sand like that.",
+      "welcome": "Welcome to Hisui, a wild land at the edge of the known world!",
+      "myName": "I'm Laventon, a professor of Pokémon. I came to Hisui with the Galaxy Team to study the creatures that live here.",
+      "world": "Pokémon roam everywhere in this land: the fields, the bogs, the coasts, the highlands and the frozen north.",
+      "oneOfThem": "This little one is one of my three companions. Do try not to frighten it!",
+      "liveAlongside": "Most people here still fear Pokémon. Few have ever stood beside one, let alone called one a friend.",
+      "study": "I mean to change that, by learning all I can about them and writing it down in the very first Pokédex.",
+      "enough": "But listen to me ramble on! Tell me about yourself.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what is your name?",
+      "nextDoor": "The Galaxy Team has young members your age. One of them in particular is sure to take you under their wing.",
+      "neverStill": "They walk the wilds every day, and they never seem to tire.",
+      "fineName": "{name}! A splendid name.",
+      "ofCourse": "I have a feeling the two of you will get along famously.",
+      "story": "{name}, your story in Hisui begins on Prelude Beach, just below the Galaxy Team's village.",
+      "offYouGo": "Now then, let's be off!"
+    }
+  },
+  // The place a white-out goes back to: the Galaxy Team's medic in Galaxy Hall
+  "spawns": [
+    { "id": 1, "area": "jubilife_village", "x": 47, "y": 21, "room": "JubilifeVillage_GalaxyHall" }
+  ],
+  // Plan 18 · W4: the levels a team that crossed from Sinnoh meets Hisui's at (ours: a side region off Sinnoh climbs as
+  // Kanto does from Cynthia's 62, Legends: Arceus's own levels reaching about 75 at their end), until the user rules
+  // otherwise; Hisui has no Badges, so no cap table
+  "levels": [[2, 62], [75, 104]]
+}

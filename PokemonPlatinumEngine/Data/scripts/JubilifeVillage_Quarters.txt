@@ -1,0 +1,18 @@
+# The player's quarters in Jubilife Village, just east of Galaxy Hall (plan 23 · Z17). The lines are our own.
+# VAR_HISUI_STORY is prelude_beach.txt's count.
+
+
+# The first night under the Galaxy Team's roof: a rest, and morning
+script OnEnter
+  if var VAR_HISUI_STORY != 6 end
+  scene "The first night"
+  text "A futon, a chest and a lamp. Plain, but it's a roof over your head."
+  text "{player} lay down to rest..."
+  fade out 0.8
+  heal
+  text "Morning came to Jubilife Village."
+  fade in
+  setvar VAR_HISUI_STORY 7
+  objective hisuiTrial
+  endscene
+  end

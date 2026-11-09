@@ -1,0 +1,150 @@
+{
+  "name": "JubilifeVillage_Wallflower",
+  "displayName": "The Wallflower",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "House",
+  "trees": "Pine",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "###########",
+    "#.........#",
+    "#.##...##.#",
+    "#.........#",
+    "#........##",
+    "#####.#####"
+  ],
+  "behaviours": [
+    {
+      "x": 1,
+      "y": 4,
+      "width": 9,
+      "depth": 1,
+      "behaviour": "Counter"
+    }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 4,
+      "width": 9,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "JubilifeVillage",
+      "targetX": 23,
+      "targetY": 30,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "beni",
+      "name": "Beni",
+      "npcType": "beni",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "script": "Beni"
+    },
+    {
+      "id": "cyllene",
+      "name": "Captain Cyllene",
+      "npcType": "cyllene",
+      "x": 3,
+      "y": 8,
+      "facing": "Up",
+      "script": "Cyllene",
+      "hiddenBy": "FLAG_HISUI_HIDE_CYLLENE_WALLFLOWER"
+    },
+    {
+      "id": "partner",
+      "name": "{rival}",
+      "npcType": "Rival:AKARI:REI",
+      "x": 7,
+      "y": 8,
+      "facing": "Up",
+      "script": "Partner",
+      "hiddenBy": "FLAG_HISUI_HIDE_PARTNER_WALLFLOWER"
+    }
+  ],
+  "wildEncounters": []
+}

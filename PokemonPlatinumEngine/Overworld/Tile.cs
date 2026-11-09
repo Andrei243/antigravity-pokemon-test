@@ -348,7 +348,11 @@ public enum Architecture
     /// <summary>Weathered planks under moss-grey hip roofs with a chimney: the town on the marsh under the tower (Icirrus).</summary>
     Mire,
     /// <summary>Dark panel blocks under flat roofs with ribbon windows lit all night: the city that never sleeps (Black City).</summary>
-    Nightfall
+    Nightfall,
+
+    // Hisui (plan 23 · Z17): drawn by hand, a row of the style guide's "Buildings" first
+    /// <summary>Dark timber frames over white plaster under steep slate-grey gables with shutters: the Galaxy Team's village inside its palisade (Jubilife Village, plan 23 · Z17).</summary>
+    Hisuian
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

@@ -88,11 +88,12 @@ public static class Crossing
     /// "Regions": nothing leads back by harbour, and Fly goes back to any region already entered): the other region is
     /// built, has a map of its own to choose a town on, and has been entered. Nothing is asked of either region's Hall
     /// of Fame: a region is left by its vessel only once its story is over, so a region behind the player is always
-    /// finished, and the one ahead, once entered, may be flown back to. Fly's own check where the player stands (the
+    /// finished, and the one ahead, once entered, may be flown back to. A side region (plan 23 · Z17: Hisui, another time)
+    /// is flown neither to nor from: its own way in and out is the only one. Fly's own check where the player stands (the
     /// badge, a partner, the place) is the field move's, in the region the player is in.
     /// </summary>
     public static bool CanFly(Region from, Region to, StoryState story, IEnumerable<string> dexesEntered) =>
-        !string.Equals(from.Id, to.Id, StringComparison.OrdinalIgnoreCase) && to.IsBuilt && to.OverworldMap != null
+        !string.Equals(from.Id, to.Id, StringComparison.OrdinalIgnoreCase) && !from.Side && !to.Side && to.IsBuilt && to.OverworldMap != null
         && RegionMap.Of(to.Id) != null && HasEntered(to, story, dexesEntered);
 
     /// <summary>

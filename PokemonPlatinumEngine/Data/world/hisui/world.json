@@ -1,0 +1,21 @@
+{
+  // What is built of Hisui so far (plan 23 · Z17). Legends: Arceus has no decompilation that holds its maps and no dump is
+  // read, so Hisui is drawn by hand on the tile grid as Kalos and Alola are (the user's decision of 2026-11-02): the
+  // drawings are tools/MapDraw/hisui, and `dotnet run --project tools/MapDraw -- hisui` writes the chunks, the matrix and
+  // the habitats here from them. The area files, the overlays and this index are written by hand. The rooms are
+  // hand-made map files (Data/maps), reached by the overlays' doors. Hisui's keys are the places' names in lower case.
+  // Hisui is a side region (plan 23 · Z17, decision 3): Sinnoh's past, reached through Celestic Town's ruins by a
+  // Champion of Sinnoh, and left the same way.
+  "region": "Hisui",
+  // The houses are drawn into the tiles, each found at its door (WorldMapBuilder.BuildingsAtDoors), as Kalos's are
+  "buildingsAtDoors": true,
+  "maps": [
+    // Jubilife Village and Prelude Beach below it, three chunks by three: the overworld, where Fly and Teleport would land.
+    // The open areas (the Obsidian Fieldlands first, plan 23 · Z18) are matrices of their own
+    { "name": "JubilifeVillage", "matrix": 0, "trees": "Pine" }
+  ],
+  "areas": [
+    "jubilife_village",
+    "prelude_beach"
+  ]
+}

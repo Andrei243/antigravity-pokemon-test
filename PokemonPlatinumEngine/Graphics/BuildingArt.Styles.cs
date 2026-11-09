@@ -170,6 +170,8 @@ internal static partial class BuildingArt
             Architecture.Teahouse => Pitched(WallKind.Brick, Rgb(54, 104, 72), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             Architecture.Gallery => Pitched(WallKind.Brick, Rgb(156, 66, 46)) with { Chimney = true },
             Architecture.Mire => Pitched(WallKind.Planks, Rgb(108, 116, 100), RoofShape.Hip) with { Chimney = true },
+            // Hisui (plan 23 · Z17): Jubilife Village's half-timbered houses under slate-grey gables
+            Architecture.Hisuian => Pitched(WallKind.HalfTimber, Rgb(84, 90, 104)) with { Shutters = true, Chimney = true },
             // Black City's blocks: Castelia's panel blocks in the dark, their ribbon windows lit
             Architecture.Nightfall => new BuildingStyle
             {

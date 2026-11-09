@@ -1,0 +1,57 @@
+{
+  // Jubilife Village (plan 23 · Z17): drawn by hand, our words. The Galaxy Team's village inside its palisade, Sinnoh's
+  // Jubilife City long before it was a city: Galaxy Hall on Floaro Main Street with the player's quarters beside it, the
+  // Wallflower and the general store on Canala Avenue, the pastures where the team's other Pokémon are kept (the boxes:
+  // the keeper's script opens them), the training grounds, the front gate north to the Obsidian Fieldlands (shut by its
+  // guards until plan 23 · Z18's entry trial) and the south gate down to Prelude Beach. The first chapter's scene here
+  // (jubilife_village.txt): Professor Laventon at the south gate as the player first comes up from the beach. The
+  // craftworks, the clothier and the photography studio are shut until a later session builds their rooms. Hisui has no
+  // songs of its own yet: Sinnoh's Jubilife City stands in, the same ground a long time before
+  "area": "jubilife_village",
+  "bgmTrack": "sinnoh/jubilife",
+  "trees": "Pine",
+  "architecture": "Hisuian",
+  "doors": [
+    { "warp": 0, "map": "JubilifeVillage_GalaxyHall", "x": 8, "y": 11, "facing": "Up" },
+    { "warp": 1, "map": "JubilifeVillage_Quarters", "x": 4, "y": 7, "facing": "Up" },
+    { "warp": 2, "map": "JubilifeVillage_Wallflower", "x": 5, "y": 8, "facing": "Up" },
+    { "warp": 3, "map": "JubilifeVillage_GeneralStore", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  "locked": [ 4, 5, 6 ],
+  "triggers": [
+    { "script": "Welcome", "x": 46, "z": 60, "width": 4, "depth": 1, "variable": "VAR_HISUI_STORY", "value": 3 }
+  ],
+  "people": {
+    "laventon": { "name": "Prof. Laventon", "npcType": "laventon", "script": "Laventon", "still": true, "hiddenBy": "FLAG_HISUI_HIDE_LAVENTON_VILLAGE" },
+    "gate_guard_west": { "name": "Gate Guard", "npcType": "galaxy_member", "script": "FrontGate", "still": true },
+    "gate_guard_east": { "name": "Gate Guard", "npcType": "galaxy_member", "script": "FrontGate", "still": true },
+    "farmer": {
+      "name": "Farmer",
+      "npcType": "rancher",
+      "dialog": [ "The soil here gives potatoes and not much else. Still, a village that grows its own food doesn't go hungry in winter." ]
+    },
+    "keeper": { "name": "Pasture Keeper", "npcType": "old_man", "script": "Pastures", "still": true },
+    "pasture_bidoof": { "name": "Bidoof", "npcType": "Pokemon", "species": "Bidoof", "script": "Pokemon", "dialog": [ "Bidoof: Bidoo! It chews happily on a stalk of grass." ] },
+    "pasture_ponyta": { "name": "Ponyta", "npcType": "Pokemon", "species": "Ponyta", "script": "Pokemon", "dialog": [ "Ponyta: Neigh! Its mane of flame flickers in the breeze." ] },
+    "trainee": {
+      "name": "Galaxy Team Member",
+      "npcType": "galaxy_member",
+      "still": true,
+      "dialog": [ "Hup! Hup! The Survey Corps walks the wilds every day. If your legs give out, the wilds won't wait for you." ]
+    },
+    "child": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [ "My grandma says nobody lived here when the Galaxy Team came. Now look at it! There's even a shop!" ]
+    },
+    "villager": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [ "Most of us crossed the sea to get here. Some folk still lock their doors when a Pokémon walks past." ]
+    }
+  },
+  "signs": {
+    "VillageSign": "Jubilife Village\nThe Galaxy Team's home in the land of Hisui",
+    "GateSign": "Front Gate\nNorth: the Obsidian Fieldlands\nOnly members of the Galaxy Team may pass."
+  }
+}

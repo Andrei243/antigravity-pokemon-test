@@ -1,0 +1,189 @@
+{
+  "name": "JubilifeVillage_GalaxyHall",
+  "displayName": "Galaxy Hall",
+  "bgmTrack": "sinnoh/lab",
+  "interior": "House",
+  "trees": "Pine",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "####............#",
+    "#...............#",
+    "#......###...####",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "behaviours": [
+    {
+      "x": 7,
+      "y": 5,
+      "width": 3,
+      "depth": 1,
+      "behaviour": "Counter"
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "width": 3,
+      "depth": 1,
+      "behaviour": "Counter"
+    }
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 11,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 12,
+      "targetMap": "JubilifeVillage",
+      "targetX": 47,
+      "targetY": 21,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "kamado",
+      "name": "Commander Kamado",
+      "npcType": "kamado",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "script": "Kamado"
+    },
+    {
+      "id": "laventon",
+      "name": "Prof. Laventon",
+      "npcType": "laventon",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Laventon",
+      "hiddenBy": "FLAG_HISUI_HIDE_LAVENTON_HALL"
+    },
+    {
+      "id": "cyllene",
+      "name": "Captain Cyllene",
+      "npcType": "cyllene",
+      "x": 11,
+      "y": 7,
+      "facing": "Left",
+      "script": "Cyllene",
+      "hiddenBy": "FLAG_HISUI_HIDE_CYLLENE_HALL"
+    },
+    {
+      "id": "partner",
+      "name": "{rival}",
+      "npcType": "Rival:AKARI:REI",
+      "x": 5,
+      "y": 8,
+      "facing": "Right",
+      "script": "Partner",
+      "hiddenBy": "FLAG_HISUI_HIDE_PARTNER_HALL"
+    },
+    {
+      "id": "medic",
+      "name": "Medic",
+      "npcType": "nurse",
+      "x": 14,
+      "y": 4,
+      "facing": "Down",
+      "isHealingNurse": true
+    }
+  ],
+  "wildEncounters": []
+}

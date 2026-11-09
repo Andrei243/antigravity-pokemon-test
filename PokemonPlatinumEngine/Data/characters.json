@@ -433,6 +433,19 @@
     "mallow": { "skin": "#9a6a48", "hairColor": "#4a9a4a", "hair": "Ponytail", "hatBand": "#e8c86a", "top": "#f4f4f6", "accent": "#4a9a4a", "bottom": "#3a7a3a", "shoes": "#5a3a2a", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "lana": { "skin": "#e8c4a0", "hairColor": "#3a6aa8", "hair": "Short", "top": "#f4f4f6", "accent": "#5a8ad8", "bottom": "#4a74b8", "shoes": "#f2f2ee", "eyes": "#2a4a7a", "shortSleeves": true, "lashes": true, "build": "Adult", "height": 0.96 },
     "gladion": { "skin": "#e8c8a8", "hairColor": "#f0e2a8", "hair": "Short", "top": "#1e1e24", "accent": "#a83a3a", "bottom": "#2a2a30", "shoes": "#1e1e24", "eyes": "#3a6a5a", "build": "Adult", "height": 1.06 },
+    // Hisui's first cast (plan 23 · Z17; our own designs, on the Adult build as Kalos's and Alola's are): Professor
+    // Laventon, an untidy shock of brown hair, round glasses and a long moss-green coat over a scarf; Commander Kamado,
+    // broad and bearded, steel-grey hair swept back, a navy greatcoat trimmed in gold; Captain Cyllene, silver hair in a
+    // bun, glasses, the Galaxy Team's navy; Beni, the Wallflower's cook, dark hair tied back and a white apron over grey;
+    // Akari and Rei, the Survey Corps' young members (the one the player isn't), in its navy and red with a red headscarf
+    // and a navy cap; and a member of the Galaxy Team on guard or drilling, in the same navy under a cap
+    "laventon": { "hairColor": "#6a4a32", "hair": "Swept", "top": "#5a6a3a", "accent": "#d8c8a0", "bottom": "#3a3a34", "shoes": "#3a2a22", "eyes": "#3a3a4a", "glasses": "#2a2a34", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    "kamado": { "hairColor": "#8a8c96", "hair": "Swept", "top": "#22284a", "accent": "#d8b44a", "bottom": "#1e2238", "shoes": "#2a2420", "eyes": "#3a2a24", "beard": true, "bushyBrows": true, "coat": true, "build": "Adult", "height": 1.16 },
+    "cyllene": { "hairColor": "#d8dae6", "hair": "Bun", "top": "#2a3460", "accent": "#d8343c", "bottom": "#2a3460", "shoes": "#2a2420", "eyes": "#4a4a6a", "glasses": "#2a2a34", "skirt": true, "lashes": true, "build": "Adult", "height": 1.04 },
+    "beni": { "hairColor": "#2a2630", "hair": "Ponytail", "top": "#f2f2ee", "accent": "#6a6a74", "bottom": "#4a4a54", "shoes": "#2a2420", "eyes": "#3a3a4a", "build": "Adult", "height": 1.04 },
+    "akari": { "hairColor": "#2e2a36", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8343c", "hatBand": "#d8343c", "top": "#2a3460", "accent": "#d8343c", "bottom": "#2a2a36", "shoes": "#3a2a22", "eyes": "#3a3a5a", "skirt": true, "lashes": true, "blush": true },
+    "rei": { "hairColor": "#2e2a36", "hat": "Cap", "hatColor": "#2a3460", "hatBand": "#d8343c", "top": "#2a3460", "accent": "#d8343c", "bottom": "#2a2a36", "shoes": "#3a2a22", "eyes": "#3a3a5a", "blush": true },
+    "galaxy_member": { "hairColor": "#3a2e28", "hat": "Cap", "hatColor": "#2a3460", "hatBand": "#f2f2ee", "top": "#2a3460", "accent": "#d8343c", "bottom": "#2a2a36", "shoes": "#2a2420", "eyes": "#3a2a24", "build": "Adult" },
     // Plan 23 · Z7: Ula'ula's, Poni's and the League's cast
     "sophocles": { "skin": "#d8a880", "hairColor": "#4a3a2a", "hair": "Short", "top": "#d8b84a", "accent": "#4a4a5a", "bottom": "#4a5a7a", "shoes": "#3a3a44", "eyes": "#3a2a24", "glasses": "#a8c8e8", "build": "Adult", "height": 0.92 },
     "acerola": { "skin": "#e0b08a", "hairColor": "#6a3a9a", "hair": "Long", "top": "#f6f6f8", "accent": "#6a3a9a", "bottom": "#4a2a6a", "shoes": "#2a2a34", "eyes": "#5a3a6a", "skirt": true, "lashes": true, "build": "Adult", "height": 0.9 },
