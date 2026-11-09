@@ -556,7 +556,7 @@ public static class FieldMovement
     public static Pace PaceOn(TileBehavior underfoot, Walker walker) => walker.Mode switch
     {
         // Sharpedo's Jet goes at a bicycle's top speed over the water (plan 23, Alola's water ride)
-        TravelMode.Surfing => RidePager.IsWaterRide(walker.Steed) ? Pace.Fastest : Pace.Fast,
+        TravelMode.Surfing => RidePager.Rams(walker.Steed) ? Pace.Fastest : Pace.Fast,
         // Under the sea nobody runs (Emerald's PlayerNotOnBikeMoving walks a diver at the normal pace)
         TravelMode.Diving => Pace.Walk,
         TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,

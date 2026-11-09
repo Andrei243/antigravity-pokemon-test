@@ -112,6 +112,30 @@
       "shownBy": "FLAG_ALOLA_TREE_SHOW_OPPONENT"
     },
     {
+      "id": "opponent_2",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 9,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_TREE_SHOW_OPPONENT_2"
+    },
+    {
+      "id": "partner",
+      "name": "Partner",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Let's climb together!"
+      ],
+      "shownBy": "FLAG_ALOLA_TREE_SHOW_PARTNER"
+    },
+    {
       "id": "onlooker",
       "name": "Onlooker",
       "npcType": "Lady",

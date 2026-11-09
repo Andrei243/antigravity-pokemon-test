@@ -117,6 +117,26 @@
           "Femeia"
         ]
       }
+    },
+    "widow": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "widow_machamp": {
+      "name": {
+        "en": [
+          "Machamp"
+        ],
+        "text": [
+          "Machamp"
+        ]
+      }
     }
   },
   "signs": {

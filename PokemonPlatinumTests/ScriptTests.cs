@@ -764,6 +764,8 @@ public class ScriptTests
           facility house next
           facility house host
           facility house opponent
+          facility tree partner
+          facility tree way multi
           facility house battle
           facility house won
           facility house points

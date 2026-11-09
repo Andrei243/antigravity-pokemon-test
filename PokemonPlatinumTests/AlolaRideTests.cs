@@ -60,7 +60,9 @@ public class AlolaRideTests
         Assert.Contains("ride refused Tauros", sinnoh.Log);
         // Sharpedo comes only on the water (plan 23, the wave after Ultra Space), and Cancel calls nothing
         Assert.Contains("ride refused Sharpedo", Pager(3).Log);
-        Assert.DoesNotContain(Pager(4).Log, l => l.StartsWith("ride"));
+        // and so does Mantine (plan 23, Mantine Surf), whose flag is not set here
+        Assert.Contains("ride refused Mantine", Pager(4).Log);
+        Assert.DoesNotContain(Pager(5).Log, l => l.StartsWith("ride"));
 
         Assert.True(RegionDatabase.Get(RegionDatabase.Alola)!.Movement.Offers(PokemonPlatinumEngine.Data.RegionMode.Ride));
         Assert.False(RegionDatabase.Get(RegionDatabase.Kalos)!.Movement.Offers(PokemonPlatinumEngine.Data.RegionMode.Ride));

@@ -31,6 +31,70 @@
       "text": [
         "Hula e perfectă azi. O auzi? Așa respiră Melemele."
       ]
+    },
+    {
+      "en": [
+        "Is that a Ride Pager? Then you can have my Mantine! It was a Mantyke when I came here, and the swell grew it."
+      ],
+      "text": [
+        "Aia e un Ride Pager? Atunci poți lua Mantine-ul meu! Era un Mantyke când am venit aici, iar valurile l-au crescut."
+      ]
+    },
+    {
+      "en": [
+        "Mantine was registered in the Ride Pager!"
+      ],
+      "text": [
+        "Mantine a fost înregistrat în Ride Pager!"
+      ]
+    },
+    {
+      "en": [
+        "Call it out on the water. It skims the swell so lightly that nothing down there will notice you."
+      ],
+      "text": [
+        "Cheamă-l pe apă. Alunecă pe valuri atât de ușor, încât nimic de acolo de jos nu te va băga în seamă."
+      ]
+    },
+    {
+      "en": [
+        "Talk to me when you want to ride the course. Four gates of buoys, one after the other, and not one missed."
+      ],
+      "text": [
+        "Vorbește cu mine când vrei să străbați traseul. Patru porți de geamanduri, una după alta, și nici una ratată."
+      ]
+    },
+    {
+      "en": [
+        "Shall I send you off on the course? Four gates of buoys on the swell, on a Mantine's back."
+      ],
+      "text": [
+        "Să te trimit pe traseu? Patru porți de geamanduri pe valuri, în spatele unui Mantine."
+      ]
+    },
+    {
+      "en": [
+        "Out onto the water, then! The first gate is the buoys just off the sand. Miss one and the run is over."
+      ],
+      "text": [
+        "Hai pe apă, atunci! Prima poartă sunt geamandurile de lângă nisip. Ratează una și cursa s-a terminat."
+      ]
+    },
+    {
+      "en": [
+        "The swell will keep. Come back when you are ready to ride."
+      ],
+      "text": [
+        "Valurile nu pleacă nicăieri. Revino când ești gata să te dai."
+      ]
+    },
+    {
+      "en": [
+        "You are on a run! Ride your Mantine through the gates in order, from the one just off the sand."
+      ],
+      "text": [
+        "Ești în plină cursă! Treci cu Mantine prin porți, pe rând, începând cu cea de lângă nisip."
+      ]
     }
   ],
   "Sightseer": [
@@ -48,6 +112,94 @@
       ],
       "text": [
         "Am zburat tocmai din Kalos pentru valurile astea și acum mi-e prea frică să intru. Plaja e minunată, totuși!"
+      ]
+    }
+  ],
+  "MantineGate1": [
+    {
+      "en": [
+        "Gate one! The buoys bobbed past on either side. On to the second!"
+      ],
+      "text": [
+        "Poarta unu! Geamandurile s-au clătinat pe lângă tine, de-o parte și de alta. Hai la a doua!"
+      ]
+    },
+    {
+      "en": [
+        "The run is over. Only a Mantine skims through the buoys without scattering them."
+      ],
+      "text": [
+        "Cursa s-a terminat. Numai un Mantine alunecă printre geamanduri fără să le împrăștie."
+      ]
+    }
+  ],
+  "MantineGate2": [
+    {
+      "en": [
+        "Gate two! Mantine leaped the swell with its fins spread wide."
+      ],
+      "text": [
+        "Poarta doi! Mantine a sărit peste valuri cu aripioarele larg desfăcute."
+      ]
+    },
+    {
+      "en": [
+        "The run is over. Only a Mantine skims through the buoys without scattering them."
+      ],
+      "text": [
+        "Cursa s-a terminat. Numai un Mantine alunecă printre geamanduri fără să le împrăștie."
+      ]
+    }
+  ],
+  "MantineGate3": [
+    {
+      "en": [
+        "Gate three! One more to go, back toward the open sea."
+      ],
+      "text": [
+        "Poarta trei! Încă una, înapoi spre larg."
+      ]
+    },
+    {
+      "en": [
+        "The run is over. Only a Mantine skims through the buoys without scattering them."
+      ],
+      "text": [
+        "Cursa s-a terminat. Numai un Mantine alunecă printre geamanduri fără să le împrăștie."
+      ]
+    }
+  ],
+  "MantineGate4": [
+    {
+      "en": [
+        "Gate four! The course is done, and not one buoy missed. Ride back and tell the surfer."
+      ],
+      "text": [
+        "Poarta patru! Traseul s-a terminat și nu ai ratat nicio geamandură. Întoarce-te și spune-i surferului."
+      ]
+    },
+    {
+      "en": [
+        "The surfer's cheer carried over the water all the way to you. A Big Pearl was tied to the last buoy!"
+      ],
+      "text": [
+        "Ovația surferului a ajuns peste apă tocmai până la tine. O Big Pearl era legată de ultima geamandură!"
+      ]
+    },
+    {
+      "en": [
+        "Three runs of the course! A Star Piece was tied to the last buoy!"
+      ],
+      "text": [
+        "Trei curse pe traseu! Un Star Piece era legat de ultima geamandură!"
+      ]
+    },
+    {
+      "en": [
+        "The run is over. Only a Mantine skims through the buoys without scattering them."
+      ],
+      "text": [
+        "Cursa s-a terminat. Numai un Mantine alunecă printre geamanduri fără să le împrăștie."
       ]
     }
   ]

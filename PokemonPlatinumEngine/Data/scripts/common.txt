@@ -1068,11 +1068,12 @@ script UseRockClimb
 script RidePager
   speaker none
   if var RIDING == 1 goto Off
-  choose "Which Pokémon will you call?" "Tauros" "Stoutland" "Mudsdale" "Sharpedo" "Cancel"
+  choose "Which Pokémon will you call?" "Tauros" "Stoutland" "Mudsdale" "Sharpedo" "Mantine" "Cancel"
   if var RESULT == 0 goto Tauros
   if var RESULT == 1 goto Stoutland
   if var RESULT == 2 goto Mudsdale
   if var RESULT == 3 goto Sharpedo
+  if var RESULT == 4 goto Mantine
   end
 label Tauros
   ride "Tauros"
@@ -1089,6 +1090,12 @@ label Sharpedo
   if var RESULT == 1 end
   text "Nothing came. Sharpedo comes only once it is registered in the Ride Pager, and only out on the water."
   end
+# Mantine comes only under a surfer too (plan 23, Mantine Surf)
+label Mantine
+  ride "Mantine"
+  if var RESULT == 1 end
+  text "Nothing came. Mantine comes only once it is registered in the Ride Pager, and only out on the water."
+  end
 label Rode
   if var RESULT == 1 end
   text "Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors."
@@ -1099,10 +1106,10 @@ label Off
   end
 
 # A rock in the sea (plan 23, the wave after Ultra Space: Alola's water ride): too sheer to climb and too hard for a
-# Lapras, rammed apart by Sharpedo's Jet under a surfer. RIDING is 1 on the water only on Sharpedo's back
+# Lapras, rammed apart by Sharpedo's Jet under a surfer. RAMMING is 1 on the water only on Sharpedo's back
 script SeaRock
   speaker none
-  if var RIDING == 1 goto Ram
+  if var RAMMING == 1 goto Ram
   text "A rock juts out of the sea, sheer and slippery. A fast and fierce Pokémon of the sea could ram it apart."
   end
 label Ram
@@ -3871,6 +3878,7 @@ label NotYet
 script ZygardeCell
   speaker none
   if not item "Zygarde Cube" goto NoCube
+  setflag FLAG_ALOLA_GOT_ZYGARDE_CUBE
   setflag own
   addvar VAR_ALOLA_ZYGARDE_CELLS 1
   sound "select"
@@ -3884,11 +3892,12 @@ label NoCube
 script ZygardeCore
   speaker none
   if not item "Zygarde Cube" goto NoCube
+  setflag FLAG_ALOLA_GOT_ZYGARDE_CUBE
   setflag own
   addvar VAR_ALOLA_ZYGARDE_CELLS 1
   fanfare item
   text "{player} found a Zygarde Core! The Zygarde Cube now holds {var:VAR_ALOLA_ZYGARDE_CELLS} of 100."
-  text "The Core hums inside the Cube. A Zygarde put together by the Cube will know more of its moves."
+  text "The Core hums inside the Cube. Now the Cube can teach a Zygarde one more of its own moves."
   end
 label NoCube
   text "A green blob with a bright red heart pulses on the ground. As soon as it is touched, it sinks out of sight..."

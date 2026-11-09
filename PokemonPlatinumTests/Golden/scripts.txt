@@ -6252,9 +6252,31 @@ way 0.0
   * frontier seen 491
   * frontier seen 492
   * frontier seen 493
-way 0.2, from answer 2
+way 0.3, from answer 2
   Receptionist> The tree isn't going anywhere. Come back whenever you like.
   ? Which battles will you take on? = Cancel
+way 0.2, from answer 2
+  Receptionist> You need 2 Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Which battles will you take on? = Multi
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
 way 0.1, from answer 2
   Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
   Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
@@ -6287,6 +6309,7 @@ way 2, from answer 1
 way 1, from answer 1
   Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
   Receptionist> Three go into single battles, and four into double battles.
+  Receptionist> In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time.
   Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
   Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
   ? Would you like to take on the Battle Tree? = The rules
@@ -10527,6 +10550,22 @@ way 0
 way 1, from answer 1
   * wildbattle Ho-Oh 45 nofleeing Lost
   + seen bell_tower_roof.Ho-Oh on the Bell Tower
+=== big_wave_beach.MantineGate1
+from the trigger at 160,170 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate2
+from the trigger at 172,173 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate3
+from the trigger at 162,176 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
+=== big_wave_beach.MantineGate4
+from the trigger at 174,178 of Melemele
+way -
+  > The run is over. Only a Mantine skims through the buoys without scattering them.
 === big_wave_beach.Sightseer
 from Sightseer at 186,162 of Melemele
 way -
@@ -14833,8 +14872,12 @@ way 0
   > Nothing came. A Pokémon comes only once it is registered in the Ride Pager, and only out of doors.
   ? Which Pokémon will you call? = Tauros
   * ride refused Tauros
-way 4, from answer 1
+way 5, from answer 1
   ? Which Pokémon will you call? = Cancel
+way 4, from answer 1
+  > Nothing came. Mantine comes only once it is registered in the Ride Pager, and only out on the water.
+  ? Which Pokémon will you call? = Mantine
+  * ride refused Mantine
 way 3, from answer 1
   > Nothing came. Sharpedo comes only once it is registered in the Ride Pager, and only out on the water.
   ? Which Pokémon will you call? = Sharpedo
@@ -20962,6 +21005,16 @@ way 0
   + FLAG_DAILY_ALOLA_SCAN_LITWICK_MET
 way 1, from answer 1
   * wildbattle Litwick 10 Lost
+=== hauoli_cemetery.Widow
+from Old Woman at 356,120 of Melemele
+way -
+  Old Woman> My husband is buried here. I come every morning and tell him what the island is up to. Machamp carries the water.
+  Old Woman> He found a strange old plate once, on a night walk through these graves. It belongs with someone who helps the lost find their way.
+=== hauoli_cemetery.WidowMachamp
+from Machamp at 357,120 of Melemele
+way -
+  > Machamp tipped its head to you and went on carrying water to the grave.
+  * cry Machamp
 === hauoli_city.Ferry
 from Sailor at 357,180 of Melemele
 way -
@@ -36013,6 +36066,7 @@ way -
   > Lucas put it away in the Key Items pocket.
   Dexio> Bring the Cube back whenever you've found ten or more. We'll be here, keeping the caravan warm.
   * fanfare FanfareKeyItem
+  + FLAG_ALOLA_GOT_ZYGARDE_CUBE
 === ulaula_route_16.ScanDuosion
 from Duosion at 236,169 of Ulaula
 way 0

@@ -881,14 +881,16 @@
         "Stoutland",
         "Mudsdale",
         "Sharpedo",
+        "Mantine",
         "Cancel"
       ],
       "text": [
-        "Pe care Pokémon îl chemi?",
+        "Ce Pokémon vei chema?",
         "Tauros",
         "Stoutland",
         "Mudsdale",
         "Sharpedo",
+        "Mantine",
         "Anulează"
       ]
     },
@@ -898,6 +900,14 @@
       ],
       "text": [
         "N-a venit nimeni. Sharpedo vine doar dacă e înregistrat în Ride Pager, și doar pe apă."
+      ]
+    },
+    {
+      "en": [
+        "Nothing came. Mantine comes only once it is registered in the Ride Pager, and only out on the water."
+      ],
+      "text": [
+        "N-a venit nimic. Mantine vine doar după ce e înregistrat în Ride Pager și doar pe apă."
       ]
     },
     {
@@ -2653,7 +2663,7 @@
         "Clerk"
       ],
       "text": [
-        "Funcționar"
+        "Vânzătoarea"
       ]
     },
     {
@@ -3644,10 +3654,10 @@
     },
     {
       "en": [
-        "The Core hums inside the Cube. A Zygarde put together by the Cube will know more of its moves."
+        "The Core hums inside the Cube. Now the Cube can teach a Zygarde one more of its own moves."
       ],
       "text": [
-        "Nucleul zumzăie în Cub. Un Zygarde alcătuit de Cub va cunoaște mai multe dintre mișcările sale."
+        "Nucleul zumzăie în Cub. Acum Cubul poate învăța un Zygarde încă una dintre mișcările lui."
       ]
     },
     {

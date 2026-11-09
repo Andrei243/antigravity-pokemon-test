@@ -2166,7 +2166,7 @@
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
       "tree": {
-        "single": "Single Battle", "double": "Double Battle",
+        "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
         "hard": { "single": "Super Single Battle", "double": "Super Double Battle" }
       },
       "house": {

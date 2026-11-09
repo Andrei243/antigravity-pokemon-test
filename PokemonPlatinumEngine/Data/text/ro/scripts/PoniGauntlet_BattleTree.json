@@ -37,12 +37,14 @@
         "Which battles will you take on?",
         "Single",
         "Double",
+        "Multi",
         "Cancel"
       ],
       "text": [
         "Ce lupte vei înfrunta?",
         "Simple",
         "Duble",
+        "Multiple",
         "Anulează"
       ]
     },
@@ -168,6 +170,14 @@
       ],
       "text": [
         "Trei intră în luptele simple și patru în cele duble."
+      ]
+    },
+    {
+      "en": [
+        "In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time."
+      ],
+      "text": [
+        "În sala Multiplă intri cu doi Pokémoni. Un partener ales de noi mai aduce doi, iar voi doi înfruntați câte doi Antrenori deodată."
       ]
     },
     {

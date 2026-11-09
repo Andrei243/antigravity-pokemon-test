@@ -83,6 +83,23 @@ Decisions: four islands as four matrices of one world folder, joined by a ferry 
 
 **A decompilation of Pokémon Moon** (found by the user on 2026-10-24: [gradenGnostic/pokemoon](https://github.com/gradenGnostic/pokemoon)). By the overview's rule, a decompilation wherever one exists, Z5 looks at it first, before the dump reader of decision 5. What it was on 2026-10-24, read from its README: the European base release's ARM executable, about 16% of its functions in C (2,984 of 18,945; 298 matching exactly); no licence stated; and no game data: the README says retail resources stay outside it, supplied from the player's own copy. So unlike pret's GBA and DS projects and fuddlesworth/pokebw2 (Unova's, whose maps, events, encounters and trainers are files of the repository), it gives Alola's code (how a trial, a totem or a SOS call is worked out) but none of Alola's layouts, events, wild Pokémon or trainers. Z5 checks again what it holds then, and asks the user before anything is pinned: a licence must be given before it is fetched into a cache (plan 22 · U1 pinned pokebw2 under its GPL v3.0), and a reader that needs the player's own game files is decision 5's dump reader, whose rules hold (nothing of the game in the repository but numbers and layouts).
 
+### Sharpedo's currents, Mantine Surf and the rest of the odds and ends (the wave after the Battle Tree)
+- **Built** (2026-11-09; rulings, "Sharpedo's currents, Mantine Surf, the day and night cells, the Cores' moves, the widow's
+  Spooky Plate and the Battle Tree's Multi room"; facts from public descriptions, never the games' pictures or words): **strong
+  currents** (the GBA's `CurrentWest` and kin, drawn in MapDraw as `<`, `>`, `A`, `V`) that carry a Lapras's rider on and that a
+  **Sharpedo Jet crosses** (`RidePager.StemsCurrents`), in the gap of a reef off the Secluded Shore that holds an islet with a
+  Rare Candy; **Mantine Surf**, the Ride Pager's second water ride (registered by Big Wave Beach's surfer, a run's pace, no wild
+  Pokémon met from its back) and **the beach's course** of four gates of buoys ridden in order for a Big Pearl and, the third
+  time, a Star Piece (the built-in `RAMMING` told Sharpedo's ramming from any ride); **twelve cells by day or by night only**
+  (`ClockFlags.Daylight`, `Nightfall`, none before the Cube is had); **each Core's own Cube move** (`FormChanges.CoreMoves`);
+  the **old woman and her Machamp** of Hau'oli Cemetery and **the Spooky Plate**; and **the Battle Tree's Multi room**
+  (`BattleTree` gains the `multi` way: two entered, a partner of ours with two, two trainers with two each, no host or Super
+  room, `StreakChallenge.Partner`, `facility tree partner`). Tests: `AlolaOddsAndEndsTests`. Shots owed (no GPU): the
+  `alolalast` mode's `wt20` on. **Not built**: the Ultra Warp Ride (its legendaries of every earlier region would each need their
+  species given a way and their own beat) and the link to Galar (the chain already holds `Transport.Plane` from Alola to Galar;
+  Galar has no region file or maps until plan 33). **Left**: the Multi room's partner choice and scouting, Magearna and
+  Marshadow (plan 29 · LS11), a Mantine that does tricks, the new places' own songs.
+
 ### Galar and Paldea
 Moved on 2026-11-04 at the user's request to plans of their own, on an open-world engine instead of this plan's grid: [plan 32](32-open-world-engine.md) (the engine), [plan 33](33-galar.md) (Galar, the Isle of Armor and the Crown Tundra) and [plan 34](34-paldea.md) (Paldea, the Teal Mask, the Indigo Disk and Mochi Mayhem). The two decompilations of Sword this section recorded are in plan 33's "Where we are".
 

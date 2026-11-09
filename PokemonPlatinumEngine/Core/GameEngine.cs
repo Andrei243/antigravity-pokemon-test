@@ -246,6 +246,7 @@ public partial class GameEngine
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
         flow.BagScreen.RunCap = CurrentLevelCap();
+        flow.BagScreen.CubeMoves = FormChanges.CubeMovesFor(flow.Story.Has);
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
         flow.PartyScreen.RunCap = flow.DayCare.LevelCap = flow.BagScreen.RunCap;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);

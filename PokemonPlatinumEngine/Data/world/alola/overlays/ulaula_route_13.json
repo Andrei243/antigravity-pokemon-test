@@ -5,7 +5,7 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
-    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true, "shownBy": "FLAG_ALOLA_NIGHTFALL" },
     "makalii": {
       "name": "Makalii",
       "npcType": "ace_trainer_f",

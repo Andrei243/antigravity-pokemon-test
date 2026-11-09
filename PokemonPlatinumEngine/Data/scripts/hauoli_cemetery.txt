@@ -68,6 +68,36 @@ label After
   end
 
 
+# The old woman and her Machamp (plan 23, the day and night cells and the rest: Sun and Moon's widow on her Machamp, in our
+# words): she keeps her husband's grave by day, and gives the Spooky Plate, which he found on this island, to a trainer who
+# has seen the little girl and her friend reunited (VAR_ALOLA_CEMETERY_GIRL 3). FLAG_ALOLA_SPOOKY_PLATE is its once
+script Widow
+  face self player
+  speaker "Old Woman"
+  if flag FLAG_ALOLA_SPOOKY_PLATE goto Done
+  if var VAR_ALOLA_CEMETERY_GIRL == 3 goto Plate
+  say "My husband is buried here. I come every morning and tell him what the island is up to. Machamp carries the water."
+  say "He found a strange old plate once, on a night walk through these graves. It belongs with someone who helps the lost find their way."
+  end
+label Plate
+  say "You gave that poor little girl her friend back. I felt it when the night grew quiet. My husband would have liked you."
+  say "Take his plate. He found it on this very island, and I have kept it long enough. It should go on its way."
+  give "Spooky Plate"
+  setflag FLAG_ALOLA_SPOOKY_PLATE
+  say "It hums when the dark is near. Do not be afraid of it. It is only keeping the dead company."
+  end
+label Done
+  say "Machamp and I will keep him company. Go well, dear. Walk gently among the graves."
+  end
+
+
+script WidowMachamp
+  speaker none
+  cry "Machamp"
+  text "Machamp tipped its head to you and went on carrying water to the grave."
+  end
+
+
 # The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
 script ScanLitwick
   speaker none
