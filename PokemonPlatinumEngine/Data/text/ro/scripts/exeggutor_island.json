@@ -72,5 +72,15 @@
         "Hai, mergi. Altarul e pe drumul din nord."
       ]
     }
+  ],
+  "ScanSerperior": [
+    {
+      "en": [
+        "It's the Serperior the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Serperior găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

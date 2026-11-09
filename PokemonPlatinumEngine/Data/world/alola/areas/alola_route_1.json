@@ -25,7 +25,31 @@
     { "id": "girl", "looks": "lass", "movement": "wander_around", "x": 244, "z": 162, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
     { "id": "surfer", "looks": "swimmer_m", "movement": "look_south", "x": 256, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 258, "z": 166, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_1_POTION", "item": "Potion", "script": "" },
-    { "id": "rock_ten_carat", "looks": "breakable_rock", "movement": "look_around", "x": 216, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_ROCK_TEN_CARAT", "script": "" }
+    { "id": "rock_ten_carat", "looks": "breakable_rock", "movement": "look_around", "x": 216, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_ROCK_TEN_CARAT", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 242,
+      "z": 170,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_1_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 250,
+      "z": 156,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_1_2"
+    }
   ],
   "signs": [
     { "x": 247, "z": 141, "type": 0, "script": "RouteSign" },

@@ -9684,6 +9684,72 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   plant's inside, Sharpedo's currents, Stoutland's buried items, the Secluded Shore, Big Wave Beach and Hau'oli Cemetery,
   Island Scan, the version's other mythicals and the new places' own songs (they play Alola's road song).
 
+## The Battle Tree, the power plant, Zygarde's cells and the rest of the islands (2026-11-09, plan 23, the wave after Poni's last places)
+
+- **Where it comes from.** As Z5 to Z8: from the places and features as they are publicly described (Bulbapedia's pages of
+  Hau'oli Cemetery, Big Wave Beach and Ula'ula Beach, which Sun and Moon call the Secluded Shore; Serebii's page of the
+  Zygarde Cores and Cells; Bulbapedia's QR Scanner page for the Island Scan's Pokémon by island and day), never a picture,
+  map, line or script of the games. Every line, person's name, team and the cemetery's story are ours. The drawings are
+  `tools/MapDraw/alola/hauoli_cemetery.txt`, `big_wave_beach.txt` and `secluded_shore.txt`; the cells, the buried items, the
+  scanned Pokémon and Dexio and Sina were placed by a throwaway generator kept outside the repository, each on a tile whose
+  eight neighbours are open and that lies near a path, so none stands in a way.
+- **The Battle Tree** (`Models/Facilities/BattleTree.cs`, a row of plan 37 · FC2's `FacilityPlaces`, the script's
+  `facility tree …`): the lobby and the hall behind Poni Gauntlet's door (`PoniGauntlet_BattleTree`,
+  `PoniGauntlet_BattleTreeHall`, rooms of ours on the Battle Maison's plan) play the streak house's frame: single battles
+  (three entered) and double battles (four), Sun and Moon's counts, at level 50 against trainers of the later sets. Sun and
+  Moon's Battle Legends are not here: two Tree Masters of ours, Kaimana (single) and Leilani (double), stand in the way at the
+  20th battle with a normal team and, beaten, open the room's Super battles, where they come at the 50th with a Super team
+  and leave a trophy the first time (`VAR_ALOLA_TREE_TROPHY_SINGLE`, `_DOUBLE`; the board's print, silver for one and gold
+  for both, through `FacilityPlaces.Trophies`). Every team holds a Z-Crystal and wears a Z-Ring. The Battle Points are a table
+  of ours near Sun and Moon's (two a win to the 10th, three to the 20th, four after, one more in a Super room, twenty or forty
+  for a master). The counter beside the desk (`frontier prize tree`) trades them for the eighteen type Z-Crystals and the
+  later games' battle items. **Not built**: Sun and Moon's Multi room (a partner beside the player; the frame plays one trainer
+  to a side) and the scouting of trainers to battle beside.
+- **The geothermal power plant** at the top of Blush Mountain (`BlushMountain_PowerPlant`): a chief who gives an Electric
+  Seed once, a worker and a scientist who battle once each (`alola_worker_kanoa`, `alola_scientist_ola`, by flags of their
+  own) and a Zygarde Cell, as Sun and Moon keep one there.
+- **Hau'oli Cemetery** east of Route 2 (wild Zubat, Gastly, Drifloon by day and Misdreavus by night, at Sun and Moon's levels;
+  three trainers of ours). **Its story is ours**: after dark (`FLAG_ALOLA_CEMETERY_NIGHT`, set and cleared by the place's
+  arrival by the hour) a little girl waits by a grave for her Misdreavus, who went on ahead of her; she asks after a sign her
+  friend left where the flowers grow brightest, the flowers by the east lamp hold a Spell Tag, and given it she goes after her
+  friend (`VAR_ALOLA_CEMETERY_GIRL` 0 to 3, `FLAG_ALOLA_CEMETERY_GIRL_GONE`). Sun and Moon's widow on her Machamp, the Spooky
+  Plate and the Trainers' School's mysteries are not here.
+- **Big Wave Beach** (Ultra Sun and Ultra Moon's, west of Route 2) lies west of Route 1's woods here, where the island has
+  room: sand, surf and a Team Skull grunt, beaten for a Fresh Water from the surfer. Mantine Surf is not built: the sea is
+  surfed as any other. **The Secluded Shore** (Sun and Moon's, south of Route 13 and reached by sea) lies below Route 11 here,
+  reached on foot: a rock shelf, a beach with pearls hidden in it, two swimmers and a girl who gives a Stardust once a
+  Sandygast or Palossand of the team has shown her the right sand (Ultra Sun's errand, ours).
+- **The Zygarde Cube and its cells.** Dexio and Sina stand by their caravan on Route 16 and give the Zygarde Cube (the bag's
+  key item, plan 06 · R29b's form changer) at the first word. A hundred pieces of Zygarde lie about Alola, Sun and Moon's
+  count, ninety-five Cells and five Cores (one on each island's chosen place and one at Aether Paradise): each is a thing of
+  the map (`NPC.ZygardeCellType`, `PropType.ZygardeCell`, a card of ours), gathered into the Cube by `common.ZygardeCell` or
+  `ZygardeCore` (its flag in the area file, as an item ball keeps its own; `VAR_ALOLA_ZYGARDE_CELLS` the count), and without
+  the Cube it slips away and is there again. Sun and Moon's spread by island is kept roughly (Melemele 15, Akala 18, Ula'ula 30
+  with the plant's, Poni 32, Aether Paradise 5), but not which only show by day or night: every one is always there. Dexio
+  puts them together as Sun and Moon's Zygarde Restoration does: a 10% Forme at ten (`givepokemon "Zygarde-10"`, which now
+  takes a form's name), a 50% Forme at fifty and, at a hundred, a Zygarde with Power Construct
+  (`Zygarde-50-Power-Construct`, level 60), each once. The Cores teach nothing of their own: plan 06 · R29b's Cube already
+  teaches all five of its moves.
+- **Stoutland's Search** (`Overworld/StoutlandSearch.cs`): ridden, Stoutland stops with its nose down (the player's "!" and
+  a ping) wherever something hidden lies within three steps, once for each, and only on its back is a **buried item** dug up
+  (`HiddenItem.Buried`, `"buried": true` on an area file's hidden item). Fifteen buried items lie about the islands (Rare
+  Candies, PP Ups, Nuggets, Star Pieces, Rare Bones, Big Pearls and more). Sun and Moon mark the spot on the ground;
+  ours is the bubble.
+- **The Island Scan.** Sun and Moon's QR Scanner spends 100 points of scanned QR codes for an hour's scan of the island the
+  player stands on. Ours is a scientist's scanner in Heahea City's research laboratory, once a day
+  (`FLAG_DAILY_ALOLA_ISLAND_SCAN`), of any island the player chooses: the island's Pokémon of the day of the week (Sun and
+  Moon's table: Melemele's Totodile, Deino, Horsea, Klink, Chikorita, Litwick and Cyndaquil; Akala's Spheal, Luxio, Honedge,
+  Venipede, Bellsprout, Marill and Gothita; Ula'ula's Swinub, Duosion, Roselia, Staravia, Vigoroth, Axew and Rhyhorn; Poni's
+  Conkeldurr, Togekiss, Leavanny, Serperior, Samurott, Emboar and Eelektross, each at Sun and Moon's place and level) stands
+  there for the rest of the day (`FLAG_DAILY_ALOLA_SCAN_<SPECIES>`, cleared by the day's turn) until it has been battled. The
+  special move each knows in Sun and Moon and the hour's limit are not kept.
+- **The mythicals.** Magearna and Marshadow stay owed to plan 29 · LS11, whose event-only Pokémon wait for proposals the
+  user approves: no clean way of the games' own gives either (Magearna's was a QR code of an event, Marshadow's a gift).
+- **The songs** of the Battle Tree, the cemetery, the beaches and the power plant are our own compositions
+  (`alola/tree`, `alola/cemetery`, `alola/beach`, `alola/power_plant`).
+- **Left**: the Battle Tree's Multi room; Mantine Surf; Sharpedo's currents; the Ultra Warp Ride; the widow on Machamp and the
+  Spooky Plate; the day and night cells; the Zygarde Cores' own moves; Magearna and Marshadow (plan 29 · LS11).
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

@@ -1,5 +1,15 @@
 {
   "people": {
+    "scan_spheal": {
+      "name": {
+        "en": [
+          "Spheal"
+        ],
+        "text": [
+          "Spheal"
+        ]
+      }
+    },
     "swimmer": {
       "name": {
         "en": [

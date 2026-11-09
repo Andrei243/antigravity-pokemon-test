@@ -15,6 +15,7 @@
     { "script": "Bridge", "x": 247, "z": 85, "width": 6, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 3 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Core", "npcType": "ZygardeCell", "script": "ZygardeCore", "still": true },
     "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_LILLIE_TRAIL" }
   },
   "signs": {

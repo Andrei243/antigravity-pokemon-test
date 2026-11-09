@@ -20,7 +20,30 @@
   "objects": [
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 20, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_TEN_CARAT_HILL_HARD_STONE", "item": "Hard Stone", "script": "" },
     { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 36, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_TEN_CARAT_HILL_NUGGET", "item": "Nugget", "script": "" },
-    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 30, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 30, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 41,
+      "z": 35,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_TEN_CARAT_HILL_1"
+    },
+    {
+      "id": "scan_deino",
+      "looks": "deino",
+      "movement": "look_south",
+      "x": 37,
+      "z": 18,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [],
   "triggers": [],

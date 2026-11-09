@@ -5,6 +5,8 @@
   "trees": "Round",
   "callsForHelp": true,
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Core", "npcType": "ZygardeCell", "script": "ZygardeCore", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "dulse": {
       "name": "Dulse",
       "npcType": "dulse",

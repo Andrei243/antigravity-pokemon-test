@@ -138,6 +138,66 @@
       "trainer": "normal",
       "sight": 3,
       "script": "TRAINER_AETHER_EMPLOYEE_ITO"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 83,
+      "z": 81,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CORE_AETHER_PARADISE_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 35,
+      "z": 43,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AETHER_PARADISE_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 42,
+      "z": 27,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AETHER_PARADISE_3"
+    },
+    {
+      "id": "zygarde_cell_4",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 41,
+      "z": 61,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AETHER_PARADISE_4"
+    },
+    {
+      "id": "zygarde_cell_5",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 58,
+      "z": 66,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AETHER_PARADISE_5"
     }
   ],
   "signs": [

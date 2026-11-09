@@ -80,6 +80,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_10_REVIVE",
       "item": "Revive"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 43,
+      "z": 292,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_10_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 44,
+      "z": 304,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_10_2"
+    },
+    {
+      "id": "scan_staravia",
+      "looks": "staravia",
+      "movement": "look_south",
+      "x": 58,
+      "z": 314,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [
@@ -88,6 +123,15 @@
       "z": 304,
       "type": 0,
       "script": "RouteSign"
+    },
+    {
+      "x": 51,
+      "z": 289,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Star Piece",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_ULAULA_ROUTE_10_1",
+      "buried": true
     }
   ],
   "triggers": [],

@@ -10,6 +10,7 @@
     { "warp": 0, "map": "UlaulaRoute17_PoliceStation", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Core", "npcType": "ZygardeCell", "script": "ZygardeCore", "still": true },
     "grunt_17a": {
       "name": "Grunt",
       "npcType": "skull_grunt",

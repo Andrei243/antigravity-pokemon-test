@@ -85,6 +85,30 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_RESOLUTION_DUBIOUS_DISC",
       "item": "Dubious Disc"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 28,
+      "z": 58,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_RESOLUTION_CAVE_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 40,
+      "z": 55,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_RESOLUTION_CAVE_2"
     }
   ],
   "signs": [],

@@ -22,7 +22,42 @@
     { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 362, "z": 66, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_KEOLA" },
     { "id": "hau", "looks": "hau", "movement": "look_east", "x": 340, "z": 69, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 290, "z": 56, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_3_SHARP_BEAK", "item": "Sharp Beak", "script": "" },
-    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 360, "z": 58, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_3_SUPER_POTION", "item": "Super Potion", "script": "" }
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 360, "z": 58, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_3_SUPER_POTION", "item": "Super Potion", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 318,
+      "z": 72,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_3_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 301,
+      "z": 76,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ALOLA_ROUTE_3_2"
+    },
+    {
+      "id": "scan_cyndaquil",
+      "looks": "cyndaquil",
+      "movement": "look_south",
+      "x": 300,
+      "z": 70,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
     { "x": 299, "z": 73, "type": 0, "script": "RouteSign" },

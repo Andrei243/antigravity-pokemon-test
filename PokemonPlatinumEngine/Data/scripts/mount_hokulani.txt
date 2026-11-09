@@ -1,0 +1,11 @@
+# mount_hokulani (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanAxew
+  speaker none
+  cry "Axew"
+  text "It's the Axew the Island Scan picked up! It's ready to battle!"
+  wildbattle "Axew" 28
+  setflag FLAG_DAILY_ALOLA_SCAN_AXEW_MET
+  end

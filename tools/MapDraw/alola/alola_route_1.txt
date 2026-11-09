@@ -9,8 +9,8 @@ TTTTTTTTTTTTwwwwww..::::..wwwwwwTTTTTTTTTTTT
 TTTTTTTTTTTTwwwwww..::::..wwwwwwTTTTTTTTTTTT
 TTTTTTTTTTTTwwwwww..::::..wwwwwwTTTTTTTTTTTT
 TTTTTTTTTTTT........::::........TTTTTTTTTTTT
-TTTTTTTTTTTT........::::........TTTTTTTTTTTT
-TTTTTTTTTTTT........::::........TTTTTTTTTTTT
+....................::::........TTTTTTTTTTTT
+....................::::........TTTTTTTTTTTT
 TTTTTTTTTTTT........::::........TTTTTTTTTTTT
 TTTTTT..............::::........TTTTTTTTTTTT
 TTTTTT.HHHHHHH......::::........TTTTTTTTTTTT

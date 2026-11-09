@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Tree"
+    ],
+    "text": [
+      "Battle Tree"
+    ]
+  },
+  "people": {
+    "host": {
+      "name": {
+        "en": [
+          "Referee"
+        ],
+        "text": [
+          "Arbitru"
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "onlooker": {
+      "name": {
+        "en": [
+          "Onlooker"
+        ],
+        "text": [
+          "Spectatoare"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The branches up here hold the strongest Trainers in Alola. Every battle in this hall, the leaves stop rustling to watch."
+        ],
+        "text": [
+          "Ramurile de aici țin cei mai puternici Antrenori din Alola. La fiecare luptă din sala asta, frunzele se opresc din foșnit ca să privească."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

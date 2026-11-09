@@ -492,9 +492,10 @@ public class Warp
 /// <summary>
 /// An item nobody can see, found by looking at its tile (plan 02): the item, how many, and the story flag set once
 /// it has been found, after which nothing is there. <see cref="Range"/> is from how many tiles away the original's
-/// Dowsing Machine notices it.
+/// Dowsing Machine notices it. A <see cref="Buried"/> one (plan 23, Alola's Stoutland) is dug up only by someone riding
+/// Stoutland (<see cref="StoutlandSearch"/>).
 /// </summary>
-public sealed record HiddenItem(string Item, int Count, string Flag, int Range = 0);
+public sealed record HiddenItem(string Item, int Count, string Flag, int Range = 0, bool Buried = false);
 
 /// <summary>
 /// Tiles that start a script when the player steps onto one of them (plan 02 · S1): a rectangle, the script, and

@@ -50,6 +50,11 @@
     }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Core", "npcType": "ZygardeCell", "script": "ZygardeCore", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_3": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_4": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_5": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "gladion": { "name": "Gladion", "npcType": "gladion", "script": "Gladion", "still": true, "hiddenBy": "FLAG_ALOLA_TYPE_NULL_GIVEN", "shownBy": "AlolaHallOfFame" },
     "sailor": {
       "name": "Sailor",

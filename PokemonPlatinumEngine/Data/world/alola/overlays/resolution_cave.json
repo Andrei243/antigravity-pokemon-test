@@ -7,6 +7,8 @@
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "legend": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_ALOLA_CAUGHT_ZYGARDE" },
     "kanoa": {
       "name": "Kanoa",

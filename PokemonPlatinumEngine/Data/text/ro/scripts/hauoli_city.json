@@ -226,5 +226,15 @@
         "Feribotul a plecat din portul Hau'oli..."
       ]
     }
+  ],
+  "ScanKlink": [
+    {
+      "en": [
+        "It's the Klink the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Klink găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

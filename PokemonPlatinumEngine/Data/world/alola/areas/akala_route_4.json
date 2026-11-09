@@ -21,10 +21,54 @@
     { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 142, "z": 256, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_ANELA" },
     { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 158, "z": 250, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_IKAIKA" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 133, "z": 291, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_4_GREAT_BALL", "item": "Great Ball", "script": "" },
-    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_4_REVIVE", "item": "Revive", "script": "" }
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 170, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_4_REVIVE", "item": "Revive", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 146,
+      "z": 252,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_4_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 149,
+      "z": 286,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_AKALA_ROUTE_4_2"
+    },
+    {
+      "id": "scan_venipede",
+      "looks": "venipede",
+      "movement": "look_south",
+      "x": 147,
+      "z": 257,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    }
   ],
   "signs": [
-    { "x": 152, "z": 296, "type": 0, "script": "RouteSign" }
+    { "x": 152, "z": 296, "type": 0, "script": "RouteSign" },
+    {
+      "x": 146,
+      "z": 244,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "PP Up",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_AKALA_ROUTE_4_1",
+      "buried": true
+    }
   ],
   "triggers": [],
   "land": [

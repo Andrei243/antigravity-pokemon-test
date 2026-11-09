@@ -117,14 +117,14 @@ public class ItemSourcesTests
             "Heatranite", "Darkranite", "Zeraorite", "Raichunite X", "Raichunite Y", "Chimechite", "Absolite Z", "Staraptite",
             "Garchompite Z", "Lucarionite Z", "Golurkite", "Crabominite", "Golisopite", "Scovillainite", "Baxcalibrite", "Glimmoranite"
         }),
-        // Alola: the crystals its trials don't give (the eleven trials' and grand trials' are given since plan 23 · Z5 to Z7),
+        // Alola: the crystals its trials don't give (the eleven trials' and grand trials' are given since plan 23 · Z5 to Z7, and
+        // every type's at the Battle Tree's counter since its inside was built; the Zygarde Cube is Dexio's on Route 16),
         // its species' crystals, its form items and its evolution items
         (AlolaFirst, new[] { "Pikanium Z", "Eevium Z" }),
         (AlolaLast, new[]
         {
-            "Psychium Z", "Icium Z", "Steelium Z", "Fairium Z", "Flyinium Z", "Buginium Z", "Poisonium Z", "Decidium Z", "Incinium Z",
-            "Primarium Z", "Aloraichium Z", "Snorlium Z", "Mimikium Z", "Lycanium Z", "Kommonium Z", "Solganium Z", "Lunalium Z",
-            "Zygarde Cube"
+            "Decidium Z", "Incinium Z",
+            "Primarium Z", "Aloraichium Z", "Snorlium Z", "Mimikium Z", "Lycanium Z", "Kommonium Z", "Solganium Z", "Lunalium Z"
         }),
         (Meltan, new[] { "Meltan Candy" }),
         (UltraSpace, new[] { "Tapunium Z", "Ultranecrozium Z", "Mewnium Z", "N-Solarizer", "N-Lunarizer" }),

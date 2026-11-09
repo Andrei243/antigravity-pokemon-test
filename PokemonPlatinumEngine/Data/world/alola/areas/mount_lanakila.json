@@ -106,6 +106,30 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_LANAKILA_MAX_ELIXIR",
       "item": "Max Elixir"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 55,
+      "z": 42,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MOUNT_LANAKILA_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 26,
+      "z": 92,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MOUNT_LANAKILA_2"
     }
   ],
   "signs": [],

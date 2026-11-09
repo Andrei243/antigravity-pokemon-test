@@ -8,6 +8,7 @@
     { "warp": 0, "map": "AkalaOutskirts_RuinsOfLife", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
+    "scan_honedge": { "name": "Honedge", "npcType": "Pokemon", "species": "Honedge", "script": "ScanHonedge", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_HONEDGE", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_HONEDGE_MET" },
     "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_RUINS_DONE", "shownBy": "FLAG_ALOLA_OLIVIA_MET" },
     "gentleman": {
       "name": "Makoa",

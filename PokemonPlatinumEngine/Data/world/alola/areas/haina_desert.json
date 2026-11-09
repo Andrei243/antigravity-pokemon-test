@@ -98,6 +98,30 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_HAINA_DESERT_FOSSIL",
       "item": "Skull Fossil",
       "script": ""
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 352,
+      "z": 218,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_HAINA_DESERT_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 359,
+      "z": 247,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_HAINA_DESERT_2"
     }
   ],
   "signs": [
@@ -106,6 +130,15 @@
       "z": 227,
       "type": 0,
       "script": "DesertSign"
+    },
+    {
+      "x": 311,
+      "z": 230,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Rare Bone",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_HAINA_DESERT_1",
+      "buried": true
     }
   ],
   "triggers": [],

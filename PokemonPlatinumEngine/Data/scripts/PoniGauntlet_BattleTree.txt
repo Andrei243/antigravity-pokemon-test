@@ -1,0 +1,124 @@
+# The Battle Tree's lobby at the head of Poni Gauntlet (plan 23, the Battle Tree's inside; plan 37 · FC2's frame). The
+# lines are our own, and so are the people: neither of Sun and Moon's Battle Legends is here. Two rooms, Sun and Moon's
+# counts: single battles (three entered) and double battles (four), each an endless streak a battle at a time against
+# trainers of the later sets (Data/facility-sets.json) who grow stronger with the streak, the entered going in as copies
+# at level 50, whole again after every battle (Models/Facilities/BattleTree.cs, StreakChallenge.cs; `facility tree ...`).
+# A room's Tree Master stands in the way at its 20th battle and, beaten, opens its Super room, where the master comes
+# again at the 50th. Sun and Moon's Multi room, with a partner beside the player, is not built. The battles are
+# PoniGauntlet_BattleTreeHall.txt's arrival script. Battle Points go into the Frontier's one purse, and the counter
+# beside the desk trades them for the later games' items (Data/facility-prizes.json, `tree`).
+
+
+script Desk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches."
+  facility tree paused
+  if result == 1 goto Resume
+label Ask
+  choose "Would you like to take on the Battle Tree?" "Enter" "The rules" "The records" "No"
+  if result == 1 goto Rules
+  if result == 2 goto Records
+  if result == 3 goto Later
+  choose "Which battles will you take on?" "Single" "Double" "Cancel"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  goto Later
+label Single
+  facility tree way single
+  goto Super
+label Double
+  facility tree way double
+label Super
+  facility tree hardopen
+  if result == 0 goto Streak
+  choose "You've beaten this room's Tree Master, so its Super battles are open to you. Which will it be?" "Normal" "Super"
+  if result == 0 goto Streak
+  facility tree hard hard
+label Streak
+  facility tree streak
+  if result == 0 goto Enough
+  say "You've won {number} battles in a row there. The whole tree is talking about it!"
+label Enough
+  facility tree enough
+  if result == 1 goto Choose
+  say "You need {number} Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label Choose
+  say "Please choose the {number} Pokémon you'll enter."
+  facility tree choose
+  if result == 0 goto Later
+  facility tree check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  facility tree begin
+  say "Thank you! Your first opponent is waiting up in the branches. This way, please!"
+  fade out 0.6
+  warp "PoniGauntlet_BattleTreeHall" 8 10 up
+  fade in
+  end
+label Resume
+  say "Welcome back! The challenge you put down is waiting for you, just as you left it."
+  facility tree resume
+  if result == 0 goto Changed
+  say "Your streak of {number} still stands. This way, please!"
+  fade out 0.6
+  warp "PoniGauntlet_BattleTreeHall" 8 10 up
+  fade in
+  end
+label Changed
+  say "Oh... the Pokémon you entered aren't with you as they were. I'm sorry, but that challenge is over."
+  goto Ask
+label SameSpecies
+  say "I'm sorry. Those entered must all be of different species."
+  goto Later
+label SameItem
+  say "I'm sorry. No two of those entered may hold the same item."
+label Later
+  say "The tree isn't going anywhere. Come back whenever you like."
+  end
+label Records
+  facility tree board
+  say "Every streak is carved into the records. The tree remembers."
+  end
+label Rules
+  say "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+  say "Three go into single battles, and four into double battles."
+  say "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
+  say "The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you."
+  end
+
+
+# The counter of prizes: the later games' items for Battle Points, the Frontier's one purse
+script Prizes
+  face self player
+  speaker "Clerk"
+  say "Welcome! Battle Points won in the tree, or in any battle hall in the world, are good at this counter."
+  frontier prize tree
+  if result == 0 goto Bye
+  frontier buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! Use it well."
+  end
+label Short
+  say "I'm sorry. You don't have the Battle Points for that."
+  end
+label Bye
+  say "Come back when you've won a few more!"
+  end
+
+
+script Climber
+  face self player
+  speaker "Hiker"
+  say "I came all the way up the Gauntlet just to sit here and watch. My knees say it was worth it."
+  end
+
+script Watcher
+  face self player
+  speaker "Surfer"
+  say "Every Trainer in here beat the island challenge. Somehow that makes losing feel better and worse at once."
+  end

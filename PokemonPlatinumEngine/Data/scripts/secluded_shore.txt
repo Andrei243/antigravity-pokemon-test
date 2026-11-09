@@ -1,0 +1,23 @@
+# The Secluded Shore, Ula'ula Island (plan 23, the rest of the islands). The lines are our own. A girl looks for the
+# right sand for her Sandygast; a Sandygast of the player's team shows her (FLAG_ALOLA_SHORE_SAND_DONE), and she gives
+# a Stardust, as Ultra Sun's girl does.
+
+
+script SandGirl
+  face self player
+  speaker "Girl"
+  if flag FLAG_ALOLA_SHORE_SAND_DONE goto Done
+  if has "Sandygast" goto Show
+  if has "Palossand" goto Show
+  say "My Sandygast wants new sand for its body, but it's so fussy! It needs sand that a Ghost-type has already chosen."
+  say "If you had a Sandygast of your own, maybe it could show us which sand is best..."
+  end
+label Show
+  say "Is that a Sandygast? Look, it's digging over by the rocks! That must be the good sand!"
+  say "Thank you! Mine's already rolling in it. Please, take this. It washed up here last week."
+  give "Stardust"
+  setflag FLAG_ALOLA_SHORE_SAND_DONE
+  end
+label Done
+  say "My Sandygast has never looked so firm. It's the envy of every sandcastle on the island!"
+  end

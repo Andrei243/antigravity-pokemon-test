@@ -1,0 +1,276 @@
+{
+  "Desk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționeră"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches."
+      ],
+      "text": [
+        "Bun venit la Battle Tree! Cei mai puternici Antrenori care au urcat vreodată Poni Gauntlet se adună în ramurile lui."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on the Battle Tree?",
+        "Enter",
+        "The rules",
+        "The records",
+        "No"
+      ],
+      "text": [
+        "Vrei să înfrunți Battle Tree?",
+        "Intră",
+        "Regulile",
+        "Recordurile",
+        "Nu"
+      ]
+    },
+    {
+      "en": [
+        "Which battles will you take on?",
+        "Single",
+        "Double",
+        "Cancel"
+      ],
+      "text": [
+        "Ce lupte vei înfrunta?",
+        "Simple",
+        "Duble",
+        "Anulează"
+      ]
+    },
+    {
+      "en": [
+        "You've beaten this room's Tree Master, so its Super battles are open to you. Which will it be?",
+        "Normal",
+        "Super"
+      ],
+      "text": [
+        "L-ai învins pe Maestrul Copacului din sala asta, așa că luptele ei Super îți sunt deschise. Ce alegi?",
+        "Normale",
+        "Super"
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} battles in a row there. The whole tree is talking about it!"
+      ],
+      "text": [
+        "Ai câștigat acolo {number} lupte la rând. Tot copacul vorbește despre asta!"
+      ]
+    },
+    {
+      "en": [
+        "You need {number} Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        "Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și ținând obiecte diferite."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        "Un Ou nu poate participa, și nici {banned}."
+      ]
+    },
+    {
+      "en": [
+        "Please choose the {number} Pokémon you'll enter."
+      ],
+      "text": [
+        "Te rog alege cei {number} Pokémoni pe care îi înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Your first opponent is waiting up in the branches. This way, please!"
+      ],
+      "text": [
+        "Mulțumesc! Primul tău adversar te așteaptă sus, în ramuri. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! The challenge you put down is waiting for you, just as you left it."
+      ],
+      "text": [
+        "Bine ai revenit! Provocarea lăsată te așteaptă exact cum ai lăsat-o."
+      ]
+    },
+    {
+      "en": [
+        "Your streak of {number} still stands. This way, please!"
+      ],
+      "text": [
+        "Seria ta de {number} încă rezistă. Pe aici, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "Oh... the Pokémon you entered aren't with you as they were. I'm sorry, but that challenge is over."
+      ],
+      "text": [
+        "Oh... Pokémonii înscriși nu mai sunt cu tine cum erau. Îmi pare rău, dar provocarea s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. Those entered must all be of different species."
+      ],
+      "text": [
+        "Îmi pare rău. Cei înscriși trebuie să fie toți de specii diferite."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of those entered may hold the same item."
+      ],
+      "text": [
+        "Îmi pare rău. Doi dintre cei înscriși nu pot ține același obiect."
+      ]
+    },
+    {
+      "en": [
+        "The tree isn't going anywhere. Come back whenever you like."
+      ],
+      "text": [
+        "Copacul nu pleacă nicăieri. Revino oricând vrei."
+      ]
+    },
+    {
+      "en": [
+        "Every streak is carved into the records. The tree remembers."
+      ],
+      "text": [
+        "Fiecare serie e săpată în recorduri. Copacul își amintește."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
+      ],
+      "text": [
+        "Pokémonii tăi luptă la Nivelul 50, sau la nivelul lor dacă e mai mic. Sunt refăcuți după fiecare luptă."
+      ]
+    },
+    {
+      "en": [
+        "Three go into single battles, and four into double battles."
+      ],
+      "text": [
+        "Trei intră în luptele simple și patru în cele duble."
+      ]
+    },
+    {
+      "en": [
+        "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
+      ],
+      "text": [
+        "Câștigă și poți continua, te poți odihni și reveni mai târziu, sau te poți retrage. Pierzi o dată și seria s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you."
+      ],
+      "text": [
+        "Cu cât seria e mai lungă, cu atât Antrenorii sunt mai puternici. Ajungi la a douăzecea luptă și te întâlnește un Maestru al Copacului."
+      ]
+    }
+  ],
+  "Prizes": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzător"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Battle Points won in the tree, or in any battle hall in the world, are good at this counter."
+      ],
+      "text": [
+        "Bun venit! Punctele de Luptă câștigate în copac sau în orice sală de luptă din lume sunt bune la ghișeul ăsta."
+      ]
+    },
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        "{player} a dat {price} BP pe {item}."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Use it well."
+      ],
+      "text": [
+        "Mulțumesc! Folosește-l cu folos."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have the Battle Points for that."
+      ],
+      "text": [
+        "Îmi pare rău. Nu ai destule Puncte de Luptă pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you've won a few more!"
+      ],
+      "text": [
+        "Revino după ce mai câștigi câteva!"
+      ]
+    }
+  ],
+  "Climber": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        "Drumeț"
+      ]
+    },
+    {
+      "en": [
+        "I came all the way up the Gauntlet just to sit here and watch. My knees say it was worth it."
+      ],
+      "text": [
+        "Am urcat tot Gauntlet-ul doar ca să stau aici și să privesc. Genunchii mei zic că a meritat."
+      ]
+    }
+  ],
+  "Watcher": [
+    {
+      "en": [
+        "Surfer"
+      ],
+      "text": [
+        "Surfer"
+      ]
+    },
+    {
+      "en": [
+        "Every Trainer in here beat the island challenge. Somehow that makes losing feel better and worse at once."
+      ],
+      "text": [
+        "Fiecare Antrenor de aici a trecut provocarea insulelor. Cumva, asta face pierderea mai ușoară și mai grea totodată."
+      ]
+    }
+  ]
+}

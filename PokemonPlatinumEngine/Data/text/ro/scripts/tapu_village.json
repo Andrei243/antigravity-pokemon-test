@@ -92,5 +92,15 @@
         "Mudsdale e un cal bun. Puternic, stabil și deloc deștept."
       ]
     }
+  ],
+  "ScanSwinub": [
+    {
+      "en": [
+        "It's the Swinub the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Swinub găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

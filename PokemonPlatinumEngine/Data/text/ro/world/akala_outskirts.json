@@ -1,5 +1,15 @@
 {
   "people": {
+    "scan_honedge": {
+      "name": {
+        "en": [
+          "Honedge"
+        ],
+        "text": [
+          "Honedge"
+        ]
+      }
+    },
     "lillie": {
       "name": {
         "en": [

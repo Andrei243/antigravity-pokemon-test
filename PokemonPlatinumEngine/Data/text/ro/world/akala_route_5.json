@@ -1,5 +1,25 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "scan_bellsprout": {
+      "name": {
+        "en": [
+          "Bellsprout"
+        ],
+        "text": [
+          "Bellsprout"
+        ]
+      }
+    },
     "gladion": {
       "name": {
         "en": [

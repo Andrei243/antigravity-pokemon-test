@@ -1,0 +1,83 @@
+# The Battle Tree's battle hall (plan 23, the Battle Tree's inside; plan 37 · FC2's frame). The lines are our own. A
+# whole challenge is this one arrival script, which loops a battle at a time (Models/Facilities/StreakChallenge.cs;
+# `facility tree ...`), as the Battle Maison's hall does: the challenge lives between the desk and the hall as the host's
+# Facility, and a challenge rested is put down in the records and saved, and the desk takes it up again.
+
+
+script OnEnter
+  facility tree active
+  if result == 0 end
+  clearflag FLAG_ALOLA_TREE_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Battle
+  facility tree next
+  speaker "Referee"
+  say "Battle {number}! Your opponent is climbing up to meet you."
+  facility tree host
+  if result == 0 goto Drawn
+  speaker "Referee"
+  say "Hold on... a Tree Master is coming down from the highest branch to battle you!"
+label Drawn
+  facility tree opponent
+  place opponent 8 3 down
+  setflag FLAG_ALOLA_TREE_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps forward!"
+  facility tree battle
+  if result == 0 goto Lost
+  call Leaves
+  facility tree won
+  facility tree points
+  text "{player} received {number} BP!"
+  facility tree opened
+  if result == 1 goto Opened
+  facility tree trophy
+  if result == 0 goto Next
+  fanfare item
+  text "{player} received this room's trophy! It will hang in the Battle Tree's branches for good."
+  goto Next
+label Opened
+  speaker "Referee"
+  say "You beat a Tree Master! From now on, the Super battles of this room are open to you as well."
+label Next
+  speaker "Referee"
+  choose "Your Pokémon are whole again. What will you do?" "Next battle" "Rest" "Retire"
+  if result == 0 goto Battle
+  if result == 1 goto Rest
+  facility tree finish won
+  speaker "Referee"
+  say "You retire with your head held high. The tree will remember your streak."
+  goto Home
+label Rest
+  facility tree pause
+  speaker "Referee"
+  say "Then rest well. Your place is kept, and your progress is saved."
+  frontier save
+  goto Home
+label Lost
+  call Leaves
+  facility tree finish lost
+  speaker "Referee"
+  say "The streak ends here. Catch your breath, and climb back up. The tree will be waiting."
+label Home
+  facility tree end
+  fade out 0.6
+  warp "PoniGauntlet_BattleTree" 8 12 down
+  fade in
+  end
+
+
+# The opponent goes off the floor again
+script Leaves
+  clearflag FLAG_ALOLA_TREE_SHOW_OPPONENT
+  hide opponent
+  return
+
+
+script Referee
+  face self player
+  speaker "Referee"
+  say "No challenge is under way. The receptionist in the lobby takes your entries."
+  end

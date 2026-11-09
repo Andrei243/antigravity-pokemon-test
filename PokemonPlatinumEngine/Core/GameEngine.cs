@@ -2161,6 +2161,7 @@ public partial class GameEngine
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
+        SniffOnStoutland();
         // The cell of the region's map stood in is written down as it changes (OverworldMapHistory_Push, plan 01 · M12)
         if (RegionMap.ForMap(flow.Map.Name) is { } region && region.IsOverworld(flow.Map.Name))
         {
@@ -2540,6 +2541,7 @@ public partial class GameEngine
         // Something hidden where the player is looking: it is found, once
         // (a place's own HiddenItem stands in for the common one: the Battle Pyramid's finds, plan 14 · B10)
         if (FieldScripts.HiddenAt(flow.Map, targetX, targetY, flow.Story) is { } hidden
+            && StoutlandSearch.CanFind(hidden, flow.Player.Mode == TravelMode.Riding ? flow.Player.Steed : null)
             && StartScript(flow.Scripts.In(flow.Map.ScriptFileAt(targetX, targetY), "HiddenItem") != null ? "HiddenItem" : FieldScripts.HiddenItem,
                 file: flow.Map.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
 

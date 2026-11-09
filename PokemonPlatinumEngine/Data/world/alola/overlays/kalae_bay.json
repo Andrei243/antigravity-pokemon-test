@@ -6,6 +6,8 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_horsea": { "name": "Horsea", "npcType": "Pokemon", "species": "Horsea", "script": "ScanHorsea", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_HORSEA", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_HORSEA_MET" },
     "kalua": {
       "name": "Kalua",
       "npcType": "swimmer_m",

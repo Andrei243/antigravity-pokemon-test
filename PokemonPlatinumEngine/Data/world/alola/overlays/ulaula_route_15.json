@@ -10,6 +10,8 @@
     { "warp": 0, "map": "UlaulaRoute15_AetherHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     // The wave after Ultra Space: Grimsley on the beach, who registers Sharpedo in the Ride Pager, and the rock in the sea
     // that shuts the islet off the beach, which only Sharpedo rams (common.SeaRock)
     "grimsley": { "name": "Grimsley", "npcType": "gentleman", "script": "Grimsley", "still": true },

@@ -53,3 +53,13 @@ script Blacephalon
   if result == 3 setflag FLAG_ALOLA_CAUGHT_BLACEPHALON
   hide self
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanEelektross
+  speaker none
+  cry "Eelektross"
+  text "It's the Eelektross the Island Scan picked up! It's ready to battle!"
+  wildbattle "Eelektross" 55
+  setflag FLAG_DAILY_ALOLA_SCAN_EELEKTROSS_MET
+  end

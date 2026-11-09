@@ -1,0 +1,40 @@
+# Hau'oli Cemetery: the hillside of stones above the city, flowers on every grave and something small and pale watching
+# from between them. A celesta in E minor, slow and a little hollow, over a harp's rocking arpeggio, a warm pad and a bell
+# that tolls the root every other bar; no drums. The same by day and night, as the hill keeps its own hours.
+# Original composition for this game, in the modern sound.
+title Hau'oli Cemetery
+tempo 66
+meter 4/4
+reverb 0.45
+night none
+room hall 2.8
+
+track lead celesta vol=0.9 pan=0.1 rev=0.5
+  L o5 b2 g4 e4 | o5 g2 b4 g4 | o5 e2 g4 o6 c4 | o5 g2. e4 |
+  o5 a2 o6 c4 e4 | o6 d2. c4 | o5 f+2 d+4 f+4 | o5 b2 f+4 d+4 |
+  o5 g2 e4 b4 | o6 c2 o5 g4 e4 | o5 a2 e2 | o5 e1 |
+  o5 g2 o6 c4 e4 | o6 d4 c4 o5 a2 | o5 d+2 f+4 a4 | o5 b2. r4 |
+
+track harp harp vol=0.58 pan=-0.3 rev=0.45
+  L o4 e8 g8 b8 o5 e8 o4 b8 g8 e8 g8 | o4 e8 g8 b8 o5 e8 o4 b8 g8 e8 g8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 e8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 e8 |
+  o4 a8 o5 c8 e8 a8 e8 c8 o4 a8 o5 c8 | o4 a8 o5 c8 e8 a8 e8 c8 o4 a8 o5 c8 | o3 b8 o4 d+8 f+8 b8 f+8 d+8 o3 b8 o4 d+8 | o3 b8 o4 d+8 f+8 b8 f+8 d+8 o3 b8 o4 d+8 |
+  o4 e8 g8 b8 o5 e8 o4 b8 g8 e8 g8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 e8 | o4 a8 o5 c8 e8 a8 e8 c8 o4 a8 o5 c8 | o4 e8 g8 b8 o5 e8 o4 b8 g8 e8 g8 |
+  o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 e8 | o4 a8 o5 c8 e8 a8 e8 c8 o4 a8 o5 c8 | o3 b8 o4 d+8 f+8 b8 f+8 d+8 o3 b8 o4 d+8 | o3 b8 o4 d+8 f+8 b8 f+8 d+8 o3 b8 o4 d+8 |
+
+track pad warmpad vol=0.4 pan=0.2 rev=0.55
+  L o3 (e g b)1 | o3 (e g b)1 | o3 (c e g)1 | o3 (c e g)1 |
+  o3 (a > c e)1 | o3 (a > c e)1 | o3 (b > d+ f+)1 | o3 (b > d+ f+)1 |
+  o3 (e g b)1 | o3 (c e g)1 | o3 (a > c e)1 | o3 (e g b)1 |
+  o3 (c e g)1 | o3 (a > c e)1 | o3 (b > d+ f+)1 | o3 (b > d+ f+)1 |
+
+track toll bell vol=0.34 pan=0 rev=0.5
+  L o4 e1 | r1 | o4 c1 | r1 |
+  o4 a1 | r1 | o4 b1 | r1 |
+  o4 e1 | r1 | o4 a1 | r1 |
+  o4 c1 | r1 | o4 b1 | r1 |
+
+track bass bass vol=0.42 rev=0.1
+  L o3 e1 | o3 e1 | o3 c1 | o3 c1 |
+  o3 a1 | o3 a1 | o3 b1 | o3 b1 |
+  o3 e1 | o3 c1 | o3 a1 | o3 e1 |
+  o3 c1 | o3 a1 | o3 b1 | o3 b1 |

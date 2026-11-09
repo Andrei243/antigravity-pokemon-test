@@ -27,10 +27,43 @@
     { "id": "breeder", "looks": "pokemon_breeder_m", "movement": "look_west", "x": 156, "z": 186, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_POKEMON_BREEDER_MAKANI" },
     { "id": "lady", "looks": "lady", "movement": "look_east", "x": 146, "z": 172, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LADY_HOKU" },
     { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 156, "z": 156, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_KAWIKA" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 120, "z": 190, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_PANIOLA_RANCH_POTION", "item": "Super Potion", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 120, "z": 190, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_PANIOLA_RANCH_POTION", "item": "Super Potion", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 156,
+      "z": 193,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PANIOLA_RANCH_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 146,
+      "z": 156,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PANIOLA_RANCH_2"
+    }
   ],
   "signs": [
-    { "x": 152, "z": 200, "type": 0, "script": "RanchSign" }
+    { "x": 152, "z": 200, "type": 0, "script": "RanchSign" },
+    {
+      "x": 156,
+      "z": 199,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Rare Bone",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_PANIOLA_RANCH_1",
+      "buried": true
+    }
   ],
   "triggers": [],
   "land": [

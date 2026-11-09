@@ -35,6 +35,16 @@
           "Măsurăm tremurele ciudate care străbat aerul insulelor. Valorile sar la câteva nopți."
         ]
       }
+    },
+    "scanner": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Om de știință"
+        ]
+      }
     }
   },
   "signs": {}

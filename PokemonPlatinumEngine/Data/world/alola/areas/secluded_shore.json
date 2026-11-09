@@ -1,0 +1,213 @@
+{
+  "key": "secluded_shore",
+  "index": 542,
+  "name": "Secluded Shore",
+  "matrix": 10,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SECLUDED_SHORE",
+  "nightMusic": "SECLUDED_SHORE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    {
+      "id": "nalani",
+      "looks": "swimmer_f",
+      "movement": "look_east",
+      "x": 164,
+      "z": 329,
+      "facing": 3,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_NALANI"
+    },
+    {
+      "id": "ikaika",
+      "looks": "swimmer_m",
+      "movement": "look_west",
+      "x": 182,
+      "z": 331,
+      "facing": 2,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "trainer": "normal",
+      "sight": 3,
+      "script": "TRAINER_SWIMMER_IKAIKA"
+    },
+    {
+      "id": "sandgirl",
+      "looks": "lass",
+      "movement": "look_south",
+      "x": 174,
+      "z": 322,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "item_ball_1",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 159,
+      "z": 336,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ITEM_SECLUDED_SHORE_REVIVE",
+      "item": "Revive"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 179,
+      "z": 322,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_SECLUDED_SHORE_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 162,
+      "z": 321,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_SECLUDED_SHORE_2"
+    }
+  ],
+  "signs": [
+    {
+      "x": 173,
+      "z": 317,
+      "type": 0,
+      "script": "ShoreSign"
+    },
+    {
+      "x": 161,
+      "z": 327,
+      "type": 2,
+      "script": "HIDDEN_1",
+      "item": "Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_SHORE_PEARL_1"
+    },
+    {
+      "x": 186,
+      "z": 334,
+      "type": 2,
+      "script": "HIDDEN_2",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_SHORE_BIG_PEARL_1"
+    },
+    {
+      "x": 170,
+      "z": 336,
+      "type": 2,
+      "script": "HIDDEN_3",
+      "item": "Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_SHORE_PEARL_2"
+    },
+    {
+      "x": 178,
+      "z": 326,
+      "type": 2,
+      "script": "HIDDEN_4",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_SHORE_BIG_PEARL_2"
+    },
+    {
+      "x": 179,
+      "z": 334,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_SECLUDED_SHORE_1",
+      "buried": true
+    }
+  ],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Crabrawler",
+      "level": 27
+    },
+    {
+      "species": "Crabrawler",
+      "level": 29
+    },
+    {
+      "species": "Trumbeak",
+      "level": 27
+    },
+    {
+      "species": "Trumbeak",
+      "level": 28
+    },
+    {
+      "species": "Gumshoos",
+      "level": 28
+    },
+    {
+      "species": "Pelipper",
+      "level": 29
+    }
+  ],
+  "landRate": 20,
+  "water": [
+    {
+      "species": "Tentacool",
+      "level": 27
+    },
+    {
+      "species": "Tentacool",
+      "level": 30
+    },
+    {
+      "species": "Pelipper",
+      "level": 28
+    },
+    {
+      "species": "Pelipper",
+      "level": 30
+    },
+    {
+      "species": "Finneon",
+      "level": 28
+    }
+  ],
+  "waterRate": 20,
+  "superRod": [
+    {
+      "species": "Magikarp",
+      "level": 25
+    },
+    {
+      "species": "Wishiwashi",
+      "level": 27
+    },
+    {
+      "species": "Bruxish",
+      "level": 28
+    },
+    {
+      "species": "Gyarados",
+      "level": 30
+    }
+  ],
+  "superRodRate": 20
+}

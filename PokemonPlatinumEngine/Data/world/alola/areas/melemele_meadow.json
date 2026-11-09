@@ -20,9 +20,31 @@
   "objects": [
     { "id": "lillie", "looks": "lillie", "movement": "look_east", "x": 382, "z": 60, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 400, "z": 50, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_MELEMELE_MEADOW_GREAT_BALL", "item": "Great Ball", "script": "" },
-    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 380, "z": 74, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_MELEMELE_MEADOW_HONEY", "item": "Honey", "script": "" }
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 380, "z": 74, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_MELEMELE_MEADOW_HONEY", "item": "Honey", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 377,
+      "z": 67,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MELEMELE_MEADOW_1"
+    }
   ],
-  "signs": [],
+  "signs": [
+    {
+      "x": 384,
+      "z": 63,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Big Mushroom",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_MELEMELE_MEADOW_1",
+      "buried": true
+    }
+  ],
   "triggers": [],
   "land": [
     { "species": "Cutiefly", "level": 9 },

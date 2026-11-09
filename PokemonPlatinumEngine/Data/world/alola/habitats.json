@@ -3,14 +3,14 @@
     "                             ",
     "       ......                ",
     "       ........        .T.   ",
-    "       ....  ..      ..TTT   ",
-    "       ....  ..    .T....... ",
-    "      ...TTT     ........... ",
+    "       ..... ..      ..TTT   ",
+    "    ........ ..    .T....... ",
+    "    .....TTT     ........... ",
     "                 ......TT....",
     "                 ......TT....",
     "                 ............",
     "                 ........~~. ",
-    "                 .TT..       ",
+    "                 .TT...      ",
     "                 ~~~~~~~~~~~~",
     "                             ",
     "                          ...",
@@ -224,7 +224,7 @@
     {
       "key": "alola_route_1",
       "name": "Route 1",
-      "cells": "7,4 6,5 7,5 8,5",
+      "cells": "6,4 7,4 6,5 7,5 8,5",
       "morning": [
         "Pikipek",
         "Yungoos",
@@ -338,6 +338,17 @@
         "Lunatone",
         "Solrock",
         "Beheeyem"
+      ]
+    },
+    {
+      "key": "big_wave_beach",
+      "name": "Big Wave Beach",
+      "cells": "4,4 5,4 4,5 5,5",
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Finneon",
+        "Mantyke"
       ]
     },
     {
@@ -519,6 +530,26 @@
         "Pyukumuku",
         "Wishiwashi",
         "Mantyke"
+      ]
+    },
+    {
+      "key": "hauoli_cemetery",
+      "name": "Hau'oli Cemetery",
+      "cells": "11,3 11,4",
+      "morning": [
+        "Zubat",
+        "Gastly",
+        "Drifloon"
+      ],
+      "day": [
+        "Zubat",
+        "Gastly",
+        "Drifloon"
+      ],
+      "night": [
+        "Zubat",
+        "Gastly",
+        "Drifloon"
       ]
     },
     {
@@ -1260,6 +1291,34 @@
         "Psyduck",
         "Seel",
         "Zubat"
+      ]
+    },
+    {
+      "key": "secluded_shore",
+      "name": "Secluded Shore",
+      "cells": "22,10",
+      "morning": [
+        "Crabrawler",
+        "Trumbeak",
+        "Gumshoos",
+        "Pelipper"
+      ],
+      "day": [
+        "Crabrawler",
+        "Trumbeak",
+        "Gumshoos",
+        "Pelipper"
+      ],
+      "night": [
+        "Crabrawler",
+        "Trumbeak",
+        "Gumshoos",
+        "Pelipper"
+      ],
+      "surf": [
+        "Tentacool",
+        "Pelipper",
+        "Finneon"
       ]
     },
     {

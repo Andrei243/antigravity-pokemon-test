@@ -1,0 +1,53 @@
+# The geothermal power plant inside Blush Mountain: turbines turning behind the walls and steam in the pipes. A synth bass
+# chugging in sixteenths, a pulse wave running the chords as a sequencer would, a warm pad for the hum of the generators,
+# a sawtooth motif calling over it, a four-on-the-floor kit, a wood block ticking and a shaker for the steam.
+# One arrangement for day and night, as the plant has no windows.
+# Original composition for this game, in the modern sound.
+title Power Plant (Alola)
+tempo 132
+meter 4/4
+reverb 0.22
+night none
+room room 1.0
+
+track lead sawlead vol=0.5 pan=0.1 rev=0.22
+  L o5 e8 r8 b8 r8 e8 r8 g8 b8 | o5 e8 r8 b8 r8 g8 r8 e4 | o5 c8 r8 g8 r8 c8 r8 e8 g8 | o5 d8 r8 a8 r8 d8 r8 f+8 a8 |
+  o5 e8 r8 b8 r8 e8 r8 g8 b8 | o6 e4 d4 o5 b4 g4 | o5 g4 b4 o6 d4 o5 b4 | o5 a4 f+4 d4 f+4 |
+  o5 a8 r8 o6 e8 r8 c8 r8 o5 a8 o6 c8 | o6 c4 e4 d4 o5 a4 | o5 c8 r8 g8 r8 o6 c8 r8 o5 g8 e8 | o5 d8 r8 a8 r8 o6 d8 r8 o5 a8 f+8 |
+  o5 e4 g4 b4 g4 | o5 g4 e4 c4 e4 | o5 f+4 a4 o6 d4 o5 a4 | o5 b8 r8 o6 d+8 r8 f+8 r8 d+4 |
+
+track seq pulse vol=0.28 pan=-0.25 rev=0.15
+  L q5 [ o4 e16 g16 b16 g16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 e16 g16 b16 g16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 g16 b16 o5 d16 o4 b16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 a16 o5 c16 e16 c16 ]4 | [ o4 a16 o5 c16 e16 c16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 e16 g16 b16 g16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 | [ o4 b16 o5 d+16 f+16 d+16 ]4 |
+
+track hum warmpad vol=0.3 pan=0.2 rev=0.3
+  L o3 (e g b)1 | o3 (e g b)1 | o3 (c e g)1 | o3 (d f+ a)1 |
+  o3 (e g b)1 | o3 (e g b)1 | o3 (g b > d)1 | o3 (d f+ a)1 |
+  o3 (a > c e)1 | o3 (a > c e)1 | o3 (c e g)1 | o3 (d f+ a)1 |
+  o3 (e g b)1 | o3 (c e g)1 | o3 (d f+ a)1 | o3 (b > d+ f+)1 |
+
+track bass synthbass vol=0.6 rev=0.06
+  L o3 e8 e16 e16 e8 e16 e16 e8 e16 e16 e8 e16 e16 | o3 e8 e16 e16 e8 e16 e16 e8 e16 e16 e8 e16 e16 | o3 c8 c16 c16 c8 c16 c16 c8 c16 c16 c8 c16 c16 | o3 d8 d16 d16 d8 d16 d16 d8 d16 d16 o4 d8 d16 d16 |
+  o3 e8 e16 e16 e8 e16 e16 e8 e16 e16 e8 e16 e16 | o3 e8 e16 e16 e8 e16 e16 e8 e16 e16 e8 e16 e16 | o3 g8 g16 g16 g8 g16 g16 g8 g16 g16 g8 g16 g16 | o3 d8 d16 d16 d8 d16 d16 d8 d16 d16 o4 d8 d16 d16 |
+  o3 a8 a16 a16 a8 a16 a16 a8 a16 a16 a8 a16 a16 | o3 a8 a16 a16 a8 a16 a16 a8 a16 a16 a8 a16 a16 | o3 c8 c16 c16 c8 c16 c16 c8 c16 c16 c8 c16 c16 | o3 d8 d16 d16 d8 d16 d16 d8 d16 d16 o4 d8 d16 d16 |
+  o3 e8 e16 e16 e8 e16 e16 e8 e16 e16 e8 e16 e16 | o3 c8 c16 c16 c8 c16 c16 c8 c16 c16 c8 c16 c16 | o3 d8 d16 d16 d8 d16 d16 d8 d16 d16 d8 d16 d16 | o3 b8 b16 b16 b8 b16 b16 b8 b16 b16 o4 b8 b16 b16 |
+
+track drums kit vol=0.5 pan=0 rev=0.14
+  L v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v88 s16 v90 s16 v88 t16 v90 t16 v92 m16 v95 m16 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v88 s16 v90 s16 v88 t16 v90 t16 v92 m16 v95 m16 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v88 s16 v90 s16 v88 t16 v90 t16 v92 m16 v95 m16 |
+  v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v100 b8 v90 s8 v60 h16 v60 h16 | v100 b8 v60 h8 v90 s8 v60 h8 v100 b8 v88 s16 v90 s16 v88 t16 v90 t16 v92 m16 v95 m16 |
+
+track clank kit vol=0.3 pan=-0.3 rev=0.12
+  L [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 |
+  [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 |
+  [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 |
+  [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 | [ v70 w16 r16 w16 w16 r16 w16 r16 w16 ]2 |
+
+track steam kit vol=0.26 pan=0.3 rev=0.15
+  L [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 |
+  [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 |
+  [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 |
+  [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 | [ v50 k16 v75 k16 ]8 |

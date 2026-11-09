@@ -30,6 +30,38 @@
       { "item": "Smooth Rock", "price": 48 },
       { "item": "Icy Rock", "price": 48 },
       { "item": "Thick Club", "price": 48 }
+    ],
+    // The Battle Tree at the head of Poni Gauntlet (plan 23, the Battle Tree's inside): Alola's Z-Crystals of the types
+    // and the later games' battle items
+    "tree": [
+      { "item": "Normalium Z", "price": 48 },
+      { "item": "Firium Z", "price": 48 },
+      { "item": "Waterium Z", "price": 48 },
+      { "item": "Grassium Z", "price": 48 },
+      { "item": "Electrium Z", "price": 48 },
+      { "item": "Icium Z", "price": 48 },
+      { "item": "Fightinium Z", "price": 48 },
+      { "item": "Poisonium Z", "price": 48 },
+      { "item": "Groundium Z", "price": 48 },
+      { "item": "Flyinium Z", "price": 48 },
+      { "item": "Psychium Z", "price": 48 },
+      { "item": "Buginium Z", "price": 48 },
+      { "item": "Rockium Z", "price": 48 },
+      { "item": "Ghostium Z", "price": 48 },
+      { "item": "Dragonium Z", "price": 48 },
+      { "item": "Darkinium Z", "price": 48 },
+      { "item": "Steelium Z", "price": 48 },
+      { "item": "Fairium Z", "price": 48 },
+      { "item": "Life Orb", "price": 48 },
+      { "item": "Focus Sash", "price": 48 },
+      { "item": "Choice Band", "price": 48 },
+      { "item": "Choice Specs", "price": 48 },
+      { "item": "Choice Scarf", "price": 48 },
+      { "item": "Assault Vest", "price": 48 },
+      { "item": "Weakness Policy", "price": 48 },
+      { "item": "Rocky Helmet", "price": 48 },
+      { "item": "Eviolite", "price": 48 },
+      { "item": "Ability Capsule", "price": 100 }
     ]
   }
 }

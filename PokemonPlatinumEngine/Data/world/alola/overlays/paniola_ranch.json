@@ -14,6 +14,8 @@
     { "script": "Mallow", "x": 148, "z": 202, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 15 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "mallow": { "name": "Mallow", "npcType": "mallow", "script": "MallowTalk", "still": true, "hiddenBy": "FLAG_ALOLA_RIDE_STOUTLAND", "shownBy": "FLAG_ALOLA_HAU_PANIOLA_DONE" },
     "tauros": { "name": "Tauros", "script": "Tauros", "still": true },
     "tauros_2": { "name": "Tauros", "script": "Tauros", "still": true },

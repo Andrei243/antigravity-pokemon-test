@@ -1470,6 +1470,9 @@ public sealed class AreaSign
     public int? Count { get; set; }
     public string? Flag { get; set; }
     public int? Range { get; set; }
+
+    /// <summary>For a hidden item buried in the ground (plan 23, Alola): dug up only on a ridden Stoutland's back.</summary>
+    public bool? Buried { get; set; }
 }
 
 /// <summary>A rectangle that starts a script when stepped on while a story variable has a value.</summary>

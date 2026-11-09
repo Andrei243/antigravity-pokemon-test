@@ -134,6 +134,30 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_15_ISLET_KINGS_ROCK",
       "item": "King's Rock"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 279,
+      "z": 285,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_15_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 294,
+      "z": 270,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_15_2"
     }
   ],
   "signs": [

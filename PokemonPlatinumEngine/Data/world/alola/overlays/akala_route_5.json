@@ -13,6 +13,8 @@
     { "script": "Gladion", "x": 148, "z": 145, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 16 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_bellsprout": { "name": "Bellsprout", "npcType": "Pokemon", "species": "Bellsprout", "script": "ScanBellsprout", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_BELLSPROUT", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_BELLSPROUT_MET" },
     "gladion": { "name": "Gladion", "npcType": "gladion", "script": "GladionTalk", "still": true, "hiddenBy": "FLAG_ALOLA_GLADION_ROUTE_5_DONE", "shownBy": "FLAG_ALOLA_RIDE_STOUTLAND" },
     "breeder": {
       "name": "Lehua",

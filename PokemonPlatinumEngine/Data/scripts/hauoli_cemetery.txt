@@ -1,0 +1,78 @@
+# Hau'oli Cemetery, Melemele Island (plan 23, the rest of the islands; rulings, "The Battle Tree, the power plant,
+# Zygarde's cells and the rest of the islands"). The lines and the story are our own. After dark a little girl stands by
+# a grave in the cemetery's south and waits for her friend, a Misdreavus who went on ahead of her
+# (FLAG_ALOLA_CEMETERY_NIGHT shows her, set by the arrival at night and cleared by day). VAR_ALOLA_CEMETERY_GIRL is her
+# story: 0 until she is first spoken to; 1 once she has asked about her friend; 2 once the flowers by the east lamp have
+# given up what her friend left there; 3 once she has gone after her friend (FLAG_ALOLA_CEMETERY_GIRL_GONE).
+
+
+script OnEnter
+  if time night goto Night
+  if time latenight goto Night
+  clearflag FLAG_ALOLA_CEMETERY_NIGHT
+  end
+label Night
+  setflag FLAG_ALOLA_CEMETERY_NIGHT
+  end
+
+
+script GhostGirl
+  face self player
+  speaker "Little Girl"
+  if var VAR_ALOLA_CEMETERY_GIRL == 2 goto Goodbye
+  if var VAR_ALOLA_CEMETERY_GIRL == 1 goto Again
+  say "Oh! You can see me? Most people walk right past."
+  say "I'm waiting for my friend. She's a Misdreavus. She floated off ahead of me a long, long time ago."
+  say "She always said she'd leave me a sign where the flowers grow brightest. But I can't find it in the dark..."
+  setvar VAR_ALOLA_CEMETERY_GIRL 1
+  end
+label Again
+  say "The flowers that grow brightest... Maybe by one of the lamps? Could you look for me?"
+  end
+label Goodbye
+  say "That's hers! I'd know that tag anywhere. She was here, and she waited for me all this time."
+  say "Then I shouldn't keep her waiting any longer, should I? Thank you for looking. Thank you for seeing me."
+  fade out 1.0
+  cry "Misdreavus"
+  setflag FLAG_ALOLA_CEMETERY_GIRL_GONE
+  setvar VAR_ALOLA_CEMETERY_GIRL 3
+  fade in
+  speaker none
+  text "...The little girl was gone. Only the scent of night flowers lingered by the grave."
+  end
+
+
+# The flowers by the east lamp: what the girl's friend left for her
+script LampFlowers
+  speaker none
+  if var VAR_ALOLA_CEMETERY_GIRL == 1 goto Found
+  text "Flowers grow thick around the foot of the lamp. They glow faintly in its light."
+  end
+label Found
+  text "Something is tucked deep among the flowers..."
+  give "Spell Tag"
+  text "It's an old tag, worn soft at the edges. A Misdreavus's name is written on it in a child's hand."
+  setvar VAR_ALOLA_CEMETERY_GIRL 2
+  end
+
+
+script Mourner
+  face self player
+  speaker "Woman"
+  if var VAR_ALOLA_CEMETERY_GIRL == 3 goto After
+  say "My grandmother used to tell a story about a little girl and her Misdreavus. They were never apart, until they were."
+  say "She said that on quiet nights, the girl still comes here looking for her friend."
+  end
+label After
+  say "Last night the cemetery felt... lighter, somehow. As if somebody finally found what they were looking for."
+  end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanLitwick
+  speaker none
+  cry "Litwick"
+  text "It's the Litwick the Island Scan picked up! It's ready to battle!"
+  wildbattle "Litwick" 10
+  setflag FLAG_DAILY_ALOLA_SCAN_LITWICK_MET
+  end

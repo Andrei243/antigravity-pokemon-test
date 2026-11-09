@@ -22,9 +22,31 @@
     { "id": "hau", "looks": "hau", "movement": "look_north", "x": 268, "z": 257, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "wicke", "looks": "wicke", "movement": "look_north", "x": 270, "z": 258, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "beauty", "looks": "beauty", "movement": "look_east", "x": 250, "z": 266, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_NOHEA" },
-    { "id": "swimmer", "looks": "swimmer_m", "movement": "wander_around", "x": 280, "z": 268, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" }
+    { "id": "swimmer", "looks": "swimmer_m", "movement": "wander_around", "x": 280, "z": 268, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 240,
+      "z": 252,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_HANO_BEACH_1"
+    }
   ],
-  "signs": [],
+  "signs": [
+    {
+      "x": 259,
+      "z": 257,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Big Pearl",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_HANO_BEACH_1",
+      "buried": true
+    }
+  ],
   "triggers": [],
   "land": [],
   "landRate": 0,

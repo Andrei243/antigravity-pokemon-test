@@ -22,7 +22,19 @@
   "objects": [
     { "id": "hau", "looks": "hau", "movement": "look_south", "x": 152, "z": 232, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "cowgirl", "looks": "cowgirl", "movement": "wander_around", "x": 140, "z": 220, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "" },
-    { "id": "rancher", "looks": "rancher", "movement": "look_west", "x": 166, "z": 232, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" }
+    { "id": "rancher", "looks": "rancher", "movement": "look_west", "x": 166, "z": 232, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 155,
+      "z": 232,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PANIOLA_TOWN_1"
+    }
   ],
   "signs": [
     { "x": 152, "z": 236, "type": 0, "script": "TownSign" }

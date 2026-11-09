@@ -1,0 +1,33 @@
+{
+  // The Secluded Shore, Ula'ula Island (plan 23, the rest of the islands): drawn by hand, our words. A shelf of rock and a
+  // quiet beach on the open sea south of Route 11 (Sun and Moon's lies south of Route 13 and is reached by sea), where
+  // pearls wash up and a girl looks for the right sand for her Sandygast
+  "area": "secluded_shore",
+  "bgmTrack": "alola/beach",
+  "trees": "Round",
+  "architecture": "Islander",
+  "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "nalani": {
+      "name": "Nalani",
+      "npcType": "swimmer_f",
+      "trainer": {
+        "dialogueBefore": "Swimmer Nalani: Nobody comes down to this shore. Which means nobody's here to see me win!",
+        "dialogueAfter": "Swimmer Nalani: Good thing nobody saw that."
+      }
+    },
+    "ikaika": {
+      "name": "Ikaika",
+      "npcType": "swimmer_m",
+      "trainer": {
+        "dialogueBefore": "Swimmer Ikaika: My Sandygast lives in the sand here. Disturb its castle and you'll answer to us both!",
+        "dialogueAfter": "Swimmer Ikaika: It's rebuilding. It always rebuilds."
+      }
+    },
+    "sandgirl": { "name": "Girl", "npcType": "lass", "script": "SandGirl", "still": true }
+  },
+  "signs": {
+    "ShoreSign": "Secluded Shore\nNorth: Route 11"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "name": "PoniGauntlet_BattleTreeHall",
+  "displayName": "Battle Tree",
+  "bgmTrack": "alola/tree",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 4,
+      "width": 7,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "PoniGauntlet_BattleTree",
+      "targetX": 8,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "host",
+      "name": "Referee",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "script": "Referee"
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_ALOLA_TREE_SHOW_OPPONENT"
+    },
+    {
+      "id": "onlooker",
+      "name": "Onlooker",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "The branches up here hold the strongest Trainers in Alola. Every battle in this hall, the leaves stop rustling to watch."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

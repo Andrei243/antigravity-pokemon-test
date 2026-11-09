@@ -65,6 +65,17 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_SEAWARD_CAVE_NEVERMELTICE",
       "item": "Never-Melt Ice",
       "script": ""
+    },
+    {
+      "id": "scan_totodile",
+      "looks": "totodile",
+      "movement": "look_south",
+      "x": 13,
+      "z": 7,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [],

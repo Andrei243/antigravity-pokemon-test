@@ -94,6 +94,30 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_12_MAX_ETHER",
       "item": "Max Ether"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 142,
+      "z": 228,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_12_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 107,
+      "z": 234,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_12_2"
     }
   ],
   "signs": [
@@ -102,6 +126,15 @@
       "z": 244,
       "type": 0,
       "script": "RouteSign"
+    },
+    {
+      "x": 115,
+      "z": 241,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "Nugget",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_ULAULA_ROUTE_12_1",
+      "buried": true
     }
   ],
   "triggers": [],

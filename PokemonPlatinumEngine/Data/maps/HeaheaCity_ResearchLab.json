@@ -116,6 +116,15 @@
       "dialog": [
         "We measure the strange tremors that ripple through the islands' air. The readings jump every few nights."
       ]
+    },
+    {
+      "id": "scanner",
+      "name": "Scientist",
+      "npcType": "scientist_f",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "script": "Scanner"
     }
   ],
   "wildEncounters": []

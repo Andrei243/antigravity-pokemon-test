@@ -9,6 +9,7 @@
   ],
   "architecture": "Islander",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "policeman": {
       "name": "Policeman",
       "npcType": "policeman",

@@ -1,0 +1,11 @@
+# seaward_cave (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanTotodile
+  speaker none
+  cry "Totodile"
+  text "It's the Totodile the Island Scan picked up! It's ready to battle!"
+  wildbattle "Totodile" 12
+  setflag FLAG_DAILY_ALOLA_SCAN_TOTODILE_MET
+  end

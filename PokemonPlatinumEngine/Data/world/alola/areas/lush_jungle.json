@@ -20,7 +20,19 @@
     { "id": "totem", "looks": "lurantis", "movement": "look_south", "x": 207, "z": 95, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
     { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 197, "z": 119, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_KEALA" },
     { "id": "breeder", "looks": "pokemon_breeder_f", "movement": "look_south", "x": 190, "z": 132, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_POKEMON_BREEDER_ULULANI" },
-    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 214, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_LUSH_JUNGLE_MIRACLE_SEED", "item": "Miracle Seed", "script": "" }
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 214, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ALOLA_ITEM_LUSH_JUNGLE_MIRACLE_SEED", "item": "Miracle Seed", "script": "" },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 213,
+      "z": 114,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CORE_LUSH_JUNGLE_1"
+    }
   ],
   "signs": [],
   "triggers": [],

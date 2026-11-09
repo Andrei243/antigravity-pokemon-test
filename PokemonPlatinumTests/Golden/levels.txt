@@ -301,6 +301,11 @@ grass 20-24
 === bell_tower_9f
 Bell Tower
 grass 20-24
+=== big_wave_beach
+Big Wave Beach
+surf 10-12
+super rod 10-12
+trainers 1, 9: alola_team_skull_grunt_kahale 9
 === blackthorn
 Blackthorn City
 surf 2-20
@@ -898,6 +903,10 @@ trainers 2, 31-32: alola_hiker_nalu 32, alola_ruin_maniac_kawika 31
 Hano Beach
 surf 22-23
 trainers 1, 23-24: alola_beauty_nohea 24
+=== hauoli_cemetery
+Hau'oli Cemetery
+grass 7-10
+trainers 3, 8-9: alola_gentleman_akoni 9, alola_pokemon_breeder_noe 9, alola_preschooler_malia 8
 === hoenn_safari_zone_north
 Safari Zone
 grass 27-31
@@ -3245,6 +3254,12 @@ trainers 2, 47: unova_battle_girl_maki 47, unova_black_belt_rich 47
 Seaward Cave
 grass 10-12
 surf 10-13
+=== secluded_shore
+Secluded Shore
+grass 27-29
+surf 27-30
+super rod 25-30
+trainers 2, 29-30: alola_swimmer_ikaika 30, alola_swimmer_nalani 30
 === sendoff_spring
 Sendoff Spring
 grass 37-40

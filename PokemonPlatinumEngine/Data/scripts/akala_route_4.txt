@@ -1,0 +1,11 @@
+# akala_route_4 (plan 23). The lines are our own.
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanVenipede
+  speaker none
+  cry "Venipede"
+  text "It's the Venipede the Island Scan picked up! It's ready to battle!"
+  wildbattle "Venipede" 14
+  setflag FLAG_DAILY_ALOLA_SCAN_VENIPEDE_MET
+  end

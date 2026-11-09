@@ -2311,9 +2311,13 @@
   },
   "records": {
     "title": "RECORDURI DE LUPTĂ",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Battle Tree" },
     "row": {
       "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
+      "tree": {
+        "single": "Luptă simplă", "double": "Luptă dublă",
+        "hard": { "single": "Super luptă simplă", "double": "Super luptă dublă" }
+      },
       "house": {
         "single": "Sala Simplă", "double": "Sala Dublă", "triple": "Sala Triplă", "rotation": "Sala Rotativă",
         "hard": { "single": "Marea Sală Simplă", "double": "Marea Sală Dublă", "triple": "Marea Sală Triplă", "rotation": "Marea Sală Rotativă" }
@@ -4193,6 +4197,7 @@
     "HallMatron": "Matroana Sălii",
     "Hiker": "Drumeț",
     "HouseHost": "Gazdă",
+    "TreeMaster": "Maestru al Copacului",
     "Idol": "Idol",
     "Interviewers": "Reporteri",
     "Jogger": "Alergător",

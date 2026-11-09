@@ -1,0 +1,164 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "Battle {number}! Your opponent is climbing up to meet you."
+      ],
+      "text": [
+        "Lupta {number}! Adversarul tău urcă să te întâlnească."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "Hold on... a Tree Master is coming down from the highest branch to battle you!"
+      ],
+      "text": [
+        "Stai... un Maestru al Copacului coboară din cea mai înaltă ramură să lupte cu tine!"
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps forward!"
+      ],
+      "text": [
+        "{foe} pășește înainte!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        "{player} a primit {number} BP!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received this room's trophy! It will hang in the Battle Tree's branches for good."
+      ],
+      "text": [
+        "{player} a primit trofeul acestei săli! Va atârna pentru totdeauna în ramurile Battle Tree."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "You beat a Tree Master! From now on, the Super battles of this room are open to you as well."
+      ],
+      "text": [
+        "L-ai învins pe un Maestru al Copacului! De acum, și luptele Super ale acestei săli îți sunt deschise."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are whole again. What will you do?",
+        "Next battle",
+        "Rest",
+        "Retire"
+      ],
+      "text": [
+        "Pokémonii tăi sunt din nou refăcuți. Ce faci?",
+        "Lupta următoare",
+        "Odihnă",
+        "Retragere"
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "You retire with your head held high. The tree will remember your streak."
+      ],
+      "text": [
+        "Te retragi cu fruntea sus. Copacul îți va ține minte seria."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "Then rest well. Your place is kept, and your progress is saved."
+      ],
+      "text": [
+        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "The streak ends here. Catch your breath, and climb back up. The tree will be waiting."
+      ],
+      "text": [
+        "Seria se încheie aici. Trage-ți sufletul și urcă din nou. Copacul te va aștepta."
+      ]
+    }
+  ],
+  "Referee": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitru"
+      ]
+    },
+    {
+      "en": [
+        "No challenge is under way. The receptionist in the lobby takes your entries."
+      ],
+      "text": [
+        "Nu e nicio provocare în desfășurare. Recepționera din hol primește înscrierile."
+      ]
+    }
+  ]
+}

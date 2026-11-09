@@ -917,6 +917,29 @@ internal static class OutdoorProps
         Pix.Outline(c);
     }
 
+    /// <summary>
+    /// A Zygarde Cell, 16 by 16 (plan 23, the rest of the islands; our own drawing): a small round blob of glossy green on
+    /// the ground with a red-orange core in its middle and a lighter top, a darker rim where it touches the ground.
+    /// </summary>
+    public static void PaintZygardeCell(PixelCanvas c)
+    {
+        var green = Rgb(62, 178, 92);
+        var lit = Rgb(140, 226, 150);
+        var shade = Rgb(30, 112, 62);
+        var core = Rgb(232, 92, 52);
+        var coreLit = Rgb(252, 178, 110);
+        for (int y = 3; y < 15; y++)
+            for (int x = 2; x < 14; x++)
+            {
+                float u = (x + 0.5f - 8f) / 6f, v = (y + 0.5f - 9.5f) / 5.5f;
+                if (u * u + v * v > 1f) continue;
+                c.Set(x, y, v > 0.55f ? shade : u + v < -0.6f ? lit : green);
+            }
+        c.Rect(7, 8, 2, 3, core);
+        c.Set(7, 8, coreLit);
+        Pix.Outline(c);
+    }
+
     /// <summary>A Pokédex laid on a desk, 16 by 12: a closed red book with a hinge line and a small blue lens.</summary>
     public static void PaintDeskPokedex(PixelCanvas c)
     {
@@ -988,6 +1011,7 @@ public static class ThingCards
             PropType.GymWaterfall => (GymArt.WaterfallWidth, GymArt.WaterfallHeight, c => GymArt.PaintWaterfall(c, 0)),
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
+            PropType.ZygardeCell => (16, 16, OutdoorProps.PaintZygardeCell),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

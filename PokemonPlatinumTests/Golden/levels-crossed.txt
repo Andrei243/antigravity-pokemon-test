@@ -1527,7 +1527,9 @@ alola_olivia_1 213 (27) [Nosepass → Lodestarch, Boldore → Gigalith]
 alola_olivia_league 223 (56) [Relicanth → Aeonfin, Carbink → Druzarion, Lycanroc → Lupinacle, Probopass → Lodestarch]
 alola_olivia_rematch 233 (66) [Relicanth → Aeonfin, Carbink → Druzarion, Probopass → Lodestarch, Lycanroc → Lupinacle]
 alola_plumeria_1 216 (34) [Golbat → Crobat, Skuntank → Mephitarch, Salazzle → Smolderess]
+alola_scientist_ola 215 (32) [Togedemaru → Rollocupine, Elekid → Electivire]
 alola_team_skull_grunt_motel 210 (18) [Zubat → Crobat, Salandit → Salazzle]
+alola_worker_kanoa 215 (31) [Magnemite → Magnezone, Charjabug → Vikavolt, Magneton → Magnezone]
 === AnistarCity_Gym
 Anistar Gym, Kalos
 trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]
@@ -1709,6 +1711,11 @@ grass 116-119 (own 20-24)
 === bell_tower_9f
 Bell Tower, Johto
 grass 116-119 (own 20-24)
+=== big_wave_beach
+Big Wave Beach, Alola
+surf 208 (own 10-12)
+super rod 208 (own 10-12)
+trainers 1, 207 (own 9): alola_team_skull_grunt_kahale 207 (9) [Drowzee → Mesmeryx, Zubat → Crobat]
 === blackthorn
 Blackthorn City, Johto
 surf 104-116 (own 2-20)
@@ -2207,6 +2214,10 @@ trainers 2, 215 (own 31-32): alola_hiker_nalu 215 (32) [Gabite → Garchomp, Vib
 Hano Beach, Alola
 surf 212 (own 22-23)
 trainers 1, 212 (own 23-24): alola_beauty_nohea 212 (24) [Corsola → Reefcrown, Wingull → Pelicaptain]
+=== hauoli_cemetery
+Hau'oli Cemetery, Alola
+grass 207-208 (own 7-10)
+trainers 3, 207 (own 8-9): alola_gentleman_akoni 207 (9) [Makuhita → Yokozan, Gastly → Gengar], alola_pokemon_breeder_noe 207 (9) [Pikachu → Raichu], alola_preschooler_malia 207 (8) [Happiny → Blissey]
 === hoenn_safari_zone_north
 Safari Zone, Hoenn
 grass 148-149 (own 27-31)
@@ -4079,6 +4090,12 @@ trainers 2, 180 (own 47): unova_battle_girl_maki 180 (47) [Mienfoo → Mienshifu
 Seaward Cave, Alola
 grass 208 (own 10-12)
 surf 208-209 (own 10-13)
+=== secluded_shore
+Secluded Shore, Alola
+grass 213-214 (own 27-29)
+surf 213-215 (own 27-30)
+super rod 213-215 (own 25-30)
+trainers 2, 214-215 (own 29-30): alola_swimmer_ikaika 215 (30) [Whiscash → Namazuro, Sandygast → Sandcitadel], alola_swimmer_nalani 215 (30) [Alomomola → Alomatron]
 === seven_island_sevault_canyon
 Sevault Canyon, Kanto
 grass 71-98 (own 15-54)

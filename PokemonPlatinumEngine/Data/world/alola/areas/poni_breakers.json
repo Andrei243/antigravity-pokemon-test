@@ -139,6 +139,42 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_BREAKERS_ULTRA_BALL",
       "item": "Ultra Ball"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 130,
+      "z": 114,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_BREAKERS_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 151,
+      "z": 116,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_BREAKERS_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 95,
+      "z": 126,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_BREAKERS_3"
     }
   ],
   "signs": [

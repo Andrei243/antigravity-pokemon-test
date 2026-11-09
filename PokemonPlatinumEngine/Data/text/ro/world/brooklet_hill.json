@@ -1,5 +1,25 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
+    "scan_marill": {
+      "name": {
+        "en": [
+          "Marill"
+        ],
+        "text": [
+          "Marill"
+        ]
+      }
+    },
     "second_totem": {
       "name": {
         "en": [

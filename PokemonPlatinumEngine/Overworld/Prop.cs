@@ -332,6 +332,12 @@ public enum PropType
     /// is, over any number of tiles (<c>TrainingArt</c>); walked on, blocking nothing.
     /// </summary>
     TrainingMat,
+    /// <summary>
+    /// A Zygarde Cell (plan 23, the rest of the islands: Sun and Moon's hundred pieces of Zygarde about Alola): a thing of the
+    /// map (<see cref="NPC.ZygardeCellType"/>), a small green blob with a red core, drawn as a card and gathered into the
+    /// Zygarde Cube when spoken to (<c>common.ZygardeCell</c>).
+    /// </summary>
+    ZygardeCell,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

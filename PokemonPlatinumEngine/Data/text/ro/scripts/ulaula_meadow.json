@@ -32,5 +32,15 @@
         "Florile fiecărei insule îl învață pe Oricorio un alt dans. Ăsta e preferatul meu. Evident."
       ]
     }
+  ],
+  "ScanRoselia": [
+    {
+      "en": [
+        "It's the Roselia the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Roselia găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
   ]
 }

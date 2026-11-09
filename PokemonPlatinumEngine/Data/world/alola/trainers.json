@@ -2895,5 +2895,21 @@
   { "id": "alola_acerola_rematch", "name": "Acerola", "class": "Elite Four", "ai": [ "Basic", "EvalAttack", "Expert" ], "items": [ "Full Restore", "Full Restore" ], "prizeMoney": 7400, "zRing": true,
     "party": [ { "species": "Sableye", "level": 63, "ivScale": 0, "personality": 52476624 }, { "species": "Drifblim", "level": 63, "ivScale": 0, "personality": 52579672 }, { "species": "Dhelmise", "level": 64, "ivScale": 0, "personality": 52682720 }, { "species": "Froslass", "level": 64, "ivScale": 0, "personality": 52785768 }, { "species": "Palossand", "level": 65, "ivScale": 0, "personality": 52888816 }, { "species": "Mimikyu", "level": 66, "ivScale": 0, "personality": 52991864, "item": "Ghostium Z" } ] },
   { "id": "alola_kahili_rematch", "name": "Kahili", "class": "Elite Four", "ai": [ "Basic", "EvalAttack", "Expert" ], "items": [ "Full Restore", "Full Restore" ], "prizeMoney": 7400, "zRing": true,
-    "party": [ { "species": "Skarmory", "level": 63, "ivScale": 0, "personality": 53094912 }, { "species": "Crobat", "level": 63, "ivScale": 0, "personality": 53197960 }, { "species": "Oricorio", "level": 64, "ivScale": 0, "personality": 53301008 }, { "species": "Mandibuzz", "level": 64, "ivScale": 0, "personality": 53404056 }, { "species": "Braviary", "level": 65, "ivScale": 0, "personality": 53507104 }, { "species": "Toucannon", "level": 66, "ivScale": 0, "personality": 53610152, "item": "Flyinium Z" } ] }
+    "party": [ { "species": "Skarmory", "level": 63, "ivScale": 0, "personality": 53094912 }, { "species": "Crobat", "level": 63, "ivScale": 0, "personality": 53197960 }, { "species": "Oricorio", "level": 64, "ivScale": 0, "personality": 53301008 }, { "species": "Mandibuzz", "level": 64, "ivScale": 0, "personality": 53404056 }, { "species": "Braviary", "level": 65, "ivScale": 0, "personality": 53507104 }, { "species": "Toucannon", "level": 66, "ivScale": 0, "personality": 53610152, "item": "Flyinium Z" } ] },
+  { "id": "alola_gentleman_akoni", "name": "Akoni", "class": "Gentleman", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1080,
+    "party": [ { "species": "Makuhita", "level": 9, "ivScale": 0, "personality": 60103048 }, { "species": "Gastly", "level": 9, "ivScale": 0, "personality": 60206096 } ] },
+  { "id": "alola_pokemon_breeder_noe", "name": "Noe", "class": "Pokémon Breeder", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 360,
+    "party": [ { "species": "Pikachu", "level": 9, "ivScale": 0, "personality": 60309144 } ] },
+  { "id": "alola_preschooler_malia", "name": "Malia", "class": "Preschooler", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 128,
+    "party": [ { "species": "Happiny", "level": 8, "ivScale": 0, "personality": 60412192 } ] },
+  { "id": "alola_team_skull_grunt_kahale", "name": "Kahale", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 360,
+    "party": [ { "species": "Drowzee", "level": 9, "ivScale": 0, "personality": 60515240 }, { "species": "Zubat", "level": 9, "ivScale": 0, "personality": 60618288 } ] },
+  { "id": "alola_swimmer_nalani", "name": "Nalani", "class": "Swimmer", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 720,
+    "party": [ { "species": "Alomomola", "level": 30, "ivScale": 0, "personality": 60721336 } ] },
+  { "id": "alola_swimmer_ikaika", "name": "Ikaika", "class": "Swimmer", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 720,
+    "party": [ { "species": "Whiscash", "level": 29, "ivScale": 0, "personality": 60824384 }, { "species": "Sandygast", "level": 30, "ivScale": 0, "personality": 60927432 } ] },
+  { "id": "alola_worker_kanoa", "name": "Kanoa", "class": "Worker", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1200,
+    "party": [ { "species": "Magnemite", "level": 30, "ivScale": 0, "personality": 61030480 }, { "species": "Charjabug", "level": 30, "ivScale": 0, "personality": 61133528 }, { "species": "Magneton", "level": 31, "ivScale": 0, "personality": 61236576 } ] },
+  { "id": "alola_scientist_ola", "name": "Ola", "class": "Scientist", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1240,
+    "party": [ { "species": "Togedemaru", "level": 31, "ivScale": 0, "personality": 61339624 }, { "species": "Elekid", "level": 31, "ivScale": 0, "personality": 61442672 }, { "species": "Vikavolt", "level": 32, "ivScale": 0, "personality": 61545720 } ] }
 ]

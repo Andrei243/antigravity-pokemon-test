@@ -56,6 +56,9 @@
     }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_swinub": { "name": "Swinub", "npcType": "Pokemon", "species": "Swinub", "script": "ScanSwinub", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_SWINUB", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_SWINUB_MET" },
     "acerola": {
       "name": "Acerola",
       "npcType": "acerola",

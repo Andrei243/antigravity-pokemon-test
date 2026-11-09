@@ -1,0 +1,138 @@
+{
+  "GhostGirl": [
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Oh! You can see me? Most people walk right past."
+      ],
+      "text": [
+        "Oh! Mă poți vedea? Cei mai mulți trec pe lângă mine."
+      ]
+    },
+    {
+      "en": [
+        "I'm waiting for my friend. She's a Misdreavus. She floated off ahead of me a long, long time ago."
+      ],
+      "text": [
+        "Îmi aștept prietena. E un Misdreavus. A plutit înaintea mea demult, foarte demult."
+      ]
+    },
+    {
+      "en": [
+        "She always said she'd leave me a sign where the flowers grow brightest. But I can't find it in the dark..."
+      ],
+      "text": [
+        "Mereu spunea că o să-mi lase un semn acolo unde florile cresc cel mai strălucitor. Dar nu-l găsesc pe întuneric..."
+      ]
+    },
+    {
+      "en": [
+        "The flowers that grow brightest... Maybe by one of the lamps? Could you look for me?"
+      ],
+      "text": [
+        "Florile care cresc cel mai strălucitor... Poate lângă un felinar? Ai putea să cauți tu pentru mine?"
+      ]
+    },
+    {
+      "en": [
+        "That's hers! I'd know that tag anywhere. She was here, and she waited for me all this time."
+      ],
+      "text": [
+        "E a ei! Aș recunoaște eticheta asta oriunde. A fost aici și m-a așteptat în tot acest timp."
+      ]
+    },
+    {
+      "en": [
+        "Then I shouldn't keep her waiting any longer, should I? Thank you for looking. Thank you for seeing me."
+      ],
+      "text": [
+        "Atunci n-ar trebui s-o mai las să aștepte, nu? Mulțumesc că ai căutat. Mulțumesc că m-ai văzut."
+      ]
+    },
+    {
+      "en": [
+        "...The little girl was gone. Only the scent of night flowers lingered by the grave."
+      ],
+      "text": [
+        "...Fetița dispăruse. Doar mireasma florilor de noapte mai stăruia lângă mormânt."
+      ]
+    }
+  ],
+  "LampFlowers": [
+    {
+      "en": [
+        "Flowers grow thick around the foot of the lamp. They glow faintly in its light."
+      ],
+      "text": [
+        "Florile cresc dese la piciorul felinarului. Strălucesc slab în lumina lui."
+      ]
+    },
+    {
+      "en": [
+        "Something is tucked deep among the flowers..."
+      ],
+      "text": [
+        "Ceva e ascuns adânc printre flori..."
+      ]
+    },
+    {
+      "en": [
+        "It's an old tag, worn soft at the edges. A Misdreavus's name is written on it in a child's hand."
+      ],
+      "text": [
+        "E o etichetă veche, tocită pe margini. Pe ea e scris numele unui Misdreavus, cu scris de copil."
+      ]
+    }
+  ],
+  "Mourner": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "My grandmother used to tell a story about a little girl and her Misdreavus. They were never apart, until they were."
+      ],
+      "text": [
+        "Bunica mea spunea o poveste despre o fetiță și Misdreavus-ul ei. N-au fost niciodată despărțite, până când au fost."
+      ]
+    },
+    {
+      "en": [
+        "She said that on quiet nights, the girl still comes here looking for her friend."
+      ],
+      "text": [
+        "Spunea că în nopțile liniștite fetița încă vine aici să-și caute prietena."
+      ]
+    },
+    {
+      "en": [
+        "Last night the cemetery felt... lighter, somehow. As if somebody finally found what they were looking for."
+      ],
+      "text": [
+        "Azi-noapte cimitirul părea... mai ușor, cumva. De parcă cineva și-a găsit în sfârșit ce căuta."
+      ]
+    }
+  ],
+  "ScanLitwick": [
+    {
+      "en": [
+        "It's the Litwick the Island Scan picked up! It's ready to battle!"
+      ],
+      "text": [
+        "E Litwick găsit de Scanarea Insulei! E gata de luptă!"
+      ]
+    }
+  ]
+}

@@ -100,6 +100,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_HOKULANI_STAR_PIECE",
       "item": "Star Piece"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 57,
+      "z": 216,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MOUNT_HOKULANI_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 71,
+      "z": 233,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MOUNT_HOKULANI_2"
+    },
+    {
+      "id": "scan_axew",
+      "looks": "axew",
+      "movement": "look_south",
+      "x": 46,
+      "z": 212,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

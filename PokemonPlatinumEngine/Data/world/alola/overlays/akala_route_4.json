@@ -6,6 +6,9 @@
   "trees": "Round",
   "architecture": "Islander",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "zygarde_cell_2": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_venipede": { "name": "Venipede", "npcType": "Pokemon", "species": "Venipede", "script": "ScanVenipede", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_VENIPEDE", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_VENIPEDE_MET" },
     "collector": {
       "name": "Kanoa",
       "npcType": "collector",

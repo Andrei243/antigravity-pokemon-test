@@ -1,5 +1,15 @@
 {
   "people": {
+    "zygarde_cell_1": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    },
     "sailor": {
       "name": {
         "en": [

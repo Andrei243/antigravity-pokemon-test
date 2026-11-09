@@ -16,6 +16,7 @@
     { "script": "HauInPaniola", "x": 148, "z": 238, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 14 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HAU_PANIOLA_DONE", "shownBy": "FLAG_ALOLA_SAILED_TO_AKALA" },
     "cowgirl": {
       "name": "Cowgirl",

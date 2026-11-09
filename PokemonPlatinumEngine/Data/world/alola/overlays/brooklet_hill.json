@@ -10,6 +10,8 @@
   "callsForHelp": true,
   "trees": "Round",
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_marill": { "name": "Marill", "npcType": "Pokemon", "species": "Marill", "script": "ScanMarill", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_MARILL", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_MARILL_MET" },
     "second_totem": { "name": "Araquanid", "script": "SecondTotem", "still": true, "hiddenBy": "FLAG_ALOLA_TOTEM_ARAQUANID_DONE", "shownBy": "AlolaHallOfFame" },
     "lana": { "name": "Lana", "npcType": "lana", "script": "Lana", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_TRIAL_DONE" },
     "splash": { "name": "Wishiwashi", "script": "Splash1", "still": true, "hiddenBy": "FLAG_ALOLA_BROOKLET_SPLASH_1", "shownBy": "FLAG_ALOLA_BROOKLET_TRIAL" },

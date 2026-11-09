@@ -15,3 +15,13 @@ script Dancer
 label Done
   say "Four islands, four flowers, four dances. I have seen them all, and Poni's is the one that makes me cry."
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanLeavanny
+  speaker none
+  cry "Leavanny"
+  text "It's the Leavanny the Island Scan picked up! It's ready to battle!"
+  wildbattle "Leavanny" 57
+  setflag FLAG_DAILY_ALOLA_SCAN_LEAVANNY_MET
+  end

@@ -9,6 +9,7 @@
     { "script": "Nebby", "x": 377, "z": 68, "width": 1, "depth": 4, "variable": "VAR_ALOLA_STORY", "value": 10 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "lillie": { "name": "Lillie", "npcType": "lillie", "script": "Lillie", "still": true, "hiddenBy": "FLAG_ALOLA_NEBBY_FOUND", "shownBy": "FLAG_ALOLA_LILLIE_MEADOW" }
   }
 }

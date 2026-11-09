@@ -22,6 +22,7 @@
     { "script": "GrandTrial", "x": 248, "z": 137, "width": 4, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 12 }
   ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
     "kukui": { "name": "Prof. Kukui", "npcType": "kukui", "script": "Kukui", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_KUKUI_IKI" },
     "hala": { "name": "Hala", "npcType": "hala", "script": "Hala", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_HALA_IKI" },
     "hau": { "name": "Hau", "npcType": "hau", "script": "Hau", "still": true, "hiddenBy": "FLAG_ALOLA_HIDE_HAU_IKI" },

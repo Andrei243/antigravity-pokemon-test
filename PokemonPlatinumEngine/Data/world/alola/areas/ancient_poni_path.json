@@ -93,6 +93,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_ANCIENT_PATH_ELIXIR",
       "item": "Elixir"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 51,
+      "z": 32,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ANCIENT_PONI_PATH_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 28,
+      "z": 75,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ANCIENT_PONI_PATH_2"
+    },
+    {
+      "id": "scan_emboar",
+      "looks": "emboar",
+      "movement": "look_south",
+      "x": 37,
+      "z": 42,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [],

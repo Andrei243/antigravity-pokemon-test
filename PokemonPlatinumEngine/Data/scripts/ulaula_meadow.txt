@@ -13,3 +13,13 @@ script Dancer
 label Done
   say "Every island's flowers teach the Oricorio a different dance. This one is my favourite. Obviously."
   end
+
+
+# The Pokémon the Island Scan found here today (plan 23, the rest of the islands; HeaheaCity_ResearchLab.IslandScan)
+script ScanRoselia
+  speaker none
+  cry "Roselia"
+  text "It's the Roselia the Island Scan picked up! It's ready to battle!"
+  wildbattle "Roselia" 34
+  setflag FLAG_DAILY_ALOLA_SCAN_ROSELIA_MET
+  end

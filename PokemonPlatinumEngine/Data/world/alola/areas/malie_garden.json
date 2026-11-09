@@ -102,6 +102,18 @@
       "hiddenBy": "FLAG_ALOLA_ITEM_MALIE_GARDEN_HYPER_POTION",
       "item": "Hyper Potion",
       "script": ""
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 99,
+      "z": 346,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_MALIE_GARDEN_1"
     }
   ],
   "signs": [

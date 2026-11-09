@@ -28,7 +28,11 @@
     // The rest of Melemele (plan 23, the wave after the loose ends): the Ruins of Conflict at the Mahalo Trail's head,
     // and Kala'e Bay on the north-east shore, reached only through Seaward Cave from Melemele Meadow
     { "file": "ruins_of_conflict.txt", "x": 242, "z": 62 },
-    { "file": "kalae_bay.txt", "x": 424, "z": 88 }
+    { "file": "kalae_bay.txt", "x": 424, "z": 88 },
+    // Plan 23, the rest of the islands: Hau'oli Cemetery east of Route 2, and Big Wave Beach west of Route 1's woods
+    // (Ultra Sun and Ultra Moon's is west of Route 2), sand and surf on the open sea
+    { "file": "hauoli_cemetery.txt", "x": 336, "z": 112 },
+    { "file": "big_wave_beach.txt", "x": 152, "z": 140 }
   ],
   // Caves and the other islands as maps of their own (plan 23's Alola decisions: each island a matrix of its own). Since
   // wave 91 an island's "island" is the cell of the region's map its north-west chunk is shown at, as the Town Map's
@@ -113,7 +117,10 @@
         // Poni's last places' wave (plan 23): Route 11 from Route 10's east side to Route 12's south side, and Blush Mountain
         // north of Route 12 behind the rough ground only Mudsdale crosses, the geothermal power plant at its top
         { "file": "ulaula_route_11.txt", "x": 80, "z": 268 },
-        { "file": "blush_mountain.txt", "x": 92, "z": 136 }
+        { "file": "blush_mountain.txt", "x": 92, "z": 136 },
+        // Plan 23, the rest of the islands: the Secluded Shore, south of Route 11 (Sun and Moon's is south of Route 13), a
+        // shelf of rock and a beach on the open sea
+        { "file": "secluded_shore.txt", "x": 156, "z": 314 }
       ],
       "areas": [
         { "key": "malie_city", "x": 24, "z": 320, "width": 72, "depth": 44 },
@@ -132,7 +139,8 @@
         { "key": "ulaula_route_17", "x": 148, "z": 104, "width": 52, "depth": 48 },
         { "key": "haina_desert", "x": 304, "z": 212, "width": 72, "depth": 56 },
         { "key": "ulaula_route_11", "x": 80, "z": 268, "width": 100, "depth": 48 },
-        { "key": "blush_mountain", "x": 92, "z": 136, "width": 56, "depth": 72 }
+        { "key": "blush_mountain", "x": 92, "z": 136, "width": 56, "depth": 72 },
+        { "key": "secluded_shore", "x": 156, "z": 316, "width": 36, "depth": 34 }
       ]
     },
     // Poni
@@ -231,6 +239,8 @@
     { "key": "alola_route_2", "x": 276, "z": 88, "width": 60, "depth": 72 },
     { "key": "alola_route_3", "x": 276, "z": 40, "width": 96, "depth": 48 },
     { "key": "melemele_meadow", "x": 372, "z": 40, "width": 44, "depth": 44 },
-    { "key": "kalae_bay", "x": 424, "z": 88, "width": 56, "depth": 48 }
+    { "key": "kalae_bay", "x": 424, "z": 88, "width": 56, "depth": 48 },
+    { "key": "hauoli_cemetery", "x": 336, "z": 112, "width": 36, "depth": 32 },
+    { "key": "big_wave_beach", "x": 152, "z": 140, "width": 44, "depth": 40 }
   ]
 }

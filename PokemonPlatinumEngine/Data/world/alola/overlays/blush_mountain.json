@@ -1,16 +1,18 @@
 {
   // Blush Mountain, Ula'ula Island (plan 23, the wave after Ultra Space): drawn by hand, our words. A slope of red earth
   // north of Route 12, behind rough ground only Mudsdale crosses (Hapu registers hers on Route 12), up to the geothermal
-  // power plant, whose doors stay shut. The plant's pull on the earth makes the slope a Magnetic Field, as Sun and Moon's
+  // power plant (BlushMountain_PowerPlant). The plant's pull on the earth makes the slope a Magnetic Field, as Sun and Moon's
   // Blush Mountain is one
   "area": "blush_mountain",
   "bgmTrack": "alola/route4",
   "trees": "Round",
   "architecture": "Islander",
+  // The geothermal power plant's doors (plan 23, the rest of the islands)
+  "doors": [ { "warp": 0, "map": "BlushMountain_PowerPlant", "x": 8, "y": 12, "facing": "Up" } ],
   "evolutionSites": [ "Magnetic Field" ],
-  // The geothermal power plant's doors, shut to visitors
-  "locked": [ 0 ],
   "people": {
+    "zygarde_cell_1": { "name": "Zygarde Cell", "npcType": "ZygardeCell", "script": "ZygardeCell", "still": true },
+    "scan_rhyhorn": { "name": "Rhyhorn", "npcType": "Pokemon", "species": "Rhyhorn", "script": "ScanRhyhorn", "still": true, "shownBy": "FLAG_DAILY_ALOLA_SCAN_RHYHORN", "hiddenBy": "FLAG_DAILY_ALOLA_SCAN_RHYHORN_MET" },
     "pono": { "name": "Plant Worker", "npcType": "scientist", "script": "PlantWorker", "still": true },
     "pekelo": {
       "name": "Pekelo",

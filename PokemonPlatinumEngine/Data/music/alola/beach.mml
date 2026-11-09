@@ -1,0 +1,52 @@
+# The beaches of Alola: Big Wave Beach on Melemele and the Secluded Shore of Ula'ula, sun on the water and the surf
+# running in. A steel drum's tune in G over a strummed ukulele, a bamboo flute drifting above it in long notes, a rolling
+# bass, a marimba on the offbeats and hand drums with a shaker; at night a vibraphone, a harp and an ocarina.
+# Original composition for this game, in the modern sound.
+title Beach (Alola)
+tempo 124
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+room hall 1.7
+
+track lead steeldrum night=vibraphone vol=0.64 pan=0.05 rev=0.28
+  L o5 g4 b8 o6 d8 o5 b4 g4 | o5 a4 o6 d8 f+8 e4 d4 | o5 b4 o6 e8 g8 e4 o5 b4 | o6 e4 c8 o5 g8 e4 g4 |
+  o5 g4 b8 o6 d8 g4 b4 | o6 a4 f+8 d8 e4 f+4 | o6 e4 g8 e8 c4 o5 g4 | o5 a4 o6 d8 e8 f+2 |
+  o6 g2 d4 o5 b4 | o5 a4 f+4 a4 o6 d4 | o5 g4 b4 o6 e4 g4 | o6 e2 c4 o5 g4 |
+  o5 a4 o6 c8 e8 d4 c4 | o5 a4 o6 d8 f+8 a4 f+4 | o6 g4 d8 o5 b8 g4 b4 | o5 d4 g2 r4 |
+
+track uke ukulele night=harp vol=0.32 pan=-0.3 rev=0.24
+  L o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o4 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o4 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o4 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 |
+  o4 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 | o4 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o4 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+
+track breeze bambooflute night=ocarina vol=0.4 pan=0.2 rev=0.38
+  L o5 d2 b2 | o5 a2 f+2 | o5 g2 b2 | o5 e2 g2 |
+  o5 d2 b2 | o5 a2 f+2 | o5 e2 g2 | o5 a2 f+2 |
+  o5 d2 b2 | o5 a2 f+2 | o5 g2 b2 | o5 e2 g2 |
+  o5 e2 c2 | o5 a2 f+2 | o5 b2 o6 d2 | o5 b1 |
+
+track bass bass vol=0.56 rev=0.08
+  L o3 g4. g8 d4 g4 | o3 d4. d8 a4 d4 | o3 e4. e8 b4 e4 | o3 c4. c8 g4 c4 |
+  o3 g4. g8 d4 g4 | o3 d4. d8 a4 d4 | o3 c4. c8 g4 c4 | o3 d4. d8 a4 d4 |
+  o3 g4. g8 d4 g4 | o3 d4. d8 a4 d4 | o3 e4. e8 b4 e4 | o3 c4. c8 g4 c4 |
+  o3 a4. a8 e4 a4 | o3 d4. d8 a4 d4 | o3 g4. g8 d4 g4 | o3 g4. g8 d4 g4 |
+
+track mallets marimba vol=0.3 pan=0.28 rev=0.2
+  L o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 | o4 r8 e8 r8 e8 r8 b8 r8 e8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 |
+  o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 |
+  o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 | o4 r8 e8 r8 e8 r8 b8 r8 e8 | o4 r8 c8 r8 c8 r8 g8 r8 c8 |
+  o4 r8 a8 r8 a8 r8 e8 r8 a8 | o4 r8 d8 r8 d8 r8 a8 r8 d8 | o4 r8 g8 r8 g8 r8 d8 r8 g8 | o4 r8 g8 r8 g8 r8 d8 r8 g8 |
+
+track hands kit vol=0.4 pan=-0.18 rev=0.2
+  L v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+  v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 | v90 d4 v70 g8 g8 v80 n8 v70 g8 v86 d8 v70 g8 |
+
+track shaker kit vol=0.34 pan=0.3 rev=0.15
+  L v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |
+  v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 | v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 v50 k8 v76 k8 |

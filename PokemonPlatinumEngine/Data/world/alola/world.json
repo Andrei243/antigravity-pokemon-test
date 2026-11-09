@@ -121,6 +121,10 @@
     "poni_coast",
     "resolution_cave",
     "ulaula_route_11",
-    "blush_mountain"
+    "blush_mountain",
+    // Plan 23, the rest of the islands: Hau'oli Cemetery, Big Wave Beach and the Secluded Shore
+    "hauoli_cemetery",
+    "big_wave_beach",
+    "secluded_shore"
   ]
 }

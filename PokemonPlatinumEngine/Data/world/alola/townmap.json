@@ -69,7 +69,10 @@
     { "key": "poni_meadow", "about": "Purple flowers round a pond, where Oricorio dance, and the mouth of Resolution Cave." },
     { "key": "poni_coast", "about": "Poni's rocky south shore, its west half behind rubble only Mudsdale crosses." },
     { "key": "ulaula_route_11", "about": "A quiet wooded road from Route 10 under Mount Hokulani round to Route 12." },
-    { "key": "blush_mountain", "about": "A warm red slope north of Route 12, with Ula'ula's geothermal power plant at its top." }
+    { "key": "blush_mountain", "about": "A warm red slope north of Route 12, with Ula'ula's geothermal power plant at its top." },
+    { "key": "hauoli_cemetery", "about": "A quiet field of graves and flowers east of Route 2, where Ghost-type Pokémon drift." },
+    { "key": "big_wave_beach", "about": "A wide beach on the open sea west of Route 1, where the biggest swells break." },
+    { "key": "secluded_shore", "about": "A rock shelf and a quiet beach below Route 11, where pearls wash up." }
   ],
   "blocks": [
     { "x": 8, "y": 1, "kind": "Route", "name": "Route 3", "area": "alola_route_3" },
@@ -356,7 +359,13 @@
     { "x": 22, "y": 9, "kind": "Route", "name": "Route 11", "area": "ulaula_route_11" },
     { "x": 19, "y": 4, "kind": "Landmark", "name": "Blush Mountain", "area": "blush_mountain" },
     { "x": 20, "y": 4, "kind": "Landmark", "name": "Blush Mountain", "area": "blush_mountain" },
-    { "x": 20, "y": 5, "kind": "Landmark", "name": "Blush Mountain", "area": "blush_mountain" }
+    { "x": 20, "y": 5, "kind": "Landmark", "name": "Blush Mountain", "area": "blush_mountain" },
+    { "x": 11, "y": 3, "kind": "Landmark", "name": "Hau'oli Cemetery", "area": "hauoli_cemetery" },
+    { "x": 11, "y": 4, "kind": "Landmark", "name": "Hau'oli Cemetery", "area": "hauoli_cemetery" },
+    { "x": 4, "y": 4, "kind": "Landmark", "name": "Big Wave Beach", "area": "big_wave_beach" },
+    { "x": 5, "y": 4, "kind": "Landmark", "name": "Big Wave Beach", "area": "big_wave_beach" },
+    { "x": 5, "y": 5, "kind": "Landmark", "name": "Big Wave Beach", "area": "big_wave_beach" },
+    { "x": 22, "y": 10, "kind": "Landmark", "name": "Secluded Shore", "area": "secluded_shore" }
   ],
   "fly": [
     { "spawn": 1, "cells": "7,4" },
@@ -384,6 +393,8 @@
     "UltraForest": "4,18",
     "UltraRuin": "4,18",
     "UltraMegalopolis": "4,18",
-    "MegaloTower": "4,18"
+    "MegaloTower": "4,18",
+    // The Battle Tree's hall is come to by its desk's script alone: shown at the Gauntlet's head
+    "PoniGauntlet_BattleTreeHall": "10,16"
   }
 }

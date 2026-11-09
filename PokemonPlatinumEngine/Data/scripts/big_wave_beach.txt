@@ -1,0 +1,27 @@
+# Big Wave Beach, Melemele Island (plan 23, the rest of the islands). The lines are our own. Once the Team Skull grunt
+# on the sand has been beaten, the surfer hands over a Fresh Water for the trouble (FLAG_ALOLA_BIG_WAVE_THANKS), as
+# Ultra Sun and Ultra Moon's attendant does.
+
+
+script Surfer
+  face self player
+  speaker "Surfer"
+  if flag FLAG_ALOLA_BIG_WAVE_THANKS goto Done
+  if not defeated "alola_team_skull_grunt_kahale" goto Grunt
+  say "You sent that Skull grunt packing! The whole beach owes you. Here, it's not much."
+  give "Fresh Water"
+  setflag FLAG_ALOLA_BIG_WAVE_THANKS
+  end
+label Grunt
+  say "A Team Skull grunt has been chasing everybody off the sand. I'd deal with him, but my Pokémon are all for riding waves."
+  end
+label Done
+  say "The swell's perfect today. Can you hear it? That's Melemele breathing."
+  end
+
+
+script Sightseer
+  face self player
+  speaker "Sightseer"
+  say "I flew all the way from Kalos for these waves, and now I'm too scared to go in. The beach is lovely, though!"
+  end

@@ -80,6 +80,41 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_ROUTE_11_PP_UP",
       "item": "PP Up"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 136,
+      "z": 291,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_11_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 146,
+      "z": 290,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_ULAULA_ROUTE_11_2"
+    },
+    {
+      "id": "scan_vigoroth",
+      "looks": "vigoroth",
+      "movement": "look_south",
+      "x": 141,
+      "z": 288,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

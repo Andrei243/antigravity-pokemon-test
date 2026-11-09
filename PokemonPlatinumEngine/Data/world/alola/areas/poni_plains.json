@@ -93,6 +93,65 @@
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ITEM_PLAINS_FIRE_STONE",
       "item": "Fire Stone"
+    },
+    {
+      "id": "zygarde_cell_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 256,
+      "z": 137,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_PLAINS_1"
+    },
+    {
+      "id": "zygarde_cell_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 230,
+      "z": 163,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_PLAINS_2"
+    },
+    {
+      "id": "zygarde_cell_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 228,
+      "z": 190,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_PLAINS_3"
+    },
+    {
+      "id": "zygarde_cell_4",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 242,
+      "z": 134,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": "",
+      "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_PONI_PLAINS_4"
+    },
+    {
+      "id": "scan_conkeldurr",
+      "looks": "conkeldurr",
+      "movement": "look_south",
+      "x": 280,
+      "z": 134,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [
@@ -101,6 +160,15 @@
       "z": 168,
       "type": 0,
       "script": "PlainsSign"
+    },
+    {
+      "x": 263,
+      "z": 135,
+      "type": 2,
+      "script": "BURIED_1",
+      "item": "PP Max",
+      "flag": "FLAG_HIDDEN_ITEM_ALOLA_BURIED_PONI_PLAINS_1",
+      "buried": true
     }
   ],
   "triggers": [],

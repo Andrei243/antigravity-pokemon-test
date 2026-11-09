@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Geothermal Power Plant"
+    ],
+    "text": [
+      "Centrala geotermală"
+    ]
+  },
+  "people": {
+    "chief": {
+      "name": {
+        "en": [
+          "Plant Chief"
+        ],
+        "text": [
+          "Șeful centralei"
+        ]
+      }
+    },
+    "kanoa": {
+      "name": {
+        "en": [
+          "Kanoa"
+        ],
+        "text": [
+          "Kanoa"
+        ]
+      }
+    },
+    "ola": {
+      "name": {
+        "en": [
+          "Ola"
+        ],
+        "text": [
+          "Ola"
+        ]
+      }
+    },
+    "engineer": {
+      "name": {
+        "en": [
+          "Engineer"
+        ],
+        "text": [
+          "Inginer"
+        ]
+      }
+    },
+    "zygarde_cell_plant": {
+      "name": {
+        "en": [
+          "Zygarde Cell"
+        ],
+        "text": [
+          "Celulă Zygarde"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
