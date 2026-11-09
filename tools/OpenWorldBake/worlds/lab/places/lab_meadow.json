@@ -9,7 +9,7 @@
     { "name": "hill_foot", "at": [0, 0, -27], "yaw": 0 },
     { "name": "house_step", "at": [-20, 0.1, -40], "yaw": 0 },
     { "name": "house_path", "at": [-20, 0.1, -34], "yaw": 180 },
-    { "name": "twins_gap", "at": [38, 0.2, -58], "yaw": 180 },
+    { "name": "twins_gap", "at": [38, 0.6, -58], "yaw": 180 },
     { "name": "north_meadow", "at": [6, 0.2, -60], "yaw": 90 }
   ],
   "doors": [
@@ -26,7 +26,7 @@
   ],
   "people": [
     {
-      "name": "walker", "at": [6, 0.2, -54], "yaw": 0, "displayName": "Walker",
+      "name": "walker", "at": [6, 0.2, -54], "yaw": 0, "look": "gentleman", "displayName": "Walker",
       "lines": ["Fine weather for a walk round the meadow."],
       "moves": "wander", "radius": 4
     },

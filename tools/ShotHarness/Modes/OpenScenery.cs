@@ -44,9 +44,10 @@ partial class Harness
     {
         if (map.Buildings.Count < 3)
         {
+            // The west house stands south of the plateau's foot and clear of the lab's own trees about its house
             foreach (var (name, x0, z0, x1, z1, town) in new[]
             {
-                ("the west house", -33.5, -48.0, -27.5, -42.0, Architecture.Plaster),
+                ("the west house", -35.0, -41.0, -29.0, -35.0, Architecture.Plaster),
                 ("the east house", -8.0, -50.0, -1.0, -44.0, Architecture.Townhouse)
             })
             {
@@ -60,6 +61,7 @@ partial class Harness
         {
             int col = i % 6, row = i / 6;
             double x = -44 + col * 9.5 + (row % 2) * 3.5, z = -38 + row * 6.5 - (col % 3) * 1.2;
+            z = OutOfTheSolids(map, x, z);
             var at = OnLabGround(map, x, z, 20, -5);
             float yaw = (i * 137 % 360) * MathF.PI / 180f;
             figures.Add(new OpenFigure(OpenFigureKind.Person, $"crowd:{i}", CharacterStyle.InKit(CrowdLooks[i % CrowdLooks.Length], CharacterKit.Grown),
@@ -68,12 +70,25 @@ partial class Harness
         for (int i = 0; i < FieldSpecies.Length; i++)
         {
             double x = -40 + (i % 6) * 11 + 4, z = -32 + (i / 6) * 13 + (i % 2) * 2;
+            z = OutOfTheSolids(map, x, z);
             var at = OnLabGround(map, x, z, 20, -5);
             float yaw = (i * 211 % 360) * MathF.PI / 180f;
             float height = PokemonDatabase.Get(FieldSpecies[i])?.Height ?? 0.6f;
             figures.Add(new OpenFigure(OpenFigureKind.Pokemon, $"field:{i}", FieldSpecies[i], new Vector3((float)at.MetresX, (float)at.MetresY, (float)at.MetresZ), yaw, Height: height));
         }
         game.OpenFiguresByHand = figures;
+    }
+
+    /// <summary>A place's row (z) moved south of any solid it would stand in or within a metre of, so nobody stands in a wall.</summary>
+    static double OutOfTheSolids(OpenMap map, double x, double z)
+    {
+        foreach (var box in map.Solids)
+        {
+            double x0 = box.Min.X / (double)OpenPos.PerMetre - 1, x1 = box.Max.X / (double)OpenPos.PerMetre + 1;
+            double z0 = box.Min.Z / (double)OpenPos.PerMetre - 1, z1 = box.Max.Z / (double)OpenPos.PerMetre + 1;
+            if (x > x0 && x < x1 && z > z0 && z < z1) z = z1 + 0.5;
+        }
+        return z;
     }
 
     /// <summary>

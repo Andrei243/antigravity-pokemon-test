@@ -6,6 +6,7 @@ using System.Linq;
 using System.Numerics;
 using OpenWorldBake;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Graphics.OpenWorld;
 using PokemonPlatinumEngine.OpenWorld;
 using PokemonPlatinumEngine.Overworld;
@@ -219,6 +220,14 @@ public class OpenSceneryTests
         Assert.NotEqual(points, OpenHorizon.Of((-2, -2, 1, 1), height, 99u).Mesh.Positions.Take(land.Mesh.Count));
         // Far fewer triangles than a ring of the border's 2 m every ring out would be
         Assert.InRange(land.Mesh.Triangles, 1000, 40000);
+        // The band is level ground to the covers as to the light: the channel eased out into it is no streak of deep grass
+        var grass = OpenTerrainMesh.SlotsOf(OpenTerrainMesh.Covers(OpenCover.Grass, OpenCover.Grass, OpenCover.Grass));
+        for (int t = 0; t < land.Mesh.Count; t += 3)
+            if (Beyond(points[t]) <= OpenHorizon.Level && Beyond(points[t + 1]) <= OpenHorizon.Level && Beyond(points[t + 2]) <= OpenHorizon.Level)
+            {
+                Assert.Equal(grass, OpenTerrainMesh.SlotsOf(land.Mesh.Uvs[t]));
+                Assert.Equal(Vector3.UnitY, land.Mesh.Normals[t]);
+            }
         // The far forests stand on the land between their reaches, each on a row of the trees' atlas
         Assert.True(land.Trees.Count > 500, $"{land.Trees.Count} far trees");
         Assert.All(land.Trees, t =>
@@ -227,6 +236,21 @@ public class OpenSceneryTests
             Assert.InRange(t.Row, 0, OpenFoliage.Rows - 1);
         });
         Assert.Equal(land.Trees, OpenHorizon.Of((-2, -2, 1, 1), height, 1234u).Trees);
+    }
+
+    // ------------------------------------------------------------------ the light of lit glass
+
+    [Fact]
+    public void LitGlassGlowsAfterDarkInTheOpenAirAsTheFieldsDoes()
+    {
+        // The open air's rig is the battle's of the hour, which lights no glass, with the field's lamps and windows
+        var day = OpenLook.Open(13.5f);
+        Assert.Equal((0f, 0f), (day.LampGlow, day.HomeGlow));
+        var night = OpenLook.Open(22f);
+        var field = ArtLook.FieldRig(22f, indoors: false);
+        Assert.Equal((field.LampGlow, field.HomeGlow), (night.LampGlow, night.HomeGlow));
+        Assert.True(night.HomeGlow > 0.9f && night.LampGlow > 0.9f);
+        Assert.Equal(ArtLook.BattleRig(22f).Light, night.Light);
     }
 
     /// <summary>How far a point lies out from the test region's rectangle (64 m every way from the origin).</summary>

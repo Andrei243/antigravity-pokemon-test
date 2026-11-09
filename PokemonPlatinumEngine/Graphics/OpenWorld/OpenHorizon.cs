@@ -206,9 +206,12 @@ internal static class OpenHorizon
         if (n.Y < 0) { (b, c) = (c, b); n = -n; }
         var face = Vector3.Normalize(n);
         // Each corner its own cover by its height and the face's slope, so the program draws their borders texel by
-        // texel across the triangles, as the region's own ground's, and no long triangle makes a sawtooth of them
+        // texel across the triangles, as the region's own ground's, and no long triangle makes a sawtooth of them. The
+        // band is level ground to the light and to the covers alike: a river's channel eased out into it is neither a
+        // dark wedge of shade nor a streak of the deep grass
         var up = level ? Vector3.UnitY : face;
-        var covers = OpenTerrainMesh.Covers(CoverOf(face.Y, a.Y - median), CoverOf(face.Y, b.Y - median), CoverOf(face.Y, c.Y - median));
+        float slope = level ? 1f : face.Y;
+        var covers = OpenTerrainMesh.Covers(CoverOf(slope, a.Y - median), CoverOf(slope, b.Y - median), CoverOf(slope, c.Y - median));
         mesh.Add(a, up, covers, OpenTerrainMesh.Corners[0]);
         mesh.Add(b, up, covers, OpenTerrainMesh.Corners[1]);
         mesh.Add(c, up, covers, OpenTerrainMesh.Corners[2]);

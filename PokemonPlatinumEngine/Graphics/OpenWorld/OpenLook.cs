@@ -26,11 +26,14 @@ internal static class OpenLook
     public static LightRig Open(float hour)
     {
         var rig = ArtLook.BattleRig(hour);
+        // Lit glass glows after dark as the field's does (plan 32 · OW9's buildings): a battle's rig lights none
+        var field = ArtLook.FieldRig(hour, indoors: false);
         return rig with
         {
             FogNear = FogNear, FogFar = FogFar, FogAmount = FogAmount,
             // A camera low behind the player is no diorama: no tilt-shift, no wide blur
-            Post = rig.Post with { TiltShift = 0f, Dof = 0f }
+            Post = rig.Post with { TiltShift = 0f, Dof = 0f },
+            LampGlow = field.LampGlow, HomeGlow = field.HomeGlow
         };
     }
 
