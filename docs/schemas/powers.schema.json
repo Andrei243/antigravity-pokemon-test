@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The timed powers' strengths (Data/powers.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "seconds": {
+      "type": "integer"
+    },
+    "powers": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "Exp",
+              "Effort",
+              "Money",
+              "Bargain",
+              "Catch",
+              "Encounter",
+              "Stealth",
+              "Hatch",
+              "TypeEncounter",
+              "Materials"
+            ]
+          },
+          "strength": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "strength"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "seconds"
+  ],
+  "additionalProperties": false
+}

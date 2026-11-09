@@ -48,6 +48,168 @@
         }
       },
       "additionalProperties": false
+    },
+    "kit": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "makes": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "value": {
+            "type": "integer"
+          },
+          "takes": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "material": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "item": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "makes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "kitchen": {
+      "type": "object",
+      "properties": {
+        "most": {
+          "type": "integer"
+        },
+        "plain": {
+          "type": "string"
+        },
+        "grades": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "heal": {
+                "type": "integer"
+              },
+              "level": {
+                "type": "integer"
+              },
+              "seconds": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "heal",
+              "level",
+              "seconds"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "dishes": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "needs": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "material": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "items": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "berry": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "power": {
+                "enum": [
+                  "Exp",
+                  "Effort",
+                  "Money",
+                  "Bargain",
+                  "Catch",
+                  "Encounter",
+                  "Stealth",
+                  "Hatch",
+                  "TypeEncounter",
+                  "Materials",
+                  null
+                ]
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
