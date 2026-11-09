@@ -236,7 +236,10 @@ internal static partial class ModernUi
         UiShapes.Circle(disc, 100, tint);
         UiShapes.Ring(disc, 100, 5, Darker(tint, 0.3f));
         string each = Text.Of("crafting.make.each", ("n", Math.Max(1, chosen.Count)));
-        UiFonts.DrawCentered(each, disc.X - UiFonts.Measure(each, 40, UiWeight.Black) / 2f, disc.Y, 40, Color.White, UiWeight.Black);
+        // Fitted inside the disc: at 40 the words ran to its rim
+        float eachSize = 40, eachW = UiFonts.Measure(each, eachSize, UiWeight.Black);
+        if (eachW > 150) { eachSize = MathF.Floor(eachSize * 150 / eachW); eachW = UiFonts.Measure(each, eachSize, UiWeight.Black); }
+        UiFonts.DrawCentered(each, disc.X - eachW / 2f, disc.Y, eachSize, Color.White, UiWeight.Black);
         string name = made.DisplayName;
         float size = 44, nameW = UiFonts.Measure(name, size, UiWeight.Black);
         if (nameW > room) size = MathF.Floor(size * room / nameW);
