@@ -811,6 +811,34 @@
     "description": "A fossil of a Pokémon that flew long ago. It seems to be part of a wing.",
     "flingPower": 100
   },
+  // X and Y's two fossils of Kalos (plan 23, Kalos's last species), which the import's later items leave out as they left
+  // Black 2's: the Glittering Cave's fossil seeker gives one and then the other, and Ambrette Town's laboratory (or any
+  // that restores fossils) brings them back as Tyrunt and Amaura (Models/Pastimes.cs, Fossils). Ids 9596 and 9597, kept
+  // clear of the numbers next to Black 2's pair. What each says of itself is ours
+  "Jaw Fossil": {
+    "new": true,
+    "id": 9596,
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a great-jawed Pokémon that ruled the land long ago. Its teeth are still sharp.",
+    "flingPower": 100
+  },
+  "Sail Fossil": {
+    "new": true,
+    "id": 9597,
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A fossil of a Pokémon that lived in the cold long ago. It seems to be part of the sail on its back.",
+    "flingPower": 100
+  },
   // The later games' charms for a Pokédex filled (plan 40 · GE5, Models/Charms.cs), brought in by name from PokeAPI's
   // items: what each says of itself is ours
   "Oval Charm": { "description": "A smooth oval charm. While it is in the Bag, two Pokémon left at a Day Care find an Egg more often." },

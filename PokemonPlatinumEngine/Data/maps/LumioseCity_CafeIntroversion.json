@@ -1,0 +1,131 @@
+{
+  "name": "LumioseCity_CafeIntroversion",
+  "displayName": "Café Introversion",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#......####",
+    "#.........#",
+    "#.##......#",
+    "#.##..#...#",
+    "#.........#",
+    "#........##",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 333,
+      "targetY": 328,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "owner",
+      "name": "Owner",
+      "npcType": "waiter",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "...Welcome. Here we speak softly, or not at all. The coffee says the rest."
+      ]
+    },
+    {
+      "id": "reader",
+      "name": "Reader",
+      "npcType": "gentleman",
+      "x": 1,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "I have read the same page four times. It is a very good page."
+      ]
+    },
+    {
+      "id": "quiet_girl",
+      "name": "Quiet Girl",
+      "npcType": "lady",
+      "x": 7,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "...Oh! Sorry. I come here to hear myself think. Today it is thinking about cake."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

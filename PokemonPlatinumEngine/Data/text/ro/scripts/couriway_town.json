@@ -40,5 +40,23 @@
         "Cascada duce totul până în Couriway, mai devreme sau mai târziu. Chiar și Pokémonii."
       ]
     }
+  ],
+  "Volcanion": [
+    {
+      "en": [
+        "Steam bursts up off the pool! A Pokémon of fire and water stands in it and glares at {player}."
+      ],
+      "text": [
+        "Aburul țâșnește din lac! Un Pokémon de foc și apă stă în el și se uită urât la {player}."
+      ]
+    },
+    {
+      "en": [
+        "Volcanion turns its back and lets the steam hide it again."
+      ],
+      "text": [
+        "Volcanion se întoarce cu spatele și lasă aburul să-l ascundă din nou."
+      ]
+    }
   ]
 }

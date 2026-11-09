@@ -1,0 +1,107 @@
+{
+  "name": "LumioseCity_PainterHouse",
+  "displayName": "Lumiose City",
+  "bgmTrack": "kalos/aquacorde",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.......###",
+    "#.........#",
+    "#.........#",
+    "#....##...#",
+    "#.........#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 5,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 321,
+      "targetY": 378,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "painter",
+      "name": "Painter",
+      "npcType": "lady",
+      "x": 3,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "I paint the tower every day, and it never comes out the same. Today it is blue. Tomorrow, who knows?"
+      ]
+    },
+    {
+      "id": "smeargle",
+      "name": "Smeargle",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "It has paint all over its tail, and a little on its nose."
+      ],
+      "species": "Smeargle"
+    }
+  ],
+  "wildEncounters": []
+}

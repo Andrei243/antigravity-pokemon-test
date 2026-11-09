@@ -26,6 +26,9 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
+    // Plan 23, Kalos's last species: Diancie in the north chamber after the Hall of Fame, which comes out of the crystals
+    // only to a Trainer with a Carbink (reflection_cave.txt)
+    { "id": "diancie", "name": "Diancie", "npcType": "Pokemon", "species": "Diancie", "x": 26, "y": 7, "facing": "Down", "script": "Diancie", "hiddenBy": "FLAG_KALOS_DIANCIE_GONE", "shownBy": "KalosHallOfFame" },
     { "id": "mega_alakazite", "name": "Alakazite", "npcType": "ItemBall", "item": "Alakazite", "x": 36, "y": 8, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_ALAKAZITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }
