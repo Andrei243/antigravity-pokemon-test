@@ -164,6 +164,8 @@ internal sealed partial class BattleCamera
     public static float SplitAmount(SplitMoment moment, float time)
     {
         var (outAt, end) = SplitWindow(moment);
+        // A moment that came while something already waited on the player never splits
+        if (moment.CutShortAt >= 0f && moment.CutShortAt <= moment.Start) return 0f;
         if (time < moment.Start || time >= end) return 0f;
         if (time < moment.Start + SplitIn) return Smooth((time - moment.Start) / SplitIn);
         if (time < outAt) return 1f;

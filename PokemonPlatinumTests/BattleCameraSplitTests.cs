@@ -158,6 +158,16 @@ public class BattleCameraSplitTests
         cut.NoteChoosing(false);
         Advance(cut, 0.4f);
         Assert.Null(BattleCamera.SplitNow(cut, cutPlaces, Galar));
+
+        // A moment that comes while the menu is already open never splits
+        var (late, latePlaces) = Battle(1, 1, 1.2f, 1f);
+        for (int i = 0; i < 150; i++)
+        {
+            late.Update(1f / 60f, null, null);
+            late.NoteChoosing(true);
+        }
+        Assert.Single(late.SplitMoments);
+        Assert.Null(BattleCamera.SplitNow(late, latePlaces, Galar));
     }
 
     public static IEnumerable<object[]> Formats()

@@ -58,7 +58,8 @@ partial class Harness
             leader.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 6));
             leader.Party.Add(new Pokemon(PokemonDatabase.Get("Onix")!, 7));
             var single = StartBattle(null, 0, leader);
-            SplitReel(single, $"bc_{manner.Name}_split_leads_single");
+            if (manner.Splits.HasFlag(CameraSplits.Leads)) SplitReel(single, $"bc_{manner.Name}_split_leads_single");
+            else ToMainMenu(single);
 
             // The last Pokémon: the first knocked out, its successor sent out
             if (manner.Splits.HasFlag(CameraSplits.LastPokemon) || manner.Splits.HasFlag(CameraSplits.BossLast))
@@ -89,16 +90,16 @@ partial class Harness
         game.State = GameState.Overworld;
     }
 
-    // Reads the battle on (a line every 0.8 s) until the picture splits, then a picture every tenth of a second, at
+    // Reads the battle on (a line every 2 s, long enough for a send-out to end) until the picture splits, then a picture every tenth of a second, at
     // half size, until the split has gone, with how far its halves had come in printed for each
     void SplitReel(BattleEngine b, string prefix)
     {
         float waited = 0f;
-        for (int guard = 0; guard < 120 && game.BattleRenderer.Split == null && !b.IsBattleOver; guard++)
+        for (int guard = 0; guard < 400 && game.BattleRenderer.Split == null && !b.IsBattleOver; guard++)
         {
             Skip(0.1);
             waited += 0.1f;
-            if (waited >= 0.8f && b.HUD.MenuState == BattleMenuState.Message && game.BattleRenderer.Split == null)
+            if (waited >= 2.0f && b.HUD.MenuState == BattleMenuState.Message && game.BattleRenderer.Split == null)
             {
                 Confirm(b);
                 waited = 0f;
@@ -119,7 +120,7 @@ partial class Harness
                 Save(img, name);
             }
             string state = game.BattleRenderer.Split is { } split ? $"the halves {split.In:0.00} in" : "no split";
-            Console.WriteLine($"  {name}: {state}, the line \"{b.CurrentMessage}\"");
+            Console.WriteLine($"  {name}: {state}, the line \"{b.CurrentMessage}\" ({b.HUD.MenuState}, cut short at {b.Anim.SplitMoments.LastOrDefault()?.CutShortAt:0.00}, the clock {b.Anim.Time:0.00})");
             Skip(0.1);
         }
     }
