@@ -5,7 +5,7 @@
   // flower beds with a paved cross of paths lies south. Its houses are Cyllage's coastal stone (Architecture.Cyllage), and
   // it plays Santalune's song until plan 31 writes it its own
   "area": "coumarine_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

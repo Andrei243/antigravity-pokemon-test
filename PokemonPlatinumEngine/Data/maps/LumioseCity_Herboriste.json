@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_Herboriste",
   "displayName": "Herboriste",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 11,

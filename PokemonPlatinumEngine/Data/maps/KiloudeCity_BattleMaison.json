@@ -1,7 +1,7 @@
 {
   "name": "KiloudeCity_BattleMaison",
   "displayName": "Battle Maison",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/kiloude",
   "interior": "Museum",
   "trees": "Round",
   "width": 17,

@@ -1,0 +1,133 @@
+{
+  "name": "KiloudeCity_FriendSafari",
+  "displayName": "Friend Safari",
+  "bgmTrack": "kalos/kiloude",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##...###...##",
+    "#....###....#",
+    "#...........#",
+    "#...........#",
+    "###.......###",
+    "#...........#",
+    "######.######"
+  ],
+  "behaviours": [
+    { "x": 5, "y": 4, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 9,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 10,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "Kalos",
+      "targetX": 575,
+      "targetY": 365,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "guide",
+      "name": "Safari Guide",
+      "npcType": "receptionist",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Guide"
+    },
+    {
+      "id": "birder",
+      "name": "Bird Keeper",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "script": "Visitor"
+    }
+  ],
+  "wildEncounters": []
+}

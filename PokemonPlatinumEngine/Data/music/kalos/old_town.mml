@@ -1,0 +1,44 @@
+# The old towns of Kalos (Camphrier Town, Geosenge Town, Dendemille Town, and Route 10's standing stones): a minuet in
+# E minor, an oboe over a harpsichord's oom-pah-pah, a cello answering and the string orchestra under them, as old as
+# the stones; at night a flute and a harp. Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Kalos's Old Towns
+tempo 104
+meter 3/4
+reverb 0.3
+nighttempo 0.9
+room chamber 1.6
+
+track lead oboe night=flute vol=0.7 pan=0.05 rev=0.3
+  o5 b4 o5 a4 o5 f+4 | L o5 e4 o5 g4 o5 b4 | o6 c2 o5 a4 | o6 d4. o6 c8 o5 b4 |
+  o5 g2 o5 d4 | o5 e4 o5 g4 o6 c4 | o6 c4. o5 b8 o5 a4 | o5 f+4 o5 b4 o6 d+4 |
+  o6 d+2 o5 b4 | o6 e4. o6 d8 o5 b4 | o5 a4 o5 f+4 o5 d4 | o5 g4. o5 a8 o5 g4 |
+  o5 b2 o5 g4 | o5 a4 o6 c4 o6 e4 | o6 d+4. o6 c8 o5 b4 | o6 e2. |
+  o5 b4 o5 a4 o5 f+4 |
+
+track harpsi harpsichord night=harp vol=0.22 pan=-0.3 rev=0.24
+  o3 b4 o4 (b > d+ f+)4 o4 (b > d+ f+)4 | L o3 e4 o4 (e g b)4 o4 (e g b)4 | o3 a4 o4 (a > c e)4 o4 (a > c e)4 | o3 d4 o4 (d f+ a)4 o4 (d f+ a)4 |
+  o3 g4 o4 (g b > d)4 o4 (g b > d)4 | o3 c4 o4 (c e g)4 o4 (c e g)4 | o3 a4 o4 (a > c e)4 o4 (a > c e)4 | o3 b4 o4 (b > d+ f+)4 o4 (b > d+ f+)4 |
+  o3 b4 o4 (b > d+ f+)4 o4 (b > d+ f+)4 | o3 e4 o4 (e g b)4 o4 (e g b)4 | o3 d4 o4 (d f+ a)4 o4 (d f+ a)4 | o3 c4 o4 (c e g)4 o4 (c e g)4 |
+  o3 g4 o4 (g b > d)4 o4 (g b > d)4 | o3 a4 o4 (a > c e)4 o4 (a > c e)4 | o3 b4 o4 (b > d+ f+)4 o4 (b > d+ f+)4 | o3 e4 o4 (e g b)4 o4 (e g b)4 |
+  o3 b4 o4 (b > d+ f+)4 o4 (b > d+ f+)4 |
+
+track cello cello vol=0.36 pan=0.3 rev=0.3
+  o4 d+2. | L o3 g2. | o4 c2. | o3 f+2. |
+  o3 b2. | o3 e2. | o4 c2. | o4 d+2. |
+  o4 d+2. | o3 g2. | o3 f+2. | o3 e2. |
+  o3 b2. | o4 c2. | o4 d+2. | o3 g2. |
+  o4 d+2. |
+
+track pad orchestra night=warmpad vol=0.13 pan=0.2 rev=0.4 width=0.9
+  o3 (b > d+ f+)2. | L o3 (e g b)2. | o3 (a > c e)2. | o3 (d f+ a)2. |
+  o3 (g b > d)2. | o3 (c e g)2. | o3 (a > c e)2. | o3 (b > d+ f+)2. |
+  o3 (b > d+ f+)2. | o3 (e g b)2. | o3 (d f+ a)2. | o3 (c e g)2. |
+  o3 (g b > d)2. | o3 (a > c e)2. | o3 (b > d+ f+)2. | o3 (e g b)2. |
+  o3 (b > d+ f+)2. |
+
+track bass contrabass vol=0.55 rev=0.1
+  o3 b2. | L o3 e2. | o3 a2. | o3 d2. |
+  o3 g2. | o3 c2. | o3 a2. | o3 b2. |
+  o3 b2. | o3 e2. | o3 d2. | o3 c2. |
+  o3 g2. | o3 a2. | o3 b2. | o3 e2. |
+  o3 b2. |

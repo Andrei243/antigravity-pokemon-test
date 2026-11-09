@@ -200,6 +200,9 @@ partial class Harness
         {
             ComeThrough(map, x, y, Direction.Up);
             ReadTo(null);
+            // The research a battle before raised is told on the field's toast once it is free (the Battle Institute's
+            // examiners' Doublade was told over Diancie's chamber): every toast is let go before the beat begins
+            for (int quiet = 0, i = 0; quiet < 10 && i < 8000; i++) { Frames(1); quiet = game.Toast.Visible ? 0 : quiet + 1; }
             Frames(6); Shot(prefix + "_before");
             game.Interact();
             Skip(0.9); Shot(prefix + "_look");

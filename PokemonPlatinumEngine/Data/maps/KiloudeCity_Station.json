@@ -1,7 +1,7 @@
 {
   "name": "KiloudeCity_Station",
   "displayName": "Kiloude Station",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/kiloude",
   "interior": "Museum",
   "trees": "Round",
   "width": 13,

@@ -1,0 +1,44 @@
+# Kiloude City, the quiet town by the sea at the end of the line, where the journey rests: an oboe in A flat over a nylon
+# guitar's broken chords, a cello's line and the string orchestra; at night a flute and a harp.
+# Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Kiloude City
+tempo 92
+meter 4/4
+reverb 0.32
+nighttempo 0.9
+room chamber 1.8
+
+track lead oboe night=flute vol=0.64 pan=0.05 rev=0.32
+  o5 e-4 o5 g4 o5 b-4 o6 d-4 | L o6 c4. o5 b-8 o5 a-4 o5 e-4 | o5 f2 o5 a-4 o6 c4 | o6 d-4. o6 c8 o5 a-4 o5 f4 |
+  o5 g2. o5 b-4 | o5 a-4 o6 c4 o6 e-4 o6 c4 | o6 e-2 o6 c4 o5 g4 | o5 f4. o5 a-8 o6 d-4 o6 f4 |
+  o6 e-2 o6 d-4 o5 b-4 | o6 c4. o5 a-8 o5 f4 o5 a-4 | o5 a-2 o5 f4 o5 d-4 | o5 e-4. o5 a-8 o6 c4 o6 e-4 |
+  o5 g2 o5 e-4 o5 g4 | o5 f4. o5 a-8 o6 d-2 | o5 b-4. o5 a-8 o5 g4 o5 e-4 | o5 a-2. o5 c4 |
+  o5 e-4 o5 g4 o5 b-4 o6 d-4 |
+
+track guitar nylonguitar night=harp vol=0.44 pan=-0.3 rev=0.3
+  o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | L o4 a-8 o5 c8 o5 e-8 o5 a-8 o5 e-8 o5 c8 o4 a-8 o5 c8 | o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 |
+  o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | o4 a-8 o5 c8 o5 e-8 o5 a-8 o5 e-8 o5 c8 o4 a-8 o5 c8 | o4 c8 o4 e-8 o4 g8 o5 c8 o4 g8 o4 e-8 o4 c8 o4 e-8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 |
+  o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 | o4 a-8 o5 c8 o5 e-8 o5 a-8 o5 e-8 o5 c8 o4 a-8 o5 c8 |
+  o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 | o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | o4 a-8 o5 c8 o5 e-8 o5 a-8 o5 e-8 o5 c8 o4 a-8 o5 c8 |
+  o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 |
+
+track cello cello vol=0.3 pan=0.3 rev=0.32
+  o3 g2 o3 b-2 | L o4 c2 o4 e-2 | o3 a-2 o4 c2 | o3 f2 o3 a-2 |
+  o3 g2 o3 b-2 | o4 c2 o4 e-2 | o3 e-2 o3 g2 | o3 f2 o3 a-2 |
+  o3 g2 o3 b-2 | o3 a-2 o4 c2 | o3 f2 o3 a-2 | o4 c2 o4 e-2 |
+  o3 g2 o3 b-2 | o3 f2 o3 a-2 | o3 g2 o3 b-2 | o4 c2 o4 e-2 |
+  o3 g2 o3 b-2 |
+
+track pad orchestra night=warmpad vol=0.13 pan=0.15 rev=0.42 width=0.9
+  o3 (e- g b-)1 | L o3 (a- > c e-)1 | o3 (f a- > c)1 | o3 (d- f a-)1 |
+  o3 (e- g b-)1 | o3 (a- > c e-)1 | o3 (c e- g)1 | o3 (d- f a-)1 |
+  o3 (e- g b-)1 | o3 (f a- > c)1 | o3 (d- f a-)1 | o3 (a- > c e-)1 |
+  o3 (e- g b-)1 | o3 (d- f a-)1 | o3 (e- g b-)1 | o3 (a- > c e-)1 |
+  o3 (e- g b-)1 |
+
+track bass contrabass vol=0.48 rev=0.1
+  o3 e-2 o3 b-2 | L o3 a-2 o4 e-2 | o3 f2 o4 c2 | o3 d-2 o3 a-2 |
+  o3 e-2 o3 b-2 | o3 a-2 o4 e-2 | o3 c2 o3 g2 | o3 d-2 o3 a-2 |
+  o3 e-2 o3 b-2 | o3 f2 o4 c2 | o3 d-2 o3 a-2 | o3 a-2 o4 e-2 |
+  o3 e-2 o3 b-2 | o3 d-2 o3 a-2 | o3 e-2 o3 b-2 | o3 a-2 o4 e-2 |
+  o3 e-2 o3 b-2 |

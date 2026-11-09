@@ -2791,6 +2791,10 @@ from Ramos at 6,4 of CoumarineCity_Gym
 way -
   Ramos> Hoo, a visitor! I'm Ramos. I'm tending my seedlings just now, sprout.
   Ramos> Come back once you've seen the tower up in Shalour. Then we'll have ourselves a proper battle.
+=== CyllageCity_BikeShop.Owner
+from Shop Owner at 7,6 of CyllageCity_BikeShop
+way -
+  Shop Owner> Welcome! I am afraid the shelves are empty. The parts for my bicycles are stuck in Lumiose until the roads open.
 === CyllageCity_Gym.Grant
 from Grant at 6,4 of CyllageCity_Gym
 way 0
@@ -4314,6 +4318,27 @@ way -
 from Worker at 3,11 of KalosPowerPlant
 way -
   Worker> They came in red suits and told us all to wait outside. Please, someone has to stop them!
+=== KalosRoute6_ParfumPalace.FurfrouAway
+from Furfrou at 18,10 of KalosRoute6_ParfumPalace
+way -
+  Furfrou> Furfrou is hiding in a corner of the east wing, its coat only half trimmed. It gives you a guilty look.
+  Furfrou> It seems happy to be found, and trots off toward its master.
+  * cry Furfrou
+  + FLAG_KALOS_PALACE_FURFROU_FOUND
+=== KalosRoute6_ParfumPalace.FurfrouHome
+from Furfrou at 11,4 of KalosRoute6_ParfumPalace
+way -
+  Furfrou> Furfrou sits proudly beside its master, waiting for the rest of its grooming.
+  * cry Furfrou
+=== KalosRoute6_ParfumPalace.Maid
+from Maid at 12,11 of KalosRoute6_ParfumPalace
+way -
+  Maid> The master spends more on his Furfrou's grooming than on the whole palace's dusting. Not that I'm complaining.
+=== KalosRoute6_ParfumPalace.Owner
+from Palace Owner at 10,4 of KalosRoute6_ParfumPalace
+way -
+  Palace Owner> Welcome to my palace! You are the Trainer my butler lent the flute to, I believe. Do look around.
+  Palace Owner> Though I confess I am distracted. My Furfrou slipped away halfway through its grooming. Have you seen it?
 === KalosRoute7_BattleChateau.Butler
 from Butler at 9,4 of KalosRoute7_BattleChateau
 way -
@@ -4343,15 +4368,15 @@ way 0.0
   Clemont> Back to the workshop, then. Science never stops!
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Clemont? = Yes
-  * battle kalos_chateau_clemont Won
+  * battle kalos_clemont_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_CLEMONT
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_clemont
+  + beaten kalos_clemont_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_clemont Lost
+  * battle kalos_clemont_rematch Lost
 way 1, from answer 1
   Clemont> Another day, then. I am here every week.
   ? Will you battle Clemont? = No
@@ -4378,15 +4403,15 @@ way 0.0
   Grant> A good climb. The view from the top suits you.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Grant? = Yes
-  * battle kalos_chateau_grant Won
+  * battle kalos_grant_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_GRANT
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_grant
+  + beaten kalos_grant_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_grant Lost
+  * battle kalos_grant_rematch Lost
 way 1, from answer 1
   Grant> Another day, then. I am here every week.
   ? Will you battle Grant? = No
@@ -4413,15 +4438,15 @@ way 0.0
   Korrina> Wow! Grandpa would have loved that one.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Korrina? = Yes
-  * battle kalos_chateau_korrina Won
+  * battle kalos_korrina_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_KORRINA
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_korrina
+  + beaten kalos_korrina_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_korrina Lost
+  * battle kalos_korrina_rematch Lost
 way 1, from answer 1
   Korrina> Another day, then. I am here every week.
   ? Will you battle Korrina? = No
@@ -4464,15 +4489,15 @@ way 0.0
   Olympia> This, too, the stars knew. Go well.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Olympia? = Yes
-  * battle kalos_chateau_olympia Won
+  * battle kalos_olympia_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_OLYMPIA
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_olympia
+  + beaten kalos_olympia_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_olympia Lost
+  * battle kalos_olympia_rematch Lost
 way 1, from answer 1
   Olympia> Another day, then. I am here every week.
   ? Will you battle Olympia? = No
@@ -4483,15 +4508,15 @@ way 0.0
   Ramos> You grew strong, young sprout. Strong and tall.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Ramos? = Yes
-  * battle kalos_chateau_ramos Won
+  * battle kalos_ramos_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_RAMOS
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_ramos
+  + beaten kalos_ramos_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_ramos Lost
+  * battle kalos_ramos_rematch Lost
 way 1, from answer 1
   Ramos> Another day, then. I am here every week.
   ? Will you battle Ramos? = No
@@ -4518,15 +4543,15 @@ way 0.0
   Valerie> You were... lovely to watch. Thank you.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Valerie? = Yes
-  * battle kalos_chateau_valerie Won
+  * battle kalos_valerie_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_VALERIE
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_valerie
+  + beaten kalos_valerie_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_valerie Lost
+  * battle kalos_valerie_rematch Lost
 way 1, from answer 1
   Valerie> Another day, then. I am here every week.
   ? Will you battle Valerie? = No
@@ -4537,15 +4562,15 @@ way 0.0
   Viola> Got it! The look on your face when you won. That is the shot.
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Viola? = Yes
-  * battle kalos_chateau_viola Won
+  * battle kalos_viola_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_VIOLA
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_viola
+  + beaten kalos_viola_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_viola Lost
+  * battle kalos_viola_rematch Lost
 way 1, from answer 1
   Viola> Another day, then. I am here every week.
   ? Will you battle Viola? = No
@@ -4556,15 +4581,15 @@ way 0.0
   Wulfric> Ha ha! I am warmer already!
   Butler> The house is pleased with you, Lucas. From today you are its Guest.
   ? Will you battle Wulfric? = Yes
-  * battle kalos_chateau_wulfric Won
+  * battle kalos_wulfric_rematch Won
   * fanfare FanfareItem
   + FLAG_DAILY_KALOS_CHATEAU_BEAT_WULFRIC
   = VAR_KALOS_CHATEAU_POINTS 0 -> 3
   = VAR_KALOS_CHATEAU_TITLE 0 -> 1
-  + beaten kalos_chateau_wulfric
+  + beaten kalos_wulfric_rematch
 way 0.1, from answer 2
   > The house's staff see to Lucas's Pokémon. Nobody leaves the Château hurt.
-  * battle kalos_chateau_wulfric Lost
+  * battle kalos_wulfric_rematch Lost
 way 1, from answer 1
   Wulfric> Another day, then. I am here every week.
   ? Will you battle Wulfric? = No
@@ -4777,6 +4802,38 @@ way -
 from Maison Host at 3,7 of KiloudeCity_BattleMaisonHall
 way -
   Maison Host> No challenge is under way. The receptionist in the lobby takes your entries.
+=== KiloudeCity_FriendSafari.Guide
+from Safari Guide at 6,3 of KiloudeCity_FriendSafari
+way 0
+  Safari Guide> Welcome to the Friend Safari! Here every Trainer has grounds of their own, kept by the friends they've made on the road.
+  Safari Guide> Yours are three, and they stay as they are however often you come. Each holds Pokémon of one type.
+  Safari Guide> Which of your grounds will you visit today?
+  Safari Guide> Off you go, then. Walk back down the path whenever you've seen enough!
+  ? Which of your grounds will you visit today? = Psychic grounds
+  * fade out
+  * warp KiloudeCity_FriendSafariGrounds 11 16
+  * fade in
+way 3, from answer 1
+  Safari Guide> Your grounds will be waiting. Come back any time.
+  ? Which of your grounds will you visit today? = Not today
+way 2, from answer 1
+  Safari Guide> Off you go, then. Walk back down the path whenever you've seen enough!
+  ? Which of your grounds will you visit today? = Grass grounds
+  * fade out
+  * warp KiloudeCity_FriendSafariGrounds 11 16
+  * fade in
+  = VAR_KALOS_FRIEND_SAFARI 0 -> 2
+way 1, from answer 1
+  Safari Guide> Off you go, then. Walk back down the path whenever you've seen enough!
+  ? Which of your grounds will you visit today? = Bug grounds
+  * fade out
+  * warp KiloudeCity_FriendSafariGrounds 11 16
+  * fade in
+  = VAR_KALOS_FRIEND_SAFARI 0 -> 1
+=== KiloudeCity_FriendSafari.Visitor
+from Bird Keeper at 3,6 of KiloudeCity_FriendSafari
+way -
+  Bird Keeper> My grounds are full of Flying types. A friend of yours would find quite different ones. That's what makes the safari fun!
 === KiloudeCity_Station.Commuter
 from Commuter at 9,5 of KiloudeCity_Station
 way -
@@ -24243,6 +24300,9 @@ way 1, from answer 1
 from Hoopa at 40,11 of LostHotel
 way 0
   > A golden ring hangs over the gallery floor. A little Pokémon pops out of it, laughing, and points at Lucas!
+  > Something clatters out of the ring as it closes: an old bottle, its stopper sealed tight.
+  > Lucas found the Prison Bottle!
+  > Lucas put it away in the Key Items pocket.
   * scene lost_hotel.Hoopa in the Lost Hotel
   * music stop
   * letterbox on
@@ -24257,6 +24317,7 @@ way 0
   * endscene
   * wildbattle Hoopa 70 Won
   * music area
+  * fanfare FanfareKeyItem
   + FLAG_KALOS_HOOPA_GONE
   + seen lost_hotel.Hoopa in the Lost Hotel
 way 1, from answer 1

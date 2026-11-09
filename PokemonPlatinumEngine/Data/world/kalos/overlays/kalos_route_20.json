@@ -3,7 +3,7 @@
   // whose path winds back and forth between the trees to the Pokémon Village. It plays Santalune Forest's song until
   // plan 31 writes it its own
   "area": "kalos_route_20",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/pokemon_village",
   "trees": "Round",
   // X and Y's mossy rock stands in these woods: an Eevee that levels up here becomes a Leafeon (plan 23, Kalos's species; GE3)
   "evolutionSites": [ "Moss Rock" ],

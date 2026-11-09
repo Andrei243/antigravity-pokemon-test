@@ -8,11 +8,21 @@ script Malva
   face malva player
   speaker "Malva"
   if flag FLAG_KALOS_DEFEATED_MALVA goto Won
+  if flag KalosHallOfFame goto Again
   scene "Malva"
   say "So you're the Trainer everyone on the news is talking about. I'm Malva of the Elite Four."
   say "I don't care how you got here. I care how hot you burn. Let's find out."
   battle self as "kalos_malva_1"
   say "Hmph. You burn hotter than I expected. Don't let it go out before the end."
+  setflag FLAG_KALOS_DEFEATED_MALVA
+  call KalosLeagueFour
+  endscene
+  end
+label Again
+  scene "MalvaAgain"
+  say "The Champion, back in my room. Don't expect the same fire as last time. I've been stoking it."
+  battle self as "kalos_malva_rematch"
+  say "Tch. Still burning hotter than me. Fine. I'll be ready next time, Champion."
   setflag FLAG_KALOS_DEFEATED_MALVA
   call KalosLeagueFour
   endscene

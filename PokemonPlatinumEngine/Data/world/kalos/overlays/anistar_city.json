@@ -4,7 +4,7 @@
   // avenue, Route 17 coming in from the west and Route 18 leaving south. It plays Santalune's song until plan 31 writes
   // it its own
   "area": "anistar_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/laverre",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

@@ -3,7 +3,7 @@
   // of ice on the west side of its long street, a Pokémon Center (with the Mart's counter inside) and a house, Route 19
   // coming up from the south and Route 20's woods going north. It plays Vaniville's song until plan 31 writes it its own
   "area": "snowbelle_city",
-  "bgmTrack": "kalos/vaniville",
+  "bgmTrack": "kalos/snowbelle",
   "trees": "Round",
   "architecture": "OldTimber",
   "doors": [

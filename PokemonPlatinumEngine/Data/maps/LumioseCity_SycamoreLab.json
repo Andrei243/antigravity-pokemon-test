@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_SycamoreLab",
   "displayName": "Pokémon Lab",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/lumiose",
   "interior": "Lab",
   "trees": "Round",
   "width": 15,

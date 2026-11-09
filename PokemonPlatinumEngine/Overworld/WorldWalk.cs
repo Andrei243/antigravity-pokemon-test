@@ -200,6 +200,14 @@ internal static class WorldWalk
                         var onto = mapOf(sent.Name);
                         Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
                     }
+                // and someone behind a counter is spoken to across it, as the game speaks to them (plan 23, Kalos
+                // finished: the Friend Safari's guide)
+                if (map.BehaviourAt(x + ax, y + ay) == TileBehavior.Counter && SendingOf(map).TryGetValue((x + 2 * ax, y + 2 * ay), out var across))
+                    foreach (var sent in across)
+                    {
+                        var onto = mapOf(sent.Name);
+                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                    }
                 var step = FieldMovement.Step(map, x, y, way, walker);
                 if (step.Moves)
                 {

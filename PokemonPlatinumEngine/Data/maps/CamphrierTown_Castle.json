@@ -1,7 +1,7 @@
 {
   "name": "CamphrierTown_Castle",
   "displayName": "Camphrier Castle",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/old_town",
   "interior": "House",
   "trees": "Round",
   "width": 15,

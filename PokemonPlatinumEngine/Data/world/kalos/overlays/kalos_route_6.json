@@ -2,11 +2,16 @@
   // Route 6, the Palace Avenue (plan 23 · Z2, second part): drawn by hand, our words. North from Camphrier Town to the
   // gates of the palace: a straight avenue between two rows of trees, meadows of tall grass and beds of flowers either
   // side, and the palace's railings at its head, where its butler keeps the gate (kalos_route_6.txt); the palace
-  // itself is a later session's. It plays Route 2's song until plan 31 writes it its own
+  // itself is a later session's. It plays Route 2's song until plan 31 writes it its own. Plan 23, Kalos finished: the
+  // palace's front stands behind the railings, its gate open once the butler has lent the flute (FLAG_KALOS_RECEIVED_HM01,
+  // set with it), into its hall (KalosRoute6_ParfumPalace.txt)
   "area": "kalos_route_6",
   "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "OldTimber",
+  "doors": [
+    { "warp": 0, "map": "KalosRoute6_ParfumPalace", "x": 10, "y": 12, "facing": "Up", "openedBy": "FLAG_KALOS_RECEIVED_HM01" }
+  ],
   "props": [
     { "type": "Statue", "x": 196, "y": 268, "width": 1, "depth": 1 },
     { "type": "Statue", "x": 205, "y": 268, "width": 1, "depth": 1 }

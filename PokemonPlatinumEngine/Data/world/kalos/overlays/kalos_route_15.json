@@ -3,7 +3,7 @@
   // broad-leaved trees and over a stream by a bridge to Dendemille Town. It plays Route 2's song until plan 31 writes it
   // its own
   "area": "kalos_route_15",
-  "bgmTrack": "kalos/route2",
+  "bgmTrack": "kalos/route_late",
   "trees": "Round",
   "architecture": "OldTimber",
   "people": {

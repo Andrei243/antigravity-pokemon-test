@@ -45,6 +45,16 @@
           "Medichamite"
         ]
       }
+    },
+    "mega_gengarite": {
+      "name": {
+        "en": [
+          "Gengarite"
+        ],
+        "text": [
+          "Gengarite"
+        ]
+      }
     }
   },
   "signs": {

@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_LysandreLabs",
   "displayName": "Lysandre Labs",
-  "bgmTrack": "kalos/gym",
+  "bgmTrack": "kalos/team_flare",
   "interior": "Lab",
   "trees": "Round",
   "width": 17,

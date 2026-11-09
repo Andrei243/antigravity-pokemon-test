@@ -1,7 +1,7 @@
 {
   "name": "DendemilleTown_House",
   "displayName": "Dendemille Town",
-  "bgmTrack": "kalos/vaniville",
+  "bgmTrack": "kalos/old_town",
   "interior": "House",
   "trees": "Round",
   "width": 11,

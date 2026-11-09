@@ -5,7 +5,7 @@
   // (ShalourCity_TowerOfMastery.txt), where the guru of Mega Evolution keeps his Key Stones. Its houses are Cyllage's
   // coastal stone (Architecture.Cyllage), and it plays Santalune's song until plan 31 writes it its own
   "area": "shalour_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

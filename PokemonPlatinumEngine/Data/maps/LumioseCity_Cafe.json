@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_Cafe",
   "displayName": "Lumiose City",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 11,

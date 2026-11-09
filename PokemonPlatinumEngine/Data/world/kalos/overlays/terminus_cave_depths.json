@@ -4,7 +4,7 @@
   // where a Pokémon that watches over the land sleeps (terminus_cave_depths.txt: Zygarde). Three Trainers and the strongest
   // ground and rock Pokémon of the mountains. It plays Santalune Forest's song until plan 31 writes it a cave song of its own
   "area": "terminus_cave_depths",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   "people": {
     "solenne": {

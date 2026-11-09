@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_LysandreCafe",
   "displayName": "Lysandre Café",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 13,

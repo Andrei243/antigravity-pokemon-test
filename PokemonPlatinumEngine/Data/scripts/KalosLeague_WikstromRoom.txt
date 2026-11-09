@@ -8,11 +8,21 @@ script Wikstrom
   face wikstrom player
   speaker "Wikstrom"
   if flag FLAG_KALOS_DEFEATED_WIKSTROM goto Won
+  if flag KalosHallOfFame goto Again
   scene "Wikstrom"
   say "Well met, challenger! I am Wikstrom, a knight of the Elite Four. My blade and my Pokémon are at your service."
   say "En garde! Let our steel speak!"
   battle self as "kalos_wikstrom_1"
   say "Glorious! A true duel, honestly fought. My helmet is off to you."
+  setflag FLAG_KALOS_DEFEATED_WIKSTROM
+  call KalosLeagueFour
+  endscene
+  end
+label Again
+  scene "WikstromAgain"
+  say "Our Champion rides again! A knight never refuses a rematch. My blade has been sharpened for this very day."
+  battle self as "kalos_wikstrom_rematch"
+  say "Bested twice! There is no shame in it. Your steel is the truest in Kalos."
   setflag FLAG_KALOS_DEFEATED_WIKSTROM
   call KalosLeagueFour
   endscene

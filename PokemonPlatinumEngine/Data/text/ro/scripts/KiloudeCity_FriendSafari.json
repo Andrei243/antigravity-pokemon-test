@@ -1,0 +1,78 @@
+{
+  "Guide": [
+    {
+      "en": [
+        "Safari Guide"
+      ],
+      "text": [
+        "Ghidul Safariului"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Friend Safari! Here every Trainer has grounds of their own, kept by the friends they've made on the road."
+      ],
+      "text": [
+        "Bun venit la Safariul Prieteniei! Aici fiecare Antrenor are terenurile sale, păstrate de prietenii făcuți pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Yours are three, and they stay as they are however often you come. Each holds Pokémon of one type."
+      ],
+      "text": [
+        "Ale tale sunt trei și rămân la fel oricât de des ai veni. Fiecare adăpostește Pokémoni de un singur tip."
+      ]
+    },
+    {
+      "en": [
+        "Which of your grounds will you visit today?",
+        "{friendsafari:1} grounds",
+        "{friendsafari:2} grounds",
+        "{friendsafari:3} grounds",
+        "Not today"
+      ],
+      "text": [
+        "Pe care dintre terenurile tale le vizitezi azi?",
+        "Terenurile de tip {friendsafari:1}",
+        "Terenurile de tip {friendsafari:2}",
+        "Terenurile de tip {friendsafari:3}",
+        "Nu azi"
+      ]
+    },
+    {
+      "en": [
+        "Off you go, then. Walk back down the path whenever you've seen enough!"
+      ],
+      "text": [
+        "Atunci, la drum! Întoarce-te pe cărare oricând ai văzut destul!"
+      ]
+    },
+    {
+      "en": [
+        "Your grounds will be waiting. Come back any time."
+      ],
+      "text": [
+        "Terenurile tale te vor aștepta. Revino oricând."
+      ]
+    }
+  ],
+  "Visitor": [
+    {
+      "en": [
+        "Bird Keeper"
+      ],
+      "text": [
+        "Îngrijitoarea de păsări"
+      ]
+    },
+    {
+      "en": [
+        "My grounds are full of Flying types. A friend of yours would find quite different ones. That's what makes the safari fun!"
+      ],
+      "text": [
+        "Terenurile mele sunt pline de Pokémoni de tip Zburător. Un prieten de-al tău ar găsi cu totul alții. Asta face safariul amuzant!"
+      ]
+    }
+  ]
+}

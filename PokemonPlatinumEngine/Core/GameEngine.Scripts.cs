@@ -205,6 +205,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // Kalos's Friend Safari's grass holds the grounds the guide named (plan 23, Kalos finished)
+        if (flow.Map.Name == FriendSafariMap) LayFriendSafari();
         // and the Lilycove Museum's paintings where they hang (plan 21 · H11, part f)
         if (flow.Map.Name == MuseumGallery) HangThePaintings(flow.Map);
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)

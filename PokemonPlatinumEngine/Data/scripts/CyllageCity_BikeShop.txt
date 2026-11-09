@@ -1,0 +1,22 @@
+# Cyllage City's bicycle shop (plan 23, Kalos finished; docs/mechanics/rulings.md, "Parfum Palace, the bicycle shop
+# and the rest"). The lines are our own. X and Y's shop gives the player a bicycle of the colour chosen; ours waits for its
+# parts until the power is back and Lumiose's roads open (VAR_KALOS_LUMIOSE_ROADS 2, the Power Plant's), then gives a
+# Bicycle to a bag without one, as a Champion of an earlier region already rides one (plan 23's rule for a region's key
+# items), and only talks to a bag that has one.
+
+
+script Owner
+  face owner player
+  speaker "Shop Owner"
+  if var VAR_KALOS_LUMIOSE_ROADS < 2 goto Waiting
+  if item "Bicycle" goto Riding
+  say "My parts came through from Lumiose at last! And you were the first through my door all those empty weeks."
+  say "So the first bicycle off the bench is yours. No charge. Just tell everyone where you got it!"
+  give "Bicycle"
+  end
+label Riding
+  say "A fine bicycle you have there. Keep the chain oiled and it will carry you round Kalos and back."
+  end
+label Waiting
+  say "Welcome! I am afraid the shelves are empty. The parts for my bicycles are stuck in Lumiose until the roads open."
+  end

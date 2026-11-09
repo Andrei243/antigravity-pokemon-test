@@ -420,6 +420,10 @@
         "accent": "en-us"
       }
     },
+    "bird_keeper": {
+      "note": "first spoken at KiloudeCity_FriendSafari.txt(29)",
+      "provisional": true
+    },
     "black_belt": {
       "note": "first spoken at route_4.txt(10)",
       "brief": {
@@ -8958,6 +8962,10 @@
         "accent": "en-us"
       }
     },
+    "palace_owner": {
+      "note": "first spoken at KalosRoute6_ParfumPalace.txt(10)",
+      "provisional": true
+    },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
       "brief": {
@@ -9534,6 +9542,10 @@
         "accent": "en-us"
       }
     },
+    "safari_guide": {
+      "note": "first spoken at KiloudeCity_FriendSafari.txt(11)",
+      "provisional": true
+    },
     "sage": {
       "note": "first spoken at giant_chasm_3.txt(22)",
       "provisional": true
@@ -9735,6 +9747,10 @@
     },
     "shop_girl": {
       "note": "first spoken at join_avenue.txt(76)",
+      "provisional": true
+    },
+    "shop_owner": {
+      "note": "first spoken at CyllageCity_BikeShop.txt(10)",
       "provisional": true
     },
     "shopkeeper": {
@@ -10437,6 +10453,7 @@
     "Bike Shop owner": "bike_shop_owner",
     "Biker": "look:biker",
     "Bill": "bill",
+    "Bird Keeper": "bird_keeper",
     "Black Belt": "black_belt",
     "Blaine": "blaine",
     "Blue": "blue",
@@ -10764,6 +10781,7 @@
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
+    "Palace Owner": "palace_owner",
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
@@ -10834,6 +10852,7 @@
     "Roxie": "roxie",
     "Rydel": "rydel",
     "Sabrina": "sabrina",
+    "Safari Guide": "safari_guide",
     "Sage": "sage",
     "Sailor": "look:sailor",
     "Sailor Eldritch": "sailor_eldritch",
@@ -10857,6 +10876,7 @@
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
     "Shop Girl": "shop_girl",
+    "Shop Owner": "shop_owner",
     "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Siebold": "siebold",

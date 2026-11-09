@@ -1,7 +1,7 @@
 {
   "name": "LaverreCity_House",
   "displayName": "Laverre City",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/laverre",
   "interior": "House",
   "trees": "Round",
   "width": 11,

@@ -1037,6 +1037,10 @@ public static class RegionDatabase
                 "LumioseCity_HatShop", "LumioseCity_CafeWoof", "LumioseCity_CafeSoleil", "LumioseCity_ShutterbugCafe",
                 "LumioseCity_CafeKizahashi", "LumioseCity_CoiffureClips", "LumioseCity_VertApartment", "LumioseCity_PainterHouse",
                 "LumioseCity_OldCoupleHouse",
+                // Plan 23, Kalos finished: the Friend Safari's gate in Kiloude City and its grounds
+                "KiloudeCity_FriendSafari", "KiloudeCity_FriendSafariGrounds",
+                // and Parfum Palace's hall at the head of Route 6
+                "KalosRoute6_ParfumPalace",
             }
         },
         new()

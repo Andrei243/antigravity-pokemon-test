@@ -1,0 +1,44 @@
+# Team Flare's places (their hideout under Geosenge, Lysandre Labs, the Power Plant they hold, the Poké Ball Factory):
+# cold elegance in F minor, a brass tune stalking over a harpsichord's racing chords and a synth bass, the string
+# orchestra and a tight kit; the same by day and by night. Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Team Flare
+tempo 136
+meter 4/4
+reverb 0.24
+night none
+room hall 1.5
+
+track lead brass vol=0.72 pan=0.05 rev=0.24
+  o6 c4 o5 b-4 o5 g4 o5 e4 | L o5 f8 r8 o5 f8 o5 a-8 o6 c4 o5 a-4 | o6 d-4. o6 c8 o5 a-4 o5 f4 | o5 b-4 o6 d-4 o6 f4 o6 d-4 |
+  o6 e2 o6 c4 o5 g4 | o5 f8 r8 o5 f8 o5 a-8 o6 c4 o6 f4 | o6 f4. o6 e-8 o6 d-4 o5 a-4 | o5 g-4 o5 b-4 o6 d-4 o5 b-4 |
+  o6 c2 o5 e4 o5 g4 | o5 a-4. o5 f8 o5 d-4 o5 f4 | o5 g4. o5 b-8 o6 e-4 o5 b-4 | o6 c2 o5 a-4 o5 f4 |
+  o6 f2 o6 c4 o5 a-4 | o6 d-4. o6 c8 o5 b-4 o5 f4 | o5 e4 o5 g4 o5 b-4 o6 c4 | o5 f2. r4 |
+  o6 c4 o5 b-4 o5 g4 o5 e4 |
+
+track harpsi harpsichord vol=0.3 pan=-0.3 rev=0.2
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | L o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 | o4 b-8 o5 d-8 o5 f8 o5 b-8 o5 f8 o5 d-8 o4 b-8 o5 d-8 |
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 | o4 g-8 o4 b-8 o5 d-8 o5 g-8 o5 d-8 o4 b-8 o4 g-8 o4 b-8 |
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 d-8 o4 f8 o4 a-8 o5 d-8 o4 a-8 o4 f8 o4 d-8 o4 f8 | o4 e-8 o4 g8 o4 b-8 o5 e-8 o4 b-8 o4 g8 o4 e-8 o4 g8 | o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 |
+  o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 | o4 b-8 o5 d-8 o5 f8 o5 b-8 o5 f8 o5 d-8 o4 b-8 o5 d-8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 f8 o4 a-8 o5 c8 o5 f8 o5 c8 o4 a-8 o4 f8 o4 a-8 |
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 |
+
+track pad orchestra vol=0.16 pan=0.25 rev=0.32 width=0.9
+  o3 (c e g)1 | L o3 (f a- > c)1 | o3 (d- f a-)1 | o3 (b- > d- f)1 |
+  o3 (c e g)1 | o3 (f a- > c)1 | o3 (d- f a-)1 | o3 (g- b- > d-)1 |
+  o3 (c e g)1 | o3 (d- f a-)1 | o3 (e- g b-)1 | o3 (f a- > c)1 |
+  o3 (f a- > c)1 | o3 (b- > d- f)1 | o3 (c e g)1 | o3 (f a- > c)1 |
+  o3 (c e g)1 |
+
+track bass synthbass vol=0.6 rev=0.05
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | L o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 | o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 |
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 | o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 | o2 g-8 o3 g-8 o2 g-8 o3 g-8 o2 g-8 o3 g-8 o2 g-8 o3 g-8 |
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 o2 d-8 o3 d-8 | o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 e-8 o3 e-8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 |
+  o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 | o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 b-8 o3 b-8 | o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 | o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 o2 f8 o3 f8 |
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 |
+
+track drums kit vol=0.36 pan=0.1 rev=0.1
+  v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | L v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 |
+  v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 |
+  v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 |
+  v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 | v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 |
+  v70 b8 v34 h8 v60 s8 v34 h8 v66 b8 v60 b8 v60 s8 v40 o8 |

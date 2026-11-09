@@ -1,7 +1,7 @@
 {
   "name": "GeosengeTown_EastHouse",
   "displayName": "Geosenge Town",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/old_town",
   "interior": "House",
   "trees": "Round",
   "width": 11,

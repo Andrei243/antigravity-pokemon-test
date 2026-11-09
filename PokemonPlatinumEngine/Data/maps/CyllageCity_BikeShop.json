@@ -1,7 +1,7 @@
 {
   "name": "CyllageCity_BikeShop",
   "displayName": "Bicycle Shop",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "interior": "House",
   "trees": "Round",
   "width": 11,
@@ -22,10 +22,10 @@
     "###########",
     "###########",
     "###########",
-    "#.....#####",
+    "#####..####",
     "#.........#",
     "#..##.....#",
-    "#..##.....#",
+    "#.........#",
     "#.........#",
     "#.........#",
     "####.######"
@@ -39,38 +39,31 @@
       "depth": 1
     },
     {
-      "type": "KitchenCounter",
+      "type": "Bicycle",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 3,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
       "x": 7,
       "y": 3,
-      "width": 1,
+      "width": 3,
       "depth": 1
     },
     {
-      "type": "Stove",
-      "x": 8,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Fridge",
-      "x": 9,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Table",
+      "type": "Bicycle",
       "x": 3,
       "y": 5,
       "width": 2,
-      "depth": 2
-    },
-    {
-      "type": "Cushion",
-      "x": 5,
-      "y": 5,
-      "width": 1,
       "depth": 1
     },
     {
@@ -107,9 +100,7 @@
       "x": 7,
       "y": 6,
       "facing": "Down",
-      "dialog": [
-        "Welcome! I am afraid the shelves are empty. The parts for my bicycles are stuck in Lumiose until the roads open."
-      ]
+      "script": "Owner"
     }
   ],
   "wildEncounters": []

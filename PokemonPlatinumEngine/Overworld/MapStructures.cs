@@ -246,6 +246,9 @@ public static class MapStructures
         "LaverreCity_PokeBallFactory" => BuildingKind.Factory,
         "KalosRoute7_BattleChateau" => BuildingKind.Mansion,
         "LumioseCity_BallBoutique" or "LumioseCity_Herboriste" => BuildingKind.Shop,
+        // Plan 23, Kalos finished: Parfum Palace at the head of Route 6, and the Friend Safari's gate in Kiloude City
+        "KalosRoute6_ParfumPalace" => BuildingKind.Mansion,
+        "KiloudeCity_FriendSafari" => BuildingKind.Gate,
         "BattleFrontier_ExchangeServiceCorner" => BuildingKind.Shop,
         _ => null
     };

@@ -1,0 +1,44 @@
+# The Pokémon Village, hidden past Route 20's winding woods, where Pokémon live away from people: a flute in D dorian
+# drifting over a harp's sweeps, a celesta catching the light and the warm pad; the same by day and by night.
+# Original composition for this game (plan 23, on plan 31 · MU3's instruments), in the modern sound.
+title Pokémon Village
+tempo 76
+meter 4/4
+reverb 0.4
+night none
+room hall 2.6
+
+track lead flute vol=0.6 pan=0.05 rev=0.4
+  o4 a4 o5 d-4 o5 e4 o5 g4 | L o5 d4 o5 f4 o5 a2 | o5 b2 o5 g4 o5 d4 | o6 c4. o5 b8 o5 a4 o5 e4 |
+  o5 f2. o5 d4 | o5 a4 o6 c4 o6 f2 | o6 e2 o5 g4 o6 c4 | o6 d4. o5 b8 o5 g4 o5 b4 |
+  o6 d-2. o5 e4 | o6 d2 o5 a4 o5 f4 | o5 g2 o5 b4 o6 d4 | o6 f2 o6 d4 o5 b-4 |
+  o6 c2. o5 a4 | o5 b-4. o5 a8 o5 g4 o5 d4 | o5 e2 o5 d-4 o4 a4 | o5 d1 |
+  o4 a4 o5 d-4 o5 e4 o5 g4 |
+
+track harp harp vol=0.42 pan=-0.3 rev=0.42
+  o4 a8 o5 e8 o5 a8 o6 d-8 o6 e8 o6 d-8 o5 a8 o5 e8 | L o4 d8 o4 a8 o5 d8 o5 f8 o5 a8 o5 f8 o5 d8 o4 a8 | o4 g8 o5 d8 o5 g8 o5 b8 o6 d8 o5 b8 o5 g8 o5 d8 | o4 a8 o5 e8 o5 a8 o6 c8 o6 e8 o6 c8 o5 a8 o5 e8 |
+  o4 d8 o4 a8 o5 d8 o5 f8 o5 a8 o5 f8 o5 d8 o4 a8 | o4 f8 o5 c8 o5 f8 o5 a8 o6 c8 o5 a8 o5 f8 o5 c8 | o4 c8 o4 g8 o5 c8 o5 e8 o5 g8 o5 e8 o5 c8 o4 g8 | o4 g8 o5 d8 o5 g8 o5 b8 o6 d8 o5 b8 o5 g8 o5 d8 |
+  o4 a8 o5 e8 o5 a8 o6 d-8 o6 e8 o6 d-8 o5 a8 o5 e8 | o4 d8 o4 a8 o5 d8 o5 f8 o5 a8 o5 f8 o5 d8 o4 a8 | o4 g8 o5 d8 o5 g8 o5 b8 o6 d8 o5 b8 o5 g8 o5 d8 | o4 b-8 o5 f8 o5 b-8 o6 d8 o6 f8 o6 d8 o5 b-8 o5 f8 |
+  o4 f8 o5 c8 o5 f8 o5 a8 o6 c8 o5 a8 o5 f8 o5 c8 | o4 g8 o5 d8 o5 g8 o5 b-8 o6 d8 o5 b-8 o5 g8 o5 d8 | o4 a8 o5 e8 o5 a8 o6 d-8 o6 e8 o6 d-8 o5 a8 o5 e8 | o4 d8 o4 a8 o5 d8 o5 f8 o5 a8 o5 f8 o5 d8 o4 a8 |
+  o4 a8 o5 e8 o5 a8 o6 d-8 o6 e8 o6 d-8 o5 a8 o5 e8 |
+
+track light celesta vol=0.22 pan=0.35 rev=0.5
+  r8 o6 e8 r4 r8 o7 d-8 r4 | L r8 o5 a8 r4 r8 o6 f8 r4 | r8 o6 d8 r4 r8 o6 b8 r4 | r8 o6 e8 r4 r8 o7 c8 r4 |
+  r8 o5 a8 r4 r8 o6 f8 r4 | r8 o6 c8 r4 r8 o6 a8 r4 | r8 o5 g8 r4 r8 o6 e8 r4 | r8 o6 d8 r4 r8 o6 b8 r4 |
+  r8 o6 e8 r4 r8 o7 d-8 r4 | r8 o5 a8 r4 r8 o6 f8 r4 | r8 o6 d8 r4 r8 o6 b8 r4 | r8 o6 f8 r4 r8 o7 d8 r4 |
+  r8 o6 c8 r4 r8 o6 a8 r4 | r8 o6 d8 r4 r8 o6 b-8 r4 | r8 o6 e8 r4 r8 o7 d-8 r4 | r8 o5 a8 r4 r8 o6 f8 r4 |
+  r8 o6 e8 r4 r8 o7 d-8 r4 |
+
+track pad warmpad vol=0.16 pan=0.15 rev=0.45 width=1
+  o3 (a > d- e)1 | L o3 (d f a)1 | o3 (g b > d)1 | o3 (a > c e)1 |
+  o3 (d f a)1 | o3 (f a > c)1 | o3 (c e g)1 | o3 (g b > d)1 |
+  o3 (a > d- e)1 | o3 (d f a)1 | o3 (g b > d)1 | o3 (b- > d f)1 |
+  o3 (f a > c)1 | o3 (g b- > d)1 | o3 (a > d- e)1 | o3 (d f a)1 |
+  o3 (a > d- e)1 |
+
+track bass contrabass vol=0.46 rev=0.14
+  o3 a1 | L o3 d1 | o3 g1 | o3 a1 |
+  o3 d1 | o3 f1 | o3 c1 | o3 g1 |
+  o3 a1 | o3 d1 | o3 g1 | o3 b-1 |
+  o3 f1 | o3 g1 | o3 a1 | o3 d1 |
+  o3 a1 |

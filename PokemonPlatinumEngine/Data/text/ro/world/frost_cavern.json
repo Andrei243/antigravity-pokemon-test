@@ -113,6 +113,16 @@
           "Scizorite"
         ]
       }
+    },
+    "mega_abomasite": {
+      "name": {
+        "en": [
+          "Abomasite"
+        ],
+        "text": [
+          "Abomasite"
+        ]
+      }
     }
   },
   "signs": {}

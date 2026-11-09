@@ -3,7 +3,7 @@
   // half under early snow, a Pokémon Center (with the Mart's counter inside) and a house on its road between Route 15 in
   // the west and Route 17 in the east. It plays Vaniville's song until plan 31 writes it its own
   "area": "dendemille_town",
-  "bgmTrack": "kalos/vaniville",
+  "bgmTrack": "kalos/old_town",
   "trees": "Round",
   "architecture": "OldTimber",
   "doors": [

@@ -4,7 +4,7 @@
   // the cold Pokémon of the north and four Trainers. It plays Santalune Forest's song until plan 31 writes it a cave
   // song of its own
   "area": "frost_cavern",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   // X and Y's frozen rock is in this cave: an Eevee that levels up here becomes a Glaceon (plan 23, Kalos's species; GE3)
   "evolutionSites": [ "Ice Rock" ],
@@ -44,6 +44,8 @@
   },
   // Plan 23 · Z4b: the Mega Stones that lie here once the professor has upgraded the Mega Ring by Anistar's sundial
   "npcs": [
-    { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
+    { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_STONES_GLINT" },
+    // Plan 23, Kalos finished: X and Y's Abomasite, which Frost Cavern keeps too
+    { "id": "mega_abomasite", "name": "Abomasite", "npcType": "ItemBall", "item": "Abomasite", "x": 12, "y": 12, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_ABOMASITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
   ]
 }

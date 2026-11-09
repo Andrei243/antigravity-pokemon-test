@@ -67,9 +67,6 @@ public class ItemSourcesTests
         return owed;
     }
 
-    private const string KalosStory = "plan 23 · Z4: Kalos's story, the stones of X and Y that Z4b's post-game (its fourteen, the Absolite and the Mewtwonites) left unplaced";
-    private const string WithDiancie = "plan 29 · LS11: Kalos's mythicals by events of ours (KalosSpeciesTests owes Diancie so); its stone with it";
-    private const string WithHoopa = "plan 29 · LS11: Kalos's mythicals by events of ours (KalosSpeciesTests owes Hoopa so); its bottle with it";
     private const string Lumiose = "plan 23 · Z22: Lumiose's era, its Wild Zones, Rogue Megas and shops (Legends: Z-A's Mega Stones)";
     private const string MegaDimension = "plan 23 · Z24 (optional): the Mega Dimension (Legends: Z-A's own)";
     private const string AlolaFirst = "plan 23 · Z5: the four islands, still open: Melemele's and Akala's people and places that Z6 left (its rulings' \"Left\"), where Sun and Moon give them";
@@ -98,12 +95,9 @@ public class ItemSourcesTests
     /// session that places the item takes the line off.
     /// </summary>
     public static readonly Dictionary<string, string> Owed = Owing(
-        // X's and Y's Mega Stones that Kalos's post-game (plan 23 · Z4b) didn't place (Omega Ruby's and Alpha Sapphire's are
-        // Hoenn's: decision 11; the Lucarionite is the Tower of Mastery's Lucario's, the Blazikenite Hoenn's with its two
-        // fellow starters')
-        (KalosStory, new[] { "Gengarite", "Aerodactylite", "Ampharosite", "Gardevoirite", "Abomasite" }),
-        (WithDiancie, new[] { "Diancite" }),
-        (WithHoopa, new[] { "Prison Bottle" }),
+        // X's and Y's Mega Stones are all placed since Kalos was finished (plan 23: the Gengarite, Ampharosite and Abomasite
+        // at the stones' hour, the Aerodactylite from Ambrette's laboratory, the Gardevoirite from Diantha, the Diancite and
+        // the Prison Bottle left by Kalos's mythicals); Omega Ruby's and Alpha Sapphire's are Hoenn's (decision 11)
         // Legends: Z-A's Mega Stones, the base game's and the Mega Dimension's
         (Lumiose, new[]
         {

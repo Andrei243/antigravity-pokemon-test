@@ -103,6 +103,24 @@ public class RematchParityTests
         (RegionDatabase.Unova, "unova_elite_four_marshal", "unova_elite_four_marshal_2"),
         (RegionDatabase.Unova, "unova_elite_four_caitlin", "unova_elite_four_caitlin_2"),
         (RegionDatabase.Unova, "unova_champion_iris", "unova_champion_iris_2"),
+        // Kalos: the Leaders at the Battle Château by the weekday (plan 23, Kalos's last places; Korrina's tower battle
+        // too), the Four and Diantha in their rooms once the League is challenged again (plan 23, Kalos finished), and
+        // Malva's battle of Looker's episode by her rematch
+        (RegionDatabase.Kalos, "kalos_viola_1", "kalos_viola_rematch"),
+        (RegionDatabase.Kalos, "kalos_grant_1", "kalos_grant_rematch"),
+        (RegionDatabase.Kalos, "kalos_korrina_1", "kalos_korrina_rematch"),
+        (RegionDatabase.Kalos, "kalos_korrina_tower", "kalos_korrina_rematch"),
+        (RegionDatabase.Kalos, "kalos_ramos_1", "kalos_ramos_rematch"),
+        (RegionDatabase.Kalos, "kalos_clemont_1", "kalos_clemont_rematch"),
+        (RegionDatabase.Kalos, "kalos_valerie_1", "kalos_valerie_rematch"),
+        (RegionDatabase.Kalos, "kalos_olympia_1", "kalos_olympia_rematch"),
+        (RegionDatabase.Kalos, "kalos_wulfric_1", "kalos_wulfric_rematch"),
+        (RegionDatabase.Kalos, "kalos_malva_1", "kalos_malva_rematch"),
+        (RegionDatabase.Kalos, "kalos_malva_looker", "kalos_malva_rematch"),
+        (RegionDatabase.Kalos, "kalos_siebold_1", "kalos_siebold_rematch"),
+        (RegionDatabase.Kalos, "kalos_wikstrom_1", "kalos_wikstrom_rematch"),
+        (RegionDatabase.Kalos, "kalos_drasna_1", "kalos_drasna_rematch"),
+        (RegionDatabase.Kalos, "kalos_diantha_1", "kalos_diantha_rematch"),
     };
 
     /// <summary>The first teams that have no rematch, and why.</summary>
@@ -120,7 +138,6 @@ public class RematchParityTests
     /// <summary>Regions built after Unova that have a story, and the session that owes their rows.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        [RegionDatabase.Kalos] = "plan 23 · Z4 (Kalos's Leaders and League)",
         [RegionDatabase.Alola] = "plan 23 · Z7 (Alola's trials and League)",
         [RegionDatabase.Galar] = "plan 33 · GL4 to GL7 (Galar's Gym Challenge, Champion Cup and after the Hall of Fame)",
         // A side region with no Gyms and no League (plan 23 · Z17): its Nobles and the Pearl and Diamond Clans' wardens
@@ -185,13 +202,19 @@ public class RematchParityTests
         // The Leaders' and the League's teams of a region gone past take the furthest region's post-game levels (RematchLevels)
         var story = new StoryState();
         story.Set("UnovaHallOfFame");
-        foreach (var (region, _, again) in Table.Where(r => r.Region != RegionDatabase.Unova))
+        var order = RegionDatabase.All.Select(r => r.Id).ToList();
+        int unova = order.IndexOf(RegionDatabase.Unova);
+        foreach (var (region, _, again) in Table.Where(r => order.IndexOf(r.Region) < unova))
         {
             Assert.NotNull(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
         }
-        // ... and Unova's own, while Unova is the furthest, are met as they are
-        foreach (var (_, _, again) in Table.Where(r => r.Region == RegionDatabase.Unova))
+        // ... and Unova's own, while Unova is the furthest, are met as they are, as are those of a region past it (Kalos's)
+        foreach (var (_, _, again) in Table.Where(r => order.IndexOf(r.Region) >= unova))
             Assert.Null(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
+        // Kalos's are lifted once a region past Kalos is finished
+        story.Set("AlolaHallOfFame");
+        foreach (var (_, _, again) in Table.Where(r => r.Region == RegionDatabase.Kalos))
+            Assert.NotNull(RematchLevels.For(again, story, RegionDatabase.Sinnoh));
     }
 
     [Fact]

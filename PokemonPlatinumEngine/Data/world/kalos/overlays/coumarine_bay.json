@@ -5,7 +5,7 @@
   // hordes than the twelve slots a drawn place holds, and the rest of them live here. It plays Coumarine's song (Santalune's
   // until plan 31 writes it its own)
   "area": "coumarine_bay",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "npcs": [
     { "id": "bay_pearl", "name": "Big Pearl", "npcType": "ItemBall", "item": "Big Pearl", "x": 191, "y": 524, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_COUMARINE_BAY_BIG_PEARL" },

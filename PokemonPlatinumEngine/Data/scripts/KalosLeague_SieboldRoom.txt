@@ -8,11 +8,21 @@ script Siebold
   face siebold player
   speaker "Siebold"
   if flag FLAG_KALOS_DEFEATED_SIEBOLD goto Won
+  if flag KalosHallOfFame goto Again
   scene "Siebold"
   say "Welcome. I am Siebold. When I am not here, I cook. A battle, like a dish, wants care and balance."
   say "Let us see whether your recipe holds together."
   battle self as "kalos_siebold_1"
   say "Exquisite. Every flavour in its place. I shall remember this battle as I remember my finest meals."
+  setflag FLAG_KALOS_DEFEATED_SIEBOLD
+  call KalosLeagueFour
+  endscene
+  end
+label Again
+  scene "SieboldAgain"
+  say "The Champion returns. I have changed my menu since our last meeting. A new course, served at its finest."
+  battle self as "kalos_siebold_rematch"
+  say "Magnificent once more. A chef learns most from the dish that beats him. Thank you."
   setflag FLAG_KALOS_DEFEATED_SIEBOLD
   call KalosLeagueFour
   endscene

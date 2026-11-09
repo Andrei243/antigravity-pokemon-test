@@ -164,6 +164,28 @@ public class ModernMusicTests
         AssertCleanInEveryArrangement(id, id.StartsWith("kalos/battle_"));
     }
 
+    /// <summary>Kalos's later places (plan 23, on MU3's instruments): its towns, roads, caves, Victory Road, Team Flare's places and its battles.</summary>
+    [Theory]
+    [InlineData("kalos/lumiose")]
+    [InlineData("kalos/seaside")]
+    [InlineData("kalos/old_town")]
+    [InlineData("kalos/laverre")]
+    [InlineData("kalos/snowbelle")]
+    [InlineData("kalos/route_late")]
+    [InlineData("kalos/cave")]
+    [InlineData("kalos/victory_road")]
+    [InlineData("kalos/team_flare")]
+    [InlineData("kalos/pokemon_village")]
+    [InlineData("kalos/kiloude")]
+    [InlineData("kalos/eye_galactic")]
+    [InlineData("kalos/battle_galactic")]
+    [InlineData("kalos/battle_galactic_boss")]
+    public void TestKalossLaterSongsRenderCleanlyInTheModernSoundInEveryArrangement(string id)
+    {
+        Assert.Equal(SynthSound.Modern, MusicLibrary.Get(id)!.PlaysIn);
+        AssertCleanInEveryArrangement(id, id.StartsWith("kalos/battle_"));
+    }
+
     [Theory]
     [InlineData(SynthSound.Ds, false, false)]
     [InlineData(SynthSound.Modern, false, false)]

@@ -4,7 +4,7 @@
   // a long gallery, with the ghosts of the north and four Trainers who stayed. It plays Santalune Forest's song until
   // plan 31 writes it a cave song of its own
   "area": "lost_hotel",
-  "bgmTrack": "kalos/santalune_forest",
+  "bgmTrack": "kalos/cave",
   "trees": "Round",
   // Plan 23, Kalos's last places: three rubbish bins of the old hotel that shake now and then, as X and Y's do
   // (lost_hotel.txt: Trubbish and Garbodor, and Rotom on Tuesdays)

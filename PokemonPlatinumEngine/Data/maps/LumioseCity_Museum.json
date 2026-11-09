@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_Museum",
   "displayName": "Lumiose Museum",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "Museum",
   "trees": "Round",
   "width": 17,

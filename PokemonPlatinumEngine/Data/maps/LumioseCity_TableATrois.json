@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_TableATrois",
   "displayName": "La Table à Trois",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 15,

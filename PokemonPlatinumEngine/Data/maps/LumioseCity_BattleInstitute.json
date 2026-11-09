@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_BattleInstitute",
   "displayName": "Battle Institute",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 11,

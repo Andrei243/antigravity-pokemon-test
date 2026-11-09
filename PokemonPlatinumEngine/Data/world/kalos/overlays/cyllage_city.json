@@ -6,7 +6,7 @@
   // is plan 23 · Z3's. Its houses are Cyllage's own (Architecture.Cyllage), and it plays Santalune's song until
   // plan 31 writes it its own
   "area": "cyllage_city",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "architecture": "Cyllage",
   "doors": [

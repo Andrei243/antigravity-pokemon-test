@@ -1,0 +1,31 @@
+# The Friend Safari's gate in Kiloude City (plan 23, Kalos finished; docs/mechanics/rulings.md, "The Friend Safari").
+# The lines are our own. X and Y's safari draws a friend's grounds from the friend's code; this game has no friend list,
+# so every Trainer has three grounds of their own, drawn from their trainer number (Overworld/FriendSafari.cs):
+# {friendsafari:1} to {friendsafari:3} name their types. The guide sends the player to the one chosen
+# (VAR_KALOS_FRIEND_SAFARI 0 to 2), and the grounds' grass is laid with its three species as the player arrives
+# (GameEngine.LayFriendSafari). The door opens once Kalos's Hall of Fame is entered.
+
+
+script Guide
+  face guide player
+  speaker "Safari Guide"
+  say "Welcome to the Friend Safari! Here every Trainer has grounds of their own, kept by the friends they've made on the road."
+  say "Yours are three, and they stay as they are however often you come. Each holds Pokémon of one type."
+  choose "Which of your grounds will you visit today?" "{friendsafari:1} grounds" "{friendsafari:2} grounds" "{friendsafari:3} grounds" "Not today"
+  if result == 3 goto Later
+  setvar VAR_KALOS_FRIEND_SAFARI RESULT
+  say "Off you go, then. Walk back down the path whenever you've seen enough!"
+  fade out 0.6
+  warp "KiloudeCity_FriendSafariGrounds" 11 16 up
+  fade in
+  end
+label Later
+  say "Your grounds will be waiting. Come back any time."
+  end
+
+
+script Visitor
+  face birder player
+  speaker "Bird Keeper"
+  say "My grounds are full of Flying types. A friend of yours would find quite different ones. That's what makes the safari fun!"
+  end

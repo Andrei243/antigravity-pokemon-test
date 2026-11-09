@@ -5,7 +5,7 @@
   // Route 7. The castle's keeper meets the player as they come into town (camphrier_town.txt). Its houses are built
   // as an old timbered town's are (OldTimber), and it plays Aquacorde's song until plan 31 writes it its own
   "area": "camphrier_town",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/old_town",
   "trees": "Round",
   "architecture": "OldTimber",
   "doors": [

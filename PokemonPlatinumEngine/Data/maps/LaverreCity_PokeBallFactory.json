@@ -1,7 +1,7 @@
 {
   "name": "LaverreCity_PokeBallFactory",
   "displayName": "Poké Ball Factory",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/team_flare",
   "interior": "Lab",
   "trees": "Round",
   "width": 21,

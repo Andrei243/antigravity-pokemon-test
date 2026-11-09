@@ -1,7 +1,7 @@
 {
   "name": "LumioseCity_BistroDeux",
   "displayName": "Bistro des Deux",
-  "bgmTrack": "kalos/aquacorde",
+  "bgmTrack": "kalos/lumiose",
   "interior": "House",
   "trees": "Round",
   "width": 15,

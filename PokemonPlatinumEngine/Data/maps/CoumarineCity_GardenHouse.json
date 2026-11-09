@@ -1,7 +1,7 @@
 {
   "name": "CoumarineCity_GardenHouse",
   "displayName": "Coumarine City",
-  "bgmTrack": "kalos/santalune",
+  "bgmTrack": "kalos/seaside",
   "interior": "House",
   "trees": "Round",
   "width": 11,

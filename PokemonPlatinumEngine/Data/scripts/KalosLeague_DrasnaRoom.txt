@@ -8,11 +8,21 @@ script Drasna
   face drasna player
   speaker "Drasna"
   if flag FLAG_KALOS_DEFEATED_DRASNA goto Won
+  if flag KalosHallOfFame goto Again
   scene "Drasna"
   say "Oh my, what a lovely young Trainer! I'm Drasna. Don't let my age fool you, dear."
   say "My dragons are as fierce as ever. Shall we?"
   battle self as "kalos_drasna_1"
   say "Oh, wonderful! It's been an age since anyone made my dragons work so hard."
+  setflag FLAG_KALOS_DEFEATED_DRASNA
+  call KalosLeagueFour
+  endscene
+  end
+label Again
+  scene "DrasnaAgain"
+  say "Back again, Champion? How lovely! My dragons have been looking forward to this all week, dear."
+  battle self as "kalos_drasna_rematch"
+  say "Oh, splendid! You never let up, do you? My dragons will be talking about this one for days."
   setflag FLAG_KALOS_DEFEATED_DRASNA
   call KalosLeagueFour
   endscene
