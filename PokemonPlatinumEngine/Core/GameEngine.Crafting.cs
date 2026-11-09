@@ -38,17 +38,21 @@ public partial class GameEngine
     internal bool HasCraftingKit => ItemDatabase.Get(CraftingKitItem) is { } kit && flow.Bag.GetQuantity(kit) > 0;
 
     /// <summary>Opens the kit to look into, from the bag, the item button or a script.</summary>
-    private void OpenCrafting(bool fromBag, bool atMaker = false)
+    private void OpenCrafting(bool fromBag, bool atMaker = false) =>
+        OpenCrafting(fromBag, atMaker ? CraftingPlace.Maker : CraftingPlace.Anywhere);
+
+    /// <summary>Opens the kit at a place: anywhere, a PC's TM maker (plan 39 · CR4) or the workshop's pantry counter (CR6).</summary>
+    private void OpenCrafting(bool fromBag, CraftingPlace place)
     {
         craftingFromBag = fromBag;
         flow.State = GameState.Crafting;
-        flow.CraftingScreen.Open(flow.Crafting, flow.Bag, flow.Money, atMaker);
+        flow.CraftingScreen.Open(flow.Crafting, flow.Bag, flow.Money, place);
     }
 
     private void UpdateCrafting(float dt)
     {
         flow.CraftingScreen.Update(dt);
-        // The money a machine made at the TM maker costs is taken as it is made (plan 39 · CR4)
+        // The money a machine made at the TM maker costs is taken as it is made (plan 39 · CR4), and so is the pantry's (CR6)
         flow.Money = Math.Max(0, flow.Money - flow.CraftingScreen.TakeSpent());
         if (flow.CraftingScreen.IsActive) return;
         if (craftingFromBag)
@@ -71,7 +75,8 @@ public partial class GameEngine
         if (defeat || !HasCraftingKit || !LeavesMaterials(fought, InBugContest)) return;
         var foes = fought.FelledFoes.ToList();
         if (fought.Caught is { } caught && !foes.Contains(caught)) foes.Add(caught);
-        var left = MaterialDrops.For(foes, fieldRandom);
+        // The materials' power of a dish (plan 39 · CR6) leaves more of each common one, and draws nothing more
+        var left = MaterialDrops.For(foes, fieldRandom, flow.Powers.Strength(PowerKind.Materials));
         var kept = new List<MaterialCount>();
         foreach (var (id, n) in left)
             if (flow.Crafting.Pouch.Add(id, n) is var added and > 0) kept.Add(new MaterialCount(id, added));

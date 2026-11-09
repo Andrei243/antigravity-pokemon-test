@@ -14,6 +14,7 @@
     { "fileMatch": ["tools/DataImporter/Overrides/moves.json"], "url": "./docs/schemas/moves-patch.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/materials.json"], "url": "./docs/schemas/materials.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/recipes.json"], "url": "./docs/schemas/recipes.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/powers.json"], "url": "./docs/schemas/powers.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/training.json"], "url": "./docs/schemas/training.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/facility-trainers.json"], "url": "./docs/schemas/facility-trainers.schema.json" },
     { "fileMatch": ["tools/DataImporter/Overrides/facility-sets.json"], "url": "./docs/schemas/facility-sets-patch.schema.json" },

@@ -111,6 +111,7 @@ Written 2026-10-06, before any session.
 - **Done when** a Modern Pokémon at full affection shakes off a sleep and a Platinum one never does.
 
 ### F8 · Cooking
+- **Moved to plan 39 · CR6** (plan 39's decision 1) and built there on 2026-11-09: the pot is a phase of this camp's screen, offered with the crafting kit as well as with the FOLLOWER row, its dishes and grades `recipes.json`'s `kitchen`, and their effects plan 36's powers (`PowerState`, in place of the `MealPowers` below), read only by the kinds' own readers and drawing nothing, so no Platinum rule or odds move without a meal. What follows is the plan as it was written.
 - Optional: a second check, by fit and by value, judged F8 not worth its sessions, since it reverses plan 06 · decision 5 and ruling 5, its Meal Powers move encounter, catch and shiny odds that Platinum's rules keep exact (so they would have to sit behind the modern `Ruleset`), and Poffins already give Sinnoh a cooking game of its own (decision 4).
 - The style guide's "Menu screens (G10)" gains the kitchen first, then `Kitchen`, `Overrides/recipes.json` and `Data/recipes.json`, the pot as a choice of the camp's screen, `MealPowers` in `SaveData`, the four readers, the Hall of Fame gate, `docs/data-files.md`, rulings.md's ruling 5 amended.
 - Tests: a recipe's dish from its ingredients; a power expires on the clock; Encounter Power moves a type's slot odds and nothing else; no power in force means every roll as before; the gate holds before the Hall of Fame.
@@ -175,7 +176,7 @@ Written 2026-10-06, before any session.
 - [x] F5 Wild Pokémon in sight
 - [x] F6 The camp (2026-11-04; its shots owed)
 - [x] F7 Affection's perks
-- [ ] F8 Cooking (optional: a second check judged it low value)
+- [x] F8 Cooking: moved to plan 39 · CR6 (its decision 1), built there 2026-11-09 (the camp's pot, `Models/Kitchen.cs`, `recipes.json`'s `kitchen`, the dishes' powers through plan 36's `PowerState`; its shots owed there)
 - [x] F9 Marks and titles (2026-11-04; its shots owed)
 - [~] F10 Alphas (2026-11-07: rules, data, saved size, mark, cry, the battle scale done; owed: `PokePose.Fierce` (a field in `Graphics/PokemonModels.cs`, a sculpt file), the field board's 1.5 draw, the harness `versus -alpha`, the shots `95_versus_turtwig_bidoof-alpha`, `97_field_bidoof-alpha`)
 - [~] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; 2026-11-07: the HERE panel's logic and painter (blind of the GPU), the style guide's HERE paragraph, the item given with the National Pokédex; owed: shots `26n_pokedex_here_morning`, `26o_pokedex_here_night` in `menus`)

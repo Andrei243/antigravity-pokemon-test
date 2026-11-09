@@ -58,7 +58,11 @@ public partial class GameEngine
             // Which of a place's grass tables is met where it has several: Altering Cave's (plan 21 · H12, part k)
             LandSet = flow.Story.Var(EncounterMoment.LandSetVariable),
             // The day's outbreaks of one species, once the region's Hall of Fame is entered (plan 38 · EX1)
-            Outbreaks = OutbreaksNow()
+            Outbreaks = OutbreaksNow(),
+            // The powers in force that a step reads (plan 39 · CR6's dishes): the encounters' or stealth's, and a type's
+            PowerRate = flow.Powers.Strength(PowerKind.Encounter) + flow.Powers.Strength(PowerKind.Stealth),
+            PowerType = flow.Powers.TypeOf(PowerKind.TypeEncounter),
+            PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter)
         };
     }
 

@@ -87,6 +87,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Shots: `cr20_make_list`, `cr21_recipe`, `cr22_how_many`, `cr23_made`, `cr24_feather_ball_caught`, `cr25_apprentice`.
 - **Done when** a Feather Ball made from a Starly's material and a plant's catches a Starly by its own rule in the harness, and no ball costs less in materials than in the Mart.
 
+**CR3 outcome (2026-11-09)**
+
+- **Built**: `recipes.json`'s `kit` (22 recipes: the three balls, Hisui's five throwing balls and the Heavy Ball, the Potion and the five status cures, the Repel, the Escape Rope, Honey and the four mulches), `Models/Crafting.cs` (`CraftRecipe`, `CraftNeed`, `Crafting.WhyNot`, `MostOf`, `Make`, `WorthOf`, `PriceOf`, `Problems`, the apprentice's `Tradable` and `Trade`), the MAKE tab of `CraftingScreen` (everywhere the kit opens; "how many?" by `HowMany`, `ChangeAmount`, up and down by one, left and right by ten) drawn by `ModernUi.DrawRecipes`, the apprentice in `SunyshoreWorkshop` with `craft tradable` and `craft trade`, `ItemSourceKind.Made` (the kit given is a sure way to everything it makes), the content check's recipe rules, the style guide's "The kit's MAKE tab", the rulings, `docs/scripts.md`, `docs/data-files.md`, `where-items-are-found.md`, and `CraftingKitTests`.
+- **Decided at the plan's defaults** (the outline sheet `APPROVAL-plans-35-44.md` is unanswered): decisions 2 and 3 as recommended (built by CR1). **Deviation: CR2 is not built and CR3 doesn't need it**: no recipe takes a field's material, so every need is a Pokémon's material (wild Pokémon of its type leave it) or a berry the world gives; the "plant's" material of the plan's Feather Ball is a Grass type's Leaf Scrap. CR2 may rewrite the recipes to take its finds. An item with no price (Hisui's balls, the Heavy Ball) is held to a `value` of the recipe's own. The apprentice trades the common material held most of rather than asking which of eighteen.
+- **Shots owed** (no GPU in this session): `cr20_make_list`, `cr21_recipe`, `cr22_how_many`, `cr23_made`, `cr24_feather_ball_caught`, `cr25_apprentice`, in the harness's `crafting` mode, which isn't written yet.
+
 ### CR4 · The TM maker
 - Style guide first: "The kit" gains the TMs tab (a machine's row in its type's colour, its cost against what is held).
 - `Inventory.MachinesHad` and `SaveData.MachinesHad`; `Models/TmMaker.cs` (`Known`, `CostOf`, `WhyNot`, `Make`), `recipes.json`'s `machines` tiers; the TMs tab, opened by `craft tm` from `common.PC`'s modern branch once the kit is held; the money taken by the screen; the rulings' TMs row rewritten by decision 4.
@@ -115,6 +121,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Tests (`KitchenTests`): a recipe's dish from its ingredients, and a plain dish from any others; the grade a pure function of the pot's presses and its seed, widened by `TimingAssists`; the team healed and cured, `Fed` once a visit; the power started and worn off by plan 36's clock; no meal eaten, every roll as before; CAMP offered with the kit while the FOLLOWER row is off, and not before the kit; the pantry's counter takes money and fills the pouch.
 - Shots: `cr50_camp_pot`, `cr51_stirring`, `cr52_dish`, `cr53_team_eats`, `cr54_power`, `cr55_pantry`.
 - **Done when** a dish cooked at the camp heals the team and starts its power for plan 36's length, and a game with no dish eaten rolls as before.
+
+**CR6 outcome (2026-11-09)**
+
+- **Built**: the pantry's ten goods in `materials.json`, sold at the workshop's counter (the craftswoman's THE PANTRY, `craft pantry`, the kit's PANTRY tab, `CraftingPlace.Pantry`, `ModernUi.DrawPantry`); `recipes.json`'s `kitchen` (eight dishes, four grades) and `Models/Kitchen.cs` (`Kitchen`, the pot at thirty frames a second, four rounds of a needle and a zone through `TimingAssists`; `Meals`: what is in reach, the dish a pot cooks, the meal served); the camp's pot (`CampScreen`'s `CampPhase` Pantry, Stirring and Served, its logic in `AskToCook`, `PantryMove`, `PantryConfirm`, `PantryCancel`, `Stir`, `StepPot`, `TakeOff`, `ServedConfirm`; the start button at the camp; `ModernUi.DrawCampPot`); `GameEngine.HasCamp` with the kit; `CampVisit.Eat`; `craft meal` for CR7's waiters; **plan 36's power frame** (`Models/Powers.cs`: `PowerKind` with the eight of plan 36 and CR6's `TypeEncounter` and `Materials` at the end, `PowerState.Grant` the one door, play-time lengths, `SaveData.Powers`; `Data/powers.json`; `Core/GameEngine.Cooking.cs` counting down and telling the toast) and the readers of the five kinds a dish starts (`EncounterMoment.PowerRate` with the radio's share in `Map.RollWildEncounter`, `PowerType` and `PowerSlots` in `EncounterSlots.Grass`, the hatching power in `Breeding.CountDown`, the materials' power in `MaterialDrops.For`); the content check's kitchen and powers rules, the schema `powers.schema.json`, the style guide's "The camp's pot" and "The kit's PANTRY tab", the rulings, `docs/scripts.md`, `docs/data-files.md`, and `KitchenTests`. Plan 10's F8 is closed as moved here.
+- **Deviations**: plan 36 · TR7 isn't built, so CR6 built the frame of its powers it needs and the readers of the kinds the dishes start (encounters, stealth, a type's encounters, hatching, materials); the battle's and the shops' readers (EXP, effort, money, bargain, catching), the levels learned, the charge, the day's free power and the run's NO POWERS are TR7's still, and no dish starts a kind nothing reads (`PowerTable.Read`, the content check). The pantry sells through the kit's own tab rather than `ShopScreen.OpenForPouch`, the shop selling items and the goods being none. A dish's type of encounters comes from the pot's first berry's Natural Gift type. A Pokémon that has fainted is not brought round by a meal.
+- **Shots owed**: `cr50_camp_pot`, `cr51_stirring`, `cr52_dish`, `cr53_team_eats`, `cr54_power`, `cr55_pantry`.
 
 ### CR7 · Restaurants and stalls
 - The five waiters and stalls with their lines, placed with `ContentCheck --plan` (a room's free tile, a street's open one), `recipes.json`'s `stands` rows, `craft meal`, the pantry sold by each.
@@ -158,9 +170,9 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 
 - [x] CR1 The workshop, the kit and what Pokémon leave behind (2026-11-07; the outcome below)
 - [ ] CR2 Gathering in the field
-- [ ] CR3 Making things at the kit
+- [x] CR3 Making things at the kit (2026-11-09, before CR2, which it doesn't need; the outcome above; shots owed)
 - [x] CR4 The TM maker (2026-11-07; the outcome below)
 - [ ] CR5 Crossing berries (with Johto's Berry Pots)
-- [ ] CR6 Cooking at the camp (plan 10 · F8, taken over)
+- [x] CR6 Cooking at the camp (plan 10 · F8, taken over; 2026-11-09, with plan 36 · TR7's frame of powers and five readers; the outcome above; shots owed)
 - [ ] CR7 Restaurants and stalls
 - [ ] CR8 A berry garden of our own (optional)

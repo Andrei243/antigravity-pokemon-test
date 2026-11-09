@@ -10,7 +10,11 @@ namespace PokemonPlatinumEngine.Story;
 /// <c>FLAG_GOT_CRAFTING_KIT</c> (<c>RESULT</c> 1, or 0 when it was held already); <c>give "Soft Fluff" 3</c> adds to the
 /// pouch (<c>RESULT</c> how many fitted, 999 of a kind at most), <c>take</c> removes (<c>RESULT</c> 1, or 0 and nothing
 /// taken with fewer), <c>count</c> says how many are held, <c>open</c> looks into the kit, and <c>tm</c> (plan 39 · CR4, from a
-/// PC) looks into it on the TM maker's tab (<c>RESULT</c> 1, or 0 and nothing opened without the kit). A material is named by its
+/// PC) looks into it on the TM maker's tab (<c>RESULT</c> 1, or 0 and nothing opened without the kit). Plan 39 · CR3's
+/// apprentice asks <c>tradable</c> (<c>RESULT</c> 1 with three of some type's common material held, <c>{material}</c> naming
+/// it) and <c>trade</c> (three of it for one of its type's rare, <c>{material}</c> naming the rare). CR6's <c>pantry</c> opens
+/// the kit on the pantry's goods for sale, and <c>meal "&lt;dish&gt;" [grade]</c> serves a dish to the team there and then
+/// (<c>RESULT</c> 1 when it started its power). A material is named by its
 /// id or its English name; <c>{material}</c> says the last one named in the chosen language and <c>{materials}</c> the
 /// number. A host that keeps no pouch does nothing and answers 0.
 /// </summary>
@@ -49,6 +53,37 @@ public sealed partial class ScriptRunner
         if (i.Name == "open")
         {
             if (pouch != null) host.Open(ScriptScreen.Crafting, Subject);
+            return;
+        }
+        // The workshop's pantry counter (plan 39 · CR6): the kit's screen on its PANTRY tab, which sells into the pouch
+        if (i.Name == "pantry")
+        {
+            Result = held && pouch != null ? 1 : 0;
+            if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "pantry");
+            return;
+        }
+        // A dish eaten there and then (plan 39 · CR6; CR7's waiters): the team heals and is cured by the grade, and the
+        // dish's power starts where the host keeps powers. A type's encounters is of the Normal type, there being no berry
+        if (i.Name == "meal")
+        {
+            var dish = Meals.Dish(i.Other)!;
+            var served = Meals.Serve(host.Party, dish, (DishGrade)i.Number, host.Powers, visit: null, PokemonType.Normal);
+            Result = served.Power != null ? 1 : 0;
+            return;
+        }
+        // The workshop's apprentice (plan 39 · CR3): three of the most-held common material for one of its type's rare
+        if (i.Name == "tradable")
+        {
+            var common = pouch == null ? null : Crafting.Tradable(pouch);
+            Result = common != null ? 1 : 0;
+            if (common != null) (materialId, materialCount) = (common.Id, Crafting.TradeCommons);
+            return;
+        }
+        if (i.Name == "trade")
+        {
+            var rare = pouch == null ? null : Crafting.Trade(pouch);
+            Result = rare != null ? 1 : 0;
+            if (rare != null) (materialId, materialCount) = (rare.Id, 1);
             return;
         }
         if (i.Other.Length > 0) materialId = i.Other;

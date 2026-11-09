@@ -904,6 +904,10 @@ another command. `{material}` says the last material named, in the language chos
 | `craft count "Soft Fluff"` | `RESULT` and `{materials}` are how many the pouch holds. |
 | `craft open` | Looks into the kit (`UI/CraftingScreen.cs`) and waits for it to be put away. |
 | `craft tm` | Plan 39 · CR4, from a PC: looks into the kit on its TMs tab (the TM maker) and waits for it to be put away; `RESULT` 1, or 0 and nothing opened without the kit in the bag. `common.PC`'s modern branch offers it as TM MAKER once the kit is held. |
+| `craft tradable` | Plan 39 · CR3, the workshop's apprentice: `RESULT` 1 when the pouch holds three of some type's common material whose rare one isn't full (the one held most of, the table's order breaking a tie), and `{material}` names it and `{materials}` says 3; else 0. |
+| `craft trade` | Trades three of that material for one of its type's rare: `RESULT` 1 and `{material}` names the rare one, or 0 and nothing traded. |
+| `craft pantry` | Plan 39 · CR6, the workshop's counter: looks into the kit on its PANTRY tab, which sells the pot's goods into the pouch for money, and waits for it to be put away; `RESULT` 1, or 0 and nothing opened without the kit in the bag. |
+| `craft meal "beanHotpot" [plain\|good\|great\|superb]` | Plan 39 · CR6 (CR7's waiters): the team eats a dish of `recipes.json`'s `kitchen` there and then, at the grade named (great when none is): HP back by the grade's share, conditions cured, and the dish's power started for the grade's level and length (a type's encounters of the Normal type, there being no berry); nobody's friendship rises, which is the camp's. `RESULT` 1 when it started a power. A dish the table lacks is a mistake of the file. |
 
 ### The training hall
 

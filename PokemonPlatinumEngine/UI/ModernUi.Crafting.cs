@@ -16,6 +16,8 @@ internal static partial class ModernUi
     private static (string Label, UiIcon Icon, Color Color)[] CraftingTabs(CraftingScreen screen) => screen.Tabs.Select(tab => tab switch
     {
         CraftingTab.Machines => (Text.Of("crafting.tab.machines"), UiIcon.Disc, Blue),
+        CraftingTab.Make => (Text.Of("crafting.tab.make"), UiIcon.Gear, Green),
+        CraftingTab.Pantry => (Text.Of("crafting.tab.pantry"), UiIcon.Pouch, PantryGreen),
         _ => (Text.Of("crafting.tab.materials"), UiIcon.Pouch, Gold)
     }).ToArray();
 
@@ -23,17 +25,29 @@ internal static partial class ModernUi
     internal static Color MaterialColour(MaterialData material) => material.Kind switch
     {
         MaterialKind.Pokemon when material.Type is { } type => Palette.GetTypeColor(type.ToString()),
-        MaterialKind.Pantry => new Color(110, 168, 88, 255),
+        MaterialKind.Pantry => PantryGreen,
         _ => new Color(176, 132, 84, 255)
     };
+
+    private static readonly Color PantryGreen = new(110, 168, 88, 255);
 
     public static void DrawCrafting(int sw, int sh, CraftingScreen screen, float appear)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("crafting.title"));
-        var keys = new System.Collections.Generic.List<HintItem> { Hint("shared.keys.upDown", "shared.hints.move") };
-        if (screen.Tabs.Count > 1) keys.Add(Hint("shared.keys.leftRight", "crafting.hint.tab"));
-        if (screen.Tab == CraftingTab.Machines) keys.Add(Hint("shared.keys.z", "crafting.hint.make"));
+        var keys = new System.Collections.Generic.List<HintItem>();
+        if (screen.HowMany > 0)
+        {
+            keys.Add(Hint("shared.keys.arrows", "crafting.hint.howMany"));
+            keys.Add(Hint("shared.keys.z", screen.Tab == CraftingTab.Pantry ? "crafting.hint.buy" : "crafting.hint.make"));
+        }
+        else
+        {
+            keys.Add(Hint("shared.keys.upDown", "shared.hints.move"));
+            if (screen.Tabs.Count > 1) keys.Add(Hint("shared.keys.leftRight", "crafting.hint.tab"));
+            if (screen.Tab is CraftingTab.Machines or CraftingTab.Make) keys.Add(Hint("shared.keys.z", "crafting.hint.make"));
+            if (screen.Tab == CraftingTab.Pantry) keys.Add(Hint("shared.keys.z", "crafting.hint.buy"));
+        }
         keys.Add(Hint("shared.keys.esc", "shared.hints.back"));
         Hints(sw - Margin, 44, keys.ToArray());
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), CraftingTabs(screen), screen.Tabs.ToList().IndexOf(screen.Tab));
@@ -48,6 +62,16 @@ internal static partial class ModernUi
         if (screen.Tab == CraftingTab.Machines)
         {
             DrawMachines(screen, list, detail);
+            return;
+        }
+        if (screen.Tab == CraftingTab.Make)
+        {
+            DrawRecipes(screen, list, detail);
+            return;
+        }
+        if (screen.Tab == CraftingTab.Pantry)
+        {
+            DrawPantry(screen, list, detail);
             return;
         }
 
@@ -168,6 +192,124 @@ internal static partial class ModernUi
         y += 70;
         if (screen.Notice.Length > 0)
             DrawWrapped(screen.Notice, x, y, room, 28, screen.LastMade ? Green : Red, 36, UiWeight.ExtraBold);
+    }
+
+    /// <summary>The colour of a thing the kit makes: a ball's Red, medicine's Green, anything else Gold.</summary>
+    internal static Color RecipeColour(CraftRecipe recipe) => Crafting.ItemOf(recipe)?.Pocket switch
+    {
+        ItemPocket.PokeBalls => Red,
+        ItemPocket.Medicine => Green,
+        _ => Gold
+    };
+
+    /// <summary>
+    /// The kit's MAKE tab (plan 39 · CR3; style guide, "The kit's MAKE tab"): a recipe to a row in the colour of what it
+    /// makes, dimmed when it can't be made now; for the one under the cursor what it makes and each need against what is
+    /// held, the "how many?" stepper while it is asked, and the last press's words.
+    /// </summary>
+    private static void DrawRecipes(CraftingScreen screen, Rectangle list, Rectangle detail)
+    {
+        var recipes = screen.Recipes;
+        if (recipes.Count == 0) DrawWrapped(Text.Of("crafting.make.empty"), list.X + 44, list.Y + 60, list.Width - 88, 32, Muted, 42);
+        bool scrolls = recipes.Count > CraftingScreen.VisibleRows;
+        for (int row = 0; row < CraftingScreen.VisibleRows && screen.RecipeFirst + row < recipes.Count; row++)
+        {
+            int index = screen.RecipeFirst + row;
+            var recipe = recipes[index];
+            var item = Crafting.ItemOf(recipe);
+            var r = RowRect(list, row, 24, scrolls);
+            bool can = Crafting.WhyNot(recipe, 1, screen.Bag, screen.Pouch) == null;
+            var ink = ListRow(r, index == screen.RecipeCursor, item?.DisplayName ?? recipe.Makes, enabled: can, nameX: 112, size: 32);
+            var colour = RecipeColour(recipe);
+            var at = new Vector2(r.X + 56, r.Y + r.Height / 2f);
+            UiShapes.Circle(at, 26, can ? colour : Lighter(colour, 0.55f));
+            UiShapes.Ring(at, 26, 3, Darker(colour, 0.25f));
+            if (item != null) RowValue(r, $"×{screen.Bag.GetQuantity(item)}", ink);
+        }
+        ScrollBar(list, screen.RecipeFirst, CraftingScreen.VisibleRows, recipes.Count, 24);
+
+        if (screen.SelectedRecipe is not { } chosen || Crafting.ItemOf(chosen) is not { } made) return;
+        float x = detail.X + 44, room = detail.Width - 88;
+        Label(Text.Of("crafting.make.makes"), x, detail.Y + 30);
+        var tint = RecipeColour(chosen);
+        var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 160);
+        UiShapes.Circle(disc, 100, tint);
+        UiShapes.Ring(disc, 100, 5, Darker(tint, 0.3f));
+        string each = Text.Of("crafting.make.each", ("n", Math.Max(1, chosen.Count)));
+        UiFonts.DrawCentered(each, disc.X - UiFonts.Measure(each, 40, UiWeight.Black) / 2f, disc.Y, 40, Color.White, UiWeight.Black);
+        string name = made.DisplayName;
+        float size = 44, nameW = UiFonts.Measure(name, size, UiWeight.Black);
+        if (nameW > room) size = MathF.Floor(size * room / nameW);
+        UiFonts.DrawCentered(name, detail.X + (detail.Width - Math.Min(nameW, room)) / 2f, detail.Y + 300, size, Ink, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(x, detail.Y + 340, room, 3), 1.5f, Rule);
+        Label(Text.Of("crafting.tm.needs"), x, detail.Y + 360);
+
+        int times = Math.Max(1, screen.HowMany);
+        float y = detail.Y + 410;
+        foreach (var need in chosen.Takes)
+        {
+            int have = Crafting.Held(need, screen.Bag, screen.Pouch), want = need.Count * times;
+            if (need.Material != null && MaterialTable.Get(need.Material) is { } material) MaterialSign(new Vector2(x + 24, y), 26, material, have > 0);
+            else UiShapes.Circle(new Vector2(x + 24, y), 21, Frame);
+            UiFonts.DrawCentered(Crafting.NameOf(need), x + 64, y, 30, Ink, UiWeight.ExtraBold);
+            string held = $"{have} / {want}";
+            UiFonts.DrawCentered(held, x + room - UiFonts.Measure(held, 30, UiWeight.Black), y, 30, have >= want ? Green : Red, UiWeight.Black);
+            y += 52;
+        }
+        DrawHowManyAndNotice(screen, detail, y + 10);
+    }
+
+    /// <summary>
+    /// The kit's PANTRY tab (plan 39 · CR6; style guide, "The kit's PANTRY tab"): the pantry's goods with how many the pouch
+    /// holds, and for the one under the cursor its price against the purse, the "how many?" stepper and the last press's words.
+    /// </summary>
+    private static void DrawPantry(CraftingScreen screen, Rectangle list, Rectangle detail)
+    {
+        var goods = screen.Pantry;
+        bool scrolls = goods.Count > CraftingScreen.VisibleRows;
+        for (int row = 0; row < CraftingScreen.VisibleRows && screen.PantryFirst + row < goods.Count; row++)
+        {
+            int index = screen.PantryFirst + row;
+            var good = goods[index];
+            var r = RowRect(list, row, 24, scrolls);
+            var ink = ListRow(r, index == screen.PantryCursor, MaterialTable.NameOf(good.Id), nameX: 112, size: 32);
+            MaterialSign(new Vector2(r.X + 56, r.Y + r.Height / 2f), 28, good, true);
+            RowValue(r, $"×{screen.Pouch.Count(good.Id)}", ink);
+        }
+        ScrollBar(list, screen.PantryFirst, CraftingScreen.VisibleRows, goods.Count, 24);
+
+        float x = detail.X + 44, room = detail.Width - 88;
+        Label(Text.Of("crafting.tm.money"), x, detail.Y + 30);
+        MoneyRight(detail.X + detail.Width - 44, detail.Y + 40, screen.Money, 30, Ink);
+        if (screen.SelectedGood is not { } chosen) return;
+        var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 190);
+        UiShapes.Circle(disc, 120, Disc);
+        UiShapes.Ring(disc, 120, 5, Rule);
+        MaterialSign(disc, 78, chosen, true);
+        string name = MaterialTable.NameOf(chosen.Id);
+        float size = 44, nameW = UiFonts.Measure(name, size, UiWeight.Black);
+        if (nameW > room) size = MathF.Floor(size * room / nameW);
+        UiFonts.DrawCentered(name, detail.X + (detail.Width - Math.Min(nameW, room)) / 2f, detail.Y + 350, size, Ink, UiWeight.Black);
+        string price = Text.Of("crafting.pantry.price", ("money", chosen.Worth));
+        UiFonts.DrawCentered(price, detail.X + (detail.Width - UiFonts.Measure(price, 26, UiWeight.ExtraBold)) / 2f, detail.Y + 400, 26, screen.Money >= chosen.Worth ? Muted : Red, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, detail.Y + 436, room, 3), 1.5f, Rule);
+        DrawWrapped(MaterialTable.DescriptionOf(chosen.Id), x, detail.Y + 462, room, 28, Ink, 36);
+        DrawHowManyAndNotice(screen, detail, detail.Y + 560);
+    }
+
+    // The "how many?" stepper while it is asked, and the words of the last press under it
+    private static void DrawHowManyAndNotice(CraftingScreen screen, Rectangle detail, float y)
+    {
+        float x = detail.X + 44, room = detail.Width - 88;
+        if (screen.HowMany > 0)
+        {
+            string ask = Text.Of("crafting.make.howMany");
+            UiFonts.DrawCentered(ask, detail.X + (detail.Width - UiFonts.Measure(ask, 26, UiWeight.ExtraBold)) / 2f, y + 10, 26, Muted, UiWeight.ExtraBold);
+            Stepper(new Vector2(detail.X + detail.Width / 2f, y + 76), Text.Of("crafting.make.times", ("n", screen.HowMany)));
+            return;
+        }
+        if (screen.Notice.Length > 0)
+            DrawWrapped(screen.Notice, x, y + 10, room, 28, screen.LastMade ? Green : Red, 36, UiWeight.ExtraBold);
     }
 
     /// <summary>Where a material comes from, in a sentence: a type's leavings, or the field's, or the pantry's.</summary>

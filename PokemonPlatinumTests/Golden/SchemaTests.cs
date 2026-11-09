@@ -34,6 +34,7 @@ public class SchemaTests
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),
+        ("powers.schema.json", typeof(PowersFile), "The timed powers' strengths (Data/powers.json)"),
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),
         ("facility-trainers.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.FacilityTrainersFile), "The later battle places' trainers: classes, looks and names of ours (Data/facility-trainers.json)"),
         ("facility-prizes.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.FacilityPrizesFile), "The later battle places' prize counters, a stock to each place (Data/facility-prizes.json)"),

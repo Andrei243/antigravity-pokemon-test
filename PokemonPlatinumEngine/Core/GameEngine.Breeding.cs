@@ -27,7 +27,7 @@ public partial class GameEngine
     /// </summary>
     private bool DayCareStep()
     {
-        if (flow.DayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current, Charms.Held(flow.Bag, Charms.Oval)) == null) return false;
+        if (flow.DayCare.Step(flow.Party, fieldRandom, GameClock.Today, Ruleset.Current, Charms.Held(flow.Bag, Charms.Oval), flow.Powers.Strength(PowerKind.Hatch)) == null) return false;
         return StartScript(FieldScripts.HatchEgg);
     }
 
