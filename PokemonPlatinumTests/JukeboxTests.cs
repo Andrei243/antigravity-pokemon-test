@@ -194,12 +194,13 @@ public class JukeboxTests
         var rows = Enum.GetValues<OptionRow>();
         Assert.Equal(OptionRow.ResetDefaults, rows[^1]);
         Assert.Equal(OptionRow.Help, rows[^2]);
-        // (FRIEND AS PARTNER, plan 13 · V20, went in after the streamer kit's two)
-        Assert.Equal(OptionRow.Coop, rows[^3]);
-        Assert.Equal(OptionRow.StreamSafe, rows[^4]);
-        Assert.Equal(OptionRow.StreamFeed, rows[^5]);
-        Assert.Equal(OptionRow.Packs, rows[^6]);
-        Assert.Equal(OptionRow.Jukebox, rows[^7]);
+        // (FRIEND AS PARTNER, plan 13 · V20, went in after the streamer kit's two, and BATTLE CAMERA, plan 45 · BC1, after it)
+        Assert.Equal(OptionRow.BattleCamera, rows[^3]);
+        Assert.Equal(OptionRow.Coop, rows[^4]);
+        Assert.Equal(OptionRow.StreamSafe, rows[^5]);
+        Assert.Equal(OptionRow.StreamFeed, rows[^6]);
+        Assert.Equal(OptionRow.Packs, rows[^7]);
+        Assert.Equal(OptionRow.Jukebox, rows[^8]);
 
         var options = new OptionsScreen();
         options.Open();
