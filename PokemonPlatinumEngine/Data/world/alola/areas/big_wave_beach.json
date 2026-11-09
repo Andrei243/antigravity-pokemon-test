@@ -86,6 +86,94 @@
       "rangeZ": 0,
       "script": "",
       "hiddenBy": "FLAG_ALOLA_ZYGARDE_CELL_BIG_WAVE_BEACH_1"
+    },
+    {
+      "id": "buoy_1",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 159,
+      "z": 170,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_2",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 163,
+      "z": 170,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_3",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 171,
+      "z": 173,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_4",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 175,
+      "z": 173,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_5",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 161,
+      "z": 176,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_6",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 165,
+      "z": 176,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_7",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 173,
+      "z": 178,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
+    },
+    {
+      "id": "buoy_8",
+      "looks": "zygarde_cell",
+      "movement": "look_south",
+      "x": 177,
+      "z": 178,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "script": ""
     }
   ],
   "signs": [

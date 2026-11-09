@@ -1551,7 +1551,9 @@ public sealed partial class WorldRenderer
         }
         if (player is { BubbleTimer: > 0f } && player.Bubble != EmoteBubble.None)
             Bubble(player.Bubble, player.BubbleAge, player.PixelX / Player.TileSize, player.PixelY / Player.TileSize,
-                Relief.Under(map, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, player.HeightOn(map)));
+                Relief.Under(map, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, player.HeightOn(map))
+                // A rider sits above the steed, so their bubble goes up by about half a tile (Stoutland's "!" stood behind the cap)
+                + (player.Mode == TravelMode.Riding ? 0.5f : 0f));
         Rlgl.DrawRenderBatchActive();
     }
 

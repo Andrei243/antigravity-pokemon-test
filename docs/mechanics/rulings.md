@@ -9820,10 +9820,13 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   to Galar*: `Transport.Plane` from Alola to Galar is already in the chain (`RegionDatabase`), and Galar has no region file nor maps
   yet (plan 33's engine), so there is no departure to name and no attendant to stand on it; the attendant arrives with plan 33's
   first session.
-- **Shots owed** (no GPU session ran): the `alolalast` mode gains `wt20` on: the reef's islet from the sea with the current in its gap
-  by day and after dark, a Lapras carried back and Sharpedo through it, Mantine called on the water and the four gates, the old woman
-  and her Machamp in Hau'oli Cemetery, a timed cell by day and the same place after dark, and the Battle Tree's hall with the partner
-  and the pair of trainers in the Multi room.
+- **The shots of the wave after the Battle Tree** (taken and looked at, the GPU session of 2026-11-09; the `alolalast` mode's `wt20` to `wt41`, `alolaponi`'s `wp01` to `wp19` and Kalos's `KALOS_FROM=lastspecies`). What they found and what was changed:
+  the Secluded Shore's sea was a pool shut in by forest on its south side (a wall of trees under the reef's islet): its drawing now runs fourteen rows further south to the open sea at z 364, and the area takes them;
+  Mantine's four gates were invisible triggers: each now has two buoys a tile outside its three trigger tiles (people of the area, `npcType` `Bollard`, standing in the water and drawn as a post with a gold cap, with a line of their own: `buoy_1` to `buoy_8`);
+  the rough ground (Poni Gauntlet, Blush Mountain and Poni Coast) read as a plain grey road: a rock in about eight of its tiles now stands in it, leaving the lanes the tests and the Mudsdale walk use clear;
+  a rider's "!" stood behind the rider's cap (Stoutland's nose): a ridden player's bubble goes up half a tile (`WorldRenderer.DrawBubbles`);
+  `wt04` stood on the shelf's top (moved to the beach), `wt11` was shot before any step (the nose finds what is buried on a step), `wp09` stood on the shore ten tiles from the islet (now on the water in front of its gap).
+  **Seen and left**: the strong current is the sea's own picture, with nothing that shows a flow; the old woman and the widow's Machamp, the cells by day and by night, the Multi room's hall and its battle read well; the night cells are dim against the dark; the Battle Tree and the power plant are long wooden halls on the outside, not a tree and a plant.
 - **Left**: the Battle Tree's partner choice and scouting; the Ultra Warp Ride; Magearna and Marshadow (plan 29 · LS11); a
   Mantine that does tricks; the new places' own songs.
 

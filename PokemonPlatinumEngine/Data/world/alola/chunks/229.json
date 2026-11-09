@@ -29,10 +29,10 @@
     "0202020202020202000000000000000002020202020202020202020200000000",
     "0000000000000000000000000000000000000000000000000000000000000000",
     "0000000000000000000000000000000000000000000000000000000000000000",
-    "bebebebebebebebebebebebebebebebebebebebebebebebebebebebebebe0000",
-    "bebebebebebebebebebebebebebebebebebebebebebebebebebebebebebe0000",
-    "bebebebebebebebebebebebebebebebebebebebebebebebebebebebebebe0000",
-    "bebebebebebebebebebebebebebebebebebebebebebebebebebebebebebe0000"
+    "bebebebebe00bebebebebebebebebebebebebebebe00bebebebebebebe000000",
+    "bebebebebebe00bebebebebebebebebebebebebebebe00bebebebebebebe0000",
+    "bebebebebebebe00bebebebebebebe00bebebebebebebe00bebebebebebe0000",
+    "00bebebebebebebebebebebebebebebe00bebebebebebebe00bebebebebe0000"
   ],
   "solid": [
     "..............................##",
@@ -63,10 +63,10 @@
     "..............................##",
     "..............................##",
     "..............................##",
-    "..............................##",
-    "..............................##",
-    "..............................##",
-    "..............................##"
+    ".....#...............#.......###",
+    "......#...............#.......##",
+    ".......#.......#.......#......##",
+    "#...............#.......#.....##"
   ],
   "cover": [
     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT",
@@ -97,10 +97,10 @@
     "wwwwwwww...::...wwwwwwwwwwww..TT",
     "...........::.................TT",
     "...........::.................TT",
-    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTT",
-    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTT",
-    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTT",
-    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrTT"
+    "rrrrrRrrrrrrrrrrrrrrrRrrrrrrrRTT",
+    "rrrrrrRrrrrrrrrrrrrrrrRrrrrrrrTT",
+    "rrrrrrrRrrrrrrrRrrrrrrrRrrrrrrTT",
+    "RrrrrrrrrrrrrrrrRrrrrrrrRrrrrrTT"
   ],
   "heights": [
     { "x": 0, "z": 0, "width": 32, "depth": 32, "height": 0, "slopeX": 0, "slopeZ": 0 }

@@ -157,7 +157,7 @@
     { "x": 19, "y": 11, "kind": "Town", "name": "Malie City", "area": "malie_city" },
     { "x": 20, "y": 11, "kind": "Landmark", "name": "Malie Garden", "area": "malie_garden" },
     { "x": 21, "y": 11, "kind": "Landmark", "name": "Malie Garden", "area": "malie_garden" },
-    { "x": 22, "y": 11, "kind": "Town", "name": "Malie City", "area": "malie_city" },
+    { "x": 22, "y": 11, "kind": "Landmark", "name": "Secluded Shore", "area": "secluded_shore" },
     { "x": 23, "y": 11, "kind": "Town", "name": "Malie City", "area": "malie_city" },
     { "x": 24, "y": 11, "kind": "Town", "name": "Malie City", "area": "malie_city" },
     { "x": 25, "y": 11, "kind": "Town", "name": "Malie City", "area": "malie_city" },

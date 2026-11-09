@@ -94,8 +94,8 @@ Decisions: four islands as four matrices of one world folder, joined by a ferry 
   (`ClockFlags.Daylight`, `Nightfall`, none before the Cube is had); **each Core's own Cube move** (`FormChanges.CoreMoves`);
   the **old woman and her Machamp** of Hau'oli Cemetery and **the Spooky Plate**; and **the Battle Tree's Multi room**
   (`BattleTree` gains the `multi` way: two entered, a partner of ours with two, two trainers with two each, no host or Super
-  room, `StreakChallenge.Partner`, `facility tree partner`). Tests: `AlolaOddsAndEndsTests`. Shots owed (no GPU): the
-  `alolalast` mode's `wt20` on. **Not built**: the Ultra Warp Ride (its legendaries of every earlier region would each need their
+  room, `StreakChallenge.Partner`, `facility tree partner`). Tests: `AlolaOddsAndEndsTests`. Shots: the
+  `alolalast` mode's `wt20` to `wt41`, taken and looked at (the GPU session of 2026-11-09: `wt04`'s player moved off the shelf onto the beach, `wt11`'s step taken so the "!" shows, and the fixes in rulings.md, "The shots of the wave after the Battle Tree"). **Left from the shots**: the strong current has no look of its own (the water over it is the sea's, so a player sees no flow before being carried; a moving-foam look of the water shader is the fix, style guide first). **Not built**: the Ultra Warp Ride (its legendaries of every earlier region would each need their
   species given a way and their own beat) and the link to Galar (the chain already holds `Transport.Plane` from Alola to Galar;
   Galar has no region file or maps until plan 33). **Left**: the Multi room's partner choice and scouting, Magearna and
   Marshadow (plan 29 · LS11), a Mantine that does tricks, the new places' own songs.

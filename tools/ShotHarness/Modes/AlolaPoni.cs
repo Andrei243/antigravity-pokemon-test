@@ -45,7 +45,15 @@ partial class Harness
         };
         foreach (var (name, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); game.LocationSign.Hide(); Shot(name);
+            At(map, x, y, facing); Frames(2); game.LocationSign.Hide();
+            // The islet's reef lies ten tiles out to sea: seen from the water, on a Lapras, in front of the gap in its north side
+            if (name == "wp09_poni_coast_islet")
+            {
+                At(map, 278, 275, Direction.Down);
+                game.Player.SetMode(TravelMode.Surfing); game.Player.Carrier = "Lapras"; Frames(6); game.LocationSign.Hide();
+            }
+            Shot(name);
+            if (game.Player.Mode == TravelMode.Surfing) game.Player.SetMode(TravelMode.OnFoot);
         }
 
         // Mudsdale galloping over Blush Mountain's rough ground, and Sharpedo under a surfer off Route 15

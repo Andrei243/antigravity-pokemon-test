@@ -82,10 +82,10 @@ TT..wwwwwwwwwwww...::...wwwwwwwwwwww..TT
 TT..wwwwwwwwwwww...::...wwwwwwwwwwww..TT
 TT.................::.................TT
 TT.................::.................TT
-TTxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTT
-TTxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTT
-TTxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTT
-TTxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTT
+TTxxxRxxxxxxxRxxxxxxxxxxxxxxxRxxxxxxxRTT
+TTxxxxRxxxxxxxRxxxxxxxxxxxxxxxRxxxxxxxTT
+TTxxxxxRxxxxxxxRxxxxxxxRxxxxxxxRxxxxxxTT
+TTxxxxxxRxxxxxxxxxxxxxxxRxxxxxxxRxxxxxTT
 TT.................::.................TT
 TT.................::.................TT
 TT.................::.................TT
