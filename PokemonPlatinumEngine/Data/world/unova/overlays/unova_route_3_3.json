@@ -1,10 +1,12 @@
 {
-  // The Day Care on Route 3 (plan 22 · U10, part f), Black 2's, our words. Leaving Pokémon here waits for a session that gives
-  // Unova its Day Care
+  // The Day Care on Route 3 (plan 22 · U10, part f; plan 36 · TR6), Black 2's, our words. Its couple raise Pokémon as
+  // every finished region's do: the man (Black 2's roughneck) hands over the Egg the couple found and says how the
+  // Pokémon are, and the lady (its backers) takes up to two to raise and gives them back for the fee
+  // (common.DayCareMan and common.DayCareLady, the one Day Care of the whole game)
   "area": "unova_route_3_3",
   "bgmTrack": "unova/route1",
   "people": {
-    "1": { "name": "Roughneck", "dialog": [ "I look tough, but I'm the best Pokémon babysitter in Unova." ] },
-    "2": { "name": "Backers", "dialog": [ "We left our Pokémon here while we cheer at the matches. They come back so happy!" ] }
+    "1": { "name": "Day-Care Man", "script": "DayCareMan" },
+    "2": { "name": "Day-Care Lady", "script": "DayCareLady" }
   }
 }

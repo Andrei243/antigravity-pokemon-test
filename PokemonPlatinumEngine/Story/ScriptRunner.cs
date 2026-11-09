@@ -1991,7 +1991,7 @@ public sealed partial class ScriptRunner
             }
             case "egg":
             {
-                var egg = dayCare.GiveEgg(party, host.TrainerNumber, host.Chance, Ruleset.Current);
+                var egg = dayCare.GiveEgg(party, host.TrainerNumber, host.Chance, Ruleset.Current, Models.ShinyCharm.Held(host.Bag));
                 if (egg != null)
                 {
                     egg.Met(Models.Breeding.DayCareCouple, Core.GameClock.Today);
