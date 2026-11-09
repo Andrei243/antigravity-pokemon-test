@@ -187,6 +187,26 @@ public partial class GameEngine
         /// <summary>The marker a script's <c>camera look</c> sent the open map's camera to last, or null.</summary>
         public string? OpenLook => game.OpenLook;
 
+        /// <summary>
+        /// The orbit camera sent to look at a marker of the open map the player is in, as a script's <c>camera look</c>
+        /// sends it (plan 32 · OW10: a scenario's <c>look</c>), over so many seconds; it stays until <see cref="OpenLookHome"/>
+        /// or a script's end brings it home. False where the player is in no open map or the map has no such marker.
+        /// </summary>
+        public bool OpenLookAt(string marker, float seconds)
+        {
+            if (game.flow.Open is not { } field || field.Map.Marker(marker) is not { } at) return false;
+            game.OpenLook = marker;
+            game.openCamera.LookAt(OpenVec.Of(at.Pos), OpenVec.Of(field.Player.Pos), seconds);
+            return true;
+        }
+
+        /// <summary>The orbit camera brought home from a look at once.</summary>
+        public void OpenLookHome()
+        {
+            game.OpenLook = null;
+            game.openCamera.Home(0);
+        }
+
         /// <summary>Whether a script's walk to a marker is under way.</summary>
         public bool OpenWalking => game.openWalk != null;
 

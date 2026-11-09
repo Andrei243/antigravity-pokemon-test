@@ -88,6 +88,7 @@ public sealed class OrbitCamera
         Yaw = OpenYaw.Radians(yaw);
         Pitch = PitchDegrees * Math.PI / 180;
         Arm = Back;
+        Length = Back;
         Held = false;
         placed = false;
         sinceTurned = double.PositiveInfinity;
@@ -104,6 +105,25 @@ public sealed class OrbitCamera
         if (share == 0 || seconds <= 0) return;
         Yaw = Wrap(Yaw - Math.Clamp(share, -1, 1) * TurnRate * seconds);
         sinceTurned = 0;
+    }
+
+    /// <summary>How far the arm is let out where nothing holds it, in metres: <see cref="Back"/>, unless a tool posed it otherwise.</summary>
+    public double Length { get; private set; } = Back;
+
+    /// <summary>The steepest and the shallowest a tool may pose the camera, and its longest arm (a scenario's <c>look</c>).</summary>
+    public const double HighestPitch = 89 * Math.PI / 180, LowestPitch = -60 * Math.PI / 180, LongestArm = 120;
+
+    /// <summary>
+    /// Posed by a tool at once (plan 32 · OW10: a scenario's <c>look</c>): the yaw, the pitch and the arm's length, held
+    /// until the camera is begun afresh; it eases behind a walker as ever once left untouched.
+    /// </summary>
+    public void Pose(double yaw, double pitch, double length)
+    {
+        Yaw = Wrap(yaw);
+        Pitch = Math.Clamp(pitch, LowestPitch, HighestPitch);
+        Length = Math.Clamp(length, Shortest, LongestArm);
+        sinceTurned = 0;
+        placed = false;
     }
 
     /// <summary>Turned to look a way along the ground at once (a tool's: the harness's four yaws).</summary>
@@ -174,9 +194,9 @@ public sealed class OrbitCamera
     {
         var head = feet + new OpenVec(0, Above, 0);
         var back = BackWay;
-        double allowed = Back;
+        double allowed = Length;
         Held = false;
-        if (ground != null && ground.HasAnything && ground.Raycast(head, back, Back + Margin) is { } hit)
+        if (ground != null && ground.HasAnything && ground.Raycast(head, back, Length + Margin) is { } hit)
         {
             allowed = Math.Max(Shortest, hit - Margin);
             Held = true;

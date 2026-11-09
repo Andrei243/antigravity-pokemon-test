@@ -20,19 +20,57 @@ partial class Harness
         var description = RegionDescription.Read(folder);
         string baked = Path.Combine(outDir, "openlab", "baked");
         string index = Path.Combine(baked, "index.json");
-        bool fresh = File.Exists(index) && BakedRegion.Open(baked).Index.Source == description.Source;
+        // Fresh by the land's hash and the places' too (plan 32 · OW10, OW9's finding): the navigation mesh is baked
+        // with the places' solids and water, so a place's file changed bakes again
+        string stamp = Path.Combine(outDir, "openlab", "bake.stamp");
+        string wanted = $"{description.Source} {PlacesHash(folder)}";
+        bool fresh = File.Exists(index) && File.Exists(stamp) && File.ReadAllText(stamp) == wanted && BakedRegion.Open(baked).Index.Source == description.Source;
         var watch = Stopwatch.StartNew();
         if (!fresh)
         {
             var files = RegionBake.Files(description);
             RegionBake.Write(baked, files);
+            File.WriteAllText(stamp, wanted);
             Console.WriteLine($"  the lab baked into {baked}: {files.Count} files in {watch.Elapsed.TotalSeconds:0.0} s");
         }
-        else Console.WriteLine($"  the lab's bake in {baked} is the descriptions' own (hash {description.Source}): not baked again");
+        else Console.WriteLine($"  the lab's bake in {baked} is the descriptions' and the places' own ({wanted}): not baked again");
         var map = OpenPlaceFiles.LoadRegion(folder, withLand: false).Single();
         map.Land = BakedRegion.Open(baked);
         game.AddOpenMap(map);
+        // The grid room its house's door leads into (the tests' own, OpenWorldPlacesTests.LabHouse)
+        game.AddRoom(GameDataFiles.Deserialize<MapFile>("""
+            {
+              "name": "OpenLabHouse", "displayName": "Test House", "interior": "House", "width": 7, "height": 8,
+              "ground": ["#######", "#######", "#_____#", "#_____#", "#_____#", "#_____#", "#_____#", "###D###"],
+              "solid":  ["#######", "#######", "#.....#", "#.....#", "#.....#", "#.....#", "#.....#", "###.###"],
+              "warps": [ { "sourceX": 3, "sourceY": 7, "targetMap": "OpenLab", "targetX": 0, "targetY": 0, "targetFacing": "Down" } ],
+              "props": [], "signboards": [], "npcs": [], "wildEncounters": []
+            }
+            """).ToMap());
         return map;
+    }
+
+    /// <summary>A hash of a region's places' files (their names and bytes, in order), FNV-1a as hex.</summary>
+    static string PlacesHash(string region)
+    {
+        string places = Path.Combine(region, "places");
+        uint hash = 2166136261;
+        if (Directory.Exists(places))
+            foreach (string file in Directory.GetFiles(places, "*.json").OrderBy(f => f, StringComparer.Ordinal))
+                foreach (byte b in System.Text.Encoding.UTF8.GetBytes(Path.GetFileName(file)).Concat(File.ReadAllBytes(file)))
+                    hash = (hash ^ b) * 16777619;
+        return hash.ToString("x8");
+    }
+
+    /// <summary>The player put down in an open map at a place facing a yaw (65,536ths), the camera settled behind and the far figures' impostors baked (a scenario's `at3`).</summary>
+    void PutInOpenMap(OpenMap map, OpenPos at, int yaw)
+    {
+        game.OpenView = null;
+        game.PlaceOpen(map, at, yaw);
+        Frames(2);
+        game.SettleOpenView();
+        Frames(2);
+        BakeTheFiguresImpostors();
     }
 
     /// <summary>A place on the lab's ground: the highest ground facing up between two heights at x, z.</summary>

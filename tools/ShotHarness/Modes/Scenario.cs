@@ -1,3 +1,5 @@
+using PokemonPlatinumEngine.OpenWorld;
+
 // Scenarios and the warm harness (plan 16 · T17): a look at something new written as a file of lines, played on the
 // game a line at a time (Core/ShotScenario.cs reads it, checked, before anything is played).
 //
@@ -186,6 +188,51 @@ partial class Harness
             {
                 if (MapDatabase.TryGet(a[0]) == null) return $"no map is called '{a[0]}'";
                 At(a[0], int.Parse(a[1]), int.Parse(a[2]), DevCommands.DirectionOf(a[3])!.Value);
+                return null;
+            }
+            case "at3":
+            {
+                // An open map the game knows, or the open test world the harness bakes (plan 32 · OW10)
+                var open = engine.OpenMapNamed(a[0]) ?? (a[0] == "OpenLab" ? openLab ??= BuildOpenLab() : null);
+                if (open == null) return $"no open map is called '{a[0]}' (the harness knows OpenLab, the open test world)";
+                if (a.Count == 2)
+                {
+                    if (open.Marker(a[1]) is not { } marker) return $"{open.Name} has no marker '{a[1]}' ({string.Join(", ", open.Markers.Select(m => m.Name))})";
+                    PutInOpenMap(open, marker.Pos, marker.Yaw);
+                }
+                else
+                {
+                    double N(int i) => ShotScenario.NumberOf(a[i])!.Value;
+                    PutInOpenMap(open, OpenPos.FromMetres(N(1), N(2), N(3)), a.Count > 4 ? OpenPlaceFiles.YawOfDegrees(N(4)) : OpenYaw.South);
+                }
+                var feet = game.OpenPlayer!.Pos;
+                say($"  in {open.Name} at {feet}, {open.AreaAt(feet)?.Key ?? "no area"}, {game.OpenPlayer.Body.Stance}");
+                return null;
+            }
+            case "look":
+            {
+                if (game.OpenField == null) return "the player is in no open map (at3 puts them in one)";
+                if (a[0] == "home")
+                {
+                    game.OpenLookHome();
+                    Frames(2);
+                    return null;
+                }
+                if (ShotScenario.NumberOf(a[0]) is { } yaw)
+                {
+                    double pitch = a.Count > 1 ? ShotScenario.NumberOf(a[1])!.Value : OrbitCamera.PitchDegrees;
+                    double arm = a.Count > 2 ? ShotScenario.NumberOf(a[2])!.Value : OrbitCamera.Back;
+                    game.OpenCamera.Pose(yaw * Math.PI / 180, pitch * Math.PI / 180, arm);
+                    game.SettleOpenView();
+                    Frames(2);
+                    say($"  the camera at yaw {yaw:0}°, pitch {pitch:0}°, its arm {game.OpenCamera.Arm:0.00} m of {arm:0.00}{(game.OpenCamera.Held ? " (held in)" : "")}");
+                    return null;
+                }
+                float seconds = a.Count > 1 ? (float)ShotScenario.SecondsOf(a[1])!.Value : 0f;
+                if (!game.OpenLookAt(a[0], seconds)) return $"{game.OpenMap!.Name} has no marker '{a[0]}'";
+                // The look's own time passes, so the camera is there when the next line is played
+                Frames(Math.Max(2, (int)Math.Round(seconds * 60.0) + 2));
+                say($"  the camera looking at {a[0]}, {game.OpenCamera.LookShare:0.00} of the way");
                 return null;
             }
             case "step":

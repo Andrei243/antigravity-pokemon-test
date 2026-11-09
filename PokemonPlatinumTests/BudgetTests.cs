@@ -92,6 +92,30 @@ public class BudgetTests
         finally { SdfCache.Enabled = was; }
     }
 
+    /// <summary>
+    /// The open world's baker (plan 32 · OW10: <c>budgets.json</c>'s bake times, GPU-free): the open test world's
+    /// descriptions read and turned into a land, the hill's chunk (the tunnel's and the cavern's carves in it) meshed at
+    /// level 0 alone and at all three levels (level 0 thinned twice), and the navigation mesh of the lab's sixteen chunks.
+    /// </summary>
+    [Fact]
+    public void TheOpenWorldsBakerBakesInTime()
+    {
+        if (Mode == "off") return;
+        string folder = OpenWorldBakeTests.LabFolder;
+        Hold("OpenWorldBake: the lab's descriptions read and made a land", 30, 3,
+            () => OpenWorldBake.RegionDescription.Read(folder).Land(), "2026-11-09");
+        var description = OpenWorldBake.RegionDescription.Read(folder);
+        var land = description.Land();
+        Hold("OpenWorldBake: the hill's chunk at level 0 (RegionBake.Finest)", 900, 3,
+            () => OpenWorldBake.RegionBake.Finest(land, description.World, 0, 0), "2026-11-09");
+        Hold("OpenWorldBake: the hill's chunk at three levels (RegionBake.Chunk)", 1500, 3,
+            () => OpenWorldBake.RegionBake.Chunk(land, description.World, 0, 0), "2026-11-09");
+        var level0 = OpenWorldBake.RegionBake.ChunksOf(description.World).Select(c => OpenWorldBake.RegionBake.Finest(land, description.World, c.X, c.Z)).ToList();
+        var (solids, waters) = OpenWorldBake.RegionBake.PlacedOf(description);
+        Hold("OpenWorldBake: the lab's navigation mesh (NavBake.Build of 16 chunks)", 3000, 2,
+            () => OpenWorldBake.NavBake.Build(level0, solids, waters), "2026-11-09");
+    }
+
     [Fact]
     public void TheDataFilesLoadInTime()
     {
