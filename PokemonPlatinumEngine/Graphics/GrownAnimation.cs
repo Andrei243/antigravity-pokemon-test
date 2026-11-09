@@ -251,9 +251,14 @@ internal static class GrownAnimation
         // What follows through: the coat's tails back and apart, a skirt's flare, the hair and the bag a beat behind
         pose.Turn(HumanBones.CoatTail, 0.06f + 0.12f * spread + 0.22f * run);
         pose.Scale[HumanBones.CoatTail] = new Vector3(1f + 0.16f * spread, 1f, 1f + 0.08f * spread);
-        pose.Turn(HumanBones.Skirt, 0.03f + 0.05f * run, 0f, 0.04f * MathF.Sin(Tau * cycle - 0.7f));
+        // A running knee lifts the skirt's front with it (plan 30 · FM10): as the foot in the air rises, the skirt tips
+        // forward and flares, so the thigh coming up under it stays under it (the skirt's share of each thigh, sculpted, does
+        // the rest)
+        float footUp = MathF.Max(ankleL.Y, ankleR.Y) - sk[HumanBones.FootL].Joint.Y;
+        float kneeUp = run * Math.Clamp(footUp / (0.3f * L), 0f, 1f);
+        pose.Turn(HumanBones.Skirt, 0.03f + 0.05f * run - 0.45f * kneeUp, 0f, 0.04f * MathF.Sin(Tau * cycle - 0.7f));
         // A skirt flares fore and aft with the stride, a run's the more, so a leg forward stays under it
-        pose.Scale[HumanBones.Skirt] = new Vector3(1f + 0.08f * spread, 1f, 1f + (0.12f + 0.3f * run) * spread);
+        pose.Scale[HumanBones.Skirt] = new Vector3(1f + (0.12f + 0.04f * run) * spread + 0.08f * kneeUp, 1f, 1f + (0.42f + 0.2f * run) * spread + 0.4f * kneeUp);
         pose.Turn(HumanBones.Hair, 0.04f + 0.12f * run + (0.05f + 0.04f * run) * bounce);
         pose.Turn(HumanBones.Bag, (0.05f + 0.06f * run) * bounce + 0.03f * run);
         pose.Offset[HumanBones.Bag] += new Vector3(0, (0.003f + 0.006f * run) * legs.Size * bounce, 0);

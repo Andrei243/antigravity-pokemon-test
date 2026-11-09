@@ -58,6 +58,16 @@ internal static partial class CharacterModels
     public const float GrownWeightBlend = 0.03f;
 
     /// <summary>
+    /// How far a grown shoulder's weight reaches into the chest round it (plan 30 · FM10; style guide, "Grown characters",
+    /// "Meshing"): over the model's blend alone the armpit's edges stretched past four times their length wherever an arm
+    /// rose to the shoulder's height (FM5's wave, cheer and throw).
+    /// </summary>
+    public const float GrownShoulderReach = 0.09f;
+
+    /// <summary>The same reach for a sleeve's shoulder into the garment's chest, which lies further out and farther round.</summary>
+    public const float GrownSleeveReach = 0.2f;
+
+    /// <summary>
     /// The frame of a grown build (style guide, "Grown characters"): the table's crown, head, hip joints, shoulders and
     /// girth, and everything else worked out from them by the guide's rules. A curved figure has a waist, wider hips and
     /// a bust (never a child's).
@@ -387,7 +397,10 @@ internal static partial class CharacterModels
         var el = Side(f.Elbow, side);
         var wr = Side(f.Wrist, side);
         var Mat = SurfaceOf(upperArm, skin);
-        m.Ellipsoid(sh + new Vector3(side * 0.006f * gu, -0.03f * sz, 0f), new Vector3(0.046f * gu, 0.07f * sz, 0.045f * gu), upperArm, upperB, 0.025f * sz, Mat, AlignY(el - sh));
+        // The deltoid, whose bone's weight reaches down the side of the chest under it (GrownShoulderReach), so a raised
+        // arm's bend is spread over the armpit and no edge there stretches (plan 30 · FM10)
+        m.Ellipsoid(sh + new Vector3(side * 0.006f * gu, -0.03f * sz, 0f), new Vector3(0.046f * gu, 0.07f * sz, 0.045f * gu), upperArm, upperB, 0.025f * sz, Mat, AlignY(el - sh))
+            .WeightReach = GrownShoulderReach * sz;
         m.Capsule(sh, el, 0.044f * gu, 0.030f * Math.Max(gu, gf), upperArm, upperB, 0.02f * sz, Mat);
         var fMat = SurfaceOf(forearm, skin);
         m.Sphere(el, 0.032f * gf, forearm, foreB, 0.015f * sz, fMat);

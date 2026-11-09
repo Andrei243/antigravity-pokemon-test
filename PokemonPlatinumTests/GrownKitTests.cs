@@ -602,7 +602,12 @@ public class GrownKitTests
         var skirt = lass.Clothes!;
         var low = Enumerable.Range(0, skirt.VertexCount).Where(v => skirt.Positions[v].Y < t.HipY - 0.05f).ToList();
         Assert.NotEmpty(low);
-        Assert.All(low, v => Assert.Equal(HumanBones.Skirt, Heaviest(skirt, v)));
+        // (sharing each thigh's weight where it lies over it since plan 30 · FM10, so a leg in a stride stays under it,
+        // and never more of a thigh's than the skirt's own)
+        float On(int v, int bone) => Enumerable.Range(0, 4).Where(k => skirt.BoneIndices[v * 4 + k] == bone).Sum(k => skirt.BoneWeights[v * 4 + k]);
+        Assert.All(low, v => Assert.Equal(1f, On(v, HumanBones.Skirt) + On(v, HumanBones.ThighL) + On(v, HumanBones.ThighR), 3));
+        Assert.All(low, v => Assert.True(On(v, HumanBones.Skirt) >= 0.4f, $"{skirt.Positions[v]} is {On(v, HumanBones.Skirt):0.00} the skirt's"));
+        Assert.Contains(low, v => On(v, HumanBones.ThighL) > 0.3f);
         Assert.InRange(skirt.Positions.Min(p => p.Y), t.Knee.Y + 0.02f, t.Knee.Y + 0.09f);
         Assert.True(Near(lass.Mesh.Colors[Nearest(lass.Mesh, new Vector3(t.Knee.X, t.Knee.Y, 0.05f))], lass.Style.Skin), "the knee under the skirt is bare");
 

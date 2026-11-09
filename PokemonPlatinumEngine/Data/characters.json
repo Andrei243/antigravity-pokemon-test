@@ -678,6 +678,112 @@
     "galar_mum": { "skin": "#e8c4a8", "hairColor": "#6a4a2e", "hair": "Bun", "top": "#c89a6a", "accent": "#f2ece0", "bottom": "#5a6a8a", "shoes": "#3a302a", "eyes": "#4a3a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
     "hops_mum": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Long", "top": "#8a5a9a", "accent": "#f2ece0", "bottom": "#4a3a5a", "shoes": "#3a302a", "eyes": "#c8a83a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 }
   },
+  // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
+  // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit
+  // (CharacterStyles.Get(name, kit)). The looks above stay the chibi stand-ins Kalos is drawn as until the user turns its
+  // file to the grown kit. Each twin is its look in a build of the grown kit, by age and trade (the heroes, the rival and
+  // the four friends teenagers; youngsters, lasses and the little ones children; the old the elder; hikers, black belts,
+  // sailors, workers and the big men broad), with the height the build doesn't give already eased toward one, and
+  // our own grown touches where a chibi stand-in had to make do (a long dress, a suit's skirt, a knight's breadth). A
+  // class the older regions share keeps every colour and part of its look, so the same person is known in both kits.
+  "grown": {
+    // The heroes and the rival (the boy and the girl the player can be, and the hero the player isn't), teenagers
+    "player": { "jacket": true, "hairColor": "#46384e", "hat": "Beret", "hatColor": "#dc383c", "hatBand": "#f6f6fa", "top": "#3a4e8a", "accent": "#ec4646", "bottom": "#303246", "shoes": "#c8463c", "bag": "#f2c446", "sole": "#f0ece4", "blush": true, "scarf": true, "build": "Teen" },
+    "dawn": { "buttoned": true, "hairColor": "#363e68", "hair": "Long", "hat": "Beret", "hatColor": "#f8f8fc", "hatBand": "#ee7c9c", "top": "#e25476", "accent": "#f8f8fc", "bottom": "#e25476", "shoes": "#ee7c9c", "eyes": "#46568c", "skirt": true, "coat": true, "bag": "#faf6ec", "sole": "#f4f0ec", "lashes": true, "blush": true, "scarf": true, "build": "Teen" },
+    "serena": { "hairColor": "#d8b47a", "hair": "Long", "hat": "Beret", "hatColor": "#2e8a8a", "hatBand": "#f2f2f4", "top": "#f2ead8", "accent": "#2e8a8a", "bottom": "#2c3458", "shoes": "#5a3a2a", "eyes": "#3a5a7a", "skirt": true, "lashes": true, "bag": "#2e8a8a", "build": "Teen" },
+    "calem": { "hairColor": "#2e2420", "hair": "Short", "hat": "Cap", "hatColor": "#6a6a74", "hatBand": "#f2f2f4", "top": "#4a6a3a", "accent": "#f2f2f4", "bottom": "#2a2a36", "shoes": "#3a2a2a", "eyes": "#3a3a4a", "jacket": true, "build": "Teen", "height": 1.02 },
+    // The four friends: Shauna in her two tails, big Tierno under his straw hat, small Trevor in his waistcoat; Emma of
+    // the back streets, and Essentia, who is Emma in the suit forced on her
+    "shauna": { "hairColor": "#6a3e26", "hair": "Bunches", "top": "#ee8a6a", "accent": "#f6f0e8", "bottom": "#f2f2ee", "shoes": "#d86a5a", "eyes": "#4a8a5a", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true, "build": "Teen" },
+    "tierno": { "skin": "#d8a078", "hairColor": "#2a2a30", "hat": "WideHat", "hatColor": "#e8cc6a", "hatBand": "#6a3a5a", "top": "#6a3a5a", "accent": "#f2f2ee", "bottom": "#3a3a46", "shoes": "#2a2a30", "eyes": "#2a2a30", "build": "Teen", "height": 1.06 },
+    "trevor": { "hairColor": "#c8703a", "hair": "Swept", "top": "#f2f2ee", "accent": "#6a6a74", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a5a3a", "vest": "#6a6a74", "build": "Teen", "height": 0.97 },
+    "emma": { "hairColor": "#c8407a", "hair": "Short", "top": "#ece8f2", "accent": "#c8407a", "bottom": "#2a2a36", "shoes": "#c8407a", "eyes": "#5a3a4a", "shorts": true, "lashes": true, "blush": true, "build": "Teen", "height": 0.98 },
+    "essentia": { "hairColor": "#c8407a", "hair": "Short", "top": "#1e1e26", "accent": "#d8408a", "bottom": "#1e1e26", "shoes": "#d8408a", "eyes": "#5a3a4a", "glasses": "#e848a0", "jacket": true, "lashes": true, "build": "Teen" },
+    // The professor of Lumiose and his two assistants; the man of the café, tall under his red mane, and his scientist;
+    // Looker, the detective of the bureau
+    "sycamore": { "hairColor": "#2a2630", "hair": "Swept", "top": "#f4f4f6", "accent": "#4a6ab0", "bottom": "#2a2a36", "shoes": "#2a2420", "eyes": "#3a3a4a", "coat": true, "build": "Grown", "height": 1.05 },
+    "sina": { "hairColor": "#86b6dc", "hair": "Long", "top": "#3a9a9a", "accent": "#f2f2ee", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "coat": true, "lashes": true, "build": "Grown", "height": 0.98 },
+    "dexio": { "hairColor": "#2a2a34", "hair": "Short", "top": "#3a9a9a", "accent": "#f2f2ee", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a3a4a", "glasses": "#2a2a34", "coat": true, "build": "Grown", "height": 1.03 },
+    "lysandre": { "hairColor": "#c8402a", "hair": "Swept", "top": "#22222a", "accent": "#c8402a", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#5a4a3a", "beard": true, "coat": true, "buttoned": true, "build": "Grown", "height": 1.09 },
+    "xerosic": { "skin": "#e8c4a8", "hairColor": "#e4e0d4", "hair": "Spiky", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#d8402a", "coat": true, "build": "Grown", "height": 1.04 },
+    "looker": { "hairColor": "#3a2e2c", "hair": "Swept", "top": "#c4a876", "accent": "#544640", "bottom": "#46424a", "shoes": "#342a28", "coat": true, "buttoned": true, "build": "Grown", "height": 1.02 },
+    // The eight Gym Leaders: Viola behind her camera; Grant the climber, broad in the shoulder; Korrina on her skates;
+    // Ramos the old gardener; Clemont the inventor; Valerie in a long doll's dress to her ankles under her wide hat;
+    // Olympia in her robe; Wulfric, the biggest of them, broad in his fur-trimmed coat
+    "viola": { "hairColor": "#e2c88a", "hair": "Short", "top": "#f2ead8", "accent": "#6a7a3a", "bottom": "#2e3040", "shoes": "#4a3428", "eyes": "#3a5a4a", "vest": "#6a7a3a", "holds": "Camera", "lashes": true, "build": "Grown", "height": 0.98 },
+    "grant": { "skin": "#9a6440", "hairColor": "#1e1a18", "hair": "Short", "top": "#b4583a", "accent": "#e8d8b0", "bottom": "#5a6a3a", "shoes": "#3a2e26", "eyes": "#3a2a20", "vest": "#d8c08a", "shortSleeves": true, "build": "GrownBroad", "height": 0.98 },
+    "korrina": { "hairColor": "#ecd27a", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8383c", "hatBand": "#d8383c", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#d8383c", "eyes": "#3a5a7a", "shorts": true, "shortSleeves": true, "lashes": true, "build": "Teen", "height": 1.03 },
+    "ramos": { "skin": "#d8a078", "hairColor": "#e8e8ee", "hair": "Short", "hat": "WideHat", "hatColor": "#e8cc6a", "hatBand": "#5a8a3a", "top": "#5a8a3a", "accent": "#e8cc6a", "bottom": "#4a6a2a", "shoes": "#5a4030", "eyes": "#3a3a2a", "mustache": true, "overalls": true, "build": "GrownElder", "height": 0.96 },
+    "clemont": { "hairColor": "#ecd27a", "hair": "Short", "top": "#3a5a9a", "accent": "#e8c040", "bottom": "#3a5a9a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "glasses": "#2a2a34", "bag": "#e8c040", "build": "Teen", "height": 1.03 },
+    "valerie": { "hairColor": "#2a2224", "hair": "Long", "hat": "WideHat", "hatColor": "#f6eef2", "hatBand": "#e88aa8", "top": "#e88aa8", "accent": "#f6f6f8", "bottom": "#e88aa8", "shoes": "#f6f6f8", "eyes": "#5a3a4a", "robe": true, "lashes": true, "build": "Grown" },
+    "olympia": { "hairColor": "#d8d4e8", "hair": "Long", "top": "#5a3a8a", "accent": "#e8c040", "bottom": "#5a3a8a", "shoes": "#2a2230", "eyes": "#6a4a9a", "robe": true, "lashes": true, "build": "Grown", "height": 1.03 },
+    "wulfric": { "skin": "#e8b894", "hairColor": "#a86a3a", "hair": "Short", "top": "#3a6a8a", "accent": "#f2f2ee", "bottom": "#3a3a46", "shoes": "#3a2e28", "eyes": "#3a3a4a", "beard": true, "coat": true, "scarf": true, "build": "GrownBroad", "height": 1.06 },
+    // The Elite Four and the Champion: Malva in a black suit with its skirt; Siebold the chef in white; Wikstrom the
+    // knight, broad in his armour; Drasna, old and straight-backed in her robe; Diantha in her long white coat, buttoned
+    "malva": { "hairColor": "#c8402a", "hair": "Short", "top": "#22222a", "accent": "#c8402a", "bottom": "#22222a", "shoes": "#c8402a", "eyes": "#5a3a3a", "glasses": "#c8402a", "jacket": true, "skirt": true, "lashes": true, "build": "Grown", "height": 1.03 },
+    "siebold": { "hairColor": "#e8d8a8", "hair": "Swept", "top": "#f6f6f8", "accent": "#8ab8dc", "bottom": "#2a2e3a", "shoes": "#2a2a30", "eyes": "#3a5a7a", "scarf": true, "coat": true, "buttoned": true, "build": "Grown", "height": 1.04 },
+    "wikstrom": { "hairColor": "#6a5a4a", "hair": "Short", "hat": "Helmet", "hatColor": "#9aa2b2", "hatBand": "#d8b44a", "top": "#9aa2b2", "accent": "#d8b44a", "bottom": "#6a7286", "shoes": "#3a3a46", "eyes": "#3a3a4a", "mustache": true, "build": "GrownBroad", "height": 1.02 },
+    "drasna": { "hairColor": "#f2f2f4", "hair": "Long", "top": "#3a7a5a", "accent": "#d8b44a", "bottom": "#3a7a5a", "shoes": "#2a3a30", "eyes": "#5a6a4a", "robe": true, "lashes": true, "curved": false, "build": "GrownElder" },
+    "diantha": { "hairColor": "#2a2224", "hair": "Short", "top": "#f6f6f8", "accent": "#d8b44a", "bottom": "#2a2a36", "shoes": "#f6f6f8", "eyes": "#3a5a4a", "coat": true, "buttoned": true, "lashes": true, "build": "Grown", "height": 1.03 },
+    // Team Flare: its grunts in red jackets and visors, its admins in lab coats over red; Shalour's old master
+    "flare_grunt": { "hairColor": "#c8402a", "hair": "Spiky", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "build": "Grown" },
+    "flare_grunt_f": { "hairColor": "#c8402a", "hair": "Bun", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "skirt": true, "lashes": true, "build": "Grown", "height": 0.98 },
+    "flare_admin": { "hairColor": "#e8803a", "hair": "Short", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8803a", "coat": true, "lashes": true, "build": "Grown", "height": 1.02 },
+    "gurkinn": { "hairColor": "#e8e8ee", "hair": "Bald", "top": "#6ab0dc", "accent": "#f2f2ee", "bottom": "#2a2a36", "shoes": "#3a302a", "eyes": "#3a3a4a", "mustache": true, "bushyBrows": true, "coat": true, "build": "GrownElder" },
+    // Lumiose's own people: the gang of the station, the bistro's chef, waiter, waitress and patrons, the Gazette's
+    // reporter and photographer, the television's director and its hopefuls, the château's maid
+    "lumiose_gang": { "skin": "#e8b892", "hairColor": "#1e1e22", "hair": "Bald", "top": "#1e1e22", "accent": "#b8bcc6", "bottom": "#2a2a36", "shoes": "#1e1e22", "glasses": "#141418", "jacket": true, "bushyBrows": true, "build": "GrownBroad" },
+    "lumiose_gang_f": { "hairColor": "#7a4ac8", "hair": "Spiky", "top": "#1e1e22", "accent": "#b8bcc6", "bottom": "#1e1e22", "shoes": "#7a4ac8", "eyes": "#4a3a6a", "jacket": true, "skirt": true, "lashes": true, "build": "Grown" },
+    "chef": { "hairColor": "#5c4638", "hat": "Cap", "hatColor": "#f6f6fa", "hatBand": "#f6f6fa", "top": "#f6f6fa", "accent": "#d8d8e0", "bottom": "#4a4a52", "shoes": "#2a2a30", "build": "Grown" },
+    "waiter": { "hairColor": "#3a2a24", "hair": "Swept", "top": "#f6f6f8", "accent": "#1e1e22", "bottom": "#1e1e22", "shoes": "#1e1e22", "vest": "#1e1e22", "build": "Grown", "height": 1.02 },
+    "waitress": { "hairColor": "#6a3a2a", "hair": "Bun", "top": "#26262c", "accent": "#f6f6f8", "bottom": "#26262c", "shoes": "#1e1e22", "apron": "#f6f6f8", "skirt": true, "lashes": true, "build": "Grown" },
+    "socialite": { "hairColor": "#ecc860", "hair": "Long", "hat": "WideHat", "hatColor": "#f6f6f4", "hatBand": "#ec7aa4", "top": "#f6f6f4", "accent": "#ec7aa4", "bottom": "#f6f6f4", "shoes": "#c4a46a", "skirt": true, "lashes": true, "build": "Grown", "height": 1.02 },
+    "reporter": { "hairColor": "#6a3a2a", "hair": "Long", "top": "#d8403c", "accent": "#f6f6f8", "bottom": "#2a3046", "shoes": "#2a2a30", "coat": true, "lashes": true, "build": "Grown" },
+    "cameraman": { "hairColor": "#3a2a24", "hat": "Cap", "hatColor": "#2a3046", "hatBand": "#f2c84a", "top": "#8a8c96", "accent": "#26262c", "bottom": "#3a3a44", "shoes": "#2a2a30", "vest": "#b4a272", "holds": "Camera", "build": "Grown", "height": 1.03 },
+    "game_director": { "hairColor": "#a8a8b4", "hair": "Swept", "top": "#26262c", "accent": "#f4f4f6", "bottom": "#26262c", "shoes": "#1e1e22", "glasses": "#2a2a30", "beard": true, "coat": true, "build": "Grown", "height": 1.02 },
+    "idol": { "hairColor": "#f08ab0", "hair": "Bunches", "hat": "Bow", "hatColor": "#f6f6f8", "hatBand": "#ec6a9a", "top": "#f4a0c4", "accent": "#fcf2f6", "bottom": "#f6f6f8", "shoes": "#ec6a9a", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true, "build": "Teen" },
+    "artist": { "hairColor": "#8a8a96", "hair": "Swept", "hat": "Beret", "hatColor": "#8a2e3e", "hatBand": "#6a2030", "top": "#ece2c8", "accent": "#d4483c", "bottom": "#6a4a38", "shoes": "#3a2a24", "mustache": true, "coat": true, "build": "Grown", "height": 0.98 },
+    "maid": { "hairColor": "#2a2224", "hair": "Long", "hat": "Headband", "hatColor": "#f6f6f8", "hatBand": "#f6f6f8", "top": "#26262c", "accent": "#f6f6f8", "bottom": "#26262c", "shoes": "#1e1e22", "apron": "#f6f6f8", "skirt": true, "lashes": true, "build": "Grown" },
+    // The classes the older regions share with Kalos, each its own look grown: children, teenagers, adults, the broad
+    // trades and the old
+    "youngster": { "hairColor": "#54382c", "hat": "Cap", "hatColor": "#fac83c", "hatBand": "#3c6ec8", "top": "#fafafc", "accent": "#3c6ec8", "bottom": "#4068be", "shoes": "#dc4840", "shorts": true, "stripes": true, "shortSleeves": true, "sole": "#f4f0e8", "blush": true, "build": "Child" },
+    "lass": { "hairColor": "#603c34", "hair": "Long", "top": "#ec6884", "accent": "#fcf0f4", "bottom": "#485ca8", "shoes": "#543834", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true, "build": "Child" },
+    "bug_catcher": { "hairColor": "#5a3a24", "hat": "Cap", "hatColor": "#5a9c48", "hatBand": "#f0d47a", "top": "#78b05a", "accent": "#f0e6c8", "bottom": "#7a5a38", "shoes": "#5a4030", "shorts": true, "shortSleeves": true, "holds": "Net", "blush": true, "build": "Child" },
+    "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true, "build": "Child" },
+    "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true, "build": "Child" },
+    "rich_boy": { "hairColor": "#e8c87a", "hair": "Swept", "top": "#2a3460", "accent": "#d8383c", "bottom": "#e8e0c8", "shoes": "#5a3a24", "coat": true, "shorts": true, "blush": true, "build": "Child" },
+    "preschooler_m": { "hairColor": "#5a3a2a", "hat": "Cap", "hatColor": "#f2c84a", "hatBand": "#3a8ad0", "top": "#6ab0e8", "accent": "#f6f6f8", "bottom": "#3a5a9a", "shoes": "#e8604a", "shorts": true, "shortSleeves": true, "bag": "#e8604a", "blush": true, "build": "Child", "height": 0.86 },
+    "preschooler_f": { "hairColor": "#7a4a2e", "hair": "Bunches", "top": "#f2a6c0", "accent": "#fcf2f6", "bottom": "#f2a6c0", "shoes": "#f2c84a", "skirt": true, "shortSleeves": true, "apron": "#fcf6e8", "lashes": true, "blush": true, "build": "Child", "height": 0.86 },
+    "picnicker": { "hairColor": "#9a5430", "hair": "Ponytail", "hatBand": "#f6f6f8", "top": "#f2c84a", "accent": "#f8f4e6", "bottom": "#5aa060", "shoes": "#c45a46", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "build": "Teen" },
+    "battle_girl": { "hairColor": "#3a2a2a", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8383c", "hatBand": "#d8383c", "top": "#f6f6f4", "accent": "#d8383c", "bottom": "#26262c", "shoes": "#f0caa8", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "build": "Teen", "height": 1.02 },
+    "ace_trainer_m": { "hairColor": "#26304e", "hair": "Spiky", "top": "#2e3e7a", "accent": "#f4f4f6", "bottom": "#24263a", "shoes": "#f0f0f2", "sole": "#2e3e7a", "build": "Grown", "height": 1.03 },
+    "ace_trainer_f": { "hairColor": "#a24a34", "hair": "Ponytail", "hatBand": "#f4f4f6", "top": "#2e3e7a", "accent": "#f4f4f6", "bottom": "#24263a", "shoes": "#f0f0f2", "sole": "#2e3e7a", "skirt": true, "lashes": true, "build": "Grown" },
+    "beauty": { "hairColor": "#ecc860", "hair": "Long", "top": "#d8405a", "accent": "#fcecf0", "bottom": "#d8405a", "shoes": "#a8283e", "eyes": "#5a3a4a", "skirt": true, "lashes": true, "build": "Grown", "height": 1.02 },
+    "lady": { "hairColor": "#f4ce68", "hair": "Long", "top": "#76ba84", "accent": "#fcf8ec", "bottom": "#608c6e", "shoes": "#6e4c3c", "skirt": true, "lashes": true, "build": "Grown" },
+    "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Grown", "height": 1.02 },
+    "psychic": { "hairColor": "#6a4a96", "hair": "Swept", "top": "#6e4a9a", "accent": "#e8e0f2", "bottom": "#3e3058", "shoes": "#2e2638", "eyes": "#5a3a7a", "coat": true, "build": "Grown", "height": 1.02 },
+    "psychic_f": { "hairColor": "#3a2a5a", "hair": "Long", "top": "#9a7ac8", "accent": "#f2ecf8", "bottom": "#4a3a6a", "shoes": "#2e2638", "eyes": "#5a3a7a", "coat": true, "skirt": true, "lashes": true, "build": "Grown" },
+    "skier_m": { "hairColor": "#4a3428", "hat": "Beanie", "hatColor": "#d8403c", "hatBand": "#f6f6f8", "top": "#3a6ad0", "accent": "#f6f6f8", "bottom": "#2a3046", "shoes": "#2a2a30", "glasses": "#f0c040", "build": "Grown", "height": 1.02 },
+    "skier_f": { "hairColor": "#8a4a2a", "hair": "Ponytail", "hatBand": "#f6f6f8", "hat": "Beanie", "hatColor": "#f6f6f8", "top": "#ec6a9a", "accent": "#f6f6f8", "bottom": "#3a3050", "shoes": "#2a2a30", "glasses": "#f0c040", "lashes": true, "build": "Grown" },
+    "backpacker_m": { "hairColor": "#5a3a24", "hat": "Beanie", "hatColor": "#3a6a4a", "hatBand": "#e8c45a", "top": "#c86a3a", "accent": "#f2e8d0", "bottom": "#6a5a3a", "shoes": "#4a3428", "shorts": true, "bag": "#3a6a4a", "build": "Grown", "height": 1.02 },
+    "backpacker_f": { "hairColor": "#3a2a24", "hair": "Braids", "hat": "WideHat", "hatColor": "#e8d4a0", "hatBand": "#c86a3a", "top": "#5a9ad0", "accent": "#f6f6f8", "bottom": "#6a5a3a", "shoes": "#4a3428", "shorts": true, "bag": "#c86a3a", "lashes": true, "build": "Grown" },
+    "fisherman": { "hairColor": "#4a3a2e", "hat": "Cap", "hatColor": "#4a6a9a", "hatBand": "#2a3a5a", "top": "#e4e4dc", "accent": "#6a7a5a", "bottom": "#3a5a4a", "shoes": "#2e3a30", "vest": "#5a7a4a", "mustache": true, "holds": "Rod", "build": "Grown", "height": 1.03 },
+    "pilot": { "hairColor": "#3a2e2c", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8782a", "top": "#3a5a8a", "accent": "#f4f4f6", "bottom": "#2c2e3c", "shoes": "#2a2420", "jacket": true, "build": "Grown" },
+    "clerk": { "hairColor": "#604030", "top": "#4c84de", "accent": "#f6f6fa", "bottom": "#383c50", "stripes": true, "build": "Grown", "height": 0.98 },
+    "receptionist": { "hairColor": "#5a3a2c", "hair": "Bun", "top": "#3a6ab8", "accent": "#f6f6fa", "bottom": "#2a3460", "shoes": "#2a2a30", "scarf": true, "skirt": true, "lashes": true, "build": "Grown" },
+    "nurse": { "hairColor": "#f896be", "hair": "Long", "hat": "NurseCap", "hatBand": "#e84860", "top": "#fcfcff", "accent": "#f8aac8", "bottom": "#f8aac8", "shoes": "#f8f8fc", "eyes": "#4678c8", "skirt": true, "lashes": true, "blush": true, "build": "Grown" },
+    "mom": { "hairColor": "#b0543c", "hair": "Long", "top": "#f6a678", "accent": "#fcf4e8", "bottom": "#7860b0", "shoes": "#78463c", "skirt": true, "lashes": true, "build": "Grown" },
+    "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "glasses": "#3a3a46", "coat": true, "build": "Grown", "height": 1.02 },
+    "scientist_f": { "hairColor": "#6a4430", "hair": "Bun", "top": "#f0f2f6", "accent": "#4aa0a0", "bottom": "#5a5e6e", "shoes": "#38302e", "glasses": "#3a3a46", "coat": true, "lashes": true, "build": "Grown" },
+    "hiker": { "skin": "#ecc29c", "hairColor": "#4a3426", "hair": "Bald", "top": "#b4643a", "accent": "#e6d6b4", "bottom": "#6a5038", "shoes": "#4a3426", "beard": true, "bushyBrows": true, "bag": "#7a6a3a", "build": "GrownBroad", "height": 1.02 },
+    "blackbelt": { "hairColor": "#2c282e", "hat": "Headband", "hatColor": "#f6f6f2", "hatBand": "#f6f6f2", "top": "#f4f4f0", "accent": "#242228", "bottom": "#ecece6", "shoes": "#deac84", "eyes": "#3c322c", "bushyBrows": true, "build": "GrownBroad" },
+    "sailor": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#2a3460", "top": "#f4f4f6", "accent": "#2a3460", "bottom": "#2a3460", "shoes": "#2a2a30", "stripes": true, "mustache": true, "build": "GrownBroad", "height": 1.02 },
+    "worker": { "hairColor": "#3a2c26", "hat": "HardHat", "hatColor": "#f4c43c", "hatBand": "#e0782a", "top": "#ec8a34", "accent": "#f2f2a6", "bottom": "#2e3a5c", "shoes": "#3a2e28", "stripes": true, "mustache": true, "build": "GrownBroad" },
+    "old_man": { "hairColor": "#c8ccd6", "hair": "Bald", "top": "#8a8a6a", "accent": "#e8e4d4", "bottom": "#5a5a60", "shoes": "#3a302a", "mustache": true, "bushyBrows": true, "coat": true, "build": "GrownElder" },
+    "old_woman": { "hairColor": "#c8ccd8", "hair": "Bun", "top": "#8a6a9a", "accent": "#e8dcc8", "bottom": "#5a4a6a", "shoes": "#3a2e30", "skirt": true, "scarf": true, "lashes": true, "curved": false, "build": "GrownElder" },
+    "veteran": { "hairColor": "#b8bcc6", "hair": "Swept", "hat": "Cap", "hatColor": "#6a7a4a", "hatBand": "#3a3a2a", "top": "#6a7a5a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "mustache": true, "bushyBrows": true, "coat": true, "build": "GrownElder", "height": 1.02 },
+    "veteran_f": { "hairColor": "#c8ccd4", "hair": "Bun", "top": "#7a6a4a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "coat": true, "skirt": true, "lashes": true, "curved": false, "build": "GrownElder" }
+  },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
   // The original's object looks (OBJ_EVENT_GFX_*, as the map importer names them) that have no look of their own yet,
@@ -1058,6 +1164,11 @@
     "Pike Queen": "lucy",
     "Pyramid King": "brandon",
     // Plan 37 · FC2: the streak house's hosts, each in their own look
-    "House Host": null
+    "House Host": null,
+    // Plan 30 · FM10: Kalos's classes of one person each (the professor, the bureau's butler and the sting's three
+    // suspects, whom scripts battle as themselves), each drawn as the person
+    "Pokémon Professor": null,
+    "Butler": null,
+    "Suspect": null
   }
 }

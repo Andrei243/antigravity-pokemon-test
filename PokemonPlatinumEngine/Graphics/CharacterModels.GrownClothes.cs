@@ -78,7 +78,8 @@ internal static partial class CharacterModels
                 var sh = Side(f.Shoulder, side);
                 var el = Side(f.Elbow, side);
                 var wr = Side(f.Wrist, side);
-                w.Ellipsoid(sh + new Vector3(side * 0.006f * g, -0.03f * sz, 0f), new Vector3(0.046f * g + Off, 0.07f * sz + Off, 0.045f * g + Off), top, upperB, 0.025f * sz, Cloth, AlignY(el - sh));
+                w.Ellipsoid(sh + new Vector3(side * 0.006f * g, -0.03f * sz, 0f), new Vector3(0.046f * g + Off, 0.07f * sz + Off, 0.045f * g + Off), top, upperB, 0.025f * sz, Cloth, AlignY(el - sh))
+                    .WeightReach = GrownSleeveReach * sz;
                 w.Capsule(sh, el, 0.044f * g + Off, 0.031f * g + Off, top, upperB, 0.02f * sz, Cloth);
                 Vector3 hem, along;
                 int hemBone;
@@ -188,9 +189,69 @@ internal static partial class CharacterModels
         // Over the tops of the thighs at the hip joints, where the cone is still narrow
         w.Ellipsoid(new Vector3(0, f.HipY + 0.005f * sz, -0.004f * sz), new Vector3(f.ThighOuter + 0.004f * sz + off, 0.08f * sz, f.PelvisD * 1.02f + off), bottom, HumanBones.Skirt,
             0.03f * sz, SurfaceMaterial.Cloth);
+        GrownSkirtOverTheThighs(w, f, hem, Math.Max(f.WaistW, f.PelvisW * 0.92f) + off, Math.Max(f.PelvisW * 1.5f, f.ThighOuter * 1.25f) + off, bottom);
         w.Box(new Vector3(0, hem - 0.3f, 0), new Vector3(0.6f, 0.3f, 0.6f), 0f, bottom, HumanBones.Skirt, 0f, op: SdfOp.Cut);
         w.Paint(w.Box(new Vector3(0, hem, 0), new Vector3(0.6f, 0.9f * GrownMeshCell, 0.6f), 0f, Shade(bottom, 0.62f), HumanBones.Skirt, GrownPaintEdge), false, HumanBones.Skirt);
     }
+
+    /// <summary>
+    /// A skirt's share of each thigh (plan 30 · FM10; style guide, "Grown characters", "Clothes"): a cone on the thigh's
+    /// bone inside the skirt on each side, from just under the hip joint to the hem, as wide and as deep as the skirt's
+    /// ellipse leaves room for less a cell and a half all round, in the skirt's colour, whose weight reaches the skirt's
+    /// surface round it (<see cref="GrownSkirtReach"/>).
+    /// It adds nothing to the skirt's shape (it lies wholly inside it and joins with no blend; the hem's cut trims its foot)
+    /// but its thigh's share of the weight, near half where the skirt lies closest over the thigh, so the skirt goes
+    /// forward with a leg in a stride: on the skirt's bone alone the forward thigh came out through its side.
+    /// </summary>
+    private static void GrownSkirtOverTheThighs(SdfModel w, GrownFrame f, float hem, float waistR, float hemR, Color skirt)
+    {
+        float sz = f.Size, margin = 1.5f * GrownMeshCell;
+        float top = f.HipY - 0.03f * sz, foot = hem + 0.03f * sz;
+        float yA = f.WaistY - 0.01f * sz, yB = hem + 0.012f * sz;
+        // The skirt's half width at a height (its cone's; the cone is 0.8 as deep as it is wide)
+        float HalfWidth(float y) => waistR + (hemR - waistR) * Math.Clamp((yA - y) / (yA - yB), 0f, 1f);
+        float xTop = f.LegTop.X, xFoot = Vector3.Lerp(f.LegTop, f.Knee, Math.Clamp((f.HipY - foot) / (f.HipY - f.Knee.Y), 0f, 1f)).X;
+        // Its girth across, to the skirt's side less the margin; and how deep an ellipse of that girth off the skirt's
+        // middle may be and still lie inside the skirt's ellipse less the margin all round (an ellipse as deep as the
+        // skirt, off its middle, came out of its front and back as white)
+        float Deepest(float half, float x, float r)
+        {
+            float room = 1f - margin / half, most = float.MaxValue;
+            for (int i = 1; i < 32; i++)
+            {
+                float t = MathF.PI * i / 32f, across = (x + r * MathF.Cos(t)) / half;
+                most = Math.Min(most, 0.8f * half * MathF.Sqrt(Math.Max(0f, room * room - across * across)) / (r * MathF.Sin(t)));
+            }
+            return most;
+        }
+        float wFoot = HalfWidth(foot), rFoot = wFoot - xFoot - margin;
+        if (rFoot <= margin) return;
+        float deep = Deepest(wFoot, xFoot, rFoot);
+        // The top's end is a round end that reaches up its own girth, where the skirt is narrower
+        float rTop = HalfWidth(top) - xTop - margin;
+        for (int i = 0; i < 3 && rTop > margin; i++)
+        {
+            float wTop = HalfWidth(top + rTop);
+            rTop = Math.Min(wTop - xTop - margin, rTop);
+            for (int k = 0; k < 4 && rTop > margin && Deepest(wTop, xTop, rTop) < deep; k++) rTop *= 0.85f;
+        }
+        if (rTop <= margin) return;
+        // (One shape's share of a surface it joins is at most half; laid twice, three quarters pulled the skirt's front apart
+        // between the legs in a run, so half it is, and the run's flare does the rest: GrownAnimation)
+        foreach (var (side, thigh) in new[] { (1f, HumanBones.ThighL), (-1f, HumanBones.ThighR) })
+        {
+            var cone = w.Capsule(new Vector3(side * xTop, top, -0.004f * sz), new Vector3(side * xFoot, foot, -0.004f * sz), rTop, rFoot,
+                skirt, thigh, 0f, SurfaceMaterial.Cloth);
+            cone.Stretch = new Vector3(1f, 1f, deep);
+            cone.WeightReach = GrownSkirtReach * sz;
+        }
+    }
+
+    /// <summary>
+    /// How far a thigh's weight reaches into the skirt over it (<see cref="GrownSkirtOverTheThighs"/>): the share falls
+    /// from near half where the skirt lies a cell and a half over the cone to nothing this far off.
+    /// </summary>
+    public const float GrownSkirtReach = 0.12f;
 
     /// <summary>
     /// What lies on a grown garment (style guide, "Grown characters", "Clothes"): stripes; down the front a jacket's zip,
