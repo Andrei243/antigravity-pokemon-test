@@ -2,6 +2,8 @@
 
 Written 2026-11-09 for the user's approval, as D14's proposals were. Every name is a proposal: English first, the Romanian beside it for the user to review (decision 7). Stats follow the games' conventions for new species (a starter line 318 / 405 / 530, a legendary of a box 680, a minor legendary 580, a mythical 600). Answer each line with **yes**, **no** or a change; anything unanswered goes ahead as written when CP3 runs. The Sound type's matchups are plan 46's.
 
+**Approved 2026-11-09**: the three starter lines and the four legendaries as designed. The user asked for other names for the legendaries, inspired by the first ones; the new names below are the ones in use (each with alternatives the user may pick instead). The whole Pokédex's picture briefs, these included, are in [CP-dex-1](CP-dex-1-plateau.md) to [CP-dex-5](CP-dex-5-forms.md).
+
 ## The starters
 
 Each final stage gains a second type, and each line is bound to a tale (its Tale Form when that tale is told).
@@ -44,9 +46,9 @@ Each final stage gains a second type, and each line is bound to a tale (its Tale
 
 ## The legendaries
 
-### The Zmeu, the sun-stealer (box legendary)
+### Solzmeu, the sun-stealer (box legendary; was the Zmeu)
 
-- **Name**: Zmeu / Zmeu (a Romanian word the game keeps as is).
+- **Name**: **Solzmeu** / Solzmeu (*sol*, the sun, and *zmeu*). Alternatives: Aurozmeu (*aur*, gold), Zmeusoare (*soare*, sun).
 - **Type**: Fire / Dragon. **Total**: 680 (Attack 130, Sp. Atk 120, Speed 110).
 - **Look**: a man-shaped dragon of the tales, tall and long-limbed, scaled in bronze and gold, a sun-disc caught behind its shoulders like a halo it stole; wings folded like a cloak.
 - **Story**: the villain team wants it to hold the sun in the sky for ever. Found at the stronghold castle at the story's height.
@@ -54,9 +56,9 @@ Each final stage gains a second type, and each line is bound to a tale (its Tale
 - **Tale**: its own, the Zmeu's tale (the sun cannot set); its Tale Form holds the sun before it, Fire / Dragon stronger.
 - **Signature move**: *Sun Seizure* (Fire, special, 120, sets the harsh sun for five turns, which the foe's weather can't end).
 
-### The Vârcolac, the moon-eater (box legendary, the balance)
+### Lunacolac, the moon-eater (box legendary, the balance; was the Vârcolac)
 
-- **Name**: Varcolac / Vârcolac.
+- **Name**: **Lunacolac** / Lunacolac (*luna*, the moon, and *vârcolac*). Alternatives: Vârcoluna, Eclipcolac.
 - **Type**: Dark / **Sound**. **Total**: 680 (Attack 125, Speed 125, Sp. Def 110).
 - **Look**: a vast wolf of night-blue fur, its jaws ringed with a crescent's silver as if a bite of the moon were still in them; its howl is visible as rings in the air.
 - **Story**: met as the player stands against the endless day; it eats the stolen sun's light to bring the night back.
@@ -64,9 +66,9 @@ Each final stage gains a second type, and each line is bound to a tale (its Tale
 - **Tale**: the Vârcolac's tale (the eclipse).
 - **Signature move**: *Moon Howl* (Sound, special, 110, hits all foes, removes the weather).
 
-### The Solomonar's storm-dragon (box legendary, the third)
+### Furtunaur, the Solomonar's storm-dragon (box legendary, the third; was Balaurion)
 
-- **Name**: Balaurion / Balaurion (from *balaur*, the many-headed dragon the *solomonari* ride).
+- **Name**: **Furtunaur** / Furtunaur (*furtună*, storm, and *balaur*, the many-headed dragon the *solomonari* ride). Alternatives: Solomondra, Grindinaur (*grindină*, hail).
 - **Type**: Dragon / Electric (alternative: Dragon / Ice, for the hail the solomonari bring; the user picks). **Total**: 680 (Sp. Atk 130, Speed 120, HP 100).
 - **Look**: a long serpentine dragon with three heads, storm-grey scales, a rider's harness of braided lightning on its back, and the solomonar's book chained to it.
 - **Story**: the keeper of the weather, met high on the ridge in a storm after the villains are stopped; it carries the region's last tale.
@@ -74,9 +76,9 @@ Each final stage gains a second type, and each line is bound to a tale (its Tale
 - **Tale**: the Solomonar's tale (the storm: a weather the teller owns).
 - **Signature move**: *Hailstorm Rider* (Electric, special, 100, sets the teller's chosen weather).
 
-### The Draco, the war banner (mythical)
+### Stindrac, the war banner (mythical; was the Draco)
 
-- **Name**: Draco / Draco (the Dacian banner: a wolf's head on a serpent's cloth body that howled when the wind went through it).
+- **Name**: **Stindrac** / Stindrac (*stindard*, banner, and *drac*, dragon; the Dacian draco banner: a wolf's head on a serpent's cloth body that howled when the wind went through it).
 - **Type**: **Sound** / Dragon. **Total**: 600.
 - **Look**: a bronze wolf's head with an open mouth and a long body of coloured cloth that ripples like a windsock; it flies on the wind and howls as it moves.
 - **Story**: the post-game, at the Dacian sanctuary of stone circles in the forest.
