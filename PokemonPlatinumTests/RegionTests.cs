@@ -12,16 +12,19 @@ public class RegionTests
     [Fact]
     public void TestRegionsRunSinnohFirstThenInGenerationOrder()
     {
-        var regions = RegionDatabase.All;
+        // The chain; a side region (plan 23 · Z17: Hisui) stands after it, off the journey
+        var regions = RegionDatabase.All.Where(r => !r.Side).ToList();
 
         // Plan 18 · W10: every new game begins in Sinnoh, and the chain goes on from Kanto in generation order
         Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.First.Id);
         Assert.Equal(RegionDatabase.Sinnoh, regions[0].Id);
         Assert.Equal(new[] { 4, 1, 2, 3, 5, 6, 7, 8, 9 }, regions.Select(r => r.Generation));
-        Assert.Equal(regions.Count, regions.Select(r => r.Id).Distinct().Count());
+        Assert.Equal(RegionDatabase.All.Count, RegionDatabase.All.Select(r => r.Id).Distinct().Count());
         Assert.Equal(
             new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Kalos", "Alola", "Galar", "Paldea" },
             regions.Select(r => r.Id));
+        Assert.Equal(new[] { "Hisui" }, RegionDatabase.All.Skip(regions.Count).Select(r => r.Id));
+        Assert.All(RegionDatabase.All.Skip(regions.Count), r => Assert.True(r.Side));
     }
 
     [Fact]
@@ -38,15 +41,26 @@ public class RegionTests
     [Fact]
     public void TestEachRegionLinksOnlyToTheNextInTheChainAndTheLastToNothing()
     {
-        var regions = RegionDatabase.All;
+        // The chain's links alone: a side link is no step of it (plan 23 · Z17)
+        var regions = RegionDatabase.All.Where(r => !r.Side).ToList();
         for (int i = 0; i < regions.Count - 1; i++)
         {
             var link = RegionDatabase.LinkFrom(regions[i].Id);
             Assert.NotNull(link);
-            Assert.Equal(regions[i + 1].Id, link!.To);
+            Assert.Equal(LinkKind.Next, link!.Kind);
+            Assert.Equal(regions[i + 1].Id, link.To);
         }
         Assert.Null(RegionDatabase.LinkFrom(regions[^1].Id));
-        Assert.Equal(regions.Count - 1, RegionDatabase.Links.Count);
+        Assert.Equal(regions.Count - 1, RegionDatabase.Links.Count(l => l.Kind == LinkKind.Next));
+        // Every side region has one branch into it, from a region of the chain, and no way on of its own
+        foreach (var side in RegionDatabase.All.Where(r => r.Side))
+        {
+            var into = Assert.Single(RegionDatabase.Links, l => l.To == side.Id);
+            Assert.Equal(LinkKind.Side, into.Kind);
+            Assert.False(RegionDatabase.Get(into.From)!.Side);
+            Assert.Null(RegionDatabase.LinkFrom(side.Id));
+            Assert.DoesNotContain(RegionDatabase.Links, l => l.From == side.Id);
+        }
     }
 
     [Fact]
@@ -153,7 +167,8 @@ public class RegionTests
         Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!.VesselWord);
         Assert.Equal(Transport.Plane, RegionDatabase.LinkFrom(RegionDatabase.Unova)!.Transport);
         Assert.Equal("plane", RegionDatabase.LinkFrom(RegionDatabase.Galar)!.VesselWord);
-        foreach (var link in RegionDatabase.Links)
+        // (a side link has no attendant: a scene of its root's is the way, plan 23 · Z17)
+        foreach (var link in RegionDatabase.Links.Where(l => l.Kind == LinkKind.Next))
             foreach (var check in new[] { TravelCheck.StoryUnfinished, TravelCheck.DestinationNotBuilt, TravelCheck.Ready })
                 Assert.Contains(RegionDatabase.AttendantLines(link, check), l => l.Contains(link.VesselWord) || check == TravelCheck.Ready && l.Contains("aboard"));
         // Sinnoh's captain is on Canalave's pier, beside Sailor Eldritch, and only once Sinnoh's Hall of Fame is entered

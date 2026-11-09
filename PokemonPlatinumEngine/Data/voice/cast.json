@@ -294,6 +294,10 @@
       "note": "first spoken at black_city_5.txt(86)",
       "provisional": true
     },
+    "beni": {
+      "note": "first spoken at JubilifeVillage_Wallflower.txt(14)",
+      "provisional": true
+    },
     "benjamin": {
       "note": "first spoken at phone.txt(245)",
       "provisional": true
@@ -531,6 +535,10 @@
         "pitch": 0.956,
         "accent": "en-us"
       }
+    },
+    "captain_cyllene": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(33)",
+      "provisional": true
     },
     "captain_stern": {
       "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
@@ -2705,6 +2713,10 @@
       "note": "first spoken at castelia_city_2.txt(29)",
       "provisional": true
     },
+    "commander_kamado": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(17)",
+      "provisional": true
+    },
     "commuter": {
       "note": "first spoken at KiloudeCity_Station.txt(27)",
       "provisional": true
@@ -3394,6 +3406,10 @@
     },
     "garett": {
       "note": "first spoken at cinnabar_island_pokemon_lab_experiment_room.txt(49)",
+      "provisional": true
+    },
+    "gate_guard": {
+      "note": "first spoken at jubilife_village.txt(37)",
       "provisional": true
     },
     "ghetsis": {
@@ -6831,6 +6847,10 @@
       "note": "first spoken at phone.txt(145)",
       "provisional": true
     },
+    "pasture_keeper": {
+      "note": "first spoken at jubilife_village.txt(48)",
+      "provisional": true
+    },
     "paxton": {
       "note": "first spoken at three_island.txt(28)",
       "provisional": true
@@ -6956,6 +6976,10 @@
     },
     "prof_kukui": {
       "note": "first spoken at AlolaRoute1_KukuiLab.txt(8)",
+      "provisional": true
+    },
+    "prof_laventon": {
+      "note": "first spoken at JubilifeVillage_GalaxyHall.txt(20)",
       "provisional": true
     },
     "prof_oak": {
@@ -8147,6 +8171,7 @@
     "Beauty": "beauty",
     "Ben": "ben",
     "Benga": "benga",
+    "Beni": "beni",
     "Benjamin": "benjamin",
     "Berry Master": "berry_master",
     "Bertha": "bertha",
@@ -8179,6 +8204,7 @@
     "Cameron": "cameron",
     "Candice": "candice",
     "Captain": "captain",
+    "Captain Cyllene": "captain_cyllene",
     "Captain Stern": "captain_stern",
     "Capucine": "capucine",
     "Caretaker": "caretaker",
@@ -8210,6 +8236,7 @@
     "Collector": "collector",
     "Colress": "colress",
     "Commander Jupiter": "jupiter",
+    "Commander Kamado": "commander_kamado",
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
     "Commuter": "commuter",
@@ -8294,6 +8321,7 @@
     "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",
+    "Gate Guard": "gate_guard",
     "Gate Keeper": "look:guard",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
@@ -8480,6 +8508,7 @@
     "Papa": "papa",
     "Park Attendant": "park_attendant",
     "Parry": "parry",
+    "Pasture Keeper": "pasture_keeper",
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
@@ -8502,6 +8531,7 @@
     "Prof. Elm": "prof_elm",
     "Prof. Juniper": "prof_juniper",
     "Prof. Kukui": "prof_kukui",
+    "Prof. Laventon": "prof_laventon",
     "Prof. Oak": "prof_oak",
     "Prof. Rowan": "rowan",
     "Prof. Sycamore": "prof_sycamore",

@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "The Wallflower"
+    ],
+    "text": [
+      "The Wallflower"
+    ]
+  },
+  "people": {
+    "beni": {
+      "name": {
+        "en": [
+          "Beni"
+        ],
+        "text": [
+          "Beni"
+        ]
+      }
+    },
+    "cyllene": {
+      "name": {
+        "en": [
+          "Captain Cyllene"
+        ],
+        "text": [
+          "Căpitana Cyllene"
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

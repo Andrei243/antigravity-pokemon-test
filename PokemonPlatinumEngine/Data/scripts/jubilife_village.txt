@@ -1,0 +1,55 @@
+# Jubilife Village, Hisui (plan 23 · Z17). The lines are our own, on Legends: Arceus's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Hisui's first steps"): no script of the original is read. VAR_HISUI_STORY is
+# prelude_beach.txt's count.
+#
+# The people: laventon at the south gate (FLAG_HISUI_HIDE_LAVENTON_VILLAGE, cleared as he leaves the beach).
+
+
+# Up from Prelude Beach into the village for the first time: the professor goes to report, and sends the player to wait
+script Welcome
+  scene "The professor at the south gate"
+  face laventon player
+  face player up
+  speaker "Prof. Laventon"
+  say "Here we are: Jubilife Village, home of the Galaxy Team. When the Team first came ashore there was nothing here but grass and wind."
+  say "I must tell the Commander about you before anyone else does. A stranger who fell out of the sky will take some explaining!"
+  say "Would you wait for me at the Wallflower? It's on Canala Avenue, down the west side of the village. I shan't be long!"
+  walk laventon up 3
+  hide laventon
+  setflag FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  clearflag FLAG_HISUI_HIDE_LAVENTON_HALL
+  setvar VAR_HISUI_STORY 4
+  objective hisuiWallflower
+  endscene
+  end
+
+
+# The professor, should he be spoken to while he stands there (he leaves in the same scene)
+script Laventon
+  speaker "Prof. Laventon"
+  say "The Wallflower is on Canala Avenue, to the west. Wait for me there!"
+  end
+
+
+# The front gate's guards: the Obsidian Fieldlands lie beyond, for members of the Galaxy Team alone until the entry
+# trial (plan 23 · Z18)
+script FrontGate
+  speaker "Gate Guard"
+  if var VAR_HISUI_STORY >= 7 goto Trial
+  say "Beyond this gate lie the Obsidian Fieldlands. Only members of the Galaxy Team may pass, and you're not one of us. Not yet."
+  end
+label Trial
+  say "Your entry trial is out in the Fieldlands, is it? The captain will send for you when everything's ready. Rest up till then."
+  end
+
+
+# The pastures' keeper: the Pokémon the player can't carry are kept here (the boxes)
+script Pastures
+  speaker "Pasture Keeper"
+  if party < 1 goto Empty
+  say "These are the pastures. Leave any Pokémon you can't carry with me, and I'll see that they eat well and sleep warm."
+  pc
+  end
+label Empty
+  say "These are the pastures, where the Galaxy Team keeps its Pokémon. Come back once you have some to leave with me."
+  end

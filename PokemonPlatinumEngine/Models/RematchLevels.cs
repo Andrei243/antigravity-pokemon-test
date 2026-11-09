@@ -25,9 +25,9 @@ public static class RematchLevels
         return RegionDatabase.First;
     }
 
-    /// <summary>The furthest region along the chain whose Hall of Fame is entered, or null for none.</summary>
+    /// <summary>The furthest region along the chain whose Hall of Fame is entered, or null for none (a side region is off the chain: plan 23 · Z17).</summary>
     public static Region? Furthest(StoryState story) =>
-        RegionDatabase.All.LastOrDefault(r => story.Has(r.StoryCompleteFlag));
+        RegionDatabase.All.LastOrDefault(r => !r.Side && story.Has(r.StoryCompleteFlag));
 
     /// <summary>
     /// The levels a team is met at as a rematch now, or null where the region's usual levels stand (not a rematch's

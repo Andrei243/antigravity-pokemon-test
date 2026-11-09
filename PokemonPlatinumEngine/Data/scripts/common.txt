@@ -2925,6 +2925,28 @@ script AlolaNewGame
   return
 
 
+# ------------------------------------------------------------------ Hisui (plan 23 · Z17)
+
+# What every game starts with in Hisui: the three Pokémon on Prelude Beach, the professor in the village and in Galaxy
+# Hall, and the Survey Corps' captain and young member in the Wallflower and in Galaxy Hall, each hidden until a scene
+# brings them on; the professor on the beach is there from the first. FLAG_HISUI_STORY_BEGUN says it has run. Run with
+# no screen after NewGame for every new game (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame); a
+# Champion of Sinnoh whose game began before Hisui's story was written runs it from the ruins' painting as they first
+# go through (celestic_town_cave.txt). It may only set flags and variables, and ends in return.
+script HisuiNewGame
+  setflag FLAG_HISUI_HIDE_BEACH_ROWLET
+  setflag FLAG_HISUI_HIDE_BEACH_CYNDAQUIL
+  setflag FLAG_HISUI_HIDE_BEACH_OSHAWOTT
+  setflag FLAG_HISUI_HIDE_LAVENTON_VILLAGE
+  setflag FLAG_HISUI_HIDE_LAVENTON_HALL
+  setflag FLAG_HISUI_HIDE_CYLLENE_WALLFLOWER
+  setflag FLAG_HISUI_HIDE_PARTNER_WALLFLOWER
+  setflag FLAG_HISUI_HIDE_CYLLENE_HALL
+  setflag FLAG_HISUI_HIDE_PARTNER_HALL
+  setflag FLAG_HISUI_STORY_BEGUN
+  return
+
+
 # ------------------------------------------------------------------ Unova (plan 22 · U5)
 
 # What every game starts with in Unova, as Black 2's new game leaves its first chapter's people: Mom at home, Hugh and

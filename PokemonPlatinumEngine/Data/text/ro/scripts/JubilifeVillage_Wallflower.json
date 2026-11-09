@@ -1,0 +1,138 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Beni"
+      ],
+      "text": [
+        "Beni"
+      ]
+    },
+    {
+      "en": [
+        "...I don't know your face. The professor sent you? Then sit, eat, and keep your stories to yourself."
+      ],
+      "text": [
+        "...Nu-ți cunosc fața. Te-a trimis profesorul? Atunci stai jos, mănâncă și ține-ți poveștile pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Captain Cyllene"
+      ],
+      "text": [
+        "Căpitana Cyllene"
+      ]
+    },
+    {
+      "en": [
+        "There you are. The stranger who fell out of the sky, I presume."
+      ],
+      "text": [
+        "Aici erai. Străinul căzut din cer, presupun."
+      ]
+    },
+    {
+      "en": [
+        "I am Cyllene, captain of the Galaxy Team's Survey Corps. Commander Kamado has heard Professor Laventon's report, and he will see you now."
+      ],
+      "text": [
+        "Eu sunt Cyllene, căpitana Survey Corps din Galaxy Team. Comandantul Kamado a ascultat raportul profesorului Laventon și te va primi acum."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hi there! I'm {rival}, with the Survey Corps too. Don't let the captain scare you. She looks stern, but she's kind, really."
+      ],
+      "text": [
+        "Salut! Eu sunt {rival}, tot din Survey Corps. Nu te lăsa speriat de căpitană. Pare severă, dar e bună la suflet, zău."
+      ]
+    },
+    {
+      "en": [
+        "Captain Cyllene"
+      ],
+      "text": [
+        "Căpitana Cyllene"
+      ]
+    },
+    {
+      "en": [
+        "Galaxy Hall is the large building on Floaro Main Street. Do not keep the Commander waiting."
+      ],
+      "text": [
+        "Galaxy Hall e clădirea mare de pe Floaro Main Street. Nu-l lăsa pe comandant să aștepte."
+      ]
+    }
+  ],
+  "Beni": [
+    {
+      "en": [
+        "Beni"
+      ],
+      "text": [
+        "Beni"
+      ]
+    },
+    {
+      "en": [
+        "The Wallflower feeds whoever works hard. Galaxy Team or not, an empty belly helps no one."
+      ],
+      "text": [
+        "Wallflower hrănește pe oricine muncește din greu. Galaxy Team sau nu, un stomac gol nu ajută pe nimeni."
+      ]
+    },
+    {
+      "en": [
+        "So the Commander let you stay. Then you'll be hungry often. Come back when you are."
+      ],
+      "text": [
+        "Deci comandantul te-a lăsat să rămâi. Atunci o să-ți fie des foame. Vino înapoi când ți-e."
+      ]
+    }
+  ],
+  "Cyllene": [
+    {
+      "en": [
+        "Captain Cyllene"
+      ],
+      "text": [
+        "Căpitana Cyllene"
+      ]
+    },
+    {
+      "en": [
+        "Galaxy Hall. Now, if you please."
+      ],
+      "text": [
+        "La Galaxy Hall. Acum, te rog."
+      ]
+    }
+  ],
+  "Partner": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Galaxy Hall's just up the street. I'll see you there!"
+      ],
+      "text": [
+        "Galaxy Hall e chiar în susul străzii. Ne vedem acolo!"
+      ]
+    }
+  ]
+}

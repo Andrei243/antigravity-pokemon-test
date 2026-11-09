@@ -1,0 +1,28 @@
+{
+  "key": "prelude_beach",
+  "index": 1,
+  "name": "Prelude Beach",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "PRELUDE_BEACH",
+  "nightMusic": "PRELUDE_BEACH",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "laventon", "looks": "laventon", "movement": "look_west", "x": 51, "z": 77, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HISUI_HIDE_LAVENTON_BEACH", "script": "" },
+    { "id": "rowlet", "looks": "rowlet", "movement": "look_south", "x": 36, "z": 72, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_ROWLET", "script": "" },
+    { "id": "cyndaquil", "looks": "cyndaquil", "movement": "look_west", "x": 59, "z": 74, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_CYNDAQUIL", "script": "" },
+    { "id": "oshawott", "looks": "oshawott", "movement": "look_north", "x": 55, "z": 80, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_OSHAWOTT", "script": "" }
+  ],
+  "signs": [
+    { "x": 51, "z": 74, "type": 0, "script": "BeachSign" }
+  ],
+  "triggers": []
+}

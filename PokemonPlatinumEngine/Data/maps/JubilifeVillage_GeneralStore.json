@@ -1,0 +1,90 @@
+{
+  "name": "JubilifeVillage_GeneralStore",
+  "displayName": "General Store",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "PokeMart",
+  "trees": "Pine",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###.....###",
+    "#.#######.#",
+    "#.........#",
+    "#.........#",
+    "#........##",
+    "#####.#####"
+  ],
+  "behaviours": [
+    { "x": 2, "y": 4, "width": 7, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "StoreShelf",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 4,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "JubilifeVillage",
+      "targetX": 35,
+      "targetY": 30,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "clerk",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Clerk: Welcome! Poké Balls, medicine, everything a body needs out in the wilds."
+      ],
+      "isPokeMartClerk": true
+    }
+  ],
+  "wildEncounters": []
+}

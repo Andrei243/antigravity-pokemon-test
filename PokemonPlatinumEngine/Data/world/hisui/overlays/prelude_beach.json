@@ -1,0 +1,28 @@
+{
+  // Prelude Beach (plan 23 · Z17): drawn by hand, our words. A cove of sand under the village's south gate, where a
+  // Champion of Sinnoh falls out of a rift in the sky and wakes beside a smooth stone. The first chapter's scenes
+  // (prelude_beach.txt): Professor Laventon finding the player, his three Pokémon running off along the sand and the
+  // player bringing them back, and the partner chosen of the three. The stone the player wakes beside is the way back to
+  // their own time (read at 48,76: Stone). The professor and the three are hidden by flags of ours outside their scenes
+  "area": "prelude_beach",
+  "bgmTrack": "sinnoh/sandgem",
+  "trees": "Pine",
+  "architecture": "Hisuian",
+  "triggers": [
+    { "script": "Meeting", "x": 46, "z": 67, "width": 4, "depth": 1, "variable": "VAR_HISUI_STORY", "value": 0 },
+    { "script": "NotYet", "x": 46, "z": 67, "width": 4, "depth": 1, "variable": "VAR_HISUI_STORY", "value": 1 },
+    { "script": "NotYet", "x": 46, "z": 67, "width": 4, "depth": 1, "variable": "VAR_HISUI_STORY", "value": 2 }
+  ],
+  "readAt": [
+    { "x": 48, "z": 76, "script": "Stone" }
+  ],
+  "people": {
+    "laventon": { "name": "Prof. Laventon", "npcType": "laventon", "script": "Laventon", "still": true, "hiddenBy": "FLAG_HISUI_HIDE_LAVENTON_BEACH" },
+    "rowlet": { "name": "Rowlet", "npcType": "Pokemon", "species": "Rowlet", "script": "Rowlet", "still": true, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_ROWLET" },
+    "cyndaquil": { "name": "Cyndaquil", "npcType": "Pokemon", "species": "Cyndaquil", "script": "Cyndaquil", "still": true, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_CYNDAQUIL" },
+    "oshawott": { "name": "Oshawott", "npcType": "Pokemon", "species": "Oshawott", "script": "Oshawott", "still": true, "hiddenBy": "FLAG_HISUI_HIDE_BEACH_OSHAWOTT" }
+  },
+  "signs": {
+    "BeachSign": "Prelude Beach\nNorth: Jubilife Village"
+  }
+}
