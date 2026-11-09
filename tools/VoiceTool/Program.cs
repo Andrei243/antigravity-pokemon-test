@@ -17,7 +17,7 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
@@ -181,7 +181,7 @@ int Generate()
     var clock = Stopwatch.StartNew();
     foreach (var jobs in files)
     {
-        var (kept, failed) = VoiceGeneration.Generate(jobs, command, PackFolderOption(), Console.WriteLine);
+        var (kept, failed) = VoiceGeneration.Generate(jobs, command, Option("--into") is { } into ? Path.GetFullPath(into) : PackFolderOption(), Console.WriteLine);
         foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
         Console.WriteLine($"{jobs.Voice}: {kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");
         keptCount += kept.Count;
@@ -439,6 +439,16 @@ int Catalogue()
     foreach (var (id, where) in built.UnknownIds) Console.WriteLine($"wrong: speaker id '{id}' at {where} is no voice of the cast");
     foreach (var (name, where) in built.Unlisted) Console.WriteLine($"wrong: speaker '{name}' (first at {where}) has no cast entry");
 
+    if (switches.Contains("--ways"))
+    {
+        Console.WriteLine($"{built.Differs.Count} lines whose voice the way through their script decides otherwise than the file's order; {built.Ways.Count} lines with more than one way:");
+        foreach (var g in built.Differs.GroupBy(d => VoiceCatalogue.RegionOf(d.Key) ?? "(none)").OrderBy(g => g.Key)) Console.WriteLine($"  {g.Key}: {g.Count()} differ");
+        foreach (var g in built.Ways.GroupBy(d => VoiceCatalogue.RegionOf(d.Key) ?? "(none)").OrderBy(g => g.Key)) Console.WriteLine($"  {g.Key}: {g.Count()} with several ways");
+        foreach (var d in built.Differs.Where(d => VoiceCatalogue.RegionOf(d.Key) == (Option("--region") ?? "kanto")).Take(60)) Console.WriteLine($"    {d.Key}: file order {d.Linear}, ways {d.Ways}");
+        foreach (var w in built.Ways.Where(d => VoiceCatalogue.RegionOf(d.Key) == (Option("--region") ?? "kanto")).Take(60)) Console.WriteLine($"    {w.Key}: {string.Join(", ", w.Value)}");
+        return 0;
+    }
+
     var changes = VoiceCatalogue.Compare(previous, built);
     Console.WriteLine($"{built.Lines.Count} lines: {built.Lines.Count(l => l.Status == VoiceLine.StatusSpoken)} spoken, {built.Lines.Count(l => l.Status == VoiceLine.StatusShownOnly)} shown only.");
     List("new", changes.Added);
@@ -475,8 +485,14 @@ int Export()
 {
     if (words.Count < 2) { Console.Error.WriteLine("export needs a voice: export <voice> [file]."); return 2; }
     string voice = words[1];
-    var file = VoiceCatalogue.Parse(File.ReadAllText(linesFile));
-    var mine = file.Lines.Where(l => l.Voice == voice || l.Voice.StartsWith(voice + "#", StringComparison.Ordinal)).ToList();
+    var file = CatalogueNow();
+    var mine = file.Lines.Where(l => voice == "all" || l.Voice == voice || l.Voice.StartsWith(voice + "#", StringComparison.Ordinal)).ToList();
+    if (switches.Contains("--tsv"))
+    {
+        var rows = mine.Select(l => string.Join("\t", l.Key, l.Voice, l.Speaker ?? "", l.Status == VoiceLine.StatusSpoken ? "spoken" : "shown", l.En.Replace("\n", " "))).ToList();
+        if (words.Count > 2) File.WriteAllLines(words[2], rows); else foreach (var r in rows) Console.WriteLine(r);
+        return 0;
+    }
     var sb = new StringBuilder($"# Lines of {voice} ({mine.Count})\n\n");
     foreach (var l in mine)
     {
