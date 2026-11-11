@@ -527,3 +527,21 @@ the music dipped by only 0.6 (-4.4 dB), level with it. Fixed in the voice bus al
 - **VOICE VOLUME runs 0 to 200** (`GameSettings.MaxVoiceVolume`, the bus clamps at `VoiceMaxVolume` 2), its own row with its
   own words; MUSIC stays 0 to 100. 100 is the normal level; the default stays 100 (the lift is in the bus).
 - Tests: `VoicePlaybackTests` (played window, 200 never clips, the row's range, the dip).
+
+## Romanian voices with Gemini (2026-11-12)
+
+The user chose **Gemini TTS** for the Romanian pack (Kokoro has no Romanian; Kokoro stays the English engine).
+`generate --language ro --engine gemini` (`tools/VoiceGen/README.md`, "Other languages: Gemini"):
+- **Text**: each line's Romanian translation, found by the line's key in `Data/text/ro` (`tools/VoiceTool/Translated.cs`);
+  a line with no current translation is left out (144 of Sinnoh's 6,623). The take is stamped with the English hash, so
+  it goes stale with the English.
+- **Voices**: designed, never cloned: one of Gemini's 30 prebuilt voices and a few tags of delivery
+  (`tools/VoiceGen/gemini.json`; thirteen of the main cast chosen by hand, the rest by rule from their `cast.json` brief,
+  `GeminiEngine.ByRule`, which nobody has listened to yet). The tags go in brackets before the line: Gemini follows them
+  and doesn't say them, while a sentence of direction is read aloud. One take a line.
+- **Model** `gemini-3.8-flash-tts`, key `GEMINI_API_KEY`. **The free tier allows 100 requests a day** for the model
+  (quota `GenerateRequestsPerDayPerProjectPerModel`), so Sinnoh's 6,479 lines are some 65 days of the free tier: the
+  engine stops asking once the day's quota is spent (`OutForTheDay`) and the next run picks up the lines still missing.
+  A whole region wants a paid tier on the key (the user's decision).
+- **Made so far**: a trial reel of twelve lines (Rowan, the moms, the rivals) the user approved, and the rival's first
+  68 Sinnoh lines in `voice/ro` (git-ignored, as every pack).
