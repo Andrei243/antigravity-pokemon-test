@@ -52,8 +52,24 @@ public static class MasterTrainers
     /// <summary>A move a master may be given: an ordinary move the engine runs in full.</summary>
     private static bool Runs(MoveData m) => m.Kind == MoveKind.Standard && m.Support == MoveEffectSupport.Full;
 
-    /// <summary>The masters, in National Pokédex order, from the sets in Showdown's folder.</summary>
-    public static Result Build(string showdownFolder, IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves, IReadOnlyList<ItemData> items)
+    /// <summary>The file of sets written by hand, in <c>tools/DataImporter/Overrides/</c>.</summary>
+    public const string OverridesFile = "master-trainers.json";
+
+    /// <summary>
+    /// The sets written by hand (<see cref="OverridesFile"/>): an object of a species' name to the moves its master
+    /// knows, one to four, in place of whatever Showdown's sets would give it. Comments are allowed; a file that isn't
+    /// there is none.
+    /// </summary>
+    public static Dictionary<string, List<string>> ReadHandWritten(string path)
+    {
+        if (!File.Exists(path)) return new();
+        var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true };
+        return JsonSerializer.Deserialize<Dictionary<string, List<string>>>(File.ReadAllText(path), options) ?? new();
+    }
+
+    /// <summary>The masters, in National Pokédex order, from the sets in Showdown's folder and those written by hand.</summary>
+    public static Result Build(string showdownFolder, IReadOnlyList<PokemonSpecies> species, IReadOnlyList<MoveData> moves, IReadOnlyList<ItemData> items,
+        IReadOnlyDictionary<string, List<string>>? handWritten = null)
     {
         // (A folder of Showdown's of one's own, --showdown, may hold the three tables and no sets: its masters have none)
         var sets = SetFiles.Select(f => Path.Combine(showdownFolder, f)).Where(File.Exists).Select(ReadSets).ToList();
@@ -61,6 +77,12 @@ public static class MasterTrainers
         foreach (var m in moves.Where(m => m.Kind == MoveKind.Standard)) movesById.TryAdd(ShowdownId(m.Name), m);
         var byName = moves.GroupBy(m => m.Name).ToDictionary(g => g.Key, g => g.First());
         var machines = items.Where(i => i.TeachesMove != null).GroupBy(i => i.Name).ToDictionary(g => g.Key, g => g.First().TeachesMove);
+
+        // A set written by hand for a name that is no species of the import is a mistake in the file, never passed over
+        if (handWritten != null)
+            foreach (string name in handWritten.Keys)
+                if (!species.Any(s => s.Name == name))
+                    throw new InvalidOperationException($"{OverridesFile}: {name} is no species of the National Pokédex");
 
         var masters = new List<TrainerRecord>();
         int without = 0, fromSets = 0, partial = 0;
@@ -76,7 +98,16 @@ public static class MasterTrainers
             List<string>? chosen = null;
             List<string>? best = null;
             string id = ShowdownId(s.Name);
-            foreach (var generation in sets)
+            // A set written by hand comes first, and must be the species' own: every move learnable and run in full
+            if (handWritten != null && handWritten.TryGetValue(s.Name, out var written))
+            {
+                if (written.Count is < 1 or > 4) throw new InvalidOperationException($"{OverridesFile}: {s.Name}'s master has {written.Count} moves (one to four)");
+                foreach (string move in written)
+                    if (!byName.TryGetValue(move, out var data) || !Runs(data) || !learnable.Contains(move))
+                        throw new InvalidOperationException($"{OverridesFile}: {s.Name} can't be given {move} (not a move it can learn, or not one the engine runs in full)");
+                chosen = written.ToList();
+            }
+            foreach (var generation in chosen == null ? sets : new())
             {
                 if (!generation.TryGetValue(id, out var pools)) continue;
                 foreach (var pool in pools)

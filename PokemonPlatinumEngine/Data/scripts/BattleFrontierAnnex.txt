@@ -318,13 +318,15 @@ script RoyalDesk
   say "A hard-fought placing! Every Battle Royal is different, so do come back and try for first."
   end
 label RoyalWon
-  say "First place! You read all three of them at once. Come back whenever you'd like another round."
+  frontier give 2
+  say "First place! You read all three of them at once. That's two Battle Points for you."
+  say "Come back whenever you'd like another round."
   end
 label RoyalRules
   say "Each of the four sends out one Pokémon at a time. Nobody may switch, and nothing may be used from the Bag."
   say "The moment any Trainer has no Pokémon left, the battle is over."
   say "Each Trainer scores a point for every Pokémon they knocked out, and one for each of their own still standing."
-  say "The highest score takes first place. Nothing is won or lost but the placing, so battle freely!"
+  say "The highest score takes first place, and first place earns two Battle Points. Nothing is lost, so battle freely!"
   end
 label RoyalLater
   say "Whenever you're ready for a free-for-all, you know where to find us."

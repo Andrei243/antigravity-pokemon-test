@@ -135,7 +135,7 @@ partial class Harness
         // how it did are shot (<shot>_a_move, <shot>), with the first line about a move of the scientist's Pokémon's
         // (ft04) and the first time its magnetism keeps a Ground move off (ft03b). True when the lead's move was seen
         // to land: the scientist's Pokémon may fell it first
-        bool PlayTurn(BattleEngine fight, int move, string shot)
+        bool PlayTurn(BattleEngine fight, int move, string shot, bool slowFoe = false)
         {
             // Whoever fell last turn is followed by the next of the three
             if (fight.HUD.MenuState == BattleMenuState.SwitchPokemon)
@@ -146,8 +146,10 @@ partial class Harness
                 for (int i = 0; i < 20 && !fight.IsBattleOver && fight.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(fight); Skip(0.5); }
             }
             if (fight.IsBattleOver || fight.HUD.MenuState is not (BattleMenuState.Main or BattleMenuState.Moves)) { Console.WriteLine($"  !! no menu for {shot ?? "a turn"}"); return false; }
-            foreach (var mine in team.Members.Where(p => p.CurrentHP > 0)) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; foreach (var m in mine.Moves) m.CurrentPP = m.MaxPP; }
-            foreach (var foe in fight.EnemyParty.Members.Where(p => p.CurrentHP > 0)) { foe.CurrentHP = foe.MaxHP; foe.Status = StatusCondition.None; }
+            // Every Nidoking whole, those the Magneton's Discharge felled on the bench too, so the battle can still be won
+            foreach (var mine in team.Members) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; foreach (var m in mine.Moves) m.CurrentPP = m.MaxPP; }
+            // A foe slowed by paralysis lets the lead's move land before the Magneton's Discharge, which fells a Nidoking at a stroke
+            foreach (var foe in fight.EnemyParty.Members.Where(p => p.CurrentHP > 0)) { foe.CurrentHP = foe.MaxHP; foe.Status = slowFoe ? StatusCondition.Paralyze : StatusCondition.None; }
             var target = fight.EnemyPokemon;
             var user = fight.PlayerPokemon;
             int before = target.CurrentHP, mineBefore = user.CurrentHP;
@@ -186,9 +188,9 @@ partial class Harness
             return landed;
         }
         // The same, tried again where the lead fell before it could move
-        void Hit(BattleEngine fight, int move, string shot)
+        void Hit(BattleEngine fight, int move, string shot, bool slowFoe = false)
         {
-            for (int tries = 0; tries < 3; tries++) if (PlayTurn(fight, move, shot)) return;
+            for (int tries = 0; tries < 3; tries++) if (PlayTurn(fight, move, shot, slowFoe)) return;
             Console.WriteLine($"  !! never landed: {shot}");
         }
         // The battle played out: the scientist's Pokémon left a single HP at every menu, or the player's (a loss)
@@ -205,7 +207,10 @@ partial class Harness
                     }
                     else foreach (var mine in team.Members) mine.CurrentHP = Math.Min(mine.CurrentHP, 1);
                     fight.SelectMainMenuOption(0);
-                    fight.SelectMove(0);
+                    // A move that hits, on a win (the Bidoof's first is Swords Dance)
+                    var moves = fight.PlayerPokemon.Moves;
+                    int hit = win ? Math.Max(0, moves.FindIndex(m => m.Data.Category != MoveCategory.Status && m.CurrentPP > 0)) : 0;
+                    fight.SelectMove(hit);
                 }
                 else if (fight.HUD.MenuState == BattleMenuState.SwitchPokemon)
                 {
@@ -268,7 +273,7 @@ partial class Harness
 
             // Earthquake goes first, before the Magneton has risen on its magnetism (which still keeps Ground off), and
             // Poison Jab, which may bring it down, last
-            Hit(battle, 2, "ft03_inverse_line_a_weakness");       // Earthquake: Ground against Electric and Steel, four times in Platinum
+            Hit(battle, 2, "ft03_inverse_line_a_weakness", slowFoe: true);       // Earthquake: Ground against Electric and Steel, four times in Platinum
             Hit(battle, 0, "ft01_inverse_line");                  // Strength: Normal against Steel, resisted in Platinum
             Hit(battle, 1, "ft02_inverse_line_an_immunity");      // Poison Jab: Poison against Steel, nothing in Platinum
             // And on with Earthquake until the Magneton has struck with a move of its own that the chart has a word for
@@ -537,6 +542,14 @@ partial class Harness
         Skip(0.3);
         ToMenu(horde);
 
+        // A ball while more than two stand: asked before Rock Slide, which may fell all five at once
+        horde.UseBagItem("Poké Ball");
+        Skip(0.4);
+        Shot("ft13_horde_ball_refused");
+        Console.WriteLine($"  the ball: {horde.CurrentMessage}; balls left {game.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!)}");
+        for (int i = 0; i < 10 && horde.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(horde); Skip(0.3); }
+        ToMenu(horde);
+
         // Rock Slide on all five, shot as the rocks fall, before they land and the five flicker
         horde.SelectMainMenuOption(0);
         horde.SelectMove(0);
@@ -552,13 +565,6 @@ partial class Harness
         if (!fell) Console.WriteLine("  !! never said: Rock Slide");
         Console.WriteLine($"  after Rock Slide: {Hps(horde)}");
         ToMenu(horde, whole: false);
-
-        // A ball while more than two stand
-        horde.UseBagItem("Poké Ball");
-        Skip(0.4);
-        Shot("ft13_horde_ball_refused");
-        Console.WriteLine($"  the ball: {horde.CurrentMessage}; balls left {game.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!)}");
-        for (int i = 0; i < 10 && horde.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(horde); Skip(0.3); }
 
         // The rest of them felled a Rock Slide at a time, a single HP each
         for (int guard = 0; guard < 200 && !horde.IsBattleOver; guard++)
