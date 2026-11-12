@@ -30,5 +30,9 @@
   },
   "signs": {
     "RouteSign": "Route 18\nNorth: Anistar City\nSouth: Couriway Town"
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Coronafrill", 194, 198 ], [ "Despotitan", 196, 200 ] ]
   }
 }

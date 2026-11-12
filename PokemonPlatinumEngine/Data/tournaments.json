@@ -271,6 +271,50 @@
       ]
     },
     {
+      "region": "Kalos",
+      "events": [
+        {
+          "id": "kalosLeaders",
+          "points": 3,
+          "always": [],
+          "pool": [
+            { "trainer": "kalos_viola_rematch", "look": "viola" },
+            { "trainer": "kalos_grant_rematch", "look": "grant" },
+            { "trainer": "kalos_korrina_rematch", "look": "korrina" },
+            { "trainer": "kalos_ramos_rematch", "look": "ramos" },
+            { "trainer": "kalos_clemont_rematch", "look": "clemont" },
+            { "trainer": "kalos_valerie_rematch", "look": "valerie" },
+            { "trainer": "kalos_olympia_rematch", "look": "olympia" },
+            { "trainer": "kalos_wulfric_rematch", "look": "wulfric" }
+          ],
+          "kind": "leaders"
+        },
+        {
+          "id": "kalosChampion",
+          "points": 6,
+          "always": [
+            { "trainer": "kalos_diantha_rematch", "look": "diantha" },
+            { "trainer": "kalos_malva_rematch", "look": "malva" },
+            { "trainer": "kalos_siebold_rematch", "look": "siebold" },
+            { "trainer": "kalos_wikstrom_rematch", "look": "wikstrom" },
+            { "trainer": "kalos_drasna_rematch", "look": "drasna" }
+          ],
+          "pool": [
+            { "trainer": "kalos_viola_rematch", "look": "viola" },
+            { "trainer": "kalos_grant_rematch", "look": "grant" },
+            { "trainer": "kalos_korrina_rematch", "look": "korrina" },
+            { "trainer": "kalos_ramos_rematch", "look": "ramos" },
+            { "trainer": "kalos_clemont_rematch", "look": "clemont" },
+            { "trainer": "kalos_valerie_rematch", "look": "valerie" },
+            { "trainer": "kalos_olympia_rematch", "look": "olympia" },
+            { "trainer": "kalos_wulfric_rematch", "look": "wulfric" }
+          ],
+          "kind": "league",
+          "after": "kalosLeaders"
+        }
+      ]
+    },
+    {
       "region": "World",
       "events": [
         {
@@ -280,7 +324,7 @@
           "pool": [],
           "kind": "leaders",
           "after": "sinnohLeaders",
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "worldChampions",
@@ -290,12 +334,13 @@
             { "trainer": "kanto_champion_rematch_squirtle", "look": "blue" },
             { "trainer": "johto_champion_lance_2", "look": "lance" },
             { "trainer": "hoenn_wallace_rematch", "look": "wallace" },
-            { "trainer": "unova_champion_iris_4", "look": "iris" }
+            { "trainer": "unova_champion_iris_4", "look": "iris" },
+            { "trainer": "kalos_diantha_rematch", "look": "diantha" }
           ],
           "pool": [],
           "kind": "champions",
           "after": "sinnohChampion",
-          "from": [ "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "worldBeyond",
@@ -340,7 +385,7 @@
           "kind": "leaders",
           "after": "worldLeaders",
           "format": "double",
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "worldTriples",
@@ -350,7 +395,7 @@
           "kind": "leaders",
           "after": "worldLeaders",
           "format": "triple",
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "worldRotation",
@@ -360,7 +405,7 @@
           "kind": "leaders",
           "after": "worldLeaders",
           "format": "rotation",
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "worldMix",
@@ -370,7 +415,7 @@
           "kind": "leaders",
           "after": "worldLeaders",
           "mix": true,
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "worldRental",
@@ -380,7 +425,7 @@
           "kind": "leaders",
           "after": "worldLeaders",
           "rental": true,
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders" ]
         },
         {
           "id": "typeWater",
@@ -389,7 +434,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Water" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeFireElectric",
@@ -398,7 +443,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Fire", "Electric" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeIceDark",
@@ -407,7 +452,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Ice", "Dark" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeDragonFlying",
@@ -416,7 +461,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Dragon", "Flying" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeGhostPsychic",
@@ -425,7 +470,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Ghost", "Psychic" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeFightingSteel",
@@ -434,7 +479,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Fighting", "Steel" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeRockGroundGrass",
@@ -443,7 +488,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Rock", "Ground", "Grass" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         },
         {
           "id": "typeBugPoisonNormal",
@@ -452,7 +497,7 @@
           "pool": [],
           "after": "worldLeaders",
           "types": [ "Bug", "Poison", "Normal" ],
-          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion" ]
+          "from": [ "sinnohLeaders", "kantoLeaders", "johtoLeaders", "hoennLeaders", "unovaLeaders", "kalosLeaders", "sinnohChampion", "kantoChampion", "johtoChampion", "hoennChampion", "unovaChampion", "kalosChampion" ]
         }
       ]
     }

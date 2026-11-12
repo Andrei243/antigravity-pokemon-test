@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Data;
 namespace PokemonPlatinumEngine.Models;
 
 /// <summary>How a photograph of the book was taken (plan 43 · LF4).</summary>
-public enum PhotoTaken { PhotoMode, Spot }
+public enum PhotoTaken { PhotoMode, Spot, Studio }
 
 /// <summary>
 /// A photograph of the book (plan 43 · LF4): its picture's file in <c>photos/</c> (its small copy beside it), where and
@@ -23,6 +23,9 @@ public sealed record PhotoPrint
     public string? Lead { get; init; }
     public string? Spot { get; init; }
     public PhotoTaken How { get; init; }
+
+    /// <summary>The composition of a studio photograph (plan 43 · LF5); null for any other.</summary>
+    public StudioShot? Studio { get; init; }
 
     /// <summary>The small copy's file: the picture's with <c>-small</c> before its extension.</summary>
     public string SmallFile => SmallOf(File);

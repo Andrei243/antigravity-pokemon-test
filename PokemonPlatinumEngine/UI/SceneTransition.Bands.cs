@@ -182,6 +182,27 @@ public static partial class SceneTransition
         new BattleBand("Champion", "Lance", Rgb(168, 36, 64), Rgb(96, 12, 32), Rgb(236, 156, 176))
     };
 
+    /// <summary>
+    /// Kalos's thirteen (plan 23, Kalos's loose ends; the style guide's fifth table): the eight Leaders, the four of the
+    /// Elite Four and Diantha, none the base colour of a band of another region.
+    /// </summary>
+    public static IReadOnlyList<BattleBand> KalosBands { get; } = new[]
+    {
+        new BattleBand("Leader", "Viola", Rgb(152, 176, 64), Rgb(84, 100, 24), Rgb(220, 232, 150)),
+        new BattleBand("Leader", "Grant", Rgb(196, 152, 104), Rgb(112, 80, 44), Rgb(240, 216, 180)),
+        new BattleBand("Leader", "Korrina", Rgb(232, 112, 56), Rgb(140, 52, 20), Rgb(252, 192, 152)),
+        new BattleBand("Leader", "Ramos", Rgb(104, 148, 72), Rgb(48, 80, 28), Rgb(196, 224, 164)),
+        new BattleBand("Leader", "Clemont", Rgb(244, 184, 48), Rgb(144, 100, 12), Rgb(252, 232, 160)),
+        new BattleBand("Leader", "Valerie", Rgb(228, 152, 196), Rgb(140, 64, 108), Rgb(248, 216, 236)),
+        new BattleBand("Leader", "Olympia", Rgb(152, 104, 196), Rgb(80, 44, 116), Rgb(220, 196, 244)),
+        new BattleBand("Leader", "Wulfric", Rgb(120, 184, 208), Rgb(44, 100, 124), Rgb(200, 236, 244)),
+        new BattleBand("Elite Four", "Malva", Rgb(208, 64, 48), Rgb(120, 24, 16), Rgb(248, 168, 152)),
+        new BattleBand("Elite Four", "Siebold", Rgb(56, 136, 184), Rgb(20, 68, 108), Rgb(160, 212, 240)),
+        new BattleBand("Elite Four", "Wikstrom", Rgb(152, 160, 176), Rgb(72, 80, 96), Rgb(220, 224, 232)),
+        new BattleBand("Elite Four", "Drasna", Rgb(72, 156, 128), Rgb(28, 84, 64), Rgb(168, 220, 200)),
+        new BattleBand("Champion", "Diantha", Rgb(216, 96, 120), Rgb(124, 36, 60), Rgb(248, 192, 204))
+    };
+
     /// <summary>The name the Champion of Kanto's entry carries: the rival's, whatever the player called him.</summary>
     public const string RivalPlaceholder = "{rival}";
 
@@ -205,6 +226,8 @@ public static partial class SceneTransition
             if (band.Class == trainerClass && band.Name == name) return band;
         // Johto's before Kanto's: its Champion Lance and its Koga of the Four are not Kanto's entries
         foreach (var band in JohtoBands)
+            if (band.Class == trainerClass && band.Name == name) return band;
+        foreach (var band in KalosBands)
             if (band.Class == trainerClass && band.Name == name) return band;
         foreach (var band in KantoBands)
             if (band.Class == trainerClass && (band.Name == name || (trainerClass == "Champion" && IsTheRival(name))))

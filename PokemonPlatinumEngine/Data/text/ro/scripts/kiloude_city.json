@@ -201,7 +201,7 @@
         "I carry the bags off the train from Lumiose. Big ones, small ones, ones that bark."
       ],
       "text": [
-        ""
+        "Eu car bagajele din trenul de Lumiose. Mari, mici, unele care latră."
       ]
     },
     {
@@ -209,7 +209,7 @@
         "A regular? There's one lady. Every night, the last train in, with a long flat parcel she won't let me carry."
       ],
       "text": [
-        ""
+        "Un călător obișnuit? E o doamnă. În fiecare noapte, cu ultimul tren, cu un pachet lung și plat pe care nu mă lasă să-l car."
       ]
     },
     {
@@ -217,7 +217,7 @@
         "And every morning, the first train back to Lumiose, with the same parcel. Here's one of her old tickets."
       ],
       "text": [
-        ""
+        "Și în fiecare dimineață, cu primul tren înapoi spre Lumiose, cu același pachet. Uite unul dintre biletele ei vechi."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "{player} noted the ticket for the last train in and the first out."
       ],
       "text": [
-        ""
+        "{player} a notat biletul pentru ultimul tren sosit și primul plecat."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Last train in, first train out, and a parcel as long as a door. She never misses."
       ],
       "text": [
-        ""
+        "Ultimul tren la venire, primul la plecare, și un pachet lung cât o ușă. Nu lipsește niciodată."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "The lady with the parcel comes by day now, and she lets me carry her easel. Progress!"
       ],
       "text": [
-        ""
+        "Doamna cu pachetul vine acum ziua și mă lasă să-i car șevaletul. Progres!"
       ]
     }
   ],
@@ -251,7 +251,7 @@
         "Kiloude's light is the best in Kalos. I paint the sea every morning, and every morning it's different."
       ],
       "text": [
-        ""
+        "Lumina din Kiloude e cea mai bună din Kalos. Pictez marea în fiecare dimineață și în fiecare dimineață e altfel."
       ]
     },
     {
@@ -259,7 +259,7 @@
         "Odd things at night? The house by the shore smells of fresh varnish every morning. Somebody paints there till dawn."
       ],
       "text": [
-        ""
+        "Lucruri ciudate noaptea? Casa de pe țărm miroase a vernis proaspăt în fiecare dimineață. Cineva pictează acolo până în zori."
       ]
     },
     {
@@ -267,7 +267,7 @@
         "Students, I think. I heard a teacher saying, look at the brushstrokes, see how the master did it."
       ],
       "text": [
-        ""
+        "Niște studenți, cred. Am auzit un profesor zicând: uitați-vă la tușe, vedeți cum a lucrat maestrul."
       ]
     },
     {
@@ -275,7 +275,7 @@
         "{player} noted the smell of fresh varnish at night."
       ],
       "text": [
-        ""
+        "{player} a notat mirosul de vernis proaspăt din timpul nopții."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "Fresh varnish every morning. Whoever they are, they work hard."
       ],
       "text": [
-        ""
+        "Vernis proaspăt în fiecare dimineață. Oricine ar fi, muncesc din greu."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "There's a painting class in town now, by day. I've joined it! Never too old to learn."
       ],
       "text": [
-        ""
+        "Acum e o clasă de pictură în oraș, ziua. M-am înscris! Nu ești niciodată prea bătrân ca să înveți."
       ]
     }
   ],
@@ -301,7 +301,7 @@
         "Odile"
       ],
       "text": [
-        ""
+        "Odile"
       ]
     },
     {
@@ -309,7 +309,7 @@
         "So Looker has found me out. Yes, I take the painting out of its frame each night. I bring it here, and I bring it back."
       ],
       "text": [
-        ""
+        "Deci Looker m-a dat de gol. Da, scot tabloul din ramă în fiecare noapte. Îl aduc aici și îl duc înapoi."
       ]
     },
     {
@@ -317,7 +317,7 @@
         "My students can't learn from a postcard. They must see the real brushstrokes! Still, if you insist, we shall duel."
       ],
       "text": [
-        ""
+        "Studenții mei nu pot învăța de pe o carte poștală. Trebuie să vadă tușele adevărate! Totuși, dacă insiști, ne vom duela."
       ]
     },
     {
@@ -325,7 +325,7 @@
         "...A masterful stroke. Very well. I'll ask the museum properly. Tell Looker I'll call at his agency."
       ],
       "text": [
-        ""
+        "...O tușă de maestru. Prea bine. Voi cere muzeului cum se cuvine. Spune-i lui Looker că trec pe la agenția lui."
       ]
     }
   ]

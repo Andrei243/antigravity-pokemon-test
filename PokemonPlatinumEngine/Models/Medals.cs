@@ -29,10 +29,11 @@ public sealed record Medal(MedalCategory Category, string Source, long Goal)
 /// </summary>
 public sealed class MedalFacts
 {
-    public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions", Circuits = "circuits";
+    public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions", Circuits = "circuits",
+        HeartsReclaimed = "heartsReclaimed", HeartsOpened = "heartsOpened";
 
     /// <summary>The facts that are no counter, in the order the medals list them.</summary>
-    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits };
+    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits, HeartsReclaimed, HeartsOpened };
 
     public Statistics Counts { get; init; } = new();
     public int Seen { get; init; }
@@ -43,6 +44,10 @@ public sealed class MedalFacts
     /// <summary>The Laurel Circuits won (plan 41 · EG4).</summary>
     public int CircuitCount { get; init; }
 
+    /// <summary>Lockwork's locked Pokémon reclaimed and hearts opened (plan 44 · SD5).</summary>
+    public int HeartsReclaimedCount { get; init; }
+    public int HeartsOpenedCount { get; init; }
+
     public long Value(string source) => source switch
     {
         DexSeen => Seen,
@@ -50,6 +55,8 @@ public sealed class MedalFacts
         Badges => BadgeCount,
         Champions => ChampionCount,
         Circuits => CircuitCount,
+        HeartsReclaimed => HeartsReclaimedCount,
+        HeartsOpened => HeartsOpenedCount,
         _ => Counts.Get(source)
     };
 }
@@ -100,6 +107,9 @@ public sealed class Medals
         Add(MedalCategory.League, MedalFacts.Champions, 1, 2, 3, 4, 5);
         // The Laurel Circuit's finals won (plan 41 · EG4)
         Add(MedalCategory.League, MedalFacts.Circuits, 1, 3, 5);
+        // Lockwork's locked hearts: the first reclaimed, the thirtieth opened (plan 44 · SD5)
+        Add(MedalCategory.League, MedalFacts.HeartsReclaimed, 1);
+        Add(MedalCategory.League, MedalFacts.HeartsOpened, 30);
         return all;
     }
 

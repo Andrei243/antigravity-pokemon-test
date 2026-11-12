@@ -8,5 +8,9 @@
   "trees": "Round",
   "people": {
     "mewtwo": { "name": "Mewtwo", "npcType": "Pokemon", "species": "Mewtwo", "script": "Mewtwo", "still": true, "hiddenBy": "FLAG_KALOS_MEWTWO_GONE" }
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Sonarwing", 203, 207 ], [ "Chatelkey", 198, 202 ] ]
   }
 }

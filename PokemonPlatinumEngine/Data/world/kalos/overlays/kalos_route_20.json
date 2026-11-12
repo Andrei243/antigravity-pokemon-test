@@ -28,5 +28,9 @@
   },
   "signs": {
     "RouteSign": "Route 20\nNorth: the Pokémon Village\nSouth: Snowbelle City"
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Sylvanshade", 198, 202 ], [ "Occulynx", 190, 194 ] ]
   }
 }

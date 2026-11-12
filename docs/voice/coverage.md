@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1698 | 1635 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13163 | 12628 | 535 | 17 | 36 |
+| Scripts (`script:`) | 13167 | 12632 | 535 | 17 | 36 |
 | People of the world (`world:`) | 8071 | 8009 | 62 | 4 | 0 |
-| **All** | 23216 | 22553 | 663 | 22 | 36 |
+| **All** | 23220 | 22557 | 663 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -29,7 +29,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 954 voices (366 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 955 voices (367 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 583 voices.
 - Archetypes in use: 251, with 758 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 354.
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1216 | 52 |
+| `look:gentleman (any)` | 1215 | 52 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 602 | 20 |
 | `look:clerk (any)` | 584 | 15 |
