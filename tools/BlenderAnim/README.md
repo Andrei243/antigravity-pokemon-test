@@ -39,6 +39,23 @@ The front is the game's: glTF's +Z (Blender's -Y). The poses suit a quadruped be
 A sheet a clip (`<dir>/<clip>.png`), each the clip at `--frames` evenly spaced moments side by side, seen from the
 model's front right as the battle sees a foe, rendered with Workbench. Open them with the Read tool.
 
+## Looking at a sculpt and changing it
+
+Two scripts are run by Blender itself, with no build of the engine, for a model the harness exported
+(`ShotHarness -- <out dir> export <species>`):
+
+```bash
+blender --background --factory-startup --python tools/BlenderAnim/blender/turntable.py -- <in.glb> <out.png> [size] [engine]
+blender --background --factory-startup --python tools/BlenderAnim/blender/roundtrip.py -- <in.glb> <out.glb> [edit.py]
+```
+
+`turntable.py` renders the file's front, front three-quarter, side and back on one sheet in its own colours (EEVEE,
+since an exported sculpt's body is vertex colours and its eyes a texture) and prints what the file holds.
+`roundtrip.py` reads a file and writes it as the game reads it, running an edit script in between (`bpy`, `np`,
+`meshes` and `arm` in its globals); with no edit it is the check that nothing is lost on the way. It imports at 60
+frames a second, at which every clip of the game's is a whole number of frames. `.claude/skills/blender/SKILL.md` has
+the whole loop and what a round trip keeps and loses.
+
 ## Seeing it in battle
 
 The harness's `clips` mode shoots a species' clips in battle, the player's lead and the foe both the species:
