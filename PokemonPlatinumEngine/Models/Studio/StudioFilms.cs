@@ -135,8 +135,22 @@ public sealed class StudioDirector
     private readonly List<string> chosen = new();
     private readonly HashSet<PokemonType> typesUsed = new();
     private int logRead;
+    private readonly Queue<string>? picks;
 
     public StudioDirector(StudioFilm film) => Film = film;
+
+    /// <summary>
+    /// A director at the premiere (part b): the take is watched, nobody answers, and each beat's line is the one the
+    /// take picked, in turn (the script's line once they run out).
+    /// </summary>
+    public StudioDirector(StudioFilm film, IEnumerable<string> picks) : this(film) => this.picks = new Queue<string>(picks);
+
+    /// <summary>Whether this director is the premiere's, which picks the take's own lines.</summary>
+    public bool Premiere => picks != null;
+
+    /// <summary>The premiere's next line at a beat: the take's pick, or the script's line once the picks run out.</summary>
+    public StudioChoice PickAgain(StudioBeat beat) =>
+        Choose(beat, picks is { Count: > 0 } ? picks.Dequeue() : beat.Choices.FirstOrDefault(c => c.Script)?.Id);
 
     /// <summary>The beats met so far, and the lines chosen, in order.</summary>
     public IReadOnlyList<string> Met => met;
@@ -304,6 +318,16 @@ public static class StudioFilms
 
     /// <summary>A take written for the film shot as written.</summary>
     public static StudioTake Shoot(StudioFilm film, StudioTakeScript take) => Shoot(film, take.Answers, take.Picks);
+
+    /// <summary>
+    /// The premiere's box office (plan 42 · PS4, part b; rulings, "The film studio"): tickets sold, a number of ours
+    /// from the take's stars (squared, so a fine take far outsells a poor one) and the film's genre.
+    /// </summary>
+    public static int BoxOffice(StudioFilm film, int stars) =>
+        stars * stars * 1200 + film.Genre switch { "ghost" => 900, "heist" => 1500, "detective" => 1100, "race" => 1800, _ => 1000 };
+
+    /// <summary>The file a film's best take is kept in, in the Vs. Recorder's folder: <c>studio-&lt;id&gt;.json</c>.</summary>
+    public static string TakeFileName(string film) => $"studio-{film}.json";
 }
 
 /// <summary>What a save keeps of the studio (<see cref="Core.SaveData.Studio"/>): null while no film has been shot.</summary>
@@ -326,6 +350,9 @@ public sealed class StudioRecords
 
     /// <summary>The take shot last this session (not saved): what a script reads after <c>studio shoot</c>.</summary>
     public StudioTake? LastTake { get; private set; }
+
+    /// <summary>The last premiere's box office this session (not saved): what a script reads after <c>studio premiere</c>.</summary>
+    public int LastBoxOffice { get; set; }
 
     public int Rank => best.Values.Sum();
     public int Films => shot.Count;

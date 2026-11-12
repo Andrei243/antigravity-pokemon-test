@@ -514,7 +514,7 @@ public sealed partial class WorldRenderer
     private static FieldView LensOf(Map? map, float zoom)
     {
         var lens = map != null ? MapScene.ViewOf(map) : FieldView.Outdoor;
-        return lens with { FovYDeg = CameraRig.FovAt(lens.FovYDeg, zoom) };
+        return lens with { FovYDeg = Canvas2D.Layout.FovYFor(CameraRig.FovAt(lens.FovYDeg, zoom)) };
     }
 
     /// <summary>How much of a room a zoom in has taken out of the picture, 0 to 1: nothing at the place's own lens or a wider one.</summary>
@@ -616,19 +616,19 @@ public sealed partial class WorldRenderer
         if (dark)
         {
             var feet = new Vector3(px, groundY, pz);
-            var at = Raylib.GetWorldToScreenEx(feet, camera, 1920, 1080);
-            var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, 1920, 1080);
-            var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, 1920, 1080);
+            var at = Raylib.GetWorldToScreenEx(feet, camera, width, height);
+            var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, width, height);
+            var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, width, height);
             // Round the player's middle, not their feet
-            darkAt = new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
-            darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
+            darkAt = new Vector2(at.X / width, (at.Y - 0.5f * (south.Y - at.Y)) / height);
+            darkTile = new Vector2((east.X - at.X) / width, (south.Y - at.Y) / height);
         }
         // On the sea floor, where the floor's origin would be on the picture: the waves' light is pinned to it (plan 21 · H5)
         underwater = player != null && map.IsUnderwater;
         if (underwater)
         {
             OnPicture(camera.Target, camera, out var size);
-            seaPin = new Vector2(-camera.Target.X * size.X * 1920f, -camera.Target.Z * size.Y * 1080f);
+            seaPin = new Vector2(-camera.Target.X * size.X * width, -camera.Target.Z * size.Y * height);
         }
         // Where the player's middle is on the picture, for whatever closes on them (a cave's way into a battle)
         PlayerOnPicture = player != null ? OnPicture(new Vector3(px, groundY, pz), camera, out _) : new Vector2(0.5f, 0.5f);
@@ -844,13 +844,13 @@ public sealed partial class WorldRenderer
     private readonly List<Vector2> gymLights = new();
 
     /// <summary>Where a point of the ground is on the picture (0 to 1 each way), round a person's middle, and how large a tile is there.</summary>
-    private static Vector2 OnPicture(Vector3 feet, Camera3D camera, out Vector2 tile)
+    private Vector2 OnPicture(Vector3 feet, Camera3D camera, out Vector2 tile)
     {
-        var at = Raylib.GetWorldToScreenEx(feet, camera, 1920, 1080);
-        var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, 1920, 1080);
-        var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, 1920, 1080);
-        tile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
-        return new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
+        var at = Raylib.GetWorldToScreenEx(feet, camera, width, height);
+        var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, width, height);
+        var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, width, height);
+        tile = new Vector2((east.X - at.X) / width, (south.Y - at.Y) / height);
+        return new Vector2(at.X / width, (at.Y - 0.5f * (south.Y - at.Y)) / height);
     }
 
     /// <summary>
@@ -933,7 +933,7 @@ public sealed partial class WorldRenderer
     private void DrawCaustics(int destWidth, int destHeight)
     {
         causticLayers.Clear();
-        float wide = destWidth / 1920f, tall = destHeight / 1080f;
+        float wide = (float)destWidth / width, tall = (float)destHeight / height;
         WeatherFx.Caustics(Life.Now, seaPin.X * wide, seaPin.Y * tall, causticLayers);
         var texture = SceneTextures.Caustics;
         Raylib.BeginBlendMode(BlendMode.Additive);
@@ -1000,7 +1000,7 @@ public sealed partial class WorldRenderer
                 roomTarget.X = SnapToTexel(Math.Clamp(px, roomTarget.X - reach, roomTarget.X + reach));
             }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
-                Camera.Fov(MapScene.IndoorFovYDeg), CameraProjection.Perspective);
+                Canvas2D.Layout.FovYFor(Camera.Fov(MapScene.IndoorFovYDeg)), CameraProjection.Perspective);
         }
 
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view

@@ -1,0 +1,60 @@
+# Pokéstar Studios' studio building (plan 42 · PS4, part b; rulings, "The film studio"). Black 2's room, our people and
+# our words: Director Wren of ours shoots the studio's four films, each opened by the studio's rank (the best stars of
+# every film summed). A take is a battle of the film's own; nothing of the player's team goes in. The building's two
+# inner doors (the sound stage and the back rooms) stay shut.
+
+
+script StudioDesk
+  face self player
+  speaker "Director Wren"
+  studio rank
+  if result >= 1 goto Again
+  say "Welcome to the lot! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script."
+  say "We lend you the cast. Say the script's lines or your own, and the take ends however you play it."
+  goto Pick
+label Again
+  say "Back for another take? Splendid! The studio keeps your best take of every film for its premiere."
+label Pick
+  choose "Which film shall we shoot?" "THE EMPTY SEAT" "THE GILDED HOUR" "LETTERS IN THE FOG" "THUNDER AT MARLOWE PASS" "NOT TODAY"
+  if result == 0 goto EmptySeat
+  if result == 1 goto GildedHour
+  if result == 2 goto Letters
+  if result == 3 goto Thunder
+  say "Come back whenever you feel like a star!"
+  end
+label EmptySeat
+  studio shoot "emptySeat"
+  goto Wrap
+label GildedHour
+  studio shoot "gildedHour"
+  goto Wrap
+label Letters
+  studio open "lettersInTheFog"
+  if result == 0 goto NotYet
+  studio shoot "lettersInTheFog"
+  goto Wrap
+label Thunder
+  studio open "thunderAtMarlowePass"
+  if result == 0 goto NotYet
+  studio shoot "thunderAtMarlowePass"
+  goto Wrap
+label NotYet
+  say "That script is still in the drawer. Earn the studio a few more stars on the films we have, then ask again!"
+  end
+label Wrap
+  speaker "Director Wren"
+  if result >= 4 goto Great
+  say "That's a wrap! Your best take of every film goes to the theater across the lot for its premiere."
+  end
+label Great
+  say "Magnificent! That's the take the posters will be painted from. Go and see it at the theater!"
+  end
+
+
+script Casting
+  face self player
+  speaker "Casting Clerk"
+  studio rank
+  say "The studio's rank is {result} stars. Each film's best take counts toward it."
+  say "At four stars the detective story opens, and at eight the race against the storm. Good luck!"
+  end

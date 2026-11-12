@@ -1,0 +1,42 @@
+{
+  "key": "pokestar_studios_3",
+  "index": 568,
+  "name": "Pokestar Studios",
+  "matrix": 360,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_PW_LAND",
+  "nightMusic": "BGM_PW_LAND",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 21, "to": "pokestar_studios", "toWarp": 1 },
+    { "x": 14, "z": 11, "to": "pokestar_studios_2", "toWarp": 0 },
+    { "x": 1, "z": 6, "to": "pokestar_studios_5", "toWarp": 0 },
+    { "x": 14, "z": 21, "to": "pokestar_studios", "toWarp": 1 },
+    { "x": 15, "z": 21, "to": "pokestar_studios", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "358", "movement": "none", "x": 13, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10817" },
+    { "id": "1", "looks": "358", "movement": "none", "x": 13, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c4", "script": "10821" },
+    { "id": "2", "looks": "345", "movement": "none", "x": 14, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c4", "script": "10820" },
+    { "id": "3", "looks": "346", "movement": "none", "x": 10, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "4", "looks": "policeman", "movement": "none", "x": 2, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "5", "looks": "backers_f", "movement": "none", "x": 5, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "6", "looks": "rich_boy", "movement": "none", "x": 5, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "7", "looks": "320", "movement": "look_south_and_east", "x": 4, "z": 16, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "8", "looks": "clerk_f", "movement": "none", "x": 17, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "9", "looks": "pokefan_m", "movement": "wander_around", "x": 21, "z": 14, "facing": 0, "rangeX": 2, "rangeZ": 2, "script": "6" },
+    { "id": "10", "looks": "backers_m", "movement": "wander_around", "x": 10, "z": 3, "facing": 0, "rangeX": 3, "rangeZ": 0, "script": "7" },
+    { "id": "11", "looks": "policeman", "movement": "none", "x": 26, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "8" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 13, "z": 20, "width": 3, "depth": 1, "script": "10818", "variable": "VAR_UNOVA_0x4000", "value": "1" }
+  ]
+}

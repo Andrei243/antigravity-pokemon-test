@@ -140,7 +140,7 @@ public partial class GameEngine
     /// <summary>The field under a photo, its frame, and the panel and hint unless the picture is being taken or they are hidden.</summary>
     private void DrawPhoto()
     {
-        world.DrawToScreen(VirtualWidth, VirtualHeight);
+        PokemonPlatinumEngine.Graphics.Canvas2D.Draw((w, h) => world.DrawToScreen(w, h));
         DrawLetterbox();
         var p = photo;
         if (p == null) return;

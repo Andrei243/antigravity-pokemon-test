@@ -1544,6 +1544,8 @@ alola_youngster_keahi 207 (7) [Yungoos → Gumshoos, Pikipek → Toucannon]
 levels 2 → 224, 65 → 242
 caps 229 230 231 234 234 235 237 237 242 (own 20 24 27 36 38 42 46 48 65)
 galar_bede_1 227 (14) [Solosis → Reuniclus, Hatenna → Hatterene]
+galar_bede_2 229 (21) [Solosis → Reuniclus, Gothita → Gothitelle, Hatenna → Hatterene]
+galar_camper_rhys 228 (16) [Electrike → Fulmenhound, Nincada → Shinobuzz]
 galar_camper_wade 227 (12) [Skwovet → Larderous, Rookidee → Corviknight]
 galar_hop_1a 225 (5) [Sobble → Inteleon]
 galar_hop_1b 225 (5) [Grookey → Rillaboom]
@@ -1554,9 +1556,16 @@ galar_hop_2c 225 (6) [Wooloo → Dubwool, Scorbunny → Cinderace]
 galar_hop_3a 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Sobble → Inteleon]
 galar_hop_3b 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Grookey → Rillaboom]
 galar_hop_3c 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Scorbunny → Cinderace]
+galar_hop_4a 229 (18) [Wooloo → Ramsworth, Corvisquire → Corviknight, Drizzile → Inteleon]
+galar_hop_4b 229 (18) [Wooloo → Ramsworth, Corvisquire → Corviknight, Thwackey → Rillaboom]
+galar_hop_4c 229 (18) [Wooloo → Ramsworth, Corvisquire → Corviknight, Raboot → Cinderace]
+galar_kabu_1 231 (27) [Ninetales → Kitsunox, Arcanine → Kirinine]
+galar_lass_eden 228 (17) [Wingull → Pelicaptain, Lotad → Ludicolo]
 galar_lass_ivy 227 (14) [Gossifleur → Thistlewisp, Wooloo → Ramsworth]
 galar_lass_poppy 225 (6) [Chewtle → Drednaw]
+galar_marnie_1 230 (24) [Croagunk → Venomsensei, Scraggy → Brawlhood]
 galar_milo_1 229 (20) [Gossifleur → Thistlewisp, Eldegoss → Thistlewisp]
+galar_nessa_1 230 (24) [Goldeen → Sabrefin, Arrokuda → Rapierfin, Drednaw → Juggernaw]
 galar_worker_glen 227 (12) [Rolycoly → Coalossal, Roggenrola → Gigalith]
 galar_youngster_alfie 225 (6) [Skwovet → Greedent]
 galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
@@ -1578,9 +1587,16 @@ trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Kr
 Galar Mine, Galar
 grass 226-227 (own 10-13)
 trainers 2, 227 (own 13-14): galar_hiker_ives 227 (14) [Roggenrola → Gigalith, Diglett → Molemount], galar_worker_morris 227 (13) [Rolycoly → Coalossal, Drilbur → Excavarch]
+=== GalarMine2
+Galar Mine No. 2, Galar
+grass 229 (own 18-21)
+trainers 3, 229 (own 19-20): galar_fisherman_cormac 229 (20) [Chewtle → Juggernaw, Arrokuda → Barraskewda], galar_worker_hale 229 (19) [Rolycoly → Coalossal, Carkol → Coalossal], galar_yell_grunt_1 229 (20) [Nickit → Reynardine, Purrloin → Umbrapard]
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ, Kalos
 trainers 4, 199-200 (own 48-50): kalos_bryony_1 200 (50) [Liepard → Umbrapard, Bisharp → Kingambit], kalos_celosia_1 200 (50) [Manectric → Fulmenhound, Drapion → Dreadpion], kalos_flare_grunt_hq_1 199 (48) [Liepard → Umbrapard, Manectric → Fulmenhound], kalos_flare_grunt_hq_2 199 (49) [Houndoom → Cerberhound, Golbat → Crobat]
+=== Hulbury_StadiumMission
+Hulbury Stadium, Galar
+trainers 2, 229-230 (own 21-22): galar_gym_trainer_finn 230 (22) [Shellos → Gastromire, Arrokuda → Rapierfin], galar_gym_trainer_marina 230 (22) [Goldeen → Sabrefin, Chewtle → Juggernaw]
 === KalosPowerPlant
 Kalos Power Plant, Kalos
 trainers 2, 193 (own 27-28): kalos_flare_grunt_plant_1 193 (28) [Houndour → Cerberhound, Croagunk → Venomsensei], kalos_flare_grunt_plant_2 193 (28) [Scraggy → Brawlhood, Golbat → Crobat]
@@ -1596,6 +1612,9 @@ trainers 2, 198 (own 45): kalos_flare_grunt_labs_1 198 (45) [Houndoom → Cerber
 === LumioseCity_PrismTowerGym
 Prism Tower, Kalos
 trainers 2, 194 (own 32-33): kalos_schoolboy_hugo 194 (33) [Magnemite → Magnezone, Helioptile → Coronafrill], kalos_schoolgirl_adele 194 (33) [Emolga → Nimbolga, Dedenne → Signalmus]
+=== Motostoke_StadiumMission
+Motostoke Stadium, Galar
+trainers 2, 230-231 (own 24-25): galar_gym_trainer_ash 230 (24) [Vulpix → Kitsunox, Sizzlipede → Centiskorch], galar_gym_trainer_ember 231 (25) [Growlithe → Kirinine, Carkol → Coalossal]
 === SantaluneCity_Gym
 Santalune Gym, Kalos
 trainers 2, 187 (own 7-8): kalos_bug_catcher_luc 187 (8) [Spewpa → Vivillon, Kakuna → Beedrill], kalos_lass_mireille 187 (8) [Ledyba → Coccinova, Surskit → Ocellwing]

@@ -1,0 +1,67 @@
+{
+  // Hulbury (plan 33 · GL4, its second session): a harbour town on a level of its own above the sea, the home of Nessa,
+  // the gym challenge's second Leader. The high street runs east from Route 5 past the Pokémon Center to the stadium,
+  // a way leads down to the quay and its lighthouse, the seafood restaurant faces the harbour (its door owed), and
+  // Galar Mine No. 2 opens in the bank on the town's south side. Our own town. Scripts: Data/scripts/hulbury.txt
+  "markers": [
+    { "name": "hulbury_west", "at": [66, 26.3, -1004], "yaw": 90 },
+    { "name": "hulbury_center_door", "at": [79, 26.3, -994], "yaw": 180 },
+    { "name": "hulbury_stadium_door", "at": [128, 26.3, -994], "yaw": 180 },
+    { "name": "galar_mine_2_north", "at": [96, 26.3, -967], "yaw": 180 },
+    { "name": "galar_mine_2_back", "at": [96, 26.3, -980], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "hulbury_center_door",
+      "box": { "min": [78, 25.4, -991], "max": [80, 30, -990] },
+      "room": "Hulbury_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "hulbury_center_door"
+    },
+    {
+      "name": "hulbury_stadium_door",
+      "box": { "min": [127, 25.4, -991], "max": [129, 30, -990] },
+      "room": "Hulbury_Stadium", "at": [4, 8], "facing": "up",
+      "out": "hulbury_stadium_door"
+    },
+    {
+      "name": "galar_mine_2_north",
+      "box": { "min": [94, 25.4, -964], "max": [98, 29, -962.2] },
+      "room": "GalarMine2", "at": [4, 1], "facing": "down",
+      "out": "galar_mine_2_north"
+    }
+  ],
+  "triggers": [
+    // Galar Mine No. 2 is for challengers who hold the Water Badge
+    { "name": "galar_mine_2_shut", "box": { "min": [90, 24, -972], "max": [102, 30, -964.5] }, "script": "MineTwoShut" }
+  ],
+  "solids": [
+    { "name": "Hulbury Stadium", "min": [112, 25.4, -990], "max": [146, 38, -966], "building": { "kind": "hall", "town": "galar", "sign": "HULBURY STADIUM" } },
+    { "name": "Hulbury's Pokémon Center", "min": [72, 25.4, -990], "max": [86, 32, -980], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "the seafood restaurant", "min": [74, 25.4, -1026], "max": [94, 32, -1012], "building": { "kind": "shop", "town": "galar", "sign": "SEAFOOD" } },
+    { "name": "a house on the quay", "min": [116, 25.4, -1026], "max": [130, 32, -1014], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "the lighthouse", "min": [138, 25.4, -1028], "max": [146, 44, -1020], "building": { "kind": "lighthouse", "town": "galar" } }
+  ],
+  "people": [
+    {
+      "name": "mine_2_staffer", "at": [100, 26.3, -969], "yaw": 180, "look": "clerk", "displayName": "League Staff",
+      "lines": ["Galar Mine No. 2 runs south under the banks to Motostoke. It's open to challengers with the Water Badge."]
+    },
+    {
+      "name": "hulbury_fisherman", "at": [104, 26.3, -1026], "yaw": 180, "look": "fisherman", "displayName": "Fisherman",
+      "lines": ["The catch comes in at dawn and it's on a plate in the restaurant by noon. Hulbury lives on the sea."]
+    },
+    {
+      "name": "hulbury_sailor", "at": [134, 26.3, -1004], "yaw": 270, "look": "sailor", "displayName": "Sailor",
+      "lines": ["Nessa's a model as well as a Leader, you know. But try telling her Water types they're only for show!"],
+      "moves": "wander", "radius": 3
+    },
+    {
+      "name": "hulbury_lady", "at": [96, 26.3, -1004], "yaw": 0, "look": "lady", "displayName": "Lady",
+      "lines": ["The lighthouse has watched over this harbour since before the stadium was built."]
+    }
+  ],
+  "trees": [
+    { "at": [70, -970], "kind": "round", "size": 0.9 },
+    { "at": [108, -990], "kind": "round", "size": 0.9 }
+  ]
+}

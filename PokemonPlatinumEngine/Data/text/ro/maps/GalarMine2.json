@@ -1,0 +1,109 @@
+{
+  "displayName": {
+    "en": [
+      "Galar Mine No. 2"
+    ],
+    "text": [
+      "Mina Galar nr. 2"
+    ]
+  },
+  "people": {
+    "galar_worker_hale": {
+      "name": {
+        "en": [
+          "Hale"
+        ],
+        "text": [
+          "Hale"
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Hale: Water seeps into this seam from the harbour. Mind your footing, and mind my Pokémon!"
+        ],
+        "text": [
+          "Muncitorul Hale: Apa se strecoară în galeria asta din port. Ai grijă pe unde calci, și ai grijă de Pokémonii mei!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Hale: Slippery, aren't you? Off you go."
+        ],
+        "text": [
+          "Muncitorul Hale: Alunecos, ce mai! Hai, treci."
+        ]
+      }
+    },
+    "galar_fisherman_cormac": {
+      "name": {
+        "en": [
+          "Cormac"
+        ],
+        "text": [
+          "Cormac"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Cormac: There are fish in the pools down here, if you know where to cast. Let's see what you've caught!"
+        ],
+        "text": [
+          "Pescarul Cormac: Sunt pești în bălțile de aici, dacă știi unde să arunci. Hai să vedem ce-ai prins tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Cormac: Reeled in, I was. Motostoke's at the far end."
+        ],
+        "text": [
+          "Pescarul Cormac: M-ai tras la mal. Motostoke e la capătul celălalt."
+        ]
+      }
+    },
+    "galar_yell_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Membru"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Yell Grunt: Oi! Marnie's the only challenger who matters. You're not getting out of this mine!"
+        ],
+        "text": [
+          "Membru Team Yell: Hei! Marnie e singura concurentă care contează. Din mina asta nu mai ieși!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Yell Grunt: Fine, fine! Go on, then. Marnie'll sort you out herself!"
+        ],
+        "text": [
+          "Membru Team Yell: Bine, bine! Treci, atunci. Marnie se ocupă ea de tine!"
+        ]
+      }
+    },
+    "bede_mine_2": {
+      "name": {
+        "en": [
+          "Bede"
+        ],
+        "text": [
+          "Bede"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmph."
+        ],
+        "text": [
+          "Hm."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

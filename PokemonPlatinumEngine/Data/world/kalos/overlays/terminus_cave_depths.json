@@ -32,5 +32,9 @@
       }
     },
     "zygarde": { "name": "Zygarde", "npcType": "Pokemon", "species": "Zygarde", "script": "Zygarde", "still": true, "hiddenBy": "FLAG_KALOS_ZYGARDE_GONE" }
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Druzarion", 196, 200 ], [ "Bambrawler", 192, 196 ] ]
   }
 }

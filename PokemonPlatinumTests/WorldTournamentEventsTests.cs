@@ -46,7 +46,7 @@ public class WorldTournamentEventsTests
     public void EveryRegionsSectionIsOfferedNowThatItsTableExists()
     {
         var offered = TournamentDatabase.Events.Select(e => e.Id).ToList();
-        foreach (string region in new[] { "sinnoh", "kanto", "johto", "hoenn", "unova" })
+        foreach (string region in new[] { "sinnoh", "kanto", "johto", "hoenn", "unova", "kalos" })
         {
             Assert.Contains(region + "Leaders", offered);
             Assert.Contains(region + "Champion", offered);
@@ -92,9 +92,9 @@ public class WorldTournamentEventsTests
         data.Regions.Add(new TournamentRegionRecord
         {
             Region = "Paldea",
-            Events = { new TournamentEventRecord { Id = "kalosLeaders", Kind = "leaders", Pool = { new TournamentEntrantRecord { Trainer = "kalos_leader_viola", Look = "viola" } } } }
+            Events = { new TournamentEventRecord { Id = "paldeaLeaders", Kind = "leaders", Pool = { new TournamentEntrantRecord { Trainer = "paldea_leader_katy", Look = "katy" } } } }
         });
-        Assert.DoesNotContain(Tournament.Offered(data, Exists, TournamentDatabase.HasData), e => e.Id == "kalosLeaders");
+        Assert.DoesNotContain(Tournament.Offered(data, Exists, TournamentDatabase.HasData), e => e.Id == "paldeaLeaders");
         Assert.False(TournamentDatabase.HasData("Paldea"));
     }
 

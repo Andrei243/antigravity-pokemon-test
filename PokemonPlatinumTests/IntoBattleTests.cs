@@ -347,6 +347,33 @@ public class IntoBattleTests
     }
 
     /// <summary>
+    /// Kalos's thirteen bands (plan 23, Kalos's loose ends; the style guide's fifth table): every Leader, member of the
+    /// Elite Four and Champion of Kalos's data has one, found by class and name, none the base colour of another
+    /// region's band, and a rematch team opens on the same band.
+    /// </summary>
+    [Fact]
+    public void KalosHasItsOwnThirteenBands()
+    {
+        Assert.Equal((8, 4, 1), (SceneTransition.KalosBands.Count(b => b.Class == "Leader"), SceneTransition.KalosBands.Count(b => b.Class == "Elite Four"), SceneTransition.KalosBands.Count(b => b.Class == "Champion")));
+        int Light(Color c) => c.R * 3 + c.G * 6 + c.B;
+        var kalos = TrainerDatabase.OfRegion("kalos");
+        foreach (var band in SceneTransition.KalosBands)
+        {
+            Assert.True(Light(band.Deep) < Light(band.Base) - 300 && Light(band.Light) > Light(band.Base) + 300, $"{band.Name}'s colours");
+            Assert.True(Light(band.Deep) < 1200, $"{band.Name}'s plate is too pale for a white name");
+            Assert.Contains(kalos, t => t.Class == band.Class && t.Name == band.Name);
+            Assert.Equal(band, SceneTransition.BandOf(band.Class, band.Name));
+        }
+        var others = SceneTransition.Bands.Concat(SceneTransition.KantoBands).Concat(SceneTransition.HoennBands).Concat(SceneTransition.JohtoBands).Select(b => Rgb(b.Base)).ToHashSet();
+        Assert.Equal(13, SceneTransition.KalosBands.Where(b => !others.Contains(Rgb(b.Base))).Select(b => Rgb(b.Base)).Distinct().Count());
+        foreach (var trainer in kalos.Where(t => t.Class is "Leader" or "Elite Four" or "Champion"))
+            Assert.Contains(SceneTransition.KalosBands, b => b.Class == trainer.Class && b.Name == trainer.Name);
+        Assert.Equal("Viola", SceneTransition.BandFor(With("kalos_viola_1", BattleTerrain.Building, 12, 10))!.Value.Name);
+        Assert.Equal("Wulfric", SceneTransition.BandFor(With("kalos_wulfric_rematch", BattleTerrain.Building, 70, 60))!.Value.Name);
+        Assert.Equal(Rgb(SceneTransition.KalosBands.Last().Base), Rgb(SceneTransition.BandFor(With("kalos_diantha_1", BattleTerrain.Special, 68, 60))!.Value.Base));
+    }
+
+    /// <summary>
     /// The thirteen bands (the style guide's table): every entry names a trainer of the game's data of that class,
     /// every Gym Leader, Elite Four member and Champion of the data has one, and no two wear the same colours.
     /// </summary>

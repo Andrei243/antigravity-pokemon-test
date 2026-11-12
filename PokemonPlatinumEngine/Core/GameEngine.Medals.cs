@@ -22,7 +22,9 @@ public partial class GameEngine
         Caught = flow.Pokedex.CaughtCount,
         BadgeCount = flow.Story.TotalBadges,
         ChampionCount = RegionDatabase.All.Count(r => flow.Story.IsRegionComplete(r.Id)),
-        CircuitCount = flow.Circuit.Won
+        CircuitCount = flow.Circuit.Won,
+        HeartsReclaimedCount = flow.Hearts.Reclaimed.Count,
+        HeartsOpenedCount = flow.Hearts.Opened.Count
     };
 
     /// <summary>
@@ -33,7 +35,8 @@ public partial class GameEngine
     private void KeepTheMedals(float dt)
     {
         if (!gameStarted) return;
-        long now = ((long)flow.Statistics.Revision << 32) ^ (uint)flow.Story.Revision;
+        long now = (((long)flow.Statistics.Revision << 32) ^ (uint)flow.Story.Revision) * 31
+            + flow.Hearts.Reclaimed.Count * 64 + flow.Hearts.Opened.Count;
         if (now != medalsLookedAt)
         {
             bool quietly = medalsLookedAt == -1;

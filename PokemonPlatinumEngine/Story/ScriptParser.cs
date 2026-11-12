@@ -734,7 +734,7 @@ public static class ScriptParser
             case "photo":
             {
                 // The photo book and its spots (plan 43 · LF4): `photo book`, `photo spot "<id>"`, `photo booked`, how many it holds
-                string photoWord = r.OneOf("take", "album", "count", "book", "spot", "booked");
+                string photoWord = r.OneOf("take", "album", "count", "book", "spot", "booked", "studio");
                 return new Instruction { Op = Op.Photo, Line = line, Name = photoWord, Other = photoWord == "spot" ? r.Text("a photo spot's id") : null };
             }
             case "chooseitem":
@@ -1508,7 +1508,7 @@ public static class ScriptParser
             case "studio":
             {
                 // The film studio (plan 42 · PS4): "studio shoot "emptySeat"", "studio open|stars "id"", "studio rank"
-                string what = r.OneOf("shoot", "open", "stars", "rank");
+                string what = r.OneOf("shoot", "open", "stars", "rank", "premiere");
                 if (what == "rank") return new Instruction { Op = Op.Studio, Line = line, Name = what };
                 string film = r.Text("a film's id");
                 if (Models.Studio.StudioFilms.Get(film) == null) throw r.Error($"'{film}' is no film of the studio's");

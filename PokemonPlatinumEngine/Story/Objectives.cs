@@ -364,6 +364,12 @@ public static class Objectives
         (714, "galarCeremony", AtLeast("VAR_GALAR_STORY", 17), true),
         (715, "galarTurffield", AtLeast("VAR_GALAR_STORY", 18), true),
         (716, "galarMilo", AtLeast("VAR_GALAR_STORY", 19), true),
+        // Plan 33 · GL4, its second session: Hop on Route 5, Nessa, Galar Mine No. 2, Marnie and Kabu
+        (717, "galarRoute5", AtLeast("VAR_GALAR_STORY", 20), true),
+        (718, "galarNessa", AtLeast("VAR_GALAR_STORY", 21), true),
+        (719, "galarMineTwo", AtLeast("VAR_GALAR_STORY", 22), true),
+        (720, "galarMarnie", AtLeast("VAR_GALAR_STORY", 23), true),
+        (721, "galarKabu", AtLeast("VAR_GALAR_STORY", 24), true),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

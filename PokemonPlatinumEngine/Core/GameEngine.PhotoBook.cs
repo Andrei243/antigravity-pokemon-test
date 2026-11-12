@@ -130,6 +130,8 @@ public partial class GameEngine
             string path = PhotoBook.PathFor(folder, WallClock.Local, File.Exists);
             var image = Raylib.LoadImageFromTexture(virtualScreen.Texture);
             Raylib.ImageFlipVertical(ref image);
+            // (The safe area alone, so a photo keeps the book's shape on any screen: rulings, "Other shapes of screen")
+            if (!Canvas.IsStandard) Raylib.ImageCrop(ref image, SafePixels);
             Raylib.ImageResize(ref image, PhotoBook.Width, PhotoBook.Height);
             Raylib.ExportImage(image, path);
             Raylib.ImageResize(ref image, PhotoBook.SmallWidth, PhotoBook.SmallHeight);

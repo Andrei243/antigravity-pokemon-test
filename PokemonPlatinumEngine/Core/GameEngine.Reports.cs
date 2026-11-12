@@ -87,7 +87,7 @@ public partial class GameEngine
         {
             var image = Raylib.LoadImageFromTexture(virtualScreen.Texture);
             Raylib.ImageFlipVertical(ref image);
-            Raylib.ImageResize(ref image, VirtualWidth, VirtualHeight);
+            Raylib.ImageResize(ref image, virtualScreen.Texture.Width / RenderScale, virtualScreen.Texture.Height / RenderScale);
             Raylib.ExportImage(image, Path.Combine(folder, ReportFolder.ScreenName));
             Raylib.UnloadImage(image);
         }

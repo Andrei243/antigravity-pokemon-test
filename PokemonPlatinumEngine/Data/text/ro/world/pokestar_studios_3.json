@@ -1,0 +1,105 @@
+{
+  "displayName": {
+    "en": [
+      "Pokéstar Studios"
+    ],
+    "text": [
+      "Pokéstar Studios"
+    ]
+  },
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Director Wren"
+        ],
+        "text": [
+          "Regizorul Wren"
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Casting Clerk"
+        ],
+        "text": [
+          "Funcționară de casting"
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Staff only past this door. The props in there are worth more than my whole street!"
+        ],
+        "text": [
+          "Dincolo de ușa asta intră doar personalul. Recuzita de acolo valorează mai mult decât toată strada mea!"
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I auditioned for a part as a ghost. They said I was too cheerful. Too cheerful!"
+        ],
+        "text": [
+          "Am dat probă pentru rolul unei fantome. Mi-au zis că sunt prea veselă. Prea veselă!"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Father says he'll buy me a film of my very own. I'll play the hero, the villain and the getaway driver."
+        ],
+        "text": [
+          "Tata zice că-mi cumpără un film numai al meu. Voi juca eroul, ticălosul și șoferul de fugă."
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every film here is shot in one take. If it goes wrong, they just call it a different ending!"
+        ],
+        "text": [
+          "Aici fiecare film se trage dintr-o singură dublă. Dacă iese prost, îi zic doar alt final!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

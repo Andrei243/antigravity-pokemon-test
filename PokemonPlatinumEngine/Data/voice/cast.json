@@ -693,6 +693,10 @@
       "note": "first spoken at CamphrierTown_Castle.txt(7)",
       "provisional": true
     },
+    "casting_clerk": {
+      "note": "first spoken at pokestar_studios_3.txt(56)",
+      "provisional": true
+    },
     "catherine": {
       "note": "first spoken at phone.txt(315)",
       "brief": {
@@ -4936,6 +4940,10 @@
       "note": "first spoken at jubilife_village.txt(37)",
       "provisional": true
     },
+    "gatekeeper": {
+      "note": "first spoken at Hulbury_StadiumMission.txt(8)",
+      "provisional": true
+    },
     "ghetsis": {
       "note": "first spoken at giant_chasm_6.txt(22)",
       "provisional": true
@@ -5396,6 +5404,10 @@
         "pitch": 0.96,
         "accent": "en-us"
       }
+    },
+    "kabu": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(44)",
+      "provisional": true
     },
     "kahili": {
       "note": "first spoken at AlolaLeague_KahiliRoom.txt(8)",
@@ -8949,6 +8961,10 @@
       "note": "first spoken at humilau_city.txt(54)",
       "provisional": true
     },
+    "marnie": {
+      "note": "first spoken at motostoke.txt(49)",
+      "provisional": true
+    },
     "mars": {
       "brief": {
         "register": "woman",
@@ -9340,6 +9356,10 @@
         "accent": "en-us"
       }
     },
+    "nessa": {
+      "note": "first spoken at Hulbury_StadiumPitch.txt(8)",
+      "provisional": true
+    },
     "nikola": {
       "note": "first spoken at nimbasa_city_gym.txt(42)",
       "provisional": true
@@ -9587,6 +9607,10 @@
     },
     "phoebe": {
       "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
+      "provisional": true
+    },
+    "photographer": {
+      "note": "first spoken at JubilifeBoutique.txt(37)",
       "provisional": true
     },
     "piers": {
@@ -10742,6 +10766,10 @@
       "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
       "provisional": true
     },
+    "usher": {
+      "note": "first spoken at pokestar_studios_4.txt(8)",
+      "provisional": true
+    },
     "valerie": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(297)",
       "brief": {
@@ -11154,6 +11182,7 @@
     "Capucine": "capucine",
     "Caretaker": "caretaker",
     "Castellan Aubert": "castellan_aubert",
+    "Casting Clerk": "casting_clerk",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
     "Celeste": "celeste",
@@ -11278,6 +11307,7 @@
     "Garett": "garett",
     "Gate Guard": "gate_guard",
     "Gate Keeper": "look:guard",
+    "Gatekeeper": "gatekeeper",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
@@ -11339,6 +11369,7 @@
     "Joey": "joey",
     "Juan": "juan",
     "Jupiter": "jupiter",
+    "Kabu": "kabu",
     "Kahili": "kahili",
     "Kanoa": "kanoa",
     "Kanoe": "kanoe",
@@ -11413,6 +11444,7 @@
     "Marius": "marius",
     "Marley": "marley",
     "Marlon": "marlon",
+    "Marnie": "marnie",
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
@@ -11455,6 +11487,7 @@
     "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
+    "Nessa": "nessa",
     "Nikola": "nikola",
     "Norma": "norma",
     "Norman": "norman",
@@ -11491,6 +11524,7 @@
     "Philibert": "philibert",
     "Philippine": "philippine",
     "Phoebe": "phoebe",
+    "Photographer": "photographer",
     "Piers": "piers",
     "Pikachu": "pikachu",
     "Pilot": "pilot",
@@ -11627,6 +11661,7 @@
     "TV Producer": "tv_producer",
     "Ty": "ty",
     "Underground Man": "underground_man",
+    "Usher": "usher",
     "Valerie": "valerie",
     "Valet": "valet",
     "Vance": "vance",

@@ -1,0 +1,42 @@
+# Pokéstar Studios: the studios' lot behind Virbank's gate (plan 42 · PS4, part b). A bright film-lot march in F major,
+# brass over a striding bass and a snare's backbeat, with a sweeping strings bridge: the feel of an old picture's opening
+# titles. 32 bars of 4/4 at 132, loop at the top. Four sections of eight bars: the theme, the theme with the horns, the
+# strings' bridge in D minor, the theme once more and a turnaround. Original composition for this game.
+title Pokéstar Studios
+tempo 132
+meter 4/4
+reverb 0.22
+
+track lead brass vol=0.76 pan=0.05 rev=0.2
+  L o5 c4 f8 a8 o6 c4 o5 a4 | o5 b-8 a8 g8 f8 g2 | o5 c4 e8 g8 b-4 g4 | o5 a8 g8 f8 e8 f2 |
+  o5 c4 f8 a8 o6 c4 d4 | o6 c8 o5 b-8 a8 g8 a2 | o5 g4 b-8 o6 d8 c4 o5 b-4 | o5 a8 g8 e8 g8 f2 |
+  o5 f4 a8 o6 c8 f4 c4 | o6 d8 c8 o5 b-8 a8 b-2 | o5 g4 b-8 o6 d8 g4 d4 | o6 c8 o5 b-8 a8 g8 a2 |
+  o5 f4 a8 o6 c8 f4 e4 | o6 d8 c8 o5 b-8 a8 g4 o6 c4 | o5 b-8 a8 g8 f8 e4 g4 | o5 f2 r2 |
+  r1 | r1 | r1 | r1 | r1 | r1 | r1 | o5 a4 g4 e4 g4 |
+  o5 c4 f8 a8 o6 c4 o5 a4 | o5 b-8 a8 g8 f8 g2 | o5 c4 e8 g8 b-4 g4 | o5 a8 g8 f8 e8 f2 |
+  o5 c4 f8 a8 o6 c4 d4 | o6 c8 o5 b-8 a8 g8 a2 | o5 g4 b-8 o6 d8 c4 e4 | o6 f2 r4 o5 c4 |
+
+track strings strings vol=0.42 pan=-0.18 rev=0.26
+  L o4 a1 | b-1 | g1 | a1 | a1 | a1 | b-1 | a1 |
+  o4 a1 | b-1 | b-1 | a1 | a1 | b-1 | g1 | a1 |
+  o5 d4 f4 a4 f4 | e4 g4 b-4 g4 | f4 a4 o6 c4 o5 a4 | e2 c+2 | d4 f4 a4 o6 d4 | c4 o5 b-4 g4 e4 | f4 e4 d4 c+4 | e1 |
+  o4 a1 | b-1 | g1 | a1 | a1 | a1 | b-1 | a1 |
+
+track horns horn vol=0.38 pan=0.22 rev=0.2
+  L o4 f1 | g1 | e1 | f1 | f1 | f1 | g1 | f1 |
+  o4 f4 r4 f4 r4 | g4 r4 g4 r4 | g4 r4 g4 r4 | f4 r4 f4 r4 | f4 r4 a4 r4 | g4 r4 g4 r4 | e4 r4 e4 r4 | f4 r4 f4 r4 |
+  o4 d1 | g1 | f1 | a1 | d1 | g1 | a1 | a1 |
+  o4 f1 | g1 | e1 | f1 | f1 | f1 | g1 | f1 |
+
+track bass bass vol=0.84 rev=0.05
+  L [ o2 f4 o3 c4 o2 f4 o3 c4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 c4 g4 c4 g4 | o2 f4 o3 c4 o2 f4 o3 c4 |
+      o2 f4 o3 c4 o2 f4 o3 c4 | o2 f4 o3 c4 o2 f4 a4 | o2 g4 o3 d4 o2 c4 g4 | o2 f4 o3 c4 o2 f4 o3 c4 | ]2
+  o2 d4 a4 d4 a4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 f4 o3 c4 o2 f4 o3 c4 | o2 a4 e4 a4 e4 | o2 d4 a4 d4 a4 | o2 g4 o3 d4 o2 c4 g4 | o2 d4 a4 b-4 a4 | o2 a4 e4 a4 c+4 |
+  o2 f4 o3 c4 o2 f4 o3 c4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 c4 g4 c4 g4 | o2 f4 o3 c4 o2 f4 o3 c4 |
+  o2 f4 o3 c4 o2 f4 o3 c4 | o2 f4 o3 c4 o2 f4 a4 | o2 g4 o3 d4 o2 c4 g4 | o2 f4 o3 c4 o2 c4 e4 |
+
+track drums kit vol=0.48 rev=0.08
+  L v80 [ b4 s4 b8 b8 s4 | ]7 b4 s8 s8 t8 t8 m8 f8 |
+  [ b4 s4 b8 b8 s4 | ]7 b4 s8 s8 t8 t8 m8 f8 |
+  [ b2 s2 | ]7 b4 s8 s8 t8 t8 m8 f8 |
+  [ b4 s4 b8 b8 s4 | ]7 b4 s8 s8 t8 t8 m8 f8 |

@@ -142,14 +142,14 @@ internal static class MoveSightings
     /// <summary>
     /// Platinum's moves, by name, that Y10's first part takes (plan 25 · Y10a): seen after Route 224, the post-game from
     /// the Fuego Ironworks' sea (Canalave City's rod) to Stark Mountain. Camouflage, which Y6 took by its own rule, is
-    /// left out.
+    /// left out, and so is Flatter (a later place now shows it, but its look and sound were written in Y10b).
     /// </summary>
     public static IReadOnlyList<string> TenthBatchFirstPart
     {
         get
         {
             int from = PlaceRanks.Value[NinthBatchEnds] + 100;
-            return All.Where(s => s.Rank >= from && s.Move != "Camouflage").Select(s => s.Move).ToList();
+            return All.Where(s => s.Rank >= from && s.Move != "Camouflage" && s.Move != "Flatter").Select(s => s.Move).ToList();
         }
     }
 

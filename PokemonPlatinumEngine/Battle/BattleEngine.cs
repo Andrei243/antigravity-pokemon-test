@@ -139,7 +139,17 @@ public partial class BattleEngine
     /// The battle as the Vs. Recorder keeps it, on the day given (plan 08 · P10): the opening, the record of its seed
     /// and answers, and how it ended. Null for a battle whose chance was no <see cref="BattleRandom"/>.
     /// </summary>
-    public BattleRecordFile? RecordFile(DateTime day) => ChangedFromOutside ? null : Opening.Closing(core, day);
+    public BattleRecordFile? RecordFile(DateTime day)
+    {
+        if (ChangedFromOutside || Opening.Closing(core, day) is not { } file) return null;
+        // A take of the studio names its film and the lines chosen, which the premiere picks again (plan 42 · PS4)
+        if (studio != null)
+        {
+            file.StudioFilm = studio.Film.Id;
+            file.StudioPicks = studio.Chosen.ToList();
+        }
+        return file;
+    }
 
     /// <summary>
     /// Whether something outside the battle changed one of its Pokémon after it began (a tool keeping a foe at one HP, a
@@ -750,10 +760,14 @@ public partial class BattleEngine
             return;
         }
         SyncFromCore();
-        // A battle watched opens no menu: the record answers what the rules ask (plan 08 · P11)
+        // A battle watched opens no menu: the record answers what the rules ask (plan 08 · P11); a take's premiere
+        // has its film's beats first (plan 42 · PS4)
         if (Watching)
         {
-            FeedTheRecord();
+            if (studio != null && core.Request is ActionRequest && core.Result == BattleResult.None) StudioCue();
+            // A take that stopped where nobody answered (its turns ran out, or its lead fell) ends its reel there
+            else if (studio != null && core.Result == BattleResult.None && AnswersFed >= Watched!.Answers.Count) reelSpent = true;
+            else FeedTheRecord();
             return;
         }
         // A battle suspended and taken up again plays its record back before any menu opens (plan 12 · Q25)

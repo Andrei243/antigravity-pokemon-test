@@ -194,6 +194,7 @@ if (mode == "castle") h.CastleMode();
 if (mode == "legends") h.LegendsMode();
 if (mode == "arcade") h.ArcadeMode();
 if (mode == "townmap") h.RegionMapMode();
+if (mode == "aspect") h.AspectMode();
 if (mode == "explore") h.ExploreMode();
 if (mode == "epilogue") h.EpilogueMode();
 if (mode == "amity") h.AmityMode();

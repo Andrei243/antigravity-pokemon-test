@@ -10581,6 +10581,39 @@ In our own words, on X and Y's beats as they are publicly described. Kalos's mov
   skating stretches' looks are plan 30's grown kit, which other sessions own. The Friend Safari's other friends and
   Lumiose's online rooms are plan 07's. `profile`'s Lumiose line wants a quiet run on the Windows machine.
 
+## Kalos's rows of the other plans' tables (2026-11-12, plan 23)
+
+Every table a new region adds its row to, swept for Kalos. Nothing of X and Y's is read; the rows are ours.
+
+- **Species of ours in the wild** (plan 03 · D15, design B; its question 9's default: Kalos's batch waits for Kalos's
+  maps, which are drawn). Kalos's batch is the 24 placeable species of ours whose line begins in the sixth generation
+  (`OursSlots.RegionOf`). They live in the rarest slots of Kalos's eleven latest grass places by their tables' highest
+  level (a third of Kalos's 32 places with grass, the tie at 38 taken whole): Routes 18 to 21, the Pokémon Village,
+  Frost Cavern, the Lost Hotel, Victory Road, Terminus Cave's depths, the Unknown Dungeon and Azure Bay; and on the water
+  and the Super Rod of Azure Bay, Kiloude City, Victory Road and the Pokémon Village. Each stands where its forebear's
+  written habitat says (the grassland's on the open routes, the forest's in Route 20's woods, the urban ones in the
+  Lost Hotel, the caves' and mountains' in Frost Cavern, Terminus Cave and the Unknown Dungeon, the sea's on the water),
+  at its evolution level to four above, unmapped, once Kalos's Hall of Fame is entered. Faerieon, the one evolution of
+  ours below 188 (Sylveon's, at 120, with the Eeveelutions), is met at 120 to 124 in the Pokémon Village like the rest:
+  the rule gives it its own level whatever the place's.
+- **The World Tournament** (plan 14 · B12's rule: a region's section once its trainers' table exists). Kalos's section
+  is two events, its Leaders and its League, on the rematch teams (`kalos_<who>_rematch`, the Château's and the League's
+  second round, plan 23's "Kalos finished"), with the looks of Kalos's cast. Kalos's Leaders and League join the world's
+  events that draw on every region, and Diantha stands among the World Champions, who are six now with one of the Elite
+  Four drawn to make seven. No Kalos events of a format of their own (X and Y's sky battles and hordes are the field's).
+- **The bands** (plan 09 · L15). Kalos's eight Leaders, four of the Elite Four and Diantha wear bands of their own
+  (`SceneTransition.KalosBands`, the style guide's fifth table), each after its Gym's type or its room and none the base
+  colour of another region's; until now they wore the plain steel-grey band.
+- **The League's teams beyond** (plan 03 · D15-T), built 2026-11-12 on the user's decision. The rule of the 26 teams
+  of the first five regions is the rematch team slot for slot in species of the region's batch, none twice in the
+  region's teams. Kalos's League fields 26 Pokémon (five each and Diantha's six) against a batch of 24 placeable
+  species, so for this batch alone repeats are allowed, the fewest that fit: two (Kelpdrake in Siebold's and Drasna's
+  teams, Sonarwing in Malva's and Drasna's). The five teams are `kalos_malva_beyond`, `kalos_siebold_beyond`,
+  `kalos_wikstrom_beyond`, `kalos_drasna_beyond` and `kalos_diantha_beyond`; they stand at 200 (the last of each at 203,
+  Diantha's five at 204 and her last at 207, the batch's highest evolution and four, as the other Champions), ready at
+  Kalos's Hall of Fame with a Pokémon at 120 (Faerieon's evolution). `BeyondTeamsTests` holds the repeats to exactly two,
+  for Kalos only. The Champions' circuit's final calls Diantha on hers.
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6; 2026-11-12, CR2, CR5, CR7)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).
@@ -11192,6 +11225,36 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   must grow again, a bake), Galar Mine No. 2, Kabu's mission and battle in Motostoke's stadium (its lobby and pitch are
   built), Hop's and Marnie's battles, the shots of Motostoke for the user to judge and the three badges won in the harness.
 
+## Route 5, Hulbury, Galar Mine No. 2 and Kabu (2026-11-12, plan 33 · GL4, its second session)
+
+- **The land grows north again, three rows** (plan 33 · decision 1 still unanswered): the region's rectangle of chunks is
+  `[-5, -33, 4, 1]` (350 chunks, about 40 MB of bake), not wider. Route 5 and Hulbury lie north of Turffield where Sword
+  has them north-east; at half the distances and in one rectangle that is the cheapest ground, and the order of the
+  places is kept. No grid of control points reaches the new rows, so `terrain/wild_area_north_route5.json` is plateaus
+  alone (a floor at 26 m, the harbour's floor cut at 20 m, two downs, banks on the west, the north of the route and the
+  east). Turffield's north bank has a gap for Route 5's path. Hulbury's harbour is a lake of `water.json` at 24.4 m,
+  walked round and never swum.
+- **Galar Mine No. 2 is a grid cave** (`GalarMine2`) from a door in the bank on Hulbury's south side to a door in
+  Motostoke's east wall, so no ground was baked for it; Motostoke's outskirts are not built, and Marnie waits on the lower
+  terrace by the east wall instead. Both ends are shut to a challenger without the Water Badge (a League staffer's
+  trigger at each), so Motostoke can't be left for Hulbury before Turffield.
+- **The chapter goes on** (`VAR_GALAR_STORY`, postwick.txt's count): Hop's battle at Route 5's gap the day after the
+  Grass Badge (20; Milo's script shows him), Nessa's Water Badge (21), Bede in Galar Mine No. 2 (22), Marnie's battle by
+  Motostoke's east wall (23) and Kabu's Fire Badge (24). Our lines on Sword's beats as publicly told: the walkthroughs
+  put Bede, Team Yell and Marnie between Hulbury and Kabu, which is kept; Hop's battle on Route 5 is ours where Sword's
+  placing of it was not confirmed. People shown by flags of ours, so no story version moves. Objectives 717 to 721.
+- **The missions** stay talks, as Milo's: three gatekeepers at Nessa's floodgates, each pulling a switch when asked (a
+  flag each), and three fire Pokémon loose on Kabu's course, each rounded up (a flag each), with a step at the course's
+  mouth that turns back a challenger without the Water Badge. Sword's switch puzzle and Kabu's points are a later
+  session's grid puzzles. Nessa and Kabu battle with the Dynamax Band; their bands are `PlainBand`.
+- **Ours**: Route 5's trainers and tables, Galar Mine No. 2's, Hop's fourth teams, Bede's second, Marnie's first (Morpeko
+  at 24), the gym trainers', Nessa's (Drednaw at 24, Sword's cap after one badge) and Kabu's (Centiskorch at 27, the cap
+  after two), and three looks (`marnie`, `nessa`, `kabu`, chibi-kit stand-ins on the Adult build as the cast before them).
+  The Pokémon Nursery on Route 5 stands with its door owed, and so do the seafood restaurant and the lighthouse.
+- **The Rotom Bike is not given.** Sword hands it over on Route 5, but the Bicycle's field use flips the grid player's
+  travel mode and plan 30's `RotomBike` mode has no engine in an open map; giving it would ship a bike that rides the
+  grid. It is owed with that engine.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or
@@ -11428,8 +11491,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   (`ChampionsCircuit.Stamp`, both hosts' `EnterHallOfFame`), once each.
 - **The final** opens in the Laurel Court with every finished region stamped: the herald, Piers Lindqvist (53a), calls
   each finished region's Champion forward in the chain's order (`Data/circuit.json`): Cynthia, Kanto's rival, Lance and
-  Wallace on their teams beyond, Iris on hers, Diantha on her second round's (`kalos_diantha_rematch`, since Kalos has no
-  team beyond); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
+  Wallace on their teams beyond, Iris on hers, Diantha on her team beyond (`kalos_diantha_beyond`, since 2026-11-12); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
   battle opens on its Champion's band where the bands name them. A battle lost ends the final with the circuit still under
   way (the team healed, as `canlose` does).
 - **The final won** ends the circuit and counts it (`circuit won`): its team on the gallery's circuit plinth (the record
@@ -11477,7 +11539,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   Tournament's plaza (`pwt`). The eraser smudge shows the afternoon sold twice, the key log puts the clerk in the office
   after hours; the stamped schedule is the decoy. Isidore Calloway waits by the hall's door (200,467;
   `case_unova_isidore`, a Clerk, 76 to 78). Closed: 14,000 and a Nugget.
-- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours the user has not approved: plan 41's end): the night
+- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours, approved by the user 2026-11-12: plan 41's end): the night
   guard by Lumiose City's museum (368,318), the station's porter (548,351) and a painter (583,352) in Kiloude City. The
   bright screws show the canvas leaves its frame, the train ticket says where it goes; the varnish is the decoy. Odile
   Ferrand, the museum's restorer, waits in Kiloude's square (560,354; `case_kalos_odile`, an Artist, 76 to 79). Closed:
@@ -11720,6 +11782,28 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   Verity Cask's Klefki, Bronzong and Probopass at 40, co-starring the talent scout. Their classes are ours: Actor and
   Actress, drawn as the person cast (`characters.json`'s `classes`, null).
 
+### Part b (2026-11-12): the later films, the takes kept and the premiere
+
+- **The later films** (the user's 31a and 32a): Letters in the Fog (a detective story; Lucario, Alakazam and Gallade at 60
+  against Lady Octavia Maul's Persian, Liepard and Purugly at 40, co-starring the captain as the inspector; the right
+  suspect, named by the script's line, 5 stars; the wrong one, either ad-lib, 3; a draw, 1) opens at rank 4, and Thunder at
+  Marlowe Pass (a race against the storm, fought in the rain from the first turn; Jolteon, Ampharos and Raichu at 60
+  against Commodore Brisk's Pelipper, Swanna and Gyarados at 40, co-starring the scout as the pilot; won by a mile, by the
+  third turn, 5; by a head, 3; forced back, 1) at rank 8. Both numbers are ours: the first two films' best stars together
+  reach 4 with one good take, 8 with two.
+- **A take kept**: a new best take is written as a Vs. Recorder file of its own (`replays/studio/studio-<id>.json`,
+  written over the film's last best), with `BattleRecordFile.StudioFilm` naming the film and `StudioPicks` the lines
+  chosen; every other battle's file has neither (both null and left out of the text, so older files read as before). A
+  take is fought by the film's foe's moves turn by turn and its fixed rolls, so `ToSetup` takes both from the film, and a
+  file naming a film the data lacks is refused (`ReplayRefusal.NoSuchFilm`). The takes are kept in a folder of their own so
+  the Vs. Recorder's own list never shows them: a take is watched at its premiere, with its film's beats and ending.
+- **The premiere** (`studio premiere "id"`): the best take's file watched through `BattleEngine.ForReplay` with a director
+  handed the take's picks (`StudioDirector(film, picks)`), who says the lines the take chose with nobody asked; a take that
+  ran out of turns, or stopped where nobody answered, ends its reel there (`ReelOver`) instead of breaking off. Then its
+  ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
+  tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
+  Nothing of it is kept but the number, which the script reads as `RESULT`.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
@@ -11787,3 +11871,50 @@ Colosseum's and XD's snag and purification as a mechanic, with everything in it 
   items and switches) ends it and lowers the gauge. A switch ends it too.
 - **What is not taken**: no Shadow move, Shadow type, Snag Machine, Purify Chamber, Relic Stone, region, villain team or
   name of Colosseum's or XD's; the locked fight with their own moves.
+
+## Other shapes of screen, and the resolution (2026-11-12)
+
+The user plays on a monitor that is not 16:9, and asked for 21:9 and 4:3 (and a rotated 3:4) to be filled rather than
+shown in bars, the monitor's own resolution to be found, and a choice of resolution in the monitor's ratio.
+
+- **A safe area and a canvas** (`Core/AspectLayout.cs`, GPU-free). The interface keeps laying out in 1920 by 1080 units
+  (`GameEngine.VirtualWidth`, `VirtualHeight` are still those constants): that box is the **safe area**. Round it the
+  **canvas** follows the window's shape, still in layout units: as wide as the window asks at 1080 tall where the window
+  is wider than 16:9 (2560×1080 is a canvas of 2560×1080, 3440×1440 of 2580×1080), and 1920 wide and as tall as the window
+  asks where it is narrower (4:3 is 1920×1440, the Deck's 16:10 is 1920×1200). The safe area stands in the canvas's
+  middle. The interface is drawn exactly as before, at the same size on the screen as it was in bars; the scene (the field,
+  a battle, the title's places and an open map), what lies over it (weather, a cave's dark, flashes, a script's fade, the
+  cinema bars) and the ways into a battle are drawn over the whole canvas, where the bars were.
+- **A window within 1 % of 16:9 is 16:9**, to the unit: the full-screen window one row taller than the monitor (1920×1081),
+  1366×768 and the harness's own window are the picture they always were, the same targets and the same pixels. Only a
+  window of another shape changes anything.
+- **Wider than 16:9 sees more to the sides; narrower sees more above and below** (Hor+ and Vert+). The 3D camera keeps the
+  16:9 view inside the safe area exactly, so whatever ties the interface to the scene (the battle's framing of the free
+  part of the picture, the HP boxes beside the Pokémon, the text box over the field) still meets it: wider, the vertical
+  field of view is the same; narrower, it grows so that the safe area's width shows what 16:9's did
+  (`AspectLayout.FovYFor`: `tan(fov'/2) = tan(fov/2) · canvas height / 1080`). The brief's alternative for 4:3, a
+  1440-wide interface scaled to fit, was not taken: it shows the same pixels on the screen and would part the interface
+  from the scene behind it.
+- **Shapes beyond are barred**: the canvas's shape is held between 4:3 and 32:9, and a window outside it shows that much
+  in bars, as every window did before. A monitor turned on its side (3:4, 9:16) is a 4:3 picture with bars above and
+  below: nothing is drawn as tall as 3840×5120, and nothing is laid out for a portrait screen.
+- **Menus that cover the screen** stay in the safe area: nothing of a screen's layout moved. The shared menu backdrop
+  (deep teal and its stripes) and the dim behind a prompt spread over the whole canvas (`Canvas2D.Bled`); a screen with
+  a backdrop of its own shows the black the picture is cleared to beyond the safe area. A split battle's band (plan 45 · BC3) is drawn in
+  the safe area too, with the scene's own view beyond it.
+- **The mouse** is read in the safe area's units (`Viewport` knows where the safe area stands): a click in the canvas
+  outside the safe area is off the picture, as a click on a bar was.
+- **A screenshot** (F12, a report, the developer's shot) is the whole canvas; the Trainer Card's print and the photo book's
+  pictures are cut from the safe area, so they keep the shape they always had.
+- **The monitor's resolution** is asked of the monitor the window stands on whenever full screen is entered and at the start
+  (`AspectLayout.NativeOr`: 1920×1080 where the system answers nothing). The first run's window is the largest size of the
+  **monitor's own ratio** that fits with the taskbar (a 21:9 monitor gets a 21:9 window), and a window saved larger than
+  the monitor it opens on is brought within it.
+- **RESOLUTION** (the options' row, DISPLAY tab, before Help): the sizes offered are the monitor's own ratio at the heights
+  720, 900, 1080, 1200, 1440, 1600, 1800 and 2160 that fit it, and its own size (`AspectLayout.SizesFor`). **In a window**
+  the row is the window's size (only sizes smaller than the monitor), the same setting as WINDOW SIZE, which keeps its
+  old list. **In full screen** the window stays the monitor's size one row taller, as the flicker rule needs, and no
+  display mode is ever changed: the row is the size the 3D scene is drawn at, at most (`GameSettings.FullscreenHeight`).
+  NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
+  (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.
+  The harness never sets it.

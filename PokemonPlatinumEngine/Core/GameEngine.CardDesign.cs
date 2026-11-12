@@ -236,6 +236,8 @@ public partial class GameEngine
         if (cardPrintStage == 0) return;
         var image = Raylib.LoadImageFromTexture(virtualScreen.Texture);
         Raylib.ImageFlipVertical(ref image);
+        // The safe area alone, on a canvas of another shape than 16:9 (rulings, "Other shapes of screen")
+        if (!Canvas.IsStandard) Raylib.ImageCrop(ref image, SafePixels);
         Raylib.ImageResize(ref image, VirtualWidth, VirtualHeight);
         if (cardPrintStage == 1)
         {

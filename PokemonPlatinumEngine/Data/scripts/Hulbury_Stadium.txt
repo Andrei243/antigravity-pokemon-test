@@ -1,0 +1,23 @@
+# Hulbury Stadium's lobby (plan 33 · GL4, its second session): the second gym of the challenge, Nessa's. The mission is
+# through the back (Hulbury_StadiumMission.txt), and the pitch beyond it (Hulbury_StadiumPitch.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge water goto Won
+  say "Welcome to Hulbury Stadium! Nessa's gym mission is through the doors behind me: turn the water aside."
+  say "A gatekeeper stands at each floodgate. Ask, and they'll pull the switch for you. Then Nessa awaits on the pitch."
+  end
+label Won
+  say "Congratulations on the Water Badge! Kabu's gym is in Motostoke, through Galar Mine No. 2."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge water goto Won
+  say "Nessa's Water types can't stand grass or electric moves. Bring a Pokémon that can take a soaking!"
+  end
+label Won
+  say "Two badges! Galar Mine No. 2 is just south of town, under the bank."
+  end

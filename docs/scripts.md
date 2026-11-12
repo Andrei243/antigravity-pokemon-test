@@ -429,6 +429,7 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `photo album` | Opens the photo album (`UI/PhotoAlbumScreen.cs`, Cianwood City's studio) and waits for it to be put away. |
 | `photo count` | `RESULT` is how many photographs the album holds. |
 | `photo book` | Opens the player's photo book (plan 43 · LF4; `UI/PhotoBookScreen.cs`, `Models/PhotoBook.cs`) and waits for it to be put away. |
+| `photo studio` | The photo studio opened over the field (plan 43 · LF5; `UI/StudioScreen.cs`, `Data/photo-studio.json`) and the script waits for it to be left: backdrop, pose, face, a Pokémon of the team and its side, stickers of Seals owned and a frame; TAKE keeps the picture in the photo book with its composition. The studio's gift frame is set by the photographer's own script (`FLAG_PHOTO_STUDIO_FRAME_GIVEN`). |
 | `photo booked` | `RESULT` is how many photographs the photo book holds. |
 | `photo spot "<id>"` | A photo spot's plate read (plan 43 · LF4; `Data/photo-spots.json`): photo mode opens on the spot's view with POSE and FACE alone and the script waits; `RESULT` 1 once a photograph is taken (kept in the photo book), 0 if left without one or nothing opened (a full book). With no window a record with no picture is kept at once. |
 | `wardrobe salon` | The salon's chair (plan 43 · LF3; `UI/SalonScreen.cs`): the cut, the hair's colour, the eyes and the skin, each paid at the chair; waits until it is left. |
@@ -1393,7 +1394,7 @@ The card-flip tables (plan 42 · PS3) are words of `gamecorner`: `gamecorner car
 
 ### The film studio
 
-Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren's desk in Jubilife TV's lobby (`JubilifeTV1F.txt`'s `StudioDesk`) speaks it until the studios' lot is built.
+Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren speaks it at the studio building on Pokéstar Studios' lot behind Virbank's gate (`pokestar_studios_3.txt`'s `StudioDesk`), the usher at the lot's theater (`pokestar_studios_4.txt`'s `Premiere`), and his first desk in Jubilife TV's lobby (`JubilifeTV1F.txt`) still shoots the first two films for a game that hasn't come to Unova.
 
 | Command | What it does |
 |---|---|
@@ -1401,6 +1402,7 @@ Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mech
 | `studio open "gildedHour"` | `RESULT` 1 when the studio's rank opens the film. |
 | `studio stars "emptySeat"` | `RESULT` the film's best stars, 0 never shot. |
 | `studio rank` | `RESULT` the studio's rank, every film's best stars summed. |
+| `studio premiere "emptySeat"` | The film's best take shown again in the lot's theatre (plan 42 · PS4, part b): its Vs. Recorder file (kept in `replays/studio/`, never on the Vs. Recorder's own list) watched with the take's own lines said again, its ending, the crowd and the box office; the script waits, and `RESULT` is the box office in tickets (0 where no take of the film has been kept). |
 
 ### The Laurel Gallery and the Laurel Circuit
 
