@@ -24,7 +24,8 @@ public partial class GameEngine
         ChampionCount = RegionDatabase.All.Count(r => flow.Story.IsRegionComplete(r.Id)),
         CircuitCount = flow.Circuit.Won,
         HeartsReclaimedCount = flow.Hearts.Reclaimed.Count,
-        HeartsOpenedCount = flow.Hearts.Opened.Count
+        HeartsOpenedCount = flow.Hearts.Opened.Count,
+        TourFourStarCount = flow.PhotoTour.FourStars
     };
 
     /// <summary>
@@ -36,7 +37,7 @@ public partial class GameEngine
     {
         if (!gameStarted) return;
         long now = (((long)flow.Statistics.Revision << 32) ^ (uint)flow.Story.Revision) * 31
-            + flow.Hearts.Reclaimed.Count * 64 + flow.Hearts.Opened.Count;
+            + flow.Hearts.Reclaimed.Count * 64 + flow.Hearts.Opened.Count + flow.PhotoTour.FourStars * 4096L;
         if (now != medalsLookedAt)
         {
             bool quietly = medalsLookedAt == -1;

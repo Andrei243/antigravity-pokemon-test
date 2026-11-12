@@ -936,6 +936,8 @@ Plan 44 · SD5; style guide, "The photo tour". The tour's one command, `tour`; a
 | `tour ride "<course>"` | A ride on the course (`GameState.PhotoTour`, `PhotoTourScreen`): the script waits until the judged panel is left and hears the ride's total in `RESULT` (`{result}`), its photographs judged into the report; 0 with no ride (the course not open yet). A game with no window plays the ride at once by the autopilot. It stops a scene's hurry. |
 | `tour open "<course>"` | `RESULT` 1 when the report's total has opened the course, else 0. |
 | `tour points` | `RESULT` the report's total: each species' best photograph on each course, summed. |
+| `tour report` | The report on its screen (`GameState.TourReport`, `TourReportScreen`; plan 44 · SD6): a page to each course, its species' best photographs and the chosen one's print. The script waits until it is left; a game with no window shows nothing. It stops a scene's hurry. |
+| `tour reward` | The next of the guide's rewards (`photo-tour.json`'s `rewards`) that the report's total has earned, handed over as `give` hands an item (its fanfare and its two lines; asked of the randomiser), `RESULT` 1 and `{item}` naming it; nothing due, `RESULT` 0. A guide with more to give asks again. |
 
 ### Treats
 
