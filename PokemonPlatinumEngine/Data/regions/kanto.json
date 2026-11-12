@@ -54,5 +54,7 @@
   "levels": [[2, 62], [63, 104], [75, 120]],
   // Plan 18 · W4b-1: the level cap by Badges held, FireRed's own levels (the Leaders' best in rising order, then the
   // Champion's); mapped by "levels" where the region is crossed into
-  "caps": [14, 21, 24, 29, 43, 43, 47, 50, 63]
+  "caps": [14, 21, 24, 29, 43, 43, 47, 50, 63],
+  // Plan 35 · BN5, given to Kanto with plan 19's last notes: the copy of the pasture every PC of the region leads to
+  "pasture": "KantoPasture"
 }

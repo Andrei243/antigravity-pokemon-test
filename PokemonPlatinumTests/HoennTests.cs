@@ -220,6 +220,13 @@ public class HoennTests
         Assert.Contains(BuiltMaps.Value["LittlerootTown_BrendansHouse_1F"].Props, p => p.Type == PropType.Television);
         Assert.Contains(BuiltMaps.Value["OldaleTown_PokemonCenter_1F"].Props, p => p.Type == PropType.HealingMachine);
         Assert.Contains(BuiltMaps.Value["OldaleTown_Mart"].Props, p => p.Type == PropType.StoreShelf);
+        // Emerald's PC is a tile, which runs the common PC (plan 19's last notes): every Pokémon Center's and the bedrooms'
+        var withoutPc = BuiltMaps.Value.Values.Where(m => m.Name.EndsWith("_PokemonCenter_1F", StringComparison.Ordinal))
+            .Where(m => !m.TileScripts.Any(kv => kv.Value == "PC")).Select(m => m.Name).ToList();
+        Assert.True(withoutPc.Count == 0, "No PC in " + string.Join(", ", withoutPc));
+        // (the player's own bedroom's, by its sign event read as the PC; the neighbours' child's PC is only looked at)
+        Assert.Contains(BuiltMaps.Value["LittlerootTown_BrendansHouse_2F"].TileScripts, kv => kv.Value == "PC");
+        Assert.DoesNotContain(BuiltMaps.Value["LittlerootTown_MaysHouse_2F"].TileScripts, kv => kv.Value == "PC");
     }
 
     [Fact]

@@ -974,6 +974,13 @@ public sealed class WorldOverlayFile
     public InteriorStyle? Interior { get; set; }
 
     /// <summary>
+    /// A room built from a layout that is a hall of the League with no type of its own (plan 19's last notes: Kanto's
+    /// Champion's room and Hall of Fame): <c>Champion</c>, <c>HallOfFame</c> or <c>League</c>, which makes it a
+    /// <see cref="InteriorStyle.Gym"/> of that hall's stone (<c>Map.Hall</c>), as a map file's <c>hall</c> does.
+    /// </summary>
+    public HallStyle? Hall { get; set; }
+
+    /// <summary>
     /// A Gym's hall whose walks stand over the dark (plan 22, wave 48: the Nimbasa Gym's runway): what the room's ways
     /// don't reach and what the original draws nothing on is nothing (<c>TileType.Void</c>), not wall, as the Sunyshore
     /// Gym's gears stand over it.

@@ -198,6 +198,14 @@ internal static class WorldWalk
 
             // A cracked floor that drops to the floor below (plan 21 · H8, part c: Sky Pillar's fourth floor down into its
             // third's middle, the only way to the stairs up from there) takes a walker down onto the same tile
+            // Thin ice that gives way under a second step drops whoever walks it to the same tile of the floor below
+            // (the Sootopolis Gym's and Icefall Cave's, SootopolisIce)
+            if (mode == TravelMode.OnFoot && map.Puzzle is SootopolisIce thin && map.BehaviourAt(x, y) == TileBehavior.ThinIce)
+            {
+                var below = mapOf(thin.Below);
+                if (below.InBounds(x, y) && !below.IsSolid(x, y))
+                    Visit(below, x, y, TravelMode.OnFoot, below.HeightAt(x, y), arrived: false);
+            }
             if (mode == TravelMode.OnFoot && map.HoleTargetAt(x, y) is { } hole)
             {
                 var below = mapOf(hole.Map);
@@ -433,13 +441,10 @@ internal static class WorldWalk
 
     /// <summary>
     /// Floors reached only by falling through the one above, which the field doesn't do yet: the walk sets out from where
-    /// the fall lands. Icefall Cave's B1F lies under 1F's thin ice, which FireRed breaks under a second step (plan 19 ·
-    /// K9, part c, whose session takes the line out once the ice gives way).
+    /// the fall lands. None is, today: Icefall Cave's B1F, under 1F's thin ice, was until plan 19's last notes made the
+    /// ice give way under a second step (<see cref="SootopolisIce.Icefall"/>), which the walk follows.
     /// </summary>
-    public static readonly MapSpot[] FallenTo =
-    {
-        new("FourIsland_IcefallCave_B1F", 8, 9, Direction.Down),
-    };
+    public static readonly MapSpot[] FallenTo = { };
 
     /// <summary>
     /// Places a walk by the starting layouts can't join. Johto's Victory Road has a stretch no tile of the import joins to the rest: 2F's east and north-east and 3F's

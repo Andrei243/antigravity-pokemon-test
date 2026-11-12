@@ -5384,14 +5384,32 @@ The little the islands still owed, as scripts of ours on FireRed's beats and fla
 
 What the islands still owe, and why:
 
-- **The roaming beast.** FireRed sets Raikou, Entei or Suicune roaming once Celio's network is finished, chosen by the
-  starter. `Models/Roamers.cs` keeps a roamer by species and the three of them already have Johto's routes to roam
-  (plan 20), so letting Kanto loose one would need a field of its own in the save to say which region's roam a beast
-  is on. Left to the session that gives the roamers a region.
-- **Icefall Cave's cracked ice** (FireRed's `MB_CRACKED_FLOOR`) needs a tile that remembers how often it has been
-  stepped on and a fall to the floor below; the cave is walked without it, as plan 19 · K9, part b left it.
+- **The roaming beast** is built since plan 29 · LS9: Kanto's Raikou, Entei and Suicune are slots of their own
+  (`Roamers.Slots`, each a region, `Roamer.Region`), set loose in Pallet Town once Oak has given the National Pokédex.
+- **Icefall Cave's thin ice** is built since plan 19's last notes (2026-11-12): 1F is the Sootopolis Gym's rule without its
+  stairs (`SootopolisIce.Icefall`, the puzzle `IcefallIce` of 1F's entry in Kanto's `world.json`): a step onto thin ice
+  cracks it, a second gives way, and the player falls to the same tile of B1F, every one of which is open ground. The
+  cracks last while the player stays, as FireRed keeps them in a temporary variable, and the floor is whole again once
+  come into afresh. FireRed's ice cracks a few frames after the step and gives way a few frames after the second; here
+  each is at once. `WorldWalk` follows the fall, so B1F is no longer among the floors it sets out from.
 - **The Seagallop's Rainbow menu** stays two tiers of questions, since `choose` takes at most six answers and the
   Rainbow Pass opens seven islands.
+- **The PCs of Kanto and Hoenn** (plan 19's last notes, 2026-11-12). FireRed and Emerald mark a PC by its tile alone
+  (`MB_PC`, read by their field as `EventScript_PC`), which nothing read: every tile of `TileBehavior.Computer` in an open
+  area of a room of the two regions runs the common PC (`World.PcsOnTheirTiles`), where nothing of the place's own (a
+  script, or a sign's words: the neighbours' child's PC in Littleroot Town, Birch's screens, Lanette's) is read there.
+  The player's own bedroom PC, which both games mark by a sign event, is read as the PC by its overlay
+  (`pallet_town_players_house_2f`, `littleroot_town_brendans_house_2f`), where it had been a line. So the question of
+  the modern PC (USE THE PC, GO TO THE PASTURE, STROLL COUNTER) is asked in both regions, and each has a pasture of its
+  own (`KantoPasture`, `HoennPasture`, copies of the one plan, the region file's `pasture`); the Stroll Counter's two
+  courses of each were there already.
+- **The Seagallop and Celio's machine** are looks of ours (style guide, "The Seagallop", "Celio's network machine"):
+  things of the map (`NPC.SeagallopType`, `NetworkMachineType`) drawn as cards, the ferry at each harbour and on
+  Cinnabar's quay, the machine before One Island's Pokémon Center's north-east wall.
+- **Kanto's Champion's room and Hall of Fame** are halls of the League (an overlay's `hall`, `WorldOverlayFile.Hall`):
+  the Champion's white and gold with its carpet laid up from the way in (`Map.HallCarpetX`), and the Hall of Fame's dark
+  stone with its crimson carpet; both fought in, where a battle happens, on the League's stage. The Elite Four's rooms
+  were their types' Gym halls since K7.
 - **The Trainer Tower and Altering Cave** want the e-Reader; **Two Island's Poké Maniac** wants a trade, which is plan
   07's.
 

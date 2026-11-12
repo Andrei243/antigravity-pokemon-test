@@ -100,6 +100,8 @@ public abstract class GymPuzzle
         MossdeepTiles.TrickHouseName => new MossdeepTiles(MossdeepTiles.TrickHouseName),
         // Emerald's Sootopolis Gym (plan 21 · H8, part c): the floor of thin ice and its glazed stairs
         SootopolisIce.PuzzleName => new SootopolisIce(),
+        // FireRed's Icefall Cave (plan 19's last notes): the same thin ice on its 1F, named by its entry in Kanto's world.json
+        SootopolisIce.IcefallName => SootopolisIce.Icefall(),
         // HeartGold's Blackthorn Gym (plan 20 · J11, part c), named by its room's entry in Johto's world.json
         BlackthornPlatforms.PuzzleName => new BlackthornPlatforms(),
         // Wulfric's Gym in Snowbelle City (plan 23, Kalos's Gyms): turntables of ice whose hubs turn them

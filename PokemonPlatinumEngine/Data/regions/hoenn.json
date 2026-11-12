@@ -85,5 +85,7 @@
   "levels": [[2, 136], [58, 162], [78, 183]],
   // Plan 18 · W4b-1: the level cap by Badges held, Emerald's own levels (the Leaders' best in rising order, then
   // Wallace's); mapped by "levels" where the region is crossed into
-  "caps": [15, 19, 24, 29, 31, 33, 42, 46, 58]
+  "caps": [15, 19, 24, 29, 31, 33, 42, 46, 58],
+  // Plan 35 · BN5, given to Hoenn with plan 19's last notes: the copy of the pasture every PC of the region leads to
+  "pasture": "HoennPasture"
 }

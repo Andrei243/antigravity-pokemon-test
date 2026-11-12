@@ -285,6 +285,10 @@ public class KantoTests
         Assert.Contains(PropType.HealingMachine, In("ViridianCity_PokemonCenter_1F"));
         Assert.Contains(PropType.Counter, In("ViridianCity_PokemonCenter_1F"));
         Assert.Contains(PropType.Computer, In("ViridianCity_PokemonCenter_1F"));
+        // FireRed's PC is a tile, which runs the common PC (plan 19's last notes): every Pokémon Center's and the bedroom's
+        foreach (var pcRoom in BuiltMaps.Value.Values.Where(m => m.Name.EndsWith("_PokemonCenter_1F", StringComparison.Ordinal)))
+            Assert.Contains(pcRoom.TileScripts, kv => kv.Value == "PC");
+        Assert.Contains(BuiltMaps.Value["PalletTown_PlayersHouse_2F"].TileScripts, kv => kv.Value == "PC");
         Assert.Contains(PropType.StoreShelf, In("ViridianCity_Mart"));
         Assert.Contains(PropType.Bookshelf, In("PalletTown_ProfessorOaksLab"));
         Assert.Contains(PropType.LabMachine, In("PalletTown_ProfessorOaksLab"));
@@ -841,6 +845,34 @@ public class KantoTests
         // Moltres stands on Mt. Ember's summit behind FireRed's flag
         var moltres = Assert.Single(BuiltMaps.Value["MtEmber_Summit"].Everyone, n => n.Species == "Moltres");
         Assert.Equal("FLAG_HIDE_MOLTRES", moltres.HiddenBy);
+    }
+
+    // ------------------------------------------------------------------ plan 19's last notes: Icefall Cave's thin ice
+
+    [Fact]
+    public void IcefallCavesThinIceCracksThenDropsThePlayerToTheSameTileOfB1F()
+    {
+        var floor = BuiltMaps.Value["FourIsland_IcefallCave_1F"];
+        var ice = Assert.IsType<SootopolisIce>(floor.Puzzle);
+        Assert.Equal(SootopolisIce.IcefallBasement, ice.Below);
+        Assert.Empty(ice.Glazed);
+        var below = BuiltMaps.Value[ice.Below];
+        var thin = new List<(int X, int Y)>();
+        for (int y = 0; y < floor.Height; y++)
+            for (int x = 0; x < floor.Width; x++)
+                if (floor.BehaviourAt(x, y) == TileBehavior.ThinIce) thin.Add((x, y));
+        Assert.NotEmpty(thin);
+        // Every hole lands on open ground of the floor below
+        Assert.All(thin, t => Assert.True(below.InBounds(t.X, t.Y) && !below.IsSolid(t.X, t.Y), $"{t} lands in B1F's rock"));
+        var (tx, ty) = thin[0];
+        Assert.Equal(SootopolisIce.Outcome.Cracked, ice.StepOn(floor, tx, ty));
+        Assert.True(ice.IsCracked(tx, ty));
+        Assert.Equal(SootopolisIce.Outcome.Fell, ice.StepOn(floor, tx, ty));
+        // The floor whole again once it is come into afresh
+        ice.Arrive(floor, new PokemonPlatinumEngine.Story.StoryState(), new Random(1));
+        Assert.Empty(ice.Cracked);
+        // A walk of the whole game falls through to B1F
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == ice.Below));
     }
 
     // ------------------------------------------------------------------ plan 19 · K9, part b: the last Sevii Islands

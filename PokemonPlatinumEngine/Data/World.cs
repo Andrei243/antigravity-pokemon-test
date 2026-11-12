@@ -355,6 +355,14 @@ public static class WorldMapBuilder
             // was fought indoors on a plain floor)
             map.Arena ??= BattleArena.Gym;
         }
+        // A room whose overlay names a hall of the League has its stone (plan 19's last notes: Kanto's Champion's room and
+        // Hall of Fame), and is fought in on the League's stage
+        if (room && entry.Area != null && world.Overlay(entry.Area)?.Hall is { } hall)
+        {
+            map.Interior = InteriorStyle.Gym;
+            map.Hall = hall;
+            map.Arena ??= BattleArena.League;
+        }
         // A room whose overlay names its look has it (plan 22, wave 48: Join Avenue, a covered street)
         if (room && entry.Area != null && world.Overlay(entry.Area)?.Interior is { } style) map.Interior = style;
         bool overTheDark = room && entry.Area != null && world.Overlay(entry.Area)?.OverTheDark == true;
@@ -678,6 +686,13 @@ public static class WorldMapBuilder
         RocksInWater(map);
         foreach (var (key, area) in areas)
             if (area.Open) PlaceEvents(world, map, key, area, people: swap == null);
+        // A GBA game's PC is a tile and nothing else (FireRed's and Emerald's MB_PC, which their field reads as
+        // EventScript_PC): in Kanto and Hoenn a room's PC tile runs the common PC, as an overlay's "read" makes Johto's
+        // and Unova's do, wherever nothing of the place's own is read there already (plan 19, the last of its notes)
+        if (room) PcsOnTheirTiles(world, map);
+        // A Champion's hall built from a layout lays its carpet up from the way in, wherever that is (plan 19's last notes)
+        if (room && map.Hall == HallStyle.Champion && map.Warps.Count > 0)
+            map.HallCarpetX = map.Warps.OrderByDescending(w => w.SourceY).First().SourceX - 1;
         // Whoever a DS game's room stands behind a counter stands on the floor behind it, the counter before them (plan 20 · J15)
         if (room && !world.Index.BuildingsAtDoors) BehindTheCounters(map);
         // In the Distortion World a way somewhere is a slab set into the island
@@ -2734,6 +2749,29 @@ public static class WorldMapBuilder
     /// False for a map built only for its ground (<see cref="BuildSwapped"/>): what the events do to the tiles is done
     /// (a signpost's, a door's, a way in that leads nowhere), and nobody is made to stand there.
     /// </param>
+    /// <summary>
+    /// The regions whose rooms mark their PCs by the tile alone (a GBA game's: FireRed's Kanto, Emerald's Hoenn), so
+    /// that <see cref="PcsOnTheirTiles"/> gives each the common PC.
+    /// </summary>
+    public static bool PcIsATile(string? region) =>
+        string.Equals(region, RegionDatabase.Kanto, StringComparison.OrdinalIgnoreCase)
+        || string.Equals(region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Every PC tile of an open area of a room (<see cref="TileBehavior.Computer"/>) that nothing of the place's own is
+    /// read at (a script, or a sign's words: a neighbour's PC, a lab's screen) runs <c>PC</c>, the common PC unless the place writes its own. A secret base's PC is the base's
+    /// (<c>GameEngine.TryInteractSecretBase</c> answers it first), so its rooms are passed by.
+    /// </summary>
+    private static void PcsOnTheirTiles(World world, Map map)
+    {
+        if (!PcIsATile(world.Index.Region) || Models.SecretBaseLayouts.IsBaseMap(map.Name)) return;
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+                if (map.BehaviourAt(x, y) == TileBehavior.Computer && map.AreaAt(x, y) is { Open: true }
+                    && !map.TileScripts.ContainsKey((x, y)) && !map.SignScripts.ContainsKey((x, y)) && !map.Signboards.ContainsKey((x, y)))
+                    map.TileScripts[(x, y)] = "PC";
+    }
+
     private static void PlaceEvents(World world, Map map, string key, MapArea area, bool people = true)
     {
         var file = world.Area(key)!;

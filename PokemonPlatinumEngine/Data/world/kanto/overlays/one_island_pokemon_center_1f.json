@@ -17,6 +17,13 @@
     "hiker": { "name": "Hiker", "dialog": [ "There's a great big volcano at the north end of this island. Mt. Ember, they call it." ] },
     "crush_girl": { "name": "Girl", "dialog": [ "I wish I could trade Pokémon with my boyfriend. He lives far, far away." ] }
   },
+  // Celio's machine, which FireRed draws into the tiles of the block along the north-east wall: two cabinets of ours
+  // standing before it, side by side (plan 19's last notes; style guide, "Celio's network machine"). The block's own sign
+  // events still say what it is
+  "npcs": [
+    { "id": "network_machine_west", "name": "Network Machine", "npcType": "NetworkMachine", "x": 13, "y": 5 },
+    { "id": "network_machine_east", "name": "Network Machine", "npcType": "NetworkMachine", "x": 16, "y": 5 }
+  ],
   "signs": {
     "OneIsland_PokemonCenter_1F_EventScript_NetworkMachine": "A great big machine, humming and blinking. It must be Celio's network machine."
   }
