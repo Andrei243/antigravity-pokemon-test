@@ -55,6 +55,13 @@ public partial class GameEngine
             case "wheel":
                 OpenRouletteTable(number);
                 return 1;
+            // Whether the sitting just ended set a new best of roulette wins in a row (told once)
+            case "streak":
+            {
+                int told = rouletteNewBest ? 1 : 0;
+                rouletteNewBest = false;
+                return told;
+            }
             // A card-flip table (plan 42 · PS3)
             case "cards":
                 OpenCardFlip();
@@ -128,6 +135,9 @@ public partial class GameEngine
 
     // ------------------------------------------------------------------ Mauville's roulette (plan 21 · H12, part o)
 
+    // The sitting just ended set a new best of wins in a row, which the table's script tells once (gamecorner streak)
+    private bool rouletteNewBest;
+
     // PlayRoulette: the coins go to the table, which reads the hour and whether Shroomish or Taillow is in the team
     private void OpenRouletteTable(int minBet)
     {
@@ -141,8 +151,14 @@ public partial class GameEngine
     {
         flow.RouletteScreen.Update(dt);
         if (flow.RouletteScreen.IsActive) return;
-        // ExitRoulette: the coins come back
-        if (flow.RouletteScreen.Wheel is { } wheel) flow.Pastimes.Coins.Set(wheel.Coins);
+        // ExitRoulette: the coins come back, and the most wins in a row is kept (Task_TryIncrementWins)
+        if (flow.RouletteScreen.Wheel is { } wheel)
+        {
+            flow.Pastimes.Coins.Set(wheel.Coins);
+            int before = flow.Story.Var(RouletteWheel.BestRunVariable), best = RouletteWheel.BestRun(before, wheel);
+            rouletteNewBest = best != before;
+            if (rouletteNewBest) flow.Story.SetVar(RouletteWheel.BestRunVariable, best);
+        }
         flow.State = GameState.Overworld;
     }
 

@@ -155,6 +155,7 @@
         "Steel",
         "Dark",
         "Fairy",
+        "Sound",
         null
       ]
     },
@@ -656,7 +657,9 @@
               "FestivalMusicStand",
               "FestivalLeiArch",
               "FestivalHayBales",
-              "FestivalSheaves"
+              "FestivalSheaves",
+              "Seagallop",
+              "NetworkMachine"
             ]
           },
           "x": {

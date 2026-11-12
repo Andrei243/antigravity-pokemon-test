@@ -19391,5 +19391,29 @@
     "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 160,
     "maxPower": 130
+  },
+  {
+    "id": 3090,
+    "name": "Resounding Finale",
+    "type": "Sound",
+    "category": "Physical",
+    "power": 0,
+    "accuracy": 0,
+    "maxPP": 1,
+    "description": "The Sound-type Z-Move. Its power comes from the move it is made out of.",
+    "effect": "ZMove",
+    "kind": "ZMove"
+  },
+  {
+    "id": 3091,
+    "name": "Max Chorus",
+    "type": "Sound",
+    "category": "Physical",
+    "power": 0,
+    "accuracy": 0,
+    "maxPP": 10,
+    "description": "The Sound-type Max Move. Its power comes from the move it is made out of. The din drowns the foes' focus.",
+    "effect": "MaxMove",
+    "kind": "MaxMove"
   }
 ]

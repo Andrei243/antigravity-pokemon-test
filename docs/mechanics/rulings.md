@@ -2538,7 +2538,7 @@ The user's decision 4 (2026-10-12): a region holds every species of its own game
 | The other two starters | Not in Diamond, Pearl or Platinum | The professor's gift with the National Pokédex, at level 5, so they are raised and evolved as the player's own (the user's choice) |
 | Cranidos or Shieldon by the trainer's number | The Underground digs one kind of fossil for an odd number and the other for an even one | The museum's collector gives one of each, once, with the National Pokédex |
 | Leafeon at the Moss Rock | Eterna Forest | Eterna Forest's overlay names the Moss Rock (it was missing) |
-| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) |
+| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) (since plan 38 · EX6 the dual slots' species and the first partners stand in the hideaways too, and the visitors are still drawn from all of them: `SpeciesSources.PalParkVisitors`) |
 | Rotom's appliances, Shaymin's Sky Forme, the event legendaries' places | The Secret Key, the Gracidea, the Member Card, the Azure Flute, the Oak's Letter | Rotom's appliances: plan 03 · D12c. The rest: plan 29 · LS11a ("Sinnoh's event Pokémon, by ways of our own") |
 | Unown's ! and ? | The room past Maniac Tunnel | Plan 08 · P19 |
 
@@ -5373,7 +5373,7 @@ was raised: each place's arrival hides whoever its part of the errand hasn't rea
 - **Celio's last scene.** Given the Sapphire he finishes the machine and it links the islands with Hoenn (6,
   `FLAG_SYS_CAN_LINK_WITH_RS`): Cerulean Cave's guard goes (`FLAG_HIDE_CERULEAN_CAVE_GUARD`), Lorelei goes back to
   the League (`FLAG_HIDE_LORELEI_IN_HER_HOUSE`), and the Elite Four and the Champion battle with FireRed's second
-  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast is not let loose.
+  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast was not let loose then; plan 29 · LS9 lets it loose in Pallet Town (below, "What the islands still owe").
 - **The Tanoby Key.** Its seven floor switches are pits (`pits` in the overlay): a boulder come to rest on one sets a
   local flag of ours (`FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1` to `_7`), and the seventh opens the seven chambers for good
   (`FLAG_SYS_UNLOCKED_TANOBY_RUINS` on their doors' `openedBy`). Leaving the room forgets a half-done puzzle, as the
@@ -5436,14 +5436,32 @@ The little the islands still owed, as scripts of ours on FireRed's beats and fla
 
 What the islands still owe, and why:
 
-- **The roaming beast.** FireRed sets Raikou, Entei or Suicune roaming once Celio's network is finished, chosen by the
-  starter. `Models/Roamers.cs` keeps a roamer by species and the three of them already have Johto's routes to roam
-  (plan 20), so letting Kanto loose one would need a field of its own in the save to say which region's roam a beast
-  is on. Left to the session that gives the roamers a region.
-- **Icefall Cave's cracked ice** (FireRed's `MB_CRACKED_FLOOR`) needs a tile that remembers how often it has been
-  stepped on and a fall to the floor below; the cave is walked without it, as plan 19 · K9, part b left it.
+- **The roaming beast** is built since plan 29 · LS9: Kanto's Raikou, Entei and Suicune are slots of their own
+  (`Roamers.Slots`, each a region, `Roamer.Region`), set loose by the first arrival in Pallet Town of a Champion of Kanto with the National Pokédex (`pallet_town.txt`).
+- **Icefall Cave's thin ice** is built since plan 19's last notes (2026-11-12): 1F is the Sootopolis Gym's rule without its
+  stairs (`SootopolisIce.Icefall`, the puzzle `IcefallIce` of 1F's entry in Kanto's `world.json`): a step onto thin ice
+  cracks it, a second gives way, and the player falls to the same tile of B1F, every one of which is open ground. The
+  cracks last while the player stays, as FireRed keeps them in a temporary variable, and the floor is whole again once
+  come into afresh. FireRed's ice cracks a few frames after the step and gives way a few frames after the second; here
+  each is at once. `WorldWalk` follows the fall, so B1F is no longer among the floors it sets out from.
 - **The Seagallop's Rainbow menu** stays two tiers of questions, since `choose` takes at most six answers and the
   Rainbow Pass opens seven islands.
+- **The PCs of Kanto and Hoenn** (plan 19's last notes, 2026-11-12). FireRed and Emerald mark a PC by its tile alone
+  (`MB_PC`, read by their field as `EventScript_PC`), which nothing read: every tile of `TileBehavior.Computer` in an open
+  area of a Pokémon Center of the two regions runs the common PC (`World.PcsOnTheirTiles`; the import gives a lab's machines and an office's computers the same behaviour, so it goes no further), where nothing of the place's own (a
+  script, or a sign's words: the neighbours' child's PC in Littleroot Town, Birch's screens, Lanette's) is read there.
+  The player's own bedroom PC, which both games mark by a sign event, is read as the PC by its overlay
+  (`pallet_town_players_house_2f`, `littleroot_town_brendans_house_2f`), where it had been a line. So the question of
+  the modern PC (USE THE PC, GO TO THE PASTURE, STROLL COUNTER) is asked in both regions, and each has a pasture of its
+  own (`KantoPasture`, `HoennPasture`, copies of the one plan, the region file's `pasture`); the Stroll Counter's two
+  courses of each were there already.
+- **The Seagallop and Celio's machine** are looks of ours (style guide, "The Seagallop", "Celio's network machine"):
+  things of the map (`NPC.SeagallopType`, `NetworkMachineType`) drawn as cards, the ferry at each harbour and on
+  Cinnabar's quay, the machine before One Island's Pokémon Center's north-east wall.
+- **Kanto's Champion's room and Hall of Fame** are halls of the League (an overlay's `hall`, `WorldOverlayFile.Hall`):
+  the Champion's white and gold with its carpet laid up from the way in (`Map.HallCarpetX`), and the Hall of Fame's dark
+  stone with its crimson carpet; both fought in, where a battle happens, on the League's stage. The Elite Four's rooms
+  were their types' Gym halls since K7.
 - **The Trainer Tower and Altering Cave** want the e-Reader; **Two Island's Poké Maniac** wants a trade, which is plan
   07's.
 
@@ -6982,8 +7000,11 @@ and that a warp never crosses regions stands in the way of a plain door.
   tower`, `factory`; the overlay's `read`, `battle_frontier_ranking_hall.txt`); the annex's venues keep no board, so the
   Dome's, Palace's, Arena's, Pike's and Pyramid's say where they are fought. Scott's house still offers his crossing to
   Sinnoh's grounds.
-- **Left out**: Emerald's hall buildings' own lobbies and Brains (Tucker, Spenser, Greta, Noland, Lucy, Brandon, Anabel),
-  whose places are Sinnoh's five Brains and the annex's; the Ranking Hall's link records; Trainer Hill, which is no hall.
+- **Left out**: Emerald's hall buildings' own lobbies, and Anabel and Noland, the Tower's and the Factory's Brains, whose
+  places are Sinnoh's Tower Tycoon and Factory Head; the Ranking Hall's link records; Trainer Hill, which is no hall.
+  Lucy and Brandon have stood in the annex's Pike and Pyramid since plan 14 · B10, and Spenser, Greta and Tucker in its
+  Palace, Arena and Dome since 2026-11-12 ("The Brains of the Palace, the Arena and the Dome, the roulette's service day
+  and the Trainer Hill's clerk").
 
 ## Rayquaza on Sky Pillar and Steven at Meteor Falls (2026-10-26, plan 21 · H12, part c)
 
@@ -8627,6 +8648,22 @@ could not be read, so each look is ours, chosen from the kit's.
   the warp's fade, where `WorldRenderer.ScenesFor` waits on purpose. J10's count had added the two together before the
   harness told them apart, so there is no fault.
 
+## The night aboard by its own light (2026-11-12, plan 20, part w)
+
+Part u's decision 3 had the S.S. Aqua's cabin lit by the clock, as every room is, so a crossing made at noon showed the
+cabin in daylight while its lines told of the sunset and of sleep. Ours, not HeartGold's (whose voyage is a night aboard
+whatever the console's clock says):
+
+- *The light, not the hour*: a scene may hold the field's light as at an hour of its own (`lighting 21`), and give it
+  back to the clock (`lighting clock`). Only the picture is held; `if time`, the wild Pokémon, the radio, the day's
+  events and every rule that reads the hour go by the clock as ever, so a scene can never move the story's day.
+- *How long*: until the player next goes somewhere (every warp and door, a white-out, a new game or a loaded one), so the
+  light changes only behind a fade; a hold is never saved. A scene gives it after its `warp`, since the warp lets the
+  last one go.
+- *The crossing*: the cabin is held at nine in the evening (night, past the sunset its first line tells of), the deck at
+  seven in the morning until the player leaves it down the gangway. In a hurry the hold is made at once, as when played.
+- *A photograph's hour* (plan 12 · Q16) still comes first: a photo taken in the cabin under its own hour is as asked.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
@@ -9046,8 +9083,8 @@ so does every region of this game before Kalos.
   Emerald's collision under a strip of our own whose middle is walled off, drawn as a Gym's hall; the stairs down from a
   floor lead to the floor below or the lobby with the climb going on; the lift on the roof goes straight to the lobby.
   A game saved on a floor is laid again round the player on loading (`trainerhill laid`), from the climb's variables.
-- **Not built**: the e-Reader's challenges and card, the lobby's clerk and her shop, the board as a screen of its own
-  (the gentleman reads the four best times out), Emerald's floor art and music.
+- **Not built**: the e-Reader's challenges and card, the board as a screen of its own (the gentleman reads the four best
+  times out), Emerald's floor art and music. The lobby's clerk and her shop are built since 2026-11-12.
   `git cat-file`, against what parts h to j said; it is not built.
 
 ## Mauville's slot machines, the two basements and the quiz and contest ladies (2026-11-02, plan 21 · H12, part n)
@@ -10043,7 +10080,7 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **The Safari Fan Club** (Emerald's `TVSHOW_SAFARI_FAN_CLUB`, lines ours): a Safari Game begun in Hoenn sets its counts to nought and takes the last show off the air; each of its battles counts a catch and the Pokéblocks thrown (`BattleEngine.PokeblocksThrown`); its end (`safari end`, the last ball, the steps or the door) puts the show on the air. A television shows it first the once it is new (`FLAG_HOENN_SAFARI_FAN_CLUB_NEW`), then among the programmes a die draws, in Hoenn only, until the next game begins.
 - **The Contest Lady's programme** stands for Emerald's record-mixed show of her: when her Pokémon is ready (five good Pokéblocks, or five of any), the condition it trained for and whether the good ones made it ready go on the air at home (`VAR_HOENN_CONTEST_LADY_SHOW`, `_SHOW_GOOD`), shown first once and then drawn among the rest in Hoenn. Nothing of record mixing is built: a player's own quiz for others, contests and the blender with friends and the link receptionist's records are plan 07's.
 - **The orbs given back** (Emerald's `MtPyre_Summit_EventScript_ArchieMaxieBeginReturnOrbs`, lines ours): as the leaders leave Sootopolis (`sootopolis_city.LeadersLeave`) `VAR_MT_PYRE_STATE` becomes 2 and they stand at Mt. Pyre's summit, Maxie a tile west of Archie (the import stands both on one tile); the area's three triggers on the row below the shrine play the scene, which hides them for good and sets the state to 3; the old woman's word changes after it. A save whose leaders had left before this was written is given state 2 by the summit's arrival.
-- **Left, and decided**: Emerald's service-day roulette rate and its record of roulette wins in a row are not built (no part of the game reads either); everything that needs another player is plan 07's.
+- **Left, and decided**: Emerald's service-day roulette rate and its record of roulette wins in a row are not built (no part of the game reads either); everything that needs another player is plan 07's. *Built since* (2026-11-12, the user's word): both, under "The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk".
 
 ## The last of Unova's old roads: Twist Mountain's winter, Wellspring Cave, the Skyarrow Bridge, the Black Tower, N's Castle, the Cave of Being and the Abyssal Ruins (2026-11-04, plan 22 · U10, the last part)
 
@@ -10269,9 +10306,36 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   way out either: the way out is its mouth. A flag carried below and a trap sprung are left in the tunnels, as on any way up. **What
   it costs Pal Park**: with the dual slot's species and the first partners given, `OnlyInPalPark` is the eighteen legendary and
   mythical Pokémon of the older regions, so the Catching Show's day of six visitors (`PalParkState.VisitorSpecies`, which draws on
-  that pool) is six of them: that is the plan's rule followed through, and the user's to keep or change. The pools are the rule by
+  that pool) would have been six of them. **Decided in part b (2026-11-12)**: the plan's rule stays (`OnlyInPalPark` is what only the park gives), and the visitors are drawn from a pool of their own, `SpeciesSources.PalParkVisitors`: what only the park would give were there no hideaways, read the same way with the hideaways left out (76 species, the list it was before EX6), so the park keeps bringing the older games' species from far away beside the legendaries. The pools are the rule by
   type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
-  **Not laid yet**: ice that slides and lava (neither has a ground of a map file), and part b's statues.
+  **Not laid yet**: ice that slides and lava (neither has a ground of a map file).
+- **Statues** (EX6, part b, 2026-11-12; `Data/statues.json`, ours; `Hideaways.WallsOf`, `WallTable`, `Weights`). A statue is a good of
+  ours for every species any hideaway's pool may hold (266, in National order as first written, later ones appended), numbered from `UndergroundDatabase.StatueFirst` (1001)
+  past the original's 138 goods, so nothing drawn from the original's goods (a digger's base, a hiker's stock) meets one, and
+  with a rarity of one to three by its base stats (under 420 common, under 500 uncommon, the rest rare). **Dug from the hideaways'
+  walls**: two walls a day in each hideaway (rock with dry open floor before it, chosen by SplitMix from the seed and the day's number,
+  glinting gold once as the player first comes within four tiles of it), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
+  gives two more and nothing new is saved), through the Underground's own `Wall` script and the original's wall game on a table of
+  ours (`MiningGame(Rand32, WallItem[])`: the statues of the day's twelve Pokémon there at weights 12, 6 and 2 by rarity, and the
+  five small Spheres at 8 each, two to four things a wall and the original's dark rocks; the original's own walls draw exactly as
+  before). A statue dug out goes into the bag's goods (it counts among the treasures dug) and is put in the PC and placed in the
+  base like any good, one tile that it blocks, within the base's limit (`SecretBaseRules.GoodsLimit`: ten, twelve or fifteen).
+  **What a statue does**: each statue standing in the base counts once for each of its species' types, up to ten of a type
+  (`Hideaways.Weights`; one in the PC or the bag counts for nothing), and every hideaway's day of twelve is then picked by weight
+  instead of evenly: a species weighs 2 and one more for each counted statue of each of its types (`PickWeight`). Three Water
+  statues therefore take the first pick's Water share in the lake cavern from W/N to 5W/(5W + 2(N − W)) for a pool of N species
+  of which W are Water (`StatueTests` holds it exactly, and over a year of tables). With no statue in the base nothing is weighed and
+  every table, `levels.txt` among them, is what it was. **How a statue looks** is the style guide's "A statue": a stone figure of its
+  species' Pokédex shape on a plinth with its type's plaque, painted by the kit, not the species' field sprite in stone as the plan
+  asked, since a field sprite is baked on the graphics card in later frames and a face painted from it would differ between runs.
+- **Soaring** (EX7, part a, begun 2026-11-12; `Overworld/Soaring.cs`, ours; decision 8 at its recommendation: the team's flier, or the
+  helper the field lends). A flight is a place in the region map's own cells, a heading and a height of one to five (starting at
+  three); it cruises at 2.5 cells a second and at 5 with Run, turns at 110° a second and climbs or dives a height in two thirds of
+  a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
+  open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
+  open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
+  the sky and the landing through Fly's own way are not built yet.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
@@ -11472,6 +11536,58 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Hop's slump** is told at the Hero's Bath (Bede beat him in Ballonlea, off screen); the hotel scene of Sword is not built.
 - **Opal's parting line** said the road ran west; it runs east from Hammerlocke, and says so now.
 
+## Wyndon, the Champion Cup and the Darkest Day (2026-11-12, plan 33 · GL6)
+
+- **Wyndon is three rows north of the land GL5 built, behind the mass, and come to by train** (plan 33 · decision 1 still
+  unanswered): the region's chunks are `[-5, -51, 4, 1]` (530 chunks, about 75 MB of bake, from about 71). Sword reaches
+  Wyndon up Route 10's snowfields from Circhester; **Route 10 is not built**, so the land grows by three rows of ten and
+  not by the six a route and a city would want. The train from Hammerlocke's station by the south gate (`TrainToWyndon`,
+  eight badges) lands on Wyndon Station's square and the station's staff send the player back; the wall of mass between
+  Wyndon and Circhester is never come to. Route 10 is owed, with its snow and its station.
+- **Wyndon** is one floor at 26 m: the station in the south-west, the avenue east past the Pokémon Center and a boutique
+  to the hotel, Wyndon Stadium in the middle of the north side and Rose Tower (a `tower`, 46 m) east of it. Its rooms:
+  `Wyndon_PokemonCenter`, `Wyndon_Stadium` (the lobby), `Wyndon_StadiumPitch`, `Wyndon_RoseTower` (the lobby, its lift's
+  warp there from `FLAG_GALAR_OLEANA_BEATEN`) and `Wyndon_EnergyPlant` (the tower's top), each of a shape already built
+  (a Pokémon Center's, a stadium lobby's, a pitch's).
+- **The Champion Cup is fought in story order, its bracket not drawn**: plan 33 asked for plan 14 · B8's `Bracket`, but
+  the `tournament` and `bracket` words seat their entrants at level 50 as copies and pay Battle Points, which is not a
+  story's Cup at the challenge's levels. So the pitch's arrival shows the opponent whose match is due on one spot of the
+  pitch, and each is a `battle … as` of ours: the Semifinals Marnie (`galar_marnie_2`) and Hop (`galar_hop_6a`/`b`/`c`
+  by the starter), the Finals after the Darkest Day Bede, back as Opal's heir (`galar_bede_3`), and Raihan one on one
+  (`galar_raihan_2`), then the Champion Match with Leon (`galar_leon_1`, Charizard last at 65, Sword's cap). Everyone
+  Dynamaxes their last Pokémon. Sword's Finals bracket (Nessa, the version's Leader, Raihan) is not followed: Bede was the
+  plan's entrant, and the version's Leader would have wanted two teams. **The bracket screen is owed** (B8's
+  `BracketScreen` with Galar's eight, the other matches fought headless).
+- **The Darkest Day comes after the Semifinals**, as the player walks back through the stadium's lobby (`Wyndon_Stadium`'s
+  `OnEnter` at 39): the sky turns, Leon is missing, and Hop takes the player south to the Slumbering Weald's altar, where
+  the rusted sword and shield lie and the two of the legend are seen (`seen` both; nothing is given: the rusted sword and
+  shield are GL7's), and back to Rose Tower, open from then on. Sword's order (the Darkest Day on the Finals' morning,
+  with Leon's meeting the night before) is kept in its beats, not its days: nobody sleeps in a hotel. Oleana stands in
+  the tower's lobby while the Darkest Day lasts (her class `Secretary`, a look of ours); Chairman Rose battles on the
+  Energy Plant's roof (`Chairman`).
+- **Eternatus is a raid that can't fail** (plan 33's design): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with
+  …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
+  and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
+  Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
+  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
+- **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
+  untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
+  gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+- **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
+  (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
+  it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
+  light is the picture's alone: a battle there and the zones' tables go by the hour as ever.
+- **Circhester's high street keeps its stone** (GL5's owed fault): the town's snow was painted over the street; the
+  street and the way up to the stadium are painted rock before the snow, since the first paint that holds a point is
+  the one.
+- **The Hall of Fame** is the pitch's own, as Alola's is: the team recorded, `GalarHallOfFame` set, the team healed, home to
+  the bedroom in Postwick, the game saved there and the credits. `VAR_GALAR_STORY` runs 36 to 46: 37 Leon and Hop on the
+  avenue, 38 Marnie beaten, 39 Hop beaten, 40 the Darkest Day, 41 the altar, 42 Oleana beaten, 43 Eternatus caught and the
+  sky clear, 44 Bede beaten, 45 Raihan beaten, 46 the Champion. Objectives 734 to 743, `galarFree` after them. A title
+  defended, Leon's rematches and the plane on to Paldea are GL7's.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or
@@ -12284,9 +12400,10 @@ desk of ours. Nothing of it rides on plan 07's online server, and nothing waits 
   (`RecordMixSave.Visiting`). The base PC's REGISTRY names whose bases are registered.
 - **Television**: Street Talk's mixed edition (`Programme.MixedInterviews`, `broadcast mixed`) tells the three newest
   interviews mixed in; it is on only once there is one, so no game's die moves before then.
-- **Not built**: Emerald's other mixed records (the Trainer Hill's times, the Lilycove Lady's and the television's other
-  shows, the Battle Tower's partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their
-  own rulings have them.
+- **Not built**: Emerald's other mixed records (the Lilycove Lady's and the television's other shows, the Battle Tower's
+  partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their own rulings have them. The
+  Trainer Hill's times are mixed since the same day ("The Brains of the Palace, the Arena and the Dome, the roulette's
+  service day and the Trainer Hill's clerk").
 
 ## The delve (2026-11-12, plan 44 · SD7)
 
@@ -12346,3 +12463,75 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+
+## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
+
+The user asked for everything left of Hoenn (2026-11-12). These are the parts of plan 21's leftovers that one sitting
+built; what is still owed is listed at the end and in plan 21's last note.
+
+- **Emerald's three Brains that had none here** (`Models/Frontier/EmeraldBrains.cs`): the Battle Palace, the Battle Arena
+  and the Battle Dome were the annex's venues with no Brain (plan 14 · B8 and B9); the Pike and the Pyramid have had
+  theirs since B10. *Emerald's*: when each comes (`sFrontierBrainStreakAppearances`): Spenser the Palace Maven at the 21st
+  battle won in a row with his first team and at the 42nd and every 21st after with his second; Greta the Arena Tycoon at
+  the 28th, and the 56th and every 28th after; Tucker the Dome Ace in the tournament after four won in a row, and after nine
+  and every fifth after. A venue's Brain is the round's seventh trainer (its streak counts battles, so the seventh of the
+  third round is the 21st); the Dome Ace takes the place of the trainer seated first in the half of the bracket the player
+  isn't in (Emerald seats its Brain in the first or second place of its list by the side the player's name is drawn on),
+  and wins every match that isn't the player's without a battle (`DecideRoundWinners`), so he is met in the final if the
+  player gets there. *Ours*: their teams (`our-trainers.json`, `palace_maven_spenser`, `arena_tycoon_greta`,
+  `dome_ace_tucker` and each `_gold`) are three of Emerald's species at level 50 with the moves they learn, as the Pike
+  Queen's and the Pyramid King's are; their looks and every line. **The draws don't move**: a round or a tournament with a
+  Brain draws its trainers exactly as one without, and the Brain is set over the one drawn last, so nothing of a challenge
+  without a Brain changed. The Battle Palace's announcer, who had been called "Palace Maven", is its attendant now, since
+  that is Spenser's title. **No symbols**: the three give no print, as the Pike Queen and the Pyramid King give none
+  (`frontier prints`, which the ferry's tickets hang on, counts only the Tower's and the five facilities' of Sinnoh).
+- **The roulette's service day** (`RouletteWheel.ServiceDayBet`): Emerald's right table takes six Coins a ball on a service
+  day (`sTableMinBets`' fourth, `ROULETTE_SPECIAL_RATE`), so every hit pays twice the usual; the left table is the same
+  every day. *Ours*: Emerald's PokéNews of the Game Corner calls the day, which this game doesn't play, so the service day
+  is every Saturday (the table's script asks `if weekday saturday`; `gamecorner wheel 6`).
+- **The record of roulette wins in a row**: Emerald keeps the most wins in a row of any sitting as a game record
+  (`GAME_STAT_CONSECUTIVE_ROULETTE_WINS`, `Task_TryIncrementWins`); here it is the story's
+  `VAR_HOENN_ROULETTE_WINS_IN_A_ROW`, a variable of ours, written as a sitting ends. *Ours*: a sitting that beats it says
+  so as the player stands up (`gamecorner streak`, `mauville_city_game_corner.RouletteRecord`); Emerald shows the record
+  nowhere but in its own records.
+- **The Trainer Hill's clerk** (`TrainerHillLobby`, `hill_clerk` behind a counter of her own by the west wall): Emerald's
+  two stocks in its order (`TrainerHill_Entrance_Pokemart_Basic`, and `_Expanded` once the game is cleared, here Hoenn's
+  Hall of Fame; `marts.json`'s `trainer_hill` and `trainer_hill_champion`). She sells before the counter opens to
+  Champions, as Emerald's does.
+- **The Trainer Hill's times mixed in** (`RecordMix`, plan 40 · GE10): a record mixed from another save carries that game's
+  four best climbs (`MixedRecord.HillBest`, frames, null where it has climbed none), and the board's gentleman reads out the
+  fastest of each challenge among them with whose it is (`trainerhill mixed`, `{hill:MIXED_NORMAL}` and its kin), after the
+  player's own; Emerald ranks the mixed times on the Hill's own board.
+- **The island's lounges and doll counters**: the Exchange Service Corner's two decoration clerks trade Battle Points for
+  Emerald's posters, cushions and dolls at Emerald's prices (16 to 256), into the decoration PC (`openbase trade`); Lounge
+  7's two tutors teach Emerald's ten moves each at Emerald's prices (16 to 48), the points paid once the move is learned
+  (`tutor frontier left|right`, `tutor spend`; who may learn which is ours, by the Kanto tutors' rule of a move or its
+  nearest kin, `MoveTutors.FrontierLounge`); Lounge 5's little girl reads a Pokémon's nature by the Battle Palace's table
+  (`venue nature`: the group it leans to most with more than half its HP, and with half or less), in words of ours where
+  Emerald has a line for each nature.
+- **Still owed**: Lounge 3's gambler (Emerald's bet of points on a challenge of a facility he names, which no record of a
+  challenge here is tied to); Anabel and Noland, the Tower's and the Factory's Brains of Emerald, for a challenge begun from the
+  island's doors (the Tower and the Factory are Platinum's own facilities, whose Brains and prints the ferry's tickets count;
+  dressing another Brain in by the door the player came through wants the challenge to remember that door, which no
+  record holds); the island's own lobbies (part m's reason stands: a lobby's counter warps on to its corridor and battle
+  rooms, Sinnoh's maps); the e-Reader's floors and card (no data of them in the pinned source); the Hill's own floor art,
+  lift and music, and its board as a screen; Emerald's other mixed records (the Lilycove Lady's and the television's other
+  shows, the Battle Tower's partners, the Quiz Lady's quizzes, which no save sets for others yet, the Pokémon News, the
+  Apprentice, a mechanic of its own).
+
+## Species made from nothing (2026-11-12, plan 46 · CP1)
+
+- **What they are**: Carpathia's own species, with no forebear in any game. Each is a row of `tools/DataImporter/Overrides/species-carpathia.json` with every value a species has (`SpeciesOfNothing.Missing` names a value left out, and the import stops); the importer makes it a whole species of `species.json` after D14's (`SpeciesOfNothing.Add`), its moves, abilities and evolutions' targets checked against the data.
+- **Numbers**: 10000 + its number in the Carpathian Pokédex (`PokemonDatabase.CarpathiaFrom` = 10001 is the first), generation 0. The Carpathian forms of existing species are kept for the block from 11000 (`CarpathianFormsFrom`, 11000 + the species' National number), since 10000 + a National number would meet the Pokédex's own numbers.
+- **Which of ours**: `PokemonSpecies.IsOurs` stays "no species of the games" (any number from 2000), so every exclusion of ours (a trade, a file of the games, the National Pokédex's totals and diploma, the Frontier's legendaries, the way out) holds for Carpathia's by itself. What is D14's alone asks `IsPastHundred` (2000 to 10000): the Pokédex of our own (`PokemonDatabase.Ours()`, `Pokedex.OursOpen`), the slots of ours, the stages as they are met (`OursGrowth`), the Poké Radar's unmapped slots and the content check's `ours`. `IsCarpathian` is the rest, listed by `PokemonDatabase.Carpathia()`; `GetAll()` stays the 1,025 and `Everyone()` is all three.
+- **The Carpathian Pokédex** (`Pokedex.Carpathia`, `carpathia`): a regional Pokédex like any, numbered as the species carry it in `dexNumbers`, with its words and its diploma (`pokedex.mode.carpathia`, `diploma.carpathia`, `diploma.line.carpathia`). It is offered once the region's file names it (plan 46 · CP18); its charm is plan 46 · CP27's. **The National Pokédex leaves Carpathia's species out** (the plan's "outside the National 1,025"): they are listed in the Carpathian Pokédex alone, and counted toward nothing of the National one.
+- **Moves past 100**: a species made from nothing learns them by R31's rule like any; a type with no moves past 100 of its own (Sound) adds none.
+- **No species ships yet**: the table is empty until the user approves a batch (plan 46 · CP3); `SpeciesOfNothingTests` holds the importer's half to a placeholder line of its own that is never in the data.
+
+## The Sound type (2026-11-12, plan 46 · CP2)
+
+- **A nineteenth type of our own**, `PokemonType.Sound`, the enum's last value, with the chart the plan proposed (decision 13): Sound hits Rock, Ice and Psychic twice as hard and Steel, Ground and Sound half as hard; Dark, Electric and Ground hit Sound twice as hard and Normal, Flying and Sound half as hard. An inverse battle turns its row round as every row.
+- **The games' sound moves keep their types** (decision 14): Hyper Voice and Boomburst stay Normal. A Sound-type move one can learn (CP10's) carries the `Sound` flag in its data, so Soundproof, Throat Chop, Throat Spray, Punk Rock and Liquid Voice answer it as any sound move. **Its Z-Move (Resounding Finale) and Max Move (Max Chorus) carry no flags**, as no Z-Move or Max Move does, so a Soundproof Pokémon is struck by them. Max Chorus lowers the foes' Sp. Atk, as Max Flutterby does.
+- **What every type has, Sound has**: its words (`types.Sound`, Romanian *Sunet*), its sign (a note), its colour (teal `64,168,152`), its cry's timbre, its move, Z-Move and Max Move sounds and looks, the trainer AI's chart (the AI reads `TypeChart`), Tera Sound (a Tera type like any, and its Tera Shard), the Sound Gem, the Tuning Fork (a fifth more, as the boosters), the Taci Berry (*a tăcea*, to be silent: halves a super-effective Sound hit, as the resist berries) and the Sonorium Z, and plan 39's two materials of a type (the Hollow Reed and the rarer Echo Crystal). Items 9920 to 9924; moves 3090 and 3091 (3073 to 3089 free; 3101 on is CP10's).
+- **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
+- **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).

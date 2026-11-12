@@ -1,0 +1,93 @@
+{
+  // Wyndon (plan 33 · GL6): Galar's capital at its north end, come to by train from Hammerlocke. The station in the
+  // south-west lets onto the avenue, which runs east past the Pokémon Center to the hotel; Wyndon Stadium, where the
+  // Champion Cup is fought, stands in the middle of the north side over its square, and Rose Tower, Macro Cosmos's
+  // headquarters with the Energy Plant at its top, east of it. On the Darkest Day the city is under its red sky
+  // (world.json's light). Our own city at about half the original's distances. Scripts: Data/scripts/wyndon.txt
+  "markers": [
+    { "name": "wyndon_station", "at": [-129, 26.3, -1566], "yaw": 90 },
+    { "name": "wyndon_center_door", "at": [-79, 26.3, -1582], "yaw": 0 },
+    { "name": "wyndon_stadium_door", "at": [0, 26.3, -1589], "yaw": 0 },
+    { "name": "rose_tower_door", "at": [96, 26.3, -1593], "yaw": 0 },
+    { "name": "rose_tower_back", "at": [96, 26.3, -1586], "yaw": 0 },
+    { "name": "wyndon_avenue_east", "at": [120, 26.3, -1567], "yaw": 270 }
+  ],
+  "doors": [
+    {
+      "name": "wyndon_center_door",
+      "box": { "min": [-80, 25.4, -1586], "max": [-78, 30, -1585] },
+      "room": "Wyndon_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "wyndon_center_door"
+    },
+    {
+      "name": "wyndon_stadium_door",
+      "box": { "min": [-1, 25.4, -1594], "max": [1, 30, -1593] },
+      "room": "Wyndon_Stadium", "at": [4, 8], "facing": "up",
+      "out": "wyndon_stadium_door"
+    },
+    {
+      "name": "rose_tower_door",
+      "box": { "min": [95, 25.4, -1598], "max": [97, 30, -1597] },
+      "room": "Wyndon_RoseTower", "at": [4, 8], "facing": "up",
+      "out": "rose_tower_door"
+    }
+  ],
+  "triggers": [
+    // Off the train with eight badges: Leon and Hop on the avenue
+    { "name": "wyndon_arrival", "box": { "min": [-114, 23, -1574], "max": [-108, 30, -1560] }, "script": "WyndonArrival", "var": "VAR_GALAR_STORY", "value": 36 },
+    // Rose Tower is the chairman's, and shut to the public until the Darkest Day
+    { "name": "rose_tower_shut", "box": { "min": [92, 23, -1597], "max": [100, 30, -1595] }, "script": "TowerShut" }
+  ],
+  "solids": [
+    { "name": "Wyndon Stadium", "min": [-34, 25.4, -1624], "max": [34, 46, -1594], "building": { "kind": "hall", "town": "galar", "sign": "WYNDON STADIUM" } },
+    { "name": "Rose Tower", "min": [86, 25.4, -1622], "max": [106, 72, -1598], "building": { "kind": "tower", "town": "galar", "sign": "ROSE TOWER" } },
+    { "name": "Wyndon's Pokémon Center", "min": [-86, 25.4, -1600], "max": [-72, 32, -1586], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "Wyndon Station", "min": [-146, 25.4, -1558], "max": [-112, 32, -1546], "building": { "kind": "terminal", "town": "galar", "sign": "WYNDON" } },
+    { "name": "the hotel on the avenue", "min": [40, 25.4, -1556], "max": [80, 38, -1546], "building": { "kind": "hotel", "town": "galar", "sign": "ROSE OF THE ROSE" } },
+    { "name": "a house on the avenue, west", "min": [-70, 25.4, -1556], "max": [-52, 34, -1546], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a shop on the avenue", "min": [-20, 25.4, -1556], "max": [4, 32, -1546], "building": { "kind": "shop", "town": "galar", "sign": "BOUTIQUE" } },
+    { "name": "a house by the tower", "min": [120, 25.4, -1612], "max": [140, 34, -1596], "building": { "kind": "house", "town": "galar", "storeys": 3 } }
+  ],
+  "people": [
+    {
+      "name": "wyndon_station_staff", "at": [-120, 26.3, -1562], "yaw": 270, "look": "clerk", "displayName": "Station Staff",
+      "script": "TrainBack"
+    },
+    {
+      "name": "leon_wyndon", "at": [-100, 26.3, -1570], "yaw": 270, "look": "leon", "displayName": "Leon",
+      "lines": ["The Cup's at the stadium, straight up the avenue. Rest up first, Champion-to-be."],
+      "shownBy": "FLAG_GALAR_LEON_WYNDON"
+    },
+    {
+      "name": "hop_wyndon", "at": [-100, 26.3, -1564], "yaw": 270, "look": "hop", "displayName": "Hop",
+      "lines": ["Wyndon! The whole city's here for the Cup. I can hardly stand still!"],
+      "shownBy": "FLAG_GALAR_HOP_WYNDON"
+    },
+    {
+      "name": "wyndon_staffer", "at": [20, 26.3, -1586], "yaw": 180, "look": "clerk", "displayName": "League Staff",
+      "lines": ["The Champion Cup is fought in Wyndon Stadium. Challengers with all eight badges are let straight in."]
+    },
+    {
+      "name": "tower_guard", "at": [106, 26.3, -1590], "yaw": 270, "look": "clerk", "displayName": "Macro Cosmos Staff",
+      "lines": ["Rose Tower is Macro Cosmos's. The Energy Plant at the top keeps all of Galar's lights on."]
+    },
+    {
+      "name": "wyndon_gentleman", "at": [-40, 26.3, -1566], "yaw": 90, "look": "gentleman", "displayName": "Gentleman",
+      "lines": ["Every year the whole of Galar comes to Wyndon for the Cup. And every year Leon wins it."],
+      "moves": "wander", "radius": 3
+    },
+    {
+      "name": "wyndon_lass", "at": [60, 26.3, -1568], "yaw": 270, "look": "lass", "displayName": "Lass",
+      "lines": ["The sky's gone such a strange colour... is that meant to be part of the show?"],
+      "shownBy": "FLAG_GALAR_DARKEST_DAY"
+    }
+  ],
+  "trees": [
+    { "at": [-146, -1620], "kind": "round", "size": 1.0 },
+    { "at": [-120, -1620], "kind": "round", "size": 0.9 },
+    { "at": [-50, -1616], "kind": "round", "size": 1.0 },
+    { "at": [50, -1616], "kind": "round", "size": 1.0 },
+    { "at": [146, -1620], "kind": "round", "size": 0.9 },
+    { "at": [146, -1550], "kind": "round", "size": 1.0 }
+  ]
+}

@@ -47,6 +47,7 @@ internal static partial class MoveFx
         PokemonType.Dark => new(Rgb(110, 80, 120), Rgb(200, 170, 210), Rgb(40, 28, 46)),
         PokemonType.Steel => new(Rgb(196, 208, 228), Rgb(255, 255, 255), Rgb(120, 130, 150)),
         PokemonType.Fairy => new(Rgb(255, 150, 214), Rgb(255, 224, 242), Rgb(210, 90, 160)),
+        PokemonType.Sound => new(Rgb(72, 196, 176), Rgb(196, 246, 234), Rgb(30, 112, 100)),
         _ => new(Rgb(250, 246, 226), Rgb(255, 255, 255), Rgb(180, 172, 150))
     };
 
@@ -167,6 +168,8 @@ internal static partial class MoveFx
             PokemonType.Dark => DarkWaves,
             PokemonType.Steel => EnergyBeam,
             PokemonType.Fairy => Sparkles,
+            // Plan 46 · CP2: rings of sound rolling out to the target, until its moves have looks of their own (CP10)
+            PokemonType.Sound => PsychicWaves,
             _ => PowerOrb
         }
     };
@@ -276,6 +279,13 @@ internal static partial class MoveFx
             case PokemonType.Fairy:
                 Fx.Burst(fx, s, age, to, h, at, 0.8f, n(10), FxShape.Petal, col.Main, col.Light, 0.09f, 0.85f, 0.4f, FxBlend.Alpha, spin: 4f);
                 Fx.Burst(fx, s, age, to, h, at, 0.6f, n(8), FxShape.Spark, col.Light, White, 0.08f, 0.9f, salt: 8);
+                break;
+            case PokemonType.Sound:
+                // Three rings of sound beating out from the target, a few motes shaken loose (plan 46 · CP2)
+                Fx.Shockwave(fx, age, to, Vector3.Zero, at, 0.35f, h * 0.9f, col.Light);
+                Fx.Shockwave(fx, age, to, Vector3.Zero, at + 0.09f, 0.35f, h * 0.75f, col.Main);
+                Fx.Shockwave(fx, age, to, Vector3.Zero, at + 0.18f, 0.35f, h * 0.6f, col.Light);
+                Fx.Burst(fx, s, age, to, h, at, 0.5f, n(6), FxShape.Spark, col.Light, col.Main, 0.08f, 0.8f, salt: 10);
                 break;
             default:
                 Fx.Burst(fx, s, age, to, h, at, 0.6f, n(8), FxShape.Star, Rgb(255, 240, 160), White, 0.08f, 0.9f, 0.8f, FxBlend.Alpha, spin: 5f);

@@ -686,7 +686,8 @@ public sealed partial class BattleCore
             Fails();
             return;
         }
-        var candidates = Enum.GetValues<PokemonType>()
+        // The games' types: Sound (plan 46 · CP2, ours) is never Conversion 2's, so a battle's draw is the games' own
+        var candidates = TypeChart.GamesTypes
             .Where(t => (t != PokemonType.Fairy || Rules.ModernSpeciesValues) && !user.HasType(t) && TypeChart.GetEffectiveness(v.Conversion2Type, t, null, Rules, Field.Inverse) <= 0.5f)
             .ToList();
         if (candidates.Count == 0)

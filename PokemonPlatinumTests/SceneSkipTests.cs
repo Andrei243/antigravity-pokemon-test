@@ -1096,6 +1096,8 @@ public class SceneSkipTests
         "hammerlocke.Leon in Hammerlocke", "galar_route_6.Hop on Route 6", "stow_on_side.The mural",
         // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at Spikemuth's gate and Piers on his stage
         "circhester.The Hero's Bath", "galar_route_9.The bike's water kit", "galar_route_9.Marnie at the gate", "spikemuth.Piers",
+        // Plan 33 · GL6: Leon and Hop on Wyndon's avenue, and the altar in the Weald on the Darkest Day
+        "wyndon.Wyndon", "slumbering_weald.The altar in the Weald",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

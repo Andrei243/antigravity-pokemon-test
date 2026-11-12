@@ -199,7 +199,7 @@ public static class SparringRoom
     public const string Place = "sparring";
 
     /// <summary>The room's ways: the types, as their words.</summary>
-    public static readonly string[] Ways = Enum.GetValues<PokemonType>().Select(t => t.ToString().ToLowerInvariant()).ToArray();
+    public static readonly string[] Ways = TypeChart.GamesTypes.Select(t => t.ToString().ToLowerInvariant()).ToArray();
 
     public static PokemonType TypeOf(string way) => Enum.Parse<PokemonType>(way, ignoreCase: true);
 

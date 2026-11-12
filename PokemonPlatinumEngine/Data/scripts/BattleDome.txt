@@ -28,7 +28,10 @@ label Bracket
   setflag FLAG_BATTLE_DOME_SHOW_OPPONENT
   show opponent
   walk opponent down 2
+  bracket brain
+  if result == 1 goto Ace
   text "{foe} steps into the ring!"
+label Pick
   bracket pick
   bracket battle
   if result == 0 goto Lost
@@ -59,6 +62,14 @@ label Home
   warp "BattleFrontierAnnex" 7 5 down
   fade in
   end
+# The final against the Dome Ace, who wins every match he isn't the player's (plan 21's leftovers,
+# Models/Frontier/EmeraldBrains.cs)
+label Ace
+  speaker "Announcer"
+  say "The crowd is on its feet! In the other corner, the Dome Ace himself: Tucker!"
+  speaker "Tucker"
+  say "Dazzle them or go home, that's the Dome's one rule! Let's give the crowd a final worth the ticket!"
+  goto Pick
 
 
 # The opponent goes off the stage again

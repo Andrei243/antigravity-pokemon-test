@@ -604,6 +604,12 @@ public class Map
     public HallStyle? Hall { get; set; }
 
     /// <summary>
+    /// The column the Champion's carpet begins in, where the hall was built from another game's layout (plan 19's last
+    /// notes: Kanto's, whose way on is not where Sinnoh's is); null for the original's own column, 7.
+    /// </summary>
+    public int? HallCarpetX { get; set; }
+
+    /// <summary>
     /// How many Poké Balls lie on the Hall of Fame's machine (plan 02 · S14): the game sets it from the machine's own
     /// set piece as the room's script plays it (plan 09 · L12: anim halloffame), and the room's pieces draw one in
     /// each socket.

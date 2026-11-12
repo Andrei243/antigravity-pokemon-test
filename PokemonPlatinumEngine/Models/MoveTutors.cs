@@ -214,6 +214,33 @@ public static class MoveTutors
         ["Headbutt"] = "Zen Headbutt",
     };
 
+    /// <summary>
+    /// The Battle Frontier island's two tutors in Lounge 7 (Emerald's BattleFrontier_Lounge7_EventScript_LeftMoveTutor and
+    /// RightMoveTutor; plan 21's leftovers): their moves in Emerald's order with Emerald's prices in Battle Points. Who may
+    /// learn one is ours, as the Kanto tutors' (<see cref="Kanto"/>): its species could learn the move itself by the data,
+    /// or the move named beside it, the nearest kin among Platinum's machines and tutors.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, (string Move, int Points, string Kin)[]> FrontierLounge = new Dictionary<string, (string, int, string)[]>
+    {
+        ["left"] = new[]
+        {
+            ("Soft-Boiled", 16, "Soft-Boiled"), ("Seismic Toss", 24, "Seismic Toss"), ("Dream Eater", 24, "Dream Eater"),
+            ("Mega Punch", 24, "Focus Punch"), ("Mega Kick", 48, "Focus Punch"), ("Body Slam", 48, "Return"), ("Rock Slide", 48, "Rock Slide"),
+            ("Counter", 48, "Counter"), ("Thunder Wave", 48, "Thunder Wave"), ("Swords Dance", 48, "Swords Dance")
+        },
+        ["right"] = new[]
+        {
+            ("Defense Curl", 16, "Defense Curl"), ("Snore", 24, "Snore"), ("Mud-Slap", 24, "Mud-Slap"), ("Swift", 24, "Swift"),
+            ("Icy Wind", 24, "Icy Wind"), ("Endure", 48, "Endure"), ("Psych Up", 48, "Psych Up"), ("Ice Punch", 48, "Ice Punch"),
+            ("Thunder Punch", 48, "Thunder Punch"), ("Fire Punch", 48, "Fire Punch")
+        }
+    };
+
+    /// <summary>The moves of a Lounge 7 tutor a Pokémon may learn and doesn't know.</summary>
+    public static List<(string Move, int Points, string Kin)> FrontierTeachable(Pokemon p, string side) =>
+        p.IsEgg || !FrontierLounge.TryGetValue(side, out var moves) ? new()
+        : moves.Where(m => !p.Knows(m.Move) && (Legality.CanLearn(p.Species, m.Move) || Legality.CanLearn(p.Species, m.Kin))).ToList();
+
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>
     public static string KantoFlag(string move) =>
         "FLAG_TUTOR_" + new string(move.ToUpperInvariant().Select(c => char.IsLetter(c) ? c : '_').ToArray());

@@ -1,6 +1,8 @@
 # The Slumbering Weald's first visit (plan 33 · GL1): Hop's Wooloo found deep in the fog, and the shadow that stands
 # in it. The lines are our own; VAR_GALAR_STORY is postwick.txt's count. The shadow is the version's legendary
-# (VAR_GALAR_VERSION: Zacian's in Sword, Zamazenta's in Shield), seen and never battled here; its battle is GL7's.
+# (VAR_GALAR_VERSION: Zacian's in Sword, Zamazenta's in Shield), met in a staged battle (plan 33 · GL6; docs/mechanics/
+# rulings.md, "Staged battles"): its level hidden, nothing the team does touches it, it does nothing, and after three
+# turns it is gone. Its true battle is GL7's. And the second visit (GL6): the altar on the Darkest Day.
 
 
 script Shadow
@@ -18,7 +20,15 @@ label Shield
   text "Its eyes burn through the white over a mane like a shield."
 label Fog
   speaker "Hop"
-  say "Our Pokémon are going for it! But nothing they do even touches it..."
+  say "It's coming this way! Everyone, out, now! Go!"
+  if var VAR_GALAR_VERSION == 2 goto ShieldBattle
+  wildbattle "Zacian" 70 hidelevel untouchable passive endafter 3
+  goto Gone
+label ShieldBattle
+  wildbattle "Zamazenta" 70 hidelevel untouchable passive endafter 3
+label Gone
+  speaker "Hop"
+  say "Our Pokémon threw everything at it, and nothing they did even touched it..."
   text "The fog closes over everything."
   fade out
   speaker "Leon"
@@ -30,5 +40,28 @@ label Fog
   objective galarMum
   warp "Postwick_PlayersHouse_2F" 4 6
   fade in
+  endscene
+  end
+
+
+# The Darkest Day (plan 33 · GL6): the altar deep in the fog, the rusted sword and shield, and the two of the legend
+# seen in the white; back to Wyndon by Hop's word. VAR_GALAR_STORY 40 to 41
+script Altar
+  scene "The altar in the Weald"
+  faceto player hop_altar
+  speaker "Hop"
+  say "This is it, the old altar. The stories say the heroes laid their sword and shield down here when the Darkest Day was over."
+  text "On the stone lie a sword and a shield, both eaten through with rust."
+  say "They're just... rusty. That's all that's left of them? Then how are we meant to stop what's happening over Wyndon?"
+  text "The fog thickens. Two shapes stand in it, one with the eyes of a sword and one with a mane like a shield."
+  seen "Zacian"
+  seen "Zamazenta"
+  say "It's them! The two from the fog! They're... they're looking at the sky. Over Wyndon."
+  say "They know. They're going to help, I'm sure of it! Come on, {player}, back to Wyndon. The tower!"
+  text "When the fog thins, the two are gone, and so are the rusted sword and shield."
+  clearflag FLAG_GALAR_HOP_ALTAR
+  setvar VAR_GALAR_STORY 41
+  objective galarRoseTower
+  warpto "Galar" rose_tower_back
   endscene
   end

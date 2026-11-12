@@ -11,10 +11,10 @@
     "attendant": {
       "name": {
         "en": [
-          "Palace Maven"
+          "Attendant"
         ],
         "text": [
-          "Maestrul Palatului"
+          "Însoțitorul"
         ]
       },
       "dialog": {

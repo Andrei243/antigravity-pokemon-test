@@ -930,11 +930,11 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay", "streak");
                 bool machine = what is "slots" or "reels";
                 int number = what is "room" or "add" or "take" or "slots" or "reels" or "wheel" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
-                if (what == "wheel" && number is not (1 or 3)) throw r.Error("Mauville's roulette tables take a wager of 1 or 3 Coins");
+                if (what == "wheel" && number is not (1 or 3 or 6)) throw r.Error("Mauville's roulette tables take a wager of 1 or 3 Coins, or 6 at the right table on a service day");
                 if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville")
@@ -1113,22 +1113,27 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room") : "open";
-                if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade") : "open";
+                if (what is not ("give" or "buy" or "room" or "trade")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
-                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration };
+                // The Frontier island's two clerks of dolls and cushions (plan 21's leftovers): its price in Battle Points
+                int points = what == "trade" ? r.Int("its price in Battle Points") : 0;
+                if (what == "trade" && points <= 0) throw r.Error("a decoration is traded for one Battle Point or more");
+                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration, Number = points };
             }
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
-                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once", "remember");
+                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once", "remember", "frontier", "spend");
                 string which = what switch
                 {
                     "moves" => r.Text("the place of a shard tutor"),
                     "special" => r.OneOf("dracometeor", "ultimate"),
                     // Plan 19 · K5: a tutor of Kanto's who teaches one move, once (MoveTutors.Kanto)
                     "once" => r.Text("the move a tutor of Kanto teaches"),
+                    // The Battle Frontier island's Lounge 7 tutors (plan 21's leftovers)
+                    "frontier" => r.OneOf("left", "right"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.Tutor, Line = line, Name = what, Other = which };
@@ -1260,8 +1265,25 @@ public static class ScriptParser
             case "raid":
             {
                 // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`, and `raid wish`, a Wishing Piece thrown into the den looked into
-                string what = r.OneOf("den", "watts", "fight", "catch", "wish");
+                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss");
                 if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
+                // A boss the story brings (plan 33 · GL6, Eternamax): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail
+                // with "galar_raid_hop" "galar_raid_zacian" "galar_raid_zamazenta"`, its raiders three trainers of the data
+                if (what == "boss")
+                {
+                    string boss = r.Text("a species or a form");
+                    if (PokemonDatabase.Get(boss) == null && PokemonDatabase.SpeciesOfForm(boss) == null) throw r.Error($"there is no species or form '{boss}'");
+                    int level = r.Int("a level");
+                    if (level < 1 || level > 100) throw r.Error("a raid boss's level is 1 to 100");
+                    r.Word("'stars'");
+                    int stars = r.Int("the stars");
+                    if (stars < Battle.Sim.RaidTerms.FewestStars || stars > Battle.Sim.RaidTerms.MostStars) throw r.Error("a raid has 1 to 5 stars");
+                    bool cannotFail = r.PeekIs("cannotfail");
+                    if (cannotFail) r.Next();
+                    r.Word("'with'");
+                    var raiders = r.Texts(3, 3, "three trainers' ids");
+                    return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = boss, Number = level, Numbers = new[] { stars }, Trainers = raiders, CanLose = !cannotFail };
+                }
                 if (what == "catch")
                 {
                     string ball = r.Text("a Poké Ball");
@@ -1334,7 +1356,7 @@ public static class ScriptParser
             // The Trainer Hill's climb (plan 21, part l)
             case "trainerhill":
             {
-                string what = r.OneOf("begin", "active", "mode", "floor", "laid", "opponent", "fight", "lost", "climb", "down", "prize", "record", "end");
+                string what = r.OneOf("begin", "active", "mode", "floor", "laid", "opponent", "fight", "lost", "climb", "down", "prize", "record", "end", "mixed");
                 string which = what == "begin" ? r.OneOf("normal", "variety", "unique", "expert") : "";
                 return new Instruction { Op = Op.TrainerHill, Line = line, Name = what, Other = which };
             }
@@ -1383,7 +1405,7 @@ public static class ScriptParser
             case "bracket":
             {
                 string what = r.OneOf("enough", "choose", "check", "begin", "active", "round", "show", "opponent", "pick", "battle", "won", "lost",
-                    "finish", "points", "streak", "best", "end");
+                    "finish", "points", "streak", "best", "end", "brain");
                 string which = what == "finish" ? r.OneOf("won", "lost") : "";
                 return new Instruction { Op = Op.Bracket, Line = line, Name = what, Other = which };
             }
@@ -1426,7 +1448,7 @@ public static class ScriptParser
             case "venue":
             {
                 string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end",
-                    "tent", "rent", "trade", "length");
+                    "tent", "rent", "trade", "length", "brain", "nature");
                 // Hoenn's Battle Tents (plan 21 · H3's last part): a round of three begun in a tent, Slateport's rentals and trades
                 string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost")
                     : what == "tent" ? r.OneOf("verdanturf", "fallarbor", "slateport") : "";
@@ -1481,6 +1503,17 @@ public static class ScriptParser
             {
                 bool on = r.OneOf("on", "off") == "on";
                 return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
+            }
+            // The field's light held at an hour (plan 20, part w): lighting 21 | lighting clock
+            case "lighting":
+            {
+                if (r.PeekWord("clock"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Lighting, Line = line, Option = false };
+                }
+                float hour = r.Number("an hour of the day", 0f, 23.99f);
+                return new Instruction { Op = Op.Lighting, Line = line, Option = true, Factor = hour };
             }
             case "slowmo":
             {

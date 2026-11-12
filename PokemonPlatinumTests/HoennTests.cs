@@ -63,7 +63,7 @@ public class HoennTests
             Assert.NotNull(Hoenn.Overlay(key));
         }
         // (but the Trainer Hill's rooms of ours, which are map files, plan 21, part l, and Lockwork's cell, plan 44 · SD4)
-        foreach (string map in hoenn.Maps.Except(TrainerHillTests.Rooms).Except(new[] { "LockworkCellHoenn" })) Assert.Contains(Hoenn.Index.Maps, e => e.Name == map);
+        foreach (string map in hoenn.Maps.Except(TrainerHillTests.Rooms).Except(new[] { "LockworkCellHoenn", "HoennPasture" })) Assert.Contains(Hoenn.Index.Maps, e => e.Name == map);
     }
 
     [Fact]
@@ -220,6 +220,15 @@ public class HoennTests
         Assert.Contains(BuiltMaps.Value["LittlerootTown_BrendansHouse_1F"].Props, p => p.Type == PropType.Television);
         Assert.Contains(BuiltMaps.Value["OldaleTown_PokemonCenter_1F"].Props, p => p.Type == PropType.HealingMachine);
         Assert.Contains(BuiltMaps.Value["OldaleTown_Mart"].Props, p => p.Type == PropType.StoreShelf);
+        // Emerald's PC is a tile, which runs the common PC (plan 19's last notes): every Pokémon Center's and the bedrooms'
+        var withoutPc = BuiltMaps.Value.Values.Where(m => m.Name.EndsWith("_PokemonCenter_1F", StringComparison.Ordinal))
+            .Where(m => !m.TileScripts.Any(kv => kv.Value == "PC")).Select(m => m.Name).ToList();
+        Assert.True(withoutPc.Count == 0, "No PC in " + string.Join(", ", withoutPc));
+        // (the player's own bedroom's, by its sign event read as the PC; the neighbours' child's PC is only looked at)
+        Assert.Contains(BuiltMaps.Value["LittlerootTown_BrendansHouse_2F"].TileScripts, kv => kv.Value == "PC");
+        Assert.DoesNotContain(BuiltMaps.Value["LittlerootTown_MaysHouse_2F"].TileScripts, kv => kv.Value == "PC");
+        Assert.All(BuiltMaps.Value.Values.Where(m => m.TileScripts.Values.Contains("PC")),
+            m => Assert.True(m.Interior == InteriorStyle.PokemonCenter || m.Name == "LittlerootTown_BrendansHouse_2F", m.Name));
     }
 
     [Fact]

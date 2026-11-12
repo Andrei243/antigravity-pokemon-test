@@ -17,15 +17,46 @@ namespace PokemonPlatinumEngine.Overworld;
 /// original sets the count to one on every arrival, and the cracks are its temporary flags. GPU-free: the engine tells it
 /// each tile the player comes onto (<see cref="StepOn"/>) and does what comes of it, and the room's pieces draw the cracks
 /// and the glazed stairs from <see cref="Cracked"/> and <see cref="Glazed"/>.
+/// <para>
+/// The same rule, with no stairs, is FireRed's Icefall Cave (plan 19's last notes; FireRed's
+/// <c>IcefallCaveIcePerStepCallback</c>): 1F's thin ice cracks under a first step and gives way under a second, and the
+/// player falls to B1F, onto the same tile. FireRed keeps the cracks in a temporary variable, so they last while the
+/// player stays and are whole again once the floor is come into afresh, as here (<see cref="Icefall"/>).
+/// </para>
 /// </summary>
 public sealed class SootopolisIce : GymPuzzle
 {
     public const string PuzzleName = "SootopolisIce";
 
-    public override string Name => PuzzleName;
+    /// <summary>Icefall Cave's 1F, named by its entry in Kanto's world.json.</summary>
+    public const string IcefallName = "IcefallIce";
+
+    private readonly string name;
+    private readonly bool stairs;
+
+    public override string Name => name;
 
     /// <summary>The map the floor's holes drop into.</summary>
     public const string Basement = "SootopolisCity_Gym_B1F";
+
+    /// <summary>The map Icefall Cave's holes drop into.</summary>
+    public const string IcefallBasement = "FourIsland_IcefallCave_B1F";
+
+    /// <summary>The map this floor's holes drop into: the Gym's basement, or Icefall Cave's B1F.</summary>
+    public string Below { get; }
+
+    /// <summary>The Sootopolis Gym's floor, with its glazed stairs.</summary>
+    public SootopolisIce() : this(PuzzleName, Basement, stairs: true) { }
+
+    private SootopolisIce(string name, string below, bool stairs)
+    {
+        this.name = name;
+        Below = below;
+        this.stairs = stairs;
+    }
+
+    /// <summary>Icefall Cave's 1F: thin ice that cracks and gives way, with no stairs and no count.</summary>
+    public static SootopolisIce Icefall() => new(IcefallName, IcefallBasement, stairs: false);
 
     /// <summary>The counts at which each flight comes clear, lowest first (Emerald's <c>OnFrame</c> table).</summary>
     public static readonly int[] Thresholds = { 8, 28, 67 };
@@ -48,7 +79,7 @@ public sealed class SootopolisIce : GymPuzzle
     public int Count { get; private set; } = 1;
 
     /// <summary>How many flights are clear: none under 8, the first under 28, two under 67, all three from then on.</summary>
-    public int FlightsOpen => Count < Thresholds[0] ? 0 : Count < Thresholds[1] ? 1 : Count < Thresholds[2] ? 2 : 3;
+    public int FlightsOpen => !stairs ? Flights.Length : Count < Thresholds[0] ? 0 : Count < Thresholds[1] ? 1 : Count < Thresholds[2] ? 2 : 3;
 
     /// <summary>The tiles of thin ice cracked so far.</summary>
     public IReadOnlyCollection<(int X, int Y)> Cracked => cracked;
@@ -78,6 +109,7 @@ public sealed class SootopolisIce : GymPuzzle
             Count = 0;
             return Outcome.Fell;
         }
+        if (!stairs) return Outcome.Cracked;
         Count++;
         if (Array.IndexOf(Thresholds, Count) < 0) return Outcome.Cracked;
         Count++;
@@ -87,6 +119,7 @@ public sealed class SootopolisIce : GymPuzzle
     /// <summary>A flight still glazed slides whoever climbs it back down; a clear one is plain stairs.</summary>
     public override void Apply(Map map, StoryState story)
     {
+        if (!stairs) return;
         int open = FlightsOpen;
         if (open == applied) return;
         applied = open;

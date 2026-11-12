@@ -20,7 +20,7 @@ namespace PokemonPlatinumTests;
 [Collection("Shared clocks and dice")]
 public class PastureTests
 {
-    private static readonly string[] Regions = { RegionDatabase.Sinnoh, RegionDatabase.Johto, RegionDatabase.Unova };
+    private static readonly string[] Regions = { RegionDatabase.Sinnoh, RegionDatabase.Johto, RegionDatabase.Unova, RegionDatabase.Kanto, RegionDatabase.Hoenn };
 
     [Fact]
     public void EveryFinishedRegionHasACopyOfThePlanAmongItsMaps()
@@ -47,8 +47,6 @@ public class PastureTests
         }
         // A region with none offers none
         Assert.Null(Pasture.MapOf(RegionDatabase.Kalos));
-        Assert.Null(Pasture.MapOf(RegionDatabase.Kanto));
-        Assert.Null(Pasture.MapOf(RegionDatabase.Hoenn));
     }
 
     [Fact]

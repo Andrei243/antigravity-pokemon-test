@@ -1,6 +1,7 @@
 {
   "cyclingRoad": { "seconds": "{time} de secunde", "minute": "un minut sau mai mult", "times": "de {count} ori", "many": "de 99 de ori sau mai mult" },
-  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp" },
+  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp", "mixedTime": "{name}, {time}" },
+  "palaceLean": { "attack": "se aruncă în atac", "defence": "are grijă întâi de sine", "support": "lucrează în schimb asupra adversarului" },
   "rouletteTable": {
     "coins": "FISE",
     "balls": "BILE RĂMASE",
@@ -1375,7 +1376,17 @@
     "galarSpikemuth": "Traversează Golful Circhester până la poarta din Spikemuth, pe malul celălalt.",
     "galarPiers": "Mergi pe strada din Spikemuth până la scenă și câștigă Insigna Întuneric de la Piers.",
     "galarRaihan": "Întoarce-te în Hammerlocke și câștigă Insigna Dragon de la Raihan, pe stadionul lui.",
-    "galarFree": "Până aici merge drumul deocamdată. Galar, de la Postwick la Spikemuth, îți stă deschis.",
+    "galarWyndon": "Ia trenul spre nord din gara din Hammerlocke până la Wyndon, unde se ține Cupa Campionilor.",
+    "galarSemifinal": "Câștigă semifinalele Cupei Campionilor pe Stadionul din Wyndon.",
+    "galarHopCup": "Încă o semifinală pe Stadionul din Wyndon, iar Hop te așteaptă pe teren.",
+    "galarLobby": "Urmează finala. Întoarce-te prin holul stadionului.",
+    "galarAltar": "Mergi cu Hop la altarul din adâncul Pădurii Adormite.",
+    "galarRoseTower": "Înapoi în Wyndon și sus în Turnul Rose, ca să oprești Ziua cea mai Întunecată.",
+    "galarEnergyPlant": "Ia liftul turnului până la Centrala Energetică din vârf.",
+    "galarFinals": "Finala pe Stadionul din Wyndon: câștig-o, iar după ea urmează Campionul.",
+    "galarRaihanCup": "Raihan e ultimul tău adversar în finala de pe Stadionul din Wyndon.",
+    "galarLeon": "Pe terenul Stadionului din Wyndon, la meciul pentru titlu împotriva lui Leon.",
+    "galarFree": "Ești Campionul din Galar. Toată regiunea, de la Postwick la Wyndon, îți stă deschisă.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
     "kalosClemont": "Întoarce-te în Lumiose City și câștigă de la Clemont, în vârful Turnului Prism, Insigna Tensiune.",
@@ -1581,13 +1592,13 @@
     "intoMany": "Poate evolua în {list}.",
     "listSeparator": ", ",
     "listEnd": "{rest} sau {last}",
-    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea" }
+    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea", "10": "Carpatia" }
   },
 
   "types": {
     "Normal": "Normal", "Fire": "Foc", "Water": "Apă", "Grass": "Iarbă", "Electric": "Electric", "Ice": "Gheață",
     "Fighting": "Luptă", "Poison": "Otravă", "Ground": "Pământ", "Flying": "Zbor", "Psychic": "Psihic", "Bug": "Insectă",
-    "Rock": "Rocă", "Ghost": "Fantomă", "Dragon": "Dragon", "Steel": "Oțel", "Dark": "Întuneric", "Fairy": "Zână"
+    "Rock": "Rocă", "Ghost": "Fantomă", "Dragon": "Dragon", "Steel": "Oțel", "Dark": "Întuneric", "Fairy": "Zână", "Sound": "Sunet"
   },
 
   "natures": {
@@ -1857,8 +1868,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "ours": "ALE NOASTRE" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "ours": "Ale noastre" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "ours": "ALE NOASTRE", "carpathia": "CARPATIA" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "ours": "Ale noastre", "carpathia": "Carpatia" },
     "oursMark": "ALE NOASTRE",
     "found": "GĂSIȚI",
     "order": "ORDINE",
@@ -1929,6 +1940,7 @@
       "hoenn": "POKÉDEX HOENN",
       "updatedunova": "POKÉDEX UNOVA",
       "ours": "POKÉDEXUL NOSTRU",
+      "carpathia": "POKÉDEXUL CARPATIC",
       "national": "POKÉDEX NAȚIONAL",
       "research": "CERCETAREA SINNOH",
       "line": {
@@ -1938,6 +1950,7 @@
         "updatedjohto": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Johto, de la rutele liniștite până la cele mai adânci peșteri.",
         "hoenn": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Hoenn, pe uscat, în mare și pe cer.",
         "updatedunova": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Unova, de la turnurile orașelor până la nisipurile îngropate.",
+        "carpathia": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Carpatic, din stuful deltei până la zăpada de pe creastă.",
         "ours": "a văzut fiecare dintre cei {count} Pokémoni ai noștri, cei pe care niciun Pokédex regional nu îi enumeră. O evidență pe care n-o ține nimeni altcineva.",
         "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon.",
         "kaloscentral": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Central: grădinile, pădurile și străzile din Lumiose, toate înregistrate.",
@@ -2489,7 +2502,7 @@
     "short": {
       "Normal": "NOR", "Fire": "FOC", "Water": "APĂ", "Grass": "IAR", "Electric": "ELE", "Ice": "GHE",
       "Fighting": "LUP", "Poison": "OTR", "Ground": "PĂM", "Flying": "ZBR", "Psychic": "PSI", "Bug": "INS",
-      "Rock": "ROC", "Ghost": "FAN", "Dragon": "DRA", "Steel": "OȚE", "Dark": "ÎNT", "Fairy": "ZÂN"
+      "Rock": "ROC", "Ghost": "FAN", "Dragon": "DRA", "Steel": "OȚE", "Dark": "ÎNT", "Fairy": "ZÂN", "Sound": "SUN"
     },
     "note": {
       "about": {
@@ -2571,9 +2584,12 @@
     "cameDown": "Peretele s-a prăbușit!",
     "sphereFound": "A ieșit un {sphere} de mărimea {size}!",
     "treasureFound": "{treasure} e al tău!",
+    "statueFound": "{statue} e a ta! A intrat printre bunurile tale.",
     "noRoom": "Nu e loc pentru el în rucsac. A rămas în urmă."
   },
   "belowGround": {
+    "statue": "Statuie {species}",
+    "statueBlurb": "O statuie de piatră a lui {species}. Așezată în baza ta, atrage în ascunzișuri Pokémoni de tipurile ei.",
     "title": { "bag": "SUBTERAN", "hiker": "DRUMEȚ", "pc": "PC-UL BAZEI" },
     "tab": {
       "Traps": "CAPCANE", "Spheres": "SFERE", "Goods": "BUNURI", "Treasures": "COMORI", "Surface": "SUPRAFAȚĂ",
@@ -4834,6 +4850,8 @@
     "TeamSkullGrunt": "Bătăuș Team Skull",
     "TeamYell": "Team Yell",
     "GymTrainer": "Antrenor de Sală",
+    "Chairman": "Președinte",
+    "Secretary": "Secretară",
     "TrialCaptain": "Căpitan de încercare",
     "IslandKahuna": "Kahuna insulei",
     "PokemonProfessor": "Profesor Pokémon",
@@ -5410,6 +5428,7 @@
     "whichForgotten": "Ce mișcare să uite?",
     "knowsFour": "{pokemon} știe deja patru mișcări. Care face loc pentru {move}?",
     "moveRow": "{move}   {price}",
+    "moveRowPoints": "{move}   {points} BP",
     "tmRow": "{item} {move}",
     "priceBp": "{name}   {price} PL",
     "priceCoins": "{name}   {price} F",
@@ -7152,6 +7171,8 @@
         "umbralClaw": "Gheară Umbrală",
         "charmGlitter": "Sclipici Fermecat",
         "moonRibbon": "Panglică Lunară",
+        "hollowReed": "Trestie Goală",
+        "echoCrystal": "Cristal de Ecou",
         "quarryStone": "Piatră de Carieră",
         "rawOre": "Minereu Brut",
         "timber": "Cherestea",
@@ -7202,6 +7223,8 @@
         "umbralClaw": "O gheară neagră ca o noapte fără lună.",
         "charmGlitter": "Sclipici care strălucește fără nicio pricină.",
         "moonRibbon": "O panglică argintie care luminează slab după lăsarea întunericului.",
+        "hollowReed": "O bucată de trestie care fluieră când vântul trece prin ea.",
+        "echoCrystal": "Un cristal limpede care întoarce orice notă cântată lângă el.",
         "quarryStone": "Piatră simplă, spartă dintr-un perete de stâncă.",
         "rawOre": "Un bulgăre de minereu, cu vine de metal în el.",
         "timber": "O bucată de lemn dintr-un copac doborât.",
@@ -7654,5 +7677,12 @@
   },
   "recordMix": {
     "list": "{first} și {last}"
+  },
+  "soar": {
+    "refused": {
+      "noMap": "Nu există o hartă a acestei regiuni peste care să zbori.",
+      "hallOfFame": "Cerul de aici se deschide după ce intri în Sala Celebrităților a acestei regiuni.",
+      "noFlier": "Niciun Pokémon din echipa ta nu te poate purta prin văzduh."
+    }
   }
 }

@@ -144,12 +144,14 @@ public sealed partial class Randomizer
     /// </summary>
     public PokemonType TypeIn(int lineRoot, PokemonType type)
     {
-        if (!Options.Types) return type;
+        // Sound (plan 46 · CP2) is in no shuffle: a species of it keeps it
+        if (!Options.Types || type == PokemonType.Sound) return type;
         lock (shuffles)
         {
             if (!shuffles.TryGetValue(lineRoot, out var order))
             {
-                order = Enum.GetValues<PokemonType>();
+                // The games' eighteen: Sound (plan 46 · CP2) joins no shuffle, so a seed deals what it always dealt
+                order = TypeChart.GamesTypes.ToArray();
                 var r = new SplitMix(SplitMix.Mix(seed, (uint)lineRoot, 0x545950u));
                 for (int i = order.Length - 1; i > 0; i--)
                 {

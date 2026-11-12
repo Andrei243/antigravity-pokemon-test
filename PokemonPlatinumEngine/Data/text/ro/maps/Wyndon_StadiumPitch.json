@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Wyndon Stadium"
+    ],
+    "text": [
+      "Stadionul Wyndon"
+    ]
+  },
+  "people": {
+    "marnie": {
+      "name": {
+        "en": [
+          "Marnie"
+        ],
+        "text": [
+          "Marnie"
+        ]
+      }
+    },
+    "hop": {
+      "name": {
+        "en": [
+          "Hop"
+        ],
+        "text": [
+          "Hop"
+        ]
+      }
+    },
+    "bede": {
+      "name": {
+        "en": [
+          "Bede"
+        ],
+        "text": [
+          "Bede"
+        ]
+      }
+    },
+    "raihan": {
+      "name": {
+        "en": [
+          "Raihan"
+        ],
+        "text": [
+          "Raihan"
+        ]
+      }
+    },
+    "leon": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          "Leon"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

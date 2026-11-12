@@ -1,0 +1,132 @@
+{
+  "LeftTutor": [
+    {
+      "en": [
+        "Tutor"
+      ],
+      "text": [
+        "Profesoara"
+      ]
+    },
+    {
+      "en": [
+        "My moves are hard to come by, and I teach them only for Battle Points. Shall I teach one of your Pokémon?"
+      ],
+      "text": [
+        "Mișcările mele sunt greu de găsit și le predau doar pentru Puncte de Luptă. Să-l învăț pe unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you have points to spare, dear."
+      ],
+      "text": [
+        "Revino oricând ai puncte de dat, dragă."
+      ]
+    }
+  ],
+  "RightTutor": [
+    {
+      "en": [
+        "Tutor"
+      ],
+      "text": [
+        "Profesoara"
+      ]
+    },
+    {
+      "en": [
+        "My sister teaches the fierce moves. Mine are the clever ones, for Battle Points. Shall I teach one?"
+      ],
+      "text": [
+        "Sora mea predă mișcările aprige. Ale mele sunt cele isteațe, pentru Puncte de Luptă. Să predau una?"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you have points to spare, dear."
+      ],
+      "text": [
+        "Revino oricând ai puncte de dat, dragă."
+      ]
+    }
+  ],
+  "Teach": [
+    {
+      "en": [
+        "Which Pokémon am I to teach?"
+      ],
+      "text": [
+        "Pe care Pokémon să-l învăț?"
+      ]
+    }
+  ],
+  "TeachRight": [
+    {
+      "en": [
+        "Which Pokémon am I to teach?"
+      ],
+      "text": [
+        "Pe care Pokémon să-l învăț?"
+      ]
+    }
+  ],
+  "Lesson": [
+    {
+      "en": [
+        "One, two, and... {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "Unu, doi și... {wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}! That will be {price} BP. Thank you, dear."
+      ],
+      "text": [
+        "{wearer} a învățat {thing}! Asta face {price} BP. Mulțumesc, dragă."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't learn anything yet. Bring it back once it hatches."
+      ],
+      "text": [
+        "Un Ou nu poate învăța încă nimic. Adu-l înapoi după ce eclozează."
+      ]
+    },
+    {
+      "en": [
+        "Oh dear. There's nothing of mine this Pokémon could learn."
+      ],
+      "text": [
+        "Vai. Nu am nimic ce ar putea învăța Pokémonul acesta."
+      ]
+    },
+    {
+      "en": [
+        "That one is {price} BP, and you haven't quite enough."
+      ],
+      "text": [
+        "Aceea costă {price} BP, și nu ai chiar destule."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{wearer} nu a învățat {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} can't be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        "{forgotten} nu poate fi uitată așa. {wearer} nu a învățat {thing}."
+      ]
+    }
+  ]
+}

@@ -186,6 +186,12 @@ public sealed partial class ScriptRunner
             case "wheel":
                 Result = host.PastimeAct("wheel", i.Number, Subject);
                 break;
+            // The most roulette wins in a row (Emerald's GAME_STAT_CONSECUTIVE_ROULETTE_WINS, kept in a variable of ours):
+            // RESULT 1 when the sitting just ended set a new best, {number} the best
+            case "streak":
+                Result = host.PastimeAct("streak", 0, Subject);
+                lastNumber = host.Story.Var(RouletteWheel.BestRunVariable);
+                break;
         }
     }
 
@@ -260,7 +266,7 @@ public sealed partial class ScriptRunner
             case "check":
                 // Plan 03 · D12a: with nothing brought over, the day's six visitors come, by a fixed rotation of the
                 // species Sinnoh has no other way to
-                park.Welcome(SpeciesSources.Sinnoh.PalParkPool, Core.GameClock.Today, host.Chance);
+                park.Welcome(SpeciesSources.Sinnoh.PalParkVisitors, Core.GameClock.Today, host.Chance);
                 Result = host.PastimeAct("boxroom", 0, Subject) < Overworld.CatchingShow.Size ? 1 : park.Stocked ? 0 : 2;
                 break;
             case "start":

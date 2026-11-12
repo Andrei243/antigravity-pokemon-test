@@ -6,8 +6,8 @@
   "area": "battle_frontier_exchange_service_corner",
   "bgmTrack": "hoenn/lilycove",
   "people": {
-    "teala": { "name": "Clerk", "script": "DecorClerk", "still": true },
-    "teala_2": { "name": "Clerk", "script": "DecorClerk", "still": true },
+    "teala": { "name": "Clerk", "script": "DecorClerk1", "still": true },
+    "teala_2": { "name": "Clerk", "script": "DecorClerk2", "still": true },
     "teala_3": { "name": "Clerk", "script": "ItemClerk", "still": true },
     "teala_4": { "name": "Clerk", "script": "MachineClerk", "still": true },
     "rich_boy": { "name": "Rich Boy", "dialog": [ "I won't spend a single point until I can have the biggest prize on the list." ] },

@@ -393,6 +393,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             case "wheel":
                 if (SlotsLeave is { } coins) Pastimes.Coins.Set(coins);
                 return 1;
+            // No table is played here: no sitting sets a best
+            case "streak":
+                return 0;
             case "boxroom":
                 return (NationalDex ? Models.PcBoxes.NationalBoxCount : Models.PcBoxes.BoxCount) * Models.PcBoxes.BoxSize - Boxes.Count;
             case "store":
@@ -555,6 +558,15 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>Whether the cinema bars are in.</summary>
     public bool Bars { get; private set; }
+
+    /// <summary>The hour a scene holds the field's light at, null for the clock's (plan 20, part w); a warp gives it back.</summary>
+    public float? HeldLight { get; private set; }
+
+    public void HoldLight(float? hour)
+    {
+        Log.Add(hour is { } h ? $"lighting {h.ToString(System.Globalization.CultureInfo.InvariantCulture)}" : "lighting clock");
+        HeldLight = hour;
+    }
 
     /// <summary>The effects held on their tiles: the kind and the tile each.</summary>
     public SortedSet<string> HeldEffects { get; } = new(StringComparer.Ordinal);
@@ -1231,6 +1243,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         // (In a hurry the player arrives at once, with no fade to see through)
         if (!Skipping) Waits();
         Log.Add($"warp {map} {x} {y}");
+        HeldLight = null;
         if (MapNamed?.Invoke(map) is { } target)
         {
             Map = target;

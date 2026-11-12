@@ -1,14 +1,6 @@
 {
   "people": {},
   "signs": {
-    "PalletTown_PlayersHouse_2F_EventScript_PC": {
-      "en": [
-        "{player}'s PC.\nThere's nothing stored in it yet."
-      ],
-      "text": [
-        "PC-ul lui {player}.\nÎncă nu e nimic păstrat în el."
-      ]
-    },
     "PalletTown_PlayersHouse_2F_EventScript_NES": {
       "en": [
         "An old games console.\nIt's been a while since anyone played it."

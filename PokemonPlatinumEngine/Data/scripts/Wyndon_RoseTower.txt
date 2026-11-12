@@ -1,0 +1,23 @@
+# Rose Tower's lobby (plan 33 · GL6), Macro Cosmos's headquarters in Wyndon: on the Darkest Day the chairman's secretary
+# Oleana stands before the lift up to the Energy Plant, and the lift runs once she is beaten (its warp is there from
+# FLAG_GALAR_OLEANA_BEATEN). VAR_GALAR_STORY 41 to 42 (postwick.txt's count). Our own lines.
+
+
+script Oleana
+  face oleana player
+  speaker "Oleana"
+  if flag FLAG_GALAR_OLEANA_BEATEN goto Done
+  scene "Oleana"
+  say "The chairman is busy saving Galar's future, and he does not wish to be disturbed. Least of all by children."
+  say "Leon went up and has not come down. Whatever you think you can do up there, you will not be doing it."
+  battle oleana as "galar_oleana_1"
+  say "...Then go. Perhaps the chairman will see sense from you, since he would not hear it from me."
+  setflag FLAG_GALAR_OLEANA_BEATEN
+  setvar VAR_GALAR_STORY 42
+  objective galarEnergyPlant
+  text "The lift's doors slide open behind her."
+  endscene
+  end
+label Done
+  say "The lift is open. Go, before I change my mind."
+  end

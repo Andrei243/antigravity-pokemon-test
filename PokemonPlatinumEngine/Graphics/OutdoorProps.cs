@@ -1012,6 +1012,8 @@ public static class ThingCards
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
             PropType.ZygardeCell => (16, 16, OutdoorProps.PaintZygardeCell),
+            PropType.Seagallop => (SeviiArt.SeagallopWidth, SeviiArt.SeagallopHeight, SeviiArt.PaintSeagallop),
+            PropType.NetworkMachine => (SeviiArt.MachineWidth, SeviiArt.MachineHeight, SeviiArt.PaintNetworkMachine),
             PropType.FestivalLanterns => (FestivalArt.LanternsWidth, FestivalArt.LanternsHeight, FestivalArt.PaintLanterns),
             PropType.FestivalMoonLantern => (FestivalArt.MoonWidth, FestivalArt.MoonHeight, FestivalArt.PaintMoonLantern),
             PropType.FestivalPine => (FestivalArt.PineWidth, FestivalArt.PineHeight, c => FestivalArt.PaintPine(c, holiday: false)),

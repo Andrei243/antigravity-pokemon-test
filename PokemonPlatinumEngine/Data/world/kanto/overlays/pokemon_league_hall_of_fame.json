@@ -4,6 +4,8 @@
   // Pallet Town tune (FireRed's MUS_SLOW_PALLET, plan 19 · K8), and the team's entry kanto/hall_of_fame
   "area": "pokemon_league_hall_of_fame",
   "name": "Hall of Fame",
+  // A hall of the League's dark polished stone with a crimson carpet to the way out (plan 19's last notes)
+  "hall": "HallOfFame",
   "bgmTrack": "kanto/slow_pallet",
   "people": {
     "hall_of_fame_prof_oak": { "name": "Prof. Oak", "still": true, "dialog": [ "You've earned your place here, {player}." ] }

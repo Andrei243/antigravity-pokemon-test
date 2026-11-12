@@ -1908,5 +1908,510 @@
         "personality": 558324575
       }
     ]
+  },
+  {
+    "id": "galar_marnie_2",
+    "name": "Marnie",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 2000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Liepard",
+        "level": 47,
+        "ivScale": 10,
+        "personality": 2905945040
+      },
+      {
+        "species": "Toxicroak",
+        "level": 47,
+        "ivScale": 10,
+        "personality": 1851319635
+      },
+      {
+        "species": "Scrafty",
+        "level": 47,
+        "ivScale": 10,
+        "personality": 1478284811
+      },
+      {
+        "species": "Morpeko",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 3397204576
+      },
+      {
+        "species": "Grimmsnarl",
+        "level": 49,
+        "ivScale": 10,
+        "personality": 488056894
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_6a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 2000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 3962414687
+      },
+      {
+        "species": "Pincurchin",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 3899362077
+      },
+      {
+        "species": "Snorlax",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 314803404
+      },
+      {
+        "species": "Corviknight",
+        "level": 49,
+        "ivScale": 10,
+        "personality": 963732099
+      },
+      {
+        "species": "Inteleon",
+        "level": 50,
+        "ivScale": 10,
+        "personality": 854649480
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_6b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 2000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 2349832405
+      },
+      {
+        "species": "Pincurchin",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 477425882
+      },
+      {
+        "species": "Snorlax",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 1495199539
+      },
+      {
+        "species": "Corviknight",
+        "level": 49,
+        "ivScale": 10,
+        "personality": 3225991325
+      },
+      {
+        "species": "Rillaboom",
+        "level": 50,
+        "ivScale": 10,
+        "personality": 3181909317
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_6c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 2000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 3973547348
+      },
+      {
+        "species": "Pincurchin",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 3642744820
+      },
+      {
+        "species": "Snorlax",
+        "level": 48,
+        "ivScale": 10,
+        "personality": 2863712695
+      },
+      {
+        "species": "Corviknight",
+        "level": 49,
+        "ivScale": 10,
+        "personality": 2366152558
+      },
+      {
+        "species": "Cinderace",
+        "level": 50,
+        "ivScale": 10,
+        "personality": 4001025818
+      }
+    ]
+  },
+  {
+    "id": "galar_oleana_1",
+    "name": "Oleana",
+    "class": "Secretary",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Froslass",
+        "level": 56,
+        "ivScale": 14,
+        "personality": 65019728
+      },
+      {
+        "species": "Tsareena",
+        "level": 56,
+        "ivScale": 14,
+        "personality": 2346049093
+      },
+      {
+        "species": "Salazzle",
+        "level": 57,
+        "ivScale": 14,
+        "personality": 3802376034
+      },
+      {
+        "species": "Milotic",
+        "level": 57,
+        "ivScale": 14,
+        "personality": 3559609129
+      },
+      {
+        "species": "Garbodor",
+        "level": 58,
+        "ivScale": 14,
+        "personality": 3252859139
+      }
+    ]
+  },
+  {
+    "id": "galar_rose_1",
+    "name": "Rose",
+    "class": "Chairman",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Escavalier",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 1296393618
+      },
+      {
+        "species": "Ferrothorn",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 4151087254
+      },
+      {
+        "species": "Perrserker",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 4135250995
+      },
+      {
+        "species": "Klinklang",
+        "level": 61,
+        "ivScale": 16,
+        "personality": 864738376
+      },
+      {
+        "species": "Copperajah",
+        "level": 62,
+        "ivScale": 16,
+        "personality": 3111474310
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_hop_a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Inteleon",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 2428051313
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_hop_b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Rillaboom",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 3031531548
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_hop_c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Cinderace",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 4066104750
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_zacian",
+    "name": "Zacian",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Zacian",
+        "level": 70,
+        "ivScale": 31,
+        "personality": 880015071
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_zamazenta",
+    "name": "Zamazenta",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Zamazenta",
+        "level": 70,
+        "ivScale": 31,
+        "personality": 1784491255
+      }
+    ]
+  },
+  {
+    "id": "galar_bede_3",
+    "name": "Bede",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Mawile",
+        "level": 53,
+        "ivScale": 14,
+        "personality": 2535516918
+      },
+      {
+        "species": "Gardevoir",
+        "level": 53,
+        "ivScale": 14,
+        "personality": 3354585143
+      },
+      {
+        "species": "Togekiss",
+        "level": 54,
+        "ivScale": 14,
+        "personality": 3444669412
+      },
+      {
+        "species": "Hatterene",
+        "level": 55,
+        "ivScale": 14,
+        "personality": 4287187999
+      }
+    ]
+  },
+  {
+    "id": "galar_raihan_2",
+    "name": "Raihan",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Flygon",
+        "level": 56,
+        "ivScale": 16,
+        "personality": 4261484280
+      },
+      {
+        "species": "Torkoal",
+        "level": 56,
+        "ivScale": 16,
+        "personality": 870236011
+      },
+      {
+        "species": "Goodra",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 3906332954
+      },
+      {
+        "species": "Turtonator",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 4127785939
+      },
+      {
+        "species": "Duraludon",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 3780396648
+      }
+    ]
+  },
+  {
+    "id": "galar_leon_1",
+    "name": "Leon",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 10000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Aegislash",
+        "level": 62,
+        "ivScale": 20,
+        "personality": 4047825111
+      },
+      {
+        "species": "Dragapult",
+        "level": 62,
+        "ivScale": 20,
+        "personality": 3140310295
+      },
+      {
+        "species": "Haxorus",
+        "level": 63,
+        "ivScale": 20,
+        "personality": 76391612
+      },
+      {
+        "species": "Seismitoad",
+        "level": 64,
+        "ivScale": 20,
+        "personality": 1833679598
+      },
+      {
+        "species": "Mr. Rime",
+        "level": 64,
+        "ivScale": 20,
+        "personality": 3203909404
+      },
+      {
+        "species": "Charizard",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 2271008289
+      }
+    ]
   }
 ]

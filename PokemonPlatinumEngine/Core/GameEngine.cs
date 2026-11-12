@@ -549,6 +549,7 @@ public partial class GameEngine
         flow.Runner.Abort();
         // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         // (... nor of a scene being skipped, plan 12 · Q20)
         ResetTheSkip();
@@ -880,6 +881,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         flow.Runner.Abort();
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         flow.Story.Restore(save.ToStory());
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag, flow.Pokedex);
@@ -2372,6 +2374,8 @@ public partial class GameEngine
         if (charactersReadyAt != (flow.Map.Name, flow.Player.GridX >> 5, flow.Player.GridY >> 5)) KeepCharactersNear(trim: false);
         // A step below ground: a base's way in or out, a trap (plan 06 · R16a)
         if (IsUnderground && UndergroundStep()) return true;
+        // A step in a hideaway: a wall that holds something today glints as the player comes near it (plan 38 · EX6, part b)
+        HideawayStep();
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         flow.Pastimes.Steps++;
         flow.Statistics.Count(Statistics.StepKey(flow.Player.Mode));
@@ -2769,6 +2773,8 @@ public partial class GameEngine
 
         // Below ground: the wall ahead, a trap or a Sphere in the floor, the base's PC and goods (plan 06 · R16a)
         if (TryInteractUnderground(targetX, targetY)) return;
+        // A hideaway's wall that holds something today (plan 38 · EX6, part b)
+        if (TryInteractHideaway(targetX, targetY)) return;
 
         // A secret base's spot, and in a base its PC (plan 21 · H10)
         if (TryInteractSecretBase(targetX, targetY)) return;
@@ -3284,6 +3290,7 @@ public partial class GameEngine
         if (SpawnLocations.Get(Here.Id, flow.Story.Var(SpawnLocations.VariableOf(Here.Id))) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         ArriveOnMap();
         AnnounceLocation();

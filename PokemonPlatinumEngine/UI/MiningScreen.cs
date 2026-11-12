@@ -174,6 +174,13 @@ public sealed class MiningScreen
             records.SpheresDug = UndergroundRecords.Add(records.SpheresDug, 1);
             kept = state.TryAddSphere(kind, find.SphereSize);
         }
+        else if (UndergroundDatabase.IsStatue(find.Id))
+        {
+            // A statue of a hideaway's wall (plan 38 · EX6, part b) is a good, and goes in with the goods
+            Line = Text.Of("digging.statueFound", ("statue", UndergroundDatabase.StatueName(find.Id)));
+            records.TreasuresDug = UndergroundRecords.Add(records.TreasuresDug, 1);
+            kept = state.TryAddGood(find.Id);
+        }
         else
         {
             Line = Text.Of("digging.treasureFound", ("treasure", UndergroundDatabase.TreasureName(find.Id)));

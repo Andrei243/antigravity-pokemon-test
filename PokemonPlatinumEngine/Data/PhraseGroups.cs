@@ -49,7 +49,7 @@ public sealed class PhraseGroups
             {
                 PhraseGroup.Pokemon => pokemon.Where(s => PokemonDatabase.Get(s)?.Name == s).Distinct().Select(s => Key(group, s)).ToList(),
                 PhraseGroup.Moves => moves.Where(m => MoveDatabase.Get(m).Name == m).Distinct().Select(m => Key(group, m)).ToList(),
-                PhraseGroup.Types => Enum.GetValues<PokemonType>().Select(t => Key(group, t.ToString())).ToList(),
+                PhraseGroup.Types => TypeChart.TypesWithSpecies.Select(t => Key(group, t.ToString())).ToList(),
                 _ => OwnWords(group).Select(w => Key(group, w)).ToList()
             };
     }

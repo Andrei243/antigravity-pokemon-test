@@ -74,7 +74,7 @@ public partial class GameEngine
                 break;
             case SootopolisIce.Outcome.Fell:
                 AudioManager.PlaySound("ledge");
-                WarpTo(SootopolisIce.Basement, p.GridX, p.GridY, Direction.Down);
+                WarpTo(ice.Below, p.GridX, p.GridY, Direction.Down);
                 break;
         }
     }

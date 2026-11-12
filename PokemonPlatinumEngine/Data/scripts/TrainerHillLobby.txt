@@ -95,4 +95,25 @@ script Records
   say "I keep the board of the Hill's best times. Here's how yours stand."
   say "Normal: {hill:BEST_NORMAL}. Variety: {hill:BEST_VARIETY}."
   say "Unique: {hill:BEST_UNIQUE}. Expert: {hill:BEST_EXPERT}."
+  trainerhill mixed
+  if result == 0 end
+  say "And the best times your other games have brought in from the record desks."
+  say "Normal: {hill:MIXED_NORMAL}. Variety: {hill:MIXED_VARIETY}."
+  say "Unique: {hill:MIXED_UNIQUE}. Expert: {hill:MIXED_EXPERT}."
+  end
+
+
+# The counter's clerk (plan 21's leftovers, 2026-11-12; Emerald's TrainerHill_Entrance_EventScript_Clerk): medicine and
+# battle items for the climb, a stronger stock once Hoenn's Hall of Fame is entered, as Emerald's once FLAG_SYS_GAME_CLEAR
+script Clerk
+  face self player
+  speaker "Clerk"
+  say "Stocking up before the climb? Everything here is picked for the Hill."
+  if flag HoennHallOfFame goto Champion
+  shop "trainer_hill"
+  say "Good luck up there!"
+  end
+label Champion
+  shop "trainer_hill_champion"
+  say "Good luck up there!"
   end

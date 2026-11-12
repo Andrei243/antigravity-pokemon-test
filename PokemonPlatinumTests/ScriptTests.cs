@@ -175,6 +175,8 @@ public class ScriptTests
           letterbox off 0.2
           slowmo 0.25
           slowmo 1 2
+          lighting 21
+          lighting clock
           effect burst 3 4
           effect shadow 3 4 2 left wait
           effect beam 3 4 hold
@@ -258,6 +260,7 @@ public class ScriptTests
           raid fight
           raid catch "Poké Ball"
           raid wish
+          raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with "galar_raid_hop_a" "galar_raid_zacian" "galar_raid_zamazenta"
           treat can
           treat can mixed
           treat bake spicy

@@ -335,9 +335,24 @@ public class PokemonSpecies
     [JsonIgnore]
     public bool IsGenderless => GenderRatio < 0;
 
-    /// <summary>A species of our own (plan 03 · D14), numbered from <see cref="PokemonDatabase.OursFrom"/>: none of the games' numbers or counts.</summary>
+    /// <summary>
+    /// A species of our own, numbered from <see cref="PokemonDatabase.OursFrom"/>: none of the games' numbers or counts.
+    /// It is D14's (<see cref="IsPastHundred"/>) or Carpathia's (<see cref="IsCarpathian"/>); whatever keeps a species
+    /// that is no game's out (a trade, a file of the games, the National Pokédex's totals) asks this.
+    /// </summary>
     [JsonIgnore]
     public bool IsOurs => DexNumber >= PokemonDatabase.OursFrom;
+
+    /// <summary>
+    /// One of plan 03 · D14's species that evolve past level 100 (and its regional blocks): what the Pokédex of our own,
+    /// the slots of ours, the stages as they are met and the teams beyond the League go by.
+    /// </summary>
+    [JsonIgnore]
+    public bool IsPastHundred => DexNumber >= PokemonDatabase.OursFrom && DexNumber < PokemonDatabase.CarpathiaFrom;
+
+    /// <summary>A species made from nothing for Carpathia (plan 46 · CP1), numbered from <see cref="PokemonDatabase.CarpathiaFrom"/>.</summary>
+    [JsonIgnore]
+    public bool IsCarpathian => DexNumber >= PokemonDatabase.CarpathiaFrom;
 
     /// <summary>One of its forms by name, in any case; null for a name it has no form of.</summary>
     public PokemonForm? Form(string? name) =>

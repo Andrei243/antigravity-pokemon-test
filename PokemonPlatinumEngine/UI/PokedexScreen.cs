@@ -656,7 +656,7 @@ public class PokedexScreen
         AllButtons.Where(b => b != PokedexSearchButton.Diploma || pokedex.Diplomas.Count > 0 || pokedex.Research.Complete).ToList();
 
     /// <summary>The types the search offers: every type a species has.</summary>
-    public static readonly PokemonType[] SearchTypes = Enum.GetValues<PokemonType>();
+    public static PokemonType[] SearchTypes => TypeChart.TypesWithSpecies.ToArray();
 
     public void OpenSearch()
     {

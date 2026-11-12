@@ -161,6 +161,7 @@
         "Steel",
         "Dark",
         "Fairy",
+        "Sound",
         null
       ]
     },
@@ -178,6 +179,14 @@
         "Tower",
         "Aerie",
         "Tent",
+        null
+      ]
+    },
+    "hall": {
+      "enum": [
+        "League",
+        "Champion",
+        "HallOfFame",
         null
       ]
     },
@@ -1072,7 +1081,9 @@
               "FestivalMusicStand",
               "FestivalLeiArch",
               "FestivalHayBales",
-              "FestivalSheaves"
+              "FestivalSheaves",
+              "Seagallop",
+              "NetworkMachine"
             ]
           },
           "x": {

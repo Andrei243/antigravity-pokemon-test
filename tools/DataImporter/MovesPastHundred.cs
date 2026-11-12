@@ -94,6 +94,8 @@ public static class MovesPastHundred
             if (!list.Contains(m)) list.Add(m);
         }
 
+        // A type with no kit (Sound, plan 46 · CP2, until it has moves past 100 of its own) gives nothing
+        types = types.Where(kits.ContainsKey).ToList();
         foreach (var type in types)
         {
             var kit = kits[type];
@@ -102,7 +104,7 @@ public static class MovesPastHundred
             if (Can(kit.Special)) Add(kit.Special);
             if (!kit.Capstone && Can(kit.Extra)) Add(kit.Extra);
         }
-        if (list.Count < 4)
+        if (list.Count < 4 && types.Count > 0)
         {
             var first = kits[types[0]];
             if (!first.Capstone) Add(first.Extra);
