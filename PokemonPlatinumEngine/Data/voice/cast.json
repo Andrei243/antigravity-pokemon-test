@@ -4231,7 +4231,20 @@
     },
     "dov": {
       "note": "first spoken at vermilion_city.txt(165)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "Dov Harlan, a ferry hand on Vermilion's quay: gruff, caught out and owning up to it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,bm_george:0.4",
+        "speed": 0.96,
+        "pitch": 0.93,
+        "accent": "en-gb"
+      }
     },
     "dragon_tamer": {
       "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
@@ -7126,6 +7139,22 @@
         "accent": "en-us"
       }
     },
+    "look:middle_aged_woman#1": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a woman in her middle years: warm, practical and unhurried"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_sarah:0.4",
+        "speed": 0.98,
+        "pitch": 0.97,
+        "accent": "en-gb"
+      }
+    },
     "look:old_woman#1": {
       "brief": {
         "register": "woman",
@@ -9915,7 +9944,20 @@
     },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a stall keeper at a festival or a plaza: cheerful, calling out his wares"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.55,am_eric:0.45",
+        "speed": 1.06,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "station_agent": {
       "note": "first spoken at GearStation.txt(13)",
