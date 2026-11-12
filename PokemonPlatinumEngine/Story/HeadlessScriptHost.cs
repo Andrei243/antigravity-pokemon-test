@@ -47,6 +47,24 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>The stage show's records (plan 42 · PS1, PS2).</summary>
     public Models.StageShow.ShowRecords? StageShow { get; set; } = new();
 
+    /// <summary>The film studio's records (plan 42 · PS4).</summary>
+    public Models.Studio.StudioRecords? Studio { get; set; } = new();
+
+    /// <summary>Which of a film's written takes a shot plays (plan 42 · PS4): the first, the script's own way, unless a test says.</summary>
+    public int StudioTakeIndex { get; set; }
+
+    /// <summary>A take shot with no screen: the film's written take, kept in <see cref="Studio"/>.</summary>
+    public void StudioShoot(Models.Studio.StudioFilm film)
+    {
+        Shown("start a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        var script = film.Takes[System.Math.Clamp(StudioTakeIndex, 0, film.Takes.Count - 1)];
+        var take = Models.Studio.StudioFilms.Shoot(film, script);
+        Studio?.Keep(take);
+        Log.Add($"studio {film.Id} {take.Ending} {take.Stars}");
+    }
+
     /// <summary>What the dressing room's screen answers (1 a dressing kept), and the place the stage's show ends in (0 backed out).</summary>
     public int DressingAnswer { get; set; } = 1;
     public int StagePlace { get; set; } = 1;

@@ -23,7 +23,9 @@ public enum LearnStep
     /// Battle Style Shift's offer (plan 08 · P1): the trainer's next Pokémon is coming; switch first? Yes (0) opens the
     /// team to choose from, No (1) stays in.
     /// </summary>
-    Shift
+    Shift,
+    /// <summary>A film's line to choose (plan 42 · PS4): the beat's two or three lines, the script's and the ad-libs.</summary>
+    Line
 }
 
 /// <summary>
@@ -48,7 +50,7 @@ public partial class BattleEngine
     /// A question is open and waits for an answer: about a move to learn, the Frontier's forfeit, or Battle Style
     /// Shift's offer (plan 08 · P1), which <see cref="ConfirmMessage"/> answers No to, staying in.
     /// </summary>
-    public bool IsLearningMove => (learning != null || forfeiting || offered != null && !offerPanel) && HUD.MenuState == BattleMenuState.LearnMove;
+    public bool IsLearningMove => (learning != null || forfeiting || offered != null && !offerPanel || studioAsking != null) && HUD.MenuState == BattleMenuState.LearnMove;
 
     // Battle Style Shift's offer (plan 08 · P1): the rules' request while it waits, and whether its Yes has opened the team
     private SwitchOfferRequest? offered;
@@ -148,7 +150,7 @@ public partial class BattleEngine
     public void MoveLearnCursor(int dy)
     {
         if (!IsLearningMove || dy == 0) return;
-        int count = LearnStep == LearnStep.Choose ? 5 : 2;
+        int count = LearnStep == LearnStep.Choose ? 5 : LearnAnswers.Count;
         LearnCursor = ((LearnCursor + dy) % count + count) % count;
         AudioManager.PlaySound("cursor");
     }
@@ -160,6 +162,12 @@ public partial class BattleEngine
     public void ChooseLearn(int answer)
     {
         if (!IsLearningMove) return;
+        // A film's line chosen (plan 42 · PS4)
+        if (studioAsking != null)
+        {
+            SayTheLine(answer);
+            return;
+        }
         if (offered != null)
         {
             if (answer == 0)
@@ -233,6 +241,8 @@ public partial class BattleEngine
         LearnStep.Choose => 4,
         LearnStep.Forfeit => 1,
         LearnStep.Shift => 1,
+        // A film's line: the script's own
+        LearnStep.Line => ScriptLineIndex,
         _ => 0
     };
 

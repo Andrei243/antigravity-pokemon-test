@@ -5380,6 +5380,22 @@ way 0
 way 1, from answer 1
   Madame Ottilie Fray> Another time, then. My questions will keep.
   ? Would you answer my questionnaire? Two questions, two words each. = No
+=== JubilifeTV1F.StudioDesk
+from Director Wren at 3,7 of JubilifeTV1F
+way 0
+  Director Wren> Ah, a new face! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script.
+  Director Wren> We lend you the cast. Say the script's lines or your own, and the take ends however you play it.
+  Director Wren> Which film shall we shoot?
+  Director Wren> Magnificent! That's the take the posters will be painted from!
+  ? Which film shall we shoot? = THE EMPTY SEAT
+  * studio emptySeat movedOn 4
+way 2, from answer 1
+  Director Wren> Come back whenever you feel like a star!
+  ? Which film shall we shoot? = NOT TODAY
+way 1, from answer 1
+  Director Wren> Magnificent! That's the take the posters will be painted from!
+  ? Which film shall we shoot? = THE GILDED HOUR
+  * studio gildedHour clean 5
 === JubilifeVillage_GalaxyHall.Cyllene
 from Captain Cyllene at 11,7 of JubilifeVillage_GalaxyHall
 way -
@@ -22198,6 +22214,19 @@ way 1, from answer 1
 from Grunt at 23,5 of Goldenrod_RadioTower_1F
 way -
   Grunt> Stop right there. Only Team Rocket in uniform go up these stairs. Beat it, kid!
+=== goldenrod_radio_tower_1f.LuckyNumber
+from Man at 18,8 of Goldenrod_RadioTower_1F
+way 0
+  Man> Hi there! I work on the Lucky Number Show. Every week we draw a lucky number and read it out on the radio.
+  Man> Shall I check this week's number against your Pokémon's ID numbers?
+  Man> This week's lucky number is 44048! Let me look through your Pokémon's ID numbers...
+  Man> Aw, no luck. Not a single digit matched this week.
+  Man> There's a new number every week, though. Keep your radio tuned in!
+  ? Shall I check this week's number against your Pokémon's ID numbers? = Yes
+  + FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER
+way 1, from answer 1
+  Man> No? Well, the number's good all week. Come back any time!
+  ? Shall I check this week's number against your Pokémon's ID numbers? = No
 === goldenrod_radio_tower_1f.Quiz
 from Receptionist at 13,12 of Goldenrod_RadioTower_1F
 way 0.0.0.0

@@ -1951,6 +1951,16 @@ Plan 42 · PS1, PS2 (`UI/ModernUi.StageShow.cs`; the props worn on the model are
 
 **The stage** (`StageShowScreen`): a back wall from 30 22 44 to 14 10 24; boards from y 700 to 920 (132 86 52 to 86 54 32, a seam every 160); six folds of curtain at each side (140 28 44 and 84 14 28 by turns, 60 wide, a fold every 36) and a pelmet across the top; 24 footlights (255 226 150, radius 9) along y 912. The four performers stand 420 apart from x 330, each drawn 400 across with their feet at y 790, rendered each frame in their own pictures; whoever has the spotlight stands in a cone of warm light (255 236 170 at alpha 46) from the top to a pool at their feet. Over each head a bar of the crowd's eyes (300 wide, the player's Gold, the cast's Blue lightened by 0.2) with its share and the performer's name under it. The crowd's heads in silhouette (10 8 18) along the foot, bobbing while a cue is on. The beat along the foot: a disc for every beat of the bar, the one under way larger and lit (Gold on the player's cue, white otherwise), and YOUR CUE! over it in Gold Black 34 while the spotlight is the player's. The curtain rises over 1.6 s with the show's name on it in the display face, 84. The results: a panel 960 wide, THE CROWD'S VERDICT, the four by place in rows of 100, the player's in Gold lightened by 0.4, each with its share of the eyes and its score.
 
+### The film studio
+
+Plan 42 · PS4 (`Battle/BattleEngine.Studio.cs`). A film is shot on the battle's own screen, with nothing drawn of its own in part a: everything it says is a line of the battle's message box, and a line to choose is the box's question.
+
+- **The title card**: the take's first line, before any beat: the film's title, its genre and the take's number, then "Lights, camera... action!", in the box with no speaker's pill.
+- **A beat's line**: in the box with its speaker's name on the pill, as a trainer's own line (plan 11 · C12): the co-star's, the foe's, or the player's own name for a line the player says. Two rows at most; nothing steps onto a platform, since nobody of the film stands on one.
+- **A line to choose**: the beat's last line stays in the box and its two or three lines stand beside it where Yes and No do (`DrawChoices`, the cursor on the first), each short enough for one row of the choices' panel. The line chosen is then said in the box under the player's name.
+- **The stars**: the ending's lines under their speaker's pill, then "That take earned N out of 5 stars!" with no pill, the take's last line.
+- Part b adds the lot, the posters (painted, theatrical, warm reds: the user's 33a) and the premiere.
+
 ### Menu screens (G10)
 
 Every full-screen menu is the same frame: the backdrop, its title at the top left, key hints at the top right, and its content between rows 132 and 1032 with 64 margins and 32 gutters. Its parts rise or slide into place over 0.25–0.45 s when it opens.

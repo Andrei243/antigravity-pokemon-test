@@ -760,6 +760,8 @@
     "wikstrom": { "hairColor": "#6a5a4a", "hair": "Short", "hat": "Helmet", "hatColor": "#9aa2b2", "hatBand": "#d8b44a", "top": "#9aa2b2", "accent": "#d8b44a", "bottom": "#6a7286", "shoes": "#3a3a46", "eyes": "#3a3a4a", "mustache": true, "build": "GrownBroad", "height": 1.02 },
     "drasna": { "hairColor": "#f2f2f4", "hair": "Long", "top": "#3a7a5a", "accent": "#d8b44a", "bottom": "#3a7a5a", "shoes": "#2a3a30", "eyes": "#5a6a4a", "robe": true, "lashes": true, "curved": false, "build": "GrownElder" },
     "diantha": { "hairColor": "#2a2224", "hair": "Short", "top": "#f6f6f8", "accent": "#d8b44a", "bottom": "#2a2a36", "shoes": "#f6f6f8", "eyes": "#3a5a4a", "coat": true, "buttoned": true, "lashes": true, "build": "Grown", "height": 1.03 },
+    // Sinnoh's Champion, come to the Battle Château as a visitor: her black coat over black, her long fair hair
+    "cynthia": { "hairColor": "#f6dc78", "hair": "Long", "top": "#2c2a34", "accent": "#c4c6d2", "bottom": "#282630", "shoes": "#1e1c24", "eyes": "#463c32", "coat": true, "sole": "#5a5864", "lashes": true, "build": "Grown", "height": 1.03 },
     // Team Flare: its grunts in red jackets and visors, its admins in lab coats over red; Shalour's old master
     "flare_grunt": { "hairColor": "#c8402a", "hair": "Spiky", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "build": "Grown" },
     "flare_grunt_f": { "hairColor": "#c8402a", "hair": "Bun", "top": "#c8402a", "accent": "#22222a", "bottom": "#22222a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#e8402a", "jacket": true, "skirt": true, "lashes": true, "build": "Grown", "height": 0.98 },
@@ -1211,6 +1213,9 @@
     // suspects, whom scripts battle as themselves), each drawn as the person
     "Pokémon Professor": null,
     "Butler": null,
-    "Suspect": null
+    "Suspect": null,
+    // Plan 42 · PS4: the film studio's foes, each drawn as the person the film casts
+    "Actor": null,
+    "Actress": null
   }
 }

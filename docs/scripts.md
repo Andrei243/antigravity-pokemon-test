@@ -151,7 +151,7 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
-`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{marsh:1}` to `{marsh:6}` the Pokémon the day has brought to that area of the Great Marsh (the Sinnoh Pokédex's list; plan 01 · M11, part b: the observatory's binoculars), `{friendsafari:1}` to `{friendsafari:3}` the type of one of the player's three grounds of Kalos's Friend Safari, drawn from the trainer number alone (plan 23, Kalos finished; `Overworld/FriendSafari.cs`), `{ticket}` the Lottery Corner's number of the day and
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{marsh:1}` to `{marsh:6}` the Pokémon the day has brought to that area of the Great Marsh (the Sinnoh Pokédex's list; plan 01 · M11, part b: the observatory's binoculars), `{friendsafari:1}` to `{friendsafari:3}` the type of one of the player's three grounds of Kalos's Friend Safari, drawn from the trainer number alone (plan 23, Kalos finished; `Overworld/FriendSafari.cs`), `{ticket}` the Lottery Corner's number of the day, `{luckynumber}` the week's lucky number of Johto's radio (plan 42 · PS3) and
 `{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), `{berry}`, `{yield}` and
 `{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them, and (plan 06 ·
 R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care, `{level:N}` the level its steps there
@@ -436,6 +436,7 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `globallink check` | The Global Link counter (plan 07 · O7): `RESULT` 1 when the options name an online server (`OnlineServer` in `settings.json`), else 0. The headless host says 0 unless a test sets `OnlineServerSet`. |
 | `globallink` | Opens the Global Link counter (`UI/GlobalLinkScreen.cs` over `Online/GlobalLinkSession.cs`, plan 07 · O5): the friend code, a link code made or typed, and a trade room whose trades are written into the slot before the server is told. Waits for it to be left. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
+| `lottery weekly` | Johto's lucky number draw (plan 42 · PS3): as `lottery draw` with the week's ticket (`Lottery.WeeklyTicket`, today and the trainer number), which `{luckynumber}` says; `lottery boxed` and `{winner}` follow it. A `FLAG_WEEKLY_` flag goes when a new week begins. |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
 ### The Super Contests
@@ -1374,6 +1375,17 @@ Plan 42 · PS1, PS2 (`Models/StageShow/`, `Data/show-props.json`, `Data/stage-sh
 | `stageshow fan fan_1` | The Prop that fan (`fan_1`, `fan_4`, `fan_18`, the lobby's persons 1, 4 and 18) waits with goes into the trunk: `RESULT` 1 and `{thing}` its name, 0 when they wait with none, 2 when the trunk holds nine of it already (they go on waiting). |
 
 The card-flip tables (plan 42 · PS3) are words of `gamecorner`: `gamecorner cards` seats the player at a table (the script waits; the coins come back to the case), `gamecorner prize goldenrod` asks from Goldenrod's list (HeartGold's TMs and held items), and `gamecorner pokemon` asks which of Goldenrod's three Pokémon (`RESULT` 1 to 3, 0 none; `{thing}` and `{price}`), whose price `gamecorner pay` takes (`RESULT` 0 with too few coins).
+
+### The film studio
+
+Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren's desk in Jubilife TV's lobby (`JubilifeTV1F.txt`'s `StudioDesk`) speaks it until the studios' lot is built.
+
+| Command | What it does |
+|---|---|
+| `studio shoot "emptySeat"` | A take of the film on its own battle (the cast lent, the foe, the fixed rolls, the beats; no EXP, money, bag or Pokédex, and nothing of the player's team): the script waits, and `RESULT` is the take's stars, 1 to 5 (0 with no studio or a film not open yet). The take is kept in the studio's records; a lost take is an ending, never a white-out. |
+| `studio open "gildedHour"` | `RESULT` 1 when the studio's rank opens the film. |
+| `studio stars "emptySeat"` | `RESULT` the film's best stars, 0 never shot. |
+| `studio rank` | `RESULT` the studio's rank, every film's best stars summed. |
 
 ### The Laurel Gallery and the Laurel Circuit
 

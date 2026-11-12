@@ -4250,6 +4250,10 @@
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
     },
+    "director_wren": {
+      "note": "first spoken at JubilifeTV1F.txt(121)",
+      "provisional": true
+    },
     "dock": {
       "note": "first spoken at slateport_city_sterns_shipyard_1f.txt(11)",
       "provisional": true
@@ -10171,6 +10175,23 @@
       "note": "first spoken at common.txt(4182)",
       "provisional": true
     },
+    "trainer_tower_owner": {
+      "note": "first spoken at TrainerTowerRoof.txt(8)",
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Trainer Tower's owner on its roof: hearty, proud of his tower, a stopwatch always in hand"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 1.04,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
@@ -10753,6 +10774,7 @@
     "Diantha": "diantha",
     "Digging Brother": "digging_brother",
     "Director": "director",
+    "Director Wren": "director_wren",
     "Dock": "dock",
     "Dojo Master": "dojo_master",
     "Dome Owner": "dome_owner",

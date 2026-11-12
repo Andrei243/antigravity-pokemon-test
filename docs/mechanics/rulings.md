@@ -11611,6 +11611,44 @@ an Ultra Ball, a PP Up, an Exp. Share, a Max Revive and a Master Ball (items 2, 
 - `Lottery.WeeklyPrize` is HeartGold's list, which is `Prize`'s. Jubilife's `TicketOf`, `Matching`, `Check` and `Prize` are
   unchanged, and `Matching` and `Check` serve both.
 - The radio's three lines (`Lottery.RadioLines`, `luckyDraw.radio.*`) are ours.
+- **The station** (built the same day, ours where HeartGold's was not read): `RadioStation.LuckyNumber`, slot 9 of
+  Johto's dial at (80, 80), clear within 4 and heard within 12, its ring clear of the four others'; HeartGold's own spot and
+  hours for its Lucky Channel were not read, so it is on at every hour and gives way to Team Rocket's broadcast and
+  Mahogany's signal as every Johto station does. Kanto's dial has none. A line is one of the three, drawn on the field's
+  chance, for `Lottery.WeeklyTicket(today, the trainer number)`.
+- **The counter** (`goldenrod_radio_tower_1f.txt`'s `LuckyNumber`, the floor's man of the Lucky Number Show): `lottery weekly`
+  checks the week's ticket as `lottery draw` checks the day's, `{luckynumber}` says it, and `FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER`
+  holds the week's go. Every `FLAG_WEEKLY_` flag goes when the days that pass cross a week's boundary
+  (`StoryState.ClearWeekly`, from `DailyEvents.DaysPass` told today's date), however many days pass at once.
+
+## The film studio (2026-11-12, plan 42 · PS4, part a)
+
+Black 2's Pokéstar Studios as a mechanic, with everything in it ours (the user's answers 28a to 30a: The Empty Seat and The
+Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's). No film, line, character or place of Black 2's.
+
+- **A take** is a battle puzzle's battle (`Puzzles.Setup`'s pieces: the cast lent, the foe and their moves turn by turn, the
+  fixed rolls) under the Frontier's rules (no EXP, money or bag; the Pokédex told nothing; RUN asks whether to give the
+  match up, which ends the take), with `BattleSetup.StudioFilm`, the film's director, on the face alone. Nothing of the
+  player's own team goes in. It never reaches `EndBattle`, the Vs. Recorder, the autosave, a white-out or what a battle
+  leaves behind; a lost take is an ending of the film.
+- **Beats** (ours): as each menu opens (`BattleEngine.LogPlayed`'s `ActionRequest`) the director gives every beat whose
+  condition holds and that hasn't come, in the film's order, once each; its lines go on the interlude under their
+  speaker's name, and a beat with lines to choose opens `LearnStep.Line`. Reading on (`ConfirmMessage`, the fuzzer, the
+  harness) picks the script's line. The director reads the log by an index of its own and never takes it: a film's
+  battle writes the same log as the puzzle's own (`StudioFilmTests`).
+- **Endings** (ours): judged when the battle is over, or at the menu once the film's `turns` are done (a mid-turn win
+  leaves that turn uncounted, as a puzzle's). The first whose result, turns, beats met and lines chosen hold is the
+  take's; the last asks for nothing. Stars are the ending's, 1 to 5.
+- **The records** (`StudioRecords`, saved as `SaveData.Studio`, null until a film is shot: no version raised): each film's
+  takes shot, its best stars and best take (a tie keeps the first). The studio's rank is the best stars summed and opens a
+  film whose `rank` it reaches; both of part a's open at nought.
+- **Where** (until part b): the studios' lot is Black 2's, imported with `--game black2 --data` (which fetches
+  fuddlesworth/pokebw2 on its first run, not run in this session: a Unova import goes in a wave of its own); so part a's desk is Director Wren of ours in Jubilife TV's lobby
+  (`JubilifeTV1F`, 3, 7), who shoots either film. Part b moves the films to the lot and leaves or retires the desk.
+- **The casts** (ours): The Empty Seat lends Houndoom, Absol and Umbreon at 60 against the Usher's Chandelure, Banette and
+  Mismagius at 40, co-starring Virbank's captain; The Gilded Hour lends Infernape, Weavile and Honchkrow at 60 against Mme.
+  Verity Cask's Klefki, Bronzong and Probopass at 40, co-starring the talent scout. Their classes are ours: Actor and
+  Actress, drawn as the person cast (`characters.json`'s `classes`, null).
 
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 

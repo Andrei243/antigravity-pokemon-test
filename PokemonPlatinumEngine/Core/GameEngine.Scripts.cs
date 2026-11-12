@@ -1019,6 +1019,9 @@ public partial class GameEngine
         // The gift box and the trade board (plan 40 · GE7, GE8)
         public GiftBox? Gifts => game.flow.Gifts;
         public Models.StageShow.ShowRecords? StageShow => game.flow.StageShow;
+        // The film studio (plan 42 · PS4)
+        public Models.Studio.StudioRecords? Studio => game.flow.Studio;
+        public void StudioShoot(Models.Studio.StudioFilm film) => game.StartStudioFilm(film);
         public GiftFacts GiftFacts => game.GiftFactsNow();
         public TradeBoard? Board => game.flow.Board;
         public IReadOnlyList<string> RegionsEntered => game.RegionsEnteredNow();

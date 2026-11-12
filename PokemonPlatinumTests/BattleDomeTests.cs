@@ -302,8 +302,11 @@ public class BattleDomeTests
     public void TheAnnexIsComeToByTheGuideAndLeftByItsDoor()
     {
         var lobby = Room("BattleFrontierAnnex");
-        // (Its other way is the Masters' Hall's door in the west wall, plan 14 · B15)
-        var door = Assert.Single(lobby.Warps, w => w.TargetMap != "MastersHall");
+        // (Its other ways are the Masters' Hall's door in the west wall, plan 14 · B15, and the Battle Stadium's in the
+        // east wall, plan 37 · FC7)
+        var door = Assert.Single(lobby.Warps, w => w.TargetMap is not ("MastersHall" or "BattleFrontierStadium"));
+        var stadium = Assert.Single(lobby.Warps, w => w.TargetMap == "BattleFrontierStadium");
+        Assert.Equal((14, 6), (stadium.SourceX, stadium.SourceY));
         Assert.Equal(("BattleFrontier", 44, 63), (door.TargetMap, door.TargetX, door.TargetY));
         Assert.True(lobby.IsWalkable(7, 9));
         var hall = Room("BattleDome");
