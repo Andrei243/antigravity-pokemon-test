@@ -2,7 +2,8 @@
 # Data/world3d/galar/places/motostoke.json. The lines are our own, on Sword and Shield's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Motostoke, the opening ceremony and Turffield"). VAR_GALAR_STORY is
 # postwick.txt's count: 13 up the steps, 14 off to register, 15 registered, 16 the morning of the ceremony, 17 the gym
-# challenge open, 18 Bede beaten in the Galar Mine, 19 the Grass Badge.
+# challenge open, 18 Bede beaten in the Galar Mine, 19 the Grass Badge; and (GL4's second session) 22 Bede beaten in
+# Galar Mine No. 2, 23 Marnie beaten by the east wall, 24 the Fire Badge.
 
 
 # Up the steps for the first time: Hop, waiting at the top with the news
@@ -27,4 +28,32 @@ script WestGate
   speaker "League Staff"
   say "Route 3's for challengers, and the challenge doesn't open until after the ceremony. See you on the other side!"
   walkto player motostoke_west_gate_back
+  end
+
+
+# Plan 33 · GL4, its second session: Galar Mine No. 2's way out in the east wall, for challengers with the Water Badge
+script MineTwoShut
+  if badge water end
+  faceto player mine_2_staffer_south
+  speaker "League Staff"
+  say "Galar Mine No. 2 runs north under the banks to Hulbury, but it's for challengers with the Water Badge. Turffield first!"
+  walkto player galar_mine_2_back_south
+  end
+
+
+# Out of Galar Mine No. 2 with the Water Badge: Marnie, waiting by the east wall, and her battle
+script MarnieInMotostoke
+  scene "Marnie in Motostoke"
+  walkto player marnie_spot
+  faceto player marnie_motostoke
+  speaker "Marnie"
+  say "You're the one Team Yell keep moaning about. Sorry about them. They mean well. Mostly."
+  say "I'm Marnie, from Spikemuth. I'm in the challenge to win it, same as you. Let's see if they're right to worry."
+  battle marnie_motostoke as "galar_marnie_1" canlose
+  speaker "Marnie"
+  say "Hm. You're tougher than you look. Kabu's gym is up at the stadium. I'll see you there, or after."
+  clearflag FLAG_GALAR_MARNIE_IN_MOTOSTOKE
+  setvar VAR_GALAR_STORY 23
+  objective galarKabu
+  endscene
   end

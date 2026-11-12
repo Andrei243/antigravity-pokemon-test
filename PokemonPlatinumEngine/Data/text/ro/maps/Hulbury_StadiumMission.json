@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Hulbury Stadium"
+    ],
+    "text": [
+      "Stadionul Hulbury"
+    ]
+  },
+  "people": {
+    "mission_switch_1": {
+      "name": {
+        "en": [
+          "Gatekeeper"
+        ],
+        "text": [
+          "Paznicul stăvilarului"
+        ]
+      }
+    },
+    "mission_switch_2": {
+      "name": {
+        "en": [
+          "Gatekeeper"
+        ],
+        "text": [
+          "Paznicul stăvilarului"
+        ]
+      }
+    },
+    "mission_switch_3": {
+      "name": {
+        "en": [
+          "Gatekeeper"
+        ],
+        "text": [
+          "Paznicul stăvilarului"
+        ]
+      }
+    },
+    "galar_gym_trainer_marina": {
+      "name": {
+        "en": [
+          "Marina"
+        ],
+        "text": [
+          "Marina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Marina: The water's high and so are my hopes! You'll have to battle through me first."
+        ],
+        "text": [
+          "Antrenoarea de Arenă Marina: Apa e mare, și la fel speranțele mele! Întâi trebuie să treci de mine."
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Marina: Washed out. Go on, the next switch is yours."
+        ],
+        "text": [
+          "Antrenoarea de Arenă Marina: M-a luat valul. Hai, următoarea manetă e a ta."
+        ]
+      }
+    },
+    "galar_gym_trainer_finn": {
+      "name": {
+        "en": [
+          "Finn"
+        ],
+        "text": [
+          "Finn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Finn: Nessa says a calm sea never made a skilled sailor. Let's make some waves!"
+        ],
+        "text": [
+          "Antrenorul de Arenă Finn: Nessa zice că marea liniștită n-a făcut niciodată un marinar priceput. Hai să facem valuri!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Finn: Nessa's waiting past the last gate."
+        ],
+        "text": [
+          "Antrenorul de Arenă Finn: Nessa te așteaptă după ultimul stăvilar."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

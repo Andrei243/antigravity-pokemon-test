@@ -1,0 +1,28 @@
+# Nessa's gym mission (plan 33 · GL4, its second session): three floodgates in the way of the course, each opened by
+# its gatekeeper's switch, and two gym trainers beside the channels. A gate opened stays open (its own flag). Our own
+# lines, on Sword and Shield's beat of switches that turn the water; a switch, not the original's puzzle
+# (docs/mechanics/rulings.md, "Route 5, Hulbury, Galar Mine No. 2 and Kabu").
+
+
+script MissionSwitch1
+  speaker "Gatekeeper"
+  say "This floodgate holds the water back from the course. Want me to pull the switch? Here goes!"
+  text "The water rushed off down a side channel, and the gateway drained dry!"
+  setflag FLAG_GALAR_HULBURY_SWITCH_1
+  end
+
+
+script MissionSwitch2
+  speaker "Gatekeeper"
+  say "The second gate's the stubborn one. Lend me a hand with this lever... heave!"
+  text "With a great gurgle the channel turned, and the way ahead was clear!"
+  setflag FLAG_GALAR_HULBURY_SWITCH_2
+  end
+
+
+script MissionSwitch3
+  speaker "Gatekeeper"
+  say "Last gate! Nessa's on the other side. Ready? Switch!"
+  text "The last of the water poured away. The mission is cleared!"
+  setflag FLAG_GALAR_HULBURY_SWITCH_3
+  end

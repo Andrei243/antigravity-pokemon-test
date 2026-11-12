@@ -8,7 +8,7 @@
   // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
   // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-5, -30, 4, 1],
+  "chunks": [-5, -33, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -31,12 +31,17 @@
     { "key": "motostoke", "name": "Motostoke", "polygon": [[-150, -628], [150, -628], [150, -776], [-150, -776]], "music": "galar/wedgehurst" },
     { "key": "galar_route_3", "name": "Route 3", "polygon": [[-150, -776], [-20, -776], [-20, -860], [-150, -860]], "music": "galar/route1" },
     { "key": "galar_route_4", "name": "Route 4", "polygon": [[-150, -878], [-40, -878], [-40, -960], [-150, -960]], "music": "galar/route1" },
-    { "key": "turffield", "name": "Turffield", "polygon": [[-40, -878], [150, -878], [150, -960], [-40, -960]], "music": "galar/wedgehurst" }
+    { "key": "turffield", "name": "Turffield", "polygon": [[-40, -878], [150, -878], [150, -960], [-40, -960]], "music": "galar/wedgehurst" },
+    // North of Turffield (plan 33 · GL4, its second session): Route 5 out through the gap in Turffield's north bank and
+    // along the downs, then east to Hulbury on its harbour; Galar Mine No. 2 runs south from Hulbury under the banks to
+    // a door in Motostoke's east wall
+    { "key": "galar_route_5", "name": "Route 5", "polygon": [[-40, -960], [60, -960], [60, -1056], [-40, -1056]], "music": "galar/route1" },
+    { "key": "hulbury", "name": "Hulbury", "polygon": [[60, -960], [160, -960], [160, -1056], [60, -1056]], "music": "galar/wedgehurst" }
   ],
   "maps": [
     { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
       "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
       "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
-      "motostoke", "galar_route_3", "galar_route_4", "turffield"] }
+      "motostoke", "galar_route_3", "galar_route_4", "turffield", "galar_route_5", "hulbury"] }
   ]
 }

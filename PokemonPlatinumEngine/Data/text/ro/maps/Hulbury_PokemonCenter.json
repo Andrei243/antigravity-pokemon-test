@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Hulbury Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Hulbury"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzătoarea: Bun venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "challenger": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nessa's mission is all about the water. Ask each gatekeeper to pull the switch, and mind the gym trainers!"
+        ],
+        "text": [
+          "Misiunea lui Nessa e numai despre apă. Roagă fiecare paznic de stăvilar să tragă maneta și ferește-te de antrenorii arenei!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
