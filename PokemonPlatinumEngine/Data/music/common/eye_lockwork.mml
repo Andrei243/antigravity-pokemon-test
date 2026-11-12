@@ -1,0 +1,25 @@
+# A Lockwork agent's eyes meet the player's: a clipped, ticking march in D minor, every note cut short like a clock's hand.
+# Plan 44 · SD5 (the user's answer 65a). Original composition for this game.
+title Eyes Meet! Lockwork
+tempo 132
+meter 4/4
+reverb 0.15
+
+track lead pulse vol=0.87 pan=0.1 rev=0.12
+  L o5 d16 r16 d16 r16 f16 r16 d16 r16 a8 r8 g16 r16 f16 r16 | o5 e16 r16 e16 r16 g16 r16 e16 r16 b-8 r8 a16 r16 g16 r16 |
+  o5 f16 r16 f16 r16 a16 r16 f16 r16 o6 c8 r8 o5 b-16 r16 a16 r16 | o5 g8 a8 b-8 g8 a4 r4 |
+  o6 d8 r8 d8 r8 c8 r8 o5 b-8 r8 | o5 a8 r8 a8 r8 g8 r8 f8 r8 | o5 e8 f8 g8 a8 b-8 a8 g8 f8 | o5 d4 r4 d8 r8 d4 |
+
+track tick square vol=0.42 pan=-0.3 rev=0.05
+  L o6 [ d32 r32 r16 d32 r32 r16 ]16 | [ d32 r32 r16 d32 r32 r16 ]16 |
+
+track pad pad vol=0.36 pan=-0.2 rev=0.35
+  L o4 (d f a)1 | (e g b-)1 | (c f a)1 | (d g b-)2 (c e a)2 |
+  (d f a)1 | (c e g)1 | (e g b-)1 | (d f a)1 |
+
+track bass synthbass vol=0.98 rev=0.05
+  L o2 [ d8 r8 ]4 | [ e8 r8 ]4 | [ f8 r8 ]4 | [ g8 r8 ]2 [ a8 r8 ]2 |
+  [ d8 r8 ]4 | [ c8 r8 ]4 | [ e8 r8 ]4 | [ d8 r8 ]4 |
+
+track drums kit vol=0.7 rev=0.08
+  v100 L [ b8 r8 s8 r8 b8 r8 s8 s16 s16 | ]8
