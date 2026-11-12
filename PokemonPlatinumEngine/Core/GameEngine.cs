@@ -488,6 +488,7 @@ public partial class GameEngine
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
         flow.Gifts.Clear();
+        flow.StageShow.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
         flow.Missions.Clear();
@@ -762,6 +763,7 @@ public partial class GameEngine
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
         flow.Gifts.Load(save.Gifts);
+        flow.StageShow.Load(save.StageShow);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
         flow.Plaza.Load(save.Plaza);
@@ -989,6 +991,7 @@ public partial class GameEngine
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
             Gifts = flow.Gifts.ToSave(),
+            StageShow = flow.StageShow.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
             Missions = flow.Missions.ToSave(),
