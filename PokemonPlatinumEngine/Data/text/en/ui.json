@@ -4103,7 +4103,7 @@
     "reclaimed": "Got it! {foe} was reclaimed from its trainer!",
     "brokeLoose": "{user}'s locked heart flared! It broke loose!",
     "looseIgnores": "{user} is loose and ignored the order!",
-    "calmedDown": "{pokemon} calmed down. Its lock eased a little.",
+    "calmedDownLock": "{pokemon} calmed down. Its lock eased a little.",
     "nothingToCalm": "{pokemon} isn't loose. There's nothing to calm.",
     "looseHurts": "{pokemon} is hurt by its own wild struggle!",
     "expHeld": "{pokemon}'s lock held back {exp} EXP. Points.",

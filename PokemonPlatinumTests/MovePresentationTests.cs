@@ -434,7 +434,7 @@ public class MovePresentationTests
     private IEnumerable<string> TenthBatchSecondPart()
     {
         var seen = new HashSet<string>(MoveSightings.All.Select(s => s.Move), StringComparer.OrdinalIgnoreCase);
-        return PlatinumMoves.Select(m => m.Name).Where(n => !seen.Contains(n)).ToList();
+        return PlatinumMoves.Select(m => m.Name).Where(n => !seen.Contains(n) || n == "Flatter").ToList();
     }
 
     [Fact]

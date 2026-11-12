@@ -4100,7 +4100,7 @@
     "reclaimed": "Gata! {foe} a fost recuperat de la antrenorul lui!",
     "brokeLoose": "Inima încuiată a lui {user} a izbucnit! S-a dezlănțuit!",
     "looseIgnores": "{user} e dezlănțuit și a ignorat ordinul!",
-    "calmedDown": "{pokemon} s-a liniștit. Lacătul i-a slăbit puțin.",
+    "calmedDownLock": "{pokemon} s-a liniștit. Lacătul i-a slăbit puțin.",
     "nothingToCalm": "{pokemon} nu e dezlănțuit. Nu e nimic de liniștit.",
     "looseHurts": "{pokemon} se rănește în propria zbatere!",
     "expHeld": "Lacătul lui {pokemon} a ținut {exp} Puncte EXP.",
