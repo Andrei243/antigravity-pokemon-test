@@ -197,12 +197,13 @@ public class JukeboxTests
         // (FRIEND AS PARTNER, plan 13 · V20, went in after the streamer kit's two, BATTLE CAMERA, plan 45 · BC1, after it, and
         // HIDDEN ITEMS GLINT, plan 38 · EX3, after that)
         Assert.Equal(OptionRow.ItemGlints, rows[^3]);
-        Assert.Equal(OptionRow.BattleCamera, rows[^4]);
-        Assert.Equal(OptionRow.Coop, rows[^5]);
-        Assert.Equal(OptionRow.StreamSafe, rows[^6]);
-        Assert.Equal(OptionRow.StreamFeed, rows[^7]);
-        Assert.Equal(OptionRow.Packs, rows[^8]);
-        Assert.Equal(OptionRow.Jukebox, rows[^9]);
+        Assert.Equal(OptionRow.Care, rows[^4]);
+        Assert.Equal(OptionRow.BattleCamera, rows[^5]);
+        Assert.Equal(OptionRow.Coop, rows[^6]);
+        Assert.Equal(OptionRow.StreamSafe, rows[^7]);
+        Assert.Equal(OptionRow.StreamFeed, rows[^8]);
+        Assert.Equal(OptionRow.Packs, rows[^9]);
+        Assert.Equal(OptionRow.Jukebox, rows[^10]);
 
         var options = new OptionsScreen();
         options.Open();
