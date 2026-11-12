@@ -1300,7 +1300,9 @@ public static class ScriptParser
                     "next", "host", "opponent", "partner", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
                     "board", "end", "scouted", "scout", "pick", "picked", "cast", "partnercast",
                     "member", "visit", "visitor", "dress", "level",
-                    "challenge", "climbing", "floor", "kind", "fight", "cleared", "lost", "climb", "prize", "record");
+                    "challenge", "climbing", "floor", "kind", "fight", "cleared", "lost", "climb", "prize", "record",
+                    "cup", "cupcheck", "rent", "cupbegin", "cupnext", "cupbattle", "cupwon", "cupprize", "cupend",
+                    "region", "roundbegin", "roundnext", "roundbattle", "roundwon", "roundend");
                 string which = what switch
                 {
                     "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),
@@ -1308,6 +1310,9 @@ public static class ScriptParser
                     "finish" => r.OneOf("won", "lost"),
                     // The Trainer Tower's four challenges (plan 37 · FC6)
                     "challenge" => r.OneOf("single", "double", "knockout", "mixed"),
+                    // The stadium's cups and the regions with a Leaders' round (plan 37 · FC7)
+                    "cup" => r.OneOf(System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(Models.Facilities.Cups.All, c => c.Id))),
+                    "region" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.LeadersRound.Regions)),
                     _ => ""
                 };
                 // The Battle Tree's scouted partners (plan 23, Alola finished): pick's number, 0 the tree's own and a scouted

@@ -10733,6 +10733,37 @@ Kalos's Leaders on their days, in scripts alone; FC4 adds what the plan asked of
 - **Not built**: FireRed's floors' layouts and lift (above); the Trainer House's trainer of the day from the friends'
   files (HeartGold's link records), which still battles Cal; the shots (`fc60` to `fc64`).
 
+## The cups, the Leaders' round and the sparring room (2026-11-12, plan 37 · FC7)
+
+They stand in a stadium of ours off the Battle Frontier annex's lobby (`BattleFrontierStadium`, through the lobby's east
+door; decision 5), three desks, each run played at its desk a battle at a time (`facility stadium`, `facility sparring`).
+Every battle is the Frontier's: copies, no EXP or money, the Bag shut, whole again before each battle.
+
+- **The cups** (`Data/cups.json`, hand-written, read strictly; `Models/Facilities/Cups.cs`): the Stadium games' numbers with
+  names and prizes of ours. The **Crest Cup** (the Poké Cup: levels 50 to 55, no more than 155 together), the **Sprout Cup**
+  (the Little Cup: level 5, the first of a line that can still evolve into a species of the games), the **Spark Cup** (the
+  Pika Cup: 15 to 20, no more than 50), the **Pebble Cup** (the Petit Cup: 25 to 30, no more than 80, no taller than 2 m nor
+  heavier than 20 kg) and the **Summit Cup** (the Prime Cup: 1 to 100). Three entered, never the Frontier's banned, an Egg,
+  two of a species or two holding the same item (`Cups.WhyNot`, the first reason). Eight battles in a row against trainers of
+  ours with three of the later sets that meet the cup, of tiers rising with the battle, at the cup's foes' level (its highest,
+  or the total split three ways where lower: the Crest Cup's 51, the Spark Cup's 16, the Pebble Cup's 26), drawn on a seed of
+  the run's and the battle, so a battle drawn again is the same. The player's own three battle as copies at their own levels;
+  **rentals** are three of the later sets that meet the cup at the foes' level, lent for the run. A win of the eighth hands
+  over the cup's Battle Points every time and its prize the first time (PP Max, Lucky Egg, Light Ball, Eviolite, Life Orb;
+  `VAR_ANNEX_CUP_PRIZE_<CUP>`); a loss ends the run. A run lives in `VAR_ANNEX_CUP*` and the desk's one script.
+- **The Leaders' round** (`LeadersRound`): a region's eight Leaders in their own order, then its Elite Four, then its
+  Champion, from `tournaments.json`'s pools (no id twice), each with three of their team as the World Tournament picks them
+  (`Tournament.ThreeOf`), every Pokémon on both sides at level 100 (`LevelScaling.At`), the player's three as copies. Open
+  with the region's Hall of Fame; the regions are those the file has Leaders and a League for (Sinnoh, Kanto, Johto, Hoenn,
+  Unova). Cleared, it is kept in `VAR_ANNEX_ROUND_CLEARED_<REGION>`; it pays nothing but the record.
+- **The sparring room** (`SparringRoom`, a place of the later places' frame with the eighteen types for its ways): three
+  entered, all of the type (`check` 3 otherwise), an endless streak of trainers of ours whose three are later sets of that
+  type at 50 (tiers 1 and 2 to the tenth, 2 and 3 to the 25th, 3 and 4 after; one Battle Point a win to the tenth, two to
+  the 25th, three after), a record per type, rested and taken up as the house's are. No host.
+- **Not built**: `UI/CupScreen.cs` (the cups listed with their rules, the foe's six previewed and three picked, rentals
+  chosen from six; the desk's questions stand in, the foe brings three and the rentals are lent), the cups' board, a hub
+  door to the stadium (plan 41's), and the shots (`fc70` to `fc75`).
+
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 
 Peak training is our name for the later games' hyper training, and its rule is plan 06 · R28b's (`Models/HyperTraining.cs`: level 50 or more, as Scarlet and Violet ask; a stat whose IV is 31, or brought to its peak already, can't be). The coach, the clerks, their lines and every price are ours; no Mr. Hyper is recreated.

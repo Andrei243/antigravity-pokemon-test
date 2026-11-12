@@ -1,0 +1,14 @@
+{
+  // The cups' stadium off the Battle Frontier annex's lobby (plan 37 · FC7; rulings, "The cups, the Leaders' round and the
+  // sparring room"), written by hand, read strictly. Each cup is the Stadium games' rules as numbers (the levels, the total of
+  // the three, the first stage, the height and weight), with a name and a prize of ours: the Crest Cup is the Poké Cup's
+  // rules, the Sprout Cup the Little Cup's, the Spark Cup the Pika Cup's, the Pebble Cup the Petit Cup's and the Summit Cup
+  // the Prime Cup's. Eight battles in a row; the prize is given the first time a cup is won, the points every time
+  "cups": [
+    { "id": "crest", "name": "Crest Cup", "minLevel": 50, "maxLevel": 55, "total": 155, "prize": "PP Max", "points": 10 },
+    { "id": "sprout", "name": "Sprout Cup", "minLevel": 5, "maxLevel": 5, "firstStage": true, "prize": "Lucky Egg", "points": 8 },
+    { "id": "spark", "name": "Spark Cup", "minLevel": 15, "maxLevel": 20, "total": 50, "prize": "Light Ball", "points": 8 },
+    { "id": "pebble", "name": "Pebble Cup", "minLevel": 25, "maxLevel": 30, "total": 80, "maxHeight": 2.0, "maxWeight": 20.0, "prize": "Eviolite", "points": 8 },
+    { "id": "summit", "name": "Summit Cup", "minLevel": 1, "maxLevel": 100, "prize": "Life Orb", "points": 12 }
+  ]
+}

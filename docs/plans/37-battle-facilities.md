@@ -149,6 +149,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - Tests (`CupTests`): each cup refuses what its rules forbid (a level out of the band, a total over, an evolved Pokémon in the cup of the unevolved, a Pokémon too tall or too heavy, another type in the sparring room); eight battles to a cup's prize headless; the pick of three after the preview; rentals meeting the rules; a region's round only with its Hall of Fame and its table; copies at the cup's level leave the party untouched; the sparring record per type.
 - Shots: `fc70_cups_hall`, `fc71_cups_list`, `fc72_cups_preview_pick`, `fc73_cups_rentals`, `fc74_round`, `fc75_sparring_type`.
 - **Done when** the cup of the unevolved at level 5 is won with rentals and a region's round is cleared at 100 in the harness.
+- **FC7 as built** (2026-11-12, one sitting; rulings, "The cups, the Leaders' round and the sparring room"): `Data/cups.json` (five cups of the Stadium's rules, names and prizes ours; strict, `StrictKind.Cups`), `Models/Facilities/Cups.cs` (`Cups`: `WhyNot`, `Unevolved`, `FoeLevel`, `Rentals`, `Foe`, `DrawsFor`; `LeadersRound`: `Regions`, `TrainersOf`, `TrainerOf`, `TeamFor` at 100; `SparringRoom`: eighteen ways, a `StreakRoom` with `Only` and `Type`, which `StreakChallenge` draws through), `Story/ScriptRunner.Stadium.cs` (`facility stadium ...`), `sparring` and `stadium` places of `FacilityPlaces`; the stadium `BattleFrontierStadium` off the annex's lobby's east door with three desks (`BattleFrontierStadium.txt`). `CupTests`: the Sprout Cup won with rentals at 5 headless, its prize once; Sinnoh's round cleared at 100. **Owed**: `UI/CupScreen.cs` with the foe's six previewed and three picked and rentals chosen from six (the desk's questions stand in), the harness's shots `fc70` to `fc75`, and the hub's door (plan 41).
 
 ### FC8 · The institute's test and the ladder
 - The test's desk and scoring, the ranks and the board; the ladder's rating, seasons, rules and bands; `Ladder.cs`, `LadderScreen`; the counter of ours in the institute's overlay; the style guide's "Menu screens" first.
@@ -205,7 +206,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - [x] FC4 The house of titles (2026-11-12; above, "FC4 as built")
 - [x] FC5 Lumiose's restaurants (2026-11-08, beside plan 23's Kalos session; the shots fc50 to fc55 taken 2026-11-09)
 - [x] FC6 The Trainer Tower on Seven Island (2026-11-12, its climb in rooms of ours; above, "FC6 as built")
-- [ ] FC7 The cups, the Leaders' round and the sparring room
+- [x] FC7 The cups, the Leaders' round and the sparring room (2026-11-12, rules and desks; the cup screen owed; above, "FC7 as built")
 - [ ] FC8 The institute's test and the ladder
 - [ ] FC9 The agency of lent Pokémon (optional)
 - [ ] FC10 The apprentice (optional)

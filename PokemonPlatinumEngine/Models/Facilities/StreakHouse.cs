@@ -51,6 +51,12 @@ public sealed class StreakRoom
     /// </summary>
     public bool Multi { get; init; }
 
+    /// <summary>Only the later sets this lets come (plan 37 · FC7: the sparring room's type); null for any.</summary>
+    public Func<Data.FrontierSetRecord, bool>? Only { get; init; }
+
+    /// <summary>The type every Pokémon entered must be of (plan 37 · FC7: the sparring room); null for any.</summary>
+    public Data.PokemonType? Type { get; init; }
+
     /// <summary>The key its record is kept under.</summary>
     public string Key => FacilityRecord.KeyOf(Place, Way, Hard);
 }

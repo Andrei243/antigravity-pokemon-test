@@ -61,6 +61,12 @@ public sealed partial class ScriptRunner
             TrainerTowerCommand(i);
             return;
         }
+        // And the stadium's cups and Leaders' round (plan 37 · FC7)
+        if (place == StadiumPlace)
+        {
+            StadiumCommand(i);
+            return;
+        }
         var records = host.Frontier;
         StreakChallenge Challenge() => host.Facility is { } c && c.Room.Place == place ? c : throw Wrong(i, $"'facility {place} {i.Other}' needs a challenge of the {place} under way");
         StreakRoom Chosen() => facilityWay.Length > 0 ? FacilityPlaces.RoomOf(place, facilityWay, facilityHard)
@@ -103,6 +109,8 @@ public sealed partial class ScriptRunner
             {
                 var chosen = facilitySlots.Where(s => s >= 0 && s < host.Party.Count).Select(s => host.Party.Members[s]).ToList();
                 Result = (int)FrontierRules.WhyNot(chosen);
+                // The sparring room's type (plan 37 · FC7): 3 when one of those chosen is not of it
+                if (Result == 0 && Chosen().Type is { } type && chosen.Any(p => !p.HasType(type))) Result = 3;
                 break;
             }
             case "begin":

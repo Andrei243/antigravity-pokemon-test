@@ -32,7 +32,9 @@ public enum StrictKind
     // The later places' prize counters (written by hand: plan 23, Kiloude City's Battle Maison)
     FacilityPrizes,
     // Plan 37 · FC3: the partners' tree's famous trainers (written by hand)
-    TreeCast
+    TreeCast,
+    // Plan 37 · FC7: the stadium's cups (written by hand)
+    Cups
 }
 
 /// <summary>A data file to read strictly: where it is, its name under <c>Data</c>, and its kind.</summary>
@@ -66,6 +68,8 @@ public static class StrictFiles
         if (File.Exists(facilityPrizes)) yield return Make(data, facilityPrizes, StrictKind.FacilityPrizes);
         string treeCast = Path.Combine(data, Models.Facilities.PartnersTree.FileName);
         if (File.Exists(treeCast)) yield return Make(data, treeCast, StrictKind.TreeCast);
+        string cups = Path.Combine(data, Models.Facilities.Cups.FileName);
+        if (File.Exists(cups)) yield return Make(data, cups, StrictKind.Cups);
     }
 
     public static IEnumerable<StrictFile> GeneratedFiles(string data)
@@ -131,6 +135,7 @@ public static class StrictFiles
                 case StrictKind.FacilityTrainers: GameDataFiles.ReadStrict<Models.Facilities.FacilityTrainersFile>(text, file.Relative); break;
                 case StrictKind.FacilityPrizes: GameDataFiles.ReadStrict<Models.Facilities.FacilityPrizesFile>(text, file.Relative); break;
                 case StrictKind.TreeCast: GameDataFiles.ReadStrict<Models.Facilities.TreeCastFile>(text, file.Relative); break;
+                case StrictKind.Cups: GameDataFiles.ReadStrict<Models.Facilities.CupsFile>(text, file.Relative); break;
             }
             return null;
         }

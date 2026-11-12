@@ -209,7 +209,7 @@ public sealed class StreakChallenge
             return opponent;
         }
         var (low, high) = Room.Tiers(streak);
-        var drawn = FacilityTrainers.Draw(Room.Entered, low, high, Room.Ivs(streak), rng.Next16, Room.Level);
+        var drawn = FacilityTrainers.Draw(Room.Entered, low, high, Room.Ivs(streak), rng.Next16, Room.Level, only: Room.Only);
         lastDrawn = drawn;
         opponent = new FrontierOpponent
         {
