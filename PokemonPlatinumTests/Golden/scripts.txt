@@ -6161,55 +6161,55 @@ from Worker at 17,13 of LaverreCity_PokeBallFactory
 way -
   Worker> They switched off half the lines and told us to make only their balls. Red ones, with an F. Hideous things.
 === LockworkCellHoenn.Admin
-from Rafe at 6,4 of LockworkCellHoenn
+from Rafe Ottoline at 6,4 of LockworkCellHoenn
 way 0
-  Rafe> So you're the one taking our cargo back, one ball at a time.
-  Rafe> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
-  Rafe> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  Rafe Ottoline> So you're the one taking our cargo back, one ball at a time.
+  Rafe Ottoline> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Rafe Ottoline> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
   * battle lockwork_hoenn_admin Won
   + FLAG_LOCKWORK_HOENN_ADMIN_BEATEN
   + beaten lockwork_hoenn_admin
 way 1, from answer 1
   * battle lockwork_hoenn_admin Lost
 === LockworkCellJohto.Admin
-from Elspeth at 6,4 of LockworkCellJohto
+from Elspeth Moor at 6,4 of LockworkCellJohto
 way 0
-  Elspeth> So you're the one taking our cargo back, one ball at a time.
-  Elspeth> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
-  Elspeth> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  Elspeth Moor> So you're the one taking our cargo back, one ball at a time.
+  Elspeth Moor> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Elspeth Moor> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
   * battle lockwork_johto_admin Won
   + FLAG_LOCKWORK_JOHTO_ADMIN_BEATEN
   + beaten lockwork_johto_admin
 way 1, from answer 1
   * battle lockwork_johto_admin Lost
 === LockworkCellKanto.Admin
-from Dov at 6,4 of LockworkCellKanto
+from Dov Harlan at 6,4 of LockworkCellKanto
 way 0
-  Dov> So you're the one taking our cargo back, one ball at a time.
-  Dov> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
-  Dov> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  Dov Harlan> So you're the one taking our cargo back, one ball at a time.
+  Dov Harlan> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Dov Harlan> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
   * battle lockwork_kanto_admin Won
   + FLAG_LOCKWORK_KANTO_ADMIN_BEATEN
   + beaten lockwork_kanto_admin
 way 1, from answer 1
   * battle lockwork_kanto_admin Lost
 === LockworkCellSinnoh.Admin
-from Tamsin at 6,4 of LockworkCellSinnoh
+from Tamsin Crake at 6,4 of LockworkCellSinnoh
 way 0
-  Tamsin> So you're the one taking our cargo back, one ball at a time.
-  Tamsin> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
-  Tamsin> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  Tamsin Crake> So you're the one taking our cargo back, one ball at a time.
+  Tamsin Crake> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Tamsin Crake> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
   * battle lockwork_sinnoh_admin Won
   + FLAG_LOCKWORK_SINNOH_ADMIN_BEATEN
   + beaten lockwork_sinnoh_admin
 way 1, from answer 1
   * battle lockwork_sinnoh_admin Lost
 === LockworkTower1F.Admin
-from Juno at 6,4 of LockworkTower1F
+from Juno Barrow at 6,4 of LockworkTower1F
 way 0
-  Juno> Welcome to Lockwork's head office. Every crate that left a port in five regions was signed for on this floor.
-  Juno> You've undone four cells. You won't undo the fifth.
-  Juno> Fine. Go up. Keld will want to see the one who's been unpicking her locks.
+  Juno Barrow> Welcome to Lockwork's head office. Every crate that left a port in five regions was signed for on this floor.
+  Juno Barrow> You've undone four cells. You won't undo the fifth.
+  Juno Barrow> Fine. Go up. Keld will want to see the one who's been unpicking her locks.
   * battle lockwork_unova_admin Won
   + FLAG_LOCKWORK_UNOVA_ADMIN_BEATEN
   + beaten lockwork_unova_admin
@@ -6224,7 +6224,7 @@ from Orsolya Keld at 6,3 of LockworkTower2F
 way -
   Orsolya Keld> Juno is still on the floor below. Nobody comes up these stairs without her say.
 === LockworkTower2F.LookerLast
-from Looker at 6,4 of LockworkTower2F
+from Looker at 9,6 of LockworkTower2F
 way -
   Looker> The machine is quiet. Keld came quietly too, in the end. My bureau will see to the rest.
   Looker> Every heart you took back will open in time, beside you. That is the one thing no machine can do.
@@ -20765,6 +20765,13 @@ way 0
   + beaten lockwork_sinnoh_agent_4
 way 1, from answer 1
   * battle lockwork_sinnoh_agent_4 Lost
+=== fight_area.LockworkDoor
+from Lockwork Agent at 651,442 of Sinnoh
+way -
+  Lockwork Agent> Down there's the admin's office. Go on, then. You'll come back up quicker than you went in.
+  * fade out
+  * warp LockworkCellSinnoh 6 8
+  * fade in
 === fight_area.Rival
 from {rival} at 628,434 of Sinnoh
 way 0.0
@@ -25041,6 +25048,13 @@ way 0
   + beaten lockwork_hoenn_agent_4
 way 1, from answer 1
   * battle lockwork_hoenn_agent_4 Lost
+=== lilycove_city.LockworkDoor
+from Lockwork Agent at 513,104 of Hoenn
+way -
+  Lockwork Agent> Down there's the admin's office. Go on, then. You'll come back up quicker than you went in.
+  * fade out
+  * warp LockworkCellHoenn 6 8
+  * fade in
 === lilycove_city.OldManCove
 from Old Man at 537,87 of Hoenn
 way -
@@ -28683,6 +28697,13 @@ way 0
   + beaten lockwork_johto_agent_4
 way 1, from answer 1
   * battle lockwork_johto_agent_4 Lost
+=== olivine.LockworkDoor
+from Lockwork Agent at 266,268 of Johto
+way -
+  Lockwork Agent> Down there's the admin's office. Go on, then. You'll come back up quicker than you went in.
+  * fade out
+  * warp LockworkCellJohto 6 8
+  * fade in
 === olivine.RivalAtTheGym
 from the trigger at 272,239 of Johto
 way -
@@ -37441,7 +37462,7 @@ way -
   Cameraman> I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.
   Cameraman> They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling.
 === survival_area.LookerReclaimer
-from Looker at 646,328 of Sinnoh
+from Looker at 658,341 of Sinnoh
 way -
   Looker> Ah, it is you! Looker is here on a matter of shipments. Crates that go out on the ferries and never quite arrive.
   Looker> A syndicate called Lockwork. They put a machine to a Pokémon's heart and lock it shut. It obeys, but it feels nothing for its trainer.
@@ -40681,6 +40702,13 @@ way 0
   + beaten lockwork_kanto_agent_4
 way 1, from answer 1
   * battle lockwork_kanto_agent_4 Lost
+=== vermilion_city.LockworkDoor
+from Lockwork Agent at 282,226 of Kanto
+way -
+  Lockwork Agent> Down there's the admin's office. Go on, then. You'll come back up quicker than you went in.
+  * fade out
+  * warp LockworkCellKanto 6 8
+  * fade in
 === vermilion_city.Machop
 from Machop at 299,211 of Kanto
 way -

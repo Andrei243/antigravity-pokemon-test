@@ -75,7 +75,7 @@
   "npcs": [
     {
       "id": "lockwork_admin",
-      "name": "Juno",
+      "name": "Juno Barrow",
       "npcType": "juno_barrow",
       "x": 6,
       "y": 4,

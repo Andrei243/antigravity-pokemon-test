@@ -81,7 +81,7 @@
   "npcs": [
     {
       "id": "lockwork_admin",
-      "name": "Tamsin",
+      "name": "Tamsin Crake",
       "npcType": "tamsin_crake",
       "x": 6,
       "y": 4,

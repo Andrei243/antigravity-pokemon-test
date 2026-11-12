@@ -181,6 +181,8 @@ public sealed class VoiceKantoTests : IDisposable
         // The Trainer Tower on Seven Island (plan 37 · FC6: its attendants, its records' keeper and its owner on the roof)
         // and Celadon's restaurant's meal stand (plan 39's cooking), written after Kanto's pack too
         "script:TrainerTowerLobby.", "script:TrainerTowerRoof.", "script:celadon_city_restaurant.MealStand",
+        // Lockwork's cell at Vermilion's harbour (plan 44 · SD3: its agents, its doorman and its admin, in battle too)
+        "script:vermilion_city.Lockwork", "script:LockworkCellKanto.", "battle:lockwork_kanto_",
     };
 
     [Fact]

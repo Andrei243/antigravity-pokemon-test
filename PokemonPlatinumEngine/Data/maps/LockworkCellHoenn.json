@@ -81,7 +81,7 @@
   "npcs": [
     {
       "id": "lockwork_admin",
-      "name": "Rafe",
+      "name": "Rafe Ottoline",
       "npcType": "rafe_ottoline",
       "x": 6,
       "y": 4,

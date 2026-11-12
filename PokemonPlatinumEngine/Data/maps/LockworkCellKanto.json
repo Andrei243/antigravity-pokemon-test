@@ -81,7 +81,7 @@
   "npcs": [
     {
       "id": "lockwork_admin",
-      "name": "Dov",
+      "name": "Dov Harlan",
       "npcType": "dov_harlan",
       "x": 6,
       "y": 4,

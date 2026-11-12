@@ -60,6 +60,6 @@
   "read": { "7": "BattlegroundDoor" },
   // Plan 44 · SD3: Looker, who has followed Lockwork's shipments, with the Reclaimer his bureau made
   "npcs": [
-    {"id": "lockwork_looker", "name": "Looker", "npcType": "looker", "x": 646, "y": 328, "facing": "Down", "script": "LookerReclaimer", "shownBy": "SinnohHallOfFame"}
+    {"id": "lockwork_looker", "name": "Looker", "npcType": "looker", "x": 658, "y": 341, "facing": "Down", "script": "LookerReclaimer", "shownBy": "SinnohHallOfFame"}
   ]
 }

@@ -11761,8 +11761,12 @@ Colosseum's and XD's snag and purification as a mechanic, with everything in it 
   have, leaves the trainer's team and the field, and the trainer sends the next at the turn's end; reclaiming the last wins
   the battle and its prize. It joins the team or the PC once the battle is over, never during it, so it is never sent in
   against its old trainer. A reclaim is a gift to the Nuzlocke's gifts clause.
-- **A locked Pokémon knocked out** goes back to Lockwork, noted as missed (`HeartsRecord.Missed`), and is met again with
-  the courier, so none is lost.
+- **A locked Pokémon knocked out** goes back to Lockwork, noted as missed (`HeartsRecord.Missed`) when the battle is won
+  (a battle lost leaves its trainer undefeated, with it still in the team), and is met again with the courier in the head
+  office's lobby once the machine has stopped, six at a time, so none is lost (plan 44 · SD4, `heart courier`).
+- **The cells** (plan 44 · SD3, SD4): four agents and an admin a region, out once its Hall of Fame is entered, the admin
+  in a room of ours reached by the cell's doorman; the head office opens with Unova's. Thirty locks in the cells and the
+  head's Ampharos, the thirty-first.
 - **Breaking loose** (`RollKind.Lock`): at its action a locked Pokémon of the player's breaks loose 6 times in 100, 30 on the
   turn after it took a critical or super-effective hit. Loose, it heeds the order one time in two (the other it ignores
   it), and loses a sixteenth of its HP at each turn's end. CALM (`ChoiceKind.Calm`, the Pokémon's turn, taken with the
