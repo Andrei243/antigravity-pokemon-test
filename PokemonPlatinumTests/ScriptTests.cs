@@ -175,6 +175,8 @@ public class ScriptTests
           letterbox off 0.2
           slowmo 0.25
           slowmo 1 2
+          lighting 21
+          lighting clock
           effect burst 3 4
           effect shadow 3 4 2 left wait
           effect beam 3 4 hold

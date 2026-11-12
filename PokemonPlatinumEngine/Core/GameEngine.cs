@@ -549,6 +549,7 @@ public partial class GameEngine
         flow.Runner.Abort();
         // (Nothing of a scene's camera outlives the game it was played in, plan 09 · L4)
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         // (... nor of a scene being skipped, plan 12 · Q20)
         ResetTheSkip();
@@ -880,6 +881,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         flow.Runner.Abort();
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         flow.Story.Restore(save.ToStory());
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag, flow.Pokedex);
@@ -3284,6 +3286,7 @@ public partial class GameEngine
         if (SpawnLocations.Get(Here.Id, flow.Story.Var(SpawnLocations.VariableOf(Here.Id))) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
+        world.HeldHour = null;
         flow.CameraSent = false;
         ArriveOnMap();
         AnnounceLocation();
