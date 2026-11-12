@@ -105,14 +105,21 @@ internal sealed class OpenBuildingKit
             var plan = PlanOf(b, next.Doors);
             // Seeds of the art go by where the building stands, so two buildings of a town are never painted alike
             int sx = b.Box.Min.X / OpenPos.PerMetre, sz = b.Box.Min.Z / OpenPos.PerMetre;
+            // A tower stands as tall as its box (the field's camera bounds its stages; an open map's is on the ground)
+            bool tower = b.Kind is BuildingKind.Tower or BuildingKind.Lighthouse;
+            float boxHeight = (b.Box.Max.Y - b.Box.Min.Y) / (float)OpenPos.PerMetre;
             var info = new BuildingInfo
             {
                 X0 = sx, Y0 = sz, X1 = sx + plan.Width - 1, Y1 = sz + plan.Depth - 1, Kind = b.Kind, Town = b.Town,
-                Storeys = b.Storeys, Sign = b.Sign, TownsRoof = true
+                Storeys = b.Storeys, Sign = b.Sign, TownsRoof = true,
+                Height = tower ? boxHeight / MetresPerTile : 0, TallestRows = tower ? 2400 : 0
             };
             if (plan.DoorBay >= 0) info.Doors.Add((sx + plan.DoorBay, "open"));
             var style = BuildingArt.StyleOf(info, b.Town);
             if (b.Storeys > 0) style = style with { Storeys = b.Storeys };
+            // A tall tower's shaft is most of its footprint and has more stages, or it is a needle on a wide plinth
+            if (tower && boxHeight > 20 && style.Shaft <= 96)
+                style = style with { Shaft = Math.Max(97, (int)(plan.Width * BuildingArt.Bay * 0.6f)), StageCount = Math.Max(style.StageCount, 4), StackedWindows = true };
 
             // The ground at the front's middle, just outside it, and the lowest under the walls
             float baseY = HeightAt(ground, plan.FrontMiddle + plan.Out * 0.6f, b) ?? b.Box.Min.Y / (float)OpenPos.PerMetre;

@@ -98,6 +98,12 @@ internal sealed record BuildingStyle
     /// </summary>
     public bool FlatTop { get; init; }
 
+    /// <summary>
+    /// A tall tower's stages have a row of windows to every storey of their height, not one under their ledge (an open
+    /// map's tower, which stands as tall as its box; the field's stages are a storey or two each and keep one row).
+    /// </summary>
+    public bool StackedWindows { get; init; }
+
     public bool Pitched => Roof != RoofShape.Flat;
 
     /// <summary>Height of the walls in texels.</summary>
