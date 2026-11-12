@@ -11617,7 +11617,11 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   (`VAR_GALAR_STORY`, a badge, a flag). A leg may vary its answers (`Leg.Vary`: Opal's quiz, where the first answer is
   wrong for two of the three questions). `Itineraries.GalarWhole` is the four stretches of `Itineraries.Galar.cs`;
   `PlaythroughGalarTests` plays the first chapter and the whole. As Kalos's run does, five Pokémon of level 80 stand on
-  the team before the first arrives and a Repel lasts the whole way: the story is what is tried.
+  the team before the first arrives and a Repel lasts the whole way: the story is what is tried. Galar's open land is
+  several parts that only grid rooms (the two mines, Glimwood Tangle) and trains join, so the bot goes through one such
+  room when no way over the ground reaches the leg, leaves a room by the door that has a way on, and keeps out of other
+  doors; the trains are people, so a white-out home would strand it, and the itinerary heals at the town's Pokémon
+  Center before every Leader and every match of the Cup.
 - **Sword's first battle with Eternatus is fought**: after Leon's fall on the Energy Plant's roof, `wildbattle "Eternatus"
   60 hidelevel canlose`, a staged battle (no ball takes it, nothing reaches the Pokédex but the scene's `seen`), lost or
   won, before it swells into Eternamax and the raid that can't fail. Its level is shown as ??? because `hidelevel` is

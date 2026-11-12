@@ -37,6 +37,7 @@ internal sealed partial class Autoplayer
     private bool healing;
     private int healingLevel = -1;
     private readonly Dictionary<(string, string), string?> nextMaps = new();
+    private readonly Dictionary<(string Room, int Leg), Warp> exitChoice = new();
     private bool detoured;
     // Free (plan 30 · FM9): the last step of a leg is a glide that lands a few frames after it is steered, so the leg is
     // judged once the body is counted off the tile it set out from (or after a second)
@@ -51,6 +52,7 @@ internal sealed partial class Autoplayer
         var map = game.Map;
         var player = game.Player;
         var leg = it.Current!;
+        openVia = null;
         if (routeLeg != it.Index)
         {
             routeLeg = it.Index;
@@ -360,8 +362,17 @@ internal sealed partial class Autoplayer
             // Out to an open map (plan 33 · GL6): by the way whose door there stands nearest where the leg goes on to
             if (engine.OpenMapNamed(next) is { } open && OpenGoalOf(it.Current!, open) is { } goalThere)
             {
-                var byDoor = ways.OrderBy(w => open.DoorBackFrom(map.Name, w.SourceX, w.SourceY) is { } d && open.Marker(d.Out) is { } m
-                    ? m.Pos.GroundDistanceSquared(goalThere) : long.MaxValue).First();
+                // (the way whose door's marker has a way over the open ground to the goal first, else the nearest; chosen
+                // once a leg, since a way over the open ground is a search of the whole navigation mesh)
+                if (!exitChoice.TryGetValue((map.Name, it.Index), out var byDoor) || !ways.Contains(byDoor))
+                {
+                    var grants = OpenWorld.OpenGrants.Of(game.Story);
+                    byDoor = ways.OrderBy(w => open.DoorBackFrom(map.Name, w.SourceX, w.SourceY) is { } d && open.Marker(d.Out) is { } m
+                            ? (Policy.Route(open, m.Pos, goalThere, grants) != null ? 0 : 1) : 2)
+                        .ThenBy(w => open.DoorBackFrom(map.Name, w.SourceX, w.SourceY) is { } d && open.Marker(d.Out) is { } m
+                            ? m.Pos.GroundDistanceSquared(goalThere) : long.MaxValue).First();
+                    exitChoice[(map.Name, it.Index)] = byDoor;
+                }
                 onward = null;
                 ways = new List<Warp> { byDoor };
             }

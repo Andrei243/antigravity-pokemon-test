@@ -22,6 +22,37 @@ internal sealed partial class Autoplayer
 
     private int openFollowIndex = -1;
     private float openInsideSeconds;
+    // The door of a passage of the grid's the bot is going through to reach another part of the open land; forgotten in
+    // a room and with each new leg
+    private OpenDoor? openVia;
+
+    /// <summary>
+    /// A door into a room of the grid's that leads out by another door to a part of the open land from which
+    /// <paramref name="target"/> can be walked to (plan 33 · GL6: the Galar Mine and Galar Mine No. 2, Glimwood Tangle,
+    /// between parts of Galar no road joins), the nearest the body can walk to; null for none.
+    /// </summary>
+    private OpenDoor? PassageToward(OpenMap map, OpenPos feet, OpenPos target, MovementGrants grants)
+    {
+        OpenDoor? best = null;
+        long bestDistance = long.MaxValue;
+        foreach (var door in map.Doors)
+        {
+            if (!door.Open(game.Story.Has) || GridMap(door.Room) is not { } room) continue;
+            long d2 = door.Shape.Base.GroundDistanceSquared(feet);
+            if (d2 >= bestDistance) continue;
+            bool leadsOn = false;
+            foreach (var warp in room.Warps)
+            {
+                if (warp.Shut || engine.OpenMapNamed(warp.TargetMap) != map) continue;
+                if (map.DoorBackFrom(room.Name, warp.SourceX, warp.SourceY) is not { } far || far == door || map.Marker(far.Out) is not { } m) continue;
+                if (Policy.Route(map, m.Pos, target, grants) != null) { leadsOn = true; break; }
+            }
+            if (!leadsOn || Policy.Route(map, feet, FootOf(map, door.Shape), grants) == null) continue;
+            best = door;
+            bestDistance = d2;
+        }
+        return best;
+    }
 
     private ActionFrame FollowOpen(Itinerary it, float dt)
     {
@@ -39,6 +70,7 @@ internal sealed partial class Autoplayer
             openBest = double.MaxValue;
             openSinceProgress = 0f;
             openInsideSeconds = 0f;
+            openVia = null;
         }
 
         // Someone spoken to: over once their script has been seen through and what the leg was for holds
@@ -108,6 +140,14 @@ internal sealed partial class Autoplayer
             }
         }
 
+        // On the way through a passage of the grid's to another part of the land: its door is the place gone for
+        if (openVia is { } via)
+        {
+            target = FootOf(map, via.Shape);
+            into = via.Shape;
+            who = null;
+        }
+
         double toGo = Math.Sqrt(feet.GroundDistanceSquared(target));
         if (who != null && toGo <= OpenSpeakAt)
         {
@@ -157,7 +197,16 @@ internal sealed partial class Autoplayer
         bool moving = who != null;
         if (openPath == null || moving && openSincePath > 0.5f || target.GroundDistanceSquared(openTarget) > 1_000L * 1_000)
         {
-            openPath = Policy.Route(map, feet, target, field.Grants) ?? new() { feet, target };
+            openPath = Policy.Route(map, feet, target, field.Grants);
+            // No way over the open ground: through a passage of the grid's (a mine between two parts of the land), whose
+            // far door's marker has a way on to the leg's place; gone for from the next frame
+            if (openPath == null && openVia == null && PassageToward(map, feet, target, field.Grants) is { } passage)
+            {
+                openVia = passage;
+                openPath = null;
+                return ActionFrame.None;
+            }
+            openPath ??= new() { feet, target };
             openCorner = 1;
             openTarget = target;
             openSincePath = 0f;
@@ -173,17 +222,21 @@ internal sealed partial class Autoplayer
     /// </summary>
     private static OpenPos ClearOfOtherDoors(OpenMap map, OpenPos aim, OpenPos feet, OpenShape? mine)
     {
-        const int margin = 1_200;
+        const int margin = 700;
         foreach (var door in map.Doors)
         {
             var s = door.Shape;
             if (ReferenceEquals(s, mine) || s == mine) continue;
-            if (aim.X < s.Min.X - margin || aim.X > s.Max.X + margin || aim.Z < s.Min.Z - margin || aim.Z > s.Max.Z + margin) continue;
-            var b = s.Base;
-            double dx = feet.X - b.X, dz = feet.Z - b.Z, length = Math.Sqrt(dx * dx + dz * dz);
-            if (length < 1) { dx = 0; dz = 1; length = 1; }
-            int reach = Math.Max(s.Max.X - s.Min.X, s.Max.Z - s.Min.Z) / 2 + margin + 800;
-            return new OpenPos((int)(b.X + dx / length * reach), aim.Y, (int)(b.Z + dz / length * reach));
+            int x0 = s.Min.X - margin, x1 = s.Max.X + margin, z0 = s.Min.Z - margin, z1 = s.Max.Z + margin;
+            if (aim.X < x0 || aim.X > x1 || aim.Z < z0 || aim.Z > z1) continue;
+            // Out past the door's outer face (the side its out marker stands on), keeping the way along the wall
+            if (map.Marker(door.Out) is not { } outside) continue;
+            var o = outside.Pos;
+            const int clear = 1_000;
+            if (o.Z >= s.Max.Z) return aim with { Z = Math.Max(aim.Z, z1 + clear) };
+            if (o.Z <= s.Min.Z) return aim with { Z = Math.Min(aim.Z, z0 - clear) };
+            if (o.X >= s.Max.X) return aim with { X = Math.Max(aim.X, x1 + clear) };
+            return aim with { X = Math.Min(aim.X, x0 - clear) };
         }
         return aim;
     }
@@ -197,13 +250,13 @@ internal sealed partial class Autoplayer
     {
         switch (leg.Kind)
         {
-            case LegKind.OpenTrigger: return open.Triggers.FirstOrDefault(t => t.Name == leg.What)?.Shape.Base;
+            case LegKind.OpenTrigger: return open.Triggers.FirstOrDefault(t => t.Name == leg.What) is { } t ? FootOf(open, t.Shape) : null;
             case LegKind.OpenTalk: return open.Person(leg.What)?.Pos;
             case LegKind.OpenReach: return open.Marker(leg.What)?.Pos;
         }
         var doors = open.Doors.Where(d => d.Open(game.Story.Has) && (d.Room == leg.Map || Itinerary.NextMap(d.Room, leg.Map, GridMap) != null)).ToList();
         var direct = doors.Where(d => d.Room == leg.Map).ToList();
-        return (direct.Count > 0 ? direct : doors).Select(d => (OpenPos?)d.Shape.Base).FirstOrDefault();
+        return (direct.Count > 0 ? direct : doors).Select(d => (OpenPos?)FootOf(open, d.Shape)).FirstOrDefault();
     }
 
     /// <summary>Where a volume stands on the ground: its middle at the highest face up between its heights, else its floor.</summary>

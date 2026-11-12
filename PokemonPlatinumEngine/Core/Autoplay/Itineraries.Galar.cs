@@ -10,7 +10,8 @@ namespace PokemonPlatinumEngine.Core.Autoplay;
 /// walks an open region and its grid rooms as one: the open map's triggers, people and markers by their names
 /// (<see cref="Leg.OpenTrigger"/>, <see cref="Leg.OpenTalk"/>), the rooms' people by their keys, as
 /// <c>GalarTests.TheFirstChapterRunsFromTheBedroomToTheTrainHeadless</c> plays the scripts one by one. Each leg is done
-/// when <c>VAR_GALAR_STORY</c> (postwick.txt's header has its count), a badge or a flag says so.
+/// when <c>VAR_GALAR_STORY</c> (postwick.txt's header has its count), a badge or a flag says so. The team is seen to
+/// by the town's nurse before every Leader and every match of the Cup, as a player would.
 /// </summary>
 public static partial class Itineraries
 {
@@ -49,17 +50,20 @@ public static partial class Itineraries
         Leg.Talk("Turffield_StadiumMission", "mission_wooloo_1") with { Until = Flag("FLAG_GALAR_TURFFIELD_WOOLOO_1") },
         Leg.Talk("Turffield_StadiumMission", "mission_wooloo_2") with { Until = Flag("FLAG_GALAR_TURFFIELD_WOOLOO_2") },
         Leg.Talk("Turffield_StadiumMission", "mission_wooloo_3") with { Until = Flag("FLAG_GALAR_TURFFIELD_WOOLOO_3") },
+        Leg.Heal("Turffield_PokemonCenter"),
         Leg.Talk("Turffield_StadiumPitch", "milo") with { Until = GalarBadge("Grass") },
         Leg.OpenTrigger(GalarMap, "route5_hop"),
         Leg.Talk("Hulbury_StadiumMission", "mission_switch_1") with { Until = Flag("FLAG_GALAR_HULBURY_SWITCH_1") },
         Leg.Talk("Hulbury_StadiumMission", "mission_switch_2") with { Until = Flag("FLAG_GALAR_HULBURY_SWITCH_2") },
         Leg.Talk("Hulbury_StadiumMission", "mission_switch_3") with { Until = Flag("FLAG_GALAR_HULBURY_SWITCH_3") },
+        Leg.Heal("Hulbury_PokemonCenter"),
         Leg.Talk("Hulbury_StadiumPitch", "nessa") with { Until = GalarBadge("Water") },
         Leg.Trigger("GalarMine2", "BedeInMineTwo"),
         Leg.OpenTrigger(GalarMap, "motostoke_marnie"),
         Leg.Talk("Motostoke_StadiumMission", "mission_vulpix") with { Until = Flag("FLAG_GALAR_MOTOSTOKE_CAUGHT_1") },
         Leg.Talk("Motostoke_StadiumMission", "mission_growlithe") with { Until = Flag("FLAG_GALAR_MOTOSTOKE_CAUGHT_2") },
         Leg.Talk("Motostoke_StadiumMission", "mission_sizzlipede") with { Until = Flag("FLAG_GALAR_MOTOSTOKE_CAUGHT_3") },
+        Leg.Heal("Motostoke_PokemonCenter"),
         Leg.Talk("Motostoke_StadiumPitch", "kabu") with { Until = GalarBadge("Fire") },
     };
 
@@ -72,24 +76,29 @@ public static partial class Itineraries
         Leg.Talk("StowOnSide_StadiumMission", "mission_gate_1") with { Until = Flag("FLAG_GALAR_STOW_GATE_1") },
         Leg.Talk("StowOnSide_StadiumMission", "mission_gate_2") with { Until = Flag("FLAG_GALAR_STOW_GATE_2") },
         Leg.Talk("StowOnSide_StadiumMission", "mission_gate_3") with { Until = Flag("FLAG_GALAR_STOW_GATE_3") },
+        Leg.Heal("StowOnSide_PokemonCenter"),
         Leg.Talk("StowOnSide_StadiumPitch", "bea") with { Until = GalarBadge("Fighting") },
         Leg.OpenTrigger(GalarMap, "stow_mural"),
         // (Opal's quiz: a wrong answer leaves the quizmaster in the way, so each is asked again with the next answer)
         Leg.Talk("Ballonlea_StadiumMission", "mission_quiz_1") with { Until = Flag("FLAG_GALAR_BALLONLEA_QUIZ_1"), Vary = true },
         Leg.Talk("Ballonlea_StadiumMission", "mission_quiz_2") with { Until = Flag("FLAG_GALAR_BALLONLEA_QUIZ_2"), Vary = true },
         Leg.Talk("Ballonlea_StadiumMission", "mission_quiz_3") with { Until = Flag("FLAG_GALAR_BALLONLEA_QUIZ_3"), Vary = true },
+        Leg.Heal("Ballonlea_PokemonCenter"),
         Leg.Talk("Ballonlea_StadiumPitch", "opal") with { Until = GalarBadge("Fairy") },
         Leg.OpenTrigger(GalarMap, "circhester_arrival"),
         Leg.Talk("Circhester_StadiumMission", "mission_gate_1") with { Until = Flag("FLAG_GALAR_CIRCHESTER_GATE_1") },
         Leg.Talk("Circhester_StadiumMission", "mission_gate_2") with { Until = Flag("FLAG_GALAR_CIRCHESTER_GATE_2") },
         Leg.Talk("Circhester_StadiumMission", "mission_gate_3") with { Until = Flag("FLAG_GALAR_CIRCHESTER_GATE_3") },
+        Leg.Heal("Circhester_PokemonCenter"),
         Leg.Talk("Circhester_StadiumPitch", "gordie") with { Until = GalarBadge("Rock") },
         Leg.OpenTalk(GalarMap, "bike_mechanic") with { Until = GalarStory(33) },
         Leg.OpenTrigger(GalarMap, "spikemuth_gate") with { Until = GalarStory(34) },
+        Leg.Heal("Spikemuth_PokemonCenter"),
         Leg.OpenTalk(GalarMap, "piers") with { Until = GalarBadge("Dark") },
         Leg.Talk("Hammerlocke_StadiumMission", "mission_gate_1") with { Until = Flag("FLAG_GALAR_HAMMERLOCKE_GATE_1") },
         Leg.Talk("Hammerlocke_StadiumMission", "mission_gate_2") with { Until = Flag("FLAG_GALAR_HAMMERLOCKE_GATE_2") },
         Leg.Talk("Hammerlocke_StadiumMission", "mission_gate_3") with { Until = Flag("FLAG_GALAR_HAMMERLOCKE_GATE_3") },
+        Leg.Heal("Hammerlocke_PokemonCenter"),
         Leg.Talk("Hammerlocke_StadiumPitch", "raihan") with { Until = GalarBadge("Dragon") },
     };
 
@@ -98,15 +107,21 @@ public static partial class Itineraries
     {
         Leg.OpenTalk(GalarMap, "hammerlocke_station_staff"),
         Leg.OpenTrigger(GalarMap, "wyndon_arrival"),
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_StadiumPitch", "marnie") with { Until = GalarStory(38) },
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_StadiumPitch", "hop") with { Until = GalarStory(39) },
         // (the lobby on the way out is where the Darkest Day falls, and its scene takes the player to the Weald)
         Leg.Enter("Wyndon_Stadium") with { Until = GalarStory(40) },
         Leg.OpenTrigger(GalarMap, "the_altar"),
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_RoseTower", "oleana") with { Until = GalarStory(42) },
         Leg.Enter("Wyndon_EnergyPlant") with { Until = GalarStory(43) },
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_StadiumPitch", "bede") with { Until = GalarStory(44) },
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_StadiumPitch", "raihan") with { Until = GalarStory(45) },
+        Leg.Heal("Wyndon_PokemonCenter"),
         Leg.Talk("Wyndon_StadiumPitch", "leon") with { Until = Flag("GalarHallOfFame") },
     };
 
