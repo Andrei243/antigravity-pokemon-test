@@ -1155,6 +1155,8 @@ public static class RegionDatabase
                 "UlaulaRoute15_AetherHouse", "UlaulaRoute17_PoliceStation", "HainaDesert_RuinsOfAbundance",
                 // Plan 23, Melemele's last door: Hau'oli City's Trainers' School
                 "HauoliCity_TrainersSchool",
+                // Plan 23, Melemele's last places: Sandy Cave off Big Wave Beach, a cave map of its own
+                "SandyCave",
                 // Plan 23 · Z8: Ultra Space's worlds (maps of the drawn kind, behind the Altar's wormhole), Megalo Tower's
                 // top and the Battle Royal Dome
                 "UltraDeepSea", "UltraJungle", "UltraDesert", "UltraPlant", "UltraCrater", "UltraForest", "UltraRuin",

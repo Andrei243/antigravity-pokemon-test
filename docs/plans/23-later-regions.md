@@ -577,10 +577,10 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   opened"): `Data/regions/alola.json`'s `movement` to `"directions": "Free", "speed": "Analog"` (keeping `"modes": [
   "Ride" ]`) and `"kit": "Grown"`, as Kalos's two words; `WorldMapBuilder.GrownCamera` would then give Alola Kalos's
   camera, where "The engine for Alola" asks a row of its own. **No Alola look has a grown twin** in `characters.json`'s
-  `grown` block: Hau, Kukui, Hala, Lillie, Ilima, Mallow, Lana, Kiawe, Sophocles, Acerola, Olivia, Nanu, Hapu, Kahili,
-  Gladion, Plumeria, Guzma, Lusamine, Wicke, Dulse, the Skull grunt, Veyra, Oskin and the masked royal, and the generic
-  looks Alola uses that Kalos didn't (swimmers, ranchers, the cowgirl, breeders, the middle-aged pair, dragon tamer,
-  ruin maniac, ranger, collector, teacher, expert, gym guide); an `AlolaCastGrownTests` on `KalosCastGrownTests`' pattern
+  `grown` block (held against Alola's overlays' people by a script on 2026-11-12; the rooms' people not counted): Hau,
+  Kukui, Hala, Lillie, Ilima, Mallow, Lana, Kiawe, Acerola, Olivia, Nanu, Hapu, Gladion, Plumeria, Lusamine, Wicke,
+  Dulse, the Skull grunt, Veyra and Oskin, and the generic looks Alola uses that Kalos didn't (both swimmers, both
+  breeders, the middle-aged woman, the dragon tamer, the ruin maniac, the ranger); an `AlolaCastGrownTests` on `KalosCastGrownTests`' pattern
   would list them mechanically, and `RegionMovementTests`, `KalosGateTests` (its crossing into Alola) and
   `FieldScaleTests` assert Alola is the grid's today. **One rule breaks under free movement**: a Tauros charging the
   cracked rock before Ten Carat Hill sets `ranInto` only in the grid's `TryStep`, and free movement treats the rock as a

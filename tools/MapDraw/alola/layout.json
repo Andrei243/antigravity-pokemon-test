@@ -51,7 +51,8 @@
     {
       "matrix": 3, "area": "heahea_city", "width": 12, "height": 12, "fill": "T", "island": "17,12",
       "pieces": [
-        // The sea off Heahea City's pier and the beaches of Hano and Konikoni, laid first so the places stand on it: their
+        // The sea off Heahea City's pier and the beaches of Hano and Konikoni, laid first so the places stand on it (the two
+        // beaches' seas kept apart by woods at x 296 to 299, as their own drawings keep them): their
         // chunks had been filled with woods a few rows off the shore
         { "file": "akala_sea.txt", "x": 96, "z": 327 },
         { "file": "akala_sea_south.txt", "x": 224, "z": 280 },
