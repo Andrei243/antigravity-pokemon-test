@@ -1524,6 +1524,7 @@ alola_kahili_rematch 233 (66) [Skarmory → Rapierwing, Mandibuzz → Carrionque
 alola_kukui_1 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
 alola_kukui_2 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
 alola_kukui_3 224 (58) [Lycanroc → Lupinacle, Braviary → Imperavia, Snorlax → Dozemount]
+alola_lass_pualani 207 (8) [Cutiefly → Ribombee]
 alola_lusamine_1 220 (45) [Mismagius → Hexmagistra, Lilligant → Ballerilly, Milotic → Prismaria, Bewear → Huggrizzle]
 alola_manor_grunt_1 215 (30) [Mareanie → Toxapex]
 alola_manor_grunt_2 215 (30) [Golbat → Crobat, Haunter → Gengar]
@@ -1532,9 +1533,13 @@ alola_olivia_1 213 (27) [Nosepass → Lodestarch, Boldore → Gigalith]
 alola_olivia_league 223 (56) [Relicanth → Aeonfin, Carbink → Druzarion, Lycanroc → Lupinacle, Probopass → Lodestarch]
 alola_olivia_rematch 233 (66) [Relicanth → Aeonfin, Carbink → Druzarion, Probopass → Lodestarch, Lycanroc → Lupinacle]
 alola_plumeria_1 216 (34) [Golbat → Crobat, Skuntank → Mephitarch, Salazzle → Smolderess]
+alola_school_kid_aukai 207 (8) [Grubbin → Vikavolt, Wingull → Pelicaptain]
+alola_school_kid_kanoe 207 (8) [Rattata → Raticate, Magnemite → Magnezone]
 alola_scientist_ola 215 (32) [Togedemaru → Rollocupine, Elekid → Electivire]
+alola_teacher_iwalani 208 (10) [Meowth → Persian, Crabrawler → Crabominable]
 alola_team_skull_grunt_motel 210 (18) [Zubat → Crobat, Salandit → Salazzle]
 alola_worker_kanoa 215 (31) [Magnemite → Magnezone, Charjabug → Vikavolt, Magneton → Magnezone]
+alola_youngster_keahi 207 (7) [Yungoos → Gumshoos, Pikipek → Toucannon]
 === region Galar
 levels 2 → 224, 65 → 242
 caps 229 230 231 234 234 235 237 237 242 (own 20 24 27 36 38 42 46 48 65)

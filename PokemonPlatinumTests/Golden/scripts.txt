@@ -4756,6 +4756,51 @@ from Officer at 3,3 of HauoliCity_PoliceStation
 way -
   Officer> Team Skull? They're more of a nuisance than a menace. Mostly they shout and pull faces at people.
   Officer> If they bother you, battle them. That tends to quiet them down faster than we can.
+=== HauoliCity_TrainersSchool.Aukai
+from Aukai at 2,4 of HauoliCity_TrainersSchool
+way 0
+  Aukai> I sit by the window so I can watch the seabirds. Today I'll watch you lose instead!
+  Aukai> Hmm. The seabirds saw that too, didn't they.
+  * battle alola_school_kid_aukai Won
+  + FLAG_ALOLA_SCHOOL_AUKAI
+  + beaten alola_school_kid_aukai
+way 1, from answer 1
+  * battle alola_school_kid_aukai Lost
+=== HauoliCity_TrainersSchool.Kanoe
+from Kanoe at 10,5 of HauoliCity_TrainersSchool
+way 0
+  Kanoe> I've read every book on that shelf twice. Now I want to test what I've learned on a real Trainer!
+  Kanoe> Books don't tell you how fast a real battle moves. I'll write that down.
+  * battle alola_school_kid_kanoe Won
+  + FLAG_ALOLA_SCHOOL_KANOE
+  + beaten alola_school_kid_kanoe
+way 1, from answer 1
+  * battle alola_school_kid_kanoe Lost
+=== HauoliCity_TrainersSchool.Keahi
+from Keahi at 2,7 of HauoliCity_TrainersSchool
+way 0
+  Keahi> Today's lesson is type matchups. I learn better by battling, so you're my homework!
+  Keahi> I got the matchups right and still lost. Maybe the lesson is about speed too.
+  * battle alola_youngster_keahi Won
+  + FLAG_ALOLA_SCHOOL_KEAHI
+  + beaten alola_youngster_keahi
+way 1, from answer 1
+  * battle alola_youngster_keahi Lost
+=== HauoliCity_TrainersSchool.Pualani
+from Pualani at 10,7 of HauoliCity_TrainersSchool
+way 0
+  Pualani> My partner can tell how strong you are by your aura. It's buzzing like mad. Let's see if it's right!
+  Pualani> It was right. It's always right. I should have listened to it.
+  * battle alola_lass_pualani Won
+  + FLAG_ALOLA_SCHOOL_PUALANI
+  + beaten alola_lass_pualani
+way 1, from answer 1
+  * battle alola_lass_pualani Lost
+=== HauoliCity_TrainersSchool.Teacher
+from Iwalani at 6,4 of HauoliCity_TrainersSchool
+way -
+  Iwalani> Welcome to the Trainers' School! My pupils are itching to battle someone new.
+  Iwalani> Battle all four of them, and then come and see me for the final exam.
 === HeaheaCity_Hotel.Desk
 from Hotel Clerk at 7,3 of HeaheaCity_Hotel
 way -

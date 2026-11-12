@@ -6,7 +6,7 @@ partial class Harness
     /// Hau'oli City's east end and marina, Route 2 by its Pokémon Center and before Verdant Cavern, Route 3, Melemele
     /// Meadow, the shore before Ten Carat Hill, inside Ten Carat Hill and Verdant Cavern, Heahea City's plaza and pier,
     /// Route 4, Paniola Town, Paniola Ranch, Route 5 by its Pokémon Center and Brooklet Hill), Route 2 and the meadow
-    /// after dark (<c>wm17</c>, <c>wm18</c>) and the part's rooms (<c>wm20</c> to <c>wm29</c>). Z5 had named them
+    /// after dark (<c>wm17</c>, <c>wm18</c>) the part's rooms (<c>wm20</c> to <c>wm29</c>), and the Trainers' School built after it, from its street and inside (<c>wm19</c>, <c>wm30</c>). Z5 had named them
     /// <c>wa30</c> to <c>wa63</c>, but the <c>ultraspace</c> mode took <c>wa50</c> on. Nothing is placed by a typed tile:
     /// an area's spot is the open ground nearest its middle (<see cref="AreaSpot"/>), a pier's or a street's is beside
     /// the person of the overlay who stands there, a door's is two tiles before it, and a room's is the tile it is come
@@ -39,6 +39,7 @@ partial class Harness
             InArea("wm14_paniola_ranch", "paniola_ranch"),
             BeforeDoor("wm15_route5_center", "Akala", "AkalaRoute5_PokemonCenter_1F"),
             InArea("wm16_brooklet_hill", "brooklet_hill"),
+            BeforeDoor("wm19_hauoli_trainers_school", "Melemele", "HauoliCity_TrainersSchool"),
         };
         foreach (var (name, map, x, y) in spots) ShootAt(name, map, x, y, Direction.Up);
 
@@ -46,7 +47,7 @@ partial class Harness
         {
             "AlolaRoute2_PokemonCenter_1F", "AlolaRoute2_BerryFieldsHouse", "HauoliCity_EastHouse", "HauoliCity_IlimasHouse",
             "HauoliCity_MalasadaShop", "HeaheaCity_PokemonCenter_1F", "HeaheaCity_House", "PaniolaTown_PokemonCenter_1F",
-            "PaniolaTown_House", "AkalaRoute5_PokemonCenter_1F",
+            "PaniolaTown_House", "AkalaRoute5_PokemonCenter_1F", "HauoliCity_TrainersSchool",
         };
         for (int i = 0; i < rooms.Length; i++)
         {
