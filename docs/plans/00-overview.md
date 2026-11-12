@@ -478,7 +478,7 @@ A seam is a piece several plans offer to write "if it hasn't been". Each has one
 | `Region.Side`, a region off the chain | 41 · EG1, in Z17's shape (the first of EG1, Z17 and Z21) | 94 | the other two |
 | Timed powers (`Models/Powers.cs`, `PowerKind`) | 36 · TR7 | 92 | 39 · CR6 and CR7 (the meals, and through them 33 · GL2's curry and 34 · PD7's sandwiches), 41 · EG3, 43 · LF6 |
 | The test of where every item is found (`Data/ItemSources.cs`) | 36 · TR3 | 93 | 40 · GE11 widens it to every item the rules run; 36 · TR9's machines; plans 23, 33 and 34 empty its owed list |
-| A floor laid from pieces (`FloorLayout`, out of `PyramidFloor`) | 38 · EX6 (the first of SD7 and EX6) | 101 | the other |
+| A floor laid from pieces (`FloorLayout`, out of `PyramidFloor`) | 38 · EX6 (the first of SD7 and EX6): **built 2026-11-12**, `Models/Delve/FloorLayout.cs` behind `pyramid.txt` | 101 | the other |
 | `MapArea.WildVisible` | 23 · Z22 (the first of Z22 and EX6) | 100 | the other |
 | `Op.Cafe` | 43 · LF9 (the first of PS10 and LF9) | 107 | the other |
 | `LevelLift`, a team lifted on a copy | 41 · EG3 | 97 | 41 · EG4 and EG9 |
