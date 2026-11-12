@@ -71,7 +71,7 @@ model:
 - **Lost, because the file never carried it** (`GltfWriter` writes none of it): the surface materials (fur, scales,
   shell, leaf, metal, glow), so the highlight bands and glossy spots of the hand-built model are gone and it is shaded
   plainly; the eye states (read from the writer, which puts in one texture with the eyes open; not yet seen failing
-  in a shot); and, by `docs/model-files.md`, the shiny look becomes a recolour of the texture.
+  in a shot); the shiny look is still made (seen on the new Turtwig and Piplup: the vertex colours are recoloured).
 - So a Blender file replaces a hand-built sculpt at a cost. It suits a model that is new or wholly reworked; a small
   correction to a hand-built species is better made in its sculptor (`PokemonModels.*.cs`), which keeps all of the above.
 
@@ -88,7 +88,8 @@ model:
   not a dark one. They are per corner: index them by `loops[...].vertex_index` to choose by position.
 - **Use `foreach_get` / `foreach_set` with numpy** for anything per vertex or per corner; a Python loop over 245,000
   corners is slow.
-- **Import, export and render are the only `bpy.ops` used so far, and they work with no window.** Everything else
+- **Import, export, render and `object.mode_set` (to make edit bones) are the only `bpy.ops` used so far, and they
+  work with no window.** Everything else
   was done on `bpy.data` (attributes, armature settings, objects made and linked). Read, not run: other operators are
   said to fail with "context is incorrect" with no window and to want `bpy.context.temp_override(...)`.
 - **EEVEE (`BLENDER_EEVEE_NEXT`) renders with no window on this machine**, materials and all, and is the only engine
@@ -133,11 +134,86 @@ for o in meshes:
 
 To choose a part by bone instead of by place, the mesh's vertex groups should serve (not tried yet: see below).
 
+## Sculpting a species from nothing
+
+`tools/BlenderAnim/blender/sculptkit.py` builds a new mesh on the skeleton and clips of the game's own export, so a
+new sculpt has all eleven clips from its first build. A species is a short script in `sculpts/` (the Sinnoh starters
+are the examples; a build and its turntable take about twelve seconds):
+
+```bash
+"$B" --background --factory-startup --python tools/BlenderAnim/blender/sculpts/piplup.py -- "$S/h/models/Piplup.glb" "$S/new/overrides/models/Piplup.glb"
+```
+
+How the kit works, and why:
+
+- **Parts are meshes made in numpy** (`ell`: an ellipsoid with a turn and a deform of the unit sphere, such as
+  `boxy(2.5)` for a squarer head or a taper for a beak or a leaf; `tube`: a round tube through points with a radius
+  each), each with a colour and a bone. `mirror=True` writes a part on +X and copies it to -X: **the model's left is
+  -X**, where the `L` bones are, and `"{s}"` in a bone's name becomes `R` or `L`.
+- **Fused parts are joined by a Remesh modifier in `VOXEL` mode and a Smooth modifier**, read back with
+  `bpy.data.meshes.new_from_object(ob.evaluated_get(depsgraph))`: modifiers are evaluated with no window and no
+  operator. A voxel of 0.007 to 0.008 on a model one unit tall gives about 45 thousand vertices, as the game's own.
+- **Colour and weights come from the parts**: each fused vertex takes the colours of the parts nearest it (a
+  `BVHTree` a part, blended over 0.012) and their bones (blended over 0.07), its four strongest kept.
+- **`paint(mask, colour, on=[parts])`** recolours the fused body by a rule on the points (a collar's scalloped edge,
+  a shell's band, a zigzag of toes with `tri`). Its edge is one voxel soft. `on` goes by the share of the point that
+  is those parts': by the nearest part alone the edge was ragged wherever two parts met.
+- **`decal(centre, normal, half sizes, colour)`** lays a patch of its own vertices over the fused surface (a polar
+  grid cast onto it with `BVHTree.ray_cast`, lifted 0.003 to 0.009): its outline is exact, so everything that must be
+  crisp is a decal (eyes with their highlight from a colour function of u and v, a face's mask, belly spots, ear
+  linings). Decals stack by their lift. In the game they show no seam and no ink of the outline.
+- **Pieces with `fuse=False`** (a beak, feet, a twig and leaves, a tail's flame) keep their own crisp colour and
+  simply stand in the body.
+- A new mesh needs its own material with a `ShaderNodeVertexColor` (`layer_name = "Color"`) linked to the base
+  colour, or `export_vertex_color="MATERIAL"` exports no colours.
+- **The rest pose must stand on the export's joints**: print them first (each bone's `head_local`) and put each
+  part's pivot there. A pose from the art (Chimchar's crouch) belongs in a clip, not in the sculpt.
+- The game stands every model at one height: a tall sprout or tuft makes the body smaller on screen.
+- Git Bash heredocs fail on a script with apostrophes: write Python with the Write tool.
+
+**People** (`sculpts/hero.py`): the game reads no character from a file (only species, through
+`overrides/models`), so a person sculpted here can be seen on the turntable and nowhere in the game. The kit makes
+its own armature for one (`Kit(name=..., skeleton=[(bone, parent, place)...], sides=("L", "R"))`: a person's `L`
+bones are on +X, the other way round from a Pokémon's; edit bones are made with `bpy.ops.object.mode_set`, which
+works with no window once the armature is the view layer's active object), on the chibi kit's own joints
+(`CharacterModels`' `Kid` frame; the game's (x, y, z) is Blender's (x, -z, y)), with no clips. Getting one into the game needs a reader in the
+engine, and what such a reader does with the present wardrobe, the faces' expressions and the speaking mouth is the
+user's to decide before any of it is written.
+
+**A model in pieces, and a wardrobe** (`sculpts/hero.py`, `sculpts/hero_outfits.py`): `build(name=..., props=...)`
+makes one mesh object of what was added since the last build and forgets it, so a file can hold a body in parts, a
+hair cut and garments, all on one armature. The hero's file is the format tried for clothes that can be changed:
+
+- a node a piece, named `<slot>.<Shape>` in the game's own words (`body.torso`, `hair.Short`, `hat.Beret`,
+  `top.Tee`, `bottoms.Shorts`, `shoes.Sneakers`, `bag.Backpack`; the slots are `clothes.json`'s);
+- custom properties on the object, which `export_extras=True` writes as the node's extras and the importer gives
+  back as `ob["key"]`: `colours` (`zones` or `true`), `tint` (whose colours fill the zones: `skin`, `hair`, `eyes`
+  or the garment's own) and `hides` (the body's parts the piece covers, left out when it is worn, so nothing pokes
+  through in a pose);
+- **a piece of zones has no colour of its own**: its vertex colour is how much of each zone a point is (red the
+  primary colour, green the accent, blue white, none of them ink), given to `add`, `paint` and `decal` as plain
+  arrays, so one mesh serves every colourway and dye. Pure 0 and 1 come back through export and import exactly;
+  the soft edge between two zones is a blend, which is what is wanted there.
+- `build(cut=fn)` leaves out the fused faces whose middle `fn` picks (the window for the face in a shell of hair;
+  its stepped rim is hidden by locks added as tubes), and `build(surface="body.head")` lays a piece's decals on a
+  piece built before (the eyes and the face's marks are pieces of their own on the head).
+- `hero_outfits.py` reads the file as an engine would and renders outfits side by side, with an arm raised and a
+  knee bent: bones are turned about a world axis by setting `pose_bone.matrix` and calling `view_layer.update()`.
+- Found on the board: locks of hair that start high poke through a hat (start them inside the shell, thin), and a
+  hat that covers the brow hides the fringe, so a head in a hat reads as bare at the front.
+
+- **A piece that gives its own light** is `add(..., fuse=False, glow="#FF7A2A")`: a material of its own with that
+  emission at strength 1, set on its faces by `material_index`. The game lights a material as a glow once its
+  emission is over 0.4 (`ImportedModels`), and one of 0.7 metallic or more as metal; seen on Chimchar's flame in a
+  battle. Nothing else of a material reaches the game's surface materials.
+
+What these files still lack beside a hand-built sculpt is under "What the round trip keeps and loses".
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
-smoothing or sculpting through modifiers; re-keying a clip (`animate.py` does it for a Tripo rig, not yet for one of
-ours); adding geometry and weighting it; baking vertex colours to a texture; anything on a form or a female look.
+re-keying a clip (`animate.py` does it for a Tripo rig, not yet for one of
+ours); baking vertex colours to a texture; anything on a form or a female look.
 
 Known to be wrong for our rigs: `BlenderAnim inspect` on the exported Turtwig found `root` and `head`, took `body` for
 the tail and found no legs (`rig.py` looks for a rigger's names and chains), so `animate` would key one of our sculpts
