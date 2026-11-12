@@ -35,7 +35,7 @@ public static class OursGrowth
     public static EvolutionData? GamesStageAt(Pokemon p)
     {
         var ways = (p.Species.Evolutions ?? new()).Where(e => e.Region == null && e.Method != EvolutionMethod.LevelShedinja
-            && PokemonDatabase.Get(e.TargetSpecies) is { IsOurs: false } && Evolution.FitsForm(p, e)).ToList();
+            && PokemonDatabase.Get(e.TargetSpecies) is { IsPastHundred: false } && Evolution.FitsForm(p, e)).ToList();
         if (ways.Count == 0) return null;
         if (ways.Any(e => e.Level > 0))
             return ways.FirstOrDefault(e => e.Level > 0 && e.Level <= p.Level && Inherent(p, e));
@@ -65,7 +65,7 @@ public static class OursGrowth
     /// </summary>
     public static EvolutionData? OursAt(Pokemon p) =>
         (p.Species.Evolutions ?? new()).FirstOrDefault(e => e.Level > 0 && e.Level <= p.Level
-            && PokemonDatabase.Get(e.TargetSpecies) is { IsOurs: true, Legendary: false, Mythical: false } && Evolution.FitsForm(p, e));
+            && PokemonDatabase.Get(e.TargetSpecies) is { IsPastHundred: true, Legendary: false, Mythical: false } && Evolution.FitsForm(p, e));
 
     /// <summary>
     /// A trainer's Pokémon at the stage its level allows: the games' stages first and then ours, as far as the level

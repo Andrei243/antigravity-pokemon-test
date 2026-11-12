@@ -30,7 +30,7 @@ public static class OursSlots
     /// rate 3), whose ends their own conditions give.
     /// </summary>
     public static bool Placeable(PokemonSpecies species) =>
-        species.IsOurs && !species.Legendary && !species.Mythical && species.CatchRate > 3;
+        species.IsPastHundred && !species.Legendary && !species.Mythical && species.CatchRate > 3;
 
     /// <summary>The species that evolves into one of ours, a game's or one of ours; null for none.</summary>
     public static PokemonSpecies? ForebearOf(PokemonSpecies species) =>
@@ -54,7 +54,7 @@ public static class OursSlots
     /// </summary>
     public static string? RegionOf(PokemonSpecies species)
     {
-        if (!species.IsOurs) return null;
+        if (!species.IsPastHundred) return null;
         switch (species.DexNumber / 1000)
         {
             case 4: return RegionDatabase.Alola;
@@ -65,7 +65,7 @@ public static class OursSlots
         // Up the line to a species of the games (a set of ours may evolve from one of ours)
         var seen = new HashSet<string>();
         var at = species;
-        while (at.IsOurs && seen.Add(at.Name))
+        while (at.IsPastHundred && seen.Add(at.Name))
         {
             if (ForebearOf(at) is not { } before) return null;
             at = before;

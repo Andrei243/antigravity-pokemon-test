@@ -120,7 +120,8 @@ public sealed record OpenZone(string Name, string Place, IReadOnlyList<(int X, i
 /// file (<c>places/&lt;key&gt;.json</c>) and its scripts' (<c>scripts/&lt;key&gt;.txt</c>). Where two hold a place, the
 /// later in the region's list is the one (a cave over the meadow round it).
 /// </summary>
-public sealed record OpenArea(string Key, string Name, IReadOnlyList<(int X, int Z)> Polygon, int MinY, int MaxY, string? Music = null, string? Weather = null)
+public sealed record OpenArea(string Key, string Name, IReadOnlyList<(int X, int Z)> Polygon, int MinY, int MaxY, string? Music = null, string? Weather = null,
+    string? Light = null, string? LightWhile = null)
 {
     public bool Contains(OpenPos p) => p.Y >= MinY && p.Y < MaxY && OpenPolygons.Holds(Polygon, p.X, p.Z);
 }

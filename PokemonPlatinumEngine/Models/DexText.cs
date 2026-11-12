@@ -20,6 +20,9 @@ public static class DexText
     /// <summary>The entry of <paramref name="species"/>: the first of <c>dexText.entry</c>'s sentences, then how it evolves.</summary>
     public static string Compose(PokemonSpecies species) => Compose(species, PokemonDatabase.Everyone());
 
+    /// <summary>The number <c>dexText.region</c> names Carpathia by (plan 46 · CP1): after the nine generations' regions.</summary>
+    public const int CarpathiaRegion = 10;
+
     /// <summary>
     /// The entry of <paramref name="species"/>, given every species there is (to find the one it evolves from). A species
     /// of our own (generation 0, plan 03 · D14) is told of as first found where the species it evolves from was.
@@ -27,7 +30,8 @@ public static class DexText
     public static string Compose(PokemonSpecies species, IEnumerable<PokemonSpecies> all)
     {
         var from = all.FirstOrDefault(o => o.Evolutions?.Any(e => e.TargetSpecies == species.Name) == true);
-        int generation = Math.Clamp(species.Generation == 0 && from != null ? FoundIn(species, from) : species.Generation, 1, 9);
+        // A species made from nothing (plan 46 · CP1) is Carpathia's, the tenth region's, whatever it evolves from
+        int generation = species.IsCarpathian ? CarpathiaRegion : Math.Clamp(species.Generation == 0 && from != null ? FoundIn(species, from) : species.Generation, 1, 9);
         string region = Text.Of($"dexText.region.{generation}");
         string types = species.SecondaryType is { } second
             ? Text.Of("dexText.typeTwo", ("first", Words.Type(species.PrimaryType)), ("second", Words.Type(second)))

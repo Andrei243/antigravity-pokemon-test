@@ -1,0 +1,87 @@
+{
+  "displayName": {
+    "en": [
+      "Wyndon Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Wyndon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "challenger": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          "Antrenor As"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every challenger left in the Cup rests here the night before. I came all this way just to watch them."
+        ],
+        "text": [
+          "Toți concurenții rămași în Cupă se odihnesc aici cu o noapte înainte. Am venit până aici doar ca să-i privesc."
+        ]
+      }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

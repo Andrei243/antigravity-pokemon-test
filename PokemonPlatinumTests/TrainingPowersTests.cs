@@ -43,7 +43,7 @@ public class TrainingPowersTests
     [Fact]
     public void TheEighteenShardsAndTheStellarOneAreItemsOfTheData()
     {
-        Assert.Equal(19, TeraChange.Types.Count);
+        Assert.Equal(19 + 1, TeraChange.Types.Count); // and Sound's, ours (plan 46 · CP2)
         foreach (var type in TeraChange.Types)
         {
             var shard = ItemDatabase.Get(TeraChange.ShardOf(type));

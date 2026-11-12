@@ -451,6 +451,7 @@ internal static class PokemonGenomes
         PokemonType.Dark => (C(70, 66, 82), C(206, 56, 60)),
         PokemonType.Steel => (C(178, 186, 202), C(232, 196, 84)),
         PokemonType.Fairy => (C(248, 176, 206), C(250, 244, 248)),
+        PokemonType.Sound => (C(64, 168, 152), C(232, 196, 96)),
         _ => (C(220, 220, 220), C(120, 120, 120))
     };
 

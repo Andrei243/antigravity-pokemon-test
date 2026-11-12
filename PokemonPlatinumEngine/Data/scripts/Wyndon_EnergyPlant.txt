@@ -1,0 +1,61 @@
+# The Energy Plant at the top of Rose Tower (plan 33 · GL6): the Darkest Day's end. Chairman Rose's battle, Eternatus
+# woken out of the plant's core and Leon's fall, and Eternamax fought as a Max Raid that can't be lost (plan 33's design:
+# `raid boss … cannotfail`), Hop beside the player and the two of the legend come from the Slumbering Weald; Eternatus
+# caught at its end with the Master Ball Leon hands over. The sky clears (FLAG_GALAR_DARKEST_DAY cleared) and the Finals
+# go on. VAR_GALAR_STORY 42 to 43 (postwick.txt's count). Our own lines.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY < 42 end
+  if var VAR_GALAR_STORY > 42 end
+  scene "The Energy Plant"
+  face rose player
+  speaker "Chairman Rose"
+  say "Ah, {player}. And Hop. You've come all the way up my tower. Then you deserve to hear it from me, in person."
+  say "In a thousand years Galar's energy runs dry. I could not wait for a Champion Match to finish before I did something about it."
+  say "So I woke what sleeps under Galar, the one that can give us power forever. Leon would not understand. Let me show you."
+  battle rose as "galar_rose_1"
+  say "...Splendid. Truly splendid. But you are too late, the both of you. Look up."
+  setflag FLAG_GALAR_ROSE_BEATEN
+  text "The roof shudders. Out of the plant's core something vast uncoils, burning red against the dark sky."
+  seen "Eternatus"
+  speaker "Leon"
+  say "Stand back, the two of you! This one's mine!"
+  text "Leon's team goes up against it one after another, and falls one after another. The Champion goes down on one knee."
+  speaker "Hop"
+  say "Leon! {player}, look, it's growing! We have to stop it together, now, before it swallows the whole sky!"
+  text "Out of the red, two shapes leap onto the roof: the two from the fog of the Slumbering Weald."
+  say "They came! They really came! Come on, everyone, all together!"
+  if starter "Grookey" goto WithInteleon
+  if starter "Scorbunny" goto WithRillaboom
+  raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with "galar_raid_hop_c" "galar_raid_zacian" "galar_raid_zamazenta"
+  goto Felled
+label WithInteleon
+  raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with "galar_raid_hop_a" "galar_raid_zacian" "galar_raid_zamazenta"
+  goto Felled
+label WithRillaboom
+  raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with "galar_raid_hop_b" "galar_raid_zacian" "galar_raid_zamazenta"
+label Felled
+  text "Eternatus sinks back toward the core, its light guttering."
+  speaker "Leon"
+  say "{player}! Now, while it's down! Take this, the chairman had it made for exactly this!"
+  give "Master Ball"
+  raid catch "Master Ball"
+  text "{player} caught Eternatus!"
+  text "When the light clears, the two from the Weald are gone, and the sky over Wyndon is blue again."
+  clearflag FLAG_GALAR_DARKEST_DAY
+  setvar VAR_GALAR_STORY 43
+  objective galarFinals
+  speaker "Leon"
+  say "Galar owes the two of you more than it will ever know. Hop, you were magnificent."
+  say "The Finals go on as planned. And I'll be waiting at the end of them, {player}. Don't keep me long."
+  heal
+  endscene
+  warpto "Galar" wyndon_stadium_door
+  end
+
+
+script Rose
+  speaker "Chairman Rose"
+  say "A thousand years from now, they will understand what I tried to do. I hope."
+  end

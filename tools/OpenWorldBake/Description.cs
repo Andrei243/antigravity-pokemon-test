@@ -59,6 +59,9 @@ public sealed class OpenAreaFile
     public double MaxY { get; set; } = 10000;
     public string? Music { get; set; }
     public string? Weather { get; set; }
+    /// <summary>A light of the place's own (plan 33 · GL6), the game's alone: the baker passes it by.</summary>
+    public string? Light { get; set; }
+    public string? LightWhile { get; set; }
 }
 
 /// <summary>An open map of the region: its name (which no grid map may have) and its areas.</summary>

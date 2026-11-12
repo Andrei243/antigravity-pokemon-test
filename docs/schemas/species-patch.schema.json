@@ -126,7 +126,8 @@
               "Dragon",
               "Steel",
               "Dark",
-              "Fairy"
+              "Fairy",
+              "Sound"
             ]
           },
           {
@@ -156,6 +157,7 @@
               "Steel",
               "Dark",
               "Fairy",
+              "Sound",
               null
             ]
           },
@@ -698,6 +700,7 @@
                     "Steel",
                     "Dark",
                     "Fairy",
+                    "Sound",
                     null
                   ]
                 },
@@ -845,7 +848,8 @@
                       "Dragon",
                       "Steel",
                       "Dark",
-                      "Fairy"
+                      "Fairy",
+                      "Sound"
                     ]
                   }
                 },
@@ -990,7 +994,8 @@
                           "Dragon",
                           "Steel",
                           "Dark",
-                          "Fairy"
+                          "Fairy",
+                          "Sound"
                         ]
                       }
                     },

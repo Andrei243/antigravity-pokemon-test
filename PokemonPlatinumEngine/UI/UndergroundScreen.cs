@@ -272,6 +272,9 @@ public sealed class UndergroundScreen
     {
         var record = UndergroundDatabase.Good(good);
         if (record == null) return "";
+        // A statue of the hideaways says what it does (plan 38 · EX6, part b)
+        if (UndergroundDatabase.Statue(good) is { } statue)
+            return Text.Of("belowGround.statueBlurb", ("species", LocalNames.Species(statue.Species)));
         string size = record.Width * record.Depth == 1 ? Text.Of("belowGround.good.oneTile") : Text.Of("belowGround.good.tiles", ("width", record.Width), ("depth", record.Depth));
         return SecretBaseRules.ToolTrap(good) != 0
             ? Text.Of("belowGround.good.trap", ("size", size))

@@ -4938,7 +4938,7 @@ way 0
   Raihan> ...That's a plan. Every gym in Galar beaten. Leon's going to like you, and I'm going to hate that.
   Raihan> The Dragon Badge. Eight of eight. Go on and show the Champion Cup what you're made of.
   > Lucas received the Dragon Badge from Raihan!
-  Raihan> The Cup's in Wyndon, up north by train. I'll see you there. In the stands, this time.
+  Raihan> The Cup's in Wyndon, up north by train from the station by the south gate. I'll see you there.
   * scene Hammerlocke_StadiumPitch.Raihan
   * battle galar_raihan_1 Won
   * fanfare FanfareBadge
@@ -4946,7 +4946,10 @@ way 0
   * defeat galar_gym_trainer_osian
   * endscene
   + FLAG_GALAR_DEFEATED_HAMMERLOCKE_GYM
+  + FLAG_GALAR_HOP_WYNDON
+  + FLAG_GALAR_LEON_WYNDON
   = VAR_GALAR_STORY 0 -> 36
+  = VAR_OBJECTIVE 0 -> 734
   + beaten galar_gym_trainer_nia
   + beaten galar_gym_trainer_osian
   + beaten galar_raihan_1
@@ -10707,6 +10710,130 @@ way -
 from Station Attendant at 7,5 of Wedgehurst_Station
 way -
   Station Attendant> Trains north to the Wild Area and Motostoke. Gym challengers travel free, with an endorsement.
+=== Wyndon_EnergyPlant.Rose
+from Rose at 7,4 of Wyndon_EnergyPlant
+way -
+  Chairman Rose> A thousand years from now, they will understand what I tried to do. I hope.
+=== Wyndon_RoseTower.Oleana
+from Oleana at 5,4 of Wyndon_RoseTower
+way 0
+  Oleana> The chairman is busy saving Galar's future, and he does not wish to be disturbed. Least of all by children.
+  Oleana> Leon went up and has not come down. Whatever you think you can do up there, you will not be doing it.
+  Oleana> ...Then go. Perhaps the chairman will see sense from you, since he would not hear it from me.
+  > The lift's doors slide open behind her.
+  * scene Wyndon_RoseTower.Oleana
+  * battle galar_oleana_1 Won
+  * endscene
+  + FLAG_GALAR_OLEANA_BEATEN
+  = VAR_GALAR_STORY 0 -> 42
+  = VAR_OBJECTIVE 0 -> 740
+  + beaten galar_oleana_1
+  + seen Wyndon_RoseTower.Oleana
+way 1, from answer 1
+  * battle galar_oleana_1 Lost
+  * scene over, unseen
+=== Wyndon_Stadium.CupGuide
+from Gym Guide at 2,7 of Wyndon_Stadium
+way -
+  Gym Guide> Everyone left in the Cup has eight badges, so there's no type to lean on now. Bring a team that covers everything!
+=== Wyndon_Stadium.Receptionist
+from Receptionist at 6,4 of Wyndon_Stadium
+way -
+  Receptionist> Welcome to Wyndon Stadium and the Champion Cup! The Semifinals are on the pitch, through the doors behind me.
+=== Wyndon_StadiumPitch.Bede
+from Bede at 7,4 of Wyndon_StadiumPitch
+way 0
+  Bede> Surprised? Opal took me on. Ballonlea's gym will be mine one day, so I'm here to see whether you deserve the Finals.
+  Bede> Pink, she says. Everything must be pink. Well. Let's get this over with.
+  Bede> ...Fine. I'll admit it, once. You were the better Trainer. Don't make me say it again.
+  * scene Wyndon_StadiumPitch.The Final with Bede
+  * battle galar_bede_3 Won
+  * endscene
+  + FLAG_GALAR_CUP_RAIHAN
+  = VAR_GALAR_STORY 0 -> 44
+  = VAR_OBJECTIVE 0 -> 742
+  + beaten galar_bede_3
+  + seen Wyndon_StadiumPitch.The Final with Bede
+way 1, from answer 1
+  * battle galar_bede_3 Lost
+  * scene over, unseen
+=== Wyndon_StadiumPitch.Hop
+from Hop at 7,4 of Wyndon_StadiumPitch
+way 0
+  Hop> Here we are. You and me, in Wyndon Stadium, with the whole of Galar watching. Just like we said back in Postwick!
+  Hop> I've lost to you every time. Not today. Today I'm going to be the one who faces Leon!
+  Hop> ...Every single time. I'm not even angry. You're brilliant, Lucas. You really are.
+  Hop> The Finals are tomorrow. Go and rest. And then go and win the whole thing, for both of us!
+  * scene Wyndon_StadiumPitch.The Semifinal with Hop
+  * battle galar_hop_6c Won
+  * endscene
+  = VAR_GALAR_STORY 0 -> 39
+  = VAR_OBJECTIVE 0 -> 737
+  + beaten galar_hop_6c
+  + seen Wyndon_StadiumPitch.The Semifinal with Hop
+way 1, from answer 1
+  * battle galar_hop_6c Lost
+  * scene over, unseen
+=== Wyndon_StadiumPitch.Leon
+from Leon at 7,4 of Wyndon_StadiumPitch
+way 0
+  Leon> Lucas. From a bedroom in Postwick to the pitch in Wyndon. I knew the day I gave you that endorsement.
+  Leon> I've never lost a match since I became Champion. Not one. So let's have a champion time, you and I!
+  Leon> ...So that's what it feels like. I'd forgotten. Well played, Lucas. Truly.
+  Leon> Galar has a new Champion. Come on, let's get your team into the record where it belongs.
+  > Lucas saved the game.
+  * scene Wyndon_StadiumPitch.The Champion Match
+  * battle galar_leon_1 Won
+  * endscene
+  * fade out
+  * halloffame
+  * open Ceremony
+  * warp Postwick_PlayersHouse_2F 4 6
+  * save
+  * sound save
+  * open Credits
+  + GalarHallOfFame
+  = VAR_GALAR_STORY 0 -> 46
+  = VAR_OBJECTIVE 0 -> 799
+  + beaten galar_leon_1
+  + seen Wyndon_StadiumPitch.The Champion Match
+way 1, from answer 1
+  * battle galar_leon_1 Lost
+  * scene over, unseen
+=== Wyndon_StadiumPitch.Marnie
+from Marnie at 7,4 of Wyndon_StadiumPitch
+way 0
+  Marnie> So it's you and me. I didn't come all this way just to make up the numbers.
+  Marnie> Spikemuth's counting on me. Don't you dare go easy.
+  Marnie> ...Yeah. You were better today. I'll tell my brother you earned it.
+  * scene Wyndon_StadiumPitch.The Semifinal with Marnie
+  * battle galar_marnie_2 Won
+  * endscene
+  + FLAG_GALAR_CUP_HOP
+  = VAR_GALAR_STORY 0 -> 38
+  = VAR_OBJECTIVE 0 -> 736
+  + beaten galar_marnie_2
+  + seen Wyndon_StadiumPitch.The Semifinal with Marnie
+way 1, from answer 1
+  * battle galar_marnie_2 Lost
+  * scene over, unseen
+=== Wyndon_StadiumPitch.Raihan
+from Raihan at 7,4 of Wyndon_StadiumPitch
+way 0
+  Raihan> Told you I'd see you in Wyndon. No doubles today: one on one, the way the Finals are fought.
+  Raihan> Whoever wins this faces Leon. I've wanted that match every year of my life. Let's go!
+  Raihan> ...Beaten twice by the same challenger. Leon had better watch himself. Go on. He's waiting.
+  * scene Wyndon_StadiumPitch.The Final with Raihan
+  * battle galar_raihan_2 Won
+  * endscene
+  + FLAG_GALAR_CUP_LEON
+  = VAR_GALAR_STORY 0 -> 45
+  = VAR_OBJECTIVE 0 -> 743
+  + beaten galar_raihan_2
+  + seen Wyndon_StadiumPitch.The Final with Raihan
+way 1, from answer 1
+  * battle galar_raihan_2 Lost
+  * scene over, unseen
 === abandoned_ship_captains_office.SternsAide
 from Scientist at 3,4 of AbandonedShip_CaptainsOffice
 way -
@@ -38049,9 +38176,11 @@ way 0
   * scene ss_aqua_1f.A night aboard the ship
   * fade out
   * warp SSAqua_1F_SouthwestRooms 23 3
+  * lighting 21
   * fade in
   * fade out
   * warp SSAqua_1F 24 18
+  * lighting 7
   * fade in
   * endscene
   + FLAG_JOHTO_SS_AQUA_AT_VERMILION

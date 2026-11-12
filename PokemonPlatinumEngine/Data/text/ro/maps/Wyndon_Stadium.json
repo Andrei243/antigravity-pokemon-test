@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Wyndon Stadium"
+    ],
+    "text": [
+      "Stadionul Wyndon"
+    ]
+  },
+  "people": {
+    "wyndon_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "wyndon_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de Arenă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

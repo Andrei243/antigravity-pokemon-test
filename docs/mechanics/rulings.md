@@ -2538,7 +2538,7 @@ The user's decision 4 (2026-10-12): a region holds every species of its own game
 | The other two starters | Not in Diamond, Pearl or Platinum | The professor's gift with the National Pokédex, at level 5, so they are raised and evolved as the player's own (the user's choice) |
 | Cranidos or Shieldon by the trainer's number | The Underground digs one kind of fossil for an odd number and the other for an even one | The museum's collector gives one of each, once, with the National Pokédex |
 | Leafeon at the Moss Rock | Eterna Forest | Eterna Forest's overlay names the Moss Rock (it was missing) |
-| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) |
+| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) (since plan 38 · EX6 the dual slots' species and the first partners stand in the hideaways too, and the visitors are still drawn from all of them: `SpeciesSources.PalParkVisitors`) |
 | Rotom's appliances, Shaymin's Sky Forme, the event legendaries' places | The Secret Key, the Gracidea, the Member Card, the Azure Flute, the Oak's Letter | Rotom's appliances: plan 03 · D12c. The rest: plan 29 · LS11a ("Sinnoh's event Pokémon, by ways of our own") |
 | Unown's ! and ? | The room past Maniac Tunnel | Plan 08 · P19 |
 
@@ -8575,6 +8575,22 @@ could not be read, so each look is ours, chosen from the kit's.
   the warp's fade, where `WorldRenderer.ScenesFor` waits on purpose. J10's count had added the two together before the
   harness told them apart, so there is no fault.
 
+## The night aboard by its own light (2026-11-12, plan 20, part w)
+
+Part u's decision 3 had the S.S. Aqua's cabin lit by the clock, as every room is, so a crossing made at noon showed the
+cabin in daylight while its lines told of the sunset and of sleep. Ours, not HeartGold's (whose voyage is a night aboard
+whatever the console's clock says):
+
+- *The light, not the hour*: a scene may hold the field's light as at an hour of its own (`lighting 21`), and give it
+  back to the clock (`lighting clock`). Only the picture is held; `if time`, the wild Pokémon, the radio, the day's
+  events and every rule that reads the hour go by the clock as ever, so a scene can never move the story's day.
+- *How long*: until the player next goes somewhere (every warp and door, a white-out, a new game or a loaded one), so the
+  light changes only behind a fade; a hold is never saved. A scene gives it after its `warp`, since the warp lets the
+  last one go.
+- *The crossing*: the cabin is held at nine in the evening (night, past the sunset its first line tells of), the deck at
+  seven in the morning until the player leaves it down the gangway. In a hurry the hold is made at once, as when played.
+- *A photograph's hour* (plan 12 · Q16) still comes first: a photo taken in the cabin under its own hour is as asked.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.
@@ -10217,9 +10233,36 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   way out either: the way out is its mouth. A flag carried below and a trap sprung are left in the tunnels, as on any way up. **What
   it costs Pal Park**: with the dual slot's species and the first partners given, `OnlyInPalPark` is the eighteen legendary and
   mythical Pokémon of the older regions, so the Catching Show's day of six visitors (`PalParkState.VisitorSpecies`, which draws on
-  that pool) is six of them: that is the plan's rule followed through, and the user's to keep or change. The pools are the rule by
+  that pool) would have been six of them. **Decided in part b (2026-11-12)**: the plan's rule stays (`OnlyInPalPark` is what only the park gives), and the visitors are drawn from a pool of their own, `SpeciesSources.PalParkVisitors`: what only the park would give were there no hideaways, read the same way with the hideaways left out (76 species, the list it was before EX6), so the park keeps bringing the older games' species from far away beside the legendaries. The pools are the rule by
   type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
-  **Not laid yet**: ice that slides and lava (neither has a ground of a map file), and part b's statues.
+  **Not laid yet**: ice that slides and lava (neither has a ground of a map file).
+- **Statues** (EX6, part b, 2026-11-12; `Data/statues.json`, ours; `Hideaways.WallsOf`, `WallTable`, `Weights`). A statue is a good of
+  ours for every species any hideaway's pool may hold (266, in National order as first written, later ones appended), numbered from `UndergroundDatabase.StatueFirst` (1001)
+  past the original's 138 goods, so nothing drawn from the original's goods (a digger's base, a hiker's stock) meets one, and
+  with a rarity of one to three by its base stats (under 420 common, under 500 uncommon, the rest rare). **Dug from the hideaways'
+  walls**: two walls a day in each hideaway (rock with dry open floor before it, chosen by SplitMix from the seed and the day's number,
+  glinting gold once as the player first comes within four tiles of it), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
+  gives two more and nothing new is saved), through the Underground's own `Wall` script and the original's wall game on a table of
+  ours (`MiningGame(Rand32, WallItem[])`: the statues of the day's twelve Pokémon there at weights 12, 6 and 2 by rarity, and the
+  five small Spheres at 8 each, two to four things a wall and the original's dark rocks; the original's own walls draw exactly as
+  before). A statue dug out goes into the bag's goods (it counts among the treasures dug) and is put in the PC and placed in the
+  base like any good, one tile that it blocks, within the base's limit (`SecretBaseRules.GoodsLimit`: ten, twelve or fifteen).
+  **What a statue does**: each statue standing in the base counts once for each of its species' types, up to ten of a type
+  (`Hideaways.Weights`; one in the PC or the bag counts for nothing), and every hideaway's day of twelve is then picked by weight
+  instead of evenly: a species weighs 2 and one more for each counted statue of each of its types (`PickWeight`). Three Water
+  statues therefore take the first pick's Water share in the lake cavern from W/N to 5W/(5W + 2(N − W)) for a pool of N species
+  of which W are Water (`StatueTests` holds it exactly, and over a year of tables). With no statue in the base nothing is weighed and
+  every table, `levels.txt` among them, is what it was. **How a statue looks** is the style guide's "A statue": a stone figure of its
+  species' Pokédex shape on a plinth with its type's plaque, painted by the kit, not the species' field sprite in stone as the plan
+  asked, since a field sprite is baked on the graphics card in later frames and a face painted from it would differ between runs.
+- **Soaring** (EX7, part a, begun 2026-11-12; `Overworld/Soaring.cs`, ours; decision 8 at its recommendation: the team's flier, or the
+  helper the field lends). A flight is a place in the region map's own cells, a heading and a height of one to five (starting at
+  three); it cruises at 2.5 cells a second and at 5 with Run, turns at 110° a second and climbs or dives a height in two thirds of
+  a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
+  open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
+  open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
+  the sky and the landing through Fly's own way are not built yet.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
@@ -11438,6 +11481,58 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Hop's slump** is told at the Hero's Bath (Bede beat him in Ballonlea, off screen); the hotel scene of Sword is not built.
 - **Opal's parting line** said the road ran west; it runs east from Hammerlocke, and says so now.
 
+## Wyndon, the Champion Cup and the Darkest Day (2026-11-12, plan 33 · GL6)
+
+- **Wyndon is three rows north of the land GL5 built, behind the mass, and come to by train** (plan 33 · decision 1 still
+  unanswered): the region's chunks are `[-5, -51, 4, 1]` (530 chunks, about 75 MB of bake, from about 71). Sword reaches
+  Wyndon up Route 10's snowfields from Circhester; **Route 10 is not built**, so the land grows by three rows of ten and
+  not by the six a route and a city would want. The train from Hammerlocke's station by the south gate (`TrainToWyndon`,
+  eight badges) lands on Wyndon Station's square and the station's staff send the player back; the wall of mass between
+  Wyndon and Circhester is never come to. Route 10 is owed, with its snow and its station.
+- **Wyndon** is one floor at 26 m: the station in the south-west, the avenue east past the Pokémon Center and a boutique
+  to the hotel, Wyndon Stadium in the middle of the north side and Rose Tower (a `tower`, 46 m) east of it. Its rooms:
+  `Wyndon_PokemonCenter`, `Wyndon_Stadium` (the lobby), `Wyndon_StadiumPitch`, `Wyndon_RoseTower` (the lobby, its lift's
+  warp there from `FLAG_GALAR_OLEANA_BEATEN`) and `Wyndon_EnergyPlant` (the tower's top), each of a shape already built
+  (a Pokémon Center's, a stadium lobby's, a pitch's).
+- **The Champion Cup is fought in story order, its bracket not drawn**: plan 33 asked for plan 14 · B8's `Bracket`, but
+  the `tournament` and `bracket` words seat their entrants at level 50 as copies and pay Battle Points, which is not a
+  story's Cup at the challenge's levels. So the pitch's arrival shows the opponent whose match is due on one spot of the
+  pitch, and each is a `battle … as` of ours: the Semifinals Marnie (`galar_marnie_2`) and Hop (`galar_hop_6a`/`b`/`c`
+  by the starter), the Finals after the Darkest Day Bede, back as Opal's heir (`galar_bede_3`), and Raihan one on one
+  (`galar_raihan_2`), then the Champion Match with Leon (`galar_leon_1`, Charizard last at 65, Sword's cap). Everyone
+  Dynamaxes their last Pokémon. Sword's Finals bracket (Nessa, the version's Leader, Raihan) is not followed: Bede was the
+  plan's entrant, and the version's Leader would have wanted two teams. **The bracket screen is owed** (B8's
+  `BracketScreen` with Galar's eight, the other matches fought headless).
+- **The Darkest Day comes after the Semifinals**, as the player walks back through the stadium's lobby (`Wyndon_Stadium`'s
+  `OnEnter` at 39): the sky turns, Leon is missing, and Hop takes the player south to the Slumbering Weald's altar, where
+  the rusted sword and shield lie and the two of the legend are seen (`seen` both; nothing is given: the rusted sword and
+  shield are GL7's), and back to Rose Tower, open from then on. Sword's order (the Darkest Day on the Finals' morning,
+  with Leon's meeting the night before) is kept in its beats, not its days: nobody sleeps in a hotel. Oleana stands in
+  the tower's lobby while the Darkest Day lasts (her class `Secretary`, a look of ours); Chairman Rose battles on the
+  Energy Plant's roof (`Chairman`).
+- **Eternatus is a raid that can't fail** (plan 33's design): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with
+  …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
+  and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
+  Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
+  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
+- **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
+  untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
+  gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+- **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
+  (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
+  it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
+  light is the picture's alone: a battle there and the zones' tables go by the hour as ever.
+- **Circhester's high street keeps its stone** (GL5's owed fault): the town's snow was painted over the street; the
+  street and the way up to the stadium are painted rock before the snow, since the first paint that holds a point is
+  the one.
+- **The Hall of Fame** is the pitch's own, as Alola's is: the team recorded, `GalarHallOfFame` set, the team healed, home to
+  the bedroom in Postwick, the game saved there and the credits. `VAR_GALAR_STORY` runs 36 to 46: 37 Leon and Hop on the
+  avenue, 38 Marnie beaten, 39 Hop beaten, 40 the Darkest Day, 41 the altar, 42 Oleana beaten, 43 Eternatus caught and the
+  sky clear, 44 Bede beaten, 45 Raihan beaten, 46 the Champion. Objectives 734 to 743, `galarFree` after them. A title
+  defended, Leon's rematches and the plane on to Paldea are GL7's.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or
@@ -12312,3 +12407,20 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+
+## Species made from nothing (2026-11-12, plan 46 · CP1)
+
+- **What they are**: Carpathia's own species, with no forebear in any game. Each is a row of `tools/DataImporter/Overrides/species-carpathia.json` with every value a species has (`SpeciesOfNothing.Missing` names a value left out, and the import stops); the importer makes it a whole species of `species.json` after D14's (`SpeciesOfNothing.Add`), its moves, abilities and evolutions' targets checked against the data.
+- **Numbers**: 10000 + its number in the Carpathian Pokédex (`PokemonDatabase.CarpathiaFrom` = 10001 is the first), generation 0. The Carpathian forms of existing species are kept for the block from 11000 (`CarpathianFormsFrom`, 11000 + the species' National number), since 10000 + a National number would meet the Pokédex's own numbers.
+- **Which of ours**: `PokemonSpecies.IsOurs` stays "no species of the games" (any number from 2000), so every exclusion of ours (a trade, a file of the games, the National Pokédex's totals and diploma, the Frontier's legendaries, the way out) holds for Carpathia's by itself. What is D14's alone asks `IsPastHundred` (2000 to 10000): the Pokédex of our own (`PokemonDatabase.Ours()`, `Pokedex.OursOpen`), the slots of ours, the stages as they are met (`OursGrowth`), the Poké Radar's unmapped slots and the content check's `ours`. `IsCarpathian` is the rest, listed by `PokemonDatabase.Carpathia()`; `GetAll()` stays the 1,025 and `Everyone()` is all three.
+- **The Carpathian Pokédex** (`Pokedex.Carpathia`, `carpathia`): a regional Pokédex like any, numbered as the species carry it in `dexNumbers`, with its words and its diploma (`pokedex.mode.carpathia`, `diploma.carpathia`, `diploma.line.carpathia`). It is offered once the region's file names it (plan 46 · CP18); its charm is plan 46 · CP27's. **The National Pokédex leaves Carpathia's species out** (the plan's "outside the National 1,025"): they are listed in the Carpathian Pokédex alone, and counted toward nothing of the National one.
+- **Moves past 100**: a species made from nothing learns them by R31's rule like any; a type with no moves past 100 of its own (Sound) adds none.
+- **No species ships yet**: the table is empty until the user approves a batch (plan 46 · CP3); `SpeciesOfNothingTests` holds the importer's half to a placeholder line of its own that is never in the data.
+
+## The Sound type (2026-11-12, plan 46 · CP2)
+
+- **A nineteenth type of our own**, `PokemonType.Sound`, the enum's last value, with the chart the plan proposed (decision 13): Sound hits Rock, Ice and Psychic twice as hard and Steel, Ground and Sound half as hard; Dark, Electric and Ground hit Sound twice as hard and Normal, Flying and Sound half as hard. An inverse battle turns its row round as every row.
+- **The games' sound moves keep their types** (decision 14): Hyper Voice and Boomburst stay Normal. A Sound-type move one can learn (CP10's) carries the `Sound` flag in its data, so Soundproof, Throat Chop, Throat Spray, Punk Rock and Liquid Voice answer it as any sound move. **Its Z-Move (Resounding Finale) and Max Move (Max Chorus) carry no flags**, as no Z-Move or Max Move does, so a Soundproof Pokémon is struck by them. Max Chorus lowers the foes' Sp. Atk, as Max Flutterby does.
+- **What every type has, Sound has**: its words (`types.Sound`, Romanian *Sunet*), its sign (a note), its colour (teal `64,168,152`), its cry's timbre, its move, Z-Move and Max Move sounds and looks, the trainer AI's chart (the AI reads `TypeChart`), Tera Sound (a Tera type like any, and its Tera Shard), the Sound Gem, the Tuning Fork (a fifth more, as the boosters), the Taci Berry (*a tăcea*, to be silent: halves a super-effective Sound hit, as the resist berries) and the Sonorium Z, and plan 39's two materials of a type (the Hollow Reed and the rarer Echo Crystal). Items 9920 to 9924; moves 3090 and 3091 (3073 to 3089 free; 3101 on is CP10's).
+- **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
+- **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).

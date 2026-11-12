@@ -13,7 +13,9 @@
     { "name": "hammerlocke_west_gate", "at": [-30, 26.3, -1214], "yaw": 90 },
     { "name": "hammerlocke_east_back", "at": [86, 26.3, -1222], "yaw": 270 },
     { "name": "hammerlocke_stadium_door", "at": [64, 26.3, -1236], "yaw": 0 },
-    { "name": "hammerlocke_stadium_back", "at": [64, 26.3, -1230], "yaw": 0 }
+    { "name": "hammerlocke_stadium_back", "at": [64, 26.3, -1230], "yaw": 0 },
+    // Plan 33 · GL6: the station by the south gate, where the train north to Wyndon leaves
+    { "name": "hammerlocke_station", "at": [2, 26.3, -1180], "yaw": 270 }
   ],
   "doors": [
     {
@@ -65,6 +67,11 @@
     {
       "name": "stadium_staffer", "at": [56, 26.3, -1236], "yaw": 0, "look": "clerk", "displayName": "League Staff",
       "lines": ["Hammerlocke Stadium is Raihan's. He takes on challengers who've won seven badges and not one fewer."]
+    },
+    {
+      // Plan 33 · GL6: the train to Wyndon, for challengers with eight badges
+      "name": "hammerlocke_station_staff", "at": [-4, 26.3, -1180], "yaw": 90, "look": "clerk", "displayName": "Station Staff",
+      "script": "TrainToWyndon"
     },
     {
       "name": "hammerlocke_gentleman", "at": [-2, 26.3, -1232], "yaw": 90, "look": "gentleman", "displayName": "Gentleman",

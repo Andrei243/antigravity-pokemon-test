@@ -19,7 +19,10 @@ script Raihan
   defeat "galar_gym_trainer_nia"
   defeat "galar_gym_trainer_osian"
   setvar VAR_GALAR_STORY 36
-  say "The Cup's in Wyndon, up north by train. I'll see you there. In the stands, this time."
+  setflag FLAG_GALAR_LEON_WYNDON
+  setflag FLAG_GALAR_HOP_WYNDON
+  objective galarWyndon
+  say "The Cup's in Wyndon, up north by train from the station by the south gate. I'll see you there."
   endscene
   end
 label Won

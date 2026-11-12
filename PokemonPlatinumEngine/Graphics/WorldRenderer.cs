@@ -505,6 +505,12 @@ public sealed partial class WorldRenderer
     public PhotoView? Photo { get; set; }
 
     /// <summary>
+    /// The hour a scene holds the field's light at (plan 20, part w: the night aboard the S.S. Aqua; the script's
+    /// <c>lighting</c>), or null for the clock's: the picture's alone, which the rules never read. A photo's hour comes first.
+    /// </summary>
+    public float? HeldHour { get; set; }
+
+    /// <summary>
     /// The lens a map is looked through this frame: the place's own (<see cref="MapScene.ViewOf"/>) under the rig's
     /// zoom and a held lens (<see cref="CameraRig.Lens"/>), which change its field of view and nothing else. Whatever
     /// asks what is in view asks this.
@@ -532,7 +538,7 @@ public sealed partial class WorldRenderer
 
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player) =>
-        RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, Photo?.Hour ?? GameClock.Hour);
+        RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, Photo?.Hour ?? HeldHour ?? GameClock.Hour);
 
     /// <summary>
     /// Renders the map without the player, looking at a point (in tiles) at a given hour: the fly-over shots of

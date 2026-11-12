@@ -747,7 +747,7 @@ public class PastimeTests
         Run("Worker", "PalParkLobby", none, who: "worker");
         Assert.False(Said(none, "no Pokémon waiting"));
         Assert.NotNull(none.Pastimes.PalPark.Show);
-        Assert.All(none.Pastimes.PalPark.Waiting, p => Assert.Contains(p.Species.Name, SpeciesSources.Sinnoh.PalParkPool));
+        Assert.All(none.Pastimes.PalPark.Waiting, p => Assert.Contains(p.Species.Name, SpeciesSources.Sinnoh.PalParkVisitors));
 
         // Six waiting: the show begins and the player is sent into the park
         var host = new HeadlessScriptHost { Map = Room("PalParkLobby") };

@@ -49,6 +49,15 @@
     { "cover": "GrassDeep", "polygon": [[110, -1270], [152, -1270], [152, -1236], [110, -1236]] },
     { "cover": "Rock", "polygon": [[110, -1340], [152, -1340], [152, -1290], [110, -1290]] },
     { "cover": "Snow", "polygon": [[110, -1402], [152, -1402], [152, -1340], [110, -1340]] },
+    // Circhester's high street and the way up to its stadium keep their stone under the snow (plan 33 · GL6: the paint
+    // that comes first is the one, so the street is laid before the town's snow)
+    { "cover": "Rock", "polygon": [[136, -1420.2], [122.9, -1444.1], [115, -1439.8], [128.1, -1415.9]] },
+    { "cover": "Rock", "polygon": [[123.6, -1443.6], [95.3, -1453], [92.4, -1444.4], [120.7, -1435]] },
+    { "cover": "Rock", "polygon": [[98.2, -1452.5], [61.8, -1452.5], [61.8, -1443.5], [98.2, -1443.5]] },
+    { "cover": "Rock", "polygon": [[68, -1451], [40, -1465], [36, -1457], [64, -1443]] },
+    { "cover": "Rock", "polygon": [[44.4, -1462.4], [26.8, -1475], [21.6, -1467.6], [39.2, -1455]] },
+    { "cover": "Rock", "polygon": [[99.3, -1445], [108.4, -1476.8], [100.7, -1479], [91.6, -1447.2]] },
+    { "cover": "Rock", "polygon": [[108, -1474], [108, -1492], [100, -1492], [100, -1474]] },
     { "cover": "Snow", "polygon": [[-100, -1530], [154, -1530], [154, -1416], [-100, -1416]] },
     // Spikemuth's streets are dark stone
     { "cover": "RockDark", "polygon": [[-154, -1530], [-96, -1530], [-96, -1416], [-154, -1416]] }

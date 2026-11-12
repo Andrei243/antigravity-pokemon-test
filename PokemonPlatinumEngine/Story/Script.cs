@@ -222,6 +222,9 @@ public enum Op
     Tour,
     // The Stroll Counter (plan 35 · BN7): its Pokémon back from a PC with what it met and found, and another put in
     Stroll,
+    // The field's light held at an hour for a scene, or given back to the clock (plan 20, part w: the night aboard the
+    // S.S. Aqua); the picture's alone, never the hour the rules read
+    Lighting,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

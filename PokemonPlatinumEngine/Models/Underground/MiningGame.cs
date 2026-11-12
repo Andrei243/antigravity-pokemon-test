@@ -16,8 +16,12 @@ public sealed record WallObject(MiningObjectRecord Object, int Id, int X, int Y)
         return Object.Shape == null || Object.Shape[dy][dx] != 'o';
     }
 
-    public bool IsRock => Id >= UndergroundDatabase.TreasureEnd;
+    /// <summary>Dark rock: the numbers after the treasures (a statue of ours is past them and is no rock).</summary>
+    public bool IsRock => Id >= UndergroundDatabase.TreasureEnd && !UndergroundDatabase.IsStatue(Id);
 }
+
+/// <summary>Something a wall of ours may hold (plan 38 · EX6, part b): its shape in the wall, its number and its weight.</summary>
+public sealed record WallItem(MiningObjectRecord Shape, int Id, int Weight);
 
 /// <summary>What a blow came to: whether it rang on dark rock, whether it bared part of something, and whether it landed on the wall at all.</summary>
 public readonly record struct MiningBlow(bool Landed, bool HitRock, bool FoundItem);
@@ -113,6 +117,44 @@ public sealed class MiningGame
                 int x = rand.Next(Width), y = rand.Next(Height);
                 TryPlace(table[index], UndergroundDatabase.TreasureEnd + int.Parse(table[index].Id["ROCK_".Length..]) - 1, x, y);
             }
+        bare = new bool[ItemCount];
+        RandomizeDirt();
+    }
+
+    /// <summary>
+    /// A wall of ours (plan 38 · EX6, part b: a hideaway's): the original's game on a table it is handed, drawn in the
+    /// original's order (how many things, each picked by the weights in the table's order and tried at a place, then a
+    /// hundred tries of the original's dark rocks, then the dirt). Never the first wall, and no plate is among its things.
+    /// </summary>
+    public MiningGame(Rand32 rand, IReadOnlyList<WallItem> items)
+    {
+        this.rand = rand;
+        for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++) dirt[y, x] = 2;
+        var table = UndergroundDatabase.Objects;
+        int firstRock = Enumerable.Range(0, table.Count).First(i => table[i].Id.StartsWith("ROCK_", StringComparison.Ordinal));
+        int rocks = table.Count - firstRock, total = items.Sum(i => i.Weight);
+        ItemCount = rand.Next(MaxItems - 1) + 2;
+        if (total <= 0) ItemCount = 0;
+        int tries = 0;
+        while (objects.Count < ItemCount && tries++ < 1000)
+        {
+            int counter = rand.Next(total), index = 0;
+            for (; index < items.Count - 1; index++)
+            {
+                counter -= items[index].Weight;
+                if (counter < 0) break;
+            }
+            int x = rand.Next(Width), y = rand.Next(Height);
+            TryPlace(items[index].Shape, items[index].Id, x, y);
+        }
+        ItemCount = objects.Count;
+        for (int attempt = 0; attempt < 100; attempt++)
+        {
+            int index = rand.Next(rocks) + firstRock;
+            int x = rand.Next(Width), y = rand.Next(Height);
+            TryPlace(table[index], UndergroundDatabase.TreasureEnd + int.Parse(table[index].Id["ROCK_".Length..]) - 1, x, y);
+        }
         bare = new bool[ItemCount];
         RandomizeDirt();
     }

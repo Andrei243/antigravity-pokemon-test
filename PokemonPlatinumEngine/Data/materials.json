@@ -49,6 +49,8 @@
     { "id": "umbralClaw", "kind": "Pokemon", "type": "Dark", "rare": true, "worth": 80 },
     { "id": "charmGlitter", "kind": "Pokemon", "type": "Fairy", "rare": false, "worth": 20 },
     { "id": "moonRibbon", "kind": "Pokemon", "type": "Fairy", "rare": true, "worth": 85 },
+    { "id": "hollowReed", "kind": "Pokemon", "type": "Sound", "rare": false, "worth": 20 },
+    { "id": "echoCrystal", "kind": "Pokemon", "type": "Sound", "rare": true, "worth": 85 },
     { "id": "quarryStone", "kind": "Field", "rare": false, "worth": 10 },
     { "id": "rawOre", "kind": "Field", "rare": false, "worth": 30 },
     { "id": "timber", "kind": "Field", "rare": false, "worth": 10 },

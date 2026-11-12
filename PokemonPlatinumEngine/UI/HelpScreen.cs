@@ -22,7 +22,8 @@ public sealed class HelpScreen
     public static readonly HelpPage[] Pages = Enum.GetValues<HelpPage>();
 
     /// <summary>The chart's types, attacking down its side and defending across its top.</summary>
-    public static readonly PokemonType[] Types = Enum.GetValues<PokemonType>();
+    /// <summary>The chart's types: the games' eighteen, Sound (plan 46 · CP2) left off until the grid is drawn nineteen wide.</summary>
+    public static readonly PokemonType[] Types = TypeChart.GamesTypes.ToArray();
 
     /// <summary>The types' three-letter names over the chart's columns.</summary>
     public static string ShortName(PokemonType type) => Text.Of($"help.short.{type}");

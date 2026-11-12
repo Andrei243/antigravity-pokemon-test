@@ -384,11 +384,13 @@ public sealed partial class ScriptRunner
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
         // A raid fought waits for the player (plan 33 · GL3); a den looked into, its Watts and a catch's die don't
-        Op.Raid => i.Name == "fight",
+        Op.Raid => i.Name is "fight" or "boss",
         Op.Treat => false,
         // The pasture's close-up is a screen the player looks into; its ways in and out are warps, ended at once (plan 35 · BN5)
         Op.Pasture => i.Name is "care" or "pick",
         Op.Stroll => i.Name == "pick",
+        // The light held for a scene is the picture's, there at once (plan 20, part w)
+        Op.Lighting => false,
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
         // A ride and the report are screens the player plays and reads; the rest is asked or handed over without one (plan 44 · SD5, SD6)
@@ -1651,6 +1653,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.SlowMotion:
                 host.SlowMotion(i.Factor, i.Seconds);
+                break;
+            case Op.Lighting:
+                host.HoldLight(i.Option ? i.Factor : null);
                 break;
 
             // The original's set pieces (plan 09 · L12): each is waited for by the runner itself, for as long as the

@@ -40,3 +40,20 @@ script StadiumShut
   say "Sorry! Raihan's gym is the last of the challenge. Come back with seven badges and the door's yours."
   walkto player hammerlocke_stadium_back
   end
+
+
+# The station by the south gate (plan 33 · GL6): the train north to Wyndon, for challengers with all eight badges
+script TrainToWyndon
+  speaker "Station Staff"
+  if badges >= 8 goto Board
+  say "Trains north run to Wyndon, for the Champion Cup. Only challengers with all eight badges may ride them this season."
+  end
+label Board
+  say "Eight badges! The Champion Cup is waiting for you in Wyndon."
+  ask "Take the train north to Wyndon?"
+  if no goto Later
+  warpto "Galar" wyndon_station
+  end
+label Later
+  say "The line north runs all day. Come back when you're ready."
+  end
