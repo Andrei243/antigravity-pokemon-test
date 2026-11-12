@@ -82,5 +82,9 @@ public class SoundTypeTests
         // With no species of it in the data yet, a choice of a type offers none of it
         Assert.DoesNotContain(PokemonType.Sound, TypeChart.TypesWithSpecies);
         Assert.Equal(18, PokemonPlatinumEngine.UI.HelpScreen.Types.Length);
+        // The randomiser's shuffle is the eighteen's: a Sound species keeps its type, the others are dealt as ever
+        var random = Randomizer.Of(new RandomizerOptions { Seed = 12345, Types = true });
+        Assert.Equal(PokemonType.Sound, random.TypeIn(10001, PokemonType.Sound));
+        Assert.NotEqual(PokemonType.Sound, random.TypeIn(10001, PokemonType.Fire));
     }
 }

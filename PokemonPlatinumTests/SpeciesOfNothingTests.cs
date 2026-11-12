@@ -142,6 +142,8 @@ public class SpeciesOfNothingTests
         dex.UnlockNational();
         Assert.False(dex.OursOpen, "a Carpathian species opens no Pokédex of our own");
         Assert.DoesNotContain(Pokedex.Goal(Pokedex.National).Species, s => s.IsCarpathian);
+        // nor its list: they are the Carpathian Pokédex's alone
+        Assert.DoesNotContain(Pokedex.Entries(Pokedex.National), e => e.Species.IsCarpathian);
     }
 
     [Fact]

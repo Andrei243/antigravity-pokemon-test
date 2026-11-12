@@ -144,7 +144,8 @@ public sealed partial class Randomizer
     /// </summary>
     public PokemonType TypeIn(int lineRoot, PokemonType type)
     {
-        if (!Options.Types) return type;
+        // Sound (plan 46 · CP2) is in no shuffle: a species of it keeps it
+        if (!Options.Types || type == PokemonType.Sound) return type;
         lock (shuffles)
         {
             if (!shuffles.TryGetValue(lineRoot, out var order))

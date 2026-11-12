@@ -1581,7 +1581,7 @@
     "intoMany": "Poate evolua în {list}.",
     "listSeparator": ", ",
     "listEnd": "{rest} sau {last}",
-    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea" }
+    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea", "10": "Carpatia" }
   },
 
   "types": {

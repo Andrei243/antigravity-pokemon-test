@@ -194,12 +194,12 @@ public class Pokedex
 
     /// <summary>
     /// The species of a Pokédex in its own order, each with the number it shows there (empty for an identifier no species
-    /// is numbered in). The National one lists the species of our own after the 1,025 (plan 03 · D14, and Carpathia's
-    /// after those, plan 46 · CP1), which its
+    /// is numbered in). The National one lists the species of our own after the 1,025 (plan 03 · D14; Carpathia's, plan
+    /// 46 · CP1, are in their own Pokédex alone), which its
     /// totals and its diploma leave out (<see cref="Goal"/>, <see cref="SeenCount"/>); no regional one lists them.
     /// </summary>
     public static IReadOnlyList<PokedexEntry> Entries(string dex) => lists.GetOrAdd(dex, id => id == National
-        ? PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => new PokedexEntry(s.DexNumber, s)).ToList()
+        ? PokemonDatabase.Everyone().Where(s => !s.IsCarpathian).OrderBy(s => s.DexNumber).Select(s => new PokedexEntry(s.DexNumber, s)).ToList()
         : id == Ours
             // The Pokédex of ours (plan 40 · GE4): the species of ours in National order, numbered from 1
             ? PokemonDatabase.Ours().OrderBy(s => s.DexNumber).Select((s, i) => new PokedexEntry(i + 1, s)).ToList()

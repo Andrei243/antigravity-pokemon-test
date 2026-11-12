@@ -29,7 +29,7 @@ public static class TeraChange
     /// <summary>The shards one change takes.</summary>
     public const int Cost = 50;
 
-    /// <summary>The nineteen Tera Types a shard gives, in the chart's order and Stellar last.</summary>
+    /// <summary>The twenty Tera Types a shard gives, in the chart's order (Sound, ours, plan 46 · CP2, last of the types) and Stellar last.</summary>
     public static IReadOnlyList<TeraType> Types { get; } =
         System.Enum.GetValues<PokemonType>().Select(TeraType.Of).Append(TeraType.Stellar).ToList();
 

@@ -602,7 +602,7 @@ public class SpeciesPastHundredTests
     {
         // GetAll is the games' 1,025: the battle corpus, the masters, the Pokéathlon's and Pal Park's draws go by it
         Assert.Equal(Enumerable.Range(1, 1025), PokemonDatabase.GetAll().Select(s => s.DexNumber));
-        Assert.Equal(PokemonDatabase.GetAll().Count() + PokemonDatabase.Ours().Count, PokemonDatabase.Everyone().Count());
+        Assert.Equal(PokemonDatabase.GetAll().Count() + PokemonDatabase.Ours().Count + PokemonDatabase.Carpathia().Count, PokemonDatabase.Everyone().Count());
         Assert.All(PokemonDatabase.Ours(), s => Assert.Null(TrainerDatabase.Get(TrainerDatabase.MasterId(s.Name))));
 
         // The Battle Frontier: a legendary's evolution is banned, the rest may enter
