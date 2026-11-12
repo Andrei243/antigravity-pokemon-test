@@ -1,0 +1,42 @@
+# Sunny Side Revue: a bright brass shuffle (swing feel, triplet eighths) in C major for a stage show's upbeat number.
+# For plan 42 · PS2's stage show, which counts bars: 32 bars of 4/4 at a steady tempo of 128 (60 seconds a pass), loop at the top.
+# Four sections of eight bars: the tune, the tune dressed up, a bridge, the tune once more with a turnaround. Original composition for this game.
+title Sunny Side Revue
+tempo 128
+meter 4/4
+reverb 0.2
+night none
+
+track lead brass vol=0.78 pan=0.05 rev=0.18
+  L o5 e6 g12 c6 e12 g4 e4 | o5 d6 e12 g6 e12 c2 | o5 f6 a12 o6 c6 o5 a12 f4 a4 | o5 g6 f12 a6 g12 f2 |
+  o5 e6 g12 c6 e12 c4 g4 | o5 a6 o6 c12 e6 c12 o5 a2 | o5 b6 o6 d12 g6 d12 o5 b4 g4 | o5 a6 g12 f6 d12 g2 |
+  o5 g6 a12 g6 e12 c4 e4 | o5 g6 e12 d6 e12 g2 | o5 a6 o6 c12 o5 a6 f12 a4 o6 c4 | o6 c6 o5 a12 f6 a12 o6 c2 |
+  o5 e6 g12 o6 c6 e12 g4 e4 | o6 c6 o5 a12 e6 a12 o6 c2 | o5 b6 o6 d12 g6 f12 e4 d4 | o5 b6 a12 g6 d12 g2 |
+  o6 c4 o5 a4 f4 a4 | o5 a6 o6 c12 f6 e12 d4 c4 | o5 g4 e4 c4 e4 | o5 g6 a12 g6 e12 c2 |
+  o5 a4 o6 c4 e4 c4 | o6 e6 d12 c6 o5 a12 e2 | o5 b4 o6 d4 g4 d4 | o6 d6 e12 d6 o5 b12 g2 |
+  o5 e6 g12 c6 e12 g4 e4 | o5 d6 e12 g6 e12 c2 | o5 f6 a12 o6 c6 o5 a12 f4 a4 | o5 g6 f12 a6 g12 f2 |
+  o5 e6 g12 c6 e12 c4 g4 | o5 a6 o6 c12 e6 c12 o5 a2 | o5 b6 o6 d12 g6 d12 o5 b4 g4 | o5 b6 o6 d12 o5 g6 b12 g4 r4 |
+
+track horns horn vol=0.4 pan=-0.2 rev=0.18
+  L o4 c1 | c1 | f1 | f1 | c1 | a1 | g1 | g1 |
+  c1 | c1 | f1 | f1 | c1 | a1 | g1 | g1 |
+  f1 | f1 | c1 | c1 | a1 | a1 | g1 | g1 |
+  c1 | c1 | f1 | f1 | c1 | a1 | g1 | g1 |
+
+track comp piano vol=0.5 pan=-0.12 rev=0.15
+  L o4 [ r6 (c e g)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c e a)12 ]4 | [ r6 (b d g)12 ]4 | [ r6 (b d g)12 ]4 |
+  [ r6 (c e g)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c e a)12 ]4 | [ r6 (b d g)12 ]4 | [ r6 (b d g)12 ]4 |
+  [ r6 (c f a)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c e a)12 ]4 | [ r6 (c e a)12 ]4 | [ r6 (b d g)12 ]4 | [ r6 (b d g)12 ]4 |
+  [ r6 (c e g)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c f a)12 ]4 | [ r6 (c e g)12 ]4 | [ r6 (c e a)12 ]4 | [ r6 (b d g)12 ]4 | [ r6 (b d g)12 ]4 |
+
+track bass bass vol=0.85 rev=0.05
+  L o2 c4 e4 g4 e4 | o2 c4 e4 g4 e4 | o2 f4 a4 o3 c4 o2 a4 | o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 a4 o3 c4 e4 c4 | o2 g4 b4 o3 d4 o2 b4 | o2 g4 b4 o3 d4 o2 b4 |
+  o2 c4 e4 g4 e4 | o2 c4 e4 g4 e4 | o2 f4 a4 o3 c4 o2 a4 | o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 a4 o3 c4 e4 c4 | o2 g4 b4 o3 d4 o2 b4 | o2 g4 b4 o3 d4 o2 b4 |
+  o2 f4 a4 o3 c4 o2 a4 | o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 c4 e4 g4 e4 | o2 a4 o3 c4 e4 c4 | o2 a4 o3 c4 e4 c4 | o2 g4 b4 o3 d4 o2 b4 | o2 g4 b4 o3 d4 o2 b4 |
+  o2 c4 e4 g4 e4 | o2 c4 e4 g4 e4 | o2 f4 a4 o3 c4 o2 a4 | o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 a4 o3 c4 e4 c4 | o2 g4 b4 o3 d4 o2 b4 | o2 g4 b4 o3 d4 o2 b4 |
+
+track drums kit vol=0.5 rev=0.08
+  L v80 [ b6 h12 s6 h12 b6 h12 s6 h12 | ]7 b6 h12 s6 h12 t6 t12 m6 f12 |
+  [ b6 h12 s6 h12 b6 h12 s6 h12 | ]7 b6 h12 s6 h12 t6 t12 m6 f12 |
+  [ b6 h12 s6 h12 b6 h12 s6 h12 | ]7 b6 h12 s6 h12 t6 t12 m6 f12 |
+  [ b6 h12 s6 h12 b6 h12 s6 h12 | ]7 b6 h12 s6 h12 t6 t12 m6 f12 |
