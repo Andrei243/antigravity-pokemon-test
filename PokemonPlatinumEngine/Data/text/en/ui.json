@@ -7041,6 +7041,19 @@
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
   },
+  "photoTour": {
+    "heading": "PHOTO TOUR",
+    "film": "FILM {count}",
+    "fruit": "FRUIT {count}",
+    "zoom": "×{zoom}",
+    "points": "{points} pts",
+    "total": "This ride: {points} points",
+    "none": "Not one photograph counted this time.",
+    "hints": {
+      "keep": "Keep",
+      "leave": "Done"
+    }
+  },
   "photoStudio": {
     "heading": "PHOTO STUDIO",
     "row": {
