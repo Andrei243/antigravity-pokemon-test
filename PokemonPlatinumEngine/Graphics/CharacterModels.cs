@@ -81,6 +81,12 @@ internal struct CharacterPose
     public float Astride;
 
     /// <summary>
+    /// How far a rider astride folds the legs up, 0 to 1 (a ride on land of the grid, by species: <see cref="RideSeats"/>):
+    /// the knees forward and the shins back, so on a small ride the feet stay behind its card and off the ground. Nought for the plain seat.
+    /// </summary>
+    public float RideTuck;
+
+    /// <summary>
     /// On roller skates (plan 30, the gate's owed clip; style guide, "Grown animation", "Skating"): the gait is a skater's
     /// pushes, each foot driven out and back to its side in turn, crouched, the arms swinging across. A chibi rig never reads it.
     /// </summary>

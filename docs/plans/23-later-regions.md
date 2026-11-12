@@ -606,6 +606,12 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   `City` background); a surfer still meets the woods where the drawn chunks end (z 192 below Melemele, x 127 and 480 at
   its sides, z 288 and 352 on Akala), which only new chunk rows (every later chunk renumbered) or an engine rule for an
   island's undrawn edge would change. Each is a look for the user, not a fault of the rules.
+- **The seen-and-left looks settled** (2026-11-12, after the flip; plan 30, "Alola free and grown", "Paid"): the six
+  houses are furnished each its own way (the berry farmer's plants, shelves and a television, Ilima's wardrobe and
+  clock, the malasada shop's two stoves, a Heahea family's pictures, the rancher's crates); Hau'oli City's overlay names
+  the city stage, so its streets' and marina's battles are on the street; Brooklet Hill's beaches stay sand and Iki
+  Town the meadow (rulings, "Alola free and grown", "Built to a grown body"). Alola's buildings are built to the grown
+  numbers and the lei arch is larger. Still left: the surfer's woods at the drawn chunks' edges.
 - **Flipped on 2026-11-12, later** (the user's decision; plan 30, "Alola free and grown"; rulings, "Alola free and
   grown"): `alola.json` says `"directions": "Free", "speed": "Analog"`, `"modes": [ "Ride" ]` and `"kit": "Grown"`;
   Alola's outdoors take a camera of their own, `FieldCamera.Alola` (46°, 22°, 500 units; style guide, "Alola's
