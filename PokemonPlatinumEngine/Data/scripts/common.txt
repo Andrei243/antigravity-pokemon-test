@@ -361,6 +361,29 @@ script OpeningDone
   end
 
 
+# The record desk on every Pokémon Center's upper floor (plan 40 · GE10; ours, where Platinum's desk mixed records over
+# the local wireless link): the attendant mixes the player's records with their other saves, which are read and never
+# written (Models/RecordMix.cs): each other adventure's trainer, secret base and interview. The friends' hall in Jubilife
+# City stands the trainers, Hoenn's spots the secret bases, and the television tells of the interviews.
+script RecordDesk
+  say "Welcome to the record desk! Here your records are mixed with those of your other adventures."
+  ask "Shall I mix your records?"
+  if no goto Later
+  records mix
+  if result == 0 goto None
+  sound "select"
+  say "All done! Your records are mixed with those of {thing}."
+  say "Look for them upstairs in Jubilife City's Pokémon Center, at Hoenn's secret base spots and on television!"
+  end
+label None
+  say "There's no other adventure to mix with, I'm afraid. Each save slot holds an adventure of its own."
+  say "Do come back once you've begun another!"
+  end
+label Later
+  say "Please come again!"
+  end
+
+
 # Someone with lines to say.
 script Talk
   sayown
@@ -1305,6 +1328,23 @@ label Cannot
 script UseWhirlpool
   usemove "Whirlpool"
   climb
+  end
+
+
+# A Headbutt tree (HeartGold's, plan 38 · EX4). The field offers it only in Johto, on foot, to a team that knows the
+# move, so no Badge is asked; the tree is shaken whatever it holds, and a Pokémon may fall out (`headbutt`).
+script HeadbuttTree
+  speaker none
+  if not knows "Headbutt" end
+  ask "Something might be living up in this tree. Use Headbutt on it?"
+  if no end
+  call UseHeadbutt
+  end
+
+script UseHeadbutt
+  usemove "Headbutt"
+  headbutt
+  if result == 0 say "The tree shook, but nothing came down."
   end
 
 
@@ -3321,12 +3361,16 @@ script AthlonShop
 script SecretBaseSpot
   speaker none
   openbase check
+  if result == 4 goto Friend
   if result == 2 goto Own
   if result == 3 goto Elsewhere
   if not knows "Secret Power" goto Cannot
   goto Ask
 label Own
   openbase enter
+  end
+label Friend
+  openbase visit
   end
 label Elsewhere
   if not knows "Secret Power" goto Cannot
@@ -3366,6 +3410,7 @@ label CannotShrub
 # Secret Power chosen in the party menu at a spot: the same, with no question but moving a base
 script UseSecretPower
   openbase check
+  if result == 4 goto Friend
   if result == 2 goto Own
   if result != 3 goto Make
   ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
@@ -3375,6 +3420,9 @@ label Make
   end
 label Own
   openbase enter
+  end
+label Friend
+  text "A friend's secret base is already here. There's no room to make another."
   end
 
 # Secret Power at work on a spot: what it opened, and the base made there and gone into (only by a Pokémon that knows it)
@@ -3396,7 +3444,7 @@ label Open
   return
 
 # A secret base's PC (Emerald's SecretBase_EventScript_PC): the decorating, the base packed up and given up, or the
-# registry of friends' bases, which only a link brings and which stays empty here
+# registry of friends' bases, which the record desk mixes in from the player's other saves (plan 40 · GE10)
 script SecretBasePC
   speaker none
   text "The base's PC hummed into life."
@@ -3414,7 +3462,18 @@ label PackUp
   openbase packup
   end
 label Registry
-  text "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
+  records bases
+  if result == 0 goto NoFriends
+  text "Registered here: the secret bases of {thing}. Visit them at their spots around Hoenn!"
+  end
+label NoFriends
+  text "No friend's secret base is registered. Mix records at a Pokémon Center's record desk to bring one in."
+  end
+
+# The PC of a friend's secret base, mixed in at the record desk (plan 40 · GE10): it is theirs, not to be touched
+script FriendsBasePC
+  speaker none
+  text "It's your friend's PC. Better leave it be!"
   end
 
 

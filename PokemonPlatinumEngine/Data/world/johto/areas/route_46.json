@@ -34,6 +34,36 @@
     "Geodude",
     "Geodude"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 2, "maxLevel": 3 },
+      { "species": "Heracross", "level": 2, "maxLevel": 3 },
+      { "species": "Heracross", "level": 2, "maxLevel": 3 },
+      { "species": "Aipom", "level": 2, "maxLevel": 3 },
+      { "species": "Aipom", "level": 2, "maxLevel": 3 },
+      { "species": "Aipom", "level": 2, "maxLevel": 3 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 4, "maxLevel": 5 },
+      { "species": "Spearow", "level": 4, "maxLevel": 5 },
+      { "species": "Spearow", "level": 4, "maxLevel": 5 },
+      { "species": "Aipom", "level": 4, "maxLevel": 5 },
+      { "species": "Aipom", "level": 4, "maxLevel": 5 },
+      { "species": "Aipom", "level": 4, "maxLevel": 5 }
+    ],
+    "trees": [
+      "614,331 614,330",
+      "628,351 628,352 629,352",
+      "610,351 610,350",
+      "615,376",
+      "630,377 630,376",
+      "623,380",
+      "611,361 611,360",
+      "623,335 624,335",
+      "626,331 626,330",
+      "611,368"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

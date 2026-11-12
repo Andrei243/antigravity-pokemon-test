@@ -30,7 +30,8 @@ public partial class GameEngine
         if (flow.Map.Name != FriendsHall.Room) return;
         foreach (var gone in flow.Map.NPCs.Where(FriendsHall.IsFriend).ToList()) flow.Map.NPCs.Remove(gone);
         flow.FriendsStanding.Clear();
-        foreach (var (file, spot) in FriendsHall.Stand(TrainerFiles.In(FriendsFolder)))
+        // The folder's files first, then the trainers mixed in at the record desk (plan 40 · GE10)
+        foreach (var (file, spot) in FriendsHall.Stand(TrainerFiles.In(FriendsFolder).Concat(RecordMix.Entries(flow.Records)).ToList()))
         {
             // A spot someone of the room's own stands on is left empty rather than shared
             if (flow.Map.GetNpcAt(spot.X, spot.Y) != null) continue;

@@ -68,6 +68,50 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 15, "maxLevel": 16 },
+      { "species": "Pineco", "level": 15, "maxLevel": 16 },
+      { "species": "Pineco", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 17, "maxLevel": 18 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 18 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 }
+    ],
+    "secret": [
+      { "species": "Metapod", "level": 25, "maxLevel": 28 },
+      { "species": "Butterfree", "level": 25, "maxLevel": 28 },
+      { "species": "Butterfree", "level": 25, "maxLevel": 28 },
+      { "species": "Heracross", "level": 25, "maxLevel": 28 },
+      { "species": "Heracross", "level": 25, "maxLevel": 28 },
+      { "species": "Heracross", "level": 27, "maxLevel": 30 }
+    ],
+    "trees": [
+      "108,383 109,383",
+      "100,361 100,360",
+      "106,373 106,372",
+      "121,366 121,367",
+      "106,383 107,383 106,382",
+      "106,379 106,378",
+      "104,365 105,365",
+      "102,365 103,365 102,364",
+      "100,359 100,358 100,357 101,357",
+      "104,355 104,354"
+    ],
+    "secretTrees": [
+      "82,361 82,360",
+      "82,363 82,362",
+      "121,365 121,364",
+      "132,363 133,363"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

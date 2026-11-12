@@ -528,6 +528,13 @@ public interface IScriptHost
     /// </summary>
     bool SmashEncounter();
 
+    /// <summary>
+    /// The Headbutt tree in front shaken (plan 38 · EX4; <see cref="Overworld.HeadbuttTrees"/>): true when a wild
+    /// Pokémon fell out of it, and its battle starts; false when nothing did, which is always so for a tree no area
+    /// lists and in every region but Johto. The default shakes out nothing.
+    /// </summary>
+    bool Headbutt() => false;
+
     // ------------------------------------------------------------------ autosave (plan 12 · Q3)
 
     /// <summary>
@@ -865,6 +872,20 @@ public interface IScriptHost
 
     /// <summary>A friend's trainer beaten (plan 13 · V23): a trainer's battle won, for the game's counters. Nothing by default.</summary>
     void FriendWon() { }
+
+    // ------------------------------------------------------------------ records mixed (plan 40 · GE10)
+
+    /// <summary>The records this game has mixed in (<see cref="RecordMixState"/>); null for a host that keeps none.</summary>
+    RecordMixState? MixedRecords => null;
+
+    /// <summary>
+    /// The player's other saves, read and never written, in slot order: every slot but the game's own that reads whole or
+    /// from its backup, a damaged one passed over. None for a host with no slots.
+    /// </summary>
+    System.Collections.Generic.IReadOnlyList<Core.SaveData> OtherSaves() => System.Array.Empty<Core.SaveData>();
+
+    /// <summary>The game in play, as a record knows a game: its trainer's number and the day it began.</summary>
+    (int TrainerId, System.DateTime? Started) OwnGame => (0, null);
 
     /// <summary>
     /// How many turns the battle last fought went on for before the one that ended it (plan 01 · M11, part b; the

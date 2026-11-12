@@ -18,11 +18,7 @@ public class JohtoSpeciesTests
     {
         // (Plan 40 · GE3 gave SoulSilver's species in the overlays' national slots, a Linking Cord in Goldenrod's
         // Pokémon Center, Silph Co.'s Upgrade, the Bug-Catching Contest's stones and Pewter's fossils)
-        // HeartGold's headbutt trees, not built (plan 38 · EX4)
-        ["Pineco"] = "plan 38 · EX4: headbutt trees", ["Forretress"] = "plan 38 · EX4: headbutt trees",
-        ["Exeggcute"] = "plan 38 · EX4: headbutt trees", ["Exeggutor"] = "plan 38 · EX4: headbutt trees",
-        ["Heracross"] = "plan 38 · EX4: headbutt trees",
-        ["Aipom"] = "plan 38 · EX4: headbutt trees", ["Ambipom"] = "plan 38 · EX4: headbutt trees",
+        // (Plan 38 · EX4 gave HeartGold's Headbutt trees: Pineco, Exeggcute, Heracross, Aipom and their evolutions)
         // A mythical HeartGold gave only by an event: had in another region (Faraway Island, plan 29 · LS11c)
         ["Mew"] = "had in another region: Hoenn's Faraway Island",
     };

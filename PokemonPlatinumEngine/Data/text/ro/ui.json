@@ -1896,7 +1896,8 @@
         "few": "Undițele {rods}",
         "other": "Undițele {rods}"
       },
-      "ours": "Rar, după Sala Faimei"
+      "ours": "Rar, după Sala Faimei",
+      "headbutt": "Copaci scuturați cu Headbutt"
     },
     "search": {
       "title": "Caută în Pokédex",
@@ -4942,6 +4943,11 @@
       "answer": "„Iar {player} ne-a spus, în doar două cuvinte: {phrase}!”",
       "close": "„Scurt și la obiect! Atât a fost Vorba pe Stradă.”"
     },
+    "mixed": {
+      "open": "„E Vorba pe Stradă la Jubilife, ediția Recorduri Amestecate! Antrenorii care și-au amestecat recordurile cu noi și-au spus părerea.”",
+      "answer": "„Întrebat despre viața cu Pokémoni, {name} ne-a spus: {phrase}!”",
+      "close": "„Recorduri amestecate, glasuri auzite! Atât a fost Vorba pe Stradă.”"
+    },
     "search": {
       "open": "„Aici Gabby, cu Ty în spatele camerei! Căutăm antrenori care merită o a doua privire!”",
       "met": "„Săptămâna asta am dat de un antrenor pe nume {player} {place} și am avut lupta noastră!”",
@@ -7485,5 +7491,8 @@
       "Cheerful": "vesel",
       "Elated": "în culmea fericirii"
     }
+  },
+  "recordMix": {
+    "list": "{first} și {last}"
   }
 }

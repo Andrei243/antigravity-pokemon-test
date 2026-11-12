@@ -322,7 +322,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "pc" or "packup")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();
@@ -1339,6 +1339,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>What <c>smashencounter</c> finds under the rock: a species and its level, or null when it hid nothing.</summary>
     public (string Species, int Level)? Smashed { get; set; }
 
+    /// <summary>What <c>headbutt</c> shakes out of the tree in front: a species and its level, or null when nothing falls.</summary>
+    public (string Species, int Level)? Headbutted { get; set; }
+
+    public bool Headbutt()
+    {
+        Shown("a tree shaken");
+        NeverInAHurry("a tree's Pokémon");
+        Log.Add("headbutt");
+        if (Headbutted is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
     public bool SmashEncounter()
     {
         Shown("a rock's hiding place");
@@ -1705,6 +1718,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         FriendsWon++;
         Log.Add("friendwon");
     }
+
+    // ------------------------------------------------------------------ records mixed (plan 40 · GE10)
+
+    /// <summary>The records this host's game has mixed in; empty unless a test or the record desk fills it.</summary>
+    public RecordMixState? MixedRecords { get; set; } = new();
+
+    /// <summary>The other saves the record desk mixes with, as a test hands them over; none unless it does.</summary>
+    public List<Core.SaveData> Others { get; } = new();
+
+    public IReadOnlyList<Core.SaveData> OtherSaves() => Others;
+
+    /// <summary>The game in play, as a record knows it.</summary>
+    public (int TrainerId, DateTime? Started) OwnGame { get; set; } = (0, null);
 
     // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
 

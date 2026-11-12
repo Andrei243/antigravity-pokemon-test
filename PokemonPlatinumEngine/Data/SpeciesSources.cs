@@ -355,6 +355,9 @@ public sealed class SpeciesSources
                 foreach (var e in area.SuperRod ?? new()) f.Species(e.Species, $"{key}: the Super Rod", true);
                 // (a rock smashed: Hoenn's, plan 21 · H4; plan 21 · H12, part c counts it)
                 foreach (var e in area.RockSmash ?? new()) f.Species(e.Species, $"{key}: a rock smashed", true);
+                // (a Headbutt tree: HeartGold's, plan 38 · EX4)
+                if (area.Headbutt is { } trees)
+                    foreach (var e in trees.Common.Concat(trees.Rare).Concat(trees.Secret ?? new())) f.Species(e.Species, $"{key}: a Headbutt tree", true);
                 var heldBack = new HashSet<string>(overlay?.HeldBack ?? new(), StringComparer.Ordinal);
                 foreach (var o in area.Objects)
                     if (o.Item != null && !heldBack.Contains(o.Id)) f.Item(o.Item, $"{key}: on the ground");

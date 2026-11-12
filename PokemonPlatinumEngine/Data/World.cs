@@ -1792,6 +1792,20 @@ public static class WorldMapBuilder
         // two met 90 and 10 times in a hundred
         Fill(area.RockSmashEncounters, file?.RockSmash, file?.RockSmash?.Count == 2 ? RockSmashPairWeights : WorldAreaFile.WaterSlotWeights);
         area.RockSmashRate = file?.RockSmashRate ?? 0;
+        // HeartGold's Headbutt trees (plan 38 · EX4): its three tables by Gold and Silver's weights, and every tree's tiles
+        if (file?.Headbutt is { } headbutt)
+        {
+            var trees = new AreaHeadbuttTrees();
+            Fill(trees.Common, headbutt.Common, HeadbuttTrees.SlotWeights);
+            Fill(trees.Rare, headbutt.Rare, HeadbuttTrees.SlotWeights);
+            Fill(trees.Secret, headbutt.Secret, HeadbuttTrees.SlotWeights);
+            for (int t = 0; t < headbutt.Trees.Count; t++)
+                foreach (var tile in HeadbuttTrees.TilesOf(headbutt.Trees[t])) trees.Tiles.TryAdd(tile, (t, false));
+            for (int t = 0; t < (headbutt.SecretTrees?.Count ?? 0); t++)
+                foreach (var tile in HeadbuttTrees.TilesOf(headbutt.SecretTrees![t])) trees.Tiles[tile] = (t, true);
+            trees.TreeCount = headbutt.Trees.Count + (headbutt.SecretTrees?.Count ?? 0);
+            area.Headbutt = trees;
+        }
         // Black 2's tables beside them (plan 22 · U4): the dark grass's met as the grass's, the shaking grass's too,
         // the rippling water's and its rod's as the water's
         Fill(area.DarkGrassEncounters, file?.DarkGrass, WorldAreaFile.LandSlotWeights);

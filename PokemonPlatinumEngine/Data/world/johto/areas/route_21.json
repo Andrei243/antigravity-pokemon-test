@@ -68,6 +68,29 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 24, "maxLevel": 26 },
+      { "species": "Spinarak", "level": 24, "maxLevel": 26 },
+      { "species": "Spinarak", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 27, "maxLevel": 30 },
+      { "species": "Tangela", "level": 27, "maxLevel": 30 },
+      { "species": "Hoothoot", "level": 27, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 27, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 27, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 27, "maxLevel": 30 }
+    ],
+    "trees": [
+      "1046,393 1046,392",
+      "1046,391 1046,390",
+      "1046,389 1046,388"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

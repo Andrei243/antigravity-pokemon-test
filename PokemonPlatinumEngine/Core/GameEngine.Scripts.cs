@@ -215,6 +215,8 @@ public partial class GameEngine
         if (flow.Map.Name == MuseumGallery) HangThePaintings(flow.Map);
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
+        // and out of one, no friend's base is being visited any more (plan 40 · GE10)
+        else flow.Records.Visiting = null;
         // The pasture's herd is the box shown, laid as the meadow is come to and taken off as it is left (plan 35 · BN5)
         KeepThePasture();
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
@@ -1716,6 +1718,26 @@ public partial class GameEngine
             }
             else found = map.SmashOut(player.GridX, player.GridY, player.Lead);
             if (found is not { } wild) return false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            game.flow.Player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
+
+        public bool Headbutt()
+        {
+            var map = game.flow.Map;
+            var player = game.flow.Player;
+            var (dx, dy) = FieldMovement.Delta(player.Facing);
+            int x = player.GridX + dx, y = player.GridY + dy;
+            // The tree shakes whatever it holds (leaves shaken loose from its crown, as a honey tree's)
+            if (!Skipping)
+            {
+                game.world.Life.ShakeTree(map, x, y, 56f / 32f * Graphics.MapScene.VerticalScaleOf(map), 2);
+                AudioManager.PlaySound("use_headbutt");
+            }
+            if (map.ShakeHeadbuttTree(x, y, PlayerIdentity.Number, player.Lead) is not { } wild) return false;
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
             game.flow.Player.Encounters.Reset();

@@ -6547,10 +6547,11 @@ the lines are our own.
   - Dolls and cushions stand on the floor, one to a tile, as every decoration does here; Emerald stands them on desks
     and mats too. A big doll stands on one tile, two tiles tall.
   - Kept clear: the tile inside the door and the tile before the PC (Emerald keeps clear the tile the player stood on
-    when they turned the PC on, which is that one), and the visitor's spot is no matter, as no friend's base comes.
+    when they turned the PC on, which is that one).
   - The Solid Board isn't laid over a hole, the breakable door and the mud ball don't break, and the mats make no sound.
   - The base's door leads back to the tile the player opened it from, facing away from the spot.
-  - REGISTRY says that no friend's base is registered: friends' bases come by record mixing, and nothing is linked.
+  - REGISTRY lists the friends' bases mixed in at a record desk from the player's other saves (plan 40 · GE10, "Records
+    mixed between one's own saves"), and says that none is registered before any is.
   - PACK UP takes everything back into the PC and gives the base up, and the player is put out at its spot (Emerald's
     `MoveOutOfSecretBase`).
   - A base's room wears a house's interior until the six kinds have their own looks.
@@ -6558,7 +6559,7 @@ the lines are our own.
 | What | Emerald | Here |
 | --- | --- | --- |
 | Making a base | Secret Power at a spot, in, then "make it here?" | "Use Secret Power?" at the spot, then in |
-| A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
+| A friend's base | Record mixing, its trainer and the registry | Mixed from the player's other saves at a record desk (plan 40 · GE10) |
 | Dolls and cushions | On the floor, a desk or a mat | On the floor |
 | The decoration PC | Eight pockets by kind | One list, the same rooms by kind |
 
@@ -10122,6 +10123,24 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   that shape: the day's six tiles of the route's surfable water (row by row), worked out by `SplitMix` from the day's number (Dewford's
   trend isn't kept); a cast with any rod onto one hooks Feebas **one time in two** (the one draw, made only on those tiles), at levels
   20 to 25, in every slot of the rod's table. `HoennSpeciesTests.Owed` no longer lists Feebas and Milotic.
+- **Headbutt trees** (EX4, 2026-11-12; `Overworld/HeadbuttTrees.cs`, `Map.HeadbuttTreeAt`, `common.HeadbuttTree`). HeartGold's
+  trees and their three tables (common, rare, secret; six slots each with a range of levels) are imported whole by `--game
+  heartgold --data` into each area's `headbutt` (a tree's tiles are in the map's own tiles, the same as the area's objects, and
+  all but a few lie on HeartGold's `HEADBUTT` behaviour: two of Route 35's lie in its grass, where nobody faces them as a tree);
+  **the pinned pokeheartgold holds none of its Headbutt code**, so the rule is
+  ours: a secret tree gives its own table; of the plain trees, a tree is **rich** for a player when the last digit of the 16-bit
+  trainer number plus the tree's number, modulo 5, is under 2 (two trees in five, with no draw: the same tree always gives the same
+  table to the same player), giving the rare table **four times in five**, and the others the common table **half the time**; a slot
+  by Gold and Silver's Headbutt weights (50, 15, 15, 10, 5, 5) and a level in its range, the lead's ability having its say and no
+  Repel keeping it away (`WildEncounterRules.Meet`, as a rock smashed). A tile of the `HEADBUTT` behaviour no area lists is a tree
+  with nobody in it: it shakes and nothing falls. Only the shake draws, on the map's generator, so nothing else moves. The field
+  offers a tree only **in Johto** (decision 6), on foot, to a team that knows the move, and asks no Badge (HeartGold asks none); the
+  party menu lists HEADBUTT only in Johto. Ilex Forest's man by the way in (`d36r0101_gsbigman`; which of HeartGold's people of the
+  forest teaches it was not read, its scripts being outside what the importer fetches) teaches Headbutt once, free (`tutor once`,
+  `MoveTutors.Kanto`'s row: a species that may learn Headbutt or Zen Headbutt, its nearest kin among Platinum's tutors' moves;
+  `FLAG_TUTOR_HEADBUTT`). The Pokédex's area page shows the trees' species as "Headbutt trees" (`HabitatWays.Headbutt`), Johto's
+  areas alone (HeartGold's Kanto routes have trees too, which Johto's world holds and shakes, but Johto's habitats file lists none of
+  Kanto's areas, as before).
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
@@ -12006,3 +12025,43 @@ shown in bars, the monitor's own resolution to be found, and a choice of resolut
   NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
   (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.
   The harness never sets it.
+
+## Records mixed between one's own saves (2026-11-12, plan 40 · GE10)
+
+The user wanted GE10 built (2026-11-12; plan 40's decision 10, which had left it optional). Emerald mixes records over
+a cable or the wireless link; this game has neither, so the records are mixed between the player's own save slots, at a
+desk of ours. Nothing of it rides on plan 07's online server, and nothing waits on a deployment.
+
+- **The desk**: the attendant at the east desk upstairs in every Pokémon Center (`teala_east`, whose words had said the
+  link was down) runs `common.RecordDesk`: a question, then `records mix`. What she said before is kept as her lines and
+  no longer said.
+- **What is read**: every other slot that reads whole or from its backup (`SaveSlots.Read`, which writes nothing; the
+  bytes of each slot and its backup are the same afterwards). A damaged slot is passed over, and so is a slot that holds
+  the game in play itself (the same trainer's number and the same first day), whichever slot it is in. Only the save in
+  play is written, the next time it is saved.
+- **What each other game gives** (`Models/RecordMix.cs`, `SaveData.MixedRecords`, null with none, no version raised):
+  - **Its trainer**: the player's name, look and team as the battle room would build it (plan 13 · V13): an Egg, a
+    species of ours and one the data lacks are left out; a level past 100 is held to 100; a form, ability or item the
+    battle room doesn't allow is let go; of its moves only those its species may know stand, and the four latest it learns
+    by level where none does. A Pokémon still illegal after that is left out, and a game with none left gives no trainer.
+    The team is kept as plain choices and made into a friend's trainer file (plan 13 · V22) each time it stands, so a
+    change of the data never makes a record unreadable. Its class and its two lines are worked out from the other game's
+    trainer number, so the same game's trainer is always the same.
+  - **Its Hoenn secret base**: its spot, the tile its door leads back to, and what stood in it by kind and tile (at most
+    sixteen), never by the other save's decoration PC.
+  - **Its interview**: the two words given to Jubilife City's reporters, where they are whole.
+- **Kept**: one record to a game, keyed by its trainer's number and first day; mixing with the same game again replaces
+  its record. The newest stand first, eight at most.
+- **The friends' hall** stands the mixed trainers after the folder's files (V23), within its eight spots, a trainer once.
+- **Hoenn**: a mixed base stands at its spot, the newest at a spot where two share it. Facing that spot goes in
+  (`openbase check` is 4, `openbase visit`), where the player's own base isn't there; a spot holding a friend's base
+  takes no base of the player's (Emerald's registered bases hold their spots too). The room is laid out with what stood
+  in it and its owner on the open floor nearest the PC's front tile, battled as the friends' hall's trainers are (level
+  50, copies, once a day); its PC is a friend's and is not touched (`common.FriendsBasePC`). A room shared with the
+  player's own base shows the friend's while it is visited. A game saved inside a friend's base wakes in it as it was
+  (`RecordMixSave.Visiting`). The base PC's REGISTRY names whose bases are registered.
+- **Television**: Street Talk's mixed edition (`Programme.MixedInterviews`, `broadcast mixed`) tells the three newest
+  interviews mixed in; it is on only once there is one, so no game's die moves before then.
+- **Not built**: Emerald's other mixed records (the Trainer Hill's times, the Lilycove Lady's and the television's other
+  shows, the Battle Tower's partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their
+  own rulings have them.

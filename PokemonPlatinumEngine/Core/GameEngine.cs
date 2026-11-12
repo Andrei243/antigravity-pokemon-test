@@ -510,6 +510,7 @@ public partial class GameEngine
         flow.Crafting.Clear();
         flow.Care.Clear();
         flow.Gifts.Clear();
+        flow.Records.Clear();
         flow.StageShow.Clear();
         flow.Studio.Clear();
         flow.Board.Clear();
@@ -792,6 +793,7 @@ public partial class GameEngine
         // A visit to the pasture under way (plan 35 · BN5): its herd is laid as the place is come to
         flow.Pasture = save.Pasture?.Copy();
         flow.Gifts.Load(save.Gifts);
+        flow.Records.Load(save.MixedRecords);
         flow.StageShow.Load(save.StageShow);
         flow.Studio.Load(save.Studio);
         flow.Board.Load(save.TradeBoard);
@@ -1026,6 +1028,7 @@ public partial class GameEngine
             Care = CareToSave(),
             Pasture = flow.Pasture?.Copy(),
             Gifts = flow.Gifts.ToSave(),
+            MixedRecords = flow.Records.ToSave(),
             StageShow = flow.StageShow.ToSave(),
             Studio = flow.Studio.ToSave(),
             TradeBoard = flow.Board.ToSave(),
@@ -2783,6 +2786,10 @@ public partial class GameEngine
         else if ((spot.Dive || spot.Surface) && FieldMoveRules.Check(FieldMove.Dive, spot, flow.Story) == FieldMoveError.None)
             StartScript(spot.Surface ? FieldScripts.Surface : FieldScripts.Dive);
         else if (spot.RockFace && flow.Player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
+        // (and a Headbutt tree, HeartGold's, plan 38 · EX4: offered only in Johto, on foot, to a team that knows the move,
+        // so the woods' edges say nothing to anyone else)
+        else if (spot.HeadbuttTree && flow.Player.Mode == TravelMode.OnFoot && string.Equals(Here.Id, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase)
+                 && FieldMoveRules.Knower(flow.Party, FieldMove.Headbutt) != null) StartScript(FieldScripts.HeadbuttTree);
         else if (spot.Water && FieldHelp.CanUse(FieldMove.Surf, flow.Party, GrantedMoves)
                  && FieldMoveRules.Check(FieldMove.Surf, spot, flow.Story) == FieldMoveError.None) StartScript(FieldScripts.Water);
     }
@@ -3010,7 +3017,7 @@ public partial class GameEngine
                 flow.Pokedex.Enter(Here);
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
-        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
+        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), Here);
                 flow.PokedexScreen.SetHere(DexNavHereList(), flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
                 break;
             case StartMenuChoice.Pokemon:
@@ -3047,7 +3054,7 @@ public partial class GameEngine
                 flow.State = GameState.TrainerCard;
             {
                 var card = TrainerCardNow();
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
             }
                 break;
             case StartMenuChoice.Options:

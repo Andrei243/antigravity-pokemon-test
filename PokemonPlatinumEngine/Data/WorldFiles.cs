@@ -441,6 +441,12 @@ public sealed class WorldAreaFile
     public int? RockSmashRate { get; set; }
 
     /// <summary>
+    /// The area's Headbutt trees and what lives in them (plan 38 · EX4; HeartGold's <c>files/arc/headbutt.json</c>):
+    /// three tables of six slots and the trees, each the tiles it stands on. Left out where the area has none.
+    /// </summary>
+    public AreaHeadbutt? Headbutt { get; set; }
+
+    /// <summary>
     /// The two species the Pokégear's Hoenn Sound and Sinnoh Sound bring into the grass (plan 20 · J3; HeartGold's
     /// <c>hoenn</c> and <c>sinnoh</c>, <c>EncSlotArray_Update_HoennSinnohSounds</c>: the first into slots 2 and 3, the
     /// second into 4 and 5). Left out where the area has none.
@@ -511,6 +517,21 @@ public sealed class AreaSeason
     public int? SuperRodRate { get; set; }
     public List<AreaEncounter>? RipplingRod { get; set; }
     public int? RipplingRodRate { get; set; }
+}
+
+/// <summary>
+/// An area's Headbutt trees (plan 38 · EX4): HeartGold's three tables (the common, the rare and the secret, six slots
+/// each, every slot a range of levels) and the trees, each its tiles in the map's own tiles as <c>"x,z"</c> separated
+/// by spaces. A secret tree gives the secret table alone; which of the other two a plain tree gives is
+/// <see cref="Overworld.HeadbuttTrees"/>'s.
+/// </summary>
+public sealed class AreaHeadbutt
+{
+    public List<AreaEncounter> Common { get; set; } = new();
+    public List<AreaEncounter> Rare { get; set; } = new();
+    public List<AreaEncounter>? Secret { get; set; }
+    public List<string> Trees { get; set; } = new();
+    public List<string>? SecretTrees { get; set; }
 }
 
 /// <summary>One slot of an area's table of wild Pokémon.</summary>
@@ -630,6 +651,9 @@ public sealed class HabitatArea
     public List<string>? OldRod { get; set; }
     public List<string>? GoodRod { get; set; }
     public List<string>? SuperRod { get; set; }
+
+    /// <summary>The species that fall out of the area's Headbutt trees (plan 38 · EX4; HeartGold's), every table's.</summary>
+    public List<string>? Headbutt { get; set; }
 
     /// <summary>In the hand-written special file only (plan 08 · P12): the species met here in a way of their own, and that way in words.</summary>
     public List<string>? Special { get; set; }

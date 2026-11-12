@@ -34,6 +34,31 @@
     "Grimer",
     "Grimer"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 26, "maxLevel": 27 },
+      { "species": "Heracross", "level": 26, "maxLevel": 27 },
+      { "species": "Heracross", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 }
+    ],
+    "trees": [
+      "1162,263 1163,263 1162,262",
+      "1167,261 1167,260",
+      "1163,280 1164,280",
+      "1174,277 1174,276",
+      "1178,261 1179,261"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

@@ -343,7 +343,7 @@ public sealed partial class ScriptRunner
         // A trade is made as given; the trade board's screen is the player's to work (plan 40 · GE8)
         Op.Trade => i.Name == "board" && i.Other == "open",
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Headbutt or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         // ...and in an open map a walk ends on its marker, a placing and a turn are made, a warp arrives, a look is over (plan 32 · OW5)
@@ -449,6 +449,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // Records are mixed and asked about at once: nothing to see through (plan 40 · GE10)
+        Op.Records => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
         Op.Gift => i.Name == "open",
         // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
@@ -1069,6 +1071,15 @@ public sealed partial class ScriptRunner
                     afterBusy = () => AfterBattle(mayLose: false);
                 }
                 break;
+            case Op.Headbutt:
+                // The tree in front shaken (plan 38 · EX4): RESULT 1 when a Pokémon fell out, and its battle is waited for
+                Result = 0;
+                if (host.Headbutt())
+                {
+                    Result = 1;
+                    afterBusy = () => AfterBattle(mayLose: false);
+                }
+                break;
 
             case Op.Music:
                 host.Music(i.Option ? null : i.Name);
@@ -1677,6 +1688,9 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+            case Op.Records:
+                RecordsCommand(i);
                 break;
             case Op.Circuit:
                 CircuitCommand(i);

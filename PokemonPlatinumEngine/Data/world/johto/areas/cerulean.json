@@ -49,6 +49,37 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 11, "maxLevel": 13 },
+      { "species": "Pineco", "level": 11, "maxLevel": 13 },
+      { "species": "Pineco", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 }
+    ],
+    "trees": [
+      "1295,158 1295,157 1296,158 1296,157",
+      "1303,158 1304,158 1303,157 1304,157",
+      "1303,156 1304,156 1303,155 1304,155 1303,154 1304,154",
+      "1322,134 1323,134 1323,133",
+      "1323,128 1323,127 1322,128 1322,127",
+      "1323,126 1323,125 1322,126 1322,125",
+      "1323,120 1323,119 1323,118 1322,118",
+      "1330,112 1331,112 1330,111",
+      "1332,112 1333,112 1333,111",
+      "1333,110 1333,109 1333,108 1332,108",
+      "1330,105 1331,105 1330,104"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1305, "z": 116, "to": "cerulean_north_house", "toWarp": 0 },

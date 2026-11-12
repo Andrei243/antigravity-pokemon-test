@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
@@ -79,6 +80,12 @@ public sealed record BroadcastFacts
     /// </summary>
     public int ContestLadyShow { get; init; }
     public bool ContestLadyGood { get; init; }
+
+    /// <summary>
+    /// The interviews mixed in from the player's other saves (plan 40 · GE10, <see cref="Models.RecordMix.Interviews"/>):
+    /// whose, and their two words as keys, newest first; empty with none.
+    /// </summary>
+    public IReadOnlyList<(string Name, IReadOnlyList<string> Words)> MixedInterviews { get; init; } = Array.Empty<(string, IReadOnlyList<string>)>();
 }
 
 /// <summary>The programmes a television shows when it has nothing of its own (plan 08 · P8; plan 08's decision 5).</summary>
@@ -102,6 +109,8 @@ public enum Programme
     SafariFanClub,
     /// <summary>The Contest Lady's Pokémon ready for its contest (plan 21 · H11, part f). Hoenn's.</summary>
     ContestLady,
+    /// <summary>Street Talk of the interviews mixed in from the player's other saves (plan 40 · GE10). Once records holding one have been mixed.</summary>
+    MixedInterviews,
 }
 
 /// <summary>
@@ -142,7 +151,7 @@ public static class Broadcasts
     public const string ContestLadyNewFlag = "FLAG_HOENN_CONTEST_LADY_SHOW_NEW";
 
     /// <summary>The programmes by the names a script calls them (<c>broadcast interview</c>), in the enum's order.</summary>
-    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview", "gabbyandty", "safarifanclub", "contestlady" };
+    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview", "gabbyandty", "safarifanclub", "contestlady", "mixed" };
 
     /// <summary>A Safari Game begun in Hoenn: the counts start again and the last game's show is off the air.</summary>
     public static void BeginSafari(StoryState story)
@@ -206,7 +215,8 @@ public static class Broadcasts
             SafariCaught = host.Story.Var(SafariCaughtVariable),
             SafariBlocks = host.Story.Var(SafariBlocksVariable),
             ContestLadyShow = host.Story.Var(ContestLadyShowVariable),
-            ContestLadyGood = host.Story.Var(ContestLadyGoodVariable) != 0
+            ContestLadyGood = host.Story.Var(ContestLadyGoodVariable) != 0,
+            MixedInterviews = host.MixedRecords is { } mixed ? Models.RecordMix.Interviews(mixed) : Array.Empty<(string, IReadOnlyList<string>)>()
         };
     }
 
@@ -226,6 +236,7 @@ public static class Broadcasts
         if (facts.GabbyOnAir && facts.Region == RegionDatabase.Hoenn && facts.GabbyMon1 != null) on.Add(Programme.GabbyAndTy);
         if (facts.SafariOnAir && facts.Region == RegionDatabase.Hoenn) on.Add(Programme.SafariFanClub);
         if (facts.ContestLadyShow is >= 1 and <= 5 && facts.Region == RegionDatabase.Hoenn) on.Add(Programme.ContestLady);
+        if (facts.MixedInterviews.Count > 0) on.Add(Programme.MixedInterviews);
         return on;
     }
 
@@ -257,6 +268,7 @@ public static class Broadcasts
         Programme.GabbyAndTy => GabbyAndTy(facts),
         Programme.SafariFanClub => SafariFanClub(facts),
         Programme.ContestLady => ContestLady(facts),
+        Programme.MixedInterviews => MixedInterviews(facts),
         _ => Clock(facts),
     };
 
@@ -324,7 +336,17 @@ public static class Broadcasts
         Text.Of("broadcast.lottery.close")
     };
 
-    private static IReadOnlyList<string> Interview(BroadcastFacts f) => new[]
+/// <summary>The interviews of the player's other saves, mixed in at the record desk: the three newest (plan 40 · GE10).</summary>
+    private static IReadOnlyList<string> MixedInterviews(BroadcastFacts f)
+    {
+        var lines = new List<string> { Text.Of("broadcast.mixed.open") };
+        foreach (var (name, words) in f.MixedInterviews.Take(3))
+            lines.Add(Text.Of("broadcast.mixed.answer", ("name", name), ("phrase", PhraseGroups.Shown(words))));
+        lines.Add(Text.Of("broadcast.mixed.close"));
+        return lines;
+    }
+
+        private static IReadOnlyList<string> Interview(BroadcastFacts f) => new[]
     {
         Text.Of("broadcast.interview.open"),
         Text.Of("broadcast.interview.asked", ("player", f.PlayerName)),

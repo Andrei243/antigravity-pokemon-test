@@ -606,6 +606,9 @@ public static class ScriptParser
             case "rocksmash":
             case "smashencounter":
                 return new Instruction { Op = Op.SmashEncounter, Line = line };
+            case "headbutt":
+                // The tree in front shaken (plan 38 · EX4), and what falls out of it battled
+                return new Instruction { Op = Op.Headbutt, Line = line };
             case "poketch":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Poketch, Line = line };
@@ -1088,7 +1091,7 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "give", "buy", "room") : "open";
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room") : "open";
                 if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
@@ -1505,6 +1508,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.EndScene, Line = line };
 
             // The charms of a Pokédex filled (plan 40 · GE5): "charm due" how many are earned and not in the bag, "charm give" the first
+            case "records":
+                return new Instruction { Op = Op.Records, Line = line, Name = r.OneOf("mix", "bases", "count") };
             case "charm":
                 return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
 

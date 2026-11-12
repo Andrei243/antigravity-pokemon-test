@@ -34,6 +34,50 @@
     "Snubbull",
     "Snubbull"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 13, "maxLevel": 14 },
+      { "species": "Pineco", "level": 13, "maxLevel": 14 },
+      { "species": "Pineco", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 15, "maxLevel": 16 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 16 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 }
+    ],
+    "secret": [
+      { "species": "Exeggcute", "level": 18, "maxLevel": 25 },
+      { "species": "Exeggcute", "level": 18, "maxLevel": 25 },
+      { "species": "Burmy", "level": 18, "maxLevel": 20 },
+      { "species": "Burmy", "level": 18, "maxLevel": 20 },
+      { "species": "Burmy", "level": 18, "maxLevel": 20 },
+      { "species": "Burmy", "level": 21, "maxLevel": 25 }
+    ],
+    "trees": [
+      "348,164 349,164",
+      "340,165 341,165",
+      "332,161 333,161",
+      "322,161 323,161",
+      "324,163 325,163 324,164 324,165",
+      "330,167 331,167",
+      "342,178 343,178",
+      "336,181",
+      "313,174 313,173 312,174 312,173",
+      "307,164 308,164 307,162 308,162",
+      "303,170 303,169 303,168 304,168",
+      "305,174 306,174 306,173",
+      "315,164 316,164 315,162 316,162"
+    ],
+    "secretTrees": [
+      "302,189 302,190"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"
