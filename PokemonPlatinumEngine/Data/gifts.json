@@ -32,6 +32,9 @@
     { "id": "festival_tide_day", "when": { "festival": "tide_day" }, "yearly": true, "picture": { "kind": "item", "name": "Mystic Water" }, "script": "FestivalTideDay" },
     { "id": "festival_bridgelight", "when": { "festival": "bridgelight" }, "yearly": true, "picture": { "kind": "item", "name": "Prism Scale" }, "script": "FestivalBridgelight" },
     { "id": "festival_serenade", "when": { "festival": "serenade" }, "yearly": true, "picture": { "kind": "item", "name": "Throat Spray" }, "script": "FestivalSerenade" },
+    { "id": "festival_garland", "when": { "festival": "garland" }, "yearly": true, "picture": { "kind": "item", "name": "Big Pearl" }, "script": "FestivalGarland" },
+    { "id": "festival_wool_fair", "when": { "festival": "wool_fair" }, "yearly": true, "picture": { "kind": "item", "name": "Wishing Piece" }, "script": "FestivalWoolFair" },
+    { "id": "festival_sheaf_feast", "when": { "festival": "sheaf_feast" }, "yearly": true, "picture": { "kind": "item", "name": "Miracle Seed" }, "script": "FestivalSheafFeast" },
     // The three great days of the year in every region, and a quiet fourth (the note of part D)
     { "id": "easter", "when": { "festival": "easter" }, "yearly": true, "picture": { "kind": "item", "name": "Lucky Egg" }, "script": "Easter" },
     { "id": "christmas", "when": { "festival": "christmas" }, "yearly": true, "picture": { "kind": "item", "name": "Star Piece" }, "script": "Christmas" },

@@ -5359,6 +5359,17 @@ way 0
   + beaten giovanni_gathering
 way 1, from answer 1
   * battle giovanni_gathering Lost
+=== Hub_Keep.Guzma
+from Guzma at 39,3 of Hub_Keep
+way 0
+  Guzma> Somebody told me there's a whole new house for Team Skull out here. Turns out it's a cold rock full of grown-ups yelling.
+  Guzma> So I'm gonna take it out on you. Guzma's what? Guzma's the one who still shows up!
+  Guzma> ...Destroyed again. You're the one thing on these islands that never changes.
+  * battle guzma_gathering Won
+  + FLAG_KEEP_GUZMA_BEATEN
+  + beaten guzma_gathering
+way 1, from answer 1
+  * battle guzma_gathering Lost
 === Hub_Keep.Ismene
 from Ismene Quill at 21,3 of Hub_Keep
 way 0
@@ -5440,6 +5451,16 @@ way 0
   + beaten maxie_gathering
 way 1, from answer 1
   * battle maxie_gathering Lost
+=== Hub_Keep.Plumeria
+from Plumeria at 39,6 of Hub_Keep
+way 0
+  Plumeria> Guzma heard his old crew's hideout was rebuilt in this fort. Dumb rumour. But he came, so I came.
+  Plumeria> Yeah, yeah. You haven't gone soft. Go on, he's sulking in the back.
+  * battle plumeria_gathering Won
+  + FLAG_KEEP_PLUMERIA_BEATEN
+  + beaten plumeria_gathering
+way 1, from answer 1
+  * battle plumeria_gathering Lost
 === Hub_Keep.Shelly
 from Shelly at 15,5 of Hub_Keep
 way 0

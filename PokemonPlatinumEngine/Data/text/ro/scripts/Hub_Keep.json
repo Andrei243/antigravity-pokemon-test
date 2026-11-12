@@ -275,6 +275,32 @@
       ]
     }
   ],
+  "Plumeria": [
+    {
+      "en": [
+        "Plumeria"
+      ],
+      "text": [
+        "Plumeria"
+      ]
+    },
+    {
+      "en": [
+        "Guzma heard his old crew's hideout was rebuilt in this fort. Dumb rumour. But he came, so I came."
+      ],
+      "text": [
+        "Guzma a auzit că vechea ascunzătoare a găștii lui a fost refăcută în fortul ăsta. Zvon prostesc. Dar el a venit, așa că am venit și eu."
+      ]
+    },
+    {
+      "en": [
+        "Yeah, yeah. You haven't gone soft. Go on, he's sulking in the back."
+      ],
+      "text": [
+        "Da, da. Nu te-ai înmuiat. Du-te, el stă bosumflat în spate."
+      ]
+    }
+  ],
   "Cyrus": [
     {
       "en": [
@@ -668,6 +694,72 @@
       ],
       "text": [
         ""
+      ]
+    }
+  ],
+  "Guzma": [
+    {
+      "en": [
+        "Guzma"
+      ],
+      "text": [
+        "Guzma"
+      ]
+    },
+    {
+      "en": [
+        "Somebody told me there's a whole new house for Team Skull out here. Turns out it's a cold rock full of grown-ups yelling."
+      ],
+      "text": [
+        "Cineva mi-a zis că aici e o casă nouă pentru Echipa Skull. De fapt e o stâncă rece plină de adulți care urlă."
+      ]
+    },
+    {
+      "en": [
+        "So I'm gonna take it out on you. Guzma's what? Guzma's the one who still shows up!"
+      ],
+      "text": [
+        "Așa că mă descarc pe tine. Guzma e ce? Guzma e cel care tot apare!"
+      ]
+    },
+    {
+      "en": [
+        "...Destroyed again. You're the one thing on these islands that never changes."
+      ],
+      "text": [
+        "...Distrus din nou. Tu ești singurul lucru de pe insulele astea care nu se schimbă niciodată."
+      ]
+    },
+    {
+      "en": [
+        "Whoever planned this knew exactly which buttons to push. Mine are all of them."
+      ],
+      "text": [
+        "Cine a pus la cale asta știa exact pe ce butoane să apese. Ale mele sunt toate."
+      ]
+    },
+    {
+      "en": [
+        "Back for more? Good. Guzma's got nothing but time."
+      ],
+      "text": [
+        "Te-ai întors după încă una? Bine. Guzma n-are decât timp."
+      ]
+    },
+    {
+      "en": [
+        "Same time tomorrow. Don't make me wait."
+      ],
+      "text": [
+        "Mâine, la aceeași oră. Nu mă face să aștept."
+      ]
+    },
+    {
+      "en": [
+        "One a day. Even I need a nap."
+      ],
+      "text": [
+        "Una pe zi. Până și eu am nevoie de un pui de somn."
       ]
     }
   ],

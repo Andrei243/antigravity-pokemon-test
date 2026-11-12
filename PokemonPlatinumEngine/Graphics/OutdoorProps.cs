@@ -1024,6 +1024,9 @@ public static class ThingCards
             PropType.NewYearBanner => (FestivalArt.BannerWidth, FestivalArt.BannerHeight, FestivalArt.PaintNewYearBanner),
             PropType.ValentineHeart => (FestivalArt.HeartWidth, FestivalArt.HeartHeight, FestivalArt.PaintValentineHeart),
             PropType.FestivalMusicStand => (FestivalArt.StandWidth, FestivalArt.StandHeight, FestivalArt.PaintMusicStand),
+            PropType.FestivalLeiArch => (FestivalArt.LeiWidth, FestivalArt.LeiHeight, FestivalArt.PaintLeiArch),
+            PropType.FestivalHayBales => (FestivalArt.BalesWidth, FestivalArt.BalesHeight, FestivalArt.PaintHayBales),
+            PropType.FestivalSheaves => (FestivalArt.SheavesWidth, FestivalArt.SheavesHeight, FestivalArt.PaintSheaves),
             // The gathering spots (plan 39 · CR2), bearing and bare
             PropType.GatherRock => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintRock(c, bearing: true)),
             PropType.GatherRockBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintRock(c, bearing: false)),
@@ -1067,5 +1070,5 @@ public static class ThingCards
     public static bool PartOfAWall(PropType kind) => kind is PropType.FestivalLanterns or PropType.FestivalMoonLantern
         or PropType.FestivalPine or PropType.FestivalArch or PropType.FestivalStall or PropType.FestivalBells
         or PropType.FestivalBunting or PropType.HolidayTree or PropType.EggBasket or PropType.NewYearBanner or PropType.ValentineHeart
-        or PropType.FestivalMusicStand;
+        or PropType.FestivalMusicStand or PropType.FestivalLeiArch or PropType.FestivalHayBales or PropType.FestivalSheaves;
 }

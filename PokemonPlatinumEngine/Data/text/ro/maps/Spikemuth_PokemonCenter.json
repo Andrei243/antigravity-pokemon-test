@@ -63,6 +63,24 @@
           "Spikemuth nu are mare lucru, dar îl are pe Piers. Jumătate de oraș l-ar urma oriunde."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}

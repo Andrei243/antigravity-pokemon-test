@@ -5254,6 +5254,24 @@
     ]
   },
   {
+    "id": "plumeria_gathering", "name": "Plumeria", "class": "Team Skull Admin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Golbat", "level": 63, "ivScale": 220, "personality": 3317042 },
+      { "species": "Toxapex", "level": 63, "ivScale": 220, "personality": 7720915 },
+      { "species": "Salazzle", "level": 64, "ivScale": 220, "personality": 2290466 }
+    ]
+  },
+  {
+    "id": "guzma_gathering", "name": "Guzma", "class": "Team Skull Boss", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Ariados", "level": 64, "ivScale": 240, "personality": 4508193 },
+      { "species": "Masquerain", "level": 64, "ivScale": 240, "personality": 1186624 },
+      { "species": "Pinsir", "level": 65, "ivScale": 240, "personality": 6933051 },
+      { "species": "Scizor", "level": 65, "ivScale": 240, "personality": 2805517 },
+      { "species": "Golisopod", "level": 66, "ivScale": 240, "personality": 9014472 }
+    ]
+  },
+  {
     "id": "ismene_gathering", "name": "Ismene", "class": "Records Keeper", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 20000,
     "party": [
       { "species": "Mr. Mime", "level": 66, "ivScale": 250, "personality": 2093771 },
