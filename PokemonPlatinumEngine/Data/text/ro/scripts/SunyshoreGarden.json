@@ -1,0 +1,108 @@
+{
+  "GardenKeeper": [
+    {
+      "en": [
+        "Garden Keeper"
+      ],
+      "text": [
+        "Grădinăreasa"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the garden! The craftswoman lets me keep it, and I let anyone plant in it."
+      ],
+      "text": [
+        "Bine ai venit în grădină! Meșteșugăreasa mă lasă s-o îngrijesc, iar eu las pe oricine să planteze în ea."
+      ]
+    },
+    {
+      "en": [
+        "What would you like?",
+        "MULCH",
+        "CROSSES",
+        "HOW IT GROWS",
+        "NOTHING"
+      ],
+      "text": [
+        "Ce dorești?",
+        "MULCI",
+        "ÎNCRUCIȘĂRI",
+        "CUM CREȘTE",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Then take your time. The soil isn't going anywhere."
+      ],
+      "text": [
+        "Atunci ia-ți timp. Pământul nu pleacă nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "Spread it before you plant. Each kind changes how a Berry grows."
+      ],
+      "text": [
+        "Întinde-l înainte să plantezi. Fiecare fel schimbă felul în care crește o Boabă."
+      ]
+    },
+    {
+      "en": [
+        "Happy growing! Remember, mulch goes down before the seed."
+      ],
+      "text": [
+        "Spor la cules! Ține minte, mulciul se pune înaintea seminței."
+      ]
+    },
+    {
+      "en": [
+        "Two different Berries side by side, and now and then one of the fruit comes up as something new."
+      ],
+      "text": [
+        "Două Boabe diferite una lângă alta, și din când în când unul dintre fructe iese ceva nou."
+      ]
+    },
+    {
+      "en": [
+        "Crosses? You'd want the craftswoman's kit for that. Without it you'd never see which Berries took to each other."
+      ],
+      "text": [
+        "Încrucișări? Pentru asta ți-ar trebui trusa meșteșugăresei. Fără ea n-ai vedea niciodată ce Boabe s-au potrivit între ele."
+      ]
+    },
+    {
+      "en": [
+        "Ask her inside. She gives one to anyone who has stood in the Hall of Fame."
+      ],
+      "text": [
+        "Întreab-o înăuntru. Dă câte una oricui a stat în Sala Faimei."
+      ]
+    },
+    {
+      "en": [
+        "Each soil here is yours to plant, just like the soft soil out on the routes. Face it from the path below."
+      ],
+      "text": [
+        "Fiecare strat de aici e al tău de plantat, la fel ca pământul moale de pe trasee. Stai cu fața spre el de pe cărarea de dedesubt."
+      ]
+    },
+    {
+      "en": [
+        "Plant two different Berries next to each other in a row. With the kit in your bag, they may cross when you pick them."
+      ],
+      "text": [
+        "Plantează două Boabe diferite una lângă alta pe același rând. Cu trusa în rucsac, s-ar putea încrucișa când le culegi."
+      ]
+    },
+    {
+      "en": [
+        "Keep them watered and come back in a day or so. The rows on either side don't touch, so plan each row on its own."
+      ],
+      "text": [
+        "Ține-le udate și revino peste o zi sau cam așa. Rândurile nu se ating, așa că plănuiește fiecare rând de unul singur."
+      ]
+    }
+  ]
+}

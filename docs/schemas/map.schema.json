@@ -908,6 +908,12 @@
               "null"
             ]
           },
+          "patch": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
           "trainer": {
             "type": [
               "object",

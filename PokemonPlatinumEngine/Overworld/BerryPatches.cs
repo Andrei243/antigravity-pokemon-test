@@ -69,10 +69,13 @@ public sealed class BerryPatches
     /// Every patch: Sinnoh's 128, then Hoenn's 88 berry trees (plan 21 · H2, part b), numbered from
     /// <see cref="HoennFirst"/> in the order of Emerald's <c>BERRY_TREE_</c> names (the map importer's
     /// <c>GbaTables.BerryTrees</c>), so no tree of Hoenn shares a number with a patch of Sinnoh. They grow by the same
-    /// rules; Emerald's own (watered by the Wailmer Pail, three of its own stages) are a later session's. Johto's four Berry Pots (plan 39 · CR5) come last, from <see cref="PotFirst"/>: carried in the bag, with no soil on any map.
+    /// rules; Emerald's own (watered by the Wailmer Pail, three of its own stages) are a later session's. Johto's four Berry Pots (plan 39 · CR5) come next, from <see cref="PotFirst"/>: carried in the bag, with no soil on any map.
+    /// The workshop's garden (plan 39 · CR8), two rows of twelve soils behind Sunyshore City's workshop, comes last, from
+    /// <see cref="GardenFirst"/>: a save from before it is given them bare by <see cref="Grown"/>.
     /// </summary>
     public const int SinnohCount = 128, HoennFirst = SinnohCount, HoennCount = 88, PotFirst = HoennFirst + HoennCount, PotCount = 4,
-        Count = SinnohCount + HoennCount + PotCount;
+        GardenFirst = PotFirst + PotCount, GardenCount = 24,
+        Count = SinnohCount + HoennCount + PotCount + GardenCount;
     private const int HarvestStages = 4, ReplantCount = 10, MaxMoisture = 100, MaxYieldRating = 5;
 
     public List<BerryPatch> Patches { get; set; } = Enumerable.Range(0, Count).Select(_ => new BerryPatch()).ToList();
@@ -165,7 +168,8 @@ public sealed class BerryPatches
 
     /// <summary>
     /// A save's patches made whole: a save from before Hoenn's trees (plan 21 · H2, part b) holds Sinnoh's 128, and is
-    /// given Hoenn's as a new game finds them.
+    /// given Hoenn's as a new game finds them; one from before the pots (plan 39 · CR5) or the workshop's garden (CR8) is
+    /// given them bare, each patch it had keeping its number.
     /// </summary>
     public BerryPatches Grown()
     {

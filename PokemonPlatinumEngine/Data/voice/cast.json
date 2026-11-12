@@ -4907,6 +4907,10 @@
         "accent": "en-us"
       }
     },
+    "garden_keeper": {
+      "note": "first spoken at SunyshoreGarden.txt(12)",
+      "provisional": true
+    },
     "gardener": {
       "note": "first spoken at malie_garden.txt(6)",
       "provisional": true
@@ -11354,6 +11358,7 @@
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Garden Keeper": "garden_keeper",
     "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",

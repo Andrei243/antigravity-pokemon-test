@@ -247,6 +247,7 @@ public class ScriptTests
           craft tradable
           craft trade
           craft pantry
+          craft crosses
           craft meal "beanHotpot"
           craft meal "campStew" superb
           raid den "rolling_1"

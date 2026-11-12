@@ -450,6 +450,8 @@ public static class RegionDatabase
                 "SunyshoreCityWestHouse", "SunyshoreCityNorthwestHouse", "SunyshoreCityEastHouse",
                 // Plan 39 · CR1: the craftswoman's workshop behind Sunyshore City's door 8, a map of ours
                 "SunyshoreWorkshop",
+                // Plan 39 · CR8: the workshop's berry garden behind its back door, a map of ours
+                "SunyshoreGarden",
                 // Plan 36 · TR2: the training hall, a map of ours standing for Sunyshore City's unused door 7
                 "SunyshoreTrainingHall",
                 // Plan 44 · SD3: Lockwork's cell behind the Fight Area quay's containers, a room of ours
