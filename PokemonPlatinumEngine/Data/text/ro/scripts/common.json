@@ -959,6 +959,14 @@
       "text": [
         "Acela nu poate ieși la plimbare."
       ]
+    },
+    {
+      "en": [
+        "The boxes are full, so {thing} stays in the Stroll Counter for now. Make some room first!"
+      ],
+      "text": [
+        "Cutiile sunt pline, așa că {thing} rămâne deocamdată în Contorul de Plimbare. Fă mai întâi loc!"
+      ]
     }
   ],
   "RibbonSyndicateEntry": [

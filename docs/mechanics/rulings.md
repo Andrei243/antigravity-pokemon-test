@@ -11865,7 +11865,12 @@ session's instruction although the plan's decision 6 kept it optional.
 - **Held until a PC**: three Pokémon met and three things found at most; at a PC (`stroll back`) the Pokémon met go to the
   boxes (seen and caught in the Pokédex, met at the Stroll Counter), the things found to the bag, and its own Pokémon comes
   back into the boxes paid: EXP a hundredth of its level's span a stride, a level's worth at most and never past the level
-  cap in force (`GameEngine.CurrentLevelCap`), and a point of friendship every ten strides, twenty at most.
+  cap in force (`GameEngine.CurrentLevelCap`), and a point of friendship every ten strides, twenty at most. **Nothing
+  leaves the counter that has nowhere to go**: with the boxes full it keeps everything (the script says so), its own
+  Pokémon is stored before what it met, and what finds no place waits for the next PC.
+- **Not done**: a level gained on a stroll never asks for an evolution (a job's does, from the board), and a Pokémon met
+  on a course belongs to the region of the PC it reaches the boxes at, not to its course's (`GiveIds` gives the region
+  stood in). Both are owed.
 
 ## The card-flip game (2026-11-12, plan 42 · PS3)
 

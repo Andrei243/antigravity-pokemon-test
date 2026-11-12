@@ -242,9 +242,27 @@ public class StrollCounterTests
 
             // Back at a PC: the Starly paid and stored, the one met in the boxes too, each in one place
             int seenBefore = game.Pokedex.CaughtCount;
+
+            // With the boxes full nothing leaves the counter; with one place, its own Pokémon comes back first and
+            // what it met waits in the counter
+            var fillers = new System.Collections.Generic.List<Pokemon>();
+            foreach (var box in game.Boxes.Boxes)
+                for (int s = 0; s < box.Slots.Length; s++)
+                    if (box.Slots[s] == null) { var f = new Pokemon(PokemonDatabase.Get("Bidoof")!, 2, new Random(s)); box.Slots[s] = f; fillers.Add(f); }
+            Assert.Equal(3, game.StrollAct("back").Result);
+            Assert.NotNull(game.Stroll.Pokemon);
+            Assert.Single(game.Stroll.Caught);
+            game.Boxes.Remove(fillers[0]);
             var back = game.StrollAct("back");
             Assert.Equal(1, back.Result);
             Assert.Equal(100, back.Number);
+            Assert.Null(game.Stroll.Pokemon);
+            Assert.Single(game.Stroll.Caught);
+            Assert.Equal(0, game.StrollAct("caught").Result);
+            Assert.Contains(game.Boxes.All, p => p.Id == starly.Id && p.Level == 13);
+            // With room again, what it met reaches the boxes too
+            foreach (var f in fillers) game.Boxes.Remove(f);
+            Assert.Equal(0, game.StrollAct("back").Result);
             Assert.Equal(1, game.StrollAct("caught").Result);
             Assert.Contains(game.Boxes.All, p => p.Id == starly.Id && p.Level == 13);
             Assert.Null(game.Stroll.Pokemon);

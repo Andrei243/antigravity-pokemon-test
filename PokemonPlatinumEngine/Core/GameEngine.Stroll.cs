@@ -62,17 +62,24 @@ public partial class GameEngine
             case "back":
             {
                 strollCaughtBack = strollFoundBack = 0;
-                // What it met goes to the boxes and what it found to the bag, with or without a Pokémon in it
-                foreach (var caught in StrollCounter.TakeCaught(save))
+                // Its own Pokémon first, and only with a place for it in the boxes: nothing leaves the counter that
+                // has nowhere to go (3: the boxes are full, and everything stays where it is)
+                if (save.Pokemon != null && flow.Boxes.Free <= 0) return new(3, save.Pokemon.ToPokemon().DisplayName);
+                var paid = StrollCounter.TakeBack(save, CurrentLevelCap());
+                if (paid != null) flow.Boxes.Store(paid.Pokemon);
+                // Then what it met, as many as the boxes have places for (the rest stay in the counter), and what it found
+                foreach (var held in save.Caught.ToList())
                 {
+                    if (flow.Boxes.Free <= 0) break;
+                    var caught = held.ToPokemon();
                     flow.Pokedex.RegisterSeen(caught);
                     flow.Pokedex.RegisterCaught(caught);
-                    if (flow.Boxes.Store(caught) != null) strollCaughtBack++;
+                    if (flow.Boxes.Store(caught) == null) break;
+                    save.Caught.Remove(held);
+                    strollCaughtBack++;
                 }
                 foreach (string item in StrollCounter.TakeFound(save))
                     if (ItemDatabase.Get(item) is { } data) { flow.Bag.AddItem(data, 1); strollFoundBack++; }
-                var paid = StrollCounter.TakeBack(save, CurrentLevelCap());
-                if (paid != null) flow.Boxes.Store(paid.Pokemon);
                 GiveIds();
                 return paid == null ? new(0) : new(1, paid.Pokemon.DisplayName, paid.Strides);
             }

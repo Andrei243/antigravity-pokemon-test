@@ -950,6 +950,7 @@ label StrollPastureFirst
   goto ModernMenu
 label Stroll
   stroll back
+  if result == 3 goto StrollNoRoom
   if result == 0 goto StrollPut
   sound "select"
   say "{thing} came back from its stroll and went into the boxes, grown a little from {number} strides."
@@ -972,6 +973,9 @@ label StrollPut
   goto Off
 label StrollRefused
   say "That one can't go for a stroll."
+  goto Off
+label StrollNoRoom
+  say "The boxes are full, so {thing} stays in the Stroll Counter for now. Make some room first!"
   goto Off
 
 

@@ -980,7 +980,7 @@ the bag. One command, `stroll`; each act answers `RESULT`, and some name `{thing
 
 | Line | What it does |
 | --- | --- |
-| `stroll back` | Whatever the counter met goes to the boxes and whatever it found to the bag; its own Pokémon comes back into the boxes paid for its strides. `RESULT` 1, `{thing}` its name and `{number}` its strides, or 0 when nothing rode in it. |
+| `stroll back` | Whatever the counter met goes to the boxes and whatever it found to the bag; its own Pokémon comes back into the boxes paid for its strides. `RESULT` 1, `{thing}` its name and `{number}` its strides, or 0 when nothing rode in it; 3 (and `{thing}`) with the boxes full, when nothing leaves the counter. Its own Pokémon goes first; what it met that finds no place stays in the counter. |
 | `stroll caught` | How many Pokémon the last `stroll back` sent to the boxes: `RESULT` and `{number}`. |
 | `stroll found` | How many things the last `stroll back` put in the bag: `RESULT` and `{number}`. |
 | `stroll pick` | Opens the PC's boxes to pick a Pokémon (the boxes' screen over the box's places alone; A on a Pokémon takes it, B none); the script waits for it. `RESULT` 1, or 0 with something already in the counter. |
