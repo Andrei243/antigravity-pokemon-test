@@ -75,7 +75,7 @@ public class PokeJobsTests
     }
 
     [Fact]
-    public void ABoardHoldsThreeAndTakesNoEgg()
+    public void ABoardHoldsSixAndTakesNoEggButToTheNursery()
     {
         var board = new JobBoard();
         for (int i = 0; i < JobBoard.Slots; i++) Assert.NotNull(board.Post(Bidoof(), JobKind.Errand, 1, Evening));

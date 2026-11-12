@@ -1,0 +1,70 @@
+{
+  "Admin": [
+    {
+      "en": [
+        "Welcome to Lockwork's head office. Every crate that left a port in five regions was signed for on this floor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've undone four cells. You won't undo the fifth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine. Go up. Keld will want to see the one who's been unpicking her locks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The stairs are behind me. She's waiting by the machine."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Courier": [
+    {
+      "en": [
+        "The machine's stopped, but the crates still came back. Every one you knocked out went straight into my van."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keld says I'm to hand them over. I say you'll have to take them, one ball at a time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whatever's still in the van, I'll have it here next time you come."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The van's empty. Every crate that came back has gone home with you. Good riddance to the lot."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

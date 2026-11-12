@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "Galar Mine"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "galar_worker_morris": {
+      "name": {
+        "en": [
+          "Morris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Morris: Mind the carts! And mind me, while you're at it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Morris: Off you go. The far end comes out on Route 4."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "galar_hiker_ives": {
+      "name": {
+        "en": [
+          "Ives"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Ives: The coal in this seam has warmed Motostoke for a hundred years. Let's warm up too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Ives: Phew! You've got a hot streak going."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bede_mine": {
+      "name": {
+        "en": [
+          "Bede"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmph."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

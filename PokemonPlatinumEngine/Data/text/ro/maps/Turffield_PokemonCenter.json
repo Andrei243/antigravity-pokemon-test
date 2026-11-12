@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Turffield Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "challenger": {
+      "name": {
+        "en": [
+          "Challenger"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Milo's mission is all about Wooloo. Walk into one and it trots along ahead of you. Mind the gym trainers, though!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

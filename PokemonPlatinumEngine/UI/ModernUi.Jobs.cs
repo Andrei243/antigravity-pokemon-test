@@ -13,10 +13,16 @@ namespace PokemonPlatinumEngine.UI;
 // The Poké Jobs board (plan 15 · E3; style guide, "Menu screens", "Poké Jobs")
 internal static partial class ModernUi
 {
-    /// <summary>A job's colour: an errand Blue, the orchard Green, the hot spring Red.</summary>
-    public static Color JobColour(JobKind kind) => kind switch { JobKind.Orchard => Green, JobKind.HotSpring => Red, _ => Blue };
+    /// <summary>A job's colour: an errand Blue, the orchard Green, the hot spring Red, the nursery Gold, the cave slate (plan 35 · BN6).</summary>
+    public static Color JobColour(JobKind kind) => kind switch
+    {
+        JobKind.Orchard => Green, JobKind.HotSpring => Red, JobKind.Nursery => Gold, JobKind.Cave => Track, _ => Blue
+    };
 
-    private static UiIcon JobIcon(JobKind kind) => kind switch { JobKind.Orchard => UiIcon.Berry, JobKind.HotSpring => UiIcon.Disc, _ => UiIcon.Letter };
+    private static UiIcon JobIcon(JobKind kind) => kind switch
+    {
+        JobKind.Orchard => UiIcon.Berry, JobKind.HotSpring => UiIcon.Disc, JobKind.Nursery => UiIcon.Camp, JobKind.Cave => UiIcon.Star, _ => UiIcon.Letter
+    };
 
     /// <summary>Hours and minutes left, as the board says them.</summary>
     public static string TimeLeft(TimeSpan left)
@@ -140,18 +146,24 @@ internal static partial class ModernUi
         DrawWrapped(Text.Of($"jobs.pays.{pays}"), x, y + 90, room, 26, Muted, 36, UiWeight.ExtraBold);
     }
 
-    private static string KeyOf(JobKind kind) => kind switch { JobKind.Orchard => "orchard", JobKind.HotSpring => "hotSpring", _ => "errand" };
+    private static string KeyOf(JobKind kind) => kind switch
+    {
+        JobKind.Orchard => "orchard", JobKind.HotSpring => "hotSpring", JobKind.Nursery => "nursery", JobKind.Cave => "cave", _ => "errand"
+    };
 
     private static void JobSetup(Rectangle detail, JobsScreen screen)
     {
         if (screen.Chosen is not { } pokemon) return;
         float y = JobPokemonHead(detail, pokemon);
         float x = detail.X + 44, room = detail.Width - 88;
-        var kinds = Enum.GetValues<JobKind>();
+        // (an Egg's one tab is the nursery; anyone else's every other kind, plan 35 · BN6)
+        var kinds = JobsScreen.KindsFor(pokemon);
         var tabs = new List<(string, UiIcon, Color)>();
         foreach (var kind in kinds) tabs.Add((JobsScreen.KindName(kind), JobIcon(kind), JobColour(kind)));
         var strip = new Rectangle(x + 40, y, room - 40, 64);
-        Tabs(strip, tabs, Array.IndexOf(kinds, screen.Kind));
+        int at = 0;
+        for (int i = 0; i < kinds.Count; i++) if (kinds[i] == screen.Kind) at = i;
+        Tabs(strip, tabs, at);
         if (screen.SetupRow == JobsSetupRow.Kind) UiShapes.Ring(new Vector2(x + 12, y + 32), 12, 4, Selection);
 
         float hy = y + 64 + 72;
@@ -173,6 +185,9 @@ internal static partial class ModernUi
         if (result.Effort > 0) lines.Add(Text.Of("jobs.result.effort", ("n", result.Effort), ("stat", Words.Stat(result.EffortStat))));
         if (result.Friendship > 0) lines.Add(Text.Of("jobs.result.friendship"));
         foreach (var (item, count) in result.Berries) lines.Add(Text.Of("jobs.result.berry", ("item", Data.LocalNames.Item(item)), ("n", count)));
+        // The orchard's treat and the cave's finds, and the nursery's word of its Egg (plan 35 · BN6)
+        foreach (var (item, count) in result.Finds) lines.Add(Text.Of("jobs.result.berry", ("item", Data.LocalNames.Item(item)), ("n", count)));
+        if (result.Kind == JobKind.Nursery) lines.Add(Text.Of(result.Hatches ? "jobs.result.hatching" : "jobs.result.warmer"));
 
         float h = 300 + lines.Count * 44 + 40;
         var r = new Rectangle(sw / 2f - 550, sh / 2f - h / 2f, 1100, h);

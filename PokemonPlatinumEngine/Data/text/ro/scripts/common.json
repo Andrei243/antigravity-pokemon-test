@@ -809,6 +809,20 @@
         "APARAT DE TM",
         "OPREȘTE"
       ]
+    },
+    {
+      "en": [
+        "What should be done?",
+        "USE THE PC",
+        "GO TO THE PASTURE",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce vrei să faci?",
+        "FOLOSEȘTE PC-UL",
+        "MERGI LA PĂȘUNE",
+        "ÎNCHIDE"
+      ]
     }
   ],
   "RibbonSyndicateEntry": [
@@ -1882,6 +1896,14 @@
       ],
       "text": [
         "Echipa ta e plină, dragă. Fă loc, apoi vino la mine."
+      ]
+    },
+    {
+      "en": [
+        "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -4027,6 +4049,120 @@
       ]
     }
   ],
+  "GalarDen": [
+    {
+      "en": [
+        "Watts poured out of the den's light! {player} got {result} W."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something huge stirs in the den's light: a {species:VAR_GALAR_RAID_SPECIES} of {var:VAR_GALAR_RAID_STARS} stars!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Call for three other Trainers and raid the den?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The den's light went out. Everyone's Pokémon are safe, but the raid is over for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {species:VAR_GALAR_RAID_SPECIES} has shrunk back to its own size and lies still in the den."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Throw a ball?",
+        "Poké Ball",
+        "Great Ball",
+        "Ultra Ball",
+        "Let it go"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {species:VAR_GALAR_RAID_SPECIES} slipped back into the den's light."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gotcha! The {species:VAR_GALAR_RAID_SPECIES} was caught!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There was no ball of that kind in the Bag, and the {species:VAR_GALAR_RAID_SPECIES} slipped away into the den's light."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh no! The {species:VAR_GALAR_RAID_SPECIES} broke free and vanished into the den's light."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A den of red stone. No light rises from it today."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Throw a Wishing Piece into the den?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} threw in a Wishing Piece. A column of red light rose out of the den!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "HubGuide": [
     {
       "en": [
@@ -4408,6 +4544,194 @@
       ],
       "text": [
         ""
+      ]
+    }
+  ],
+  "PastureKeeper": [
+    {
+      "en": [
+        "Meadow Keeper"
+      ],
+      "text": [
+        "Paznicul pășunii"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the pasture! One box of your PC grazes here at a time. The board by the shed changes which."
+      ],
+      "text": [
+        "Bun venit la pășune! Aici pasc pe rând Pokémonii unei singure cutii din PC. Panoul de lângă șopron schimbă cutia."
+      ]
+    },
+    {
+      "en": [
+        "Speak to any of them to give a pat, share a treat, look after them close up, or take one along."
+      ],
+      "text": [
+        "Vorbește cu oricare dintre ei ca să-l mângâi, să-i dai o gustare, să-l îngrijești de aproape sau să-l iei cu tine."
+      ]
+    },
+    {
+      "en": [
+        "Now and then one turns up holding something it found. Do have a look!"
+      ],
+      "text": [
+        "Din când în când, câte unul vine cu ceva găsit. Uită-te bine!"
+      ]
+    }
+  ],
+  "PastureMember": [
+    {
+      "en": [
+        "{self} looks {thing}."
+      ],
+      "text": [
+        "{self} pare {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{self} was holding something! {player} received the {item}."
+      ],
+      "text": [
+        "{self} ținea ceva! {player} a primit {item}."
+      ]
+    },
+    {
+      "en": [
+        "What will you do?",
+        "PET",
+        "TREAT",
+        "CARE",
+        "TAKE ALONG",
+        "LEAVE BE"
+      ],
+      "text": [
+        "Ce vei face?",
+        "MÂNGÂIE",
+        "GUSTARE",
+        "ÎNGRIJIRE",
+        "IA CU TINE",
+        "LASĂ-L"
+      ]
+    },
+    {
+      "en": [
+        "{player} gave {self} a gentle pat. It leaned into the hand."
+      ],
+      "text": [
+        "{player} l-a mângâiat ușor pe {self}. S-a lipit de mână."
+      ]
+    },
+    {
+      "en": [
+        "{self} ate the {item} happily."
+      ],
+      "text": [
+        "{self} a mâncat {item} cu poftă."
+      ]
+    },
+    {
+      "en": [
+        "{self} is too full to eat any more today."
+      ],
+      "text": [
+        "{self} e prea sătul ca să mai mănânce ceva azi."
+      ]
+    },
+    {
+      "en": [
+        "{self} joined {player}'s team!"
+      ],
+      "text": [
+        "{self} s-a alăturat echipei lui {player}!"
+      ]
+    },
+    {
+      "en": [
+        "There's no room on the team for {self}."
+      ],
+      "text": [
+        "Nu e loc în echipă pentru {self}."
+      ]
+    },
+    {
+      "en": [
+        "The rules of this run won't let {self} come along."
+      ],
+      "text": [
+        "Regulile acestei aventuri nu-l lasă pe {self} să vină."
+      ]
+    }
+  ],
+  "PastureBoard": [
+    {
+      "en": [
+        "The Pokémon of {thing} are out in the meadow."
+      ],
+      "text": [
+        "Pokémonii din {thing} sunt pe pășune."
+      ]
+    },
+    {
+      "en": [
+        "What will you do?",
+        "POKé JOBS",
+        "NEXT BOX",
+        "PREVIOUS BOX",
+        "LEAVE IT"
+      ],
+      "text": [
+        "Ce vei face?",
+        "SLUJBE POKé",
+        "CUTIA URMĂTOARE",
+        "CUTIA DINAINTE",
+        "LASĂ"
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon of {thing} came out into the meadow."
+      ],
+      "text": [
+        "Pokémonii din {thing} au ieșit pe pășune."
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon of {thing} came out into the meadow."
+      ],
+      "text": [
+        "Pokémonii din {thing} au ieșit pe pășune."
+      ]
+    }
+  ],
+  "PastureGate": [
+    {
+      "en": [
+        "Head back to the PC?"
+      ],
+      "text": [
+        "Te întorci la PC?"
+      ]
+    }
+  ],
+  "PastureWorker": [
+    {
+      "en": [
+        "{self} is hard at work in the {thing}. It has about {number} more hours to go."
+      ],
+      "text": [
+        "{self} muncește din greu la {thing}. Mai are cam {number} ore."
+      ]
+    },
+    {
+      "en": [
+        "{self} has finished in the {thing}. Bring it back at the board by the shed."
+      ],
+      "text": [
+        "{self} a terminat la {thing}. Adu-l înapoi de la panoul de lângă șopron."
       ]
     }
   ]

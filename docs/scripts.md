@@ -934,6 +934,29 @@ the bag has most berries of, three at least.
 | `treat can [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | `RESULT` 1 when a bake could be made: three berries of the flavour, or for `mixed` one of each of the five; else 0. |
 | `treat bake [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | Takes the berries (the most plentiful kind first) and puts the treat in the bag: a grade-2 treat of the flavour, or the Rainbow Loaf for `mixed`. `RESULT` 1 and `{item}` naming it, or 0 and nothing taken. |
 
+### The pasture
+
+Plan 35 · BN5 and BN6; `docs/mechanics/rulings.md`, "The pasture". `if pasture` holds where the region the player stands in has
+a pasture (its region file's `pasture`) and the game is played by the modern rules: `common.PC` asks it first. One command,
+`pasture`; each act answers `RESULT`, and some name `{thing}` or `{item}`. The acts after `count` are of the Pokémon the script
+belongs to (a body of the herd or of one away on a job); with nobody they answer 0.
+
+| Command | What it does |
+|---|---|
+| `pasture enter` | Notes the tile the player stands on and the way they face, and warps them to the pasture's gate. `RESULT` 1, or 0 where there is none. |
+| `pasture leave` | Warps the player back to the tile the visit began on, facing as they did. `RESULT` 1, or 0 outside a visit. |
+| `pasture box [-1\|1]` | The box shown in the meadow (`RESULT` and `{number}` its number from 1, `{thing}` its name); with -1 or 1 the box before or after it is shown, the PC's own box follows, and the herd is laid afresh. |
+| `pasture count` | `RESULT` and `{number}` how many of the box walk the meadow. |
+| `pasture mood` | Its mood shown in a bubble: `RESULT` 0 (glum) to 4 (elated), `{thing}` the word. |
+| `pasture find` | What it holds today, once a day: `RESULT` 1 and `{item}` with it put in the bag, or 0. |
+| `pasture pet` | A pat: `RESULT` 1 when it counted for friendship today, 2 when it only lifted the mood. |
+| `pasture feed` | The item last chosen (`chooseitem meal`) eaten: `RESULT` 1 and `{item}`, 0 too full, 2 nothing to eat. |
+| `pasture care` | Opens the care close-up on it and waits; the field comes back as it closes. |
+| `pasture take` | Into the team: `RESULT` 1 taken, 2 the team full, 3 the run's rules refuse it, 4 an Egg. |
+| `pasture job` | One away on a job, at its work: `RESULT` and `{number}` the whole hours it has left (0 once due back), `{thing}` its job's word. |
+
+`chooseitem meal` opens the bag on its berries and treats.
+
 ### The crafting kit
 
 Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,

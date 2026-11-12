@@ -50,9 +50,12 @@
     },
     {
       "en": [
-        "We'll be off as soon as the line ahead is clear. There's a flock of Wooloo on it again, I'm told."
+        "Next stop the Wild Area, and Motostoke after it, if the line's clear of Wooloo."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Plecăm de îndată ce linia din față e liberă. Mi s-a spus că iar e o turmă de Wooloo pe ea."
       ]
     },
@@ -66,10 +69,21 @@
     },
     {
       "en": [
-        "Still waiting on those Wooloo up the line, I'm afraid. The train won't be long."
+        "The line north still stops at the Wild Area. There's a flock of Wooloo on it past there, I'm told."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Încă așteptăm Wooloo-ii aceia de pe linie, mă tem. Trenul nu mai întârzie mult."
+      ]
+    },
+    {
+      "en": [
+        "Take the train to the Wild Area?"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

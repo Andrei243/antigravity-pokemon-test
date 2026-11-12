@@ -1,0 +1,103 @@
+{
+  "displayName": {
+    "en": [
+      "Motostoke Stadium"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "rose_pitch": {
+      "name": {
+        "en": [
+          "Chairman Rose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome, challengers, one and all!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "leon_pitch": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have a champion time!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "milo_pitch": {
+      "name": {
+        "en": [
+          "Milo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See you at Turffield!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hop_pitch": {
+      "name": {
+        "en": [
+          "Hop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bede_pitch": {
+      "name": {
+        "en": [
+          "Bede"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmph."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -6135,15 +6135,17 @@
     "hoursValue": "{n} h",
     "dueBack": "DUE BACK",
     "hoursDone": "{done} of {of} hours",
-    "kind": { "Errand": "ERRAND", "Orchard": "ORCHARD", "HotSpring": "HOT SPRING" },
+    "kind": { "Errand": "ERRAND", "Orchard": "ORCHARD", "HotSpring": "HOT SPRING", "Nursery": "NURSERY", "Cave": "CAVE" },
     "pays": {
       "errand": "Runs errands about town: a level's worth of EXP in eight hours, Speed's effort, and now and then a berry.",
       "orchard": "Helps with the harvest: half an errand's EXP, HP's effort, and a berry every two hours.",
-      "hotSpring": "Soaks in a hot spring: half an errand's EXP, Sp. Def's effort, and twice the friendship."
+      "hotSpring": "Soaks in a hot spring: half an errand's EXP, Sp. Def's effort, and twice the friendship.",
+      "nursery": "Keeps an Egg warm in the pasture's shed: a night there brings most Eggs to hatching, and it hatches as it comes back.",
+      "cave": "Digs in the pasture's cave: a find every three hours (stones, shards, treasures), and more for a Rock, Ground or Steel type."
     },
     "hint": { "bringBack": "Bring back", "send": "Send" },
     "about": "Pokémon of your boxes can take jobs while you are away, even with the game shut. Choose an empty place to send one.",
-    "boardNote": "Up to three Pokémon can be away at once. They are paid for the whole hours they spend on the job.",
+    "boardNote": "Up to six Pokémon can be away at once. They are paid for the whole hours they spend on the job.",
     "noneInTheBoxes": "There are no Pokémon in your boxes to send.",
     "boxesFull": "Your boxes are full. Make room before bringing a Pokémon back.",
     "clockBack": "The clock reads earlier than when it set off. It isn't back yet.",
@@ -6156,7 +6158,9 @@
       "move": "Learned {move}!",
       "effort": "Gained {n} effort in {stat}.",
       "friendship": "Grew fonder of you.",
-      "berry": "Brought back {item} ×{n}."
+      "berry": "Brought back {item} ×{n}.",
+      "hatching": "The Egg is about to hatch!",
+      "warmer": "The Egg is warmer and nearer hatching."
     }
   },
   "requests": {
@@ -7002,5 +7006,15 @@
     "openedScene": "{pokemon}'s heart opened! It's itself again!",
     "openedLevel": "{pokemon} took in what it had earned and grew to Lv. {level}!",
     "movesWanted": "{pokemon} wants to learn a new move. Teach it at the Move Relearner's or with REMEMBER."
+  },
+  "pasture": {
+    "job": { "Errand": "town", "Orchard": "orchard", "HotSpring": "hot spring", "Nursery": "nursery", "Cave": "cave" },
+    "mood": {
+      "Glum": "glum",
+      "Low": "a little low",
+      "Calm": "calm",
+      "Cheerful": "cheerful",
+      "Elated": "overjoyed"
+    }
   }
 }

@@ -213,6 +213,9 @@ public enum Op
     Studio,
     // Locked hearts (plan 44 · SD2): the Reclaimer held and given, the spring's rite, hearts opened, the locks counted
     Heart,
+    // The pasture (plan 35 · BN5): in at its gate from a PC and back, the box shown, and a Pokémon of the meadow petted,
+    // fed, cared for, found holding something or taken along
+    Pasture,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -272,7 +275,9 @@ public enum Query
     /// mark the legendaries an older save caught. Not the built-in <c>CAUGHT</c>, which is the count of species caught.
     /// False with no Pokédex.
     /// </summary>
-    Caught
+    Caught,
+    /// <summary>The PC offers the pasture here (plan 35 · BN5): the region the player stands in has one, under the modern rules: <c>pasture</c>.</summary>
+    Pasture
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

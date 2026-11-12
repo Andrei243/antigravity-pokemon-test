@@ -236,5 +236,141 @@
         ""
       ]
     }
+  ],
+  "LockworkAgent1": [
+    {
+      "en": [
+        "Lockwork moves its cargo quietly. You've seen too much of it already."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one's heart is locked tight. It'll fight for me without a second thought."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch. Doesn't matter. The cargo's already on its way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep walking. Lockwork doesn't forget a face."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LockworkAgent2": [
+    {
+      "en": [
+        "You're on the dock without a docket. Lockwork doesn't like that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My partner here was locked at the works. It obeys. That's all it needs to do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You knocked the numbers right out of my ledger."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm counting crates. Count yourself out of here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LockworkAgent3": [
+    {
+      "en": [
+        "Nobody asked you to look in the crates."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A locked heart never hesitates. Let me show you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So hesitation isn't everything after all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on. The admin will be the one to deal with you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LockworkAgent4": [
+    {
+      "en": [
+        "This stretch of the harbour is Lockwork's for the evening."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We seal their hearts so nothing ever comes between us. Efficient, isn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Efficient. And beaten. Wonderful."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lockwork pays well. I'd still rather not face you twice."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -64,5 +64,7 @@
   "levels": [[2, 104], [50, 136], [88, 156]],
   // Plan 18 · W4b-1: the level cap by Badges held, HeartGold's own levels (the Leaders' best in rising order, since
   // Chuck, Jasmine and Pryce may come in more than one order, then Lance's); mapped by "levels" where crossed into
-  "caps": [13, 17, 19, 25, 31, 34, 35, 41, 50]
+  "caps": [13, 17, 19, 25, 31, 34, 35, 41, 50],
+  // Plan 35 · BN5: the copy of the pasture every PC of the region leads to
+  "pasture": "JohtoPasture"
 }

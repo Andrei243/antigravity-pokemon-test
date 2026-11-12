@@ -69,5 +69,7 @@
   ],
   // Plan 13 · V3, moved here by plan 18 · W4b-1: the level cap by Badges held, plan 02's pacing targets (each Leader's
   // best in Platinum's data, then Cynthia's); Sinnoh has no "levels", since every game begins here
-  "caps": [14, 22, 26, 32, 37, 41, 44, 50, 62]
+  "caps": [14, 22, 26, 32, 37, 41, 44, 50, 62],
+  // Plan 35 · BN5: the copy of the pasture every PC of the region leads to
+  "pasture": "SinnohPasture"
 }

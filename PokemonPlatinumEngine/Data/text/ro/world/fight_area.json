@@ -364,6 +364,36 @@
         ]
       }
     },
+    "lockwork_doorman": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_3": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_4": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "inverse_scientist": {
       "name": {
         "en": [

@@ -1,0 +1,134 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Motostoke Stadium! Here to register for the gym challenge? Your endorsement, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Champion's letter of endorsement."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "From Leon himself! Wonderful. You're registered. Welcome to the challenge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And me too! Same letter, same brother. We're real challengers now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bede"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Endorsed by the Champion, are you? I was endorsed by Chairman Rose himself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A challenger chosen by the chairman needs no luck. Try not to get in my way. It would be embarrassing for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's his problem? Never mind. The ceremony's tomorrow, so we've a room at the hotel on the lower terrace. Come on!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Challengers, this way! The ceremony is about to begin. Through the tunnel and out onto the pitch!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kabu's gym mission is the third of the challenge. Come back with the Grass and Water Badges and he'll test you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Motostoke Stadium, home of Kabu's gym and of the opening ceremony!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

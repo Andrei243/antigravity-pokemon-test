@@ -115,6 +115,24 @@
           ""
         ]
       }
+    },
+    "studio_director": {
+      "name": {
+        "en": [
+          "Director Wren"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every take is a battle, played to a script."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

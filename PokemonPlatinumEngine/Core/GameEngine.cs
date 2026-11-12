@@ -785,6 +785,8 @@ public partial class GameEngine
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
         flow.Care.Restore(save.Care);
+        // A visit to the pasture under way (plan 35 · BN5): its herd is laid as the place is come to
+        flow.Pasture = save.Pasture?.Copy();
         flow.Gifts.Load(save.Gifts);
         flow.StageShow.Load(save.StageShow);
         flow.Studio.Load(save.Studio);
@@ -1018,6 +1020,7 @@ public partial class GameEngine
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
             Care = CareToSave(),
+            Pasture = flow.Pasture?.Copy(),
             Gifts = flow.Gifts.ToSave(),
             StageShow = flow.StageShow.ToSave(),
             Studio = flow.Studio.ToSave(),

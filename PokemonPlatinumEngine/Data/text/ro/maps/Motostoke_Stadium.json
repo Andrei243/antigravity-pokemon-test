@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Motostoke Stadium"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "stadium_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hop_lobby": {
+      "name": {
+        "en": [
+          "Hop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Registered! Now we're real challengers!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bede_lobby": {
+      "name": {
+        "en": [
+          "Bede"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmph."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

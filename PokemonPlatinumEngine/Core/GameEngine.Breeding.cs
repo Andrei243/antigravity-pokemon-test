@@ -61,6 +61,11 @@ public partial class GameEngine
             // An Egg hatched counts for the Week's Work (plan 41 · EG6)
             TellTheBoard(MissionEventKind.Hatched);
         }
-        StartTransition(GameState.Overworld, PlayFieldMusic);
+        // (an Egg the pasture's nursery hatched is in the boxes: the herd is laid afresh with it, plan 35 · BN6)
+        StartTransition(GameState.Overworld, () =>
+        {
+            if (flow.Pasture != null) LayHerd();
+            PlayFieldMusic();
+        });
     }
 }

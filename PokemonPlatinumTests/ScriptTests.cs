@@ -257,6 +257,11 @@ public class ScriptTests
           treat can mixed
           treat bake spicy
           treat bake most
+          pasture enter
+          pasture box 1
+          pasture take
+          pasture job
+          chooseitem meal
           heart has
           heart give
           heart spring
@@ -998,6 +1003,7 @@ public class ScriptTests
               if titled end
               if mirage end
               if modern end
+              if pasture end
               if phrase SAYING "feelings:cool" "pokemon:Latias" end
               if diploma Johto end
               if caught "Mewtwo" end

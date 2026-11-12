@@ -109,7 +109,9 @@ public partial class GameEngine
     private void CloseCare()
     {
         if (!IsHeadless) flow.CareScreen.Unload();
-        flow.State = GameState.Camp;
+        // (opened from the pasture, plan 35 · BN5: back to the meadow, where the script waits)
+        flow.State = careFromPasture ? GameState.Overworld : GameState.Camp;
+        careFromPasture = false;
     }
 
     // The bag put away: what was picked is eaten, and the close-up is back

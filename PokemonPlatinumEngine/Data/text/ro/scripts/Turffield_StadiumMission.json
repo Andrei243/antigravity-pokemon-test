@@ -1,0 +1,56 @@
+{
+  "MissionWooloo1": [
+    {
+      "en": [
+        "The Wooloo bleated and wouldn't budge. {player} gave it a gentle nudge..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It trotted off through the gate and into its pen!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MissionWooloo2": [
+    {
+      "en": [
+        "This Wooloo was fast asleep in the gateway. {player} gave it a gentle nudge..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It rolled off into its pen without waking up!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MissionWooloo3": [
+    {
+      "en": [
+        "The last Wooloo stood its ground. {player} gave it a gentle nudge..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It bounced away into the last pen. The mission is cleared!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

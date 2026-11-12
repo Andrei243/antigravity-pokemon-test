@@ -207,6 +207,16 @@
           "Antrenor As Quinn: Asta a fost o dată. Revino și mai încearcă."
         ]
       }
+    },
+    "lockwork_agent_1": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

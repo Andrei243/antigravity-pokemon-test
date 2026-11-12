@@ -386,6 +386,8 @@ public sealed partial class ScriptRunner
         // A raid fought waits for the player (plan 33 · GL3); a den looked into, its Watts and a catch's die don't
         Op.Raid => i.Name == "fight",
         Op.Treat => false,
+        // The pasture's close-up is a screen the player looks into; its ways in and out are warps, ended at once (plan 35 · BN5)
+        Op.Pasture => i.Name == "care",
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
@@ -1549,6 +1551,10 @@ public sealed partial class ScriptRunner
             case Op.Treat:
                 TreatCommand(i);
                 break;
+            // The pasture (plan 35 · BN5)
+            case Op.Pasture:
+                PastureCommand(i);
+                break;
             // Locked hearts (plan 44 · SD2)
             case Op.Heart:
                 HeartCommand(i);
@@ -2666,6 +2672,7 @@ public sealed partial class ScriptRunner
             // IsMirageIslandPresent (plan 21 · H12, part h)
             Query.Mirage => Overworld.MirageIsland.Present(host.Party, host.Encounters),
             Query.Modern => host.Modern,
+            Query.Pasture => host.PastureHere,
             // The diploma of a Pokédex is held (plan 40 · GE4)
             Query.Diploma => host.Pokedex?.HoldsDiplomaOf(c.Name) == true,
             // The Pokédex holds the species caught (plan 40 · GE6)

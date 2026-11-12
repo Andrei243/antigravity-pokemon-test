@@ -260,5 +260,145 @@
         "Îți place radioul? Încearcă toate posturile. Mereu e ceva în emisie!"
       ]
     }
+  ],
+  "LuckyNumber": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi there! I work on the Lucky Number Show. Every week we draw a lucky number and read it out on the radio."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I check this week's number against your Pokémon's ID numbers?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This week's lucky number is {luckynumber}! Let me look through your Pokémon's ID numbers..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aw, no luck. Not a single digit matched this week."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a new number every week, though. Keep your radio tuned in!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last digit matches! That's our fifth prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last two digits match! That's our fourth prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last three digits match! That's our third prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Four digits match! That's our second prize!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All five digits match! I can hardly believe it! That's our first prize!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Congratulations! Tune in again next week for a new number."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've had your go this week. A new lucky number goes out on the radio next week!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the number's good all week. Come back any time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LuckyWhose": [
+    {
+      "en": [
+        "Oh! The ID number of {winner}, on your team, matches!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! The ID number of {winner}, in your PC Boxes, matches!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

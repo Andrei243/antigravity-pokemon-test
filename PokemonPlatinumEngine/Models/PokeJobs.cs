@@ -9,9 +9,10 @@ namespace PokemonPlatinumEngine.Models;
 
 /// <summary>
 /// What a Pokémon is sent to do (plan 15 · E3; Sun and Moon's islands and Sword and Shield's jobs, in our own words):
-/// an errand about town, an orchard's harvest, a soak in a hot spring. The nursery that hatches Eggs is a kind still to come.
+/// an errand about town, an orchard's harvest, a soak in a hot spring; and since plan 35 · BN6 the pasture's nursery, which
+/// keeps one Egg warm for hours and hatches it as it is collected, and its cave, where finds turn up by the hour.
 /// </summary>
-public enum JobKind { Errand, Orchard, HotSpring }
+public enum JobKind { Errand, Orchard, HotSpring, Nursery, Cave }
 
 /// <summary>
 /// A Pokémon away on a job (plan 15 · E3): the Pokémon itself, held whole as a save holds it, so while it is away it is
@@ -47,6 +48,15 @@ public sealed class JobResult
     public int LevelsGained { get; init; }
     public IReadOnlyList<string> MovesLearned { get; init; } = Array.Empty<string>();
     public IReadOnlyList<(string Item, int Count)> Berries { get; init; } = Array.Empty<(string, int)>();
+
+    /// <summary>What else it brought back (plan 35 · BN6): the orchard's treat, the cave's finds.</summary>
+    public IReadOnlyList<(string Item, int Count)> Finds { get; init; } = Array.Empty<(string, int)>();
+
+    /// <summary>The nursery's Egg had no cycles left and hatches as it is collected (plan 35 · BN6).</summary>
+    public bool Hatches { get; init; }
+
+    /// <summary>The Egg cycles the nursery's hours counted down (plan 35 · BN6).</summary>
+    public int EggCycles { get; init; }
     /// <summary>The effort gained, and in which stat.</summary>
     public StatType EffortStat { get; init; }
     public int Effort { get; init; }
@@ -55,13 +65,13 @@ public sealed class JobResult
     /// <summary>Puts what was found into the bag.</summary>
     public void GiveTo(Inventory bag)
     {
-        foreach (var (item, count) in Berries)
+        foreach (var (item, count) in Berries.Concat(Finds))
             if (ItemDatabase.Get(item) is { } data) bag.AddItem(data, count);
     }
 }
 
 /// <summary>Why a Pokémon can't be sent on a job, or a job can't be collected.</summary>
-public enum JobRefusal { None, Full, Egg, NoHours, ClockBack, Locked }
+public enum JobRefusal { None, Full, Egg, NoHours, ClockBack, Locked, NotAnEgg }
 
 /// <summary>
 /// The jobs board (plan 15 · E3; GPU-free): up to <see cref="Slots"/> Pokémon away at once, each paid when it is
@@ -73,8 +83,8 @@ public enum JobRefusal { None, Full, Egg, NoHours, ClockBack, Locked }
 /// </summary>
 public sealed class JobBoard
 {
-    /// <summary>How many Pokémon may be away at once.</summary>
-    public const int Slots = 3;
+    /// <summary>How many Pokémon may be away at once: six since the pasture opened its fields (plan 35 · BN6, decision 5; three before).</summary>
+    public const int Slots = 6;
 
     /// <summary>The fewest and most hours a job can be given.</summary>
     public const int MinHours = 1, MaxHours = 24;
@@ -120,10 +130,14 @@ public sealed class JobBoard
     // ------------------------------------------------------------------ posting and collecting
 
     /// <summary>Why this Pokémon can't be sent for these hours now; <see cref="JobRefusal.None"/> when it can.</summary>
-    public JobRefusal WhyNot(Pokemon pokemon, int hours)
+    public JobRefusal WhyNot(Pokemon pokemon, int hours) => WhyNot(pokemon, hours, pokemon.IsEgg ? JobKind.Nursery : JobKind.Errand);
+
+    /// <summary>Why this Pokémon can't be sent on this kind of job: the nursery takes an Egg and nothing else, every other kind no Egg.</summary>
+    public JobRefusal WhyNot(Pokemon pokemon, int hours, JobKind kind)
     {
         if (IsFull) return JobRefusal.Full;
-        if (pokemon.IsEgg) return JobRefusal.Egg;
+        if (kind == JobKind.Nursery && !pokemon.IsEgg) return JobRefusal.NotAnEgg;
+        if (kind != JobKind.Nursery && pokemon.IsEgg) return JobRefusal.Egg;
         // A locked heart isn't sent (plan 44 · SD1)
         if (HeartLock.Refuses(pokemon, LockedUse.Jobs)) return JobRefusal.Locked;
         if (hours < MinHours || hours > MaxHours) return JobRefusal.NoHours;
@@ -133,7 +147,7 @@ public sealed class JobBoard
     /// <summary>Sends a Pokémon on a job (the caller has taken it out of its box); null, with nothing changed, when it can't go.</summary>
     public Job? Post(Pokemon pokemon, JobKind kind, int hours, DateTime now)
     {
-        if (WhyNot(pokemon, hours) != JobRefusal.None) return null;
+        if (WhyNot(pokemon, hours, kind) != JobRefusal.None) return null;
         var job = new Job
         {
             Pokemon = SavedPokemonData.FromPokemon(pokemon),
@@ -150,19 +164,25 @@ public sealed class JobBoard
     /// Brings a Pokémon back and pays for the whole hours that passed, never more than asked for. A clock set back before
     /// the job began pays nothing and leaves the job where it is (<paramref name="refusal"/> says so); null then.
     /// </summary>
-    public JobResult? Collect(Job job, DateTime now, Random random, out JobRefusal refusal)
+    public JobResult? Collect(Job job, DateTime now, Random random, out JobRefusal refusal) =>
+        Collect(job, now, random, RegionDatabase.Sinnoh, out refusal);
+
+    /// <summary>The same, collected in a region: the cave's finds are its region's (plan 35 · BN6).</summary>
+    public JobResult? Collect(Job job, DateTime now, Random random, string region, out JobRefusal refusal)
     {
         refusal = JobRefusal.None;
         if (!jobs.Contains(job)) { refusal = JobRefusal.NoHours; return null; }
         if (now < job.Started) { refusal = JobRefusal.ClockBack; return null; }
         jobs.Remove(job);
-        return Pay(job, job.HoursDone(now), random);
+        return Pay(job, job.HoursDone(now), random, region);
     }
 
     /// <summary>What a job's hours pay, on its Pokémon as it was held.</summary>
-    public static JobResult Pay(Job job, int hours, Random random)
+    public static JobResult Pay(Job job, int hours, Random random, string region = RegionDatabase.Sinnoh)
     {
         var pokemon = job.Pokemon.ToPokemon();
+        // The nursery keeps its Egg warm and pays nothing else: an Egg's friendship field is its cycles (plan 35 · BN6)
+        if (job.Kind == JobKind.Nursery) return Warm(pokemon, hours);
         int levelBefore = pokemon.Level;
         int span = Math.Max(0, pokemon.ExpForNextLevel - pokemon.ExpForCurrentLevel);
         int exp = pokemon.Level >= Pokemon.Cap ? 0 : ExpFor(job.Kind, hours, span);
@@ -190,11 +210,31 @@ public sealed class JobBoard
                 berries[berry] = berries.GetValueOrDefault(berry) + 1;
             }
 
+        // The orchard's treat and the cave's finds (plan 35 · BN6), drawn after the berries so that a harvest's berries
+        // are what they were
+        var finds = new Dictionary<string, int>(StringComparer.Ordinal);
+        if (job.Kind == JobKind.Orchard)
+            for (int i = 0; i < hours / HoursPerTreat; i++)
+            {
+                string treat = OrchardTreats[random.Next(OrchardTreats.Count)];
+                finds[treat] = finds.GetValueOrDefault(treat) + 1;
+            }
+        if (job.Kind == JobKind.Cave)
+        {
+            var table = CaveTable(region);
+            for (int i = 0; i < CaveFinds(pokemon, hours); i++)
+            {
+                string found = table[random.Next(table.Count)];
+                finds[found] = finds.GetValueOrDefault(found) + 1;
+            }
+        }
+
         return new JobResult
         {
             Pokemon = pokemon,
             Kind = job.Kind,
             Hours = hours,
+            Finds = finds.OrderBy(f => f.Key, StringComparer.Ordinal).Select(f => (f.Key, f.Value)).ToList(),
             Exp = exp,
             LevelsGained = pokemon.Level - levelBefore,
             MovesLearned = learned,
@@ -202,6 +242,59 @@ public sealed class JobBoard
             EffortStat = stat,
             Effort = effort,
             Friendship = pokemon.Friendship - friendshipBefore
+        };
+    }
+
+    // ------------------------------------------------------------------ the pasture's fields (plan 35 · BN6)
+
+    /// <summary>The Egg cycles the nursery counts down an hour (ours: a night of eight hours hatches an Egg of forty).</summary>
+    public const int CyclesPerHour = 5;
+
+    /// <summary>How many hours in the orchard bring one of the sold treats besides its berries.</summary>
+    public const int HoursPerTreat = 8;
+
+    /// <summary>How many hours in the cave bring a find; a Rock, Ground or Steel type finds one more every <see cref="HoursPerExtraFind"/>.</summary>
+    public const int HoursPerFind = 3, HoursPerExtraFind = 6;
+
+    /// <summary>The treats the orchard's pickers bring back now and then: the five sold ones (plan 35 · BN3).</summary>
+    public static readonly IReadOnlyList<string> OrchardTreats = new[] { "Pepper Bite", "Crisp Wafer", "Honey Drop", "Cocoa Nib", "Tart Chew" };
+
+    /// <summary>
+    /// What the cave gives by region (ours): evolution stones, shards, treasures to sell and Heart Scales. Never a fossil
+    /// or anything that gives a species, so no region's list of ways to a species moves.
+    /// </summary>
+    public static IReadOnlyList<string> CaveTable(string region) => region switch
+    {
+        RegionDatabase.Kanto => new[] { "Fire Stone", "Water Stone", "Thunder Stone", "Moon Stone", "Red Shard", "Blue Shard", "Nugget", "Stardust", "Heart Scale" },
+        RegionDatabase.Johto => new[] { "Sun Stone", "Moon Stone", "Leaf Stone", "Yellow Shard", "Green Shard", "Pearl", "Star Piece", "Stardust", "Heart Scale" },
+        RegionDatabase.Hoenn => new[] { "Fire Stone", "Water Stone", "Leaf Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "Star Piece", "Heart Scale" },
+        RegionDatabase.Unova => new[] { "Thunder Stone", "Dusk Stone", "Dawn Stone", "Shiny Stone", "Blue Shard", "Pearl", "Nugget", "Stardust", "Heart Scale" },
+        _ => new[] { "Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Dusk Stone", "Red Shard", "Blue Shard", "Star Piece", "Heart Scale" }
+    };
+
+    /// <summary>How many finds a Pokémon brings back from the cave for these hours.</summary>
+    public static int CaveFinds(Pokemon pokemon, int hours)
+    {
+        if (hours <= 0) return 0;
+        int finds = hours / HoursPerFind;
+        if (pokemon.HasType(PokemonType.Rock) || pokemon.HasType(PokemonType.Ground) || pokemon.HasType(PokemonType.Steel))
+            finds += hours / HoursPerExtraFind;
+        return finds;
+    }
+
+    /// <summary>The nursery's hours on its Egg: its cycles counted down, and whether it hatches as it is collected.</summary>
+    private static JobResult Warm(Pokemon egg, int hours)
+    {
+        int before = egg.EggCycles;
+        if (hours > 0 && egg.IsEgg) egg.EggCycles = Math.Max(0, egg.EggCycles - hours * CyclesPerHour);
+        return new JobResult
+        {
+            Pokemon = egg,
+            Kind = JobKind.Nursery,
+            Hours = hours,
+            EggCycles = before - egg.EggCycles,
+            Hatches = egg.IsEgg && egg.EggCycles == 0,
+            EffortStat = StatType.HP
         };
     }
 
@@ -223,7 +316,8 @@ public sealed class JobBoard
     public void Restore(IEnumerable<Job>? saved)
     {
         jobs.Clear();
-        if (saved != null) jobs.AddRange(saved.Take(Slots));
+        // (never cut to the board's size: a save keeps every Pokémon it sent)
+        if (saved != null) jobs.AddRange(saved);
     }
 
     /// <summary>The Pokémon away, as they are held (a save's id sweep and the Pokédex's counts never see them).</summary>

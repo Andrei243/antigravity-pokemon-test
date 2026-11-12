@@ -66,5 +66,39 @@
         "Tot mă gândesc la asta. Giratina, într-o lume a lui, atât de aproape încât să-l atingi... Aș fi vrut doar să fi fost eu cea care se luptă cu el."
       ]
     }
+  ],
+  "SpringRite": [
+    {
+      "en": [
+        "{player} poured a handful of spring water over each ball with a locked heart and said its name aloud."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The haze around them seemed to thin, just a little."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The water has done what it can for today."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The spring water is cold and very clear."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

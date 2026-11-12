@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Turffield Stadium"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "mission_wooloo_1": {
+      "name": {
+        "en": [
+          "Wooloo"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mission_wooloo_2": {
+      "name": {
+        "en": [
+          "Wooloo"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mission_wooloo_3": {
+      "name": {
+        "en": [
+          "Wooloo"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "galar_gym_trainer_wren": {
+      "name": {
+        "en": [
+          "Wren"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Wren: No Wooloo gets past me without a battle, and no challenger either!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Wren: Fine, fine. Herd away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "galar_gym_trainer_cole": {
+      "name": {
+        "en": [
+          "Cole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Cole: Milo trusts me with the last pen. Let's see if you've earned a look at it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Cole: Milo's waiting through the far gate."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
