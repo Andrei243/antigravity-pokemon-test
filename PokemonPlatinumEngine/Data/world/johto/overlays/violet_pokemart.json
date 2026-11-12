@@ -4,7 +4,7 @@
   "area": "violet_pokemart",
   "bgmTrack": "johto/violet",
   "people": {
-    "t22fs0101_delivery": { "name": "Gift Runner", "script": "Courier" },
+    "t22fs0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t22fs0101_shopm1_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "t22fs0101_shopm1_2_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "t22fs0101_gsoldwoman1": {

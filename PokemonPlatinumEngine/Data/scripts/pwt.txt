@@ -101,3 +101,84 @@ script PlasmaAtThePier
   setvar VAR_UNOVA_PWT 1
   endscene
   end
+
+
+# ------------------------------------------------------------------ the Double-Booked Hall (plan 41 · EG8)
+# The Open Door Agency's case in Unova: the two organisers each show their booking (one stamped, the other with a name
+# rubbed out under hers), and the janitor's key log has the clerk in the office after hours. Once Looker has the
+# deductions the hall's clerk, Isidore Calloway, waits at the World Tournament's door (FLAG_CASE_UNOVA_ISIDORE_WAITS).
+
+script CaseUnovaOrganiser
+  face self player
+  if flag FLAG_CASE_UNOVA_CLOSED goto Thanks
+  if flag FLAG_CASE_UNOVA_TAKEN goto Case
+  say "I've booked the hall for my club's tournament. I asked months ago! The papers are all in order."
+  end
+label Case
+  if flag FLAG_CASE_UNOVA_CLUE_SCHEDULE goto Again
+  say "You're looking into it? Here's my schedule, with the hall's own stamp. The afternoon of the twelfth, all mine."
+  say "The other organiser has the very same stamp. Both real, both the same number. How can that be?"
+  setflag FLAG_CASE_UNOVA_CLUE_SCHEDULE
+  text "{player} noted the stamped schedule."
+  end
+label Again
+  say "Two stamps, one number. The hall can't have meant us both."
+  end
+label Thanks
+  say "We're sharing the day now. My club in the morning, theirs in the evening. And the hall gave us both a discount!"
+  end
+
+script CaseUnovaRival
+  face self player
+  if flag FLAG_CASE_UNOVA_CLOSED goto Thanks
+  if flag FLAG_CASE_UNOVA_TAKEN goto Case
+  say "Somebody else says they've booked the hall on my afternoon. Nonsense! I booked it myself."
+  end
+label Case
+  if flag FLAG_CASE_UNOVA_CLUE_SMUDGE goto Again
+  say "My booking? Here, the hall's register, copied out for me. My name, the afternoon of the twelfth."
+  say "Though, look closely. There's an eraser smudge under my name. Somebody else's name was there first, and rubbed out."
+  setflag FLAG_CASE_UNOVA_CLUE_SMUDGE
+  text "{player} noted the eraser smudge under the booking."
+  end
+label Again
+  say "A name rubbed out under mine. I paid in good faith! Somebody took my money for a day that was already sold."
+  end
+label Thanks
+  say "My money's back, and we have the evening. Honestly, the evening light suits a final better."
+  end
+
+script CaseUnovaJanitor
+  face self player
+  if flag FLAG_CASE_UNOVA_CLOSED goto Thanks
+  if flag FLAG_CASE_UNOVA_TAKEN goto Case
+  say "I keep the keys to every door in the World Tournament. And I write down who borrows them. Every time."
+  end
+label Case
+  if flag FLAG_CASE_UNOVA_CLUE_KEYS goto Again
+  say "The office key? Let me see my log... Here. The night of the second booking. The clerk, Mr. Calloway, at nine at night."
+  say "Nobody books a hall at nine at night. I wrote it down all the same. I write everything down."
+  setflag FLAG_CASE_UNOVA_CLUE_KEYS
+  text "{player} noted the key log with the clerk out after hours."
+  end
+label Again
+  say "Nine at night, the office key, Mr. Calloway. It's all in my log."
+  end
+label Thanks
+  say "The office key stays on its hook after hours now. I check it twice a night."
+  end
+
+script CaseUnovaIsidore
+  face self player
+  speaker "Isidore"
+  if flag FLAG_CASE_UNOVA_CULPRIT end
+  scene "IsidoreFaced"
+  say "Ah. Looker's investigator. You'll have seen my little smudge, then. One afternoon, two fees. It seemed so tidy."
+  say "Well, this is the World Tournament. Disputes here are settled one way. Shall we?"
+  battle self as "case_unova_isidore"
+  say "...Eliminated in the first round. Very well. I'll refund the second fee and resign the stamp. Tell Looker, please."
+  setflag FLAG_CASE_UNOVA_CULPRIT
+  clearflag FLAG_CASE_UNOVA_ISIDORE_WAITS
+  hide self
+  endscene
+  end

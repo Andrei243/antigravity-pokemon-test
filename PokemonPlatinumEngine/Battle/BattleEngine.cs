@@ -779,6 +779,8 @@ public partial class BattleEngine
             case TrainersStand trainers:
                 Anim.EnemyTrainer = LookOf(trainers.First, 0);
                 if (trainers.Second != null) Anim.EnemyTrainer2 = LookOf(trainers.Second, 1);
+                // A Battle Royal's third stands too, on the ring's third platform (the log's event names two)
+                if (IsRoyal && Trainers.Count > 2) Anim.EnemyTrainer3 = LookOf(Trainers[2].TrainerClass, 2);
                 break;
             case Seen seen:
                 // The Pokédex isn't told of what is met in the catching lesson or the Battle Frontier (BattleSystem_DexFlagSeen)

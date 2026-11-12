@@ -1,0 +1,19 @@
+{
+  "note": "Gemini TTS for the packs in other languages than English (generate --engine gemini --language ro). Each voice is one of Gemini's prebuilt voices with tags of delivery in brackets before the line, which Gemini follows and does not read aloud (a sentence of direction is read aloud). A voice not listed here gets a voice and tags by rule from its brief in cast.json (GeminiEngine.ByRule). The key is GEMINI_API_KEY.",
+  "model": "gemini-3.8-flash-tts",
+  "voices": {
+    "rowan": { "voice": "Algenib", "tags": "elderly professor, deep, gruff, stern, slow and deliberate" },
+    "mom": { "voice": "Sulafat", "tags": "warm mother, easy-going, gently teasing" },
+    "rival": { "voice": "Puck", "tags": "teenage boy, fast, loud, impatient, excitable" },
+    "cynthia": { "voice": "Kore", "tags": "young woman, calm, poised, thoughtful, soft and warm" },
+    "looker": { "voice": "Charon", "tags": "detective, hushed, theatrical, very serious" },
+    "assistant_boy": { "voice": "Achird", "tags": "teenage boy, polite, keen, a little formal" },
+    "assistant_girl": { "voice": "Leda", "tags": "teenage girl, bright, friendly, quick" },
+    "cyrus": { "voice": "Alnilam", "tags": "cold, flat, measured, slow, never raises his voice" },
+    "rival_mom": { "voice": "Callirrhoe", "tags": "brisk, fond, a little exasperated, quick" },
+    "mars": { "voice": "Laomedeia", "tags": "young woman, sharp, impatient, sing-song sneer" },
+    "jupiter": { "voice": "Despina", "tags": "young woman, cool, dry, sultry, drawling" },
+    "saturn": { "voice": "Iapetus", "tags": "young man, calm, analytical, polite" },
+    "roark": { "voice": "Orus", "tags": "young man, confident, plain-spoken, friendly challenge" }
+  }
+}

@@ -159,6 +159,26 @@
           "Ceva mare, care nu iese niciodată la suprafață. Un pescar cu o undiță destul de bună ar putea afla ce."
         ]
       }
+    },
+    "villa_caretaker": {
+      "name": {
+        "en": [
+          "Caretaker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gible_girl": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

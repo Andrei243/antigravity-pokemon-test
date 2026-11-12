@@ -16,9 +16,11 @@ public sealed record HallOfFameMember(
 
 /// <summary>
 /// A team entered into the Hall of Fame, and the day it was; and the run timer's real and game times as the team
-/// entered (plan 13 · V10), null in a record from before the timer.
+/// entered (plan 13 · V10), null in a record from before the timer; the region whose Hall of Fame it entered (plan 41 · EG2),
+/// null in a record from before the hall of Champions; and the number the PC shows it under, 0 where it is worked out from the count.
 /// </summary>
-public sealed record HallOfFameEntry(DateTime Date, IReadOnlyList<HallOfFameMember> Team, double? RunSeconds = null, double? GameSeconds = null);
+public sealed record HallOfFameEntry(DateTime Date, IReadOnlyList<HallOfFameMember> Team, double? RunSeconds = null, double? GameSeconds = null,
+    string? Region = null, int Number = 0);
 
 /// <summary>
 /// The Hall of Fame's records (plan 06 · R12; <c>hall_of_fame_entries.c</c>): the last thirty teams to enter it,
@@ -45,33 +47,72 @@ public sealed class HallOfFame
     /// Enters a team (<c>ClearGame_AddHallOfFameEntry</c>): its Pokémon in the team's order, each with whose it
     /// is, and the run timer's times (plan 13 · V10) where it was given them. Nothing more is kept once 9,999 have entered.
     /// </summary>
-    public void Enter(Party party, Func<Pokemon, (string Name, int Id)> trainerOf, DateTime now, (double Real, double Game)? time = null)
+    public void Enter(Party party, Func<Pokemon, (string Name, int Id)> trainerOf, DateTime now, (double Real, double Game)? time = null, string? region = null)
     {
         if (Total >= MostEver) return;
         Debut ??= now;
-        // An Egg doesn't enter (the original leaves Eggs out of the record; plan 06 · R15)
-        var team = party.Members.Where(p => !p.IsEgg).Select(p =>
+        var entry = new HallOfFameEntry(now.Date, TeamOf(party, trainerOf), time?.Real, time?.Game, region, Total + 1);
+        entries.Add(entry);
+        if (entries.Count > Kept) entries.RemoveAt(0);
+        Total++;
+        // Each region's first team is kept beyond the thirty (plan 41 · EG2), for the hall of Champions' plinths
+        if (region != null && !firsts.ContainsKey(region)) firsts[region] = entry;
+    }
+
+    /// <summary>A team as the record keeps it: its Pokémon in the team's order, each with whose it is; an Egg doesn't enter (the original leaves Eggs out, plan 06 · R15).</summary>
+    public static List<HallOfFameMember> TeamOf(Party party, Func<Pokemon, (string Name, int Id)> trainerOf) =>
+        party.Members.Where(p => !p.IsEgg).Select(p =>
         {
             var (name, id) = trainerOf(p);
             return new HallOfFameMember(p.Species.Name, p.Form, p.Level, p.Nickname, p.Gender, p.IsShiny, p.Personality, name, id,
                 p.Moves.Select(m => m.Name).ToList());
         }).ToList();
-        entries.Add(new HallOfFameEntry(now.Date, team, time?.Real, time?.Game));
-        if (entries.Count > Kept) entries.RemoveAt(0);
-        Total++;
-    }
 
     /// <summary>The teams newest first, each with the number the PC shows it under (the newest is the count).</summary>
     public IEnumerable<(int Number, HallOfFameEntry Entry)> NewestFirst() =>
         entries.AsEnumerable().Reverse().Select((e, i) => (Total - i, e));
 
+    private readonly Dictionary<string, HallOfFameEntry> firsts = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Each region's first team to enter its Hall of Fame (plan 41 · EG2), kept however many teams enter after it, by the region's id.</summary>
+    public IReadOnlyDictionary<string, HallOfFameEntry> Firsts => firsts;
+
+    /// <summary>The regions with a team in the record, kept or first, in the order <paramref name="order"/> gives (the chain's).</summary>
+    public IReadOnlyList<string> Regions(IEnumerable<string> order)
+    {
+        var have = entries.Select(e => e.Region).OfType<string>().Concat(firsts.Keys).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        return order.Where(have.Contains).ToList();
+    }
+
+    /// <summary>Whether any team kept entered before a team's region was recorded (an older save): the hall's EARLIER TEAMS.</summary>
+    public bool HasEarlier => entries.Any(e => e.Region == null);
+
+    /// <summary>
+    /// A region's teams newest first, each with its number (plan 41 · EG2): the kept teams of that region, and its first
+    /// team where thirty later teams have pushed it out of the kept ones. With a null region, the teams that entered
+    /// before a team's region was recorded.
+    /// </summary>
+    public IReadOnlyList<(int Number, HallOfFameEntry Entry)> Of(string? region)
+    {
+        var kept = NewestFirst().Where(t => string.Equals(t.Entry.Region, region, StringComparison.OrdinalIgnoreCase)).ToList();
+        if (region != null && firsts.TryGetValue(region, out var first) && !entries.Contains(first))
+            kept.Add((first.Number, first));
+        return kept;
+    }
+
     /// <summary>Brings back what a save kept.</summary>
-    public void Restore(int total, DateTime? debut, IEnumerable<HallOfFameEntry> kept)
+    public void Restore(int total, DateTime? debut, IEnumerable<HallOfFameEntry> kept, IEnumerable<HallOfFameEntry>? keptFirsts = null)
     {
         entries.Clear();
         entries.AddRange(kept.TakeLast(Kept));
         Total = Math.Max(total, entries.Count);
         Debut = debut;
+        firsts.Clear();
+        foreach (var first in keptFirsts ?? Enumerable.Empty<HallOfFameEntry>())
+            if (first.Region != null) firsts[first.Region] = entries.FirstOrDefault(e => e == first) ?? first;
+        // A first that is still among the kept is the same team, so the hall doesn't show it twice
+        foreach (var e in entries)
+            if (e.Region != null && firsts.TryGetValue(e.Region, out var f) && f.Number == e.Number && f.Date == e.Date) firsts[e.Region] = e;
     }
 }
 

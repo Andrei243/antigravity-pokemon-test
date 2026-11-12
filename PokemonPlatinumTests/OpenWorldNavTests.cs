@@ -438,4 +438,33 @@ public class OpenWorldNavTests
         Assert.Contains(withKerb.Links, l => l.To == onTop && l.OffMesh && (l.Flags & OpenNavFlags.Drop) == 0);
         Assert.Contains(withKerb.Links, l => l.From == onTop && l.OffMesh);
     }
+
+    [Fact]
+    public void ARowOfSolidTrunksAcrossTheTunnelsMouthIsWalkedRoundAndTreesWithoutTrunksAreNot()
+    {
+        // Trunks 0.75 m apart across the west mouth (a gap of 0.31 m between posts, under the capsule's 0.7 m): the mesh
+        // goes round as it does round the gate; the same trees as scenery change nothing of the mesh
+        var row = new List<OpenTree>();
+        for (double z = -12; z <= 12.01; z += 0.75)
+            row.Add(new OpenTree(OpenPos.Millimetres(-37.5), OpenPos.Millimetres(z), 0, OpenTreeKind.Pine, 1000, 0, 0) { Trunk = true });
+        // The game's ground has the posts after its boxes, and their feet on the tunnel's floor
+        var chunks = level0.Value.ToDictionary(c => (c.ChunkX, c.ChunkZ));
+        var ground = new OpenGround((x, z) => chunks.GetValueOrDefault((x, z)), null, null, row);
+        output.WriteLine($"{ground.Trunks.Count} posts of {row.Count} trees");
+        // A tree whose foot is on no ground (in the rock either side of the mouth) has none
+        Assert.InRange(ground.Trunks.Count, 8, row.Count);
+        Assert.All(ground.Trunks, p => Assert.True(p.Pillar && p.Min.MetresY < 0.5 && p.Max.MetresY > 3.5, p.ToString()));
+        var withTrunks = new NavReport();
+        var mesh = NavBake.Build(level0.Value, report: withTrunks, trees: row);
+        Assert.True(withTrunks.Walled > nav.Value.Report.Walled, $"walled {withTrunks.Walled} with the trunks, {nav.Value.Report.Walled} without");
+        // No polygon between the posts, and no step over the ground slips between them (the rays above would)
+        Assert.Null(mesh.PolygonAt(OpenPos.FromMetres(-37.5, 0, -0.3)));
+        var before = On(-41, 0, 3); var after = On(-34, 0, 3);
+        var round = NavPath.Find(mesh, before, after);
+        Assert.NotNull(round);
+        output.WriteLine($"round the trunks {round!.Length:0.0} m: {Told(round)}");
+        Assert.True(round.Length > 20, Told(round));
+        var scenery = row.Select(t => t with { Trunk = false }).ToList();
+        Assert.Equal(Mesh.Bytes(), NavBake.Build(level0.Value, trees: scenery).Bytes());
+    }
 }

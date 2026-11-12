@@ -332,12 +332,12 @@ public class MountTests
         Assert.Equal(new[] { MovementGrants.Dash, MovementGrants.Swim, MovementGrants.HighJump, MovementGrants.Glide, MovementGrants.Climb },
             MountRules.Powers.Select(p => p.Power));
 
-        // The forms the rig draws, each a form of the data
+        // The forms the rig draws, each a form of the data (plan 30 · FM13: ridden or not; MountRigTests holds which)
         foreach (int mount in new[] { MountRules.Koraidon, MountRules.Miraidon })
             foreach (var stance in Enum.GetValues<OpenStance>())
-                foreach (bool moving in new[] { false, true })
+                foreach (bool ridden in new[] { false, true })
                 {
-                    string form = MountRules.FormFor(mount, stance, moving)!;
+                    string form = MountRules.FormFor(mount, stance, ridden)!;
                     Assert.StartsWith(MountRules.SpeciesOf(mount)!, form);
                     Assert.Equal(MountRules.SpeciesOf(mount), PokemonPlatinumEngine.Data.PokemonDatabase.SpeciesOfForm(form)?.Name);
                 }

@@ -174,5 +174,105 @@
         "Cum vrei! O apărare bună începe de la ușa din față, zic eu mereu."
       ]
     }
+  ],
+  "VillaCaretaker": [
+    {
+      "en": [
+        "Someone keeps raiding the villa's larder before every party. Everyone blames that little Gible down the road."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're helping Looker? Then look at this label from the last crate. It says the sixth, but the ferry only brought it on the ninth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoever wrote it put down the day it should have come, not the day it did."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the crate label with the wrong date."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those labels never match the ferry's days. Odd, isn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The larder's full and nobody blames the Gible any more. The parties are back on!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GibleGirl": [
+    {
+      "en": [
+        "My Gible gets the blame for everything around here. It only ever chews on its own tail!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're looking into the larder? Good! They say my Gible bit the crates open. Come and see the marks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two straight cuts, the same on every crate. A Gible's teeth are tiny and crooked. That's a tool, not a bite!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the bite marks too even for a Gible."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Straight cuts, every one. My Gible couldn't do that if it tried."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nobody blames my Gible now. It's been chewing its tail all morning to celebrate."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

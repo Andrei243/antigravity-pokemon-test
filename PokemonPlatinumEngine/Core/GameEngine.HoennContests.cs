@@ -72,6 +72,8 @@ public partial class GameEngine
         {
             flow.ScriptAnswer = outcome.Placement;
             HoennContestRules.Record(outcome, round.Appealers[screen.Player].Pokemon, PlayerIdentity.Name, flow.HoennContests);
+            // A contest won counts for the Week's Work (plan 41 · EG6)
+            if (outcome.Won) TellTheBoard(MissionEventKind.ContestWin);
             foreach (var rival in round.Appealers.Where(a => !a.IsPlayer)) flow.Pokedex.RegisterSeen(rival.Pokemon);
             if (outcome.Won) flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.WonContest);
         }

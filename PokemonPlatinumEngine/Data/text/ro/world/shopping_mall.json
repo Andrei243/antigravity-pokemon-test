@@ -351,6 +351,26 @@
           "Vânzătoarea"
         ]
       }
+    },
+    "shopping_mall.TrainingTeacher": {
+      "name": {
+        "en": [
+          "Teacher Lenz"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "shopping_mall.TeraKeeper": {
+      "name": {
+        "en": [
+          "Tera Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

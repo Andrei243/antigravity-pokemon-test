@@ -5,7 +5,7 @@
   "area": "celadon_department_store_1f",
   "bgmTrack": "kanto/celadon",
   "people": {
-    "t07r0101_delivery": { "name": "Gift Runner", "script": "Courier" },
+    "t07r0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t07r0101_gswoman6": {
       "name": "Receptionist",
       "still": true,

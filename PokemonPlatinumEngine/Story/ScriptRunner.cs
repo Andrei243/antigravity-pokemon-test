@@ -357,7 +357,7 @@ public sealed partial class ScriptRunner
         Op.Music or Op.Fanfare or Op.Sound or Op.Cry => false,
         // The screens
         Op.Starter or Op.Shop or Op.Pc or Op.Travel or Op.Wardrobe or Op.ChoosePokemon or Op.ChooseItem or Op.Credits or Op.Hatch => true,
-        Op.HallOfFame => i.Name == "show",
+        Op.HallOfFame => i.Name is "show" or "look",
         // The game written to its save is the player's to see
         Op.Save => true,
         // Wild Pokémon, the day's events, the berries, the team: asked and changed without a screen, but a tree's battle
@@ -380,7 +380,9 @@ public sealed partial class ScriptRunner
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
-        Op.Train => i.Name == "drill" || i.Name == "peak" && i.Other != "check",
+        Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
+        // A power is learned or granted without a screen (plan 36 · TR8)
+        Op.Power => false,
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
@@ -436,6 +438,13 @@ public sealed partial class ScriptRunner
         Op.Charm => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
         Op.Gift => i.Name == "open",
+        // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
+        Op.Circuit => false,
+        Op.Deduce => true,
+        // Pennant Hall: a pitch's question, the goods' counter and a guest's battle are the player's; the rest only counts (plan 41 · EG3)
+        Op.Plaza => i.Name is "pitch" or "shop" or "battle",
+        // The Week's Work: the board is a screen the player reads; the rest only counts and pays (plan 41 · EG6)
+        Op.Missions => i.Name == "open",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1080,6 +1089,12 @@ public sealed partial class ScriptRunner
                     host.Open(ScriptScreen.Ceremony, Subject);
                     break;
                 }
+                // "halloffame look <region>": the record on one region's teams (plan 41 · EG2), from a plinth of the Laurel Gallery
+                if (i.Name == "look")
+                {
+                    host.Open(ScriptScreen.HallOfFame, Subject, i.Other);
+                    break;
+                }
                 // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears its region's Champion Ribbon (plan 06
                 // · R17b; plan 41 · EG2: Hoenn's, Kalos's and Alola's their own, the rest Sinnoh's)
                 RibbonRules.GiveChampion(host.Party, host.Region);
@@ -1511,6 +1526,10 @@ public sealed partial class ScriptRunner
             case Op.Train:
                 TrainCommand(i);
                 break;
+            // The powers (plan 36 · TR8)
+            case Op.Power:
+                PowerCommand(i);
+                break;
             // A friend's trainer of the friends' hall (plan 13 · V23)
             case Op.Friend:
                 FriendCommand(i);
@@ -1615,6 +1634,20 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+            case Op.Circuit:
+                CircuitCommand(i);
+                break;
+            case Op.Deduce:
+                Deduce(i);
+                break;
+
+            // Pennant Hall and the Week's Work (plan 41 · EG3, EG6)
+            case Op.Plaza:
+                PlazaCommand(i);
+                break;
+            case Op.Missions:
+                MissionsCommand(i);
                 break;
 
             // The gift box (plan 40 · GE7)
@@ -2732,6 +2765,8 @@ public sealed partial class ScriptRunner
             "taste" => lastTaste,
             // Hoenn's Safari Zone's feeders (plan 21 · H11, part d): the Pokéblock lying on the one before the player
             "feeder" => lastFeeder,
+            // Pennant Hall (plan 41 · EG3): the pennants held
+            "pennants" => (host.Plaza?.Coins ?? 0).ToString("N0"),
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

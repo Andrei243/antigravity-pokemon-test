@@ -1,0 +1,14 @@
+{
+  // The Laurel Circuit's final (plan 41 · EG4; docs/data-files.md, "The Laurel Circuit"): each finished region's Champion,
+  // in the chain's order, on the team they bring to the Laurel Court. Written by hand and read strictly. A row's person
+  // is who stands for them in Hub_Arena (the herald calls them forward one by one), their lines in
+  // the court's script. The later regions add their rows as they are finished (Alola, Galar, Paldea).
+  "rows": [
+    { "region": "Sinnoh", "team": "champion_cynthia_beyond", "look": "cynthia", "person": "cynthia" },
+    { "region": "Kanto", "team": "kanto_champion_beyond", "look": "blue", "person": "rival" },
+    { "region": "Johto", "team": "johto_champion_lance_beyond", "look": "lance", "person": "lance" },
+    { "region": "Hoenn", "team": "hoenn_wallace_beyond", "look": "wallace", "person": "wallace" },
+    { "region": "Unova", "team": "unova_champion_iris_beyond", "look": "iris", "person": "iris" },
+    { "region": "Kalos", "team": "kalos_diantha_rematch", "look": "diantha", "person": "diantha" }
+  ]
+}

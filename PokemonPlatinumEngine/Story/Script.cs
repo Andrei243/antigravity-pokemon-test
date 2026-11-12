@@ -192,6 +192,17 @@ public enum Op
     Facility,
     // The gift box (plan 40 · GE7): what waits at a Gift Runner, the box opened, a gift handed over, words told, a backdrop given
     Gift,
+    // The Laurel Circuit (plan 41 · EG4): begun at its desk, its stamps, its level, the final's Champions and the final won
+    Circuit,
+    // A case's deduction at Looker's desk (plan 41 · EG7): the field's question over the clues found, RESULT 1 for the one that answers
+    Deduce,
+    // The powers (plan 36 · TR8): a teacher's kinds learned at a level by the Halls of Fame entered, or one granted outright
+    Power,
+    // Pennant Hall, the hub's plaza (plan 41 · EG3): its rank and pennants, a stall set out at a pitch, a keeper's stall and
+    // its goods, the day's guests, their word and their battle
+    Plaza,
+    // The Week's Work, the hub's board of missions (plan 41 · EG6): the board read and opened, a timed mission begun, the rewards claimed
+    Missions,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

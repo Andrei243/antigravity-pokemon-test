@@ -253,6 +253,11 @@ public class ScriptTests
           train prize
           train peak check
           train peak
+          train tera check
+          train tera
+          power level
+          power learn
+          power grant exp 2 10
           photo take
           photo count
           globallink check
@@ -350,6 +355,7 @@ public class ScriptTests
           frontier prize items
           frontier prize machines
           frontier prize training
+          frontier prize tera
           frontier buy
           frontier records tower
           frontier print tower
@@ -862,11 +868,34 @@ public class ScriptTests
           trade board open
           trade board 2
           trade blind
+          plaza open
+          plaza rank
+          plaza next
+          plaza coins
+          plaza pitches
+          plaza pitch 2
+          plaza give 10
+          plaza spend 5
+          plaza guests
+          plaza stall
+          plaza shop
+          plaza greet
+          plaza battle
+          missions read
+          missions open
+          missions begin 4
+          missions waiting
+          missions claim
           walkto player cavern_east fast
           placeat player tunnel_west
           faceto player cavern_middle
           warpto "OpenLab" hill_foot
           camera look cavern_middle nowait
+          halloffame look Kanto
+          circuit begin
+          circuit final Sinnoh
+          circuit won
+          deduce sinnoh 1
         script Other
           end
         """;

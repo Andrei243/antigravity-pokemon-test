@@ -35,14 +35,15 @@ public class KitchenTests
         Assert.Equal(10, MaterialTable.All.Count(m => m.Kind == MaterialKind.Pantry));
         // Every power a dish starts is one something reads
         Assert.All(Meals.Table.Dishes.Where(d => d.Power != null), d => Assert.Contains(d.Power!.Value, PowerTable.Read));
-        // The check finds a dish that starts a power nothing reads, and one that wants what no pantry sells
+        // The check finds a dish that wants what no pantry sells (since plan 36 · TR7 every kind has a reader, so no dish
+        // can start a power nothing reads: PowerTable.Read is every kind)
+        Assert.Equal(Enum.GetValues<PowerKind>().Length, PowerTable.Read.Count);
         var broken = new KitchenRecipes
         {
             Plain = "campStew", Grades = Meals.Table.Grades,
             Dishes = { new KitchenDish { Id = "campStew" }, new KitchenDish { Id = "expStew", Power = PowerKind.Exp, Needs = { new KitchenNeed { Material = "softFluff" } } } }
         };
         var found = Meals.Problems(broken).ToList();
-        Assert.Contains(found, p => p.Name == "expStew" && p.What.Contains("nothing reads"));
         Assert.Contains(found, p => p.Name == "expStew" && p.What.Contains("no good of the pantry"));
     }
 

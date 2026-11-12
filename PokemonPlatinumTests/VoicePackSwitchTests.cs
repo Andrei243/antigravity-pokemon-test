@@ -46,8 +46,7 @@ public sealed class VoicePackSwitchTests : IDisposable
         Assert.Equal(Path.GetFullPath(folder), launch.VoicePack);
         Assert.Equal(Path.GetFullPath(folder), Parse("--voices=" + folder).VoicePack);
 
-        var settings = new GameSettings();
-        Assert.Equal(VoiceMode.Off, settings.Voices);
+        var settings = new GameSettings { Voices = VoiceMode.Off };
         string before = settings.ToFile();
         launch.ApplyTo(settings);
         Assert.Equal(VoiceMode.All, settings.Voices);

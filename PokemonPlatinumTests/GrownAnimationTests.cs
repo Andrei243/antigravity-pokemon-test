@@ -58,7 +58,7 @@ public class GrownAnimationTests
         var grownInputs = plain with
         {
             RunBlend = 0.7f, Stride = 2f, Lean = 0.1f, StepTurn = 0.5f, StepTurnAngle = 2f, Start = 0.5f, Stop = 0.5f,
-            Talking = true, Riding = Riding.Mount
+            Talking = true, Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.3f
         };
         var a = new SkeletonPose(rig.Skeleton.Count);
         var b = new SkeletonPose(rig.Skeleton.Count);
@@ -415,6 +415,20 @@ public class GrownAnimationTests
         return false;
     }
 
+    // Astride a mount's width (plan 30 · FM13) the thighs roll out further than the old 0.34, and the crotch's edges on the
+    // middle line stretch past four times in a few places (a weight of the grown sculpt's, owed to FM4's follow-up): the test
+    // holds them under MostAtTheCrotch for each clip, and nothing else may tear
+    private static bool Astride(string clip) => clip is "astride" or "dash" or "glide" or "ride climbing";
+
+    /// <summary>The most edges of any part the crotch may stretch in one astride clip.</summary>
+    private const int MostAtTheCrotch = 60;
+
+    private static bool AtTheCrotch(CharacterRig rig, Vector3 p)
+    {
+        var legs = GrownAnimation.LegsOf(rig.Skeleton);
+        return MathF.Abs(p.X) < 0.04f && MathF.Abs(p.Y - (legs.HipY - 0.06f * legs.Size)) < 0.12f;
+    }
+
     /// <summary>A mesh's vertices and normals as a pose carries them.</summary>
     private static (Vector3[] At, Vector3[] Normal) Skinned(SdfMesh mesh, Matrix4x4[] skin)
     {
@@ -520,7 +534,14 @@ public class GrownAnimationTests
             ("sit", new CharacterPose { Stance = Stance.Sit, Time = 0.4f }), ("sit on the ground", new CharacterPose { Stance = Stance.SitGround, Time = 0.4f }),
             ("step-turn", new CharacterPose { StepTurn = 0.25f, StepTurnAngle = 2.5f, Time = 0.4f }), ("hop", new CharacterPose { Hop = 0.5f, Time = 0.4f }),
             ("surf", new CharacterPose { Riding = Riding.Surf, Time = 0.4f }), ("bicycle", new CharacterPose { Riding = Riding.Bicycle, Walk = 0.3f, Time = 0.4f }),
-            ("mount", new CharacterPose { Riding = Riding.Mount, RunBlend = 1f, Time = 0.4f }), ("cheer", new CharacterPose { Emote = Emote.Cheer, EmoteTime = 0.7f, Time = 0.4f }),
+            ("mount", new CharacterPose { Riding = Riding.Mount, RunBlend = 1f, Time = 0.4f }),
+            // Plan 30 · FM13: astride a mount's width, and the ride's four stances
+            ("astride", new CharacterPose { Riding = Riding.Mount, Astride = 0.28f, Time = 0.4f }),
+            ("dash", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Dash, RunBlend = 1f, Astride = 0.28f, Time = 0.4f }),
+            ("ride swimming", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Swim, Astride = 0.28f, Time = 0.4f }),
+            ("glide", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.28f, Time = 0.4f }),
+            ("ride climbing", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Climb, Astride = 0.28f, Time = 0.4f }),
+            ("cheer", new CharacterPose { Emote = Emote.Cheer, EmoteTime = 0.7f, Time = 0.4f }),
             ("wave", new CharacterPose { Emote = Emote.Wave, EmoteTime = 0.8f, Time = 0.4f }), ("throw", new CharacterPose { Emote = Emote.Throw, EmoteTime = CharacterAnimation.ThrowRelease, Time = 0.4f })
         };
         var parts = new List<(string, SdfMesh)> { ("body", rig.Mesh), ("outline", rig.Shell) };
@@ -536,7 +557,7 @@ public class GrownAnimationTests
                 for (int v = 0; v < mesh.VertexCount; v++)
                     for (int k = 0; k < 4; k++)
                         at[v] += Vector3.Transform(mesh.Positions[v], skin[mesh.BoneIndices[v * 4 + k]]) * mesh.BoneWeights[v * 4 + k];
-                int torn = 0, armpit = 0;
+                int torn = 0, armpit = 0, crotch = 0;
                 Vector3 where = default;
                 for (int i = 0; i < mesh.Indices.Length; i += 3)
                     for (int k = 0; k < 3; k++)
@@ -545,10 +566,13 @@ public class GrownAnimationTests
                         float now = Vector3.Distance(at[a], at[b]);
                         if (now <= 0.02f || now <= 4f * Vector3.Distance(mesh.Positions[a], mesh.Positions[b])) continue;
                         if (part.StartsWith("clothes", StringComparison.Ordinal) && ArmsUp(name) && AtTheArmpit(rig, mesh.Positions[a]) && AtTheArmpit(rig, mesh.Positions[b])) armpit++;
+                        else if (Astride(name) && AtTheCrotch(rig, mesh.Positions[a]) && AtTheCrotch(rig, mesh.Positions[b])) crotch++;
                         else { torn++; where = mesh.Positions[a]; }
                     }
                 if (armpit > 0) output.WriteLine($"{type}: {armpit} edges of the {part} stretch at the armpit in the {name}");
                 if (armpit > MostAtTheArmpit) failures.Add($"{armpit} edges of the {part} stretch at the armpit in the {name}, more than {MostAtTheArmpit}");
+                if (crotch > 0) output.WriteLine($"{type}: {crotch} edges of the {part} stretch at the crotch in the {name}");
+                if (crotch > MostAtTheCrotch) failures.Add($"{crotch} edges of the {part} stretch at the crotch in the {name}, more than {MostAtTheCrotch}");
                 if (torn > 0) failures.Add($"{torn} edges of the {part} in the {name}, one at {where}");
             }
         }

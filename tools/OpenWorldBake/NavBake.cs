@@ -85,10 +85,11 @@ public static class NavBake
 
     /// <summary>
     /// The mesh of a region's level-0 chunks (each <see cref="BakedChunk.Level"/> 0), with the map's boxes and its water
-    /// laid by hand. <paramref name="report"/>, if given, is filled with what was found.
+    /// laid by hand, and the solid trunks of <paramref name="trees"/> (<see cref="OpenTrunks"/>), pillars after the boxes as
+    /// the game's collision has them. <paramref name="report"/>, if given, is filled with what was found.
     /// </summary>
     public static OpenNavMesh Build(IEnumerable<BakedChunk> level0, IEnumerable<OpenBox>? boxes = null, IEnumerable<OpenWaterBox>? waters = null,
-        NavReport? report = null)
+        NavReport? report = null, IEnumerable<OpenTree>? trees = null)
     {
         report ??= new NavReport();
         var chunks = level0.OrderBy(c => c.ChunkZ).ThenBy(c => c.ChunkX).ToList();
@@ -99,7 +100,7 @@ public static class NavBake
             if (!byChunk.TryAdd((chunk.ChunkX, chunk.ChunkZ), chunk)) throw new ArgumentException($"chunk {chunk.ChunkX},{chunk.ChunkZ} given twice");
         }
         var boxList = boxes?.ToList() ?? new List<OpenBox>();
-        var ground = new OpenGround((x, z) => byChunk.GetValueOrDefault((x, z)), boxList, waters);
+        var ground = new OpenGround((x, z) => byChunk.GetValueOrDefault((x, z)), boxList, waters, trees);
 
         // ---------------------------------------------------------------- the triangles, and which are walked and passed
         var vertexId = new Dictionary<OpenPos, int>();
@@ -130,6 +131,8 @@ public static class NavBake
                     chunk.Vertex(chunk.Indices[t * 3]), chunk.Vertex(chunk.Indices[t * 3 + 1]), chunk.Vertex(chunk.Indices[t * 3 + 2]));
         for (int i = 0; i < boxList.Count; i++)
         {
+            // A pillar has no top (a trunk's post, OpenTrunks): nothing walks on it
+            if (boxList[i].Pillar) continue;
             // A box's top, as OpenGround makes it: its first two triangles
             var lo = boxList[i].Min; var hi = boxList[i].Max;
             OpenPos P(int k) => new((k & 1) == 0 ? lo.X : hi.X, (k & 2) == 0 ? lo.Y : hi.Y, (k & 4) == 0 ? lo.Z : hi.Z);
@@ -539,12 +542,36 @@ public static class NavBake
     /// feet there, is open: nothing across it at the knees or the head, and nothing in the column over the landing
     /// between it and the body's height over the higher of the two.
     /// </summary>
+    /// <summary>Whether the way on the ground from x0, z0 to x1, z1 passes within a body's radius of a trunk's post standing between two heights.</summary>
+    private static bool NearATrunk(IReadOnlyList<OpenBox> trunks, double x0, double z0, double x1, double z1, double low, double high)
+    {
+        double length = Math.Sqrt((x1 - x0) * (x1 - x0) + (z1 - z0) * (z1 - z0));
+        int steps = Math.Max(1, (int)Math.Ceiling(length / 0.05));
+        foreach (var post in trunks)
+        {
+            double minX = post.Min.MetresX, maxX = post.Max.MetresX, minZ = post.Min.MetresZ, maxZ = post.Max.MetresZ;
+            if (post.Max.MetresY < low || post.Min.MetresY > high) continue;
+            if (Math.Max(x0, x1) < minX - Body.Radius || Math.Min(x0, x1) > maxX + Body.Radius
+                || Math.Max(z0, z1) < minZ - Body.Radius || Math.Min(z0, z1) > maxZ + Body.Radius) continue;
+            for (int i = 0; i <= steps; i++)
+            {
+                double t = i / (double)steps, px = x0 + (x1 - x0) * t, pz = z0 + (z1 - z0) * t;
+                double ox = Math.Max(0, Math.Max(minX - px, px - maxX)), oz = Math.Max(0, Math.Max(minZ - pz, pz - maxZ));
+                if (ox * ox + oz * oz < Body.Radius * Body.Radius) return true;
+            }
+        }
+        return false;
+    }
+
     private static bool Open(OpenGround ground, double x, double y, double z, double dx, double dz, double s, double landing, bool drop)
     {
         double top = Math.Max(y, landing);
         foreach (double h in new[] { top + Body.StepUp + 0.1, top + Body.Height - 0.25 })
             if (ground.Raycast(new OpenVec(x, h, z), new OpenVec(dx, 0, dz), s) is not null) return false;
         double px = x + dx * s, pz = z + dz * s;
+        // A row of trunks (OpenTrunks) stands closer than a body is wide, and the rays above pass between its posts: the
+        // way over the ground keeps a body's radius off every post it passes (none where no tree has a trunk)
+        if (ground.Trunks.Count > 0 && NearATrunk(ground.Trunks, x, z, px, pz, Math.Min(y, landing), top + Body.Height)) return false;
         foreach (var (yy, _) in ground.Column(px, pz))
             if (yy > landing + (drop ? 0.05 : 0.02) && yy <= top + Body.Height) return false;
         return true;

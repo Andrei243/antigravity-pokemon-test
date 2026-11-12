@@ -294,7 +294,9 @@ public partial class GameEngine
         // What a critical capture's chance is read by, and the two charms a battle reads (plan 40 · GE5)
         CaughtSpecies = flow.Pokedex.CaughtCount,
         CatchingCharm = Charms.Held(flow.Bag, Charms.Catching),
-        ExpCharm = Charms.Held(flow.Bag, Charms.Exp)
+        ExpCharm = Charms.Held(flow.Bag, Charms.Exp),
+        // The powers in force as it begins (plan 36 · TR7): fixed for the battle, whatever wears off meanwhile
+        Powers = flow.Powers.ForBattle() is { IsEmpty: false } powers ? powers : null
     };
 
     /// <summary>The weather where the player stands: the open map's area's in an open map (plan 32 · OW7), the grid map's otherwise.</summary>
@@ -573,7 +575,18 @@ public partial class GameEngine
             for (int k = 0; k < trainers.Count; k++)
             {
                 var t = trainers[k];
+                // A League's team of a finished region while the Laurel Circuit runs is met at the circuit's one level in
+                // place of any mapping (plan 41 · EG4), lifted on a copy with its spread kept and its stages grown
+                // (and Grayfall Keep's teams, plan 41 · EG9, at the same level whenever they are fought)
+                if (ChampionsCircuit.Lifts(flow.Circuit, t.Id, flow.Story) || ChampionsCircuit.IsGatheringTeam(t.Id))
+                {
+                    trainers[k] = LevelLift.To(t, ChampionsCircuit.Level(flow.Circuit, flow.Story));
+                    mapped[k] = true;
+                    continue;
+                }
                 if (t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal)) continue;
+                // A team lifted to a level of the journey (plan 41 · EG3: Pennant Hall's guests) keeps the level it was lifted to
+                if (t.LevelsKept) continue;
                 if ((RematchLevels.For(t.Id, flow.Story, flow.BeganIn) ?? crossed) is not { } levels) continue;
                 trainers[k] = t.Relevelled(levels.Map, grow: true);
                 mapped[k] = true;
@@ -770,6 +783,8 @@ public partial class GameEngine
         {
             flow.Statistics.CountBattle(counted.Result, counted.IsTrainerBattle, counted.CaughtNewSpecies);
             flow.Statistics.Count(Statistics.Levelled, counted.LeveledUp.Count);
+            // ...and the Week's Work hears of a catch and a trainer beaten (plan 41 · EG6)
+            TellTheBoardOfABattle(counted);
         }
         // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
         KeepTheRecord(flow.Battle);

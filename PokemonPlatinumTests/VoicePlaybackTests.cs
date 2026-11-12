@@ -487,11 +487,11 @@ public sealed class VoicePlaybackTests : IDisposable
         Assert.Equal(rows.IndexOf(OptionRow.EnglishVoices) + 1, rows.IndexOf(OptionRow.Controls));
 
         var s = new GameSettings();
-        Assert.Equal(VoiceMode.Off, s.Voices);
+        Assert.Equal(VoiceMode.All, s.Voices); // everyone's unless chosen (the user's answer of 2026-11-10)
         Assert.False(s.LetVoicesFinish);
         var seen = new List<VoiceMode>();
         for (int i = 0; i < 3; i++) { OptionsScreen.Change(s, OptionRow.Voices, 1); seen.Add(s.Voices); }
-        Assert.Equal(new[] { VoiceMode.Story, VoiceMode.All, VoiceMode.Off }, seen);
+        Assert.Equal(new[] { VoiceMode.Off, VoiceMode.Story, VoiceMode.All }, seen);
         OptionsScreen.Change(s, OptionRow.VoiceVolume, -1);
         Assert.Equal(100 - GameSettings.VolumeStep, s.VoiceVolume);
         for (int i = 0; i < 30; i++) OptionsScreen.Change(s, OptionRow.VoiceVolume, 1);

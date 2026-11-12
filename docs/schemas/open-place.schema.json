@@ -635,6 +635,9 @@
           },
           "size": {
             "type": "number"
+          },
+          "trunk": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -677,6 +680,9 @@
           },
           "seed": {
             "type": "integer"
+          },
+          "trunks": {
+            "type": "boolean"
           }
         },
         "required": [

@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pennant Hall, the hub's plaza: its ranks, pitches, guests and stalls (Data/plaza.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "ranks": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "pitches": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "places": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "spots": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "y": {
+            "type": "integer"
+          },
+          "facing": {
+            "enum": [
+              "Down",
+              "Up",
+              "Left",
+              "Right"
+            ]
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "guestClasses": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "guestLooks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "guestWord": {
+      "type": "integer"
+    },
+    "guestWin": {
+      "type": "integer"
+    },
+    "stalls": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "keeper": {
+            "type": "string"
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rank": {
+            "type": "integer"
+          },
+          "awning": {
+            "type": "string"
+          },
+          "goods": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "item": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                },
+                "rank": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "item",
+                "price"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "keeper",
+          "awning"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "ranks",
+    "pitches",
+    "places",
+    "spots",
+    "guestClasses",
+    "guestWord",
+    "guestWin",
+    "stalls"
+  ],
+  "additionalProperties": false
+}

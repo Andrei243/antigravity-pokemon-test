@@ -263,6 +263,18 @@
       "dialog": [
         "Have you seen the sundial glow? They say it shines when Kalos is in danger."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

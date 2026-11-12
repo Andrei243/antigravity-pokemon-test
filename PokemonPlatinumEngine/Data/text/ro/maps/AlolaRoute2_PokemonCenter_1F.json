@@ -63,6 +63,24 @@
           "Verdant Cavern e chiar mai încolo pe drum. E încercarea Căpitanului Ilima. Ia ceva cu care să te vindeci!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

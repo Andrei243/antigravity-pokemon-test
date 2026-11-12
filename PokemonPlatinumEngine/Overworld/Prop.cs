@@ -339,6 +339,18 @@ public enum PropType
     /// </summary>
     ZygardeCell,
     /// <summary>
+    /// A plinth of the Laurel Gallery (plan 41 · EG2, EG4): pale stone with a laurel wreath of a region's colour on its face
+    /// and standing on its slab, our own drawing (<c>HubArt</c>); its region is the prop's <see cref="Prop.Model"/>. The
+    /// gallery is furnished with one for each region finished; the room's own tiles say that it blocks.
+    /// </summary>
+    Plinth,
+    /// <summary>
+    /// A team's banner in Grayfall Keep (plan 41 · EG9): a cloth of the team's colours of ours hung on the back wall over its
+    /// tile, its team the prop's <see cref="Prop.Model"/> (<c>HubArt</c>). It lies on the wall's row as a painting does and
+    /// blocks nothing.
+    /// </summary>
+    Banner,
+    /// <summary>
     /// The festivals' things (plan 40 · GE9; style guide, "Life", "Festivals"): things of the map shown by a festival's flag
     /// (<see cref="NPC.FestivalLanternsType"/> and its fellows), each a card of our own (<c>FestivalArt</c>) in the way like a
     /// person: paper lanterns on a string, Kanto's moon lantern, Snowpoint's lit pine, Floaroma's blossom arch, a stall's
@@ -372,6 +384,9 @@ public sealed class Prop
 
     /// <summary>For a prop placed by a model of the world: the model's short name, which picks among looks of one type.</summary>
     public string Model { get; init; } = "";
+
+    /// <summary>A colour a prop is drawn in where its kind takes one (a booth's awning: Pennant Hall's stalls, plan 41 · EG3), as <c>#rrggbb</c>; empty for its own.</summary>
+    public string Tint { get; init; } = "";
 
     /// <summary>Whether it blocks every tile it covers. A conveyor and its gantry stand over open ground: the world says which of their tiles block.</summary>
     // Lumiose City's tower (plan 23 · Z2) is appended past the decorations and blocks all the same: nothing walks through it

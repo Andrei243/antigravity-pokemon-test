@@ -99,7 +99,14 @@
     { "id": "grunt_pwt", "name": "Grunt", "npcType": "plasma_grunt", "x": 198, "y": 473, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNT_PWT" },
     { "id": "colress_pwt", "name": "Colress", "npcType": "colress", "x": 193, "y": 474, "facing": "Right", "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_PWT" },
     { "id": "hugh_pier", "name": "{rival}", "npcType": "hugh", "x": 196, "y": 488, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PWT_PIER" },
-    { "id": "cheren_pier", "name": "Cheren", "npcType": "cheren", "x": 198, "y": 488, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_PWT_PIER" }
+    { "id": "cheren_pier", "name": "Cheren", "npcType": "cheren", "x": 198, "y": 488, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_PWT_PIER" },
+    // The Open Door Agency's case in Unova (plan 41 · EG8, pwt.txt): the two organisers and the janitor on the plaza, and
+    // the hall's clerk Isidore Calloway by the door once Looker has sent the player after him
+    { "id": "case_unova_organiser", "name": "Organiser", "npcType": "gentleman", "x": 205, "y": 458, "facing": "Right", "script": "CaseUnovaOrganiser" },
+    { "id": "case_unova_rival", "name": "Organiser", "npcType": "lady", "x": 215, "y": 459, "facing": "Left", "script": "CaseUnovaRival" },
+    { "id": "case_unova_janitor", "name": "Janitor", "npcType": "janitor", "x": 213, "y": 455, "facing": "Down", "script": "CaseUnovaJanitor" },
+    { "id": "case_unova_isidore", "name": "Isidore Calloway", "npcType": "isidore", "x": 200, "y": 467, "facing": "Up", "script": "CaseUnovaIsidore",
+      "shownBy": "FLAG_CASE_UNOVA_ISIDORE_WAITS" }
   ],
   "signs": {
     "18": "Pokémon World Tournament\nThe stage where the world's strongest Trainers meet"

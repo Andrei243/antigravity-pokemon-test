@@ -180,8 +180,10 @@ public class SkyAndRoyalPlacesTests
 
         var talk = Talk(game, "royal_receptionist", Annex, 0);
         Assert.Contains($"royal {string.Join(" ", RoyalTeams)} Won", talk.Log);
-        Assert.Contains("First place", talk.Transcript[^1].Text);
-        // A Royal gives nothing: nobody beaten, no money
+        Assert.Contains(talk.Transcript, l => l.Text.Contains("First place"));
+        // First place earns two Battle Points at the desk, as Alola's Great Rank (rulings, "The Battle Royal")
+        Assert.Equal(2, talk.Frontier.BattlePoints);
+        // The battle itself gives nothing: nobody beaten, no money
         Assert.All(RoyalTeams, id => Assert.False(game.Story.HasDefeated(id)));
 
         // Offered again as often as the player likes

@@ -156,6 +156,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(shop.Name);
         shopInPoints = shop.InPoints;
+        shopInPennants = shop.InPoints && shop.PointsUnit == ShopScreen.PennantsUnit;
         bool selling = shop.Mode == ShopMode.Selling;
         Hints(sw - Margin, 44, Hint("shared.keys.z", shop.Mode == ShopMode.Choosing ? "shared.hints.choose" : selling ? "shared.hints.sell" : "shared.hints.buy"),
             Hint("shared.keys.esc", shop.Mode == ShopMode.Choosing ? "shared.hints.leave" : "shared.hints.back"));
@@ -185,7 +186,7 @@ internal static partial class ModernUi
         float rx = Margin + 920 + Gutter + slide, rw = sw - Margin * 2 - 920 - Gutter;
         var purse = new Rectangle(rx, ContentTop, rw, 132);
         Panel(purse, 34);
-        UiFonts.DrawCentered(Text.Of(shopInPoints ? "athlon.shop.purse" : "shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of(shopInPennants ? "hubPlaza.pennants" : shopInPoints ? "athlon.shop.purse" : "shop.money"), purse.X + 44, purse.Y + purse.Height / 2f, 26, Muted, UiWeight.Black);
         ShopAmountRight(purse.X + purse.Width - 44, purse.Y + purse.Height / 2f, money, 52, Ink);
 
         // ---- The chosen item

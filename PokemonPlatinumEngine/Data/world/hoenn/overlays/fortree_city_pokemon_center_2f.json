@@ -3,7 +3,7 @@
   "area": "fortree_city_pokemon_center_2f",
   "bgmTrack": "hoenn/fortree",
   "people": {
-    "mystery_gift_man": { "name": "Gift Runner", "script": "Courier" },
+    "mystery_gift_man": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "teala": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
     "teala_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
     "teala_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] }

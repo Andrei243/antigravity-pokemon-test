@@ -61,6 +61,38 @@ public class OpenWildGameTests
     }
 
     [Fact]
+    public void AWildPokemonThatNoticesThePlayerCriesOutOnceWithTheExclaimOverIt()
+    {
+        Headless.Play(engine =>
+        {
+            var (game, map) = Lab(engine);
+            var zone = map.Zones.Single(z => z.Name == "south_meadow");
+            game.PlaceOpen(map, On(map, 24, 22), OpenYaw.North);
+            Run(engine, 2);
+            Quiet(game, map);
+            // A curious Wooloo ten metres south, facing the player
+            var wooloo = game.OpenWild!.Put(map, zone, new OpenSlot("Wooloo", 5, 5, 1), 5, On(map, 24, 31.5), OpenYaw.North);
+            var heard = AudioManager.Listen();
+            try
+            {
+                bool exclaimed = false;
+                for (int f = 0; f < 60 * 2; f++)
+                {
+                    Run(engine, 1);
+                    exclaimed |= engine.GatherOpenFigures(game.OpenField!).Any(x => x.Key == "wild:" + wooloo.Id && x.Exclaiming);
+                }
+                Assert.True(exclaimed, "no \"!\" stood over the Wooloo");
+                Assert.Single(heard, h => h == "cry Wooloo");
+                Assert.Equal(GameState.Overworld, game.State);
+            }
+            finally
+            {
+                AudioManager.StopListening();
+            }
+        });
+    }
+
+    [Fact]
     public void AWildPokemonWalkedIntoIsMetAsTheGrassWouldMeetItAndIsGoneAfter()
     {
         Headless.Play(engine =>

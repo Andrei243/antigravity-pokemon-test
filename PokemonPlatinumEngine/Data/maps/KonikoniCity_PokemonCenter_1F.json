@@ -252,6 +252,18 @@
       "dialog": [
         "Olivia is the kahuna of Akala. Her grand trial is the last on this island, and she does not go easy."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

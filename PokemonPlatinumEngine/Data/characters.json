@@ -16,6 +16,29 @@
     "lass": { "hairColor": "#603c34", "hair": "Long", "top": "#ec6884", "accent": "#fcf0f4", "bottom": "#485ca8", "shoes": "#543834", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true },
     "clown": { "hairColor": "#ec483c", "hair": "Spiky", "top": "#fad640", "accent": "#ec483c", "bottom": "#4678dc", "shoes": "#ec483c", "stripes": true, "build": "Adult" },
     "looker": { "hairColor": "#3a2e2c", "hair": "Swept", "top": "#c4a876", "accent": "#544640", "bottom": "#46424a", "shoes": "#342a28", "coat": true, "build": "Adult", "height": 1.04 },
+    // The hub's people of plan 41 (EG2 to EG9), our own: Looker half-disguised as a clerk at the Open Door Agency (a visor,
+    // spectacles and a clerk's waistcoat over his own trousers); Ismene Quill, the Laurel Gallery's keeper of records, grey
+    // hair in a bun and spectacles over a long plum robe; Ferren Dray, the ferry captain of Sinnoh's case, in a navy coat
+    // and a captain's cap; Piers Lindqvist, the Laurel Court's herald, in a dark coat with a gold scarf
+    "looker_clerk": { "hairColor": "#3a2e2c", "hair": "Swept", "hat": "Visor", "hatColor": "#3c5a8c", "hatBand": "#3c5a8c", "top": "#e8e4d8", "accent": "#544640", "bottom": "#46424a", "shoes": "#342a28", "glasses": "#2a2a34", "vest": "#3c5a8c", "build": "Adult", "height": 1.04 },
+    "ismene": { "hairColor": "#8a8a9a", "hair": "Bun", "top": "#5a3a5e", "accent": "#e8dcc4", "bottom": "#5a3a5e", "shoes": "#2a2230", "eyes": "#5a4a6a", "glasses": "#c8a040", "robe": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "ferren": { "hairColor": "#6a4a2a", "hair": "Short", "hat": "Cap", "hatColor": "#2a3a5a", "hatBand": "#e8c040", "top": "#2a3a5a", "accent": "#e8c040", "bottom": "#2a2e3a", "shoes": "#2a2420", "mustache": true, "coat": true, "buttoned": true, "build": "Adult", "height": 1.06 },
+    // The culprits of the agency's cases in the other regions (plan 41 · EG8), our own: Dov Harlan, Vermilion's dockhand,
+    // in a knitted cap and a work vest; Mirelle Dunn, a Johto schoolteacher, hair in a bun and spectacles over a green
+    // cardigan and a skirt; Ottoline Marsh, a Hoenn skipper, long sun-pale hair under a navy cap and a white reefer
+    // coat; Isidore Calloway, the World Tournament's clerk, slick dark hair, spectacles and a waistcoat over a white
+    // shirt; Odile Ferrand, the Lumiose museum's restorer, hair in a bun and a scarf over a rust-coloured smock coat
+    "dov": { "hairColor": "#3a2a1e", "hair": "Short", "hat": "Cap", "hatColor": "#8a3a2a", "hatBand": "#e8d8b0", "top": "#4a6a8a", "accent": "#e8e0c8", "bottom": "#3a3a40", "shoes": "#2a2420", "vest": "#8a5a2a", "build": "Adult", "height": 1.04 },
+    "mirelle": { "hairColor": "#8a4a2a", "hair": "Bun", "top": "#3a6a5a", "accent": "#f0e8d0", "bottom": "#5a4a3a", "shoes": "#3a2a20", "glasses": "#6a4a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "ottoline": { "hairColor": "#d8ccb0", "hair": "Long", "hat": "Cap", "hatColor": "#2a4a6a", "hatBand": "#e8e8f0", "top": "#ece8e0", "accent": "#2a4a6a", "bottom": "#2a4a6a", "shoes": "#3a2a20", "coat": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "isidore": { "hairColor": "#2a2a30", "hair": "Swept", "top": "#f0f0f4", "accent": "#7a2a3a", "bottom": "#3a3a48", "shoes": "#1e1e24", "glasses": "#2a2a34", "vest": "#3a3a48", "build": "Adult", "height": 1.06 },
+    "odile": { "hairColor": "#2a1e1a", "hair": "Bun", "top": "#c86a3a", "accent": "#f4ead8", "bottom": "#3a3040", "shoes": "#2a2230", "coat": true, "scarf": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    // Celosia of Team Flare (plan 41 · EG9, Grayfall Keep), our own take: long orange hair, the team's white suit with its
+    // red trousers and tinted red glasses
+    "celosia": { "hairColor": "#e8902a", "hair": "Long", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#d8402a", "coat": true, "lashes": true, "build": "Adult" },
+    "piers": { "hairColor": "#c8b48a", "hair": "Swept", "top": "#2a2a4a", "accent": "#e8c040", "bottom": "#2a2a4a", "shoes": "#1e1e24", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    // A Gift Runner of the gift box (plan 40 · GE7, the user's 18b): a courier in a cap and a yellow scarf
+    "gift_runner": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#f0c446", "hatBand": "#3a4a6a", "top": "#3a4a6a", "accent": "#f0c446", "bottom": "#2e3448", "shoes": "#2a2420", "scarf": true, "build": "Adult" },
     // The leader of Team Galactic, met by the shore of Lake Verity (plan 02 · S4): our own take, a tall man with spiky blue hair in a long grey coat with a dark collar
     "cyrus": { "hairColor": "#425c9c", "hair": "Spiky", "top": "#848896", "accent": "#383a4a", "bottom": "#3c3e4e", "shoes": "#2c2c36", "eyes": "#2c3046", "coat": true, "build": "Adult", "height": 1.1 },
     // Oreburgh's Gym Leader (plan 02 · S5): our own take, a young miner with red hair under a yellow safety helmet, in a work coat and jeans
@@ -450,6 +473,7 @@
     // guide in a teal jacket over a white shirt, a satchel of timetables
     "hub_harbourmaster": { "hairColor": "#8a8a90", "hair": "Swept", "hat": "Cap", "hatColor": "#283454", "hatBand": "#e0b84a", "top": "#283454", "accent": "#e0b84a", "bottom": "#283454", "shoes": "#2a2420", "eyes": "#3a3a4a", "coat": true, "beard": true, "build": "Adult", "height": 1.06 },
     "hub_guide": { "hairColor": "#6a3a2a", "hair": "Ponytail", "top": "#2a8a8a", "accent": "#f4f4f2", "bottom": "#3a3e50", "shoes": "#4a3428", "eyes": "#3a4a5a", "bag": "#c8964a", "lashes": true, "blush": true, "build": "Adult" },
+    "plaza_manager": { "hairColor": "#d8d4cc", "hair": "Swept", "hat": "Fedora", "hatColor": "#2c2a3a", "hatBand": "#d65242", "top": "#7a2e34", "accent": "#e8c45a", "bottom": "#2c2a3a", "shoes": "#2a2420", "eyes": "#3a3a4a", "coat": true, "mustache": true, "bag": "#8a5a3a", "build": "Adult", "height": 1.08 },
     // Plan 23 · Z7: Ula'ula's, Poni's and the League's cast
     "sophocles": { "skin": "#d8a880", "hairColor": "#4a3a2a", "hair": "Short", "top": "#d8b84a", "accent": "#4a4a5a", "bottom": "#4a5a7a", "shoes": "#3a3a44", "eyes": "#3a2a24", "glasses": "#a8c8e8", "build": "Adult", "height": 0.92 },
     "acerola": { "skin": "#e0b08a", "hairColor": "#6a3a9a", "hair": "Long", "top": "#f6f6f8", "accent": "#6a3a9a", "bottom": "#4a2a6a", "shoes": "#2a2a34", "eyes": "#5a3a6a", "skirt": true, "lashes": true, "build": "Adult", "height": 0.9 },
@@ -520,6 +544,10 @@
     // cream blouse under an orange vest; and its tutor (plan 36 · TR9), grey-haired and moustached in a navy jacket
     "training_coach": { "hairColor": "#2a2420", "hair": "Swept", "top": "#e87040", "accent": "#f6f6f4", "bottom": "#2e3a5a", "shoes": "#f6f6f4", "stripes": true, "build": "Adult", "height": 1.04 },
     "training_clerk": { "hairColor": "#8a5a3a", "hair": "Bun", "top": "#f6f2ea", "accent": "#e87040", "bottom": "#2e3a5a", "shoes": "#3a2c24", "vest": "#e87040", "build": "Adult", "lashes": true },
+    // Plan 36 · TR5, TR8: the training club's Tera keeper, a woman in a crystal-blue coat with a prism's sash, and its
+    // teacher of powers, a man in the club's orange with a watch on his wrist
+    "tera_keeper": { "hairColor": "#e8eef8", "hair": "Bun", "top": "#5ab4e6", "accent": "#f0c84a", "bottom": "#2e3a5a", "shoes": "#f2f2f6", "coat": true, "scarf": true, "build": "Adult", "lashes": true },
+    "training_teacher": { "hairColor": "#4a3428", "hair": "Short", "top": "#f6f2ea", "accent": "#e87040", "bottom": "#2e3a5a", "shoes": "#3a2c24", "jacket": true, "glasses": "#3a3a44", "build": "Adult", "height": 1.02 },
     "training_tutor": { "hairColor": "#c8ccd6", "hair": "Swept", "top": "#2a3046", "accent": "#e8602a", "bottom": "#2a3046", "shoes": "#f2f2f6", "eyes": "#3a2a24", "mustache": true, "bushyBrows": true, "jacket": true, "build": "Elder", "height": 1.0 },
     // The townsfolk: a man in an olive vest over a cream shirt, a woman with a brown bun in a lavender top and a plum skirt
     "middle_aged_man": { "hairColor": "#5a4232", "hair": "Swept", "top": "#e8e2d0", "accent": "#8a7a5a", "bottom": "#5a4a3a", "shoes": "#3a2c24", "vest": "#6a7a4a", "build": "Adult", "height": 1.02 },

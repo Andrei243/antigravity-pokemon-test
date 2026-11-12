@@ -52,6 +52,8 @@ public partial class GameEngine
         if (flow.SuperContestScreen.Contest is { } contest && flow.ContestOutcome is { } outcome)
         {
             flow.ScriptAnswer = outcome.Placement;
+            // A contest won counts for the Week's Work (plan 41 · EG6)
+            if (outcome.Won && outcome.Mode == Models.SuperContests.ContestMode.Official) TellTheBoard(MissionEventKind.ContestWin);
             // The records and the winner's photograph (plan 06 · R17b; RECORD_SUPER_CONTEST_PARTICIPATIONS and its fellows)
             flow.ContestRecords.Count(outcome, contest.Player.Pokemon, flow.SuperContestScreen.Worn, PlayerIdentity.Name, GameClock.Today);
             if (!contest.IsPractice)

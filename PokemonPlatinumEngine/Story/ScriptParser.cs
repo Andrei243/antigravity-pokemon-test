@@ -680,7 +680,16 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Jobs, Line = line };
             case "halloffame":
                 // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
-                return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
+            {
+                // "halloffame look <region>" opens the record on one region's teams (plan 41 · EG2: the Laurel Gallery's
+                // plinths), "earlier" the teams from before a team's region was kept, "Circuit" the circuit's finals
+                string how = r.More ? r.OneOf("show", "look") : "";
+                if (how != "look") return new Instruction { Op = Op.HallOfFame, Line = line, Name = how };
+                string tab = r.Word("a region's id, earlier or Circuit");
+                if (tab != "earlier" && tab != Models.ChampionsCircuit.CircuitRegion && RegionDatabase.Get(tab) == null)
+                    throw r.Error($"there is no region '{tab}'");
+                return new Instruction { Op = Op.HallOfFame, Line = line, Name = how, Other = tab };
+            }
             case "travel":
             {
                 // "travel go" is the crossing itself, over a script's dark (plan 18 · W5: common.Crossing)
@@ -913,7 +922,7 @@ public static class ScriptParser
                 string which = what switch
                 {
                     // (and the later places' counters, plan 37's decision 6: Kiloude City's Battle Maison)
-                    "prize" => r.OneOf("items", "machines", "training", "maison", "tree"),
+                    "prize" => r.OneOf("items", "machines", "training", "tera", "maison", "tree"),
                     "records" or "print" or "printed" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
                     "judged" => r.OneOf("total", "best"),
                     _ => ""
@@ -1201,11 +1210,25 @@ public static class ScriptParser
             // `train prize`; drill and reset act on the Pokémon the last `choosepokemon` chose
             case "train":
             {
-                string what = r.OneOf("open", "drill", "reset", "prize", "peak");
-                if (what == "peak") return new Instruction { Op = Op.Train, Line = line, Name = what, Other = r.More ? r.OneOf("check") : "" };
+                string what = r.OneOf("open", "drill", "reset", "prize", "peak", "tera");
+                if (what is "peak" or "tera") return new Instruction { Op = Op.Train, Line = line, Name = what, Other = r.More ? r.OneOf("check") : "" };
                 if (what != "reset") return new Instruction { Op = Op.Train, Line = line, Name = what };
                 string stat = r.OneOf("all", "hp", "attack", "defense", "spatk", "spdef", "speed");
                 return new Instruction { Op = Op.Train, Line = line, Name = what, Other = stat };
+            }
+
+            // The powers (plan 36 · TR8): `power level`, `power learn`, `power grant exp 2 10` (a kind, a level, minutes of play)
+            case "power":
+            {
+                string what = r.OneOf("level", "learn", "grant");
+                if (what != "grant") return new Instruction { Op = Op.Power, Line = line, Name = what };
+                string kind = r.Text("a power's kind");
+                if (!System.Enum.TryParse<Models.PowerKind>(kind, true, out _)) throw r.Error($"'{kind}' is no power (Models/Powers.cs's PowerKind)");
+                int level = r.Int("a level");
+                if (level < 1 || level > Models.PowerTable.TopLevel) throw r.Error($"a power's level is 1 to {Models.PowerTable.TopLevel}");
+                int minutes = r.Int("minutes of play");
+                if (minutes < 1) throw r.Error("a power lasts a minute at least");
+                return new Instruction { Op = Op.Power, Line = line, Name = what, Other = kind, Number = level, Partner = minutes.ToString() };
             }
 
             // Black City's Black Tower (plan 22 · U10, the last part)
@@ -1419,6 +1442,51 @@ public static class ScriptParser
                 string backdrop = r.Text("a backdrop's name");
                 if (Data.SuperContestDatabase.Backdrop(backdrop) < 0) throw r.Error($"there is no backdrop '{backdrop}'");
                 return new Instruction { Op = Op.Gift, Line = line, Name = what, Other = backdrop };
+            }
+            case "circuit":
+            {
+                // The Laurel Circuit (plan 41 · EG4): `circuit begin|running|ready|level|stamps|won|regions`, and
+                // `circuit final <Region>` / `circuit stamped <Region>` about one region
+                string what = r.OneOf("begin", "running", "ready", "level", "stamps", "won", "regions", "final", "stamped", "count");
+                string region = "";
+                if (what is "final" or "stamped")
+                {
+                    region = r.Word("a region's id");
+                    if (RegionDatabase.Get(region) == null) throw r.Error($"there is no region '{region}'");
+                }
+                return new Instruction { Op = Op.Circuit, Line = line, Name = what, Other = region };
+            }
+            case "deduce":
+            {
+                // A case's deduction (plan 41 · EG7): `deduce sinnoh 1`
+                string id = r.Word("a case's id");
+                if (Cases.Find(id) is not { } found) throw r.Error($"there is no case '{id}'");
+                int n = r.Int("the deduction's number");
+                if (n < 1 || n > found.Deductions.Count) throw r.Error($"the case '{id}' has deductions 1 to {found.Deductions.Count}");
+                return new Instruction { Op = Op.Deduce, Line = line, Name = id, Number = n };
+            }
+
+            // Pennant Hall (plan 41 · EG3): `plaza open`, `rank`, `next`, `coins`, `pitches`, `pitch 2`, `give 10`,
+            // `spend 10`, `guests`, `stall`, `shop`, `greet`, `battle`
+            case "plaza":
+            {
+                string what = r.OneOf("open", "rank", "next", "coins", "pitches", "pitch", "give", "spend", "guests", "stall", "shop", "greet", "battle");
+                if (what is "pitch" or "give" or "spend")
+                {
+                    int n = r.Int(what == "pitch" ? "a pitch's number" : "how many pennants");
+                    if (n < 1) throw r.Error(what == "pitch" ? "the pitches are counted from 1" : "pennants are given or spent one at least");
+                    return new Instruction { Op = Op.Plaza, Line = line, Name = what, Number = n };
+                }
+                return new Instruction { Op = Op.Plaza, Line = line, Name = what };
+            }
+
+            // The Week's Work (plan 41 · EG6): `missions read`, `open`, `begin 4`, `waiting`, `claim`
+            case "missions":
+            {
+                string what = r.OneOf("read", "open", "begin", "waiting", "claim");
+                int n = what == "begin" ? r.Int("a mission's place on the board") : 0;
+                if (what == "begin" && n < 1) throw r.Error("the board's missions are counted from 1");
+                return new Instruction { Op = Op.Missions, Line = line, Name = what, Number = n };
             }
 
             case "script":

@@ -1,0 +1,612 @@
+{
+  "Manager": [
+    {
+      "en": [
+        "Quincy Rowan-Pike"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome, welcome, to Pennant Hall! I'm Quincy Rowan-Pike, and this hall and its ledger are in my keeping."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every stall here hails from a region whose Champion has passed through. You choose which stall stands at each pitch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each pennant the hall earns raises its rank, and every rank opens another pitch and finer wares."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our guests pay their way in pennants, and so does the Week's Work, the board of missions on the wall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How may the ledger serve you?",
+        "SET A STALL",
+        "THE LEDGER",
+        "TODAY'S GUESTS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mind the bunting on your way out. Do come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You hold {pennants} pennants, and the hall stands at rank {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Earn {number} more and the hall rises a rank."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The hall stands at its very highest rank. The ledger has never looked finer!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{number} guests have come today. Do say hello: the first word of the day costs them a pennant or two."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not a single guest today, I'm afraid. Perhaps tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The hall has {number} pitches at its rank. The first four stand along the north wall, the rest in the row across the middle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which pitch?",
+        "PITCH 1",
+        "PITCH 2",
+        "PITCH 3",
+        "PITCH 4",
+        "MIDDLE ROW",
+        "BACK"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which pitch?",
+        "PITCH 5",
+        "PITCH 6",
+        "PITCH 7",
+        "PITCH 8",
+        "NORTH WALL",
+        "BACK"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Done! The ledger is updated, and the stall stands ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That pitch opens at a higher rank. Earn the hall some pennants and it's yours!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Keeper": [
+    {
+      "en": [
+        "Fine wares from every harbour, priced in pennants! The higher the hall's rank, the finer my shelves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Lottery Corner's Pennant Hall branch! Same lucky number, same prizes as in Jubilife."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I check today's number against your Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today's lucky number is {ticket}! Let me look through your Pokémon's ID numbers..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not a single digit matched today, I'm afraid. A new number comes up tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last digit matches {winner}'s ID! That's the fifth prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last two digits match {winner}'s ID! That's the fourth prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The last three digits match {winner}'s ID! That's the third prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Four digits match {winner}'s ID! That's the second prize!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every digit matches {winner}'s ID! Incredible! That's the first prize!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today's draw is done, here or in Jubilife: the number is the same everywhere. Come back tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time today. The number won't run away!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seals for your Ball Capsules! I've the same stock as the market in Sunyshore, day by day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seals for sale! ...But you've no Seal Case to put them in. A house in Solaceon Town gives them away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A pot, a spoon and a Berry: that's all it takes for a Poffin. Shall we stir?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back and stir whenever you like!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, but you'll need a Poffin Case to keep them in. The Pokémon Fan Club in Hearthome gives them out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not a single Berry in your bag! Bring some along and we'll stir."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Poffin Case is full to the brim! Feed a few to your Pokémon first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I remember every move a Pokémon learns as it grows, and I can teach one back for a Heart Scale."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bring a Heart Scale and I'll gladly help. The goods stall here sells them for pennants."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I trade your Heart Scale for a move one of your Pokémon has let slip?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon is it to be?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} remembered {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg hasn't learned a thing yet, let alone forgotten one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one hasn't let a single move slip. A fine memory!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever a Pokémon of yours wants a move back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I take Apricorns for Kurt of Azalea Town. Whatever I take, he makes, and it's ready the day after."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I send him every Apricorn of one colour from your Box?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which colour?",
+        "Red",
+        "Blue",
+        "Yellow",
+        "Green",
+        "Other colours",
+        "Never mind"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which colour?",
+        "Pink",
+        "White",
+        "Black",
+        "Back"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've no {apricorn} in your Box. Try another colour."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sent! That's {apricorns} × {ball} on their way. Come back tomorrow, here or at Kurt's."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kurt's batch came in on the morning boat: {apricorns} × {ball}, all yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{apricorns} × {ball} went into the bag."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kurt's still at work on your {ball}: {apricorns} of them, ready tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bring Apricorns in your Apricorn Box and I'll send them to Kurt. Each colour makes a ball of its own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No hurry. Kurt's always glad of Apricorns."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Berries in, Pokéblocks out! This blender came all the way from Lilycove."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll need a Pokéblock Case to keep what we make. Lilycove's Contest Hall gives them out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Choose a Berry to blend. The more it stands out from mine, the better the Pokéblock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine Pokéblock! It's in your Case."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokéblock Case is full. Feed a few to your Pokémon first."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guest": [
+    {
+      "en": [
+        "Hello! I've come a long way to see this hall. Here, a few pennants for the stalls."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} pennants!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fancy a battle? I've brought my strongest team."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! Good fun. Come back and try me again today if you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a battle! The hall pays its guests' winners, and today that's you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} pennants!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat me fair and square today. Tomorrow I'll be ready!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enjoy the hall! There's something new at every stall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

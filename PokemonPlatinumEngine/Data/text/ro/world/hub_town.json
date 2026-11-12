@@ -85,7 +85,7 @@
       },
       "dialog": {
         "en": [
-          "This hall's going to be a covered market, stalls from every region under one roof. It's not ready yet, though."
+          "Pennant Hall's open at last: stalls from every region under one roof. We hung the last pennant this morning!"
         ],
         "text": [
           ""
@@ -104,7 +104,7 @@
     },
     "BoardSign": {
       "en": [
-        "Notice board\nNothing is posted here yet."
+        "The Week's Work\nThis week's missions in the regions you have won"
       ],
       "text": [
         ""

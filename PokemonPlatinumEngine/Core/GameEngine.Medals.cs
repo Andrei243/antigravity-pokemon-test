@@ -21,7 +21,8 @@ public partial class GameEngine
         Seen = flow.Pokedex.SeenCount,
         Caught = flow.Pokedex.CaughtCount,
         BadgeCount = flow.Story.TotalBadges,
-        ChampionCount = RegionDatabase.All.Count(r => flow.Story.IsRegionComplete(r.Id))
+        ChampionCount = RegionDatabase.All.Count(r => flow.Story.IsRegionComplete(r.Id)),
+        CircuitCount = flow.Circuit.Won
     };
 
     /// <summary>

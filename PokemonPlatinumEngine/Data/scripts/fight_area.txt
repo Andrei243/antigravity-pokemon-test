@@ -310,3 +310,63 @@ label Refused
 label Tomorrow
   say "One inverse battle a day, I'm afraid. My Pokémon need their rest, and so do my notes. Come back tomorrow!"
   end
+
+
+# ------------------------------------------------------------------ the Villa Larder (plan 41 · EG7)
+# The Open Door Agency's case in Sinnoh: the harbour clerk keeps the ferry's log with a gap on every party night, the
+# deckhand remembers the crates of fine food the captain sold off cheap, and once Looker has the deductions the ferry's
+# captain, Ferren Dray, waits on the pier (FLAG_CASE_SINNOH_FERREN_WAITS) to be faced.
+
+script HarbourClerk
+  face self player
+  if flag FLAG_CASE_SINNOH_CLOSED goto Thanks
+  if flag FLAG_CASE_SINNOH_TAKEN goto Case
+  say "Every ferry that comes and goes is written in my log. Every one, to the minute."
+  end
+label Case
+  if flag FLAG_CASE_SINNOH_CLUE_LOG goto Again
+  say "The ferry's log, for Looker? Here... Strange. On each night before a party at the villa, there are two hours with nothing written."
+  say "The ferry left on time and came in late, and nobody wrote down where it went."
+  setflag FLAG_CASE_SINNOH_CLUE_LOG
+  text "{player} noted the gap in the ferry's log."
+  end
+label Again
+  say "Two hours missing, every party night. I'd never let a gap like that go by on my watch."
+  end
+label Thanks
+  say "The captain writes every minute in the log now. Neatest hand on the pier."
+  end
+
+script Deckhand
+  face self player
+  if flag FLAG_CASE_SINNOH_CLOSED goto Thanks
+  if flag FLAG_CASE_SINNOH_TAKEN goto Case
+  say "Hauling crates all day. My arms will be twice as long by the end of the season."
+  end
+label Case
+  if flag FLAG_CASE_SINNOH_CLUE_RECEIPT goto Again
+  say "Crates of fine food? Funny you ask. The captain sold a few to the Survival Area's cook, cheap. Here's the receipt he left lying about."
+  setflag FLAG_CASE_SINNOH_CLUE_RECEIPT
+  text "{player} noted the receipt for crates of food sold off cheap."
+  end
+label Again
+  say "Cheap food from a ferry captain. I thought it was a bargain, not a crime!"
+  end
+label Thanks
+  say "The captain's paying back every crate. He's even carrying them himself."
+  end
+
+script Ferren
+  face self player
+  speaker "Ferren"
+  if flag FLAG_CASE_SINNOH_CULPRIT end
+  scene "FerrenFaced"
+  say "Looker's helper, eh? So somebody found the gap in my log."
+  say "Who'd doubt a ferry captain over a hungry Gible? Nobody, until you. Fine. Let's settle it on the pier!"
+  battle self as "case_sinnoh_ferren"
+  say "...Shipwrecked. All right, all right. I'll own up at the villa and pay for every crate. Tell Looker I'll be at his door."
+  setflag FLAG_CASE_SINNOH_CULPRIT
+  clearflag FLAG_CASE_SINNOH_FERREN_WAITS
+  hide self
+  endscene
+  end

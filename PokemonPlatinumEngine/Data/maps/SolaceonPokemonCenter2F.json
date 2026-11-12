@@ -209,7 +209,7 @@
     {
       "id": "gift_runner",
       "name": "Gift Runner",
-      "npcType": "clerk",
+      "npcType": "gift_runner",
       "x": 14,
       "y": 8,
       "facing": "Down",

@@ -253,6 +253,16 @@
           "Doamnă cu voal"
         ]
       }
+    },
+    "case_kalos_guard": {
+      "name": {
+        "en": [
+          "Night Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

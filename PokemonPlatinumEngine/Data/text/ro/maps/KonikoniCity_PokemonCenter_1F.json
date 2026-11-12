@@ -63,6 +63,24 @@
           "Olivia e kahuna din Akala. Încercarea ei cea mare e ultima de pe insula asta și nu se lasă ușor."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

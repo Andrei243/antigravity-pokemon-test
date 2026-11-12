@@ -65,6 +65,36 @@
           "Capac de Sticlă"
         ]
       }
+    },
+    "case_kalos_porter": {
+      "name": {
+        "en": [
+          "Porter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_kalos_painter": {
+      "name": {
+        "en": [
+          "Painter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_kalos_odile": {
+      "name": {
+        "en": [
+          "Odile Ferrand"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

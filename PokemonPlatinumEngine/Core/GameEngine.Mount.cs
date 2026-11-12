@@ -69,6 +69,10 @@ public partial class GameEngine
         return () =>
         {
             GetOffTheMount();
+            // No dismount is played behind the fade, and the camera is on foot at once (plan 30 · FM13)
+            openMount.Reset();
+            openMountAsked = 0;
+            openCamera.OffTheMount();
             onMidpoint?.Invoke();
         };
     }

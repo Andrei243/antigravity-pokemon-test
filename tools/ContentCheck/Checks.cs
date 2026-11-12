@@ -76,6 +76,8 @@ public static class Checks
             written.UnionWith(PokemonPlatinumEngine.Story.ClockFlags.All.Select(f => f.Flag));
             // ...and the festivals' flags, which the clock keeps by the calendar (plan 40 · GE9)
             written.UnionWith(PokemonPlatinumEngine.Models.Festivals.All.Select(f => PokemonPlatinumEngine.Models.Festivals.FlagOf(f.Id)));
+            // ...and those Pennant Hall shows its keepers and guests by, as the plaza stands (plan 41 · EG3)
+            written.UnionWith(PokemonPlatinumEngine.Models.Plaza.Flags);
         }
 
         public bool IsSet(string flag) => written.Contains(flag);

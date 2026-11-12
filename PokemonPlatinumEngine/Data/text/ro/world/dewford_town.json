@@ -47,6 +47,46 @@
           "Băiatul"
         ]
       }
+    },
+    "case_hoenn_customs": {
+      "name": {
+        "en": [
+          "Customs Officer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_hoenn_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_hoenn_fisherman": {
+      "name": {
+        "en": [
+          "Old Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_hoenn_ottoline": {
+      "name": {
+        "en": [
+          "Ottoline Marsh"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

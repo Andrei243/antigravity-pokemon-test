@@ -150,6 +150,12 @@ int Jobs()
     if (words.Count < 2) { Console.Error.WriteLine("jobs <voice> [--which missing|stale|all] [--out <file>]"); return 2; }
     var which = Enum.TryParse<VoiceGeneration.Which>(Option("--which") ?? "missing", true, out var w) ? w : VoiceGeneration.Which.Missing;
     var jobs = VoiceGeneration.Plan(CatalogueNow(), words[1], PackNow(), which, LanguageOf(), SamplesFor(words[1]), VoiceLexicon.Default, selfSpeakers: SelfSpeakers);
+    if (LanguageOf() != "en")
+    {
+        var (translated, dropped) = Translated.Apply(jobs, LanguageOf());
+        jobs = translated;
+        if (dropped > 0) Console.WriteLine($"{dropped} lines have no current {LanguageOf()} translation and are left out.");
+    }
     string output = Option("--out") ?? Path.Combine(repo, "voice", "jobs", VoicePacks.FileNameOf(words[1]) + ".json");
     Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
     File.WriteAllText(output, GameDataFiles.Serialize(jobs));
@@ -170,13 +176,29 @@ int Generate()
         foreach (string voice in words.Skip(1))
             files.Add(VoiceGeneration.Plan(catalogue, voice, pack, VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default, takes: int.TryParse(Option("--takes"), out int takes) && takes > 0 ? takes : VoiceGeneration.Takes, selfSpeakers: SelfSpeakers));
     }
-    if (files.Count == 0) { Console.Error.WriteLine("generate <voice>... [--region <id>] | --jobs <file>"); return 2; }
-    if (!File.Exists(config))
+    if (files.Count == 0) { Console.Error.WriteLine("generate <voice>... [--region <id>] [--language <tag>] [--engine gemini] | --jobs <file>"); return 2; }
+    // Another language: each line as its translation has it (a line it hasn't translated is left out)
+    if (LanguageOf() != "en")
+        for (int f = 0; f < files.Count; f++)
+        {
+            var (translated, dropped) = Translated.Apply(files[f], LanguageOf());
+            files[f] = translated;
+            if (dropped > 0) Console.WriteLine($"{translated.Voice}: {dropped} lines have no current {LanguageOf()} translation and are left out.");
+        }
+    // Gemini (tools/VoiceGen/gemini.json), for the languages Kokoro does not speak: one take a line unless --takes says more
+    GeminiEngine? gemini = null;
+    if (Option("--engine") == "gemini")
+    {
+        if (Option("--takes") == null) foreach (var j in files.SelectMany(f => f.Jobs)) j.Seeds = j.Seeds.Take(1).ToList();
+        gemini = new GeminiEngine(Path.Combine(repo, "tools", "VoiceGen", "gemini.json"), GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath)));
+    }
+    else if (!File.Exists(config))
     {
         Console.WriteLine($"No engine yet: {config} is not there. tools/VoiceGen/README.md says how to set it up (setup-kokoro.sh). {files.Sum(f => f.Jobs.Count)} lines wait.");
         return 2;
     }
-    using var command = CommandEngine.Read(config, repo);
+    using IDisposable owned = gemini ?? (IDisposable)CommandEngine.Read(config, repo);
+    var command = (IVoiceEngine)owned;
     int keptCount = 0, failedCount = 0;
     var clock = Stopwatch.StartNew();
     foreach (var jobs in files)
@@ -186,6 +208,11 @@ int Generate()
         Console.WriteLine($"{jobs.Voice}: {kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");
         keptCount += kept.Count;
         failedCount += failed.Count;
+        if (gemini?.OutForTheDay == true)
+        {
+            Console.WriteLine($"Gemini's requests for the day are used up: the voices after {jobs.Voice} are left for the next run, which picks up where this one stopped.");
+            break;
+        }
     }
     Console.WriteLine($"In all {keptCount} lines in {clock.Elapsed.TotalSeconds:0} s ({(keptCount > 0 ? clock.Elapsed.TotalSeconds / keptCount : 0):0.00} s a line); {failedCount} with findings or failed.");
     return failedCount > 0 ? 1 : 0;

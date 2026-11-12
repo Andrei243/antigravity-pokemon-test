@@ -63,6 +63,24 @@
           "Feriboturile fac naveta între Hau'oli și Heahea toată ziua. Akala e insula cu vulcanul, să știi."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

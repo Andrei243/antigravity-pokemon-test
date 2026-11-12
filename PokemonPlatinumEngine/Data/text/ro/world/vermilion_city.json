@@ -103,6 +103,36 @@
           "Marinar"
         ]
       }
+    },
+    "case_kanto_clerk": {
+      "name": {
+        "en": [
+          "Ticket Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_kanto_fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_kanto_dov": {
+      "name": {
+        "en": [
+          "Dov Harlan"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

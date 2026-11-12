@@ -373,6 +373,36 @@
           "Cercetătorul"
         ]
       }
+    },
+    "harbour_clerk": {
+      "name": {
+        "en": [
+          "Harbour Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "deckhand": {
+      "name": {
+        "en": [
+          "Deckhand"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ferren": {
+      "name": {
+        "en": [
+          "Ferren Dray"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

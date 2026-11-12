@@ -14,6 +14,12 @@ public sealed record OpenBox(string Name, OpenPos Min, OpenPos Max)
     /// <summary>Whether the mount climbs the box's sides (plan 30 · FM12, plan 34 · PD2): a placed cliff, or a test's.</summary>
     public bool Climbable { get; init; }
 
+    /// <summary>
+    /// Whether the box is a post of four walls and no top or bottom (a tree's solid trunk, <see cref="OpenTrunks"/>):
+    /// nothing stands on it, and its triangles keep the numbers a box's would, its top's and bottom's left unused.
+    /// </summary>
+    public bool Pillar { get; init; }
+
     public OpenBox Checked()
     {
         if (Min.X >= Max.X || Min.Y >= Max.Y || Min.Z >= Max.Z) throw new ArgumentException($"the box {Name} has no inside: {Min} to {Max}");
@@ -89,24 +95,38 @@ public sealed class OpenGround
 
     /// <summary>
     /// The ground of a map: level 0 of each chunk as <paramref name="level0"/> gives it (null where the map has none),
-    /// and the boxes. Either may be empty.
+    /// and the boxes. Either may be empty. The trunks of <paramref name="trees"/> that have them (<see cref="OpenTrunks"/>)
+    /// are pillars after every box, their feet found on the ground and the boxes before them.
     /// </summary>
-    public OpenGround(Func<int, int, BakedChunk?>? level0, IEnumerable<OpenBox>? boxes = null, IEnumerable<OpenWaterBox>? waters = null)
+    public OpenGround(Func<int, int, BakedChunk?>? level0, IEnumerable<OpenBox>? boxes = null, IEnumerable<OpenWaterBox>? waters = null,
+        IEnumerable<OpenTree>? trees = null)
     {
         chunks = level0;
         long key = BoxKeys;
         foreach (var box in boxes ?? Enumerable.Empty<OpenBox>())
         {
-            AddBox(box.Checked(), key, box.Climbable);
+            AddBox(box.Checked(), key, box.Climbable, box.Pillar);
             key += 12;
         }
         waterBoxes.AddRange(waters ?? Enumerable.Empty<OpenWaterBox>());
+        if (trees != null)
+        {
+            Trunks = OpenTrunks.Pillars(trees, this);
+            foreach (var pillar in Trunks)
+            {
+                AddBox(pillar.Checked(), key, false, true);
+                key += 12;
+            }
+        }
         HasAnything = chunks != null || triangles.Count > 0 || waterBoxes.Count > 0;
     }
 
-    /// <summary>A map's ground: its land's level 0 and its boxes and water.</summary>
+    /// <summary>The trees' trunks made pillars of the collision (<see cref="OpenTrunks"/>), after the boxes; none where no tree has one.</summary>
+    public IReadOnlyList<OpenBox> Trunks { get; } = Array.Empty<OpenBox>();
+
+    /// <summary>A map's ground: its land's level 0, its boxes and water, and its trees' solid trunks.</summary>
     public static OpenGround Of(OpenMap map) =>
-        new(map.Land is { } land ? (x, z) => land.Chunk(x, z, 0) : null, map.Solids, map.Waters);
+        new(map.Land is { } land ? (x, z) => land.Chunk(x, z, 0) : null, map.Solids, map.Waters, map.Trees);
 
     /// <summary>Whether there is any ground at all: a map with none (OW1's empty maps) is a place to stand, not to fall through.</summary>
     public bool HasAnything { get; }
@@ -120,7 +140,7 @@ public sealed class OpenGround
     private static long KeyOf(int chunkX, int chunkZ, int t) =>
         ((((long)(chunkZ + (1 << 18)) << 19) | (long)(chunkX + (1 << 18))) << 24) | (long)t;
 
-    private void AddBox(OpenBox box, long key, bool climbable)
+    private void AddBox(OpenBox box, long key, bool climbable, bool pillar)
     {
         var lo = OpenVec.Of(box.Min);
         var hi = OpenVec.Of(box.Max);
@@ -135,8 +155,15 @@ public sealed class OpenGround
             new[] { 1, 3, 7, 5 },   // east (+x)
             new[] { 0, 4, 6, 2 },   // west (−x)
         };
-        foreach (var f in faces)
+        for (int face = 0; face < faces.Length; face++)
         {
+            var f = faces[face];
+            // A pillar's top and bottom are left out, their numbers unused
+            if (pillar && face < 2)
+            {
+                key += 2;
+                continue;
+            }
             Add(P(f[0]), P(f[1]), P(f[2]), key++, climbable);
             Add(P(f[0]), P(f[2]), P(f[3]), key++, climbable);
         }

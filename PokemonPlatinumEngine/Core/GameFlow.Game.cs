@@ -80,6 +80,9 @@ public sealed partial class GameFlow
     /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
     public HallOfFame HallOfFame { get; set; } = new();
 
+    /// <summary>The Champions' circuit (plan 41 · EG4; saved as <c>SaveData.Circuit</c>, null until first begun).</summary>
+    public CircuitState Circuit { get; set; } = new();
+
     /// <summary>The Journal's pages (plan 06 · R12).</summary>
     public Journal Journal { get; set; } = new();
 
@@ -169,6 +172,11 @@ public sealed partial class GameFlow
 
     /// <summary>The trade board: today's requests met and blind trades made (plan 40 · GE8; saved).</summary>
     public TradeBoard Board { get; } = new();
+    /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3; saved once opened).</summary>
+    public PlazaState Plaza { get; } = new();
+
+    /// <summary>The Week's Work, the hub's board of missions (plan 41 · EG6; saved once read).</summary>
+    public MissionBoard Missions { get; } = new();
 
     /// <summary>The timed powers in force (plan 36's powers, granted by plan 39 · CR6's dishes; saved).</summary>
     public PowerState Powers { get; } = new();

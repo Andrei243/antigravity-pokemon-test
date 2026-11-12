@@ -160,5 +160,8 @@ partial class Harness
 
         // FM6: the scale of a grown region, the field's and the battle's (fw45 to fw47; each part begins a game of its own)
         FreeWalkScale();
+
+        // FM13: the mount as a rig in the open test world (fw70 to fw89; a game of its own, past the opening)
+        FreeWalkMountShots();
     }
 }

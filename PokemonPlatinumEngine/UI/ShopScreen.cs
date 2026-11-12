@@ -116,8 +116,18 @@ public class ShopScreen
     /// <summary>The difficulty the counter charges under (plan 13 · V2): Easy takes a quarter off what it asks, set by the game as the counter opens.</summary>
     public Difficulty Difficulty { get; set; } = Difficulty.Normal;
 
-    /// <summary>What the counter asks for one of an item: its price, less a quarter under Easy.</summary>
-    public int PriceOf(ItemData item) => pointPrices != null ? (pointPrices.TryGetValue(item.Name, out int pts) ? pts : 0) : DifficultyRules.ShopPrice(item.Price, Difficulty);
+    /// <summary>
+    /// The Bargain Power in force as the counter opens (plan 36 · TR7), in hundredths taken off what it asks for money;
+    /// nought for none. Set by the game as the counter opens, as <see cref="Difficulty"/> is.
+    /// </summary>
+    public int Bargain { get; set; }
+
+    /// <summary>What the counter asks for one of an item: its price, less a quarter under Easy, less the Bargain Power's share (rounded down, never under one).</summary>
+    public int PriceOf(ItemData item) => pointPrices != null ? (pointPrices.TryGetValue(item.Name, out int pts) ? pts : 0) : BargainOf(DifficultyRules.ShopPrice(item.Price, Difficulty), Bargain);
+
+    /// <summary>A price with the Bargain Power's hundredths taken off, never under one; the price itself with none.</summary>
+    public static int BargainOf(int price, int hundredths) =>
+        hundredths <= 0 || price <= 0 ? price : Math.Max(1, price - (int)((long)price * hundredths / 100));
 
     private int MostOf(ItemData item, int money, Inventory? inventory) =>
         Mode == ShopMode.Selling ? Math.Min(MostAtOnce, inventory?.GetQuantity(item) ?? 0) : MostFor(PriceOf(item), money);
@@ -293,13 +303,20 @@ public class ShopScreen
     /// The Pokéathlon Dome's Athlete Shop (plan 15 · E8): the counter given the dome's stock at prices in Athlete Points,
     /// opened on its list (nothing is sold to it). Whatever the counter is handed as money is the points then.
     /// </summary>
-    public void OpenForPoints(string name, IEnumerable<(ItemData Item, int Points)> goods)
+    public void OpenForPoints(string name, IEnumerable<(ItemData Item, int Points)> goods, string unit = AthletePointsUnit)
     {
         var list = goods.ToList();
         Open(name, list.Select(g => g.Item), ShopMode.Buying);
         pointPrices = list.ToDictionary(g => g.Item.Name, g => g.Points);
+        PointsUnit = unit;
         Difficulty = Difficulty.Normal;
     }
+
+    /// <summary>What a counter in points is paid in: Athlete Points (the Pokéathlon Dome's) or pennants (Pennant Hall's stalls, plan 41 · EG3).</summary>
+    public const string AthletePointsUnit = "athlete", PennantsUnit = "pennants";
+
+    /// <summary>The points a counter in points is paid in (<see cref="AthletePointsUnit"/> or <see cref="PennantsUnit"/>).</summary>
+    public string PointsUnit { get; private set; } = AthletePointsUnit;
 
     public void Update(Inventory playerInventory, ref int playerMoney, Action<string> onNotification, float dt = 1f / 60f)
     {

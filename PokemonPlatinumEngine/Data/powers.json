@@ -1,10 +1,31 @@
 {
+  // The timed powers (plan 36 · TR7, plan 39 · CR6; docs/mechanics/rulings.md, "Powers"): ours, written by hand and read
+  // strictly. A power lasts ten minutes of play unless its giver says otherwise. Each kind's strength at its three levels
+  // is read by its one reader: EXP, effort, prize money and catching in hundredths added (the old games' x1.2, x1.5,
+  // x2 for EXP, x1.5, x2, x3 for money), prices in hundredths taken off (90%, 75%, 50%), the encounters' and stealth's
+  // added to a step's flat chance, the hatching's cycles more off each Egg, a type's slots, the materials' extra ones
   "seconds": 600,
   "powers": [
+    { "kind": "Exp", "strength": [20, 50, 100] },
+    { "kind": "Effort", "strength": [50, 100, 200] },
+    { "kind": "Money", "strength": [50, 100, 200] },
+    { "kind": "Bargain", "strength": [10, 25, 50] },
+    { "kind": "Catch", "strength": [10, 25, 50] },
     { "kind": "Encounter", "strength": [10, 20, 30] },
     { "kind": "Stealth", "strength": [-10, -20, -30] },
     { "kind": "Hatch", "strength": [1, 2, 3] },
     { "kind": "TypeEncounter", "strength": [2, 4, 6] },
     { "kind": "Materials", "strength": [1, 2, 3] }
-  ]
+  ],
+  // The Power Watch's charge (plan 36 · TR7): a point every 200 steps, ten at most; a power costs its level
+  "chargeMost": 10,
+  "stepsPerCharge": 200,
+  // What each region's training hall teacher teaches (plan 36's decision 5), at a level by the Halls of Fame entered
+  "teachers": {
+    "Sinnoh": [ "Exp", "Money", "Encounter", "Stealth" ],
+    "Kanto": [ "Catch" ],
+    "Johto": [ "Hatch" ],
+    "Hoenn": [ "Bargain" ],
+    "Unova": [ "Effort" ]
+  }
 }

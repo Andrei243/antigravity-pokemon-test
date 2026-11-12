@@ -162,7 +162,8 @@ Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
 // The Master Trainers (plan 14 · B14): a master for every species, its moves from Showdown's random-battle sets
 // (the games' species alone: the masters are Let's Go's, a master to each of the National Pokédex's)
-var masters = MasterTrainers.Build(showdownDir, species.Where(s => !s.IsOurs).ToList(), moves, items);
+var masters = MasterTrainers.Build(showdownDir, species.Where(s => !s.IsOurs).ToList(), moves, items,
+    MasterTrainers.ReadHandWritten(Path.Combine(overrides, MasterTrainers.OverridesFile)));
 Console.WriteLine($"  {masters.Masters.Count} masters: {masters.FromSets} with moves of a set ({masters.MadeUp} made up with what their level taught them), {masters.WithoutMoves} with none (they know what their level taught them)");
 // The later sets (plan 37 · FC1): a battle set for each role of every species Showdown's random-battle files name
 var facilitySets = FacilitySets.Build(showdownDir, species, moves, items, frontier.Banned, Path.Combine(overrides, FacilitySets.OverridesFile));

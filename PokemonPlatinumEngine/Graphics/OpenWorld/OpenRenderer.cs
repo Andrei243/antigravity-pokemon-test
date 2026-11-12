@@ -15,7 +15,15 @@ internal sealed record OpenScene(
     OpenMap Map, Vector3 Feet, float Yaw, CharacterPose Pose, string? Look,
     Vector3 Eye, Vector3 Target, float Hour, FieldWeather Weather, float CaveShare, double Time,
     bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees,
-    IReadOnlyList<OpenFigure>? Figures = null, IReadOnlyList<Vector3>? Walkers = null);
+    IReadOnlyList<OpenFigure>? Figures = null, IReadOnlyList<Vector3>? Walkers = null,
+    OpenMountDraw? Mount = null, Matrix4x4? RiderRoot = null);
+
+/// <summary>
+/// The mount as a frame draws it (plan 30 · FM13; style guide, "Open world", "The mount"): its ride form's model, its
+/// root, pose and flash. Drawn as the player is (cast into the first two shadow maps, mirrored, coloured and outlined);
+/// the rider's own root is <see cref="OpenScene.RiderRoot"/>.
+/// </summary>
+internal sealed record OpenMountDraw(PokeModel Model, Matrix4x4 Root, PokePose Pose, float Flash);
 
 /// <summary>
 /// The open world's renderer (plan 32 · OW8 and OW9; style guide, "Open world"): an open map's baked land streamed by
@@ -159,7 +167,8 @@ internal sealed class OpenRenderer
         // The rig on the screen: the player at the capsule's feet, facing its yaw
         var rigModel = scene.Look is { } look ? CharacterModels.TryGet(look, fs) : null;
         PlayerDrawn = rigModel != null;
-        var root = Matrix4x4.CreateRotationY(scene.Yaw) * Matrix4x4.CreateTranslation(scene.Feet);
+        // (a rider's on the mount's seat, plan 30 · FM13)
+        var root = scene.RiderRoot ?? Matrix4x4.CreateRotationY(scene.Yaw) * Matrix4x4.CreateTranslation(scene.Feet);
 
         RenderShadows(scene, rig, view, rigModel, root);
         FrameProfiler.Lap(FrameSection.Shadows);
@@ -216,6 +225,8 @@ internal sealed class OpenRenderer
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Color);
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Outline);
         }
+        DrawMount(scene, CharacterPass.Color);
+        DrawMount(scene, CharacterPass.Outline);
         figureDraw.DrawLive(context, CharacterPass.Color, scene.Time);
         figureDraw.DrawLive(context, CharacterPass.Outline, scene.Time);
         FrameProfiler.Lap(FrameSection.Characters);
@@ -358,6 +369,7 @@ internal sealed class OpenRenderer
             var lightCentre = camera.Target;
             ShadowTriangles[i] += foliage.DrawDepth((min, max) => InLightBox(min, max, lightCentre, right, up, forward, radius, back));
             if (rigModel != null && i < 2) CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Depth);
+            if (i < 2) DrawMount(scene, CharacterPass.Depth);
             if (i < 2) figureDraw.DrawLive(context, CharacterPass.Depth, scene.Time, centre, radius);
             Rlgl.EnableBackfaceCulling();
             Raylib.EndMode3D();
@@ -379,6 +391,22 @@ internal sealed class OpenRenderer
             f0 = MathF.Min(f0, f); f1 = MathF.Max(f1, f);
         }
         return r1 >= -radius && r0 <= radius && u1 >= -radius && u0 <= radius && f1 >= -behind && f0 <= radius;
+    }
+
+    // ------------------------------------------------------------------ the mount (plan 30 · FM13)
+
+    /// <summary>Whether the last frame drew the mount, and in which form.</summary>
+    public string? MountDrawn { get; private set; }
+
+    /// <summary>The mount in a pass, its flash (out of its ball, a change of form) set for its colour and taken off after.</summary>
+    private void DrawMount(OpenScene scene, CharacterPass pass)
+    {
+        if (pass == CharacterPass.Color) MountDrawn = scene.Mount?.Model.Species;
+        if (scene.Mount is not { } mount) return;
+        bool flash = pass == CharacterPass.Color && mount.Flash > 0f;
+        if (flash) context.Shaders.SetFlash(Color.White, Core.Accessibility.Flash(Math.Clamp(mount.Flash, 0f, 1f)));
+        PokemonRenderer.Draw(context, mount.Model, mount.Pose, mount.Root, pass);
+        if (flash) context.Shaders.SetFlash(default, 0f);
     }
 
     // ------------------------------------------------------------------ the mirror
@@ -418,11 +446,13 @@ internal sealed class OpenRenderer
         // What stands over the water is mirrored too (plan 32 · OW9): the buildings, the near trees and the live figures
         buildings.Draw();
         foliage.Draw();
-        if (rigModel != null && !scene.Swimming)
+        // A rider stands over the water even while the mount swims (plan 30 · FM13): the clip plane takes what is under it
+        if (rigModel != null && (!scene.Swimming || scene.Mount != null))
         {
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Color);
             CharacterRenderer.Draw(context, rigModel, scene.Pose, root, CharacterPass.Outline);
         }
+        DrawMount(scene, CharacterPass.Color);
         figureDraw.DrawLive(context, CharacterPass.Color, scene.Time);
         shaders.SetMirrorClip(false, 0f);
         Raylib.EndMode3D();

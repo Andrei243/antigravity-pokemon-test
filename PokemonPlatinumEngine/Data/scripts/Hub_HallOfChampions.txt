@@ -1,0 +1,101 @@
+# The Laurel Gallery, the hub's hall of Champions (plan 41 · EG2, EG4). docs/scripts.md describes the language; the lines
+# are our own.
+#
+# A plinth stands for each region of the chain whose Hall of Fame is entered (Models/LaurelGallery.cs, laid out as the
+# player comes in by GameEngine.FurnishGallery), each read on its tile: the Hall of Fame's record opens on that region's
+# teams, its first team kept however many came after. EARLIER TEAMS keeps those that entered before a team's region was
+# kept, and the circuit's plinth the teams that won the Laurel Circuit's final. The registrar at the east desk begins a
+# circuit (Models/ChampionsCircuit.cs); Ismene Quill keeps the records.
+
+
+script PlinthSinnoh
+  halloffame look Sinnoh
+  end
+
+script PlinthKanto
+  halloffame look Kanto
+  end
+
+script PlinthJohto
+  halloffame look Johto
+  end
+
+script PlinthHoenn
+  halloffame look Hoenn
+  end
+
+script PlinthUnova
+  halloffame look Unova
+  end
+
+script PlinthKalos
+  halloffame look Kalos
+  end
+
+script PlinthAlola
+  halloffame look Alola
+  end
+
+script PlinthGalar
+  halloffame look Galar
+  end
+
+script PlinthPaldea
+  halloffame look Paldea
+  end
+
+script PlinthEarlier
+  halloffame look earlier
+  end
+
+script PlinthCircuit
+  halloffame look Circuit
+  end
+
+
+script Keeper
+  face self player
+  speaker "Ismene"
+  if flag FLAG_GATHERING_DONE goto Encore
+  say "Welcome to the Laurel Gallery. I keep its records: every team every region has crowned, and the first of each above all."
+  say "Read a plinth to see its teams. I've read every one of them myself, more times than I care to count."
+  end
+label Encore
+  say "Ah, my star! Tickets for next season are selling nicely. The leaders don't know about the matinees yet."
+  end
+
+
+# The Laurel Circuit's desk (plan 41 · EG4): every finished League fought again in its own rooms at one level, each
+# stamped by its Hall of Fame, and then a final of the Champions in the Laurel Court across the avenue
+script CircuitDesk
+  face self player
+  speaker "Registrar"
+  circuit running
+  if result == 1 goto Running
+  circuit count
+  if result > 0 goto Again
+  say "This is the Laurel Circuit's desk. A circuit takes you back to every League you've won, to fight its Elite Four and Champion again in their own rooms."
+  goto Offer
+label Again
+  say "Back for another circuit? Every one you win raises the next by five levels."
+label Offer
+  circuit level
+  say "This circuit's teams would all meet you at level {result}. Each League you win again stamps your card when you enter its Hall of Fame."
+  say "With every League stamped, the final opens in the Laurel Court: all the Champions you've beaten, one after another."
+  ask "Will you begin a circuit?"
+  if no goto Later
+  circuit begin
+  say "Then your circuit has begun. Good luck out there, Champion."
+  end
+label Later
+  say "Whenever you're ready. The desk will be here."
+  end
+label Running
+  circuit ready
+  if result == 1 goto Ready
+  circuit stamps
+  say "Your circuit is under way. Stamps so far: {result}. Win each League again and enter its Hall of Fame to stamp it."
+  end
+label Ready
+  say "Every League is stamped! The final waits for you in the Laurel Court, across the avenue."
+  end

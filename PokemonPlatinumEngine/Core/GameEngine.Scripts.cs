@@ -205,6 +205,10 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)
+        if (flow.Map.Name == LaurelGallery.Map) FurnishGallery();
+        // Pennant Hall's stalls, keepers and the day's guests where the plaza has them (plan 41 · EG3)
+        if (flow.Map.Name == Plaza.Map) FurnishPlaza();
         // Kalos's Friend Safari's grass holds the grounds the guide named (plan 23, Kalos finished)
         if (flow.Map.Name == FriendSafariMap) LayFriendSafari();
         // and the Lilycove Museum's paintings where they hang (plan 21 · H11, part f)
@@ -363,6 +367,8 @@ public partial class GameEngine
         }
         // And a landmark come to for the first time is told of on the region's map from then on (plan 01 · M12)
         NoteArrivalOnTheMap();
+        // A place come to counts for the Week's Work's landmarks (plan 41 · EG6)
+        TellTheBoard(MissionEventKind.Arrived, AreaKeyHere());
     }
 
     /// <summary>
@@ -493,6 +499,12 @@ public partial class GameEngine
         if (item.FieldUse == "ApricornBox")
         {
             OpenApricornBox(fromBag: false);
+            return;
+        }
+        // The Power Watch from the item button (plan 36 · TR8)
+        if (item.FieldUse == PowerWatchUse)
+        {
+            OpenPowers(fromBag: false);
             return;
         }
         // The crafting kit from the item button (plan 39 · CR1)
@@ -975,6 +987,9 @@ public partial class GameEngine
 
         public StoryState Story => game.flow.Story;
         public string Region => game.Here.Id;
+
+        /// <summary>The Laurel Circuit (plan 41 · EG4).</summary>
+        public CircuitState? Circuit => game.flow.Circuit;
         public IReadOnlyCollection<FieldMove> Granted => game.GrantedMoves;
         public string BeganIn => game.flow.BeganIn;
         public bool ShowsObjectives => game.NextObjectiveOn;
@@ -1266,6 +1281,14 @@ public partial class GameEngine
                     game.flow.State = GameState.StarterSelect;
                     game.flow.StarterSelectScreen.Open(game.Here, Randomizer.For(game.flow.Run));
                     break;
+                // A stall of Pennant Hall's goods, paid in pennants (plan 41 · EG3)
+                case ScriptScreen.Shop when counter != null && counter.StartsWith(PokemonPlatinumEngine.Story.ScriptRunner.PlazaShopCounter, System.StringComparison.Ordinal):
+                    game.OpenPlazaShop(counter[PokemonPlatinumEngine.Story.ScriptRunner.PlazaShopCounter.Length..]);
+                    break;
+                // The Week's Work (plan 41 · EG6)
+                case ScriptScreen.MissionBoard:
+                    game.OpenMissionBoard();
+                    break;
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
@@ -1273,6 +1296,8 @@ public partial class GameEngine
                         MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.RulesHere.Id)));
                     // Easy takes a quarter off what a counter asks (plan 13 · V2)
                     game.flow.ShopScreen.Difficulty = game.flow.Run.Difficulty;
+                    // And the Bargain Power in force as it opens (plan 36 · TR7)
+                    game.flow.ShopScreen.Bargain = game.flow.Powers.Strength(PowerKind.Bargain);
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
@@ -1282,7 +1307,10 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.HallOfFame:
                     game.flow.State = GameState.HallOfFame;
-                    game.flow.HallOfFameScreen.Open();
+                    // A plinth of the Laurel Gallery opens it on one region's teams, the circuit's on its finals (plan 41 · EG2, EG4)
+                    if (counter == ChampionsCircuit.CircuitRegion)
+                        game.flow.HallOfFameScreen.OpenOn(game.flow.Circuit.Finals.Select(e => e.ToEntry()).Reverse().Select(e => (e.Number, e)).ToList());
+                    else game.flow.HallOfFameScreen.Open(counter);
                     break;
                 case ScriptScreen.ChoosePokemon:
                     game.flow.State = GameState.PartyMenu;
@@ -1457,7 +1485,9 @@ public partial class GameEngine
         public void EnterHallOfFame()
         {
             game.flow.HallOfFame.Enter(game.flow.Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.flow.TrainerId), GameClock.Moment,
-                game.TimeForTheHallOfFame());
+                game.TimeForTheHallOfFame(), Region);
+            // The Laurel Circuit stamps the region whose Hall of Fame this is, while one runs (plan 41 · EG4)
+            ChampionsCircuit.Stamp(game.flow.Circuit, Region, game.flow.Story);
             game.flow.TrainerScore = TrainerScore.Add(game.flow.TrainerScore, TrainerScore.HallOfFame);
         }
 

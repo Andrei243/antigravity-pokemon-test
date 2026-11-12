@@ -252,6 +252,18 @@
       "dialog": [
         "Kiawe trains up on Wela Volcano. Route 7 runs along the beach to it, just north-east of here."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

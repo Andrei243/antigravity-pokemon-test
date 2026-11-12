@@ -252,6 +252,18 @@
       "dialog": [
         "Paniola's ranchers raise the finest Tauros and Miltank on the islands. Go and see the ranch north of town!"
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

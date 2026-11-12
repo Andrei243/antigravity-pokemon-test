@@ -29,10 +29,10 @@ public sealed record Medal(MedalCategory Category, string Source, long Goal)
 /// </summary>
 public sealed class MedalFacts
 {
-    public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions";
+    public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions", Circuits = "circuits";
 
     /// <summary>The facts that are no counter, in the order the medals list them.</summary>
-    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions };
+    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits };
 
     public Statistics Counts { get; init; } = new();
     public int Seen { get; init; }
@@ -40,18 +40,22 @@ public sealed class MedalFacts
     public int BadgeCount { get; init; }
     public int ChampionCount { get; init; }
 
+    /// <summary>The Laurel Circuits won (plan 41 · EG4).</summary>
+    public int CircuitCount { get; init; }
+
     public long Value(string source) => source switch
     {
         DexSeen => Seen,
         DexCaught => Caught,
         Badges => BadgeCount,
         Champions => ChampionCount,
+        Circuits => CircuitCount,
         _ => Counts.Get(source)
     };
 }
 
 /// <summary>
-/// The medals (plan 13 · V9): a fixed list of 120 in six categories, each a goal of one counter or fact, and the
+/// The medals (plan 13 · V9): a fixed list of 123 in six categories, each a goal of one counter or fact, and the
 /// ones won, kept by id in <c>SaveData.Medals</c> (null while none is won, so no save version was raised). A medal
 /// is won once and kept: <see cref="Check"/> gives back only those won now that weren't before. Plain data, no window.
 /// </summary>
@@ -94,6 +98,8 @@ public sealed class Medals
 
         Add(MedalCategory.League, MedalFacts.Badges, 1, 2, 4, 8, 16, 24, 32, 40, 48);
         Add(MedalCategory.League, MedalFacts.Champions, 1, 2, 3, 4, 5);
+        // The Laurel Circuit's finals won (plan 41 · EG4)
+        Add(MedalCategory.League, MedalFacts.Circuits, 1, 3, 5);
         return all;
     }
 

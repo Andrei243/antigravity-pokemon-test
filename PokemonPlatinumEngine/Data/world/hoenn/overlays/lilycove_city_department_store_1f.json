@@ -24,6 +24,10 @@
     { "id": "lilycove_city_department_store_1f.TrainingTutor", "name": "Tutor Marlo", "npcType": "training_tutor",
       "x": 17, "y": 4, "facing": "Left", "script": "TrainingTutor" },
     { "id": "lilycove_city_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
-      "x": 17, "y": 5, "facing": "Left", "script": "TrainingClerk" }
+      "x": 17, "y": 5, "facing": "Left", "script": "TrainingClerk" },
+    { "id": "lilycove_city_department_store_1f.TrainingTeacher", "name": "Teacher Coral", "npcType": "training_teacher",
+      "x": 17, "y": 6, "facing": "Left", "script": "TrainingTeacher" },
+    { "id": "lilycove_city_department_store_1f.TeraKeeper", "name": "Tera Keeper", "npcType": "tera_keeper",
+      "x": 17, "y": 2, "facing": "Left", "script": "TeraKeeper" }
   ]
 }

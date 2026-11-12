@@ -149,7 +149,11 @@ public enum GameState
     /// <summary>The gift box at a Gift Runner's, opened by a script's <c>gift open</c> (plan 40 · GE7).</summary>
     GiftBox,
     /// <summary>The trade board at a link desk, opened by a script's <c>trade board open</c> (plan 40 · GE8).</summary>
-    TradeBoard
+    TradeBoard,
+    /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
+    Powers,
+    /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
+    MissionBoard
 }
 
 public partial class GameEngine
@@ -253,6 +257,8 @@ public partial class GameEngine
         flow.BagScreen.CubeMoves = FormChanges.CubeMovesFor(flow.Story.Has);
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
         flow.PartyScreen.RunCap = flow.DayCare.LevelCap = flow.BagScreen.RunCap;
+        // The summary's Tera Type, while a Tera Orb is in the bag (plan 36 · TR5)
+        flow.PartyScreen.View.ShowsTera = flow.PCScreen.View.ShowsTera = HoldsTeraOrb;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -483,6 +489,8 @@ public partial class GameEngine
         flow.Crafting.Clear();
         flow.Gifts.Clear();
         flow.Board.Clear();
+        flow.Plaza.Clear();
+        flow.Missions.Clear();
         flow.Powers.Clear();
         ForgetWornOff();
         flow.Training.Clear();
@@ -549,6 +557,7 @@ public partial class GameEngine
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
+        flow.Circuit = new CircuitState();
         flow.Journal = new Journal();
         flow.PokemonIdsIssued = 0;
         flow.LinkBattles = new LinkBattleRecord();
@@ -754,6 +763,9 @@ public partial class GameEngine
         flow.Crafting.Load(save.Crafting);
         flow.Gifts.Load(save.Gifts);
         flow.Board.Load(save.TradeBoard);
+        // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
+        flow.Plaza.Load(save.Plaza);
+        flow.Missions.Load(save.Missions);
         flow.Powers.Load(save.Powers);
         ForgetWornOff();
         flow.Training.Load(save.Training);
@@ -885,7 +897,8 @@ public partial class GameEngine
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
-        flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
+        flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()), save.HallOfFameFirsts?.Select(e => e.ToEntry()));
+        flow.Circuit = save.Circuit ?? new CircuitState();
         flow.Journal = new Journal();
         flow.Journal.Restore(save.Journal);
 
@@ -937,6 +950,8 @@ public partial class GameEngine
             HallOfFameTotal = flow.HallOfFame.Total,
             HallOfFameDebut = flow.HallOfFame.Debut,
             HallOfFame = flow.HallOfFame.Entries.Select(SavedHallOfFameEntry.From).ToList(),
+            HallOfFameFirsts = flow.HallOfFame.Firsts.Count == 0 ? null : flow.HallOfFame.Firsts.Values.Select(SavedHallOfFameEntry.From).ToList(),
+            Circuit = flow.Circuit.IsEmpty ? null : flow.Circuit,
             Journal = flow.Journal.All.ToList(),
             Rules = Ruleset.Current.Preset,
             CurrentMapName = flow.Map.Name,
@@ -975,6 +990,8 @@ public partial class GameEngine
             Crafting = flow.Crafting.ToSave(),
             Gifts = flow.Gifts.ToSave(),
             TradeBoard = flow.Board.ToSave(),
+            Plaza = flow.Plaza.ToSave(),
+            Missions = flow.Missions.ToSave(),
             Powers = flow.Powers.ToSave(),
             MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             Training = flow.Training.ToSave(),
@@ -1358,6 +1375,8 @@ public partial class GameEngine
                 TickPalPark(dt);
                 // The Bug-Catching Contest's minutes, and its end when they run out (plan 15 · E5)
                 TickBugContest(dt);
+                // A timed mission's minutes in its region (plan 41 · EG6)
+                TickMissions(dt);
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
@@ -1384,6 +1403,8 @@ public partial class GameEngine
                     flow.Battle.Update(dt * Pace);
                     // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
+                    // ...and so do a timed mission's (plan 41 · EG6)
+                    TickMissions(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
@@ -1505,6 +1526,8 @@ public partial class GameEngine
                         else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
                         // The crafting kit is looked into and closes back onto the bag (plan 39 · CR1)
                         else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
+                        // The Power Watch's panel, and back to the bag (plan 36 · TR8)
+                        else if (usedHere.FieldUse == PowerWatchUse) OpenPowers(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1555,7 +1578,14 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Shop:
-                if (flow.ShopScreen.InPoints)
+                if (flow.ShopScreen.InPoints && flow.ShopScreen.PointsUnit == ShopScreen.PennantsUnit)
+                {
+                    // A stall of Pennant Hall is paid in pennants (plan 41 · EG3): what the counter takes is spent from the plaza's
+                    int pennants = flow.Plaza.Coins;
+                    flow.ShopScreen.Update(flow.Bag, ref pennants, ShowNotification, dt);
+                    if (pennants < flow.Plaza.Coins) flow.Plaza.Spend(flow.Plaza.Coins - pennants);
+                }
+                else if (flow.ShopScreen.InPoints)
                 {
                     // The Athlete Shop is paid in Athlete Points (plan 15 · E8)
                     int points = flow.Athlon.Points;
@@ -1653,8 +1683,14 @@ public partial class GameEngine
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
                 break;
+            case GameState.Powers:
+                UpdatePowers(dt);
+                break;
             case GameState.Crafting:
                 UpdateCrafting(dt);
+                break;
+            case GameState.MissionBoard:
+                UpdateMissionBoard(dt);
                 break;
             case GameState.Training:
                 UpdateTraining(dt);
@@ -2256,6 +2292,8 @@ public partial class GameEngine
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+        // The Power Watch's charge fills a point every 200 steps (plan 36 · TR7), while the watch is in the bag
+        if (HoldsPowerWatch) flow.Powers.Walk();
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
         // The DexNav's find in the grass stays, flees or is met, or one is found (plan 10 · F12)
@@ -3001,7 +3039,11 @@ public partial class GameEngine
             ContestsEntered = flow.ContestRecords.Entered,
             ContestsWon = flow.ContestRecords.Won,
             // The Masters' Hall's titles (plan 14 · B15): the masters beaten, and the one won last
-            Titles = MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species))).ToList(),
+            // and first the Laurel Circuit's (plan 41 · EG4), numbered by the circuits won
+            Titles = (flow.Circuit.Won > 0 ? new[] { new CardTitle(flow.Circuit.Won, Text.Of("laurelCircuit.title")) } : Array.Empty<CardTitle>())
+                // and Grayfall Keep's, once the gathering's show is over (plan 41 · EG9)
+                .Concat(flow.Story.Has("FLAG_GATHERING_DONE") ? new[] { new CardTitle(1, Text.Of("laurelCircuit.keepTitle")) } : Array.Empty<CardTitle>())
+                .Concat(MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species)))).ToList(),
             TitlesOf = MasterTitles.Total,
             LatestTitle = MasterTitles.Latest(flow.Story) is { } latest ? MasterTitles.Title(latest) : ""
         };
@@ -3269,8 +3311,13 @@ public partial class GameEngine
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();
+                // Pennant Hall's pennants while its people speak of them, and a timed mission's corner (plan 41 · EG3, EG6)
+                DrawPennants();
+                DrawMissionCorner();
                 // A request pinned (plan 12 · Q21), at the top left while the location sign isn't there and no script runs
                 DrawPinnedRequest(shown);
+                // The powers in force, as chips at the left (plan 36 · TR8)
+                DrawPowerChips(shown);
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill
@@ -3320,7 +3367,7 @@ public partial class GameEngine
                 flow.StarterSelectScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Shop:
-                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.ShopScreen.InPoints ? flow.Athlon.Points : flow.Money, flow.Bag);
+                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.ShopScreen.InPoints ? (flow.ShopScreen.PointsUnit == ShopScreen.PennantsUnit ? flow.Plaza.Coins : flow.Athlon.Points) : flow.Money, flow.Bag);
                 break;
             case GameState.Wardrobe:
                 flow.WardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
@@ -3443,6 +3490,12 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Powers:
+                flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.MissionBoard:
+                flow.MissionBoardScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Training:
                 flow.TrainingScreen.Draw(VirtualWidth, VirtualHeight);

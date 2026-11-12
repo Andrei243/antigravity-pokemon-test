@@ -1,0 +1,188 @@
+{
+  "Herald": [
+    {
+      "en": [
+        "Piers"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Champion {player}, every League you have won is stamped. The final of the Laurel Circuit begins now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You will face each Champion in turn, at level {result}, with no rest between. Your bag is your own. Champions, step forward!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sinnoh's Champion opens the final. I'll give you nothing less than everything."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kanto's turn. I've been training since the day you took my title. Let's settle it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Johto's dragons answer to me. Let's see if they answer to you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hoenn's Champion, at your service. Shall we make this the most beautiful battle of the day?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Unova's Champion is up! My dragons and I won't hold back, not even a little."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Diantha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kalos closes the final. Let's give the hall an ending it will remember."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Piers"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The final is won! Champion of every League you have crowned, and now the Laurel Champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your team will stand on the circuit's plinth in the Laurel Gallery. Circuits won: {result}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The next circuit will meet you five levels higher. Rest well, Laurel Champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Piers"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The final ends here for today. Your circuit stands, and the Champions will wait for you to try again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The final opens once every League you have won is stamped. Stamps so far: {result}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Laurel Court, where the Laurel Circuit's final is fought. Begin a circuit at the Laurel Gallery's desk."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

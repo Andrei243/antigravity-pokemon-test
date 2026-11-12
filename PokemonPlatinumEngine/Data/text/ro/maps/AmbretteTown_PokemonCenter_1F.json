@@ -81,6 +81,24 @@
           "Drumul spre est urmează coasta până la capăt. Chiar după iarba înaltă e o peșteră care sclipește, dacă ai curaj."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

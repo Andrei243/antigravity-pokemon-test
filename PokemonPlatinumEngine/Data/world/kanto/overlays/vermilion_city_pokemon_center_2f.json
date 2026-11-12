@@ -22,6 +22,6 @@
         "I'm sorry, the link to other players is closed for now."
       ]
     },
-    "mg_deliveryman": { "name": "Gift Runner", "script": "Courier" }
+    "mg_deliveryman": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" }
   }
 }
