@@ -9947,7 +9947,7 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   of chunks west of the beach, and the chunk row under Kala'e Bay, inside chunks already drawn, so no chunk was added; the
   areas' rectangles reach over their new water (Hau'oli's 32 rows deep and to the chunk's east edge, Route 1's to z 191,
   Big Wave Beach's from 128, 128, Kala'e Bay's from 416). The sea beyond those chunks (z 192 on, x 480 on) is still the
-  undrawn woods of an island's edge, out of sight from the shore. Akala had the same below Heahea City's pier and the
+  undrawn woods of an island's edge, out of sight from the shore but met by a surfer who sails out to it. Akala had the same below Heahea City's pier and the
   beaches of Hano and Konikoni (`akala_sea.txt`, `akala_sea_south.txt`; Hano's and Konikoni's last rows of woods are sea).
 - **Team Skull's grunts have names.** A trainer's line is its class and its name, so the ten grunts of Alola named
   "Grunt" were announced as "Team Skull Grunt Grunt"; each has a name of ours now (Laka, Lono, Mana, Ulu, Moku, Malu,
