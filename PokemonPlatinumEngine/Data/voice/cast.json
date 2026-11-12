@@ -10780,6 +10780,10 @@
       "note": "first spoken at route_29.txt(45)",
       "provisional": true
     },
+    "tutor": {
+      "note": "first spoken at battle_frontier_lounge_7.txt(12)",
+      "provisional": true
+    },
     "tv": {
       "note": "first spoken at CanalaveLibrary3F.txt(97)",
       "brief": {
@@ -11758,6 +11762,7 @@
     "Tristan": "tristan",
     "Tucker": "tucker",
     "Tuscany": "tuscany",
+    "Tutor": "tutor",
     "TV": "tv",
     "TV Producer": "tv_producer",
     "Ty": "ty",

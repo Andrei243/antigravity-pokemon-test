@@ -1654,3 +1654,23 @@ oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnorma
       report. The Devon researcher's question is still not seen there (the chain had already revived a fossil). **Left to
       pictures only**: the Fortree
       walkway under the trees south of it (part r), Mew's grass shaking, the cave mouth as a card.
+    - **Part s** (done 2026-11-12, the user's request to do all that is left; `docs/mechanics/rulings.md`, "The Brains of
+      the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk"; tests `HoennLeftoversTests`
+      (17) and the suites the change touches, run with `--filter`). **Built**: Emerald's three Brains that had none here,
+      Spenser in the annex's Palace (21st and 42nd battle), Greta in its Arena (28th and 56th) and Tucker in its Dome (in the
+      other half of the bracket of the tournament after four won in a row, and after nine; he wins every match but the
+      player's), with teams of ours on Emerald's species (`Models/Frontier/EmeraldBrains.cs`, `our-trainers.json`), looks,
+      lines and `venue brain` / `bracket brain`, the draws of a round without them unmoved; the Palace's announcer is its
+      attendant now; Mauville's right roulette table's service day (six Coins a ball on Saturdays, `gamecorner wheel 6`) and
+      the record of roulette wins in a row (`VAR_HOENN_ROULETTE_WINS_IN_A_ROW`, `gamecorner streak`); the Trainer Hill's
+      clerk with Emerald's two stocks (`marts.json`'s `trainer_hill`, `trainer_hill_champion`) and the Hill's best times
+      mixed in from other saves (`MixedRecord.HillBest`, `trainerhill mixed`, `{hill:MIXED_*}`); the island's Exchange
+      Service Corner's two doll and cushion clerks for Battle Points (`openbase trade`), Lounge 7's two tutors teaching
+      Emerald's twenty moves for Battle Points (`tutor frontier left|right`, `tutor spend`, `MoveTutors.FrontierLounge`) and
+      Lounge 5's nature girl (`venue nature`, `PalaceNatures.Leaning`). Romanian for every new line; the voice catalogue
+      (Spenser, Greta and Tucker provisional). **Golden**: none run (the battles and teams of the corpus don't touch the
+      venues; `scripts.txt` owes its new blocks to the merged run, accept with `GOLDEN=accept`). **Left**: the island's own
+      lobbies and Anabel and Noland for a challenge begun from its doors (rulings say why); Lounge 3's gambler (a bet on a
+      challenge of another facility, which no record yet ties to); the e-Reader's floors; the Hill's own floor art, lift,
+      music and board screen; Emerald's other mixed records (the Lilycove Lady's and the television's shows, the Tower's
+      partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice); the island's own song; and the pictures above.

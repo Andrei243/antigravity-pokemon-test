@@ -12336,7 +12336,15 @@ built; what is still owed is listed at the end and in plan 21's last note.
   four best climbs (`MixedRecord.HillBest`, frames, null where it has climbed none), and the board's gentleman reads out the
   fastest of each challenge among them with whose it is (`trainerhill mixed`, `{hill:MIXED_NORMAL}` and its kin), after the
   player's own; Emerald ranks the mixed times on the Hill's own board.
-- **Still owed**: Anabel and Noland, the Tower's and the Factory's Brains of Emerald, for a challenge begun from the
+- **The island's lounges and doll counters**: the Exchange Service Corner's two decoration clerks trade Battle Points for
+  Emerald's posters, cushions and dolls at Emerald's prices (16 to 256), into the decoration PC (`openbase trade`); Lounge
+  7's two tutors teach Emerald's ten moves each at Emerald's prices (16 to 48), the points paid once the move is learned
+  (`tutor frontier left|right`, `tutor spend`; who may learn which is ours, by the Kanto tutors' rule of a move or its
+  nearest kin, `MoveTutors.FrontierLounge`); Lounge 5's little girl reads a Pokémon's nature by the Battle Palace's table
+  (`venue nature`: the group it leans to most with more than half its HP, and with half or less), in words of ours where
+  Emerald has a line for each nature.
+- **Still owed**: Lounge 3's gambler (Emerald's bet of points on a challenge of a facility he names, which no record of a
+  challenge here is tied to); Anabel and Noland, the Tower's and the Factory's Brains of Emerald, for a challenge begun from the
   island's doors (the Tower and the Factory are Platinum's own facilities, whose Brains and prints the ferry's tickets count;
   dressing another Brain in by the door the player came through wants the challenge to remember that door, which no
   record holds); the island's own lobbies (part m's reason stands: a lobby's counter warps on to its corridor and battle

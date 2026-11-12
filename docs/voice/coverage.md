@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1764 | 1701 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13519 | 12954 | 565 | 17 | 36 |
-| People of the world (`world:`) | 8183 | 8121 | 62 | 4 | 0 |
-| **All** | 23750 | 23057 | 693 | 22 | 36 |
+| Scripts (`script:`) | 13549 | 12975 | 574 | 17 | 36 |
+| People of the world (`world:`) | 8180 | 8118 | 62 | 4 | 0 |
+| **All** | 23777 | 23075 | 702 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1122 |
+| a question's answers | 1144 |
 | a sign | 1771 |
 | the game's own voice (speaker none) | 326 |
-| the game's own voice (text) | 2224 |
+| the game's own voice (text) | 2225 |
 
 ## The cast
 
-- Named characters: 979 voices (384 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 980 voices (385 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
 - Archetypes in use: 254, with 767 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 391.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 403.
 
 ## Lines by voice
 
@@ -43,11 +43,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gentleman (any)` | 1220 | 54 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 605 | 20 |
-| `look:clerk (any)` | 593 | 15 |
+| `look:clerk (any)` | 600 | 15 |
 | `look:lady (any)` | 574 | 10 |
-| `look:lass (any)` | 554 | 22 |
+| `look:lass (any)` | 553 | 22 |
 | `look:youngster (any)` | 521 | 32 |
-| `@self` | 391 | 64 |
+| `@self` | 403 | 69 |
 | `look:receptionist (any)` | 348 | 40 |
 | `look:attendant (any)` | 340 | 15 |
 | `look:scientist (any)` | 329 | 13 |
@@ -261,6 +261,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `hapu` | 23 | 2 |
 | `look:galacticdoor (any)` | 23 | 23 |
 | `look:gymstatue (any)` | 23 | 0 |
+| `look:little_girl (any)` | 23 | 4 |
 | `look:plasma_grunt (any)` | 23 | 0 |
 | `mira` | 23 | 5 |
 | `nursery_aide` | 23 | 0 |
