@@ -41,6 +41,19 @@
     { "name": "the way to Hammerlocke's west gate", "points": [[12, -1214], [-20, -1214], [-46, -1214]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
     { "name": "Route 6's path", "points": [[-46, -1214], [-70, -1222], [-96, -1236], [-110, -1262], [-100, -1290], [-96, -1312]], "width": 3, "shoulder": 2.5 },
     { "name": "Stow-on-Side's street", "points": [[-96, -1312], [-96, -1340], [-80, -1356], [-60, -1360]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
-    { "name": "Ballonlea's path", "points": [[-20, -1320], [10, -1330], [40, -1350], [62, -1352]], "width": 3, "shoulder": 2 }
+    { "name": "Ballonlea's path", "points": [[-20, -1320], [10, -1330], [40, -1350], [62, -1352]], "width": 3, "shoulder": 2 },
+    // Plan 33 · GL5, its second session: the Wild Area's tracks west and east off the hills' track; the high street on
+    // to the stadium's door and out of the east gate; Route 7's path north and Route 8's on up through the ruins and the
+    // pass into Circhester; Circhester's streets to its stadium and down to Route 9's east shore; the west shore's path to
+    // Spikemuth's gate and the town's one street to its stage
+    { "name": "the Wild Area's track west", "points": [[-2, -1104], [-40, -1100], [-80, -1104], [-120, -1120]], "width": 2.5, "shoulder": 2 },
+    { "name": "the Wild Area's track east", "points": [[28, -1100], [60, -1092], [96, -1084]], "width": 2.5, "shoulder": 2 },
+    { "name": "the way to Hammerlocke's stadium and its east gate", "points": [[64, -1232], [80, -1222], [100, -1222], [116, -1222]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "Route 7's path", "points": [[116, -1222], [130, -1240], [130, -1280]], "width": 3, "shoulder": 2.5 },
+    { "name": "Route 8's path", "points": [[130, -1280], [128, -1320], [134, -1360], [131, -1400], [131, -1420]], "width": 3, "shoulder": 2.5 },
+    { "name": "Circhester's high street", "points": [[131, -1420], [120, -1440], [96, -1448], [64, -1448], [40, -1460], [26, -1470]], "width": 6, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "the way up to Circhester's stadium", "points": [[96, -1448], [104, -1476], [104, -1490]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "Route 9's west shore", "points": [[-74, -1470], [-90, -1469], [-98, -1469]], "width": 3, "shoulder": 2 },
+    { "name": "Spikemuth's street", "points": [[-110, -1469], [-130, -1468], [-134, -1450], [-134, -1430]], "width": 5, "shoulder": 1, "surface": "Rock" }
   ]
 }

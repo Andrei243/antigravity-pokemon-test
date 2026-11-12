@@ -34,7 +34,9 @@ public class GalarWildAreaTests
         "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins",
         "wild_area_lake_axewell", "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
         // The northern half begun (plan 33 · GL5)
-        "wild_area_hammerlocke_hills"
+        "wild_area_hammerlocke_hills",
+        // and the rest of it (plan 33 · GL5, its second session)
+        "wild_area_dusty_bowl", "wild_area_stony_wilderness", "wild_area_giants_cap", "wild_area_lake_of_outrage"
     };
 
     private static OpenPos On(OpenMap map, double x, double z)

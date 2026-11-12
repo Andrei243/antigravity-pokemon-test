@@ -5027,6 +5027,10 @@
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
     },
+    "gordie": {
+      "note": "first spoken at Circhester_StadiumPitch.txt(18)",
+      "provisional": true
+    },
     "grant": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(221)",
       "brief": {
@@ -8797,23 +8801,6 @@
       "note": "first spoken at JubilifeTV1F.txt(83)",
       "provisional": true
     },
-    "maribel_orr": {
-      "note": "first spoken at PastoriaCityObservatoryGate2F.txt; the photo tour's guide (plan 44 · SD5)",
-      "brief": {
-        "register": "woman",
-        "age": "adult",
-        "pitch": "middle",
-        "pace": "brisk",
-        "manner": "a nature photographer and judge: warm, bright and exacting about a good shot"
-      },
-      "design": {
-        "engine": "kokoro-82m",
-        "blend": "af_alloy:0.5,bf_lily:0.5",
-        "speed": 1.04,
-        "pitch": 1.02,
-        "accent": "en-us"
-      }
-    },
     "maid": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
       "brief": {
@@ -8963,6 +8950,23 @@
         "blend": "af_kore:0.6,af_nicole:0.4",
         "speed": 0.98,
         "pitch": 1.024,
+        "accent": "en-us"
+      }
+    },
+    "maribel_orr": {
+      "note": "first spoken at PastoriaCityObservatoryGate2F.txt; the photo tour's guide (plan 44 · SD5)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a nature photographer and judge: warm, bright and exacting about a good shot"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,bf_lily:0.5",
+        "speed": 1.04,
+        "pitch": 1.02,
         "accent": "en-us"
       }
     },
@@ -9124,6 +9128,14 @@
     },
     "mechadoll_5": {
       "note": "first spoken at route_110_trick_house_puzzle_5.txt(179)",
+      "provisional": true
+    },
+    "mechanic": {
+      "note": "first spoken at galar_route_9.txt(12)",
+      "provisional": true
+    },
+    "melony": {
+      "note": "first spoken at Circhester_StadiumPitch.txt(38)",
       "provisional": true
     },
     "member": {
@@ -9912,6 +9924,10 @@
     },
     "raffle_clerk": {
       "note": "first spoken at join_avenue.txt(121)",
+      "provisional": true
+    },
+    "raihan": {
+      "note": "first spoken at Hammerlocke_StadiumPitch.txt(8)",
       "provisional": true
     },
     "ralph": {
@@ -11375,6 +11391,7 @@
     "Glacia": "glacia",
     "Gladion": "gladion",
     "Glass Worker": "glass_worker",
+    "Gordie": "gordie",
     "Grant": "grant",
     "Grimsley": "grimsley",
     "Grunt": "look:grunt",
@@ -11485,7 +11502,6 @@
     "Machamp": "machamp",
     "Machop": "machop",
     "Madame Ottilie Fray": "madame_ottilie_fray",
-    "Maribel Orr": "maribel_orr",
     "Maid": "maid",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
@@ -11499,6 +11515,7 @@
     "Man in Black": "man_in_black",
     "Manager": "manager",
     "Maria": "maria",
+    "Maribel Orr": "maribel_orr",
     "Marius": "marius",
     "Marley": "marley",
     "Marlon": "marlon",
@@ -11517,6 +11534,8 @@
     "Mechadoll 3": "mechadoll_3",
     "Mechadoll 4": "mechadoll_4",
     "Mechadoll 5": "mechadoll_5",
+    "Mechanic": "mechanic",
+    "Melony": "melony",
     "Member": "member",
     "Miguel": "miguel",
     "Miki": "miki",
@@ -11620,6 +11639,7 @@
     "Quiz Lady": "quiz_lady",
     "Quizmaster": "quizmaster",
     "Raffle Clerk": "raffle_clerk",
+    "Raihan": "raihan",
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Ramos": "ramos",

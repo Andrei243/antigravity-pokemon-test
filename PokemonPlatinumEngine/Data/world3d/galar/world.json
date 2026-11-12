@@ -8,7 +8,7 @@
   // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
   // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-5, -44, 4, 1],
+  "chunks": [-5, -48, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -44,13 +44,28 @@
     { "key": "hammerlocke", "name": "Hammerlocke", "polygon": [[-40, -1154], [104, -1154], [104, -1282], [-40, -1282]], "music": "galar/wedgehurst" },
     { "key": "galar_route_6", "name": "Route 6", "polygon": [[-160, -1154], [-40, -1154], [-40, -1300], [-160, -1300]], "music": "galar/route1" },
     { "key": "stow_on_side", "name": "Stow-on-Side", "polygon": [[-160, -1300], [-40, -1300], [-40, -1408], [-160, -1408]], "music": "galar/wedgehurst" },
-    { "key": "ballonlea", "name": "Ballonlea", "polygon": [[-40, -1282], [160, -1282], [160, -1408], [-40, -1408]], "music": "galar/wedgehurst" }
+    { "key": "ballonlea", "name": "Ballonlea", "polygon": [[-40, -1282], [104, -1282], [104, -1408], [-40, -1408]], "music": "galar/wedgehurst" },
+    // Plan 33 · GL5, its second session: the rest of the Wild Area's northern half either side of Hammerlocke Hills (each
+    // with a column of calendar.json); out of Hammerlocke's east gate, Route 7 north along the land's east edge and Route 8
+    // on past Ballonlea's walls into the snow; Circhester at its head; Route 9 west of the town on Circhester Bay, crossed
+    // on the water; and Spikemuth behind its walls at the bay's west end
+    { "key": "wild_area_dusty_bowl", "name": "Dusty Bowl", "polygon": [[-160, -1056], [-100, -1056], [-100, -1154], [-160, -1154]], "music": "galar/wild_area" },
+    { "key": "wild_area_stony_wilderness", "name": "Stony Wilderness", "polygon": [[-100, -1056], [-40, -1056], [-40, -1154], [-100, -1154]], "music": "galar/wild_area" },
+    { "key": "wild_area_giants_cap", "name": "Giant's Cap", "polygon": [[60, -1056], [100, -1056], [100, -1154], [60, -1154]], "music": "galar/wild_area" },
+    { "key": "wild_area_lake_of_outrage", "name": "Lake of Outrage", "polygon": [[100, -1056], [160, -1056], [160, -1154], [100, -1154]], "music": "galar/wild_area" },
+    { "key": "galar_route_7", "name": "Route 7", "polygon": [[104, -1154], [160, -1154], [160, -1282], [104, -1282]], "music": "galar/route1" },
+    { "key": "galar_route_8", "name": "Route 8", "polygon": [[104, -1282], [160, -1282], [160, -1408], [104, -1408]], "music": "galar/route1" },
+    { "key": "circhester", "name": "Circhester", "polygon": [[40, -1408], [160, -1408], [160, -1536], [40, -1536]], "music": "galar/wedgehurst" },
+    { "key": "galar_route_9", "name": "Route 9", "polygon": [[-100, -1408], [40, -1408], [40, -1536], [-100, -1536]], "music": "galar/route1" },
+    { "key": "spikemuth", "name": "Spikemuth", "polygon": [[-160, -1408], [-100, -1408], [-100, -1536], [-160, -1536]], "music": "galar/wedgehurst" }
   ],
   "maps": [
     { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
       "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
       "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
       "motostoke", "galar_route_3", "galar_route_4", "turffield", "galar_route_5", "hulbury",
-      "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea"] }
+      "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea",
+      "wild_area_dusty_bowl", "wild_area_stony_wilderness", "wild_area_giants_cap", "wild_area_lake_of_outrage",
+      "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth"] }
   ]
 }

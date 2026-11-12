@@ -1,0 +1,70 @@
+{
+  // Circhester (plan 33 · GL5, its second session): the old town in the snow at the head of Route 8, its high street
+  // running west from the pass past the Pokémon Center and the Hero's Bath, the hot spring in its middle, to Route 9's
+  // shore; the stadium up a side street to the north. The gym is Gordie's in a Sword game and Melony's in a Shield one
+  // (plan 33 · decision 2). Our own town at about half the original's distances. Scripts: Data/scripts/circhester.txt
+  "markers": [
+    { "name": "circhester_pass", "at": [131, 26.3, -1426], "yaw": 180 },
+    { "name": "circhester_center_door", "at": [63, 26.3, -1444], "yaw": 180 },
+    { "name": "circhester_stadium_door", "at": [104, 26.3, -1490], "yaw": 0 },
+    { "name": "heros_bath", "at": [87, 26.3, -1450], "yaw": 0 },
+    { "name": "circhester_west", "at": [44, 26.3, -1458], "yaw": 270 }
+  ],
+  "doors": [
+    {
+      "name": "circhester_center_door",
+      "box": { "min": [62, 25.4, -1441], "max": [64, 30, -1440] },
+      "room": "Circhester_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "circhester_center_door"
+    },
+    {
+      "name": "circhester_stadium_door",
+      "box": { "min": [103, 25.4, -1494], "max": [105, 30, -1493] },
+      "room": "Circhester_Stadium", "at": [4, 8], "facing": "up",
+      "out": "circhester_stadium_door"
+    }
+  ],
+  "triggers": [
+    // Through the pass with the fifth badge: Hop and Sonia by the Hero's Bath
+    { "name": "circhester_arrival", "box": { "min": [122, 23, -1432], "max": [140, 30, -1420] }, "script": "HerosBath", "var": "VAR_GALAR_STORY", "value": 30 }
+  ],
+  "solids": [
+    { "name": "Circhester Stadium", "min": [84, 25.4, -1526], "max": [124, 38, -1494], "building": { "kind": "hall", "town": "galar", "sign": "CIRCHESTER STADIUM" } },
+    { "name": "Circhester's Pokémon Center", "min": [56, 25.4, -1440], "max": [70, 32, -1426], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "the hotel on the high street", "min": [124, 25.4, -1474], "max": [148, 34, -1456], "building": { "kind": "hotel", "town": "galar", "sign": "HOTEL" } },
+    { "name": "a house by the pass", "min": [140, 25.4, -1448], "max": [152, 33, -1434], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "a house on the high street, west", "min": [44, 25.4, -1488], "max": [60, 33, -1472], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a house on the high street", "min": [76, 25.4, -1438], "max": [92, 33, -1424], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "hop_circhester", "at": [82, 26.3, -1452], "yaw": 90, "look": "hop", "displayName": "Hop",
+      "lines": ["Sorry, I'm not much company today. I'll be alright. Go and get your sixth badge."],
+      "shownBy": "FLAG_GALAR_HOP_CIRCHESTER"
+    },
+    {
+      "name": "sonia_circhester", "at": [92, 26.3, -1452], "yaw": 270, "look": "sonia", "displayName": "Sonia",
+      "lines": ["The statue in the middle of the Bath is the hero of the tale. But look at his hands: he holds nothing at all."],
+      "shownBy": "FLAG_GALAR_SONIA_CIRCHESTER"
+    },
+    {
+      "name": "circhester_old_man", "at": [118, 26.3, -1442], "yaw": 270, "look": "old_man", "displayName": "Old Man",
+      "lines": ["The Bath's been warm for a thousand years. They say the hero himself rested his Pokémon in it."]
+    },
+    {
+      "name": "circhester_lady", "at": [72, 26.3, -1460], "yaw": 0, "look": "lady", "displayName": "Lady",
+      "lines": ["The town's snowed in half the year. Everyone comes for the hot spring and the stew."],
+      "moves": "wander", "radius": 3
+    },
+    {
+      "name": "circhester_staffer", "at": [110, 26.3, -1484], "yaw": 180, "look": "clerk", "displayName": "League Staff",
+      "lines": ["Circhester Stadium is ready for you. Mind your step on the pitch: they say it changes under your feet."]
+    }
+  ],
+  "trees": [
+    { "at": [150, -1420], "kind": "pine", "size": 1.1 },
+    { "at": [46, -1426], "kind": "pine", "size": 1.0 },
+    { "at": [150, -1526], "kind": "pine", "size": 1.2 },
+    { "at": [70, -1526], "kind": "pine", "size": 1.0 }
+  ]
+}

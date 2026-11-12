@@ -1,0 +1,23 @@
+# Circhester (plan 33 · GL5, its second session), the old town in the snow at the head of Route 8, on the open world's
+# engine: its places are Data/world3d/galar/places/circhester.json. The lines are our own, on Sword and Shield's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and Hammerlocke's stadium").
+# VAR_GALAR_STORY is postwick.txt's count: 30 the Fairy Badge, 31 Hop and Sonia at the Hero's Bath.
+
+
+# Through the pass with the fifth badge: Hop, beaten by Bede in Ballonlea and quiet, and Sonia at the hero's statue
+script HerosBath
+  scene "The Hero's Bath"
+  faceto player hop_circhester
+  speaker "Sonia"
+  say "{player}! Over here! This is the Hero's Bath. The tale says the hero rested here after the Darkest Day."
+  say "Look at the statue in the middle. Every other hero in Galar holds a sword or a shield. This one holds nothing at all."
+  say "I think somebody took them away, a long time ago, on purpose. Like the tapestries, and like the mural."
+  speaker "Hop"
+  say "...Bede beat me in Ballonlea. Properly beat me. I kept thinking about Lee watching, and I couldn't think of anything else."
+  say "Don't mind me. Go and win your sixth badge. I'll catch you up. I always do, don't I?"
+  speaker "Sonia"
+  say "He'll be alright. Go on, {player}. The stadium's up the street to the north."
+  setvar VAR_GALAR_STORY 31
+  objective galarSixth
+  endscene
+  end

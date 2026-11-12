@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Hammerlocke Stadium"
+    ],
+    "text": [
+      "Stadionul Hammerlocke"
+    ]
+  },
+  "people": {
+    "hammerlocke_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "hammerlocke_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de Arenă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

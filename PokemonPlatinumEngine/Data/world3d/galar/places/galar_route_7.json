@@ -1,0 +1,40 @@
+{
+  // Route 7 (plan 33 · GL5, its second session): out of Hammerlocke's east gate and north along the land's east edge, a
+  // stretch of grass and rock under the city's walls. Two trainers and the grass's Pokémon. Our own route at about half
+  // the original's distances. Scripts: Data/scripts/galar_route_7.txt
+  "markers": [
+    { "name": "route7_south", "at": [116, 26.3, -1222], "yaw": 90 }
+  ],
+  "zones": [
+    {
+      "name": "route_7",
+      "polygon": [[110, -1270], [152, -1270], [152, -1236], [110, -1236]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Thievul", "minLevel": 32, "maxLevel": 34, "weight": 20 },
+        { "species": "Karrablast", "minLevel": 31, "maxLevel": 33, "weight": 20 },
+        { "species": "Shelmet", "minLevel": 31, "maxLevel": 33, "weight": 20 },
+        { "species": "Toxel", "minLevel": 31, "maxLevel": 33, "weight": 10 },
+        { "species": "Perrserker", "minLevel": 32, "maxLevel": 34, "weight": 15 },
+        { "species": "Liepard", "minLevel": 32, "maxLevel": 34, "weight": 15, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "route7_cyclist", "at": [140, 26.3, -1250], "yaw": 270, "trainer": "galar_youngster_gwyn",
+      "lines": ["The Champion Cup's only three badges away for you? Not if I've got anything to say about it!", "Three badges away. Fine. Go on."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "route7_beauty", "at": [122, 26.3, -1268], "yaw": 180, "trainer": "galar_beauty_seren",
+      "lines": ["The walls block the wind, so this is the warmest walk north. Shall we battle?", "Warm walk, cold loss."],
+      "sight": { "length": 8, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [152, -1164], "kind": "round", "size": 1.0 },
+    { "at": [110, -1278], "kind": "round", "size": 1.1 }
+  ]
+}

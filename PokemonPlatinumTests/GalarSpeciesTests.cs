@@ -24,7 +24,7 @@ public class GalarSpeciesTests
 
     /// <summary>What the Galar Pokédex has that nothing in Galar gives yet, and who owes it. A session that gives one takes it off.</summary>
     public static readonly Dictionary<string, string> Owed = Owe(Places,
-        "Vikavolt", "Pidove", "Tranquill", "Unfezant", "Obstagoon",
+        "Vikavolt", "Obstagoon",
         "Shiftry", "Minccino", "Cinccino", 
         "Oddish", "Gloom", "Vileplume", "Bellossom", "Budew", "Roselia", "Roserade",
         
@@ -32,39 +32,39 @@ public class GalarSpeciesTests
         "Froslass", "Mudbray", "Mudsdale", 
            "Munna", "Musharna", "Natu", "Xatu", "Stufful",
         "Bewear", "Snover", "Abomasnow", "Krabby", "Kingler", "Corphish",
-        "Crawdaunt",         "Combee", "Vespiquen", "Bronzor",
-        "Bronzong",         "Cherubi", "Cherrim", "Stunky", "Skuntank",
+        "Crawdaunt",         "Combee", "Vespiquen", 
+        "Cherubi", "Cherrim", "Stunky", "Skuntank",
         "Machop", "Machoke", "Machamp",
         "Magikarp", "Gyarados", "Goldeen", "Seaking", "Remoraid", "Octillery", "Shellder",
-        "Cloyster", "Feebas", "Milotic", "Basculin", "Wishiwashi", "Pyukumuku", "Trubbish", "Garbodor",
+        "Cloyster", "Feebas", "Milotic", "Basculin", "Wishiwashi", "Trubbish", "Garbodor",
         
         "Gigalith", "Conkeldurr", 
-        "Arrokuda", "Barraskewda", 
-        "Perrserker", "Milcery", "Alcremie", "Cutiefly", "Ribombee", "Ferroseed", "Ferrothorn",
+        
+        "Milcery", "Alcremie", "Cutiefly", "Ribombee", "Ferroseed", "Ferrothorn",
         "Gourgeist", "Raichu",  "Vaporeon", "Jolteon",
            "Leafeon", "Glaceon",  "Flapple",
         "Appletun", "Espurr", "Meowstic", "Swirlix", "Slurpuff",  "Aromatisse", "Dewpider",
-        "Araquanid", "Wynaut", "Wobbuffet", "Farfetch'd", "Sirfetch'd", "Chinchou", "Lanturn",         "Scraggy", "Scrafty", "Stunfisk", "Shuckle", "Barboach", "Whiscash",         "Corsola", "Cursola",
+        "Araquanid", "Wynaut", "Wobbuffet", "Chinchou", "Lanturn",         "Scraggy", "Scrafty", "Stunfisk", "Shuckle", "Barboach", "Whiscash",         "Cursola",
         "Salandit", "Salazzle", "Pawniard",
-        "Bisharp", "Throh", "Sawk",   "Bonsly", "Sudowoodo", "Cleffa",
+        "Bisharp", "Bonsly", "Sudowoodo", "Cleffa",
         "Clefairy", "Clefable", "Togepi", "Togetic", "Togekiss", "Munchlax", "Snorlax", "Cottonee",
         "Whimsicott",   "Rhyperior", "Gothita", "Gothorita", "Gothitelle", "Solosis",
-        "Duosion", "Reuniclus", "Karrablast", "Escavalier", "Shelmet", "Accelgor", "Elgyem", "Beheeyem",
-        "Cubchoo", "Beartic", "Rufflet", "Braviary", "Vullaby", "Mandibuzz", "Skorupi", "Drapion",
-        "Litwick", "Lampent", "Chandelure", "Inkay", "Malamar", "Sneasel", "Weavile", "Sableye",
+        "Duosion", "Reuniclus", "Escavalier", "Accelgor", "Elgyem", "Beheeyem",
+        "Rufflet", "Braviary", "Vullaby", "Mandibuzz", "Skorupi", "Drapion",
+        "Litwick", "Lampent", "Chandelure", "Weavile", "Sableye",
         "Mawile", "Maractus", "Sigilyph", "Riolu", "Lucario",  "Mimikyu", "Cufant",
-        "Copperajah", "Qwilfish", "Frillish", "Jellicent", "Mareanie", "Toxapex", "Cramorant",
+        "Copperajah", "Qwilfish", "Frillish", "Jellicent", "Cramorant",
             
         "Heliolisk", "Hawlucha",   
         "Runerigus", "Honedge", "Doublade", "Aegislash", "Ponyta", "Rapidash",
         "Sinistea", "Polteageist", "Indeedee", "Trevenant", "Oranguru",
         "Passimian", "Morpeko", "Falinks", "Drampa", "Turtonator", "Togedemaru",
-        "Clobbopus", "Grapploct", "Pincurchin", "Mantyke", "Mantine", "Wailmer", "Wailord", "Bergmite",
-        "Avalugg", "Dhelmise", "Lapras", "Lunatone", "Solrock", "Mime Jr.", "Mr. Mime", "Mr. Rime",
-        "Darumaka", "Darmanitan", "Eiscue", "Duraludon", "Rotom", "Ditto", "Dracozolt",
+        "Pincurchin", "Mantyke", "Mantine", 
+        "Dhelmise", "Lunatone", "Solrock", "Mime Jr.", "Mr. Mime", "Mr. Rime",
+        "Eiscue", "Duraludon", "Rotom", "Ditto", "Dracozolt",
         "Arctozolt", "Dracovish", "Arctovish", "Charmander", "Charmeleon", "Charizard", "Type: Null", "Silvally",
-        "Larvitar", "Pupitar", "Tyranitar", "Deino", "Zweilous", "Hydreigon", "Goomy", "Sliggoo",
-        "Goodra", "Jangmo-o", "Hakamo-o", "Kommo-o", "Dreepy", "Drakloak", "Dragapult")
+        "Larvitar", "Pupitar", "Tyranitar", "Deino", "Zweilous", "Hydreigon", 
+        "Jangmo-o", "Hakamo-o", "Kommo-o", "Dreepy", "Drakloak", "Dragapult")
         .Concat(Owe(Legend, "Zacian", "Zamazenta"))
         .Concat(Owe(Darkest, "Eternatus"))
         .ToDictionary(p => p.Key, p => p.Value);
