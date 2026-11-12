@@ -313,7 +313,7 @@ internal sealed class MapScene
             };
             // A building stands on the ground at the foot of its front wall
             foreach (var b in BuildingsIn(map, chunk))
-                BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)), targets, Relief.At(map, b.X0 + b.Width / 2f, b.Y1 + 0.5f));
+                BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0), GrownScale.Of(map)), targets, Relief.At(map, b.X0 + b.Width / 2f, b.Y1 + 0.5f));
             OutdoorProps.Add(kit, map, batches.For(SceneTextures.LampGlow, MeshPass.Light), chunk);
         }
 

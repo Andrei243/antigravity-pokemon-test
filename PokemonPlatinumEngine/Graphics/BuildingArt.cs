@@ -39,6 +39,22 @@ internal sealed record BuildingStyle
     public bool SlidingDoor { get; init; }
 
     /// <summary>
+    /// Built to a grown body (style guide, "Scale in a grown region"; <see cref="GrownScale"/>): the ground storey
+    /// <see cref="BuildingArt.GrownLift"/> texels taller, its doors 56 texels high and its windows' sills 0.85 of a tile
+    /// over the ground. Off, the building is the chibi kit's, texel for texel.
+    /// </summary>
+    public bool Grown { get; init; }
+
+    /// <summary>How much taller the ground storey is than the chibi kit's: <see cref="BuildingArt.GrownLift"/> where grown.</summary>
+    public int GroundLift => Grown ? BuildingArt.GrownLift : 0;
+
+    /// <summary>How much taller a door is than the chibi kit's 39 or 40 texels.</summary>
+    public int DoorRise => Grown ? BuildingArt.GrownDoorRise : 0;
+
+    /// <summary>How much higher a ground storey's window sits than the chibi kit's.</summary>
+    public int SillRise => Grown ? BuildingArt.GrownSillRise : 0;
+
+    /// <summary>
     /// A loft door in each storey above the main door, under a beam with a rope and a hook to hoist goods in by: a
     /// harbour's storehouse (Snowpoint City).
     /// </summary>
@@ -102,8 +118,8 @@ internal sealed record BuildingStyle
 
     /// <summary>Height of the walls in texels.</summary>
     public int WallHeight => Pitched
-        ? BuildingArt.PitchedWall + (Storeys - 1) * BuildingArt.UpperStorey
-        : BuildingArt.GroundStorey + (Storeys - 1) * BuildingArt.UpperStorey + BuildingArt.TopBand;
+        ? BuildingArt.PitchedWall + GroundLift + (Storeys - 1) * BuildingArt.UpperStorey
+        : BuildingArt.GroundStorey + GroundLift + (Storeys - 1) * BuildingArt.UpperStorey + BuildingArt.TopBand;
 }
 
 /// <summary>
@@ -129,6 +145,15 @@ internal static partial class BuildingArt
 
     /// <summary>The entrance block rises above the eave and stands this far in front of the wall.</summary>
     public const int PortalHeight = 74, PortalDepth = 10;
+
+    /// <summary>
+    /// A grown building's numbers (style guide, "Scale in a grown region"): the ground storey 20 texels taller, a door
+    /// 17 taller (56, a grown adult's hair clearing it), a ground window's sill 10 higher (0.85 of a tile).
+    /// </summary>
+    public const int GrownLift = 20, GrownDoorRise = 17, GrownSillRise = 10;
+
+    /// <summary>The entrance block's height: <see cref="PortalHeight"/>, raised with the storey where grown.</summary>
+    public static int PortalHeightOf(BuildingStyle s) => PortalHeight + s.GroundLift;
 
     private const int HeaderHeight = 24;
 
@@ -248,25 +273,25 @@ internal static partial class BuildingArt
                 switch (bays[i])
                 {
                     case BayKind.Door when sliding:
-                        SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h, timber: s.Wall == WallKind.Log);
+                        StretchedDoor(c, h, s, (g, y) => SlidingDoor(g, Math.Clamp(cx, 30, w - 30), y, timber: s.Wall == WallKind.Log));
                         break;
                     case BayKind.Door when s.Portal == 0:
                         Door(c, cx, h, s, DoorLight(b, i, light));
-                        Lantern(c, cx + 13, h - 33);
+                        Lantern(c, cx + 13, h - 33 - s.DoorRise);
                         break;
                     case BayKind.Plaque:
-                        Plaque(c, cx, h - 32);
+                        Plaque(c, cx, h - 32 - s.DoorRise);
                         break;
                     case BayKind.Window:
                         // The end bays keep their shutters clear of the corner posts
-                        Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17, s, light);
+                        Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - s.SillRise, s, light);
                         break;
                 }
                 // Every storey above has a window in every bay, or over a storehouse's door its loft door
                 for (int k = 1; k < s.Storeys; k++)
                 {
-                    if (s.Loft && bays[i] == BayKind.Door) LoftDoor(c, sliding ? Math.Clamp(cx, 30, w - 30) : cx, h - 17 - k * UpperStorey, top: k == s.Storeys - 1);
-                    else Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - k * UpperStorey, s with { FlowerBoxes = false }, light);
+                    if (s.Loft && bays[i] == BayKind.Door) LoftDoor(c, sliding ? Math.Clamp(cx, 30, w - 30) : cx, h - 17 - s.GroundLift - k * UpperStorey, top: k == s.Storeys - 1);
+                    else Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - s.GroundLift - k * UpperStorey, s with { FlowerBoxes = false }, light);
                 }
             }
             if (s.RoseWindow) RoseWindow(c, w / 2, 30);
@@ -275,7 +300,7 @@ internal static partial class BuildingArt
         }
 
         // A block of storeys under a flat roof: a cornice band with the sign, then a row of windows per storey
-        int groundTop = h - GroundStorey;
+        int groundTop = h - GroundStorey - s.GroundLift;
         Cornice(c, s, 0, 0, w);
         if (s.Sign != SignKind.None) Sign(c, s, w / 2, 2, TopBand - 4, w - 8);
         if (s.Band) AccentBand(c, s, TopBand, w);
@@ -299,16 +324,16 @@ internal static partial class BuildingArt
             switch (bays[i])
             {
                 case BayKind.Door when sliding:
-                    SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h);
+                    StretchedDoor(c, h, s, (g, y) => SlidingDoor(g, Math.Clamp(cx, 30, w - 30), y));
                     break;
                 case BayKind.Door:
                     Door(c, cx, h, s, DoorLight(b, i, light));
                     break;
                 case BayKind.Plaque:
-                    Plaque(c, cx, h - 30);
+                    Plaque(c, cx, h - 30 - s.DoorRise);
                     break;
                 case BayKind.Window:
-                    GroundWindow(c, cx, h, s, light);
+                    GroundWindow(c, cx, h - s.SillRise, s, light);
                     break;
             }
         }
@@ -375,7 +400,7 @@ internal static partial class BuildingArt
         {
             var plain = s with { Shutters = false, FlowerBoxes = false };
             for (int k = 0; k < s.Storeys; k++)
-                if (k > 0 || !HasDoor(w / 2)) Window(c, w / 2, h - 17 - k * UpperStorey, plain, light);
+                if (k > 0 || !HasDoor(w / 2)) Window(c, w / 2, h - 17 - (k == 0 ? s.SillRise : s.GroundLift + k * UpperStorey), plain, light);
             if (gable >= 16) AtticWindow(c, w / 2 - 5, gable - 12, light);
             if (s.Roof == RoofShape.Hip) EaveShade(c, 0, w);
             return;
@@ -383,7 +408,7 @@ internal static partial class BuildingArt
 
         Cornice(c, s with { Sign = SignKind.None }, 0, 0, w);
         if (s.Band) AccentBand(c, s, TopBand, w);
-        int groundTop = h - GroundStorey;
+        int groundTop = h - GroundStorey - s.GroundLift;
         for (int k = 1; k < s.Storeys; k++)
         {
             int top = groundTop - k * UpperStorey;
@@ -393,7 +418,7 @@ internal static partial class BuildingArt
             StoreyLine(c, s, top + UpperStorey - 2, w);
         }
         for (int i = 0; i < bays; i++)
-            if (!HasDoor(i * Bay + Bay / 2)) GroundWindow(c, i * Bay + Bay / 2, h, s, light);
+            if (!HasDoor(i * Bay + Bay / 2)) GroundWindow(c, i * Bay + Bay / 2, h - s.SillRise, s, light);
     }
 
     /// <summary>Paints the front of the entrance block: a header in the accent colour with the sign, and the door under it.</summary>
@@ -415,8 +440,8 @@ internal static partial class BuildingArt
         Door(c, w / 2, h, s, ArtSheet.PublicLight);
         if (!s.GlassDoor)
         {
-            Lantern(c, w / 2 - 28, h - 34);
-            Lantern(c, w / 2 + 23, h - 34);
+            Lantern(c, w / 2 - 28, h - 34 - s.DoorRise);
+            Lantern(c, w / 2 + 23, h - 34 - s.DoorRise);
         }
     }
 
@@ -744,8 +769,60 @@ internal static partial class BuildingArt
 
     // ------------------------------------------------------------------ doors, plaques, lanterns
 
+    /// <summary>
+    /// A door of the chibi kit made grown (style guide, "Scale in a grown region"): <paramref name="paint"/> draws it at
+    /// its own size on a canvas of its own, and the row five texels over its foot (inside the lowest panel, the panes or
+    /// the boards of every door the kit has) is repeated <see cref="BuildingStyle.DoorRise"/> times more, so the door
+    /// stands 56 texels high with its frame, knob and glass as they were. A chibi style paints straight onto the wall.
+    /// </summary>
+    private static void StretchedDoor(PixelCanvas c, int groundY, BuildingStyle s, Action<PixelCanvas, int> paint)
+    {
+        if (!s.Grown)
+        {
+            paint(c, groundY);
+            return;
+        }
+        var g = StretchDoorArt(c.Width, s.DoorRise, paint);
+        int top = groundY - g.Height;
+        for (int y = 0; y < g.Height; y++)
+            for (int x = 0; x < g.Width; x++)
+            {
+                var px = g.Get(x, y);
+                if (px.A > 0) c.SetRaw(x, top + y, px);
+            }
+    }
+
+    /// <summary>The rows of a door painted by <paramref name="paint"/> on its own, with the row five over its foot repeated <paramref name="rise"/> times more.</summary>
+    internal static PixelCanvas StretchDoorArt(int width, int rise, Action<PixelCanvas, int> paint)
+    {
+        const int room = 72;
+        var g = new PixelCanvas(width, room);
+        paint(g, room);
+        return Taller(g, rise);
+    }
+
+    /// <summary>A door's art made <paramref name="rise"/> rows taller: the row five over its foot repeated, everything above it moved up.</summary>
+    internal static PixelCanvas Taller(PixelCanvas g, int rise)
+    {
+        const int keep = 5;
+        int room = g.Height;
+        var tall = new PixelCanvas(g.Width, room + rise);
+        for (int y = 0; y < room + rise; y++)
+        {
+            // rows above the repeated one keep their place from the top; the repeated one fills the gap; the rest stay at the foot
+            int from = y < room - keep ? y : y < room - keep + rise ? room - keep : y - rise;
+            for (int x = 0; x < g.Width; x++) tall.SetRaw(x, y, g.Get(x, from));
+        }
+        return tall;
+    }
+
     private static void Door(PixelCanvas c, int cx, int groundY, BuildingStyle s, byte light)
     {
+        if (s.Grown)
+        {
+            StretchedDoor(c, groundY, s, (g, y) => Door(g, cx, y, s with { Grown = false }, light));
+            return;
+        }
         if (s.SlidingDoor) SlidingDoor(c, cx, groundY);
         else if (s.GlassDoor) GlassDoor(c, cx, groundY, light);
         else if (s.Portal > 0) DoubleDoor(c, cx, groundY, light);
@@ -821,6 +898,9 @@ internal static partial class BuildingArt
     /// swings in against its hinges. The room behind is marked like a window (<paramref name="light"/>), so
     /// after dark it is the room's light that shows in the doorway.
     /// </summary>
+    internal static PixelCanvas OpenDoor(bool glass, bool pair, int frame, byte light, bool grown) =>
+        grown ? Taller(OpenDoor(glass, pair, frame, light), GrownDoorRise) : OpenDoor(glass, pair, frame, light);
+
     internal static PixelCanvas OpenDoor(bool glass, bool pair, int frame, byte light)
     {
         if (glass)

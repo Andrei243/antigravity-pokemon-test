@@ -4,6 +4,12 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Alola's and Galar's houses, shops and Pokémon Centers are built for grown people: taller doors you walk through without stooping, windows at a grown body's height, taller entrance porches.
+- Riding Tauros, Stoutland, Mudsdale or Machamp, you sit where that Pokémon's back is and tuck your legs up on the small ones, so your feet no longer hang to the ground beside them.
+- Six of Alola's houses that were furnished alike now each have their own: the berry farmer's plants, a boy's bookshelves and television, Ilima's tidy room, the malasada shop's stoves, a Heahea family's pictures and the rancher's feed crates.
+- The lei arch of Hau'oli City's Garland Days stands taller, so a grown crowd fits under it.
+- Battles on Hau'oli City's streets and at its marina are fought on a city stage rather than a meadow.
+
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.
