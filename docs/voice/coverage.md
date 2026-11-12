@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1674 | 1611 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12772 | 12262 | 510 | 17 | 36 |
-| People of the world (`world:`) | 8062 | 8000 | 62 | 4 | 0 |
-| **All** | 22774 | 22136 | 638 | 22 | 36 |
+| Scripts (`script:`) | 12850 | 12328 | 522 | 17 | 36 |
+| People of the world (`world:`) | 8061 | 7999 | 62 | 4 | 0 |
+| **All** | 22851 | 22201 | 650 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,15 +22,15 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 966 |
+| a question's answers | 1020 |
 | a sign | 1770 |
 | the game's own voice (speaker none) | 298 |
-| the game's own voice (text) | 2124 |
+| the game's own voice (text) | 2132 |
 
 ## The cast
 
-- Named characters: 913 voices (353 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
-- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 555 voices.
+- Named characters: 916 voices (353 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 558 voices.
 - Archetypes in use: 247, with 746 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 347.
 
@@ -49,9 +49,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:youngster (any)` | 516 | 32 |
 | `@self` | 347 | 40 |
 | `look:attendant (any)` | 335 | 12 |
-| `look:scientist (any)` | 330 | 13 |
+| `look:scientist (any)` | 329 | 13 |
+| `look:receptionist (any)` | 302 | 40 |
 | `look:nurse (any)` | 297 | 2 |
-| `look:receptionist (any)` | 271 | 29 |
 | `looker` | 237 | 1 |
 | `look:gym_guide (any)` | 236 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
@@ -248,6 +248,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `veteran` | 24 | 0 |
 | `wattson` | 24 | 0 |
 | `whitney` | 24 | 0 |
+| `cup_clerk` | 23 | 0 |
 | `curator` | 23 | 0 |
 | `eusine` | 23 | 0 |
 | `fishing_guru` | 23 | 3 |

@@ -1,0 +1,324 @@
+{
+  "Desk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Institute, where Trainers are tested and ranked!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "The test",
+        "The ladder",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Institute! Our tests are open to Champions of Unova. Come back once the League has crowned you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you'd like to be tested."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which test will you take?",
+        "Single battles",
+        "Double battles",
+        "Cancel"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Five single battles at level 50. Please choose the three you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Five double battles at level 50. Please choose the four you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each battle is scored by how quickly you win, how much HP you keep, and how strong your opponent was. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Test battle {number}: {foe} steps up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A win! That battle scored {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A loss scores nothing, but the test goes on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The test is over. Your total is {number} out of 9,999."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Master! Extraordinary."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Platinum. Very fine work."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Gold. Well done."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Silver. A good showing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Bronze. Keep at it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the rank of Novice. Everyone starts somewhere!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's a new best for this test!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your best puts you at number {number} on the institute's board."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A new month means a new season! Your last season's best band has earned you Battle Points, and your rating carries on as {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is {number}: the band of Legend."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is {number}: the band of Elite."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is {number}: the band of Veteran."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is {number}: the band of Challenger."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is {number}: the band of Rookie."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This season's ladder is single battles at level 50. Please choose the three you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This season's ladder is double battles at level 50. Please choose the four you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe}, rated {number}, accepts your challenge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A win! Your rating rises to {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A loss. Your rating falls to {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Another ladder battle?",
+        "Yes",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your rating is saved. The season runs until the end of the month."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

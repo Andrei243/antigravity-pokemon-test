@@ -1,9 +1,12 @@
 {
   "displayName": {
     "en": [
-      "Battle Tree"
+      "Partners' Tree"
     ],
     "text": [
+      ""
+    ],
+    "was": [
       "Battle Tree"
     ]
   },
@@ -11,9 +14,12 @@
     "desk": {
       "name": {
         "en": [
-          "Receptionist"
+          "Ione Calder"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Recepționeră"
         ]
       }

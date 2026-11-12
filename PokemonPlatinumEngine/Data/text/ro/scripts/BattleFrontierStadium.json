@@ -1,0 +1,612 @@
+{
+  "Cups": [
+    {
+      "en": [
+        "Cup Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the cups! Eight battles in a row under a cup's rules, and a prize the first time you win it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a cup?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which cup will you enter?",
+        "Crest Cup",
+        "Sprout Cup",
+        "Spark Cup",
+        "Pebble Cup",
+        "Summit Cup",
+        "Cancel"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Crest Cup: three Pokémon of levels 50 to 55, no more than 155 levels together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Sprout Cup: three Pokémon at level 5 that are the first of their line and can still evolve."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Spark Cup: three Pokémon of levels 15 to 20, no more than 50 levels together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pebble Cup: three Pokémon of levels 25 to 30, no taller than 2 m and no heavier than 20 kg, no more than 80 levels together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Summit Cup: three Pokémon of any level. Anything goes, but the strongest of the Frontier's rules."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you bring your own Pokémon, or borrow ours?",
+        "My own",
+        "Rentals",
+        "Cancel"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here are three of ours, ready for this cup. Look after them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your first opponent is waiting on the field. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battle {number}: {foe} takes the field!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cup Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are whole again. Ready for the next battle?",
+        "Next battle",
+        "Retire"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You retire from the cup. Come back and try it from the start whenever you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cup Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eight in a row! You've won the cup!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item} for winning the cup for the first time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Congratulations. Your name is on the stadium's board."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cup Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the end of your cup. Every Trainer loses one sometimes. Try again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, those three don't meet the cup's rules: their levels, their total, their size or their line."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They must also be of three different species, holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each cup has its own rules: how high your Pokémon's levels may be, their total, their size or how far they've evolved."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your own Pokémon battle as they are, at their own levels. Rentals come at the cup's highest level."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win eight battles in a row to win the cup. Lose once, and the cup starts over."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The cups are always open. Come back whenever you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Round": [
+    {
+      "en": [
+        "Round Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Leaders' round: every Gym Leader of a region, then its Elite Four and its Champion, one after another."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Everyone battles at level 100, your three and theirs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which region's round will you take on?",
+        "Sinnoh",
+        "Kanto",
+        "Johto",
+        "Hoenn",
+        "Unova",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That region's round opens once you've entered its Hall of Fame."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three you'll enter. They'll battle at level 100 for the round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Match {number}: {foe} steps up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Round Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are whole again. On to the next match?",
+        "Next match",
+        "Retire"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You retire from the round. Come back and start it again whenever you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Round Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've beaten the whole round! Every Leader, the Elite Four and the Champion. What a run!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Round Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The round ends here. Rest up, and take it on again from the first Leader."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Leaders will be here. Come back whenever you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sparring": [
+    {
+      "en": [
+        "Sparring Coach"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sparring room! Choose a type, enter three of it, and spar against Trainers who use it too, as long as you can."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which type will you spar with?",
+        "Normal",
+        "Fire",
+        "Water",
+        "Grass",
+        "Electric",
+        "More"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which type will you spar with?",
+        "Ice",
+        "Fighting",
+        "Poison",
+        "Ground",
+        "Flying",
+        "More"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which type will you spar with?",
+        "Psychic",
+        "Bug",
+        "Rock",
+        "Ghost",
+        "Dragon",
+        "More"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which type will you spar with?",
+        "Dark",
+        "Steel",
+        "Fairy",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your best in this room is {number} in a row."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three you'll enter. All three must be of the room's type."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sparring match {number}: {foe} steps up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sparring Coach"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are whole again. Keep going?",
+        "Next match",
+        "Retire"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine streak. It's on the room's record."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sparring Coach"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the streak over. Train hard and come back!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All three must be of the room's type. Choose again when you have three."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those three must be of different species, holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you feel like a workout."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

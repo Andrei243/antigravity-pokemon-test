@@ -65,7 +65,12 @@ public sealed partial class ScriptRunner
                 }
                 else
                 {
-                    var visitor = Visitor() ?? throw Wrong(i, "no visitor stands in the house of titles today");
+                    if (Visitor() is not { } visitor)
+                    {
+                        // Nobody visits today (no other region finished): nothing to battle
+                        Result = 0;
+                        break;
+                    }
                     // Their own team, lifted to the journey's post-game level on a copy under an id of the house's own, so
                     // the trainer of their region is never beaten by a battle here (the plaza's rule, plan 41 · EG3)
                     var own = TitlesHouse.VisitorTeam(visitor);

@@ -361,6 +361,7 @@ label WulfricRefused
   end
 label Visitor
   facility titles dress
+  if result == 0 end
   speaker none
   if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR goto VisitorBeaten
   text "{foe} is visiting the house today."

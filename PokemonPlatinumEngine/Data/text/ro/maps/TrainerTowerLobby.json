@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Tower"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "tower_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tower_records": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

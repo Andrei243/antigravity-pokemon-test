@@ -50,10 +50,35 @@
     },
     {
       "en": [
+        "Referee"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "{foe} pășește înainte!"
+      ]
+    },
+    {
+      "en": [
+        "Hold on... the leaves are rustling at the very top. A Champion is coming down to battle you!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "{foe} fac un pas înainte!"
+      ]
+    },
+    {
+      "en": [
         "{foe} steps forward!"
       ],
       "text": [
-        "{foe} pășește înainte!"
+        ""
+      ],
+      "was": [
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -61,7 +86,10 @@
         "{foe} step forward!"
       ],
       "text": [
-        "{foe} fac un pas înainte!"
+        ""
+      ],
+      "was": [
+        "{player} a primit trofeul acestei săli! Va atârna pentru totdeauna în ramurile Battle Tree."
       ]
     },
     {
@@ -69,15 +97,21 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        "{player} a primit {number} BP!"
+        ""
+      ],
+      "was": [
+        "Arbitru"
       ]
     },
     {
       "en": [
-        "{player} received this room's trophy! It will hang in the Battle Tree's branches for good."
+        "{player} received this room's trophy! It will hang in the Partners' Tree's branches for good."
       ],
       "text": [
-        "{player} a primit trofeul acestei săli! Va atârna pentru totdeauna în ramurile Battle Tree."
+        ""
+      ],
+      "was": [
+        "L-ai învins pe un Maestru al Copacului! De acum, și luptele Super ale acestei săli îți sunt deschise."
       ]
     },
     {
@@ -93,7 +127,13 @@
         "You beat a Tree Master! From now on, the Super battles of this room are open to you as well."
       ],
       "text": [
-        "L-ai învins pe un Maestru al Copacului! De acum, și luptele Super ale acestei săli îți sunt deschise."
+        ""
+      ],
+      "was": [
+        "Pokémonii tăi sunt din nou refăcuți. Ce faci?",
+        "Lupta următoare",
+        "Odihnă",
+        "Retragere"
       ]
     },
     {
@@ -112,10 +152,13 @@
         "Retire"
       ],
       "text": [
-        "Pokémonii tăi sunt din nou refăcuți. Ce faci?",
-        "Lupta următoare",
-        "Odihnă",
-        "Retragere"
+        "",
+        "",
+        "",
+        ""
+      ],
+      "was": [
+        "Te retragi cu fruntea sus. Copacul îți va ține minte seria."
       ]
     },
     {
@@ -131,7 +174,10 @@
         "You retire with your head held high. The tree will remember your streak."
       ],
       "text": [
-        "Te retragi cu fruntea sus. Copacul îți va ține minte seria."
+        ""
+      ],
+      "was": [
+        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
       ]
     },
     {
@@ -147,7 +193,10 @@
         "Then rest well. Your place is kept, and your progress is saved."
       ],
       "text": [
-        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
+        ""
+      ],
+      "was": [
+        "Seria se încheie aici. Trage-ți sufletul și urcă din nou. Copacul te va aștepta."
       ]
     },
     {
@@ -155,7 +204,7 @@
         "Referee"
       ],
       "text": [
-        "Arbitru"
+        ""
       ]
     },
     {
@@ -163,7 +212,7 @@
         "The streak ends here. Catch your breath, and climb back up. The tree will be waiting."
       ],
       "text": [
-        "Seria se încheie aici. Trage-ți sufletul și urcă din nou. Copacul te va aștepta."
+        ""
       ]
     }
   ],
@@ -182,6 +231,1320 @@
       ],
       "text": [
         "Nu e nicio provocare în desfășurare. Recepționera din hol primește înscrierile."
+      ]
+    }
+  ],
+  "CastLine": [
+    {
+      "en": [
+        "Cynthia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A tree that remembers every Trainer who climbs it. I had to see it for myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aaron"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came all this way to learn something new. Let's see if you can teach me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bertha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My, what a climb! These old knees are glad of a good battle at the top."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Flint"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The air up here's thin, but my fire's burning as hot as ever!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lucian"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I left a book half read for this. Make it worth the lost chapter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roark"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's no rock up here, but a good battle's a good battle anywhere!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gardenia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So many leaves! I could happily live in a tree like this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maylene"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I trained the whole way up the Gauntlet. My legs are warm and ready!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wake"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HA HA! A tree full of Trainers! Crasher Wake has arrived!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fantina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, the branches, they sway like a dance! Let us dance too, non?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Byron"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm! Sturdy timber, this. Let's see if you're as sturdy, eh?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Candice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's not snowing here, but I've brought my focus all the same!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Volkner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's been a while since anyone gave me a real spark. Maybe today."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blue"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was the best in Kanto once. Up here I'll prove it all over again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sea breeze up here is pleasant. My battles are colder, I warn you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bruno"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I climbed the Gauntlet twice to warm up. Now I am ready!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Agatha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heh heh. Young people climbing trees. In my day we battled on the ground!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brock"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A tree that grows Trainers? I'll stand firm all the same."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Misty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I hope there's water at the top of this thing. No? Then let's battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ten-hut! A soldier never turns down a fight, kid!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Erika"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Such a peaceful tree. Forgive me if I doze off between turns."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Janine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I slipped in without anyone seeing me. Did you see me? No? Good!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sabrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I knew you would be here. I knew how this would start, at least."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blaine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hah! I've got a riddle for you: what burns hotter than a volcano? Me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every Trainer here earned their place. Show me how you earned yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I trained my mind on the long way here. I hope you did too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Koga"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A ninja waits in the branches. You may not see the strike coming."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Karen"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Strong Pokémon, weak Pokémon... I only care about how you battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Falkner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A tree this tall? My birds and I feel right at home up here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bugsy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This tree must be full of interesting things. After the battle, I'm exploring!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whitney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came all this way, so I'm not losing! Not even a little!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Morty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I saw this moment in a vision once. Let's find out how it ends."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pryce"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. The years have taught me patience. They have not slowed me down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Jasmine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Um... I'm a little nervous so high up. But I will do my very best!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "WAHAHA! A tree to climb and a Trainer to beat! What a day!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I don't climb trees for anyone. I came up here to win, nothing less."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What elegance! A battle among the branches is a performance in itself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sidney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heh. You look tough. That just means I'll enjoy this more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phoebe"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The spirits up here are so friendly! I think they're cheering for us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Glacia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I travelled far to find a battle worth the trip. Let us see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drake"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Climbing a tree is like sailing a storm. You grip hard and keep going!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roxanne"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've studied this tree's records. Now for the practical lesson."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brawly"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Riding the big wave of a battle! Let's go, let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wattson"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wahahahah! I'm all charged up and raring to go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Flannery"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I-I'm not nervous at all! I'm just... very fired up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A good battle tells you more about a Trainer than any words."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Winona"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The winds are kind up here. Let's both fly as high as we can."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tate & Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We climbed up here together. We'll battle together too!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Juan"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, a fitting stage for a battle of true beauty. Shall we begin?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow, this tree is the best! I wanna climb it all the way up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shauntal"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, the story I'll write about this! Battle well, so the ending is good."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grimsley"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win or lose, it all comes down to how the cards fall. Shall we deal?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marshal"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My master taught me to seek out strong opponents. You will do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Caitlin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I would normally be asleep. For a battle like this, I'll stay awake."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to see how far you've come. Show me everything."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yeah! Let's make this tree shake! Turn it up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Burgh"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What an inspiring place! I feel a new masterpiece coming on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Elesa"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The stage is small, but the spotlight's on us. Let's dazzle them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clay"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hah! A Trainer in a tree! Let's see if you're worth the climb."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's almost like flying up here! Ready for takeoff?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drayden"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have trained many Trainers. Let me see what you are made of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chill out, it's just a battle! A really, really big one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Diantha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This tree is like a theatre. Let's give the audience a show."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Malva"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll report on this battle personally. Don't make it a boring story."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Siebold"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine battle is like a fine meal. I hope you've brought something good."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wikstrom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "En garde! A knight never refuses a duel among noble branches!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drasna"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh my, what a lovely tree. And what a lovely battle this will be."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Viola"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Smile! Every battle up here deserves a good photograph."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every climb has a route to the top. Let's find ours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Korrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roller skates don't work in trees, but my fists still do!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ramos"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hohoho! A great old tree. It makes an old gardener smile."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clemont"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My calculations predicted a battle here! The future is now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Valerie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How strange and lovely to be up here. Let us battle gently, then fiercely."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Olympia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The stars said I would come to this tree. They are rarely wrong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wulfric"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Har har! A battle in the treetops! I wouldn't miss this!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kukui"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Woo! A battle up here gets the blood pumping! Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The wind through these branches sounds like a drum. A fine battle awaits!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Olivia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This tree's bark looks like it could make some lovely jewellery."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Acerola"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hee hee! Tree spirits are watching. Let's put on a good show for them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kahili"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The view from up here reminds me of a long drive down the fairway."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nanu"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh, too many stairs. Let's get this over with, kid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hapu"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The island sent me here to battle you. I won't disappoint it."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

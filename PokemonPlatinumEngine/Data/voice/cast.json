@@ -4000,6 +4000,11 @@
       "note": "first spoken at HeaheaCity_TouristBureau.txt(19)",
       "provisional": true
     },
+    "cup_clerk": {
+      "note": "the stadium's cup clerk (plan 37 · FC7)",
+      "brief": { "register": "woman", "age": "young", "pitch": "middle", "pace": "brisk", "manner": "a cheerful clerk at the stadium's cups desk, quick and clear" },
+      "design": { "engine": "kokoro-82m", "blend": "af_heart:0.6,af_bella:0.4", "speed": 1.02, "pitch": 1.0, "accent": "en-us" }
+    },
     "curator": {
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
       "provisional": true
@@ -4927,8 +4932,20 @@
     },
     "ione": {
       "note": "Ione Calder, the partners' tree's host (plan 37 · FC3)",
-      "brief": { "register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "an old guide who keeps the tree: warm and unhurried, proud of every Trainer who climbs" },
-      "design": { "engine": "kokoro-82m", "blend": "af_sarah:0.6,bf_emma:0.4", "speed": 0.9, "pitch": 0.95, "accent": "en-us" }
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "an old guide who keeps the tree: warm and unhurried, proud of every Trainer who climbs"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.6,bf_emma:0.4",
+        "speed": 0.9,
+        "pitch": 0.95,
+        "accent": "en-us"
+      }
     },
     "iris": {
       "note": "first spoken at CasteliaCity.txt(51)",
@@ -9561,6 +9578,11 @@
       "note": "first spoken at LumioseCity_Station.txt(94)",
       "provisional": true
     },
+    "round_clerk": {
+      "note": "the stadium's round clerk (plan 37 · FC7)",
+      "brief": { "register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a formal clerk who announces each Leader of the round like a referee" },
+      "design": { "engine": "kokoro-82m", "blend": "am_michael:0.6,am_eric:0.4", "speed": 0.98, "pitch": 0.98, "accent": "en-us" }
+    },
     "rowan": {
       "note": "Professor Rowan, also the introduction's professor.",
       "brief": {
@@ -9921,6 +9943,11 @@
     "sophocles": {
       "note": "first spoken at HokulaniObservatory.txt(17)",
       "provisional": true
+    },
+    "sparring_coach": {
+      "note": "the stadium's sparring coach (plan 37 · FC7)",
+      "brief": { "register": "man", "age": "adult", "pitch": "low", "pace": "brisk", "manner": "a hearty martial-arts coach, loud and encouraging" },
+      "design": { "engine": "kokoro-82m", "blend": "am_onyx:0.6,am_adam:0.4", "speed": 1.0, "pitch": 0.94, "accent": "en-us" }
     },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
@@ -10597,6 +10624,7 @@
     "Crasher Wake": "crasher_wake",
     "Cristin": "cristin",
     "Crystal Carver": "crystal_carver",
+    "Cup Clerk": "cup_clerk",
     "Curator": "curator",
     "Cyclist": "cyclist",
     "Cynthia": "cynthia",
@@ -10938,6 +10966,7 @@
     "Rose": "rose",
     "Roughneck": "roughneck",
     "Rouille": "rouille",
+    "Round Clerk": "round_clerk",
     "Roxanne": "roxanne",
     "Roxie": "roxie",
     "Rydel": "rydel",
@@ -10980,6 +11009,7 @@
     "Socialite": "socialite",
     "Sonia": "sonia",
     "Sophocles": "sophocles",
+    "Sparring Coach": "sparring_coach",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Station Attendant": "station_attendant",

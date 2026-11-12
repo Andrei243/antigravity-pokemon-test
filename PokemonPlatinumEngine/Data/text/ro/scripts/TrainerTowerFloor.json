@@ -1,0 +1,46 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Trainer Tower, floor {number}. The clock reads {tower:TIME}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Trainer": [
+    {
+      "en": [
+        "{foe} challenges you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps forward!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The floor is clear! The stairs up are open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} has no Pokémon left to battle with. The climb is over."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
