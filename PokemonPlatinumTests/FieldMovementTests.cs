@@ -1209,6 +1209,8 @@ public class FieldMovementTests
             changes |= behaviour is TileBehavior.ThinIce or TileBehavior.CrackedFloor;
             // Nor does a secret base's spot: it is faced, and Secret Power opens it (Map.SecretBaseSpots, plan 21 · H10)
             changes |= behaviour == TileBehavior.SecretBaseSpot;
+            // Nor does a Headbutt tree: it is faced, and Headbutt shakes it (HeadbuttTrees, plan 38 · EX4)
+            changes |= behaviour == TileBehavior.HeadbuttTree;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }
