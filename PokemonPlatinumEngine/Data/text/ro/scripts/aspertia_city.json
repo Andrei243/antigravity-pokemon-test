@@ -362,6 +362,22 @@
     },
     {
       "en": [
+        "Oh, and this is from the professor too: a travel phone! I've already saved everyone's numbers in it."
+      ],
+      "text": [
+        "A, și asta e tot de la profesoară: un telefon de drum! Am salvat deja numerele tuturor în el."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the travel phone!"
+      ],
+      "text": [
+        "{player} a primit telefonul de drum!"
+      ]
+    },
+    {
+      "en": [
         "{rival}"
       ],
       "text": [

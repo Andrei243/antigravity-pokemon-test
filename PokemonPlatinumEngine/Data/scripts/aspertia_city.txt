@@ -167,6 +167,16 @@ label Thanks
   fanfare keyitem
   text "{player} received the Pokédex!"
   say "It notes down every Pokémon you meet, all by itself. The professor wants you to see as many as you can!"
+  # The travel phone (plan 43 · LF6), with the numbers of the people of the opening
+  say "Oh, and this is from the professor too: a travel phone! I've already saved everyone's numbers in it."
+  setflag FLAG_GOT_TRAVEL_PHONE
+  addcontact unova_mom
+  addcontact unova_bianca
+  addcontact unova_hugh
+  addcontact unova_cheren
+  addcontact unova_juniper
+  fanfare keyitem
+  text "{player} received the travel phone!"
   speaker "{rival}"
   say "Heeey! How long were you going to leave me waiting down there?!"
   walk 0 up 11 fast

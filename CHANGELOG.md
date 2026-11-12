@@ -4,6 +4,10 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Nimbasa City's stadiums hold their sports days: the Big Stadium plays baseball, football or American football and the Small Court tennis or basketball, by the day of the week. Between games the receptionist takes you down onto the day's field, where three athletes battle you once a day with teams that grow with your Badges; in the evening a game is on, the field is closed, and the stands fill with a cheering crowd.
+- Pokéstar Studios' poster wall now shows the studio's four films painted in warm reds beside the studio building's door.
+- A travel phone: Bianca hands it over with the Pokédex in Unova, and Mom with the roller skates in Kalos. PHONE on the start menu lists your friends' numbers to call (and they ring you now and then), shows the day's news, and opens the region's map. A game already past those moments finds the phone in its pocket.
+
 - Sunyshore City's workshop has a berry garden through its back door: two rows of soft soil, twenty-four patches to plant in, and a keeper who sells mulch and, with the crafting kit, shows which Berries cross. Berries side by side in a row may cross as they do anywhere else.
 - The record desk upstairs in every Pokémon Center mixes records again, between your own save slots: your other adventures' trainers then stand in Jubilife City's friends' hall to battle, their Hoenn secret bases stand at their spots for you to visit (owner, furniture and all, listed on your own base's REGISTRY), and their answers to Jubilife TV's reporters turn up on television. Your other saves are only read, never changed.
 - Johto's trees can be shaken with Headbutt: face a tree with a Pokémon that knows the move and a Pokémon may fall out of it, such as Hoothoot, Pineco, Exeggcute, Spinarak, Aipom and Heracross. Some trees are richer than others, and which ones depends on your trainer number. The man by Ilex Forest's way in teaches Headbutt once, for nothing, and the Pokédex's area page shows which species live in the trees.

@@ -1,0 +1,56 @@
+{
+  "Athlete1": [
+    {
+      "en": [
+        "Love, fifteen, thirty... Let's battle and keep score!"
+      ],
+      "text": [
+        "Zero, cincisprezece, treizeci... Hai să ne luptăm și să ținem scorul!"
+      ]
+    },
+    {
+      "en": [
+        "Match point to you. Good game!"
+      ],
+      "text": [
+        "Minge de meci pentru tine. Joc frumos!"
+      ]
+    }
+  ],
+  "Athlete2": [
+    {
+      "en": [
+        "My serve is fast. My Pokémon is faster!"
+      ],
+      "text": [
+        "Serviciul meu e rapid. Pokémonul meu e și mai rapid!"
+      ]
+    },
+    {
+      "en": [
+        "I'll need to work on my backhand."
+      ],
+      "text": [
+        "Trebuie să-mi lucrez reverul."
+      ]
+    }
+  ],
+  "Athlete3": [
+    {
+      "en": [
+        "Game, set, battle!"
+      ],
+      "text": [
+        "Ghem, set, luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Thanks for the rally! Same time tomorrow?"
+      ],
+      "text": [
+        "Mulțumesc pentru schimb! Mâine, la aceeași oră?"
+      ]
+    }
+  ]
+}

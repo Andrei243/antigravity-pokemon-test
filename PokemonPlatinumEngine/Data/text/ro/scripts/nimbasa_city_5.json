@@ -1,0 +1,56 @@
+{
+  "Athlete1": [
+    {
+      "en": [
+        "Off-season training! Want to block for me? I mean, battle!"
+      ],
+      "text": [
+        "Antrenament în afara sezonului! Vrei să-mi blochezi? Adică, să ne luptăm!"
+      ]
+    },
+    {
+      "en": [
+        "You broke right through my line! Good game."
+      ],
+      "text": [
+        "Mi-ai străpuns linia! Joc frumos."
+      ]
+    }
+  ],
+  "Athlete2": [
+    {
+      "en": [
+        "Hut, hut... BATTLE!"
+      ],
+      "text": [
+        "Hut, hut... LUPTĂ!"
+      ]
+    },
+    {
+      "en": [
+        "Tackled, fair and square."
+      ],
+      "text": [
+        "Placat, cinstit și corect."
+      ]
+    }
+  ],
+  "Athlete3": [
+    {
+      "en": [
+        "My Pokémon hits harder than any tackle. Ready?"
+      ],
+      "text": [
+        "Pokémonul meu lovește mai tare decât orice placaj. Gata?"
+      ]
+    },
+    {
+      "en": [
+        "Back to the drills for me. Come again tomorrow!"
+      ],
+      "text": [
+        "Mă întorc la antrenament. Mai vino mâine!"
+      ]
+    }
+  ]
+}

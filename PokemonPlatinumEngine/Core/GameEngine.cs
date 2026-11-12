@@ -173,7 +173,9 @@ public enum GameState
     /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
     Studio,
     /// <summary>A ride of the photo tour, a script's <c>tour ride</c> waiting on it (plan 44 · SD5).</summary>
-    PhotoTour
+    PhotoTour,
+    /// <summary>The travel phone over the field (plan 43 · LF6).</summary>
+    Phone
 }
 
 public partial class GameEngine
@@ -885,6 +887,7 @@ public partial class GameEngine
         OweTheFashionCase();
         OweTheDexNav();
         OweTheRidePager();
+        OweTheTravelPhone();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -1701,6 +1704,9 @@ public partial class GameEngine
             case GameState.PokeNav:
                 UpdatePokeNav(dt);
                 break;
+            case GameState.Phone:
+                UpdatePhone(dt);
+                break;
             case GameState.AlphPuzzle:
                 // The script that opened the panel hears whether the picture was put back together (plan 20 · J5)
                 flow.AlphPuzzleScreen.Update(dt);
@@ -2146,6 +2152,7 @@ public partial class GameEngine
             flow.StartMenu.HasCamp = HasCamp;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
+            flow.StartMenu.HasPhone = HasTravelPhone;
             flow.StartMenu.HasRequests = HasRequests;
             flow.StartMenu.Objective = NextObjectiveLine;
             flow.StartMenu.Counts = AreaCountsLine() ?? "";
@@ -2427,7 +2434,7 @@ public partial class GameEngine
         if (TryStepTrigger()) return true;
         if (CheckTrainerSight()) return true;
         // Last, a contact may ring the Pokégear (plan 20 · J3)
-        return StoryCallOnAStep() || KurtRingsOnAStep() || PhoneRingsOnAStep();
+        return StoryCallOnAStep() || KurtRingsOnAStep() || PhoneRingsOnAStep() || TravelPhoneRingsOnAStep();
     }
 
     /// <summary>
@@ -2951,6 +2958,8 @@ public partial class GameEngine
             // Nothing of the field left behind comes along (a door, a print), as on a script's warp
             world.Life.Clear();
             Crossing.Arrive(region, flow.Pokedex);
+            // The travel phone where it works, for a Champion who crossed in past its scene (plan 43 · LF6)
+            OweTheTravelPhone();
             ArriveOnMap();
             AnnounceLocation();
         });
@@ -3046,6 +3055,9 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.PokeNav:
                 OpenPokeNav();
+                break;
+            case StartMenuChoice.Phone:
+                OpenPhone();
                 break;
             case StartMenuChoice.Requests:
                 OpenRequests();
@@ -3640,6 +3652,9 @@ public partial class GameEngine
                 break;
             case GameState.PokeNav:
                 flow.PokeNavScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Phone:
+                flow.PhoneScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.AlphPuzzle:
                 flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);

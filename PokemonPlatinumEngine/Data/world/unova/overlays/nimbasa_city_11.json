@@ -1,0 +1,25 @@
+{
+  // Nimbasa City's basketball field in the Small Court (plan 42 · PS5; rulings, "Sports days"): Black 2's place,
+  // our words. The lobby's receptionist brings visitors down on the sport's day (nimbasa_city_3.txt, _8.txt); its
+  // three athletes (the objects of Black 2's flags 0x286 to 0x288) battle once a day each with the team the story
+  // calls for (this place's script), and the game's own players stand on it only while a game is on, when nobody
+  // comes down. The way back leads to the lobby, before its counter
+  "area": "nimbasa_city_11",
+  "bgmTrack": "unova/nimbasa",
+  "doors": [ { "warp": 0, "map": "NimbasaCity_SmallCourt", "x": 11, "y": 10, "facing": "Down" } ],
+  "people": {
+    "0": {"script": "Athlete1"},
+    "1": {"script": "Athlete2"},
+    "2": {"script": "Athlete3"},
+    "3": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["Our team trains harder than anyone in Unova! Battle them and see!"]},
+    "4": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["I've cheered for this team since before they could win a game!"]},
+    "5": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "6": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "7": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "8": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "9": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "10": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["I bring a drum to every practice. Nobody has asked me to stop yet."]},
+    "11": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["Give it everything! The players love a challenger."]},
+    "12": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]}
+  }
+}

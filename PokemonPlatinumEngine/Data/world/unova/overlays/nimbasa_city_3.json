@@ -1,14 +1,15 @@
 {
-  // The Big Stadium's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. Its way out onto the field
-  // and the games played there at set times are left out (Black 2's 0x400f), and the crowd of a game day with them; the
-  // receptionist (0) says so, and the stairs lead up to the stands' hall
+  // The Big Stadium's lobby in Nimbasa City (plan 22 · U6, part b; plan 42 · PS5): Black 2's room, our words. The
+  // receptionist (0) takes visitors down onto the day's field between games (nimbasa_city_3.txt's Receptionist: the
+  // sport by the day of the week, SportsDays' table), and while a game is on (the twilight hours, FLAG_UNOVA_GAME_ON,
+  // set by the room's OnTransition) the policemen stand across the way to the field and the stairs lead up to the stands
   "area": "nimbasa_city_3",
   "bgmTrack": "unova/nimbasa",
   "people": {
     "0": {
       "name": "Receptionist",
       "npcType": "receptionist",
-      "dialog": [ "Welcome to the Big Stadium! There's no game on the field right now. Do come back on a match day!" ]
+      "script": "Receptionist"
     },
     "1": {
       "name": "Ace Trainer",
@@ -18,7 +19,28 @@
     "3": {
       "name": "Clerk",
       "npcType": "cashier_f",
-      "dialog": [ "Programmes, caps, foam fingers! Well, there will be, once the season starts." ]
+      "dialog": [ "Programmes, caps, foam fingers! The athletes sign them after every game, if you can catch them." ]
+    },
+    "5": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "There's a game on. The field is for the players until the final whistle!" ]
+    },
+    "6": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "If you want to watch, the stands are up the stairs. Best seats in Nimbasa!" ]
+    },
+    "7": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Keeping order on game day is the hardest job in the city. And the loudest." ]
     }
   }
 }

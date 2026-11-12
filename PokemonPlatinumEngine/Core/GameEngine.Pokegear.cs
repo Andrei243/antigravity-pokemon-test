@@ -189,6 +189,6 @@ public partial class GameEngine
     /// <summary>The field's clock runs the phone's (a call can come once ten minutes have passed).</summary>
     private void RunThePhonesClock(float dt)
     {
-        if (HasPokegear && flow.State == GameState.Overworld) phoneRinger.Advance(dt);
+        if ((HasPokegear || HasTravelPhone) && flow.State == GameState.Overworld) phoneRinger.Advance(dt);
     }
 }

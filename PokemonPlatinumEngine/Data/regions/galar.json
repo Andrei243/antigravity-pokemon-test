@@ -1,6 +1,8 @@
 {
   "id": "Galar",
   "folder": "galar",
+  // The travel phone works here (plan 43 · LF6), with this region's book (world/galar/phone.json)
+  "phone": true,
   // Galar's songs play in the modern sound (plan 31), as Kalos's and Alola's do
   "sound": "modern",
   // Galar is built on the open world's engine (plan 32; plan 33 · GL1): its outdoors are open maps described in

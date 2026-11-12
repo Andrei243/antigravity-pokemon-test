@@ -11938,6 +11938,42 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
   tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
   Nothing of it is kept but the number, which the script reads as `RESULT`.
+- **The posters** (the user's 33a, owed from part b and painted the same day): a poster wall of ours
+  (`PropType.PosterWall`, `Landmarks.PaintPosterWall`) beside the studio building's door, the studio's four films painted
+  on it in warm reds as the style guide's "The posters" has them; it stands on the lot's open ground before the building's front, east of its
+  door, over the tiles the original's sign is read from, blocks them, and is read on them itself (the overlay's `readAt`,
+  `PosterWall`, as the sign still is).
+
+## Sports days (2026-11-12, plan 42 · PS5)
+
+Black and White's sports days in Nimbasa City's stadiums, on Black 2's fields and athletes, everything said ours.
+
+- **The days** (`Models/SportsDays.cs`): Black and White's table. The Big Stadium plays baseball on Monday, Thursday and
+  Sunday, football on Tuesday and Friday and American football on Wednesday and Saturday; the Small Court tennis on
+  Monday, Wednesday, Friday and Sunday and basketball on Tuesday, Thursday and Saturday. Black 2's lobby scripts, which
+  would say the same, are not in the decompilation (its `res/field/scripts` holds only the two global files), so the
+  table stands as Black and White have it.
+- **The fields** are Black 2's zones `nimbasa_city_5` (American football, `NimbasaCity_GridironField`), `_6` (baseball),
+  `_7` (football), `_10` (tennis) and `_11` (basketball), imported with `--game black2 --data` as rooms (`Indoors`). Black 2
+  leads onto them by a warp to nowhere (`0xFFFF`) the receptionist's script fills; here the receptionist asks and warps
+  (`nimbasa_city_3.txt`, `_8.txt`), and each field's way back is an overlay `door` to the lobby's tile before its counter
+  (11, 10), since the warp it names in the lobby leads nowhere.
+- **The athletes**: each field's three objects of Black 2's flags 0x286 to 0x288, the sport's class (Linebacker, Infielder,
+  Striker, Smasher, Hoopster). Each athlete has four teams in Unova's table (the import numbers same-named trainers in
+  the ROM's order, `_2` to `_4`, not by strength), which `SportsDays.TeamsOf` orders by level (about 25, 33, 47 and 62).
+  Which the story calls for is ours, since Black 2's rule lies in the same missing scripts: the first under five of
+  Unova's Badges, the second from five, the third with all eight, the fourth once Unova's Hall of Fame is entered
+  (`SportsDays.TierOf`). Each is battled once a day (`FLAG_DAILY_UNOVA_<SPORT>_<n>`, cleared with the day's others) with
+  `battle self as`; the field's script and `SportsDays` are held to each other by `SportsDayTests`.
+- **The backers** on each field (Black 2's two pairs, trainers there) only cheer here: battling them is left out, since
+  Black 2 pairs them by a rule nobody can read and the plan's sports days are the athletes'.
+- **A game on** (ours: the twilight hours, 17:00 to 19:59, under the lights; `SportsDays.GameOn`): the lobbies' and the
+  stands' `OnTransition` set `FLAG_UNOVA_GAME_ON` (cleared at any other hour), which shows Black 2's three policemen
+  across the way to the field and the stands' crowd (the objects of Black 2's flag 0x028f, shown by ours instead) and the
+  game's own players on the field (Black 2's work objects and the unflagged players), whom nobody sees, since the
+  receptionist takes nobody down while a game is on. Coming up to the stands then plays a scene of ours from the rail
+  (`nimbasa_city_4.txt`'s and `_9.txt`'s `OnEnter`, marked as a scene): the bars, the camera's path over the rail, the
+  crowd's cheer and the announcer's lines. A crowd's bed in the ambience is owed.
 
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 

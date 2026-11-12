@@ -1,0 +1,42 @@
+{
+  "key": "nimbasa_city_6",
+  "index": 82,
+  "name": "Nimbasa City",
+  "matrix": 222,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 61, "to": "nimbasa_city_3", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "infielder", "movement": "none", "x": 16, "z": 56, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0287", "script": "TRAINER_INFIELDER_CONNOR_2" },
+    { "id": "1", "looks": "infielder", "movement": "none", "x": 22, "z": 57, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0288", "script": "TRAINER_INFIELDER_TODD" },
+    { "id": "2", "looks": "backers_f", "movement": "none", "x": 14, "z": 59, "facing": 0, "rangeX": 1, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_AMI_EIRA_3" },
+    { "id": "3", "looks": "backers_m", "movement": "none", "x": 18, "z": 57, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_ALF_FRED" },
+    { "id": "4", "looks": "work_01", "movement": "wander_around", "x": 22, "z": 59, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028b", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "5", "looks": "work_02", "movement": "look_west_and_east", "x": 11, "z": 57, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028c", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "6", "looks": "work_03", "movement": "wander_around", "x": 20, "z": 56, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028d", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "7", "looks": "infielder", "movement": "wander_around", "x": 14, "z": 41, "facing": 2, "rangeX": 5, "rangeZ": 2, "script": "4" },
+    { "id": "8", "looks": "infielder", "movement": "none", "x": 24, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 1, "script": "5" },
+    { "id": "9", "looks": "infielder", "movement": "look_north_and_south", "x": 42, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "10", "looks": "infielder", "movement": "none", "x": 19, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "11", "looks": "backers_f", "movement": "none", "x": 15, "z": 59, "facing": 0, "rangeX": 1, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_AMI_EIRA_3" },
+    { "id": "12", "looks": "infielder", "movement": "none", "x": 8, "z": 53, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "13", "looks": "infielder", "movement": "wander_around", "x": 15, "z": 48, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "14", "looks": "backers_m", "movement": "none", "x": 18, "z": 58, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_ALF_FRED" },
+    { "id": "15", "looks": "infielder", "movement": "none", "x": 13, "z": 56, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0286", "script": "TRAINER_INFIELDER_ALEX_4" },
+    { "id": "16", "looks": "infielder", "movement": "wander_around", "x": 48, "z": 15, "facing": 2, "rangeX": 6, "rangeZ": 4, "script": "8" },
+    { "id": "17", "looks": "307", "movement": "wander_around", "x": 32, "z": 26, "facing": 1, "rangeX": 7, "rangeZ": 7, "script": "9" }
+  ],
+  "signs": [],
+  "triggers": []
+}

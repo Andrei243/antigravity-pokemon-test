@@ -18,6 +18,24 @@
         ]
       }
     },
+    "1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you see that? I'm going to be a pro someday. Or at least the mascot."
+        ],
+        "text": [
+          "Ai văzut? O să fiu profesionist într-o zi. Sau măcar mascota."
+        ]
+      }
+    },
     "2": {
       "name": {
         "en": [
@@ -51,6 +69,78 @@
         ],
         "text": [
           "Am urcat toate scările astea pentru un loc mai bun. Parcă mă simt acasă!"
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Go, go, go! I've lost my voice and I don't even mind!"
+        ],
+        "text": [
+          "Hai, hai, hai! Mi-am pierdut vocea și nici nu-mi pasă!"
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our side's got this! I can feel it in my foam finger!"
+        ],
+        "text": [
+          "Ai noștri câștigă! Simt asta în degetul meu de burete!"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I never miss a home game. Not since I was smaller than a Patrat."
+        ],
+        "text": [
+          "Nu ratez niciun meci acasă. De când eram mai mic decât un Patrat."
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          "Dansatoare"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When our side scores I dance. When they don't, I dance anyway!"
+        ],
+        "text": [
+          "Când ai noștri înscriu, dansez. Când nu, dansez oricum!"
         ]
       }
     }

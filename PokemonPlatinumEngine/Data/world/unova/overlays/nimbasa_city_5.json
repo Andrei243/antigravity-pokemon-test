@@ -1,0 +1,44 @@
+{
+  // Nimbasa City's American football field in the Big Stadium (plan 42 · PS5; rulings, "Sports days"): Black 2's place,
+  // our words. The lobby's receptionist brings visitors down on the sport's day (nimbasa_city_3.txt, _8.txt); its
+  // three athletes (the objects of Black 2's flags 0x286 to 0x288) battle once a day each with the team the story
+  // calls for (this place's script), and the game's own players stand on it only while a game is on, when nobody
+  // comes down. The way back leads to the lobby, before its counter
+  "area": "nimbasa_city_5",
+  "bgmTrack": "unova/nimbasa",
+  "doors": [ { "warp": 0, "map": "NimbasaCity_BigStadium", "x": 11, "y": 10, "facing": "Down" } ],
+  "people": {
+    "0": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "1": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "2": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "3": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["Our team trains harder than anyone in Unova! Battle them and see!"]},
+    "4": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["I've cheered for this team since before they could win a game!"]},
+    "5": {"script": "Athlete1"},
+    "6": {"script": "Athlete2"},
+    "7": {"script": "Athlete3"},
+    "8": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "9": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "10": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "11": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "12": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "13": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "14": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "15": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "16": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "17": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "18": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "19": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "20": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "21": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "22": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "23": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["I bring a drum to every practice. Nobody has asked me to stop yet."]},
+    "24": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["Give it everything! The players love a challenger."]},
+    "25": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "26": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "27": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "28": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "29": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "30": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "31": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]}
+  }
+}

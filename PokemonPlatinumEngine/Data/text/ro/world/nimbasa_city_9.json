@@ -1,5 +1,41 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          "Bătăuș"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every point goes to the wire in here. My heart can't take it. I keep coming back."
+        ],
+        "text": [
+          "Fiecare punct e la limită aici. Inima mea nu mai rezistă. Și tot revin."
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our player's serve is faster than a Zebstrika! Well, nearly."
+        ],
+        "text": [
+          "Serviciul jucătorului nostru e mai rapid decât un Zebstrika! Mă rog, aproape."
+        ]
+      }
+    },
     "2": {
       "name": {
         "en": [
@@ -18,6 +54,78 @@
         ]
       }
     },
+    "3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm keeping score in my notebook. I'm three points behind the board."
+        ],
+        "text": [
+          "Țin scorul în carnețel. Sunt cu trei puncte în urma tabelei."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Footwork! It's all footwork! Same as a battle, really."
+        ],
+        "text": [
+          "Jocul de picioare! Totul e jocul de picioare! La fel ca într-o luptă, de fapt."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Courtside seats sold out, so here I am. The view's better from up here anyway."
+        ],
+        "text": [
+          "Locurile de lângă teren s-au vândut, așa că iată-mă aici. Oricum, priveliștea e mai bună de sus."
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to cheer, but I'm learning so much about timing."
+        ],
+        "text": [
+          "Am venit să încurajez, dar învăț atâtea despre sincronizare."
+        ]
+      }
+    },
     "7": {
       "name": {
         "en": [
@@ -29,10 +137,10 @@
       },
       "dialog": {
         "en": [
-          "I'm saving this seat for my brother. He's playing tennis today! Well, he will be."
+          "I'm saving this seat for my brother. He plays here on his day. Today, maybe!"
         ],
         "text": [
-          "Țin locul ăsta pentru fratele meu. Joacă tenis azi! Ei bine, va juca."
+          "Țin locul ăsta pentru fratele meu. Joacă aici în ziua lui. Poate azi!"
         ]
       }
     }

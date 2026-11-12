@@ -104,12 +104,36 @@ public static class PhoneBook
     public static IReadOnlyList<PhoneContact> Hoenn => hoenn.Value;
 
     public static PhoneContact? Get(string id) =>
-        All.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase))
-        ?? Hoenn.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
+        Books().SelectMany(b => b).FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>The contact who is a trainer, by the trainer's id; null for none.</summary>
     public static PhoneContact? ByTrainer(string trainer) =>
-        All.Concat(Hoenn).FirstOrDefault(c => string.Equals(c.Trainer, trainer, StringComparison.OrdinalIgnoreCase));
+        Books().SelectMany(b => b).FirstOrDefault(c => string.Equals(c.Trainer, trainer, StringComparison.OrdinalIgnoreCase));
+
+    // The travel phone's books by region (plan 43 · LF6), read once each
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, List<PhoneContact>> books = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// A region's book (plan 43 · LF6): Johto's Pokégear's, Hoenn's Match Call's, or the travel phone's of a region
+    /// whose file says the phone works there (<c>Data/world/&lt;folder&gt;/phone.json</c>, written by hand; its ids carry
+    /// the region's name, so an id is in one book only). Empty for a region with none.
+    /// </summary>
+    public static IReadOnlyList<PhoneContact> Of(string region)
+    {
+        if (string.Equals(region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase)) return All;
+        if (string.Equals(region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase)) return Hoenn;
+        if (RegionDatabase.Get(region) is not { File.Phone: true } r) return Array.Empty<PhoneContact>();
+        return books.GetOrAdd(r.Id, _ => Read(r.Folder));
+    }
+
+    // Every book: Johto's and Hoenn's, then the travel phone's
+    private static IEnumerable<IReadOnlyList<PhoneContact>> Books()
+    {
+        yield return All;
+        yield return Hoenn;
+        foreach (var r in RegionDatabase.All)
+            if (r.File?.Phone == true) yield return Of(r.Id);
+    }
 }
 
 /// <summary>
@@ -307,13 +331,16 @@ public sealed class PhoneRinger
     public void Reset() => Waited = 0f;
 
     /// <summary>On a step: the contact who rings now, or null.</summary>
-    public PhoneContact? TryRing(StoryState story, string? areaHere, Random rng)
+    public PhoneContact? TryRing(StoryState story, string? areaHere, Random rng) => TryRing(Pokegear.Contacts(story), areaHere, rng);
+
+    /// <summary>On a step: the contact of these numbers who rings now (the travel phone's, plan 43 · LF6), or null.</summary>
+    public PhoneContact? TryRing(IReadOnlyList<PhoneContact> contacts, string? areaHere, Random rng)
     {
         if (Waited < WaitSeconds) return null;
         Waited = 0f;
         // (MTRandom() % 100 > unk_var12: a miss)
         if (rng.Next(100) > Chance) return null;
-        var callers = Pokegear.Contacts(story).Where(c => c.RingsOnItsOwn && !string.Equals(c.Area, areaHere, StringComparison.OrdinalIgnoreCase)).ToList();
+        var callers = contacts.Where(c => c.RingsOnItsOwn && !string.Equals(c.Area, areaHere, StringComparison.OrdinalIgnoreCase)).ToList();
         return callers.Count == 0 ? null : callers[rng.Next(callers.Count)];
     }
 }
