@@ -118,6 +118,19 @@ public interface IScriptHost
     /// </summary>
     Models.StageShow.ShowRecords? StageShow => null;
 
+    /// <summary>
+    /// The film studio's records (plan 42 · PS4, <c>studio</c>): each film's takes and best, the studio's rank; null for a
+    /// host that has none, where nothing can be shot.
+    /// </summary>
+    Models.Studio.StudioRecords? Studio => null;
+
+    /// <summary>
+    /// A take of a film shot on its own battle (plan 42 · PS4): the film's cast lent, its foe, its rolls and its beats; no
+    /// EXP, money or Pokédex, and nothing of the player's own team. The take is kept in <see cref="Studio"/> (its
+    /// <c>LastTake</c>) once the battle is over; the script waits.
+    /// </summary>
+    void StudioShoot(Models.Studio.StudioFilm film) { }
+
     /// <summary>What the gifts' terms read of the player now (the day, the Halls of Fame, the counts, the run): nothing held unless a host says.</summary>
     GiftFacts GiftFacts => new();
 

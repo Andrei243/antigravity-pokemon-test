@@ -209,6 +209,8 @@ public enum Op
     StageShow,
     // Treats (plan 35 · BN3): the baker's three berries of a flavour, or one of each, made into a finer treat
     Treat,
+    // The film studio (plan 42 · PS4): a film shot, whether one is open, a film's best stars, the studio's rank
+    Studio,
     // Locked hearts (plan 44 · SD2): the Reclaimer held and given, the spring's rite, hearts opened, the locks counted
     Heart,
 }

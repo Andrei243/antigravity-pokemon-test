@@ -66,7 +66,7 @@ public partial class BattleEngine : IPointable
             case BattleMenuState.LearnMove:
                 return ModernUi.HitRow(ModernUi.ChoiceRows(GameEngine.VirtualWidth + 48,
                     GameEngine.VirtualHeight + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height),
-                    new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, LearnCursor), at);
+                    LearnAnswers, LearnCursor), at);
             case BattleMenuState.Info or BattleMenuState.Message:
                 return UiPointer.Anywhere;
             default:

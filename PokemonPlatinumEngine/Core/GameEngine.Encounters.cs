@@ -234,7 +234,7 @@ public partial class GameEngine
     {
         // The boxes' moods settle by the day (plan 35 · BN1)
         if (daysPassed > 0) CareRules.DaysPass(flow.Care, daysPassed, flow.Party.Members);
-        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, flow.Encounters, PlaceKey(), fieldRandom, flow.Underground, flow.Frontier);
+        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, flow.Encounters, PlaceKey(), fieldRandom, flow.Underground, flow.Frontier, DateOnly.FromDateTime(GameClock.Today));
         flow.Encounters.ClockTo(GameClock.Moment);
         flow.Berries.ClockTo(GameClock.Moment);
     }

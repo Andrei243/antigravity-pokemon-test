@@ -22,7 +22,10 @@ public enum RadioSong { None, March, Lullaby, HoennSound, SinnohSound, Unown, Po
 public enum RadioStation
 {
     PokemonMusic, PokemonTalk, SearchParty, RadioDrama, BuenasPassword, TrainerProfiles, ThatTownThesePeople,
-    PokeFlute, Unown, TeamRocket, MahoganySignal, Commercials
+    PokeFlute, Unown, TeamRocket, MahoganySignal, Commercials,
+
+    /// <summary>The lucky number draw (plan 42 · PS3): this week's number read out, slot 9 of Johto's dial (a spot of ours).</summary>
+    LuckyNumber
 }
 
 /// <summary>What the radio picks up where the player is (<c>Radio_GetAvailableChannels</c>, the part Johto has so far).</summary>
@@ -353,6 +356,16 @@ public static class RadioShows
         return Text.OfData(all[rng.Next(all.Count)]).Replace("{password}", word);
     }
 
+    /// <summary>
+    /// The lucky number draw on the air (plan 42 · PS3): one of the station's three lines (<see cref="Lottery.RadioLines"/>,
+    /// <c>ui.json</c>'s <c>luckyDraw.radio.*</c>) for the week's ticket, drawn with the dice the game hands over.
+    /// </summary>
+    public static string LuckyLine(Random rng, int ticket)
+    {
+        var all = Lottery.RadioLines(ticket);
+        return all[rng.Next(all.Count)];
+    }
+
     /// <summary>Every line of every station, as its English is written: a language translates them in its <c>data.json</c> (plan 17 · N6f).</summary>
     public static IEnumerable<string> AllLines => lines.Value.Values.SelectMany(l => l).Where(l => l.Length > 0);
 
@@ -393,7 +406,8 @@ public sealed class RadioDial
     /// <summary>The spots of each signal (<c>sTuningHitboxes_Johto</c>, <c>_Alph</c>).</summary>
     public static IReadOnlyList<Spot> SpotsOf(RadioSignal signal) => signal switch
     {
-        RadioSignal.Johto => new[] { new Spot(112, 76, 4, 16, 0), new Spot(152, 76, 4, 20, 1), new Spot(96, 108, 4, 16, 2), new Spot(136, 116, 4, 20, 3) },
+        // The fifth, the lucky number draw (plan 42 · PS3), is a spot of ours at the dial's upper left, clear of the others' rings
+        RadioSignal.Johto => new[] { new Spot(112, 76, 4, 16, 0), new Spot(152, 76, 4, 20, 1), new Spot(96, 108, 4, 16, 2), new Spot(136, 116, 4, 20, 3), new Spot(80, 80, 4, 12, 9) },
         RadioSignal.Alph => new[] { new Spot(128, 92, 4, 16, 5) },
         // Team Rocket's broadcast and the hideout's signal are on every station Johto has (HeartGold's takeover and
         // Mahogany's "strange signal": each station gives way to them while they last)
@@ -455,6 +469,7 @@ public sealed class RadioDial
         6 => RadioStation.TeamRocket,
         7 => RadioStation.MahoganySignal,
         8 => RadioStation.ThatTownThesePeople,
+        9 => RadioStation.LuckyNumber,
         _ => RadioStation.PokemonMusic
     };
 

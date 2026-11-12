@@ -886,6 +886,11 @@ public class ScriptTests
           stageshow dress
           stageshow perform
           stageshow fan fan_4
+          studio shoot "emptySeat"
+          studio open "gildedHour"
+          studio stars "emptySeat"
+          studio rank
+          lottery weekly
           gift words GIFT_WORDS
           gift backdrop "Lantern"
           givepokemon "Pichu" 10 in "Cherish Ball" ribbon RIBBON_GIFT_DAY from "the Gift Desk"

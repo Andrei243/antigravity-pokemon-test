@@ -55,6 +55,7 @@ public sealed partial class ScriptRunner
     // The last lottery drawn, and the day's ticket (plan 06 · R14a)
     private Models.Lottery.Draw lottery;
     private int Ticket => Models.Lottery.TicketOf(host.Encounters.DailyNumber);
+    private int WeeklyTicket => Models.Lottery.WeeklyTicket(host.Today, host.TrainerNumber);
 
     // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
     private string berryName = "", mulchName = "";
@@ -455,6 +456,8 @@ public sealed partial class ScriptRunner
         Op.Missions => i.Name == "open",
         // The stage show: the dressing room and the stage are the player's; the trunk and a fan's gift are as items given (plan 42 · PS1, PS2)
         Op.StageShow => i.Name is "dress" or "perform",
+        // The film studio: a take is a battle the player plays; the rest only reads the records (plan 42 · PS4)
+        Op.Studio => i.Name == "shoot",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1318,6 +1321,12 @@ public sealed partial class ScriptRunner
                     lottery = Models.Lottery.Check(Ticket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
                     Result = lottery.Digits;
                 }
+                // Johto's lucky number draw (plan 42 · PS3): the week's ticket in place of the day's
+                else if (i.Name == "weekly")
+                {
+                    lottery = Models.Lottery.Check(WeeklyTicket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
+                    Result = lottery.Digits;
+                }
                 else Result = lottery.InBox ? 1 : 0;
                 break;
 
@@ -1680,6 +1689,11 @@ public sealed partial class ScriptRunner
             // The stage show (plan 42 · PS1, PS2)
             case Op.StageShow:
                 StageShowCommand(i);
+                break;
+
+            // The film studio (plan 42 · PS4)
+            case Op.Studio:
+                StudioCommand(i);
                 break;
 
             default:
@@ -2764,6 +2778,8 @@ public sealed partial class ScriptRunner
                 Words.Type(FriendSafari.Of(PlayerIdentity.Number)[grounds - 1].Type),
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
+            // The week's lucky number (plan 42 · PS3), as the Pokégear's radio reads it out
+            "luckynumber" => Models.Lottery.TicketText(WeeklyTicket),
             "winner" => lottery.Winner?.DisplayName ?? "",
             // The Day Care's two by their places, and who was last left or taken back (plan 06 · R15)
             "daycare" when DayCarePlace(argument) is { } at => host.DayCare[at]?.DisplayName ?? "",

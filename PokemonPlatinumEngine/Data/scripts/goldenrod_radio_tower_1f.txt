@@ -128,3 +128,73 @@ label NotNow
 label Won
   say "Enjoying the radio? Try every station on the dial. There's always something on!"
   end
+
+
+# The lucky number draw's counter (plan 42 · PS3; HeartGold's D23R0101 counter, our words): once a week the man of the
+# Lucky Number Show matches the week's number (the one the Pokégear's radio reads out, Lottery.WeeklyTicket) against the
+# ID numbers of the player's Pokémon, on the team and in the boxes, digit by digit from the right. The prizes are
+# HeartGold's, which are Jubilife's five. FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER goes when a new week begins (DailyEvents).
+script LuckyNumber
+  face self player
+  speaker "Man"
+  if flag FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER goto NextWeek
+  say "Hi there! I work on the Lucky Number Show. Every week we draw a lucky number and read it out on the radio."
+  ask "Shall I check this week's number against your Pokémon's ID numbers?"
+  if no goto NotToday
+  setflag FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER
+  say "This week's lucky number is {luckynumber}! Let me look through your Pokémon's ID numbers..."
+  lottery weekly
+  if result == 5 goto LuckyFive
+  if result == 4 goto LuckyFour
+  if result == 3 goto LuckyThree
+  if result == 2 goto LuckyTwo
+  if result == 1 goto LuckyOne
+  say "Aw, no luck. Not a single digit matched this week."
+  say "There's a new number every week, though. Keep your radio tuned in!"
+  end
+label LuckyOne
+  call LuckyWhose
+  say "The last digit matches! That's our fifth prize."
+  give "Ultra Ball"
+  goto LuckyThanks
+label LuckyTwo
+  call LuckyWhose
+  say "The last two digits match! That's our fourth prize."
+  give "PP Up"
+  goto LuckyThanks
+label LuckyThree
+  call LuckyWhose
+  say "The last three digits match! That's our third prize."
+  give "Exp. Share"
+  goto LuckyThanks
+label LuckyFour
+  call LuckyWhose
+  say "Four digits match! That's our second prize!"
+  give "Max Revive"
+  goto LuckyThanks
+label LuckyFive
+  call LuckyWhose
+  say "All five digits match! I can hardly believe it! That's our first prize!"
+  give "Master Ball"
+  goto LuckyThanks
+label LuckyThanks
+  speaker "Man"
+  say "Congratulations! Tune in again next week for a new number."
+  end
+label NextWeek
+  say "You've had your go this week. A new lucky number goes out on the radio next week!"
+  end
+label NotToday
+  say "No? Well, the number's good all week. Come back any time!"
+  end
+
+
+# Whose ID number won: on the team, or in the boxes.
+script LuckyWhose
+  lottery boxed
+  if result == 1 goto Boxed
+  say "Oh! The ID number of {winner}, on your team, matches!"
+  return
+label Boxed
+  say "Oh! The ID number of {winner}, in your PC Boxes, matches!"
+  return

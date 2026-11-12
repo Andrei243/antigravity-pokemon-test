@@ -45,6 +45,7 @@ public static class BattleWire
         typeof(MegaEvolved), typeof(ZPowerUsed), typeof(UltraBursted), typeof(PlacesSwapped), typeof(Dynamaxed),
         typeof(DynamaxEnded), typeof(MaxMoveUsed), typeof(Terastallized), typeof(MarkChanged), typeof(FormHpChanged),
         typeof(CalledForHelp), typeof(AllyJoined), typeof(Rotated), typeof(Judged), typeof(RoyalPlaced), typeof(TotemAuraRaised),
+        typeof(RaidBarrier),
         typeof(LockShown), typeof(BrokeLoose), typeof(Calmed), typeof(ExpHeld)
     };
 

@@ -107,6 +107,15 @@ public sealed class StoryState
         if (flags.RemoveWhere(f => f.StartsWith(DailyFlagPrefix, StringComparison.Ordinal)) > 0) Revision++;
     }
 
+    /// <summary>What a week's flag begins with (plan 42 · PS3: the Radio Tower's lucky number claimed).</summary>
+    public const string WeeklyFlagPrefix = "FLAG_WEEKLY_";
+
+    /// <summary>A new week has come (<see cref="Models.Lottery.WeekOf"/>'s boundary): every weekly flag is cleared.</summary>
+    public void ClearWeekly()
+    {
+        if (flags.RemoveWhere(f => f.StartsWith(WeeklyFlagPrefix, StringComparison.Ordinal)) > 0) Revision++;
+    }
+
     // ------------------------------------------------------------------ variables
 
     /// <summary>The variables that aren't nought, which is what a save keeps.</summary>

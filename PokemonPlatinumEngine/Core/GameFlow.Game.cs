@@ -176,6 +176,9 @@ public sealed partial class GameFlow
     /// <summary>The stage show's trunk, dressings and shows (plan 42 · PS1, PS2; saved).</summary>
     public Models.StageShow.ShowRecords StageShow { get; } = new();
 
+    /// <summary>The film studio's takes and bests (plan 42 · PS4; saved).</summary>
+    public Models.Studio.StudioRecords Studio { get; } = new();
+
     /// <summary>The trade board: today's requests met and blind trades made (plan 40 · GE8; saved).</summary>
     public TradeBoard Board { get; } = new();
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3; saved once opened).</summary>

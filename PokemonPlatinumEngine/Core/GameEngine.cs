@@ -501,6 +501,7 @@ public partial class GameEngine
         flow.Care.Clear();
         flow.Gifts.Clear();
         flow.StageShow.Clear();
+        flow.Studio.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
         flow.Missions.Clear();
@@ -779,6 +780,7 @@ public partial class GameEngine
         flow.Care.Restore(save.Care);
         flow.Gifts.Load(save.Gifts);
         flow.StageShow.Load(save.StageShow);
+        flow.Studio.Load(save.Studio);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
         flow.Plaza.Load(save.Plaza);
@@ -1010,6 +1012,7 @@ public partial class GameEngine
             Care = CareToSave(),
             Gifts = flow.Gifts.ToSave(),
             StageShow = flow.StageShow.ToSave(),
+            Studio = flow.Studio.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
             Missions = flow.Missions.ToSave(),
@@ -1447,6 +1450,10 @@ public partial class GameEngine
                     else if (KeepTheLinkBattle(dt))
                     {
                         // A link battle ends back where it began, leaving nothing behind (plan 28 · I3, plan 07 · O6)
+                    }
+                    else if (KeepTheStudioBattle())
+                    {
+                        // A film's take ends on its ending's lines and stars, and leaves nothing behind but the take (plan 42 · PS4)
                     }
                     else if (KeepTheRoomsBattle())
                     {

@@ -178,6 +178,9 @@ public sealed class VoiceKantoTests : IDisposable
     private static readonly string[] OwedTakes =
     {
         "script:two_island.CaseKanto", "script:vermilion_city.CaseKanto", "world:celadon_city.celadon_city.Festival_",
+        // The Trainer Tower on Seven Island (plan 37 · FC6: its attendants, its records' keeper and its owner on the roof)
+        // and Celadon's restaurant's meal stand (plan 39's cooking), written after Kanto's pack too
+        "script:TrainerTowerLobby.", "script:TrainerTowerRoof.", "script:celadon_city_restaurant.MealStand",
     };
 
     [Fact]
@@ -200,7 +203,7 @@ public sealed class VoiceKantoTests : IDisposable
                 if (VoiceCatalogue.RegionOf(line.Key) != "kanto" || line.Status != VoiceLine.StatusSpoken || line.Voice == VoiceCast.Self) continue;
                 // Lines written after Kanto's pack was generated: the Open Door Agency's Kanto case (plan 41 · EG8: the
                 // harbour keeper on Two Island, and the clerk, the fisherman and Dov on Vermilion's quay) and the festival
-                // stall keepers (plan 40 · GE9). Their voices are designed; their takes are owed to the next run of
+                // stall keepers (plan 40 · GE9), and those the list's own comments name. Their voices are designed; their takes are owed to the next run of
                 // `VoiceTool generate` (plan 26), and this list goes when they are made
                 if (OwedTakes.Any(owed => line.Key.StartsWith(owed, StringComparison.Ordinal))) continue;
                 var keys = line.Variants is { Count: > 0 } v ? v.Select(x => line.Key + x.Key).ToList() : new List<string> { line.Key };
