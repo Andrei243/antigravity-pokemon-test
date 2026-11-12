@@ -1039,7 +1039,18 @@
               "TrainingMat",
               "ZygardeCell",
               "Plinth",
-              "Banner"
+              "Banner",
+              "FestivalLanterns",
+              "FestivalMoonLantern",
+              "FestivalPine",
+              "FestivalArch",
+              "FestivalStall",
+              "FestivalBells",
+              "FestivalBunting",
+              "HolidayTree",
+              "EggBasket",
+              "NewYearBanner",
+              "ValentineHeart"
             ]
           },
           "x": {

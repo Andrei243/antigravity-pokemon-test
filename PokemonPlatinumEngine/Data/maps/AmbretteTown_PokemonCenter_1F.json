@@ -265,6 +265,18 @@
       ],
       "movement": "wander_around",
       "rangeX": 1
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

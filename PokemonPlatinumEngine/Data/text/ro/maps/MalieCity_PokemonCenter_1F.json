@@ -63,6 +63,24 @@
           "Feribotul pleacă de la debarcaderul din Malie spre Aether Paradise și spre Poni Island când ești gata. Ai grijă la stropii de mare."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -40,5 +40,55 @@
         "Mulțumesc! Să mai treci pe la noi."
       ]
     }
+  ],
+  "CaseKantoKeeper": [
+    {
+      "en": [
+        "I keep the harbour tidy. Ropes coiled, nets dried, lost things kept safe until someone comes for them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lost things off the ferry? There's this duffel. It came off with the cargo, not the passengers, and nobody's claimed it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A change of clothes inside, and a timetable with seat thirteen circled. So somebody rode over, ghost or no ghost."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the duffel nobody claimed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Off with the cargo, not the passengers. Whoever owned that duffel didn't ride with the rest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The duffel's owner came back for it at last. Rode over in a proper seat this time, they said."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

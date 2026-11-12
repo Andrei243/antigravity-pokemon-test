@@ -54,6 +54,7 @@ A pack is laid out like the game's `Data` folder. A file at the same path replac
 | `world/<region>/overlays/<area>.json` | An area's music, people, their lines and its signs (`docs/data-files.md`, "World files"). Copy the game's file and change it. |
 | `world/<region>/areas/…`, `chunks/…` | An area's events and a chunk's tiles. |
 | `maps/<Room>.json` | A hand-made room. |
+| `gifts.json`, `scripts/gifts.txt` | Gifts of the gift box (plan 40 · GE7): laid over the game's by id, a new id added, each with its script and its `giftBox.gift.<id>` words (`docs/data-files.md`, "The gift box"). A pack is how anyone hands out an event of their own. |
 | `music/<folder>/<song>.mml` | A song (`docs/music-format.md`). A new id is a new song an overlay's `bgmTrack` can name. |
 | `text/<language>/ui.json` | Words of the interface, **by key**: write only the keys you change, in their sections, and every other key stays the game's (a later pack's key wins). |
 | `text/<language>/…` (the other files) | Words; such a file replaces the game's whole, so copy it first. |

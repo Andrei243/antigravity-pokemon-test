@@ -5,7 +5,7 @@
   "people": {
     "cable_club_receptionist": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
     "cable_club_receptionist_2": { "name": "Receptionist", "script": "LinkingCord" },
-    "cable_club_receptionist_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
-    "mg_deliveryman": { "name": "Deliveryman", "dialog": [ "Nothing to deliver today, I'm afraid." ] }
+    "cable_club_receptionist_3": { "name": "Trade Receptionist", "script": "TradeDesk" },
+    "mg_deliveryman": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" }
   }
 }

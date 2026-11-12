@@ -67,6 +67,56 @@
       "text": [
         "Văd că mai ai un Șnur de Legătură. Folosește-l pe un Pokémon care evoluează printr-un schimb și vino după altul."
       ]
+    },
+    {
+      "en": [
+        "There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. The board changes every day, so do look in again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BackdropLady": [
+    {
+      "en": [
+        "Breeder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! You've made a trade on the board downstairs? Your first one! That deserves something for the Fashion Case."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! A Pokémon in its new home should have a fine picture behind it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you tried that Backdrop yet? Every trade's a new start, and every start deserves a picture."
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }

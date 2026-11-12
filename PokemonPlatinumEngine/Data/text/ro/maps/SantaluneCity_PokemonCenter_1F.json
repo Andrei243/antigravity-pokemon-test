@@ -81,6 +81,24 @@
           "Pokémonii de tip Insectă ai Violei sunt mai duri decât par. Un tip Zburător sau Foc i-ar răpune repede!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

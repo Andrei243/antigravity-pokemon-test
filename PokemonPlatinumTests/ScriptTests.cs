@@ -857,6 +857,17 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          gift due
+          gift waiting
+          gift open
+          gift give
+          gift words GIFT_WORDS
+          gift backdrop "Lantern"
+          givepokemon "Pichu" 10 in "Cherish Ball" ribbon RIBBON_GIFT_DAY from "the Gift Desk"
+          giveegg "Gible" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+          trade board open
+          trade board 2
+          trade blind
           plaza open
           plaza rank
           plaza next

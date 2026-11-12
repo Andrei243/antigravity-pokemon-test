@@ -40,6 +40,30 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>The player's Pokédex a test hands over, for the charms it has earned (plan 40 · GE5); none unless set, where nothing is due.</summary>
     public Pokedex? Pokedex { get; set; }
+
+    /// <summary>The gift box (plan 40 · GE7) and what its terms read (a test sets the day, the counts, the Halls of Fame).</summary>
+    public GiftBox? Gifts { get; set; } = new();
+    public GiftFacts GiftFacts { get; set; } = new();
+
+    /// <summary>The gift the box's screen chooses (from 1), <see cref="GiftBoxAnswers.Words"/> for TELL WORDS, 0 to back out.</summary>
+    public int GiftChoice { get; set; } = 1;
+
+    /// <summary>The trade board (plan 40 · GE8), the regions entered and whether a run holds its Pokémon.</summary>
+    public TradeBoard? Board { get; set; } = new();
+    public IReadOnlyList<string>? RegionsEnteredByTheTest { get; set; }
+    public IReadOnlyList<string> RegionsEntered => RegionsEnteredByTheTest ?? new[] { Region };
+    public bool RunHoldsTrades { get; set; }
+
+    /// <summary>What the board's screen chooses: a request 1 to 3, 4 for a blind trade, 0 to back out.</summary>
+    public int BoardChoice { get; set; } = 1;
+
+    public void ReceiveTraded(Pokemon received, Pokemon given)
+    {
+        int at = Party.Members.IndexOf(given);
+        if (at >= 0) Party.Members[at] = received;
+        Pokedex?.RegisterCaught(received);
+        Log.Add($"traded {given.Species.Name} for {received.Species.Name}");
+    }
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
@@ -890,6 +914,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.AlphPuzzle) Answer = PuzzleSolved ? 1 : 0;
         // A map on a wall (plan 08 · P8): it opens where the region has one, unless the test says it has none
         if (screen == ScriptScreen.TownMap) Answer = TownMapOpens ? 1 : 0;
+        // The gift box and the trade board (plan 40 · GE7, GE8): what the test says is chosen
+        if (screen == ScriptScreen.GiftBox) Answer = GiftChoice;
+        if (screen == ScriptScreen.TradeBoard) Answer = BoardChoice;
         // A phrase (plan 08 · P9): the one the test gives is kept under the script's name, as the game's picker keeps it
         if (screen == ScriptScreen.Phrase && PhraseGroups.IsWhole(PhraseChoice) && counter is { Length: > 0 } phrase)
         {

@@ -103,5 +103,12 @@
     "signboard_julias_house": "Julia's House\nDrop in any day: there's a warm welcome for trainers and their Pokémon.",
     "signboard_pokemon_rock": "Pokémon Rock\nA rock out at sea in the shape of a Pokémon. Can you tell which?",
     "signboard_blank": "Whatever this sign once said, the sun and the salt spray have bleached it away."
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "sunyshore_city.Festival_summer_1", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 853, "y": 756, "facing": "Down", "shownBy": "FLAG_FESTIVAL_SUMMER"},
+    {"id": "sunyshore_city.Festival_summer_2", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 856, "y": 757, "facing": "Down", "shownBy": "FLAG_FESTIVAL_SUMMER"},
+    {"id": "sunyshore_city.Festival_summer_stall", "name": "Stall", "npcType": "FestivalStall", "x": 854, "y": 761, "facing": "Down", "shownBy": "FLAG_FESTIVAL_SUMMER"},
+    {"id": "sunyshore_city.Festival_summer_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 855, "y": 761, "facing": "Down", "dialog": ["Stall keeper: Summer Night's here! Stay till dark and watch the sky over the sea."], "isPokeMartClerk": true, "mart": "festival_summer", "shownBy": "FLAG_FESTIVAL_SUMMER"}
+  ]
 }

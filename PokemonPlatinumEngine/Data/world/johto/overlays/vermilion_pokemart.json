@@ -4,6 +4,7 @@
   "area": "vermilion_pokemart",
   "bgmTrack": "kanto/vermilion",
   "people": {
+    "t06fs0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t06fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Harbour Hall"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Harbourmaster"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every ship in this harbour flies a different flag. I like to guess where each one has come from."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

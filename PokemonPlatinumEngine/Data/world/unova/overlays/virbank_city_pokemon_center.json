@@ -28,5 +28,12 @@
       "npcType": "Lass",
       "dialog": [ "Can I ask you something? Do you like playing outside, or at home? ...Outside? I knew it, you look sporty!" ]
     }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "gift_runner", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

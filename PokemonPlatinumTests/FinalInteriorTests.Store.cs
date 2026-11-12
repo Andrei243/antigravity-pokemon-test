@@ -365,7 +365,8 @@ public partial class FinalInteriorTests
                 Assert.Equal((center, back.Item1, back.Item2, facing), (only.TargetMap, only.TargetX, only.TargetY, only.TargetFacing));
                 Assert.Equal(1, Math.Abs(only.SourceX - way.TargetX));
                 Assert.Equal(3, floor.Everyone.Count(n => n.Name == "Attendant" && n.GridY == 4));
-                Assert.All(floor.Everyone, n => Assert.Equal(TileBehavior.Counter, floor.BehaviourAt(n.GridX, n.GridY + 1)));
+                // (but the Gift Runner of plan 40 · GE7, who stands on the floor)
+                Assert.All(floor.Everyone.Where(n => n.Name != "Gift Runner"), n => Assert.Equal(TileBehavior.Counter, floor.BehaviourAt(n.GridX, n.GridY + 1)));
             }
             // The floor above: its way down at the west wall, its flight in the wall's own column
             var above = Room(center + "2F");
@@ -373,7 +374,7 @@ public partial class FinalInteriorTests
             Assert.Contains(Room(center + "B1F").Props, p => p.Type == PropType.SideStairsUpEast && (p.X, p.Y) == (15, 10));
         }
         // Their attendants say that the wireless link is down (decision 06 · 7), each of her own desk
-        var upstairs = Room("JubilifePokemonCenter2F").Everyone.Select(n => string.Join(" ", n.DialogLines)).ToList();
+        var upstairs = Room("JubilifePokemonCenter2F").Everyone.Where(n => n.Name != "Gift Runner").Select(n => string.Join(" ", n.DialogLines)).ToList();
         Assert.Contains(upstairs, l => l.Contains("Union Room"));
         Assert.Contains(upstairs, l => l.Contains("Colosseum"));
         Assert.All(upstairs.Concat(Room("JubilifePokemonCenterB1F").Everyone.Select(n => string.Join(" ", n.DialogLines))), l => Assert.Contains("link", l));

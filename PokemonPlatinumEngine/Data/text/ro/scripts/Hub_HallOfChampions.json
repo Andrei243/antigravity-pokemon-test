@@ -1,0 +1,118 @@
+{
+  "Keeper": [
+    {
+      "en": [
+        "Ismene"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Laurel Gallery. I keep its records: every team every region has crowned, and the first of each above all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Read a plinth to see its teams. I've read every one of them myself, more times than I care to count."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, my star! Tickets for next season are selling nicely. The leaders don't know about the matinees yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CircuitDesk": [
+    {
+      "en": [
+        "Registrar"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Laurel Circuit's desk. A circuit takes you back to every League you've won, to fight its Elite Four and Champion again in their own rooms."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back for another circuit? Every one you win raises the next by five levels."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This circuit's teams would all meet you at level {result}. Each League you win again stamps your card when you enter its Hall of Fame."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With every League stamped, the final opens in the Laurel Court: all the Champions you've beaten, one after another."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you begin a circuit?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then your circuit has begun. Good luck out there, Champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. The desk will be here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your circuit is under way. Stamps so far: {result}. Win each League again and enter its Hall of Fame to stamp it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every League is stamped! The final waits for you in the Laurel Court, across the avenue."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

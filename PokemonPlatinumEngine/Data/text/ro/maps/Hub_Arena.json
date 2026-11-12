@@ -1,0 +1,131 @@
+{
+  "displayName": {
+    "en": [
+      "Laurel Court"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "herald": {
+      "name": {
+        "en": [
+          "Piers Lindqvist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cynthia": {
+      "name": {
+        "en": [
+          "Cynthia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every region you've crowned, gathered in one hall. I'm honoured to stand among them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Don't get comfortable. I'm only here to take my title back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lance": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Champion of many lands. My dragons have been waiting for this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wallace": {
+      "name": {
+        "en": [
+          "Wallace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Such a stage! Let us make our battle as beautiful as the hall."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "iris": {
+      "name": {
+        "en": [
+          "Iris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been practising all week. You're not getting past me this time!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "diantha": {
+      "name": {
+        "en": [
+          "Diantha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A final with every Champion on one stage... What a cast!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

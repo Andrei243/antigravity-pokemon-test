@@ -1,0 +1,132 @@
+# The gift box's gifts (plan 40 · GE7, GE9; Models/GiftBox.cs, Data/gifts.json; docs/scripts.md, "The gift box"). Ours,
+# as the user answered the outline sheet (decisions/APPROVAL-plans-35-44.md, part D). Each is called by a Gift Runner's
+# `gift give` once its terms hold and is noted taken first; it hands its gift over through the host's own commands and
+# returns to the runner, who says goodbye. A gift that brings a Pokémon or an Egg waits for room on the team: the box
+# doesn't offer it until there is (GiftBox.Refused). Seals stand in for the sheet's fireworks and snowflakes: Platinum's
+# Party and Star Seals (rulings, "The gift box").
+
+
+# 1. New Year's Day, from the Year-Turner Post
+script NewYear
+  seal give "Party Seal D" 5
+  gift backdrop "Midnight Bloom"
+  return
+
+# 2 to 6. Each region's Hall of Fame, from the Laurel Gallery: an Egg in a Cherish Ball
+script LaurelSinnoh
+  fanfare pokemon
+  giveegg "Gible" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+  speaker none
+  text "{player} received an Egg from the Laurel Gallery!"
+  return
+
+script LaurelKanto
+  fanfare pokemon
+  giveegg "Eevee" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+  speaker none
+  text "{player} received an Egg from the Laurel Gallery!"
+  return
+
+script LaurelJohto
+  fanfare pokemon
+  giveegg "Larvitar" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+  speaker none
+  text "{player} received an Egg from the Laurel Gallery!"
+  return
+
+script LaurelHoenn
+  fanfare pokemon
+  giveegg "Bagon" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+  speaker none
+  text "{player} received an Egg from the Laurel Gallery!"
+  return
+
+script LaurelUnova
+  fanfare pokemon
+  giveegg "Axew" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"
+  speaker none
+  text "{player} received an Egg from the Laurel Gallery!"
+  return
+
+# 7 to 9. Species caught, from the Registry
+script Registry100
+  give "Premier Ball" 10
+  give "Heart Scale"
+  return
+
+script Registry500
+  gift backdrop "Field Notes"
+  ribbon give RIBBON_NATURALIST
+  return
+
+script Registry1000
+  fanfare pokemon
+  givepokemon "Pikachu" 25 holding "Light Ball" in "Cherish Ball" ribbon RIBBON_THOUSAND_NAMES from "the Registry"
+  speaker none
+  text "{player} received a Pikachu from the Registry!"
+  give "Pikashunium Z"
+  return
+
+# 10. Fifty hours played, from the Hour-Keepers
+script HourKeepers
+  give "PP Max"
+  return
+
+# 11. The save's anniversary, each year
+script Anniversary
+  give "Rare Candy"
+  return
+
+# 12. By the words, from the Gift Desk: a spiky-eared Pichu that knows Surf
+script GiftDay
+  fanfare pokemon
+  givepokemon "Pichu-Spiky-Eared" 10 knowing "Surf" in "Cherish Ball" ribbon RIBBON_GIFT_DAY from "the Gift Desk"
+  speaker none
+  text "{player} received a Pichu from the Gift Desk!"
+  return
+
+# The festivals' gifts (plan 40 · GE9), each on its festival's days
+script FestivalLanterns
+  gift backdrop "Lantern"
+  return
+
+script FestivalMidwinter
+  seal give "Star Seal B" 5
+  return
+
+script FestivalBlossom
+  gift backdrop "Blossom"
+  return
+
+script FestivalSummer
+  gift backdrop "Sea-Burst"
+  return
+
+script FestivalHarvestMoon
+  give "Moon Ball" 3
+  return
+
+script FestivalBellfall
+  give "Soothe Bell"
+  return
+
+script FestivalTideDay
+  give "Mystic Water"
+  return
+
+script FestivalBridgelight
+  give "Prism Scale"
+  return
+
+# The three great days of the year, in every region, and the quiet fourth
+script Easter
+  give "Lucky Egg"
+  return
+
+script Christmas
+  give "Star Piece"
+  return
+
+script Valentine
+  give "Fairy Gem"
+  return

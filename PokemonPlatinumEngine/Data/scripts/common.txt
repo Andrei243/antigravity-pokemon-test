@@ -4180,3 +4180,130 @@ script HubGuide
 label HubGuideStay
   say "Whenever you are ready. I will be right here."
   end
+
+# A Gift Runner (plan 40 · GE7; the user's 18b: couriers in yellow scarves), in every region's Pokémon Centers (Johto's
+# Marts): once Madame Ottilie Fray's questionnaire has opened the box (FLAG_GIFT_BOX_OPEN), what waits is handed over
+# here, by date, by milestone or by words (Models/GiftBox.cs, Data/gifts.json, scripts/gifts.txt). On the three great days
+# of the year (and, quietly, St Valentine's) a Runner says so first (plan 40 · GE9, Data/festivals.json). Before the box
+# is open a Runner has nothing to deliver, and says the two words that open it.
+script Courier
+  face self player
+  speaker "Gift Runner"
+  if not flag FLAG_GIFT_BOX_OPEN goto Closed
+  if flag FLAG_FESTIVAL_CHRISTMAS goto Christmas
+  if flag FLAG_FESTIVAL_NEW_YEAR goto NewYear
+  if flag FLAG_FESTIVAL_EASTER goto Easter
+  if flag FLAG_FESTIVAL_VALENTINE goto Valentine
+label Desk
+  say "Gift Runners, at your service! Gifts find their way to us from all over, and we bring them to you."
+label Again
+  gift due
+  if result == 0 goto Nothing
+  say "There's something in the box with your name on it. Let's open it up!"
+  gift open
+  if result == 0 goto Later
+  if result == 2 goto Words
+  say "Here it is, card and all."
+  gift give
+  if result == 0 goto Later
+  say "Delivered! Do come back. There's always something on its way."
+  end
+label Words
+  say "Two words, is it? Tell me, and I'll see whether they call anything up."
+  phrase GIFT_WORDS
+  speaker "Gift Runner"
+  if result == 0 goto Later
+  gift words GIFT_WORDS
+  if result == 0 goto NoWords
+  say "Oh! Those words called something up. It's in the box now!"
+  goto Again
+label NoWords
+  say "Hmm, nothing came of those. Words are funny things. Try others another time!"
+  end
+label Nothing
+  gift waiting
+  if result > 0 goto NoRoom
+  say "Nothing in the box for you today. But words have a way of calling things up."
+  ask "Would you like to tell me two words?"
+  if yes goto Words
+  end
+label NoRoom
+  say "There's something waiting, but it needs a place on your team. Make some room and come back!"
+  end
+label Later
+  say "The box will keep. Come back whenever you like!"
+  end
+label Closed
+  say "Gift Runners, at your service! Only we've nothing to deliver until the gift box is open to you."
+  say "There's a lady at Jubilife TV with a questionnaire. They say the answer to her second question is a sparrow and clockwork, of all things."
+  end
+label Christmas
+  say "Merry Christmas! The whole Center smells of pine and gingerbread. We've been run off our feet!"
+  goto Desk
+label NewYear
+  say "Happy New Year! A new year, and a new bag of post to go with it."
+  goto Desk
+label Easter
+  say "Happy Easter! We found painted eggs tucked into the parcels all morning. Someone's idea of a joke!"
+  goto Desk
+label Valentine
+  say "Oh, and between you and me... someone asked after you today. They wouldn't leave a name."
+  goto Desk
+
+
+# A link desk's trade board (plan 40 · GE8, Models/TradeBoard.cs): the region's three requests of the day, met with a
+# Pokémon of the team, and five blind trades a day with made-up trainers far away. Sinnoh's is the Global Terminal's
+# receptionist; the other regions' a receptionist of their Pokémon Centers' link desks or a desk of ours.
+script TradeDesk
+  speaker "Trade Receptionist"
+  say "Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one."
+label Board
+  trade board open
+  if result == 0 goto Bye
+  if result == 4 goto Blind
+  setvar VAR_MAP_LOCAL_TRADE_REQUEST RESULT
+  say "Which of your Pokémon will you send?"
+  choosepokemon
+  if result == 255 goto Bye
+  if var VAR_MAP_LOCAL_TRADE_REQUEST == 2 goto Second
+  if var VAR_MAP_LOCAL_TRADE_REQUEST == 3 goto Third
+  trade board 1
+  goto Traded
+label Second
+  trade board 2
+  goto Traded
+label Third
+  trade board 3
+  goto Traded
+label Blind
+  say "A blind trade, then! You send one, and you'll get one back from someone, somewhere. Which will you send?"
+  choosepokemon
+  if result == 255 goto Bye
+  trade blind
+label Traded
+  if result == 1 goto Done
+  if result == 2 goto Met
+  if result == 3 goto Last
+  if result == 4 goto Run
+  if result == 5 goto Spent
+  say "That one isn't what they asked for. Have a look at the card again: the species and the level both count."
+  end
+label Done
+  setflag FLAG_TRADE_BOARD_FIRST_TRADE
+  say "The trade's done! Take good care of your new friend."
+  end
+label Met
+  say "That request has been met already today. New ones go up tomorrow!"
+  end
+label Last
+  say "I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle."
+  end
+label Run
+  say "Your journey's rules keep your team as it is, I'm afraid. No trades while they hold."
+  end
+label Spent
+  say "That's all the blind trades for today. Come back tomorrow for more!"
+  end
+label Bye
+  say "Come back any time. The board changes every day!"
+  end

@@ -263,6 +263,18 @@
       "dialog": [
         "Did you hear the falls on your way in? You can feel them through the floor."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

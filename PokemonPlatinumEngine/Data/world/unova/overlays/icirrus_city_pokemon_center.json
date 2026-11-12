@@ -13,5 +13,12 @@
     "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "7": { "name": "Gentleman", "dialog": [ "I come down from my house on the hill whenever the marsh floods. The Center is always dry." ] },
     "9": { "name": "Battle Girl", "dialog": [ "I train by running round the marsh at dawn. The mud makes every step count!" ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "gift_runner", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

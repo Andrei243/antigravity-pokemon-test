@@ -484,5 +484,55 @@
         "Foarte bine. Mi s-a spus că bilele vor merge la o cauză bună. Cauza unui om de știință. Văd acum că am fost o proastă."
       ]
     }
+  ],
+  "CaseKalosGuard": [
+    {
+      "en": [
+        "I guard the museum by night. Nothing ever goes missing on my watch. Well. Nothing that isn't back by morning."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The empty frame? It's still on the wall, look. Nobody moves it. But the screws on its back are worn bright."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Screws only shine like that when they're turned, and turned often. Somebody takes the canvas out every night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the frame's screws, worn bright from turning."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bright screws on an old frame. The canvas comes out, and the frame stays put."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The painting stays on its wall all night now. My watch has never been so dull. Or so peaceful."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

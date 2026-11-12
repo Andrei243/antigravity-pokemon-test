@@ -642,7 +642,7 @@ public class StoryTests
     public void EveryScriptFileBelongsToAPlace()
     {
         // (but the Pokégear's calls, which the game starts by its name, plan 20 · J3)
-        foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts))
+        foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts && f != PokemonPlatinumEngine.Story.ScriptRunner.GiftScripts))
             // (or an area of an open map, plan 33 · GL1)
             Assert.True(Walk.MapOfFile(file) != null || PokemonPlatinumEngine.OpenWorld.OpenRegions.MapOfArea(file) != null,
                 $"scripts/{file}.txt is named for no open area and no map");
@@ -675,6 +675,8 @@ public class StoryTests
         // The legendaries an older save caught, marked by story version 30 (plan 40 · GE6)
         started.Add("common.LegendariesCaughtBefore");
         started.UnionWith(Scripts.All.Where(s => s.File == PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).Select(s => s.FullName));
+        // The gift box's gifts, which a Gift Runner's gift give calls by the gift's data (plan 40 · GE7)
+        started.UnionWith(Scripts.All.Where(s => s.File == ScriptRunner.GiftScripts).Select(s => s.FullName));
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace, FieldScripts.Whirlpool });
         // Dive down from dark water and up from the sea floor, which A on the tile underfoot runs (plan 21 · H5)
@@ -785,7 +787,9 @@ public class StoryTests
             // The Villa's furniture is the player's as it is paid for (plan 06 · R16b)
             .Concat(PokemonPlatinumEngine.Core.GameEngine.PastimeFlags)
             // What the Hall of Fame's script asks ahead of the scenes that set it (plan 02 · S14)
-            .Concat(AskedAheadOfTheirScenes).ToHashSet();
+            .Concat(AskedAheadOfTheirScenes)
+            // The festivals' flags, which the clock keeps by the calendar (plan 40 · GE9)
+            .Concat(PokemonPlatinumEngine.Models.Festivals.All.Select(f => PokemonPlatinumEngine.Models.Festivals.FlagOf(f.Id))).ToHashSet();
         Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
         // ...each of which leaves that list with the session that writes its scene: one that is set somewhere has no
         // business on it any longer

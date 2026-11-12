@@ -4,6 +4,7 @@
   "area": "goldenrod_department_store_1f",
   "bgmTrack": "johto/goldenrod",
   "people": {
+    "t25r1001_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t25r1001_gswoman6": {
       "name": "Receptionist",
       "still": true,

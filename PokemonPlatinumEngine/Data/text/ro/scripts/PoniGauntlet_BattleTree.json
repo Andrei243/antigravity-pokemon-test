@@ -54,11 +54,6 @@
       ],
       "text": [
         "Antrenori pe care i-ai învins în copac s-au oferit să lupte alături de tine. Vrei să-ți alegi partenerul?"
-      ],
-      "was": [
-        "L-ai învins pe Maestrul Copacului din sala asta, așa că luptele ei Super îți sunt deschise. Ce alegi?",
-        "Normale",
-        "Super"
       ]
     },
     {
@@ -67,9 +62,6 @@
       ],
       "text": [
         "{partner} e gata să lupte alături de tine. Îl alegi?"
-      ],
-      "was": [
-        "Ai câștigat acolo {number} lupte la rând. Tot copacul vorbește despre asta!"
       ]
     },
     {
@@ -78,9 +70,6 @@
       ],
       "text": [
         "Atunci {partner} îți va fi partener. Deja se încălzește!"
-      ],
-      "was": [
-        "Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și ținând obiecte diferite."
       ]
     },
     {
@@ -89,9 +78,6 @@
       ],
       "text": [
         "Atunci copacul îți va găsi un partener al lui."
-      ],
-      "was": [
-        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -104,9 +90,6 @@
         "L-ai învins pe Maestrul Copacului din sala asta, așa că luptele ei Super îți sunt deschise. Ce alegi?",
         "Normale",
         "Super"
-      ],
-      "was": [
-        "Te rog alege cei {number} Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -115,9 +98,6 @@
       ],
       "text": [
         "Ai câștigat acolo {number} lupte la rând. Tot copacul vorbește despre asta!"
-      ],
-      "was": [
-        "Mulțumesc! Primul tău adversar te așteaptă sus, în ramuri. Pe aici, te rog!"
       ]
     },
     {
@@ -126,9 +106,6 @@
       ],
       "text": [
         "Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și ținând obiecte diferite."
-      ],
-      "was": [
-        "Bine ai revenit! Provocarea lăsată te așteaptă exact cum ai lăsat-o."
       ]
     },
     {
@@ -137,9 +114,6 @@
       ],
       "text": [
         "Un Ou nu poate participa, și nici {banned}."
-      ],
-      "was": [
-        "Seria ta de {number} încă rezistă. Pe aici, te rog!"
       ]
     },
     {
@@ -148,9 +122,6 @@
       ],
       "text": [
         "Te rog alege cei {number} Pokémoni pe care îi înscrii."
-      ],
-      "was": [
-        "Oh... Pokémonii înscriși nu mai sunt cu tine cum erau. Îmi pare rău, dar provocarea s-a încheiat."
       ]
     },
     {
@@ -159,9 +130,6 @@
       ],
       "text": [
         "Mulțumesc! Primul tău adversar te așteaptă sus, în ramuri. Pe aici, te rog!"
-      ],
-      "was": [
-        "Îmi pare rău. Cei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -170,9 +138,6 @@
       ],
       "text": [
         "Bine ai revenit! Provocarea lăsată te așteaptă exact cum ai lăsat-o."
-      ],
-      "was": [
-        "Îmi pare rău. Doi dintre cei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -181,9 +146,6 @@
       ],
       "text": [
         "Seria ta de {number} încă rezistă. Pe aici, te rog!"
-      ],
-      "was": [
-        "Copacul nu pleacă nicăieri. Revino oricând vrei."
       ]
     },
     {
@@ -192,9 +154,6 @@
       ],
       "text": [
         "Oh... Pokémonii înscriși nu mai sunt cu tine cum erau. Îmi pare rău, dar provocarea s-a încheiat."
-      ],
-      "was": [
-        "Fiecare serie e săpată în recorduri. Copacul își amintește."
       ]
     },
     {
@@ -203,9 +162,6 @@
       ],
       "text": [
         "Îmi pare rău. Cei înscriși trebuie să fie toți de specii diferite."
-      ],
-      "was": [
-        "Pokémonii tăi luptă la Nivelul 50, sau la nivelul lor dacă e mai mic. Sunt refăcuți după fiecare luptă."
       ]
     },
     {
@@ -214,9 +170,6 @@
       ],
       "text": [
         "Îmi pare rău. Doi dintre cei înscriși nu pot ține același obiect."
-      ],
-      "was": [
-        "Trei intră în luptele simple și patru în cele duble."
       ]
     },
     {
@@ -225,9 +178,6 @@
       ],
       "text": [
         "Copacul nu pleacă nicăieri. Revino oricând vrei."
-      ],
-      "was": [
-        "În sala Multiplă intri cu doi Pokémoni. Un partener ales de noi mai aduce doi, iar voi doi înfruntați câte doi Antrenori deodată."
       ]
     },
     {
@@ -236,9 +186,6 @@
       ],
       "text": [
         "Fiecare serie e săpată în recorduri. Copacul își amintește."
-      ],
-      "was": [
-        "Câștigă și poți continua, te poți odihni și reveni mai târziu, sau te poți retrage. Pierzi o dată și seria s-a încheiat."
       ]
     },
     {
@@ -247,9 +194,6 @@
       ],
       "text": [
         "Pokémonii tăi luptă la Nivelul 50, sau la nivelul lor dacă e mai mic. Sunt refăcuți după fiecare luptă."
-      ],
-      "was": [
-        "Cu cât seria e mai lungă, cu atât Antrenorii sunt mai puternici. Ajungi la a douăzecea luptă și te întâlnește un Maestru al Copacului."
       ]
     },
     {

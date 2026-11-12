@@ -103,6 +103,16 @@
           "Am mers cu Metroul de Luptă până la al șaptelea vagon! Apoi am pierdut. Data viitoare, Șefii Metroului!"
         ]
       }
+    },
+    "hub_guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

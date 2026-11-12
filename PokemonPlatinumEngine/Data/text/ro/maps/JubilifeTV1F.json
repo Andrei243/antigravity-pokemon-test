@@ -97,6 +97,24 @@
           "Eu aș vrea să-i aud pe Liderii de Arenă. Și pe Elita celor Patru de la Liga Pokémon!"
         ]
       }
+    },
+    "gift_questionnaire": {
+      "name": {
+        "en": [
+          "Madame Ottilie Fray"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I ask a question or two of everyone who comes through these doors."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

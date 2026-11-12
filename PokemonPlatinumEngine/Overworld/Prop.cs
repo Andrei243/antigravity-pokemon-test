@@ -350,6 +350,24 @@ public enum PropType
     /// blocks nothing.
     /// </summary>
     Banner,
+    /// <summary>
+    /// The festivals' things (plan 40 · GE9; style guide, "Life", "Festivals"): things of the map shown by a festival's flag
+    /// (<see cref="NPC.FestivalLanternsType"/> and its fellows), each a card of our own (<c>FestivalArt</c>) in the way like a
+    /// person: paper lanterns on a string, Kanto's moon lantern, Snowpoint's lit pine, Floaroma's blossom arch, a stall's
+    /// awning, Johto's bells and maple garland, Hoenn's bunting, and the holidays' decorated pine, basket of eggs, New Year's
+    /// banner and St Valentine's heart on a post.
+    /// </summary>
+    FestivalLanterns,
+    FestivalMoonLantern,
+    FestivalPine,
+    FestivalArch,
+    FestivalStall,
+    FestivalBells,
+    FestivalBunting,
+    HolidayTree,
+    EggBasket,
+    NewYearBanner,
+    ValentineHeart,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

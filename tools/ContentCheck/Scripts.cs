@@ -34,7 +34,7 @@ public static class Scripts
         // (an open map's area is a place too, plan 32 · OW5)
         open.UnionWith(content.OpenRegions.SelectMany(r => r.Maps ?? Array.Empty<PokemonPlatinumEngine.OpenWorld.OpenMap>()).SelectMany(m => m.Areas).Select(a => a.Key));
         // (the Pokégear's calls are a file of their own, which the game starts by its name, plan 20 · J3)
-        foreach (string file in scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).OrderBy(f => f, StringComparer.Ordinal))
+        foreach (string file in scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts && f != PokemonPlatinumEngine.Story.ScriptRunner.GiftScripts).OrderBy(f => f, StringComparer.Ordinal))
             if (!open.Contains(file) && content.MapNamed(file) == null)
                 found.Add(new Finding(Kind.Misplaced, FileOf(file), file, "is named for no open area and no map: nothing starts its scripts"));
 

@@ -335,7 +335,9 @@ public sealed partial class ScriptRunner
         Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings or Op.Objective or Op.Request or Op.Tip => false,
         // What is given and taken: the fanfare and the lines are dropped, the bag and the team are as ever
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
-        Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
+        Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex => false,
+        // A trade is made as given; the trade board's screen is the player's to work (plan 40 · GE8)
+        Op.Trade => i.Name == "board" && i.Other == "open",
         // A battle is fought
         Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
@@ -434,6 +436,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
+        Op.Gift => i.Name == "open",
         // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
         Op.Circuit => false,
         Op.Deduce => true,
@@ -652,6 +656,7 @@ public sealed partial class ScriptRunner
                     if (gift.Moves.Count == 0) gift.Moves.Add(move);
                     else gift.Moves[0] = move;
                 }
+                MarkAsAnEvent(gift, i);
                 Result = host.GivePokemon(gift) ? 1 : 2;
                 // A gift sent to the PC for a full team brings its tip (plan 12 · Q23)
                 if (Result == 2) host.Tip(Models.Tips.TeamFull);
@@ -1218,6 +1223,12 @@ public sealed partial class ScriptRunner
                 break;
             }
             case Op.Trade:
+                // The trade board and blind trades (plan 40 · GE8)
+                if (i.Name is "board" or "blind")
+                {
+                    BoardTrade(i);
+                    break;
+                }
                 // The Pokémon chosen last (choosepokemon's RESULT) for the trade's: 1 if it was the one asked for
                 Result = host.Trade(i.Name, Result) ? 1 : 0;
                 break;
@@ -1322,8 +1333,11 @@ public sealed partial class ScriptRunner
                 // the Manaphy Egg of plan 29 · LS11a). A bred Egg is the parents', and stays theirs
                 if (Randomizer.For(host.Rules) is { MapsSpecies: true } random) species = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
                 var egg = Breeding.GiftEgg(species, host.TrainerNumber, host.Chance, Ruleset.Current);
-                egg.Met(PlayerIdentity.Fill(speaker ?? Subject?.Name ?? "a stranger"), Core.GameClock.Today);
+                egg.Met(PlayerIdentity.Fill(i.Sender.Length > 0 ? i.Sender : speaker ?? Subject?.Name ?? "a stranger"), Core.GameClock.Today);
                 egg.MetLevel = 0;
+                // A gift's Egg in its ball with its ribbon (plan 40 · GE7); hatched, it is the player's own
+                if (i.Ball.Length > 0) egg.Ball = i.Ball;
+                if (i.Ribbon.Length > 0) RibbonRules.Give(egg, i.Ribbon);
                 host.Party.Add(egg);
                 Result = 1;
                 break;
@@ -1634,6 +1648,11 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Missions:
                 MissionsCommand(i);
+                break;
+
+            // The gift box (plan 40 · GE7)
+            case Op.Gift:
+                GiftCommand(i);
                 break;
 
             default:

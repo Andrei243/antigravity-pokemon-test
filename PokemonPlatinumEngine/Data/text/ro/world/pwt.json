@@ -319,6 +319,46 @@
           "Cheren"
         ]
       }
+    },
+    "case_unova_organiser": {
+      "name": {
+        "en": [
+          "Organiser"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_unova_rival": {
+      "name": {
+        "en": [
+          "Organiser"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_unova_janitor": {
+      "name": {
+        "en": [
+          "Janitor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_unova_isidore": {
+      "name": {
+        "en": [
+          "Isidore Calloway"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

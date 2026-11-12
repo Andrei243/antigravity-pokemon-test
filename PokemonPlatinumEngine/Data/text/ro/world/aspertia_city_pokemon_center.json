@@ -145,6 +145,24 @@
           "PC-ul de lângă tejghea păstrează în siguranță, în boxe, Pokémonii pe care nu-i poți purta cu tine. Oricine îl poate folosi."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

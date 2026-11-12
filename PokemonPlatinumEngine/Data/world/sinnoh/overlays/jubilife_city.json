@@ -151,6 +151,10 @@
   // door, clear of the scenes' walks up the main street. Once a day she asks the player a question and takes two words
   // for an answer, which the television reads back (scripts/jubilife_city.txt, Interview)
   "npcs": [
+    {"id": "jubilife_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 170, "y": 763, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "jubilife_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 163, "y": 766, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "jubilife_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 162, "y": 762, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "jubilife_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 170, "y": 765, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"},
     { "id": "tv_reporter", "name": "Reporter", "npcType": "Lady", "x": 168, "y": 753, "facing": "Down",
       "script": "Interview" },
     { "id": "tv_cameraman", "name": "Cameraman", "npcType": "Gentleman", "x": 169, "y": 753, "facing": "Left",

@@ -194,5 +194,139 @@
         "Destul pentru o zi. Revino mâine, iar eu voi fi mai puternic!"
       ]
     }
+  ],
+  "CaseKalosPorter": [
+    {
+      "en": [
+        "I carry the bags off the train from Lumiose. Big ones, small ones, ones that bark."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A regular? There's one lady. Every night, the last train in, with a long flat parcel she won't let me carry."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And every morning, the first train back to Lumiose, with the same parcel. Here's one of her old tickets."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the ticket for the last train in and the first out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Last train in, first train out, and a parcel as long as a door. She never misses."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The lady with the parcel comes by day now, and she lets me carry her easel. Progress!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseKalosPainter": [
+    {
+      "en": [
+        "Kiloude's light is the best in Kalos. I paint the sea every morning, and every morning it's different."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Odd things at night? The house by the shore smells of fresh varnish every morning. Somebody paints there till dawn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Students, I think. I heard a teacher saying, look at the brushstrokes, see how the master did it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the smell of fresh varnish at night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fresh varnish every morning. Whoever they are, they work hard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a painting class in town now, by day. I've joined it! Never too old to learn."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseKalosOdile": [
+    {
+      "en": [
+        "Odile"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So Looker has found me out. Yes, I take the painting out of its frame each night. I bring it here, and I bring it back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My students can't learn from a postcard. They must see the real brushstrokes! Still, if you insist, we shall duel."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...A masterful stroke. Very well. I'll ask the museum properly. Tell Looker I'll call at his agency."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -3,6 +3,7 @@
   "area": "azalea_pokemart",
   "bgmTrack": "johto/azalea",
   "people": {
+    "t23fs0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t23fs0101_shopm1_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "t23fs0101_shopm1_2_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "t23fs0101_gsman3": {

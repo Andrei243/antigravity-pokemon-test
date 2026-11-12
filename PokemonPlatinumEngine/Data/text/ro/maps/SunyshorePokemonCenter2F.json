@@ -67,6 +67,24 @@
           "Fără legătură, n-ai cu cine să le amesteci. Mai întreabă altă dată!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

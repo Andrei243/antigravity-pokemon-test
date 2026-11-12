@@ -1,0 +1,101 @@
+{
+  "displayName": {
+    "en": [
+      "Open Door Agency"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "croagunk": {
+      "name": {
+        "en": [
+          "Croagunk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Croagunk is dozing on its cushion. It opens one eye, croaks once, and shuts it again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crates_west": {
+      "name": {
+        "en": [
+          "Crates"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crates_west_2": {
+      "name": {
+        "en": [
+          "Crates"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crates_east": {
+      "name": {
+        "en": [
+          "Crates"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crates_south": {
+      "name": {
+        "en": [
+          "Crates"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maps": {
+      "name": {
+        "en": [
+          "Maps"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maps_2": {
+      "name": {
+        "en": [
+          "Maps"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

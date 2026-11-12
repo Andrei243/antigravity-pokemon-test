@@ -12,5 +12,12 @@
     "8": { "name": "Backers", "dialog": [ "We always heal up here before cheering at the restaurant. Cheering takes stamina!" ] },
     "9": { "name": "Old Man", "npcType": "old_man", "dialog": [ "I've seen generations of Trainers start their journeys from this Center." ] },
     "10": { "name": "Old Man", "npcType": "old_man", "dialog": [ "Nuvema's young ones always come through here first. Good luck to them all." ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "gift_runner", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

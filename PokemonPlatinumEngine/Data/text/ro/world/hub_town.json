@@ -1,0 +1,114 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every harbour that has crowned a Champion sends a boat here now. Some days the quay is a forest of masts!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came over from Hoenn this morning, and tomorrow I'm off to Unova. This town is everybody's halfway house."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody here keeps Badges of their own. The town goes by the rules of the furthest place you've been crowned in.",
+          "So a Pokémon that heeds you there heeds you here too. Handy, eh?"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say the big halls round here will open one by one. I want to be first through every door!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "worker": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pennant Hall's open at last: stalls from every region under one roof. We hung the last pennant this morning!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TownSign": {
+      "en": [
+        "The Hub\nWhere the ways between the regions meet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BoardSign": {
+      "en": [
+        "The Week's Work\nThis week's missions in the regions you have won"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

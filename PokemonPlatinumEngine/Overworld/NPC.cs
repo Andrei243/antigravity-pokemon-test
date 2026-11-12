@@ -406,6 +406,17 @@ public class NPC
     /// </summary>
     public const string ZygardeCellType = "ZygardeCell";
 
+    /// <summary>
+    /// The festivals' things (plan 40 · GE9; style guide, "Life", "Festivals"): things of the map an overlay stands in a
+    /// festival's town, shown by <c>FLAG_FESTIVAL_&lt;ID&gt;</c>, in the way like a person and saying nothing. Drawn as cards of
+    /// our own (<c>FestivalArt</c>). <see cref="FestivalType"/> is what every one of their names begins with.
+    /// </summary>
+    public const string FestivalType = "Festival";
+    public const string FestivalLanternsType = "FestivalLanterns", FestivalMoonLanternType = "FestivalMoonLantern",
+        FestivalPineType = "FestivalPine", FestivalArchType = "FestivalArch", FestivalStallType = "FestivalStall",
+        FestivalBellsType = "FestivalBells", FestivalBuntingType = "FestivalBunting", HolidayTreeType = "FestivalHolidayTree",
+        EggBasketType = "FestivalEggBasket", NewYearBannerType = "FestivalNewYearBanner", ValentineHeartType = "FestivalValentineHeart";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -439,6 +450,17 @@ public class NPC
         LawnmowerType => PropType.Lawnmower,
         DeoxysTriangleType => PropType.DeoxysTriangle,
         ZygardeCellType => PropType.ZygardeCell,
+        FestivalLanternsType => PropType.FestivalLanterns,
+        FestivalMoonLanternType => PropType.FestivalMoonLantern,
+        FestivalPineType => PropType.FestivalPine,
+        FestivalArchType => PropType.FestivalArch,
+        FestivalStallType => PropType.FestivalStall,
+        FestivalBellsType => PropType.FestivalBells,
+        FestivalBuntingType => PropType.FestivalBunting,
+        HolidayTreeType => PropType.HolidayTree,
+        EggBasketType => PropType.EggBasket,
+        NewYearBannerType => PropType.NewYearBanner,
+        ValentineHeartType => PropType.ValentineHeart,
         _ => null
     };
 

@@ -4641,7 +4641,9 @@
         "please": "te rog",
         "thanks": "mersi",
         "hello": "salut",
-        "goodbye": "pa"
+        "goodbye": "pa",
+        "sparrow": "vrabie",
+        "clockwork": "mecanism"
       }
     }
   },

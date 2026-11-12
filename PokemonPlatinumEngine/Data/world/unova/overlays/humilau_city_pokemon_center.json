@@ -14,5 +14,12 @@
     "6": { "name": "Backers", "npcType": "backers_f", "dialog": [ "Humilau's Pokémon Center has a view of the sea from every window. My Pokémon rest better here, I swear." ] },
     "7": { "name": "Pokémon Ranger", "npcType": "ranger_m", "dialog": [ "I patrol the water between here and Undella. The sea is calm, but the currents round the Seaside Cave are strong." ] },
     "10": { "name": "Breeder", "npcType": "pokemon_breeder_m", "dialog": [ "Water types love this city. So do their Trainers. So do I, come to think of it." ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "gift_runner", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

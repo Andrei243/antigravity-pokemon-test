@@ -464,6 +464,16 @@
         ]
       }
     },
+    "battle_frontier.HubGuide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "battle_frontier.AnnexGuide": {
       "name": {
         "en": [

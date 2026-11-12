@@ -586,5 +586,33 @@
     "art": "paldea_champion",
     "palette": 0,
     "event": false
+  },
+  {
+    "id": "RIBBON_CHAMPION_HEARTH",
+    "name": "Champion Hearth Ribbon",
+    "art": "champion_hearth",
+    "palette": 0,
+    "event": true
+  },
+  {
+    "id": "RIBBON_NATURALIST",
+    "name": "Naturalist's Ribbon",
+    "art": "naturalist",
+    "palette": 0,
+    "event": true
+  },
+  {
+    "id": "RIBBON_THOUSAND_NAMES",
+    "name": "Thousand Names Ribbon",
+    "art": "thousand_names",
+    "palette": 0,
+    "event": true
+  },
+  {
+    "id": "RIBBON_GIFT_DAY",
+    "name": "Gift Day Ribbon",
+    "art": "gift_day",
+    "palette": 0,
+    "event": true
   }
 ]

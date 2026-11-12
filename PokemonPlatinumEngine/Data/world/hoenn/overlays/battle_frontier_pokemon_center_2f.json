@@ -7,6 +7,6 @@
     "teala": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
     "teala_2": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
     "teala_3": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
-    "mystery_gift_man": { "name": "Man", "dialog": [ "I bring gifts from far away. Nothing has come in for you yet, I'm afraid." ] }
+    "mystery_gift_man": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" }
   }
 }

@@ -57,18 +57,10 @@
     "mystery_gift_man": {
       "name": {
         "en": [
-          "Man"
+          "Gift Runner"
         ],
         "text": [
-          "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "I bring gifts from far away. Nothing has come in for you yet, I'm afraid."
-        ],
-        "text": [
-          "Aduc cadouri de departe. Din păcate, încă nu a sosit nimic pentru tine."
+          ""
         ]
       }
     }

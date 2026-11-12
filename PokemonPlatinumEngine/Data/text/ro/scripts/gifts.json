@@ -1,0 +1,72 @@
+{
+  "LaurelSinnoh": [
+    {
+      "en": [
+        "{player} received an Egg from the Laurel Gallery!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaurelKanto": [
+    {
+      "en": [
+        "{player} received an Egg from the Laurel Gallery!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaurelJohto": [
+    {
+      "en": [
+        "{player} received an Egg from the Laurel Gallery!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaurelHoenn": [
+    {
+      "en": [
+        "{player} received an Egg from the Laurel Gallery!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaurelUnova": [
+    {
+      "en": [
+        "{player} received an Egg from the Laurel Gallery!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Registry1000": [
+    {
+      "en": [
+        "{player} received a Pikachu from the Registry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GiftDay": [
+    {
+      "en": [
+        "{player} received a Pichu from the Gift Desk!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

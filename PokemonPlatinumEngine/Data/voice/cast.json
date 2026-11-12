@@ -4719,6 +4719,10 @@
         "accent": "en-us"
       }
     },
+    "gift_runner": {
+      "note": "first spoken at common.txt(4114)",
+      "provisional": true
+    },
     "giovanni": {
       "note": "first spoken at rocket_hideout_b4f.txt(66)",
       "brief": {
@@ -8302,6 +8306,10 @@
         "accent": "en-us"
       }
     },
+    "madame_ottilie_fray": {
+      "note": "first spoken at JubilifeTV1F.txt(83)",
+      "provisional": true
+    },
     "maid": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
       "brief": {
@@ -10017,6 +10025,10 @@
       "note": "first spoken at HeaheaCity_TouristBureau.txt(7)",
       "provisional": true
     },
+    "trade_receptionist": {
+      "note": "first spoken at common.txt(4182)",
+      "provisional": true
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
@@ -10652,6 +10664,7 @@
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
     "Gideon": "gideon",
+    "Gift Runner": "gift_runner",
     "Giovanni": "giovanni",
     "Girl": "look:girl",
     "Glacia": "glacia",
@@ -10758,6 +10771,7 @@
     "Lysandre": "lysandre",
     "Machamp": "machamp",
     "Machop": "machop",
+    "Madame Ottilie Fray": "madame_ottilie_fray",
     "Maid": "maid",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
@@ -10971,6 +10985,7 @@
     "TMV Attendant": "tmv_attendant",
     "Tourist": "tourist",
     "Tourist Guide": "tourist_guide",
+    "Trade Receptionist": "trade_receptionist",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",

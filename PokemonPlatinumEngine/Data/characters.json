@@ -37,6 +37,8 @@
     // red trousers and tinted red glasses
     "celosia": { "hairColor": "#e8902a", "hair": "Long", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#d8402a", "coat": true, "lashes": true, "build": "Adult" },
     "piers": { "hairColor": "#c8b48a", "hair": "Swept", "top": "#2a2a4a", "accent": "#e8c040", "bottom": "#2a2a4a", "shoes": "#1e1e24", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    // A Gift Runner of the gift box (plan 40 · GE7, the user's 18b): a courier in a cap and a yellow scarf
+    "gift_runner": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#f0c446", "hatBand": "#3a4a6a", "top": "#3a4a6a", "accent": "#f0c446", "bottom": "#2e3448", "shoes": "#2a2420", "scarf": true, "build": "Adult" },
     // The leader of Team Galactic, met by the shore of Lake Verity (plan 02 · S4): our own take, a tall man with spiky blue hair in a long grey coat with a dark collar
     "cyrus": { "hairColor": "#425c9c", "hair": "Spiky", "top": "#848896", "accent": "#383a4a", "bottom": "#3c3e4e", "shoes": "#2c2c36", "eyes": "#2c3046", "coat": true, "build": "Adult", "height": 1.1 },
     // Oreburgh's Gym Leader (plan 02 · S5): our own take, a young miner with red hair under a yellow safety helmet, in a work coat and jeans

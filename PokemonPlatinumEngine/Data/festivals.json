@@ -1,0 +1,22 @@
+// The festivals on the game's calendar (plan 40 · GE9; Models/Festivals.cs; docs/data-files.md, "Festivals"). Ours, as the
+// user answered the outline sheet (decisions/APPROVAL-plans-35-44.md, questions 21 and 22, and the note of part D): Sinnoh's
+// four towns, one festival in each other region, and in every region the three great days of the year with a quiet fourth.
+// A festival's days set FLAG_FESTIVAL_<ID> as the day turns; the town's things, its stall keeper and the gift that waits at
+// a courier go by that flag. "from" and "to" are days of the year (MM-dd, both kept, a window may cross the year's end);
+// Easter's days are counted from Easter Sunday. None keeps the harness's day, 1 June.
+{
+  "festivals": [
+    { "id": "lanterns", "region": "Sinnoh", "town": "hearthome_city", "from": "10-10", "to": "10-16", "night": true, "stall": "festival_lanterns" },
+    { "id": "midwinter", "region": "Sinnoh", "town": "snowpoint_city", "from": "12-18", "to": "01-02", "night": true, "stall": "festival_midwinter" },
+    { "id": "blossom", "region": "Sinnoh", "town": "floaroma_town", "from": "04-01", "to": "04-07", "stall": "festival_blossom" },
+    { "id": "summer", "region": "Sinnoh", "town": "sunyshore_city", "from": "07-20", "to": "07-26", "night": true, "stall": "festival_summer" },
+    { "id": "harvest_moon", "region": "Kanto", "town": "celadon_city", "from": "09-15", "to": "09-21", "night": true, "stall": "festival_harvest_moon" },
+    { "id": "bellfall", "region": "Johto", "town": "ecruteak", "from": "11-01", "to": "11-07", "stall": "festival_bellfall" },
+    { "id": "tide_day", "region": "Hoenn", "town": "slateport_city", "from": "06-20", "to": "06-20", "stall": "festival_tide_day" },
+    { "id": "bridgelight", "region": "Unova", "town": "castelia_city_2", "from": "02-01", "to": "02-07", "night": true, "stall": "festival_bridgelight" },
+    { "id": "new_year", "from": "12-31", "to": "01-01" },
+    { "id": "easter", "easter": [ -2, 1 ] },
+    { "id": "christmas", "from": "12-24", "to": "12-26" },
+    { "id": "valentine", "from": "02-14", "to": "02-14" }
+  ]
+}

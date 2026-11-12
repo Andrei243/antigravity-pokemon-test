@@ -216,5 +216,139 @@
         "Unul dintre asistenții lui te așteaptă în clădirea de pe Ruta 2. Are ceva pentru tine, după ce prinzi câțiva Pokémoni."
       ]
     }
+  ],
+  "CaseKantoClerk": [
+    {
+      "en": [
+        "Tickets for the Sevii ferry! Every seat counted, every stub torn. That's my job."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seat thirteen, the ghost's seat? Paid for every sailing, empty every sailing. I found this stub under it last night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look at the tear, though. I tear every stub on the left. This one's torn on the right. It isn't one of mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the ticket stub torn by someone else's hand."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Torn on the right. Whoever sold that ticket, it wasn't this office."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No more ghost on the ferry. Seat thirteen has a real passenger now, with a real ticket. One of mine!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseKantoFisherman": [
+    {
+      "en": [
+        "I fish off this quay every evening. The ferry comes and goes, and the fish don't mind it a bit."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry? Funny thing. Every evening, after the crew have counted heads, Dov the dockhand waves one more traveller aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not up the gangway, mind. Up the cargo ramp, with the crates. And he pockets something as they pass."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the fisherman's remark about the cargo ramp."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One more up the cargo ramp, after the count. Every evening, regular as the tide."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dov's on the gangway now, checking tickets like a proper sailor. The fish miss him, I expect."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseKantoDov": [
+    {
+      "en": [
+        "Dov"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Looker's friend, eh? So somebody found my stub. Thought a ghost story would keep folk from asking."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine. If I'm to be caught, I'll be caught fighting. Right here on the quay!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Sunk. All right. I'll pay back every fare I took twice. Tell Looker I'll be at his door, ghost and all."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

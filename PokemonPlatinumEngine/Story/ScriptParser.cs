@@ -211,13 +211,20 @@ public static class ScriptParser
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
                 // (plan 21 · H6: `holding "Mystic Water"`, the item the Pokémon comes with, as Emerald's Castform does)
                 // (plan 20 · J11, part c: `knowing "Extreme Speed"`, a move in its first place, as the Dragon Shrine's elder gives)
-                string held = "", knows = "";
+                // (plan 40 · GE7: an event Pokémon's `in "Cherish Ball"`, `ribbon RIBBON_GIFT_DAY` and `from "the Registry"`)
+                string held = "", knows = "", ball = "", ribbon = "", sender = "";
                 while (r.More)
                 {
-                    if (r.OneOf("holding", "knowing") == "holding") held = r.Text("the item it holds");
-                    else knows = r.Text("the move it knows");
+                    switch (r.OneOf("holding", "knowing", "in", "ribbon", "from"))
+                    {
+                        case "holding": held = r.Text("the item it holds"); break;
+                        case "knowing": knows = r.Text("the move it knows"); break;
+                        case "in": ball = EventBall(r); break;
+                        case "ribbon": ribbon = EventRibbon(r); break;
+                        default: sender = r.Text("who sends it"); break;
+                    }
                 }
-                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held, Move = knows };
+                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held, Move = knows, Ball = ball, Ribbon = ribbon, Sender = sender };
             }
             case "givebadge":
             {
@@ -740,6 +747,16 @@ public static class ScriptParser
             case "trade":
             {
                 string trade = r.Word("a trade");
+                // The trade board and blind trades (plan 40 · GE8): `trade board open`, `trade board 1` to `3` (a request of
+                // the day met with the Pokémon chosen last), `trade blind`
+                if (trade == "board")
+                {
+                    if (r.PeekWord("open")) return new Instruction { Op = Op.Trade, Line = line, Name = "board", Other = r.OneOf("open") };
+                    int n = r.Int("a request of the day, 1 to 3");
+                    if (n < 1 || n > Models.TradeBoard.RequestsADay) throw r.Error($"the board has requests 1 to {Models.TradeBoard.RequestsADay}");
+                    return new Instruction { Op = Op.Trade, Line = line, Name = "board", Number = n };
+                }
+                if (trade == "blind") return new Instruction { Op = Op.Trade, Line = line, Name = "blind" };
                 if (Models.NpcTrades.Get(trade) == null) throw r.Error($"'{trade}' is no trade (NpcTrades)");
                 return new Instruction { Op = Op.Trade, Line = line, Name = trade };
             }
@@ -770,7 +787,21 @@ public static class ScriptParser
                 return new Instruction { Op = Op.DayCare, Line = line, Name = what, Number = place };
             }
             case "giveegg":
-                return new Instruction { Op = Op.GiveEgg, Line = line, Name = r.Text("a species' name") };
+            {
+                string species = r.Text("a species' name");
+                // (plan 40 · GE7: a gift's Egg in its ball, with its ribbon and the name of who sent it)
+                string ball = "", ribbon = "", sender = "";
+                while (r.More)
+                {
+                    switch (r.OneOf("in", "ribbon", "from"))
+                    {
+                        case "in": ball = EventBall(r); break;
+                        case "ribbon": ribbon = EventRibbon(r); break;
+                        default: sender = r.Text("who sends it"); break;
+                    }
+                }
+                return new Instruction { Op = Op.GiveEgg, Line = line, Name = species, Ball = ball, Ribbon = ribbon, Sender = sender };
+            }
             case "hatch":
                 return new Instruction { Op = Op.Hatch, Line = line };
 
@@ -1401,6 +1432,17 @@ public static class ScriptParser
             case "charm":
                 return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
 
+            // The gift box (plan 40 · GE7): "gift due" how many wait, "gift open" the box, "gift give" the gift chosen, "gift words
+            // NAME" the phrase NAME told, "gift backdrop "Lantern"" a backdrop into the Fashion Case, "gift waiting" what waits for room
+            case "gift":
+            {
+                string what = r.OneOf("due", "open", "give", "words", "backdrop", "waiting");
+                if (what == "words") return new Instruction { Op = Op.Gift, Line = line, Name = what, Other = r.Identifier("the phrase's name") };
+                if (what != "backdrop") return new Instruction { Op = Op.Gift, Line = line, Name = what };
+                string backdrop = r.Text("a backdrop's name");
+                if (Data.SuperContestDatabase.Backdrop(backdrop) < 0) throw r.Error($"there is no backdrop '{backdrop}'");
+                return new Instruction { Op = Op.Gift, Line = line, Name = what, Other = backdrop };
+            }
             case "circuit":
             {
                 // The Laurel Circuit (plan 41 · EG4): `circuit begin|running|ready|level|stamps|won|regions`, and
@@ -1891,6 +1933,22 @@ public static class ScriptParser
 
     /// <summary>A nature by its name, in any case (<c>team nature serious</c>).</summary>
     /// <summary>A forme of Deoxys's by its name ("Deoxys-Speed"), or "Deoxys" for its Normal Forme.</summary>
+    /// <summary>An event Pokémon's ball (plan 40 · GE7): an item of the Poké Balls' pocket.</summary>
+    private static string EventBall(Reader r)
+    {
+        string ball = r.Text("a ball's name");
+        if (Data.ItemDatabase.Get(ball) is not { } item || !item.Name.EndsWith("Ball", StringComparison.Ordinal)) throw r.Error($"'{ball}' is no ball");
+        return item.Name;
+    }
+
+    /// <summary>An event Pokémon's ribbon (plan 40 · GE7): one of <c>ribbons.json</c>.</summary>
+    private static string EventRibbon(Reader r)
+    {
+        string ribbon = r.Word("a ribbon (RIBBON_GIFT_DAY)");
+        if (Data.RibbonDatabase.Get(ribbon) == null) throw r.Error($"there is no ribbon '{ribbon}'");
+        return ribbon;
+    }
+
     private static string DeoxysForm(Reader r)
     {
         string form = r.Text("a forme of Deoxys's");

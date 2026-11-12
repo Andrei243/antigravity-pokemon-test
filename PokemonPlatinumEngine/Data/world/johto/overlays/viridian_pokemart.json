@@ -3,6 +3,7 @@
   "area": "viridian_pokemart",
   "bgmTrack": "kanto/viridian",
   "people": {
+    "t02fs0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t02fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

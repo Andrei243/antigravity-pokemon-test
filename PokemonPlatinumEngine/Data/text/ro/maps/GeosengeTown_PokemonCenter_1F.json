@@ -81,6 +81,24 @@
           "Bunica zice că pietrele șuieră în nopțile cu furtună. Eu nu le-am auzit niciodată, dar nici nu am stat vreodată treaz atât de târziu."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

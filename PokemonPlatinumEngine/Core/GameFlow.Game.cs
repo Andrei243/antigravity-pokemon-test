@@ -167,6 +167,11 @@ public sealed partial class GameFlow
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 
+    /// <summary>The gift box: what it has handed over and the words told (plan 40 · GE7; saved).</summary>
+    public GiftBox Gifts { get; } = new();
+
+    /// <summary>The trade board: today's requests met and blind trades made (plan 40 · GE8; saved).</summary>
+    public TradeBoard Board { get; } = new();
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3; saved once opened).</summary>
     public PlazaState Plaza { get; } = new();
 

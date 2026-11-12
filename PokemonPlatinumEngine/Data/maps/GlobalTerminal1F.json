@@ -461,6 +461,7 @@
         "Hello! Have you been to the Dress-Up Data Studio upstairs?",
         "I hand out Backdrops to everyone who shows their work there. With the studio dark, I've nobody to hand them to!"
       ],
+      "script": "BackdropLady",
       "movement": "look_around"
     },
     {

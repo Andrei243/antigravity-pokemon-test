@@ -1012,6 +1012,17 @@ public static class ThingCards
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
             PropType.ZygardeCell => (16, 16, OutdoorProps.PaintZygardeCell),
+            PropType.FestivalLanterns => (FestivalArt.LanternsWidth, FestivalArt.LanternsHeight, FestivalArt.PaintLanterns),
+            PropType.FestivalMoonLantern => (FestivalArt.MoonWidth, FestivalArt.MoonHeight, FestivalArt.PaintMoonLantern),
+            PropType.FestivalPine => (FestivalArt.PineWidth, FestivalArt.PineHeight, c => FestivalArt.PaintPine(c, holiday: false)),
+            PropType.FestivalArch => (FestivalArt.ArchWidth, FestivalArt.ArchHeight, FestivalArt.PaintArch),
+            PropType.FestivalStall => (FestivalArt.StallWidth, FestivalArt.StallHeight, FestivalArt.PaintStall),
+            PropType.FestivalBells => (FestivalArt.BellsWidth, FestivalArt.BellsHeight, FestivalArt.PaintBells),
+            PropType.FestivalBunting => (FestivalArt.BuntingWidth, FestivalArt.BuntingHeight, FestivalArt.PaintBunting),
+            PropType.HolidayTree => (FestivalArt.TreeWidth, FestivalArt.TreeHeight, c => FestivalArt.PaintPine(c, holiday: true)),
+            PropType.EggBasket => (FestivalArt.BasketWidth, FestivalArt.BasketHeight, FestivalArt.PaintEggBasket),
+            PropType.NewYearBanner => (FestivalArt.BannerWidth, FestivalArt.BannerHeight, FestivalArt.PaintNewYearBanner),
+            PropType.ValentineHeart => (FestivalArt.HeartWidth, FestivalArt.HeartHeight, FestivalArt.PaintValentineHeart),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -1036,4 +1047,12 @@ public static class ThingCards
         PropType.CavePainting or PropType.UnownWall => 26f / 32f,
         _ => 0.5f
     };
+
+    /// <summary>
+    /// Whether a kind is drawn as a card of a wall (the scenery's shader), so that what its art marks as lit glows after
+    /// dark: the festivals' things (plan 40 · GE9; style guide, "Festivals").
+    /// </summary>
+    public static bool PartOfAWall(PropType kind) => kind is PropType.FestivalLanterns or PropType.FestivalMoonLantern
+        or PropType.FestivalPine or PropType.FestivalArch or PropType.FestivalStall or PropType.FestivalBells
+        or PropType.FestivalBunting or PropType.HolidayTree or PropType.EggBasket or PropType.NewYearBanner or PropType.ValentineHeart;
 }

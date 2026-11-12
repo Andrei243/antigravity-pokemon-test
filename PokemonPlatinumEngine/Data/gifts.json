@@ -1,0 +1,39 @@
+// The gift box's gifts (plan 40 · GE7, GE9; Models/GiftBox.cs; docs/data-files.md, "The gift box"). Ours, as the user
+// answered the outline sheet (decisions/APPROVAL-plans-35-44.md, questions 19 to 22 and the note of part D). Each waits at a
+// Gift Runner once its terms hold, and is taken once (once a year where "yearly"); its script of scripts/gifts.txt hands
+// it over, and its sender, title and card are ui.json's giftBox.gift.<id>. A pack's gifts.json is laid over this by id.
+{
+  "gifts": [
+    // 1. New Year's Day, each year: five Party Seals (the fireworks the sheet asked for) and the Midnight Bloom backdrop
+    { "id": "new_year", "when": { "dates": [ "01-01" ] }, "yearly": true, "picture": { "kind": "backdrop", "name": "Midnight Bloom" }, "script": "NewYear" },
+    // 2 to 6. Each region's Hall of Fame: an Egg in a Cherish Ball from the Laurel Gallery
+    { "id": "laurel_sinnoh", "when": { "hallOfFame": "Sinnoh" }, "picture": { "kind": "egg", "name": "Gible" }, "script": "LaurelSinnoh" },
+    { "id": "laurel_kanto", "when": { "hallOfFame": "Kanto" }, "picture": { "kind": "egg", "name": "Eevee" }, "script": "LaurelKanto" },
+    { "id": "laurel_johto", "when": { "hallOfFame": "Johto" }, "picture": { "kind": "egg", "name": "Larvitar" }, "script": "LaurelJohto" },
+    { "id": "laurel_hoenn", "when": { "hallOfFame": "Hoenn" }, "picture": { "kind": "egg", "name": "Bagon" }, "script": "LaurelHoenn" },
+    { "id": "laurel_unova", "when": { "hallOfFame": "Unova" }, "picture": { "kind": "egg", "name": "Axew" }, "script": "LaurelUnova" },
+    // 7 to 9. Species caught, from the Registry
+    { "id": "registry_100", "when": { "caught": 100 }, "picture": { "kind": "item", "name": "Premier Ball" }, "script": "Registry100" },
+    { "id": "registry_500", "when": { "caught": 500 }, "picture": { "kind": "backdrop", "name": "Field Notes" }, "script": "Registry500" },
+    { "id": "registry_1000", "when": { "caught": 1000 }, "picture": { "kind": "pokemon", "name": "Pikachu" }, "script": "Registry1000" },
+    // 10. Fifty hours played, from the Hour-Keepers
+    { "id": "hour_keepers", "when": { "hours": 50 }, "picture": { "kind": "item", "name": "PP Max" }, "script": "HourKeepers" },
+    // 11. The save's anniversary, each year
+    { "id": "anniversary", "when": { "anniversary": true }, "yearly": true, "picture": { "kind": "item", "name": "Rare Candy" }, "script": "Anniversary" },
+    // 12. By the words SPARROW and CLOCKWORK, told at a Gift Runner (the words that opened the box)
+    { "id": "gift_day", "when": { "words": [ "small:sparrow", "small:clockwork" ] }, "picture": { "kind": "pokemon", "name": "Pichu" }, "script": "GiftDay" },
+    // The festivals' gifts (plan 40 · GE9), each on its festival's days, once a year
+    { "id": "festival_lanterns", "when": { "festival": "lanterns" }, "yearly": true, "picture": { "kind": "backdrop", "name": "Lantern" }, "script": "FestivalLanterns" },
+    { "id": "festival_midwinter", "when": { "festival": "midwinter" }, "yearly": true, "picture": { "kind": "seal", "name": "Star Seal B" }, "script": "FestivalMidwinter" },
+    { "id": "festival_blossom", "when": { "festival": "blossom" }, "yearly": true, "picture": { "kind": "backdrop", "name": "Blossom" }, "script": "FestivalBlossom" },
+    { "id": "festival_summer", "when": { "festival": "summer" }, "yearly": true, "picture": { "kind": "backdrop", "name": "Sea-Burst" }, "script": "FestivalSummer" },
+    { "id": "festival_harvest_moon", "when": { "festival": "harvest_moon" }, "yearly": true, "picture": { "kind": "item", "name": "Moon Ball" }, "script": "FestivalHarvestMoon" },
+    { "id": "festival_bellfall", "when": { "festival": "bellfall" }, "yearly": true, "picture": { "kind": "item", "name": "Soothe Bell" }, "script": "FestivalBellfall" },
+    { "id": "festival_tide_day", "when": { "festival": "tide_day" }, "yearly": true, "picture": { "kind": "item", "name": "Mystic Water" }, "script": "FestivalTideDay" },
+    { "id": "festival_bridgelight", "when": { "festival": "bridgelight" }, "yearly": true, "picture": { "kind": "item", "name": "Prism Scale" }, "script": "FestivalBridgelight" },
+    // The three great days of the year in every region, and a quiet fourth (the note of part D)
+    { "id": "easter", "when": { "festival": "easter" }, "yearly": true, "picture": { "kind": "item", "name": "Lucky Egg" }, "script": "Easter" },
+    { "id": "christmas", "when": { "festival": "christmas" }, "yearly": true, "picture": { "kind": "item", "name": "Star Piece" }, "script": "Christmas" },
+    { "id": "valentine", "when": { "festival": "valentine" }, "yearly": true, "picture": { "kind": "item", "name": "Fairy Gem" }, "script": "Valentine" }
+  ]
+}

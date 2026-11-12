@@ -4,6 +4,7 @@
   "area": "cerulean_pokemart",
   "bgmTrack": "kanto/fuchsia",
   "people": {
+    "t04fs0101_delivery": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "t04fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

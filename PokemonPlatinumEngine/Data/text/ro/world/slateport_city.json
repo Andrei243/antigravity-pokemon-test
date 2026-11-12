@@ -563,6 +563,114 @@
           "Ty"
         ]
       }
+    },
+    "slateport_city.Festival_tide_day_1": {
+      "name": {
+        "en": [
+          "Bunting"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_tide_day_2": {
+      "name": {
+        "en": [
+          "Bunting"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_tide_day_3": {
+      "name": {
+        "en": [
+          "Bunting"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_tide_day_4": {
+      "name": {
+        "en": [
+          "Bunting"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_tide_day_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_tide_day_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Happy Tide Day! The sea gives, so we give a little back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_city.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

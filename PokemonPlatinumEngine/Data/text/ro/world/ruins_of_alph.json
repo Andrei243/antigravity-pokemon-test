@@ -35,6 +35,46 @@
           "Medium Nathan: N-ai auzit nimic și tot ai câștigat. Ce ciudat."
         ]
       }
+    },
+    "case_johto_researcher": {
+      "name": {
+        "en": [
+          "Researcher"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_johto_camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_johto_pupil": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "case_johto_mirelle": {
+      "name": {
+        "en": [
+          "Mirelle Dunn"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

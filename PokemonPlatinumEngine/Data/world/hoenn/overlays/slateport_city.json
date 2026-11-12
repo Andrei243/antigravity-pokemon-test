@@ -59,5 +59,18 @@
     "SlateportCity_EventScript_BerryCrushRankingsSign": "A board of names and numbers. The rankings of the market's berry crushers.",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
     "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "slateport_city.Festival_tide_day_1", "name": "Bunting", "npcType": "FestivalBunting", "x": 221, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_tide_day_2", "name": "Bunting", "npcType": "FestivalBunting", "x": 229, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_tide_day_3", "name": "Bunting", "npcType": "FestivalBunting", "x": 224, "y": 312, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_tide_day_4", "name": "Bunting", "npcType": "FestivalBunting", "x": 231, "y": 312, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_tide_day_stall", "name": "Stall", "npcType": "FestivalStall", "x": 218, "y": 312, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_tide_day_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 219, "y": 312, "facing": "Down", "dialog": ["Stall keeper: Happy Tide Day! The sea gives, so we give a little back."], "isPokeMartClerk": true, "mart": "festival_tide_day", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
+    {"id": "slateport_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 213, "y": 313, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "slateport_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 228, "y": 313, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "slateport_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 225, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "slateport_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 234, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }

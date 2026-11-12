@@ -63,6 +63,24 @@
           "Oamenii vin de pe toate cele patru insule să vadă Battle Royal. Zgomotul din serile de spectacol se aude până pe plajă!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

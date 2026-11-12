@@ -137,6 +137,74 @@
           "...Ce sunt eu, Pokémon? Mmm. Miere."
         ]
       }
+    },
+    "floaroma_town.Festival_blossom_1": {
+      "name": {
+        "en": [
+          "Blossom arch"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "floaroma_town.Festival_blossom_2": {
+      "name": {
+        "en": [
+          "Blossom arch"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "floaroma_town.Festival_blossom_3": {
+      "name": {
+        "en": [
+          "Blossom arch"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "floaroma_town.Festival_blossom_4": {
+      "name": {
+        "en": [
+          "Blossom arch"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "floaroma_town.Festival_blossom_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "floaroma_town.Festival_blossom_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: It's the Blossom Days! Every petal in town is out to see you."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

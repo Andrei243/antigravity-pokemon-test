@@ -532,5 +532,131 @@
         "O singură luptă inversă pe zi, mă tem. Pokémonii mei au nevoie de odihnă, la fel și notițele mele. Revino mâine!"
       ]
     }
+  ],
+  "HarbourClerk": [
+    {
+      "en": [
+        "Every ferry that comes and goes is written in my log. Every one, to the minute."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry's log, for Looker? Here... Strange. On each night before a party at the villa, there are two hours with nothing written."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ferry left on time and came in late, and nobody wrote down where it went."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the gap in the ferry's log."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two hours missing, every party night. I'd never let a gap like that go by on my watch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The captain writes every minute in the log now. Neatest hand on the pier."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Deckhand": [
+    {
+      "en": [
+        "Hauling crates all day. My arms will be twice as long by the end of the season."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Crates of fine food? Funny you ask. The captain sold a few to the Survival Area's cook, cheap. Here's the receipt he left lying about."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the receipt for crates of food sold off cheap."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheap food from a ferry captain. I thought it was a bargain, not a crime!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The captain's paying back every crate. He's even carrying them himself."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ferren": [
+    {
+      "en": [
+        "Ferren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Looker's helper, eh? So somebody found the gap in my log."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who'd doubt a ferry captain over a hungry Gible? Nobody, until you. Fine. Let's settle it on the pier!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Shipwrecked. All right, all right. I'll own up at the villa and pay for every crate. Tell Looker I'll be at his door."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

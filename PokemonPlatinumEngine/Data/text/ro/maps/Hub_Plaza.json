@@ -1,0 +1,208 @@
+{
+  "displayName": {
+    "en": [
+      "Pennant Hall"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "manager": {
+      "name": {
+        "en": [
+          "Quincy Rowan-Pike"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_1": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_2": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_3": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_4": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_5": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_6": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_7": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keeper_8": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_1": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_2": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_3": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_4": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_5": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_6": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_7": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "guest_8": {
+      "name": {
+        "en": [
+          "Guest"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10,1": {
+      "en": [
+        "The Week's Work"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "11,1": {
+      "en": [
+        "The Week's Work"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "12,1": {
+      "en": [
+        "The Week's Work"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

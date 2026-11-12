@@ -162,7 +162,9 @@ public sealed class PhraseGroups
         PhraseGroup.Small => new[]
         {
             "and", "or", "but", "so", "very", "really", "too", "not", "yes", "no", "my", "your", "our", "with", "for", "all",
-            "more", "together", "best", "number1", "please", "thanks", "hello", "goodbye"
+            "more", "together", "best", "number1", "please", "thanks", "hello", "goodbye",
+            // Two odd ones at the end (plan 40 · GE7, the user's 19b): the answer that opens the gift box
+            "sparrow", "clockwork"
         },
         _ => Array.Empty<string>()
     };

@@ -1491,7 +1491,7 @@ public sealed partial class WorldRenderer
     {
         foreach (var (at, kind) in things)
         {
-            if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind));
+            if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind), ThingCards.PartOfAWall(kind));
             CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
         foreach (var (at, stage, berry, mulched) in berryPlants)

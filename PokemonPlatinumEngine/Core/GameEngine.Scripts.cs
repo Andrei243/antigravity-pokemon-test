@@ -1007,6 +1007,20 @@ public partial class GameEngine
         public int SeenInSinnoh => Randomizer.SinnohSeen(game.flow.Run, game.flow.Pokedex, game.flow.Story);
         public int Caught => game.flow.Pokedex.CaughtCount;
         public Pokedex? Pokedex => game.flow.Pokedex;
+        // The gift box and the trade board (plan 40 · GE7, GE8)
+        public GiftBox? Gifts => game.flow.Gifts;
+        public GiftFacts GiftFacts => game.GiftFactsNow();
+        public TradeBoard? Board => game.flow.Board;
+        public IReadOnlyList<string> RegionsEntered => game.RegionsEnteredNow();
+        public bool RunHoldsTrades => game.RunHoldsTradesNow();
+
+        public void ReceiveTraded(Pokemon received, Pokemon given)
+        {
+            game.flow.Pokedex.RegisterSeen(received);
+            game.flow.Poketch.Remember(received);
+            AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
+            game.ReceiveTradedPokemon(received, given);
+        }
 
         public int Money
         {
@@ -1336,6 +1350,13 @@ public partial class GameEngine
                 // Cameron's photo album (plan 20, part q)
                 case ScriptScreen.PhotoAlbum:
                     game.OpenPhotoAlbum();
+                    break;
+                // The gift box and the trade board (plan 40 · GE7, GE8)
+                case ScriptScreen.GiftBox:
+                    game.OpenGiftBox();
+                    break;
+                case ScriptScreen.TradeBoard:
+                    game.OpenTradeBoard(counter ?? game.Here.Id);
                     break;
                 // The Global Link counter (plan 07 · O5, O7)
                 case ScriptScreen.GlobalLink:

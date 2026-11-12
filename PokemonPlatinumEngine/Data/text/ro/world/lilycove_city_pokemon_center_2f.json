@@ -1,5 +1,15 @@
 {
   "people": {
+    "mystery_gift_man": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "teala": {
       "name": {
         "en": [
@@ -31,18 +41,10 @@
     "teala_3": {
       "name": {
         "en": [
-          "Receptionist"
+          "Trade Receptionist"
         ],
         "text": [
-          "Recepționera"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "I'm sorry, the link to other players is closed for now."
-        ],
-        "text": [
-          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+          ""
         ]
       }
     }

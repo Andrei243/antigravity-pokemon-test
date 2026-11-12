@@ -206,8 +206,14 @@ public static class RibbonRules
             : ribbon == "RIBBON_WORLD_ABILITY" ? Text.Of("ribbonDeeds.waitsFor.world") : null,
         // Lilycove's Contest Hall gives Hoenn's contest ribbons and the painter her Artist Ribbon (plan 21 · H11)
         RibbonKind.HoennContest => null,
+        // The gift box's own, which its couriers hand over (plan 40 · GE7)
+        _ when GiftRibbons.Contains(ribbon) => null,
         _ => Text.Of("ribbonDeeds.waitsFor.event")
     };
+
+    /// <summary>The event ribbons of ours that the gift box gives (plan 40 · GE7).</summary>
+    public static readonly IReadOnlySet<string> GiftRibbons = new HashSet<string>(StringComparer.Ordinal)
+        { "RIBBON_CHAMPION_HEARTH", "RIBBON_NATURALIST", "RIBBON_THOUSAND_NAMES", "RIBBON_GIFT_DAY" };
 
     /// <summary>What a ribbon's page says of it, in our own words.</summary>
     public static string Describe(string ribbon)
@@ -265,6 +271,11 @@ public static class RibbonRules
             "RIBBON_CARNIVAL" => Text.Of("ribbonDeeds.carnival"),
             "RIBBON_CLASSIC" => Text.Of("ribbonDeeds.classic"),
             "RIBBON_PREMIER" => Text.Of("ribbonDeeds.premier"),
+            // The gift box's (plan 40 · GE7)
+            "RIBBON_CHAMPION_HEARTH" => Text.Of("ribbonDeeds.championHearth"),
+            "RIBBON_NATURALIST" => Text.Of("ribbonDeeds.naturalist"),
+            "RIBBON_THOUSAND_NAMES" => Text.Of("ribbonDeeds.thousandNames"),
+            "RIBBON_GIFT_DAY" => Text.Of("ribbonDeeds.giftDay"),
             _ => Text.Of("ribbonDeeds.any")
         };
     }

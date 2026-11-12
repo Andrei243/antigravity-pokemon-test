@@ -135,6 +135,24 @@
           "Clay și-a făcut averea în mine și a construit jumătate din oraș. Aspru ca un bolovan, dar are grijă de oamenii lui."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -361,6 +361,74 @@
           "Am învățat asta pe pielea mea, la Arena din orașul ăsta."
         ]
       }
+    },
+    "hearthome_city.Festival_lanterns_1": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hearthome_city.Festival_lanterns_2": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hearthome_city.Festival_lanterns_3": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hearthome_city.Festival_lanterns_4": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hearthome_city.Festival_lanterns_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hearthome_city.Festival_lanterns_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: The lanterns are lit for the week! Something to remember the night by?"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

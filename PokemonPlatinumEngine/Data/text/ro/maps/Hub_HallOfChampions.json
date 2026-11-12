@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "Laurel Gallery"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "keeper": {
+      "name": {
+        "en": [
+          "Ismene Quill"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "registrar": {
+      "name": {
+        "en": [
+          "Registrar"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "visitor": {
+      "name": {
+        "en": [
+          "Visitor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each plinth here keeps the first team a region ever crowned, and every team since. Some names I don't even recognise!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

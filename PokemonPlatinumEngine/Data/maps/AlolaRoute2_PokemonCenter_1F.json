@@ -252,6 +252,18 @@
       "dialog": [
         "Verdant Cavern is just up the road. That's Captain Ilima's trial. Bring something to heal with!"
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 2,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

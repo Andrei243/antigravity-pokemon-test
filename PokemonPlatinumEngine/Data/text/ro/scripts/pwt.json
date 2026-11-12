@@ -202,5 +202,189 @@
         "...Sau poate chiar aceasta e forța pe care o tot caut. Mergeți, atunci. Mi-ar plăcea foarte mult să văd ce faceți."
       ]
     }
+  ],
+  "CaseUnovaOrganiser": [
+    {
+      "en": [
+        "I've booked the hall for my club's tournament. I asked months ago! The papers are all in order."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're looking into it? Here's my schedule, with the hall's own stamp. The afternoon of the twelfth, all mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The other organiser has the very same stamp. Both real, both the same number. How can that be?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the stamped schedule."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two stamps, one number. The hall can't have meant us both."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're sharing the day now. My club in the morning, theirs in the evening. And the hall gave us both a discount!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseUnovaRival": [
+    {
+      "en": [
+        "Somebody else says they've booked the hall on my afternoon. Nonsense! I booked it myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My booking? Here, the hall's register, copied out for me. My name, the afternoon of the twelfth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Though, look closely. There's an eraser smudge under my name. Somebody else's name was there first, and rubbed out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the eraser smudge under the booking."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A name rubbed out under mine. I paid in good faith! Somebody took my money for a day that was already sold."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My money's back, and we have the evening. Honestly, the evening light suits a final better."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseUnovaJanitor": [
+    {
+      "en": [
+        "I keep the keys to every door in the World Tournament. And I write down who borrows them. Every time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The office key? Let me see my log... Here. The night of the second booking. The clerk, Mr. Calloway, at nine at night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nobody books a hall at nine at night. I wrote it down all the same. I write everything down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} noted the key log with the clerk out after hours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nine at night, the office key, Mr. Calloway. It's all in my log."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The office key stays on its hook after hours now. I check it twice a night."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaseUnovaIsidore": [
+    {
+      "en": [
+        "Isidore"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah. Looker's investigator. You'll have seen my little smudge, then. One afternoon, two fees. It seemed so tidy."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, this is the World Tournament. Disputes here are settled one way. Shall we?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Eliminated in the first round. Very well. I'll refund the second fee and resign the stamp. Tell Looker, please."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

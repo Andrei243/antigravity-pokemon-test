@@ -63,6 +63,24 @@
           "Kiawe se antrenează pe Wela Volcano. Ruta 7 merge de-a lungul plajei până acolo, chiar la nord-est de aici."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

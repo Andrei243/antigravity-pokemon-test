@@ -3853,6 +3853,11 @@ way -
 from Xerneas at 10,4 of GeosengeTown_FlareHQ
 way -
   > A great Pokémon sleeps among the machines, its horns as still and grey as a dead tree.
+=== GlobalTerminal1F.BackdropLady
+from Breeder at 13,3 of GlobalTerminal1F
+way -
+  Breeder> Hello! Have you been to the Dress-Up Data Studio upstairs?
+  Breeder> I hand out Backdrops to everyone who shows their work there. With the studio dark, I've nobody to hand them to!
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
 way 0
@@ -3864,14 +3869,25 @@ way 1, from answer 1
   ? Your favourite is Turtwig, isn't it? = No
 === GlobalTerminal1F.Gts
 from Receptionist at 7,3 of GlobalTerminal1F
-way -
+way 0
   Receptionist> Welcome! This is the Global Trade Station: the GTS, for short. Here Pokémon are traded with people all over the world.
   Receptionist> Or they were. Sinnoh's link to the wider world has gone quiet, and no trade can leave this desk until it is back.
   Receptionist> But a Pokémon that grows only through a trade needn't wait for the link. Here: a Linking Cord does the same for it.
   > Lucas received the Linking Cord!
   > Lucas put it away in the Items pocket.
   Receptionist> Use it on the Pokémon like a stone. Come back for another whenever yours is used up!
+  Receptionist> There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?
+  Trade Receptionist> Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one.
+  Trade Receptionist> Which of your Pokémon will you send?
+  Trade Receptionist> I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle.
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = Yes
   * fanfare FanfareItem
+  * open TradeBoard
+  * open ChoosePokemon
+  = VAR_MAP_LOCAL_TRADE_REQUEST 0 -> 1
+way 1, from answer 1
+  Receptionist> Very well. The board changes every day, so do look in again!
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = No
 === GrandLakeRoute213EastHouse.Traveller
 from Guest at 8,5 of GrandLakeRoute213EastHouse
 way -
@@ -4638,6 +4654,21 @@ way 0
 way 1, from answer 1
   Lottery Clerk> Of course. Come back whenever you feel lucky!
   ? Shall I check today's number against your Pokémon? = No
+=== JubilifeTV1F.Questionnaire
+from Madame Ottilie Fray at 18,16 of JubilifeTV1F
+way 0
+  Madame Ottilie Fray> Good day! I am Ottilie Fray, and I ask a question or two of everyone who comes through these doors.
+  Madame Ottilie Fray> Would you answer my questionnaire? Two questions, two words each.
+  Madame Ottilie Fray> The first. What do you like best about travelling with Pokémon? Two words, please.
+  Madame Ottilie Fray> "happy together"... Charming. I shall write that down.
+  Madame Ottilie Fray> And the second. What sings at the break of day, and what never stops ticking?
+  Madame Ottilie Fray> "happy together"? Not what I had in mind, I'm afraid. Do try again another time.
+  ? Would you answer my questionnaire? Two questions, two words each. = Yes
+  * open Phrase GIFT_QUESTION_ONE feelings:happy small:together
+  * open Phrase GIFT_QUESTION_TWO feelings:happy small:together
+way 1, from answer 1
+  Madame Ottilie Fray> Another time, then. My questions will keep.
+  ? Would you answer my questionnaire? Two questions, two words each. = No
 === JubilifeVillage_GalaxyHall.Cyllene
 from Captain Cyllene at 11,7 of JubilifeVillage_GalaxyHall
 way -
@@ -11796,13 +11827,24 @@ way -
   Designer> I draw the Pokémon of this region for a living. If you ever fill in your whole Pokédex, I'd love to see it.
 === castelia_city_pokemon_center.LinkingCord
 from Receptionist at 4,4 of CasteliaCity_PokemonCenter
-way -
+way 0
   Receptionist> I'm sorry, the link to other players is closed for now.
   Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
   > Lucas received the Linking Cord!
   > Lucas put it away in the Items pocket.
   Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  Receptionist> There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?
+  Trade Receptionist> Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one.
+  Trade Receptionist> Which of your Pokémon will you send?
+  Trade Receptionist> I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle.
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = Yes
   * fanfare FanfareItem
+  * open TradeBoard
+  * open ChoosePokemon
+  = VAR_MAP_LOCAL_TRADE_REQUEST 0 -> 1
+way 1, from answer 1
+  Receptionist> Very well. The board changes every day, so do look in again!
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = No
 === castelia_sewers.Hugh
 from {rival} at 81,20 of CasteliaSewers
 way -
@@ -14486,6 +14528,11 @@ way -
   Anyone> A line of its own.
   Anyone> Thank you! Do come again.
   * open Shop
+=== common.Courier
+from a trainer with lines of their own
+way -
+  Gift Runner> Gift Runners, at your service! Only we've nothing to deliver until the gift box is open to you.
+  Gift Runner> There's a lady at Jubilife TV with a questionnaire. They say the answer to her second question is a sparrow and clockwork, of all things.
 === common.Crossing
 from a trainer with lines of their own
 way 0
@@ -15864,6 +15911,15 @@ way -
 from a trainer with lines of their own
 way -
   * open TownMap
+=== common.TradeDesk
+from a trainer with lines of their own
+way -
+  Trade Receptionist> Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one.
+  Trade Receptionist> Which of your Pokémon will you send?
+  Trade Receptionist> I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle.
+  * open TradeBoard
+  * open ChoosePokemon
+  = VAR_MAP_LOCAL_TRADE_REQUEST 0 -> 1
 === common.Trainer
 from a trainer with lines of their own
 way 0
@@ -21264,13 +21320,24 @@ way -
   Officer> For now its seats are kept for those the League has named Champion. Win at the Indigo Plateau, and you can ride.
 === goldenrod_pokecenter_1f.LinkingCord
 from Receptionist at 6,4 of Goldenrod_PokemonCenter_1F
-way -
+way 0
   Receptionist> This is the trade counter. I'm sorry, the link to other players is closed for now.
   Receptionist> But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!
   > Lucas received the Linking Cord!
   > Lucas put it away in the Items pocket.
   Receptionist> Use it on the Pokémon as you would a stone. Come back for another once yours is used up.
+  Receptionist> There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?
+  Trade Receptionist> Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one.
+  Trade Receptionist> Which of your Pokémon will you send?
+  Trade Receptionist> I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle.
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = Yes
   * fanfare FanfareItem
+  * open TradeBoard
+  * open ChoosePokemon
+  = VAR_MAP_LOCAL_TRADE_REQUEST 0 -> 1
+way 1, from answer 1
+  Receptionist> Very well. The board changes every day, so do look in again!
+  ? There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it? = No
 === goldenrod_radio_tower_1f.Grunt
 from Grunt at 23,5 of Goldenrod_RadioTower_1F
 way -

@@ -1,0 +1,772 @@
+{
+  "Looker": [
+    {
+      "en": [
+        "Looker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every leader in one fort, each sure their old machine is here. I have never seen so many angry people in one place!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a performance. I may buy a ticket for next season myself. In disguise, naturally."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we sail back to the harbour?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back with Looker..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Mars": [
+    {
+      "en": [
+        "Mars"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You again! Our boss says his old machine is in this fort, and nobody's getting near it before he does."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh, fine! Go and argue with him yourself. He's in a mood."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Jupiter": [
+    {
+      "en": [
+        "Jupiter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A rumour dragged us across the sea, and now a Champion blocks the corridor. What a day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Go on, then. Don't expect him to thank you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Archer": [
+    {
+      "en": [
+        "Archer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket goes where its boss goes, and the boss heard his old machine was here. Step aside, child."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Unbelievable. Very well. The boss can deal with you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ariana": [
+    {
+      "en": [
+        "Ariana"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sailed all night on a rumour. I am in no mood for children."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Go. Before I change my mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Tabitha": [
+    {
+      "en": [
+        "Tabitha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hoo hah! Team Magma and Team Aqua in one room, and both bosses sure the same fort hides their machine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hoo... You're as tough as ever. Go on, then, before they start shouting again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Shelly": [
+    {
+      "en": [
+        "Shelly"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahahaha! If the boss's machine is here, Team Aqua takes it home. You won't stop us this time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine, fine! Go and see the bosses. Mind your ears."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Zinzolin": [
+    {
+      "en": [
+        "Zinzolin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A letter told Lord Ghetsis his great machine had been raised from the sea. And here you are. How tiresome."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cold, cold, cold... Go, then. He is expecting nobody, least of all you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Xerosic": [
+    {
+      "en": [
+        "Xerosic"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to see this machine with my own eyes. Science demands it! And I find a Champion instead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fascinating. Still undefeatable. Go on, the boss is just behind me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Celosia": [
+    {
+      "en": [
+        "Celosia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The boss believes his weapon is here. I believe it would be rude to let you interrupt him."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How unfashionable, to lose. Go, then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cyrus": [
+    {
+      "en": [
+        "Cyrus"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was told the machine I built at the mountain's top had been rebuilt in this fort. I came to see if it was true."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is no machine. Only you. Then let us finish what was left unfinished."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Again. A world without spirit would never have lost to you. Perhaps that is the answer I came for."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Someone lured us all here. Whoever it is, they wanted an audience."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I find I have nowhere else to stand. Battle me, if you wish. Once a day is enough for either of us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Giovanni": [
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A note said my old machine had surfaced here, the one that made my Pokémon stronger than any other's. A lie, it seems."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But you are no lie. Come, then. Show me how far you have climbed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha... I was a fool to come. And a fool to fight you. Twice the fool, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Find whoever wrote that note. I'd like a word with them myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I stay for the battles, nothing more. One today. Make it worth my while."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was today's. Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Maxie": [
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My machine to widen the land, rebuilt here? I had to see it. And of course Archie had to see his."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is no machine. There is only you, again. Fufufu... Very well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I misjudged everything once more. At least I misjudged it in good company."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Archie and I have agreed on one thing today: we were both fooled."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle a day keeps my mind off the land. Shall we?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Once a day. Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Archie": [
+    {
+      "en": [
+        "Archie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bwahaha! Somebody told me my machine to fill the seas was sitting in this fort. And here's Maxie, told the same about his!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No machine, eh? Then let's have a battle. I didn't sail all this way for nothing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bwah! Still the strongest thing in the room. I'll take that over any machine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When I find whoever wrote that letter, I'm taking them sailing. A long way out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle a day, Champion! The sea can wait."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bwahaha! Same time tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's today's. Come back tomorrow!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ghetsis": [
+    {
+      "en": [
+        "Ghetsis"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A letter swore my great machine had been raised from the sea floor. I came to claim what is mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And I find you. Every time, it is you! Then I will crush you here, where nobody will see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Impossible... Impossible! Whoever lured me here will regret it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leave me. I am composing a very long complaint."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You return to mock me daily, it seems. Then battle me, and be gone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow, I will win."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Once a day is more than enough of you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lysandre": [
+    {
+      "en": [
+        "Lysandre"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was told my ultimate weapon had been raised and brought to this fort. A beautiful lie, and I believed it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Since you are here instead, let us see whether the world you chose was worth choosing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...It was. I suppose that is the answer I came for."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Someone wanted us all in one room. I would admire the staging, if I weren't the one staged."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle a day. A small, beautiful thing. Shall we?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was today's. Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ismene": [
+    {
+      "en": [
+        "Ismene"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bravo! Bravo! Every act played, every villain beaten, and in front of a full house. Well, a full fort."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yes, it was me. I keep the Laurel Gallery's records. I've read every plan those leaders ever made, and every way you foiled them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So I wrote each of them a little note: your old machine has come back. And here they all came, cross as cats!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I only wanted to see the whole story on one stage. And now, the finale. Mine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, wonderful! What an ending! Places, everyone, places!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The keep's old curtains swept shut across the stage bay..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...and opened on every leader in a row. Somewhat against their will, they bowed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ismene curtsied, and a little sign appeared at the door: TICKETS FOR NEXT SEASON, PLEASE ENQUIRE WITHIN."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you, thank you! The leaders have agreed to stay on. Well, they didn't disagree. They'll battle anyone, once a day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you, Champion, have earned a title of your own. Do come back next season!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not yet, not yet! The show isn't over until every act has played. Go and see the leaders in their bays."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

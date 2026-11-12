@@ -3,6 +3,7 @@
   "area": "rustboro_city_pokemon_center_2f",
   "bgmTrack": "hoenn/rustboro",
   "people": {
+    "mystery_gift_man": { "name": "Gift Runner", "npcType": "gift_runner", "script": "Courier" },
     "teala": {
       "name": "Receptionist",
       "dialog": [

@@ -197,6 +197,104 @@
           "Lucrez la Silph S.A. în Orașul Saffron. Echipa Rocket e peste tot în ultima vreme. Mă face să am emoții."
         ]
       }
+    },
+    "celadon_city.Festival_harvest_moon_1": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_harvest_moon_2": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_harvest_moon_x1": {
+      "name": {
+        "en": [
+          "Moon lantern"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_harvest_moon_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_harvest_moon_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: The Harvest Moon's up all week. Moon cakes, while they last!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

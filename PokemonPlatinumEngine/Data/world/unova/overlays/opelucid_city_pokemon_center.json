@@ -16,5 +16,12 @@
     "10": { "name": "Youngster", "npcType": "youngster", "dialog": [ "Drayden battled my dad once. He said it was the happiest he'd ever lost." ] },
     "12": { "name": "Breeder", "npcType": "pokemon_breeder_m", "dialog": [ "A Pokémon's happiness shows in how it eats. Mine eats like a dragon. Which is to say, a lot." ] },
     "11": { "name": "Socialite", "npcType": "socialite", "dialog": [ "Iris was only a girl when she came to this city. Now she's the Champion of Unova. Wasn't that quick?" ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "gift_runner", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }
