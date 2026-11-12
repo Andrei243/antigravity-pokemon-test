@@ -8,8 +8,8 @@
   "bgmTrack": "unova/nimbasa",
   "doors": [ { "warp": 0, "map": "NimbasaCity_BigStadium", "x": 11, "y": 10, "facing": "Down" } ],
   "people": {
-    "0": {"script": "Athlete2"},
-    "1": {"script": "Athlete3"},
+    "0": {"name": "Infielder", "script": "Athlete2"},
+    "1": {"name": "Infielder", "script": "Athlete3"},
     "2": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["I've cheered for this team since before they could win a game!"]},
     "3": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["Our team trains harder than anyone in Unova! Battle them and see!"]},
     "4": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
@@ -23,7 +23,7 @@
     "12": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "13": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "14": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["I bring a drum to every practice. Nobody has asked me to stop yet."]},
-    "15": {"script": "Athlete1"},
+    "15": {"name": "Infielder", "script": "Athlete1"},
     "16": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "17": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]}
   }

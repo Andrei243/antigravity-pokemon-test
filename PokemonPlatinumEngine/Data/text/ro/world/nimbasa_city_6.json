@@ -1,5 +1,25 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Infielder"
+        ],
+        "text": [
+          "Jucător de baseball"
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Infielder"
+        ],
+        "text": [
+          "Jucător de baseball"
+        ]
+      }
+    },
     "2": {
       "name": {
         "en": [
@@ -231,6 +251,16 @@
         ],
         "text": [
           "Aduc o tobă la fiecare antrenament. Încă nu mi-a cerut nimeni să mă opresc."
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Infielder"
+        ],
+        "text": [
+          "Jucător de baseball"
         ]
       }
     },

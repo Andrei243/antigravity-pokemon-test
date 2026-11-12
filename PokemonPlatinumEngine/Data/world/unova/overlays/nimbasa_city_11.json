@@ -8,9 +8,9 @@
   "bgmTrack": "unova/nimbasa",
   "doors": [ { "warp": 0, "map": "NimbasaCity_SmallCourt", "x": 11, "y": 10, "facing": "Down" } ],
   "people": {
-    "0": {"script": "Athlete1"},
-    "1": {"script": "Athlete2"},
-    "2": {"script": "Athlete3"},
+    "0": {"name": "Hoopster", "script": "Athlete1"},
+    "1": {"name": "Hoopster", "script": "Athlete2"},
+    "2": {"name": "Hoopster", "script": "Athlete3"},
     "3": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["Our team trains harder than anyone in Unova! Battle them and see!"]},
     "4": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["I've cheered for this team since before they could win a game!"]},
     "5": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
