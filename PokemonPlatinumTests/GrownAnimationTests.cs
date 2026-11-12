@@ -58,7 +58,7 @@ public class GrownAnimationTests
         var grownInputs = plain with
         {
             RunBlend = 0.7f, Stride = 2f, Lean = 0.1f, StepTurn = 0.5f, StepTurnAngle = 2f, Start = 0.5f, Stop = 0.5f,
-            Talking = true, Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.3f
+            Talking = true, Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.3f, Skating = true, Gliding = true
         };
         var a = new SkeletonPose(rig.Skeleton.Count);
         var b = new SkeletonPose(rig.Skeleton.Count);
@@ -103,6 +103,40 @@ public class GrownAnimationTests
         CharacterAnimation.Apply(rig, p with { Walk = 0.8f, Stance = Stance.Sit }, b);
         CharacterAnimation.Apply(rig, p, b);
         Assert.True(Same(a, b));
+    }
+
+    [Fact]
+    public void ASkaterPushesEachFootOutToItsSideInTurnCrouchedAndAGlideKeepsTheFeetTogether()
+    {
+        // Plan 30, the gate's owed (style guide, "Grown animation", "Skating"): a skater's stride is no walk; each foot is
+        // driven out to its own side on the ground in its half of the push cycle (two of the gait's), the other rolling
+        // under the body, and the hips drop by the crouch
+        var rig = Rig("PLAYER~Teen");
+        var legs = GrownAnimation.LegsOf(rig.Skeleton);
+        var restL = rig.Skeleton[HumanBones.FootL].Joint;
+        var restR = rig.Skeleton[HumanBones.FootR].Joint;
+        float hips = rig.Skeleton[HumanBones.ThighL].Joint.Y;
+        var skate = new CharacterPose { WalkBlend = 1f, RunBlend = 1f, Time = 0.4f, Skating = true };
+        // Half way through the left foot's push (a push cycle is two of the gait's, so Walk is twice the phase)
+        var leftOut = Posed(rig, skate with { Walk = 2f * GrownAnimation.SkatePush / 2f });
+        var ankleL = Joint(rig, leftOut, HumanBones.FootL);
+        var ankleR = Joint(rig, leftOut, HumanBones.FootR);
+        output.WriteLine($"left out: L {ankleL - restL}, R {ankleR - restR}");
+        Assert.True(ankleL.X - restL.X > 0.08f * legs.Length, "the pushing foot isn't out to its side");
+        Assert.True(MathF.Abs(ankleR.X - restR.X) < 0.02f * legs.Length, "the other foot left the line under the body");
+        Assert.True(MathF.Abs(ankleL.Y - restL.Y) < 0.01f, "a pushing foot left the ground");
+        // And the right foot in its turn, to its own side
+        var rightOut = Posed(rig, skate with { Walk = 2f * (0.5f + GrownAnimation.SkatePush / 2f) });
+        Assert.True(restR.X - Joint(rig, rightOut, HumanBones.FootR).X > 0.08f * legs.Length, "the right foot never pushed");
+        // Crouched: the hips below the walk's
+        var walk = Posed(rig, new CharacterPose { Walk = 0.2f, WalkBlend = 1f, Time = 0.4f });
+        Assert.True(Joint(rig, leftOut, HumanBones.ThighL).Y < Joint(rig, walk, HumanBones.ThighL).Y, "the skater isn't crouched");
+        Assert.True(Joint(rig, leftOut, HumanBones.ThighL).Y < hips - 0.04f * legs.Length);
+        // A glide stands still on its feet, a little lower
+        var glide = Posed(rig, new CharacterPose { Time = 0.4f, Gliding = true });
+        Assert.True(Vector3.Distance(Joint(rig, glide, HumanBones.FootL), restL) < 0.01f);
+        Assert.True(Vector3.Distance(Joint(rig, glide, HumanBones.FootR), restR) < 0.01f);
+        Assert.True(Joint(rig, glide, HumanBones.ThighL).Y < hips - 0.02f * legs.Length);
     }
 
     public static IEnumerable<object[]> Tilts => new[] { 0.2f, 0.4f, 0.7f, 1f, 1.3f, 1.6f, 2f }.Select(s => new object[] { s });
@@ -538,6 +572,8 @@ public class GrownAnimationTests
             // Plan 30 · FM13: astride a mount's width, and the ride's four stances
             ("astride", new CharacterPose { Riding = Riding.Mount, Astride = 0.28f, Time = 0.4f }),
             ("dash", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Dash, RunBlend = 1f, Astride = 0.28f, Time = 0.4f }),
+            ("skate", new CharacterPose { Skating = true, Walk = GrownAnimation.SkatePush, WalkBlend = 1f, RunBlend = 1f, Time = 0.4f }),
+            ("skate glide", new CharacterPose { Gliding = true, Time = 0.4f }),
             ("ride swimming", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Swim, Astride = 0.28f, Time = 0.4f }),
             ("glide", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.28f, Time = 0.4f }),
             ("ride climbing", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Climb, Astride = 0.28f, Time = 0.4f }),

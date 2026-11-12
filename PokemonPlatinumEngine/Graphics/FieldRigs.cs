@@ -16,7 +16,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// <paramref name="Feet"/> is then where their chibi sprite sits.
 /// </summary>
 internal readonly record struct FieldFigure(CharacterRig Rig, Vector3 Feet, float Yaw, CharacterPose Pose,
-    (float X0, float X1, float Top)? Over, object? Who, bool Sprite, FieldSeating? Seating = null);
+    (float X0, float X1, float Top)? Over, object? Who, bool Sprite, FieldSeating? Seating = null, Vector3 Drawn = default);
 
 /// <summary>Where a sitter of the field would stand, the way they face, the seat under them and whether they stand at a height of their own (plan 30 · FM6).</summary>
 internal readonly record struct FieldSeating(Vector3 Stood, Data.Direction Facing, Overworld.PropType? Seat, bool Raised);
@@ -93,8 +93,11 @@ internal static class FieldRigChoice
         return stood + new Vector3(dx * forward, lift, dz * forward);
     }
 
-    /// <summary>Whether the grown kit draws someone in a stance live (plan 30 · FM6): standing, sitting on a seat or on the ground.</summary>
-    public static bool LiveIn(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround;
+    /// <summary>
+    /// Whether the grown kit draws someone in a stance live (plan 30 · FM6): standing, sitting on a seat or on the ground,
+    /// and (the gate's owed) treading water. Lying stays the sprite.
+    /// </summary>
+    public static bool LiveIn(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround or Overworld.Stance.Swim;
 
     /// <summary>
     /// How fast someone moved over the ground between two frames, in a grown rig's model units a second (plan 30 · FM6,
@@ -243,13 +246,24 @@ internal sealed class FieldRigs
         foreach (int i in index)
         {
             if (live.Contains(i)) continue;
-            string name = grown[i]!.Type;
+            var stance = figures[i].Pose.Stance;
+            if (!HasImpostor(stance)) continue;
+            string name = ImpostorKey(grown[i]!.Type, stance);
             if (impostors.TryGetValue(name, out var have)) { impostors[name] = have with { Used = time }; continue; }
             if (bakedOne && !Patient) continue;
-            Bake(context, grown[i]!, time);
+            Bake(context, grown[i]!, time, stance);
             bakedOne = true;
         }
     }
+
+    /// <summary>
+    /// Whether someone far off in a stance is an impostor (plan 30, the gate's owed: a crowd's sitters past the live twelve
+    /// were chibi sprites among the grown): standing, sitting on a seat or on the ground. Anyone else is their sprite.
+    /// </summary>
+    public static bool HasImpostor(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround;
+
+    /// <summary>The name a look's impostors are kept under in a stance: the look's own name standing, as it always was.</summary>
+    public static string ImpostorKey(string look, Overworld.Stance stance) => stance == Overworld.Stance.Stand ? look : $"{look}#{stance}";
 
     /// <summary>
     /// A grown person's pose, way and feet this frame (plan 30 · FM6): their gait, yaw, lean, step-turn, start and stop
@@ -260,10 +274,14 @@ internal sealed class FieldRigs
     private (CharacterPose Pose, float Yaw, Vector3 Feet) Posed(FieldFigure f, CharacterRig rig, float dt)
     {
         var at = f.Feet;
-        if (f.Seating is { } seating && f.Pose.Stance != Overworld.Stance.Stand)
+        // A grown swimmer treads water with the water at its shoulders: its feet sunk under the surface its sprite was set
+        // at by that much of it, stretched as it is drawn (plan 30, the gate's owed)
+        if (f.Pose.Stance == Overworld.Stance.Swim && f.Seating is { } water)
+            at = water.Stood - new Vector3(0f, CharacterSprites.WaterLineHeight(rig) * vs, 0f);
+        else if (f.Seating is { } seating && f.Pose.Stance != Overworld.Stance.Stand)
             at = FieldRigChoice.GrownSeated(seating.Stood, f.Pose.Stance, seating.Facing, seating.Seat, seating.Raised,
                 GrownAnimation.SeatOf(rig.Skeleton) * rig.Scale);
-        if (f.Who is not { } key) return (f.Pose, f.Yaw, at);
+        if (f.Who is not { } key) return (f.Pose, f.Yaw, at + f.Drawn);
         var ground = f.Seating?.Stood ?? f.Feet;
         if (!motions.TryGetValue(key, out var m) || !ReferenceEquals(m.Rig, rig)) m = (GrownMotion.For(rig, f.Yaw), ground, rig);
         var velocity = FieldRigChoice.VelocityOf(m.Feet, ground, dt, rig.Scale);
@@ -276,7 +294,8 @@ internal sealed class FieldRigs
         moved.Add(key);
         var pose = f.Pose;
         m.Motion.Fill(ref pose);
-        return (pose, m.Motion.Yaw, at);
+        // (drawn off the feet the motion follows: the player's step back in a talk, which no step of theirs is)
+        return (pose, m.Motion.Yaw, at + f.Drawn);
     }
 
     /// <summary>The people in a pass, in place of their sprites: live, as impostors, or as their sprite.</summary>
@@ -319,8 +338,8 @@ internal sealed class FieldRigs
             if (live.Contains(i)) continue;
             var f = figures[i];
             if (f.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(f.Over);
-            // (an impostor stands: a sitter beyond the live twelve is their sprite, seated as ever)
-            if (grown[i] is { } rig && f.Pose.Stance == Overworld.Stance.Stand && impostors.TryGetValue(rig.Type, out var views))
+            // (a sitter beyond the live twelve is a seated impostor where the grown body sits)
+            if (grown[i] is { } rig && HasImpostor(f.Pose.Stance) && impostors.TryGetValue(ImpostorKey(rig.Type, f.Pose.Stance), out var views))
             {
                 // An impostor: the facing of eight nearest the way they face, its foot as a sprite's is
                 var (_, yaw, at) = posed[i];
@@ -359,13 +378,8 @@ internal sealed class FieldRigs
     /// A grown look's eight impostors: the rig standing still, turned to each eighth of a turn, seen from 24° above as the
     /// field's sprites are, its painted face drawn small, outlined in ink; into the least lately used place when full.
     /// </summary>
-    private unsafe void Bake(RenderContext context, CharacterRig rig, double time)
+    private unsafe void Bake(RenderContext context, CharacterRig rig, double time, Overworld.Stance stance = Overworld.Stance.Stand)
     {
-        if (!loaded)
-        {
-            bakeTarget = Gpu.Target(ImpostorW, ImpostorH, "fieldrig");
-            loaded = true;
-        }
         if (impostors.Count >= MostLooks)
         {
             string oldest = "";
@@ -377,34 +391,63 @@ internal sealed class FieldRigs
             impostors.Remove(oldest);
         }
         var shaders = context.Shaders;
-        float pitch = CharacterSprites.ViewPitchDeg * MathF.PI / 180f;
-        var look = new Vector3(0, FrameH / 2f - Margin, 0);
-        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, FrameH, CameraProjection.Orthographic);
         var views = new CharacterSprites.Card[8];
         for (int k = 0; k < 8; k++)
         {
-            Raylib.BeginTextureMode(bakeTarget);
-            Raylib.ClearBackground(new Color(0, 0, 0, 0));
-            Rlgl.SetClipPlanes(1.0, 60.0);
-            Raylib.BeginMode3D(camera);
-            shaders.SetLighting(Matrix4x4.Identity, StudioLight, camera.Position, 1f);
-            shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.2f);
-            shaders.SetStudio();
-            CharacterRenderer.Draw(context, rig, new CharacterPose { Time = 0.4f }, Matrix4x4.CreateRotationY(k * MathF.PI / 4f), CharacterPass.Color);
-            Raylib.EndMode3D();
-            Raylib.EndTextureMode();
-            Rlgl.SetClipPlanes(0.01, 1000.0);
-
-            var image = Raylib.LoadImageFromTexture(bakeTarget.Texture);
-            Raylib.ImageFlipVertical(ref image);
-            var canvas = PixelCanvas.FromImage(image);
-            Raylib.UnloadImage(image);
-            canvas.OutlinePass(innerSeams: false);
-            var texture = canvas.ToTexture(1, "fieldrig");
-            Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
+            var texture = View(context, rig, k, stance);
             views[k] = new CharacterSprites.Card(texture, RenderContext.MaterialFor(shaders.Sprite, texture), RenderContext.MaterialFor(shaders.Depth, texture), FrameW, FrameH);
         }
-        impostors[rig.Type] = (views, time);
+        impostors[ImpostorKey(rig.Type, stance)] = (views, time);
+    }
+
+    /// <summary>
+    /// One of a grown look's eight views (<paramref name="k"/> eighths of a turn from facing the eye), as an impostor is
+    /// baked: standing still, seen from the sprites' 24°, its face drawn small, outlined in ink. Outside any texture mode.
+    /// </summary>
+    private Texture2D View(RenderContext context, CharacterRig rig, int k, Overworld.Stance stance = Overworld.Stance.Stand)
+    {
+        if (!loaded)
+        {
+            bakeTarget = Gpu.Target(ImpostorW, ImpostorH, "fieldrig");
+            loaded = true;
+        }
+        var shaders = context.Shaders;
+        float pitch = CharacterSprites.ViewPitchDeg * MathF.PI / 180f;
+        var look = new Vector3(0, FrameH / 2f - Margin, 0);
+        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, FrameH, CameraProjection.Orthographic);
+        Raylib.BeginTextureMode(bakeTarget);
+        Raylib.ClearBackground(new Color(0, 0, 0, 0));
+        Rlgl.SetClipPlanes(1.0, 60.0);
+        Raylib.BeginMode3D(camera);
+        shaders.SetLighting(Matrix4x4.Identity, StudioLight, camera.Position, 1f);
+        shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.2f);
+        shaders.SetStudio();
+        CharacterRenderer.Draw(context, rig, new CharacterPose { Time = 0.4f, Stance = stance }, Matrix4x4.CreateRotationY(k * MathF.PI / 4f), CharacterPass.Color);
+        Raylib.EndMode3D();
+        Raylib.EndTextureMode();
+        Rlgl.SetClipPlanes(0.01, 1000.0);
+
+        var image = Raylib.LoadImageFromTexture(bakeTarget.Texture);
+        Raylib.ImageFlipVertical(ref image);
+        var canvas = PixelCanvas.FromImage(image);
+        Raylib.UnloadImage(image);
+        canvas.OutlinePass(innerSeams: false);
+        var texture = canvas.ToTexture(1, "fieldrig");
+        Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
+        return texture;
+    }
+
+    private readonly Dictionary<string, Texture2D> portraits = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// A grown look's portrait for the menus (plan 30, the gate's owed: the Trainer Card's plate, the Pokédex's size page),
+    /// in place of the chibi field sprite: its impostor facing the eye, the 48 by 64 texels the field shows it as far off.
+    /// Kept for the look; made outside any texture mode.
+    /// </summary>
+    public Texture2D Portrait(RenderContext context, CharacterRig rig)
+    {
+        if (!portraits.TryGetValue(rig.Type, out var texture)) portraits[rig.Type] = texture = View(context, rig, 0);
+        return texture;
     }
 
     private static unsafe void Free(CharacterSprites.Card[] views)
@@ -423,6 +466,8 @@ internal sealed class FieldRigs
     {
         foreach (var (_, have) in impostors) Free(have.Views);
         impostors.Clear();
+        foreach (var (_, texture) in portraits) Gpu.Unload(texture);
+        portraits.Clear();
         if (loaded) Gpu.Unload(bakeTarget);
         loaded = false;
         liveBefore.Clear();

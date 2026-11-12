@@ -45,6 +45,18 @@ internal static class CharacterStudio
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
 
+    /// <summary>
+    /// How a whole figure is framed for the Trainer Card's design and the photo studio (plan 43; plan 30, the gate's owed):
+    /// a chibi rig in the 1.9 model units round 0.78 it always was; a grown rig by its own height (its crown and a hat's
+    /// room over it), so a child and an adult of the grown kit fill the picture alike. In model units before the rig's scale.
+    /// </summary>
+    public static (float ViewHeight, float LookY) FigureOf(CharacterRig rig)
+    {
+        if (rig.Style.Kit != Data.CharacterKit.Grown) return (1.9f, 0.78f);
+        float tall = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure()).Crown + 0.12f;
+        return (tall * 1.12f, tall * 0.48f);
+    }
+
     /// <summary>How much of a figure a bust shows, in model units, and how far over the point between the eyes its middle lies.</summary>
     public const float BustHeight = 0.84f, BustLift = 0.04f;
 
