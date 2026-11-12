@@ -395,6 +395,10 @@ public enum PropType
     FestivalHayBales,
     /// <summary>Hisui's Sheaf Feast (plan 40 · GE9): three sheaves of wheat bound together before a stake with a paper tally; a festival's thing.</summary>
     FestivalSheaves,
+    /// <summary>The Sevii Islands' fast ferry at its harbour (plan 19's last notes): a thing of the map (<see cref="NPC.SeagallopType"/>), drawn as a card (<c>SeviiArt</c>).</summary>
+    Seagallop,
+    /// <summary>Celio's network machine in One Island's Pokémon Center (plan 19's last notes): a thing of the map (<see cref="NPC.NetworkMachineType"/>), drawn as a card.</summary>
+    NetworkMachine,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

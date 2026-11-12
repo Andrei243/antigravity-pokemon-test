@@ -299,7 +299,7 @@
     // Plan 19 · K9, part b: Four to Seven Island with their rooms and caves, and Cerulean Cave
     { "name": "FourIsland", "matrix": 193, "area": "four_island", "trees": "Round" },
     { "name": "FourIsland_IcefallCave_Entrance", "matrix": 116, "area": "four_island_icefall_cave_entrance", "trees": "Round", "setting": "Cave" },
-    { "name": "FourIsland_IcefallCave_1F", "matrix": 117, "area": "four_island_icefall_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "FourIsland_IcefallCave_1F", "matrix": 117, "area": "four_island_icefall_cave_1f", "trees": "Round", "setting": "Cave", "puzzle": "IcefallIce" },
     { "name": "FourIsland_IcefallCave_B1F", "matrix": 118, "area": "four_island_icefall_cave_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "FourIsland_IcefallCave_Back", "matrix": 119, "area": "four_island_icefall_cave_back", "trees": "Round", "setting": "Cave" },
     { "name": "FourIsland_PokemonDayCare", "matrix": 348, "area": "four_island_pokemon_day_care", "trees": "Round", "setting": "Indoors" },

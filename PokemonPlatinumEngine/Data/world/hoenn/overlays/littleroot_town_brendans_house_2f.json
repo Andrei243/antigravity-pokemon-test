@@ -1,16 +1,16 @@
 {
   // The bedroom upstairs (plan 21 · H1, H2): the clock on the wall is set when Mom asks (littleroot_town_brendans_house_2f.txt),
-  // and she comes up to see it
+  // and she comes up to see it. The PC on the desk is the player's own, the common PC (plan 19's last notes)
   "area": "littleroot_town_brendans_house_2f",
   "bgmTrack": "hoenn/littleroot",
   "people": {
     "players_house_2f_mom": { "name": "Mom", "still": true, "dialog": [ "Your room looks lovely, {player}!" ] }
   },
   "read": {
-    "LittlerootTown_BrendansHouse_2F_EventScript_WallClock": "WallClock"
+    "LittlerootTown_BrendansHouse_2F_EventScript_WallClock": "WallClock",
+    "LittlerootTown_BrendansHouse_2F_EventScript_PC": "PC"
   },
   "signs": {
-    "LittlerootTown_BrendansHouse_2F_EventScript_PC": "The PC is still in its box from the move.\nIt will have to be plugged in first.",
     "PlayersHouse_2F_EventScript_Notebook": "A notebook with a list on the first page:\nUnpack. Meet the neighbours. See the professor.",
     "PlayersHouse_2F_EventScript_GameCube": "A games console sits under the television.\nThe controller's cable is still tangled up."
   }

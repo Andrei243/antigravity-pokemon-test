@@ -1589,7 +1589,10 @@ internal sealed class GymPieces
         {
             case HallStyle.Champion:
                 // The carpet from the way in to the platform, and a pier on each of the room's four blocks
-                Carpet(still, map, CarpetBlue, 7, 10, 3, map.Height - 11);
+                Carpet(still, map, CarpetBlue, map.HallCarpetX ?? 7, 10, 3, map.Height - 11);
+                // (a hall built from another game's layout has no blocks of the original's to stand piers on: its shut
+                // way in would take one, plan 19's last notes)
+                if (map.HallCarpetX != null) break;
                 for (int y = back; y < map.Height - 1; y++)
                     for (int x = 1; x < map.Width - 1; x++)
                         if (Blocked(map, x, y) && !Blocked(map, x - 1, y) && !Blocked(map, x, y - 1)) Pier(still, map, x, y);

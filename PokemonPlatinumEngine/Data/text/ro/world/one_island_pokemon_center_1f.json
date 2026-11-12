@@ -83,6 +83,22 @@
           "Aș vrea să pot face schimb de Pokémoni cu iubitul meu. Locuiește foarte, foarte departe."
         ]
       }
+    },
+    "network_machine_west": {
+      "name": {
+        "en": [
+          "Network Machine"
+        ],
+        "text": [ "Mașina de rețea" ]
+      }
+    },
+    "network_machine_east": {
+      "name": {
+        "en": [
+          "Network Machine"
+        ],
+        "text": [ "Mașina de rețea" ]
+      }
     }
   },
   "signs": {

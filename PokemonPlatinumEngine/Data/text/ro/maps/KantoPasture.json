@@ -1,0 +1,32 @@
+{
+  "displayName": {
+    "en": [
+      "Pasture"
+    ],
+    "text": [
+      "Pășune"
+    ]
+  },
+  "people": {
+    "pasture_keeper": {
+      "name": {
+        "en": [
+          "Meadow Keeper"
+        ],
+        "text": [
+          "Paznicul pășunii"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "19,13": {
+      "en": [
+        "The pasture board\nWhich box walks the meadow, and the jobs in the fields."
+      ],
+      "text": [
+        "Panoul pășunii\nCe cutie paște pe pajiște și slujbele de pe câmp."
+      ]
+    }
+  }
+}

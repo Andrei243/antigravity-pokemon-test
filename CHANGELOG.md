@@ -4,6 +4,10 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The PCs of Kanto's and Hoenn's Pokémon Centers work, and so does the PC on your bedroom desk in Pallet Town and in Littleroot Town: your boxes, and, as everywhere, the pasture and the Stroll Counter. Kanto and Hoenn each have a pasture of their own.
+- Icefall Cave's thin ice cracks under your first step and gives way under your second, dropping you to the floor below.
+- The Seagallop now waits at each Sevii harbour and on Cinnabar's quay as a ferry, and Celio's network machine stands in One Island's Pokémon Center.
+- Kanto's Champion's room and Hall of Fame are halls of the League: white and gold with a blue carpet, and dark stone with a crimson one.
 - The Battle Frontier annex's Battle Palace, Battle Arena and Battle Dome now have Frontier Brains of their own: Spenser the Palace Maven at your 21st win in a row (and the 42nd), Greta the Arena Tycoon at the 28th (and the 56th), and Tucker the Dome Ace, who waits in the final once you have won four tournaments in a row (and again after nine).
 - Saturdays are service day at Mauville's Game Corner: the right roulette table takes 6 Coins a ball and every win pays double. The tables now tell you when you beat your best run of wins in a row.
 - The Trainer Hill's lobby has a clerk selling medicine and battle items for the climb, with stronger stock once you are Hoenn's Champion, and its board reads out the best times your other games have brought in from the record desks.

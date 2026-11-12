@@ -1,9 +1,11 @@
 {
   // The Champion's room (plan 19 · K7). The rival stands at its head as the Champion; Oak comes in once he is beaten
   // (FLAG_HIDE_OAK_IN_CHAMP_ROOM) and leads the player through the door behind (FLAG_DEFEATED_CHAMP) to the Hall of
-  // Fame. pokemon_league_champions_room.txt has the scene
+  // Fame. pokemon_league_champions_room.txt has the scene. It is a hall of the League's white and gold, its carpet laid up
+  // from the way in (plan 19's last notes)
   "area": "pokemon_league_champions_room",
   "name": "Pokémon League",
+  "hall": "Champion",
   "bgmTrack": "kanto/victory_road",
   "locked": [ 0 ],
   "doors": [
