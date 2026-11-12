@@ -491,7 +491,7 @@
         "I guard the museum by night. Nothing ever goes missing on my watch. Well. Nothing that isn't back by morning."
       ],
       "text": [
-        ""
+        "Păzesc muzeul noaptea. Nimic nu dispare în tura mea. Mă rog. Nimic care să nu fie la loc până dimineață."
       ]
     },
     {
@@ -499,7 +499,7 @@
         "The empty frame? It's still on the wall, look. Nobody moves it. But the screws on its back are worn bright."
       ],
       "text": [
-        ""
+        "Rama goală? E tot pe perete, uite. Nimeni n-o mișcă. Dar șuruburile din spatele ei sunt lustruite de uzură."
       ]
     },
     {
@@ -507,7 +507,7 @@
         "Screws only shine like that when they're turned, and turned often. Somebody takes the canvas out every night."
       ],
       "text": [
-        ""
+        "Șuruburile strălucesc așa doar când sunt învârtite, și des. Cineva scoate pânza în fiecare noapte."
       ]
     },
     {
@@ -515,7 +515,7 @@
         "{player} noted the frame's screws, worn bright from turning."
       ],
       "text": [
-        ""
+        "{player} a notat șuruburile ramei, lustruite de atâta învârtit."
       ]
     },
     {
@@ -523,7 +523,7 @@
         "Bright screws on an old frame. The canvas comes out, and the frame stays put."
       ],
       "text": [
-        ""
+        "Șuruburi lucioase pe o ramă veche. Pânza iese, iar rama rămâne pe loc."
       ]
     },
     {
@@ -531,7 +531,7 @@
         "The painting stays on its wall all night now. My watch has never been so dull. Or so peaceful."
       ],
       "text": [
-        ""
+        "Tabloul stă acum pe peretele lui toată noaptea. Tura mea n-a fost niciodată atât de plictisitoare. Sau atât de liniștită."
       ]
     }
   ]

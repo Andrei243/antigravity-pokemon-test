@@ -37,5 +37,9 @@
   // Plan 23, Kalos's HMs: Shauna with the HM that teaches Waterfall
   "npcs": [
     { "id": "shauna_waterfall", "name": "Shauna", "npcType": "shauna", "x": 684, "y": 320, "facing": "Down", "script": "Shauna", "hiddenBy": "FLAG_KALOS_RECEIVED_HM07" }
-  ]
+  ],
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Excavabbit", 188, 192 ], [ "Soufflair", 194, 198 ] ]
+  }
 }

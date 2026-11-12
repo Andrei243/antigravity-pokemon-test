@@ -38,5 +38,11 @@
     // Plan 23, Kalos's Surf-only places: the lake in the great hall's south-west and the chamber beyond it, reached only by Surf
     { "id": "lake_max_revive", "name": "Max Revive", "npcType": "ItemBall", "item": "Max Revive", "x": 12, "y": 56, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_LAKE_MAX_REVIVE" },
     { "id": "lake_dragon_fang", "name": "Dragon Fang", "npcType": "ItemBall", "item": "Dragon Fang", "x": 19, "y": 57, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_VICTORY_ROAD_LAKE_DRAGON_FANG" }
-  ]
+  ],
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Luchacondor", 194, 198 ], [ "Alpicorn", 190, 194 ] ],
+    "surf": [ [ "Reefcolony", 194, 198 ] ],
+    "superRod": [ [ "Mesmerquid", 194, 198 ] ]
+  }
 }
