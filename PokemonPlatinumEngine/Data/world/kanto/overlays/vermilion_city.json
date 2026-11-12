@@ -38,6 +38,11 @@
   // The captain who takes a Champion of Kanto on to Johto (plan 19 · K8; RegionDatabase's link from Kanto, common.Attendant),
   // on the quay east of the pier. Before the Hall of Fame he says only who may come aboard
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Kanto's cell, out once Kanto's Hall of Fame is entered
+    {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 297, "y": 207, "facing": "Down", "script": "LockworkAgent1", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 302, "y": 215, "facing": "Down", "script": "LockworkAgent2", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 285, "y": 220, "facing": "Down", "script": "LockworkAgent3", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 300, "y": 228, "facing": "Down", "script": "LockworkAgent4", "shownBy": "KantoHallOfFame"},
     {
       "id": "vermilion_city.Captain",
       "name": "Sailor",
@@ -53,5 +58,9 @@
     { "id": "case_kanto_fisherman", "name": "Fisherman", "npcType": "fisherman", "x": 299, "y": 229, "facing": "Down", "script": "CaseKantoFisherman" },
     { "id": "case_kanto_dov", "name": "Dov Harlan", "npcType": "dov", "x": 293, "y": 229, "facing": "Down", "script": "CaseKantoDov",
       "shownBy": "FLAG_CASE_KANTO_DOV_WAITS" }
+  ],
+  // Plan 44 · SD3: the way into Lockwork's cell, a room of ours, open once Kanto's Hall of Fame is entered
+  "exits": [
+    {"x": 282, "z": 226, "map": "LockworkCellKanto", "toX": 6, "toY": 8, "facing": "Up", "openedBy": "KantoHallOfFame"}
   ]
 }

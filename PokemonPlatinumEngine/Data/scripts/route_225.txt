@@ -1,0 +1,17 @@
+# Plan 44 · SD3: a Lockwork agent of Sinnoh's cell, one locked Pokémon in the team
+script LockworkAgent1
+  face self player
+  speaker self
+  if defeated "lockwork_sinnoh_agent_1" goto Beaten
+  say "Lockwork moves its cargo quietly. You've seen too much of it already."
+  if flag FLAG_GOT_RECLAIMER goto Fight
+  say "A man in a long coat has been asking about our shipments in the Survival Area. Let him ask."
+label Fight
+  say "That one's heart is locked tight. It'll fight for me without a second thought."
+  battle self as "lockwork_sinnoh_agent_1"
+  speaker self
+  say "Tch. Doesn't matter. The cargo's already on its way."
+  end
+label Beaten
+  say "Keep walking. Lockwork doesn't forget a face."
+  end

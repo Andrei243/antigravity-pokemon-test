@@ -181,13 +181,58 @@ Every session: the style guide first for what it draws and the rulings for what 
 
 ## Status
 
-- [ ] SD1 Locked hearts: the lock and the battle
-- [ ] SD2 Locked hearts on screen
-- [ ] SD3 The syndicate: Sinnoh, Kanto and Johto
-- [ ] SD4 The syndicate: Hoenn, Unova and the head office
+- [x] SD1 Locked hearts: the lock and the battle (2026-11-12, as built below)
+- [x] SD2 Locked hearts on screen (2026-11-12, as built below)
+- [x] SD3 The syndicate: Sinnoh, Kanto and Johto (2026-11-12, as built below; what it owes is listed there)
+- [x] SD4 The syndicate: Hoenn, Unova and the head office (2026-11-12, as built below; the courier and the medals owed)
 - [ ] SD5 The photo tour: the ride, the judge and the first course
 - [ ] SD6 The photo tour: the courses and the report
 - [ ] SD7 The delve's rules
 - [ ] SD8 The delve on screen
 - [ ] SD9 The hollow camp, its board and the hollows
 - [ ] SD10 The loop catch (optional)
+
+## SD1 to SD4 as built (2026-11-12)
+
+The user's answers held (39a to 46a, 41c: Lockwork, the Reclaimer, Orsolya Keld the clockmaker with her **Ampharos**, the
+five admins Tamsin Crake, Dov Harlan, Elspeth Moor, Rafe Ottoline and Juno Barrow, the thirty species as listed, the
+spring's rite of water over the ball, Looker the giver, the grey glass tower; 63a the grey drifting haze; 65a's march is
+owed, below). The rulings' "Locked hearts" has the numbers.
+
+- **SD1.** `Models/HeartLock.cs` (an immutable record: id, gauge, held EXP; `MovesBack`, `BarsLeft`, `Lower`, `Hold`, `Open`,
+  `WhyNot`; `HeartsRecord`, `SaveData.Hearts`, null while empty), `Pokemon.Lock` (saved, copied, held by the copy test),
+  `Ruleset.LockedHearts` (modern only), `Battle/Sim/BattleCore.Locks.cs` (the reclaim through `ThrowBall` and `Reclaim`,
+  the place emptied by `Withdraw` and the roster, `RollKind.Lock`, `ChoiceKind.Calm` with the items and switches, `Unruly`
+  after `Disobeys`, `Stir`, `LooseBites` at the turn's end, `HoldsTheExp` in `Give`, `SealedByTheLock` in `WhyNotMove`,
+  `CountLockKnockOut`), four events (`LockShown` on every send-out through `Brought`, `BrokeLoose`, `Calmed`, `ExpHeld`) with
+  their wire names, `CoreSetup.Reclaimer` through `BattleSetup`, `BattleRecord`, the Vs. Recorder's file, the retry and a
+  battle watched. The face takes a reclaim aside (`BattleEngine.Reclaimed`) and the game takes it in at `EndBattle`
+  (`GameEngine.Hearts.cs`: ids, the Pokédex, the Nuzlocke's gifts clause, the team or the PC), notes the knocked out as
+  missed, and lowers the team's locks for the battle, its knock-outs, every 128 steps and the camp's pat and meal; a heart
+  whose gauge has emptied opens once the field is free (`KeepTheHearts`). Refused at the Day Care (the script's result 5),
+  Poké Jobs, the Frontier's `MayEnter`, the Pokéathlon, the contests, the Home box, TMs and tutors, Rare Candy, evolution,
+  friendship and `GainExp`. The Reclaimer is item 9480 of `Overrides/items.json`. `HeartLockTests` hold it all; both golden
+  corpora held still.
+- **SD2.** The haze is a `ConditionLook` mark (`Haze`, `Loose`, `LockBars`; `LockRulesHave`, `SettleLock`) drawn by
+  `MoveFx.LockHaze` (seven quads), the padlock after a name (`ModernUi.LockAfter`, in `NameWithGender`, so the HP box and
+  the party's cards), the summary's gauge where the EXP bar is and its sealed moves, CALM where RUN stands
+  (`BattleEngine.OffersCalm`, `SelectCalm`), the opening's scene (`UI/HeartOpeningScreen.cs`, `GameState.HeartOpening`,
+  `ModernUi.Hearts.cs`, the level panel's two presses), the script command `heart` (`has`, `give`, `spring`, `open`,
+  `locked`, `count`, `missed`, `opened`), the harness's `hearts` mode (`lh01` to `lh09`, looked at), `HeartLookTests`.
+- **SD3 and SD4** (one pass): twenty-six trainers of ours in `our-trainers.json` (four agents and an admin a cell, the
+  head), each locked member marked `"lock"`; the agents stand as overlay people of their port (shown by the region's Hall
+  of Fame flag), Unova's on the hand-made `CasteliaCity`; each admin in a room of ours (`LockworkCellSinnoh`, `Kanto`,
+  `Johto`, `Hoenn`, behind an overlay exit opened by the Hall of Fame flag; the Sinnoh cell's at the Fight Area's south
+  quay), Unova's in the tower's lobby (`LockworkTower1F`, a door at 54, 5 of Castelia's avenue) and the head on its second
+  floor (`LockworkTower2F`), whose battle stops the machine (`FLAG_LOCKWORK_MACHINE_STOPPED`) and brings Looker's last
+  scene. Looker gives the Reclaimer in the Survival Area; the spring's rite is read at Sendoff Spring's water (30, 31). The
+  looks (`lockwork_agent_m`, `_f` and one each for the admins and the head) and the classes Lockwork Agent, Admin and Head
+  are in `characters.json`, `classes.*` in English and Romanian, the admins' and the head's lines in `trainer-lines.json`.
+  `HeartsStoryTests` hold the thirty and the head's, every lock reclaimed in its trainer's battle, who waits for which Hall
+  of Fame, Looker's gift once, the rite once a day and the head waiting on the admin.
+- **Owed** (each with its session): the courier in the tower's lobby with the missed (a battle whose team is built from
+  `HeartsRecord.Missed`, which needs a host hook of its own); the medals of plan 13 · V9 for the first reclaim and the
+  thirtieth heart; the requests of plan 12 · Q21 for each cell; the class's own eye and battle songs (65a, a clipped
+  march: the class plays Team Galactic's for now, `sound-map.json`); the follower's field sprite tinted while locked;
+  `lh10` to `lh49`'s shots of the cells and the tower; a headless game walked to each cell (the tests play the scripts and
+  the battles on their own). The cells' trainers are spoken to, not walked up to by sight.

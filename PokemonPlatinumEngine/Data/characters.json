@@ -2,6 +2,16 @@
 // design after the character; nothing is taken from the games. Names are matched without regard to case.
 {
   "looks": {
+    // Plan 44 · SD3, SD4: Lockwork, our own syndicate: its agents in charcoal coats and brass-banded caps, its five admins
+    // and its head, a harbour clockmaker, each in the charcoal and brass of the house
+    "lockwork_agent_m": {"hairColor": "#2e2a30", "hair": "Swept", "hat": "Cap", "hatColor": "#3a3644", "hatBand": "#c8a24a", "top": "#4a4652", "accent": "#c8a24a", "bottom": "#2a2830", "shoes": "#1e1c22", "coat": true, "build": "Adult", "height": 1.03},
+    "lockwork_agent_f": {"hairColor": "#5a3a2e", "hair": "Ponytail", "hat": "Cap", "hatColor": "#3a3644", "hatBand": "#c8a24a", "top": "#4a4652", "accent": "#c8a24a", "bottom": "#2a2830", "shoes": "#1e1c22", "coat": true, "lashes": true, "build": "Adult"},
+    "tamsin_crake": {"hairColor": "#b4482e", "hair": "Bun", "top": "#3a3e52", "accent": "#d8b25a", "bottom": "#2a2c3a", "shoes": "#1e1c22", "coat": true, "glasses": "#c8a24a", "lashes": true, "build": "Adult", "height": 1.04},
+    "dov_harlan": {"hairColor": "#8a8a92", "hair": "Swept", "top": "#3e3a46", "accent": "#d8b25a", "bottom": "#2a2830", "shoes": "#1e1c22", "coat": true, "beard": true, "build": "Adult", "height": 1.08},
+    "elspeth_moor": {"hairColor": "#2a2a34", "hair": "Long", "top": "#4a3e52", "accent": "#d8b25a", "bottom": "#2c2834", "shoes": "#1e1c22", "coat": true, "skirt": true, "lashes": true, "build": "Adult", "height": 1.02},
+    "rafe_ottoline": {"hairColor": "#d8b06a", "hair": "Spiky", "top": "#36424e", "accent": "#d8b25a", "bottom": "#262c34", "shoes": "#1e1c22", "jacket": true, "build": "Adult", "height": 1.05},
+    "juno_barrow": {"hairColor": "#3a2a24", "hair": "Braids", "top": "#3a3a4a", "accent": "#d8b25a", "bottom": "#26262e", "shoes": "#1e1c22", "coat": true, "lashes": true, "build": "Adult", "height": 1.03},
+    "orsolya_keld": {"hairColor": "#c8c4cc", "hair": "Bun", "top": "#2e2a34", "accent": "#e2c066", "bottom": "#24222a", "shoes": "#1a181e", "coat": true, "skirt": true, "glasses": "#e2c066", "lashes": true, "build": "Adult", "height": 1.0},
     // The boy the player can be (and the assistant when they are the girl); trainer and lucas are the same look
     "player": { "jacket": true, "hairColor": "#46384e", "hat": "Beret", "hatColor": "#dc383c", "hatBand": "#f6f6fa", "top": "#3a4e8a", "accent": "#ec4646", "bottom": "#303246", "shoes": "#c8463c", "bag": "#f2c446", "sole": "#f0ece4", "blush": true, "scarf": true },
     // The girl the player can be instead (and the professor's assistant when they aren't): our own take on Platinum's winter clothes, a white knitted hat, a long pink coat, a white scarf and pink boots
@@ -977,6 +987,10 @@
   // that names nobody in particular: the person's own look stands. A class not named here is drawn in the plain
   // default until plan 11 · C2 to C4 give it a look.
   "classes": {
+    // Plan 44 · SD3: Lockwork's agents by their looks; the admins and the head each in their own
+    "Lockwork Agent": [ "lockwork_agent_m", "lockwork_agent_f" ],
+    "Lockwork Admin": null,
+    "Lockwork Head": null,
     "Youngster": "youngster",
     "Lass": "lass",
     "Lady": "lady",

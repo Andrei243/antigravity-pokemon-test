@@ -1,0 +1,93 @@
+{
+  "name": "LockworkCellKanto",
+  "displayName": "Vermilion City",
+  "bgmTrack": "kanto/vermilion",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "##...###...##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Workbench",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 11,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "Kanto",
+      "targetX": 282,
+      "targetY": 227,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lockwork_admin",
+      "name": "Dov",
+      "npcType": "dov_harlan",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Admin"
+    }
+  ],
+  "wildEncounters": []
+}

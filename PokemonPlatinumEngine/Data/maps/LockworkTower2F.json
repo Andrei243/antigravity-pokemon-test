@@ -1,0 +1,90 @@
+{
+  "name": "LockworkTower2F",
+  "displayName": "Castelia City",
+  "bgmTrack": "unova/castelia",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#############"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "###..###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#############"
+  ],
+  "props": [
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Workbench",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "LockworkTower1F",
+      "targetX": 10,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lockwork_head",
+      "name": "Orsolya Keld",
+      "npcType": "orsolya_keld",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Head",
+      "hiddenBy": "FLAG_LOCKWORK_MACHINE_STOPPED"
+    },
+    {
+      "id": "lockwork_looker",
+      "name": "Looker",
+      "npcType": "looker",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "LookerLast",
+      "shownBy": "FLAG_LOCKWORK_MACHINE_STOPPED"
+    }
+  ],
+  "wildEncounters": []
+}

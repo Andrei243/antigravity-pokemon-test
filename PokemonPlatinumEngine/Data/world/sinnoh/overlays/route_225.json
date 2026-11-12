@@ -76,5 +76,9 @@
   "signs": {
     "arrow_signpost_fight_area": "Rt. 225\nSouth: Fight Area",
     "arrow_signpost_surival_area": "Rt. 225\nEast: Survival Area"
-  }
+  },
+  // Plan 44 · SD3: Lockwork's agents of Sinnoh's cell, out once Sinnoh's Hall of Fame is entered
+  "npcs": [
+    {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 626, "y": 342, "facing": "Down", "script": "LockworkAgent1", "shownBy": "SinnohHallOfFame"}
+  ]
 }

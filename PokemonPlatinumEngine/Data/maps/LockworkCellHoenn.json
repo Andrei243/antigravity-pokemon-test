@@ -1,0 +1,93 @@
+{
+  "name": "LockworkCellHoenn",
+  "displayName": "Lilycove City",
+  "bgmTrack": "hoenn/lilycove",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "##...###...##",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Workbench",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 11,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "Hoenn",
+      "targetX": 513,
+      "targetY": 105,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lockwork_admin",
+      "name": "Rafe",
+      "npcType": "rafe_ottoline",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Admin"
+    }
+  ],
+  "wildEncounters": []
+}

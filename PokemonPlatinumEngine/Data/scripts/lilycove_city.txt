@@ -216,3 +216,67 @@ script Altarianite
 label Own
   sayown
   end
+
+
+# Plan 44 · SD3: a Lockwork agent of Hoenn's cell, one locked Pokémon in the team
+script LockworkAgent1
+  face self player
+  speaker self
+  if defeated "lockwork_hoenn_agent_1" goto Beaten
+  say "Lockwork moves its cargo quietly. You've seen too much of it already."
+  say "That one's heart is locked tight. It'll fight for me without a second thought."
+  battle self as "lockwork_hoenn_agent_1"
+  speaker self
+  say "Tch. Doesn't matter. The cargo's already on its way."
+  end
+label Beaten
+  say "Keep walking. Lockwork doesn't forget a face."
+  end
+
+
+# Plan 44 · SD3: a Lockwork agent of Hoenn's cell, one locked Pokémon in the team
+script LockworkAgent2
+  face self player
+  speaker self
+  if defeated "lockwork_hoenn_agent_2" goto Beaten
+  say "You're on the dock without a docket. Lockwork doesn't like that."
+  say "My partner here was locked at the works. It obeys. That's all it needs to do."
+  battle self as "lockwork_hoenn_agent_2"
+  speaker self
+  say "You knocked the numbers right out of my ledger."
+  end
+label Beaten
+  say "I'm counting crates. Count yourself out of here."
+  end
+
+
+# Plan 44 · SD3: a Lockwork agent of Hoenn's cell, one locked Pokémon in the team
+script LockworkAgent3
+  face self player
+  speaker self
+  if defeated "lockwork_hoenn_agent_3" goto Beaten
+  say "Nobody asked you to look in the crates."
+  say "A locked heart never hesitates. Let me show you."
+  battle self as "lockwork_hoenn_agent_3"
+  speaker self
+  say "So hesitation isn't everything after all."
+  end
+label Beaten
+  say "Go on. The admin will be the one to deal with you."
+  end
+
+
+# Plan 44 · SD3: a Lockwork agent of Hoenn's cell, one locked Pokémon in the team
+script LockworkAgent4
+  face self player
+  speaker self
+  if defeated "lockwork_hoenn_agent_4" goto Beaten
+  say "This stretch of the harbour is Lockwork's for the evening."
+  say "We seal their hearts so nothing ever comes between us. Efficient, isn't it?"
+  battle self as "lockwork_hoenn_agent_4"
+  speaker self
+  say "Efficient. And beaten. Wonderful."
+  end
+label Beaten
+  say "Lockwork pays well. I'd still rather not face you twice."
+  end

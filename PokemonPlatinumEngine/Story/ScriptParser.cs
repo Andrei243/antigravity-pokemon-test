@@ -1182,7 +1182,7 @@ public static class ScriptParser
             // Locked hearts (plan 44 · SD2): `heart has`, `heart give`, `heart spring`, `heart open`, `heart locked`,
             // `heart count`, `heart missed`, `heart opened`
             case "heart":
-                return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened") };
+                return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
 
             case "treat":
             {

@@ -13,7 +13,7 @@
     "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
     "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
     "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
-    "bb+######+######++++####+###D###+#####++++#######+##########++++#######+##########++++###+bb",
+    "bb+######+######++++####+###D###+#####++++#######+####D#####++++#######+##########++++###+bb",
     "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
     "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
     "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
@@ -29,7 +29,7 @@
     "##.#############....##################....##################....##################....######",
     "##.#############....##################....##################....##################....######",
     "##.#############....##################....##################....##################....######",
-    "##.#############....########.#########....##################....##################....######",
+    "##.#############....########.#########....############.#####....##################....######",
     "##........................................................................................##",
     "##........................................................................................##",
     "##........................................................................................##",
@@ -859,6 +859,14 @@
       "targetX": 15,
       "targetY": 2,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 54,
+      "sourceY": 5,
+      "targetMap": "LockworkTower1F",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Up"
     }
   ],
   "signboards": [
@@ -995,6 +1003,46 @@
       "facing": "Down",
       "script": "MealStand",
       "shownBy": "FLAG_GOT_CRAFTING_KIT"
+    },
+    {
+      "id": "lockwork_agent_1",
+      "name": "Lockwork Agent",
+      "npcType": "lockwork_agent_f",
+      "x": 16,
+      "y": 7,
+      "facing": "Down",
+      "script": "LockworkAgent1",
+      "shownBy": "UnovaHallOfFame"
+    },
+    {
+      "id": "lockwork_agent_2",
+      "name": "Lockwork Agent",
+      "npcType": "lockwork_agent_m",
+      "x": 33,
+      "y": 8,
+      "facing": "Down",
+      "script": "LockworkAgent2",
+      "shownBy": "UnovaHallOfFame"
+    },
+    {
+      "id": "lockwork_agent_3",
+      "name": "Lockwork Agent",
+      "npcType": "lockwork_agent_f",
+      "x": 60,
+      "y": 8,
+      "facing": "Down",
+      "script": "LockworkAgent3",
+      "shownBy": "UnovaHallOfFame"
+    },
+    {
+      "id": "lockwork_agent_4",
+      "name": "Lockwork Agent",
+      "npcType": "lockwork_agent_m",
+      "x": 71,
+      "y": 9,
+      "facing": "Down",
+      "script": "LockworkAgent4",
+      "shownBy": "UnovaHallOfFame"
     }
   ],
   "triggers": [

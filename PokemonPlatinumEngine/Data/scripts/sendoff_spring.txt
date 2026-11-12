@@ -57,3 +57,20 @@ script Cynthia
 label Wish
   say "I keep going over it. Giratina, in a world of its own, close enough to touch... I only wish I had been the one to battle it."
   end
+
+
+# Plan 44 · SD3: the spring's rite (the user's answer 44a): spring water poured over each locked Pokémon's ball, its name said aloud
+script SpringRite
+  speaker none
+  heart spring
+  if var RESULT == 0 goto Still
+  if var RESULT == 2 goto Done
+  say "{player} poured a handful of spring water over each ball with a locked heart and said its name aloud."
+  say "The haze around them seemed to thin, just a little."
+  end
+label Done
+  say "The water has done what it can for today."
+  end
+label Still
+  say "The spring water is cold and very clear."
+  end

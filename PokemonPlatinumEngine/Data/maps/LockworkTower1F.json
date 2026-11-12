@@ -1,0 +1,97 @@
+{
+  "name": "LockworkTower1F",
+  "displayName": "Castelia City",
+  "bgmTrack": "unova/castelia",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "###..###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Workbench",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "CasteliaCity",
+      "targetX": 54,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "LockworkTower2F",
+      "targetX": 10,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lockwork_admin",
+      "name": "Juno",
+      "npcType": "juno_barrow",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Admin"
+    },
+    {
+      "id": "lockwork_courier",
+      "name": "Courier",
+      "npcType": "lockwork_agent_m",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "script": "Courier",
+      "shownBy": "FLAG_LOCKWORK_MACHINE_STOPPED"
+    }
+  ],
+  "wildEncounters": []
+}

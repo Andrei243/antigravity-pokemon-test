@@ -138,6 +138,9 @@
   // the crowd before the gate has gone, which is the flag that sends them away. He carries no team on the map: the
   // script battles him by one of Platinum's data
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Sinnoh's cell, out once Sinnoh's Hall of Fame is entered
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 618, "y": 434, "facing": "Down", "script": "LockworkAgent3", "shownBy": "SinnohHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 645, "y": 435, "facing": "Down", "script": "LockworkAgent4", "shownBy": "SinnohHallOfFame"},
     { "id": "inverse_scientist", "name": "Scientist", "npcType": "Scientist", "x": 662, "y": 432, "facing": "Down",
       "script": "InverseBattle", "shownBy": "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS" },
     // The Villa Larder (plan 41 · EG7): the harbour clerk with the ferry's log, a deckhand, and the ferry's captain, who
@@ -151,5 +154,9 @@
     "map_signpost": "Fight Area\nWhere trainers gather to test their strength.",
     "arrow_signpost_rt_225": "Rt. 225\nNorth to the Survival Area.",
     "arrow_signpost_battle_frontier": "Battle Frontier\nStraight ahead, through the gate."
-  }
+  },
+  // Plan 44 · SD3: the way into Lockwork's cell, a room of ours, open once Sinnoh's Hall of Fame is entered
+  "exits": [
+    {"x": 651, "z": 442, "map": "LockworkCellSinnoh", "toX": 6, "toY": 8, "facing": "Up", "openedBy": "SinnohHallOfFame"}
+  ]
 }

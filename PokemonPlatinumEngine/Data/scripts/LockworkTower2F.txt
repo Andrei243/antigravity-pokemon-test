@@ -1,0 +1,30 @@
+# Plan 44 · SD4: Orsolya Keld, Lockwork's head, a harbour clockmaker (the user's answer 40a), and the machine stopped
+script Head
+  face self player
+  speaker self
+  if not flag FLAG_LOCKWORK_UNOVA_ADMIN_BEATEN goto Busy
+  say "Listen. Do you hear it ticking? Every lock in five regions keeps time with this machine."
+  say "I made clocks for the harbour once. A clock never leaves, never tires, never chooses another."
+  say "So I made hearts like clocks. Perfectly loyal partners. Never afraid of losing anyone again."
+  say "My own Ampharos was the first. It hasn't left my side in years. Let me show you what loyalty is."
+  battle self as "lockwork_head"
+  speaker self
+  say "It stopped. It actually stopped. And my Ampharos is looking at you as if you were the clockmaker."
+  say "...Perhaps a heart was never meant to keep time."
+  setflag FLAG_LOCKWORK_MACHINE_STOPPED
+  fade out 0.5
+  hide self
+  fade in 0.5
+  end
+label Busy
+  say "Juno is still on the floor below. Nobody comes up these stairs without her say."
+  end
+
+# Plan 44 · SD4: Looker's last scene, once the machine has stopped
+script LookerLast
+  face self player
+  speaker self
+  say "The machine is quiet. Keld came quietly too, in the end. My bureau will see to the rest."
+  say "Every heart you took back will open in time, beside you. That is the one thing no machine can do."
+  say "If any of them were sent back to Lockwork's crates before you could reach them, they will turn up again. Looker is sure of it."
+  end

@@ -90,6 +90,28 @@ public sealed record HeartLock(string Id, int Gauge = HeartLock.Full, int HeldEx
     /// <summary>The lock holding so much more EXP.</summary>
     public HeartLock Hold(int exp) => exp <= 0 ? this : this with { HeldExp = (int)Math.Min(int.MaxValue, (long)HeldExp + exp) };
 
+    /// <summary>The courier's own id and class (plan 44 · SD4): he battles with whatever he carries.</summary>
+    public const string CourierId = "lockwork_courier", CourierClass = "Lockwork Agent";
+
+    /// <summary>The most the courier carries at once.</summary>
+    public const int CourierCarries = 6;
+
+    /// <summary>
+    /// The courier's team (plan 44 · SD4): the first six locks missed, each built afresh from the trainer of ours whose team
+    /// it was in (<c>our-trainers.json</c>), full, as it went back to Lockwork's crates. A lock no trainer carries is passed over.
+    /// </summary>
+    public static List<Pokemon> CourierTeam(IEnumerable<string> missed)
+    {
+        var team = new List<Pokemon>();
+        foreach (string id in missed)
+        {
+            if (team.Count >= CourierCarries) break;
+            var member = TrainerDatabase.Ours.SelectMany(t => t.Party).FirstOrDefault(m => m.Lock == id);
+            if (member != null) team.Add(TrainerDatabase.Build(member));
+        }
+        return team;
+    }
+
     /// <summary>A full lock of this name, as a syndicate trainer's Pokémon carries it.</summary>
     public static HeartLock Locked(string id) => new(id);
 

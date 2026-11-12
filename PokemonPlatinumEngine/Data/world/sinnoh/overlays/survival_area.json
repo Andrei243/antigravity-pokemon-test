@@ -57,5 +57,9 @@
     "map_signpost": "Survival Area\nOnly the toughest stay."
   },
   // The Battleground's door, read where it stands (the original's script 7)
-  "read": { "7": "BattlegroundDoor" }
+  "read": { "7": "BattlegroundDoor" },
+  // Plan 44 · SD3: Looker, who has followed Lockwork's shipments, with the Reclaimer his bureau made
+  "npcs": [
+    {"id": "lockwork_looker", "name": "Looker", "npcType": "looker", "x": 646, "y": 328, "facing": "Down", "script": "LookerReclaimer", "shownBy": "SinnohHallOfFame"}
+  ]
 }

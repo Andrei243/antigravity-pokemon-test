@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Battle.Sim.Ai;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -77,6 +78,18 @@ public sealed partial class ScriptRunner
             case "opened":
                 Result = record?.Opened.Count ?? 0;
                 return;
+            case "courier":
+            {
+                // The courier carries the missed back, six at a time (plan 44 · SD4): the team is built on the person spoken to,
+                // whom the script then battles as `battle self`; RESULT how many he carries, nought with none missed
+                var team = HeartLock.CourierTeam(record?.Missed ?? new List<string>());
+                Result = team.Count;
+                if (team.Count == 0 || Subject == null) return;
+                var courier = new Trainer { Id = HeartLock.CourierId, Name = Subject.Name, TrainerClass = HeartLock.CourierClass, PrizeMoney = 0, Ai = AiFlags.Basic };
+                foreach (var p in team) courier.Party.Add(p);
+                Subject.TrainerData = courier;
+                return;
+            }
         }
     }
 }
