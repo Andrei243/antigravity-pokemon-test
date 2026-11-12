@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Hulbury Stadium! Nessa's gym mission is through the doors behind me: turn the water aside."
+      ],
+      "text": [
+        "Bun venit la Stadionul Hulbury! Misiunea arenei lui Nessa e dincolo de ușile din spatele meu: abate apa din cale."
+      ]
+    },
+    {
+      "en": [
+        "A gatekeeper stands at each floodgate. Ask, and they'll pull the switch for you. Then Nessa awaits on the pitch."
+      ],
+      "text": [
+        "La fiecare stăvilar stă un paznic. Roagă-l și trage maneta pentru tine. Apoi Nessa te așteaptă pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Water Badge! Kabu's gym is in Motostoke, through Galar Mine No. 2."
+      ],
+      "text": [
+        "Felicitări pentru Insigna Apă! Arena lui Kabu e în Motostoke, prin Mina Galar nr. 2."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Nessa's Water types can't stand grass or electric moves. Bring a Pokémon that can take a soaking!"
+      ],
+      "text": [
+        "Pokémonii de tip Apă ai lui Nessa nu suportă atacurile de iarbă sau electrice. Adu un Pokémon care rabdă o udătură!"
+      ]
+    },
+    {
+      "en": [
+        "Two badges! Galar Mine No. 2 is just south of town, under the bank."
+      ],
+      "text": [
+        "Două insigne! Mina Galar nr. 2 e chiar la sud de oraș, sub mal."
+      ]
+    }
+  ]
+}

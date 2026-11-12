@@ -169,7 +169,9 @@ public enum GameState
     /// <summary>The photo book, a script's <c>photo book</c> waiting on it (plan 43 · LF4).</summary>
     PhotoBook,
     /// <summary>A locked heart opening, its scene and its level panel (plan 44 · SD2).</summary>
-    HeartOpening
+    HeartOpening,
+    /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
+    Studio
 }
 
 public partial class GameEngine
@@ -1719,6 +1721,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoBook:
                 UpdatePhotoBook(dt);
+                break;
+            case GameState.Studio:
+                UpdateStudio(dt);
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -3375,6 +3380,11 @@ public partial class GameEngine
         {
             flow.SalonScreen.Render(renderContext);
         }
+        else if (scene == GameState.Studio)
+        {
+            // The player's figure on the stage, rendered offscreen (plan 43 · LF5)
+            RenderStudioFigure();
+        }
         else if (scene is GameState.TrainerCard or GameState.CardDesign)
         {
             // The designed card's posed figure (plan 43 · LF1); nothing for a card never designed
@@ -3504,6 +3514,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoBook:
                 ModernUi.DrawPhotoBook(VirtualWidth, VirtualHeight, flow.PhotoBookScreen, BookPicture);
+                break;
+            case GameState.Studio:
+                ModernUi.DrawStudio(VirtualWidth, VirtualHeight, flow.StudioScreen, StudioFigureNow(), StudioPokemonNow());
                 break;
             case GameState.CardDesign:
                 if (PrintingCard) DrawCardForPrint();
@@ -3768,6 +3781,7 @@ public partial class GameEngine
         TakeScreenshot();
         TakeCardPrint();
         TakeBookPhoto();
+        TakeStudioPhoto();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 

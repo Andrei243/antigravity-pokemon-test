@@ -1,0 +1,21 @@
+{
+  "backdrops": [
+    { "id": "plain", "top": "#f6f1e4", "bottom": "#e4dac2", "pattern": "None", "ink": "#c9b996", "unlock": "start" },
+    { "id": "studio_sky", "top": "#cfe9fb", "bottom": "#f4f9ff", "pattern": "Dots", "ink": "#a9d2ef", "unlock": "start" },
+    { "id": "studio_meadow", "top": "#d9f0c4", "bottom": "#a9d98c", "pattern": "Leaves", "ink": "#83c065", "unlock": "start" },
+    { "id": "studio_curtain", "top": "#f2d3dc", "bottom": "#d9a0b4", "pattern": "Stripes", "ink": "#c98099", "unlock": "start" },
+    { "id": "studio_night", "top": "#2b3560", "bottom": "#5a4f8c", "pattern": "Stars", "ink": "#e8e2ff", "unlock": "start" },
+    { "id": "studio_sunburst", "top": "#fff0c2", "bottom": "#f7c070", "pattern": "Rays", "ink": "#eaa24c", "unlock": "start" },
+    { "id": "studio_tide", "top": "#d4f2ee", "bottom": "#8fd3c8", "pattern": "Waves", "ink": "#5db8aa", "unlock": "badges:hoenn" },
+    { "id": "studio_peaks", "top": "#dde6f4", "bottom": "#aebfdc", "pattern": "Hills", "ink": "#8499c2", "unlock": "badges:sinnoh" },
+    { "id": "studio_laurels", "top": "#fff6d6", "bottom": "#e9d78f", "pattern": "Leaves", "ink": "#c7ad55", "unlock": "champion:sinnoh" }
+  ],
+  "frames": [
+    { "id": "plain", "color": "#ffffff", "accent": "#d8d0bc", "style": "Plain", "unlock": "start" },
+    { "id": "studio_double", "color": "#fffdf6", "accent": "#a9987a", "style": "Double", "unlock": "start" },
+    { "id": "studio_scallop", "color": "#fff3ea", "accent": "#e0a98a", "style": "Scallop", "unlock": "start" },
+    { "id": "studio_corners", "color": "#ffffff", "accent": "#6f86b6", "style": "Corners", "unlock": "start" },
+    { "id": "studio_gilt", "color": "#fff7dc", "accent": "#d2a73c", "style": "Gilt", "unlock": "studio:gift" },
+    { "id": "studio_ribbon", "color": "#ffffff", "accent": "#d85f6a", "style": "Ribbon", "unlock": "spots:sinnoh" }
+  ]
+}

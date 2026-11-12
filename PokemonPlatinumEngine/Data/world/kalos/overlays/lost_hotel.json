@@ -52,6 +52,10 @@
   // (lost_hotel.txt)
   "npcs": [
     { "id": "hoopa", "name": "Hoopa", "npcType": "Pokemon", "species": "Hoopa", "x": 40, "y": 11, "facing": "Down", "script": "Hoopa", "hiddenBy": "FLAG_KALOS_HOOPA_GONE", "shownBy": "FLAG_KALOS_MEGA_RING_UPGRADED" }
-  ]
+  ],
   // (Plan 23 · Z4b laid the Banettite here while the Chamber of Emptiness wasn't drawn; it lies there since, as X and Y's)
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Majesthound", 190, 194 ], [ "Signalmus", 192, 196 ] ]
+  }
 }

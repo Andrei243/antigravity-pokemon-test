@@ -1,0 +1,74 @@
+{
+  "MissionGate": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Hold on! Kabu takes on challengers with two badges. Come back once you've won Nessa's Water Badge."
+      ],
+      "text": [
+        "Stai puțin! Kabu primește concurenți cu două insigne. Revino după ce câștigi Insigna Apă a lui Nessa."
+      ]
+    }
+  ],
+  "MissionVulpix": [
+    {
+      "en": [
+        "The Vulpix yipped and dashed in circles. {player} crouched down and held out a hand..."
+      ],
+      "text": [
+        "Vulpixul a chelălăit și a fugit în cerc. {player} s-a lăsat pe vine și a întins o mână..."
+      ]
+    },
+    {
+      "en": [
+        "It trotted over to be carried back to its keeper!"
+      ],
+      "text": [
+        "A venit în trap ca să fie dus înapoi la îngrijitorul lui!"
+      ]
+    }
+  ],
+  "MissionGrowlithe": [
+    {
+      "en": [
+        "The Growlithe barked and stood its ground. {player} stood just as still, and waited..."
+      ],
+      "text": [
+        "Growlithe-ul a lătrat și n-a dat înapoi. {player} a stat la fel de nemișcat și a așteptat..."
+      ]
+    },
+    {
+      "en": [
+        "It wagged its tail and followed along to its keeper!"
+      ],
+      "text": [
+        "A dat din coadă și a pornit după tine spre îngrijitorul lui!"
+      ]
+    }
+  ],
+  "MissionSizzlipede": [
+    {
+      "en": [
+        "The Sizzlipede glowed hot in the last gateway. {player} waited for it to cool, then scooped it up..."
+      ],
+      "text": [
+        "Sizzlipede-ul ardea în ultima trecere. {player} a așteptat să se răcească, apoi l-a luat în brațe..."
+      ]
+    },
+    {
+      "en": [
+        "It curled up happily and went back to its keeper. The mission is cleared!"
+      ],
+      "text": [
+        "S-a încolăcit mulțumit și s-a întors la îngrijitorul lui. Misiunea e îndeplinită!"
+      ]
+    }
+  ]
+}

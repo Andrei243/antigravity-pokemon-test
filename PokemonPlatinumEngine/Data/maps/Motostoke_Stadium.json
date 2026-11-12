@@ -75,6 +75,14 @@
       "targetX": 0,
       "targetY": 0,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 3,
+      "targetMap": "Motostoke_StadiumMission",
+      "targetX": 6,
+      "targetY": 18,
+      "targetFacing": "Up"
     }
   ],
   "signboards": [],

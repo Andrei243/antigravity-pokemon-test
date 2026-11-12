@@ -41,5 +41,10 @@
   ],
   "signs": {
     "TownSign": "Kiloude City\nThe sea begins at the end of the street."
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "surf": [ [ "Kelpdrake", 196, 200 ] ],
+    "superRod": [ [ "Reefcolony", 194, 198 ] ]
   }
 }

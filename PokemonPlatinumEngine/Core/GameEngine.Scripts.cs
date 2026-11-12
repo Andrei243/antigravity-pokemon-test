@@ -1334,6 +1334,9 @@ public partial class GameEngine
                 case ScriptScreen.PhotoBook:
                     game.OpenPhotoBook();
                     break;
+                case ScriptScreen.PhotoStudio:
+                    game.OpenStudio();
+                    break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)
                     game.OpenSalon(dye: counter != Instruction.SalonCounter);

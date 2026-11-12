@@ -1,0 +1,203 @@
+{
+  "name": "GalarMine2",
+  "displayName": "Galar Mine No. 2",
+  "bgmTrack": "galar/route1",
+  "interior": "None",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 9,
+  "height": 26,
+  "ground": [
+    "XXXXMXXXX",
+    "XXXXcXXXX",
+    "XXcccccXX",
+    "XcccccccX",
+    "XccXXcccX",
+    "XccXXccXX",
+    "XccccccXX",
+    "XXccccXXX",
+    "XXXccXXXX",
+    "XXcccccXX",
+    "XcccccccX",
+    "XcccXcccX",
+    "XcccccccX",
+    "XXcccccXX",
+    "XXXXccXXX",
+    "XXXccccXX",
+    "XXccccccX",
+    "XccccXXcX",
+    "XcccccccX",
+    "XXcccccXX",
+    "XXXcccXXX",
+    "XXcccccXX",
+    "XXcccccXX",
+    "XXXcccXXX",
+    "XXXXcXXXX",
+    "XXXXMXXXX"
+  ],
+  "solid": [
+    "####.####",
+    "####.####",
+    "##.....##",
+    "#.......#",
+    "#..##...#",
+    "#..##..##",
+    "#......##",
+    "##....###",
+    "###..####",
+    "##.....##",
+    "#.......#",
+    "#...#...#",
+    "#.......#",
+    "##.....##",
+    "####..###",
+    "###....##",
+    "##......#",
+    "#....##.#",
+    "#.......#",
+    "##.....##",
+    "###...###",
+    "##.....##",
+    "##.....##",
+    "###...###",
+    "####.####",
+    "####.####"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 0,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 25,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "galar_worker_hale",
+      "name": "Hale",
+      "npcType": "worker",
+      "x": 7,
+      "y": 3,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_worker_hale",
+        "name": "Hale",
+        "trainerClass": "Worker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Worker Hale: Water seeps into this seam from the harbour. Mind your footing, and mind my Pokémon!",
+        "dialogueAfter": "Worker Hale: Slippery, aren't you? Off you go.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_fisherman_cormac",
+      "name": "Cormac",
+      "npcType": "fisherman",
+      "x": 1,
+      "y": 12,
+      "facing": "Right",
+      "trainer": {
+        "id": "galar_fisherman_cormac",
+        "name": "Cormac",
+        "trainerClass": "Fisherman",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Fisherman Cormac: There are fish in the pools down here, if you know where to cast. Let's see what you've caught!",
+        "dialogueAfter": "Fisherman Cormac: Reeled in, I was. Motostoke's at the far end.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_yell_grunt_1",
+      "name": "Grunt",
+      "npcType": "yell_grunt",
+      "x": 6,
+      "y": 21,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_yell_grunt_1",
+        "name": "Grunt",
+        "trainerClass": "Team Yell",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Team Yell Grunt: Oi! Marnie's the only challenger who matters. You're not getting out of this mine!",
+        "dialogueAfter": "Team Yell Grunt: Fine, fine! Go on, then. Marnie'll sort you out herself!",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "bede_mine_2",
+      "name": "Bede",
+      "npcType": "bede",
+      "x": 4,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Hmph."
+      ],
+      "shownBy": "FLAG_GALAR_BEDE_IN_MINE_2"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 1,
+      "y": 9,
+      "width": 7,
+      "depth": 1,
+      "script": "BedeInMineTwo",
+      "variable": "VAR_GALAR_STORY",
+      "value": 21
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Chewtle",
+      "minLevel": 18,
+      "maxLevel": 21,
+      "weight": 25
+    },
+    {
+      "speciesName": "Wimpod",
+      "minLevel": 18,
+      "maxLevel": 21,
+      "weight": 20
+    },
+    {
+      "speciesName": "Binacle",
+      "minLevel": 18,
+      "maxLevel": 21,
+      "weight": 20
+    },
+    {
+      "speciesName": "Shellos",
+      "minLevel": 18,
+      "maxLevel": 21,
+      "weight": 15
+    },
+    {
+      "speciesName": "Croagunk",
+      "minLevel": 19,
+      "maxLevel": 21,
+      "weight": 10
+    },
+    {
+      "speciesName": "Noibat",
+      "minLevel": 19,
+      "maxLevel": 21,
+      "weight": 10
+    }
+  ]
+}

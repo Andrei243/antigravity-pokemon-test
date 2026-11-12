@@ -13,5 +13,11 @@
   // village standing in it until the Hall of Fame (pokemon_village.txt); whoever comes out of the cave steps out south of it
   "npcs": [
     { "id": "guardian", "name": "Zoroark", "npcType": "Pokemon", "species": "Zoroark", "x": 698, "y": 107, "facing": "Down", "script": "Guardian", "hiddenBy": "KalosHallOfFame" }
-  ]
+  ],
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Faerieon", 120, 124 ], [ "Lanternhusk", 198, 202 ] ],
+    "surf": [ [ "Salvoclaw", 196, 200 ] ],
+    "superRod": [ [ "Kelpdrake", 196, 200 ] ]
+  }
 }
