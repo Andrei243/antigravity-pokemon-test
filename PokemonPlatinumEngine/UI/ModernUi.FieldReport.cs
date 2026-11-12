@@ -45,8 +45,19 @@ internal static partial class ModernUi
             ReportIcon(species, middle, r * 1.9f);
         }
         foreach (var told in report.Outbreaks) Mark(told.Outbreak.Area, told.Outbreak.Species, Gold);
+        // The hour's rift (plan 38 · EX5): a violet ring round its place's cells, and its tear in the middle
+        if (report.Rift is { } rift)
+            foreach (var (x, y) in CellsOf(state, rift.Area))
+            {
+                var c = centreOf(x, y);
+                UiShapes.Ring(c, cell * 0.5f + 1f, 4f, Color.White);
+                UiShapes.Ring(c, cell * 0.5f - 2f, 3f, RiftViolet with { A = (byte)(170 + 85 * breath) });
+            }
         if (report.Visitor is { } visitor) Mark(visitor.Area, visitor.Species, Blue);
     }
+
+    /// <summary>The rift's colour on the report: a violet of its own.</summary>
+    private static readonly Color RiftViolet = new(150, 96, 220, 255);
 
     /// <summary>A species' menu icon fitted into a square of the given size, its middle at the point.</summary>
     private static void ReportIcon(string species, Vector2 c, float size)
@@ -89,10 +100,31 @@ internal static partial class ModernUi
         {
             int minutes = Math.Max(1, (int)MathF.Ceiling(visitor.SecondsLeft / 60f));
             Row(visitor.Species, FieldReport.PlaceName(report.Region, visitor.Area), Blue, Text.Of("townMap.report.minutes", ("count", minutes)), y);
-            return;
+            y += 92;
         }
-        string say = Text.Of($"townMap.report.scan.{report.Scan}");
-        DrawWrapped(say, x0, y + 6, wide, 30, report.Scan == ScanState.Ready ? Ink : Muted, 42, UiWeight.ExtraBold);
+        else
+        {
+            string say = Text.Of($"townMap.report.scan.{report.Scan}");
+            DrawWrapped(say, x0, y + 6, wide, 30, report.Scan == ScanState.Ready ? Ink : Muted, 42, UiWeight.ExtraBold);
+            y += 6 + 42 * Wrap(say, wide, 30).Count + 10;
+        }
+        // The hour's rift (plan 38 · EX5): its place and the hour it closes at
+        if (report.Rift is { } rift)
+        {
+            y += 14;
+            UiShapes.Fill(new Rectangle(x0, y, wide, 3), 1.5f, Rule);
+            y += 26;
+            Label(Text.Of("townMap.report.rift"), x0, y);
+            y += 36;
+            var c = new Vector2(x0 + 34, y + 34);
+            UiShapes.Circle(c, 34, RiftViolet);
+            UiShapes.Circle(c, 20, Color.White);
+            UiShapes.Circle(c, 12, RiftViolet);
+            UiFonts.Draw(FieldReport.PlaceName(report.Region, rift.Area), x0 + 84, y + 14, 34, Ink, UiWeight.Black);
+            string until = Text.Of("townMap.report.riftUntil", ("hour", report.RiftUntil));
+            float tagWidth = UiFonts.Measure(until, 22, UiWeight.Black) + 28;
+            Tag(x0 + wide - tagWidth, y + 14, until, RiftViolet);
+        }
 
         void Row(string species, string place, Color colour, string count, float top)
         {
@@ -115,6 +147,8 @@ internal static partial class ModernUi
         UiShapes.Ring(new Vector2(lx, sy0), 10, 4f, Gold);
         lx = Legend(Text.Of("townMap.report.legendOutbreak"), lx + 20, sy0);
         UiShapes.Ring(new Vector2(lx, sy0), 10, 4f, Blue);
-        Legend(Text.Of("townMap.report.legendVisitor"), lx + 20, sy0);
+        lx = Legend(Text.Of("townMap.report.legendVisitor"), lx + 20, sy0);
+        UiShapes.Ring(new Vector2(lx, sy0), 10, 4f, RiftViolet);
+        Legend(Text.Of("townMap.report.legendRift"), lx + 20, sy0);
     }
 }

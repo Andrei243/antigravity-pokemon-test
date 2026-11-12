@@ -64,7 +64,9 @@ public partial class GameEngine
             PowerType = flow.Powers.TypeOf(PowerKind.TypeEncounter),
             PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter),
             // The visitor a scan called up, for its hour (plan 38 · EX2)
-            Visitor = VisitorNow()
+            Visitor = VisitorNow(),
+            // The hour's rift's table within its reach (plan 38 · EX5)
+            Rift = RiftHere()
         };
     }
 

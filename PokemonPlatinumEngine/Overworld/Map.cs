@@ -1685,6 +1685,13 @@ public class Map
         if (moment?.State is { } state && feebas.Area == area.Key
             && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))
             table = Overworld.Feebas.Table(feebas.Species, table);
+        // Route 119's Feebas, Hoenn's own (plan 38 · EX4): six tiles of its water a day, one cast in two onto one
+        else if (moment?.State is { } hoennState && area.Key == HoennFeebas.Area
+            && RegionDatabase.RegionOfMap(Name)?.Id == RegionDatabase.Hoenn
+            && HoennFeebas.Bites(HoennFeebas.WaterOf(this), hoennState.DailyNumber, x, y, rng))
+            table = HoennFeebas.Table(table);
+        // Within an hour's rift's reach the rod hooks its water species (plan 38 · EX5)
+        if (moment?.Rift is { Water.Count: > 0 } rift) table = Rifts.Water(table, rift);
         return WildEncounterRules.Meet(table, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng);
     }
 

@@ -523,6 +523,9 @@ internal sealed partial class FieldLife
 
     private readonly List<Lit> effects = new();
 
+    /// <summary>Whether an effect of a kind is lit on a tile now (plan 38 · EX5: a rift lit again once a place change has cleared it).</summary>
+    public bool HasEffect(SceneEffect kind, int x, int y) => effects.Exists(e => e.Kind == kind && e.X == x && e.Y == y && e.Ends > Now);
+
     public int EffectCount => effects.Count;
 
     /// <summary>

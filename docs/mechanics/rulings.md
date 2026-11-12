@@ -10075,6 +10075,24 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
 - **Glints** (EX3; `Overworld/Glints.cs`, the options' HIDDEN ITEMS GLINT row, `GameSettings.ItemGlints`, a `RulesDefault` on under the
   modern rules: decision 5). A hidden item not yet found within **three** tiles of the player glints once every **two** seconds of the
   field's clock, never in a room. It is found as ever, by looking at its tile.
+- **Rifts in the field** (EX5, 2026-11-12; `Overworld/Rifts.cs`, after Legends: Arceus's space-time distortions, the content ours).
+  Not the rift to Hisui nor Spear Pillar's: only the picture `SceneEffect.Rift` is shared. Once a region's Hall of Fame is entered
+  (decision 1) and where `Data/rifts.json` has a table (Sinnoh, Kanto, Johto, Hoenn, Unova), **one hour in three** of the clock has a
+  rift, worked out by `SplitMix` from the day's number, the hour and the region, never drawn: its place is one that can have an outbreak
+  and has none that day, its centre one of that place's tall-grass tiles. It lasts the hour and is gone on the next, so a save made in
+  one loads into it within its hour. **Within twelve tiles** of its centre (either way) the grass's slots 0 to 5 (eighty meetings in a
+  hundred) are the rift's species, in its table's order and round again, and every rod hooks its water species, all at the table's
+  levels (the region's own game's, mapped in a crossed region); what is met out of it has **one shiny roll more**, drawn only then.
+  The order of what lays over a table: the swarm, the radio, the outbreak, the visitor, then the rift over all of these in its reach,
+  then the second slot's and ours. **Three finds** lie on walkable ground of its place within four tiles of its centre, items of the
+  table's list: they are hidden items (found by looking at the tile, shown by the glint) under the daily flags
+  `FLAG_DAILY_RIFT_FIND_1` to `_3`, so three a day are taken in all, whichever rifts they lie in. A toast tells as one opens and closes;
+  the Town Map's report marks it.
+- **Route 119's Feebas** (EX4, 2026-11-12; `HoennFeebas` in `Overworld/FieldPoison.cs`). Emerald hides Feebas under six tiles of the
+  route's water, chosen from its trend; **the pinned pokeemerald's sparse cache holds none of its fishing code**, so the rule is ours on
+  that shape: the day's six tiles of the route's surfable water (row by row), worked out by `SplitMix` from the day's number (Dewford's
+  trend isn't kept); a cast with any rod onto one hooks Feebas **one time in two** (the one draw, made only on those tiles), at levels
+  20 to 25, in every slot of the rod's table. `HoennSpeciesTests.Owed` no longer lists Feebas and Milotic.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)

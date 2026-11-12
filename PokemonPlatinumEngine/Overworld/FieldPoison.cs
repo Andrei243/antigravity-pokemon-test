@@ -103,3 +103,56 @@ public static class Feebas
     public static List<WildEncounterEntry> Table(string species, IReadOnlyList<WildEncounterEntry> rod) =>
         rod.Select(slot => new WildEncounterEntry { SpeciesName = species, MinLevel = MinLevel, MaxLevel = MaxLevel, Weight = slot.Weight }).ToList();
 }
+
+/// <summary>
+/// Route 119's Feebas (plan 38 · EX4; <c>docs/mechanics/rulings.md</c>, "The field beyond the tables"): Emerald hides Feebas
+/// under six tiles of the route's water, chosen afresh as its trend changes. The pinned decompilation's sparse cache holds
+/// none of Emerald's fishing code, so the rule is ours on that shape: the day's <see cref="Count"/> tiles of the route's
+/// water (every surfable tile of the area, row by row), worked out from the day's number by <see cref="Core.SplitMix"/>
+/// (Dewford's trend isn't kept, so the day's number stands in for its seed); a cast with any rod onto one hooks Feebas one
+/// time in two, at <see cref="MinLevel"/> to <see cref="MaxLevel"/>. GPU-free.
+/// </summary>
+public static class HoennFeebas
+{
+    /// <summary>The area Feebas lives in.</summary>
+    public const string Area = "route_119";
+
+    public const string Species = "Feebas";
+
+    /// <summary>How many of the route's water tiles hide it on a day.</summary>
+    public const int Count = 6;
+
+    public const int MinLevel = 20, MaxLevel = 25;
+
+    private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Map, List<(int X, int Y)>> water = new();
+
+    /// <summary>Every surfable tile of the route on a map, row by row; empty where the map doesn't hold it.</summary>
+    public static IReadOnlyList<(int X, int Y)> WaterOf(Map map) => water.GetValue(map, m =>
+    {
+        var tiles = new List<(int X, int Y)>();
+        for (int y = 0; y < m.Height; y++)
+            for (int x = 0; x < m.Width; x++)
+                if (TileBehaviors.IsSurfable(m.BehaviourAt(x, y)) && m.AreaAt(x, y)?.Key == Area) tiles.Add((x, y));
+        return tiles;
+    });
+
+    /// <summary>The day's tiles: <see cref="Count"/> of the water, each a different one, by the day's number.</summary>
+    public static IReadOnlyList<(int X, int Y)> TilesToday(IReadOnlyList<(int X, int Y)> water, uint dailyNumber)
+    {
+        var chosen = new List<(int X, int Y)>();
+        for (uint n = 0; chosen.Count < Count && chosen.Count < water.Count && n < 64; n++)
+        {
+            var tile = water[(int)(Core.SplitMix.Mix(dailyNumber, 0xFEEB119u, n) % (uint)water.Count)];
+            if (!chosen.Contains(tile)) chosen.Add(tile);
+        }
+        return chosen;
+    }
+
+    /// <summary>Whether a cast onto a tile hooks Feebas: only onto one of the day's tiles, and then one time in two (its one draw).</summary>
+    public static bool Bites(IReadOnlyList<(int X, int Y)> water, uint dailyNumber, int x, int y, Random rng) =>
+        TilesToday(water, dailyNumber).Contains((x, y)) && rng.Next(2) == 1;
+
+    /// <summary>The table a cast onto one of the day's tiles fishes from: Feebas in every slot of the rod's, at its levels.</summary>
+    public static List<WildEncounterEntry> Table(IReadOnlyList<WildEncounterEntry> rod) =>
+        rod.Select(slot => new WildEncounterEntry { SpeciesName = Species, MinLevel = MinLevel, MaxLevel = MaxLevel, Weight = slot.Weight }).ToList();
+}

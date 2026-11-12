@@ -13,7 +13,8 @@ public partial class GameEngine
 {
     /// <summary>What the region the player is in has today; null before its Hall of Fame is entered.</summary>
     internal FieldReport? FieldReportNow() =>
-        FieldReport.Of(Here, flow.Story, flow.Encounters, flow.Pokedex.NationalUnlocked, GameClock.Today, Swarms.PlaceToday(flow.Encounters, Here.Id)?.Area);
+        FieldReport.Of(Here, flow.Story, flow.Encounters, flow.Pokedex.NationalUnlocked, GameClock.Today, Swarms.PlaceToday(flow.Encounters, Here.Id)?.Area)
+            ?.WithRift(RiftNow(), System.Math.Clamp((int)GameClock.Hour, 0, 23));
 
     /// <summary>The visitor out in the region the player is in, for the moment's grass; null where none is.</summary>
     private VisitorCall? VisitorNow() =>

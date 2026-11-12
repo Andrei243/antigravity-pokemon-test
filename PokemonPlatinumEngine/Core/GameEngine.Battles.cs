@@ -46,6 +46,8 @@ public partial class GameEngine
         // The day's outbreak: one more shiny roll from thirty of its species met in its place and two from sixty, drawn only
         // then (plan 38 · EX1); an outbreak of the region's own game also gives its Pokémon its moves, drawing nothing
         if (!entry.Shiny && OutbreakRolls(area, entry.SpeciesName) is > 0 and var outbreakRolls) wild.RerollForShiny(rng, outbreakRolls, entry.Gender, entry.Nature);
+        // An hour's rift: one shiny roll more for what is met out of it, drawn only then (plan 38 · EX5)
+        if (!entry.Shiny && entry.Rift) wild.RerollForShiny(rng, Overworld.Rifts.ShinyRolls, entry.Gender, entry.Nature);
         // The chain of hooks on a rod: two rolls more for each hook of the species before it at the spot, drawn only then (plan 38 · EX3)
         if (!entry.Shiny && hookRolls > 0) wild.RerollForShiny(rng, hookRolls, entry.Gender, entry.Nature);
         if (entry.Moves is { Count: > 0 } outbreakMoves) Overworld.Outbreaks.GiveMoves(wild, outbreakMoves);

@@ -1384,6 +1384,8 @@ public partial class GameEngine
                 TickMissions(dt);
                 // The visitor's hour (plan 38 · EX2)
                 TickVisitor(dt);
+                // The hour's rift laid in its ground and taken away (plan 38 · EX5)
+                KeepTheRift();
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);

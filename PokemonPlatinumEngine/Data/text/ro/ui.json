@@ -1977,7 +1977,10 @@
       "hintMap": "Hartă",
       "hintScan": "Caută",
       "legendOutbreak": "Invazie",
-      "legendVisitor": "Vizitator"
+      "legendVisitor": "Vizitator",
+      "rift": "RUPTURĂ",
+      "riftUntil": "până la {hour}:00",
+      "legendRift": "Ruptură"
     },
     "title": { "Item": "HARTA REGIUNII", "Fly": "ZBOR", "Wall": "HARTĂ", "Card": "CARDUL HĂRȚII" },
     "flyTo": "Unde zbori?",
@@ -2001,6 +2004,10 @@
     "streak": "ȘIR",
     "hooks": "AGĂȚATE",
     "steps": "PAȘI"
+  },
+  "riftToast": {
+    "opened": "S-a deschis o ruptură pe {place}! Se închide în ora asta.",
+    "closed": "Ruptura de pe {place} s-a închis."
   },
   "visitorToast": {
     "came": "Căutarea a găsit un {name} în {place}! Rămâne o oră.",

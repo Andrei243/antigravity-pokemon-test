@@ -1658,7 +1658,10 @@
       "hintMap": "Map",
       "hintScan": "Scan",
       "legendOutbreak": "Outbreak",
-      "legendVisitor": "Visitor"
+      "legendVisitor": "Visitor",
+      "rift": "RIFT",
+      "riftUntil": "until {hour}:00",
+      "legendRift": "Rift"
     }
   },
   "field": {
@@ -1667,6 +1670,10 @@
     "streak": "STREAK",
     "hooks": "HOOKS",
     "steps": "STEPS"
+  },
+  "riftToast": {
+    "opened": "A rift has opened on {place}! It will close within the hour.",
+    "closed": "The rift on {place} has closed."
   },
   "visitorToast": {
     "came": "The scan picked up {name} in {place}! It will stay for an hour.",
