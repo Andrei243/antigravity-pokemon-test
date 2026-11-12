@@ -252,6 +252,18 @@
       "dialog": [
         "The market's the busiest in the region on a good day. Everything you can think of, from all over Galar and beyond."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 15,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

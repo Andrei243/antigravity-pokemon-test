@@ -63,6 +63,24 @@
           "Misiunea lui Nessa e numai despre apă. Roagă fiecare paznic de stăvilar să tragă maneta și ferește-te de antrenorii arenei!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}

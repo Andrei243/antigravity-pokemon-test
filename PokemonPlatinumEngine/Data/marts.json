@@ -776,6 +776,21 @@
       "Lemonade",
       "Sweet Heart"
     ],
+    "festival_garland": [
+      "Big Malasada",
+      "Soda Pop",
+      "Fresh Water"
+    ],
+    "festival_wool_fair": [
+      "Moomoo Milk",
+      "Sweet Heart",
+      "Lemonade"
+    ],
+    "festival_sheaf_feast": [
+      "Honey",
+      "Old Gateau",
+      "Moomoo Milk"
+    ],
     "training_hall_machines": [
       "TM93",
       "TM94",

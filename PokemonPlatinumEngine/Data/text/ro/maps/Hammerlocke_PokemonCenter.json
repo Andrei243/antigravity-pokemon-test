@@ -63,6 +63,24 @@
           "Din gara din Hammerlocke pleacă trenuri în tot Galarul, dar provocarea arenelor se face pe jos. Spre vest, dincolo de poartă, e Ruta 6."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}

@@ -18,7 +18,7 @@ public class GatheringTests
     {
         "mars_gathering", "jupiter_gathering", "cyrus_gathering", "archer_gathering", "ariana_gathering", "giovanni_gathering",
         "tabitha_gathering", "shelly_gathering", "maxie_gathering", "archie_gathering", "zinzolin_gathering", "ghetsis_gathering",
-        "xerosic_gathering", "celosia_gathering", "lysandre_gathering", "ismene_gathering"
+        "xerosic_gathering", "celosia_gathering", "lysandre_gathering", "plumeria_gathering", "guzma_gathering", "ismene_gathering"
     };
 
     [Fact]
@@ -48,6 +48,12 @@ public class GatheringTests
         Assert.Contains(keep.NPCs, n => n.Key == "cyrus");
         Assert.DoesNotContain(keep.NPCs, n => n.Key == "giovanni");
         Assert.DoesNotContain(keep.NPCs, n => n.Key == "lysandre");
+        // Alola's bay (the seventh, Team Skull's) stands only for a Champion of Alola
+        Assert.DoesNotContain(keep.NPCs, n => n.Key == "guzma");
+        story.Set(RegionDatabase.Get(RegionDatabase.Alola)!.StoryCompleteFlag);
+        keep.ApplyPresence(story.Has);
+        Assert.Contains(keep.NPCs, n => n.Key == "guzma");
+        Assert.Contains(keep.NPCs, n => n.Key == "plumeria");
     }
 
     [Fact]

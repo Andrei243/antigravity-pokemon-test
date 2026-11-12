@@ -18,7 +18,10 @@ partial class Harness
     //   gf89_bridgelight: Castelia's plaza lit after dark on 3 February (Unova);
     //   gf8a_christmas: Jubilife City's park on 25 December with its decorated pine (Sinnoh's holidays);
     //   gf8b_easter, gf8c_new_year, gf8d_valentine: the other three in Celadon's park, Kanto's holidays;
-    //   gf8e_serenade, gf8f_serenade_after_dark, gf8g_serenade_east: Kalos's Solstice Serenade in Lumiose's two parks on 21 June.
+    //   gf8e_serenade, gf8f_serenade_after_dark, gf8g_serenade_east: Kalos's Solstice Serenade in Lumiose's two parks on 21 June;
+    //   gf8h_garland, gf8i_garland_after_dark: Alola's Garland Days in Hau'oli City's plaza on 9 August;
+    //   gf8j_wool_fair: Galar's Wool Fair inside Wedgehurst's Pokémon Center on 2 May;
+    //   gf8k_sheaf_feast: Hisui's Sheaf Feast on Jubilife Village's training ground on 23 September.
     // It prints the festivals on each day and how many of each town's festival things stand on its map.
     void GiftsFestivals()
     {
@@ -106,6 +109,16 @@ partial class Harness
         Day(2026, 6, 21, night: true);
         Look("gf8f_serenade_after_dark", "Kalos", 337, 360, Direction.Down);
         Look("gf8g_serenade_east", "Kalos", 382, 366, Direction.Up);
+
+        // Alola's Garland Days, Galar's Wool Fair (inside Wedgehurst's Pokémon Center) and Hisui's Sheaf Feast
+        Day(2026, 8, 9, night: false);
+        Look("gf8h_garland", "Melemele", 285, 174, Direction.Up);
+        Day(2026, 8, 9, night: true);
+        Look("gf8i_garland_after_dark", "Melemele", 285, 174, Direction.Up);
+        Day(2027, 5, 2, night: false);
+        Look("gf8j_wool_fair", "Wedgehurst_PokemonCenter", 8, 10, Direction.Up);
+        Day(2026, 9, 23, night: false);
+        Look("gf8k_sheaf_feast", "JubilifeVillage", 69, 33, Direction.Up);
 
         // The harness's day and the day's light back
         GameClock.FixedDate = harnessDay;
