@@ -190,6 +190,8 @@ public enum Op
     WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
     // The later games' battle places (plan 37 · FC2): one command for all of them, `facility <place> <word> [what]`
     Facility,
+    // The powers (plan 36 · TR8): a teacher's kinds learned at a level by the Halls of Fame entered, or one granted outright
+    Power,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

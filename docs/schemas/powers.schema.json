@@ -45,6 +45,35 @@
         ],
         "additionalProperties": false
       }
+    },
+    "chargeMost": {
+      "type": "integer"
+    },
+    "stepsPerCharge": {
+      "type": "integer"
+    },
+    "teachers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "enum": [
+            "Exp",
+            "Effort",
+            "Money",
+            "Bargain",
+            "Catch",
+            "Encounter",
+            "Stealth",
+            "Hatch",
+            "TypeEncounter",
+            "Materials"
+          ]
+        }
+      }
     }
   },
   "required": [

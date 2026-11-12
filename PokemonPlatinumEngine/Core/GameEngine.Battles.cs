@@ -294,7 +294,9 @@ public partial class GameEngine
         // What a critical capture's chance is read by, and the two charms a battle reads (plan 40 · GE5)
         CaughtSpecies = flow.Pokedex.CaughtCount,
         CatchingCharm = Charms.Held(flow.Bag, Charms.Catching),
-        ExpCharm = Charms.Held(flow.Bag, Charms.Exp)
+        ExpCharm = Charms.Held(flow.Bag, Charms.Exp),
+        // The powers in force as it begins (plan 36 · TR7): fixed for the battle, whatever wears off meanwhile
+        Powers = flow.Powers.ForBattle() is { IsEmpty: false } powers ? powers : null
     };
 
     /// <summary>The weather where the player stands: the open map's area's in an open map (plan 32 · OW7), the grid map's otherwise.</summary>

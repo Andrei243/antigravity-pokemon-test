@@ -923,7 +923,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             if (TrainingGrade is { } grade && EffortDrills.WhyNot(p, TrainingStat) == null)
             {
                 int gained = EffortDrills.Award(p, TrainingStat, grade);
-                Training?.Record(TrainingStat, grade == DrillGrade.Gold ? 200 : grade == DrillGrade.Silver ? 100 : 10, grade);
+                bool orb = ItemDatabase.Get("Tera Orb") is { } teraOrb && Bag.GetQuantity(teraOrb) > 0;
+                Training?.Record(TrainingStat, grade == DrillGrade.Gold ? 200 : grade == DrillGrade.Silver ? 100 : 10, grade, orb ? TeraChange.ShardOf(p.PrimaryType) : null);
                 Answer = (int)grade + 1;
                 Log[^1] = $"open {screen} {p.Species.Name} {TrainingStat} {grade} +{gained}";
             }

@@ -78,18 +78,6 @@
     }
   ],
   "specialties": {
-    "royal_megamart": [
-      "Quick Ball",
-      "Dusk Ball",
-      "Timer Ball",
-      "Repeat Ball",
-      "Nest Ball",
-      "Net Ball",
-      "Dive Ball",
-      "Luxury Ball",
-      "Max Repel",
-      "Revive"
-    ],
     "jubilife": [
       "Air Mail",
       "Heal Ball"
@@ -536,42 +524,6 @@
       "Dusk Stone",
       "Dawn Stone"
     ],
-    "lumiose_stones": [
-      "Fire Stone",
-      "Water Stone",
-      "Leaf Stone",
-      "Thunder Stone",
-      "Moon Stone",
-      "Sun Stone",
-      "Shiny Stone",
-      "Dusk Stone",
-      "Dawn Stone"
-    ],
-    "lumiose_balls": [
-      "Poké Ball",
-      "Great Ball",
-      "Ultra Ball",
-      "Net Ball",
-      "Dive Ball",
-      "Nest Ball",
-      "Repeat Ball",
-      "Timer Ball",
-      "Luxury Ball",
-      "Quick Ball",
-      "Dusk Ball",
-      "Heal Ball",
-      "Premier Ball"
-    ],
-    "lumiose_herbs": [
-      "Energy Powder",
-      "Energy Root",
-      "Heal Powder",
-      "Revival Herb"
-    ],
-    "lumiose_trades": [
-      "Linking Cord",
-      "Everstone"
-    ],
     "join_avenue_vitamins": [
       "HP Up",
       "Protein",
@@ -719,6 +671,54 @@
       "Jolly Mint",
       "Naive Mint",
       "Serious Mint"
+    ],
+    "lumiose_stones": [
+      "Fire Stone",
+      "Water Stone",
+      "Leaf Stone",
+      "Thunder Stone",
+      "Moon Stone",
+      "Sun Stone",
+      "Shiny Stone",
+      "Dusk Stone",
+      "Dawn Stone"
+    ],
+    "lumiose_balls": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Net Ball",
+      "Dive Ball",
+      "Nest Ball",
+      "Repeat Ball",
+      "Timer Ball",
+      "Luxury Ball",
+      "Quick Ball",
+      "Dusk Ball",
+      "Heal Ball",
+      "Premier Ball"
+    ],
+    "lumiose_herbs": [
+      "Energy Powder",
+      "Energy Root",
+      "Heal Powder",
+      "Revival Herb"
+    ],
+    "lumiose_trades": [
+      "Linking Cord",
+      "Everstone"
+    ],
+    "royal_megamart": [
+      "Quick Ball",
+      "Dusk Ball",
+      "Timer Ball",
+      "Repeat Ball",
+      "Nest Ball",
+      "Net Ball",
+      "Dive Ball",
+      "Luxury Ball",
+      "Max Repel",
+      "Revive"
     ],
     "training_hall_machines": [
       "TM93",

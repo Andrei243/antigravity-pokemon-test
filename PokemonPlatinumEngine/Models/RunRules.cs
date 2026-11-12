@@ -60,6 +60,12 @@ public sealed record RunRules
     public bool NoLaterMechanics { get; init; }
 
     /// <summary>
+    /// No powers (plan 36 · TR7): the Power Watch uses none and takes no free one (<see cref="PowerState.WhyNot"/>), refused at
+    /// the watch's panel alone. False in every save from before it, so no version was raised.
+    /// </summary>
+    public bool NoPowers { get; init; }
+
+    /// <summary>
     /// The shiny odds as 1 in this many: 0 for the rules' own (what Normal keeps, so nothing moves), else 4096, 1024 or 512
     /// (V5 reads it).
     /// </summary>
@@ -122,7 +128,7 @@ public sealed record RunRules
     public static readonly string[] RuleNames =
     {
         "nuzlocke", "monotype", "solo", "noitems", "nocenter", "nocatching", "norunning", "set", "shinyodds", "challenge", "easy", "levelcap",
-        "nolatermechanics", "remix"
+        "nolatermechanics", "nopowers", "remix"
     };
 
     /// <summary>Whether the run has a rule on, by its script word (<see cref="RuleNames"/>); false for a word it doesn't know.</summary>
@@ -141,6 +147,7 @@ public sealed record RunRules
         "easy" => Difficulty == Difficulty.Easy,
         "levelcap" => LevelCap,
         "nolatermechanics" => NoLaterMechanics,
+        "nopowers" => NoPowers,
         "remix" => Remix,
         _ => false
     };

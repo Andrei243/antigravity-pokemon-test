@@ -15466,6 +15466,11 @@ way -
   TV> "It's 10:00 on Monday, and this is the time check!"
   TV> "Good morning! The dew is still on the grass, and the Pokémon are waking up."
   TV> "That was the time check. Stay tuned!"
+=== common.TeraKeeper
+from a trainer with lines of their own
+way -
+  Anyone> I'm the club's Tera keeper. With a Tera Orb, fifty Tera Shards of a type can change the type a Pokémon takes when it Terastallizes.
+  Anyone> You don't seem to have a Tera Orb. Come and see me if you ever get one.
 === common.TimedPeople
 from a trainer with lines of their own
 way -
@@ -15577,6 +15582,10 @@ way 1.1, from answer 2
 from a trainer with lines of their own
 way -
   Club Clerk> I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!
+=== common.TrainingTeacher
+from a trainer with lines of their own
+way -
+  Anyone> I teach powers: boosts that last a while, to EXP and the like. But only to Champions. Come back once you've entered a Hall of Fame.
 === common.TrainingTutor
 from a trainer with lines of their own
 way -

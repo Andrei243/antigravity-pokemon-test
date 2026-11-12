@@ -129,6 +129,26 @@
           "Vânzătoarea"
         ]
       }
+    },
+    "lilycove_city_department_store_1f.TrainingTeacher": {
+      "name": {
+        "en": [
+          "Teacher Coral"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lilycove_city_department_store_1f.TeraKeeper": {
+      "name": {
+        "en": [
+          "Tera Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

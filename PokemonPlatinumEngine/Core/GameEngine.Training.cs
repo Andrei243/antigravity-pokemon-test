@@ -17,8 +17,15 @@ public partial class GameEngine
     {
         if (place < 0 || place >= flow.Party.Count) return;
         flow.State = GameState.Training;
+        flow.TrainingScreen.HoldsTeraOrb = HoldsTeraOrb;
         flow.TrainingScreen.Open(flow.Party.Members[place], flow.Training, fieldRandom);
     }
+
+    /// <summary>The key item of Terastallization (plan 36 · TR5): what the Tera keeper, the drills' shards and the summary's Tera pill wait for.</summary>
+    public const string TeraOrbItem = "Tera Orb";
+
+    /// <summary>Whether the bag holds the Tera Orb.</summary>
+    internal bool HoldsTeraOrb => Data.ItemDatabase.Get(TeraOrbItem) is { } orb && flow.Bag.GetQuantity(orb) > 0;
 
     private void UpdateTraining(float dt)
     {

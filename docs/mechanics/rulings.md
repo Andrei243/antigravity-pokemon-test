@@ -10850,6 +10850,60 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   flag (`FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST`, `_MIDDLE`, `_EAST`) cleared by the new day. Nothing marks them yet:
   plan 38 · EX3's glints will.
 
+## Tera Shards and the Tera keeper (2026-11-12, plan 36 · TR5)
+
+- **The shards**: Scarlet and Violet's eighteen Tera Shards are brought in by name from PokeAPI's items (ids 1678 to
+  1695, the importer's `LaterItemsByName`), the Stellar Tera Shard is a row of ours (id 9700, the first of plan 36's
+  hundred), all in the Items pocket at a price of ours (500) with words of ours. Fifty of a type turn a Pokémon's Tera
+  Type to that type (Scarlet's number), the Stellar ones to Stellar (`Models/TeraChange.cs`): refused for an Egg, for
+  Ogerpon and Terapagos (`TeraType.ForcedFor`), for the type it has already and for too few shards. The type is
+  `Pokemon.TeraType`, saved as it always was, and a battle's Terastallization takes it.
+- **The keeper** (`common.TeraKeeper`, `train tera check`, `train tera`): the training club's Tera keeper stands in every
+  hall built (Sunyshore's, Laverre's, and the four department stores' corners) **always**, rather than appearing once the
+  bag holds a Tera Orb, as decision 6 has it: no flag says the orb is held, and a person shown by the bag would need one.
+  Without the orb she says what she does and changes nothing. Her question lists the types the Pokémon may take, each
+  with the shards held of it.
+- **Where the shards come from before Paldea's raids**: a gold in the drills, every fifth gold with a Tera Orb in the bag,
+  earns a shard of the trainee's own first type, which the coach hands over (`drillPrizes.teraShardEvery`, kept in the
+  records as `ShardsOwed` until handed); the club's clerk at a Battle Points counter trades every shard for two points
+  once the orb is held (`training.json`'s `teraShards`, `frontier prize tera`), so a change of type is a hundred points.
+  Plan 34 · PD7's Tera Raids pay in these shards when they are built.
+- **On INFO**: the Tera Type as a pill while the bag holds a Tera Orb (the orb is a key item, so held once is held
+  always), in the team's and the PC's summaries.
+
+## Powers (2026-11-12, plan 36 · TR7, TR8; the camp's part since 2026-11-09, plan 39 · CR6)
+
+- **The rule** (`Models/Powers.cs`): `PowerKind`'s eight of plan 36 and the camp's two; one of each in force at once, a
+  new one replacing the old, Encounter and Stealth putting each other out; ten minutes of play, counted down from the
+  frames' `dt`, never the wall clock. `Grant` is the one door every source goes through (the watch, today's free power,
+  the camp's dishes, a script's `power grant`).
+- **The numbers** (`Data/powers.json`, ours, from the old games' first ones): EXP +20, +50, +100 hundredths; effort +50,
+  +100, +200 hundredths of each stat's yield; prize money +50, +100, +200; the species' catch rate +10, +25, +50 (to 255
+  at most); prices -10, -25, -50 (never under one); a step's flat chance ±10, 20, 30; 1, 2, 3 more cycles off an Egg.
+- **One reader each**: EXP in `BattleCore.Give`, after affection's fifth and before a crossed region's half (the order of
+  "The charms, critical captures and EXP for a catch"); effort in `EffortRules.Gain`, added to the yield before a Power
+  item, Pokérus and the Macho Brace; money last in `BattleCore.PrizeMoney`; catching on the species' rate in
+  `CatchCalculator.Throw`, after a ball's own changes to it; prices in `ShopScreen.PriceOf`, after Easy's quarter (a
+  counter for points is never changed). **The battle's four ride on `BattleConditions.Powers`** (a `PowerSet` of plain
+  hundredths, fixed as the battle begins and kept by `RecordedConditions`, so a replay and the Vs. Recorder agree), not on
+  `CoreSetup` as well: the battle's conditions already reach the core, the screen and the file together. A power that
+  wears off mid-battle lasts to its end. The run's cap and a crossed region's ceiling come after every factor.
+- **The charge**: ten points at most, a point every 200 steps walked with the Power Watch in the bag (`OnStep`); a power
+  costs its level. Walking before the watch is had banks nothing.
+- **Today's free power**: one of the kinds learned, at level one or two (never past the level learned), worked out from
+  the day's number (`SpecialEncounters.DailyNumber`) by `SplitMix`, never `Dice`, so it is the same all day and moves no
+  draw; taken once a day from the watch (`PowersSave.FreeTaken` keeps the day's number).
+- **Learned from the teachers** (`common.TrainingTeacher`, `power learn`): each region's hall teacher teaches its kinds
+  (`powers.json`'s `teachers`: Sinnoh's EXP, Prize, Encounter and Stealth; Kanto's Catching; Johto's Hatching; Hoenn's
+  Bargain; Unova's Effort) once any Hall of Fame is entered, at level one with one Hall of Fame, two with two or three,
+  three with four or more; going back after another raises what is known. The first lesson hands over the Power Watch.
+  Kalos's hall in Laverre City has no teacher: the plan gives Kalos no kind, and plan 23 places one if it wants.
+- **NO POWERS** (`RunRules.NoPowers`, a row of the run's panel and the script word `nopowers`): the watch refuses every
+  use and offers no free power, and refuses at the watch alone (plan 36's decision): a dish at the camp still grants its
+  own, as a meal is no power used from the watch.
+- **On screen**: the watch's panel (key item, field use `PowerWatch`, registrable), the chips over the field at the left
+  and the toast as one wears off (style guide, "The Power Watch").
+
 ## The later regions' Champion ribbons (2026-11-09, plan 41 · EG2, its ribbons)
 
 - **Four rows of ours after Platinum's eighty** (`RIBBON_KALOS_CHAMPION`, `_ALOLA_`, `_GALAR_`, `_PALDEA_`; names

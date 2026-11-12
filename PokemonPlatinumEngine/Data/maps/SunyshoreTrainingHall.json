@@ -159,6 +159,24 @@
       "y": 3,
       "facing": "Down",
       "script": "TrainingTutor"
+    },
+    {
+      "id": "training_teacher",
+      "name": "Teacher Oren",
+      "npcType": "training_teacher",
+      "x": 3,
+      "y": 8,
+      "facing": "Right",
+      "script": "TrainingTeacher"
+    },
+    {
+      "id": "tera_keeper",
+      "name": "Tera Keeper",
+      "npcType": "tera_keeper",
+      "x": 12,
+      "y": 7,
+      "facing": "Left",
+      "script": "TeraKeeper"
     }
   ],
   "wildEncounters": []

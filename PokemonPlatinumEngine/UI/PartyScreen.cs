@@ -642,7 +642,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor, MoveSelection, heldAt: RunCap);
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor, MoveSelection, heldAt: RunCap, tera: View.ShowsTera);
         }
         else if (Entering)
         {

@@ -201,7 +201,9 @@ public sealed class BattleRecordFile
                 // What a critical capture reads, and the charms a battle reads (plan 40 · GE5)
                 CaughtSpecies = conditions.CaughtSpecies,
                 CatchingCharm = conditions.CatchingCharm,
-                ExpCharm = conditions.ExpCharm
+                ExpCharm = conditions.ExpCharm,
+                // The powers in force as it began (plan 36 · TR7)
+                Powers = conditions.Powers is { IsEmpty: false } powers ? powers : null
             }
         };
     }
@@ -274,7 +276,8 @@ public sealed class BattleRecordFile
                 TotemAura = Conditions.TotemAura,
                 CaughtSpecies = Conditions.CaughtSpecies,
                 CatchingCharm = Conditions.CatchingCharm,
-                ExpCharm = Conditions.ExpCharm
+                ExpCharm = Conditions.ExpCharm,
+                Powers = Conditions.Powers
             },
             PlayerName = PlayerName,
             PlayerController = null,
@@ -523,6 +526,9 @@ public sealed class RecordedConditions
     /// <summary>The Catching Charm and the Exp. Charm were in the bag (plan 40 · GE5); a file without them, neither.</summary>
     public bool CatchingCharm { get; set; }
     public bool ExpCharm { get; set; }
+
+    /// <summary>The powers in force as the battle began (plan 36 · TR7); a file without them, none.</summary>
+    public Models.PowerSet? Powers { get; set; }
 }
 
 /// <summary>An answer of a recorded battle (<see cref="BattleChoice"/>, as plain data).</summary>

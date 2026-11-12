@@ -253,6 +253,11 @@ public class ScriptTests
           train prize
           train peak check
           train peak
+          train tera check
+          train tera
+          power level
+          power learn
+          power grant exp 2 10
           photo take
           photo count
           globallink check
@@ -350,6 +355,7 @@ public class ScriptTests
           frontier prize items
           frontier prize machines
           frontier prize training
+          frontier prize tera
           frontier buy
           frontier records tower
           frontier print tower

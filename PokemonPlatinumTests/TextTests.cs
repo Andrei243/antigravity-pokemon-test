@@ -267,6 +267,9 @@ public class TextTests
         ["Core/GameEngine.Apricorns.cs"] = new[] { "Apricorn Box", "kurt" },
         // The crafting kit, the item of ours the kit is (plan 39 · CR1)
         ["Core/GameEngine.Crafting.cs"] = new[] { "Crafting Kit" },
+        // The Power Watch and the Tera Orb by the data's names (plan 36 · TR5, TR8)
+        ["Core/GameEngine.Powers.cs"] = new[] { "Power Watch" },
+        ["Core/GameEngine.Training.cs"] = new[] { "Tera Orb" },
         // The start of the Master Ranks' flags, and the region whose story is asked about
         ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
         // The lobbies' maps

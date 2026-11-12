@@ -399,7 +399,7 @@ public static class FrontierBrains
 public static class FrontierExchange
 {
     /// <summary>The three lists by the word a script names them with.</summary>
-    public const string Items = "items", Machines = "machines", Training = "training";
+    public const string Items = "items", Machines = "machines", Training = "training", Tera = "tera";
 
     /// <summary>The west booth's vitamins and held items, or the east booth's Technical Machines.</summary>
     public static IReadOnlyList<Data.FrontierPrizeRecord> Stock(bool machines) =>
@@ -411,6 +411,8 @@ public static class FrontierExchange
         Items => Data.FrontierDatabase.ExchangeItems,
         Machines => Data.FrontierDatabase.ExchangeMachines,
         Training => Models.TrainingData.BattlePoints,
+        // The club's Tera Shards (plan 36 · TR5), which its clerk offers only once a Tera Orb is held
+        Tera => Models.TrainingData.TeraShards,
         // The later battle places' counters (plan 37's decision 6; Kiloude City's Battle Maison, plan 23)
         _ => Facilities.FacilityPrizes.Of(list)
     };

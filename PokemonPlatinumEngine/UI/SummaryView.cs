@@ -32,6 +32,9 @@ public sealed class SummaryView
     /// <summary>Whether the contest condition has a page (once the Contest Hall has been visited).</summary>
     public bool HasCondition { get; set; }
 
+    /// <summary>Whether INFO shows the Tera Type (plan 36 · TR5): while the bag holds a Tera Orb.</summary>
+    public bool ShowsTera { get; set; }
+
     /// <summary>Whether the marks may be set from this view: the team's and the PC's may, a battle's may not.</summary>
     public bool CanMark { get; set; } = true;
 

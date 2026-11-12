@@ -882,7 +882,7 @@ public static class ScriptParser
                 string which = what switch
                 {
                     // (and the later places' counters, plan 37's decision 6: Kiloude City's Battle Maison)
-                    "prize" => r.OneOf("items", "machines", "training", "maison", "tree"),
+                    "prize" => r.OneOf("items", "machines", "training", "tera", "maison", "tree"),
                     "records" or "print" or "printed" => r.OneOf("tower", "factory", "hall", "castle", "arcade"),
                     "judged" => r.OneOf("total", "best"),
                     _ => ""
@@ -1170,11 +1170,25 @@ public static class ScriptParser
             // `train prize`; drill and reset act on the Pokémon the last `choosepokemon` chose
             case "train":
             {
-                string what = r.OneOf("open", "drill", "reset", "prize", "peak");
-                if (what == "peak") return new Instruction { Op = Op.Train, Line = line, Name = what, Other = r.More ? r.OneOf("check") : "" };
+                string what = r.OneOf("open", "drill", "reset", "prize", "peak", "tera");
+                if (what is "peak" or "tera") return new Instruction { Op = Op.Train, Line = line, Name = what, Other = r.More ? r.OneOf("check") : "" };
                 if (what != "reset") return new Instruction { Op = Op.Train, Line = line, Name = what };
                 string stat = r.OneOf("all", "hp", "attack", "defense", "spatk", "spdef", "speed");
                 return new Instruction { Op = Op.Train, Line = line, Name = what, Other = stat };
+            }
+
+            // The powers (plan 36 · TR8): `power level`, `power learn`, `power grant exp 2 10` (a kind, a level, minutes of play)
+            case "power":
+            {
+                string what = r.OneOf("level", "learn", "grant");
+                if (what != "grant") return new Instruction { Op = Op.Power, Line = line, Name = what };
+                string kind = r.Text("a power's kind");
+                if (!System.Enum.TryParse<Models.PowerKind>(kind, true, out _)) throw r.Error($"'{kind}' is no power (Models/Powers.cs's PowerKind)");
+                int level = r.Int("a level");
+                if (level < 1 || level > Models.PowerTable.TopLevel) throw r.Error($"a power's level is 1 to {Models.PowerTable.TopLevel}");
+                int minutes = r.Int("minutes of play");
+                if (minutes < 1) throw r.Error("a power lasts a minute at least");
+                return new Instruction { Op = Op.Power, Line = line, Name = what, Other = kind, Number = level, Partner = minutes.ToString() };
             }
 
             // Black City's Black Tower (plan 22 · U10, the last part)

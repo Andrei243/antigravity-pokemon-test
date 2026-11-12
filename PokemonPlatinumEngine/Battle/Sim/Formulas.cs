@@ -389,4 +389,12 @@ public sealed class BattleConditions
     /// again, after a crossed region's half and before Easy's (<c>BattleCore.Give</c>). Off unless given; a record's file keeps it.
     /// </summary>
     public bool ExpCharm { get; init; }
+
+    /// <summary>
+    /// The powers in force as the battle began (plan 36 · TR7, <see cref="Models.PowerSet"/>): EXP and effort in
+    /// <c>BattleCore.Give</c>, prize money in <c>BattleCore.PrizeMoney</c>, the catch rate in <c>CatchCalculator.Shakes</c>.
+    /// Null unless given, which changes nothing (every battle a test or a tool makes, and Platinum's); fixed for the battle,
+    /// and a record's file keeps it.
+    /// </summary>
+    public Models.PowerSet? Powers { get; init; }
 }
