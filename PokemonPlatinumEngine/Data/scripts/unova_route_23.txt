@@ -33,3 +33,50 @@ label Fled
   hide self
   text "Azelf flashed away over the water..."
   end
+
+
+# Six holes in the valley floor that a boulder pushed with Strength fills (the behaviour StrengthHole), as Victory Road's: the
+# overlay's holes, a wall until their flag, and the pits on the holes' tiles, whose script sets the flag as the boulder comes to
+# rest. The boulder is gone with the hole it filled.
+
+
+script FillNorth
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_NORTH
+  hide self
+  end
+
+
+script FillBend
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_BEND
+  hide self
+  end
+
+
+script FillLedge
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_LEDGE
+  hide self
+  end
+
+
+script FillWest
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_WEST
+  hide self
+  end
+
+
+script FillEast
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_EAST
+  hide self
+  end
+
+
+script FillFar
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_ROUTE_23_HOLE_FAR
+  hide self
+  end

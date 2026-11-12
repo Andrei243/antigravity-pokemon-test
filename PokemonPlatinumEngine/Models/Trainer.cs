@@ -83,6 +83,22 @@ public class Trainer
     public bool Remixed { get; set; }
 
     /// <summary>
+    /// The team is the game's own Challenge Mode team (plan 22, Black 2's <c>unova_leader_&lt;who&gt;_2</c>, the Four's and
+    /// Iris's <c>_3</c> and <c>_4</c>; <see cref="DifficultyRules.InChallenge"/>), set on the copy alone: it brings its own
+    /// one more, so Challenge adds it no member from the rematch.
+    /// </summary>
+    public bool ChallengeTeam { get; set; }
+
+    /// <summary>A copy that keeps who the trainer is (id, name, class, look, lines) with <paramref name="team"/> as its team.</summary>
+    public Trainer WithParty(Party team)
+    {
+        var copy = (Trainer)MemberwiseClone();
+        copy.party = team;
+        copy.Items = Items.ToList();
+        return copy;
+    }
+
+    /// <summary>
     /// A team lifted to a level of the journey on a copy (plan 41 · EG3, <see cref="LevelLift"/>): the battle lays no region's
     /// levels on it again, as it lays none on a team beyond the League.
     /// </summary>
