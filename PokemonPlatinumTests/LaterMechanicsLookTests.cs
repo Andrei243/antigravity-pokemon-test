@@ -58,7 +58,7 @@ public class LaterMechanicsLookTests
     [Fact]
     public void ThereAreThirtyFiveZMovesAndEachHasALookOfItsOwn()
     {
-        Assert.Equal(35, ZMoves.Count());
+        Assert.Equal(35 + 1, ZMoves.Count()); // and the Sound type's, ours (plan 46 · CP2)
         Assert.All(ZMoves, m => Assert.True(MoveFx.HasZLook(m.Name), $"{m.Name} has no look"));
         Assert.Equal(17, MoveFx.ZSignatureMoves.Count());
     }
@@ -347,7 +347,7 @@ public class LaterMechanicsLookTests
     [Fact]
     public void ThereAreFiftyTwoMaxMovesAndEachHasALookOfItsOwn()
     {
-        Assert.Equal(19, MoveDatabase.GetAll().Count(m => m.Kind == MoveKind.MaxMove));
+        Assert.Equal(19 + 1, MoveDatabase.GetAll().Count(m => m.Kind == MoveKind.MaxMove)); // and Max Chorus, ours (plan 46 · CP2)
         Assert.Equal(33, MoveDatabase.GetAll().Count(m => m.Kind == MoveKind.GMaxMove));
         Assert.All(MaxMoves, m => Assert.True(MoveFx.HasMaxLook(m.Name), $"{m.Name} has no look"));
         Assert.Equal(33, MoveFx.GMaxMoves.Count());

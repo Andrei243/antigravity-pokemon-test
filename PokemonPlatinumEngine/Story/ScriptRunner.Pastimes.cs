@@ -266,7 +266,7 @@ public sealed partial class ScriptRunner
             case "check":
                 // Plan 03 · D12a: with nothing brought over, the day's six visitors come, by a fixed rotation of the
                 // species Sinnoh has no other way to
-                park.Welcome(SpeciesSources.Sinnoh.PalParkPool, Core.GameClock.Today, host.Chance);
+                park.Welcome(SpeciesSources.Sinnoh.PalParkVisitors, Core.GameClock.Today, host.Chance);
                 Result = host.PastimeAct("boxroom", 0, Subject) < Overworld.CatchingShow.Size ? 1 : park.Stocked ? 0 : 2;
                 break;
             case "start":

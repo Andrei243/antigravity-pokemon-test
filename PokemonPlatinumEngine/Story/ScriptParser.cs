@@ -1265,8 +1265,25 @@ public static class ScriptParser
             case "raid":
             {
                 // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`, and `raid wish`, a Wishing Piece thrown into the den looked into
-                string what = r.OneOf("den", "watts", "fight", "catch", "wish");
+                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss");
                 if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
+                // A boss the story brings (plan 33 · GL6, Eternamax): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail
+                // with "galar_raid_hop" "galar_raid_zacian" "galar_raid_zamazenta"`, its raiders three trainers of the data
+                if (what == "boss")
+                {
+                    string boss = r.Text("a species or a form");
+                    if (PokemonDatabase.Get(boss) == null && PokemonDatabase.SpeciesOfForm(boss) == null) throw r.Error($"there is no species or form '{boss}'");
+                    int level = r.Int("a level");
+                    if (level < 1 || level > 100) throw r.Error("a raid boss's level is 1 to 100");
+                    r.Word("'stars'");
+                    int stars = r.Int("the stars");
+                    if (stars < Battle.Sim.RaidTerms.FewestStars || stars > Battle.Sim.RaidTerms.MostStars) throw r.Error("a raid has 1 to 5 stars");
+                    bool cannotFail = r.PeekIs("cannotfail");
+                    if (cannotFail) r.Next();
+                    r.Word("'with'");
+                    var raiders = r.Texts(3, 3, "three trainers' ids");
+                    return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = boss, Number = level, Numbers = new[] { stars }, Trainers = raiders, CanLose = !cannotFail };
+                }
                 if (what == "catch")
                 {
                     string ball = r.Text("a Poké Ball");
@@ -1483,6 +1500,17 @@ public static class ScriptParser
             {
                 bool on = r.OneOf("on", "off") == "on";
                 return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
+            }
+            // The field's light held at an hour (plan 20, part w): lighting 21 | lighting clock
+            case "lighting":
+            {
+                if (r.PeekWord("clock"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Lighting, Line = line, Option = false };
+                }
+                float hour = r.Number("an hour of the day", 0f, 23.99f);
+                return new Instruction { Op = Op.Lighting, Line = line, Option = true, Factor = hour };
             }
             case "slowmo":
             {

@@ -1219,6 +1219,8 @@ public static class RegionDatabase
                 "Circhester_PokemonCenter", "Circhester_Stadium", "Circhester_StadiumMission", "Circhester_StadiumPitch",
                 "Spikemuth_PokemonCenter",
                 "Hammerlocke_Stadium", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch",
+                // Plan 33 · GL6: Wyndon's Pokémon Center, stadium and its pitch, and Rose Tower's lobby and Energy Plant
+                "Wyndon_PokemonCenter", "Wyndon_Stadium", "Wyndon_StadiumPitch", "Wyndon_RoseTower", "Wyndon_EnergyPlant",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },

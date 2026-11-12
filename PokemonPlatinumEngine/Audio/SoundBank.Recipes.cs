@@ -1149,6 +1149,12 @@ public static partial class SoundBank
                 d.Notes(0, 0.055f, 0.3f, Wave.Sine, Pitches(91, 95, 98, 103, 107), 0.35f, 0.04f, 2f);
                 d.Bell(0.2f, 0.4f, N(103), 2.01f, 1.4f, 0.2f);
                 return Finish(d.S, 0.36f);
+            case "move_sound":
+                // Plan 46 · CP2: a struck note and its fifth beating outward, a short wobble on the tail
+                d = new SoundDesign(0.62f, 0x50D0u);
+                d.Notes(0, 0.08f, 0.4f, Wave.Triangle, Pitches(76, 83, 76, 83), 0.3f, 0.03f);
+                d.Bell(0, 0.5f, N(76), 2.0f, 1.2f, 0.25f, 2.2f);
+                return Finish(d.S, 0.38f);
 
             default:
                 return MakeLaterSound(name) ?? MakeMoveSound(name) ?? throw new ArgumentOutOfRangeException(nameof(name), name, "not a sound of the bank");

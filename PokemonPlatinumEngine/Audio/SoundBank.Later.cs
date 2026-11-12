@@ -436,6 +436,11 @@ public static partial class SoundBank
                 d.Notes(0.4f, 0.09f, 0.45f, Wave.Sine, Pitches(88, 91, 95, 100, 103, 107, 112), 0.08f, 0.01f);
                 d.Bell(0.4f, 0.8f, N(96), 2.01f, 0.6f, 0.12f, 2.4f);
                 break;
+            case PokemonType.Sound:
+                // Plan 46 · CP2: a struck chord ringing out, its notes beating against one another
+                d.Notes(0.4f, 0.12f, 0.6f, Wave.Triangle, Pitches(67, 71, 74, 79), 0.1f, 0.02f);
+                d.Bell(0.38f, 0.9f, N(79), 2.0f, 0.9f, 0.14f, 2.6f);
+                break;
             default:
                 d.Noise(0.38f, 0.9f, Filter.Band, 1200f, 400f, 0.3f, 1f, 0.05f, 1.6f);
                 d.Bell(0.38f, 0.7f, N(84), 2.01f, 1.0f, 0.15f, 2.4f);

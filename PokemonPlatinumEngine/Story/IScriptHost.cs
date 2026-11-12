@@ -225,6 +225,12 @@ public interface IScriptHost
     void Letterbox(bool on, float seconds);
 
     /// <summary>
+    /// The field's light held at an <paramref name="hour"/> for a scene, or given back to the clock (null; plan 20, part
+    /// w): the picture's alone, never the hour the rules read. A hold lasts until the player next changes place.
+    /// </summary>
+    void HoldLight(float? hour) { }
+
+    /// <summary>
     /// The field runs at a <paramref name="share"/> of its pace for <paramref name="seconds"/> and is back by itself
     /// (plan 09 · L4): people, life and weather are slowed, never the camera, the text or the script's own waits.
     /// </summary>

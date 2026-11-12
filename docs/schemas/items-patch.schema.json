@@ -227,6 +227,7 @@
               "Steel",
               "Dark",
               "Fairy",
+              "Sound",
               null
             ]
           },
@@ -463,6 +464,7 @@
                   "Steel",
                   "Dark",
                   "Fairy",
+                  "Sound",
                   null
                 ]
               },

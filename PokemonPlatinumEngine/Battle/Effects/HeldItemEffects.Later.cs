@@ -42,6 +42,8 @@ public static partial class HeldItemEffects
         ["MirrorHerb"] = Plain, ["AdrenalineOrb"] = Plain,
         // The Roseli Berry against a Fairy hit, as Platinum's berries against a type (WeakenedByBerry)
         ["WeakenSeFairy"] = Plain,
+        // Plan 46 · CP2: the Sound type's booster (the Tuning Fork) and resist berry (the Taci Berry), by the same rules
+        ["StrengthenSound"] = Plain, ["WeakenSeSound"] = Plain,
         // Plan 06 · R28b: the Ability Shield (BattleCore.LaterItems2.cs and wherever an ability is changed or broken),
         // the Rusted Sword and Shield (Crown), Ogerpon's masks (DamageCalculator.Items.cs), the Legend Plate (Judgment)
         // and the Blank Plate, which leaves Arceus and its Judgment Normal as no plate does

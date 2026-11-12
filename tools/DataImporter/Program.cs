@@ -111,6 +111,10 @@ Console.WriteLine($"  Mega Dynamax forms: {species.Sum(s => s.Forms?.Count(f => 
 // The species of our own that evolve past level 100 (plan 03 · D14), after the 1,025, before their moves past 100
 var ourSpecies = SpeciesPastHundred.Add(species, SpeciesPastHundred.Load(Path.Combine(overrides, SpeciesPastHundred.FileName)));
 Console.WriteLine($"  species of our own: {ourSpecies.Count} ({string.Join(", ", ourSpecies.Select(s => s.DexNumber))})");
+// The species made from nothing for Carpathia (plan 46 · CP1), after D14's, in the Carpathian Pokédex's order
+var carpathian = SpeciesOfNothing.Add(species, SpeciesOfNothing.Load(Path.Combine(overrides, SpeciesOfNothing.FileName)),
+    moves.Select(m => m.Name), abilities.Select(a => a.Name));
+Console.WriteLine($"  species made from nothing: {carpathian.Count}");
 // The moves of our own past level 100 (plan 06 · R31), handed out by their rule after the species' own learnsets
 var pastHundred = MovesPastHundred.Append(species, moves);
 Console.WriteLine($"  moves past 100: {string.Join(", ", pastHundred.Select(c => $"{c.Value} species learn {c.Key}"))} ({pastHundred.Sum(c => c.Key * c.Value)} learnings)");

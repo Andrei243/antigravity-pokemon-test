@@ -61,7 +61,9 @@ internal sealed class BattleCorpus
 
     // The held items by hold effect, each effect as likely as another however many items share it
     private static readonly List<List<ItemData>> PlatinumItems = ByHoldEffect(DataImporter.Coverage.IsPlatinums);
-    private static readonly List<List<ItemData>> ModernItems = ByHoldEffect(_ => true);
+    // Every held item but the Sound type's (plan 46 · CP2: no species of the corpus is Sound, and their hold effects
+    // would deal every battle afresh)
+    private static readonly List<List<ItemData>> ModernItems = ByHoldEffect(i => !i.HoldEffect!.EndsWith("Sound", StringComparison.Ordinal));
 
     private static readonly List<TrainerRecord> Trainers =
         TrainerDatabase.All.Where(t => t.Party.Count > 0).OrderBy(t => t.Id, StringComparer.Ordinal).ToList();

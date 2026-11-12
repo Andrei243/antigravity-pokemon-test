@@ -1,0 +1,120 @@
+{
+  "WyndonArrival": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Eight badges each! We're really here, in Wyndon, for the Champion Cup!"
+      ],
+      "text": [
+        "{player}! Câte opt insigne fiecare! Chiar suntem aici, în Wyndon, pentru Cupa Campionilor!"
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Wyndon, the two of you. Every challenger who started this year, and only a handful left standing."
+      ],
+      "text": [
+        "Bine ați venit în Wyndon, amândoi. Toți concurenții care au pornit anul ăsta, și doar câțiva au rămas în picioare."
+      ]
+    },
+    {
+      "en": [
+        "The Semifinals are at the stadium, up the avenue. Win them, and the Finals are tomorrow. Win those, and you'll face me."
+      ],
+      "text": [
+        "Semifinalele sunt pe stadion, sus pe bulevard. Câștigă-le și finala e mâine. Câștig-o și pe ea și o să dai de mine."
+      ]
+    },
+    {
+      "en": [
+        "The chairman wants a word with me in his tower tonight. Something about the future of Galar, he says. Always is."
+      ],
+      "text": [
+        "Președintele vrea să vorbească cu mine în turnul lui diseară. Ceva despre viitorul din Galar, zice. Mereu e asta."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "I'm not losing to you this time, {player}. See you on the pitch!"
+      ],
+      "text": [
+        "De data asta nu mai pierd în fața ta, {player}. Ne vedem pe teren!"
+      ]
+    }
+  ],
+  "TrainBack": [
+    {
+      "en": [
+        "Station Staff"
+      ],
+      "text": [
+        "Personalul gării"
+      ]
+    },
+    {
+      "en": [
+        "Trains south to Hammerlocke, and from there to everywhere in Galar."
+      ],
+      "text": [
+        "Trenuri spre sud până la Hammerlocke și de acolo oriunde în Galar."
+      ]
+    },
+    {
+      "en": [
+        "Take the train to Hammerlocke?"
+      ],
+      "text": [
+        "Iei trenul spre Hammerlocke?"
+      ]
+    },
+    {
+      "en": [
+        "The trains run all day. Come back when you're ready."
+      ],
+      "text": [
+        "Trenurile circulă toată ziua. Întoarce-te când ești gata."
+      ]
+    }
+  ],
+  "TowerShut": [
+    {
+      "en": [
+        "Macro Cosmos Staff"
+      ],
+      "text": [
+        "Personal Macro Cosmos"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, Rose Tower is closed to visitors. The chairman is in meetings all day."
+      ],
+      "text": [
+        "Îmi pare rău, Turnul Rose e închis vizitatorilor. Președintele are ședințe toată ziua."
+      ]
+    }
+  ]
+}

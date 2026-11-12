@@ -372,7 +372,7 @@ public class UiKitTests
     public void EachTypesSignIsDrawnInItsSquareAndNoTwoAreAlike()
     {
         var types = System.Enum.GetValues<PokemonType>();
-        Assert.Equal(18, types.Length);
+        Assert.Equal(19, types.Length); // the games' eighteen and Sound, ours (plan 46 · CP2)
         var seen = new System.Collections.Generic.HashSet<string>();
         foreach (var type in types)
         {

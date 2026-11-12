@@ -384,6 +384,18 @@ public static class Objectives
         (731, "galarSpikemuth", AtLeast("VAR_GALAR_STORY", 34), true),
         (732, "galarPiers", AtLeast("VAR_GALAR_STORY", 35), true),
         (733, "galarRaihan", AtLeast("VAR_GALAR_STORY", 36), true),
+        // Plan 33 · GL6: Wyndon, the Champion Cup's Semifinals, the Darkest Day (the stadium's lobby, the Weald's altar,
+        // Rose Tower, the Energy Plant), the Finals and Leon
+        (734, "galarWyndon", AtLeast("VAR_GALAR_STORY", 37), true),
+        (735, "galarSemifinal", AtLeast("VAR_GALAR_STORY", 38), true),
+        (736, "galarHopCup", AtLeast("VAR_GALAR_STORY", 39), true),
+        (737, "galarLobby", AtLeast("VAR_GALAR_STORY", 40), true),
+        (738, "galarAltar", AtLeast("VAR_GALAR_STORY", 41), true),
+        (739, "galarRoseTower", AtLeast("VAR_GALAR_STORY", 42), true),
+        (740, "galarEnergyPlant", AtLeast("VAR_GALAR_STORY", 43), true),
+        (741, "galarFinals", AtLeast("VAR_GALAR_STORY", 44), true),
+        (742, "galarRaihanCup", AtLeast("VAR_GALAR_STORY", 45), true),
+        (743, "galarLeon", s => s.Var("VAR_GALAR_STORY") >= 46 || s.Has("GalarHallOfFame"), false),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

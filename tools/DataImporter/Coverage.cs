@@ -213,8 +213,11 @@ public static class Coverage
         Line($"| of which hold effects | {n.HoldEffects} | {n.HoldEffectsRun} | – | {n.HoldEffects - n.HoldEffectsRun} |");
         Line($"| Items of later games | {n.LaterItems} | {n.LaterItemsFully} | {n.LaterItemsPartly} | {n.LaterItems - n.LaterItemsFully - n.LaterItemsPartly - n.LaterItemsNothingToRun} (and {n.LaterItemsNothingToRun} with nothing to run) |");
         Line();
+        // The Sound type's Z-Move and Max Move (plan 46 · CP2) are ours too, generation 0 like R31's
+        int ourSpecial = moves.Count(m => m.Kind != MoveKind.Standard && m.Generation == 0);
         Line($"The data has {moves.Count} moves in all. The games number 919 of them, because each of the eighteen type Z-Moves has a physical and a special id; " +
-             $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count - n.OurMoves}, and the {n.OurMoves} moves of our own (plan 06 · R31) make {moves.Count}.");
+             $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count - n.OurMoves - ourSpecial}, and the {n.OurMoves} moves of our own (plan 06 · R31) " +
+             (ourSpecial > 0 ? $"and the Sound type's {ourSpecial} Z-Move and Max Move (plan 46 · CP2) " : "") + $"make {moves.Count}.");
         Line();
 
         Line("## By generation");

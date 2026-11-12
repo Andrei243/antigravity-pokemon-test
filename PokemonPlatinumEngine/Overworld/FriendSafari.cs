@@ -63,7 +63,7 @@ public static class FriendSafari
     /// </summary>
     public static IReadOnlyList<FriendSafariGrounds> Of(uint trainerNumber)
     {
-        var types = Enum.GetValues<PokemonType>().ToList();
+        var types = TypeChart.GamesTypes.ToList();
         var grounds = new List<FriendSafariGrounds>(GroundsCount);
         for (int g = 0; g < GroundsCount; g++)
         {

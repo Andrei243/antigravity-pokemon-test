@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Rose Tower"
+    ],
+    "text": [
+      "Turnul Rose"
+    ]
+  },
+  "people": {
+    "oleana": {
+      "name": {
+        "en": [
+          "Oleana"
+        ],
+        "text": [
+          "Oleana"
+        ]
+      }
+    },
+    "tower_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Rose Tower, home of Macro Cosmos. The lift goes up to the Energy Plant."
+        ],
+        "text": [
+          "Bine ai venit în Turnul Rose, sediul Macro Cosmos. Liftul urcă la Centrala Energetică."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

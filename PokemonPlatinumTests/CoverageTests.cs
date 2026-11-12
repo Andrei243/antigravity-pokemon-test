@@ -74,10 +74,12 @@ public class CoverageTests
         Assert.Equal(380, n.LaterMoves);
         // 35 Z-Moves (one for each of the 18 types, 17 of single species), 19 Max Moves (18 types and Max Guard)
         // and the 33 G-Max Moves: with the 847 ordinary moves, every move of the main games; and the 72 moves of our own
-        // past level 100 (plan 06 · R31), counted apart and never in a number of the games'
-        Assert.Equal((35, 19, 33), (n.ZMoves, n.MaxMoves, n.GMaxMoves));
+        // past level 100 (plan 06 · R31), counted apart and never in a number of the games'; and the Sound type's own
+        // Z-Move and Max Move (plan 46 · CP2), generation 0 like them
+        Assert.Equal((35 + 1, 19 + 1, 33), (n.ZMoves, n.MaxMoves, n.GMaxMoves));
         Assert.Equal(72, n.OurMoves);
-        Assert.Equal(934 + 72, Moves.Count);
+        Assert.Equal(934 + 72 + 2, Moves.Count);
+        Assert.Equal(2, Moves.Count(m => m.Kind != MoveKind.Standard && m.Generation == 0));
         Assert.Equal(Moves.Count, Moves.Select(m => m.Name).Distinct().Count());
 
         var special = Moves.Where(m => m.Kind != MoveKind.Standard).ToList();
@@ -88,7 +90,7 @@ public class CoverageTests
             Assert.NotNull(m.Effect);
             Assert.True(m.Description.Length > 0, m.Name);
         });
-        Assert.Equal(18, special.Count(m => m.Kind == MoveKind.ZMove && Items.Any(i => i.ZCrystal?.Type == m.Type) && !Items.Any(i => i.ZCrystal?.Move == m.Name)));
+        Assert.Equal(19, special.Count(m => m.Kind == MoveKind.ZMove && Items.Any(i => i.ZCrystal?.Type == m.Type) && !Items.Any(i => i.ZCrystal?.Move == m.Name)));
         Assert.Equal(33, special.Where(m => m.Kind == MoveKind.GMaxMove).Select(m => m.GigantamaxOf).Distinct().Count());
         Assert.All(special.Where(m => m.Kind == MoveKind.GMaxMove), m => Assert.True(m.Id >= Importer.FirstGMaxMoveId, m.Name));
 
@@ -168,7 +170,7 @@ public class CoverageTests
         var stones = Items.Where(i => i.MegaStone != null).ToList();
         var crystals = Items.Where(i => i.ZCrystal != null).ToList();
         Assert.True(stones.Count >= 48, $"{stones.Count} Mega Stones");
-        Assert.Equal(35, crystals.Count);
+        Assert.Equal(35 + 1, crystals.Count); // and the Sonorium Z, ours (plan 46 · CP2)
 
         var venusaurite = ItemDatabase.Get("Venusaurite")!.MegaStone!;
         Assert.Equal(("Venusaur", "Venusaur-Mega"), (venusaurite.Species, venusaurite.Form));
@@ -184,7 +186,7 @@ public class CoverageTests
 
         // A crystal for each type, and each of the others turns one species' move into a Z-Move the data has
         Assert.Equal(PokemonType.Normal, ItemDatabase.Get("Normalium Z")!.ZCrystal!.Type);
-        Assert.Equal(18, crystals.Where(i => i.ZCrystal!.Type != null).Select(i => i.ZCrystal!.Type).Distinct().Count());
+        Assert.Equal(19, crystals.Where(i => i.ZCrystal!.Type != null).Select(i => i.ZCrystal!.Type).Distinct().Count()); // and the Sonorium Z, plan 46 · CP2
         var pikanium = ItemDatabase.Get("Pikanium Z")!.ZCrystal!;
         Assert.Equal(("Catastropika", "Volt Tackle", "Pikachu"), (pikanium.Move, pikanium.From, pikanium.Users!.Single()));
         Assert.All(crystals.Where(i => i.ZCrystal!.Type == null), i =>
