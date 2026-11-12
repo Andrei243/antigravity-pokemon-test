@@ -218,7 +218,12 @@ public enum FormKind
     Primal,
     Gigantamax,
     /// <summary>A Mega that has Dynamaxed (plan 06 · R20c, our own): its Mega's data, grown; taken in battle and lost as the Dynamax ends.</summary>
-    MegaDynamax
+    MegaDynamax,
+    /// <summary>
+    /// A Tale Form (plan 46 · CP11, our own): what a Pokémon bound to a tale wakes into while its trainer's tale is told,
+    /// and goes back from as the tale ends (<c>Data/tales.json</c>'s <c>forms</c>; CP12 writes the forms and their sculpts).
+    /// </summary>
+    Tale
 }
 
 /// <summary>

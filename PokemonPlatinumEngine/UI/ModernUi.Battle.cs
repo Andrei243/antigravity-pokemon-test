@@ -821,6 +821,8 @@ internal static partial class ModernUi
 
         // The item button: a Mega Evolution, the Z-Power or an Ultra Burst armed for the move (plan 25 · Y14)
         LaterButton(battle);
+        // And the TALE button above it (plan 46 · CP11)
+        TaleButton(battle);
 
         var info = new Rectangle(1172, 848, 700, 188);
         Panel(info, 28);

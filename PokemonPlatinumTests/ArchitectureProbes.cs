@@ -29,6 +29,21 @@ namespace PokemonPlatinumTests.Probes.Battle
         public PokemonPlatinumEngine.Models.Pokemon? Pokemon;
         public object? Ability => Pokemon?.Ability;
     }
+
+    // The screen reads a tale off the rules' field (plan 46 · CP11); this is never run
+    internal static class TaleFace
+    {
+        public static object? Peek(PokemonPlatinumEngine.Battle.Sim.FieldState field) => field.Tale;
+    }
+}
+
+namespace PokemonPlatinumTests.Probes.UI
+{
+    // The Book of Tales' pages with a window (plan 46 · CP11)
+    internal static class BookOfTalesScreen
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+    }
 }
 
 namespace PokemonPlatinumTests.Probes.Overworld

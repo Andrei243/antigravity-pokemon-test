@@ -33,6 +33,7 @@ public class SchemaTests
         ("sound-map.schema.json", typeof(SoundMapFile), "The sound map (Data/audio/sound-map.json)"),
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
+        ("tales.schema.json", typeof(TalesFile), "The Tales' rules (Data/tales.json, plan 46 · CP11)"),
         ("statues.schema.json", typeof(StatueFile), "The hideaways' statues (Data/statues.json)"),
         ("skyplaces.schema.json", typeof(PokemonPlatinumEngine.Overworld.SkyPlacesFile), "The places of the day's tables and finds (Data/skyplaces.json, plan 38 · EX7)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),

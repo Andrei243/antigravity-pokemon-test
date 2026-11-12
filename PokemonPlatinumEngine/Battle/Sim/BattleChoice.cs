@@ -59,6 +59,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     public bool Terastallize { get; init; }
 
     /// <summary>
+    /// With a move: its trainer tells this tale first (plan 46 · CP11; <c>Data/tales.json</c>'s id), after the turn's
+    /// Terastallizations, and its rule holds over the field for five turns. Refused where it can't be (<see cref="BattleCore.WhyNotTale"/>).
+    /// </summary>
+    public string? Tale { get; init; }
+
+    /// <summary>
     /// With a move, in a rotation battle (plan 14 · B7): the turntable turns this way first, +1 bringing the Pokémon of
     /// the seat after the front's to the front and −1 the one before it, and <see cref="Move"/> is that Pokémon's move.
     /// 0 fights with the one in front. Refused where it can't (<see cref="BattleCore.WhyNotRotation"/>).

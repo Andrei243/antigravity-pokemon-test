@@ -47,7 +47,8 @@ internal sealed class BattleMirror
         ZRing = trainer.ZRing,
         DynamaxBand = trainer.DynamaxBand,
         MegaMaxBand = trainer.MegaMaxBand,
-        TeraOrb = trainer.TeraOrb
+        TeraOrb = trainer.TeraOrb,
+        Tales = trainer.Tales
     };
 
     /// <summary>

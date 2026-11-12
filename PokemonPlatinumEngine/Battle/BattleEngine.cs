@@ -409,6 +409,8 @@ public partial class BattleEngine
             MegaMaxBand = watched?.MegaMaxBand ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.MegaMaxBandItem),
             // And a Tera Orb lets one Terastallize (plan 06 · R23)
             TeraOrb = watched?.TeraOrb ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem),
+            // And the Book of Tales lets the player tell the tales learned (plan 46 · CP11); with no Book, none
+            Tales = watched != null ? watched.Tales : setup.Tales is { Count: > 0 } tales && setup.Inventory.AllItems.Any(s => s.Name == BattleCore.BookOfTalesItem) ? tales : null,
             // A link battle's stage: given up, never run from (plan 28 · I4), and never started here (plan 28 · I3)
             Link = linked != null
         };
@@ -573,6 +575,8 @@ public partial class BattleEngine
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
+        // The tale told over the field (plan 46 · CP11)
+        Anim.SettleTale(core.Field.Tale?.Id);
         // A raid boss's shields (plan 33 · GL3)
         Anim.RaidShields = core.RaidShields;
         // A Mega whose growth never came is let go, and no field change is a Max Move's any more (plan 25 · YD4)
@@ -1125,6 +1129,10 @@ public partial class BattleEngine
                 // A Terastallization (plan 06 · R23)
                 ShowTera(happening);
                 break;
+            case TaleTold or TaleAnswered or TaleEnded or TaleFormChanged:
+                // A tale (plan 46 · CP11)
+                ShowTale(happening);
+                break;
             case UltraBursted burst:
                 // An Ultra Burst (plan 06 · R21): its own look and sound, the form taken inside its light (plan 25 · Y14)
                 Change(burst.Place, burst.Form, CueKind.UltraBurst, "ultra_burst", BattleAnimator.UltraBurstSwapTime);
@@ -1381,6 +1389,8 @@ public partial class BattleEngine
                 Result = ended.Result;
                 // Every Tera Type is taken off (plan 06 · R23)
                 ShowTera(happening);
+                // And a tale's sky goes (plan 46 · CP11)
+                ShowTale(happening);
                 break;
         }
     }

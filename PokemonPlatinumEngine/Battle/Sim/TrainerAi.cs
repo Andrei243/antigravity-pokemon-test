@@ -54,7 +54,57 @@ public sealed class TrainerAi : IBattleController
         if (choice.Kind == ChoiceKind.Fight && !choice.Mega && !choice.ZMove && !choice.UltraBurst && !choice.Dynamax
             && battle.CanTerastallize(mine) && TeraNow(battle, mine))
             choice = choice with { Terastallize = true };
+        // And a tale (plan 46 · CP11), with any move: its best where it helps its side more than the foe's, or an answer
+        // to the other side's tale where that one hurts it
+        if (choice.Kind == ChoiceKind.Fight && TaleNow(battle, mine) is { } tale) choice = choice with { Tale = tale };
         return choice;
+    }
+
+    /// <summary>
+    /// The tale to tell now, if any (plan 46 · CP11; like R30's <see cref="TeraNow"/>, worked out on the battle's own
+    /// numbers and drawing nothing): with no tale over the field, the trainer's tale worth most to its side, where it is
+    /// worth more to it than to the foe's (<see cref="TaleWorth"/>); with the other side's tale told, the same, but only
+    /// where that tale is worth less than nothing to it. Ties go to the tale learned first.
+    /// </summary>
+    internal static string? TaleNow(BattleCore battle, Battler mine)
+    {
+        var tales = battle.TalesToTell(mine);
+        if (tales.Count == 0) return null;
+        if (battle.Field.Tale is { } told && (told.Teller == mine.Side || TaleWorth(battle, mine.Side, told.Rule) >= 0)) return null;
+        string? best = null;
+        int most = 0;
+        foreach (var id in tales)
+        {
+            if (battle.TaleTable.Get(id) is not { } rule) continue;
+            int worth = TaleWorth(battle, mine.Side, rule);
+            if (worth > most) (best, most) = (id, worth);
+        }
+        return best;
+    }
+
+    /// <summary>
+    /// What a tale is worth to a side over the other, in rough hundredths of power: the moves it favours on the field
+    /// (theirs counted against), the weather it brings by the moves and types it helps and wears, and a Pokémon of the
+    /// side that would wake to it. Accuracy cuts both ways alike and counts for nothing.
+    /// </summary>
+    internal static int TaleWorth(BattleCore battle, BattleSide side, TaleRule rule)
+    {
+        int worth = 0;
+        foreach (var b in battle.AllBattlers.Where(b => b.IsActive && b.Pokemon != null))
+        {
+            int sign = b.Side == side ? 1 : -1;
+            var p = b.Pokemon!;
+            foreach (var move in p.Moves.Where(m => m.Data.Category != MoveCategory.Status))
+            {
+                if (rule.Boost is { } boost && boost.Favours(move.Type, move.Data.Flags)) worth += sign * (boost.Percent - 100);
+                if (rule.Weather is BattleWeather.Rain) worth += sign * (move.Type == PokemonType.Water ? 50 : move.Type == PokemonType.Fire ? -50 : 0);
+                if (rule.Weather is BattleWeather.Sun) worth += sign * (move.Type == PokemonType.Fire ? 50 : move.Type == PokemonType.Water ? -50 : 0);
+            }
+            // Hail and snow: what isn't Ice is worn or kept down, what is stands firm
+            if (rule.Weather is BattleWeather.Hail or BattleWeather.Snow) worth += sign * (b.HasType(PokemonType.Ice) ? 25 : -25);
+            if (b.Side == side && rule.FormFor(p.Species.Name) is { } form && p.Species.Form(form) != null && p.Form != form) worth += 50;
+        }
+        return worth;
     }
 
     /// <summary>The trainer's team as the battle has it (the Pokémon itself for one with no roster).</summary>

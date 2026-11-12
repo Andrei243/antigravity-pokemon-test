@@ -1,0 +1,37 @@
+{
+  "turns": 5,
+  "tales": [
+    {
+      "id": "zmeu",
+      "boost": { "types": ["Fire"], "percent": 130 },
+      "noNight": true,
+      "sky": { "color": [255, 176, 72], "amount": 0.22 },
+      "songLayer": "tale_zmeu"
+    },
+    {
+      "id": "varcolac",
+      "boost": { "types": ["Dark", "Ghost"], "percent": 130 },
+      "accuracy": 80,
+      "sky": { "color": [24, 20, 48], "amount": 0.45, "grey": 0.3 },
+      "songLayer": "tale_varcolac"
+    },
+    {
+      "id": "solomonar",
+      "weather": "Rain",
+      "sky": { "color": [70, 82, 112], "amount": 0.35, "grey": 0.2 },
+      "songLayer": "tale_solomonar"
+    },
+    {
+      "id": "dochia",
+      "weather": "Hail",
+      "sky": { "color": [176, 204, 236], "amount": 0.3, "grey": 0.15 },
+      "songLayer": "tale_dochia"
+    },
+    {
+      "id": "ielele",
+      "boost": { "types": ["Sound"], "flags": ["Sound"], "percent": 130 },
+      "sky": { "color": [96, 64, 156], "amount": 0.35 },
+      "songLayer": "tale_ielele"
+    }
+  ]
+}

@@ -532,6 +532,12 @@ public partial class GameEngine
             OpenStroll(fromBag: false);
             return;
         }
+        // The Book of Tales from the item button (plan 46 · CP11)
+        if (item.FieldUse == BookOfTalesUse)
+        {
+            OpenBookOfTales();
+            return;
+        }
         // The crafting kit from the item button (plan 39 · CR1)
         if (item.FieldUse == CraftingKitUse)
         {
