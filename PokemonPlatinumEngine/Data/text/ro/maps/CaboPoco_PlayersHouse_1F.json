@@ -1,0 +1,51 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mom: Back already? Sit down a minute and let your Pokémon have a rest.",
+          "Mom: ...There. Everyone's bright-eyed again."
+        ],
+        "text": [
+          "Mama: Te-ai întors deja? Stai jos o clipă și lasă-ți Pokémonii să se odihnească.",
+          "Mama: ...Gata. Toți sunt iar plini de viață."
+        ]
+      }
+    },
+    "clavell_home": {
+      "name": {
+        "en": [
+          "Director Clavell"
+        ],
+        "text": [
+          "Directorul Clavell"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The president's house is just up the hill. You can't miss it: it's the one with the terrace over the sea."
+        ],
+        "text": [
+          "Casa președintei e chiar sus pe deal. N-ai cum s-o ratezi: e cea cu terasa deasupra mării."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

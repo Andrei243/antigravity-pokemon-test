@@ -479,3 +479,25 @@ public sealed record Calmed(Place Place, int Bars) : BattleEvent;
 /// rides on the line that says so, where an unlocked Pokémon's <see cref="ExpGained"/> would.
 /// </summary>
 public sealed record ExpHeld(Pokemon Pokemon, int Amount) : BattleEvent;
+
+/// <summary>
+/// A tale told (plan 46 · CP11): the trainer of <paramref name="Teller"/>'s side tells <paramref name="Tale"/>, whose rule now
+/// holds over the field for <paramref name="Turns"/> turn ends. It rides on the line that names the tale; whoever shows
+/// the battle takes the tale's sky from it, never from the rules' field.
+/// </summary>
+public sealed record TaleTold(BattleSide Teller, string Tale, int Turns) : BattleEvent;
+
+/// <summary>
+/// A tale answered (plan 46 · CP11): the trainer of <paramref name="Teller"/>'s side answers the other side's
+/// <paramref name="Ended"/> with <paramref name="Tale"/>, which ends the first at once and holds for <paramref name="Turns"/>.
+/// </summary>
+public sealed record TaleAnswered(BattleSide Teller, string Tale, string Ended, int Turns) : BattleEvent;
+
+/// <summary>A tale's turns are over (plan 46 · CP11): the field is as it was, on the line that says so.</summary>
+public sealed record TaleEnded(string Tale) : BattleEvent;
+
+/// <summary>
+/// A Pokémon bound to a tale wakes into its Tale Form (<paramref name="Woke"/>) or goes back from it (plan 46 · CP11):
+/// <paramref name="Form"/> is the form it now stands in (null: its species' own). It rides on the line that says so.
+/// </summary>
+public sealed record TaleFormChanged(Place Place, string? Form, bool Woke) : BattleEvent;

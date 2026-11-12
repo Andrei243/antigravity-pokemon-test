@@ -1,0 +1,90 @@
+{
+  "TheTwo": [
+    {
+      "en": [
+        "A pack of Houndour bolts past, out of the cave and away along the beach. They had cornered something in here."
+      ],
+      "text": [
+        "O haită de Houndour țâșnește din peșteră și fuge de-a lungul plajei. Încolțiseră ceva aici înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Two strange Pokémon lie at the back of the cavern, too tired to stand: one red and armoured, one violet and sleek."
+      ],
+      "text": [
+        "Doi Pokémoni ciudați zac în fundul peșterii, prea obosiți să se ridice: unul roșu și cuirasat, unul violet și zvelt."
+      ]
+    },
+    {
+      "en": [
+        "Their stomachs rumble, loudly. They look at the sandwich in {player}'s bag, then at {player}."
+      ],
+      "text": [
+        "Le chiorăie stomacurile, tare. Se uită la sandvișul din rucsacul lui {player}, apoi la {player}."
+      ]
+    },
+    {
+      "en": [
+        "Which of the two do you share your sandwich with?",
+        "The red one",
+        "The violet one"
+      ],
+      "text": [
+        "Cu care dintre ei împarți sandvișul?",
+        "Cu cel roșu",
+        "Cu cel violet"
+      ]
+    },
+    {
+      "en": [
+        "The red one wolfs the sandwich down, and gets to its feet. It gives a happy roar that shakes the cave."
+      ],
+      "text": [
+        "Cel roșu înghite sandvișul pe nemestecate și se ridică. Scoate un răget fericit care zguduie peștera."
+      ]
+    },
+    {
+      "en": [
+        "The violet one watches for a moment, then slips out past them both and is gone."
+      ],
+      "text": [
+        "Cel violet privește o clipă, apoi se strecoară pe lângă ei și dispare."
+      ]
+    },
+    {
+      "en": [
+        "The violet one eats the sandwich in three neat bites, and gets to its feet with a pleased hum."
+      ],
+      "text": [
+        "Cel violet mănâncă sandvișul din trei îmbucături și se ridică cu un zumzet mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "The red one watches for a moment, then shoulders past them both and is gone."
+      ],
+      "text": [
+        "Cel roșu privește o clipă, apoi trece în forță pe lângă ei și dispare."
+      ]
+    },
+    {
+      "en": [
+        "It nudges {player} with its head. It seems it means to come along. Nemona will be waiting at the lighthouse."
+      ],
+      "text": [
+        "Îl împinge ușor pe {player} cu capul. Pare că vrea să vină cu el. Nemona așteaptă la far."
+      ]
+    }
+  ],
+  "Legends": [
+    {
+      "en": [
+        "It is too worn out to stand. It looks up hungrily."
+      ],
+      "text": [
+        "E prea istovit să se ridice. Ridică privirea, flămând."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Inlet Grotto, the cave in the foot of the cliffs under Poco Path (plan 34 · PD1). VAR_PALDEA_STORY is cabo_poco.txt's
+# count. The lines are our own, on Scarlet and Violet's beat of the hungry legendary in the cave; the choice of the two is
+# plan 30 · decision 14's scene of ours, and the one chosen is the version the game is (plan 34 · decision 2): both
+# plans' answers in one choice (the rulings' "Paldea's first chapter").
+
+
+# A step into the cavern after the roar: a pack of Houndour scattered, two worn-out Pokémon left, one chosen
+script TheTwo
+  scene "The two in the grotto"
+  text "A pack of Houndour bolts past, out of the cave and away along the beach. They had cornered something in here."
+  text "Two strange Pokémon lie at the back of the cavern, too tired to stand: one red and armoured, one violet and sleek."
+  text "Their stomachs rumble, loudly. They look at the sandwich in {player}'s bag, then at {player}."
+  choose "Which of the two do you share your sandwich with?" "The red one" "The violet one"
+  if result == 1 goto Violet
+  setvar VAR_PALDEA_VERSION 1
+  setvar VAR_PALDEA_MOUNT 1
+  seen "Koraidon"
+  text "The red one wolfs the sandwich down, and gets to its feet. It gives a happy roar that shakes the cave."
+  text "The violet one watches for a moment, then slips out past them both and is gone."
+  goto Follows
+label Violet
+  setvar VAR_PALDEA_VERSION 2
+  setvar VAR_PALDEA_MOUNT 2
+  seen "Miraidon"
+  text "The violet one eats the sandwich in three neat bites, and gets to its feet with a pleased hum."
+  text "The red one watches for a moment, then shoulders past them both and is gone."
+label Follows
+  text "It nudges {player} with its head. It seems it means to come along. Nemona will be waiting at the lighthouse."
+  setflag FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  setvar VAR_PALDEA_STORY 4
+  objective paldeaLighthouse
+  endscene
+  end
+
+
+# Spoken to before the choice: too weak to do more than look up
+script Legends
+  text "It is too worn out to stand. It looks up hungrily."
+  end

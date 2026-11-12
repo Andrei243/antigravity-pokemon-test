@@ -373,7 +373,10 @@ public enum Architecture
     Galar,
     // The hub (plan 41 · EG1): drawn by hand, a row of the style guide's "Buildings" first
     /// <summary>Warm pale stone under harbour-blue gable roofs with shutters and flower boxes: the harbour town between the regions (the hub).</summary>
-    Crossroads
+    Crossroads,
+    // Paldea (plan 34 · PD1): built on the open world's engine at metre scale, a row of the style guide's "Buildings" first
+    /// <summary>Whitewashed stucco under terracotta tile roofs with shutters and flower boxes: the villages and the old city of the sunny south-west (Cabo Poco, Los Platos, Mesagoza).</summary>
+    Paldea
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

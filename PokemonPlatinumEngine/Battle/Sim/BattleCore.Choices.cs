@@ -86,6 +86,8 @@ public sealed partial class BattleCore
         if (choice.Dynamax && WhyNotDynamaxChoice(choice, b) is { } noDynamax) return noDynamax;
         // And a Terastallization (plan 06 · R23)
         if (choice.Terastallize && WhyNotTeraChoice(choice, b) is { } noTera) return noTera;
+        // And a tale (plan 46 · CP11)
+        if (choice.Tale != null && WhyNotTaleChoice(choice, b) is { } noTale) return noTale;
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:

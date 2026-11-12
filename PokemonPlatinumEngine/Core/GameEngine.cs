@@ -185,7 +185,9 @@ public enum GameState
     /// <summary>A run down a hollow on its floor, a script's <c>delve go</c> waiting on it (plan 44 · SD8).</summary>
     Delve,
     /// <summary>The delve camp's board, a script's <c>delve board</c> waiting on it (plan 44 · SD9).</summary>
-    DelveBoard
+    DelveBoard,
+    /// <summary>The Book of Tales: the tales learned, a page each (plan 46 · CP11).</summary>
+    BookOfTales
 }
 
 public partial class GameEngine
@@ -1639,6 +1641,8 @@ public partial class GameEngine
                         else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
                         // The crafting kit is looked into and closes back onto the bag (plan 39 · CR1)
                         else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
+                        // The Book of Tales (plan 46 · CP11)
+                        else if (usedHere.FieldUse == BookOfTalesUse) OpenBookOfTales();
                         // The Power Watch's panel, and back to the bag (plan 36 · TR8)
                         else if (usedHere.FieldUse == PowerWatchUse) OpenPowers(fromBag: true);
                         // The Stroll Counter, and back to the bag (plan 35 · BN7)
@@ -1968,6 +1972,9 @@ public partial class GameEngine
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
                 if (!flow.JournalScreen.IsActive) flow.State = GameState.Overworld;
+                break;
+            case GameState.BookOfTales:
+                UpdateBookOfTales(dt);
                 break;
             case GameState.HallOfFame:
                 flow.HallOfFameScreen.Update(flow.HallOfFame, dt);
@@ -3735,6 +3742,9 @@ public partial class GameEngine
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);
+                break;
+            case GameState.BookOfTales:
+                flow.BookOfTalesScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PoffinCooking:
                 flow.PoffinCookingScreen.Draw(VirtualWidth, VirtualHeight);

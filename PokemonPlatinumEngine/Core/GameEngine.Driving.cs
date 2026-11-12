@@ -254,6 +254,10 @@ public partial class GameEngine
         public PCScreen PcScreen => game.flow.PCScreen;
         public HallOfFameScreen HallOfFameScreen => game.flow.HallOfFameScreen;
         public JournalScreen JournalScreen => game.flow.JournalScreen;
+
+        /// <summary>The Book of Tales (plan 46 · CP11), and opening it as USE on the Book does.</summary>
+        public BookOfTalesScreen BookOfTalesScreen => game.flow.BookOfTalesScreen;
+        public void OpenBookOfTales() => game.OpenBookOfTales();
         public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
         public EvolutionScreen Evolution => game.flow.EvolutionScreen;
         public OptionsScreen Options => game.flow.OptionsScreen;

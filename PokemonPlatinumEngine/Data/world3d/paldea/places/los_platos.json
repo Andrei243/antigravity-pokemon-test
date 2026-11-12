@@ -1,0 +1,39 @@
+{
+  // Los Platos (plan 34 · PD1): the crossroads village on the road north, its Pokémon Center the first a student comes
+  // to, and a few houses either side of its street. Scripts: Data/scripts/los_platos.txt
+  "markers": [
+    { "name": "los_platos_south", "at": [8, 8.0, -154], "yaw": 180 },
+    { "name": "center_door", "at": [14, 8.0, -177], "yaw": 0 },
+    { "name": "los_platos_north", "at": [10, 8.0, -206], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "center_door",
+      "box": { "min": [13, 7, -180], "max": [15, 10.5, -179] },
+      "room": "LosPlatos_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "center_door"
+    }
+  ],
+  "solids": [
+    { "name": "the Pokémon Center", "min": [8, 7, -190], "max": [20, 13, -180], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the house west of the street", "min": [-28, 7, -196], "max": [-18, 12.5, -188], "building": { "kind": "house", "town": "paldea", "storeys": 1 } },
+    { "name": "the house east of the street", "min": [34, 7, -196], "max": [44, 12.5, -188], "building": { "kind": "house", "town": "paldea", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "los_platos_girl", "at": [-6, 8.0, -170], "yaw": 90, "look": "lass", "displayName": "Girl",
+      "lines": ["Students from the academy come through here all year. They always stop at the Pokémon Center first."]
+    },
+    {
+      "name": "los_platos_man", "at": [26, 8.0, -198], "yaw": 270, "look": "middle_aged_man", "displayName": "Man",
+      "lines": ["Mesagoza is straight up the road. You'll see the academy on its hill long before you get there."],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-10, -160], "kind": "round" },
+    { "at": [30, -166], "kind": "round", "size": 1.1 },
+    { "at": [-36, -176], "kind": "round", "size": 0.9 },
+    { "at": [52, -180], "kind": "pine" }
+  ]
+}

@@ -589,10 +589,11 @@ public class GalarTests
     }
 
     [Fact]
-    public void WyndonAirfieldsAttendantFliesBackToTheRegionsEnteredAndNotYetToPaldea()
+    public void WyndonAirfieldsAttendantFliesOnToPaldeaAndBackToTheRegionsEntered()
     {
-        // Plan 33 · GL7: Galar's harbour in the airfield's lounge. A game begun in Galar has nowhere to fly yet; one that
-        // came across from Alola flies back there, and a return to Galar lands beside her
+        // Plan 33 · GL7: Galar's harbour in the airfield's lounge. Since plan 34 · PD1 gave Paldea maps the plane flies on
+        // there (the first of the harbour's answers); one that came across from Alola may fly back there too, and a return
+        // to Galar lands beside her
         Assert.Equal("Wyndon_Airfield", RegionDatabase.HarbourLinkOf(RegionDatabase.Galar)!.DepartureMap);
         Assert.Equal("Wyndon_Airfield", Region.HarbourSpot!.Map);
         foreach (bool fromAlola in new[] { false, true })
@@ -607,8 +608,7 @@ public class GalarTests
             runner.Start(ScriptLibrary.Default.Find(FieldScripts.For(attendant)!, room.Name)!, attendant);
             runner.RunToEnd();
             Assert.Empty(host.Problems);
-            if (fromAlola) Assert.Equal(new[] { RegionDatabase.Alola }, host.Crossings);
-            else Assert.Empty(host.Crossings);
+            Assert.Equal(new[] { RegionDatabase.Paldea }, host.Crossings);
         }
     }
 

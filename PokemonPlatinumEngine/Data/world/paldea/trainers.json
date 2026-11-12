@@ -1,0 +1,104 @@
+[
+  {
+    "id": "paldea_nemona_1a",
+    "name": "Nemona",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Fuecoco",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 1934020681
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_1b",
+    "name": "Nemona",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Quaxly",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 702354118
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_1c",
+    "name": "Nemona",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Sprigatito",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 1527740093
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_lucia",
+    "name": "Lucia",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Hoppip",
+        "level": 5,
+        "ivScale": 0,
+        "personality": 1011220349
+      },
+      {
+        "species": "Lechonk",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 488361027
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_mateo",
+    "name": "Mateo",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Pawmi",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 1299410275
+      },
+      {
+        "species": "Fletchling",
+        "level": 6,
+        "ivScale": 0,
+        "personality": 830012467
+      }
+    ]
+  }
+]

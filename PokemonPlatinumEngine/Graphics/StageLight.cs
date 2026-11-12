@@ -185,6 +185,14 @@ internal static class StageLights
         return k * k * (3f - 2f * k);
     }
 
+    /// <summary>The sky of the tale told over the field (plan 46 · CP11; <c>Data/tales.json</c>'s <c>sky</c>), eased in as it is told.</summary>
+    public static StageLight TaleLight(BattleAnimator anim)
+    {
+        if (anim.Tale is not { } id || Data.TaleTable.Default.Get(id)?.Sky is not { } sky || sky.Color.Length < 3) return StageLight.None;
+        var colour = new Vector3(sky.Color[0], sky.Color[1], sky.Color[2]) / 255f;
+        return new StageLight(colour, sky.Amount, sky.Grey).Scaled(anim.TaleStrength);
+    }
+
     /// <summary>A cue's light at its age.</summary>
     public static StageLight At(EffectCue cue) => For(cue).Scaled(Envelope(cue.ShownAge, cue.Length));
 
@@ -194,7 +202,8 @@ internal static class StageLights
     /// </summary>
     public static StageLight Of(BattleAnimator anim)
     {
-        var light = GiantSky.Light(anim);
+        // A tale's sky under all of it (plan 46 · CP11), and a giant's over that
+        var light = StageLight.Compose(TaleLight(anim), GiantSky.Light(anim));
         foreach (var cue in anim.Cues)
         {
             var lit = StageLight.Compose(light, At(cue));

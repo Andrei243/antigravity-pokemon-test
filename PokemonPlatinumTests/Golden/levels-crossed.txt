@@ -1608,6 +1608,14 @@ galar_yell_grunt_rhys 234 (38) [Zigzagoon → Obstagoon, Linoone → Obstagoon]
 galar_youngster_alfie 225 (6) [Skwovet → Greedent]
 galar_youngster_gwyn 233 (33) [Nickit → Reynardine, Thievul → Reynardine]
 galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
+=== region Paldea
+levels 2 → 242, 62 → 258
+caps 245 246 248 249 251 253 253 254 258 (own 15 17 24 30 36 42 45 48 62)
+paldea_nemona_1a 243 (5) [Fuecoco → Skeledirge]
+paldea_nemona_1b 243 (5) [Quaxly → Quaquaval]
+paldea_nemona_1c 243 (5) [Sprigatito → Meowscarada]
+paldea_student_lucia 243 (6) [Hoppip → Jumpluff, Lechonk → Oinkologne]
+paldea_student_mateo 243 (6) [Pawmi → Pawmot, Fletchling → Talonflame]
 === region Hisui
 levels 2 → 62, 75 → 104
 === AnistarCity_Gym

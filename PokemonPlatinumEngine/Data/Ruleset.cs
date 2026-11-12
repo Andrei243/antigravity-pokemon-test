@@ -289,6 +289,13 @@ public sealed class Ruleset
     public bool Terastallization { get; private init; }
 
     /// <summary>
+    /// The Tales (plan 46 · CP11, our own; <c>docs/mechanics/rulings.md</c>, "The Tales"): a trainer with the Book of Tales
+    /// and a tale learned may tell it once a battle with a move, and for five turns its rule holds over the whole field
+    /// (<c>Data/tales.json</c>). Platinum has none of it, and the Book is Carpathia's to hand over.
+    /// </summary>
+    public bool Tales { get; private init; }
+
+    /// <summary>
     /// Mega Dynamax (plan 06 · R20c, our own; <c>docs/mechanics/rulings.md</c>, "Mega Dynamax"): a trainer with the Mega Max
     /// Band may Dynamax a Mega of a species that is neither legendary nor mythical, in the same choice as its Mega
     /// Evolution or on a later turn, spending both. Platinum has none of it.
@@ -451,6 +458,7 @@ public sealed class Ruleset
         ZMoves = true,
         Dynamax = true,
         Terastallization = true,
+        Tales = true,
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,

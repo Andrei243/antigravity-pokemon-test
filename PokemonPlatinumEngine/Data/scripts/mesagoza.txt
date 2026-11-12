@@ -1,0 +1,17 @@
+# Mesagoza (plan 34 · PD1): the old city at the head of the rise, and the great stairs up to the academy's door.
+# VAR_PALDEA_STORY is cabo_poco.txt's count. The lines are our own, on Scarlet and Violet's beats.
+
+
+# In at the south gate after the lesson: Nemona waiting to show the way up to the academy
+script NemonaAtTheGate
+  scene "Nemona at Mesagoza's gate"
+  faceto player nemona_gate
+  speaker "Nemona"
+  say "You made it! Welcome to Mesagoza, the biggest city in Paldea. Shops, cafés, and battles on every corner!"
+  say "And up there, at the top of the stairs, that's the academy. The director said to come straight to the entrance hall."
+  say "Go on up. I'll catch you later: I promised a friend a battle in the plaza. Or three."
+  setflag FLAG_PALDEA_HIDE_NEMONA_GATE
+  setvar VAR_PALDEA_STORY 6
+  objective paldeaAcademy
+  endscene
+  end

@@ -51,6 +51,8 @@ public static partial class DamageCalculator
             var bp = new List<int>();
             if (damageTenths != 10) bp.Add(damageTenths * 4096 / 10);
             if (attacker.Turn.HelpingHand) bp.Add(6144);
+            // The tale over the field (plan 46 · CP11): the moves it favours, whoever uses them
+            if (typed && BattleCore.TaleBoostPercent(field, type, move.Data.Flags) is var tale and not 100) bp.Add(tale * 4096 / 100);
             if (typed && field != null && field.Terrain is { } terrain && field.Has(terrain))
             {
                 bool boosts = terrain switch

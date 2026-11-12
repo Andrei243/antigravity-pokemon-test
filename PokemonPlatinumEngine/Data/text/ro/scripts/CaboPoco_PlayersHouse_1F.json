@@ -1,0 +1,86 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Morning, sweetheart! You'll never guess who's sitting in our kitchen. The director of the academy, in person!"
+      ],
+      "text": [
+        "Bună dimineața, scumpule! N-o să ghicești cine stă în bucătăria noastră. Directorul academiei, în persoană!"
+      ]
+    },
+    {
+      "en": [
+        "Director Clavell"
+      ],
+      "text": [
+        "Directorul Clavell"
+      ]
+    },
+    {
+      "en": [
+        "Good morning, {player}. Forgive the early visit: I like to welcome every new student myself."
+      ],
+      "text": [
+        "Bună dimineața, {player}. Iartă-mi vizita matinală: îmi place să întâmpin eu fiecare elev nou."
+      ]
+    },
+    {
+      "en": [
+        "The president of our student council lives just up the hill from you, and she has something for you. Shall we go up?"
+      ],
+      "text": [
+        "Președinta consiliului elevilor locuiește chiar sus pe deal, lângă voi, și are ceva pentru tine. Urcăm?"
+      ]
+    },
+    {
+      "en": [
+        "Her house is the one with the terrace over the sea. I'll meet you there."
+      ],
+      "text": [
+        "Casa ei e cea cu terasa deasupra mării. Ne vedem acolo."
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon of your own, I'd bet! Go on, then. And take your good shoes, there's a lot of Paldea between here and school."
+      ],
+      "text": [
+        "Un Pokémon al tău, pun pariu! Hai, du-te. Și ia-ți pantofii buni, e multă Paldea între aici și școală."
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "The director is waiting for you up at the president's house. Don't keep him standing there!"
+      ],
+      "text": [
+        "Directorul te așteaptă sus, la casa președintei. Nu-l lăsa să stea acolo!"
+      ]
+    }
+  ]
+}

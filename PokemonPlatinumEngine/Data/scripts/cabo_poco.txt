@@ -1,0 +1,60 @@
+# Cabo Poco, Paldea's first place (plan 34 · PD1), on the open world's engine: its places are
+# Data/world3d/paldea/places/cabo_poco.json, and a scene here names markers, never tiles. The lines are our own, on
+# Scarlet and Violet's beats as they are publicly described (docs/mechanics/rulings.md, "Paldea's first chapter").
+#
+# VAR_PALDEA_STORY, the first chapter's count, kept here for every place of it:
+#   0 a new game, in the bedroom                 4 the two in the grotto, one chosen; to the lighthouse
+#   1 Mom and the director downstairs            5 Nemona's lesson in catching; north to Mesagoza
+#   2 the three on the terrace, Nemona's battle   6 Nemona at Mesagoza's gate; up the stairs to the academy
+#   3 the roar on the beach; into Inlet Grotto    7 the director's welcome and the Tera Orb
+# VAR_PALDEA_VERSION is the version the game is (plan 34 · decision 2): 1 Scarlet, 2 Violet, chosen in Inlet Grotto with
+# the legendary (InletGrotto.txt), which is also VAR_PALDEA_MOUNT (plan 30 · decision 14): the one choice decides both.
+
+
+# Up on the president's terrace with the director's word: the three, the Pokédex, and Nemona's first battle
+script TheThree
+  scene "The three on the terrace"
+  faceto player clavell_terrace
+  speaker "Director Clavell"
+  say "Ah, there you are. Nemona and I were just admiring the view. Every new student of mine starts with a partner."
+  say "These three are from the academy's own nursery. Choose whichever calls to you. There is no wrong answer."
+  starter
+  text "{player} chose {starter}!"
+  speaker "Director Clavell"
+  say "A fine choice. And your phone, if you'll lend it to me... There. The academy's Pokédex is on it now."
+  setflag FLAG_HAS_POKEDEX
+  faceto player nemona_terrace
+  speaker "Nemona"
+  say "Your first Pokémon! Then you know what comes next. Battle me! Right here, right now!"
+  say "Don't worry, I'll go easy on you. Probably. Maybe a little."
+  if starter "Sprigatito" goto AgainstSprigatito
+  if starter "Fuecoco" goto AgainstFuecoco
+  battle nemona_terrace as "paldea_nemona_1c" canlose
+  goto Fought
+label AgainstSprigatito
+  battle nemona_terrace as "paldea_nemona_1a" canlose
+  goto Fought
+label AgainstFuecoco
+  battle nemona_terrace as "paldea_nemona_1b" canlose
+label Fought
+  heal
+  speaker "Nemona"
+  if lost goto NemonaWon
+  say "You beat me?! On your very first battle? Oh, this is the best day. You and I are going to be rivals, I can tell!"
+  goto Roar
+label NemonaWon
+  say "That was so much fun! You've got a real feel for it already. Next time it'll be closer, I just know it."
+label Roar
+  text "A long, low cry rises from somewhere under the cliffs."
+  speaker "Nemona"
+  say "Did you hear that? It came from the beach below Poco Path. You'll want to steer clear of it until you're stronger."
+  say "I'll go on ahead and wait for you at the lighthouse. Meet me there and I'll show you how to catch Pokémon!"
+  speaker "Director Clavell"
+  say "And I will see you both at the academy. Mesagoza is north, past Los Platos. Safe travels."
+  setflag FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  setflag FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  clearflag FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  setvar VAR_PALDEA_STORY 2
+  objective paldeaBeach
+  endscene
+  end

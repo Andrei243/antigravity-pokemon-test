@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Academy Entrance Hall"
+    ],
+    "text": [
+      "Holul de intrare al academiei"
+    ]
+  },
+  "people": {
+    "clavell_hall": {
+      "name": {
+        "en": [
+          "Director Clavell"
+        ],
+        "text": [
+          "Directorul Clavell"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the academy. Term begins properly tomorrow; tonight, settle in."
+        ],
+        "text": [
+          "Bun venit la academie. Semestrul începe de-adevăratelea mâine; în seara asta, instalează-te."
+        ]
+      }
+    },
+    "student_hall": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elev"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The library's on the second floor and the cafeteria's on the first. I still get lost every morning."
+        ],
+        "text": [
+          "Biblioteca e la etajul doi, iar cantina la primul. Încă mă rătăcesc în fiecare dimineață."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
