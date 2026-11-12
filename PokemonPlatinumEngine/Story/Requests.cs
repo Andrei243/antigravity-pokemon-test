@@ -71,7 +71,32 @@ public static class Requests
             new RequestStep("coupon3", "flag FLAG_RECEIVED_COUPON_3", "clown_3"),
             new RequestStep("president", "flag FLAG_RECEIVED_POKETCH"),
         }),
-    }.Concat(Cases.All.Select(Cases.RequestOf)).ToArray();
+    }.Concat(LockworkCells()).Concat(Cases.All.Select(Cases.RequestOf)).ToArray();
+
+    /// <summary>
+    /// Lockwork's cells (plan 44 · SD5): one request each, known once the region's Hall of Fame is entered (the agents come
+    /// out then), done when the cell's admin is beaten; Unova's has the head and the machine as a second step.
+    /// </summary>
+    private static IEnumerable<Request> LockworkCells()
+    {
+        (string Region, string Key, string Place, string Doorman)[] cells =
+        {
+            (RegionDatabase.Sinnoh, "sinnoh", "fight_area", "lockwork_doorman"),
+            (RegionDatabase.Kanto, "kanto", "vermilion_city", "lockwork_doorman"),
+            (RegionDatabase.Johto, "johto", "olivine", "lockwork_doorman"),
+            (RegionDatabase.Hoenn, "hoenn", "lilycove_city", "lockwork_doorman"),
+        };
+        foreach (var (region, key, place, doorman) in cells)
+            yield return new Request($"lockwork_{key}", region, place, doorman, $"flag {region}HallOfFame", new[]
+            {
+                new RequestStep("admin", $"flag FLAG_LOCKWORK_{key.ToUpperInvariant()}_ADMIN_BEATEN", doorman)
+            });
+        yield return new Request("lockwork_unova", RegionDatabase.Unova, "CasteliaCity", "lockwork_agent_1", $"flag {RegionDatabase.Unova}HallOfFame", new[]
+        {
+            new RequestStep("admin", "flag FLAG_LOCKWORK_UNOVA_ADMIN_BEATEN"),
+            new RequestStep("head", "flag FLAG_LOCKWORK_MACHINE_STOPPED"),
+        });
+    }
     // (and the Open Door Agency's cases, plan 41 · EG7: a request each, under case_<region>)
 
     private static readonly Dictionary<string, Request> ById = All.ToDictionary(r => r.Id, StringComparer.Ordinal);

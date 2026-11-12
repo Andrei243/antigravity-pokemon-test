@@ -18,7 +18,7 @@ internal static partial class ModernUi
 
     /// <summary>Where a photograph's place stands in words: a spot's name, else the map's place.</summary>
     public static string PhotoPlace(PhotoPrint print) =>
-        print.Spot != null ? Text.Of($"photoBook.spot.{print.Spot}") : print.Place;
+        print.Spot != null ? Text.Of($"photoBook.spot.{print.Spot}") : print.How == PhotoTaken.Studio ? Text.Of("photoBook.studio") : print.Place;
 
     /// <summary>
     /// The book: tabs (ALL, then each region), the page's six photographs three across on cream mats with their place

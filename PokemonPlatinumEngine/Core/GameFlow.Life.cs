@@ -22,6 +22,10 @@ public sealed partial class GameFlow
     public PhotoBook PhotoBook { get; } = new();
     public PhotoBookScreen PhotoBookScreen { get; } = new();
 
+    /// <summary>The photo studio (plan 43 · LF5) and the composition it was last left on (not saved: a studio opens on its last picture of the session).</summary>
+    public StudioScreen StudioScreen { get; } = new();
+    public StudioShot? LastStudioShot { get; set; }
+
     /// <summary>
     /// Where the phrase picker goes back to (plan 43 · LF1): the field, as a script's <c>phrase</c> has it, or the card
     /// designer, whose greeting it is, which hears no answer.

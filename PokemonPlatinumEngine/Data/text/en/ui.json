@@ -4103,7 +4103,7 @@
     "reclaimed": "Got it! {foe} was reclaimed from its trainer!",
     "brokeLoose": "{user}'s locked heart flared! It broke loose!",
     "looseIgnores": "{user} is loose and ignored the order!",
-    "calmedDown": "{pokemon} calmed down. Its lock eased a little.",
+    "calmedDownLock": "{pokemon} calmed down. Its lock eased a little.",
     "nothingToCalm": "{pokemon} isn't loose. There's nothing to calm.",
     "looseHurts": "{pokemon} is hurt by its own wild struggle!",
     "expHeld": "{pokemon}'s lock held back {exp} EXP. Points.",
@@ -5815,7 +5815,7 @@
       "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
       "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
       "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
-      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit"
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart"
     },
     "name": {
       "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
@@ -5824,7 +5824,7 @@
       "caught": "Catch {count} Pokémon", "newSpecies": "Catch {count} new species", "encounters": "Meet {count} wild Pokémon",
       "levelled": "Grow {count} levels in battle", "evolutions": "See {count} evolutions",
       "dexSeen": "See {count} species", "dexCaught": "Own {count} species",
-      "badges": "Win {count} Badges", "champions": "Champion of {count} regions", "circuits": "Win {count} Laurel Circuits"
+      "badges": "Win {count} Badges", "champions": "Champion of {count} regions", "circuits": "Win {count} Laurel Circuits", "heartsOpened": "Open {count} locked hearts"
     }
   },
   "sessionReport": {
@@ -6189,6 +6189,44 @@
         "coupon2": "Answer the second clown's quiz for a coupon.",
         "coupon3": "Answer the quiz of the clown by Jubilife TV.",
         "president": "Bring the three coupons to the president."
+      }
+    },
+    "lockwork_sinnoh": {
+      "title": "Lockwork's cell in Sinnoh",
+      "giver": "the agents at the Fight Area",
+      "place": "the Fight Area",
+      "reward": "Hearts opened and returned",
+      "step": { "admin": "Take the cell's hearts back from its admin, down the stairs by the quay." }
+    },
+    "lockwork_kanto": {
+      "title": "Lockwork's cell in Kanto",
+      "giver": "the agents at Vermilion City's harbour",
+      "place": "Vermilion City",
+      "reward": "Hearts opened and returned",
+      "step": { "admin": "Take the cell's hearts back from its admin, below the harbour." }
+    },
+    "lockwork_johto": {
+      "title": "Lockwork's cell in Johto",
+      "giver": "the agents at Olivine's port",
+      "place": "Olivine City",
+      "reward": "Hearts opened and returned",
+      "step": { "admin": "Take the cell's hearts back from its admin, below the port." }
+    },
+    "lockwork_hoenn": {
+      "title": "Lockwork's cell in Hoenn",
+      "giver": "the agents at Lilycove's harbour",
+      "place": "Lilycove City",
+      "reward": "Hearts opened and returned",
+      "step": { "admin": "Take the cell's hearts back from its admin, below the harbour." }
+    },
+    "lockwork_unova": {
+      "title": "Lockwork's head office",
+      "giver": "the agents at Castelia's piers",
+      "place": "Castelia City",
+      "reward": "The machine stopped and the courier's hearts",
+      "step": {
+        "admin": "Take the hearts back from the admin in the grey tower's lobby.",
+        "head": "Face Lockwork's head upstairs and stop the machine."
       }
     },
     "case_sinnoh": {
@@ -6979,6 +7017,50 @@
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
   },
+  "photoStudio": {
+    "heading": "PHOTO STUDIO",
+    "row": {
+      "Backdrop": "BACKDROP",
+      "Pose": "POSE",
+      "Face": "FACE",
+      "Pokemon": "POKéMON",
+      "Place": "PLACE",
+      "Stickers": "STICKERS",
+      "Frame": "FRAME",
+      "Take": "TAKE"
+    },
+    "backdrop": {
+      "plain": "Plain",
+      "studio_sky": "Open Sky",
+      "studio_meadow": "Meadow",
+      "studio_curtain": "Rose Curtain",
+      "studio_night": "Starry Night",
+      "studio_sunburst": "Sunburst",
+      "studio_tide": "Tide Pools",
+      "studio_peaks": "Snowy Peaks",
+      "studio_laurels": "Laurels"
+    },
+    "frame": {
+      "plain": "Plain",
+      "studio_double": "Double Line",
+      "studio_scallop": "Scallops",
+      "studio_corners": "Corner Marks",
+      "studio_gilt": "Gilt",
+      "studio_ribbon": "Ribbon"
+    },
+    "pokemon": { "none": "No one" },
+    "place": { "Right": "On the right", "Left": "On the left" },
+    "stickers": { "count": "{count} / {most}" },
+    "take": { "action": "TAKE THE PICTURE" },
+    "seals": { "heading": "YOUR SEALS" },
+    "hints": { "put": "Put down" },
+    "refusal": {
+      "notOwned": "You don't have that Seal.",
+      "full": "The picture can't hold any more stickers.",
+      "outside": "That's off the picture.",
+      "noSeals": "You have no Seals to stick on."
+    }
+  },
   "photoBook": {
     "title": "PHOTO BOOK",
     "all": "ALL",
@@ -6991,6 +7073,7 @@
     "kept": "Kept in the photo book.",
     "full": "The photo book is full: throw one away first.",
     "lost": "The picture's file is gone.",
+    "studio": "Photo studio",
     "spot": {
       "sinnoh_twinleaf_pond": "Twinleaf's Pond",
       "sinnoh_sandgem_lab": "The Lab at Sandgem",
