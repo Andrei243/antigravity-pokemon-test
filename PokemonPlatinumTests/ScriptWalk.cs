@@ -567,6 +567,12 @@ internal sealed class ScriptWalk
                 case FieldScripts.Pokemon:
                     yield return new Played("a Pokémon standing in the field", script, EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.PokemonType, Name = "Machop", Species = "Machop" }, new[] { "Machop!" }));
                     break;
+                // A Pokémon of the pasture's meadow, and one of the team at work in its fields (plan 35 · BN5, BN6)
+                case "common.PastureMember":
+                case "common.PastureWorker":
+                    yield return new Played("a Pokémon of the pasture", script, EveryWayThrough(script, new Map(8, 8),
+                        new NPC { NpcType = NPC.PokemonType, Name = "Bidoof", Species = "Bidoof" }));
+                    break;
                 // The follower spoken to with something found (plan 10 · F4)
                 case FieldScripts.FollowerFound:
                     yield return new Played("the follower with something found", script, EveryWayThrough(script, new Map(8, 8),

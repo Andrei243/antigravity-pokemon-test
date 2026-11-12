@@ -697,6 +697,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.Television, FieldScripts.Bookshelf, FieldScripts.TrashCan, FieldScripts.TownMap });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
+        // The pasture's Pokémon are laid by the game as the meadow is come to (plan 35 · BN5, BN6)
+        started.UnionWith(new[] { "common.PastureMember", "common.PastureWorker" });
         // The S.S. Tidal's last step of a voyage (plan 21 · H12, part k)
         started.Add(PokemonPlatinumEngine.Core.GameEngine.CruiseArrives);
         // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag and poison's survivors (the assistant's sister's

@@ -461,6 +461,13 @@ public partial class GameEngine
         public CareBook Care => game.flow.Care;
         public int CareDay => game.CareDay;
         public CampCare CampCare => game.flow.CampCare;
+        /// <summary>The pasture (plan 35 · BN5): the visit under way (null outside), its herd by body, and whether the PC offers it here.</summary>
+        public Overworld.PastureSave? PastureVisit => game.flow.Pasture;
+        public IReadOnlyDictionary<string, Pokemon> Herd => game.flow.Herd;
+        public bool PastureHere => game.PastureHere;
+        /// <summary>An act of the pasture, as the script's <c>pasture</c> asks it (a warp is the script's own, behind its fade).</summary>
+        public PastureAnswer Pasture(string act, int number = 0, Overworld.NPC? subject = null, string? item = null) =>
+            game.PastureAct(act, number, subject, item, game.WarpTo);
         /// <summary>The care close-up (plan 35 · BN2), and the camp's way into it for the Pokémon under its cursor.</summary>
         public CareScreen CareCloseUp => game.flow.CareScreen;
         public void OpenCare() => game.OpenCare();

@@ -315,6 +315,8 @@ public static class RegionDatabase
             Harbour = new MapSpot("Sinnoh", 44, 751, Direction.Right),
             Maps = new[]
             {
+                // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
+                "SinnohPasture",
                 // The imported world: the overworld, and the places that are matrices of their own
                 "Sinnoh", "LakeVerity", "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath", "FloaromaMeadow",
                 // Plan 01 · M6: Eterna Forest, the caves of the centre, Amity Square and the Solaceon Ruins' rooms
@@ -631,6 +633,8 @@ public static class RegionDatabase
             Harbour = new MapSpot("Olivine_PortHall", 7, 8, Direction.Down),
             Maps = new[]
             {
+                // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
+                "JohtoPasture",
                 "Johto",
                 // Plan 44 · SD3: Lockwork's cell at Olivine's port, a room of ours
                 "LockworkCellJohto",
@@ -931,6 +935,8 @@ public static class RegionDatabase
             Harbour = new MapSpot("MistraltonCity_CargoHall", 23, 16, Direction.Up),
             Maps = new[]
             {
+                // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
+                "UnovaPasture",
                 "Unova",
                 // Plan 22 · U2: Aspertia City's rooms, its gate to Route 19, its school and the Gym behind it, Floccesy
                 // Town's rooms and the ranch's field, each a matrix of the import

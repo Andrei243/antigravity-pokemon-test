@@ -260,6 +260,8 @@ public class PokemonTests
             && mapName != "HiddenGrotto"
             // (and the Nature Preserve, flown to and from by the pilots' scripts, plan 22 · U10, part h)
             && mapName != "NaturePreserve"
+            // (and the pasture, come to from a PC and left by its gate's script, plan 35 · BN5)
+            && !PokemonPlatinumEngine.Overworld.Pasture.IsPasture(mapName)
             // (and Alola's worlds of Ultra Space, which a wormhole over the Altar's dais leads into and a wormhole read in
             // each leads out of by a script, plan 23 · Z8: only Ultra Megalopolis has doors of its own)
             && !(mapName.StartsWith("Ultra", StringComparison.Ordinal) && RegionDatabase.RegionOfMap(mapName)?.Id == RegionDatabase.Alola))
@@ -267,6 +269,9 @@ public class PokemonTests
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
         if (map.IsStreamed) return;
+        // The pasture has no warp in or out: a PC's script puts the player at its gate (PastureTests, and the walk of the
+        // whole game, which reaches it from every PC, plan 35 · BN5)
+        if (PokemonPlatinumEngine.Overworld.Pasture.IsPasture(mapName)) return;
 
         // Every tile another map warps the player onto in this map
         var arrivals = walkArrivals![mapName].ToList();

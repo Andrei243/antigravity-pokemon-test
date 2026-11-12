@@ -8578,7 +8578,7 @@ Sun and Moon's islands and Sword and Shield's jobs, in our own words and with ou
 - **Who**: the boxes' Pokémon only, no Egg, none of the team (decision 2's recommendation); up to three away at once. A Pokémon away is held whole in its job (`SaveData.Jobs`), in no box, team or count, and comes back as it went plus its pay.
 - **The clock**: the computer's (`WallClock.UtcNow`), so a job runs while the game is shut. Only whole hours are paid, never more than asked for (1 to 24), and a clock that reads earlier than the job's start pays nothing and leaves the job as it is. Bringing a Pokémon back early pays the hours so far. `SaveData.LastSaved` is written with every save (UTC).
 - **The rates** (one table, `JobBoard`, which a session can turn down): EXP as a share of the level the Pokémon is at, an errand a level's worth in eight hours, the orchard and the hot spring half that, and never more than one level's worth for one job (so a night pays at most a level); a point of effort an hour (an errand Speed, the orchard HP, the hot spring Sp. Def.), through `EffortRules.Gain` and its limits; friendship an hour, two in the hot spring and one elsewhere; a berry of Platinum's every two hours in the orchard and every six on an errand, drawn from a table of ten on the board's own generator. Moves are learned as a level learns them (one that doesn't fit is passed over), and an evolution the levels allow plays from the board, as the bag's do.
-- **Not built**: the nursery that hatches Eggs (a kind still to come).
+- **The pasture's fields** (plan 35 · BN6, 2026-11-12): two kinds more, appended to `JobKind`. The **nursery** takes an Egg and nothing else (every other kind refuses an Egg), counts its cycles down by five an hour (ours: a night of eight hours brings an Egg of forty cycles to hatching) and pays nothing else, since an Egg's friendship field is its cycles; one brought back with none left hatches as it is collected, its scene played from the board as an evolution's is, and comes back to the boxes; one brought back early is nearer hatching. Join Avenue's nursery (plan 22 · U11) stays as it is. The **cave** pays half an errand's EXP and Speed's effort, no berries, and brings a find every three hours from a table of its region (ours: evolution stones, shards, treasures to sell, Heart Scales; never a fossil or anything that gives a species, so no region's species check moves), a Rock, Ground or Steel type one more every six hours. The **orchard** brings one of the five sold treats every eight hours besides its berries, drawn after them so a harvest's berries are what they were. **Six** may be away at once (decision 5; three before), and a save keeps every job it holds (no longer cut to the board's size as it loads). The orchard's pickers stand under the pasture's trees and the hot spring's bathers in its pool, still, saying how long they have left; an errand, the nursery's Egg and a dig are out of sight (the basket and the cart are owed to a drawing).
 ## The follower and wild Pokémon in sight
 
 Plan 10 · F2 to F5 (2026-11-02). Neither is Platinum's: both are rows of the options, off unless chosen, and with both off the field is Platinum's to the bit (no follower object, no Pokémon in the grass, every roll as before).
@@ -11694,6 +11694,41 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   is the place's name) and a town or city (`followerTalk.place.*`); otherwise F4's line of its band. The line in its own
   region is not built (every Pokémon belongs to the region it was met in, so it would be every line). Its bubbles of its own
   are the style guide's ("The follower"). Nothing of it with the FOLLOWER row off.
+
+## The pasture (2026-11-12, plan 35 · BN5)
+
+Poké Pelago's and the later games' pastures as mechanics; the meadow, its keeper, its board and every line are ours.
+
+- **One plan, a copy to each region**: `SinnohPasture` is the plan (26 by 20: a rock face with a cave's mouth, a pond, a row
+  of orchard trees, a hot spring's pool, a shed with the board before it, a fence and a gate south), and `JohtoPasture`
+  and `UnovaPasture` are copies of it with their region's song (a stand-in of the region's own until a song of ours is
+  heard and approved). Kanto and Hoenn have none yet: their Pokémon Centers have no PC to use (FireRed's and Emerald's PC
+  is a tile behaviour, `Computer`, which nothing reads), so their copies wait for that. The plan is a map of Sinnoh's, not a bare `Pasture.json`, since every map
+  belongs to exactly one region. A region's file names its copy (`pasture`); Kalos and the regions after it have none yet,
+  so their PCs offer none. The meadow has no box link (`noBoxLink`), so the boxes are reached only through its board.
+- **The way in is every PC** (decision 4): under the modern rules, where the region has a pasture, `common.PC` asks first
+  (USE THE PC, GO TO THE PASTURE, SWITCH OFF; written after the PC's own lines, so their translations keep their places).
+  `pasture enter` notes the tile and the facing and warps the player to the gate (13, 17); the gate's row runs
+  `common.PastureGate`, and `pasture leave` puts them back on the tile before the PC, facing it. The visit is
+  `SaveData.Pasture` (null outside, no version raised). Fly, Teleport, Dig and an Escape Rope are refused there
+  (`FieldSpot.FlyAllowed` false). A visit nobody began at a PC (a tool's warp) goes back to the region's harbour.
+- **The herd** is the box shown (the PC's current box as the player came in; the board turns it one way or the other and
+  the PC's own box follows): each of its Pokémon but an Egg is a Pokémon of the map, dressed as a follower is, put on
+  a tile of the meadow north of row 13 (so that wandering never reaches the fence's gap), never the player's own tile, by
+  `SplitMix` of the box and the slot alone (the same box stands in the same places every visit;
+  nothing is drawn from the dice), wandering two tiles round it. The herd is laid as the meadow is come to (a save made
+  there included) and laid again whenever the boxes change under it (the board's jobs, a hatching), and taken off as the
+  meadow is left; it is never saved.
+- **Spoken to**, one cries, shows its mood's bubble and word, gives up what it holds today, and asks: PET (the care book's
+  pat), TREAT (the bag's berries and treats, `chooseitem meal`, eaten by the book's rules), CARE (the close-up, back to the
+  meadow as it closes), TAKE ALONG, LEAVE BE. TAKE ALONG asks what the PC asks: a full team (at the run's size) and a
+  Monotype refuse it, an Egg never walks. A Nuzlocke's fallen are in no box, so none is ever in the meadow. A locked heart
+  (plan 44) is taken along as the PC withdraws one, since the team is where it opens.
+- **Finds**: once a day one Pokémon in eight holds something, decided by `SplitMix` of the day and its id, from a table of
+  its region (ours: berries, the five sold treats, now and then a Heart Scale); the day it gave one up is its care page's
+  (`CareRecord.FoundDay`), so a second visit that day finds nothing on it.
+- **Not built**: the PC's box screen opened to pick a box (the board turns the boxes one at a time), the shots and the
+  frame's time with thirty in view.
 
 ## The card-flip game (2026-11-12, plan 42 · PS3)
 

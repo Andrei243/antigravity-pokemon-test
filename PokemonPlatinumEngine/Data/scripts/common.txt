@@ -861,6 +861,9 @@ label NoSeals
 # The modern rules' PC (plan 15 · E3): storage, the jobs board, the Ball Capsules with a Seal Case, and off. Written
 # after the rest so that Platinum's own lines keep their places
 label Modern
+  # Where the region has a pasture, the PC asks first whether to go there (plan 35 · BN5; the question is written last)
+  if pasture goto PastureFirst
+label ModernMenu
   # With the crafting kit in the bag, the PC offers the TM maker too (plan 39 · CR4)
   craft has
   if result == 1 goto ModernKit
@@ -895,6 +898,17 @@ label ModernKitCapsules
 label Maker
   craft tm
   goto Off
+# The pasture (plan 35 · BN5): asked first where the region has one, and written after the rest so that the PC's own
+# lines keep their places. The way in is a warp to the meadow's gate; its gate leads back to this tile
+label PastureFirst
+  choose "What should be done?" "USE THE PC" "GO TO THE PASTURE" "SWITCH OFF"
+  if result == 1 goto Pasture
+  if result == 2 goto Off
+  goto ModernMenu
+label Pasture
+  anim pc off
+  pasture enter
+  end
 
 
 # The Ribbon Syndicate of the Resort Area (plan 06 · R17b; scripts_resort_area_ribbon_syndicate_1f.s). Its building
@@ -4502,4 +4516,108 @@ label NoLoaf
   end
 label Bye
   say "Come back with your berries any time."
+  end
+
+
+# The pasture (plan 35 · BN5): a meadow of our own every PC of the region leads to, where one box of the PC walks
+# about. Its keeper by the gate says what it is for.
+script PastureKeeper
+  face self player
+  speaker "Meadow Keeper"
+  say "Welcome to the pasture! One box of your PC grazes here at a time. The board by the shed changes which."
+  say "Speak to any of them to give a pat, share a treat, look after them close up, or take one along."
+  say "Now and then one turns up holding something it found. Do have a look!"
+  end
+
+
+# A Pokémon of the meadow spoken to (plan 35 · BN5): it cries and shows how it feels, gives up anything it was holding
+# today, and waits to be petted, fed, looked after close up or taken along.
+script PastureMember
+  cry own
+  pasture mood
+  say "{self} looks {thing}."
+  pasture find
+  if result == 0 goto Ask
+  sound "select"
+  say "{self} was holding something! {player} received the {item}."
+label Ask
+  choose "What will you do?" "PET" "TREAT" "CARE" "TAKE ALONG" "LEAVE BE"
+  if result == 0 goto Pet
+  if result == 1 goto Treat
+  if result == 2 goto Care
+  if result == 3 goto Take
+  end
+label Pet
+  pasture pet
+  say "{player} gave {self} a gentle pat. It leaned into the hand."
+  end
+label Treat
+  chooseitem meal
+  if result == 0 end
+  pasture feed
+  if result == 0 goto Full
+  if result == 2 end
+  say "{self} ate the {item} happily."
+  end
+label Full
+  say "{self} is too full to eat any more today."
+  end
+label Care
+  pasture care
+  end
+label Take
+  pasture take
+  if result == 2 goto TeamFull
+  if result == 3 goto NotThisRun
+  if result != 1 end
+  sound "select"
+  say "{self} joined {player}'s team!"
+  end
+label TeamFull
+  say "There's no room on the team for {self}."
+  end
+label NotThisRun
+  say "The rules of this run won't let {self} come along."
+  end
+
+
+# The pasture's board by the shed (plan 35 · BN5, BN6): which box walks the meadow, and the jobs in its fields.
+script PastureBoard
+  pasture box
+  say "The Pokémon of {thing} are out in the meadow."
+  choose "What will you do?" "POKé JOBS" "NEXT BOX" "PREVIOUS BOX" "LEAVE IT"
+  if result == 0 goto Jobs
+  if result == 1 goto Next
+  if result == 2 goto Previous
+  end
+label Jobs
+  jobs
+  end
+label Next
+  pasture box 1
+  say "The Pokémon of {thing} came out into the meadow."
+  end
+label Previous
+  pasture box -1
+  say "The Pokémon of {thing} came out into the meadow."
+  end
+
+
+# The pasture's gate (plan 35 · BN5): back to the PC the visit began at.
+script PastureGate
+  ask "Head back to the PC?"
+  if no end
+  pasture leave
+  end
+
+
+# One of the team's Pokémon away on a job of the pasture's fields, seen at its work (plan 35 · BN6): how long it has left.
+script PastureWorker
+  cry own
+  pasture job
+  if result == 0 goto Done
+  say "{self} is hard at work in the {thing}. It has about {number} more hours to go."
+  end
+label Done
+  say "{self} has finished in the {thing}. Bring it back at the board by the shed."
   end

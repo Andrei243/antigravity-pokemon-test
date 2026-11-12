@@ -738,7 +738,7 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Photo, Line = line, Name = photoWord, Other = photoWord == "spot" ? r.Text("a photo spot's id") : null };
             }
             case "chooseitem":
-                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift") };
+                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift", "meal") };
             case "swarms":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Swarms, Line = line };
@@ -1198,6 +1198,15 @@ public static class ScriptParser
             // `heart count`, `heart missed`, `heart opened`
             case "heart":
                 return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
+
+            // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
+            // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`
+            case "pasture":
+            {
+                string act = r.OneOf("enter", "leave", "box", "count", "mood", "find", "pet", "feed", "care", "take", "job");
+                int turn = act == "box" && r.More ? r.Int("-1 or 1") : 0;
+                return new Instruction { Op = Op.Pasture, Line = line, Name = act, Number = turn };
+            }
 
             case "treat":
             {
@@ -1703,6 +1712,9 @@ public static class ScriptParser
                 return new Condition { Query = Query.Mirage, Negated = negated };
             case "modern":
                 return new Condition { Query = Query.Modern, Negated = negated };
+            // The PC offers the pasture (plan 35 · BN5)
+            case "pasture":
+                return new Condition { Query = Query.Pasture, Negated = negated };
             // The diploma of a Pokédex is held (plan 40 · GE4)
             case "diploma":
             {

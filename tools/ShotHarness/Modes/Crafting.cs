@@ -335,7 +335,7 @@ partial class Harness
             if (engine.Choice.IsOpen)
             {
                 until(() => engine.Choice.Shown >= 0.99f, "the PC's menu", 120);
-                if (!menuShot) { Shot("cr30_pc_menu"); menuShot = true; }
+                if (!menuShot && engine.Choice.Options.Contains("TM MAKER")) { Shot("cr30_pc_menu"); menuShot = true; }
                 Console.WriteLine($"pc menu: {string.Join(" / ", engine.Choice.Options)}");
                 int maker = engine.Choice.Options.ToList().IndexOf("TM MAKER");
                 for (int k = 0; k < maker; k++) engine.Choice.Move(1);

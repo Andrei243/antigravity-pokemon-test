@@ -260,5 +260,85 @@
         ""
       ]
     }
+  ],
+  "StudioDesk": [
+    {
+      "en": [
+        "Director Wren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, a new face! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We lend you the cast. Say the script's lines or your own, and the take ends however you play it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back for another take? Splendid! The studio keeps your best take of every film."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which film shall we shoot?",
+        "THE EMPTY SEAT",
+        "THE GILDED HOUR",
+        "NOT TODAY"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you feel like a star!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Director Wren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's a wrap! Every take you shoot goes into the studio's records."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Magnificent! That's the take the posters will be painted from!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

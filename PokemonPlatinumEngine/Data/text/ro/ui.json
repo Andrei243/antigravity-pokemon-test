@@ -6234,15 +6234,17 @@
     "hoursValue": "{n} h",
     "dueBack": "SE ÎNTOARCE",
     "hoursDone": "{done} din {of} ore",
-    "kind": { "Errand": "COMISIOANE", "Orchard": "LIVADĂ", "HotSpring": "IZVOR CALD" },
+    "kind": { "Errand": "COMISIOANE", "Orchard": "LIVADĂ", "HotSpring": "IZVOR CALD", "Nursery": "PEPINIERĂ", "Cave": "PEȘTERĂ" },
     "pays": {
       "errand": "Face comisioane prin oraș: un nivel de EXP în opt ore, efort la Viteză și din când în când o bacă.",
       "orchard": "Ajută la cules: jumătate din EXP-ul comisioanelor, efort la HP și o bacă la fiecare două ore.",
-      "hotSpring": "Se odihnește într-un izvor cald: jumătate din EXP-ul comisioanelor, efort la Ap. Sp. și prietenie dublă."
+      "hotSpring": "Se odihnește într-un izvor cald: jumătate din EXP-ul comisioanelor, efort la Ap. Sp. și prietenie dublă.",
+      "nursery": "Ține un Ou la cald în șopronul pășunii: o noapte acolo aduce cele mai multe Ouă la eclozare, iar oul eclozează când se întoarce.",
+      "cave": "Sapă în peștera pășunii: o descoperire la fiecare trei ore (pietre, cioburi, comori) și mai multe pentru un tip Rocă, Pământ sau Oțel."
     },
     "hint": { "bringBack": "Adu înapoi", "send": "Trimite" },
     "about": "Pokémonii din cutii pot lua slujbe cât lipsești, chiar și cu jocul închis. Alege un loc gol ca să trimiți unul.",
-    "boardNote": "Cel mult trei Pokémoni pot fi plecați deodată. Sunt plătiți pentru orele întregi petrecute la slujbă.",
+    "boardNote": "Cel mult șase Pokémoni pot fi plecați deodată. Sunt plătiți pentru orele întregi petrecute la slujbă.",
     "noneInTheBoxes": "Nu ai Pokémoni în cutii pe care să-i trimiți.",
     "boxesFull": "Cutiile tale sunt pline. Fă loc înainte să aduci un Pokémon înapoi.",
     "clockBack": "Ceasul arată mai devreme decât atunci când a plecat. Nu s-a întors încă.",
@@ -6255,7 +6257,9 @@
       "move": "A învățat {move}!",
       "effort": "A câștigat {n} efort la {stat}.",
       "friendship": "Ține mai mult la tine.",
-      "berry": "A adus {item} ×{n}."
+      "berry": "A adus {item} ×{n}.",
+      "hatching": "Oul e gata să eclozeze!",
+      "warmer": "Oul e mai cald și mai aproape de eclozare."
     }
   },
   "requests": {
@@ -7452,5 +7456,15 @@
     "openedScene": "Inima lui {pokemon} s-a deschis! E din nou el însuși!",
     "openedLevel": "{pokemon} a primit ce câștigase și a crescut la Nv. {level}!",
     "movesWanted": "{pokemon} vrea să învețe o mișcare nouă. Învaț-o la Reamintitorul de mișcări sau cu REAMINTEȘTE."
+  },
+  "pasture": {
+    "job": { "Errand": "oraș", "Orchard": "livadă", "HotSpring": "izvor cald", "Nursery": "pepinieră", "Cave": "peșteră" },
+    "mood": {
+      "Glum": "abătut",
+      "Low": "puțin trist",
+      "Calm": "liniștit",
+      "Cheerful": "vesel",
+      "Elated": "în culmea fericirii"
+    }
   }
 }

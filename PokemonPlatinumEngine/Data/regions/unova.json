@@ -75,5 +75,7 @@
   "levels": [[2, 162], [59, 185], [80, 203]],
   // Plan 18 · W4b-1: the level cap by Badges held, Black 2's own levels (the Leaders' best in rising order, then
   // Iris's); mapped by "levels" where the region is crossed into
-  "caps": [13, 18, 24, 30, 33, 39, 48, 51, 59]
+  "caps": [13, 18, 24, 30, 33, 39, 48, 51, 59],
+  // Plan 35 · BN5: the copy of the pasture every PC of the region leads to
+  "pasture": "UnovaPasture"
 }

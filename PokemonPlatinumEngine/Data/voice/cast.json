@@ -9060,6 +9060,23 @@
         "accent": "en-us"
       }
     },
+    "meadow_keeper": {
+      "note": "first spoken at common.txt(4526)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "the pasture's keeper, a rancher: warm, outdoorsy and unhurried, fond of every Pokémon in the meadow"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 0.98,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
+    },
     "mechadoll_1": {
       "note": "first spoken at route_110_trick_house_puzzle_5.txt(27)",
       "provisional": true
@@ -11453,6 +11470,7 @@
     "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",
+    "Meadow Keeper": "meadow_keeper",
     "Mechadoll 1": "mechadoll_1",
     "Mechadoll 2": "mechadoll_2",
     "Mechadoll 3": "mechadoll_3",

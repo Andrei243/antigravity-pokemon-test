@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Castelia City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "lockwork_head": {
+      "name": {
+        "en": [
+          "Orsolya Keld"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

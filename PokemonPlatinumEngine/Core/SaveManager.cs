@@ -374,6 +374,12 @@ public class SaveData
     /// </summary>
     public Models.CareSave? Care { get; set; }
 
+    /// <summary>
+    /// A visit to the pasture under way (plan 35 · BN5): the box shown and the PC the gate leads back to. Null in saves
+    /// from before it, and whenever the player isn't in the pasture.
+    /// </summary>
+    public Overworld.PastureSave? Pasture { get; set; }
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3). Null in saves from before it, and until its manager is first spoken to.</summary>
     public Models.PlazaSave? Plaza { get; set; }
 

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Turffield Stadium"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "turffield_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "turffield_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

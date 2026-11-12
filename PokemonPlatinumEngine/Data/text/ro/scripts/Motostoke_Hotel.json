@@ -1,0 +1,118 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Team Yell Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oi! Another challenger? Team Yell's backing Marnie, and Marnie only. You'd best go home!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're not moving from this counter till every room's ours. Yell, yell, yell!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chairman Rose"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now then! The gym challenge is a celebration. I won't have challengers kept from their rest by shouting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Yell Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The chairman? Right, we're off. This isn't over!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chairman Rose"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My apologies for that. Rose, chairman of the Pokémon League. And you must be one of Leon's endorsed challengers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rest well. Tomorrow the whole of Galar will be watching you. I look forward to the show!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} checked in and slept soundly. The morning of the opening ceremony came bright and loud."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HotelClerk": [
+    {
+      "en": [
+        "Hotel Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good luck in the challenge! We keep a room for every challenger, the night before the ceremony."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the hotel. Challengers for the gym challenge have a room waiting."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

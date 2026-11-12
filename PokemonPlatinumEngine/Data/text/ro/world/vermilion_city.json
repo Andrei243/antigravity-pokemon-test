@@ -94,6 +94,56 @@
         ]
       }
     },
+    "lockwork_doorman": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_1": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_2": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_3": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_agent_4": {
+      "name": {
+        "en": [
+          "Lockwork Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "vermilion_city.Captain": {
       "name": {
         "en": [

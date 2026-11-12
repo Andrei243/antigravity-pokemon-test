@@ -297,7 +297,8 @@ public static class FieldMoveRules
             Dark = Darkness.Covers(map) && map.FlashLifts,
             Surfing = walker.Mode == TravelMode.Surfing,
             Region = RegionDatabase.RegionOfMap(map.Name)?.Id ?? RegionDatabase.Sinnoh,
-            FlyAllowed = area?.FlyAllowed ?? !map.IsIndoors,
+            // (nobody flies, teleports or digs out of the pasture: its gate is the way back to the PC, plan 35 · BN5)
+            FlyAllowed = area?.FlyAllowed ?? (!map.IsIndoors && !Pasture.IsPasture(map.Name)),
             Town = area?.IsTown ?? false,
             CaveWithAWayOut = (area?.IsCave ?? map.Setting == MapSetting.Cave) && (area?.EscapeRopeAllowed ?? false)
         };

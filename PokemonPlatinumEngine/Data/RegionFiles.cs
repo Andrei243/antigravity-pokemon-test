@@ -161,6 +161,12 @@ public sealed class RegionFile
     public List<int[]>? Levels { get; set; }
 
     /// <summary>
+    /// The region's pasture (plan 35 · BN5): the map of its copy of the meadow every PC leads to, one of its own
+    /// <see cref="Maps"/>. None for a region without one, whose PCs offer none.
+    /// </summary>
+    public string? Pasture { get; set; }
+
+    /// <summary>
     /// The level cap by Badges held (plan 13 · V3; plan 18 · W4b-1), in the region's own game's levels: index 0 the cap
     /// with none, the last the cap with every Badge (the Champion's). <c>LevelCaps.TableOf</c> reads it and maps it by
     /// <see cref="Levels"/> where the region is crossed into. None where the region has no table yet.

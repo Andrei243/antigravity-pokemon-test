@@ -39,13 +39,16 @@ public sealed class CareRecord
     /// <summary>A battle has been fought since its last cure: the next cure clears its status.</summary>
     public bool CureOwed { get; set; } = true;
 
+    /// <summary>The day it last gave up something it was holding in the pasture (plan 35 · BN5); none yet.</summary>
+    public int FoundDay { get; set; } = -1;
+
     /// <summary>Whether the page says nothing a new page wouldn't (a page like that is not kept in the save).</summary>
-    public bool IsBlank => Marks.Count == 0 && Meals == 0 && PatDay < 0 && GroomDay < 0 && Mood == 0 && CureOwed;
+    public bool IsBlank => Marks.Count == 0 && Meals == 0 && PatDay < 0 && GroomDay < 0 && Mood == 0 && CureOwed && FoundDay < 0;
 
     public CareRecord Copy() => new()
     {
         Id = Id, Marks = new List<SoilMark>(Marks), MealDay = MealDay, Meals = Meals, PatDay = PatDay, GroomDay = GroomDay,
-        Mood = Mood, CureOwed = CureOwed
+        Mood = Mood, CureOwed = CureOwed, FoundDay = FoundDay
     };
 }
 

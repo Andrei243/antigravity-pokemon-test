@@ -200,6 +200,15 @@ public sealed partial class GameFlow
     public CareBook Care { get; } = new();
 
     /// <summary>
+    /// A visit to the pasture under way (plan 35 · BN5): the box shown and the PC to go back to; null outside. Saved as
+    /// <c>SaveData.Pasture</c>.
+    /// </summary>
+    public PastureSave? Pasture { get; set; }
+
+    /// <summary>The herd of the pasture as it stands now, by the id of its body on the map (plan 35 · BN5; not saved).</summary>
+    public System.Collections.Generic.Dictionary<string, Pokemon> Herd { get; } = new();
+
+    /// <summary>
     /// The camp (plan 10 · F6), a view over the care book since plan 35 · BN1: each Pokémon's cure and the day's pats and
     /// meals are its page's, on the game's own day.
     /// </summary>

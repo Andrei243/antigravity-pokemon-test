@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Turffield Stadium! Milo's gym mission is through the doors behind me: herd the Wooloo into their pens."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Walk into a Wooloo and it trots along ahead of you. Clear the way, and Milo will be waiting on the pitch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Grass Badge! Hulbury's gym is next, down Route 5."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Milo's Grass types shrug off water and ground, but fire and flying moves give them a hard time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Milo! That's one badge down. Seven to go!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

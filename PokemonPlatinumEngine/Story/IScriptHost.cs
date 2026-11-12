@@ -636,6 +636,16 @@ public interface IScriptHost
         Hearts?.Open(opening.LockId);
     }
 
+    /// <summary>The PC offers the pasture here (plan 35 · BN5): the region the player stands in has one, under the modern rules. None where a host keeps none.</summary>
+    bool PastureHere => false;
+
+    /// <summary>
+    /// An act of the pasture (plan 35 · BN5; the script's <c>pasture</c>): the way in and out, the box shown, and what is done
+    /// with the Pokémon of the meadow the script belongs to (<paramref name="subject"/>), the item last chosen given for a meal.
+    /// A host with no pasture answers 0 to everything.
+    /// </summary>
+    PastureAnswer Pasture(string act, int number, NPC? subject, string? item) => new(0);
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3); none where a host keeps none, and <c>plaza</c> then does nothing.</summary>
     PlazaState? Plaza => null;
 

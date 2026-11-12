@@ -72,6 +72,7 @@ internal static class WorldWalk
         // they are there and whatever they stand on (plan 02 · S12): Cynthia by the tear at Spear Pillar, who is hidden
         // until her scene, and a portal of the Distortion World, which hangs on rock or over nothing
         var sending = new Dictionary<Map, Dictionary<(int X, int Y), List<PokemonPlatinumEngine.Story.Instruction>>>();
+        var pcsLookedAt = new HashSet<Map>();
         Dictionary<(int X, int Y), List<PokemonPlatinumEngine.Story.Instruction>> SendingOf(Map map)
         {
             if (sending.TryGetValue(map, out var found)) return found;
@@ -154,6 +155,15 @@ internal static class WorldWalk
                             Visit(into, way.TargetX, way.TargetY, TravelMode.OnFoot, into.HeightAt(way.TargetX, way.TargetY), arrived: true);
                         }
                 continue;
+            }
+
+            // A PC leads to its region's pasture, in at the meadow's gate (plan 35 · BN5)
+            if (pcsLookedAt.Add(map) && (map.Everyone.Any(n => n.IsPCTerminal) || map.TileScripts.Any(t => t.Value == "PC"))
+                && RegionDatabase.RegionOfMap(map.Name) is { } pcRegion && Pasture.MapOf(pcRegion.Id) is { } pastureName)
+            {
+                var meadow = mapOf(pastureName);
+                if (meadow.Name == pastureName && meadow.InBounds(Pasture.GateX, Pasture.GateY))
+                    Visit(meadow, Pasture.GateX, Pasture.GateY, TravelMode.OnFoot, meadow.HeightAt(Pasture.GateX, Pasture.GateY), arrived: true);
             }
 
             // The Explorer Kit leads down from anywhere the region's own map is walked (plan 06 · R16a): onto the tile of

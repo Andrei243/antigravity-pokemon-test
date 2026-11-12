@@ -41,6 +41,9 @@ partial class Harness
         {
             for (int i = 0; i < 120 && State() == GameState.Dialogue && !engine.Choice.IsOpen; i++) { if (Box().IsActive) Box().FinishLine(); Frames(1); }
             if (engine.Choice.IsOpen) { engine.Choice.Confirm(); Frames(20); }
+            // (where the region has a pasture the PC asks first whether to go there, plan 35 · BN5: USE THE PC, then the boxes)
+            for (int i = 0; i < 120 && !engine.Choice.IsOpen && engine.ScriptRunning && game.State != GameState.PCStorage; i++) Frames(1);
+            if (engine.Choice.IsOpen) { engine.Choice.Confirm(); Frames(20); }
         }
 
         // ---- the nurse: a welcome, a question with its answers, the team made well

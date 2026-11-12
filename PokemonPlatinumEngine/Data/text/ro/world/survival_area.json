@@ -99,6 +99,16 @@
           "Se zice că ceva se mișcă în vulcanul din nord. Dacă se arată, camera mea va filma."
         ]
       }
+    },
+    "lockwork_looker": {
+      "name": {
+        "en": [
+          "Looker"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

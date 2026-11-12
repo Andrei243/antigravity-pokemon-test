@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Castelia City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "lockwork_admin": {
+      "name": {
+        "en": [
+          "Juno Barrow"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lockwork_courier": {
+      "name": {
+        "en": [
+          "Courier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

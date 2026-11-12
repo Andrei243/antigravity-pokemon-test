@@ -1,0 +1,77 @@
+{
+  "displayName": {
+    "en": [
+      "Motostoke Hotel"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hotel_clerk": {
+      "name": {
+        "en": [
+          "Hotel Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "yell_grunt_1": {
+      "name": {
+        "en": [
+          "Team Yell Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Yell's here for Marnie! Ain't nobody getting past us!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "yell_grunt_2": {
+      "name": {
+        "en": [
+          "Team Yell Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ugh, the chairman himself? Let's scarper!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rose_hotel": {
+      "name": {
+        "en": [
+          "Chairman Rose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A good night's rest is the first step of any challenge."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -16734,6 +16734,56 @@ way -
   * anim pc on
   * open Pc
   * anim pc off
+=== common.PastureBoard
+from a trainer with lines of their own
+way 0
+  Anyone> The Pokémon of  are out in the meadow.
+  Anyone> What will you do?
+  ? What will you do? = POKé JOBS
+  * open Jobs
+way 3, from answer 1
+  ? What will you do? = LEAVE IT
+way 2, from answer 1
+  Anyone> The Pokémon of  came out into the meadow.
+  ? What will you do? = PREVIOUS BOX
+way 1, from answer 1
+  Anyone> The Pokémon of  came out into the meadow.
+  ? What will you do? = NEXT BOX
+=== common.PastureGate
+from a trainer with lines of their own
+way 0
+  Anyone> Head back to the PC?
+  ? Head back to the PC? = Yes
+way 1, from answer 1
+  ? Head back to the PC? = No
+=== common.PastureKeeper
+from a trainer with lines of their own
+way -
+  Meadow Keeper> Welcome to the pasture! One box of your PC grazes here at a time. The board by the shed changes which.
+  Meadow Keeper> Speak to any of them to give a pat, share a treat, look after them close up, or take one along.
+  Meadow Keeper> Now and then one turns up holding something it found. Do have a look!
+=== common.PastureMember
+from a Pokémon of the pasture
+way 0
+  Bidoof> Bidoof looks .
+  Bidoof> What will you do?
+  Bidoof> Lucas gave Bidoof a gentle pat. It leaned into the hand.
+  ? What will you do? = PET
+  * cry Bidoof
+way 4, from answer 1
+  ? What will you do? = LEAVE BE
+way 3, from answer 1
+  ? What will you do? = TAKE ALONG
+way 2, from answer 1
+  ? What will you do? = CARE
+way 1, from answer 1
+  ? What will you do? = TREAT
+  * open ChooseItem meal none
+=== common.PastureWorker
+from a Pokémon of the pasture
+way -
+  Bidoof> Bidoof has finished in the . Bring it back at the board by the shed.
+  * cry Bidoof
 === common.PoisonSurvived
 from a trainer with lines of their own
 way -

@@ -74,8 +74,16 @@ public class JobsScreen
         _ => Chosen
     };
 
-    public void Open(JobBoard board, PcBoxes boxes, Inventory bag, Random random)
+    /// <summary>The region the board stands in: the cave's finds are its (plan 35 · BN6).</summary>
+    public string Region { get; private set; } = Data.RegionDatabase.Sinnoh;
+
+    /// <summary>The kinds of job the chosen Pokémon may be given: the nursery alone for an Egg, every other kind for the rest (plan 35 · BN6).</summary>
+    public static IReadOnlyList<JobKind> KindsFor(Pokemon? pokemon) =>
+        pokemon is { IsEgg: true } ? new[] { JobKind.Nursery } : Enum.GetValues<JobKind>().Where(k => k != JobKind.Nursery).ToArray();
+
+    public void Open(JobBoard board, PcBoxes boxes, Inventory bag, Random random, string? region = null)
     {
+        Region = region ?? Data.RegionDatabase.Sinnoh;
         Board = board;
         Boxes = boxes;
         Bag = bag;
@@ -134,8 +142,9 @@ public class JobsScreen
         if (Phase != JobsPhase.Setup || delta == 0) return;
         if (SetupRow == JobsSetupRow.Kind)
         {
-            var kinds = Enum.GetValues<JobKind>();
-            Kind = kinds[UiNav.Wrap(Array.IndexOf(kinds, Kind), Math.Sign(delta), kinds.Length)];
+            var kinds = KindsFor(Chosen);
+            if (kinds.Count < 2) return;
+            Kind = kinds[UiNav.Wrap(Math.Max(0, kinds.ToList().IndexOf(Kind)), Math.Sign(delta), kinds.Count)];
         }
         else
         {
@@ -158,6 +167,8 @@ public class JobsScreen
             case JobsPhase.Choose:
                 if (Candidates.Count == 0) { AudioManager.PlaySound("error"); return; }
                 Chosen = Candidates[ChooseCursor];
+                // (an Egg goes to the nursery, which is all it may do; anyone else starts on an errand)
+                Kind = KindsFor(Chosen)[0];
                 SetupRow = JobsSetupRow.Kind;
                 Phase = JobsPhase.Setup;
                 AudioManager.PlaySound("select");
@@ -199,7 +210,8 @@ public class JobsScreen
     private void ChooseOne()
     {
         if (Board.IsFull) { AudioManager.PlaySound("error"); return; }
-        Candidates = Boxes.All.Where(p => !p.IsEgg).ToList();
+        // (Eggs too, since the nursery keeps them: plan 35 · BN6)
+        Candidates = Boxes.All.ToList();
         if (Candidates.Count == 0)
         {
             Notice = Text.Of("jobs.noneInTheBoxes");
@@ -215,7 +227,7 @@ public class JobsScreen
 
     private void Send(DateTime now)
     {
-        if (Chosen is not { } pokemon || Board.WhyNot(pokemon, Hours) != JobRefusal.None || !Boxes.Remove(pokemon))
+        if (Chosen is not { } pokemon || Board.WhyNot(pokemon, Hours, Kind) != JobRefusal.None || !Boxes.Remove(pokemon))
         {
             AudioManager.PlaySound("error");
             return;
@@ -237,7 +249,7 @@ public class JobsScreen
             AudioManager.PlaySound("error");
             return;
         }
-        var result = Board.Collect(job, now, random, out var refusal);
+        var result = Board.Collect(job, now, random, Region, out var refusal);
         if (result == null)
         {
             Notice = refusal == JobRefusal.ClockBack ? Text.Of("jobs.clockBack") : null;

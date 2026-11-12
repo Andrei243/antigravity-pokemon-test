@@ -1,0 +1,158 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wooloo on the line again! The driver says we could be sat here till teatime."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Motostoke's only on the far side of the Wild Area, though. We'll walk it! There's no better way to meet strong Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See you at the steps under the city, {player}. Last one there buys the curry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Attendant": [
+    {
+      "en": [
+        "Station Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The line north is blocked by Wooloo, I'm afraid. Trains still run back south to Wedgehurst, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the train to Wedgehurst?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enjoy the Wild Area! Do keep an eye on the weather. It changes the Pokémon about as much as the scenery."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WattTrader": [
+    {
+      "en": [
+        "Watt Trader"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! I trade in Watts, the energy the dens' light gives off. You have {var:VAR_GALAR_WATTS} W."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like?",
+        "Exp. Candy S: 800 W",
+        "Exp. Candy M: 2,000 W",
+        "Dynamax Candy: 3,000 W",
+        "Bottle Cap: 5,000 W",
+        "Wishing Piece: 3,000 W",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back with more Watts! Touch a den's beam of light and they're yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A pleasure doing business! You have {var:VAR_GALAR_WATTS} W left."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not quite enough Watts for that one, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BallGuy": [
+    {
+      "en": [
+        "Ball Guy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Balls! I love Poké Balls! Every shape, every colour. Here, have one of today's favourites!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back tomorrow! I'll have a new favourite by then. I always do."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

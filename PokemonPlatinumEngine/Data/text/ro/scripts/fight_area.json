@@ -658,5 +658,83 @@
         ""
       ]
     }
+  ],
+  "LockworkAgent3": [
+    {
+      "en": [
+        "Nobody asked you to look in the crates."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A locked heart never hesitates. Let me show you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So hesitation isn't everything after all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on. The admin will be the one to deal with you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LockworkAgent4": [
+    {
+      "en": [
+        "This stretch of the harbour is Lockwork's for the evening."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We seal their hearts so nothing ever comes between us. Efficient, isn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Efficient. And beaten. Wonderful."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lockwork pays well. I'd still rather not face you twice."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LockworkDoor": [
+    {
+      "en": [
+        "Down there's the admin's office. Go on, then. You'll come back up quicker than you went in."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

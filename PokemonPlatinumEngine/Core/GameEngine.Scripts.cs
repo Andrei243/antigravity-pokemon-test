@@ -215,6 +215,8 @@ public partial class GameEngine
         if (flow.Map.Name == MuseumGallery) HangThePaintings(flow.Map);
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
+        // The pasture's herd is the box shown, laid as the meadow is come to and taken off as it is left (plan 35 · BN5)
+        KeepThePasture();
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
         StandTheFriends();
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
