@@ -60,6 +60,8 @@
   "read": { "7": "BattlegroundDoor" },
   // Plan 44 · SD3: Looker, who has followed Lockwork's shipments, with the Reclaimer his bureau made
   "npcs": [
-    {"id": "lockwork_looker", "name": "Looker", "npcType": "looker", "x": 658, "y": 341, "facing": "Down", "script": "LookerReclaimer", "shownBy": "SinnohHallOfFame"}
+    {"id": "lockwork_looker", "name": "Looker", "npcType": "looker", "x": 658, "y": 341, "facing": "Down", "script": "LookerReclaimer", "shownBy": "SinnohHallOfFame"},
+    // Plan 44 · SD9: the delve camp's keeper (the user's answer 48a)
+    {"id": "delve_keeper", "name": "Brigid Stoat", "npcType": "ranger_f", "x": 662, "y": 341, "facing": "Down", "script": "DelveKeeper", "shownBy": "SinnohHallOfFame"}
   ]
 }

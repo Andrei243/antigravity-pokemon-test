@@ -4,6 +4,10 @@
   // who begs the player to get them back and thanks them on their return (5 to 12), and the rival at the south edge once
   // the PokéNav is had (13 to 20). The scientist who shows Match Call stands at Devon's door for its tutorial
   "area": "rustboro_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 27, "y": 157, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 27, "z": 157, "script": "PhotoSpot" } ],
   "bgmTrack": "hoenn/rustboro",
   "trees": "Round",
   "architecture": "Quarry",

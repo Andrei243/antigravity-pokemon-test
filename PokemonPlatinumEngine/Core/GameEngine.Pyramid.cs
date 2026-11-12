@@ -24,8 +24,12 @@ public partial class GameEngine
 
     /// <summary>The map a script's warp goes to: the Pyramid's floor of the round under way, or the map of that name.</summary>
     private Map MapNamed(string name) => name == PyramidFloor.MapName && flow.Pyramid?.FloorMap is { } floor ? floor
+        // A place of the day in the sky, laid as it was landed on (plan 38 · EX7, part b)
+        : flow.SkyPlaceMap is { } sky && string.Equals(sky.Name, name, StringComparison.Ordinal) ? sky
         // A floor of the Trainer Hill is laid from the story's variables of the climb under way (plan 21, part l)
-        : name == TrainerHillFloor.MapName && TrainerHillFloor.Make(flow.Story) is { } hill ? hill : MapDatabase.Get(name);
+        : name == TrainerHillFloor.MapName && TrainerHillFloor.Make(flow.Story) is { } hill ? hill
+        // and a floor of a hollow is the run's under way (plan 44 · SD8)
+        : name == Models.Delve.DelveFloor.MapName && delveMap is { } delve ? delve : MapDatabase.Get(name);
 
     /// <summary>
     /// A wild Pokémon met on a floor of the Pyramid (Emerald's <c>GenerateBattlePyramidWildMon</c>): not a battle of the

@@ -395,6 +395,8 @@ public sealed partial class ScriptRunner
         Op.Heart => i.Name == "open",
         // A ride and the report are screens the player plays and reads; the rest is asked or handed over without one (plan 44 · SD5, SD6)
         Op.Tour => i.Name is "ride" or "report",
+        // A run down a hollow and the board are played by the player; the rest only reads or hands over
+        Op.Delve => i.Name is "go" or "board",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -695,12 +697,15 @@ public sealed partial class ScriptRunner
                 host.Milestone(AutosaveMoment.Badge);
                 break;
             case Op.GiveMoney:
-                host.Money += i.Number;
+                host.Money += Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
                 break;
             case Op.TakeMoney:
-                Result = host.Money >= i.Number ? 1 : 0;
-                if (Result == 1) host.Money -= i.Number;
+            {
+                int amount = Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
+                Result = host.Money >= amount ? 1 : 0;
+                if (Result == 1) host.Money -= amount;
                 break;
+            }
             case Op.Heal:
                 host.Party.HealAll();
                 host.Milestone(AutosaveMoment.Heal);
@@ -1586,6 +1591,10 @@ public sealed partial class ScriptRunner
             case Op.Tour:
                 TourCommand(i);
                 break;
+            // The delve (plan 44 · SD8, SD9)
+            case Op.Delve:
+                DelveCommand(i);
+                break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
                 TrainCommand(i);
@@ -2294,6 +2303,59 @@ public sealed partial class ScriptRunner
     /// until it is left and hearing the ride's total (0 where the course isn't open); <c>tour open</c> is 1 when the
     /// report has opened the course; <c>tour points</c> is the report's total.
     /// </summary>
+    /// <summary>
+    /// The delve (plan 44 · SD8, SD9): <c>delve go "&lt;hollow&gt;"</c> sends the team's first two who may go down (waits;
+    /// RESULT 0 when nobody went, 1 cleared, 2 fallen, 3 escaped), <c>delve open "&lt;hollow&gt;"</c>, <c>delve able</c> (two may
+    /// go), <c>delve board</c> (the day's requests on their screen), <c>delve rank</c>, <c>delve reward</c> (the next prize due
+    /// handed over as <c>give</c> hands an item, RESULT 1; none, 0).
+    /// </summary>
+    private void DelveCommand(Instruction i)
+    {
+        var record = host.DelveRecord;
+        var hollow = Models.Delve.DelveHollows.Get(i.Other);
+        switch (i.Name)
+        {
+            case "go":
+                if (hollow == null || record == null || !record.IsOpen(hollow)) { Result = 0; break; }
+                host.Open(ScriptScreen.Delve, Subject, hollow.Key);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case "open":
+                Result = hollow != null && record?.IsOpen(hollow) == true ? 1 : 0;
+                break;
+            case "able":
+                Result = host.Party.Members.Count(p => Models.Delve.DelveRun.WhyNot(p) == null) >= 2 ? 1 : 0;
+                break;
+            case "board":
+                host.Open(ScriptScreen.DelveBoard, Subject);
+                break;
+            case "rank":
+                Result = record?.Rank ?? 0;
+                break;
+            case "reward":
+            {
+                if (record is not { Due.Count: > 0 })
+                {
+                    Result = 0;
+                    break;
+                }
+                var due = record.Due[0];
+                var (item, count) = Swapped(ItemDatabase.Get(due.Item) ?? throw Wrong(i, $"there is no item '{due.Item}'"), Math.Max(1, due.Count), i);
+                record.Due.RemoveAt(0);
+                host.Bag.AddItem(item, count);
+                lastItem = item.Name;
+                host.Fanfare(FanfareFor(item));
+                host.Say(null, new List<string>
+                {
+                    Text.Of("found.received", ("n", count), ("item", item.DisplayName)),
+                    Text.Of("found.putAway", ("n", count), ("pocket", PocketName(item.Pocket)))
+                });
+                Result = 1;
+                break;
+            }
+        }
+    }
+
     private void TourCommand(Instruction i)
     {
         var course = PhotoTourCourses.Get(i.Other);

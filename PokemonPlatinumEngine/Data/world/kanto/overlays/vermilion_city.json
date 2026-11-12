@@ -3,6 +3,10 @@
   // S.S. Ticket, and the old man and the sailors know when the ship has sailed (vermilion_city.txt). The tree beside
   // the Gym is cut down with the Cascade Badge and HM01, which the S.S. Anne's captain gives
   "area": "vermilion_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 287, "y": 228, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 287, "z": 228, "script": "PhotoSpot" } ],
 
   // Plan 40 · GE3: LeafGreen's Staryu on the Super Rod, once the National Pokédex is had
 

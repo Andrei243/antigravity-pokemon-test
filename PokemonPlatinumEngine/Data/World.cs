@@ -3040,6 +3040,10 @@ public static class WorldMapBuilder
         }
         // What is read where nothing shows, and the pits a pushed boulder falls into (plan 02 · S12)
         foreach (var read in overlay?.ReadAt ?? new()) map.TileScripts[(read.X, read.Z)] = read.Script;
+        // Where the player's home opens (plan 43 · LF7): a spot of ours, read by the same spot's script as Hoenn's
+        foreach (var spot in overlay?.BaseSpots ?? new())
+            map.SecretBaseSpots[(spot.X, spot.Z)] = spot.Id > 0 ? spot.Id
+                : throw new InvalidDataException($"The overlay of {key} names a base spot of kind '{spot.Kind}' and room {spot.Room}, which is none.");
         // Where a field move works a puzzle of the place (plan 21 · H12, part a)
         foreach (var puzzle in overlay?.Braille ?? new())
             map.BrailleSpots[(puzzle.X, puzzle.Z)] = (FieldMoveRules.Of(puzzle.Move)

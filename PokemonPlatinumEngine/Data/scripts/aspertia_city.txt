@@ -368,3 +368,8 @@ script CherenOutside
   speaker "Cheren"
   say "A Trainer who knows why they battle grows faster. Think about what you want from your journey."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "unova_aspertia_steps"
+  end

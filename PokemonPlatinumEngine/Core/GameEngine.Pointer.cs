@@ -128,6 +128,9 @@ public partial class GameEngine
             // The card designer (plan 43 · LF1): its rows, the six's list and the signature's pad
             case GameState.CardDesign:
                 return new Pointable(flow.CardDesignScreen.HitTest, flow.CardDesignScreen.PointAt);
+            // The photo studio (plan 43 · LF5): its rows, the case's Seals and the stage a Seal is carried over
+            case GameState.Studio:
+                return new Pointable(flow.StudioScreen.HitTest, flow.StudioScreen.PointAt);
             default:
                 return null;
         }

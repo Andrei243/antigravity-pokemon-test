@@ -10335,8 +10335,32 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
   open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
   open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
-  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
-  the sky and the landing through Fly's own way are not built yet.
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. **The take-off
+  and the landing** (part a, built 2026-11-12): SOAR is the item button on Fly's choice (`TownMapScreen.AskSoar`, its hint drawn only
+  where the tab shown may be soared over, `SoarableTab`), over the region of the tab shown, from the player's own cell over the region
+  they stand in and from its map's start over another. The flier is whoever Fly's choice was opened with: the Pokémon whose Fly it is,
+  or the field helpers' wild helper. A refusal is a toast and the team comes back, as the Town Map's other refusals. The flier's and
+  the rider's models are asked for before the fade and never waited for by a frame (left out of the sky until made). Landing,
+  over a beacon or by Cancel, sets Fly's target to the place and runs `common.UseFly`, so the cut-in, the roamers scattered, the
+  open map's markers and a landing in another region are all Fly's own; nothing new is saved. **The sky** is drawn as the style
+  guide's "Soaring" says, with two simplifications of ours: the land and the sea are drawn unshaded by the scene's fog (the
+  picture is tinted by the hour's sun and sky instead, which dims it after dark), and the clouds' sheets are laid by a hash of the
+  region's name on a grid of five cells (a third of the grid's squares empty), drifting east at 0.12 cells a second and more with
+  the hour's wind, since a clear hour's wind is none and the clouds would never move.
+- **The places of the day** (EX7, part b, built 2026-11-12; `Overworld/SkyPlaces.cs`, `Data/skyplaces.json`, ours). Each region whose
+  Hall of Fame is built (Sinnoh, Kanto, Johto, Hoenn) names five or six cells of its town map in a `sky` list, each an islet, a grove,
+  a hollow or a peak, chosen over sea and mountain off every one of Fly's places. Two are lit on an even day and three on an odd one
+  (days counted from 1 January 2000), by a fixed rotation: the first lit moves on by one place a day and the rest are spread
+  evenly after it, so a date is always the same places and a week lights every one; nothing is drawn. Only the places of the region
+  the player stands in stand over it while soaring (landing on one in another region would be a crossing no vessel makes). Landing
+  lays the place on its region's own map (`SkyPlace<Region>`, one to a region, as every map belongs to one region, and never saved:
+  a game saved there wakes where a pack's lost map would, at the start of the game it began in) from a seed of its region, its
+  number and the day, by `FloorLayout` with five pieces of ours for each kind; its Pokémon are twelve slots of its kind's species,
+  never a legendary, a mythical or one of the region's own Pokédex, at its own game's post-game band (Sinnoh and Kanto 50 to 58,
+  Johto and Hoenn 48 to 56, mapped as any wild level in a region crossed into), seen in the field whatever the options say; its two or
+  three finds are item balls of a list of ours, each behind a daily flag of ours (`FLAG_DAILY_SKY_<REGION>_<n>_FIND_<k>`), so a new day
+  brings them back and nothing new is saved. A step back onto the beacon's tile lifts the player into the sky again, carried by the
+  Pokémon that brought them, else whoever on the team knows Fly, else the field helpers' Fly. No extra shiny roll is given.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
@@ -12483,6 +12507,28 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+- **On screen** (SD8): a run is begun by a script's `delve go "<hollow>"`, which sends the team's **first two** who may go
+  down (`DelveHome.PairOf`; no choosing screen, ours: a player puts the two they want at the head of the team first). The
+  floor is the map `DelveFloor`, laid afresh behind a fade on every floor; the leader never takes the field's own steps,
+  so no wild Pokémon, warp, trigger, autosave or arrival script is met below. The stairs are the rules' (the map has no
+  script on them). A run is not saved: the window's close button and a crash leave it as if never begun, the team's own
+  Pokémon untouched.
+- **The hollows** (SD9, the user's answer 48a; `Data/hollows.json`, ours): Brinecave (a sea cave, four floors at 30,
+  Lapras its guardian), the Rootwood (a wood, five at 40, Tangrowth), Heartpeak (a dark cave, six at 50, Aggron) and the Old
+  Tower (dark, seven at 60, Dusknoir). **A hollow opens at the camp's rank**, which is the number of hollows cleared, so
+  each opens the next. **The guardian** stands on the open tile nearest the last floor's stairs at three levels over the
+  hollow's, wakeful and never shy; the stairs end the run only once it is knocked out (the event `Guarded` otherwise), and
+  it never asks to join.
+- **The board** (SD9, answer 62a's brisk and kind words): three requests a day, drawn by `SplitMix` from the day's number
+  (`SpecialEncounters.DailyNumber`) over the open hollows: a rescue (reach floor N and come back without falling), a find
+  (bring an item of the hollow's up), a friend (bring a recruit of a species home) or a clear. A run's end marks every one
+  of today's it does and puts its prize at the camp (`hollows.json`'s `prizes`: three Great Balls, two Super Potions, a
+  Heart Scale, a Rare Candy), handed over by the keeper (`delve reward`).
+- **Coming home** (SD9): what the bag found is put in the player's bag on a clear or a rope, nothing on a fall. A recruit
+  at a clear's end comes home whole, holding nothing, met in the hollow at its level, seen and caught, as a gift the
+  Nuzlocke's gifts clause counts (`Nuzlocke.Gift` on the camp's place), onto the team or into the PC, with its id
+  (`GiveIds`); a run with no catching or a Monotype it breaks leaves it in the hollow. **A resident's species is the
+  randomiser's** where the run randomises species (mapped as it is made, so the recruit is the species met).
 
 ## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
 

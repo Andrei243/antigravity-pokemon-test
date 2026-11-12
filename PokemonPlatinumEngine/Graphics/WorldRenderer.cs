@@ -767,6 +767,7 @@ public sealed partial class WorldRenderer
             else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         }
         DrawReflections(map, camera);
+        DrawStrengthHoles(map, camera);
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
@@ -1277,6 +1278,7 @@ public sealed partial class WorldRenderer
             }
             // A snowball of the Snowpoint Gym is a card of the scenery, drawn with the room's pieces (GymPieces)
             if (npc.IsSnowball || npc.IsLeagueDoor || npc.IsGymWaterfall) continue;
+            if (OffThePlan(map, npc)) continue;
             if (npc.IsThing)
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
@@ -1337,6 +1339,15 @@ public sealed partial class WorldRenderer
 
         // The player too may be shaken or flicker (nobody stands for them)
         if (player == null || !Seen(null)) return;
+
+        // A Pokémon drawn in the player's place (plan 44 · SD8: the delve's leader), standing as a Pokémon of the map stands
+        if (player.Avatar is { } avatar)
+        {
+            string shown = GrownField ? FieldSprites.GrownName(avatar) : avatar;
+            int avatarFacing = CharacterSprites.FacingIndex(player.Yaw);
+            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f));
+            return;
+        }
 
         var playerPose = new CharacterPose
         {
@@ -1551,6 +1562,16 @@ public sealed partial class WorldRenderer
     // The Apricorn trees in view, and a card for each colour with its fruit on and one bare (plan 20 · J6)
     private readonly List<(Vector3 At, Models.Apricorn? Colour, bool InFruit)> apricornTrees = new();
     private readonly Dictionary<string, CharacterSprites.Card> apricornCards = new();
+
+    /// <summary>
+    /// A ship of a harbour room moored past the room's floor (the Seagallop at the Sevii Islands' harbours, which FireRed
+    /// draws on the sea beyond the pier): a room has no sea there, so the ship isn't drawn over the dark (style guide,
+    /// "The Seagallop"). It is still in the way, as nobody walks there.
+    /// </summary>
+    private static bool OffThePlan(Map map, NPC npc) =>
+        npc.NpcType == NPC.SeagallopType && map.IsIndoors
+        && (npc.GridX < 0 || npc.GridY < 0 || npc.GridX >= map.Width || npc.GridY >= map.Height
+            || map.GetGroundTile(npc.GridX, npc.GridY) is TileType.Void or TileType.Wall);
 
     /// <summary>The things on the ground: a card for each kind, lit and casting like the people.</summary>
     private void DrawThings(CharacterPass pass)
@@ -1934,6 +1955,53 @@ public sealed partial class WorldRenderer
     /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
     /// them grounded when the sun is high or they are standing in shade.
     /// </summary>
+    /// <summary>
+    /// The holes a boulder pushed with Strength fills (<see cref="Map.FilledHoles"/>; style guide, "Life", "Holes"), while
+    /// they are open: a rim of trodden earth round a pit of dark earth, in whole texels, the rim only where the hole meets
+    /// ground that isn't hole. Nothing is drawn once a hole is filled (its tile walked again).
+    /// </summary>
+    private void DrawStrengthHoles(Map map, Camera3D camera)
+    {
+        if (map.FilledHoles.Count == 0) return;
+        float pitchDeg = MapScene.PitchOf(map);
+        const float rim = 3f / 32f;
+        bool Open(int x, int y) => map.FilledHoles.ContainsKey((x, y)) && map.IsSolid(x, y);
+        Rlgl.DisableDepthMask();
+        Rlgl.SetTexture(Rlgl.GetTextureIdDefault());
+        void Quad(float x0, float z0, float x1, float z1, float y, Color c)
+        {
+            float a = x0, b = x1, a2 = x0, b2 = x1;
+            if (!map.IsIndoors && y > 0.02f)
+            {
+                a = Straighten(camera, pitchDeg, x0, y, z1); b = Straighten(camera, pitchDeg, x1, y, z1);
+                a2 = Straighten(camera, pitchDeg, x0, y, z0); b2 = Straighten(camera, pitchDeg, x1, y, z0);
+            }
+            Rlgl.CheckRenderBatchLimit(4);
+            Rlgl.Begin(DrawMode.Quads);
+            Rlgl.Color4ub(c.R, c.G, c.B, c.A);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(a, y, z1);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(b, y, z1);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(b2, y, z0);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(a2, y, z0);
+            Rlgl.End();
+        }
+        float cx = camera.Target.X, cz = camera.Target.Z;
+        foreach (var (tile, _) in map.FilledHoles)
+        {
+            int x = tile.X, z = tile.Y;
+            if (!Open(x, z) || MathF.Abs(x - cx) > 40 || MathF.Abs(z - cz) > 40) continue;
+            float y = Relief.At(map, x + 0.5f, z + 0.5f) + 0.02f;
+            Quad(x, z, x + 1, z + 1, y, new Color(118, 92, 66, 255));
+            float l = Open(x - 1, z) ? 0 : rim, r = Open(x + 1, z) ? 0 : rim, t = Open(x, z - 1) ? 0 : rim, d = Open(x, z + 1) ? 0 : rim;
+            // The pit's floor in shade, and its far (north) wall, which the field's camera looks down onto, in earth
+            Quad(x + l, z + t, x + 1 - r, z + 1 - d, y + 0.002f, new Color(30, 22, 18, 255));
+            if (t > 0) Quad(x + l, z + t, x + 1 - r, z + t + 5f / 32f, y + 0.004f, new Color(78, 58, 42, 255));
+        }
+        Rlgl.SetTexture(0);
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+    }
+
     private void DrawContactShadows(Map map, Camera3D camera, bool withPlayer, float px, float pz, float playerGround, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
@@ -1960,7 +2028,7 @@ public sealed partial class WorldRenderer
         {
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             // (Whoever is shaken takes their patch with them, and whoever flickers has none while they are unseen)
-            if (!npc.IsPCTerminal && !npc.IsUnseen && !npc.OutOfSight && InSight(npc) && Seen(npc))
+            if (!npc.IsPCTerminal && !npc.IsUnseen && !npc.OutOfSight && InSight(npc) && Seen(npc) && !OffThePlan(map, npc))
                 Blob(npc.DrawX + 0.5f + NudgeOf(npc), npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
                     npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }

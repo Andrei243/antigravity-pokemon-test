@@ -4,6 +4,10 @@
   // keep the exits until the S.S. Ticket are cerulean_city.txt's. Cerulean Cave's guard stands in its mouth until
   // the Sapphire is set in Celio's machine (FLAG_HIDE_CERULEAN_CAVE_GUARD, plan 19 · K9, part b)
   "area": "cerulean_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 287, "y": 60, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 287, "z": 60, "script": "PhotoSpot" } ],
   "bgmTrack": "kanto/fuchsia",
   "trees": "Round",
   "architecture": "Riverside",

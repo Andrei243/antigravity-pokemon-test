@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What the travel phone's screen hands back to the game once the player has chosen.</summary>
-public enum PhoneRequest { None, Call, Map, Close }
+public enum PhoneRequest { None, Call, Map, Close, Powers }
 
 /// <summary>
 /// The travel phone (plan 43 · LF6; style guide, "Menu screens", "The travel phone"): its cards as tabs. CALLS lists
@@ -117,6 +117,10 @@ public sealed class PhoneScreen
                 break;
             case PhoneCard.Map:
                 request = PhoneRequest.Map;
+                Close();
+                break;
+            case PhoneCard.Powers:
+                request = PhoneRequest.Powers;
                 Close();
                 break;
         }

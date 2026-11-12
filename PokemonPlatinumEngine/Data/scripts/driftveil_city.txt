@@ -178,3 +178,8 @@ script ClayOutside
   speaker "Clay"
   say "The Pokémon World Tournament's south of town. Don't keep me waitin'!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "unova_driftveil_market"
+  end

@@ -508,6 +508,8 @@ public static class RegionDatabase
                 "BattlePalace", "BattleArena",
                 // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
                 "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
+                // Plan 44 · SD8: the delve's floor, laid afresh from a run's seed (a map of ours)
+                "DelveFloor",
                 // Plan 14 · B11: the World Tournament's hall in the annex (a map of ours)
                 "WorldTournamentHall",
                 // Plan 14 · B15: the Masters' Hall off the annex's lobby (a map of ours)
@@ -1584,7 +1586,9 @@ public sealed class RegionChain
         Regions.FirstOrDefault(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase));
 
     public Region? RegionOfMap(string mapName) =>
-        Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
+        // A place of the day in the sky is laid on its region's own map as it is landed on (plan 38 · EX7, part b)
+        Overworld.SkyPlaces.RegionOfMap(mapName) is { } sky ? Regions.FirstOrDefault(r => string.Equals(r.Id, sky, StringComparison.OrdinalIgnoreCase))
+            : Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
 
     public RegionLink? LinkFrom(string regionId) =>
         Links.FirstOrDefault(l => l.Kind == LinkKind.Next && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));

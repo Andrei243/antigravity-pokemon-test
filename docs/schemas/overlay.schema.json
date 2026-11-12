@@ -1323,6 +1323,33 @@
         "additionalProperties": false
       }
     },
+    "baseSpots": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer"
+          },
+          "z": {
+            "type": "integer"
+          },
+          "kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "room": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
     "holeTo": {
       "type": [
         "string",

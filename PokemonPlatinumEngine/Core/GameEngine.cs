@@ -179,7 +179,13 @@ public enum GameState
     /// <summary>The photo tour's report, a script's <c>tour report</c> waiting on it (plan 44 · SD6).</summary>
     TourReport,
     /// <summary>The Stroll Counter's screen, from the bag or the item button (plan 35 · BN7).</summary>
-    StrollCounter
+    StrollCounter,
+    /// <summary>A flight over the region from Fly's choice (plan 38 · EX7).</summary>
+    Soaring,
+    /// <summary>A run down a hollow on its floor, a script's <c>delve go</c> waiting on it (plan 44 · SD8).</summary>
+    Delve,
+    /// <summary>The delve camp's board, a script's <c>delve board</c> waiting on it (plan 44 · SD9).</summary>
+    DelveBoard
 }
 
 public partial class GameEngine
@@ -297,7 +303,17 @@ public partial class GameEngine
     /// before a game is loaded. What belongs to a region (its starters, its professor, its spawns) is asked of this,
     /// and handed to the screens, never read from a static.
     /// </summary>
-    public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(flow.Map.Name) : null) ?? RegionDatabase.First;
+    public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(HomeDoorMap ?? flow.Map.Name) : null) ?? RegionDatabase.First;
+
+    /// <summary>
+    /// Inside a secret base's room (plan 43 · LF7: a home that goes with the player), the map of the spot whose door it
+    /// was come in by, a friend's being visited first: the room is Emerald's, a map of Hoenn, but a home opened from a
+    /// tree in Sinnoh is Sinnoh's while the player stands in it (no crossing, no region entered, Sinnoh's rival and
+    /// Badges). Null anywhere else.
+    /// </summary>
+    private string? HomeDoorMap => flow.Map != null && SecretBaseLayouts.IsBaseMap(flow.Map.Name)
+        ? flow.Records?.Visiting?.Base?.Map is { Length: > 0 } visited ? visited : flow.SecretBase?.Map is { Length: > 0 } own ? own : null
+        : null;
 
     /// <summary>
     /// The region whose rules hold underfoot (plan 41 · EG1): <see cref="Here"/> everywhere but in a side region with none
@@ -1056,7 +1072,9 @@ public partial class GameEngine
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
+            LastStudioShot = flow.LastStudioShot,
             PhotoTour = flow.PhotoTour.ToSave(),
+            Delve = flow.DelveRecord.ToSave(),
             Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -1510,7 +1528,13 @@ public partial class GameEngine
                     }
                     else if (flow.Battle.IsBattleOver)
                     {
-                        if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.IsTrainerBattle) flow.Money += flow.Battle.PrizeMoney;
+                        if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.IsTrainerBattle)
+                        {
+                            // Johto's Mom keeps a share when asked to (plan 43 · LF7; Models/MomSavings.cs), drawing nothing
+                            int share = MomSavings.ShareOf(flow.Battle.PrizeMoney, Here.Id, flow.Story);
+                            flow.Money += flow.Battle.PrizeMoney - share;
+                            MomSavings.Keep(flow.Story, share);
+                        }
                         if (flow.Battle.Result == BattleResult.PlayerVictory) flow.Money += flow.Battle.PayDayMoney;
                         flow.Money = Math.Max(0, flow.Money - flow.Battle.MoneyLost);
                         AfterBattle(flow.Battle);
@@ -1568,7 +1592,9 @@ public partial class GameEngine
                     ScanForVisitor();
                     flow.TownMapScreen.SetReport(FieldReportNow());
                 }
-                if (flow.TownMapScreen.TakeChoice() is { } town)
+                // SOAR on the item button (plan 38 · EX7): the flight begins, or the map says why not
+                if (flow.TownMapScreen.TakeSoar()) BeginSoaring();
+                else if (flow.TownMapScreen.TakeChoice() is { } town)
                 {
                     flow.FlyTarget = town;
                     flow.State = GameState.Overworld;
@@ -1758,6 +1784,12 @@ public partial class GameEngine
             case GameState.Studio:
                 UpdateStudio(dt);
                 break;
+            case GameState.Delve:
+                UpdateDelve(dt);
+                break;
+            case GameState.DelveBoard:
+                UpdateDelveBoard();
+                break;
             case GameState.PhotoTour:
                 UpdatePhotoTour(dt);
                 break;
@@ -1808,6 +1840,9 @@ public partial class GameEngine
                 break;
             case GameState.StrollCounter:
                 UpdateStroll(dt);
+                break;
+            case GameState.Soaring:
+                UpdateSoaring(dt);
                 break;
             case GameState.MissionBoard:
                 UpdateMissionBoard(dt);
@@ -2376,6 +2411,8 @@ public partial class GameEngine
         if (IsUnderground && UndergroundStep()) return true;
         // A step in a hideaway: a wall that holds something today glints as the player comes near it (plan 38 · EX6, part b)
         HideawayStep();
+        // A step onto a place of the day's beacon lifts the player back into the sky (plan 38 · EX7, part b)
+        if (flow.SkyPlaceMap != null && flow.Map == flow.SkyPlaceMap && SkyBeaconStep()) return true;
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         flow.Pastimes.Steps++;
         flow.Statistics.Count(Statistics.StepKey(flow.Player.Mode));
@@ -3386,7 +3423,8 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname or GameState.Photo;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname or GameState.Photo
+            or GameState.Delve or GameState.DelveBoard;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -3395,6 +3433,8 @@ public partial class GameEngine
         // ... and so are a band's portraits (plan 09 · L15): each once, in the first frame of the closing that finds
         // its rig ready, and before the scene, which sets the uniforms it needs after them
         if (shown == GameState.Transition && flow.Closing) band.Render(renderContext);
+        // ... and a travel phone's caller's face while the call goes on (plan 43 · LF6)
+        RenderTheCallersFace();
 
         // The first run's measuring, a frame of it, and the share of the preset this frame's scene is drawn at (plan 16 · T23)
         MeasureAFrame();
@@ -3442,6 +3482,11 @@ public partial class GameEngine
         else if (scene == GameState.Salon)
         {
             flow.SalonScreen.Render(renderContext);
+        }
+        else if (scene == GameState.Soaring)
+        {
+            // The sky a flight is seen in, a scene of its own (plan 38 · EX7)
+            RenderSoaring();
         }
         else if (scene == GameState.PhotoTour)
         {
@@ -3541,6 +3586,8 @@ public partial class GameEngine
                 DrawPinnedRequest(shown);
                 // The powers in force, as chips at the left (plan 36 · TR8)
                 DrawPowerChips(shown);
+                // A travel phone's caller over the text box (plan 43 · LF6)
+                DrawTheCallersFace();
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill
@@ -3590,6 +3637,12 @@ public partial class GameEngine
                 break;
             case GameState.PhotoTour:
                 DrawPhotoTour();
+                break;
+            case GameState.Delve:
+                DrawDelve();
+                break;
+            case GameState.DelveBoard:
+                DrawDelveBoard();
                 break;
             case GameState.TourReport:
                 DrawTourReport();
@@ -3744,6 +3797,9 @@ public partial class GameEngine
                 break;
             case GameState.StrollCounter:
                 flow.StrollScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Soaring:
+                DrawSoaring();
                 break;
             case GameState.Powers:
                 flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);

@@ -3,12 +3,37 @@
   // a built region. A spot is the tile its plate stands on (a little post the player reads from the tile before it,
   // facing it), the tile the camera looks at and the lens's factor. Its name is ui.json's photoBook.spot.<id>; its
   // plate is a prop of the area's overlay, and its script the area's own (photo spot "<id>"). Sinnoh's five are built;
-  // the other regions' are owed to the sessions that write their rows (plan 43, "Writing in every region")
+  // plan 43 · LF7's session laid Kanto's, Johto's, Hoenn's, Unova's and Kalos's five each
   "spots": [
     { "id": "sinnoh_twinleaf_pond", "region": "Sinnoh", "map": "Sinnoh", "x": 113, "z": 889, "lookX": 112, "lookZ": 891, "zoom": 1.25 },
     { "id": "sinnoh_sandgem_lab", "region": "Sinnoh", "map": "Sinnoh", "x": 175, "z": 848, "lookX": 170, "lookZ": 841, "zoom": 1 },
     { "id": "sinnoh_jubilife_fountain", "region": "Sinnoh", "map": "Sinnoh", "x": 174, "z": 760, "lookX": 166, "lookZ": 763, "zoom": 1 },
     { "id": "sinnoh_oreburgh_museum", "region": "Sinnoh", "map": "Sinnoh", "x": 308, "z": 753, "lookX": 311, "lookZ": 750, "zoom": 1.25 },
-    { "id": "sinnoh_floaroma_flowers", "region": "Sinnoh", "map": "Sinnoh", "x": 182, "z": 662, "lookX": 176, "lookZ": 668, "zoom": 0.8 }
+    { "id": "sinnoh_floaroma_flowers", "region": "Sinnoh", "map": "Sinnoh", "x": 182, "z": 662, "lookX": 176, "lookZ": 668, "zoom": 0.8 },
+    { "id": "kanto_pallet_lane", "region": "Kanto", "map": "Kanto", "x": 63, "z": 271, "lookX": 63, "lookZ": 268, "zoom": 1 },
+    { "id": "kanto_viridian_square", "region": "Kanto", "map": "Kanto", "x": 63, "z": 197, "lookX": 63, "lookZ": 194, "zoom": 1 },
+    { "id": "kanto_pewter_stones", "region": "Kanto", "map": "Kanto", "x": 65, "z": 67, "lookX": 65, "lookZ": 64, "zoom": 1 },
+    { "id": "kanto_cerulean_bridge", "region": "Kanto", "map": "Kanto", "x": 287, "z": 60, "lookX": 287, "lookZ": 57, "zoom": 1 },
+    { "id": "kanto_vermilion_harbour", "region": "Kanto", "map": "Kanto", "x": 287, "z": 228, "lookX": 287, "lookZ": 225, "zoom": 1 },
+    { "id": "johto_new_bark_breeze", "region": "Johto", "map": "Johto", "x": 687, "z": 399, "lookX": 687, "lookZ": 396, "zoom": 1 },
+    { "id": "johto_violet_tower", "region": "Johto", "map": "Johto", "x": 479, "z": 258, "lookX": 479, "lookZ": 255, "zoom": 1 },
+    { "id": "johto_goldenrod_plaza", "region": "Johto", "map": "Johto", "x": 335, "z": 351, "lookX": 335, "lookZ": 348, "zoom": 1 },
+    { "id": "johto_ecruteak_lanes", "region": "Johto", "map": "Johto", "x": 383, "z": 159, "lookX": 383, "lookZ": 156, "zoom": 1 },
+    { "id": "johto_olivine_harbour", "region": "Johto", "map": "Johto", "x": 287, "z": 258, "lookX": 287, "lookZ": 255, "zoom": 1 },
+    { "id": "hoenn_littleroot_green", "region": "Hoenn", "map": "Hoenn", "x": 128, "z": 299, "lookX": 128, "lookZ": 296, "zoom": 1 },
+    { "id": "hoenn_petalburg_pond", "region": "Hoenn", "map": "Hoenn", "x": 54, "z": 243, "lookX": 54, "lookZ": 240, "zoom": 1 },
+    { "id": "hoenn_rustboro_corner", "region": "Hoenn", "map": "Hoenn", "x": 27, "z": 157, "lookX": 27, "lookZ": 154, "zoom": 1 },
+    { "id": "hoenn_slateport_market", "region": "Hoenn", "map": "Hoenn", "x": 219, "z": 291, "lookX": 219, "lookZ": 288, "zoom": 1 },
+    { "id": "hoenn_lilycove_seafront", "region": "Hoenn", "map": "Hoenn", "x": 517, "z": 95, "lookX": 517, "lookZ": 92, "zoom": 1 },
+    { "id": "unova_aspertia_steps", "region": "Unova", "map": "Unova", "x": 52, "z": 735, "lookX": 52, "lookZ": 732, "zoom": 1 },
+    { "id": "unova_floccesy_bell", "region": "Unova", "map": "Unova", "x": 113, "z": 672, "lookX": 113, "lookZ": 669, "zoom": 1 },
+    { "id": "unova_virbank_docks", "region": "Unova", "map": "Unova", "x": 237, "z": 655, "lookX": 237, "lookZ": 652, "zoom": 1 },
+    { "id": "unova_nimbasa_lights", "region": "Unova", "map": "Unova", "x": 412, "z": 448, "lookX": 412, "lookZ": 445, "zoom": 1 },
+    { "id": "unova_driftveil_market", "region": "Unova", "map": "Unova", "x": 215, "z": 405, "lookX": 215, "lookZ": 402, "zoom": 1 },
+    { "id": "kalos_vaniville_garden", "region": "Kalos", "map": "Kalos", "x": 255, "z": 718, "lookX": 255, "lookZ": 715, "zoom": 1 },
+    { "id": "kalos_aquacorde_river", "region": "Kalos", "map": "Kalos", "x": 255, "z": 669, "lookX": 255, "lookZ": 666, "zoom": 1 },
+    { "id": "kalos_santalune_fountain", "region": "Kalos", "map": "Kalos", "x": 341, "z": 528, "lookX": 341, "lookZ": 525, "zoom": 1 },
+    { "id": "kalos_lumiose_boulevard", "region": "Kalos", "map": "Kalos", "x": 370, "z": 356, "lookX": 370, "lookZ": 353, "zoom": 1 },
+    { "id": "kalos_cyllage_cliffs", "region": "Kalos", "map": "Kalos", "x": 96, "z": 325, "lookX": 96, "lookZ": 322, "zoom": 1 }
   ]
 }

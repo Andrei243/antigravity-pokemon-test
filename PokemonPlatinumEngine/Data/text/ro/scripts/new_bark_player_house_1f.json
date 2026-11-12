@@ -106,5 +106,71 @@
         "Gata. Hai, du-te. Johto e mare, și abia ai început."
       ]
     }
+  ],
+  "MomSavings": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Shall I keep a little of your prize money for you? A quarter of each win, safe here at home."
+      ],
+      "text": [
+        "Să-ți păstrez eu o parte din banii câștigați? Un sfert din fiecare victorie, în siguranță aici acasă."
+      ]
+    },
+    {
+      "en": [
+        "Leave it to me! I'll put a little by after every battle you win."
+      ],
+      "text": [
+        "Lasă pe mine! O să pun deoparte câte puțin după fiecare luptă câștigată."
+      ]
+    },
+    {
+      "en": [
+        "I've put {var:VAR_JOHTO_MOM_SAVINGS} of your prize money by for you."
+      ],
+      "text": [
+        "Ți-am pus deoparte {var:VAR_JOHTO_MOM_SAVINGS} din banii câștigați."
+      ]
+    },
+    {
+      "en": [
+        "Would you like it back now?"
+      ],
+      "text": [
+        "Vrei să-i iei înapoi acum?"
+      ]
+    },
+    {
+      "en": [
+        "Here you are, every last bit of it. Spend it wisely, dear!"
+      ],
+      "text": [
+        "Poftim, până la ultimul bănuț. Cheltuiește-i cu înțelepciune, dragul meu!"
+      ]
+    },
+    {
+      "en": [
+        "Shall I go on putting a little of your prize money by?"
+      ],
+      "text": [
+        "Să continui să pun deoparte câte puțin din banii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "All right. Just say the word if you change your mind."
+      ],
+      "text": [
+        "Bine. Spune-mi doar dacă te răzgândești."
+      ]
+    }
   ]
 }

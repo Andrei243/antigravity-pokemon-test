@@ -1,5 +1,7 @@
 {
   "area": "twinleaf_town",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 107, "z": 867, "kind": "Tree", "room": 1 } ],
   // The photo spot's plate (plan 43 · LF4), read from the tile before it
   "readAt": [ { "x": 113, "z": 889, "script": "PhotoSpot" } ],
   "bgmTrack": "sinnoh/twinleaf",

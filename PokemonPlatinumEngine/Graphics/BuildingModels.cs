@@ -260,7 +260,8 @@ internal static class BuildingModels
         bool great = s.Shaft > 96;
         bool beacon = lighthouse || s.Gear.HasFlag(RoofGear.Beacon);
         int count = s.StageCount > 0 ? s.StageCount : lighthouse ? 2 : 3;
-        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, great ? 380 : 300);
+        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150,
+            b.TallestRows > 0 ? b.TallestRows : great ? 380 : 300);
         // A skyscraper's model is cut off where the camera stops seeing it (Castelia's towers end in roofs a few tiles up):
         // it stands at least as tall as a great tower's middle
         if (s.FlatTop) total = Math.Max(total, 300);

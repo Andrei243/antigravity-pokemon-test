@@ -13,6 +13,9 @@ namespace PokemonPlatinumEngine.Models.Delve;
 /// </summary>
 public static class DelveTurns
 {
+    /// <summary>The word an event of a flinch names (the screen says it in its own words).</summary>
+    public const string FlinchWord = "Flinch";
+
     /// <summary>How near the team must come to wake a sleeping resident.</summary>
     public const int WakeReach = 2;
 
@@ -51,7 +54,7 @@ public static class DelveTurns
         if (m.Flinched)
         {
             m.Flinched = false;
-            run.Say(DelveEventKind.LostTurn, m.Name, what: "Flinch");
+            run.Say(DelveEventKind.LostTurn, m.Name, what: FlinchWord);
             return false;
         }
         switch (p.Status)

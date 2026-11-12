@@ -175,7 +175,7 @@ public class OpenSceneryTests
         foreach (var (chunk, list) in new[] { (river, tufts), (meadow, dry) })
             foreach (var t in list)
             {
-                Assert.InRange(t.Variant, 0, OpenGrass.Variants - 1);
+                Assert.InRange(t.Variant, 0, OpenGrass.Looks - 1);
                 // On the chunk's own ground, which reaches half a cell of the surface nets past its east and south edges
                 Assert.InRange(t.At.X, chunk.ChunkX * side, (chunk.ChunkX + 1) * side + 0.5f);
                 Assert.InRange(t.At.Z, chunk.ChunkZ * side, (chunk.ChunkZ + 1) * side + 0.5f);

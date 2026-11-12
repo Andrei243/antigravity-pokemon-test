@@ -448,11 +448,17 @@ internal static partial class BuildingArt
 
         if (h < 30) return;
         int count = Math.Max(1, w / Bay);
-        for (int i = 0; i < count; i++)
+        // A tall tower's stage (StackedWindows) has a row to every storey, from the foot up to under its ledge
+        const int storey = 44;
+        for (int foot = h - 6; ; foot -= storey)
         {
-            int cx = w * (2 * i + 1) / (2 * count);
-            if (s.Window == WindowKind.Arched && h >= 40) ArchedWindow(c, cx, h - 6, light);
-            else SlitWindow(c, cx, h - 6, light, teal: false);
+            for (int i = 0; i < count; i++)
+            {
+                int cx = w * (2 * i + 1) / (2 * count);
+                if (s.Window == WindowKind.Arched && foot >= 40) ArchedWindow(c, cx, foot, light);
+                else SlitWindow(c, cx, foot, light, teal: false);
+            }
+            if (!s.StackedWindows || foot - storey < 30) break;
         }
     }
 

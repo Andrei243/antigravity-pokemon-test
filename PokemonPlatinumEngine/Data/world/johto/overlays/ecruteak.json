@@ -5,6 +5,12 @@
   // (trigger 0), and the old man by the Burned Tower tells of the three Pokémon once they have fled it. The gate to
   // Route 38 (warps 8 and 9) is open since plan 20 · J8, the gate to Route 42 (warps 10 and 11) since plan 20 · J10
   "area": "ecruteak",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 379, "z": 164, "kind": "Tree", "room": 3 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 383, "y": 159, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 383, "z": 159, "script": "PhotoSpot" } ],
   "bgmTrack": "johto/ecruteak",
   "trees": "Round",
   "architecture": "Heritage",

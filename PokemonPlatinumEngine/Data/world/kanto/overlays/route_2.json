@@ -3,6 +3,8 @@
   // a lane to the east behind small trees that only Cut clears. The way into Diglett's Cave (its north mouth, warp 3)
   // is shut until K4 opens the cave
   "area": "route_2",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 66, "z": 166, "kind": "Tree", "room": 4 } ],
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
     {"id": "route_2.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 77, "y": 135, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}

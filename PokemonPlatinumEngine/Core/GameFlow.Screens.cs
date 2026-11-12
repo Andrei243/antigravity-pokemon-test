@@ -25,6 +25,13 @@ public sealed partial class GameFlow
     public SaveScreen SaveScreen { get; } = new();
     public TownMapScreen TownMapScreen { get; } = new();
 
+    /// <summary>A flight over a region from Fly's choice (plan 38 · EX7).</summary>
+    public SoarScreen SoarScreen { get; } = new();
+
+    /// <summary>The place of the day landed on last and its map, laid from the day's seed (plan 38 · EX7, part b); not saved.</summary>
+    public Overworld.Map? SkyPlaceMap { get; set; }
+    public Overworld.SkyPlace? SkyPlaceShown { get; set; }
+
     /// <summary>The title, made afresh with the slots as the game starts and after a save is deleted.</summary>
     public TitleScreen TitleScreen { get; set; } = new(null);
     public IntroScreen IntroScreen { get; } = new();

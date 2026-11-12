@@ -249,6 +249,8 @@ public class PokemonTests
             && mapName != "RockPeakChamber" && mapName != "IronChamber" && mapName != "IcebergChamber"
             // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
             && mapName != "BattlePyramidFloor"
+            // (and the delve's floor, laid from a run and left by its rules alone, plan 44 · SD8)
+            && mapName != "DelveFloor"
             // (and the Trainer Hill's floor, left by its stairs' scripts, plan 21, part l)
             && mapName != "TrainerHillFloor"
             // (and the Trainer Tower's floor, laid again on one map for every floor and left only by its stairs' and

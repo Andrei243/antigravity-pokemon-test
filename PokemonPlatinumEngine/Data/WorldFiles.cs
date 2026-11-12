@@ -1113,6 +1113,14 @@ public sealed class WorldOverlayFile
     public List<OverlayBraille>? Braille { get; set; }
 
     /// <summary>
+    /// Spots where the player's home opens (plan 43 · LF7; a home that goes with the player): a blocked tile of the map
+    /// with open ground before it, of a kind (<c>RedCave</c>, <c>BrownCave</c>, <c>BlueCave</c>, <c>YellowCave</c>,
+    /// <c>Tree</c>, <c>Shrub</c>) and the room of that kind it would make (1 to 4), as Hoenn's area files' spots are.
+    /// Hoenn keeps Emerald's own.
+    /// </summary>
+    public List<OverlayBaseSpot>? BaseSpots { get; set; }
+
+    /// <summary>
     /// The map a cracked floor of the area drops whoever walks onto it to, onto the same tile (plan 21 · H8, part c; Emerald's
     /// <c>setholewarp</c>: Sky Pillar's fourth floor down to its third). Left out, a cracked floor is walked like any other.
     /// </summary>
@@ -1159,6 +1167,20 @@ public sealed class OverlayEmerge
     public int X { get; set; }
     public int Z { get; set; }
     public OverlaySpot To { get; set; } = new();
+}
+
+/// <summary>A spot where the player's home opens (<see cref="WorldOverlayFile.BaseSpots"/>): its tile, its kind and its room of that kind.</summary>
+[JsonConverter(typeof(OneLine<OverlayBaseSpot>))]
+public sealed class OverlayBaseSpot
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public string Kind { get; set; } = "";
+    public int Room { get; set; } = 1;
+
+    /// <summary>The base's id the spot makes (Emerald's numbering: the room's group in the tens, a spot of ours in the ones); 0 for a kind that is none.</summary>
+    public int Id => Enum.TryParse<Models.SecretBaseKind>(Kind, out var kind) && kind != Models.SecretBaseKind.None && Room is >= 1 and <= 4
+        ? (((int)kind - 1) * 4 + Room - 1) * 10 + 9 : 0;
 }
 
 /// <summary>A tile a field move works a puzzle on, and the script of the area's file it runs (<see cref="WorldOverlayFile.Braille"/>).</summary>
