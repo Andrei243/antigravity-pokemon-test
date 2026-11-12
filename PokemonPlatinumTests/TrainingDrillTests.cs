@@ -441,8 +441,10 @@ public class TrainingDrillTests
     [Fact]
     public void AwardedEffortIsReckonedAtOnce()
     {
-        // 24 effort is six points of stat at level 100: ((2B + IV + EV/4) × L / 100) + 5
-        var p = Mon("Bidoof", 100);
+        // 24 effort is six points of stat at level 100: ((2B + IV + EV/4) × L / 100) + 5. The nature is a neutral one: a
+        // drawn nature that raises Attack makes the six points six or seven after its tenth (rounded down), by whatever the
+        // game's dice had come to when the test ran (it failed so in the full suite)
+        var p = new Pokemon(PokemonDatabase.Get("Bidoof")!, 100, Gender.Male, Nature.Hardy, false);
         int before = p.Attack;
         Assert.Equal(24, EffortDrills.Award(p, StatType.Attack, DrillGrade.Gold, Ruleset.Modern));
         Assert.Equal(before + 6, p.Attack);

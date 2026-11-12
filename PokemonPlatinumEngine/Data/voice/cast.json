@@ -10187,6 +10187,23 @@
       "note": "first spoken at common.txt(4182)",
       "provisional": true
     },
+    "trainer_tower_owner": {
+      "note": "first spoken at TrainerTowerRoof.txt(8)",
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "the Trainer Tower's owner on its roof: hearty, proud of his tower, a stopwatch always in hand"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 1.04,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
     "traveller": {
       "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
