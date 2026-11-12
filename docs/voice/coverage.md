@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1770 | 1707 | 63 | 1 | 0 |
 | Scripts (`script:`) | 13567 | 13006 | 561 | 17 | 36 |
-| People of the world (`world:`) | 8183 | 8121 | 62 | 4 | 0 |
-| **All** | 23804 | 23115 | 689 | 22 | 36 |
+| People of the world (`world:`) | 8184 | 8122 | 62 | 4 | 0 |
+| **All** | 23805 | 23116 | 689 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -31,7 +31,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 - Named characters: 979 voices (384 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
-- Archetypes in use: 254, with 767 voices to cast (V5).
+- Archetypes in use: 255, with 770 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 390.
 
 ## Lines by voice
@@ -96,11 +96,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `beauty` | 82 | 6 |
 | `class:camper (any)` | 82 | 0 |
 | `kanto_rival` | 79 | 0 |
-| `look:trainer (any)` | 77 | 0 |
 | `class:veteran (any)` | 76 | 0 |
 | `look:girl (any)` | 75 | 0 |
 | `prof_kukui` | 71 | 1 |
 | `class:pokémon_ranger (any)` | 70 | 0 |
+| `look:trainer (any)` | 70 | 0 |
 | `prof_juniper` | 69 | 0 |
 | `stall_keeper` | 69 | 12 |
 | `class:backpacker (any)` | 68 | 0 |
