@@ -1167,6 +1167,10 @@ public static class RegionDatabase
                 "Postwick_PlayersHouse_1F", "Postwick_PlayersHouse_2F", "Postwick_HopsHouse",
                 "Wedgehurst_Station", "Wedgehurst_PokemonCenter", "Wedgehurst_ResearchLab", "Wedgehurst_House",
                 "Route2_MagnoliasHouse",
+                // Plan 33 · GL4: Motostoke's Pokémon Center, hotel, stadium and its pitch, the Galar Mine, and Turffield's
+                // Pokémon Center, stadium, mission field and pitch
+                "Motostoke_PokemonCenter", "Motostoke_Hotel", "Motostoke_Stadium", "Motostoke_StadiumPitch", "GalarMine",
+                "Turffield_PokemonCenter", "Turffield_Stadium", "Turffield_StadiumMission", "Turffield_StadiumPitch",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },

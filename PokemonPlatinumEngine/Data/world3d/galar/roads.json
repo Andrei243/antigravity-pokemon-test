@@ -16,6 +16,17 @@
     // Motostoke, with a branch west to the watchtower's ruins and one east to the Dappled Grove's edge
     { "name": "the Wild Area's track north", "points": [[0, -318], [-4, -350], [-24, -392], [-18, -440], [-10, -500], [10, -560], [0, -600], [0, -622]], "width": 3.5, "shoulder": 3 },
     { "name": "the track to the watchtower", "points": [[-24, -392], [-46, -402], [-64, -412]], "width": 2.5, "shoulder": 2 },
-    { "name": "the track into the grove", "points": [[-4, -350], [30, -346], [60, -352]], "width": 2.5, "shoulder": 2 }
+    { "name": "the track into the grove", "points": [[-4, -350], [30, -346], [60, -352]], "width": 2.5, "shoulder": 2 },
+    // North of the Wild Area (plan 33 · GL4): the steps up the bank into Motostoke, cut at their own heights, the high
+    // street over the lower terrace, the ramp up to the stadium's terrace, the way west to the gate and Route 3's path
+    // north to the Galar Mine's mouth; beyond the ridge, Route 4's path east into Turffield and up to its stadium
+    { "name": "the steps up to Motostoke", "points": [[0, 4.6, -616], [0, 10.3, -632], [0, 16, -648], [0, 16, -656]], "width": 6, "shoulder": 1 },
+    { "name": "Motostoke's high street", "points": [[0, -656], [0, -680], [0, -700]], "width": 8, "shoulder": 2, "surface": "Rock" },
+    { "name": "the ramp up to the stadium", "points": [[0, 16, -700], [0, 20, -720]], "width": 8, "shoulder": 1, "surface": "Rock" },
+    { "name": "the way across the lower terrace", "points": [[-90, -684], [-40, -684], [0, -684], [44, -684], [90, -684]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "the way to the west gate", "points": [[0, -730], [-50, -740], [-96, -752], [-96, -776]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "Route 3's path", "points": [[-96, -776], [-82, -800], [-80, -830], [-90, -852]], "width": 3, "shoulder": 2.5 },
+    { "name": "Route 4's path", "points": [[-90, -884], [-70, -900], [-40, -904], [0, -910], [40, -916], [80, -920]], "width": 3, "shoulder": 2.5 },
+    { "name": "the way up to Turffield's stadium", "points": [[80, -920], [100, -922], [116, -924]], "width": 4, "shoulder": 2 }
   ]
 }

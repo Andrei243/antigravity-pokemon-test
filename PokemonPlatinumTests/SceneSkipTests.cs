@@ -1088,6 +1088,8 @@ public class SceneSkipTests
         "galar_route_2.Hop in the professor's garden", "galar_route_2.The Wishing Stars",
         // and the Wild Area's arrival by train (plan 33 · GL2), an open place's OnEnter
         "wild_area_meetup_spot.The train stops short",
+        // Plan 33 · GL4: up the steps into Motostoke, and Hop at the top of them
+        "wild_area_motostoke_riverbank.Up the steps to Motostoke", "motostoke.Hop in Motostoke",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

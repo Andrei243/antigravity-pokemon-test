@@ -1,0 +1,30 @@
+# Motostoke (plan 33 · GL4), the city of the opening ceremony, on the open world's engine: its places are
+# Data/world3d/galar/places/motostoke.json. The lines are our own, on Sword and Shield's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Motostoke, the opening ceremony and Turffield"). VAR_GALAR_STORY is
+# postwick.txt's count: 13 up the steps, 14 off to register, 15 registered, 16 the morning of the ceremony, 17 the gym
+# challenge open, 18 Bede beaten in the Galar Mine, 19 the Grass Badge.
+
+
+# Up the steps for the first time: Hop, waiting at the top with the news
+script HopInMotostoke
+  scene "Hop in Motostoke"
+  faceto player hop_motostoke
+  speaker "Hop"
+  say "There you are! Isn't it brilliant? Smoke and gears and stone, and the stadium sat on top of it all."
+  say "Registration for the gym challenge is at the stadium. Up the ramp! Let's go and make it official!"
+  clearflag FLAG_GALAR_HOP_IN_MOTOSTOKE
+  setflag FLAG_GALAR_HOP_IN_LOBBY
+  setflag FLAG_GALAR_BEDE_IN_LOBBY
+  setvar VAR_GALAR_STORY 14
+  endscene
+  end
+
+
+# The west gate onto Route 3: open to challengers once the ceremony is over
+script WestGate
+  if var VAR_GALAR_STORY >= 17 end
+  faceto player west_gate_staffer
+  speaker "League Staff"
+  say "Route 3's for challengers, and the challenge doesn't open until after the ceremony. See you on the other side!"
+  walkto player motostoke_west_gate_back
+  end

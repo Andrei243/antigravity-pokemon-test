@@ -138,6 +138,20 @@ public static class Raids
         return allies;
     }
 
+    /// <summary>
+    /// The den an open place's trigger stands for, by the trigger's name (<c>den_rolling_1</c> is den <c>rolling_1</c>),
+    /// or null where it is no den's or names none of the file: what the picture's beams are found by (GL3's second session).
+    /// </summary>
+    public static RaidDenFile? DenOfTrigger(string triggerName) =>
+        triggerName.StartsWith("den_", StringComparison.Ordinal) ? Den(triggerName[4..]) : null;
+
+    /// <summary>
+    /// Whether a den's beam stands today: lit by the day's draw or by a Wishing Piece thrown in, and its boss not felled
+    /// today. The same question `raid den` asks, so the picture never shows a beam the den's script calls quiet.
+    /// </summary>
+    public static bool BeamStands(RaidDenFile den, uint day, int version, int badges, bool wished, bool felled) =>
+        !felled && Today(den, day, version, badges, wished).Lit;
+
     /// <summary>The chance in a hundred a ball takes a felled boss of so many stars: by its stars, a Master Ball always, a Great or Ultra Ball better (ours).</summary>
     public static int CatchChance(int stars, string ball)
     {

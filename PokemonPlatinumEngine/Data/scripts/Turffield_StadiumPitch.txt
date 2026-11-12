@@ -1,0 +1,27 @@
+# Turffield Stadium's pitch (plan 33 · GL4): Milo's battle for the Grass Badge, the gym challenge's first
+# (`givebadge grass`). He Dynamaxes his last Pokémon (the trainer AI's own use, plan 06 · R30). VAR_GALAR_STORY 18 to 19
+# (postwick.txt's count). Our own lines.
+
+
+script Milo
+  face milo player
+  speaker "Milo"
+  if badge grass goto Won
+  scene "Milo"
+  say "Well, look at you, through all my Wooloo! I'm Milo, Turffield's gym Leader."
+  say "My Grass types grow strong and steady, like a good crop. Let's see if your team can weather the harvest!"
+  battle milo as "galar_milo_1"
+  say "Oh my! Your team's grown up strong, hasn't it? That was a smashing battle."
+  say "Here you are: the Grass Badge, the first of the challenge."
+  givebadge grass
+  text "{player} received the Grass Badge from Milo!"
+  setflag FLAG_GALAR_DEFEATED_TURFFIELD_GYM
+  defeat "galar_gym_trainer_wren"
+  defeat "galar_gym_trainer_cole"
+  setvar VAR_GALAR_STORY 19
+  say "Hulbury's gym is next, down Route 5 by the sea. Nessa's Water types will put your team to the test!"
+  endscene
+  end
+label Won
+  say "Come back any time! The Wooloo have taken quite a liking to you."
+  end

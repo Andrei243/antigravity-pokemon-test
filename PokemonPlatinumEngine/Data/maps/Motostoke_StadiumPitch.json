@@ -1,0 +1,118 @@
+{
+  "name": "Motostoke_StadiumPitch",
+  "displayName": "Motostoke Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fire",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "Motostoke_Stadium",
+      "targetX": 4,
+      "targetY": 7,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "rose_pitch",
+      "name": "Chairman Rose",
+      "npcType": "rose",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome, challengers, one and all!"
+      ],
+      "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "leon_pitch",
+      "name": "Leon",
+      "npcType": "leon",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Have a champion time!"
+      ],
+      "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "milo_pitch",
+      "name": "Milo",
+      "npcType": "milo",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "See you at Turffield!"
+      ],
+      "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "hop_pitch",
+      "name": "Hop",
+      "npcType": "hop",
+      "x": 6,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "This is it!"
+      ],
+      "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "bede_pitch",
+      "name": "Bede",
+      "npcType": "bede",
+      "x": 9,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Hmph."
+      ],
+      "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    }
+  ],
+  "wildEncounters": []
+}

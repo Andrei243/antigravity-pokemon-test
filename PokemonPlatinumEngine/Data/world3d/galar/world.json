@@ -8,7 +8,7 @@
   // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
   // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-5, -20, 4, 1],
+  "chunks": [-5, -30, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -25,11 +25,18 @@
     { "key": "wild_area_lake_axewell", "name": "Lake Axewell", "polygon": [[-40, -360], [40, -360], [40, -400], [150, -400], [150, -500], [-60, -500], [-60, -380], [-40, -380]], "music": "galar/wild_area" },
     { "key": "wild_area_giants_seat", "name": "Giant's Seat", "polygon": [[-150, -590], [-20, -590], [-20, -500], [-150, -500]], "music": "galar/wild_area" },
     { "key": "wild_area_lake_miloch", "name": "Lake Miloch", "polygon": [[-20, -590], [150, -590], [150, -500], [-20, -500]], "music": "galar/wild_area" },
-    { "key": "wild_area_motostoke_riverbank", "name": "Motostoke Riverbank", "polygon": [[-150, -628], [150, -628], [150, -590], [-150, -590]], "music": "galar/wild_area" }
+    { "key": "wild_area_motostoke_riverbank", "name": "Motostoke Riverbank", "polygon": [[-150, -628], [150, -628], [150, -590], [-150, -590]], "music": "galar/wild_area" },
+    // North of the Wild Area (plan 33 · GL4): Motostoke on its terraces, Route 3 to the Galar Mine's ridge, and beyond it
+    // Route 4 and Turffield; the moor east of Route 3 and the ridge belong to nobody
+    { "key": "motostoke", "name": "Motostoke", "polygon": [[-150, -628], [150, -628], [150, -776], [-150, -776]], "music": "galar/wedgehurst" },
+    { "key": "galar_route_3", "name": "Route 3", "polygon": [[-150, -776], [-20, -776], [-20, -860], [-150, -860]], "music": "galar/route1" },
+    { "key": "galar_route_4", "name": "Route 4", "polygon": [[-150, -878], [-40, -878], [-40, -960], [-150, -960]], "music": "galar/route1" },
+    { "key": "turffield", "name": "Turffield", "polygon": [[-40, -878], [150, -878], [150, -960], [-40, -960]], "music": "galar/wedgehurst" }
   ],
   "maps": [
     { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
       "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
-      "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank"] }
+      "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
+      "motostoke", "galar_route_3", "galar_route_4", "turffield"] }
   ]
 }

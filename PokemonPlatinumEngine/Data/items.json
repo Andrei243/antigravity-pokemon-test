@@ -12180,6 +12180,17 @@
     "fieldUse": "Mint"
   },
   {
+    "id": 2310,
+    "name": "Wishing Piece",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 20,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A stone that glows red. Thrown into a Max Raid den, it lights the den's beam for a day."
+  },
+  {
     "id": 2311,
     "name": "Cracked Pot",
     "pocket": "Items",

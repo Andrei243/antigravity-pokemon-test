@@ -333,6 +333,10 @@
         "accent": "en-us"
       }
     },
+    "bede": {
+      "note": "first spoken at GalarMine.txt(8)",
+      "provisional": true
+    },
     "ben": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(52)",
       "provisional": true
@@ -738,6 +742,10 @@
         "pitch": 0.884,
         "accent": "en-us"
       }
+    },
+    "chairman_rose": {
+      "note": "first spoken at Motostoke_Hotel.txt(13)",
+      "provisional": true
     },
     "charcoal_maker": {
       "note": "first spoken at ilex_forest.txt(141)",
@@ -5409,6 +5417,10 @@
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
       "provisional": true
     },
+    "league_staff": {
+      "note": "first spoken at motostoke.txt(27)",
+      "provisional": true
+    },
     "league_steward": {
       "note": "first spoken at wild_area_motostoke_riverbank.txt(9)",
       "provisional": true
@@ -8734,6 +8746,10 @@
       "note": "first spoken at LumioseCity_HatShop.txt(7)",
       "provisional": true
     },
+    "milo": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(15)",
+      "provisional": true
+    },
     "mira": {
       "note": "first spoken at Battleground.txt(821)",
       "brief": {
@@ -10113,6 +10129,10 @@
         "accent": "en-us"
       }
     },
+    "team_yell_grunt": {
+      "note": "first spoken at Motostoke_Hotel.txt(9)",
+      "provisional": true
+    },
     "temple_guard": {
       "note": "first spoken at snowpoint_city.txt(36)",
       "brief": {
@@ -10666,6 +10686,7 @@
     "Bastien": "bastien",
     "Battle Fan": "battle_fan",
     "Beauty": "beauty",
+    "Bede": "bede",
     "Ben": "ben",
     "Benga": "benga",
     "Beni": "beni",
@@ -10714,6 +10735,7 @@
     "Celosia": "celosia",
     "Cerise": "cerise",
     "Chairman": "chairman",
+    "Chairman Rose": "chairman_rose",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
     "Chef": "chef",
@@ -10916,6 +10938,7 @@
     "Lance": "lance",
     "Lanette": "lanette",
     "Lass": "look:lass",
+    "League Staff": "league_staff",
     "League Steward": "league_steward",
     "Leon": "leon",
     "Librarian": "librarian",
@@ -10977,6 +11000,7 @@
     "Miguel": "miguel",
     "Miki": "miki",
     "Milliner": "milliner",
+    "Milo": "milo",
     "Mira": "mira",
     "Mirabelle": "mirabelle",
     "Mirelle": "mirelle",
@@ -11154,6 +11178,7 @@
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
+    "Team Yell Grunt": "team_yell_grunt",
     "Temple Guard": "temple_guard",
     "Thalia": "thalia",
     "Thorton": "thorton",

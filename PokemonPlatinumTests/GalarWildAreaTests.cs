@@ -241,9 +241,14 @@ public class GalarWildAreaTests
         // Coming again says nothing more
         Play("wild_area_meetup_spot", "OnEnter");
         Assert.Equal(12, story.Var("VAR_GALAR_STORY"));
-        // The steps under Motostoke turn the player back until the ceremony
+        // The steps under Motostoke let an endorsed challenger up (plan 33 · GL4), and turn back anyone before the train
         var steps = Play("wild_area_motostoke_riverbank", "MotostokeSteps");
-        Assert.Equal("motostoke_steps_back", steps.OnMarker["player"]);
+        Assert.False(steps.OnMarker.ContainsKey("player"));
+        Assert.Equal(13, story.Var("VAR_GALAR_STORY"));
+        story.SetVar("VAR_GALAR_STORY", 11);
+        var turned = Play("wild_area_motostoke_riverbank", "MotostokeSteps");
+        Assert.Equal("motostoke_steps_back", turned.OnMarker["player"]);
+        story.SetVar("VAR_GALAR_STORY", 12);
         // Back south and north again by train
         var back = Play("wild_area_meetup_spot", "Attendant");
         Assert.Contains(back.Log, l => l.Contains("Wedgehurst_Station"));
@@ -260,7 +265,7 @@ public class GalarWildAreaTests
         var host = new HeadlessScriptHost(story, new Party(), bag) { Region = RegionDatabase.Galar, OpenMap = Open.Value };
         host.Answers.Enqueue(0);
         host.Answers.Enqueue(0);
-        host.Answers.Enqueue(4);
+        host.Answers.Enqueue(5);
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
         runner.Start(ScriptLibrary.Default.Find("WattTrader", "wild_area_meetup_spot")!, null);
         runner.RunToEnd();

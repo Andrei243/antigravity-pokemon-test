@@ -1,0 +1,63 @@
+{
+  // Route 3 (plan 33 · GL4): out of Motostoke's west gate and north up a valley of works and rough grass to the ridge the
+  // Galar Mine runs under, its mouth in the ridge's south face. Two trainers by the path and the grass's Pokémon seen in
+  // the field. Scripts: Data/scripts/galar_route_3.txt
+  "markers": [
+    { "name": "route3_south", "at": [-96, 20.6, -780], "yaw": 180 },
+    { "name": "galar_mine_south", "at": [-90, 24.2, -849], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "galar_mine_south",
+      "box": { "min": [-92, 20, -857], "max": [-88, 30, -854] },
+      "room": "GalarMine", "at": [3, 22], "facing": "up",
+      "out": "galar_mine_south"
+    }
+  ],
+  "zones": [
+    {
+      "name": "route_3_west",
+      "polygon": [[-146, -850], [-92, -850], [-92, -790], [-146, -790]],
+      "minY": 15, "maxY": 32,
+      "slots": [
+        { "species": "Rookidee", "minLevel": 9, "maxLevel": 12, "weight": 20 },
+        { "species": "Skwovet", "minLevel": 9, "maxLevel": 12, "weight": 20 },
+        { "species": "Rolycoly", "minLevel": 10, "maxLevel": 12, "weight": 20 },
+        { "species": "Sizzlipede", "minLevel": 10, "maxLevel": 12, "weight": 15 },
+        { "species": "Gossifleur", "minLevel": 9, "maxLevel": 12, "weight": 15 },
+        { "species": "Nickit", "minLevel": 9, "maxLevel": 12, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "route_3_east",
+      "polygon": [[-70, -852], [-26, -852], [-26, -800], [-70, -800]],
+      "minY": 15, "maxY": 32,
+      "slots": [
+        { "species": "Growlithe", "minLevel": 10, "maxLevel": 12, "weight": 15 },
+        { "species": "Purrloin", "minLevel": 9, "maxLevel": 12, "weight": 20 },
+        { "species": "Corvisquire", "minLevel": 12, "maxLevel": 13, "weight": 10 },
+        { "species": "Wooloo", "minLevel": 9, "maxLevel": 12, "weight": 25 },
+        { "species": "Chewtle", "minLevel": 9, "maxLevel": 12, "weight": 20, "weather": ["Rain", "Thunderstorm"] }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "camper_wade", "at": [-84, 21.0, -800], "yaw": 270, "trainer": "galar_camper_wade",
+      "lines": ["I'm camping my way up to Turffield. A battle's the best way to warm up after a cold night!", "Right, I'm properly awake now."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "worker_glen", "at": [-74, 22.6, -832], "yaw": 90, "trainer": "galar_worker_glen",
+      "lines": ["Off to the mine, are you? You'll have to get past me first!", "Go on, then. Mind your head in there."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-130, -786], "kind": "pine" },
+    { "at": [-120, -840], "kind": "pine", "size": 1.1 },
+    { "at": [-40, -790], "kind": "round" }
+  ]
+}

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using System.Numerics;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Graphics.OpenWorld;
@@ -146,7 +149,42 @@ public partial class GameEngine
         return new OpenScene(open.Map, V(feet), yaw, pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
             body.Stance == OpenStance.Swimming, (float)openCamera.RideLens(OrbitCamera.LensFor(world.Camera.Lens)), figures, OpenWalkersOf(open, figures),
-            mount, riderRoot);
+            mount, riderRoot, OpenBeamsNow(open));
+    }
+
+    // ------------------------------------------------------------------ the dens' beams (plan 33 · GL3)
+
+    private readonly List<DenBeam> openBeams = new();
+    private (OpenMap? Map, uint Day, int Revision) openBeamsFor;
+
+    /// <summary>
+    /// The beams over the open map's lit Max Raid dens (plan 33 · GL3, second session; style guide, "Max Raid dens"): each
+    /// trigger of a den (`den_<id>`) whose den stands lit today by the same question its script asks (`Raids.BeamStands`:
+    /// the day's draw or a Wishing Piece, and not felled today), at the ground under the trigger's middle. Worked out
+    /// again only when the map, the day or the story changes; nothing of it reaches the rules.
+    /// </summary>
+    internal IReadOnlyList<DenBeam> OpenBeamsNow(OpenField open)
+    {
+        var key = (open.Map, flow.Encounters.DailyNumber, flow.Story.Revision);
+        if (openBeamsFor == key) return openBeams;
+        openBeamsFor = key;
+        openBeams.Clear();
+        int version = Math.Max(1, flow.Story.Var("VAR_GALAR_VERSION"));
+        int badges = flow.Story.BadgeCount(RegionDatabase.Galar);
+        foreach (var trigger in open.Map.Triggers)
+        {
+            if (Raids.DenOfTrigger(trigger.Name) is not { } den) continue;
+            bool wished = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "WISHED"));
+            bool felled = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "DONE"));
+            if (!Raids.BeamStands(den, key.DailyNumber, version, badges, wished, felled)) continue;
+            var middle = trigger.Shape.Base;
+            double x = middle.X / (double)OpenPos.PerMetre, z = middle.Z / (double)OpenPos.PerMetre;
+            double top = trigger.Shape.Max.Y / (double)OpenPos.PerMetre, bottom = trigger.Shape.Min.Y / (double)OpenPos.PerMetre;
+            double y = open.Map.Ground.Footing(x, z, top, bottom)?.Y ?? bottom + 1;
+            int stars = Raids.Today(den, key.DailyNumber, version, badges, wished).Stars;
+            openBeams.Add(new DenBeam(new Vector3((float)x, (float)y, (float)z), stars));
+        }
+        return openBeams;
     }
 
     // ------------------------------------------------------------------ the mount as a rig (plan 30 · FM13)

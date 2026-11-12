@@ -250,6 +250,7 @@ public class ScriptTests
           raid watts
           raid fight
           raid catch "Poké Ball"
+          raid wish
           treat can
           treat can mixed
           treat bake spicy

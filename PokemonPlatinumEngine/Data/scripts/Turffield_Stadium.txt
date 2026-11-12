@@ -1,0 +1,23 @@
+# Turffield Stadium's lobby (plan 33 · GL4): the first gym of the challenge, Milo's. The mission is through the back
+# (Turffield_StadiumMission.txt), and the pitch beyond it (Turffield_StadiumPitch.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge grass goto Won
+  say "Welcome to Turffield Stadium! Milo's gym mission is through the doors behind me: herd the Wooloo into their pens."
+  say "Walk into a Wooloo and it trots along ahead of you. Clear the way, and Milo will be waiting on the pitch."
+  end
+label Won
+  say "Congratulations on the Grass Badge! Hulbury's gym is next, down Route 5."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge grass goto Won
+  say "Milo's Grass types shrug off water and ground, but fire and flying moves give them a hard time!"
+  end
+label Won
+  say "You beat Milo! That's one badge down. Seven to go!"
+  end
