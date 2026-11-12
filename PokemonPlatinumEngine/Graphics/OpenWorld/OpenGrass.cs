@@ -21,10 +21,16 @@ internal readonly record struct OpenTuft(Vector3 At, int Variant, float Yaw, flo
 internal static class OpenGrass
 {
     /// <summary>Tufts to a square metre of grass, the steepest ground they stand on (degrees) and how far from the player they are drawn (metres).</summary>
-    public const float Density = 0.75f, Steepest = 34f, Reach = 22f, Fade = 5f;
+    public const float Density = 2.2f, Steepest = 34f, Reach = 22f, Fade = 5f;
 
     /// <summary>The tufts' looks: the grass's, the light grass's, the deep grass's and the highland's, by the cover under them.</summary>
     public const int Variants = 4;
+
+    /// <summary>The tufts' meshes: each cover's tuft, and after them each cover's tuft with wild flowers in it (a look of <see cref="Variants"/> or more).</summary>
+    public const int Looks = 2 * Variants;
+
+    /// <summary>Flowers grow in drifts: the land is cut into squares of this many metres, about one in three has them, and there about one tuft in five flowers.</summary>
+    public const float FlowerPatch = 7f;
 
     /// <summary>The look a tuft on a cover takes, or −1 where none grows.</summary>
     public static int VariantOf(OpenCover cover) => cover switch
@@ -68,6 +74,9 @@ internal static class OpenGrass
                 int variant = wa >= u && wa >= v ? va : u >= v ? vb : vc;
                 float yaw = ((g >> 20) & 0x3FF) / 1023f * MathF.Tau;
                 float scale = 0.8f + 0.45f * ((h >> (16 + k % 8)) & 0xFF) / 255f;
+                // Wild flowers, in drifts (by the square of the world the tuft stands in, so a drift crosses chunks)
+                uint patch = SplitMix.Mix(0x3c6ef372u, (uint)(int)MathF.Floor(at.X / FlowerPatch), (uint)(int)MathF.Floor(at.Z / FlowerPatch));
+                if ((patch & 0xFF) < 84 && ((g >> 3) & 0xFF) < 52) variant += Variants;
                 tufts.Add(new OpenTuft(at, variant, yaw, scale));
             }
         }
@@ -85,10 +94,10 @@ internal static class OpenGrass
     /// <summary>The tufts' colours, root and tip, by look (style guide, "Open world": the covers' own marks).</summary>
     public static (Color Root, Color Tip) ColoursOf(int variant) => variant switch
     {
-        1 => (new Color(88, 168, 90, 255), new Color(170, 228, 130, 255)),
-        2 => (new Color(58, 126, 82, 255), new Color(132, 204, 112, 255)),
-        3 => (new Color(104, 138, 86, 255), new Color(178, 204, 148, 255)),
-        _ => (new Color(70, 150, 82, 255), new Color(160, 222, 122, 255))
+        1 => (new Color(92, 164, 78, 255), new Color(146, 216, 112, 255)),
+        2 => (new Color(58, 128, 66, 255), new Color(108, 186, 98, 255)),
+        3 => (new Color(104, 136, 86, 255), new Color(160, 190, 128, 255)),
+        _ => (new Color(78, 152, 72, 255), new Color(132, 208, 104, 255))
     };
 
     /// <summary>Whether a point stands under the chunk's water, or within a few centimetres of its surface (the bake's 2 m cells).</summary>
