@@ -1090,6 +1090,8 @@ public class SceneSkipTests
         "wild_area_meetup_spot.The train stops short",
         // Plan 33 · GL4: up the steps into Motostoke, and Hop at the top of them
         "wild_area_motostoke_riverbank.Up the steps to Motostoke", "motostoke.Hop in Motostoke",
+        // Plan 33 · GL4, its second session: Hop on Route 5, and Marnie by Motostoke's east wall
+        "galar_route_5.Hop on Route 5", "motostoke.Marnie in Motostoke",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

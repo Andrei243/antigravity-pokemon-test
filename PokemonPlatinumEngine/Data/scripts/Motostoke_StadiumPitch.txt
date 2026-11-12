@@ -35,3 +35,29 @@ script OnEnter
   warpto "Galar" motostoke_stadium_door
   fade in
   end
+
+
+# Kabu's battle for the Fire Badge (plan 33 · GL4, its second session), the gym challenge's third (`givebadge fire`),
+# on the pitch through his mission. He Dynamaxes his last Pokémon. VAR_GALAR_STORY 23 to 24. Our own lines.
+script Kabu
+  face kabu player
+  speaker "Kabu"
+  if badge fire goto Won
+  scene "Kabu"
+  say "You rounded up every one of them. Good. I am Kabu, the Leader of Motostoke's gym."
+  say "Many challengers fall here. The fire doesn't forgive carelessness. Show me that you've trained for this moment!"
+  battle kabu as "galar_kabu_1"
+  say "Hah! You turned the heat back on me. I haven't been burned like that in years."
+  say "Take the Fire Badge. You've earned the right to carry it."
+  givebadge fire
+  text "{player} received the Fire Badge from Kabu!"
+  setflag FLAG_GALAR_DEFEATED_MOTOSTOKE_GYM
+  defeat "galar_gym_trainer_ash"
+  defeat "galar_gym_trainer_ember"
+  setvar VAR_GALAR_STORY 24
+  say "Three badges. Keep that fire burning on the road ahead, and train every single day."
+  endscene
+  end
+label Won
+  say "Train hard, every day. That's all there is to it, at my age or yours."
+  end

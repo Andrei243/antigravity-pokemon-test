@@ -11211,6 +11211,36 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   must grow again, a bake), Galar Mine No. 2, Kabu's mission and battle in Motostoke's stadium (its lobby and pitch are
   built), Hop's and Marnie's battles, the shots of Motostoke for the user to judge and the three badges won in the harness.
 
+## Route 5, Hulbury, Galar Mine No. 2 and Kabu (2026-11-12, plan 33 · GL4, its second session)
+
+- **The land grows north again, three rows** (plan 33 · decision 1 still unanswered): the region's rectangle of chunks is
+  `[-5, -33, 4, 1]` (350 chunks, about 40 MB of bake), not wider. Route 5 and Hulbury lie north of Turffield where Sword
+  has them north-east; at half the distances and in one rectangle that is the cheapest ground, and the order of the
+  places is kept. No grid of control points reaches the new rows, so `terrain/wild_area_north_route5.json` is plateaus
+  alone (a floor at 26 m, the harbour's floor cut at 20 m, two downs, banks on the west, the north of the route and the
+  east). Turffield's north bank has a gap for Route 5's path. Hulbury's harbour is a lake of `water.json` at 24.4 m,
+  walked round and never swum.
+- **Galar Mine No. 2 is a grid cave** (`GalarMine2`) from a door in the bank on Hulbury's south side to a door in
+  Motostoke's east wall, so no ground was baked for it; Motostoke's outskirts are not built, and Marnie waits on the lower
+  terrace by the east wall instead. Both ends are shut to a challenger without the Water Badge (a League staffer's
+  trigger at each), so Motostoke can't be left for Hulbury before Turffield.
+- **The chapter goes on** (`VAR_GALAR_STORY`, postwick.txt's count): Hop's battle at Route 5's gap the day after the
+  Grass Badge (20; Milo's script shows him), Nessa's Water Badge (21), Bede in Galar Mine No. 2 (22), Marnie's battle by
+  Motostoke's east wall (23) and Kabu's Fire Badge (24). Our lines on Sword's beats as publicly told: the walkthroughs
+  put Bede, Team Yell and Marnie between Hulbury and Kabu, which is kept; Hop's battle on Route 5 is ours where Sword's
+  placing of it was not confirmed. People shown by flags of ours, so no story version moves. Objectives 717 to 721.
+- **The missions** stay talks, as Milo's: three gatekeepers at Nessa's floodgates, each pulling a switch when asked (a
+  flag each), and three fire Pokémon loose on Kabu's course, each rounded up (a flag each), with a step at the course's
+  mouth that turns back a challenger without the Water Badge. Sword's switch puzzle and Kabu's points are a later
+  session's grid puzzles. Nessa and Kabu battle with the Dynamax Band; their bands are `PlainBand`.
+- **Ours**: Route 5's trainers and tables, Galar Mine No. 2's, Hop's fourth teams, Bede's second, Marnie's first (Morpeko
+  at 24), the gym trainers', Nessa's (Drednaw at 24, Sword's cap after one badge) and Kabu's (Centiskorch at 27, the cap
+  after two), and three looks (`marnie`, `nessa`, `kabu`, chibi-kit stand-ins on the Adult build as the cast before them).
+  The Pokémon Nursery on Route 5 stands with its door owed, and so do the seafood restaurant and the lighthouse.
+- **The Rotom Bike is not given.** Sword hands it over on Route 5, but the Bicycle's field use flips the grid player's
+  travel mode and plan 30's `RotomBike` mode has no engine in an open map; giving it would ship a bike that rides the
+  grid. It is owed with that engine.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

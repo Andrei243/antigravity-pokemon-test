@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Hulbury Stadium"
+    ],
+    "text": [
+      "Stadionul Hulbury"
+    ]
+  },
+  "people": {
+    "hulbury_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "hulbury_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
