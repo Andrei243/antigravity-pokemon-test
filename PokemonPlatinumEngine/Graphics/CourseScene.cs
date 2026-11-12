@@ -173,9 +173,12 @@ internal static class CourseScene
         for (int i = 0; i < 9; i++)
             BattleArenas.RockMass(walls, new Vector3(-24f + i * 7f, 0, zEnd - 10f - Rand(i, 4, 88) * 6f), new Vector3(6f, 22f, 5f), foot, mid, lit, 900 + i);
         var rock = batches.For(SceneTextures.White);
+        // Stalagmites beyond the residents or behind the rail, never in the lane between: the judge counts only the
+        // course's own screens as cover, so nothing drawn may hide a resident it doesn't know of
         for (int i = 0; i < 30; i++)
         {
-            float x = -12f + Rand(i, 5, 89) * 24f, z = zEnd + Rand(i, 6, 89) * (zStart - zEnd);
+            float u = Rand(i, 5, 89);
+            float x = i % 3 == 0 ? 12f + u * 2.5f : -14f + u * 6f, z = zEnd + Rand(i, 6, 89) * (zStart - zEnd);
             if (Clear(course, x, z, 1f)) BattleArenas.Stalagmite(rock, new Vector3(x, 0, z), 0.4f + Rand(i, 7, 89) * 0.5f, 1.4f + Rand(i, 8, 89) * 2.4f);
         }
         foreach (var s in course.Screens) SoftFoliage.Rock(rock, s.At[0], s.At[1], s.Height * 0.75f, (int)(s.At[1] * 7), foot, mid, lit);

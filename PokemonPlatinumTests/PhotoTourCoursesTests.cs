@@ -66,7 +66,7 @@ public class PhotoTourCoursesTests
 
     /// <summary>The rare actions' kinds the words have (<c>photoTour.rare.*</c>).</summary>
     private static readonly string[] Rares =
-        { "glow", "dance", "dam", "takeoff", "spark", "watch", "lift", "mimic", "glide", "song", "leap", "dive", "gems", "spin", "flutter", "shine", "snowfall", "aura", "flame", "rings", "flicker", "wisps" };
+        { "glow", "dance", "dam", "takeoff", "spark", "watch", "lift", "mimic", "glide", "song", "leap", "dive", "gems", "spin", "flutter", "shine", "snowfall", "aura", "flame", "rings", "flicker", "wisps", "sundance", "moondance" };
 
     [Fact]
     public void EveryRareActionsKindHasItsWords()

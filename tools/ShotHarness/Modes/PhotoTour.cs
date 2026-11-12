@@ -117,7 +117,9 @@ partial class Harness
         for (int i = 0; i < 600 && !game.TourPrintShown; i++) Frames(1);
         Frames(20);
         Shot("tu10_report");
-        // On to a four-star print, the course turned and the row moved as a player would
+        // On to a four-star print of another course than the one the report opens on (tu10 shows
+        // that one), the course turned and the row moved as a player would
+        r.ChangeCourse(1);
         for (int c = 0; c < r.Courses.Count; c++)
         {
             int at = r.Rows.ToList().FindIndex(b => b.Stars == 4);
